@@ -146,7 +146,7 @@ export default function RecifeContratosExplorer({
                   <span className="fx-result-card-type">{modalidadeLabel(c.modalidade, locale)}</span>
                   {c.is_ativo && <span className="fx-sm-tag">{t("br.recife.ct.badge_ativo")}</span>}
                 </div>
-                <div className="fx-result-card-cta">{c.objeto ? titleCasePt(c.objeto) : c.numero}</div>
+                <div className="fx-result-card-cta">{c.objeto ? titleCasePt(c.objeto) : (c.numero ?? t("br.recife.contrato.sem_numero"))}</div>
                 <div className="fx-result-card-meta">
                   {c.is_org ? titleCasePt(c.fornecedor) : t("br.recife.ct.pessoa_fisica")}{c.orgao ? ` · ${c.orgao}` : ""}
                 </div>

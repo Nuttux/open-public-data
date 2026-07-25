@@ -12,16 +12,19 @@ export default async function DrawerContratoPage({ params }: { params: Promise<{
   if (!found) return notFound();
   const store = await cookies();
   const locale: Locale = store.get("br_locale")?.value === "en" ? "en" : "pt";
+  // The portal leaves some contracts unnumbered ("Aguardando Numeração"),
+  // which the pipeline nulls out rather than printing as a fake reference.
+  const ref = found.contrato.numero ?? (locale === "en" ? "unnumbered" : "sem número");
 
   return (
     <ForcedLocale locale={locale}>
       <div className="theme-fusion">
         <DetailDrawer
           kicker={<>Recife · {locale === "en" ? "Contracts" : "Contratos"}</>}
-          title={`Contrato ${found.contrato.numero}`}
+          title={`Contrato ${ref}`}
           shareUrl={`/br/city/recife/contratos/${id}`}
           backHref="/br/city/recife/contratos"
-          breadcrumbLabel={found.contrato.numero}
+          breadcrumbLabel={ref}
         >
           <RecifeContratoFiche c={found.contrato} source={found.source} />
         </DetailDrawer>

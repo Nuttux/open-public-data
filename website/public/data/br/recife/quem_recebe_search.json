@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-24T12:32:55.600309+00:00",
+ "generated_at": "2026-07-25T17:59:47.905810+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "unit": "BRL",
  "count": 5611,
@@ -185,8 +185,8 @@
    "nome": "GENERAL GOODS LTDA",
    "total_pago": 109573139.92,
    "is_subvencao": false,
-   "tema": "Educação",
-   "orgao": "SECRETARIA DE EDUCAÇÃO"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "11431327000134",
@@ -425,8 +425,8 @@
    "nome": "COMPANHIA PERNAMBUCANA DE SANEAMENTO COMPESA",
    "total_pago": 35499133.39,
    "is_subvencao": false,
-   "tema": "Educação",
-   "orgao": "SECRETARIA DE EDUCAÇÃO"
+   "tema": "Infraestrutura e obras",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "50275110000134",
@@ -761,8 +761,8 @@
    "nome": "NUCLEO DE GESTAO DO PORTO DIGITAL",
    "total_pago": 22003943.08,
    "is_subvencao": false,
-   "tema": "Educação",
-   "orgao": "SECRETARIA DE EDUCAÇÃO"
+   "tema": "Outros",
+   "orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA"
   },
   {
    "cnpj": "00507949000182",
@@ -1265,8 +1265,8 @@
    "nome": "NM INCORPORACOES IMOBILIARIAS EIRELI",
    "total_pago": 11067528.58,
    "is_subvencao": false,
-   "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA"
+   "tema": "Infraestrutura e obras",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "05249239000113",
@@ -1417,7 +1417,7 @@
    "nome": "CRISTAL EVENTOS LTDA",
    "total_pago": 9889844.03,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -1841,8 +1841,8 @@
    "nome": "BANCO NACIONAL DE DESENVOLVIMENTO ECONOMICO E SOCIAL",
    "total_pago": 7116071.91,
    "is_subvencao": false,
-   "tema": "Outros",
-   "orgao": "ENCARGOS GERAIS DO MUNICÍPIO"
+   "tema": "Desenvolvimento econômico",
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO"
   },
   {
    "cnpj": "34131619000157",
@@ -2009,8 +2009,8 @@
    "nome": "CONTREL CONSTRUCOES E REALIZACOES EMPRESARIAS LTDA",
    "total_pago": 6359900.63,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE ESPORTES"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "07484373000124",
@@ -2505,8 +2505,8 @@
    "nome": "NORDEX EXPRESS LTDA",
    "total_pago": 4474962.79,
    "is_subvencao": false,
-   "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Infraestrutura e obras",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "05863009000140",
@@ -2602,7 +2602,7 @@
    "total_pago": 4283212.03,
    "is_subvencao": true,
    "tema": "Educação",
-   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
+   "orgao": "SECRETARIA DE EDUCAÇÃO"
   },
   {
    "cnpj": "52604053000115",
@@ -2769,8 +2769,8 @@
    "nome": "KAIZEN CONSTRUCOES INCORPORACOES LTDA",
    "total_pago": 3990103.01,
    "is_subvencao": false,
-   "tema": "Outros",
-   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "09053050000101",
@@ -3834,7 +3834,7 @@
    "total_pago": 2090834.8,
    "is_subvencao": false,
    "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA"
+   "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "00371537000249",
@@ -3842,7 +3842,7 @@
    "total_pago": 2085000.0,
    "is_subvencao": true,
    "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA"
+   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "36158536000187",
@@ -4097,7 +4097,7 @@
    "nome": "NOVO MIX COMÉRCIO LTDA",
    "total_pago": 1888934.81,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -4153,8 +4153,8 @@
    "nome": "FUNDAÇÃO DE APOIO AO DESENVOLVIMENTO DA UNIVERSIDADE FEDERAL DE PERNAMBUCO",
    "total_pago": 1824432.15,
    "is_subvencao": false,
-   "tema": "Outros",
-   "orgao": "ENCARGOS GERAIS DO MUNICÍPIO"
+   "tema": "Educação",
+   "orgao": "SECRETARIA DE EDUCAÇÃO"
   },
   {
    "cnpj": "08584386000138",
@@ -4657,7 +4657,7 @@
    "nome": "REALEZA DISTRIBUIDORA DE ALIMENTOS E CESTAS BASICAS LTDA",
    "total_pago": 1540398.84,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -4897,7 +4897,7 @@
    "nome": "AQUARELA LIVRARIA E PAPELARIA LTDA",
    "total_pago": 1365402.28,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -5113,8 +5113,8 @@
    "nome": "SECRETARIA DE JUSTICA E DIREITOS HUMANOS SJDH",
    "total_pago": 1264286.78,
    "is_subvencao": false,
-   "tema": "Infraestrutura e obras",
-   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Gestão pública",
+   "orgao": "SECRETARIA DE POLÍTICA URBANA E LICENCIAMENTO - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "30114887000100",
@@ -5281,7 +5281,7 @@
    "nome": "MARSOU ENGENHARIA LTDA",
    "total_pago": 1150956.93,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -5513,7 +5513,7 @@
    "nome": "CENTRO DE DESENVOLVIMENTO E CIDADANIA SDS",
    "total_pago": 1052500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -5793,7 +5793,7 @@
    "nome": "SANEAPE LOCACOES LTDA",
    "total_pago": 959348.52,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -5926,7 +5926,7 @@
   },
   {
    "cnpj": "01141495000131",
-   "nome": "MART PET COMUNICACAO LTDA",
+   "nome": "MART PET COMUNICAÇÃO LTDA EPP",
    "total_pago": 893218.19,
    "is_subvencao": false,
    "tema": "Cultura, esporte e lazer",
@@ -6409,8 +6409,8 @@
    "nome": "MAVYG COMERCIO DE MOVEIS LTDA",
    "total_pago": 753825.5,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "CONTROLADORIA GERAL DO MUNICÍPIO"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
    "cnpj": "04719487000118",
@@ -6689,7 +6689,7 @@
    "nome": "DIEGO SANTOS DE CARVALHO 08947606456",
    "total_pago": 675610.89,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -6866,15 +6866,15 @@
    "total_pago": 633522.62,
    "is_subvencao": true,
    "tema": "Sociedade civil",
-   "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "00191027000109",
    "nome": "FACILIT TECNOLOGIA LTDA",
    "total_pago": 631456.03,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "SECRETARIA DE PLANEJAMENTO E GESTÃO"
+   "tema": "Outros",
+   "orgao": "ENCARGOS GERAIS DO MUNICÍPIO"
   },
   {
    "cnpj": "04414779000142",
@@ -6905,8 +6905,8 @@
    "nome": "PORTO SEGURO COMPANHIA DE SEGUROS GERAIS",
    "total_pago": 623525.58,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DA MULHER"
   },
   {
    "cnpj": "47320918000181",
@@ -6914,7 +6914,7 @@
    "total_pago": 620731.6,
    "is_subvencao": false,
    "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
+   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "08695774000196",
@@ -7089,8 +7089,8 @@
    "nome": "ARVVO TECNOLOGIA CONSULTORIA E SERVICOS LTDA",
    "total_pago": 587457.31,
    "is_subvencao": false,
-   "tema": "Educação",
-   "orgao": "SECRETARIA DE EDUCAÇÃO"
+   "tema": "Gestão pública",
+   "orgao": "SECRETARIA DE PLANEJAMENTO, GESTÃO E TRANSFORMAÇÃO DIGITAL - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "44222217000111",
@@ -7153,8 +7153,8 @@
    "nome": "N L MONTEIRO DA SILVA COMERCIAL LTDA",
    "total_pago": 575329.14,
    "is_subvencao": false,
-   "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA"
+   "tema": "Desenvolvimento econômico",
+   "orgao": "SECRETARIA DO TRABALHO E QUALIFICAÇÃO PROFISSIONAL"
   },
   {
    "cnpj": "03997641000150",
@@ -7209,8 +7209,8 @@
    "nome": "URJA SOCIAL TECNOLOGIA GESTÃO E OPERAÇÃO LTDA",
    "total_pago": 566928.71,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
+   "tema": "Gestão pública",
+   "orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "79805263000128",
@@ -7273,8 +7273,8 @@
    "nome": "IMPACTO PUBLICIDADE E PROPAGANDA LTDA",
    "total_pago": 556643.29,
    "is_subvencao": false,
-   "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DE ARTICULAÇÃO POLÍTICA E SOCIAL"
+   "tema": "Educação",
+   "orgao": "SECRETARIA DE EDUCAÇÃO"
   },
   {
    "cnpj": "05283620000107",
@@ -7474,7 +7474,7 @@
    "total_pago": 532246.38,
    "is_subvencao": false,
    "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "orgao": "SECRETARIA DE TURISMO E LAZER"
   },
   {
    "cnpj": "13392132000158",
@@ -8145,8 +8145,8 @@
    "nome": "FORTLINE INDÚSTRIA E COMÉRCIO DE MÓVEIS LTDA",
    "total_pago": 417337.42,
    "is_subvencao": false,
-   "tema": "Segurança urbana",
-   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA"
   },
   {
    "cnpj": "27837803000151",
@@ -8385,7 +8385,7 @@
    "nome": "MARCOS VALEIRA ALFREDO DE LIRA 23415703487 - VALERIOS BRINDES",
    "total_pago": 387411.6,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -8505,8 +8505,8 @@
    "nome": "EP-ENGRANAGEM PRODUÇÔES E SERVIÇOS LTDA",
    "total_pago": 370977.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE TURISMO E LAZER"
+   "tema": "Desenvolvimento econômico",
+   "orgao": "SECRETARIA DO TRABALHO E QUALIFICAÇÃO PROFISSIONAL"
   },
   {
    "cnpj": "10793812000357",
@@ -8681,8 +8681,8 @@
    "nome": "VANGUARDA INFORMATICA LTDA",
    "total_pago": 353658.77,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "GABINETE DE IMPRENSA"
+   "tema": "Outros",
+   "orgao": "ASSESSORIA ESPECIAL DO PREFEITO DO RECIFE"
   },
   {
    "cnpj": "04375656000140",
@@ -8809,7 +8809,7 @@
    "nome": "SOCIEDADE RECIFENSE DE ESTUDOS DE CIENCIAS HUMANAS",
    "total_pago": 339950.13,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -9273,7 +9273,7 @@
    "nome": "COOPERATIVA DOS INDUSTRIAIS DA PANIFICACAO CONFEITARIA E PRODUTOS SIMILARES DOS ESTADO DE PERNAMBUCO",
    "total_pago": 303260.04,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -9281,8 +9281,8 @@
    "nome": "MP SERVICOSGRAFICOS E PUBLICITARIOS E LOCACAO DE EQUIPAMENTOS LTDA",
    "total_pago": 301806.89,
    "is_subvencao": false,
-   "tema": "Segurança urbana",
-   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA"
+   "tema": "Cultura, esporte e lazer",
+   "orgao": "SECRETARIA DE TURISMO E LAZER"
   },
   {
    "cnpj": "18293424000157",
@@ -9401,8 +9401,8 @@
    "nome": "VALLE CONSULT ENGENHARIA E GESTAO DE ATIVOS LTDA ME",
    "total_pago": 296009.38,
    "is_subvencao": false,
-   "tema": "Educação",
-   "orgao": "SECRETARIA DE EDUCAÇÃO"
+   "tema": "Gestão pública",
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO"
   },
   {
    "cnpj": "07752236000123",
@@ -10001,7 +10001,7 @@
    "nome": "POUSADA SOLAR DO LAZER LTDA - ME",
    "total_pago": 253500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -10129,7 +10129,7 @@
    "nome": "GIKATZ CONSTRUTORA E IMOBILIARIA LTDA",
    "total_pago": 246379.71,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -10289,7 +10289,7 @@
    "nome": "INOVA COMERCIAL & TRANSPORTES RODOVIARIOS EIRELI",
    "total_pago": 238372.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -10361,7 +10361,7 @@
    "nome": "TECNOSET INFORMATICA PRODUTOS E SERVICOS LTDA",
    "total_pago": 231352.24,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -10417,7 +10417,7 @@
    "nome": "51.681.677 VALERIA GOMES DE SOUSA LIRA",
    "total_pago": 229400.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -10697,7 +10697,7 @@
    "nome": "51.747.506 EDSON ARAGAO DE SANTANA",
    "total_pago": 212276.26,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -10705,7 +10705,7 @@
    "nome": "S R AUTO PECAS E SERVICOS LTDA",
    "total_pago": 212056.49,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -11033,7 +11033,7 @@
    "nome": "VENEZATUR LTDA - VENEZA WATER PARK",
    "total_pago": 195000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -11545,7 +11545,7 @@
    "nome": "L.A. COPIADORAS E SERVICOS LTDA",
    "total_pago": 170737.61,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -11753,8 +11753,8 @@
    "nome": "CONCAPE LOCACOES E SERVICOS EIRELI",
    "total_pago": 163610.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Gestão pública",
+   "orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "64015230000107",
@@ -11777,7 +11777,7 @@
    "nome": "KOALA TECH LTDA",
    "total_pago": 162897.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -11929,7 +11929,7 @@
    "nome": "ANA PAULA DE BRITO LINS 88268810491",
    "total_pago": 160698.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -12785,7 +12785,7 @@
    "nome": "COM ACESSIBILIDADE COMUNICACIONAL LTDA",
    "total_pago": 137240.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -12889,7 +12889,7 @@
    "nome": "TACIANA MACEDO DA SILVA 00767289439",
    "total_pago": 133612.18,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -13137,7 +13137,7 @@
    "nome": "51.285.620 JEAN DA CONCEICAO FERREIRA",
    "total_pago": 127265.33,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -13305,7 +13305,7 @@
    "nome": "52.825.085 MARIA MARINA PEIXOTO DA SILVA",
    "total_pago": 121220.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -13313,7 +13313,7 @@
    "nome": "55.132.962 MARCIA HELENA MARTINS",
    "total_pago": 120575.3,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -13489,8 +13489,8 @@
    "nome": "SECRETARIA DA FAZENDA - SEFAZ PE",
    "total_pago": 116501.62,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "SECRETARIA DE ADMINISTRAÇÃO"
+   "tema": "Outros",
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS"
   },
   {
    "cnpj": "09798893000137",
@@ -13537,7 +13537,7 @@
    "nome": "INSTITUTO BRASILEIRO EDUCACIONAL, TECNOLOGICO DE DESENVOLVIMENTOS SOCIAIS DOS MUNICIPIOS - INBRAEDEM",
    "total_pago": 115400.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -13809,7 +13809,7 @@
    "nome": "KRETZER & COELHO DE ORGANIZACAO DE FEIRAS LTDA",
    "total_pago": 108230.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -13817,7 +13817,7 @@
    "nome": "PAULO HENRIQUE BARROS",
    "total_pago": 108120.5,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -14073,7 +14073,7 @@
    "nome": "N2B SERVIÇOS DE ORGANIZAÇÃO DE EVENTOS LTDA",
    "total_pago": 103166.04,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -14297,7 +14297,7 @@
    "nome": "SIND. DA IND.DA CONST.CIV. NO EST. DE PE - SINDUSCON/PE",
    "total_pago": 100000.0,
    "is_subvencao": false,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE GOVERNO E PARTICIPAÇÃO SOCIAL"
   },
   {
@@ -14617,7 +14617,7 @@
    "nome": "LP SERVIÇOS DE ENGENHARIA LTDA",
    "total_pago": 94950.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -14937,16 +14937,16 @@
    "nome": "SUCESSO DISTRIBUIDORA DE ALIMENTOS LTDA",
    "total_pago": 89040.15,
    "is_subvencao": false,
-   "tema": "Infraestrutura e obras",
-   "orgao": "SECRETARIA DE INFRAESTRUTURA"
+   "tema": "Cultura, esporte e lazer",
+   "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "10498974000281",
    "nome": "INSTITUTO NEGOCIOS PUBLICOS DO BRASIL ESTUDOS E PESQUISAS NA ADMINISTRACAO PUBLICA INP LTDA",
    "total_pago": 88820.0,
    "is_subvencao": false,
-   "tema": "Infraestrutura e obras",
-   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Segurança urbana",
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "16750167000100",
@@ -15226,7 +15226,7 @@
    "total_pago": 82900.0,
    "is_subvencao": true,
    "tema": "Sociedade civil",
-   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
+   "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA"
   },
   {
    "cnpj": "05307217000162",
@@ -15249,7 +15249,7 @@
    "nome": "41.041.570 ANA BEATRIZ SENA DE QUEIROZ",
    "total_pago": 82276.3,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -15329,7 +15329,7 @@
    "nome": "LIKE MARKETING PROMOCIONAIS E SERVICOS LTDA",
    "total_pago": 80468.52,
    "is_subvencao": false,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE GOVERNO E PARTICIPAÇÃO SOCIAL"
   },
   {
@@ -15449,7 +15449,7 @@
    "nome": "A J P DE SOUZA & CIA COMÉRCIO ATACADISTA LTDA",
    "total_pago": 79794.27,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -15465,7 +15465,7 @@
    "nome": "ADRIANA PATRICIA DA SILVA 05859242405",
    "total_pago": 79600.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -15741,14 +15741,6 @@
    "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
-   "cnpj": "17306839000155",
-   "nome": "17.306.839 MAIARA CECILIA ARISTEDES LIRA",
-   "total_pago": 75000.0,
-   "is_subvencao": false,
-   "tema": "Desenvolvimento econômico",
-   "orgao": "GABINETE DE INOVAÇÃO URBANA"
-  },
-  {
    "cnpj": "42158533000146",
    "nome": "RANNE GRACIELLE DE FRANCA ME",
    "total_pago": 75000.0,
@@ -15771,6 +15763,14 @@
    "is_subvencao": false,
    "tema": "Cultura, esporte e lazer",
    "orgao": "SECRETARIA DE ESPORTES"
+  },
+  {
+   "cnpj": "17306839000155",
+   "nome": "17.306.839 MAIARA CECILIA ARISTEDES LIRA",
+   "total_pago": 75000.0,
+   "is_subvencao": false,
+   "tema": "Infraestrutura e obras",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA"
   },
   {
    "cnpj": "04307650002502",
@@ -15801,8 +15801,8 @@
    "nome": "ELO CONSULTORIA EMPRESARIAL E PRODUCAO DE EVENTOS LTDA",
    "total_pago": 74417.0,
    "is_subvencao": false,
-   "tema": "Infraestrutura e obras",
-   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Segurança urbana",
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "15545294000104",
@@ -15841,8 +15841,8 @@
    "nome": "IMPERIO DISTRIBUIDORA DE MATERIAS LTDA",
    "total_pago": 73862.56,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE TURISMO E LAZER"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
    "cnpj": "27982015000159",
@@ -15873,7 +15873,7 @@
    "nome": "DEPARTAMENTO ESTADUAL DE TRANSITO DE PERNAMBUCO - DETRAN",
    "total_pago": 73187.06,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -16305,7 +16305,7 @@
    "nome": "HIDELBRANDO FELIPE LISBOA GONCALVES INFORMATICA ME",
    "total_pago": 67939.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -16361,8 +16361,8 @@
    "nome": "ADRIANO DA CUNHA CABRAL 89038355491",
    "total_pago": 67000.0,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "GABINETE DO CENTRO DO RECIFE"
+   "tema": "Cultura, esporte e lazer",
+   "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "14676364000109",
@@ -16377,8 +16377,8 @@
    "nome": "BRUNA ALPOIM FERREIRA URACH 12013086407",
    "total_pago": 66500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Desenvolvimento econômico",
+   "orgao": "GABINETE DE INOVAÇÃO URBANA"
   },
   {
    "cnpj": "36245232000157",
@@ -16401,8 +16401,8 @@
    "nome": "INSPER - INSTITUTO DE ENSINO E PESQUISA",
    "total_pago": 66222.65,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "GABINETE DO CENTRO DO RECIFE"
+   "tema": "Cultura, esporte e lazer",
+   "orgao": "SECRETARIA DE ESPORTES"
   },
   {
    "cnpj": "35636034000151",
@@ -16641,7 +16641,7 @@
    "nome": "ANGOLA PRODUÇÕES AUDIOVISUAIS LTDA",
    "total_pago": 63100.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -16681,7 +16681,7 @@
    "nome": "CASA DO BRAILLE SINALIZACAO VISUAL E TATIL LTDA",
    "total_pago": 62030.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -16769,8 +16769,8 @@
    "nome": "D&D PRODUTOS DE HIGIENE E LIMPEZA LTDA",
    "total_pago": 61180.0,
    "is_subvencao": false,
-   "tema": "Educação",
-   "orgao": "SECRETARIA DE EDUCAÇÃO"
+   "tema": "Gestão pública",
+   "orgao": "SECRETARIA DE POLÍTICA URBANA E LICENCIAMENTO - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "33255787000191",
@@ -16809,15 +16809,15 @@
    "nome": "HS LIRA LOCADORA DE VEICULOS LTDA",
    "total_pago": 60644.73,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "SECRETARIA DE ADMINISTRAÇÃO - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Infraestrutura e obras",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "41516294000196",
    "nome": "JOCEMAR DOS SANTOS 04636314476",
    "total_pago": 60574.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -16905,7 +16905,7 @@
    "nome": "50.920.322 LEIDIANE CAVALCANTE FIGUEIRA TAVARES",
    "total_pago": 60000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -17297,8 +17297,8 @@
    "nome": "ANTERA SERVIÇOS E COMÉRCIO MAT ELÉTRICOS LTDA",
    "total_pago": 57559.12,
    "is_subvencao": false,
-   "tema": "Segurança urbana",
-   "orgao": "SECRETARIA DE SEGURANÇA CIDADÃ"
+   "tema": "Infraestrutura e obras",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "22094523000187",
@@ -17393,8 +17393,8 @@
    "nome": "CORPO DE BOMBEIROS MILITAR DE PERNAMBUCO CBMPE",
    "total_pago": 56004.93,
    "is_subvencao": false,
-   "tema": "Infraestrutura e obras",
-   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DA MULHER"
   },
   {
    "cnpj": "40064261000190",
@@ -17425,7 +17425,7 @@
    "nome": "J H PEDRO DA SILVA AUDITORIA LTDA",
    "total_pago": 55700.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -17545,7 +17545,7 @@
    "nome": "FIANDEIROS PRODUCOES ARTISTICAS LTDA ME",
    "total_pago": 54750.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -17593,7 +17593,7 @@
    "nome": "51.243.650 JASIAEL ALVES DA SILVA",
    "total_pago": 54253.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -17641,7 +17641,7 @@
    "nome": "32.703.139 MARIA AUGUSTA NEPOMUCENO BORGES",
    "total_pago": 54000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -17825,7 +17825,7 @@
    "nome": "ELIANE CAVALCANTI ME OBJETIVA EVENTOS E LOCAÇÕES",
    "total_pago": 51880.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -17874,7 +17874,7 @@
    "total_pago": 51029.9,
    "is_subvencao": false,
    "tema": "Gestão pública",
-   "orgao": "PROCURADORIA GERAL DO MUNICÍPIO"
+   "orgao": "PROCURADORIA GERAL DO MUNICÍPIO - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "41259440000145",
@@ -18457,7 +18457,7 @@
    "nome": "64.895.254 BEATRIZ FERREIRA DA SILVA",
    "total_pago": 47550.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -18529,7 +18529,7 @@
    "nome": "SESC - SERVICO SOCIAL DO COMERCIO",
    "total_pago": 46500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -18569,7 +18569,7 @@
    "nome": "ANDERSON RAFAEL LIMA DA SILVA 09802019429",
    "total_pago": 46100.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -18697,8 +18697,8 @@
    "nome": "DANTAS ELETROMOVEIS E EQUIPAMENTOS LTDA",
    "total_pago": 45072.0,
    "is_subvencao": false,
-   "tema": "Outros",
-   "orgao": "GAB. DE GERENC. DO PROG. DE REQUALIF. E RESILÊNCIA URB. EM ÁREAS DE VULNERABILIDADE SOCIOAMB.-PROMOR"
+   "tema": "Meio ambiente",
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO SUSTENTÁVEL E MEIO AMBIENTE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "48528155000121",
@@ -18825,7 +18825,7 @@
    "nome": "ANDREA PEROTTI HARROP",
    "total_pago": 44400.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -18833,8 +18833,8 @@
    "nome": "35.907.937 IVANE PEREIRA SILVA SANTOS",
    "total_pago": 44224.35,
    "is_subvencao": false,
-   "tema": "Infraestrutura e obras",
-   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Educação",
+   "orgao": "SECRETARIA DE EDUCAÇÃO"
   },
   {
    "cnpj": "31348669000100",
@@ -19001,7 +19001,7 @@
    "nome": "MAURICIO RODRIGUES DA SILVA 01817344439",
    "total_pago": 42759.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -19145,8 +19145,8 @@
    "nome": "INSTITUTO NEGOCIOS PUBLICOS DO BRASIL ESTUDOS E PESQUISAS DA ADMINISTRACAO PUBLICA INP LTDA ME",
    "total_pago": 41760.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE ESPORTES"
+   "tema": "Segurança urbana",
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "10898452000196",
@@ -19161,8 +19161,8 @@
    "nome": "JONAS F DA S GADELHA EIRELI",
    "total_pago": 41575.99,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Infraestrutura e obras",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "04104971000132",
@@ -19305,8 +19305,8 @@
    "nome": "LAVORO GERENCIAMENTO EMPRESARIAL, CORPORATIVO E AMBIENTAL LTDA",
    "total_pago": 40455.76,
    "is_subvencao": false,
-   "tema": "Infraestrutura e obras",
-   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Gestão pública",
+   "orgao": "SECRETARIA DE PLANEJAMENTO, GESTÃO E TRANSFORMAÇÃO DIGITAL"
   },
   {
    "cnpj": "39299923000121",
@@ -19617,7 +19617,7 @@
    "nome": "C M VIEIRA DA COSTA ME",
    "total_pago": 38900.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -19737,8 +19737,8 @@
    "nome": "MOVIMENTO JUNTA RIO PELA SAUDE - MJRS",
    "total_pago": 38000.0,
    "is_subvencao": false,
-   "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Gestão pública",
+   "orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "03670864000109",
@@ -19801,15 +19801,15 @@
    "nome": "ATG - ARTE, ILUSTRAÇÕES E GRAFFITI LTDA",
    "total_pago": 37750.0,
    "is_subvencao": false,
-   "tema": "Desenvolvimento econômico",
-   "orgao": "GABINETE DE INOVAÇÃO URBANA"
+   "tema": "Cultura, esporte e lazer",
+   "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "62975804000163",
    "nome": "62.975.804 CINTIA FELIX DA SILVA LINS",
    "total_pago": 37600.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -19977,7 +19977,7 @@
    "nome": "CONSELHO PASTORAL DOS PESCADORES",
    "total_pago": 36408.84,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENVOLVIMENTO SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS"
   },
   {
@@ -19985,7 +19985,7 @@
    "nome": "65.946.511 ISMAEL SOARES DA SILVA FERREIRA",
    "total_pago": 36405.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -20185,8 +20185,8 @@
    "nome": "ATRIO HÓTEIS S/A",
    "total_pago": 35037.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE TURISMO E LAZER"
+   "tema": "Desenvolvimento econômico",
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO ECONÔMICO"
   },
   {
    "cnpj": "69935237000160",
@@ -20201,7 +20201,7 @@
    "nome": "IPROTECH TECNOLOGIA EM SEGURANCA PESSOAL LTDA",
    "total_pago": 35000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -20257,8 +20257,8 @@
    "nome": "66.339.951 EDINEIDE MARIA DA SILVA",
    "total_pago": 34595.2,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "26757274000113",
@@ -20665,12 +20665,12 @@
    "nome": "51.694.507 ANA PAULA FRAGOSO FIGUEIREDO FELIPE",
    "total_pago": 31597.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
    "cnpj": "52372799000140",
-   "nome": "52.372.799 YAANI VICTORIA SILVA BUARQUE",
+   "nome": "52.372.799 MARCELO VICTOR SILVA BUARQUE",
    "total_pago": 31500.0,
    "is_subvencao": false,
    "tema": "Cultura, esporte e lazer",
@@ -21001,8 +21001,8 @@
    "nome": "ASSOCIACAO EDUCACIONAL DE CIENCIAS DA SAUDE - AECISA",
    "total_pago": 30000.0,
    "is_subvencao": false,
-   "tema": "Educação",
-   "orgao": "SECRETARIA DE EDUCAÇÃO"
+   "tema": "Cultura, esporte e lazer",
+   "orgao": "SECRETARIA DE ESPORTES"
   },
   {
    "cnpj": "35874183000159",
@@ -21105,7 +21105,7 @@
    "nome": "37.219.175 ALLAN DE SOUZA SILVA",
    "total_pago": 29559.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -21158,7 +21158,7 @@
   },
   {
    "cnpj": "24974078000175",
-   "nome": "24.974.078 MARIA LUIZA DE PAULA LOPES FERNANDES VIEIRA",
+   "nome": "MARIA LUIZA DE PAULA LOPES FERNANDES VIEIRA 04661433467 - CASULO - ARTES CIRCENSES",
    "total_pago": 28950.0,
    "is_subvencao": false,
    "tema": "Cultura, esporte e lazer",
@@ -21169,7 +21169,7 @@
    "nome": "43.816.448 RENATO DE ANDRADE GOMES",
    "total_pago": 28950.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -21233,7 +21233,7 @@
    "nome": "49.033.568 EMERSON ROBERTO DAMASCENO DE MELO",
    "total_pago": 28500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -21361,8 +21361,8 @@
    "nome": "A FONTE PURIFICADORES DE AGUA LTDA",
    "total_pago": 27589.0,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Desenvolvimento econômico",
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO ECONÔMICO"
   },
   {
    "cnpj": "40743863000173",
@@ -21449,7 +21449,7 @@
    "nome": "64.083.524 ANTEORGENES ROBERTO DOS SANTOS",
    "total_pago": 27250.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -21473,7 +21473,7 @@
    "nome": "ITTALOC CONTAINERS E SERVICOS LTDA",
    "total_pago": 27040.0,
    "is_subvencao": false,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE GOVERNO E PARTICIPAÇÃO SOCIAL"
   },
   {
@@ -21585,7 +21585,7 @@
    "nome": "CONSTANCIA LIRA DE BARROS CORREIA RODRIGUES COSTA 07174635407",
    "total_pago": 26600.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -21601,8 +21601,8 @@
    "nome": "RAFAEL DE LIMA FREITAS 08617329440",
    "total_pago": 26500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Desenvolvimento econômico",
+   "orgao": "GABINETE DE INOVAÇÃO URBANA"
   },
   {
    "cnpj": "05414241000109",
@@ -21625,7 +21625,7 @@
    "nome": "USINA DE FILMES PRODUCAO CINEMATOGRAFICA LTDA",
    "total_pago": 26390.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -21822,11 +21822,11 @@
   },
   {
    "cnpj": "20910945000158",
-   "nome": "SEGNOS PRODUCAO MUSICAL LTDA  -  SEGNOS PRODUCOES ARTISTICAS",
+   "nome": "SIVONALDO TEODORO DA SILVA",
    "total_pago": 25200.0,
    "is_subvencao": false,
    "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE TURISMO E LAZER"
+   "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "50846860000119",
@@ -21849,7 +21849,7 @@
    "nome": "CENTRAL TURISMO E LOGISTICA EIRELI",
    "total_pago": 25008.1,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -21953,7 +21953,7 @@
    "nome": "ACOPLAST INDUSTRIA E COMERCIO LTDA",
    "total_pago": 25000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -21969,7 +21969,7 @@
    "nome": "59.454.757 UEVISON SILVA DE SANTANA",
    "total_pago": 25000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -22017,7 +22017,7 @@
    "nome": "EGENESON FERREIRA DA SILVA 04123302459",
    "total_pago": 24793.57,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -22217,8 +22217,8 @@
    "nome": "GO VENDAS ELETRONICAS LTDA",
    "total_pago": 23915.65,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE CIDADANIA E CULTURA DE PAZ"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DA MULHER"
   },
   {
    "cnpj": "40079645000186",
@@ -22273,8 +22273,8 @@
    "nome": "SAPOTI COMERCIO DE ALIMENTOS LTDA",
    "total_pago": 23370.6,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE TURISMO E LAZER"
+   "tema": "Gestão pública",
+   "orgao": "GABINETE DO CENTRO DO RECIFE"
   },
   {
    "cnpj": "40689972000150",
@@ -22817,8 +22817,8 @@
    "nome": "RICARDO GOMES DA SILVA ME - RGS GRAFICA E EDITORA",
    "total_pago": 20819.0,
    "is_subvencao": false,
-   "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DA MULHER"
+   "tema": "Gestão pública",
+   "orgao": "PROCURADORIA GERAL DO MUNICÍPIO"
   },
   {
    "cnpj": "52701523000169",
@@ -22953,7 +22953,7 @@
    "nome": "66.452.846 DIEGO SANTOS DE CARVALHO",
    "total_pago": 20229.35,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -23281,7 +23281,7 @@
    "nome": "24.910.222 ROSILANDE PEREIRA BARBOSA",
    "total_pago": 19808.46,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -23393,7 +23393,7 @@
    "nome": "SOCIEDADE BRASILEIRA DE GERIATRIA E GERONTOLOGIA SECCAO PE SBGG",
    "total_pago": 19300.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -23401,8 +23401,8 @@
    "nome": "52.446.702 JORGE NETO OLIVEIRA MARQUES",
    "total_pago": 19177.72,
    "is_subvencao": false,
-   "tema": "Segurança urbana",
-   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "61968600000132",
@@ -23433,7 +23433,7 @@
    "nome": "ANTUNES E NOBREGA ADVOCACIA",
    "total_pago": 19000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -23449,7 +23449,7 @@
    "nome": "FUNDACAO CENTRO DE EDUCACAO COMUNITARIA E SOCIAL DO NORDESTE - CECOSNE",
    "total_pago": 18800.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -23817,7 +23817,7 @@
    "nome": "JOSE CLEITON SEVERINO DE LIMA 03906589447",
    "total_pago": 17596.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -24313,8 +24313,8 @@
    "nome": "VDL EMPREENDIMENTOS E SERVIÇOS LTDA",
    "total_pago": 15771.68,
    "is_subvencao": false,
-   "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA"
+   "tema": "Infraestrutura e obras",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "42519684000182",
@@ -24353,7 +24353,7 @@
    "nome": "G F LOCAÇÕES DE MÁQUINAS E SERVIÇOS LTDA",
    "total_pago": 15500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -24377,7 +24377,7 @@
    "nome": "49.006.368 ANDREY LUCAS RODRIGUES DA SILVA",
    "total_pago": 15400.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -24398,7 +24398,7 @@
   },
   {
    "cnpj": "09474906000112",
-   "nome": "SIMONE ARRUDA ARQUITETURA LTDA ME - QUADRA RESTAURO E ARQUITETURA",
+   "nome": "SIMONE ARRUDA ARQUITETURA LTDA",
    "total_pago": 15400.0,
    "is_subvencao": false,
    "tema": "Infraestrutura e obras",
@@ -24414,7 +24414,7 @@
   },
   {
    "cnpj": "43468591000139",
-   "nome": "INNOVA TECH DISTRIBUIDORA LTDA",
+   "nome": "MAXX LÍDER MÓVEIS COMÉRCIO SERVIÇOS LTDA",
    "total_pago": 15390.8,
    "is_subvencao": false,
    "tema": "Educação",
@@ -24753,7 +24753,7 @@
    "nome": "ROSANA PEREIRA DE ARAUJO CARVALHO 04802180489",
    "total_pago": 14500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -25049,7 +25049,7 @@
    "nome": "TEND TUDO BAZAR COMERCIO ATACADISTA DE ARTIGOS DE ESCRITORIO LTDA",
    "total_pago": 13298.1,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -25082,7 +25082,7 @@
    "total_pago": 13070.0,
    "is_subvencao": false,
    "tema": "Gestão pública",
-   "orgao": "SECRETARIA DE PLANEJAMENTO E GESTÃO"
+   "orgao": "GABINETE DO VICE-PREFEITO"
   },
   {
    "cnpj": "41194894000185",
@@ -25617,7 +25617,7 @@
    "nome": "64.637.858 MARCELO TRAJANO DOS SANTOS",
    "total_pago": 12000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -25625,7 +25625,7 @@
    "nome": "CAVALCANTI COMUNICAÇÃO E PUBLICIDADE LTDA",
    "total_pago": 12000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -25689,8 +25689,8 @@
    "nome": "LIMARI MATERIAIS DE CONSTRUCOES LTDA",
    "total_pago": 11952.4,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Segurança urbana",
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "58845259000113",
@@ -25698,7 +25698,7 @@
    "total_pago": 11950.0,
    "is_subvencao": false,
    "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE CULTURA"
+   "orgao": "SECRETARIA DE ESPORTES"
   },
   {
    "cnpj": "41008541000143",
@@ -25857,7 +25857,7 @@
    "nome": "SOCIEDADE BRASILEIRA DE GERIATRIA E GERONTOLOGIA - SBGG-PA",
    "total_pago": 11520.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -26041,7 +26041,7 @@
    "nome": "MARIO EMMANUEL DE OLIVEIRA RAMOS 70370593405",
    "total_pago": 11000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -26049,7 +26049,7 @@
    "nome": "28.173.083 ADEILTON AMARO DE MIRANDA",
    "total_pago": 11000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -26097,7 +26097,7 @@
    "nome": "PAULO HENRIQUE DE MELO LAGO CONSULTORIA EIRELI",
    "total_pago": 10900.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -26321,8 +26321,8 @@
    "nome": "ELLOELLA DISTRIBUIDORA LTDA",
    "total_pago": 10268.4,
    "is_subvencao": false,
-   "tema": "Outros",
-   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "27165407000125",
@@ -26353,7 +26353,7 @@
    "nome": "47.099.311 MAGNO JOSE GONÇALVES DA SILVA",
    "total_pago": 10162.51,
    "is_subvencao": false,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE GOVERNO E PARTICIPAÇÃO SOCIAL"
   },
   {
@@ -26785,7 +26785,7 @@
    "nome": "INSTITUTO VOZES DA INCLUSAO LTDA",
    "total_pago": 9420.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -26825,7 +26825,7 @@
    "nome": "DAYANA DENISE CELERINO FERREIRA 07896448432",
    "total_pago": 9290.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -27137,7 +27137,7 @@
    "nome": "ALEXANDRE DE SOUZA ACIOLI 21473919487",
    "total_pago": 8680.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -27193,8 +27193,8 @@
    "nome": "ASSOCIACAO PERNAMBUCANA DE CEGOS",
    "total_pago": 8600.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
    "cnpj": "10526700000178",
@@ -27409,7 +27409,7 @@
    "nome": "SEGSAT SERVICOS LTDA SEGSAT RASTREAMENTO",
    "total_pago": 8315.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -27441,7 +27441,7 @@
    "nome": "REDE NORDESTE DE COMUNICACAO LTDA",
    "total_pago": 8269.4,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -27609,7 +27609,7 @@
    "nome": "KAULCOM IT CORP LTDA",
    "total_pago": 8000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -27721,8 +27721,8 @@
    "nome": "SM CORDEIRO DE MELO EIRELI EPP",
    "total_pago": 7828.25,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
-   "orgao": "SECRETARIA DE CIDADANIA E CULTURA DE PAZ"
+   "tema": "Gestão pública",
+   "orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "18699424000151",
@@ -27745,7 +27745,7 @@
    "nome": "43.218.418 JOSIVALDO RAIMUNDO DA SILVA",
    "total_pago": 7800.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -27777,7 +27777,7 @@
    "nome": "TELECOMUNICACOES DE SAO PAULO S/A - TELESP",
    "total_pago": 7757.61,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -28265,7 +28265,7 @@
    "nome": "J CALIXTO DE MELO RECRUTAMENTO",
    "total_pago": 7000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -28289,8 +28289,8 @@
    "nome": "ESPERANÇA NORDESTE LTDA",
    "total_pago": 6985.7,
    "is_subvencao": false,
-   "tema": "Outros",
-   "orgao": "SECRETARIA DE SANEAMENTO"
+   "tema": "Meio ambiente",
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO SUSTENTÁVEL E MEIO AMBIENTE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "32159668000172",
@@ -28761,7 +28761,7 @@
    "nome": "62.546.082 GILMAR ROBERTO DOS SANTOS JUNIOR",
    "total_pago": 6300.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -28801,7 +28801,7 @@
    "nome": "GABRIELA RIBEIRO SILVA ROSAS 07995367414",
    "total_pago": 6200.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -29041,7 +29041,7 @@
    "nome": "WANESKA ANDRESSA VIANA DE OLIVEIRA 00933195419",
    "total_pago": 5930.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -29073,8 +29073,8 @@
    "nome": "ORZIL CONSULTORIA E TREINAMENTO LTDA",
    "total_pago": 5847.0,
    "is_subvencao": false,
-   "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Cultura, esporte e lazer",
+   "orgao": "SECRETARIA DE ESPORTES"
   },
   {
    "cnpj": "21308480000122",
@@ -29297,7 +29297,7 @@
    "nome": "RBC FARDAMENTOS LTDA",
    "total_pago": 5360.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -29745,7 +29745,7 @@
    "nome": "ASSUNPCAO TEC COMERCIO DE EQUIPAMENTOS LTDA",
    "total_pago": 4760.03,
    "is_subvencao": false,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE GOVERNO E PARTICIPAÇÃO SOCIAL"
   },
   {
@@ -29825,7 +29825,7 @@
    "nome": "BB AGUA FORTE DISTRIBUIDORA DE BEBIDAS LTDA ME",
    "total_pago": 4569.4,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -29833,7 +29833,7 @@
    "nome": "ANTONIO MARCELINO DA ROCHA NASCIMENTO 76603482487",
    "total_pago": 4560.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -30017,7 +30017,7 @@
    "nome": "56.200.543 JONAS RODRIGUES NASCIMENTO",
    "total_pago": 4500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -30065,7 +30065,7 @@
    "nome": "GLOBALPEST NE LTDA",
    "total_pago": 4443.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -30129,7 +30129,7 @@
    "nome": "EDNALDO SALGADO ME",
    "total_pago": 4334.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -30449,7 +30449,7 @@
    "nome": "COLEGIADO NACIONAL DE GESTORES MUNICIPAIS DE ASSITENCIA SOCIAL CONGEMAS",
    "total_pago": 4009.9,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -30513,7 +30513,7 @@
    "nome": "38.310.608 ISABELA CECILIA MARIA DOS SANTOS",
    "total_pago": 4000.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -30585,7 +30585,7 @@
    "nome": "EXANET TELECOMUNICACOES LTDA",
    "total_pago": 3982.42,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -31001,7 +31001,7 @@
    "nome": "DAMT ARTE, EDUCAÇÃO E CULTURA LTDA",
    "total_pago": 3500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -31121,8 +31121,8 @@
    "nome": "P R C FREIRE PRODUTOS E SERVIÇOS ME",
    "total_pago": 3295.68,
    "is_subvencao": false,
-   "tema": "Saúde e assistência",
-   "orgao": "SECRETARIA DA MULHER"
+   "tema": "Infraestrutura e obras",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA"
   },
   {
    "cnpj": "42667817000168",
@@ -31145,8 +31145,8 @@
    "nome": "ASSOCIACAO BRASILEIRA DE ENG SANITARIA E AMBIENTAL ABES",
    "total_pago": 3255.0,
    "is_subvencao": false,
-   "tema": "Outros",
-   "orgao": "SECRETARIA DE SANEAMENTO"
+   "tema": "Infraestrutura e obras",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
    "cnpj": "12776030000173",
@@ -31729,8 +31729,8 @@
    "nome": "CM SOLUÇÕES PARA IDENTIFICAÇÃO LTDA",
    "total_pago": 2560.0,
    "is_subvencao": false,
-   "tema": "Infraestrutura e obras",
-   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
+   "tema": "Outros",
+   "orgao": "SECRETARIA DE HABITAÇÃO"
   },
   {
    "cnpj": "10998292000157",
@@ -31817,7 +31817,7 @@
    "nome": "57.095.964 CARLOS RENATO DOS SANTOS",
    "total_pago": 2500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -31857,7 +31857,7 @@
    "nome": "S S COMERCIAL LTDA ME",
    "total_pago": 2450.0,
    "is_subvencao": false,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE GOVERNO E PARTICIPAÇÃO SOCIAL"
   },
   {
@@ -32105,7 +32105,7 @@
    "nome": "25.461.215 ELISANGELA MARINHO DA SILVA",
    "total_pago": 2250.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -32313,7 +32313,7 @@
    "nome": "LEONARDO SOUZA FARIAS DE ALBUQUERQUE",
    "total_pago": 1981.8,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -32329,7 +32329,7 @@
    "nome": "GUARDCAR LTDA",
    "total_pago": 1968.7,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -32489,8 +32489,8 @@
    "nome": "VERA LUCIA VITORIA DA SILVA COMERCIO DE ELETROELETRONICOS EIRELI",
    "total_pago": 1747.86,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "PROCURADORIA GERAL DO MUNICÍPIO"
+   "tema": "Outros",
+   "orgao": "SECRETARIA DE HABITAÇÃO"
   },
   {
    "cnpj": "09372101000168",
@@ -32633,7 +32633,7 @@
    "nome": "MOURA TACOGRAFOS LTDA",
    "total_pago": 1620.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -32681,7 +32681,7 @@
    "nome": "RODRIGO LUIS GIOLITO BIZERRIL ME",
    "total_pago": 1547.7,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -32721,7 +32721,7 @@
    "nome": "CAROLINA MARQUES HENRIQUES FICHEIRA 09500872706",
    "total_pago": 1500.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -32825,8 +32825,8 @@
    "nome": "LS TECNOLOGIA E COMERCIO DE INFORMATICA EIRELI",
    "total_pago": 1393.6,
    "is_subvencao": false,
-   "tema": "Gestão pública",
-   "orgao": "GABINETE DO PREFEITO"
+   "tema": "Outros",
+   "orgao": "SECRETARIA DE HABITAÇÃO"
   },
   {
    "cnpj": "27963709000149",
@@ -33449,7 +33449,7 @@
    "nome": "55.287.565 ANDRE LUCAS GUEDES DE SOUZA",
    "total_pago": 750.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -33457,7 +33457,7 @@
    "nome": "R F DE Q MORAIS SERVIÇOS E TREINAMENTO ME",
    "total_pago": 750.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -33633,7 +33633,7 @@
    "nome": "FUNDO MUNICIPAL DOS DIREITOS DA CRIANÇA E DO ADOLESCENTE DE OLINDA",
    "total_pago": 602.9,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -33801,7 +33801,7 @@
    "nome": "FADEX UFPI 042024 SINESPP",
    "total_pago": 450.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -34249,7 +34249,7 @@
    "nome": "CONSELHO REGIONAL DE MEDICINA VETERINARIA DE PERNAMBUCO CRMV-PE",
    "total_pago": 156.8,
    "is_subvencao": false,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE GOVERNO E PARTICIPAÇÃO SOCIAL"
   },
   {
@@ -34562,14 +34562,14 @@
    "total_pago": 70.0,
    "is_subvencao": false,
    "tema": "Gestão pública",
-   "orgao": "GABINETE DO PREFEITO"
+   "orgao": "GABINETE DE PROJETOS ESPECIAIS"
   },
   {
    "cnpj": "21705250000105",
    "nome": "NOSDENET FIBRA",
    "total_pago": 69.9,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -36593,7 +36593,7 @@
    "nome": "ASSOCIACAO BRASILEIRA TERRA DOS HOMENS",
    "total_pago": 0.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -36601,7 +36601,7 @@
    "nome": "AUTO SERVICE CENTRO AUTOMOTIVO LTDA",
    "total_pago": 0.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -36617,7 +36617,7 @@
    "nome": "JOSE VALDECI DO AMARAL",
    "total_pago": 0.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -36625,7 +36625,7 @@
    "nome": "PAS - PROJETOS, ASSESSORIA E SISTEMAS LTDA",
    "total_pago": 0.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -36633,7 +36633,7 @@
    "nome": "RODRIGO RIELLO SANTOS",
    "total_pago": 0.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO"
   },
   {
@@ -36665,7 +36665,7 @@
    "nome": "53.113.081 LUIZ RODRIGO DO NASCIMENTO BARRETO",
    "total_pago": 0.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -36673,7 +36673,7 @@
    "nome": "GIL DE ANDRADE FREIRE E CIA LTDA",
    "total_pago": 0.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -36681,7 +36681,7 @@
    "nome": "MENDES & ALVES ADMINISTRACAO DE BENS LTDA",
    "total_pago": 0.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -36689,7 +36689,7 @@
    "nome": "MENDES & VIEIRA ADMINISTRACAO DE BENS LTDA",
    "total_pago": 0.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE"
   },
   {
@@ -36697,7 +36697,7 @@
    "nome": "66.007.488 MARIA JÚLIA SOUZA DE CARVALHO",
    "total_pago": 0.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -36721,7 +36721,7 @@
    "nome": "SOBERANO MATERIAIS DE CONSTRUCAO LTDA",
    "total_pago": 0.0,
    "is_subvencao": false,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
@@ -37461,14 +37461,6 @@
    "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
-   "cnpj": "43575205000108",
-   "nome": "GG SOLUÇÕES COMERCIAIS LTDA",
-   "total_pago": 0.0,
-   "is_subvencao": false,
-   "tema": "Infraestrutura e obras",
-   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
-  },
-  {
    "cnpj": "10691950000163",
    "nome": "HYDROLIFT - IMPLEMENTOS RODOVIARIOS LTDA",
    "total_pago": 0.0,
@@ -37503,14 +37495,6 @@
   {
    "cnpj": "60502422000197",
    "nome": "LN MÁQUINAS LTDA",
-   "total_pago": 0.0,
-   "is_subvencao": false,
-   "tema": "Infraestrutura e obras",
-   "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA"
-  },
-  {
-   "cnpj": "19061289000187",
-   "nome": "MARES SERVICOS E COMERCIO DE EQUIPAMENTOS EIRELI",
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": "Infraestrutura e obras",
@@ -37879,6 +37863,14 @@
   {
    "cnpj": "52764155000106",
    "nome": "DU INDÚSTRIA DE CONFECÇÃO DE UNIFORMES E EPIS HOSPITALARES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": "Gestão pública",
+   "orgao": "SECRETARIA DE POLÍTICA URBANA E LICENCIAMENTO - ADMINISTRAÇÃO SUPERVISIONADA"
+  },
+  {
+   "cnpj": "43575205000108",
+   "nome": "GG SOLUÇÕES COMERCIAIS LTDA",
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": "Gestão pública",
@@ -38453,6 +38445,14 @@
    "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
   },
   {
+   "cnpj": "19061289000187",
+   "nome": "MARES SERVICOS E COMERCIO DE EQUIPAMENTOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": "Saúde e assistência",
+   "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA"
+  },
+  {
    "cnpj": "18472961000164",
    "nome": "MASTER COMERCIO DE EQUIPAMENTOS EIRELI",
    "total_pago": 0.0,
@@ -39001,7 +39001,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
    "contratos_only": true
   },
   {
@@ -39271,7 +39271,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "orgao": "SECRETARIA DE FINANÇAS",
    "contratos_only": true
   },
   {
@@ -39784,7 +39784,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
    "contratos_only": true
   },
   {
@@ -39964,7 +39964,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "orgao": "SECRETARIA DE MEIO AMBIENTE",
    "contratos_only": true
   },
   {
@@ -40018,7 +40018,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
    "contratos_only": true
   },
   {
@@ -40333,7 +40333,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
    "contratos_only": true
   },
   {
@@ -40450,7 +40450,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE PLANEJAMENTO E GESTÃO",
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
    "contratos_only": true
   },
   {
@@ -40486,7 +40486,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE SAÚDE",
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
    "contratos_only": true
   },
   {
@@ -40603,7 +40603,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
    "contratos_only": true
   },
   {
@@ -40630,7 +40630,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE DESENVOLVIMENTO ECONÔMICO",
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
    "contratos_only": true
   },
   {
@@ -40702,7 +40702,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
    "contratos_only": true
   },
   {
@@ -40909,7 +40909,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
    "contratos_only": true
   },
   {
@@ -40981,7 +40981,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
    "contratos_only": true
   },
   {
@@ -41044,7 +41044,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
    "contratos_only": true
   },
   {
@@ -41161,7 +41161,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "GABINETE DO PREFEITO",
+   "orgao": "SECRETARIA DE ASSSTÊNCIA SOCIAL E COMBATE À FOME",
    "contratos_only": true
   },
   {
@@ -41215,7 +41215,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
    "contratos_only": true
   },
   {
@@ -41386,7 +41386,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
    "contratos_only": true
   },
   {
@@ -41422,7 +41422,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
    "contratos_only": true
   },
   {
@@ -41557,7 +41557,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DO TRABALHO E QUALIFICAÇÃO PROFISSIONAL",
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
    "contratos_only": true
   },
   {
@@ -41575,7 +41575,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "FUNDO MUNICIPAL DO MEIO AMBIENTE - FMMA",
+   "orgao": "SECRETARIA DE SAÚDE",
    "contratos_only": true
   },
   {
@@ -41728,7 +41728,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE ESPORTES",
+   "orgao": "SECRETARIA DE ARTICULAÇÃO POLÍTICA E SOCIAL",
    "contratos_only": true
   },
   {
@@ -41737,7 +41737,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "orgao": "SECRETARIA DE SAÚDE",
    "contratos_only": true
   },
   {
@@ -41764,7 +41764,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
    "contratos_only": true
   },
   {
@@ -41845,7 +41845,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE HABITAÇÃO",
+   "orgao": "SECRETARIA DE FINANÇAS",
    "contratos_only": true
   },
   {
@@ -41854,7 +41854,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "orgao": "SECRETARIA DE FINANÇAS",
    "contratos_only": true
   },
   {
@@ -42052,7 +42052,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "orgao": "SECRETARIA DE SAÚDE",
    "contratos_only": true
   },
   {
@@ -42295,7 +42295,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
    "contratos_only": true
   },
   {
@@ -42421,7 +42421,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
    "contratos_only": true
   },
   {
@@ -42745,7 +42745,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
    "contratos_only": true
   },
   {
@@ -42916,7 +42916,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "GABINETE DE COMUNICAÇÃO",
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
    "contratos_only": true
   },
   {
@@ -43060,7 +43060,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "orgao": "SECRETARIA DE ESPORTES",
    "contratos_only": true
   },
   {
@@ -43366,7 +43366,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE SANEAMENTO",
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
    "contratos_only": true
   },
   {
@@ -43447,7 +43447,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "orgao": "SECRETARIA DE MEIO AMBIENTE",
    "contratos_only": true
   },
   {
@@ -43474,7 +43474,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE FINANÇAS",
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
    "contratos_only": true
   },
   {
@@ -43546,7 +43546,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "orgao": "SECRETARIA DE ESPORTES",
    "contratos_only": true
   },
   {
@@ -43591,7 +43591,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
    "contratos_only": true
   },
   {
@@ -43924,7 +43924,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
    "contratos_only": true
   },
   {
@@ -43942,7 +43942,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
    "contratos_only": true
   },
   {
@@ -43978,7 +43978,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE MEIO AMBIENTE",
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
    "contratos_only": true
   },
   {
@@ -44239,7 +44239,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "orgao": "SECRETARIA DE MEIO AMBIENTE",
    "contratos_only": true
   },
   {
@@ -44275,7 +44275,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE SANEAMENTO",
+   "orgao": "SECRETARIA DE ESPORTES",
    "contratos_only": true
   },
   {
@@ -44374,7 +44374,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "orgao": "SECRETARIA DE SAÚDE",
    "contratos_only": true
   },
   {
@@ -44419,7 +44419,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE SAÚDE",
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
    "contratos_only": true
   },
   {
@@ -44491,7 +44491,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
    "contratos_only": true
   },
   {
@@ -44518,7 +44518,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
    "contratos_only": true
   },
   {
@@ -44545,7 +44545,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
    "contratos_only": true
   },
   {
@@ -44788,7 +44788,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
    "contratos_only": true
   },
   {
@@ -44815,7 +44815,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
    "contratos_only": true
   },
   {
@@ -44851,7 +44851,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
    "contratos_only": true
   },
   {
@@ -45130,7 +45130,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "orgao": "SECRETARIA DE PLANEJAMENTO E GESTÃO",
    "contratos_only": true
   },
   {
@@ -45400,7 +45400,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
    "contratos_only": true
   },
   {
@@ -45445,7 +45445,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "orgao": "SANEAR - AUTARQUIA DE SANEAMENTO DO RECIFE",
    "contratos_only": true
   },
   {
@@ -45517,7 +45517,7 @@
    "total_pago": 0.0,
    "is_subvencao": false,
    "tema": null,
-   "orgao": "SECRETARIA DE ESPORTES",
+   "orgao": "INSTITUTO DE ASSISTENCIA SOCIAL E CIDADANIA",
    "contratos_only": true
   },
   {

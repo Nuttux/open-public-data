@@ -12,7 +12,8 @@ export async function generateMetadata({
   const { id } = await params;
   const found = loadContrato(id);
   if (!found) return { title: { absolute: "Recife" } };
-  return { title: `Contrato ${found.contrato.numero} — Recife` };
+  const ref = found.contrato.numero ?? "sem número";
+  return { title: `Contrato ${ref} — Recife` };
 }
 
 export default async function ContratoPage({ params }: { params: Promise<{ id: string }> }) {
@@ -25,7 +26,7 @@ export default async function ContratoPage({ params }: { params: Promise<{ id: s
         <Link href="/br/city/recife/contratos" className="fx-page-kicker" style={{ textDecoration: "none" }}>
           ← Recife · Contratos
         </Link>
-        <h1 className="fx-page-title">Contrato {found.contrato.numero}</h1>
+        <h1 className="fx-page-title">Contrato {found.contrato.numero ?? "sem número"}</h1>
       </div>
       <div className="fx-fiche fx-fiche-shell">
         <RecifeContratoFiche c={found.contrato} source={found.source} />

@@ -1,0 +1,65 @@
+# =============================================================================
+# Schema: BR / Recife
+#
+# Drift guards for the two data-quality defects found on 2026-07-25, both of
+# which had already reached production because nothing tested these models:
+#
+#   1. contrato_id collision — the source repeats "Aguardando Numeração" on 53
+#      unnumbered contracts, so 53 rows collapsed onto one id and one fiche.
+#   2. licitações grain — the source publishes one row per LOT but repeats the
+#      whole-processo total on every one, so row-level SUM put R$ 103.9 bn on
+#      the site instead of R$ 18.4 bn (5.6×, and 11× the city's annual budget).
+#
+# The tests below fail loudly if either regresses, or if a NEW implausible
+# amount appears in the source.
+# =============================================================================
+
+version: 2
+
+models:
+  - name: core_br_recife_contratos
+    description: |
+      Contratos administrativos, one row per contract.
+      contrato_id must stay unique — see the model header for how placeholder
+      and duplicate contract numbers are disambiguated.
+    columns:
+      - name: contrato_id
+        description: "URL-safe contract id; drives the /contratos/[id] route."
+        tests:
+          - not_null
+          - unique
+      - name: numero_contrato
+        description: "Raw source number; may be the 'Aguardando Numeração' placeholder."
+        tests:
+          - not_null
+
+  - name: mart_br_recife_contratos
+    description: |
+      Contract mart with the plausibility guard. valor_implausivel flags any
+      contract whose stated value exceeds the city's largest single-year
+      committed spend — such an amount cannot be true of one contract and is
+      withheld from every published total.
+    columns:
+      - name: contrato_id
+        tests:
+          - not_null
+          - unique
+      - name: valor_implausivel
+        description: "TRUE when the source amount exceeds one full year of municipal spend."
+        tests:
+          - not_null
+
+  - name: mart_br_recife_licitacoes
+    description: |
+      Licitações, ONE ROW PER PROCESSO (not per lot). The uniqueness test below
+      is the guard against the row-level double-count regressing.
+    columns:
+      - name: valor_homologado
+        description: "Total awarded for the whole processo. Safe to SUM at this grain."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - status
+            - comissao
+            - processo_numero
+            - processo_ano

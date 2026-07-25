@@ -54,10 +54,28 @@ export default function RecifeModalidadeFiche({ m, source }: { m: ModalidadeDeta
   const { glossKey, tone } = classify(m.modalidade);
   const toneColor = tone === "ocre" ? "var(--ocre)" : tone === "ink" ? "var(--ink)" : "var(--ink-2)";
 
-  // Show every year; the incomplete current year renders as provisional.
+  // Recife stopped publishing contract amounts after 2021 — from 2022 on,
+  // 98–100% of rows carry no value. Charting those years would draw ~R$0 bars
+  // that read as "the city stopped contracting" when it only stopped
+  // disclosing. So the money chart covers the years that actually have
+  // amounts, and the undisclosed tail is stated in words instead.
+  // Default to y.n (not 0) when n_com_valor is absent: a JSON produced before
+  // this field existed must keep the OLD behaviour (chart every year) rather
+  // than silently filtering the whole chart away.
+  const disclosed = m.by_year.filter((y) => (y.n_com_valor ?? y.n) > 0);
+  const undisclosed = m.by_year.filter((y) => (y.n_com_valor ?? y.n) === 0);
   const pj = m.partial_year;
-  const years: FicheYearPoint[] = m.by_year.map((y) => ({ year: y.ano, value: y.valor, provisional: !!pj && pj.ano === y.ano }));
+  const years: FicheYearPoint[] = disclosed.map((y) => ({ year: y.ano, value: y.valor, provisional: !!pj && pj.ano === y.ano }));
   const provisionalNote = pj ? fill(t("br.recife.partial_note"), { ano: pj.ano, mes: mesRange(pj.ate_mes, locale) }) : undefined;
+  const undisclosedNote = undisclosed.length
+    ? fill(t("br.recife.mod.anos_sem_valor"), {
+        anos: (() => {
+          const a = undisclosed.map((y) => y.ano).sort((x, z) => x - z);
+          return a.length > 1 ? `${a[0]}–${a[a.length - 1]}` : String(a[0]);
+        })(),
+        n: fmtInt(undisclosed.reduce((s, y) => s + y.n, 0)),
+      })
+    : null;
   const anos = m.by_year.map((y) => y.ano);
   const first = anos.length ? Math.min(...anos) : undefined;
   const last = anos.length ? Math.max(...anos) : undefined;
@@ -79,10 +97,13 @@ export default function RecifeModalidadeFiche({ m, source }: { m: ModalidadeDeta
         ]}
       />
 
-      {years.length > 0 && (
+      {(years.length > 0 || undisclosedNote) && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{t("br.recife.mod.by_year")}</div>
-          <FicheYearBars points={years} format={fmtBrlCompact} provisionalNote={provisionalNote} />
+          {years.length > 0 && (
+            <FicheYearBars points={years} format={fmtBrlCompact} provisionalNote={provisionalNote} />
+          )}
+          {undisclosedNote && <p className="fx-fiche-sub">{undisclosedNote}</p>}
         </section>
       )}
 
@@ -120,7 +141,7 @@ export default function RecifeModalidadeFiche({ m, source }: { m: ModalidadeDeta
               {m.top_contracts.map((c) => (
                 <tr key={c.contrato_id} className="fx-row-link" onClick={() => router.push(`/br/city/recife/contratos/${c.contrato_id}`)}>
                   <td>
-                    <Link href={`/br/city/recife/contratos/${c.contrato_id}`} onClick={(e) => e.stopPropagation()}>{c.numero}</Link>
+                    <Link href={`/br/city/recife/contratos/${c.contrato_id}`} onClick={(e) => e.stopPropagation()}>{c.numero ?? t("br.recife.contrato.sem_numero")}</Link>
                     <div className="fx-fiche-sub">{titleCasePt(c.objeto)}</div>
                   </td>
                   <td className="num mono">

@@ -141,8 +141,12 @@ export function loadQuemRecebe(): QuemRecebeData {
 
 // ---- recipient fiche --------------------------------------------------------
 export type RecipientContrato = {
-  contrato_id: string; numero: string; objeto: string | null;
-  orgao: string | null; valor: number | null; situacao: string | null; ano: number | null;
+  contrato_id: string;
+  /** null when the portal has not numbered the contract yet. */
+  numero: string | null;
+  objeto: string | null;
+  orgao: string | null; valor: number | null; valor_suspeito?: boolean;
+  situacao: string | null; ano: number | null;
 };
 export type RecipientPerfil = {
   cnae: string | null; setor: string | null; porte: string | null;
@@ -184,11 +188,18 @@ export function loadRecipient(cnpj: string): (RecipientDetail & { source: Source
 
 // ---- contratos --------------------------------------------------------------
 export type ContratoItem = {
-  contrato_id: string; numero: string; ano: number | null;
+  contrato_id: string;
+  /** null when the portal has not numbered the contract yet ("Aguardando
+   *  Numeração") — render "sem número", never the placeholder string. */
+  numero: string | null;
+  ano: number | null;
   orgao: string | null; orgao_slug?: string | null;
   objeto: string | null; modalidade: string;
   fornecedor: string | null; fornecedor_cnpj: string | null; is_org: boolean;
   valor: number | null; situacao: string | null;
+  /** Source amount exceeds the city's entire annual budget → withheld from
+   *  every total, and shown as an explanation rather than a figure. */
+  valor_suspeito?: boolean;
   vigencia_inicio: string | null; vigencia_fim: string | null; is_ativo: boolean;
 };
 export type ContratosData = {
@@ -196,6 +207,12 @@ export type ContratosData = {
   source: SourceBlock;
   as_of: string | null;
   perimeter: string;
+  cobertura?: {
+    n_sem_valor: number;
+    n_sem_ano: number;
+    n_valor_suspeito: number;
+    nota: string;
+  };
   headline: { n_contratos: number; n_ativos: number; valor_ativo_total: number };
   modalidade_mix: { modalidade: string; n: number; valor: number }[];
   orgaos: string[];
@@ -218,6 +235,9 @@ export type LicitacaoConcluida = {
   processo: string | null; ano: number | null; modalidade: string;
   orgao: string | null; objeto: string | null; fornecedor: string | null;
   valor_estimado: number | null; valor_homologado: number | null;
+  /** One row = one processo; these carry the lot detail the source publishes
+   *  as separate rows (see stg_br_recife_licitacoes for the grain trap). */
+  n_lotes?: number; n_fornecedores?: number;
   economia: number | null; data: string | null;
 };
 export type LicitacoesData = {
@@ -238,9 +258,9 @@ export type OrgaoDetail = {
   by_year: { ano: number; pago: number }[];
   top_suppliers: { cnpj: string; nome: string; pago: number }[];
   top_contracts: {
-    contrato_id: string; numero: string; objeto: string | null;
+    contrato_id: string; numero: string | null; objeto: string | null;
     fornecedor: string | null; fornecedor_cnpj: string | null;
-    valor: number | null; ano: number | null;
+    valor: number | null; valor_suspeito?: boolean; ano: number | null;
   }[];
   partial_year?: PartialYear;
 };
@@ -256,14 +276,19 @@ export function loadOrgao(slug: string): (OrgaoDetail & { source: SourceBlock })
 export type ModalidadeDetail = {
   modalidade: string; slug: string;
   n_contratos: number; valor_total: number; n_ativos: number; valor_ativo: number;
-  by_year: { ano: number; n: number; valor: number }[];
+  /** Contracts whose source amount was withheld as implausible. */
+  n_valor_suspeito?: number;
+  /** n_com_valor = contracts that year with any published amount. Recife
+   *  stopped disclosing amounts after 2021, so years where this is 0 must not
+   *  be charted as ~R$0 — they have no data, not no spending. */
+  by_year: { ano: number; n: number; valor: number; n_com_valor?: number }[];
   top_orgaos: { orgao: string | null; slug?: string | null; valor: number; n: number }[];
   top_suppliers: { cnpj: string; nome: string; valor: number; n: number }[];
   top_contracts: {
-    contrato_id: string; numero: string; objeto: string | null;
+    contrato_id: string; numero: string | null; objeto: string | null;
     fornecedor: string | null; fornecedor_cnpj: string | null;
     orgao: string | null; orgao_slug?: string | null;
-    valor: number | null; ano: number | null;
+    valor: number | null; valor_suspeito?: boolean; ano: number | null;
   }[];
   partial_year?: PartialYear;
 };
