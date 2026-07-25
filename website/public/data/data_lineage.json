@@ -3,7 +3,7 @@
  "description": "Lineage cliquable pour les 6 outils Paris. Chaque chart liste sa chaîne mart → core → staging → raw → source officielle. Le composant <DataProvenance> consomme ce fichier pour ouvrir, par étape, la table BigQuery publique correspondante. Le code des transformations dbt reste accessible via le lien `code_repo` en footer du modal.",
  "bq_project": "open-data-france-484717",
  "bq_console_url_template": "https://console.cloud.google.com/bigquery?p={project}&d={dataset}&t={table}&page=table",
- "code_repo": "https://github.com/Nuttux/open-public-data/tree/main/pipeline/models",
+ "code_repo": "",
  "charts": {
   "budget-sankey-paris": {
    "label_fr": "Sankey budget — Ville de Paris",

@@ -47,8 +47,6 @@ export type FooterModel = {
 /** Simple translation function shape (matches useT); caller substitutes {year}. */
 type T = (key: string) => string;
 
-const GITHUB_URL = "https://github.com/Nuttux/open-public-data";
-
 /**
  * The cross-place rail — every city-scale place with a proper name and a live
  * switch target, in registry order (fr → us → br). Invariant: the same list
@@ -95,7 +93,6 @@ export function franceFooterModel(
 
   const project: FooterLink[] = [
     { href: "/methode", label: t("fx.foot.link.methode") },
-    { href: GITHUB_URL, label: t("fx.foot.link.github"), external: true },
     { href: "/contact", label: t("fx.foot.link.contact") },
   ];
 
@@ -144,7 +141,6 @@ export function registryFooterModel(
   // pages are France-authored, so we don't advertise them as this place's.
   const project: FooterLink[] = [];
   if (place?.slug === "sf") project.push({ href: `${place.path}/sources`, label: t("fx.foot.link.sources") });
-  project.push({ href: GITHUB_URL, label: t("fx.foot.link.github"), external: true });
   project.push({ href: "/contact", label: t("fx.foot.link.contact") });
 
   // Legal column — POC-honest minimum: the jurisdiction-neutral pages only.

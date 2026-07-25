@@ -55,9 +55,7 @@ export default async function ContactClient() {
               <div className="n">{t("fx.contact.c2.n")}</div>
               <h3>{t("fx.contact.c2.h")}</h3>
               <p>{t("fx.contact.c2.p")}</p>
-              <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/issues" target="_blank" rel="noopener noreferrer">
-                github.com/…/issues ↗
-              </a>
+              <a href="mailto:daniel@qipu.org?subject=Signalement">daniel@qipu.org ↗</a>
             </div>
             <div>
               <div className="n">{t("fx.contact.c3.n")}</div>

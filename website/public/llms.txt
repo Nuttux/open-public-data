@@ -30,5 +30,5 @@ Site produit par Qipu, une initiative citoyenne indépendante. Pipeline open sou
 ## Licence
 
 - Données brutes : licences d'origine (Licence Ouverte pour Open Data Paris, ODbL pour certaines).
-- Code source : open source sur GitHub.
+- Code source : pipeline reproductible (accès sur demande).
 - Contenu éditorial : libre de réutilisation avec attribution.
