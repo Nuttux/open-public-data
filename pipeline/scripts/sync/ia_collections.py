@@ -42,7 +42,14 @@ DIRECT = {
         "Hetch Hetchy Water & Power annual reports.",
     "sanfranciscoredevelopmentagencyrecords":
         "SF Redevelopment Agency records — Western Addition appraisals, "
-        "comparable sales, property summaries.",
+        "comparable sales, property summaries. Admissible, but do not expect it "
+        "to feed the place fiches: it is organised by redevelopment PROJECT AREA "
+        "(Western Addition, Hunters Point, Yerba Buena), while the place seed is "
+        "named facilities. Scanning all 63 places against it (2026-07-27) "
+        "returned 12 hits, all of them boilerplate — 'Golden Gate Park contains "
+        "1,917.40 acres' inside a Western Addition appraisal, 'OWNER'S ADDRESS: "
+        "City Hall' on a parcel form. The collection is valuable; its subject is "
+        "a neighborhood, and no such entity exists yet.",
 }
 
 # ── GATED: real government material, wrong-jurisdiction risk ─────────────────
