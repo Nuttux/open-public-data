@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.693489+00:00",
+ "generated_at": "2026-07-27T17:06:09.724739+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "mission-dolores-park",
@@ -174,18 +174,39 @@
  },
  "documents": [
   {
-   "identifier": "minutes1998sanf_5",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
+   "identifier": "caseno20060144e61720sanf",
+   "title": "Case No. 2006.0144E : 651 Dolores Street (Second Church of Christ, Scientist) project : notice of preparation of an environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept,Second Church of Christ, Scientist (San Francisco, Calif.)",
+   "year": 2006,
    "pool": "sfpl",
-   "matched_alias": "Mission Dolores Park",
-   "url": "https://archive.org/details/minutes1998sanf_5",
-   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=Mission+Dolores+Park",
+   "matched_alias": "Dolores Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.07,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.57,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/caseno20060144e61720sanf",
+   "deep_link": "https://archive.org/details/caseno20060144e61720sanf?q=Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
+   "group": "Plans & environmental review",
    "salient": true,
-   "gloss": "Open Space/Park Renovation advisory-committee minutes weighing a $25,000 beautification, erosion-control and irrigation request for the park's west end, backed by Friends of Dolores Park."
+   "gloss": "The 2006 notice of preparation for environmental review of the Second Church of Christ, Scientist site at 651 Dolores Street, a block from the park."
   },
   {
    "identifier": "fy200809parksannsanf",
@@ -194,12 +215,105 @@
    "year": 2008,
    "pool": "sfpl",
    "matched_alias": "Dolores Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.84,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 3.84,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/fy200809parksannsanf",
    "deep_link": "https://archive.org/details/fy200809parksannsanf?q=Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
    "group": "Reports & records",
    "salient": true,
    "gloss": "The Controller's FY2008-09 parks report ranking Mission Dolores Park tenth-lowest citywide at 74.6%, down 11.8 points, and noting it was flagged for capital work in the 2008 bond."
+  },
+  {
+   "identifier": "minutes1998sanf_5",
+   "title": "Minutes",
+   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Mission Dolores Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.74,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.74,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes1998sanf_5",
+   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=Mission+Dolores+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
+   "group": "Meetings & resolutions",
+   "salient": false,
+   "gloss": "Open Space/Park Renovation advisory-committee minutes weighing a $25,000 beautification, erosion-control and irrigation request for the park's west end, backed by Friends of Dolores Park."
+  },
+  {
+   "identifier": "C119703507",
+   "title": "City College of San Francisco Mission Campus : comments and responses",
+   "creator": null,
+   "year": 1998,
+   "pool": "dl",
+   "matched_alias": "Dolores Park",
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 7.13,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 2.63,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C119703507",
+   "deep_link": "https://archive.org/details/C119703507?q=Dolores+Park",
+   "source_label": "Internet Archive — Democracy's Library",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "Public comments and responses on the 1998 City College Mission Campus review, recording neighbourhood testimony from groups meeting around the park and 16th Street."
   },
   {
    "identifier": "parkstandards6mo162010san",
@@ -208,6 +322,27 @@
    "year": 2009,
    "pool": "sfpl",
    "matched_alias": "Mission Dolores Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.5,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 6.48,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/parkstandards6mo162010san",
    "deep_link": "https://archive.org/details/parkstandards6mo162010san?q=Mission+Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -216,32 +351,74 @@
    "gloss": "The Controller's FY2009-10 mid-year report showing the park dropping to 67.5%, second-lowest citywide."
   },
   {
-   "identifier": "2008cleansafenei2007sanf",
-   "title": "2008 Clean & Safe Neighborhood Parks bond",
-   "creator": "San Francisco (Calif.)",
-   "year": 2008,
-   "pool": "sfpl",
-   "matched_alias": "Dolores Park",
-   "url": "https://archive.org/details/2008cleansafenei2007sanf",
-   "deep_link": "https://archive.org/details/2008cleansafenei2007sanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "The 2008 parks bond's project page for Mission Dolores Park — 14.2 acres, tennis and basketball courts, a sports field, playground and clubhouse — scoping its renovation."
-  },
-  {
    "identifier": "generalmanagersr1975sanf",
    "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
    "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
    "year": 1975,
    "pool": "sfpl",
    "matched_alias": "Dolores Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.22,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.72,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/generalmanagersr1975sanf",
    "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true,
    "gloss": "A 1975 Open Space fund report allocating $70,000 for children's play apparatus at Mission Dolores Park, with later safety-lighting funds."
+  },
+  {
+   "identifier": "2008cleansafenei2007sanf",
+   "title": "2008 Clean & Safe Neighborhood Parks bond",
+   "creator": "San Francisco (Calif.)",
+   "year": 2008,
+   "pool": "sfpl",
+   "matched_alias": "Dolores Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.47,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 3.47,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/2008cleansafenei2007sanf",
+   "deep_link": "https://archive.org/details/2008cleansafenei2007sanf?q=Dolores+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "The 2008 parks bond's project page for Mission Dolores Park — 14.2 acres, tennis and basketball courts, a sports field, playground and clubhouse — scoping its renovation."
   }
  ],
  "dept_shelf": [
@@ -281,7 +458,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 5,
+  "n_documents": 7,
   "n_money_links": 2,
   "meets_pre_summary": true
  }

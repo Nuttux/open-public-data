@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.702655+00:00",
+ "generated_at": "2026-07-27T17:06:09.735645+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "san-francisco-zoo",
@@ -53,9 +53,31 @@
    "year": 1998,
    "pool": "sfpl",
    "matched_alias": "San Francisco Zoo",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.61,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.61,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.5,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscozool1519sanf",
    "deep_link": "https://archive.org/details/sanfranciscozool1519sanf?q=San+Francisco+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited (1997–1998)",
    "group": "Plans & environmental review",
    "salient": true,
    "gloss": "The 1998 Planning Commission motion certifying the Zoological Gardens Master Plan final EIR, which flagged demolition of the Aviary, Lion House and Pachyderm House in a potential zoo historic district."
@@ -67,6 +89,27 @@
    "year": 1995,
    "pool": "sfpl",
    "matched_alias": "San Francisco Zoo",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.14,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.64,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscozool1995sanf",
    "deep_link": "https://archive.org/details/sanfranciscozool1995sanf?q=San+Francisco+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -75,26 +118,33 @@
    "gloss": "A 1995 Public Works infrastructure master plan for the zoo, covering potable, groundwater and reclaimed-water systems and construction-cost estimates."
   },
   {
-   "identifier": "meetingagenda3200sanf",
-   "title": "Meeting agenda",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Zoo Audit Select Committee",
-   "year": 2003,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Zoo",
-   "url": "https://archive.org/details/meetingagenda3200sanf",
-   "deep_link": "https://archive.org/details/meetingagenda3200sanf?q=San+Francisco+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "A 2003 Zoo Audit Select Committee agenda taking up the Budget Analyst's performance audit of the San Francisco Zoo."
-  },
-  {
    "identifier": "annualreport195861sanf",
    "title": "Annual report",
    "creator": "San Francisco (Calif.). Recreation and Park Dept",
    "year": 1965,
    "pool": "sfpl",
    "matched_alias": "Fleishhacker Zoo",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.0,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/annualreport195861sanf",
    "deep_link": "https://archive.org/details/annualreport195861sanf?q=Fleishhacker+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -103,32 +153,110 @@
    "gloss": "A 1965 Recreation and Park annual report's zoo division section, noting growing attendance, a new giraffe barn, and the Zoological Society's concession contract."
   },
   {
+   "identifier": "meetingagenda3200sanf",
+   "title": "Meeting agenda",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Zoo Audit Select Committee",
+   "year": 2003,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Zoo",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 5.27,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 3.25,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/meetingagenda3200sanf",
+   "deep_link": "https://archive.org/details/meetingagenda3200sanf?q=San+Francisco+Zoo",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true,
+   "gloss": "A 2003 Zoo Audit Select Committee agenda taking up the Budget Analyst's performance audit of the San Francisco Zoo."
+  },
+  {
+   "identifier": "minutesrecreatio1974sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Zoo",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.39,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.89,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesrecreatio1974sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1974sanf?q=San+Francisco+Zoo",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
+   "group": "Meetings & resolutions",
+   "salient": true,
+   "gloss": "1974 Recreation and Park Commission minutes, the resolutions governing zoo concessions and gifts alongside the department's other properties."
+  },
+  {
    "identifier": "performanceaudit1119sanf",
    "title": "Performance audit of the San Francisco Zoo",
    "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst,San Francisco (Calif.). Board of Supervisors",
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "San Francisco Zoo",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.61,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.61,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/performanceaudit1119sanf",
    "deep_link": "https://archive.org/details/performanceaudit1119sanf?q=San+Francisco+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true,
    "gloss": "The Budget Analyst's January 2000 performance audit of the zoo — 15 findings, 75 recommendations — identifying about $4.53 million for reallocation, under Zoological Society management."
-  },
-  {
-   "identifier": "sanfranciscomuni19337sanf",
-   "title": "San Francisco municipal record",
-   "creator": null,
-   "year": 1929,
-   "pool": "sfpl",
-   "matched_alias": "Fleishhacker Zoo",
-   "url": "https://archive.org/details/sanfranciscomuni19337sanf",
-   "deep_link": "https://archive.org/details/sanfranciscomuni19337sanf?q=Fleishhacker+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "A 1929 municipal record recounting the founding of Fleishhacker Zoo and its original animal collection under director George Bistany."
   }
  ],
  "dept_shelf": [
@@ -163,7 +291,7 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {

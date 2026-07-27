@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.698822+00:00",
+ "generated_at": "2026-07-27T17:06:09.730587+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "portsmouth-square",
@@ -271,18 +271,109 @@
  },
  "documents": [
   {
-   "identifier": "505montgomerystr2819sanf",
-   "title": "505 Montgomery Street : final environmental impact report",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1984,
+   "identifier": "C101697812",
+   "title": "City College of San Francisco Chinatown/North Beach campus : draft environmental impact report",
+   "creator": null,
+   "year": 1998,
+   "pool": "dl",
+   "matched_alias": "Portsmouth Square",
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 6.08,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.08,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C101697812",
+   "deep_link": "https://archive.org/details/C101697812?q=Portsmouth+Square",
+   "source_label": "Internet Archive — Democracy's Library",
+   "group": "Plans & environmental review",
+   "salient": true,
+   "gloss": "The 1998 draft environmental impact report for City College's Chinatown/North Beach campus, assessing sunlight access and the open spaces around Portsmouth Square."
+  },
+  {
+   "identifier": "bankofcantonofca1982sanf",
+   "title": "Bank of Canton of California headquarters, [final] environmental impact report",
+   "creator": "San Francisco (Calif.). City Planning Commission",
+   "year": 1982,
    "pool": "sfpl",
    "matched_alias": "Portsmouth Square",
-   "url": "https://archive.org/details/505montgomerystr2819sanf",
-   "deep_link": "https://archive.org/details/505montgomerystr2819sanf?q=Portsmouth+Square",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.24,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.74,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/bankofcantonofca1982sanf",
+   "deep_link": "https://archive.org/details/bankofcantonofca1982sanf?q=Portsmouth+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
    "salient": true,
-   "gloss": "A 1984 environmental impact report for the 505 Montgomery Street tower, analyzing the shadows it would cast on Portsmouth Square — up to about 40% of the square in some months."
+   "gloss": "A 1982 environmental impact report for the Bank of Canton headquarters, assessing height, bulk and historic resources in the blocks below the square."
+  },
+  {
+   "identifier": "505montgomerystr2519city",
+   "title": "505 Montgomery Street : [draft] environmental impact report",
+   "creator": "City and County of San Francisco, Department of City Planning",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 0.88,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.88,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/505montgomerystr2519city",
+   "deep_link": "https://archive.org/details/505montgomerystr2519city?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": false,
+   "gloss": "A 1983 environmental impact report for 505 Montgomery Street, mapping the shadows the tower would cast across nearby open space."
   },
   {
    "identifier": "minutesrecreatio1959sanf",
@@ -291,6 +382,27 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Portsmouth Square",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.92,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.42,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/minutesrecreatio1959sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1959sanf?q=Portsmouth+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -299,18 +411,74 @@
    "gloss": "1959 Recreation and Park Commission minutes on the square's use for Chinese New Year and a Guardsmen rally, and a proposed joint agreement for subterranean garage development beneath it."
   },
   {
-   "identifier": "generalmanagersr1975sanf",
-   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
-   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
-   "year": 1975,
+   "identifier": "sanfranciscomuni2109sanf",
+   "title": "San Francisco Municipal Transportation Agency : audit of City of San Francisco Portsmouth Plaza Parking Corporation",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Municipal Transportation Agency,Portsmouth Plaza Parking Corp",
+   "year": 2009,
    "pool": "sfpl",
-   "matched_alias": "Portsmouth Square",
-   "url": "https://archive.org/details/generalmanagersr1975sanf",
-   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Portsmouth+Square",
+   "matched_alias": "Portsmouth Plaza",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 13.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 5.84,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 7.25,
+    "money": true,
+    "decision": true,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscomuni2109sanf",
+   "deep_link": "https://archive.org/details/sanfranciscomuni2109sanf?q=Portsmouth+Plaza",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true,
-   "gloss": "A 1975 Open Space fund report allocating $15,000 to install additional benches and shelters for the elderly at Portsmouth Square, completed October 1977."
+   "gloss": "The Controller's 2009 audit of the Portsmouth Plaza Parking Corporation, the non-profit operating the garage beneath the square."
+  },
+  {
+   "identifier": "findingsrecommen95cali",
+   "title": "Findings and recommendations concerning off street parking, Department of Parking and Traffic, San Francisco",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 12.23,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/findingsrecommen95cali",
+   "deep_link": "https://archive.org/details/findingsrecommen95cali?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "A Civil Grand Jury report on off-street parking, examining the long-term ground leases and bond financing behind the city's non-profit garage corporations."
   },
   {
    "identifier": "sanfranciscothea194015sanf",
@@ -319,12 +487,103 @@
    "year": 1940,
    "pool": "sfpl",
    "matched_alias": "Portsmouth Plaza",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.33,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.83,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscothea194015sanf",
    "deep_link": "https://archive.org/details/sanfranciscothea194015sanf?q=Portsmouth+Plaza",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true,
+   "salient": false,
    "gloss": "A 1940 WPA history of San Francisco theatres locating the city's first schoolhouse and earliest 1849 English-language entertainment on and around Portsmouth Plaza."
+  },
+  {
+   "identifier": "generalmanagersr1975sanf",
+   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
+   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.22,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.72,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/generalmanagersr1975sanf",
+   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false,
+   "gloss": "A 1975 Open Space fund report allocating $15,000 to install additional benches and shelters for the elderly at Portsmouth Square, completed October 1977."
+  },
+  {
+   "identifier": "reporttosanfran1993sanf_1",
+   "title": "Report to the San Francisco Parking and Traffic Commission : management audit of city-owned garages",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 0.55,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.05,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/reporttosanfran1993sanf_1",
+   "deep_link": "https://archive.org/details/reporttosanfran1993sanf_1?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "A management audit of city-owned garages, comparing the non-profit operators' management fees and legal costs."
   }
  ],
  "dept_shelf": [
@@ -364,7 +623,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 4,
+  "n_documents": 9,
   "n_money_links": 3,
   "meets_pre_summary": true
  }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.702842+00:00",
+ "generated_at": "2026-07-27T17:06:09.735875+00:00",
  "slug": "san-francisco-zoo",
  "name": "San Francisco Zoo",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -11,12 +11,39 @@
    "year": 1998,
    "pool": "sfpl",
    "matched_alias": "San Francisco Zoo",
+   "ocr_excerpts": [
+    "City and County of San Francisco Planning Department Dpr«W»=NTS DEPT. MAR 0 6 1938 SAN PUBLIC LIBRARY SAN FRANCISCO ZOOLOGICAL GARDENS MASTER PLAN Final Environmental Impact Report Case No. 95.469E Draft EIR Publication Date: September 6, 1997 Draft EIR Public Hearing Date: October 9, 1997 Draft EIR Public Comment Period: October 9, 1997 Final EIR Certification Date: January 15, 1998 D REF 712. 5 Sa52f DOCUMENTS",
+    "Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY 3 1223 04676 1970 File No.: 95.469E Assessor's Block 7281, Lots 6 & 7 SAN FRANCISCO PLANNING COMMISSION MOTION NO. 14528 ADOPTING FINDINGS RELATED TO THE CERTIFICATION OF A FINAL ENVIRONMENTAL IMPACT REPORT FOR THE PROPOSED SAN FRANCISCO ZOOLOGICAL GARDENS MASTER PLAN, LOCATED AT 1 ZOO ROAD, LOTS 6 & 7 IN ASSESSOR'S BLOCK 7281. MOVED, That the San Francisco Planning Commission (hereinafter \"Commission\") hereby CERTIFIES the Final Environmental Impact Report identified as case file No. 95.469E, San Francisco Zoological Gardens Master Plan (hereinafter \"Project\") based upon the following findings: 1) The City and County of San Francisco, acting through the Planning Department (hereinafter \"Department\") fulfilled all procedural requirements of the California Environmental Quality Act (Cal. Pub. Res. Code Section 210",
+    "of said report and the procedures through which the Final Environmental Impact Report was prepared, publicized and reviewed comply with the provisions of CEQA, the CEQA Guidelines and Chapter 31. 7) The Commission hereby does find that the Final Environmental Impact Report concerning File No. 95.469E: San Francisco Zoological Gardens Master Plan reflects the independent judgment of the City and County of San Francisco, is adequate, accurate and objective, and that the Summary of Comments and Responses contains no significant revisions to the DEIR, and hereby does CERTIFY THE COMPLETION of said Final Environmental Imp",
+    "e Final Environmental Impact Report: a. Will have an unavoidable, irreversible, project-specific, significant, adverse effect on Historic and Architectural Resources in that it would demolish the Aviary, the Lion House, the Pachyderm House and the snack building which contribute to a potentially eligible San Francisco Zoo Historic District. I hereby certify that the foregoing Motion was ADOPTED by the Planning Commission at its regular meeting of January 15, 1998. Linda Avery Commission Secretary AYES: Commissioners Chinchilla, Mills, Hills, Antenore, Theoharis, and Martin NOES: None ABSENT: Commissioner Joe ADOPTED: January 15, 1998 G:\\WP51\\ZOOEIR.MO City and County of San Francisco Planning Department SAN FRANCISCO ZOOLOGICAL GARDENS MASTER PLAN Final Environmental Impact Report Case No. 95.469E Draft EIR Publication Date: September 6, 1997 Draft EIR Public Hea"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.61,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.61,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.5,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscozool1519sanf",
    "deep_link": "https://archive.org/details/sanfranciscozool1519sanf?q=San+Francisco+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited (1997–1998)",
    "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "The 1998 Planning Commission motion certifying the Zoological Gardens Master Plan final EIR, which flagged demolition of the Aviary, Lion House and Pachyderm House in a potential zoo historic district."
+   "salient": true
   },
   {
    "identifier": "sanfranciscozool1995sanf",
@@ -25,26 +52,37 @@
    "year": 1995,
    "pool": "sfpl",
    "matched_alias": "San Francisco Zoo",
+   "ocr_excerpts": [
+    "oOCoMtNT3 oert- SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not U) be taken from the Library DOCUMENTS DEPARTMENT SAN FRANCISCO San Francisco Zoological Gardens Infrastructure Master Plan Final Report City & County of San Francisco Department of Public Works San Francisco Zoological Gardens K/J 930524.03 August 1995 Kennedy/Jenks Consultants, Inc. - AGS, Inc. An Association SAN FRANCISCO PUBLIC LIBRARY 3 1223 04181 0145 Kennedy/Jenks Consultants Engineers and Scientists — ...... „ , _ Marathon Plaza, Tenth Floor 303 Second Street San Francisco, California 94107 415-243-2150 FAX 415-896-0999 Ms. Karen Kubick City and County of San Francisco Department of Public Works 30 Van Ness, 5th Floor San Francisco, CA 94102 Ms. Maria Jurosek San Francisco Zoological Gardens 1 Zoo Road San Francisco, CA 94132 Subject: San Francisco Zoo Infrastructure Master Plan - Final Report K/J 930524 / AGS 920801 Dear Ms. Kubick and Ms. Jurosek: Enclosed for your use is the San Francisco Zoo Infrastructure Master Plan Final Report. This revised report incorporates your comments on the December 1 994 draft report and includes revised estimates of probable construction costs for the recommended infrastructure improvements. An executive summary is provided to highlight the findings and recommenda",
+    "forward to our continued involvement with the project. Please call if you have any questions. Very truly yours, KENNEDY/JENKS CONSULTANTS AGS, INC. Fred C. Neal Project Manager, K/J Luis Moura Project Manager, AGS Elizabeth Teien Project Engineer, K/J g\\zoo\\finalmp\\coverttr.doc SAM FRANCISCO SAN FRANCISCO ZOOLOGICAL GARDENS: INFRASTRUCTURE MASTER PLAN FINAL REPORT Prepared for City and County of San Francisco Department of Public Works & San Francisco Zoological Gardens Prepared by Kennedy/Jenks Consultants- AGS, Inc., An Association August 1995 K/J 930524 D REF 712.5 Sa525s San Francisco (Calif.). Dept. of Public Works. San Francisco Zoological Gardens : 1995 . 3 1223 04181 0145 S.F. PUBLIC LIBRARY SAN FRANCISCO ZOOLOGICAL GARDENS INFRASTRUCTURE MASTER PLAN FINAL REPORT Table of Contents Section Title Page ABBREVIATIONS A.1 ES EXECUTIVE SUMMARY INTRODUCTION ES.1 Purpose of Infrastructure Master Plan ES.1 Organization and Contents ES.1 PLANNING PHILOSOPHY ES.2 RECOMMENDED FACILITIES ES.3 Water Systems ES.3 Se",
+    "MPTIONS 1.6 Fire Flows 1 .6 Interties between Systems 1 .6 EVALUATION OF THE FUTURE DISTRIBUTION SYSTEMS 1 .6 Overall Model Development 1 .6 Methodology 1.7 Potable Water System 1 .8 Groundwater System 1 .9 Reclaimed Water System 1 .9 g:\\job\\93\\930524\\finalmp\\mptoc.doc TOC.1 K/J 930524 ( SAN FRANCISCO ZOOLOGICAL GARDENS INFRASTRUCTURE MASTER PLAN FINAL REPORT Table of Contents Section Title Page 1 DESCRIPTION OF PROPOSED FACILITIES 1.10 (cont.) Distribution Pipelines 1.10 Potable Sup"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.14,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.64,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscozool1995sanf",
    "deep_link": "https://archive.org/details/sanfranciscozool1995sanf?q=San+Francisco+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1995 Public Works infrastructure master plan for the zoo, covering potable, groundwater and reclaimed-water systems and construction-cost estimates."
-  },
-  {
-   "identifier": "meetingagenda3200sanf",
-   "title": "Meeting agenda",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Zoo Audit Select Committee",
-   "year": 2003,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Zoo",
-   "url": "https://archive.org/details/meetingagenda3200sanf",
-   "deep_link": "https://archive.org/details/meetingagenda3200sanf?q=San+Francisco+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "A 2003 Zoo Audit Select Committee agenda taking up the Budget Analyst's performance audit of the San Francisco Zoo."
+   "salient": true
   },
   {
    "identifier": "annualreport195861sanf",
@@ -53,12 +91,120 @@
    "year": 1965,
    "pool": "sfpl",
    "matched_alias": "Fleishhacker Zoo",
+   "ocr_excerpts": [
+    "ivision of Recreation Attendance Aquatics Athletics i Day Camps, Overnight Camping Sites and Picnic Areas Drama and Dance Josephine D. Randall Junior Museum Music Photography- Senior Citizens Tiny Tots Page 1 Page 3 Page 5 Page 6 Page 8 Page 9 Page 9 Page 10 Page 11 Page 11 Division of San Francisco Zoological Gardens Page 12 Division of Parks Large Park Areas Page 13 Recreation Units, Small Parks, Squares Page 15 Golf Courses Page 17 Strybing Arboretum and Botanical Gardens Page 17 Nurseries Page 20 Conservatory Page 21 CONTENTS (Continued) Division of Parks (Continued) Building Repair",
+    "ormed by the department is a form of a play experience. The principal aims are to form good habits through recreational activities. Lighter-three Tiny Tot groups met at thirty-eight playgrounds in the forenoon during the regular school year. The total children served was 70,556. -11- DIVISION OF SAN FRANCISCO ZOOLOGICAL GARDENS This last year has seen an increased interest in the San Francisco Zoological Gardens, with constantly growing attendance „ This is due largely to the publicity given the Zoo through the San Francisco Zoological Society, the acquisition of new animals, and the attention given by the Department to more thorough cleaning and proper maintenance of the grounds „ Well over half of the visitors to the Zoo are from out of this city and from many other states . The Zoo is now without a doubt one of the",
+    "als have been added to the col- lection in the last year through exchanges and especially by donations from the Zoological Society. Big additions to the Zoo were the completion of the new giraffe barn and the resurfacing of walks and paths. Our greatest step forward has been the operation of the San Francisco Zoological Society. The Society obtained concession privileges at the Zoo on September 1, 195&, and opened for business two weeks later. According to the contract with the City and County of San Fran- cisco, rent has been paid each montho Improvements were made to the Zoo Cafe 5 a new food stand and",
+    "Park Stadium. This included a complete regrading, loaming, sludging and seeding. The old hedge was removed from the inner side of the track and a new hedge was planted along the outside of the track to re- place the old Cypress hedge. -13- lhe tree crew completely overhauled the forest of the San Francisco Zoological Gardens, and so completed surgical pruning oi more than 300 L\\rge trees in the area. This required a major overhaul of shrub beds, using over 5*000 plants, shrubs and trees, lhe south entrance oval was completely cleared, re- graded, and planted with lawn and colorful Ivy Geraniums. ihe tree",
+    "n 7 days Aquatic Park and North Leach .tool 7 days Hamilton and itossi Pools 7 days Garfield and Balboa iools 7 days H. Pleishhacker Bathhouse 7 days Lars e"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.0,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/annualreport195861sanf",
    "deep_link": "https://archive.org/details/annualreport195861sanf?q=Fleishhacker+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": true,
-   "gloss": "A 1965 Recreation and Park annual report's zoo division section, noting growing attendance, a new giraffe barn, and the Zoological Society's concession contract."
+   "salient": true
+  },
+  {
+   "identifier": "meetingagenda3200sanf",
+   "title": "Meeting agenda",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Zoo Audit Select Committee",
+   "year": 2003,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Zoo",
+   "ocr_excerpts": [
+    "representatives, except that public speakers ce will be allowed to testify for twice the amount of the public testimony r translation services are used, speakers will be governed by the public ed to speakers not requesting translation assistance. 030872 [Budget Analyst's performance audit of the San Francisco Zoo] Supervisor Ma Hearing to review and implement recommendations of the Budget Analyst's performance audit of the San Francisco Zoo prepared for the Board of Supervisors in January 2000. 5/13/03, RECEIVED AND ASSIGNED to Zoo Audit Select Committee. Scheduled for consideration June 3, 2003. 05-21 -03P05 34 -;CVD ADJOURNMENT DOCUMENTS DEPT. MAY 2 1 2003 SAN FRANCISCO PUBLIC LIBRARY \\d County of San Francisco 1 Printed at 2:",
+    "the amount of the public testimony time limit. If simultaneous translation services are used, speakers will be governed by the public testimony time limit applied to speakers not requesting translation assistance. AGENDA CHANGES REGULAR AGENDA 1. 030872 [Budget Analyst's performance audit of the San Francisco Zoo] Supervisor Ma Hearing to review and implement recommendations of the Budget Analyst's performance audit of the San Francisco Zoo prepared for the Board of Supervisors in January 2000. 5/13/03, RECEIVED AND ASSIGNED to Zoo Audit Select Committee. Scheduled for consideration June 3, 2003. 05-21-03P05 34 RC-VO ADJOURNMENT DOCUMENTS DEPT. MAY 2 1 2003 SAN FRANCISCO PUBLIC LIBRARY City and County of San Francisco 1 Printed",
+    ", June 03, 2003 2:00 PM Special Meeting City Hall, Room 263 Members Present: Fiona Ma, Jake McGoldrick, Tom Ammiano. MEETING CONVENED. The meeting convened at 2:03 p.m. DOCUMENTS DEPT. JUN 5 2003 REGULAR AGENDA SAN FRANCISCO PUBLIC LIBRARY 30872 [Budget Analyst's performance audit of the San Francisco Zoo] Supervisor Ma Hearing to review and implement recommendations of the Budget Analyst's performance audit of the San Francisco Zoo prepared for the Board of Supervisors in January 2000. 5/13/03, RECEIVED AND ASSIGNED to Zoo Audit Select Committee. Scheduled for consideration June 3, 2003. Heard in Committee. Speakers: Stan Jones, Project Manager for the Zoo Project, Budget Analyst's Office; Dr. Joel Parrott, Director of the Oakland Zoo and Zoo Veterinarian; Jason Yuen, Architect and Planning and Construction Consultant; David Anderson, San Francisco Zoo Director; Rick Jones, Chairman, San Francisco Zoological Society; Elizabeth Goldstein, Director, Recreation and Park Department; Peg Stevenson, Controller's Office; Laura Louttit, San Francisco Zoo; Joanne Haney, San Francisco Zoo; Jacquie Grose, Zoo Docent; Geraldine Givens, Florence Crittenton Services; Donna L Mollenhauer, Docent, San Francisco Zoo; Use Ushert, Docent, San Francisco Zoo; Philip Carleton, Watchbison Committee; Dr. Elliot M. Katz, DVM, I"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 5.27,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 3.25,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/meetingagenda3200sanf",
+   "deep_link": "https://archive.org/details/meetingagenda3200sanf?q=San+Francisco+Zoo",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "minutesrecreatio1974sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Zoo",
+   "ocr_excerpts": [
+    "Jerry C. Davids, value $1,235, to be planted in Strybing Arboretum. Res. 9793 accepts 13,350 bulbs, value $2,000 from Netherlands Flower Bulb Institute. Res. 9794 accepts orchid plants for Conservatory from Mrs. Elizabeth Gritch, value $1,821.86. Res. 9821 accepts 6' x 8' platform for Gorilla Grotto, San Francisco Zoo, valued at $847.00, from Mrs. Stanton Kerns. Res. 9822 accepts fiberglass roof for lath house in Strybing Arboretum from Strybing Arboretum Society, valued at approximately $800.00. GLIDERS, HANG See HANG GLIDERS GOLDEN GATE NATIONAL RECREATION AREA See SUPPLEMENTAL APPROPRIATION Res. 9743 approves a",
+    "ROGRAM S & S CATERING COMPANY Res. 9813 approves closing refreshment stands from December 12 through December 25, 1974. SAN FRANCISCO STADIUM, INC. See CANDLESTICK PARK SAN FRANCISCO COUNTY FAIR AND FLOWER SHOW Res. 9732 approves San Francisco County Fair and Flower Show Budget for 1974, $127,982. SAN FRANCISCO ZOOLOGICAL GARDENS See SPECIAL MEETING 1/12/74 Res. 9542 adopts statement of Objectives and Policies by S. F. Advisory Committee Res. 9543 approves exchanges of animals Res. 9544 approves purchases of animals Res. 9545 approves sale of animal. Res. 9578 approves submission legislation to Board of Supervis",
+    "Res. 9579 approves $25,000 to be spend by S.F. Zoological Society for Master Plan for Zoo. Res. 9613 approves agreement American District Telegraph Co., communication System at Zoo; $54,276.00 192 190 272 100 224 231 188 268 196 33 33 & 34 62 62 92 . -14- INDEX Page SAN FRANCISCO ZOOLOGICAL GARDENS (Continued) Res. 9580 approves legislation to Board of Supervisors to continue Special Animal Purchase and Exchange Fund at Zoo. Res. 9581 approves sales and gifts of animals Res. 9582 approves purchase of animals Res 9625 approves exchange of animals Res. 9626 approves sale of anim",
+    "approves gifts of animals Res. 9797 approves purchases of animals Res. 9798 approves exchanges of animals Res. 9799 approves sale of animals Res. 9802 approves Award of Contract, $60,000.00, preparation of Zoo Master Plan by Esherick, Hornsey, Dodge and Davis Res. 9824 approves sale of animals SAN FRANCISCO ZOOLOGICAL SOCIETY Res. 9577 extends lease agreement on a month-to- month basis until new lease approved. Res. 9583 approves in principle proposed lease agreement with S. F. Zoological Society for operation of concessions at S. F. Zoo for ten years. Res. 9788 approves request of San Francisco Zoological Society for new tour train equipment proposed for operation by the Society at the Zoo. SHARON BUILDING REFRESHEMENT CONCESSION See GOLDEN GATE PARK - SHARON BUILDING REFRESHMENT CONCESSION ruuMNi SHARP PARK RIFLE AND PISTOL RANGE Res. 9734 approves request of Chief of Police, for use of Sha",
+    "262 YERBA BUENA SENIOR CITIZENS Res. 9765 approves agreement between Hou"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.39,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.89,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesrecreatio1974sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1974sanf?q=San+Francisco+Zoo",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "performanceaudit1119sanf",
@@ -67,26 +213,38 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "San Francisco Zoo",
+   "ocr_excerpts": [
+    "TiON CGMTEH SAM FRANCISCO PUBLIC UBtfARY SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Nol to be lukcn from the Li bran' I 2 20011 Digitized by the Internet Archive in 2014 https://archive.org/details/performanceaudit1 1 1 9sanf Public Library,Gov't Info. Ctr., 5th Fir. Performance Audit of the San Francisco Zoo GOVERNMENT INFORMATION CWTPR SAN FRANCJSCO PU6UC LIBRARY SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not /o be taken from the Library Prepared for the Board of Supervisors by the Board of Supervisors Budget Analyst 1390 Market Street, Suite 1025 San Francisco, CA 94102 (415) 554-7642 January 2000 REF 712. 5 P416 DOCUMENTS DEP71 JAN 1 2 2000 SAN FRANCISCO PUBLIC LIBRARY Public Library,Gov't inf0, Ctr., 5th Fir. Performance Audit of the San Francisco Zoo Prepared for the Board of Supervisors by the Board of Supervisors Budget Analyst 1390 Market Street, Suite 1025 San Francisco, CA 94102 (415) 554-7642 January 2000 REF 712.5 P416 DOCUMENTS DEP1 JAN 1 2 2000 SAN FRANCISCO PUBLIC LIBRARY SAN FRANCISCO PUBLIC LIBRARY 111 3 1223 05612",
+    "Members of the Board of Supervisors City and County of San Francisco Room 244, City Hall 1 Dr. Carlton B. Goodlett Place San Francisco, California 94102-4689 Dear President Ammiano and Members of the Board of Supervisors: Transmitted herewith is the Budget Analyst's Performance Audit Report of the San Francisco Zoological Gardens, which is under the management of the San Francisco Zoological Society. This management audit was conducted in accordance with Charter Section 2.114, which authorizes the Board of Supervisors to make inquiries concerning departmental operations. In total, this report presents 15 findings containing 75 recommendations organized in four separate categories. The f",
+    "approximately $4.53 million, $3.73 million of which can be reallocated to construction of priority capital improvements and $800,000 that should be transferred to a construction contingency account to increase the amount allocated for that purpose to an appropriate level. In addition, we have identified San Francisco Zoological Society operating budget savings in the amount of approximately $197,857 that can be reallocated to high priority Zoo needs, such as facilities maintenance. Further, annual savings in the amount of approximately $50,000 would result from the timely payment by the Zoological Society of the City's",
+    "with the Animal Keepers. The Animal Keepers are professional, knowledgeable, and caring as a group. An independent evaluation was completed by Dr. Joel Parrott, the Oakland Zoo Director, retained by the Budget Analyst. Dr. Parrott, who is also a zoo veterinarian, concluded that veterinary care at the San Francisco Zoo is excellent and general care is good. • The Zoo has an excellent animal acquisition and loan policy. In fact"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.61,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.61,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/performanceaudit1119sanf",
    "deep_link": "https://archive.org/details/performanceaudit1119sanf?q=San+Francisco+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true,
-   "gloss": "The Budget Analyst's January 2000 performance audit of the zoo — 15 findings, 75 recommendations — identifying about $4.53 million for reallocation, under Zoological Society management."
-  },
-  {
-   "identifier": "sanfranciscomuni19337sanf",
-   "title": "San Francisco municipal record",
-   "creator": null,
-   "year": 1929,
-   "pool": "sfpl",
-   "matched_alias": "Fleishhacker Zoo",
-   "url": "https://archive.org/details/sanfranciscomuni19337sanf",
-   "deep_link": "https://archive.org/details/sanfranciscomuni19337sanf?q=Fleishhacker+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "A 1929 municipal record recounting the founding of Fleishhacker Zoo and its original animal collection under director George Bistany."
+   "salient": true
   }
  ]
 }

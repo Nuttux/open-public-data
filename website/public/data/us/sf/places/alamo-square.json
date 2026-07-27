@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.695892+00:00",
+ "generated_at": "2026-07-27T17:06:09.727233+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "alamo-square",
@@ -116,6 +116,45 @@
  },
  "documents": [
   {
+   "identifier": "codeenforcementf1968sanf",
+   "title": "Code enforcement feasibility study : a joint study",
+   "creator": "San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Dept. of Public Works",
+   "year": 1968,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "ocr_excerpts": [
+    "f \\ CODE ENFORCEMENT FEASIBILITY STUDY A JOINT STUDY BY THE DEPARTMENT OF CITY PLANNING AND THE DEPARTMENT OF PUBLIC WORKS OF A BLOCK IN THE ALAMO SQUARE NEIGHBORHOOD. ft REF 3ITY AND COUNTY OF SAN FRAN C I S C O = M AY, 1968 307 .3416 GOVERNMENT INFORMATION CENTER BAN FRANCISCO PUBLIC LIBRARY CIVIC CENTER BAN FRANCISCO, CALIFORNIA 04108 SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY 3 1223 03557 7437 CODE ENFORCEMENT FEASIBILITY STUDY A joint study by the Department of City Planning and the Department of Public Works of a Block in the Alamo Square Neighborhood. City and County of San Francisco May, 1968 REF 307.3416 Sa52c San Francisco (Calif.). Dept. of City Planning. Code enforcement feasibility study : a 1968 . 3 1223 03557 7437 S.E PUBLIC LIBRARY TABLE OF CONTENTS PAGE NO. List of Tables 2 I. Introduction 3 II. Summary of Findings 7 III. Characteristics of Study Block Buildings 9 IV. Characteristics of Residents 16 V. Conclusions 25 VI . Appendices 29 -1- LIST OF TABLES AND MAPS PAGE NO. Map: Study Block and Proposed Alamo Square Conservation Area 6 Tables: 1. Distribution of Structure Size (%) 10 2. Owner-Occupied Structures (%) 10 3. Distribution of Structure Size by Code Compliance Cost Per Unit in the Study Block . . . < 11 4. Code Violations in Inspected Buildings in the Study Block. ... 12 5. Distribu",
+    "uccessfully for over a year in four San Francisco neighborhoods, with minimum dislocation, low code-repair costs and enthusiastic response from area residents. Success in these areas prompted a questioning of its possible use in more declining areas of San Francisco, particularly the neighborhood around Alamo Square. The area adjoins two redevelopment projects and is near the center of \"the Fillmore'', part of San Francisco's low-income Negro ghetto. Many neighbor- hood residents have shown a particular interest in establishing a FACE program in the area and have campaigned to get one. Others expressed conce",
+    "iew, which attempted to determine attitudes toward the neighborhood and the ability and willingness to pay more rent for improved housing. The results of the survey, as shown in the report, were used, along with other considerations, in arriving at a decision to recommend designation of part of the Alamo Square neighborhood for a FACE program.* * See map attached. -5- r r a ANZA VISTA AVE 400 FEET PROPOSED F E D E R A LLY- A SS I STE D CODE ENFORCEMENT ALAMO SQUARE CODE ENFORCEMENT FEASIBILITY STUDY FEDERALLY ASSISTED CODE ENFORCEMENT AREA BOUNDARY STUOY BLOCK SAN FRANCISCO DEPARTMENT OF CITY PLANNING r l] : c II. SUMMARY OF FINDINGS □ [ □ □ □ II. SUMMARY OF FINDINGS 1. The Study Block is not typical of the larger neighborhood. It appears representative of the poorest tenants and th"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 5.99,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/codeenforcementf1968sanf",
+   "deep_link": "https://archive.org/details/codeenforcementf1968sanf?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
    "identifier": "finalenvironment2197sanf",
    "title": "Final environmental impact report and statement for the Rehabilitation Assistance Program for the Upper Ashbury",
    "creator": "San Francisco (Calif.). Dept. of City Planning",
@@ -128,67 +167,31 @@
     "ant (48 percent) increase in the average size of each sale transaction during 1974. Analysis of the trends in the three FACE areas reveals no consistent pattern. Total number of sales in Duboce Triangle increased sharply in 1969, but the average price fell 46 percent. Prices in 1974 dropped in Alamo Square (-33 percent) and Bernal Heights (-1 percent) , but increased in the other areas. Prices increased during 1969 in Bernal Heights but dropped in Duboce Triangle and Alamo Square. The only consistency in the data is that the average price of each sale increased over the time span 1969-1975, nearly doubling in the Inner Richmond, Duboce and Bernal. A/ 1973 Vacancy Survey, San Francisco Department of City Planning. -32- Table 13 REAL ESTATE SAUES IN THE UPPER ASHBUK",
     "4,900 -10 41,000 -7 1971 51 38 2,657,900 76 52,000 26 1972 55 8 2,906,200 9 53,000 2 1973 50 -9 2,800,100 -3 56,000 6 1974 46 -8 3,837,600 36 83,000 48 1975 56 22 4,388,800 14 78,400 -5 Ptrv. of 1976 14 1,070,700 72,000 -8 Table 13c REAL ESTATE SALES IN ALAMO SQUARE, 1963-1975 Total % Annua"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.12,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.12,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/finalenvironment2197sanf",
    "deep_link": "https://archive.org/details/finalenvironment2197sanf?q=Alamo+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "codeenforcementf1968sanf",
-   "title": "Code enforcement feasibility study : a joint study",
-   "creator": "San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Dept. of Public Works",
-   "year": 1968,
-   "pool": "sfpl",
-   "matched_alias": "Alamo Square",
-   "ocr_excerpts": [
-    "f \\ CODE ENFORCEMENT FEASIBILITY STUDY A JOINT STUDY BY THE DEPARTMENT OF CITY PLANNING AND THE DEPARTMENT OF PUBLIC WORKS OF A BLOCK IN THE ALAMO SQUARE NEIGHBORHOOD. ft REF 3ITY AND COUNTY OF SAN FRAN C I S C O = M AY, 1968 307 .3416 GOVERNMENT INFORMATION CENTER BAN FRANCISCO PUBLIC LIBRARY CIVIC CENTER BAN FRANCISCO, CALIFORNIA 04108 SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY 3 1223 03557 7437 CODE ENFORCEMENT FEASIBILITY STUDY A joint study by the Department of City Planning and the Department of Public Works of a Block in the Alamo Square Neighborhood. City and County of San Francisco May, 1968 REF 307.3416 Sa52c San Francisco (Calif.). Dept. of City Planning. Code enforcement feasibility study : a 1968 . 3 1223 03557 7437 S.E PUBLIC LIBRARY TABLE OF CONTENTS PAGE NO. List of Tables 2 I. Introduction 3 II. Summary of Findings 7 III. Characteristics of Study Block Buildings 9 IV. Characteristics of Residents 16 V. Conclusions 25 VI . Appendices 29 -1- LIST OF TABLES AND MAPS PAGE NO. Map: Study Block and Proposed Alamo Square Conservation Area 6 Tables: 1. Distribution of Structure Size (%) 10 2. Owner-Occupied Structures (%) 10 3. Distribution of Structure Size by Code Compliance Cost Per Unit in the Study Block . . . < 11 4. Code Violations in Inspected Buildings in the Study Block. ... 12 5. Distribu",
-    "uccessfully for over a year in four San Francisco neighborhoods, with minimum dislocation, low code-repair costs and enthusiastic response from area residents. Success in these areas prompted a questioning of its possible use in more declining areas of San Francisco, particularly the neighborhood around Alamo Square. The area adjoins two redevelopment projects and is near the center of \"the Fillmore'', part of San Francisco's low-income Negro ghetto. Many neighbor- hood residents have shown a particular interest in establishing a FACE program in the area and have campaigned to get one. Others expressed conce",
-    "iew, which attempted to determine attitudes toward the neighborhood and the ability and willingness to pay more rent for improved housing. The results of the survey, as shown in the report, were used, along with other considerations, in arriving at a decision to recommend designation of part of the Alamo Square neighborhood for a FACE program.* * See map attached. -5- r r a ANZA VISTA AVE 400 FEET PROPOSED F E D E R A LLY- A SS I STE D CODE ENFORCEMENT ALAMO SQUARE CODE ENFORCEMENT FEASIBILITY STUDY FEDERALLY ASSISTED CODE ENFORCEMENT AREA BOUNDARY STUOY BLOCK SAN FRANCISCO DEPARTMENT OF CITY PLANNING r l] : c II. SUMMARY OF FINDINGS □ [ □ □ □ II. SUMMARY OF FINDINGS 1. The Study Block is not typical of the larger neighborhood. It appears representative of the poorest tenants and th"
-   ],
-   "url": "https://archive.org/details/codeenforcementf1968sanf",
-   "deep_link": "https://archive.org/details/codeenforcementf1968sanf?q=Alamo+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "minutes1998sanf_5",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Alamo Square",
-   "ocr_excerpts": [
-    "r - Children's Play Area (east) Richmond Playground - Children's Play Area Rochambeau Playground - Renovation of Clubhouse and Play Area Saint Mary's Playground - Children's Play Area and Court Resurfacing' Agenda, Park and Open Space Citizens Advisory Committee January 13, 1998 Page 2 Seed Category Alamo Square Playground Duboce Play Area Koshland Park Pioneer Park South Park Lighting Plan South Park - Play Area (east) Visitacion Valley Playground - Clubhouse Renovation Walter Haas Playground - Court Resurfacing and Security Lighting Staff Recommended Priority 3 Projects Merced Heights Clubhouse 6. Public",
-    "2 for the project. The Committee approved a Priority 2 for the project as follows: Priority 1: Landis, Vela Priority 2: Bell, Calder, Campbell, Coffino, Dearman, Fox, Hanagan, Henne, Lane, Lawson, McGuire, Miguel, Rocca, She, Supriano, Viera, Weaver, Winslow Priority 3: None SEED CATEGORY A. Alamo Square Playground There is a design process underway and further development of plans and specifications, as well as community involvement is needed. Therefore, staff recommended a Priority 2 for the project. Rick Osmon, Grace Shohet, Mark Topetcher, David Brownstein (all of the Alamo Square Neighborhood Association) and Deborah Hall spoke in support of the proposal. Grace Shohet and Rick Osmon expressed dismay at being included in the Seed Category and felt that the project has therefore been penalized. They requested that the balance of the project budget be funded in the next fiscal year. Rick Meeting Minutes Park and Open Space Citizens Advisory Committee January 13, 1998 Page 5 Osmon reported that no funds have been raised by the community for the renovation of the playground at Alamo Square. Although they did not speak, approximately 20 persons were present at the meeting in support of the project. Winslow stated that the Committee needs to offer more help to community groups interested in the Seed Program, and that based on her experience with the Pioneer Park project, there are so",
-    "(18*^ Avenue & Lake Street) • Rochambeau Playground - Clubhouse (24*^ Avenue & Lake Street) • Rochambeau Playground - Play Area (24*\" Avenue & Lake Street) • Rolph Play Area (Potrero Avenue & Cesar Chavez) • Saint Mary's Rec. Ctr. & Playground (Murray Street & Justin Drive) • Seed Program ■ Alamo Square Playground (Hayes & Steiner Streets) ■ Duboce Playground (Duboce Avenue & Scott Street) H Koshland Park (Page & Buchanan Streets) ■ Western Addition Computer Learning Center - Margaret Hayward PG (Laguna & Turk Streets) • South Park (64 South Park Avenue) • Stern Grove Benches (19'''' Avenue &",
-    "(22\"'' & Arkansas Streets) • Rochambeau Playground - Clubhouse (24^^ Avenue & Lake Street) • Rochambeau Playground - Play Area (24^^ Avenue & Lake Street) • Rolph Play Area (Potrero Av"
-   ],
-   "url": "https://archive.org/details/minutes1998sanf_5",
-   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=Alamo+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "59minutesregula199697sanf",
-   "title": "Minutes of a regular meeting of the Redevelopment Agency of the City and County of San Francisco",
-   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Alamo Square",
-   "ocr_excerpts": [
-    "Community Center; Matthew Thomas, Bay Area Urban Leage; and Norman Rolfe; San Francisco Tomorrow; Alex Pitcher, South Bayshore Community Development Corporation; Alvin Jones; Espanola Jackson; A. Jacquie Taliaferro, Alta Films; Bob Legauet; Mary Helen Rogers; Christopher Andrews; Bonnie Spindler, President, Alamo Square Neighborhood Association; William Margails, Westside Mental Health Center; Bob LaLanne; Ben Golvin, Edison Capital; Mike Mahoney and Reagan Howe, San Francisco Police Department; Brad Will, Cadenza Architecture; John Waike; Christopher Andrews; David Novick; Ocie Rogers; Don Howard, Fisher Friedman Associate",
-    "ADOPTED. (e) Resolution No. 202-96 authorizing Exclusive Negotiations with LaLanne Volckmann for the purchase and development of Parcels 779-B&C located at the block bounded by McAllister, Fulton, Steiner and Fillmore Streets; Western Addition A-2. Speakers: Christopher Andrews; Bonnie Spindler, President, Alamo Square Neighborhood Association; Mary Helen Rogers; William Margails, Westside Mental Health Center; and Bob LaLanne. ADOPTION: IT WAS MOVED BY MR. KING, SECONDED BY MR. MORALES, AND UNANIMOUSLY CARRIED THAT RESOLUTION NO. 202-96 BE ADOPTED. (f) Workshop on Preliminary Plan; Transbay Survey Area. Speakers: L",
-    "ector, and staff members were also present. Also present were: Melvin D. Lee, Centris Investment Company, Inc.; Reverend Arnold Townsend; Mary Helen Rogers; Bob Lalanne, Lalanne Volckmann; Dan Chung, Fisher Friedman Associates; Redmond Kernan, RFK Associates; Michael Vanderhorst; Bonnie Spindlor, President Alamo Square Neighborhood Association; Augustin Rosas-Maxemin, Armax International, Inc.; John Elberling, Yerba Buena Consortium; Miguel Gutierrez; Reginald Reed; Katherine Nash; Reagan Howe and Jay Parashis, San Francisco Police Department; R. Hernandez, Grubb Ellis Company; and Alvin Jones. UNFINISHED BUSINESS (a) Res",
-    "(d) Public Hearing to hear all persons interested in a Disposition and Development Agreement for Parcels 779-B&C; Western Addition A-2. The President opened the Public Hearing to hear all persons interested in this matter. Resolution No. 41-97 authorizing a Disposition and Development Agreement with Alamo Square, LLC for the purchase and development of Parcels 779-B&C, bounded by McAllister, Fulton, Steiner and Fillmore Streets; Western Addition A-2. (e) Resolution No. 42-97 conditionally approving the Schematic Design for Alamo Square, LLC development on Parcels 779-B&C, bounded by McAllister, Fulton, Steiner and Fillmore Streets; Western Addition A-2. (f) Resolution No. 43-97 expressing the intent of the Redevelopment Agency of the City and County of San Francisco to issue Mortgage Revenue Bonds or Notes in one or more series t",
-    "79-B&C for redevelopment purposes in an amount not to exceed $15,000,000; We"
-   ],
-   "url": "https://archive.org/details/59minutesregula199697sanf",
-   "deep_link": "https://archive.org/details/59minutesregula199697sanf?q=Alamo+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
    "salient": true
   },
   {
@@ -205,6 +208,27 @@
     "t include the 20% cost for engineering and inspect! or. except street resurfacing costs include over- head and indirect costs). STREET TREES PLANTED BY FACE AREA ON FORCE ACCOUNT BASIS as of June 30, 1973 No. of Street Approximate cost Trees Planted (incl. materials fc. labor)\" (05) Alamo Square 89 (06) Bernal Heights 50 (07) Duboce Triangle 57 Total (05-07) 196 $19,817** *Using neighborhood youths. •'•-••An additional 72 trees have been purchased within funds shown, but have not been planted as of June 30, 1973. Also, various materials have been purchased for these plantings. These tre",
     "% Total FY 72-73 k\\k ]]k 28%* 203 ^3 21% *% of total cases . -\"'•'Some adjustments during year cause minor differences between cases filed/terminated and remaining workload (June 30, 1972 vs June 30, 1973) BUREAU OF BUILDING INSPECTION Community Liaison Activities In April 1972, the Alamo Square Citizens' Advisory Committee (CAC) interviewed and selected a candidate for the position of Community Liaison Officer (CLO) ^ This position was created in keeping with the HUD guidelines for cit"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.5,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 9.29,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/excerptsrelating19721973s",
    "deep_link": "https://archive.org/details/excerptsrelating19721973s?q=Alamo+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -212,23 +236,127 @@
    "salient": true
   },
   {
-   "identifier": "generalmanagersr1975sanf",
-   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
-   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
-   "year": 1975,
+   "identifier": "annualreportofd1973sanf_1",
+   "title": "Annual report of the Department of Public Works, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Dept. of Public Works",
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "Alamo Square",
    "ocr_excerpts": [
-    "Senior Citizens Center - 2 - MISSION: Acquisition of a site for future development of a gymnasium in the central Mission Acquisition of the mini park site commonly known as \"Juri Commons\" Planning, design, demolition at the Knudsen/Blume site III. Renovation - Estimated Budget: $750,000 Alamo Square* Buena Vista Park Douglas Playground Eureka Valley Excelsior Playground* Helen Wills - Phase II Holly Park Julius Kahn Portola Playground* Potrero Hill Playground* Rossi Playground Contingency Reserve $100,000 0' 100,000 5- 10,000 65,000 40,000 70,000 CA^-n 75,000 Vf^(J 50,000 60,000 50,000^ 100",
-    "ate Park Pan- handle, Duhace Park improvements are being planned currently using Community Development Funds. Last year the Committee recommended substantial expenditures for renovation of facilities in the: Western Addition. Elsewhere in this report the Committee recommends a major rehabilitation of Alamo Square The combination of these projects, existing improvement appropr ations , and past Commituee recommendations will contribute materially to improvement of the Western Addition. - 15 - Although the community requested a gymnasium facility in the Western Addition, there seems to be an unfulfilled commit",
-    "ab. 10. Cayuga P/G Bldg Rehab. & Enlargement TOTAL 1976 $ 12,000 47,500 165,000 130,000 25,000 25,000 34,500 20,000 30,000 90,000 60,000 $639.000 1976 PROGRAM ADDENDUM NO. 1 (Funds Pending) $ 9,000 1. North Beach P/G Lighting 2. Crocker Amazon P/G Play Area Development 3. Alamo Square P/A Rehab. Chinese P/G Building Cayuga P/G g) Building 50,000 10,000 205,800 10,000 Bid advertising in December, 1976 Bid advertising in Jan 1977. Nobid-bldg. Bid advertising in February, 1977 Planning underway Bid advertising in January, 1977 Planning underway Assigned to consultant Bid",
-    "Kell.ich-Velasco site Knudsen/Bloorn '\"site Appraisal in process Appraisal in process To be determined Appraisal in process Process of purchasing Assigned to Baroni and Danielson Landscape architect - plaining consultant: selection in process Renovation - Estimated Budget:: $750,000 (a) ALAMO SQUARE Preliminary Cost Est $100,000 Resurface tennis court, renovate picnic areas, rehabilitate child- ren's play area Status: Assigned to T. Downey and Associates - 31 - (b) BUENA VISTA PARK 100,000 Phase I - design study, erosion control, rehabilitate children's play area, and other improvemen",
-    "awarded Completed Project completed 34,500 Planning completed - 36 - 7. Duboce Park Planning 8. Folsom P/G Rehab. 9. Potrero Hill Rec. Center Bldg. Rehab. 10. Cayuga P/G Bldg. Rehab. & Enlargement 11. North Beach P/G Lighting 12. Crocker Amazon P/G Play Area Development 13. Alamo Square P/A Rehab. 14. Chinese P/G Building 20,000 Assigned to consultant 30,000 Project completed 90,000 Contract awarded 70,000 Project compl"
+    "with 92% of the buildings certified,, as of that date, to be completed. As of June 30, 1973, there were 101 buildings still active (2886 (97%) completed) with 75 (less than 3% of total buildings) under litigation, with the remain- ing buildings in various stages of completion. in Areas 5-7 ((05) Alamo Square, (06) Bernal Heights, and (07) Ouboce Triangle), all of the Initial inspections have been completed and 737 (46%) of the 1615 structures have been certified to be ii. compliance as of June 30, 1973. In regard to the remainder, 347 are in litigation (under the Abatement Appeals Board or at the of",
+    "3 2365 18 60 81.8 4898 85.4 (f) Demo! I shed 55 47 4 4 1.8 76 1.3 (g) Total SCC'd *(d#e,&f) 2888 2784 33 71 96.7 5564 97 J *SCC 'd-Sat i sfactory £ode Compliance (Found Standard, Rehabi 1 1 tated &/or Derrtol i shed) STATUS OF BUILDINGS IN CURRENTLY ACTIVE THREE FACE AREAS (05) ALAMO SQUARE; (06) BERNAL HEIGHTS; (07) DUBOCE TRIANGLE) AS OF JUNE 30, 1973 BUILDINGS (STRUCTURES) Dwelling Total Res id. Non- Res id. Mixed % Units % (a) Total Buildings 1615 1514 28 73 100 4641 100 (b) Inspections Completed 1615 1514 28 73 100 4641 100 (c) Found in Code Violation 1",
+    "esurfacing (Note that the cost figures shown above do not include the 20% cost for engineering and inspection except street resurfacing costs include over- head and indirect costs). STREET TREES PLANTED BY FACE AREA ON FORCE ACCOUNT BASIS as of June 30* 1973 No. of Street Approximate cost (05) Alamo Square Trees Planted 89 (incl. materials & labor)* (06) Bernal Heights 50 (07) Duboce Triangle 57 Total (05-07) 196 $19,817** *Using neighborhood youths. **An additional 72 trees have been purchased within funds shown, but have not been planted as of June 30, 1973. Also, various materials have b",
+    "FACE Area 1 Number of Requests Reasons for Relocations (Number of Cases) Rehabi- 1 1 tatlon Demo- lition Rent Increase (01) Arguello 15 15 0 0 Park (02) Buena Vista 8 8 0 0 Heights (03) Glen Park 2 2 0 0 (04) Great Highway 10 7 3 0 Total (01-04) 35 32 3 0 (05) Alamo Square 93 79 9 5 (06) Bernal Heights 42 41 0 1 (07) Duboce Triangle 56 50 0 6 Total (05-07) 191 170 9 12 Total (01-07) 226 202 12 12 BUREAU OF BUILDING INSPECTION Relocations Thru Dec, 3?» 1972* (as reported by Central Relocation Services) (1) Net estimated workload in ori",
+    "otal FY 72-73 414 114 28%* 203 43 21% - - - *% of total cases. **Some adjustments during year cause minor differences between cases f i led/terminated and remaining workload (June 30, 1972 vs June 30, 1973). BUREAU OF BUILDING INSPECTION Community Liaison Activities in April 1972, the Alamo Square Citizens’ Advisory Committee (CAC) interviewed and selected a candidate for the position of Community Liaison Officer (CLO) «, This position was created in keeping with the HUD guidelines for ci"
    ],
-   "url": "https://archive.org/details/generalmanagersr1975sanf",
-   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Alamo+Square",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.87,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.37,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 2.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/annualreportofd1973sanf_1",
+   "deep_link": "https://archive.org/details/annualreportofd1973sanf_1?q=Alamo+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "variant_note": "2 editions cited",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "minutes1990sanf_2",
+   "title": "Minutes",
+   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "ocr_excerpts": [
+    "AL ORDER OF BUSINESS (NOTE: The Committee may convene in Executive Session pursuant to Section 54956.9(a) of the California Government Code regarding potential litigation) 6. SIGNIFICANT NATURAL RESOURCE AREAS — CONSIDERATION OF CRITERIA 7. REVIEW OF OPEN SPACE PROPOSALS Renovat i on/Ma i ntenance Alamo Square - Renovation/Maintenance Alioto Mini Park - Renovation/Maintenance Bernal Hill Park Perimeter - Maintenance Buena Vista Park Interior Irrigation Loop - Renovation/Maintenance Campbel I /Rut land Mini Park - Renovation/Maintenance Folsom Playground - Renovation Golden Gate Park Big Rec Dressing Room - Renov",
+    "ager-Administration; Deborah Learner, Park Planner; Tim Lillyquist, Assistant to the General Manager; and Elaine Molinari, Director of Neighborhood Services, of the Recreation and Park Department 2. APPROVAL OF MINUTES Minutes of October 16, 1991 were approved as submitted. 3. PUBLIC COMMENT Alamo Square — Request for $103,000 to renovate Alamo Square according to plans already submitted to the Committee. Mission Playground — Request for funding for improvements to Mission Playground: security lighting, open the Valencia Streets entrance and security fenci ng. 23rd and Treat Streets — Request to acquire a site at 23rd and Treat Streets for open",
+    "Park and Open Space Advisory Committee. Members of the public may address the Committee for up to 3 minutes for individuals or up to 5 minutes for groups, or a lesser period time subject to the call of the Co-Chairs. STAFF REPORTS REVIEW OF OPEN SPACE PROPOSALS Renovat i on/Ma i ntenance Alamo Square - Renovation/Maintenance Al ioto Mini Park - Renovation/Maintenance Bernal Hill Park Perimeter - Maintenance Buena Vista Park Interior Irrigation Loop Campbe 1 1 /Rut I and Mini Park - Renovation/Maintenance Chinese Playground - Remodeling Excelsior Playground Folsom Playground - Renovation Frank I in Square",
+    "by the Park and Open Space Advisory Committee on matters stated, but not necessarily the chronological order in which the matters were taken up. City and County of San Francisco Recreation and Park Department 1992-93 OPEN SPACE PROGRAM PROJECT LIST October 29, 1991 Renovation /Mai ntenance 1. Alamo Square - Community request to upgrade play area, restrooms, lighting, walkways and develop landscape master plan. Cost estimate of $103,000 provided by community. (Given Priority 1 on 10/29 with recommendation that community match funds of up to $103,000) 2. Al ioto Mi ni Park - Community and staff request",
+    "ssarily the chronological order in which the matters were taken up. 3 5 3 I t City and County of San Francisco Recreation and Park Department 1992-93 OPEN SPACE PROGRAM PROJECT LIST November 6, 1991 Re novation /Mai nte nance I 1 . 2. 3. 4. 5. 5a. 6. 7. 8. 9. 10. 1 1 . 12. Alamo Square - Community request to u"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.28,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.78,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes1990sanf_2",
+   "deep_link": "https://archive.org/details/minutes1990sanf_2?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": false
+  },
+  {
+   "identifier": "59minutesregula199697sanf",
+   "title": "Minutes of a regular meeting of the Redevelopment Agency of the City and County of San Francisco",
+   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "ocr_excerpts": [
+    "Community Center; Matthew Thomas, Bay Area Urban Leage; and Norman Rolfe; San Francisco Tomorrow; Alex Pitcher, South Bayshore Community Development Corporation; Alvin Jones; Espanola Jackson; A. Jacquie Taliaferro, Alta Films; Bob Legauet; Mary Helen Rogers; Christopher Andrews; Bonnie Spindler, President, Alamo Square Neighborhood Association; William Margails, Westside Mental Health Center; Bob LaLanne; Ben Golvin, Edison Capital; Mike Mahoney and Reagan Howe, San Francisco Police Department; Brad Will, Cadenza Architecture; John Waike; Christopher Andrews; David Novick; Ocie Rogers; Don Howard, Fisher Friedman Associate",
+    "ADOPTED. (e) Resolution No. 202-96 authorizing Exclusive Negotiations with LaLanne Volckmann for the purchase and development of Parcels 779-B&C located at the block bounded by McAllister, Fulton, Steiner and Fillmore Streets; Western Addition A-2. Speakers: Christopher Andrews; Bonnie Spindler, President, Alamo Square Neighborhood Association; Mary Helen Rogers; William Margails, Westside Mental Health Center; and Bob LaLanne. ADOPTION: IT WAS MOVED BY MR. KING, SECONDED BY MR. MORALES, AND UNANIMOUSLY CARRIED THAT RESOLUTION NO. 202-96 BE ADOPTED. (f) Workshop on Preliminary Plan; Transbay Survey Area. Speakers: L",
+    "ector, and staff members were also present. Also present were: Melvin D. Lee, Centris Investment Company, Inc.; Reverend Arnold Townsend; Mary Helen Rogers; Bob Lalanne, Lalanne Volckmann; Dan Chung, Fisher Friedman Associates; Redmond Kernan, RFK Associates; Michael Vanderhorst; Bonnie Spindlor, President Alamo Square Neighborhood Association; Augustin Rosas-Maxemin, Armax International, Inc.; John Elberling, Yerba Buena Consortium; Miguel Gutierrez; Reginald Reed; Katherine Nash; Reagan Howe and Jay Parashis, San Francisco Police Department; R. Hernandez, Grubb Ellis Company; and Alvin Jones. UNFINISHED BUSINESS (a) Res",
+    "(d) Public Hearing to hear all persons interested in a Disposition and Development Agreement for Parcels 779-B&C; Western Addition A-2. The President opened the Public Hearing to hear all persons interested in this matter. Resolution No. 41-97 authorizing a Disposition and Development Agreement with Alamo Square, LLC for the purchase and development of Parcels 779-B&C, bounded by McAllister, Fulton, Steiner and Fillmore Streets; Western Addition A-2. (e) Resolution No. 42-97 conditionally approving the Schematic Design for Alamo Square, LLC development on Parcels 779-B&C, bounded by McAllister, Fulton, Steiner and Fillmore Streets; Western Addition A-2. (f) Resolution No. 43-97 expressing the intent of the Redevelopment Agency of the City and County of San Francisco to issue Mortgage Revenue Bonds or Notes in one or more series t",
+    "79-B&C for redevelopment purposes in an amount not to exceed $15,000,000; We"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.22,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.72,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/59minutesregula199697sanf",
+   "deep_link": "https://archive.org/details/59minutesregula199697sanf?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
    "salient": true
   },
   {
@@ -243,11 +371,32 @@
     "lost so much _ 7 _ ^ Code Enforcement Feasibjlity Sudty, May, 1968, available from the Property Conservation Division, S.F. Department of Public Works. revenue while his units were vacant. In April, 1968, another case was investigated by a FACE loan officer. A property owner in the proposed Alamo Square FACE area needed $9,000 to pay a due second mortgage. The holder of his first mortgage, a savings and loan company, would not refinance, citing two factors: first, the \"tight money\" market precluded any refinancing, and second, the Alamo Square neighborhood had been \"red-lined\" by the firm as a high risk area. The FACE loan officer investigated several other savings and loan companies, to see if private financing were available for this property owner. Only one institution was willing to refinance the mortgages, and indicated it would",
     "w monthly installments and a \"balloon payment\" of almost $9,000 due at the end of the five-year period. A fully amortized loan was available from one mortgage company, which offered the money at 10%, plus 10 points, for five years. 8 Another case was investigated in October, 1968, when an Alamo Square property owner needed funds for rehabilitation. The twenty-five unit structure was acquired through a foreclosure, and the owner wanted a loan of mo"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 7.91,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 2.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/section312loanli1968lync",
    "deep_link": "https://archive.org/details/section312loanli1968lync?q=Alamo+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -282,7 +431,7 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {

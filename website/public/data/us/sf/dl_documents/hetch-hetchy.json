@@ -1,22 +1,49 @@
 {
- "generated_at": "2026-07-22T15:04:53.722667+00:00",
+ "generated_at": "2026-07-27T17:06:09.760299+00:00",
  "slug": "hetch-hetchy",
  "name": "Hetch Hetchy / O'Shaughnessy Dam",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
   {
-   "identifier": "sanfranciscowate2005hans",
-   "title": "San Francisco water and power : a history of the Municipal Water Department & Hetch Hetchy system",
-   "creator": "Hanson, Warren D,Kukula, Frank,Nelson, Christopher,Williams, Mary",
-   "year": 2005,
-   "pool": "sfpl",
-   "matched_alias": "O'Shaughnessy Dam",
-   "url": "https://archive.org/details/sanfranciscowate2005hans",
-   "deep_link": "https://archive.org/details/sanfranciscowate2005hans?q=O'Shaughnessy+Dam",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Histories & surveys",
-   "salient": true,
-   "gloss": "A 2005 SFPL history of the Municipal Water Department and Hetch Hetchy System, whose timeline dates the O'Shaughnessy Dam to 1919-1923 and its raising to store 360,360 acre feet."
+   "identifier": "C124920621",
+   "title": "San Francisco groundwater master plan : preliminary draft",
+   "creator": "San Francisco (Calif.). Water Department",
+   "year": 1995,
+   "pool": "dl",
+   "matched_alias": "Hetch Hetchy",
+   "ocr_excerpts": [
+    "ter-Freshwater Interface - The boundary between saline and fresh water. Saltwater Intrusion - The movement of salt water into a body of fresh water. It can occur in either surface water or groundwater bodies. San Francisco Water Supply - A series of reservoirs, aqueducts, and hydroelectric plants that capture and con- vey water from the Hetch Hetchy Reservoir on the Tuolumne River watershed and other surface water systems (such as the San Antonio and Calaverous Reser- voirs) for direct delivery to customers and into San Francisco storage reservoirs. The system is owned by the City and County of San Francisco and is designed to provide up to 300 mgd to water users in the Bay Area and th",
+    "or causes of groundwater contamination. SAC/BA35516/021.DOC/9-95 Executive Summary The San Francisco Water Department (Water Department) is responsible for providing a reliable, high quality, and affordable water supply for the City and County of San Francisco and its suburban wholesale customers. Surface water supplies from both the Hetch Hetchy Reservoir and local sources have provided most of the City's water supply for the past 60 years. Currently, the City is seeking methods to increase the reliability and security of its long- term water supply. By integrating the use of its potable surface water, potable and nonpotable groundwater, and nonpotable recycled water supplies, the C",
+    "The Master Plan identifies specific actions to be conducted by the Water Department during the next 5 years and outlines broader strategies for the next 20 years. may need to give up some water supplies for environmental protection. e Water Supply Planning. Recent studies conducted by the City have indicated that the safe yield of the Hetch Hetchy system has dropped from 300 mgd to 242 mgd. This has prompted the Water Department to SAC/BA35516/011.DOC/9-95 ES-1 Total water demand in the City is expected to increase over the next 20 years as new higher-density buildings replace those destroyed by the 1989 Loma Prieta earthquake, as idle former military bases begin operating under",
+    "ble, affordable, and high quality water for its customers. ES-7 oo er wan, a ee tena, arnt r= waret ogi > <= Section One - Introduction The San Francisco Water Department is responsible for providing a reliable, high-quality, and affordable water supply for the City of San Francisco. Surface water supplies from both the Hetch Hetchy Reservoir and local sources have been able to meet the City’s water supply needs for the past 60 years. However, during the recent prolonged drought, the City faced considerable water shortage impacts due to limitations in the system. To reduce future water shortage impacts, the Water Department is seeking methods to increase the reliability",
+    "r. By 1913, the City of San Francisco estimated t"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 8.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.5,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124920621",
+   "deep_link": "https://archive.org/details/C124920621?q=Hetch+Hetchy",
+   "source_label": "Internet Archive — Democracy's Library",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanfranciscowate1999hans",
@@ -25,40 +52,316 @@
    "year": 1999,
    "pool": "sfpl",
    "matched_alias": "O'Shaughnessy Dam",
+   "ocr_excerpts": [
+    "THE Municipal Water Departme %?J^ AND ETCH HETCHY SYSTEM IS'1 (OlB'k P^and County of San Francisco REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY San 3 1223 05971 7349 Francisco WATER AND POWER A History of the Municipal Water Department and Hetch Hetchy System Digitized by the Internet Archive in 2014 https://archive.org/details/sanfranciscowate1999hans Water and Power 4 PREFACE rights-of-way on the Tuolumne River in Yosemite National Park to San Francisco. The total system is the real- ization of a concept for an aqueduct from the Sierra Nevada watersheds, which had been planned since the 1860's. A very busy 20 years of con- struction on the Hetch Hetchy dams and aqueducts resulted in Sierra Nevada water being delivered into the Water Department local distribution system by 1934. Integrating Hetch Hetchy and Water Department systems has provided San Francisco and neigh- boring communities with an unfailing year-round assured supply of pure, potable water from secure sources. A six-year drought and a burgeon- ing population in the Bay Area, never- This 1994 update of San Francisco Water and Power, A History of the Municipal Water Department and Hetch Hetchy System supersedes the last published version from 1985. Since the mid-eighties, two significant natural events — the 1989 Loma Prieta Earthquake and the longest drought in San Francisco's recorded history — have necessitated changes in the text to reflect how San Francisco's water system responded to",
+    "ivate enterprise — The Spring Valley Water Company. Mayor \"Sunny Jim\" Rolph purchased the fully developed, mature water works for San Francisco at a cost of $39,962,606.51 on March 3, 1930. Since then, the City has operated and main- tained the water works as the San Francisco Water Department. The Hetch Hetchy System had its birth in the Raker Act of 1913, which granted water and power resource CITY ENGINNER O'SHAUGHNESSY AND STAFF. Department as to how both commer- cial and residential customers use water, how it can be conserved and what additional untapped sources of potable water may exist for futu",
+    "d Power offers an appreciation of the magnitude of the water and power systems, both past and present. In an ever-changing and growing urban environment accompanied by an unpredictable climate, the vision of the people who conceived, developed and then integrated the San Francisco Water Department and Hetch Hetchy System still stands San Francisco in good stead today. JPM, January 1994 PREVIOUS PAGE, 1887- SPRING VALLEY WATER WORKS BOARD OF DIRECTORS 5 Water and Power The seed for San Francisco's municipal quest for drink- ing water was sown in 1769, when Don Gaspar de Portola and Jose Francisco Orte",
+    "Dolores lake and stream have long since been filled in and built over. A po"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.82,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.82,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscowate1999hans",
    "deep_link": "https://archive.org/details/sanfranciscowate1999hans?q=O'Shaughnessy+Dam",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "3 editions cited (1985–1999)",
    "group": "Histories & surveys",
-   "salient": true,
-   "gloss": "A 1999 edition of the same municipal water history, tracing the Hetch Hetchy System from the 1913 Raker Act to the delivery of Sierra Nevada water by 1934."
+   "salient": true
   },
   {
-   "identifier": "4annualreportsanf",
-   "title": "Annual report",
-   "creator": "San Francisco Public Utilities Commission. Hetch Hetchy Water and Power System,San Francisco Public Utilities Commission. Bureau of Light, Heat and Power",
-   "year": 1976,
+   "identifier": "C124889945",
+   "title": "San Francisco water & power : a history of the Municipal Water Department and Hetch Hetchy System",
+   "creator": "Hanson, W. D. (Warren Durward), 1921-",
+   "year": 1985,
+   "pool": "dl",
+   "matched_alias": "Hetch Hetchy",
+   "ocr_excerpts": [
+    "Fall 921 Sep 28 922 Jun 922 Jun 23 922 Jul 922 Aug 17 923 923 Apr 6 923 May 18 923 Jul 7 923 Oct 2 923 Oct 924 Jan 924 Mayor Rolph hires M.M. O’Shaughnessy as City Engineer Priest Grade road reconstructed Hearings before Interior Secretary Fisher concluded Board of Army Engineers report recommends San Francisco develop Hetch Hetchy $20 million cheaper Interior Secretary Fisher refuses further permits without Congressional authority First of “Hetch Hetchy” bills introduced in Congress “Raker Act” introduced in Congress House adopts Raker Act Senate adopts Raker Act President Woodrow Wilson signs Raker Act into law Spring Valley starts construction of Calaveras Dam San Francisco ratifies Raker Act Surveys start for Hetch Hetchy Railroad Start of Hog Ranch — Hetch Hetchy and Early Intake roads Surveys made for Lower Cherry power aqueduct, Mountain Tunnel and Priest Reservoir George A. Elliott s igceeds as chief engineer of Spring Valley Preliminary preparation work starts in Hetch Hetchy Valley Canyon Ranch sawmill starts operations for Hetch Hetchy Diversion tunnel at O’Shaughnessy damsite starts Construction of Hetch Hetchy Railroad starts Construction of Lower Cherry Aqueduct starts Surveys made for Coast Range Tunnel Lower Cherry Diversion Dam completed Drifting Mountain Tunnel begins at Early Intake and South Fork Construction starts on Eleanor Dam Construction of Hetch Hetchy Railroad completed — operations start Construction of Priest Dam starts Calaveras Dam fails — reconstruction monitored by City Engineer Early Intake Powerhouse starts operation Eleanor Dam completed to height of 70 feet Power Administrator orders surplus Early Intake power to PG&E Hetch Hetchy sawmill moves to Hog Ranch Hermann Schussler dies at age 77 Utah Construction awarded contract to build O’Shaughnessy Dam O'Shaughnessy Dam diversion tunnel completed State Railroad Commission directs Spring Valley to raise Calaveras Dam, among other matters Construction of Moccasin Powerhouse starts Construction of Priest Dam starts Construction of Moccasin Power Tunnel starts Construction of Pulgas Tunnel at Crystal Springs starts Construction of Moccasin Penstock starts San Francisco gets option to buy Spring Valley Water Company — agrees to build Pipeline #1 across San Francisco Bay Construction of Calaveras Dam starts O'Shaughnessy Dam completed Construction of Bay Crossing Pipeline #1 starts O'Shaughnessy Dam dedicated — height 226.6 feet, capacity 206,000 acre feet Construction of Early Intake Diversion Tunnel started Priest Dam completed Construction of Dumbarton Bridge for Bay Pipeline #1 starts Sawmill operations at Hog Ranch (Camp Mather) terminated 1769 1773 Nov 30 1776 1825 1833 1835 1836 1846 Jul 9 1846 1849 1850-1852",
+    "d State Constitution allows Board of Supervisors to fix "
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 9.03,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.03,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124889945",
+   "deep_link": "https://archive.org/details/C124889945?q=Hetch+Hetchy",
+   "source_label": "Internet Archive — Democracy's Library",
+   "group": "Histories & surveys",
+   "salient": true
+  },
+  {
+   "identifier": "sanfranciscowate2005hans",
+   "title": "San Francisco water and power : a history of the Municipal Water Department & Hetch Hetchy system",
+   "creator": "Hanson, Warren D,Kukula, Frank,Nelson, Christopher,Williams, Mary",
+   "year": 2005,
    "pool": "sfpl",
-   "matched_alias": "Hetch Hetchy Water and Power",
-   "url": "https://archive.org/details/4annualreportsanf",
-   "deep_link": "https://archive.org/details/4annualreportsanf?q=Hetch+Hetchy+Water+and+Power",
+   "matched_alias": "O'Shaughnessy Dam",
+   "ocr_excerpts": [
+    "SAN FRANCISCO WATER AND POWER SAN FRANCISCO PUBLIC LIBRARY 3 1223 06977 6707 AJrlistory r q/the Municipal Water Department ^ I Hetch Hetchy System s s REF 628.1 Sa52wt 2005 HETCH HETCHY REGIONAL WATER SYSTEM 9 So- c-s^cncc Coast Range Tunnel Putgas TunneJ Calaveras Reservoir sat. =*ancsco< ma OTBSUFPjES £ «or Si per bucket ^BlMM RnKppaftne tod n O Sar. P-moKG ^ BM C*eek WW r- ■» SPRING VALifY WATER COMPANY BUILDS WATER SYSTEM 1849-1876 Pdardtos, Crystal Spnngs 3 San Andreas water supplies developed I Frst Alameda Creek drversens by Spring Vaiey Water Company. 1900 USGS recommends Gty look to Tuokjmne Rw tor water 1901 jvnes Phebn Aes kx Tuofumne Rjver water rights 1910 San Francisco approves $45 million bona to build Hetch Hetchy System 1912 John Freeman prepares plan to develop Tuolumne Rjver water supply 1913 U S Congress grants City rights to water from Tuolumne River (Raker Act). * SAN FRANCISCO BURNS q- FOR THREE DAYS _C £ 1906 Apnl l8at$:l2AM n 7.9 Earthquake strikes More than 3.000 died. $400 million damages City leaders vow never again to let San Francisco bum. 1915-1917 Hetch Hetchy Railroad built to carry men & supplies to worksite. 1918 Calaveras Dam collapses during construction; rebuilding begins 1919-1923 O'Shaughnessy Dam built to store Hetch Hetchy water 1923-1932 Pipelines laid across Central Valley & San Francisco Bay 1934 Hetch Hetchy water system completed & dedicated 1918 Early Intake Powerhouse supplies power for Hetch Hetchy 1921-1925 Moccasin Powerhouse, Penstock & Tunnel built. 1935 City lays second pipeline across San Francisco Bay I93B O'Sha'ighnessy Dam raised to store 360.360 acre feet. 1947 San Franciscans approve $2S million to build two new transmission pipelines. 1953-1956 Second pipelines built across Cent",
+    "starts setsrmc study of its water system 1997 Voters approve $304 m*on to upgrade treatment plants. 1998 Voters freeze wacw i sewer rates trtroug* 2C0fe CALIFORNIA ENERGY CRJSJS 2000 Gty hat hard with roAre btadcoucsfth^ibfc. :.v: ^st-e-j-^N*^ ^^History r Q/ the Municipal Water Department & Hetch Hetchy System San Francisco Public Library Gowrnmsnt ! ifonnation Center San Francisco Public Library 1C3 Urkfn Street, 5t!i Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC UTILITIES COMMISSION AN FRANCISCO WATER AND POWER Municipal Water Department Hetch Hetchy System SAN FRANCISCO PUBLIC UTILITIES COMMISSION PREFACE This 2005 edition of San Francisco Water and Power, A History of the Municipal Water Department and Hetch Hetchy System celebrates the extraordinary events and memorable leaders who conceived, designed and built San Francisco's water system with fore- sight to provide today's Bay Area with high quality drinking water supplies. San Francisco's water system deve"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.84,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.84,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscowate2005hans",
+   "deep_link": "https://archive.org/details/sanfranciscowate2005hans?q=O'Shaughnessy+Dam",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true,
-   "gloss": "The 1975-76 annual report of the Hetch Hetchy Water and Power System, noting the dam was raised an additional 85.5 feet and the system's roughly $100 million cost."
+   "group": "Histories & surveys",
+   "salient": true
   },
   {
-   "identifier": "sanfranciscowate1979leon",
-   "title": "San Francisco water and power",
-   "creator": "Leonard, James H,Hetch Hetchy Water and Power System",
-   "year": 1979,
+   "identifier": "3annualreportsanf",
+   "title": "Annual report",
+   "creator": "San Francisco Public Utilities Commission. Hetch Hetchy Water and Power Dept",
+   "year": 1975,
    "pool": "sfpl",
    "matched_alias": "Hetch Hetchy",
-   "url": "https://archive.org/details/sanfranciscowate1979leon",
-   "deep_link": "https://archive.org/details/sanfranciscowate1979leon?q=Hetch+Hetchy",
+   "ocr_excerpts": [
+    "Library 1C0 Larkin Street, 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library Digitized by the Internet Archive in 2013 http://archive.org/details/3annualreportsanf > U1 ^ JfcL \\ ix ~- — jfflBiw — i \"**- 3tK 1 S^f 3, .1974 AN»iUA4\\REP0RT 1975 HETCH HETCHY WtTER AND POWER PUBLIC UTILITIESC0MMIS5 ON CITY AND COUNTY OF SAN FRANC SCC 3 1223 06446 4663 CITY AND COUNTY OFJ5AN FRANCISCO JOSEPH L. ALIOTO - MAYOR PUBLIC UTILITIES COMMISSION H. WELTON FLYNN JOSEPH P. BYRNE OLIVER M. ROUSSEAU JOSEPH J. DIVINY HENRY E. BERMAN JOHN D. CROWLEY President Vice President Commissioner Commissioner Commissioner General Manager ANNUAL REPORT FISCAL YEAR 1974-75 HETCH HETCHY WATER AND POWER DEPARTMENT ORAL L. MOORE - General Manager This report is respectfully dedicated to Hetch Hetchy employees, past and present, whose devoted and conscientious efforts have made possible these accomplishments for San Francisco. 2 50354 SFPL= ECONO JRS 58 SFPL 05/07/04 LAKE ELEANOR AND LAKE LLOYD/CHERRY DAM (foreground) HIGHLIGHTS - 1974-75 For Hetch Hetchy, fiscal year 1974-75 has been a record year in many ways. The heavy rainfall and snow on the Tuolumne River Watershed during the past two years have brought higher-than- normal inflows. With all project reservoirs assured of filling and spilling, our efforts were bent on channeling the maximum ava",
+    "power production and on minimizing spill after the reservoirs have been filled. The success of these efforts is shown by department's electric system output of 2,057,609,000 kilowatthours for 1974-75, a new record for total project hydroelectric generation for one fiscal year. 1 - During the year, Hetch Hetchy furnished 588,989,569 kilowatthours to seven industrial customers located in Alameda, Santa Clara and Stanislaus Counties, for a revenue of $7.9 million. Both sales and revenue represent records unmatched in Hetch Hetchy' s history. The impact of the revenue becomes even more dramatic when it is shown that the same number of kilowatthours sold to these customers in fiscal year 1969-70 would have returned little more than half as much revenue. The record generation and the high industrial power rates combined have",
+    "Negotiations to extend the March 14, 1945 \"Main Contract\" between PGandE and City beyond the expiration date of July 31, 1975 were concluded with the execution of an amendment agreement dated June 24, 1975. This contract covers, among other things, the services which the Company performs in wheeling Hetch Hetchy energy to City's municipal consumers in and out of San Francisco. Through bargaining based on the cost-of-service principle and on the changes in conditions incident to wheeling of Hetch Hetchy power by Company over the last three decades, City negotiators were able to obtain for the City p"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.42,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.92,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/3annualreportsanf",
+   "deep_link": "https://archive.org/details/3annualreportsanf?q=Hetch+Hetchy",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited (1975–1976)",
+   "group": "Reports & records",
+   "salient": false
+  },
+  {
+   "identifier": "c124896060",
+   "title": "Mandatory water rationing program",
+   "creator": "San Francisco (Calif.). Water Department",
+   "year": 1988,
+   "pool": "dl",
+   "matched_alias": "Hetch Hetchy Water and Power",
+   "ocr_excerpts": [
+    "e % A TaD TAL ge Tr « TABLE OF CONTENTS Program Description Water Rationing Rules and Regulations Work Plan and Budget Systemwide Water Allotment Summary Water Use and Storage Graphs Digitized by the Internet Archive In 2024 https://archive.org/details/c124896060 PROGRAM DESCRIPTION A. WATER SUPPLY SITUATION The Hetch Hetchy Water and Power system provides between 80 and 85 percent of the water served in the San Francisco Water Department service area. This year, runoff into the Hetch Hetchy reservoirs is expected to be only 30 percent of normal and may approach 1977 levels, the driest year on record. This situation follows one of the driest years on record, 1987. Current storage levels are high relative to 1976-77 primarily due to decisions made in January, 1987 to drastically reduce power generations. However, snowpack conditio",
+    "of Capacley, waatiis storage would be exhausted in approximately 13 months at current consumption rates in the absence of additional runoff. While this picture will change with completion of this year's runoff, the anticipated water supply is clearly inadequate to safely provide for the domestic needs of the 2.1 million people served by the Hetch Hetchy system. The purpose of any extraordinary conservation program 5 a 8 | conserve water in case of consecutive dry years. Having experienced two consecutive critically dry years, the danger lies in the possibility of a third dry year in 1989. In fact. 1989 must provide greater than average runoff to replenish storage while meeting total water",
+    "se cities allow interruption of service, (2) these cities have other sources of water which currently supply the majority of their needs, 3) information provided by these cities in the course of contract negotiations during 1986 indicated sufficient water supply waS available in the event of termination of service by San Francisco, and 4) the Hetch Hetchy supply must be conserved as much as possible for those cities and communities, including San Francisco, that are totally dependent on it. The total supply to San Jose and Santa Clara is 6.95 milgal per day. This amount represents the combined purchases of the 10 smaller of the 28 permanent resale customers and is a necessary part of the plan",
+    "bone o oe cen, ie tloddbe .#elsatenbet base Beane! oud afesses a a a a sBreemc IAD nesaeel rit, etna i ced 39) on ao eobtins ont a, en} oh : 7 > oo 7 > 2. ‘usTt sttt eed segu ama2pOTG dines die v4 inti a) pfqes aes sSam 00 fi Sn Perineme ak | inte ar pneseabehe: - Schools Program fe) Distribute water conservation materials and Hetch Hetchy video presentation. fe) Provide student field trips of water department facilities. fe) Theatrical presentations on water conservation in selected schools. fe) Coordinate program with suburban wholesale customers and pr"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 9.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 5.26,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/c124896060",
+   "deep_link": "https://archive.org/details/c124896060?q=Hetch+Hetchy+Water+and+Power",
+   "source_label": "Internet Archive — Democracy's Library",
    "group": "Other records",
-   "salient": true,
-   "gloss": "A 1979 San Francisco Water and Power booklet published by the Hetch Hetchy Water and Power System, with a section on O'Shaughnessy Dam and the origin of the Hetch Hetchy name."
+   "salient": true
+  },
+  {
+   "identifier": "p16255coll1_H1473828884850_file2",
+   "title": "San Francisco : Climate Action Strategy.",
+   "creator": null,
+   "year": 2013,
+   "pool": "dl",
+   "matched_alias": "Hetch Hetchy Water and Power",
+   "ocr_excerpts": [
+    "mergency entities), public works maintenance (roadways and parks), airport and port operations, parks and recreation, and Muni buses and light rail. Between 1990 and 2010 the city government reduced emissions in these areas by 25,870 mT CO, e.° GHG emissions reductions at the municipal level have come from the clean electricity provided by Hetch Hetchy Power being used in buildings. Emissions are projected to fall even further as the San Francisco Public Utilities Commission began providing 100% carbon-free electricity to all municipal buildings in Fiscal Years 2011-2012. Natural gas use for heating in buildings increased from 1990 to 2010, causing an increase in associated emissions. Tot",
+    "ulnerability Index by Census Block Group, San Francisco HD Low Vulnerabaity =) E= = it) High Vulnerability San Francisco Department of Public Health (2012). Developing Public Health Capacity and Adaptations to Reduce Human Health Effects of Climate Change. Unpublished data. San Franciscans enjoy excellent drinking water from the Hetch Hetchy Water System. Risks to the water supply come from the changing pattern of snowfall and overall precipitation in the Sierra Nevada mountain range. Increasingly, snow is falling at different times of the year, and more precipitation is coming as rain instead of snow. Snowmelt is happening 5 to 30 days earlier than historically observed.!° To",
+    "Why are no greenhouse gas emissions associated with water and wastewater in San Francisco¢ While water provision and water consumption are responsible for 19% of the energy used statewide, the energy water nexus is different for San Francisco. Carbon impacts associated with water delivery are uniquely low in San Francisco because of the Hetch Hetchy water delivery system, which is predominantly gravity fed and therefore requires significantly less energy for pumping and distribution. In addition, the carbon footprint of the electricity that is used for pumping between storage reservoirs and into the city is very low due to the San Francisco Public Utilities Commission's (SFPUC) low-carb",
+    "957.40 874.50 675.20 521.10 45.6% (PG&E and Power Plants) (Ibs/MWh) Natural Gas* (Ibs/therm) 11.7 11.7 11.7 11.7 -0.3% VMT (g/VMT) 558.59 568.53 543.65 541.80 3.0% Diesel - Caltrain & Ferry (Ibs/gal) 22.38 22.38 22.38 22.38 0.0% Diesel - Muni (Ibs/gal) 22.51 22.51 22.51 22.51 0.0% Waste** (Ibs/MT) 1,562.23 1,213.56 1,213.56 1,213.56 -22.3% Hetch Hetchy Power (Ibs/MWbh) 145.19 149.57 151.30 32.40 777% Direct Access - Other 957.40 748.50 1,284.76 1,253.89 31.0% Direct Access - BART 957.40 748.50 444.48 406.04 -57.6% Electricity 2,032,085 2,068,204 1,688,349 1833959. -34.4% MWh - Residential 509,906 578,642 417,305 335,195 -34.3% MWh - Commercial 1,378,706 1,176,160 871,883 721,820 47.6% MWh",
+    "ector. Each of these syste"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 7.9,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.4,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/p16255coll1_H1473828884850_file2",
+   "deep_link": "https://archive.org/details/p16255coll1_H1473828884850_file2?q=Hetch+Hetchy+Water+and+Power",
+   "source_label": "Internet Archive — Democracy's Library",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "C101694962",
+   "title": "San Francisco Public Utilities Infrastructure Task Force : final report : June 1, 2000-June 17, 2002",
+   "creator": null,
+   "year": 2000,
+   "pool": "dl",
+   "matched_alias": "Hetch Hetchy",
+   "ocr_excerpts": [
+    ", law, finance, economics, engineering, the environment, business — hotels, restaurants city employees and including both property owners and tenants nearly all of whom reside in San Francisco. The Task Force is grateful that you gave us the collective opportunity to investigate into and advise concerning the current status and future of the Hetch Hetchy system, a unique and priceless asset of the City and County of San Francisco. Against the background of our Final Report, it is evident that your task force has run up against an entrenched determination on the part of the PUC to put before the voters in November a multi-billion dollar bond measure. As the Final Report provides, it is our b",
+    "nd project planning was in a constant state of turmoil and cost overruns. *Notwithstanding these institutional problems, the PUC was proposing a mammoth CIP costing in excess of $4 billion, an infrastructure repair and upgrade program that dwarfed in size, complexity and cost anything that the PUC had attempted since the completion of the Hetch Hetchy project itself almost 80 years ago. This CIP was to be funded through the scale of revenue bonds, the cost of which would be borne by the system’s ratepayers. In its interim recommendations to the Mayor, the Task Force urged that the PUC adopt a proper long-term strategic plan, a long-term financial plan, and an achievable CIP that grew o",
+    "epresenting the PUC's wholesale customers in San Mateo and Santa Clara Counties drafted legislation (SB 1870) for adoption in Sacramento creating an alternate funding source for infrastructure projects. This legislation would create a financing authority that could issue up to $2 billion in revenue bonds to fund the roughly two-thirds share of Hetch Hetchy system costs that are shouldered by ratepayers in counties outside San Francisco. *In response to this proposed legislation, the PUC reduced its projected capital needs from $4.6 billion to $2.6 billion. It also concluded that its wastewater treatment repair and replacement plans were not sufficiently \"ripe\" for inclusion in the CIP, ther",
+    "obligations and maintain the database so as to promote open communication, accountability and intradepartmental cooperation. 8. All PUC-generated revenues should be retained within the PUC. Simply put, revenues need to be reserved for all of the infrastructure work that is being identified within the PUC. Even if revenues are \"surplus\" to Hetch Hetchy, a doubtful proposition at best, they cannot be \"surplus\" to a PUC in search of $4 billion in repair and replacement funding. The Hetch Hetchy power enterprise should also refrain from “disguised” transfers of revenue to other City departments (e.g. Department of Public Works for streetlighting upgrades; San Francisco General Hospital for acquisition o"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 6.89,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.89,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C101694962",
+   "deep_link": "https://archive.org/details/C101694962?q=Hetch+Hetchy",
+   "source_label": "Internet Archive — Democracy's Library",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "sanfranciscowate00sanf",
+   "title": "San Francisco water and power",
+   "creator": "San Francisco Public Utilities Commission,Cheminant, L",
+   "year": 1935,
+   "pool": "sfpl",
+   "matched_alias": "O'Shaughnessy Dam",
+   "ocr_excerpts": [
+    "IES COMMISSION City and County of San Francisco COMMISSIONERS LEWIS F. BYINGTON President GEORGE FILMER Vice-President rOHN H. McCALLUM DANIEL C. MURPHY JOHN P. MURPHY EDWARD G. CAHILL, Manager of Utilities N. A. ECKART L. T. McAFEE General Manager and Chief Engineer and Manager Chief Engineer Hetch Hetchy Construction >on Francisco Water Department PAUL J. OST Manager and Chief Electrical Engineer Hetch Hetchy Power Operation April, 1935 FOREWORD With the introduction of water from its Sierra Nevada sources into the Peninsula reservoirs, San Francisco has achieved an engineering feat of the greatest magnitude which will prove a major factor in the development of the city. The yield of water from the",
+    "FRONTISPIECE TABLE OF CONTENTS I LIST OF ILLUSTRATIONS Ill ABBREVIATIONS : IV GENERAL DESCRIPTION OF SYSTEM 1 HISTORY 2 Early Water Supply 2 Development of Local Sources 2 Efforts to Acquire a Supply from the Sierra Nevada 3 Acquisition of Spring Valley Water Company's System 6 HETCH HETCHY WATER SUPPLY 8 Watersheds and Storage Reservoirs 8 Construction Features 10 Preparatory Work, Hetch Hetchy Railroad 10 Sawmills 11 Construction Power Plant 12 Lake Eleanor Dam 12 O'Shaughnessy Dam 13 Future Development between Reservoirs and Early Intake 17 Early Intake Diversion Works 18 Aqueduct, Mountain Division 20 Aqueduct, Moccasin Division 22 Priest Regulating Reservoir 22 Moccasin Power Tunnel 23 Surge Shaft 24 Penstock Pipes 24 Moccasin Power Plant 26 Power Transmission",
+    "San Joaquin Division 31 Aqueduct, Coast Range Division 33 Excavation of Shafts and Tunnels 34 Lining the Tunnel with Concrete 36 Alameda Siphon 39 Emergency Pipe Line 39 Aqueduct, Bay Crossing Division 40 Pulgas Tunnel 40 II SAN FRANCISCO WATER AND POWER CONTENTS — Continued PAGE HETCH HETCHY WATER SUPPLY— Continued Camps and Boarding Houses 40 Finances 42 Storage Reservoirs in Hetch Hetchy System 47 Reservoirs on Hetch Hetchy Aqueduct 48 Reservoirs for Future Development 49 Power Development Possibilities 50 General Map and Profile 51 Chronology, Hetch Hetchy Water Supply 52 Elevations of Various Points on Hetch Hetchy Project 54 SAN FRANCISCO WATER DEPARTMENT SYSTEM 57 Alameda Creek System 57 Peninsula System - 65 City Distributing System 69 Construction under the National Recovery Act 71 Finance .s . 72 Reduction in Water Rates 74 Water Supply of San Francisco Peninsula 74 Pipe in City Distributing System 75 Storage Dams 76 Storage Reservoirs 76 City Distributing Tanks.. 77 City Distributing Reservoirs 78 Pump Stations 79 Number of Meters and Services 80 Average Daily Consumption 80 ORGANIZATION 81 SAN FRANCISCO WATER AND POWER HI LIST OF ILLUSTRATIONS Page SKETCH OF HETCH HETCHY PROJECT. Frontispiece SAN FRANCISCO EAST FROM RUSSIAN HILL IN 1862 1 AERIAL VIEW OF PORTION OF HETCH HETCHY WATERS"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.19,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.69,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscowate00sanf",
+   "deep_link": "https://archive.org/details/sanfranciscowate00sanf?q=O'Shaughnessy+Dam",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
+   "group": "Other records",
+   "salient": false
   }
  ]
 }

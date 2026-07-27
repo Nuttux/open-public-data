@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.695251+00:00",
+ "generated_at": "2026-07-27T17:06:09.726506+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "washington-square",
@@ -137,6 +137,27 @@
     "plicable to the proposed project. Thus, the modified project would have similar less-than- significant land use impacts, as was identified in the 2008 SEIS/SEIR. VISUAL QUALITY Equipment used for construction and operation of the TBM retrieval shaft will be visible from the surrounding area, including Washington Square. Relocation of the TBM extraction site by 100 feet will not substantially change this impact. Moreover, the impact is temporary and was not considered significant in the 2008 SEIS/SEIR; an improvement measure requiring screening of construction areas was included in the 2008 SEIS/SEIR (See Mitigation M",
     "y alignment alternatives. Columbus Avenue and the TBM retrieval shaft site were identified as potential historic archeological resource sites because the roadway cut through multiple city lots that were already developed at the time of roadway construction in the 1870s, and because of the early use of Washington Squ"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.08,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 3.58,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/addendumtosupple2013unit",
    "deep_link": "https://archive.org/details/addendumtosupple2013unit?q=Washington+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -144,20 +165,41 @@
    "salient": true
   },
   {
-   "identifier": "responsestocomme2008unit",
-   "title": "Responses to comments : Volume II : final supplemental environmental impact statement/supplemental draft environmental impact report for the Central Subway/Third Street light rail phase 2 in the City and County of San Francisco",
+   "identifier": "supplementaldraf2007unit",
+   "title": "Supplemental draft environmental impact statement/supplemental draft environmental impact report for the Central Subway/Third Street light rail phase 2 in the City and County of San Francisco",
    "creator": "United States. Federal Transit Administration,San Francisco (Calif.). Planning Dept",
-   "year": 2008,
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "Washington Square",
    "ocr_excerpts": [
-    "Progressive Association (PH-24) 4-54 • Cynthia Joe, Presbyterian Church in Chinatown (PH-25 thru PH-30) 4-54 • David Lee, Presbyterian Church in Chinatown (PH-3 1 and PH-32) 4-55 • Ben Lee, Chinatown Photographic Association (PH-33 and PH-34) 4-55 • Joan Wood, Telegraph Hill Dwellers and Friends of Washington Square (PH-35 thru PH-38)....4-56 • Cindy Wu, Chinatown Community Development Center (PH-39 and PH-40) 4-57 • April Vemanocin, South of Market Community Action Network (PH-41 thru PH-43) 4-57 • Ernestine Weiss (PH-44) 4-58 • Pauline Peel, Bay View Community Advisory Group (PH-45) 4-58 • Inna Chen, Adopt",
-    "Progressive Association (PH-24) 4-54 • Cynthia Joe, Presbyterian Church in Chinatown (PH-25 thru PH-30) 4-54 • David Lee, Presbyterian Church in Chinatown (PH-3 1 and PH-32) 4-55 • Ben Lee, Chinatown Photographic Association (PH-33 and PH-34) 4-55 • Joan Wood, Telegraph Hill Dwellers and Friends of Washington Square (PH-35 thru PH-38)....4-56 • Cindy Wu, Chinatown Community Development Center (PH-39 and PH-40) 4-57 • April Vemanocin, South of Market Community Action Network (PH-4 1 thru PH-43) 4-57 • Pauline Peel, Bay View Community Advisory Group (PH-45) 4-58 • Inna Chen, Adopt An Alleyway (PH-46 thru PH-48)",
-    "nt Land Use Plan. BCDC, SF Bay Plan and SF Waterfront Special Area Plan, while important all seem to have limited relevance to the area in which the Central Subway is planned. The amount of space dedicated to this section doesn*t seem justified as nothing of consequence is concluded. 6. Pago 39, Washington Square: \"Washington Si^uare P&rk incfudes several mature tree.% some along Columbus Avenue. To date, none of these trees have been designated by the City as historic Sandmark tmes. \" \\'Vhy point out that these trees in the park are not protected? Are these trees going to be sacnfioed? 7. Page 50: \"At the TBM retrieval shaft in Columbus Avenue at Washington Square, the roadway (originally Montgomery Avenue) was cut through between 1873 and 1875, bisecting Washington Square, Deposits related to the early years of Washington Square as a public space and park may be present,\" Question: V/hat is Central Subway Project Final SEIS/SEIR - Volume 11 3-26 3.0: WRITTEN COMMENTS AND RESPONSES tho environmental impact of this? 8. Page 70: \"Washington Square Park and the assoclalsd: Wiashington Square Park Triangle are the only properties in close proximity to the Tunnel Boring M^cWim extractfon shaft that woufd be placed in the middle lanes of Columbos Avenue between Union and Powell Streets for the Alterrsative 3A and 38 AlE^nments {sm Table 4 1 5).\"",
-    "- irt close proximity to the extraction pit. How long will Jhis disfuptior^ last? Th&m properties and the Park will be next to and seriously effected by the extractiDn pit and resulting dirt, dust and noise "
+    "n of the planning horizon year from 2015 to 2030; the addition of above ground ventilation shafts for tunnel segments and stations; the use of off-street access to stations; a deep tunnel under Market Street; and the potential extension of a construction tunnel to the north end of the Project near Washington Square under Columbus Avenue for removing the tunnel boring machine. Three alternatives are evaluated in this SEIS/SEIR for the Central Subway Project: ■ Alternative 1 - No Project/Transportation Systems Management, developed in conformance with NEPA and CEQA guidelines to represent a baseline for comparison w",
+    "mizing impacts to the park. The Chinatown Station entrance for Option B would be located on the west side of Stockton Street between Cla\\- and Washington Streets, and would not affect Willie \"Woo Woo\" Wong Playground. Alternative 3 also includes a construction tunnel extension to Columbus Avenue near Washington Square Park for purposes of extraction of the tunnel boring machine. Impacts discussed in this SEIS/SEIR include: displacement of businesses and residences; removal of on-strcet parking at stations and along the surface portion of the alignments; removal of parking in three garages for vent shafts; use of a",
+    "must address potential impacts to public parks and recreation areas and significant historic resources or wildlife/waterfowl refuges as part of a Section 4(1) analysis in the EIS. Because of potential impacts to Union Square, Willie \"Woo Woo\" Wong Central Subway Project Draft SEIS/SEIR playground, Washington Square park and historic resources in Chinatown, a Section 4(f) Report is included as Chapter 10.0. Technical studies, which were prepared as part of the environmental analysis for the Central Subway Project, are available for review by appointment at the San Francisco Planning Department, 1650 Mission Stree",
+    "LAYGROUND 10-36 3.2. 1 ALTERNATIVE 2 - CONSTRUCTION IMPACTS 10-36 3.2.2 ALTERNATIVE 2 -OPERATION IMPACTS 10-37 3.2.3 ALTERNATIVE 3 OPTION A - CONSTRUCTION IMPACTS 10-38 3 .2.4 ALTERNATIVE 3 OPTION A -OPERATION IMPACTS 1 0-40 3.2.5 ALTERNATIVE 3 OPTION B -CONSTRUCTION AND OPERATION IMPACTS 10-40 3 .3 WASHINGTON SQUARE PARK 1 0-40 3.3.1 ALTERNATIVE 2 - CONSTRUCTION AND OPERATION IMPACTS 10-40 3.3.2 ALTERNATIVES 3 OPTION A AND OPTION B - CONSTRUCTION IMPACTS 10-40 3.3.3 ALTERNATIVES 3 OPTION A AND 3 OPTION B - OPERATION IMPACTS 10-41 3 .4 HISTORIC RESOURCES 10-41 4.0 AVOIDANCE ALTERNATIVES 10-42 4. 1 EVALUATION OF AVOIDANCE ALTERNATIVES 1 0-44 4.1.1 LOCATION ALTERNATIVES 1 0-44 4. 1 .2 DESIGN ALTERNATIVES 1 0-45 5.0 MEASURES TO MINIMIZE HARM TO SECTION 4(F) RESOURCES 10-46 5 . 1 UNION SQUARE 10-46 5.2 WILLIE \"WOO WOO\" WONG PLAYGROUND 10-47 5.3 WASHINGTON SQUARE PARK 10-47 5 .4 HISTORIC RESOURCES 1 0-49 6.0 COORDINATION 1 0-49 7."
    ],
-   "url": "https://archive.org/details/responsestocomme2008unit",
-   "deep_link": "https://archive.org/details/responsestocomme2008unit?q=Washington+Square",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.2,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.2,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/supplementaldraf2007unit",
+   "deep_link": "https://archive.org/details/supplementaldraf2007unit?q=Washington+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
    "salient": true
@@ -175,6 +217,27 @@
     "r adoption of the following ARTS resolution, which was seconded by Commissioner Jackson and COMMITTEE carried: RESOLUTION NO. 6893-19 57-S MARTIN SNIPPER-1957 FESTIVAL DIRECTOR WHEREAS the Committee of Visual Arts has recommended Martin Snipper as Director for the 1957 Art Festival to be held in Washington Square September 26th, 27th, 28th and 29th, 1957, BE IT RESOLVED That at a regular meeting of the Art Commission held on May 6, 1957, Martin Snipper is hereby appointed Director of the 1957 Art Festival, and for which he is to receive as compensation for said services, the sum of Two Thousand ($2,000.",
     "r date of April 16, 1957, from Mr. Edward McDevitt, Secretary of the Recreation and Park Commission, wherein he stated that Resolution No. 2643 of the Recreation and Park Commission granted permission for the Art Commission to hold its Eleventh Annual Art Festival September 26 through 29th, 1957, in Washington Square. ADJOURNMENT There being no further business the meeting adjourned at 4:35 P.m. The next regular meeting will be held on June 3, 1957, at 3:45 p.m., in the office of the Commission, 100 Larkin Street R"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.23,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.23,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/minutesofartcomm1957sanf",
    "deep_link": "https://archive.org/details/minutesofartcomm1957sanf?q=Washington+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -194,50 +257,31 @@
     "to increase hourly rate to $35 per hour for environmental services, total contract amount of $24,000 wi 1 1 not i ncrease RES. 15547 - see Mission Pool - Blue Dolphin Pools and Spas 343 reconstruction MONUMENTS, MEMORIALS & PLAQUES Appeal of the denial to place a plaque honoring Juana Briones 171 in Washington Square - Appeal Denied Mario Murillo Ministries two day evangelists meeting of 9/1 and 9/2 - Removed from Calendar President's Report Board of Supervisors has asked Commission to reconsider 261 placement of a plaque in Washington Square to honor Juana Briones RES. 15534 - Approved request to place \"Goddess of Democracy\" 331 statue in Portsmouth Square, Acceptance of Gift RES. 15535 - Commission denies proposal from French War Veterans Assn, of Northern California to erect a monument near Legion of Honor in honor of their fallen co",
     "7/89: Earthquake Update 317 NAMING OF FACILITIES RES. 15340 - Approved the request to name the field at 116 Candlestick Park when in football configuration in honor of Bill Walsh, coach of the San Francisco 49ers (1979- 1 989) Appeal of the denial to place a plaque honoring Juana Briones 171 in Washington Square - Appeal denied President's Report - The Board of Supervisors asked Commission to reconsider 267 placement of a plaque in Washington Square to honor Juana Briones NORTH BEACH POOL General Manager's Report - Earthquake Damage 233 NURSERY SCHOOLS RES. 15400 - Approved the annual lease renewals and monthly 181 rental fees for nursery schools effective July 1, 1989 OCEAN VIEW PLAGROUND RES. 15359 - Approved"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.34,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.34,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 2.5,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/minutesrecreatio1989sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1989sanf?q=Washington+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "sanfranciscothea193910sanf",
-   "title": "The Italian theatre in San Francisco",
-   "creator": "Estavan, Lawrence,United States. Work Projects Administration (Calif.)",
-   "year": 1939,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "ocr_excerpts": [
-    "ty. 15 Popularity of the Circolo. . 17 The Italians' Technique in Acting. • 17 The Signora Impresario in St. Louis 19 \"We Want Carmen\" j A Near Tragedy , , . . . 19 The NlcVelodeons . . . . = 21 Stenterello Comes to San Francisco ......... 22 The Origin of Stenterello. ............. 25 The Washington Square Theatre. ...... 27 The Stentcrellate 29 Large and Varied Repertoires . 31 Shakespeare in North Beach 32 The Maori Company 34 Popularity of Shakespeare. ............. 35 The Maori Repertoire' 37 Italian Theatre Inactive ....... 39 The Liberty Theatre 41 Teresa de Matlenzo and Alfred Aratoli 41 The",
-    "these n .: elements together Into a strong permanent theatre. THE APOLI.O THEATRE On April 9,1905 the Italian colony of San Francisco suddenly realized that such a pei'sonality had entered their midst. All week everywhere in North Beach large bills were being circulated; in Fisherman's Wharf and Washington Square groups congregated discussing the exciting news. On Sunday evening, April 9, 1905, at the Teatro Apollo, formerly Apollo Hall, where the clubs held their meetings and where the com- pagnle filodrammatiche gave their performances -- was given a Grande Serata Straordinaria, in which was offered a varied",
-    ", sloiiching aggressively, incongruously, into plays by Dumas, Shakespeare and Jules Verne. The little nickelo- deons could no longer hold the enormous crowds of Italians in North Beach v/ho flocked to laugh at and applaud their beloved Stenterello. A new, more spacious theatre was urgently needed. THE WASHINGTON SQUARE THEATRE Then the opportimity camej and as usual it was the brilliant fertile-brained Signora Alessandro who arranged for the opportunity. In 1909 there was a Russian church in Wash- ington Square, on Powell Street between Union and Filbert Streets. In the heart of North Beach, it was the perfect sit",
-    "for an Italian theatre. All that was needed was enough cash or credit to huj the property and erect a theatre build- ing — neither of which the Signora Impresario had at the moment. However she had remarkable gifts, and she persuaded the Influential politician, Abe Ruef, to supply the capital. The Washington Square Theatre was built, and vdien payment was not forthcoming from Signora Alessandro, it was rented to an American vaudeville company. In North Beach this new enter- prise was promptly enveloped by as much indifference as had submerged the Russian church. In a few months the discouraged American company moved out, abandoning the Washington Square Theatre to the joyful Italians. Prom then on it became the •ux;3->- .:, -J . . .- ea-^ i A :i- jli/ao n,jjxc:yjj^.' ~j 28 chief horae of the Italian theatre in San Francisco. Here in 1910 cajiie the famous Maori company from New York to play for two years in a brilliant repert",
-    "Cesare company- "
-   ],
-   "url": "https://archive.org/details/sanfranciscothea193910sanf",
-   "deep_link": "https://archive.org/details/sanfranciscothea193910sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "meetingreport233299196568",
-   "title": "Meeting report",
-   "creator": "San Francisco (Calif.). Parking Authority",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "ocr_excerpts": [
-    "eeting with representatives of these associations to consider this matter, c. Copy of a letter dated March 2, 1965 addressed to Mayor Shelley from the Telegraph Hill Dwellers containing a resolution recommending additional study for parking on Telegraph Hill and general opposition to the conversion of Washington Square to underground parking. d. In response to a request made at a previous meeting by Mr. Joseph Brennfleck, International Brotherhood of Teamsters Local 665, the Authority directed a letter to Controller Harry D. Ross asking that a 'VAGES AND WORKING CONDITIONS\" clause be inserted in the forthcoming P",
-    "Helen M, Ellis, Recording Secretary Dr. George Gara, North Beach Merchants & Boosters, 470 Columbus Ave. Norman B. Hansen, Vilsey, Ham & Blair, Jack Tar Hotel Edward T. Haas, Haas & Haynie, 1182 Sacramento St. C, T, Blair, Vilsey, Ham & Blair, Jack Tar Hotel A. D. DeLuca, Chairman, Committee for Washington Square Underground Garage, 585 Columbus Ave. Louis Martinelli, Vice President, North Beach Merchants & Boosters, I412 Stockton St. H. Kelly, Dooling, Kelly & Moiseeff , 1255 Post St. Salvatore Reina, North Beach Merchants & Boosters, 532 Columbus Ave. W. L. Pieldman, J. B, Hanauer & Co., Pine & Sansome",
-    "K. Dooling, Dooling, Kelly & Moiseeff, 1255 Post St. Frank E. Carroll, pranlc E. Carroll Co., 1058 Chestnut St. Mario Renzi, 206l San Jose St. John DeMassimo, I8O6 Union St. Mrs. A, D, DeLuca, 585 Columbus Ave. Rena Bocci, Italian Welfare Agency, 678 Green St. Anita Figone, Secretary, Committee for Washington Square Underground Garage, I652 Stockton St. R. J. Evans, Bureau of Engineering, 46O McAllister St. Philip Anderlini, San Francisco Athletic Club, I63O Sansome St. Sgt. Ford E. Long, San Francisco Police Department, 850 Bryant St. John H. Devitt, Bureau of Architecture, 265 City Hall Alfred Pinzon, Civic C",
-    "•oori, Regular Meeting Beport July 1, 1965 - Page 2 Ross T. Shoaf , Bureau of Engineering, 35I City Hall Joseph B. Brennfleck, Garage & Service Station Enrployees Local Union No. 665 1 480 Valencia St. George Cerasi, North Beach Merchants & Boosters, I656 Powell St. J. Orlandino, Committee for Washington Square Underground Garage, 1995 Chestnut St. Richard Redlick, American Mill Equipment Co., Burlingame, Calif, Milton Nelson, American Mill Equipment Co., Burlingajne, Calif, Capt. Charles Barca, San Francisco Police Dept., 85O Bryant St. Joe Cervetto, President, Columbus Civic Club, 124 R^ss St. 1. Roll Call",
-    "needs and program and evaluation in the light of significant new developments. Representatives of the North Beach organizations, businessmen, and other City Departments have been invited for the reception of the latest views and plans as they relate to potential parking develop- ments on Vallejo Street, Washington Square, on Telegraph"
-   ],
-   "url": "https://archive.org/details/meetingreport233299196568",
-   "deep_link": "https://archive.org/details/meetingreport233299196568?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
    "salient": true
   },
   {
@@ -254,11 +298,74 @@
     "e, Golden Gate Park San Francisco 941 17 2-2-2 S.F. Rec/Park Dept. What ' s Doing in the Parks SUNDAY, APRIL 3 10 a.m. — Artist Guild of San Francisco Art Show, Hoover Redwood Grove, 19th Avenue & Lincoln Way, Golden Gate Park 10 a.m. - 4 p.m. — San Francisco Society of Fine Arts Show, Washington Square, Filbert & Stockton Streets. 1 p.m. — Golden Gate Park Band Concert, conducted by Robert Hansen, Bandshell, Golden Gate Park. MONDAY, APRIL 4 3:30 - 5 p.m. — Jazz Dance, 7-12 years, free, Midtown Terrace Playground, Clarendon Drive & Olympia Way. 4-6 p.m. — Plant Families, an Introduction At",
     "Pool, San Jose Avenue & Havelock Street. (more) .aren Lodge, Golden Gate Park San Francisco 941 17 2-2-2 S.F. Rec/Park Dept. What's Doing in the Parks SUNDAY, MAY 15 9 - 11:30 a.m. — Lap Swim, Garfield Pool, 26th & Harrison Streets . 10 a.m. — Artists Guild of San Francisco Art Show, Washington Square, Filbert & Stockton Streets. 10 a.m. - 4 p.m. — San Francisco Society of Fine Arts Show,"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.92,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.42,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/whatsdoinginpark1988sanf",
    "deep_link": "https://archive.org/details/whatsdoinginpark1988sanf?q=Washington+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "3 editions cited",
    "group": "Other records",
-   "salient": false
+   "salient": true
+  },
+  {
+   "identifier": "sanfranciscothea193910sanf",
+   "title": "The Italian theatre in San Francisco",
+   "creator": "Estavan, Lawrence,United States. Work Projects Administration (Calif.)",
+   "year": 1939,
+   "pool": "sfpl",
+   "matched_alias": "Washington Square",
+   "ocr_excerpts": [
+    "ty. 15 Popularity of the Circolo. . 17 The Italians' Technique in Acting. • 17 The Signora Impresario in St. Louis 19 \"We Want Carmen\" j A Near Tragedy , , . . . 19 The NlcVelodeons . . . . = 21 Stenterello Comes to San Francisco ......... 22 The Origin of Stenterello. ............. 25 The Washington Square Theatre. ...... 27 The Stentcrellate 29 Large and Varied Repertoires . 31 Shakespeare in North Beach 32 The Maori Company 34 Popularity of Shakespeare. ............. 35 The Maori Repertoire' 37 Italian Theatre Inactive ....... 39 The Liberty Theatre 41 Teresa de Matlenzo and Alfred Aratoli 41 The",
+    "these n .: elements together Into a strong permanent theatre. THE APOLI.O THEATRE On April 9,1905 the Italian colony of San Francisco suddenly realized that such a pei'sonality had entered their midst. All week everywhere in North Beach large bills were being circulated; in Fisherman's Wharf and Washington Square groups congregated discussing the exciting news. On Sunday evening, April 9, 1905, at the Teatro Apollo, formerly Apollo Hall, where the clubs held their meetings and where the com- pagnle filodrammatiche gave their performances -- was given a Grande Serata Straordinaria, in which was offered a varied",
+    ", sloiiching aggressively, incongruously, into plays by Dumas, Shakespeare and Jules Verne. The little nickelo- deons could no longer hold the enormous crowds of Italians in North Beach v/ho flocked to laugh at and applaud their beloved Stenterello. A new, more spacious theatre was urgently needed. THE WASHINGTON SQUARE THEATRE Then the opportimity camej and as usual it was the brilliant fertile-brained Signora Alessandro who arranged for the opportunity. In 1909 there was a Russian church in Wash- ington Square, on Powell Street between Union and Filbert Streets. In the heart of North Beach, it was the perfect sit",
+    "for an Italian theatre. All that was needed was enough cash or credit to huj the property and erect a theatre build- ing — neither of which the Signora Impresario had at the moment. However she had remarkable gifts, and she persuaded the Influential politician, Abe Ruef, to supply the capital. The Washington Square Theatre was built, and vdien payment was not forthcoming from Signora Alessandro, it was rented to an American vaudeville company. In North Beach this new enter- prise was promptly enveloped by as much indifference as had submerged the Russian church. In a few months the discouraged American company moved out, abandoning the Washington Square Theatre to the joyful Italians. Prom then on it became the •ux;3->- .:, -J . . .- ea-^ i A :i- jli/ao n,jjxc:yjj^.' ~j 28 chief horae of the Italian theatre in San Francisco. Here in 1910 cajiie the famous Maori company from New York to play for two years in a brilliant repert",
+    "Cesare company- "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.43,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.93,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscothea193910sanf",
+   "deep_link": "https://archive.org/details/sanfranciscothea193910sanf?q=Washington+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -293,12 +400,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 7,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

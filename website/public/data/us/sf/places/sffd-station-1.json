@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.731557+00:00",
+ "generated_at": "2026-07-27T17:06:09.769529+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sffd-station-1",
@@ -128,25 +128,6 @@
  },
  "documents": [
   {
-   "identifier": "minutesoffirecom2001sanf",
-   "title": "Minutes of the Fire Commission",
-   "creator": "San Francisco (Calif.). Fire Commission",
-   "year": 1999,
-   "pool": "sfpl",
-   "matched_alias": "Engine 1",
-   "ocr_excerpts": [
-    "Travis AFB, CA US Army Res. Moffett Field, CA Attend Reserve Duty Training Attend Inactive Duty Training Attend Active Duty Training H:\\C«nmminU«n1101M doc Fire Commission Minutes January 11, 2001 Regular Meeting Page 4 of 9 F. Suspension Reporting suspension of H2 Firefighter Eric Botelho, Engine 1 , for four work days, January 15/16 and 18/19, 2001, for violation of the Rules and Regulations as follows: Section 2814 - Profanity or Abusive Language Section 2825 - Temporary Officers Section 3909 - Unfamiliarity with Rules Section 3915 - Proper Behavior Section 3919 - Unacceptable Language Sectio",
-    "Fire Commission Minutes Januery 11, 2001 Regular Meeting Page 5 of 9 Battalion 6 00-1-104 11/3/00 910 B File Off B/C Kevin Taylor Drv: C/A Ronald Robinson Cause Batt 6, while leaving the scene of an incident, was rear ended by a civilian vehicle which was struck by a hit and run driver Engine 1 00-1-105 11/7/00 513 B Bill Off Lt Daniel Armenta Drv: FF Eric Botelho Cause: Eng 1 was struck by a civilian vehicle which had drifted out of its lane Battalion 5 00-1-106 11/9/00 914 B Bil Off: B/C John Peeff Drv: C/A Alexandra Alexander Cause: Batt 5, while stopped at a red",
-    "were posted Battalion 1 00-1-112 11/20/00 912 B File Off: B/C Gary Leal Drv: C/A Warren Der Cause: Batt 1 , while parked in front of Station 13, was struck by a hit and run vehicle H CommminUtnl i01M.doc Fire Commission Minutes January 11, 2001 Regular Meeting Page 6 of 9 Engine 17 00-1-113 11/21/00 534 A File Off: Lt. George Bruce Drv: FF John Mcnulty Cause: Misjudged clearance - Eng 17, while maneuvering around, struck a double parked civilian vehicle Truck 3 00-1-114 11/22/00 623 A File Off: Lt. Nikki Griffey Drv: FF Francis Kelly Tlr: FF Kevin Kelly Cause: Misjudged clearance - While returning from Central Shops and backing into station, Trk 3 struck side of station Engine 13 00-1-115 11/22/00 524 A File Off: Lt. Henry Larkin Drv: FF Willa Ortega Cause: Misjudged clearance - Eng 13, while responding to a medical call and maneuvering through heavy traffic, scraped a civilian vehicle which attempted to provide right of way Truck 6 00-1-116 11/25/00 626 B Bill Off: T/Lt. Nicholas Gentile Drv: FF Joseph Fitzgerald Tlr: FF Matthew Zlatunich Cause: Trk 6, responding with red lights and siren, was struck by a civilian vehicle travelling through a red light Engine 1 00-1-117 11/26/00 513 A File Off: Lt. Eugene Murphy Drv: FF Darren Bortmas Cause: Misjudged clearance - While returning from an incident, Eng 1 lightly struck a civilian vehicle stopped at the intersection BFP 00-1-118 11/28/00 109 B File Drv: Insp. Michael Braida Cause:",
-    "ischell Williams $2,333.32/ 500.00 99-0-253/ (A) /Medic 410 06-08-00 Sequoia Financial 2,084.71/2,017.82 99-0-257/ (A) /Engine 3 06-12-00 Catherine Wong 3,736.44/3,736.44 00-"
-   ],
-   "url": "https://archive.org/details/minutesoffirecom2001sanf",
-   "deep_link": "https://archive.org/details/minutesoffirecom2001sanf?q=Engine+1",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
    "identifier": "reportofboardoff1892sanf",
    "title": "Report of the Board of Fire Commissioners, Chief Engineer and Fire Alarm Superintendent of the San Francisco Fire Department",
    "creator": "San Francisco (Calif.). Fire Dept",
@@ -160,6 +141,27 @@
     "NO. BADGE. RANK. P. H Fleminff 164 166 165 163 167 168 169 170 171 172 173 174 Engineer. L Rudolph Teamster MEMBERS AT CALL. Eugene O'Connor Edward O'Neil Machinist John R. Thompson « Samuel E. Kennard.. Machinist M. Golden Gasfltter J.Shiclds Apparatus— 1 second-class double Amoskeag engine, 1 hose cart. Number horses Number bell alarms answered Number still alarms answered Time worked, 54 hours 35 minutes. The company has charge of Enfrine tools, set ' 1 Extra lengths 1 Double harness, set 1 Horse blankets 3 Shovel 1 Horse ropes 3 Reducer 1 Chairs 12 Oilcans 2 Babcock extinguish",
     "ridgewood . . Thomas McCarthy . . Charles J. Tiacey... OCCUPATION. NO. BADGE. RANK. Machinist 188 190 187 193 195 194 192 196 191 197 198 Engineer. Stoker. Fireman Lafc'ier. Foreman. Shoemaker Hoseman. <i II Teamster Painter ;; Boiler-maker \" Apparatus— 1 second-class Amoskeag engine, 1 hose wagon. Number horses 3 Number bell alarms answered 3 Number. still alarms answered 1 Time worked, 105 hours. The company has charge of the following property; Harness, sets o Table 1 Maul Ax Ladders Chairs Cuspidors Stove Siamese a"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.63,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.13,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/reportofboardoff1892sanf",
    "deep_link": "https://archive.org/details/reportofboardoff1892sanf?q=Engine+1",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -167,20 +169,122 @@
    "salient": true
   },
   {
-   "identifier": "annualreportofbo1880sanf",
-   "title": "Annual report of the Board of Fire Commissioners, Chief Engineer and Fire Alarm Superintendent of the San Francisco Paid Fire Department",
-   "creator": "San Francisco (Calif.). Fire Dept",
-   "year": 1880,
+   "identifier": "minutesoffirecom2001sanf",
+   "title": "Minutes of the Fire Commission",
+   "creator": "San Francisco (Calif.). Fire Commission",
+   "year": 1999,
    "pool": "sfpl",
    "matched_alias": "Engine 1",
    "ocr_excerpts": [
-    "ijjT Company. 2 second-class Double-actinjf Engines made by Amos- keag Manufacturing Com- pany. 2 second-class U tank engines made by Amoskcag Jlan- ufacturing Company. 6 Relief Hose Carts. 875 Boiler Tubes. 2 Water Tanks for Engines. 2 New Fly Wheels. 123 Pump Valves. 3 third-class Axles for Engine. 1 Forward Gear for second- class Engine. 1 Forward Axle for second- class Engine. 2 Hind Axles for second-class Engine. 1 Hind Axle for first-class En- gine. 3 Cart Axle Arms. I Engine Axle Arm. II Engine Wheel Hubs. 3 Parts of Hubs for Engine Wheels. 10 Wheel Caps. I Set Brass Yoke Blocks. 6 Lignum VitEe Yoke Blocks. 11 Relief Valve Handles. II Relief Valve Swivels. 12 Relief Wheels. 2 Hammers. 2 Hannn",
-    "Caniiibell F. Jolitison Machinist. Boilermaker. S. Lander Teamster. M. Kullv File-maker. KMI'hOYKKS. S. Bri(l}fewi)od KOIIMER OCCUPATION. Engineer. P. J. Mahan Teamster. INVENTORY OF ARTICLES IN CHARGE OF STEAM FIRE ENGINE COMPANY No. 0. 1 Amoskeag; Eng-ine, 2d class. 1 Set of Tools for Engine. 1 Hose Reel. 3 Horses. 3 Horse Blankets. 1 Set of Double Harness. 1 Set of Single Harness. 750 feet of 2i-iiich Carbolized Hose. 50 feet 5-ineh Hose. 1 Hose Washer. 2 Hose Spanners. 1 Jackscrew. 2 Hydi-ant Spanners. I Hydrant Brass Suction. 1 Curry Comb. 1 Reducer. 1 Hoi-se Brush. 1 Co"
+    "Travis AFB, CA US Army Res. Moffett Field, CA Attend Reserve Duty Training Attend Inactive Duty Training Attend Active Duty Training H:\\C«nmminU«n1101M doc Fire Commission Minutes January 11, 2001 Regular Meeting Page 4 of 9 F. Suspension Reporting suspension of H2 Firefighter Eric Botelho, Engine 1 , for four work days, January 15/16 and 18/19, 2001, for violation of the Rules and Regulations as follows: Section 2814 - Profanity or Abusive Language Section 2825 - Temporary Officers Section 3909 - Unfamiliarity with Rules Section 3915 - Proper Behavior Section 3919 - Unacceptable Language Sectio",
+    "Fire Commission Minutes Januery 11, 2001 Regular Meeting Page 5 of 9 Battalion 6 00-1-104 11/3/00 910 B File Off B/C Kevin Taylor Drv: C/A Ronald Robinson Cause Batt 6, while leaving the scene of an incident, was rear ended by a civilian vehicle which was struck by a hit and run driver Engine 1 00-1-105 11/7/00 513 B Bill Off Lt Daniel Armenta Drv: FF Eric Botelho Cause: Eng 1 was struck by a civilian vehicle which had drifted out of its lane Battalion 5 00-1-106 11/9/00 914 B Bil Off: B/C John Peeff Drv: C/A Alexandra Alexander Cause: Batt 5, while stopped at a red",
+    "were posted Battalion 1 00-1-112 11/20/00 912 B File Off: B/C Gary Leal Drv: C/A Warren Der Cause: Batt 1 , while parked in front of Station 13, was struck by a hit and run vehicle H CommminUtnl i01M.doc Fire Commission Minutes January 11, 2001 Regular Meeting Page 6 of 9 Engine 17 00-1-113 11/21/00 534 A File Off: Lt. George Bruce Drv: FF John Mcnulty Cause: Misjudged clearance - Eng 17, while maneuvering around, struck a double parked civilian vehicle Truck 3 00-1-114 11/22/00 623 A File Off: Lt. Nikki Griffey Drv: FF Francis Kelly Tlr: FF Kevin Kelly Cause: Misjudged clearance - While returning from Central Shops and backing into station, Trk 3 struck side of station Engine 13 00-1-115 11/22/00 524 A File Off: Lt. Henry Larkin Drv: FF Willa Ortega Cause: Misjudged clearance - Eng 13, while responding to a medical call and maneuvering through heavy traffic, scraped a civilian vehicle which attempted to provide right of way Truck 6 00-1-116 11/25/00 626 B Bill Off: T/Lt. Nicholas Gentile Drv: FF Joseph Fitzgerald Tlr: FF Matthew Zlatunich Cause: Trk 6, responding with red lights and siren, was struck by a civilian vehicle travelling through a red light Engine 1 00-1-117 11/26/00 513 A File Off: Lt. Eugene Murphy Drv: FF Darren Bortmas Cause: Misjudged clearance - While returning from an incident, Eng 1 lightly struck a civilian vehicle stopped at the intersection BFP 00-1-118 11/28/00 109 B File Drv: Insp. Michael Braida Cause:",
+    "ischell Williams $2,333.32/ 500.00 99-0-253/ (A) /Medic 410 06-08-00 Sequoia Financial 2,084.71/2,017.82 99-0-257/ (A) /Engine 3 06-12-00 Catherine Wong 3,736.44/3,736.44 00-"
    ],
-   "url": "https://archive.org/details/annualreportofbo1880sanf",
-   "deep_link": "https://archive.org/details/annualreportofbo1880sanf?q=Engine+1",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.54,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.54,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 2.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesoffirecom2001sanf",
+   "deep_link": "https://archive.org/details/minutesoffirecom2001sanf?q=Engine+1",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
+   "variant_note": "2 editions cited",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "ounceofpreventio1619cali",
+   "title": "An ounce of prevention : planning & regulating for seismic hazards : the summary report from the interim hearing",
+   "creator": "California. Legislature. Senate. Committee on Housing and Land Use",
+   "year": 1996,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station 1",
+   "ocr_excerpts": [
+    "#7n A A A $79,190 or. OO.035 Hayward Portable Emergency Generator $72,750 CD CO HOC or.oo.Uoo Hayward E0C and Corp Yard Emergency Generators CCOO OCA $500,250 CD CO f\\AO or. 00.048 Santa Ana Orange County Central Courthouse G 4 COO O >l A $1 ,682,040 cd Co ncn or.o3.050 San Diego Fire Station #1 1 Gc^t*. qaa $571,809 CD Co ncc or. 00.055 Mill valley City Hall & Fire Station COA* ftOO $304,082 cd oo rtcn SP.S3.069 San Diego County EOC/Community Center tfooe \"7AA $326,/ 00 OO CO A\"?A SP.S3.070 Monterey Colton Hall $142,875 SP.S3.071 Pismo Beach Communication Center/City Hall $768,822 SP.S3.072 Pismo Beach Fire Station #1 $1,725 SP.S3.073 Auburn OES Building 7 $202,492 SP.S3.075 Hayward Fairview Fire Generator $21,375 SP.S3.076 Ventura Fire Station #2 $96,875 SP.S3.078 San Marino Fire Station $300,422 SP.S3.080 San Leandro City Hall $892,105 SP.S3.081 San Leandro Fire Station #5 $117,122 SP.S3.082 San Leandro Public Safety Building $263,105 SP.S3.085 San Leandro Fire Station #1 $53,109 SP.S3.086 San Leandro Fire Station #4 $106,227 SP.S3.088 Big Bear Lake Headquarters Fire Station $280,160 SP.S3.089 Big Bear Lake Emergency Power Generator $58,271 SP.S3.090 Fort Bragg Police Station $626,035 SP.S3.101 Coalinga Pleasant Valley Fire Station $480,683 SP.S3.108 Bakersfi",
+    "$1,149,975 SP.S3.117 Richmond Hall of Justice $1,183,613 SP.S3.120 San Francisco Central Fire Alarm Station $444,239 SP.S3.122 San Francisco Fire Station #41 , $545,994 SP.S3.124 San Francisco Fire Station #36 $519,704 SP.S3.126 San Francisco Fire Station #34 $819,726 SP.S3.127 San Francisco Fire Station #18 $1,311,220 SP.S3.133 San Bruno Women's Jail #3 $839,728 Project Number Description Total Allocated CD C** 1 *\\A P /~\\f o f i V/otoron'c 0 1 1 i l/H i n L/Oldll VCicidri b DUUUIPy Sfi 34fi of j j I oo i^r*r*iHpnta I Pnmmiinihy f*pntpr \\^CCIUCIIldl l II I lU 1 1 lly vclllcl S533 787"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.47,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.47,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/ounceofpreventio1619cali",
+   "deep_link": "https://archive.org/details/ounceofpreventio1619cali?q=Fire+Station+1",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "postquakerestor1519sanf_1",
+   "title": "Post-quake restoration of general fund city buildings : City and County of San Francisco, April 15, 1990",
+   "creator": "San Francisco, CA : Department of Public Works, Bureau of Engineering",
+   "year": 1990,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station 1",
+   "ocr_excerpts": [
+    "El -29 M.H. De Young Memorial Museum, 27 Golden Gate Park El -27 Palace of Legion of Honor, 0 Lincoln Park El-28 FIRE Contact: James Lynch Telephone: 861-8000 Ashbury Tank/Tank House El-191 Auxiliary Water Supply System, 150 S. Twin Peaks El-42 Chief Sullivan Memorial Home, 870 Bush Street El -63 Engine 16 (Inactive), 909 Tennessee Street El-72 Engine 21 (Inactive), 1152 Oak Street El-52 Equipment Unit Headquarters, 2501 25th Street El-73 Fire Station #1, 416 Jessie Street El-40 Fire Station #2, 1340 Powell Street El -66 Fire Station #3, 1067 Post Street El-57 Fire Station #5, 1301 Turk Street El-56 Fire Station #6, 135 Sanchez Street El -37 Fire Station #7, 2300 Folsom Street El-41 Fire Station #8, 38 Bluxome Street El -36 Fire Station #10, 655 Presidio Avenue El -54 Fire Station #11, 3880 26th Street El -32 Fire Station #12, 1145 Stanyan Street El -43 Fire Station #13, 530 Sansome Street El -65 Fire Station #14, 551 26th Avenue El -50 Fire Station #15, 1000 Ocean Avenue El-38 Fire Station #16, 2251 Greenwich Street El-60 Fire Station #17, 1295 Shafter Avenue El -34 Fire Station #18, 1935 32nd Avenue El-48 Fire Station #19, 390 Buckingham Way El-184 Fire Station #20, 285 Olympia Way El -39 Fire Station #21, 1443 Grove Street El -53 Fire Station #22, 1290 16th Avenue El -49 Fire Station #23. 1347 45th Avenue El-46 Fire Station #24. 100 Hoffman Avenue El-185 Fire Station #25. 3305 3rd Street El-30 Fire Station #26.",
+    "/90 EARTHQUAKE REPAIRS FOR THIS BLDG INCL TN \"EQ. DAMAGE REPAIRS FOR VAR. CITY OWNED BLDGS, CONTRACT #1\" 1 NEXT ACTION: NEGOTIATE COST WITH FEMA | LINE ITEM NO.: El-32 BOA JOB ORDER #: 2040Q ARCHITECT: M. DORIAN SITE: 3880 26THST AGENCY: FIRE CUENT: J. LYNCH BUILDING NO.: 31-668 BUILDING NAME: FIRE STATION #11 Damage to Building: plaster cracks in apparatus floor area over the door to chief's office, plaster cracks NEAR SKYLIGHT, IN THE CEILING OF THE BOOTROOM, IN THE CEILING OF THE HALLUAY NEAR THE DOOR TO THE HOSE TOUER, AND NEAR THE DOOR TO THE HEN'S BATHROOM. SHOUERPAN LEAK HAS WORSENED. Actio",
+    "GE ESTIMATE IS 111,738. ::2/06/90 RECEIVED 11,461.86 FOR DSR 070982 AS PART OF CHECK 03 TOTALLING 1246,521. 02/23/90 REVISED BOA PROJECT COST ESTIMATE IS 113,097. [ NEXT ACTION: NEGOTIATE COST WITH FEMA LINE ITEM NO.: £1-34 SITE: 1295 SHATTER AV BUILDING NO.: 31-674 AGENCY: FIRE BUILDING NAME: FIRE STATION #17 Damage to Building: cracks in exterior of t^ stucco. Action Taken; 11/03/89 02/23/90 REVISED BOA PROJECT COST ESTIMATE tS 12(S). 03/26/90 RECEIVED DSR #73298 FROM FBtA. DAMAGE ESTIMATE UAS 184 BUILDING INSPECTED BY HOW AMO FEMA. BAU PARK ESTIMATE UAS 1200* NEXT ACTKM: NONE LINE ITEM NO.:",
+    "NED BLDGS, CONTRACT #1\" I NEXT ACTION: NEGOTIATE COST UITH FEMA 05/09/90 16:12 POST-QUAKE RESTORATION OF GENERAL FUND CITY BUILDINGS Page: 17 LINE ITEM NO.: El"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.33,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.33,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/postquakerestor1519sanf_1",
+   "deep_link": "https://archive.org/details/postquakerestor1519sanf_1?q=Fire+Station+1",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
    "salient": true
   },
   {
@@ -196,6 +300,27 @@
     "This is one of the buildings recommended for replacement , although found to be structurally safe by the Vensano survey. The building was built in 1912. 28, 21. New Site: Revere Avenue at Keith (Bayview), This site would replace the firehouse at 1632 Oakdale Avenue, housing Engine 11 and Truck 17, recommended for abandonment by the Vensano survey. This recommended site, east of Third Street, is better situated to serve the Bayview and Hunters Point neigh- borhoods than the Oakdale site which is west of Third Street and on a designated major thoroughfare. 22. New Site: Leland Avenue near Alpha (Visitacion Valley). This site would replace the firehouse at 1298 Girard Street, housing Engine 18, recommended for reconstruction by the Vensano survey. The site here recommended would provide better coverage of the rapidly developing Visitacion Valley residential and industrial areas, particularly in relation to the plan as a whole, 23. New site: Earl Street near Gilman and the Hunters Point E",
     "ently owned but not used by the Fire Department on 44th Avenue near Vicente would not provide as good coverage of the area. Working Area W - Downtown 34. New site: Davis Street near Broadway (Waterfront). This site would replace the firehouse at 115 Drumm Street, hous- ing Engine 12 and Truck 13, recommended by the Vensano survey for abandonment. The new site should be located north of the exist- ing wholesale produce market area, yet free of conflict with potential Embarcadero Freeway ramps, 35. 460 Bush Street near Kearny (Financial). Engine 2, It is recommended that this site be continued in use. The Ven- sano survey recommends e"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.0,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 5.37,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/reportonplanfor1952sanf",
    "deep_link": "https://archive.org/details/reportonplanfor1952sanf?q=Engine+1",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -215,25 +340,29 @@
     "no plans have been available, that further confirmatory tests might in some cases be advis- able before destruction is begun. Table I belov gives a list- ing of engine houses for vhich no plans have been available. TABLE I ENGINE HOUSES FOR VHICH NO PLANS ARE AVAILABLE Built Station No. I876 Engine #14 1884 ff #11 1884 \" #13 \" 1884 \" #15 1892 Truck #11 (Vest Section) \" 1893 Engine #21 \" I893 ,Y #23 ■ 1895 \" #10 \" 1896 \" #33 \" 1896 Truck #12 \" 1897 Engine #34 \" 1898 ff #22 « 1905 \" #36 1906 \" #38 \" 1907 Truck #5 \" 1",
     "11 (West Section) were built along very similar lines. However, after the construction of Engin"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.63,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.63,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/surveyoffirehous1951vens",
    "deep_link": "https://archive.org/details/surveyoffirehous1951vens?q=Engine+1",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "ounceofpreventio1619cali",
-   "title": "An ounce of prevention : planning & regulating for seismic hazards : the summary report from the interim hearing",
-   "creator": "California. Legislature. Senate. Committee on Housing and Land Use",
-   "year": 1996,
-   "pool": "sfpl",
-   "matched_alias": "Fire Station 1",
-   "ocr_excerpts": [
-    "#7n A A A $79,190 or. OO.035 Hayward Portable Emergency Generator $72,750 CD CO HOC or.oo.Uoo Hayward E0C and Corp Yard Emergency Generators CCOO OCA $500,250 CD CO f\\AO or. 00.048 Santa Ana Orange County Central Courthouse G 4 COO O >l A $1 ,682,040 cd Co ncn or.o3.050 San Diego Fire Station #1 1 Gc^t*. qaa $571,809 CD Co ncc or. 00.055 Mill valley City Hall & Fire Station COA* ftOO $304,082 cd oo rtcn SP.S3.069 San Diego County EOC/Community Center tfooe \"7AA $326,/ 00 OO CO A\"?A SP.S3.070 Monterey Colton Hall $142,875 SP.S3.071 Pismo Beach Communication Center/City Hall $768,822 SP.S3.072 Pismo Beach Fire Station #1 $1,725 SP.S3.073 Auburn OES Building 7 $202,492 SP.S3.075 Hayward Fairview Fire Generator $21,375 SP.S3.076 Ventura Fire Station #2 $96,875 SP.S3.078 San Marino Fire Station $300,422 SP.S3.080 San Leandro City Hall $892,105 SP.S3.081 San Leandro Fire Station #5 $117,122 SP.S3.082 San Leandro Public Safety Building $263,105 SP.S3.085 San Leandro Fire Station #1 $53,109 SP.S3.086 San Leandro Fire Station #4 $106,227 SP.S3.088 Big Bear Lake Headquarters Fire Station $280,160 SP.S3.089 Big Bear Lake Emergency Power Generator $58,271 SP.S3.090 Fort Bragg Police Station $626,035 SP.S3.101 Coalinga Pleasant Valley Fire Station $480,683 SP.S3.108 Bakersfi",
-    "$1,149,975 SP.S3.117 Richmond Hall of Justice $1,183,613 SP.S3.120 San Francisco Central Fire Alarm Station $444,239 SP.S3.122 San Francisco Fire Station #41 , $545,994 SP.S3.124 San Francisco Fire Station #36 $519,704 SP.S3.126 San Francisco Fire Station #34 $819,726 SP.S3.127 San Francisco Fire Station #18 $1,311,220 SP.S3.133 San Bruno Women's Jail #3 $839,728 Project Number Description Total Allocated CD C** 1 *\\A P /~\\f o f i V/otoron'c 0 1 1 i l/H i n L/Oldll VCicidri b DUUUIPy Sfi 34fi of j j I oo i^r*r*iHpnta I Pnmmiinihy f*pntpr \\^CCIUCIIldl l II I lU 1 1 lly vclllcl S533 787"
-   ],
-   "url": "https://archive.org/details/ounceofpreventio1619cali",
-   "deep_link": "https://archive.org/details/ounceofpreventio1619cali?q=Fire+Station+1",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -249,24 +378,29 @@
     "ch have thus far been sold for Phase II of the Earthquake Safety Program, the following five projects are completed: the De Young Museum Complex, Candlestick Park, Palace of Legion of Honor, Mission Branch Library, and the Department of Social Services (DSS) Office Building at 150 Otis Street. Also, Fire Station #1 has been previously completed under Phase I of the Earthquake Safety Bond Program. Ten projects have partial repairs completed: City Hall, Civic Auditorium, Davies Symphony Hall, War Memorial Opera House, Veteran's Building, Hall of Justice, Main Library, Youth Guidance Center and Marina Green Park and",
     "e OES has determined that the seismic upgrading costs for City Hall are allowable. Therefore, the City may not receive any further reimbursements for these seismic upgrading costs through FEMA. In summary, the Earthquake Safety Bond Program has only completed approximately six major projects (including Fire Station #1 funded under Phase I of the Program) out of 23 projects identified, although all projects are reported to be on schedule by the DPW. Only six projects have been completed because there are other renovations which are occurring simultaneously with the completion of the earthquake damage repairs. Accor"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.43,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.43,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/reporttosanfran1992sanf_0",
    "deep_link": "https://archive.org/details/reporttosanfran1992sanf_0?q=Fire+Station+1",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "citycountyofsanf1993sanf",
-   "title": "City and County of San Francisco telephone directory",
-   "creator": "San Francisco (Calif.). Dept. of Electricity and Telecommunications,San Francisco (Calif.). Dept. of Telecommunications and Information Services",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "Fire Station 1",
-   "ocr_excerpts": [
-    ", Pier 22 1/2 2235 Firefighters Local 798, 1139 Mission 2798 High Pressure Fire System Mtce., 2245 Jerrold 2249 Jones Street Tank, 1239 Jones 2351 Pump Station 1, 2nd & Townsend 2352 Pump Station 2, Foot of Van Ness 2353 - 178 - MAYOR'S EMERGENCY TELEPHONE SYSTEM (cont'd) Fire Stations Fire Station 1, 416 Jessie 2201 Fire Station 2, 1340 Powell 2202 Fire Station 3, 1067 Post 2203 Fire Station 5, 1301 Turk 2205 Fire Station 6, 135 Sanchez 2206 Fire Station 1, 2300 Folsom 2207 Fire Station 8, Howard & 3rd 2208 Fire Station 9, 2245 Jerrold 2209 Fire Station 10, 655 Presidio 2210 Fire Station 1 1 , 3880 26th Street 2211 Fire Station 12, 1145 Stanyan 2212 I Fire Station 13, 530 Sansome 2213 Fire Station 14, 551 26th Avenue 2214 Fire Station 15, 1000 Ocean 2215 Fire Station 16, 2251 Greenwich 2216 Fire Station 17, 1295 Shafter 2217 Fire Station 1 8, 1933 32nd Avenue 2218 Fire Station 19, 390 Buckingham 2219 Fire Station 20, 285 Olympia 2220 Fire Station 21, 1443 Grove 2221 Fire Station 22, 1290 16th Avenue 2222 Fire Station 23, 1348 45th Avenue 2223 Fire Station 24, 100 Hoffman 2224 Fire Station 25, 3305 3rd Street 2225 Fire Station 26, 80 Digby 2226 Fire Station 28, 18"
-   ],
-   "url": "https://archive.org/details/citycountyofsanf1993sanf",
-   "deep_link": "https://archive.org/details/citycountyofsanf1993sanf?q=Fire+Station+1",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": false
@@ -304,12 +438,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 8,
+  "n_documents": 7,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

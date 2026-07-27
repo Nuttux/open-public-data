@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.700004+00:00",
+ "generated_at": "2026-07-27T17:06:09.732644+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "kezar-stadium",
@@ -119,8 +119,70 @@
     "Golden Gate Park Conference Room, 2nd Floor San Francisco, CA 94117 DO ^M l« »*-■•> '\" OCT 3 0 1992 SAN FRANCISCO PUBLIC LIBRAhV ^AGENDA 1. Roll Call 2. Approval of Minutes of September 9 Meeting 3. Approval of Agenda 4. Public Comment 5. Discussion of Proposed Fee Schedule for Kezar Stadium 6. Discussion of Proposal to Allow the Sale of Alcoholic Beverages at Kezar Stadium 7. New Business 8. Adjournment For information call Garnet Franklin at 753-7032 1863n McLaren Lodge, Golden Gate Park FAX: (415) 668-3330 Information: (415) 666-7200 San Francisco 94117 JS City and County of /San Francisco 4 Recreation and Park Department Notice of Meeting KEZAR STADIUM ADVISORY COMMITTEE WEDNESDAY, NOVEMBER 10, 1993 - 7:00 P.M. COUNTY FAIR BUILDING LIBRARY GOLDEN GATE PARK, NINTH AVENUE & LINCOLN WAY -, SAN FRANCISCO, CA 94117 DOr:ilMi=MTS DEPT. SAN FRANCISCO PUBLIC LIBRARY */ Roll Call Approval of minutes of October 6, 1993, meeting of the Kezar Stadium Advisory Committee Publ ic Comment. An opportunity for members of the public to directly address the Committee on items of interest to the public that are within the subject matter jurisdiction of the Kezar Stadium Advisory Committee. Members of the public may address the Committee for up to three minutes. The Committee may limit the total testimony to 30 minutes. Discuss action regarding Golden Gate Park Master Plan. and Kezar Corner Master Plan. ' 5. New Business 6. Adjournment For information call Garn",
     ". The TDD phone number for the Recreation and Park Department if (415) 666-7043. 2073n McLaren Lodge, Golden Gate Park FAX: (415) 668-3330 Information: (415) 666-7200 TDD: (41 5) 666-7043 San Francisco 94117 City and County of San Francisco Recreation and Park Department Notice of Meeting KEZAR STADIUM ADVISORY COMMITTEE WEDNESDAY, FEBRUARY 2, 1994,- 7:00 P.M. COUNTY FAIR BUILDING LIBRARY GOLDEN GATE PARK, NINTH AVENUE & LINCOLN WAY SAN FRANCISCO, CA 94117 DOr,'M^'TRnFpr MH 2 8 ]c£4 ^FRANCISCO PUBLIC L/BRARy 1. Roll Call 2. Approval of November 10, meeting of the Kezar Stadium Advisory Committee 3. Publ ic Comment. An opportunity for members of the public to directly address the Committee on items of interest to the public that are within the subject matter jurisdiction of the Kezar Stadium Advisory Committee. Members of the public may address the Committee for up to three minutes. The Committee may limit the total testimony to 30 minutes. 4. Discussion of Alcohol Sales Policy (The Recreation and Park Commission, at its regular meeting on the 20th of January, directed the Advisory Committee to attempt to work out a \"workable\" plan for the sale of \\ alcoholic beverages at Kezar Stadium.) 5. Review of Temporary Permit Policy Permitting Two Night High School Football Games Per Week. 6. New Business Adjournment For i"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.93,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.93,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -2.25,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": true
+   },
    "url": "https://archive.org/details/agenda19912006sanf",
    "deep_link": "https://archive.org/details/agenda19912006sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": false
+  },
+  {
+   "identifier": "minutes199394sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "ocr_excerpts": [
+    "by youth from various recreation centers. Other activities will include a presentation on Black Inventors and Fashions from the Past at Herz Playground on February 19, and a special basketball game between players from our Late Night League and radio personalities from Station KDIA on February 20 at Kezar Pavilion. All the events are created and coordinated by the staff at the Hamilton Teen Center. SETTLEMENT OF CLAIMS The following claim, under $5,000, was settled by the City Attorney's Office during the month of January 1993: Smith, Maurlne R $2,278.78 DATES TO REMEMBER Wednesday, February 24, 1993 Thur",
+    "rancisco, et al . in the amount of $2,000.00. GOLF COURSES GREEN FEE SURCHARGES RES. NO. 16659 RESOLVED, That this Commission approves the continuation of a surcharge of $4.00 on non-residents (Standard) and tournament fees, and $2.00 on Resident Fees at 18-hole golf courses. GOLDEN GATE PARK KEZAR STADIUM PERMIT POLICY AMENDMENT TO POLICY RES. NO. 16660 RESOLVED, That this Commission approves an amendment to Kezar Stadium Permit Policy to allow up to two field light permit events during any week, from September l through November 15 of each calendar year. SPECIAL NEEDS DIVISION OVERNIGHT TRIP RES. NO. 16661 RESOLVED, That this Commission ratifies an overnight trip to Reno, Nevada by Special Needs Division on Ma",
+    "cate by the end of the year. She said the center was originally allowed to operate because there was no use for the site. Now, the center is growing from a neighborhood business on an unused corner to an industrial use of park property. She stated that the center is next to the newly renovated Kezar Stadium and could be used for a recreational purpose. She said the Golden Gate Park Master Plan is being developed and now is the time to notify HANC that it may have to find another site. President Orr said there is a sentiment that the industrial use is not appropriate at the HANC park site. He wa",
+    "the Department of Public Works. A memorandum of understanding between the two departments regarding Parcel 4 has been prepared by staff and will be brought to the Commission in November. Recreation and Park Commission Minutes Thursday, October 21, 1993, 2:00 p.m GENERAL MANAGER' S REPORT (Continued) KEZAR STADIUM An existing sewer on the north side of Kezar Stadium, adjacent to the Frederick Street Plaza, collapsed. This sewer carries both sanitary flow from the restroom on the Frederick Street side as well as surface runoff. Consequently, this condition constitutes an emergency involving the health, safety and property of the citizens of the City and County of",
+    "wasted. Lena Emmery,, said she has written to the Commission on numerous occasions regarding the Haight Ashbury Neighborhood Council Recycling Center. She said it was an outrage that an industrial "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.75,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.25,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -2.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes199394sanf",
+   "deep_link": "https://archive.org/details/minutes199394sanf?q=Kezar+Stadium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
@@ -137,6 +199,27 @@
     "ctrical System, Water Works Pumping Plant, G.GePark RALPH MURRAY 1,696. 25 Band Concerts =- Golden Gate Park December 1946 $1,680.00 Employees Compensation Insurance 18, 25 COLIR CTOR OF INTERNAL REVENUE 142.12 Tax on Admzsstons = December 1946 , Children's Quarters 20,82 Fletshhacker Playfield 121. 3U DEEMER AND DEEMER 889. 0U Kezar Pavilion Roof &@ Wall Repairs DEEMER AND DEEMER 5, 913. U0 First Payment - Painting of Outside Walls and entrance gates at Kezar Stadium SYMON BROS. 6,152.40 First Payment - Removal of old pumphouse and smoke stack at Water Works = G.G. Park EB. A. CORNELY, INC. 1,204. vv Installation of @ combustion safeguard system Fleishhacker Pool Heating Plant Furnaces THOMAS F. CHACE 4,700. U0 Engineering services in connection wtth rehabilitation of Kezar Stadium CALIFORNIA PACIFIC TITLE INSURANCE CO. 14,411.89 Purchase of portion of Assessor's Block 411, from Bates Estate Company for Yacht harbor (Parcel 8) CALIFORNIA PACIFIC TITLE INSURANCE CO, 26,777.78 Purchase of portion of Assessor's Block 421, from Pacific Gas & Electric Company for Yacht Harbor (Parcel No. &) TITLE INSURANCE AWD GUAR",
     "E EE ee a ea ee a EEE ———— Res. No. 1367 Orders — for Serve or Work: Res. Noe 1368 Allot- ments & Trsfs: We. 0. NO, DEPART ME. 276 Dept. Street"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.72,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.22,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/indextominuteso1947sanf_0",
    "deep_link": "https://archive.org/details/indextominuteso1947sanf_0?q=Kezar+Stadium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -156,6 +239,27 @@
     ", - • ax H - o a - . : c : • , - ■ r- • OZSJ‘ - ■ - V ■■■ - ’ ■ - ■■T rt o 0 - H - : -rr: - t.J.? -0 - flnU . •' - o' • vJ -4 ;i ■ ~ . . ..c - ’ 'E' 16 - Easter Egg Hunt - Protest 22 - \" \" \" n 24 - Encroachment - Great Highway 30 - English, J.- Payment - Kezar Survey 6 - Enlargement - Kezar Stadium - Protest 34 - Enlargement - Kezar Stadium 27 - Entrance - Lincoln Park 11 - Exchange - Lafayette Square- Resolution E - P G - H n pti 36 44 2 17 33 13 43 29 7 Fairmont Heights - Improvement t! ff H Fleishhacker, Herbert -Reelected Flood Lighting Floral Designs - Gideons - Bakers n ” - Plumbers Football Field Cover - Kezar Stadium Foreman - Salary Increase Fountain - Shakespeare Garden I - K L M - N 0 \"G\" 14 24 17 35 24 18 6 25 17 17 7 13 56 - Gangways, etc. -Yacht Harbor - Golf Courses - Vending Machines - Great Highway - Bridle Path - Great Highway - Completion \" n Encroachment ” \" Improvement \" ” - Plan",
     "; p\" ( C OUT ) 34 36 7 28 34 16 22 6 29 23 15 41 44 25 4 Ploytechnic - Use of Kezar Pool - Free use by A.A.U. Portsmouth Square - Resolution re Name Produce Terminal - Aquatic Park -Resolution Program - Convenience Station Construction Protest - Easter Egg Hunt "
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.34,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.34,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 3.0,
+    "money": false,
+    "decision": true,
+    "accountability": true,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/minutesboardofpa1928sanf",
    "deep_link": "https://archive.org/details/minutesboardofpa1928sanf?q=Kezar+Stadium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -163,27 +267,47 @@
    "salient": true
   },
   {
-   "identifier": "minutes199394sanf",
-   "title": "Minutes",
+   "identifier": "minutesrecreatio1960sanf",
+   "title": "Minutes / Recreation and Park Commission",
    "creator": "San Francisco (Calif.). Recreation and Park Commission",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Kezar Stadium",
    "ocr_excerpts": [
-    "by youth from various recreation centers. Other activities will include a presentation on Black Inventors and Fashions from the Past at Herz Playground on February 19, and a special basketball game between players from our Late Night League and radio personalities from Station KDIA on February 20 at Kezar Pavilion. All the events are created and coordinated by the staff at the Hamilton Teen Center. SETTLEMENT OF CLAIMS The following claim, under $5,000, was settled by the City Attorney's Office during the month of January 1993: Smith, Maurlne R $2,278.78 DATES TO REMEMBER Wednesday, February 24, 1993 Thur",
-    "rancisco, et al . in the amount of $2,000.00. GOLF COURSES GREEN FEE SURCHARGES RES. NO. 16659 RESOLVED, That this Commission approves the continuation of a surcharge of $4.00 on non-residents (Standard) and tournament fees, and $2.00 on Resident Fees at 18-hole golf courses. GOLDEN GATE PARK KEZAR STADIUM PERMIT POLICY AMENDMENT TO POLICY RES. NO. 16660 RESOLVED, That this Commission approves an amendment to Kezar Stadium Permit Policy to allow up to two field light permit events during any week, from September l through November 15 of each calendar year. SPECIAL NEEDS DIVISION OVERNIGHT TRIP RES. NO. 16661 RESOLVED, That this Commission ratifies an overnight trip to Reno, Nevada by Special Needs Division on Ma",
-    "cate by the end of the year. She said the center was originally allowed to operate because there was no use for the site. Now, the center is growing from a neighborhood business on an unused corner to an industrial use of park property. She stated that the center is next to the newly renovated Kezar Stadium and could be used for a recreational purpose. She said the Golden Gate Park Master Plan is being developed and now is the time to notify HANC that it may have to find another site. President Orr said there is a sentiment that the industrial use is not appropriate at the HANC park site. He wa",
-    "the Department of Public Works. A memorandum of understanding between the two departments regarding Parcel 4 has been prepared by staff and will be brought to the Commission in November. Recreation and Park Commission Minutes Thursday, October 21, 1993, 2:00 p.m GENERAL MANAGER' S REPORT (Continued) KEZAR STADIUM An existing sewer on the north side of Kezar Stadium, adjacent to the Frederick Street Plaza, collapsed. This sewer carries both sanitary flow from the restroom on the Frederick Street side as well as surface runoff. Consequently, this condition constitutes an emergency involving the health, safety and property of the citizens of the City and County of",
-    "wasted. Lena Emmery,, said she has written to the Commission on numerous occasions regarding the Haight Ashbury Neighborhood Council Recycling Center. She said it was an outrage that an industrial "
+    "arious p/g's; Cont. #351 to El Dorado Fence Co. $8,894.00 Res. 5845-GG Pk. Razing & remov. of bldgs.; Cont. #3>J to Bayshore Wreckers Inc. for $1,765.00. Res. 5905-Fence s-various p/g's. Anchor Post . #554 for $7,777.00. Res; 5904 Corp. Yd. paving; CC Jones & Sons; $6,275.00. Cont. #555 Res. 5944-Kezar Stadium protective wall; Cont #529; to H.E. Rahlman Co.; $4,422. Res. 5976-Ptg. GG Pk Golf Clubhs. Cont. #558; to R.P. Paoli & Co. $725.00. Res. 5977; Replacement Chain Link Fabric Leopard Cages, SF Zoo to Cyclone Fence; US Steel; $4,578.00. Con.. #559 Res. 4001-Greenhouses GG Pk. to E.J. Finnerty 8e , ;",
+    "-Mothers Bldg. Fleishhacker Plyfld. to Dan Crov. $2,786.00. 1^6 Res. 4027-Fldlghtg. Hayes Valley RC ; to Irving Dazell, $700.00. Res. 4040; Silver Tree Rec. Bldg, to Stenmark Const. Co. $142,355.00. Cont. #336 188 Res. 4042; Ptg. Kezar Pav. to J. Wm. Sorenson Cont. #345, for $3,959.00. Res. 4043; Kezar Stadium-49er 10 yr. contract appvd. Res. 4044; Kezar Stadium; Oakland Raiders I960 contract appvd . CORONA (See PEIXOTTO, SIDNEY) CORPORATION YARD (See GG PARK, CORPORATION YARD) D- DEPARTMENT OF ELECTRICITY - Res. 4017; OSW, Mtnce. & Oper. 1960-61 170 DEPARTMENT OF PUBLIC HEALTH (See PUBLIC HEALTH) DEPARTMENT OF PUBLIC WORKS -(Bureaus) - Res. 4017; OSW Bur.",
+    "OSW Heating plant instal. $10,184. Robt. M. Johnson. See SF Rec. Ctr. for Handicapped. FLEI SHHACKER POOL PUMP STATION (See FLEI SHHACKER POOL) FLEI SHHACKER- STORYLAND (See STORYLAND) FLORAL PLAGUES-See GG PARK-CONSERVATORY (Plaques) FLOWER SHOW (See GG PARK - HALL OF FLOWERS) FOOTBALL SCHEDULES (See KEZAR STADIUM or ACADEMIC ATHLETIC ASSOC . ) FORT FUN ST ON AREA - GSA of Fed. Govt, declared 124 acres surplus. Com. Conway recom. acq. by R&PD for Vets Mem. Pk. under submission Res. 3955; declaration of intention that the land be purchased & developed for R&P purposes Res. 3956; Joint meeting of various representatives for acouis. & development land use plan. Supv. Eng. reported on collab. of Dept, with City Planning Comm, for utiliz. of Area-showed drawings of sug. use FORTY-NINERS, S.F. (See KEZAR STADIUM) FREEWAYS; Comm. Herz reported that Com. Moore & he had met w/Mayor’s Comm, recently; & told them R&PC policy was opposed to sacrifice of any park surface area for freeway purposes FERRY PARK; Res. 3919; Comm, appvs. Sup. Budget Rqst. for appraisal & purch. of blocks 233, 234 & 3714 during 1960-61",
+    "9; Com. accepts. gift,.; from Mus. Aux. Res. 4030; com. accpts. wkg. scholshp. from Mus. Aux. Res. 4052; Com. appvs. $850. from Lewis Rea. Fund for JUNIPERO SERRA K- KAHN, JULIUS; Res. 3952; Com. auth. execution of amendment ,y? to revocable license gtd. by US Army, etc. KEZAR CONCESSION (See KEZAR STADIUM) KEZAR PAVILION (For Concessions see Kezar Stadium) Pac. Assoc, of AAU to hold annual baton & flag twi"
    ],
-   "url": "https://archive.org/details/minutes199394sanf",
-   "deep_link": "https://archive.org/details/minutes199394sanf?q=Kezar+Stadium",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 0.44,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.44,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 3.25,
+    "money": true,
+    "decision": true,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesrecreatio1960sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1960sanf?q=Kezar+Stadium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
   },
   {
-   "identifier": "greaterhaightash2819sanf",
+   "identifier": "greaterhaightas2819sanf_0",
    "title": "Greater Haight-Ashbury cumulative assessment report",
    "creator": "San Francisco (Calif.). Dept. of City Planning",
    "year": 1984,
@@ -192,13 +316,35 @@
    "ocr_excerpts": [
     "-Ashbury Area Proposed Projects 4 1 -V St. Joseph's Hospital Conversion (Park Hill) Site Plan 13 2 -V USF Health and Recreation Center Site Plan 13 3 -V St. Mary's Medical Office Building Site Plan 16 4 -V UCSF Vision Research Laboratory Site Plan 16 5 -V Polytechnic High School Conversion & Kezar Stadium Reuse 18 6 -V Photo of Urban School Expansion Site 18 7 -V Key Viewpoints 22 1 -T MUNI Service in the Greater Haight-Ashbury Area 32 2 -T PM Peak Hour Traffic Assignment 43 LIST OF TABLES 1 -I Greater Haight-Ashbury Proposed Projects 3 1 -V Views of Project Sites 23 1 -T Existing 24-H",
     "ld be desireable to provide an overview of cumulative impacts of all these projects, without tieing it to preparation of a single EIR. Projects considered in this report are listed on Table 1-1. In addition to those listed on Table 1-1, the Recreation and Park Department's proposals to remodel Kezar Stadium and to revise Golden Gate Park's circulation pattern have been analyzed but less quantitatively due to the speculative nature of these projects. In spring of 1984, arrangements were made for the sponsors of projects under review in the Greater Haight Ashbury area to provide reports from environmental",
-    "40,000 SF building Notes: = Project has several proposed alternatives. 3 r BOUNOASr LINE UUMMMMtMMUUMliUUMMU J'JOAM WAUt* U.S.F. HEALTH AMD RECREATION FAC I L I TV ST. f^AHT'S HEOICAL OFFICE 8UILDINC U.S.F. CO- GENE RAT I 0 N POWER PLANT CANNES APARTMENTS ThE u RB an SOOOL EXPANSION KEZAR STADIUM REMODELING U:C.S.F. POLTTECHNIC H I CM SCHOOL CONVERSION PARK hill RESIDENTIAL (ST. JOSEPH'S HOSPITAL CONVERSION) U.C.S.F. VISION RESEARCH nOOULE Figure 1-1 GREATER HAIGHT ASHBURY AREA abates * PROPOSED PROJECTS \\ BACKGROUND A Brief History of the Haight Ashbury District The Haight Ash",
+    "rking spaces) 40,000 SF building Notes: = Project has several proposed alternatives. 3 r ..... BOUNDARY l INE Milium. ........ ,,,,,,, JUOAM U.S.F. HEALTH AMO RECREATION FACILITY ST. MARY'S MEDICAL OFFICE BUILDING U.S.F. CO-CEMERATI ON POWER PLANT CANNES APARTMENTS THE URBAN SOOOL EXPANSION KEZAR STADIUM REMODELI NC U.C.S.F. POLYTECHNIC HIGH SCHOOL CONVERSION PARK HILL RESIDENTIAL (ST. JOSEPH'S HOSPITAL CONVERSION) U.C.S.F. VISION RESEARCH MODULE Figure 1-1 GREATER HAIGHT ASHBURY AREA associates 4 PROPOSED PROJECTS BACKGROUND A Brief History of the Haight Ashbury District The Haight Ashbury",
     "re forced commercial and residential migration westward. By the late 1920's the area contained a number of educational and medical institutions including 2 elementary schools, Polytechnic and Lowell High Schools, the University of San Francisco and UC, St. Mary's, St. Joseph's and Harkness Hospitals. Kezar Stadium was completed in 1925. The deterioration and subdivision of much of the housing stock in the area began with the Great Depression. The housing shortage of World War II and the change in family size and life style accompanying the prosperity that followed the War also caused subdivision of the",
-    "reater Haight. It has brought people, prosperity and transportation facilities as well as traffic and and parking problems to the area. Fortunately, its greatest traffic and parking generation occurs on weekends when other nonresidential land uses in the area generate less traffic. The Park, contains Kezar Stadium which generated large traffic and parking problems when it housed professional football. "
+    "Greater Haight. It has brought people, prosperity and transportation facilities as well as traffic and and parking problems to the area. Fortunately, its greatest traffic and parking generation occurs on weekends when other nonresidential land uses in the area generate less traffic. The Park contains Kezar Stadium which generated large traffic and parking problems when it housed profession"
    ],
-   "url": "https://archive.org/details/greaterhaightash2819sanf",
-   "deep_link": "https://archive.org/details/greaterhaightash2819sanf?q=Kezar+Stadium",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.84,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 3.34,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/greaterhaightas2819sanf_0",
+   "deep_link": "https://archive.org/details/greaterhaightas2819sanf_0?q=Kezar+Stadium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
    "group": "Other records",
    "salient": true
   },
@@ -215,6 +361,27 @@
     "et at the information kiosk, Strybing Arboretum, Golden Gate Park. 8 a.m. — Seventh Annual Zoo Run, San Franisco Zoo, Sloat Blvd at the Beach. 8 a.m.- 2 p.m. — Small Family Farmers Market, United Nations Plaza, Market & Leavenworth Streets. 9 a.m. — Recreation & Park Adult Basketball Tournament, Kezar Pavilion, Stanyan & Waller Streets. 9 a.m. - 5 p.m. — Pet Prevent-A-Care Vaccination Clinic, Dog Training Area, Golden Gate Park. 9 a.m. - 5 p.m. —San Francisco Soccer Leagues, Balboa Stadium, Circular Drive & Havel ock Street. SUNDAY, JANUARY 16 (more) ■ ■ 2-2-2. Recreation and Park Department Wh",
     "sted, live music, Golden Gate Park Senior Center, 6101 Fulton Street, Golden Gate Park. MONDAY, JANUARY 17 1:30 p.m. — Plant Walk Society, Strybing Arboretum Society, meet at information kiosk, Strybing Arboretum, Golden Gate Park. 6 p.m. - 10 p.m. — Recreation and Park Adult Basketball Tournament, Kezar Pavilion, Stanyan & Waller Streets. TUESDAY, JANUARY 18 2:30 p.m. — High School Soccer: Sacred Heart vs Serra, Kezar Stadium, Frederick & Willard Streets. 6 p.m. - 10 p.m. — Recreation and Park Adult Basektball Tournament, Kezar Pavilion, Stanyan & Waller Streets. WEDNESDAY, JANUARY 19 6 p.m. ~ High School Basketball, Sacred Heart vs Saint Ignatius, Kezar Pavilion, Stanyan & Waller Streets. 5:30 p.m. 6:30 p.m.— Hatha Yoga Class, $4.00 per Class, Recreational Arts Building, 50 Scott Street. 6 - 6:45 p.m. — Auditions for the San Francisco Recreation Chorus, Roosevelt Middle School, Room 101 Arguello Blvd. nr. Geary Blvd. (more) 3-3-3 Recreation and Park Department What's Doing i"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.55,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.55,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/whatsdoinginpark1983sanf",
    "deep_link": "https://archive.org/details/whatsdoinginpark1983sanf?q=Kezar+Stadium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -246,7 +413,7 @@
   }
  ],
  "dept_shelf_label": "Recreation & Park Department",
- "dept_shelf_more": 3,
+ "dept_shelf_more": 2,
  "sources": [
   {
    "label": "City budget & payments",
@@ -254,12 +421,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 6,
+  "n_documents": 7,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

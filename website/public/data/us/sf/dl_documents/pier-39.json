@@ -1,23 +1,9 @@
 {
- "generated_at": "2026-07-22T15:04:53.727500+00:00",
+ "generated_at": "2026-07-27T17:06:09.765249+00:00",
  "slug": "pier-39",
  "name": "Pier 39",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
-  {
-   "identifier": "proposednorthpoi2619sanf",
-   "title": "Proposed North Point Park/Marina, San Francisco, California : final environmental impact report",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1976,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "url": "https://archive.org/details/proposednorthpoi2619sanf",
-   "deep_link": "https://archive.org/details/proposednorthpoi2619sanf?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1976 city EIR detailing Pier 39's proposed 200,000 sq ft of restaurants and shops and its 'people mover' loop around the pier."
-  },
   {
    "identifier": "underwaterworlda1219sanf",
    "title": "Underwater World aquarium at Pier 39 : draft environmental impact report",
@@ -25,12 +11,162 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Pier 39",
+   "ocr_excerpts": [
+    "n:Y AND DF^'.IRTN TY Of 1 i ' J , 1 , 1 N 1 / • ■ , : . • t 1 . l\\ i WATER WORL QUARIUM AT PIER 39 '4E STATF CI.F.ARINGHOUSE N( SAN FRANCISCO PUBLIC LIBRARY 3 1223 03556 0755 CITY AND COUNTY OF SAN FRANCISCO DEPARTMENT OF CITY PLANNING DRAFT ENVIRONMENTAL IMPACT REPORT UNDERWATER WORLD AQUARIUM AT PIER 39 86.674E State Clearinghouse No. 88020217 PUBLICATION DATE: August 12, 1988 PUBLIC HEARING DATE: September 29, 1988 PUBLIC COMMENT PERIOD: August 12, 1988 through September 29, 1988 Written comments should be sent to the Environmental Review Officer, 450 McAllister Street, Sixth Floor, San Francisco, CA 94102 D REF 711„57 iJri2:Ld Underwater World aquarium at Pier 39 ; 19S8„ 3 1223 03556 0755 j City and County of San Francisco Department of City Planning 450 McAllister Street San Francisco, OA 94102 TO: Distribution List for the Underwater World Aquarium at Pier 39 EIR FROM: Barbara W. Sahm, Environmental Review Officer SUBJECT: Request for the Final Environmental Impact Report for Underwater World Aquarium at Pier 39 This is the draft of the Environmental Impact Report (EIR) for the Underwater World Aquarium at Pier 39. A public hearing will be held on the adequacy and accuracy of this document September 29, 1988. After the public hearing, our office will prepare and publish a document titled \"Summary of Comments and Responses,\" which will contain a summary of all relevant comments on this Draft EIR and our resp",
+    "lace postage here Department of City Planning 450 McAllister Street - 5th Floor San Francisco, California 94102 ATTN: Catherine Bauman (fold here) REQUEST FOR FINAL ENVIRONMENTAL IMPACT REPORT To: Department of City Planning, Office of Environmental Review Re: Underwater World Aquarium at Pier 39) ( ) Please send me a copy of the Underwater World Aquarium at Pier 39 Final EIR. Signed: Print Your Name and Address Below: (Name) (House Number and Street) (City, State and Zip Code) If you are requesting an FEIR, please tear this page out, show your address above, fold the mailer so that your return address and the Department of City Planning's address is",
+    "ruction Noise 128 H. Growth Inducement 134 V. MITIGATION MEASURES 135 VI. SIGNIFICANT ENVIRONMENTAL EFFECTS THAT CANNOT BE 150 AVOIDED IF THE PROPOSED PROJECT IS IMPLEMENTED VII. ALTERNATIVES 152 A. No-Project/Project Relocation 152 B. Different Waterfront Location 153 C. Entire Project on Existing Pier 39 163 D. Non-Waterfront Location 166 Vm. EIR AUTHORS AND PERSONS CONSULTED 170 IX. DEIR DISTRIBUTION LIST 173 APPENDICES A. Final Initial Study A-1 B. Transportation A-31 C. San Francisco Air Pollution Summary A-47 D. Fundamental Concepts of Environmental Noise A-51 E. City Planning Commission Res",
+    "Grant Avenue 4b and the Embarcadero 18. Project Area Photo: View from Telegraph Hill 4b 19. Existing W"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.9,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.9,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/underwaterworlda1219sanf",
    "deep_link": "https://archive.org/details/underwaterworlda1219sanf?q=Pier+39",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1988 draft EIR for the Underwater World aquarium proposed at Pier 39."
+   "salient": true
+  },
+  {
+   "identifier": "proposednorthpoi1976sanf",
+   "title": "Proposed North Point Park/Marina, San Francisco, California : draft environmental impact report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1976,
+   "pool": "sfpl",
+   "matched_alias": "Pier 39",
+   "ocr_excerpts": [
+    "subsidiary of Tia Maria, Inc., has prepared a development plan for the water- front area from Pier 37 through Pier 41 and on Seawall Lots 311 and 312, on San Francisco's Northern Waterfront. The major elements of the project would be: Pier 37: A waterfront park built over the salvaged area. Pier 39: 133,000 square feet of restaurants and 67,000 square feet of retail shops. Pier 41: The section of Pier 41 covered by the Development Agreement would be removed. A fixed breakwater would be constructed in this area, which would provide public walking and fishing activities. Parking : A",
+    "rvey FIGURE 2 V. C. PROJECT CHARACTERISTICS (Figure 4) The proposed project would contain the following: 1 . Development a. Pier 37 A small section of Pier 37 was salvaged after a fire that destroyed most of the pier. The waterfront park would be built over this salvaged section. b. Pier 39 The development of Pier 39 would include a total of 200,000 square feet of new retail commercial development. About two-thirds of the space, or 133,000 square feet, would be food service facilities; the remaining third, or 67,000 square feet, would be small retail shops and other commercial recreation such as theaters, small a",
+    "ernative piers have not yet been identified. The restaurants and shops would be a combination of one- and two-story structures, built on two levels. If there were a 7 8 two-story structure on the second level, it would result in three levels of construction. The pedestrian walkway around Pier 39 would be about four feet lower than the present deck level of the pier. Other aspects of the development of Pier 39 include a \"people mover\" system, which could be a rubber-tired, turn-of- the-century type of vehicle, or a series of slow-moving battery- powered \"people movers\". This people mover system would con- tinuously circle the periphery of Pier 39 to facilitate the movement of people along the length of the Pier. Whatever system were used for this purpose would not present a noise problem, since a major objective of the selected system would be to eliminate as much noise as possible. See Figures 5, 6, and 7 for types of \"people movers\"",
+    "arance of various elements of the project. c. Pier 41 All of Pier 41 would be removed. A fixed breakwater would be constructed in this area, which would provide for public walking and fishing activities. This breakwater would be about 730 feet long and 40 feet wide. 9 r END OF PIER 39 LOOKING WEST BATTERY-POWERED \"PEOPLE MOVER\" PUBLIC WALKWAY CIRCLING PIER BATTERY-POWERED \"PEOPLE MOVER\" FIGURE 5 10 12 PROJECT RENDERING FIGURE 8 13 14 15 2 . Public Park Area and Open Space A major component of the project is the waterfront park, which would extend along the",
+    "ain locations) would also be involved in actions relating to street changes. Total o"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.79,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.29,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/proposednorthpoi1976sanf",
+   "deep_link": "https://archive.org/details/proposednorthpoi1976sanf?q=Pier+39",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "C124904252",
+   "title": "Strategic plan, Port of San Francisco",
+   "creator": "Port of San Francisco",
+   "year": null,
+   "pool": "dl",
+   "matched_alias": "Pier 39",
+   "ocr_excerpts": [
+    "B & I Boats Bay Blossoms Burger Car Wash Burger Parking Lot Burger Stand Services Station Carriage Charter GVS Parking (Calif Cafe Rest.) Hornblower Yachts, Inc. Metropolitan Parking - Pier 7 Metropolitan Parking - SWL 321 Mobil Oil Station National Car Rental\\New York New York Frankfurter Co. Pacific Telephone Pier 33, Inc. Pier 39 Recreation Rest S. F. Mini Storage S. F. Parking Inc. St. Francis Marine Center Smith, Cordell S & S Trailer Repair Sub-total % over prior year Total % over prior year Source: Port of San Francisco $ $ $ $ Sales 1,022,618 3,099,148 83,763 319,339 2,079,544 41,430 135,713 791,844 308,990 0 289,844",
+    "00 | EB Port Income: $900,000 demand for retail will keep pace with Bay goods and services Area growth of 5% per EA Jobs: 13 Hi Jobs: 250 through 1995; total year Bay Area industry Ea City Taxes: $5,000 id City Taxes: $100,000 revenues expected to increase 5% per year 4 Substantial competi- tion from existing retailers; Union Square, Pier 39, local shopping centers id Port can offer unique waterfront shopping environment fq Port retailers currently generating $62M per year in revenues Hee 7 Lag taal . vi 7 al INOY ab | Ship Repair: Potential Impact Analysis Ed Industry is in substan- EA No growth, but maintain | E# Port Income: $20,000 | E™ Port Income: $0 tial",
+    "g surface parking 18,500 SWL 321 surface parking 64,815 Total 258,286 Source: Port of San Francisco of ww “s Ochs > aw &* 3 : J lente cea pm atl (om cbabaw ted oe | _ ‘6 = 7 . ; ma) amee a firanary Port of San Francisco SAN _ FRANCISCO SHOPPING CENTERS Stores Year Open Square Feet Embarcadero Center 175 1968 325,,000 Pier 39 146 EOFS 200,000 Stonestown 66 1952 855,000 Ghirardelli Square 81 1964 170,000 The Anchorage v2 1979 78,000 Galleria at Crocker Center 57 1982 N/A Japan Center 54 1968 200,000 The Cannery 50 1967 86,000 Source: San Francisco Chamber of Commerce, 1989-1990 Bay Area Business Report. Port of San Francisco SAN _ FRANCISCO RETAIL SALES",
+    "valuable information regarding fender condition. Facilities were rated in four categories: Good, Fair, Poor, and Condemned. Overall pier condition was concluded to be as follows: PIER CONDITION NUMBER OF PIERS PERCENT OF TOTAL Good Ze 47 Fair 13 28 Poor e) 19 Condemned mei EG Totals 47 100% Fender condition for these piers (excluding Pier 39, which has no fender system) was concluded to be as follows: FENDER CONDITION NUMBER OF PIERS PERCENT OF TOTAL Good i 24 Fair a3 28 Poor Tee, 41 Condemned 23. 7 Totals 46 100% ~ameqes Sted? lina bie yieoings saieaanee aqettt -ontai heat ,@ idaey ‘nisms: “42 Ian a> Seset> aesLapems wi 9 nitty .2 na 136 “ene weeds enue inf a ee ae",
+    "timber piles, either sheathed or unsheathed, with a few rubber cushion fenders. The fender condition at each pier is provided in Exhibit 3 and shown on Figure 1. The "
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 7.61,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.11,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124904252",
+   "deep_link": "https://archive.org/details/C124904252?q=Pier+39",
+   "source_label": "Internet Archive — Democracy's Library",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "levisplazafinal1419sanf_0",
+   "title": "Levi's Plaza : final environmental impact repart",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1978,
+   "pool": "sfpl",
+   "matched_alias": "Pier 39",
+   "ocr_excerpts": [
+    "ve just been informed that if Levi's Plaza is built as planned, we will have 612 fewer parking places than we now have. Further, that the number of spaces available will be 713 short of the San Francisco Planning Code (requirement) . We are already short of parking spaces due to the opening of Pier 39. To make the situation worse would be intoler- able. Further, if this is in violation of the Planning Code, the building would be illegal.\" Response 1; Considering the fact that about 15 spaces would remain at the Greenwich stub, the proposed project would eliminate about 597 existing parkin",
+    "Code requirements for park- ing, authorizing fewer spaces, on the grounds that this project would be a Planned Unit Development (Section 304 of Code) . The Planning Commission will consider this 1 application at a public hearing following certification of the EIR (EE77.256) . Parking impacts of Pier 39 are addressed in the Pier 39 EIR (EE75.368, on file and available for public review at the Office of Environmental Review, 45 Hyde Street) . The cumulative parking impacts of Pier 39 and Levi's Plaza are addressed in the EIR text addition cited in Response 3 infra. H. Steve Silesky, letter of 10 November 1978 (rec'd 13 November 1978) Comment 2: \"Aside from the potential eyesore of three levels of above-ground parking containing space for 825 cars, increased traffic congest",
+    "ject would locate all off-street parking out of view of Telegraph Landing residents. See Section IV. C. of the Draft EIR for discussion of traffic impacts. For discussion of Planning Code provisions, see Response 1. Comment 3; \"We have all been inconvenienced in recent weeks by the opening of Pier 39 — traffic is congested and parking on the street is nigh onto impossible on weekends. The Levi Project would appear to make this a daily problem, rather than just on weekends.\" Response 3; A section, titled Traffic and Parking Impact Update, has been added to the EIR beginning on page 118. 2",
+    "toward long-term parking or short- term parking. This would depend upon the specific parking rate structure adopted for the garage. The San Francisco Planning Commission has not yet approved or disapproved the project. See also Response 4. Comment 9 : \"We have recently suffered the impact of Pier 39 and what it has done to traffic in our area.\" Response 9: The cumulative traffic impacts of Pier 39 and Levi's Plaza are addressed in an addition to the Draft EIR, see Response 3. 5 Comment 10: \"...we have been living with the Wastewater Management construction for several months and have many months to go before this is completed.\" Response 10: Environmental impacts of the Wastewater M",
+    "to moderate income households . J Refer to Comment 407 regarding subsidized housing related to the proposed project but not part of it. Mari"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.02,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.52,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 7.0,
+    "money": false,
+    "decision": true,
+    "accountability": true,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/levisplazafinal1419sanf_0",
+   "deep_link": "https://archive.org/details/levisplazafinal1419sanf_0?q=Pier+39",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "agenda19arts_26",
@@ -39,12 +175,118 @@
    "year": 1983,
    "pool": "sfpl",
    "matched_alias": "Pier 39",
+   "ocr_excerpts": [
+    "Ave. Suite 240. San Francisco, CA. 94102 tel. 415.252.2590 fax 415.252.2595 II. Collections Dcbra LcJiane A. Cheemah Project Location Update Motion: Motion to approve East Park site location north of Pier 35 for the placement of the Cheemah sculpture contingent upon approvals from Pier 39, Port of San Francisco, and BCDC. B. Discussion regarding relocation of King Carlos and Juan Batista De Anza from the Central Embarcadero/Justin Herman Plaza. Motion: Motion to direct staff to explore possible relocation of sculptures to Dolores Street median at Mission Dolores. III. Gallery Rupert",
+    "Business IX. Adjournment VAC Agenda 3 10/15/97 October 17. 1997 TO: The Honorable Members of the Visual Art Committee FROM: Debra Lehane, Civic Art Collection Manager RE: Location for Cheemah Gift Wyolah Garden, on behalf of the artist, and I met with Joe Smith, VP of Operations for Pier 39 concerning the placement of Cheemah near Pier 39. Since our last meeting, Ms. Garden and Osprey Oriel le Lake focused on the Pier 39 area in greater detail. The artist has expressed a strong preference for the southern entrance to the Pier 39 area of influence which is known as East Park. East Park is just north of Pier 35 and consists of a large concrete plaza with a wooden deck which extends over the water. We walked the site with Mr. Smith who shared with us information about the use of the space. Through that discussion, two potential sites where identified which would allow the piece to be installed in the area without interfering with programed activities in the plaza. At the October 15th meeting, I will share with you the response from Pier 39. Mr. Smith expected to present it to the Executive Staff on Monday October 13th. If Pier 39 is willing to host the sculpture, the next steps in the approval process will be the Port of San Francisco and the Bay Conservation Development Corp (BCDC). I encourage you to visit the site before the meeting on Wednesday, if you have the opportunity. Thank you. October 10, 1997 TO: The",
+    "the New Main Library. II. Collections Debra Lehane reported on her effort to assist the donors in their search for a location for a proposed gift, the Cheemah sculpture. Based on the direction given by the Visual Arts Committee at the previous meeting, areas along the North Embarcadero near Pier 39 had been explored further. Ms. Lehane met with the management at Pier 39, and reviewed several locations, finally agreeing that the East Park site is the most effective and feasible. Pier 39 expressed excitement about the piece, and a willingness to co-sponsor the artist's fund-raising efforts. Ms. Lehane stated that if the Commission approves the site, she will approach the Port and BCDC for their approval. Director Newirth reminded the Committee that the procedure for for"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.59,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.09,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -3.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
    "url": "https://archive.org/details/agenda19arts_26",
    "deep_link": "https://archive.org/details/agenda19arts_26?q=Pier+39",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "An Arts Commission agenda in which Pier 39 management weighs hosting the Cheemah sculpture at East Park, pending Port and BCDC approval."
+   "salient": false
+  },
+  {
+   "identifier": "C123298834",
+   "title": "Fisherman's Wharf action plan",
+   "creator": "ROMA Architecture and Urban Design",
+   "year": 1981,
+   "pool": "dl",
+   "matched_alias": "Pier 39",
+   "ocr_excerpts": [
+    "ere We vere rials ety ele ola eratevere ero eteter ere atone etal are 43 HSE OMY wiratoets titers ee laine arene <2 Setcreiettecls'. Seite 49 FISHERMANS WHARF AREA ‘STUDY! he ee ee ay OD NORTH ——— We ae cma | 0° 200 400 600 800 1000 BEEN INTRODUCTION The Fisherman's Wharf area is generally located be- tween Pier 39 and Fort Mason and from Bay Street to the pierhead line in San Francisco Bay. However, special attention is focused in this Action Planning effort on the area within Port jurisdiction, north of Jefferson Street and between Pier 41 and the Hyde Street Pier, where problems have been identified and where the opportunity for change and improveme",
+    "cation of con- sumers. TO IMPROVE THE OVERALL ECONOMIC CON- DITION AND ENVIRONMENTAL QUALITY OF THE WHARF AND TO ENHANCE ITS ATTRACTIVENESS FOR RESIDENTS AS WELL AS TOURISTS Limit additional commercial recrea- tional development, such as _ restaur- ants, entertainment and specialty re- tail uses in the Fisherman's Wharf area (between Pier 39 and Fort Mason Policyec: POIMCGYe3- Polacyga: and from Bay Street to the bay), because of the existing heavy concentration of these uses and peak period congestion. Balance existing commercial recrea- tional and public assembly uses which generate the most activity in the sum- mer, on week-ends and during the eve- ning, with",
+    "f the proposals would have generated over $500,000 per year in revenue for the Port. The chosen development schene by Gerald Hines Inc. included 400 residential units, a 20M room hotel, 45,000 square feet of office Space and 600 parking spaces on site. Hines withdrew his proposal in 1975, due to the economic recession and the development of Pier 39 only one-half mile away. The future of Pier 45 has remained uncertain to this day. The opportunity for it to play a cri- tical part in the revitalization of Fisherman's Wharf has resulted in a new set of objectives for its dev- elopment. Objectives Paramount among these objectives is that a new Pier 45 development help to create an env",
+    "acade may be designed to step back at no more than 45 degrees from qrade, providing generous ter- races and galleries up to the 40 foot height limit. (oe A; WOOD PILINGS AND APRON B: CONCRETE PILINGS AND DECK C: SOLID LANDFILL €& NORTH Pier 45 Development section 29 L3S5uLS YOTAVL *E’ LINE TRANSIT STOP L5S8LS TIMOd PIER 39 GARAGE POW LIUUUU 13S5uLS NOSVW 7] Cl fo i) i @ 0 E Sc e40) i us @ 50 Jes oo eS | b: LO bi O ey | a oh, FA > aa las O 5 OO Ba Te eal PIE: C “i © LINE OWL wWi5so| A 5 cy — OULU LIL) jw) Cj I) x c <x = (a ZZ. < a SPORTS FISHING DOCK NEW PLAZA fi INNER LAGOO",
+    "acted as a service area to the more intensely utilized portions of the Wharf, particularly restaurant row. In the early 1900's, its importance was primarily as a rail yard with Pier 43 serving as a rail"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 9.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 4.51,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C123298834",
+   "deep_link": "https://archive.org/details/C123298834?q=Pier+39",
+   "source_label": "Internet Archive — Democracy's Library",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "northpointparkma1976unit",
+   "title": "North Point Park/Marina, City and County of San Francisco : regulatory permit applications by Waterfront Recreation Facilities, Inc. ; draft environmental statement",
+   "creator": "United States. Army. Corps of Engineers,Waterfront Recreation Facilities, Inc,San Francisco (Calif.). Dept. of City Planning. Proposed North Point Park/Marina, San Francisco, California. 1976",
+   "year": 1976,
+   "pool": "sfpl",
+   "matched_alias": "Pier 39",
+   "ocr_excerpts": [
+    "iers 37, 39, and 41. However, Pier 37 was recently destroyed by fire. 1.15. Project Details. The proposed project would contain the following:, 1.16. Development. Pier 37, which was recently destroyed by a fire, would have part of the water- front park built upon a salvaged section of it. Pier 39 would in- clude a total of 200,000 square feet of new retail commercial development, of which 133,000 square feet would be food service facilities and 67,000 square feet would be small retail shops and other commercial recreation such as theaters, small amusement rides, exhibits, and artisans at work.",
+    "t long and 40 feet wide. It would provide for public fishing and walking ac- tivities . PROJECT RENDERING (SEE FIGURE 10, AP- PENDIX B FOR THE COMPLETE RENDERING) 3 1.17. All structures, to the greatest extent possible, would be built with wood salvaged from demo- lition of the structures on Pier 39 to emphasize the maritime character of the site. Because old lumber on Pier 37 was destroyed in a fire, the applicant is currently negotiating with the Port of San Francisco to obtain lumber from other surplus piers . 1.18. The restaurants and shops would be a combination of one- and two-story structures, built on two levels. The pedes- trian walkway around Pier 39 would be about four feet lower than the present deck level of the pier. A \"people mover\" system would use the lower level to facilitate the movement of people along the length of the pier. 1.19. Public park area and open space. A major component of the project is the waterfront park, which",
+    "ulk- head of the southeastern edge of Pier 37 to the midpoint of Pier 41. The total size of the park would depend on whether the Embarcadero were closed or open, meaning 5.4 or 4.2 acres respectively. Total open space would be 8.8 or 7.6 acres respectively, including the pedestrian walkway around Pier 39. PROJECT RENDERING (SEE FIGURE 8, AP- PENDIX B FOR COMPLETE DRAWING) 1.20. Marina. Berthing facilities for approximately 50 sport- fishing boats would be provided to the west of Pier 39, and a small-boat marina for 250 boats would be provided to the east of the pier. Elec- tricity, water, and sanitation facilities would be provided, as well as a bait shop for sportf ishermen. Boat slips would be treated wood-frame or other construction with concrete, fiberglass, or plastic flotati",
+    "ly danger- ous uses (storage of old vehicles, poor housekeeping, etc.) were noted and recommendations were made for improving structures where fire safety provisions were inadequate. 2.47. It was recommended that the wooden shed on Pier 41 be demol- ished, and this has been done. Recommendations for Pier 39 included upgrading the buildings and substructure to conform to the specifica- tions of the Fire Department. These specifications outlined th"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.84,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.84,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/northpointparkma1976unit",
+   "deep_link": "https://archive.org/details/northpointparkma1976unit?q=Pier+39",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "finalenvironment1977wate",
@@ -53,12 +295,78 @@
    "year": 1977,
    "pool": "sfpl",
    "matched_alias": "Pier 39",
+   "ocr_excerpts": [
+    "37, 39, and 41. However, Pier 37 was recently destroyed by fire. 1.15. Project Details. The proposed project would contain the following: 1.16. Development . Pier 37, which was recently destroyed by a fire, would have part of the water- front park built upon a salvaged section of it. Pier 39 would in- clude a total of 200,000 square feet of new retail commercial development, of which 133,000 square feet would be food service facilities and 67,000 square feet would be small retail shops and other commercial recreation such as theaters, small amusement rides, exhibits, and artisans at work",
+    "Document A-8, Appendix A). It would provide for public fishing and walking ac- tivities. PROJECT RENDERING (SEE FIGURE 10, AP- PENDIX B FOR THE COMPLETE RENDERING) 3 1.17. All structures, to the greatest extent possible, would be built with wood salvaged from demo- lition of the structures on Pier 39 to emphasize the maritime character of the site. Because old lumber on Pier 37 was destroyed in a fire, the applicant is currently negotiating with the Port of San Francisco to obtain lumber from other surplus piers. 1.18. The restaurants and shops would be a combination of one- and two-story structures, built on two levels. The pedes- trian walkway around Pier 39 would be about four feet lower than the present deck level of the pier. A \"people mover\" system would use the lower level to facilitate the movement of people along the length of the pier. 1.19. Public park area and open space. A major component of the project is the waterfront park, which would extend along the bulk- head of the southeastern edge of Pier 37 to the midpoint of Pier 41. The total size of the park would be 4.2 acres. Total open space would be 7.6 acres including the pedestrian walkway around Pier 39. PROJECT RENDERING (SEE FIGURE 9, AP- PENDIX B FOR THE COMPLETE DRAWING) PROJECT RENDERING (SEE FIGURE 8, AP- PENDIX B FOR THE COMPLETE DRAWING) 1.20. Mar ina . Berthing facilities for approximately 50 sport- fishing boats would be provided to the West of Pier 39, and a small-boat marina for 250 boats would be provided to the east of the pier. Elec- tricity, water, and sanitation facilities would be provided, as well as a bait shop for sportf ishermen. Boat slips would be treated wood-frame or other construction with concrete, fiberglass, or plastic flotati",
+    "ly danger- ous uses (storage of old vehicles, poor housekeeping, etc.) were noted and recommendations were made for improving structures where fire safety provisions were inadequate. 2.47. It was recommended that the wooden shed on Pier 41 be demol- ished, and this has been done. Recommendations for Pier 39 included upgrading the buildings and substructure to conform to the specifica- tions of the Fire Department. These specifications outlined the sy"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.66,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.16,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/finalenvironment1977wate",
    "deep_link": "https://archive.org/details/finalenvironment1977wate?q=Pier+39",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true,
-   "gloss": "A 1977 federal environmental statement on the Pier 39 project, including marina berthing east and west of the pier and fire-safety upgrades to its structures."
+   "salient": false
+  },
+  {
+   "identifier": "northernwaterfro1987sanf",
+   "title": "The Northern Waterfront findings report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1987,
+   "pool": "sfpl",
+   "matched_alias": "Pier 39",
+   "ocr_excerpts": [
+    "rsection 147 6-5 Transit Boarding and Alighting Activity 159 6-6 Cable Car Turnaround at Bay/Taylor Intersection 160 6-7 Cables Cars at Beach/Hyde Intersection 160 6-8 Muni Operations on Jefferson Street 163 6-9 Midday Pedestrian Sidewalk and Crosswalk Volumes 167 6-10 The Embarcadero sidewalk near Pier 39 173 6-11 The Embarcadero sidewalk at the Franciscan 176 6-12 Jefferson Street Arcades at Alioto's 176 6-13 Jefferson Street Arcades at Tarantino's 178 6-14 Spectators and Pedestrians spill out into Jefferson Street 179 6-15 Pedestrians and Street Vendors on Beach near Hyde 180 6-16 Traffic Queues on Beach at Pier 39 Parking Garage 186 6-17 Traffic Queues on Jefferson at Powell Street 186 6-18 Off-Street Parking Supply and Saturday Occupancy 190 6-19 Meter Conversion Locations 194 6-20 On-Street Parking Supply and Occupancy 195 6-21 No Parking Zones on Jefferson Street 195 6-22 Tour Buses at Fisherman's Grott",
+    "oading Dock on Jefferson Street 207 6-27 Double-Parked Truck on Polk Street 208 6-28 Service Vehicle Loading Facilities 208 6-29 Summary of Sign Inventory 216 6-30 Directional Sign on Bay at Van Ness Avenue 218 6-31 Directional Sign on Van Ness at North Point Street 218 6-32 Parking Signs at Pier 39 Garage 220 6-33 Parking Signs Along Beach Street 221 6-34 Muni Signage 222 6-35 Muni Information Kiosk 224 6-36 Vehicular Levels of Service at Signalized Intersection 232 6-37 Pedestrian Flow Regimes 233 9-1 Street Artists on Beach Street 259 9-2 Street Performers on Jefferson Street near Fish",
+    "ded by the old-time fish restaurant, is faintly reminiscent of an Italian fishing village. Fish handlers housed in older, simple, low-rise buildings occupy Fish Alley, south of the outer lagoon. South of Jefferson Street, a stretch of eight city blocks extending east-west between Ghirardelli Square and Pier 39 predominantly serves the tourists with restaurants, galleries, commercial entertainment and shops. The architecture ranges from sensitive adaptations of historic factory buildings to plain, undistinguished, and even gaudy building styles. Equally diverse are the restaurants and shops, from fine eating establ",
+    "w centers created public oriented open spaces and activities along the waterfront, helping to make Fisherman's Wharf into a tourist attraction. The success of these developments generated additional tourist-oriented development along Jefferson Street as well as major new centers such as The Anchorage and Pier 39. Fisherman's Wharf continues as a viable center for fish handling and distribution. Fish Alley, encompassing the two blocks north of Jefferson Street between Hyde and Jones Streets, is the center of this industry. At present, the annual landings of fish by sea average 20 million pounds. In addition,",
+    "arf Action Plan [FWAP] in 1985 resulted in the "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.69,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.19,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/northernwaterfro1987sanf",
+   "deep_link": "https://archive.org/details/northernwaterfro1987sanf?q=Pier+39",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ]
 }

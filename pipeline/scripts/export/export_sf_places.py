@@ -87,6 +87,7 @@ DEPT_ARCHIVE_LABEL = {
     "city-planning": "City Planning Department",
 }
 DEPT_SHELF_CAP = 3
+REFRESH_SHELF = False  # set by --refresh-shelf; see the prior-shelf note in assemble()
 
 # Mirrors link_sf_places.py's owning_dept_code -> archive-cache-slug map, so
 # the fiche can name the REAL collection a dept_shelf item came from (a
@@ -127,11 +128,39 @@ def classify_doc(title: str) -> tuple[str, str]:
     return "other", "Other records"
 
 
-def _ocr_richness(d: dict) -> int:
-    """Total characters of OCR context pulled around the aliases — the salience
-    signal that replaced snippet length. More real context = the document
-    talks about this place more substantively, not just longer."""
-    return sum(len(e) for e in (d.get("ocr_excerpts") or []))
+def _ocr_richness(d: dict) -> float:
+    """How much this document is ABOUT the place.
+
+    Was: total characters of OCR context. That measured volume, not relevance —
+    a 600-page general plan naming the place once outranked a short report
+    devoted to it, because the long document's single window was just as wide.
+    Now it defers to the composite computed at linkage (SF context, hit count,
+    hits-per-100k-chars, title match); the char count survives only as a
+    tie-breaker for caches written before the composite existed."""
+    rel = d.get("relevance")
+    if rel:
+        return rel["score"]
+    return sum(len(e) for e in (d.get("ocr_excerpts") or [])) / 1000.0
+
+
+def _shelf_score(d: dict) -> float:
+    """Both axes: how much the document is about this place (relevance) plus how
+    much decision-relevant substance it carries (materiality). Ranking on either
+    alone fails in a predictable way — relevance alone promotes the eloquent
+    document that decides nothing, materiality alone promotes any budget book
+    that happens to name the place."""
+    return _ocr_richness(d) + (d.get("materiality") or {}).get("score", 0.0)
+
+
+def _archive_source_note(*doc_lists: list[dict]) -> str:
+    """Name the archive collections this fiche actually draws on."""
+    pools = {d.get("pool") for lst in doc_lists for d in lst}
+    parts = []
+    if "sfpl" in pools:
+        parts.append("SFPL partnership scans")
+    if "dl" in pools:
+        parts.append("Democracy's Library")
+    return "Internet Archive — " + (" + ".join(parts) if parts else "public collections")
 
 
 def curate_documents(docs: list[dict]) -> list[dict]:
@@ -159,14 +188,29 @@ def curate_documents(docs: list[dict]) -> list[dict]:
     for d in kept:
         key, label = classify_doc(d["title"])
         d["group"] = label
-        d["_weight"] = GROUP_WEIGHT[key] * 10 + min(_ocr_richness(d) / 400, 5)
+        # /2 keeps the relevance term on the same 0–5 scale the char-count term
+        # used to occupy, so narrative group still dominates and relevance orders
+        # within it.
+        d["_weight"] = GROUP_WEIGHT[key] * 10 + min(_ocr_richness(d) / 2, 5)
         d["_group_key"] = key
 
-    group_order = [k for k, _, _ in DOC_GROUPS] + ["other"]
+    # Group display order follows GROUP_WEIGHT, not the order DOC_GROUPS happens
+    # to be declared in. Sorting by declaration index put "meetings" above
+    # "reports", so a bare "Agenda" was shown ahead of a grand jury report even
+    # though GROUP_WEIGHT already said reports outrank meetings 2:1.
+    declared = [k for k, _, _ in DOC_GROUPS] + ["other"]
+    group_order = sorted(declared, key=lambda k: (-GROUP_WEIGHT[k], declared.index(k)))
     kept.sort(key=lambda d: (group_order.index(d["_group_key"]), -d["_weight"]))
 
-    for i, d in enumerate(kept):
-        d["salient"] = i < SHELF_SALIENT_CAP
+    # Salience is decided across the whole shelf on evidence, not by position in
+    # whichever group sorts first. Before this, the six documents a reader saw
+    # without expanding were the first six of the leading group — in practice
+    # "Agenda" on 25 fiches and "Minutes" on 23, the least informative titles in
+    # the corpus, while the audits and environmental reviews sat behind "see all".
+    for d in sorted(kept, key=lambda d: -_shelf_score(d))[:SHELF_SALIENT_CAP]:
+        d["salient"] = True
+    for d in kept:
+        d.setdefault("salient", False)
         del d["_weight"]
         del d["_group_key"]
     return kept
@@ -198,8 +242,14 @@ def assemble() -> int:
         # If Block C already curated this place's shelf (dropped false-positive
         # matches), keep operating on that curated identifier set rather than
         # reverting to every raw linkage candidate on a routine re-run.
+        #
+        # This intersection is also a trapdoor: a candidate that was never in the
+        # prior shelf can never enter it, so an upstream grounding backfill lands
+        # as a silent no-op. --refresh-shelf admits the new candidates (used for
+        # the 2026-07-27 Democracy's Library backfill, where the whole point was
+        # documents the prior shelf could not have contained).
         prior = load(PLACES / f"{slug}.json")
-        if prior and prior.get("documents"):
+        if prior and prior.get("documents") and not REFRESH_SHELF:
             keep_ids = {d["identifier"] for d in prior["documents"]}
             raw_docs = [d for d in raw_docs if d["identifier"] in keep_ids] or raw_docs
 
@@ -256,7 +306,10 @@ def assemble() -> int:
             "dept_shelf_more": dept_shelf_more,
             "sources": [
                 {"label": "City budget & payments", "note": "SF Controller open data (budget, vouchers, contracts)"},
-                {"label": "Historical documents", "note": "Internet Archive — SFPL partnership scans + Democracy's Library"},
+                # Derived, not asserted: this line used to name both pools on
+                # every fiche while no fiche carried a single Democracy's Library
+                # document. Name only the collections this place actually cites.
+                {"label": "Historical documents", "note": _archive_source_note(docs, dept_shelf)},
             ],
             "_gate": {
                 "has_photo": bool(photo),
@@ -368,9 +421,14 @@ def finalize() -> int:
 
 
 def main() -> int:
+    global REFRESH_SHELF
     ap = argparse.ArgumentParser()
     ap.add_argument("--finalize", action="store_true")
+    ap.add_argument("--refresh-shelf", action="store_true",
+                    help="let newly linked documents enter an already-curated shelf "
+                         "(otherwise the prior shelf's identifiers are a closed set)")
     args = ap.parse_args()
+    REFRESH_SHELF = args.refresh_shelf
     return finalize() if args.finalize else assemble()
 
 

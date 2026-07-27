@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.696759+00:00",
+ "generated_at": "2026-07-27T17:06:09.727969+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "buena-vista-park",
@@ -119,32 +119,181 @@
  },
  "documents": [
   {
-   "identifier": "annualreportofbo1912sanf",
-   "title": "Annual report of the Board of Park Commissioners of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Park Commissioners",
-   "year": 1912,
+   "identifier": "emergencyoperati1978sanf",
+   "title": "Emergency operations center : feasibility study & report",
+   "creator": "San Francisco (Calif.). Bureau of Architecture,San Francisco (Calif.). Mayor's Office of Emergency Services,Reid & Tarics Associates,Parsons, Brinckerhoff, Quade & Douglas,Hayakawa Associates,Jefferson Associates",
+   "year": 1978,
    "pool": "sfpl",
    "matched_alias": "Buena Vista Park",
-   "url": "https://archive.org/details/annualreportofbo1912sanf",
-   "deep_link": "https://archive.org/details/annualreportofbo1912sanf?q=Buena+Vista+Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.33,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 3.83,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/emergencyoperati1978sanf",
+   "deep_link": "https://archive.org/details/emergencyoperati1978sanf?q=Buena+Vista+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
+   "group": "Plans & environmental review",
    "salient": true,
-   "gloss": "A 1912 Board of Park Commissioners report requests $25,000 to construct Buena Vista Park's grounds after avenue grading left them well above the sidewalk, and values the 36-acre park at $88,250."
+   "gloss": "A 1978 feasibility study weighing five city-owned sites for an emergency operations centre, scored on line-of-sight microwave access to the transmitter at Christmas Tree Point."
   },
   {
-   "identifier": "generalmanagersr1975sanf",
-   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
-   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
-   "year": 1975,
+   "identifier": "parkhillresident2519sanf",
+   "title": "Park Hill residential : [draft] environmental impact report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1983,
    "pool": "sfpl",
    "matched_alias": "Buena Vista Park",
-   "url": "https://archive.org/details/generalmanagersr1975sanf",
-   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Buena+Vista+Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.49,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.49,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/parkhillresident2519sanf",
+   "deep_link": "https://archive.org/details/parkhillresident2519sanf?q=Buena+Vista+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true,
+   "gloss": "A 1983 environmental review of townhouse development at 355 Buena Vista Avenue East, on the 2.5-acre former Children's Hospital site above the park."
+  },
+  {
+   "identifier": "parkhillresident3019sanf",
+   "title": "Park Hill residential : final environmental impact report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Buena Vista Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.59,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.59,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/parkhillresident3019sanf",
+   "deep_link": "https://archive.org/details/parkhillresident3019sanf?q=Buena+Vista+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true,
+   "gloss": "The final 1983 report on the Park Hill project at 355 Buena Vista Avenue East, assessing visual quality and the shadows new townhouses would cast."
+  },
+  {
+   "identifier": "annualreportofbo1895sanf",
+   "title": "Annual report of the Board of Park Commissioners of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Park Commissioners",
+   "year": 1895,
+   "pool": "sfpl",
+   "matched_alias": "Buena Vista Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.18,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.68,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/annualreportofbo1895sanf",
+   "deep_link": "https://archive.org/details/annualreportofbo1895sanf?q=Buena+Vista+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited (1895–1912)",
+   "group": "Reports & records",
+   "salient": true,
+   "gloss": "The Board of Park Commissioners' report for the year ending June 1895, under superintendent John McLaren, recording tree planting and thinning across the city's parks."
+  },
+  {
+   "identifier": "greaterhaightas2819sanf_0",
+   "title": "Greater Haight-Ashbury cumulative assessment report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1984,
+   "pool": "sfpl",
+   "matched_alias": "Buena Vista Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.84,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 3.34,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/greaterhaightas2819sanf_0",
+   "deep_link": "https://archive.org/details/greaterhaightas2819sanf_0?q=Buena+Vista+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
    "group": "Other records",
    "salient": true,
-   "gloss": "A 1975 Open Space fund report allocates $27,000 for children's play apparatus and $100,000 for Phase II rehabilitation and landscaping at Buena Vista Park."
+   "gloss": "A 1984 cumulative assessment of development across Greater Haight-Ashbury, including a hospital expansion visible from surrounding high ground."
   },
   {
    "identifier": "capitalplanann200405sanf",
@@ -153,11 +302,32 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Buena Vista Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 1.81,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.31,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/capitalplanann200405sanf",
    "deep_link": "https://archive.org/details/capitalplanann200405sanf?q=Buena+Vista+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false,
+   "salient": true,
    "gloss": "A Recreation and Park capital plan carries a Buena Vista Park master-plan project and recounts the 36-acre park's 1894 founding, 1930s WPA rock walls and a 1989 erosion-control plan."
   }
  ],
@@ -193,12 +363,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 3,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

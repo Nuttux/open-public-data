@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.721493+00:00",
+ "generated_at": "2026-07-27T17:06:09.758691+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "legion-of-honor",
@@ -75,12 +75,140 @@
  },
  "documents": [
   {
+   "identifier": "annualreport1970fine",
+   "title": "Annual report",
+   "creator": "Fine Arts Museums of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Legion of Honor",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.01,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.51,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/annualreport1970fine",
+   "deep_link": "https://archive.org/details/annualreport1970fine?q=Legion+of+Honor",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
+   "group": "Reports & records",
+   "salient": true,
+   "gloss": "The museums' 1970-1971 annual report, naming Ian McKibbin White as director and pressing to restore public bus service to the Legion."
+  },
+  {
+   "identifier": "minutesagendas2000fine_0",
+   "title": "Minutes and Agendas",
+   "creator": "Fine Arts Museums of San Francisco. Board of Trustees",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Legion of Honor",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.1,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.6,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -3.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutesagendas2000fine_0",
+   "deep_link": "https://archive.org/details/minutesagendas2000fine_0?q=Legion+of+Honor",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
+   "group": "Meetings & resolutions",
+   "salient": false,
+   "gloss": "Fine Arts Museums trustee minutes and agendas for 2000, the board that governs the Legion alongside the de Young."
+  },
+  {
+   "identifier": "minutesorderofbu1987corp",
+   "title": "Minutes and Order of Business",
+   "creator": "Corporation of the Fine Arts Museums (San Francisco, Calif.). Board of Trustees",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Legion of Honor",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.44,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.94,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesorderofbu1987corp",
+   "deep_link": "https://archive.org/details/minutesorderofbu1987corp?q=Legion+of+Honor",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true,
+   "gloss": "1987 minutes of the Corporation of the Fine Arts Museums, including the cash raised toward balancing the 1987-88 budget."
+  },
+  {
    "identifier": "minutesboardofpa1925sanf",
    "title": "Minutes / Board of Park Commissioners",
    "creator": "San Francisco (Calif.). Board of Park Commissioners",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Legion of Honor",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.47,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.47,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/minutesboardofpa1925sanf",
    "deep_link": "https://archive.org/details/minutesboardofpa1925sanf?q=Legion+of+Honor",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -89,40 +217,33 @@
    "gloss": "1925 Park Commissioners minutes recording payments for the Palace, an organist for its dedication, and the city entertaining a delegation at the building."
   },
   {
-   "identifier": "minutesagendas2002fine_0",
-   "title": "Minutes and Agendas",
-   "creator": "Fine Arts Museums of San Francisco. Board of Trustees",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Legion of Honor",
-   "url": "https://archive.org/details/minutesagendas2002fine_0",
-   "deep_link": "https://archive.org/details/minutesagendas2002fine_0?q=Legion+of+Honor",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "2002 Fine Arts Museums trustee minutes placing board meetings and exhibition openings in the Legion of Honor's board room."
-  },
-  {
-   "identifier": "annualreport1970fine",
-   "title": "Annual report",
-   "creator": "Fine Arts Museums of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Legion of Honor",
-   "url": "https://archive.org/details/annualreport1970fine",
-   "deep_link": "https://archive.org/details/annualreport1970fine?q=Legion+of+Honor",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true,
-   "gloss": "The museums' 1970-1971 annual report, naming Ian McKibbin White as director and pressing to restore public bus service to the Legion."
-  },
-  {
    "identifier": "pacificcoastarch25192sanf",
    "title": "Pacific coast architect",
    "creator": null,
    "year": 1924,
    "pool": "sfpl",
    "matched_alias": "California Palace of the Legion of Honor",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.44,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.44,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/pacificcoastarch25192sanf",
    "deep_link": "https://archive.org/details/pacificcoastarch25192sanf?q=California+Palace+of+the+Legion+of+Honor",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -141,12 +262,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 4,
+  "n_documents": 5,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

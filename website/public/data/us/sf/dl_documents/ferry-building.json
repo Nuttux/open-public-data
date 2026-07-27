@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.726215+00:00",
+ "generated_at": "2026-07-27T17:06:09.763765+00:00",
  "slug": "ferry-building",
  "name": "Ferry Building",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -11,12 +11,161 @@
    "year": 1983,
    "pool": "sfpl",
    "matched_alias": "Ferry Building",
+   "ocr_excerpts": [
+    "City and County of San Francisco Department of City Planning FINAL ENVIRONMENTAL IMPACT REPORT FERRY BUILDING COMPLEX 3*; EE 81.63 Publication Date: October 15, 1982 Public Comment Period: October 15, 1982 through November 29, 1982 Public Hearing Date: November 18, 1982 Addendum Publication Date: May 27, 1983 Public Comment Period: May 27, 1983 through June 28, 1983 Certification Date: September 29, 1983 State Clearinghouse No. 82101205 DOCUMENTS DERT« MAY 11 1984 SAN FRANCISCO PUBLIC » IBRARY SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY 3 1223 03559 3046 FERRY BUILDING COMPLEX The Embarcadero Ferry Building/World Trade Center Agriculture Building Pier One FINAL ENVIRONMENTAL IMPACT REPORT EE81.63 Publication Date: October 15 1982 Public Comment Period: October 15, 1982 through November 29, 1982 Public Hearing Date: November 18, 1982 Addendum Publication Date: May 27, 1983 Public Comment Period:",
+    "passage, paragraph, section, table or next to the page number of pages of new text. Where there are differ ences, if any, between the Draft and Final EIR text, the changes indica ted by solid dots supercede previous text. D REF 725=34 Sa517f San Francisco (Calif.). Dept. of City Planning. Ferry Building complex : the Embarcadero , Ferry [1983] S.F. PU3UC LI3RABY 3 1223 03559 3046 TABLE OF CONTENTS List of Figures iii List of Tables v I. Summary 1 II. Project Description 9 A. Sponsor's Objectives 9 B. Project Location 9 C. Project Description 11 D. Project Schedule 31 E",
+    "CON'T. VII. Alternatives to the Proposed Project 201 A. No Project 201 • AA. Preferred Composite Alternative 202 B. Restoration Alternative 202cc B-1. Full Restoration Alternative 202cc B-2. Partial Restoration Alternatives for the Agriculture Building 20b C. Design Alternatives for the Ferry Building and Pier One 207 C-1. Ferry Building Alternative Design 207 C-2. Design Alternative for Pier One 208 D. No Plan Amendments 209 E. Additional Office and/or Retail Development 213 E-1. Additional Office Development 213 E-2. Additional Retai 1 /Restaurant 214 F. Parking Alternatives 216 F-1. Off-Site Mechanical Parking Structu",
+    "urvey Methodology A-107 H. Northeastern Waterfront Plan: Amendment Language A-127 ii LIST OF FIGURES 1. Project Location 10 2. Site Plan, Existing Conditions 13 3. Proposed Project Site Plan 14 4. Model Photograph: View Looking Northeast 15 5. Proposed Project Elevations 16 6. Ferry Building Entry Level and Second Floor Plans 17 7. Ferry Building Third and Fourth Floor Plans 18 8. Ferry Building Sections 19 • 8a. Interior View of Ferry Building Skylight 19a 9. Agriculture Building: Plans and Sections 20 10. Existing and Proposed Building Coverage 25 11. Model Photograph: View from the Bay Bridge 26 12. Open Space 29 13. "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.35,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.35,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/ferrybuildingcom2919sanf",
    "deep_link": "https://archive.org/details/ferrybuildingcom2919sanf?q=Ferry+Building",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1983 final EIR on the Ferry Building complex (Embarcadero, World Trade Center, Agriculture Building, Pier One), with floor plans and restoration and design alternatives for the building."
+   "salient": true
+  },
+  {
+   "identifier": "C124909173",
+   "title": "Airport ferry study 1998 : a feasibility study of water transit service to San Francisco International Airport",
+   "creator": null,
+   "year": 1998,
+   "pool": "dl",
+   "matched_alias": "Ferry Building",
+   "ocr_excerpts": [
+    "ital cost for hovercraft be increased and the cost for catamarans be reduced. AIRPORT FERRY STUDY 1998 FEASIBILITY OF WATER TRANSIT SERVICE TO SFO ° Finally, the group suggested that any initial plan be phased in. and should probably start with the downtown San Francisco to SFO route. since this service would allow for transfers at the Ferry Building to the entire Bay Area ferry network. Most of the suggestions of the Peer Review panel have been incorporated into this report. GRAVEL-AND TRAPEIC. HOekO Ay Au ERMLENVVY CALC RT GROW ia San Francisco International Airport has grown significantly in the last five years. It is expected to continue growing for the next several years. As n",
+    "which to estimate airport ferry patronage. Developing travel times and costs for the ferry mode required first developing a sub-model of access to ferry, in order to determine which ferry terminal travelers from each zone would use. The access model used coefficients from the Harvey model and included Drive Alone to all terminals except the Ferry Building (which will have no parking), Drop-Off, Taxi, and Walk. Ferry wait travel time, wait time, and transfer time at SFO are products of the marine engineering analysis completed for this project. The technology alternatives modeled are conventional ferry at 30 knots, and shallow-draft hovercraft ferry at 40 and 45 knots. Conventional ferry woul",
+    ") to SFO, so that passengers would disembark in the AIRPORT FERRY STUDY 1998 FEASIBILITY OF WATER TRANSIT SERVICE TO SFO 11 terminal without changing modes. The time required to traverse the runway and apron areas is estimated to be 3 minutes. Travel times and fares are shown on pages 22-23 and 27-28 for six candidate ferry routes: ° Ferry Building in downtown San Francisco, which would have no parking. ° Berkeley/Albany near the Golden Gate Fields race track, . Moffett Field in Santa Clara county, ° a site adjacent to or near the existing Larkspur Ferry Terminal in Marin County, ° the Port Sonoma waterfront in Sonoma County. and ° a site near the existing Vallejo Ferry Terminal, on the Cal Maritime Academy campus. The fare to ride the ferry was modeled as $10 from the Ferry Building and Moffett terminals, the closest of the six sites, $12 from Berkeley and Marin, and $15 for the much longer Port Sonoma and Vallejo runs. Parking at all sites was assumed to be $8, and as specified by Harvey half of the daily parking charge was attributed to the each direction of the trip. Two days of parking were assumed for this analysis f",
+    "ing the headway from 30 to 20 minutes has a relatively small effect on ridership at any terminal. The headway decrease would increase ridership between about 15 and 20 percent of the 30 minute headway ridership levels, depending on location. Third and most important, th"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 7.32,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.32,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124909173",
+   "deep_link": "https://archive.org/details/C124909173?q=Ferry+Building",
+   "source_label": "Internet Archive — Democracy's Library",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "agenda198591sanf",
+   "title": "Agenda",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Ferry Building",
+   "ocr_excerpts": [
+    "ICTF; Pier 80 Development; Container Cranes purchase; Pier 96 CFS Removal; Piers 30/32 Rehabilitation. New Business Executive Session City and County of San Francisco vs Calif. Close Corp. -Superior Court No. 7650591) SF P55 SAN FRANCISCO PORT COMMISSION ^ AGENDA Wednesday April 10, 1985 Ferry Building - Suite 3100 DOCUMENTS D-PT. APR ^1^31 10:00 A.M. , - Eugene L. Gartland, Exec. Director Dr. Arthur H. Coleman, President James J. Rudden, Vice President Anne Halsted, Member James R. Herman. Member Gordon Lau, Member I April 10, 1985 . Call To Order . Approval of Minutes - regu",
+    "be held on April 24, 1985 re this matter. Engineering and Maintenance 6. Final acceptance of work - Contract No. 2515 - Bepco Inc. in conjunction with Pier 94/96 railroad track access realignment. Resolution No. 85-47 New Business SAN FRANCISCO PORT COMMISSION AGENDA Wednesday, April 24, 1985 Ferry Building - Suite 3100 10:00 A.M. SAW FV Dr. Arthur H. Coleman, President James J. Rudden, Vice President Anne Halsted, Member James R. Herman, Member Gordon Lau, Member Eugene L. Gartland, Executive Director SAN FRANCISCO PORT COMMISSION AGENDA Meeting of April 24, 1985 1. Call to Order 2. Approva",
+    "h. Resolution No. 85-56 18. Request approval to issue a request for proposals to qualified consulting engineering firms for the design of improvements to the San Francisco Container Terminal- North. Resolution No. 85-57 MAY ' 7 m SAN FRANCISCO PORT COxMMISSON AGENDA Wednesday, May 8, 198 5 Ferry Building - Suite 3100 10;00 A.M. Dr. Arthur H. Coleman, Presiden James J. Rudden, Vice President Anne Halsted, Member James R. Herman, Member Gordon Lau, Member Eugene L. GartlancJ, Executive Director San Francisco Port Commission AGENDA Meeting of May 8, 1985 1. Call to Order 2. Approval Minutes, re",
+    "L 347-N. Resolution No. 85-61 Engineering and Maintenance 9. Request approval of Modifications Nos. 1 and 2 to Contract 2523 Ferma Corporation and final acceptance of the contract are complete. Resolution No. 85-58 New Business \\ SAN FRANCISCO PORT COMiMISSION AGENDA Wednesday, May 22, 1985 Ferry Building - Suite 3100 10:00 A.M. Dr. Arthur H. Coleman, President James J. Rudden, Vice President Anne Halsted, Member James R. Herman, Member Gordon Lau, Member Eugene L. Gartland Executive Director PG SAN FRANCISCO PORT COMMISSION AGENDA May 22, 1985 1. Call to Order 2. Approval of Minutes, reg",
+    "n Pacific Railroads for their participation in the realignment of the railroad track which serves Pier 94/96. Resolution No. 85-69 14. Approval to request proposals for two new container cranes at' Pier 80. Resolution No. 85-70 New Business ^PORT COMMISSION CITY AND COUNTY OF^^AN FRANCISCO 3100 Ferry Building SAN FRANCISCO, CALIFORNIA 94111 REGULAR MEETING — 10:00 A.M.JUNE 12, 1985 AGENDA 1. Roll Call 2. Approval of Minute"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.05,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.55,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda198591sanf",
+   "deep_link": "https://archive.org/details/agenda198591sanf?q=Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "minutes1993sanf_0",
+   "title": "Minutes",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Ferry Building",
+   "ocr_excerpts": [
+    "w- DOCUMENTS DEPARTMENT W^- 5/S □□ SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not to he Idkcn front I he Uhniiy jlUl-3'm SAN FRANCISCO PUBLIC LIBRARY 3 1223 05465 4810 SAN FRANCISCO PORT COMMI^^ ION REGULAR MEETING TUESDAY, JANUARY 12, 1993 4:00 P.M. 3100 FERRY BUILDING, SAN FRANCISCO, CALIFORNIA GENOA j;^^ g^gg3 SAN FRANC\":^\"0 1. ROLL CALL PUBLIC LIBRARY 2. APPROVAL OF MINUTES A. Election of Officers - 1993 3. EXECUTIVE Executive Director's Report Adoption of 1993 Schedule of Commission Meetings iii. Recommendations for appointments to the Waterfront",
+    "ion 54956.9, subdivision (a). 9. NEW BUSINESS 10. ADJOLHRNMENT Public comment is permitted on any matter within Port jurisdiction, and is not limited to agenda items. 2 107 45226 SFPL: ECONO JRS SFPL 06/16/00 la SAN FRANCISCO PORT COMMISSION CITY and COUNTY OF SAN FRANCISCO SUITE 3100 FERRY BUILDING TUESDAY, JANUARY 12, 1993 Commission Meeting MINUTES The San Francisco Port Commission met this date at 4 o'clock p.m. in regular session. All Commissioners were present. 1. ROLL CALL PRESENT: Douglas F. Wong, President James R. Herman, Vice President Anne Halsted, Commissioner Ming Chang-O'Br",
+    "d of the term. ACTION: Moved by Commissioner Herman, seconded by Commissioner O'Neill, carried. 6. PLANNING AND COMMUNITY AFFAIRS Mr. Tom Sargent, representing the San Francisco Public Market Collaborative, presented the Commission with a request to operate a farmer's market in the vicinity of the Ferry Building. In response to the Commission's direction at the December 16 meeting, the Collaborative set out specific terms and conditions of the permit for operation of the market. page eight Mr. Sargent distributed the most current plan and schedule from the Chief Administrative Office in answer to the Com",
+    "how to complement the maritime uses as well. The public has been very responsive in this process. In the upcoming months, the board will be trying to develop land use alternatives for the waterfront . SAN FRANCISCO PORT COMMISSION O REGULAR MEETING WEDNESDAY/ JAtJUARY 27, 1993 4:00 P.M. 3100 FERRY BUILDING, SAN FRANCISCO, CALIFORNIA AGENDA ^QQ\\ 1^flCM-^c n^PT-. ^7 JAN 26 1993 SAN FRANCISCO PUBLIC LIBRARY 1. ROLL CALL 2. APPROVAL OF MINUTES 3. EXECUTIVE A. Executive Director's Report B. Financial Reports 4. CARGO SERVICES A. Second extension of the Nonexclusive Management Agreement with Steve",
+    "portation Improvement Act 1991). Resolution No. 93-17 7. INTERNAL SERVICES 8. LEGAL 9. NEW BUSINESS 10. ADJOURNMENT Public comment is permitted on any matter within Port jurisdiction, and Is not limited to agenda items. SAN FRANCISCO PORT COMMISSION CITY and COUNTY OF SAN FRANCISCO SUITE 3100 FERRY BUILDING WEDNESDAY, JANUARY 27, 1993 Commission Meeting MINUTES The San Francisco Port Commission met this date at 4 o'clock p.m. in regul"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.39,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.89,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -2.25,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes1993sanf_0",
+   "deep_link": "https://archive.org/details/minutes1993sanf_0?q=Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "3 editions cited",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "comprehensivepla2219sanf",
@@ -25,12 +174,117 @@
    "year": 1971,
    "pool": "sfpl",
    "matched_alias": "Ferry Building",
+   "ocr_excerpts": [
+    "than 1,000 new spaces near these entrance points and provide an additional 2,500 to 3,000 spaces over the Plan period, unless major private facilities are built to provide a total of approximately 5,000 new spaces available to the pub- lic within the parking belt area at Fisherman's Wharf. 12. The Ferry Building and environs should be revived as a major gateway to the city. The BART platform should include a terminal area for commuter ferry boats, and this terminal area should be able to accommodate additional ferry service as may be developed in the fu- ture. A heliport, if located in the immediate vicinity of the Ferry Build- ing, should be located south of the Ferry Building and should have direct access to the ferries and land-based transit systems in the Ferry Building area in order to facilitate distribution of commuters and visi- tors to downtown and waterfront areas. 13. Although the maps which are a part of this plan indicate \"Possible STOL Port\" south of the Bay Bridge in the area occupied by Piers 36 through 44, this should not be construed as a definite",
+    "should be extended to the central public plaza at Fisherman's Wharf and extended farther into Victorian Park in order to assist visitors and residents alike in free movement by public transit to the Northern Waterfront. In addition, a minirail system should be explored to link Victorian Park to the Ferry Building. This minirail system could also be used to complement the existing cable car lines in order to provide a complete loop for use by tourists and to make available additional parking south of Market Street during the peak parking demand periods at Fisher- man*s Wharf. Consideration should be given to extending the minirail system to Yerba Buena Center. 16. The elevated portion of the Embarcadero Freeway from south of the Ferry Building to Broadway should be replaced by a sub-surface freeway system. This action would greatly enhance the many develop- ments in the immediate vicinity and would once again establish the Ferry Building as a focal point and termination for Market Street. INDUSTRY ■ OBJECTIVES 1 . To eliminate non-maritime industrial activities in that portion of the Northern Waterfront north of the Bay Bridge. 2. To provide for efficient operation of Port activities. 3. To enhance the harbor as a unique amenity",
+    "residential uses de- veloped jointly with offices and commercial facilities to the north of Telegraph Hill. Other office space, oriented primarUy to small concerns which may benefit h-om the location near Fisherman's Wharf, should be encouraged in the general vicinity of the Wharf area. North of the Ferry Building residential uses should be pennitted over the water as an extension of the present residential development inland. Some office space should be included as w"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.34,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 3.84,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/comprehensivepla2219sanf",
    "deep_link": "https://archive.org/details/comprehensivepla2219sanf?q=Ferry+Building",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true,
-   "gloss": "A 1971 northern-waterfront comprehensive plan calling for the Ferry Building to be revived as a gateway and re-established as the focal point of Market Street once the Embarcadero Freeway is removed."
+   "salient": true
+  },
+  {
+   "identifier": "bartseismicretro05unit",
+   "title": "BART seismic retrofit project : Berkeley Hills tunnel to the Montgomery Street station : environmental assessment, response to comments",
+   "creator": "United States. Federal Highway Administration. California Division,San Francisco Bay Area Rapid Transit District (Calif.),California. Dept. of Transportation",
+   "year": 2006,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Ferry Building",
+   "ocr_excerpts": [
+    "-2 Relationship of the San Francisco Regulated Navigation Area, Designated Vessel Traffic Lanes, and tlie Project Constnichon Area 3.4-20 3.4-3 Features of San Francisco Bay in the Project Construction Area 3.4-21 3.4-4 The Outer Harbor at the Port of Oakland 3.4-25 3.4-5 Ferry Routes Departing the San Francisco Ferry Building 3.4-27 BART Seismic Retrofit EA August 2005 V Table of Contents 3.4- 6 Extent to Which Vibro-Replacement Could Block the Outer Harbor Entrance Channel 3.4-29 3.5- 1 Principal Active Faults in the San Francisco Bay Area 3.5-2 3.8-1 Rockridge Station 3.8-3 3.8-2 MacArthur Station 3.8-5 3.8-3",
+    "ay Tube is 3.6 miles long and is buried in an imderwater trench in the Bay, at a 30 maximum depth of 132 feet below mean sea level. The eastern end of the Tube begins in the 31 Port of Oakland, between 7* Street and Berth 32, and continues beneath the Bay to a point just 32 east of the San Francisco Ferry Building (Figure 1-2). The Tube was constructed as a double 33 pipe, giving it a binocular shaped cross-section. A transition structure^ was installed at each 34 end of the Tube, one just east of the San Francisco Ferry Building called the San Francisco 35 Transition Structure, and one in the Port of Oakland called the Oakland Transition Structure. 36 The San Francisco Transition Structure is located in the Bay (in water) while the Oakland 37 Transition Structure is located on land. Four special seismic joints were const",
+    "Project Vicinity Map Showing Project Area • 1-5 1.0 Purpose and Need 1 system and allow some movement of the system in response to seismic activity. Two seismic 2 joints at the San Francisco end, one on either side of the transition structure, are located in the 3 Bay just east of the Ferry Building. Two joints at the Oakland end, one on either side of the 4 transition structure, are located on land within the Port of Oakland. 5 1.4 PURPOSE OF AND NEED FOR THE PROPOSED ACTION 6 The purpose of the project is to protect life safety and the massive public capital investment 7 represented",
+    "ction contractor will 21 direct light sources away from the nearby uses' lines of sight, through focusing light onto the 22 work area and shielding the source, so as not to cause light spillover or focused, intense off-site 23 glare. 24 Steel Piles Retrofit Concept 25 Pile Array. Between the San Francisco Ferry Building and the San Francisco Transition 26 Structure, an array of approximately 100 (approximately 6-foot diameter) steel pipe piles would 27 be installed beneath the existing Ferry Plaza Platform, which extends from the Ferry Building to 28 the Transition Structure (Figures 2-10 and 2-11). The piles would anchor into more stable soils 29 below the Bay Mud by extending up to 200 feet below mean sea level. Placement of the piles 30 would r"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.46,
+    "sf_context": true,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.46,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/bartseismicretro05unit",
+   "deep_link": "https://archive.org/details/bartseismicretro05unit?q=San+Francisco+Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "bartseismicretro2005unit",
+   "title": "BART seismic retrofit project : Berkeley Hills tunnel to the Montgomery Street station : environmental assessment",
+   "creator": "United States. Federal Highway Administration,San Francisco Bay Area Rapid Transit District (Calif.),California. Dept. of Transportation",
+   "year": 2005,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Ferry Building",
+   "ocr_excerpts": [
+    "Relationship of the San Francisco Regulated Navigation Area, Designated Vessel Traffic Lanes, and the Project Construction Area 3.4-20 3.4-3 Features of San Francisco Bay in the Project Construction Area 1.4-2 I 3.4-4 The Outer Harbor at the Port of Oakland 3.4-25 3.4-5 Ferry Routes Departing the San Francisco Ferry Building BART Seismic Retrofit EA August 2005 V Table of Contents 3.4- 6 Extent to Which Vibro-Replacement Could Block the Outer Harbor Entrance Channel 3.4-29 3.5- 1 Principal Active Faults in the San Francisco Bay Area 3.5-2 3.8-1 Rockridge Station 3-8\"3 3.8-2 MacArthur Station 3-8\"5 3.8-3 Chabot",
+    "y Tube is 3.6 miles long and is buried in an underwater trench in the Bay, at a 30 maximum depth of 132 feet below mean sea level. The eastern end of the Tube begins in the 31 Port of Oakland, between 7th Street and Berth 32, and continues beneath the Bay to a point just 32 east of the San Francisco Ferry Building (Figure 1-2). The Tube was constructed as a double 33 pipe, giving it a binocular shaped cross-section. A transition structure3 was installed at each 34 end of the Tube, one just east of the San Francisco Ferry Building called the San Francisco 35 Transition Structure, and one in the Port of Oakland called the Oakland Transition Structure. 36 The San Francisco Transition Structure is located in the Bay (in water) while the Oakland 37 Transition Structure is located on land. Four special seismic joints were const",
+    "howing Project Area ft ft ft II ft ft I I II 1.0 Purpose and Need 1 system and allow some movement of the system in response to seismic activity. Two seismic 2 joints at the San Francisco end, one on either side of the transition structure, are located in the 3 Bay just east of the Ferry Building. Two joints at the Oakland end, one on either side of the 4 transition structure, are located on land within the Port of Oakland. 5 1.4 PURPOSE OF AND NEED FOR THE PROPOSED ACTION 6 The purpose of the project is to protect life safety and the massive public capital investment represented by",
+    "ction contractor will 21 direct light sources away from the nearby uses' lines of sight, through focusing light onto the 22 work area and shielding the source, so as not to cause light spillover or focused, intense off-site 23 glare. 24 Steel Piles Retrofit Concept 25 Pile Array. Between the San Francisco Ferry Building and the San Francisco Transition 26 Structure, an array of approximately 100 (approximately 6-foot diameter) steel pipe piles would 27 be installed beneath the existing Ferry Plaza Platform, which extends from the Ferry Building to 28 the Transition Structure (Figures 2-10 and 2-11). The piles would anchor into more stable soils 29 below the Bay Mud by extending up to 200 feet below mean sea level. Placement of the piles 30 would reduc"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.46,
+    "sf_context": true,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.46,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/bartseismicretro2005unit",
+   "deep_link": "https://archive.org/details/bartseismicretro2005unit?q=San+Francisco+Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ]
 }

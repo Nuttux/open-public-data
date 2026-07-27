@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.715410+00:00",
+ "generated_at": "2026-07-27T17:06:09.750651+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "chinatown-public-health-center",
@@ -184,6 +184,48 @@
  },
  "documents": [
   {
+   "identifier": "sanfranciscodepa1997sanf",
+   "title": "The San Francisco Department of Public Health annual report",
+   "creator": "San Francisco (Calif.). Department of Public Health",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "ocr_excerpts": [
+    "amilies. San Francisco is among the State’s top enrollees in the number of children en- rolled in Healthy Families. ♦ Castro-Mission Health Center and Stanford University launched \"Taking Control of Your Health/ Tomando Control de Su Salud” for Spanish-speaking patients with diabetes and hypertension. ♦ Chinatown Public Health Center published the bilingual Healthy and Delicious Cookbook, co-authored by television chef Martin Yan and the Center’s nutritionist and sponsored an “Exercise for a Healthy Life” program for Chi- nese-speaking people with chronic illness. pregnancy rate in the City's Western Addition area by provid- ing com",
+    "e Abuse Treatment on Demand Research Task Force Substance Abuse Treatment on Demand Planning Council Target Cities Policy Advisory Review Committee Video Display Terminal Advisory Committee Youth Substance Abuse Provider’s Group Community Health Network Castro-Mission Health Center Community Advisory Board Chinatown Public Health Center Community Advisory Board Citywide Community Advisory Board Maxine Hall Health Center Community Advisory Board North of Market Senior Services Governing Board of Directors Ocean Park Health Center Community Advisory Board Potrero Hill Health Center Community Advisory Board Psychiatry/Substance Abuse Community",
+    "ancisco a healthier community. Employee Recognition Awards, FY 1 999/00 July 1999 Sharon Goudeau, Community Health Network (CHN), San Francisco General Hospital, Department of Psychiatry August 1999 Lily Xu, Population Health and Prevention Division (PHP), AIDS Office, Business and Operations Unit CHN, Chinatown Public Health Center, Clinic Management: Kit Chan, Lily Loo; Dr. Alex Moy; Jimmy Yan PHP, Breast and Cervical Cancer Services, Women’s Care Navigators: Barbara Cicereili; Alanna Ortega; Esther Thach; Sonia Tuthill September 1999 CHN, San Francisco General Hospital, Human Resources, Payroll Team: Nenita Bautista; Elena D",
+    "to employers and other organizations to promote the importance of influenza immunizations. Tuberculosis Prevention and Control Services In FY 1999/00, the Department's Tuberculosis (TB) Control Program: • Strengthened its community partnerships by opening a satellite TB treatment site at the Department's Chinatown Public Health Center where patients have community access to monthly prescription refills or daily \"Directly Observed Therapy\" medications and will be more successful in completing their treatment Received competitive federal funding for the National TB Model Center, based in San Francisco, targeted testing and treatment se",
+    "ender Youth Advisory Committee comprised of transgender youth and other interested individuals. Support for Chinese Women with Cancer Many Chinese-speaking women are reticent about letting people know they have cancer and many have litt"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.63,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.13,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscodepa1997sanf",
+   "deep_link": "https://archive.org/details/sanfranciscodepa1997sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "3 editions cited",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
    "identifier": "agenda2003sanf_3",
    "title": "Agenda",
    "creator": "San Francisco (Calif.). Immigrant Rights Commission",
@@ -195,29 +237,72 @@
     "ommunity. People from the community came to speak about the budget cuts affecting the immigrant community. They asked not the take away these services that helps immigrants. Many immigrants need the translation services. Sally Leung, ED for the Chinatown Economic Development Group strongly supports the Chinatown Public Health Center. Ms. Zhou an immigrant from China came to the commission to ask not to cut these health services. She would not know where to go to get help if these services are cut. Health is very important, if we are not healthy how can we work to feed & take care of our families? Please do not cut th",
     "ty and County of San Francisco to cooperate with Immigration authorities; and. Commissioner Haile made a motion with tine suggestions & seconded by Commissioner Casillas. The Commission unanimously adopted the amended resolution. Commissioner Kaff abstains. iV. Dr. Lee is the Medical Director for the Chinatown Public Health Center: He wanted to thank the Commission in passing the resolution last month in support of the Chinatown Health Centers. He also wanted to give input on the Equal Access to Ordinance to City Services. He stated that many of his monolingual patients who go to General Hospitals have to wait long hours"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.39,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.89,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
    "url": "https://archive.org/details/agenda2003sanf_3",
    "deep_link": "https://archive.org/details/agenda2003sanf_3?q=Chinatown+Public+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
    "group": "Meetings & resolutions",
    "salient": true
   },
   {
-   "identifier": "sanfranciscodepa200003sanf",
-   "title": "The San Francisco Department of Public Health annual report",
-   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "identifier": "minutes2000sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Health Commission",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Chinatown Public Health Center",
    "ocr_excerpts": [
-    "th Laboratory Sally Liska, Dr PH Environmental Health & OSH Rjiiv Bhatia, MD STD Prevention & Control Jeff Klausner, MD Emergency Medical Services John Brown. MD TB Control Masae Kawamura, MD Our Service Sites Environmental Health/ Emergency MeditalSeivice^/ Wedge Program/ Tobacco Control Chinatown Public Health Center/ Newcomers Program Chinatown/North Beach Mental Health Services Cole Stieel Youth Clinic ' Lyon-Martin Women's Health Services Ocean-ParkHealth Cenlet Sunset Mental Health Services Castro ♦ Mission Health (enter Eaguna Honda Hospital & Rehabilitation Center ' Native American Health Center Balb",
-    "atients and non-Chinese health care workers may be affect- ed by important differences in values and goals and in the perception of the nature and meaning of illness. Acknowledging and negotiating these differences can lead to considerable improvement in communication and in the qual- ity of care. The Chinatown Public Health Center has been on the forefront of effective healthcare work in this community for many years, and cel- ebrated 30 years in operation in 2001. Their pro- grams arc carefully considered and take into account the specific needs of the Chinatown res- idents. The Health Center developed and imple- mented an educational and case management project for Primary Care clients focusing on clients' management of diabetes. The arthritis project for adults serves hundreds of persons each year and incorporates T'ai Chi, diet and information on use of both herbal and Western medicines. exercises at Chinatown Public Health Center 40 Creating neighborhood food security Youth ENVISION, a collaboration between the Department's Environmental Health Section. the San Francisco League for Urban Gardeners, and Literacy tor Environmental Justice, is an ongoing partnership that utilizes participatory' action research to identity and forwa",
-    "Environmental Health 8 OSH Ra|iv Bhatia, MD STD Prevention 8 Control Jeff Klausnei. MD Emergency Medical Services John Brown, MD TB Control Masae Kawamura, MD Substance Abuse Jorge Partida 10 Our Service Sites Environmental Health/ Emergency Medical Services/ Wedge Program/ Tobacco Control Chinatown Public Health Center/ Newcomers Program Moxine Hall Health Center larkin Street Youth Clinic Chinatown/North Beach Mental Health Services ' Haighl Ashbucy Free Medical Clinic Cole Street Youth Clinic ' Lyon-Martin Women's Health Services Oceon-ParkHeolth Center Sunset Mental Health Services Castro ♦ Mission Health",
-    "ory Board • Prevention for HIV Positives Community Advisory Board • Rave/Club Drug Task Force Laguna Honda Hospital • Laguna Honda Hospital Replacement Project Community Advisory Croup Primary Care • Breast Cancer Town Hall Advisory Croup • Castro-Mission Health (\"enter Community Advisory Board • Chinatown Public "
+    "nting the Health Commission. He will be joined by Dr. Masae Kawamura, Director of TB Control for this Department, Dr. Sarah Royce, Director of the State's TB Control Minutes of March 21, 2000 PageS Branch, and Supervisors Mabel Teng, Leland Yee, and Michael Yaki. Dr. Alex Moy, medical director of Chinatown Public Health Center, will be speaking on behalf of the Department. COMMUNITY HEALTH NETWORK Maintain Licensing and Accreditation The annual Title XV Survey of the SFGH Jail Health Acute Care Units, 7D, 7L, 7B and the Institutional Police holding cell took place January 31st. There were minimal findings/deficiencies not",
+    "and to obtain credits for owed revenues collected by other City Departments. Larry Pong and Lisa Palladino developed the account Campbell Bill training, which contributed additional revenues for the consumer protection program. Health Commission Minutes July 18, 2000 Page 4 COMMUNITY HEALTH NETWORK Chinatown Public Health Center Chinatown Public Health Center was well represented at the Tenth Conference on Health Problems Related to the Chinese in North America, recently held at Pare Renaissance Hotel in San Francisco. Over 250 health care providers came from U.S. and Canada to attend this conference. The theme for this biannual conference was on 'Integrating the Best of Chinese and Western Medicine - A New Paradigm for Health Promotion and Patient Care'. Dr. Ed Chow, Health Commissioner, was one of the chief organizers of this year's conference. Many of our key Chinatown Public Health Center staff presented and participated in the event. Also, the well-known Cancer Quilt made by members of the Health Center's Support Group was on display at the conference. SFGH Foundation Receives $50.000 Gift From Golden Gate Bank Golden Gate Bank, a member of the Greater Bay Bancorp family, has made",
+    "en last week. California State Assemblyman Kevin Shelley presented the check to Dr. Volberding. The funds will be distributed among ARI programs, including the clinical and research programs on Ward 86. Chinese Women Support Group from Chinatown Health Center The Chinese Women Cancer Support Group at Chinatown Public Health Center was identified on the Website and interviewed by a journalist in Hong Kong doing a story on breast cancer. This is an Health Commission Minutes September 19, 2000 Page 7 excellent exchange of ideas and program information and sharing experiences of Chinese women living with breast cancer in th",
+    "Secretary to the Health Commission Kent Woo, NICOS Executive Director Madeline Ritchie, Health Center Director, Chinatown Public Health Wilma Louie, DPH Mental Health Division Edward Koo, translator, Clinical Social Worker, Chinatown/North Beach Mental Health Services Grace Lam, translator, Nutritionist, Chinatown Public Health Center Com"
    ],
-   "url": "https://archive.org/details/sanfranciscodepa200003sanf",
-   "deep_link": "https://archive.org/details/sanfranciscodepa200003sanf?q=Chinatown+Public+Health+Center",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.32,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.32,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.5,
+    "money": false,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes2000sanf",
+   "deep_link": "https://archive.org/details/minutes2000sanf?q=Chinatown+Public+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
+   "group": "Meetings & resolutions",
    "salient": true
   },
   {
@@ -234,6 +319,27 @@
     "vil Service Commission C6 Department of Human Services (DHS) — formerly Department of Sociai S Adult Services Program C7 Food Stamp Program C8 Medi-Cal CIO Department of Public Health Administration C 1 1 Breast and Cervical Cancer Control Program C 1 2 Castro/Mission Health Center C 1 4 Chinatown Public Health Center C16 Community and Home Injury Prevention Program for Seniors fCHIPPS' CIS Community Substance Abuse Services C19 A - 13 S (Continued) Division of Mental Health Services Administration C20 Central City Senior Unit C21 Chinatown North Beach Mental Health Services C22 Family Service Agency",
     "unity and Home Injury Prevention for Seniors C18 District Health Center No. 1 (Castro/Mission Health Center) C14 A- 14 S (Continued) District Health Center No. 2 (Maxine Hall Health Center) District Health Center No. 3 (Silver Avenue Family Health Center) C31 District Health Center No. 4 (Chinatown Public Health Center) C16 District Health Center No. 5 (Ocean-Park Health"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.34,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.84,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/resourceguideofs1997sanf",
    "deep_link": "https://archive.org/details/resourceguideofs1997sanf?q=Chinatown+Public+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -251,6 +357,27 @@
     "Francisco DPH Clinic's Screening Trends 1994 1995 1996 Year CLPP staff have conducted in-service training for medical staff at each health center. CLPP also trained several health centers how to draw capillary blood samples that are not lead contaminated. This training was most successful in the Chinatown Public Health Center, where the Asian immigrant community has been more resistant to venous draws. For two years, from 1994-95, CLPP subsidized two phlebotomy positions to be shared by five of the satellite health centers. 22 While community health network clinics screening from 1994 through 1996 has increased 50% ove",
     "96 5% 290% 225% 163% 115% 80% 152% 467% 50% Source: SFGH/ UCSF Toxicology Laboratory screening logs. Key Community Health Network Clinic SFGH San Francisco General Hospital DHC1 Mission Castro Health Center DHC2 Maxine Hall Health Center DHC3 Silver Avenue Family Health Center DHC4 Chinatown Public Health Center DHC5 Ocean Park Health Center PHHC Potrero Hill Health Center SEHC Southeast Health Center 23 CDC Guidelines (1991) state that all one and two-year-olds should be screened. This is due to their developmental stage, which involves significant hand to mouth behavior and mobility close to the gr"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.22,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 2.22,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscochil1991ahma",
    "deep_link": "https://archive.org/details/sanfranciscochil1991ahma?q=Chinatown+Public+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -290,12 +417,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 4,
+  "n_documents": 5,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

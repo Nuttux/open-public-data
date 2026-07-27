@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.697493+00:00",
+ "generated_at": "2026-07-27T17:06:09.728708+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "mclaren-park",
@@ -190,26 +190,33 @@
  },
  "documents": [
   {
-   "identifier": "sanfranciscorecy1199sanf",
-   "title": "San Francisco recycled water master plan and groundwater master plan : draft environmental impact report",
-   "creator": "San Francisco (Calif.). Planning Dept,San Francisco Public Utilities Commission",
-   "year": 1996,
-   "pool": "sfpl",
-   "matched_alias": "McLaren Park",
-   "url": "https://archive.org/details/sanfranciscorecy1199sanf",
-   "deep_link": "https://archive.org/details/sanfranciscorecy1199sanf?q=McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1996 recycled-water master plan EIR evaluates alternative reservoir sites and construction haul routes within McLaren Park."
-  },
-  {
    "identifier": "masterplanfordev1983sanf",
    "title": "Master plan for the development of McLaren Park",
    "creator": "San Francisco (Calif.). Recreation and Park Dept,San Francisco (Calif.). Board of Supervisors,San Francisco (Calif.). City Planning Commission",
    "year": 1983,
    "pool": "sfpl",
    "matched_alias": "McLaren Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 12.78,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 3.28,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/masterplanfordev1983sanf",
    "deep_link": "https://archive.org/details/masterplanfordev1983sanf?q=McLaren+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -218,32 +225,74 @@
    "gloss": "A 1983 master plan sets out a development program for McLaren Park, prepared for the Recreation and Park Department."
   },
   {
-   "identifier": "minutes1998sanf_5",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
+   "identifier": "sanfranciscorecy1199sanf",
+   "title": "San Francisco recycled water master plan and groundwater master plan : draft environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept,San Francisco Public Utilities Commission",
+   "year": 1996,
    "pool": "sfpl",
    "matched_alias": "McLaren Park",
-   "url": "https://archive.org/details/minutes1998sanf_5",
-   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=McLaren+Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.15,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.65,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscorecy1199sanf",
+   "deep_link": "https://archive.org/details/sanfranciscorecy1199sanf?q=McLaren+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
+   "group": "Plans & environmental review",
    "salient": true,
-   "gloss": "2000 citizens'-committee minutes weigh a proposed disc golf course at McLaren Park amid community support and opposition."
+   "gloss": "A 1996 recycled-water master plan EIR evaluates alternative reservoir sites and construction haul routes within McLaren Park."
   },
   {
-   "identifier": "journalofproceed49sanfrich",
-   "title": "Journal of proceedings, Board of Supervisors, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Supervisors",
-   "year": 1954,
+   "identifier": "bridgemonthighsc5199sanf",
+   "title": "Bridgemont High School site subdivision : [final] environmental impact report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1990,
    "pool": "sfpl",
    "matched_alias": "McLaren Park",
-   "url": "https://archive.org/details/journalofproceed49sanfrich",
-   "deep_link": "https://archive.org/details/journalofproceed49sanfrich?q=McLaren+Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.28,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.78,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/bridgemonthighsc5199sanf",
+   "deep_link": "https://archive.org/details/bridgemonthighsc5199sanf?q=McLaren+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
+   "group": "Plans & environmental review",
    "salient": true,
-   "gloss": "A 1954 Board of Supervisors journal records individual parcel purchases required for McLaren Park ($2,400, $700, $500 and less), in conformity with the Master Plan."
+   "gloss": "A 1990 environmental impact report on subdividing the Bridgemont High School site, illustrated with views from McLaren Park."
   },
   {
    "identifier": "fy200708parksann32009sanf",
@@ -252,12 +301,69 @@
    "year": 2007,
    "pool": "sfpl",
    "matched_alias": "John McLaren Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.5,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 4.58,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/fy200708parksann32009sanf",
    "deep_link": "https://archive.org/details/fy200708parksann32009sanf?q=John+McLaren+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "3 editions cited",
    "group": "Reports & records",
    "salient": true,
    "gloss": "A Controller's FY2007-08 parks report grades John McLaren Park at 70.2 percent, down 14.8 points and among its district's low performers."
+  },
+  {
+   "identifier": "minutes1998sanf_5",
+   "title": "Minutes",
+   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "McLaren Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.74,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.74,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes1998sanf_5",
+   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=McLaren+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true,
+   "gloss": "2000 citizens'-committee minutes weigh a proposed disc golf course at McLaren Park amid community support and opposition."
   },
   {
    "identifier": "parkstandards6mo162010san",
@@ -266,26 +372,33 @@
    "year": 2009,
    "pool": "sfpl",
    "matched_alias": "John McLaren Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.5,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 6.48,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/parkstandards6mo162010san",
    "deep_link": "https://archive.org/details/parkstandards6mo162010san?q=John+McLaren+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true,
    "gloss": "A Controller's mid-year FY2009-10 report scores John McLaren Park at 72.9 percent, among the lowest-rated parks."
-  },
-  {
-   "identifier": "reportonplanforl1954sanf",
-   "title": "Report on a plan for the location of parks and recreation areas in San Francisco",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1954,
-   "pool": "sfpl",
-   "matched_alias": "John McLaren Park",
-   "url": "https://archive.org/details/reportonplanforl1954sanf",
-   "deep_link": "https://archive.org/details/reportonplanforl1954sanf?q=John+McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false,
-   "gloss": "A 1954 parks-location plan lists John McLaren Park at 330 acres among the city's major parks and dates the City's decision to acquire the land to 1926."
   }
  ],
  "dept_shelf": [
@@ -320,12 +433,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 7,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

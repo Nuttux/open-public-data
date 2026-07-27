@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.702042+00:00",
+ "generated_at": "2026-07-27T17:06:09.735016+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "japanese-tea-garden",
@@ -103,12 +103,82 @@
  },
  "documents": [
   {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Japanese Tea Garden",
+   "ocr_excerpts": [
+    "Museum. Section 5.101 of the City Charter gives exclusive charge to the Fine Arts Museums of San Francisco (FAMSF) of trusts or assets under its jurisdiction, including \"any land or buildings set aside for their use.\" The existing site, bounded generally by Kennedy Drive, Tea Garden Drive, and the Japanese Tea Garden, is under the control of the FAMSF (see Figure C&R.l, Jurisdictional Boundary Map). The New de Young Museum would be within these boundaries, and the site would continue under FAMSF control. Project Characteristics Comment Commissioners, I would like to comment on the Table 1 on Page 12 of the b",
+    "understory. This is intended to be consistent with the objectives of the Golden Gate Park Master Plan to retain naturalistic landscaping. The DEIR is revised to replace Figure 2, Conceptual Site Plan, with a new graphic that illustrates the proposed project's relationship to the Music Concourse, the Japanese Tea Garden, and adjacent roadways. 1999.455E EIP 10296-00 C&R.18 NEW DEYOUNG MUSEUM PROJECT NOVEMBER 22, 2000 C. Summary of Comments and Responses Project Description Cumulative Projects Comments The major reasons that SPEAK believes the EIR is inadequate are the following: State Law (CEQA) requires tha",
+    "ate Park as a whole. Overall, the project would be consistent with uses on the site since the establishment of the de Young Museum in 1895. The project would continue to be part of the cultural and recreational activities around the Music Concourse, such as the California Academy of Sciences, the Japanese Tea Garden, and the band shell.\" Golden Gate Master Plan and San Francisco General Plan objectives and policies relevant to the project description are presented in Section III. A, Land Use, Plans, and Zoning, on DEIR pp. 20-26. The DEIR presents the key objectives and policies that would be considered by dec",
+    "inally, the OHP is concerned with the failure of the DEIR to adequately describe the proposed educational tower portion of the new construction. This tower would dramatically change the visual character of the area and would be seen from many areas of the park, including the music concourse and the Japanese Tea Garden. Although the DEIR claims that mature trees will shield the tower, we fail to see how they could fully do so as it is claimed that the tower will provide panoramic views of the park. (Daniel Abeyta, Acting State Historic Preservation Office, Office of Historic Preservation) Response The proposed",
+    "and pp. C&R.22-C&R.24, Project Description, a revised Figure 2, Conceptual Site Plan, and Figure 6 A, Longitudinal Section with Educational Tower, p. C&R.23, will be included in the Final EIR. The revised Conceptual Site Plan illustrates the proposed project's relationship to the Concourse, including the Japanese Tea Garden, and Kennedy"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.88,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.38,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.75,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf",
+   "deep_link": "https://archive.org/details/newdeyoungmuseum2220sanf?q=Japanese+Tea+Garden",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true,
+   "gloss": "The 2000 de Young Museum EIR summary analyzing how the proposed museum tower would be visible from the garden."
+  },
+  {
    "identifier": "goldengateparkco1420sanf",
    "title": "Golden Gate Park Concourse Authority projects : draft environmental impact report",
    "creator": "San Francisco (Calif.). Planning Dept",
    "year": 2002,
    "pool": "sfpl",
    "matched_alias": "Japanese Tea Garden",
+   "ocr_excerpts": [
+    "Historic Places Registration Form for the proposed historic district identified 123 contributing features including 27 buildings, 55 sites, 11 structures, and 30 objects. Contributing features in the Music Concourse area include: the Music Concourse; Spreckels Temple of Music; Francis Scott Key Monument; Japanese Tea Garden; Shakespeare Garden; Rhododendron Dell; the pedestrian underpass known as the Tunnel under Main Drive (now Kennedy Drive); and the many monuments and fountains in the Music Concourse. The Japanese Tea Garden has been determined eligible for listing on the California Register of Historical Resources. The Francis Scott Key Monument, at the east end of the Music Concourse, is listed as City Landmark No. 96 under Article 10 of the San Francisco Planning Code. The Spreckels Temple of Music and the John McL",
+    "I. Summary not materially impair the potential historic significance of the overall Music Concourse landscape. Enough features would remain intact and the Music Concourse would retain important aspects of integrity that the variant would not have a significant adverse impact on historic resources. The Japanese Tea Garden and the Spreckels Temple of Music would not be materially altered by the proposed project. The overall historic character and configuration of the physical features in the Concourse would not change. Therefore, Phase I would not affect the eligibility of Golden Gate Park as a National Register Histo",
+    "with Phase II of the Project, all tour buses and school buses would need to access the Music Concourse from King Drive. In addition, the closure of the connection may result in minor rerouting of delivery /service vehicles destined to the New de Young, California Academy of Sciences or the Hagiwara Japanese Tea Garden, as these vehicle may would likely use the Underground Through Tunnel, depending upon their origin. Construction The intersection improvements at Tenth Avenue would require the permanent relocation of the MUNI bus stop to Eleventh Avenue. Both Academy Drive and Tea Garden Drive (and adjacent sidewalks",
+    "rovement measures would improve parking conditions to account for the effects associated with Phase I: a. Install signage throughout the Park and the major access roadways directing vehicles to the parking facility and coordinate with the California Academy of Sciences, de Young Museum and Hagiwara Japanese Tea Garden staff to include directions, hours of operation and parking rates on the institutions' telephone system, web site and other informational material. Case No. 2001. 91 IE S-21 Golden Gate Park Concourse Authority Projects DEIR EIP 10478-00 December 14, 2002 I. Summary Transit 5 . The following",
+    "of the Music Concourse surface improvements. Loading 8. With Phase II, redirect and re-sign access from north o"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.14,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.64,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/goldengateparkco1420sanf",
    "deep_link": "https://archive.org/details/goldengateparkco1420sanf?q=Japanese+Tea+Garden",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -123,26 +193,38 @@
    "year": 2001,
    "pool": "sfpl",
    "matched_alias": "Japanese Tea Garden",
+   "ocr_excerpts": [
+    "toric District. The Report discusses the primary features and historic significance of the potential Golden Gate Park Historic District, as well as features and structures in the Project area including the Music Concourse, the Temple of Music, the M.H. deYoung Museum, the Academy of Sciences, and the Japanese Tea Garden. The Report confirms that the Temple of Music and the Japanese Tea Garden are individually eligible for listing on the National Register of Historic Places. The Report further concludes that the Academy of Sciences and the de Young Museum are not individually eligible for listing on the National Register, but are contributory uses (not structures) to the potential Golden Ga",
+    "ludes that the Music Concourse is not individually eligible for listing on the National Register, but would be a contributory element in the potential Golden Gate Park Historic District. The Report also evaluates the potential impact of the proposed New deYoung Museum on the Temple of Music and the Japanese Tea Garden as well as the eligibility of Golden Gate Park to the National Register of Historic Places and the California Register of Historical Resources by addressing the Project's potential impacts on the relevant characteristics of existing and potential historic resources in the area, including those that potentially qualify Golden Gate Park for the National and California Registers as well as the Temple of Music and the Japanese Tea Garden. The Report concludes that the proposed new deYoung Museum would not adversely affect the historic resources in the area or adversely affect the potential eligibility of the Golden Gate Park Historic District. The Page & Turnbull Report conclusions, summarized and excerpted in this document, are consistent with the conclusions in the Initial Study and the 5 G:\\Documenls\\de Young inlro memo.doc conclusions in the December 2000 FEIR on pp. C&R 80-82 tliat the Project would not adversely affect the eligibility of Golden Gate Park as a potential National Register Landmark District, or the Japanese Tea Garden or Spreckels Temple of Music as potential National Register listings. Conclusions About the New Information As you can see in the attached materials, the FEIR's conclusions about the impacts of the Project remain unchanged. Originally, the new Museum was to include a 160-foot tower, but due to an",
+    "lanned for the end of 2002. The existing Asian Art and de Young Museums, museum employee parking, and associated landscaped areas occupy an approximately 340,000 sq. ft. site bounded to the north and east by John F. Kennedy Drive, to the south by Tea Garden Drive, and to the west by the Hagiwara Japanese Tea Garden. The New de Young Museum would include gallery space, a main lobby and courtyard, educational spaces, inner courtyards"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.83,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.33,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/newdeyoungmuseum2020sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2020sanf?q=Japanese+Tea+Garden",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
    "salient": true,
    "gloss": "2001 de Young Museum EIR revisions confirming the garden's individual National Register eligibility and its position bounding the museum site."
-  },
-  {
-   "identifier": "newdeyoungmuseum2220sanf",
-   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Japanese Tea Garden",
-   "url": "https://archive.org/details/newdeyoungmuseum2220sanf",
-   "deep_link": "https://archive.org/details/newdeyoungmuseum2220sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "The 2000 de Young Museum EIR summary analyzing how the proposed museum tower would be visible from the garden."
   }
  ],
  "dept_shelf": [
@@ -177,7 +259,7 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {

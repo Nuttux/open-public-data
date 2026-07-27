@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.723038+00:00",
+ "generated_at": "2026-07-27T17:06:09.760732+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sunol-water-temple",
@@ -79,6 +79,27 @@
    "year": 2006,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.65,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.15,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscopubl2006esaf",
    "deep_link": "https://archive.org/details/sanfranciscopubl2006esaf?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -93,6 +114,27 @@
    "year": 2005,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.36,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscopubl2005sanf",
    "deep_link": "https://archive.org/details/sanfranciscopubl2005sanf?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -107,6 +149,27 @@
    "year": 1997,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.17,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.67,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/americanswithdis00sanf",
    "deep_link": "https://archive.org/details/americanswithdis00sanf?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -121,6 +184,27 @@
    "year": 2005,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.76,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.26,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscowate2005hans",
    "deep_link": "https://archive.org/details/sanfranciscowate2005hans?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -129,26 +213,33 @@
    "gloss": "A 2005 municipal water history recounts the Spring Valley Water Company building the temple in 1910 to Willis Polk's design, its 1989 earthquake damage, and 2001 restoration."
   },
   {
-   "identifier": "agenda20arts_9",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Sunol Water Temple",
-   "url": "https://archive.org/details/agenda20arts_9",
-   "deep_link": "https://archive.org/details/agenda20arts_9?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "A 1983 Arts Commission agenda addresses use of art-enrichment funds to restore the murals at the Sunol Water Temple, an \"icon for the Water Department.\""
-  },
-  {
    "identifier": "aminutes1996sanf",
    "title": "Minutes",
    "creator": "San Francisco Public Utilities Commission",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.45,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.95,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -0.5,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": true
+   },
    "url": "https://archive.org/details/aminutes1996sanf",
    "deep_link": "https://archive.org/details/aminutes1996sanf?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -163,12 +254,68 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.99,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.99,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/alamedawatershe1998sanf_3",
    "deep_link": "https://archive.org/details/alamedawatershe1998sanf_3?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false,
+   "salient": true,
    "gloss": "A watershed management plan describes the filter galleries converging at the Sunol Water Temple and the adjacent Sunol Pump Station."
+  },
+  {
+   "identifier": "alamedawatershed1998sanf",
+   "title": "Alameda Watershed management plan : appendix A",
+   "creator": "San Francisco Public Utilities Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Sunol Water Temple",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.23,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.73,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/alamedawatershed1998sanf",
+   "deep_link": "https://archive.org/details/alamedawatershed1998sanf?q=Sunol+Water+Temple",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false,
+   "gloss": "An appendix to the Alameda Watershed management plan, weighing gravel extraction and restoration alternatives north of Interstate 680 on the land around the temple."
   }
  ],
  "dept_shelf": [
@@ -203,7 +350,7 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {

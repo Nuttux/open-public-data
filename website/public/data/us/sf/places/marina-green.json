@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.703221+00:00",
+ "generated_at": "2026-07-27T17:06:09.736322+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "marina-green",
@@ -197,6 +197,27 @@
    "year": 2011,
    "pool": "sfpl",
    "matched_alias": "Marina Green",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.26,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.26,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/draftenvironment5120sanf",
    "deep_link": "https://archive.org/details/draftenvironment5120sanf?q=Marina+Green",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -205,40 +226,33 @@
    "gloss": "The 34th America's Cup draft EIR proposes an \"AC Village\" race venue at Marina Green, with renderings viewed from Marina Boulevard."
   },
   {
-   "identifier": "minutesrecreatio1980sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "url": "https://archive.org/details/minutesrecreatio1980sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1980sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "Recreation and Park Commission minutes index resolutions on a Marina Green bear-vending concession, a Marina Green report, and no-parking at the green."
-  },
-  {
-   "identifier": "agendaoperations2004sanf",
-   "title": "Agenda / Operations Committee",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission. Operations Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "url": "https://archive.org/details/agendaoperations2004sanf",
-   "deep_link": "https://archive.org/details/agendaoperations2004sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "Operations Committee agendas approve events on Marina Green — a tented event at its west end, \"Australia By the Bay,\" and an overnight charity walk using the green as a stop."
-  },
-  {
    "identifier": "scenicparkwayfor293sanf",
    "title": "A scenic parkway for the park : report of the Doyle Drive Task Force to the San Francisco Board of Supervisors",
    "creator": "San Francisco (Calif.). Board of Supervisors. Doyle Drive Task Force",
    "year": 1993,
    "pool": "sfpl",
    "matched_alias": "Marina Green",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.14,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 3.14,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/scenicparkwayfor293sanf",
    "deep_link": "https://archive.org/details/scenicparkwayfor293sanf?q=Marina+Green",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -247,18 +261,145 @@
    "gloss": "The 1993 Doyle Drive Task Force report describes the bayfront recreation corridor running from the Marina Green to Fort Point and residents' petitions to reduce traffic affecting park users along it."
   },
   {
+   "identifier": "agendaoperations2004sanf",
+   "title": "Agenda / Operations Committee",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission. Operations Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.51,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.51,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendaoperations2004sanf",
+   "deep_link": "https://archive.org/details/agendaoperations2004sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true,
+   "gloss": "Operations Committee agendas approve events on Marina Green — a tented event at its west end, \"Australia By the Bay,\" and an overnight charity walk using the green as a stop."
+  },
+  {
+   "identifier": "technicalreportg1965cali",
+   "title": "Technical report: Golden Gate Freeway, Interstate Highway Route 480",
+   "creator": "California. Division of Highways",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 4.29,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/technicalreportg1965cali",
+   "deep_link": "https://archive.org/details/technicalreportg1965cali?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "A 1965 state highways report on the proposed Golden Gate Freeway, whose alternatives would have required relocating part of the Marina Yacht Harbor."
+  },
+  {
    "identifier": "whatsdoinginpark1985sanf",
    "title": "What's doing in the parks?",
    "creator": "San Francisco (Calif.). Recreation and Park Department",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Marina Green",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.94,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.44,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/whatsdoinginpark1985sanf",
    "deep_link": "https://archive.org/details/whatsdoinginpark1985sanf?q=Marina+Green",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "3 editions cited",
    "group": "Other records",
    "salient": true,
    "gloss": "Recreation and Park \"What's doing in the parks\" bulletins list Artists Guild outdoor art shows and other activities held on Marina Green."
+  },
+  {
+   "identifier": "preliminarymitig2003sanf",
+   "title": "Preliminary mitigated negative declaration : 2002.1129E -- San Francisco marina renovation",
+   "creator": "San Francisco (Calif.). Planning Dept,Environmental Science Associates,Carey & Co,Horton Lees Brogden Lighting Design,Moffatt & Nichol Engineers,Orion Environmental Associates",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.81,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.31,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/preliminarymitig2003sanf",
+   "deep_link": "https://archive.org/details/preliminarymitig2003sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "A 2002 environmental review of the marina renovation, detailing breakwater and jetty work in the West Harbor."
   }
  ],
  "dept_shelf": [
@@ -293,12 +434,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 5,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

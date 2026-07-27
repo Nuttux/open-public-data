@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.729216+00:00",
+ "generated_at": "2026-07-27T17:06:09.767041+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "cable-car-barn",
@@ -157,40 +157,33 @@
  },
  "documents": [
   {
-   "identifier": "strategicplan2001199sanf",
-   "title": "Strategic plan 2000 : short range transit plan : draft for public review and comment / San Francisco Municipal Railway",
-   "creator": "San Francisco Municipal Railway",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Cable Car Museum",
-   "url": "https://archive.org/details/strategicplan2001199sanf",
-   "deep_link": "https://archive.org/details/strategicplan2001199sanf?q=Cable+Car+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 2000 Muni short-range transit plan proposes a Cable Car Museum renovation at the Cable Car Barn, 1201 Mason Street, with no schedule or funding yet set."
-  },
-  {
-   "identifier": "2minutes2009sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Cable Car Museum",
-   "url": "https://archive.org/details/2minutes2009sanf",
-   "deep_link": "https://archive.org/details/2minutes2009sanf?q=Cable+Car+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "2009 MTA Board minutes authorize an agreement for management and operation of the Cable Car Museum with the Friends of the Cable Car Museum, running to June 30, 2019."
-  },
-  {
    "identifier": "civilgrandjuryre198587cali",
    "title": "Civil Grand Jury reports",
    "creator": "California. Grand Jury (San Francisco)",
    "year": 1977,
    "pool": "sfpl",
    "matched_alias": "Cable Car Barn",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.26,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.26,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.5,
+    "money": false,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/civilgrandjuryre198587cali",
    "deep_link": "https://archive.org/details/civilgrandjuryre198587cali?q=Cable+Car+Barn",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -205,6 +198,27 @@
    "year": 1976,
    "pool": "sfpl",
    "matched_alias": "Cable Car Powerhouse",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.39,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.89,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/4annualreportsanf",
    "deep_link": "https://archive.org/details/4annualreportsanf?q=Cable+Car+Powerhouse",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -213,18 +227,40 @@
    "gloss": "A Hetch Hetchy annual report locates the cable-winding machinery and its electric motors in the Cable Car Powerhouse at Washington and Mason Streets."
   },
   {
-   "identifier": "eastwest14east_3",
-   "title": "East/West",
-   "creator": "East/West Pub. Co.",
-   "year": 1980,
+   "identifier": "9minutes2000sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
+   "year": 2000,
    "pool": "sfpl",
-   "matched_alias": "Cable Car Barn",
-   "url": "https://archive.org/details/eastwest14east_3",
-   "deep_link": "https://archive.org/details/eastwest14east_3?q=Cable+Car+Barn",
+   "matched_alias": "Cable Car Museum",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.83,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.83,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/9minutes2000sanf",
+   "deep_link": "https://archive.org/details/9minutes2000sanf?q=Cable+Car+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "variant_note": "2 editions cited",
+   "group": "Meetings & resolutions",
    "salient": true,
-   "gloss": "A 1980 East/West notice sets out an $11,787,000 rehabilitation of the Cable Car Barn within a $43,757,000 cable-car program, deemed categorically exempt under CEQA."
+   "gloss": "Municipal Railway minutes releasing final retention on a $15.8 million construction contract to Stacy and Witbeck."
   },
   {
    "identifier": "dataguide19901991990sanf",
@@ -233,6 +269,27 @@
    "year": 1990,
    "pool": "sfpl",
    "matched_alias": "Cable Car Museum",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.21,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 2.21,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/dataguide19901991990sanf",
    "deep_link": "https://archive.org/details/dataguide19901991990sanf?q=Cable+Car+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -273,12 +330,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 6,
+  "n_documents": 4,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

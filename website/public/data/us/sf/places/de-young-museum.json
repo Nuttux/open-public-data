@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.720923+00:00",
+ "generated_at": "2026-07-27T17:06:09.757938+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "de-young-museum",
@@ -307,6 +307,27 @@
    "year": 2001,
    "pool": "sfpl",
    "matched_alias": "de Young Museum",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 11.72,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.22,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/newdeyoungmuseum2020sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2020sanf?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -315,12 +336,68 @@
    "gloss": "2001 revisions to the final EIR for the New M.H. de Young Museum, addressing the reduced height of the Education Tower and the shadow and visual analyses."
   },
   {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "de Young Museum",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.88,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.38,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 4.75,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf",
+   "deep_link": "https://archive.org/details/newdeyoungmuseum2220sanf?q=de+Young+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true,
+   "gloss": "Comments and responses on the draft environmental impact report for the new de Young, issued by the Environmental Review Officer in November 2000."
+  },
+  {
    "identifier": "newdeyoungsicmus2220sanf",
    "title": "New deYoung [sic] Museum : draft environmental impact report",
    "creator": "San Francisco (Calif.). Planning Dept",
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "de Young Museum",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.1,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.1,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/newdeyoungsicmus2220sanf",
    "deep_link": "https://archive.org/details/newdeyoungsicmus2220sanf?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -329,60 +406,110 @@
    "gloss": "The 2000 draft EIR for the project to demolish and reconstruct the de Young in Golden Gate Park, removing about 230,000 sq ft of existing buildings."
   },
   {
-   "identifier": "minutesagendas2004fine",
-   "title": "Minutes and Agendas",
-   "creator": "Fine Arts Museums of San Francisco. Board of Trustees",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "de Young Museum",
-   "url": "https://archive.org/details/minutesagendas2004fine",
-   "deep_link": "https://archive.org/details/minutesagendas2004fine?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "Fine Arts Museums Board of Trustees resolutions honoring donors and naming galleries within the New de Young Museum."
-  },
-  {
-   "identifier": "minutes2000corp",
-   "title": "Minutes",
-   "creator": "Corporation of the Fine Arts Museums (San Francisco, Calif.). Board of Trustees. Executive Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "de Young Museum",
-   "url": "https://archive.org/details/minutes2000corp",
-   "deep_link": "https://archive.org/details/minutes2000corp?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "COFAM Executive Committee minutes on the \"My de Young\" public campaign to build the new museum and a lease for a temporary education site while the de Young is closed."
-  },
-  {
    "identifier": "annualreport1970fine",
    "title": "Annual report",
    "creator": "Fine Arts Museums of San Francisco",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "de Young Museum",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.36,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.86,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/annualreport1970fine",
    "deep_link": "https://archive.org/details/annualreport1970fine?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
    "group": "Reports & records",
    "salient": true,
    "gloss": "The 1970–71 annual report records the de Young's van Gogh exhibition, seen by over 400,000, and gifts received by the M.H. de Young Memorial Museum."
   },
   {
-   "identifier": "mhdeyoungmemoria1119fine",
-   "title": "M.H. de Young Memorial Museum : visitorship, fiscal benefit and economic impact analysis",
-   "creator": "Fine Arts Museums of San Francisco,Sedway Group (Firm)",
-   "year": 1997,
+   "identifier": "minutesagendas2003fine",
+   "title": "Minutes and Agendas",
+   "creator": "Fine Arts Museums of San Francisco. Board of Trustees",
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "de Young Museum",
-   "url": "https://archive.org/details/mhdeyoungmemoria1119fine",
-   "deep_link": "https://archive.org/details/mhdeyoungmemoria1119fine?q=de+Young+Museum",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.21,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.71,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutesagendas2003fine",
+   "deep_link": "https://archive.org/details/minutesagendas2003fine?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "A 1997 Sedway Group study of the de Young's visitorship, fiscal benefit and economic impact, comparing its park site with a downtown location."
+   "group": "Meetings & resolutions",
+   "salient": false,
+   "gloss": "Fine Arts Museums trustee minutes reporting year-end gifts of works of art and the Asian Art Museum's move into the old Main Library."
+  },
+  {
+   "identifier": "minutesorderofbu1994corp",
+   "title": "Minutes and Order of Business",
+   "creator": "Corporation of the Fine Arts Museums (San Francisco, Calif.). Board of Trustees",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "de Young Museum",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.09,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.09,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesorderofbu1994corp",
+   "deep_link": "https://archive.org/details/minutesorderofbu1994corp?q=de+Young+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": false,
+   "gloss": "1994 minutes of the Corporation of the Fine Arts Museums, the fundraising body behind the de Young and the Legion of Honor."
   },
   {
    "identifier": "mhdeyoungmemori1997sedw_0",
@@ -391,12 +518,68 @@
    "year": 1997,
    "pool": "sfpl",
    "matched_alias": "de Young",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.51,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 2.01,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/mhdeyoungmemori1997sedw_0",
    "deep_link": "https://archive.org/details/mhdeyoungmemori1997sedw_0?q=de+Young",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false,
+   "salient": true,
    "gloss": "A 1997 site-selection study setting out the de Young's urban-building concept and its gallery program in square feet."
+  },
+  {
+   "identifier": "mhdeyoungmemoria1119fine",
+   "title": "M.H. de Young Memorial Museum : visitorship, fiscal benefit and economic impact analysis",
+   "creator": "Fine Arts Museums of San Francisco,Sedway Group (Firm)",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "de Young Museum",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.55,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.55,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/mhdeyoungmemoria1119fine",
+   "deep_link": "https://archive.org/details/mhdeyoungmemoria1119fine?q=de+Young+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "A 1997 Sedway Group study of the de Young's visitorship, fiscal benefit and economic impact, comparing its park site with a downtown location."
   }
  ],
  "dept_shelf": [],
@@ -409,12 +592,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 7,
+  "n_documents": 8,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

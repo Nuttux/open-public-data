@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.708977+00:00",
+ "generated_at": "2026-07-27T17:06:09.743609+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sunset-branch-library",
@@ -116,26 +116,6 @@
  },
  "documents": [
   {
-   "identifier": "agenda19891991arts",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
-   "year": 1988,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "ocr_excerpts": [
-    "OFFICIO MEMBERS Presidents of the Fine Arts Museum Library Commission. Planning Commission, Recreation and Park Commission ACTING DIRECTOR Margie O'Drlscoll PROGRAMS Arts Festivals CMc Art Collection CMc Design Review Neighborhood Arts POPS Symphony Concerts Public Art Program Street Artists Licenses Sunset Branch Library Bureau of Architecture Glen H u n t 3001 Baker Street Private Request: Encroachment Fred Taylor, Ravi Anand Mayor's Emergency Coordination Center Bureau of Architecture Bruce Flynn, Jorqe Gutierrez PHASE(S) 1,11,111 L.Li, III 11 11 343 Sansome/Leidesdorf f Street Development Private Request",
-    "House 415-554-9679 Arts Commission Gallery 155 Grove Street 415-554-9682 Commissioners Excused Rai Okamoto Commissioners Present Robert LaRocca John Kriken Anne Healy Staff Present Lemora Martin, Acting Commission Secretary Jill Manton, Art Enrichment Curator Debra Lehane, Collections Manager I. SUNSET BRANCH LIBRARY Bureau of Architecture Glen Hunt Glen Hunt stated that this project involves handicapped access to the building at Irving and 18th Avenue, altering the exterior. Seismic bracing, by drilling through the masonry and inserting no. 11 rebar through the facade, without disturbing the character of the bu",
-    "SUNSET LIBRARY (Continued) Phase III approval was withheld, subject to final approval of lighting and planting plans. The following recommendation was made for presentation before the full Commission on 4 February: Motion to approve the handicapped accessibility and A seismic bracing plan for the Sunset Branch Library, Phases I, II. Moved: John Kriken Consensus: Unanimous 2. 3001 BAKER STREET Sidewalk encroachment Fred Taylor Mr. Taylor described this minor sidewalk encroachment by a fence and a corner detail attached to his apartment building on Lombard Street, one block from the Presidio Gate. He present",
-    "EMBARCADERO PLAZA Discussion Planning Commission ROMA pIV. SAN FRANCISCO INTERNATIONAL AIRPORT UAL PARKING GARAGE Phase I DPW Bureau of Architecture Howard Wong / V. TENDERLOIN CHILDREN'S PLAYGROUND 570 ELLIS ST. Phase II DPW Bureau of Architecture Robert Appleton, Robert Nist. Andrew Maloney /VI. SUNSET BRANCH LIBRARY Phase III DPW Bureau of Architecture Glen Hunt VII. FIFTH AND MISSION PARKING GARAGE Phase I, II Parking Authority Whistler Patri Architects Marie Zeller, Dana Merker VIII. OLD BUSINESS IX. NEW BUSINESS Discussion of Proposed Civic Center Master Plan X. ADJOURNMENT AGENDA. WPS 12/9/91 MINUTES",
-    "ussed. The Commissioners agreed to submit a recommendation for Phase II approval under Civic Design Committee Report at the January 6th, 1992 Arts Commission meeting. (REF: Civic Design Review Committee Minutes June 18, 1991 Phase I approval Civic Design Review Committee Minutes November 18, 1991) V. SUNSET BRANCH LIBRARY Bureau of Archi"
-   ],
-   "url": "https://archive.org/details/agenda19891991arts",
-   "deep_link": "https://archive.org/details/agenda19891991arts?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
    "identifier": "minutesofartcomm1954sanf",
    "title": "Minutes of Art Commission of the City and County of San Francisco",
    "creator": "San Francisco (Calif.). Art Commission",
@@ -149,9 +129,113 @@
     "z Antonio Sotoraayer Louis Sutter Michel Weill His Honor, Mayor Robinson Mr. Harold L. Zellerbach, President of the Commission, presided. AGENDA 1. Roll Call. 2. Pledge of Allegience. 3. Minutes of November 1,1954 Meeting. 4. CIVIC DESIGN COMMITTEE; 1. Department of Public Works- 1. V,Test Sunset Branch Library. 2. Starr King Elementary, Project 19- models of Statue and Mosaick mural. 3. Engine House No. 40, Project 7 • 4. Engine House No. 5, Project 103. 5. Ridgeway No. 2 Elementary, Project 27. 6. New Municipal Asphalt Plant-Convenience Station. 7. Yosemite Sewage Pumping Stztion. 8. Marquee- 199",
     "s and carried that the Minutes of November 1, 1954 be approved as written. CIVIC West Sunset Branch Public Library - DESIGN COMMITTEE Commissioner Allen m"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.77,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.27,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/minutesofartcomm1954sanf",
    "deep_link": "https://archive.org/details/minutesofartcomm1954sanf?q=Sunset+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "agenda19891991arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
+   "year": 1988,
+   "pool": "sfpl",
+   "matched_alias": "Sunset Branch Library",
+   "ocr_excerpts": [
+    "OFFICIO MEMBERS Presidents of the Fine Arts Museum Library Commission. Planning Commission, Recreation and Park Commission ACTING DIRECTOR Margie O'Drlscoll PROGRAMS Arts Festivals CMc Art Collection CMc Design Review Neighborhood Arts POPS Symphony Concerts Public Art Program Street Artists Licenses Sunset Branch Library Bureau of Architecture Glen H u n t 3001 Baker Street Private Request: Encroachment Fred Taylor, Ravi Anand Mayor's Emergency Coordination Center Bureau of Architecture Bruce Flynn, Jorqe Gutierrez PHASE(S) 1,11,111 L.Li, III 11 11 343 Sansome/Leidesdorf f Street Development Private Request",
+    "House 415-554-9679 Arts Commission Gallery 155 Grove Street 415-554-9682 Commissioners Excused Rai Okamoto Commissioners Present Robert LaRocca John Kriken Anne Healy Staff Present Lemora Martin, Acting Commission Secretary Jill Manton, Art Enrichment Curator Debra Lehane, Collections Manager I. SUNSET BRANCH LIBRARY Bureau of Architecture Glen Hunt Glen Hunt stated that this project involves handicapped access to the building at Irving and 18th Avenue, altering the exterior. Seismic bracing, by drilling through the masonry and inserting no. 11 rebar through the facade, without disturbing the character of the bu",
+    "SUNSET LIBRARY (Continued) Phase III approval was withheld, subject to final approval of lighting and planting plans. The following recommendation was made for presentation before the full Commission on 4 February: Motion to approve the handicapped accessibility and A seismic bracing plan for the Sunset Branch Library, Phases I, II. Moved: John Kriken Consensus: Unanimous 2. 3001 BAKER STREET Sidewalk encroachment Fred Taylor Mr. Taylor described this minor sidewalk encroachment by a fence and a corner detail attached to his apartment building on Lombard Street, one block from the Presidio Gate. He present",
+    "EMBARCADERO PLAZA Discussion Planning Commission ROMA pIV. SAN FRANCISCO INTERNATIONAL AIRPORT UAL PARKING GARAGE Phase I DPW Bureau of Architecture Howard Wong / V. TENDERLOIN CHILDREN'S PLAYGROUND 570 ELLIS ST. Phase II DPW Bureau of Architecture Robert Appleton, Robert Nist. Andrew Maloney /VI. SUNSET BRANCH LIBRARY Phase III DPW Bureau of Architecture Glen Hunt VII. FIFTH AND MISSION PARKING GARAGE Phase I, II Parking Authority Whistler Patri Architects Marie Zeller, Dana Merker VIII. OLD BUSINESS IX. NEW BUSINESS Discussion of Proposed Civic Center Master Plan X. ADJOURNMENT AGENDA. WPS 12/9/91 MINUTES",
+    "ussed. The Commissioners agreed to submit a recommendation for Phase II approval under Civic Design Committee Report at the January 6th, 1992 Arts Commission meeting. (REF: Civic Design Review Committee Minutes June 18, 1991 Phase I approval Civic Design Review Committee Minutes November 18, 1991) V. SUNSET BRANCH LIBRARY Bureau of Archi"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.51,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.01,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -2.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda19891991arts",
+   "deep_link": "https://archive.org/details/agenda19891991arts?q=Sunset+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "minutesofregular7194sanf",
+   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Sunset Branch Library",
+   "ocr_excerpts": [
+    "tion of Commissioner McLaughlin, seconded by Commissioner Schmulowitz, the following resolutions are adopted: Resolution No, 53 Resolved that an Interdepartmental Work Order in the amount of $390.00 be issued to the credit of Services of Other Departments to cover estimate No. 866 for painting at the Sunset Branch Library. Resolution No. 54 Resolved that an Interdepartmental Work Order in the amount of $580.00 be issued to the credit of Services of Other Departments to cover the necessary repairs to the Main Library and branches for the period ending June 30 * 19 47. Resolution No, 55 Resolved that the Controller",
+    "present premises that Mr. Riordan* s advice be taken. It is so ordered. COMMITTEE ON FINANCE & AUDIT On motion of Commissioner Kemper, seconded by Commissioner Mohr, the following resolutions are adopted: Resolution #64 Resolved that an Interdepartmental Work Order be issued to cover repairs to the Sunset Branch Library as per Job Estimate No. 115 for the Department of Public V/orks in the amount of $900., work to be performed as follows: Renew copper saddle on main vent; repair copper gutters and install iron ladder on outside building. Resolution #65 Resolved that the surplus in the amount of $5*000. that h",
+    "ort his findings to the Commission, chairman Mohr speaks on the Sunset Development Project Library and the Chair directs the Chairman of the Building and Branch Committee to meet with the City Planner Kent and the architectural firm of Weike, Frick and Kruse to discuss plans lor the proposed outer Sunset Branch Library and report its undings to the Commission. COMMITTEE ON FINANCE AND AUDIT On motion of Commissioner Hart, seconded by Commissioner temper, the following resolutions are adopted: Resolution No. 98 Resolved the Controller be requested to transfer the sum of $2,000. to the Materials and Supplies appr",
+    "e No. 766. On motion duly made, seconded and unanimously approved the following resolution is adopted: RESOLUTION NO. 44 Resolved that an Interdepartmental Work Order in the amount of §300* be issued to cover the repair and lacquering of the linoleum floor of the Main and Children's Room of the Sunset Branch Library as per Job Estimate No. 7 65* On motion duly made, seconded and unanimously approved the following resolution is adopted: foAK 7 1950 RESOLUTION NO. 45 Resolved that an Interdepartmental Work Order in the amount of $320.00 be issued to cover the furnishing of a heater at the new location of th",
+    "commended Commissioner Mohr, Miss Farrell and members of their committee for their untiring efforts on behalf oi the San Francisco Public Library to make possible a most successful celebration of California Library Week. Commissioner O'Dowd informed the Commission of possible library sites for an Outer Sunset Branch Library, and sta"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.88,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.38,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 3.25,
+    "money": true,
+    "decision": true,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesofregular7194sanf",
+   "deep_link": "https://archive.org/details/minutesofregular7194sanf?q=Sunset+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
    "group": "Meetings & resolutions",
    "salient": true
   },
@@ -167,29 +251,73 @@
     "ublic Library be authorized to accept and expend a grant in the amount of $10,000 from the California State Library as part of the Library Services and Technology Act (LSTA) for increasing the size of the Asian language collection and the number of Asian interest and Asian language programs at the Sunset Branch Library; and be it FURTHER RESOLVED, That the Board of Supervisors hereby waives inclusion of indirect costs in the grant budget. Recommended: Department Head Controller PUBLIC LIBRARY Page 2 City and County of San Francisco Tails City Hall 1 Dr. Carlton B. Goodlett Place San Francisco, CA 94",
     "to accept and expend a grant in the amount of $10,000 from the California State Library's Partnerships for Change Program as part of the Federal Library Services Act (LSTA) for increasing the size of the Asian language collection and the number of Asian interest and Asian language programs at the Sunset Branch Library. February 25, 2002 Board of Supervisors — ADOPTED Ayes: 11 - Amrniano, Daly, Gonzalez, Hall, Leno, Maxwell, McGoldrick, Newsom, Peskin, Sandoval, Yee File No. 020136 I hereby certify that the foregoing Resolution was ADOPTED on February 25, 2002 by the Board of Supervisors of the City and Co"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.14,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.64,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/resolution2002sanf_0",
    "deep_link": "https://archive.org/details/resolution2002sanf_0?q=Sunset+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
    "group": "Meetings & resolutions",
    "salient": true
   },
   {
-   "identifier": "minutesofregular1619sanf",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
+   "identifier": "adultcalendarofp1997sanf",
+   "title": "Adult calendar of programs and events",
+   "creator": "San Francisco Public Library",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Sunset Branch Library",
    "ocr_excerpts": [
-    "taff for assistance in dedication. Acknowledge and place on file. Sherman P. Duckel, Director of Public Works, copy of Work Order dated September 10, 1954 (#44-261) appointing the firm of Appleton and Wolfard to prepare drawings, specifica- tions and preliminary estimates of cost for the proposed West Sunset Branch Library. Place on file. Miss Anne Farrell, Head Librarian Public Relations Office, thanking Commission for sending her as a delegate to the A.L.A. Convention. Place on file. Louis A. Moran, Superintendent Laguna Honda Home, re: Request Library Department to furnish current reading matter for patients. Refer",
-    "ning and Development Committee's report; and further that the cost of acquiring these parcels be presented to the Commission prior to actual purchase for its information and deliberation. It was so ordered. Commissioner Allen concluded his report by describing in detail sketches of the proposed Outer Sunset Branch Library for the information of the Commission; and further he stated that the final preliminary plans, as approved by the Commission at its October meeting, were forwarded to the Recreation and Park Commission for its concurrence in this matter. FINANCE, AUDIT & BUDGET COMMITTEE Commissioner Graves moved and",
-    "ner Dettmering seconded that the report as read be accepted; and further, that any action on this site by the Library Commission be held in abeyance. Unanimously approved. Commissioner Vayssie concluded his report by informing the Com- mission that final plans and specifications for the proposed West Sunset Branch Library will be ready by March 1, 1955 and that cons- truction is expected to commence approximately June 15, 1955* FINANCE, AUDIT AND BUDGET COMMITTEE On motion duly made, seconded and unanimously approved, the following resolution was adopted: RESOLUTION #20 RESOLVED That a Departmental Work Order in the",
-    "y membership committee reports excellent progress in enrolling additional members following the organizational meeting held at the Main Library on February 7, 1955. Commissioner Mohr concluded her report by referring to her request in the February meeting regarding a suitable name for the proposed Outer Sunset Branch Library. Commissioner Mohr recommended that the name Ortega Branch Library be officially designated for this proposed library extension. The Chair declared the nominations for President, First Vice-President and Second Vice-President of the Library Commission for the ensuing term to be in order. Commissioner"
+    "ADVICE AND REFERRAL CLINIC - Sponsored by the Volunteer Legal Services Program of the San Francisco Bar Association. Main Library, Latino/Hispanic Community Meeting Room, 100 Larkin St. (Civic Center), (415) 764-1616 Monday, January 13 - 7:00 p.m. ♦TRAVELS IN JAPAN - Scenic slide tour by Carl Stein Sunset Branch Library, 1305 18th Ave. (at Irving), (415) 753-7130 Thursday, January 16 - 12:00 noon LARGE SCREEN VIDEO: ROAD TO STAMPING GROUND (60 minutes) - This gathering of Australian Aboriginal dancers inspired the work of Czech choreographer, Jiri Kylian. Main Library, Koret Auditorium, 100 Larkin St. (Civic Center",
+    "ain Library, Latino/Hispanic Community Meeting Room, 100 Larkin St. (Civic Center), (415) 557-4560 Monday, January 27 - 7:00 p.m. SHANGHAIED IN SAN FRANCISCO: 1850-1910 - An era in maritime history. Slide show by Bill Pickelhaupt, author of Shanghaied in San Francisco. Book signing after the program. Sunset Branch Library, 1305 18th Ave. (at Irving), (415) 753-7130 Wednesday, January 29 - 7:00 p.m. GLEN PARK HISTORY SLIDE-SHOW AND TALK - By Patricia Duff of City Guides. Glen Park Branch Library, 653 Chenery St. (near Diamond), (415) 337-4740 Thursday, January 30 - 12:00 noon LARGE SCREEN VIDEO: BILL T. JONES, DAN",
+    "nds of the San Francisco Public Library. Wednesdays, January 1, 8, 15, 22, 29 HOMEWORK HELP FOR GRADES K TO 8 - Call for an appointment. Mission Branch Library, 3359 - 24th St. (at Bartlett), (415) 695-5090 Wednesdays, January 1, 15, 22, 29 - 7:00 p.m. FAMILY NIGHTS FOR CHILDREN AGES 3 - 7 Sunset Branch Library, 1305 - 18th Ave. (at Irving), (415) 753-7049 Thursdays, January 2, 9, 23, 30 - 10:15 a.m. INFANT/TODDLER LAPSIT FOR INFANTS TO 3 YEARS WITH AN ADULT North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursdays, January 2, 16, 23, 30 - 10:30 a.m. PRESCHOOL STORYTTME FOR C",
+    "ORYTIME Portola Branch Library, 2450 San Bruno Ave. (at Silliman), (415) 715-4090 Tuesday, January 7 - 10:30 a.m. FILM PROGRAM - Corduroy Potrero Branch Library, 1616 20th St. (near Connecticut), (415) 695-6640 Tuesdays, January 7, 14, 28 - 10:30 a.m. PRESCHOOL STORYTIME FOR CHILDREN AGES 2 - 5 Sunset Branch Library, 1305 - 18th Ave. (at Irving), (415) 753-7049 Tuesdays, January 7, 21, 28 - 10:30 a.m. PRESCHOOL STORYTIME FOR CHILDREN AGES 3 - 5 West Portal Branch Library, 190 Lenox Way (at Ulloa), (415) 753-7135 Tuesdays, January 7, 21, 28 - 10:30 a.m. PRESCHOOL STORYTIME FOR CHILDREN AGES 3 - 5 Weste",
+    "Jersey St. (near Castro), (415) 695-5095 Wednesday, January 8 - 7:00 p.m. FTLM PROGRAM - Corduroy Potrero Branch Library, 1616 20th St. (near Connecticut), (415) 695-6640 Wednesday, January 8 - 7:00 p.m. ♦FAMILY NIGHT FOR CfflLDREN OF ALL AGES - Celebrate the New Year with Jim Murdoch the Clown. Sunset Branch Library, 1305 - 18th Ave. (at Ir"
    ],
-   "url": "https://archive.org/details/minutesofregular1619sanf",
-   "deep_link": "https://archive.org/details/minutesofregular1619sanf?q=Sunset+Branch+Library",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.26,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.76,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/adultcalendarofp1997sanf",
+   "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Sunset+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
+   "group": "Other records",
    "salient": true
   },
   {
@@ -204,28 +332,29 @@
     "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 71 Branch Library Improvement Program SUNSET BRANCH LIBRARY BACKGROUND The Sunset Branch Library - a Carnegie branch - opened to the public in 1918, is located at 1305 18tn. Avenue. It is a two story building built of concrete frame and reinforced masonry construction. The building has a total square footage of 8,576. It serves the populations of the Sunset and portions of the Parkside and",
     "heels, and temporary closure This relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Sunset Branch Library Project Cost Summary Rehabilitation and Improvements $1,610,000 Expansion $0 Total Project Cost Estimate $1,610,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Sunset Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 13 months Relocation and Construction 11 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.86,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/branchlibraryimp3200sanf",
    "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "adultcalendarofp1996sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "ocr_excerpts": [
-    "Valley Branch Library, 1801 Green St. (at Octavia), (415) 292-2195 Tuesdays, February 6, 20, 27 - 10:30 a.m. PRESCHOOL STORYTIHE FOR CHILDREN AGES 3-6 Anza Branch Library, 550 37th Ave. (near Anza), (415) 666-7160 Tuesdays, February 6, 13, 27 - 10:30 a.m. PRESCHOOL STORYTIHE FOR CHILDREN AGES 2-5 Sunset Branch Library, 1305 18th St. (at Irving), (415) 753-7130 Tuesdays, February 6, 20, 27 - 10:30 a.m. PRESCHOOL STORYTIHE FOR CHILDREN AGES 3-5 West Portal Branch Library, 190 Lenox Way, (at Ulloa), (415) 753-7135 Tuesdays, February 6, 20, 27 - 10:30 a.m. SPECIAL STORYTIHE FOR CHILDREN AGES 3 - 5 - Stories with",
-    "Library, 351 9th Ave. (near Clement), (415) 666-7021 Tuesdays, February 6, 13, 20, 27, - 3:30 p.m. CHESS AND CHECKERS CLUB FOR CHILDREN OF ALL AGES Ingleside Branch Library, 387 Ashton Ave. (near Ocean), (415) 337-4745 Tuesdays, February 6, 13 - 7:00 p.m. FAMILY STORYTIHE FOR CHILDREN AGES 3-8 Sunset Branch Library, 1305 18th St. (at Irving), (415) 753-7130 Wednesday, February 7 - 10:00 a.m. and 7:00 p.m. FILM PROGRAM - \"Tales of Beatrix Potter\" Potrero Branch Library, 1616 20th St. (near Connecticut), (415) 695-6640 Wednesday, February 7 - 4:00 p.m. *BLACK HISTORY MONTH CELEBRATION FOR CHILDREN OF ALL AGES",
-    "♦BLACK HISTORY MONTH CELEBRATION - Dance Kaiso performs African-Caribbean dance and drumming. West Portal Branch Library, 190 Lenox Way, (at Ulloa), (415) 753-7135 Saturday, February 10 - 3:00 p.m. ♦CHINESE NEW YEAR CELEBRATION FOR CHILDREN OF ALL AGES - With lively, colorful Chinese lion dancers. Sunset Branch Library, 1305 18th St. (at Irving), (415) 753-7130 Saturday, February 10 - 4:00 p.m. ♦BLACK HISTORY MONTH CELEBRATION FOR CHILDREN OF ALL AGES - Dance Kaiso performs African-Caribbean dance and drunming. Potrero Branch Library, 1616 20th St. (near Connecticut), (415) 695-6640 Tuesday, February 13 - 10:00 an",
-    "0 Wednesday, February 14 - 4:00 p.m. * BLACK HISTORY MONTH CELEBRATION FOR CHILDREN OF ALL AGES - With Jeff Nare11, steel drum musician. Marina Branch Library, 1890 Chestnut St. (near Webster), (415) 292-2150 Wednesday, February 14 - 7:00 p.m. EVENING VIDEO PROGRAM FOR CHILDREN AGES 6 AND OLDER Sunset Branch Library, 1305 18th St. (at Irving), (415) 753-7130 February 15 - 10:00, 10:30 and 11:00 a.m. and 2:15 p.m. PRESCHOOL FILM PROGRAM FOR CHILDREN AGES 3 - 5 - \"Corduroy\" and \"Little Girl and the Gunny Wolf.\" North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursday, February 15 -",
-    "HOOL FILM PROGRAM FOR CHILDREN AGES 3 - 5 - \"A Boy, a Dog, and a Frog,\" \"Cats and Rabbits,\" and \"Kuumba: Simon's New Sound.\" Richmond Branch Library, 351 9th Ave. (near Clement), (415) 666-7021 Tuesday,, February 20 - 10:30 and 11:15 a.m.; 1:30 p.m. PRESCHOOL FILM PROGRAM FOR CHILDREN AGES 2-5 Sunset Branch Library, 1305 18th St. (at Irv"
-   ],
-   "url": "https://archive.org/details/adultcalendarofp1996sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Sunset+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -263,7 +392,7 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.720015+00:00",
+ "generated_at": "2026-07-27T17:06:09.756966+00:00",
  "slug": "moscone-center",
  "name": "Moscone Center",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -11,12 +11,38 @@
    "year": 1992,
    "pool": "sfpl",
    "matched_alias": "Moscone Center",
+   "ocr_excerpts": [
+    "this document. The fourth paragraph on SEIR p. 145 is revised as follows (new language in italics): The environmental effects of the No-Development Alternative have been analyzed previously in the Second YBC EIR Supplement, pp 26 to 31 and throughout Section VI, \"Environmental Impacts, \" and in the Moscone Convention Center Expansion Initial Study. The analyses provided in the Second YBC EIR Supplement and in the Moscone Convention Center Expansion Initial Study are incorporated by reference into this document. A summary of the effects of the No-Project Alternative for those issue areas analyzed in this Subsequent EIR is presented below. The first sentence of the last paragraph on SEIR p. 162, continuing on SEIR p. 163, is revised",
+    "ll the story to new readers who may not go back to past documents. \"...[Page 3.] I would like you to put in Mayor George Moscone's Select Committee because that's who struggled with the issue. \"...page 5.. .think you should put a sentence in there that says the voters approved the expansion of [Moscone Center] under CB-2. \"...page 7.. .where it has Alternative A, B, C and D...but it's hard for me to believe that Alternative B is quite accurate. It may be what was in the previous document but it doesn't really say that the Mayor's Select Committee definitely talked about gardens. It says it included a",
+    "17 items be incorporated in the plan for YBC, including an underground exhibit hall and financing mechanisms for an urban park on the central blocks. The second sentence of the third full paragr^h on SEIR p. 5 is revised to read as follows (new language is underlined): To allow expansion of the Moscone Convention Center into the area previously reserved for parking, the Fourth through the Seventh Amendments to the DDA provided that the developer would release the CB-2 parking parcel, thus making possible the underground expansion of convention exhibit and meeting space that was approved by the voters on that block,",
+    "ows (new language is underlined): The clearance process required the relocation of approximately 2,070 individuals and 227 households, most of whom were low-income, single and/or elderly. At the time that the setting for the DSEIR was established (September 1991), only the underground expansion of the Moscone Center on CB-2 was in process. It is recognized that since this time, the construction of additional buildings on the eastern portion of CB-2 commenced. The impacts associated with these buildings currently under construction were included in the analysis of future impacts contained in the DSEIR. The last sentence of the partial paragraph at the top of SEIR p. 13 is revised to read as follows (new language is underlined): The structures currently under construction in YBC are the underground expansion of the Moscon"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.81,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.81,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.5,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/yerbabuenacenter2419sanf",
    "deep_link": "https://archive.org/details/yerbabuenacenter2419sanf?q=Moscone+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1992 EIR summary describing voter-approved underground expansion of the convention center on block CB-2."
+   "salient": true
   },
   {
    "identifier": "yerbabuenacenter1219sanf",
@@ -25,12 +51,39 @@
    "year": 1991,
    "pool": "sfpl",
    "matched_alias": "Moscone Center",
+   "ocr_excerpts": [
+    "Buena Center (YBC) Redevelopment Project Area since publication of the Second YBC EIR Supplement in 1982 are included in this document. The project that was discussed in the Second YBC EIR Supplement was the Main Program, which is being built as described in that document with the addition of the Moscone Convention Center Expansion, covered in the 1987 Moscone Center Initial Study. The general purpose of this document is to update the environmental analysis, update the cumulative development context, and highlight the changes that have occurred since 1982. In addition, this Subsequent EIR analyzes the effects of the proposed project, which consists of amendments to",
+    "een the Redevelopment Agency and Yerba Buena Gardens, Ltd. (hereinafter referred to as the YBG developer) for the Yerba Buena Gardens portion of the Yerba Buena Center Redevelopment Project Area (hereinafter referred to as YBC). The 1978 YBC FEIR analyzed the environmental effects of the then-proposed George R. Moscone Convention Center (hereinafter referred to as the Moscone Center) and alternative development scenarios for YBC. On July 21, 1981, a first supplement to the 1978 YBC FEIR was certified. That document, entitled The Yerba Buena Center Environmental Impact Report Supplement, (hereinafter referred to as the First YBC EIR Supplement), further analyzed in more detail pote",
+    "to finance lease revenue bonds, underground if financially feasible.\" Several changes in permitted land use and density in the redevelopment area were incorporated into a YBC Redevelopment Plan Amendment approved by the Board of Supervisors and the Redevelopment Agency Commission on August 13, 1979. The Moscone Center has since been constructed and was opened on December 10, 1981. 3 I. Background Shortly after approval of the Amendment to the Redevelopment Plan, the Redevelopment Agency sponsored an intensive competition to select the team most capable of developing the central portions of YBC. In April 1980,",
+    "frequently into horizontal and vertical setbacks. As to Central Blocks 2 and 3 (CB-2 and CB-3), the Commission further indicated its preference for the design principles embodied in the prototype entitled \"The Esplanade,\" which was an open plaza from 4 I. Background St. Patrick's Church to the Moscone Center. Finally, the Commission indicated it would reserve any expression of preference either in favor of or against housing on Central Block 2. These concepts then underwent refinement through the negotiation process. In 1982, the Redevelopment Agency focused on a single development proposal for YBC called",
+    "iott Hotel on CB-1. Phase Two provided for development of the CB-1 office building and entertainment and retail uses on CB-1, CB-2 and CB-3. Phase Three provided for development of EB-2. The YBG developer has c"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.17,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.67,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/yerbabuenacenter1219sanf",
    "deep_link": "https://archive.org/details/yerbabuenacenter1219sanf?q=Moscone+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1991 subsequent EIR recording that the Moscone Convention Center opened December 10, 1981."
+   "salient": true
   },
   {
    "identifier": "4minutes2001sanf",
@@ -39,12 +92,37 @@
    "year": 1997,
    "pool": "sfpl",
    "matched_alias": "Moscone Center",
+   "ocr_excerpts": [
+    "and County of San Francisco, acting by and through its Airport Commission (\"SFIA\"), and the Bay Area Rapid Transit District (\"BART\"). (Airport Commission) RECOMMENDED AS AMENDED by the following vote: Ayes: 3 - Leno, Peskin, Gonzalez 011445 [Approval of Amendment(s) to Design Agreement for the Moscone Center Expansion Project] Resolution authorizing the Director of Administrative Services to execute amendment(s) to design agreement, increasing the amendment sum from $14,026,326.38 to $15,026,326.38. (Administrative Services Department) (Fiscal impact.) 8/1/01. RECEIVED AND ASSIGNED to Finance Committee. Speakers:",
+    "mmittee August 22, 2001 Finance Committee Meeting Item 10 -File 01-1445 Departments: Department of Administrative Services San Francisco Convention Facilities Item: Description: Resolution authorizing the Director of Administrative Services to execute amendment(s) to the design agreement for the new Moscone Center Expansion Project, which would increase the total agreement by $1,000,000 from $14,026,326 to $15,026,326. On May 16, 1997, based on the results of a competitive request for proposal process, the Director of Administrative Services entered into a contract with Gensler/Michael Willis/Kwan Henmi Architects (Gensler) for architectural and engineering design and related services for the Moscone Center Expansion Project in the amount of up to $10,960,596. This architectural and engineering design contract was not approved by the Board of Supervisors because, according to Mr. Leonard Tom, Director of Finance for the Moscone Center Expansion Project, only $8,000,000 of the $10,960,596 was available to be certified for this design contract at the contract award time. Section 9.118(b) of the City's Charter requires that all agreements in excess often years or $10,000,000 and subsequent amendments in excess of $500,000 be approved by the Board of Supervisors. Mr. Ted Lakey of the City Attorney's Office advises that the Department was in compliance with the City's Charter provisions. According to Mr. Tom, the basic scope of the Moscone Center Expansion Project was enlarged in September of 1997, when the project was extended to Fourth Street, the gross square footage increased from 570,000 square feet to 780,000 square feet, an increase of 210,000 square feet, or 36.8 percent and the net useable floor area was increased by 60,000 square",
+    "Finance Committee Meeting exceed $1,000,000, resulting in a total contract amount not to exceed $15,026,326 for Gensler to provide 16 additional design items of work that may- be required from September of 2001 through February of 2003, which is anticipated to be the final construction phase of the Moscone Center Expansion Project. The total costs of the Moscone Center Expansion Project, including design, constru"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.72,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.22,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
    "url": "https://archive.org/details/4minutes2001sanf",
    "deep_link": "https://archive.org/details/4minutes2001sanf?q=Moscone+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "2001 Finance Committee minutes on the Gensler design agreement for the Moscone expansion, amended to a $15,026,326 total."
+   "salient": true
   },
   {
    "identifier": "journalofjanaprproceed83sanfrich",
@@ -53,12 +131,116 @@
    "year": 1988,
    "pool": "sfpl",
    "matched_alias": "George R. Moscone Convention Center",
+   "ocr_excerpts": [
+    "R REPORTED ON BY COMMITTEE Referred to Committee [Joint Powers Authority] Ordinance authorizing the execution and delivery of a joint exercise of powers agreement by and between the City and County and the Redevelopment Agency for the purpose of assisting in the financing of the expansion to the George R. Moscone Convention Center. (Supervisor Molinari presented.) Referred to Finance Committee with request it be considered at the March 16, 1988 meeting. File 91-88-2.1 [Yerba Buena-Property Documents] Ordinance approving and authorizing the execution of an easement agreement between the City and County and the Redevelopment Agency; approving and authorizing the execution of a coordination agreement between the City and Agency: all relating to the expansion of the George R. Moscone Convention Center. (Supervisor Molinari presented.) Referred to Finance Committee with request it be considered at the March 16, 1988 meeting. File 91-88-2.2 [Lease Amendments] Ordinance approving and authorizing the execution of a second amendment to project lease; approving and authorizing a first amendment to CB",
+    "enter. (Supervisor Molinari presented.) Referred to Finance Committee with request it be considered at the March 16. 1988 meeting. File 91-88-2.3 [Project Lease-Bond] Ordinance approving and authorizing the execution of a project lease, approving the issuance of bonds, finding that addition to the George R. Moscone Convention Center will be of benefit to the project area and that there is no other reasonable means of financing said facility; authorizing and ratifying execution of documents reasonably necessary for the issuance, sale and delivery of bonds, all in connection with an addition to the George R. Moscone Convention Center. (Supervisor Molinari presented.) Referred to Finance Committee with request it be considered at the March 16, 1988 meeting. File 91-88-2.4 -219- Monday, February 22. 1988 [Reimbursement Agreement] Ordinance approving and authorizing the execution of a reimbursement agreement by the Redevelopment Agency in connection with the financing of an addition to the George R. Moscone Convention Center. (Supervisor Molinari presented.) Referred to Finance Committee with request it be considered at the March 16, 1988 meeting. File 91-88-2.5 [Reimbursement Agreement] Ordinance approving and authorizing the execution of a reimbursement agreement between the City and County, the Redevelopment Agency and the Los Angeles Agency of Mitsubishi Bank LTD, relating to the expansion of the George R. Moscone Convention Center. (Supervisor Molinari presented.) Referred to Finance Committee with request it be considered at the March 16, 1988 meeting. File 91-88-2.6 [Ballot Arguments] Ordinance amending Administrative Code by repealing Sections 4.74 and 5.74-1 an"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.2,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.2,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/journalofjanaprproceed83sanfrich",
    "deep_link": "https://archive.org/details/journalofjanaprproceed83sanfrich?q=George+R.+Moscone+Convention+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "A 1988 Board of Supervisors journal of ordinances financing the George R. Moscone Convention Center expansion via leases and bonds."
+   "salient": true
+  },
+  {
+   "identifier": "comprehensiveann2004sanf",
+   "title": "Comprehensive annual financial report",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Moscone Convention Center",
+   "ocr_excerpts": [
+    "uts and soaring energy prices that have affected California energy markets, San Francisco voters in November 2001 overwhelmingly approved a $100 million revenue bond initiative to fund solar generation, energy efficiency measures and other renewable power sources for public buildings. In October 2003, the Moscone Center Energy Project, at San Francisco’s premier conference facility, became the first solar installation to be completed since the solar bond was approved. The $7.5 million project was funded by $5.2 million in local funding and $2.3 million in State funding through Public Utilities Commission and Energy C",
+    "current claim settlements and unfavorable judgments through annual appropriations and supplemental appropriations. The City maintains limited coverage for certain facilities, primarily property of the San Francisco International Airport, Port of San Francisco, Municipal Railway, Hetch Hetchy, Water Department, Moscone Convention Center and art at City-owned museums. Additionally, various types of liability insurance coverage are maintained by the City for the Port and the Airport. The City is self-insured for workers’ compensation claims. Claims payment history (experience) and payroll costs (exposure) are considered when calculating t",
+    "the Sierra Nevada Mountains, increased total net assets by $13.4 million. This was largely due to a $8.6 million increase in non operating revenues which included approximately $6 million in state grants funds for disaster relief reimbursements and energy projects, including the solar energy project at Moscone Convention Center. Hetchy also reported a $26.2 million or 27.5 percent increase in total expenses since the end of fiscal year 2003. Of this, $16.4 million is attributable to an increase in the purchase of power in the spot market due to increased demand. • The Water Department had an operating loss of $19 millio",
+    "report expenditures pertaining to the establishment of certain deferred credits related to long-term loans made. These deferred credits are not reported on the statement of net assets and, therefore, the corresponding expense is not reported on the statement of activities. 37,657 Lease payments on the Moscone Convention Center (including both principal and interest) are reported as expenditures in the governmental funds when paid. For the City as a whole, however, the principal portion of the payments serve to reduce the liability in the statement of net assets. This is the amount of property rent payments expended in the",
+    "t are not funded and will result in continuing deficits in future years. The Culture and Recreation Fund had a $8.3 million deficit as of June 30, 2004. It is due to incurring costs for grant programs before receiving grant resources. It will be eliminated once the resources b"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.91,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.41,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/comprehensiveann2004sanf",
+   "deep_link": "https://archive.org/details/comprehensiveann2004sanf?q=Moscone+Convention+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "finalmitigatedne2220sanf",
+   "title": "Final mitigated negative declaration : [case no. 2004.0852E : One Hawthorne Street : demolition and construction of a 15- or 25-story residential mixed-use building]",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2004,
+   "pool": "sfpl",
+   "matched_alias": "Moscone Center",
+   "ocr_excerpts": [
+    "5 Figure 4 Proposed Floor Plans 6 Figure 5 Proposed Elevations - Proposed Project 7 Figure 6 Proposed Elevations - Project Variant 8 Figure 7 Proposed Building Sections - Project Variant 9 Figure 8 Viewpoint Locations 31 Figure 9 View Looking Northeast from Moscone Center Pedestrian Bridge above Howard Street (Proposed Project) 32 Figure 10 View Looking Northeast from Moscone Center (Proposed Project) 33 Figure 1 1 View Looking West from Howard Street (East of Second Street) (Proposed Project) 34 Figure 12 View Looking North from Hawthorne Street between Folsom and Harrison Streets (Proposed Project) 35 Figure 13 View Looking East from Third Street between Howard and Folsom Streets (Proposed Project) 36 Figure 14 View Looking Northeast from Moscone Center - Cumulative Scenario 40 Figure 15 View Looking Northeast from Moscone Center - Cumulative Scenario (with Proposed Project) 41 Figure 16 View Looking Northeast from Moscone Center Pedestrian Bridge above Howard Street (Project Variant) 44 Figure 17 View Looking Northeast from Moscone Center (Project Variant) 45 Figure 18 View Looking West from Howard Street (East of Second Street) (Project Variant) 46 Figure 19 View Looking North from Hawthorne Street between Folsom and Harrison Streets (Project Variant) 47 Figure 20 View Looking East from Third Street between Howard and Folsom Streets (Project Variant) 48 Figure 21 View Looking Northeast from Moscone Center Cumulative Scenario (with Project Variant) 50 Figure 22 Traffic Directions and Study Intersections 68 Figure 23 Wind Test Point Locations 89 Figure 24 Figure Shadow Pattern - June 21, 8:21AM 94 2004.0852E One Hawthorne Street Residential Project ii List of Tables Page Table",
+    "y the temporary offices of the owner and development partnership in use since that time. The garage building currently has month-to-month leasing of 18 off-street parking stalls. The proposed project site is an L-shaped parcel at the southeast corner of Howard and Hawthorne Streets one block from the Moscone Convention Center, wrapping around the adjacent lot at 633-639 Howard Street on two sides.1 PROPOSED PROJECT The proposed project would construct a 15-story, 150-foot-tall (excluding mechanical penthouse) mixed-use building totaling approximately 222,750 gross square feet, with five levels of below- ground garage parking.",
+    "eption of the proposed height. The project variant would require a legislated amendment of the height classification of the site from 150-S to 250-S.4 B. PROJECT SITE The project site is located at the southeast corner of the intersection of Howard and Hawthorne Streets, one block east of the Moscone Convention Center and half a block southeast of the San Francisco Museum of Modern Art, in the Downtown Financial District neighborhood of San Francisco. The "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.45,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.95,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/finalmitigatedne2220sanf",
+   "deep_link": "https://archive.org/details/finalmitigatedne2220sanf?q=Moscone+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ]
 }

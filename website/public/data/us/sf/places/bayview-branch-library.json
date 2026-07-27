@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.710569+00:00",
+ "generated_at": "2026-07-27T17:06:09.745000+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "bayview-branch-library",
@@ -38,24 +38,127 @@
  },
  "documents": [
   {
-   "identifier": "agenda2013arts",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
+   "identifier": "annualreportdepa2010sanf",
+   "title": "Annual report / Department of Public Works, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Department of Public Works",
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "Bayview Branch Library",
    "ocr_excerpts": [
-    "Revised Conceptual Designs by Paul Madonna Presentation Time: Approximately 5 minutes cj^ Presentation of revised designs for the Art on Market Street Poster Series by Paul Madonna. 7- /^'/'^ Motion: Motion to approve revised designs for the Art on Market Street Poster Series b\\ Paul Madonna. 3. Bayview Branch Library Mary Chou Action Explanatory Document: Presentation of Artwork at Bayview Branch Library Presentation Time: Approximately 5 minutes Presentation of designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. Motion: Motion to approve designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. 4. Hamilton Recreation Center Susan Pontious Action Presentation Time: Approximately 5 minutes Discussion and possible motion to enter into a contract with Johanna Poethig to create an artwork for the Hamilton Recreation Center. Motion: Motion to authorize the Director of Cu",
-    "is San Francisco Chronicle column All Over Coffee. Commissioner Sklar called for public comment. There was no public comment. Motion: Motion to approve revised designs for the Art on Market Street Poster Series by artist Paul Madonna. Moved: Beltran/Silverman The motion was unanimously approved 4. Bayview Branch Library Mary Chou Action Ms. Chou presented the designs for the artwork at the new Bayview Branch Librarv b> artist Ron Saunders. She explained that the artwork will be located in two locations at the library: the open courtyard and the children's area. Ms. Chou noted that the courtyard artwork will con",
-    "ponded with enthusiasm and support. Ms. Chou said that mock-ups for both the courtyard and children's area artworks will be presented to the VAC at a later date. Commissioner Sklar called for public comment. There was no public comment. Motion: Motion to approve designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. Moved: Beltran/Chew The motion was unanimously approved 5. Hamilton Recreation Center Susan Pontious Action Ms. Pontious reminded the Commissioners that they had approved the use of the remaining Hamilton Recreation Center art enrichment funds to commission a new work by Jo",
-    "is San Francisco Chronicle column All Over Coffee. Commissioner Sklar called for public comment. There was no public comment. Motion: Motion to approve revised designs for the Art on Market Street Poster Series b\\ artist Paul Madonna. Moved: Beltran/Silverman The motion was unanimously approved 4. Bayview Branch Library Mary Chou Action Ms. Chou presented the designs for the artwork at the new BaN^ iew Branch Librar\\ b\\ artist Ron Saunders. She explained that the artwork will be located in two locations at the library: the open courtyard and the children's area. Ms. Chou noted that the courtyard artwork will c",
-    "ponded with e"
+    "ated Parkside, Park, Presidio, Merced and Anza branch libraries opend their doors to serve neighborhoods of enthusiastic library patrons. The new Visitacion Valley or Ortega branch libraries and renovated Golden Gate Valley branch will open to the public by all 201 1 with the groundbreaking of the new Bayview Branch Library anticipated for July 201 1 . Th program is close to completion as the last project, the new North Beach Branch Library, has completed its environmental review and is scheduled to start construction in 2012. A dynamic team of DPW employees is responsible for managing the design, regulatory appro cons",
+    "for use on site; and maximum use of natural light. LEED Silver certification or greater is expected Libraries 1. Ortega Branch Library 2. Ortega Branch Library 3. Visitacion Valley Library 4. North Beach Library rendering (Leddy, Maytum, Stacy Architects) A ground breaking ceremony for the new Bayview Branch Library was held and the building is scheduled to be completed in early 2013. The BLIP is drawing to a close as the last project, the new North Beach Branch Library, went out to bid and is scheduled to start construction in fall 2012. A dynamic and dedicated team of DPW employees is responsible for m",
+    "the Year Award for Pacific Region I Terrance \"Terry\" Costello US Green Building Council LEED certification • Platinum • San Francisco Public Utilities Commission Headquarters at 525 Golden Gate • Gold • Merced Branch Library • Golden Gate Valley Branch Library • Ortega Branch Library • Bayview Branch Library • Chinese Recreation Center • Moscone Tenant Improvements Silver awa Engineering News Record ENR) California 201 3 Owner of the V' Public Works From April 8, 201 3 issue of ENR California: \"City and County of San Francisco Awarded 201 3 Owner of the Year.\" \"With billions of dollars in public",
+    "Street Schedule Opened February 201 3 Budget $13.5 million, funded by the City voter-approved 2000 Branch Library Improvement Program bond Project Team Public Works San Francisco Public Library THA Architecture Karin Payson A+D Arts Commission Contractor KCK Builders Green Building LEEDGold The Bayview Branch Library is l e 23rd completed project in the bond-funded program managii by Public Works. The new, seismically safe and accessible 9,000 square-foot lilary features a designated teen are a children's area with interacti\\ learning spaces, an expanded collection of books and materiils 87 San Francisco Publi",
+    "ing money and checking out possible careers in public ? firsthand. Giving San Francisco resraSflTOWPBCisinesses City work is a high priority for us. We hire local San Francisco businesses, or Local Business Enterprises (LBE), and we ensure our contractors hire people who live in San Francisco. The Bayview Branch Library was one example where "
    ],
-   "url": "https://archive.org/details/agenda2013arts",
-   "deep_link": "https://archive.org/details/agenda2013arts?q=Bayview+Branch+Library",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.65,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.15,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/annualreportdepa2010sanf",
+   "deep_link": "https://archive.org/details/annualreportdepa2010sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "minutesofregula1119sanf_0",
+   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "ocr_excerpts": [
+    "when the ceremony could be scheduled to allow the attendance of Mayor Christopher, other City officials and interested citizens and groups from the Eureka Valley District. Chairman Vavuris reported that Mr. Holman had some reservations about the ap- propriateness of the site selected for the proposed Bayview Branch Library. Mr. Holman commented that he felt the shape of the site would not lend itself to branch library construction, and that he was concerned for the safety of children who would have to cross streets to reach the library. The efforts of the Planning and Development Committee leading up to the select",
+    "EVELOPMENT AND MAINTENANCE COMMITTEE Chairman Lepetich announced that the Board of Supervisors had finally approved the purchase of the southwest corner of Mission and Cotter Streets as the site for the permanent Excelsior Branch Library. Progress on the selection of a suitable site for the permanent Bayview Branch Library was reported by Chairman Lepetich. Hie Secretary presented the project architect's site study for the Western Addition Branch Library. The plan will be presented to the Recreation and Park Commission for consideration, and, following approval, Mr. Wolfard will begin the preliminary plans for the branch",
+    "ibrary development to the general public. It was moved by Commissioner Vavuris, seconded by Commissioner Fanucchi and unanimously approved that a letter be directed to the Real Estate Department of the City and County asking for a progress report on the purchase of the site selected for the permanent Bayview Branch Library. It was moved by Commissioner Lepetich, seconded by Commissioner Mohr and unanimously adopted that the firm of Appleton & Wolfard be directed to proceed im- mediately with the preparation of plans for the Western Addition Branch Library and with the plans for the permanent Excelsior Branch Library at",
+    "ibrary Plan be accepted and that the Commission declare that it represents the Commission's policy with respect to branch library planning, except that the wording \"to be constructed\" be substituted for the year 1963 in the section which refers to the scheduling of the Excelsior, Western Addition and Bayview branch library construction projects. It was reported by Chairman Bransten that Mr. Wolfard had started work on the preliminary plans for the Western Addition Branch Library. Mr. Wolfard expects to meet with the Committee, Mr. Holman and the Secretary when he has the basic plan of the branch developed, the Chairm",
+    ", by unanimous action, approved t{ie following resolution: RESOLUTION # 195 RESOLVED That the Library Commission hereby authorizes the Real Estate De- partment of the City and County to submit a resolution to the Honorable Board of Supervisors for the purpose of acquiring the property selected for th"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.13,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.63,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesofregula1119sanf_0",
+   "deep_link": "https://archive.org/details/minutesofregula1119sanf_0?q=Bayview+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
+  },
+  {
+   "identifier": "agenda2012arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "ocr_excerpts": [
+    "of the proposal for a tile and bronze mural by Precita Eyes for the front of the Bernal Heights Branch Library on Cortland Avenue. 20. Motion to approve revised designs for the Art on Market Street Poster Series by artist Paul Madonna. 21. Motion to approve designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. 22. Motion to authorize the Director of Cultural Affairs to enter into a contract with Johanna Poethig an amount not to exceed $49,000, for the design, fabrication, transportation and installation/consultation of an interior mural at Hamilton Recreation Center. 23. Motion to a",
+    "ned. President Beltran called for public comment on the remainder of the Consent Calendar. Public Comment: Mr. Warfield said that he would like a full discussion of the Visual Arts Committee minutes, items 17, 18 and 19 (regarding the Bemal Heights Library mural), and a separate discussion of the Bayview Branch Library, item 21. He asked for an explanation of procedure. President Beltran said she would sever items 17, 18 and 19, the Bemal Heights Library mural items, for separate consideration, but not the Visual Arts Committee minutes. She called for public comment on items 17, 18 and 19, the Bemal Heights Lib",
+    "w.sfgov3.org/index.aspx7page: Visual Arts Committee Recommendations (March 21, 2012) 14. RESOLUTION NO. 0402-12-105: Motion to approve revised designs for the Art on Market Street Poster Series by artist Paul Madonna. 15. RESOLUTION NO. 0402-12-106: Motion to approve designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. 16. RESOLUTION NO. 0402-12-107: Motion to authorize the Director of Cultural Affairs to enter into a contract with Johanna Poethig an amount not to exceed $49,000, for the design, fabrication, transportation and installation/consultation of an interior mural at Hamilton Recreatio",
+    "w.sfgov3.org/index.aspx7page: Visual Arts Committee Recommendations (March 21, 2012) 14. RESOLUTION NO. 0402-12-105: Motion to approve revised designs for the Art on Market Street Poster Series by artist Paul Madonna. 15. RESOLUTION NO. 0402-12-106: Motion to approve designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. 16. RESOLUTION NO. 0402-12-107: Motion to authorize the Director of Cultural Affairs to enter into a contract with Johanna Poethig an amount not to exceed $49,000, for the design, fabrication, transportation and installation/consultation of an interior mural at Hamilton Recreatio",
+    "Rebuilding Together San Francisco. 13. Motion to approve Rebar's proposal Handsignals for the public artwork for the revised design of McCoppin Hub. 14. Motion to approve final designs for interior and exterior artwork pieces and mock-up of interior artwork piece by artist Ron Saunders for the new Bayvie"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.84,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.34,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda2012arts",
+   "deep_link": "https://archive.org/details/agenda2012arts?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": false
   },
   {
    "identifier": "agendasanfranci2011sanf_6",
@@ -70,8 +173,70 @@
     "NATIVE MEETING LOCATION SAN FRANCISCO PUBLIC LIBRARY COMMISSION Pursuant to San Francisco Administrative Code Section 67.6(f) notice is hereby given that the San Francisco Public Library Commission will hold its Us - . . regular meeting on AUGUST 21, 2014 at an alternative location as follows: PLACE: BAYVIEW BRANCH LIBRARY 5075 Third Street San Francisco, CA 94124 Agenda for this meeting will be available 72 hours before scheduled meeting time from the Commission Secretary/Custodian of Records, 6th floor, Main Library or the Public Library’s website http://sfpl.org Sue Blackman, Commission Secretary: 7/22/2014 415.557.423",
     "' GOVERNMENT DOCUMENTS DEPT AUG 1 8 2014 SAN FRANCISCO PUBLIC LIBRARY San Francisco Public Library NOTICE OF MEETING PLEASE NOTE ALTERNATE LOCATION A regular meeting of the San Francisco Public Library Commission will be held as follows: DATE: Thursday, August 21, 2014 TIME: 4:30 PM PLACE: Bayview Branch Library, 5075 Third Street San Francisco, CA 94124 The meeting will be called to order. Note: The Commission will hear public comment on each item on the agenda before or during consideration of that item. 1. General Public Comment (This item is to allow members of the public to address the Commission on matters that are within the subject matter jurisdiction of the Commission and that do not appear on the agenda.) 2. Bayview Branch Library Renaming Discussion (This is a discussion item on the possible renamin"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.64,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.64,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/agendasanfranci2011sanf_6",
    "deep_link": "https://archive.org/details/agendasanfranci2011sanf_6?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "minutesofregular2010sanf",
+   "title": "Minutes of the regular meeting ...",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "ocr_excerpts": [
+    "uest is to transfer funds to the Program Reserve from three sources: Golden Gate Valley, $2,960,042; G.O. Bond Interest, $1,683,967; and Visitacion Valley Rent, $59,800; making $4,703,809 available to transfer to the Program Reserve. She said the second request is to approve the project budget for the Bayview Branch Library. She said the approved budget for the branch is $4,985,778. She said the proposed budget is the pre-bid construction estimate for new construction of $1 1 ,830,796 for a difference of $6,845,018. She said the third request is to transfer BLIP funds to project budgets. She said the total requested tr",
+    "uest is to transfer funds to the Program Reserve from three sources: Golden Gate Valley, $2,960,042; G.O. Bond Interest, $1,683,967; and Visitacion Valley Rent, $59,800; making $4,703,809 available to transfer to the Program Reserve. She said the second request is to approve the project budget for the Bayview Branch Library. She said the approved budget for the branch is $4,985,778. She said the proposed budget is the pre-bid construction estimate for new construction of $1 1 ,830,796 for a difference of $6,845,018. She said the third request is to transfer BLIP funds to project budgets. She said the total requested tr",
+    "uest is to transfer funds to the Program Reserve from three sources: Golden Gate Valley, $2,960,042; G.O. Bond Interest, $1,683,967; and Visitacion Valley Rent, $59,800; making $4,703,809 available to transfer to the Program Reserve. She said the second request is to approve the project budget for the Bayview Branch Library. She said the approved budget for the branch is $4,985,778. She said the proposed budget is the pre-bid construction estimate for new construction of $1 1 ,830,796 for a difference of $6,845,018. She said the third request is to transfer BLIP funds to project budgets. She said the total requested tr",
+    "ment on each item on the agenda before or during consideration of that item. 1. GENERAL PUBLIC COMMENT (This item is to allow members of the public to address the Commission on matters that are within the subject matter jurisdiction of the Commission and that do not appear on the agenda). 2. BAYVIEW BRANCH LIBRARY PROJECT BID METHOD ALTERNATIVE - INTEGRATED PROJECT DELIVERY DISCUSSION/POSSIBLE ACTION (Discussion and possible action on the solicitation of integrated project delivery proposals for construction of the Bayview Branch Library pursuant to Administrative Code Section 6.68). Explanatory documents: Memorandum to Commission from City Librarian dated February 12, 2010; Draft Resolution. 3. FISCAL YEAR 2010-11 LIBRARY BUDGET DISCUSSION/ POSSIBLE ACTION (Presentation, discussion and possible action to approve the proposed FY 10-1 1",
+    "e meeting was called to order at 4:41 pm. Commissioners present: Del Portil"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.09,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.59,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesofregular2010sanf",
+   "deep_link": "https://archive.org/details/minutesofregular2010sanf?q=Bayview+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
@@ -90,48 +255,32 @@
     "6.68 of the Administrative Mayor Lee, Supervisor Chiu BOARD OF SUPERVISORS Page 74 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 Code. The Board of Supervisors finds that the purpose of Ordinance No. 97-1 0 was to facilitate completion of the Bayview Branch Library Construction Project. The Board of Supervisors further finds that the purpose of Bayview Branch Library Construction Project is complete. In addition, the Board of Supervisors finds that the provisions of Ordinance No. 97- 10 purporting to amend the Administrative Code are not presently codified. Ordinance No. 97-10 is hereby repealed. Section 3. Effective and Operative Dates. This ordinance shall become",
     "threshold or minimum competitive amounts; 9) establish a Mentor-Protege Program between established successful contractors and LBEs; 10) require separate LBE participation on design and construction por"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.98,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.48,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/agendasminutesc2014sanf_1",
    "deep_link": "https://archive.org/details/agendasminutesc2014sanf_1?q=Bayview+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesofregular2008sanf",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Bayview Branch Library",
-   "ocr_excerpts": [
-    "he special meeting of January 3, 2008.) Explanatory document: draft minutes. 6. APPROVAL OF THE MINUTES JANUARY 17, 2008 ACTION (Presentation, discussion and possible action to approve the minutes of the regular meeting of January 17, 2008.) Explanatory document: draft minutes. 7. DESIGN OPTIONS FOR BAYVIEW BRANCH LIBRARY ACTION (Presentation, discussion and possible action to approve design options for the Bayview Branch Library). Explanatory document: Design Options for the Bayview Branch Library. 8. FISCAL YEAR 2008/09 LIBRARY BUDGET ACTION (Presentation, discussion and possible action to approve the proposed FY 08/09 Library Budget) Explanatory documents: FY 08-09 Budget Overview, Proposed FY 08/09 Budget Proposal and FY 08-09 Budget Change Proposals 9. CITY LIBRARIAN'S REPORT by Luis Herre",
-    "nt Gomez announced a change in the order of the agenda items. She said that because of the numerous community members waiting to 4 participate in agenda items 7 and 8, the Commission would hear agenda items 5 and 6 at the end of the meeting following agenda item 1 1 . 7. DESIGN OPTIONS FOR BAYVIEW BRANCH LIBRARY Luis Herrera, City Librarian, explained the background on the Bayview Branch and said that this branch is critical to the community and provides an active outreach and special programs component. He said that the budget for this branch was increased from $3.6 million to $9 8 million in March 2007. Marilyn Thompson, Bond Program Manager, said that the Bayview Branch library deserved a new expanded vision and with the passage of Prop D they began feasibility studies with the firm of Thomas Hacker Architects, a nationally renowned design architect in association with a local firm Karin Payson architecture + design. She said presenting a range of design options today is",
-    "he former Commissioners for all of their support President Gomez said she would like to move items 5 and 6 approval of the minutes of January 3 and January 17 to the end of the meeting so that members of the community would be able to participate in the following items. 7. DESIGN OPTIONS FOR BAYVIEW BRANCH LIBRARY Luis Herrera, City Librarian, explained the background on the Bayview Branch and said that this branch is critical to the community and provides an active outreach and special programs component. He said that the budget for this branch was increased from $3.6 million to $9.8 million in March 2007. Marilyn Thompson, Bond Program Manager, said that the Bayview Branch library deserved a new expanded vision and with the passage of Prop D they began feasibility studies with the firm of Thomas Hacker Architects, a nationally renowned design architect in association with a local firm Karin Payson architecture + design. She said presenting a range of design options today is",
-    "st Portal branch."
-   ],
-   "url": "https://archive.org/details/minutesofregular2008sanf",
-   "deep_link": "https://archive.org/details/minutesofregular2008sanf?q=Bayview+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Bayview Branch Library",
-   "ocr_excerpts": [
-    "PROGRAM BENEFITS 3 PROGRAM SCHEDULE 3 PROGRAM COST 4 INTRODUCTION 6 PURPOSE : 6 BACKGROUND 6 BOND PROGRAM 12 PROGRAM SCOPE 12 PROGRAM COST 16 PROGRAM SCHEDULE 17 CONTENTS OF THE REPORT , 18 ANZA BRANCH LIBRARY : 20 BACKGROUND 20 SCOPE OF WORK 20 PROJECT COST 22 PROJECT SCHEDULE 22 BAYVIEW BRANCH LIBRARY 23 BACKGROUND 23 SCOPE OF WORK 23 PROJECT COST 24 PROJECT SCHEDULE 24 BERNAL HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRAR",
-    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 22 Branch Library Improvement Program BAYVIEW BRANCH LIBRARY BACKGROUND The Bayview -Anna Wadden Branch Library, built with a bequest from Anna Wadden, is a 6,427 square foot concrete building constructed in 1969, is located at 5075 3r<^. Street. It opened in 1969 and serves the population of Bayview Hunters Point and a portion of the Portola district. Ch",
-    "heels, and temporary closure. The relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Bayview Branch Library Project Cost Summary Rehabilitation and Improvements $3,480,000 Expansion $810,000 Total Project Cost Estimate $4,290,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Bayview Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 13 months Relocation and Construction 11 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
-   ],
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Bayview+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "salient": false
   },
   {
    "identifier": "sanfranciscopubl6199sanf",
@@ -146,8 +295,68 @@
     "ing, collecting, recording, and depositing of fines and other revenues. In addition, the Library should require staff members to document the instances in which they waive fines. CONTROLLER'S AUDITS DIVISION 1 3 1223 05226 1097 INTRODUCTION ALLEGATION A complainant alleged that employees in the Bayview branch library (Bayview) of the San Francisco Public Library were stealing money from the fines and other revenues collected at the branch library. BACKGROUND The San Francisco Public Library (Library) of the City and County of San Francisco (City) provides books, materials, and electronic resources for the childre",
     "eport to the Library's accounting staff, who record the revenues into the Library's accounts in the Controller's Financial Accounting and Management Information System (FAMIS). CONTROLLER'S AUDITS DIVISION 2 SCOPE AND METHODOLOGY The purpose of our audit was to investigate whether employees at the Bayview branch library were stealing money from the fines and other revenues they collected. To conduct this investigation, we assessed the cash handling procedures used by the Bayview branch library, the other branch libraries, and the main library. We visited the main library and each of the 26 branch libraries between January 1 1 and January 21, 1999, and counted all the cash the libraries had collected and still retained at the time of our visits. We interviewed staff members at each location to learn about the cash-handling procedures. We also met with staff at the main library to obtain an understanding of the main library's pro"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 11.04,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.5,
+    "money": false,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscopubl6199sanf",
    "deep_link": "https://archive.org/details/sanfranciscopubl6199sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "ocr_excerpts": [
+    "PROGRAM BENEFITS 3 PROGRAM SCHEDULE 3 PROGRAM COST 4 INTRODUCTION 6 PURPOSE : 6 BACKGROUND 6 BOND PROGRAM 12 PROGRAM SCOPE 12 PROGRAM COST 16 PROGRAM SCHEDULE 17 CONTENTS OF THE REPORT , 18 ANZA BRANCH LIBRARY : 20 BACKGROUND 20 SCOPE OF WORK 20 PROJECT COST 22 PROJECT SCHEDULE 22 BAYVIEW BRANCH LIBRARY 23 BACKGROUND 23 SCOPE OF WORK 23 PROJECT COST 24 PROJECT SCHEDULE 24 BERNAL HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRAR",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 22 Branch Library Improvement Program BAYVIEW BRANCH LIBRARY BACKGROUND The Bayview -Anna Wadden Branch Library, built with a bequest from Anna Wadden, is a 6,427 square foot concrete building constructed in 1969, is located at 5075 3r<^. Street. It opened in 1969 and serves the population of Bayview Hunters Point and a portion of the Portola district. Ch",
+    "heels, and temporary closure. The relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Bayview Branch Library Project Cost Summary Rehabilitation and Improvements $3,480,000 Expansion $810,000 Total Project Cost Estimate $4,290,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Bayview Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 13 months Relocation and Construction 11 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 0.86,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Bayview+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -185,12 +394,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 6,
+  "n_documents": 8,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

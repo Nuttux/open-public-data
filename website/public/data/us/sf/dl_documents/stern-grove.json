@@ -1,29 +1,9 @@
 {
- "generated_at": "2026-07-22T15:04:53.698454+00:00",
+ "generated_at": "2026-07-27T17:06:09.730001+00:00",
  "slug": "stern-grove",
  "name": "Sigmund Stern Grove",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
-  {
-   "identifier": "minutesrecreatio1986sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": 1986,
-   "pool": "sfpl",
-   "matched_alias": "Stern Grove",
-   "ocr_excerpts": [
-    ": Silver Terrace award of contract delay explained 166 RES. 14426 - Candlestick Park - Nibbi Lowe, Phase 1 1 A renovations 167 RES. 14428 - see Pioneer Log Cabin - Page, Anderson and Turnbull 168 RES. 14457 - see Marina Green - Cal Clay Corp., all weather 194 jogging path RES. 14482 - Gottlieb Const., Stern Grove Clubhouse renovation, 214 modification of contract to Page, Anderson & Turnbull, design consultants RES. 14484 - Signet Testing Labs, Sharon, Bui 1 ding restoration 214 Phase III, consultant RES. 14501 - Apprvd. work study contract in order to hire intern 225 from USF-planning/environmental background",
-    "ncy work 166 General Manager Mary Burns explained two changes under Item 4B 212 Emergency Repairs: Huntington Falls/G.G. Park removed from calendar; Coit Tower dollar amount changed Commissioner Rodriguez questioned Temporary Personnel 213 Requisitions; Commissioner Eickman questioned restoration work at Stern Grove Clubhouse include sprinkler system and amount of money spent on Sharon Building Commissioner Rodriguez inquired about emergency repair at zoo; ' 256 Items 4d and 4e aerial photography Commissioner Rodriguez clarified a few items with Phil Arnold; 279 Commissioner Meyer noted parcourse circuit maintenan",
-    "RES. 14450 - Apprvd. declaration of emergency to rehabilitate 184 Camp Mather swimming pool RES. 14555 - Apprvd. declaration of emergency for Candlestick Park 271 Phase I IB construction EMERGENCY REPAIRS (Ratified approval authorized by General Manager, processed under Resolution No. 13570) RES. 14208 - Sigmund Stern Grove: Insulation Specialties 6 Polo Field, North Training Quarters: Insulation Specialties Portola Recreation Center: Insulation Specialties Kezar Pavilion: Insulation Specialties Mission Dolores Park: Lowrie Paving RES. 14231 - Eureka Valley Rec. Ctr: Anderson Roofing 26 Chinese Recreation Center: Anderson Ro",
-    "ve Senate Bill 806-1986 State Park Bond Act Oceanview Playground National Synchronized Swimming Team Trials 10th Annual Zoo Run International Golf Course Conference in S.F. Bernard Zakheim Memorial Service 100th Birthday Congratulations Dates to Remember: l/17-3rd Annual Martin Luther King Jr. Lunch, Stern Grove 1 /17-MAC Committee, 3:30 p.m. 1/18-Fuchsia Pruning Demonstration, Strybing Arboretum, 10 a.m. 1 /23-Recreation Committee Public Hearing, 7:00, fee increase for athletic field reservations 1/28-Kezar Public Meeting, 7 p.m. 2/6-Parks & Planning Committee, 9 a.m. 2/13-Special Parks & Planning Committee Public",
-    "aritable Solicitations Union Square Garage Update Lake Merced Boathouse Bankruptcy Golden Gate Park Tennis Lease Recreation Division Activities Retirements Dates to Remember: 3/22-23-Ikebana Spring Flower Show, Strybing Arboretum 3/22 -Whale of a Sale, Junior Museum, 9:30 a.m. 3/22 -Arborist Jamboree, Stern"
-   ],
-   "url": "https://archive.org/details/minutesrecreatio1986sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1986sanf?q=Stern+Grove",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
   {
    "identifier": "annualreport196770sanf",
    "title": "Annual report of the Recreation and Park Department, City and County of San Francisco",
@@ -38,6 +18,27 @@
     "was originally intended as a one-time event in the Fall of 1965, but subsequently was repeated on a more and more frequent basis until the present weekly schedule was established. Participation in public performances included the previously mentioned Summer children's concerts, the annual Carnival at Sigmund Stern Grove, Joseph Lee Day program, the Annual Christmas Carol Festival at City Hall, Recreation Symphony Orchestra concert, the Salvation Army sponsored Union Square Christmas Music Festival, and the usual large number of special holiday programs at Recreational Arts Building and at units throughout the city. -1",
     "st in photography as a recreational hobby in San Francisco. The Photography Center also sponsors and conducts one of the largest photographic events in California, namely, \"Photography Day\". The Photographic Society of America, and camera clubs from all over Northern California appear at the beautiful Sigmund Stern Grove, and present d"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.15,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.65,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/annualreport196770sanf",
    "deep_link": "https://archive.org/details/annualreport196770sanf?q=Stern+Grove",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -45,22 +46,84 @@
    "salient": true
   },
   {
-   "identifier": "annualreport195861sanf",
-   "title": "Annual report",
+   "identifier": "annrep778085899091sanf",
+   "title": "Annual report of the San Francisco Recreation and Park Department",
    "creator": "San Francisco (Calif.). Recreation and Park Dept",
-   "year": 1965,
+   "year": 1973,
    "pool": "sfpl",
-   "matched_alias": "Stern Grove",
+   "matched_alias": "Sigmund Stern Grove",
    "ocr_excerpts": [
-    "eights 40,157 Excelsior 95,031 Richmond 41,636 Folsom 75,463 Rochambeau 75,520 Fulton 46,162 Rolph 13 3 -.404 Funston 227,006 Rossi 56; 310 Gilman 16,303 Sto Mary9s 113, 5$r Glen Park 101,736 Silver Terrace 77,31Q G. Go Park Tennis Courts 102; South Sunset 71,857 Grattan 35,475 Stern Grove 65,20c Hamilton 195,792 Stern Grove Annex 15,192 Hayes Valley 10; 647 Sunset 163,086 Hay ward, Boys 64,215 Upper Noe 142,488 Hay ward, Girls 99; 200 Visitacion Valley 128,850 Jackson 43,363 Wawona Greens 14,691 Junipero Serra 44,035 West Portal 22,832 Kahn, Julius 63,191 West Sunset 65,714 Larsen Square 17,103 Wills",
-    "ctivities Archery B.ange, Sharp Park Archery Range, Golden Gate Park (5 mos.. Sundays & Holidays only) Carnival Drama & Dance Music Photography Center Pine Lake Camp Randall, Jo D. Junior Museum Rifle Range, Sharp Park Senior Citizens* Various Units Senior Citizens' Hobby Show Silver Tree Day Camp Stern Grove Concerts Tiny Tots - Various Units TOTAL Total Attendance Playgrounds Housing Centers Aquatics Special Activities Camp Mather Camp Mather Recapitulation Total Attendance 28,411 2,138 8,595 96,217 72,033 41,170 12,075 65,693 10,438 11,101 4i856 13,043 69,250 70,556 505,576 26.600 -2- 4,6",
-    "service both in~town and out-of-town groups. The latter groups have come to us from as far away as New York, Arizona. Southern California, Utah, and the Pacific Northwest. (5) Picnic Areas - Requests for reservations were extremely heavy this year for the use of facil- ities in Golden Gate Park, Sigmund Stern Grove, Pine Lake Park, McLaren Park, etc. (6) Sigmund Stern Grove and ilawona Clubhouse - are both heavily requested for social and meeting purposes by various non-profit organizations. Sigmund Stern Grove also is the center of the very popular and widely acclaimed annual summer musical concerts. (7) Anglers ' Lodge - This unit is used for meetings by the Golden Gate angling and Casting Club, the Sheriff Air Squadron Patrol and the S.P. Mounted latroi, The flycasting pools are used by fishing enth",
-    "ce groups, and doll shows, The Golden Gate btory League, the btoryland btory i>eague and the Doll Club are under this division's sponsorship. There were 406,981 units of service for the afore- mentioned groups. Many program? and special events were conducted by this division, such as \"Carnival\"' at Stern Grove, Doll Festival at the Sharon Building, May Day at Kezar, Columbus Day Pageant, Adult Regional Polk Festivals, Joseph Lee Day, btory Play .festival and contest, Unesco programs, as well as special holi- day programs. The units of service for these programs was 64,289. There were 32,037 units of serv",
-    "School Singing and Toy Symphony, Teenage Dance Baud, Adult Dance Band, Teenage Chorus, Adult Chorus, benior citizens' Chorus and Community oinging, the recreation Symphon"
+    "ma techniques, dance movements and basic music. DAY CAMPS The San Francisco Recreation and Park Department sponsored three day camps during the summer. Silver Tree Day Camp Is settled in spacious Glen Park Canyon, below Diamond Heights; Pine Lake Day Camp is nestled at the west end of picturesque Sigmund Stern Grove; the Pacific Art Camp is located in a nostalgic site at the Fleishhacker Pool Building overlooking the Pacific Ocean. Major activities at both Pine Lake and Silver Tree Day Camps include: extensive arts and crafts programs, campfire program, camp songs and skits, active games. In addition, Pine Lake",
+    "mes vjere renovated and altered. The costumes are kept in condition and constant repair with the aid on a laundress and a seamstress. Annual activities conducted by the Division include: Folk Dance Festivals, Make a Circus, Young People's Talent Showcase, Junior Theatre Productions, Spring Festival at Sigmund Stern Grove and a Christmas Show which displays all of the activities conducted on an annual basis. Drama and Dance activities scheduled for playground units include: Drama Workshops, Cloxun Workshops, Techniques of Story- telling, Storytelling Leagues, Modern Dance, Folk, Square and Round Dance Classes for children",
+    "d 2162 permits during the year for rallies, political assemblies, promotions, celebrations, neighborhood and community fairs, festivals, concerts, foot and bicycle races, walks, marches, parades, weddings, memorials, school, family and company picnics. The general operations and physical arrangements for the Stern Grove Summer Concerts are assigned to this office. This section has fostered the foundation of a new neighbor- hood recreation advisory committee in the Potrero Hill area as part of a continuing plan to build representative community groups for each of the centers in the system. Programs flourished despit",
+    "enty foot trailers house sports and games equipment. Areas serviced by the Playmobiles included: Mission, Hunters Point, Chinatown, North Beach, Visitacion Valley, Noe Valley and Precita Park Communities. In addition, the portable units were used at special activities such as the Children's Festival at Stern Grove, Friends of Rec- reation and Parks Field Day held at Rossi Playground, special event days at various playgrounds and at the Day Camps. The Playmobiles serve as vehicles which transport recreation personnel and equipment and not as recreational facilities them- selves. The equipment Includes trampolines,",
+    "orm drains affecting park properties. The insecticide spray operator must prepare monthly agriculture department reports of insecticides used and keeps an Inventory of equipment and supplies. The Athletic Field Crew, with a staff of eight, rehabilitated twenty-five baseball and softball diamonds, prepared Stern"
    ],
-   "url": "https://archive.org/details/annualreport195861sanf",
-   "deep_link": "https://archive.org/details/annualreport195861sanf?q=Stern+Grove",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.7,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.2,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/annrep778085899091sanf",
+   "deep_link": "https://archive.org/details/annrep778085899091sanf?q=Sigmund+Stern+Grove",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "annualreport1950sanf",
+   "title": "Annual report",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": 1950,
+   "pool": "sfpl",
+   "matched_alias": "Sigmund Stern Grove",
+   "ocr_excerpts": [
+    "e past fiscal year the Recreation Department operated 150 recreation units as follows: PLAYGROUNDS AND CENTERS (67) SPECIAL CENTERS (7) kh Playgrounds 2 Swimming Pools 12 Housing Centers Junior Museum 5 Full-time Teen-age Centers Photography Center 5 Part-time Teen-age Centers Camp Mather Day Camp Sigmund Stern Grove SCHOOL PROPERTY UNITS (70) 31 All -Year Schoolyard 22 Sunwner Schoolyard 17 Evening Gymnasiums The past year marks the final year in which schoolyard playgrounds and gymnasiums will be operated by the Recreation Department. In accordance with the Charter Amendment, recreation and school facilities wi",
+    "0 100( l! » \" n n 11 g !( j MIXED Bowling: Women 300 Hen 150 450 ( !1 bowled » ;J » h 12 « ) interSfrfc^ °nly th° number Wh° Participated in -7- SOCIAL KISCnUATION At the completion of most of our tournaments, get-togethers of participants were held either at the Sigmund Stern Grove or at some large down-town hotel. Awards were presented at these meetings. Those held during the year were: Women' s Bowling Banquet 158 Mixed Badminton Parties 110 Women' s Basketball Banquet 130 Women' s Basketball Dance , 450 Mixed Bowling Party 102 Industrial Representatives Get-Togother, January 85 Industrial Representatives Get-Together, June .. 56 Summer Tour Reunion 90 In addition to the above, assistance was given to many large firms and clubs in planning their social programs, picnics, parties, etc., many of these affairs being held at our Sigmund Stern Grove, -8- 3\" W I M M I N G Many moro organized groups have taken an active part in the swimming program this year than any other single year in the past. Added to the various pla5>-ground, school, club, com- munity center, Scout, vacation and playground district groups, have been church groups,",
+    "It is also attractive to adults as evi- denced by the many communications this office receives to that effect. Story Play and puppetry are closely related and the natural out-growth of story-telling. The Story Play program culminates in the city-wide annual Story Play Festival and contest held at Sigmund Stern Grove in August. This was its seventh year. A plaque and certificates are awarded for the outstanding plays. The purpose is to develop creative solf-expression through a wholesome appreciation of Drama. In puppetry, the dialogue is worked out through Story Play and, in turn, transferred to the puppets. Pu",
+    "annual city-wide Christmas Pageant was held at tho Opera House in December 9 Participants were from all age groups and numbered nearly 1,000, There was a capacity audience of 3,200. Drama Groups produced the beautiful nativity tableaux in telling the Christmas Story* The annual \"Carnival\" held in Sigmund Stern Grove in June is another city-wide Pageant, This year a cast of 1,250 enter- tained an audience of 1"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.79,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 3.79,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/annualreport1950sanf",
+   "deep_link": "https://archive.org/details/annualreport1950sanf?q=Sigmund+Stern+Grove",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited (1950–1965)",
    "group": "Reports & records",
    "salient": true
   },
@@ -78,29 +141,32 @@
     "l & VoUeyballPlay Day Oct. 8 Girls' Volleyball League Oct. 22 Table Tennis Tournament Nov. 19 (Boys and Girls) Boys' Basketball Pentathlon Jan. 7, 1950 Boys' Basketball Tournament Jan. 14, 1950 Below, Eleanor Macule and Robert janes model the new maroon iac\\ets now worn by directors. SIGMUND STERN GROVE— 1948 Sigmund Stern Grove at 19th Avenue and Sloat Boulevard, with its beautiful rustic back- ground of wooded eucalyptus hills, was the scene of many children's gatherings. The most delightful of these was the annual Carnival given by playground children and center groups. With the stage in a Carnival setting and the childr",
     "253,374 north beach annex 2,210 oceaN view 91,597 portola 143,739 potrero hill 64,442 PRESIDIO HEIGHTS 23,621 RICHMOND 42,651 RICHMOND TENNIS COURTS 13,137 ROCH.J^IBE^U 72,393 ROCH>JviBEnU TEEN-aGE CTR. 2,026 jAlViES ROLPH 191,625 ROSSI 100,612 ST, MARY'S 22,477 SIGl^IUND STERN GROVE 105,645 SIGMUND STERN ANNEX 21,452 SUNI^YDALE 52,240 SUNSET 51,326 VALENCI/i GARDENS 40,031 VISITaCION V/XL"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.89,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.39,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/annualreportofsa1949sanf",
    "deep_link": "https://archive.org/details/annualreportofsa1949sanf?q=Stern+Grove",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "sterngrovepinela2005sanf",
-   "title": "Stern Grove and Pine Lake Park : improvement project",
-   "creator": "San Francisco (Calif.). Recreation and Park Dept,Halprin, Lawrence,San Francisco (Calif.). Dept. of Public Works,Office of Lawrence Halprin",
-   "year": 2005,
-   "pool": "sfpl",
-   "matched_alias": "Stern Grove",
-   "ocr_excerpts": [
-    "3 1223 08679 643^ Stern Grove and Pine Lake Park Improvement Project pject Update December 2005 |)da Goldman Memorial Concert Meadow newly renovated Concert Meadow finishes the 2005 concert season with resounding success! The )hase of the Park Improvement Plan was completed in June 2005, through a generous gift to the [y the Stern Grove Festival Association. The renovation of the Rhoda Goldman Memorial lert Meadow included new grass terrace seating and new stage and backstage buildings. As part of [enovation, improvements were made to the entrance at 1 9th Avenue and Sloat Boulevard to nve pedestrian and vehicular circulation and formali2e the park's main entrance. k Planning Team is moving forward with the two remaining le Rhoda Goldman Memorial Concert Meadow. The Stern Grove ibatement, trail rehabilitation and stabilization, minor wall repairs 5 now complete and construction is anticipated in early 2006. The 1 of an entry arch at the newly renovated 19th Avenue and Sloat /ill complete the improvements to the entrance giving the park an ^rancisco Public Library Irnment",
-    "the Roberti-Z'Berg Harris improving the health of the lake, vater access area and an overlook, ig, temporary vegetation protection ly work, hazardous tree abatement, ngs. D REF 711 Sa579s ^ ^^ustruction I park will remain open to public use outside of construction zones, ng construction of the Stern Grove Hillside project, the trail from the 'ona dog play area will remain open as much as possible. During the tmction of the Pine Lake and Pine Lake Madow Improvements, the I play area in Pine Lake Meadow will be closed. The dog trail and the zona off-leash dog play area will be available during t",
-    "coordination with park planning staff and members of the community. Through a series of four community workshops, ideas for the park were gathered and discussed. The Pine Lake Park Improvement Plan is a $36 million, 10-year improvement plan to be realized in six phases, as funds become available. Stern Grove and Pine Lake Park Improvement Project Project Update December 2005 Rhoda Goldman Memorial Concert Meadow 'llie newly renovated Concert Meadow finishes the 2005 concert season with resounding success! The first phase of the Park Improvement Plan was completed in June 2005, through a generous gift to the city by the Stern Grove Festival Association. The renovation of the Rhoda Goldman Memorial Concert Meadow included new grass terrace seating and new stage and backstage buildings. As part of that renovation, improvements were made to the entrance at 1 9th Avenue and Sloat Boulevard to improve pedestrian and vehicular circulation and formali2e the park's main entrance. The Stem Grove and Pine Lake Park Planning Team is moving forward with the two remaining components of improvements to the Rhod"
-   ],
-   "url": "https://archive.org/details/sterngrovepinela2005sanf",
-   "deep_link": "https://archive.org/details/sterngrovepinela2005sanf?q=Stern+Grove",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "salient": false
   },
   {
    "identifier": "sigmundsterngrov2003halp",
@@ -115,8 +181,68 @@
     "Contents 8.0 Maintenance and Operations Maintenance and Operations 8.1 9.0 Park Management and Programming Park l^anagement 9.1 Park Programming 9.2 10.0 Implementation and Phasing Funding Needs and Phasing of Improvements 10.1 PInasing Strategy 10.2 11.0 Acknowledgements Hi Table of Contents STERN GROVE & PINE LAKE PARK INTRODUCTION The Need for Improvements The Improvement Plan Process Executive Summary 6^ RECOMMENDATIONS REPORT Introduction INTRODUCTION THE NEED FOR IMPROVEMENTS A Unique Resource stern Grove and Pine Lake Park together present one of the most unique park settings within the City of San Francisco. With a total of 64 acres, the parks function as one facility and provide a range of opportunities for recreational and cultural activities. The size of the park alone allows for an uncommon",
     "w the street-level entrances of the surrounding neighborhood, this separation from the city is dramatically enhanced. The park's rustic character has distinguished the park landscape as a setting for activities not usually offered in the midst of a dense urban environment. The land which now comprises Stern Grove and Pine Lake Park has been used for recreational and leisure activities for over a century. * Today, the parks are used as a popular facility for walking and hiking, dog-play, picnicking, and a variety of active uses such as tennis, croquet, and horseshoes. Most notably, the Rhoda Goldman Concert Meadow in Stern Grove provides a dramatic setting for Sunday summer concerts, which offer world-class performances free to the public. These free concerts began in 1938, not long after Rosalie M. Stern deeded her property over to the City, with the provision that it "
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.83,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.83,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sigmundsterngrov2003halp",
    "deep_link": "https://archive.org/details/sigmundsterngrov2003halp?q=Stern+Grove",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "sterngrovepinela2005sanf",
+   "title": "Stern Grove and Pine Lake Park : improvement project",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept,Halprin, Lawrence,San Francisco (Calif.). Dept. of Public Works,Office of Lawrence Halprin",
+   "year": 2005,
+   "pool": "sfpl",
+   "matched_alias": "Stern Grove",
+   "ocr_excerpts": [
+    "3 1223 08679 643^ Stern Grove and Pine Lake Park Improvement Project pject Update December 2005 |)da Goldman Memorial Concert Meadow newly renovated Concert Meadow finishes the 2005 concert season with resounding success! The )hase of the Park Improvement Plan was completed in June 2005, through a generous gift to the [y the Stern Grove Festival Association. The renovation of the Rhoda Goldman Memorial lert Meadow included new grass terrace seating and new stage and backstage buildings. As part of [enovation, improvements were made to the entrance at 1 9th Avenue and Sloat Boulevard to nve pedestrian and vehicular circulation and formali2e the park's main entrance. k Planning Team is moving forward with the two remaining le Rhoda Goldman Memorial Concert Meadow. The Stern Grove ibatement, trail rehabilitation and stabilization, minor wall repairs 5 now complete and construction is anticipated in early 2006. The 1 of an entry arch at the newly renovated 19th Avenue and Sloat /ill complete the improvements to the entrance giving the park an ^rancisco Public Library Irnment",
+    "the Roberti-Z'Berg Harris improving the health of the lake, vater access area and an overlook, ig, temporary vegetation protection ly work, hazardous tree abatement, ngs. D REF 711 Sa579s ^ ^^ustruction I park will remain open to public use outside of construction zones, ng construction of the Stern Grove Hillside project, the trail from the 'ona dog play area will remain open as much as possible. During the tmction of the Pine Lake and Pine Lake Madow Improvements, the I play area in Pine Lake Meadow will be closed. The dog trail and the zona off-leash dog play area will be available during t",
+    "coordination with park planning staff and members of the community. Through a series of four community workshops, ideas for the park were gathered and discussed. The Pine Lake Park Improvement Plan is a $36 million, 10-year improvement plan to be realized in six phases, as funds become available. Stern Grove and Pine Lake Park Improvement Project Project Update December 2005 Rhoda Goldman Memorial Concert Meadow 'llie newly renovated Concert Meadow finishes the 2005 concert season with resounding success! The first phase of the Park Improvement Plan was completed in June 2005, through a generous gift to the city by the Stern Grove Festival Association. The renovation of the Rhoda Goldman Memorial Concert Meadow included new grass terrace seating and new stage and backstage buildings. As part of that renovation, improvements were made to the entrance at 1 9th Avenue and Sloat Boulevard to improve pedestrian and vehicular circulation and formali2e the park's main entrance. The Stem Grove and Pine Lake Park Planning Team is moving forward with the two remaining components of improvements to the Rhod"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.5,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 24.79,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sterngrovepinela2005sanf",
+   "deep_link": "https://archive.org/details/sterngrovepinela2005sanf?q=Stern+Grove",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -135,11 +261,32 @@
     "s, counting Hayes Valley as a single unit for this purpose 11 Recreation units or community centers in Federal housing develop- ments, three of which are permanent and the others in such temp- orary housing developments as Hunters Point and related units 1 Day camp operated during summer months - in Stern Grove this summer 1 Family camp in the mountains - Camp Mather -42- To the foregoing may be added Phelan Beach, -which, although undeveloped and given only occasional attention by a clean-up crew, is well patronized and popular with the public. There was a weaving center also, which had to be given",
     "courts at North Beach Annex Archery courts at Stern Recreation Grove Cricket field at Julius Kahn Playground Garden plots at the Junior Museum Track and field facilities at two playgrounds There are bowling greens at what is sometimes referred to as Wawona Playground, the northeastern portion of the Sigmund Stern Grove on the street level. This is a beautifully landscaped plot now practically idle. It is the -43- Table 10 "
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.9,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.4,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/reportonstudyofp1947zuke",
    "deep_link": "https://archive.org/details/reportonstudyofp1947zuke?q=Sigmund+Stern+Grove",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
   }
  ]
 }

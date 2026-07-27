@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.731177+00:00",
+ "generated_at": "2026-07-27T17:06:09.769095+00:00",
  "slug": "balboa-park-station",
  "name": "Balboa Park Station / Green Yard",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -11,12 +11,38 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Green Light Rail Center",
+   "ocr_excerpts": [
+    "y documents include a staff report, certification and resolution.) (9.3) Authorizing the Director to apply for TFCA Regional Funds for the following projects: Transit Preferential Streets - Priority Signal Systems, Bayview Shuttle Operating Support, Clean Fuel Transit Buses, Bike Racks on Buses, and the Balboa Park Station Public Access Improvements (Explanatory documents include a staff report and resolution.) (9.4) Approving the Agreement between the City and New Flyer regarding the dispute arising from Contract No. MR-175, requiring New Flyer to design and perform a fleet repair on all trolley coaches to rectify stru",
+    "a staff report, certification and resolution.) RESOLUTION 02-059 (9.3) Authorizing the Director to apply for TFCA Regional Funds for the following projects: Transit Preferential Streets - Priority Signal Systems, Bayview Shuttle Operating Support, Clean Fuel Transit Buses, Bike Racks on Buses, and the Balboa Park Station Public Access Improvements (Explanatory documents include a staff report and resolution.) RESOLUTION 02-060 (9.4) Approving the Agreement between the City and New Flyer regarding the dispute arising from Contract No. MR-175, requiring New Flyer to design and perform a fleet repair on all trolley coac",
+    "MUST TURN RIGHT EXCEPT BICYCLES - ESTABLISH Howard Street, from 3rd Street to 250 feet westerly. Z. BICYCLE LANES - ESTABLISH Howard Street, north side, from Fremont to 5th Street. (Explanatory documents include a staff report and resolution). (DPT) (10.3) Accepting Contract No. MR-1 127, Curtis E. Green Light Rail Center Emergency Switch Replacement Project; approving the final contract amount of $702,921.38; and approving the closeout of the contract. (Explanatory documents include a staff report, resolution and financial plan.) (MUNI) (10.4) Authorizing the Director to apply for funding under the Surface Transportation",
+    "EXCEPT BICYCLES - ESTABLISH Howard Street, from 3rd Street to 250 feet westerly. Z. BICYCLE LANES - ESTABLISH Howard Street, north side, from Fremont to 5th Street. (Explanatory documents include a staff report and resolution). (DPT) RESOLUTION 03-070 (10.3) Accepting Contract No. MR-1 127, Curtis E. Green Light Rail Center Emergency Switch Replacement Project; approving the final contract amount of $702,921.38; and approving the closeout of the contract. (Explanatory documents include a staff report, resolution and financial plan.) (MUNI) RESOLUTION 03-071 (10.4) Authorizing the Director to apply for funding under the Sur"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.37,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.37,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
    "url": "https://archive.org/details/minutes20022003sanf",
    "deep_link": "https://archive.org/details/minutes20022003sanf?q=Green+Light+Rail+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "MTA board minutes accepting the $702,921.38 Curtis E. Green Light Rail Center emergency switch-replacement contract and funding Balboa Park Station public-access improvements."
+   "salient": false
   },
   {
    "identifier": "balboaparkstatio2009sanf",
@@ -25,12 +51,37 @@
    "year": 2009,
    "pool": "sfpl",
    "matched_alias": "Balboa Park Station",
+   "ocr_excerpts": [
+    "Balboa Park Station Pedestrian and Bicycle Connection Project This study was made possible ttirough a Safe Routes to Transit (SR2T) grant. The funding for SR2T come from the State of California Regional Measure 2, and /^3agp^PRNlifi(W^ byTransForm and the East Bay Bicycle Coalition. DOCUMENTS DEPT NOV 1 5 2010 ACKNO",
+    "st for Public Land: Meghan Pecault Consultant Team Project Manager; William Lieberman, AlCP, Jacobs Engineering Deputy Project Manager: Matthew Ridgway, ACIP, Fehr & Peers Fehr & Peers: Matt Haynes, AlCP and Brooke Dubose Jacobs Engineering: Jihyoung Kim CHS Consulting: Chi-Hsin Shao and Byung Lee The Balboa Park Station Pedestrian and Bicycle Connection Project Technical Report, including an accessible version, are available on the SFMTA website at www.sfmta.com. If you would like a copy of the Technical Report please contact Ms. Kim Walton, Study Project Manager. Via E-Mail: Kim.Walton(5)sfmta.com Or in writing at: Kim Walton SFMTA - Sustainable Streets Division One South Van Ness, 7th Floor San Francisco, CA 94103 3 1223 09320 9667 1 Balboa Park Station Pedestrian and Bicycle Connection Project Executive Summary Background The Balboa Park neighborhood in southern San Francisco is centered around an important City park - Balboa Park. It is the location of one of the City's main streetcar depots — the Geneva Division. As a result, the area developed",
+    "ation in itself. The objective of such studies is placemaking: that is, creating living, shopping, and work places within an easy walk of the various station facilities in Balboa Park. Central to these visions is the improvement of conditions for pedestrians and bicyclists, which is the focus of the Balboa Park Station Pedestrian and Bicycle Connection Project. Goals for this project include the following: • To address activities along the borders of the Balboa Park Station area • To make the area safer for pedestrians, bicyclists and motorists • To improve access to transportation services for pedestrians and bicyclists An endeavor of the San Francisco Municipal Transportation Agency (SFMTA), the project seeks to identify improvements for pedestrians and cyclists that can be implemented in the short and medium-term. Future studies will carry this work forward by advancing more complex, long-term projects in this neighborhood. San Francisco Municipal Transportation Agency 1 Balboa Park Station Pedestrian and Bicycle Connection Project Executive Summary Balboa Park Station Area Plan and Environmental Impact Report The Balboa Park Station Area Plan and Environmental Impact Report (EIR), which were prepared by the San Francisco Planning Department, identified a set of issues for pedestrians and bicyclists. General areas of concern discussed include: • An insufficient number of crosswalks on both O"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 12.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 10.91,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/balboaparkstatio2009sanf",
    "deep_link": "https://archive.org/details/balboaparkstatio2009sanf?q=Balboa+Park+Station",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true,
-   "gloss": "The SFMTA's 2009 Balboa Park Station pedestrian and bicycle connection project, aimed at improving walking and cycling access around the Geneva Division streetcar depot."
+   "salient": true
   },
   {
    "identifier": "balboaparkstatio2002sanf",
@@ -39,40 +90,159 @@
    "year": 2002,
    "pool": "sfpl",
    "matched_alias": "Balboa Park Station",
+   "ocr_excerpts": [
+    "SfN FRANCISCO PUBLIC LIBRARY 223 06333 5922 Public Review Draft Balboa Park Station Area Plan San Francisco Planning Department As Part of the Better Neighborhoods Program October 2002 DOCUMENTS DEPT. JAN 3 1 2003 SAN FRANCISCO PUBLIC LIBRARY San Francisco Planning Department REF 711. 4097 B1865d BETTER Digitized by the Internet Archive in 2014 https://archive.org/details/balboaparkstatio2002sanf Public Review Draft Balboa Park Station Area Plan Prepared with and for the Citizens of Balboa Park by the San Francisco Planning Department As Part of the Better Neighborhoods Program October 2002 This plan is dedicated to the people in the neighborhoods around the Balboa Park Station. It would not have been possible without your selfless interest, tireless work, perseverance, and the belief thatjou can have a better neighborhood. We are bringing the plan back to you for more consider- ation, review, comment, and discussion, in the hopes of crafting a coherent set of policies that will offer, in the end, the best possible solutions among many differing interests. Imagine... the transformation of Balboa Park Station from a bleak and seemingly forgotten part of San Francisco into an active, interesting place — an efficient transit node and vital hub for the neighborhoods surrounding it. Imagine more people living around the transit hub and along Geneva, Ocean and San Jose Avenues. Housing affordable to people of",
+    "ed, and the neighborhoods have gained the vital community heart for which they have waited so long. Now neighbors can walk to shops, if they choose, to take care of daily needs. Imagine a better neighborhood. This is the vision that emerged from two years of discussions with the residents of the Balboa Park Station Area about the future of their community. The last fifty years here are a story of a community besieged by projects serving larger issues at the expense of neighborhood values. The neighborhood is at a unique place in its history. Largely because of its people, we are working together to remedy that history. With the Better Neighbor- hoods Program, the city, BART, and others are ready to reinvest in this place as a vibrant urban neighborhood that is an essential part of the city. This plan presents the ideas that can create this new future. 3 1223 06333 5922 Balboa Park Station Area Plan Draft for Public Review | October 2002 Table of Contents Contents The Better Neighborhoods Program 1 Section 1: Overview 3 Why Plan a Better Neighborhood Here 5 A Walk Through the Station Area of the Future 7 Realizing the Vision: Eleven Key Strategies 10 How to Use this Doc",
+    "and auto. Many San Franciscans know that something is wrong with our current practices, and even the most civic-minded have begun to respond to change by opposing it. If they do not try t"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.3,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.8,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/balboaparkstatio2002sanf",
    "deep_link": "https://archive.org/details/balboaparkstatio2002sanf?q=Balboa+Park+Station",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true,
-   "gloss": "The 2002 public-review draft of the Balboa Park Station Area Plan, a Better Neighborhoods effort to remake the station into a transit hub."
+   "salient": true
   },
   {
-   "identifier": "noticeofmeetingc2012sanf",
+   "identifier": "mitigatednegativ1820sanf",
+   "title": "Mitigated negative declaration : [1490 Ocean Avenue (aka 1446 Ocean Avenue)]",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2012,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park Station",
+   "ocr_excerpts": [
+    "3 — UJ c 00 .2 o -4—* o 0) CO CD CD s_ u. m B. PROJECT SETTING The project site is located within the Ocean Avenue NCT zoning district of the West of Twin Peaks neighborhood, and adjacent to the Ocean View neighborhood. In April 2009, the Board of Supervisors adopted the Balboa Park Station Area Plan which generally encompasses approximately 210 acres surrounding Balboa Park Station along Geneva, Ocean, and San Jose Avenues. The goals of the Area Plan are to direct various transportation/infrastructure and public space improvements, and define zoning changes aimed at enhancing the existing neighborhood, as well as potential future development around the underutilized Balboa Park Station Area. The project site is part of the Ocean Avenue Neighborhood Commercial District Subarea, which serves as the main commercial spine of the Balboa Park Station Area extending along Ocean Avenue from Phelan Avenue to Manor Drive. The 14-block commercial corridor is characterized by a mix of low- to medium-density uses, mainly neighborhood-serving commercial uses with some multi-family residential uses above the ground floor. These uses are interspersed with a f",
+    "project with the Priority Policies. In addition to the General Plan, some areas of the city are also addressed in specific area plans, included as elements of the General Plan, or included as part of a Redevelopment Plan. Balboa Park Area Plan The project site at 1490 Ocean Avenue is within the Balboa Park Station Area Plan. The Balboa Park Station Area Plan area comprises approximately 210 acres and includes the Ocean Avenue Campus of Citv Colleee of San Francisco (CCSF), the Ocean Avenue Neighborhood Commercial District, Balboa Park, and the Balboa Park BART station. The Plan's objectives and policies are informed by three key principles: impro",
+    "y of the Ocean Avenue Neighborhood Commercial District. The Area Plan contains objectives and policies concerning land use, transportation, parking, housing, streets and open space, built form, historic preservation, and public art. The goals of the Area Plan are to transform the currently underutilized Balboa Park Station Area into an efficient and vital transit hub that supports the development of a mix of complementary uses, including residential, retail, cultural/institutional uses and publicly-accessible open space, in the vicinity of the Station and along the nearby Geneva, Ocean, and San Jose Avenues. The transport",
+    "ls and families of various income levels, and by strengthening the economic base of the community by increasing neighborhood-serving retail and service businesses. The project at 1490 Case No. 2008.0538E 14 1490 Ocean Avenue Ocean Avenue would not conflict with the objectives or policies in the Balboa Park Station Area Plan. Approvals Required As discus"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.13,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.13,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/mitigatednegativ1820sanf",
+   "deep_link": "https://archive.org/details/mitigatednegativ1820sanf?q=Balboa+Park+Station",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "preliminarymitig1420sanf",
+   "title": "Preliminary mitigated negative declaration : [1490 Ocean Avenue (aka 1446 Ocean Avenue)]",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2011,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park Station",
+   "ocr_excerpts": [
+    "CO CD O i— *- o' CD CO o 2; cr CD CD <X -I *l B. PROJECT SETTING The project site is located within the Ocean Avenue NCT zoning district of the West of Twin Peaks neighborhood, and adjacent to the Ocean View neighborhood. In April 2009, the Board of Supervisors adopted the Balboa Park Station Area Plan which generally encompasses approximately 210 acres surrounding Balboa Park Station along Geneva, Ocean, and San Jose Avenues. The goals of the Area Plan are to direct various transportation/infrastructure and public space improvements, and define zoning changes aimed at enhancing the existing neighborhood, as well as potential future development around the underutilized Balboa Park Station Area. The project site is part of the Ocean Avenue Neighborhood Commercial District Subarea, which serves as the main commercial spine of the Balboa Park Station Area extending along Ocean Avenue from Phelan Avenue to Manor Drive. The 14-block commercial corridor is characterized by a mix of low- to medium-density uses, mainly neighborhood-serving commercial uses with some multi-family residential uses above the ground floor. These uses are interspersed with a f",
+    "project with the Priority Policies. In addition to the General Plan, some areas of the city are also addressed in specific area plans, included as elements of the General Plan, or included as part of a Redevelopment Plan. Balboa Park Area Plan The project site at 1490 Ocean Avenue is within the Balboa Park Station Area Plan. The Balboa Park Station Area Plan area comprises approximately 210 acres and includes the Ocean Avenue Campus of City College of San Francisco (CCSF), the Ocean Avenue Neighborhood Commercial District, Balboa Park, and the Balboa Park BART station. The Plan's objectives and policies are informed by three key principles: impro",
+    "y of the Ocean Avenue Neighborhood Commercial District. The Area Plan contains objectives and policies concerning land use, transportation, parking, housing, streets and open space, built form, historic preservation, and public art. The goals of the Area Plan are to transform the currently underutilized Balboa Park Station Area into an efficient and vital transit hub that supports the development of a mix of complementary uses, including residential, retail, cultural/institutional uses and publicly-accessible open space, in the vicinity of the Station and along the nearby Geneva, Ocean, and San Jose Avenues. The transport",
+    "ls and families of various income levels, and by strengthening the economic base of the community by increasing neighborhood-serving retail and service businesses. The project at 1490 Case No. 2008.0538E 14 1490 Ocean Avenue Ocean Avenue would not conflict with the objectives or policies in the Balboa Park Station Area Plan. Approvals Required As disc"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.13,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.13,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/preliminarymitig1420sanf",
+   "deep_link": "https://archive.org/details/preliminarymitig1420sanf?q=Balboa+Park+Station",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "noticeofmeetingc2011sanf",
    "title": "Notice of meeting and calendar",
    "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
    "year": 2000,
    "pool": "sfpl",
-   "matched_alias": "Green Light Rail Center",
-   "url": "https://archive.org/details/noticeofmeetingc2012sanf",
-   "deep_link": "https://archive.org/details/noticeofmeetingc2012sanf?q=Green+Light+Rail+Center",
+   "matched_alias": "Cameron Beach Yard",
+   "ocr_excerpts": [
+    "funding plan and budget.) (Sonali Bose) 13. Presentation and discussion regarding the Departmental Climate Action Plan and Climate Action Strategy. (Explanatory documents include the reports.) (Bond Yee) 14. Dedicating the Geneva Yard in honor of Cameron Beach and permanently renaming the facility the Cameron Beach Yard. (Explanatory documents include a staff report.) (Roberta Boomer) 15. Endorsing the San Francisco Better Streets Plan to guide staff in all decisions regarding the planning, design, use, and management of streets, consistent with all applicable local, state and federal statutes and regulations. (Explanat",
+    "n Francisco is a leader in the region in advancing climate policy. The key focus is to contribute to a healthy environment and develop new strategies. We look forward to collaborating with the SFMTA. 14. Dedicating the Geneva Yard in honor of Cameron Beach and permanently renaming the facility the Cameron Beach Yard. (Explanatory documents include a staff report.) (Roberta Boomer) Chairman Nolan stated that there will be a public memorial in celebration of Cameron Beach's life. No public comment. RESOLUTION 11-054 On motion to approve: ■ . ADOPTED: AYES - Bridges, Brinkman, Heinicke, Lee, Nolan and Oka 15.",
+    "presentation regarding the implementation plan for all-door boarding. 7. Executive Director's Report (For discussion only) 1 -Special Recognition Award -\"Sunshine\" labor agreements -Ongoing Activities Exec. Director/CEO Ford presented special recognition awards to John Gee, electrical transit mechanic, Cameron Beach Yard, Transit Services and to Shahin Shaikh, chief clerk. Finance and Information Technology. Director Heinicke arrived. Exec. Director Ford discussed fare increases that will go into effect on July 1 , the Cable Car Restoration project; transition of fare media to the Clipper Card; Sunday Streets; Nx Exp",
+    "retary Boomer announced that Consent Calendar items 10.1 P through S had been removed from the agenda at the request of staff. She added that the closed session had been cancelled. 6. Introduction of New or Unfinished Business by Board Members Chairman Nolan expressed appreciation to staff for the Cameron Beach yard dedication. Director Brinkman requested a report on industry best practices with regard to how best to regulate intersections in order to give priority to transit vehicles. Director Brinkman also asked that the SFMTA work with the police department and City Hall on a plan that would educate, encour",
+    "Division's Meter Shop; Michael Macario and Noel Laffey from the Sustainable Streets Division's Sign Shop; Paul Rose from the Corporate Communications section; and James Lee from Safety, Training, Security and Enforcement Division. Director Reiskin also discussed the Church and Duboce Improvement Project; Balboa Park S"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.95,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.45,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/noticeofmeetingc2011sanf",
+   "deep_link": "https://archive.org/details/noticeofmeetingc2011sanf?q=Cameron+Beach+Yard",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
    "group": "Other records",
-   "salient": true,
-   "gloss": "An MTA board calendar authorizing Contract No. 1249 for Green Light Rail Center track replacement (up to $31,197,197) and discussing sale of the Green Division's Upper Yard."
-  },
-  {
-   "identifier": "3calendarmeetingo1994sanf",
-   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "Green Light Rail Center",
-   "url": "https://archive.org/details/3calendarmeetingo1994sanf",
-   "deep_link": "https://archive.org/details/3calendarmeetingo1994sanf?q=Green+Light+Rail+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "A 1994 Budget Committee memo identifying the Green Light Rail Center at 425 Geneva Street as the primary LRV storage site, with room for a maximum of 142 vehicles."
+   "salient": true
   }
  ]
 }

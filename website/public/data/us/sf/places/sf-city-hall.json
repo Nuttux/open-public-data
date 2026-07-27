@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.716881+00:00",
+ "generated_at": "2026-07-27T17:06:09.752315+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sf-city-hall",
@@ -306,10 +306,153 @@
     "ng 10 Fourth Floor Plan Drawing 1 1 Attic Floor Plan ii ■ CAREY & CO. INC. INTRODUCTION July 2, 1993 HISTORIC STRUCTURE REPORT INTRODUCTION The purpose of this Historic Structure Report is to provide the Bureau of Architecture with a general report on the existing condition of the San Francisco City Hall. It is based on a comprehensive general building inspection and evaluation, review of applicable exisdng documentation, and addition- al historical research. This report provides informa- tion and recommendations to guide future decisions about building repairs, rehabilitation, restoration, and alterations. Carey &. Co. prepared this Historic Structures Report on San Francisco City Hall for the Cit^' of San Francisco as part of the Earthquake Safety Program (Phase II). The San Francisco Bureau of Architecture, architect for the project, assisted Carey &. Co. with this survey and evaluation. The Earthquake Safety Program provides funding for the evaluation and rehabilitation of speci",
     "Engineers, Inc., completed an earthquake damage and repair study in August 1991 which evaluated earthquake damage, reduced structural capacity as a result of the earthquake, and remaining structural capacity. It establishes repair criteria, proposes repair options, and recommends a specific repair scheme. City Hall is within and contributes to the National Register of Historic Places San Francisco Civic Center His"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.23,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.23,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/historicstructur1219care",
    "deep_link": "https://archive.org/details/historicstructur1219care?q=San+Francisco+City+Hall",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "agendasanfranci014sanf_35",
+   "title": "Agenda / San Francisco Airports Commission",
+   "creator": "San Francisco (Calif.). Airports Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "City Hall",
+   "ocr_excerpts": [
+    "ifornia 94128 Tel 650.821.5000 Fax 650.821.5005 www.flysfo.com Digitized by the Internet Archive in 2016 with funding from San Francisco Public Library https://archive.org/details/agendasanfranci014sanf_35 SAN FRANCISCO AIRPORT COMMISSION CALENDAR January 14, 2014 Special Meeting 9:00 A.M. Room 400 - City Hall #1 Dr. Carlton B. Goodlett Place (400 Van Ness Avenue) City and County of San Francisco EDWIN M. LEE, MAYOR COMMISSIONERS LARRY MAZZOLA President LINDA S. CRAYTON Vice President ELEANOR JOHNS j RICHARD J. GUGGENHIME PETER A. STERN JOHN L. MARTIN Airport Director JAN '9 20U SAN FRANCISCO",
+    "t influence or att Ordinance (San Francisco Cam more information about the Lobt CA 94102, telephone 415-252- CALIFOR CEQA Appeal Rights under Cl Approval Action for that projec 161-13), then the CEQA dete> specified in S.F. Administrat project. Typically, an appeal rr negative declaration pursuant at City Hall, 1 Dr. Carlton B. G< Environmental Review Officer \\ prepared and can be obtained litigant may be limited to raisin* the Board of Supervisors, Plant hearing, or as part of the appe ABOUT THE MEETING n discussion items are supported by documents which may include written communications to members sp",
+    "ll be given up to three minutes. similar sound-producing dev as must be turned off during Commission meetings; “silent mode” is re with the recording system Tie Chair may order the removal of any person responsible for the use lilar electronic device. disab; ty access room, Room 400, Fourth Flo< City Hall is wheelchair accessible. The closest accessible BART Station City Hall. Accessible MUNI lir ? s serving this location are #5 Fulton, #21 Hayes, #42 Downtown Loop, e lines and the Metro stations Van Ness and Market and at Civic Center. For more information about -923-6142. There is access;; parking across the street from City Hall at Polk (Dr. Carlton B. Goodlett oreters or use of a reader dur a meeting, please contact the Commission Secretary at 650-821-5042 a meeting. Assisted listenin avices are available upon request. See the Commission Secretary at er's license or other photo I s required in order to check out the devic",
+    "view. .is under the Sunshine Ordina :e (Chapter 67 of the San Francisco Administrative Code), to receive a port a violation of the Ordinan a, contact the Sunshine Ordinance Task Force by telephone at 41 5-554- 3, or by e-mail at SOTF@sfqc orq. The Sunshine Ordinance Task Force Office is located in City Hall, att Place, San Francisco, CA ■ 102-4689. Copies of the Ordinance can also be obtained from the San ie City’s website at http://wwv jfgov.org/sunshine/. LOBBYIST ORDINANCE ipt to influence local policy c administrative action may be required by the San Francisco Lobbyist sgn and Government Conduc 3ode",
+    "GENHIME PETER A. STERN JOHN L. MARTIN MAY"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.71,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.21,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 3.0,
+    "money": false,
+    "decision": true,
+    "accountability": true,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendasanfranci014sanf_35",
+   "deep_link": "https://archive.org/details/agendasanfranci014sanf_35?q=City+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "taxicabcommissio2000sanf",
+   "title": "Taxicab Commission minutes",
+   "creator": "San Francisco (Calif.). Taxicab Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "City Hall",
+   "ocr_excerpts": [
+    "FRANCISCO TAXICAB COMMISSION MAYOR WILLIE L. BROWN JR. MARIANN COSTELLO, PRESIDENT RACHIALLE FRANKLIN, VICE PRESIDENT VINCENT AGBAYANI, COMMISSIONER CHRIS DITTENHAFER, COMMISSIONER PAUL GILLESPIE, COMMISSIONER MARY McGUIRE, COMMISSIONER TAXJ COMMISSION AGENDA REGULAR MEETING August 8, 2000 at 6:30 P.M. City Hall, 1 Dr. Carlton B. Goodlet Place Room 400 1. Roll Call DOCUMENTS DEPT. AUG - 3 2000 SAN FRANCISCO PUBLIC LIBRARY 2. Public Comment (Members of the public may address the Commission for up to three minutes. The President of the Commission may limit total testimony time.) 3. Approval of Mi",
+    "FRANCISCO TAXICAB COMMISSION MAYOR WILLIE L. BROWN JR. MARIANN COSTELLO, PRESIDENT RACHIALLE FRANKLIN, VICE PRESIDENT VINCENT AGBAYANI, COMMISSIONER CHRIS DITTENHAFER, COMMISSIONER PAUL GILLESPIE, COMMISSIONER MARY McGUIRE, COMMISSIONER TAXI COMMISSION AGENDA REGULAR MEETING August 8, 2000 at 6:30 P.M. City Hall, 1 Dr. Carlton B. Goodlett Place Room 400 CONSENT CALENDAR 1 . Recommendation of the San Francisco Police Taxicab Detail for approval of Color Scheme changes to: Permittee . Cab No(s) Proposed Change Date of Change LuLam 879 Advent Cab to Regents Cab 07/24/2000** Ernesto Sebastian 870 Bay",
+    "eople and that City operations are open to the people's review. For more information on your rights under the Sunshine Ordinance (Chapter 67 of the San Francisco Administrative Code) or to report a violation of the ordinance, contact Donna Hall, Administrator by mail to Sunshine Ordinance Task Force, City Hall, 1 Dr. Carlton B. Goodlett Place, Room 234, by phone at (415) 554-7724, by fax at (415) 554-5163 or by e-mail at Donna HalI(o>ci.sf.ca.us Citizens interested in obtaining a copy of the Sunshine Ordinance can request a copy from Ms. Donna Hall or by printing Chapter 67 of the San Francisco Adminis",
+    "Street, San Francisco, CA 94107 YOU ARE HEREBY NOTIFIED THAT THE ANNEXED COMPLAINT HAS BEEN FILED WITH THE TAXI COMMISSION OF THE CITY AND COUNTY OF SAN FRANCISCO, AND YOU ARE HEREBY CITED TO APPEAR IN PERSON BEFORE SAID TAXI COMMISSION ON Tuesday, August 8, 2000 AT 6:30pm IN ROOM 400, CITY HALL, #1 DR. CARLTON B. GOODLETT PLACE, SAN FRANCISCO, CA TO SHOW Driver of Public Vehicle for Hire CAUSE WHY YOUR PERMIT AS A HERETOFORE GRANTED TO YOU, SHOULD NOT BE SUBJECTED TO THE ADMINISTRATIVE ACTION AND FOR THE REASONS SET FORTH IN SAID COMPLAINT. BY ORDER OF THE TAXI C ISSION, SAN",
+    "by St., San Francisco, CA 94124 YOU ARE HEREBY NOTIFIED THAT THE ANNEXED COMPLAINT HAS BEEN FILED WITH THE TAXI COMMISSION OF THE CITY AND COUNTY OF SAN FRANCISCO, AND YOU ARE HEREBY CITED TO APPEAR IN PERSON BEFORE SAID TAXI COMMISSION ON Tuesday, August 8, 2000 AT 6:30pm IN ROOM 400, CITY HALL, #1 DR. CARLTON B. GOODLETT PLACE, SAN FRANCISCO, CA TO SHOW CAUSE WHY YOUR PERMIT AS A Taxicab Permit Holde"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.48,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.98,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 3.0,
+    "money": false,
+    "decision": true,
+    "accountability": true,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/taxicabcommissio2000sanf",
+   "deep_link": "https://archive.org/details/taxicabcommissio2000sanf?q=City+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "minutescitycount2000sanf",
+   "title": "Minutes / City and County of San Francisco, Assessment Appeals Board",
+   "creator": "San Francisco (Calif.). Assessment Appeals Board",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "City Hall",
+   "ocr_excerpts": [
+    "e Board, at the hour of 3:00 p.m.. recessed to reconvene Wednesday, January 12, 1999 at 9:30 a.m. Gloria Young Clerk Dawn Duran Administrator Approved by the Board on January 13, 2000 Phone Fax TDD (415) 554-6778 (415) 554-6775 (415) 554-5227 E-mail: AAB@ci.sf.c ASSESSMENT APPEALS BOARD ^ City Hall, Room 405 1 Dr. Carlton B. Goodlett Place ^an Francisco, CA 94102-4697 .\"SPECIADMEETING ASSESSMENT APPEALS BOARD NO.. J Wednesday, January 12, 26(H£^ 9:30 A.M. ROOM 406 DATE POSTED JAN 1 0 2000 Assessment Appeals Boarc Under the California Constitution and applicable statutes, hearings of the Ass",
+    "000 at 9:30 a.m. Gloria L. Young Clerk Dawn Duran Administrator Return to: Minutes SFGov home | living | working | government | visiting | online services © 2000-02 City & County of San Francisco. All rights reserved. Phone (415) 554-6778 /^^^^^^ ASSESSMENT APPEALS BOARD Fax (415) 554-6775 Of City Hall, Rc^om 405 TDD (415) 554-5227 ^J^^MT-V ^ ^- ^\"\"^'ett Place E-mail: AAB@ci.sf.ca.us San Francisco, CA 94102-4697 AGENDA*/NOTICE OF ASSESSMENT APPEALS BOARD NO. 1 HHARINd L ^f'^fvx. ROOM 406, 1 DR. CARLTON B. GOODLETT PLACE, CITY HALL January 19, 20, and 21, 2000 fl COPY Under the California Constitution and applicable statutes, hearings of assessment appeals boards are judicial proceedings. The decision of assessment appeals boards must be based exclusively on properly admitted evidence. Assessment appeals boards may not base any",
+    "APPLICANT: Viacom Cablevision UMENTSDEP\"' parcel ADDRESS: Various ,)) CURRENT ASSESSMENT: $192,014,626 - APPLICANT'S OPINION: $0 JAN 1 8 2323 taxable YEAR: 90/91 .N FRANCISCO IBLIC LIBRARY Phone Fax TDD E-mail: (415) 554-6778 (415) 554-6775 (415) 554-5227 AAB@ci.sf.ca.us ASSESSMENT APPEALS BOARD City Hall, Room 405 1 Dr. Carlton B. Goodlett Place San Francisco, CA 94102-4697 AGENDA*/NOTICE OF ASSESSMENT APPEALS BOARD NO. 1 HEARING ROOM 406, 1 DR. CARLTON B. GOODLETT PLACE, CITY HALL January 19, 20, and 21, 2000 9:30 A.M. (ALL DAY) 6) Hearing, discussion, and possible action involving: APPLICATION 91-0057 APPLICANT: Viacom Cablevision PARCEL ADDRESS: 205 Folsom Avenue CURRENT ASSESSMENT: $527,599 - APPLICANT'S OPINION: $0 TAXABLE YEAR: 91/92 7) Hearing, discussion, and possibl",
+    "e action involving: APPLICATION 93-3272 APPLICANT: Viacom Cablevision PARCEL ADDRESS: 2055 Folsom Street CURRENT ASSESSMENT: $21 1,751,868 - APPLICANT'S OPINION: $14,769,470 ) TAXABLE YEAR: 93/94 Phone Fax TDD E-mail: (415) 554-6778 (415) 554-6775 (415) 554-5227 AAB@ci.sf.ca.us ASSESSMENT APPEALS BOARD City Hall, Room 405 1 Dr. Carlton B. Goodlett Place San Francisco, CA 94102-4697 AGENDA*/NOTICE OF ASSESSMENT APPEALS BOARD NO. 1 HEARING ROOM 406, 1 DR. CARLTON B. GOODLETT PLACE, CITY HALL January 19, 20, and 21, 2000 9:30 A.M. (ALL DAY) 1 1) Hearing, discussion, and possi"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.18,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.18,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutescitycount2000sanf",
+   "deep_link": "https://archive.org/details/minutescitycount2000sanf?q=City+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
    "salient": true
   },
   {
@@ -326,11 +469,154 @@
     "x Collector's audit to include a representative sample of all residential hotels within the City, instead of only single room occupancy residential hotels with 50 or fewer units. As of the writing of this report, Mr. Sullivan reports that the Tax Collector's Office is in the midst of their move to City Hall, and they are not able to (1) identify the amount of Hotel Taxes generated annually by residential hotels in the City, (2) the amount of such Hotel Taxes that are currently delinquent, and (3) the number of hours and estimated cost to conduct the requested audits. Therefore, Mr. Sullivan has reque",
     "m letter in detail upon your request. ;;!_ ... , Respectfully submitted, Susan L. Ernst, 1SHC President Ernst A Associates, Inc. 10.25 7% City and County of £an Francisco Meeting, Agenda ^Finance Committee Members: Supervisors Mabel Teng, Barbara Kaufman, Gavin Newsom Clerk: Joni Blanchard City Ha"
    ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.17,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.67,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.25,
+    "money": true,
+    "decision": true,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
    "url": "https://archive.org/details/2minutes1999sanf",
    "deep_link": "https://archive.org/details/2minutes1999sanf?q=City+Hall",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "3 editions cited (1975–1999)",
    "group": "Meetings & resolutions",
+   "salient": false
+  },
+  {
+   "identifier": "C124921847",
+   "title": "Final report",
+   "creator": "San Francisco (Calif.). Task Force on Prostitution",
+   "year": 1996,
+   "pool": "dl",
+   "matched_alias": "San Francisco City Hall",
+   "ocr_excerpts": [
+    "Dennis J. March 24,1994. “Police Officer Charged with Kidnapping with Intent to Rape” and “San Francisco Cops Expand Probe in Sex:Case” San i San Francisco Task Force on Prostitution Final Report Page 28 difficult to get such testimony because prostitutes were afraid of reprisals from police if they came forward. One forum was held at City Hall expressly for prostitutes. (See Appendix D.: Testimony). They testified about police misconduct and neglect. They uniformly expressed fear and frustration that when they are victims of crime the police do not work to protect them or to find the perpetrators.5® Testimony regarding immigrants, African American and transgender women show that",
+    "erely, ANTHONY D. RIBERA Chief of Police ee Mepe Wré ie oe City and County of San FrancisBRE CE /VE [) Adult Probation Department eee SUPERVISORS. Hall of Justice whl! an ae Sul WNaait ict 94 NOV 10 AM 9: 92 1 are hy Chief Adun Propation Omcer ; November 8, 1994 John L. Taylor Clerk of the Board Board of Supervisors City Hall San Francisco, CA 94102 Reference: File 207-94-8.2 Dear Mr. Taylor: In response to Supervisor Hallinan's request for information regarding Adult Probation's annual costs in enforcing anti-prostitution laws, the costs are negligible. We only have 7 prostitution cases under supervision. Total Department supervision workload is approximate",
+    "ewe ++ Wev dd 1 Oo Ae NIA ttt et te 8 TEL . soe Jan 20 95 Pe 508] No. 004 P, 02 lg — | City and County of | Department of Public Health s Sandra R. Hernandez, M.D. oT Noy 23 PH 3:57 Director of Health BY. nee) o/ one November 15,1994 © @e7*~ iN | Wealth. [24 Lop John Taylor Clerk of the Board Board of Supervisors Room 235, City Hall San Francisco, CA 94102 ile No. 207-94-8.2 Dear Mr. Taylor: This will respond to your recent request for information on the annual costs the department incurs to enforce anti-prostitution laws and the prosecution and defence of prostitution-related crimes. The department performs HIV testing of defendants arrested for specified sex",
+    "rely, alee Sandra Hernandez, M.D. Director of Health fe POLICE DEPARTMENT CITY AND COUNTY OF SAN FRANCISCO TH OMAS J. CAHILL HALL OF JUSTICE BS0 BRYANT STREET SAN FRANCISCO, CALIFORNIA 94103 ANTHONY D. RIBERA, Ph.D. November 17, 1994 CHIEF OF POLICE mye John L. Taylor - Sade See e eae ae Board of Supervisors “0 as ~&,2 City Hall, Room 235 Fie 201 — San Francisco CA 94102 _Dear Mr. Taylor: As requested in your letter of October 31, 1994, I am submitting the annual costs incurred by the San Francisco Police Department in enforcing anti-prostitution laws. I regret I am unable to provide the costs of prosecuting and defending prostitution cases. Those functions ar",
+    "5,154.00 $116,699.00 $ 30,810.00 . $ 8,000.00 $823,452.00 5,269 Lets Jan 2085 2'14 No.005 F.06 SAN FRANCISCO P"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 8.56,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 3.06,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124921847",
+   "deep_link": "https://archive.org/details/C124921847?q=San+Francisco+City+Hall",
+   "source_label": "Internet Archive — Democracy's Library",
+   "group": "Other records",
    "salient": true
+  },
+  {
+   "identifier": "C124925524",
+   "title": "City and county mitigation of earthquake hazards and risks : results from a questionnaire sent to Bay Area cities and counties",
+   "creator": "Association of Bay Area Governments",
+   "year": 2002,
+   "pool": "dl",
+   "matched_alias": "San Francisco City Hall",
+   "ocr_excerpts": [
+    "to thank the volunteers from the EERI Northern California Chapter Quake '06 Project Government Subcommittee for their assistance in the design of the questionnaire and in contacting survey participants to ensure a high response rate. In addition, ABAG staff Michael Smith and Joanna Bullock assisted in survey mailings and follow-up contacts. San Francisco City Hall after the 1906 San Francisco earthquake Cover/Credits page photo source — Steinbrugge Collection Earthquake Engineering Research Center, University of California, Berkeley (EERC/UCB) Funding for the writing and production of this report, along with the questionnaires analyzed, came from the ABAG PLAN Corporation, with additional suppo",
+    "the 1989 Loma Prieta earthquake and 56% in the last five years, including nine where retrofit is ongoing. The most common sources of funding for these projects included general funds, state and federal grants, and general obligation bonds. San Francisco has been a leader, with approximately 70 total public buildings strengthened, including its City Hall. Staff of local governments who had not conducted these types of evaluations of their own facilities tended to view the level of public awareness of earthquake hazards, the priority of seismic safety within their own jurisdiction, and the risk of an earthquake damaging their jurisdiction as slightly lower than the average respondent. On the",
+    "the 1989 Loma Prieta earthquake and 56% in the last five years, including nine where retrofit is ongoing. The most common sources of funding for these projects included general funds, state and federal grants, and general obligation bonds. San Francisco has been a leader, with approximately 70 total public buildings strengthened, including its City Hall. An additional 6% (5/84) planned to retrofit or replace at least one building by April 2003, while 7% (6/84) planned to do so by April 2004. Respondents from those 38 jurisdictions that had not retrofitted or replaced any of their own facilities tended to describe the public awareness of earthquake hazards (Q 1), the prionty of seismic safe"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 8.3,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 3.8,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124925524",
+   "deep_link": "https://archive.org/details/C124925524?q=San+Francisco+City+Hall",
+   "source_label": "Internet Archive — Democracy's Library",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "municipalrecordc191710sanf",
+   "title": "Municipal record",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
+   "year": 1908,
+   "pool": "sfpl",
+   "matched_alias": "City Hall",
+   "ocr_excerpts": [
+    "&AV FRABGISCO mSTOHY CSHTBa San Francisco Public Library REFERENCE BOOK Not to be taken from the Library I ! t Id Vol. X. SAN FRANCISCO, THURSDAY, JANUARY 4, 1917. No. 1. THE MUNICIPAL RECORD Is published every Thursday by the Board of Supervisors at the City Hall. Its piirpo.se is to |)re3crve in condensed form all that pertains to current history connected with the government of the city and county: to inform the municipal offlcials and employees as to the transactions of the several departments; to furnish information to taxpayers and to those interested i",
+    "ort weighting you, call up the Weights and Measures Department. In case any department or officer fails to acknowledge the receipt of the communication or fails to give attention to the matter stated therein, then such dereliction should be brought to the attenion of the Mayor. TELEPHONE NUMBERS. City Hall, Park 8500. Exchange connecting all departments. Mayor's office. Market 164. Fire Department. Park 8000. Police Department. Douglas 20. Board of Health. Market HDl. Park Commission. Pacific 1167. Public Library, Market 55b. LEGISLATIVE DEPARTMENT The regular woekly meeting of the",
+    "certified check for $10,000 which accom- l>anied the proposal. The Board will meet in special sessioa on Friday evening at 8 o'clock to further consider the garbase disposal problem. A communication was read from the Immigration and Hous- ing Commission announcing that it would be in session in the City Hall on Tuesday morning. January 9, at 10:30 o'clock, to receive and hear suggestions on building and immigration laws. Supervisors McLeran and Nelson and Chief Building Inspector llorgan were appointed a special committee to attend the ses- sions of the commission, with Supervisors Hilmer, Wolfe and Hayden",
+    "ed. The application of D. O. Church to be released from a contract for the improvement of Minna street, referred to the Supervisors by the Board of Public Works, has been referred to the Street Committee for hearing next Thursday. The contract for cutting and dressing the granite in the old City Hall grounds into street curbing has been awarded to the McGilvrayRaymond Granite Company for $4,000. MUNICIPAL RECORD SAVK $l»5 A YKAK KOIl KVKUV HOIUSK KKPLACKI). Syracuse, N. Y. — A saving in inaiiitenanco of about, $185 a year is effected by the Bureau of Fire for every borse replaced by motor",
+    "Halls of various sizes, which can be engaged for Conventions, Fairs, Balls, Lectures, Concerts, etc. Main Hall accommodates over 10,000 persons, and other halls from 500 to 1,500. For terms and dates, apply to Managing Superintendent, Grove and Larkin Streets, or to Clerk of Board of Super- visors, City Hall. MUNICIPAL RECORD ivnjiMiciF»AL xelerhoime: directory GENERAL OFFICES Park 8500 DEPARTMENT I Local I Room Assessor I 1*6 Auditor "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.64,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.14,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/municipalrecordc191710sanf",
+   "deep_link": "https://archive.org/details/municipalrecordc191710sanf?q=City+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -370,8 +656,8 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 2,
+  "n_documents": 8,
   "n_money_links": 2,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

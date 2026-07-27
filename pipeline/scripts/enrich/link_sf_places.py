@@ -53,10 +53,13 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "sync"))
+from ia_collections import tier as collection_tier  # noqa: E402
 SEED = ROOT / "pipeline" / "seeds" / "sf_place_candidates.json"
 CACHE = ROOT / "pipeline" / "cache" / "ia_sf"
 SF = ROOT / "website" / "public" / "data" / "us" / "sf"
@@ -79,8 +82,145 @@ DEPT_ARCHIVE_SLUG = {
 }
 
 ARCHIVE_CAP = 14
+# Applied per pool, not over the flat sfpl-then-dl list. A flat cap re-creates
+# the TOP_K starvation bug one layer down: ~10 grounded SFPL items would eat the
+# budget before the Democracy's Library candidates were considered.
+ARCHIVE_CAP_PER_POOL = 8
 MAX_BUDGET_YEAR = 2025  # latest closed with dept breakdown
 FICHE_DIR = SF / "contracts" / "fiche"
+
+# ── relevance of an archive match ────────────────────────────────────────────
+# An alias appearing in a document's OCR proves the string is present, not that
+# the document is ABOUT the place. The Democracy's Library pool is statewide
+# planning literature, so generic aliases collide constantly across cities:
+# "Washington Square" hit a Sacramento housing element and a New York University
+# zoology paper, "Station 1" hit the City of Redding general plan, "fire
+# department training" hit Reedley. Measured on the 2026-07-27 backfill, 58% of
+# grounded dl matches never named San Francisco anywhere near the hit.
+SF_CONTEXT = re.compile(r"san\s+francisco|\bccsf\b|\bcity\s+and\s+county\b", re.I)
+# Cities whose own planning documents sit in the same collection; naming one of
+# these near the hit while never naming SF is positive evidence of a collision.
+RIVAL_CITY = re.compile(
+    r"\b(sacramento|redding|eureka|reedley|fresno|stockton|modesto|bakersfield|"
+    r"san\s+jose|oakland|berkeley|brisbane|daly\s+city|san\s+mateo|"
+    r"los\s+angeles|san\s+diego|mountain\s+view|new\s+york)\b", re.I)
+# A citywide register enumerates every property/unit the city owns, so it matches
+# every place equally and is evidence about none of them. Before this filter the
+# annual "Valuation of real property" series alone was 46 of 165 published dl
+# rows — the same book, on nearly every fiche, ranked in by sheer length.
+CITYWIDE_SERIAL = re.compile(
+    r"valuation of real property|annual salary ordinance|proposed charter|"
+    r"housing element|general plan|municipal code|budget analyst", re.I)
+
+# ── materiality ──────────────────────────────────────────────────────────────
+# Relevance asks "is this document about this place". Materiality asks the
+# question a reader actually has: "does this help me understand or challenge a
+# decision". They are independent — a lovingly detailed architectural history
+# scores high on the first and low on the second.
+MONEY = re.compile(r"\$[\s]?[\d,]{3,}|\b\d[\d,]{5,}\b|\bappropriat|\bexpenditure|"
+                   r"\bbond\b|\bcost\b|\bbudget", re.I)
+DECISION = re.compile(r"\bresolution\b|\bordinance\b|\bshall\b|\bapproved\b|"
+                      r"\benacted\b|\badopted\b|\bappropriation\b|\bcontract\b", re.I)
+# Documents that exist BECAUSE something went wrong are the highest-signal civic
+# records there are: someone was compelled to write them down.
+ACCOUNTABILITY = re.compile(r"grand jury|\baudit\b|investigation|deficienc|"
+                            r"\bappraisal\b|violation|noncompliance|whistleblow", re.I)
+CONTESTATION = re.compile(r"\bobjection|\bappeal\b|\btestimony\b|comments and responses|"
+                          r"public hearing|\bprotest\b|\bpetition\b", re.I)
+# Genre, read off the title. Hand-scoring 30 documents (2026-07-27) showed the
+# vocabulary signals above are reliable at the top of the ranking and noisy in
+# the middle: an item titled "Notice of meeting and calendar" scored 5.0 on
+# incidental words in its agenda text, while "childhood lead prevention program:
+# data evaluation" scored 0.0. A title is stable where a 700-char OCR window is
+# not, so genre carries most of the weight and vocabulary only breaks ties.
+HIGH_GENRE = re.compile(
+    r"\baudit\b|grand jury|investigation|environmental impact|development program|"
+    r"master plan|feasibility|\bbond\b|evaluation|report to the board|"
+    r"management (audit|review)|appraisal|strategic plan|needs analysis|"
+    r"economic impact|impact analysis|analysis of the|redevelopment", re.I)
+# Contentless serial titles. The document behind one may be substantive, but the
+# title tells a reader nothing, so it should never outrank a named report — and
+# it is precisely these that the vocabulary signals scored at random.
+LOW_GENRE = re.compile(
+    r"^\s*(agenda|minutes|calendar|notice of meeting|agendas and minutes|"
+    r"minutes and agendas|calendar of events|notice|bulletin|newsletter)"
+    r"[\s/,:-]*(and calendar)?\s*$", re.I)
+
+
+def ia_materiality(it: dict) -> dict:
+    """Does this document carry decision-relevant substance for a reader?
+
+    Scored from the OCR windows we already cache plus the title — no LLM, no
+    extra fetch. The components are kept alongside the score so a shelf can
+    explain itself ("cited for: money figures, public objections") instead of
+    presenting an unexplained ranking.
+    """
+    ex = " ".join(it.get("ocr_excerpts") or [])
+    title = it.get("title") or ""
+    hay = f"{title} {ex}"
+    money = bool(MONEY.search(hay))
+    decision = bool(DECISION.search(hay))
+    account = bool(ACCOUNTABILITY.search(hay))
+    contest = bool(CONTESTATION.search(hay))
+    high = bool(HIGH_GENRE.search(title))
+    low = bool(LOW_GENRE.search(title))
+    score = (
+        (4.0 if high else 0.0)
+        - (3.0 if low else 0.0)
+        + (1.5 * account) + (1.0 * money) + (0.75 * decision) + (0.75 * contest)
+    )
+    return {"score": round(score, 2), "money": money, "decision": decision,
+            "accountability": account, "contestation": contest,
+            "named_genre": high, "generic_serial": low}
+
+
+def ia_relevance(it: dict, aliases: list[str]) -> dict:
+    """Score how much a matched item is *about* the place, not how long it is.
+
+    Returns the component signals alongside the score so the export layer can
+    rank on them and a human can audit why a document ranked where it did.
+
+      sf_context  — SF named inside a hit window. The single strongest filter:
+                    it is what separates our Washington Square from Sacramento's.
+      hits        — merged alias windows: how often the place actually comes up.
+      density     — hits per 100k chars of OCR. A place named 20 times in a
+                    40-page report is the subject; named once in a 600-page
+                    general plan it is a passing mention. Character volume, the
+                    signal this replaces, ranked those two the other way round.
+      title_hit   — the alias is in the document's title: near-decisive.
+    """
+    ex = " ".join(it.get("ocr_excerpts") or [])
+    hits = len(it.get("ocr_excerpts") or [])
+    chars = max(it.get("ocr_chars") or 0, 1)
+    title = it.get("title") or ""
+    sf_context = bool(SF_CONTEXT.search(ex))
+    # A rival city in the TITLE is decisive regardless of body text: "Estuary
+    # policy plan, Oakland" and "The Berkeley camps" both name San Francisco in
+    # passing, and both cleared the body-text gate while being about elsewhere.
+    rival = bool(RIVAL_CITY.search(title)) or (bool(RIVAL_CITY.search(ex)) and not sf_context)
+    citywide = bool(CITYWIDE_SERIAL.search(title))
+    title_hit = any(a.lower() in title.lower() for a in aliases if len(a) >= 6)
+    density = hits / chars * 100_000
+    # Substance floor, in two strengths. The strict form — title names the place,
+    # or it recurs both repeatedly AND densely for the document's length — is for
+    # multi-jurisdiction collections, where a passing mention is usually a
+    # different city's namesake. Applying it to San Francisco's own municipal
+    # paper was too blunt: it cut the SFPL pool 498→281 and pushed 17 places
+    # below the archive≥3 publication bar, discarding real records because a
+    # place is named twice in a Municipal Report rather than three times.
+    substantive = title_hit or (hits >= 3 and density >= 1.0)
+    substantive_direct = title_hit or hits >= 2
+    score = (
+        (3.0 if sf_context else 0.0)
+        + (4.0 if title_hit else 0.0)
+        + min(hits, 6) * 0.5
+        + min(density, 4.0)
+        - (2.0 if rival else 0.0)
+    )
+    return {"score": round(score, 2), "sf_context": sf_context, "rival_city": rival,
+            "citywide_serial": citywide, "substantive": substantive,
+            "substantive_direct": substantive_direct,
+            "hits": hits, "density": round(density, 2), "title_hit": title_hit}
 
 
 def now_iso() -> str:
@@ -174,6 +314,22 @@ def main() -> int:
             for it in ia.get("items", []):
                 if it.get("ocr_status") != "ok" or not it.get("ocr_excerpts"):
                     continue
+                tier = collection_tier(it.get("collection"))
+                if tier == "DENIED":
+                    continue
+                rel = ia_relevance(it, aliases)
+                mat = ia_materiality(it)
+                # DIRECT collections are San Francisco municipal paper by
+                # construction, so membership carries the geography and only the
+                # substance floor applies. GATED collections are multi-
+                # jurisdiction, so an item must additionally prove SF context in
+                # its own text — that is what separates our Washington Square
+                # from Sacramento's.
+                floor = rel["substantive_direct"] if tier == "DIRECT" else rel["substantive"]
+                if not floor or rel["citywide_serial"]:
+                    continue
+                if tier == "GATED" and not (rel["sf_context"] and not rel["rival_city"]):
+                    continue
                 archive.append({
                     "identifier": it["identifier"],
                     "title": it["title"],
@@ -182,11 +338,26 @@ def main() -> int:
                     "pool": it["pool"],
                     "matched_alias": it.get("matched_alias"),
                     "ocr_excerpts": it["ocr_excerpts"],
+                    "collection": it.get("collection"),
+                    "relevance": rel,
+                    "materiality": mat,
                     "url": it["url"],
                     "deep_link": f"https://archive.org/details/{it['identifier']}?q="
                                  + it.get("matched_alias", aliases[0]).replace(" ", "+"),
                 })
-            archive = archive[:ARCHIVE_CAP]
+            kept_by_pool: dict[str, int] = {}
+            ranked = []
+            # Both axes, not one: aboutness alone re-promotes the eloquent
+            # document that decides nothing, materiality alone promotes any
+            # budget book that happens to name the place.
+            for d in sorted(archive, key=lambda d: -(d["relevance"]["score"]
+                                                     + d["materiality"]["score"])):
+                p = d["pool"]
+                if kept_by_pool.get(p, 0) >= ARCHIVE_CAP_PER_POOL:
+                    continue
+                kept_by_pool[p] = kept_by_pool.get(p, 0) + 1
+                ranked.append(d)
+            archive = ranked[:ARCHIVE_CAP]
 
         # ── department archive shelf ──
         dept_shelf = []

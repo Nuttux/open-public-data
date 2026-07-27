@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.718142+00:00",
+ "generated_at": "2026-07-27T17:06:09.754240+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "davies-symphony-hall",
@@ -247,6 +247,27 @@
    "year": 1997,
    "pool": "sfpl",
    "matched_alias": "Louise M. Davies Symphony Hall",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.91,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.41,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/schoolofartsmast1199sanf",
    "deep_link": "https://archive.org/details/schoolofartsmast1199sanf?q=Louise+M.+Davies+Symphony+Hall",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -255,32 +276,110 @@
    "gloss": "A 1997 School of the Arts draft EIR whose parking analysis records Davies Hall's 2,743-seat capacity and an evening performance drawing 2,420 people (an 88 percent attendance rate)."
   },
   {
+   "identifier": "annualrprt1978798384warm",
+   "title": "Annual report",
+   "creator": "War Memorial (San Francisco, Calif.). Board of Trustees",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Davies Symphony Hall",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 4.7,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/annualrprt1978798384warm",
+   "deep_link": "https://archive.org/details/annualrprt1978798384warm?q=Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true,
+   "gloss": "A War Memorial annual report from the years the hall was completed, noting that no capital funds were budgeted and that $40 million of improvements were financed by the Sponsors of the Performing Arts Center."
+  },
+  {
+   "identifier": "calendarofevents2012sanf",
+   "title": "Calendar of events",
+   "creator": "San Francisco Performing Arts Center",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Davies Symphony Hall",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.55,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.05,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -3.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/calendarofevents2012sanf",
+   "deep_link": "https://archive.org/details/calendarofevents2012sanf?q=Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "4 editions cited",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "The Performing Arts Center's calendar, describing the architectural and acoustical tours of Davies Hall run every Monday and by request."
+  },
+  {
    "identifier": "civiccenterstud1994sanf_0",
    "title": "Civic Center study : cultural facilities plan, issues and finding report : draft for citizen review",
    "creator": "San Francisco (Calif.). Dept. of City Planning",
    "year": 1994,
    "pool": "sfpl",
    "matched_alias": "Louise M. Davies Symphony Hall",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.43,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.43,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.5,
+    "money": false,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/civiccenterstud1994sanf_0",
    "deep_link": "https://archive.org/details/civiccenterstud1994sanf_0?q=Louise+M.+Davies+Symphony+Hall",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true,
    "gloss": "A 1994 Civic Center cultural-facilities study listing Davies Hall's 2,743 seats, its role as the San Francisco Symphony's home, War Memorial trustee control, and roughly 30 rental days a year."
-  },
-  {
-   "identifier": "eastwest20east_7",
-   "title": "East/West",
-   "creator": "East/West Pub. Co.",
-   "year": 1986,
-   "pool": "sfpl",
-   "matched_alias": "Louise M. Davies Symphony Hall",
-   "url": "https://archive.org/details/eastwest20east_7",
-   "deep_link": "https://archive.org/details/eastwest20east_7?q=Louise+M.+Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "A 1986 East/West newspaper announcement of an 'East Meets West' symphonic concert held at the Louise M. Davies Symphony Hall on March 7-8."
   }
  ],
  "dept_shelf": [
@@ -315,12 +414,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 3,
+  "n_documents": 4,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

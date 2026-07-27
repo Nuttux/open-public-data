@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.731010+00:00",
+ "generated_at": "2026-07-27T17:06:09.768882+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "balboa-park-station",
@@ -53,11 +53,32 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Green Light Rail Center",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.37,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.37,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
    "url": "https://archive.org/details/minutes20022003sanf",
    "deep_link": "https://archive.org/details/minutes20022003sanf?q=Green+Light+Rail+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true,
+   "salient": false,
    "gloss": "MTA board minutes accepting the $702,921.38 Curtis E. Green Light Rail Center emergency switch-replacement contract and funding Balboa Park Station public-access improvements."
   },
   {
@@ -67,6 +88,27 @@
    "year": 2009,
    "pool": "sfpl",
    "matched_alias": "Balboa Park Station",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 12.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 10.91,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/balboaparkstatio2009sanf",
    "deep_link": "https://archive.org/details/balboaparkstatio2009sanf?q=Balboa+Park+Station",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -81,6 +123,27 @@
    "year": 2002,
    "pool": "sfpl",
    "matched_alias": "Balboa Park Station",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.3,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.8,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/balboaparkstatio2002sanf",
    "deep_link": "https://archive.org/details/balboaparkstatio2002sanf?q=Balboa+Park+Station",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -89,32 +152,110 @@
    "gloss": "The 2002 public-review draft of the Balboa Park Station Area Plan, a Better Neighborhoods effort to remake the station into a transit hub."
   },
   {
-   "identifier": "noticeofmeetingc2012sanf",
+   "identifier": "mitigatednegativ1820sanf",
+   "title": "Mitigated negative declaration : [1490 Ocean Avenue (aka 1446 Ocean Avenue)]",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2012,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park Station",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.13,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.13,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/mitigatednegativ1820sanf",
+   "deep_link": "https://archive.org/details/mitigatednegativ1820sanf?q=Balboa+Park+Station",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "A 2012 environmental review of housing at 1490 Ocean Avenue, assessed against the Balboa Park Area Plan that governs the station's surroundings."
+  },
+  {
+   "identifier": "preliminarymitig1420sanf",
+   "title": "Preliminary mitigated negative declaration : [1490 Ocean Avenue (aka 1446 Ocean Avenue)]",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2011,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park Station",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.13,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.13,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/preliminarymitig1420sanf",
+   "deep_link": "https://archive.org/details/preliminarymitig1420sanf?q=Balboa+Park+Station",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "The 2011 preliminary version of the same review for 1490 Ocean Avenue, weighed against the Balboa Park Area Plan and the city's Priority Policies."
+  },
+  {
+   "identifier": "noticeofmeetingc2011sanf",
    "title": "Notice of meeting and calendar",
    "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
    "year": 2000,
    "pool": "sfpl",
-   "matched_alias": "Green Light Rail Center",
-   "url": "https://archive.org/details/noticeofmeetingc2012sanf",
-   "deep_link": "https://archive.org/details/noticeofmeetingc2012sanf?q=Green+Light+Rail+Center",
+   "matched_alias": "Cameron Beach Yard",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.95,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.45,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/noticeofmeetingc2011sanf",
+   "deep_link": "https://archive.org/details/noticeofmeetingc2011sanf?q=Cameron+Beach+Yard",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited",
    "group": "Other records",
    "salient": true,
-   "gloss": "An MTA board calendar authorizing Contract No. 1249 for Green Light Rail Center track replacement (up to $31,197,197) and discussing sale of the Green Division's Upper Yard."
-  },
-  {
-   "identifier": "3calendarmeetingo1994sanf",
-   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "Green Light Rail Center",
-   "url": "https://archive.org/details/3calendarmeetingo1994sanf",
-   "deep_link": "https://archive.org/details/3calendarmeetingo1994sanf?q=Green+Light+Rail+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "A 1994 Budget Committee memo identifying the Green Light Rail Center at 425 Geneva Street as the primary LRV storage site, with room for a maximum of 142 vehicles."
+   "gloss": "A Municipal Transportation Agency meeting notice covering the dedication of the Geneva Yard and the agency's departmental climate action plan."
   }
  ],
  "dept_shelf": [
@@ -149,12 +290,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 5,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

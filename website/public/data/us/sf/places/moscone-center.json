@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.719771+00:00",
+ "generated_at": "2026-07-27T17:06:09.756651+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "moscone-center",
@@ -303,6 +303,27 @@
    "year": 1992,
    "pool": "sfpl",
    "matched_alias": "Moscone Center",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.81,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.81,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.5,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/yerbabuenacenter2419sanf",
    "deep_link": "https://archive.org/details/yerbabuenacenter2419sanf?q=Moscone+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -317,6 +338,27 @@
    "year": 1991,
    "pool": "sfpl",
    "matched_alias": "Moscone Center",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.17,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.67,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/yerbabuenacenter1219sanf",
    "deep_link": "https://archive.org/details/yerbabuenacenter1219sanf?q=Moscone+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -331,6 +373,27 @@
    "year": 1997,
    "pool": "sfpl",
    "matched_alias": "Moscone Center",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.72,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.22,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
    "url": "https://archive.org/details/4minutes2001sanf",
    "deep_link": "https://archive.org/details/4minutes2001sanf?q=Moscone+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -345,12 +408,103 @@
    "year": 1988,
    "pool": "sfpl",
    "matched_alias": "George R. Moscone Convention Center",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.2,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.2,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/journalofjanaprproceed83sanfrich",
    "deep_link": "https://archive.org/details/journalofjanaprproceed83sanfrich?q=George+R.+Moscone+Convention+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true,
    "gloss": "A 1988 Board of Supervisors journal of ordinances financing the George R. Moscone Convention Center expansion via leases and bonds."
+  },
+  {
+   "identifier": "comprehensiveann2004sanf",
+   "title": "Comprehensive annual financial report",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Moscone Convention Center",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.91,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.41,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/comprehensiveann2004sanf",
+   "deep_link": "https://archive.org/details/comprehensiveann2004sanf?q=Moscone+Convention+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "The Controller's comprehensive annual financial report, the city's audited accounts — including the $100 million renewable energy revenue bond approved by voters in 2001."
+  },
+  {
+   "identifier": "finalmitigatedne2220sanf",
+   "title": "Final mitigated negative declaration : [case no. 2004.0852E : One Hawthorne Street : demolition and construction of a 15- or 25-story residential mixed-use building]",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2004,
+   "pool": "sfpl",
+   "matched_alias": "Moscone Center",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.45,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.95,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/finalmitigatedne2220sanf",
+   "deep_link": "https://archive.org/details/finalmitigatedne2220sanf?q=Moscone+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "A 2004 environmental review of a 15- or 25-storey mixed-use tower at One Hawthorne Street, in the blocks behind the convention centre."
   }
  ],
  "dept_shelf": [
@@ -385,12 +539,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 4,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

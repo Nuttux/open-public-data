@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.699436+00:00",
+ "generated_at": "2026-07-27T17:06:09.731552+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "glen-canyon-park",
@@ -179,17 +179,108 @@
  },
  "documents": [
   {
+   "identifier": "noticeofprepara1200sanf_0",
+   "title": "Notice of preparation of environmental impact report and notice of public scoping meeting for Glen Park community plan summary",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2009,
+   "pool": "sfpl",
+   "matched_alias": "Glen Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 12.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 6.02,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 4.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/noticeofprepara1200sanf_0",
+   "deep_link": "https://archive.org/details/noticeofprepara1200sanf_0?q=Glen+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true,
+   "gloss": "The 2009 notice launching environmental review of the Glen Park community plan, including proposed roundabouts along Bosworth Street."
+  },
+  {
+   "identifier": "draftenvironment2720sanf",
+   "title": "Draft environmental impact report : Glen Park community plan",
+   "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). Citywide Planning,San Francisco (Calif.). Municipal Transportation Agency,Atkins (Consultants),Merrill Morris and Partners,Carey & Co,AECOM Consult, Inc",
+   "year": 2011,
+   "pool": "sfpl",
+   "matched_alias": "Glen Canyon Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.68,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.18,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/draftenvironment2720sanf",
+   "deep_link": "https://archive.org/details/draftenvironment2720sanf?q=Glen+Canyon+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true,
+   "gloss": "The 2011 draft environmental impact report for the Glen Park community plan."
+  },
+  {
    "identifier": "agendasminutesvi2014arts",
    "title": "Agendas and Minutes / Visual Arts Committee",
    "creator": "Arts Commission of San Francisco. Visual Arts Committee",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Glen Canyon Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.34,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.34,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/agendasminutesvi2014arts",
    "deep_link": "https://archive.org/details/agendasminutesvi2014arts?q=Glen+Canyon+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true,
+   "salient": false,
    "gloss": "Arts Commission Visual Arts Committee minutes selecting three finalists for the Glen Canyon Park Recreation Center public art project."
   },
   {
@@ -199,6 +290,27 @@
    "year": 2008,
    "pool": "sfpl",
    "matched_alias": "Glen Canyon Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 4.34,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/2008cleansafenei2007sanf",
    "deep_link": "https://archive.org/details/2008cleansafenei2007sanf?q=Glen+Canyon+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -207,12 +319,68 @@
    "gloss": "The 2008 parks bond's project page for Glen Canyon Park — a 66.6-acre park with a 1934 recreation center and 1960 Silver Tree Day Camp — scoping renovation of the rec center, play area, day camp, courts and field."
   },
   {
+   "identifier": "2redevelopmentind1950sanf",
+   "title": "Redevelopment in Diamond Heights; a report to the Board of Supervisors",
+   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": 1950,
+   "pool": "sfpl",
+   "matched_alias": "Glen Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 5.01,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/2redevelopmentind1950sanf",
+   "deep_link": "https://archive.org/details/2redevelopmentind1950sanf?q=Glen+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "A 1950 redevelopment report to the Board of Supervisors on Diamond Heights, describing O'Shaughnessy Boulevard running along the rim of Glen Canyon as the area's western boundary."
+  },
+  {
    "identifier": "diamondheightsre1952sanf",
    "title": "Diamond Heights : a report on the tentative redevelopment plan",
    "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
    "year": 1951,
    "pool": "sfpl",
    "matched_alias": "Glen Canyon Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.93,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.43,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/diamondheightsre1952sanf",
    "deep_link": "https://archive.org/details/diamondheightsre1952sanf?q=Glen+Canyon+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -221,18 +389,39 @@
    "gloss": "A 1951 Diamond Heights redevelopment report describing the canyon's day camp, rock outcroppings and creek adjoining the planned neighborhood."
   },
   {
-   "identifier": "twocommercialsit1962sanf",
-   "title": "Two commercial sites, Diamond Heights, San Francisco",
-   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": 1962,
+   "identifier": "diamondheightsne1961lack",
+   "title": "Diamond Heights neighborhood center : an urban design and report-- to the San Francisco Redevelopment Agency",
+   "creator": "Lackey, Lawrence,San Francisco Redevelopment Agency (San Francisco, Calif.),Royston, Hanamoto & Mayes",
+   "year": 1961,
    "pool": "sfpl",
    "matched_alias": "Glen Canyon Park",
-   "url": "https://archive.org/details/twocommercialsit1962sanf",
-   "deep_link": "https://archive.org/details/twocommercialsit1962sanf?q=Glen+Canyon+Park",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.0,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 10.61,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/diamondheightsne1961lack",
+   "deep_link": "https://archive.org/details/diamondheightsne1961lack?q=Glen+Canyon+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true,
-   "gloss": "A 1962 Redevelopment Agency prospectus describing Glen Canyon Park as an 80-acre naturally wooded canyon open for recreation, with a park building already completed."
+   "gloss": "A 1961 urban design report to the Redevelopment Agency for the Diamond Heights neighbourhood centre, on the ridge above the canyon."
   }
  ],
  "dept_shelf": [
@@ -272,7 +461,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 4,
+  "n_documents": 7,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

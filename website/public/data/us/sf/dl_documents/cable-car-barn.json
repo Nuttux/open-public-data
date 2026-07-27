@@ -1,37 +1,9 @@
 {
- "generated_at": "2026-07-22T15:04:53.729440+00:00",
+ "generated_at": "2026-07-27T17:06:09.767233+00:00",
  "slug": "cable-car-barn",
  "name": "Cable Car Barn & Powerhouse",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
-  {
-   "identifier": "strategicplan2001199sanf",
-   "title": "Strategic plan 2000 : short range transit plan : draft for public review and comment / San Francisco Municipal Railway",
-   "creator": "San Francisco Municipal Railway",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Cable Car Museum",
-   "url": "https://archive.org/details/strategicplan2001199sanf",
-   "deep_link": "https://archive.org/details/strategicplan2001199sanf?q=Cable+Car+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 2000 Muni short-range transit plan proposes a Cable Car Museum renovation at the Cable Car Barn, 1201 Mason Street, with no schedule or funding yet set."
-  },
-  {
-   "identifier": "2minutes2009sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Cable Car Museum",
-   "url": "https://archive.org/details/2minutes2009sanf",
-   "deep_link": "https://archive.org/details/2minutes2009sanf?q=Cable+Car+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "2009 MTA Board minutes authorize an agreement for management and operation of the Cable Car Museum with the Friends of the Cable Car Museum, running to June 30, 2019."
-  },
   {
    "identifier": "civilgrandjuryre198587cali",
    "title": "Civil Grand Jury reports",
@@ -39,12 +11,38 @@
    "year": 1977,
    "pool": "sfpl",
    "matched_alias": "Cable Car Barn",
+   "ocr_excerpts": [
+    "re revenues, general tax receipts, and subsidies from regional, state, and federal agencies. MUNI operates a light rail system, diesel and electric busses, cable cars, and historic street cars (on a seasonal basis) . In September, 1982 a restoration project on the entire cable car system began. The cable car barn and the cable drive system were completely rebuilt, and new trackway was laid. Simultaneously, reconstruction work was done on surrounding streets, sewers, and water mains. The cable cars began operating again in June, 1984, on schedule, but it quickly became apparent that the new system did not wor",
+    "the Public Utilities Commission. Work on the project was performed by private engineering and construction companies under the supervision of O'Brien, Kreitzberg Associates, a private management consulting company. Chin & Hensolt Engineering was the primary contractor for the design of the trackway and cable car barn. Tutor 4 Saliba performed the construction work on the barn and the trackway around it. The MUNI Committee believes that the operating problems can be attributed to the following: A. New, unproven technology was substituted for the original cable car drive system. Much of the drive system was r",
+    "rs,\" which guide the car's \"grip\" on the cable around curves, were not aligned correctly and are not holding up. Additionally, the pulleys are 8 MUNICIPAL RAILWAY (Continued) encountering mechanical problems and are wearing out prematurely . 5. The turntables at Bay/Taylor, Market/Powell, and the cable car barn are unbalanced and are difficult to turn. The turntables systemwide do not have uniform performance characteristics, perhaps because they were built by three different companies. B. The cable car barn appears to have been rebuilt without complete consideration for its intended functions. The members of the MUNI Committee do not have construction engineering backgrounds. However, the following defects are obvious to anyone: 1. The delivery door for new cable is one foot too low to permit a winch",
+    "Engineer, Facilities Maintenance Engineering Richard Fay, Senior Fare Collections Receiver Andrea Gourdine, Manager of Personnel, P.U.C. Donald Haagstad, Supt. of Machinery, Cable Car Division John B. Hepburn, Secretary-Treasurer, TWU Ken Hon, Fare Collection Receiver Thomas J. Hutchinson, Chief Receiver, Cable Car Barn William K.Y. Jung, Staff Representative, Local 250-A, TWU Andy Moran, Deputy Director of P.U.C, Finance George Newkirk, MUNI Labor Relations Harry Osterbann, MUNI Asst. Supt., Kirkland William G. Stead, General Manager, MUNI John Stein, Mgr. Safety Training Jim Stewart, MUNI Supt., Kirkland Sam Walker,"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.26,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.26,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.5,
+    "money": false,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/civilgrandjuryre198587cali",
    "deep_link": "https://archive.org/details/civilgrandjuryre198587cali?q=Cable+Car+Barn",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": true,
-   "gloss": "A Civil Grand Jury report examines the 1982 rebuild of the cable car barn and drive system and faults the barn's reconstruction, including a too-low cable-delivery door and unbalanced turntables."
+   "salient": true
   },
   {
    "identifier": "4annualreportsanf",
@@ -53,26 +51,78 @@
    "year": 1976,
    "pool": "sfpl",
    "matched_alias": "Cable Car Powerhouse",
+   "ocr_excerpts": [
+    "volts direct current by means of motor-generators, synchronous converters, and mercury arc rectifiers. (See Appendix Table 3 for statistical data.) Motive Power is also responsible for maintaining the electric motors and associated control equipment for operating the cable-winding machinery located in the Cable Car Powerhouse at Washington and Mason Streets. In addition, Motive Power does periodic inspection, cleaning, adjusting and repairing the streetcar and trolley coach recorders at Central Control of the Municipal Railway. The substations operate 24 hours per day, 36 5 days per year. In anticipation of the need to",
+    "by means of motor-generators, synchro- nous converters, mercury arc rectifiers and silicon rectifiers. (See Appendix Table 3 for statistical data.) Motive Power is also responsible for maintaining the electric motors and associated control equipment for operating the cable-winding machinery located in the Cable Car Powerhouse at Washington and Mason Streets. In addition, Motive Power periodically inspects, cleans, adjusts and repairs the streetcar and trolley coach headway recorders at Central Control of the Municipal Railway. The substations operate 24 hours per day, 365 days per year. In anticipation of the need to as",
+    "by means of motor-generators, synchronous converters, mercury arc rectifiers and silicon rectifiers. (See Appendix Table 3 for statistical data.) Motive Power is also responsible for maintaining the electric motors and associated control equipment for operating the cable-winding machinery located in the Cable Car Powerhouse at Washington and Mason Streets. In addition, Motive Power periodically inspects, cleans, adjusts and repairs the streetcar and trolley coach headway recorders at Central Control of the Municipal Railway. The substations operate 24 hours per day, 365 days per year. In anticipation of the need to as"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.39,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.89,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/4annualreportsanf",
    "deep_link": "https://archive.org/details/4annualreportsanf?q=Cable+Car+Powerhouse",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": true,
-   "gloss": "A Hetch Hetchy annual report locates the cable-winding machinery and its electric motors in the Cable Car Powerhouse at Washington and Mason Streets."
+   "salient": true
   },
   {
-   "identifier": "eastwest14east_3",
-   "title": "East/West",
-   "creator": "East/West Pub. Co.",
-   "year": 1980,
+   "identifier": "9minutes2000sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
+   "year": 2000,
    "pool": "sfpl",
-   "matched_alias": "Cable Car Barn",
-   "url": "https://archive.org/details/eastwest14east_3",
-   "deep_link": "https://archive.org/details/eastwest14east_3?q=Cable+Car+Barn",
+   "matched_alias": "Cable Car Museum",
+   "ocr_excerpts": [
+    "mount of $15,829,482, and authorizing the release of final retention to Stacy and Witbeck, Inc. (Explanatory documents include a staff report, resolution and financial plan.) (8.5) Authorizing the General Manager to issue a Request for Proposals seeking a vendor to act as curator/concessionaire of the Cable Car Museum and Gift Shop for a period of five years; select a preferred vendor, negotiate an agreement and return to the Board for approval of the negotiated agreement. (Explanatory documents include a staff report, resolution and request for proposals.) REGULAR CALENDAR 9. Adopting amendments to the performa",
+    "2, and authorizing the release of final retention to Stacy and Witbeck, Inc. (Explanatory documents include a staff report, resolution and financial plan.) RESOLUTION 00-063 (8.5) Authorizing the General Manager to issue a Request for Proposals seeking a vendor to act as curator/concessionaire of the Cable Car Museum and Gift Shop for a period of five years; select a preferred vendor, negotiate an agreement and return to the Board for approval of the negotiated agreement. (Explanatory documents include a staff report, resolution and request for proposals.) RESOLUTION 00-064 No public comment. On motion to ap",
+    "ncreasing the expenditure authority by $833,296, based on increased fare revenues to fund higher than expected expenditures for diesel fuel. (Explanatory documents include a staff report, and resolution.) 12. Authorizing the Director to execute the Operating Agreement and License with the Friends of the Cable Car Museum, Inc., establishing the FCCM as the curator/concessionaire of the Cable Car Museum and Gift Shop for a period of five years, and requiring a minimum annual payment of $50,000 to Muni. (Explanatory documents include a staff report, resolution and agreement.) 13. Authorizing the Director to execute Amendment No. 4 to Contract CS-123, Professional Design and Support Services for Muni",
+    "her San Francisco colleges and universities in the pilot program. No public comment. RESOLUTION 00-1 16 On motion to approve: ADOPTED: AYES - Black, Bourgart, Casey, Cisneros, Flynn, Lim and Vaughns 12. Authorizing the Director to execute the Operating Agreement and License with the Friends of the Cable Car Museum, Inc., establishing the FCCM as the curator/concessionaire of the Cable Car Museum and Gift Shop for a period of five years, and requiring a minimum annual payment of $50,000 to Muni. (Explanatory documents include a staff report, resolution and agreement.) No public comment. RESOLUTION 00-117 On motion to approve: ADOPTED: AYES - Black, Bourgart, Casey, Cisneros, Flynn, Lim an"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.83,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.83,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/9minutes2000sanf",
+   "deep_link": "https://archive.org/details/9minutes2000sanf?q=Cable+Car+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "A 1980 East/West notice sets out an $11,787,000 rehabilitation of the Cable Car Barn within a $43,757,000 cable-car program, deemed categorically exempt under CEQA."
+   "variant_note": "2 editions cited",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "dataguide19901991990sanf",
@@ -81,12 +131,36 @@
    "year": 1990,
    "pool": "sfpl",
    "matched_alias": "Cable Car Museum",
+   "ocr_excerpts": [
+    "n Francisco. \" Northern California Railroad Club, 163 Tioga Avenue, San Francisco, CA 94134, a group well-known for its rail-fan excursions. Pacific Coast Chapter, Railway & Locomotive Historical Society, 1151 Street, Sacramento, CA 95814-2204 (phone: 916/447-9665). The Pacific Coast Chapter operates the cable car museum under contract with the city. 1895. Historic Streetcar NO. 578S, built in 41 Division at 15th and Harrison Streets. FACILITIES Muni Metro Streetcar System • 4' 8 1/2\" gauge single track - 40.8 miles. (4.6 miles will be added when the 2.3 mile J Church extension is completed ear",
+    "80 ft. SunsetTunnel- 4,232 ft. • Twin Peaks Tunnel - West Portal to East Portal, 1 1,920 ft.; West Portal to Castro St. Station, 12,255 ft. Cable Car System • 3 1/2' gauge single track - 8.7 miles. • Cables - four (California, Powell, Hyde, and Mason), eath powered by a 510 hp motor in the cable car barn. • Cable diameter - 1 5/16\". • Total cable length -10.72 miles. 42 Major Facilities: Army Street Facility - Army & 3rd Sts. (3000 3rd St.) Leased since 1984. Originally used as the division for the 60' diesels, it is now used as Maintenance Training headquarters and a storage area for diesels not in regular service. 80,000 sq. ft. Cable Car Barn - Washington & Mason Sts. (1201 Mason St.) Originally built in 1887 for the Ferries & Cliff House Rwy., rebuilt after the 1906 earthquake and fire, and in 1982-84. 83,741 sq. ft. (The cable car museum is located in the barn - phone: 415/474- 1887.) H. Welton Flynn Motor Coach Division - 15th & Harrison Sts. (1940 Harrison St.) A former U.S. Steel warehouse, it was dedicated in July 1989 and opened that October. As of September 1990, houses all 100 of the 60' diesels and 25 of the 40' diese"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.21,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 2.21,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/dataguide19901991990sanf",
    "deep_link": "https://archive.org/details/dataguide19901991990sanf?q=Cable+Car+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true,
-   "gloss": "A Muni data guide records the barn at 1201 Mason (83,741 sq ft), built 1887 and rebuilt 1982–84, housing the cable car museum and the 510-hp motors driving the four cables."
+   "salient": true
   }
  ]
 }

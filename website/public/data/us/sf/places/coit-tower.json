@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T15:04:53.692470+00:00",
+ "generated_at": "2026-07-27T17:06:09.723887+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "coit-tower",
@@ -168,6 +168,27 @@
    "year": 1989,
    "pool": "sfpl",
    "matched_alias": "Coit Tower",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.46,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.96,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/historicstructur01arts",
    "deep_link": "https://archive.org/details/historicstructur01arts?q=Coit+Tower",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -182,6 +203,27 @@
    "year": 1989,
    "pool": "sfpl",
    "matched_alias": "Coit Tower",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.46,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.96,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/sanfranciscocivi00arts",
    "deep_link": "https://archive.org/details/sanfranciscocivi00arts?q=Coit+Tower",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -190,17 +232,109 @@
    "gloss": "Places the tower's murals under the Arts Commission's civic-design and aesthetic-review authority."
   },
   {
+   "identifier": "surveyofartworki1953sanf",
+   "title": "A survey of art work in the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Art Commission,Snipper, Martin, 1914-",
+   "year": 1953,
+   "pool": "sfpl",
+   "matched_alias": "Coit Tower",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.01,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.51,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/surveyofartworki1953sanf",
+   "deep_link": "https://archive.org/details/surveyofartworki1953sanf?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "variant_note": "2 editions cited (1953–1975)",
+   "group": "Histories & surveys",
+   "salient": true,
+   "gloss": "A 1953 Art Commission survey of the city's artworks, cataloguing the WPA fresco panels by artist, medium and size — including Maxine Albro's 42-foot \"California\"."
+  },
+  {
+   "identifier": "annualreportarts2012arts",
+   "title": "Annual report / Arts Commission of San Francisco",
+   "creator": "Arts Commission of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Coit Tower",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.93,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.93,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/annualreportarts2012arts",
+   "deep_link": "https://archive.org/details/annualreportarts2012arts?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true,
+   "gloss": "An Arts Commission annual report on the agency's programmes and civic-art projects, including the 40th anniversary of the Street Artist Licensing Program."
+  },
+  {
    "identifier": "minutesrecreatio1986sanf",
    "title": "Minutes / Recreation and Park Commission",
    "creator": "San Francisco (Calif.). Recreation and Park Commission",
    "year": 1986,
    "pool": "sfpl",
    "matched_alias": "Coit Tower",
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.15,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.65,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 2.5,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
    "url": "https://archive.org/details/minutesrecreatio1986sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1986sanf?q=Coit+Tower",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true,
+   "salient": false,
    "gloss": "1986 Rec & Park minutes indexing Coit Tower resolutions — Park Bond passage, a state historic-preservation application, and mural-viewing arrangements."
   }
  ],
@@ -236,12 +370,12 @@
   },
   {
    "label": "Historical documents",
-   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+   "note": "Internet Archive — SFPL partnership scans"
   }
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 3,
+  "n_documents": 5,
   "n_money_links": 1,
   "meets_pre_summary": true
  }
