@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.744714+00:00",
+ "generated_at": "2026-07-28T11:43:47.721711+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,145 @@
  "top_departments": [
   "HSA Human Services Agency"
  ],
+ "profile": {
+  "n_vouchers": 2261,
+  "departments": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 87863315.06,
+    "n_vouchers": 675
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 12919983.3,
+    "n_vouchers": 719
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 2219981.08,
+    "n_vouchers": 128
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 1939303.38,
+    "n_vouchers": 317
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 1762823.0,
+    "n_vouchers": 98
+   },
+   {
+    "department": "ENV Environment",
+    "department_code": "ENV",
+    "usd": 407781.03,
+    "n_vouchers": 25
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 6165.17,
+    "n_vouchers": 299
+   }
+  ],
+  "n_departments": 7,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 89792433.84,
+    "n_vouchers": 793
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1062994.3,
+    "n_vouchers": 117
+   },
+   {
+    "code": "536440",
+    "label": "CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 4372.43,
+    "n_vouchers": 1
+   },
+   {
+    "code": "546990",
+    "label": "Food",
+    "spend_class": "purchase",
+    "usd": 3356.25,
+    "n_vouchers": 122
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 5701862.05,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 5210365.29,
+    "n_vouchers": 77
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 287533.1,
+    "n_vouchers": 13
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 142729.08,
+    "n_vouchers": 10
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 61220.9,
+    "n_vouchers": 3
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Food",
+    "spend_class": "purchase",
+    "usd": 13.68,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": {
+  "description": "San Francisco Food Bank is an IRS-recognized tax-exempt organization in San Francisco, CA. Its IRS activity code is not recorded in the registry.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "San Francisco Food Bank",
+  "ein": "943041517",
+  "ntee_code": null,
+  "ntee_label": null,
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/943041517",
+  "checked_at": "2026-07-27T23:38:11.115321+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000035494",

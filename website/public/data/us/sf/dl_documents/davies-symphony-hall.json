@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.754643+00:00",
+ "generated_at": "2026-07-28T12:23:47.768441+00:00",
  "slug": "davies-symphony-hall",
  "name": "Louise M. Davies Symphony Hall",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -42,8 +42,58 @@
    "url": "https://archive.org/details/schoolofartsmast1199sanf",
    "deep_link": "https://archive.org/details/schoolofartsmast1199sanf?q=Louise+M.+Davies+Symphony+Hall",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A 1997 environmental review of a School of the Arts proposal that maps Davies Hall among the Civic Center's public buildings and records which of them were then being seismically strengthened."
+  },
+  {
+   "identifier": "civiccenterstud1994sanf_0",
+   "title": "Civic Center study : cultural facilities plan, issues and finding report : draft for citizen review",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1994,
+   "pool": "sfpl",
+   "matched_alias": "Louise M. Davies Symphony Hall",
+   "ocr_excerpts": [
+    "ted areas of cultural facilities, there are other venues for the arts located in neighborhoods scattered through- out the city. 20 CULTURAL FACILITIES PLAN Table 3: Large-Venue Performing Arts Facilities FACILITY SEATING CAPACITY Bill Graham Civic Auditorium 7000 War Memorial Opera House 3176 Louise M. Davies Symphony Hall 2743 Warfield Theater 2600 Orpheum Theater 2500 Golden Gate Theater 2500 Herbst Theater 928 Nourse Auditorium (under renovation) 856 PERFORMING ARTS FACILITIES IN THE CIVIC CENTER Large- Venue Spaces The Civic Center is home to the War Memorial and Performing Arts Center which includes the Opera House (housing the San Francisco Opera Company and the San Francisco Ballet Company), Louise M. Davies Symphony Hall (housing the San Francisco Symphony) and the Veterans Building (housing the Herbst Theater and the Green Room - which can be used as a reception room or recital hall - and Veterans organizations' meeting rooms and a trophy museum). Also located in the Civic Center are the Civic (Bill Graham) Audit",
+    "d. The seating capacities of these perform- ing arts facilities are shown in Table 3. Note that the 300 seat Veterans Building Green Room is discussed in the section entitled, \"Medium Venue Spaces\". The facilities of the San Francisco War Memorial Performing Arts Center— the War Memorial Opera House, Davies Symphony Hall, the Herbst Theater and the Veterans Building Green Room— are controlled by the Board of Trustees of the San Francisco War Memorial. According to trust agreements and the City Charter, this Board has sole authority to approve all activities taking place in these facilities. Louise M. Davies Symphony Hall is home to the San Francisco Symphony. Davies Hall is easily accessible from freeway off-ramps and close to many city-wide and regional public transit lines. It is also close to the Civic Center Garage, the Performing Arts Garage, the Fox Plaza Garage and the Opera Plaza Garage. The Hall, which",
+    "itals and other events that may be presented in a concert-like setting. The design does not allow for the type of theatrical and musical presentations that demand a proscenium theater. Under the City Charter, trust agreements give the San Francisco Symphony certain rights of first refusal for use of Davies Symphony Hall. The Symphony's repertory 21 CIVIC CENTER. STUDY season runs from the first week of September through May and is generally followed in June by special presentations sponsored by the Symphony such as the Beethoven Festival. Approximately 30 days per year are available for rental of Davies Hall",
+    "usly referenced as a performance space, may also be considered a multipurpose space. In addition to being used as a chamber music recital hall, it is used for receptions, lectures and readings. Five spaces were identified as"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.43,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.43,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.5,
+    "money": false,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/civiccenterstud1994sanf_0",
+   "deep_link": "https://archive.org/details/civiccenterstud1994sanf_0?q=Louise+M.+Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A 1994 study of Civic Center cultural facilities: it puts Davies Hall at 2,743 seats, notes the Symphony's right of first refusal under the City Charter, and that only about 30 days a year are left free to rent."
   },
   {
    "identifier": "annualrprt1978798384warm",
@@ -82,8 +132,13 @@
    "url": "https://archive.org/details/annualrprt1978798384warm",
    "deep_link": "https://archive.org/details/annualrprt1978798384warm?q=Davies+Symphony+Hall",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "A War Memorial annual report from the years the hall was completed, noting that no capital funds were budgeted and that $40 million of improvements were financed by the Sponsors of the Performing Arts Center."
   },
   {
    "identifier": "calendarofevents2012sanf",
@@ -123,49 +178,13 @@
    "url": "https://archive.org/details/calendarofevents2012sanf",
    "deep_link": "https://archive.org/details/calendarofevents2012sanf?q=Davies+Symphony+Hall",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "4 editions cited",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "civiccenterstud1994sanf_0",
-   "title": "Civic Center study : cultural facilities plan, issues and finding report : draft for citizen review",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1994,
-   "pool": "sfpl",
-   "matched_alias": "Louise M. Davies Symphony Hall",
-   "ocr_excerpts": [
-    "ted areas of cultural facilities, there are other venues for the arts located in neighborhoods scattered through- out the city. 20 CULTURAL FACILITIES PLAN Table 3: Large-Venue Performing Arts Facilities FACILITY SEATING CAPACITY Bill Graham Civic Auditorium 7000 War Memorial Opera House 3176 Louise M. Davies Symphony Hall 2743 Warfield Theater 2600 Orpheum Theater 2500 Golden Gate Theater 2500 Herbst Theater 928 Nourse Auditorium (under renovation) 856 PERFORMING ARTS FACILITIES IN THE CIVIC CENTER Large- Venue Spaces The Civic Center is home to the War Memorial and Performing Arts Center which includes the Opera House (housing the San Francisco Opera Company and the San Francisco Ballet Company), Louise M. Davies Symphony Hall (housing the San Francisco Symphony) and the Veterans Building (housing the Herbst Theater and the Green Room - which can be used as a reception room or recital hall - and Veterans organizations' meeting rooms and a trophy museum). Also located in the Civic Center are the Civic (Bill Graham) Audit",
-    "d. The seating capacities of these perform- ing arts facilities are shown in Table 3. Note that the 300 seat Veterans Building Green Room is discussed in the section entitled, \"Medium Venue Spaces\". The facilities of the San Francisco War Memorial Performing Arts Center— the War Memorial Opera House, Davies Symphony Hall, the Herbst Theater and the Veterans Building Green Room— are controlled by the Board of Trustees of the San Francisco War Memorial. According to trust agreements and the City Charter, this Board has sole authority to approve all activities taking place in these facilities. Louise M. Davies Symphony Hall is home to the San Francisco Symphony. Davies Hall is easily accessible from freeway off-ramps and close to many city-wide and regional public transit lines. It is also close to the Civic Center Garage, the Performing Arts Garage, the Fox Plaza Garage and the Opera Plaza Garage. The Hall, which",
-    "itals and other events that may be presented in a concert-like setting. The design does not allow for the type of theatrical and musical presentations that demand a proscenium theater. Under the City Charter, trust agreements give the San Francisco Symphony certain rights of first refusal for use of Davies Symphony Hall. The Symphony's repertory 21 CIVIC CENTER. STUDY season runs from the first week of September through May and is generally followed in June by special presentations sponsored by the Symphony such as the Beethoven Festival. Approximately 30 days per year are available for rental of Davies Hall",
-    "usly referenced as a performance space, may also be considered a multipurpose space. In addition to being used as a chamber music recital hall, it is used for receptions, lectures and readings. Five spaces were identified as"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 6.43,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 1.43,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.5,
-    "money": false,
-    "decision": false,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/civiccenterstud1994sanf_0",
-   "deep_link": "https://archive.org/details/civiccenterstud1994sanf_0?q=Louise+M.+Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "The Performing Arts Center's calendar, describing the architectural and acoustical tours of Davies Hall run every Monday and by request."
   }
  ]
 }

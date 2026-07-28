@@ -31,10 +31,22 @@ def main() -> int:
     args = ap.parse_args()
     d = Path(args.dir)
 
+    # Deep-merge, per place. A plain dict.update() replaces a place's WHOLE
+    # entry, so a later batch touching one document of a place silently dropped
+    # every gloss an earlier batch had written for that same place — the newer
+    # file simply won on filename order. Merge the gloss maps instead, and let
+    # later files win only on the keys they actually carry.
     merged: dict[str, dict] = {}
     for f in sorted(d.glob("batch*.json")):
-        merged.update(json.loads(f.read_text()))
-    print(f"Loaded {len(merged)} place summaries from {d}")
+        for slug, res in json.loads(f.read_text()).items():
+            cur = merged.setdefault(slug, {})
+            for k, v in res.items():
+                if k == "glosses":
+                    cur.setdefault("glosses", {}).update(v or {})
+                elif v:
+                    cur[k] = v
+    n_gloss = sum(len(r.get("glosses") or {}) for r in merged.values())
+    print(f"Loaded {len(merged)} places / {n_gloss} glosses from {d}")
 
     published, skipped = [], []
     for slug, res in merged.items():

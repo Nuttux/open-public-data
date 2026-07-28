@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.734646+00:00",
+ "generated_at": "2026-07-28T11:43:47.704746+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,6 +35,50 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 1123,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 225333005.94,
+    "n_vouchers": 1123
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 108616063.97,
+    "n_vouchers": 254
+   },
+   {
+    "code": "463599",
+    "label": "Misc Public Health Revenue",
+    "spend_class": "unclear",
+    "usd": -40246.83,
+    "n_vouchers": 3
+   }
+  ],
+  "n_categories": 2,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 37558940.05,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 37558940.05,
+    "n_vouchers": 34
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000010331",

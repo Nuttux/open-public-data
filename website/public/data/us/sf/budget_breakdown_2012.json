@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:34:55.301701+00:00",
+  "generated_at": "2026-07-28T11:43:33.384399+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -1230,16 +1230,6 @@
         "n_characters": 1
       },
       {
-        "code": "PUC",
-        "label": "PUC Public Utilities Commission",
-        "display_name": "Public Utilities Commission (water, power, sewer)",
-        "org_group_code": "02",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": -142360981.0,
-        "share_of_side": 0.0,
-        "n_characters": 2
-      },
-      {
         "code": "UNA",
         "label": "General Fund Unallocated",
         "display_name": null,
@@ -1248,6 +1238,16 @@
         "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
         "n_characters": 14
+      },
+      {
+        "code": "PUC",
+        "label": "PUC Public Utilities Commission",
+        "display_name": "Public Utilities Commission (water, power, sewer)",
+        "org_group_code": "02",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -142360981.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
       }
     ]
   },
@@ -3678,13 +3678,13 @@
         0
       ],
       [
-        "ART",
+        "SCI",
         "06F",
         150000.0,
         0
       ],
       [
-        "SCI",
+        "ART",
         "06F",
         150000.0,
         0
@@ -3979,15 +3979,15 @@
       ],
       [
         "WOM",
-        "ELU",
-        -16000.0,
-        1
-      ],
-      [
-        "WOM",
         "091",
         16000.0,
         0
+      ],
+      [
+        "WOM",
+        "ELU",
+        -16000.0,
+        1
       ],
       [
         "PRT",
@@ -4092,14 +4092,14 @@
         0
       ],
       [
-        "CRT",
-        "040",
+        "CWP",
+        "091",
         1000.0,
         0
       ],
       [
-        "CWP",
-        "091",
+        "CRT",
+        "040",
         1000.0,
         0
       ],
@@ -4281,15 +4281,15 @@
       ],
       [
         "PUC",
-        "ELS",
-        -142360981.0,
-        1
-      ],
-      [
-        "PUC",
         "865",
         142360981.0,
         0
+      ],
+      [
+        "PUC",
+        "ELS",
+        -142360981.0,
+        1
       ],
       [
         "UNA",
@@ -4407,15 +4407,15 @@
       ],
       [
         "HRD",
-        "865",
-        63289326.0,
-        0
-      ],
-      [
-        "HRD",
         "ELS",
         -63289326.0,
         1
+      ],
+      [
+        "HRD",
+        "865",
+        63289326.0,
+        0
       ],
       [
         "MTA",
@@ -4995,15 +4995,15 @@
       ],
       [
         "MYR",
-        "865",
-        6913846.0,
-        0
-      ],
-      [
-        "MYR",
         "ELS",
         -6913846.0,
         1
+      ],
+      [
+        "MYR",
+        "865",
+        6913846.0,
+        0
       ],
       [
         "ECN",
@@ -5121,15 +5121,15 @@
       ],
       [
         "HRC",
-        "865",
-        4907977.0,
-        0
-      ],
-      [
-        "HRC",
         "ELS",
         -4907977.0,
         1
+      ],
+      [
+        "HRC",
+        "865",
+        4907977.0,
+        0
       ],
       [
         "REC",
@@ -5655,15 +5655,15 @@
       ],
       [
         "ECD",
-        "865",
-        754917.0,
-        0
-      ],
-      [
-        "ECD",
         "ELS",
         -754917.0,
         1
+      ],
+      [
+        "ECD",
+        "865",
+        754917.0,
+        0
       ],
       [
         "DPH",
@@ -5942,14 +5942,14 @@
         0
       ],
       [
-        "HHP",
-        "350",
+        "MYR",
+        "750",
         250000.0,
         0
       ],
       [
-        "MYR",
-        "750",
+        "HHP",
+        "350",
         250000.0,
         0
       ],
@@ -6110,10 +6110,10 @@
         0
       ],
       [
-        "DSS",
-        "490",
-        100000.0,
-        0
+        "JUV",
+        "ELS",
+        -100000.0,
+        1
       ],
       [
         "JUV",
@@ -6122,10 +6122,10 @@
         0
       ],
       [
-        "JUV",
-        "ELS",
-        -100000.0,
-        1
+        "DSS",
+        "490",
+        100000.0,
+        0
       ],
       [
         "UNA",
@@ -6176,14 +6176,14 @@
         0
       ],
       [
-        "DPW",
-        "250",
+        "DPH",
+        "300",
         60000.0,
         0
       ],
       [
-        "DPH",
-        "300",
+        "DPW",
+        "250",
         60000.0,
         0
       ],
@@ -6285,9 +6285,9 @@
       ],
       [
         "WOM",
-        "910",
-        16000.0,
-        0
+        "ELS",
+        -16000.0,
+        1
       ],
       [
         "WOM",
@@ -6297,9 +6297,9 @@
       ],
       [
         "WOM",
-        "ELS",
-        -16000.0,
-        1
+        "910",
+        16000.0,
+        0
       ],
       [
         "LIB",
@@ -7277,13 +7277,13 @@
         "n_funds": 1
       },
       {
-        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_type": "General Hospital Medical Center Funds",
         "fund_category": "Annual Projects",
         "total_usd": 1000000.0,
         "n_funds": 1
       },
       {
-        "fund_type": "General Hospital Medical Center Funds",
+        "fund_type": "Laguna Honda Hospital Funds",
         "fund_category": "Annual Projects",
         "total_usd": 1000000.0,
         "n_funds": 1

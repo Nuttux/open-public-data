@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.738608+00:00",
+ "generated_at": "2026-07-28T11:43:47.711371+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,124 @@
  "top_departments": [
   "HOM Homelessness Services"
  ],
+ "profile": {
+  "n_vouchers": 1501,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 119578948.93,
+    "n_vouchers": 652
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 39265887.9,
+    "n_vouchers": 436
+   },
+   {
+    "department": "WOM Status of Women",
+    "department_code": "WOM",
+    "usd": 4833317.24,
+    "n_vouchers": 319
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 1037272.08,
+    "n_vouchers": 57
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 838397.43,
+    "n_vouchers": 36
+   },
+   {
+    "department": "DAT District Attorney",
+    "department_code": "DAT",
+    "usd": 400.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 6,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 112908456.43,
+    "n_vouchers": 906
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 7090700.91,
+    "n_vouchers": 12
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 615683.57,
+    "n_vouchers": 4
+   },
+   {
+    "code": "536510",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 589230.05,
+    "n_vouchers": 85
+   },
+   {
+    "code": "536530",
+    "label": "Extended Sick Leave Benefits",
+    "spend_class": "unclear",
+    "usd": 9365.52,
+    "n_vouchers": 4
+   },
+   {
+    "code": "522020",
+    "label": "Training Costs Paid To Vendors",
+    "spend_class": "purchase",
+    "usd": 400.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 22583687.45,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 21745322.51,
+    "n_vouchers": 89
+   },
+   {
+    "department": "WOM Status of Women",
+    "department_code": "WOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 599753.34,
+    "n_vouchers": 30
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 238611.6,
+    "n_vouchers": 30
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000029006",

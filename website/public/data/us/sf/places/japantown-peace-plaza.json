@@ -1,0 +1,435 @@
+{
+ "generated_at": "2026-07-28T12:23:47.791834+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "japantown-peace-plaza",
+ "name": "Japantown Peace Plaza",
+ "kind": "Park",
+ "family": "park",
+ "address": "",
+ "lat": 37.785147,
+ "lon": -122.429806,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "facility": null,
+ "capital": {
+  "n_items": 1,
+  "measure_totals": {},
+  "bond_programs": [
+   "Health and Recovery"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "Japantown Peace Plaza",
+    "bond_program": "Health and Recovery",
+    "component": "Neighborhood Parks",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Japantown Peace Plaza"
+   }
+  ],
+  "payees": [
+   {
+    "vendor": "PLANT CONSTRUCTION CO LP",
+    "paid_usd": 15981138.17,
+    "n_contracts": 1,
+    "first_fiscal_year": 2025,
+    "last_fiscal_year": 2026
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 15981138.17
+ },
+ "photo": "/img/us/sf/places/japantown-peace-plaza.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/japantown-peace-plaza.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Japantown_Peace_Plaza_at_sunset.jpg",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Payton Chung",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T23:04:13.160669+00:00"
+ },
+ "summary_en": "The Peace Plaza is a small Recreation and Park site in Japantown, and the city's own scorecards are the clearest record of how it has been kept. The Controller's annual parks reports rate every park on maintenance and appearance and print the series: the plaza scored 82.4 percent in 2005-06, rose to 87.8, slipped to 85.4 percent in 2007-08, then reached 95.4 percent in 2008-09 — a gain of 9.9 points — before easing to 90.0 percent halfway through 2009-10. Rebuilding it has twice gone through the Board of Supervisors. In October 1999 the Finance and Labor Committee heard a request to release $785,000 of reserved Public Works money to pay Competent Building Inc. for the Japantown Peace Plaza Project, part of $2.75 million of the department's citywide capital budget that the committee had put on reserve pending budget details, with the coordinator of the Japantown Planning, Preservation and Development Task Force speaking in support. The recent renovation is carried by a single contract: Plant Construction Co LP was engaged at an agreed $11.76 million and has been paid $15.90 million, the gap between the two being the ordinary record of a construction contract growing as work proceeds. The paid figure is money that has actually left the city to a vendor.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
+  "contracts": [
+   {
+    "contract_no": "1000031819",
+    "title": "Japantown Peace Plaza Reno",
+    "prime": "PLANT CONSTRUCTION CO LP",
+    "department_code": "DPW",
+    "agreed_usd": 11758211.48,
+    "paid_usd": 15901728.8,
+    "evidence": "PW Japantown Peace Plaza Reno",
+    "team": [
+     {
+      "supplier": "PLANT CONSTRUCTION CO LP",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 11758211.48
+     },
+     {
+      "supplier": "JENSEN LANDSCAPE CONTRACTOR LLC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 2592188.0
+     },
+     {
+      "supplier": "K Z TILE CO",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 878146.0
+     },
+     {
+      "supplier": "PIONEER CONTRACTORS INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 824800.0
+     },
+     {
+      "supplier": "Bird Electric Inc",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 766000.0
+     },
+     {
+      "supplier": "COURTNEY, INC.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 655357.0
+     },
+     {
+      "supplier": "MAS METALS, INC.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 462900.0
+     },
+     {
+      "supplier": "DYWIDAG SYSTEMS INT'L USA INC.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 420775.0
+     },
+     {
+      "supplier": "CELTIC SCAFFOLDING INC.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 391800.0
+     },
+     {
+      "supplier": "BELLANTI PLUMBING",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 345500.0
+     },
+     {
+      "supplier": "ECO BAY SERVICES INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 289000.0
+     },
+     {
+      "supplier": "Rick Slater Construction, Inc.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 263421.0
+     },
+     {
+      "supplier": "KBI PAINTING, INC.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 241635.0
+     },
+     {
+      "supplier": "Clean Cut Concrete, Inc.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 209059.0
+     },
+     {
+      "supplier": "NV HEATHORN COMPANY",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 183595.0
+     },
+     {
+      "supplier": "Ground Control inc.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 129200.0
+     },
+     {
+      "supplier": "SWINERTON BUILDERS",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 123716.18
+     },
+     {
+      "supplier": "NICHOLS CONCRETE CUTTING",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 114200.0
+     },
+     {
+      "supplier": "EIGHTEEN TRUCKING CO",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 102500.0
+     },
+     {
+      "supplier": "AYOOB & PEERY PLUMBING CO INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 93000.0
+     },
+     {
+      "supplier": "PRIORITY ARCHITECTURAL GRAPHICS",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 89508.0
+     },
+     {
+      "supplier": "GEORGE E MASKER INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 81850.0
+     },
+     {
+      "supplier": "ACCURATE FIRESTOP",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 78890.0
+     },
+     {
+      "supplier": "COMMERCIAL DOOR & FRAME",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 53110.0
+     },
+     {
+      "supplier": "KM 106 Construction Inc.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 40500.0
+     },
+     {
+      "supplier": "COAST BUILDING",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 8863.0
+     },
+     {
+      "supplier": "F3 & ASSOCIATES INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 6000.0
+     },
+     {
+      "supplier": "RANSOME COMPANY",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 0.0
+     }
+    ]
+   }
+  ],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "fy200809parksannsanf",
+   "title": "FY 2008-09 parks annual report : parks scores citywide increased for fourth year, but disparities remain between districts",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2008,
+   "pool": "sfpl",
+   "matched_alias": "Japantown Peace Plaza",
+   "ocr_excerpts": [
+    "h Mini Park 3 90.1% 18.1% 72.0% 95.2% 82.1% India Basin Shoreline Park 10 77.6% -8.8% 86.4% 83.8% 82.2% J. P. Murphy Playground 7 98.3% n/a Closed 96.9% 97.9% Jackson Playground 10 85.1% -4.2% 89.3% 87.1% 88.4% James Rolph Jr Playground 9 90.4% n/a Closed 70.1% 79.9% Japantown Peace Plaza 5 95.4% 9.9% 85.4% 87.8% 82.4% Jefferson Square 6 81.3% 4.4% 76.8% 81.5% 78.3% Joe Dimaggio Playground 3 96.3% 7.3% 89.1% 96.1% 91.7% John McLaren Park 10 79.6% 9.4% 70.2% 85.0% 78.5% Joost/Baden Mini Park 8 92.1% 12.4% 79.7% 72.5% 85.9% Jose Coronado Playground 9 8",
+    "89.8% 0.5% Golden Gate/Steiner Mini Park RPD CON 100.0% 75.0% 100.0% 100.0% 68.6% 81.2% -8.7% Grattan Playground RPD CON 75.0% 91.1% 94.7% 100.0% 98.9% 91.6% 3.8% Hamilton Playground RPD CON 0.0% n/a Hayes Valley Playground RPD CON 64.6% 84.3% 100.0% 92.7% 74.5% 80.0% -7.7% Japantown Peace Plaza RPD CON 88.2% 96.8% 100.0% 87.5% 100.0% 95.4% 9.9% Koshland Park RPD CON 86.3% 94.2% 88.5% 81 .3% 88.5% 88.0% -8.3% Page/Laguna Mini Park RPD CON 97.6% 94.6% 88.6% 83.8% 89.7% 90.0% -3.2% Patricia's Green in Hayes Valley RPD CON 80.5% 95.6% 100.0% 74.4% 100.0% 84.2% -10.1"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.92,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.92,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/fy200809parksannsanf",
+   "deep_link": "https://archive.org/details/fy200809parksannsanf?q=Japantown+Peace+Plaza",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "The 2008-09 parks report, scoring the plaza at 95.4 percent after a 9.9-point gain."
+  },
+  {
+   "identifier": "fy200708parkssanf",
+   "title": "FY 2007-08 parks annual report : parks scores increased for third year and differences between district averages narrowed",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2007,
+   "pool": "sfpl",
+   "matched_alias": "Japantown Peace Plaza",
+   "ocr_excerpts": [
+    "port Current Previous Park District 2007-08 Change from 2006-07 2006-07 Change from 2005- 06 2005-06 J. P. Murphy Playground 7 Closed n/a 96.89% -1.00% 97.89% Jackson Playground 10 89.27% 2.19% 87.09% -1.33% 88.42% James Rolph Jr Playground g Closed n/a 70.11% -9.81% 79.92% Japantown Peace Plaza 5 85.42% ■2.35% 87.77% 5.40% 82.37% Jefferson Square 6 76.81% ■4.73% 81.54% 3.22% 78.32% Joe Dimaggio Playground 3 89.08% ■6.99% 96.07% 4.39% 91.68% John McLaren Park 10 70.21% ■14.75% 84.96% 6.47% 78.48% Joost/Baden Mini Park 8 79.74% 7.23% 72.51% -13.36% 85.87% Jose Co",
+    "% 79.17% 94.74% 96.15% 94.44% 89.84% 82.14% 85.53% 94.12% 86.57% 92.22% 94.12% 78.95% 87.80% DISTRICT 6 Change from 2006- 07 7.04% 5.07% Hamilton Playground RPD CSA 60.00% 89.12% 74.56% 7.90% Hayes Valley Playground RPD CSA 98.21% 78.00% 96.36% 97.22% 87.63% -3.01% Japantown Peace Plaza RPD CSA 92.86% 100.00% 74.19% 93.75% 100.00% 85.42% -2.35% Koshland Park RPD CSA 100.00% 95.92% 95.56% 94.59% 96.32% 13.12% Page/Laguna Mini Park RPD CSA 92.31% 94.44% 88.00% 100.00% 93.23% 22. 13% Patricia's Green In Hayes Valley RPD CSA 93.75% 100.00% 93.33% 90.32% 97.50% 94"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.85,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.85,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/fy200708parkssanf",
+   "deep_link": "https://archive.org/details/fy200708parkssanf?q=Japantown+Peace+Plaza",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "The 2007-08 parks report, showing the plaza's score slipping to 85.4 percent before it recovered."
+  },
+  {
+   "identifier": "parkstandards6mo162010san",
+   "title": "Park standards, 6-month report FY 2009-10 : park scores citywide increased through the first half of FY 2009-10",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": 2009,
+   "pool": "sfpl",
+   "matched_alias": "Japantown Peace Plaza",
+   "ocr_excerpts": [
+    "ini Park 3 94.5% 90.1% 72.0% 95.2% 82.1% India Basin Shoreline Park 10 81.7% 77.6% 86.4% 83.8% 82.2% J. P. Murphy Playground 7 99.5% 98.3% Closed 96.9% 97.9% Jackson Playground 10 96.4% 85.1% 89.3% 87.1% 88.4% James Rolph Jr Playground 9 88.5% 90.4% Closed 70.1% 79.9% Japantown Peace Plaza 5 90.0% 95.4% 85.4% 87.8% 82.4% Jefferson Square 6 98.0% 81.3% 76.8% 81.5% 78.3% Joe Dimaggio Playground 3 91.2% 96.3% 89.1% 96.1% 91.7% John McLaren Park 10 72.9% 79.6% 70.2% 85.0% 78.5% Joost/Baden Mini Park 8 97.7% 92.1% 79.7% 72.5% 85.9% Jose Coronado Playground 9",
+    "93.9% 91.2% 93.3% 1.0% Fillmore/Turk Mini Park RPD CON 91 .2% 79.4% 82.9% 84.1% -5.7% Golden Gate/Steiner Mini Park RPD CON 88.2% 75.0% 81.6% 0.5% Grattan Playground RPD CON 75.4% 93.5% 84.4% -7.2% Hamilton Playground RPD CON Hayes Valley Playground RPD CON 94.6% 94.5% 14.6% Japantown Peace Plaza RPD CON 100.0% 93.3% 83.3% 90.0% -5.4% Koshland Park RPD CON 86.0% 98.1% 92.0% 4.0% Page/Laguna Mini Park RPD CON 82.4% 100.0% 91.2% 1.2% Patricia's Green in Hayes Valley RPD CON 83.8% 100.0% 91.9% 7.7% Raymond Kimbell Playground RPD CON 87.8% 87.5% 68.2% 82.8% 5.6% DISTRI"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.59,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 2.59,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/parkstandards6mo162010san",
+   "deep_link": "https://archive.org/details/parkstandards6mo162010san?q=Japantown+Peace+Plaza",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": true,
+   "gloss": "A mid-year park-standards report, with the plaza easing back to 90.0 percent."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  }
+ ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 3,
+  "n_money_links": 2,
+  "meets_pre_summary": true
+ }
+}

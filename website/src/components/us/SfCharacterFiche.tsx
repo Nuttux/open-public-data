@@ -6,6 +6,10 @@ import { deptSlug } from "@/lib/us/sf-budget-slugs";
 import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
 import { useT } from "@/lib/localeContext";
 import Tip from "@/components/fusion/Tip";
+import { FicheMore } from "@/components/fiche";
+
+/** Departments visible before the fold. */
+const DEPT_FOLD = 8;
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -71,48 +75,57 @@ export default function SfCharacterFiche({ c }: { c: SfCharacterFicheData }) {
         </div>
       )}
 
-      {c.departments.length > 0 && (
-        <section className="fx-fiche-section">
-          <div className="fx-fiche-h">
-            {fill(t("us.sf.fiche.char.depts_h"), { fy: c.fiscal_year })}
-          </div>
-          <div>
-            {c.departments.map((d) => (
-              <Link
-                key={d.code}
-                href={`/us/city/sf/budget/dept/${deptSlug(d.code)}?year=${c.fiscal_year}`}
-                scroll={false}
-                className="fx-row-link"
+      {c.departments.length > 0 && (() => {
+        // 37 departments rendered flat was the single longest unbounded list on
+        // any SF fiche (1,452px). The money is in the head of the distribution;
+        // the tail is a lookup, so it folds.
+        const head = c.departments.slice(0, DEPT_FOLD);
+        const tail = c.departments.slice(DEPT_FOLD);
+        const row = (d: SfCharacterFicheData["departments"][number]) => (
+          <Link
+            key={d.code}
+            href={`/us/city/sf/budget/dept/${deptSlug(d.code)}?year=${c.fiscal_year}`}
+            scroll={false}
+            className="fx-row-link"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "minmax(140px, 1fr) minmax(80px, 2fr) auto",
+              alignItems: "center",
+              gap: 12,
+              padding: "8px 4px",
+              borderBottom: "1px solid var(--rule)",
+              fontFamily: "var(--f-ui)",
+              fontSize: 13,
+            }}
+          >
+            <span>{d.display_name ?? d.label}</span>
+            <span style={{ position: "relative", height: 10, background: "var(--rule)" }}>
+              <span
                 style={{
-                  display: "grid",
-                  gridTemplateColumns: "minmax(140px, 1fr) minmax(80px, 2fr) auto",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "8px 4px",
-                  borderBottom: "1px solid var(--rule)",
-                  fontFamily: "var(--f-ui)",
-                  fontSize: 13,
+                  position: "absolute",
+                  inset: "0 auto 0 0",
+                  width: `${Math.max(0, Math.min(100, (d.amount_usd / max) * 100))}%`,
+                  background: "var(--ink)",
                 }}
-              >
-                <span>{d.display_name ?? d.label}</span>
-                <span style={{ position: "relative", height: 10, background: "var(--rule)" }}>
-                  <span
-                    style={{
-                      position: "absolute",
-                      inset: "0 auto 0 0",
-                      width: `${Math.max(0, Math.min(100, (d.amount_usd / max) * 100))}%`,
-                      background: "var(--ink)",
-                    }}
-                  />
-                </span>
-                <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 12, fontWeight: 600 }}>
-                  {fmtUsdCompact(d.amount_usd)}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
+              />
+            </span>
+            <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 12, fontWeight: 600 }}>
+              {fmtUsdCompact(d.amount_usd)}
+            </span>
+          </Link>
+        );
+        return (
+          <section className="fx-fiche-section">
+            <div className="fx-fiche-h">
+              {fill(t("us.sf.fiche.char.depts_h"), { fy: c.fiscal_year })}
+            </div>
+            <div>{head.map(row)}</div>
+            <FicheMore count={tail.length} noun="smaller departments">
+              {tail.map(row)}
+            </FicheMore>
+          </section>
+        );
+      })()}
 
       {c.negatives.length > 0 && (
         <section className="fx-fiche-section">

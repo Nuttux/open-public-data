@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.726490+00:00",
+ "generated_at": "2026-07-28T11:43:47.690657+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "CCD SF Communtiy College Dist"
  ],
+ "profile": {
+  "n_vouchers": 2635,
+  "departments": [
+   {
+    "department": "CCD SF Communtiy College Dist",
+    "department_code": "CCD",
+    "usd": 1989725818.0,
+    "n_vouchers": 283
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 120731721.39,
+    "n_vouchers": 34
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 12059178.69,
+    "n_vouchers": 427
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 8367518.33,
+    "n_vouchers": 168
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 7617002.76,
+    "n_vouchers": 322
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 2980493.1,
+    "n_vouchers": 47
+   },
+   {
+    "department": "POL Police",
+    "department_code": "POL",
+    "usd": 2802493.02,
+    "n_vouchers": 676
+   },
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "usd": 1209482.55,
+    "n_vouchers": 392
+   }
+  ],
+  "n_departments": 26,
+  "categories": [
+   {
+    "code": "AGNCY_OBL_SCHL&CCD",
+    "label": "Agency Obl.-School&CollegeDist",
+    "spend_class": "obligation",
+    "usd": 1989725818.0,
+    "n_vouchers": 281
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 127071069.6,
+    "n_vouchers": 260
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 6353717.15,
+    "n_vouchers": 104
+   },
+   {
+    "code": "522020",
+    "label": "Training Costs Paid To Vendors",
+    "spend_class": "purchase",
+    "usd": 3336085.34,
+    "n_vouchers": 749
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 2769902.11,
+    "n_vouchers": 150
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 2127531.15,
+    "n_vouchers": 82
+   },
+   {
+    "code": "UNEARN_REV_CHGS_SVCS",
+    "label": "Unearned Revenue-Chgs for Svcs",
+    "spend_class": "ledger",
+    "usd": 580443.52,
+    "n_vouchers": 2
+   },
+   {
+    "code": "536110",
+    "label": "Fcs Special Services",
+    "spend_class": "purchase",
+    "usd": 546232.23,
+    "n_vouchers": 24
+   }
+  ],
+  "n_categories": 16,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 338186512.39,
+  "n_recent_lines": 11,
+  "recent_lines": [
+   {
+    "department": "CCD SF Communtiy College Dist",
+    "department_code": "CCD",
+    "label": "Agency Obl.-School&CollegeDist",
+    "spend_class": "obligation",
+    "usd": 326000000.0,
+    "n_vouchers": 35
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 9365739.98,
+    "n_vouchers": 4
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 949349.35,
+    "n_vouchers": 13
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 685552.79,
+    "n_vouchers": 38
+   },
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "label": "Unearned Revenue-Chgs for Svcs",
+    "spend_class": "ledger",
+    "usd": 370317.17,
+    "n_vouchers": 1
+   },
+   {
+    "department": "POL Police",
+    "department_code": "POL",
+    "label": "Training Costs Paid To Vendors",
+    "spend_class": "purchase",
+    "usd": 293091.0,
+    "n_vouchers": 97
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000016488",
@@ -67,7 +235,7 @@
   },
   {
    "contract_no": "1000026105",
-   "title": "Academy Training Svcs",
+   "title": "Academy Training Services",
    "department": "POL Police",
    "department_code": "POL",
    "agreed_usd": 4560101.0,
@@ -76,7 +244,7 @@
   },
   {
    "contract_no": "1000032802",
-   "title": "ARC, Drug and Alc CERT Prog",
+   "title": "ARC, Drug and Alc CERT Program",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 1835568.0,
@@ -85,7 +253,7 @@
   },
   {
    "contract_no": "1000035623",
-   "title": "Academy Instructional Svcs",
+   "title": "Academy Instructional Services",
    "department": "FIR Fire Department",
    "department_code": "FIR",
    "agreed_usd": 500000.0,

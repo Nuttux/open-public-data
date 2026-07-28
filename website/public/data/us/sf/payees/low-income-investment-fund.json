@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.741452+00:00",
+ "generated_at": "2026-07-28T11:43:47.715898+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,94 @@
  "top_departments": [
   "HSA Human Services Agency"
  ],
+ "profile": {
+  "n_vouchers": 809,
+  "departments": [
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 70098898.64,
+    "n_vouchers": 111
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 41711051.38,
+    "n_vouchers": 327
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 24520937.9,
+    "n_vouchers": 368
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 53406.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 25000.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 5,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 110359845.66,
+    "n_vouchers": 425
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1334951.36,
+    "n_vouchers": 12
+   },
+   {
+    "code": "581400",
+    "label": "Sr-Cfc-First 5 Commission",
+    "spend_class": "unclear",
+    "usd": 115153.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 3,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 10580625.77,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 10580625.77,
+    "n_vouchers": 3
+   }
+  ]
+ },
+ "identity": {
+  "description": "Low Income Investment Fund is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under housing and shelter.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Low Income Investment Fund",
+  "ein": "942952578",
+  "ntee_code": "L820",
+  "ntee_label": "Housing and shelter",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/942952578",
+  "checked_at": "2026-07-27T23:37:35.039691+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000034737",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.737248+00:00",
+ "generated_at": "2026-07-28T11:43:47.709292+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 3889,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 105117215.92,
+    "n_vouchers": 2510
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 60792037.12,
+    "n_vouchers": 708
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 6794856.83,
+    "n_vouchers": 310
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "usd": 1817879.0,
+    "n_vouchers": 81
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 1169795.3,
+    "n_vouchers": 53
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 943113.07,
+    "n_vouchers": 24
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 296814.4,
+    "n_vouchers": 54
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 271137.11,
+    "n_vouchers": 43
+   }
+  ],
+  "n_departments": 16,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 57384504.19,
+    "n_vouchers": 818
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 36818926.81,
+    "n_vouchers": 1096
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 6961905.38,
+    "n_vouchers": 64
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 934554.3,
+    "n_vouchers": 23
+   },
+   {
+    "code": "530110",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 377384.0,
+    "n_vouchers": 3
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 75000.0,
+    "n_vouchers": 3
+   },
+   {
+    "code": "OTH_ASSETS_CURR",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": 69522.99,
+    "n_vouchers": 46
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 64120.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 11,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 17840139.66,
+  "n_recent_lines": 7,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 11646330.74,
+    "n_vouchers": 111
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 4778869.94,
+    "n_vouchers": 120
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 520211.04,
+    "n_vouchers": 10
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 515645.0,
+    "n_vouchers": 24
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 332867.32,
+    "n_vouchers": 10
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 24920.62,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000011308",
@@ -67,7 +235,7 @@
   },
   {
    "contract_no": "1000023497",
-   "title": "BVHPF Arlington Support Svcs",
+   "title": "BVHPF Arlington Support Services",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 4972371.0,
@@ -112,7 +280,7 @@
   },
   {
    "contract_no": "1000032306",
-   "title": "BVHPF - RRH",
+   "title": "BVHPF - rapid re-housing",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 1030247.0,
@@ -139,7 +307,7 @@
   },
   {
    "contract_no": "1000036835",
-   "title": "BVHPF - RV RRH",
+   "title": "BVHPF - RV rapid re-housing",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 4186990.0,
@@ -148,7 +316,7 @@
   },
   {
    "contract_no": "1000023498",
-   "title": "BVHPF Monterey Blvd SS",
+   "title": "BVHPF Monterey Boulevard SS",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 271026.0,

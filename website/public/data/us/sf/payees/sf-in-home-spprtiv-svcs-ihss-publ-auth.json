@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.728079+00:00",
+ "generated_at": "2026-07-28T11:43:47.693171+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,6 +35,91 @@
  "top_departments": [
   "HSA Human Services Agency"
  ],
+ "profile": {
+  "n_vouchers": 381,
+  "departments": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 760290897.46,
+    "n_vouchers": 280
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 2733700.9,
+    "n_vouchers": 100
+   },
+   {
+    "department": "WOM Status of Women",
+    "department_code": "WOM",
+    "usd": 35.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 3,
+  "categories": [
+   {
+    "code": "537530",
+    "label": "IHSS Ip Public Authority Admin",
+    "spend_class": "purchase",
+    "usd": 681861456.56,
+    "n_vouchers": 147
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 76146541.27,
+    "n_vouchers": 44
+   },
+   {
+    "code": "537515",
+    "label": "On-Call Services Payments",
+    "spend_class": "purchase",
+    "usd": 1822890.45,
+    "n_vouchers": 65
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 343779.59,
+    "n_vouchers": 10
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 116229.59,
+    "n_vouchers": 14
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 96349651.68,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "IHSS Ip Public Authority Admin",
+    "spend_class": "purchase",
+    "usd": 96023513.31,
+    "n_vouchers": 12
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "On-Call Services Payments",
+    "spend_class": "purchase",
+    "usd": 326138.37,
+    "n_vouchers": 13
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000028867",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.740408+00:00",
+ "generated_at": "2026-07-28T11:43:47.713989+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,10 +35,162 @@
  "top_departments": [
   "PUB Public Utilities Bureaus"
  ],
+ "profile": {
+  "n_vouchers": 6503,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 106971417.28,
+    "n_vouchers": 4265
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "ECD",
+    "usd": 14817701.1,
+    "n_vouchers": 242
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 12145429.1,
+    "n_vouchers": 621
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 9037190.3,
+    "n_vouchers": 788
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 1342309.7,
+    "n_vouchers": 39
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 1225480.9,
+    "n_vouchers": 93
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 528323.3,
+    "n_vouchers": 9
+   },
+   {
+    "department": "ENV Environment",
+    "department_code": "ENV",
+    "usd": 526981.53,
+    "n_vouchers": 68
+   }
+  ],
+  "n_departments": 14,
+  "categories": [
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 13605217.77,
+    "n_vouchers": 557
+   },
+   {
+    "code": "527070",
+    "label": "Env Contractor-Consulting Svcs",
+    "spend_class": "purchase",
+    "usd": 6810999.33,
+    "n_vouchers": 706
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 4864495.62,
+    "n_vouchers": 428
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 3473231.11,
+    "n_vouchers": 390
+   },
+   {
+    "code": "527010",
+    "label": "Architectural Services",
+    "spend_class": "purchase",
+    "usd": 1401710.32,
+    "n_vouchers": 60
+   },
+   {
+    "code": "551110",
+    "label": "Insurance Expense",
+    "spend_class": "purchase",
+    "usd": 31568.5,
+    "n_vouchers": 21
+   },
+   {
+    "code": "527220",
+    "label": "Financial Services",
+    "spend_class": "purchase",
+    "usd": 13537.5,
+    "n_vouchers": 16
+   },
+   {
+    "code": "527080",
+    "label": "Construction Management Svcs",
+    "spend_class": "purchase",
+    "usd": 6019.16,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 8,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 1276085.03,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 691571.83,
+    "n_vouchers": 47
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 385886.99,
+    "n_vouchers": 3
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 136723.28,
+    "n_vouchers": 18
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Env Contractor-Consulting Svcs",
+    "spend_class": "purchase",
+    "usd": 61902.93,
+    "n_vouchers": 14
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000000101",
-   "title": "Spec & Tech SVCS, NR & LM",
+   "title": "Spec & Tech Services, NR & LM",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 5722360.0,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.738376+00:00",
+ "generated_at": "2026-07-28T11:43:47.711001+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,143 @@
  "top_departments": [
   "HOM Homelessness Services"
  ],
+ "profile": {
+  "n_vouchers": 3430,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 115953515.1,
+    "n_vouchers": 1512
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 35030767.8,
+    "n_vouchers": 926
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 5192521.53,
+    "n_vouchers": 132
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 4861376.93,
+    "n_vouchers": 201
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 3172527.64,
+    "n_vouchers": 66
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 3162379.04,
+    "n_vouchers": 456
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 637451.7,
+    "n_vouchers": 65
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 561195.85,
+    "n_vouchers": 72
+   }
+  ],
+  "n_departments": 8,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 118317807.62,
+    "n_vouchers": 1670
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 3426966.05,
+    "n_vouchers": 63
+   },
+   {
+    "code": "536510",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 1470038.59,
+    "n_vouchers": 60
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 879935.53,
+    "n_vouchers": 94
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 29401651.72,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 26966088.88,
+    "n_vouchers": 181
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1487980.06,
+    "n_vouchers": 29
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 865041.27,
+    "n_vouchers": 12
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 82541.51,
+    "n_vouchers": 6
+   }
+  ]
+ },
+ "identity": {
+  "description": "Compass Family Services is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under human services.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Compass Family Services",
+  "ein": "941156622",
+  "ntee_code": "P400",
+  "ntee_label": "Human services",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/941156622",
+  "checked_at": "2026-07-27T23:37:05.678481+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000017660",
@@ -58,7 +195,7 @@
   },
   {
    "contract_no": "1000032115",
-   "title": "Compass - SF Home RRH",
+   "title": "Compass - SF Home rapid re-housing",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 9126274.0,
@@ -85,7 +222,7 @@
   },
   {
    "contract_no": "1000027456",
-   "title": "Compass - CoC RRH",
+   "title": "Compass - CoC rapid re-housing",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 5386071.0,
@@ -94,7 +231,7 @@
   },
   {
    "contract_no": "1000032707",
-   "title": "24-02 FRC Initiative",
+   "title": "24-02 Family Resource Center Initiative",
    "department": "DEC Dept of Early Childhood",
    "department_code": "DEC",
    "agreed_usd": 1529116.0,

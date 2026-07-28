@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.736199+00:00",
+ "generated_at": "2026-07-28T11:43:47.707387+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,187 @@
  "top_departments": [
   "CHF Children;Youth & Families"
  ],
+ "profile": {
+  "n_vouchers": 2490,
+  "departments": [
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 138790436.73,
+    "n_vouchers": 1231
+   },
+   {
+    "department": "HRC Human Rights Commission",
+    "department_code": "HRC",
+    "usd": 15679536.83,
+    "n_vouchers": 54
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 13940485.97,
+    "n_vouchers": 471
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 9467092.0,
+    "n_vouchers": 233
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 5488595.97,
+    "n_vouchers": 200
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 5069856.3,
+    "n_vouchers": 54
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 4052319.79,
+    "n_vouchers": 208
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 784528.1,
+    "n_vouchers": 12
+   }
+  ],
+  "n_departments": 13,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 103984164.77,
+    "n_vouchers": 894
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 5977952.74,
+    "n_vouchers": 204
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 926917.64,
+    "n_vouchers": 24
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 491028.24,
+    "n_vouchers": 3
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 69552.0,
+    "n_vouchers": 7
+   },
+   {
+    "code": "546990",
+    "label": "Food",
+    "spend_class": "purchase",
+    "usd": 2002.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "OTH_ASSETS_CURR",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": -105000.0,
+    "n_vouchers": 20
+   }
+  ],
+  "n_categories": 8,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 15992161.71,
+  "n_recent_lines": 9,
+  "recent_lines": [
+   {
+    "department": "HRC Human Rights Commission",
+    "department_code": "HRC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 7229048.57,
+    "n_vouchers": 23
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 6250008.98,
+    "n_vouchers": 47
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1359353.01,
+    "n_vouchers": 52
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 607449.58,
+    "n_vouchers": 3
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 290763.6,
+    "n_vouchers": 13
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 208272.78,
+    "n_vouchers": 6
+   }
+  ]
+ },
+ "identity": {
+  "description": "Japanese Community Youth Council is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under human services.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Japanese Community Youth Council",
+  "ein": "237092514",
+  "ntee_code": "P36Z",
+  "ntee_label": "Human services",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/237092514",
+  "checked_at": "2026-07-27T23:36:44.841811+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000033677",

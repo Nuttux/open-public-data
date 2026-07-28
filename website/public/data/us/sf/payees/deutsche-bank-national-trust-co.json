@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.744638+00:00",
+ "generated_at": "2026-07-28T11:43:47.721564+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -24,6 +24,105 @@
  "top_departments": [
   "GEN General City / Unallocated"
  ],
+ "profile": {
+  "n_vouchers": 170,
+  "departments": [
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 65336146.8,
+    "n_vouchers": 48
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 22906408.3,
+    "n_vouchers": 76
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 8526116.2,
+    "n_vouchers": 6
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 6890417.3,
+    "n_vouchers": 32
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 3508246.3,
+    "n_vouchers": 6
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 23832.2,
+    "n_vouchers": 2
+   }
+  ],
+  "n_departments": 6,
+  "categories": [],
+  "n_categories": 0,
+  "counts_are_floor": false,
+  "recent_fy": 2014,
+  "recent_total_usd": 14422558.7,
+  "n_recent_lines": 6,
+  "recent_lines": [
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Base Rent-Debt Svc-Bldg-Struct",
+    "spend_class": "obligation",
+    "usd": 13348675.7,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 1060855.3,
+    "n_vouchers": 1
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Loan Interest Expense",
+    "spend_class": "ledger",
+    "usd": 11257.7,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 1000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Other Fees",
+    "spend_class": "purchase",
+    "usd": 500.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Financial Services",
+    "spend_class": "purchase",
+    "usd": 270.0,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+const b=await chromium.launch();
+const p=await b.newPage({viewport:{width:1440,height:1000}});
+await p.goto('http://localhost:3000/us/city/sf/places',{waitUntil:'networkidle',timeout:60000});
+await p.waitForTimeout(1200);
+console.log('index scrollY', await p.evaluate(()=>window.scrollY));
+const link=await p.$('a[href*="/places/place/"]');
+const href=await link.getAttribute('href');
+await link.click();
+await p.waitForTimeout(2500);
+console.log('after click ->',href);
+console.log('  scrollY', await p.evaluate(()=>window.scrollY), 'of', await p.evaluate(()=>document.body.scrollHeight));
+console.log('  url', p.url());
+await b.close();

@@ -52,6 +52,46 @@ from google.cloud import bigquery
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from utils.logger import Logger  # noqa: E402
 from export.us_sf_title_clean import clean_title  # noqa: E402
+from export.us_sf_title_expand import expand_title  # noqa: E402
+
+VULG_PATH = (
+    Path(__file__).parent.parent.parent / "cache" / "enrichment"
+    / "vulgarization_sf_contracts.json"
+)
+
+
+def _vulg_key(row: dict) -> str:
+    """(normalized title | contract type) — the unit the enrichment is written at."""
+    import re as _re
+    title = _re.sub(r"\s+", " ", (row.get("contract_title") or "").strip()).upper()
+    return f"{title}|{row.get('contract_type') or ''}"
+
+
+def load_vulgarization() -> dict[str, dict]:
+    """Generated plain-English text, keyed by title|type signature.
+
+    Read HERE, inside the export, on purpose. Applying it to the built JSON
+    afterwards is the pattern that silently destroyed the SF place glosses:
+    the next export rebuilds the files and the text is gone with no error.
+    Reading it as an input makes the export idempotent instead.
+
+    Absent file → empty dict, and every consumer falls back to title_plain.
+    """
+    if not VULG_PATH.exists():
+        return {}
+    with VULG_PATH.open(encoding="utf-8") as f:
+        return json.load(f).get("items", {})
+
+
+def vulg_for(row: dict, vulg: dict[str, dict]) -> dict[str, str]:
+    """The two generated fields for a row, omitting empties."""
+    hit = vulg.get(_vulg_key(row)) or {}
+    out = {}
+    for field in ("title_clear", "what_concretely"):
+        value = (hit.get(field) or "").strip()
+        if value:
+            out[field] = value
+    return out
 
 PROJECT_ID = "open-data-france-484717"
 DATASET = "dbt_us_marts"
@@ -129,7 +169,17 @@ def base_meta(as_of, source: dict) -> dict:
 
 
 def title_plain_for(row: dict) -> str | None:
-    return clean_title(row["contract_title"], row["department_code"])
+    """Deterministic readable title: strip dept prefixes, recase, then expand
+    the register's consonant-stripped shorthand (Rcrtn -> Recreation).
+
+    Both steps are mechanical and reversible in spirit — the raw title is
+    published alongside. Returns None when neither step changed anything, so
+    the consumer falls back to the register's own string.
+    """
+    code = row["department_code"]
+    cleaned = clean_title(row["contract_title"], code)
+    expanded = expand_title(cleaned or row["contract_title"], code)
+    return expanded or cleaned
 
 
 # ---------------------------------------------------------------------------
@@ -430,6 +480,7 @@ def build_overview(summary: list[dict], quality: dict, join_stats: dict,
 
 def build_active(summary: list[dict]) -> dict:
     ref = summary[0]
+    vulg = load_vulgarization()
     active = sorted(
         (r for r in summary if r["is_active"] is True),
         key=lambda r: -r["agreed_usd"],
@@ -444,17 +495,24 @@ def build_active(summary: list[dict]) -> dict:
             "department": r["department"],
             "department_code": r["department_code"],
             "contract_type": r["contract_type"],
+            "authority_family": r["authority_family"],
             "sole_source": r["is_sole_source"],
             "lbe_prime": r["is_lbe_prime"],
             "non_profit": r["is_non_profit"],
             "agreed_usd": _f(r["agreed_usd"]),
             "paid_usd": _f(r["paid_usd"]),
             "paid_exceeds_agreed": r["paid_exceeds_agreed"],
+            # Whether the source's own agreed = paid + remaining identity holds.
+            # Without it, paid > agreed says nothing about overspending: 109 of
+            # the 129 flagged active contracts (98.8% of the dollars) sit on
+            # rows where the register does not reconcile with itself.
+            "src_arithmetic_consistent": r["src_arithmetic_consistent"],
             "start": _d(r["term_start_date"]),
             "end": _d(r["term_end_date"]),
         }
         if tp:
             row["title_plain"] = tp
+        row.update(vulg_for(r, vulg))
         rows.append(row)
 
     return {
@@ -485,8 +543,10 @@ def fiche_corpus(summary: list[dict]) -> list[dict]:
     ]
 
 
-def build_fiche(r: dict, spend: list[dict], team: list[dict]) -> dict:
+def build_fiche(r: dict, spend: list[dict], team: list[dict],
+                vulg: dict[str, dict] | None = None) -> dict:
     tp = title_plain_for(r)
+    generated = vulg_for(r, vulg or {})
     role_rank = {"Prime Contractor": 0, "Joint Venture Constituent": 1, "Subcontractor": 2}
     team_sorted = sorted(
         team, key=lambda m: (role_rank.get(m["role"], 9), -(m["attached_usd"] or 0)))
@@ -500,6 +560,8 @@ def build_fiche(r: dict, spend: list[dict], team: list[dict]) -> dict:
             "contract_no": r["contract_no"],
             "title": r["contract_title"],
             "title_plain": tp,
+            "title_clear": generated.get("title_clear"),
+            "what_concretely": generated.get("what_concretely"),
             "contract_type": r["contract_type"],
             "purchasing_authority": r["purchasing_authority"],
             "authority_family": r["authority_family"],
@@ -518,6 +580,11 @@ def build_fiche(r: dict, spend: list[dict], team: list[dict]) -> dict:
             "remaining_calc_usd": _f(r["remaining_calc_usd"]),
             "src_arithmetic_consistent": r["src_arithmetic_consistent"],
             "paid_exceeds_agreed": r["paid_exceeds_agreed"],
+            # Whether the source's own agreed = paid + remaining identity holds.
+            # Without it, paid > agreed says nothing about overspending: 109 of
+            # the 129 flagged active contracts (98.8% of the dollars) sit on
+            # rows where the register does not reconcile with itself.
+            "src_arithmetic_consistent": r["src_arithmetic_consistent"],
             "n_prime_rows": r["n_prime_rows"],
         },
         "spend_by_fy": {
@@ -676,13 +743,19 @@ def main() -> int:
     if FICHE_DIR.exists():
         for old in FICHE_DIR.glob("*.json"):
             old.unlink()
+    vulg = load_vulgarization()
+    log.info("vulgarization signatures", extra=str(len(vulg)))
     n_written = 0
+    n_generated = 0
     for r in corpus:
         no = r["contract_no"]
-        fiche = build_fiche(r, spend_by_contract.get(no, []), team_by_contract.get(no, []))
+        fiche = build_fiche(r, spend_by_contract.get(no, []), team_by_contract.get(no, []), vulg)
+        if fiche["contract"].get("title_clear"):
+            n_generated += 1
         write_json(fiche, FICHE_DIR / f"{no}.json", compact=True)
         n_written += 1
     log.success("fiches écrites", extra=str(n_written))
+    log.success("fiches with generated text", extra=f"{n_generated}/{n_written}")
 
     log.section("Sanity check")
     h = overview["hero"]
@@ -712,6 +785,7 @@ def main() -> int:
         corpus[0],
         spend_by_contract.get(corpus[0]["contract_no"], []),
         team_by_contract.get(corpus[0]["contract_no"], []),
+        vulg,
     )
     for payload in (overview, active, sample_fiche):
         bad = [k for k in keys_of(payload) if any(f in k.lower() for f in forbidden)]

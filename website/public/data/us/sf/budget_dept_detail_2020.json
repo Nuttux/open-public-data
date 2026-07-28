@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.869559+00:00",
+  "generated_at": "2026-07-28T11:43:46.623731+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -1764,14 +1764,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "GENL_GOVT_SVCS",
-          "label": "General Government Services",
+          "code": "OTH_CHGS_SVCS",
+          "label": "Other Charges for Services",
           "amount_usd": 25000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "OTH_CHGS_SVCS",
-          "label": "Other Charges for Services",
+          "code": "GENL_GOVT_SVCS",
+          "label": "General Government Services",
           "amount_usd": 25000.0,
           "is_transfer_adjustment": false
         },
@@ -5338,14 +5338,14 @@
       "side": "Revenue",
       "objects": [
         {
-          "code": "OTH_BUS_PROF_LIC",
-          "label": "Other Business/Prof Licenses",
+          "code": "ROAD_PRIV_PERM",
+          "label": "Road Privileges & Permits",
           "amount_usd": 507959.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "ROAD_PRIV_PERM",
-          "label": "Road Privileges & Permits",
+          "code": "OTH_BUS_PROF_LIC",
+          "label": "Other Business/Prof Licenses",
           "amount_usd": 507959.0,
           "is_transfer_adjustment": false
         }
@@ -8438,14 +8438,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581061",
-          "label": "Ef-PUC-Water",
+          "code": "581670",
+          "label": "GF-Mayor'S - Cdbg",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581670",
-          "label": "GF-Mayor'S - Cdbg",
+          "code": "581061",
+          "label": "Ef-PUC-Water",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
@@ -9357,14 +9357,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581170",
-          "label": "GF-Risk Management Svcs (AAO)",
+          "code": "581450",
+          "label": "GF-HR-Mgmt Training",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581450",
-          "label": "GF-HR-Mgmt Training",
+          "code": "581170",
+          "label": "GF-Risk Management Svcs (AAO)",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -10504,14 +10504,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581077",
-          "label": "Sr-CWP-Clean Water Department",
+          "code": "581660",
+          "label": "GF-Chf-Youth Works",
           "amount_usd": 53000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581660",
-          "label": "GF-Chf-Youth Works",
+          "code": "581077",
+          "label": "Sr-CWP-Clean Water Department",
           "amount_usd": 53000.0,
           "is_transfer_adjustment": false
         },
@@ -16488,6 +16488,15 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "PARENTS FOR PUBLIC SCHOOLS OF S F INC",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "BOYS & GIRLS CLUBS OF SAN FRANCISCO",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
@@ -16512,15 +16521,6 @@
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "PARENTS FOR PUBLIC SCHOOLS OF S F INC",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": null,
             "is_aggregation_line": false
           }
         ],
@@ -21311,14 +21311,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581061",
-          "label": "Ef-PUC-Water",
+          "code": "581280",
+          "label": "DT SFGov TV Services",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581280",
-          "label": "DT SFGov TV Services",
+          "code": "581061",
+          "label": "Ef-PUC-Water",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -21335,14 +21335,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581080",
-          "label": "Sr-Building Inspection",
+          "code": "581770",
+          "label": "GF-Parking & Traffic",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581770",
-          "label": "GF-Parking & Traffic",
+          "code": "581080",
+          "label": "Sr-Building Inspection",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
@@ -25956,14 +25956,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581820",
-          "label": "Is-Purch-Reproduction",
+          "code": "581067",
+          "label": "Sr-DPW-Building Repair",
           "amount_usd": 20000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581067",
-          "label": "Sr-DPW-Building Repair",
+          "code": "581820",
+          "label": "Is-Purch-Reproduction",
           "amount_usd": 20000.0,
           "is_transfer_adjustment": false
         },
@@ -30181,14 +30181,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "ENT_PROMO",
-          "label": "Entertainment and Promotion",
+          "code": "TRAVEL",
+          "label": "Travel",
           "amount_usd": 120000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "TRAVEL",
-          "label": "Travel",
+          "code": "ENT_PROMO",
+          "label": "Entertainment and Promotion",
           "amount_usd": 120000.0,
           "is_transfer_adjustment": false
         },
@@ -33072,14 +33072,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581270",
-          "label": "GF-City Attorney-Legal Service",
+          "code": "581400",
+          "label": "Sr-Cfc-First 5 Commission",
           "amount_usd": 500000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581400",
-          "label": "Sr-Cfc-First 5 Commission",
+          "code": "581270",
+          "label": "GF-City Attorney-Legal Service",
           "amount_usd": 500000.0,
           "is_transfer_adjustment": false
         },
@@ -37086,14 +37086,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581950",
-          "label": "GF-Social Services",
+          "code": "581800",
+          "label": "Ef-Port Commission",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581800",
-          "label": "Ef-Port Commission",
+          "code": "581950",
+          "label": "GF-Social Services",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -39531,15 +39531,6 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "TENDERLOIN HOUSING CLINIC INC",
-            "amount_usd": 20000.0,
-            "n_vouchers": 1,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "SAN FRANCISCO APARTMENT ASSOC",
             "amount_usd": 20000.0,
             "n_vouchers": 2,
@@ -39555,6 +39546,15 @@
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "TENDERLOIN HOUSING CLINIC INC",
+            "amount_usd": 20000.0,
+            "n_vouchers": 1,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           }
         ],

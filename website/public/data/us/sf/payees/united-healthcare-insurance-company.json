@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.727772+00:00",
+ "generated_at": "2026-07-28T11:43:47.692663+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,138 @@
  "top_departments": [
   "HSS Health Service System"
  ],
+ "profile": {
+  "n_vouchers": 2411,
+  "departments": [
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "usd": 896377793.64,
+    "n_vouchers": 2392
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 268106.0,
+    "n_vouchers": 19
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "556150",
+    "label": "Medical-Health Plan Providers",
+    "spend_class": "obligation",
+    "usd": 640180555.44,
+    "n_vouchers": 93
+   },
+   {
+    "code": "556200",
+    "label": "Medical-Medical Claims Paid",
+    "spend_class": "obligation",
+    "usd": 219913279.8,
+    "n_vouchers": 1815
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 5779636.71,
+    "n_vouchers": 99
+   },
+   {
+    "code": "556400",
+    "label": "Dental-Misc Employee",
+    "spend_class": "obligation",
+    "usd": 2195955.76,
+    "n_vouchers": 112
+   },
+   {
+    "code": "556430",
+    "label": "Dental-Retired Employee",
+    "spend_class": "obligation",
+    "usd": 1504666.05,
+    "n_vouchers": 111
+   },
+   {
+    "code": "556080",
+    "label": "Hlth Svc-Medical Employee Reim",
+    "spend_class": "unclear",
+    "usd": 912599.4,
+    "n_vouchers": 11
+   },
+   {
+    "code": "ADVANCES",
+    "label": "Advances",
+    "spend_class": "unclear",
+    "usd": 174000.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "478960",
+    "label": "Bad Debts Recovery",
+    "spend_class": "unclear",
+    "usd": 150501.07,
+    "n_vouchers": 5
+   }
+  ],
+  "n_categories": 16,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 67400429.51,
+  "n_recent_lines": 7,
+  "recent_lines": [
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Medical-Health Plan Providers",
+    "spend_class": "obligation",
+    "usd": 56274601.48,
+    "n_vouchers": 8
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Medical-Medical Claims Paid",
+    "spend_class": "obligation",
+    "usd": 10115872.22,
+    "n_vouchers": 152
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 434274.6,
+    "n_vouchers": 7
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Dental-Misc Employee",
+    "spend_class": "obligation",
+    "usd": 250902.37,
+    "n_vouchers": 12
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Advances",
+    "spend_class": "unclear",
+    "usd": 174000.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Dental-Retired Employee",
+    "spend_class": "obligation",
+    "usd": 150750.29,
+    "n_vouchers": 12
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

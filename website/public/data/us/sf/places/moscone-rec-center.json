@@ -1,0 +1,204 @@
+{
+ "generated_at": "2026-07-28T12:23:47.798816+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "moscone-rec-center",
+ "name": "Moscone Rec Center",
+ "kind": "Recreation center",
+ "family": "park",
+ "address": "1800 Chestnut St",
+ "lat": 37.801453,
+ "lon": -122.433046,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "facility": {
+  "primary_name": "Moscone Rec Center",
+  "primary_address": "1800 CHESTNUT ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94123",
+  "primary_block_lot": "0469001",
+  "primary_department_name": "Recreation And Parks",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 8929,
+  "primary_latitude": 37.80145337000005,
+  "primary_longitude": -122.43304599299995,
+  "supervisor_district": 2,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 8929,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "0469001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 2049,
+    "common_name": "Moscone Rec Center",
+    "block_lot": "0469001",
+    "gross_sq_ft": 8929,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "scheduleofclasse1982sanf",
+   "title": "Schedule of classes",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Moscone Rec Center",
+   "ocr_excerpts": [
+    "ARY\"S PLAYGROUND, MURRAY ST St JUSTIN DR 3:30 P.M. INSTRUCTOR DIANNE McGARTHY 3-1 FALL PROGRAM - JUNIOR DIVISION (Cont) WEDNESDAY 4:00 P.M. AFRO-JAZZ INSTRUCTOR: BETTY GAMBOA BALLET-JAZZ SUNSET REG. CENTER 28THAVE & LAWTON 3:30 P.M. INSTRUCTOR: NATALIA NJISSANG TAP & MODERN MOSCONE REC. CENTERCHESTNUT & BUCHANAN ST 3:30 P.M. INSTRUCTOR: JILL WRIGHT DRAMA CROCKER- AMAZON PLAYGROUND , GENEVA & MOSCOW STS.*3:30 P.M. INSTRUCTOR: EVELYN MAR DRILL TEAM POTRERO HILL PLAYGROUND22nd & ARKANSAS STS 4:00 P.M. INSTRUCTOR: CAROLINE POWELL PUPPETRY EUREKA VALLEY REC.CETNER,COLLINGWOOD & 23 TH S",
+    "4:45-6:15 p.m Instructor: Candace Kuchlenz Description: Beginning and intermediate tap and modern jazz steps and ballet. Ages: 6 -16 yrs. Afro Jazz Milton Meyer Rec. Center, 195 Kiska Road 4:00-5:30 p.m Instructor: Betty Gamboa Description: Basic steps in afro jazz routines . Tap Dancing Moscone Rec. Center, Chestnut & Buchanan Sts. 4:00-5:30 p.m Instructor: Catherine Coins Description: Basic steps and routines in tap . 21 Drama & Dance Children's Classes (Dance) (con't) WEDNESDAY Tap and Jazz Helen Wills Playground, Broadway & Larkin Sts. 2:30-4:00 p.m Instructor: Diane Price Descriptio",
+    "- 9 p.m. 10 a.m. - Noon 3:30 - 5:30 p.m. 4 - 5:30 p.m. 6- 10 p.m. 7- 9 p.m. 73 PLAYGROUND ACTIVITIES Saturday Basketball League 11 & under 10 a.m. - 1 p.m. Open Weight Room 10 a.m. - 4:30 p.m. Open Racquetball Courts 10 a.m. - 4:30 p.m. Basketball League 15 & under 2-5 p.m. Moscone Rec Center Monday Jr . High Baseball Practice 3 : 30 5 p. m . Adult Softball League Games 6 10 P . m. Tuesday Jr . High Baseball Practice 3 : 30 5 p. m . Adult Softball League Games 6 10 P . m. Wednesday Jr . High Baseball Practice 3 : 30 5 p. m . Adult Softball",
+    ":30 - 11:30 a.m. 3 - 6 p.m. 6-10 p.m. 9 a.m. - Noon 10 a.m. - 9:30 p.m 3 - 6 p.m. 4:30 - 6 p.m. 6 - 10 p.m. Saturday Open Racquetball & Weight room Boys Seasonal Sports Girls Basketball Floor Hockey 10 a.m. - 4:30 p.m 11 a.m. - 4 p.m. Noon - 3 p.m. 2 - 4 p.m. Moscone Rec Center Tuesday Wednesday Tiny Tots Tap Dance Football Practice 17 yr . olds Young Adult Basketball Teen Drop In Kids Music, Art Ceramics 10 a.m. - Noon 3:30 - 5 p.m. 3:45 - 5:30 p.m, 7 - 9:45 p.m. 10 a.m. - Noon 2 - 4 p.m. 80 Thursday Fr iday Saturday Football Practice 15 y"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 0.56,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.56,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/scheduleofclasse1982sanf",
+   "deep_link": "https://archive.org/details/scheduleofclasse1982sanf?q=Moscone+Rec+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true
+  },
+  {
+   "identifier": "whatsdoinginpark1985sanf",
+   "title": "What's doing in the parks?",
+   "creator": "San Francisco (Calif.). Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Moscone Rec Center",
+   "ocr_excerpts": [
+    "g in the Parks TUESDAY, JUNE 4 Noon — 3rd Annual Senior Citizens Softball Challenge: St. Mary's Geritol Giants vs. Crocker Amazon's Amazin' A's, Crocker Amazon Playground, Moscow Street and Italy Avenue. WEDNESDAY, JUNE 5 7:30 p.m. — San Francisco Rec/Park 's Softball League, SI Pitch \"B\" Game, Moscone Rec Center, Chestnut and Buchanan Sts. THURSDAY, JUNE 6 9 a.m. - Dusk — Latch, So, and Li Chiropractic Outdoor Clinic, west end of Marina Green, Marina and Cervantes Blvds. 1-3 p.m. — City Celebration Festival of Performing Arts in honor of Senior Citizens: Jimmy Price Big Band, and the S.F. Ballet Br",
+    "soned them and their families, panel discussion to follow, admission $3., Exploratorium, 3601 Lyon St. THURSDAY, OCTOBER 17 11 a.m. — Adult Tai Chi Class, Glen Park Rec Center, Elk and Chenery Streets . FRIDAY, OCTOBER 18 10 - 11 a.m. — Registration for Kids Gym, 1-3 yr . olds, 10 weeks $15., Moscone Rec. Center, Chestnut Ave. and Buchanan St. 4:30 p.m. — Rec/Park Flag Football for Youth, 15 years and under game: Eureka Valley vs. Junipero Serra at Rolph Playground, Army Street and Potrero Avenue. ##### 9-26-85 City and County of San Francisco ^ Recreation and Park Department FOR IMMEDIATE RELEA"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.98,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.98,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/whatsdoinginpark1985sanf",
+   "deep_link": "https://archive.org/details/whatsdoinginpark1985sanf?q=Moscone+Rec+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  }
+ ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 2,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.730743+00:00",
+ "generated_at": "2026-07-28T11:43:47.697774+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -29,6 +29,43 @@
  "top_departments": [
   "HRD Human Resources"
  ],
+ "profile": {
+  "n_vouchers": 2728,
+  "departments": [
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "usd": 367390098.08,
+    "n_vouchers": 2728
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "551100",
+    "label": "Workers Comp Expense",
+    "spend_class": "unclear",
+    "usd": 40331489.58,
+    "n_vouchers": 226
+   }
+  ],
+  "n_categories": 1,
+  "counts_are_floor": false,
+  "recent_fy": 2019,
+  "recent_total_usd": 389473.3,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "label": "Workers Comp Expense",
+    "spend_class": "unclear",
+    "usd": 389473.3,
+    "n_vouchers": 3
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

@@ -80,6 +80,7 @@ def main() -> int:
     permit_totals = {}
     rq = f"""
         SELECT place_slug, description, permit_type, declared_cost_usd, status,
+               is_effective,
                CAST(permit_date AS STRING) AS permit_date, permit_year
         FROM `{PERMIT_MART}`
         ORDER BY place_slug, declared_cost_usd DESC
@@ -87,8 +88,12 @@ def main() -> int:
     for row in client.query(rq).result():
         d = {k: _num(v) for k, v in dict(row).items()}
         permits_by_place[d.pop("place_slug")].append(d)
+    # Total only permits that actually became work. A withdrawn or expired
+    # application is not construction, and totalling it overstated several
+    # places by an order of magnitude (see mart_us_sf_place_permits).
     for slug, ps in permits_by_place.items():
-        permit_totals[slug] = round(sum(p["declared_cost_usd"] or 0 for p in ps), 2)
+        permit_totals[slug] = round(
+            sum(p["declared_cost_usd"] or 0 for p in ps if p.get("is_effective")), 2)
 
     # permit declared value by year — the single-measure dated series behind the
     # fiche's spend-by-year graph (permits are the most granular dated data).
@@ -96,7 +101,7 @@ def main() -> int:
     yq = f"""
         SELECT place_slug, permit_year, SUM(declared_cost_usd) AS declared
         FROM `{PERMIT_MART}`
-        WHERE permit_year IS NOT NULL
+        WHERE permit_year IS NOT NULL AND is_effective
         GROUP BY place_slug, permit_year
     """
     for row in client.query(yq).result():
@@ -127,13 +132,11 @@ def main() -> int:
             "payees": pys[:TOP_PAYEES],
             "n_payees": len(pys),
             "payees_total_paid": round(sum(p["paid_usd"] for p in pys), 2),
-            "permits": perms[:TOP_PERMITS],
-            "n_permits": len(perms),
-            "permits_total_declared": permit_totals.get(slug, 0.0),
-            "permits_by_year": [
-                {"year": y, "declared_usd": permits_year[slug][y]}
-                for y in sorted(permits_year.get(slug, {}))
-            ],
+            # Building permits are deliberately NOT exported (2026-07-28). A
+            # permit is an applicant's declared cost, routinely for private work
+            # on a parcel the City merely shares, and often for work that was
+            # withdrawn and never built. It is not public spending, so it does
+            # not ship. The mart is retained for lineage and audit only.
         }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)

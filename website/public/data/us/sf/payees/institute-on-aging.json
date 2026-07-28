@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.741686+00:00",
+ "generated_at": "2026-07-28T11:43:47.716250+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,6 +35,149 @@
   "2027": 48500.1
  },
  "top_departments": [],
+ "profile": {
+  "n_vouchers": 3161,
+  "departments": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 87938116.42,
+    "n_vouchers": 1710
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 45397583.4,
+    "n_vouchers": 1205
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 2010275.0,
+    "n_vouchers": 95
+   },
+   {
+    "department": "WOM Status of Women",
+    "department_code": "WOM",
+    "usd": 220493.3,
+    "n_vouchers": 119
+   },
+   {
+    "department": "DAT District Attorney",
+    "department_code": "DAT",
+    "usd": 51171.0,
+    "n_vouchers": 16
+   },
+   {
+    "department": "ART Arts Commission",
+    "department_code": "ART",
+    "usd": 46000.0,
+    "n_vouchers": 5
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 27347.22,
+    "n_vouchers": 11
+   }
+  ],
+  "n_departments": 7,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 86346460.69,
+    "n_vouchers": 1646
+   },
+   {
+    "code": "536610",
+    "label": "Spcl Circumstances For Adults",
+    "spend_class": "unclear",
+    "usd": 987574.65,
+    "n_vouchers": 18
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 516055.48,
+    "n_vouchers": 27
+   },
+   {
+    "code": "536620",
+    "label": "Aps-Basic Services",
+    "spend_class": "purchase",
+    "usd": 115372.82,
+    "n_vouchers": 26
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 31073.1,
+    "n_vouchers": 1
+   },
+   {
+    "code": "524010",
+    "label": "Membership Fees",
+    "spend_class": "purchase",
+    "usd": 112.5,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 4
+   },
+   {
+    "code": "535000",
+    "label": "Other Current Expenses - Bdgt",
+    "spend_class": "purchase",
+    "usd": 0.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 8,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 14219250.44,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 14089039.78,
+    "n_vouchers": 225
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 130210.66,
+    "n_vouchers": 4
+   }
+  ]
+ },
+ "identity": {
+  "description": "Institute On Aging is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under human services.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Institute On Aging",
+  "ein": "942978977",
+  "ntee_code": "P750",
+  "ntee_label": "Human services",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/942978977",
+  "checked_at": "2026-07-27T23:37:37.232405+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000028610",

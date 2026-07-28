@@ -1,0 +1,516 @@
+{
+ "generated_at": "2026-07-28T12:23:47.802875+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "esprit-park",
+ "name": "Esprit Park",
+ "kind": "Park",
+ "family": "park",
+ "address": "700 Minnesota St",
+ "lat": 37.76087,
+ "lon": -122.391007,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "facility": {
+  "primary_name": "Esprit Park Maintenance Facility",
+  "primary_address": "700 MINNESOTA ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94107",
+  "primary_block_lot": "4061002",
+  "primary_department_name": "Recreation And Parks",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": null,
+  "primary_latitude": 37.761104816000056,
+  "primary_longitude": -122.39101348699995,
+  "supervisor_district": 10,
+  "n_facilities": 1,
+  "total_gross_sq_ft": null,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "4061002"
+  ],
+  "facilities": [
+   {
+    "facility_id": 647,
+    "common_name": "Esprit Park Maintenance Facility",
+    "block_lot": "4061002",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "BAUMAN LANDSCAPE & CONSTRUCTION INC",
+    "paid_usd": 4952418.82,
+    "n_contracts": 1,
+    "first_fiscal_year": 2023,
+    "last_fiscal_year": 2026
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 4952418.82
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "22252255thirdstr1420sanf",
+   "title": "2225-2255 Third Street : final environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept,During Associates,Clement Designs,LCW Consulting,Martin Building Company,Ian Birchall + Associates",
+   "year": 2008,
+   "pool": "sfpl",
+   "matched_alias": "Esprit Park",
+   "ocr_excerpts": [
+    "open space, and three new publicly accessible \"pocket plazas\" along the Third Street frontage. The proposed project would also include approximately 4,800 square feet of private usable open space in the form of 83 individual terraces and balconies. The nearest Recreation and Park Department property is Esprit Park, about two blocks to the west, between 19\"^, 20'*^, Minnesota, and Indiana Streets. The project would be located within walking distance of Esprit Park. Thus, project residents would have convenient access to private and public open space. The proposed project would not substantially increase demand for or use of the neighborhood park, or citywide facilities, such as Golden Gate Park, in a manner that would cause substantial physical deterioration. Th",
+    "des only a cursory and inadequate mention of the project's impact on recreation and open space resources and does not analyze the availability of nearby open space resources, impacts upon those resources, or mitigations for those impacts. The EIR asserts that there would be no impact upon the nearby Esprit Park, but does not provide any basis for that assertion, particularly since the Central Waterfront Better Neighborhoods Plan readily acknowledges the area's inadequate open space resources and makes extensive proposals for their expansion. 2002.1 302E C&R 18 2225-2255 Third Street C. Comments and Respon",
+    "a will also likely include waterfront public open spaces. Figure C&R 6 on page C&R 21 depicts the recreational facilities and/or open space resources in and adjacent to the Eastern Neighborhoods project area, along with their service radii. The project site lies within the 1/4-mile service radius of Esprit Park. There are currently four parks within the Central Waterfront neighborhood, listed in Table 1, below. Table 1 Open Space and Recreational Facilities in the Central Waterfront Plan Area Park or Facility Size (Acres) Classification Distance from Project Site Esprit Park 2.00 neighborhood 1/8 mile Woods Yard Mini Park \" 0.25 sub-neighborhood 1/4 mile Warm Water Cove \" 0.57 neighborhood 3/8 mile Tulare Park ^ 0.21 sub-neighborhood 5/8 mile Total 3.03 Notes: '■' Woods Yard Mini Park, at 22nd and Indiana Streets, is owned and managed by the San Franci",
+    "existing historic office buildings. The shadow fan indicated that the proposed project's shadows could not reach any site under Recreation and Park Commission jurisdiction. Due to its location, the proposed project would not affect any land under the jurisdiction of the Recreation and Parks Department. Esprit Park is located approximately three blocks west of the proposed project. be\\ ond the reach of any shadows generated by the proposed project. \" Mat Snyder, San Francisco Planning Department, letter to Michael Yame, Martin McNerney Properties, "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.55,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.55,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/22252255thirdstr1420sanf",
+   "deep_link": "https://archive.org/details/22252255thirdstr1420sanf?q=Esprit+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "900minnesotastre1720sanf",
+   "title": "900 Minnesota Street : draft environmental impact report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 2005,
+   "pool": "sfpl",
+   "matched_alias": "Esprit Park",
+   "ocr_excerpts": [
+    "ouse (Indiana Street) 22 7. Elevations of New Buildings 23 8. Composite Minnesota and Indiana Street Elevations 24 9. Project Rendering Along Minnesota Street 25 10. Parking Level 1 27 11. Existing Views of the Project Site 45 12. Existing Views of the Project Site 46 13. Existing Views from Esprit Park 47 14. Public Transportation Network 55 15. Nearby Existing Bicycle Routes and Lanes 57 16. Existing Views of Esprit Park 74 17. Existing Views of Esprit Park 75 18. Maximum Extent of New Shadow on Esprit Park 77 LIST OF TABLES 1. Person Trips Per Time Scenario 61 2. Mode Split for PM Peak Hour Trips 62 3. Summary of Levels of Service (LOS) at Study Intersections 63 4. Project Percentage of Cumulative Traffic Volume Increases 65 5. Parking Supply, Demand, and Code Requirements 66 6. Construction",
+    "he visual quality issues relate to the project's effect on views of the site resulting from the proposed renovation, demolition and new construction. The shadow issue relates to the potential for the proposed new residential buildings located on the northern portion of the site to cast new shadow on Esprit Park, a Recreation and Park Department property subject to Section 295 of the Planning Code. The transportation issue relates to the potential for the project to increase demand 900 Minnesota Street 2 204161 Case Number 2004.0027E L SUMMARY on local transportation systems. All other potential envi",
+    "its surroundings. The proposed project would be constructed within a dense urban area, and visual changes that would occur as a result of the project would not substantially change or block any scenic vista available from open spaces in the area: although the site is visible through the trees from Esprit Park, views from the park are already dominated by the existing overpass and the new building along 20th Street would be largely obscured by the overpass and the park's existing trees. When viewed from the adjacent public streets, the project would alter the character and density of the site. The brick",
+    "expected loading, service, and delivery needs. With the exemption for the off-street loading requirement and additional curb loading spaces, the proposed project would have a less-than -significant impact on loading and service access. The project would improve existing pedestrian facilities adjacent to Esprit Park by reconstructing 20th Street between Indiana Street and Minnesota Street to include a sidewalk, curb, and gutter and perpendicular on-street parking spaces. However, the project would also increase the number of pedestrians using another inadequate pedestrian facility along 20th Street, between Minnesota",
+    "the project construction and a covered sidewalk would be provided in the curb lane. All other sidewalks would remain open during construction. In summary, th"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.67,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.17,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/900minnesotastre1720sanf",
+   "deep_link": "https://archive.org/details/900minnesotastre1720sanf?q=Esprit+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "reportonsanfranc1996sanf",
+   "title": "Report on the San Francisco park and open space program, fiscal year ..",
+   "creator": "San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund,San Francisco (Calif.). Recreation and Park Commission,San Francisco (Calif.). City Planning Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Esprit Park",
+   "ocr_excerpts": [
+    "d Recreation Center, Saint Mary's Square Rooftop Park, Sharon Art Center Relocation, Urban Forestry and Visitation Valley Reis Tract will continue. In addition, it is recommended that this year's Program include funding the acquisition of additional park land on Edgehill Mountain and the acquisition of Esprit Park (a privately owned park on the east side of Potrero Hill). Because of the shift in emphasis from acquisition to development and the many competing needs for Open Space Funds, the recommendation is to provide seed money towards the acquisition of Edgehill Mountain Open Space Extension and Esprit Park, with the expectation that the community will use the funds as leverage to raise significant monies toward the acquisition of these sites. Under the renovation component of the budget, funding has been allocated to many of the traditionally funded projects under the Open Space Program. In this year'",
+    "7.000 Total FY1 997-98 Budget $4,835,000 Project - •:. Amount: Athletic Field Development $ 400.0001 Balboa Park Restroom and Changing Room 350,000 Boeddeker Park Center 25,000 City Attorney Support 100,000 Community Gardens 100,000 Edgehill Mountain Open Space Extension (seed project) 50,000 Esprit Park (seed project) 300,000 includes $387,000 reprogrammed from South of Market Park. General Manager's Report 8 Report on the San Francisco Park and Open Space Program, Fiscal Year 1997-1998 Acquisition and Development (Continued) bspnt rarK (seea project) 300,000 Lessing Sears Lot 50,000 Natur",
+    "recommendation is to acquire only those lots contiguous to existing park property (Lots identified in Block 2934, and Lot 67 in Block 2923). Therefore, the following lots have been removed from consideration under the Program for FY1997-98: Block 2923, Lots 10A, 11, 12, 24, 25, 26, 27 and 37. 7. Esprit Park: Request for funds to acquire this privately owned park, located on Minnesota Street between 19th and 20th Streets (Block 4061, Lot 2). Park is approximately one city block (80,000 square feet). Cost estimates run between $1.6 million to $3.2-$4 million. Committee Action 1/14/97: Priority 1. Allocatio",
+    "ing Comrr.rttee Action tor FY1997-98)1 Athletic Field Chinatown Bemal Heights Banks -South Slope (New) Acq./Dev. Park Boeddeker Recreation Center (New) Brooks Park Lease/Purchase(1) City Attorney (1) Civic Center Playground II (2) Community Gardens (1) Edgehill Mountain Open Space Extension (New) Esprit Park (New) India Basin Park (2) lnnes-3ra Street (2) Le Conte Avenue Park Development (2) Lessing/Sears Lot (1) 1A number in parenthesis, e.g., (1), indicates the priority given to the project in the Program for the previous Fiscal Year. General Manager's Report 47 Report on the San Francisco P",
+    "order to find acquisition of the site in conformity with the General Plan, "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.73,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.23,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/reportonsanfranc1996sanf",
+   "deep_link": "https://archive.org/details/reportonsanfranc1996sanf?q=Esprit+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": true
+  },
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2006",
+   "title": "Real property owned by the city and county of San Francisco / 2006",
+   "creator": null,
+   "year": 2006,
+   "pool": "dl",
+   "matched_alias": "Esprit Park",
+   "ocr_excerpts": [
+    "4032, Lot 001 for details. 001 4033 ENOLA D. MAXWELL MIDDLE SCHOOL: See Block 4032, Lot 001 for details. 003 4034 Port of SF 1,431,382 001 4046 Port of SF 379,685 002 4046 Port of SF 1,449,241 001 4052 Page 60 REAL PROPERTY OWNED BY THE CITY AND COUNTY OF SAN FRANCISCO LAND DESCRIPTION (with Facilities) ADDRESS JURISDICTION ESPRIT PARK DANIEL WEBSTER SCHOOL (ELEMENTARY) POTRERO LIBRARY MCKINLEY SQUARE SAN FRANCISCO GEN HOSPITAL Parking lot under Parking Authority jurisdiction. VERMONT ST (REMAINDER) FIRE STATION #37 |.M. SCOTT SCHOOL (ELEMENTARY) (CLOSED) Quitclaimed from CCSF to SFUSD ENGINE 16 (INACTIVE) Southeast Police Station PORT LANDS",
+    "FRANCISCO FRANCISCO LAND DESCRIPTION BAYVIEW HILL PLAYGROUND SUNNYSIDE PLAYGROUND JOSEPH LEE RECREATION CTR CHINESE EDUCATION CENTER CATELLUS TRANSFER PARCEL CATELLUS TRANSFER PARCEL HUNTERS PT COMM. YOUTH FOUNDATION MALCOLM X ACADEMY LAKESHORE SCHOOL (ELEMENTARY) FAIRMOUNT PLAZA STATE RELINQUISHMENT LASH TERMINAL FACILITY ESPRIT PARK GLEN PARK SUBSTATION CENTRAL PERMIT OFFICE 1680 MISSION OFFICES BAY HIGH SCHOOL MISSION CULTURAL CTR MISSION NURSERY MISSION ST PARCEL EXCELSIOR LIBRARY FIFTH & MISSION GARAGE DOWNTOWN CAMPUS EMBARCADERO STREET(VACATED) MUNI TURNAROUND (FERRY PARK) DANIEL WEBSTER SCHOOL (ELEMENTARY) OCEAN VIEW PLAYGROUND OPEN SPACE (MONTER"
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": 4.68,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.68,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2006",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2006?q=Esprit+Park",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true
+  },
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2001",
+   "title": "Real property owned by the city and county of San Francisco / 2001",
+   "creator": null,
+   "year": 2001,
+   "pool": "dl",
+   "matched_alias": "Esprit Park",
+   "ocr_excerpts": [
+    "10,104 sq ft parcel for the Recreation and Park Department's North Mission Neighborhood Park under its Open Space Program. In response to neighborhood needs, State Assemblywoman Carol Migden secured State funds, and the Real Estate Division negotiated a purchase of the Hoff Street site in a neighborhood with a scarcity of available sites. Esprit Park: On June 6, 2001, the City acquired Esprit Park in the Potrero Hill District from Esprit de Corp. The park is located on a City block and contains mature trees, shrubs, a running track, benches, picnic tables, fitness stations, walking paths and more than an acre of open, rolling lawns. pas, REAL ESTATE DIVISION COUNTY BOUNDARY OF SAN FRANCISCO (CITY AND COUNTY) AS DEFINED IN SECT",
+    "3935 002 3940 001 3941 001 3963 Page 65 REAL PROPERTY OWNED BY THE CITY AND COUNTY OF SAN FRANCISCO LAND DESCRIPTION (with Facilities) POTRERO DIV TROLLEY BUS YARD SAN BRUNO AVE JACKSON PLAYGROUND INTERNATIONAL STUDIES ACADEMY POTRERO HILL JR. HIGH SCHOOL PORT LANDS 18TH STREET (VACATED) FORMER SEA WALL #349 ESPRIT PARK ADDRESS 2500 MARIPOSA STREET POTRERO DIVISION 2200 MARIPOSA 17TH ST & CAROLINA JACKSON PLAYGROUND & CLUBHOUSE 693 VERMONT STREET INTERNATIONAL STUDIES ACADEMY 655 DE HARO STREET POTRERO HILL JR. HIGH SCHOOL NE ILLINOIS & 20TH ST BETWEEN DELAWARE & MASSACHUSETTS, E OF ILLINOIS EASTERLY TERMINUS OF 22ND ST 700"
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": 4.59,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.59,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2001",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2001?q=Esprit+Park",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false
+  },
+  {
+   "identifier": "childhoodleadpoi3120sanf",
+   "title": "[Childhood Lead Poisoning Prevention Program]",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2003,
+   "pool": "sfpl",
+   "matched_alias": "Esprit Park",
+   "ocr_excerpts": [
+    "a l Market/Eddy . i 255 Rlncon Pt. Park I i j »6 | South Beach Park & Marina i 257 City Hall Grounds Van Ness/Grove 1 1 258 Fillmore/Turk Mini Park Fillmore/Turk 259 Levi Plaza I I 260 Redwood Park (Transamerica) ! 1 261 I Sidney Walton Park (Golden Gateway) 262 Esprit Park Minnesota Street 263 i Aqua Vista Park Embarcadero/China Basin 264 Embarcadero Promenade Embarcadero 265 Ferry Bldg. Plaza Market/Embarcadero 266 I Warm Water Cove j 267 Hall of Justice 850 Bryant Street 268 Richmond Police Stn.-Minl Park 7th Avenue/Anza j 269 Cole and Carl-Mini Par",
+    "/Baden-Mlnl Park Joost/N of Baden | 293 Esmeralda Corridor/Prospect Esmeralda/Bernat Hts. _ i ' I ! 294 Chester Street Mini Park Chester St. near Brotherhood Way ! 295 Brotherhood Way Brotherhood Way 296 Broadway Tunnel East-Mini Park Broadway/Himmelman 297 Building (Duboce Park) 298 Esprit Park Minnesota/20th St. 299 Exploratorium . 3602 Lyon Street ! 300 I Ferry Plaza Market/Steuart 301 ! India Basin — Hudson Avenue I j 302 Theater •3603 Lyon Street ! i 303 Twenty-third & Treat ; i I 'New Facilities. These facilties not to be Included In CLPP survey as they were"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.0,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 6.03,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/childhoodleadpoi3120sanf",
+   "deep_link": "https://archive.org/details/childhoodleadpoi3120sanf?q=Esprit+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false
+  },
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2005",
+   "title": "Real property owned by the city and county of San Francisco / 2005",
+   "creator": null,
+   "year": 2005,
+   "pool": "dl",
+   "matched_alias": "Esprit Park",
+   "ocr_excerpts": [
+    "MIDDLE SCHOOL: See Block 4032, Lot 001 for details. 003 4034 PORT LANDS NE ILLINOIS & 20TH ST Port of SF 1,431,382 001 4046 18TH STREET (VACATED) BETWEEN DELAWARE & Port of SF 379,685 002 4046 MASSACHUSETTS, E OF ILLINOIS FORMER SEA WALL #349 EASTERLY TERMINUS OF Port of SF 1,449,241 001 4052 22ND ST Includes Block 4111, Lot 003; 4111-004. ESPRIT PARK 700 MINNESOTA ST Recreation and Park 80,000 002 4061 DANIEL WEBSTER SCHOOL 465 MISSOURI STREET SF Unified School District (SFUSD) 55,000 006 4066 (ELEMENTARY) DANIEL WEBSTER SCHOOL (ELEMENTARY) POTRERO LIBRARY 1616 20TH STREET Public Library 3,750 009A 4068 POTRERO LIBRARY MCKINLEY SQUARE 20TH ST & VERMONT ST Recreation and Park 108,298 011",
+    "HUNTERS PT COMM. YOUTH FOUNDATION 008 4700 MIDDLE POINT RD HARE MALCOLM X ACADEMY 071 4700 220 MIDDLEFIELD DR LAKESHORE SCHOOL (ELEMENTARY) 005 7298 MIGUEL FAIRMOUNT FAIRMOUNT PLAZA 001 6682A 149 MILTON ST STATE RELINQUISHMENT 054 6750 a) + +.) | | MINNESOTAS CESAR'CHAVEZ ST LASHTERMINALFACILITY ~~ ~—~———”—~C™—....—SCSt~«B 700 ~~ MINNESOTAST ESPRIT PARK 002 4061 3600 MISSION GLEN PARK SUBSTATION 021 6661 1660 MISSION ST CENTRAL PERMIT OFFICE 005 3512 1700 MISSION ST 1680 MISSION OFFICES 009 3512. 1950 MISSION ST MARSHALL ANNEX (ELEMENTARY) (CLOSED) 005 3554 nr). MISSION ST MISSION CULTURAL CTR 007 6516 “9950. ~~~~-CdMISSION ST MISSION NURSERY 004 6529 ~—4011—~S~*C“‘«‘C*«*‘;*‘S MISSIN ST MI"
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": 1.65,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.65,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2005",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2005?q=Esprit+Park",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false
+  },
+  {
+   "identifier": "0meetingminutes200102sanf",
+   "title": "Meeting minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Public Health and Environment Committee",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "Esprit Park",
+   "ocr_excerpts": [
+    "ntinued to May 8th meeting. 4/2/01, CONTINUED ON FIRST READING. Supervisor Maxwell moved to continue consideration to May 14, 2001. Heard in committee. Speakers: Steve Gunnel, Group I; Marie Harrison. CONTINUED TO CALL OF THE CHAIR by the following vote: Ayes: 3 - Maxwell, Yee, Leno 010737 [Esprit Park] Supervisors Maxwell, Ammiano Resolution authorizing the acceptance of Esprit Park under the jurisdiction of the Recreation and Park Department pursuant to an owner participation agreement in the Redevelopment Agency of the City and County of San Francisco and Esprit De Corp. (Fiscal impact.) 4/23/01, RECEIVED AND ASSIGNED to Finance Committee. 5/1/01, TRANSFERRED to Public Health",
+    "is the policy of the Board of Supervisors not to use affordable housing mitigation funds to acquire open space. \" AMENDED. City and County of San Francisco 2 Printed at 8:38 AM on 5/9/01 Public Health and Environment Committee Meeting Minutes May 8, 2001 Resolution authorizing the acceptance of Esprit Park under the jurisdiction of the Recreation and Park Department pursuant to an owner participation agreement in the Redevelopment Agency of the City and County of San Francisco and Esprit De Corp and stating that it is the policy of the Board of Supervisors not to use affordable housing mitigation fun",
+    "Analyst SUBJECT: May 8, 2001 Public Health & Environment Committee Meeting Item 3 - File 01-0737 MAY - 7 2001 SAN FRANCISCO PUBLIC LIBRARY Department: Item: Description: Business and Economic Development Department Recreation and Park Department (RPD) Resolution authorizing the acceptance of Esprit Park under the jurisdiction of the Recreation and Park Department, pursuant to an Owner Participation Agreement (OPA) between the Redevelopment Agency and Esprit de Corp. The proposed resolution would authorize the City to accept the transfer of Esprit Park from Esprit de Corp (\"Esprit\"). Esprit Park is a private park developed and maintained by Esprit, consisting of approximately 80,000 square feet and located at 700 Minnesota Street between 19th and 20th Streets in the Potrero Hill district. An appraisal by the private firm of Carneghi-Bautovich & Partners, Inc., commissioned by the City and Esprit and completed in December of 2000, determined the value of the park to be $9,780,000 (See Comment No. 2). Esprit has voluntarily made Esprit Park available for public use since 1982. The Park is located on a City block and contains mature trees, shrubs, a running track, benches, picnic tables, paracourse fitness stations, walking paths and more than an acre of open rolling lawns. Memo to Public Health and Environment Committee May 8, 2001 Public Health and Environment Committee Meeting In exchange for transferring Esprit Park to the City, Esprit would receive a wavier from paying certain Cit"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.85,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.35,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 3.25,
+    "money": true,
+    "decision": true,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/0meetingminutes200102sanf",
+   "deep_link": "https://archive.org/details/0meetingminutes200102sanf?q=Esprit+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
+  },
+  {
+   "identifier": "minutes1996sanf_4",
+   "title": "Minutes",
+   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Esprit Park",
+   "ocr_excerpts": [
+    "December 17, 1996 Page 2 • Pool Liners/Restoration • Stem Grove Erosion • Herz Playground Clubhouse Expansion • Mountain Lake Park Study 5. North Beach Pool 6. Acquisition and Development Recommended Priority 2 Bemal Heights Banks Boeddeker Park Center Expansion Chinatown Park Edgehill Extension Esprit Park Natural Areas Implementation Recreation Program: Chinatown Park Staff Regional Trails Tenderloin Park Preschool Twenty-Third/Treat Street Park (Mission District) Recommended Priority 3. Projects not recommended for funding. . Innes/Third Street LeConte Avenue Park Development Sanchez Hilltop (1 lot)",
+    "red for last year's Committee. The minutes were approved as corrected and amended, STAFF REPORTS Park Planner Deborah Learner reported that the Real Estate Department has provided the following information on projects. Minutes, Park and Open Space Citizens Advisory Committee January 7, 1997 Page 2 Esprit Park: Estimated cost to acquire park is $1 .6 million. She also reported that this area of the City is not in a high need area in the Planning Department's Master Plan. Hawk Hill, Aqua Vista and 15* Avenue Steps: Negotiations are at an impasse. The Real Estate Department has been requested to provide",
+    "3. Selection of Future Meeting Dates 4. Staff Reports 5. Renovation Projects Eureka Valley Recreation Center Balboa Park Restroom/Changing Room Recommended Priority 2 • Pool Liners/Restoration 7. Acquisition and Development Athletic Field Development/Acquisition City Attorney Support Commimity Gardens Esprit Park India Basin Park - Phases II, III Lessing Sears Lot North Mission Open Space DOCUMENTS DEPT. JAN 141997 SAN FRANCISCO PUBLIC LIBRARY Agenda, Park and Open Space Citizens Advisory Committee January 14, 1997 Page 2 4 Recommended Priority 2 • Bemal Heights Banks • Boeddeker Park Center Exp",
+    "ng artificial turf. The Committee voted to give this project a Priority 1. Priority 1: Bell, Gaar, Henne, Herold-CofFmo, Landis, Lee, Miguel, Maddux, Mathis, McGuire, Sims, Vela, Wilson Priority 2: Dearman The Committee voted unanimously to give this project a preliminary allocation of $150,000. Esprit Park Staff reported that the Real Estate Department has appraised the property at $3.1 million, but the land owners have stated if the City is interested in the purchasing the property the estimate may be dropped to $1.6 million. Drew Detsch, Margaret Weir, Raymond Clemens, Doug Atkins, Lynn Brown, Fat",
+    "ee's final recommendations and discuss any changes he might propose at the February 18, 1997 Committee meeting. Pamela Maye, Stephen Palmer, Anthony Sacco spoke in support of funding for construction of a restroom/locker room facility at Balboa Park. Marriccia Iccon spoke in support of acquisition of Esprit Park and indicated the Mayor and the community supported this prop"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.37,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.87,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes1996sanf_4",
+   "deep_link": "https://archive.org/details/minutes1996sanf_4?q=Esprit+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  }
+ ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 9,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.739354+00:00",
+ "generated_at": "2026-07-28T11:43:47.712421+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -26,6 +26,76 @@
  "top_departments": [
   "MYR Mayor"
  ],
+ "profile": {
+  "n_vouchers": 282,
+  "departments": [
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 158623973.71,
+    "n_vouchers": 208
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 65448.0,
+    "n_vouchers": 31
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 6180.81,
+    "n_vouchers": 43
+   }
+  ],
+  "n_departments": 3,
+  "categories": [
+   {
+    "code": "539200",
+    "label": "Loans Issued By City",
+    "spend_class": "ledger",
+    "usd": 158093774.01,
+    "n_vouchers": 189
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 81328.0,
+    "n_vouchers": 33
+   },
+   {
+    "code": "536510",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 15300.0,
+    "n_vouchers": 9
+   },
+   {
+    "code": "430170",
+    "label": "Interest Earned-Tax Refund",
+    "spend_class": "ledger",
+    "usd": 6180.81,
+    "n_vouchers": 43
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": true,
+  "recent_fy": 2025,
+  "recent_total_usd": 22605337.08,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Loans Issued By City",
+    "spend_class": "ledger",
+    "usd": 22605337.08,
+    "n_vouchers": 16
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000034059",
@@ -74,7 +144,7 @@
   },
   {
    "contract_no": "1000022417",
-   "title": "369 3rd Ave loan",
+   "title": "369 3rd Avenue loan",
    "department": "MYR Mayor",
    "department_code": "MYR",
    "agreed_usd": 8716000.0,
@@ -110,7 +180,7 @@
   },
   {
    "contract_no": "1000032302",
-   "title": "300 Ocean Ave",
+   "title": "300 Ocean Avenue",
    "department": "MYR Mayor",
    "department_code": "MYR",
    "agreed_usd": 5600000.0,

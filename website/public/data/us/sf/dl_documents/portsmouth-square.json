@@ -1,9 +1,98 @@
 {
- "generated_at": "2026-07-27T17:06:09.730989+00:00",
+ "generated_at": "2026-07-28T12:23:47.745707+00:00",
  "slug": "portsmouth-square",
  "name": "Portsmouth Square",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
+  {
+   "identifier": "sanfranciscomuni2109sanf",
+   "title": "San Francisco Municipal Transportation Agency : audit of City of San Francisco Portsmouth Plaza Parking Corporation",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Municipal Transportation Agency,Portsmouth Plaza Parking Corp",
+   "year": 2009,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Plaza",
+   "ocr_excerpts": [
+    "RANCISCO PUBLIC LIBRARY o < San Francisco Public Library Government Information Center San Francisco Public library 100 Larkin Street. 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO MUNICIPAL TRANSPORTATION AGENCY: Audit of City of San Francisco Portsmouth Plaza Parking Corporation GOVERNMENT DOCUMENTS DEPT OCT 2 2 2009 October 21, 2009 SAN FRANCISCO PUBLIC LIBRARY CONTROLLER'S OFFICE CITY SERVICES AUDITOR The City Services Auditor was created within the Controller's Office through an amendment to the City Charter that was approved by voters in November",
+    "ield Controller Monique Zmuda Deputy Controller October 21, 2009 Municipal Transportation Agency Board 1 South Van Ness Avenue, 7th Floor San Francisco, CA 94103 Chairman and Members: The Controller's Office, City Services Auditor, presents its report concerning the audit of City of San Francisco Portsmouth Plaza Parking Corporation (Portsmouth). Portsmouth has a 50-year agreement, which ends March 28, 2010, with the Recreation and Park Commission of the City and County of San Francisco (City) to operate Portsmouth Square Parking Garage. As established in Administrative Code Section 17.8, the San Francisco Municipal Transportation Agency (MTA) has jurisdiction and control over all parking facilities. Reporting Period: May 1 , 2006, through April 30, 2008 Net Parking Revenues: $3,033,883 Fees Paid: $2,578,800 • Portsmou",
+    "udit plan agreed to by the Controller and the San Francisco Municipal Transportation Agency (MTA). Background The City and County of San Francisco (City) has a 50-year lease agreement, which commenced on March 29, 1960, and will expire on March 28, 2010. The lease is between City of San Francisco Portsmouth Plaza Parking Corporation (Portsmouth) and the City's Recreation and Park Commission (commission) because the garage was built underground and beneath a park. Portsmouth is administered through MTA, as required by Administrative Code Section 17.8, which states that MTA has jurisdiction and control over all parking facilities. Portsmouth, a corporation in which all issued and outstanding shares of stock are beneficially owned by the City, received a $3 million bond on October 1, 1959, to construct the Portsmouth Square Parking garage. Portsmouth currently operates the garage and does not profit by means of any management fee for operation of the garage. Portsmouth pays the City 85 percent of gross receipts less parking taxes and operating expenses (\"surplus payments\"), and retains 15 percent in its surplus revenue",
+    "ets these expenditures from gross revenues. Scope The purpose of this audit was to determine whether Portsmouth: • Complied with the reporting and payment provisions of its lease agreement with the commission. i • Reported and co"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 13.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 5.84,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 7.25,
+    "money": true,
+    "decision": true,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscomuni2109sanf",
+   "deep_link": "https://archive.org/details/sanfranciscomuni2109sanf?q=Portsmouth+Plaza",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "audit",
+   "doc_type_label": "Audit",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Audit",
+   "salient": true,
+   "gloss": "The Controller's 2009 audit of the Portsmouth Plaza Parking Corporation, the non-profit operating the garage beneath the square."
+  },
+  {
+   "identifier": "reporttosanfran1993sanf_1",
+   "title": "Report to the San Francisco Parking and Traffic Commission : management audit of city-owned garages",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "ocr_excerpts": [
+    "contrast to their existing contracts which provide for a flat management fee and reimbursement for operating expenses. Further, the non-profits should design performance specifications and inspection checklists to ensure a satisfactory standard of service. All of the non-profit parking corporations, except Portsmouth Plaza Parking Corporation, have adhered to their leases with the City, including remitting the required percent of net revenues in a timely manner. However, between 1987 and 1993, Portsmouth Plaza Parking Corporation has been between one month to two years delinquent in remitting its lease payments due to the Recreation and Park Department. The last payment made by the corporation for Fiscal Year 1991-92, was remitted to the City in November of 1993, just prior to the release of this report. Currently the Portsmouth Plaza Parking Corporation owes the Recreation and Park Department $538,832 in back lease payments from the past six fiscal years. The Portsmouth Plaza Parking Corporation has consistently not adhered to the lease requirements and has not repaid a $500,000 construction loan made by the Recreation and Park Department. The City’s lease with the Portsmouth Plaza Parking Corporation should be terminated as expeditiously as possible. BQARD OF SUPERVISORS BUDGET ANALYST John L. Molinari, President and Members of the Parking and Traffic Commission November 22, 1993 Page 3 In FY 1991-92, two attorneys provided the six non-profit parking corporations with 2,970",
+    "of a corporate manager hired by two of the non-profit corporations, to the hourly rates of the two attorneys, reveals that the hourly rates of the attorneys are approximately 229 percent to 295 percent higher than the hourly rate of the corporate manager. The attorney for the Civic Plaza, Downtown, Portsmouth Plaza, and Uptown Parking Corporations frequently multiple billed his non-profit parking corporation clients for the same service. Such multiple billings resulted in an hourly rate of $550 for providing such activities as attending public meetings, reviewing meeting agendas and making telephone calls. The total",
+    "rages could increase or decrease parking rates to maximize revenues, while continuing to address the goal of encouraging short-term parkers, as follows: • Of the 15 City-owned garages, four charge less than $1.00 for the first hour, while the surrounding parking meters are $1.00 to $1.50 per hour. • Portsmouth Square and Fifth and Mission garages receive approximately $2,442 and $1,086 respectively more revenue per transient space than per monthly space. • Based on the high use of transient parking spaces, hourly rates could be raised at Portsmouth Square and Sutter-Stockton garages. However, each garage should analyze the impact on demand when making parking rate chan"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 0.55,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.05,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/reporttosanfran1993sanf_1",
+   "deep_link": "https://archive.org/details/reporttosanfran1993sanf_1?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "audit",
+   "doc_type_label": "Audit",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Audit",
+   "salient": true,
+   "gloss": "A management audit of city-owned garages, comparing the non-profit operators' management fees and legal costs."
+  },
   {
    "identifier": "C101697812",
    "title": "City College of San Francisco Chinatown/North Beach campus : draft environmental impact report",
@@ -41,8 +130,13 @@
    "url": "https://archive.org/details/C101697812",
    "deep_link": "https://archive.org/details/C101697812?q=Portsmouth+Square",
    "source_label": "Internet Archive — Democracy's Library",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The 1998 draft environmental impact report for City College's Chinatown/North Beach campus, assessing sunlight access and the open spaces around Portsmouth Square."
   },
   {
    "identifier": "bankofcantonofca1982sanf",
@@ -82,8 +176,13 @@
    "url": "https://archive.org/details/bankofcantonofca1982sanf",
    "deep_link": "https://archive.org/details/bankofcantonofca1982sanf?q=Portsmouth+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A 1982 environmental impact report for the Bank of Canton headquarters, assessing height, bulk and historic resources in the blocks below the square."
   },
   {
    "identifier": "505montgomerystr2519city",
@@ -122,7 +221,147 @@
    "url": "https://archive.org/details/505montgomerystr2519city",
    "deep_link": "https://archive.org/details/505montgomerystr2519city?q=Portsmouth+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": false,
+   "gloss": "A 1983 environmental impact report for 505 Montgomery Street, mapping the shadows the tower would cast across nearby open space."
+  },
+  {
+   "identifier": "findingsrecommen95cali",
+   "title": "Findings and recommendations concerning off street parking, Department of Parking and Traffic, San Francisco",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "ocr_excerpts": [
+    "icallv entrr \\ntr> o w*~ term gr0und lease with a corporation --a non profit jrpose of building the garage. In order to finance the on profit corporation would then issue bonds in its own irking garage for the convenience of the people who vay include the Union Square Garage, G\\ic Center Garage, Portsmouth Square Garage, Sutter/ ion Garage, and the Japan Center Garage . A as also formed, and issued bonds, to acquire the Garage. z land on which the non profit garages are built; the land from the City. Consequently, under the terms of isociated with operating the garage belong to the City, id by the non",
+    "ember 1, 1993 deadline has passed, the Department of Parking and Traffic has not yet been able to put together a consultant contract to conduct an analysis of the equipment and to prepare necessary bid specifications for new equipment. In another example of inconsistency, the City has permitted the Portsmouth Square Corporation to continue operating its garage even though the non profit corporation has, in fact, already paid off its bond holders. In a case like this the corporation would be expected to transfer ownership of the garage to the City and to dissolve the non profit corporation. However, the Portsmouth Square Garage has not yet been transferred to the City; the Portsmouth Square Corporation continues to operate the facility through a special agreement made with the City of San Francisco on September 25, 1981 allowing the Corporation to operate the garage with its original agreement to remain in force until March 28, 2010. 5. There is not now a Departmental mechanism to ass",
+    "e terms of the Vallejo Street Garage Management Agreement, require the Vallejo Street Garage to purchase and install new revenue equipment to replace the antiquated, high maintenance cost equipment now in use there. This stated requirement needs City support which should be given now. As soon as the Portsmouth Square Parking Corporation has completed the scheduled payment of its outstanding debt-approximately $544,000 owed to the Department of Park and Recreation—on time (Appendix G shows the ten year debt plan), its lease with the City should be terminated. Its unique agreement with the City is not an example to",
+    "of Off Street Parking, Parking and Traffic Commission: Sections 1, 2, 3, 4, 6, 7. Real Estate Department: Sections 2, 4. City Attorneys Office: Sections 2, 3, 4, 6. Controller: Sections 2, 3. Mayor: Section 5. 8 NON PROFIT GARAGES Name Union Square Civic Center Plaza Golden Gateway Portsmouth Square S utter/Stockton Fifth & Mission Japan Center Ellis-O'Farrell Current Status Bonds have been paid; under direct City control Bonds have been paid; under direct City control Bonds have been paid; under direct City control Bonds have been paid; non profit corporation continu"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 12.23,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/findingsrecommen95cali",
+   "deep_link": "https://archive.org/details/findingsrecommen95cali?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": false,
+   "gloss": "A Civil Grand Jury report on off-street parking, examining the long-term ground leases and bond financing behind the city's non-profit garage corporations."
+  },
+  {
+   "identifier": "generalmanagersr1975sanf",
+   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
+   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "ocr_excerpts": [
+    "(e) HELEN WILLS PLAYGROUND $100,000 (Renovate facility including improved children's play area and space for elderly) (f) NOE VALLEY TENNIS COURTS $100,000 (Renovate entire area, with special consideration being given to design presented by Friends of Moe Valley at public hearing on November 5.) (g) PORTSMOUTH SQUARE $15,000 ((Install additional benches and shelters for elderly.) (h) UPPER NOE VALLEY PLAYGROUND $40,000 (Rehabilitate children's play area) (i) VISITACION VALLEY PLAYGROUND $15,000 (Extend height of existing fence along Cora Street.) Est. Total Fiscal Year 1975-76 $658,000 -13- Fiscal Year 1976-77",
+    "Architect. NOE VALLEY TENNIS COURTS $100,000 (Renovate entire area, with special consideration being given to design presented by Friends of Noe Valley at public hearing on November 5,; 19/5) Status: Plans and specifications assigned to a consultant, Lanier and Sherrill, Archi- tects and Planners. PORTSMOUTH SQUARE $15,000 (Install additional benches and shelters for elderly,) Status : Bureau of Engineering staff is working on plans and specifications . UPPER NOE VALLEY PLAYGROUND $40,000 (Rehabilitate children's play area) Status : Bureau of Engineering staff is working on plans and specifications . VISI",
+    "ction (Planning funds $222 ,C:~ of $20,000 were allocated from the 1976 Program.)\" EERZ PLAYGROUND - Coffman Peel (Visitacicn Valley) - $50,000 Playground and building improvements ^MISSION DOLORES PARK - Children's Play Apparatus $70,000 > NORTH BEACH PLAYGROUND - Children's Play Apparatus $50,000 PORTSMOUTH SQUARE - Improvements $12,000 Total Fiscal Year 1977-78 $562,000 - 28 - COMMUNITY* DEVELOPMENT PROGRAM TO RENOVATE AND IMPROVE EXISTING RECREATIONAL FACILITIES 1975 PROGRAM Project 1. Chinese P/G Phase II New bldg. 2. Bernal P/G Bldg. Rehab. 3. Excelsior P/G Bldg Rehab. 4. Portola P/G > Bldg. R",
+    "HELEN WILLS PLAYGROUND $100,000 Renovate facility including improved children's play area and space for elderly Status: Assigned to Philip Choy (f) NOE VALLEY TENNIS COURTS $100,000 Renovate entire facility Status: Assigned to Lanier and Sherrill Bid advertise- ment expected in February, 1973 (g) PORTSMOUTH SQUARE $15,000 Install additional benches and shelters for elderly Status: Completed October 4, 1977 - 25 - Chinatown Churchill Alley (Churchill Alley and Vallejo St.) South of Market Reno Hotel site (6th and Harriet Streets) Development 1976-77 Churchill Alley Site Central City Site Jet's Drive I",
+    "HELEN WILLS PLAYGROUND $100,000 Renovate facility including improved children's play area and space for elderly Status: Assigned to Philip Choy (f) NOE VALLEY TENNIS COURTS $100,000 Renovate entire facility Status: Assigned to Lanier and Sherrill Bid advertise- ment expected in February, 1973 (g) PORTSMOUTH SQUARE $15,000 Install additional benches and she"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.22,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.72,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/generalmanagersr1975sanf",
+   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": false
+  },
+  {
+   "identifier": "sanfranciscothea194015sanf",
+   "title": "Theatre buildings",
+   "creator": "Estavan, Lawrence,Gagey, Edmond McAdoo, 1901- San Francisco stage,United States. Work Projects Administration (Calif.)",
+   "year": 1940,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Plaza",
+   "ocr_excerpts": [
+    "ON THEATRE . . .Frontispiece BELLA UNION THEATRE Preceding Page 1 Also in this picture are The Verandah, a gambling house jthe El Dorado saloon, with Ports- mouth Plasa in the fore- groimd, Telegraph Hill in the background. FOLLOWING PAGE THIRD JEmiY LIND THEATRE 47 Showing the El Dorado Saloon and Portsmouth Plaza. RUSS GARDENS , 70 MAGUIRE'S OPERA HOUSE . . . . , 97 SOUVENIR OPERA HOUSE PROGRAM 114 FIRST lECHANICS' PAVILION 181 SECTIONAL SPOT MAPS ... 240-246 Showing locations of early San Francisco Theatres. M. T,' \",~=[ 2Ic E 3V ^a IS 3(S '5t5-Tq- ^■Tse . F PROGRAM OF THE BELLA UNIO",
+    "it was to be some months before their minds were to be turned toward formal relaxation. There was no theatre built. When Stephen C, Massett gave the first public entertainment in English in San Francisco on June 22, 1849, he was forced to use a small redwood building on the southwest corner of Portsmouth Plaza which had served both as the city's first schoolhouse and as a police office,'** He cleared ^500 profit that night, at ;|p3 a person; yet if there had been an adequate hall available he might have made double that amount, for many a miner was forced to take his well- stuffed pockets somewhere e",
+    "was passed forbidding the sale of liquor in the theatres of San Francisco. Vi/hiskey went out of the the- atre and with It went the Bella Union. ORIGIN AS GAMBLING DEN Beginning in 1849 as a gambling saloon, the Bella Union v/ss situated on the north side of Washington Street near Kearny, facing Portsmouth Plaza. Not until later years did the theatre have a box office. There v;as an auditorium, provided v/ith chairs -- though v/ith no stage at first -• which one entered by passing through the saloon or a long narrov; hallway adjoining the saloon, at the end of which Madame Tetlow sat and sold tickets.",
+    "n March 24. Seeing the Elephant was the premiere offering at the Phoenix, introduc- ing the popular Sophie Edwin to San Francisco audiences. The Phoenix was a crude little place, on Pacific near Montgomery Street, and its name was not to save it any more than its namesake, the Exchange, located on Portsmouth Square. Both of them were destroyed in the fire of May 4, 1850. DOC ROBINSON BUILDS DRAT.iATIC MUSEm^ Doctor Robinson, however, had evidence of Phoenix blood in him. Burned out of his hall on May 4, 1850, he had begun preparations for a Dramatic Museum, toget^.er with James Evrard, former English manage",
+    "three months had for rival only its fellow circus, Rowe's Olympic. William Foley, who had bought Rowe's origi- nal amphitheatre and there staged the unpopular bullfights before seeing his building burn, had opened his own specially built amphitheatre on September 30, 1850. It was on the west side of Portsmouth Square and here performed a full troupe of equestrians, supported "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.33,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.83,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscothea194015sanf",
+   "deep_link": "https://archive.org/details/sanfranciscothea194015sanf?q=Portsmouth+Plaza",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
    "salient": false
   },
   {
@@ -163,209 +402,12 @@
    "url": "https://archive.org/details/minutesrecreatio1959sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1959sanf?q=Portsmouth+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "sanfranciscomuni2109sanf",
-   "title": "San Francisco Municipal Transportation Agency : audit of City of San Francisco Portsmouth Plaza Parking Corporation",
-   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Municipal Transportation Agency,Portsmouth Plaza Parking Corp",
-   "year": 2009,
-   "pool": "sfpl",
-   "matched_alias": "Portsmouth Plaza",
-   "ocr_excerpts": [
-    "RANCISCO PUBLIC LIBRARY o < San Francisco Public Library Government Information Center San Francisco Public library 100 Larkin Street. 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO MUNICIPAL TRANSPORTATION AGENCY: Audit of City of San Francisco Portsmouth Plaza Parking Corporation GOVERNMENT DOCUMENTS DEPT OCT 2 2 2009 October 21, 2009 SAN FRANCISCO PUBLIC LIBRARY CONTROLLER'S OFFICE CITY SERVICES AUDITOR The City Services Auditor was created within the Controller's Office through an amendment to the City Charter that was approved by voters in November",
-    "ield Controller Monique Zmuda Deputy Controller October 21, 2009 Municipal Transportation Agency Board 1 South Van Ness Avenue, 7th Floor San Francisco, CA 94103 Chairman and Members: The Controller's Office, City Services Auditor, presents its report concerning the audit of City of San Francisco Portsmouth Plaza Parking Corporation (Portsmouth). Portsmouth has a 50-year agreement, which ends March 28, 2010, with the Recreation and Park Commission of the City and County of San Francisco (City) to operate Portsmouth Square Parking Garage. As established in Administrative Code Section 17.8, the San Francisco Municipal Transportation Agency (MTA) has jurisdiction and control over all parking facilities. Reporting Period: May 1 , 2006, through April 30, 2008 Net Parking Revenues: $3,033,883 Fees Paid: $2,578,800 • Portsmou",
-    "udit plan agreed to by the Controller and the San Francisco Municipal Transportation Agency (MTA). Background The City and County of San Francisco (City) has a 50-year lease agreement, which commenced on March 29, 1960, and will expire on March 28, 2010. The lease is between City of San Francisco Portsmouth Plaza Parking Corporation (Portsmouth) and the City's Recreation and Park Commission (commission) because the garage was built underground and beneath a park. Portsmouth is administered through MTA, as required by Administrative Code Section 17.8, which states that MTA has jurisdiction and control over all parking facilities. Portsmouth, a corporation in which all issued and outstanding shares of stock are beneficially owned by the City, received a $3 million bond on October 1, 1959, to construct the Portsmouth Square Parking garage. Portsmouth currently operates the garage and does not profit by means of any management fee for operation of the garage. Portsmouth pays the City 85 percent of gross receipts less parking taxes and operating expenses (\"surplus payments\"), and retains 15 percent in its surplus revenue",
-    "ets these expenditures from gross revenues. Scope The purpose of this audit was to determine whether Portsmouth: • Complied with the reporting and payment provisions of its lease agreement with the commission. i • Reported and co"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 13.0,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 5.84,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 7.25,
-    "money": true,
-    "decision": true,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/sanfranciscomuni2109sanf",
-   "deep_link": "https://archive.org/details/sanfranciscomuni2109sanf?q=Portsmouth+Plaza",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "findingsrecommen95cali",
-   "title": "Findings and recommendations concerning off street parking, Department of Parking and Traffic, San Francisco",
-   "creator": "California. Grand Jury (San Francisco)",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Portsmouth Square",
-   "ocr_excerpts": [
-    "icallv entrr \\ntr> o w*~ term gr0und lease with a corporation --a non profit jrpose of building the garage. In order to finance the on profit corporation would then issue bonds in its own irking garage for the convenience of the people who vay include the Union Square Garage, G\\ic Center Garage, Portsmouth Square Garage, Sutter/ ion Garage, and the Japan Center Garage . A as also formed, and issued bonds, to acquire the Garage. z land on which the non profit garages are built; the land from the City. Consequently, under the terms of isociated with operating the garage belong to the City, id by the non",
-    "ember 1, 1993 deadline has passed, the Department of Parking and Traffic has not yet been able to put together a consultant contract to conduct an analysis of the equipment and to prepare necessary bid specifications for new equipment. In another example of inconsistency, the City has permitted the Portsmouth Square Corporation to continue operating its garage even though the non profit corporation has, in fact, already paid off its bond holders. In a case like this the corporation would be expected to transfer ownership of the garage to the City and to dissolve the non profit corporation. However, the Portsmouth Square Garage has not yet been transferred to the City; the Portsmouth Square Corporation continues to operate the facility through a special agreement made with the City of San Francisco on September 25, 1981 allowing the Corporation to operate the garage with its original agreement to remain in force until March 28, 2010. 5. There is not now a Departmental mechanism to ass",
-    "e terms of the Vallejo Street Garage Management Agreement, require the Vallejo Street Garage to purchase and install new revenue equipment to replace the antiquated, high maintenance cost equipment now in use there. This stated requirement needs City support which should be given now. As soon as the Portsmouth Square Parking Corporation has completed the scheduled payment of its outstanding debt-approximately $544,000 owed to the Department of Park and Recreation—on time (Appendix G shows the ten year debt plan), its lease with the City should be terminated. Its unique agreement with the City is not an example to",
-    "of Off Street Parking, Parking and Traffic Commission: Sections 1, 2, 3, 4, 6, 7. Real Estate Department: Sections 2, 4. City Attorneys Office: Sections 2, 3, 4, 6. Controller: Sections 2, 3. Mayor: Section 5. 8 NON PROFIT GARAGES Name Union Square Civic Center Plaza Golden Gateway Portsmouth Square S utter/Stockton Fifth & Mission Japan Center Ellis-O'Farrell Current Status Bonds have been paid; under direct City control Bonds have been paid; under direct City control Bonds have been paid; under direct City control Bonds have been paid; non profit corporation continu"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 9.0,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 12.23,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.75,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/findingsrecommen95cali",
-   "deep_link": "https://archive.org/details/findingsrecommen95cali?q=Portsmouth+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "sanfranciscothea194015sanf",
-   "title": "Theatre buildings",
-   "creator": "Estavan, Lawrence,Gagey, Edmond McAdoo, 1901- San Francisco stage,United States. Work Projects Administration (Calif.)",
-   "year": 1940,
-   "pool": "sfpl",
-   "matched_alias": "Portsmouth Plaza",
-   "ocr_excerpts": [
-    "ON THEATRE . . .Frontispiece BELLA UNION THEATRE Preceding Page 1 Also in this picture are The Verandah, a gambling house jthe El Dorado saloon, with Ports- mouth Plasa in the fore- groimd, Telegraph Hill in the background. FOLLOWING PAGE THIRD JEmiY LIND THEATRE 47 Showing the El Dorado Saloon and Portsmouth Plaza. RUSS GARDENS , 70 MAGUIRE'S OPERA HOUSE . . . . , 97 SOUVENIR OPERA HOUSE PROGRAM 114 FIRST lECHANICS' PAVILION 181 SECTIONAL SPOT MAPS ... 240-246 Showing locations of early San Francisco Theatres. M. T,' \",~=[ 2Ic E 3V ^a IS 3(S '5t5-Tq- ^■Tse . F PROGRAM OF THE BELLA UNIO",
-    "it was to be some months before their minds were to be turned toward formal relaxation. There was no theatre built. When Stephen C, Massett gave the first public entertainment in English in San Francisco on June 22, 1849, he was forced to use a small redwood building on the southwest corner of Portsmouth Plaza which had served both as the city's first schoolhouse and as a police office,'** He cleared ^500 profit that night, at ;|p3 a person; yet if there had been an adequate hall available he might have made double that amount, for many a miner was forced to take his well- stuffed pockets somewhere e",
-    "was passed forbidding the sale of liquor in the theatres of San Francisco. Vi/hiskey went out of the the- atre and with It went the Bella Union. ORIGIN AS GAMBLING DEN Beginning in 1849 as a gambling saloon, the Bella Union v/ss situated on the north side of Washington Street near Kearny, facing Portsmouth Plaza. Not until later years did the theatre have a box office. There v;as an auditorium, provided v/ith chairs -- though v/ith no stage at first -• which one entered by passing through the saloon or a long narrov; hallway adjoining the saloon, at the end of which Madame Tetlow sat and sold tickets.",
-    "n March 24. Seeing the Elephant was the premiere offering at the Phoenix, introduc- ing the popular Sophie Edwin to San Francisco audiences. The Phoenix was a crude little place, on Pacific near Montgomery Street, and its name was not to save it any more than its namesake, the Exchange, located on Portsmouth Square. Both of them were destroyed in the fire of May 4, 1850. DOC ROBINSON BUILDS DRAT.iATIC MUSEm^ Doctor Robinson, however, had evidence of Phoenix blood in him. Burned out of his hall on May 4, 1850, he had begun preparations for a Dramatic Museum, toget^.er with James Evrard, former English manage",
-    "three months had for rival only its fellow circus, Rowe's Olympic. William Foley, who had bought Rowe's origi- nal amphitheatre and there staged the unpopular bullfights before seeing his building burn, had opened his own specially built amphitheatre on September 30, 1850. It was on the west side of Portsmouth Square and here performed a full troupe of equestrians, supported "
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 6.33,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.83,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/sanfranciscothea194015sanf",
-   "deep_link": "https://archive.org/details/sanfranciscothea194015sanf?q=Portsmouth+Plaza",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
    "salient": false
-  },
-  {
-   "identifier": "generalmanagersr1975sanf",
-   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
-   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
-   "year": 1975,
-   "pool": "sfpl",
-   "matched_alias": "Portsmouth Square",
-   "ocr_excerpts": [
-    "(e) HELEN WILLS PLAYGROUND $100,000 (Renovate facility including improved children's play area and space for elderly) (f) NOE VALLEY TENNIS COURTS $100,000 (Renovate entire area, with special consideration being given to design presented by Friends of Moe Valley at public hearing on November 5.) (g) PORTSMOUTH SQUARE $15,000 ((Install additional benches and shelters for elderly.) (h) UPPER NOE VALLEY PLAYGROUND $40,000 (Rehabilitate children's play area) (i) VISITACION VALLEY PLAYGROUND $15,000 (Extend height of existing fence along Cora Street.) Est. Total Fiscal Year 1975-76 $658,000 -13- Fiscal Year 1976-77",
-    "Architect. NOE VALLEY TENNIS COURTS $100,000 (Renovate entire area, with special consideration being given to design presented by Friends of Noe Valley at public hearing on November 5,; 19/5) Status: Plans and specifications assigned to a consultant, Lanier and Sherrill, Archi- tects and Planners. PORTSMOUTH SQUARE $15,000 (Install additional benches and shelters for elderly,) Status : Bureau of Engineering staff is working on plans and specifications . UPPER NOE VALLEY PLAYGROUND $40,000 (Rehabilitate children's play area) Status : Bureau of Engineering staff is working on plans and specifications . VISI",
-    "ction (Planning funds $222 ,C:~ of $20,000 were allocated from the 1976 Program.)\" EERZ PLAYGROUND - Coffman Peel (Visitacicn Valley) - $50,000 Playground and building improvements ^MISSION DOLORES PARK - Children's Play Apparatus $70,000 > NORTH BEACH PLAYGROUND - Children's Play Apparatus $50,000 PORTSMOUTH SQUARE - Improvements $12,000 Total Fiscal Year 1977-78 $562,000 - 28 - COMMUNITY* DEVELOPMENT PROGRAM TO RENOVATE AND IMPROVE EXISTING RECREATIONAL FACILITIES 1975 PROGRAM Project 1. Chinese P/G Phase II New bldg. 2. Bernal P/G Bldg. Rehab. 3. Excelsior P/G Bldg Rehab. 4. Portola P/G > Bldg. R",
-    "HELEN WILLS PLAYGROUND $100,000 Renovate facility including improved children's play area and space for elderly Status: Assigned to Philip Choy (f) NOE VALLEY TENNIS COURTS $100,000 Renovate entire facility Status: Assigned to Lanier and Sherrill Bid advertise- ment expected in February, 1973 (g) PORTSMOUTH SQUARE $15,000 Install additional benches and shelters for elderly Status: Completed October 4, 1977 - 25 - Chinatown Churchill Alley (Churchill Alley and Vallejo St.) South of Market Reno Hotel site (6th and Harriet Streets) Development 1976-77 Churchill Alley Site Central City Site Jet's Drive I",
-    "HELEN WILLS PLAYGROUND $100,000 Renovate facility including improved children's play area and space for elderly Status: Assigned to Philip Choy (f) NOE VALLEY TENNIS COURTS $100,000 Renovate entire facility Status: Assigned to Lanier and Sherrill Bid advertise- ment expected in February, 1973 (g) PORTSMOUTH SQUARE $15,000 Install additional benches and she"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 3.22,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.72,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.75,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": true,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/generalmanagersr1975sanf",
-   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Portsmouth+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "reporttosanfran1993sanf_1",
-   "title": "Report to the San Francisco Parking and Traffic Commission : management audit of city-owned garages",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Portsmouth Square",
-   "ocr_excerpts": [
-    "contrast to their existing contracts which provide for a flat management fee and reimbursement for operating expenses. Further, the non-profits should design performance specifications and inspection checklists to ensure a satisfactory standard of service. All of the non-profit parking corporations, except Portsmouth Plaza Parking Corporation, have adhered to their leases with the City, including remitting the required percent of net revenues in a timely manner. However, between 1987 and 1993, Portsmouth Plaza Parking Corporation has been between one month to two years delinquent in remitting its lease payments due to the Recreation and Park Department. The last payment made by the corporation for Fiscal Year 1991-92, was remitted to the City in November of 1993, just prior to the release of this report. Currently the Portsmouth Plaza Parking Corporation owes the Recreation and Park Department $538,832 in back lease payments from the past six fiscal years. The Portsmouth Plaza Parking Corporation has consistently not adhered to the lease requirements and has not repaid a $500,000 construction loan made by the Recreation and Park Department. The City’s lease with the Portsmouth Plaza Parking Corporation should be terminated as expeditiously as possible. BQARD OF SUPERVISORS BUDGET ANALYST John L. Molinari, President and Members of the Parking and Traffic Commission November 22, 1993 Page 3 In FY 1991-92, two attorneys provided the six non-profit parking corporations with 2,970",
-    "of a corporate manager hired by two of the non-profit corporations, to the hourly rates of the two attorneys, reveals that the hourly rates of the attorneys are approximately 229 percent to 295 percent higher than the hourly rate of the corporate manager. The attorney for the Civic Plaza, Downtown, Portsmouth Plaza, and Uptown Parking Corporations frequently multiple billed his non-profit parking corporation clients for the same service. Such multiple billings resulted in an hourly rate of $550 for providing such activities as attending public meetings, reviewing meeting agendas and making telephone calls. The total",
-    "rages could increase or decrease parking rates to maximize revenues, while continuing to address the goal of encouraging short-term parkers, as follows: • Of the 15 City-owned garages, four charge less than $1.00 for the first hour, while the surrounding parking meters are $1.00 to $1.50 per hour. • Portsmouth Square and Fifth and Mission garages receive approximately $2,442 and $1,086 respectively more revenue per transient space than per monthly space. • Based on the high use of transient parking spaces, hourly rates could be raised at Portsmouth Square and Sutter-Stockton garages. However, each garage should analyze the impact on demand when making parking rate chan"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 0.55,
-    "sf_context": false,
-    "rival_city": true,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 1.05,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 6.5,
-    "money": true,
-    "decision": false,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/reporttosanfran1993sanf_1",
-   "deep_link": "https://archive.org/details/reporttosanfran1993sanf_1?q=Portsmouth+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
   }
  ]
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.727468+00:00",
+ "generated_at": "2026-07-28T11:43:47.692206+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,134 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 685417,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 991403400.17,
+    "n_vouchers": 685412
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 5859.07,
+    "n_vouchers": 3
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "usd": 2779.1,
+    "n_vouchers": 1
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "usd": 28.18,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "544610",
+    "label": "Pharmaceutical",
+    "spend_class": "purchase",
+    "usd": 583530437.49,
+    "n_vouchers": 432394
+   },
+   {
+    "code": "544510",
+    "label": "Minor Medical Equipment",
+    "spend_class": "purchase",
+    "usd": 6018316.1,
+    "n_vouchers": 3332
+   },
+   {
+    "code": "544990",
+    "label": "Other Hosp, Clinics&Lab Supply",
+    "spend_class": "purchase",
+    "usd": 1018918.36,
+    "n_vouchers": 752
+   },
+   {
+    "code": "560710",
+    "label": "Medical, Dental & Lab Equipmnt",
+    "spend_class": "obligation",
+    "usd": 431400.06,
+    "n_vouchers": 139
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 194287.59,
+    "n_vouchers": 458
+   },
+   {
+    "code": "546990",
+    "label": "Food",
+    "spend_class": "purchase",
+    "usd": 82098.02,
+    "n_vouchers": 323
+   },
+   {
+    "code": "544410",
+    "label": "Medical Supplies",
+    "spend_class": "purchase",
+    "usd": 49339.75,
+    "n_vouchers": 28
+   },
+   {
+    "code": "535960",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 11500.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 12,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 82759702.79,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Pharmaceutical",
+    "spend_class": "purchase",
+    "usd": 82592306.74,
+    "n_vouchers": 58082
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Minor Medical Equipment",
+    "spend_class": "purchase",
+    "usd": 128055.14,
+    "n_vouchers": 1
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Medical Supplies",
+    "spend_class": "purchase",
+    "usd": 34907.93,
+    "n_vouchers": 10
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Interest Earned-Tax Refund",
+    "spend_class": "ledger",
+    "usd": 4432.98,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000013809",

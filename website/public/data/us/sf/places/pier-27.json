@@ -1,0 +1,365 @@
+{
+ "generated_at": "2026-07-28T12:23:47.801649+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "pier-27",
+ "name": "Pier 27",
+ "kind": "Port facility",
+ "family": "port",
+ "address": "1098 The Embarcadero",
+ "lat": 37.804933,
+ "lon": -122.401343,
+ "owning_dept": {
+  "name": "Port",
+  "code": "PRT"
+ },
+ "facility": {
+  "primary_name": "PIER 27 SHED",
+  "primary_address": "PIER 27",
+  "primary_city": "San Francisco",
+  "primary_zip": "94111",
+  "primary_block_lot": "9900070",
+  "primary_department_name": "Port",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": null,
+  "primary_latitude": 37.804835437000065,
+  "primary_longitude": -122.40117517299996,
+  "supervisor_district": 3,
+  "n_facilities": 5,
+  "total_gross_sq_ft": 436042,
+  "n_owned": 5,
+  "n_leased": 0,
+  "apn_list": [
+   "9900070"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1289,
+    "common_name": "Pier 27  - Port’s primary cruise terminal.",
+    "block_lot": "9900070",
+    "gross_sq_ft": 420690,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 31,
+    "common_name": "2275 | Pier 27 Adm/Pier 29 Annex",
+    "block_lot": "9900070",
+    "gross_sq_ft": 11800,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1290,
+    "common_name": "Pier 27 - Office Annex",
+    "block_lot": "9900070",
+    "gross_sq_ft": 3552,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3229,
+    "common_name": "PIER 27 SHED",
+    "block_lot": "9900070",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3228,
+    "common_name": "PIER 27 OFFICE BUILDING",
+    "block_lot": "9900070",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": null,
+ "photo": "/img/us/sf/places/pier-27.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/pier-27.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:At_San_Francisco_2015_040_-_Pier_27.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Photograph by Mike Peel (www.mikepeel.net).",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T23:26:34.190632+00:00"
+ },
+ "summary_en": "Pier 27 has been rebuilt around whatever the waterfront needed at the time. The Port's own 1980 handbook lists Piers 27-29 as a breakbulk terminal — three berths, fifteen acres, 335,830 square feet of covered storage, worked by the Pacific-Oriental Terminal Company and serving Argentine, Philippine and Dutch lines. By the time of the Waterfront Land Use Plan those cargo activities had been consolidated at Pier 80, the piers were designated a transitional maritime area, and the sites were being used for interim non-trust purposes. What replaced the cargo was an event and cruise complex: the Port Commission tracked the Pier 27 cruise terminal for use during the 34th America's Cup, approved revenue bonds for a second phase of the James R. Herman Cruise Terminal, and considered a donor recognition programme at Piers 27/29. The environmental report for that combined project deals in the detail such a shift produces — noise monitoring on Telegraph Hill about 750 feet from the Pier 27 waterfront, and a mitigation measure requiring acoustical enclosures for generators at the Pier 27-29 spectator areas. The contracts recorded against the pier by name are for its public art.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_usd": 156434885.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_compensation_usd": 52732085.2,
+   "n_employees": 304,
+   "fiscal_year": 2025
+  },
+  "contracts": [
+   {
+    "contract_no": "1000032291",
+    "title": "PAPO-Port Pier 27 AC",
+    "prime": "ANA TERESA FERNANDEZ",
+    "department_code": "ART",
+    "agreed_usd": 234890.0,
+    "paid_usd": 229585.41,
+    "evidence": "ART-PAPO-Port Pier 27 AC",
+    "team": [
+     {
+      "supplier": "ANA TERESA FERNANDEZ",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 234890.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000037378",
+    "title": "PAPO-Port Pier 27 AC",
+    "prime": "ONE HAT ONE HAND LLC DBA SCENE 2",
+    "department_code": "ART",
+    "agreed_usd": 20473.75,
+    "paid_usd": 20473.75,
+    "evidence": "ART-PAPO-Port Pier 27 AC",
+    "team": [
+     {
+      "supplier": "ONE HAT ONE HAND LLC DBA SCENE 2",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 20473.75
+     }
+    ]
+   }
+  ],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "draftenvironment6120sanf",
+   "title": "Draft environmental impact report : the 34th America's Cup & James R. Herman Cruise Terminal and Northeast Wharf Plaza",
+   "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). City Attorney's Office,Port of San Francisco (Calif.),Environmental Science Associates,Orion Environmental Associates,Applied Marine Sciences,Coast and Harbor Engineering,Geotechnical Consultants, Inc,Hydroconsult Engineers, Inc,Natalie Macris Writing & Editing,Adavant Consulting,Boudreau Associates, LLC,ENVIRON Corporation,LCW Consulting,Yuki Kawaguchi, Cartographer,San Francisco (Calif.). Mayor's Office of Economic and Workforce Development,34th America's Cup Event Authority,America's Cup Organizing Committee,AECOM Consult, Inc,KMD Architects & Pfau Long Architecture,Premier Structures,Gibson, Dunn & Crutcher",
+   "year": 2011,
+   "pool": "sfpl",
+   "matched_alias": "Pier 27",
+   "ocr_excerpts": [
+    "quire the use of \"Level 1 sound enclosures\" for generators. [O-WW-27] Response NO-2 Mitigation Measure M-NO-2a, Shielding or Acoustical Enclosures for Generators at Piers 27-29 and Marina Green, in EIR Section 5.7.3.3, page 5.7-37, establishes a performance standard for generator noise reduction at the Pier 27-29 and Marina Green spectator event areas. The potential for achievement of this reduction was verified using specifications for Level 1 noise enclosures for the size of generators proposed. However, this level of noise reduction may be achieved through other means, such as shielding or use of smaller",
+    "e monitoring was conducted at two locations in the Telegraph Hill area: 101 Lombard to represent the conditions in the flat area at the base of the hill, and 218 Filbert Street to represent an elevated noise environment on Telegraph Hill. These locations are approximately 750 and 900 feet from the Pier 27 waterfront, respectively, and noise data are presented in Table 5.7-2 on page 5.7-7 of the EIR. The top of Telegraph Hill is approximately 1,500 feet from the Northeast Waterfront, so locations at a distance of one mile (5,280 feet) would be well beyond and shielded by Telegraph Based on the res",
+    "ach and Hyde Streets. Impacts NO-2 and NO-4 of the EIR, starting on pages 5.7-34 and 5.7-41, respectively, identify significant unavoidable operational noise impacts associated with AC34 traffic noise increases and noise generated by amplified music. Affected areas would include the nearest receptors to Pier 27 in the Telegraph Hill area and Aquatic Park in North Beach. While operations of generators, helicopters, and marine vessels would individually have less-than-significant noise impacts based on the appropriate thresholds for these sources, noise from these additional sources would exacerbate the significant",
+    "would be no permanent land use installations related to the provisions for the AC34 events, and cumulative operational noise impacts are therefore considered in the EIR with respect to the James R. Herman Cruise Terminal and Northeast Wharf Plaza operations in conjunction with other development in the Pier 27 area in Impact C-NO, page 5.7-56, of the EIR. Application of sound baffling does not represent a viable mitigation for identified significant impacts with respect to noise from motor vehicles. A mitigation measure to reduce impacts from amplified sound is provided in Mitigation Measure M-NO-2b on page",
+    "Wharf Plaza 12. Responses to Comments 12.13 Air Quality Mitigation Measure M-AQ-2f: Fuels for Off-Road Construction Equipment Mitigation Measure M-AQ-4a: Emission Controls for Race-Sponsored Spectator and Support Vessels Mitigation Measure M-AQ-4b: Temporary Shoreside Power for Large Private Yachts at Pier 27 Mitigation Measure M-AQ-4c: Alternative"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.81,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.31,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/draftenvironment6120sanf",
+   "deep_link": "https://archive.org/details/draftenvironment6120sanf?q=Pier+27",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The environmental report for the terminal and America's Cup, with noise limits for generators at the pier."
+  },
+  {
+   "identifier": "port1980port",
+   "title": "The port",
+   "creator": "Port of San Francisco (Calif.)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 27",
+   "ocr_excerpts": [
+    "es for receiving, manipulating, and holding for quota, sampling and inspection; and computer inventory. All goods received here have duty free storage. CONSTRUCTION: Concrete-jacketed timber piles, reinforced concrete deck CONNECTION: Via Embarcadero, San Francisco Belt Railroad Tracks BREAKBULK TERMINAL- PIER 27-29 OPERATOR: Pacific-Oriental Terminal Company STEAMSHIP LINES: Argentine Lines, Galleon Shipping Company, Hoegh Lines, Hoegh Ugland Auto Lines, Maritime Company of Philippines, Nedlloyd Pacific African Service BERTHS: Three at MLLW 36 alongside AREA: 15 acres COVERED STORAGE AREA: 335,830 square feet",
+    "seas Shipping Company Address: Phone: Berth: Service: One California St., San Francisco 94111 (415) 986-2114 Pier 80 Far East, South East Asia ELMA-ARGENTINE LINES Agency: Transpacific Transportation Company Address: Phone: Berth: Service: 650 California St., San Francisco 94111 (415) 986-0786 Pier 27 South America 14 FARRELL LINES INC. Address: One Market Plaza, Suite 24-B, San Francisco 94105 Phone: (415) 777-3300 Berth: Pier 96 Service: Australia, New Zealand, South Pacific GALLEON SHIPPING CORPORATION Agency: Transpacific Transportation Company Address: 650 California St., San Francisco 94111 Phone: (415)986-0786 Berth: Pier 27 Service: Philippines GRANCOLOMBIANA Agency: Beaufort Navigation, Inc. Address: 50 California St., Suite 3100, San Francisco 94111 Phone: (415)433-6955 Berth: Pier 50 Service: Central and South America HOEGH LINES Agency: Transpacific Transportation Company Address: 650 California St., San Francisco 94111 Phone: (415)986-0786 Berth: Pier 27 Service: Southeast Asia, Middle East, India HOEGH UGLAND AUTO LINERS Agency: Transpacific Transportation Company Address: 650 California St., San Francisco 94111 Phone: (415)986-0786 Berth: Pier 27-29 Service: Europe KARLANDER KANGAROO LINE Agency: Transpacific Transportation Company Address: 650 California St., San Francisco 94111 Phone: (415)986-0786 Berth: Pier 80 Service: Australia KNUTSEN LINE Agency: Bakke Steamship Address: 650 California St., San Francisco, 94108 Phone: (415)433-4200 Be",
+    "ROS. STEAMSHIP CO., INC. Address: 320 California Street, San Francisco 94104 Phone: (415)433-7400 Berth: Pier 80 Service: Far East, Southeast Asia MARITIME COMPANY OF THE PHILIPPINES Agency: North America Maritime Agencies Address: 100 California St., San Francisco 94111 Phone: (415)981-0343 Berth: Pier 27 Service: Philippines NAVARU PACIFIC Agency: North American Maritime Agencies Address: 100 California St., San Francisco 94111 Phone: (415)981-0343 Berth: Pier 80 Service: Trust Territories NORSK PACIFIC STEAMSHIP CO. Address: 1 Bush Street, San Francisco 94104 Phone: (415)823-5000 Berth: Pier 48 Service: Coastwise NEDLLOYD PACIFIC AFRICA SERVICE Agency: Transpacific Transportation Company Ad"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 7.14,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/port1980port",
+   "deep_link": "https://archive.org/details/port1980port?q=Pier+27",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The Port's handbook describing Piers 27-29 as a working breakbulk terminal with fifteen acres of cargo space."
+  },
+  {
+   "identifier": "agendasminutess2015sanf_4",
+   "title": "Agendas and Minutes / San Francisco Port Commission",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 27",
+   "ocr_excerpts": [
+    "ule the matter for a future agenda, refer the matter to staff for investigation or respond briefly to statements made or questions posed by members of the public. (Government Code Section 54954.2(a)) 6. EXECUTIVE A. Executive Director’s Report • Free Symphony in the Park at Cruise Terminal Plaza at Pier 27 - July 12, 2015 at 12 noon • Cancellation of Port Commission meeting - August 1 1 , 201 5 • Bayview Rise - Selected by the Public Art Network as one of the best public art projects in the country • Anniversary of the opening of the Embarcadero Roadway • In Memoriam - LeRoy King, a longtime Bay Are",
+    "ting of the 34th America’s Cup was not yet known. Subsequently, as part of the operational requirements of the America’s Cup, dredging was required at Piers 30/32 thus increasing our dredging expenses. Therefore, our remaining contract funds are insufficient for upcoming dredging events at Pier 35 and Pier 27 which are scheduled to be dredged between October and November of 2015. The requested increase of $1,200,000 in contract value is necessary to complete the originally contemplated dredging activities for this calendar year and the contract period. 1 http://www.sfport.com/ModuIes/ShowDocument.aspx?documentid=",
+    "aff desires to increase the Maintenance Dredging contract amount by $1,200,000, which would result in a new authorized contract amount of $17,101 ,050; and WHEREAS, The new contract amount will enable the Port to direct Dutra Dredging Company to conduct scheduled dredging work in 201 5 at Pier 35 and Pier 27, which are critical to the Port’s maritime operations, and other locations to be determined by staff; now, therefore be it RESOLVED, That the Port Commission hereby authorizes staff to execute a Contract Modification for the Contract No. 2746, Maintenance Dredging 2011-2015 Project with Dutra Dredging",
+    "esident Hon. Kimberly Brandon Hon. Mel Murphy Hon. Doreen Woo Ho SUBJECT: Status report on the James R. Herman Cruise Terminal and Pier 35 Activity for the period of September 2014 to June 2015 DIRECTOR'S RECOMMENDATION: Informational Only Executive Summary The James R. Herman Cruise Terminal at Pier 27 welcomed its first cruise vessel, Crown Princess, on September 18, 2014. Since then, the Port has received 64 additional ship calls with approximately 227,000 embarking and disembarking passengers. On non-cruise days, the terminal has been utilized for civic and corporate events, including several from San Francisco’s growing technology sector. The facility has hosted 26 special events with one of the first being the San Francisco Giants’ celebration of their participation in the 2014 World Series. This represents a very strong start. The new terminal and plaza transformed Pier 27 from an underused view-blocking warehouse to one of San Francisco’s c"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.11,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.11,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 3.25,
+    "money": true,
+    "decision": true,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendasminutess2015sanf_4",
+   "deep_link": "https://archive.org/details/agendasminutess2015sanf_4?q=Pier+27",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Port papers scheduling dredging at Pier 27 and a free symphony on its plaza."
+  },
+  {
+   "identifier": "agenda2013sanf_0",
+   "title": "Agenda",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 27",
+   "ocr_excerpts": [
+    "al presentation on Pilot Donor Recognition Program for the Port of San Francisco at Piers 27/29. 6. MARITIME A. Informational presentation on the commercial maritime activities of San Francisco Bay Railroad located at 100 Cargo Way @ Pier 96 rail yard. 7. ENGINEERING A. Informational update on Pier 27 Cruise Terminal for use during the 34'^ America's Cup Events and other matters relating to the 34'^ America's Cup Events. 8. PLANNING AND DEVELOPMENT A. Informational presentation on Ferry Building Plaza Activation Proposal by Equity Office Partners. 9. FINANCE AND ADMINISTRATION A. Request appro",
+    "ecretary at 274-0406. 12. ADJOURNMENT A04092013 -2- FORWARD CALENDAR (TARGETED COMMISSION MEETING, SUBJECT TO CHANGE) APRIL 23, 2013 FACILITY/POLICY ITEM TITLE 1 Pier 70 Waterfront Site (Forest City) informational Presentation on Forest City's term sheet for the Pier 70 Waterfront Site 2 Pier 27 Informational Presentation regarding the James R. Herman Cruise Terminal business model for cruise terminal operations, special event and parking management 3 Portwide Action Approval of (1) proposed 2013 Port Revenue Bonds for Phase II of the James R Herman Cruise Terminal project, (2) an appropr",
+    ") soliciting As-Needed Environmental and related Professional Services for three contracts at $1 million each, totaling $3 million MAY 14, 2013 FACILITY/POLICY ITEM TITLE 1 Piers 30-32 Informational Presentation on updated architectural renderings for the Piers 30-32 Multi-Purpose Venue Project 2 Pier 27 Informational Presentation introducing the cruise terminal, special event, and parking management team bidders for the James R. Herman Cruise Terminal 3 Pier 70 Action Approval of Forest City's term sheet for the Pier 70 Waterfront Site 4 Fisherman's Wharf Action Approval of a resolution repla",
+    "te a Mutual Termination Agreement with Literacy for Environmental Justice for termination of Lease L-13816, which includes the \"EcoCenter at Heron's Head Park\" and surrounding 6,058 square feet of non-exclusive license area, subject to Board of Supervisors approval of the Mutual Termination Agreement 4 Pier 27 Action Authorization to negotiate the James R. Herman Cruise Terminal management agreement with the highest ranked management team bidder JUNE 11, 2013 FACILITY/POLICY ITEM TITLE 1 Pier 27 Informational Presentation of the business terms negotiated with the highest ranked James R. Herman Cruise Terminal management team bidder 2 Pier 38 Informational Presentation introducing the bidders for the rehabilitation of Pier 38 3 Portwide Action Approval of the Fiscal Year 2013-14 Monthly",
+    "cisco's Standard Real Estate Leasing Policy and Procedures A04092013 -4- JULY 9, 2013 FACILITY/POLICY ITEM TITLE 1 Portwide Action Authorization to award the contract for As- Needed Environmental and related P"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.0,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -2.25,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda2013sanf_0",
+   "deep_link": "https://archive.org/details/agenda2013sanf_0?q=Pier+27",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Port Commission agendas on the cruise terminal, its second-phase revenue bonds and a donor recognition programme."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "economicimpactso2000port",
+   "title": "The economic impacts of Port of San Francisco",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/economicimpactso2000port"
+  },
+  {
+   "identifier": "biennialreportof1938cali_0",
+   "title": "Biennial report of the Board of State Harbor Commissioners for ..",
+   "year": 1865,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/biennialreportof1938cali_0"
+  },
+  {
+   "identifier": "financialstateme1971sanf",
+   "title": "Financial statements and independent auditors' report",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/financialstateme1971sanf"
+  }
+ ],
+ "dept_shelf_label": "Port of San Francisco",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 4,
+  "n_money_links": 3,
+  "meets_pre_summary": true
+ }
+}

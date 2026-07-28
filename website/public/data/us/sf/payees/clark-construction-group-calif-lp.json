@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.729159+00:00",
+ "generated_at": "2026-07-28T11:43:47.695069+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -30,6 +30,148 @@
  "top_departments": [
   "DPW GSA - Public Works"
  ],
+ "profile": {
+  "n_vouchers": 845,
+  "departments": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 319044835.16,
+    "n_vouchers": 267
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 149504599.07,
+    "n_vouchers": 495
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 137235213.91,
+    "n_vouchers": 75
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 31699.46,
+    "n_vouchers": 1
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 1704.85,
+    "n_vouchers": 7
+   }
+  ],
+  "n_departments": 5,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 424527389.15,
+    "n_vouchers": 665
+   },
+   {
+    "code": "567110",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 137185213.91,
+    "n_vouchers": 73
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 1900375.11,
+    "n_vouchers": 6
+   },
+   {
+    "code": "527080",
+    "label": "Construction Management Svcs",
+    "spend_class": "purchase",
+    "usd": 588619.0,
+    "n_vouchers": 15
+   },
+   {
+    "code": "567000",
+    "label": "Bldgs,Struct&Imprv Proj-Budget",
+    "spend_class": "purchase",
+    "usd": 502419.89,
+    "n_vouchers": 4
+   },
+   {
+    "code": "549410",
+    "label": "Minor Furnishings",
+    "spend_class": "purchase",
+    "usd": 38499.78,
+    "n_vouchers": 2
+   },
+   {
+    "code": "206810",
+    "label": "Liab Pybl fr Rest-Others",
+    "spend_class": "ledger",
+    "usd": 31699.46,
+    "n_vouchers": 1
+   },
+   {
+    "code": "468111",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 2660.17,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 11,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 31400430.85,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 12342692.0,
+    "n_vouchers": 55
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 10720890.33,
+    "n_vouchers": 11
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 8305036.93,
+    "n_vouchers": 11
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "label": "Liab Pybl fr Rest-Others",
+    "spend_class": "ledger",
+    "usd": 31699.46,
+    "n_vouchers": 1
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Other City Property Rentals",
+    "spend_class": "unclear",
+    "usd": 112.13,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000027086",
@@ -51,7 +193,7 @@
   },
   {
    "contract_no": "1000030850",
-   "title": "ZSFG Chlrs & Coolng Towers",
+   "title": "Zuckerberg San Francisco General Chillers & Cooling Towers",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 39677214.39,
@@ -60,7 +202,7 @@
   },
   {
    "contract_no": "1000036059",
-   "title": "India Basin Shrln Prk",
+   "title": "India Basin Shoreline Park",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 31978133.0,
@@ -78,7 +220,7 @@
   },
   {
    "contract_no": "1000030080",
-   "title": "Ingleside Police Stn Repl",
+   "title": "Ingleside Police Station Replacement",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 67668300.0,

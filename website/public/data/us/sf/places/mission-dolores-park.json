@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.724739+00:00",
+ "generated_at": "2026-07-28T12:23:47.739896+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "mission-dolores-park",
@@ -64,65 +64,7 @@
    }
   ],
   "n_payees": 2,
-  "payees_total_paid": 403499.73,
-  "permits": [
-   {
-    "description": "erect type 1, one story office .",
-    "permit_type": "new construction",
-    "declared_cost_usd": 920800.0,
-    "status": "complete",
-    "permit_date": "2014-02-25",
-    "permit_year": 2014
-   },
-   {
-    "description": "bldg 2: erect type 1, 1 story restroom.",
-    "permit_type": "new construction",
-    "declared_cost_usd": 600000.0,
-    "status": "complete",
-    "permit_date": "2014-02-25",
-    "permit_year": 2014
-   },
-   {
-    "description": "new fire sprinkler system installed throughout. (n) 4\" fire service off of 8\" main on 18th st by other. ref app#201307081348 bldg 1",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 28270.0,
-    "status": "complete",
-    "permit_date": "2015-05-13",
-    "permit_year": 2015
-   },
-   {
-    "description": "4 inches sprinkler ground (plumbing fire water line) at the o&m building #1 at 598 dolores st., connecting to the 8\" on 18th street. sprinklers under pa#201405014680- under ground approved conditional that sprinklers will match up.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 20000.0,
-    "status": "complete",
-    "permit_date": "2014-06-17",
-    "permit_year": 2014
-   },
-   {
-    "description": "like for like system replacement with new control panel, smoke det and pull station ats same location install radio comm new monitor modules to tie in e flow and tamper switch and relay modules to shutdown hvac system",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 6000.0,
-    "status": "complete",
-    "permit_date": "2018-10-18",
-    "permit_year": 2018
-   }
-  ],
-  "n_permits": 5,
-  "permits_total_declared": 1575070.0,
-  "permits_by_year": [
-   {
-    "year": 2014,
-    "declared_usd": 1540800.0
-   },
-   {
-    "year": 2015,
-    "declared_usd": 28270.0
-   },
-   {
-    "year": 2018,
-    "declared_usd": 6000.0
-   }
-  ]
+  "payees_total_paid": 403499.73
  },
  "photo": "/img/us/sf/places/mission-dolores-park.jpg",
  "photo_credit": {
@@ -180,6 +122,13 @@
    "year": 2006,
    "pool": "sfpl",
    "matched_alias": "Dolores Park",
+   "ocr_excerpts": [
+    "Government Information Center San Francisco Public Library 100 Larkin Street, 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library site is a single, approximately 14,819-square-foot parcel at 651 Dolores Street vw3n 20th and Cumberland Streets, across Dolores Street from Dolores Park in ie Second Church of Christ, Scientist, the project sponsor, proposes the sting church structure, an unreinforced masonry building (National Register resource survey) on the site. The project sponsor proposes to construct rch building area, 13,400 square feet of residential use (8 units) and 12,200 a",
+    "ou have been identified as potentially having an interest in the project or the project area. Project Description: The project site is a single, approximately 14,819-square-foot parcel at 651 Dolores Street (Assessor's Block 3595, Lot 28), between 20th and Cumberland Streets, across Dolores Street from Dolores Park in the Dolores Heights neighborhood. The Second Church of Christ, Scientist, the project sponsor, proposes the demolition and replacement of the existing church structure, an unreinforced masonry building (National Register Status Code 3S, Here Today historic resource survey) on the site. The project spo",
+    "ck and Lot: City and County: 65 1 Dolores Street Assessor's Block 3595; Lot 28 San Francisco Project Description: The project site is a single, approximately 14,819-square-foot parcel at 651 Dolores Street (Assessor's Block 3595, Lot 28), between 20th and Cumberland Streets, across Dolores Street from Dolores Park in the Dolores Heights neighborhood. The Second Church of Christ, Scientist, the project sponsor, proposes the demolition and replacement of the existing church structure, an unreinforced masonry building (National Register Status Code 3S, Here Today historic resource survey) on the site. The project spo",
+    "urch, and two four-story four-unit residential buildings and associated parking for the church and the residential uses. The 14,819 square-foot project site (Assessors Block 3598, Lot 28) is located on a single parcel at 651 Dolores Street between Cumberland and 20th streets, across Dolores Street from Dolores Park in San Francisco's Dolores Heights neighborhood. The project sponsor proposes approximately 9,000 square feet of church building area, 13,400 square feet of residential use and 12,200 square feet of parking for a total area of roughly 34,600 square feet. The project's residential structures would be th",
+    "block bounded by Dolores Street to the west, Cumberland Street to the north, Guerrero Street to the east and 20th Street to the south. The project site consists of a single parcel at 651 Dolores Street in San Francisco's Dolores Heights neighborhood. Across Dolores Street from the project site is Dolores Park, which is"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 8.07,
@@ -204,81 +153,13 @@
    "url": "https://archive.org/details/caseno20060144e61720sanf",
    "deep_link": "https://archive.org/details/caseno20060144e61720sanf?q=Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
    "salient": true,
    "gloss": "The 2006 notice of preparation for environmental review of the Second Church of Christ, Scientist site at 651 Dolores Street, a block from the park."
-  },
-  {
-   "identifier": "fy200809parksannsanf",
-   "title": "FY 2008-09 parks annual report : parks scores citywide increased for fourth year, but disparities remain between districts",
-   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
-   "year": 2008,
-   "pool": "sfpl",
-   "matched_alias": "Dolores Park",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 3.84,
-    "sf_context": false,
-    "rival_city": true,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 3.84,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/fy200809parksannsanf",
-   "deep_link": "https://archive.org/details/fy200809parksannsanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Reports & records",
-   "salient": true,
-   "gloss": "The Controller's FY2008-09 parks report ranking Mission Dolores Park tenth-lowest citywide at 74.6%, down 11.8 points, and noting it was flagged for capital work in the 2008 bond."
-  },
-  {
-   "identifier": "minutes1998sanf_5",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Mission Dolores Park",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.74,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.74,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": -1.25,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/minutes1998sanf_5",
-   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=Mission+Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": false,
-   "gloss": "Open Space/Park Renovation advisory-committee minutes weighing a $25,000 beautification, erosion-control and irrigation request for the park's west end, backed by Friends of Dolores Park."
   },
   {
    "identifier": "C119703507",
@@ -287,6 +168,11 @@
    "year": 1998,
    "pool": "dl",
    "matched_alias": "Dolores Park",
+   "ocr_excerpts": [
+    "ION. HOWEVER, IT IS CLEAR BY THE TENANTS AT THIS MEETING THAT THERE HASN'T BEEN ENOUGH COMMUNITY INVOLVEMENT, ENOUGH COMMUNITY OUTREACH. Ir YOU GO TO THE CAT STREET NEIGHBORS' MEETING, WHICH IS ONE BLOCK, YOU GET 20 PEOPLE AT THAT MEETING. LE XOUS GOTO, Tae 16TH STREET NEIGHBORHOOD MEETING, YOU GET 30 PEOPLE THERE. IF YOU GO TO FRIENDS OF DOLORES PARK, YOU GET 40 PEOPLE THERE. OBVIOUSLY, IT FEELS LIKE THE MAILING LIST IS NOT CORRECT. THE OUTREACH WASN'T NECESSARILY DONE FOR THIS MEETING. LT WASNe YT APPROPRIATELY DONE. SO WE WOULD ENCOURAGE THAT THE MAILING LIST BE UPDATED AND THAT MORE EXTENSIVE AND FOCUSED COMMUNITY OUTREACH BE DONE. IN TERMS OF THE EIR, PEOPLE ARE TALKING THAT T",
+    "S THAT ARE CARRIED OUT IN THE MISSION CAMPUS RIGHT NOW ARE REMEDIAL, THAT THEY WANT TO HAVE MORE OF A BALANCE BETWEEN REMEDIAL AND PROFESSIONAL CLASSES. THOSE ARE JUST SOME OF THE COMMENTS THAT I'VE HEARD. IN TERMS OF MEDA, I KNOW THAT WE ARE LEADING VARIOUS COMMUNITY PROCESSES IN THE MISSION THAT RELATE TO MISSION STREET, THAT RELATE TO DOLORES PARK, THAT RELATE TO VARIOUS THINGS IN THE MISSION. IF YOU GUYS WANT TO FIND OUT HOW TO DO BETTER OUTREACH AND HOW TO 18 REALLY GET COMMUNITY, I WOULD SUGGEST THAT THE CONSULTANT AND THE PEOPLE LEADING THE PROCESS FROM CITY COLLEGE TALK TO US. THANKS A LOT. TRUSTEE RODIS: SCOTT FALCON. MR. FALCON: GOOD EVENING. MY NAME IS SCOTT",
+    "he District mailed copies of the Draft EIR to interested persons and organizations, including to the speaker’s organization, and over 60 notices of the availability of the Draft EIR and the date of the public hearing to public agencies and Mission District organizations and individuals, including a Capp Street neighborhood organization and a Dolores Park neighborhood organization. The notice of availability explained where copies CITY COLLEGE OF SAN FRANCISCO MISSION CAMPUS EIR EIP 97242-02 SULY 15, 1998 atm tin tn i om enim ot Tralee) tam Yfliewssg sed anos Sheamas £5 emo nk homalgts 4A. sh m nee Ware wih give amisttgio fonelden ads taty sidiente ah st nea wy ot undo ert Syuie a glad bl"
+   ],
    "collection": "igscalocalgovdocs",
    "relevance": {
     "score": 7.13,
@@ -311,44 +197,58 @@
    "url": "https://archive.org/details/C119703507",
    "deep_link": "https://archive.org/details/C119703507?q=Dolores+Park",
    "source_label": "Internet Archive — Democracy's Library",
-   "group": "Other records",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
    "salient": true,
-   "gloss": "Public comments and responses on the 1998 City College Mission Campus review, recording neighbourhood testimony from groups meeting around the park and 16th Street."
+   "gloss": "A 1998 hearing transcript on the City College Mission campus in which neighbours, including Friends of Dolores Park, argue the outreach mailing list was wrong and the community was not properly consulted."
   },
   {
-   "identifier": "parkstandards6mo162010san",
-   "title": "Park standards, 6-month report FY 2009-10 : park scores citywide increased through the first half of FY 2009-10",
-   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
-   "year": 2009,
+   "identifier": "fy200809parksannsanf",
+   "title": "FY 2008-09 parks annual report : parks scores citywide increased for fourth year, but disparities remain between districts",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2008,
    "pool": "sfpl",
-   "matched_alias": "Mission Dolores Park",
+   "matched_alias": "Dolores Park",
+   "ocr_excerpts": [
+    "Bay View Playqround 10 69.2% 77.9% 82.7% 75.2% 6 Head/Brotherhood Mini Park 11 70.4% 75.0% 65.9% 84.0% 7 Louis Sutter Playqround 10 71.9% 78.9% 90.9% Not rated 8 Herz Playqround 10 72.7% 81.7% 90.5% Not rated 9 Beideman/O'Farrell Mini Park 5 74.2% 91.7% 90.8% 74.6% 10 Mission Dolores Park 8 74.6% 86.4% 79.7% 84.7% * Note: Parks with fewer than three evaluations durinq 2008-09 are excluded. Open space areas are excluded because they only have a small number of elements rated. Everson/Diqby Lots, Diamond/Famum and Berkeley Way open space received a 100 percent score, while Portol",
+    "last year. Eleven of the district's 23 parks scored less than 80 percent, and 1 5 of the 23 scored lower than last year. Nine parks saw their averages drop by more than 10 percent, including McKinley Square (down 14.4 points to 67.5 percent), Utah and 18th Mini Park (down 13.3 to 74.9), and Mission Dolores Park (down 1 1 .8 to 74.6). Only one park returned to the 10 lowest rated parks list, District 10's Adam Rogers Park which scored 2.8 points lower in FY 2008-09. Adam Rogers Park in the Hunter's Point neighborhood rated low in cleanliness standards in many features. Low scores at parks can be attributed to many factors. Highly used parks sometimes score lower. For example, Mission Dolores Park was the tenth lowest scoring park in FY 2008-09, down 1 1 .8 points to 74.6 percent. The heavily used park scored low in the lawns, hardscape and trails, and restroom features. Mission Dolores Park was identified in the 2008 Clean and Safe Neighborhood Parks Bond as needing capital improvements. The project scope will include the repair and/or renovation of the courts, field, play area, and clubhouse; restoration of existing roads and pathways; upgrades to subsurface infrastructure, irrigation and",
+    "illtop Park (District 10) 58.7% -26.5% 85.2% 12.9% 72.3% 62 8% Beideman/O'Farrell Mini Park (District 5) 74.2% -17.6% 91 .7% 1.0% 90.8% 74.6% McKinley Square (District 10) 67.5% -14.4% 82.0% 6.2% 75.8% 70.7% Utah/1 8th Mini Park (District 10) 74.9% -13.3% 88.1% 9.1% 79.0% 85.9% Mission Dolores Park (District 8) 74.6% -11.8% 86.4% 6.7% 79.7% 84.7% Source: CSA and Rec Park park evs luation results FY 2005-06, FY 2006-07, FY 2007-08, FY 2008-09 11 Office of the Controller, City Services Auditor FY 2008-09 Parks Annual Report Features Results CSA evaluators found that bathrooms were",
+    "Playground 11 89.3% 1.0% 88.3% 83.5% 68.8% Michelangelo Playground 3 95.2% 4.6% 90.7% 92.8% 96.5% Midtown Terrace Playground 7 97.6% -0.5% 98.1% 91.5% 94.0% Minnie & Lovie Ward Rec Center 11 82.4% n/a Closed 53.7% 45.4% Miraloma Playground 7 93.9% n/a Closed 90.4% 75.6% Mission Dolores Park 8 74.6% -11.8% 86.4% 79.7% 84.7% Mission Playground 8 90.3% -2.0% 92.4% 94.3% 79.4% Mission Rec Center 9 91.8% -1.2% 93.0% 92.8% 91 "
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 6.5,
+    "score": 3.84,
     "sf_context": false,
-    "rival_city": false,
+    "rival_city": true,
     "citywide_serial": false,
     "substantive": true,
     "substantive_direct": true,
-    "hits": 5,
-    "density": 6.48,
+    "hits": 4,
+    "density": 3.84,
     "title_hit": false
    },
    "materiality": {
-    "score": 0.0,
-    "money": false,
+    "score": 1.0,
+    "money": true,
     "decision": false,
     "accountability": false,
     "contestation": false,
     "named_genre": false,
     "generic_serial": false
    },
-   "url": "https://archive.org/details/parkstandards6mo162010san",
-   "deep_link": "https://archive.org/details/parkstandards6mo162010san?q=Mission+Dolores+Park",
+   "url": "https://archive.org/details/fy200809parksannsanf",
+   "deep_link": "https://archive.org/details/fy200809parksannsanf?q=Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
    "salient": true,
-   "gloss": "The Controller's FY2009-10 mid-year report showing the park dropping to 67.5%, second-lowest citywide."
+   "gloss": "The FY2008-09 park scores place Mission Dolores Park among the ten lowest-rated parks in the city at 74.6 percent, down 11.8 points on the year."
   },
   {
    "identifier": "generalmanagersr1975sanf",
@@ -357,6 +257,13 @@
    "year": 1975,
    "pool": "sfpl",
    "matched_alias": "Dolores Park",
+   "ocr_excerpts": [
+    "ng $15:.::: fur.es of Sic ,5:: are being proposed from ehe 1976 contingencies . ) ~ DU3CCE PARK - Plavgreund reconstruction (Planning funds $222 ,C:~ of $20,000 were allocated from the 1976 Program.)\" EERZ PLAYGROUND - Coffman Peel (Visitacicn Valley) - $50,000 Playground and building improvements ^MISSION DOLORES PARK - Children's Play Apparatus $70,000 > NORTH BEACH PLAYGROUND - Children's Play Apparatus $50,000 PORTSMOUTH SQUARE - Improvements $12,000 Total Fiscal Year 1977-78 $562,000 - 28 - COMMUNITY* DEVELOPMENT PROGRAM TO RENOVATE AND IMPROVE EXISTING RECREATIONAL FACILITIES 1975 PROGRAM Project 1.",
+    "g 100,000 TOTAL - 35 - COMMUNITY DEVELOPMENT PROGRAM TO RENOVATE EgTgTTNg RECREATIONAL FACILITIES \" AND IMPROVE 1977 PROGRAM Project 1. Crocker Amazon Clubhouse construction 2. Duboce Park Playground reconstruction 3. Herz Playground Coffman Pool, Playground and building improvements 4. Mission Dolores Park Children's Play Apparatus 5. North Beach Playground Children's Play Apparatus 6. Portsmouth Square Children's Play Apparatus TOTAL 1977 1976 PROGRAM 1. Garfield Square Protective Lighting 2. Rolph P/G, Lighting Rehab New Bldg. Misc. 3. Panhandle P/G Rehab. 4. Little Hollywood P/G Devi. 5.",
+    "Playground Alamo Square TOTAL 500,000 $ 2,495,000 2. 1976 State Bonds John McLaren Park Development $ 500,000 San Francisco Zoo Orangutan Exhibit 500,000 - 39 - 2. 1976 State Bonds (Continued) Golden Gate Park Water System Improvements Neighborhood Facilities Automatic Irrigation Mission Dolores Park Jefferson Square Rossi Playground Rolph Playground Cost Estimate $ 600,000 500,000 TOTAL $ 2.10Q.000 3. Historic Preservation Grants Golden Gate Park Conservatory Rehabilitation TOTAL 40,000 40,000 4. Z'Berg-Roberti Urban Impacted Grants St. Mary's Playground Gymnasium Arson Repair",
+    "ite 100,000 p. Development of Knudsen/Bloom - site 50,000 q. Rolph Playground - 1978 Building replacement 95,000 r. Children's Play Apparatus 70,000 s. Garfield Square - Protective Lighting 12,000 t. Rolph Playground, Lighting Rehab. 47,000 New Bldg. Misc. ' ~ 165,000 u. Mission Dolores Park 70,000 Children's Play Apparatus v. Folsom Playground Rehab. ~ 30,000 w. Upper Noe Valley Playground 40,000 Renovation x. Garfield Square - Improvements to Pool and Recreation Building 38,000 y. Rolph Playground - Renovation - New Recreation Building 212,500 z. Mission Dolores",
+    "CD funding for planning and will be reaching the implementation stage . 1980 PROGRAM Project Amount 1. Central City Park $200,000 Development 2. Lang Field (Hayward P/G) 100,000 Floodlighting 3. Hamilton Playground 110,000 Bldg. Rehabilitation 4. Mission Recreation Center 200,000 Development 5. Mission Dolores Park 25,000 Safety lighting 6. Mission Playground 45,000 Courts resurfacing 7. Folsom Playground 30,000 Bldg. Rehabilitation"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 6.22,
@@ -381,9 +288,58 @@
    "url": "https://archive.org/details/generalmanagersr1975sanf",
    "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
    "salient": true,
-   "gloss": "A 1975 Open Space fund report allocating $70,000 for children's play apparatus at Mission Dolores Park, with later safety-lighting funds."
+   "gloss": "A Recreation and Park capital programme listing $70,000 for children's play apparatus at Mission Dolores Park in the 1977 fiscal year."
+  },
+  {
+   "identifier": "parkstandards6mo162010san",
+   "title": "Park standards, 6-month report FY 2009-10 : park scores citywide increased through the first half of FY 2009-10",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": 2009,
+   "pool": "sfpl",
+   "matched_alias": "Mission Dolores Park",
+   "ocr_excerpts": [
+    "last year's scores, though six parks showed improvement Parks that scored less than 80 percent this year compared to last year -22.3% ■HHHMHHMMH Youngblood Coleman Playground Broadway Tunnel West Mini Park Rolph Nicol Playground Selby/Palou Mini Park Lower Great Highway Lessing/Sears Mini Park Mission Dolores Park John McLaren Park Little Hollywood Park Palou/Phelps Park Cayuga/Lamartine Mini Park Gilman Playground Bay View Playground Herz Playground Head/Brotherhood Mini Park Ridgetop Plaza Hilltop Park Adam Rogers Park -13.7% -10.4% -10.3% -8.9% -8.1% -7.1% -6.8% -6.5% -5.8% -2.6% ■ -1.6% Decre",
+    "previous year. Office of the Controller, City Services Auditor FY 2009-10 Parks 6-Month Report EXHIBIT 7 Only three parks that scored less than 80 percent in FY 2008-09 received lower scores in the first half of FY 2009- 10: Gilman Playground (District 10), John McLaren Park (District 10), and Mission Dolores Park (District 8). Most parks that scored less than 80 percent in FY 2008-09 showed improvement in the first half of FY 2009-10 Change in score for all parks that scored less than 80 percent last year McKinley Square Bush/Broderick Mini Park Louis Sutter Playground India Basin Shoreline Park La",
+    "i Park Mt. Olympus Crocker Amazon Playground Sgt. John Macaulay Park Adam Rogers Park Hilltop Park Ridgetop Plaza Beideman/O'Farrell Mini Park Head/Brotherhood Mini Park Herz Playground Bay View Playground Chinese Recreation Center Raymond Kimbell Playground Gilman Playground John McLaren Park Mission Dolores Park -1.6% -6.8% -7.1% -10% 27.2% 18.4% i 17.0% 16.8% 16.4% 15.2% 14.7% 14.0% 11.9% 11.5% 10.8% 10.4% 10.4% 10.2% - 9.7% 8.3% 6.5% 6.2% 6.2% 5.6% Increase from FY 2008-09 Decrease from FY 2008-09 0% 10% 20% 30% Note: Topaz Open Space and Portola Open Space not included",
+    "Coleridge Mini Park 9 98.3% 4.3% 5 Prentiss Mini Park 9 98.0% 6.8% 5 Lowest Rated Parks in FY 2009-10 mid-year Rank Park FY 2009-10 District mid-year Change from FY 2008-09 1 Youngblood Coleman Playground 10 65.9% -22.3% 2 Mission Dolores Park 8 67.5% -7.1% 3 Hilltop Park 10 69.1% 10.4% 4 John McLaren Park 10 72.9% -6.8% 5 Lower Great Highway 4 73.6% -8.9% * Note: Parks are included only if they have had three evaluations during the first half of FY 200",
+    "und 11 81.9% 89.3% 88.3% 83.5% 68.8% Michelangelo Playground 3 94.8% 95.2% 90.7% 92.8% 96.5% Midtown Terrace Playground 7 Closed 97.6% 98.1% 91.5% 94.0% Minnie & Lovie Ward Rec Center 11 93.1% 82.4% Closed 53.7% 45.4% Miraloma Playground 7 97.4% 93.9% Closed 90.4% 75.6% Mission Dolores Park 8 67.5% 74.6% 86.4% 79.7% 84.7% Mission Playground 8 82.8% 90.3% 92.4% 94.3% 79.4% Mission Rec Center 9 97.5% 91 .8% 93.0% 92.8% 91.7% Moscone Recreation Center 2 94.7% 95.5% Closed 92.6% 87.8% Mountain Lake Park 2 84.7% 92.7% 83.4% 86.9% 81.1% Mt. Olympus 8 90."
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.5,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 6.48,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/parkstandards6mo162010san",
+   "deep_link": "https://archive.org/details/parkstandards6mo162010san?q=Mission+Dolores+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": false
   },
   {
    "identifier": "2008cleansafenei2007sanf",
@@ -392,6 +348,12 @@
    "year": 2008,
    "pool": "sfpl",
    "matched_alias": "Dolores Park",
+   "ocr_excerpts": [
+    "Descriptions Neighborhood Park Repairs & Renovations Program Summary 25 Chinese Recreation Center Renovation 28 Mission Playground Renovation 29 Palega Recreation Center Renovation 30 Cayuga Playground Renovation 31 McCoppin Square Renovation 32 Sunset Playground Renovation 33 Fulton Playground Renovation 34 Mission Dolores Park Renovation 35 Cabrillo Playground Renovation 36 Glen Canyon Renovation 37 Lafayette Park Renovation 38 Raymond Kimbell Renovation 39 Waterfront Park Repairs, Renovations & Development Program Summary 40 Pier 43 Bay Trail Link 41 Brannan Street Wharf 42 Blue Greenway Projects 43 Neighborhood Park Restroom",
+    "of playfields at two parks. Each playfield is converted to artificial turf, increasing available playtime as well as conserving water. This $8.5 million continues that partnership. Chinese Rec Center Mission Playground Palega Playground Cayuga Playground McCoppin Square Sunset Playground Fulton Playground Mission Dolores Park Cabrillo Playground Glen Canyon Park Lafayette Park Raymond Kimbell Playground Pier 43 Bay Trail Link Brannan Street Wharf Blue Greenway Trails and Parks 8 $4 million for Park Forestry Needs. Over 100,000 trees populate the city's parks and open spaces. These funds will provide for an",
+    "SIBLE: 100 pts 26 Proposed Baseline Schedule: D5H5eC &r«r WgffMMWI u - .-,--• «>.«. awcf^i* kigfl* ■>ta» IVwM II Proposed Baseline Budget*: Chinese Recreation Center Mission Playground Palega Recreation Center Cayuga Playground McCoppin Square Sunset Playground Fulton Playground Mission Dolores Park Cabrillo Playground Glen Canyon Park Lafayette Park Raymond Kimbell Playground Neighborhood Park Contingency Funds Bond Issuance Costs Budget (in Millions) 14.2 7.5 21.2 7.3 5.3 13.7 4.2 13.2 4.5 5.8 10.2 3.3 4.7 2.3 Total Neighborhood Park Program $117.4 \"See Individual project",
+    "$1,057,201 $2,296,800 $3,054,744 $2,839,975 $3,777,167 Estimated Project Cost with Contingency $3,360,218 $4,200,000 Budgets are escalated to estimated midpoint of construction and rounded up to the nearest $100K. Contingency derived from 10% of construction costs and 5% of soft costs. 34 MISSION DOLORES PARK RENOVATION Facility Name: Mission Dolores Park Location: Dolores Street at 19th Street Supervisory District: 8 Background: Mission Dolores Park occupies the equivalent of 2 large city-blocks covering 14.2 acres, and is located in the Inner Mission/Dolores Heights neighborhood. The site is bordered on four sides by Church, Dolores, 18th and 20th Streets. Dolores Park has six tennis courts and one basketball court, one large multi-use sports field, a childrens' playground with adjacent picnic area, and a clubhouse with Image 16 Mission Dolores Park Children's Play Area Image 17 Mission Dolores Park Clubhouse Proposed Baseline Schedule: public restrooms. "
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 5.47,
@@ -416,9 +378,56 @@
    "url": "https://archive.org/details/2008cleansafenei2007sanf",
    "deep_link": "https://archive.org/details/2008cleansafenei2007sanf?q=Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "The 2008 parks bond's project page for Mission Dolores Park — 14.2 acres, tennis and basketball courts, a sports field, playground and clubhouse — scoping its renovation."
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false
+  },
+  {
+   "identifier": "minutes1998sanf_5",
+   "title": "Minutes",
+   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Mission Dolores Park",
+   "ocr_excerpts": [
+    "istration Court Resurfacing Disabled Access Erosion Control Fencing Hazardous Materials Inigation Jackson Restroom Margaret Hayward Playground - Building Renovation Security Lighting Staff Recommended Priority 2 Projects Little Hollywood Playground - Children's Play Area Miraloma Park - Court Resurfacing^ Mission Dolores Park - Beautification Project McLaren Park Disc Golf Course Moscone Recreation Center & Playground - Children's Play Areas Potrero Hill Recreation Center - Children's Play Area (east) Richmond Playground - Children's Play Area Rochambeau Playground - Renovation of Clubhouse and Play Area Saint Mary's Playgro",
+    "by Winslow and seconded by Henne to give the project a preliminary allocation of $400,000. The Committee approved the motion as follows: Ayes: Bell, Calder, Campbell, Coffino, Fox, Hanagan, Henne, Landis, Lane, Lawson, McGuire, Miguel, Rocca, She, Supriano, Vela, Viera, Weaver, Winslow Noes: Dearman Mission Dolores Park - Beautification Project Staff reported that the request is for $25,000 for a beautification project on the west end of the park to discourage drug dealing and other crime. Proposed improvements include a nature walk and erosion control. A new irrigation system along both sides of the MUNI tracks adjacent to the park is also proposed. Due to other pressing needs, staff recommended a Priority 2 for the project. Christine Nahnsen (Friends of Dolores Park), Sgt. Pablo Ossio (San Francisco Police Department - Mission Station), Donald Bird (Friends of Dolores Park), Raquel Medina (Director, Mission Economic Development Association) and Amy Powell (Dolores Heights Improvement Club) spoke in support of funding the project. Although they did not speak, approximately six persons were present at the meeting in support of the project. Weaver asked staff to check on",
+    "e Sundial Park and using \"sweat equity\", provided solar irrigation for less than Meeting Minutes Park and Open Space Citizens Advisory Committee January 13, 1998 Page 4 $1,500. Henne questioned whether the $25,000 request would be adequate for irrigation and erosion. Christine Nahnsen (Friends of Dolores Park) stated that the estimate was provided by Recreation and Park Department staff (Marvin Yee, Bart Mayhew and Dennis Neal). Viera moved and McGuire seconded a motion to add the irrigation portion of the project to the list of irrigation projects supported in the Park Renovation/Irrigation Projects for",
+    "Dearman, Fox, Hanagan, Henne, Landis, Lane, Lawson, McGuire, Miguel, Rocca, She, Supriano, Vela, Viera, Weaver, Winslow Noes: Coffino Park Renovation Staff reported several projects as priorities for the irrigation fund: McCoppin Park, Pine Lake, Hamilton Playground, Aptos Playground, Miraloma Park, and Mission Dolores Park were among sites named. In the security lig"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.74,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.74,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes1998sanf_5",
+   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=Mission+Dolores+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
   }
  ],
  "dept_shelf": [

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.744325+00:00",
+ "generated_at": "2026-07-28T11:43:47.720940+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -25,6 +25,174 @@
  "top_departments": [
   "CON Controller"
  ],
+ "profile": {
+  "n_vouchers": 477,
+  "departments": [
+   {
+    "department": "CON Controller",
+    "department_code": "CON",
+    "usd": 102812510.59,
+    "n_vouchers": 114
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 6276436.42,
+    "n_vouchers": 55
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 1472467.14,
+    "n_vouchers": 219
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 367687.14,
+    "n_vouchers": 4
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 184327.28,
+    "n_vouchers": 18
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 146622.15,
+    "n_vouchers": 18
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 124948.43,
+    "n_vouchers": 4
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "usd": 66300.03,
+    "n_vouchers": 38
+   }
+  ],
+  "n_departments": 10,
+  "categories": [
+   {
+    "code": "OTHR_OBLIG_AGNCY_FUN",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 104194854.61,
+    "n_vouchers": 305
+   },
+   {
+    "code": "REF_PAY",
+    "label": "Refunds Payable",
+    "spend_class": "ledger",
+    "usd": 6268238.42,
+    "n_vouchers": 54
+   },
+   {
+    "code": "552210",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 527119.79,
+    "n_vouchers": 75
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 375885.14,
+    "n_vouchers": 5
+   },
+   {
+    "code": "552110",
+    "label": "Taxes",
+    "spend_class": "obligation",
+    "usd": 74991.12,
+    "n_vouchers": 12
+   },
+   {
+    "code": "UNAM_BND_PREM",
+    "label": "Unamortized Bond Premium",
+    "spend_class": "unclear",
+    "usd": 9701.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "526990",
+    "label": "Other Fees",
+    "spend_class": "purchase",
+    "usd": 1111.27,
+    "n_vouchers": 8
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 439.96,
+    "n_vouchers": 6
+   }
+  ],
+  "n_categories": 10,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 15631962.3,
+  "n_recent_lines": 10,
+  "recent_lines": [
+   {
+    "department": "CON Controller",
+    "department_code": "CON",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 14321520.0,
+    "n_vouchers": 16
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Refunds Payable",
+    "spend_class": "ledger",
+    "usd": 984982.0,
+    "n_vouchers": 8
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 157510.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 149755.0,
+    "n_vouchers": 27
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Unamortized Bond Premium",
+    "spend_class": "unclear",
+    "usd": 9701.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 7929.0,
+    "n_vouchers": 4
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

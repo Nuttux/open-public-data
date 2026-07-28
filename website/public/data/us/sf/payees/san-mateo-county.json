@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.743628+00:00",
+ "generated_at": "2026-07-28T11:43:47.719747+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,6 +35,174 @@
   "2027": 4000.0
  },
  "top_departments": [],
+ "profile": {
+  "n_vouchers": 1657,
+  "departments": [
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "DEM",
+    "usd": 56537306.56,
+    "n_vouchers": 520
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 32109176.7,
+    "n_vouchers": 35
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 12562445.29,
+    "n_vouchers": 345
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 6247235.89,
+    "n_vouchers": 43
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "ECD",
+    "usd": 6222842.6,
+    "n_vouchers": 65
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 605906.05,
+    "n_vouchers": 237
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "usd": 400385.78,
+    "n_vouchers": 98
+   },
+   {
+    "department": "ADP Adult Probation",
+    "department_code": "ADP",
+    "usd": 262480.03,
+    "n_vouchers": 100
+   }
+  ],
+  "n_departments": 23,
+  "categories": [
+   {
+    "code": "552410",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 62048663.89,
+    "n_vouchers": 533
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 11441176.65,
+    "n_vouchers": 77
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 11058613.0,
+    "n_vouchers": 8
+   },
+   {
+    "code": "552210",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 727779.69,
+    "n_vouchers": 481
+   },
+   {
+    "code": "530310",
+    "label": "Misc Facilities Rental",
+    "spend_class": "purchase",
+    "usd": 465984.51,
+    "n_vouchers": 113
+   },
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 304211.6,
+    "n_vouchers": 1
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 215578.88,
+    "n_vouchers": 49
+   },
+   {
+    "code": "531000",
+    "label": "Rents & Leases-Equipment-Bdgt",
+    "spend_class": "unclear",
+    "usd": 87500.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 23,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 13607658.36,
+  "n_recent_lines": 23,
+  "recent_lines": [
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "DEM",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 9409467.0,
+    "n_vouchers": 82
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1591089.34,
+    "n_vouchers": 7
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1485487.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 878507.0,
+    "n_vouchers": 4
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 67620.96,
+    "n_vouchers": 86
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "label": "Misc Facilities Rental",
+    "spend_class": "purchase",
+    "usd": 46283.68,
+    "n_vouchers": 7
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000028223",

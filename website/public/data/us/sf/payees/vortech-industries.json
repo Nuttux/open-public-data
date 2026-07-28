@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.743125+00:00",
+ "generated_at": "2026-07-28T11:43:47.718843+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -30,6 +30,174 @@
   "2027": 8018.62
  },
  "top_departments": [],
+ "profile": {
+  "n_vouchers": 24107,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 113074998.98,
+    "n_vouchers": 21601
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 2735967.58,
+    "n_vouchers": 1193
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 1281516.1,
+    "n_vouchers": 540
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 446420.1,
+    "n_vouchers": 291
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 430458.77,
+    "n_vouchers": 260
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "usd": 419526.8,
+    "n_vouchers": 98
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 69735.8,
+    "n_vouchers": 27
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 54865.32,
+    "n_vouchers": 29
+   }
+  ],
+  "n_departments": 15,
+  "categories": [
+   {
+    "code": "541100",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 65446107.21,
+    "n_vouchers": 10804
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 29428399.06,
+    "n_vouchers": 5765
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 794930.78,
+    "n_vouchers": 360
+   },
+   {
+    "code": "542990",
+    "label": "Other Bldg Maint Supplies",
+    "spend_class": "purchase",
+    "usd": 566861.16,
+    "n_vouchers": 212
+   },
+   {
+    "code": "543990",
+    "label": "Other Equipment Maint Supplies",
+    "spend_class": "purchase",
+    "usd": 565191.19,
+    "n_vouchers": 213
+   },
+   {
+    "code": "542810",
+    "label": "Small Tools And Intruments",
+    "spend_class": "purchase",
+    "usd": 516424.32,
+    "n_vouchers": 222
+   },
+   {
+    "code": "560990",
+    "label": "Other Equipment",
+    "spend_class": "purchase",
+    "usd": 354493.38,
+    "n_vouchers": 45
+   },
+   {
+    "code": "522020",
+    "label": "Training Costs Paid To Vendors",
+    "spend_class": "purchase",
+    "usd": 313690.68,
+    "n_vouchers": 42
+   }
+  ],
+  "n_categories": 60,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 14569996.46,
+  "n_recent_lines": 50,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 13876743.42,
+    "n_vouchers": 2043
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 72295.29,
+    "n_vouchers": 36
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 51775.54,
+    "n_vouchers": 7
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Other Equipment Maint Supplies",
+    "spend_class": "purchase",
+    "usd": 51595.5,
+    "n_vouchers": 26
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Equipment",
+    "spend_class": "purchase",
+    "usd": 45815.17,
+    "n_vouchers": 3
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Other Bldg Maint Supplies",
+    "spend_class": "purchase",
+    "usd": 39866.79,
+    "n_vouchers": 7
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

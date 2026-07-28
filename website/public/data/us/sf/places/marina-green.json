@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.736322+00:00",
+ "generated_at": "2026-07-28T12:23:47.750508+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "marina-green",
@@ -63,112 +63,20 @@
   "items": [],
   "payees": [],
   "n_payees": 0,
-  "payees_total_paid": 0,
-  "permits": [
-   {
-    "description": "remodel (e) member bar. new electrical, plumbing, and lighting. new built-in furnishings and fixtures at bar area. new service equipment in drinks prep area.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 750000.0,
-    "status": "issued",
-    "permit_date": "2024-07-02",
-    "permit_year": 2024
-   },
-   {
-    "description": "erect 1 story, type 5-b, public restroom bldg.",
-    "permit_type": "new construction wood frame",
-    "declared_cost_usd": 500000.0,
-    "status": "issued",
-    "permit_date": "2012-05-30",
-    "permit_year": 2012
-   },
-   {
-    "description": "perform earthquake repairs to structure remodel",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 500000.0,
-    "status": "expired",
-    "permit_date": "1992-04-29",
-    "permit_year": 1992
-   },
-   {
-    "description": "barrier removal including; renovation of office space & shower rms & restrooms. work includes; mod. to door openings w/assoc. modifications to slab & diaphragm, reconfiguration of toilets & shower, incl. plumbing & elec.; repair to int. & ext. finishes; & (n) int. lighting and signage.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 469000.0,
-    "status": "complete",
-    "permit_date": "2011-11-29",
-    "permit_year": 2011
-   },
-   {
-    "description": "structural reinforcement of building. (e) structure is falling apart",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 250000.0,
-    "status": "issued",
-    "permit_date": "2018-11-20",
-    "permit_year": 2018
-   },
-   {
-    "description": "accessible barrier removal: (n) plumbing fixtures, painting, electrical & associated work, (n) floor finish, accessible path of travel & paving work in parking lot & new accessible drinking fountain.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 200000.0,
-    "status": "issued",
-    "permit_date": "2010-09-10",
-    "permit_year": 2010
-   }
-  ],
-  "n_permits": 22,
-  "permits_total_declared": 3211000.0,
-  "permits_by_year": [
-   {
-    "year": 1992,
-    "declared_usd": 500000.0
-   },
-   {
-    "year": 1993,
-    "declared_usd": 46200.0
-   },
-   {
-    "year": 1996,
-    "declared_usd": 15000.0
-   },
-   {
-    "year": 2009,
-    "declared_usd": 4000.0
-   },
-   {
-    "year": 2010,
-    "declared_usd": 200000.0
-   },
-   {
-    "year": 2011,
-    "declared_usd": 493200.0
-   },
-   {
-    "year": 2012,
-    "declared_usd": 852600.0
-   },
-   {
-    "year": 2013,
-    "declared_usd": 100000.0
-   },
-   {
-    "year": 2018,
-    "declared_usd": 250000.0
-   },
-   {
-    "year": 2024,
-    "declared_usd": 750000.0
-   }
-  ]
+  "payees_total_paid": 0
  },
  "photo": "/img/us/sf/places/marina-green.jpg",
  "photo_credit": {
   "photo": "/img/us/sf/places/marina-green.jpg",
   "source": "Wikimedia Commons",
-  "file": "File:Marina_Gree_Kite_Festival.jpg",
-  "file_url": "https://commons.wikimedia.org/wiki/File:Marina_Gree_Kite_Festival.jpg",
-  "license": "CC BY 2.0",
-  "license_url": "https://creativecommons.org/licenses/by/2.0",
-  "author": "Lana",
-  "fetched_at": "2026-07-20T22:17:03.886604+00:00"
+  "source_url": "https://commons.wikimedia.org/wiki/File:Children_soccer_competition_at_Marina_Green,_San_Francisco_6.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Guillaume Paumier",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T22:50:12.540047+00:00"
  },
  "summary_en": "Marina Green appears in the city's records as an active waterfront park and event ground. A 2011 draft environmental impact report for the 34th America's Cup proposes an \"AC Village\" at Marina Green. Recreation and Park Commission minutes index a Marina Green bear-vending contract, a Marina Green report, and \"No Parking Marina Green,\" while Operations Committee agendas approve tented events and an overnight charity walk on the green. A 1993 Doyle Drive Task Force report describes the bayfront recreation corridor \"from the Marina Green to Fort Point,\" and 1980s parks bulletins list outdoor art shows on the green. Marina Green is operated by the Recreation and Park Department, whose FY2025 budget line is about $250M.",
  "published": true,
@@ -191,188 +99,19 @@
  },
  "documents": [
   {
-   "identifier": "draftenvironment5120sanf",
-   "title": "Draft environmental impact report : the 34th America's Cup & James R. Herman Cruise Terminal and Northeast Wharf Plaza",
-   "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). City Attorney's Office,Port of San Francisco (Calif.),Environmental Science Associates,Orion Environmental Associates,Applied Marine Sciences,Coast and Harbor Engineering,Geotechnical Consultants, Inc,Hydroconsult Engineers, Inc,Natalie Macris Writing & Editing,Adavant Consulting,Boudreau Associates, LLC,ENVIRON Corporation,LCW Consulting,Yuki Kawaguchi, Cartographer,San Francisco (Calif.). Mayor's Office of Economic and Workforce Development,34th America's Cup Event Authority,America's Cup Organizing Committee,AECOM Consult, Inc,KMD Architects & Pfau Long Architecture,Premier Structures,Gibson, Dunn & Crutcher",
-   "year": 2011,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 2.26,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.26,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 5.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/draftenvironment5120sanf",
-   "deep_link": "https://archive.org/details/draftenvironment5120sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "The 34th America's Cup draft EIR proposes an \"AC Village\" race venue at Marina Green, with renderings viewed from Marina Boulevard."
-  },
-  {
-   "identifier": "scenicparkwayfor293sanf",
-   "title": "A scenic parkway for the park : report of the Doyle Drive Task Force to the San Francisco Board of Supervisors",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Doyle Drive Task Force",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.14,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 3.14,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.75,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": true,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/scenicparkwayfor293sanf",
-   "deep_link": "https://archive.org/details/scenicparkwayfor293sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true,
-   "gloss": "The 1993 Doyle Drive Task Force report describes the bayfront recreation corridor running from the Marina Green to Fort Point and residents' petitions to reduce traffic affecting park users along it."
-  },
-  {
-   "identifier": "agendaoperations2004sanf",
-   "title": "Agenda / Operations Committee",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission. Operations Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.51,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.51,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/agendaoperations2004sanf",
-   "deep_link": "https://archive.org/details/agendaoperations2004sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "Operations Committee agendas approve events on Marina Green — a tented event at its west end, \"Australia By the Bay,\" and an overnight charity walk using the green as a stop."
-  },
-  {
-   "identifier": "technicalreportg1965cali",
-   "title": "Technical report: Golden Gate Freeway, Interstate Highway Route 480",
-   "creator": "California. Division of Highways",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 9.5,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 4.29,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/technicalreportg1965cali",
-   "deep_link": "https://archive.org/details/technicalreportg1965cali?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "A 1965 state highways report on the proposed Golden Gate Freeway, whose alternatives would have required relocating part of the Marina Yacht Harbor."
-  },
-  {
-   "identifier": "whatsdoinginpark1985sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 7.94,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 2.44,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/whatsdoinginpark1985sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1985sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "Recreation and Park \"What's doing in the parks\" bulletins list Artists Guild outdoor art shows and other activities held on Marina Green."
-  },
-  {
    "identifier": "preliminarymitig2003sanf",
    "title": "Preliminary mitigated negative declaration : 2002.1129E -- San Francisco marina renovation",
    "creator": "San Francisco (Calif.). Planning Dept,Environmental Science Associates,Carey & Co,Horton Lees Brogden Lighting Design,Moffatt & Nichol Engineers,Orion Environmental Associates",
    "year": 2002,
    "pool": "sfpl",
    "matched_alias": "Marina Green",
+   "ocr_excerpts": [
+    "POSED WATER-SIDE IMPROVEMENTS Element Existing Conditions Proposed Project Improvements WEST HARBOR Outer Basin Breakwater North jetty, about 2,200 feet long Add 150-foot-long breakwater perpendicular to existing north jetty (either sheetpile or rock) Add zUU-ioot-iong rocK oreaKwater perpendicular to Marina Green seawall at south side of basin ^ 1 nis wouiQ result in pidcemcni ui iu,v'va7 l<uuic yards/9,000 square feet of new fill below mean high tide [MHT]) Inner Basin Breakwater Breakwater (moles) at foot of Scott Remove breakwater Street (This would result in the removal of 19 000 riihir varfi<;/1",
+    "ing the former military installation to civilian use. Since then, the Fort Mason Center has become one of the City's cultural centers, containing 40 nonprofit organizations as wejl as museums, theaters, and restaurants. Other recreational and educational uses in the vicinity of the project site include Marina Green park adjacent to and south of the marina; Aquatic Park to the east of Fort Mason; and the Palace of Fine Arts lagoon and Case No. 2002.1 129E 8 San Francisco Marina Renovation INITIAL STUDY TABLE 2 PROPOSED LAND-SIDE IMPROVEMENTS Element Existing Conditions Proposed Project Improvement",
+    "the marina, such as surface parking in both the West and East Harbors, and a pump station owned by the San Francisco Public Utilities Commission (SFPUC) (and used, in part, for storage of marina maintenance equipment and materials). The former Degaussing Station, now vacant, is located north of the Marina Green, adjacent to the pedestrian promenade along the manna's seawall. The Degaussing Station has existed in this location since 1951 and was reconstructed in 1984. The project site (within Assessor's Block 900, Lot 003) is within a P (Public) District and an OS (Open Space) Height and Bulk District. The",
+    "Station would be renovated prior to the Harbor Office so that office equipment and personnel could be moved to their new locations prior to Harbor Office renovation. The proposed project would not substantially affect any of the existing off-site uses and activities, such as the open space in the Marina Green or the wave organ located outside the project area. Surrounding uses and activities would therefore generally continue and would interrelate with each other as they do presently, without disruption from the proposed project and with no change in the character of the area. Therefore, the project would",
+    "t; Fort Mason, Russian Hill, and the tops of downtown high-rises from certain locations at the marina' s West Harbor to the east; and multi-level, single- and multi-family homes along Marina Boulevard to the south. The project site is visible from a number of publicly accessible viewpoints, including Marina Green (a public park located south of the seawall betwee"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 7.81,
@@ -397,9 +136,238 @@
    "url": "https://archive.org/details/preliminarymitig2003sanf",
    "deep_link": "https://archive.org/details/preliminarymitig2003sanf?q=Marina+Green",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
    "salient": true,
    "gloss": "A 2002 environmental review of the marina renovation, detailing breakwater and jetty work in the West Harbor."
+  },
+  {
+   "identifier": "draftenvironment5120sanf",
+   "title": "Draft environmental impact report : the 34th America's Cup & James R. Herman Cruise Terminal and Northeast Wharf Plaza",
+   "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). City Attorney's Office,Port of San Francisco (Calif.),Environmental Science Associates,Orion Environmental Associates,Applied Marine Sciences,Coast and Harbor Engineering,Geotechnical Consultants, Inc,Hydroconsult Engineers, Inc,Natalie Macris Writing & Editing,Adavant Consulting,Boudreau Associates, LLC,ENVIRON Corporation,LCW Consulting,Yuki Kawaguchi, Cartographer,San Francisco (Calif.). Mayor's Office of Economic and Workforce Development,34th America's Cup Event Authority,America's Cup Organizing Committee,AECOM Consult, Inc,KMD Architects & Pfau Long Architecture,Premier Structures,Gibson, Dunn & Crutcher",
+   "year": 2011,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "ocr_excerpts": [
+    "ory Framework [CP-2] 12.10-6 12.10.4 Impacts on Historic Pier 29 and Pier 29 Annex (Belt Line Office Building) [CP-3] 12.10-10 12.10.5 Impacts on Embarcadero Historic District, Including Piers 26, 28, 19, and 23, and Bulkhead Wharves [CP-4] 12.10-18 12.10.6 Impacts on Aquatic Park, Fort Mason, and Marina Green [CP-5] 12.10-27 Case No. 2010.0493E 210317 iii The 34th America's Cup and James R. Herman Cruise Terminal and Northeast Wharf Plaza Table of Contents Page Volume 5 (continued) 12. Responses to Comments (continued) 12.10 Cultural and Paleontological Resources (cont.) 12.10.7 Impacts on Cri",
+    "n Water Basin, and Team Base Support at Pier 26 and Pier 28 11-41 11-4 AC34 Project Variant: Team Base Option 2 for AC34 2012 - Primary Team Bases at Pier 80 11-43 11-5 AC34 Project Variant: Helipad Location at Treasure Island 11-44 11-6 AC34 Project Variant: Proposed AC Village at Marina Green for AC34 2012 11-46 11-7 AC34 Project Variant: Proposed Crissy Field Venue Plan 11-47 11-8 AC34 Project Variant: Proposed Crissy Field East /Marina Green West Venue Plan 11-48 11-9 AC34 Project Variant: Proposed Fort Mason Venue Plan for AC34 2012 11-49 11-10 AC34 Project Variant: Proposed Aquatic Park Venue Plan 11-50 11-11 AC34 Project Variant: Proposed Alcatraz Venue Plan 11-53 11-12 AC34 Project Variant: Proposed Fort Baker Pier at",
+    "e Plan 11-61 11-18 AC34 Project Variant: AC34 2013 - Proposed Pier 19, Pier 19 1/2, Pier 23, AC Village at Piers 27-29 and Pier 29 1/2 Venue Plan 1 1-62 11-19 AC34 Project Variant: AC34 201 3 -AC Village at Piers 27-29 during Races 1 1 -63 11-20 AC34 Project Variant: AC34 2013 -Proposed Marina Green Venue Plan 1 1-65 11-21 AC34 Project Variant: AC34 2013 -Proposed Fort Mason Venue Plan 11-66 11-22 AC34 Project Variant: Rendering of Proposed AC Village at Marina Green - Bird's Eye View 11-85 11-23 AC34 Project Variant: Rendering of Proposed AC Village at Marina Green - Ground Level View from Marina Boulevard Looking North 11-86 Case No. 2010.0493E 210317 viii The 34th America's Cup and James R. Herman Cruise Terminal and Northeast Wharf Plaza Table of Contents List of Figures (continued) Page 11-24 AC34 Project Variant: Rendering of Proposed AC Village at Marina Green - Ground Level View from Marina Boulevard Looking Northwest 11-87 11-25 AC34 Project Variant: Rendering of Proposed Team Bases at Piers 30-32 and Brannan Street Wharf Open Water Basin - Bird's Eye View from The Embarcadero 11-88 11-26 AC34 Project Variant: Rendering of Proposed Team Bases at P",
+    "project venue design modifications at certain Port facilities, including Pier 80, Piers 30-32, Brannan Street Wharf Open Water Basin (OWB), Pier 26, Pier 28, Rincon Point OWB, Pier 14 North, Pier 9 South, Pier 19, Pier 19Vz, Pier 23, and Piers 27-29; and at other proposed spectator venues,"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.26,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.26,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/draftenvironment5120sanf",
+   "deep_link": "https://archive.org/details/draftenvironment5120sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The environmental review for the 34th America's Cup, which assessed the effects of an America's Cup village on the Green and on the wider Aquatic Park and Fort Mason setting."
+  },
+  {
+   "identifier": "technicalreportg1965cali",
+   "title": "Technical report: Golden Gate Freeway, Interstate Highway Route 480",
+   "creator": "California. Division of Highways",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "ocr_excerpts": [
+    "t shopping district and Lombard Street's \"motel row\" bisect this predominately residential area in an east- west direction. The bay front is entirely recreational in character, extend- ing easterly from the Palace of Fine Arts at the Presidio, through the several-times expanded Marina Yacht Harbor, the Marina Green, the newGas House Cove Yacht Basin to Fort Mason. While these areas comprise one of San Francisco's most valuable recreational resources, they lack the continuity to make the component parts function as a shoreline park. FIGURE 8 - MARINA AREA 9 ENGINEERING URBAN PLANNING San Francisco is th",
+    "conventional construction. Every effort would be made to accelerate work in this area. Certain alternatives require relocation of all or portions of the Marina Yacht Harbor. It will be necessary to relocate the essential facilities prior to beginning freeway construction. Tem- porary dislocation of the Marina Green and the Marina Yacht Har- bor must be minimized and restoration accomplished concurrently with freeway construction. The problems posed by use of special construction techni- ques and the necessity forclose cooperation between governmental agencies can be solved. However, the risks inherent in the con- s",
+    "apply to all alternative routes . 34 F ALTERNATIVES Alternative F skirts the easterly and northerly faces of Telegraph Hill; then lies between Bay and North Point Street from the sewage disposal plant to Laguna Street; from which F and its westerly variations pass through, around, or under the Marina Green and yacht harbors to the Golden Gate Bridge approach in the Presidio. The easterly variations of F all lie generally along or east of the Embarcadero. Alternative F-1 retains the present structure type along the Embarcadero, changes to single-level viaduct along BayStreet and joins the basic F near",
+    "NATIVE F (EAS^fi .SHERMAN^, ^^I'J^^ ($74, 600, 000 construction, $35, 100, 000 rights of way). Acquis- ition of 135 improvements assessed at $2,800,000 would be re- quired. This alternative is 3.7 miles long, 0.5 mile of which is in cut-and-cover tunnels under the Galileo HighSchool athletic field, Marina Green, and the entrance to the yacht harbor. 38 FIGURE 31 - ALT. F - LOOKING WEST FROM THE EMBARCADERO AND CHESTNUT STREET BAY ST. AJO/?TH POINT 5T FIGURE 34 - ALT. F - CROSS-SECTION LOOKING WEST TOWARD TAYLOR STREET FIGURE 35 - ALT. F - CROSS-SECTION THROUGH TELEGRAPH HILL ALTERNATIVE F-",
+    "lengths would be the same as for F. 41 ALTERNATIVE F (WEST) CRisSY AIRFIELD ALTERNATIVE F (WEST) The westerly segment of Alternative F extends from Van Ness Avenue In a depressed, landscaped section through Fort Mason, enters a cut-and-cover tunnel at Marina Boulevard and passes under the Marina Green and the Marina Yacht Harbor; it emerges from the tunnel, and ru"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 4.29,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/technicalreportg1965cali",
+   "deep_link": "https://archive.org/details/technicalreportg1965cali?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": true,
+   "gloss": "A 1965 state highways report on the proposed Golden Gate Freeway, whose alternatives would have required relocating part of the Marina Yacht Harbor."
+  },
+  {
+   "identifier": "scenicparkwayfor293sanf",
+   "title": "A scenic parkway for the park : report of the Doyle Drive Task Force to the San Francisco Board of Supervisors",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Doyle Drive Task Force",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "ocr_excerpts": [
+    "At the eastern end the bluffs flatten, revealing the Letterman medical complex. Farther east is the great dome of Maybeck's Palace of Fine Arts. The Golden Gate Promenade, a recreation trail heavily used by walkers, joggers, bicyclists and scenery seekers, runs the length of the bay front, from the Marina Green to Fort Point, past clusters of fishermen and boardsailors. When seen from the bridge, the Presidio forest forms a green backdrop to the shore, with the City's hills and towers beyond. and its surroundings The whole forms a stunning composition with the bay, Alcatraz, Angel Island and the Marin",
+    "lub, and the Presidio. Marina Blvd. continues east as a broad, four-lane esplanade. The south side has a parking lane and is lined with large single-family homes for eight blocks to Buchanan St. Character and surroundings Page 20 The north side is a series of dramatic greenswards (includ- ing the Marina Green) and yacht harbors with sweeping views to Alcatraz, the north bay and the East Bay. The bayfront is a public recreation corridor, intensively used for walking, jogging, bicycling, roller skating, fishing, sailing, picnicking, kite flying, sightseeing, pickup soccer games, and occasional large public gath",
+    "public testimony Organizations The Marina Civic Improvement and Property Owners Association and the Marina Neighborhood Association wrote to endorse reduced traffic on Marina Blvd. and Bay St.; limiting of rebuilt Doyle Drive on and off ramps to one lane in each direction; reduced traffic along the Marina Green and Ft. Mason Great Meadow as part of a rede- signed Doyle Drive; increased enforcement of existing traffic management controls; maintaining and improving the recreational potential of the northern waterfront. The letters argued that Marina Blvd. is zoned residential, while Lombard St. is zoned commercia",
+    "trict residents, many near Richardson Ave. and Lombard St., advocating fewer trucks and buses on Richardson Ave.; stronger enforcement of speeding laws; and longer signals for pedestrians crossing Lombard St. A petition containing 425 signatures of Marina district residents and recreational users of the Marina Green area, supported reduced traffic on Marina Blvd. from any future redesign of Doyle Drive. A petition containing 72 signatures of residents on or near Marina Blvd. and Bay St. raised points similar to letters from the two Marina neighborhood organizations. They asked that an Environmental Impact Statement address an extensive list of potential impacts, including noise and air Public Testimony Page 59 pollution along Marina Blvd., the potential for liquefaction caused by increased traffic and vibration, and the loss of the health, safety and welfare of marina residents and park users along Marina Green should any redesign of Doyle Driv"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.14,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 3.14,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/scenicparkwayfor293sanf",
+   "deep_link": "https://archive.org/details/scenicparkwayfor293sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": true,
+   "gloss": "The Doyle Drive Task Force's 1993 report to the Board of Supervisors, describing the Green as one link in the bayfront recreation corridor running from the Marina to Fort Point."
+  },
+  {
+   "identifier": "whatsdoinginpark1985sanf",
+   "title": "What's doing in the parks?",
+   "creator": "San Francisco (Calif.). Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "ocr_excerpts": [
+    "aren Lodge, Golden Gate Park San Francisco, CA 94117 415/558-4268 contact : Bob Coble Diane Palacio FOR IMMEDIATE RELEASE DOCUMENTS DF.PT. WHAT'S DOING IN THE PARKS (MARCH 23 - 29) MAK 1 9 1^85 SATURDAY, MARCH 23 10 a.m. - 3 p.m. — Artists Guild of San Francisco Outdoor Art Show, Marina Green, Marina Boulevard and Webster Street, (thru 3/24) . 10 a.m. -- Drop in classes throughout the day, all ages welcome, children under 5 must be accompanied by an adult, woodshop, animal feeding, ceramics, call the Junior Museum, 199 Museum Way, for information at 863-1399. 10:30 a.m. and 1:30 p.m. —",
+    "olden Gate Park San Francisco, CA 94117 415/558-4268 WHAT'S DOING IN THE PARKS (APRIL 13 - 19) SATURDAY. APRIL 13 8 a.m. - 1 p.m. — Lap-a-thon, sponsored by the Third Baptist Church, Inc., Polo Field, Golden Gate Park. 10 a.m. - 3 p.m. — Artists Guild of San Francisco Outdoor Art Show, Marina Green, Marina Boulevard and Webster Street. 10 a.m. - 5 p.m. — Parr Associates - Antique Glass Show and Sale, $2.50 general admission. Hall of Flowers, near 9th Avenue and Lincoln Way, Golden Gate Park. 10 a.m. - Noon — Class Registration: Sciences, Shop, Arts and Crafts, Junior Museum, 199 Museum",
+    "Track Meet for Jesse Owens Games, McAteer High School, 555 Portola Drive at 0 ' Shaughnessey Blvd. 10 a.m. - 5 p.m. — Carriage Rides in Golden Gate Park, tours leave from the Japanese Tea Garden, call 761-8272 for information. 10 a.m. - 3 p.m. — Artists Guild of San Francisco Outdoor Art Show, Marina Green, Marina Boulevard and Webster Street, thru 5/12. 10:30 a.m. and 1:30 p.m. — Free Plant Walks, daily, Strybing Arboretum Society, meet at the information kiosk, Strybing Arboretum and Botanical Gardens, Golden Gate Park. 11 a.m. — Free Strawberry Hill Walking Tour, Friends of Recreation and Parks, m",
+    "A's, Crocker Amazon Playground, Moscow Street and Italy Avenue. WEDNESDAY, JUNE 5 7:30 p.m. — San Francisco Rec/Park 's Softball League, SI Pitch \"B\" Game, Moscone Rec Center, Chestnut and Buchanan Sts. THURSDAY, JUNE 6 9 a.m. - Dusk — Latch, So, and Li Chiropractic Outdoor Clinic, west end of Marina Green, Marina and Cervantes Blvds. 1-3 p.m. — City Celebration Festival of Performing Arts in honor of Senior Citizens: Jimmy Price Big Band, and the S.F. Ballet Breakers, Bandshell, Golden Gate Park. FRIDAY, JUNE 7 Noon - 1:30 p.m. — Opening Day Festivities of the 1985 Philippine-American Cultural",
+    "SATURDAY, JUNE 8 p ^ 9 a.m. - 1 p.m. — Gaines Ashley Whippet Invitational Dog Frisbee Competition, Panhandle of Golden Gate Park between Lyon and Central Streets . 10 a.m. - 2 p.m. — Staging Area for the 200 Harvard cyclists participating in the cross continental fund raiser, \"Ride for Life,\" Marina Green, Marina and Cervantes Boulevards. 10 a.m. - 3 p.m. — Artists Guild of San Francisco Outdoor Art Show,"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.94,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.44,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/whatsdoinginpark1985sanf",
+   "deep_link": "https://archive.org/details/whatsdoinginpark1985sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false
+  },
+  {
+   "identifier": "agendaoperations2004sanf",
+   "title": "Agenda / Operations Committee",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission. Operations Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "ocr_excerpts": [
+    "o produce the 52nd Annual North Beach Festival at Washington Square on June 17-18, 2006 from 1 1 :0 a.m. to 6:00 p.ni. , and 2) a request to modified the sound policy and allow amplified sound from 12:00-6:00 p.m. on June 17, 2006 and 1:00-6:00 p.m. on June 1 8. 2006. (ACTION ITEM) 12. ALTA PLAZA, MARINA GREEN, RUSSIAN HILL PARK AND JUSTIN HERMAN PLAZA Discussion and possible action to approve a request by the American Foundation for Suicide Prevention to produce “Out of Darkness Ov ernight” an 18-mile ov ernight walk on July 22-23, 2006 from Crissy Field through the streets of San Francisco using the following parks for a rest and pit stop: 1) Alta Plaza from 8:10 - 10:30 p.m., 2) Marina Green from July 22, 2006 at 9:00 p.m. - July 23, 2006 at 5:30 a.m., 3) Russian Hill Park from July 22, 2006 at 9:30 p.m. - Julv 23, 2006 at 4:00 a.m. and 4) Justin Herman Plaza from July 22, 2006 10:40 p.m. - July 23, 2006 at 2:30 a.m. (ACTION ITEM) 13. PUBLIC COMMENT At this time members of t",
+    "ach Jazz Festival at Washington Square on July 29-30, 2006 from 1 1 :00 a.m. to 7:00 p.m. , 2) sell beer and wine in the park, and 3) modify the sound policy and allow amplified sound from 1 1 :00 a.m. to 7:00 p.m. on July 29. 2006 and from 1:00 to 7:00 p.m. on July 30, 2006. (ACTION ITEM) 10. MARINA GREEN Discussion and possible action to approve a request from San Francisco Parks Trust to: 1) produce a tented event at the West end of Marina Green on October 19, 2006 from 6:00 to 1 1 :00 p.m., and 2) modify the sound policy and allow amplified sound from 5:00 to 1 1:00 p.m. inside the tent. (ACTION ITEM) 11. ST. FRANCIS BAN III PROJECT - SHADOW IMPACT Discussion and possible action to recommend to the Planning Commission that the shading",
+    "ov.org SHARON MEADOW. GOLDEN GATE PARK Discussion and possible action to approve The Aids Foundation’s request to modify the Sharon Meadow Sound Polic> and place the stage facing East at Sharon Meadow during the 21M Annual Aids Walk at Golden Gate Park on Sunday, July 15, 2007. (ACTION ITEM) 8. MARINA GREEN Discussion and possible action to approve a request from the Tradesman Event Production Inc. to produce a two-day free event, “Australia By the Bay” at the Marina Green on September 22-23, 2007 and a request for permission to sell beer and wine, and if headliner entertainment is presented, approval of a request for gated admission to the event entertainment area. (ACTION ITEM) 9. Ml SIC CONCOURSE. GOLDEN GATE PARK Discussion and possible action to approve a request",
+    ". VOLUNTEER SERVICES DIVISION - GRANT Discussion and possible action to recommend that the San Francisco Board of Supervisors does accept and expend a grant in the amount of $18,000 from the San Francisco Foundation for the Recreation and Park Department’s Volunteer Services Divisi"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.51,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.51,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendaoperations2004sanf",
+   "deep_link": "https://archive.org/details/agendaoperations2004sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
   }
  ],
  "dept_shelf": [

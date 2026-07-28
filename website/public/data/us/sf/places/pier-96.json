@@ -1,0 +1,418 @@
+{
+ "generated_at": "2026-07-28T12:23:47.810394+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "pier-96",
+ "name": "Pier 96",
+ "kind": "Port facility",
+ "family": "port",
+ "address": "Pier 96",
+ "lat": 37.743358,
+ "lon": -122.376987,
+ "owning_dept": {
+  "name": "Port",
+  "code": "PRT"
+ },
+ "facility": {
+  "primary_name": "1960 | Pier 96",
+  "primary_address": "PIER 96",
+  "primary_city": "San Francisco",
+  "primary_zip": "94124",
+  "primary_block_lot": "4502A002",
+  "primary_department_name": "Port",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 256361,
+  "primary_latitude": 37.74013457700005,
+  "primary_longitude": -122.36980458899995,
+  "supervisor_district": 10,
+  "n_facilities": 9,
+  "total_gross_sq_ft": 488373,
+  "n_owned": 9,
+  "n_leased": 0,
+  "apn_list": [
+   "4502A002"
+  ],
+  "facilities": [
+   {
+    "facility_id": 23,
+    "common_name": "1960 | Pier 96",
+    "block_lot": "4502A002",
+    "gross_sq_ft": 256361,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1297,
+    "common_name": "Pier 96 - Recycling/LASH Terminal",
+    "block_lot": "4502A002",
+    "gross_sq_ft": 186604,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1295,
+    "common_name": "Pier 96 - Maintenance Building",
+    "block_lot": "4502A002",
+    "gross_sq_ft": 25320,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1293,
+    "common_name": "Pier 96 - Entry Canopy",
+    "block_lot": "4502A002",
+    "gross_sq_ft": 10000,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1294,
+    "common_name": "Pier 96 - Exit Canopy",
+    "block_lot": "4502A002",
+    "gross_sq_ft": 5950,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1298,
+    "common_name": "Pier 96 - Storage",
+    "block_lot": "4502A002",
+    "gross_sq_ft": 1922,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1296,
+    "common_name": "Pier 96 - Office/Restroom",
+    "block_lot": "4502A002",
+    "gross_sq_ft": 1716,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1299,
+    "common_name": "Pier 96 - Truck Scales",
+    "block_lot": "4502A002",
+    "gross_sq_ft": 500,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3098,
+    "common_name": "Pier 96 - Administration Building",
+    "block_lot": "4502A002",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "CLIFFORD ADVISORY LLC",
+    "paid_usd": 5000.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2023,
+    "last_fiscal_year": 2023
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 5000.0
+ },
+ "photo": "/img/us/sf/places/pier-96.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/pier-96.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Jennings_Street_entrance_to_Pier_96,_April_2021.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Pi.1415926535",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-28T12:02:08.272181+00:00"
+ },
+ "summary_en": "Pier 96 is a container terminal the city has spent fifty years trying to keep occupied. The Port's own newsletter records it returning officially to the Port in 1978, after the shipping line that had held the master lease since the pier was completed in 1971 went through bankruptcy owing what it calls a staggering $2.5 million in back rent; the Port then went looking for tenants for the combined Pier 94-96 terminal, and Evergreen took preferential berthing and back-up land for its containers. Commission agendas of the same era show the small change of running a working pier — $30,000 for spare parts for the Paceco cranes, $10,000 for an electrical contractor to direct and assist crane maintenance, bids for repairs to a fork-lift at the Lighter Freight Station. The solicitations never really stopped: the Port issued a request for proposals in 2007 for a maritime terminal operation on approximately fifteen acres with 800 linear feet of berth space, and another in 2014 for a bulk export maritime terminal. What is missing is money. The Port's 10-year capital plan lists $15,377,000 of work needed at Pier 96 with the funding source recorded as \"None Identified\", and names the pier among the facilities that may not be viable candidates for redevelopment given the cost of rehabilitating them. Almost nothing is recorded as spent here by name: a single $5,000 payment to an advisory firm in 2023.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_usd": 156434885.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_compensation_usd": 52732085.2,
+   "n_employees": 304,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "10yearcapitalpla2006port",
+   "title": "10-year capital plan : draft",
+   "creator": "Port of San Francisco (Calif.)",
+   "year": 2006,
+   "pool": "sfpl",
+   "matched_alias": "Pier 96",
+   "ocr_excerpts": [
+    "agreements. Funding options include public/private partnerships for development opportunities, as well as grant and other public funding. Even this speculation leaves $241 million in needed capital work without funding options. That unfunded work includes Piers 28 & 28.5, Pier 38, Pier 54, Pier 90, and Pier 96. Port staff understand that these facilities may not be optimal candidates for development projects given the magnitude of the cost to rehabilitate them. If Requests for Proposals to redevelop these piers with mixed uses yield no viable responses, the Port may be left with simply using the piers thr",
+    "Grant Funding Pier 52 - Breakwater 3,000,000 Grant Funding Pier 70 - Total Complex 233,011,000 Balance not funded bf IFD - Development Project and/or other Public Funding Pier 80 - balance not funded through revenue bond 61,578,000 Other Public Funding Pier 90 12,972,000 None Identified Pier 96 15,377,000 None Identified Intermodal Transfer Facility 21,310,000 Transportation Grant Funding and/or Other Public Funding All Other Port Facilities 83,731,498 None Identified Total Unfunded Projects $734,276,498 Total Funding Options that Could be Identified $493,784,000 Total Projects with No Id",
+    "air, replacement and seismic upgrade costs associated with the following Port facilities: Table V.2; Port Facilities without Identified Funding Options Port Facility Unfunded Cost Estimate Pier 28 & 28.5 $28,447,000 Pier 38 40,625,000 Pier 50 26,158,000 Pier 54 33,182,000 Pier 90 12,972,000 Pier 96 15,377,000 Other Port Facilities 83,731,498 Total $240,492,498 Port staff do not believe Piers 28 and 28.5, 38, 50 and 54 will be optimal candidates for development projects because of the cost to repair and upgrade the facilities. The $26.2 million cost estimate for Pier 50 covers the sub-stru",
+    "Seismic $8,000 Code Compliance 634 Pier 94/96 - Perimeter security fencing $535,000 Capital Enhancement 1338 Pier 94/96 - Sea Wall & Substructure R/R $1,895,000 Deferred Maintenance Repair/Replace Estimated Total - Pier 94: $5,011,000 67 ID# Project Name Estimated Cost Project Type Pier 96 943 Dredged Material Upland Rehandling Site $865,000 Deferred Maintenance Repair/Replace 945 High Mast Lighting Pier 94-96 $600,000 Deferred Maintenance Repair/Replace 250 Pier 96 - Administration Building - Interior Utilities $1,090,000 Deferred Maintenance Repair/Replace 1816 Pier 96 - Administration Building - Painting $68,000 Deferred Maintenance Repair/Replace 1142 Pier 96 - Administration Building - Superstructure R/R $242,000 Deferred Maintenance Repair/Replace 1703 Pier 96 - Administration Building - Superstructure Seismic $304,000 Code Compliance 257 Pier 96 - Entry Canopy $216,000 Deferred Maintenance Repair/Replace 258 Pier 96 - Exit Canopy $129,000 Deferred Maintenance Repair/Replace 11"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.03,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.03,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/10yearcapitalpla2006port",
+   "deep_link": "https://archive.org/details/10yearcapitalpla2006port?q=Pier+96",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The Port's capital plan listing $15.4 million of work here with no funding source identified."
+  },
+  {
+   "identifier": "wharfside1978sanf_1",
+   "title": "Wharfside",
+   "creator": "San Francisco, CA : Port of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 96",
+   "ocr_excerpts": [
+    "al Tenants Several steamship companies are showing considerable interest in the combined Pier 94-96 terminal, accor- ding to Don Boyd, Director of Maritime Affairs for the Port. However, no agree- ment has been finalized at this time. The Port began actively seeking new tenants for the terminal when Pier 96 was returned officially to the Port on August 25. PFEL has held the master lease on the Pier since it was completed in 1971 and owes a staggering $2.5 million in back rent. Now that the U S. Bankruptcy Court has freed the facility, the Port can look for additional tenants as well as collect the rent of the tenants who have been subletting from PFEL Farrell Lines and Columbus Line At present the Port plans to utilize Pier 96 as a public container facility. Pier 96 is a modern facility that equals any container terminal on the West Coast. Combined with adjacent Pier 94 (opened in 1976], the two piers contain over 75 acres of land (7 available for future expansion) and form a cohesive unit able to handle container, Ro/Ro. breakbulk, combination, and LASH The Piers' three berths are sen/iced by two Star Porter cranes at Pier 94 and two Paseco cranes at Pier 96 Aii are rail mounted and can be maneuvereo easily to work either Pier Structures oo Pier 96 include a 29,000 square foot container freight station, the 24.000 square foot maintenance and repair building, a 174,000 square foot ware- house with covered truck and rail loading platforms, a 14.000 square foot administration building, a control tower and gatehouse. Over 300 high voltage reefer outlets are contained in four separate locations on the two piers, and the combined container yard covers more than 31 acres. . . r - . j.’ in the LASH terminal of . opei .:i :^ ships out of Pier 96 and The warehouse on Pier 96 contains over 1 74.000 square feet and opens onto covered loading platforms for trucks and railcars. Both the Star Porter Cranes of Pier 94 [ foreground) and the Paseco Cranes on Pier 96 are rail mounted and can be easily maneuvered to work either Pier. A tenant of Pier 96, Columbus Line operates ships like the ~neor^s'ory Administration Building was completed in 1971 andcontains 14.000 Columbus Wellington between San Francisco and Sydney, square fe& of modern office space. Brisbane. Melbourne, V/ellington and A uckland. ^ Along the Waterfront FOURTH NEW SCI SHIP MAKES M",
+    "es office. By November of that year, their ships were calling at the Public Terminal in Oakland. Currently, Evergreen has 4 S ships (Ever Shine, Ever Summit, Ever Superb and Ever Spring) docking in the Bay Area every twelve days. Each ship in the S series holds 420 40-foot container equivalents. At Pier 96, Evergreen will receive preferential berthing and sizable back-up land for its containers. San Francisco will be Everg"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.19,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.19,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/wharfside1978sanf_1",
+   "deep_link": "https://archive.org/details/wharfside1978sanf_1?q=Pier+96",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The Port's newsletter on the pier's return from a bankrupt lessee and the search for new steamship tenants."
+  },
+  {
+   "identifier": "agenda19sanf_47",
+   "title": "Agenda",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 96",
+   "ocr_excerpts": [
+    "Consent Calendar and considered as a separate item. a. Approval of supplemental appropriation in the amount of $5,789 (retroactive pay). b. Approval of Refunds and Allowances in the amount of $304,816.32. c. Approval of Licenses and Leases. d. Approval to purchase spare parts for Paceco cranes at Pier 96 in the amount of $30,000. e. Approval of SA #1116 with Williajn Logue Electrical to direct and assist crane maintenance at Pier 96 in the amount of $10,000. .. UNFINISHED BUSINESS. . ' 6. Report on proposed maritime strategy for the Port of San Francisco and request approval to forward this strategy to the Northeast Waterfront Advisory Committee in response to their letter of September 12, 1978 to the Mayor's Office of Econo",
+    "shall be removed from the Consent Calendar and considered as a separate item. a. Refunds and Allowances. b. Request approval of amendment to the Harbor Traffic Code, relating to parking on Chestnut Street. c. Request approval to take bids for repairs to Flying Fork-Lift at Lighter Freight Station, Pier 96. UNFINISHED BUSINESS 6. Request for reconsideration of percentage rental provisions for Licenses 10174, 10175, and 9980, 7. Report on Fisherman's Wharf. a. Public hearing on Rules and Regulations for Fisherman's Wharf Berthing (final action to be taken on November 22, 1978) b. Request approval of",
+    "ons and authorization to solicit bids for Contract No. 2473, Pier 80 Shed A and B, end wall repair. Staff recommends approval, 12. Request approval to authorize the staff to solicit bids for Contract No, 2483 for custodial services. 13. Review bids received December 7, 1978 for Contract No. 2491 Pier 96 repair to power mast crane No, 4, Staff recommends rejection, 14. Contract No. 2467, removal of Piers 18, 20, and 22 Ferma Corporation, a. Acceptance of work, as of October 10, 1978, 36 days after scheduled completion bo Approval of a contract time extension of 36 days c. Authorization to ma",
+    "al of Minutes, Regular Meeting of August 8, 1979. Executive Director's Report. Finance and Administration Report. a) Request approval of Management Objectives - San Francisco Port Commission staff. b) Licenses and Leases. MARITIME Request approval to advertise for bids repaving of container yard at Pier 96. Request approval of Port Maritime Strategy. Presentation of Pier 45 fish handling marketing program and directing staff to proceed. COMMERCIAL PROPERTY Request approval of sublease at warehouse Seawall Lot 354. Request approval of final lease with BJW Associates for use of Seawall Lots 319 and 32",
+    "e Industrial Supply. File #22-80 7. Consideration of increases in parking and rental rates for fiscal year 1980-81. File #30-80 8. Request approval of Licenses and Leases Nos. L-10388 through L-10390. File #1-80(35) ENGINEERING AND MAINTENANCE 9. Declaration "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.84,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 3.34,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -0.5,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda19sanf_47",
+   "deep_link": "https://archive.org/details/agenda19sanf_47?q=Pier+96",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission agendas buying crane spare parts and contracting crane maintenance at the pier."
+  },
+  {
+   "identifier": "agendasanfranci014sanf_14",
+   "title": "Agenda / San Francisco Port Commission",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 96",
+   "ocr_excerpts": [
+    "st qualified bidder and to direct staff to negotiate a lease 2 Portwide Informational Presentation on Finger Pier Exiting Code Analysis/Model Guidelines NOVEMBER 18, 2014 - SPECIAL MEETING FACILITY/POLICY ITEM TITLE 1 Portwide Informational Presentation on Water Taxi Operations at the Port 2 Pier 96 Action Authorization to advertise and issue a Request for Proposals (RFP) soliciting a developer and operator for a Bulk Export Maritime Terminal Operation at Pier 96 3 Pier 29 Action Approval to issue a Request for Proposals (RFP) for a Retail Leasing Opportunity at the Pier 29 Bulkhead Building, located at Chestnut Street and The Embarcadero. 4 Pier 94/96, Pier 48/ 50 Marginal Pier, and SWL318 Round House Building Action Authorization to award Constructi",
+    "urn-In Program to allow for removal, storage and disposal of eligible surrendered and abandoned vessels within the Port of San Francisco A09232014 -3- NOVEMBER 18, 2014 - SPECIAL MEETING FACILITY/POLICY ITEM TITLE 1 Portwide Informational Presentation on Water Taxi Operations at the Port 2 Pier 96 Action Authorization to advertise and issue a Request for Proposals (RFP) soliciting a developer and operator for a Bulk Export Maritime Terminal Operation at Pier 96 3 Pier 29 Action Approval to issue a Request for Proposals (RFP) for a Retail Leasing Opportunity at the Pier 29 Bulkhead Building, located at Chestnut Street and The Embarcadero. 4 Pier 94/96, Pier 48/ 50 Marginal Pier, and SWL318 Round House Building Action Authorization to award Constructi",
+    "report provides a brief overview of Port planning efforts in this part of the Southern Waterfront, an overview of the existing uses which are illustrated in Map 1 . and a number of proposed leasing and maritime development proposals. These proposals include: • A new iron ore terminal proposal for Pier 96; • New shipping opportunities for Pier 80; • An asphalt and non-structural concrete batch plant on Seawall Lot 352; and • Site preparation (grading, paving, streets, utilities and landscaping improvements) to the Piers 94-96 Backlands to facilitate industrial leasing. FROM: Monique Moyer Executive",
+    "used to build sidewalks, curbs and gutters. Darling International renders tallow from recycled area restaurant grease and animal fats for shipment to Asian and North American markets, and has the option to expand their facility to convert similar feedstock into biodiesel. Recology's Recycle Central at Pier 96 sorts, consolidates, and packages the City's recyclable blue bin and downtown office materials for transshipment to domestic and international recyclers San Francisco Bay Railroad, which operates the Intermodal Cargo Transfer Facility (ICTF) adjacent to the Backlands, is a short-line railroad that moves c",
+    "80 and Piers 94-96 Cargo Terminals as active container term"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.33,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.83,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendasanfranci014sanf_14",
+   "deep_link": "https://archive.org/details/agendasanfranci014sanf_14?q=Pier+96",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A later solicitation for a bulk export terminal operation at the pier."
+  },
+  {
+   "identifier": "minutes2007sanf_0",
+   "title": "Minutes",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 96",
+   "ocr_excerpts": [
+    "e B. Request approval of the 2008 Port Commission Meeting Schedule. (Resolution No. 07- 82) 8. ENGINEERING A. Informational presentation on 2008 Port Building Code. 9. MARITIME A. Request authorization to advertise and issue a Request for Proposals (KIP) tor a Maritime Terminal Operation at Pier 96. (Resolution No. 07-83 ) A11132007.doc -2- Digitized by the Internet Archive in 2013 http://archive.org/details/minutes2007sanf_0 10. REAL ESTATE A. Request approval of new policy for enhancing Southern Waterfront Community Benefits and Beautification. (Resolution No. 07-77) B. Request approval of th",
+    "on. Anne Lazarus, President Hon. Kimberly Brandon, Vice President Hon. Rodney Fong Hon. Michael Hardeman Hon. Stephanie Shakofsky FROM: MoniqueMoyer iill Executive Director ^ / I SUBJECT: Request Authorization to Advertise and Issue a Request for Proposals for a Maritime Terminal Operation at Pier 96 DIRECTOR'S RECOMMENDATION: APPROVE THE RESOLUTION Overview Port staff requests authorization from the Port Commission to advertise and issue a competitive solicitation for a maritime leasing opportunity on approximately fifteen acres including 800 linear feet of berth space at Pier 96 to operate a maritime cargo terminal (\"Site\"). In addition to generating lease and wharfage and dockage revenues, the project will utilize a maritime terminal that has been vacant for several years. The Site's deep-water berth, on-dock rail and large vacant land parcel offers a prime maritime opportunity for the Port. Over the past year, Port staff has received numerous expressions of market interest in developing the Site for maritime uses. Location The Site is located in the Southern Waterfront at Pier 96 within the Port's 278 acre Piers 80-96 Maritime Industrial Complex. The Site enjoys some of the best industrial transportation access in San Francisco, with easy access to water, road and rail transport. The Site is surrounded by the Port's bulk cargo terminal at Pier 94 and the Port's freight rail",
+    "routes. Finally, the Site is in the vicinity of the major concrete producers in the City and County of San Francisco (\"City\"), which use construction materials imported through the Piers 90-96 Maritime Terminal. THIS PRINT COVERS CALENDAR ITEM NO. 9A ORT OF SAN FRANCISCO mmmm The Opportunity Pier 96 was previously used as a container handling facility. After the Port terminated this use in the late 1990s, the Port leased parts of the Pier 94-96 container terminal to Norcal Waste Systems, Inc. for a recycling facility and Hanson Aggregates for a dry bulk handling facility, with other portions o",
+    "sed on an interim basis for various purposes. The 15-acre parcel that is the subject of this RFP has been used at times for dredge material drying and storage and for police driver training. Port sta"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.43,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.43,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -2.25,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes2007sanf_0",
+   "deep_link": "https://archive.org/details/minutes2007sanf_0?q=Pier+96",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A request for proposals for a maritime terminal on fifteen acres and 800 feet of berth space."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "economicimpactso2000port",
+   "title": "The economic impacts of Port of San Francisco",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/economicimpactso2000port"
+  },
+  {
+   "identifier": "biennialreportof1938cali_0",
+   "title": "Biennial report of the Board of State Harbor Commissioners for ..",
+   "year": 1865,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/biennialreportof1938cali_0"
+  },
+  {
+   "identifier": "financialstateme1971sanf",
+   "title": "Financial statements and independent auditors' report",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/financialstateme1971sanf"
+  }
+ ],
+ "dept_shelf_label": "Port of San Francisco",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 5,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

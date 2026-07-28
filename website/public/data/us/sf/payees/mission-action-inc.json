@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.741802+00:00",
+ "generated_at": "2026-07-28T11:43:47.716455+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -26,6 +26,187 @@
  "top_departments": [
   "HOM Homelessness Services"
  ],
+ "profile": {
+  "n_vouchers": 2064,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 72767274.82,
+    "n_vouchers": 824
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 37390829.21,
+    "n_vouchers": 655
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 9771957.73,
+    "n_vouchers": 220
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "usd": 6973536.74,
+    "n_vouchers": 103
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 3983131.37,
+    "n_vouchers": 45
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 3047728.89,
+    "n_vouchers": 165
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 1135057.64,
+    "n_vouchers": 50
+   },
+   {
+    "department": "ART Arts Commission",
+    "department_code": "ART",
+    "usd": 20000.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_departments": 8,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 111601889.86,
+    "n_vouchers": 1611
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 21895095.41,
+    "n_vouchers": 223
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 1440060.25,
+    "n_vouchers": 98
+   },
+   {
+    "code": "536440",
+    "label": "CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 94628.94,
+    "n_vouchers": 74
+   },
+   {
+    "code": "536340",
+    "label": "Non-CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 52693.94,
+    "n_vouchers": 44
+   },
+   {
+    "code": "536610",
+    "label": "Spcl Circumstances For Adults",
+    "spend_class": "unclear",
+    "usd": 4948.0,
+    "n_vouchers": 5
+   },
+   {
+    "code": "UNEARN_REV_CHGS_SVCS",
+    "label": "Unearned Revenue-Chgs for Svcs",
+    "spend_class": "ledger",
+    "usd": 200.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 8
+   }
+  ],
+  "n_categories": 8,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 26593105.29,
+  "n_recent_lines": 8,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 10720781.11,
+    "n_vouchers": 79
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 7021173.68,
+    "n_vouchers": 49
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 5041753.68,
+    "n_vouchers": 70
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1988817.59,
+    "n_vouchers": 22
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1049930.52,
+    "n_vouchers": 15
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 518507.45,
+    "n_vouchers": 4
+   }
+  ]
+ },
+ "identity": {
+  "description": "Mission Action Inc is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under housing and shelter.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Mission Action Inc",
+  "ein": "942919302",
+  "ntee_code": "L410",
+  "ntee_label": "Housing and shelter",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/942919302",
+  "checked_at": "2026-07-27T23:37:38.313728+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000022325",
@@ -92,7 +273,7 @@
   },
   {
    "contract_no": "1000036462",
-   "title": "Com Ctrd Groc Dist/El Merc",
+   "title": "Com Ctrd Groc Distribution/El Merc",
    "department": "HSA Human Services Agency",
    "department_code": "HSA",
    "agreed_usd": 7480000.0,
@@ -101,7 +282,7 @@
   },
   {
    "contract_no": "1000036461",
-   "title": "Com Ctrd Groc Dist/Arcoiri",
+   "title": "Com Ctrd Groc Distribution/Arcoiri",
    "department": "HSA Human Services Agency",
    "department_code": "HSA",
    "agreed_usd": 1540000.0,

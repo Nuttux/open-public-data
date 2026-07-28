@@ -1,0 +1,336 @@
+{
+ "generated_at": "2026-07-28T12:23:47.808090+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "african-american-art-and-culture-complex",
+ "name": "African American Art and Culture Complex",
+ "kind": "Civic building",
+ "family": "civic",
+ "address": "762 Fulton St",
+ "lat": 37.778281,
+ "lon": -122.429235,
+ "owning_dept": {
+  "name": "Arts Commission",
+  "code": "ART"
+ },
+ "facility": {
+  "primary_name": "African American Art and Culture Complex",
+  "primary_address": "762 FULTON ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94115",
+  "primary_block_lot": "0781010",
+  "primary_department_name": "Arts Commission",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 34031,
+  "primary_latitude": 37.778280764000044,
+  "primary_longitude": -122.42923542199998,
+  "supervisor_district": 5,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 34031,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "0781010"
+  ],
+  "facilities": [
+   {
+    "facility_id": 93,
+    "common_name": "African American Art and Culture Complex",
+    "block_lot": "0781010",
+    "gross_sq_ft": 34031,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": "/img/us/sf/places/african-american-art-and-culture-complex.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/african-american-art-and-culture-complex.jpg",
+  "source": "live.staticflickr.com",
+  "source_url": "https://www.flickr.com/photos/195199246@N02/52032348833",
+  "license": "UNVERIFIED",
+  "license_url": "",
+  "license_verified": false,
+  "provisional": true,
+  "author": "Bing",
+  "resolved_via": "web-search",
+  "fetched_at": "2026-07-27T23:50:28.989057+00:00"
+ },
+ "summary_en": "The African American Art and Culture Complex at 762 Fulton Street is one of San Francisco's city-supported cultural centres, and the Arts Commission's papers are largely a record of its grant. In 2005 the commission's community arts committee met at the complex itself and approved its management and programming plan against a grant not to exceed $307,734 from cultural centre hotel tax funds. The sums move year to year: the 2008-09 agreement was increased by $22,373 to a total not exceeding $491,919; the following year's was approved at no more than $155,000 pending review of the plan and budget; and in 2011-12 the complex received $474,206, the second largest of the six community cultural centre grants that year. By 2014-15 the allocation was $153,589, of which $25,058 passed through to the Queer Cultural Center as a sub-grantee. The complex has also been audited: the Controller's 2006 financial review concluded that it had properly spent the $355,854 it received from the Arts Commission, but had not complied with all of the reporting requirements. The building's own permits are modest and mostly about access — $650,000 of barrier removal across three floors in 2008, following an earlier modification of its restrooms for disabled visitors.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "ART",
+   "name": "Arts Commission",
+   "total_usd": 28269663.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "ART",
+   "name": "Arts Commission",
+   "total_compensation_usd": 7043353.24,
+   "n_employees": 56,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "annualreportarts2012arts",
+   "title": "Annual report / Arts Commission of San Francisco",
+   "creator": "Arts Commission of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "African American Art and Culture Complex",
+   "ocr_excerpts": [
+    "ral Equity Initiative - Level 2 = CEI L2 $390,000 Individual Artist Commission = IAC $235,475 Native American Arts & Cultural Traditions = Native $89,150 Organizational Project Grants = OPG $491,340 TOTAL CEG Grants $1,883,331 Community Arts & Education Community Cultural Centers Grants FY 2011-2012 African American Art and Culture Complex $474,206 Asian-Pacific Islander Cultural Center $96,670 Bayview Opera House $311,658 Mission Cultural Center for Latino Art $522,923 Queer Cultural Center $96,670 SOMArts $584,357 TOTAL Cultural Centers $2,086,484 TOTAL CEG Grants $1,883,331 TOTAL CAE Grants $2,086,484 TOTAL CAE + CEG $3,969,8",
+    "Supporting Arts in Your Neighborhood, cont. Top: Annie Danger. Photo courtesy of the artist. Bottom: Francis Wong. Photo courtesy of the artist. A $6,594 grant was awarded to Queer Rebel Productions (queerrebels.com) to present three performances of Queer Rebels of the Harlem Renaissance at the African American Art and Culture Complex in June/July 2012. $25,000 will support a part-time administrator position at Fifth Stream Music (fifthstream music.org) to enable the organization to realize the many opportunities that exist in resource development and program growth, thereby advancing sustainability, organizational effectiveness and commu",
+    "\"Executive Order: For John Miyoshi”, a performance piece featuring an ensemble cast. With a grant for $8,100, Idris Ackamoor (culturalodyssey.org) will compose new music for the second album release on Disko B Records by The Pyramids. The project includes a performance at the Buriel Clay Theater at the African American Art and Culture Complex, February 6 - 12, 2013. Where Art Meets Education Local jazz artist Marcus Shelby (marcusshelby.com) was awarded $10,000 to compose a suite of music for jazz orchestra inspired by the story of \"Baby Jack Rice” by visual artist and writer Flo Oy Wong. $11,850 will support Genryu Arts (gentaiko.com)",
+    "Lives, an anti-graffiti curriculum that places trained urban artists in public schools to teach youth the difference between art and graffiti vandalism. The program is the educational component of StreetSmARTS, a joint program of the SFAC and Department of Public Works. Community Arts Resources The African American Art and Culture Complex (AAACC), located at 762 Fulton Street, strives to nurture and facilitate the empowerment of the Western Addition community through Afro-centric artistic and cultural ex- pression, mediums, education and programming. Last year, the center served 316,853 audience members and 1,000 artists. SFAC FY11-12 annua",
+    "for its 3rd Annual Tsuki Matsuri, an arts festival in Japantown that takes place October 2013; and $21,250 to support the organization as it solidifies its governance, management and operational processes. With $7,500 in grant "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.91,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.41,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/annualreportarts2012arts",
+   "deep_link": "https://archive.org/details/annualreportarts2012arts?q=African+American+Art+and+Culture+Complex",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "The Arts Commission's annual report, showing the complex's $474,206 among the six cultural centre grants."
+  },
+  {
+   "identifier": "sanfranciscoarts2020sanf",
+   "title": "San Francisco Arts Commission : African American Art and Culture Complex properly used grant funds but did not comply with all reporting requirements",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,African American Art and Culture Complex,Arts Commission of San Francisco",
+   "year": 2006,
+   "pool": "sfpl",
+   "matched_alias": "African American Art and Culture Complex",
+   "ocr_excerpts": [
+    "SAN FRANCISCO PUBLIC LIBRARY San Francisco Public Library Government Information Center San Francisco Public library 100 Larkin Street. 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO ARTS COMMISSION: African American Art and Culture Complex Properly Used Grant Funds but Did Not Comply With All Reporting Requirements DOCUMENTS DEPT. DEC 2 9 2006 SAN FRANCISCO PUBLIC LIBRARY San Francisco Public Library Government Information Genter San Francisco Public Horary 100 Mm Street. 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO ARTS COMMISSION: African American Art and Culture Complex Properly Used Grant Funds but Did Not Comply With All Reporting Requirements DOCUMENTS DEPT. | DEC 2 9 2006 SAN FRANCISCO PUBLIC LIBRARY Financial Audits December 20, 2006 Digitized by the Internet Archive in 2014 https://archive.org/details/sanfranciscoarts2020sanf CITY AND COUNTY OF SAN FRA",
+    "rington Controller Monique Zmuda Deputy Controller December 20, 2006 Richard Newirth, Director of Cultural Affairs San Francisco Arts Commission 25 Van Ness Avenue, Suite 240 San Francisco, CA 94102 Dear Mr. Newirth: The Office of the Controller presents its report on the financial review of the African American Art and Culture Complex (complex), a nonprofit organization that is one of the recipients of grant funds received from the San Francisco Arts Commission (Arts Commission) of the City and County of San Francisco (City). The complex properly spent the $355,854 it received from the Arts Commission, and generally complied with",
+    ", and programming activities. In return, the cultural centers spend the funds for the specified purposes, have active community support boards dedicated to community outreach, fundraising, and advocacy, and obtain a minimum amount of support (target revenue) from sources other than hotel tax funds. The African American Art and Culture Complex (complex), operates one of the City's cultural centers. The center is located at 762 Fulton Street, San Francisco, and has gallery spaces, a theater, a computer lab, and administrative offices. The complex nurtures its community through Afro-centric, artistic and cultural expression, mediums, education a",
+    "community support committee. • Properly accounted for and administered the grant funds. • Used the grant funds for eligible expenses. • Complied with reporting requirements. 1 Blank page intentionally inserted. AUDIT RESULTS THE COMPLEX USED GRANT FUNDS CORRECTLY BUT MADE A BILLING ERROR The African American Art and Culture Complex (complex) properly used the $355,854 in grant funds it received from the Arts Commission from July 1 , 2004, through June 30, 2005, to support operations, maintenance, and programming for the complex. The"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 13.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 21.14,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 2.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscoarts2020sanf",
+   "deep_link": "https://archive.org/details/sanfranciscoarts2020sanf?q=African+American+Art+and+Culture+Complex",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The Controller's review finding the complex spent its $355,854 properly but missed some reporting requirements."
+  },
+  {
+   "identifier": "agendacommunitya2006arts",
+   "title": "Agenda / Community Arts, Education, and Grants Committee",
+   "creator": "Arts Commission of San Francisco. Community Arts, Education, and Grants Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "African American Art and Culture Complex",
+   "ocr_excerpts": [
+    "s Commissions category in Literature, Visual Arts and Media totaling $155,450. 2. Community Arts and Education Program Director Report 3. WritersCorps Report 4. Arts Education Report 5. Cultural Center Report DOCUMENTS DEPT JUL 1 1 2005 SAN FRANCISCO PUBLIC LIBRARY Motion to approve the proposed African American Art and Culture Complex 2005-2006 Management and Programming Plan and Budget for a grant not to exceed $307,734 from Cultural Center Line Item Hotel Tax Funds, contingent upon completion of revisions. 6. New Business 7. Adjournment Revision Date 7/6/05 si Notices Explanatory documents are available for public inspection",
+    "13, 2005 Page 1 of 2 sfgov | residents \\ business | government | visitors | online services ! search Meetings >> Community Arts, Education and Grants Committee San Francisco Arts Commission September 13, 2005 COMMUNITY ARTS, EDUCATION, and GRANTS COMMITTEE Tuesday, September 13, 2005 4:30 p.m. African American Art and Culture Complex DOCUMENTS DEPT 762 Fulton Street, San Francisco SEP - 9 2005 4 Agenda 1. Cultural Equity Grants Program Director Report SAN FRANCISCO PUBLIC LIBRARY 2. Community Arts and Education Program Director Report Motion to approve the Programs in the Community (PIC) grant to Girls 2000 for $17,000 fro",
+    "visions. Motion to approve the proposed Bayview Opera House, Ruth Williams Memorial Theaters' 2006-2007 Management and Programming Plan and Budget for a grant not to exceed $276,848 , from Cultural Center Line Item Hotel Tax Funds, contingent upon completion of revisions. Motion to approve the proposed African American Art and Culture Complex 2006-2007 Management and Programming Plan and Budget for a grant not to exceed $370,734 from Cultural Center Line Item Hotel Tax Funds, contingent upon completion of revisions. Motion to approve the proposed South of Market Cultural Center's and each sub grantee 2006-2007 Management and Programming Pla",
+    "w of Management and Programming Plan and Budget. Action Motion to approve a grant to Mission Cultural Center for Latino Arts for 2009-2010, not to exceed $185,000, with remaining grant allocation approved upon review of Management and Programming Plan and Budget. Action Motion to approve a grant to African American Art and Culture Complex for 2009-2010, not to exceed $155,000, with remaining grant allocation approved upon review of Management and Programming Plan and Budget. Action Motion to approve a grant to SOMArts Cultural Center and sub-grantees for 2009-2010, not to exceed $259,000 (including $213,000 to SomArts, $23,000 to sub-gr",
+    "Arts and Education Program Direc or Repot t Di scussion Current administrative, budgetary and programni lg developments and announcements. 3. Cultural Center Report Discussion Curent administrative, budgetary and programming developments and a"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.48,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.98,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendacommunitya2006arts",
+   "deep_link": "https://archive.org/details/agendacommunitya2006arts?q=African+American+Art+and+Culture+Complex",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A grants committee meeting held at the complex, approving its programming plan and hotel-tax grant."
+  },
+  {
+   "identifier": "agendasminutesar2014arts",
+   "title": "Agendas and Minutes / Arts Commission of San Francisco",
+   "creator": "Arts Commission of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "African American Art and Culture Complex",
+   "ocr_excerpts": [
+    "or FY2014-2015 based on the prior year’s total ip://sfg ov.org /arts/ful l-commission/meeti ng /201 4-j uly- 1 4-ag enda 1/10 7/11/2014 Full Commission - July 14, 2014 - Meeting Agenda | San Francisco Arts Commission grant allocation and pending approval of the City budget, in the following amounts: African American Art and Culture Complex (“AAACC”) $153,589 (including $128,501 to AAACC and $25,058 to Queer Cultural Center as sub-grantee of AAACC) Bayview Opera House, $80,784 Mission Cultural Center for Latino Arts, $135,546 SOMArts Cultural Center, $176,528 (including $151,470 to SOMArts Cultural Center and $25,058 to Asian Pacific Island",
+    "f Modern Art Barbara Goldstein, Principal at Barbara Goldstein & Associates, Creative Placemaking and Public Art Planning Donna Graves, Consultant, Arts & Cultural Planning Susan Gray, Creative Services Manager, Los Angeles County Metropolitan Transport Authority Melorra Green, independent curator; Curator, African American Art and Culture Complex Maude Haak-Frendscho, Program Manager, Headlands Center for the Arts Stephanie Hanor, Director, Mills College Art Museum Glen Helfand, independent writer, critic, curator, and educator Dana Hemenway, artist Kendal Henry, artist; Public Art Consultant in Residence at Maribyrnong City Council Betti-Sue",
+    "o exceed $75,000 to support, promote and produce 3rd on Third in Bayview. 17. Motion to approve the proposed FY2014-2015 Management and Programming Plan and Budget for Queer Cultural Center (“QCC”)for an amount not to exceed $100,231. QCC will be named as a sub-grantee in the grant agreement to the African American Art and Culture Complex. 18. Motion to approve the following panelists to serve, as selected by staff, on SFAC review panels for the 2014- 2015 and 2015-2016 Fiscal Years: Adrian Torres, Assistant Project Manager, Cityand County of San Francisco, Office of Economic and Workforce Development Adriana Marcial, Development and",
+    "r for Asian American Media (CAAM) Maysoun Wazwaz, Program Manager, Mills College Art Museum Meaghan Mitchell, SF Beautiful, MoAD Vanguard Mel Waters, visual artist Melanie Cervantes, Race and Place (RAP) Fund Program Officer, Akonadi Foundation Melonie Green, Co-Owner, lnfin8Sync Melorra Green, Curator, African American Art and Culture Complex Mica Sigourney, Artistic Director, OX Michele Carlson, artist, writer, educator and curator Michelle Tea, Executive Director, RADAR Productions Mimi Lok, Executive Director/Editor, McSweene^s Voice of Witness Series MoyEng, Executive Director, Community Arts Stabilization Trust (CAST) Nancy Horn, artist",
+    "were approved unanimously with the recusal of Commissioner Ordenana, as follows. RESOLUTION NO. 0714-14-172: Motion to authorize advances to the following Cultural Centers for FY2014-2015 based on the prior year"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.9,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.4,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendasminutesar2014arts",
+   "deep_link": "https://archive.org/details/agendasminutesar2014arts?q=African+American+Art+and+Culture+Complex",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission papers with the 2014-15 allocations, including the sub-grant passed to the Queer Cultural Center."
+  },
+  {
+   "identifier": "agenda2008arts_1",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "African American Art and Culture Complex",
+   "ocr_excerpts": [
+    "Gen Media Distribution Coordinator at Bay Area Video Coalition Nacala Jendayi, San Francisco Foundation Multicultural Fellow in Education Elvin Padilla, Executive Director of the Tenderloin Economic Development Project Evan Bissell, visual artist 8. Motion to increase the 2008-2009 grant agreement to African American Art and Culture Complex by $22,373 for a total grant not to exceed $491,919, contingent upon a budget revision. 9. Motion to increase the 2008-2009 grant agreement to Bayview Opera House by $14,460 for a total grant not to exceed $319,61 1, contingent upon a budget revision. 10. Motion to increase the 2008-2009 grant ag",
+    "revicvs of Management and Programming Plan and Budget. 8. Motion to approve a grant to Mission Cultural Center for Latino Arts for 2009- 2010, not to exceed $185,000, with remaining grant allocation approved upon review of Management and Programming Plan and Budget. 9. Motion to approve a grant to African American Art and Culture Complex lor 2009-2010, not to exceed $155,000. with remaining grant allocation approved upon review of Management and Programming Plan and Budget. 10. Motion to approve a ^rant to SOMArts Cultural Center and sub-grantees lor 2009-2010, not to exceed $259,000 (including $213,000 to SOMArts, $23,000 to sub-grant",
+    "e consent calendar quickly and to use the remainder of the time for strategic planning. The plan calls for outreach to the broader community at a public meeting in October, with the goal of submitting the final strategic plan to the Commission by November or December. Mr. Cancel reported that the African American Art and Culture Complex (\"AAACC\") was finishing up its renovations and expected to hold a ribbon-cutting on August 13. The renovations included extensive work on the ground floor and modifications for ADA compliance. He reported that Bayview Opera House was set to begin major renovations in March, 2010, including upgrades to",
+    "aying that the community center is the Joe Lee Gym across the street, not the Opera House. He said that he has been in the community for fifty-two years, and that his wife and daughter do drama classes at the Opera House; that's what he thinks is needed. London Breed, Executive Director of the African American Art and Culture Complex (\"AAACC\"), spoke on behalf of Ms. Black, who had worked for AAACC for eight years. Ms. Breed said that Ms. Black was their bookkeeper and was promoted. She said that Ms. Black has integrity and has gone above and beyond. Ms. Breed said that BVOH deserves better, that Ms. Black understands all th",
+    "ievements over the past year. She thanked the Committee for their continued commitment to the Cultural Centers. Commissioner Young recused herself from voting on the following motion. 3. RESOLUTION NO. 0910-09-240: Motion to approve the propose"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.63,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.13,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda2008arts_1",
+   "deep_link": "https://archive.org/details/agenda2008arts_1?q=African+American+Art+and+Culture+Complex",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission motions raising the complex's grant by $22,373, and setting the following year's ceiling."
+  }
+ ],
+ "dept_shelf": [],
+ "dept_shelf_label": "Arts Commission",
+ "dept_shelf_more": 0,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 5,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

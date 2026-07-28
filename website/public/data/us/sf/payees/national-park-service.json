@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.742880+00:00",
+ "generated_at": "2026-07-28T11:43:47.718444+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -33,6 +33,76 @@
   "2026": 10080231.0
  },
  "top_departments": [],
+ "profile": {
+  "n_vouchers": 69,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 73270915.67,
+    "n_vouchers": 27
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 49799148.5,
+    "n_vouchers": 41
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 3308.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 3,
+  "categories": [
+   {
+    "code": "552210",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 67149432.56,
+    "n_vouchers": 22
+   },
+   {
+    "code": "552410",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 6110806.0,
+    "n_vouchers": 4
+   },
+   {
+    "code": "AR",
+    "label": "Accounts Receivable",
+    "spend_class": "ledger",
+    "usd": 10677.11,
+    "n_vouchers": 1
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 3308.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 9396099.0,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 9396099.0,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000031667",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.733949+00:00",
+ "generated_at": "2026-07-28T11:43:47.703662+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,178 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 3634,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 195245810.67,
+    "n_vouchers": 226
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 11425145.63,
+    "n_vouchers": 914
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 11421846.0,
+    "n_vouchers": 219
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 4596336.44,
+    "n_vouchers": 978
+   },
+   {
+    "department": "LIB Public Library",
+    "department_code": "LIB",
+    "usd": 2570264.69,
+    "n_vouchers": 405
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 2205826.62,
+    "n_vouchers": 148
+   },
+   {
+    "department": "WAR War Memorial",
+    "department_code": "WAR",
+    "usd": 1747338.0,
+    "n_vouchers": 282
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 1677936.86,
+    "n_vouchers": 56
+   }
+  ],
+  "n_departments": 21,
+  "categories": [
+   {
+    "code": "560290",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 162232269.1,
+    "n_vouchers": 90
+   },
+   {
+    "code": "528990",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 3306771.88,
+    "n_vouchers": 546
+   },
+   {
+    "code": "529990",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 2928954.76,
+    "n_vouchers": 328
+   },
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 1691790.45,
+    "n_vouchers": 74
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1502449.74,
+    "n_vouchers": 82
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 1281772.62,
+    "n_vouchers": 62
+   },
+   {
+    "code": "542810",
+    "label": "Small Tools And Intruments",
+    "spend_class": "purchase",
+    "usd": 1168265.69,
+    "n_vouchers": 31
+   },
+   {
+    "code": "529410",
+    "label": "Medical Equip Maint",
+    "spend_class": "purchase",
+    "usd": 997134.59,
+    "n_vouchers": 24
+   }
+  ],
+  "n_categories": 38,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 2122845.03,
+  "n_recent_lines": 27,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 698169.0,
+    "n_vouchers": 15
+   },
+   {
+    "department": "LIB Public Library",
+    "department_code": "LIB",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 391385.95,
+    "n_vouchers": 34
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 316998.03,
+    "n_vouchers": 55
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 168525.71,
+    "n_vouchers": 2
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 132168.3,
+    "n_vouchers": 6
+   },
+   {
+    "department": "WAR War Memorial",
+    "department_code": "WAR",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 130759.04,
+    "n_vouchers": 23
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000024497",
-   "title": "FP/FA System Eqpt Maint",
+   "title": "FP/FA System Eqpt Maintenance",
    "department": "ADM GSA - City Administrator",
    "department_code": "ADM",
    "agreed_usd": 3109980.0,
@@ -58,7 +226,7 @@
   },
   {
    "contract_no": "1000033966",
-   "title": "Maintain Equip.Software",
+   "title": "Maintain Equipment.Software",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 5809860.0,
@@ -85,7 +253,7 @@
   },
   {
    "contract_no": "1000033582",
-   "title": "SFPL Fire Sprinkler",
+   "title": "San Francisco Public Library Fire Sprinkler",
    "department": "LIB Public Library",
    "department_code": "LIB",
    "agreed_usd": 400174.0,
@@ -112,7 +280,7 @@
   },
   {
    "contract_no": "1000030529",
-   "title": "MST As-Needed Maint & Intg",
+   "title": "MST As-Needed Maintenance & Intg",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 2000000.0,
@@ -121,7 +289,7 @@
   },
   {
    "contract_no": "1000034257",
-   "title": "As-Needed PWR Opertns Sprt",
+   "title": "As-Needed Power Opertns Sprt",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 2000000.0,

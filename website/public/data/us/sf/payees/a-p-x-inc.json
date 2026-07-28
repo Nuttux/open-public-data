@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.728346+00:00",
+ "generated_at": "2026-07-28T11:43:47.693634+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,103 @@
  "top_departments": [
   "HHP Hetch Hetchy Water & Power"
  ],
+ "profile": {
+  "n_vouchers": 1574,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 643713818.15,
+    "n_vouchers": 1121
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 75372524.0,
+    "n_vouchers": 385
+   },
+   {
+    "department": "HHP CleanPowerSF",
+    "department_code": "CLP",
+    "usd": 2693409.3,
+    "n_vouchers": 68
+   }
+  ],
+  "n_departments": 3,
+  "categories": [
+   {
+    "code": "533110",
+    "label": "Power For Resale",
+    "spend_class": "purchase",
+    "usd": 396393485.94,
+    "n_vouchers": 595
+   },
+   {
+    "code": "533210",
+    "label": "Power Distrib Transmission",
+    "spend_class": "purchase",
+    "usd": 243640251.15,
+    "n_vouchers": 351
+   },
+   {
+    "code": "533220",
+    "label": "Power-Scheduling Coordinator",
+    "spend_class": "unclear",
+    "usd": 3475081.06,
+    "n_vouchers": 162
+   },
+   {
+    "code": "533120",
+    "label": "Resale Of Electricity",
+    "spend_class": "unclear",
+    "usd": 205000.0,
+    "n_vouchers": 12
+   },
+   {
+    "code": "OTH_ASSETS_CURR",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": 0.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 68650278.05,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Power For Resale",
+    "spend_class": "purchase",
+    "usd": 39609397.64,
+    "n_vouchers": 55
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Power Distrib Transmission",
+    "spend_class": "purchase",
+    "usd": 28242274.41,
+    "n_vouchers": 23
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Power-Scheduling Coordinator",
+    "spend_class": "unclear",
+    "usd": 798606.0,
+    "n_vouchers": 29
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000025516",
-   "title": "Cpsf-Schedul Coordin Ser",
+   "title": "Cpsf-Scheduling Coordination Ser",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 1261492021.8,

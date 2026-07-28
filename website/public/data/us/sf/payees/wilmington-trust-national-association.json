@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.731138+00:00",
+ "generated_at": "2026-07-28T11:43:47.698725+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -23,6 +23,92 @@
  "top_departments": [
   "GEN General City - Unallocated"
  ],
+ "profile": {
+  "n_vouchers": 34,
+  "departments": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 333162900.71,
+    "n_vouchers": 31
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 1000.0,
+    "n_vouchers": 3
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "574500",
+    "label": "Pmt To Ref Bnd Esc Agt-CitySou",
+    "spend_class": "obligation",
+    "usd": 144039475.97,
+    "n_vouchers": 1
+   },
+   {
+    "code": "571110",
+    "label": "Bond Redemption",
+    "spend_class": "obligation",
+    "usd": 135320000.0,
+    "n_vouchers": 7
+   },
+   {
+    "code": "574110",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 47681222.24,
+    "n_vouchers": 13
+   },
+   {
+    "code": "LIAB_OTHR",
+    "label": "Liabilities-Other",
+    "spend_class": "ledger",
+    "usd": 6113002.5,
+    "n_vouchers": 1
+   },
+   {
+    "code": "573110",
+    "label": "Bond Issuance Cost-Unamortized",
+    "spend_class": "obligation",
+    "usd": 7200.0,
+    "n_vouchers": 6
+   },
+   {
+    "code": "574990",
+    "label": "Debt Svc-Admin And Fiscal Chrg",
+    "spend_class": "obligation",
+    "usd": 3000.0,
+    "n_vouchers": 6
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 25330950.0,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Bond Redemption",
+    "spend_class": "obligation",
+    "usd": 18570000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 6760950.0,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

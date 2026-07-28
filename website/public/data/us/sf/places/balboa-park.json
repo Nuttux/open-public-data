@@ -1,0 +1,440 @@
+{
+ "generated_at": "2026-07-28T12:23:47.817434+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "balboa-park",
+ "name": "Balboa Park",
+ "kind": "Park",
+ "family": "park",
+ "address": "51 Havelock St",
+ "lat": 37.725515,
+ "lon": -122.444629,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "facility": {
+  "primary_name": "Balboa Park Community Pool",
+  "primary_address": "51 HAVELOCK ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94112",
+  "primary_block_lot": "3179011",
+  "primary_department_name": "Recreation And Parks",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 19925,
+  "primary_latitude": 37.72634633900003,
+  "primary_longitude": -122.44318335599996,
+  "supervisor_district": 11,
+  "n_facilities": 3,
+  "total_gross_sq_ft": 19925,
+  "n_owned": 3,
+  "n_leased": 0,
+  "apn_list": [
+   "3179011"
+  ],
+  "facilities": [
+   {
+    "facility_id": 155,
+    "common_name": "Balboa Park Community Pool",
+    "block_lot": "3179011",
+    "gross_sq_ft": 19925,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 156,
+    "common_name": "Balboa Park East Bathrooms",
+    "block_lot": "3179011",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 157,
+    "common_name": "Balboa Park West Bathrooms",
+    "block_lot": "3179011",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 1,
+  "measure_totals": {},
+  "bond_programs": [
+   "Clean and Safe Neighborhood Parks"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "RP Balboa Park Pool Bldg",
+    "bond_program": "Clean and Safe Neighborhood Parks",
+    "component": "Neighborhood Parks",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Balboa Park"
+   }
+  ],
+  "payees": [
+   {
+    "vendor": "MCGINNIS CHEN ASSOCIATES INC",
+    "paid_usd": 8693.75,
+    "n_contracts": 1,
+    "first_fiscal_year": 2021,
+    "last_fiscal_year": 2021
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 8693.75
+ },
+ "photo": "/img/us/sf/places/balboa-park.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/balboa-park.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Balboa_Park_Playground_(4),_Balboa_Park,_San_Francisco_CA,_Jan_2021.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Bartash",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-28T12:06:04.522869+00:00"
+ },
+ "summary_en": "Almost everything filed under this name is about the neighbourhood rather than the park. The Balboa Park Station Area Plan, adopted by the Board of Supervisors in April 2009, covers roughly 210 acres along Geneva, Ocean and San Jose Avenues, and the park is one part of it; the Board went so far as to amend the Administrative Code to establish a monitoring programme for reviewing the plan's effectiveness. The 2002 public review draft is unusually candid about why so much planning landed here: \"the last fifty years here are a story of a community besieged by projects serving larger issues at the expense of neighborhood values\". Several of those projects reached the park itself. The 1982 environmental statement for the Muni J Line connection weighed an alignment along San Jose Avenue that would traverse the entire length of Balboa Park, and noted it would offer access along the park's whole eastern boundary and especially to the public swimming pool; the 1998 report on demolishing the Geneva Office Building turned on whether there was room for a boarding platform beside the Muni and BART stations at the park's edge. A 2009 pedestrian and bicycle connection study, funded by a state Safe Routes to Transit grant, set out to stitch the crossings back together. The park's own capital work is recorded once, as a bond project for the pool building under the Clean and Safe Neighborhood Parks programme.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "balboaparkstatio2008sanf",
+   "title": "Balboa Park station area plan : comments and response on DEIR",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park",
+   "ocr_excerpts": [
+    "5/S San Francisco Public Library Government Information Center San Francisco Public Library 100 Larkin Street, 5th floor San Francisco, CA 941Q2 REFERENCE BOOK Not to be taken from the Library Digitized by the Internet Archive in 2014 https://archive.org/details/balboaparkstatio2008sanf BALBOA PARK STATION AREA PLAN COMMENTS AND RESPONSES ON DEIR San Francisco Planning Department Case No. 2004.1059E State Clearinghouse No. 2006072114 Draft EIR Publication Date: Draft EIR Public Hearing Date: Draft EIR Public Comment Period: Final EIR Certification Date: September 21, 2007 October 25, 2007",
+    "ly blank] 3 1223 08514 6083 SAN FRANCISCO PLANNING DEPARTMENT October 30, 2008 To: Members of the Planning Commission and Interested Parties From: Bill Wycko, Acting Environmental Review Officer Re: Attached Comments and Responses on Draft Environmental Impact Report Case No. 2004.1059E: Balboa Park Station Area Plan The attached Comments and Responses document, responding to comments made on the Draft Environmental Impact Report (DEIR) for the above referenced project, is presented for your information. This document has been provided in PDF format on the Planning Department website and is avail",
+    "ie Poling at (415) 575-9072 or jeanie.poling@sfgov.org, or Rick Cooper at (415) 575-9027 or rick.cooper@sfgov.org. 1650 Mission St. Suite 400 San Francisco, CA 94103-2479 Reception: 415.558.6378 Fax: 415.558.6409 Planning Information: 415.558.6377 [Page left intentionally blank] TABLE OF CONTENTS Balboa Park Station Area Plan EIR Comments and Responses Page A. INTRODUCTION C&R-3 B. LIST OF PERSONS COMMENTING C&R-4 C. COMMENTS AND RESPONSES C&R -5 1 . General Comments C&R-5 2. Project Description C&R-8 3. Land Use, Plans, and Policies C&R-23 4. Population, Housing, and Employment C&R-24 5. Transpo",
+    "n/Lee Intersection, Southbound Approach, Weekday PM Peak Hour C&R-57 C&R 3 Comparison of Daily BART Fares and Parking Fees from Peninsula Points C&R-7 1 C&R 4 Ground-Borne Vibration (GBV) and Ground-Borne Noise (GBN) Impact Criteria for General Assessment C&R-96 Case No. 2004.1059E C&R-i Balboa Park Station Area Plan [Page left intentionally blank] Case No. 2004.1059E C&R-ii Balboa Park Station Area Plan COMMENTS AND RESPONSES A. INTRODUCTION This document contains public comments received on the Draft Environmental Impact Report (\"Draft EIR\" or \"DEIR\") prepared for the proposed Balboa Park Station Area Plan and responses to those comments. Also included in this document are staff-initiated text changes. Section B contains a list of all persons and organizations who submitted written comments on the Draft EIR and who testified at the public hearing on the Draft EIR held on October 25",
+    "ing and Research Technical Advisory is in Attachment 2. These comments and responses will be incorporat"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.29,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.79,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/balboaparkstatio2008sanf",
+   "deep_link": "https://archive.org/details/balboaparkstatio2008sanf?q=Balboa+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The planning department's comments and responses on the area plan's draft environmental report."
+  },
+  {
+   "identifier": "munijlineconnect1982unit",
+   "title": "Muni J Line connection project, San Francisco, California : draft environmental impact statement",
+   "creator": "United States. Urban Mass Transportation Administration,San Francisco (Calif.). Dept. of City Planning",
+   "year": 1982,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park",
+   "ocr_excerpts": [
+    "ecifically the impact on the view from the second story of the streetfront structures would be less than for the other two alignments. The San Jose Avenue and the Monterey Boulevard Alignments both would pass through the Bernal Cut. The San Jose Avenue Alignment would traverse the entire length of Balboa Park, which would affect the view from the houses on the side of the street opposite the park. In the City College loop section of the Monterey Boulevard Alignment, the permanent physical structures (support poles and overhead wires) would have to be above ground; except along Gennessee Street, all other",
+    "the drainage system), mitigation measures could make the net impacts practically the same. 13. Historical and Archaeological Sites None of the alignments would affect any designated landmark or known archaeological sight. 14. Park and Recreation Lands All three alignment potentially increase access to Balboa Park and neighborhood mini- parks and playgrounds near each respective alignment. The San Jose Alignment would offer access along the entire eastern boundary of Balboa Park and especially to the public swimming pool. D. MITIGATION MEASURES If the project is constructed and becomes operational the following mitigation measures will be done. I. Land Use and Urban Design Scheduling and methods of construction will be designed to minimize interference with access to prope",
+    "oil loss and impart limited stability for earthquake-induced landsliding. An inspection by a geotechnical engineer of existing landslide areas will be made to assess the need for restablizing any recent landslides along the selected alignment, particularly in the designated landslide hazard zone north of Balboa Park. Should signs of structural weakness in the Stanford Heights Reservoir appear, Muni officials will be alerted through the Emergency Plan for the City so that precautions can be taken. 8. Hydrology Siltation of the City storm drain system will be minimized by screening drain inlets. Any surfaces ex",
+    "the vehicles known as \"pulling out\" and \"pulling in.\" Muni has determined that the J Line Connection project is needed for the following reasons: I. Revenue service would provide a connection linking the Mission District with the southern portion of the City. If J line service were extended past Balboa Park over the M line as proposed, J line riders could continue not only to Glen Park and Balboa Park, but also to San Francisco State University and the Stonestown Shopping Center. 1 ^Source: A. A. A. / Regional Location North K ▲ EXISTING STREETCAR ROUTES BART STATION MUNI METRO CAR BARN MUNI METRO STATIONS 500 1000 Scale Feet Figure No. 1 2 I. Purpose of Need for Actio",
+    "and to the Muni 5-year (1980-1985) Plan. Any of the proposed routes would marginally help to reduce dependence on "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.62,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.12,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/munijlineconnect1982unit",
+   "deep_link": "https://archive.org/details/munijlineconnect1982unit?q=Balboa+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A transit environmental statement weighing an alignment along the park's eastern boundary and its pool."
+  },
+  {
+   "identifier": "genevaofficebuil1419sanf",
+   "title": "Geneva Office Building and power house demolition project : draft environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park",
+   "ocr_excerpts": [
+    "ot meet MUNI's goal for increasing operational and storage capacity at the site. MUNI has rejected the No Project Alternative for these reasons. In addition, MUNI's goal to improve transfer ability for patrons between MUNI lines, as well as provide closer key stop access to the BART and MUNI Metro Balboa Park Stations would not be met. The presence of Geneva Office Building does not permit enough space to build even a minimum-width boarding platform, without a key stop, at the proposed location. The space between the safety fencing along the west face of the Geneva Building and the northbound tracks is",
+    "alternative was also rejected by the sponsor because it would not meet MUNI's goal for increasing operational and storage capacity at the site. In addition, MUNI's goal to improve transfer ability for patrons between MUNI lines, as well as provide closer key stop access to the BART and MUNI Metro Balboa Park Stations would not be met. The presence of the Geneva Office Building, including the concrete stairways along the west face of the building, and required street furniture (e.g., street signs, telephone poles, traffic signals), would not permit MUNI has since hired an engineering consultant team who",
+    "project sponsor has rejected this alternative because it would not meet MUNI's goal for increasing operational and storage capacity at the site. In addition, MUNI's goal to improve transfer ability for patrons between MUNI lines, as well as provide closer key stop access to the BART and MUNI Metro Balboa Park Stations would not be met. The presence of Geneva Office Building, including the concrete stairways along the west face of the building, and required street furniture (e.g., street signs, telephone poles, traffic signals), would not permit enough space to build even a minimum-width boarding platform, w",
+    "nts. This alternative was also rejected because it would not fully meet MUNI's goal for increasing operational and storage capacity at the site. In addition, MUNI's goal to improve transfer ability for patrons between MUNI lines, as well as provide closer key stop access to the BART and MUNI Metro Balboa Park Stations would not be met. The presence of the Geneva Office Building, including the concrete stairways along the west face of the building, and required street furniture (e.g., street signs, telephone poles, traffic signals), would not permit enough space to build even a minimum-width boarding platfor",
+    "ved transfer point for patrons between MUNI lines. In addition, the project sponsor seeks to provide a Geneva Office Building and Power House Demolition Project Draft EIR 17 97.345E n. PROJECT DESCRIPTION northbound key stop that is closer to the Bay Area Rapid Transit (BART) and MUNI Metro Balboa Park Station entrances than the existing key stop locat"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.29,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.79,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/genevaofficebuil1419sanf",
+   "deep_link": "https://archive.org/details/genevaofficebuil1419sanf?q=Balboa+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A demolition environmental report on clearing room for boarding platforms at the park's transit stations."
+  },
+  {
+   "identifier": "balboaparkstatio2002sanf",
+   "title": "Balboa Park station area plan : public review draft",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park",
+   "ocr_excerpts": [
+    "SfN FRANCISCO PUBLIC LIBRARY 223 06333 5922 Public Review Draft Balboa Park Station Area Plan San Francisco Planning Department As Part of the Better Neighborhoods Program October 2002 DOCUMENTS DEPT. JAN 3 1 2003 SAN FRANCISCO PUBLIC LIBRARY San Francisco Planning Department REF 711. 4097 B1865d BETTER Digitized by the Internet Archive in 2014 https://archive.org/details/balboaparkstatio2002sanf Public Review Draft Balboa Park Station Area Plan Prepared with and for the Citizens of Balboa Park by the San Francisco Planning Department As Part of the Better Neighborhoods Program October 2002 This plan is dedicated to the people in the neighborhoods around the Balboa Park Station. It would not have been possible without your selfless interest, tireless work, perseverance, and the belief thatjou can have a better neighborhood. We are bringing the plan back to you for more consider- ation, review, comment, and discussion, in the hopes of crafting a coherent set of policies that will offer, in the end, the best possible solutions among many differing interests. Imagine... the transformation of Balboa Park Station from a bleak and seemingly forgotten part of San Francisco into an active, interesting place — an efficient transit node and vital hub for the neighborhoods surrounding it. Imagine more people living around the transit hub and along Geneva, Ocean and San Jose Avenues. Housing affordable to pe",
+    "ed, and the neighborhoods have gained the vital community heart for which they have waited so long. Now neighbors can walk to shops, if they choose, to take care of daily needs. Imagine a better neighborhood. This is the vision that emerged from two years of discussions with the residents of the Balboa Park Station Area about the future of their community. The last fifty years here are a story of a community besieged by projects serving larger issues at the expense of neighborhood values. The neighborhood is at a unique place in its history. Largely because of its people, we are working together to remedy that history. With the Better Neighbor- hoods Program, the city, BART, and others are ready to reinvest in this place as a vibrant urban neighborhood that is an essential part of the city. This plan presents the ideas that can create this new future. 3 1223 06333 5922 Balboa Park Station Area Plan Draft for Public Review | October 2002 Table of Contents Contents The Better Neighborhoods Program 1 Section 1: Overview 3 Why Plan a Better Neighborhood Here 5 A Walk Through the Station Area of the Future 7 Realizing the Vision: Eleven Key Strategies 10 How to Use",
+    "re perhaps felt most acutely but where it makes most sense to find acceptable ways to build much-needed housing. Discus- sions with these communities uncovered deep issues that need to be addressed if th"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.3,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.8,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/balboaparkstatio2002sanf",
+   "deep_link": "https://archive.org/details/balboaparkstatio2002sanf?q=Balboa+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The 2002 draft area plan, describing a neighbourhood besieged by projects serving larger issues."
+  },
+  {
+   "identifier": "balboaparkstatio2009sanf",
+   "title": "Balboa Park Station pedestrian and bicycle connection project : executive summary",
+   "creator": "San Francisco (Calif.). Municipal Transportation Agency,California. Metropolitan Transportation Commission,Bay Area Toll Authority (Calif.),Safe Routes to Transit",
+   "year": 2009,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park",
+   "ocr_excerpts": [
+    "Balboa Park Station Pedestrian and Bicycle Connection Project This study was made possible ttirough a Safe Routes to Transit (SR2T) grant. The funding for SR2T come from the State of California Regional Measure 2, and /^3agp^PRNlifi(W^ byTransForm and the East Bay Bicycle Coalition. DOCUMENTS DEPT NOV 1 5 2010",
+    "st for Public Land: Meghan Pecault Consultant Team Project Manager; William Lieberman, AlCP, Jacobs Engineering Deputy Project Manager: Matthew Ridgway, ACIP, Fehr & Peers Fehr & Peers: Matt Haynes, AlCP and Brooke Dubose Jacobs Engineering: Jihyoung Kim CHS Consulting: Chi-Hsin Shao and Byung Lee The Balboa Park Station Pedestrian and Bicycle Connection Project Technical Report, including an accessible version, are available on the SFMTA website at www.sfmta.com. If you would like a copy of the Technical Report please contact Ms. Kim Walton, Study Project Manager. Via E-Mail: Kim.Walton(5)sfmta.com Or in writing at: Kim Walton SFMTA - Sustainable Streets Division One South Van Ness, 7th Floor San Francisco, CA 94103 3 1223 09320 9667 1 Balboa Park Station Pedestrian and Bicycle Connection Project Executive Summary Background The Balboa Park neighborhood in southern San Francisco is centered around an important City park - Balboa Park. It is the location of one of the City's main streetcar depots — the Geneva Division. As a result, the area developed into a major transportation hub in the early years of the twentieth century. The number of transit users intensified in later years when BART (Bay Area Rapid Transit) constructed a transit station near Balboa Park and Muni (San Francisco Municipal Railway) opened a new vehicle maintenance facility (Curtis E. Green Light Rail Facility) adjacent to the BART station. As a result, Balboa Park has become a crossroads of sorts with a heavily traveled terminal, where BART, light rail and bus lines converge. Passengers transfer from one system to another, while autos and shuttles are constantly arriving to pick up and drop off passengers. Meanwhile, autos travel at relatively high speeds on",
+    "oposed possible improvements. Some of these seek to transform the area from one that people pass through to one that is a destination in itself. The objective of such studies is placemaking: that is, creating living, shopping, and work places within an easy walk of the various station facilities in Balboa Park. Central to these visions is the improvement of conditions for pedestrians and bicyclists, which is the focus of the Balboa Park Station Pedestrian and Bicycle Connection Project. Goals for this project include the following: • To address activities along the borders of the Balboa Park Station area • To make the area safer for pedestrians, bicyclists and motorists • To improve access to transportation services for p"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 12.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 10.91,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/balboaparkstatio2009sanf",
+   "deep_link": "https://archive.org/details/balboaparkstatio2009sanf?q=Balboa+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false,
+   "gloss": "A grant-funded study of pedestrian and bicycle connections across the station area."
+  },
+  {
+   "identifier": "ordinance2009sanf_1",
+   "title": "Ordinance",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park",
+   "ocr_excerpts": [
+    "Ordinance was FINALLY PASSED on April 7, 2009 by the Board of Supervisors of the City and County of San Francisco. File No. 090261 / nils Urporl rrmti'dnt 10:31 AM on 4,1!/09 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 10 !1 !2 !3 !4 !5 FILE NO. 090179 ORDINANCE NO [Balboa Park Station Area Plan - monitoring program.] Ordinance amending the Administrative Code Chapter 10E to establish the Balboa Park Station Area Plan IVIonitoring Program for purposes of reviewing the effectiveness of the Balboa Park Station Area Plan and implementation of specified improvements: and adopting environmental findings. Be it ordained by the People of the City and County of San Francisco: Section 1. Findings. (a) In accordance with the actions contemplated herein, this Board adopted Ordinance No. 60-09 tha",
+    "esources Code sections 21000 et seq.). A copy of said Ordinance is on file with the Clerk of the Board of Supervisors in File No, 090180 and is incorporated by reference herein. (b) The Board of Supervisors acknowledges Planning Commission Resolution No. 17779, which recommended adoption of the Balboa Park Station Area Plan implementation and monitoring program. A copy of said Planning Commission Resolution is on file with the Clerk of the Board of Supervisors in File No. Q90179 Section 2. The San Francisco Administrative Code is hereby amended by amending Chapter 10E as follows: CHAPTER 10E: NEIGHB",
+    "pose of providing the reports. City records shall be used wherever possible. Outside sources shall be used when data from such sources are reliable, readily available and necessary in order to supplement City records. Planning Department BOARD OF SUPERVISORS Page 3 1/22/2009 n:\\landuse\\jmalamut\\plngdpt\\balboa park\\baRx)aadminmonitoringv2.doc {e3) Categories of Information. The following categories of information shall be included: Commercial Space and Employment. {4-A) The amount of office space \"Completed,\" \"Approved,\" and \"Under Construction\" during the preceding year, both within the C-3 Districts and elsewhere",
+    "constructed, demolished, or converted to other uses. {StD Jobs/Housing Linkage Program. A summary of the operation of the Jobs/Housing Linkage Program (formerly the Office Affordable Housing Production Program) and the Planning Department BOARD OF SUPERVISORS Page 4 1/22/2009 n:\\landuse\\jmalamul\\plngdpl\\balboa park\\balboaadminmonitoringv2.doc 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 ?0 ?1 ^2 >3 !4 >5 Housing Affordability Fund, identifying the number and income mix of units constructed or assisted with these monies. Transportation. {91) Parking Inventory. An estimate of the net increment of",
+    "eve the />Plan goals. Successful realization of the ^Plan's goals requires a coordinated implementation of land use controls, community and public service delivery, key "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.97,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.47,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/ordinance2009sanf_1",
+   "deep_link": "https://archive.org/details/ordinance2009sanf_1?q=Balboa+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false,
+   "gloss": "The 2009 ordinance establishing a monitoring programme for the adopted station area plan."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  }
+ ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 6,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

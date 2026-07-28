@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.758258+00:00",
+ "generated_at": "2026-07-28T12:23:47.771911+00:00",
  "slug": "de-young-museum",
  "name": "de Young Museum",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -42,8 +42,13 @@
    "url": "https://archive.org/details/newdeyoungmuseum2020sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2020sanf?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The revised final environmental report, sent back to Planning by the Board of Supervisors in 2001 to correct errors in the shadow and visual analysis of the proposed tower's height."
   },
   {
    "identifier": "newdeyoungmuseum2220sanf",
@@ -83,8 +88,56 @@
    "url": "https://archive.org/details/newdeyoungmuseum2220sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2220sanf?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "Comments and responses on the draft environmental impact report for the new de Young, issued by the Environmental Review Officer in November 2000."
+  },
+  {
+   "identifier": "mhdeyoungmemoria1119fine",
+   "title": "M.H. de Young Memorial Museum : visitorship, fiscal benefit and economic impact analysis",
+   "creator": "Fine Arts Museums of San Francisco,Sedway Group (Firm)",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "de Young Museum",
+   "ocr_excerpts": [
+    "DOCUMENTS DEPT. SEP 1 5 1997 SAN FRANCISCO PUBLIC LIBRARY M.H. de YOUNG MEMORIAL MUSEUM VISITORSHIP, FISCAL BENEFIT AND ECONOMIC IMPACT ANALYSIS Presented by: Sedway Group Presented to: The Fine Arts Museums of San Francisco September 11, 1997 DOCUMENTS DEPT. SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY 3 1223 04631 3863 September 11, 1997 Mr. Harry S. Parker III Director of Museums The Fine Arts Museums of San Francisco 233 Post Street San Francisco, CA 94108-5003 Re: M.H. de Young Memorial Museum Visitorship, Fiscal Benefit and Economic Impact Study Dear Mr. Parker: Sedway Group is pleased to present the following study regarding the visitorship, fiscal benefit and economic impact of the M.H. de Young Memorial Museum (\"de Young Museum\" or \"Museum\"). The purpose of this study is to compare the Museum's present Golden Gate Park location with a downtown location. The following report includes an introduction, followed by chapters individually exploring visitorship, fiscal benefit and economic impact. The conclusions of this report are",
+    "nded to the end of this report. We are pleased to have provided assistance to The Fine Arts Museums of San Francisco regarding this very important project. Sincerely, Mary A. Smitheram-Sheldon Manager Principal LMS:MASS/nam Enclosure C:\\WPDOCS\\PROJECTS\\I8697\\18697 R01 REF 711.57 M105 M.H. de Young Memorial Museum : visitorship, 1997 . 3 1223 04631 3863 S.F. PUBLIC LIBRARY TABLE OF CONTENTS L INTRODUCTION 1 n. MUSEUM VISITORSHIP 2 Importance and Components of Visitorship 2 Visitorship Projection Methodology 3 Existing M.H. de Young Memorial Museum Visitorship 4 Visitorship Factors and Relative Importance 9 Site Evaluations 13 Estimated New Museum Visitorship 16 m. FISCAL BENEFIT AND MUSEUM REVENUES 19 Approach 19 Sales Tax Revenues to San Francisco 20 Municipal Parking Tax Revenues To San Francisco 24 Total Tax Revenues to San Francisco 26 Muni Ridership and Fare Revenues 26 Revenues Accruing to the FAMSF 29 IV. ECONOMIC IMPACTS 31 The Arts in San Francisco 31 Case Studies 32 Economic Impacts of the de Young Museum 33 Special Exhibitions and Economic Impacts 35 Economic Impacts Conclusion 36 V. SUMMARY OF FINDINGS 37 Museum Visitorship 37 Fiscal Benefit to San Francisco and Revenues to FAMSF 37 Economic Impacts 38 Cumulative Findings 38 ASSUMPTIONS AND GENERAL LIMITING CONDITIONS 39 Digitized by the Internet Archive in 2014 https://archive.org/details/mhdeyoungmemoria1 1 1 9f ine LIST OF EXHIBITS Exhibit 1 : M.H. de Young Memorial Museum Annual Attendance - 1990-1997 5 Exhibit 2: M.H. de Young Memorial Museum Attendance Statistics and Visitor Information . . 7 Exhibit 3: M.H. de Young Memorial Museum Annual Attendance - Highest Attendance Days 10 Exhibit 4: M.H. "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.55,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.55,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/mhdeyoungmemoria1119fine",
+   "deep_link": "https://archive.org/details/mhdeyoungmemoria1119fine?q=de+Young+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A 1997 consultant's analysis for the Fine Arts Museums, projecting how many people a new de Young would draw and what it would return to the city in sales and parking tax."
   },
   {
    "identifier": "newdeyoungsicmus2220sanf",
@@ -123,8 +176,56 @@
    "url": "https://archive.org/details/newdeyoungsicmus2220sanf",
    "deep_link": "https://archive.org/details/newdeyoungsicmus2220sanf?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The 2000 draft environmental report for demolishing and rebuilding the museum — eight buildings totalling about 230,000 sq ft, with the Asian Art Museum moving to the Civic Center."
+  },
+  {
+   "identifier": "mhdeyoungmemori1997sedw_0",
+   "title": "M.H. de Young Memorial Museum : site selection study",
+   "creator": "Sedway Consulting (Firm),Fine Arts Museums of San Francisco,ROMA Design Group",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "de Young",
+   "ocr_excerpts": [
+    "li DOCUMENTS OErr. SAN FRANCISCO PUBLIC LIBRARY l^iFERENCE BOOK Not lo be taken from the Library DOCUMENTS DEPARTMENT Digitized by the Internet Archive in 2014 https://archive.org/details/mhdeyoungmemori1997sedw_0 M,H. de Young Memorial Museum Site Selection Study APPENDICES REF 711.57 M104 V. 2 DOCUMENTS DEP' JUM 0 9 1997 SAN FRANCISCO PUBLIC LiBRAFl / Prepared for The Fine Arts Museums of San Francisco by Sedway Consulting^ ROMA Design Group and Associated Consultants June 1997 SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not lo be taken from the Library SAN FRANCISCO PUBLIC LIBRARY 3 1223 04625 2277 M^H* de Young Memorial Museum Site Selection Study APPENDICES Prepared for The Fine Arts Museums of San Francisco b Sedway Consulting in association with ROMA Design Groups Rutherford & Chekene Sedway Groups Swinerton & Walberg^ Wilber Smith Associates June 1997 REF 711.57 M104 V. 2 M.H. de Young Memorial Museum : site selection 1997 ] 3 1223 04625 2277 APPENDICES Table of Contents Appendix A: De Young Museum Urban Building and Pavilion Concept Model Programs Appendix B: Seismic, Structural and Civil Engineering Evaluations Appendix C: Planning, Urban Design and Institutional Evaluations Appendix D: Real Estate and Financial Evaluations Appendix E: Construction and Building Cost Evaluations Appendix F: Transportation and Circtolation Evaluations APPENDIX A De Young Museum Urban Building and Pavilion Concept Model Programs de Young Museum Urban Building Concept Model 4/4/97 Urban Building Concept Vertical Plan of 1 Basement & 4 Levels Footprint Area 60,000 s.f. Gross Building Area 250,000 s.f. Level 4 41,875 s.f. gross /\\merican & 20th Century Galleries 26,000 sf Flexible Exhibition Space 3,000 sf Event Area 3,000 sf Restrooms",
+    "ce 5,500 sf Event Services & Storage 2,000 sf Museum Store 4,100 sf Loading Dock & Security 5,000 sf Storage 500 sf Basement Level Exhibition Preparation 10,000 sf 62,375 s.f. gross Art Storage 15,000 sf Engineering & Custodial 2,900 sf Mechanical 20,000 sf Plant Storage 2,000 sf Appendix A: De Young Museum Urban Building and Pavilion Concept Model Programs I de Young Museum Urban Building Concept Program 4/2/97 Museum Functions Program Basement Area/s.f. Level Level 1 Level 2 Level 3 Level 4 Temporary Exhibition American & 20th Century Africa, Oceania, America Textiles Achenbach Flexible Exhibition 12,000 26,000 10,000 5,000 1.000 nnn D.VJUU 12.000 10,000 5",
+    "iictuui 1 odiiciico Coat Check/Restrooms Event Areas Restaurant/Food Serv. Event Services/Storage Museum Store D.OOO 1,500 4.000 7.500 5.500 2,000 4,100 4,000 3,000 4,000 5.500 2,000 4.100 1,000 3000 Totals 26.500 0 24.100 0 0 4,000 2 M.H. (k Young Memorial Museum Site Selection Study de Young Museum Urban Building Concept Program 4/2/97 Museum Functions Program Basement Area/s.f"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.51,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 2.01,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/mhdeyoungmemori1997sedw_0",
+   "deep_link": "https://archive.org/details/mhdeyoungmemori1997sedw_0?q=de+Young",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": false
   },
   {
    "identifier": "annualreport1970fine",
@@ -164,49 +265,11 @@
    "url": "https://archive.org/details/annualreport1970fine",
    "deep_link": "https://archive.org/details/annualreport1970fine?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "minutesagendas2003fine",
-   "title": "Minutes and Agendas",
-   "creator": "Fine Arts Museums of San Francisco. Board of Trustees",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "de Young Museum",
-   "ocr_excerpts": [
-    "Appendix .A - Draft Minutes) C. Report on 2002 Year-End Gifts of Works of .Art - J. .Alec Merriam. Chair, Acquisitions Committee of The Fine .Arts Museums Foundation (See Appendix B - 2002 Year-End Gifts of Works of .Art Report ) D. Report on Recent Developments Regarding the Plans to Build the New de Young Museum in Golden Gate Park 1. Consideration and Possible .Action to .Approve a Letter to the San Francisco Planning Commission on the Draft Environmental Impact Report for the Concourse .Authority Underground Parking Facilitv' (To Be Distributed .At Meeting) 2. Consideration and Possible .Action to .Adopt a R",
-    "“old” Main Library in the Civic Center as the future home of the Asian Art Museum; and WHEREAS, The new Asian Art Museum, designed by renovmed Italian architect Gae Aulenti, will open to the public in Spring 2003; now, therefore, be it RESOLVED, That after residing side by side in the former de Young Museum building for more than thirty-five years, the Fine Arts Museums bids a fond farewell to the Asian Art Museum; and, be it FURTHER RESOLVED, That the Board of Trustees and staff of the Fine Arts Museums of San Francisco do hereby congratulate the Asian Art Museum of San Francisco on accomplishing t",
-    "ation of I'he l ine Arts Museums During the Period July 1 through September 30, 2002 WHEREAS, The Corporation of The Fine Arts Museums is a 50 1(e)(3) not-for-profit corporation that exists to support the activities of the l ine Arts Museums of San Francisco and to serve as the developer of the New de Young Museum; now, therefore, be it RESOLVED, That the Board of Trustees of the Fine Arts Museums of San Francisco does hereby acknowledge with gratitude funding in the amount of $4,722,290 expended by the Corporation of The Fine Arts Museums for operations and $2,81 1,676 for the New de Young Museum in Golden Gate Park during the period July 1 through September 30, 2002. D. Consideration and Possible Action to Adopt a Resolution Acknowledging Bequests Received by the Fine Arts Museums of San Francisco During the Period July 1 through September 30, 2002 Action RESOLVED, That the Board of Trus",
-    "“old” Main Library in the Civic Center as the liiturc home of the Asian Art Museum; and WHEREAS, The new Asian Art Museum, designed by renowned Italian architect Gae Aulenti, will open to the public in Spring 2003; now, therefore, be it RESOLVED, That after residing side by side in the former de Young Museum building for more than thirty-five years, the Fine Arts Museums bids a fond farewell to the Asian Art Museum; and, be it FURTHER RESOLVED, That the Board of Trustees and staff of the Fine Arts Museums of San Francisco do hereby congratulate the Asian Art Museum of San Francisco on accomplishing t",
-    "tion ol' 1 he l ine Arts Museums During the Period July 1 through "
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 6.21,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.71,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": -1.25,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/minutesagendas2003fine",
-   "deep_link": "https://archive.org/details/minutesagendas2003fine?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
    "salient": false
   },
   {
@@ -246,85 +309,59 @@
    "url": "https://archive.org/details/minutesorderofbu1994corp",
    "deep_link": "https://archive.org/details/minutesorderofbu1994corp?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": false
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "1994 minutes of the Corporation of the Fine Arts Museums, the fundraising body behind the de Young and the Legion of Honor."
   },
   {
-   "identifier": "mhdeyoungmemori1997sedw_0",
-   "title": "M.H. de Young Memorial Museum : site selection study",
-   "creator": "Sedway Consulting (Firm),Fine Arts Museums of San Francisco,ROMA Design Group",
-   "year": 1997,
-   "pool": "sfpl",
-   "matched_alias": "de Young",
-   "ocr_excerpts": [
-    "li DOCUMENTS OErr. SAN FRANCISCO PUBLIC LIBRARY l^iFERENCE BOOK Not lo be taken from the Library DOCUMENTS DEPARTMENT Digitized by the Internet Archive in 2014 https://archive.org/details/mhdeyoungmemori1997sedw_0 M,H. de Young Memorial Museum Site Selection Study APPENDICES REF 711.57 M104 V. 2 DOCUMENTS DEP' JUM 0 9 1997 SAN FRANCISCO PUBLIC LiBRAFl / Prepared for The Fine Arts Museums of San Francisco by Sedway Consulting^ ROMA Design Group and Associated Consultants June 1997 SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not lo be taken from the Library SAN FRANCISCO PUBLIC LIBRARY 3 1223 04625 2277 M^H* de Young Memorial Museum Site Selection Study APPENDICES Prepared for The Fine Arts Museums of San Francisco b Sedway Consulting in association with ROMA Design Groups Rutherford & Chekene Sedway Groups Swinerton & Walberg^ Wilber Smith Associates June 1997 REF 711.57 M104 V. 2 M.H. de Young Memorial Museum : site selection 1997 ] 3 1223 04625 2277 APPENDICES Table of Contents Appendix A: De Young Museum Urban Building and Pavilion Concept Model Programs Appendix B: Seismic, Structural and Civil Engineering Evaluations Appendix C: Planning, Urban Design and Institutional Evaluations Appendix D: Real Estate and Financial Evaluations Appendix E: Construction and Building Cost Evaluations Appendix F: Transportation and Circtolation Evaluations APPENDIX A De Young Museum Urban Building and Pavilion Concept Model Programs de Young Museum Urban Building Concept Model 4/4/97 Urban Building Concept Vertical Plan of 1 Basement & 4 Levels Footprint Area 60,000 s.f. Gross Building Area 250,000 s.f. Level 4 41,875 s.f. gross /\\merican & 20th Century Galleries 26,000 sf Flexible Exhibition Space 3,000 sf Event Area 3,000 sf Restrooms",
-    "ce 5,500 sf Event Services & Storage 2,000 sf Museum Store 4,100 sf Loading Dock & Security 5,000 sf Storage 500 sf Basement Level Exhibition Preparation 10,000 sf 62,375 s.f. gross Art Storage 15,000 sf Engineering & Custodial 2,900 sf Mechanical 20,000 sf Plant Storage 2,000 sf Appendix A: De Young Museum Urban Building and Pavilion Concept Model Programs I de Young Museum Urban Building Concept Program 4/2/97 Museum Functions Program Basement Area/s.f. Level Level 1 Level 2 Level 3 Level 4 Temporary Exhibition American & 20th Century Africa, Oceania, America Textiles Achenbach Flexible Exhibition 12,000 26,000 10,000 5,000 1.000 nnn D.VJUU 12.000 10,000 5",
-    "iictuui 1 odiiciico Coat Check/Restrooms Event Areas Restaurant/Food Serv. Event Services/Storage Museum Store D.OOO 1,500 4.000 7.500 5.500 2,000 4,100 4,000 3,000 4,000 5.500 2,000 4.100 1,000 3000 Totals 26.500 0 24.100 0 0 4,000 2 M.H. (k Young Memorial Museum Site Selection Study de Young Museum Urban Building Concept Program 4/2/97 Museum Functions Program Basement Area/s.f"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 10.51,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 2.01,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/mhdeyoungmemori1997sedw_0",
-   "deep_link": "https://archive.org/details/mhdeyoungmemori1997sedw_0?q=de+Young",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "mhdeyoungmemoria1119fine",
-   "title": "M.H. de Young Memorial Museum : visitorship, fiscal benefit and economic impact analysis",
-   "creator": "Fine Arts Museums of San Francisco,Sedway Group (Firm)",
-   "year": 1997,
+   "identifier": "minutesagendas2003fine",
+   "title": "Minutes and Agendas",
+   "creator": "Fine Arts Museums of San Francisco. Board of Trustees",
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "de Young Museum",
    "ocr_excerpts": [
-    "DOCUMENTS DEPT. SEP 1 5 1997 SAN FRANCISCO PUBLIC LIBRARY M.H. de YOUNG MEMORIAL MUSEUM VISITORSHIP, FISCAL BENEFIT AND ECONOMIC IMPACT ANALYSIS Presented by: Sedway Group Presented to: The Fine Arts Museums of San Francisco September 11, 1997 DOCUMENTS DEPT. SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY 3 1223 04631 3863 September 11, 1997 Mr. Harry S. Parker III Director of Museums The Fine Arts Museums of San Francisco 233 Post Street San Francisco, CA 94108-5003 Re: M.H. de Young Memorial Museum Visitorship, Fiscal Benefit and Economic Impact Study Dear Mr. Parker: Sedway Group is pleased to present the following study regarding the visitorship, fiscal benefit and economic impact of the M.H. de Young Memorial Museum (\"de Young Museum\" or \"Museum\"). The purpose of this study is to compare the Museum's present Golden Gate Park location with a downtown location. The following report includes an introduction, followed by chapters individually exploring visitorship, fiscal benefit and economic impact. The conclusions of this report are",
-    "nded to the end of this report. We are pleased to have provided assistance to The Fine Arts Museums of San Francisco regarding this very important project. Sincerely, Mary A. Smitheram-Sheldon Manager Principal LMS:MASS/nam Enclosure C:\\WPDOCS\\PROJECTS\\I8697\\18697 R01 REF 711.57 M105 M.H. de Young Memorial Museum : visitorship, 1997 . 3 1223 04631 3863 S.F. PUBLIC LIBRARY TABLE OF CONTENTS L INTRODUCTION 1 n. MUSEUM VISITORSHIP 2 Importance and Components of Visitorship 2 Visitorship Projection Methodology 3 Existing M.H. de Young Memorial Museum Visitorship 4 Visitorship Factors and Relative Importance 9 Site Evaluations 13 Estimated New Museum Visitorship 16 m. FISCAL BENEFIT AND MUSEUM REVENUES 19 Approach 19 Sales Tax Revenues to San Francisco 20 Municipal Parking Tax Revenues To San Francisco 24 Total Tax Revenues to San Francisco 26 Muni Ridership and Fare Revenues 26 Revenues Accruing to the FAMSF 29 IV. ECONOMIC IMPACTS 31 The Arts in San Francisco 31 Case Studies 32 Economic Impacts of the de Young Museum 33 Special Exhibitions and Economic Impacts 35 Economic Impacts Conclusion 36 V. SUMMARY OF FINDINGS 37 Museum Visitorship 37 Fiscal Benefit to San Francisco and Revenues to FAMSF 37 Economic Impacts 38 Cumulative Findings 38 ASSUMPTIONS AND GENERAL LIMITING CONDITIONS 39 Digitized by the Internet Archive in 2014 https://archive.org/details/mhdeyoungmemoria1 1 1 9f ine LIST OF EXHIBITS Exhibit 1 : M.H. de Young Memorial Museum Annual Attendance - 1990-1997 5 Exhibit 2: M.H. de Young Memorial Museum Attendance Statistics and Visitor Information . . 7 Exhibit 3: M.H. de Young Memorial Museum Annual Attendance - Highest Attendance Days 10 Exhibit 4: M.H. "
+    "Appendix .A - Draft Minutes) C. Report on 2002 Year-End Gifts of Works of .Art - J. .Alec Merriam. Chair, Acquisitions Committee of The Fine .Arts Museums Foundation (See Appendix B - 2002 Year-End Gifts of Works of .Art Report ) D. Report on Recent Developments Regarding the Plans to Build the New de Young Museum in Golden Gate Park 1. Consideration and Possible .Action to .Approve a Letter to the San Francisco Planning Commission on the Draft Environmental Impact Report for the Concourse .Authority Underground Parking Facilitv' (To Be Distributed .At Meeting) 2. Consideration and Possible .Action to .Adopt a R",
+    "“old” Main Library in the Civic Center as the future home of the Asian Art Museum; and WHEREAS, The new Asian Art Museum, designed by renovmed Italian architect Gae Aulenti, will open to the public in Spring 2003; now, therefore, be it RESOLVED, That after residing side by side in the former de Young Museum building for more than thirty-five years, the Fine Arts Museums bids a fond farewell to the Asian Art Museum; and, be it FURTHER RESOLVED, That the Board of Trustees and staff of the Fine Arts Museums of San Francisco do hereby congratulate the Asian Art Museum of San Francisco on accomplishing t",
+    "ation of I'he l ine Arts Museums During the Period July 1 through September 30, 2002 WHEREAS, The Corporation of The Fine Arts Museums is a 50 1(e)(3) not-for-profit corporation that exists to support the activities of the l ine Arts Museums of San Francisco and to serve as the developer of the New de Young Museum; now, therefore, be it RESOLVED, That the Board of Trustees of the Fine Arts Museums of San Francisco does hereby acknowledge with gratitude funding in the amount of $4,722,290 expended by the Corporation of The Fine Arts Museums for operations and $2,81 1,676 for the New de Young Museum in Golden Gate Park during the period July 1 through September 30, 2002. D. Consideration and Possible Action to Adopt a Resolution Acknowledging Bequests Received by the Fine Arts Museums of San Francisco During the Period July 1 through September 30, 2002 Action RESOLVED, That the Board of Trus",
+    "“old” Main Library in the Civic Center as the liiturc home of the Asian Art Museum; and WHEREAS, The new Asian Art Museum, designed by renowned Italian architect Gae Aulenti, will open to the public in Spring 2003; now, therefore, be it RESOLVED, That after residing side by side in the former de Young Museum building for more than thirty-five years, the Fine Arts Museums bids a fond farewell to the Asian Art Museum; and, be it FURTHER RESOLVED, That the Board of Trustees and staff of the Fine Arts Museums of San Francisco do hereby congratulate the Asian Art Museum of San Francisco on accomplishing t",
+    "tion ol' 1 he l ine Arts Museums During the Period July 1 through "
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 9.55,
+    "score": 6.21,
     "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
-    "substantive": true,
+    "substantive": false,
     "substantive_direct": true,
-    "hits": 2,
-    "density": 1.55,
-    "title_hit": true
+    "hits": 5,
+    "density": 0.71,
+    "title_hit": false
    },
    "materiality": {
-    "score": 4.0,
-    "money": false,
-    "decision": false,
+    "score": -1.25,
+    "money": true,
+    "decision": true,
     "accountability": false,
     "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
+    "named_genre": false,
+    "generic_serial": true
    },
-   "url": "https://archive.org/details/mhdeyoungmemoria1119fine",
-   "deep_link": "https://archive.org/details/mhdeyoungmemoria1119fine?q=de+Young+Museum",
+   "url": "https://archive.org/details/minutesagendas2003fine",
+   "deep_link": "https://archive.org/details/minutesagendas2003fine?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Fine Arts Museums trustee minutes reporting year-end gifts of works of art and the Asian Art Museum's move into the old Main Library."
   }
  ]
 }

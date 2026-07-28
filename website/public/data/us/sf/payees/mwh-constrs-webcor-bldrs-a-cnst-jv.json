@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.726607+00:00",
+ "generated_at": "2026-07-28T11:43:47.690862+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -24,10 +24,75 @@
  "top_departments": [
   "PUC Public Utilities Commsn"
  ],
+ "profile": {
+  "n_vouchers": 2256,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 1937844896.38,
+    "n_vouchers": 2256
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 1891420379.82,
+    "n_vouchers": 2201
+   },
+   {
+    "code": "527080",
+    "label": "Construction Management Svcs",
+    "spend_class": "purchase",
+    "usd": 46407513.4,
+    "n_vouchers": 52
+   },
+   {
+    "code": "479701",
+    "label": "Custom Work",
+    "spend_class": "ledger",
+    "usd": 12297.79,
+    "n_vouchers": 1
+   },
+   {
+    "code": "468111",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 3174.79,
+    "n_vouchers": 1
+   },
+   {
+    "code": "546990",
+    "label": "Food",
+    "spend_class": "purchase",
+    "usd": 1530.58,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 467268360.79,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 467268360.79,
+    "n_vouchers": 582
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000005952",
-   "title": "CMGC Sep Biosolid Digester",
+   "title": "CMGC Southeast Plant Biosolid Digester",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 2194283149.0,

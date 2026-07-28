@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.741364+00:00",
+ "generated_at": "2026-07-28T11:43:47.715750+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -34,6 +34,123 @@
  "top_departments": [
   "HOM Homelessness Services"
  ],
+ "profile": {
+  "n_vouchers": 1005,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 90878879.16,
+    "n_vouchers": 677
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 27112700.93,
+    "n_vouchers": 111
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 16122126.4,
+    "n_vouchers": 151
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 3056846.6,
+    "n_vouchers": 10
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 717090.52,
+    "n_vouchers": 56
+   }
+  ],
+  "n_departments": 5,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 84906330.51,
+    "n_vouchers": 630
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 26223240.02,
+    "n_vouchers": 109
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 7361326.28,
+    "n_vouchers": 99
+   },
+   {
+    "code": "535000",
+    "label": "Other Current Expenses - Bdgt",
+    "spend_class": "purchase",
+    "usd": 203108.8,
+    "n_vouchers": 1
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 14665.0,
+    "n_vouchers": 7
+   },
+   {
+    "code": "581270",
+    "label": "GF-City Attorney-Legal Service",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 22448543.88,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 18975853.5,
+    "n_vouchers": 79
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 3472690.38,
+    "n_vouchers": 13
+   }
+  ]
+ },
+ "identity": {
+  "description": "Brilliant Corners is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under education.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Brilliant Corners",
+  "ein": "562379862",
+  "ntee_code": "B90",
+  "ntee_label": "Education",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/562379862",
+  "checked_at": "2026-07-27T23:37:33.888120+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000028386",

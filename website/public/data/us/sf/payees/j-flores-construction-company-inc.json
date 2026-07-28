@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.735367+00:00",
+ "generated_at": "2026-07-28T11:43:47.705941+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,72 @@
  "top_departments": [
   "PUB Public Utilities Bureaus"
  ],
+ "profile": {
+  "n_vouchers": 562,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 166766348.34,
+    "n_vouchers": 306
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 21980999.8,
+    "n_vouchers": 89
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 8671616.4,
+    "n_vouchers": 89
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 7391816.6,
+    "n_vouchers": 78
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 113128840.02,
+    "n_vouchers": 138
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 45432.32,
+    "n_vouchers": 4
+   }
+  ],
+  "n_categories": 2,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 22038893.82,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 22038893.82,
+    "n_vouchers": 26
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000029917",
-   "title": "As-Needed Sewer RPLC NO.44",
+   "title": "As-Needed Sewer Replacement NO.44",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 9537768.52,
@@ -67,7 +129,7 @@
   },
   {
    "contract_no": "1000036783",
-   "title": "As-Needed Spot SWR Repl 47",
+   "title": "As-Needed Spot Sewer Replacement 47",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 11365968.8,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.734577+00:00",
+ "generated_at": "2026-07-28T11:43:47.704620+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -19,10 +19,62 @@
  "top_departments": [
   "PUC Public Utilities Commsn"
  ],
+ "profile": {
+  "n_vouchers": 100,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 225486576.01,
+    "n_vouchers": 100
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 187239486.82,
+    "n_vouchers": 46
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 38247089.19,
+    "n_vouchers": 54
+   }
+  ],
+  "n_categories": 2,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 154071039.44,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 123660649.03,
+    "n_vouchers": 26
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 30410390.41,
+    "n_vouchers": 31
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000035058",
-   "title": "SEP Biogas Utilization Prj",
+   "title": "Southeast Plant Biogas Utilization Project",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 84471671.2,

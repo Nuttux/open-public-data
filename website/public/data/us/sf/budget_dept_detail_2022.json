@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.888011+00:00",
+  "generated_at": "2026-07-28T11:43:46.643491+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -5406,14 +5406,14 @@
       "side": "Revenue",
       "objects": [
         {
-          "code": "ROAD_PRIV_PERM",
-          "label": "Road Privileges & Permits",
+          "code": "OTH_BUS_PROF_LIC",
+          "label": "Other Business/Prof Licenses",
           "amount_usd": 489327.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "OTH_BUS_PROF_LIC",
-          "label": "Other Business/Prof Licenses",
+          "code": "ROAD_PRIV_PERM",
+          "label": "Road Privileges & Permits",
           "amount_usd": 489327.0,
           "is_transfer_adjustment": false
         }
@@ -9317,14 +9317,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581450",
-          "label": "GF-HR-Mgmt Training",
+          "code": "581520",
+          "label": "Ef-SFGH-Medical Service",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581520",
-          "label": "Ef-SFGH-Medical Service",
+          "code": "581450",
+          "label": "GF-HR-Mgmt Training",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
@@ -10569,7 +10569,25 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "RODNEY L EWING",
+            "vendor": "Claudio E Talavera-Ballon",
+            "amount_usd": 4000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "Nga Trinh",
+            "amount_usd": 4000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "Adrian Arias",
             "amount_usd": 4000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -10587,7 +10605,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Blanca Estela Rodriguez Mandujano",
+            "vendor": "RODNEY L EWING",
             "amount_usd": 4000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -10596,7 +10614,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Adrian Arias",
+            "vendor": "Blanca Estela Rodriguez Mandujano",
             "amount_usd": 4000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -10615,24 +10633,6 @@
           },
           {
             "vendor": "Suhas Bhujbal",
-            "amount_usd": 4000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "Artillery AG",
-            "amount_usd": 4000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "Nga Trinh",
             "amount_usd": 4000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -11552,14 +11552,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "MEMBER_FEE",
-          "label": "Membership Fees",
+          "code": "EMPL_EXP",
+          "label": "Employee Expenses",
           "amount_usd": 5100.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "EMPL_EXP",
-          "label": "Employee Expenses",
+          "code": "MEMBER_FEE",
+          "label": "Membership Fees",
           "amount_usd": 5100.0,
           "is_transfer_adjustment": false
         },
@@ -14364,14 +14364,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581330",
-          "label": "GF-Bus & Ecn Dev",
+          "code": "581320",
+          "label": "GF-District Attorney",
           "amount_usd": 150000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581320",
-          "label": "GF-District Attorney",
+          "code": "581330",
+          "label": "GF-Bus & Ecn Dev",
           "amount_usd": 150000.0,
           "is_transfer_adjustment": false
         },
@@ -16182,14 +16182,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "TRAINING",
-          "label": "Training",
+          "code": "RENTLSE_EQUIP",
+          "label": "Rents/Leases-Equipment",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "RENTLSE_EQUIP",
-          "label": "Rents/Leases-Equipment",
+          "code": "TRAINING",
+          "label": "Training",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -26712,15 +26712,6 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "WEST BAY CONFERENCE CENTER",
-            "amount_usd": 9500.0,
-            "n_vouchers": 1,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "THE OMI CULTURAL PARTICIPATION PROJECT",
             "amount_usd": 9500.0,
             "n_vouchers": 1,
@@ -26730,7 +26721,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "BAYVIEW ASSOCIATION FOR YOUTH",
+            "vendor": "RENAISSANCE PARENTS OF SUCCESS",
             "amount_usd": 9500.0,
             "n_vouchers": 1,
             "is_non_profit": true,
@@ -26739,7 +26730,16 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "RENAISSANCE PARENTS OF SUCCESS",
+            "vendor": "WEST BAY CONFERENCE CENTER",
+            "amount_usd": 9500.0,
+            "n_vouchers": 1,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "BAYVIEW ASSOCIATION FOR YOUTH",
             "amount_usd": 9500.0,
             "n_vouchers": 1,
             "is_non_profit": true,
@@ -28740,14 +28740,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581320",
-          "label": "GF-District Attorney",
+          "code": "581166",
+          "label": "GF-Immigrant and Language Serv",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581166",
-          "label": "GF-Immigrant and Language Serv",
+          "code": "581320",
+          "label": "GF-District Attorney",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
@@ -28842,14 +28842,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581580",
-          "label": "GF-Chs-Toxic Waste&Haz Mat Svc",
+          "code": "581105",
+          "label": "GF-CON-Budget and Analysis",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581105",
-          "label": "GF-CON-Budget and Analysis",
+          "code": "581580",
+          "label": "GF-Chs-Toxic Waste&Haz Mat Svc",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -35503,14 +35503,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581068",
-          "label": "Sr-DPW-Street Cleaning",
+          "code": "581330",
+          "label": "GF-Bus & Ecn Dev",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581330",
-          "label": "GF-Bus & Ecn Dev",
+          "code": "581068",
+          "label": "Sr-DPW-Street Cleaning",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
@@ -36953,14 +36953,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581870",
-          "label": "GF-HR-SF Fellows Program",
+          "code": "581163",
+          "label": "SR-Neighborhood Beautification",
           "amount_usd": 100000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581163",
-          "label": "SR-Neighborhood Beautification",
+          "code": "581870",
+          "label": "GF-HR-SF Fellows Program",
           "amount_usd": 100000.0,
           "is_transfer_adjustment": false
         },
@@ -39717,14 +39717,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581670",
-          "label": "GF-Mayor'S - Cdbg",
+          "code": "581980",
+          "label": "GF-Tax Collector",
           "amount_usd": 120000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581980",
-          "label": "GF-Tax Collector",
+          "code": "581670",
+          "label": "GF-Mayor'S - Cdbg",
           "amount_usd": 120000.0,
           "is_transfer_adjustment": false
         },

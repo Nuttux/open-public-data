@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.757358+00:00",
+ "generated_at": "2026-07-28T12:23:47.771053+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "asian-art-museum",
@@ -49,142 +49,23 @@
   "items": [],
   "payees": [],
   "n_payees": 0,
-  "payees_total_paid": 0,
-  "permits": [
-   {
-    "description": "rehabilitation of old main library to new asian art museum",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 55000000.0,
-    "status": "issued",
-    "permit_date": "1999-05-19",
-    "permit_year": 1999
-   },
-   {
-    "description": "renovation and addition to (e) bldg adding approx. 12,000 sq feet of gallery space. fire protection under separate permit",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 6300000.0,
-    "status": "complete",
-    "permit_date": "2018-10-23",
-    "permit_year": 2018
-   },
-   {
-    "description": "construction of a temporary art installation w/in an (e) gallery space. work include temporary partitions, floor & ceiling finishes and modifications to (e) air conditioning and lighting systems",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 1000000.0,
-    "status": "complete",
-    "permit_date": "2020-02-20",
-    "permit_year": 2020
-   },
-   {
-    "description": "work includes and repl of (e) pedestal paver system including ramps and stairs . repair (e) waterproofind system as required. install (n) concrete stairs, ramps and curbs to replace matching (e) rise and run. tread depths and heights. install (n) handrails sim to (e) attachmts. demo ref 202205194618",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 900000.0,
-    "status": "complete",
-    "permit_date": "2022-11-09",
-    "permit_year": 2022
-   },
-   {
-    "description": "plaster repair & repainting-ext walls,builtup roof, interior",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 500000.0,
-    "status": "expired",
-    "permit_date": "1994-08-24",
-    "permit_year": 1994
-   },
-   {
-    "description": "fire only for the phase 2 fire alarm device replacement project; the devices being replaced are 171 smoke detectors, 33 duct detectors, and 150 modules. no ref. permit application number for this work.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 200000.0,
-    "status": "issued",
-    "permit_date": "2020-12-30",
-    "permit_year": 2020
-   }
-  ],
-  "n_permits": 50,
-  "permits_total_declared": 65582680.0,
-  "permits_by_year": [
-   {
-    "year": 1990,
-    "declared_usd": 22400.0
-   },
-   {
-    "year": 1994,
-    "declared_usd": 500000.0
-   },
-   {
-    "year": 1997,
-    "declared_usd": 54000.0
-   },
-   {
-    "year": 1999,
-    "declared_usd": 55000000.0
-   },
-   {
-    "year": 2000,
-    "declared_usd": 12000.0
-   },
-   {
-    "year": 2002,
-    "declared_usd": 64000.0
-   },
-   {
-    "year": 2003,
-    "declared_usd": 3000.0
-   },
-   {
-    "year": 2004,
-    "declared_usd": 100000.0
-   },
-   {
-    "year": 2012,
-    "declared_usd": 12500.0
-   },
-   {
-    "year": 2013,
-    "declared_usd": 1000.0
-   },
-   {
-    "year": 2015,
-    "declared_usd": 55000.0
-   },
-   {
-    "year": 2016,
-    "declared_usd": 20000.0
-   },
-   {
-    "year": 2017,
-    "declared_usd": 151000.0
-   },
-   {
-    "year": 2018,
-    "declared_usd": 6713000.0
-   },
-   {
-    "year": 2019,
-    "declared_usd": 344600.0
-   },
-   {
-    "year": 2020,
-    "declared_usd": 1359480.0
-   },
-   {
-    "year": 2021,
-    "declared_usd": 1000.0
-   },
-   {
-    "year": 2022,
-    "declared_usd": 1134700.0
-   },
-   {
-    "year": 2023,
-    "declared_usd": 35000.0
-   }
-  ]
+  "payees_total_paid": 0
  },
- "photo": null,
- "photo_credit": null,
- "summary_en": null,
- "published": false,
+ "photo": "/img/us/sf/places/asian-art-museum.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/asian-art-museum.jpg",
+  "source": "Openverse (flickr)",
+  "source_url": "https://www.flickr.com/photos/90454079@N00/14639426872",
+  "license": "BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Jun Seita",
+  "resolved_via": "openverse",
+  "fetched_at": "2026-07-27T22:55:52.368458+00:00"
+ },
+ "summary_en": "The Asian Art Museum's civic record is the record of a building changing hands. In February 1990 the Asian Art Commission's executive committee endorsed a proposed Board of Supervisors resolution implementing the jurisdictional transfer of the Main Public Library building to the museum — the library was about to move across Civic Center. The environmental paperwork followed the transfer: a 1996 addendum extended the Main Library's environmental impact report, certified in 1992, to cover the museum project, and a full supplemental report was published for public comment in July 1998 with a hearing that August. The conversion permit, filed in May 1999, states the change without ceremony — \"rehabilitation of old main library to new asian art museum\" — at a declared construction value of $55 million. Work on the parcel has continued since: a $6.3 million renovation completed in 2018 added roughly 12,000 square feet of gallery space, and a $900,000 permit in 2022 replaced the pedestal paver system, stairs, ramps and handrails and repaired the waterproofing beneath.",
+ "published": true,
  "money": {
   "budget_line": {
    "code": "AAM",
@@ -240,9 +121,57 @@
    "url": "https://archive.org/details/asianartmuseumdr1819sanf",
    "deep_link": "https://archive.org/details/asianartmuseumdr1819sanf?q=Asian+Art+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The 1998 draft supplemental environmental impact report for the museum project, published for comment that July."
+  },
+  {
+   "identifier": "asianartmuseumpr1199sanf",
+   "title": "Asian Art Museum project : EIR addendum to the San Francisco Main Library FEIR",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 1996,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "ocr_excerpts": [
+    "SAN FRANCISCO PUBLIC LIBRARY 3 1223 04335 6352 City and County of San Francisco The Planning Department 1660 Mission Street San Francisco, CA 94103-2414 90.808E: Asian Art Museum Project EIR Addendum to the San Francisco Main Library FEIR May 1, 1996 DOCUMENTS DEPr. JUlO 51996 SAN FRANCISCO PUBLIC LIBRARY Draft EIR Published: November 7, 1991 Draft EIR Public Hearing Date: December 12, 1991 Draft EIR Public Comment Period: November 7 - December 23, 1991 Final EIR",
+    "NING COMMISSION PLANS AND PROGRAMS IMPLEMENTATION/ZONING 1-6414 (415)558-6414 (415)558-6264 (415)558-6377 FAX: 558-6409 FAX: 558-6426 I^jjg^ City and County of San Francisco ItfQgO) The Planning Department 1660 Mission Street San Francisco, CA 94103-2414 May 1, 1996 MEMORANDUM TO: File90.808E: Asian Art Museum Project FROM: Carol Roos, Office of Environmental Review RE: Addendum to San Francisco Main Library EIR certified in 1992 BACKGROUND On February 27, 1992, the City Planning Commission certified a Final EIR (Case No. 90.808E) for construction of a new main library (now complete) on the block bounded by Larkin, Fulton, Hyde and Grove Streets; conversion of the existing library building, on the block bounded by Larkin, McAllister, Hyde and Fulton Streets, for use by the Asian Art Museum; and construction of a pedestrian mall on Fulton Street between Larkin and Hyde Streets. The FEIR is referred to herein as the Main Library/Asian Art Museum FEIR. Since certification of the Main Library/Asian Art Museum FEIR, the Board of Supervisors approved designation of the Civic Center as a local Historic District under Article 10 of the City Planning Code. The district was proposed but not adopted at the time of EIR certification. Also since certification of the Main Library/ Asian Art Museum FEIR, the State of California published and certified an EIR for a state office building (referred to herein as the Civic Center Complex EIR) that reached a different conclusion about transportation effects, from generally the same data and analysis, than did the Main Library/Asian Art Museum FEIR. Section 31.35 of the San Francisco Administrative Code requires reevaluation of a project in certain cases when there is a modification to the project, the circumstances under which the project is to be undertaken or the information available for use in evaluation of the project and that, \"if",
+    "and no ADMINISTRATION (415) 558-6414 CITY PLANNING COMMISSION (415) 558-6414 PLANS AND PROGRAMS (415) 558-6264 IMPLEMENTATION/ZONING (415) 558-6377 FAX: 558-6409 3 1223 04335 6352 FAX: 558-6426 further evaluation shall be required by this Chapter.\" This resulting memorandum, which analyzes the Asian Art Museum project in relation to the Civic Center Complex EIR and the adopted local historic district, all in relation to the 1992 Ma"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.71,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 2.21,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 1.5,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/asianartmuseumpr1199sanf",
+   "deep_link": "https://archive.org/details/asianartmuseumpr1199sanf?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The 1996 addendum extending the Main Library's certified environmental report to cover the museum conversion."
   },
   {
    "identifier": "agenda1990sanf_1",
@@ -282,48 +211,13 @@
    "url": "https://archive.org/details/agenda1990sanf_1",
    "deep_link": "https://archive.org/details/agenda1990sanf_1?q=Asian+Art+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "5 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "asianartmuseumpr1199sanf",
-   "title": "Asian Art Museum project : EIR addendum to the San Francisco Main Library FEIR",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": 1996,
-   "pool": "sfpl",
-   "matched_alias": "Asian Art Museum",
-   "ocr_excerpts": [
-    "SAN FRANCISCO PUBLIC LIBRARY 3 1223 04335 6352 City and County of San Francisco The Planning Department 1660 Mission Street San Francisco, CA 94103-2414 90.808E: Asian Art Museum Project EIR Addendum to the San Francisco Main Library FEIR May 1, 1996 DOCUMENTS DEPr. JUlO 51996 SAN FRANCISCO PUBLIC LIBRARY Draft EIR Published: November 7, 1991 Draft EIR Public Hearing Date: December 12, 1991 Draft EIR Public Comment Period: November 7 - December 23, 1991 Final EIR",
-    "NING COMMISSION PLANS AND PROGRAMS IMPLEMENTATION/ZONING 1-6414 (415)558-6414 (415)558-6264 (415)558-6377 FAX: 558-6409 FAX: 558-6426 I^jjg^ City and County of San Francisco ItfQgO) The Planning Department 1660 Mission Street San Francisco, CA 94103-2414 May 1, 1996 MEMORANDUM TO: File90.808E: Asian Art Museum Project FROM: Carol Roos, Office of Environmental Review RE: Addendum to San Francisco Main Library EIR certified in 1992 BACKGROUND On February 27, 1992, the City Planning Commission certified a Final EIR (Case No. 90.808E) for construction of a new main library (now complete) on the block bounded by Larkin, Fulton, Hyde and Grove Streets; conversion of the existing library building, on the block bounded by Larkin, McAllister, Hyde and Fulton Streets, for use by the Asian Art Museum; and construction of a pedestrian mall on Fulton Street between Larkin and Hyde Streets. The FEIR is referred to herein as the Main Library/Asian Art Museum FEIR. Since certification of the Main Library/Asian Art Museum FEIR, the Board of Supervisors approved designation of the Civic Center as a local Historic District under Article 10 of the City Planning Code. The district was proposed but not adopted at the time of EIR certification. Also since certification of the Main Library/ Asian Art Museum FEIR, the State of California published and certified an EIR for a state office building (referred to herein as the Civic Center Complex EIR) that reached a different conclusion about transportation effects, from generally the same data and analysis, than did the Main Library/Asian Art Museum FEIR. Section 31.35 of the San Francisco Administrative Code requires reevaluation of a project in certain cases when there is a modification to the project, the circumstances under which the project is to be undertaken or the information available for use in evaluation of the project and that, \"if",
-    "and no ADMINISTRATION (415) 558-6414 CITY PLANNING COMMISSION (415) 558-6414 PLANS AND PROGRAMS (415) 558-6264 IMPLEMENTATION/ZONING (415) 558-6377 FAX: 558-6409 3 1223 04335 6352 FAX: 558-6426 further evaluation shall be required by this Chapter.\" This resulting memorandum, which analyzes the Asian Art Museum project in relation to the Civic Center Complex EIR and the adopted local historic district, all in relation to the 1992 Ma"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 10.71,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 2.21,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 1.5,
-    "money": false,
-    "decision": true,
-    "accountability": false,
-    "contestation": true,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/asianartmuseumpr1199sanf",
-   "deep_link": "https://archive.org/details/asianartmuseumpr1199sanf?q=Asian+Art+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Asian Art Commission minutes endorsing the jurisdictional transfer of the Main Library building to the museum."
   }
  ],
  "dept_shelf": [],
@@ -340,9 +234,9 @@
   }
  ],
  "_gate": {
-  "has_photo": false,
+  "has_photo": true,
   "n_documents": 3,
   "n_money_links": 1,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

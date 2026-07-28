@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.734482+00:00",
+ "generated_at": "2026-07-28T11:43:47.704464+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,118 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 4359,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 224138008.11,
+    "n_vouchers": 4266
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 1161518.3,
+    "n_vouchers": 70
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 550000.0,
+    "n_vouchers": 22
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 1000.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 65367902.78,
+    "n_vouchers": 912
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 43876321.19,
+    "n_vouchers": 1465
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 24131768.05,
+    "n_vouchers": 158
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 1000.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "463599",
+    "label": "Misc Public Health Revenue",
+    "spend_class": "unclear",
+    "usd": -1763.91,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 15361148.98,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 8078072.33,
+    "n_vouchers": 134
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 4021490.09,
+    "n_vouchers": 14
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 3261586.56,
+    "n_vouchers": 60
+   }
+  ]
+ },
+ "identity": {
+  "description": "San Francisco Aids Foundation is an IRS-recognized tax-exempt organization in San Francisco, CA. Its IRS activity code is not recorded in the registry.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "San Francisco Aids Foundation",
+  "ein": "942927405",
+  "ntee_code": null,
+  "ntee_label": null,
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/942927405",
+  "checked_at": "2026-07-27T23:36:25.091796+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000020925",
@@ -49,7 +161,7 @@
   },
   {
    "contract_no": "1000011493",
-   "title": "HIV & Beh/ SA Treatment",
+   "title": "HIV & Behavioral/ SA Treatment",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 19635695.0,
@@ -58,7 +170,7 @@
   },
   {
    "contract_no": "1000032060",
-   "title": "Naloxone Dist and Educat",
+   "title": "Naloxone Distribution and Educat",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 1545600.0,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.757566+00:00",
+ "generated_at": "2026-07-28T12:23:47.771230+00:00",
  "slug": "asian-art-museum",
  "name": "Asian Art Museum",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -41,9 +41,57 @@
    "url": "https://archive.org/details/asianartmuseumdr1819sanf",
    "deep_link": "https://archive.org/details/asianartmuseumdr1819sanf?q=Asian+Art+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The 1998 draft supplemental environmental impact report for the museum project, published for comment that July."
+  },
+  {
+   "identifier": "asianartmuseumpr1199sanf",
+   "title": "Asian Art Museum project : EIR addendum to the San Francisco Main Library FEIR",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 1996,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "ocr_excerpts": [
+    "SAN FRANCISCO PUBLIC LIBRARY 3 1223 04335 6352 City and County of San Francisco The Planning Department 1660 Mission Street San Francisco, CA 94103-2414 90.808E: Asian Art Museum Project EIR Addendum to the San Francisco Main Library FEIR May 1, 1996 DOCUMENTS DEPr. JUlO 51996 SAN FRANCISCO PUBLIC LIBRARY Draft EIR Published: November 7, 1991 Draft EIR Public Hearing Date: December 12, 1991 Draft EIR Public Comment Period: November 7 - December 23, 1991 Final EIR",
+    "NING COMMISSION PLANS AND PROGRAMS IMPLEMENTATION/ZONING 1-6414 (415)558-6414 (415)558-6264 (415)558-6377 FAX: 558-6409 FAX: 558-6426 I^jjg^ City and County of San Francisco ItfQgO) The Planning Department 1660 Mission Street San Francisco, CA 94103-2414 May 1, 1996 MEMORANDUM TO: File90.808E: Asian Art Museum Project FROM: Carol Roos, Office of Environmental Review RE: Addendum to San Francisco Main Library EIR certified in 1992 BACKGROUND On February 27, 1992, the City Planning Commission certified a Final EIR (Case No. 90.808E) for construction of a new main library (now complete) on the block bounded by Larkin, Fulton, Hyde and Grove Streets; conversion of the existing library building, on the block bounded by Larkin, McAllister, Hyde and Fulton Streets, for use by the Asian Art Museum; and construction of a pedestrian mall on Fulton Street between Larkin and Hyde Streets. The FEIR is referred to herein as the Main Library/Asian Art Museum FEIR. Since certification of the Main Library/Asian Art Museum FEIR, the Board of Supervisors approved designation of the Civic Center as a local Historic District under Article 10 of the City Planning Code. The district was proposed but not adopted at the time of EIR certification. Also since certification of the Main Library/ Asian Art Museum FEIR, the State of California published and certified an EIR for a state office building (referred to herein as the Civic Center Complex EIR) that reached a different conclusion about transportation effects, from generally the same data and analysis, than did the Main Library/Asian Art Museum FEIR. Section 31.35 of the San Francisco Administrative Code requires reevaluation of a project in certain cases when there is a modification to the project, the circumstances under which the project is to be undertaken or the information available for use in evaluation of the project and that, \"if",
+    "and no ADMINISTRATION (415) 558-6414 CITY PLANNING COMMISSION (415) 558-6414 PLANS AND PROGRAMS (415) 558-6264 IMPLEMENTATION/ZONING (415) 558-6377 FAX: 558-6409 3 1223 04335 6352 FAX: 558-6426 further evaluation shall be required by this Chapter.\" This resulting memorandum, which analyzes the Asian Art Museum project in relation to the Civic Center Complex EIR and the adopted local historic district, all in relation to the 1992 Ma"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.71,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 2.21,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 1.5,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/asianartmuseumpr1199sanf",
+   "deep_link": "https://archive.org/details/asianartmuseumpr1199sanf?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The 1996 addendum extending the Main Library's certified environmental report to cover the museum conversion."
   },
   {
    "identifier": "agenda1990sanf_1",
@@ -83,48 +131,13 @@
    "url": "https://archive.org/details/agenda1990sanf_1",
    "deep_link": "https://archive.org/details/agenda1990sanf_1?q=Asian+Art+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "5 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "asianartmuseumpr1199sanf",
-   "title": "Asian Art Museum project : EIR addendum to the San Francisco Main Library FEIR",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": 1996,
-   "pool": "sfpl",
-   "matched_alias": "Asian Art Museum",
-   "ocr_excerpts": [
-    "SAN FRANCISCO PUBLIC LIBRARY 3 1223 04335 6352 City and County of San Francisco The Planning Department 1660 Mission Street San Francisco, CA 94103-2414 90.808E: Asian Art Museum Project EIR Addendum to the San Francisco Main Library FEIR May 1, 1996 DOCUMENTS DEPr. JUlO 51996 SAN FRANCISCO PUBLIC LIBRARY Draft EIR Published: November 7, 1991 Draft EIR Public Hearing Date: December 12, 1991 Draft EIR Public Comment Period: November 7 - December 23, 1991 Final EIR",
-    "NING COMMISSION PLANS AND PROGRAMS IMPLEMENTATION/ZONING 1-6414 (415)558-6414 (415)558-6264 (415)558-6377 FAX: 558-6409 FAX: 558-6426 I^jjg^ City and County of San Francisco ItfQgO) The Planning Department 1660 Mission Street San Francisco, CA 94103-2414 May 1, 1996 MEMORANDUM TO: File90.808E: Asian Art Museum Project FROM: Carol Roos, Office of Environmental Review RE: Addendum to San Francisco Main Library EIR certified in 1992 BACKGROUND On February 27, 1992, the City Planning Commission certified a Final EIR (Case No. 90.808E) for construction of a new main library (now complete) on the block bounded by Larkin, Fulton, Hyde and Grove Streets; conversion of the existing library building, on the block bounded by Larkin, McAllister, Hyde and Fulton Streets, for use by the Asian Art Museum; and construction of a pedestrian mall on Fulton Street between Larkin and Hyde Streets. The FEIR is referred to herein as the Main Library/Asian Art Museum FEIR. Since certification of the Main Library/Asian Art Museum FEIR, the Board of Supervisors approved designation of the Civic Center as a local Historic District under Article 10 of the City Planning Code. The district was proposed but not adopted at the time of EIR certification. Also since certification of the Main Library/ Asian Art Museum FEIR, the State of California published and certified an EIR for a state office building (referred to herein as the Civic Center Complex EIR) that reached a different conclusion about transportation effects, from generally the same data and analysis, than did the Main Library/Asian Art Museum FEIR. Section 31.35 of the San Francisco Administrative Code requires reevaluation of a project in certain cases when there is a modification to the project, the circumstances under which the project is to be undertaken or the information available for use in evaluation of the project and that, \"if",
-    "and no ADMINISTRATION (415) 558-6414 CITY PLANNING COMMISSION (415) 558-6414 PLANS AND PROGRAMS (415) 558-6264 IMPLEMENTATION/ZONING (415) 558-6377 FAX: 558-6409 3 1223 04335 6352 FAX: 558-6426 further evaluation shall be required by this Chapter.\" This resulting memorandum, which analyzes the Asian Art Museum project in relation to the Civic Center Complex EIR and the adopted local historic district, all in relation to the 1992 Ma"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 10.71,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 2.21,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 1.5,
-    "money": false,
-    "decision": true,
-    "accountability": false,
-    "contestation": true,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/asianartmuseumpr1199sanf",
-   "deep_link": "https://archive.org/details/asianartmuseumpr1199sanf?q=Asian+Art+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Asian Art Commission minutes endorsing the jurisdictional transfer of the Main Library building to the museum."
   }
  ]
 }

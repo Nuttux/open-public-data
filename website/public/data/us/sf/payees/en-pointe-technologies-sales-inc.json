@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.734392+00:00",
+ "generated_at": "2026-07-28T11:43:47.704293+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -33,6 +33,156 @@
   "DPH Public Health",
   "DT GSA - Technology"
  ],
+ "profile": {
+  "n_vouchers": 13817,
+  "departments": [
+   {
+    "department": "DT  GSA - Technology",
+    "department_code": "TIS",
+    "usd": 55012383.64,
+    "n_vouchers": 1179
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 30949656.49,
+    "n_vouchers": 1941
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 25882436.83,
+    "n_vouchers": 1283
+   },
+   {
+    "department": "POL Police",
+    "department_code": "POL",
+    "usd": 25651862.37,
+    "n_vouchers": 1216
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 22473975.35,
+    "n_vouchers": 730
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 10015688.1,
+    "n_vouchers": 1233
+   },
+   {
+    "department": "LIB Public Library",
+    "department_code": "LIB",
+    "usd": 8522904.6,
+    "n_vouchers": 536
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "usd": 6278629.8,
+    "n_vouchers": 346
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 2328200.62,
+    "n_vouchers": 59
+   }
+  ],
+  "n_departments": 46,
+  "categories": [
+   {
+    "code": "535960",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 19114413.14,
+    "n_vouchers": 542
+   },
+   {
+    "code": "560610",
+    "label": "Data Processing Equipment",
+    "spend_class": "purchase",
+    "usd": 6661858.9,
+    "n_vouchers": 53
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 6553663.76,
+    "n_vouchers": 21
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 6319963.41,
+    "n_vouchers": 484
+   },
+   {
+    "code": "527610",
+    "label": "Systems Consulting Services",
+    "spend_class": "purchase",
+    "usd": 3851916.71,
+    "n_vouchers": 251
+   },
+   {
+    "code": "560510",
+    "label": "Communications Equipment",
+    "spend_class": "purchase",
+    "usd": 2360550.74,
+    "n_vouchers": 18
+   },
+   {
+    "code": "529990",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 2159201.93,
+    "n_vouchers": 28
+   },
+   {
+    "code": "529110",
+    "label": "Dp-Wp Equipment Maint",
+    "spend_class": "purchase",
+    "usd": 1642330.08,
+    "n_vouchers": 45
+   }
+  ],
+  "n_categories": 34,
+  "counts_are_floor": true,
+  "recent_fy": 2022,
+  "recent_total_usd": 110334.05,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "POL Police",
+    "department_code": "POL",
+    "label": "Systems Consulting Services",
+    "spend_class": "purchase",
+    "usd": 43910.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 41987.25,
+    "n_vouchers": 1
+   },
+   {
+    "department": "POL Police",
+    "department_code": "POL",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 24436.8,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

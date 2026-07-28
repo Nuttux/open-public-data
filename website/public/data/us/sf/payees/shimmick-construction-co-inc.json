@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.731814+00:00",
+ "generated_at": "2026-07-28T11:43:47.700028+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -33,6 +33,108 @@
  "top_departments": [
   "PUB Public Utilities Bureaus"
  ],
+ "profile": {
+  "n_vouchers": 701,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 204642023.33,
+    "n_vouchers": 262
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 51025616.7,
+    "n_vouchers": 239
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 32083106.1,
+    "n_vouchers": 68
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 9491632.72,
+    "n_vouchers": 29
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 7729659.9,
+    "n_vouchers": 66
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 4036244.1,
+    "n_vouchers": 27
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 190396.7,
+    "n_vouchers": 10
+   }
+  ],
+  "n_departments": 7,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 33246610.76,
+    "n_vouchers": 42
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 968232.98,
+    "n_vouchers": 4
+   },
+   {
+    "code": "OTHER_REC",
+    "label": "Other Receivables",
+    "spend_class": "ledger",
+    "usd": 19404.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "468111",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 7953.81,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2024,
+  "recent_total_usd": 24962.15,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Other Receivables",
+    "spend_class": "ledger",
+    "usd": 19404.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 5558.15,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

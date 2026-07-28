@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.736462+00:00",
+ "generated_at": "2026-07-28T11:43:47.707915+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -31,6 +31,150 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 2491,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 151657741.94,
+    "n_vouchers": 1370
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 33184014.82,
+    "n_vouchers": 160
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 3234551.75,
+    "n_vouchers": 924
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 9590.0,
+    "n_vouchers": 37
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "552110",
+    "label": "Taxes",
+    "spend_class": "obligation",
+    "usd": 52354840.99,
+    "n_vouchers": 295
+   },
+   {
+    "code": "435219",
+    "label": "Union Square Garage",
+    "spend_class": "ledger",
+    "usd": 31310304.89,
+    "n_vouchers": 101
+   },
+   {
+    "code": "535950",
+    "label": "Credit Card Processing Fees",
+    "spend_class": "unclear",
+    "usd": 27409791.49,
+    "n_vouchers": 399
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 16274356.16,
+    "n_vouchers": 247
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 8874655.49,
+    "n_vouchers": 30
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 5404723.09,
+    "n_vouchers": 19
+   },
+   {
+    "code": "435225",
+    "label": "Prking Fees-VarRec-PrkFacilt",
+    "spend_class": "ledger",
+    "usd": 1858749.93,
+    "n_vouchers": 40
+   },
+   {
+    "code": "530210",
+    "label": "Garage Rent",
+    "spend_class": "purchase",
+    "usd": 1574574.0,
+    "n_vouchers": 396
+   }
+  ],
+  "n_categories": 13,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 26139444.44,
+  "n_recent_lines": 8,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Taxes",
+    "spend_class": "obligation",
+    "usd": 15421152.88,
+    "n_vouchers": 90
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "label": "Union Square Garage",
+    "spend_class": "ledger",
+    "usd": 5006406.41,
+    "n_vouchers": 13
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 3633742.85,
+    "n_vouchers": 12
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1392207.01,
+    "n_vouchers": 20
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "label": "Prking Fees-VarRec-PrkFacilt",
+    "spend_class": "ledger",
+    "usd": 636725.29,
+    "n_vouchers": 13
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Garage Rent",
+    "spend_class": "purchase",
+    "usd": 46410.0,
+    "n_vouchers": 11
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000028026",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.736294+00:00",
+ "generated_at": "2026-07-28T11:43:47.707578+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -31,6 +31,120 @@
  "top_departments": [
   "DPW GSA - Public Works"
  ],
+ "profile": {
+  "n_vouchers": 1726,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 50088916.5,
+    "n_vouchers": 497
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 35872597.3,
+    "n_vouchers": 545
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 32239240.3,
+    "n_vouchers": 55
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 24836674.03,
+    "n_vouchers": 216
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "ECD",
+    "usd": 23592489.3,
+    "n_vouchers": 28
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 18071533.8,
+    "n_vouchers": 143
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 3928540.9,
+    "n_vouchers": 14
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 2875364.9,
+    "n_vouchers": 57
+   }
+  ],
+  "n_departments": 14,
+  "categories": [
+   {
+    "code": "539200",
+    "label": "Loans Issued By City",
+    "spend_class": "ledger",
+    "usd": 1866631.0,
+    "n_vouchers": 7
+   },
+   {
+    "code": "574110",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 1126143.03,
+    "n_vouchers": 15
+   },
+   {
+    "code": "552210",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 916369.3,
+    "n_vouchers": 13
+   },
+   {
+    "code": "535930",
+    "label": "Bank Service Fee",
+    "spend_class": "purchase",
+    "usd": 20647.41,
+    "n_vouchers": 14
+   },
+   {
+    "code": "AR",
+    "label": "Accounts Receivable",
+    "spend_class": "ledger",
+    "usd": 0.0,
+    "n_vouchers": 5
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 14
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2021,
+  "recent_total_usd": 161727.99,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 161727.99,
+    "n_vouchers": 3
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000005789",

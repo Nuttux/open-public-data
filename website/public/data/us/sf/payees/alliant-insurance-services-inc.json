@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.732114+00:00",
+ "generated_at": "2026-07-28T11:43:47.700500+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,96 @@
  "top_departments": [
   "ADM Gen Svcs Agency-City Admin"
  ],
+ "profile": {
+  "n_vouchers": 572,
+  "departments": [
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 284075135.97,
+    "n_vouchers": 525
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 4426169.86,
+    "n_vouchers": 39
+   },
+   {
+    "department": "ART Arts Commission",
+    "department_code": "ART",
+    "usd": 30225.0,
+    "n_vouchers": 3
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 2050.0,
+    "n_vouchers": 3
+   },
+   {
+    "department": "HRC Human Rights Commission",
+    "department_code": "HRC",
+    "usd": 0.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_departments": 5,
+  "categories": [
+   {
+    "code": "551110",
+    "label": "Insurance Expense",
+    "spend_class": "purchase",
+    "usd": 204438563.33,
+    "n_vouchers": 379
+   },
+   {
+    "code": "535710",
+    "label": "Subscriptions",
+    "spend_class": "unclear",
+    "usd": 1950.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "522020",
+    "label": "Training Costs Paid To Vendors",
+    "spend_class": "purchase",
+    "usd": 100.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 25489723.96,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Insurance Expense",
+    "spend_class": "purchase",
+    "usd": 24978465.03,
+    "n_vouchers": 37
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "label": "Insurance Expense",
+    "spend_class": "purchase",
+    "usd": 511258.93,
+    "n_vouchers": 4
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000036331",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.729875+00:00",
+ "generated_at": "2026-07-28T11:43:47.696147+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -33,6 +33,97 @@
  "top_departments": [
   "DPW GSA - Public Works"
  ],
+ "profile": {
+  "n_vouchers": 1140,
+  "departments": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 407848978.5,
+    "n_vouchers": 445
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 87150281.66,
+    "n_vouchers": 645
+   },
+   {
+    "department": "WAR War Memorial",
+    "department_code": "WAR",
+    "usd": 2087220.47,
+    "n_vouchers": 50
+   }
+  ],
+  "n_departments": 3,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 196838613.12,
+    "n_vouchers": 886
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 1997822.04,
+    "n_vouchers": 34
+   },
+   {
+    "code": "528990",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 1122137.65,
+    "n_vouchers": 22
+   },
+   {
+    "code": "563201",
+    "label": "BldgsStructures&ImprovementExp",
+    "spend_class": "purchase",
+    "usd": 712615.25,
+    "n_vouchers": 14
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 155891.57,
+    "n_vouchers": 3
+   },
+   {
+    "code": "201670",
+    "label": "Liens Payable",
+    "spend_class": "unclear",
+    "usd": 37500.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "479701",
+    "label": "Custom Work",
+    "spend_class": "ledger",
+    "usd": 24309.6,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 7,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 29040601.05,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 29040601.05,
+    "n_vouchers": 102
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000027846",
@@ -45,7 +136,7 @@
   },
   {
    "contract_no": "1000035223",
-   "title": "ZSFG BLD 5 BHS Early Demo",
+   "title": "Zuckerberg San Francisco General BLD 5 BHS Early Demolition",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 675306.29,

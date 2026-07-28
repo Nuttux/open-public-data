@@ -1,32 +1,253 @@
 {
- "generated_at": "2026-07-27T17:06:09.737809+00:00",
+ "generated_at": "2026-07-28T12:23:47.751835+00:00",
  "slug": "lake-merced",
  "name": "Lake Merced",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
   {
-   "identifier": "C124920621",
-   "title": "San Francisco groundwater master plan : preliminary draft",
-   "creator": "San Francisco (Calif.). Water Department",
-   "year": 1995,
+   "identifier": "feasibilityevalu1919ch2m",
+   "title": "Feasibility evaluation of alternatives to raise Lake Merced : draft",
+   "creator": "CH2M HILL",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Lake Merced",
+   "ocr_excerpts": [
+    "Lake Merced Technical Memorandum No. 1 Feasibility Evaluation of Alternatives to Raise Lake Merced D DRAFT DOCUMENTS DEPT. REF 333.9163 L1478 October 19, 1998 FEB - 8 2001 SAN FRANCISCO PUBLIC LIBRARY 5/S GOVERNMENT 1NFOPW^*rtOM esm&SF: SAN FRA NCISCO PSiCUC USRART CIVIC CEJtfTES: SAN FRANCISCO. CALIFORNIA 94102 SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK No! to be taken from the",
+    "es 16 5 Second Stage :Ey dilation of Alternatives 17 6 Key to Numeric Assessment Using the Institutional Issues Criterion as an Example 18 7 Numeric Assessmehtpf Alternatives 20 8 Summary of Estimated Costs by Alternatives for a 10-year Period 22 9 9 10 11 16 16 21 LIST OF FIGURES 1 1935 Lake Merced Aerial Photograph 2 2 1995 Lake Merced Aerial Photograph 4 3 Lake Merced Watershed: Comparison of the 1935 and 1998 Drainage Areas 4 Historic Range in Elevation of Lake Merced (1930 to 1998) 6 5 Extent of the Westside Groundwater Basin 6 Lake Level Response to 5-mgd Addition of Imported Surface Water 8 7 Schematic Layout of Alternative 1 23 8 Schematic Layout of Alternative 5 25 9 Schematic Layout of Alternative 7 26 Digitized by the Internet Archive in 2016 https://archive.org/details/feasibilityevalu1919ch2m 3 1223 05770 1808 LAKE MERCED TECHNICAL MEMORANDUM 1 CH2MHILL Feasibility Evaluation of Alternatives to Raise Lake Merced prepared for: San Francisco Public Utilities Commission prepared BY: Toni peZzetti/CH2M HILL Michele Bellows/The Duffey Company DATE: October 19, 1998 Summary and Conclusions This technical memorandum conducts preliminary evalhation;;Q:f optioned5 raise and maintain the level of Lake Merced (“the Lake\"). It is %s been prepared as part of Task WRS- 1.4 of the Lake Merced Comprehensive Management Plan (W98), and is intended to be a tool used by the San Francisco Public Utilities Commission (SFPUG). to assess the feasibility of raising and maintaining the lake level within ^specified range. This technical memorandum identifies and describes options that were consiMetedy ey",
+    "mported Surface Water Directly to the Lake $ 2,200,000 145 mg 2 ft/yr 5 Inject Recycled Water into the Surrounding Aquifer at Harding Park and SFSU Wells $ 8,200,000 121 mg 2 in/yr 7 Divert Storm Water from Vista Grande Canal to the Lake $ 3,900,000 63 mg 4 Vz in/yr Background The Lake Merced area has undergone significant changes during the 20th century. At the beginning of the century, the area was largely undeveloped (Figure 1). Now the area is SAC/C:\\AATONI\\S FBERM\\TM1.DOC 11119.08.01 sac14H18-08.01 Figl Lake Merced 35 (10/16/98)afo Figure 1 Lake Merced Area in 1935 FEASIBILITY EVALUATION OF ALTERNATIVES TO heavily urbanized (Figure 2). This has decreased the amount of recharge water that enters the Lake because rainfall that previously ran off the surrounding land into the Lake is now "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 11.82,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 3.32,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/feasibilityevalu1919ch2m",
+   "deep_link": "https://archive.org/details/feasibilityevalu1919ch2m?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A 1998 engineering evaluation of ways to raise the lake's water level, scoring each alternative and costing them over a ten-year period."
+  },
+  {
+   "identifier": "lakemercedwaterr1993sanf",
+   "title": "Lake Merced water resource planning study",
+   "creator": "San Francisco Water Department,prepared by GEO/Resource Consultants, Inc. in association with Montgomery/Watson, Jones and Stokes Associates, Inc., Public Affairs Management",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Lake Merced",
+   "ocr_excerpts": [
+    "LAKE MERCED WATER RESOURCE PLANNING STUDY San Francisco Water Department D May 1 993 REF 333.9163 L 1 48 jg*!' Geo/Resource Consultants, Inc, Digitized by the Internet Archive in 2016 https://archive.org/details/lakemercedwaterr1993sanf Ill SAN FRANCISCO PUBLIC LIBRARY Geo/Resource Consultants, Inc. Ill",
+    "reel San Francisco. California 94133 (415)775-3177 FAX (415) 775-2359 GEOLOGISTS / ENGINEERS / ENVIRONMENTAL SCIENTISTS 3 1223 05749 5690 Arizona California Hawaii Virginia May 24, 1993 Mr. Mickey Heo SAN FRANCISCO WATER DEPARTMENT 425 Mason Street San Francisco, California RE: SUBMITTAL OF THE LAKE MERCED WATER RESOURCE PLANNING STUDY Dear Mr. Heo, In accordance with our contract with the San Francisco Water Department, Geo/Resource Consultants, Inc. (GRC) is pleased to transmit the Lake Merced Water Resource Planning Study report. As an evaluation of new and existing data pertinent to lake use and water quality issues, this report will serve as a key step in the planning process for Lake Merced. Thank you for the opportunity to work on this interesting study. Sincerely, GEO/RESOURCE CONSULTANTS, INC. Eva Vanek Project Manager DOCUMENTS dept. FEB - 8 200) SAN FRANCISCO PUBLIC LIBRARY Alan D. Tryhorn, C.E.G. Senior Vice President i - LAKE MERCED WATER RESOURCE PLANNING STUDY Prepared for: SAN FRANCISCO WATER DEPARTMENT 425 MASON STREET SAN FRANCISCO, CALIFORNIA Prepared by: GEO/RESOURCE CONSULTANTS, INC. 505 BEACH STREET SAN FRANCISCO, CALIFORNIA In association with: MONTGOMERY/WATSON JONES AND STOKES ASSOCIATES, INC PUBLIC AFFAIRS MANAGEMENT MAY, 1993 GRC PROJECT NUMBER: 1756-000 Geo/Resource Consultants, Inc. ■ 3 1223 05749 5690 TABLE OF CONTENTS Paee EXECUTIVE SUMMARY i IT) INTRODUCTION 1 1.1 Purpose and Scope of Study 1 2.0 DESCRIPTION AND USES OF LAKE MERCED . 3 2.1 Lake Development and Historical Usage 3 22 Lake Merced Water Quality Determinants 4 2.2.1 Impoundment Characteristics 4 2.2.2 Groundwater 5 2.2.3 Recreation Use and Fish and Wildlife Habitat 6 2.2.4 Stormwater 8 2.2.5 Point Source Contamination 10 2.3 Impacts of Recent Regulatory Requirements 10 2.3.1 NPDES Permitting 11 2.3.2 Surface Water Treatment Rule",
+    "eneficial Uses 43 5.1.1 Emergency Water Supply 43 5.1.2 Threatened and Special Status Species 43 5.1.3 Recreation 5.1.4 Habitat for Non-Special Status Fish and Wildlife 53 Potential Conflicts 44 5.3 Lake Management Objectives 45 5.4 Public Involvement 45 5.4.1 Conflict Resolution 46 6.0 HYDROLOGY OF LAKE MERCED 47 6.1 Background 47 62 Groundwater Model 47 6.2.1 Model Boundaries 48 6.2.2 Aquifer Characteristics 48 6.2.3 Groundwater Recharge 49 6.2.4 Pumpage 49 6.2.5 Water Levels 49 6.2.6 Model Calibration 50 6.3 Groundwater Budgets 50 6.4 Effects of Well Pumping and Drought on Lake Levels 51 6.4.1 Historical Effects of Golf Course and M"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.41,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.91,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/lakemercedwaterr1993sanf",
+   "deep_link": "https://archive.org/details/lakemercedwaterr1993sanf?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A 1993 study for the Water Department reviewing existing data on how the lake is used and on its water quality."
+  },
+  {
+   "identifier": "lakemerced1998ba1999prep",
+   "title": "Lake Merced 1998 baseline natural resources inventory",
+   "creator": "prepared by: Trihey & Associates, Inc., through: Camp Dresser & McKee,prepared for: San Francisco Public Utilities Commission",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Lake Merced",
+   "ocr_excerpts": [
+    "Lake Merced 1998 Baseline Inventory San Francisco Public Utilities Commission [§T*T#1 Digitized by the Internet Archive in 2015 https://archive.org/details/lakemerced1998ba1999prep LAKE MERCED 1998 BASELINE NATURAL RESOURCES INVENTORY Prepared by: Trihey & Associates, Inc. 590 Ygnacio Valley Road, Suite 200 Walnut Creek, CA 94596 (925) 935-9920 Through: Camp Dresser & McKee 100 Pringle Avenue, Suite 300 Walnut Creek, CA 95496 Prepared for: San Francisco Public Utilities Commission 1212 Market Street San Francisco, CA 94102 DOCUMENTS DEPT. FEB - 8 2001 April, 1999 SAN FRANCISCO PUBLIC LIBRARY W:\\P.EPORTS\\SFPUC\\LakeMerced\\B04899.c LAKE MERCED 1998 BASELINE NATURAL RESOURCES INVENTORY Chapter Page 1 1ntroduction 1-1 1. 1 Purpose and Objectives 1-1 1.2 Background 1-1 1.3 Mapping Procedures 1-4 2 Soil Types of Lake Merced 2- 1 2. 1 Soil Types and Characteristics 2-1 2.2 Soil Erosion and Slope Stability 2-3 3 Vegetation 3- 1 3. 1 Vegetation Types 3-1 3.2 Sensitive Plant Species 3-6 3.3 Invasive Plants 3-6 3.4 Wetland Vegetation 3-7 4 Wildlife 4-1 4. 1 Wildlife Habitats 4-1 4.2 Special Status Animal Species 4-5 5 Fisheries 5",
+    "mendations 6-2 Trihey & Associates, Inc. W:\\REPORTS\\SFPUC\\LakeMerced\\B04899.doc 3 ’223 05765 1284 7 Photographs 7- 1 8 Literature Cited 8- 1 Appendices Appendix A. Vegetation Appendix B. Wildlife Trihey & Associates, Inc. ii W:\\REPORTS\\SFPUC\\Lal<eMerced\\B 04899.doc List of Figures 1 Vegetation Types of Lake Merced... 1 -2 List of Tables 1 Special Status Plant Species Potentially Present At Lake Merced 3-6 2 Lake Merced Plant Communities, Habitat Types, and Associated Special Status Animal Species 4-7 3 CDFG Fish Species Observations for Lake Merced (1949-1989) 5-2 List of Photographs 1 Top of soil fall on the north shore of East Lake 7-2 2 Heavy foot traffic area by Impound Lake... 7-2 3 Example of gully. 7-3 4 Steeply sloped shorelines of East 7-3 5 Arroyo willow series on northeast shore of East Lake 7-4 6 Young pine trees in standing wat",
+    "te brush series 7-5 8 Wallflower within coyote brush series 7-5 9 Coyote brush/blackberry scrub 7-6 10. Bulrush series 7-6 1 1 . Water smartweed 7-7 12. Tamarisk 7-7 13. Forest habitat 7-8 14. Marsh habitat 7-8 15. Interface of marsh, open water and upland habitat 7-9 List of Plates 1 Soil Types of Lake Merced 2 Plant Communities of Lake Merced 3 Special Status Species Habitat Trihey & Associates, Inc. iii W:\\REPORTS\\SFPUC\\LakeMerced\\B04899.doc Lake Merced 1998 Baseline Natural Resources Inventory 4/22/99 CHAPTER 1 INTRODUCTION The City and County of San Francisco Public Utilities Commission (SFPUC) in concert with the Recreation and Park Department (SFRPD) is developing a comprehensive management program which addresses water supply, urban recreation, and natural resources at Lake Merced. As part of t"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.78,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 2.28,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/lakemerced1998ba1999prep",
+   "deep_link": "https://archive.org/details/lakemerced1998ba1999prep?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "The Public Utilities Commission's baseline survey of what actually lives at the lake — vegetation types, wildlife, special-status species and fish observations back to 1949."
+  },
+  {
+   "identifier": "lakemercedwaters99camp",
+   "title": "Lake Merced watershed sanitary survey",
+   "creator": "Camp, Dresser & McKee,San Francisco Public Utilities Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "Lake Merced",
+   "ocr_excerpts": [
+    "San Francisco Public Utilities Commission Lake Merced Watershed Sanitary Survey Camp Dresser & McKee Inc. Digitized by the Internet Archive in 2014 https://archive.org/details/lakemercedwaters99camp CDM Camp Dresser & McKee Inc. SAN FRANCISCO PUBLIC LIBRARY 3 1223 05765 1326 consulting engineering construction operations One Walnut Creek Center",
+    ", California 94596 Tel: 925 933-2900 Fax: 925 933-41 74 November 1, 1999 Michael Carlin NTS DEPf, San Francisco Public Utilities Commission P_. System Planning Environment and Compliance fto - 8 2001 1212 Market Street SAN FRANiPiQ^ San Francisco, CA 94103 PI JRi tr>,, PUBLIC L/BRARY Subject: Lake Merced Watershed Sanitary Survey Dear Mr. Carlin: This Watershed Sanitary Survey Report for Lake Merced and its surrounding watershed has been prepared as an element of the Draft Lake Merced Comprehensive Management Plan. The purpose of this report is to identify potential pollution sources that might effect Lake water quality. Recommendations were developed for contaminant source identification and removal, watershed management practices, Lake water quality monitoring, and program and infrastructure improvements to enhance Lake quality for its identified beneficial uses: water supply, recreation and wildlife. We would like to thank the many City and County of San Francisco staff, public citizens, and technical consultants that contributed their understanding of Lake Merced and its watershed to this report. We extend special thanks to Ms. Joan Ryan and Ms. Katie Miller (San Francisco Public Utilities Commission) for coordinating City and public information and for providing an in-depth knowledge of the Lake's resources. It has been a pleasure assisting the City and Co",
+    "Executive Summary ES-1 Section 1 Introduction 1 -1 1 .1 Survey Requirements 1-1 1 .2 Purpose and Scope of Survey 1 -1 1 .3 Survey Limitations 1-2 1 .4 Report Organization 1-2 Section 2 Watershed and Water Supply System 2-1 2.1 Description of Watershed 2-1 2.2 Beneficial Uses of Lake Merced 2-5 2.3 Lake Merced Hydrology and Water Supply 2-6 Section 3 Lake Merced Potential Contaminant Sources 3-1 3.1 Survey Methods 3-1 3.2 Potential Contaminant Sources 3-1 Section 4 Lake Merced Water Quality 4-1 4.1 Guidance and Criteria 4-1 4.2 Water Quality Monitoring Program 4-1 4.3 Existing Water Quality 4-5 Section 5 Lake Merced Control and Management Practices 5-1 5.1 Management of Lake Merced 5-1 5.2 Emergency Plans 5-4 Section 6 Conclusions and Recommendations 6-1 6.1 Water Quality Measurements for Beneficial Uses of Lake Merced 6-1 6.2 Potential Contaminant Sources 6-1 6.3 Water Quality Monitoring 6-4 6.4 Recommendations 6-4 CDM Camp Dresser & McKee i W99\\REPORTS\\SANFRAN\\MERCED\\TOC.DOC 1 1 I 3 1223 05765 1326 i Contents Appendix A References Appendix B Photographs "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.09,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.59,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/lakemercedwaters99camp",
+   "deep_link": "https://archive.org/details/lakemercedwaters99camp?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A 1999 survey for the Public Utilities Commission identifying what could pollute the lake, prepared as part of the draft comprehensive management plan and recommending how to trace contamination back to its source."
+  },
+  {
+   "identifier": "C124889945",
+   "title": "San Francisco water & power : a history of the Municipal Water Department and Hetch Hetchy System",
+   "creator": "Hanson, W. D. (Warren Durward), 1921-",
+   "year": 1985,
    "pool": "dl",
    "matched_alias": "Lake Merced",
    "ocr_excerpts": [
-    "sseneasensenenensnansnsssssssegeeeeees 4-5 5-1 Long-Term Strategies to Protect and Conserve Related Water Resources (Goal 3) .............sc-ssesesssssesseesessoeees 5-1 5-2 Location of Major Free-Flowing and Historic Creeks and Lakes ............ssssseseseseseereesessssseeenenennenenensesees snes ses 5-1 5-3 Changes in the Surface Elevation of Lake Merced ............:s:sssssssssssseseseeesreneseensenenensenenennenennenssesessss eset e tees 5-2 5-4 Areas Evaluated by City Groundwater Model ..............s:sscsssesesesesesssssesesenenenenenensnenenensessanenenanennencnensnssss sss eeetee4 5-3 5-5a__ Lake Merced is an Expression of the Local Groundwater Table ...............::sssesessssesesesesssseeeseneeenenensenenensese ste 5-4 5-5b. Water Level in Lake Merced is Affected by Local Pumping ..............:::sscssessssssseseeeeetsensenessenesesensnnenannenneceeses 5-4 5-6 Changes in the Surface Elevation of Lake Merced Resulting from 5-mgd Recharge ...........ccceseseeeeseeeeseseseeees 5-5 6-1 Long-Term Strategies to Improve Ability to Deliver Water During Emergencies aya sear wees negara ce nes cnt s nnn sannananeueasauroseesosvennasecsesetacwanreieaeesécenrerénssteres 6-1 6-2 Location of San Francisco Water Supply Facilities Potentially Vulnerable in an",
-    "fountains and decorative pools 5&2 Evaluate, and implement where feasible, the potential for groundwater to help control corrosion in the City’s water distribution system 117808.06.2Z Table ES-2(9/85 revision) 9-15-95sbm e Collect and analyze additional hydrogeologic water or to retain existing groundwater for use during information at Lake Merced, evaluate alternative times of need groundwater management practices, and implement the selected alternative(s) to help restore Lake Merced ° Evaluate the interaction of existing surface water water levels bodies and groundwater to assess potential impacts from increased groundwater use e Identify potential conjunctive use opportunities to use the local groundwater basins to store surplus surface ES-4 SAC/BA35516/011.DOC/9-95 e Identify the potential development of groundw",
-    "rs ures ES-1 and ES-2 show the proposed schedule for implementing the short-term activities. SHORT.TERAI ACTIVITIES (Next 5 Years) Evaluate potential for saltwater intrusion Develop and implement a wellhead protection program ae : ig propranr Establish a Groundwater Management Unit within the Water Department Conc adore ld natgaton at Lake Merced Besetadin erat eb arcs water levelo in Chy stearpe set Study. Bs seal Design/Develop Construct EEE Operate/Implement Figure ES-1 Implementation Schedule for Short-Term Groundwater Management Activities SAC/BA35516/011.DOC/9-95 ES-5 SHORT-TERM ACTIVITIES (Next 5 Years) Year 1 Study the feasibility of installing large-capacity stand",
-    "16/010.DOC/9-95 Tab"
+    "t San Francisco City Water Works Schussler starts second long tunnel on Pilarcitos conduit line Schussler named chief engineer of Spring Valley Water Works Main Pilarcitos Dam completed to height of 70 feet Spring Valley buys San Andrés Valley and watershed Schussler starts construction of San Andrés Dam Spring Valley acquires rights to Lake Merced Spring Valley Water Works sues San Francisco for water payment for “municipal purposes” State legislature considers bill by Lake Tahoe Water Company to tunnel through Sierra Nevada. San Francisco Mayor Selby vetos Board of Super- visors $6 million bond issue as “inappropriate” Lock’s Creek Line Aqueduct (Stone Dam Tunnel #1) started Sto",
+    "r’s thoughts returned to the San Andrés Valley and he showed it to Spring Valley’s executive board early in 1868. The board bought the valley and four or five square miles of the watershed. In April, Schussler started damming the San Andrés Valley and building its inde- pendent pipeline. In August, Spring Valley acquired rights at spring-fed Lake Merced in the City. The great engineering feat of that day was driving a tunnel through Buri-Buri Ridge from the reservoir to the gulch north of Hillcrest Boulevard in Millbrae. ie Elevation ter yori 700, Highwaler 696. Lake Pilarcitos. Pilarcitos “ Pilarcitos Main Dam. 7 aaa Waste — Weir. ZF) Specialty: Lisle hee a",
+    "ulgas, Feliz and San Mateo. Two outlet towers were constructed near the dam, one in 1891 and the other 40 years later. They are connected by gravity flow transmission mains, 17 miles long and mostly of 60-inch pipe, to University Mound Reservoir, and by another main, the 20-mile long Sunset Pipeline, of 78- and 60-inch diameter, through the Lake Merced Pumping Station to Sunset Reservoir. These pipelines are interconnected just below Crystal Springs Dam allowing supply to any transmission main. Most Hetch Hetchy water, formerly delivered into Crystal Springs, now bypasses that reservoir via the Crys- tal Springs Bypass Tunnel coming off the Pulgas Portal Tunnel, and is routed through the",
+    "re districts being served vary greatly in area and can usually be supplied by more than one of these sources. San Francisco’s twelve municipal reservoirs can hold, at capacity, some 414 million gallons (1,271 acre feet), about a five-day supply for the City. In addition, there is an emergency supply immediately available within the City at Lake Merced which holds 2.5 billion gallons (7,872 acre feet). In order of their size, the reservoirs ranked by their capacities in millions of gallons: Lake Merced* 250510) Sunset 174.8 University Mound 140.9 Balboa North Basin** 75.0 Sutro 31.4 Summit 14.0 College Hill 14.1 Stanford Heights 12.9 Merced Manor 9.5 McLaren Park Tanks 8.0 Lombard 323 Francisco* BaSs Hunter’s Point ipl Potrero 1.0 The under"
    ],
    "collection": "igscalocalgovdocs",
    "relevance": {
-    "score": 7.0,
+    "score": 7.06,
     "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
     "substantive": true,
     "substantive_direct": true,
     "hits": 4,
-    "density": 2.0,
+    "density": 2.06,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124889945",
+   "deep_link": "https://archive.org/details/C124889945?q=Lake+Merced",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "history",
+   "doc_type_label": "History",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "History",
+   "salient": false,
+   "gloss": "A 1985 history of the Municipal Water Department, covering the Spring Valley Water Works era that shaped the city's peninsula watersheds."
+  },
+  {
+   "identifier": "vistagrandediver2001ch2m",
+   "title": "Vista Grande diversion feasibility evaluation / prepared for City and County of San Francisco, City of Daly City, County of San Mateo ; prepared by CH2M Hill and the Duffey Company",
+   "creator": "CH2M HILL (Firm)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Lake Merced",
+   "ocr_excerpts": [
+    "liy of San Maieo and The Duffey Company Vista Grande Diversion Feasibility Evaluation REF 333.9163 C34 Table of Contents Introduction 1 Summary 1 Background 1 Lake Merced 3 Vista Grande 9 Project Participants 12 Project Approach 12 Water Quality Assessment 15 General Overview of Storm Water Constituents 15 Summary of Available Water Quality Data 16 Vista Grande Canal 16 Lake Merced 16 Lake Merced Drainage Basin 16 Key Water Quality Parameters for Treatment 16 Key Water Quality Parameters for Lake and Habitat Protection 20 Constituents of Concern 20 Correlation Between TSS and Metals 21 Lake Water Quality Issues 22 Habitat Quality Issues 23 RWQCB Issues 24 Background 24 Initial Consideration of",
+    "ment A - Project Photos Attachment B - Additional Treatment Wetlands Information List of Tables 1 Estimated Peak Flows and Maximum Surcharge Volumes at Entrance to Vista Grande Tunnel 12 2 Potential Storm Water Treatment Alternatives for the Vista Grande Diversion 14 3 Summary of Vista Grande Canal and Lake Merced Water Quality Data 18 4 Summary of Vista Grande, Lake Merced, and Drainage Basin 2000-2001 Water Quality Data 19 5 Water Quality Parameters for Identified Lake Merced Beneficial Uses 20 6 Correlation Between Metals and TSS Concentrations in Stormwater Runoff 22 7 Summary of Evaluated Criteria for Each Treatment Alternative 33 8 Generalized Treatment Wetland Performance Characteristics 37 9 Treatment Efficiency Comparison 44 10 Key to Numeric Assessment Using the Siting I",
+    "ormance ..B-2 B-2 Columbia, Missouri Regional WWTP Treatment Wetland Design and Performance Data B-2 SAC/PROJ//160507/TM2/FINALVGREPORT.DOC OCTOBER 17,2001 Digitized by the Internet Archive in 2016 https://archive.org/details/vistagrandediver2001ch2m CONTENTS List of Figures 1 Features of the Southern Lake Merced and Vista Grande Area 2 2 Historic Range of the Elevation of Lake Merced 4 3 Lake Merced Watershed: Comparison of the 1935 and 1995 Drainage Areas 6 4 Lake Level Response to 5-mgd Addition of SFPUC Imported Surface Water 7 5 Extent of the Westside Groundwater Basin 8 6 Vista Grande Stormwater Drainage Basin 10 7 2000-2001 Water Quality Sampling Locations 17 8 Hydrographs for Historic Vista",
+    "g Vista Grande Flow Response 29 11 Comparison of Maximum Flow Rates to Storage Volume Requirements 31 12 Major Categories of Treatment Wetland Systems 366 13 Estimated Storage Volume of Impound Lake 40 14 Preferred Alternative Approach 50 15 Proposed Facility Locations 52 16 Schematic Cross-Section of Lake Merced Overflow Structure 54 17 Schematic View of a Structural Control Measure 56 18 Proposed Approach to Treatment Wetlands 58 19 Estimated Treatment Wetlands Water Quality Benefits 60 20 Approach and Schedule for Phase I Pilot Test 65 SAC/PROJ//160507/TM2/FINALVGREPORT.DOC OaOBER17.2001 r "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.45,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.45,
     "title_hit": false
    },
    "materiality": {
@@ -38,11 +259,15 @@
     "named_genre": true,
     "generic_serial": false
    },
-   "url": "https://archive.org/details/C124920621",
-   "deep_link": "https://archive.org/details/C124920621?q=Lake+Merced",
-   "source_label": "Internet Archive — Democracy's Library",
-   "group": "Plans & environmental review",
-   "salient": true
+   "url": "https://archive.org/details/vistagrandediver2001ch2m",
+   "deep_link": "https://archive.org/details/vistagrandediver2001ch2m?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": false
   },
   {
    "identifier": "sanfranciscogrou1996sanf",
@@ -81,8 +306,57 @@
    "url": "https://archive.org/details/sanfranciscogrou1996sanf",
    "deep_link": "https://archive.org/details/sanfranciscogrou1996sanf?q=Lake+Merced",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false
+  },
+  {
+   "identifier": "C124920621",
+   "title": "San Francisco groundwater master plan : preliminary draft",
+   "creator": "San Francisco (Calif.). Water Department",
+   "year": 1995,
+   "pool": "dl",
+   "matched_alias": "Lake Merced",
+   "ocr_excerpts": [
+    "sseneasensenenensnansnsssssssegeeeeees 4-5 5-1 Long-Term Strategies to Protect and Conserve Related Water Resources (Goal 3) .............sc-ssesesssssesseesessoeees 5-1 5-2 Location of Major Free-Flowing and Historic Creeks and Lakes ............ssssseseseseseereesessssseeenenennenenensesees snes ses 5-1 5-3 Changes in the Surface Elevation of Lake Merced ............:s:sssssssssssseseseeesreneseensenenensenenennenennenssesessss eset e tees 5-2 5-4 Areas Evaluated by City Groundwater Model ..............s:sscsssesesesesesssssesesenenenenenensnenenensessanenenanennencnensnssss sss eeetee4 5-3 5-5a__ Lake Merced is an Expression of the Local Groundwater Table ...............::sssesessssesesesesssseeeseneeenenensenenensese ste 5-4 5-5b. Water Level in Lake Merced is Affected by Local Pumping ..............:::sscssessssssseseeeeetsensenessenesesensnnenannenneceeses 5-4 5-6 Changes in the Surface Elevation of Lake Merced Resulting from 5-mgd Recharge ...........ccceseseeeeseeeeseseseeees 5-5 6-1 Long-Term Strategies to Improve Ability to Deliver Water During Emergencies aya sear wees negara ce nes cnt s nnn sannananeueasauroseesosvennasecsesetacwanreieaeesécenrerénssteres 6-1 6-2 Location of San Francisco Water Supply Facilities Potentially Vulnerable in an",
+    "fountains and decorative pools 5&2 Evaluate, and implement where feasible, the potential for groundwater to help control corrosion in the City’s water distribution system 117808.06.2Z Table ES-2(9/85 revision) 9-15-95sbm e Collect and analyze additional hydrogeologic water or to retain existing groundwater for use during information at Lake Merced, evaluate alternative times of need groundwater management practices, and implement the selected alternative(s) to help restore Lake Merced ° Evaluate the interaction of existing surface water water levels bodies and groundwater to assess potential impacts from increased groundwater use e Identify potential conjunctive use opportunities to use the local groundwater basins to store surplus surface ES-4 SAC/BA35516/011.DOC/9-95 e Identify the potential development of groundw",
+    "rs ures ES-1 and ES-2 show the proposed schedule for implementing the short-term activities. SHORT.TERAI ACTIVITIES (Next 5 Years) Evaluate potential for saltwater intrusion Develop and implement a wellhead protection program ae : ig propranr Establish a Groundwater Management Unit within the Water Department Conc adore ld natgaton at Lake Merced Besetadin erat eb arcs water levelo in Chy stearpe set Study. Bs seal Design/Develop Construct EEE Operate/Implement Figure ES-1 Implementation Schedule for Short-Term Groundwater Management Activities SAC/BA35516/011.DOC/9-95 ES-5 SHORT-TERM ACTIVITIES (Next 5 Years) Year 1 Study the feasibility of installing large-capacity stand",
+    "16/010.DOC/9-95 Tab"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 7.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.0,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124920621",
+   "deep_link": "https://archive.org/details/C124920621?q=Lake+Merced",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false,
+   "gloss": "A 1995 groundwater master plan examining changes in Lake Merced's surface elevation and the case for retaining local groundwater."
   },
   {
    "identifier": "sanfranciscomast1573sanf",
@@ -122,204 +396,11 @@
    "url": "https://archive.org/details/sanfranciscomast1573sanf",
    "deep_link": "https://archive.org/details/sanfranciscomast1573sanf?q=Lake+Merced",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited (1971–1973)",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "C124889945",
-   "title": "San Francisco water & power : a history of the Municipal Water Department and Hetch Hetchy System",
-   "creator": "Hanson, W. D. (Warren Durward), 1921-",
-   "year": 1985,
-   "pool": "dl",
-   "matched_alias": "Lake Merced",
-   "ocr_excerpts": [
-    "t San Francisco City Water Works Schussler starts second long tunnel on Pilarcitos conduit line Schussler named chief engineer of Spring Valley Water Works Main Pilarcitos Dam completed to height of 70 feet Spring Valley buys San Andrés Valley and watershed Schussler starts construction of San Andrés Dam Spring Valley acquires rights to Lake Merced Spring Valley Water Works sues San Francisco for water payment for “municipal purposes” State legislature considers bill by Lake Tahoe Water Company to tunnel through Sierra Nevada. San Francisco Mayor Selby vetos Board of Super- visors $6 million bond issue as “inappropriate” Lock’s Creek Line Aqueduct (Stone Dam Tunnel #1) started Sto",
-    "r’s thoughts returned to the San Andrés Valley and he showed it to Spring Valley’s executive board early in 1868. The board bought the valley and four or five square miles of the watershed. In April, Schussler started damming the San Andrés Valley and building its inde- pendent pipeline. In August, Spring Valley acquired rights at spring-fed Lake Merced in the City. The great engineering feat of that day was driving a tunnel through Buri-Buri Ridge from the reservoir to the gulch north of Hillcrest Boulevard in Millbrae. ie Elevation ter yori 700, Highwaler 696. Lake Pilarcitos. Pilarcitos “ Pilarcitos Main Dam. 7 aaa Waste — Weir. ZF) Specialty: Lisle hee a",
-    "ulgas, Feliz and San Mateo. Two outlet towers were constructed near the dam, one in 1891 and the other 40 years later. They are connected by gravity flow transmission mains, 17 miles long and mostly of 60-inch pipe, to University Mound Reservoir, and by another main, the 20-mile long Sunset Pipeline, of 78- and 60-inch diameter, through the Lake Merced Pumping Station to Sunset Reservoir. These pipelines are interconnected just below Crystal Springs Dam allowing supply to any transmission main. Most Hetch Hetchy water, formerly delivered into Crystal Springs, now bypasses that reservoir via the Crys- tal Springs Bypass Tunnel coming off the Pulgas Portal Tunnel, and is routed through the",
-    "re districts being served vary greatly in area and can usually be supplied by more than one of these sources. San Francisco’s twelve municipal reservoirs can hold, at capacity, some 414 million gallons (1,271 acre feet), about a five-day supply for the City. In addition, there is an emergency supply immediately available within the City at Lake Merced which holds 2.5 billion gallons (7,872 acre feet). In order of their size, the reservoirs ranked by their capacities in millions of gallons: Lake Merced* 250510) Sunset 174.8 University Mound 140.9 Balboa North Basin** 75.0 Sutro 31.4 Summit 14.0 College Hill 14.1 Stanford Heights 12.9 Merced Manor 9.5 McLaren Park Tanks 8.0 Lombard 323 Francisco* BaSs Hunter’s Point ipl Potrero 1.0 The under"
-   ],
-   "collection": "igscalocalgovdocs",
-   "relevance": {
-    "score": 7.06,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 2.06,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/C124889945",
-   "deep_link": "https://archive.org/details/C124889945?q=Lake+Merced",
-   "source_label": "Internet Archive — Democracy's Library",
-   "group": "Histories & surveys",
-   "salient": false
-  },
-  {
-   "identifier": "feasibilityevalu1919ch2m",
-   "title": "Feasibility evaluation of alternatives to raise Lake Merced : draft",
-   "creator": "CH2M HILL",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "ocr_excerpts": [
-    "Lake Merced Technical Memorandum No. 1 Feasibility Evaluation of Alternatives to Raise Lake Merced D DRAFT DOCUMENTS DEPT. REF 333.9163 L1478 October 19, 1998 FEB - 8 2001 SAN FRANCISCO PUBLIC LIBRARY 5/S GOVERNMENT 1NFOPW^*rtOM esm&SF: SAN FRA NCISCO PSiCUC USRART CIVIC CEJtfTES: SAN FRANCISCO. CALIFORNIA 94102 SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK No! to be taken from the",
-    "es 16 5 Second Stage :Ey dilation of Alternatives 17 6 Key to Numeric Assessment Using the Institutional Issues Criterion as an Example 18 7 Numeric Assessmehtpf Alternatives 20 8 Summary of Estimated Costs by Alternatives for a 10-year Period 22 9 9 10 11 16 16 21 LIST OF FIGURES 1 1935 Lake Merced Aerial Photograph 2 2 1995 Lake Merced Aerial Photograph 4 3 Lake Merced Watershed: Comparison of the 1935 and 1998 Drainage Areas 4 Historic Range in Elevation of Lake Merced (1930 to 1998) 6 5 Extent of the Westside Groundwater Basin 6 Lake Level Response to 5-mgd Addition of Imported Surface Water 8 7 Schematic Layout of Alternative 1 23 8 Schematic Layout of Alternative 5 25 9 Schematic Layout of Alternative 7 26 Digitized by the Internet Archive in 2016 https://archive.org/details/feasibilityevalu1919ch2m 3 1223 05770 1808 LAKE MERCED TECHNICAL MEMORANDUM 1 CH2MHILL Feasibility Evaluation of Alternatives to Raise Lake Merced prepared for: San Francisco Public Utilities Commission prepared BY: Toni peZzetti/CH2M HILL Michele Bellows/The Duffey Company DATE: October 19, 1998 Summary and Conclusions This technical memorandum conducts preliminary evalhation;;Q:f optioned5 raise and maintain the level of Lake Merced (“the Lake\"). It is %s been prepared as part of Task WRS- 1.4 of the Lake Merced Comprehensive Management Plan (W98), and is intended to be a tool used by the San Francisco Public Utilities Commission (SFPUG). to assess the feasibility of raising and maintaining the lake level within ^specified range. This technical memorandum identifies and describes options that were consiMetedy ey",
-    "mported Surface Water Directly to the Lake $ 2,200,000 145 mg 2 ft/yr 5 Inject Recycled Water into the Surrounding Aquifer at Harding Park and SFSU Wells $ 8,200,000 121 mg 2 in/yr 7 Divert Storm Water from Vista Grande Canal to the Lake $ 3,900,000 63 mg 4 Vz in/yr Background The Lake Merced area has undergone significant changes during the 20th century. At the beginning of the century, the area was largely undeveloped (Figure 1). Now the area is SAC/C:\\AATONI\\S FBERM\\TM1.DOC 11119.08.01 sac14H18-08.01 Figl Lake Merced 35 (10/16/98)afo Figure 1 Lake Merced Area in 1935 FEASIBILITY EVALUATION OF ALTERNATIVES TO heavily urbanized (Figure 2). This has decreased the amount of recharge water that enters the Lake because rainfall that previously ran off the surrounding land into the Lake is now "
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 11.82,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 3.32,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 5.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/feasibilityevalu1919ch2m",
-   "deep_link": "https://archive.org/details/feasibilityevalu1919ch2m?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "lakemerced1998ba1999prep",
-   "title": "Lake Merced 1998 baseline natural resources inventory",
-   "creator": "prepared by: Trihey & Associates, Inc., through: Camp Dresser & McKee,prepared for: San Francisco Public Utilities Commission",
-   "year": 1998,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "ocr_excerpts": [
-    "Lake Merced 1998 Baseline Inventory San Francisco Public Utilities Commission [§T*T#1 Digitized by the Internet Archive in 2015 https://archive.org/details/lakemerced1998ba1999prep LAKE MERCED 1998 BASELINE NATURAL RESOURCES INVENTORY Prepared by: Trihey & Associates, Inc. 590 Ygnacio Valley Road, Suite 200 Walnut Creek, CA 94596 (925) 935-9920 Through: Camp Dresser & McKee 100 Pringle Avenue, Suite 300 Walnut Creek, CA 95496 Prepared for: San Francisco Public Utilities Commission 1212 Market Street San Francisco, CA 94102 DOCUMENTS DEPT. FEB - 8 2001 April, 1999 SAN FRANCISCO PUBLIC LIBRARY W:\\P.EPORTS\\SFPUC\\LakeMerced\\B04899.c LAKE MERCED 1998 BASELINE NATURAL RESOURCES INVENTORY Chapter Page 1 1ntroduction 1-1 1. 1 Purpose and Objectives 1-1 1.2 Background 1-1 1.3 Mapping Procedures 1-4 2 Soil Types of Lake Merced 2- 1 2. 1 Soil Types and Characteristics 2-1 2.2 Soil Erosion and Slope Stability 2-3 3 Vegetation 3- 1 3. 1 Vegetation Types 3-1 3.2 Sensitive Plant Species 3-6 3.3 Invasive Plants 3-6 3.4 Wetland Vegetation 3-7 4 Wildlife 4-1 4. 1 Wildlife Habitats 4-1 4.2 Special Status Animal Species 4-5 5 Fisheries 5",
-    "mendations 6-2 Trihey & Associates, Inc. W:\\REPORTS\\SFPUC\\LakeMerced\\B04899.doc 3 ’223 05765 1284 7 Photographs 7- 1 8 Literature Cited 8- 1 Appendices Appendix A. Vegetation Appendix B. Wildlife Trihey & Associates, Inc. ii W:\\REPORTS\\SFPUC\\Lal<eMerced\\B 04899.doc List of Figures 1 Vegetation Types of Lake Merced... 1 -2 List of Tables 1 Special Status Plant Species Potentially Present At Lake Merced 3-6 2 Lake Merced Plant Communities, Habitat Types, and Associated Special Status Animal Species 4-7 3 CDFG Fish Species Observations for Lake Merced (1949-1989) 5-2 List of Photographs 1 Top of soil fall on the north shore of East Lake 7-2 2 Heavy foot traffic area by Impound Lake... 7-2 3 Example of gully. 7-3 4 Steeply sloped shorelines of East 7-3 5 Arroyo willow series on northeast shore of East Lake 7-4 6 Young pine trees in standing wat",
-    "te brush series 7-5 8 Wallflower within coyote brush series 7-5 9 Coyote brush/blackberry scrub 7-6 10. Bulrush series 7-6 1 1 . Water smartweed 7-7 12. Tamarisk 7-7 13. Forest habitat 7-8 14. Marsh habitat 7-8 15. Interface of marsh, open water and upland habitat 7-9 List of Plates 1 Soil Types of Lake Merced 2 Plant Communities of Lake Merced 3 Special Status Species Habitat Trihey & Associates, Inc. iii W:\\REPORTS\\SFPUC\\LakeMerced\\B04899.doc Lake Merced 1998 Baseline Natural Resources Inventory 4/22/99 CHAPTER 1 INTRODUCTION The City and County of San Francisco Public Utilities Commission (SFPUC) in concert with the Recreation and Park Department (SFRPD) is developing a comprehensive management program which addresses water supply, urban recreation, and natural resources at Lake Merced. As part of t"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 10.78,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 2.28,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/lakemerced1998ba1999prep",
-   "deep_link": "https://archive.org/details/lakemerced1998ba1999prep?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "lakemercedwaterr1993sanf",
-   "title": "Lake Merced water resource planning study",
-   "creator": "San Francisco Water Department,prepared by GEO/Resource Consultants, Inc. in association with Montgomery/Watson, Jones and Stokes Associates, Inc., Public Affairs Management",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "ocr_excerpts": [
-    "LAKE MERCED WATER RESOURCE PLANNING STUDY San Francisco Water Department D May 1 993 REF 333.9163 L 1 48 jg*!' Geo/Resource Consultants, Inc, Digitized by the Internet Archive in 2016 https://archive.org/details/lakemercedwaterr1993sanf Ill SAN FRANCISCO PUBLIC LIBRARY Geo/Resource Consultants, Inc. Ill",
-    "reel San Francisco. California 94133 (415)775-3177 FAX (415) 775-2359 GEOLOGISTS / ENGINEERS / ENVIRONMENTAL SCIENTISTS 3 1223 05749 5690 Arizona California Hawaii Virginia May 24, 1993 Mr. Mickey Heo SAN FRANCISCO WATER DEPARTMENT 425 Mason Street San Francisco, California RE: SUBMITTAL OF THE LAKE MERCED WATER RESOURCE PLANNING STUDY Dear Mr. Heo, In accordance with our contract with the San Francisco Water Department, Geo/Resource Consultants, Inc. (GRC) is pleased to transmit the Lake Merced Water Resource Planning Study report. As an evaluation of new and existing data pertinent to lake use and water quality issues, this report will serve as a key step in the planning process for Lake Merced. Thank you for the opportunity to work on this interesting study. Sincerely, GEO/RESOURCE CONSULTANTS, INC. Eva Vanek Project Manager DOCUMENTS dept. FEB - 8 200) SAN FRANCISCO PUBLIC LIBRARY Alan D. Tryhorn, C.E.G. Senior Vice President i - LAKE MERCED WATER RESOURCE PLANNING STUDY Prepared for: SAN FRANCISCO WATER DEPARTMENT 425 MASON STREET SAN FRANCISCO, CALIFORNIA Prepared by: GEO/RESOURCE CONSULTANTS, INC. 505 BEACH STREET SAN FRANCISCO, CALIFORNIA In association with: MONTGOMERY/WATSON JONES AND STOKES ASSOCIATES, INC PUBLIC AFFAIRS MANAGEMENT MAY, 1993 GRC PROJECT NUMBER: 1756-000 Geo/Resource Consultants, Inc. ■ 3 1223 05749 5690 TABLE OF CONTENTS Paee EXECUTIVE SUMMARY i IT) INTRODUCTION 1 1.1 Purpose and Scope of Study 1 2.0 DESCRIPTION AND USES OF LAKE MERCED . 3 2.1 Lake Development and Historical Usage 3 22 Lake Merced Water Quality Determinants 4 2.2.1 Impoundment Characteristics 4 2.2.2 Groundwater 5 2.2.3 Recreation Use and Fish and Wildlife Habitat 6 2.2.4 Stormwater 8 2.2.5 Point Source Contamination 10 2.3 Impacts of Recent Regulatory Requirements 10 2.3.1 NPDES Permitting 11 2.3.2 Surface Water Treatment Rule",
-    "eneficial Uses 43 5.1.1 Emergency Water Supply 43 5.1.2 Threatened and Special Status Species 43 5.1.3 Recreation 5.1.4 Habitat for Non-Special Status Fish and Wildlife 53 Potential Conflicts 44 5.3 Lake Management Objectives 45 5.4 Public Involvement 45 5.4.1 Conflict Resolution 46 6.0 HYDROLOGY OF LAKE MERCED 47 6.1 Background 47 62 Groundwater Model 47 6.2.1 Model Boundaries 48 6.2.2 Aquifer Characteristics 48 6.2.3 Groundwater Recharge 49 6.2.4 Pumpage 49 6.2.5 Water Levels 49 6.2.6 Model Calibration 50 6.3 Groundwater Budgets 50 6.4 Effects of Well Pumping and Drought on Lake Levels 51 6.4.1 Historical Effects of Golf Course and M"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 9.41,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 0.91,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 1.75,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/lakemercedwaterr1993sanf",
-   "deep_link": "https://archive.org/details/lakemercedwaterr1993sanf?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "lakemercedwaters99camp",
-   "title": "Lake Merced watershed sanitary survey",
-   "creator": "Camp, Dresser & McKee,San Francisco Public Utilities Commission",
-   "year": 1999,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "ocr_excerpts": [
-    "San Francisco Public Utilities Commission Lake Merced Watershed Sanitary Survey Camp Dresser & McKee Inc. Digitized by the Internet Archive in 2014 https://archive.org/details/lakemercedwaters99camp CDM Camp Dresser & McKee Inc. SAN FRANCISCO PUBLIC LIBRARY 3 1223 05765 1326 consulting engineering construction operations One Walnut Creek Center",
-    ", California 94596 Tel: 925 933-2900 Fax: 925 933-41 74 November 1, 1999 Michael Carlin NTS DEPf, San Francisco Public Utilities Commission P_. System Planning Environment and Compliance fto - 8 2001 1212 Market Street SAN FRANiPiQ^ San Francisco, CA 94103 PI JRi tr>,, PUBLIC L/BRARY Subject: Lake Merced Watershed Sanitary Survey Dear Mr. Carlin: This Watershed Sanitary Survey Report for Lake Merced and its surrounding watershed has been prepared as an element of the Draft Lake Merced Comprehensive Management Plan. The purpose of this report is to identify potential pollution sources that might effect Lake water quality. Recommendations were developed for contaminant source identification and removal, watershed management practices, Lake water quality monitoring, and program and infrastructure improvements to enhance Lake quality for its identified beneficial uses: water supply, recreation and wildlife. We would like to thank the many City and County of San Francisco staff, public citizens, and technical consultants that contributed their understanding of Lake Merced and its watershed to this report. We extend special thanks to Ms. Joan Ryan and Ms. Katie Miller (San Francisco Public Utilities Commission) for coordinating City and public information and for providing an in-depth knowledge of the Lake's resources. It has been a pleasure assisting the City and Co",
-    "Executive Summary ES-1 Section 1 Introduction 1 -1 1 .1 Survey Requirements 1-1 1 .2 Purpose and Scope of Survey 1 -1 1 .3 Survey Limitations 1-2 1 .4 Report Organization 1-2 Section 2 Watershed and Water Supply System 2-1 2.1 Description of Watershed 2-1 2.2 Beneficial Uses of Lake Merced 2-5 2.3 Lake Merced Hydrology and Water Supply 2-6 Section 3 Lake Merced Potential Contaminant Sources 3-1 3.1 Survey Methods 3-1 3.2 Potential Contaminant Sources 3-1 Section 4 Lake Merced Water Quality 4-1 4.1 Guidance and Criteria 4-1 4.2 Water Quality Monitoring Program 4-1 4.3 Existing Water Quality 4-5 Section 5 Lake Merced Control and Management Practices 5-1 5.1 Management of Lake Merced 5-1 5.2 Emergency Plans 5-4 Section 6 Conclusions and Recommendations 6-1 6.1 Water Quality Measurements for Beneficial Uses of Lake Merced 6-1 6.2 Potential Contaminant Sources 6-1 6.3 Water Quality Monitoring 6-4 6.4 Recommendations 6-4 CDM Camp Dresser & McKee i W99\\REPORTS\\SANFRAN\\MERCED\\TOC.DOC 1 1 I 3 1223 05765 1326 i Contents Appendix A References Appendix B Photographs "
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 9.09,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 0.59,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/lakemercedwaters99camp",
-   "deep_link": "https://archive.org/details/lakemercedwaters99camp?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
    "salient": false
   },
   {
@@ -359,48 +440,13 @@
    "url": "https://archive.org/details/C101694962",
    "deep_link": "https://archive.org/details/C101694962?q=Lake+Merced",
    "source_label": "Internet Archive — Democracy's Library",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "vistagrandediver2001ch2m",
-   "title": "Vista Grande diversion feasibility evaluation / prepared for City and County of San Francisco, City of Daly City, County of San Mateo ; prepared by CH2M Hill and the Duffey Company",
-   "creator": "CH2M HILL (Firm)",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "ocr_excerpts": [
-    "liy of San Maieo and The Duffey Company Vista Grande Diversion Feasibility Evaluation REF 333.9163 C34 Table of Contents Introduction 1 Summary 1 Background 1 Lake Merced 3 Vista Grande 9 Project Participants 12 Project Approach 12 Water Quality Assessment 15 General Overview of Storm Water Constituents 15 Summary of Available Water Quality Data 16 Vista Grande Canal 16 Lake Merced 16 Lake Merced Drainage Basin 16 Key Water Quality Parameters for Treatment 16 Key Water Quality Parameters for Lake and Habitat Protection 20 Constituents of Concern 20 Correlation Between TSS and Metals 21 Lake Water Quality Issues 22 Habitat Quality Issues 23 RWQCB Issues 24 Background 24 Initial Consideration of",
-    "ment A - Project Photos Attachment B - Additional Treatment Wetlands Information List of Tables 1 Estimated Peak Flows and Maximum Surcharge Volumes at Entrance to Vista Grande Tunnel 12 2 Potential Storm Water Treatment Alternatives for the Vista Grande Diversion 14 3 Summary of Vista Grande Canal and Lake Merced Water Quality Data 18 4 Summary of Vista Grande, Lake Merced, and Drainage Basin 2000-2001 Water Quality Data 19 5 Water Quality Parameters for Identified Lake Merced Beneficial Uses 20 6 Correlation Between Metals and TSS Concentrations in Stormwater Runoff 22 7 Summary of Evaluated Criteria for Each Treatment Alternative 33 8 Generalized Treatment Wetland Performance Characteristics 37 9 Treatment Efficiency Comparison 44 10 Key to Numeric Assessment Using the Siting I",
-    "ormance ..B-2 B-2 Columbia, Missouri Regional WWTP Treatment Wetland Design and Performance Data B-2 SAC/PROJ//160507/TM2/FINALVGREPORT.DOC OCTOBER 17,2001 Digitized by the Internet Archive in 2016 https://archive.org/details/vistagrandediver2001ch2m CONTENTS List of Figures 1 Features of the Southern Lake Merced and Vista Grande Area 2 2 Historic Range of the Elevation of Lake Merced 4 3 Lake Merced Watershed: Comparison of the 1935 and 1995 Drainage Areas 6 4 Lake Level Response to 5-mgd Addition of SFPUC Imported Surface Water 7 5 Extent of the Westside Groundwater Basin 8 6 Vista Grande Stormwater Drainage Basin 10 7 2000-2001 Water Quality Sampling Locations 17 8 Hydrographs for Historic Vista",
-    "g Vista Grande Flow Response 29 11 Comparison of Maximum Flow Rates to Storage Volume Requirements 31 12 Major Categories of Treatment Wetland Systems 366 13 Estimated Storage Volume of Impound Lake 40 14 Preferred Alternative Approach 50 15 Proposed Facility Locations 52 16 Schematic Cross-Section of Lake Merced Overflow Structure 54 17 Schematic View of a Structural Control Measure 56 18 Proposed Approach to Treatment Wetlands 58 19 Estimated Treatment Wetlands Water Quality Benefits 60 20 Approach and Schedule for Phase I Pilot Test 65 SAC/PROJ//160507/TM2/FINALVGREPORT.DOC OaOBER17.2001 r "
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 2.45,
-    "sf_context": false,
-    "rival_city": true,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 2.45,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 5.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/vistagrandediver2001ch2m",
-   "deep_link": "https://archive.org/details/vistagrandediver2001ch2m?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": false,
+   "gloss": "The final report of the PUC Infrastructure Task Force (2000-2002) on the commission's capital programme and its deferred projects."
   }
  ]
 }

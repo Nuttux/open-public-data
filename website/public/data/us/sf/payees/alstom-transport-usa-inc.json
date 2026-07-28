@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.734797+00:00",
+ "generated_at": "2026-07-28T11:43:47.705036+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -25,6 +25,85 @@
  "top_departments": [
   "AIR Airport Commission"
  ],
+ "profile": {
+  "n_vouchers": 419,
+  "departments": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 221397549.93,
+    "n_vouchers": 360
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 1061748.05,
+    "n_vouchers": 59
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "529990",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 170583575.98,
+    "n_vouchers": 286
+   },
+   {
+    "code": "567110",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 48841552.0,
+    "n_vouchers": 71
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 2268638.2,
+    "n_vouchers": 30
+   },
+   {
+    "code": "541100",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 765531.8,
+    "n_vouchers": 30
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 22272095.86,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 22122935.91,
+    "n_vouchers": 31
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 149159.95,
+    "n_vouchers": 4
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000014594",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.741283+00:00",
+ "generated_at": "2026-07-28T11:43:47.715641+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -22,6 +22,56 @@
  "top_departments": [
   "AIR Airport Commission"
  ],
+ "profile": {
+  "n_vouchers": 83,
+  "departments": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 136600737.29,
+    "n_vouchers": 64
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 2192626.9,
+    "n_vouchers": 19
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "567110",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 132906967.29,
+    "n_vouchers": 44
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 2,
+  "counts_are_floor": false,
+  "recent_fy": 2021,
+  "recent_total_usd": 13174579.44,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 13174579.44,
+    "n_vouchers": 14
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

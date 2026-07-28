@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.736372+00:00",
+ "generated_at": "2026-07-28T11:43:47.707729+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,168 @@
  "top_departments": [
   "AIR Airport Commission"
  ],
+ "profile": {
+  "n_vouchers": 11194,
+  "departments": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 132840646.25,
+    "n_vouchers": 3616
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 50477726.43,
+    "n_vouchers": 5378
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 5404707.93,
+    "n_vouchers": 243
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 1699875.07,
+    "n_vouchers": 643
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 947224.3,
+    "n_vouchers": 592
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 585414.45,
+    "n_vouchers": 668
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 145287.31,
+    "n_vouchers": 54
+   }
+  ],
+  "n_departments": 7,
+  "categories": [
+   {
+    "code": "542980",
+    "label": "Other Construction Materials",
+    "spend_class": "purchase",
+    "usd": 31768557.47,
+    "n_vouchers": 5470
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 2633237.4,
+    "n_vouchers": 454
+   },
+   {
+    "code": "542990",
+    "label": "Other Bldg Maint Supplies",
+    "spend_class": "purchase",
+    "usd": 1112739.3,
+    "n_vouchers": 154
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 192663.32,
+    "n_vouchers": 45
+   },
+   {
+    "code": "528010",
+    "label": "Scavenger Services",
+    "spend_class": "purchase",
+    "usd": 66425.0,
+    "n_vouchers": 40
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 45339.08,
+    "n_vouchers": 5
+   },
+   {
+    "code": "549110",
+    "label": "Agricultural Supplies",
+    "spend_class": "purchase",
+    "usd": 42858.51,
+    "n_vouchers": 13
+   },
+   {
+    "code": "544930",
+    "label": "Cleaning Supplies",
+    "spend_class": "purchase",
+    "usd": 28938.95,
+    "n_vouchers": 9
+   }
+  ],
+  "n_categories": 15,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 4375250.55,
+  "n_recent_lines": 9,
+  "recent_lines": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Other Construction Materials",
+    "spend_class": "purchase",
+    "usd": 3132971.73,
+    "n_vouchers": 445
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Other Construction Materials",
+    "spend_class": "purchase",
+    "usd": 779596.31,
+    "n_vouchers": 140
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Other Construction Materials",
+    "spend_class": "purchase",
+    "usd": 303386.24,
+    "n_vouchers": 97
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 105112.33,
+    "n_vouchers": 26
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "label": "Other Construction Materials",
+    "spend_class": "purchase",
+    "usd": 26113.23,
+    "n_vouchers": 26
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Construction Materials",
+    "spend_class": "purchase",
+    "usd": 16953.72,
+    "n_vouchers": 7
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000016483",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.733581+00:00",
+ "generated_at": "2026-07-28T11:43:47.703032+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,160 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 3681,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 153820356.18,
+    "n_vouchers": 1266
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 58955805.47,
+    "n_vouchers": 1492
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 24353598.0,
+    "n_vouchers": 699
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 1909240.49,
+    "n_vouchers": 218
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 390102.8,
+    "n_vouchers": 5
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 1125.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 6,
+  "categories": [
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 81870058.73,
+    "n_vouchers": 524
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 56646656.93,
+    "n_vouchers": 1571
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 3872728.25,
+    "n_vouchers": 70
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 1096360.93,
+    "n_vouchers": 30
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 504.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 16
+   },
+   {
+    "code": "OTH_ASSETS_CURR",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": -4012962.5,
+    "n_vouchers": 84
+   }
+  ],
+  "n_categories": 7,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 18457618.97,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 10755678.25,
+    "n_vouchers": 86
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 8753042.61,
+    "n_vouchers": 186
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 235951.11,
+    "n_vouchers": 23
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 86.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": -1287139.0,
+    "n_vouchers": 22
+   }
+  ]
+ },
+ "identity": {
+  "description": "Conard House Inc is an IRS-recognized tax-exempt organization in San Francisco, CA. Its IRS activity code is not recorded in the registry.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Conard House Inc",
+  "ein": "941489356",
+  "ntee_code": null,
+  "ntee_label": null,
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/941489356",
+  "checked_at": "2026-07-27T23:36:15.237360+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000010463",
@@ -49,7 +203,7 @@
   },
   {
    "contract_no": "1000032692",
-   "title": "DPh MH and SUD Rep Payee",
+   "title": "DPh MH and SUD Repair Payee",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 9916739.0,

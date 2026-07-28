@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.834398+00:00",
+  "generated_at": "2026-07-28T11:43:46.589290+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -24004,7 +24004,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "JOSEPH T CONROY III",
+            "vendor": "RIZ GACHE DESIGN",
             "amount_usd": 2500.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -24013,7 +24013,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "RIZ GACHE DESIGN",
+            "vendor": "JOSEPH T CONROY III",
             "amount_usd": 2500.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -24582,7 +24582,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "PORTOLA FAMILY CONNECTIONS INC",
+            "vendor": "UNITED PLAYAZ INC",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -24591,7 +24591,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "UNITED PLAYAZ INC",
+            "vendor": "PORTOLA FAMILY CONNECTIONS INC",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -28448,16 +28448,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "BEN MATRANGA FOR DIST 7 SUPERVISOR 2016",
-            "amount_usd": 20000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "ENGARDIO FOR DISTRICT 7 SUPERVISOR 2016",
+            "vendor": "AHSHA SAFAI FOR SUPERVISOR 2016",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -28475,7 +28466,16 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "AHSHA SAFAI FOR SUPERVISOR 2016",
+            "vendor": "BEN MATRANGA FOR DIST 7 SUPERVISOR 2016",
+            "amount_usd": 20000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "ENGARDIO FOR DISTRICT 7 SUPERVISOR 2016",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -29312,7 +29312,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "CHEN'S PHOGRAPHY AND GIFTS",
+            "vendor": "LYNN VANDENBERG",
             "amount_usd": 590.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -29321,7 +29321,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "REPURPOSED HEIRLOOMS",
+            "vendor": "DEBORRAH ORTEGO",
             "amount_usd": 590.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -36120,21 +36120,21 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "ASIAN AMER ADVNCNG JSTC-ASIAN LAW CAUCUS",
-            "amount_usd": 10000.0,
-            "n_vouchers": 2,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "SAN FRANCISCO STUDY CENTER INC",
             "amount_usd": 10000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": "nonprofit",
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "ASIAN AMER ADVNCNG JSTC-ASIAN LAW CAUCUS",
+            "amount_usd": 10000.0,
+            "n_vouchers": 2,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
             "is_aggregation_line": false
           }
         ],

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.745390+00:00",
+ "generated_at": "2026-07-28T11:43:47.723054+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -32,10 +32,83 @@
  "top_departments": [
   "PUB Public Utilities Bureaus"
  ],
+ "profile": {
+  "n_vouchers": 5658,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 100668363.13,
+    "n_vouchers": 5611
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 201291.0,
+    "n_vouchers": 47
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "527010",
+    "label": "Architectural Services",
+    "spend_class": "purchase",
+    "usd": 35492891.56,
+    "n_vouchers": 328
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 9187651.01,
+    "n_vouchers": 230
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 543006.56,
+    "n_vouchers": 49
+   }
+  ],
+  "n_categories": 3,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 12554974.76,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Architectural Services",
+    "spend_class": "purchase",
+    "usd": 7662858.73,
+    "n_vouchers": 92
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 4827985.41,
+    "n_vouchers": 115
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 64130.62,
+    "n_vouchers": 14
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000010961",
-   "title": "SEP Construction Mgmt Svcs",
+   "title": "Southeast Plant Construction Management Services",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 19580338.99,

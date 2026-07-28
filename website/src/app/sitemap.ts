@@ -2,6 +2,27 @@ import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/seo';
 import { listCities } from '@/lib/cities';
 import { listAllCommunesMeta } from '@/lib/all-communes';
+import { listDataDir } from '@/lib/data/read';
+import {
+  sfAuthorityFamilies,
+  sfContractDeptSlugs,
+  sfContractTypeSlugs,
+} from '@/app/us/city/sf/contracts/data';
+import {
+  defaultFiscalYear,
+  loadSfBudgetBreakdown,
+  loadSfBudgetByYear,
+} from '@/lib/us/sf-budget-data';
+import { characterSlug, deptSlug, serviceSlug } from '@/lib/us/sf-budget-slugs';
+import { sfPayrollFamilySlugs } from '@/lib/us/sf-payroll-family';
+import {
+  sfPayrollAreaSlugs,
+  sfPayrollDeptSlugs,
+  sfPayrollRoleSlugs,
+} from '@/lib/us/sf-payroll-entities';
+import { sfCategorySlugs } from '@/lib/us/sf-spending';
+import { loadSfPayeesIndex } from '@/lib/us/sf-payees-data';
+import { loadSfPlacesIndex } from '@/lib/us/sf-places-data';
 
 const MAIN_ROUTES = [
   { path: '', priority: 1.0 },
@@ -23,6 +44,88 @@ const MAIN_ROUTES = [
   { path: '/confidentialite', priority: 0.2 },
 ];
 
+/**
+ * San Francisco section pages. The US side was absent from the sitemap
+ * entirely — hub, sections and every fiche — so none of it was discoverable
+ * from search even though it is all statically rendered.
+ */
+const SF_SECTIONS = [
+  { path: '/us', priority: 0.7 },
+  { path: '/us/city/sf', priority: 0.9 },
+  { path: '/us/city/sf/budget', priority: 0.85 },
+  { path: '/us/city/sf/budget/timeline', priority: 0.7 },
+  { path: '/us/city/sf/contracts', priority: 0.85 },
+  { path: '/us/city/sf/who-gets-paid', priority: 0.85 },
+  { path: '/us/city/sf/payroll', priority: 0.85 },
+  { path: '/us/city/sf/places', priority: 0.8 },
+  { path: '/us/city/sf/sources', priority: 0.5 },
+];
+
+/**
+ * Every SF entity fiche, as paths.
+ *
+ * Each enumerator is guarded: on a branch where public/data is not hydrated
+ * the loaders throw, and a sitemap that fails the build is worse than one
+ * missing a section. A dropped enumerator costs discoverability, not a deploy.
+ *
+ * The dept × character drill is deliberately absent: it is stored columnar and
+ * reconstructing its keys here would duplicate the fiche loader's decoding for
+ * no gain — those pages are reachable from their department fiche.
+ */
+function sfEntityPaths(): string[] {
+  const out: string[] = [];
+  const add = (prefix: string, slugs: () => string[]) => {
+    try {
+      for (const s of slugs()) out.push(`${prefix}/${s}`);
+    } catch {
+      /* data not hydrated on this branch — skip this family */
+    }
+  };
+
+  add('/us/city/sf/payroll/family', sfPayrollFamilySlugs);
+  add('/us/city/sf/payroll/role', sfPayrollRoleSlugs);
+  add('/us/city/sf/payroll/area', sfPayrollAreaSlugs);
+  add('/us/city/sf/payroll/dept', sfPayrollDeptSlugs);
+
+  add('/us/city/sf/contracts/type', sfContractTypeSlugs);
+  add('/us/city/sf/contracts/authority', sfAuthorityFamilies);
+  add('/us/city/sf/contracts/dept', sfContractDeptSlugs);
+  // One JSON per contract_no: the directory listing IS the key set.
+  add('/us/city/sf/contracts/contract', () =>
+    listDataDir('us/sf/contracts/fiche'),
+  );
+
+  add('/us/city/sf/who-gets-paid/category', sfCategorySlugs);
+  add('/us/city/sf/who-gets-paid/payee', () =>
+    loadSfPayeesIndex().map((p) => p.slug),
+  );
+  add('/us/city/sf/places/place', () => loadSfPlacesIndex().map((p) => p.slug));
+
+  // Budget facets come from the breakdown of the default (last closed) year —
+  // the same file and the same slug helpers the fiche routes resolve against.
+  try {
+    const fy = defaultFiscalYear(loadSfBudgetByYear());
+    const bd = loadSfBudgetBreakdown(fy);
+    if (bd?.drill.available) {
+      const depts = new Set<string>();
+      const services = new Set<string>();
+      const characters = new Set<string>();
+      for (const side of ['spending', 'revenue'] as const) {
+        for (const d of bd.departments[side]) depts.add(deptSlug(d.code));
+        for (const g of bd.org_groups[side]) services.add(serviceSlug(g.label));
+        for (const c of bd.characters[side]) characters.add(characterSlug(c.code));
+      }
+      for (const s of depts) out.push(`/us/city/sf/budget/dept/${s}`);
+      for (const s of services) out.push(`/us/city/sf/budget/service/${s}`);
+      for (const s of characters) out.push(`/us/city/sf/budget/character/${s}`);
+    }
+  } catch {
+    /* as above */
+  }
+
+  return out;
+}
+
 const CHUNK_SIZE = 5000;
 
 // Number of chunks needed to fit all communes into ~5k-URL sitemaps.
@@ -32,15 +135,21 @@ function chunkCount(): number {
   return Math.max(1, Math.ceil(total / CHUNK_SIZE));
 }
 
+function sfChunkCount(): number {
+  return Math.max(1, Math.ceil(sfEntityPaths().length / CHUNK_SIZE));
+}
+
 /**
- * Generate one sitemap per chunk of ~5 000 communes.
- * Returns sitemap segments ids; Next.js then calls `sitemap(id)` for each.
+ * Generate one sitemap per chunk of ~5 000 URLs.
+ * Returns sitemap segment ids; Next.js then calls `sitemap(id)` for each.
  */
 export async function generateSitemaps() {
-  // Segment 0 = main routes + top-10 cities.
-  // Segments 1..N = communes-all chunks.
+  // Segment 0            = main routes + top-10 cities + SF section pages.
+  // Segments 1..N        = communes-all chunks.
+  // Segments N+1..N+M    = San Francisco entity fiches.
   const n = chunkCount();
-  return Array.from({ length: n + 1 }, (_, i) => ({ id: i }));
+  const m = sfChunkCount();
+  return Array.from({ length: n + m + 1 }, (_, i) => ({ id: i }));
 }
 
 export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
@@ -62,7 +171,26 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
         changeFrequency: 'monthly' as const,
         priority: 0.5,
       }));
-    return [...main, ...cityRoutes];
+    const sfRoutes = SF_SECTIONS.map(({ path, priority }) => ({
+      url: `${SITE_URL}${path}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority,
+    }));
+    return [...main, ...cityRoutes, ...sfRoutes];
+  }
+
+  // SF entity chunks sit after the communes chunks.
+  const nCommuneChunks = chunkCount();
+  if (id > nCommuneChunks) {
+    const paths = sfEntityPaths();
+    const start = (id - nCommuneChunks - 1) * CHUNK_SIZE;
+    return paths.slice(start, start + CHUNK_SIZE).map((p) => ({
+      url: `${SITE_URL}${p}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    }));
   }
 
   // Communes chunks: id 1 = first 5k, id 2 = next 5k, etc.

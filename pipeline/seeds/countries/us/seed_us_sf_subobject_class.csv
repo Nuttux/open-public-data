@@ -1,0 +1,401 @@
+sub_object_code,sub_object,spend_class,basis,needs_review,classified_at
+527040,Construction Contracts,purchase,label_rule,false,2026-07-28
+538010,Community Based Org Srvcs,purchase,label_rule,false,2026-07-28
+574110,Bond Interest-Expense,obligation,label_rule,false,2026-07-28
+479990,SFERS Other Non-Operating Rev,ledger,code_range,true,2026-07-28
+567110,Bldg Struct Imprv-Direct Purch,purchase,code_range,true,2026-07-28
+571110,Bond Redemption,obligation,label_rule,false,2026-07-28
+556150,Medical-Health Plan Providers,obligation,label_rule,false,2026-07-28
+230500,230490CONFedIncomeTaxTaxUnIt1,obligation,code_range,true,2026-07-28
+527990,Other Professional Services,purchase,label_rule,false,2026-07-28
+527890,Other Medical Services,purchase,label_rule,false,2026-07-28
+539200,Loans Issued By City,ledger,label_rule,false,2026-07-28
+OTHR_OBLIG_AGNCY_FUN,Other Obligations-Agency Fund,obligation,label_rule,false,2026-07-28
+AGNCY_OBL_SCHL&CCD,Agency Obl.-School&CollegeDist,obligation,label_rule,false,2026-07-28
+533110,Power For Resale,purchase,label_rule,false,2026-07-28
+232520,230750RETM&DDeferredCompensati,obligation,code_range,true,2026-07-28
+230610,230490CONStateIncomeTaxTaxU1,obligation,code_range,true,2026-07-28
+527860,UC Medical Services,purchase,label_rule,false,2026-07-28
+LIAB_OTHR,Liabilities-Other,ledger,label_rule,false,2026-07-28
+556140,B Flx Medical-Claims Paid,obligation,label_rule,false,2026-07-28
+230530,230490CONOasdiTaxTaxUnit1,obligation,code_range,true,2026-07-28
+232750,"232660CONSocSecCityShare,Gener",obligation,code_range,true,2026-07-28
+560290,Automotive & Other Vehicles,purchase,label_rule,false,2026-07-28
+232850,"232840CONFederalIncomeTax,TaxU",obligation,label_rule,false,2026-07-28
+537810,IHSS Ip Payments,purchase,label_rule,false,2026-07-28
+552430,Public Hlth Intergovern Pymnt,obligation,label_rule,false,2026-07-28
+552115,Sales-Use Tax,obligation,label_rule,false,2026-07-28
+527510,Management Consulting Services,purchase,label_rule,false,2026-07-28
+530110,Property Rent,purchase,label_rule,false,2026-07-28
+REST_CASH_INOUT_TRLT,Rest Cash/Inv Out Treas LT,ledger,label_rule,false,2026-07-28
+470120,RetHlthContrib sent to trustee,obligation,label_rule,false,2026-07-28
+535960,Software Licensing Fees,purchase,label_rule,false,2026-07-28
+544610,Pharmaceutical,purchase,label_rule,false,2026-07-28
+552410,Payments To Other Govt,obligation,label_rule,false,2026-07-28
+556120,B Flx Medical Capitation,obligation,label_rule,false,2026-07-28
+REF_PAY,Refunds Payable,ledger,label_rule,false,2026-07-28
+232860,"232840CONStateIncomeTax,TaxUni",obligation,label_rule,false,2026-07-28
+527610,Systems Consulting Services,purchase,label_rule,false,2026-07-28
+527020,Engineering Services,purchase,label_rule,false,2026-07-28
+537530,IHSS Ip Public Authority Admin,purchase,label_rule,false,2026-07-28
+556130,B Flx Claims Paid,obligation,label_rule,false,2026-07-28
+UNEARN_REV_CHGS_SVCS,Unearned Revenue-Chgs for Svcs,ledger,label_rule,false,2026-07-28
+529990,Other Equip Maint,purchase,label_rule,false,2026-07-28
+230560,230490CONMedicareTaxTaxUnit1,obligation,code_range,true,2026-07-28
+232720,"232660CONMedicareCityShare,Gen",obligation,code_range,true,2026-07-28
+411220,Gross Receipts Tax,obligation,label_rule,false,2026-07-28
+533210,Power Distrib Transmission,purchase,label_rule,false,2026-07-28
+556400,Dental-Misc Employee,obligation,label_rule,false,2026-07-28
+527080,Construction Management Svcs,purchase,code_range,true,2026-07-28
+551110,Insurance Expense,purchase,label_rule,false,2026-07-28
+444999,Other Federal Grants,ledger,code_range,true,2026-07-28
+530410,Base Rent-Debt Svc-Bldg-Struct,obligation,label_rule,false,2026-07-28
+541100,Inventories-Purchase,purchase,label_rule,false,2026-07-28
+530310,Misc Facilities Rental,purchase,label_rule,false,2026-07-28
+OTH_ASSETS_CURR,Other Assets Current,ledger,label_rule,false,2026-07-28
+230640,230490CONDisabilityInsurTaxU1,obligation,code_range,true,2026-07-28
+527230,Investment Services,purchase,label_rule,false,2026-07-28
+REF_PAY_AGNCY_FUND,Refunds Payable-Agency Fund,ledger,label_rule,false,2026-07-28
+552210,Fees Licenses Permits,unclear,unassigned,true,2026-07-28
+410110,Prop Tax Curr Yr-Secured,obligation,label_rule,false,2026-07-28
+537510,IHSS Contract Payments,purchase,label_rule,false,2026-07-28
+OTHER_REC,Other Receivables,ledger,label_rule,false,2026-07-28
+448111,Homeowners Prop Tax Relief,obligation,label_rule,false,2026-07-28
+552110,Taxes,obligation,label_rule,false,2026-07-28
+528110,Security,purchase,label_rule,false,2026-07-28
+411224,Homeless Gross Receipts Tax,obligation,label_rule,false,2026-07-28
+527010,Architectural Services,purchase,label_rule,false,2026-07-28
+556200,Medical-Medical Claims Paid,obligation,label_rule,false,2026-07-28
+480399,Proceeds From Other S-T Debts,ledger,label_rule,false,2026-07-28
+549990,Other Materials & Supplies,purchase,label_rule,false,2026-07-28
+546990,Food,purchase,label_rule,false,2026-07-28
+535990,Other Current Expenses,purchase,label_rule,false,2026-07-28
+535910,Paratransit Contract Expense,purchase,label_rule,false,2026-07-28
+544990,"Other Hosp, Clinics&Lab Supply",purchase,label_rule,false,2026-07-28
+556710,Nc-Flex Benefit-Tpa Administer,unclear,unassigned,true,2026-07-28
+528990,Other Bldg Maint Svcs,purchase,label_rule,false,2026-07-28
+532310,Telephone Chrgs (Tis Use Only),unclear,unassigned,true,2026-07-28
+566990,Land Acquisition Cost,purchase,label_rule,false,2026-07-28
+556430,Dental-Retired Employee,obligation,label_rule,false,2026-07-28
+527030,Transportation Services,purchase,label_rule,false,2026-07-28
+547990,Fuels & Lubricants,purchase,code_range,true,2026-07-28
+560610,Data Processing Equipment,purchase,label_rule,false,2026-07-28
+232525,230750DeferredCompLoanProgram,ledger,label_rule,false,2026-07-28
+529210,Veh Maint (Non Central Shops),purchase,label_rule,false,2026-07-28
+574500,Pmt To Ref Bnd Esc Agt-CitySou,obligation,code_range,true,2026-07-28
+560990,Other Equipment,purchase,label_rule,false,2026-07-28
+528010,Scavenger Services,purchase,label_rule,false,2026-07-28
+536520,Rent Assist-Behalf Of Clients,purchase,label_rule,false,2026-07-28
+533130,Resale Of Gas,unclear,unassigned,true,2026-07-28
+527220,Financial Services,purchase,label_rule,false,2026-07-28
+527070,Env Contractor-Consulting Svcs,purchase,label_rule,false,2026-07-28
+571210,Loan Principal Repayment,ledger,label_rule,false,2026-07-28
+527870,Registry - Nurses,purchase,code_range,false,2026-07-28
+543310,Vehicle Parts-Supplies,purchase,label_rule,false,2026-07-28
+574990,Debt Svc-Admin And Fiscal Chrg,obligation,label_rule,false,2026-07-28
+527110,Social Services Contracts,purchase,label_rule,false,2026-07-28
+544310,Laboratory Supplies,purchase,label_rule,false,2026-07-28
+549720,Electronic Collection-LIB Only,purchase,code_range,false,2026-07-28
+574210,Loan Interest Expense,ledger,label_rule,false,2026-07-28
+549250,Minor Data Processing Equipmnt,purchase,label_rule,false,2026-07-28
+556310,Med Multi Plans-Vision Care,unclear,unassigned,true,2026-07-28
+553230,Litigation Expenses-Legal Fees,unclear,unassigned,true,2026-07-28
+549210,Data Processing Supplies,purchase,label_rule,false,2026-07-28
+553210,Litigation Expenses,unclear,unassigned,true,2026-07-28
+522020,Training Costs Paid To Vendors,purchase,code_range,false,2026-07-28
+544410,Medical Supplies,purchase,label_rule,false,2026-07-28
+536210,Day Care Assistance,unclear,unassigned,true,2026-07-28
+527820,Registry,purchase,code_range,false,2026-07-28
+566110,Land-Direct Purchase,purchase,code_range,false,2026-07-28
+545990,Other Safety Expenses,purchase,code_range,false,2026-07-28
+535950,Credit Card Processing Fees,unclear,unassigned,true,2026-07-28
+548995,WTR & WWE Treatment Chemicals,purchase,code_range,false,2026-07-28
+529110,Dp-Wp Equipment Maint,purchase,label_rule,false,2026-07-28
+553120,Judgements - Legal Fees,unclear,unassigned,true,2026-07-28
+553110,Judgements - Claims,unclear,unassigned,true,2026-07-28
+542110,Electrical,purchase,code_range,false,2026-07-28
+543990,Other Equipment Maint Supplies,purchase,label_rule,false,2026-07-28
+542990,Other Bldg Maint Supplies,purchase,label_rule,false,2026-07-28
+AR,Accounts Receivable,ledger,label_rule,false,2026-07-28
+410981,Commty Facilts Distrct Cfd Tax,obligation,label_rule,false,2026-07-28
+571310,Cap Leases Principal Repaymnt,purchase,label_rule,false,2026-07-28
+570000,Debt Service-Budget,obligation,label_rule,false,2026-07-28
+529410,Medical Equip Maint,purchase,label_rule,false,2026-07-28
+545310,Uniforms,purchase,code_range,false,2026-07-28
+200002,Accounts Payable,ledger,label_rule,false,2026-07-28
+535610,Postage,unclear,unassigned,true,2026-07-28
+412912,Overpaid Executive Tax,obligation,label_rule,false,2026-07-28
+556650,Nc-Disability Insurance,unclear,unassigned,true,2026-07-28
+535710,Subscriptions,unclear,unassigned,true,2026-07-28
+549410,Minor Furnishings,purchase,code_range,false,2026-07-28
+560710,"Medical, Dental & Lab Equipmnt",obligation,label_rule,false,2026-07-28
+524010,Membership Fees,purchase,code_range,false,2026-07-28
+548990,Water &Sewage Treatment Supply,purchase,label_rule,false,2026-07-28
+531990,Other Equipment Rentals,purchase,label_rule,false,2026-07-28
+544930,Cleaning Supplies,purchase,label_rule,false,2026-07-28
+412510,Real Property Transfer Tax,obligation,label_rule,false,2026-07-28
+544510,Minor Medical Equipment,purchase,label_rule,false,2026-07-28
+542610,Plumbing Supplies,purchase,label_rule,false,2026-07-28
+531410,Medical Equipment Rental,purchase,label_rule,false,2026-07-28
+528040,Sludge Removal,purchase,code_range,false,2026-07-28
+542980,Other Construction Materials,purchase,code_range,false,2026-07-28
+527000,Prof & Specialized Svcs-Bdgt,purchase,code_range,false,2026-07-28
+535520,Printing,unclear,unassigned,true,2026-07-28
+506070,Programmatic Projects-Budget,purchase,code_range,false,2026-07-28
+THRD_PRTY_SETTL_PAY,Third-Party Settlement Payable,unclear,unassigned,true,2026-07-28
+411110,Payroll Tax,obligation,label_rule,false,2026-07-28
+470201,PropositionB RetHlthCarePretax,ledger,code_range,false,2026-07-28
+526110,Attorney Fees-Criminal,purchase,code_range,false,2026-07-28
+527880,Registry - Medical Other,purchase,code_range,false,2026-07-28
+411223,Commercial Rent Tax,obligation,label_rule,false,2026-07-28
+206410,Unidentified Receipts,ledger,code_range,false,2026-07-28
+551100,Workers Comp Expense,unclear,unassigned,true,2026-07-28
+230520,230490CONFedIncomeTaxTaxUnIt5,obligation,code_range,false,2026-07-28
+567000,"Bldgs,Struct&Imprv Proj-Budget",purchase,code_range,false,2026-07-28
+479996,Fiscal Agent Reimb Clearing,ledger,code_range,false,2026-07-28
+549710,Physical Collections-LIB Only,purchase,code_range,false,2026-07-28
+549510,Other Office Supplies,purchase,label_rule,false,2026-07-28
+526610,Interpreters,purchase,code_range,false,2026-07-28
+200040,Retainage Payable,ledger,label_rule,false,2026-07-28
+528910,Routine Maint Elevtr-Escalator,purchase,label_rule,false,2026-07-28
+517010,Unemployment Insurance,obligation,label_rule,false,2026-07-28
+543410,Communication Supplies,purchase,label_rule,false,2026-07-28
+560510,Communications Equipment,purchase,label_rule,false,2026-07-28
+535110,Cleaning Laundry,unclear,unassigned,true,2026-07-28
+410943,Penalty-Costs-Redemption,obligation,label_rule,false,2026-07-28
+435219,Union Square Garage,ledger,code_range,false,2026-07-28
+535000,Other Current Expenses - Bdgt,purchase,label_rule,false,2026-07-28
+528020,Janitorial Services,purchase,label_rule,false,2026-07-28
+542210,Hardware,purchase,code_range,false,2026-07-28
+466004,Safety Net Care Pool (Sncp),ledger,code_range,false,2026-07-28
+435210,Civic Center Garage,ledger,code_range,false,2026-07-28
+551140,Workers' Comp-Med Emplye Reimb,unclear,unassigned,true,2026-07-28
+542510,Painters Supplies,purchase,label_rule,false,2026-07-28
+527210,Auditing & Accounting,purchase,code_range,false,2026-07-28
+528050,Grounds Maintenance,purchase,label_rule,false,2026-07-28
+531210,Vehicle Rental,purchase,label_rule,false,2026-07-28
+232770,"232660CONSocSecCityShare,Court",obligation,code_range,false,2026-07-28
+230550,230490CONOasdiTaxTaxUnit5,obligation,code_range,false,2026-07-28
+564990,Other Equip L-P-Fin Agency-Ren,purchase,label_rule,false,2026-07-28
+563101,Land Capitalized Expenditures,purchase,code_range,false,2026-07-28
+550010,Eqpmnt(5KOr_-Controlled Asset),unclear,unassigned,true,2026-07-28
+470211,Frnge-PropBRetHlthCare-CtyShre,ledger,code_range,false,2026-07-28
+533140,Resale Of Steam,unclear,unassigned,true,2026-07-28
+478951,ExpiredChckCancellatnsReissue,ledger,code_range,false,2026-07-28
+530210,Garage Rent,purchase,label_rule,false,2026-07-28
+542810,Small Tools And Intruments,purchase,code_range,false,2026-07-28
+535210,Freight-Delivery,unclear,unassigned,true,2026-07-28
+560980,Office Equipment,purchase,label_rule,false,2026-07-28
+528030,Pest Control,purchase,code_range,false,2026-07-28
+535510,Copy Machine,unclear,unassigned,true,2026-07-28
+531220,Tire Rent,purchase,label_rule,false,2026-07-28
+554120,Refund Of Unused Grants,ledger,label_rule,false,2026-07-28
+560840,Safety & Rescue Equipment,purchase,label_rule,false,2026-07-28
+537310,Foster Care Aid Payments,unclear,unassigned,true,2026-07-28
+513091,Calpers-Prepayment,obligation,label_rule,false,2026-07-28
+230630,230490CONStateIncomeTaxTaxU5,obligation,code_range,false,2026-07-28
+536340,Non-CalWorks Wage Subsidy,unclear,unassigned,true,2026-07-28
+526990,Other Fees,purchase,code_range,false,2026-07-28
+549110,Agricultural Supplies,purchase,label_rule,false,2026-07-28
+538400,Rebate Programs,unclear,unassigned,true,2026-07-28
+552440,Court Facilities Payment,unclear,unassigned,true,2026-07-28
+584030,Capital Renewal Projects,purchase,code_range,false,2026-07-28
+412210,Hotel Room Tax,obligation,label_rule,false,2026-07-28
+CASH_W_FISC_AGENT,Cash with Fiscal Agent,unclear,unassigned,true,2026-07-28
+230590,230490CONMedicareTaxCsfEmp200K,obligation,code_range,false,2026-07-28
+532410,Telephone Chrgs-Non Work Order,unclear,unassigned,true,2026-07-28
+513160,Calpers Unfunded Liability Pmt,ledger,label_rule,false,2026-07-28
+470212,Frnge-PropCRetHlthCare-CtyShre,ledger,code_range,false,2026-07-28
+470202,Prop C Ret Health Care Pretax,ledger,code_range,false,2026-07-28
+468111,Sale Of Water-SF Consumers,purchase,label_rule,false,2026-07-28
+513090,Retirement Non-City (Pers),obligation,code_range,false,2026-07-28
+535810,Advertising,unclear,unassigned,true,2026-07-28
+465911,DpSnfDstnctPartSkilldNursngFac,ledger,code_range,false,2026-07-28
+528000,Maint Svcs-Bldgs & Impvts-Bdgt,purchase,label_rule,false,2026-07-28
+410120,Prop Tax Curr Yr-Unsecured,obligation,label_rule,false,2026-07-28
+536510,Homeless Hsng And Supportv Svc,unclear,unassigned,true,2026-07-28
+560000,Equipment Purchase-Budget,purchase,label_rule,false,2026-07-28
+555110,Ers Retirement Allowances,unclear,unassigned,true,2026-07-28
+527830,Stipends,purchase,code_range,false,2026-07-28
+584010,Intangible Asset Depreciable,purchase,code_range,false,2026-07-28
+545110,Fire Fighting Rescue Supplies,purchase,label_rule,false,2026-07-28
+560410,"Shop, Bldg & Field Maint Eqpmt",purchase,label_rule,false,2026-07-28
+536830,OCII Payments To City Adm,unclear,unassigned,true,2026-07-28
+539220,Grants & Forgivable Loans,ledger,label_rule,false,2026-07-28
+412930,Access Line Tax - Current,obligation,label_rule,false,2026-07-28
+536690,Right to Recover Assistance,unclear,unassigned,true,2026-07-28
+545210,Ordnance,purchase,code_range,false,2026-07-28
+465990,Prior Year Settlement-Medicare,ledger,code_range,false,2026-07-28
+527090,Spcl Inspection & Testing Svcs,purchase,code_range,false,2026-07-28
+552420,Arbitrage Rebate To IRS,unclear,unassigned,true,2026-07-28
+591160,OTO To 2S/NDF-NeghborhoodDevFd,obligation,code_range,false,2026-07-28
+532110,Elec Heat Water,purchase,label_rule,false,2026-07-28
+538000,CBO Services - Budget,purchase,label_rule,false,2026-07-28
+435218,St. Mary's Garage,ledger,code_range,false,2026-07-28
+521030,Air Travel - Employees,purchase,code_range,false,2026-07-28
+536610,Spcl Circumstances For Adults,unclear,unassigned,true,2026-07-28
+537360,Fcs Childcare Aid Payments,unclear,unassigned,true,2026-07-28
+537110,CalWorks Aid Payments,unclear,unassigned,true,2026-07-28
+411310,Business Registration Tax,obligation,label_rule,false,2026-07-28
+551200,Ocip Related Insurance Costs,unclear,unassigned,true,2026-07-28
+526810,Witnesses,purchase,code_range,false,2026-07-28
+527810,Physicians,purchase,code_range,false,2026-07-28
+519130,Life Insurance,obligation,code_range,false,2026-07-28
+466009,Global Payment Program (GPP),ledger,code_range,false,2026-07-28
+531310,Office Machine Rental,purchase,label_rule,false,2026-07-28
+412320,Telephone Users Tax Lnd&Mobile,obligation,label_rule,false,2026-07-28
+560970,Workstations -Special Purchase,purchase,code_range,false,2026-07-28
+527410,Realty Services,purchase,label_rule,false,2026-07-28
+563201,BldgsStructures&ImprovementExp,purchase,code_range,false,2026-07-28
+574130,Bond Interest-Exp-Arbitrage,obligation,label_rule,false,2026-07-28
+462699,Other Recreational Svc Chgs,ledger,code_range,false,2026-07-28
+425120,Traffic Fines - Parking,ledger,code_range,false,2026-07-28
+UNEARN_GRANT_REV,Unearned Grant/Subv Revenue,ledger,label_rule,false,2026-07-28
+542310,Lighting,purchase,code_range,false,2026-07-28
+525010,Promotional & Entertainmnt Exp,purchase,code_range,false,2026-07-28
+ADVANCES,Advances,unclear,unassigned,true,2026-07-28
+465902,Medi-Cal Net Revenue,ledger,code_range,false,2026-07-28
+549745,LIB Starter Kits-LIB USE ONLY,purchase,code_range,false,2026-07-28
+553140,Judgements - Penalty,unclear,unassigned,true,2026-07-28
+515130,Cerbt Ret Hlth Trust Pmt,obligation,code_range,false,2026-07-28
+573110,Bond Issuance Cost-Unamortized,obligation,label_rule,false,2026-07-28
+531110,Data Processing Equip Rental,purchase,label_rule,false,2026-07-28
+573610,COI - Cert Of Participation,obligation,code_range,false,2026-07-28
+527310,Legal Services,purchase,label_rule,false,2026-07-28
+469999,Other Operating Revenue,ledger,code_range,false,2026-07-28
+533220,Power-Scheduling Coordinator,unclear,unassigned,true,2026-07-28
+232890,"232880CONFederalIncomeTax,RetR",obligation,code_range,false,2026-07-28
+560220,Rail,purchase,code_range,false,2026-07-28
+549610,Recreation & Athletic Supplies,purchase,label_rule,false,2026-07-28
+460188,City Planning Applicatn Refund,ledger,label_rule,false,2026-07-28
+460645,Strong Mo Pro Fe,ledger,code_range,false,2026-07-28
+543210,Rail Vehicle Supplies,purchase,label_rule,false,2026-07-28
+465995,Prior Year Settlement-Medi-Cal,ledger,code_range,false,2026-07-28
+560110,Artwork,purchase,code_range,false,2026-07-28
+527100,Payments To Poll Workers,purchase,code_range,false,2026-07-28
+479701,Custom Work,ledger,code_range,false,2026-07-28
+560910,Water Sewage Treatment Eqpmnt,purchase,label_rule,false,2026-07-28
+537410,Adoption Aid Payments,unclear,unassigned,true,2026-07-28
+430170,Interest Earned-Tax Refund,ledger,label_rule,false,2026-07-28
+232740,"232660CONMedicareCityShare,Cou",obligation,code_range,false,2026-07-28
+230580,230490CONMedicareTaxTaxUnit5,obligation,code_range,false,2026-07-28
+410920,Prop Tax Ab 1290 Rda Passthrgh,obligation,label_rule,false,2026-07-28
+444931,Fed Grants Pass-Thru State-Oth,obligation,label_rule,false,2026-07-28
+435225,Prking Fees-VarRec-PrkFacilt,ledger,code_range,false,2026-07-28
+230760,230750CONCharity-Annual-JointC,obligation,code_range,false,2026-07-28
+549500,Office Supply-Citywide Contrac,purchase,label_rule,false,2026-07-28
+529310,Office Equip Maint,purchase,label_rule,false,2026-07-28
+526410,Dependencies And Conservators,purchase,code_range,false,2026-07-28
+410310,Supp Asst SB813-Cy Secured,ledger,code_range,false,2026-07-28
+539610,Seismic Safety Loans,ledger,label_rule,false,2026-07-28
+410410,Supp Asst SB813-Py Secured,ledger,code_range,false,2026-07-28
+536110,Fcs Special Services,purchase,label_rule,false,2026-07-28
+542410,Lumber,purchase,code_range,false,2026-07-28
+535930,Bank Service Fee,purchase,label_rule,false,2026-07-28
+556210,Medical-Prescription Drug Plan,unclear,unassigned,true,2026-07-28
+536620,Aps-Basic Services,purchase,label_rule,false,2026-07-28
+538200,Rebate Prog-Water Conservation,purchase,label_rule,false,2026-07-28
+410510,Proprty Tx Redevelpmnt Incrmnt,ledger,code_range,false,2026-07-28
+519110,Flexible Benefit Package,obligation,code_range,false,2026-07-28
+460189,Building Permit Alterations,ledger,code_range,false,2026-07-28
+230660,230490CONDisabilityInsurTaxU5,obligation,code_range,false,2026-07-28
+536150,Foster Care Transportation,unclear,unassigned,true,2026-07-28
+523040,Flex Reimbursements-Settlement,purchase,code_range,false,2026-07-28
+529510,Construction Equip Maint,purchase,label_rule,false,2026-07-28
+526120,Attorney Fees-Juvenile,purchase,code_range,false,2026-07-28
+420120,Eating Places,ledger,code_range,false,2026-07-28
+475415,Community ImprovementImpactFee,ledger,code_range,false,2026-07-28
+538100,PUC Solar Incentive Program,unclear,unassigned,true,2026-07-28
+532210,Sewer Service,purchase,label_rule,false,2026-07-28
+GR_SUBV_REC,Grants/Subventions Receivable,ledger,label_rule,false,2026-07-28
+435226,Music Concourse-Parking,ledger,code_range,false,2026-07-28
+533120,Resale Of Electricity,unclear,unassigned,true,2026-07-28
+560210,Marine,purchase,code_range,false,2026-07-28
+544810,Radiology Supplies,purchase,label_rule,false,2026-07-28
+531510,Construction Equip Rental,purchase,label_rule,false,2026-07-28
+563501,Equipment Purchase Expense,purchase,label_rule,false,2026-07-28
+549810,Prisoner Institutional Items,purchase,code_range,false,2026-07-28
+232900,"232880CONStateIncomeTax,RetRep",obligation,code_range,false,2026-07-28
+535420,Crt Reporter Transcripts Svcs,unclear,unassigned,true,2026-07-28
+530000,Rents-Leases-Bldgs&Struct-Bdgt,purchase,label_rule,false,2026-07-28
+544920,Institutional Linen,purchase,code_range,false,2026-07-28
+460689,Tow Surcharge Fee,ledger,code_range,false,2026-07-28
+435230,Lombard - Retail,ledger,code_range,false,2026-07-28
+461101,Plan Checking,ledger,code_range,false,2026-07-28
+466014,MedicalGraduateEducation (GME),ledger,code_range,false,2026-07-28
+475417,Housing Inclusionary Fee,ledger,code_range,false,2026-07-28
+554210,Subsidies,unclear,unassigned,true,2026-07-28
+544420,Dental Supplies,obligation,label_rule,false,2026-07-28
+500010,Facilities Maintenance-Budget,purchase,label_rule,false,2026-07-28
+231160,230750CONAgncyUDPlumbersLocal3,obligation,code_range,false,2026-07-28
+535310,Graphics,unclear,unassigned,true,2026-07-28
+525190,Other Events,purchase,code_range,false,2026-07-28
+563565,Other Capitalized Expense,purchase,code_range,false,2026-07-28
+527850,Registry-Administration,purchase,code_range,false,2026-07-28
+468612,Sale Of Electricity-Non-City,ledger,code_range,false,2026-07-28
+526130,Attorney Fees - Serious Cases,purchase,code_range,false,2026-07-28
+571410,Comm Paper Principal Repaymnt,obligation,code_range,false,2026-07-28
+539420,Demolition Clearance Cost,unclear,unassigned,true,2026-07-28
+206810,Liab Pybl fr Rest-Others,ledger,code_range,false,2026-07-28
+425110,Traffic Fines - Moving,ledger,code_range,false,2026-07-28
+556080,Hlth Svc-Medical Employee Reim,unclear,unassigned,true,2026-07-28
+536440,CalWorks Wage Subsidy,unclear,unassigned,true,2026-07-28
+526510,Grand Jury,purchase,code_range,false,2026-07-28
+567220,Bldg Struct Imprv-L-P Renewal,purchase,code_range,false,2026-07-28
+461199,Miscellaneous Fee,ledger,code_range,false,2026-07-28
+549770,Audio-Visual Equipt&Suppl-5K&<,purchase,label_rule,false,2026-07-28
+560810,Food Preparation Equipment,purchase,label_rule,false,2026-07-28
+465907,Other Patient Net Revenue,ledger,code_range,false,2026-07-28
+508010,Pmt To Refund Bond Escrow Agnt,ledger,label_rule,false,2026-07-28
+549260,Minor Video Equipment,purchase,label_rule,false,2026-07-28
+430199,Interest Earned Adjustment,ledger,code_range,false,2026-07-28
+537515,On-Call Services Payments,purchase,label_rule,false,2026-07-28
+539230,Loans Issued By City(1099 Rpt),ledger,label_rule,false,2026-07-28
+INTER_FUND_REC,Interfund Receivables,ledger,label_rule,false,2026-07-28
+479999,Other Non-Operating Revenue,ledger,code_range,false,2026-07-28
+525210,Exhibitions,purchase,code_range,false,2026-07-28
+461164,Building Standards Fees,ledger,code_range,false,2026-07-28
+523050,Employee Recognition,purchase,code_range,false,2026-07-28
+521020,Travel Costs Paid To Vendors,purchase,code_range,false,2026-07-28
+553220,Judgements - Interest Payments,unclear,unassigned,true,2026-07-28
+585040,Facilities Maint bdg-Cfwd Only,purchase,label_rule,false,2026-07-28
+473205,Fringe-Short-Long TermDisbPlan,ledger,code_range,false,2026-07-28
+549310,Forms,purchase,code_range,false,2026-07-28
+537230,CAAP-SSI-Pending Aid,unclear,unassigned,true,2026-07-28
+468618,Electricity Sale-Wholesale,ledger,code_range,false,2026-07-28
+465950,Cap. Fees-Hlth Plan Settlemnts,ledger,code_range,false,2026-07-28
+537220,CAAP-Paes Aid,unclear,unassigned,true,2026-07-28
+536290,Cws Drug Testing,unclear,unassigned,true,2026-07-28
+460699,Other Public Safety Charges,ledger,code_range,false,2026-07-28
+475991,Misc Receipts - Maritime,ledger,code_range,false,2026-07-28
+544910,Veterinary,purchase,code_range,false,2026-07-28
+515120,Calpers Health - Retirees,obligation,label_rule,false,2026-07-28
+523020,Local Field Exp,purchase,code_range,false,2026-07-28
+527900,Chn Services,purchase,label_rule,false,2026-07-28
+460667,Fire Plan Checking,ledger,code_range,false,2026-07-28
+444939,Federal Direct Grant,ledger,code_range,false,2026-07-28
+549750,Books - Non Library Only,purchase,code_range,false,2026-07-28
+435212,Lombard Garage,ledger,code_range,false,2026-07-28
+475413,Childcare Requirement Fee,ledger,code_range,false,2026-07-28
+560830,Recreation & Athletic Eqpmnt,purchase,code_range,false,2026-07-28
+554130,Interest Expense,unclear,unassigned,true,2026-07-28
+412410,Parking Tax,obligation,label_rule,false,2026-07-28
+557810,Withdrawal-Normal Contribution,unclear,unassigned,true,2026-07-28
+410999,Unallocated Gen Property Taxes,obligation,label_rule,false,2026-07-28
+480111,ProceedsFromSaleOfBond-FaceAmt,ledger,label_rule,false,2026-07-28
+411226,Homeless Admin Office Tax,obligation,label_rule,false,2026-07-28
+522000,Training - Budget,purchase,code_range,false,2026-07-28
+527876,Registry - RN,purchase,code_range,false,2026-07-28
+536320,Paes Transportation Services,purchase,label_rule,false,2026-07-28
+411225,Admin Office Tax,obligation,label_rule,false,2026-07-28
+410940,Prop Tax-Administrative Cost,obligation,label_rule,false,2026-07-28
+536100,Resource Family Approval,unclear,unassigned,true,2026-07-28
+585020,Programmatic Proj-Bdgt-Cfwd,purchase,code_range,false,2026-07-28
+475419,TSF Formula,ledger,code_range,false,2026-07-28
+567210,Bldg Struct Imprv-L-P Initial,purchase,code_range,false,2026-07-28
+412310,Gas Electric Steam Users Tax,obligation,label_rule,false,2026-07-28
+521060,Non-Air Travel - Non-Employees,purchase,code_range,false,2026-07-28
+111400,Property Held Under Lease,purchase,label_rule,false,2026-07-28
+538201,Grants - Water Conservation,purchase,label_rule,false,2026-07-28
+562610,Data ProcessingEq-L-P-OptRenew,purchase,code_range,false,2026-07-28
+516010,Dental Coverage,obligation,label_rule,false,2026-07-28

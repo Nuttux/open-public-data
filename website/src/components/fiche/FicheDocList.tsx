@@ -24,13 +24,41 @@ function Row({ doc }: { doc: FicheDoc }) {
   );
 }
 
-/** Archive paper-trail list — where an entity appears in the digitized record. */
-export default function FicheDocList({ docs }: { docs: FicheDoc[] }) {
+/**
+ * Archive paper-trail list — where an entity appears in the digitized record.
+ *
+ * `initial` folds the tail behind a disclosure: a ten-document trail is the
+ * longest block on a fiche and buries whatever follows it. Omit for the full
+ * list (the default, unchanged for existing callers).
+ */
+export default function FicheDocList({
+  docs,
+  initial,
+  moreLabel = (n) => `See ${n} more documents`,
+}: {
+  docs: FicheDoc[];
+  initial?: number;
+  moreLabel?: (n: number) => string;
+}) {
+  const head = initial != null ? docs.slice(0, initial) : docs;
+  const tail = initial != null ? docs.slice(initial) : [];
   return (
-    <ul className="fx-doc-list">
-      {docs.map((d) => (
-        <Row key={d.id} doc={d} />
-      ))}
-    </ul>
+    <>
+      <ul className="fx-doc-list">
+        {head.map((d) => (
+          <Row key={d.id} doc={d} />
+        ))}
+      </ul>
+      {tail.length > 0 && (
+        <details className="fx-doc-more">
+          <summary>{moreLabel(tail.length)}</summary>
+          <ul className="fx-doc-list">
+            {tail.map((d) => (
+              <Row key={d.id} doc={d} />
+            ))}
+          </ul>
+        </details>
+      )}
+    </>
   );
 }

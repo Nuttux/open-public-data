@@ -12,6 +12,8 @@ export type FlowRow = {
   display?: ReactNode;
   /** If set, the row becomes a <Link> (clickable — e.g. to open a drawer). */
   href?: string;
+  /** Optional second line under the label (share, department count…). */
+  sub?: ReactNode;
 };
 
 type Props = {
@@ -23,6 +25,10 @@ type Props = {
   center?: { label: ReactNode; value: ReactNode; unit?: ReactNode };
   /** Optional callout paragraph under the box. */
   callout?: ReactNode;
+  /** Wider, wrapping label column. Paris category names fit in 140px on one
+   *  line; SF's ("Public Works, Transportation & Commerce") do not, and
+   *  truncating them to "Public Works, Tra…" loses the service area. */
+  wrapLabels?: boolean;
 };
 
 const fmtBillions = (n: number) =>
@@ -33,7 +39,7 @@ const fmtBillions = (n: number) =>
  * Dépenses on the right, sorted by value with a shared %-scale inside
  * each column. The "Total équilibré" badge sits below both columns.
  */
-export default function DualFlowBars({ left, right, center, callout }: Props) {
+export default function DualFlowBars({ left, right, center, callout, wrapLabels }: Props) {
   // Single shared scale across BOTH columns so a 2.5 Md bar can never visually
   // read as long as a 7.3 Md bar — critical once the two columns stack on
   // mobile and sit in one continuous list.
@@ -49,7 +55,10 @@ export default function DualFlowBars({ left, right, center, callout }: Props) {
       {col.rows.map((r, i) => {
         const body = (
           <>
-            <span className="l">{r.label}</span>
+            <span className="l">
+              {r.label}
+              {r.sub && <span className="s">{r.sub}</span>}
+            </span>
             <BarTrack value={r.value} max={globalMax} trackClassName="track" fillClassName="fill" />
             <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md €`}</span>
           </>
@@ -72,7 +81,7 @@ export default function DualFlowBars({ left, right, center, callout }: Props) {
 
   return (
     <>
-      <div className="fx-dualbars">
+      <div className={`fx-dualbars${wrapLabels ? " fx-dualbars-wrap" : ""}`}>
         <div className="fx-dualbars-cols">
           {renderCol(left)}
           {renderCol(right)}

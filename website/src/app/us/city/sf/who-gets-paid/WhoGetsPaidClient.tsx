@@ -2,13 +2,18 @@
 
 import { Suspense } from "react";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
+import PageTOC from "@/components/fusion/PageTOC";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import YearPicker from "@/components/fusion/YearPicker";
+import SfSourceFooter from "@/components/us/SfSourceFooter";
 import { useT } from "@/lib/localeContext";
-import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
-import TopPayeesSection from "./TopPayeesSection";
+import { fmtUsdCompact } from "@/lib/us/format";
+import PayeesExplorer from "./PayeesExplorer";
 import MaterialityStrip from "./MaterialityStrip";
-import PayeesSearch from "./PayeesSearch";
+import SfBuysBar from "@/components/us/SfBuysBar";
+import PaymentLenses from "./PaymentLenses";
+import type { SfPaymentBreakdowns } from "@/lib/us/sf-payment-breakdowns";
+import type { SfSpendingSection } from "@/lib/us/sf-spending";
 import type { WgpFile, WgpMeta, WgpYear, WgpYearStatus } from "./wgp-types";
 
 /**
@@ -37,6 +42,10 @@ export default function WhoGetsPaidClient({
   meta,
   materiality,
   vendorSlugMap,
+  searchSeeds,
+  deptHrefs,
+  spending,
+  breakdowns,
 }: {
   fy: number;
   yearData: WgpYear;
@@ -44,6 +53,14 @@ export default function WhoGetsPaidClient({
   meta: WgpMeta;
   materiality: WgpFile["materiality"];
   vendorSlugMap: Record<string, string>;
+  /** Suggestion chips, validated server-side against the search index. */
+  searchSeeds: string[];
+  /** dept code → budget fiche href, server-validated. */
+  deptHrefs: Record<string, string>;
+  /** Purchasing side of the ledger for this year (null if not exported yet). */
+  spending: SfSpendingSection | null;
+  /** The year's payments by department / service area / payee kind. */
+  breakdowns: SfPaymentBreakdowns | null;
 }) {
   const t = useT();
   const basePath = "/us/city/sf/who-gets-paid";
@@ -51,8 +68,30 @@ export default function WhoGetsPaidClient({
   const status = yearData.execution_status;
   const tot = yearData.totals;
 
+  // Top-10 concentration — the stat every other city page carries in its
+  // intro band (Paris marchés/subventions, Recife quem-recebe). Sum of
+  // exported rows over the exported total; no new fact.
+  //
+  // It MUST use the same predicate as the ranking below (TopPayeesSection:
+  // drop `person`, drop the default-view excluded buckets) or the intro
+  // contradicts the section's own note — an unfiltered top-10 doubles the
+  // figure, because pass-through banks head the raw list.
+  const top10Usd = yearData.payees
+    .filter((p) => p.bucket !== "person" && !meta.default_view.excluded_buckets.includes(p.bucket ?? ""))
+    .slice(0, 10)
+    .reduce((s, p) => s + p.vouchers_paid_usd, 0);
+  const top10Share = tot.all_usd > 0 ? top10Usd / tot.all_usd : 0;
+
   return (
     <main id="main-content" tabIndex={-1}>
+      <PageTOC
+        items={[
+          { id: "sec-lenses", label: "Where it went" },
+          { id: "sec-materiality", label: t("us.sf.wgp.s03.kind") },
+          { id: "sec-payees", label: t("us.sf.wgp.s02.kind") },
+        ]}
+      />
+
       {/* ── Opener: signature stat band (folds the former "01 Perimeter") ── */}
       <PageIntro
         title={
@@ -85,10 +124,13 @@ export default function WhoGetsPaidClient({
               label={fill(t("us.sf.wgp.s01.hero.label"), { fy })}
             />
             <IntroStat
-              value={
-                <AnimatedNumber value={tot.city_usd} format={(n) => fmtUsdCompact(n)} />
-              }
-              label={t("us.sf.wgp.s01.kpi.city")}
+              value={<AnimatedNumber value={yearData.n_vendors} format={(n) => nfInt.format(n)} />}
+              label={t("us.sf.wgp.s01.kpi.payees")}
+            />
+            <IntroStat
+              value={<AnimatedNumber value={top10Share * 100} format={(n) => n.toFixed(1)} />}
+              unit="%"
+              label={t("us.sf.wgp.s01.kpi.concentration")}
             />
             <IntroStat
               value={
@@ -114,35 +156,64 @@ export default function WhoGetsPaidClient({
             </span>
           </div>
         )}
-        {(yearData.related_top_departments ?? []).length > 0 && (
-          <p style={{ margin: "14px 0 0", fontSize: 13.5, lineHeight: 1.6, color: "var(--ink-2)" }}>
-            <b style={{ color: "var(--ink)" }}>
-              {fill(t("us.sf.wgp.s01.related_breakdown"), {
-                usd: fmtUsdCompact(tot.related_govt_units_usd),
-                share: tot.related_share_of_total != null ? fmtShare(tot.related_share_of_total) : "—",
-              })}
-            </b>{" "}
-            {(yearData.related_top_departments ?? []).map((d, i) => (
-              <span key={d.department}>
-                {i > 0 && " · "}
-                {d.department} <span style={{ fontFamily: "var(--f-mono)", fontSize: 12 }}>{fmtUsdCompact(d.usd)}</span>
-              </span>
-            ))}
-          </p>
-        )}
       </PageIntro>
 
-      {/* ── Signature: the ranked payees (tabs + toggle) ── */}
-      <TopPayeesSection fy={fy} yearData={yearData} meta={meta} vendorSlugMap={vendorSlugMap} />
+      {/* ── Where it went: one total, three lenses ──
+          The contracts page's money section, transposed. It opens the page
+          because a reader arriving at "who gets paid" needs the shape of the
+          money before a list of 15 names means anything. */}
+      {breakdowns && (
+        <PaymentLenses
+          fy={fy}
+          data={breakdowns}
+          yearData={yearData}
+          meta={meta}
+          deptHrefs={deptHrefs}
+        />
+      )}
 
-      {/* ── 03 · Materiality strip ── */}
-      <MaterialityStrip materiality={materiality} />
+      {/* ── What it bought ──
+          Its own section, not a lens above. It was briefly a fourth lens and
+          it does split the same fiscal-year total — but only $7.9B of the
+          $16.7B bought anything, so drawn against the payments denominator
+          the residual row became 66% of the chart and the largest bar meant
+          "not this". Against its own purchase total the categories read.
+          Measured, not assumed: the other three lenses leave 18.6% / 1.0% /
+          0.0% in Other. */}
+      {spending ? (
+        <SfBuysBar d={spending} />
+      ) : (
+        <MaterialityStrip
+          materiality={materiality}
+          deptHrefs={deptHrefs}
+          vendorSlugMap={vendorSlugMap}
+        />
+      )}
 
-      {/* ── 04 · Search the long tail ── */}
+      {/* ── Who gets paid: the ranking and the search, one section ──
+          They were two, and the search had to be seeded from #16 so it would
+          not repeat the ranking above it. That offset was the duplication
+          admitting itself. Ranked from #1, filterable, searchable. */}
       <Suspense fallback={null}>
-        <PayeesSearch fy={fy} />
+        <PayeesExplorer
+          fy={fy}
+          yearData={yearData}
+          meta={meta}
+          vendorSlugMap={vendorSlugMap}
+          seeds={searchSeeds}
+        />
       </Suspense>
 
+      <SfSourceFooter
+        perimeter={meta.perimeter}
+        coverage={meta.ranking_caveat}
+        source={{ name: meta.source.name, href: meta.source.source_url }}
+        sourcesAnchor="sec-payees"
+        exports={[
+          { label: "top_payees.json", href: "/data/us/sf/top_payees.json" },
+          { label: "payees_search.json", href: "/data/us/sf/payees_search.json" },
+        ]}
+      />
     </main>
   );
 }

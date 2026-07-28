@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.762927+00:00",
+ "generated_at": "2026-07-28T12:23:47.778637+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "university-mound-reservoir",
@@ -15,10 +15,21 @@
  },
  "facility": null,
  "capital": null,
- "photo": null,
- "photo_credit": null,
- "summary_en": null,
- "published": false,
+ "photo": "/img/us/sf/places/university-mound-reservoir.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/university-mound-reservoir.jpg",
+  "source": "i.ytimg.com",
+  "source_url": "https://www.youtube.com/watch?v=1Z7xpOM4BdM",
+  "license": "UNVERIFIED",
+  "license_url": "",
+  "license_verified": false,
+  "provisional": true,
+  "author": "Bing",
+  "resolved_via": "web-search",
+  "fetched_at": "2026-07-27T22:58:17.996131+00:00"
+ },
+ "summary_en": "University Mound is the reservoir the flat half of San Francisco drinks from. A 1935 account of the city's water and power describes it at elevation 172 feet with a capacity of 60 million gallons, supplying the lowest pressure zone — the waterfront, the industrial areas and the major business district — which together used about 40 percent of all the water consumed in the city; the water reached it from Crystal Springs through a 44-inch riveted wrought-iron pipeline seventeen miles long, built in 1885. Its enlargement was public works money: the Public Utilities Commission's report on the 1933 bond issue lists both the University Mound Reservoir Addition and a second Crystal Springs-University Mound pipeline among the contracts let under Public Works Administration Docket 1510, illustrated with construction views. The reservoir also has a cameo in one of the city's great legal fights — in the Spring Valley Water Company's suit against the city, an engineer's appraisal of the municipal reservoirs works its excavation out at 40 cents a yard and compacted fill at 25, and concludes flatly that \"the University Mound Reservoir, in my opinion, is a steam shovel job\". The health department was sampling its water at the intake, six feet below the surface, by 1908. A century later a regional reliability study still describes the city's distribution in two halves: the west side served from Sunset Reservoir, the east side from here.",
+ "published": true,
  "money": {
   "budget_line": {
    "code": "PUC",
@@ -75,9 +86,13 @@
    "url": "https://archive.org/details/reportofsanfranc1936sanf",
    "deep_link": "https://archive.org/details/reportofsanfranc1936sanf?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": true,
+   "gloss": "A commission report listing the reservoir's addition among contracts let under the 1933 bond issue."
   },
   {
    "identifier": "sanfranciscowate00sanf",
@@ -117,9 +132,13 @@
    "url": "https://archive.org/details/sanfranciscowate00sanf",
    "deep_link": "https://archive.org/details/sanfranciscowate00sanf?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "A 1935 account giving the reservoir's capacity, elevation, and the pressure zone it supplies."
   },
   {
    "identifier": "springvalleywate06spri",
@@ -159,8 +178,13 @@
    "url": "https://archive.org/details/springvalleywate06spri",
    "deep_link": "https://archive.org/details/springvalleywate06spri?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "Testimony from the Spring Valley water litigation appraising the reservoir's excavation cost per yard."
   },
   {
    "identifier": "facilitiesreliab2000wate",
@@ -199,8 +223,13 @@
    "url": "https://archive.org/details/facilitiesreliab2000wate",
    "deep_link": "https://archive.org/details/facilitiesreliab2000wate?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "A regional reliability study describing the city's east-side pressure zones served from this reservoir."
   },
   {
    "identifier": "bulletinofdepart1909sanf",
@@ -241,8 +270,13 @@
    "url": "https://archive.org/details/bulletinofdepart1909sanf",
    "deep_link": "https://archive.org/details/bulletinofdepart1909sanf?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false,
+   "gloss": "Health department bulletins recording water samples taken at the reservoir's intake in 1908."
   }
  ],
  "dept_shelf": [
@@ -281,9 +315,9 @@
   }
  ],
  "_gate": {
-  "has_photo": false,
+  "has_photo": true,
   "n_documents": 5,
   "n_money_links": 1,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

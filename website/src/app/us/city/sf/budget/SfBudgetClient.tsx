@@ -12,10 +12,12 @@ import YearPicker from "@/components/fusion/YearPicker";
 import EmptyState from "@/components/fusion/EmptyState";
 import Button from "@/components/fusion/Button";
 import Tip from "@/components/fusion/Tip";
-import UsTreemap from "@/components/us/UsTreemap";
+import DualFlowBars, { type FlowRow } from "@/components/fusion/DualFlowBars";
 import UsBudgetTrend from "./UsBudgetTrend";
+import ChartSource from "@/components/fusion/ChartSource";
+import SfSourceFooter from "@/components/us/SfSourceFooter";
 import { useT } from "@/lib/localeContext";
-import { deptSlug, characterSlug } from "@/lib/us/sf-budget-slugs";
+import { deptSlug, characterSlug, serviceSlug } from "@/lib/us/sf-budget-slugs";
 import {
   fmtUsd,
   fmtUsdCompact,
@@ -73,32 +75,9 @@ const fill = (s: string, vars: Record<string, string | number>) => {
 };
 
 /** UI display constants (presentation choices, not data). */
-const DEPT_LIST_FOLD = 12;
+const REV_FOLD = 8;
+const SP_TYPE_FOLD = 8;
 
-function SourceLine({
-  label,
-  links,
-  dataWord,
-}: {
-  label: string;
-  links: Array<{ name: string; href: string }>;
-  dataWord: string;
-}) {
-  return (
-    <figcaption className="fx-chart-source">
-      <b>{label}:</b>{" "}
-      {links.map((l, i) => (
-        <span key={`${l.href}-${i}`}>
-          {i > 0 && <span className="sep">·</span>}
-          {l.name}{" "}
-          <a href={l.href} target="_blank" rel="noopener noreferrer">
-            {dataWord} ↗
-          </a>
-        </span>
-      ))}
-    </figcaption>
-  );
-}
 
 
 export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
@@ -108,7 +87,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
   const fy = d.year;
 
   const spendingPoint = d.points.spending.find((p) => p.fiscal_year === fy);
-  const revenuePoint = d.points.revenue.find((p) => p.fiscal_year === fy);
   const prevPoint = d.points.spending.find((p) => p.fiscal_year === fy - 1);
   const yoy =
     spendingPoint && prevPoint && prevPoint.total_usd > 0
@@ -123,12 +101,10 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
     ...d.years.filter((y) => d.statuses[String(y)] === "closed"),
   );
 
-  const dataWord = t("us.sf.budget.data_link");
-  const srcLabel = t("us.sf.budget.source_label");
-  const budgetLinks = [{ name: d.source.name, href: d.source.source_url }];
 
-  // "Where the money goes" — one section, two lenses: by service (org, the
-  // treemap-led default) and by type (economic characters).
+  // The flow section — revenue on the left, spending on the right, one
+  // toggle switching how the spending side is grouped (service area / type
+  // of money). Same shape as the Paris budget flow: bars, not a treemap.
   const [compView, setCompView] = useState<"service" | "type">("service");
   const compBtn = (key: "service" | "type", label: string) => (
     <button
@@ -157,35 +133,131 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
   const trendY1 = actualYears.length ? Math.max(...actualYears) : 0;
   const budgetY0 = budgetYears.length ? Math.min(...budgetYears) : 0;
 
-  // s02 — services. Departments sort by org group (in the treemap's own
-  // group order, biggest tile first), then by size within the group — so
-  // reading down the list retraces the treemap left-to-right instead of
-  // interleaving groups by raw department size.
-  const orgGroups = bd.org_groups.spending;
+  // Service areas — the 7-row spending lens. Group totals are already net of
+  // their own transfer adjustments, so this column sums to the citywide total.
+  const orgGroups = [...bd.org_groups.spending].sort((a, b) => b.total_usd - a.total_usd);
+  const serviceRows = orgGroups.filter((g) => g.total_usd > 0);
   const orgGroupRank = new Map(orgGroups.map((g, i) => [g.code, i]));
   const orgGroupLabel = new Map(orgGroups.map((g) => [g.code, g.label]));
+  // Departments sort by service area (biggest area first), then by size
+  // within it — reading down the folded list retraces the bars above instead
+  // of interleaving areas by raw department size.
   const depts = [...bd.departments.spending].sort((a, b) => {
     const rankDiff =
       (orgGroupRank.get(a.org_group_code) ?? Infinity) -
       (orgGroupRank.get(b.org_group_code) ?? Infinity);
     return rankDiff !== 0 ? rankDiff : b.total_usd - a.total_usd;
   });
-  const deptTop = depts.slice(0, DEPT_LIST_FOLD);
-  const deptRest = depts.slice(DEPT_LIST_FOLD);
 
-  // s03 — spending characters (standard = bars; the rest = labeled blocks)
+  // Spending characters (standard = bars; offsets/adjustments = folded block)
   const spChars = bd.characters.spending;
-  const spBars = spChars.filter((c) => c.display_category === "standard" && c.total_usd > 0);
+  const spBars = [...spChars]
+    .filter((c) => c.display_category === "standard" && c.total_usd > 0)
+    .sort((a, b) => b.total_usd - a.total_usd);
   const spOffsets = spChars.filter(
     (c) => c.display_category === "offset" || c.display_category === "adjustment" || c.total_usd < 0,
   );
 
-  // s04 — revenue characters
+  // Revenue characters — always the left column, whichever spending lens is on.
   const revChars = bd.characters.revenue;
-  const revBars = revChars.filter((c) => c.display_category === "standard" && c.total_usd > 0);
+  const revBars = [...revChars]
+    .filter((c) => c.display_category === "standard" && c.total_usd > 0)
+    .sort((a, b) => b.total_usd - a.total_usd);
   const revInternal = revChars.filter(
     (c) => c.display_category === "internal" || c.display_category === "adjustment" || c.total_usd < 0,
   );
+
+  // ── Flow rows ────────────────────────────────────────────────────────────
+  // Both columns show the head of the distribution and fold the tail into one
+  // explicitly-counted "other" row, so a column never silently omits money.
+  const sumUsd = (xs: { total_usd: number }[]) => xs.reduce((s, x) => s + x.total_usd, 0);
+  const linkable = bd.drill.available;
+  const deptWord = (n: number) =>
+    t(n === 1 ? "us.sf.budget.sflux.dept_one" : "us.sf.budget.sflux.dept_many");
+
+  const revHead = revBars.slice(0, REV_FOLD);
+  const revTail = revBars.slice(REV_FOLD);
+  const leftRows: FlowRow[] = [
+    ...revHead.map((c) => ({
+      label: c.label,
+      value: c.total_usd,
+      display: fmtUsdCompact(c.total_usd),
+      sub: fill(t("us.sf.budget.s04.char_sub"), { share: fmtShare(c.share_of_side) }),
+      href: linkable
+        ? `/us/city/sf/budget/character/${characterSlug(c.code)}?year=${fy}&side=revenue`
+        : undefined,
+    })),
+    ...(revTail.length > 0
+      ? [
+          {
+            label: t("us.sf.budget.sflux.other_sources"),
+            value: sumUsd(revTail),
+            display: fmtUsdCompact(sumUsd(revTail)),
+            sub: fill(t("us.sf.budget.sflux.other_sub"), { n: revTail.length }),
+          },
+        ]
+      : []),
+  ];
+
+  const spTypeHead = spBars.slice(0, SP_TYPE_FOLD);
+  const spTypeTail = spBars.slice(SP_TYPE_FOLD);
+  const rightRows: FlowRow[] =
+    compView === "service"
+      ? serviceRows.map((g) => ({
+          label: g.label,
+          value: g.total_usd,
+          display: fmtUsdCompact(g.total_usd),
+          sub: fill(t("us.sf.budget.sflux.service_sub"), {
+            share: fmtShare(g.share_of_side),
+            n: g.n_departments,
+            dept_word: deptWord(g.n_departments),
+          }),
+          href: linkable
+            ? `/us/city/sf/budget/service/${serviceSlug(g.label)}?year=${fy}&side=spending`
+            : undefined,
+        }))
+      : [
+          ...spTypeHead.map((c) => ({
+            label: c.label,
+            value: c.total_usd,
+            display: fmtUsdCompact(c.total_usd),
+            sub: fill(t("us.sf.budget.sflux.type_sub"), {
+              share: fmtShare(c.share_of_side),
+              n: c.n_departments,
+              dept_word: deptWord(c.n_departments),
+            }),
+            href: `/us/city/sf/budget/character/${characterSlug(c.code)}?year=${fy}&side=spending`,
+          })),
+          ...(spTypeTail.length > 0
+            ? [
+                {
+                  label: t("us.sf.budget.sflux.other_types"),
+                  value: sumUsd(spTypeTail),
+                  display: fmtUsdCompact(sumUsd(spTypeTail)),
+                  sub: fill(t("us.sf.budget.sflux.other_sub"), { n: spTypeTail.length }),
+                },
+              ]
+            : []),
+        ];
+
+  // Gross vs net. Service-area rows are already net; character rows are gross,
+  // because the negative transfer-adjustment lines sit in their own category.
+  // Whichever column is gross gets said out loud rather than quietly rounded.
+  const netTotal = bd.totals.spending.total_usd;
+  const taUsd = Math.abs(bd.totals.spending.transfer_adjustment_usd);
+  const isGross = (v: number) => netTotal > 0 && Math.abs(v - netTotal) > netTotal * 0.01;
+  const revGross = sumUsd(revBars);
+  const spGross = compView === "service" ? sumUsd(serviceRows) : sumUsd(spBars);
+  const grossNoteKey = isGross(spGross)
+    ? "us.sf.budget.sflux.gross_note"
+    : isGross(revGross)
+      ? "us.sf.budget.sflux.gross_note_rev"
+      : null;
+
+  const internalRows = [
+    ...spOffsets.map((c) => ({ ...c, sideLabel: t("us.sf.side.spending") })),
+    ...revInternal.map((c) => ({ ...c, sideLabel: t("us.sf.side.revenue") })),
+  ];
 
 
   const statusNoticeKey =
@@ -227,10 +299,30 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
               y1e: trendY1,
             })}
           />
-          <SourceLine label={srcLabel} links={budgetLinks} dataWord={dataWord} />
+          <ChartSource
+            source={d.source.name}
+            dataHref={d.source.source_url}
+            methodHref="/us/city/sf/sources#sec-budget"
+          />
         </figure>
         <p className="fx-note" style={{ marginTop: 12 }}>
           {t("us.sf.budget.strend.note")}
+        </p>
+        {/* The 28 years above are where the machine-readable data starts. The
+         *  timeline page carries the archive-transcribed 1880s→ series; it had
+         *  no entry point from anywhere on the site. */}
+        <p style={{ marginTop: 14, fontFamily: "var(--f-ui)", fontSize: 14.5, lineHeight: 1.6 }}>
+          <Link
+            href="/us/city/sf/budget/timeline"
+            style={{
+              color: "var(--bleu)",
+              borderBottom: "1px solid var(--bleu)",
+              paddingBottom: 1,
+              textDecoration: "none",
+            }}
+          >
+            {t("us.sf.budget.strend.timeline_cta")}
+          </Link>
         </p>
       </div>
     </section>
@@ -240,8 +332,7 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
     <main id="main-content" tabIndex={-1} style={{ overflowX: "clip" }}>
       <PageTOC
         items={[
-          { id: "sec-composition", label: t("us.sf.budget.scomp.kind") },
-          { id: "sec-revenue", label: t("us.sf.budget.toc.revenue") },
+          { id: "sec-flux", label: t("us.sf.budget.sflux.kind") },
           { id: "sec-trend", label: t("us.sf.budget.strend.kind") },
         ]}
       />
@@ -296,19 +387,9 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
               }
               label={t("us.sf.budget.s01.kpi.per_resident")}
             />
-            <IntroStat
-              value={
-                revenuePoint ? (
-                  <AnimatedNumber
-                    value={revenuePoint.total_usd}
-                    format={(n) => fmtUsdCompact(n)}
-                  />
-                ) : (
-                  "—"
-                )
-              }
-              label={t("us.sf.budget.s01.kpi.revenue")}
-            />
+            {/* No third "budgeted revenue" stat: the budget balances, so it
+             *  printed the same $15.9B as the first one. The flow section
+             *  below shows the balance properly — two columns, one total. */}
           </>
         }
       >
@@ -351,312 +432,274 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
         )}
       </PageIntro>
 
-      {/* ── Signature: where the money goes, by service ── */}
-      {/* ── Where the money goes — one section, two lenses (service / type) ── */}
-      <section className="fx-section" id="sec-composition">
+      {/* ── The flow: where it comes from, where it goes (one bar diagram) ── */}
+      <section className="fx-section" id="sec-flux">
         <div className="fx-wrap">
+          {/* Without the drill (FY2018) only the spending side is publishable,
+           *  so the heading promises the one side that is actually there. */}
           <SectionHead
             title={
-              <>
-                {t("us.sf.budget.scomp.title.before")}
-                <em>{t("us.sf.budget.scomp.title.em")}</em>
-              </>
+              bd.drill.available ? (
+                <>
+                  {t("us.sf.budget.sflux.title.before")}
+                  <em>{t("us.sf.budget.sflux.title.em")}</em>
+                </>
+              ) : (
+                <>
+                  {t("us.sf.budget.scomp.title.before")}
+                  <em>{t("us.sf.budget.scomp.title.em")}</em>
+                </>
+              )
             }
-            subtitle={
-              compView === "service"
-                ? fill(t("us.sf.budget.s02.sub"), {
-                    n_groups: orgGroups.length,
-                    n_depts: depts.length,
-                    fy,
-                  })
-                : fill(t("us.sf.budget.s03.sub"), { n: spBars.length, fy })
-            }
-          />
-          <div
-            role="group"
-            aria-label={t("us.sf.budget.scomp.toggle_aria")}
-            style={{ display: "inline-flex", marginBottom: 24 }}
-          >
-            {compBtn("service", t("us.sf.budget.scomp.by_service"))}
-            {compBtn("type", t("us.sf.budget.scomp.by_type"))}
-          </div>
-
-          {compView === "service" ? (
-            <>
-          <UsTreemap
-            data={orgGroups
-              .filter((g) => g.total_usd > 0)
-              .map((g) => ({
-                id: g.code,
-                shortLabel: g.label,
-                fullLabel: g.label,
-                value: g.total_usd,
-                shareOfTotal: g.share_of_side,
-                subLabel: fill(t("us.sf.budget.s02.tile_sub"), { n: g.n_departments }),
-              }))}
-            height={420}
-            totalLabel={t("us.sf.budget.s02.of_spending")}
-            ariaLabel={fill(t("us.sf.budget.s02.treemap_aria"), { fy })}
+            subtitle={fill(
+              t(bd.drill.available ? "us.sf.budget.sflux.sub" : "us.sf.budget.sflux.sub_nodrill"),
+              { total: fmtUsdCompact(netTotal), fy },
+            )}
           />
 
           {bd.drill.available ? (
-            <div style={{ marginTop: 34 }}>
-              <BarRow
-                reveal
-                header={{
-                  left: t("us.sf.budget.s02.header.left"),
-                  right: t("us.sf.budget.s02.header.right"),
-                }}
-                items={deptTop.map((dep) => ({
-                  label: dep.display_name ?? dep.label,
-                  value: Math.max(0, dep.total_usd),
-                  display: fmtUsdCompact(dep.total_usd),
-                  href: `/us/city/sf/budget/dept/${deptSlug(dep.code)}?year=${fy}`,
-                  sub: fill(t("us.sf.budget.s02.dept_sub"), {
-                    share: fmtShare(dep.share_of_side),
-                    group: orgGroupLabel.get(dep.org_group_code) ?? dep.org_group_code,
-                  }),
-                }))}
-              />
-              {deptRest.length > 0 && (
-                <details style={{ marginTop: 10 }}>
-                  <summary
-                    style={{
-                      cursor: "pointer",
-                      fontFamily: "var(--f-mono)",
-                      fontSize: 12,
-                      color: "var(--ink-2)",
-                      padding: "8px 0",
-                    }}
-                  >
-                    {fill(t("us.sf.budget.s02.show_all"), { n: deptRest.length })}
-                  </summary>
-                  <BarRow
-                    max={Math.max(...deptTop.map((x) => x.total_usd), 1)}
-                    items={deptRest.map((dep) => ({
-                      label: dep.display_name ?? dep.label,
-                      value: Math.max(0, dep.total_usd),
-                      display: fmtUsdCompact(dep.total_usd),
-                      href: `/us/city/sf/budget/dept/${deptSlug(dep.code)}?year=${fy}`,
-                      sub: fill(t("us.sf.budget.s02.dept_sub"), {
-                        share: fmtShare(dep.share_of_side),
-                        group: orgGroupLabel.get(dep.org_group_code) ?? dep.org_group_code,
-                      }),
-                    }))}
-                  />
-                </details>
-              )}
-            </div>
-          ) : (
-            <div style={{ marginTop: 24 }}>
-              <EmptyState
-                label={t("us.sf.budget.s02.no_drill.label")}
-                title={fill(t("us.sf.budget.s02.no_drill.title"), { fy })}
-                body={bd.drill.reason ?? ""}
-                actions={
-                  <Button href="#fy2018-note">{t("us.sf.budget.s02.no_drill.cta")}</Button>
-                }
-              />
-            </div>
-          )}
-
-          {bd.program_strip.available && bd.program_strip.rows.length > 0 && (
-            <div
-              style={{
-                marginTop: 26,
-                paddingTop: 18,
-                borderTop: "1px solid var(--rule)",
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "10px 28px",
-              }}
-            >
-              <span
+            <>
+              <div
                 style={{
-                  fontFamily: "var(--f-mono)",
-                  fontSize: 11,
-                  letterSpacing: ".08em",
-                  textTransform: "uppercase",
-                  color: "var(--muted)",
-                  alignSelf: "center",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 14,
+                  flexWrap: "wrap",
+                  marginBottom: 22,
                 }}
               >
-                {t("us.sf.budget.s01.strip.label")}
-              </span>
-              {bd.program_strip.rows.slice(0, 4).map((r) => (
-                <span key={r.program} style={{ fontSize: 13.5 }}>
-                  <b>{r.program}</b>{" "}
-                  <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 12 }}>
-                    {fmtUsdCompact(r.total_usd)} · {fmtShare(r.share_of_side)}
-                  </span>
+                <span
+                  style={{
+                    fontFamily: "var(--f-mono)",
+                    fontSize: 11,
+                    letterSpacing: ".08em",
+                    textTransform: "uppercase",
+                    color: "var(--muted)",
+                  }}
+                >
+                  {t("us.sf.budget.sflux.toggle_label")}
                 </span>
-              ))}
-            </div>
-          )}
-            </>
-          ) : bd.drill.available ? (
-            <>
-              <UsTreemap
-                data={spBars.map((c) => ({
-                  id: c.code,
-                  shortLabel: c.label,
-                  fullLabel: c.label,
-                  value: c.total_usd,
-                  shareOfTotal: c.share_of_side,
-                  subLabel: fill(t("us.sf.budget.s03.tile_sub"), { n: c.n_departments }),
-                }))}
-                height={420}
-                totalLabel={t("us.sf.budget.s02.of_spending")}
-                ariaLabel={fill(t("us.sf.budget.s03.treemap_aria"), { fy })}
-              />
-
-              <div style={{ marginTop: 34 }}>
-              <BarRow
-                reveal
-                header={{
-                  left: t("us.sf.budget.s03.header.left"),
-                  right: t("us.sf.budget.s03.header.right"),
-                }}
-                items={spBars.map((c) => ({
-                  label: c.gloss ? (
-                    <Tip label={c.gloss}>{c.label}</Tip>
-                  ) : (
-                    c.label
-                  ),
-                  value: c.total_usd,
-                  display: fmtUsdCompact(c.total_usd),
-                  href: `/us/city/sf/budget/character/${characterSlug(c.code)}?year=${fy}`,
-                  sub: fill(t("us.sf.budget.s03.char_sub"), {
-                    share: fmtShare(c.share_of_side),
-                    n: c.n_departments,
-                  }),
-                }))}
-              />
+                <div
+                  role="group"
+                  aria-label={t("us.sf.budget.scomp.toggle_aria")}
+                  style={{ display: "inline-flex" }}
+                >
+                  {compBtn("service", t("us.sf.budget.scomp.by_service"))}
+                  {compBtn("type", t("us.sf.budget.scomp.by_type"))}
+                </div>
               </div>
 
-              {spOffsets.length > 0 && (
-                <div className="fx-callout" style={{ marginTop: 28 }}>
-                  <b>{t("us.sf.budget.s03.offsets.title")}</b>{" "}
-                  {t("us.sf.budget.s03.offsets.expl")}
-                  <div style={{ marginTop: 14, display: "grid", gap: 8 }}>
-                    {spOffsets.map((c) => (
-                      <div
-                        key={c.code}
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          gap: 16,
-                          flexWrap: "wrap",
-                          borderTop: "1px solid var(--rule)",
-                          paddingTop: 8,
-                        }}
-                      >
-                        <span style={{ fontWeight: 600 }}>
-                          {c.gloss ? <Tip label={c.gloss}>{c.label}</Tip> : c.label}
-                        </span>
-                        <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 12.5 }}>
-                          {fmtUsdCompact(c.total_usd)}
-                        </span>
-                      </div>
-                    ))}
+              <DualFlowBars
+                wrapLabels
+                left={{
+                  title: fill(t("us.sf.budget.sflux.left_head"), { n: revBars.length }),
+                  rows: leftRows,
+                }}
+                right={{
+                  title:
+                    compView === "service"
+                      ? fill(t("us.sf.budget.sflux.right_head_service"), {
+                          n: serviceRows.length,
+                        })
+                      : fill(t("us.sf.budget.sflux.right_head_type"), { n: spBars.length }),
+                  rows: rightRows,
+                }}
+                center={{
+                  label: fill(t("us.sf.budget.sflux.center_label"), { fy }),
+                  value: fmtUsdCompact(netTotal),
+                }}
+                // One line only. Per-category explanation (e.g. why "Charges
+                // for Services" is not fees on residents) is the character's
+                // own `gloss`, rendered by the fiche the bar opens — the page
+                // used to repeat it here.
+                callout={
+                  grossNoteKey
+                    ? fill(t(grossNoteKey), {
+                        ta: fmtUsdCompact(taUsd),
+                        net: fmtUsdCompact(netTotal),
+                      })
+                    : undefined
+                }
+              />
+
+              {/* Depth on demand — the two long lists that used to sit open on
+               *  the page. Nothing is dropped; both carry an honest count. */}
+              <div style={{ marginTop: 26, display: "grid", gap: 6 }}>
+                <details className="fx-more">
+                  <summary>{fill(t("us.sf.budget.sflux.depts_h"), { n: depts.length })}</summary>
+                  <div className="fx-more-body">
+                    <BarRow
+                      header={{
+                        left: t("us.sf.budget.s02.header.left"),
+                        right: t("us.sf.budget.s02.header.right"),
+                      }}
+                      items={depts.map((dep) => ({
+                        label: dep.display_name ?? dep.label,
+                        value: Math.max(0, dep.total_usd),
+                        display: fmtUsdCompact(dep.total_usd),
+                        href: `/us/city/sf/budget/dept/${deptSlug(dep.code)}?year=${fy}`,
+                        sub: fill(t("us.sf.budget.s02.dept_sub"), {
+                          share: fmtShare(dep.share_of_side),
+                          group: orgGroupLabel.get(dep.org_group_code) ?? dep.org_group_code,
+                        }),
+                      }))}
+                    />
                   </div>
+                </details>
+
+                {internalRows.length > 0 && (
+                  <details className="fx-more">
+                    <summary>
+                      {fill(t("us.sf.budget.sflux.internal_h"), { n: internalRows.length })}
+                    </summary>
+                    <div className="fx-more-body">
+                      <p style={{ fontSize: 13.5, color: "var(--ink-2)", lineHeight: 1.55, marginTop: 0 }}>
+                        {t("us.sf.budget.sflux.internal_expl")}
+                      </p>
+                      <div style={{ display: "grid", gap: 8 }}>
+                        {internalRows.map((c) => (
+                          <div
+                            key={`${c.sideLabel}-${c.code}`}
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                              gap: 16,
+                              flexWrap: "wrap",
+                              borderTop: "1px solid var(--rule)",
+                              paddingTop: 8,
+                              fontSize: 13.5,
+                            }}
+                          >
+                            <span style={{ fontWeight: 600 }}>
+                              {c.gloss ? <Tip label={c.gloss}>{c.label}</Tip> : c.label}{" "}
+                              <span
+                                style={{
+                                  fontFamily: "var(--f-mono)",
+                                  fontSize: 10.5,
+                                  fontWeight: 400,
+                                  color: "var(--muted)",
+                                }}
+                              >
+                                {c.sideLabel}
+                              </span>
+                            </span>
+                            <span
+                              className="tnum"
+                              style={{ fontFamily: "var(--f-mono)", fontSize: 12.5 }}
+                            >
+                              {fmtUsdCompact(c.total_usd)}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </details>
+                )}
+              </div>
+
+              {bd.program_strip.available && bd.program_strip.rows.length > 0 && (
+                <div
+                  style={{
+                    marginTop: 26,
+                    paddingTop: 18,
+                    borderTop: "1px solid var(--rule)",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "10px 28px",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--f-mono)",
+                      fontSize: 11,
+                      letterSpacing: ".08em",
+                      textTransform: "uppercase",
+                      color: "var(--muted)",
+                      alignSelf: "center",
+                    }}
+                  >
+                    {t("us.sf.budget.s01.strip.label")}
+                  </span>
+                  {bd.program_strip.rows.slice(0, 4).map((r) => (
+                    <span key={r.program} style={{ fontSize: 13.5 }}>
+                      <b>{r.program}</b>{" "}
+                      <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 12 }}>
+                        {fmtUsdCompact(r.total_usd)} · {fmtShare(r.share_of_side)}
+                      </span>
+                    </span>
+                  ))}
                 </div>
               )}
             </>
           ) : (
-            <p className="fx-note">{fill(t("us.sf.budget.s03.no_drill"), { fy })}</p>
-          )}
-          <SourceLine label={srcLabel} links={budgetLinks} dataWord={dataWord} />
-        </div>
-      </section>
-
-      {/* ── 04 · Where the money comes from ── */}
-      <section className="fx-section" id="sec-revenue">
-        <div className="fx-wrap">
-          <SectionHead
-            title={
-              <>
-                {t("us.sf.budget.s04.title.before")}
-                <em>{t("us.sf.budget.s04.title.em")}</em>
-              </>
-            }
-            subtitle={fill(t("us.sf.budget.s04.sub"), {
-              n: revBars.length,
-              total: fmtUsdCompact(bd.totals.revenue.total_usd),
-              fy,
-            })}
-          />
-          {bd.drill.available ? (
+            // FY2018 (PeopleSoft migration): service-area and citywide totals
+            // are consistent and shipped; department/character detail is not.
             <>
               <BarRow
                 reveal
                 header={{
-                  left: t("us.sf.budget.s04.header.left"),
-                  right: t("us.sf.budget.s04.header.right"),
+                  left: t("us.sf.budget.sflux.service_col"),
+                  right: t("us.sf.budget.s02.header.right"),
                 }}
-                items={revBars.map((c) => ({
-                  label:
-                    c.code === "CHGS_FOR_SERVICES" ? (
-                      <Tip
-                        label={fill(t("us.sf.budget.s04.charges.body"), {
-                          amount: fmtUsdCompact(c.total_usd),
-                          fy,
-                        })}
-                      >
-                        {c.label}
-                      </Tip>
-                    ) : c.gloss ? (
-                      <Tip label={c.gloss}>{c.label}</Tip>
-                    ) : (
-                      c.label
-                    ),
-                  value: c.total_usd,
-                  display: fmtUsdCompact(c.total_usd),
-                  href: `/us/city/sf/budget/character/${characterSlug(c.code)}?year=${fy}&side=revenue`,
-                  sub: fill(t("us.sf.budget.s04.char_sub"), {
-                    share: fmtShare(c.share_of_side),
+                items={serviceRows.map((g) => ({
+                  label: g.label,
+                  value: g.total_usd,
+                  display: fmtUsdCompact(g.total_usd),
+                  sub: fill(t("us.sf.budget.sflux.service_sub"), {
+                    share: fmtShare(g.share_of_side),
+                    n: g.n_departments,
+                    dept_word: deptWord(g.n_departments),
                   }),
                 }))}
               />
-              {revInternal.length > 0 && (
-                <div className="fx-callout" style={{ marginTop: 28 }}>
-                  <b>{t("us.sf.budget.s04.internal.title")}</b>{" "}
-                  {t("us.sf.budget.s04.internal.expl")}
-                  <div style={{ marginTop: 14, display: "grid", gap: 8 }}>
-                    {revInternal.map((c) => (
-                      <div
-                        key={c.code}
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          gap: 16,
-                          flexWrap: "wrap",
-                          borderTop: "1px solid var(--rule)",
-                          paddingTop: 8,
-                        }}
-                      >
-                        <span style={{ fontWeight: 600 }}>
-                          {c.gloss ? <Tip label={c.gloss}>{c.label}</Tip> : c.label}
-                        </span>
-                        <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 12.5 }}>
-                          {fmtUsdCompact(c.total_usd)}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <div style={{ marginTop: 24 }}>
+                <EmptyState
+                  label={t("us.sf.budget.s02.no_drill.label")}
+                  title={fill(t("us.sf.budget.s02.no_drill.title"), { fy })}
+                  body={bd.drill.reason ?? ""}
+                  actions={
+                    // Was href="#fy2018-note" — an anchor that only exists on
+                    // the sources page, so the button went nowhere.
+                    <>
+                      <Button href="/us/city/sf/sources#fy2018-note">
+                        {t("us.sf.budget.s02.no_drill.cta")}
+                      </Button>
+                      <Button href={`/us/city/sf/budget?year=${lastClosed}`}>
+                        {fill(t("us.sf.budget.notice.cta"), { fy: lastClosed })}
+                      </Button>
+                    </>
+                  }
+                />
+              </div>
             </>
-          ) : (
-            <p className="fx-note">{fill(t("us.sf.budget.s03.no_drill"), { fy })}</p>
           )}
-          <SourceLine label={srcLabel} links={budgetLinks} dataWord={dataWord} />
+
+          <ChartSource
+            source={d.source.name}
+            dataHref={d.source.source_url}
+            methodHref="/us/city/sf/sources#sec-budget"
+          />
         </div>
       </section>
 
       {/* ── The long view (closing context) ── */}
       {trendSection}
 
+      <SfSourceFooter
+        perimeter={d.bvaTable?.perimeter ?? t("us.sf.budget.footer.perimeter")}
+        coverage={d.bvaTable?.coverage_note}
+        source={{ name: d.source.name, href: d.source.source_url }}
+        sourcesAnchor="sec-budget"
+        exports={[
+          { label: `budget_breakdown_${fy}.json`, href: `/data/us/sf/budget_breakdown_${fy}.json` },
+          { label: "budget_by_year.json", href: "/data/us/sf/budget_by_year.json" },
+          { label: "budget_vs_actual.json", href: "/data/us/sf/budget_vs_actual.json" },
+          {
+            label: "budget_vs_actual_departments.json",
+            href: "/data/us/sf/budget_vs_actual_departments.json",
+          },
+        ]}
+      />
     </main>
   );
 }

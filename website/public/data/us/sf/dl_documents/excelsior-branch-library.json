@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.746211+00:00",
+ "generated_at": "2026-07-28T12:23:47.759813+00:00",
  "slug": "excelsior-branch-library",
  "name": "Excelsior Branch Library",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -42,50 +42,57 @@
    "url": "https://archive.org/details/activitiesreport1959sanf",
    "deep_link": "https://archive.org/details/activitiesreport1959sanf?q=Excelsior+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "The 1959 activities report explaining that the branch would replace a rented store, with $60,000 budgeted for a site."
   },
   {
-   "identifier": "minutesofregula2005sanf_0",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Excelsior Branch Library",
    "ocr_excerpts": [
-    "e Fihpino- American Affinity Centers. 5. CITY LIBRAIOAN'S REPORT DISCUSSION by City Librarian Luis Herrera (This item is to allow the City Librarian to report on recent Library activities and make announcements; The City Librarian will report on the following subjects: Opening of the newly renovated Excelsior Branch Library; update on Library Technologv^ and Privacy Committee; update on the Library's Summer Reading Program; and summan' of upcoming Exhibits and Programs. 6. FRIENDS OF THE LIBRARY REPORT DISCUSSION (This item is to allow the Friends of the San Francisco Public Library to inform the Commission of their c",
-    "successful Excelsior Neighborhood Campaign, who filled the Commissioners in on the many varied extensive and enjoyable activities that they and their neighbors had undertaken to raise funds for furniture, fixtures, and equipment for their newly renovated and about to be re-opened neighborhood hbrary. The Excelsior Branch Library Campaign Co-Chairs invited the Commissioners and the entire City to join them in celebrating their Branch Library's reopen on July 9*- Next Ms. Bero introduced Ms. Marian Chatfield Taylor for a presentation on the other exciting developments in the ongoing Friends' Capital Campaign for the Branch Lib",
-    "xcelsior Neighborhood Campaign Committee, Avho filled the Commissioners in on the many varied extensive and enjoyable activities that they and their neighbors had undertaken to raise funds for furniture, fixtures, and equipment for their newly renovated and about to be re-opened neighborhood library. The Excelsior Branch Library Campaign Co-Chairs invited the Commissioners and the entire Cit}- to join them in celebrating their Branch Library's reopen on July 9'*^- Next Ms. Bero introduced Ms. Marian Chatfield Taylor for a presentation on the other exciting developments in the ongoing Friends' Capital Campaign for the Branch L",
-    "and Branch Library Summar}' Schedules 6. CITY LIBRARIAN'S REPORT DISCUSSION by City Librarian Luis Herrera (This item is to allow the Cit)' Librarian to report on recent Librat}' activities and make announcements) The City Librarian will report on the foUo^ving subjects: the Grand Reopening of the Excelsior Branch Library; the Volunteer Recognition Event; the Librar}' Technolog)- and Privacy Committee; attendance at American Librar}' Association (ALA) Conference in Chicago; and a summary of upcoming Exhibits and Programs. SAN FRANCISCO PUBLIC LIBRARY COMMISSION - Accessible Meetings Policy To ensure the participation of",
-    "Chin, 2\"*^ Commissioner Gomez for approval of the Minutes of the regular Public Library Commission meeting of June 16, 2005. ACTION: 5-0 AYE (Chin, Coulter, Gomez, Kane, Strobin) AGENDA ITEM #4 FRIENDS OF THE LIBRARY REPORT Friend's Executive Director Donna Bero reported on: The re-"
+    "BAYVIEW BRANCH LIBRARY 23 BACKGROUND 23 SCOPE OF WORK 23 PROJECT COST 24 PROJECT SCHEDULE 24 BERNAL HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRARY 31 BACKGROUND ■. 31 SCOPE OF WORK 31 PROJECT COST 33 PROJECT SCHEDULE 33 GLEN PARK BRANCH LIBRARY 34 BACKGROUND 34 SCOPE OF WORK 34 PROJECT COST 35 PROJECT SCHEDULE 35 i Branch Library Improvement Program GOLDEN GATE VALLEY BRANCH LIBRARY 36 BACKGROUND 36 SCOPE OF WORK 36 PROJECT",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 30 Branch Library Improvement Program EXCELSIOR BRANCH LIBRARY BACKGROUND The Excelsior Branch Library, built in 1967, is a single story brick-and-stone structure with approximately 8,302 square feet with an axial plan configuration. It is located at 4400 Mission Street. It serves the population of the Excelsior District and portions of the Bayview Hunters Point, Bernal Heights, Portola, Visitacion Vall",
+    "n program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. 32 Branch Library Improvement Program PROJECT COST Excelsior Branch Library Project Cost Summary Rehabilitation and Improvements $4,930,000 Expansion $0 Total Project Cost Estimate $4,930,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Excelsior Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 16 months Relocation and Construction 14 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 6.5,
-    "sf_context": true,
-    "rival_city": false,
+    "score": 0.86,
+    "sf_context": false,
+    "rival_city": true,
     "citywide_serial": false,
-    "substantive": false,
+    "substantive": true,
     "substantive_direct": true,
-    "hits": 5,
-    "density": 1.0,
+    "hits": 3,
+    "density": 1.36,
     "title_hit": false
    },
    "materiality": {
-    "score": 0.0,
-    "money": false,
+    "score": 5.0,
+    "money": true,
     "decision": false,
     "accountability": false,
     "contestation": false,
-    "named_genre": false,
+    "named_genre": true,
     "generic_serial": false
    },
-   "url": "https://archive.org/details/minutesofregula2005sanf_0",
-   "deep_link": "https://archive.org/details/minutesofregula2005sanf_0?q=Excelsior+Branch+Library",
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Excelsior+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The November 2000 bond proposal describing the 1967 building — brick and stone, about 8,302 square feet."
   },
   {
    "identifier": "minutesofregula1119sanf_1",
@@ -125,9 +132,59 @@
    "url": "https://archive.org/details/minutesofregula1119sanf_1",
    "deep_link": "https://archive.org/details/minutesofregula1119sanf_1?q=Excelsior+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Library Commission resolutions approving the purchase of the two parcels and a further $18,715 for the land."
+  },
+  {
+   "identifier": "minutesofregula2005sanf_0",
+   "title": "Minutes of the regular meeting ...",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Excelsior Branch Library",
+   "ocr_excerpts": [
+    "e Fihpino- American Affinity Centers. 5. CITY LIBRAIOAN'S REPORT DISCUSSION by City Librarian Luis Herrera (This item is to allow the City Librarian to report on recent Library activities and make announcements; The City Librarian will report on the following subjects: Opening of the newly renovated Excelsior Branch Library; update on Library Technologv^ and Privacy Committee; update on the Library's Summer Reading Program; and summan' of upcoming Exhibits and Programs. 6. FRIENDS OF THE LIBRARY REPORT DISCUSSION (This item is to allow the Friends of the San Francisco Public Library to inform the Commission of their c",
+    "successful Excelsior Neighborhood Campaign, who filled the Commissioners in on the many varied extensive and enjoyable activities that they and their neighbors had undertaken to raise funds for furniture, fixtures, and equipment for their newly renovated and about to be re-opened neighborhood hbrary. The Excelsior Branch Library Campaign Co-Chairs invited the Commissioners and the entire City to join them in celebrating their Branch Library's reopen on July 9*- Next Ms. Bero introduced Ms. Marian Chatfield Taylor for a presentation on the other exciting developments in the ongoing Friends' Capital Campaign for the Branch Lib",
+    "xcelsior Neighborhood Campaign Committee, Avho filled the Commissioners in on the many varied extensive and enjoyable activities that they and their neighbors had undertaken to raise funds for furniture, fixtures, and equipment for their newly renovated and about to be re-opened neighborhood library. The Excelsior Branch Library Campaign Co-Chairs invited the Commissioners and the entire Cit}- to join them in celebrating their Branch Library's reopen on July 9'*^- Next Ms. Bero introduced Ms. Marian Chatfield Taylor for a presentation on the other exciting developments in the ongoing Friends' Capital Campaign for the Branch L",
+    "and Branch Library Summar}' Schedules 6. CITY LIBRARIAN'S REPORT DISCUSSION by City Librarian Luis Herrera (This item is to allow the Cit)' Librarian to report on recent Librat}' activities and make announcements) The City Librarian will report on the foUo^ving subjects: the Grand Reopening of the Excelsior Branch Library; the Volunteer Recognition Event; the Librar}' Technolog)- and Privacy Committee; attendance at American Librar}' Association (ALA) Conference in Chicago; and a summary of upcoming Exhibits and Programs. SAN FRANCISCO PUBLIC LIBRARY COMMISSION - Accessible Meetings Policy To ensure the participation of",
+    "Chin, 2\"*^ Commissioner Gomez for approval of the Minutes of the regular Public Library Commission meeting of June 16, 2005. ACTION: 5-0 AYE (Chin, Coulter, Gomez, Kane, Strobin) AGENDA ITEM #4 FRIENDS OF THE LIBRARY REPORT Friend's Executive Director Donna Bero reported on: The re-"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.0,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesofregula2005sanf_0",
+   "deep_link": "https://archive.org/details/minutesofregula2005sanf_0?q=Excelsior+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes on the renovated branch's reopening, and the neighborhood campaign that furnished it."
   },
   {
    "identifier": "adultcalendarofp1996sanf",
@@ -166,47 +223,13 @@
    "url": "https://archive.org/details/adultcalendarofp1996sanf",
    "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Excelsior+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Excelsior Branch Library",
-   "ocr_excerpts": [
-    "BAYVIEW BRANCH LIBRARY 23 BACKGROUND 23 SCOPE OF WORK 23 PROJECT COST 24 PROJECT SCHEDULE 24 BERNAL HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRARY 31 BACKGROUND ■. 31 SCOPE OF WORK 31 PROJECT COST 33 PROJECT SCHEDULE 33 GLEN PARK BRANCH LIBRARY 34 BACKGROUND 34 SCOPE OF WORK 34 PROJECT COST 35 PROJECT SCHEDULE 35 i Branch Library Improvement Program GOLDEN GATE VALLEY BRANCH LIBRARY 36 BACKGROUND 36 SCOPE OF WORK 36 PROJECT",
-    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 30 Branch Library Improvement Program EXCELSIOR BRANCH LIBRARY BACKGROUND The Excelsior Branch Library, built in 1967, is a single story brick-and-stone structure with approximately 8,302 square feet with an axial plan configuration. It is located at 4400 Mission Street. It serves the population of the Excelsior District and portions of the Bayview Hunters Point, Bernal Heights, Portola, Visitacion Vall",
-    "n program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. 32 Branch Library Improvement Program PROJECT COST Excelsior Branch Library Project Cost Summary Rehabilitation and Improvements $4,930,000 Expansion $0 Total Project Cost Estimate $4,930,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Excelsior Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 16 months Relocation and Construction 14 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 0.86,
-    "sf_context": false,
-    "rival_city": true,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 1.36,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 5.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "calendar",
+   "doc_type_label": "Calendar",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Calendar",
+   "salient": false,
+   "gloss": "A programme calendar showing the branch hosting citizenship workshops and free tax assistance."
   }
  ]
 }

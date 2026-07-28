@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.725512+00:00",
+ "generated_at": "2026-07-28T11:43:47.689134+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -31,6 +31,103 @@
  "top_departments": [
   "RET Retirement System"
  ],
+ "profile": {
+  "n_vouchers": 91,
+  "departments": [
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "usd": 6782794891.93,
+    "n_vouchers": 65
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 4501500.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 2716503.1,
+    "n_vouchers": 1
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 1533489.6,
+    "n_vouchers": 22
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 996200.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 3,
+  "categories": [
+   {
+    "code": "479990",
+    "label": "SFERS Other Non-Operating Rev",
+    "spend_class": "ledger",
+    "usd": 6756788320.0,
+    "n_vouchers": 12
+   },
+   {
+    "code": "527220",
+    "label": "Financial Services",
+    "spend_class": "purchase",
+    "usd": 24620105.73,
+    "n_vouchers": 39
+   },
+   {
+    "code": "571210",
+    "label": "Loan Principal Repayment",
+    "spend_class": "ledger",
+    "usd": 3690000.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "574110",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 811500.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "527230",
+    "label": "Investment Services",
+    "spend_class": "purchase",
+    "usd": 656694.6,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": true,
+  "recent_fy": 2025,
+  "recent_total_usd": 662039813.29,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "label": "SFERS Other Non-Operating Rev",
+    "spend_class": "ledger",
+    "usd": 658074320.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "label": "Financial Services",
+    "spend_class": "purchase",
+    "usd": 3965493.29,
+    "n_vouchers": 5
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000007858",

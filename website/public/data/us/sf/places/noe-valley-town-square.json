@@ -1,0 +1,331 @@
+{
+ "generated_at": "2026-07-28T12:23:47.812539+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "noe-valley-town-square",
+ "name": "Noe Valley Town Square",
+ "kind": "Park",
+ "family": "park",
+ "address": "3861 24th St",
+ "lat": 37.751378,
+ "lon": -122.428938,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "facility": null,
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "NOE VALLEY ASSOCIATION",
+    "paid_usd": 514150.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2021,
+    "last_fiscal_year": 2024
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 514150.0
+ },
+ "photo": "/img/us/sf/places/noe-valley-town-square.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/noe-valley-town-square.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Noe_Valley_Town_Square_toilet_exterior.jpg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Lovelano",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-28T12:02:20.695514+00:00"
+ },
+ "summary_en": "The Town Square is a recent piece of public land, and its file is mostly the paperwork of assembling one. In 2015 and 2016 the Board of Supervisors authorised the Recreation and Park Department to accept and expend three separate outside contributions for the project: a $743,543 Land and Water Conservation Fund grant from the State of California, a $567,039 Urban Greening for Sustainable Communities grant from the California Natural Resources Agency covering September 2015 to May 2017, and a grant-in-place from the San Francisco Parks Alliance of improvements valued at $450,000 — the last two heard together in the Budget and Finance Committee. The Board also had to change what the ground legally was, rezoning 3861 24th Street, Assessor's Block 6509 Lot 040, out of the 24th Street Neighborhood Commercial District and into Public and Open Space. The Arts Commission took the design through its own review, approving Phases 1 and 2 of the project and, separately, the art enrichment programme plan for the square. Since it opened the city has paid the Noe Valley Association $514,150 between 2021 and 2024 on the contract recorded against it.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "resolution2015sanf_8",
+   "title": "Resolution",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Noe Valley Town Square",
+   "ocr_excerpts": [
+    "2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 government _ documents DEP- AMENDED IN COMMITTEE JAN 2 7 2016 12/9/15 FILE NO. 150742 RESOLUTION NO. 512-15 SAN FRANCISCO PUBLIC LIBRARY [Accept and Expend Grant - California Natural Resources Agency - Noe Valley Town Square Project - $567,039] Resolution retroactively authorizing the Recreation and Park Department to accept and expend an Urban Greening for Sustainable Communities Grant from the California Natural Resources Agency in the amount of $567,039 for the Noe Valley Town Square Project for the period of September 1, 2015, through May 1, 2017, and authorizing the Director of Real Estate to file a Memorandum of Unrecorded Grant Agreement with the Assessor-Recorder defining the terms of the grant agreement, as defined herein. WHEREAS, The City and County of San Francisco (“the City”) owns the property located on San Francisco Assessor’s Parcel Number Lot 040, Block 6509 (“the Property”), known as the future location of the Noe Valley Town Square; and WHEREAS, The City, through the San Francisco Recreation and Park Department (“RPD”) is responsible for operating and maintaining the Property; and WHEREAS, The California Natural Resources Agency’s Strategic Growth Council is responsible for administration of the Urban Greening for Sustainable Commu",
+    "visors hereby waives inclusion of indirect costs as part of this Grant budget; and, be it FURTHER RESOLVED, That the Board of Supervisors authorizes the San Francisco Recreation and Park Department to accept and expend an Urban Greening for Sustainable Communities Grant in the amount of $567,039 for Noe Valley Town Square Project; and, be it FURTHER RESOLVED, That the Board of Supervisors authorizes the Director of Real Estate to file a Memorandum of Unrecorded Grant Agreement with the Assessor- Recorder. Recommended: Approved: _ l2triu Mayor ••Recreation and Park Department** BOARD OF SUPERVISORS Page 2 6/23/20",
+    "an Francisco, CA 94102-4689 File Number; 150742 Date Passed: December 15, 2015 Resolution retroactively authorizing the Recreation and Park Department to accept and expend an Urban Greening for Sustainable Communities Grant from the California Natural Resources Agency in the amount of $567,039 for the Noe Valley Town Square Project for the period of September 1 , 2015, through May 1, 2017, and authorizing the Director of Real Estate to file a Memorandum of Unrecorded Grant Agreement with the Assessor-Recorder defining the terms of the grant agreement, as defined herein. December 09, 2015 Budget and Finance Committee -",
+    "/16/15 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 GOVERN M ^-^:T DOCUME^^- AMENDED IN COMMITTEE JAN 2 7 12/9/15 FILE NO. 151196 RESOLUTION NO. 524-15 SAN FRANCISCO PUBLIC = 0-JJv [Accept and Expend "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.33,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.33,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/resolution2015sanf_8",
+   "deep_link": "https://archive.org/details/resolution2015sanf_8?q=Noe+Valley+Town+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "The resolution accepting a $567,039 state urban greening grant for the square."
+  },
+  {
+   "identifier": "meetingminutesbo2016sanf",
+   "title": "Meeting minutes / Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Noe Valley Town Square",
+   "ocr_excerpts": [
+    "d at City events and meetings; and to encourage restaurants, cafeterias, and concessions located on City property to offer healthy food options. 01/12/16; ASSIGNED UNDER 30 DAY RULE to Public Safety and Neighborhood Services Committee, expires on 2/11/2016. 160026 [Planning Code, Zoning Map - Rezoning Noe Valley Town Square] Sponsor: Wiener Ordinance amending the Planning Code, Zoning Map, to rezone Noe Valley Town Square, 3861 -24th Street, Assessor’s Block No. 6509, Lot No. 040, from its current designation as 24th Street - Noe Valley Neighborhood Commercial District and 40-X to Public (P) and Open Space (OS); affirming the Planning Department’s determination under the California Environmental Quality Act; and making f",
+    "ailers from selling tobacco products, including smokeless tobacco and electronic cigarettes, to persons aged 18, 19, or 20. PASSED, ON FIRST READING by the following vote: Ayes: 11 - Avalos, Breed, Campos, Cohen, Farrell, Kim, Mar, Peskin, Tang, Wener, Yee 160026 [Planning Code, Zoning Map - Rezoning Noe Valley Town Square] Sponsor: Wiener Ordinance amending the Planning Code, Zoning Map, to rezone Noe Valley Town Square, 3861 -24th Street, Assessor’s Block No. 6509, Lot No. 040, from its current designation as 24th Street - Noe Valley Neighborhood Commercial District and 40-X to Public (P) and Open Space (OS): affirming the Planning Department’s determination under the California Environmental Quality Act: and making f",
+    "Section 302, that this amendment will serve the public necessity, convenience, and welfare. Ordinance No. 030-16 FINALLY PASSED City and County of San Francisco Page 151 Printed at 1:55 pm on 4/N/I6 Board of Supervisors Meeting Minutes 3/8/2016 160026 [Planning Code, Zoning Map - Rezoning Noe Valley Town Square] Sponsor: Wiener Ordinance amending the Planning Code, Zoning Map, to rezone Noe Valley Town Square, 3861 -24th Street, Assessor’s Block No. 6509, Lot No. 040, from its current designation as 24th Street - Noe Valley Neighborhood Commercial District and 40-X to Public (P) and Open Space (OS); affirming the Planning Department’s determination under the California Environmental Quality Act; and making f"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.03,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.53,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/meetingminutesbo2016sanf",
+   "deep_link": "https://archive.org/details/meetingminutesbo2016sanf?q=Noe+Valley+Town+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "The ordinance rezoning the site from a commercial district to Public and Open Space."
+  },
+  {
+   "identifier": "agendasminutesar2014arts",
+   "title": "Agendas and Minutes / Arts Commission of San Francisco",
+   "creator": "Arts Commission of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Noe Valley Town Square",
+   "ocr_excerpts": [
+    "er%22%20style%3D%22margin%3A%200px%200px%201.5em%3B%20padding%3A%200px%3B%2. 2/6 Full Commission - November 2, 2015- Meeting Agenda | San Francisco Arts Commission I 10/30/2015 4. Motion to approve Phase 3 of the Golden Gate Recycled Water Pump Station & Reservoir. 5. Motion to approve Phases 1 and 2 of the Noe Valley Town Square project. 6. Motion to approve Phases 1 and 2 of the Geneva Car Barn and Powerhouse Project. 7. Motion to approve Phase 1 of the Airport Building #624 project contingent upon: (1 ) simplifying the design so that the sill of the clerestory is a level line aligned at the lowest point; (2) making the",
+    "PUC Storm Drain Mural Project for display during the year 201 7 and to authorize the Director of Cultural Affairs to enter into contract with the artist to develop and complete six unique mural designs for an amount not to exceed $1 0,000. 25. Motion to approve the art enrichment program plan for Noe Valley Town Square. 8. New Business and Announcements Discussion data:text/html;charset=utf-8,%3Cp%20align%3D%22center%22%20style%3D%22margin%3A%200px%200px%201.5em%3B%20padding%3A%200px%3B%2.. 4/6 1 10/30/2015 Full Commission- November 2, 2015 -Meeting Agenda | San Francisco Arts Commission (This item is to allow the Commissioners",
+    "issioner Stryker reported that the Committee agreed with the comments about the new building. She reported that the Committee held a marathon meeting lasting more than five hours, with eleven projects. She listed some of the highlights, including two neighborhood-driven projects, the Geneva Car Barn and Noe Valley Town Square. She reported that these were initiated by neighborhood groups with support from the Recreation and Parks Department and other departments, and from the district Supervisors. In response to a request from Vice President Schnair, Mr. DeCaigny said that a special presentation of a few notable recent proje",
+    "uld be on the full Commission’s agenda in the next few months. 3. Visual Arts Committee — Dorka Keehn, Chair 1. Commissioner Keehn reported that the Committee reviewed several public-private collaborations, including a developer-funded artwork at Ringold Alley, temporary artwork in Hayes Valley, and the Noe Valley Town Square. She reported that the Committee also approved a temporary art plan for Treasure Island, noting that Public Art Trust and Special Projects Director Jill Manton was working on an arts masterplan for Treasure Island. The Commission expressed interest in seeing a presentation on this very large and signif",
+    "ing Director, Oakland Public Conservatory of Music Civic Design Review Committee Recommendations (October 19, 2015) 4. RESOLUTION NO. 1102-15-298: Motion to approve Phase 3 of the Golden Gate Recycled Water Pump Station & Reservoir. 5. RESOLUTION NO. 1102-15-299: Motion to"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.9,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.4,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendasminutesar2014arts",
+   "deep_link": "https://archive.org/details/agendasminutesar2014arts?q=Noe+Valley+Town+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Arts Commission motions approving the project's first two phases and its art enrichment plan."
+  },
+  {
+   "identifier": "legislationintro2015sanf",
+   "title": "Legislation introduced, including all off-calendar items ...",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Noe Valley Town Square",
+   "ocr_excerpts": [
+    "et, for a 10-year term to commence on March 1, 2015, plus two five-year options to extend, which includes a rent schedule for the 1 0-year base term that will result in $5, 1 27,000 in revenue to the City. RECEIVED AND ASSIGNED to Budget and Finance Sub-Committee. 1 5031 3 [Accept and Expend Grant - Noe Valley Town Square Project - $743,543] Sponsor: Wiener Resolution authorizing the Recreation and Park Department to accept and expend a Land and Water Conservation Fund Grant from the State of California Department of Parks and Recreation in the amount of $743,543 for the Noe Valley Town Square Project; and authorizing the Director of Real Estate to record a Deed Restriction with the Assessor-Recorder against the property designated as Assessor’s Parcel Block No. 6509, Lot No. 040, providing that the use restrictions contained in the Grant Agreement will be covenants, conditions, and restrictio",
+    "5 from Public Health Foundation Enterprises to participate in a program entitled \"San Francisco Bay Clinical Trials Unit\" for the period of December 1, 2014, through November 30, 2015. RECEIVED AND ASSIGNED to Budget and Finance Committee. [Accept and Expend Grant - California Natural Resources Agency - Noe Valley Town Square Project - $567,039] Sponsor: Wiener Resolution authorizing the Recreation and Park Department to accept and expend an Urban Greening for Sustainable Communities Grant from the California Natural Resources Agency in the amount of $567,039 for the Noe Valley Town Square Project for the period of September 1, 2015, through May 1, 2017, and authorizing the Director of Real Estate to file a Memorandum of Unrecorded Grant Agreement with the Assessor-Recorder defining the terms of the grant agreement, as defined herein. RECEIVED AND ASSIGNED to Budget and Finance Committe",
+    "ue an Energy Use and Demand Reduction Through Energy Efficiency Program in the City and County of San Francisco, for the term of January 1 , 2016, through December 31 , 2016. RECEIVED AND ASSIGNED to Budget and Finance Committee. 151196 [Accept and Expend Grant-In-Place - San Francisco Parks Alliance - Noe Valley Town Square - $450,000] Sponsor: Wiener Resolution authorizing the Recreation and Park Department to accept and expend a Grant-in-Place, from the San Francisco Parks Alliance, of improvements to Noe Valley Town Square valued at $450,000. RECEIVED AND ASSIGNED to Budget and Finance Committee. -5- 151197 151198 151202 Motion 151203 Requests 151097 [World Prematurity Day - November 17, 2015] Sponsor: Farrell Resolution declaring November 17, 2015, as World Prematurity Day in the City and County of San Franc"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.86,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/legislationintro2015sanf",
+   "deep_link": "https://archive.org/details/legislationintro2015sanf?q=Noe+Valley+Town+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "calendar",
+   "doc_type_label": "Calendar",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Calendar",
+   "salient": false,
+   "gloss": "Legislation accepting a $743,543 state Land and Water Conservation Fund grant for the project."
+  },
+  {
+   "identifier": "agendasminutesbu2015sanf",
+   "title": "Agendas and Minutes / Budget and Finance Committee",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget and Finance Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Noe Valley Town Square",
+   "ocr_excerpts": [
+    "5 10:00 AM City Hall, Legislative Chamber, Room 250 Regular Meeting ROLL CALL AND ANNOUNCEMENTS 1 2-04-1 5P02:36 RCYD AGENDA CHANGES GOVERNMENT DOCUMENTS DEPT DEC - 4 2015 REGULAR AGENDA SAN FRANCISCO PUBLIC LIBRARY 1. 151196 [Accept and Expend Grant-ln-Place - San Francisco Parks Alliance - Noe Valley Town Square - $450,000] Sponsor: Wiener Resolution authorizing the Recreation and Park Department to accept and expend a Grant-in-Place, from the San Francisco Parks Alliance, of improvements to Noe Valley Town Square valued at $450,000. 11/17/15; RECEIVED AND ASSIGNED to the Budget and Finance Committee. 2. 150742 [Accept and Expend Grant - California Natural Resources Agency - Noe Valley Town Square Project - $567,039] Sponsor: Wiener Resolution authorizing the Recreation and Park Department to accept and expend an Urban Greening for Sustainable Communities Grant from the California Natural Resources Agency in the amount of $567,039 for the Noe Valley Town Square Project for the period of September 1, 2015, through May 1, 2017, and authorizing the Director of Real Estate to file a Memorandum of Unrecorded Grant Agreement with the Assessor-Recorder defining the terms of the grant agreement, as defined herein. 7/7/15; RECEIVED AND ASSIGNED to the Budget and Fi",
+    "ang were noted present. There was a quorum. tS\" AGENDA CHANGES There were no agenda changes. REGULAR AGENDA File No. 151196 and 150742 were heard together GOVERNMENT DOCUMENTS DEPT DEC 11 2015 SAN FRANCISCO PUBLIC LIBRARY 151196 [Accept and Expend Grant-In-Place - San Francisco Parks Alliance - Noe Valley Town Square - $450,000] Sponsor: Wiener Resolution authorizing the Recreation and Park Department to accept and expend a Grant-in-Place, from the San Francisco Parks Alliance, of improvements to Noe Valley Town Square valued at $450,000. 11/17/15; RECEIVED AND ASSIGNED to Budget and Finance Committee. Heard in Committee. Speakers: Melinda Sackman (Recreation and Park Department); provided an overview and responded to questions raised throughout the discussion. Todd David (Residents for Noe Valley Town Square) spoke in support of the matter. AMENDED, AN AMENDMENT OF THE WHOLE BEARING NEW TITLE to be retroactive by the following vote: Ayes: 2 - Farrell, Tang Absent: 1 - Mar City and County of San Francisco Page 1 Printed at 2:22 pm on 1 2/1 1/1 5 Budget and Finance Committee Meeting Minutes December 9, 2015 Resolution retroactively authorizing the Recreation and Park Department to accept and expend a Grant-in-Place, from the San Francisco Parks Alliance, of improvements to Noe Valley Town Square valued at $450,000. RECOMMENDED AS AMENDED by the following vote: Ayes: 2 - Farrell, Tang Absent: 1 - Mar 150742 [Accept and Expend Grant - California Natural Resources Agency - Noe Valley Town Square Proje"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.14,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.14,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendasminutesbu2015sanf",
+   "deep_link": "https://archive.org/details/agendasminutesbu2015sanf?q=Noe+Valley+Town+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Budget Committee papers on the $450,000 grant-in-place from the Parks Alliance."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  }
+ ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 5,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

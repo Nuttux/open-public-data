@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.735622+00:00",
+ "generated_at": "2026-07-28T11:43:47.706351+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -24,6 +24,35 @@
  "top_departments": [
   "PUB Public Utilities Bureaus"
  ],
+ "profile": {
+  "n_vouchers": 61,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 202921895.8,
+    "n_vouchers": 61
+   }
+  ],
+  "n_departments": 1,
+  "categories": [],
+  "n_categories": 0,
+  "counts_are_floor": false,
+  "recent_fy": 2017,
+  "recent_total_usd": 393541.3,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 393541.3,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

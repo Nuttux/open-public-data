@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.760003+00:00",
+ "generated_at": "2026-07-28T12:23:47.774074+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "hetch-hetchy",
@@ -29,22 +29,20 @@
    }
   ],
   "n_payees": 1,
-  "payees_total_paid": 28748.78,
-  "permits": [],
-  "n_permits": 0,
-  "permits_total_declared": 0.0,
-  "permits_by_year": []
+  "payees_total_paid": 28748.78
  },
  "photo": "/img/us/sf/places/hetch-hetchy.jpg",
  "photo_credit": {
   "photo": "/img/us/sf/places/hetch-hetchy.jpg",
-  "source": "Wikimedia Commons",
-  "file": "File:Hetch_Hetchy_Valley.jpg",
-  "file_url": "https://commons.wikimedia.org/wiki/File:Hetch_Hetchy_Valley.jpg",
-  "license": "Public domain",
+  "source": "img.freepik.com",
+  "source_url": "https://www.freepik.com/premium-photo/san-francisco-travel-nature-hiker-girl-hiking-hetch-hetchy-valley-enjoying-lookout-view-mountains-lakes-big-island-destination-woman-tourist-o-shaughnessy-dam-usa_31799295.htm",
+  "license": "UNVERIFIED",
   "license_url": "",
-  "author": "Isaiah West Taber",
-  "fetched_at": "2026-07-20T22:28:02.825991+00:00"
+  "license_verified": false,
+  "provisional": true,
+  "author": "Bing",
+  "resolved_via": "web-search",
+  "fetched_at": "2026-07-27T22:56:51.525321+00:00"
  },
  "summary_en": "The archive documents trace the O'Shaughnessy Dam and Hetch Hetchy system. A 2005 history records that San Francisco approved a \"$45 million bond to build Hetch Hetchy System\" in 1910, that the dam was built 1919-1923, and that it was later \"raised to store 360,360 acre feet.\" A 1975-76 annual report of the Hetch Hetchy Water and Power System notes the dam was raised \"an additional 85.5 feet,\" the system cost \"some $100 million,\" and water reached Crystal Springs Reservoir in 1934. The system is operated by the Public Utilities Commission, whose FY2025 budget line is about $1.8B; a city contract for \"Auto Parts for Hetch Hetchy\" with Pine Mountain Auto Inc has been paid $28,748.78.",
  "published": true,
@@ -64,6 +62,696 @@
   },
   "contracts": [
    {
+    "contract_no": "1000025957",
+    "title": "Hetch Hetchy Power Purchaseofgas",
+    "prime": "DEPARTMENT OF GENERAL SERVICES",
+    "department_code": "PUC",
+    "agreed_usd": 69000000.0,
+    "paid_usd": 47551839.93,
+    "evidence": "PUC_HHP_PURCHASEOFGAS",
+    "team": [
+     {
+      "supplier": "DEPARTMENT OF GENERAL SERVICES",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 69000000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000018483",
+    "title": "Hetch Hetchy Power-SFAC21.04 Gas Purchase",
+    "prime": "PACIFIC GAS & ELECTRIC CO",
+    "department_code": "PUC",
+    "agreed_usd": 43000000.0,
+    "paid_usd": 29128650.36,
+    "evidence": "PUC-HHP-SFAC21.04 GAS PURCHASE",
+    "team": [
+     {
+      "supplier": "PACIFIC GAS & ELECTRIC CO",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 43000000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000026363",
+    "title": "Hetch Hetchy Power Purchaseofsteam",
+    "prime": "ENERGY CENTER SAN FRANCISCO LLC",
+    "department_code": "PUC",
+    "agreed_usd": 16000000.0,
+    "paid_usd": 11072038.67,
+    "evidence": "PUC_HHP_PURCHASEOFSTEAM",
+    "team": [
+     {
+      "supplier": "ENERGY CENTER SAN FRANCISCO LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 16000000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000018474",
+    "title": "Hetch Hetchy Power-SFAC21.04 Service Conn",
+    "prime": "PACIFIC GAS & ELECTRIC CO",
+    "department_code": "PUC",
+    "agreed_usd": 10000000.0,
+    "paid_usd": 9228674.88,
+    "evidence": "PUC-HHP-SFAC21.04 SERVICE CONN",
+    "team": [
+     {
+      "supplier": "PACIFIC GAS & ELECTRIC CO",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 10000000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000021222",
+    "title": "Hetch Hetchy Water and Power NERC Cmpl Audit Sprt",
+    "prime": "ARCHER ENERGY SOLUTIONS",
+    "department_code": "PUC",
+    "agreed_usd": 9100000.0,
+    "paid_usd": 8180574.47,
+    "evidence": "PUC HHWP NERC Cmpl Audit Sprt",
+    "team": [
+     {
+      "supplier": "ARCHER ENERGY SOLUTIONS",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 9100000.0
+     },
+     {
+      "supplier": "STANTEC CONSULTING INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 400000.0
+     },
+     {
+      "supplier": "Bell Burnett & Associates",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     },
+     {
+      "supplier": "ENTRUST INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     },
+     {
+      "supplier": "Galen-CM INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     },
+     {
+      "supplier": "KESTREL POWER ENGINEERING",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     },
+     {
+      "supplier": "POWER PROS",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     },
+     {
+      "supplier": "STANTEC CONSULTING SERVICES INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000000333",
+    "title": "Hetch Hetchy Water and Power Power Transmission Line Clearance MI",
+    "prime": "BLACK & VEATCH CORPORATION",
+    "department_code": "PUC",
+    "agreed_usd": 12000000.0,
+    "paid_usd": 7458372.64,
+    "evidence": "HHWP POWER TRNSM LINE CLRNC MI",
+    "team": [
+     {
+      "supplier": "BLACK & VEATCH CORPORATION",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 12000000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000018371",
+    "title": "Hetch Hetchy Water and Power Tech Services SJPL Progrm",
+    "prime": "H D R ENGINEERING INC",
+    "department_code": "PUC",
+    "agreed_usd": 4995000.0,
+    "paid_usd": 5748996.48,
+    "evidence": "PUC HHWP Tech Srvs SJPL Progrm",
+    "team": [
+     {
+      "supplier": "H D R ENGINEERING INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 4995000.0
+     },
+     {
+      "supplier": "JACOBS ENGINEERING GROUP INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 2610000.0
+     },
+     {
+      "supplier": "DABRI INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 495000.0
+     },
+     {
+      "supplier": "EFFECTIVE MANAGEMENT SERVICES LLC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 270000.0
+     },
+     {
+      "supplier": "Matthew Gass",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 270000.0
+     },
+     {
+      "supplier": "PURE TECHNOLOGIES US INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 270000.0
+     },
+     {
+      "supplier": "LEE INCORPORATED",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 90000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000024342",
+    "title": "As-Needed Eng Services Hetch Hetchy Water and Power RR",
+    "prime": "STANTEC CONSULTING SERVICES INC",
+    "department_code": "PUC",
+    "agreed_usd": 5363500.0,
+    "paid_usd": 4605396.86,
+    "evidence": "PUC AS-NEEDED ENG Srvs HHWP RR",
+    "team": [
+     {
+      "supplier": "STANTEC CONSULTING SERVICES INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 5363500.0
+     },
+     {
+      "supplier": "GRID SUBJECT MATTER EXPERTS, LLC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 250000.0
+     },
+     {
+      "supplier": "NV5 Geospatial, Inc.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 250000.0
+     },
+     {
+      "supplier": "POWER PROS",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 250000.0
+     },
+     {
+      "supplier": "SIERRA CONSULTANTS DBA LAND & STRUCTURE",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 225000.0
+     },
+     {
+      "supplier": "Professional Land Services",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 200250.0
+     },
+     {
+      "supplier": "LETTIS CONSULTANTS INTERNATIONAL INC.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 200000.0
+     },
+     {
+      "supplier": "DELTA COMPUTER SOLUTIONS INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 150000.0
+     },
+     {
+      "supplier": "MCGOVERN MCDONALD ENGINEERS",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 100000.0
+     },
+     {
+      "supplier": "ACHIEVEMENT ENGINEERING CORP",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 99750.0
+     },
+     {
+      "supplier": "Galen-CM INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 99750.0
+     },
+     {
+      "supplier": "WIN STRUCTURAL CONSULTING GRP, INC.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 99750.0
+     },
+     {
+      "supplier": "MACRIS, NATALIE",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 75000.0
+     },
+     {
+      "supplier": "JOE HILL CONSULTING ENGINEERS",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 62250.0
+     },
+     {
+      "supplier": "A G S INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 25000.0
+     },
+     {
+      "supplier": "SRT CONSULTANTS",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 25000.0
+     },
+     {
+      "supplier": "C M PROS",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 24750.0
+     },
+     {
+      "supplier": "McMillen Inc.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000031275",
+    "title": "Hetch Hetchy Power Sunndaledevelope",
+    "prime": "SUNNYDALE DEVELOPMENT CO LLC",
+    "department_code": "PUC",
+    "agreed_usd": 9500000.0,
+    "paid_usd": 3771389.88,
+    "evidence": "PUC_HHP_SUNNDALEDEVELOPE",
+    "team": [
+     {
+      "supplier": "SUNNYDALE DEVELOPMENT CO LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 9500000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000026923",
+    "title": "As-Needed Eng Services Hetch Hetchy Water and Power RR",
+    "prime": "Mott MacDonald Group, Inc.",
+    "department_code": "PUC",
+    "agreed_usd": 5325000.0,
+    "paid_usd": 3264451.0,
+    "evidence": "PUC AS-NEEDED ENG SRVS HHWP RR",
+    "team": [
+     {
+      "supplier": "Mott MacDonald Group, Inc.",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 5325000.0
+     },
+     {
+      "supplier": "Galen-CM INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 375000.0
+     },
+     {
+      "supplier": "JOE HILL CONSULTING ENGINEERS",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 375000.0
+     },
+     {
+      "supplier": "INFRATERRA INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 300000.0
+     },
+     {
+      "supplier": "CDIM ENGINEERING, INC.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 225000.0
+     },
+     {
+      "supplier": "MERIDIAN SURVEYING ENGINEERING INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 225000.0
+     },
+     {
+      "supplier": "VGG Systems Corp.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 225000.0
+     },
+     {
+      "supplier": "GARAVAGLIA ARCHITECTURE INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 187500.0
+     },
+     {
+      "supplier": "CATALYST CONSULTING GROUP INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 150000.0
+     },
+     {
+      "supplier": "MATTHEW GASS CONSULTING",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 112500.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000026471",
+    "title": "Hetch Hetchy Power Tiredevelopment",
+    "prime": "Treasure Island Series 1, LLC",
+    "department_code": "PUC",
+    "agreed_usd": 5000000.0,
+    "paid_usd": 2914942.0,
+    "evidence": "PUC_HHP_TIREDEVELOPMENT",
+    "team": [
+     {
+      "supplier": "Treasure Island Series 1, LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 5000000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000026362",
+    "title": "Hetch Hetchy Power Purchaseofpowermultipl",
+    "prime": "PACIFIC GAS & ELECTRIC CO",
+    "department_code": "PUC",
+    "agreed_usd": 4008100.0,
+    "paid_usd": 1929667.44,
+    "evidence": "PUC_HHP_PURCHASEOFPOWERMULTIPL",
+    "team": [
+     {
+      "supplier": "PACIFIC GAS & ELECTRIC CO",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 4008100.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000025315",
+    "title": "Hetch Hetchy Power Pier70-FY22",
+    "prime": "FC Pier 70, LLC",
+    "department_code": "PUC",
+    "agreed_usd": 9500000.0,
+    "paid_usd": 1711857.69,
+    "evidence": "PUC_HHP_PIER70-FY22",
+    "team": [
+     {
+      "supplier": "FC Pier 70, LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 9500000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000000352",
+    "title": "Hetch Hetchy Power Interconnection Agree",
+    "prime": "PORT OF OAKLAND",
+    "department_code": "PUC",
+    "agreed_usd": 2800844.0,
+    "paid_usd": 1502144.0,
+    "evidence": "PUC_HHP_INTERCONNECTION AGREE",
+    "team": [
+     {
+      "supplier": "PORT OF OAKLAND",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 2800844.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035184",
+    "title": "Hetch Hetchy Power Wapa Power Bill",
+    "prime": "WESTERN AREA POWER ADMINISTRATION DOE",
+    "department_code": "PUC",
+    "agreed_usd": 42701460.0,
+    "paid_usd": 1430341.84,
+    "evidence": "PUC_HHP_WAPA_POWER_BILL",
+    "team": [
+     {
+      "supplier": "WESTERN AREA POWER ADMINISTRATION DOE",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 42701460.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000026776",
+    "title": "Hetch Hetchy Power Congestionrevenuerights",
+    "prime": "CALIFORNIA ISO",
+    "department_code": "PUC",
+    "agreed_usd": 5000000.0,
+    "paid_usd": 1264812.4,
+    "evidence": "HHP_CONGESTIONREVENUERIGHTS",
+    "team": [
+     {
+      "supplier": "CALIFORNIA ISO",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 5000000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000000327",
+    "title": "Hetch Hetchy Water and Power Power Transmission Line Clearance MI",
+    "prime": "BLACK & VEATCH CORPORATION",
+    "department_code": "PUC",
+    "agreed_usd": 2100000.0,
+    "paid_usd": 740568.11,
+    "evidence": "HHWP POWER TRNSM LINE CLRNC MI",
+    "team": [
+     {
+      "supplier": "BLACK & VEATCH CORPORATION",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 2100000.0
+     },
+     {
+      "supplier": "VISTA CONNECTIONS INC.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 300000.0
+     },
+     {
+      "supplier": "WIN STRUCTURAL CONSULTING GRP, INC.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 300000.0
+     },
+     {
+      "supplier": "GEOTECHNICAL CONSULTANTS INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 150000.0
+     },
+     {
+      "supplier": "PACIFIC ENGINEERING & CONSTRUCTION INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 150000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000026472",
+    "title": "Hetch Hetchy Power Missionrockredevelopme",
+    "prime": "Mission Rock Horizontal Sub (Phase 1)LLC",
+    "department_code": "PUC",
+    "agreed_usd": 750000.0,
+    "paid_usd": 608877.0,
+    "evidence": "PUC_HHP_MISSIONROCKREDEVELOPME",
+    "team": [
+     {
+      "supplier": "Mission Rock Horizontal Sub (Phase 1)LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 750000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000022775",
+    "title": "Hetch Hetchy Power Caiso",
+    "prime": "CALIFORNIA ISO",
+    "department_code": "PUC",
+    "agreed_usd": 5000000.0,
+    "paid_usd": 382567.35,
+    "evidence": "PUC_HHP_CAISO",
+    "team": [
+     {
+      "supplier": "CALIFORNIA ISO",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 5000000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000037619",
+    "title": "Hetch Hetchy Power Bridge Potrero FY26",
+    "prime": "BRIDGE POTRERO COMMUNITY ASSOCIATES LLC",
+    "department_code": "PUC",
+    "agreed_usd": 244053.0,
+    "paid_usd": 214358.0,
+    "evidence": "PUC_HHP_BRIDGE_POTRERO_FY26",
+    "team": [
+     {
+      "supplier": "BRIDGE POTRERO COMMUNITY ASSOCIATES LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 244053.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000034130",
+    "title": "Helicopter Services for Hetch Hetchy Water and Power",
+    "prime": "A & P HELICOPTERS INC",
+    "department_code": "PUC",
+    "agreed_usd": 750000.0,
+    "paid_usd": 195210.25,
+    "evidence": "PUC Helicopter Srvs for HHWP",
+    "team": [
+     {
+      "supplier": "A & P HELICOPTERS INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 750000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035249",
+    "title": "Hetch Hetchy Power Biological&Physical",
+    "prime": "ENVIRONMENTAL SCIENCE ASSOCIATES INC",
+    "department_code": "PRT",
+    "agreed_usd": 410256.13,
+    "paid_usd": 130395.66,
+    "evidence": "PRT-HHP Biological&Physical",
+    "team": [
+     {
+      "supplier": "ENVIRONMENTAL SCIENCE ASSOCIATES INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 410256.13
+     },
+     {
+      "supplier": "SMITHSONIAN INSTITUTION",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 158940.29
+     },
+     {
+      "supplier": "BIOMAAS, INC.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 62489.34
+     },
+     {
+      "supplier": "COAST RIDGE ECOLOGY LLC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 30565.44
+     },
+     {
+      "supplier": "Acta Environmental",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 16980.8
+     }
+    ]
+   },
+   {
+    "contract_no": "1000026884",
+    "title": "Hetch Hetchy Power Streetlightsmaintenanc",
+    "prime": "STATE OF CALIFORNIA / DEPT OF TRANSPORTA",
+    "department_code": "PUC",
+    "agreed_usd": 150000.0,
+    "paid_usd": 62112.76,
+    "evidence": "PUC_HHP_STREETLIGHTSMAINTENANC",
+    "team": [
+     {
+      "supplier": "STATE OF CALIFORNIA / DEPT OF TRANSPORTA",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 150000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000026882",
+    "title": "Hetch Hetchy Power Watercharges",
+    "prime": "EAST BAY MUNICIPAL UTILITIES DISTRICT",
+    "department_code": "PUC",
+    "agreed_usd": 150000.0,
+    "paid_usd": 60221.99,
+    "evidence": "PUC_HHP_WATERCHARGES",
+    "team": [
+     {
+      "supplier": "EAST BAY MUNICIPAL UTILITIES DISTRICT",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 150000.0
+     }
+    ]
+   },
+   {
     "contract_no": "1000033261",
     "title": "Auto Parts for Hetch Hetchy",
     "prime": "Pine Mountain Auto Inc",
@@ -79,46 +767,157 @@
       "attached_usd": 300000.0
      }
     ]
+   },
+   {
+    "contract_no": "1000023926",
+    "title": "96104X PUC - Hetch Hetchy Power Copiers",
+    "prime": "XEROX CORPORATION",
+    "department_code": "PUC",
+    "agreed_usd": 20919.24,
+    "paid_usd": 20642.41,
+    "evidence": "96104X_PUC - HHP Copiers",
+    "team": [
+     {
+      "supplier": "XEROX CORPORATION",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 20919.24
+     }
+    ]
+   },
+   {
+    "contract_no": "1000024475",
+    "title": "96104X Hetch Hetchy Water and Power-Xerox Rec / Control",
+    "prime": "XEROX CORPORATION",
+    "department_code": "PUC",
+    "agreed_usd": 20917.28,
+    "paid_usd": 15620.21,
+    "evidence": "96104X_HHWP-XEROX REC / CNTRL",
+    "team": [
+     {
+      "supplier": "XEROX CORPORATION",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 20917.28
+     }
+    ]
+   },
+   {
+    "contract_no": "1000027061",
+    "title": "As-Needed Eng Services Hetch Hetchy Water and Power RR",
+    "prime": "Kleinfelder and LEE Incorporated JV",
+    "department_code": "PUC",
+    "agreed_usd": 3375000.0,
+    "paid_usd": 0.0,
+    "evidence": "PUC AS-NEEDED ENG SRVS HHWP RR",
+    "team": [
+     {
+      "supplier": "Kleinfelder and LEE Incorporated JV",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 3375000.0
+     },
+     {
+      "supplier": "BLACK & VEATCH CORPORATION",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 1725000.0
+     },
+     {
+      "supplier": "POWER PROS",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 750000.0
+     },
+     {
+      "supplier": "JOE HILL CONSULTING ENGINEERS",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 300000.0
+     },
+     {
+      "supplier": "MCGOVERN MCDONALD ENGINEERS",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 300000.0
+     },
+     {
+      "supplier": "CALIFORNIA REFORESTATION INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 225000.0
+     },
+     {
+      "supplier": "Professional Land Services",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 225000.0
+     },
+     {
+      "supplier": "AMC CONSULTING ENGINEERS INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 150000.0
+     },
+     {
+      "supplier": "DABRI INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 150000.0
+     },
+     {
+      "supplier": "Galen-CM INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 150000.0
+     },
+     {
+      "supplier": "Cypress In-Line Holdings, LLC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 75000.0
+     },
+     {
+      "supplier": "YEI ENGINEERS INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 75000.0
+     },
+     {
+      "supplier": "AVILA & ASSOC CONSULTING ENGINEERS INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     },
+     {
+      "supplier": "Sierra Aqua Technologies, Inc",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000037992",
+    "title": "Hetch Hetchy Power Mission Bay Solar",
+    "prime": "SAN FRANCISCO UNIFIED SCHOOL DISTRICT",
+    "department_code": "PUC",
+    "agreed_usd": 653033.0,
+    "paid_usd": 0.0,
+    "evidence": "PUC_HHP_MISSION_BAY_SOLAR",
+    "team": [
+     {
+      "supplier": "SAN FRANCISCO UNIFIED SCHOOL DISTRICT",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 653033.0
+     }
+    ]
    }
   ],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "C124920621",
-   "title": "San Francisco groundwater master plan : preliminary draft",
-   "creator": "San Francisco (Calif.). Water Department",
-   "year": 1995,
-   "pool": "dl",
-   "matched_alias": "Hetch Hetchy",
-   "collection": "igscalocalgovdocs",
-   "relevance": {
-    "score": 8.0,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 2.5,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 4.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/C124920621",
-   "deep_link": "https://archive.org/details/C124920621?q=Hetch+Hetchy",
-   "source_label": "Internet Archive — Democracy's Library",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1995 groundwater master plan setting the city's local supply against its surface water from the Hetch Hetchy system."
-  },
   {
    "identifier": "sanfranciscowate1999hans",
    "title": "San Francisco water and power : a history of the Municipal Water Department and Hetch Hetchy system",
@@ -126,6 +925,12 @@
    "year": 1999,
    "pool": "sfpl",
    "matched_alias": "O'Shaughnessy Dam",
+   "ocr_excerpts": [
+    "THE Municipal Water Departme %?J^ AND ETCH HETCHY SYSTEM IS'1 (OlB'k P^and County of San Francisco REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY San 3 1223 05971 7349 Francisco WATER AND POWER A History of the Municipal Water Department and Hetch Hetchy System Digitized by the Internet Archive in 2014 https://archive.org/details/sanfranciscowate1999hans Water and Power 4 PREFACE rights-of-way on the Tuolumne River in Yosemite National Park to San Francisco. The total system is the real- ization of a concept for an aqueduct from the Sierra Nevada watersheds, which had been planned since the 1860's. A very busy 20 years of con- struction on the Hetch Hetchy dams and aqueducts resulted in Sierra Nevada water being delivered into the Water Department local distribution system by 1934. Integrating Hetch Hetchy and Water Department systems has provided San Francisco and neigh- boring communities with an unfailing year-round assured supply of pure, potable water from secure sources. A six-year drought and a burgeon- ing population in the Bay Area, never- This 1994 update of San Francisco Water and Power, A History of the Municipal Water Department and Hetch Hetchy System supersedes the last published version from 1985. Since the mid-eighties, two significant natural events — the 1989 Loma Prieta Earthquake and the longest drought in San Francisco's recorded history — have necessitated changes in the text to reflect how San Francisco's water system responded to",
+    "ivate enterprise — The Spring Valley Water Company. Mayor \"Sunny Jim\" Rolph purchased the fully developed, mature water works for San Francisco at a cost of $39,962,606.51 on March 3, 1930. Since then, the City has operated and main- tained the water works as the San Francisco Water Department. The Hetch Hetchy System had its birth in the Raker Act of 1913, which granted water and power resource CITY ENGINNER O'SHAUGHNESSY AND STAFF. Department as to how both commer- cial and residential customers use water, how it can be conserved and what additional untapped sources of potable water may exist for futu",
+    "d Power offers an appreciation of the magnitude of the water and power systems, both past and present. In an ever-changing and growing urban environment accompanied by an unpredictable climate, the vision of the people who conceived, developed and then integrated the San Francisco Water Department and Hetch Hetchy System still stands San Francisco in good stead today. JPM, January 1994 PREVIOUS PAGE, 1887- SPRING VALLEY WATER WORKS BOARD OF DIRECTORS 5 Water and Power The seed for San Francisco's municipal quest for drink- ing water was sown in 1769, when Don Gaspar de Portola and Jose Francisco Orte",
+    "Dolores lake and stream have long since been filled in and built over. A po"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 10.82,
@@ -150,10 +955,13 @@
    "url": "https://archive.org/details/sanfranciscowate1999hans",
    "deep_link": "https://archive.org/details/sanfranciscowate1999hans?q=O'Shaughnessy+Dam",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited (1985–1999)",
-   "group": "Histories & surveys",
+   "doc_type": "history",
+   "doc_type_label": "History",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "History",
    "salient": true,
-   "gloss": "A 1999 edition of the same municipal water history, tracing the Hetch Hetchy System from the 1913 Raker Act to the delivery of Sierra Nevada water by 1934."
+   "gloss": "The utility's own history of the system, tracing the aqueduct from the 1913 Raker Act and recording that the city bought out the Spring Valley Water Company for $39,962,606.51 in 1930."
   },
   {
    "identifier": "C124889945",
@@ -162,6 +970,10 @@
    "year": 1985,
    "pool": "dl",
    "matched_alias": "Hetch Hetchy",
+   "ocr_excerpts": [
+    "Fall 921 Sep 28 922 Jun 922 Jun 23 922 Jul 922 Aug 17 923 923 Apr 6 923 May 18 923 Jul 7 923 Oct 2 923 Oct 924 Jan 924 Mayor Rolph hires M.M. O’Shaughnessy as City Engineer Priest Grade road reconstructed Hearings before Interior Secretary Fisher concluded Board of Army Engineers report recommends San Francisco develop Hetch Hetchy $20 million cheaper Interior Secretary Fisher refuses further permits without Congressional authority First of “Hetch Hetchy” bills introduced in Congress “Raker Act” introduced in Congress House adopts Raker Act Senate adopts Raker Act President Woodrow Wilson signs Raker Act into law Spring Valley starts construction of Calaveras Dam San Francisco ratifies Raker Act Surveys start for Hetch Hetchy Railroad Start of Hog Ranch — Hetch Hetchy and Early Intake roads Surveys made for Lower Cherry power aqueduct, Mountain Tunnel and Priest Reservoir George A. Elliott s igceeds as chief engineer of Spring Valley Preliminary preparation work starts in Hetch Hetchy Valley Canyon Ranch sawmill starts operations for Hetch Hetchy Diversion tunnel at O’Shaughnessy damsite starts Construction of Hetch Hetchy Railroad starts Construction of Lower Cherry Aqueduct starts Surveys made for Coast Range Tunnel Lower Cherry Diversion Dam completed Drifting Mountain Tunnel begins at Early Intake and South Fork Construction starts on Eleanor Dam Construction of Hetch Hetchy Railroad completed — operations start Construction of Priest Dam starts Calaveras Dam fails — reconstruction monitored by City Engineer Early Intake Powerhouse starts operation Eleanor Dam completed to height of 70 feet Power Administrator orders surplus Early Intake power to PG&E Hetch Hetchy sawmill moves to Hog Ranch Hermann Schussler dies at age 77 Utah Construction awarded contract to build O’Shaughnessy Dam O'Shaughnessy Dam diversion tunnel completed State Railroad Commission directs Spring Valley to raise Calaveras Dam, among other matters Construction of Moccasin Powerhouse starts Construction of Priest Dam starts Construction of Moccasin Power Tunnel starts Construction of Pulgas Tunnel at Crystal Springs starts Construction of Moccasin Penstock starts San Francisco gets option to buy Spring Valley Water Company — agrees to build Pipeline #1 across San Francisco Bay Construction of Calaveras Dam starts O'Shaughnessy Dam completed Construction of Bay Crossing Pipeline #1 starts O'Shaughnessy Dam dedicated — height 226.6 feet, capacity 206,000 acre feet Construction of Early Intake Diversion Tunnel started Priest Dam completed Construction of Dumbarton Bridge for Bay Pipeline #1 starts Sawmill operations at Hog Ranch (Camp Mather) terminated 1769 1773 Nov 30 1776 1825 1833 1835 1836 1846 Jul 9 1846 1849 1850-1852",
+    "d State Constitution allows Board of Supervisors to fix "
+   ],
    "collection": "igscalocalgovdocs",
    "relevance": {
     "score": 9.03,
@@ -186,9 +998,13 @@
    "url": "https://archive.org/details/C124889945",
    "deep_link": "https://archive.org/details/C124889945?q=Hetch+Hetchy",
    "source_label": "Internet Archive — Democracy's Library",
-   "group": "Histories & surveys",
+   "doc_type": "history",
+   "doc_type_label": "History",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "History",
    "salient": true,
-   "gloss": "A 1985 departmental history of the Municipal Water Department and the Hetch Hetchy system, with a year-by-year chronology from O'Shaughnessy's hiring as City Engineer in 1912."
+   "gloss": "A year-by-year chronology of how the system was authorised — O'Shaughnessy's hiring as City Engineer, the Army Engineers' report, and the Raker Act's passage through Congress to Wilson's signature."
   },
   {
    "identifier": "sanfranciscowate2005hans",
@@ -197,6 +1013,10 @@
    "year": 2005,
    "pool": "sfpl",
    "matched_alias": "O'Shaughnessy Dam",
+   "ocr_excerpts": [
+    "SAN FRANCISCO WATER AND POWER SAN FRANCISCO PUBLIC LIBRARY 3 1223 06977 6707 AJrlistory r q/the Municipal Water Department ^ I Hetch Hetchy System s s REF 628.1 Sa52wt 2005 HETCH HETCHY REGIONAL WATER SYSTEM 9 So- c-s^cncc Coast Range Tunnel Putgas TunneJ Calaveras Reservoir sat. =*ancsco< ma OTBSUFPjES £ «or Si per bucket ^BlMM RnKppaftne tod n O Sar. P-moKG ^ BM C*eek WW r- ■» SPRING VALifY WATER COMPANY BUILDS WATER SYSTEM 1849-1876 Pdardtos, Crystal Spnngs 3 San Andreas water supplies developed I Frst Alameda Creek drversens by Spring Vaiey Water Company. 1900 USGS recommends Gty look to Tuokjmne Rw tor water 1901 jvnes Phebn Aes kx Tuofumne Rjver water rights 1910 San Francisco approves $45 million bona to build Hetch Hetchy System 1912 John Freeman prepares plan to develop Tuolumne Rjver water supply 1913 U S Congress grants City rights to water from Tuolumne River (Raker Act). * SAN FRANCISCO BURNS q- FOR THREE DAYS _C £ 1906 Apnl l8at$:l2AM n 7.9 Earthquake strikes More than 3.000 died. $400 million damages City leaders vow never again to let San Francisco bum. 1915-1917 Hetch Hetchy Railroad built to carry men & supplies to worksite. 1918 Calaveras Dam collapses during construction; rebuilding begins 1919-1923 O'Shaughnessy Dam built to store Hetch Hetchy water 1923-1932 Pipelines laid across Central Valley & San Francisco Bay 1934 Hetch Hetchy water system completed & dedicated 1918 Early Intake Powerhouse supplies power for Hetch Hetchy 1921-1925 Moccasin Powerhouse, Penstock & Tunnel built. 1935 City lays second pipeline across San Francisco Bay I93B O'Sha'ighnessy Dam raised to store 360.360 acre feet. 1947 San Franciscans approve $2S million to build two new transmission pipelines. 1953-1956 Second pipelines built across Cent",
+    "starts setsrmc study of its water system 1997 Voters approve $304 m*on to upgrade treatment plants. 1998 Voters freeze wacw i sewer rates trtroug* 2C0fe CALIFORNIA ENERGY CRJSJS 2000 Gty hat hard with roAre btadcoucsfth^ibfc. :.v: ^st-e-j-^N*^ ^^History r Q/ the Municipal Water Department & Hetch Hetchy System San Francisco Public Library Gowrnmsnt ! ifonnation Center San Francisco Public Library 1C3 Urkfn Street, 5t!i Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC UTILITIES COMMISSION AN FRANCISCO WATER AND POWER Municipal Water Department Hetch Hetchy System SAN FRANCISCO PUBLIC UTILITIES COMMISSION PREFACE This 2005 edition of San Francisco Water and Power, A History of the Municipal Water Department and Hetch Hetchy System celebrates the extraordinary events and memorable leaders who conceived, designed and built San Francisco's water system with fore- sight to provide today's Bay Area with high quality drinking water supplies. San Francisco's water system deve"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 8.84,
@@ -221,9 +1041,59 @@
    "url": "https://archive.org/details/sanfranciscowate2005hans",
    "deep_link": "https://archive.org/details/sanfranciscowate2005hans?q=O'Shaughnessy+Dam",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Histories & surveys",
+   "doc_type": "history",
+   "doc_type_label": "History",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "History",
    "salient": true,
-   "gloss": "A 2005 SFPL history of the Municipal Water Department and Hetch Hetchy System, whose timeline dates the O'Shaughnessy Dam to 1919-1923 and its raising to store 360,360 acre feet."
+   "gloss": "The 2005 edition of the utility's history, carrying the timeline forward to the 1997 vote for $304 million of treatment-plant upgrades and the 2000–01 energy crisis."
+  },
+  {
+   "identifier": "C124920621",
+   "title": "San Francisco groundwater master plan : preliminary draft",
+   "creator": "San Francisco (Calif.). Water Department",
+   "year": 1995,
+   "pool": "dl",
+   "matched_alias": "Hetch Hetchy",
+   "ocr_excerpts": [
+    "ter-Freshwater Interface - The boundary between saline and fresh water. Saltwater Intrusion - The movement of salt water into a body of fresh water. It can occur in either surface water or groundwater bodies. San Francisco Water Supply - A series of reservoirs, aqueducts, and hydroelectric plants that capture and con- vey water from the Hetch Hetchy Reservoir on the Tuolumne River watershed and other surface water systems (such as the San Antonio and Calaverous Reser- voirs) for direct delivery to customers and into San Francisco storage reservoirs. The system is owned by the City and County of San Francisco and is designed to provide up to 300 mgd to water users in the Bay Area and th",
+    "or causes of groundwater contamination. SAC/BA35516/021.DOC/9-95 Executive Summary The San Francisco Water Department (Water Department) is responsible for providing a reliable, high quality, and affordable water supply for the City and County of San Francisco and its suburban wholesale customers. Surface water supplies from both the Hetch Hetchy Reservoir and local sources have provided most of the City's water supply for the past 60 years. Currently, the City is seeking methods to increase the reliability and security of its long- term water supply. By integrating the use of its potable surface water, potable and nonpotable groundwater, and nonpotable recycled water supplies, the C",
+    "The Master Plan identifies specific actions to be conducted by the Water Department during the next 5 years and outlines broader strategies for the next 20 years. may need to give up some water supplies for environmental protection. e Water Supply Planning. Recent studies conducted by the City have indicated that the safe yield of the Hetch Hetchy system has dropped from 300 mgd to 242 mgd. This has prompted the Water Department to SAC/BA35516/011.DOC/9-95 ES-1 Total water demand in the City is expected to increase over the next 20 years as new higher-density buildings replace those destroyed by the 1989 Loma Prieta earthquake, as idle former military bases begin operating under",
+    "ble, affordable, and high quality water for its customers. ES-7 oo er wan, a ee tena, arnt r= waret ogi > <= Section One - Introduction The San Francisco Water Department is responsible for providing a reliable, high-quality, and affordable water supply for the City of San Francisco. Surface water supplies from both the Hetch Hetchy Reservoir and local sources have been able to meet the City’s water supply needs for the past 60 years. However, during the recent prolonged drought, the City faced considerable water shortage impacts due to limitations in the system. To reduce future water shortage impacts, the Water Department is seeking methods to increase the reliability",
+    "r. By 1913, the City of San Francisco estimated t"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 8.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.5,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124920621",
+   "deep_link": "https://archive.org/details/C124920621?q=Hetch+Hetchy",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "A 1995 groundwater master plan setting the city's local supply against its surface water from the Hetch Hetchy system."
   },
   {
    "identifier": "3annualreportsanf",
@@ -232,6 +1102,11 @@
    "year": 1975,
    "pool": "sfpl",
    "matched_alias": "Hetch Hetchy",
+   "ocr_excerpts": [
+    "Library 1C0 Larkin Street, 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library Digitized by the Internet Archive in 2013 http://archive.org/details/3annualreportsanf > U1 ^ JfcL \\ ix ~- — jfflBiw — i \"**- 3tK 1 S^f 3, .1974 AN»iUA4\\REP0RT 1975 HETCH HETCHY WtTER AND POWER PUBLIC UTILITIESC0MMIS5 ON CITY AND COUNTY OF SAN FRANC SCC 3 1223 06446 4663 CITY AND COUNTY OFJ5AN FRANCISCO JOSEPH L. ALIOTO - MAYOR PUBLIC UTILITIES COMMISSION H. WELTON FLYNN JOSEPH P. BYRNE OLIVER M. ROUSSEAU JOSEPH J. DIVINY HENRY E. BERMAN JOHN D. CROWLEY President Vice President Commissioner Commissioner Commissioner General Manager ANNUAL REPORT FISCAL YEAR 1974-75 HETCH HETCHY WATER AND POWER DEPARTMENT ORAL L. MOORE - General Manager This report is respectfully dedicated to Hetch Hetchy employees, past and present, whose devoted and conscientious efforts have made possible these accomplishments for San Francisco. 2 50354 SFPL= ECONO JRS 58 SFPL 05/07/04 LAKE ELEANOR AND LAKE LLOYD/CHERRY DAM (foreground) HIGHLIGHTS - 1974-75 For Hetch Hetchy, fiscal year 1974-75 has been a record year in many ways. The heavy rainfall and snow on the Tuolumne River Watershed during the past two years have brought higher-than- normal inflows. With all project reservoirs assured of filling and spilling, our efforts were bent on channeling the maximum ava",
+    "power production and on minimizing spill after the reservoirs have been filled. The success of these efforts is shown by department's electric system output of 2,057,609,000 kilowatthours for 1974-75, a new record for total project hydroelectric generation for one fiscal year. 1 - During the year, Hetch Hetchy furnished 588,989,569 kilowatthours to seven industrial customers located in Alameda, Santa Clara and Stanislaus Counties, for a revenue of $7.9 million. Both sales and revenue represent records unmatched in Hetch Hetchy' s history. The impact of the revenue becomes even more dramatic when it is shown that the same number of kilowatthours sold to these customers in fiscal year 1969-70 would have returned little more than half as much revenue. The record generation and the high industrial power rates combined have",
+    "Negotiations to extend the March 14, 1945 \"Main Contract\" between PGandE and City beyond the expiration date of July 31, 1975 were concluded with the execution of an amendment agreement dated June 24, 1975. This contract covers, among other things, the services which the Company performs in wheeling Hetch Hetchy energy to City's municipal consumers in and out of San Francisco. Through bargaining based on the cost-of-service principle and on the changes in conditions incident to wheeling of Hetch Hetchy power by Company over the last three decades, City negotiators were able to obtain for the City p"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 5.42,
@@ -256,80 +1131,13 @@
    "url": "https://archive.org/details/3annualreportsanf",
    "deep_link": "https://archive.org/details/3annualreportsanf?q=Hetch+Hetchy",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited (1975–1976)",
-   "group": "Reports & records",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
    "salient": false,
    "gloss": "The Public Utilities Commission's 1975 annual report, recording a record 2,057,609,000 kilowatt-hours of hydroelectric generation for 1974-75."
-  },
-  {
-   "identifier": "c124896060",
-   "title": "Mandatory water rationing program",
-   "creator": "San Francisco (Calif.). Water Department",
-   "year": 1988,
-   "pool": "dl",
-   "matched_alias": "Hetch Hetchy Water and Power",
-   "collection": "igscalocalgovdocs",
-   "relevance": {
-    "score": 9.0,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 5.26,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.75,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/c124896060",
-   "deep_link": "https://archive.org/details/c124896060?q=Hetch+Hetchy+Water+and+Power",
-   "source_label": "Internet Archive — Democracy's Library",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "The 1988 mandatory rationing program of Hetch Hetchy Water and Power — rules, allotments and budget — written when storage was projected to last about 13 months for 2.1 million people."
-  },
-  {
-   "identifier": "p16255coll1_H1473828884850_file2",
-   "title": "San Francisco : Climate Action Strategy.",
-   "creator": null,
-   "year": 2013,
-   "pool": "dl",
-   "matched_alias": "Hetch Hetchy Water and Power",
-   "collection": "igscalocalgovdocs",
-   "relevance": {
-    "score": 7.9,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 2.4,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/p16255coll1_H1473828884850_file2",
-   "deep_link": "https://archive.org/details/p16255coll1_H1473828884850_file2?q=Hetch+Hetchy+Water+and+Power",
-   "source_label": "Internet Archive — Democracy's Library",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "The 2013 climate action strategy, which counts Hetch Hetchy's clean hydroelectricity among the sources of the city's municipal emissions reductions."
   },
   {
    "identifier": "C101694962",
@@ -338,6 +1146,12 @@
    "year": 2000,
    "pool": "dl",
    "matched_alias": "Hetch Hetchy",
+   "ocr_excerpts": [
+    ", law, finance, economics, engineering, the environment, business — hotels, restaurants city employees and including both property owners and tenants nearly all of whom reside in San Francisco. The Task Force is grateful that you gave us the collective opportunity to investigate into and advise concerning the current status and future of the Hetch Hetchy system, a unique and priceless asset of the City and County of San Francisco. Against the background of our Final Report, it is evident that your task force has run up against an entrenched determination on the part of the PUC to put before the voters in November a multi-billion dollar bond measure. As the Final Report provides, it is our b",
+    "nd project planning was in a constant state of turmoil and cost overruns. *Notwithstanding these institutional problems, the PUC was proposing a mammoth CIP costing in excess of $4 billion, an infrastructure repair and upgrade program that dwarfed in size, complexity and cost anything that the PUC had attempted since the completion of the Hetch Hetchy project itself almost 80 years ago. This CIP was to be funded through the scale of revenue bonds, the cost of which would be borne by the system’s ratepayers. In its interim recommendations to the Mayor, the Task Force urged that the PUC adopt a proper long-term strategic plan, a long-term financial plan, and an achievable CIP that grew o",
+    "epresenting the PUC's wholesale customers in San Mateo and Santa Clara Counties drafted legislation (SB 1870) for adoption in Sacramento creating an alternate funding source for infrastructure projects. This legislation would create a financing authority that could issue up to $2 billion in revenue bonds to fund the roughly two-thirds share of Hetch Hetchy system costs that are shouldered by ratepayers in counties outside San Francisco. *In response to this proposed legislation, the PUC reduced its projected capital needs from $4.6 billion to $2.6 billion. It also concluded that its wastewater treatment repair and replacement plans were not sufficiently \"ripe\" for inclusion in the CIP, ther",
+    "obligations and maintain the database so as to promote open communication, accountability and intradepartmental cooperation. 8. All PUC-generated revenues should be retained within the PUC. Simply put, revenues need to be reserved for all of the infrastructure work that is being identified within the PUC. Even if revenues are \"surplus\" to Hetch Hetchy, a doubtful proposition at best, they cannot be \"surplus\" to a PUC in search of $4 billion in repair and replacement funding. The Hetch Hetchy power enterprise should also refrain from “disguised” transfers of revenue to other City departments (e.g. Department of Public Works for streetlighting upgrades; San Francisco General Hospital for acquisition o"
+   ],
    "collection": "igscalocalgovdocs",
    "relevance": {
     "score": 6.89,
@@ -362,9 +1176,104 @@
    "url": "https://archive.org/details/C101694962",
    "deep_link": "https://archive.org/details/C101694962?q=Hetch+Hetchy",
    "source_label": "Internet Archive — Democracy's Library",
-   "group": "Other records",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
    "salient": false,
    "gloss": "The final report of the PUC Infrastructure Task Force (2000-2002), convened on a capital programme then exceeding $4 billion and critical of the commission's project planning."
+  },
+  {
+   "identifier": "c124896060",
+   "title": "Mandatory water rationing program",
+   "creator": "San Francisco (Calif.). Water Department",
+   "year": 1988,
+   "pool": "dl",
+   "matched_alias": "Hetch Hetchy Water and Power",
+   "ocr_excerpts": [
+    "e % A TaD TAL ge Tr « TABLE OF CONTENTS Program Description Water Rationing Rules and Regulations Work Plan and Budget Systemwide Water Allotment Summary Water Use and Storage Graphs Digitized by the Internet Archive In 2024 https://archive.org/details/c124896060 PROGRAM DESCRIPTION A. WATER SUPPLY SITUATION The Hetch Hetchy Water and Power system provides between 80 and 85 percent of the water served in the San Francisco Water Department service area. This year, runoff into the Hetch Hetchy reservoirs is expected to be only 30 percent of normal and may approach 1977 levels, the driest year on record. This situation follows one of the driest years on record, 1987. Current storage levels are high relative to 1976-77 primarily due to decisions made in January, 1987 to drastically reduce power generations. However, snowpack conditio",
+    "of Capacley, waatiis storage would be exhausted in approximately 13 months at current consumption rates in the absence of additional runoff. While this picture will change with completion of this year's runoff, the anticipated water supply is clearly inadequate to safely provide for the domestic needs of the 2.1 million people served by the Hetch Hetchy system. The purpose of any extraordinary conservation program 5 a 8 | conserve water in case of consecutive dry years. Having experienced two consecutive critically dry years, the danger lies in the possibility of a third dry year in 1989. In fact. 1989 must provide greater than average runoff to replenish storage while meeting total water",
+    "se cities allow interruption of service, (2) these cities have other sources of water which currently supply the majority of their needs, 3) information provided by these cities in the course of contract negotiations during 1986 indicated sufficient water supply waS available in the event of termination of service by San Francisco, and 4) the Hetch Hetchy supply must be conserved as much as possible for those cities and communities, including San Francisco, that are totally dependent on it. The total supply to San Jose and Santa Clara is 6.95 milgal per day. This amount represents the combined purchases of the 10 smaller of the 28 permanent resale customers and is a necessary part of the plan",
+    "bone o oe cen, ie tloddbe .#elsatenbet base Beane! oud afesses a a a a sBreemc IAD nesaeel rit, etna i ced 39) on ao eobtins ont a, en} oh : 7 > oo 7 > 2. ‘usTt sttt eed segu ama2pOTG dines die v4 inti a) pfqes aes sSam 00 fi Sn Perineme ak | inte ar pneseabehe: - Schools Program fe) Distribute water conservation materials and Hetch Hetchy video presentation. fe) Provide student field trips of water department facilities. fe) Theatrical presentations on water conservation in selected schools. fe) Coordinate program with suburban wholesale customers and pr"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 9.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 5.26,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/c124896060",
+   "deep_link": "https://archive.org/details/c124896060?q=Hetch+Hetchy+Water+and+Power",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false,
+   "gloss": "The 1988 mandatory rationing program of Hetch Hetchy Water and Power — rules, allotments and budget — written when storage was projected to last about 13 months for 2.1 million people."
+  },
+  {
+   "identifier": "p16255coll1_H1473828884850_file2",
+   "title": "San Francisco : Climate Action Strategy.",
+   "creator": null,
+   "year": 2013,
+   "pool": "dl",
+   "matched_alias": "Hetch Hetchy Water and Power",
+   "ocr_excerpts": [
+    "mergency entities), public works maintenance (roadways and parks), airport and port operations, parks and recreation, and Muni buses and light rail. Between 1990 and 2010 the city government reduced emissions in these areas by 25,870 mT CO, e.° GHG emissions reductions at the municipal level have come from the clean electricity provided by Hetch Hetchy Power being used in buildings. Emissions are projected to fall even further as the San Francisco Public Utilities Commission began providing 100% carbon-free electricity to all municipal buildings in Fiscal Years 2011-2012. Natural gas use for heating in buildings increased from 1990 to 2010, causing an increase in associated emissions. Tot",
+    "ulnerability Index by Census Block Group, San Francisco HD Low Vulnerabaity =) E= = it) High Vulnerability San Francisco Department of Public Health (2012). Developing Public Health Capacity and Adaptations to Reduce Human Health Effects of Climate Change. Unpublished data. San Franciscans enjoy excellent drinking water from the Hetch Hetchy Water System. Risks to the water supply come from the changing pattern of snowfall and overall precipitation in the Sierra Nevada mountain range. Increasingly, snow is falling at different times of the year, and more precipitation is coming as rain instead of snow. Snowmelt is happening 5 to 30 days earlier than historically observed.!° To",
+    "Why are no greenhouse gas emissions associated with water and wastewater in San Francisco¢ While water provision and water consumption are responsible for 19% of the energy used statewide, the energy water nexus is different for San Francisco. Carbon impacts associated with water delivery are uniquely low in San Francisco because of the Hetch Hetchy water delivery system, which is predominantly gravity fed and therefore requires significantly less energy for pumping and distribution. In addition, the carbon footprint of the electricity that is used for pumping between storage reservoirs and into the city is very low due to the San Francisco Public Utilities Commission's (SFPUC) low-carb",
+    "957.40 874.50 675.20 521.10 45.6% (PG&E and Power Plants) (Ibs/MWh) Natural Gas* (Ibs/therm) 11.7 11.7 11.7 11.7 -0.3% VMT (g/VMT) 558.59 568.53 543.65 541.80 3.0% Diesel - Caltrain & Ferry (Ibs/gal) 22.38 22.38 22.38 22.38 0.0% Diesel - Muni (Ibs/gal) 22.51 22.51 22.51 22.51 0.0% Waste** (Ibs/MT) 1,562.23 1,213.56 1,213.56 1,213.56 -22.3% Hetch Hetchy Power (Ibs/MWbh) 145.19 149.57 151.30 32.40 777% Direct Access - Other 957.40 748.50 1,284.76 1,253.89 31.0% Direct Access - BART 957.40 748.50 444.48 406.04 -57.6% Electricity 2,032,085 2,068,204 1,688,349 1833959. -34.4% MWh - Residential 509,906 578,642 417,305 335,195 -34.3% MWh - Commercial 1,378,706 1,176,160 871,883 721,820 47.6% MWh",
+    "ector. Each of these syste"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 7.9,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.4,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/p16255coll1_H1473828884850_file2",
+   "deep_link": "https://archive.org/details/p16255coll1_H1473828884850_file2?q=Hetch+Hetchy+Water+and+Power",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false,
+   "gloss": "The 2013 climate action strategy, which counts Hetch Hetchy's clean hydroelectricity among the sources of the city's municipal emissions reductions."
   },
   {
    "identifier": "sanfranciscowate00sanf",
@@ -373,6 +1282,11 @@
    "year": 1935,
    "pool": "sfpl",
    "matched_alias": "O'Shaughnessy Dam",
+   "ocr_excerpts": [
+    "IES COMMISSION City and County of San Francisco COMMISSIONERS LEWIS F. BYINGTON President GEORGE FILMER Vice-President rOHN H. McCALLUM DANIEL C. MURPHY JOHN P. MURPHY EDWARD G. CAHILL, Manager of Utilities N. A. ECKART L. T. McAFEE General Manager and Chief Engineer and Manager Chief Engineer Hetch Hetchy Construction >on Francisco Water Department PAUL J. OST Manager and Chief Electrical Engineer Hetch Hetchy Power Operation April, 1935 FOREWORD With the introduction of water from its Sierra Nevada sources into the Peninsula reservoirs, San Francisco has achieved an engineering feat of the greatest magnitude which will prove a major factor in the development of the city. The yield of water from the",
+    "FRONTISPIECE TABLE OF CONTENTS I LIST OF ILLUSTRATIONS Ill ABBREVIATIONS : IV GENERAL DESCRIPTION OF SYSTEM 1 HISTORY 2 Early Water Supply 2 Development of Local Sources 2 Efforts to Acquire a Supply from the Sierra Nevada 3 Acquisition of Spring Valley Water Company's System 6 HETCH HETCHY WATER SUPPLY 8 Watersheds and Storage Reservoirs 8 Construction Features 10 Preparatory Work, Hetch Hetchy Railroad 10 Sawmills 11 Construction Power Plant 12 Lake Eleanor Dam 12 O'Shaughnessy Dam 13 Future Development between Reservoirs and Early Intake 17 Early Intake Diversion Works 18 Aqueduct, Mountain Division 20 Aqueduct, Moccasin Division 22 Priest Regulating Reservoir 22 Moccasin Power Tunnel 23 Surge Shaft 24 Penstock Pipes 24 Moccasin Power Plant 26 Power Transmission",
+    "San Joaquin Division 31 Aqueduct, Coast Range Division 33 Excavation of Shafts and Tunnels 34 Lining the Tunnel with Concrete 36 Alameda Siphon 39 Emergency Pipe Line 39 Aqueduct, Bay Crossing Division 40 Pulgas Tunnel 40 II SAN FRANCISCO WATER AND POWER CONTENTS — Continued PAGE HETCH HETCHY WATER SUPPLY— Continued Camps and Boarding Houses 40 Finances 42 Storage Reservoirs in Hetch Hetchy System 47 Reservoirs on Hetch Hetchy Aqueduct 48 Reservoirs for Future Development 49 Power Development Possibilities 50 General Map and Profile 51 Chronology, Hetch Hetchy Water Supply 52 Elevations of Various Points on Hetch Hetchy Project 54 SAN FRANCISCO WATER DEPARTMENT SYSTEM 57 Alameda Creek System 57 Peninsula System - 65 City Distributing System 69 Construction under the National Recovery Act 71 Finance .s . 72 Reduction in Water Rates 74 Water Supply of San Francisco Peninsula 74 Pipe in City Distributing System 75 Storage Dams 76 Storage Reservoirs 76 City Distributing Tanks.. 77 City Distributing Reservoirs 78 Pump Stations 79 Number of Meters and Services 80 Average Daily Consumption 80 ORGANIZATION 81 SAN FRANCISCO WATER AND POWER HI LIST OF ILLUSTRATIONS Page SKETCH OF HETCH HETCHY PROJECT. Frontispiece SAN FRANCISCO EAST FROM RUSSIAN HILL IN 1862 1 AERIAL VIEW OF PORTION OF HETCH HETCHY WATERS"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 6.19,
@@ -397,8 +1311,11 @@
    "url": "https://archive.org/details/sanfranciscowate00sanf",
    "deep_link": "https://archive.org/details/sanfranciscowate00sanf?q=O'Shaughnessy+Dam",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Other records",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
    "salient": false,
    "gloss": "The 1935 official account of the system, from the early local sources through the acquisition of Spring Valley and the reach into the Sierra Nevada."
   }
@@ -441,7 +1358,7 @@
  "_gate": {
   "has_photo": true,
   "n_documents": 9,
-  "n_money_links": 2,
+  "n_money_links": 30,
   "meets_pre_summary": true
  }
 }

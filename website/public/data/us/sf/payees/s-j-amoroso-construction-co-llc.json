@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.730167+00:00",
+ "generated_at": "2026-07-28T11:43:47.696687+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,109 @@
   "PUC Public Utilities Commsn",
   "DPW GSA - Public Works"
  ],
+ "profile": {
+  "n_vouchers": 598,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 179795861.01,
+    "n_vouchers": 235
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 124554942.89,
+    "n_vouchers": 143
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 79128505.1,
+    "n_vouchers": 102
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 74786624.57,
+    "n_vouchers": 86
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 18655216.72,
+    "n_vouchers": 30
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 20000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "JUV Juvenile Probation",
+    "department_code": "JUV",
+    "usd": 633.6,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 6,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 317324595.89,
+    "n_vouchers": 387
+   },
+   {
+    "code": "567000",
+    "label": "Bldgs,Struct&Imprv Proj-Budget",
+    "spend_class": "purchase",
+    "usd": 1004585.7,
+    "n_vouchers": 3
+   },
+   {
+    "code": "468111",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 8875.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 3,
+  "counts_are_floor": true,
+  "recent_fy": 2025,
+  "recent_total_usd": 48525937.06,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 34919720.74,
+    "n_vouchers": 24
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 11932792.47,
+    "n_vouchers": 12
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 1673423.85,
+    "n_vouchers": 16
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

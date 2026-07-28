@@ -1,7 +1,17 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
+
+/** next/link rendered as an SVG anchor, so treemap tiles route like rows. */
+function SvgLink({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
+  return (
+    <Link href={href} scroll={false} aria-label={label} style={{ outline: "none" }}>
+      {children}
+    </Link>
+  );
+}
 
 /**
  * USD treemap for US pages — forked from fusion/BudgetTreemap (same
@@ -9,9 +19,11 @@ import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
  * hardwires (a) EUR formatting ("1,2 Md€" / "€1.2 bn") and (b) a 3-value
  * French-institution `group` enum driving its colors. SF's top altitude is
  * 7 organization groups → single-ink ramp shaded by value, en-US dollars.
- * Cells are informational (no fiche exists at org-group altitude) — no
- * links, tooltip + aria only. Genuine "primitive can't express it" fork,
- * same precedent as UsDebtChart (see docs/us/LEARNINGS.md).
+ * Cells carry an optional `href`: a tile whose category has a fiche becomes
+ * a real link (rendered as an SVG <a>, so it opens the drawer like any other
+ * row) — the treemap is a drill level, not a dead picture. Tiles without a
+ * fiche stay informational. Genuine "primitive can't express it" fork, same
+ * precedent as UsDebtChart (see docs/us/LEARNINGS.md).
  */
 
 export type UsTreemapDatum = {
@@ -24,6 +36,8 @@ export type UsTreemapDatum = {
   shareOfTotal: number;
   /** Extra tooltip line (e.g. "8 departments"). */
   subLabel?: string;
+  /** When set, the tile becomes a link into that category's fiche. */
+  href?: string;
 };
 
 type Props = {
@@ -161,16 +175,17 @@ export default function UsTreemap({ data, height = 420, totalLabel, ariaLabel }:
           const tooltip =
             `${item.fullLabel} · ${fmtUsdCompact(item.value)} · ` +
             `${fmtShare(item.shareOfTotal)}${totalLabel ? ` ${totalLabel}` : ""}`;
-          return (
+          const cell = (
             <g
               key={item.id}
-              tabIndex={0}
-              role="img"
-              aria-label={tooltip}
+              tabIndex={item.href ? undefined : 0}
+              role={item.href ? undefined : "img"}
+              aria-label={item.href ? undefined : tooltip}
               onMouseEnter={() => setHoverId(item.id)}
               onMouseLeave={() => setHoverId((p) => (p === item.id ? null : p))}
               onFocus={() => setHoverId(item.id)}
               onBlur={() => setHoverId((p) => (p === item.id ? null : p))}
+              style={item.href ? { cursor: "pointer" } : undefined}
             >
               <rect x={x} y={y} width={w} height={h} fill={fillFor(item.value, maxValue)} stroke="#fafaf7" strokeWidth={2} />
               {showLabel && (
@@ -199,6 +214,15 @@ export default function UsTreemap({ data, height = 420, totalLabel, ariaLabel }:
                 </text>
               )}
             </g>
+          );
+          // SVG <a> keeps the link inside the same next/link click pipeline
+          // used by every other row, so the root-level drawer intercepts it.
+          return item.href ? (
+            <SvgLink key={item.id} href={item.href} label={tooltip}>
+              {cell}
+            </SvgLink>
+          ) : (
+            cell
           );
         })}
       </svg>

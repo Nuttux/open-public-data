@@ -65,6 +65,7 @@ export type SfSoleTopRow = {
   contract_no: string;
   title: string;
   title_plain: string | null;
+  title_clear?: string | null;
   prime_contractor: string | null;
   department: string | null;
   agreed_usd: number;
@@ -170,16 +171,27 @@ export type SfActiveRow = {
   contract_no: string;
   title: string;
   title_plain?: string;
+  /** Generated plain-English line. Present only where the enrichment covers
+   *  this contract's (title, type) signature — see `contractLabel`. */
+  title_clear?: string;
+  /** Generated 2-3 sentence explanation. Same coverage caveat. */
+  what_concretely?: string;
   prime: string | null;
   department: string | null;
   department_code: string | null;
   contract_type: string | null;
+  /** Grouped purchasing authority — the legal route the award was made under. */
+  authority_family?: string | null;
   sole_source: boolean;
   lbe_prime: boolean;
   non_profit: boolean;
   agreed_usd: number;
   paid_usd: number;
   paid_exceeds_agreed: boolean;
+  /** Does the source's own agreed = paid + remaining identity hold? When it
+   *  does not, `paid_exceeds_agreed` says nothing about overspending — the
+   *  agreed column is not a ceiling on that row. */
+  src_arithmetic_consistent?: boolean;
   start: string | null;
   end: string | null;
 };
@@ -213,6 +225,8 @@ export type SfContractFiche = {
     contract_no: string;
     title: string;
     title_plain: string | null;
+    title_clear: string | null;
+    what_concretely: string | null;
     contract_type: string | null;
     purchasing_authority: string | null;
     authority_family: string;
@@ -266,6 +280,53 @@ export function typeLabel(raw: string | null): string {
   return TYPE_LABELS[raw] ?? raw;
 }
 
+/**
+ * "DPH Public Health" → "Public Health". The register prefixes every
+ * department label with its own code; the code is already shown as the
+ * kicker/slug wherever the name appears, so the prefix is noise.
+ *
+ * Lives in this isomorphic module (no "use client", no fs) because both the
+ * server routes and the client page need it — it is a pure string function.
+ */
+export function deptDisplayName(raw: string): string {
+  return (
+    raw
+      .replace(/^[A-Z]{2,4}\s+/, "")
+      // The register writes "Children;Youth & Families" — a separator typo in
+      // the source, normalized to a comma. Punctuation only; no word is
+      // added, removed or re-spelled.
+      .replace(/;\s*/g, ", ")
+      .trim() || raw
+  );
+}
+
+/**
+ * The one place that decides what a contract is called on screen.
+ *
+ * Three sources, in descending order of readability, and every list uses the
+ * same order so a contract never has two names on one page:
+ *   1. title_clear   — generated plain English ("Biosolids digester
+ *                      construction at the Southeast Plant")
+ *   2. title_plain   — deterministic cleanup of the register's shorthand
+ *                      (department prefix stripped, ALL-CAPS recased)
+ *   3. title         — the register's verbatim string, always available
+ *
+ * The register carries no description field, so 1 is generated rather than
+ * extracted; the fiche shows the verbatim title next to it and says so.
+ */
+export function contractLabel(row: {
+  title: string;
+  title_plain?: string | null;
+  title_clear?: string | null;
+}): string {
+  return (row.title_clear || row.title_plain || row.title || "").trim();
+}
+
+/** Is this label generated (so the UI can say so) rather than mechanical? */
+export function isGeneratedLabel(row: { title_clear?: string | null }): boolean {
+  return Boolean((row.title_clear || "").trim());
+}
+
 /** Display labels for the seeded purchasing-authority families. */
 export const FAMILY_LABELS: Record<string, string> = {
   competitive_bid: "Competitive bid",
@@ -277,3 +338,17 @@ export const FAMILY_LABELS: Record<string, string> = {
   legacy_none: "Legacy system (no authority recorded)",
   other: "Other special authorities",
 };
+
+/**
+ * URL slug for a contract type — the register's raw strings carry quotes,
+ * dashes and parentheses, so slugify and keep a reverse map (the Recife
+ * `modalidade` pattern: a facet you can navigate to, not dead label text).
+ */
+export function typeSlug(raw: string): string {
+  return raw
+    .toLowerCase()
+    .replace(/[‘’“”]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 80);
+}

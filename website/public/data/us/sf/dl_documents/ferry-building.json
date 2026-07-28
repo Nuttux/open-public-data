@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.763765+00:00",
+ "generated_at": "2026-07-28T12:23:47.779563+00:00",
  "slug": "ferry-building",
  "name": "Ferry Building",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -41,8 +41,13 @@
    "url": "https://archive.org/details/ferrybuildingcom2919sanf",
    "deep_link": "https://archive.org/details/ferrybuildingcom2919sanf?q=Ferry+Building",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The environmental review for redeveloping the Ferry Building complex, published in 1982 and certified in 1983 after an addendum and two public comment periods."
   },
   {
    "identifier": "C124909173",
@@ -81,8 +86,146 @@
    "url": "https://archive.org/details/C124909173",
    "deep_link": "https://archive.org/details/C124909173?q=Ferry+Building",
    "source_label": "Internet Archive — Democracy's Library",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A 1998 feasibility study of ferry service to SFO, which treats the Ferry Building as the hub where an airport boat would connect to the rest of the Bay Area network — and notes it would have no parking."
+  },
+  {
+   "identifier": "bartseismicretro2005unit",
+   "title": "BART seismic retrofit project : Berkeley Hills tunnel to the Montgomery Street station : environmental assessment",
+   "creator": "United States. Federal Highway Administration,San Francisco Bay Area Rapid Transit District (Calif.),California. Dept. of Transportation",
+   "year": 2005,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Ferry Building",
+   "ocr_excerpts": [
+    "Relationship of the San Francisco Regulated Navigation Area, Designated Vessel Traffic Lanes, and the Project Construction Area 3.4-20 3.4-3 Features of San Francisco Bay in the Project Construction Area 1.4-2 I 3.4-4 The Outer Harbor at the Port of Oakland 3.4-25 3.4-5 Ferry Routes Departing the San Francisco Ferry Building BART Seismic Retrofit EA August 2005 V Table of Contents 3.4- 6 Extent to Which Vibro-Replacement Could Block the Outer Harbor Entrance Channel 3.4-29 3.5- 1 Principal Active Faults in the San Francisco Bay Area 3.5-2 3.8-1 Rockridge Station 3-8\"3 3.8-2 MacArthur Station 3-8\"5 3.8-3 Chabot",
+    "y Tube is 3.6 miles long and is buried in an underwater trench in the Bay, at a 30 maximum depth of 132 feet below mean sea level. The eastern end of the Tube begins in the 31 Port of Oakland, between 7th Street and Berth 32, and continues beneath the Bay to a point just 32 east of the San Francisco Ferry Building (Figure 1-2). The Tube was constructed as a double 33 pipe, giving it a binocular shaped cross-section. A transition structure3 was installed at each 34 end of the Tube, one just east of the San Francisco Ferry Building called the San Francisco 35 Transition Structure, and one in the Port of Oakland called the Oakland Transition Structure. 36 The San Francisco Transition Structure is located in the Bay (in water) while the Oakland 37 Transition Structure is located on land. Four special seismic joints were const",
+    "howing Project Area ft ft ft II ft ft I I II 1.0 Purpose and Need 1 system and allow some movement of the system in response to seismic activity. Two seismic 2 joints at the San Francisco end, one on either side of the transition structure, are located in the 3 Bay just east of the Ferry Building. Two joints at the Oakland end, one on either side of the 4 transition structure, are located on land within the Port of Oakland. 5 1.4 PURPOSE OF AND NEED FOR THE PROPOSED ACTION 6 The purpose of the project is to protect life safety and the massive public capital investment represented by",
+    "ction contractor will 21 direct light sources away from the nearby uses' lines of sight, through focusing light onto the 22 work area and shielding the source, so as not to cause light spillover or focused, intense off-site 23 glare. 24 Steel Piles Retrofit Concept 25 Pile Array. Between the San Francisco Ferry Building and the San Francisco Transition 26 Structure, an array of approximately 100 (approximately 6-foot diameter) steel pipe piles would 27 be installed beneath the existing Ferry Plaza Platform, which extends from the Ferry Building to 28 the Transition Structure (Figures 2-10 and 2-11). The piles would anchor into more stable soils 29 below the Bay Mud by extending up to 200 feet below mean sea level. Placement of the piles 30 would reduc"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.46,
+    "sf_context": true,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.46,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/bartseismicretro2005unit",
+   "deep_link": "https://archive.org/details/bartseismicretro2005unit?q=San+Francisco+Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The 2005 environmental assessment for retrofitting the 3.6-mile Transbay Tube, buried up to 132 feet below the Bay between Oakland and downtown."
+  },
+  {
+   "identifier": "bartseismicretro05unit",
+   "title": "BART seismic retrofit project : Berkeley Hills tunnel to the Montgomery Street station : environmental assessment, response to comments",
+   "creator": "United States. Federal Highway Administration. California Division,San Francisco Bay Area Rapid Transit District (Calif.),California. Dept. of Transportation",
+   "year": 2006,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Ferry Building",
+   "ocr_excerpts": [
+    "-2 Relationship of the San Francisco Regulated Navigation Area, Designated Vessel Traffic Lanes, and tlie Project Constnichon Area 3.4-20 3.4-3 Features of San Francisco Bay in the Project Construction Area 3.4-21 3.4-4 The Outer Harbor at the Port of Oakland 3.4-25 3.4-5 Ferry Routes Departing the San Francisco Ferry Building 3.4-27 BART Seismic Retrofit EA August 2005 V Table of Contents 3.4- 6 Extent to Which Vibro-Replacement Could Block the Outer Harbor Entrance Channel 3.4-29 3.5- 1 Principal Active Faults in the San Francisco Bay Area 3.5-2 3.8-1 Rockridge Station 3.8-3 3.8-2 MacArthur Station 3.8-5 3.8-3",
+    "ay Tube is 3.6 miles long and is buried in an imderwater trench in the Bay, at a 30 maximum depth of 132 feet below mean sea level. The eastern end of the Tube begins in the 31 Port of Oakland, between 7* Street and Berth 32, and continues beneath the Bay to a point just 32 east of the San Francisco Ferry Building (Figure 1-2). The Tube was constructed as a double 33 pipe, giving it a binocular shaped cross-section. A transition structure^ was installed at each 34 end of the Tube, one just east of the San Francisco Ferry Building called the San Francisco 35 Transition Structure, and one in the Port of Oakland called the Oakland Transition Structure. 36 The San Francisco Transition Structure is located in the Bay (in water) while the Oakland 37 Transition Structure is located on land. Four special seismic joints were const",
+    "Project Vicinity Map Showing Project Area • 1-5 1.0 Purpose and Need 1 system and allow some movement of the system in response to seismic activity. Two seismic 2 joints at the San Francisco end, one on either side of the transition structure, are located in the 3 Bay just east of the Ferry Building. Two joints at the Oakland end, one on either side of the 4 transition structure, are located on land within the Port of Oakland. 5 1.4 PURPOSE OF AND NEED FOR THE PROPOSED ACTION 6 The purpose of the project is to protect life safety and the massive public capital investment 7 represented",
+    "ction contractor will 21 direct light sources away from the nearby uses' lines of sight, through focusing light onto the 22 work area and shielding the source, so as not to cause light spillover or focused, intense off-site 23 glare. 24 Steel Piles Retrofit Concept 25 Pile Array. Between the San Francisco Ferry Building and the San Francisco Transition 26 Structure, an array of approximately 100 (approximately 6-foot diameter) steel pipe piles would 27 be installed beneath the existing Ferry Plaza Platform, which extends from the Ferry Building to 28 the Transition Structure (Figures 2-10 and 2-11). The piles would anchor into more stable soils 29 below the Bay Mud by extending up to 200 feet below mean sea level. Placement of the piles 30 would r"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.46,
+    "sf_context": true,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.46,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/bartseismicretro05unit",
+   "deep_link": "https://archive.org/details/bartseismicretro05unit?q=San+Francisco+Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "Responses to comments on the BART seismic retrofit of the Transbay Tube, which runs beneath the waterfront to Montgomery Street station."
+  },
+  {
+   "identifier": "comprehensivepla2219sanf",
+   "title": "The comprehensive plan : northern waterfront",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1971,
+   "pool": "sfpl",
+   "matched_alias": "Ferry Building",
+   "ocr_excerpts": [
+    "than 1,000 new spaces near these entrance points and provide an additional 2,500 to 3,000 spaces over the Plan period, unless major private facilities are built to provide a total of approximately 5,000 new spaces available to the pub- lic within the parking belt area at Fisherman's Wharf. 12. The Ferry Building and environs should be revived as a major gateway to the city. The BART platform should include a terminal area for commuter ferry boats, and this terminal area should be able to accommodate additional ferry service as may be developed in the fu- ture. A heliport, if located in the immediate vicinity of the Ferry Build- ing, should be located south of the Ferry Building and should have direct access to the ferries and land-based transit systems in the Ferry Building area in order to facilitate distribution of commuters and visi- tors to downtown and waterfront areas. 13. Although the maps which are a part of this plan indicate \"Possible STOL Port\" south of the Bay Bridge in the area occupied by Piers 36 through 44, this should not be construed as a definite",
+    "should be extended to the central public plaza at Fisherman's Wharf and extended farther into Victorian Park in order to assist visitors and residents alike in free movement by public transit to the Northern Waterfront. In addition, a minirail system should be explored to link Victorian Park to the Ferry Building. This minirail system could also be used to complement the existing cable car lines in order to provide a complete loop for use by tourists and to make available additional parking south of Market Street during the peak parking demand periods at Fisher- man*s Wharf. Consideration should be given to extending the minirail system to Yerba Buena Center. 16. The elevated portion of the Embarcadero Freeway from south of the Ferry Building to Broadway should be replaced by a sub-surface freeway system. This action would greatly enhance the many develop- ments in the immediate vicinity and would once again establish the Ferry Building as a focal point and termination for Market Street. INDUSTRY ■ OBJECTIVES 1 . To eliminate non-maritime industrial activities in that portion of the Northern Waterfront north of the Bay Bridge. 2. To provide for efficient operation of Port activities. 3. To enhance the harbor as a unique amenity",
+    "residential uses de- veloped jointly with offices and commercial facilities to the north of Telegraph Hill. Other office space, oriented primarUy to small concerns which may benefit h-om the location near Fisherman's Wharf, should be encouraged in the general vicinity of the Wharf area. North of the Ferry Building residential uses should be pennitted over the water as an extension of the present residential development inland. Some office space should be included as w"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.34,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 3.84,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/comprehensivepla2219sanf",
+   "deep_link": "https://archive.org/details/comprehensivepla2219sanf?q=Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false
   },
   {
    "identifier": "agenda198591sanf",
@@ -122,8 +265,13 @@
    "url": "https://archive.org/details/agenda198591sanf",
    "deep_link": "https://archive.org/details/agenda198591sanf?q=Ferry+Building",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A 1985 Port Commission agenda covering pier development, container crane purchases and the rehabilitation of Piers 30/32."
   },
   {
    "identifier": "minutes1993sanf_0",
@@ -163,128 +311,13 @@
    "url": "https://archive.org/details/minutes1993sanf_0",
    "deep_link": "https://archive.org/details/minutes1993sanf_0?q=Ferry+Building",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "comprehensivepla2219sanf",
-   "title": "The comprehensive plan : northern waterfront",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1971,
-   "pool": "sfpl",
-   "matched_alias": "Ferry Building",
-   "ocr_excerpts": [
-    "than 1,000 new spaces near these entrance points and provide an additional 2,500 to 3,000 spaces over the Plan period, unless major private facilities are built to provide a total of approximately 5,000 new spaces available to the pub- lic within the parking belt area at Fisherman's Wharf. 12. The Ferry Building and environs should be revived as a major gateway to the city. The BART platform should include a terminal area for commuter ferry boats, and this terminal area should be able to accommodate additional ferry service as may be developed in the fu- ture. A heliport, if located in the immediate vicinity of the Ferry Build- ing, should be located south of the Ferry Building and should have direct access to the ferries and land-based transit systems in the Ferry Building area in order to facilitate distribution of commuters and visi- tors to downtown and waterfront areas. 13. Although the maps which are a part of this plan indicate \"Possible STOL Port\" south of the Bay Bridge in the area occupied by Piers 36 through 44, this should not be construed as a definite",
-    "should be extended to the central public plaza at Fisherman's Wharf and extended farther into Victorian Park in order to assist visitors and residents alike in free movement by public transit to the Northern Waterfront. In addition, a minirail system should be explored to link Victorian Park to the Ferry Building. This minirail system could also be used to complement the existing cable car lines in order to provide a complete loop for use by tourists and to make available additional parking south of Market Street during the peak parking demand periods at Fisher- man*s Wharf. Consideration should be given to extending the minirail system to Yerba Buena Center. 16. The elevated portion of the Embarcadero Freeway from south of the Ferry Building to Broadway should be replaced by a sub-surface freeway system. This action would greatly enhance the many develop- ments in the immediate vicinity and would once again establish the Ferry Building as a focal point and termination for Market Street. INDUSTRY ■ OBJECTIVES 1 . To eliminate non-maritime industrial activities in that portion of the Northern Waterfront north of the Bay Bridge. 2. To provide for efficient operation of Port activities. 3. To enhance the harbor as a unique amenity",
-    "residential uses de- veloped jointly with offices and commercial facilities to the north of Telegraph Hill. Other office space, oriented primarUy to small concerns which may benefit h-om the location near Fisherman's Wharf, should be encouraged in the general vicinity of the Wharf area. North of the Ferry Building residential uses should be pennitted over the water as an extension of the present residential development inland. Some office space should be included as w"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.34,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 3.84,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/comprehensivepla2219sanf",
-   "deep_link": "https://archive.org/details/comprehensivepla2219sanf?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "bartseismicretro05unit",
-   "title": "BART seismic retrofit project : Berkeley Hills tunnel to the Montgomery Street station : environmental assessment, response to comments",
-   "creator": "United States. Federal Highway Administration. California Division,San Francisco Bay Area Rapid Transit District (Calif.),California. Dept. of Transportation",
-   "year": 2006,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Ferry Building",
-   "ocr_excerpts": [
-    "-2 Relationship of the San Francisco Regulated Navigation Area, Designated Vessel Traffic Lanes, and tlie Project Constnichon Area 3.4-20 3.4-3 Features of San Francisco Bay in the Project Construction Area 3.4-21 3.4-4 The Outer Harbor at the Port of Oakland 3.4-25 3.4-5 Ferry Routes Departing the San Francisco Ferry Building 3.4-27 BART Seismic Retrofit EA August 2005 V Table of Contents 3.4- 6 Extent to Which Vibro-Replacement Could Block the Outer Harbor Entrance Channel 3.4-29 3.5- 1 Principal Active Faults in the San Francisco Bay Area 3.5-2 3.8-1 Rockridge Station 3.8-3 3.8-2 MacArthur Station 3.8-5 3.8-3",
-    "ay Tube is 3.6 miles long and is buried in an imderwater trench in the Bay, at a 30 maximum depth of 132 feet below mean sea level. The eastern end of the Tube begins in the 31 Port of Oakland, between 7* Street and Berth 32, and continues beneath the Bay to a point just 32 east of the San Francisco Ferry Building (Figure 1-2). The Tube was constructed as a double 33 pipe, giving it a binocular shaped cross-section. A transition structure^ was installed at each 34 end of the Tube, one just east of the San Francisco Ferry Building called the San Francisco 35 Transition Structure, and one in the Port of Oakland called the Oakland Transition Structure. 36 The San Francisco Transition Structure is located in the Bay (in water) while the Oakland 37 Transition Structure is located on land. Four special seismic joints were const",
-    "Project Vicinity Map Showing Project Area • 1-5 1.0 Purpose and Need 1 system and allow some movement of the system in response to seismic activity. Two seismic 2 joints at the San Francisco end, one on either side of the transition structure, are located in the 3 Bay just east of the Ferry Building. Two joints at the Oakland end, one on either side of the 4 transition structure, are located on land within the Port of Oakland. 5 1.4 PURPOSE OF AND NEED FOR THE PROPOSED ACTION 6 The purpose of the project is to protect life safety and the massive public capital investment 7 represented",
-    "ction contractor will 21 direct light sources away from the nearby uses' lines of sight, through focusing light onto the 22 work area and shielding the source, so as not to cause light spillover or focused, intense off-site 23 glare. 24 Steel Piles Retrofit Concept 25 Pile Array. Between the San Francisco Ferry Building and the San Francisco Transition 26 Structure, an array of approximately 100 (approximately 6-foot diameter) steel pipe piles would 27 be installed beneath the existing Ferry Plaza Platform, which extends from the Ferry Building to 28 the Transition Structure (Figures 2-10 and 2-11). The piles would anchor into more stable soils 29 below the Bay Mud by extending up to 200 feet below mean sea level. Placement of the piles 30 would r"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 3.46,
-    "sf_context": true,
-    "rival_city": true,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.46,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/bartseismicretro05unit",
-   "deep_link": "https://archive.org/details/bartseismicretro05unit?q=San+Francisco+Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "bartseismicretro2005unit",
-   "title": "BART seismic retrofit project : Berkeley Hills tunnel to the Montgomery Street station : environmental assessment",
-   "creator": "United States. Federal Highway Administration,San Francisco Bay Area Rapid Transit District (Calif.),California. Dept. of Transportation",
-   "year": 2005,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Ferry Building",
-   "ocr_excerpts": [
-    "Relationship of the San Francisco Regulated Navigation Area, Designated Vessel Traffic Lanes, and the Project Construction Area 3.4-20 3.4-3 Features of San Francisco Bay in the Project Construction Area 1.4-2 I 3.4-4 The Outer Harbor at the Port of Oakland 3.4-25 3.4-5 Ferry Routes Departing the San Francisco Ferry Building BART Seismic Retrofit EA August 2005 V Table of Contents 3.4- 6 Extent to Which Vibro-Replacement Could Block the Outer Harbor Entrance Channel 3.4-29 3.5- 1 Principal Active Faults in the San Francisco Bay Area 3.5-2 3.8-1 Rockridge Station 3-8\"3 3.8-2 MacArthur Station 3-8\"5 3.8-3 Chabot",
-    "y Tube is 3.6 miles long and is buried in an underwater trench in the Bay, at a 30 maximum depth of 132 feet below mean sea level. The eastern end of the Tube begins in the 31 Port of Oakland, between 7th Street and Berth 32, and continues beneath the Bay to a point just 32 east of the San Francisco Ferry Building (Figure 1-2). The Tube was constructed as a double 33 pipe, giving it a binocular shaped cross-section. A transition structure3 was installed at each 34 end of the Tube, one just east of the San Francisco Ferry Building called the San Francisco 35 Transition Structure, and one in the Port of Oakland called the Oakland Transition Structure. 36 The San Francisco Transition Structure is located in the Bay (in water) while the Oakland 37 Transition Structure is located on land. Four special seismic joints were const",
-    "howing Project Area ft ft ft II ft ft I I II 1.0 Purpose and Need 1 system and allow some movement of the system in response to seismic activity. Two seismic 2 joints at the San Francisco end, one on either side of the transition structure, are located in the 3 Bay just east of the Ferry Building. Two joints at the Oakland end, one on either side of the 4 transition structure, are located on land within the Port of Oakland. 5 1.4 PURPOSE OF AND NEED FOR THE PROPOSED ACTION 6 The purpose of the project is to protect life safety and the massive public capital investment represented by",
-    "ction contractor will 21 direct light sources away from the nearby uses' lines of sight, through focusing light onto the 22 work area and shielding the source, so as not to cause light spillover or focused, intense off-site 23 glare. 24 Steel Piles Retrofit Concept 25 Pile Array. Between the San Francisco Ferry Building and the San Francisco Transition 26 Structure, an array of approximately 100 (approximately 6-foot diameter) steel pipe piles would 27 be installed beneath the existing Ferry Plaza Platform, which extends from the Ferry Building to 28 the Transition Structure (Figures 2-10 and 2-11). The piles would anchor into more stable soils 29 below the Bay Mud by extending up to 200 feet below mean sea level. Placement of the piles 30 would reduc"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 3.46,
-    "sf_context": true,
-    "rival_city": true,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.46,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/bartseismicretro2005unit",
-   "deep_link": "https://archive.org/details/bartseismicretro2005unit?q=San+Francisco+Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Minutes of the Port Commission's regular meetings in 1993, the body that owns and manages the building."
   }
  ]
 }

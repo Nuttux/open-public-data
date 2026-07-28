@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.741194+00:00",
+ "generated_at": "2026-07-28T11:43:47.715497+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,107 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 1715,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 139221206.27,
+    "n_vouchers": 1669
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 319666.8,
+    "n_vouchers": 36
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 48221.53,
+    "n_vouchers": 6
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 5778.2,
+    "n_vouchers": 3
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "usd": 3981.36,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 5,
+  "categories": [
+   {
+    "code": "529210",
+    "label": "Veh Maint (Non Central Shops)",
+    "spend_class": "purchase",
+    "usd": 95145621.67,
+    "n_vouchers": 568
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 370576.79,
+    "n_vouchers": 25
+   },
+   {
+    "code": "541100",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 148651.44,
+    "n_vouchers": 77
+   },
+   {
+    "code": "543310",
+    "label": "Vehicle Parts-Supplies",
+    "spend_class": "purchase",
+    "usd": 42716.56,
+    "n_vouchers": 4
+   },
+   {
+    "code": "535210",
+    "label": "Freight-Delivery",
+    "spend_class": "unclear",
+    "usd": 25.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 42911880.04,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Veh Maint (Non Central Shops)",
+    "spend_class": "purchase",
+    "usd": 42877525.15,
+    "n_vouchers": 207
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 34354.89,
+    "n_vouchers": 22
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000025882",
-   "title": "2021-05-FTA Mid-Lf Ovrhl",
+   "title": "2021-05-FTA Mid-Lf Overhaul",
    "department": "MTA Municipal Transprtn Agncy",
    "department_code": "MTA",
    "agreed_usd": 136962091.54,

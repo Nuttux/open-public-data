@@ -1,9 +1,54 @@
 {
- "generated_at": "2026-07-27T17:06:09.735875+00:00",
+ "generated_at": "2026-07-28T12:23:47.750015+00:00",
  "slug": "san-francisco-zoo",
  "name": "San Francisco Zoo",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
+  {
+   "identifier": "performanceaudit1119sanf",
+   "title": "Performance audit of the San Francisco Zoo",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst,San Francisco (Calif.). Board of Supervisors",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Zoo",
+   "ocr_excerpts": [
+    "TiON CGMTEH SAM FRANCISCO PUBLIC UBtfARY SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Nol to be lukcn from the Li bran' I 2 20011 Digitized by the Internet Archive in 2014 https://archive.org/details/performanceaudit1 1 1 9sanf Public Library,Gov't Info. Ctr., 5th Fir. Performance Audit of the San Francisco Zoo GOVERNMENT INFORMATION CWTPR SAN FRANCJSCO PU6UC LIBRARY SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not /o be taken from the Library Prepared for the Board of Supervisors by the Board of Supervisors Budget Analyst 1390 Market Street, Suite 1025 San Francisco, CA 94102 (415) 554-7642 January 2000 REF 712. 5 P416 DOCUMENTS DEP71 JAN 1 2 2000 SAN FRANCISCO PUBLIC LIBRARY Public Library,Gov't inf0, Ctr., 5th Fir. Performance Audit of the San Francisco Zoo Prepared for the Board of Supervisors by the Board of Supervisors Budget Analyst 1390 Market Street, Suite 1025 San Francisco, CA 94102 (415) 554-7642 January 2000 REF 712.5 P416 DOCUMENTS DEP1 JAN 1 2 2000 SAN FRANCISCO PUBLIC LIBRARY SAN FRANCISCO PUBLIC LIBRARY 111 3 1223 05612",
+    "Members of the Board of Supervisors City and County of San Francisco Room 244, City Hall 1 Dr. Carlton B. Goodlett Place San Francisco, California 94102-4689 Dear President Ammiano and Members of the Board of Supervisors: Transmitted herewith is the Budget Analyst's Performance Audit Report of the San Francisco Zoological Gardens, which is under the management of the San Francisco Zoological Society. This management audit was conducted in accordance with Charter Section 2.114, which authorizes the Board of Supervisors to make inquiries concerning departmental operations. In total, this report presents 15 findings containing 75 recommendations organized in four separate categories. The f",
+    "approximately $4.53 million, $3.73 million of which can be reallocated to construction of priority capital improvements and $800,000 that should be transferred to a construction contingency account to increase the amount allocated for that purpose to an appropriate level. In addition, we have identified San Francisco Zoological Society operating budget savings in the amount of approximately $197,857 that can be reallocated to high priority Zoo needs, such as facilities maintenance. Further, annual savings in the amount of approximately $50,000 would result from the timely payment by the Zoological Society of the City's",
+    "with the Animal Keepers. The Animal Keepers are professional, knowledgeable, and caring as a group. An independent evaluation was completed by Dr. Joel Parrott, the Oakland Zoo Director, retained by the Budget Analyst. Dr. Parrott, who is also a zoo veterinarian, concluded that veterinary care at the San Francisco Zoo is excellent and general care is good. • The Zoo has an excellent animal acquisition and loan policy. In fact"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.61,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.61,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/performanceaudit1119sanf",
+   "deep_link": "https://archive.org/details/performanceaudit1119sanf?q=San+Francisco+Zoo",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "audit",
+   "doc_type_label": "Audit",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Audit",
+   "salient": true,
+   "gloss": "The Budget Analyst's management audit of the zoo for the Board of Supervisors, conducted under Charter Section 2.114 while the zoo was run by the San Francisco Zoological Society."
+  },
   {
    "identifier": "sanfranciscozool1519sanf",
    "title": "San Francisco Zoological Gardens master plan : final environmental impact report",
@@ -41,9 +86,13 @@
    "url": "https://archive.org/details/sanfranciscozool1519sanf",
    "deep_link": "https://archive.org/details/sanfranciscozool1519sanf?q=San+Francisco+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited (1997–1998)",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The final environmental review of the zoo's master plan, certified by the Planning Commission in January 1998."
   },
   {
    "identifier": "sanfranciscozool1995sanf",
@@ -81,8 +130,13 @@
    "url": "https://archive.org/details/sanfranciscozool1995sanf",
    "deep_link": "https://archive.org/details/sanfranciscozool1995sanf?q=San+Francisco+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "A 1995 engineering report for Public Works on the state of the zoo's underlying infrastructure."
   },
   {
    "identifier": "annualreport195861sanf",
@@ -122,8 +176,13 @@
    "url": "https://archive.org/details/annualreport195861sanf",
    "deep_link": "https://archive.org/details/annualreport195861sanf?q=Fleishhacker+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "A Recreation and Park annual report recording rising zoo attendance, which it credits to the Zoological Society's publicity and to newly acquired animals."
   },
   {
    "identifier": "meetingagenda3200sanf",
@@ -161,8 +220,12 @@
    "url": "https://archive.org/details/meetingagenda3200sanf",
    "deep_link": "https://archive.org/details/meetingagenda3200sanf?q=San+Francisco+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
   },
   {
    "identifier": "minutesrecreatio1974sanf",
@@ -202,49 +265,13 @@
    "url": "https://archive.org/details/minutesrecreatio1974sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1974sanf?q=San+Francisco+Zoo",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "performanceaudit1119sanf",
-   "title": "Performance audit of the San Francisco Zoo",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst,San Francisco (Calif.). Board of Supervisors",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Zoo",
-   "ocr_excerpts": [
-    "TiON CGMTEH SAM FRANCISCO PUBLIC UBtfARY SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Nol to be lukcn from the Li bran' I 2 20011 Digitized by the Internet Archive in 2014 https://archive.org/details/performanceaudit1 1 1 9sanf Public Library,Gov't Info. Ctr., 5th Fir. Performance Audit of the San Francisco Zoo GOVERNMENT INFORMATION CWTPR SAN FRANCJSCO PU6UC LIBRARY SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not /o be taken from the Library Prepared for the Board of Supervisors by the Board of Supervisors Budget Analyst 1390 Market Street, Suite 1025 San Francisco, CA 94102 (415) 554-7642 January 2000 REF 712. 5 P416 DOCUMENTS DEP71 JAN 1 2 2000 SAN FRANCISCO PUBLIC LIBRARY Public Library,Gov't inf0, Ctr., 5th Fir. Performance Audit of the San Francisco Zoo Prepared for the Board of Supervisors by the Board of Supervisors Budget Analyst 1390 Market Street, Suite 1025 San Francisco, CA 94102 (415) 554-7642 January 2000 REF 712.5 P416 DOCUMENTS DEP1 JAN 1 2 2000 SAN FRANCISCO PUBLIC LIBRARY SAN FRANCISCO PUBLIC LIBRARY 111 3 1223 05612",
-    "Members of the Board of Supervisors City and County of San Francisco Room 244, City Hall 1 Dr. Carlton B. Goodlett Place San Francisco, California 94102-4689 Dear President Ammiano and Members of the Board of Supervisors: Transmitted herewith is the Budget Analyst's Performance Audit Report of the San Francisco Zoological Gardens, which is under the management of the San Francisco Zoological Society. This management audit was conducted in accordance with Charter Section 2.114, which authorizes the Board of Supervisors to make inquiries concerning departmental operations. In total, this report presents 15 findings containing 75 recommendations organized in four separate categories. The f",
-    "approximately $4.53 million, $3.73 million of which can be reallocated to construction of priority capital improvements and $800,000 that should be transferred to a construction contingency account to increase the amount allocated for that purpose to an appropriate level. In addition, we have identified San Francisco Zoological Society operating budget savings in the amount of approximately $197,857 that can be reallocated to high priority Zoo needs, such as facilities maintenance. Further, annual savings in the amount of approximately $50,000 would result from the timely payment by the Zoological Society of the City's",
-    "with the Animal Keepers. The Animal Keepers are professional, knowledgeable, and caring as a group. An independent evaluation was completed by Dr. Joel Parrott, the Oakland Zoo Director, retained by the Budget Analyst. Dr. Parrott, who is also a zoo veterinarian, concluded that veterinary care at the San Francisco Zoo is excellent and general care is good. • The Zoo has an excellent animal acquisition and loan policy. In fact"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 9.61,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.61,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 6.5,
-    "money": true,
-    "decision": false,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/performanceaudit1119sanf",
-   "deep_link": "https://archive.org/details/performanceaudit1119sanf?q=San+Francisco+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "1974 Recreation and Park Commission minutes, the resolutions governing zoo concessions and gifts alongside the department's other properties."
   }
  ]
 }

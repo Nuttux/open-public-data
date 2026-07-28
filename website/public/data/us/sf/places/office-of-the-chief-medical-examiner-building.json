@@ -1,0 +1,136 @@
+{
+ "generated_at": "2026-07-28T12:23:47.789631+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "office-of-the-chief-medical-examiner-building",
+ "name": "Office of the Chief Medical Examiner Building",
+ "kind": "Civic building",
+ "family": "civic",
+ "address": "1 Newhall St",
+ "lat": 37.739566,
+ "lon": -122.377752,
+ "owning_dept": {
+  "name": "City Administrator",
+  "code": "ADM"
+ },
+ "facility": {
+  "primary_name": "Office of the Chief Medical Examiner Building",
+  "primary_address": "1 NEWHALL ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94124",
+  "primary_block_lot": "4570030",
+  "primary_department_name": "Gsa - Medical Examiner",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 46000,
+  "primary_latitude": 37.73956591900003,
+  "primary_longitude": -122.37775235099997,
+  "supervisor_district": 10,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 46000,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "4570030"
+  ],
+  "facilities": [
+   {
+    "facility_id": 763,
+    "common_name": "Office of the Chief Medical Examiner Building",
+    "block_lot": "4570030",
+    "gross_sq_ft": 46000,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 1,
+  "measure_totals": {
+   "bond_expended": 67471696.25
+  },
+  "bond_programs": [
+   "Earthquake Safety and Emergency Response"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_item",
+    "item_name": "Office of the Chief Medical Examiner",
+    "bond_program": "Earthquake Safety and Emergency Response",
+    "component": null,
+    "voter_approved_date": "2014-06-03",
+    "amount_usd": 67471696.2489,
+    "amount_measure": "bond_expended",
+    "budget_usd": 67533024.0,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Office of the Chief Medical Examiner"
+   }
+  ],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_usd": 287717708.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_compensation_usd": 168334637.06,
+   "n_employees": 1154,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [],
+ "dept_shelf": [
+  {
+   "identifier": "progressincitypl1948sanf",
+   "title": "Progress in city planning : a report to the people of San Francisco",
+   "year": 1948,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/progressincitypl1948sanf"
+  },
+  {
+   "identifier": "64summaryofregular1979san",
+   "title": "Summary of the regular meeting",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/64summaryofregular1979san"
+  },
+  {
+   "identifier": "southofmarketzon1988sanf",
+   "title": "South of Market zoning controls : proposal for adoption : with 12 month sunset clause",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/southofmarketzon1988sanf"
+  }
+ ],
+ "dept_shelf_label": "City Planning Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 0,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

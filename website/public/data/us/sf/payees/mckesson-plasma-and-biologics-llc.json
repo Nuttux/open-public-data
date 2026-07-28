@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.738291+00:00",
+ "generated_at": "2026-07-28T11:43:47.710885+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -24,6 +24,43 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 22127,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 169446681.73,
+    "n_vouchers": 22127
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "544610",
+    "label": "Pharmaceutical",
+    "spend_class": "purchase",
+    "usd": 169446681.73,
+    "n_vouchers": 22127
+   }
+  ],
+  "n_categories": 1,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 44567673.84,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Pharmaceutical",
+    "spend_class": "purchase",
+    "usd": 44567673.84,
+    "n_vouchers": 6139
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000013810",

@@ -81,6 +81,11 @@ DEPT_ARCHIVE_SLUG = {
     "FAM": None,
 }
 
+def _norm(s: str) -> str:
+    """Lowercase, punctuation → space. Same normalisation as sf_place_match."""
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", (s or "").lower())).strip()
+
+
 ARCHIVE_CAP = 14
 # Applied per pool, not over the flat sfpl-then-dl list. A flat cap re-creates
 # the TOP_K starvation bug one layer down: ~10 grounded SFPL items would eat the
@@ -299,7 +304,17 @@ def main() -> int:
         # 20/20 sample) because an all-caps 4-letter token essentially never
         # appears inside ordinary English contract/scope text.
         alias_ok = [a for a in aliases if len(a) >= 6 or (len(a) >= 4 and a.isupper() and a.isalpha())]
-        alias_low = [a.lower() for a in alias_ok]
+        # Word-boundary, not substring. A bare `alias in haystack` matched
+        # "Pier 96" inside "co|pier 96|104X_PUC WSTD Copier" and attached four
+        # Xerox photocopier leases to a cargo terminal; "Pier 45" and "Pier 27"
+        # have the same collision waiting in any title containing "copier 45…".
+        # Punctuation is normalised to spaces first so "96104X_PUC" cannot
+        # weld a number onto the token before it. All-caps acronyms keep the
+        # trailing edge open, as sf_place_match does — the city writes ZSFG's
+        # contracts "…@ ZSFGH", and a closing \b would drop all seven of them.
+        alias_rx = [(a, re.compile(rf"\b{re.escape(_norm(a))}" +
+                                   ("" if (a.isupper() and a.isalpha()) else r"\b")))
+                    for a in alias_ok]
 
         # ── archive docs from the place's IA cache ──
         # Grounding is the document's own OCR text around the alias
@@ -376,8 +391,8 @@ def main() -> int:
         # ── contracts naming a place alias in the title ──
         con_hits = []
         for r in con_rows:
-            hay = f"{r.get('title','')} {r.get('title_plain','')}".lower()
-            hit_alias = next((a for a in alias_low if a in hay), None)
+            hay = _norm(f"{r.get('title','')} {r.get('title_plain','')}")
+            hit_alias = next((a for a, rx in alias_rx if rx.search(hay)), None)
             if hit_alias:
                 con_hits.append({
                     "contract_no": r["contract_no"],

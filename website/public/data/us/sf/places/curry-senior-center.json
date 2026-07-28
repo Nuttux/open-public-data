@@ -1,0 +1,404 @@
+{
+ "generated_at": "2026-07-28T12:23:47.803600+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "curry-senior-center",
+ "name": "Curry Senior Center",
+ "kind": "Health facility",
+ "family": "health",
+ "address": "333 Turk St",
+ "lat": 37.782523,
+ "lon": -122.414507,
+ "owning_dept": {
+  "name": "Public Health",
+  "code": "DPH"
+ },
+ "facility": {
+  "primary_name": "Curry Senior Center",
+  "primary_address": "333 TURK ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94102",
+  "primary_block_lot": "0345015",
+  "primary_department_name": "Public Health",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": null,
+  "primary_latitude": 37.78252335700006,
+  "primary_longitude": -122.41450720199998,
+  "supervisor_district": 5,
+  "n_facilities": 1,
+  "total_gross_sq_ft": null,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "0345015"
+  ],
+  "facilities": [
+   {
+    "facility_id": 571,
+    "common_name": "Curry Senior Center",
+    "block_lot": "0345015",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "CURRY SENIOR CENTER",
+    "paid_usd": 68995.52,
+    "n_contracts": 1,
+    "first_fiscal_year": 2025,
+    "last_fiscal_year": 2026
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 68995.52
+ },
+ "photo": "/img/us/sf/places/curry-senior-center.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/curry-senior-center.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Curry_Senior_Center_in_San_Francisco_(4942210291).jpg",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Nancy Pelosi from San Francisco, CA",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-28T00:22:16.811301+00:00"
+ },
+ "summary_en": "Curry Senior Center occupies a city-owned building on Turk Street that the property register still lists under the older name North of Market Senior Services. It is run by a nonprofit — the health department's contractor list names \"North of Market Senior Services DBA Curry Senior Center\" — and it appears in the city's records at the seam where a public health system meets an outside operator. The Health Commission approved a retroactive renewal contract with the centre for $510,188 to provide substance abuse treatment and mental health services across 2004-05, and the department's own network map lists it among the primary care health centres alongside Castro-Mission, Chinatown and Maxine Hall. Its staff speak for the system in public: a public health nurse based at Curry told the Health Commission that without public health nurses there would be more emergency services, more hospitalisation and more institutionalisation. The building doubles as civic meeting space — the Mental Health Services Act advisory committee held community forums here, and the centre's own board publishes its meeting schedule under the Sunshine Ordinance. The city marked World TB Day here in 2011, on the birth centenary of Francis J. Curry, San Francisco's tuberculosis pioneer and the centre's namesake.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "DPH",
+   "name": "Public Health",
+   "total_usd": 3185025572.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "DPH",
+   "name": "Public Health",
+   "total_compensation_usd": 1583866801.6,
+   "n_employees": 8904,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "sanfranciscodepa2011sanf",
+   "title": "The San Francisco Department of Public Health annual report",
+   "creator": "San Francisco (Calif.). Department of Public Health",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Curry Senior Center",
+   "ocr_excerpts": [
+    "e about our : ommunity Health Network. X * Primary Care Health Centers Affiliated Partners X X Fee-For-Service Clinics Clinics 48 iSil i | R ' Primary Care Health Centers % Fee-tor Service Clinic % Castro-Mission Health Center Children's Health Center at SFGH Chinatown Health Center Curry Senior Center Family Health Center at SFGH General Medical Clinic at SFGH Maxine Hall Health Center Ocean Park Health Center Potrero Hill Health Center Silver Avenue Family Health Center Southeast Health Center STD Clinic on 7th Street station (PEP) Affiliated Partners Y Glide Health Services Haight Ashbury F",
+    "uncil On Alcohol Abuse for the Spanish-speaking Mission Creek Senior Community Mission Neighborhood Health Center Mt. St. Joseph-St. Elizabeth National Council on Alcoholism Native American AIDS Project Native American Health Center NICOS Chinese Health Coalition North of Market Senior Services DBA Curry Senior Center Oakes Children's Center Parkview Terrace Partners LP PHFE Management Solutions Plaza Apartments Associates LP Positive Resource Center Progress Foundation Project Open Hand Providence Foundation of San Francisco Realizing Our Youth as Leaders Regents of the University of California Richmond Area Mul"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.21,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 2.21,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscodepa2011sanf",
+   "deep_link": "https://archive.org/details/sanfranciscodepa2011sanf?q=Curry+Senior+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "The department's annual report listing the centre among its primary care health centres and its contracted partners."
+  },
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2005",
+   "title": "Real property owned by the city and county of San Francisco / 2005",
+   "creator": null,
+   "year": 2005,
+   "pool": "dl",
+   "matched_alias": "Curry Senior Center",
+   "ocr_excerpts": [
+    "CRIPTION (with Facilities) ADDRESS JURISDICTION LAND AREA (Sq. Ft) FISCAL YEAR 2004-2005 LOT BLOCK FATHER ALFRED E. BOEDDEKER PARK VACATED COHEN PLACE SW OF ELLIS AND LEAVENWORTH TENDERLOIN PRE-SCHOOL PLAYGROUND TENDERLOIN TASK FORCE POLICE STATION 301 Eddy Street HALLIDIE PLAZA FIRE DEPT HEADQUARTERS (FORMER) Curry Senior Center POWER HOUSE - CIVIC CTR. UNITED NATIONS PLAZA (PTNS LOT 39, 46, 41) NE JONES & EDDY BOEDDEKER PARK; CLUBHOUSE COHEN PL AND ELLIS ST 201 HYDE ST 1 JONES STREET 920 MARKET CONVENTION & VISITORS BUREAU 260 GOLDEN GATE AVENUE SFFD HEADQUARTERS (FORMER) 331 TURK ST N. OF MARKET SENIOR SERV. CTR LARKIN & MCALL",
+    "ENCY OPERATIONS CENTER 001 0759 1200 ee TORT BUCHANAN STREET MALL 033 0748 Page 158 REAL PROPERTY OWNED BY THE CITY COUNTY OF SAN FRANCISCO FISCAL YEAR 2004-2005 ADDRESS CROSS REFERENCE LAND DESCRIPTION LOT BLOCK 1301 TURK ST FIRE STATION #5 001 0756 1601. TURKST. GOLDEN GATE SCHOOL (ELEMENTARY) 026 ~=*~=~=~CS*«* SD 331 aaa RK S| ate Curry Senior Center 015 0345 657 TURK ST TENDERLOIN COMMUNITY SCHOOL 010 0763 840 ULLOAN 0 © 9 © ©8988 9 \"OMT WESTPORTALPLAYGROUND. © = °° =O 013A 2979 “ULLOA KENSINGTON. ~~~~~~~SOPENSPACE(NWULLOA& KENSINGTON) SCS 017 2923 aap ee UNION FRONT PORT LANDS 002 0109 ~ 1651. UNIONST SHERMAN SCHOOL (ELEMENTARY) 001 0545 i UPPER TERRACE CLIFFORD MT OLYMPUS (UPPER TERR"
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": 4.65,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.65,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2005",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2005?q=Curry+Senior+Center",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The city's property register, listing the building under its former name at 331 Turk Street."
+  },
+  {
+   "identifier": "nonprofitopenboa2007vari",
+   "title": "Non-profit open board meeting notices received in ...",
+   "creator": "Various",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Curry Senior Center",
+   "ocr_excerpts": [
+    "Visually Impaired is wheelchair accessible. Craig ^dclman. Chairman Distribution: Clerk. Board of Supervisors Sar. Francisco Main Library- Government In^'omation Center Department of Public Health, c o CMHS Contract Nlonitor Department of Human Ser^ ices, c o DH5 Contract Moniior PUBLIC notice) Curry Senior Center 315 Turk Street San Francisco, C A 94102 BOARD OF DIRECTORS Designated Public Meeting Schedule NOTE: JUNE 19, 2007 MEETING CANCELLED MEETING 1 July 17, 2007 Time: 12:00 pm Location: 315 Turk Street, San Francisco MEETING 2 DOCUMENTS DEPT. NOV - 1 2007 November 20, 2007 Time: 12:00 pm Lo",
+    "n^wr, SAN FRANCISCO lime: 12:00 pm public library To: SF Main Library Government Info Center 100 Larkin Street San Francisco, CA 94102 Clerk of the BD of SupcrN isors Cit> Hall 1 Carlton B. Goodlett Place Room 244 San Francisco, CA 94102 Sunshine Ordinance 2007 05/25/07 PUBLIC NOTICeI Curry Senior Center 315 Turk Street San Francisco, CA 94102 BOARD OF DIRECTORS Designated Public Meeting Schedule )OCUMENTS DEPT. MAY 3 1 2007 SAN FRArgcisco PUBLIC LIBRARY NOTE: JUNE 19, 2007 MEETING CANCELLED MEETING 1 July 17, 2007 Time: 12:00 pm Location: 315 Turk Street, San Francisco MEETING 2 November",
+    "00 pm Location: 315 Turk Street, San Francisco To: SF Main Library Government Info Center 100 Larkin Street San Francisco, CA 94102 Clerk of the BD of Supervisors Cit> Hall 1 Carlton B. Goodlett Place Room 244 San Francisco, C A 94102 Sunshine Ordinance 2007 05/25/07 4 PUBLIC notice) Curry Senior Center 315 Turk Street San Francisco, CA 94102 BOARD OF DIRECTORS Designated Public Meeting Schedule MEETING 1 DOCUMENTS DEPT MAY - 2 2007 June 19, 2007 rj.. 1-1 nn SAN FRANCISCO Time: 12:00 pm publiclibrary Location: 315 Turk Street, San Francisco MEETING 2 November 20, 2007 Time: 12:00 pm Loca",
+    "SFCCC OFFICE OR CONFERENC 1550 BRYANT STREET (16™ & BRYANT) SAN FR.4NCISCO. CA 94103 PUBLIC COMMENT WELCOME Notice Date: August 1, 2007 to SF Public Libran , Main Branch SF City Hall, Clerk of the Board, Board Superv isors Office DOCUMENTS DEfl'T. AUG - 3 2007 SAN FRANCISCO PUBLIC LIBRARY Curry Senior Center • Glide Healch Services • Haighi Ashbur, Free Medical Clinic • Lvon-Mardn Women's Health Seivico Mission Neighborhood Heaiih Center • Native , -American Health Center • North East Medical Services • Saint Anthony Free \\fedkal Oinic San Ftancisco Ftce Clinic • South of Matkef Health Center San Franc",
+    "UBLIC MEETING WEDNESDAY, JULY 18, 2007 12:30-3:00 SFCCC OFFICE 11^\" FLOOR CONFERENCE ROOM 1550 BRYANT STREET (16^\" & BRYANT STREET) SAN FRANCISCO, CA Public Comment Welcome Notice Date: June 2, 2007 to SF Public Library. Main Branch SF City iHall, Clerk of the Board, Board of Supervisors Office Curry Senior Center • Glide Health Services • Haight Ashhury Free Medical Clini Mission Neighborhood He"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.21,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.71,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/nonprofitopenboa2007vari",
+   "deep_link": "https://archive.org/details/nonprofitopenboa2007vari?q=Curry+Senior+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "roster",
+   "doc_type_label": "Roster or notice",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Roster or notice",
+   "salient": false,
+   "gloss": "The centre's own board meeting notices, filed with the city under the Sunshine Ordinance."
+  },
+  {
+   "identifier": "agendasminutessa2008sanf",
+   "title": "Agendas and Minutes / San Francisco Mental Health Board",
+   "creator": "San Francisco (Calif.). Mental Health Board",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Curry Senior Center",
+   "ocr_excerpts": [
+    "5-3585 or Nathaniel Mitchell at 415-255-3607. MHSA ADVISORY COMMITTEE MEETINGS: The Mental Health Services Act Advisory Committee meets bi-monthly from 3-5pm, alternating between advisory meetings and community forums. The next scheduled meetings are as follows: Wednesday, April 16, 2008 Community Forum Curry Senior Center 315 Turk Street San Francisco 5. Awards Thursday, June 26, 2008 Advisory Meeting Community Behavioral Health Services 1380 Howard Street, 4^^ Floor San Francisco Sai-Ling Chan-Sew, CBHS Director of Child, Youth and Family System of Care, received the Unconditional Care Award “Uncie” from Seneca Ce",
+    "ncements: 1. Budget Stakeholders Meeting on April 11, 2008 between 2:30 PM - 3:30 PM at Koret Auditorium 2. Health Commission meeting on April 15, 2008 at 3:00 PM 3. Redefining Women’s Health, UC Hospital, April 17, 2008, 5:00 - 7:00 PM 4. MHSA Advisory Meeting April 16, 2008, 3:00 to 5:00 PM, Curry Senior Center 5. Aging and Disability Budget Coalition Bake Sale on April 22, 2008 between 11:00 AM - 12:00 PM at City Hall 4.2 Report of the Chair of the Board and the Executive Committee: Mr. McGhee: “I am really pleased that so many board members will be attending the California Association of Local Me",
+    "Foundation's La Playa Apartments. Ten residents and five of their children attended. The young adult focus group was held at the Larkin Youth Programs Ellis Street Apartment and was attended by 10 individuals who live in that building. The older adult focus group had 4 attendees and was held at the Curry Senior Center. Lastly, the adult focus group had 12 attendees and was held at the MHA-SF offices. Overall, the focus group participants recommended that supportive housing be built in neighborhoods outside of the Tenderloin area; that a variety of housing buildings be offered; more trainings and mental health educat",
+    "includes supervision of all peers hired through CBHS 3. Operating Expenditures $640,454 Family Service Agency (FSA) - Peer Based Center (200 clients) For renewal of our contract with FSA - Peer Based Center. This Center serves clients over the age of 60 with SMI and/or substance abuse. Operating at Curry Senior Center & integrating with their existing meal program: will offer programming Wednesday through Sunday during breakfast, lunch & early afternoon hours; provide group & one-to-one activities, peer support mentoring & assistance, socialization & skill development, and a safe place with friends; link to treatment, medi",
+    "reet corridor of San Francisco. This center will identify clients belonging to the older adult population and will provide a safe and low-threshold space for older adults. It will also offer opportunities for voluntary or paid peer employment, computer literacy and access, and job development services. Curry Senior "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.01,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.51,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendasminutessa2008sanf",
+   "deep_link": "https://archive.org/details/agendasminutessa2008sanf?q=Curry+Senior+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Mental Health Board papers scheduling a community forum at the centre."
+  },
+  {
+   "identifier": "minutes2005sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Curry Senior Center",
+   "ocr_excerpts": [
+    "to reconsider any cuts that may impact these important services. Barbara Rothkrug, Public Health Nurse, said that the proposed cuts with impact maternal child health services. The proposed reductions will impact Spanish-language services, billing and other services. Linda Mullen, Public Health Nurse at Curry Senior Center, said without public health nurses, there would be more emergency services, hospitalization and institutionalization. She submitted a column written by Joan Ryan about the work of DPH public health nurses (on file in the Health Commission office). Paul Wagoner, San Francisco Community Clubhouse, said t",
+    "abuse treatment services, for the period of July 1, 2004 through June 30, 2005. * Contract summary, Monitoring report summaries, Client demographic information forms 101 Grove Street San Francisco, CA 94102-4505 (3.2) BHS-Substance Abuse - Request for approval of a retroactive renewal contract with Curry Senior Center, in the amount of $510,188, to provide substance abuse treatment and mental health services, for the period of July 1, 2004 through June 30, 2005. * Contract summary, Monitoring report summaries, Client demographic information forms (3.3) BHS-Substance Abuse - Request for approval of a retroactive re",
+    "retroactive contract renewal with Addiction Research and Treatment, Inc. dba BAART, in the amount of $5,740,202, to provide substance abuse treatment services, for the period of July 1, 2004 through June 30, 2005. (3.2) BHS-Substance Abuse - Request for approval of a retroactive renewal contract with Curry Senior Center, in the amount of $510,188, to provide substance abuse treatment and mental health services, for the period of July 1, 2004 through June 30, 2005. (3.3) BHS-Substance Abuse - Request for approval of a retroactive renewal contract with Westside Community Mental Health Center, Inc., in the amount of",
+    "udes a 12% contingency, to provide Early and Periodic Screening and Diagnosis and Treatment mental health services, for the period of July 1, 2005 through June 30, 2006. * Contract summary, Client demographic information form *(3. 6) CBHS - Request for approval of a retroactive renewal contract with Curry Senior Center, in the amount of $530,966 per year, for a total contract amount of $2,123,865, which includes a 12% contingency, to provide substance abuse treatment and mental health services, for the period of July 1 , 2005 through June 30, 2009. * Contract summary, Monitoring report summaries, Client demographic",
+    "rserved populations in San Francisco. The Curry Award is given each year to an individual or organization that demonstrates Dr. Curry's values in action. Previous winners have included Rep. Nancy Pelosi, Senator Diane Feinstein and Supervisor Sue Bierman. In naming Marc Trotz this year's recipient, the Curry "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.9,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.4,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes2005sanf",
+   "deep_link": "https://archive.org/details/minutes2005sanf?q=Curry+Senior+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Health Commission papers approving a $510,188 contract with the centre, and a Curry nurse's testimony on public health nursing."
+  },
+  {
+   "identifier": "agenda2011sanf_7",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Curry Senior Center",
+   "ocr_excerpts": [
+    "of Northern California from the 33 residents & staff of Broderick. I know the Commissioners join me in thanking the Broderick residents, Michael Badolato, and the staff at RAMS for this generous and moving gesture. World TB Day 2011 World TB Day was observed in San Francisco on March 24 at the Curry Senior Center, 315 Turk St. This year's celebration was a triple-bill event: marking the birth centennial of Francis J. Curry, MD, San Health Commission Minutes Aprils, 2011 Page 2 Francisco's world TB pioneer; celebrating the good news that for the first time in the City's history, the number of new TB cases",
+    "mmissioners, staff or member of the public are interested in volunteering for this event, go to www.SFConnect.org to register as a volunteer. A walkthrough is scheduled for June 9 at 3:30, in front of the Southeast Health Clinic at 2401 Keith Street. Health Commission Minutes May 3, 2011 Page 3 Curry Senior Center Annual Gala It is my distinct privilege to have been asked to attend the May 6**^ Curry Senior Center Annual Gala and accept this year's Dr. Francis J. Curry award on behalf of Healthy San Francisco. The evening event benefits the curry Senior Center and honors the health, hope and dignity of all San Francisco Seniors. Many thanks to the Curry Senior Center for this recognition. Public Sector Partner Award Director of Health, Barbara A. Garcia, received the Public Sector Partner Award on April 27th at the \"Night with the Stars\" fundraiser held by the Community Housing Partnership organization. The Department is working closely with Community Housing Part"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.3,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.3,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -3.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda2011sanf_7",
+   "deep_link": "https://archive.org/details/agenda2011sanf_7?q=Curry+Senior+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes marking World TB Day at the centre, on the centenary of its namesake."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "performanceeffic202008san",
+   "title": "Performance and efficiency review : Department of Public Health : Controller's Office analysis 2005-2008",
+   "year": 2005,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/performanceeffic202008san"
+  },
+  {
+   "identifier": "annualreportofde192425sanf",
+   "title": "Annual report of the Department of Public Health, San Francisco, California",
+   "year": 1925,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualreportofde192425sanf"
+  },
+  {
+   "identifier": "annualsalaryord197879sanf",
+   "title": "Annual salary ordinance",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualsalaryord197879sanf"
+  }
+ ],
+ "dept_shelf_label": "Public Health",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 6,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

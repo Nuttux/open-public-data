@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.744393+00:00",
+ "generated_at": "2026-07-28T11:43:47.721105+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,63 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 589,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 109581489.58,
+    "n_vouchers": 589
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 51061131.64,
+    "n_vouchers": 313
+   },
+   {
+    "code": "463599",
+    "label": "Misc Public Health Revenue",
+    "spend_class": "unclear",
+    "usd": -5127.96,
+    "n_vouchers": 4
+   }
+  ],
+  "n_categories": 2,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 9351792.92,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 9351792.92,
+    "n_vouchers": 50
+   }
+  ]
+ },
+ "identity": {
+  "description": "Bay Area Addiction Research And Treatment Inc is an IRS-recognized tax-exempt organization in San Francisco, CA. Its IRS activity code is not recorded in the registry.",
+  "method": "irs_bmf",
+  "confidence": 0.83,
+  "legal_name": "Bay Area Addiction Research And Treatment Inc",
+  "ein": "942757959",
+  "ntee_code": null,
+  "ntee_label": null,
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/942757959",
+  "checked_at": "2026-07-27T23:38:07.854337+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000009821",

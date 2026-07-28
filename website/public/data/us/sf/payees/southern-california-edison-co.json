@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.744159+00:00",
+ "generated_at": "2026-07-28T11:43:47.720656+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -25,6 +25,43 @@
  "top_departments": [
   "PUC Public Utilities Commsn"
  ],
+ "profile": {
+  "n_vouchers": 188,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 112859879.25,
+    "n_vouchers": 188
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "533110",
+    "label": "Power For Resale",
+    "spend_class": "purchase",
+    "usd": 112859879.25,
+    "n_vouchers": 188
+   }
+  ],
+  "n_categories": 1,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 27305112.98,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Power For Resale",
+    "spend_class": "purchase",
+    "usd": 27305112.98,
+    "n_vouchers": 21
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000030481",

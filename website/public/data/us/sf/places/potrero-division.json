@@ -1,0 +1,401 @@
+{
+ "generated_at": "2026-07-28T12:23:47.788952+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "potrero-division",
+ "name": "Potrero Division",
+ "kind": "Civic building",
+ "family": "civic",
+ "address": "2500 Mariposa St",
+ "lat": 37.76333,
+ "lon": -122.408793,
+ "owning_dept": {
+  "name": "Municipal Transportation Agency",
+  "code": "MTA"
+ },
+ "facility": {
+  "primary_name": "POTRERO DIVISION",
+  "primary_address": "2500 MARIPOSA ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94110",
+  "primary_block_lot": "3971001",
+  "primary_department_name": "Municipal Transportation Agency",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 192000,
+  "primary_latitude": 37.76332958300003,
+  "primary_longitude": -122.408792646,
+  "supervisor_district": 9,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 192000,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "3971001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 3027,
+    "common_name": "POTRERO DIVISION",
+    "block_lot": "3971001",
+    "gross_sq_ft": 192000,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": "/img/us/sf/places/potrero-division.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/potrero-division.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Potrero_Division_from_Mariposa,_January_2018.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Pi.1415926535",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T23:00:33.827972+00:00"
+ },
+ "summary_en": "Potrero is one of Muni's two trolley-coach yards, and its record is of a building modified for each new generation of vehicle. A 1984 staff paper states the problem plainly: the railway's first articulated trolley coaches were due in 1988-89, neither Presidio nor Potrero could handle them for storage or maintenance, and so preliminary modification work at Potrero had to begin before early 1985 — Potrero would be ready by 1988, ahead of Presidio. The federal transit programme for 1986-87 carries \"Potrero Division Modifications\" at $3,413,200, of which $2,730,560 was federal and $682,640 the local match. The work was not always well done: the Budget Analyst's management audit of Muni cites costly design flaws in the renovation, among them a three-post lift for the new 60-foot articulated coaches built too close to a bearing wall and an electrical circuit. The same audit uses the division to illustrate a staffing dispute — on one April morning in 1996 Potrero reported ten transit runs undispatched for want of an operator, while employing thirteen operators full time in non-driving duties. The yard has long been where Muni trains, too, running both a supervisory course and a transit fleet training programme sponsored by the Board of Education. A permit to erect a four-storey bus maintenance facility here, declared at $400 million, was withdrawn in 2023 and filed again in 2024.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "MTA",
+   "name": "Municipal Transportation Agency (Muni)",
+   "total_usd": 1517548716.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "MTA",
+   "name": "Municipal Transportation Agcy",
+   "total_compensation_usd": 960677279.95,
+   "n_employees": 6381,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "managementaudito1996budg",
+   "title": "Management audit of the San Francisco Municipal Railway",
+   "creator": "Budget Analyst of the City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Potrero Division",
+   "ocr_excerpts": [
+    "18 breakdowns to the revenue fleet, (3) the lack of maintenance standards that would provide managers with staff performance indicators and, (4) weak in-house engineering support for facility design and renovation. For example, several costly design flaws occurred during the renovation projects for the Potrero Division Trolley Coach Division and the Flynn Center Diesel Division. In one instance, a three post lift was designed and constructed along interior track No. 20 to raise the new 60 foot electrical articulated coaches. The construction of this lift was too close to a bearing wall and to an electrical circuit",
+    "hicles on a daily part-time basis. This practice is also in violation of the current MOU with TWU Local 250A, and is inconsistent with the budget policy established by the Mayor and the Board of Supervisors. As an example of how this practice impacts service, on the morning of April 5, 1996, the Potrero Division reported a total of 10 transit line runs which were not dispatched because an operator was not available. However, the Potrero Division uses 13 transit operators as non-driving SDOs on a full time basis. Had these operators been available to operate a transit vehicle, the number of missed runs due to the unavailability of operators could have been reduced, if not entirely eliminated. BQARD..QF SUEERYIS.QRS BUDGET ANALYST Rudolf Not",
+    "is particular paint is difficult to match, expensive to buy, and time consuming to apply, particularly at the lower area of the vehicles where the metallic gray paint portion |) has been designed. As brought to our attention by management staff, prior construction problems have also surfaced at the Potrero Division Trolley Coach Division and at the Flynn Center Diesel Division. These included several basic design flaws associated with the installation of improvements to accommodate the arrival of new 60 foot Articulated Electric Trolley Coaches and the parts storeroom at the Flynn Center, including: • Excavation",
+    "Duty Operators Shown in the table below are the 53 full-time, regular SDO positions discussed ( previously. Detailed job duties are shown for 11 of these individuals, who are assigned to the Department of Public Transportation headquarters, and for another 13 who are assigned to the Cable Car and Potrero Divisions. Also shown are summary totals for 27 full-time, regular SDO positions assigned to the remaining five transportation divisions. Some of the permanent Special Duty Operators have been acting in that capacity since the early 1980s. Table 2.1.1 Full-Time, Regular Special Duty Operator Assignments San Fr",
+    "Service Clerk Elderly and Handicapped Clerk Division Operations Clerk Director's Office Clerk Community Affairs Community Outreach Division Operations Secretary Station Operations Secretary Tran"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.21,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.71,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/managementaudito1996budg",
+   "deep_link": "https://archive.org/details/managementaudito1996budg?q=Potrero+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "audit",
+   "doc_type_label": "Audit",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Audit",
+   "salient": true,
+   "gloss": "A management audit citing costly design flaws in the division's renovation, and its undispatched runs."
+  },
+  {
+   "identifier": "urbanmasstranspo1986cali",
+   "title": "Urban Mass Transportation Act FY ... program of projects for Section 9 funds for all urbanized areas within the San Francisco Bay Area Region",
+   "creator": "California. Metropolitan Transportation Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Potrero Division",
+   "ocr_excerpts": [
+    ",000 11,480,000 52.670.983 ■5. UMTA Sec. 9 Cumulative Local Total CAPITAL PROJECTS (Dollars) Total Match 1986-87 Cost S.F. MUNI Fare Extraction System 166,883 41,721 208.604 Automated Public Info. System 254,400 63.600 318.000 Peolace 144 Diesel Buses 19,958,400 4,989,600 24,948.000 Potrero Division Modifications 2.730.560 682.640 3,413.200 E&H Boarding Platforms 374,089 93.522 467,611 Moods Division Redevelop, desian 1,484,000 371.000 1.955.000 Trolley Overhead Rehab: Ashbury 1,696.000 424.000 2,120,000 Peolace Service Veh i c J es /Sedans 600.000 150,000 750,000 Maintenance and Repair Eq",
+    "rancisco Municipal Railway $41,437,380 PROGRAM OF PROJECTS Total Type Project Description Amount (P/C/0) 1) FY 1986-87 Net Operating Cost $155,231 ,493 0 2) Fare Extraction System 208,604 C 3) Automated Public Information System 318,000 C 4) Replace 144 Diesel Buses 24,948,000 C 5) Potrero Division Modifications 3,413,200 C 6) E&H Boarding Platforms 467,611 C 7) Woods Division Redevelopment 1 ,855,000 C 8) Trolley Overhead Rehab. (33 Ashbury) 2,120,000 C 9) Replace Service Vehicles & Sedans 750,000 C 10) Maintenance and Repair Equipment 1 ,177,000 C 11) Harrison Street Non-Reve",
+    "The replacement schedule of the GMC's is consistent with UMTA fleet guidelines and the rehabilitation schedule. -35- ♦ PROJECT JUSTIFICATION WORKSHEET FOP. PROJECTS SUBMITTED FOR THE ANNUAL ELEMENT OF MTC'S TRANSIT CAPITAL PRIORITIES 1. OPERATOR: San Francisco Municipal Railway ?. PROJECT NAME: Potrero Division Modifications 3. PROJECT DESCRIPTION: The project will provide design and construction funds to rehabilitate and modernize Muni's Potrero Division. Facility modifications are necessary to store and maintain 60-foot artic trolleys which Muni plans to add to its store fleet for productivity reasons. Renovation plans include structural repairs to walls and building roof, as well as rewiring of the roof to the park 45 standard-sized trolleys. Storag",
+    "TA Section 9 7. PROPOSED LOCAL MATCH: (20%) $ 682,640 TP&D/Article XIX and STA 8. TOTAL PROJECT COST: $3,413,200 9. PRIOR UMTA FUNDING: 10. ENVIRONMENTAL DOCUMENT TYPE AND STATUS: CEOA STATUS: 14 Cal. Admin. Code, Section 15301 MEPA STATUS: 23 CFR 771 .115(b) (22) 11. PLANNING JUSTIFICATION: The Potrero Division now houses over half of Muni's 345 Flyer trolley coaches. This 70-year old former streetcar facility requires modernization and minor expansion project to accommodate the arrival of Muni's first articulated trolleys in 1988-89. Moving an interior wall (about 300 feet long, non-loading-bearing) will make",
+    "apacity, comfort and safety. This project will improve productivity through reduction of additional operators and mechanics (line personnel) needed for the articulated trolleys. It also allows Muni to maintain only two trolley coach facilit"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.4,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 3.9,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/urbanmasstranspo1986cali",
+   "deep_link": "https://archive.org/details/urbanmasstranspo1986cali?q=Potrero+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The federal transit programme listing $3,413,200 for Potrero Division modifications, with its local match."
+  },
+  {
+   "identifier": "munimemo1984sanf",
+   "title": "The Muni memo",
+   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Potrero Division",
+   "ocr_excerpts": [
+    "$25 account from the Muni Shopmen's Credit Union. Maintenance Workers of the Month since the start of the program are: 1983 August— Eugene Waddell, Automotive Mechanic. Woods Division; 1983 Octo- ber—Hector Baiza, Automotive Me- chanic, Kirkland Division; 1983 Novem- ber-Joseph Saitz. Electrical Mechanic, Potrero Division; 1983 December- Jeffery Sada, Electrical Mechanic, Metro Division; 1984 January-Eric McCartney, Cable Car Carpenter, Woods Division; 1984 March— Paris Vigil, Automotive Technician, Woods Division; 1984 April — Ceasar Benederti, Automotive Me- chanic, Woods Division; 1984 May- Jack Ng, Electrical Mechanic, Pres",
+    "rst articulated trolley coaches in 1988/89. Neither Presidio nor Potrero, the two trolley facilities, can presently handle artics, either for storage or main- tenance. Both facilities must be modi- fied for artics, Wright says and the pre- liminary modifications at Potrero must start before early 1985. Potrero Division will be ready for trolley artics by 1988, before Presidio. If Army Street and Kirkland are used as temporary relievers for trolley artics during the modification work on Potrero and Presidio, they can be either disposed of or converted to other uses when the work on the per- manent facilities is f",
+    "The San Francisco Historic Trolley Festival has enjoyed so much success that a permanent \"E-F\" lines running the old cars has been included in Muni's five-year plan.\" EDITOR'S BOX The other day, George Newkirk, Manager of Field Support Operations, sent us a copy of a letter from lames Christian, Potrero Division Manager, to Operator Alex Kouyoumdjian, #0917. Christian wrote that on September 1 1 , at 7:00 p.m. aboard coach 5240 at Chestnut and Fillmore, Kouyoumdjian tried to protect Muni property in the form of stolen transfers. Because of his effort, Operator Kouyoumdjian was as- saulted by the thief, suffer",
+    "because he brings them bags of bananas during his frequent visits for volunteer work. He's viewed with awe by his fellow competitors in the \"Escape from Alcatraz Triathlon,\" because his 66 years don't slow him in the swimming, biking and double dipsea running events. In the words of Dan McCarthy, Potrero Division Maintenance Manager, \". . . he does the work of any four men I know and redeems my faith in human nature.\" These are but some of the facets of Otto Sommerauer, the body and fender worker who does running repair on the 175 trolley coaches operating from Muni's Potrero Division. \"His energy, good works, profession- alism and dedication to good main- tenance practices made such an impres- sion on his co-workers and supervisors that they gave him another title, that of Municipal Railway Maintenance Worker ot the Month for October,\" said Muni General Manager Harold Geissenheimer.",
+    "ious auto rental and leasing firms"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.86,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/munimemo1984sanf",
+   "deep_link": "https://archive.org/details/munimemo1984sanf?q=Potrero+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false,
+   "gloss": "A staff paper explaining why Potrero had to be rebuilt before the articulated trolley coaches arrived."
+  },
+  {
+   "identifier": "trolleytopics19501952sanf",
+   "title": "Trolley topics",
+   "creator": "San Francisco Municipal Railway,San Francisco Public Utilities Commission",
+   "year": 1946,
+   "pool": "sfpl",
+   "matched_alias": "Potrero Division",
+   "ocr_excerpts": [
+    "the lady in picking up the coins before proceeding.\" Arthur J. Grabinsky, Mason. \"This operator knows how to handle the cable car so well he can bring it to a stop without the least jolting of the This distinguished group has completed the Supervisory Training course which is being offered at Potrero Division to all supervisory personnel throughout the Utilities. Seated clockwise around the table are Head Clerk Paul Frasher, Accounting; Head Clerk Earl Southard, Stores; Chief Clerk Alfred Felder, Claims; Instructor R. M. Winfield; General Foreman Ed Brown, Line Department; Chief Clerk Earl Ryan, Transportation",
+    "anuary will see the conversion of the Sutter Street lines and the 30 (F) line to trolley coaches. The 47 (H), 12 and 38 (B) will follow during the year. This means that several hundred new- trolley coach operators will be re- quired. The Transit Fleet Training program now being conducted at the Potrero Division permits railway employees to gel some free preparation for the jobs which will be open in the future. The course, which is sponsored by the San Francisco Board of Education, con- sists ol both classroom instruction and road (raining. DON i Miss nils OPPORTON- 1TY. Those who wish to enroll in",
+    "ferred to Geneva.) even has a name. It is known as the California Stop. Actually Californians have no mono- poly on the practice. It's widespread. And it's dangerous. Tvemember! (1) Come to a FULL STOP at Stop signs. (2) Watch out for the amateur drivers who follow the \"California\" custom. Potrero Division Operator U\". /. Campbell just re- turned from an extended vacation. Bill really went places: Chicago, Balti- more, etc. Believe it or not, the Hud- son made the trip without any trouble. . . . Operator Joe Fay sure has the new look these days; those curly locks make a difference. Wonder who the",
+    "EFFECTIVE SEPTEMBER 3, 1950 C On September 3rd the new put into effect. Following is a list GENEVA DIVISION (street cars]: J Church K Ingleside L Taraval M Ocean View SUTRO DIVISION (street cars): B Geary C Geary-2nd-Avenue GEARY DIVISION (street cars): F Stockton N Judah POTRERO DIVISION (trolley coaches); 6 Masonic 7 Haight 8 Market 9 Richland 22 Fillmore 33 Ashbury 41 Union-Howard PRESIDIO DIVISION (trolley coaches): 5 McAllister 21 Hayes WASHINGTON. MASON (cable cars): 59 Powell 60 Jackson Kirkland motor coach yard will start of all Railway lines and the di",
+    "north, O'Regan, Anna Lee toured Mt. Lassen and Tahoe. George Evington and Ernie Cordini spent some time in Lake County. Isabel Doherty fought freckles up at the Russian River. Lolly Curtin. Thelnia Lunde and Ted Green put the \"Ho\" in Hobergs. Bess and Paul Frasher visited Carmel and points South. POTRERO DIVISION Now that the General Sign-Up is in effect, we see a lot of new faces and we also miss those w"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.92,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.42,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/trolleytopics19501952sanf",
+   "deep_link": "https://archive.org/details/trolleytopics19501952sanf?q=Potrero+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false,
+   "gloss": "A railway staff magazine describing the supervisory and fleet training courses run at the division."
+  },
+  {
+   "identifier": "agendapublicutil1986sanf",
+   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
+   "creator": "San Francisco Public Utilities Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Potrero Division",
+   "ocr_excerpts": [
+    "$9,218.56, in settlement of a non-litigated claim against the Water Department arising from an eight-inch water main break at 2590 Oakdale Avenue on December 20, 1985. (e) Approving the plans and specifications as prepared by staff, and authorizing Bid Call for Municipal Railway Contract No. MR-955, Potrero Division: Hampshire Street Sidewalk Roof Waterproofing . (f) Approving the plans and specifications as prepared by staff, and authorizing Bid Call for Hetch Hetchy Contract No. HH-761, Holm Powerhouse Stoplog and Cooling Sump Modifications. (g) Accepting work performed under Municipal Railway Contract No. MR-",
+    "No. 2 in the amount of $4,836.89; approving a fund transfer in the amount of $7,274.39 to supplement the original contract order; and authorizing final payment in the amount of $28,092.83 to Nibbi-Lowe Construction, Inc., Contractor. Accepting work performed under Municipal Railway Contract No. MR-935, Potrero Division: Modification of 1st Floor Heating System, as satisfactorily completed; authorizing an extension of time for unavoidable delays of 14 calendar days; and authorizing final payment in the amount of $22,825.75 to E. Mitchell, Inc., Contractor . Accepting work performed under Municipal Railway Contract No. MR-936, Potrero Division: Paint Shop Ventilation, as satisfactorily completed; authorizing an extension of time for unavoidable delays of 13 calendar days; approving Debit Contract Modification No. 1 in the amount of $1,175; and authorizing final payment in the amount of $29,396.38 to Van Mulder Sheet Metal, Inc . , Contractor .",
+    "tion Co. and Arvie & Son Construction - A Joint Venture, Contractor. 1 September 23, 1986 (e) Awarding Water Department Contract No. WD-1957, Pilarcitos Reservoir, Replacement of Log Boom, in the amount of $57,449, to JM Construction, Contractor. (f) Awarding Municipal Railway Contract No. MR-955, Potrero Division: Hampshire Street Sidewalk Roof Waterproofing, in the amount of $45,922, to Valentine Corporation, Contractor. (g) Approving Debit Modification No. 7 to Hetch Hetchy Contract No. HH-757, Kirkwood Powerhouse Addition, for additional work at a cost of $77,983.75, Tutor-Saliba Corporation, Contractor. (h)"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.86,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendapublicutil1986sanf",
+   "deep_link": "https://archive.org/details/agendapublicutil1986sanf?q=Potrero+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Utilities Commission agendas on the division's roof waterproofing and its first-floor heating system contract."
+  },
+  {
+   "identifier": "0minutes200001sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Citizens' Advisory Council",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Potrero Division",
+   "ocr_excerpts": [
+    "ere visited: a. Central Control-Mr. David Hooper gave a description of the facility and the mission of Central Control. b. Green Division-Ms. Kathy Forrester gave a description of the operator dispatch functions and rail supervision. Mr. Louis Maffe took the group on a tour of the Metro Shops. c. Potrero Division- Mr. Ed Wong described the functions at Potrero Division and detailed the service the division provided. d. Flynn Division- Michael Elliot led the group through the facility and described the operations functions at the division. Mr. Ken Sapp described the maintenance functions at the division for the group. 4 Adjournment The meeting was adjourned at",
+    "gency 401 Van Ness Ave Ste 334 San Francisco C A 94102-4524 (415) 554-4129 Voice • (415) 554-4143 Fax AGENDA 1 . Call to Order/Roll Call 9:00AM 2. Public Comment 3. Board bus in front of 401 Van Ness 9:10AM 4. Begin Muni Tour at Central Control. The tour will proceed to Green, Flynn and Potrero divisions with a brief stop at 700 Pennsylvania 5. Adjournment at 401 Van Ness 1:00PM Disability Access This meeting will be a tour of Muni facilities aboard an accessible Muni bus. The bus will be boarded in front of 401 Van Ness Ave. All facilities included in the tour, Central Control, Green Divisi",
+    "ere visited: a. Central Control-Mr. David Hooper gave a description of the facility and the mission of Central Control. b. Green Division-Ms. Kathy Forrester gave a description of the operator dispatch functions and rail supervision. Mr. Louis Maffe took the group on a tour of the Metro Shops. c. Potrero Division- Mr. Ed Wong described the functions at Potrero Division and detailed the service the division provided. d. Hynn Division- Michael Elliot led the group through the facility and described the operations functions at the division. Mr. Ken Sapp described the maintenance functions at the division for the group. 4 Adjournment The meeting was adjourned at 1"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.62,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.12,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -3.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/0minutes200001sanf",
+   "deep_link": "https://archive.org/details/0minutes200001sanf?q=Potrero+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Citizens' advisory council minutes from a tour of Muni's yards, including Potrero."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "financialreport1912sanf_0",
+   "title": "Financial report of the Municipal Railway of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/financialreport1912sanf_0"
+  },
+  {
+   "identifier": "8minutes1989sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/8minutes1989sanf"
+  },
+  {
+   "identifier": "2minutes1987sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/2minutes1987sanf"
+  }
+ ],
+ "dept_shelf_label": "Municipal Railway (Muni)",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 6,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

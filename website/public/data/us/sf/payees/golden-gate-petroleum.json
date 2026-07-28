@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.733253+00:00",
+ "generated_at": "2026-07-28T11:43:47.702423+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,174 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 19519,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 174001159.87,
+    "n_vouchers": 10410
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 44531606.88,
+    "n_vouchers": 2577
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "usd": 12297109.52,
+    "n_vouchers": 2636
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 7134063.91,
+    "n_vouchers": 1739
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 2880000.4,
+    "n_vouchers": 148
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 2555099.3,
+    "n_vouchers": 472
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 1701241.5,
+    "n_vouchers": 356
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 1025380.24,
+    "n_vouchers": 978
+   }
+  ],
+  "n_departments": 17,
+  "categories": [
+   {
+    "code": "547990",
+    "label": "Fuels & Lubricants",
+    "spend_class": "purchase",
+    "usd": 108370282.86,
+    "n_vouchers": 7557
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 35015415.78,
+    "n_vouchers": 3948
+   },
+   {
+    "code": "541100",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 6385572.45,
+    "n_vouchers": 1571
+   },
+   {
+    "code": "552210",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 13339.98,
+    "n_vouchers": 3
+   },
+   {
+    "code": "552110",
+    "label": "Taxes",
+    "spend_class": "obligation",
+    "usd": 8671.41,
+    "n_vouchers": 14
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 4215.27,
+    "n_vouchers": 24
+   },
+   {
+    "code": "529990",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 3000.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 5.69,
+    "n_vouchers": 23
+   }
+  ],
+  "n_categories": 10,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 15886294.54,
+  "n_recent_lines": 9,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Fuels & Lubricants",
+    "spend_class": "purchase",
+    "usd": 12380879.57,
+    "n_vouchers": 508
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Fuels & Lubricants",
+    "spend_class": "purchase",
+    "usd": 1780438.07,
+    "n_vouchers": 195
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "label": "Fuels & Lubricants",
+    "spend_class": "purchase",
+    "usd": 863322.69,
+    "n_vouchers": 200
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 318790.23,
+    "n_vouchers": 104
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Fuels & Lubricants",
+    "spend_class": "purchase",
+    "usd": 301909.02,
+    "n_vouchers": 13
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Fuels & Lubricants",
+    "spend_class": "purchase",
+    "usd": 178386.55,
+    "n_vouchers": 56
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000036825",

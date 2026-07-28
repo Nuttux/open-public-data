@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.739944+00:00",
+ "generated_at": "2026-07-28T11:43:47.713223+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,6 +35,142 @@
   "2027": 196388.39
  },
  "top_departments": [],
+ "profile": {
+  "n_vouchers": 1358,
+  "departments": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 83532172.22,
+    "n_vouchers": 613
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 40817414.2,
+    "n_vouchers": 588
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 26458573.28,
+    "n_vouchers": 145
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 1000000.0,
+    "n_vouchers": 7
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 62542.67,
+    "n_vouchers": 2
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "ECD",
+    "usd": 13587.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "DAT District Attorney",
+    "department_code": "DAT",
+    "usd": 1750.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 1750.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 8,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 109204755.58,
+    "n_vouchers": 703
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1140105.56,
+    "n_vouchers": 11
+   },
+   {
+    "code": "546990",
+    "label": "Food",
+    "spend_class": "purchase",
+    "usd": 209580.47,
+    "n_vouchers": 4
+   },
+   {
+    "code": "538100",
+    "label": "PUC Solar Incentive Program",
+    "spend_class": "unclear",
+    "usd": 50000.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "536440",
+    "label": "CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 35010.23,
+    "n_vouchers": 18
+   },
+   {
+    "code": "536340",
+    "label": "Non-CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 16052.42,
+    "n_vouchers": 7
+   },
+   {
+    "code": "479701",
+    "label": "Custom Work",
+    "spend_class": "ledger",
+    "usd": 12542.67,
+    "n_vouchers": 1
+   },
+   {
+    "code": "536530",
+    "label": "Extended Sick Leave Benefits",
+    "spend_class": "unclear",
+    "usd": 12097.84,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 9,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 16224926.38,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 9747282.55,
+    "n_vouchers": 74
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 6477643.83,
+    "n_vouchers": 27
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000032405",
@@ -56,7 +192,7 @@
   },
   {
    "contract_no": "1000036278",
-   "title": "Nutrition HDM AWD",
+   "title": "Nutrition home-delivered meals AWD",
    "department": "HSA Human Services Agency",
    "department_code": "HSA",
    "agreed_usd": 6457986.0,
@@ -65,7 +201,7 @@
   },
   {
    "contract_no": "1000036279",
-   "title": "Nutrition HDM ER",
+   "title": "Nutrition home-delivered meals ER",
    "department": "HSA Human Services Agency",
    "department_code": "HSA",
    "agreed_usd": 895663.0,

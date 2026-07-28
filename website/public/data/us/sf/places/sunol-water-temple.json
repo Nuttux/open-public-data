@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.760732+00:00",
+ "generated_at": "2026-07-28T12:23:47.775436+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sunol-water-temple",
@@ -44,13 +44,15 @@
  "photo": "/img/us/sf/places/sunol-water-temple.jpg",
  "photo_credit": {
   "photo": "/img/us/sf/places/sunol-water-temple.jpg",
-  "source": "Wikimedia Commons",
-  "file": "File:Sunol_water_temple.JPG",
-  "file_url": "https://commons.wikimedia.org/wiki/File:Sunol_water_temple.JPG",
-  "license": "CC BY-SA 3.0",
-  "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
-  "author": "Ike9898 at English Wikipedia",
-  "fetched_at": "2026-07-20T22:28:05.679509+00:00"
+  "source": "Openverse (flickr)",
+  "source_url": "https://www.flickr.com/photos/60700203@N03/12020891144",
+  "license": "BY-ND 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-nd/2.0/",
+  "license_verified": false,
+  "provisional": true,
+  "author": "CDay DaytimeStudios w /1.5 Million views",
+  "resolved_via": "openverse",
+  "fetched_at": "2026-07-28T11:43:08.011273+00:00"
  },
  "summary_en": "The Sunol Water Temple is a historic monument on the Alameda watershed. A 2005 municipal water history says the Spring Valley Water Company \"built the Sunol Water Temple in 1910\"; the temple was damaged in the 1989 Loma Prieta earthquake and restored in 2001. Sunol/Niles dam-removal environmental impact reports (2005–2006) find the temple eligible for the National Register and describe the water flows through it as a \"character-defining feature.\" A 1997 ADA transition plan records that the temple \"is closed to the public,\" a 1983 Arts Commission agenda covers art-enrichment funding to restore its murals, and 1996 PUC minutes direct that it be restored. The monument is operated by the Public Utilities Commission, whose FY2025 budget line is about $1.8B.",
  "published": true,
@@ -79,6 +81,11 @@
    "year": 2006,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "ocr_excerpts": [
+    "paragraph on page IV.G-13 is revised as follows: The evaluation conducted by JRP (2000, 2003) concluded that Sunol and Niles Dams are individually eligible for the NRHP and, thus, the CRHR. Additional resources also evaluated and found to be eligible properties were the Sunol Valley Filter Beds, the Sunol Water Temple, the Sunol Aqueduct, the Niles Regulating Reservoir, and SVWC's Alameda Headquarters. With the exception of the headquarters, the above resources were determined to qualify as a historic district. As discussed above, research conducted by Caltrans (Scantlebury, 2004) concluded that the Vallejo Aqueduct al",
+    "esources, Mitigation Measure D-9. • Page IV.G-14 notes that the removal of Sunol Dam would result in reduced groundwater levels that could extend upstream from the dam, which could decrease the average yield from the infiltration galleries and in turn reduce the quantity of water flowing through the Sunol Water Temple. The water flows are a character- defining feature of the Temple; inflows are the temple's reason for being, and complete dewatering could be viewed as a loss of resource integrity. However, it does not appear that the Water Temple would be completely dewatered as a result of the dam removal (see Section rV.F, Hydrology, Groundwater, and Water Quality, for a discussion of groundwater and the Sunol Water Temple); the expected reduction of inflows would not significantly affect those features of the Water Temple that convey its significance. Case No. 2001.1149E Sunol/Niles Dam Removal Project C&R-45 ESA/ 201591 February 2006 Comments and Responses M. Bridget Maley, City and County of San Francisco Landm",
+    "paragraph on page IV.G-13 is revised as follows: The evaluation conducted by JRP (2000, 2003) concluded that Sunol and Niles Dams are individually eligible for the NRHP and, thus, the CRHR. Additional resources also evaluated and found to be eligible properties were the Sunol Valley Filter Beds, the Sunol Water Temple, the Sunol Aqueduct, the Niles Regulating Reservoir, and SVWC's Alameda Headquarters. With the exception of the headquarters, the above resources were determined to qualify as a historic district. The Vallejo's Mill/Spring Valley Water Company (SVWC) system is also considered an historical resource (see"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 5.65,
@@ -103,9 +110,13 @@
    "url": "https://archive.org/details/sanfranciscopubl2006esaf",
    "deep_link": "https://archive.org/details/sanfranciscopubl2006esaf?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
    "salient": true,
-   "gloss": "The 2006 Sunol/Niles dam-removal EIR responses find the Water Temple eligible for the National Register and weigh whether reduced inflows would harm its character-defining water flows."
+   "gloss": "The response volume for the dam-removal review, which warns that the water flowing through the temple is a character-defining feature — 'inflows are the temple's reason for being' — and that losing them could be read as a loss of integrity."
   },
   {
    "identifier": "sanfranciscopubl2005sanf",
@@ -114,6 +125,12 @@
    "year": 2005,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "ocr_excerpts": [
+    "ion galleries. Dependable yield from the infiltration galleries is 5 million gallons per day (mgd), but under flood conditions the fully operational galleries could produce up to 20 mgd (SFPUC, 2005). Groundwater recovered through the upstream portion of the infiltration galleries discharges through the Sunol Water Temple (Bookman-Edmonston, 1995). After being routed to the Water Temple, the collected groundwater is directed to the Sunol Aqueduct, which also serves as an infiltration gallery between the Water Temple and Sunol Dam. The infiltration galleries extend from the Water Temple to the abutment at Sunol Dam, ben",
+    "erway maps, local geology, and site inspections. Sunol Dam acts to restrict shallow Utilities Engineering Bureau, Structural Survey and Evaluation for Sunol and Pulgas Water Temples, Conceptual Engineering Report (W-061), November 1990. San Francisco Water Department, Drawing No. E-2791, Rehabilitation of Sunol Water Temple, March 1962. San Francisco Water Department, Drawing No. F-342A. Niles Canyon Properties Sunol Portion, May 1960. Spring Valley Water Company, Drawing No. F-58, Sunol Filter Beds Showing Pipes Galleries and Ditches, August 1910. Spring Valley Water Company, Drawing No. E-32, Sunol Filter Beds Showing Pipes Galleries and Ditches, May 1910. San Francisco Water Department, Drawing No. E-3598, Contour Map Proposed Pump Station at Sunol Water Temple, March 1965. Case No. 2001.1149E Sunol/Niles Dam Removal Project IV.F-21 ESA/ 201591 October 2005 Environmental Setting and Impacts Hydrology, Groundwater, and Water Quality groundwater flow at the head of the valley. The dam spillway is currently at an elevation of approximately 204.4 feet, w",
+    "and CRHRb Herbert & Ferrell, 2000; Scantlebury, 2004 Sunol Aqueduct Niles Canyon 1900, 1921 4.9-mile water conveyance Eligible for NRHP and CRHR Krase, 1998 Sunol Dam Upper Niles Canyon iyuu Concrete arch dam Plinihlo fr\\r ME? UP onH Liigiuie Tor iNr\\nn ana CRHR nerucn. ot rerTcii, 2000 Sunol Water Temple bunol Valley iyiu Fountain, carrefour, and pumphouse Liigiuie tor iNKnr ana CRHR idd onm Union Pacific Railroad (CA-Ala- 582) Niles Canyon 1909-1910 Railroad Eligible for NRHP and CRHR McKee, 1998 Sunol Infiltration Galleries Upper Niles Canyon 1920 Sunol Dam infiltration system Eligible f",
+    "ying capacity of seventy million gallons daily. The plans and estimates were prepared in the latter part of 1922; construction commenced April 1, 1923, and was completed September 15, 1923. Ultimately, water from Calaveras Reservoir joined water from the Pleasanton pipeline in the Sunol Valley at the Sunol Water Temple. From the Water Temple an underground concrete conduit ran to the north side of Sunol Dam. It then passed through the dam to the south side The May 16, 1891 issue of the Oakland Examiner "
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 5.36,
@@ -138,44 +155,13 @@
    "url": "https://archive.org/details/sanfranciscopubl2005sanf",
    "deep_link": "https://archive.org/details/sanfranciscopubl2005sanf?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
    "salient": true,
-   "gloss": "The 2005 dam-removal EIR describes groundwater discharging through the Sunol Water Temple and cites 1962 and 1965 rehabilitation drawings for it."
-  },
-  {
-   "identifier": "americanswithdis00sanf",
-   "title": "Americans with Disabilities Act transition plan",
-   "creator": "San Francisco (Calif.). Office of the Mayor",
-   "year": 1997,
-   "pool": "sfpl",
-   "matched_alias": "Sunol Water Temple",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.17,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 0.67,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/americanswithdis00sanf",
-   "deep_link": "https://archive.org/details/americanswithdis00sanf?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1997 ADA transition plan lists the Sunol Water Temple among PUC facilities and notes it is closed to the public, with accessibility folded into its restoration project."
+   "gloss": "The environmental review of removing Sunol and Niles dams, explaining that groundwater recovered by the infiltration galleries discharges through the temple before running on to the Sunol Aqueduct."
   },
   {
    "identifier": "sanfranciscowate2005hans",
@@ -184,6 +170,11 @@
    "year": 2005,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "ocr_excerpts": [
+    "e of the \"San Andres Valley\" 6 Spring Valley Water Company K Hermann Schussler 8 San Andreas Dam and Reservoir 8 Stone Dam 9 Upper Crystal Springs Dam and Reservoir 10 Lower Crystal Springs Dam and Reservoir 10 Crystal Springs Pump Station 11 Sunol Filter Beds and Pleasanton Well Field 11 Sunol Water Temple 12 Castlewood Wells 12 Calaveras Dam and Reservoir 13 San Francisco Water Department It Purchase of Spring Valley Water Company 1 i Turner Dam and San Antonio Reservoir 14 City Distribution System 1^ Water Quality and Treatment 10 Environmental Stewardship and Watershed Protection 10 Sunol Va",
+    "he rights of other overlying landown- ers in the valley. Since 1949, the San Francisco Water Department has stopped exporting groundwater from the valley. But the water is still pumped for local use by the City of Pleasanton and Alameda County Water Conservation and Flood Control District, Zone 7. SUNOL WATER TEMPLE The Spring Valley Water Company built the Sunol Water Temple in 1910 to mark the confluence of its three East Bay water sources - Alameda Creek, the Sunol filter galleries and Pleasanton artesian well field. Designed by renowned San Francisco architect Willis Polk, the temple is an elegant, circular pavilion of twelve fluted columns sur- mounted by a peaked",
+    "sent via aque- duct to supply the homes and bath- houses of ancient Rome. The temple frieze quotes Isaiah 41:18: \"I will make the wilderness a pool of water and the dry lands springs of water. The streams whereof shall make glad the city.\" Seriously damaged in the Loma Prieta earthquake of 1989, Sunol Water Temple was beautifully restored in 2001 with support from an active com- munity organization, Save Our Sunol. The restoration won the prestigious 2001 Preservation Design Award from the California Preservation Foundation. CASTLEWOOD WELLS Castlewood, a small town just south of Pleasanton in the East Bay, receives a free water supply of 90 million gallons per day in perpetuity from San Francisco, under an agreement reached in the 1890s with Phoebe Apperson Hearst. Phoebe's late husband George Hearst, a prominent local businessman, owned major interests in the Comstock, Homestake and Anaconda mines, the Sunol Water Temple 1 2 San Francisco Water and Power argest silver and copper mines in -America's history, as well as one of San Francisco's hometown newspapers, he Examiner. Castlewood continued o receive water from groundwater A'ells in the fertile valley. CALAVERAS DAM AND RESERVOIR n 1877, San Franciscans wer"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 5.76,
@@ -208,44 +199,57 @@
    "url": "https://archive.org/details/sanfranciscowate2005hans",
    "deep_link": "https://archive.org/details/sanfranciscowate2005hans?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Histories & surveys",
+   "doc_type": "history",
+   "doc_type_label": "History",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "History",
    "salient": true,
-   "gloss": "A 2005 municipal water history recounts the Spring Valley Water Company building the temple in 1910 to Willis Polk's design, its 1989 earthquake damage, and 2001 restoration."
+   "gloss": "The utility's history records that Spring Valley Water Company built the temple in 1910, to the design of Willis Polk, marking where its three East Bay water sources met."
   },
   {
-   "identifier": "aminutes1996sanf",
-   "title": "Minutes",
-   "creator": "San Francisco Public Utilities Commission",
-   "year": null,
+   "identifier": "americanswithdis00sanf",
+   "title": "Americans with Disabilities Act transition plan",
+   "creator": "San Francisco (Calif.). Office of the Mayor",
+   "year": 1997,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "ocr_excerpts": [
+    "nsition Plans for the various facilities of the Public Utilities Commission. These include the following sites: 1155 Market Street 425 Mason Street 1990 Newcomb Avenue (CDD) Millbrae Main Office Alameda/Sunol Main Office Harry Tracy Treatment Plant Sunol Valley Treatment Plant Pulgas Water Temple Sunol Water Temple Moccasin Administration Harry Tracy Ozone Building Southeast Community Center Southeast Greenhouse * Oceanside Plant M.L. King Childcare Center Earl P. Mills Community Center Shorey Childrens Center Sojourner Truth Childcare Center Southeast Administration Building » cc: Todd Cockbum. PUC/UEB",
+    "roximate cost is S40,000. < 9 CITY AND COUNTY OF SAN FRANCISCO SAN FRANCISCO WATER DEPARTMENT ADA TRANSITION PLANS FOR WATER SUPPLY AND TREATMENT DIVISION PULGAS WATER TEMPLE ALAMEDA/SUNOL OFFICE HARRY TRACY TREATMENT PLANT HARRY TRACY OZONE BUILDING SUNOL VALLEY WATER TREATMENT FACILITY SUNOL WATER TEMPLE PREPARED BY: SAN FRANCISCO WATER DEPARTMENT REVISED BY: UTILITIES ENGINEERING BUREAU JANUARY 1997 i < i TR.ANSIT10N PL.AJs\" FOR 1 Pulgas Water Temple 2. Alameda/Sunol Office 3 HaiT}' Tracy Treatment Plant 4 Harn,' Tracy Ozone Building 5. Sunol Valley Treatment Plant 6 Sunol Water Temple STATEMENT This program plan describes initial tasks required to bring public-serving areas within City facilities into compliance with the terms of the Americans with Disabilities Act (.ADA) of 1990. A multi-year Capital Improvement Project will be established for construction of the Water Department'",
+    "s - Signage - Handrails - Controls - Fire Alarm PHASE V Sunol Valley Water Treatment Facility - Parking - Ramp - Signage - Drinking Fountain - Toilets - Controls - Doors - Stairs - Fire .Alarm PHASE VT Construction Cost Completion Date S18,000 Fall/2000 S137,000 YR/2001 Sunol Water Temple The Sunol Water Temple is closed to the public; .ADA compliance will be incorporated into its restoration project. CONSTRUCTION COST SUMMARY PHASE I II m IV V VI COST $ 19.000 $ 80,000 $ 31,000 $ 18,000 $137,000 .ADD 30% CONTINGENCY $ 25,000 $ 104,000 S 40,000 ■ $ 23,000 5178,000 TOTAL $370,000 'Sunol Water Temple project costs are excluded due to the indeterminate scope of work at this time. i i CITY .^ND COUNTY OF S.^^ FRANCISCO HETCH HETCHY WATER AND POWER .ADA TRANSITION PL.ANS FOR MOCCASIN FACILITIES PREPARED BY; HETCH HETCHY/UTILITIES ENGINEERING BUREAU JANUARY, 1997 4 i i TRANSITION"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 6.45,
+    "score": 5.17,
     "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
     "substantive": false,
     "substantive_direct": true,
-    "hits": 5,
-    "density": 0.95,
+    "hits": 3,
+    "density": 0.67,
     "title_hit": false
    },
    "materiality": {
-    "score": -0.5,
+    "score": 1.0,
     "money": true,
-    "decision": true,
+    "decision": false,
     "accountability": false,
-    "contestation": true,
+    "contestation": false,
     "named_genre": false,
-    "generic_serial": true
+    "generic_serial": false
    },
-   "url": "https://archive.org/details/aminutes1996sanf",
-   "deep_link": "https://archive.org/details/aminutes1996sanf?q=Sunol+Water+Temple",
+   "url": "https://archive.org/details/americanswithdis00sanf",
+   "deep_link": "https://archive.org/details/americanswithdis00sanf?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
    "salient": true,
-   "gloss": "Public Utilities Commission minutes record direction to restore the Sunol Water Temple as part of the Sunol Valley Resource Management Plan, though restoration was \"not in the budget.\""
+   "gloss": "The Water Department's 1997 disability-access transition plan, which schedules the work needed to bring the temple's public areas into compliance alongside the Pulgas temple and the Sunol treatment plants."
   },
   {
    "identifier": "alamedawatershe1998sanf_3",
@@ -254,6 +258,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "ocr_excerpts": [
+    "four miles north of Sunol, there are 17 wells located in the Pleasanton Well Field, which is on City property straddling Highway 680 in Pleasanton This groundwater supply was first utilized in 1898. The Plcasanton/Sunol pipeline, a 30-inch pipeline, was constructed in 1909 to convey groundwater to the Sunol Water Temple. This pipeline was severed in the early 1960's. The remaining segment is currently used to collect well water from the SFWD’s remaining Pleasanton lands and convey to Castlewood Country Club -5 ft 3»-^oo.ie9 San Francisco Watershed Management Plans ALAMEDA SYSTEM Sunol Valley Groundwater. The",
+    "ed in 1899 and is located on Alameda Creek about one mile west of Sunol. It is usually submerged but it holds back the creek flow to increase the recharge of water into the groundwater aquifer. In addition to Sunol Dam, filter beds, or groundwater recharge basins, were developed in 1900 near the Sunol Water Temple to increase the infiltration of rainfall. The water in Sunol Valley percolates through the gravel beds and is collected in underground 36- inch perforated concrete pipes and conveyed through screened brass pipes to a concrete tunnel, called Filter Galleries. The Filter Galleries are approximately 9,000 feet long and parallel Alameda Creek. They begin at both the Sunol Dam and a point just west of Highway 680 and converge at the Sunol Water Temple. The Sunol Pump Station is located next to the Water Temple and when used, can pump groundwater from the Filter Galleries through the 36-inch Sunol Pipeline to the San Antonio Pipeline where it can be conveyed to San Antonio Reservoir or to the Sunol WTP. The water can also be conveyed through t",
+    "e lands along 1-680 from San Antonio Creek (Sunol Valley) north to Pleasanton are in various stages of development. However, the Alameda Watershed lands consist primarily of undeveloped grassland hills and scattered oak woodlands. Particular features of interest include views of Calaveras Reservoir, the Sunol Water Temple, and the narrow, forested Niles Canyon. The community of Sunol, which includes a small commercial hub, is located at the junction of Niles Canyon Road and Foothill Road at the north- western edge of the Alameda Watershed lands. A separate parcel of SFWD land is located north of Sunol, following the",
+    "e lands along 1-680 from San Antonio Creek (Sunol Valley) north to Pleasanton are in various stages of development. However, the Alameda Watershed lands consist primarily of undeveloped grassland hills and scattered oak woodlands. Particular features of interest include views of Calaveras Reservoir, the Sunol Water Temple, and the narrow, forested Niles Canyon. The community of Sunol, which includes a small commercial hub, is located at the junction of Niles Canyon Road and Foothill Road at the"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 5.99,
@@ -278,9 +288,12 @@
    "url": "https://archive.org/details/alamedawatershe1998sanf_3",
    "deep_link": "https://archive.org/details/alamedawatershe1998sanf_3?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "A watershed management plan describes the filter galleries converging at the Sunol Water Temple and the adjacent Sunol Pump Station."
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false
   },
   {
    "identifier": "alamedawatershed1998sanf",
@@ -289,6 +302,13 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
+   "ocr_excerpts": [
+    "P-29. Alternative C and Alternative F included a slightly modified SMP-32. Alternative E included SMP-32 as it was originally proposed. In response to Alternative E, Alternative F was prepared. North of 1-680, Alternative F took exception to the extent of mining and the proximity of the pit edge to the Sunol Water Temple and possible buried cultural resources in the vicinity of the temple. In response. Alternative F proposed a 1 /4-mile (1320') setback from the temple to the mined areas. Alternative F also provided greater landscape screening around the pit and a larger interpretive area. South of 1-680, Alternative F is",
+    "ed in detail in Chapter 2. The preferred alternative is worded as follows; \"North of Freeway 1-680, mine for gravel extraction as described in Alternative E and restore and manage the area as described in Alternative F, including landscape and recreation plans that provide for the restoration of the Sunol Water Temple, its historic entry, and public use of the temple area which are to be jointly approved by the General Manager of the Public Utilities Commission and Alameda County, and then restored at the completion of mining. South of Freeway 1-680 two options are hereby identified: Option 1 is to mine for gra",
+    "nol Valley and currently leases most of it for a variety of ongoing activities including: gravel extraction (by Surface Mining Permit from Alameda County and lease from SFPUC), agricultural activities, plant nurseries, and utility corridors. SFPUC facilities and operations in the Sunol Valley include the Sunol Water Temple, SFPUC East Bay Operations Facilities, the Hetch Hetchy Aqueduct, and the Sunol Water Treatment Plant (WTP). Each of these types of -4- Sunol Valley Resources Management Element activities is described below. Figure 2, included in Chapter 4 of this document, illustrates the existing activities in",
+    "ks in the Sunol Valley have been identified as excellent locations for these archeological resources. More research is required to accurately determine existing resources. Historic features and structures are scattered throughout the Sunol Valley with the most well-known and documented of these being the Sunol Water Temple which -5- Sunol Valley Resources Management Element was built in 1910 to mark the confluence of the three water sources - Alameda Creek, Arroyo de la Laguna and the Pleasanton Wells. Recreation Activities Few recreation activities currently exist in the Sunol Valley due to the mining which occ",
+    "A picnic area with public restrooms is located around the Sunol Temple but has been closed since the 1989 Loma Prieta earthquake due to the seismic retrofitting of the Temple. SFPUC Facilities SFPUC facilities in the Sunol Valley include the Sunol Operations facility, the Hetchy Hetchy Aqueduct, the Sunol Water "
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 3.23,
@@ -313,9 +333,58 @@
    "url": "https://archive.org/details/alamedawatershed1998sanf",
    "deep_link": "https://archive.org/details/alamedawatershed1998sanf?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
    "salient": false,
    "gloss": "An appendix to the Alameda Watershed management plan, weighing gravel extraction and restoration alternatives north of Interstate 680 on the land around the temple."
+  },
+  {
+   "identifier": "aminutes1996sanf",
+   "title": "Minutes",
+   "creator": "San Francisco Public Utilities Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Sunol Water Temple",
+   "ocr_excerpts": [
+    "he Board of Supervisors Chambers as the date, time and place for a meeting to hear the Sunol Valley Resource Management Plan. Audrey LePell, member of the Alameda County Planning Commission and a member of the Alameda County Parks, Recreation & Historical Commission, asked if the rebuilding of the Sunol Water Temple was included in the budget. Speaking on behalf of the Chair of the Planning Commission of Alameda County, she urged that the Commission hold the hearing on the Sunol Valley Resources Management Plan in Sunol. Mr. Moran responded that the restoration of Sunol is not in the budget and that funds ar",
+    "the freeway and provides a buffer zone around the temple north of the freeway. Public Comments Jocelyn Combes, a member of the Board of Directors of the East Bay Regional Park District, representing Southern Alameda County expressed support for Alternative F as it provided for preservation of the Sunol Water Temple. In order to minimize future operating costs, the preferred alternative should take into consideration a mix of facilities that can provide revenue generation and centralization of facilities for operational efficiencies. Alternative D provides the best centralized recreational opportunity. Adolph Martinell",
+    "spoke on her own behalf and said that she would like to preserve Sunol as a historical area. Ario Ysit commented that approval of SMP 32 ensures that there would be no development in the valley. He said a lake in the middle of the valley would benefit everybody. Mr. Martinelli stated that the Sunol Water Temple should be retained and that the County of Alameda would be willing to cooperate with San Francisco in restoring the temple. He expressed objections to the language implied in the consultant's comparison of alternatives on Alameda County issues. Commissioner Normandy suggested looking at a hybrid alter",
+    "he following direction for managing the water resources in the Sunol Valley: North of Freeway I-680, mine for gravel extraction as described in Alternative E and restore and manage the area as described in Alternative F, including landscape and recreation plans that provide for the restoration of the Sunol Water Temple, its historic entry, and public use of the temple area which are to be jointly approved by the General Manager of the Public Utilities Commission and Alameda County, and then restored at the completion of mining. South of Freeway I-680, mine for gravel extraction and manage as described in Alternat",
+    "following general direction for managing the resources in the Sunol Valley: North of Freeway I-680, mine for gravel extraction as described in Alternative E and restore and manage the area as described in Alternative F, including landscape and recreation plans that provide for the restoration of the Sunol Water Temple, its "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.45,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.95,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -0.5,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/aminutes1996sanf",
+   "deep_link": "https://archive.org/details/aminutes1996sanf?q=Sunol+Water+Temple",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
   }
  ],
  "dept_shelf": [

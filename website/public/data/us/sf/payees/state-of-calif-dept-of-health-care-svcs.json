@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.726298+00:00",
+ "generated_at": "2026-07-28T11:43:47.690326+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,174 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 724,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 2813120624.92,
+    "n_vouchers": 615
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "usd": 42384412.88,
+    "n_vouchers": 41
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 13004222.03,
+    "n_vouchers": 3
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 187324.0,
+    "n_vouchers": 22
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 26632.37,
+    "n_vouchers": 6
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 20151.6,
+    "n_vouchers": 10
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "usd": 18990.0,
+    "n_vouchers": 5
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 10614.95,
+    "n_vouchers": 6
+   }
+  ],
+  "n_departments": 14,
+  "categories": [
+   {
+    "code": "552430",
+    "label": "Public Hlth Intergovern Pymnt",
+    "spend_class": "obligation",
+    "usd": 1323092331.36,
+    "n_vouchers": 157
+   },
+   {
+    "code": "UNEARN_REV_CHGS_SVCS",
+    "label": "Unearned Revenue-Chgs for Svcs",
+    "spend_class": "ledger",
+    "usd": 337710229.62,
+    "n_vouchers": 76
+   },
+   {
+    "code": "OTHER_REC",
+    "label": "Other Receivables",
+    "spend_class": "ledger",
+    "usd": 237477312.5,
+    "n_vouchers": 60
+   },
+   {
+    "code": "552410",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 55907345.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "AR",
+    "label": "Accounts Receivable",
+    "spend_class": "ledger",
+    "usd": 42445461.88,
+    "n_vouchers": 42
+   },
+   {
+    "code": "466004",
+    "label": "Safety Net Care Pool (Sncp)",
+    "spend_class": "ledger",
+    "usd": 24869985.34,
+    "n_vouchers": 5
+   },
+   {
+    "code": "465911",
+    "label": "DpSnfDstnctPartSkilldNursngFac",
+    "spend_class": "ledger",
+    "usd": 13227591.69,
+    "n_vouchers": 4
+   },
+   {
+    "code": "THRD_PRTY_SETTL_PAY",
+    "label": "Third-Party Settlement Payable",
+    "spend_class": "unclear",
+    "usd": 9727506.06,
+    "n_vouchers": 10
+   }
+  ],
+  "n_categories": 26,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 324790556.72,
+  "n_recent_lines": 14,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Public Hlth Intergovern Pymnt",
+    "spend_class": "obligation",
+    "usd": 165935875.41,
+    "n_vouchers": 13
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Receivables",
+    "spend_class": "ledger",
+    "usd": 100676166.41,
+    "n_vouchers": 21
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Unearned Revenue-Chgs for Svcs",
+    "spend_class": "ledger",
+    "usd": 42583983.84,
+    "n_vouchers": 8
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "label": "Accounts Receivable",
+    "spend_class": "ledger",
+    "usd": 11051514.11,
+    "n_vouchers": 8
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Public Hlth Intergovern Pymnt",
+    "spend_class": "obligation",
+    "usd": 3993390.07,
+    "n_vouchers": 1
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 392336.0,
+    "n_vouchers": 5
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

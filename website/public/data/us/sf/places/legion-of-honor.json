@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.758691+00:00",
+ "generated_at": "2026-07-28T12:23:47.772405+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "legion-of-honor",
@@ -47,12 +47,14 @@
  "photo_credit": {
   "photo": "/img/us/sf/places/legion-of-honor.jpg",
   "source": "Wikimedia Commons",
-  "file": "File:Famsf-logo-2024.png",
-  "file_url": "https://commons.wikimedia.org/wiki/File:Famsf-logo-2024.png",
-  "license": "Public domain",
-  "license_url": "",
-  "author": "Fine Arts Museums of San Francisco (FAMSF)",
-  "fetched_at": "2026-07-20T22:19:07.090914+00:00"
+  "source_url": "https://commons.wikimedia.org/wiki/File:Legion_of_Honor_at_night.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Frank Schulenburg",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T22:56:11.605045+00:00"
  },
  "summary_en": "The Legion of Honor's record spans construction to operation. A 1924 Pacific Coast Architect feature describes the California Palace of the Legion of Honor's exterior, finished in California Stucco, claiming \"a saving of $150,000 over the cost of stone veneer,\" and notes its Lincoln Park memorial, given to the city by the Spreckels. 1925 Board of Park Commissioners minutes log payments and an organist for its dedication. A 1970-1971 Fine Arts Museums annual report records Ian McKibbin White sworn in as director and a plea to restore the museum's bus service. 2002 trustee minutes place board meetings and exhibitions at the Legion. It is operated by the Fine Arts Museums, whose FY2025 budget line totals about $24M.",
  "published": true,
@@ -70,7 +72,246 @@
    "n_employees": 206,
    "fiscal_year": 2025
   },
-  "contracts": [],
+  "contracts": [
+   {
+    "contract_no": "1000033942",
+    "title": "Legion of Honor Capital Masonry FY25",
+    "prime": "A R G CONSERVATION SERVICES",
+    "department_code": "FAM",
+    "agreed_usd": 254565.0,
+    "paid_usd": 254565.0,
+    "evidence": "FAM_LH_Capital_Masonry_FY25",
+    "team": [
+     {
+      "supplier": "A R G CONSERVATION SERVICES",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 254565.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035054",
+    "title": "Legion of Honor-Cap-BMS Replace Phase 1",
+    "prime": "PACIFIC COAST TRANE CONTROLS",
+    "department_code": "FAM",
+    "agreed_usd": 203104.0,
+    "paid_usd": 182792.8,
+    "evidence": "FAM-LH-Cap-BMS Replace Phase 1",
+    "team": [
+     {
+      "supplier": "PACIFIC COAST TRANE CONTROLS",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 203104.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000036985",
+    "title": "Legion of Honor-Cap-Vacuum Condensate s",
+    "prime": "BAY CITY BOILER & ENGINEERING CO INC",
+    "department_code": "FAM",
+    "agreed_usd": 65545.72,
+    "paid_usd": 65545.72,
+    "evidence": "FAM-LH-Cap-Vacuum Condensate s",
+    "team": [
+     {
+      "supplier": "BAY CITY BOILER & ENGINEERING CO INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 65545.72
+     }
+    ]
+   },
+   {
+    "contract_no": "1000033009",
+    "title": "Legion of Honor-Eng-FireSprinkler-FY26",
+    "prime": "Convergint Technologies LLC",
+    "department_code": "FAM",
+    "agreed_usd": 40229.96,
+    "paid_usd": 28113.21,
+    "evidence": "FAM-LH-Eng-FireSprinkler-FY26",
+    "team": [
+     {
+      "supplier": "Convergint Technologies LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 40229.96
+     }
+    ]
+   },
+   {
+    "contract_no": "1000037611",
+    "title": "Legion of Honor-Cap-Elevator Assessment",
+    "prime": "Elevator Consulting Associates, Inc.",
+    "department_code": "FAM",
+    "agreed_usd": 35000.0,
+    "paid_usd": 21000.0,
+    "evidence": "FAM-LH-Cap-Elevator Assessment",
+    "team": [
+     {
+      "supplier": "Elevator Consulting Associates, Inc.",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 35000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000030522",
+    "title": "Legion of Honor-Eng-YearlyMaint-FY24-28",
+    "prime": "PACIFIC COAST TRANE CONTROLS",
+    "department_code": "FAM",
+    "agreed_usd": 37810.0,
+    "paid_usd": 18905.0,
+    "evidence": "FAM-LH-Eng-YearlyMaint-FY24-28",
+    "team": [
+     {
+      "supplier": "PACIFIC COAST TRANE CONTROLS",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 37810.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000037143",
+    "title": "Legion of Honor-Cap-Retrofit Vacuum Rec",
+    "prime": "BAY CITY BOILER & ENGINEERING CO INC",
+    "department_code": "FAM",
+    "agreed_usd": 16945.39,
+    "paid_usd": 17824.74,
+    "evidence": "FAM-LH-Cap-Retrofit Vacuum Rec",
+    "team": [
+     {
+      "supplier": "BAY CITY BOILER & ENGINEERING CO INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 16945.39
+     }
+    ]
+   },
+   {
+    "contract_no": "1000034413",
+    "title": "Legion of Honor-Eng-Chiller Maintenance-5 Yrs",
+    "prime": "PACIFIC COAST TRANE CONTROLS",
+    "department_code": "FAM",
+    "agreed_usd": 15279.0,
+    "paid_usd": 15279.0,
+    "evidence": "FAM-LH-Eng-Chiller Maint-5 Yrs",
+    "team": [
+     {
+      "supplier": "PACIFIC COAST TRANE CONTROLS",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 15279.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000036577",
+    "title": "Legion of Honor-Eng-Sprinkler FY26",
+    "prime": "SUPERIOR AUTOMATIC SPRINKLER CO",
+    "department_code": "FAM",
+    "agreed_usd": 15584.0,
+    "paid_usd": 12104.0,
+    "evidence": "FAM-LH-Eng-Sprinkler_FY26",
+    "team": [
+     {
+      "supplier": "SUPERIOR AUTOMATIC SPRINKLER CO",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 15584.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000036748",
+    "title": "Legion of Honor-Eng-Water TreatmentFY26",
+    "prime": "GARRATT-CALLAHAN COMPANY",
+    "department_code": "FAM",
+    "agreed_usd": 12003.06,
+    "paid_usd": 12003.06,
+    "evidence": "FAM-LH-Eng-Water TreatmentFY26",
+    "team": [
+     {
+      "supplier": "GARRATT-CALLAHAN COMPANY",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 12003.06
+     }
+    ]
+   },
+   {
+    "contract_no": "1000027399",
+    "title": "Legion of Honor-FM-Boiler 5 Yrs MUptime",
+    "prime": "BAY CITY BOILER & ENGINEERING CO INC",
+    "department_code": "FAM",
+    "agreed_usd": 6062.08,
+    "paid_usd": 6069.27,
+    "evidence": "FAM-LH-FM-Boiler 5 Yrs MUptime",
+    "team": [
+     {
+      "supplier": "BAY CITY BOILER & ENGINEERING CO INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 6062.08
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035341",
+    "title": "Legion of Honor-Cap BMS ReplacePhase1-2",
+    "prime": "PACIFIC COAST TRANE CONTROLS",
+    "department_code": "FAM",
+    "agreed_usd": 17079.66,
+    "paid_usd": 0.0,
+    "evidence": "FAM-LH-Cap BMS ReplacePhase1-2",
+    "team": [
+     {
+      "supplier": "PACIFIC COAST TRANE CONTROLS",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 17079.66
+     }
+    ]
+   },
+   {
+    "contract_no": "1000037838",
+    "title": "Legion of Honor-Cap-SMA/Tracer TU",
+    "prime": "PACIFIC COAST TRANE CONTROLS",
+    "department_code": "FAM",
+    "agreed_usd": 12402.82,
+    "paid_usd": 0.0,
+    "evidence": "FAM-LH-Cap-SMA/Tracer TU",
+    "team": [
+     {
+      "supplier": "PACIFIC COAST TRANE CONTROLS",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 12402.82
+     }
+    ]
+   },
+   {
+    "contract_no": "1000038285",
+    "title": "Legion of Honor-Cap-20AHU-1 20 Sensors",
+    "prime": "CONTROLCO",
+    "department_code": "FAM",
+    "agreed_usd": 10405.15,
+    "paid_usd": 0.0,
+    "evidence": "FAM-LH-Cap-20AHU-1_20 Sensors",
+    "team": [
+     {
+      "supplier": "CONTROLCO",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 10405.15
+     }
+    ]
+   }
+  ],
   "grants": []
  },
  "documents": [
@@ -81,6 +322,11 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Legion of Honor",
+   "ocr_excerpts": [
+    "from the Library W 2 9 SAN FRANCISCO PUBLIC LIBRARY 3 1223 03429 4612 Digitized by the Internet Archive in 2017 with funding from Kahle/Austin Foundation https://archive.org/details/annualreport1970fine SF F40 f*3 C , 71 „ ' , . rcJfr**’ Vf&'iL -c i -4. c o r ■ i ;■ L. ANNUAL REPORT 1970-1971 CALIFORNIA PALACE OF THE LEGION OF HONOR M. H. DE YOUNG MEMORIAL MUSEUM Ian McKibbin White Director of the Museums I r * . f i j;, ■ . . . . . . , *1 / : '■ • ’ 3 1223 03429 4612 FOREWORD On May 1, 1970 Ian McKibbin White was sworn in as Director of both the M. H. de Young Memorial Museum and the California Palace of the Legion of Honor in a ceremony in the office of Mayor Joseph L. Alioto, Six months earlier, the Boards of Trustees of the two museums had voted to combine as one Board as the first step toward an eventual full merger of the two municipally supported art museums. Since May 1, 1970 the two museums have been opera",
+    "San Francisco was host (at the de Young Museum) for seven weeks to an exhibition of paintings and drawings by Vincent van Gogh which was viewed by over 400,000 people. This was the most heavily attended art exhibition in the City’s history. For a number of years my predecessor as Director of the Legion of Honor, Thomas Carr Howe, and I have pleaded the necessity of restoring regularly scheduled public transportation to the Legion of Honor. We now enjoy regular service on the weekends but the museum is prevented from being as fully enjoyed as it might be by senior citizens and the economically dis- advantaged because we do not have bus service during the week. It is very much hoped that during the year ahead this long sought goal may be achieved. During the last year adjustments were made in the status of four positions, my own, those of the Secretary of the Board of Trustees of each museum, and Senior Preparator Royal A. Basich, who had acted at the Legion of Honor for many years as Exhibition Designer, became the first incumbent in a newly created position titled Exhibition Designer. Mr. Basich serves in that capacity for both buildings. The accomplishments of the last year could not have been achieved without the enthusiastic support of the Mayor, of the comb",
+    ": • ■ si i . ? 'X L - ■ . : .. . • . L ; i> 1 . ; ,i Lsoq >s ' : h .. d.’od ;ci \"ri L xx; ...... s ' \" ■ 1 •' ■ ’ ■ -■i oiL r-oltl’ tsl d;;d fjriB , v;i;; i.r r.xrj <r ~:1 • dcs ai.ooS vX' ;..r i • •; jlxsjd » .? : ; ' • td d JcZ-iC X; cm X. snueav;: o-L lo sodoo,:.iL GIFTS RECEIVED BY THE CALIFORNIA PALACE OF THE LEGION OF HONOR July 1, 1970 - June 30, 1971 BRYAN WILSON American A Turn of My Head and Quickly, Too Quickly, I am Gone Oil on canvas Gift of Mrs. Alexander DeBretteville JEAN BAPTISTE CARPEAUX French (1827-1875) Neopolitan Fisherboy Bronze Gift of Mrs. Frances R. Carson SI"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 5.01,
@@ -105,116 +351,13 @@
    "url": "https://archive.org/details/annualreport1970fine",
    "deep_link": "https://archive.org/details/annualreport1970fine?q=Legion+of+Honor",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Reports & records",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
    "salient": true,
-   "gloss": "The museums' 1970-1971 annual report, naming Ian McKibbin White as director and pressing to restore public bus service to the Legion."
-  },
-  {
-   "identifier": "minutesagendas2000fine_0",
-   "title": "Minutes and Agendas",
-   "creator": "Fine Arts Museums of San Francisco. Board of Trustees",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Legion of Honor",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 7.1,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 1.6,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": -3.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/minutesagendas2000fine_0",
-   "deep_link": "https://archive.org/details/minutesagendas2000fine_0?q=Legion+of+Honor",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": false,
-   "gloss": "Fine Arts Museums trustee minutes and agendas for 2000, the board that governs the Legion alongside the de Young."
-  },
-  {
-   "identifier": "minutesorderofbu1987corp",
-   "title": "Minutes and Order of Business",
-   "creator": "Corporation of the Fine Arts Museums (San Francisco, Calif.). Board of Trustees",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Legion of Honor",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 6.44,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.94,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.75,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/minutesorderofbu1987corp",
-   "deep_link": "https://archive.org/details/minutesorderofbu1987corp?q=Legion+of+Honor",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "1987 minutes of the Corporation of the Fine Arts Museums, including the cash raised toward balancing the 1987-88 budget."
-  },
-  {
-   "identifier": "minutesboardofpa1925sanf",
-   "title": "Minutes / Board of Park Commissioners",
-   "creator": "San Francisco (Calif.). Board of Park Commissioners",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Legion of Honor",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 3.47,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 1.47,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/minutesboardofpa1925sanf",
-   "deep_link": "https://archive.org/details/minutesboardofpa1925sanf?q=Legion+of+Honor",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "1925 Park Commissioners minutes recording payments for the Palace, an organist for its dedication, and the city entertaining a delegation at the building."
+   "gloss": "The museums' 1970–71 report, its first under a single director for both the Legion and the de Young, pressing again for regular public transport to the Legion — then weekend-only, which the director says keeps older and poorer visitors away."
   },
   {
    "identifier": "pacificcoastarch25192sanf",
@@ -223,6 +366,12 @@
    "year": 1924,
    "pool": "sfpl",
    "matched_alias": "California Palace of the Legion of Honor",
+   "ocr_excerpts": [
+    "^ s ^ PACIFIC COAST ARCHITECTS. 43 t'J HI 1^^^^^^' h <-,.\\ m nrx ■t\"--*' ^4.'.: H^ ^;L^'Sl|^ U - -4- + -. S 5. ■ffa PAC OAS PACIFIC COAST ARCHITECT 2» 45 ^ A. ^'v.ii^if THEATER FOR A SMALL TOWN, EDWARD G. BOLLES, ARCHITECT PAC OAS CALIFORNIA PALACE OF THE LEGION OF HONOR, SAN FRANCISCO THE entire exterior finish including all cast work and statuary was done with California Stucco. The stone imitated was surpassed, the structural value of the building was increased, endurance and permanence for ages is assured, and a saving of $150,000 over the cost of stone veneer",
+    "sly pursued a policy of general public education as to what constitutes good architecture and architectural service. It is pleasant to repeat that the excellent record of the Southern California Chapter has received this well-deserved recognition in the official organ of the Institute. * * * The Legion of Honor Memorial Our December issue will be a special number which will contain very complete descriptions and illustrations of the new Legion of Honor Memorial in Lincoln Park, San Francisco, built and presented to the city by the late Mr. A. B. Spreckels and Mrs. Alma de Bretteville Sprec- kels. Unique in its purpose, its setting, its character and the sentiment connected with its creation, this building deserves especial and sympathetic illu",
+    "ty Years Hence San Francisco Architectural Club Coolidge, The Builder Builders of the Memorial . . Monthly Bulletin, San Francisco Chapter, A. I Editorial Personal Glimpses Charles W. Maf,han E. F. Halloran . R. Giles . Willis Polk James F. McGuinness, Jr. ILLUSTRATIONS Vestibule, California Palace of The Legion of Honor Exterior, California Palace of The Legion of Honor Rest Court, California Palace of The Legion of Honor Exterior, California Palace of The Legion of Honor Exterior, California Palace of The Legion of Honor Exterior, California Palace of The Legion of Honor Central Gallery, California Palace of The Legion of Honor Typical Gallery, California Palace of The Legion of Honor Rest Courts, California Palace of The Legion of Honor Rest Courts, California Palace of The Legion of Honor Gallery from Vestibule, California Palace of The Legion of Honor Basement Plan, California Palace of the Legion of Honor Main Floor Plan, California Palace of The Legion of Honor Detail Drawings, California Palace of The Legion of Honor Forum Theater, Los Angeles Forum Theater, Los Angeles Loggia, Forum Theater, Los Angeles Theater, California Palace of The Legion of Honor Calvin Coolidge, sketchtdby Ramrn Ralph McLaren ■'San Francisco Fifty Years Hence\" George A. Applegarth, sketched by Kamiri Carl Werner, sketched by Kamm .... Will, Polk 5 8 35 3S }6 42- 45 45 49 5' Cover S 6 9 •5 15 15 17 19 2.1 J-3 15 1-7 2-9 }i }} 42- 45 47 5' 51",
+    "California Steel Casements \"Des"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 5.44,
@@ -247,9 +396,149 @@
    "url": "https://archive.org/details/pacificcoastarch25192sanf",
    "deep_link": "https://archive.org/details/pacificcoastarch25192sanf?q=California+Palace+of+the+Legion+of+Honor",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
    "salient": true,
-   "gloss": "A 1924 architecture journal feature on the California Palace of the Legion of Honor's stucco exterior and its Lincoln Park memorial, gifted to the city by the Spreckels."
+   "gloss": "A 1924 architectural journal reporting that the building's entire exterior, statuary included, was executed in cast stucco rather than stone veneer — a saving it puts at $150,000."
+  },
+  {
+   "identifier": "minutesorderofbu1987corp",
+   "title": "Minutes and Order of Business",
+   "creator": "Corporation of the Fine Arts Museums (San Francisco, Calif.). Board of Trustees",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Legion of Honor",
+   "ocr_excerpts": [
+    "THEY WILL FOLLOW THE FINE ARTS MUSEUMS OF SAN FRANCISCO EXECUTIVE COhfCTTEE AND BOARD OF TRUSTEES MEETINGS. A. The FAMSF Executive Committee Meetings Date February 3 May 4 July 6 September 7 November 2 December 7 Time 3:30 p.m. 3:30 p.m. 3:30 p.m. 3:30 p.m. 3:30 p.m. 3:30 p.m. Location California Palace of the Legion of Honor Gallery 20, M. H. de Young Memorial Museum Gallery 20, M. H. de Young Memorial Museum Gallery 20, M. H. de Young Memorial Museum Gallery 20, M. H. de Young Memorial Museum Gallery 20, M. H. de Young Memorial Museum All meetings are held on the first Wednesday of each month. NOTE: NO ME",
+    "balance FY 1987-88 budget. (Cash received to date is $880,000.) MEETING SCHEDULE WHEN COFAM MEETINGS ARE HELD, THEY WILL FOLLOW THE FINE ARTS MUSEUMS OF SAN FRANCISCO EXECUTIVE COMMITTEE AND BOARD OF TRUSTEES MEETINGS. The FAMSF Executive Committee Meetings Date Time Location February 3 3:30 p.m. California Palace of the Legion of Honor May 4 3:30 p.m. Gallery 20, M. H. de Young Memorial Museum July 6 3:30 p.m. Gallery 20, M. H. de Young Memorial Museum September 7 3:30 p.m. Gallery 20, M. H. de Young Memorial Museum November 2 3:30 p.m. Gallery 20, M. H. de Young Memorial Museum December 7 3:30 p.m. Gallery 20, M. H. de Y",
+    "changes within the Council, and future goals to be achieved. For next year, a typesetting firm has donated its service for the Council’s Newsletter. One of the main projects during Mrs. Lott’s tenure will be doing a book on the history of volunteering at the M. H. de Young Memorial Museum and the California Palace of the Legion of Honor. The Council will need help in structuring and editing the book. Any suggestion to help with this project will be greatly appreciated. MEETING SCHEDULE WHEN COFAM MEETINGS ARE HELD, THEY WILL FOLLOW THE FINE ARTS MUSEUMS OF SAN FRANCISCO EXECUTIVE COMMITTEE AND BOARD OF TRUSTEES MEETINGS. Executive",
+    "- There being no further business, the meeting was adjourned at 5:07 p.m. Submitted by, Delores C. Malone Executive Secretary, COFAM SP P40.2S- +i i l/“/l o ORDER OF BUSINESS BOARD OF TRUSTEES OF THE CORPORATION OF THE FINE ARTS MUSEUMS ( COFAM) DOCUMENTS dept. ; r-9 o Rodin Gallery ^ California Palace of the Legion of Honor Pum £RAWCisco Lincoln Park ' * ‘ San Francisco, California Thursday^'iJanuary 11, 1990 Time: 4:45 p.m. or such earlier time as the FAMSF Board of Trustees ends, but in no event before 3:30 p.m. I. Calling of the Meeting to Order II. Calling of the Roll: Trustees: Ruth Asawa Robert J. Brans",
+    "ber 7, 1989 (copies mailed). APPROVED IV. Chief Executive Officer' 3 Report Facilities Master Plan - Resolution # WHEREAS, The Master Plan for the Museums' Facilties which includes seismic upgrading has been recognized as a major priority by the Board of Trustees; and WHEREAS, A Master Plan for the C"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.44,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.94,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesorderofbu1987corp",
+   "deep_link": "https://archive.org/details/minutesorderofbu1987corp?q=Legion+of+Honor",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "1987 minutes of the Corporation of the Fine Arts Museums, including the cash raised toward balancing the 1987-88 budget."
+  },
+  {
+   "identifier": "minutesboardofpa1925sanf",
+   "title": "Minutes / Board of Park Commissioners",
+   "creator": "San Francisco (Calif.). Board of Park Commissioners",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Legion of Honor",
+   "ocr_excerpts": [
+    ". - fqoo 'l: i ' ! ■ •; 7 “ r :?0 $ko' oO - . :: ■ - - - •. • roe . - ' <-£vy ~ ■£3woI gnlvie - ’ ‘b .:•. - ~ P.7 (OOJ - * - • • . : d . i; - . . • ,7V . . . T* {■ - r ■ ~ - „ i - . ; - •to V-' ■ » I - r. • uj - 0 bo; - • * • •: : ..-••• o ,7. , ,7-1 ;. ■•-■> - a ! CALIFORNIA PALACE OF THE LEGION OF HONOR 114 - Accounting System - Payment 106 - Art Conference 99 - Bekins Van & Storage - Payment 7? - Bond for Employes 88 - Broadcasting 79 - Bronze Tablet - Triumphal Arch 106 - Cizek Exhibition 81 - Comparison Report on Employees 105 - Cyril, Grand Duchess - Gift 99 - Director - Complaint by Mrs. Spreck",
+    "estern Addition Block #467 Paving - Civic Center 138 162 99 138 162 166 132 138 162 166 162 138 138 118 166 120 162 162 138 138 162 138 162 146 162 123 PAYMENTS Architects & Engineers - Club House, Stadium Bakewell & Brown, Aquatic Park Bekins Van & Storage Co - Palace Legion of Honor Bryant, J, A. - Boiler House It n ii it ii u ii ti tt ii Coast Const. Co - Stadium, Club House Deneville,P ,E. - Balustrade, Telegraph Hill Eaton & Smith, Lincoln Park Elliot & Grant - Comfort Station Haskins & Sells, Accounting System G. W. Kelham, Architect, Harding Park Kelham, G. W. - \" - Concession Booth Palmer & McBryde - Stadium Parker, C. W. - Playfield Apparatus Organist - Dedication, Palace Legion of Honor Siegrist, F. R. - Comfort Station Tassi, J. A. - Concession Booth Turner Company - Heating Ward & Blohme - Architects Weeks & Day, Architects - Park Lodge White, F. G. - Aquatic Park Whiting, Sam - Harding Park Willis Polk & Co - Beach Chalet - Stadium 84 - Pilgrimage - Boy Scouts 97 - Pine and",
+    "ion of the Board of Park Commissioners until such time as Superintendent John McLaren had perfected and presented definite plans for the improvement of Marina Park. 'i. :.au; ■ ciono i - . : s c n J \"rorL'j.-x 77 Lookout Station New Location: School Lands- Care of hy Park: Palace <f the Legion of Honor Reno Delegation Aquatic Park- Rehearing : Relocating the Lookout Station at Lands* End was next discussed by the Board; It was the unanimous opinion of the Board that the Lookout Station now occupied by the Chamber of Commerce Lookout be removed to a location already designated by Supt .McLaren,",
+    "the unanimous opinion of the Board that this be referred to President Fleishhacker for confer- ence with the President of the Board of Education. A letter was next presented from the Down Town : Association thanking the Board of Park Commissioners for their entertainment of the Reno Delegation at the California Palace of the Legion of Honor; Ordered filed. The matter of a rehearing on the Aquatic Park, at the foot of Van Ness Avenue, was next discussed by the Board; Commissioner Humphrey stated that the President of the State Board of Harbor Commissioners and the State Engineer were h"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.47,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.47,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesboardofpa1925sanf",
+   "deep_link": "https://archive.org/details/minutesboardofpa1925sanf?q=Legion+of+Honor",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
+  },
+  {
+   "identifier": "minutesagendas2000fine_0",
+   "title": "Minutes and Agendas",
+   "creator": "Fine Arts Museums of San Francisco. Board of Trustees",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Legion of Honor",
+   "ocr_excerpts": [
+    "5/s San Francisco Public Library REFERENCE BOOK Not to be taken from the Library Digitized by the Internet Archive in 2017 with funding from Kahle/Austin Foundation https://archive.org/details/minutesagendas2000fine_0 I * FINE ARTS lili MUSEUMS o/SAN FRANCISCO Board ofTrustees California Palace of the Legion of Honor M.H. deYoung Memorial Museum OFFICIAL SPECIAL MEETING NOTICE* Fine Arts Museums of San Francisco Board ofTrustees I Thursday, June 8, 2000 3:00 p.m. Gallery 23 M. H. de Young Memorial Museum Golden Gate Park San Francisco, California AGENDA ORDER OF BUSINESS I. Calling of the Meeting to Ord",
+    "Richard H. Finn, Vice President/Finance Morgan Flagg Tamara Fritz Richard N. Goldman Constance Goodyear Nancy Hamon DOCUMENTS DEPT. JUN - 5 2000 SAN FRANCISCO PUBLIC LIBRARY ' Because of the change in location to Caller,' 23 at t.he H. de Young M^>mr,rial Museum from the Board Room at the Legion of Honor, this meeting is being noticed as a Special Meeting of the Board ofTrustees of the Fine Arts Museums of San Francisco. 3 1223 03473 6927 Fine Arts Museums of San Francisco Board of Trustees June 8, 2000 2 III. Calling of the Roll (continued) George Hecksher Beverly James J. Burgess Jamies",
+    "the Board of Trustees of the Fine Arts Museums of San Francisco does hereby set the following dates, times and location for its 2001 regular meetings: Date Time Location Thursday, January 11, 2001 Thursday, April 12, 2001 Thursday, June 14, 2001 Thursday, October 11, 2001 3 p.m. Board Room, Legion of Honor 3 p.m. Board Room, Legion of Honor 3 p.m. Board Room, Legion of Honor 3 p.m. Board Room, Legion of Honor F. Report on the National Council of the Fine Arts Museums - Margaret Wetzel, Co-Chair Discussion Action Discussion G. Other Informational Items Discussion ( ( ( Fine Arts Museums of San Francisco Board of Trustees June 8, 2000 5 IV. Director’s Report - Harry S. Parker III A.",
+    "Young in Golden Gate Park: Concept Plan by Herzog and de Meuron* Date Ongoing Ongoing 10/14/99-12/31/00 Museum/ Gallery de Young Gallery' One de Young 5 de Young 36/37 ' Change in location to Gallery 23 of the M. H. de Young Memorial Museum in Golden Gate Park from the Board Room at the Legion of Honor in Lincoln Park. Fine Arts Museums of San Francisco Board of Trustees June 8, 2000 fitle Between the Black Desert and the Red: Turkman Carpets from The Wiedersperg Collection* Anderson: Legendary Lithography: Prints from ULAE* Logan Book Gallery: Artists Books from ULAE* Wedding Dresses from t",
+    "The meeting was called to order at 3:15 p.m. by Diane B. Wilsey, President, who welcomed Bamaby Conrad III and William R. Kimball, who were attending their first meeting as newly elected Trustees. Because of the change in location to Gallery 23 at the de Young Museum from the Board Room at the Legion of Hon"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.1,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.6,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -3.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutesagendas2000fine_0",
+   "deep_link": "https://archive.org/details/minutesagendas2000fine_0?q=Legion+of+Honor",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Fine Arts Museums trustee minutes and agendas for 2000, the board that governs the Legion alongside the de Young."
   }
  ],
  "dept_shelf": [],
@@ -268,7 +557,7 @@
  "_gate": {
   "has_photo": true,
   "n_documents": 5,
-  "n_money_links": 1,
+  "n_money_links": 15,
   "meets_pre_summary": true
  }
 }

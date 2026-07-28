@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.742074+00:00",
+ "generated_at": "2026-07-28T12:23:47.756128+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "bernal-heights-branch-library",
@@ -49,74 +49,23 @@
   "items": [],
   "payees": [],
   "n_payees": 0,
-  "payees_total_paid": 0,
-  "permits": [
-   {
-    "description": "bernal height-branch library. (n)entry ramp,rear ramp at west side plaza.interior wk incl new stair, elev, mech. hvac system,(n)elec. service & lighting. demo of all int.lowerlevel& const.of(n) upper floor incl.(n)ada doors,casework& finishes,seismic upgrade incl. conc.openings,roof strengthenings",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 3200000.0,
-    "status": "complete",
-    "permit_date": "2008-04-15",
-    "permit_year": 2008
-   },
-   {
-    "description": "installation of a (n) chidlren's play area and play area surface. required path of travel work consisting of upgrading the restroom to full compliance alteration to 2 entries and pedestrian routes at play area and lower court.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 815000.0,
-    "status": "complete",
-    "permit_date": "2025-08-13",
-    "permit_year": 2025
-   },
-   {
-    "description": "horizontal",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 190000.0,
-    "status": "issued",
-    "permit_date": "1995-06-30",
-    "permit_year": 1995
-   },
-   {
-    "description": "barrier removal: alteration to 2 (e) restrooms to create single user restrooms. removal of toilet compartment partitions, rearangement of toilet compartment partitions, install unisex restroom geometric symbol signs, install threshold, new door hardware, & relocate 1 (e) baby diaper changing station",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 5000.0,
-    "status": "complete",
-    "permit_date": "2025-05-09",
-    "permit_year": 2025
-   },
-   {
-    "description": "provide an elevator recall system only.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 4370.0,
-    "status": "complete",
-    "permit_date": "2009-09-17",
-    "permit_year": 2009
-   }
-  ],
-  "n_permits": 5,
-  "permits_total_declared": 4214370.0,
-  "permits_by_year": [
-   {
-    "year": 1995,
-    "declared_usd": 190000.0
-   },
-   {
-    "year": 2008,
-    "declared_usd": 3200000.0
-   },
-   {
-    "year": 2009,
-    "declared_usd": 4370.0
-   },
-   {
-    "year": 2025,
-    "declared_usd": 820000.0
-   }
-  ]
+  "payees_total_paid": 0
  },
- "photo": null,
- "photo_credit": null,
- "summary_en": null,
- "published": false,
+ "photo": "/img/us/sf/places/bernal-heights-branch-library.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/bernal-heights-branch-library.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Bernal_Heights_Branch_(4487192597).jpg",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Eric E Castro from San Francisco",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T23:53:20.192968+00:00"
+ },
+ "summary_en": "Bernal Heights Branch Library is a two-storey concrete-frame building of about 8,063 square feet at 500 Cortland Avenue, built in 1940, serving Bernal Heights and part of the Mission District. Its renovation is documented less as construction than as argument. Library Commission minutes from 2006 record a capital campaign representative praising the planned work while suggesting the branch manager's office be redesigned for other uses, a Bernal Heights resident speaking about the January community meeting on the revised designs, and a commissioner calling for a policy on what constitutes an appropriate use of a public library building — noting that the lack of such a policy had allowed a situation to develop at this branch. The artwork became its own dispute. The Library Commission took up the Bernal Heights Branch Library Artwork Project in 2011 with a view to endorsing it to the Arts Commission; at the Arts Commission's visual arts committee, a member of the public argued that the process leading to the mural project had been \"semi-secret\", that the committee had been given misleading and incorrect information by the Library Commission, and that it should take no further action — adding that the Sunshine Ordinance Task Force had found the arts commission in violation for failing to record the committee's meetings. No city spending is recorded against the branch by name.",
+ "published": true,
  "money": {
   "budget_line": {
    "code": "LIB",
@@ -135,6 +84,50 @@
   "grants": []
  },
  "documents": [
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Bernal Heights Branch Library",
+   "ocr_excerpts": [
+    "BOND PROGRAM 12 PROGRAM SCOPE 12 PROGRAM COST 16 PROGRAM SCHEDULE 17 CONTENTS OF THE REPORT , 18 ANZA BRANCH LIBRARY : 20 BACKGROUND 20 SCOPE OF WORK 20 PROJECT COST 22 PROJECT SCHEDULE 22 BAYVIEW BRANCH LIBRARY 23 BACKGROUND 23 SCOPE OF WORK 23 PROJECT COST 24 PROJECT SCHEDULE 24 BERNAL HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRARY 31 BACKGROUND ■. 31 SCOPE OF WORK 31 PROJECT COST 33 PROJECT SCHEDULE 33 GLEN PARK BRANCH LIBRARY",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 24 Branch Library Improvement Program BERNAL HEIGHTS BRANCH LIBRARY BACKGROUND The Bernal Heights Branch Library, located at 500 Cortland Avenue, is a concrete frame two-story building. The existing library constructed in 1940 is approximately 8,063 square feet. It also serves the population of Bernal Heights and a portion of the Mission District. Library services are provided 5 days a week. The annual visits",
+    "ion program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. 26 Branch Library Improvement Program PROJECT COST Bernal Heights Branch Library Project Cost Summary Rehabilitation and Improvements $5,020,000 Expansion $490,000 Total Project Cost Estimate $5,510,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Bernal Heights Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 22 months Relocation and Construction 20 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 0.86,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Bernal+Heights+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The bond proposal describing the 1940 building — concrete frame, two storeys, about 8,063 square feet."
+  },
   {
    "identifier": "minutesofregular2006sanf",
    "title": "Minutes of the regular meeting ...",
@@ -173,90 +166,13 @@
    "url": "https://archive.org/details/minutesofregular2006sanf",
    "deep_link": "https://archive.org/details/minutesofregular2006sanf?q=Bernal+Heights+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agenda2013arts",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Bernal Heights Branch Library",
-   "ocr_excerpts": [
-    "be closely tied to the level of inclusion of the Public in the decision-making process. Real participation in the process leads to ownership and pride, not only in Public Art, but in the City of San Francisco. \" Mr. Warfield commented that this was the first opportunity he had to talk about the Bernal Heights Branch Library Mural Project since attending the VAC meetings. He said that the first meeting he attended did not have general public comment, and subsequent meetings have been canceled. He stated that he hopes that the VAC does not approve further details of the new mural and will work to reverse the previous",
-    "n the part of the VAC. Mr. Warfield added that the Sunshine Ordinance Task force found the SFAC in violation of the ordinance for not recording VAC meetings. He noted that since last attending the VAC meetings there were improvements in the agenda format. He stated that the process leading to the Bernal Heights Branch Library Mural Project had been \"semi-secret\" and felt the VAC had received misleading and incorrect information from the Library 15 Commission regarding the matter. He asked that the VAC take no further action on the new mural for the Bernal Heights Branch Library. 20. New Business and Announcements Discussion (This item is to allow the Commissioners and Arts Commission staff to introduce new agenda items for consideration at a future meeting, to report on recent arts activities and to make announcements.) Commissioner Keehn stated that here was a lack of",
-    "members, that they would expect in future toward them and their decisions. \" Mr. Warfield stated that the acoustics in the meeting room were poor and that it was hard to hear the routine discussion. He stated That he hoped the VAC would consider rescinding the approval of the new mural for the Bernal Heights Branch Library or would consider taking up the substantive issue regarding the matter, including its history. He explained that the mural was a community project involving children and that the artist, Arch Williams, was a well-known muralist. He stated that as someone familiar with the Sunshine Ordinance and the B",
-    "be closely tied to the level of inchision of the Public in the decision-making process. Real participation in the process leads lo ownership and pride, not only in Public Art, but in the City of San Francisco. \" Mr. Warfield commented that this was the first opportunity he had to talk about the Bernal Heights Branch Library Mural Project since attending the VAC meetings. He said that the first meeting he attended did not have general public comment, and subsequent meetings have been canceled. He stated that he hopes that the VAC does not approve ftirther details of the new mural and will work to reverse the previous",
-    "n the part of the VAC. Mr. Warfield added that t"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.86,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.36,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": -0.75,
-    "money": false,
-    "decision": true,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/agenda2013arts",
-   "deep_link": "https://archive.org/details/agenda2013arts?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agendasanfranci2011sanf_6",
-   "title": "Agenda / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Bernal Heights Branch Library",
-   "ocr_excerpts": [
-    "omment on each item on the agenda before or during consideration of that item. 1. General Public Comment (This item is to allow members of the public to address the Commission on matters that are within the subject matter jurisdiction of the Commission and that do not appear on the agenda). 2. Bernal Heights Branch Library Artwork Project Discussion (Discussion on the Bernal Heights Branch Library Artwork Project). Explanatory documents: Memorandum to Commission from City Librarian dated June 13, 2011; Presentation of the Bernal Heights Branch Library Artwork (Phase One); Statement of Consensus dated March 17, 2010; and Presentation on History of Bernal Mural. 3. Branch Library Improvement Program Schedule Change Action (Discussion and possible action to approve changes to the forecast project schedule for the Golden Gate Valley Branch Library proj",
-    "comment on each item on the agenda before or during consideration of that item. 1. General Public Comment (This item is to allow members of the public to address the Comm ssion on matters that are within the subject matter junscficbon of the Commission a~c :nat do not appear on the agenda 2. Bernal Heights Branch Library Artwork Project Discussion/Action ( Discussion and possible action tc enocrse the Bernal Heights 5rar'\" _ brary Artwork Project and toward endorsement to the San Francisco Arts Commission for their consideration and approval ] Explanatory Documents: Memo from Ciiy Librarian dated Jjy 18. 20' 1 Comments",
-    "tement. 6. City Librarian’s Report by Luis Herrera Discussion (This item is to allow the City Librarian to report on recent Library activities and make announcements). The City Librarian will give updates on the following topics; Visitacion Valley Branch Community; Arts Commission action regarding the Bernal Heights Branch Library mural; and Ethics Commission Dismissal on the 150 word statement in the Minutes. Explanatory documents: Ethics Commission letter dated September 1 3, 201 1 . 7. Approval of the Minutes July 21, 2011 Action (Presentation, discussion and possible action to approve the m inutes of the regular meeting of",
-    "omment on each item on the agenda before or during consideration of that item. 1. General Public Comment (This item is to allow members of the public to address the Commission on matters that are within the subject matter jurisdiction of the Commission and that do not appear on the agenda). 2. Bernal Heights Branch Library Artwork Project Discussion (Update and discussion on the Bernal Heights Branch Library Artwork Project) Explanatory Documents: Memo from Bernal Library Art Project (BLAP) Committee 3. City Librarian’s Report by Luis Herrera Discussion (This item is to allow the City Librarian to report on recent Library activities and make announcements.) The City Libra"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.64,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.64,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/agendasanfranci2011sanf_6",
-   "deep_link": "https://archive.org/details/agendasanfranci2011sanf_6?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes on the branch's renovation designs, and a call for a policy on appropriate use of library buildings."
   },
   {
    "identifier": "adultcalendarofp1996sanf",
@@ -296,48 +212,104 @@
    "url": "https://archive.org/details/adultcalendarofp1996sanf",
    "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Bernal+Heights+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "calendar",
+   "doc_type_label": "Calendar",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Calendar",
+   "salient": false,
+   "gloss": "A programme calendar showing the branch's Spanish conversation group and writers' group."
   },
   {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
+   "identifier": "agendasanfranci2011sanf_6",
+   "title": "Agenda / San Francisco Public Library Commission",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "Bernal Heights Branch Library",
    "ocr_excerpts": [
-    "BOND PROGRAM 12 PROGRAM SCOPE 12 PROGRAM COST 16 PROGRAM SCHEDULE 17 CONTENTS OF THE REPORT , 18 ANZA BRANCH LIBRARY : 20 BACKGROUND 20 SCOPE OF WORK 20 PROJECT COST 22 PROJECT SCHEDULE 22 BAYVIEW BRANCH LIBRARY 23 BACKGROUND 23 SCOPE OF WORK 23 PROJECT COST 24 PROJECT SCHEDULE 24 BERNAL HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRARY 31 BACKGROUND ■. 31 SCOPE OF WORK 31 PROJECT COST 33 PROJECT SCHEDULE 33 GLEN PARK BRANCH LIBRARY",
-    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 24 Branch Library Improvement Program BERNAL HEIGHTS BRANCH LIBRARY BACKGROUND The Bernal Heights Branch Library, located at 500 Cortland Avenue, is a concrete frame two-story building. The existing library constructed in 1940 is approximately 8,063 square feet. It also serves the population of Bernal Heights and a portion of the Mission District. Library services are provided 5 days a week. The annual visits",
-    "ion program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. 26 Branch Library Improvement Program PROJECT COST Bernal Heights Branch Library Project Cost Summary Rehabilitation and Improvements $5,020,000 Expansion $490,000 Total Project Cost Estimate $5,510,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Bernal Heights Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 22 months Relocation and Construction 20 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
+    "omment on each item on the agenda before or during consideration of that item. 1. General Public Comment (This item is to allow members of the public to address the Commission on matters that are within the subject matter jurisdiction of the Commission and that do not appear on the agenda). 2. Bernal Heights Branch Library Artwork Project Discussion (Discussion on the Bernal Heights Branch Library Artwork Project). Explanatory documents: Memorandum to Commission from City Librarian dated June 13, 2011; Presentation of the Bernal Heights Branch Library Artwork (Phase One); Statement of Consensus dated March 17, 2010; and Presentation on History of Bernal Mural. 3. Branch Library Improvement Program Schedule Change Action (Discussion and possible action to approve changes to the forecast project schedule for the Golden Gate Valley Branch Library proj",
+    "comment on each item on the agenda before or during consideration of that item. 1. General Public Comment (This item is to allow members of the public to address the Comm ssion on matters that are within the subject matter junscficbon of the Commission a~c :nat do not appear on the agenda 2. Bernal Heights Branch Library Artwork Project Discussion/Action ( Discussion and possible action tc enocrse the Bernal Heights 5rar'\" _ brary Artwork Project and toward endorsement to the San Francisco Arts Commission for their consideration and approval ] Explanatory Documents: Memo from Ciiy Librarian dated Jjy 18. 20' 1 Comments",
+    "tement. 6. City Librarian’s Report by Luis Herrera Discussion (This item is to allow the City Librarian to report on recent Library activities and make announcements). The City Librarian will give updates on the following topics; Visitacion Valley Branch Community; Arts Commission action regarding the Bernal Heights Branch Library mural; and Ethics Commission Dismissal on the 150 word statement in the Minutes. Explanatory documents: Ethics Commission letter dated September 1 3, 201 1 . 7. Approval of the Minutes July 21, 2011 Action (Presentation, discussion and possible action to approve the m inutes of the regular meeting of",
+    "omment on each item on the agenda before or during consideration of that item. 1. General Public Comment (This item is to allow members of the public to address the Commission on matters that are within the subject matter jurisdiction of the Commission and that do not appear on the agenda). 2. Bernal Heights Branch Library Artwork Project Discussion (Update and discussion on the Bernal Heights Branch Library Artwork Project) Explanatory Documents: Memo from Bernal Library Art Project (BLAP) Committee 3. City Librarian’s Report by Luis Herrera Discussion (This item is to allow the City Librarian to report on recent Library activities and make announcements.) The City Libra"
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 0.86,
-    "sf_context": false,
-    "rival_city": true,
+    "score": 5.64,
+    "sf_context": true,
+    "rival_city": false,
     "citywide_serial": false,
-    "substantive": true,
+    "substantive": false,
     "substantive_direct": true,
-    "hits": 3,
-    "density": 1.36,
+    "hits": 4,
+    "density": 0.64,
     "title_hit": false
    },
    "materiality": {
-    "score": 5.0,
-    "money": true,
+    "score": 0.0,
+    "money": false,
     "decision": false,
     "accountability": false,
     "contestation": false,
-    "named_genre": true,
+    "named_genre": false,
     "generic_serial": false
    },
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Bernal+Heights+Branch+Library",
+   "url": "https://archive.org/details/agendasanfranci2011sanf_6",
+   "deep_link": "https://archive.org/details/agendasanfranci2011sanf_6?q=Bernal+Heights+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Library Commission papers taking up the branch's artwork project for endorsement to the Arts Commission."
+  },
+  {
+   "identifier": "agenda2013arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Bernal Heights Branch Library",
+   "ocr_excerpts": [
+    "be closely tied to the level of inclusion of the Public in the decision-making process. Real participation in the process leads to ownership and pride, not only in Public Art, but in the City of San Francisco. \" Mr. Warfield commented that this was the first opportunity he had to talk about the Bernal Heights Branch Library Mural Project since attending the VAC meetings. He said that the first meeting he attended did not have general public comment, and subsequent meetings have been canceled. He stated that he hopes that the VAC does not approve further details of the new mural and will work to reverse the previous",
+    "n the part of the VAC. Mr. Warfield added that the Sunshine Ordinance Task force found the SFAC in violation of the ordinance for not recording VAC meetings. He noted that since last attending the VAC meetings there were improvements in the agenda format. He stated that the process leading to the Bernal Heights Branch Library Mural Project had been \"semi-secret\" and felt the VAC had received misleading and incorrect information from the Library 15 Commission regarding the matter. He asked that the VAC take no further action on the new mural for the Bernal Heights Branch Library. 20. New Business and Announcements Discussion (This item is to allow the Commissioners and Arts Commission staff to introduce new agenda items for consideration at a future meeting, to report on recent arts activities and to make announcements.) Commissioner Keehn stated that here was a lack of",
+    "members, that they would expect in future toward them and their decisions. \" Mr. Warfield stated that the acoustics in the meeting room were poor and that it was hard to hear the routine discussion. He stated That he hoped the VAC would consider rescinding the approval of the new mural for the Bernal Heights Branch Library or would consider taking up the substantive issue regarding the matter, including its history. He explained that the mural was a community project involving children and that the artist, Arch Williams, was a well-known muralist. He stated that as someone familiar with the Sunshine Ordinance and the B",
+    "be closely tied to the level of inchision of the Public in the decision-making process. Real participation in the process leads lo ownership and pride, not only in Public Art, but in the City of San Francisco. \" Mr. Warfield commented that this was the first opportunity he had to talk about the Bernal Heights Branch Library Mural Project since attending the VAC meetings. He said that the first meeting he attended did not have general public comment, and subsequent meetings have been canceled. He stated that he hopes that the VAC does not approve ftirther details of the new mural and will work to reverse the previous",
+    "n the part of the VAC. Mr. Warfield added that t"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.86,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -0.75,
+    "money": false,
+    "decision": true,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda2013arts",
+   "deep_link": "https://archive.org/details/agenda2013arts?q=Bernal+Heights+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Arts Commission minutes carrying public objection that the mural process had been \"semi-secret\"."
   }
  ],
  "dept_shelf": [
@@ -376,9 +348,9 @@
   }
  ],
  "_gate": {
-  "has_photo": false,
+  "has_photo": true,
   "n_documents": 5,
   "n_money_links": 1,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

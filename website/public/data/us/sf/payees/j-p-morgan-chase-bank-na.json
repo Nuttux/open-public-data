@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.725638+00:00",
+ "generated_at": "2026-07-28T11:43:47.689289+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "GEN General City / Unallocated"
  ],
+ "profile": {
+  "n_vouchers": 1821,
+  "departments": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 5069606933.38,
+    "n_vouchers": 1382
+   },
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "usd": 977549949.45,
+    "n_vouchers": 163
+   },
+   {
+    "department": "USD County Education Office",
+    "department_code": "USD",
+    "usd": 45825000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 12823788.55,
+    "n_vouchers": 66
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 11964201.9,
+    "n_vouchers": 8
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 7605122.1,
+    "n_vouchers": 68
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 3853928.59,
+    "n_vouchers": 102
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 989895.7,
+    "n_vouchers": 10
+   }
+  ],
+  "n_departments": 12,
+  "categories": [
+   {
+    "code": "230500",
+    "label": "230490CONFedIncomeTaxTaxUnIt1",
+    "spend_class": "obligation",
+    "usd": 2047568364.68,
+    "n_vouchers": 90
+   },
+   {
+    "code": "230610",
+    "label": "230490CONStateIncomeTaxTaxU1",
+    "spend_class": "obligation",
+    "usd": 854624348.83,
+    "n_vouchers": 91
+   },
+   {
+    "code": "232850",
+    "label": "232840CONFederalIncomeTax,TaxU",
+    "spend_class": "obligation",
+    "usd": 743033521.0,
+    "n_vouchers": 69
+   },
+   {
+    "code": "232750",
+    "label": "232660CONSocSecCityShare,Gener",
+    "spend_class": "obligation",
+    "usd": 741086362.88,
+    "n_vouchers": 90
+   },
+   {
+    "code": "230530",
+    "label": "230490CONOasdiTaxTaxUnit1",
+    "spend_class": "obligation",
+    "usd": 740922786.88,
+    "n_vouchers": 90
+   },
+   {
+    "code": "232720",
+    "label": "232660CONMedicareCityShare,Gen",
+    "spend_class": "obligation",
+    "usd": 233740174.73,
+    "n_vouchers": 90
+   },
+   {
+    "code": "230560",
+    "label": "230490CONMedicareTaxTaxUnit1",
+    "spend_class": "obligation",
+    "usd": 233693536.23,
+    "n_vouchers": 90
+   },
+   {
+    "code": "232860",
+    "label": "232840CONStateIncomeTax,TaxUni",
+    "spend_class": "obligation",
+    "usd": 231324224.18,
+    "n_vouchers": 63
+   }
+  ],
+  "n_categories": 28,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 1855098419.07,
+  "n_recent_lines": 22,
+  "recent_lines": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "230490CONFedIncomeTaxTaxUnIt1",
+    "spend_class": "obligation",
+    "usd": 634986770.97,
+    "n_vouchers": 28
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "230490CONStateIncomeTaxTaxU1",
+    "spend_class": "obligation",
+    "usd": 265241863.48,
+    "n_vouchers": 28
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "232660CONSocSecCityShare,Gener",
+    "spend_class": "obligation",
+    "usd": 227601017.4,
+    "n_vouchers": 28
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "230490CONOasdiTaxTaxUnit1",
+    "spend_class": "obligation",
+    "usd": 227560726.1,
+    "n_vouchers": 28
+   },
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "label": "232840CONFederalIncomeTax,TaxU",
+    "spend_class": "obligation",
+    "usd": 222000819.67,
+    "n_vouchers": 27
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "232660CONMedicareCityShare,Gen",
+    "spend_class": "obligation",
+    "usd": 72447281.58,
+    "n_vouchers": 28
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

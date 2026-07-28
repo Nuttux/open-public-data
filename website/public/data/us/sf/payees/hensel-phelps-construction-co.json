@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.726394+00:00",
+ "generated_at": "2026-07-28T11:43:47.690513+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,6 +35,92 @@
  "top_departments": [
   "AIR Airport Commission"
  ],
+ "profile": {
+  "n_vouchers": 1494,
+  "departments": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 2300912356.16,
+    "n_vouchers": 1493
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 17460.41,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "567110",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 1656906447.66,
+    "n_vouchers": 474
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 2612669.0,
+    "n_vouchers": 7
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 290781.0,
+    "n_vouchers": 18
+   },
+   {
+    "code": "532210",
+    "label": "Sewer Service",
+    "spend_class": "purchase",
+    "usd": 20273.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "479701",
+    "label": "Custom Work",
+    "spend_class": "ledger",
+    "usd": 17460.41,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 9
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 293545056.01,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 293507745.01,
+    "n_vouchers": 61
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 37311.0,
+    "n_vouchers": 3
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000009505",

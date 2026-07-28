@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.724201+00:00",
+ "generated_at": "2026-07-28T12:23:47.739406+00:00",
  "slug": "coit-tower",
  "name": "Coit Tower",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -40,8 +40,13 @@
    "url": "https://archive.org/details/historicstructur01arts",
    "deep_link": "https://archive.org/details/historicstructur01arts?q=Coit+Tower",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "history",
+   "doc_type_label": "History",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "History",
+   "salient": true,
+   "gloss": "The Arts Commission's 1989 condition survey of the tower, element by element — exterior walls, the Columbus planter, the shaft, belvedere, balustrade and lantern — and a schedule of what maintenance each would need."
   },
   {
    "identifier": "sanfranciscocivi00arts",
@@ -79,8 +84,13 @@
    "url": "https://archive.org/details/sanfranciscocivi00arts",
    "deep_link": "https://archive.org/details/sanfranciscocivi00arts?q=Coit+Tower",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Histories & surveys",
-   "salient": true
+   "doc_type": "history",
+   "doc_type_label": "History",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "History",
+   "salient": true,
+   "gloss": "The Arts Commission's guide to the city's public art records that Coit Tower was its first historic case, opposed at the time as a 'blight' on Telegraph Hill, and that its murals were the first works funded under the federal Public Works of Art Project."
   },
   {
    "identifier": "surveyofartworki1953sanf",
@@ -118,9 +128,13 @@
    "url": "https://archive.org/details/surveyofartworki1953sanf",
    "deep_link": "https://archive.org/details/surveyofartworki1953sanf?q=Coit+Tower",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited (1953–1975)",
-   "group": "Histories & surveys",
-   "salient": true
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A 1953 Art Commission survey of the city's artworks, cataloguing the WPA fresco panels by artist, medium and size — including Maxine Albro's 42-foot \"California\"."
   },
   {
    "identifier": "annualreportarts2012arts",
@@ -159,8 +173,13 @@
    "url": "https://archive.org/details/annualreportarts2012arts",
    "deep_link": "https://archive.org/details/annualreportarts2012arts?q=Coit+Tower",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "An Arts Commission annual report on the agency's programmes and civic-art projects, including the 40th anniversary of the Street Artist Licensing Program."
   },
   {
    "identifier": "minutesrecreatio1986sanf",
@@ -198,7 +217,11 @@
    "url": "https://archive.org/details/minutesrecreatio1986sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1986sanf?q=Coit+Tower",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
    "salient": false
   }
  ]

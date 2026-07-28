@@ -157,16 +157,8 @@ export default async function CorrectionsClient({ doc }: { doc: CorrectionsDoc }
                 : "Every report helps. Tell us which page, which figure or claim, and the official source if you have it. We respond as soon as we can."}
             </p>
             <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              <Button
-                variant="primary"
-                href="https://github.com/AbstractsMachine/france-open-data-pipeline/issues/new?labels=correction&template=signaler-une-erreur.md"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {isFr ? "Ouvrir une issue GitHub" : "Open a GitHub issue"}
-              </Button>
-              <Button href="/contact">
-                {isFr ? "Ou nous écrire" : "Or email us"}
+              <Button variant="primary" href="/contact">
+                {isFr ? "Nous écrire" : "Email us"}
               </Button>
             </div>
           </div>

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.732222+00:00",
+ "generated_at": "2026-07-28T11:43:47.700668+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 9634,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 207722922.72,
+    "n_vouchers": 6879
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 37866107.06,
+    "n_vouchers": 328
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 12705120.82,
+    "n_vouchers": 591
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 10648780.23,
+    "n_vouchers": 267
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 5472439.6,
+    "n_vouchers": 785
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 4696524.96,
+    "n_vouchers": 189
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 4498984.63,
+    "n_vouchers": 196
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 1613912.0,
+    "n_vouchers": 93
+   }
+  ],
+  "n_departments": 15,
+  "categories": [
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 129645481.76,
+    "n_vouchers": 4460
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 65765914.15,
+    "n_vouchers": 1401
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 1282604.0,
+    "n_vouchers": 35
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 886437.61,
+    "n_vouchers": 47
+   },
+   {
+    "code": "522020",
+    "label": "Training Costs Paid To Vendors",
+    "spend_class": "purchase",
+    "usd": 3075.0,
+    "n_vouchers": 7
+   },
+   {
+    "code": "430170",
+    "label": "Interest Earned-Tax Refund",
+    "spend_class": "ledger",
+    "usd": 2797.11,
+    "n_vouchers": 9
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 0.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "463599",
+    "label": "Misc Public Health Revenue",
+    "spend_class": "unclear",
+    "usd": -683366.08,
+    "n_vouchers": 26
+   }
+  ],
+  "n_categories": 9,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 30586359.46,
+  "n_recent_lines": 9,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 20079601.33,
+    "n_vouchers": 452
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 5513725.46,
+    "n_vouchers": 81
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1639216.22,
+    "n_vouchers": 69
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1418493.68,
+    "n_vouchers": 58
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1037021.26,
+    "n_vouchers": 16
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 611579.56,
+    "n_vouchers": 12
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000009936",
@@ -139,7 +307,7 @@
   },
   {
    "contract_no": "1000029927",
-   "title": "DAS Comm Srvcs FY23-27",
+   "title": "DAS Communications Services FY23-27",
    "department": "HSA Human Services Agency",
    "department_code": "HSA",
    "agreed_usd": 1317228.0,
@@ -166,7 +334,7 @@
   },
   {
    "contract_no": "1000032712",
-   "title": "24-02 FRC Initiative",
+   "title": "24-02 Family Resource Center Initiative",
    "department": "DEC Dept of Early Childhood",
    "department_code": "DEC",
    "agreed_usd": 1371382.0,

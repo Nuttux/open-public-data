@@ -203,3 +203,38 @@ export type PayrollByFamilyCitywide = {
   years: Record<string, PayrollFamilyRow[]>;
   n_rows: number;
 };
+
+/**
+ * The distribution CUT BY job family — one row per family per fiscal year,
+ * person grain (each person under their primary family, whole compensation
+ * attributed to it). Two readings: `p25/p50/p75` = the pay ladder (what a
+ * kind of work pays), `histogram` = who sits in a given $25k band.
+ *
+ * `n_people` and the dollar fields are null on the pooled row, which is
+ * count-only and names no family.
+ */
+export type PayrollFamilyDistRow = {
+  display_family: string;
+  is_pooled: boolean;
+  n_people: number | null;
+  total_compensation_usd: number | null;
+  p25_usd: number | null;
+  p50_usd: number | null;
+  p75_usd: number | null;
+  p90_usd: number | null;
+  n_in_histogram: number;
+  histogram: HistogramBucket[];
+};
+
+export type PayrollFamilyDistribution = {
+  as_of: string | null;
+  source: PayrollSource;
+  grain: string;
+  bucket_width_usd: number;
+  attribution_note: string;
+  ladder_note: string;
+  histogram_note: string;
+  privacy: PayrollPrivacy;
+  years: Record<string, PayrollFamilyDistRow[]>;
+  n_rows: number;
+};

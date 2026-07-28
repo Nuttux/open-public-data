@@ -1,9 +1,53 @@
 {
- "generated_at": "2026-07-27T17:06:09.749596+00:00",
+ "generated_at": "2026-07-28T12:23:47.763188+00:00",
  "slug": "laguna-honda-hospital",
  "name": "Laguna Honda Hospital",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
+  {
+   "identifier": "C101697973",
+   "title": "Investigation of Laguna Honda Hospital",
+   "creator": null,
+   "year": 1998,
+   "pool": "dl",
+   "matched_alias": "Laguna Honda Hospital",
+   "ocr_excerpts": [
+    "RSITY OF CALIFORNIA Office of the Assistant Attorncy General ha caer May 6, 1998 gn aa RG The Honorable Willie L. Brown, dr: ‘ pociMeNTs DEPT. Mavor? } Mi ns} : . SH Ve Be VE City and County of San Francisco ) : WeriTin® de eayep 401 Van Ness Avenue : Ss! RENO WOR any: San Francisco, CA” 94102 Pu oLIC LIBRARY . Re: Investigation of Laguna Honda Hospital Wee tipdat Dear Mayor Brown: On February 7, 1997, we notified you, pursuant to the Civil Rights of Institutionalized Persons Act (“CRIPA\"), 42 U.S.C. § 1997 et seg., that we were investigating conditions at the Laguna Honda Hospital and Rehabilitation Center (“LHH\") in San Francisco, California. We now are writing to report our findings. LHH, a public nursing home located in San Francisco, California, is operated by the Department of Public Health of the City and County of San Francisco. There are approximately 1,200 residents at the nursing home who range in age from",
+    "cisco _ Department of Public Health Mitchell H. Katz, M.D. Director of Health SaniMENTS DEPT. JUL 9 2 1998 . AS AN CRANY IY SyBLIC LIBRARY DEPARTMENT OF PUBLIC HEALTH INITIAL RESPONSE TO. . REPORT FROM THE ~ ‘DEPARTMENT OF JUSTICE Since it was founded ‘ 1866 -- on its present citer bike City and County of San ° = Francisco, Laguna Honda Hospital (LHH) has served as a facility of enduring care. Although its precise mission has changed over these 130 years, its goal has always remained consistent: to provide compassionate and excellent medical care to the more vulnerable residents of San Francisco. We believe that we have fulfilled that mission with excellence. Today, LHH provi",
+    "ted by a complex set of federal and state ~ regulations. As a result, we are also accustomed to critiques from a variety of sources. | We believe that our primary duty is to provide high-quality medical care for our residents, and we perform that serve with excellence. Last year, the U.S. Department of Justice initiated an investigation of Laguna | ~ Honda Hospital, pursuant to the Civil Rights of Institutionalized Persons Act. Laguna Honda Hospital was selected from among many different publicly owned institutions, such as mental health hospitals, jails, prisons, and nursing homes that the Justice Department investigates throughout the country every year. The Department of Justice conducted site visits of Laguna Honda Hospital in June and November 1997. Today, May 6, 1998, the U.S. Department of Justice, in Washington, DC, sent an 18-page letter concerning Laguna Honda Hospital to Mayor Brown.. The letter recognizes the cooperation exhibited by the City, and that the . Department of Justice looks forward to working with the City in a non-adversarial manner. We, too, wish to continue working with the Justice Department as cooperatively as possible to further improve t"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 12.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 5.75,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.5,
+    "money": false,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C101697973",
+   "deep_link": "https://archive.org/details/C101697973?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "investigation",
+   "doc_type_label": "Investigation",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Investigation",
+   "salient": true,
+   "gloss": "The US Department of Justice's civil-rights investigation of conditions at the hospital, opened in 1997 under CRIPA and reported to Mayor Brown in May 1998, with the Health Department's response attached."
+  },
   {
    "identifier": "assistedlivingf1200sanf_0",
    "title": "Assisted living facility feasibility study : Laguna Honda Hospital and Rehabilitation Center : draft",
@@ -42,8 +86,13 @@
    "url": "https://archive.org/details/assistedlivingf1200sanf_0",
    "deep_link": "https://archive.org/details/assistedlivingf1200sanf_0?q=Laguna+Honda",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A 2007 feasibility study for the Health Department on adding an assisted-living facility to the replacement hospital — cost estimates, licensing criteria and funding options."
   },
   {
    "identifier": "lagunahondahospi1200sanf",
@@ -83,47 +132,13 @@
    "url": "https://archive.org/details/lagunahondahospi1200sanf",
    "deep_link": "https://archive.org/details/lagunahondahospi1200sanf?q=Laguna+Honda",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited (2001–2002)",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "lagunahondahospi1994kapl",
-   "title": "Laguna Honda Hospital institutional master plan",
-   "creator": "Kaplan McLaughlin Diaz,San Francisco (Calif.). Dept. of Public Health",
-   "year": 1994,
-   "pool": "sfpl",
-   "matched_alias": "Laguna Honda",
-   "ocr_excerpts": [
-    "SAN FRANCISCO PUBLIC LIBRARY 3 1223 09952 2758 LAGUNA HONDA HOSPITAL INSTITUTIONAL MASTER PLAN OCTOBER 1994 kaplan Mclaughlin diaz CITY AND COUNTY OF SAN FRANCISCO DEPARTMENT OF PUBLIC HEALTH San Francisco Public Library Government Information Center San Francisco Public Library 100 Larkin Street, 5th Floor San Francisco, CA 94102 REFERENCE BOOK Nor to be taken from the library Laguna Honda Hospital Master Plan KMD/GHC+A Institutional Master Plan TABLE OF CONTENTS Page EXECUTIVE SUMMARY INTRODUCTION L INSTITUTIONAL OVERVIEW • License Classification 1.1 • History of the Institution 1.2 • Current Hospital Statistics 1.7 • Patient Population 1.10 • Employment Characteristics 1.12",
-    "s 3.9 • Project Schedule 3.18 • Impact on Surrounding Neighborhood 3.19 • Conformity with City's Comprehensive Plan 3.22 IV. DEVELOPMENT ALTERNATIVES • Alternatives A & B (Summary) 4.1 • Neighborhood Facilities 4.3 • No New Development 4.4 • Cost Comparisons 4.6 3 1223 09952 2758 Laguna Honda Hospital Master Plan KMD/GHC+A Institutional Master Plan EXECUTIVE SUMMARY This Institutional Master Plan has been prepared as a follow up to the Facility Master Planning effort This report summarizes the results of analysis of available data on the existing physical plant, including its history, background, and current condition. The intent of this report is to provide a picture of the current status of Laguna Honda Hospital and the population it currently serves. This Master Plan also identifies the future directions for the provision of care at Laguna Honda Hospital. MISSION STATEMENT For over 125 years, San Franciscans have relied on Laguna Honda Hospital as the main provider of the City's long-term health care services. Committed to serving citizens regardless of their ability to pay, the Hospital has offered quality care and a source of security to generations of elderly and disabled. In the next few decades, San Francisco will face the challenge of fulfilling the expectations of a fast-growing elderly and disabled population with increasingly acute health needs. To continue the City's policy of high quality long-term care into the 21st Century, it is necessary to replace Laguna Honda Hospital with structures that meet current standards for functionality and operating efficiency. Serious physical deficiencies put the Hospital at risk of losing Federal and State reimbursements, which would lead to outright closure. FACILITY HISTORY AND USE • By 1867 the site of the future Laguna Honda Hospital had been acquired by San Francisco, and in 1867, a municipally financed shelter for the homeless was constructed on the site. It was rebuilt after the 1906 Earthquake as the Relief Home, again as a shelter for indigent homeless. Clarendon Hall was built soon thereafter as a facility to accommodat"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 9.28,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 2,
-    "density": 1.28,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 6.5,
-    "money": true,
-    "decision": false,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/lagunahondahospi1994kapl",
-   "deep_link": "https://archive.org/details/lagunahondahospi1994kapl?q=Laguna+Honda",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The December 2001 draft environmental impact report for replacing the hospital, the review behind the rebuilding programme."
   },
   {
    "identifier": "lagunahondahospi2001impa",
@@ -161,166 +176,13 @@
    "url": "https://archive.org/details/lagunahondahospi2001impa",
    "deep_link": "https://archive.org/details/lagunahondahospi2001impa?q=Laguna+Honda",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Histories & surveys",
-   "salient": true
-  },
-  {
-   "identifier": "sanfranciscodepa19781983sanf",
-   "title": "The San Francisco Department of Public Health annual report",
-   "creator": "San Francisco (Calif.). Dept. of Public Health",
-   "year": 1979,
-   "pool": "sfpl",
-   "matched_alias": "Laguna Honda Hospital",
-   "ocr_excerpts": [
-    "3158 #5 - 1351 2Uth Ave., 661-1+400 CITY CLINIC (VD) • 250 4th St., 558-3804 COMMUNITY MFNTAT. HEALTH SERVICES t:S- MENTAL HEALTH ADMINISTPJ\\TION 555 Polk St. 24 Hour Information £ Referral 387-5100 HOSPITAL SERVICES + SAN FRANCISCO GENERAL HOSPITAL 1001 Potrero Ave., 821-8200 * LACUNA HONDA 375 Laguna Honda Blvd., 664-1580 ■f-CENTRAL EMERGENCY DISPATCH 50 Ivy St., 431-2800 ORGANIZATION CHART Oir Fiscal Mgml. -1 1 Jail Medical Servic.l Southeast Ambulotory Heolfh Center _l L Deputy Gronts, Controcts, A«t. DIr. For Mental Heolth Servic Speclol Projects PotlenI Rights County Drug",
-    "d statistical sampling, accounting, and verification of the status of various projects. Currently in progress is a description of the San Francisco General Hospital/University of Cali- fornia at San Francisco interface in the Obstetrics- Gynecology department, and a description of the billing function at Laguna Honda Hospital. 6 PUBUC HEALTH SERVICES The effects of Proposition 13 were felt in every area of Public Health activities. New strategies were necessary to help minimize the damaging effects of budget cuts which caused some services to be cur- tailed. With the exception of the Bureau of Records and Statistics",
-    "will be implemented . Completion of new quarters, and a staff at full strength, will permit the Medical Records section to meet all data preparation and reporting require- ments with greater efficiency. The U.S. Department of Health, Education and Welfare performed an extensive on-site inspection of Laguna Honda in Summer 1978, checking for con- formance with Section 504 and Title VI standards. Because the hospital's service level and quality was considered excellent, the transition plan, accepted in December, focuses on barrier design. An action group called \"Your Committee\", composed of patient, public and st",
-    "In other areas of improvement , the Pharmacy section's Individual Patient Prescription system now covers every ward. Physical Therapy has ex- panded ward consultations. The State of California has designated San Fran- cisco as one of the first sites for the Multi- purpose Senior Services Project and Laguna Honda Hospital is expected to play a major role. Laguna Honda Hospital and the Department of Public Health are also discussing with several public and private agencies the possibilities of providing hospice care for the elderly. 14 EjTiergency Medical Services Budget cutbacks necessitated closing of Harbor and Park Aid Stations. Alemany Aid Station remained open, but",
-    "ental Health Services Jail Medical Programs Maternal and Child Health Juvenile Court Medical Clinic Public Health Education Public Health Laboratories Public Health Nursing Records and Statistics Target Population Community Contracts TOTAL HOSPITAL SERVICES Emergency Hospital Services * Hassler Ho"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 6.94,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 1.44,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/sanfranciscodepa19781983sanf",
-   "deep_link": "https://archive.org/details/sanfranciscodepa19781983sanf?q=Laguna+Honda+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": false
-  },
-  {
-   "identifier": "C124917894",
-   "title": "[Resolution calling on presidential candidates to address a plan to combat the HIV epidemic in America and its impact on cities]",
-   "creator": null,
-   "year": 1992,
-   "pool": "dl",
-   "matched_alias": "Laguna Honda Hospital",
-   "ocr_excerpts": [
-    "’s General Fund has paid for approximately 35.2 percent of the cost for AIDS. BOARD OF BUDGET ANALYST 4 Memo to Administration and Oversight Committee March 24, 1992 Administration and Oversight Committee Meeting The following table shows the City’s General Fund contributions to the DPH’s AIDS Office, San Francisco General Hospital, Laguna Honda Hospital and the Primary Care Centers from FY 1982-83 to FY 1991-92: Fiscal AIDS Laguna Primary Year Office SFGH Honda CareCenters Totals 1982-83 $180,447 $180,447 1983-84 4,004,368 4,004,368 1984-85 4,043,612 4,043,612 1985-86 4,958,417 4,958,417 1986-87 4,722,501 $4,900,000 9,622,501 1987-88 5,077,283 5,300,000 10,877,283 1988-89 5,756,876",
-    ",180 TOTALS $55,918,188 $40,023,450 $856,403 $4,660,425 $101,458,466 *Estimated based on a General Fund contribution to SFGH of 30 percent, and a General Fund contribution to the District Health Centers of 90 percent. Source: San Francisco Department of Public Health According to the AIDS Office, the costs reflected above for SFGH and Laguna Honda hospitals primarily include medical care for people with AIDS who are ineligible for MediCal. The AIDS Office reports that all of the City’s HIV- related medical care costs may not be reflected above, because the Federal definition of AIDS excludes many individuals with HIV related illnesses from presumptive eligibility for social security. Without p",
-    "ts, such as housing, home attendant care, and psychosocial support, at approximately $6.02 million; * primary medical care, at approximately $960,000; ¢ administration, at approximately $760,000. For more detailed information about AIDS Office programs, including General Fund, Federal and State expenditures, see Attachments 1 and 2. The Laguna Honda costs for each year are included in the non-acute health care costs of the AIDS Office. In summary, between 1981 and February 29, of 1992, 11,921 persons have been diagnosed with AIDS and 8,574 persons have died of AIDS. As of 1991, an estimated 28,000 San Franciscans, or nearly four percent of the population of San Francisco, are estimat"
-   ],
-   "collection": "igscalocalgovdocs",
-   "relevance": {
-    "score": 8.5,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 18.78,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.75,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/C124917894",
-   "deep_link": "https://archive.org/details/C124917894?q=Laguna+Honda+Hospital",
-   "source_label": "Internet Archive — Democracy's Library",
-   "group": "Meetings & resolutions",
-   "salient": false
-  },
-  {
-   "identifier": "C101697973",
-   "title": "Investigation of Laguna Honda Hospital",
-   "creator": null,
-   "year": 1998,
-   "pool": "dl",
-   "matched_alias": "Laguna Honda Hospital",
-   "ocr_excerpts": [
-    "RSITY OF CALIFORNIA Office of the Assistant Attorncy General ha caer May 6, 1998 gn aa RG The Honorable Willie L. Brown, dr: ‘ pociMeNTs DEPT. Mavor? } Mi ns} : . SH Ve Be VE City and County of San Francisco ) : WeriTin® de eayep 401 Van Ness Avenue : Ss! RENO WOR any: San Francisco, CA” 94102 Pu oLIC LIBRARY . Re: Investigation of Laguna Honda Hospital Wee tipdat Dear Mayor Brown: On February 7, 1997, we notified you, pursuant to the Civil Rights of Institutionalized Persons Act (“CRIPA\"), 42 U.S.C. § 1997 et seg., that we were investigating conditions at the Laguna Honda Hospital and Rehabilitation Center (“LHH\") in San Francisco, California. We now are writing to report our findings. LHH, a public nursing home located in San Francisco, California, is operated by the Department of Public Health of the City and County of San Francisco. There are approximately 1,200 residents at the nursing home who range in age from",
-    "cisco _ Department of Public Health Mitchell H. Katz, M.D. Director of Health SaniMENTS DEPT. JUL 9 2 1998 . AS AN CRANY IY SyBLIC LIBRARY DEPARTMENT OF PUBLIC HEALTH INITIAL RESPONSE TO. . REPORT FROM THE ~ ‘DEPARTMENT OF JUSTICE Since it was founded ‘ 1866 -- on its present citer bike City and County of San ° = Francisco, Laguna Honda Hospital (LHH) has served as a facility of enduring care. Although its precise mission has changed over these 130 years, its goal has always remained consistent: to provide compassionate and excellent medical care to the more vulnerable residents of San Francisco. We believe that we have fulfilled that mission with excellence. Today, LHH provi",
-    "ted by a complex set of federal and state ~ regulations. As a result, we are also accustomed to critiques from a variety of sources. | We believe that our primary duty is to provide high-quality medical care for our residents, and we perform that serve with excellence. Last year, the U.S. Department of Justice initiated an investigation of Laguna | ~ Honda Hospital, pursuant to the Civil Rights of Institutionalized Persons Act. Laguna Honda Hospital was selected from among many different publicly owned institutions, such as mental health hospitals, jails, prisons, and nursing homes that the Justice Department investigates throughout the country every year. The Department of Justice conducted site visits of Laguna Honda Hospital in June and November 1997. Today, May 6, 1998, the U.S. Department of Justice, in Washington, DC, sent an 18-page letter concerning Laguna Honda Hospital to Mayor Brown.. The letter recognizes the cooperation exhibited by the City, and that the . Department of Justice looks forward to working with the City in a non-adversarial manner. We, too, wish to continue working with the Justice Department as cooperatively as possible to further improve t"
-   ],
-   "collection": "igscalocalgovdocs",
-   "relevance": {
-    "score": 12.5,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 5.75,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 5.5,
-    "money": false,
-    "decision": false,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/C101697973",
-   "deep_link": "https://archive.org/details/C101697973?q=Laguna+Honda+Hospital",
-   "source_label": "Internet Archive — Democracy's Library",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "into21stcenturyb1819sanf",
-   "title": "Into the 21st century : building a new facility to continue Laguna Honda Hospital's mission",
-   "creator": "San Francisco (Calif.). Dept. of Public Health,San Francisco (Calif.). Dept. of Public Works,Kaplan McLaughlin Diaz,Gordon H. Chong + Associates",
-   "year": 1992,
-   "pool": "sfpl",
-   "matched_alias": "Laguna Honda Hospital",
-   "ocr_excerpts": [
-    "LAGUNA HONDA HOSPITAL BOND PROGRAM REPORT San Francisco Public Library Government Information Center San Francisco Public Library 100 Larkin Street, 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the library nto the 21st Century: building a New Facility to Continue iguna Honda Hospital's Mission February 18, 1992 kaplan Mclaughlin diaz in association with GORDON H. CHONG & ASSOCIATES CITY AND COUNTY OF SAN FRANCISCO DEPARTMENT OF PUBLIC HEALTH 3 1223 09952 2741 Laguna Honda Hospital Bond Program Report Into the 21st Century: Building a New Facility to Continue Laguna Honda HospitaVs Mission February 18, 1992 CITY AND COUNTY OF SAN FRANCISCO DEPARTMENT OF PUBLIC HEALTH DEPARTMENT OF PUBLIC WORKS kaplan Mclaughlin diaz in association with GORDON H. CHONG & ASSOCIATES Table of Contents Page Table of Contents i Figures □ Section I. Executive Summary 1 Sect",
-    "-6 Figure 14 Alternate B Site Plan A- 10 Figure 15 Alternate Comparison Matrix B-2 Figure 16 Area Comparison: Patient Rooms 4-Bed vs 2-Bed E-3 Digitized by the Internet Archive in 2014 https://archive.org/details/into21stcenturyb1819sanf Into the 21st Century: Building A New Facility to Continue Laguna Honda Hospital's Mission Bond Program Report Section I. Executive Summary For over 125 years, San Franciscans have relied on Laguna Honda Hospital as the main provider of the City's long-term health care services. Committed to serving citizens regardless of their ability to pay, the Hospital has offered quality care and a source of security to generations of elderly and disabled. In the next few decades, San Francisco will face the challenge of fulfilling the expectations of a fast-growing elderly and disabled population with increasingly acute health needs. To continue the City's policy of high quality long-term care into the 21st Century, it is necessary to replace Laguna Honda Hospital with structures that meet current standards for functionality and operating efficiency. Serious physical deficiencies put the Hospital at risk of losing Federal and State reimbursements, which would lead to outright closure. Laguna Honda presently operates under waivers from State and Federal authorities — waivers that may be revoked at any time. This Report proposes a $548.4 million Bond Program to finance a replacement facility to meet current standards for hospital design, construction, building systems, and seismic safety in a co",
-    "he outcome of a combined effort by Hospital management, the Department of Public Health, an extensive group of community advisors, the Department of Public Works, and a group of planning and architectural consultants. This planning team developed a comprehensive and farsighted Facilities Master Plan for Laguna Honda, upon which this Bond Program Report is based. - 1 - 1"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 10.45,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 1.95,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 2.5,
-    "money": true,
-    "decision": false,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/into21stcenturyb1819sanf",
-   "deep_link": "https://archive.org/details/into21stcenturyb1819sanf?q=Laguna+Honda+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "history",
+   "doc_type_label": "History",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "History",
+   "salient": true,
+   "gloss": "A 2001 historical assessment finding the hospital significant as a record of the city's public health and elderly care, and architecturally significant for buildings such as the Classical Revival Clarendon Hall."
   },
   {
    "identifier": "lagunahondahospi1720sanf",
@@ -360,7 +222,185 @@
    "url": "https://archive.org/details/lagunahondahospi1720sanf",
    "deep_link": "https://archive.org/details/lagunahondahospi1720sanf?q=Laguna+Honda+Hospital",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": false
+  },
+  {
+   "identifier": "lagunahondahospi1994kapl",
+   "title": "Laguna Honda Hospital institutional master plan",
+   "creator": "Kaplan McLaughlin Diaz,San Francisco (Calif.). Dept. of Public Health",
+   "year": 1994,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda",
+   "ocr_excerpts": [
+    "SAN FRANCISCO PUBLIC LIBRARY 3 1223 09952 2758 LAGUNA HONDA HOSPITAL INSTITUTIONAL MASTER PLAN OCTOBER 1994 kaplan Mclaughlin diaz CITY AND COUNTY OF SAN FRANCISCO DEPARTMENT OF PUBLIC HEALTH San Francisco Public Library Government Information Center San Francisco Public Library 100 Larkin Street, 5th Floor San Francisco, CA 94102 REFERENCE BOOK Nor to be taken from the library Laguna Honda Hospital Master Plan KMD/GHC+A Institutional Master Plan TABLE OF CONTENTS Page EXECUTIVE SUMMARY INTRODUCTION L INSTITUTIONAL OVERVIEW • License Classification 1.1 • History of the Institution 1.2 • Current Hospital Statistics 1.7 • Patient Population 1.10 • Employment Characteristics 1.12",
+    "s 3.9 • Project Schedule 3.18 • Impact on Surrounding Neighborhood 3.19 • Conformity with City's Comprehensive Plan 3.22 IV. DEVELOPMENT ALTERNATIVES • Alternatives A & B (Summary) 4.1 • Neighborhood Facilities 4.3 • No New Development 4.4 • Cost Comparisons 4.6 3 1223 09952 2758 Laguna Honda Hospital Master Plan KMD/GHC+A Institutional Master Plan EXECUTIVE SUMMARY This Institutional Master Plan has been prepared as a follow up to the Facility Master Planning effort This report summarizes the results of analysis of available data on the existing physical plant, including its history, background, and current condition. The intent of this report is to provide a picture of the current status of Laguna Honda Hospital and the population it currently serves. This Master Plan also identifies the future directions for the provision of care at Laguna Honda Hospital. MISSION STATEMENT For over 125 years, San Franciscans have relied on Laguna Honda Hospital as the main provider of the City's long-term health care services. Committed to serving citizens regardless of their ability to pay, the Hospital has offered quality care and a source of security to generations of elderly and disabled. In the next few decades, San Francisco will face the challenge of fulfilling the expectations of a fast-growing elderly and disabled population with increasingly acute health needs. To continue the City's policy of high quality long-term care into the 21st Century, it is necessary to replace Laguna Honda Hospital with structures that meet current standards for functionality and operating efficiency. Serious physical deficiencies put the Hospital at risk of losing Federal and State reimbursements, which would lead to outright closure. FACILITY HISTORY AND USE • By 1867 the site of the future Laguna Honda Hospital had been acquired by San Francisco, and in 1867, a municipally financed shelter for the homeless was constructed on the site. It was rebuilt after the 1906 Earthquake as the Relief Home, again as a shelter for indigent homeless. Clarendon Hall was built soon thereafter as a facility to accommodat"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.28,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.28,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/lagunahondahospi1994kapl",
+   "deep_link": "https://archive.org/details/lagunahondahospi1994kapl?q=Laguna+Honda",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false
+  },
+  {
+   "identifier": "C124917894",
+   "title": "[Resolution calling on presidential candidates to address a plan to combat the HIV epidemic in America and its impact on cities]",
+   "creator": null,
+   "year": 1992,
+   "pool": "dl",
+   "matched_alias": "Laguna Honda Hospital",
+   "ocr_excerpts": [
+    "’s General Fund has paid for approximately 35.2 percent of the cost for AIDS. BOARD OF BUDGET ANALYST 4 Memo to Administration and Oversight Committee March 24, 1992 Administration and Oversight Committee Meeting The following table shows the City’s General Fund contributions to the DPH’s AIDS Office, San Francisco General Hospital, Laguna Honda Hospital and the Primary Care Centers from FY 1982-83 to FY 1991-92: Fiscal AIDS Laguna Primary Year Office SFGH Honda CareCenters Totals 1982-83 $180,447 $180,447 1983-84 4,004,368 4,004,368 1984-85 4,043,612 4,043,612 1985-86 4,958,417 4,958,417 1986-87 4,722,501 $4,900,000 9,622,501 1987-88 5,077,283 5,300,000 10,877,283 1988-89 5,756,876",
+    ",180 TOTALS $55,918,188 $40,023,450 $856,403 $4,660,425 $101,458,466 *Estimated based on a General Fund contribution to SFGH of 30 percent, and a General Fund contribution to the District Health Centers of 90 percent. Source: San Francisco Department of Public Health According to the AIDS Office, the costs reflected above for SFGH and Laguna Honda hospitals primarily include medical care for people with AIDS who are ineligible for MediCal. The AIDS Office reports that all of the City’s HIV- related medical care costs may not be reflected above, because the Federal definition of AIDS excludes many individuals with HIV related illnesses from presumptive eligibility for social security. Without p",
+    "ts, such as housing, home attendant care, and psychosocial support, at approximately $6.02 million; * primary medical care, at approximately $960,000; ¢ administration, at approximately $760,000. For more detailed information about AIDS Office programs, including General Fund, Federal and State expenditures, see Attachments 1 and 2. The Laguna Honda costs for each year are included in the non-acute health care costs of the AIDS Office. In summary, between 1981 and February 29, of 1992, 11,921 persons have been diagnosed with AIDS and 8,574 persons have died of AIDS. As of 1991, an estimated 28,000 San Franciscans, or nearly four percent of the population of San Francisco, are estimat"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 8.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 18.78,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124917894",
+   "deep_link": "https://archive.org/details/C124917894?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false,
+   "gloss": "A 1992 Budget Analyst memo to the Board's oversight committee, tabling the General Fund's contribution to AIDS care across DPH, SF General and Laguna Honda."
+  },
+  {
+   "identifier": "sanfranciscodepa19781983sanf",
+   "title": "The San Francisco Department of Public Health annual report",
+   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "year": 1979,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda Hospital",
+   "ocr_excerpts": [
+    "3158 #5 - 1351 2Uth Ave., 661-1+400 CITY CLINIC (VD) • 250 4th St., 558-3804 COMMUNITY MFNTAT. HEALTH SERVICES t:S- MENTAL HEALTH ADMINISTPJ\\TION 555 Polk St. 24 Hour Information £ Referral 387-5100 HOSPITAL SERVICES + SAN FRANCISCO GENERAL HOSPITAL 1001 Potrero Ave., 821-8200 * LACUNA HONDA 375 Laguna Honda Blvd., 664-1580 ■f-CENTRAL EMERGENCY DISPATCH 50 Ivy St., 431-2800 ORGANIZATION CHART Oir Fiscal Mgml. -1 1 Jail Medical Servic.l Southeast Ambulotory Heolfh Center _l L Deputy Gronts, Controcts, A«t. DIr. For Mental Heolth Servic Speclol Projects PotlenI Rights County Drug",
+    "d statistical sampling, accounting, and verification of the status of various projects. Currently in progress is a description of the San Francisco General Hospital/University of Cali- fornia at San Francisco interface in the Obstetrics- Gynecology department, and a description of the billing function at Laguna Honda Hospital. 6 PUBUC HEALTH SERVICES The effects of Proposition 13 were felt in every area of Public Health activities. New strategies were necessary to help minimize the damaging effects of budget cuts which caused some services to be cur- tailed. With the exception of the Bureau of Records and Statistics",
+    "will be implemented . Completion of new quarters, and a staff at full strength, will permit the Medical Records section to meet all data preparation and reporting require- ments with greater efficiency. The U.S. Department of Health, Education and Welfare performed an extensive on-site inspection of Laguna Honda in Summer 1978, checking for con- formance with Section 504 and Title VI standards. Because the hospital's service level and quality was considered excellent, the transition plan, accepted in December, focuses on barrier design. An action group called \"Your Committee\", composed of patient, public and st",
+    "In other areas of improvement , the Pharmacy section's Individual Patient Prescription system now covers every ward. Physical Therapy has ex- panded ward consultations. The State of California has designated San Fran- cisco as one of the first sites for the Multi- purpose Senior Services Project and Laguna Honda Hospital is expected to play a major role. Laguna Honda Hospital and the Department of Public Health are also discussing with several public and private agencies the possibilities of providing hospice care for the elderly. 14 EjTiergency Medical Services Budget cutbacks necessitated closing of Harbor and Park Aid Stations. Alemany Aid Station remained open, but",
+    "ental Health Services Jail Medical Programs Maternal and Child Health Juvenile Court Medical Clinic Public Health Education Public Health Laboratories Public Health Nursing Records and Statistics Target Population Community Contracts TOTAL HOSPITAL SERVICES Emergency Hospital Services * Hassler Ho"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.94,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.44,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscodepa19781983sanf",
+   "deep_link": "https://archive.org/details/sanfranciscodepa19781983sanf?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": false
+  },
+  {
+   "identifier": "into21stcenturyb1819sanf",
+   "title": "Into the 21st century : building a new facility to continue Laguna Honda Hospital's mission",
+   "creator": "San Francisco (Calif.). Dept. of Public Health,San Francisco (Calif.). Dept. of Public Works,Kaplan McLaughlin Diaz,Gordon H. Chong + Associates",
+   "year": 1992,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda Hospital",
+   "ocr_excerpts": [
+    "LAGUNA HONDA HOSPITAL BOND PROGRAM REPORT San Francisco Public Library Government Information Center San Francisco Public Library 100 Larkin Street, 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the library nto the 21st Century: building a New Facility to Continue iguna Honda Hospital's Mission February 18, 1992 kaplan Mclaughlin diaz in association with GORDON H. CHONG & ASSOCIATES CITY AND COUNTY OF SAN FRANCISCO DEPARTMENT OF PUBLIC HEALTH 3 1223 09952 2741 Laguna Honda Hospital Bond Program Report Into the 21st Century: Building a New Facility to Continue Laguna Honda HospitaVs Mission February 18, 1992 CITY AND COUNTY OF SAN FRANCISCO DEPARTMENT OF PUBLIC HEALTH DEPARTMENT OF PUBLIC WORKS kaplan Mclaughlin diaz in association with GORDON H. CHONG & ASSOCIATES Table of Contents Page Table of Contents i Figures □ Section I. Executive Summary 1 Sect",
+    "-6 Figure 14 Alternate B Site Plan A- 10 Figure 15 Alternate Comparison Matrix B-2 Figure 16 Area Comparison: Patient Rooms 4-Bed vs 2-Bed E-3 Digitized by the Internet Archive in 2014 https://archive.org/details/into21stcenturyb1819sanf Into the 21st Century: Building A New Facility to Continue Laguna Honda Hospital's Mission Bond Program Report Section I. Executive Summary For over 125 years, San Franciscans have relied on Laguna Honda Hospital as the main provider of the City's long-term health care services. Committed to serving citizens regardless of their ability to pay, the Hospital has offered quality care and a source of security to generations of elderly and disabled. In the next few decades, San Francisco will face the challenge of fulfilling the expectations of a fast-growing elderly and disabled population with increasingly acute health needs. To continue the City's policy of high quality long-term care into the 21st Century, it is necessary to replace Laguna Honda Hospital with structures that meet current standards for functionality and operating efficiency. Serious physical deficiencies put the Hospital at risk of losing Federal and State reimbursements, which would lead to outright closure. Laguna Honda presently operates under waivers from State and Federal authorities — waivers that may be revoked at any time. This Report proposes a $548.4 million Bond Program to finance a replacement facility to meet current standards for hospital design, construction, building systems, and seismic safety in a co",
+    "he outcome of a combined effort by Hospital management, the Department of Public Health, an extensive group of community advisors, the Department of Public Works, and a group of planning and architectural consultants. This planning team developed a comprehensive and farsighted Facilities Master Plan for Laguna Honda, upon which this Bond Program Report is based. - 1 - 1"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.45,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.95,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 2.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/into21stcenturyb1819sanf",
+   "deep_link": "https://archive.org/details/into21stcenturyb1819sanf?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
    "salient": false
   }
  ]

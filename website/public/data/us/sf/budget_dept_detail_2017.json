@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.844132+00:00",
+  "generated_at": "2026-07-28T11:43:46.598476+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -7985,14 +7985,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "026",
-          "label": "Court Fees and Other Compensation",
+          "code": "021",
+          "label": "Travel",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "021",
-          "label": "Travel",
+          "code": "026",
+          "label": "Court Fees and Other Compensation",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
@@ -25494,12 +25494,12 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Y M C A OF SAN FRANCISCO",
+            "vendor": "URBAN ED ACADEMY",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
-            "bucket": "nonprofit",
+            "bucket": null,
             "is_aggregation_line": false
           },
           {
@@ -25512,12 +25512,12 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "URBAN ED ACADEMY",
+            "vendor": "Y M C A OF SAN FRANCISCO",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
-            "bucket": null,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           },
           {
@@ -30216,7 +30216,16 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "HANDCRAFTED HARDWOODS",
+            "vendor": "S F Y JEWELRY",
+            "amount_usd": 590.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "ALEJANDRO VALLE CARRILLO",
             "amount_usd": 590.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -30226,15 +30235,6 @@
           },
           {
             "vendor": "CEVERINA ROMAN",
-            "amount_usd": 590.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "S F Y JEWELRY",
             "amount_usd": 590.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -30623,7 +30623,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "GUISTO ENTERPRISES INC",
+            "vendor": "SAN FRANCISCO MILLWORK INC",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -30632,7 +30632,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SAN FRANCISCO MILLWORK INC",
+            "vendor": "GUISTO ENTERPRISES INC",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -38685,7 +38685,7 @@
         "n_vendors": 4,
         "vendors": [
           {
-            "vendor": "PARENTS FOR PUBLIC SCHOOLS OF S F INC",
+            "vendor": "MISSION GRADUATES",
             "amount_usd": 14999.0,
             "n_vouchers": 3,
             "is_non_profit": false,
@@ -38694,7 +38694,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MISSION GRADUATES",
+            "vendor": "PARENTS FOR PUBLIC SCHOOLS OF S F INC",
             "amount_usd": 14999.0,
             "n_vouchers": 3,
             "is_non_profit": false,
@@ -39307,7 +39307,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MARGUERITE MCHALE",
+            "vendor": "ANH TU NGUYEN",
             "amount_usd": 5000.0,
             "n_vouchers": 5,
             "is_non_profit": false,
@@ -39316,7 +39316,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "ANH TU NGUYEN",
+            "vendor": "MARGUERITE MCHALE",
             "amount_usd": 5000.0,
             "n_vouchers": 5,
             "is_non_profit": false,

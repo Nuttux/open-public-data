@@ -48,9 +48,10 @@ export default async function SfPlacePage({ params }: { params: Promise<Params> 
             </Link>
           </div>
           <h1 className="fx-page-title">{place.name}</h1>
-          <p className="fx-page-lede">
-            {place.kind} · operated by the {place.owning_dept.name}
-          </p>
+          {/* Just the kind: the money block below says "Operated by the X"
+              with the department's budget, staff count and a link to its
+              fiche — the richer statement of the same fact. */}
+          <p className="fx-page-lede">{place.kind}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

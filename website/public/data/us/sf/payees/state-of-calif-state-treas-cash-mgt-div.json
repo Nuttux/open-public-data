@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.729278+00:00",
+ "generated_at": "2026-07-28T11:43:47.695269+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,162 @@
  "top_departments": [
   "CRT Superior Court"
  ],
+ "profile": {
+  "n_vouchers": 2167,
+  "departments": [
+   {
+    "department": "CRT Superior Court",
+    "department_code": "CRT",
+    "usd": 496290417.46,
+    "n_vouchers": 1495
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 71375893.57,
+    "n_vouchers": 317
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 33690802.72,
+    "n_vouchers": 173
+   },
+   {
+    "department": "ASR Assessor - Recorder",
+    "department_code": "ASR",
+    "usd": 797459.5,
+    "n_vouchers": 114
+   },
+   {
+    "department": "POL Police",
+    "department_code": "POL",
+    "usd": 554585.38,
+    "n_vouchers": 37
+   },
+   {
+    "department": "JUV Juvenile Probation",
+    "department_code": "JUV",
+    "usd": 9466.97,
+    "n_vouchers": 52
+   }
+  ],
+  "n_departments": 6,
+  "categories": [
+   {
+    "code": "552410",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 201772053.0,
+    "n_vouchers": 40
+   },
+   {
+    "code": "OTHR_OBLIG_AGNCY_FUN",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 118547664.8,
+    "n_vouchers": 1832
+   },
+   {
+    "code": "552440",
+    "label": "Court Facilities Payment",
+    "spend_class": "unclear",
+    "usd": 15509613.96,
+    "n_vouchers": 36
+   },
+   {
+    "code": "425110",
+    "label": "Traffic Fines - Moving",
+    "spend_class": "ledger",
+    "usd": 2151611.82,
+    "n_vouchers": 43
+   },
+   {
+    "code": "535000",
+    "label": "Other Current Expenses - Bdgt",
+    "spend_class": "purchase",
+    "usd": 1638125.12,
+    "n_vouchers": 5
+   },
+   {
+    "code": "REF_PAY",
+    "label": "Refunds Payable",
+    "spend_class": "ledger",
+    "usd": 1389752.8,
+    "n_vouchers": 1
+   },
+   {
+    "code": "425317",
+    "label": "Fine RelatedToDnaIdProp69-2004",
+    "spend_class": "unclear",
+    "usd": 252269.85,
+    "n_vouchers": 30
+   },
+   {
+    "code": "430150",
+    "label": "Interest Earned - Pooled Cash",
+    "spend_class": "unclear",
+    "usd": 182401.17,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 11,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 35992628.92,
+  "n_recent_lines": 11,
+  "recent_lines": [
+   {
+    "department": "CRT Superior Court",
+    "department_code": "CRT",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 22419117.0,
+    "n_vouchers": 4
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 7930153.95,
+    "n_vouchers": 36
+   },
+   {
+    "department": "CRT Superior Court",
+    "department_code": "CRT",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 4113323.7,
+    "n_vouchers": 160
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Court Facilities Payment",
+    "spend_class": "unclear",
+    "usd": 1292467.83,
+    "n_vouchers": 3
+   },
+   {
+    "department": "ASR Assessor - Recorder",
+    "department_code": "ASR",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 102311.7,
+    "n_vouchers": 12
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Traffic Fines - Moving",
+    "spend_class": "ledger",
+    "usd": 58030.03,
+    "n_vouchers": 10
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

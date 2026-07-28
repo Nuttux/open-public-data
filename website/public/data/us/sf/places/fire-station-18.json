@@ -1,0 +1,327 @@
+{
+ "generated_at": "2026-07-28T12:23:47.806197+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "fire-station-18",
+ "name": "Fire Station #18",
+ "kind": "Fire station",
+ "family": "fire",
+ "address": "1935 32nd Ave",
+ "lat": 37.750986,
+ "lon": -122.490544,
+ "owning_dept": {
+  "name": "Fire Department",
+  "code": "FIR"
+ },
+ "facility": {
+  "primary_name": "Fire Station #18",
+  "primary_address": "1935 32ND AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94116",
+  "primary_block_lot": "2102006",
+  "primary_department_name": "Fire Department",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 15900,
+  "primary_latitude": 37.75098636300004,
+  "primary_longitude": -122.49054390699996,
+  "supervisor_district": 4,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 15900,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "2102006"
+  ],
+  "facilities": [
+   {
+    "facility_id": 700,
+    "common_name": "Fire Station #18",
+    "block_lot": "2102006",
+    "gross_sq_ft": 15900,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 1,
+  "measure_totals": {},
+  "bond_programs": [
+   "Public Health and Safety"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "NFS Emergency Generator (Fire Station #18, #37, and #44)",
+    "bond_program": "Public Health and Safety",
+    "component": "Neighborhood Fire Stations",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Fire Station #18"
+   }
+  ],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": "/img/us/sf/places/fire-station-18.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/fire-station-18.jpg",
+  "source": "sf-fire.org",
+  "source_url": "https://sf-fire.org/fire-station/san-francisco-fire-station-18",
+  "license": "UNVERIFIED",
+  "license_url": "",
+  "license_verified": false,
+  "provisional": true,
+  "author": "Bing",
+  "resolved_via": "web-search",
+  "fetched_at": "2026-07-27T23:45:34.911784+00:00"
+ },
+ "summary_en": "Fire Station 18 stands at 1933 32nd Avenue in the Sunset, on a 15,000-square-foot lot. Two pieces of city finance run through it. The first is straightforward: in November 1992 voters approved Proposition C, authorising $40.8 million of fire protection general obligation bonds, and the Budget Committee later released $1,297,000 of that money to fund the station's construction contract. The second is stranger, and the property register hints at it in a single line — \"asset transfer from 911 Communication System Bond Sale\". The Finance Committee's papers explain what that means. To cover the annual principal and interest due on lease revenue bonds for the citywide emergency radio system, the city put two of its properties into an asset-transfer lease financing: the Mental Health Skilled Nursing Center at 887 Potrero Avenue, and this fire station. The maximum annual base rental the city would pay across the two was capped at $5,500,000 for a term not exceeding thirty years, with the bonds expected to be repaid over twenty. The city was required to insure both buildings — and had the station burned or been vandalised, the papers note, the insurance proceeds could either repair it or buy out the lease.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "FIR",
+   "name": "Fire Department",
+   "total_usd": 513912614.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "FIR",
+   "name": "Fire Department",
+   "total_compensation_usd": 477279432.76,
+   "n_employees": 2054,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2006",
+   "title": "Real property owned by the city and county of San Francisco / 2006",
+   "creator": null,
+   "year": 2006,
+   "pool": "dl",
+   "matched_alias": "Fire Station 18",
+   "ocr_excerpts": [
+    "50A-021; 2050A-022. Page 34 REAL PROPERTY OWNED BY THE CITY AND COUNTY OF SAN FRANCISCO LAND DESCRIPTION (with Facilities) A.P. GIANNINI JR. HIGH SCHOOL PARKING AREA SUNSET DAY TREATMENT CENTER WEST SUNSET PLAYGROUND ORTEGA BRANCH LIBRARY SUNSET ELEMENTARY SCHOOL formerly JOHN O'CONNELL SENIOR HIGH SCHOOL VACANT LOT FIRE STATION #18 Asset transfer from 911 Communication System Bond Sale. SUNSET RESERVOIR WATER FACILITIES FISCAL YEAR 2005-2006 ADDRESS JURISDICTION LAND AREA (Sq. Ft) LOT BLOCK OPEN SPACE (SE 14TH & ORTEGA AVENUES): See Block 2050A, Lot 006 for details. 011 2050A OPEN SPACE (SE 14TH & ORTEGA AVENUES): See Block 2050A, Lot 006 for details. 012 2050A",
+    "04,592 005 2094 JOHN O'CONNELL TECHNICAL HIGH SCHOOL (Portion) 41ST AVENUE & QUINTARA Recreation and Park 302,032 005 2094 ST (Portion) WEST SUNSET PLAYGROUND: See Block 2094, Lot 004 for details. 005 2094 (Portion) SUNSET PARKWAY TO SLOAT BLVD: See Block 1714, Lot 001 for details. 001 2098 1933 32ND AVENUE Fire Department 15,000 006 2102 FIRE STATION #18 28TH AVENUE & ORTEGA PUC/Clean Water 1,497,593 001 2107 STREET RESERVOIR/COVERED/SUNSET; WAT SUPP/CHLOR STA/SUNSET RES Page 35 REAL PROPERTY OWNED BY THE CITY AND COUNTY OF SAN FRANCISCO LAND DESCRIPTION (with Facilities) ADDRESS JOHN P. MURPHY PLAYGROUND SUNSET HEIGHTS PARK R.L. STEVENSON SCHOOL (ELEMENTARY) ABRAHAM L",
+    "TERESITA TERESITA HARRISON Page 126 FISCAL YEAR 2005-2006 LAND DESCRIPTION LOT BLOCK FULTON PLAYGROUND 009 1670 SUNSET PLAYGROUND 001 1915 SUNSET RESERVOIR WATER FACILITIES 001 2107 PRESIDIO JR. HIGH SCHOOL 001 1461 LAWTON SCHOOL (ELEMENTARY) 002 1876 RICHMOND COMMUNITY CENTER 008 1614 O'SHAUGNESSY HOLLOW (OPEN SPACE) 076 2949A FIRE STATION #18 006 2102 GEORGE WASHINGTON SR. HIGH SCHOOL 001 1574 SWIMMING POOL 001 1574 BALBOA SUBSTATION 001 1574 R.L. STEVENSON SCHOOL (ELEMENTARY) 001 2154 LINCOLN PARK 028 1313 ANZA LIBRARY 012B 1508 SOUTH SUNSET PLAYGROUND 001 2456 SUNSET ELEMENTARY SCHOOL 005 2094 SUNSET DAY TREATMENT CENTER 004 2094 FIRE STATION #34 001 1494 VACANT LOT 005 20"
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": 5.52,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.02,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2006",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2006?q=Fire+Station+18",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "A later register edition, with the station's lot, block and 15,000 square feet unchanged."
+  },
+  {
+   "identifier": "realpropertyowne2001sanf",
+   "title": "Real property owned by the City and County of San Francisco / Real Estate Department",
+   "creator": "San Francisco (Calif.). Real Estate Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station 18",
+   "ocr_excerpts": [
+    "(Portion) 2094 \\/ A OA KIT 1 r\"\\T VAOAN 1 LU 1 41<?T AVFNI IF SL HI IIKITARA Rorrpatinn anrl Park ST 302,032 1 Portion 1 WEST SUNSET PLAYGROUND: See Block 2094, Lot 004 for details. 005 2094 (Portion) SUNSET PARKWAY TO SLOAT BLVD: See Block 1714, Lot 001 for details. 001 2098 FIRE STATION #18 1933 32ND AVENUE Fire Department 15,000 006 2102 Asset transfer from 91 1 Communication System Bond FIRE STATION #18 Sale. SUNSET RESERVOIR WATER FACILITIES 28TH AVENUE & ORTEGA PUC/Clean Water STREET 1,497,593 RESERVOIR'COVERED/SUNSET: WAT SUPP/CHLOR STA/SUNSET RES 001 2107 SLOPE PROTECTION (SW LAGUNA HONDA): See Block 2044, Lot 020 for details. 001 2120 JOHN P. MURPHY PLAYGROUND 1 960 9TH AVENUE",
+    "1614 1570 31 ST AVE LAWTON SCHOOL (ELEMENTARY) 002 1876 31 ST ST and BURNETT AVE O'SHAUGNESSY HOLLOW (OPEN SPACE) 076 2949A 600 32ND AVE GEORGE WASHINGTON SR. HIGH SCHOOL 001 1574 600 32ND AVE SWIMMING POOL 001 1574 682 32ND AVE BALBOA SUBSTATION 001 1 574 1933 32ND AVE FIRE STATION #18 006 2102 2051 34TH AVE R.L. STEVENSON SCHOOL (ELEMENTARY) 001 2154 34TH AVE and CLEMENT ST LINCOLN PARK 028 1313 550 37TH AVE ANZA LIBRARY 012B 38TH AVE and CABRILLO ST CABRILLO PLAYGROUND 013 1 uu 1 40TH AVE and VICENTE ST SOUTH SUNSET PLAYGROUND 001 2456 499 41 ST AVE",
+    "O'CONNELL TECHNICAL HIGH SCHOOL 3223 ORTEGA STREET Public Library ORTEGA BRANCH LIBRARY 41 ST AVENUE & QUINTARA Recreation and Park ST 204,592 21,875 302,032 WEST SUNSET PLAYGROUND: See Block 2094, Lot 004 for details SUNSET PARKWAY TO SLOAT BLVD: See Block 1714, Lot 001 for details. FIRE STATION #18 Asset transfer from 91 1 Communication System Bond Sale. SUNSET RESERVOIR WATER FACILITIES 1933 32ND AVENUE FIRE STATION #18 Fire Department 28TH AVENUE & ORTEGA PUC/Clean Water STREET 15,000 1,497,593 RESERVOIR/COVERED/SUNSET; WAT SUPP/CHLOR STA/SUNSET RES SLOPE PROTECTION (SW LAGUNA HONDA): See Block 2044, Lot 020 for details. JOHN P. MURPHY PLAYGROUND SUNSET HEIGHTS PARK 1960 9TH AVENUE Recreation and Park J",
+    "IRE STATION #14 PARKSIDE SQUARE FIRE STATION #11 FULTON PLAYGROUND SUNSET PLAYGROUND SUNSET RESERVOIR WATER FACILITIES FIRE DEPT HQTRS/SALT WATER PUMPING STATION #1 PRESIDIO JR HIGH SCHOOL CLEMENT TENNIS COURTS LAWTON SCHOOL (ELEMENTARY) RICHMOND COMMUNITY CENTER O SHAUGNESSY HOLLOW (OPEN SPACE) FIRE STATION #18 GEORGE WASHINGTON SR HIGH SCHOOL FISCAL YEAR 2003-2004 1620 1384 2193 2351 1334 4213 6515 6507 6517 2829 4209 1779 2425 7295 4279 4277 6523 6523 1518 2469 6551 1670 1915 2107 3788 1614 2 949 A 2102 1574 Page 131 REAL PROPERTY OWNED BY THE CITY COUNTY OF SAN FRANCISCO ADDRESS CROSS RE"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.43,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.43,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/realpropertyowne2001sanf",
+   "deep_link": "https://archive.org/details/realpropertyowne2001sanf?q=Fire+Station+18",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The city's property register, noting the station's transfer from the 911 communication system bond sale."
+  },
+  {
+   "identifier": "1calendarmeetingo1996sanf",
+   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station No. 18",
+   "ocr_excerpts": [
+    "unding Fire Station No. 41 construction contract. (Department of Public Works) ACTION: 5. File 101-92-60.14. [Release of Reserved Funds - Fire Dept.] Hearing to consider release of reserved funds, Fire Department (1992 Prop C Bond Issue Fund), in the amount of $1,297,000, for the purpose of funding Fire Station No. 18 construction contract. (Department of Public Works) ACTION: 6. File 101-92-60.15. [Release of Reserved Funds - Fire Dept.] Hearing to consider release of reserved funds, Fire Department (1992 Prop C Bond Issue Fund), in the amount of $1,371,000, for the purpose of funding Fire Station No. 34 constr",
+    "101-92-60.14 Department: Item: Amount: Source of Funds: Description: San Francisco Fire Department (SFFD) Department of Public Works (DPW) Release of reserved funds, Fire Department (1992 Proposition C Bond Issue), in the amount of $1,297,000, for the purpose of funding the construction contract for Fire Station No. 18 located at 1933 32nd Avenue. $1,297,000 1992 Fire Protection Bond Funds, Series 1993D In November of 1992, the voters approved Proposition C, authorizing the issuance of Fire Protection bonds series 1993D. A total of $40.8 million in these General Obligation bonds were approved to finance improvemen",
+    "bond funds on reserve pending the selection of contractors, the MBE/WBE status of the contractors, and contract cost details. The proposed release of reserved funds, in the amount of $1,297,000, would be used to pay for a portion of the construction contract and related costs for the renovation of Fire Station No. 18, located at 1933 32nd Avenue. The overall cost of the project is $2,309,000, with the remaining funds in the amount of $1,012,000 to be provided from other bond funds (See Comment No. 2). The scope of work for this building includes seismic upgrades, disabled access improvements, renovation of mecha",
+    "ed a competitive bidding process for this contract and has selected Chiang CM. Construction as the lowest responsible bidder, based on a bid amount of $1,259,883. Chiang CM. Construction is a City-certified MBE. Attachment I shows the bidders, bid amounts, and MBE/WBE/LBE status of the bidders on the Fire Station No. 18 project. BOARD OF SUPERVISORS BUDGET ANALYST 10 Memo to Budget Committee May 22, 1996 Budget Committee Meeting Budget The estimated overall project cost for Fire Station No. 18 is $2,309,000, as follows: Construction contract $1,259,883 Asbestos abatement 56.848 Sub-total construction $1,316,731 Contingency (15.4% of construction) 203,269 Basic Design & Engineering 163,100 (See Attachment II) Construction Management 158,000 Construction Services 112,620 Geotech, Surveys, Data",
+    "y Agency Approvals 93,734 Administration, Testing, Inspection 21,000 Sub-total other cost 789r000 TOTAL $2,309,000 Comments: Recommendation"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.96,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.46,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/1calendarmeetingo1996sanf",
+   "deep_link": "https://archive.org/details/1calendarmeetingo1996sanf?q=Fire+Station+No.+18",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Budget Committee papers releasing $1,297,000 of 1992 fire protection bond funds for the station's construction."
+  },
+  {
+   "identifier": "8minutes1997sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station No. 18",
+   "ocr_excerpts": [
+    "to cover the annual principal and interest payments due on the SFFC Lease Revenue Bonds for the Citywide Emergency Radio System Project. This financing structure is known as an \"asset transfer\" lease financing. The two properties are: (1) Mental Health Skilled Nursing Center (887 Potrero Avenue) (2) Fire Station No. 18 (1933 32nd Avenue) The resolution stipulates that maximum annual base rental to be paid by the City to the SFFC for the two properties would not exceed $5,500,000, for a term not to exceed 30 years, however it is expected that the Series 1998-1 Bonds will be repaid over a 20-year term. Furtherm",
+    "ilable to recover base rental payments as they become due, including taking possession of and selling the property. According to Ms. Moyer, under the proposed asset transfer lease financing the City is required to obtain property and casualty insurance on the Mental Health Skilled Nursing Facility and Fire Station #18. Ms. Moyer advises that, if such properties were damaged by fire, vandalism or other event, the City would have the option of using insurance proceeds to repair the damages and resume payments to the SFFC or of using the insurance proceeds to buy out the lease with the SFFC which would in turn",
+    "that this is a risk assumed by the bondholders and not by the City. Comments: 1. Ms. Moyer advises that what makes this financing distinct from previous SFFC lease revenue financings approved by the Board of Supervisors is that the City facilities, the Mental Health Skilled Nursing Center and Fire Station No. 18, serving as collateral to secure the lease is not the same property being constructed and acquired with the bond money. Under a traditional lease financing, the Emergency Radio System itself would be the collateral for the lease. Ms. Moyer states that using the Emergency Radio System as collateral i",
+    "e Emergency Radio System Project to be funded with Lease Revenue Bonds and the related reserve fund and bond issuance costs, which is currently estimated to total $46,611,910. 5. As noted above, according to Ms. Moyer, the lease payments to the SFFC for the Mental Health Skilled Nursing Center and Fire Station No. 18, are estimated to total $43,905,986 over a 20-year period. Mr. Martin advises that, of the $43,905,986, an estimated 70 percent or $30,734,190 would be paid from General Fund monies and approximately 30 percent or $13,171,796 would be paid through the 911 Emergency Response Fee, grants, and other sou",
+    "and the Series 1998-1 Bonds, estimated at $30,000 annually, including annual insurance premiums, according to Ms. Moyer. Furthermore, the City would continue to be responsible for all utilities, janitorial and security services, and repair and maintenance of the Mental Health Skilled Nursing Center and Fire Station No. 18 during the t"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.97,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.47,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/8minutes1997sanf",
+   "deep_link": "https://archive.org/details/8minutes1997sanf?q=Fire+Station+No.+18",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Finance Committee papers putting the station into an asset-transfer lease financing for the emergency radio system."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "minutesoffirecom2002sanf",
+   "title": "Minutes of the Fire Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesoffirecom2002sanf"
+  },
+  {
+   "identifier": "minutesoffirecom2003sanf",
+   "title": "Minutes of the Fire Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesoffirecom2003sanf"
+  },
+  {
+   "identifier": "minutesoffirecom2001sanf",
+   "title": "Minutes of the Fire Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesoffirecom2001sanf"
+  }
+ ],
+ "dept_shelf_label": "Fire Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 4,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

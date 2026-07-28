@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.906734+00:00",
+  "generated_at": "2026-07-28T11:43:46.661787+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -10785,14 +10785,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581921",
-          "label": "ADM CMD Contractor Development",
+          "code": "581250",
+          "label": "GF-City Planning",
           "amount_usd": 100000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581250",
-          "label": "GF-City Planning",
+          "code": "581921",
+          "label": "ADM CMD Contractor Development",
           "amount_usd": 100000.0,
           "is_transfer_adjustment": false
         },
@@ -10973,7 +10973,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "WILLIAM RHODES",
+            "vendor": "Melodie Davis",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -10982,7 +10982,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Melodie Davis",
+            "vendor": "WILLIAM RHODES",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -11000,7 +11000,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Tanya Wischerath",
+            "vendor": "Carmen McNall",
             "amount_usd": 9600.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -11009,7 +11009,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Carmen McNall",
+            "vendor": "Tanya Wischerath",
             "amount_usd": 9600.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -14328,14 +14328,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581320",
-          "label": "GF-District Attorney",
+          "code": "581330",
+          "label": "GF-Bus & Ecn Dev",
           "amount_usd": 150000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581330",
-          "label": "GF-Bus & Ecn Dev",
+          "code": "581320",
+          "label": "GF-District Attorney",
           "amount_usd": 150000.0,
           "is_transfer_adjustment": false
         },
@@ -15614,14 +15614,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581580",
-          "label": "GF-Chs-Toxic Waste&Haz Mat Svc",
+          "code": "581069",
+          "label": "Sr-DPW-Street Use & Mapping",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581069",
-          "label": "Sr-DPW-Street Use & Mapping",
+          "code": "581580",
+          "label": "GF-Chs-Toxic Waste&Haz Mat Svc",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
@@ -29864,14 +29864,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581166",
-          "label": "GF-Immigrant and Language Serv",
+          "code": "581320",
+          "label": "GF-District Attorney",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581320",
-          "label": "GF-District Attorney",
+          "code": "581166",
+          "label": "GF-Immigrant and Language Serv",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
@@ -37318,7 +37318,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "BAY AREA VIDEO COALITION",
+            "vendor": "OLD SKOOL CAFE",
             "amount_usd": 35000.0,
             "n_vouchers": 2,
             "is_non_profit": true,
@@ -37327,7 +37327,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "OLD SKOOL CAFE",
+            "vendor": "BAY AREA VIDEO COALITION",
             "amount_usd": 35000.0,
             "n_vouchers": 2,
             "is_non_profit": true,
@@ -37345,21 +37345,21 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "TIDES CENTER",
-            "amount_usd": 35000.0,
-            "n_vouchers": 1,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "LAVENDER YOUTH RECREATION & INFO CTR",
             "amount_usd": 35000.0,
             "n_vouchers": 1,
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "TIDES CENTER",
+            "amount_usd": 35000.0,
+            "n_vouchers": 1,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           },
           {
@@ -41506,14 +41506,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581670",
-          "label": "GF-Mayor'S - Cdbg",
+          "code": "581980",
+          "label": "GF-Tax Collector",
           "amount_usd": 120000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581980",
-          "label": "GF-Tax Collector",
+          "code": "581670",
+          "label": "GF-Mayor'S - Cdbg",
           "amount_usd": 120000.0,
           "is_transfer_adjustment": false
         },
@@ -41560,14 +41560,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581660",
-          "label": "GF-Chf-Youth Works",
+          "code": "581855",
+          "label": "GF-Human Rights Commission Svc",
           "amount_usd": 9600.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581855",
-          "label": "GF-Human Rights Commission Svc",
+          "code": "581660",
+          "label": "GF-Chf-Youth Works",
           "amount_usd": 9600.0,
           "is_transfer_adjustment": false
         },

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.739193+00:00",
+ "generated_at": "2026-07-28T12:23:47.753134+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sf-main-library",
@@ -64,148 +64,20 @@
    }
   ],
   "n_payees": 2,
-  "payees_total_paid": 6675491.62,
-  "permits": [
-   {
-    "description": "erect a seven story public library-new main branch library",
-    "permit_type": "new construction",
-    "declared_cost_usd": 85000000.0,
-    "status": "expired",
-    "permit_date": "1992-06-04",
-    "permit_year": 1992
-   },
-   {
-    "description": "erect a seven story public library-new main branch library",
-    "permit_type": "new construction",
-    "declared_cost_usd": 85000000.0,
-    "status": "expired",
-    "permit_date": "1992-06-04",
-    "permit_year": 1992
-   },
-   {
-    "description": "removal of existing 42 atrium smoke exhaust fans and replacement with 42 new atrium smoke exhaust fans due to equipment obsolescence.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 5000000.0,
-    "status": "filed",
-    "permit_date": "2026-04-16",
-    "permit_year": 2026
-   },
-   {
-    "description": "replacement of roofing membrane, replace sealant around skylights and curtainwall, replace plumbing drains as need on roof drains",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 4000000.0,
-    "status": "issued",
-    "permit_date": "2026-07-08",
-    "permit_year": 2026
-   },
-   {
-    "description": "scope consists of 1st floor renovation of main library. tenant improvments and installation of sorting machine, automated storage and retrievel machine by logistex (under different permit). no exterior work.",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 2800000.0,
-    "status": "complete",
-    "permit_date": "2006-11-16",
-    "permit_year": 2006
-   },
-   {
-    "description": "tenant improvement for teen ctr at 2/fl. selective interior demo of(e)bldg, construction of new offices,sound booth,video recording booth,maker space(arts&crafts) single user restroom w/updated mech,plumbing,elec sys. fire sprinkler and fire alarm revisions under separate application.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 1800000.0,
-    "status": "complete",
-    "permit_date": "2014-07-24",
-    "permit_year": 2014
-   }
-  ],
-  "n_permits": 52,
-  "permits_total_declared": 189619196.0,
-  "permits_by_year": [
-   {
-    "year": 1992,
-    "declared_usd": 171332000.0
-   },
-   {
-    "year": 1995,
-    "declared_usd": 20640.0
-   },
-   {
-    "year": 1997,
-    "declared_usd": 17580.0
-   },
-   {
-    "year": 2000,
-    "declared_usd": 136000.0
-   },
-   {
-    "year": 2003,
-    "declared_usd": 10000.0
-   },
-   {
-    "year": 2005,
-    "declared_usd": 120000.0
-   },
-   {
-    "year": 2006,
-    "declared_usd": 2800000.0
-   },
-   {
-    "year": 2007,
-    "declared_usd": 82000.0
-   },
-   {
-    "year": 2008,
-    "declared_usd": 14000.0
-   },
-   {
-    "year": 2013,
-    "declared_usd": 40000.0
-   },
-   {
-    "year": 2014,
-    "declared_usd": 2887350.0
-   },
-   {
-    "year": 2015,
-    "declared_usd": 116000.0
-   },
-   {
-    "year": 2017,
-    "declared_usd": 120000.0
-   },
-   {
-    "year": 2019,
-    "declared_usd": 670000.0
-   },
-   {
-    "year": 2020,
-    "declared_usd": 3770.0
-   },
-   {
-    "year": 2021,
-    "declared_usd": 307200.0
-   },
-   {
-    "year": 2022,
-    "declared_usd": 907556.0
-   },
-   {
-    "year": 2025,
-    "declared_usd": 190100.0
-   },
-   {
-    "year": 2026,
-    "declared_usd": 9845000.0
-   }
-  ]
+  "payees_total_paid": 6675491.62
  },
  "photo": "/img/us/sf/places/sf-main-library.jpg",
  "photo_credit": {
   "photo": "/img/us/sf/places/sf-main-library.jpg",
   "source": "Wikimedia Commons",
-  "file": "File:SFPL_Main_Library_Full_Exterior.jpg",
-  "file_url": "https://commons.wikimedia.org/wiki/File:SFPL_Main_Library_Full_Exterior.jpg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:SFPL_Main_Library_Full_Exterior.jpg",
   "license": "CC BY-SA 3.0",
   "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "license_verified": true,
+  "provisional": false,
   "author": "J. Ash Bowie",
-  "fetched_at": "2026-07-20T22:24:13.527899+00:00"
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T22:51:06.612334+00:00"
  },
  "summary_en": "The record centers on the making of the current Main Library. A 1991 draft environmental impact report assesses the New Main Library project on Marshall Square, and a facility assessment recommends new construction there after a 1986 space-requirements study. A 1991 press release notes the Library Commission approved design-development drawings for the new building, designed by Cathy Simon of Simon Martin-Vegue Winkelstein & Moris and James Ingo Freed. A 2000 post-occupancy evaluation reviews the finished building and its close-out items. Operated by the Public Library (FY2025 budget about $187M); a 'Workforce Dev Main Library' contract with Urban Alchemy has paid $2,702,896.81 of an agreed $5,011,265.61.",
  "published": true,
@@ -240,151 +112,283 @@
       "attached_usd": 5011265.61
      }
     ]
+   },
+   {
+    "contract_no": "1000033616",
+    "title": "San Francisco Public Library HVAC Maintenance",
+    "prime": "SCHNEIDER ELECTRIC BUILDINGS AMERICAS",
+    "department_code": "LIB",
+    "agreed_usd": 1282825.0,
+    "paid_usd": 757608.45,
+    "evidence": "SFPL HVAC Maintenance",
+    "team": [
+     {
+      "supplier": "SCHNEIDER ELECTRIC BUILDINGS AMERICAS",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 1282825.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035021",
+    "title": "San Francisco Public Library Chinatown Tempsite",
+    "prime": "JQ Properties LP",
+    "department_code": "LIB",
+    "agreed_usd": 443250.0,
+    "paid_usd": 272125.0,
+    "evidence": "SFPL Chinatown Tempsite",
+    "team": [
+     {
+      "supplier": "JQ Properties LP",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 443250.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000036952",
+    "title": "TC96105 San Francisco Public Library Staff Copiers",
+    "prime": "CANON USA INC",
+    "department_code": "LIB",
+    "agreed_usd": 1292032.71,
+    "paid_usd": 203818.85,
+    "evidence": "TC96105_SFPL Staff Copiers",
+    "team": [
+     {
+      "supplier": "CANON USA INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 1292032.71
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035761",
+    "title": "San Francisco Public Library Marketing & Advertising",
+    "prime": "Most Likely To, Inc",
+    "department_code": "LIB",
+    "agreed_usd": 800000.0,
+    "paid_usd": 106986.02,
+    "evidence": "SFPL Marketing & Advertising",
+    "team": [
+     {
+      "supplier": "Most Likely To, Inc",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 800000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000036953",
+    "title": "TC96105 San Francisco Public Library Public Copiers",
+    "prime": "CANON USA INC",
+    "department_code": "LIB",
+    "agreed_usd": 611620.8,
+    "paid_usd": 96377.52,
+    "evidence": "TC96105_SFPL Public Copiers",
+    "team": [
+     {
+      "supplier": "CANON USA INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 611620.8
+     }
+    ]
+   },
+   {
+    "contract_no": "1000033582",
+    "title": "San Francisco Public Library Fire Sprinkler",
+    "prime": "SIEMENS INDUSTRY INC",
+    "department_code": "LIB",
+    "agreed_usd": 400174.0,
+    "paid_usd": 90624.5,
+    "evidence": "SFPL Fire Sprinkler",
+    "team": [
+     {
+      "supplier": "SIEMENS INDUSTRY INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 400174.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000033882",
+    "title": "San Francisco Public Library Online Adult High School",
+    "prime": "CENGAGE LEARNING INC",
+    "department_code": "LIB",
+    "agreed_usd": 90000.0,
+    "paid_usd": 90000.0,
+    "evidence": "SFPL Online Adult High School",
+    "team": [
+     {
+      "supplier": "CENGAGE LEARNING INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 90000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000034063",
+    "title": "San Francisco Public Library Chiller Maintenance",
+    "prime": "JOHNSON CONTROLS INC",
+    "department_code": "LIB",
+    "agreed_usd": 357230.0,
+    "paid_usd": 80434.59,
+    "evidence": "SFPL Chiller Maintenance",
+    "team": [
+     {
+      "supplier": "JOHNSON CONTROLS INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 357230.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035329",
+    "title": "San Francisco Public Library Digital Literacy Grant",
+    "prime": "St. Francis' Episcopal Church",
+    "department_code": "LIB",
+    "agreed_usd": 11995.0,
+    "paid_usd": 11995.0,
+    "evidence": "SFPL Digital Literacy Grant",
+    "team": [
+     {
+      "supplier": "St. Francis' Episcopal Church",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 11995.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000036372",
+    "title": "San Francisco Public Library Spyglass Audit",
+    "prime": "The SpyGlass Group, LLC",
+    "department_code": "LIB",
+    "agreed_usd": 1000000.0,
+    "paid_usd": 0.0,
+    "evidence": "SFPL Spyglass Audit",
+    "team": [
+     {
+      "supplier": "The SpyGlass Group, LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 1000000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000034524",
+    "title": "TC96105 San Francisco Public Library 35 Copiers",
+    "prime": "CANON SOLUTIONS AMERICA INC",
+    "department_code": "LIB",
+    "agreed_usd": 392554.24,
+    "paid_usd": 0.0,
+    "evidence": "TC96105_SFPL 35 Copiers",
+    "team": [
+     {
+      "supplier": "CANON SOLUTIONS AMERICA INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 392554.24
+     }
+    ]
+   },
+   {
+    "contract_no": "1000034525",
+    "title": "TC96105 San Francisco Public Library 14 staff Copiers",
+    "prime": "CANON SOLUTIONS AMERICA INC",
+    "department_code": "LIB",
+    "agreed_usd": 171489.5,
+    "paid_usd": 0.0,
+    "evidence": "TC96105_SFPL 14 staff Copiers",
+    "team": [
+     {
+      "supplier": "CANON SOLUTIONS AMERICA INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 171489.5
+     }
+    ]
+   },
+   {
+    "contract_no": "1000034533",
+    "title": "TC96105 San Francisco Public Library Production Copier",
+    "prime": "CANON SOLUTIONS AMERICA INC",
+    "department_code": "LIB",
+    "agreed_usd": 106672.7,
+    "paid_usd": 0.0,
+    "evidence": "TC96105_SFPL Production Copier",
+    "team": [
+     {
+      "supplier": "CANON SOLUTIONS AMERICA INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 106672.7
+     }
+    ]
+   },
+   {
+    "contract_no": "1000034526",
+    "title": "TC96105 San Francisco Public Library 9 Staff Copiers",
+    "prime": "CANON SOLUTIONS AMERICA INC",
+    "department_code": "LIB",
+    "agreed_usd": 45231.97,
+    "paid_usd": 0.0,
+    "evidence": "TC96105_SFPL 9 Staff Copiers",
+    "team": [
+     {
+      "supplier": "CANON SOLUTIONS AMERICA INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 45231.97
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035142",
+    "title": "San Francisco Public Library Bookmobile Design",
+    "prime": "Specialty Vehicle Services, LLC.",
+    "department_code": "LIB",
+    "agreed_usd": 19900.0,
+    "paid_usd": 0.0,
+    "evidence": "SFPL Bookmobile Design",
+    "team": [
+     {
+      "supplier": "Specialty Vehicle Services, LLC.",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 19900.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000038152",
+    "title": "TC96105 San Francisco Public Library Public Copier",
+    "prime": "CANON USA INC",
+    "department_code": "LIB",
+    "agreed_usd": 13040.34,
+    "paid_usd": 0.0,
+    "evidence": "TC96105_SFPL Public Copier",
+    "team": [
+     {
+      "supplier": "CANON USA INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 13040.34
+     }
+    ]
    }
   ],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "historicstructur02page",
-   "title": "Historic structure report, Old Main Library",
-   "creator": "Page & Turnbull,Porter, William A., photographer,Piazzoni, Gottardo,Asian Art Museum--Chong-Moon Lee Center for Asian Art and Culture",
-   "year": 1998,
-   "pool": "sfpl",
-   "matched_alias": "Main Library",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 10.94,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 1.94,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/historicstructur02page",
-   "deep_link": "https://archive.org/details/historicstructur02page?q=Main+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1998 historic structure report on the Old Main Library by Page & Turnbull, documenting the granite steps and elevations before its conversion to the Asian Art Museum."
-  },
-  {
-   "identifier": "sanfranciscopubl7200sanf",
-   "title": "San Francisco Public Library strategic plan, 2003-2006 : July 7, 2003 draft",
-   "creator": "San Francisco Public Library",
-   "year": 2003,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Public Library",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 9.84,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 1.34,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 4.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/sanfranciscopubl7200sanf",
-   "deep_link": "https://archive.org/details/sanfranciscopubl7200sanf?q=San+Francisco+Public+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "The library's own strategic plan for 2003-2006, in draft, setting out how it would reprioritise its resources."
-  },
-  {
-   "identifier": "sanfranciscopub4200ripl_0",
-   "title": "San Francisco Public Library Post Occupancy Evaluation",
-   "creator": "Ripley, Cynthia,Mason, Florence, librarian,Kent, Susan,Ripley Architects",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Public Library",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 9.6,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 1.1,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 7.25,
-    "money": true,
-    "decision": true,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/sanfranciscopub4200ripl_0",
-   "deep_link": "https://archive.org/details/sanfranciscopub4200ripl_0?q=San+Francisco+Public+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 2000 post-occupancy evaluation of the completed Main Library documents facility conditions, proposed changes and remaining construction close-out items."
-  },
-  {
-   "identifier": "sanfranciscomain7199sanf",
-   "title": "San Francisco Main Library : draft environmental impact report",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1991,
-   "pool": "sfpl",
-   "matched_alias": "Main Library",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 8.3,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 2,
-    "density": 0.3,
-    "title_hit": true
-   },
-   "materiality": {
-    "score": 4.75,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": true,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/sanfranciscomain7199sanf",
-   "deep_link": "https://archive.org/details/sanfranciscomain7199sanf?q=Main+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1991 draft environmental impact report assesses the New Main Library project on Marshall Square."
-  },
   {
    "identifier": "C101744619",
    "title": "Neglect of reporting requirements : interim report : report of the 1999-2000 San Francisco Civil Grand Jury",
@@ -392,6 +396,12 @@
    "year": 1999,
    "pool": "dl",
    "matched_alias": "San Francisco Public Library",
+   "ocr_excerpts": [
+    "NEGLECT OF REPORTING REQUIREMENTS Interim Report Report of the 4999-2000 San Francisco Civil Grand Jury NEGLECT OF REPORTING REQUIREMENTS SUMMARY Many San Francisco departments, boards, commissions and other agencies are failing to send copies of required reports to the Documents Department of the San Francisco Public Library, despite the requirements of Administrative Code, Section 8.16. The types of required reports required include annual, financial, Statistics, and recommendation reports. It also appears that many reports required by the Municipal Codes may not even be prepared. Failure to prepare required reports reduces the potential for policy makers to m",
+    ", states in part: It shall be the duty of every official, board, commission, or department, who or which publishes an annual report or other official published documents, relative to the affairs under his or her or its control or related to his or her or its functions, to file at least two copies thereof with the Documents Department of the San Francisco Public Library within 10 days after publication of each such report or document. [...] NEGLECT OF REPORTING REQUIREMENTS The reports of documents required to be filed pursuant to the provisions of this Section shall be made available by the Documents Department for reference thereto by the People of the City and County. Any violation of the provis",
+    "ral summary of the department's services and programs presented in terms and format accessible to the average citizen, and any highlights and achievements of the prior year that the department wishes to include.” (Added by Ord. 311-98, App. 10/16/98) Administrative Code, Section 8.16, \"Filing of Annual Reports and Official Documents with San Francisco Public Library\" \"It shall be the duty of every official, board, commission, or department, who or which publishes an annual report or other official published documents, relative to the affairs under his or her or its control or related to his or her or its functions, to file at least two copies thereof with the Documents Department of the San Francisco Public Library within 10 days after publication of each such report or document.\" The reports of documents required to be filed pursuant to the provisions this Section shall be made available by the Documents Department for reference thereto by the People of the City and County.” Any violation of the provisions of this Section on the part of any electiv",
+    "ng, record, bond certificate, or other material of historical significance is destroyed, the following procedure shall be observed: (1) It shall be offered by the officer concerned, i.e., the Mayor or the Mayor’s designee, or by boards or commissions for departments under their respective jurisdiction, the San Francisco History Room of the San Francisco Pub"
+   ],
    "collection": "igscalocalgovdocs",
    "relevance": {
     "score": 8.01,
@@ -416,44 +426,145 @@
    "url": "https://archive.org/details/C101744619",
    "deep_link": "https://archive.org/details/C101744619?q=San+Francisco+Public+Library",
    "source_label": "Internet Archive — Democracy's Library",
-   "group": "Reports & records",
+   "doc_type": "investigation",
+   "doc_type_label": "Investigation",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Investigation",
    "salient": true,
-   "gloss": "The 1999-2000 Civil Grand Jury's interim report finding that many city departments were failing in their duty to file published reports with the library's Documents Department."
+   "gloss": "A Civil Grand Jury interim report finding that many city departments and commissions simply were not filing their required reports with the library's Documents Department, as the Administrative Code obliges them to."
   },
   {
-   "identifier": "minutesofregular1998sanf",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
+   "identifier": "sanfranciscopub4200ripl_0",
+   "title": "San Francisco Public Library Post Occupancy Evaluation",
+   "creator": "Ripley, Cynthia,Mason, Florence, librarian,Kent, Susan,Ripley Architects",
+   "year": 2000,
    "pool": "sfpl",
-   "matched_alias": "Main Library",
+   "matched_alias": "San Francisco Public Library",
+   "ocr_excerpts": [
+    "Volume 2 San Francisco Public Library Post Occupancy Evaluation January 4, 2000 Final Report 49 Stevenson Street Suite 880 San Francisco CA 94105 415 512.0880 tel 415 512.1992 fax office@ripleyarch.com RIPLEY I SAN FRANCISCO PUBLIC LIBRARY 3 1223 05308 2278 San Francisco Public Library Post Occupancy Evaluation Contents - Volume 1 Executive Summary 1 Introduction and Background Discussion of the strategic audit and the mandate for the POE 2 Studies and Observations - The interaction of services and facilities Discussion of observations and measurements which form the basis of findings and recommendations in Section 3 3 Findings and Recommendations Presentation of specific findings and recommendations for change, including, illustrations of Existing Facility Conditions and Proposed Changes in the Main Library and an illustration of Existing Facility Conditions and Proposed Changes in Brooks Hall 4 Project Clusters, Project Costs and Implementation Discussion of project clusters allowing the library to remain Open, with project costs 5 Study Participants and acknowledgments Contents -Volume 2 1 Outstanding Facility Problems Remaining from the Prime Construction Contract , « I t . a a \\ ' DOCUMENTS DEPT. 2 Survey Instruments and Analysis h ,P.U« « ^ JAN 1 1 2000 b. Staff Survey c. Way Finding Survey SAN FRANCISCO PUBLIC LIBRARY 3 Detailed Cost Information for Project Clusters 4 Information on Brooks Hall provided by San Francisco Department of Public Works 5 Comments from staff, the public following the presentation of the interim POE Report, August 1999 Digitized by the Internet Archive in 2014 https://archive.org/detai",
+    "bsidiary of the Hunt Corporation 426 North 44th Street Phoenix, Arizona 85008 602/225-9500 Fax: 602/231-8590 February 1, 1999 Mr. Jim Cheng, Project Manager CITY & COUNTY OF SAN FRANCISCO Bureau of Engineering 30 Van Ness Avenue, 5,h Floor San Francisco, California 94102 RE: San Francisco Main Library San Francisco, California HHN Project No. 012 SUBJECT: Project Close-Out As a follow-up to our recent discussions we have reviewed our files and offer the following as a summary of the remaining Open Items on this Project: 1) Operational Items: We have reviewed the existing conditions and beli",
+    "A Subsidiary of the Hunt Corporation 426 North 44th Street Phoenix, Arizona 85008 602/225-9500 Fax: 602/231-8590 July 13, 1998 Mr. Jim Cheng Project Manager CITY & COUNTY OF SAN FRANCISCO Bureau of Engineering 30 Van Ness Avenue, 5th Floor San Francisco, California 94102 RE: San Francisco Main Library San Francisco, California HHN Project No. 012 SUBJECT: Operational Items Via Federal Express I have marked the list with an asterisk next to the items I feel should be reviewed as possible Operational Items remaining to complete. I will have someone walk "
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 4.65,
+    "score": 9.6,
     "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
-    "substantive": false,
+    "substantive": true,
     "substantive_direct": true,
     "hits": 3,
-    "density": 0.15,
-    "title_hit": false
+    "density": 1.1,
+    "title_hit": true
    },
    "materiality": {
-    "score": 0.75,
-    "money": false,
+    "score": 7.25,
+    "money": true,
     "decision": true,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscopub4200ripl_0",
+   "deep_link": "https://archive.org/details/sanfranciscopub4200ripl_0?q=San+Francisco+Public+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A post-occupancy evaluation of the new Main Library, commissioned after the strategic audit, measuring how the finished building actually served the services inside it."
+  },
+  {
+   "identifier": "sanfranciscomain7199sanf",
+   "title": "San Francisco Main Library : draft environmental impact report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1991,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "ocr_excerpts": [
+    "City and County of San Francisco Department of City Planning SAN FRANCISCO MAIN LIBRARY Draft Environmental Impact Report 90.808E DOCV NOV - 8 13^1 CAN i-rx, Draft EIR Publication Date: November 7, 1991 Draft EIR Public Hearing Date: December 12, 1991 Draft EIR Public Comment Period: November 7 to December 23, 199 1 Written comments should be sent to The Environmental Review Officer 450 McAllister Street, Sixth Floor San Francisco, CA 94102 \" • This report has been prepared on post-consumer recycled paper. SAN FRANCISCO PUBLIC LIBRARY 3 1223 04676 1855 OOCUME SAN FR^CISCO PUBLIC LIBRARY I^iFERENCE BOOK Ni)t lo be taken I rom the Library City and County of San Francisco Department of City Planning 450 McAllister Street San Francisco, CA94102 ADMINISTRATION (415)558-6414 CITY PLANNING COMMISSION (415) 558-6414 PLANS AND PROGRAMS (415) 558-6264 IMPLEMENTATION / ZONING (415) 558-6377 DATE: November?, 1991 TO: Distribution List for the San Francisco New Main Library Project Draft EIR FROM: Barbara W. Sahm, Environmental Review Officer SUBJECT: Request for the Final Environmental Impact Report for the San Francisco New Main Library Project This is the Draft of the Environmental Impact Report for the San Francisco New Main Library project. A public hearing will be held on the adequacy and accuracy of this document. After the public hearing, our office will prepare and publish a document titled \"Summary of Comments and Responses\" which will contain a summary of all relevant comments on this Draft EIR and our responses to tho",
+    "ect. Digitized by the Internet Archive in 2014 https://archive.org/details/sanfranciscomain7199sanf PLACE POSTAGE HERE Department of City Planning Office of Environmental Review 450 McAllister Street, 6th Floor San Francisco, CA 94102 Attn: Carol Roos, EIR Coordinator 90.808E - San Francisco New Main Library PLEASE CUT ALONG DOTTED LINE RETURN REQUEST REQUIRED FOR FINAL ENVIRONMENTAL IMPACT REPORT REQUEST FOR FINAL ENVIRONMENTAL IMPACT REPORT TO: Department of City Planning, Office of Environmental Review Please send me a copy of the Final EIR. Signed: Print Your Name and Address Below City and County of San Francisco Department of City Planning SAN FRANCISCO MAIN LIBRARY Draft Environmental Impact Report 90.808E Draft EIR Publication Date: November 7, 1991 Draft EIR Public Hearing Date: December 12, 1991 Draft EIR Public Comment Period: November 7 to December 23, 1991 Written comments should be sent to The Environmental Review Officer 450 McAllister Street, Sixth Roor San Francisco, CA 94102 This report has been prepared on post-consumer recycled paper. REF 711.479 Sa52sm San Francisco Main Library : draft 3 1223 04676 1855 S.F. PUBLIC LIBRARY SAN FRANCISCX) MAIN LIBRARY DRAFT ENVIRONMENTAL IMPACT REPORT TABLE OF CX)NTENTS Page INTRODUCT"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.3,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.3,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 4.75,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscomain7199sanf",
+   "deep_link": "https://archive.org/details/sanfranciscomain7199sanf?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The 1991 draft environmental review for building the new Main Library."
+  },
+  {
+   "identifier": "historicstructur02page",
+   "title": "Historic structure report, Old Main Library",
+   "creator": "Page & Turnbull,Porter, William A., photographer,Piazzoni, Gottardo,Asian Art Museum--Chong-Moon Lee Center for Asian Art and Culture",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "ocr_excerpts": [
+    "RE / ;i join] venture <<i II I I \\H IM.oHM Vk VSSABAI ' I DA \\K( I II 1 1 < is R0B1 RTB.WOfKj, VIA'- \\l'« HIM I ocialion with Dotl Vreh GAI M I I Ml. I M\\ December 10, 1998 Prepared b> Page A fumbull, Inc. Mn 3 1223 03921 4201 SAN FRANCISCO HISTORY CENTER m STACKS SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not to be taken from the. Libre I [istoric Structure Report < >ld Main Library Volume II A^ian Art Museum Jul; : PAGE&Tl RNBl U 3 1223 03921 4201 HISTORIC NfRi CT1 IR1 REPOR1 OLD MAIN LIBRARY SITE AND EXTERIOR ELEYATK )\\S - Detailed Dcscn: ■ Digitized by the Internet Archive in 2012 with funding from California State Library Califa/LSTA Grant http://archive.org/details/historicstructur02page HISTORIC STRLCTVRE REPORT - OLD MAIN LIBRARY ASLV SITE AND EXTERIOR ELEVATIONS srn VNDG1 ni km PLAN Description The C 'I J Main 1 jbrary is a six-sided, three story high structure which occupies most of the block bounded by Larkin. Hyde. Fulton and McAllister streets The building is set back from the property line on all four sides,",
+    "as placed in the south end of this plaza. At the north end of this plaza a series of granite steps leads up to the library's secondary entrance. The first nine steps have squared nosing and bisect the granite P<8t c- ImbuU Site ind Ertetior Elevations. Page 1 HISTORIC: STRUCTURE REPORT - OLD MAIN LIBRARY ASIAN ART MUSEUM plinth and retaining wall. There is a platform at the top of these steps that is made of granite paving slabs measuring 5' by 6'-6\". This platform serves as the approach to the final three steps, which have round nosings. At the top of these steps two ornamental lamp standards",
+    "e building at the corner of McAllister and Hyde streets. From the 1940s until 1997 this setback was filled by a three story, wood frame, stucco faced Library Annex that housed Library administrative offices. The annex building was recently demolished, revealing the informally treated walls of the Old Main Library that face the setback. Evaluation: The individual features of the library's setting are evaluated below: Grassy plinth (Fulton, Hyde, and McAllister streets) and lawn (Larkin Street): Significant Retaining wall and border (all four sides): Very Significant Plaza (Larkin Street): Significant Plaza (Fu",
+    "ontributing Sidewalks and curbstones (all four sides): Contributing Lawn between sidewalks (Fulton Street): Significant Steps (Larkin Street) and upper steps (Fulton Street): Very Significant Lower steps (Fulton Street): Significant Site and Exterior Elevations, Page 2 HISTORIC STRUCTURE REPORT - OLD MAIN LIBRARY ASIAN ART MUSEUM Platform (Fulton Street): Very Significant Light standards: Very Significant Granite pedestals (Larkin Street): Significant Granite benches (Larkin Street): Significant Statue of Ashurbanipal: Non-contributing Page"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.94,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.94,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
     "accountability": false,
     "contestation": false,
     "named_genre": false,
     "generic_serial": false
    },
-   "url": "https://archive.org/details/minutesofregular1998sanf",
-   "deep_link": "https://archive.org/details/minutesofregular1998sanf?q=Main+Library",
+   "url": "https://archive.org/details/historicstructur02page",
+   "deep_link": "https://archive.org/details/historicstructur02page?q=Main+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": false,
-   "gloss": "Minutes of the Library Commission's regular meetings, the body that governs the system."
+   "doc_type": "history",
+   "doc_type_label": "History",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "History",
+   "salient": true,
+   "gloss": "A 1998 historic structure report on the Old Main Library by Page & Turnbull, documenting the granite steps and elevations before its conversion to the Asian Art Museum."
   },
   {
    "identifier": "sanfranciscomain1419rand",
@@ -462,6 +573,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Main Library",
+   "ocr_excerpts": [
+    "San Francisco Main Public Library An Assessment of the Existing Facility and Its Ability to Meet Future Library Needs Final Report By Omni-Group, Inc. Becker and Hayes, Inc. Hellmuth, Obata & Kassabaum, Inc. DOCUMENTS SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not to be taken from the Library AUG 6 1995 THE SAN FRANCISCO MAIN PUBLIC LIBRARY *** AN ASSESSMENT OF THE EXISTING FACILITY AND ITS ABILITY TO MEET FUTURE LI1ERAKY NEEDS by Randall Rice The Omi -Group, Inc. and Joseph Becker Becker and Hayes Inc. with Hellmith, Cba",
+    "). Surmary of available space by space type. Space use concept (illustrations). Initial cost estimation data. EXECUTIVE SUMMARY On September 30, 1986 a report was prepared by Becker and Hayes Inc. and the Omni-Group Inc. which presented the functional and space requirements for a new San Francisco Main Library on Marshall Square. The new facility was conceived to be a major component in the master plan to redevelop the Civic Center. In 1987, the City and the Library contracted with Becker and Hayes, Inc. and the Omni-Group, Inc. for a second report that would specifi- cally assess and evaluate the potent",
+    "e on Larkin Street) . (j) a new Floor 2.5 would be created around the upper volume of the grand staircase and rotunda which would extend partially into the high ceiling areas of the Main Reading Rooms on Floor 2; (k) temporary space would be provided for approximately 24 months to house critical Main Library collections, equipment, staff and patrons during construction/renovation activities; In addition to the physical and functional considerations outlined above, the study team also compared costs of renovation and expansion with costs of new construction. The comparison was made in terms of 1987 dollars an",
+    "ed space envelope. On the other hand, new construction allows room for further growth beyond the year 2006. From a return on in- vestment point of view, the prudent expenditure of City funds favors an investment in new construction. It is recommended that San Francisco pursue the satisfaction of its Main Library functional and spatial requirements through new facility construction on Marshall Square. Introduction 1. INIBCDXTIQN Preface T\\vo years ago, the San Francisco Public Library ccnmissioned Becker and Hayes Inc. and the CMNI -Group, Inc. to analyze library operational needs and to prepare a building program for the Main Library located at the Civic Center. The study, conpleted in Septent>er 1986, looked ahead 20 years into the Library's future and developed space requirements based on the specific functions of each library department within the context of a viable future information service. Conclusions drawn frcm the study shewed that the holdings of the Main Library will essentially double in size over the next twenty year"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 8.44,
@@ -486,9 +603,56 @@
    "url": "https://archive.org/details/sanfranciscomain1419rand",
    "deep_link": "https://archive.org/details/sanfranciscomain1419rand?q=Main+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "A facility assessment weighs renovation against new construction and recommends building a new Main Library on Marshall Square to meet future needs."
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": false
+  },
+  {
+   "identifier": "sanfranciscopubl7200sanf",
+   "title": "San Francisco Public Library strategic plan, 2003-2006 : July 7, 2003 draft",
+   "creator": "San Francisco Public Library",
+   "year": 2003,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Public Library",
+   "ocr_excerpts": [
+    "SAN FRANCISCO PUBLIC LIBRARY STRATEGIC PLAN 2003 - 2006 DRAFTS July 7, 2003 July 29, 2003 August 21, 2003 Post-September 4, 2003 5/S San Francisco Public Library Government Information Center San Francisco Public Library 100 Larkin Street, 5th Floor San Francisco, C A 94102 REFERENCE BOOK Not to be taken from the Library San Francisco Public Library DOCUMENTS DEPT. JUL 1 4 2003 SAN FRANCISCO PUBLIC LIBRARY SAN FRANCISCO PUBLIC LIBRARY STRATEGIC PLAN 2003 - 2006 [JULY 7, 2003 DRAFT] 7/7/03 DRAFT SAN FRANCISCO PUBLIC LIBRARY STRATEGIC PLAN 2003 - 2006 TABLE OF CONTENTS Topic Page Introduction 3 Background 5 Methodology 6 Mission and Values Statements 7 Library Service Responses and Goals for 2003 - 2006 8 Goals, Objectives and Activities 9-20 • General Information 9 • Lifelong Learning 1 3 • Current Topics and Titles 1 7 Implementation 21 Conclusion 21 San Francisco Public Library Strategic Plan 2003 - 2006 2 7/7/03 DRAFT INTRODUCTION From its inception, the San Francisco Public Library's ability to achieve and maintain excellence and innovation has been the result of thoughtful planning focused on the needs and interests of the residents of San Francisco. While the principles of library service are the same today as they were at the beginning of the last century, library services",
+    "continue to build on our past success by prioritizing and refocusing our energy and resources. Its development and implementation requires us to assess and adjust our efforts in response to a changing environment both within and outside the organization. Our society is also changing rapidly and the San Francisco Public Library is being proactive as well as responsive to those changes. We are currently facing challenges in the publishing marketplace that may imperil the free and equal access to information that is the mission of the Library. The Library advocates on behalf of policies and services that promote and support",
+    "s Supreme Court decision deeming the federal Children's Internet Protection Act constitutional has resulted in the requirement that public libraries filter Internet access in order for libraries to qualify for federal telecommunication subsidies. Because both the City and County of San Francisco1 and the San Francisco Public Library Commission have clearly stated that filters are not suitable when providing public access to the Internet, the Library will forego its federal funding and continue to provide full and open access to all types of information for its users. ■ The USA Patriot Act, passed in October 2001 in reaction to the terrible events of 9/1 1 , is further evidence of government intrusion into the lives of its citizens The City and County of San Francisco and the San Francisco Public Library Commission, although both bodies strongly support maintain"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.84,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.34,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscopubl7200sanf",
+   "deep_link": "https://archive.org/details/sanfranciscopubl7200sanf?q=San+Francisco+Public+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false,
+   "gloss": "The library's own strategic plan for 2003-2006, in draft, setting out how it would reprioritise its resources."
   },
   {
    "identifier": "release1991sanf",
@@ -497,6 +661,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Main Library",
+   "ocr_excerpts": [
+    "5/S IP San Francisco Public Library Govornment Informalion Center San Francisco Public Library 100 Larkin Street, 5tti Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library Digitized by the Internet Archive in 2014 https://archive.org/details/release1991sanf -7 / /n btb7:^2Se FOR IMMEDIATE RELEASE CONTACT? MARCIA SCHNEIDER APRIL 18, 19 91 COMMUNITY RELATIONS LIBRARIAN (415) 557-^211 LIBRARY COMMISSION APPROVES DESIGN DEVELOPMENT DRAWINGS OF NEW MAIN LIBRARY At a BpQoial moating of the San FranciBCo Library Commission held on April 16, the Commiasion unanimously and enthusiastically approved the design development drawings of the new San Francisco Main Library. The motion for approval was made by Commissioner Dale A. Carlson with \"pride and pleasure.\" New water color renderings of the building and slides of interior features were presented by the architects, Cathy Simon of Simon Martin-Vegue Winkelstein & Moris and James Ingo Freed and Jennifer Sage of",
+    "May 6, at 4:00 P.M., 25 Van Ness Avenue. « # # I 3 1223 06446 5462 5 i FOR IMMEDIATE RELEASE APRIL 18, 1991 CONTACT: MARCIA SCHNEIDER COMMUNITY RELATIONS LIBRARIAN (415) 557-4277 LIBRARY BUDGET STRATEGY REDUCES ADMINISTRATION, SUPPORT STAFF A proposal to reduce the budget of the San Francisco Public Library by 5% was aubniitted to the Library Conuniesion by City Librarian Kunnath Q. Dowlin on April 16. The proposal directly impacts senior administration, middle management, and support staff. The reductions impact 25 positions and result in a net reduction of 15.6 full-time equivalent positons, a 4.4%",
+    "LlbRAHY • Civic Center • San Francj&co • Calilormu • 94102 FOR IMMEDIATE RELEASE May 9, 1991 CONTACTx MARCIA SCHNEIDER Community Relatione Librarian (415) 557-4277 CONTACT: ROSALIND CHANG ASK Program Coordinator (415) 292-2161 AFTER SCHOOL KIDS PROGRAM DEBUTS AT WESTERN ADDITION LIBRARY The San Francisco Public Library now offers an after school and aummer activities center for children ages 5-13 at the Western Addition Branch Library, 1550 Scott Street. The volunteer-based ASK (After School Kids) program is funded by a Library Services and Construction Act grant, through September 30, 1991. \"This is a program tha",
+    "ogram will be hosted by Lonnie Chin, Library Commissioner and Principal, Spring Valley School. Children througliout the city have written and created books in the San Francisco Unified School District's Young Author Contest. Selected winning books will be donated to the Library. The Friends of the San Francisco Public Library will present a gift certificate to each of the young authors in honor of their creativity. The summer reading program of the San Francisco Public Library, \"LIBRARY KIDS ARE WILD ABOUT READING,\" is co-sponsored by the Friends of the San Francisco Public Li"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 5.94,
@@ -521,9 +691,56 @@
    "url": "https://archive.org/details/release1991sanf",
    "deep_link": "https://archive.org/details/release1991sanf?q=Main+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
+  },
+  {
+   "identifier": "minutesofregular1998sanf",
+   "title": "Minutes of the regular meeting ...",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "ocr_excerpts": [
+    "JUL -3 2QQ0 DOCUMENTS DEPARTMENT SAN FRANCISCO PUBLIC LIBRARY 3 1223 05465 4992 SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY COMMISSION The San Francisco Public Library Commission has not always printed its minutes in final form. For the disposition of draft minutes, where final or \"approved\" minutes are missing, consult the minutes of subsequent meetings 1223 05465 4992 If Willie L. Brown, Jr. Mayor Steven A Coulter President Fran A. Streets Vice President Sherry Agnos Lonnie K. Chin Charles A. Higueras, A.I.A. Ernest H. Llorente Carol Steiman Commissioners Regina Minudri Acting City Librarian Michael Housh Commission Secretary San Francisco Public Library ACCESS, DISCOVER, EMPOWER NOTICE OF MEETING The San Francisco Public Library Commission will hold a regular meeting as follows: DATE: Tuesday, January 6, 1998 TIME: 5:30 PM PLACE: Koret Auditorium Main Library, Civic Center The meeting will be called to order AGENDA: DOCUMENTS DEPT. JAN 0 Z 1998 PUBLIC? LIBRARY 1. APPROVAL OF THE MINUTES Presentation of, discussion of, and possible action to approve ACTION the minutes of special and regular Commission meetings of December 2, 1997. ELECTION OF",
+    "ENT (This item is to allow members of the public to comment generally on matters within the Commission's purview as well as to suggest new agenda items for the Library Commission's consideration.) 14. ADJOURNMENT (requires motion and public comment) ACTION 12/31/97 -M.Housh, Commission Secretary 2 San Francisco Public Library Commission Policy Manual Library Bill of Rights Policy # Section: Library Services Adopted: Revised It is the policy of the San Francisco Library Commission that the American Library Association's \"Library Bill of Rights\" shall be the basis of principle by which San Francisco Public Library policies are determi ned . The American Library Association affirms that all libraries are forums for information and ideas, and that the following basic policies should guide their services. I. Books and other library resources should be provided for the interest, information, and enlightenment of al",
+    "ic they serve should make such facilities available on an equitable basis, regardless of the beliefs or affiliations of individuals or groups requesting their use. Adopted June 18. 1948. Amended February 2, 1961 and January 23. 1980. inclusion of age reaffirmed January 23. 1996 by the ALA Council. San Francisco Public Library ACCESS, DISCOVER, EMPOWER Willie L. Brown, Jr. Mayor Steven A. Coulter President Fran A. Streets Vice President Sherry Agnos Lonnie K. Chin ■\"harles A. Hicueras, A.LA. est H. Llorente ol Steiman commissioners Recina Minudri Acting City Librarian Michael Housh Commission Secretary SAN FRANCISCO PUBLIC LIBRARY COMMISSION MEETI"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.65,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.15,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesofregular1998sanf",
+   "deep_link": "https://archive.org/details/minutesofregular1998sanf?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
    "salient": false,
-   "gloss": "A 1991 press release records the Library Commission's approval of design-development drawings for the new Main Library, designed by Cathy Simon of Simon Martin-Vegue Winkelstein & Moris and James Ingo Freed."
+   "gloss": "Minutes of the Library Commission's regular meetings, the body that governs the system."
   },
   {
    "identifier": "noticecommunityg2014sanf",
@@ -532,6 +749,10 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Main Library",
+   "ocr_excerpts": [
+    "San Francisco Public Library Government Information Center San Francisco Public Library 1 00 Larkin Street 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library 3 1223 11171 8723 San Francisco Public Library 1 & Dp, m i 3 2014 Community Group Meetings (Not Library Sponsored) Week of Monday January 6, 2014 6 JANUARY, MONDAY 2014 Parents for Public Schools - Governance Meeting Bernal Heights, 10:30-12:30 PM 500 Cortland Avenue 6 JANUARY, MONDAY 2014 California Dragon Boat Association - Dave Chen - 515-5186 Ingleside, 6:15-8:45 PM 1298 Ocean Ave & Plymouth 6 JANUARY, MONDAY 2014 College Class - scottd2@miamioh.edu Main Library, 10:00-12:00 PM Stong Room - Floor 1 100 Larkin St. <C — . , 8 JANUARY, WEDNESDAY 2014 AVA 55 Ninth BMR Open House - robert_blaskey@avalonbay.com Main Library, 5:00-7:30 PM Koret Auditorium 100 Larkin St. 8 JANUARY, WEDNESDAY 2014 La Leche League - Sarah Quigley - 710-8119 Richmond, 6:00-8:00 PM 351 9th Ave 9 JANUARY, THURSDAY 2014 Ridge Lane Neighbors - Patricia Ris - 309-7963 Ingleside, 7:00-8:30 PM 1298 Ocean Ave & Plymouth 6 JANUARY, MONDAY 2014 Offi",
+    "San Francisco Community Radio - Mike Brown Park, 7:00-9:00 PM 1833 Page Street 7 JANUARY, TUESDAY 2014 Ingleside Terrace Design Review Committee - Norma Tannenbaum - 586-4111 Ingleside, 6:15-7:45 PM 1298 Ocean Ave & Plymouth 7 JANUARY, TUESDAY 2014 Ad Hoc Russian Solidarity Group - t_mendicino@yahoo.com Main Library, 5:00-7:30 PM Stong Room - Floor 1 100 Larkin St. 7 JANUARY, TUESDAY 2014 Heartland Institute of Financial Freedom - Pauline Li - 269-8435 Potrero, 6:00-7:00 PM 1616 20th Street 7 JANUARY, TUESDAY 2014 Biblos French Reading Club - Renee Morel - 255-8301 Richmond, 6:30-8:30 PM 351 9th Ave 8 JANUARY, WEDNESDAY 2014 Gray Panthers - patricia.lee@sonic.net Main Library, 12:30-2:30 PM Paley Room - Floor 3 100 Larkin St. 8 JANUARY, WEDNESDAY 2014 JVS Success Team - tosco.sf@gmail.com Main Library, 1:30-3:30 PM Sycip Room - Floor 4 100 Larkin St. 8 JANUARY, WEDNESDAY 2014 SF Transit Riders Union - rboden@sftru.org Main Library, 4:30-7:30 PM Sycip Room - Floor 4 100 Larkin St. 9 JANUARY, THURSDAY 2014 Chinese RE Association of America - creaausa.rsvp@gmail.com Main Library, 9:00-11:00 AM Koret Auditorium 100 Larkin St. 9 JANUARY, THURSDAY 2014 Sprint Community Outreach Meeting - Maria Miller - 450-5533 Main Library, 5:30-6:30 PM Paley Room - Floor 3 100 Larkin St. 9 JANUARY, THURSDAY 2014 SF BrainExchange - katherine_bernitt@sbcglobal.net Main Library, 5:30-7:30 PM Stong Room - Floor 1 100 Larkin St. 9 JANUARY, THURSDAY 2014 Betterinvesting SF Chapter - Craig Braemer - 705-7550 Main Library, 5:30-7:30 PM Sycip Room - Floor 4 100 Larkin St. 9 JANUARY, THURSDAY 2014 Beacon College Funding Solutions - Niki Waters - 550-8040 Noe Valley, 6:00-8:00 PM 451 J"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 4.35,
@@ -556,7 +777,11 @@
    "url": "https://archive.org/details/noticecommunityg2014sanf",
    "deep_link": "https://archive.org/details/noticecommunityg2014sanf?q=Main+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
    "salient": false,
    "gloss": "A notice listing the community groups meeting in the Main and branch libraries — the buildings in use as neighbourhood civic space."
   }
@@ -599,7 +824,7 @@
  "_gate": {
   "has_photo": true,
   "n_documents": 9,
-  "n_money_links": 2,
+  "n_money_links": 18,
   "meets_pre_summary": true
  }
 }

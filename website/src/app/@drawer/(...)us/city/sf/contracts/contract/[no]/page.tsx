@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
 
 import DetailDrawer from "@/components/fusion/DetailDrawer";
+import { ForcedLocale } from "@/lib/localeContext";
 import SfContractFiche from "@/components/us/SfContractFiche";
-import { loadSfContractFiche } from "@/app/us/city/sf/contracts/data";
+import { loadSfContractFiche, sfContractDeptHref } from "@/app/us/city/sf/contracts/data";
+import { contractLabel } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
 import { contractPrimePayeeSlug } from "@/lib/us/sf-payees-data";
 import { fmtUsdCompact } from "@/lib/us/format";
 
@@ -20,22 +22,32 @@ export default async function DrawerSfContractPage({ params }: { params: Promise
   if (!fiche) return notFound();
   const c = fiche.contract;
   const primePayeeSlug = contractPrimePayeeSlug(c.contract_no);
+  const deptContractsHref = sfContractDeptHref(c.department_code);
 
-  const label = c.title_plain || c.title || `Contract ${c.contract_no}`;
+  const label = contractLabel(c) || `Contract ${c.contract_no}`;
   const shareText = `San Francisco contract ${c.contract_no} — ${label}: ${fmtUsdCompact(c.agreed_usd)} agreed with ${c.prime_contractor ?? "?"}, ${fmtUsdCompact(c.paid_usd)} paid so far.`;
 
   return (
-    <div className="theme-fusion">
-      <DetailDrawer
-        kicker={`CONTRACT · ${c.department_code ?? "SF"} · ${c.contract_no}`}
-        title={label}
-        shareUrl={`/us/city/sf/contracts/contract/${c.contract_no}`}
-        shareText={shareText}
-        backHref="/us/city/sf/contracts"
-        breadcrumbLabel={`Contract ${c.contract_no}`}
-      >
-        <SfContractFiche fiche={fiche} primePayeeSlug={primePayeeSlug} />
-      </DetailDrawer>
-    </div>
+  /* Self-wraps in ForcedLocale: the root @drawer slot renders OUTSIDE
+     app/us/layout.tsx, so without this the shared fusion chrome falls back
+     to French inside an EN-only drawer ("PARTAGER" on the share button). */
+    <ForcedLocale locale="en">
+      <div className="theme-fusion">
+        <DetailDrawer
+          kicker={`CONTRACT · ${c.department_code ?? "SF"} · ${c.contract_no}`}
+          title={label}
+          shareUrl={`/us/city/sf/contracts/contract/${c.contract_no}`}
+          shareText={shareText}
+          backHref="/us/city/sf/contracts"
+          breadcrumbLabel={`Contract ${c.contract_no}`}
+        >
+          <SfContractFiche
+            fiche={fiche}
+            primePayeeSlug={primePayeeSlug}
+            deptContractsHref={deptContractsHref}
+          />
+        </DetailDrawer>
+      </div>
+    </ForcedLocale>
   );
 }

@@ -76,9 +76,9 @@ export default async function SfDeptCharacterPage({
             </Link>
           </div>
           <h1 className="fx-page-title">{d.character.label}</h1>
-          <p className="fx-page-lede">
-            {deptName} · {fmtUsdCompact(d.amount_usd)} adopted (FY{year})
-          </p>
+          {/* Non-numeric context only — the adopted amount and the department
+              are the first two tiles of the KPI band right below. */}
+          <p className="fx-page-lede">{deptName}</p>
         </div>
       </section>
       <div className="fx-fiche-wrap">

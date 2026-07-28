@@ -36,6 +36,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 SF = ROOT / "website" / "public" / "data" / "us" / "sf"
 OUT = SF / "payees"
+# Pipeline intermediate written by export_us_sf.py (mart_us_sf_payee_profile):
+# per-RAW-vendor department / category / recent-year rollups. Optional — if it
+# is absent the fiches still build, just without the "what they're paid for"
+# sections, so a checkout without a BigQuery run is not blocked.
+PROFILES = ROOT / "pipeline" / "cache" / "us_sf" / "payee_profiles.json"
+# Who each payee IS (IRS registry / grounded web search), written by
+# enrich_sf_payee_identity.py. Read HERE rather than patched onto the fiches
+# afterwards: these files are rebuilt from scratch on every run, so anything
+# applied after the fact is destroyed by the next one.
+IDENTITY = ROOT / "pipeline" / "cache" / "enrichment" / "sf_payee_identity.json"
 
 LEGAL_SUFFIX = {
     "INC", "INCORPORATED", "LLC", "L L C", "CORP", "CORPORATION", "CO",
@@ -91,6 +101,84 @@ def title_case(name: str) -> str:
     return " ".join(out) if out else name.title()
 
 
+def merge_profiles(variant_names: list[str], profiles: dict[str, dict]) -> dict | None:
+    """
+    Fold the per-RAW-vendor rollups of every spelling variant into one.
+
+    A normalized payee is several Controller strings ("BANK OF NEW YORK" /
+    "BNY MELLON"); their rollups must be summed cell by cell or the fiche
+    would show one spelling's departments and drop the other's money.
+
+    Keys: department_code for departments, sub-object code for categories —
+    never the display label, which the FY2018 migration re-cased.
+
+    n_departments / n_categories are a FLOOR when more than one variant is
+    merged: each variant reports its own distinct count and the union cannot
+    be recovered from the truncated top-8 lists. The flag travels with the
+    number so the fiche can say "at least N" rather than assert a total it
+    does not have.
+    """
+    present = [profiles[v] for v in variant_names if v in profiles]
+    if not present:
+        return None
+
+    depts: dict[str, dict] = {}
+    cats: dict[str, dict] = {}
+    for p in present:
+        for d in p.get("departments") or []:
+            key = d["department_code"] or d["department"]
+            cell = depts.setdefault(
+                key, {"department": d["department"], "department_code": d["department_code"], "usd": 0.0, "n_vouchers": 0}
+            )
+            cell["usd"] += d["usd"] or 0.0
+            cell["n_vouchers"] += d["n_vouchers"] or 0
+        for c in p.get("categories") or []:
+            cell = cats.setdefault(
+                c["code"], {"code": c["code"], "label": c["label"], "spend_class": c["spend_class"], "usd": 0.0, "n_vouchers": 0}
+            )
+            cell["usd"] += c["usd"] or 0.0
+            cell["n_vouchers"] += c["n_vouchers"] or 0
+
+    # Recent lines: the latest closed FY any variant reached, merging only the
+    # variants that actually reported that year (an older variant's last year
+    # is a different year and must not be blended into it).
+    recent_fys = [p["recent_fy"] for p in present if p.get("recent_fy") is not None]
+    recent_fy = max(recent_fys) if recent_fys else None
+    recent_lines: dict[tuple, dict] = {}
+    recent_total = 0.0
+    n_recent_lines = 0
+    if recent_fy is not None:
+        for p in present:
+            if p.get("recent_fy") != recent_fy:
+                continue
+            recent_total += p.get("recent_total_usd") or 0.0
+            n_recent_lines += p.get("n_recent_lines") or 0
+            for l in p.get("recent_lines") or []:
+                key = (l["department_code"], l["label"])
+                cell = recent_lines.setdefault(key, {**l, "usd": 0.0, "n_vouchers": 0})
+                cell["usd"] += l["usd"] or 0.0
+                cell["n_vouchers"] += l["n_vouchers"] or 0
+
+    multi = len(present) > 1
+    rank = lambda rows: sorted(rows, key=lambda r: -(r["usd"] or 0.0))
+
+    return {
+        # Voucher count is summed, not maxed: a voucher belongs to exactly one
+        # spelling, so the variants partition it (unlike the distinct-entity
+        # counts below, which overlap and can only be a floor).
+        "n_vouchers": sum((p.get("n_vouchers") or 0) for p in present),
+        "departments": [{**d, "usd": round(d["usd"], 2)} for d in rank(depts.values())],
+        "n_departments": max((p.get("n_departments") or 0) for p in present),
+        "categories": [{**c, "usd": round(c["usd"], 2)} for c in rank(cats.values())],
+        "n_categories": max((p.get("n_categories") or 0) for p in present),
+        "counts_are_floor": multi,
+        "recent_fy": recent_fy,
+        "recent_total_usd": round(recent_total, 2),
+        "n_recent_lines": n_recent_lines,
+        "recent_lines": [{**l, "usd": round(l["usd"], 2)} for l in rank(recent_lines.values())],
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--top", type=int, default=200)
@@ -99,6 +187,14 @@ def main() -> int:
     search = json.loads((SF / "payees_search.json").read_text())
     top_payees = json.loads((SF / "top_payees.json").read_text())
     contracts = json.loads((SF / "contracts_active.json").read_text())
+    profiles_doc = json.loads(PROFILES.read_text()) if PROFILES.exists() else {}
+    profiles: dict[str, dict] = profiles_doc.get("profiles", {})
+    if not profiles:
+        print(f"⚠ {PROFILES.name} absent — fiches built without the "
+              f"'what they're paid for' sections (run export_us_sf.py first)")
+    identities: dict[str, dict] = (
+        json.loads(IDENTITY.read_text()).get("payees", {}) if IDENTITY.exists() else {}
+    )
 
     # bucket + dept lookup by RAW vendor string (from the classified top-100s)
     vinfo: dict[str, dict] = {}
@@ -188,6 +284,10 @@ def main() -> int:
                 })
         held.sort(key=lambda c: -(c.get("paid_usd") or 0))
 
+        # What the City pays them FOR — departments/categories/last closed
+        # year, summed across every spelling merged into this payee.
+        profile = merge_profiles([v["name"] for v in g["variants"]], profiles)
+
         years = sorted(int(y) for y in g["byYear"])
         fiche = {
             "generated_at": now_iso(),
@@ -203,7 +303,15 @@ def main() -> int:
             "first_year": years[0] if years else None,
             "last_year": years[-1] if years else None,
             "by_year": {y: round(v, 2) for y, v in sorted(g["byYear"].items())},
+            # Kept for the row chips that still read it; the fiche itself now
+            # renders `profile.departments`, which carries the dollars.
             "top_departments": depts[:4],
+            "profile": profile,
+            # A recorded miss is stored as {description: None} so re-runs skip
+            # it; only a real answer travels to the fiche.
+            "identity": (
+                identities.get(slug) if (identities.get(slug) or {}).get("description") else None
+            ),
             "contracts_held": held[:40],
             "n_contracts_held": len(held),
             "variants": g["variants"],

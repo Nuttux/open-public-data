@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.733058+00:00",
+ "generated_at": "2026-07-28T11:43:47.702111+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,75 @@
  "top_departments": [
   "DPW GSA - Public Works"
  ],
+ "profile": {
+  "n_vouchers": 1730,
+  "departments": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 256681280.95,
+    "n_vouchers": 1716
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 441125.6,
+    "n_vouchers": 7
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 13963.9,
+    "n_vouchers": 6
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 1524.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 162094598.92,
+    "n_vouchers": 596
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 1438166.23,
+    "n_vouchers": 34
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 20
+   }
+  ],
+  "n_categories": 3,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 35279169.1,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 35279169.1,
+    "n_vouchers": 101
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000012553",
@@ -49,7 +118,7 @@
   },
   {
    "contract_no": "1000015023",
-   "title": "6th St Pdstrn Sfty Prj",
+   "title": "6th St Pdstrn Sfty Project",
    "department": "DPW GSA - Public Works",
    "department_code": "DPW",
    "agreed_usd": 9184838.78,
@@ -67,7 +136,7 @@
   },
   {
    "contract_no": "1000036599",
-   "title": "Transbay Howard STSCP Proj",
+   "title": "Transbay Howard STSCP Project",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 13179003.08,
@@ -76,7 +145,7 @@
   },
   {
    "contract_no": "1000034721",
-   "title": "VL Pave Renov No.71A & Swr",
+   "title": "VL Pave Renov No.71A & Sewer",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 6149364.4,
@@ -85,7 +154,7 @@
   },
   {
    "contract_no": "1000037543",
-   "title": "VL Pave Renov NO.80 & SWR",
+   "title": "VL Pave Renov NO.80 & Sewer",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 4783132.1,
@@ -94,7 +163,7 @@
   },
   {
    "contract_no": "1000037110",
-   "title": "VL Pave Renov NO.81 & SWR",
+   "title": "VL Pave Renov NO.81 & Sewer",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 3534144.31,

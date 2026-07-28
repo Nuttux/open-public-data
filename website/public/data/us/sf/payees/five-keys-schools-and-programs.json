@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.732590+00:00",
+ "generated_at": "2026-07-28T11:43:47.701322+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -26,6 +26,187 @@
  "top_departments": [
   "HOM Homelessness Services"
  ],
+ "profile": {
+  "n_vouchers": 2248,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 263662540.88,
+    "n_vouchers": 1332
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 2061945.47,
+    "n_vouchers": 138
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 1671380.57,
+    "n_vouchers": 202
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 1630902.6,
+    "n_vouchers": 19
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 1453622.89,
+    "n_vouchers": 142
+   },
+   {
+    "department": "ADP Adult Probation",
+    "department_code": "ADP",
+    "usd": 1422270.0,
+    "n_vouchers": 72
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 1278685.36,
+    "n_vouchers": 339
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 4654.29,
+    "n_vouchers": 3
+   }
+  ],
+  "n_departments": 9,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 230648581.43,
+    "n_vouchers": 1822
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 36364319.71,
+    "n_vouchers": 191
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 3882876.19,
+    "n_vouchers": 55
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 1630902.6,
+    "n_vouchers": 19
+   },
+   {
+    "code": "536340",
+    "label": "Non-CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 269845.04,
+    "n_vouchers": 106
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 155276.29,
+    "n_vouchers": 4
+   },
+   {
+    "code": "538000",
+    "label": "CBO Services - Budget",
+    "spend_class": "purchase",
+    "usd": 100980.0,
+    "n_vouchers": 5
+   },
+   {
+    "code": "536440",
+    "label": "CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 49643.88,
+    "n_vouchers": 18
+   }
+  ],
+  "n_categories": 16,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 54277642.6,
+  "n_recent_lines": 8,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 41889010.25,
+    "n_vouchers": 210
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 11205093.76,
+    "n_vouchers": 66
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 385671.08,
+    "n_vouchers": 6
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 319870.69,
+    "n_vouchers": 33
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 240416.48,
+    "n_vouchers": 24
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 160883.05,
+    "n_vouchers": 17
+   }
+  ]
+ },
+ "identity": {
+  "description": "Five Keys Schools And Programs is an IRS-recognized tax-exempt organization in Oakland, CA, classified under education.",
+  "method": "irs_bmf",
+  "confidence": 0.92,
+  "legal_name": "Five Keys Schools And Programs",
+  "ein": "810622701",
+  "ntee_code": "B29",
+  "ntee_label": "Education",
+  "city": "Oakland",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/810622701",
+  "checked_at": "2026-07-27T23:36:04.450134+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000020047",
@@ -83,7 +264,7 @@
   },
   {
    "contract_no": "1000034144",
-   "title": "Five Keys - 42 Otis PSH TAY",
+   "title": "Five Keys - 42 Otis permanent supportive housing TAY",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 7436154.0,
@@ -101,7 +282,7 @@
   },
   {
    "contract_no": "1000035536",
-   "title": "Five Keys - TAY RRH",
+   "title": "Five Keys - TAY rapid re-housing",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 9988873.0,
@@ -119,7 +300,7 @@
   },
   {
    "contract_no": "1000034138",
-   "title": "Five Keys - 42 Otis PSH TAY",
+   "title": "Five Keys - 42 Otis permanent supportive housing TAY",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 1958099.0,

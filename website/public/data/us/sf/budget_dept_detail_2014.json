@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.795085+00:00",
+  "generated_at": "2026-07-28T11:43:46.572882+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -24487,18 +24487,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "LIVABLE CITY",
+            "vendor": "ASOCIACION MAYAB",
             "amount_usd": 3500.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "ASOCIACION MAYAB",
+            "vendor": "LIVABLE CITY",
             "amount_usd": 3500.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -29115,7 +29115,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "GABRIEL BASSAN",
+            "vendor": "LAW OFFICE OF FLOYD ANDREWS",
             "amount_usd": 50000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -29124,7 +29124,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "LAW OFFICE OF FLOYD ANDREWS",
+            "vendor": "GABRIEL BASSAN",
             "amount_usd": 50000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -29459,7 +29459,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MERCY MANAGEMENT GROUP",
+            "vendor": "EVERYDAY ENERGY",
             "amount_usd": 120000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
@@ -29468,7 +29468,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "EVERYDAY ENERGY",
+            "vendor": "MERCY MANAGEMENT GROUP",
             "amount_usd": 120000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
@@ -34045,18 +34045,18 @@
         "n_vendors": 9,
         "vendors": [
           {
-            "vendor": "LAVENDER YOUTH RECREATION & INFO CTR",
+            "vendor": "HUNTERS POINT FAMILY",
             "amount_usd": 18000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 3,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "HUNTERS POINT FAMILY",
+            "vendor": "LAVENDER YOUTH RECREATION & INFO CTR",
             "amount_usd": 18000.0,
-            "n_vouchers": 3,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,

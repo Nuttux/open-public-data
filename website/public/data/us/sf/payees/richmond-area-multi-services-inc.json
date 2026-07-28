@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.730930+00:00",
+ "generated_at": "2026-07-28T11:43:47.698319+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,173 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 8187,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 328021938.66,
+    "n_vouchers": 7722
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 17236298.38,
+    "n_vouchers": 254
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 6508809.9,
+    "n_vouchers": 102
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 2210161.65,
+    "n_vouchers": 22
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 1189582.84,
+    "n_vouchers": 72
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 60000.0,
+    "n_vouchers": 5
+   },
+   {
+    "department": "HRC Human Rights Commission",
+    "department_code": "HRC",
+    "usd": 19000.0,
+    "n_vouchers": 6
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 1500.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 9,
+  "categories": [
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 166966937.96,
+    "n_vouchers": 3878
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 47351960.02,
+    "n_vouchers": 1245
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 27298268.78,
+    "n_vouchers": 512
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 7184.59,
+    "n_vouchers": 7
+   },
+   {
+    "code": "463599",
+    "label": "Misc Public Health Revenue",
+    "spend_class": "unclear",
+    "usd": -202781.86,
+    "n_vouchers": 2
+   },
+   {
+    "code": "OTH_ASSETS_CURR",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": -7289279.36,
+    "n_vouchers": 366
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 35073800.12,
+  "n_recent_lines": 7,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 25597660.46,
+    "n_vouchers": 442
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 8008583.02,
+    "n_vouchers": 172
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 3049187.96,
+    "n_vouchers": 52
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2066026.02,
+    "n_vouchers": 25
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 984468.55,
+    "n_vouchers": 10
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 38041.69,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": {
+  "description": "Richmond Area Multi-services Inc is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under mental health and crisis intervention.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Richmond Area Multi-services Inc",
+  "ein": "237389436",
+  "ntee_code": "F30Z",
+  "ntee_label": "Mental health and crisis intervention",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/237389436",
+  "checked_at": "2026-07-27T23:35:48.978995+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000010838",

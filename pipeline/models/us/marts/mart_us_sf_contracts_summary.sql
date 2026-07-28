@@ -87,15 +87,20 @@ dedupe AS (
         -- Money (see header for why SUM over prime rows only)
         SUM(agreed_amt)                     AS agreed_usd,
         SUM(pmt_amt)                        AS paid_usd,
-        -- Source self-consistency: does the SOURCE's own arithmetic
-        -- (agreed = paid + remaining) hold at 0.1% (with a $1 floor so
-        -- zero-agreed exact matches pass)? The source value itself is
-        -- never selected out of this expression.
-        -- NULL source values mean the identity simply can't be checked →
-        -- conservatively "not consistent" (the fiche then shows the
-        -- reconciliation note).
+        -- Source self-consistency. The identity is FOUR-way, per the City's
+        -- own data dictionary (cqi5-hm2d):
+        --     Contract Awarded Amount
+        --   = Purchase Orders Outstanding (consumed_amt)
+        --   + Payments Made               (pmt_amt)
+        --   + Remaining Contract Award    (remaining_amt)
+        -- This held on 31,795 / 31,795 contracts when measured 2026-07-28.
+        -- The previous test omitted consumed_amt and therefore "failed" on
+        -- exactly the 20.2% of contracts with outstanding POs — which is
+        -- where the false claim that the register contradicts itself came
+        -- from. consumed_amt is referenced only inside this boolean and is
+        -- never carried as a value (see header).
         COALESCE(
-            ABS(SUM(agreed_amt) - SUM(pmt_amt) - SUM(remaining_amt))
+            ABS(SUM(agreed_amt) - SUM(consumed_amt) - SUM(pmt_amt) - SUM(remaining_amt))
                 <= GREATEST(0.001 * ABS(SUM(agreed_amt)), 1.0),
             FALSE)                          AS src_arithmetic_consistent,
         MAX(data_as_of)                     AS data_as_of

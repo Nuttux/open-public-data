@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.730252+00:00",
+ "generated_at": "2026-07-28T11:43:47.696842+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -25,6 +25,150 @@
  "top_departments": [
   "GEN General City - Unallocated"
  ],
+ "profile": {
+  "n_vouchers": 297,
+  "departments": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 233507200.66,
+    "n_vouchers": 37
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 126856311.98,
+    "n_vouchers": 172
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 50154780.31,
+    "n_vouchers": 87
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 3403322.57,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "OTHR_OBLIG_AGNCY_FUN",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 233195582.03,
+    "n_vouchers": 34
+   },
+   {
+    "code": "410981",
+    "label": "Commty Facilts Distrct Cfd Tax",
+    "spend_class": "obligation",
+    "usd": 57423758.92,
+    "n_vouchers": 54
+   },
+   {
+    "code": "574990",
+    "label": "Debt Svc-Admin And Fiscal Chrg",
+    "spend_class": "obligation",
+    "usd": 50827189.43,
+    "n_vouchers": 28
+   },
+   {
+    "code": "479996",
+    "label": "Fiscal Agent Reimb Clearing",
+    "spend_class": "ledger",
+    "usd": 37140573.56,
+    "n_vouchers": 130
+   },
+   {
+    "code": "574210",
+    "label": "Loan Interest Expense",
+    "spend_class": "ledger",
+    "usd": 18928155.61,
+    "n_vouchers": 4
+   },
+   {
+    "code": "571210",
+    "label": "Loan Principal Repayment",
+    "spend_class": "ledger",
+    "usd": 9255000.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "574110",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 5202473.9,
+    "n_vouchers": 2
+   },
+   {
+    "code": "INTER_FUND_REC",
+    "label": "Interfund Receivables",
+    "spend_class": "ledger",
+    "usd": 1781749.45,
+    "n_vouchers": 36
+   }
+  ],
+  "n_categories": 9,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 78226102.84,
+  "n_recent_lines": 8,
+  "recent_lines": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 36637073.75,
+    "n_vouchers": 4
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Loan Interest Expense",
+    "spend_class": "ledger",
+    "usd": 13797619.29,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "label": "Commty Facilts Distrct Cfd Tax",
+    "spend_class": "obligation",
+    "usd": 9441459.3,
+    "n_vouchers": 6
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Commty Facilts Distrct Cfd Tax",
+    "spend_class": "obligation",
+    "usd": 5782721.86,
+    "n_vouchers": 9
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "label": "Fiscal Agent Reimb Clearing",
+    "spend_class": "ledger",
+    "usd": 5019186.93,
+    "n_vouchers": 16
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Fiscal Agent Reimb Clearing",
+    "spend_class": "ledger",
+    "usd": 3862827.54,
+    "n_vouchers": 16
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

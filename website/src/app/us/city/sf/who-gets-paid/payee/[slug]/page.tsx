@@ -5,6 +5,7 @@ import "@/app/fusion.css";
 
 import SfPayeeFiche from "@/components/us/SfPayeeFiche";
 import { loadSfPayee, loadSfPayeesIndex } from "@/lib/us/sf-payees-data";
+import { loadSfCategorySlugMap, loadSfDeptHrefs } from "@/lib/us/sf-category-links";
 import { fmtUsdCompact } from "@/lib/us/format";
 
 type Params = { slug: string };
@@ -41,14 +42,19 @@ export default async function SfPayeePage({ params }: { params: Promise<Params> 
               ← San Francisco · Payees
             </Link>
           </div>
+          {/* No lede: the fiche's stat hero carries the total and the year
+              span immediately below. Repeating them here printed the same two
+              facts twice within one screen (Paris fiche rule — breadcrumb +
+              title, then the KPI band carries the numbers ONCE). */}
           <h1 className="fx-page-title">{payee.name}</h1>
-          <p className="fx-page-lede">
-            {fmtUsdCompact(payee.total_paid_usd)} paid {payee.first_year}–{payee.last_year}
-          </p>
         </div>
       </section>
       <div className="fx-fiche-wrap">
-        <SfPayeeFiche payee={payee} />
+        <SfPayeeFiche
+          payee={payee}
+          categorySlugs={loadSfCategorySlugMap()}
+          deptHrefs={loadSfDeptHrefs()}
+        />
       </div>
     </main>
   );

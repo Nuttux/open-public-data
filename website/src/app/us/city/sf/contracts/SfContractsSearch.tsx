@@ -7,7 +7,7 @@ import { useTrack } from "@/lib/analyticsContext";
 import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helpers";
 import { normSearch, expandQuery, matchExpanded } from "@/lib/search-synonyms";
 import { fmtUsdCompact } from "@/lib/us/format";
-import { typeLabel } from "./us-sf-contracts-types";
+import { contractLabel, typeLabel } from "./us-sf-contracts-types";
 import type { SfActiveRow } from "./us-sf-contracts-types";
 
 /**
@@ -58,6 +58,12 @@ function PaidBar({ row, t }: { row: SfActiveRow; t: (k: string) => string }) {
   }
   const ratio = row.paid_usd / row.agreed_usd;
   const pct = Math.max(Math.min(ratio * 100, 100), 0);
+  // Never coloured as a finding. The register's own "Payments Made" column
+  // does not survive an external check: on large construction contracts it
+  // runs a median 3.1x the City's voucher ledger for the same purchase orders
+  // (Gene Friend rec centre: pmt_amt $329M, ledger $38M). So paid > agreed
+  // here is a property of that column, not evidence about a project.
+  const meaningful = false;
   return (
     <div
       title={
@@ -75,11 +81,11 @@ function PaidBar({ row, t }: { row: SfActiveRow; t: (k: string) => string }) {
               top: 0,
               height: "100%",
               width: `${pct}%`,
-              background: row.paid_exceeds_agreed ? "var(--ocre)" : "var(--ink)",
+              background: meaningful ? "var(--ocre)" : "var(--ink)",
             }}
           />
         </div>
-        <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 11.5, color: row.paid_exceeds_agreed ? "var(--ocre)" : "var(--ink-2)", whiteSpace: "nowrap" }}>
+        <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 11.5, color: meaningful ? "var(--ocre)" : "var(--muted)", whiteSpace: "nowrap" }}>
           {row.paid_exceeds_agreed
             ? t("us.sf.contracts.search.exceeds")
             : `${Math.round(ratio * 100)}%`}
@@ -110,7 +116,15 @@ export default function SfContractsSearch({ rows }: { rows: SfActiveRow[] }) {
 
   // Haystack normalized once per corpus, not per keystroke.
   const hayNorms = useMemo(
-    () => rows.map((r) => normSearch(`${r.title} ${r.title_plain || ""} ${r.prime || ""} ${r.department || ""}`)),
+    () =>
+      rows.map((r) =>
+        // Generated text joins the haystack, so a search for "biosolids" or
+        // "family resource centre" finds contracts whose register title never
+        // says either. The raw title stays searchable too.
+        normSearch(
+          `${r.title} ${r.title_plain || ""} ${r.title_clear || ""} ${r.what_concretely || ""} ${r.prime || ""} ${r.department || ""}`,
+        ),
+      ),
     [rows],
   );
 
@@ -180,8 +194,17 @@ export default function SfContractsSearch({ rows }: { rows: SfActiveRow[] }) {
     return [...brands, ...themes, ...computed];
   }, [rows, hayNorms]);
 
-  const displayCap = 24;
+  // 5 rows is the default: the table is a lookup tool, not a leaderboard, and
+  // 24 rows pushed everything below it off the page. Expanding is one click.
+  const COLLAPSED = 5;
+  const EXPANDED = 30;
+  const [showAll, setShowAll] = useState(false);
+  const displayCap = showAll ? EXPANDED : COLLAPSED;
   const displayed = filtered.slice(0, displayCap);
+  // A new query starts collapsed again, so results always begin scannable.
+  useEffect(() => {
+    setShowAll(false);
+  }, [query, dept, ctype, soleOnly]);
 
   const reset = () => {
     setQuery("");
@@ -314,7 +337,7 @@ export default function SfContractsSearch({ rows }: { rows: SfActiveRow[] }) {
       {displayed.length > 0 ? (
         <>
           <div style={{ overflowX: "auto" }}>
-            <table className="fx-table">
+            <table className="fx-table fx-table-cards">
               <thead>
                 <tr>
                   <th>{t("us.sf.contracts.search.col.contract")}</th>
@@ -331,7 +354,12 @@ export default function SfContractsSearch({ rows }: { rows: SfActiveRow[] }) {
               <tbody>
                 {displayed.map(({ row }, i) => (
                   <tr key={row.contract_no}>
-                    <td style={{ fontWeight: 500, maxWidth: 380 }}>
+                    {/* c-lead / c-wide / c-fig drive the narrow-screen card
+                        layout (fx-table-cards): the title leads, department
+                        and the paid bar take a full line, and agreed + ends
+                        sit side by side. data-label restores the column
+                        heading the dropped <thead> used to carry. */}
+                    <td className="c-lead" style={{ fontWeight: 500, maxWidth: 380 }}>
                       <Link
                         href={`/us/city/sf/contracts/contract/${row.contract_no}`}
                         scroll={false}
@@ -346,7 +374,7 @@ export default function SfContractsSearch({ rows }: { rows: SfActiveRow[] }) {
                         }
                       >
                         {(() => {
-                          const label = row.title_plain || row.title;
+                          const label = contractLabel(row);
                           return label.length > 90 ? label.slice(0, 90) + "…" : label;
                         })()}
                       </Link>
@@ -362,14 +390,24 @@ export default function SfContractsSearch({ rows }: { rows: SfActiveRow[] }) {
                         )}
                       </div>
                     </td>
-                    <td className="muted" style={{ maxWidth: 150 }}>
+                    <td
+                      className="muted c-wide"
+                      style={{ maxWidth: 150 }}
+                      data-label={t("us.sf.contracts.search.col.dept")}
+                    >
                       {(row.department || "—").replace(/^[A-Z]{2,4} /, "")}
                     </td>
-                    <td className="num">{fmtUsdCompact(row.agreed_usd)}</td>
-                    <td>
+                    <td className="num c-fig" data-label={t("us.sf.contracts.search.col.agreed")}>
+                      {fmtUsdCompact(row.agreed_usd)}
+                    </td>
+                    <td className="c-bar" data-label={t("us.sf.contracts.search.col.paid")}>
                       <PaidBar row={row} t={t} />
                     </td>
-                    <td className="muted" style={{ whiteSpace: "nowrap" }}>
+                    <td
+                      className="muted c-fig"
+                      style={{ whiteSpace: "nowrap" }}
+                      data-label={t("us.sf.contracts.search.col.ends")}
+                    >
                       {fmtEnd(row.end, t)}
                     </td>
                   </tr>
@@ -379,7 +417,24 @@ export default function SfContractsSearch({ rows }: { rows: SfActiveRow[] }) {
           </div>
           {filtered.length > displayed.length && (
             <div className="fx-results-overflow" style={{ marginTop: 10 }}>
-              {fill(t("us.sf.contracts.search.overflow"), { n: nfInt.format(filtered.length - displayed.length) })}
+              {!showAll && filtered.length > COLLAPSED ? (
+                <button
+                  type="button"
+                  className="fx-btn"
+                  onClick={() => {
+                    track("results_expand", { page: "us-sf-contracts", results_count: filtered.length });
+                    setShowAll(true);
+                  }}
+                >
+                  {fill(t("us.sf.contracts.search.show_more"), {
+                    n: nfInt.format(Math.min(EXPANDED, filtered.length) - COLLAPSED),
+                  })}
+                </button>
+              ) : (
+                fill(t("us.sf.contracts.search.overflow"), {
+                  n: nfInt.format(filtered.length - displayed.length),
+                })
+              )}
             </div>
           )}
         </>

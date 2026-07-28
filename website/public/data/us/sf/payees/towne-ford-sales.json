@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.743948+00:00",
+ "generated_at": "2026-07-28T11:43:47.720264+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -31,6 +31,174 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 1813,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 43584305.26,
+    "n_vouchers": 658
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 18902822.42,
+    "n_vouchers": 321
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 17450761.11,
+    "n_vouchers": 206
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 11595595.29,
+    "n_vouchers": 168
+   },
+   {
+    "department": "POL Police",
+    "department_code": "POL",
+    "usd": 4630371.57,
+    "n_vouchers": 101
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 3699447.1,
+    "n_vouchers": 42
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 2610669.02,
+    "n_vouchers": 56
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 2089733.36,
+    "n_vouchers": 31
+   }
+  ],
+  "n_departments": 25,
+  "categories": [
+   {
+    "code": "560290",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 76894107.94,
+    "n_vouchers": 1113
+   },
+   {
+    "code": "560000",
+    "label": "Equipment Purchase-Budget",
+    "spend_class": "purchase",
+    "usd": 3450931.88,
+    "n_vouchers": 69
+   },
+   {
+    "code": "560990",
+    "label": "Other Equipment",
+    "spend_class": "purchase",
+    "usd": 2194280.45,
+    "n_vouchers": 48
+   },
+   {
+    "code": "560410",
+    "label": "Shop, Bldg & Field Maint Eqpmt",
+    "spend_class": "purchase",
+    "usd": 269520.48,
+    "n_vouchers": 4
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 108115.43,
+    "n_vouchers": 56
+   },
+   {
+    "code": "567000",
+    "label": "Bldgs,Struct&Imprv Proj-Budget",
+    "spend_class": "purchase",
+    "usd": 87344.03,
+    "n_vouchers": 3
+   },
+   {
+    "code": "560840",
+    "label": "Safety & Rescue Equipment",
+    "spend_class": "purchase",
+    "usd": 48516.84,
+    "n_vouchers": 3
+   },
+   {
+    "code": "529210",
+    "label": "Veh Maint (Non Central Shops)",
+    "spend_class": "purchase",
+    "usd": 29185.24,
+    "n_vouchers": 29
+   }
+  ],
+  "n_categories": 16,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 11206312.16,
+  "n_recent_lines": 14,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 3724819.42,
+    "n_vouchers": 20
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 2849206.76,
+    "n_vouchers": 26
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Other Equipment",
+    "spend_class": "purchase",
+    "usd": 1937426.63,
+    "n_vouchers": 44
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 992063.61,
+    "n_vouchers": 14
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 725652.83,
+    "n_vouchers": 8
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "label": "Equipment Purchase-Budget",
+    "spend_class": "purchase",
+    "usd": 282528.82,
+    "n_vouchers": 10
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000035044",

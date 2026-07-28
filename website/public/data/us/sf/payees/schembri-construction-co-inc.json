@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.736104+00:00",
+ "generated_at": "2026-07-28T11:43:47.707226+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,10 +35,109 @@
  "top_departments": [
   "AIR Airport Commission"
  ],
+ "profile": {
+  "n_vouchers": 869,
+  "departments": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 190845527.19,
+    "n_vouchers": 825
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 2373752.65,
+    "n_vouchers": 31
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 1130985.2,
+    "n_vouchers": 13
+   }
+  ],
+  "n_departments": 3,
+  "categories": [
+   {
+    "code": "567110",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 138930574.08,
+    "n_vouchers": 286
+   },
+   {
+    "code": "528990",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 3465245.69,
+    "n_vouchers": 34
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 3426608.4,
+    "n_vouchers": 28
+   },
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 1285153.82,
+    "n_vouchers": 10
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 119968.25,
+    "n_vouchers": 8
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 6
+   },
+   {
+    "code": "529990",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 0.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 7,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 38700767.87,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 37117964.75,
+    "n_vouchers": 49
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1582803.12,
+    "n_vouchers": 13
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000033803",
-   "title": "11812.61- DBB HVAC Improv.",
+   "title": "11812.61- DBB HVAC Improvement.",
    "department": "AIR Airport Commission",
    "department_code": "AIR",
    "agreed_usd": 4448160.98,

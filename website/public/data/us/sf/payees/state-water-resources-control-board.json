@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.737969+00:00",
+ "generated_at": "2026-07-28T11:43:47.710249+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,174 @@
  "top_departments": [
   "WWE Wastewater Enterprise"
  ],
+ "profile": {
+  "n_vouchers": 1781,
+  "departments": [
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 109871418.1,
+    "n_vouchers": 245
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 56921296.39,
+    "n_vouchers": 666
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 2394246.29,
+    "n_vouchers": 231
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 1523970.6,
+    "n_vouchers": 123
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 779228.69,
+    "n_vouchers": 260
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 628293.2,
+    "n_vouchers": 60
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 450163.84,
+    "n_vouchers": 146
+   },
+   {
+    "department": "JUV Juvenile Probation",
+    "department_code": "JUV",
+    "usd": 68842.2,
+    "n_vouchers": 20
+   }
+  ],
+  "n_departments": 12,
+  "categories": [
+   {
+    "code": "571210",
+    "label": "Loan Principal Repayment",
+    "spend_class": "ledger",
+    "usd": 21851488.71,
+    "n_vouchers": 25
+   },
+   {
+    "code": "552210",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 14772624.95,
+    "n_vouchers": 815
+   },
+   {
+    "code": "574210",
+    "label": "Loan Interest Expense",
+    "spend_class": "ledger",
+    "usd": 10481028.78,
+    "n_vouchers": 26
+   },
+   {
+    "code": "574990",
+    "label": "Debt Svc-Admin And Fiscal Chrg",
+    "spend_class": "obligation",
+    "usd": 4904941.12,
+    "n_vouchers": 15
+   },
+   {
+    "code": "444931",
+    "label": "Fed Grants Pass-Thru State-Oth",
+    "spend_class": "obligation",
+    "usd": 4268518.47,
+    "n_vouchers": 4
+   },
+   {
+    "code": "571110",
+    "label": "Bond Redemption",
+    "spend_class": "obligation",
+    "usd": 1425467.72,
+    "n_vouchers": 2
+   },
+   {
+    "code": "553140",
+    "label": "Judgements - Penalty",
+    "spend_class": "unclear",
+    "usd": 614100.0,
+    "n_vouchers": 3
+   },
+   {
+    "code": "574110",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 232472.36,
+    "n_vouchers": 4
+   }
+  ],
+  "n_categories": 15,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 13355239.74,
+  "n_recent_lines": 9,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Loan Principal Repayment",
+    "spend_class": "ledger",
+    "usd": 5629086.5,
+    "n_vouchers": 6
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Fed Grants Pass-Thru State-Oth",
+    "spend_class": "obligation",
+    "usd": 2844805.75,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Loan Interest Expense",
+    "spend_class": "ledger",
+    "usd": 2021728.61,
+    "n_vouchers": 4
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 1763236.5,
+    "n_vouchers": 60
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Debt Svc-Admin And Fiscal Chrg",
+    "spend_class": "obligation",
+    "usd": 705394.49,
+    "n_vouchers": 2
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 264838.46,
+    "n_vouchers": 14
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000036869",

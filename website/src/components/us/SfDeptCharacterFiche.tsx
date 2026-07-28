@@ -187,6 +187,7 @@ export default function SfDeptCharacterFiche({
   const objRest = objectsSorted.slice(OBJ_TOP);
   const vendors = d.payments?.vendors ?? [];
   const vendorMax = Math.max(...vendors.map((v) => v.amount_usd), 1);
+  const hasVendorPayments = vendors.length > 0;
 
   return (
     <div>
@@ -197,24 +198,41 @@ export default function SfDeptCharacterFiche({
           </div>
           <div className="fx-fiche-kpi-value tnum">{fmtUsdCompact(d.amount_usd)}</div>
         </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("us.sf.fiche.dc.kpi.dept")}</div>
-          <div className="fx-fiche-kpi-value" style={{ fontSize: 15, lineHeight: 1.35 }}>
-            {d.dept.display_name ?? d.dept.label}
+        {/* Share of the department, not the department's name: the breadcrumb
+         *  and the lede both already say which department this is. */}
+        {d.dept_total_usd > 0 && (
+          <div className="fx-fiche-kpi">
+            <div className="fx-fiche-kpi-label">
+              {fill(t("us.sf.fiche.dc.kpi.share"), {
+                dept: d.dept.display_name ?? d.dept.label,
+              })}
+            </div>
+            <div className="fx-fiche-kpi-value tnum">
+              {fmtShare(d.amount_usd / d.dept_total_usd)}
+            </div>
           </div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">
-            <Tip label={t("us.sf.fiche.dc.kpi.matched_tip")}>{t("us.sf.fiche.dc.kpi.matched")}</Tip>
-          </div>
-          <div className="fx-fiche-kpi-value tnum">
-            {d.payments?.matched_pct != null ? fmtShare(d.payments.matched_pct) : "—"}
-          </div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("us.sf.fiche.dc.kpi.vendors")}</div>
-          <div className="fx-fiche-kpi-value tnum">{d.payments?.n_vendors ?? 0}</div>
-        </div>
+        )}
+        {/* Vendor tiles only when vendor payments EXIST. On payroll-paid
+         *  characters (Salaries, Fringe Benefits, inter-departmental
+         *  services) these rendered as "—" and "0" — two of four tiles
+         *  carrying no information, with the callout below already
+         *  explaining why. */}
+        {hasVendorPayments && (
+          <>
+            <div className="fx-fiche-kpi">
+              <div className="fx-fiche-kpi-label">
+                <Tip label={t("us.sf.fiche.dc.kpi.matched_tip")}>{t("us.sf.fiche.dc.kpi.matched")}</Tip>
+              </div>
+              <div className="fx-fiche-kpi-value tnum">
+                {d.payments?.matched_pct != null ? fmtShare(d.payments.matched_pct) : "—"}
+              </div>
+            </div>
+            <div className="fx-fiche-kpi">
+              <div className="fx-fiche-kpi-label">{t("us.sf.fiche.dc.kpi.vendors")}</div>
+              <div className="fx-fiche-kpi-value tnum">{d.payments?.n_vendors ?? 0}</div>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Who got paid — vendor payments (vouchers), the floor of the drill */}
@@ -245,8 +263,8 @@ export default function SfDeptCharacterFiche({
             )}
             <p className="fx-note" style={{ marginTop: 8 }}>
               {fill(t("us.sf.fiche.dc.payments_matched"), {
-                paid: fmtUsd(d.payments.total_usd),
-                budget: fmtUsd(d.amount_usd),
+                paid: fmtUsdCompact(d.payments.total_usd),
+                budget: fmtUsdCompact(d.amount_usd),
                 pct: d.payments.matched_pct != null ? fmtShare(d.payments.matched_pct) : "—",
               })}
             </p>

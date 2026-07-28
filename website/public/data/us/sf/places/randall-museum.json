@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.738425+00:00",
+ "generated_at": "2026-07-28T12:23:47.752388+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "randall-museum",
@@ -57,82 +57,23 @@
    }
   ],
   "n_payees": 1,
-  "payees_total_paid": 1170509.5,
-  "permits": [
-   {
-    "description": "primarily interior renovation. construct geology exhibit. new zoology exhibit. renovate live animal exhibit,science lab,multipurpose room,3 bathrooms,lobby,concession & office area. install elevator. accessibility upgrades. new sprinkler at bsmt level.",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 3500000.0,
-    "status": "complete",
-    "permit_date": "2015-07-08",
-    "permit_year": 2015
-   },
-   {
-    "description": "underground portionof the fire sprinkler permit (ref pa 2016 0427 5868) and in conjunction with ref pa 2015 1218 5449",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 730000.0,
-    "status": "suspend",
-    "permit_date": "2017-04-14",
-    "permit_year": 2017
-   },
-   {
-    "description": "erect one story public restroom.",
-    "permit_type": "new construction wood frame",
-    "declared_cost_usd": 400000.0,
-    "status": "complete",
-    "permit_date": "2012-12-24",
-    "permit_year": 2012
-   },
-   {
-    "description": "installation of new electrical service. amend scope of work on 201406259468",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 200000.0,
-    "status": "issued",
-    "permit_date": "2017-08-25",
-    "permit_year": 2017
-   },
-   {
-    "description": "partial demolition o f walls; interior renovation of two rooms in the randall musuem (stem lab & toddler room), including electrical outlets & lighting and finishes: to be built in connection with improvements permitted under 2014-0625-9768s",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 150000.0,
-    "status": "issued",
-    "permit_date": "2016-02-12",
-    "permit_year": 2016
-   },
-   {
-    "description": "install 117 new sprinklers for bldg renovation - lower level. ref pa 2014 0625 9468. installation of new 6-inch fire service off of 6-inch main on roosevelt way by other under separated appl.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 60500.0,
-    "status": "complete",
-    "permit_date": "2016-05-17",
-    "permit_year": 2016
-   }
-  ],
-  "n_permits": 11,
-  "permits_total_declared": 5190500.0,
-  "permits_by_year": [
-   {
-    "year": 2012,
-    "declared_usd": 420000.0
-   },
-   {
-    "year": 2015,
-    "declared_usd": 3500000.0
-   },
-   {
-    "year": 2016,
-    "declared_usd": 262500.0
-   },
-   {
-    "year": 2017,
-    "declared_usd": 1008000.0
-   }
-  ]
+  "payees_total_paid": 1170509.5
  },
- "photo": null,
- "photo_credit": null,
- "summary_en": null,
- "published": false,
+ "photo": "/img/us/sf/places/randall-museum.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/randall-museum.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Randall_Museum,_San_Francisco.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Mliu92",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T22:51:02.755807+00:00"
+ },
+ "summary_en": "The Josephine Randall Junior Museum sits on Corona Heights, and the department's annual reports of the mid-1980s catalogue what it offered: programmes for young people in the natural sciences, art, crafts, rockets, computers, birdwatching, a boat club, an airplane club, live animal displays and basic mechanics, with films shown daily in the museum's own theatre. Its improvements have come from unusual sources. In 1986 the Recreation and Park Commission approved transferring money from the Llewella Lewis bequest to the Bureau of Architecture for a master plan and improvements to the museum. The Open Space Acquisition and Park Renovation Fund's priority lists then carried it twice — a $20,000 allocation, and an environmental centre, garden and pond given first priority in December 1991. The museum has also had to defend its setting: a 1986 commission report describes negotiations between neighborhood residents, park staff, city planners and developers over the development of three lots along Museum Way, in an attempt to reduce view blockage and traffic congestion beside the museum. The building was rebuilt from the inside under a $3.5 million permit — new geology and zoology exhibits, the live animal exhibit, a science lab, multipurpose room, lobby and offices, an added elevator and accessibility upgrades — with a further $150,000 for a STEM lab and toddler room and $400,000 for a single-storey public restroom.",
+ "published": true,
  "money": {
   "budget_line": {
    "code": "REC",
@@ -189,91 +130,13 @@
    "url": "https://archive.org/details/annrep778085899091sanf",
    "deep_link": "https://archive.org/details/annrep778085899091sanf?q=Josephine+Randall+Junior+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "minutes1992sanf_1",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "ocr_excerpts": [
-    "ats. Design funds ($30,000). (Given Priority 2 on 12/12/91). 35. Poly High School Gym - (Given Priority 3 on 12/12/91). 36. Potrero Hill Recreation Center - to match federal grant of $250,000 for renovation including new floor, accessible restrooms ($107,000). (Given Priority 1 on 12/12/91). 37. Randall Museum - Environmental Center, Garden and Pond - (Given Priority 1 on 12/12/91). 38. Regional Trail, Twin Peaks - Community request to improve trail system, to revegetate, and to take measures to stop erosion. $200,000 cost estimate provided by community. (Given Priority 1 on 1/9/92). 39. Swimming Pool",
-    "1 /I 5/92) . 20. South of Market Park - Acquisition/Development (Given Priority 1 on 1/15/92). 21. Tank Hill - Renovation (Moved to natural areas category on 1/9/92). 22. Tenderloin Recreation Center and Playground (Given Priority 1 on 1/15/92) . 23. Transportation Program: Tenderloin, Chinatown, Randall Museum, Mission, Bayview and OMI Districts. 24. 2460 Harrison - Development (Defer til 1/30/92). 25. 23rd, Treat and Folsom Streets - Acquisition/Development (Defer til 1/30/92). 26. Valencia Gardens, New Park - Acquisition/Development (Defer til 1/30/92). 27. Washington Hyde Mini Park ^SAN FRANCISCO",
-    "on 1/15/92). 20. South of Market Park - Acquisition/Development (Given Priority 1 on 1/15/92) . 21. Tank Hill - Renovation (Moved to natural areas category on 1/9/92). 22. Tenderloin Recreation Center and Playground (Given Priority 1 on 1/15/92) . 23. Transportation Program: Tenderloin, Chinatown, Randall Museum, Mission, Bayview and OMI Districts. 24. 21st Street and South Van Ness 25. 2460 Harrison - Development (Defer til 1/30/92). 26. 23rd, Treat and Folsom Streets - Acquisition/Development (Defer til 1/30/92) . 27. Valencia Gardens, New Park - Acquisition/Development (Defer til 1 /30/92) . 28. Was",
-    "Henne; Barbara Judy; Nancy Larson; Nan McGuire; Terry Ow-l'ling; Juanita Raven; Jacob Sigg; and Willa Sims Ina Dearman; Geraldine Earp; Carole Isaacs; Hilary Lamar; Lonnie Lawson; Louis Loewenstein; Midge Wilson; and Lynne Williams Phil Arnold, Asst. General Manager-Administration; Amy Dawson, Director, Randall Museum; Tim Lillyquist, Assistant to the General Manager; and Joanne Wilson, Park Planner, of the Recreation and Park Department; and Steve Shotland of the Department of City Planning APPROVAL OF MINUTES The minutes of January 30, 1992 were approved as submitted. PUBLIC COMMENT At this time members o",
-    "Committee on items that are within the subject matter jurisdiction of the Park and Open Space Advisory Committee. Members of the public may address the Committee for up to 3 minutes for individuals or up to 5 minutes for groups, or a lesser period time subject to the call of the Co-Chai rs . Randall Museum -- Representatives of the Randall Museum requested fun"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 6.61,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 1.11,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": -1.25,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/minutes1992sanf_1",
-   "deep_link": "https://archive.org/details/minutes1992sanf_1?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "4 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesrecreatio1986sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": 1986,
-   "pool": "sfpl",
-   "matched_alias": "Josephine Randall Junior Museum",
-   "ocr_excerpts": [
-    "at 78 golf courses to open Christmas and New Year's Day LITTLE HOLLYWOOD PARK RES. 14246 - Apprvd. phase II development plans 34 - 30 - 1986 INDEX Page No. LLEWELLA LEWIS BEQUEST RES. 14330 - Apprvd. transferring money to Bur. of Architecture 78 for masterplan and improvements for Josephine Randall Museum MANAGEMENT BY OBJECTIVES RES. 14265 - Apprvd. M.B.O. Objectives for Fiscal Year 1986/87 41 General Manager's Report - M.B.O. Objectives Review 85/86 190 RES. 14502 - Apprvd. M.B.O. for 86/87; review of M.B.O. of 225 85/86 MARINA GREEN RES. 14315 - Apprvd. placement of Goodwill Donation Station for 7",
-    "ich shadow impacts will be mapped. MUSEUM WAY DEVELOPMENT Negotiations have taken place between neighborhood residents, Recreation and Park staff. City Planners and developers in an attempt to reduce impacts (view blockage and traffic congestion) of development of three lots along Museum Way near the Josephine Randall Junior Museum. A compromise proposal has been calendared for review by the City Planning Commission on October 23. A description of the current proposal is attached to this report. Any comments on this material should be conveyed to Deborah Learner, Park Planner, so that your concerns can be adequately reflected at",
-    "ch shadow impacts will be mapped. MUSEUM WAY DEVELOPMENT Negotiations have taken place between neighborhood residents, Recreation and Park staff, City Planners and developers in an attempt to reduce impacts (view blockage and traffic congestion) of development of three lots along Museum Way near the Josephine Randall Junior Museum. A compromise proposal has been calendared for review by the City Planning Commission on October 23. A description of the current proposal is attached to this report. Any comments on this material should be conveyed to Deborah Learner, Park Planner, so that your concerns can be adequately reflected at",
-    "acant, the third lot has a structure on it which fronts on State Street and is slated to be demolished in the proposed development. She noted that a number of people voiced their concern before the Parks and Planning Committee representing the developer, nearby residents and those associated with the Josephine Randall Junior Museum. The issues presented were concerns of preservation of views along Museum Way, access to the Junior Museum, the bulk of the buildings and the appearance created by siting all three buildings along State Street. She said a compromise solution had been worked out with some of the neighborhood represent",
-    "compromise. Based on the discussion that was heard at the Committee level the following recommendation was adopted: that all units should be constructed with access from State Street and the height of the units should not extend above the elevation of Museum Way. Margaret Garvin, Chairm"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 3.59,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 1.09,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.75,
-    "money": false,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/minutesrecreatio1986sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1986sanf?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "Annual reports listing the museum's programmes — rockets, computers, a boat club, live animals, daily films."
   },
   {
    "identifier": "generalmanagersr1992sanf",
@@ -313,8 +176,105 @@
    "url": "https://archive.org/details/generalmanagersr1992sanf",
    "deep_link": "https://archive.org/details/generalmanagersr1992sanf?q=Randall+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": true,
+   "gloss": "Open-space fund papers allocating $20,000 to the museum and prioritising its environmental centre, garden and pond."
+  },
+  {
+   "identifier": "minutes1992sanf_1",
+   "title": "Minutes",
+   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Randall Museum",
+   "ocr_excerpts": [
+    "ats. Design funds ($30,000). (Given Priority 2 on 12/12/91). 35. Poly High School Gym - (Given Priority 3 on 12/12/91). 36. Potrero Hill Recreation Center - to match federal grant of $250,000 for renovation including new floor, accessible restrooms ($107,000). (Given Priority 1 on 12/12/91). 37. Randall Museum - Environmental Center, Garden and Pond - (Given Priority 1 on 12/12/91). 38. Regional Trail, Twin Peaks - Community request to improve trail system, to revegetate, and to take measures to stop erosion. $200,000 cost estimate provided by community. (Given Priority 1 on 1/9/92). 39. Swimming Pool",
+    "1 /I 5/92) . 20. South of Market Park - Acquisition/Development (Given Priority 1 on 1/15/92). 21. Tank Hill - Renovation (Moved to natural areas category on 1/9/92). 22. Tenderloin Recreation Center and Playground (Given Priority 1 on 1/15/92) . 23. Transportation Program: Tenderloin, Chinatown, Randall Museum, Mission, Bayview and OMI Districts. 24. 2460 Harrison - Development (Defer til 1/30/92). 25. 23rd, Treat and Folsom Streets - Acquisition/Development (Defer til 1/30/92). 26. Valencia Gardens, New Park - Acquisition/Development (Defer til 1/30/92). 27. Washington Hyde Mini Park ^SAN FRANCISCO",
+    "on 1/15/92). 20. South of Market Park - Acquisition/Development (Given Priority 1 on 1/15/92) . 21. Tank Hill - Renovation (Moved to natural areas category on 1/9/92). 22. Tenderloin Recreation Center and Playground (Given Priority 1 on 1/15/92) . 23. Transportation Program: Tenderloin, Chinatown, Randall Museum, Mission, Bayview and OMI Districts. 24. 21st Street and South Van Ness 25. 2460 Harrison - Development (Defer til 1/30/92). 26. 23rd, Treat and Folsom Streets - Acquisition/Development (Defer til 1/30/92) . 27. Valencia Gardens, New Park - Acquisition/Development (Defer til 1 /30/92) . 28. Was",
+    "Henne; Barbara Judy; Nancy Larson; Nan McGuire; Terry Ow-l'ling; Juanita Raven; Jacob Sigg; and Willa Sims Ina Dearman; Geraldine Earp; Carole Isaacs; Hilary Lamar; Lonnie Lawson; Louis Loewenstein; Midge Wilson; and Lynne Williams Phil Arnold, Asst. General Manager-Administration; Amy Dawson, Director, Randall Museum; Tim Lillyquist, Assistant to the General Manager; and Joanne Wilson, Park Planner, of the Recreation and Park Department; and Steve Shotland of the Department of City Planning APPROVAL OF MINUTES The minutes of January 30, 1992 were approved as submitted. PUBLIC COMMENT At this time members o",
+    "Committee on items that are within the subject matter jurisdiction of the Park and Open Space Advisory Committee. Members of the public may address the Committee for up to 3 minutes for individuals or up to 5 minutes for groups, or a lesser period time subject to the call of the Co-Chai rs . Randall Museum -- Representatives of the Randall Museum requested fun"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.61,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.11,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes1992sanf_1",
+   "deep_link": "https://archive.org/details/minutes1992sanf_1?q=Randall+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Citizens' advisory committee minutes carrying the museum's projects among the fund's priorities."
+  },
+  {
+   "identifier": "minutesrecreatio1986sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": 1986,
+   "pool": "sfpl",
+   "matched_alias": "Josephine Randall Junior Museum",
+   "ocr_excerpts": [
+    "at 78 golf courses to open Christmas and New Year's Day LITTLE HOLLYWOOD PARK RES. 14246 - Apprvd. phase II development plans 34 - 30 - 1986 INDEX Page No. LLEWELLA LEWIS BEQUEST RES. 14330 - Apprvd. transferring money to Bur. of Architecture 78 for masterplan and improvements for Josephine Randall Museum MANAGEMENT BY OBJECTIVES RES. 14265 - Apprvd. M.B.O. Objectives for Fiscal Year 1986/87 41 General Manager's Report - M.B.O. Objectives Review 85/86 190 RES. 14502 - Apprvd. M.B.O. for 86/87; review of M.B.O. of 225 85/86 MARINA GREEN RES. 14315 - Apprvd. placement of Goodwill Donation Station for 7",
+    "ich shadow impacts will be mapped. MUSEUM WAY DEVELOPMENT Negotiations have taken place between neighborhood residents, Recreation and Park staff. City Planners and developers in an attempt to reduce impacts (view blockage and traffic congestion) of development of three lots along Museum Way near the Josephine Randall Junior Museum. A compromise proposal has been calendared for review by the City Planning Commission on October 23. A description of the current proposal is attached to this report. Any comments on this material should be conveyed to Deborah Learner, Park Planner, so that your concerns can be adequately reflected at",
+    "ch shadow impacts will be mapped. MUSEUM WAY DEVELOPMENT Negotiations have taken place between neighborhood residents, Recreation and Park staff, City Planners and developers in an attempt to reduce impacts (view blockage and traffic congestion) of development of three lots along Museum Way near the Josephine Randall Junior Museum. A compromise proposal has been calendared for review by the City Planning Commission on October 23. A description of the current proposal is attached to this report. Any comments on this material should be conveyed to Deborah Learner, Park Planner, so that your concerns can be adequately reflected at",
+    "acant, the third lot has a structure on it which fronts on State Street and is slated to be demolished in the proposed development. She noted that a number of people voiced their concern before the Parks and Planning Committee representing the developer, nearby residents and those associated with the Josephine Randall Junior Museum. The issues presented were concerns of preservation of views along Museum Way, access to the Junior Museum, the bulk of the buildings and the appearance created by siting all three buildings along State Street. She said a compromise solution had been worked out with some of the neighborhood represent",
+    "compromise. Based on the discussion that was heard at the Committee level the following recommendation was adopted: that all units should be constructed with access from State Street and the height of the units should not extend above the elevation of Museum Way. Margaret Garvin, Chairm"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.59,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.09,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesrecreatio1986sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1986sanf?q=Josephine+Randall+Junior+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes transferring bequest money for a museum master plan, and negotiating over Museum Way development."
   }
  ],
  "dept_shelf": [
@@ -353,9 +313,9 @@
   }
  ],
  "_gate": {
-  "has_photo": false,
+  "has_photo": true,
   "n_documents": 4,
   "n_money_links": 1,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

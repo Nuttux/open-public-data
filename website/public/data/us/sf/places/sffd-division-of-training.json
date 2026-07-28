@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.770649+00:00",
+ "generated_at": "2026-07-28T12:23:47.788120+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sffd-division-of-training",
@@ -64,66 +64,23 @@
    }
   ],
   "n_payees": 1,
-  "payees_total_paid": 275000.0,
-  "permits": [
-   {
-    "description": "kitchen remodel, officer bathroom plumbing and light fixtures, path of travel upgrades maher not req",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 750000.0,
-    "status": "issued",
-    "permit_date": "2017-10-18",
-    "permit_year": 2017
-   },
-   {
-    "description": "emergency removal of brick veneer due to failing anchorages. install of weatherproofing & replacemen",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 250000.0,
-    "status": "complete",
-    "permit_date": "2005-06-09",
-    "permit_year": 2005
-   },
-   {
-    "description": "modify (e) training tower platforms at all floors as necessary to raise guardrail to ada/safety compliant heights and repairs",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 105964.0,
-    "status": "complete",
-    "permit_date": "2024-08-12",
-    "permit_year": 2024
-   },
-   {
-    "description": "supplemental to original permit #200506094738 submitting structural calculation to jadd fire escape for training purpose only.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 50000.0,
-    "status": "complete",
-    "permit_date": "2006-03-29",
-    "permit_year": 2006
-   }
-  ],
-  "n_permits": 4,
-  "permits_total_declared": 1155964.0,
-  "permits_by_year": [
-   {
-    "year": 2005,
-    "declared_usd": 250000.0
-   },
-   {
-    "year": 2006,
-    "declared_usd": 50000.0
-   },
-   {
-    "year": 2017,
-    "declared_usd": 750000.0
-   },
-   {
-    "year": 2024,
-    "declared_usd": 105964.0
-   }
-  ]
+  "payees_total_paid": 275000.0
  },
- "photo": null,
- "photo_credit": null,
- "summary_en": null,
- "published": false,
+ "photo": "/img/us/sf/places/sffd-division-of-training.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/sffd-division-of-training.jpg",
+  "source": "sf-fire.org",
+  "source_url": "https://sf-fire.org/our-organization/training",
+  "license": "UNVERIFIED",
+  "license_url": "",
+  "license_verified": false,
+  "provisional": true,
+  "author": "Bing",
+  "resolved_via": "web-search",
+  "fetched_at": "2026-07-27T23:00:29.293788+00:00"
+ },
+ "summary_en": "The Fire Department's Division of Training has spent decades in more than one place. The department's annual report of the early 1970s lists it at 2310 Folsom Street under an assistant chief, one of the divisions on the organisation chart beside Fire Prevention and Equipment; the Fire Commission's journal of proceedings from 1975 names its chief and files its accident reports, down to a preventable collision involving a Division of Training pumper. Its structural problem is stated plainly in a Budget Analyst management audit put before the Finance Committee: the department's training and education functions were spread across the Division of Training, the EMS Academy section and the EMS in-service training section, and that fragmentation hindered integration of fire suppression and emergency medical training. The department said it supported consolidating everything under the Division of Training's name — but only once a common training facility was available, instead of the three separate training locations then in use. The division reports monthly to the Fire Commission on what it has done, and its recruit training captain has brought matters before the commission in public comment. The facility now stands on Treasure Island.",
+ "published": true,
  "money": {
   "budget_line": {
    "code": "FIR",
@@ -180,9 +137,13 @@
    "url": "https://archive.org/details/1annualreport197174sanf",
    "deep_link": "https://archive.org/details/1annualreport197174sanf?q=Division+of+Training",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "The department's annual report placing the division at 2310 Folsom Street on its organisation chart."
   },
   {
    "identifier": "minutesoffirecom2002sanf",
@@ -222,9 +183,58 @@
    "url": "https://archive.org/details/minutesoffirecom2002sanf",
    "deep_link": "https://archive.org/details/minutesoffirecom2002sanf?q=Division+of+Training",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes receiving the division's monthly report on its activities."
+  },
+  {
+   "identifier": "1minutes200203sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "Fire Department Training",
+   "ocr_excerpts": [
+    ",374 annually in 2003 dollars. 1 Comments: 1. As part of its comprehensive management audit of the Fire Department, the Budget Analyst's Office reviewed the Fire Department's training and education functions. The Budget Analyst's Office concluded in Section 1.4 of the Management Audit Report that: • Fire Department training and education functions are currently spread across the Division of Training, the EMS Academy Section of the EMS Division, and the EMS In-service Training Section of the EMS Division. • Structural and management fragmentation hinders integration of the Fire Department's fire suppression and emergency medical services responsibilities, complicates management accountability, creates",
+    "implementing the Budget Analyst's recommendations in order to achieve an integrated Division of Fire and Medical Training by FY 2003-2004. According to Deputy Chief Asaro, the Fire Department: • Supports integration and consolidation of all training and education functions under the current name of the Division of Training once a common training facility is Board of Supervisors Budget Analyst 56 Memo to Finance Committee December 18, 2002 Finance Committee Meeting available instead of the current three training locations. • States that \"a pool of candidates with both fire and medical training does not exist from the rank of H-30 Captain which is used to fill the H-39 Training Captain positions or in the H-33 Paramedic Captain which is used to fill the H-43 Section Chief positions.\" The Fire Department contends that the integrated Division of Training should support promotional opportunities for Fire Department staff who have the necessary experience in \"site specific fire and emergency medical policies, procedures, and standards applicable to the San Francisco Fire Department.\" • Objects to a reduction in the number of officers responsible for in-se",
+    "Fire Department has failed to do so. According to Ms. Christine Ragan of the Fire Department, the approved emergency medical services merger plan never required the Fire Department to cross train Classification H-33 Rescue Captains. The Budget Analyst considers that cross-training of current and future Fire Department training and education providers, regardless of their classification, would provide role models to encourage more Fire Department staff to cross-train. While applicants for the Fire Department's training and education management positions from within the ranks of the Fire Department would have San Francisco Fire",
+    "6): As the Department moves forward, the lack of meaningful integration of its two principal functions [emergency medical and fire suppression services] will continue to hamper its organizational effectiveness. For example, ... many more resources are devoted to the Department's fire suppre"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.26,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.26,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.25,
+    "money": true,
+    "decision": true,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/1minutes200203sanf",
+   "deep_link": "https://archive.org/details/1minutes200203sanf?q=Fire+Department+Training",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A management audit finding the department's training split across three sections and three locations."
   },
   {
    "identifier": "9agenda2006sanf",
@@ -264,48 +274,13 @@
    "url": "https://archive.org/details/9agenda2006sanf",
    "deep_link": "https://archive.org/details/9agenda2006sanf?q=Division+of+Training",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "1minutes200203sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
-   "year": 1997,
-   "pool": "sfpl",
-   "matched_alias": "Fire Department Training",
-   "ocr_excerpts": [
-    ",374 annually in 2003 dollars. 1 Comments: 1. As part of its comprehensive management audit of the Fire Department, the Budget Analyst's Office reviewed the Fire Department's training and education functions. The Budget Analyst's Office concluded in Section 1.4 of the Management Audit Report that: • Fire Department training and education functions are currently spread across the Division of Training, the EMS Academy Section of the EMS Division, and the EMS In-service Training Section of the EMS Division. • Structural and management fragmentation hinders integration of the Fire Department's fire suppression and emergency medical services responsibilities, complicates management accountability, creates",
-    "implementing the Budget Analyst's recommendations in order to achieve an integrated Division of Fire and Medical Training by FY 2003-2004. According to Deputy Chief Asaro, the Fire Department: • Supports integration and consolidation of all training and education functions under the current name of the Division of Training once a common training facility is Board of Supervisors Budget Analyst 56 Memo to Finance Committee December 18, 2002 Finance Committee Meeting available instead of the current three training locations. • States that \"a pool of candidates with both fire and medical training does not exist from the rank of H-30 Captain which is used to fill the H-39 Training Captain positions or in the H-33 Paramedic Captain which is used to fill the H-43 Section Chief positions.\" The Fire Department contends that the integrated Division of Training should support promotional opportunities for Fire Department staff who have the necessary experience in \"site specific fire and emergency medical policies, procedures, and standards applicable to the San Francisco Fire Department.\" • Objects to a reduction in the number of officers responsible for in-se",
-    "Fire Department has failed to do so. According to Ms. Christine Ragan of the Fire Department, the approved emergency medical services merger plan never required the Fire Department to cross train Classification H-33 Rescue Captains. The Budget Analyst considers that cross-training of current and future Fire Department training and education providers, regardless of their classification, would provide role models to encourage more Fire Department staff to cross-train. While applicants for the Fire Department's training and education management positions from within the ranks of the Fire Department would have San Francisco Fire",
-    "6): As the Department moves forward, the lack of meaningful integration of its two principal functions [emergency medical and fire suppression services] will continue to hamper its organizational effectiveness. For example, ... many more resources are devoted to the Department's fire suppre"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.26,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.26,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.25,
-    "money": true,
-    "decision": true,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/1minutes200203sanf",
-   "deep_link": "https://archive.org/details/1minutes200203sanf?q=Fire+Department+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A commission agenda with the division's recruit training captain addressing the commission."
   },
   {
    "identifier": "journalofproceed1975sanf",
@@ -345,8 +320,13 @@
    "url": "https://archive.org/details/journalofproceed1975sanf",
    "deep_link": "https://archive.org/details/journalofproceed1975sanf?q=Division+of+Training",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Fire Commission proceedings naming the division's chief and filing its accident reports."
   }
  ],
  "dept_shelf": [
@@ -385,9 +365,9 @@
   }
  ],
  "_gate": {
-  "has_photo": false,
+  "has_photo": true,
   "n_documents": 5,
   "n_money_links": 1,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

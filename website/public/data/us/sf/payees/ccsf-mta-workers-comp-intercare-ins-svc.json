@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.743379+00:00",
+ "generated_at": "2026-07-28T11:43:47.719304+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -23,6 +23,43 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 2489,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 117562256.44,
+    "n_vouchers": 2489
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "551140",
+    "label": "Workers' Comp-Med Emplye Reimb",
+    "spend_class": "unclear",
+    "usd": 23508140.84,
+    "n_vouchers": 285
+   }
+  ],
+  "n_categories": 1,
+  "counts_are_floor": false,
+  "recent_fy": 2019,
+  "recent_total_usd": 989879.5,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Workers' Comp-Med Emplye Reimb",
+    "spend_class": "unclear",
+    "usd": 989879.5,
+    "n_vouchers": 7
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

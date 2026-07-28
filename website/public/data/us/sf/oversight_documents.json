@@ -1,0 +1,1559 @@
+{
+ "generated_at": "2026-07-27T22:59:26.417877+00:00",
+ "source_pipeline": "sync_ia_sf.py + fetch_ia_ocr.py → pipeline/cache/ia_sf → export_sf_oversight.py",
+ "country": "us",
+ "place": "sf",
+ "perimeter": "Documents by the City's own oversight bodies (Controller's City Services Auditor, Board of Supervisors' Budget Analyst, Civil Grand Jury) plus named investigations, as held by the Internet Archive. A pointer index, not a data source.",
+ "usage_constraint": "POINT AT THESE DOCUMENTS ONLY. This file deliberately contains no document text: OCR on these scans mangles numeric tables, so no dollar figure, date or quantity may ever be attributed to one of them.",
+ "pool_labels": {
+  "sfpl": "Internet Archive — San Francisco Public Library partnership scans",
+  "dl": "Internet Archive — Democracy's Library"
+ },
+ "n_documents": 134,
+ "documents": [
+  {
+   "identifier": "municipaltranspo1020sanf",
+   "title": "Municipal Transportation Agency : the Agency must improve staffing, planning and training to meet its need for transit operators",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Municipal Transportation Agency",
+   "year": 2013,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/municipaltranspo1020sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "overtime & staffing",
+    "transit"
+   ]
+  },
+  {
+   "identifier": "officeofassessor262009san",
+   "title": "Office of the Assessor-Recorder : the Department continues to improve its operations",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Office of the Assessor-Recorder",
+   "year": 2009,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/officeofassessor262009san",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "parkstandards6mo162010san",
+   "title": "Park standards, 6-month report FY 2009-10 : park scores citywide increased through the first half of FY 2009-10",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": 2009,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/parkstandards6mo162010san",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "recreationparkde2709sanf",
+   "title": "Recreation and Park Department : the San Francisco Forty Niners owe the City more than half a million dollars in parking lot rent",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept,San Francisco 49ers (Football team)",
+   "year": 2009,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/recreationparkde2709sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "parks & recreation"
+   ]
+  },
+  {
+   "identifier": "sanfranciscomuni2109sanf",
+   "title": "San Francisco Municipal Transportation Agency : audit of City of San Francisco Portsmouth Plaza Parking Corporation",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Municipal Transportation Agency,Portsmouth Plaza Parking Corp",
+   "year": 2009,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/sanfranciscomuni2109sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "transit"
+   ]
+  },
+  {
+   "identifier": "airportcommissio1320sanf",
+   "title": "Airport Commission : concession audit of the Hertz Corporation",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Airports Commission,San Francisco International Airport (Calif.),Hertz Corporation",
+   "year": 2008,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/airportcommissio1320sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "airport",
+    "contracting"
+   ]
+  },
+  {
+   "identifier": "igsl_acfr-ventury-cty_2008",
+   "title": "Comprehensive annual financial report / 2008",
+   "creator": "Ventura County (Calif.). Auditor-Controller Department, issuing body.",
+   "year": 2008,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/igsl_acfr-ventury-cty_2008",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "fy200809parksann2009sanf",
+   "title": "FY 2008-09 parks annual report : parks scores citywide increased for fourth year, but disparities remain between districts",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2008,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/fy200809parksann2009sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "parks & recreation"
+   ]
+  },
+  {
+   "identifier": "fy200809parksannsanf",
+   "title": "FY 2008-09 parks annual report : parks scores citywide increased for fourth year, but disparities remain between districts",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2008,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/fy200809parksannsanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "parks & recreation"
+   ]
+  },
+  {
+   "identifier": "humanservicesage302008s",
+   "title": "Human Services Agency : Care Not Cash is achieving its goals",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Human Services Agency",
+   "year": 2008,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/humanservicesage302008s",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "0fy200708parksann32009san",
+   "title": "FY 2007-08 parks annual report : parks scores increased for third year and differences between district averages narrowed",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2007,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/0fy200708parksann32009san",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "parks & recreation"
+   ]
+  },
+  {
+   "identifier": "fy200708parksann32009sanf",
+   "title": "FY 2007-08 parks annual report : parks scores increased for third year and differences between district averages narrowed",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2007,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/fy200708parksann32009sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "parks & recreation"
+   ]
+  },
+  {
+   "identifier": "fy200708parkssanf",
+   "title": "FY 2007-08 parks annual report : parks scores increased for third year and differences between district averages narrowed",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2007,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/fy200708parkssanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "parks & recreation"
+   ]
+  },
+  {
+   "identifier": "departmentofpubl2006sanf",
+   "title": "Department of Public Health : monitoring of A-133 single audit reports for agencies awarded federal funds by DPH in fiscal year 2006-07",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Dept. of Public Health",
+   "year": 2006,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/departmentofpubl2006sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "public health"
+   ]
+  },
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst,San Francisco (Calif.). Board of Supervisors,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2006,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/managementaudito2006sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "parks & recreation"
+   ]
+  },
+  {
+   "identifier": "reviewofnonprofi9200sanf",
+   "title": "Review of nonprofit contractors",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Office of the Mayor,San Francisco (Calif.). Board of Supervisors. Government Audit and Oversight Committee",
+   "year": 2006,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reviewofnonprofi9200sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "contracting"
+   ]
+  },
+  {
+   "identifier": "sanfranciscoarts2020sanf",
+   "title": "San Francisco Arts Commission : African American Art and Culture Complex properly used grant funds but did not comply with all reporting requirements",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,African American Art and Culture Complex,Arts Commission of San Francisco",
+   "year": 2006,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/sanfranciscoarts2020sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "sanfranciscoarts2420sanf",
+   "title": "San Francisco Arts Commission : SomArts properly used grant funds but needs to improve its accounting and reporting procedures",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,SomArts (Organization),Arts Commission of San Francisco",
+   "year": 2006,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/sanfranciscoarts2420sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "departmentofpubl1820sanf",
+   "title": "Department of Public Health : monitoring of A-133 single audit reports for agencies awarded federal funds by the Department in fiscal year 2005-06",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Dept. of Public Health",
+   "year": 2005,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/departmentofpubl1820sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "public health"
+   ]
+  },
+  {
+   "identifier": "healthservicesys292005san",
+   "title": "Health Service System : the System is not structured, governed or managed effectively to ensure equitable and cost-effective health benefits for all members and their employers",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Health Service System",
+   "year": 2005,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/healthservicesys292005san",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "public health"
+   ]
+  },
+  {
+   "identifier": "missionhousingde1620sanf",
+   "title": "Mission Housing Development Corporation : a complex organization that needs to improve its controls over housing and service provision and requires City monitoring to preserve the City's investment",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,Mission Housing Development Corporation",
+   "year": 2005,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/missionhousingde1620sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "housing & homelessness"
+   ]
+  },
+  {
+   "identifier": "performanceeffic202008san",
+   "title": "Performance and efficiency review : Department of Public Health : Controller's Office analysis 2005-2008",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": 2005,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/performanceeffic202008san",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "public health"
+   ]
+  },
+  {
+   "identifier": "departmentofpubl1520sanf",
+   "title": "Department of Public Health : monitoring of A-133 single audit reports for agencies awarded federal funds by the Department in fiscal year 2004-05",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Dept. of Public Health",
+   "year": 2004,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/departmentofpubl1520sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "public health"
+   ]
+  },
+  {
+   "identifier": "sanfranciscoarts3020sanf",
+   "title": "San Francisco Arts Commission : Mission Cultural Center for Latino Arts properly used grant funds but needs to improve its accounting and reporting procedures",
+   "creator": "San Francisco (Calif.). Office of the Controller. Audits Division,Mission Cultural Center for Latino Arts,Arts Commission of San Francisco",
+   "year": 2004,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/sanfranciscoarts3020sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "officeofsherifff1420sanf",
+   "title": "Office of the Sheriff : financial statement audit of the Mentally Ill Offender Crime Reduction Grant II from July 1, 2001 through June 30, 2004",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": 2001,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/officeofsherifff1420sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "police & fire"
+   ]
+  },
+  {
+   "identifier": "sanfranciscoscri7200sanf",
+   "title": "San Francisco's criminal justice system / prepared for the Mayor's Crime Summit, March 7, 2001, Ed Harrington, Controller",
+   "creator": "San Francisco, CA : Office of the Controller",
+   "year": 2001,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/sanfranciscoscri7200sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "performanceaudit1119sanf",
+   "title": "Performance audit of the San Francisco Zoo",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst,San Francisco (Calif.). Board of Supervisors",
+   "year": 2000,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/performanceaudit1119sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "listofnonprofits1999sanf",
+   "title": "List of non profits that do business with the city",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1999,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/listofnonprofits1999sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C101744619",
+   "title": "Neglect of reporting requirements : interim report : report of the 1999-2000 San Francisco Civil Grand Jury",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1999,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C101744619",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "sanfranciscopubl6199sanf",
+   "title": "The San Francisco Public Library : the San Francisco Public Library has poor controls over cash from fines and other revenues",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1999,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/sanfranciscopubl6199sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "comprehensiveann2004sanf",
+   "title": "Comprehensive annual financial report",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1998,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/comprehensiveann2004sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C101697973",
+   "title": "Investigation of Laguna Honda Hospital",
+   "creator": null,
+   "year": 1998,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C101697973",
+   "is_city_oversight_body": false,
+   "subjects": [
+    "public health"
+   ]
+  },
+  {
+   "identifier": "sanfranciscopub1997reve_0",
+   "title": "San Francisco Public Library strategic audit",
+   "creator": "Reveal, Elizabeth C,Coda Partners (Firm)",
+   "year": 1997,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/sanfranciscopub1997reve_0",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "concessionauditr2120sanf",
+   "title": "Concession audit report : Ellis-O'Farrell Public Parking Corporation, May 1, 1996 through April 30, 1999",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1996,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/concessionauditr2120sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "contracting"
+   ]
+  },
+  {
+   "identifier": "concessionauditr2820sanf",
+   "title": "Concession audit report : Lombard Street Garage, May 1, 1996 through April 30, 1999",
+   "creator": "San Francisco (Calif.). Office of the Controller. Audits Division",
+   "year": 1996,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/concessionauditr2820sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "contracting"
+   ]
+  },
+  {
+   "identifier": "C124908498",
+   "title": "Report to the San Francisco Board of Supervisors : special study of programs affecting the homeless administered by the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": 1994,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C124908498",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "housing & homelessness"
+   ]
+  },
+  {
+   "identifier": "reporttosanfranc1994sanf",
+   "title": "Report to the San Francisco Board of Supervisors : special study of programs affecting the homeless administered by the City and County of San Franisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": 1994,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttosanfranc1994sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "housing & homelessness"
+   ]
+  },
+  {
+   "identifier": "countyjails199311419cali",
+   "title": "County jails / 1993-1994 Civil Grand Jury, City and County of San Francisco",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1993,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/countyjails199311419cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "overtimepayexpen1519sanf",
+   "title": "Overtime pay expenditures for calendar year 1993 and January through June, 1994",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": 1993,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/overtimepayexpen1519sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "overtime & staffing"
+   ]
+  },
+  {
+   "identifier": "C123298621",
+   "title": "Report to the San Francisco Board of Supervisors : management audit of the San Francisco Housing Authority",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": 1993,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C123298621",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "housing & homelessness"
+   ]
+  },
+  {
+   "identifier": "C101697751",
+   "title": "A client's guide to ISD services",
+   "creator": "San Francisco (Calif.). Office of the Controller. Information Services Division",
+   "year": 1991,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C101697751",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C123303389",
+   "title": "Management audit of the city and county of San Francisco's 911 emergency system",
+   "creator": "San Francisco (Calif.). Office of the Controller. Audits Division",
+   "year": 1991,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C123303389",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C124902980",
+   "title": "Report to the Board of Supervisors, city and county of San Francisco : review and analysis of the Deputy Mayor function in the Office of the Mayor",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": 1990,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C124902980",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C123316994",
+   "title": "Report of the 1989-90 Los Angeles County Grand Jury : investigation of the involvement of jail house informants in the criminal justice system in Los Angeles County",
+   "creator": "California. Grand Jury (Los Angeles County)",
+   "year": 1989,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C123316994",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "reporttosanfran1992sanf_0",
+   "title": "Report to the San Francisco Board of Supervisors : analysis of expenditures made relating to the 1989 Loma Prieta Earthquake",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": 1989,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttosanfran1992sanf_0",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C124891468",
+   "title": "Staff report, Port of San Francisco, May 13, 1987 : summary of findings and recommendation for further study : commercial fishing facilities at Fisherman's Wharf",
+   "creator": "Rossi, Randall S",
+   "year": 1987,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C124891468",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "northernwaterfro1987sanf",
+   "title": "The Northern Waterfront findings report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1987,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/northernwaterfro1987sanf",
+   "is_city_oversight_body": false,
+   "subjects": [
+    "water & power"
+   ]
+  },
+  {
+   "identifier": "reporttoboardofs1986sanf",
+   "title": "Report to the Board of Supervisors : management audit of the Port of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": 1986,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttoboardofs1986sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C124879244",
+   "title": "City of Reedley community audit",
+   "creator": null,
+   "year": 1984,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C124879244",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "C124895349",
+   "title": "Management audit of the city timekeeping operations",
+   "creator": "Los Angeles (Calif.). City Administrative Officer",
+   "year": 1982,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C124895349",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "C124895437",
+   "title": "Management audit of the Security Services Section, General Services Department",
+   "creator": "Los Angeles (Calif.). City Administrative Officer",
+   "year": 1980,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C124895437",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "reportoninvestig2980sanf",
+   "title": "Report on the investigation of the San Francisco Zoo",
+   "creator": "San Francisco (Calif.). Animal Control and Welfare Commission,San Francisco (Calif.). Board of Supervisors",
+   "year": 1980,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reportoninvestig2980sanf",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "igsl_budget-la-cty_1979",
+   "title": "County budget / 1979",
+   "creator": "Los Angeles County (Calif.). Auditor-Controller. compiler.",
+   "year": 1979,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/igsl_budget-la-cty_1979",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "reporttoboardofs1980sanf",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": 1979,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttoboardofs1980sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "parks & recreation"
+   ]
+  },
+  {
+   "identifier": "civilgrandjuryre198587cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/civilgrandjuryre198587cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "civilgrandjuryre2002031cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/civilgrandjuryre2002031cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "civilgrandjuryre200809cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/civilgrandjuryre200809cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "civilgrandjuryre2011cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/civilgrandjuryre2011cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "civilgrandjuryre2002032cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/civilgrandjuryre2002032cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "civilgrandjuryre200607cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/civilgrandjuryre200607cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "civilgrandjuryre199899cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/civilgrandjuryre199899cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "civilgrandjuryre200102cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/civilgrandjuryre200102cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "civilgrandjuryre199900cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/civilgrandjuryre199900cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C123301965",
+   "title": "Impacts of BART on the natural environment : interim service findings /",
+   "creator": null,
+   "year": 1976,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C123301965",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "annualreportofco1975sanf",
+   "title": "Annual report of the Controller of the City and County of San Francisco for the fiscal year ended June 30, ...",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1975,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/annualreportofco1975sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "igsl_budget-la-cty_1975",
+   "title": "County budget / 1975",
+   "creator": "Los Angeles County (Calif.). Auditor-Controller. compiler.",
+   "year": 1975,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/igsl_budget-la-cty_1975",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "igsl_budget-la-cty_1973",
+   "title": "County budget / 1973",
+   "creator": "Los Angeles County (Calif.). Auditor-Controller. compiler.",
+   "year": 1973,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/igsl_budget-la-cty_1973",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "annualreportofco1971sanf",
+   "title": "Annual report of the Controller of the City and County of San Francisco for the fiscal year ended June 30, ...",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1971,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/annualreportofco1971sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "igsl_budget-la-cty_1969",
+   "title": "County budget / 1969",
+   "creator": "Los Angeles County (Calif.). Auditor-Controller. compiler.",
+   "year": 1969,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/igsl_budget-la-cty_1969",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C124880213",
+   "title": "A Staff report on special investigation of employment services for minority youth in Bay Area",
+   "creator": null,
+   "year": 1967,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C124880213",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "igsl_budget-la-cty_1965",
+   "title": "County budget / 1965",
+   "creator": "Los Angeles County (Calif.). Auditor-Controller. compiler.",
+   "year": 1965,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/igsl_budget-la-cty_1965",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "igsl_budget-la-cty_1964",
+   "title": "County budget / 1964",
+   "creator": "Los Angeles County (Calif.). Auditor-Controller. compiler.",
+   "year": 1964,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/igsl_budget-la-cty_1964",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "annualreportofco1962sanf",
+   "title": "Annual report of the Controller of the City and County of San Francisco for the fiscal year ended June 30, ...",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1962,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/annualreportofco1962sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "igsl_budget-la-cty_1961",
+   "title": "County budget / 1961",
+   "creator": "Los Angeles County (Calif.). Auditor-Controller. compiler.",
+   "year": 1961,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/igsl_budget-la-cty_1961",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "annualreportofco1960sanf",
+   "title": "Annual report of the Controller of the City and County of San Francisco for the fiscal year ended June 30, ...",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1960,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/annualreportofco1960sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "igsl_budget-la-cty_1960",
+   "title": "County budget / 1960",
+   "creator": "Los Angeles County (Calif.). Auditor-Controller. compiler.",
+   "year": 1960,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/igsl_budget-la-cty_1960",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "igsl_budget-la-cty_1959",
+   "title": "County budget / 1959",
+   "creator": "Los Angeles County (Calif.). Auditor-Controller. compiler.",
+   "year": 1959,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/igsl_budget-la-cty_1959",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "annualreportofco1956sanf",
+   "title": "Annual report of the Controller of the City and County of San Francisco for the fiscal year ended June 30, ...",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1956,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/annualreportofco1956sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "annualreportofco1955sanf",
+   "title": "Annual report of the Controller of the City and County of San Francisco for the fiscal year ended June 30, ...",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1955,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/annualreportofco1955sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "annualreportofco1953sanf",
+   "title": "Annual report of the Controller of the City and County of San Francisco for the fiscal year ended June 30, ...",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1953,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/annualreportofco1953sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C123303741",
+   "title": "Findings, recommendations and record of proceedings of the industrial development study for San Mateo County, California. Panel of the Industrial Council, April 8-11, 1953",
+   "creator": "Urban Land Institute",
+   "year": 1953,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C123303741",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "grandjuryreports197172cali",
+   "title": "Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1953,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/grandjuryreports197172cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "annualreportofco1944sanf",
+   "title": "Annual report of the Controller of the City and County of San Francisco for the fiscal year ended June 30, ...",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1944,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/annualreportofco1944sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "annualreportofco1933sanf",
+   "title": "Annual report of the Controller of the City and County of San Francisco for the fiscal year ended June 30, ...",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1933,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/annualreportofco1933sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "agendagovernment2013sanf",
+   "title": "Agenda / Government Audit and Oversight Committee",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Government Audit and Oversight Committee",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/agendagovernment2013sanf",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "analysisofconfli1992sanf",
+   "title": "Analysis of conflict-of-interest cases for the representation of indigent clients",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/analysisofconfli1992sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "cityservicescomm1991sanf",
+   "title": "City Services Committee meeting",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst,San Francisco (Calif.). Board of Supervisors. City Services Committee",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/cityservicescomm1991sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C101744497",
+   "title": "Comments on the findings and recommendations of the ... Los Angeles County Grand Jury in its final report ..",
+   "creator": null,
+   "year": null,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C101744497",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "comprehensiveann2006sanf",
+   "title": "Comprehensive annual financial report",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/comprehensiveann2006sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "comprehensiveann1983sanf",
+   "title": "Comprehensive annual financial report",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/comprehensiveann1983sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "comprehensiveann2000sanf",
+   "title": "Comprehensive annual financial report",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/comprehensiveann2000sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "comprehensiveann1990sanf",
+   "title": "Comprehensive annual financial report",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/comprehensiveann1990sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "comprehensiveann1986sanf",
+   "title": "Comprehensive annual financial report",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/comprehensiveann1986sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "comprehensiveann1989sanf",
+   "title": "Comprehensive annual financial report",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/comprehensiveann1989sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "controllersoffic2008sanf",
+   "title": "Controller's Office - City Services Auditor report on street, sidewalk, and park maintenance",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/controllersoffic2008sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "controllersoffic2006sanf",
+   "title": "Controller's Office - City Services Auditor report on street, sidewalk, and park maintenance",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/controllersoffic2006sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "controllersoffic2005sanf",
+   "title": "Controller's Office - City Services Auditor report on street, sidewalk, and park maintenance",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/controllersoffic2005sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "departmentofagin2200sanf",
+   "title": "Department of Aging & Adult Services : the Department needs to improve its needs assessment and contracting processes to better serve seniors & adults with disabilities",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/departmentofagin2200sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "contracting"
+   ]
+  },
+  {
+   "identifier": "fyannualreportof2014sanf",
+   "title": "FY ... annual report of the citywide nonprofit monitoring and capacity building program",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/fyannualreportof2014sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "fyannualreportof2015sanf",
+   "title": "FY ... annual report of the citywide nonprofit monitoring and capacity building program",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/fyannualreportof2015sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "fyannualreportof2013sanf",
+   "title": "FY ... annual report of the citywide nonprofit monitoring and capacity building program",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/fyannualreportof2013sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "fyrevenueletterc2016sanf",
+   "title": "FY ... revenue letter : Controller's discussion of the Mayor's FY ... proposed budget / City and County of San Francisco, Office of the Controller",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/fyrevenueletterc2016sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C101744479",
+   "title": "Final report : complaint resolution at the Childrens Welfare Services Division of the San Luis Obispo County Department of Social Services",
+   "creator": "San Luis Obispo (Calif.). Grand Jury",
+   "year": null,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C101744479",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "findingsrecommen95cali",
+   "title": "Findings and recommendations concerning off street parking, Department of Parking and Traffic, San Francisco",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/findingsrecommen95cali",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "fiveyearfinancia2014sanf",
+   "title": "Five year financial plan update for the general fund supported operations FY ... through FY .. : joint report / by the Controller's Office, Mayor's Office, and Board of Supervisors' Budget Analyst",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/fiveyearfinancia2014sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "homelessnessinsa2002cali",
+   "title": "Homelessness in San Francisco",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/homelessnessinsa2002cali",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "housing & homelessness"
+   ]
+  },
+  {
+   "identifier": "humanrightscomm2220sanf_0",
+   "title": "Human Rights Commission : compliance audit of the Department of Public Works with Ranger Pipelines, Inc./D'Arcy & Harty Construction, a JV / City and County of San Francisco, Office of the Controller",
+   "creator": "San Francisco (Calif.). Office of the Controller. Audits Division",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/humanrightscomm2220sanf_0",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "managementaudito1996budg",
+   "title": "Management audit of the San Francisco Municipal Railway",
+   "creator": "Budget Analyst of the City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/managementaudito1996budg",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "transit"
+   ]
+  },
+  {
+   "identifier": "managementaudito1996boar",
+   "title": "Management audit of the San Francisco Police Department. Phase 1",
+   "creator": "Board of Supervisors, City and County of San Francisco [by] the Office of the Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/managementaudito1996boar",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "police & fire"
+   ]
+  },
+  {
+   "identifier": "mayorstransmitta1954sanf",
+   "title": "Mayor's transmittal of consolidated budget estimates for all departments and offices of, and the proposed budget for, the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/mayorstransmitta1954sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "mayorstransmitta1966sanf",
+   "title": "Mayor's transmittal of consolidated budget estimates for all departments and offices of, and the proposed budget for, the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/mayorstransmitta1966sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "mayorstransmitta1965sanf",
+   "title": "Mayor's transmittal of consolidated budget estimates for all departments and offices of, and the proposed budget for, the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/mayorstransmitta1965sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "proposedbudgetan2007sanf",
+   "title": "Proposed budget and annual appropriation ordinance for selected departments",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/proposedbudgetan2007sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "proposedbudgetan2008sanf",
+   "title": "Proposed budget and annual appropriation ordinance for selected departments",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/proposedbudgetan2008sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "reinvestinginshe2520city",
+   "title": "Reinvesting in shelter : lessons from the Navigation Center",
+   "creator": "City and County of San Francisco, Office of the Controller, City Services Auditor (CSA)",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reinvestinginshe2520city",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "housing & homelessness"
+   ]
+  },
+  {
+   "identifier": "C101744877",
+   "title": "Report for the Budget Committee of the San Francisco Board of Supervisors : zero-based budget analysis",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": null,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C101744877",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "reporttoboardof1997boar_0",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the ... community development budget as proposed by the Mayor's Office of Community Development",
+   "creator": "Board of Supervisors, Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttoboardof1997boar_0",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "reporttoboardof1999boar_0",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the ... community development budget as proposed by the Mayor's Office of Community Development",
+   "creator": "Board of Supervisors, Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttoboardof1999boar_0",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "reporttoboardof1992boar_0",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the ... community development budget as proposed by the Mayor's Office of Community Development",
+   "creator": "Board of Supervisors, Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttoboardof1992boar_0",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "reporttoboardof1993boar_0",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the ... community development budget as proposed by the Mayor's Office of Community Development",
+   "creator": "Board of Supervisors, Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttoboardof1993boar_0",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "reporttoboardof1995boar_0",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the ... community development budget as proposed by the Mayor's Office of Community Development",
+   "creator": "Board of Supervisors, Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttoboardof1995boar_0",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "reporttoboardof1991boar_0",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the ... community development budget as proposed by the Mayor's Office of Community Development",
+   "creator": "Board of Supervisors, Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttoboardof1991boar_0",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "C124914005",
+   "title": "Report to the San Francisco Board of Supervisors : management audit of the Tax Collector's Office",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": null,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C124914005",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "reporttosanfranc1991sanf",
+   "title": "Report to the San Francisco Board of Supervisors : survey of programs for senior citizens. Part 1",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttosanfranc1991sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "reporttosanfran1993sanf_1",
+   "title": "Report to the San Francisco Parking and Traffic Commission : management audit of city-owned garages",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/reporttosanfran1993sanf_1",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "sanfranciscoart2020sanf_0",
+   "title": "San Francisco Arts Commission : Bayview Opera House properly used grant funds but incorrectly billed the Arts Commission",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,Bayview Opera House, Inc,Arts Commission of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/sanfranciscoart2020sanf_0",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "sanfranciscoarts5201sanf",
+   "title": "San Francisco Arts Commission : Mission Cultural Center for Latino Arts properly used grant funds but the Arts Commission needs to clarify provisions of the grant agreement",
+   "creator": "San Francisco (Calif.). Office of the Controller. Audits Division,Mission Cultural Center for Latino Arts,Arts Commission of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/sanfranciscoarts5201sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "sanfranciscomuni1720sanf",
+   "title": "San Francisco Municipal Transportation Agency : combined revenues from parking meters and citations equals 91 percent of expected parking meter revenues",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/sanfranciscomuni1720sanf",
+   "is_city_oversight_body": true,
+   "subjects": [
+    "transit"
+   ]
+  },
+  {
+   "identifier": "C124884194",
+   "title": "South of Market rezoning study : housing, business activity, neighborhood livability, research findings",
+   "creator": null,
+   "year": null,
+   "pool": "dl",
+   "source_label": "Internet Archive — Democracy's Library",
+   "url": "https://archive.org/details/C124884194",
+   "is_city_oversight_body": false,
+   "subjects": [
+    "housing & homelessness"
+   ]
+  },
+  {
+   "identifier": "statusofimplemen199697sa",
+   "title": "Status of the implementation of the recommendations of the ... San Francisco Civil Grand Jury",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/statusofimplemen199697sa",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "statusofimplemen19972001s",
+   "title": "Status of the implementation of the recommendations of the ... San Francisco Civil Grand Jury",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/statusofimplemen19972001s",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "statusreportonim1220sanf",
+   "title": "Status report on implementation of recommendations made by the Office of the Controller's audit of the Authority",
+   "creator": "San Francisco (Calif.). Treasure Island Development Authority",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/statusreportonim1220sanf",
+   "is_city_oversight_body": false,
+   "subjects": []
+  },
+  {
+   "identifier": "treasureislandde1220sanf",
+   "title": "Treasure Island Development Authority / Office of the Controller, City Services Auditor",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/treasureislandde1220sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  },
+  {
+   "identifier": "nonprofitsthatdo2002sanf",
+   "title": "[Nonprofits that do business with the city]",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": null,
+   "pool": "sfpl",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "url": "https://archive.org/details/nonprofitsthatdo2002sanf",
+   "is_city_oversight_body": true,
+   "subjects": []
+  }
+ ]
+}

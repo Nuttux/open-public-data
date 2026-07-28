@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.743773+00:00",
+ "generated_at": "2026-07-28T11:43:47.719976+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "HOM Homelessness Services"
  ],
+ "profile": {
+  "n_vouchers": 4200,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 82882465.7,
+    "n_vouchers": 2169
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 8223253.4,
+    "n_vouchers": 690
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 7700214.81,
+    "n_vouchers": 370
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 7154211.74,
+    "n_vouchers": 529
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 4435719.4,
+    "n_vouchers": 166
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 4146729.33,
+    "n_vouchers": 243
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 535000.0,
+    "n_vouchers": 11
+   },
+   {
+    "department": "REG Elections",
+    "department_code": "REG",
+    "usd": 84059.81,
+    "n_vouchers": 10
+   }
+  ],
+  "n_departments": 13,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 82929789.08,
+    "n_vouchers": 2457
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 8597280.87,
+    "n_vouchers": 738
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 4251767.22,
+    "n_vouchers": 147
+   },
+   {
+    "code": "UNEARN_REV_CHGS_SVCS",
+    "label": "Unearned Revenue-Chgs for Svcs",
+    "spend_class": "ledger",
+    "usd": 2291686.0,
+    "n_vouchers": 20
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 376425.86,
+    "n_vouchers": 7
+   },
+   {
+    "code": "REF_PAY",
+    "label": "Refunds Payable",
+    "spend_class": "ledger",
+    "usd": 200816.75,
+    "n_vouchers": 3
+   },
+   {
+    "code": "536510",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 99878.93,
+    "n_vouchers": 22
+   },
+   {
+    "code": "430170",
+    "label": "Interest Earned-Tax Refund",
+    "spend_class": "ledger",
+    "usd": 19863.06,
+    "n_vouchers": 3
+   }
+  ],
+  "n_categories": 12,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 15009135.22,
+  "n_recent_lines": 8,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 12394892.56,
+    "n_vouchers": 252
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1169874.46,
+    "n_vouchers": 61
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 764975.6,
+    "n_vouchers": 27
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 296523.27,
+    "n_vouchers": 10
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 204249.79,
+    "n_vouchers": 11
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 142505.94,
+    "n_vouchers": 18
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000021454",

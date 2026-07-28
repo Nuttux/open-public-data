@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.743535+00:00",
+ "generated_at": "2026-07-28T11:43:47.719558+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -26,6 +26,141 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 1928,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 80314629.86,
+    "n_vouchers": 939
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 33988388.81,
+    "n_vouchers": 757
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 1635947.75,
+    "n_vouchers": 176
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "usd": 740053.0,
+    "n_vouchers": 53
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 22387.5,
+    "n_vouchers": 3
+   }
+  ],
+  "n_departments": 5,
+  "categories": [
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 79561481.4,
+    "n_vouchers": 933
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 33597280.04,
+    "n_vouchers": 720
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 1521945.77,
+    "n_vouchers": 171
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1194455.9,
+    "n_vouchers": 98
+   },
+   {
+    "code": "567210",
+    "label": "Bldg Struct Imprv-L-P Initial",
+    "spend_class": "purchase",
+    "usd": 753235.46,
+    "n_vouchers": 6
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 73095.35,
+    "n_vouchers": 1
+   },
+   {
+    "code": "463599",
+    "label": "Misc Public Health Revenue",
+    "spend_class": "unclear",
+    "usd": -87.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 7,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 17197715.43,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 12114139.74,
+    "n_vouchers": 97
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 4635742.87,
+    "n_vouchers": 79
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 215420.5,
+    "n_vouchers": 13
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 145990.32,
+    "n_vouchers": 8
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 86422.0,
+    "n_vouchers": 6
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000010020",
@@ -47,7 +182,7 @@
   },
   {
    "contract_no": "1000017573",
-   "title": "CFSF - Supp Hsg ChronA Eddy St",
+   "title": "CFSF - Support Hsg ChronA Eddy St",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 4559819.0,
@@ -65,7 +200,7 @@
   },
   {
    "contract_no": "1000002678",
-   "title": "Residential Mental HLTH SVCS F",
+   "title": "Residential Mental Health Services F",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 2408345.0,

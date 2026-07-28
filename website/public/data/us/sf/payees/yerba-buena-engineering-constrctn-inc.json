@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.742160+00:00",
+ "generated_at": "2026-07-28T11:43:47.717153+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,174 @@
  "top_departments": [
   "DPW GSA - Public Works"
  ],
+ "profile": {
+  "n_vouchers": 1947,
+  "departments": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 34611559.35,
+    "n_vouchers": 491
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 34096488.46,
+    "n_vouchers": 389
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 18510576.73,
+    "n_vouchers": 318
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 11782926.26,
+    "n_vouchers": 315
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 9852713.33,
+    "n_vouchers": 47
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 8595508.5,
+    "n_vouchers": 197
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 3581924.2,
+    "n_vouchers": 14
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 3433800.8,
+    "n_vouchers": 44
+   }
+  ],
+  "n_departments": 10,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 47372911.63,
+    "n_vouchers": 571
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 2815705.77,
+    "n_vouchers": 13
+   },
+   {
+    "code": "567110",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 936693.3,
+    "n_vouchers": 4
+   },
+   {
+    "code": "528990",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 718752.52,
+    "n_vouchers": 24
+   },
+   {
+    "code": "527000",
+    "label": "Prof & Specialized Svcs-Bdgt",
+    "spend_class": "purchase",
+    "usd": 140645.8,
+    "n_vouchers": 4
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 137066.19,
+    "n_vouchers": 4
+   },
+   {
+    "code": "542990",
+    "label": "Other Bldg Maint Supplies",
+    "spend_class": "purchase",
+    "usd": 50341.31,
+    "n_vouchers": 5
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 37257.84,
+    "n_vouchers": 6
+   }
+  ],
+  "n_categories": 11,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 14947269.51,
+  "n_recent_lines": 11,
+  "recent_lines": [
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 6190724.23,
+    "n_vouchers": 8
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 6171985.34,
+    "n_vouchers": 36
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1912752.14,
+    "n_vouchers": 6
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 256470.67,
+    "n_vouchers": 8
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 161884.73,
+    "n_vouchers": 2
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 139637.68,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000025381",
@@ -75,7 +243,7 @@
   },
   {
    "contract_no": "1000035476",
-   "title": "M23 General Eng Serv",
+   "title": "M23 General Eng Services",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 3000000.0,

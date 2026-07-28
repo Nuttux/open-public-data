@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:34:55.311935+00:00",
+  "generated_at": "2026-07-28T11:43:33.395623+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -678,6 +678,16 @@
         "n_characters": 6
       },
       {
+        "code": "CCD",
+        "label": "CCD SF Communtiy College Dist",
+        "display_name": "SF Community College District",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
         "code": "USD",
         "label": "USD County Education Office",
         "display_name": "County Office of Education",
@@ -691,16 +701,6 @@
         "code": "CII",
         "label": "CII Commty Invest & Infrstrctr",
         "display_name": "Community Investment & Infrastructure",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
-      },
-      {
-        "code": "CCD",
-        "label": "CCD SF Communtiy College Dist",
-        "display_name": "SF Community College District",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -1180,14 +1180,34 @@
         "n_characters": 3
       },
       {
-        "code": "HRC",
-        "label": "HRC Human Rights Commission",
-        "display_name": "Human Rights Commission",
+        "code": "CCD",
+        "label": "CCD SF Communtiy College Dist",
+        "display_name": "SF Community College District",
         "org_group_code": "03",
         "total_usd": 0.0,
-        "transfer_adjustment_usd": -90000.0,
+        "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
-        "n_characters": 2
+        "n_characters": 0
+      },
+      {
+        "code": "CII",
+        "label": "CII Commty Invest & Infrstrctr",
+        "display_name": "Community Investment & Infrastructure",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "USD",
+        "label": "USD County Education Office",
+        "display_name": "County Office of Education",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
       },
       {
         "code": "TJP",
@@ -1210,24 +1230,14 @@
         "n_characters": 0
       },
       {
-        "code": "DPA",
-        "label": "DPA Police Accountabilty",
-        "display_name": "Police Accountability",
-        "org_group_code": "01",
+        "code": "CSC",
+        "label": "CSC Civil Service Commission",
+        "display_name": "Civil Service Commission",
+        "org_group_code": "06",
         "total_usd": 0.0,
-        "transfer_adjustment_usd": -208000.0,
+        "transfer_adjustment_usd": -360839.0,
         "share_of_side": 0.0,
         "n_characters": 2
-      },
-      {
-        "code": "USD",
-        "label": "USD County Education Office",
-        "display_name": "County Office of Education",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
       },
       {
         "code": "CTA",
@@ -1240,34 +1250,24 @@
         "n_characters": 0
       },
       {
-        "code": "CSC",
-        "label": "CSC Civil Service Commission",
-        "display_name": "Civil Service Commission",
-        "org_group_code": "06",
+        "code": "DPA",
+        "label": "DPA Police Accountabilty",
+        "display_name": "Police Accountability",
+        "org_group_code": "01",
         "total_usd": 0.0,
-        "transfer_adjustment_usd": -360839.0,
+        "transfer_adjustment_usd": -208000.0,
         "share_of_side": 0.0,
         "n_characters": 2
       },
       {
-        "code": "CII",
-        "label": "CII Commty Invest & Infrstrctr",
-        "display_name": "Community Investment & Infrastructure",
+        "code": "HRC",
+        "label": "HRC Human Rights Commission",
+        "display_name": "Human Rights Commission",
         "org_group_code": "03",
         "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
+        "transfer_adjustment_usd": -90000.0,
         "share_of_side": 0.0,
-        "n_characters": 0
-      },
-      {
-        "code": "CCD",
-        "label": "CCD SF Communtiy College Dist",
-        "display_name": "SF Community College District",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
+        "n_characters": 2
       }
     ]
   },
@@ -4409,15 +4409,15 @@
       ],
       [
         "CAT",
-        "ELS",
-        -62237667.0,
-        1
-      ],
-      [
-        "CAT",
         "EXP_RECOVERY",
         62237667.0,
         0
+      ],
+      [
+        "CAT",
+        "ELS",
+        -62237667.0,
+        1
       ],
       [
         "DBI",
@@ -4433,15 +4433,15 @@
       ],
       [
         "CON",
-        "ELS",
-        -60662117.0,
-        1
-      ],
-      [
-        "CON",
         "EXP_RECOVERY",
         60662117.0,
         0
+      ],
+      [
+        "CON",
+        "ELS",
+        -60662117.0,
+        1
       ],
       [
         "GEN",
@@ -4625,15 +4625,15 @@
       ],
       [
         "SHF",
-        "EXP_RECOVERY",
-        28359645.0,
-        0
-      ],
-      [
-        "SHF",
         "ELS",
         -28359645.0,
         1
+      ],
+      [
+        "SHF",
+        "EXP_RECOVERY",
+        28359645.0,
+        0
       ],
       [
         "DBI",
@@ -5147,15 +5147,15 @@
       ],
       [
         "ASR",
-        "EXP_RECOVERY",
-        3406174.0,
-        0
-      ],
-      [
-        "ASR",
         "ELS",
         -3406174.0,
         1
+      ],
+      [
+        "ASR",
+        "EXP_RECOVERY",
+        3406174.0,
+        0
       ],
       [
         "PRT",
@@ -5765,15 +5765,15 @@
       ],
       [
         "DPA",
-        "ELS",
-        -208000.0,
-        1
-      ],
-      [
-        "DPA",
         "EXP_RECOVERY",
         208000.0,
         0
+      ],
+      [
+        "DPA",
+        "ELS",
+        -208000.0,
+        1
       ],
       [
         "HSA",
@@ -5938,8 +5938,8 @@
         0
       ],
       [
-        "REG",
-        "INTER_REV_FED",
+        "PDR",
+        "EXP_RECOVERY",
         100000.0,
         0
       ],
@@ -5950,8 +5950,8 @@
         1
       ],
       [
-        "PDR",
-        "EXP_RECOVERY",
+        "REG",
+        "INTER_REV_FED",
         100000.0,
         0
       ],
@@ -5998,14 +5998,14 @@
         0
       ],
       [
-        "CHF",
-        "INT_INV_INC",
+        "AIR",
+        "EXP_RECOVERY",
         80000.0,
         0
       ],
       [
-        "AIR",
-        "EXP_RECOVERY",
+        "CHF",
+        "INT_INV_INC",
         80000.0,
         0
       ],
@@ -6112,14 +6112,14 @@
         0
       ],
       [
-        "JUV",
-        "OTH_REV",
+        "PRT",
+        "EXP_RECOVERY",
         10000.0,
         0
       ],
       [
-        "PRT",
-        "EXP_RECOVERY",
+        "JUV",
+        "OTH_REV",
         10000.0,
         0
       ],

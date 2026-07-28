@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.744549+00:00",
+ "generated_at": "2026-07-28T11:43:47.721387+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,6 +35,143 @@
   "2027": 8140.0
  },
  "top_departments": [],
+ "profile": {
+  "n_vouchers": 4304,
+  "departments": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 62650276.4,
+    "n_vouchers": 2200
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 30913594.4,
+    "n_vouchers": 1035
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 8850063.62,
+    "n_vouchers": 431
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 3743997.24,
+    "n_vouchers": 456
+   },
+   {
+    "department": "ADP Adult Probation",
+    "department_code": "ADP",
+    "usd": 1633754.46,
+    "n_vouchers": 74
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 645692.3,
+    "n_vouchers": 99
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 75000.0,
+    "n_vouchers": 3
+   },
+   {
+    "department": "REG Elections",
+    "department_code": "REG",
+    "usd": 29307.8,
+    "n_vouchers": 6
+   }
+  ],
+  "n_departments": 8,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 63996212.51,
+    "n_vouchers": 1492
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 1264988.91,
+    "n_vouchers": 824
+   },
+   {
+    "code": "536440",
+    "label": "CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 99721.46,
+    "n_vouchers": 50
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 75000.0,
+    "n_vouchers": 3
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 52796.54,
+    "n_vouchers": 6
+   },
+   {
+    "code": "536340",
+    "label": "Non-CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 18673.2,
+    "n_vouchers": 8
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 24
+   }
+  ],
+  "n_categories": 7,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 10853915.86,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 10634135.86,
+    "n_vouchers": 159
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 216480.0,
+    "n_vouchers": 151
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 3300.0,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000029287",

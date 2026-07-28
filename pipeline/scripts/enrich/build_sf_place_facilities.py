@@ -37,7 +37,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 SEED = ROOT / "pipeline" / "seeds" / "sf_place_candidates.json"
 OUT = ROOT / "pipeline" / "seeds" / "countries" / "us" / "seed_us_sf_place_facilities.csv"
-STG = "open-data-france-484717.dbt_us_dev_local_staging.stg_us_sf_city_facilities"
+STG = "open-data-france-484717.dbt_us_staging.stg_us_sf_city_facilities"
 
 # Department-affinity guard: a generic neighborhood alias ("Glen Park") will
 # phrase-match facilities that merely SIT in that neighborhood but belong to a

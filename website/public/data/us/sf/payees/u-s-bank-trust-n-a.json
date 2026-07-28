@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.728251+00:00",
+ "generated_at": "2026-07-28T11:43:47.693461+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -34,6 +34,166 @@
  "top_departments": [
   "WWE Wastewater Enterprise"
  ],
+ "profile": {
+  "n_vouchers": 909,
+  "departments": [
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 211053193.03,
+    "n_vouchers": 62
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 205143536.9,
+    "n_vouchers": 100
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 198799481.5,
+    "n_vouchers": 497
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 50355504.5,
+    "n_vouchers": 42
+   },
+   {
+    "department": "CRT Superior Court",
+    "department_code": "CRT",
+    "usd": 40501801.8,
+    "n_vouchers": 23
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 15445035.6,
+    "n_vouchers": 1
+   },
+   {
+    "department": "JUV Juvenile Probation",
+    "department_code": "JUV",
+    "usd": 11205486.15,
+    "n_vouchers": 35
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 2157866.7,
+    "n_vouchers": 4
+   }
+  ],
+  "n_departments": 14,
+  "categories": [
+   {
+    "code": "OTHR_OBLIG_AGNCY_FUN",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 471704.43,
+    "n_vouchers": 8
+   },
+   {
+    "code": "521050",
+    "label": "Non-Air Travel - Employees",
+    "spend_class": "unclear",
+    "usd": 4552.63,
+    "n_vouchers": 3
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 2100.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "535210",
+    "label": "Freight-Delivery",
+    "spend_class": "unclear",
+    "usd": 1896.14,
+    "n_vouchers": 6
+   },
+   {
+    "code": "521040",
+    "label": "Air Travel - Non-Employees",
+    "spend_class": "unclear",
+    "usd": 1217.5,
+    "n_vouchers": 1
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 1102.48,
+    "n_vouchers": 2
+   },
+   {
+    "code": "574990",
+    "label": "Debt Svc-Admin And Fiscal Chrg",
+    "spend_class": "obligation",
+    "usd": 1100.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "527030",
+    "label": "Transportation Services",
+    "spend_class": "purchase",
+    "usd": 812.26,
+    "n_vouchers": 3
+   }
+  ],
+  "n_categories": 14,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 5640.21,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 2100.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "JUV Juvenile Probation",
+    "department_code": "JUV",
+    "label": "Freight-Delivery",
+    "spend_class": "unclear",
+    "usd": 1721.47,
+    "n_vouchers": 2
+   },
+   {
+    "department": "JUV Juvenile Probation",
+    "department_code": "JUV",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 858.17,
+    "n_vouchers": 1
+   },
+   {
+    "department": "JUV Juvenile Probation",
+    "department_code": "JUV",
+    "label": "Transportation Services",
+    "spend_class": "purchase",
+    "usd": 566.44,
+    "n_vouchers": 1
+   },
+   {
+    "department": "JUV Juvenile Probation",
+    "department_code": "JUV",
+    "label": "Subscriptions",
+    "spend_class": "unclear",
+    "usd": 394.13,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000030449",

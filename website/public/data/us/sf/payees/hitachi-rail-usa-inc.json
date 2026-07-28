@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.744824+00:00",
+ "generated_at": "2026-07-28T11:43:47.721886+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -31,6 +31,50 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 426,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 106601520.53,
+    "n_vouchers": 426
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "560220",
+    "label": "Rail",
+    "spend_class": "purchase",
+    "usd": 6401547.94,
+    "n_vouchers": 6
+   },
+   {
+    "code": "560290",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 5422470.09,
+    "n_vouchers": 6
+   }
+  ],
+  "n_categories": 2,
+  "counts_are_floor": false,
+  "recent_fy": 2021,
+  "recent_total_usd": 1436400.64,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 1436400.64,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.764577+00:00",
+  "generated_at": "2026-07-28T11:43:46.542783+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -5705,14 +5705,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "021",
-          "label": "Travel",
+          "code": "031",
+          "label": "Rents & Leases-Equipment",
           "amount_usd": 13000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "031",
-          "label": "Rents & Leases-Equipment",
+          "code": "021",
+          "label": "Travel",
           "amount_usd": 13000.0,
           "is_transfer_adjustment": false
         },
@@ -10193,14 +10193,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "023",
-          "label": "Employee Expenses",
+          "code": "022",
+          "label": "Training",
           "amount_usd": 1500.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "022",
-          "label": "Training",
+          "code": "023",
+          "label": "Employee Expenses",
           "amount_usd": 1500.0,
           "is_transfer_adjustment": false
         },
@@ -13061,14 +13061,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "021",
-          "label": "Travel",
+          "code": "029",
+          "label": "Maintenance Svcs-Equipment",
           "amount_usd": 2000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "029",
-          "label": "Maintenance Svcs-Equipment",
+          "code": "021",
+          "label": "Travel",
           "amount_usd": 2000.0,
           "is_transfer_adjustment": false
         }
@@ -15071,14 +15071,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "035",
-          "label": "Other Current Expenses",
+          "code": "026",
+          "label": "Court Fees and Other Compensation",
           "amount_usd": 20000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "026",
-          "label": "Court Fees and Other Compensation",
+          "code": "035",
+          "label": "Other Current Expenses",
           "amount_usd": 20000.0,
           "is_transfer_adjustment": false
         },
@@ -18359,7 +18359,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "NATIONAL JAPANESE AMERICAN HISTRCAL SCTY",
+            "vendor": "CROATIAN AMERICAN CULTURAL CENTER",
             "amount_usd": 40000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
@@ -18368,7 +18368,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "CROATIAN AMERICAN CULTURAL CENTER",
+            "vendor": "NATIONAL JAPANESE AMERICAN HISTRCAL SCTY",
             "amount_usd": 40000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
@@ -25822,6 +25822,15 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "DEWITT LACY FOR SUPERVISOR 2010",
+            "amount_usd": 10000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "KAT ANDERSON FOR DIST. 2 SUPERVISOR 2010",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
@@ -25832,15 +25841,6 @@
           },
           {
             "vendor": "JIM MEKO FOR DISTRICT 6 SUPERVISOR 2010",
-            "amount_usd": 10000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "DEWITT LACY FOR SUPERVISOR 2010",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -26542,18 +26542,18 @@
         "n_vendors": 2,
         "vendors": [
           {
-            "vendor": "C.C.P.D.G.",
+            "vendor": "SAMOAN COMMUNITY DEVELOPMENT CENTER INC",
             "amount_usd": 50000.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "SAMOAN COMMUNITY DEVELOPMENT CENTER INC",
+            "vendor": "C.C.P.D.G.",
             "amount_usd": 50000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.737023+00:00",
+ "generated_at": "2026-07-28T11:43:47.708897+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,209 @@
  "top_departments": [
   "HSA Human Services Agency"
  ],
+ "profile": {
+  "n_vouchers": 7919,
+  "departments": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 102544970.4,
+    "n_vouchers": 3656
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 37219761.5,
+    "n_vouchers": 1837
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 22020551.07,
+    "n_vouchers": 1590
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 7068180.09,
+    "n_vouchers": 423
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 7014190.29,
+    "n_vouchers": 72
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 1599187.63,
+    "n_vouchers": 132
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "usd": 1584863.66,
+    "n_vouchers": 191
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 65900.0,
+    "n_vouchers": 4
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "ECD",
+    "usd": 39126.6,
+    "n_vouchers": 2
+   },
+   {
+    "department": "CPC City Planning",
+    "department_code": "CPC",
+    "usd": 11319.89,
+    "n_vouchers": 7
+   },
+   {
+    "department": "DAT District Attorney",
+    "department_code": "DAT",
+    "usd": 7000.0,
+    "n_vouchers": 3
+   }
+  ],
+  "n_departments": 10,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 127405065.22,
+    "n_vouchers": 4753
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1847243.4,
+    "n_vouchers": 59
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 937077.67,
+    "n_vouchers": 23
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 375727.09,
+    "n_vouchers": 20
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 54644.06,
+    "n_vouchers": 6
+   },
+   {
+    "code": "526610",
+    "label": "Interpreters",
+    "spend_class": "purchase",
+    "usd": 10949.0,
+    "n_vouchers": 6
+   },
+   {
+    "code": "553210",
+    "label": "Litigation Expenses",
+    "spend_class": "unclear",
+    "usd": 5000.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "525010",
+    "label": "Promotional & Entertainmnt Exp",
+    "spend_class": "purchase",
+    "usd": 3900.0,
+    "n_vouchers": 3
+   }
+  ],
+  "n_categories": 12,
+  "counts_are_floor": true,
+  "recent_fy": 2025,
+  "recent_total_usd": 19541546.86,
+  "n_recent_lines": 7,
+  "recent_lines": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 16193101.07,
+    "n_vouchers": 530
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2433812.76,
+    "n_vouchers": 128
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 600000.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 267056.0,
+    "n_vouchers": 16
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 47277.03,
+    "n_vouchers": 2
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Promotional & Entertainmnt Exp",
+    "spend_class": "purchase",
+    "usd": 300.0,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": {
+  "description": "Self-help For The Elderly is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under human services.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Self-help For The Elderly",
+  "ein": "941750717",
+  "ntee_code": "P810",
+  "ntee_label": "Human services",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/941750717",
+  "checked_at": "2026-07-27T23:36:53.619938+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000036749",
-   "title": "HDM for Older Adults",
+   "title": "home-delivered meals for Older Adults",
    "department": "HSA Human Services Agency",
    "department_code": "HSA",
    "agreed_usd": 13871295.0,

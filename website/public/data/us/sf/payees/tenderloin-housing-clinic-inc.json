@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.728644+00:00",
+ "generated_at": "2026-07-28T11:43:47.694214+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,187 @@
  "top_departments": [
   "HSA Human Services Agency"
  ],
+ "profile": {
+  "n_vouchers": 5592,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 422864560.34,
+    "n_vouchers": 3458
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 162068452.7,
+    "n_vouchers": 911
+   },
+   {
+    "department": "ADP Adult Probation",
+    "department_code": "ADP",
+    "usd": 25647183.63,
+    "n_vouchers": 218
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 19520821.34,
+    "n_vouchers": 539
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "usd": 9902257.56,
+    "n_vouchers": 376
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 1195643.5,
+    "n_vouchers": 39
+   },
+   {
+    "department": "RNT Rent Arbitration Board",
+    "department_code": "RNT",
+    "usd": 298330.2,
+    "n_vouchers": 15
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 155318.4,
+    "n_vouchers": 13
+   }
+  ],
+  "n_departments": 13,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 436288567.79,
+    "n_vouchers": 3878
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 7456196.66,
+    "n_vouchers": 145
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 2763583.68,
+    "n_vouchers": 28
+   },
+   {
+    "code": "538000",
+    "label": "CBO Services - Budget",
+    "spend_class": "purchase",
+    "usd": 927946.49,
+    "n_vouchers": 12
+   },
+   {
+    "code": "530110",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 113186.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "468111",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 15001.86,
+    "n_vouchers": 1
+   },
+   {
+    "code": "536620",
+    "label": "Aps-Basic Services",
+    "spend_class": "purchase",
+    "usd": 11763.17,
+    "n_vouchers": 3
+   },
+   {
+    "code": "553240",
+    "label": "Litigation Exp-Relocation-Hsng",
+    "spend_class": "unclear",
+    "usd": 316.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 8,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 70327805.75,
+  "n_recent_lines": 6,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 65295355.25,
+    "n_vouchers": 468
+   },
+   {
+    "department": "ADP Adult Probation",
+    "department_code": "ADP",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2404487.34,
+    "n_vouchers": 13
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1781650.45,
+    "n_vouchers": 33
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 831082.85,
+    "n_vouchers": 25
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 15001.86,
+    "n_vouchers": 1
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 228.0,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": {
+  "description": "Tenderloin Housing Clinic Inc is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under housing and shelter.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Tenderloin Housing Clinic Inc",
+  "ein": "942681706",
+  "ntee_code": "L52Z",
+  "ntee_label": "Housing and shelter",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/942681706",
+  "checked_at": "2026-07-27T23:35:29.504668+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000033372",

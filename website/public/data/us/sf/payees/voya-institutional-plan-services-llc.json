@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.726790+00:00",
+ "generated_at": "2026-07-28T11:43:47.691171+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -24,6 +24,58 @@
  "top_departments": [
   "RET Retirement System"
  ],
+ "profile": {
+  "n_vouchers": 396,
+  "departments": [
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "usd": 1808074286.86,
+    "n_vouchers": 396
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "232520",
+    "label": "230750RETM&DDeferredCompensati",
+    "spend_class": "obligation",
+    "usd": 1668827165.82,
+    "n_vouchers": 199
+   },
+   {
+    "code": "232525",
+    "label": "230750DeferredCompLoanProgram",
+    "spend_class": "ledger",
+    "usd": 139247121.04,
+    "n_vouchers": 197
+   }
+  ],
+  "n_categories": 2,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 308418931.1,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "label": "230750RETM&DDeferredCompensati",
+    "spend_class": "obligation",
+    "usd": 284603597.0,
+    "n_vouchers": 27
+   },
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "label": "230750DeferredCompLoanProgram",
+    "spend_class": "ledger",
+    "usd": 23815334.1,
+    "n_vouchers": 27
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

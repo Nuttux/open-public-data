@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.740682+00:00",
+ "generated_at": "2026-07-28T11:43:47.714486+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -30,6 +30,92 @@
  "top_departments": [
   "MYR Mayor"
  ],
+ "profile": {
+  "n_vouchers": 632,
+  "departments": [
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 114596047.25,
+    "n_vouchers": 277
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 18579287.3,
+    "n_vouchers": 7
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 8345859.8,
+    "n_vouchers": 44
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 3679389.8,
+    "n_vouchers": 284
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 704529.4,
+    "n_vouchers": 9
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 305372.8,
+    "n_vouchers": 6
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 141527.9,
+    "n_vouchers": 3
+   },
+   {
+    "department": "POL Police",
+    "department_code": "POL",
+    "usd": 40000.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_departments": 8,
+  "categories": [
+   {
+    "code": "539200",
+    "label": "Loans Issued By City",
+    "spend_class": "ledger",
+    "usd": 37720746.55,
+    "n_vouchers": 39
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 4
+   }
+  ],
+  "n_categories": 2,
+  "counts_are_floor": false,
+  "recent_fy": 2020,
+  "recent_total_usd": 1172400.0,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Loans Issued By City",
+    "spend_class": "ledger",
+    "usd": 1172400.0,
+    "n_vouchers": 4
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000013048",

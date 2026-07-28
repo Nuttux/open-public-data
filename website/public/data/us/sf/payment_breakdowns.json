@@ -1,0 +1,3942 @@
+{
+  "generated_at": "2026-07-28T11:43:23.385586+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
+  "unit": "USD",
+  "grain": "fiscal_year x dimension x key",
+  "top_per_dimension": 10,
+  "dimension_notes": {
+    "department": "The paying department, on the City's own code. Grouped on the code and not the name: the FY2018 system migration re-cased every label, so grouping on the label splits one department in two.",
+    "org_group": "The Controller's seven service areas — the same top-level grouping the budget page uses, so the two pages cut the money the same way.",
+    "kind": "The display bucket of the PAYEE (supplier, nonprofit, healthcare, fiscal agent, payroll pass-through, individual). Vendors the classification seed does not cover are shown as 'unclassified' rather than dropped — the gap is a fact about the classification, not a rounding error."
+  },
+  "denominator_note": "Every dimension sums to the same figure: that fiscal year's total payments. Switching lens re-cuts one total; it never changes what is being measured.",
+  "source": {
+    "name": "Vendor Payments (Vouchers)",
+    "dataset_id": "n9pm-xkyq",
+    "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+    "attribution": "SF Controller's Office",
+    "rows_updated_at": "2026-07-13T13:40:40+00:00"
+  },
+  "years": {
+    "2007": {
+      "total_usd": 2882481797.3,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 506406448.4,
+            "n_payees": 2140,
+            "share_of_fy": 0.175684
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 452188947.5,
+            "n_payees": 763,
+            "share_of_fy": 0.156875
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 294648596.2,
+            "n_payees": 648,
+            "share_of_fy": 0.10222
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 267074299.0,
+            "n_payees": 877,
+            "share_of_fy": 0.092654
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 150532278.1,
+            "n_payees": 51,
+            "share_of_fy": 0.052223
+          },
+          {
+            "key": "CWP",
+            "label": "WWE Wastewater Enterprise",
+            "usd": 129640116.1,
+            "n_payees": 447,
+            "share_of_fy": 0.044975
+          },
+          {
+            "key": "DSS",
+            "label": "HSA Human Services Agency",
+            "usd": 120634144.9,
+            "n_payees": 657,
+            "share_of_fy": 0.041851
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 110801568.2,
+            "n_payees": 953,
+            "share_of_fy": 0.03844
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 108601772.5,
+            "n_payees": 1071,
+            "share_of_fy": 0.037676
+          },
+          {
+            "key": "WTR",
+            "label": "WTR Water Enterprise",
+            "usd": 91463425.6,
+            "n_payees": 1825,
+            "share_of_fy": 0.031731
+          }
+        ],
+        "kind": [
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1119093508.9,
+            "n_payees": 13701,
+            "share_of_fy": 0.38824
+          },
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 661209996.7,
+            "n_payees": 12,
+            "share_of_fy": 0.229389
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 581739458.3,
+            "n_payees": 52,
+            "share_of_fy": 0.201819
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 241402572.6,
+            "n_payees": 39,
+            "share_of_fy": 0.083748
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 153784662.7,
+            "n_payees": 14,
+            "share_of_fy": 0.053351
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 123149138.3,
+            "n_payees": 8,
+            "share_of_fy": 0.042723
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 1226613.0,
+            "n_payees": 1,
+            "share_of_fy": 0.000426
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 875846.8,
+            "n_payees": 2,
+            "share_of_fy": 0.000304
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 1456857741.6,
+            "n_payees": 4666,
+            "share_of_fy": 0.505418
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 506406448.4,
+            "n_payees": 2140,
+            "share_of_fy": 0.175684
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 344930671.2,
+            "n_payees": 5285,
+            "share_of_fy": 0.119664
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 242204046.3,
+            "n_payees": 1222,
+            "share_of_fy": 0.084026
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 150532278.1,
+            "n_payees": 51,
+            "share_of_fy": 0.052223
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 124946934.6,
+            "n_payees": 2188,
+            "share_of_fy": 0.043347
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 56603677.1,
+            "n_payees": 1322,
+            "share_of_fy": 0.019637
+          }
+        ]
+      }
+    },
+    "2008": {
+      "total_usd": 3072753255.1,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 560262364.7,
+            "n_payees": 1852,
+            "share_of_fy": 0.182332
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 464600202.9,
+            "n_payees": 838,
+            "share_of_fy": 0.1512
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 285465978.0,
+            "n_payees": 829,
+            "share_of_fy": 0.092902
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 240451967.6,
+            "n_payees": 639,
+            "share_of_fy": 0.078253
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 154309881.5,
+            "n_payees": 40,
+            "share_of_fy": 0.050219
+          },
+          {
+            "key": "DSS",
+            "label": "HSA Human Services Agency",
+            "usd": 137478410.0,
+            "n_payees": 596,
+            "share_of_fy": 0.044741
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 130165695.2,
+            "n_payees": 546,
+            "share_of_fy": 0.042361
+          },
+          {
+            "key": "CWP",
+            "label": "WWE Wastewater Enterprise",
+            "usd": 127340870.3,
+            "n_payees": 449,
+            "share_of_fy": 0.041442
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 126639133.1,
+            "n_payees": 1163,
+            "share_of_fy": 0.041214
+          },
+          {
+            "key": "WTR",
+            "label": "WTR Water Enterprise",
+            "usd": 120004100.5,
+            "n_payees": 1672,
+            "share_of_fy": 0.039054
+          }
+        ],
+        "kind": [
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1218967642.9,
+            "n_payees": 14534,
+            "share_of_fy": 0.396702
+          },
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 673125160.8,
+            "n_payees": 11,
+            "share_of_fy": 0.219063
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 642817438.1,
+            "n_payees": 63,
+            "share_of_fy": 0.209199
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 233804069.8,
+            "n_payees": 38,
+            "share_of_fy": 0.076089
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 152777767.0,
+            "n_payees": 15,
+            "share_of_fy": 0.04972
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 149979451.3,
+            "n_payees": 8,
+            "share_of_fy": 0.048809
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 775115.4,
+            "n_payees": 1,
+            "share_of_fy": 0.000252
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 506609.8,
+            "n_payees": 2,
+            "share_of_fy": 0.000165
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 1483447713.8,
+            "n_payees": 4168,
+            "share_of_fy": 0.482775
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 560262364.7,
+            "n_payees": 1852,
+            "share_of_fy": 0.182332
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 405375692.7,
+            "n_payees": 7100,
+            "share_of_fy": 0.131926
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 285056700.9,
+            "n_payees": 1143,
+            "share_of_fy": 0.092769
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 154309881.5,
+            "n_payees": 40,
+            "share_of_fy": 0.050219
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 122447766.3,
+            "n_payees": 1941,
+            "share_of_fy": 0.03985
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 61853135.2,
+            "n_payees": 1482,
+            "share_of_fy": 0.02013
+          }
+        ]
+      }
+    },
+    "2009": {
+      "total_usd": 3191549600.5,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 568378272.6,
+            "n_payees": 1749,
+            "share_of_fy": 0.178088
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 479901421.2,
+            "n_payees": 781,
+            "share_of_fy": 0.150366
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 276239562.8,
+            "n_payees": 649,
+            "share_of_fy": 0.086553
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 197035749.4,
+            "n_payees": 809,
+            "share_of_fy": 0.061737
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 168209069.8,
+            "n_payees": 33,
+            "share_of_fy": 0.052705
+          },
+          {
+            "key": "WTR",
+            "label": "WTR Water Enterprise",
+            "usd": 156976768.6,
+            "n_payees": 2071,
+            "share_of_fy": 0.049185
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 143399773.1,
+            "n_payees": 548,
+            "share_of_fy": 0.044931
+          },
+          {
+            "key": "CWP",
+            "label": "WWE Wastewater Enterprise",
+            "usd": 142360231.0,
+            "n_payees": 459,
+            "share_of_fy": 0.044605
+          },
+          {
+            "key": "DSS",
+            "label": "HSA Human Services Agency",
+            "usd": 142232597.6,
+            "n_payees": 531,
+            "share_of_fy": 0.044565
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 133066845.9,
+            "n_payees": 1090,
+            "share_of_fy": 0.041693
+          }
+        ],
+        "kind": [
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1228604040.5,
+            "n_payees": 13637,
+            "share_of_fy": 0.384955
+          },
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 750153021.6,
+            "n_payees": 12,
+            "share_of_fy": 0.235044
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 630787967.7,
+            "n_payees": 62,
+            "share_of_fy": 0.197643
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 233518008.6,
+            "n_payees": 39,
+            "share_of_fy": 0.073168
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 192974630.3,
+            "n_payees": 16,
+            "share_of_fy": 0.060464
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 152432283.8,
+            "n_payees": 8,
+            "share_of_fy": 0.047761
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 2534209.8,
+            "n_payees": 1,
+            "share_of_fy": 0.000794
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 545438.2,
+            "n_payees": 2,
+            "share_of_fy": 0.000171
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 1504787477.9,
+            "n_payees": 4702,
+            "share_of_fy": 0.471491
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 568378272.6,
+            "n_payees": 1749,
+            "share_of_fy": 0.178088
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 406889456.7,
+            "n_payees": 5944,
+            "share_of_fy": 0.12749
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 344356583.1,
+            "n_payees": 1071,
+            "share_of_fy": 0.107896
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 168209069.8,
+            "n_payees": 33,
+            "share_of_fy": 0.052705
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 133426234.2,
+            "n_payees": 1824,
+            "share_of_fy": 0.041806
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 65502506.2,
+            "n_payees": 1410,
+            "share_of_fy": 0.020524
+          }
+        ]
+      }
+    },
+    "2010": {
+      "total_usd": 3401160998.2,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 592158661.6,
+            "n_payees": 1696,
+            "share_of_fy": 0.174105
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 588569555.1,
+            "n_payees": 759,
+            "share_of_fy": 0.17305
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 254038711.2,
+            "n_payees": 778,
+            "share_of_fy": 0.074692
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 254023713.8,
+            "n_payees": 517,
+            "share_of_fy": 0.074687
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 204075895.6,
+            "n_payees": 15,
+            "share_of_fy": 0.060002
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 183022978.9,
+            "n_payees": 639,
+            "share_of_fy": 0.053812
+          },
+          {
+            "key": "WTR",
+            "label": "WTR Water Enterprise",
+            "usd": 167780282.6,
+            "n_payees": 2447,
+            "share_of_fy": 0.04933
+          },
+          {
+            "key": "DSS",
+            "label": "HSA Human Services Agency",
+            "usd": 161147314.4,
+            "n_payees": 493,
+            "share_of_fy": 0.04738
+          },
+          {
+            "key": "CWP",
+            "label": "WWE Wastewater Enterprise",
+            "usd": 120201396.9,
+            "n_payees": 434,
+            "share_of_fy": 0.035341
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 116002078.9,
+            "n_payees": 1115,
+            "share_of_fy": 0.034107
+          }
+        ],
+        "kind": [
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1198575870.0,
+            "n_payees": 13306,
+            "share_of_fy": 0.352402
+          },
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 803556140.7,
+            "n_payees": 11,
+            "share_of_fy": 0.236259
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 758002982.3,
+            "n_payees": 64,
+            "share_of_fy": 0.222866
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 238253347.5,
+            "n_payees": 39,
+            "share_of_fy": 0.070051
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 223082773.9,
+            "n_payees": 17,
+            "share_of_fy": 0.06559
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 156519176.9,
+            "n_payees": 8,
+            "share_of_fy": 0.046019
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 22600940.5,
+            "n_payees": 2,
+            "share_of_fy": 0.006645
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 569766.4,
+            "n_payees": 4,
+            "share_of_fy": 0.000168
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 1684285873.7,
+            "n_payees": 4961,
+            "share_of_fy": 0.495209
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 592158661.6,
+            "n_payees": 1696,
+            "share_of_fy": 0.174105
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 379133007.1,
+            "n_payees": 962,
+            "share_of_fy": 0.111472
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 348435933.4,
+            "n_payees": 5583,
+            "share_of_fy": 0.102446
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 204075895.6,
+            "n_payees": 15,
+            "share_of_fy": 0.060002
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 127627319.8,
+            "n_payees": 1621,
+            "share_of_fy": 0.037525
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 65444307.0,
+            "n_payees": 1459,
+            "share_of_fy": 0.019242
+          }
+        ]
+      }
+    },
+    "2011": {
+      "total_usd": 3937384783.7,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 677176485.5,
+            "n_payees": 804,
+            "share_of_fy": 0.171986
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 655199220.3,
+            "n_payees": 1611,
+            "share_of_fy": 0.166405
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 483717471.7,
+            "n_payees": 519,
+            "share_of_fy": 0.122852
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 333385573.2,
+            "n_payees": 763,
+            "share_of_fy": 0.084672
+          },
+          {
+            "key": "WTR",
+            "label": "WTR Water Enterprise",
+            "usd": 205306483.5,
+            "n_payees": 2710,
+            "share_of_fy": 0.052143
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 204965036.1,
+            "n_payees": 21,
+            "share_of_fy": 0.052056
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 200822838.2,
+            "n_payees": 525,
+            "share_of_fy": 0.051004
+          },
+          {
+            "key": "DSS",
+            "label": "HSA Human Services Agency",
+            "usd": 171537366.0,
+            "n_payees": 518,
+            "share_of_fy": 0.043566
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 118503686.4,
+            "n_payees": 1072,
+            "share_of_fy": 0.030097
+          },
+          {
+            "key": "CWP",
+            "label": "WWE Wastewater Enterprise",
+            "usd": 114026065.4,
+            "n_payees": 430,
+            "share_of_fy": 0.02896
+          }
+        ],
+        "kind": [
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1312614595.0,
+            "n_payees": 12776,
+            "share_of_fy": 0.333372
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 1097874321.9,
+            "n_payees": 70,
+            "share_of_fy": 0.278833
+          },
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 874067931.3,
+            "n_payees": 11,
+            "share_of_fy": 0.221992
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 245261203.4,
+            "n_payees": 40,
+            "share_of_fy": 0.06229
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 208171861.9,
+            "n_payees": 16,
+            "share_of_fy": 0.052871
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 173081518.6,
+            "n_payees": 8,
+            "share_of_fy": 0.043958
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 25781291.5,
+            "n_payees": 2,
+            "share_of_fy": 0.006548
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 532060.1,
+            "n_payees": 3,
+            "share_of_fy": 0.000135
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 2147646515.2,
+            "n_payees": 5098,
+            "share_of_fy": 0.54545
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 655199220.3,
+            "n_payees": 1611,
+            "share_of_fy": 0.166405
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 369252422.9,
+            "n_payees": 4904,
+            "share_of_fy": 0.093781
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 362998731.0,
+            "n_payees": 993,
+            "share_of_fy": 0.092193
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 204965036.1,
+            "n_payees": 21,
+            "share_of_fy": 0.052056
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 126791266.0,
+            "n_payees": 1616,
+            "share_of_fy": 0.032202
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 70531592.2,
+            "n_payees": 1499,
+            "share_of_fy": 0.017913
+          }
+        ]
+      }
+    },
+    "2012": {
+      "total_usd": 4141373975.0,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 691336710.1,
+            "n_payees": 517,
+            "share_of_fy": 0.166934
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 677849836.5,
+            "n_payees": 1617,
+            "share_of_fy": 0.163678
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 517985505.3,
+            "n_payees": 784,
+            "share_of_fy": 0.125076
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 375015728.7,
+            "n_payees": 782,
+            "share_of_fy": 0.090553
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 256903709.3,
+            "n_payees": 511,
+            "share_of_fy": 0.062033
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 221507174.6,
+            "n_payees": 36,
+            "share_of_fy": 0.053486
+          },
+          {
+            "key": "WTR",
+            "label": "WTR Water Enterprise",
+            "usd": 213515673.6,
+            "n_payees": 2443,
+            "share_of_fy": 0.051557
+          },
+          {
+            "key": "DSS",
+            "label": "HSA Human Services Agency",
+            "usd": 131115422.0,
+            "n_payees": 500,
+            "share_of_fy": 0.03166
+          },
+          {
+            "key": "CWP",
+            "label": "WWE Wastewater Enterprise",
+            "usd": 126510445.9,
+            "n_payees": 409,
+            "share_of_fy": 0.030548
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 123836035.9,
+            "n_payees": 991,
+            "share_of_fy": 0.029902
+          }
+        ],
+        "kind": [
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1342773819.3,
+            "n_payees": 13157,
+            "share_of_fy": 0.324234
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 1225905232.5,
+            "n_payees": 81,
+            "share_of_fy": 0.296014
+          },
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 922904306.5,
+            "n_payees": 12,
+            "share_of_fy": 0.22285
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 252727182.3,
+            "n_payees": 40,
+            "share_of_fy": 0.061025
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 199406739.5,
+            "n_payees": 16,
+            "share_of_fy": 0.04815
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 195774551.8,
+            "n_payees": 9,
+            "share_of_fy": 0.047273
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 1366569.1,
+            "n_payees": 2,
+            "share_of_fy": 0.00033
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 515574.0,
+            "n_payees": 3,
+            "share_of_fy": 0.000124
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 2336063320.8,
+            "n_payees": 4783,
+            "share_of_fy": 0.564079
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 677849836.5,
+            "n_payees": 1617,
+            "share_of_fy": 0.163678
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 376895644.1,
+            "n_payees": 5525,
+            "share_of_fy": 0.091007
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 321501613.3,
+            "n_payees": 983,
+            "share_of_fy": 0.077632
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 221507174.6,
+            "n_payees": 36,
+            "share_of_fy": 0.053486
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 137116005.3,
+            "n_payees": 1658,
+            "share_of_fy": 0.033109
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 70440380.4,
+            "n_payees": 1403,
+            "share_of_fy": 0.017009
+          }
+        ]
+      }
+    },
+    "2013": {
+      "total_usd": 4604272646.5,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 742752868.7,
+            "n_payees": 1721,
+            "share_of_fy": 0.161318
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 636462096.2,
+            "n_payees": 854,
+            "share_of_fy": 0.138233
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 602178351.1,
+            "n_payees": 518,
+            "share_of_fy": 0.130787
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 437456017.4,
+            "n_payees": 477,
+            "share_of_fy": 0.095011
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 395304808.0,
+            "n_payees": 732,
+            "share_of_fy": 0.085856
+          },
+          {
+            "key": "WTR",
+            "label": "WTR Water Enterprise",
+            "usd": 241303700.3,
+            "n_payees": 2493,
+            "share_of_fy": 0.052409
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 218750837.4,
+            "n_payees": 21,
+            "share_of_fy": 0.04751
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 143677285.5,
+            "n_payees": 1049,
+            "share_of_fy": 0.031205
+          },
+          {
+            "key": "CWP",
+            "label": "WWE Wastewater Enterprise",
+            "usd": 139135077.1,
+            "n_payees": 423,
+            "share_of_fy": 0.030219
+          },
+          {
+            "key": "DSS",
+            "label": "HSA Human Services Agency",
+            "usd": 138894756.3,
+            "n_payees": 527,
+            "share_of_fy": 0.030166
+          }
+        ],
+        "kind": [
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 1452255886.5,
+            "n_payees": 83,
+            "share_of_fy": 0.315415
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1432545825.7,
+            "n_payees": 13294,
+            "share_of_fy": 0.311134
+          },
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 1013785105.4,
+            "n_payees": 12,
+            "share_of_fy": 0.220184
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 267417741.3,
+            "n_payees": 40,
+            "share_of_fy": 0.05808
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 225409220.1,
+            "n_payees": 17,
+            "share_of_fy": 0.048957
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 212069736.7,
+            "n_payees": 10,
+            "share_of_fy": 0.046059
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 552156.4,
+            "n_payees": 4,
+            "share_of_fy": 0.00012
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 236974.4,
+            "n_payees": 2,
+            "share_of_fy": 5.1e-05
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 2634983562.4,
+            "n_payees": 4803,
+            "share_of_fy": 0.572291
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 742752868.7,
+            "n_payees": 1721,
+            "share_of_fy": 0.161318
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 399061544.3,
+            "n_payees": 1247,
+            "share_of_fy": 0.086672
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 389887254.4,
+            "n_payees": 5250,
+            "share_of_fy": 0.084679
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 218750837.4,
+            "n_payees": 21,
+            "share_of_fy": 0.04751
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 145496650.8,
+            "n_payees": 1736,
+            "share_of_fy": 0.0316
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 73339928.5,
+            "n_payees": 1436,
+            "share_of_fy": 0.015929
+          }
+        ]
+      }
+    },
+    "2014": {
+      "total_usd": 5207060746.2,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 867978114.4,
+            "n_payees": 872,
+            "share_of_fy": 0.166693
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 790852457.0,
+            "n_payees": 1709,
+            "share_of_fy": 0.151881
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 661110210.6,
+            "n_payees": 802,
+            "share_of_fy": 0.126964
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 556684063.6,
+            "n_payees": 530,
+            "share_of_fy": 0.106909
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 498272624.8,
+            "n_payees": 507,
+            "share_of_fy": 0.095692
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 261708306.3,
+            "n_payees": 81,
+            "share_of_fy": 0.05026
+          },
+          {
+            "key": "WTR",
+            "label": "WTR Water Enterprise",
+            "usd": 233718019.8,
+            "n_payees": 2419,
+            "share_of_fy": 0.044885
+          },
+          {
+            "key": "DSS",
+            "label": "HSA Human Services Agency",
+            "usd": 148352360.2,
+            "n_payees": 555,
+            "share_of_fy": 0.028491
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 145490815.0,
+            "n_payees": 1115,
+            "share_of_fy": 0.027941
+          },
+          {
+            "key": "CWP",
+            "label": "WWE Wastewater Enterprise",
+            "usd": 116135052.4,
+            "n_payees": 390,
+            "share_of_fy": 0.022303
+          }
+        ],
+        "kind": [
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 1799503973.1,
+            "n_payees": 83,
+            "share_of_fy": 0.345589
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1476802941.0,
+            "n_payees": 13890,
+            "share_of_fy": 0.283615
+          },
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 1108781846.9,
+            "n_payees": 12,
+            "share_of_fy": 0.212938
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 308252349.7,
+            "n_payees": 17,
+            "share_of_fy": 0.059199
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 280280030.1,
+            "n_payees": 40,
+            "share_of_fy": 0.053827
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 232699840.5,
+            "n_payees": 10,
+            "share_of_fy": 0.044689
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 553471.4,
+            "n_payees": 3,
+            "share_of_fy": 0.000106
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 186293.5,
+            "n_payees": 1,
+            "share_of_fy": 3.6e-05
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 3093855669.0,
+            "n_payees": 5098,
+            "share_of_fy": 0.594165
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 790852457.0,
+            "n_payees": 1709,
+            "share_of_fy": 0.151881
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 420623489.7,
+            "n_payees": 5680,
+            "share_of_fy": 0.080779
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 406548822.5,
+            "n_payees": 1118,
+            "share_of_fy": 0.078076
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 261708306.3,
+            "n_payees": 81,
+            "share_of_fy": 0.05026
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 154629256.4,
+            "n_payees": 1790,
+            "share_of_fy": 0.029696
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 78842745.3,
+            "n_payees": 1473,
+            "share_of_fy": 0.015142
+          }
+        ]
+      }
+    },
+    "2015": {
+      "total_usd": 4976593326.3,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 828617929.7,
+            "n_payees": 843,
+            "share_of_fy": 0.166503
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 811219592.0,
+            "n_payees": 1725,
+            "share_of_fy": 0.163007
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 534108954.8,
+            "n_payees": 788,
+            "share_of_fy": 0.107324
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 461354572.2,
+            "n_payees": 531,
+            "share_of_fy": 0.092705
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 379773526.1,
+            "n_payees": 528,
+            "share_of_fy": 0.076312
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 278637703.8,
+            "n_payees": 33,
+            "share_of_fy": 0.05599
+          },
+          {
+            "key": "WTR",
+            "label": "WTR Water Enterprise",
+            "usd": 269536083.6,
+            "n_payees": 2174,
+            "share_of_fy": 0.054161
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 169305742.1,
+            "n_payees": 1141,
+            "share_of_fy": 0.03402
+          },
+          {
+            "key": "DSS",
+            "label": "HSA Human Services Agency",
+            "usd": 167692119.6,
+            "n_payees": 545,
+            "share_of_fy": 0.033696
+          },
+          {
+            "key": "MYR",
+            "label": "MYR Mayor",
+            "usd": 107183332.8,
+            "n_payees": 316,
+            "share_of_fy": 0.021537
+          }
+        ],
+        "kind": [
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1555634717.2,
+            "n_payees": 12694,
+            "share_of_fy": 0.31259
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 1395789947.1,
+            "n_payees": 82,
+            "share_of_fy": 0.280471
+          },
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 1171232009.3,
+            "n_payees": 11,
+            "share_of_fy": 0.235348
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 309158831.0,
+            "n_payees": 39,
+            "share_of_fy": 0.062123
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 299805854.1,
+            "n_payees": 18,
+            "share_of_fy": 0.060243
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 243647616.0,
+            "n_payees": 10,
+            "share_of_fy": 0.048959
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 1043673.2,
+            "n_payees": 4,
+            "share_of_fy": 0.00021
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 280678.4,
+            "n_payees": 3,
+            "share_of_fy": 5.6e-05
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 2710442996.1,
+            "n_payees": 4759,
+            "share_of_fy": 0.544638
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 811219592.0,
+            "n_payees": 1725,
+            "share_of_fy": 0.163007
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 496375602.8,
+            "n_payees": 5004,
+            "share_of_fy": 0.099742
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 462514151.0,
+            "n_payees": 1150,
+            "share_of_fy": 0.092938
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 278637703.8,
+            "n_payees": 33,
+            "share_of_fy": 0.05599
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 136434282.7,
+            "n_payees": 1605,
+            "share_of_fy": 0.027415
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 80968997.9,
+            "n_payees": 1454,
+            "share_of_fy": 0.01627
+          }
+        ]
+      }
+    },
+    "2016": {
+      "total_usd": 5159377974.3,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 865673744.4,
+            "n_payees": 837,
+            "share_of_fy": 0.167786
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 781295194.9,
+            "n_payees": 1835,
+            "share_of_fy": 0.151432
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 695694453.6,
+            "n_payees": 843,
+            "share_of_fy": 0.134841
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 311937595.6,
+            "n_payees": 550,
+            "share_of_fy": 0.06046
+          },
+          {
+            "key": "WTR",
+            "label": "WTR Water Enterprise",
+            "usd": 301871865.6,
+            "n_payees": 1928,
+            "share_of_fy": 0.058509
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 286601681.0,
+            "n_payees": 180,
+            "share_of_fy": 0.05555
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 263879636.9,
+            "n_payees": 544,
+            "share_of_fy": 0.051146
+          },
+          {
+            "key": "DSS",
+            "label": "HSA Human Services Agency",
+            "usd": 188675867.3,
+            "n_payees": 541,
+            "share_of_fy": 0.036569
+          },
+          {
+            "key": "MYR",
+            "label": "MYR Mayor",
+            "usd": 187733183.3,
+            "n_payees": 338,
+            "share_of_fy": 0.036387
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 162626150.8,
+            "n_payees": 1147,
+            "share_of_fy": 0.03152
+          }
+        ],
+        "kind": [
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1682282278.9,
+            "n_payees": 13403,
+            "share_of_fy": 0.326063
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 1351443924.8,
+            "n_payees": 83,
+            "share_of_fy": 0.261939
+          },
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 1340767070.0,
+            "n_payees": 11,
+            "share_of_fy": 0.25987
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 324218952.0,
+            "n_payees": 39,
+            "share_of_fy": 0.062841
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 244690721.5,
+            "n_payees": 10,
+            "share_of_fy": 0.047426
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 214071682.8,
+            "n_payees": 17,
+            "share_of_fy": 0.041492
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 1438544.7,
+            "n_payees": 4,
+            "share_of_fy": 0.000279
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 464799.6,
+            "n_payees": 3,
+            "share_of_fy": 9e-05
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 2703928031.1,
+            "n_payees": 4491,
+            "share_of_fy": 0.52408
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 781295194.9,
+            "n_payees": 1835,
+            "share_of_fy": 0.151432
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 599696702.0,
+            "n_payees": 5732,
+            "share_of_fy": 0.116234
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 545710577.6,
+            "n_payees": 1134,
+            "share_of_fy": 0.105771
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 286601681.0,
+            "n_payees": 180,
+            "share_of_fy": 0.05555
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 142873985.2,
+            "n_payees": 1602,
+            "share_of_fy": 0.027692
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 99271802.5,
+            "n_payees": 1488,
+            "share_of_fy": 0.019241
+          }
+        ]
+      }
+    },
+    "2017": {
+      "total_usd": 6038773203.0,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 1148007759.8,
+            "n_payees": 826,
+            "share_of_fy": 0.190106
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 957793801.6,
+            "n_payees": 1716,
+            "share_of_fy": 0.158607
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 757074223.8,
+            "n_payees": 769,
+            "share_of_fy": 0.125369
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 317475814.1,
+            "n_payees": 512,
+            "share_of_fy": 0.052573
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 315000447.6,
+            "n_payees": 549,
+            "share_of_fy": 0.052163
+          },
+          {
+            "key": "WTR",
+            "label": "WTR Water Enterprise",
+            "usd": 306389972.7,
+            "n_payees": 1522,
+            "share_of_fy": 0.050737
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 290676320.8,
+            "n_payees": 45,
+            "share_of_fy": 0.048135
+          },
+          {
+            "key": "MYR",
+            "label": "MYR Mayor",
+            "usd": 248108571.1,
+            "n_payees": 327,
+            "share_of_fy": 0.041086
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 236013551.1,
+            "n_payees": 1248,
+            "share_of_fy": 0.039083
+          },
+          {
+            "key": "DSS",
+            "label": "HSA Human Services Agency",
+            "usd": 152532929.0,
+            "n_payees": 510,
+            "share_of_fy": 0.025259
+          }
+        ],
+        "kind": [
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1874504966.1,
+            "n_payees": 12460,
+            "share_of_fy": 0.310412
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 1757186465.5,
+            "n_payees": 87,
+            "share_of_fy": 0.290984
+          },
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 1373763887.5,
+            "n_payees": 11,
+            "share_of_fy": 0.227491
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 410049671.4,
+            "n_payees": 39,
+            "share_of_fy": 0.067903
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 325119731.4,
+            "n_payees": 17,
+            "share_of_fy": 0.053839
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 295578910.1,
+            "n_payees": 11,
+            "share_of_fy": 0.048947
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 2050015.7,
+            "n_payees": 5,
+            "share_of_fy": 0.000339
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 519555.3,
+            "n_payees": 3,
+            "share_of_fy": 8.6e-05
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 3164611703.3,
+            "n_payees": 4016,
+            "share_of_fy": 0.524049
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 957793801.6,
+            "n_payees": 1716,
+            "share_of_fy": 0.158607
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 741215809.5,
+            "n_payees": 5706,
+            "share_of_fy": 0.122743
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 631913591.6,
+            "n_payees": 1039,
+            "share_of_fy": 0.104643
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 290676320.8,
+            "n_payees": 45,
+            "share_of_fy": 0.048135
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 142569627.7,
+            "n_payees": 1542,
+            "share_of_fy": 0.023609
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 109992348.5,
+            "n_payees": 1514,
+            "share_of_fy": 0.018214
+          }
+        ]
+      }
+    },
+    "2018": {
+      "total_usd": 9184300109.95,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 1645260635.24,
+            "n_payees": 137,
+            "share_of_fy": 0.179138
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 1014229418.83,
+            "n_payees": 789,
+            "share_of_fy": 0.110431
+          },
+          {
+            "key": "RET",
+            "label": "RET Retirement System",
+            "usd": 866647286.74,
+            "n_payees": 109,
+            "share_of_fy": 0.094362
+          },
+          {
+            "key": "HSS",
+            "label": "HSS Health Service System",
+            "usd": 841885609.89,
+            "n_payees": 67,
+            "share_of_fy": 0.091666
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 804551512.46,
+            "n_payees": 1442,
+            "share_of_fy": 0.087601
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 779048883.77,
+            "n_payees": 1258,
+            "share_of_fy": 0.084824
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 702585943.04,
+            "n_payees": 763,
+            "share_of_fy": 0.076499
+          },
+          {
+            "key": "HSA",
+            "label": "HSA Human Services Agency",
+            "usd": 368647985.63,
+            "n_payees": 544,
+            "share_of_fy": 0.040139
+          },
+          {
+            "key": "MYR",
+            "label": "MYR Mayor",
+            "usd": 209875421.6,
+            "n_payees": 308,
+            "share_of_fy": 0.022852
+          },
+          {
+            "key": "CCD",
+            "label": "CCD SF Communtiy College Dist",
+            "usd": 202672421.5,
+            "n_payees": 3,
+            "share_of_fy": 0.022067
+          }
+        ],
+        "kind": [
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 3430963431.71,
+            "n_payees": 14,
+            "share_of_fy": 0.373568
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 1719594295.82,
+            "n_payees": 7266,
+            "share_of_fy": 0.187232
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 1409474689.9,
+            "n_payees": 88,
+            "share_of_fy": 0.153466
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 996242598.18,
+            "n_payees": 11,
+            "share_of_fy": 0.108472
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 981671791.72,
+            "n_payees": 21,
+            "share_of_fy": 0.106886
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 412583837.89,
+            "n_payees": 44,
+            "share_of_fy": 0.044923
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 231896573.71,
+            "n_payees": 4,
+            "share_of_fy": 0.025249
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 1872891.02,
+            "n_payees": 5,
+            "share_of_fy": 0.000204
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 2830110039.76,
+            "n_payees": 2824,
+            "share_of_fy": 0.308147
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 2434525232.26,
+            "n_payees": 2026,
+            "share_of_fy": 0.265075
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 1645260635.24,
+            "n_payees": 139,
+            "share_of_fy": 0.179138
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 1190267802.68,
+            "n_payees": 1144,
+            "share_of_fy": 0.129598
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 804551512.46,
+            "n_payees": 1442,
+            "share_of_fy": 0.087601
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 159433580.01,
+            "n_payees": 1422,
+            "share_of_fy": 0.017359
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 120151307.54,
+            "n_payees": 1367,
+            "share_of_fy": 0.013082
+          }
+        ]
+      }
+    },
+    "2019": {
+      "total_usd": 11220399788.85,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 1591853051.7,
+            "n_payees": 91,
+            "share_of_fy": 0.141871
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 1529161393.73,
+            "n_payees": 794,
+            "share_of_fy": 0.136284
+          },
+          {
+            "key": "RET",
+            "label": "RET Retirement System",
+            "usd": 1108252392.6,
+            "n_payees": 113,
+            "share_of_fy": 0.098771
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 1056803477.53,
+            "n_payees": 1444,
+            "share_of_fy": 0.094186
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 1000817858.99,
+            "n_payees": 1278,
+            "share_of_fy": 0.089196
+          },
+          {
+            "key": "HSS",
+            "label": "HSS Health Service System",
+            "usd": 946291359.86,
+            "n_payees": 68,
+            "share_of_fy": 0.084337
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 907164064.72,
+            "n_payees": 758,
+            "share_of_fy": 0.08085
+          },
+          {
+            "key": "HSA",
+            "label": "HSA Human Services Agency",
+            "usd": 444892522.56,
+            "n_payees": 517,
+            "share_of_fy": 0.03965
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 438785201.09,
+            "n_payees": 556,
+            "share_of_fy": 0.039106
+          },
+          {
+            "key": "CCD",
+            "label": "CCD SF Communtiy College Dist",
+            "usd": 249397116.5,
+            "n_payees": 2,
+            "share_of_fy": 0.022227
+          }
+        ],
+        "kind": [
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 3649021729.24,
+            "n_payees": 13,
+            "share_of_fy": 0.325213
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 2287417863.6,
+            "n_payees": 7247,
+            "share_of_fy": 0.203862
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 2206394614.19,
+            "n_payees": 91,
+            "share_of_fy": 0.196641
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 1194289448.1,
+            "n_payees": 11,
+            "share_of_fy": 0.106439
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 976089718.49,
+            "n_payees": 21,
+            "share_of_fy": 0.086992
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 581901337.26,
+            "n_payees": 45,
+            "share_of_fy": 0.051861
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 323194157.32,
+            "n_payees": 4,
+            "share_of_fy": 0.028804
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 2090920.65,
+            "n_payees": 5,
+            "share_of_fy": 0.000186
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 4033068335.33,
+            "n_payees": 2901,
+            "share_of_fy": 0.359441
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 2866322980.86,
+            "n_payees": 2143,
+            "share_of_fy": 0.255456
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 1591859918.25,
+            "n_payees": 92,
+            "share_of_fy": 0.141872
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 1342010162.62,
+            "n_payees": 1113,
+            "share_of_fy": 0.119604
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 1056803477.53,
+            "n_payees": 1444,
+            "share_of_fy": 0.094186
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 182049352.04,
+            "n_payees": 1428,
+            "share_of_fy": 0.016225
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 148285562.22,
+            "n_payees": 1524,
+            "share_of_fy": 0.013216
+          }
+        ]
+      }
+    },
+    "2020": {
+      "total_usd": 12276892095.95,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 2001153609.76,
+            "n_payees": 136,
+            "share_of_fy": 0.163002
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 1390756434.49,
+            "n_payees": 752,
+            "share_of_fy": 0.113282
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 1268761459.6,
+            "n_payees": 1223,
+            "share_of_fy": 0.103345
+          },
+          {
+            "key": "RET",
+            "label": "RET Retirement System",
+            "usd": 1245208966.58,
+            "n_payees": 118,
+            "share_of_fy": 0.101427
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 1150399739.58,
+            "n_payees": 1350,
+            "share_of_fy": 0.093704
+          },
+          {
+            "key": "HSS",
+            "label": "HSS Health Service System",
+            "usd": 920613957.01,
+            "n_payees": 74,
+            "share_of_fy": 0.074988
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 887611493.77,
+            "n_payees": 698,
+            "share_of_fy": 0.072299
+          },
+          {
+            "key": "HSA",
+            "label": "HSA Human Services Agency",
+            "usd": 563555837.46,
+            "n_payees": 558,
+            "share_of_fy": 0.045904
+          },
+          {
+            "key": "MYR",
+            "label": "MYR Mayor",
+            "usd": 442649572.91,
+            "n_payees": 481,
+            "share_of_fy": 0.036056
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 441850944.9,
+            "n_payees": 552,
+            "share_of_fy": 0.03599
+          }
+        ],
+        "kind": [
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 4279752857.61,
+            "n_payees": 13,
+            "share_of_fy": 0.348602
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 2529626760.59,
+            "n_payees": 6974,
+            "share_of_fy": 0.206048
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 2310720007.86,
+            "n_payees": 92,
+            "share_of_fy": 0.188217
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 1184595009.49,
+            "n_payees": 11,
+            "share_of_fy": 0.09649
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 969197514.05,
+            "n_payees": 18,
+            "share_of_fy": 0.078945
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 680871908.52,
+            "n_payees": 47,
+            "share_of_fy": 0.05546
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 319807770.03,
+            "n_payees": 5,
+            "share_of_fy": 0.02605
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 2320267.8,
+            "n_payees": 5,
+            "share_of_fy": 0.000189
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 4171584492.81,
+            "n_payees": 2839,
+            "share_of_fy": 0.339792
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 3128790851.21,
+            "n_payees": 2071,
+            "share_of_fy": 0.254852
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 2001153609.76,
+            "n_payees": 136,
+            "share_of_fy": 0.163002
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 1493882794.98,
+            "n_payees": 1032,
+            "share_of_fy": 0.121682
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 1150399739.58,
+            "n_payees": 1350,
+            "share_of_fy": 0.093704
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 192243963.17,
+            "n_payees": 1353,
+            "share_of_fy": 0.015659
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 138836644.43,
+            "n_payees": 1379,
+            "share_of_fy": 0.011309
+          }
+        ]
+      }
+    },
+    "2021": {
+      "total_usd": 13346120693.47,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 1897095334.85,
+            "n_payees": 86,
+            "share_of_fy": 0.142146
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 1684501475.9,
+            "n_payees": 618,
+            "share_of_fy": 0.126217
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 1607360076.04,
+            "n_payees": 1125,
+            "share_of_fy": 0.120437
+          },
+          {
+            "key": "RET",
+            "label": "RET Retirement System",
+            "usd": 1390841941.38,
+            "n_payees": 93,
+            "share_of_fy": 0.104213
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 1220411186.76,
+            "n_payees": 1273,
+            "share_of_fy": 0.091443
+          },
+          {
+            "key": "HSS",
+            "label": "HSS Health Service System",
+            "usd": 1056776889.22,
+            "n_payees": 59,
+            "share_of_fy": 0.079182
+          },
+          {
+            "key": "HSA",
+            "label": "HSA Human Services Agency",
+            "usd": 806343492.91,
+            "n_payees": 542,
+            "share_of_fy": 0.060418
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 718578328.51,
+            "n_payees": 618,
+            "share_of_fy": 0.053842
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 465593787.9,
+            "n_payees": 497,
+            "share_of_fy": 0.034886
+          },
+          {
+            "key": "USD",
+            "label": "USD County Education Office",
+            "usd": 352938568.83,
+            "n_payees": 3,
+            "share_of_fy": 0.026445
+          }
+        ],
+        "kind": [
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 4234479600.47,
+            "n_payees": 13,
+            "share_of_fy": 0.317282
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 2929948966.41,
+            "n_payees": 89,
+            "share_of_fy": 0.219536
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 2730813809.72,
+            "n_payees": 6214,
+            "share_of_fy": 0.204615
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 1316379424.9,
+            "n_payees": 11,
+            "share_of_fy": 0.098634
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 1009782279.25,
+            "n_payees": 18,
+            "share_of_fy": 0.075661
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 785888528.1,
+            "n_payees": 47,
+            "share_of_fy": 0.058885
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 336492820.66,
+            "n_payees": 4,
+            "share_of_fy": 0.025213
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 2335263.96,
+            "n_payees": 5,
+            "share_of_fy": 0.000175
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 4677398056.38,
+            "n_payees": 2493,
+            "share_of_fy": 0.350469
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 3181719767.25,
+            "n_payees": 1871,
+            "share_of_fy": 0.2384
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 2084695990.62,
+            "n_payees": 970,
+            "share_of_fy": 0.156202
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 1897095334.85,
+            "n_payees": 86,
+            "share_of_fy": 0.142146
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 1220411186.76,
+            "n_payees": 1273,
+            "share_of_fy": 0.091443
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 174014523.62,
+            "n_payees": 1177,
+            "share_of_fy": 0.013039
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 110785833.99,
+            "n_payees": 1067,
+            "share_of_fy": 0.008301
+          }
+        ]
+      }
+    },
+    "2022": {
+      "total_usd": 13114152442.45,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 2425805124.28,
+            "n_payees": 80,
+            "share_of_fy": 0.184976
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 1545733491.31,
+            "n_payees": 1039,
+            "share_of_fy": 0.117868
+          },
+          {
+            "key": "RET",
+            "label": "RET Retirement System",
+            "usd": 1399874533.77,
+            "n_payees": 100,
+            "share_of_fy": 0.106745
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 1208764653.35,
+            "n_payees": 1175,
+            "share_of_fy": 0.092173
+          },
+          {
+            "key": "HSS",
+            "label": "HSS Health Service System",
+            "usd": 1050967688.53,
+            "n_payees": 55,
+            "share_of_fy": 0.08014
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 927551959.68,
+            "n_payees": 541,
+            "share_of_fy": 0.070729
+          },
+          {
+            "key": "HSA",
+            "label": "HSA Human Services Agency",
+            "usd": 746047358.71,
+            "n_payees": 533,
+            "share_of_fy": 0.056889
+          },
+          {
+            "key": "HOM",
+            "label": "HOM Homelessness Services",
+            "usd": 483004313.57,
+            "n_payees": 179,
+            "share_of_fy": 0.036831
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 473440853.8,
+            "n_payees": 633,
+            "share_of_fy": 0.036102
+          },
+          {
+            "key": "DPW",
+            "label": "DPW Public Works",
+            "usd": 447302957.46,
+            "n_payees": 473,
+            "share_of_fy": 0.034108
+          }
+        ],
+        "kind": [
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 4749439100.8,
+            "n_payees": 12,
+            "share_of_fy": 0.362161
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 2670735349.99,
+            "n_payees": 6280,
+            "share_of_fy": 0.203653
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 2045803037.3,
+            "n_payees": 88,
+            "share_of_fy": 0.156
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 1347615676.3,
+            "n_payees": 11,
+            "share_of_fy": 0.10276
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 1043699389.16,
+            "n_payees": 18,
+            "share_of_fy": 0.079586
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 878138100.56,
+            "n_payees": 47,
+            "share_of_fy": 0.066961
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 376549695.99,
+            "n_payees": 4,
+            "share_of_fy": 0.028713
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 2172092.35,
+            "n_payees": 5,
+            "share_of_fy": 0.000166
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 3642836733.29,
+            "n_payees": 2582,
+            "share_of_fy": 0.277779
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 3261705390.51,
+            "n_payees": 1856,
+            "share_of_fy": 0.248716
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 2425805124.28,
+            "n_payees": 80,
+            "share_of_fy": 0.184976
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 2226815173.16,
+            "n_payees": 1016,
+            "share_of_fy": 0.169802
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 1208764653.35,
+            "n_payees": 1175,
+            "share_of_fy": 0.092173
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 229015505.74,
+            "n_payees": 1168,
+            "share_of_fy": 0.017463
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 119209862.13,
+            "n_payees": 1143,
+            "share_of_fy": 0.00909
+          }
+        ]
+      }
+    },
+    "2023": {
+      "total_usd": 13614812814.43,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 2105899560.73,
+            "n_payees": 84,
+            "share_of_fy": 0.154677
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 1872608842.98,
+            "n_payees": 1126,
+            "share_of_fy": 0.137542
+          },
+          {
+            "key": "RET",
+            "label": "RET Retirement System",
+            "usd": 1346147201.98,
+            "n_payees": 95,
+            "share_of_fy": 0.098874
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 1305790211.43,
+            "n_payees": 1136,
+            "share_of_fy": 0.09591
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 1094686172.13,
+            "n_payees": 548,
+            "share_of_fy": 0.080404
+          },
+          {
+            "key": "HSS",
+            "label": "HSS Health Service System",
+            "usd": 1077311061.45,
+            "n_payees": 64,
+            "share_of_fy": 0.079128
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 648062108.42,
+            "n_payees": 613,
+            "share_of_fy": 0.0476
+          },
+          {
+            "key": "HSA",
+            "label": "HSA Human Services Agency",
+            "usd": 581018223.24,
+            "n_payees": 561,
+            "share_of_fy": 0.042675
+          },
+          {
+            "key": "HOM",
+            "label": "HOM Homelessness Services",
+            "usd": 576028671.24,
+            "n_payees": 196,
+            "share_of_fy": 0.042309
+          },
+          {
+            "key": "MYR",
+            "label": "MYR Mayor",
+            "usd": 499340192.88,
+            "n_payees": 464,
+            "share_of_fy": 0.036676
+          }
+        ],
+        "kind": [
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 4183856747.19,
+            "n_payees": 12,
+            "share_of_fy": 0.307302
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 2905948531.15,
+            "n_payees": 6238,
+            "share_of_fy": 0.21344
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 2404573444.93,
+            "n_payees": 90,
+            "share_of_fy": 0.176615
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 1410091490.56,
+            "n_payees": 11,
+            "share_of_fy": 0.10357
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 1189672182.45,
+            "n_payees": 17,
+            "share_of_fy": 0.087381
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 1062791264.39,
+            "n_payees": 47,
+            "share_of_fy": 0.078061
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 455959602.59,
+            "n_payees": 4,
+            "share_of_fy": 0.03349
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 1919551.17,
+            "n_payees": 4,
+            "share_of_fy": 0.000141
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 4174235522.18,
+            "n_payees": 2448,
+            "share_of_fy": 0.306595
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 3511876290.55,
+            "n_payees": 1931,
+            "share_of_fy": 0.257945
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 2177885308.09,
+            "n_payees": 1088,
+            "share_of_fy": 0.159964
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 2105899560.73,
+            "n_payees": 84,
+            "share_of_fy": 0.154677
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 1305790211.43,
+            "n_payees": 1136,
+            "share_of_fy": 0.09591
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 201584399.07,
+            "n_payees": 1175,
+            "share_of_fy": 0.014806
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 137541522.38,
+            "n_payees": 1249,
+            "share_of_fy": 0.010102
+          }
+        ]
+      }
+    },
+    "2024": {
+      "total_usd": 15284858304.42,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 2467869551.6,
+            "n_payees": 1232,
+            "share_of_fy": 0.161458
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 2359244421.38,
+            "n_payees": 105,
+            "share_of_fy": 0.154352
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 1427849696.09,
+            "n_payees": 1152,
+            "share_of_fy": 0.093416
+          },
+          {
+            "key": "RET",
+            "label": "RET Retirement System",
+            "usd": 1371519675.41,
+            "n_payees": 99,
+            "share_of_fy": 0.089731
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 1286605903.41,
+            "n_payees": 571,
+            "share_of_fy": 0.084175
+          },
+          {
+            "key": "HSS",
+            "label": "HSS Health Service System",
+            "usd": 1156338975.37,
+            "n_payees": 66,
+            "share_of_fy": 0.075653
+          },
+          {
+            "key": "MYR",
+            "label": "MYR Mayor",
+            "usd": 758315605.46,
+            "n_payees": 475,
+            "share_of_fy": 0.049612
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 659242704.95,
+            "n_payees": 630,
+            "share_of_fy": 0.04313
+          },
+          {
+            "key": "HSA",
+            "label": "HSA Human Services Agency",
+            "usd": 543180646.31,
+            "n_payees": 508,
+            "share_of_fy": 0.035537
+          },
+          {
+            "key": "HOM",
+            "label": "HOM Homelessness Services",
+            "usd": 486534687.39,
+            "n_payees": 202,
+            "share_of_fy": 0.031831
+          }
+        ],
+        "kind": [
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 4850741628.75,
+            "n_payees": 12,
+            "share_of_fy": 0.317356
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 3403240323.82,
+            "n_payees": 6421,
+            "share_of_fy": 0.222654
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 2634179015.15,
+            "n_payees": 89,
+            "share_of_fy": 0.172339
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 1509800797.89,
+            "n_payees": 10,
+            "share_of_fy": 0.098778
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 1381624772.27,
+            "n_payees": 17,
+            "share_of_fy": 0.090392
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 1077941245.21,
+            "n_payees": 47,
+            "share_of_fy": 0.070523
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 425242080.82,
+            "n_payees": 4,
+            "share_of_fy": 0.027821
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 2088440.51,
+            "n_payees": 4,
+            "share_of_fy": 0.000137
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 5140215556.34,
+            "n_payees": 2581,
+            "share_of_fy": 0.336295
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 3883408905.19,
+            "n_payees": 1955,
+            "share_of_fy": 0.254069
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 2359244421.38,
+            "n_payees": 105,
+            "share_of_fy": 0.154352
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 2101812662.05,
+            "n_payees": 1070,
+            "share_of_fy": 0.137509
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 1427849696.09,
+            "n_payees": 1152,
+            "share_of_fy": 0.093416
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 218365172.31,
+            "n_payees": 1167,
+            "share_of_fy": 0.014286
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 153961891.07,
+            "n_payees": 1314,
+            "share_of_fy": 0.010073
+          }
+        ]
+      }
+    },
+    "2025": {
+      "total_usd": 16749409672.83,
+      "execution_status": "closed",
+      "dimensions": {
+        "department": [
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 2741750823.62,
+            "n_payees": 90,
+            "share_of_fy": 0.163692
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 2462963190.15,
+            "n_payees": 1265,
+            "share_of_fy": 0.147048
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 1907718192.97,
+            "n_payees": 628,
+            "share_of_fy": 0.113898
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 1619550622.78,
+            "n_payees": 1170,
+            "share_of_fy": 0.096693
+          },
+          {
+            "key": "RET",
+            "label": "RET Retirement System",
+            "usd": 1434005753.25,
+            "n_payees": 77,
+            "share_of_fy": 0.085615
+          },
+          {
+            "key": "HSS",
+            "label": "HSS Health Service System",
+            "usd": 1215894986.49,
+            "n_payees": 66,
+            "share_of_fy": 0.072593
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 634236034.42,
+            "n_payees": 654,
+            "share_of_fy": 0.037866
+          },
+          {
+            "key": "HSA",
+            "label": "HSA Human Services Agency",
+            "usd": 576624203.74,
+            "n_payees": 494,
+            "share_of_fy": 0.034427
+          },
+          {
+            "key": "HOM",
+            "label": "HOM Homelessness Services",
+            "usd": 535952767.22,
+            "n_payees": 196,
+            "share_of_fy": 0.031998
+          },
+          {
+            "key": "MYR",
+            "label": "MYR Mayor",
+            "usd": 498588578.67,
+            "n_payees": 494,
+            "share_of_fy": 0.029768
+          }
+        ],
+        "kind": [
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 5181915838.29,
+            "n_payees": 12,
+            "share_of_fy": 0.309379
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 3406163195.42,
+            "n_payees": 6470,
+            "share_of_fy": 0.20336
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 3208320935.13,
+            "n_payees": 87,
+            "share_of_fy": 0.191548
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 1705671915.73,
+            "n_payees": 18,
+            "share_of_fy": 0.101835
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 1586379576.57,
+            "n_payees": 11,
+            "share_of_fy": 0.094713
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 1205058562.63,
+            "n_payees": 47,
+            "share_of_fy": 0.071946
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 453414435.32,
+            "n_payees": 4,
+            "share_of_fy": 0.02707
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 2485213.74,
+            "n_payees": 5,
+            "share_of_fy": 0.000148
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 5823262374.28,
+            "n_payees": 2656,
+            "share_of_fy": 0.34767
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 3843625599.79,
+            "n_payees": 1922,
+            "share_of_fy": 0.229478
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 2741750823.62,
+            "n_payees": 90,
+            "share_of_fy": 0.163692
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 2317191042.07,
+            "n_payees": 1044,
+            "share_of_fy": 0.138345
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 1619550622.78,
+            "n_payees": 1170,
+            "share_of_fy": 0.096693
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 235180423.5,
+            "n_payees": 1166,
+            "share_of_fy": 0.014041
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 168848786.79,
+            "n_payees": 1365,
+            "share_of_fy": 0.010081
+          }
+        ]
+      }
+    },
+    "2026": {
+      "total_usd": 16800606402.14,
+      "execution_status": "recently_closed_preliminary",
+      "dimensions": {
+        "department": [
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 2462279498.58,
+            "n_payees": 95,
+            "share_of_fy": 0.146559
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 2108332688.81,
+            "n_payees": 1275,
+            "share_of_fy": 0.125491
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 2088622806.0,
+            "n_payees": 646,
+            "share_of_fy": 0.124318
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 1879812940.78,
+            "n_payees": 1191,
+            "share_of_fy": 0.11189
+          },
+          {
+            "key": "RET",
+            "label": "RET Retirement System",
+            "usd": 1487615410.6,
+            "n_payees": 81,
+            "share_of_fy": 0.088545
+          },
+          {
+            "key": "HSS",
+            "label": "HSS Health Service System",
+            "usd": 1371361703.54,
+            "n_payees": 60,
+            "share_of_fy": 0.081626
+          },
+          {
+            "key": "HSA",
+            "label": "HSA Human Services Agency",
+            "usd": 638039891.81,
+            "n_payees": 472,
+            "share_of_fy": 0.037977
+          },
+          {
+            "key": "MTA",
+            "label": "MTA Municipal Transprtn Agncy",
+            "usd": 621795498.06,
+            "n_payees": 633,
+            "share_of_fy": 0.03701
+          },
+          {
+            "key": "HOM",
+            "label": "HOM Homelessness Services",
+            "usd": 554816303.07,
+            "n_payees": 184,
+            "share_of_fy": 0.033024
+          },
+          {
+            "key": "MYR",
+            "label": "MYR Mayor",
+            "usd": 484072592.0,
+            "n_payees": 480,
+            "share_of_fy": 0.028813
+          }
+        ],
+        "kind": [
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 4937563541.69,
+            "n_payees": 11,
+            "share_of_fy": 0.293892
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 3458035035.42,
+            "n_payees": 6344,
+            "share_of_fy": 0.205828
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 2909882449.23,
+            "n_payees": 85,
+            "share_of_fy": 0.173201
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 2024825580.66,
+            "n_payees": 19,
+            "share_of_fy": 0.120521
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 1731017177.31,
+            "n_payees": 11,
+            "share_of_fy": 0.103033
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 1220107434.7,
+            "n_payees": 47,
+            "share_of_fy": 0.072623
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 517226555.65,
+            "n_payees": 4,
+            "share_of_fy": 0.030786
+          },
+          {
+            "key": "person",
+            "label": "person",
+            "usd": 1948627.48,
+            "n_payees": 5,
+            "share_of_fy": 0.000116
+          }
+        ],
+        "org_group": [
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 5562173787.65,
+            "n_payees": 2610,
+            "share_of_fy": 0.33107
+          },
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 4216773491.37,
+            "n_payees": 1863,
+            "share_of_fy": 0.250989
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 2462279498.58,
+            "n_payees": 95,
+            "share_of_fy": 0.146559
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 2261383548.66,
+            "n_payees": 954,
+            "share_of_fy": 0.134601
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 1879812940.78,
+            "n_payees": 1191,
+            "share_of_fy": 0.11189
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 254125430.88,
+            "n_payees": 1154,
+            "share_of_fy": 0.015126
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 164057704.22,
+            "n_payees": 1343,
+            "share_of_fy": 0.009765
+          }
+        ]
+      }
+    },
+    "2027": {
+      "total_usd": 1244639410.78,
+      "execution_status": "in_progress",
+      "dimensions": {
+        "department": [
+          {
+            "key": "RET",
+            "label": "RET Retirement System",
+            "usd": 754858945.64,
+            "n_payees": 15,
+            "share_of_fy": 0.606488
+          },
+          {
+            "key": "GEN",
+            "label": "GEN General City - Unallocated",
+            "usd": 100761565.34,
+            "n_payees": 7,
+            "share_of_fy": 0.080956
+          },
+          {
+            "key": "HSS",
+            "label": "HSS Health Service System",
+            "usd": 80105627.23,
+            "n_payees": 16,
+            "share_of_fy": 0.064361
+          },
+          {
+            "key": "AIR",
+            "label": "AIR Airport Commission",
+            "usd": 75626246.84,
+            "n_payees": 152,
+            "share_of_fy": 0.060762
+          },
+          {
+            "key": "DEC",
+            "label": "DEC Dept of Early Childhood",
+            "usd": 58969544.72,
+            "n_payees": 43,
+            "share_of_fy": 0.047379
+          },
+          {
+            "key": "PUC",
+            "label": "PUC Public Utilities Commsn",
+            "usd": 25353046.49,
+            "n_payees": 297,
+            "share_of_fy": 0.02037
+          },
+          {
+            "key": "ADM",
+            "label": "ADM GSA - City Administrator",
+            "usd": 23697103.28,
+            "n_payees": 197,
+            "share_of_fy": 0.019039
+          },
+          {
+            "key": "HOM",
+            "label": "HOM Homelessness Services",
+            "usd": 21833439.65,
+            "n_payees": 73,
+            "share_of_fy": 0.017542
+          },
+          {
+            "key": "DPH",
+            "label": "DPH Public Health",
+            "usd": 20456399.97,
+            "n_payees": 320,
+            "share_of_fy": 0.016436
+          },
+          {
+            "key": "CTA",
+            "label": "CTA SF County Transprtn Auth",
+            "usd": 15000000.0,
+            "n_payees": 1,
+            "share_of_fy": 0.012052
+          }
+        ],
+        "kind": [
+          {
+            "key": "fiscal_agent_debt_service",
+            "label": "fiscal_agent_debt_service",
+            "usd": 859838348.6,
+            "n_payees": 5,
+            "share_of_fy": 0.690833
+          },
+          {
+            "key": "nonprofit",
+            "label": "nonprofit",
+            "usd": 86708748.14,
+            "n_payees": 39,
+            "share_of_fy": 0.069666
+          },
+          {
+            "key": "supplier",
+            "label": "supplier",
+            "usd": 80416063.73,
+            "n_payees": 51,
+            "share_of_fy": 0.06461
+          },
+          {
+            "key": "healthcare",
+            "label": "healthcare",
+            "usd": 78300734.9,
+            "n_payees": 9,
+            "share_of_fy": 0.06291
+          },
+          {
+            "key": "unclassified",
+            "label": "unclassified",
+            "usd": 58265412.33,
+            "n_payees": 1407,
+            "share_of_fy": 0.046813
+          },
+          {
+            "key": "payroll_passthrough",
+            "label": "payroll_passthrough",
+            "usd": 48859763.04,
+            "n_payees": 4,
+            "share_of_fy": 0.039256
+          },
+          {
+            "key": "other",
+            "label": "other",
+            "usd": 32250340.04,
+            "n_payees": 11,
+            "share_of_fy": 0.025911
+          }
+        ],
+        "org_group": [
+          {
+            "key": "06",
+            "label": "General Administration & Finance",
+            "usd": 876818879.89,
+            "n_payees": 362,
+            "share_of_fy": 0.704476
+          },
+          {
+            "key": "02",
+            "label": "Public Works, Transportation & Commerce",
+            "usd": 126686867.88,
+            "n_payees": 558,
+            "share_of_fy": 0.101786
+          },
+          {
+            "key": "03",
+            "label": "Human Welfare & Neighborhood Development",
+            "usd": 107038182.46,
+            "n_payees": 270,
+            "share_of_fy": 0.085999
+          },
+          {
+            "key": "07",
+            "label": "General City Responsibilities",
+            "usd": 100761565.34,
+            "n_payees": 7,
+            "share_of_fy": 0.080956
+          },
+          {
+            "key": "04",
+            "label": "Community Health",
+            "usd": 20456399.97,
+            "n_payees": 320,
+            "share_of_fy": 0.016436
+          },
+          {
+            "key": "01",
+            "label": "Public Protection",
+            "usd": 8313605.96,
+            "n_payees": 216,
+            "share_of_fy": 0.00668
+          },
+          {
+            "key": "05",
+            "label": "Culture & Recreation",
+            "usd": 4563909.28,
+            "n_payees": 183,
+            "share_of_fy": 0.003667
+          }
+        ]
+      }
+    }
+  }
+}

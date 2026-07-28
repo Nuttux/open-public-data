@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.738895+00:00",
+ "generated_at": "2026-07-28T11:43:47.711695+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,6 +35,187 @@
   "2027": 122018.89
  },
  "top_departments": [],
+ "profile": {
+  "n_vouchers": 3439,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 88100318.16,
+    "n_vouchers": 635
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 38353507.84,
+    "n_vouchers": 625
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 23025862.35,
+    "n_vouchers": 1268
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 4675465.84,
+    "n_vouchers": 446
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 3378855.08,
+    "n_vouchers": 26
+   },
+   {
+    "department": "ART Arts Commission",
+    "department_code": "ART",
+    "usd": 1355240.0,
+    "n_vouchers": 97
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 1330238.99,
+    "n_vouchers": 91
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "usd": 877694.7,
+    "n_vouchers": 41
+   }
+  ],
+  "n_departments": 24,
+  "categories": [
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 74933567.34,
+    "n_vouchers": 556
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 33931139.33,
+    "n_vouchers": 1182
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 477441.42,
+    "n_vouchers": 7
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 357998.01,
+    "n_vouchers": 60
+   },
+   {
+    "code": "524010",
+    "label": "Membership Fees",
+    "spend_class": "purchase",
+    "usd": 212830.0,
+    "n_vouchers": 10
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 125000.0,
+    "n_vouchers": 5
+   },
+   {
+    "code": "522020",
+    "label": "Training Costs Paid To Vendors",
+    "spend_class": "purchase",
+    "usd": 124512.17,
+    "n_vouchers": 22
+   },
+   {
+    "code": "UNEARN_REV_CHGS_SVCS",
+    "label": "Unearned Revenue-Chgs for Svcs",
+    "spend_class": "ledger",
+    "usd": 60961.3,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 15,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 20645968.95,
+  "n_recent_lines": 14,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 14413719.74,
+    "n_vouchers": 68
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1820463.38,
+    "n_vouchers": 22
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1417461.84,
+    "n_vouchers": 39
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1071812.16,
+    "n_vouchers": 57
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 999400.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "ART Arts Commission",
+    "department_code": "ART",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 293750.0,
+    "n_vouchers": 6
+   }
+  ]
+ },
+ "identity": {
+  "description": "Tides Center is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under human services.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Tides Center",
+  "ein": "943213100",
+  "ntee_code": "P20",
+  "ntee_label": "Human services",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/943213100",
+  "checked_at": "2026-07-27T23:37:10.016559+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000027666",
@@ -47,7 +228,7 @@
   },
   {
    "contract_no": "1000028213",
-   "title": "CERF Convener",
+   "title": "Community Economic Resilience Fund Convener",
    "department": "ECN Economic & Wrkfrce Dvlpmnt",
    "department_code": "ECN",
    "agreed_usd": 3612400.0,
@@ -83,7 +264,7 @@
   },
   {
    "contract_no": "1000032653",
-   "title": "GA-HS Arts Prog-24-29",
+   "title": "GA-HS Arts Program-24-29",
    "department": "CHF Children;Youth & Families",
    "department_code": "CHF",
    "agreed_usd": 1752000.0,
@@ -110,7 +291,7 @@
   },
   {
    "contract_no": "1000037795",
-   "title": "Hummingbird Urban Demo Farm",
+   "title": "Hummingbird Urban Demolition Farm",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 300000.0,

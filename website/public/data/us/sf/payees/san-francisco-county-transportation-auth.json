@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.727658+00:00",
+ "generated_at": "2026-07-28T11:43:47.692484+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,162 @@
  "top_departments": [
   "CTA SF County Transprtn Auth"
  ],
+ "profile": {
+  "n_vouchers": 364,
+  "departments": [
+   {
+    "department": "CTA SF County Transprtn Auth",
+    "department_code": "CTA",
+    "usd": 936295938.11,
+    "n_vouchers": 66
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 8256172.3,
+    "n_vouchers": 31
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 5489168.82,
+    "n_vouchers": 144
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 4127982.6,
+    "n_vouchers": 28
+   },
+   {
+    "department": "CPC City Planning",
+    "department_code": "CPC",
+    "usd": 1602131.44,
+    "n_vouchers": 33
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 864473.68,
+    "n_vouchers": 15
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 299998.72,
+    "n_vouchers": 19
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 206548.3,
+    "n_vouchers": 6
+   }
+  ],
+  "n_departments": 13,
+  "categories": [
+   {
+    "code": "OTHR_OBLIG_AGNCY_FUN",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 936295938.11,
+    "n_vouchers": 66
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 3786237.92,
+    "n_vouchers": 112
+   },
+   {
+    "code": "527070",
+    "label": "Env Contractor-Consulting Svcs",
+    "spend_class": "purchase",
+    "usd": 490000.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 179373.68,
+    "n_vouchers": 6
+   },
+   {
+    "code": "527610",
+    "label": "Systems Consulting Services",
+    "spend_class": "purchase",
+    "usd": 125000.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "552410",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 118069.22,
+    "n_vouchers": 9
+   },
+   {
+    "code": "476199",
+    "label": "Gain-Loss-Sale Of Fixed Assets",
+    "spend_class": "unclear",
+    "usd": 115633.15,
+    "n_vouchers": 1
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 57102.58,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 10,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 142347294.56,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "CTA SF County Transprtn Auth",
+    "department_code": "CTA",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 142000000.0,
+    "n_vouchers": 16
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 173357.14,
+    "n_vouchers": 5
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Gain-Loss-Sale Of Fixed Assets",
+    "spend_class": "unclear",
+    "usd": 115633.15,
+    "n_vouchers": 1
+   },
+   {
+    "department": "CPC City Planning",
+    "department_code": "CPC",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 58304.27,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000033424",
-   "title": "Hillcrest RD PRJ20/21-14",
+   "title": "Hillcrest RD Project20/21-14",
    "department": "ADM GSA - City Administrator",
    "department_code": "ADM",
    "agreed_usd": 30000000.0,

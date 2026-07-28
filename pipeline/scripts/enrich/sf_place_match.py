@@ -23,8 +23,17 @@ def norm(s: str) -> str:
 
 
 def alias_ok(a: str) -> bool:
-    """Usable alias: ≥6 chars, or a ≥4-char all-caps acronym (SFGH, ZSFG)."""
-    return len(a) >= 6 or (len(a) >= 4 and a.isupper() and a.isalpha())
+    """Usable alias: ≥5 chars, or a ≥3-char all-caps acronym (SFGH, ZSFG, GGP).
+
+    The floor was ≥6 / ≥4-acronym, which silently discarded the three shortest
+    forms the city's own ledgers actually use — "GGP" (every Golden Gate Park
+    contract is titled "PW GGP …"), "LHH" and "Kezar" — leaving flagship places
+    at zero on the very ledgers that hold their money. Measured against the
+    seed, the relaxation admits those three aliases and nothing else. Short
+    aliases only enter the seed after a per-entry precision check against the
+    ledger they will match (add_sf_verified_aliases.py); this floor is not a
+    licence to invent them."""
+    return len(a) >= 5 or (len(a) >= 3 and a.isupper() and a.isalpha())
 
 
 def is_acronym(a: str) -> bool:

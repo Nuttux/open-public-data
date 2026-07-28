@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.726765+00:00",
+ "generated_at": "2026-07-28T12:23:47.741890+00:00",
  "slug": "washington-square",
  "name": "Washington Square",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -42,8 +42,13 @@
    "url": "https://archive.org/details/addendumtosupple2013unit",
    "deep_link": "https://archive.org/details/addendumtosupple2013unit?q=Washington+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A Central Subway environmental addendum giving the square's 2.15 acres and its historic district."
   },
   {
    "identifier": "supplementaldraf2007unit",
@@ -82,130 +87,13 @@
    "url": "https://archive.org/details/supplementaldraf2007unit",
    "deep_link": "https://archive.org/details/supplementaldraf2007unit?q=Washington+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "minutesofartcomm1957sanf",
-   "title": "Minutes of Art Commission of the City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Art Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "ocr_excerpts": [
-    "hich was seconded by Commissioner Knuth and carried: RESOLUTION NO. 6878-1957-S L1TH ANNUAL ART FESTIVAL WHEREAS the Visual Arts Conmittee of the Art Conmission has unanimously recommended that the Eleventh Annual Art Festival of the Art Conmission of the City and County of San Francisco be held in Washington Square, San Francisco, on September 26th, 27th, 28th and 29th, 1957, BE IT RESOLVED That at a regular meeting of the Art Commission held on April 1, 1957, the Art Conmission does hereby accept the recommendations of the Visual Arts Committee of the Art Conmission and does hereby set September 26th, 27th, 28th and 29th, 1957, as the official dates for the Eleventh Annual Art Festival; BE IT FURTHER RESOLVED That this Festival will take place in Washington Square, San Francisco; BE IT FURTHER RESOLVED That the Secretary is hereby authorized to request from the Honorable Board of Recreation and Park Conmission, formal approval for thi3 location for use on the specific dates. ADJOURNMENT There being no further business the meeting adjourned at 5 p.m. The nex",
-    "ction in Music Budget, March 4th Minutes 2. Band Request for April 3. Band Request for May 4. Band Requests for June 5. Municipal Chorus activities 5. VISUAL ARTS COMMITTEE 1. Martin Snipper - Festival Director for 1957 2. Letter from Recreation and Park Commission granting permission to use Washington Square for 1957 Art Festival 6. ADJOURNMENT 345p May 6, 1957 MINUTES The Minutes of the April 1, 1957, meeting were approved as written. CIVIC New Hall of Justice DESIGN COMMITTEE Commissioner Peterson moved for adoption of the following resolution, which was seconded by Conmissioner Sutter",
-    "r adoption of the following ARTS resolution, which was seconded by Commissioner Jackson and COMMITTEE carried: RESOLUTION NO. 6893-19 57-S MARTIN SNIPPER-1957 FESTIVAL DIRECTOR WHEREAS the Committee of Visual Arts has recommended Martin Snipper as Director for the 1957 Art Festival to be held in Washington Square September 26th, 27th, 28th and 29th, 1957, BE IT RESOLVED That at a regular meeting of the Art Commission held on May 6, 1957, Martin Snipper is hereby appointed Director of the 1957 Art Festival, and for which he is to receive as compensation for said services, the sum of Two Thousand ($2,000.",
-    "r date of April 16, 1957, from Mr. Edward McDevitt, Secretary of the Recreation and Park Commission, wherein he stated that Resolution No. 2643 of the Recreation and Park Commission granted permission for the Art Commission to hold its Eleventh Annual Art Festival September 26 through 29th, 1957, in Washington Square. ADJOURNMENT There being no further business the meeting adjourned at 4:35 P.m. The next regular meeting will be held on June 3, 1957, at 3:45 p.m., in the office of the Commission, 100 Larkin Street R"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 7.23,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 2.23,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.75,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/minutesofartcomm1957sanf",
-   "deep_link": "https://archive.org/details/minutesofartcomm1957sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesrecreatio1989sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "ocr_excerpts": [
-    "to 6/30/89 Approval of Minutes: 2/16/89 - Amendment to Page 13, 43 Statement of Terry Steinke RES. 15438 - Approved per day use per site with prohibition 225 against any sales on park property RES. 15478 - Approved request of S.F. Society of Fine Arts 271 and Artists Guild of S.F. to reserve Washington Square, Union Square and Hoover Redwood Grove in Golden Gate Park on specified dates in September, October and November, 1989, for art shows ATHLETICS RES. 15352 - see Gifts, Acceptance of - 130 From San Francisco Lawyer's Softball League, through Friends of Recreation and Parks, for maintenance and repai",
-    "S. 15265 - see Gifts, Acceptance of - ° A. From Security Pacific Bank, $2,600 for Tenderloin Recreation Center B. From St. Anthony's Foundation, $1,000 for Tenderloin Recreation Center D. From Chevron, USA, $500 for Latch Key Program RES. 15281 - Approved proposed renovation plan for Marini Plaza near Washington Square, sponsored by Friends of Recreation and Parks, not to exceed $50,000 General Manager's Report 0 Landscape Garden Show General Manager's Report - ° Friends' Field Day - August 4 General Manager's Report 0 Timotei Park to Park Event General Manager's Report - 0 PI aymobi 1 e - RES. 15524 - see Gifts, A",
-    "to increase hourly rate to $35 per hour for environmental services, total contract amount of $24,000 wi 1 1 not i ncrease RES. 15547 - see Mission Pool - Blue Dolphin Pools and Spas 343 reconstruction MONUMENTS, MEMORIALS & PLAQUES Appeal of the denial to place a plaque honoring Juana Briones 171 in Washington Square - Appeal Denied Mario Murillo Ministries two day evangelists meeting of 9/1 and 9/2 - Removed from Calendar President's Report Board of Supervisors has asked Commission to reconsider 261 placement of a plaque in Washington Square to honor Juana Briones RES. 15534 - Approved request to place \"Goddess of Democracy\" 331 statue in Portsmouth Square, Acceptance of Gift RES. 15535 - Commission denies proposal from French War Veterans Assn, of Northern California to erect a monument near Legion of Honor in honor of their fallen co",
-    "7/89: Earthquake Update 317 NAMING OF FACILITIES RES. 15340 - Approved the request to name the field at 116 Candlestick Park when in football configuration in honor of Bill Walsh, coach of the San Francisco 49ers (1979- 1 989) Appeal of the denial to place a plaque honoring Juana Briones 171 in Washington Square - Appeal denied President's Report - The Board of Supervisors asked Commission to reconsider 267 placement of a plaque in Washington Square to honor Juana Briones NORTH BEACH POOL General Manager's Report - Earthquake Damage 233 NURSERY SCHOOLS RES. 15400 - Approved the annual lease renewals and monthly 181 rental fees for nursery schools effective July 1, 1989 OCEAN VIEW PLAGROUND RES. 15359 - Approved"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.34,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.34,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 2.5,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": true,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/minutesrecreatio1989sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1989sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "whatsdoinginpark1988sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "ocr_excerpts": [
-    "es from the Japanese Tea Garden, call 761-8272 for information, Golden Gate Park. Noon - 1:30 p.m. — House of Freaks Concert, a two piece band originating from Virginia, alternative rock & roll, stage area Union Square, Post & Stockton Streets. 10 a.m. — Artists Guild of San Francisco Art Show, Washington Square, Filbert & Stockton Streets. 10 a.m. - 4 p.m. — San Francisco Society of Fine Arts Show, Hoover Redwood Tree, near 19th Avenue & King Drive, Golden Gate Park. 11 a.m. - 5 p.m. — Open Gym, Racquetball, Weightroom, free, Mission Recreation Center, 2450 Harrison Street. SUNDAY, FEBRUARY 14 (more",
-    "epartment DOCUMENTS DEPT. FEB 1 1 1988 San »-K/\\iuui^c;o H»>Rljc LIBRARY FOR IMMEDIATE RELEASE Contact : Diane Palacio Linda Griffin 558-4268 WHAT'S DOING IN THE PARKS (FEBRUARY 20-26) SATURDAY, FEBRUARY 20 10 a.m. - 4 p.m. — San Francisco of Fine Arts Show thru Sunday, February 21, Washington Square, Filbert & Stockton Streets. 10:30 a.m. & 1:30 p.m. — Free Plant Walks, Strybing Arboretum Society, meet at the Strybing Store, Strybing Arboretum and Botanical Gardens, 9th Avenue and Lincoln Way, Golden Gate Park. 11 a.m. - 5 p.m. — Carriage rides in the park, tour leaves from the Japanese Tea",
-    "lacio Linda Griffin 558-4268 WHAT'S DOING IN THE PARKS^, (MARCH 12 - 18) SATURDAY, MARCH 12 6:30 a.m. - 12:30 p.m. — 10th Annual Sprint Footrace, Sunset Parking Lot located at Sunset & Lake Merced Boulevards . 10 a.m. - 4 p.m. — San Francisco Society of Fine 'Arts Show thru Sunday, March 13, Washington Square, Filbert & Stockton Streets. 10:30 a.m. & 1:30 p.m. — Free Plant Walks, Strybing Arboretum Society, meet at the Strybing Store, Strybing Arboretum and Botanical Gardens, 9th Avenue and Lincoln Way, Golden Gate Park. 11 a.m. - 5 p.m. — Carriage rides in the park, tour leaves from the Japanese Tea",
-    "e, Golden Gate Park San Francisco 941 17 2-2-2 S.F. Rec/Park Dept. What ' s Doing in the Parks SUNDAY, APRIL 3 10 a.m. — Artist Guild of San Francisco Art Show, Hoover Redwood Grove, 19th Avenue & Lincoln Way, Golden Gate Park 10 a.m. - 4 p.m. — San Francisco Society of Fine Arts Show, Washington Square, Filbert & Stockton Streets. 1 p.m. — Golden Gate Park Band Concert, conducted by Robert Hansen, Bandshell, Golden Gate Park. MONDAY, APRIL 4 3:30 - 5 p.m. — Jazz Dance, 7-12 years, free, Midtown Terrace Playground, Clarendon Drive & Olympia Way. 4-6 p.m. — Plant Families, an Introduction At",
-    "Pool, San Jose Avenue & Havelock Street. (more) .aren Lodge, Golden Gate Park San Francisco 941 17 2-2-2 S.F. Rec/Park Dept. What's Doing in the Parks SUNDAY, MAY 15 9 - 11:30 a.m. — Lap Swim, Garfield Pool, 26th & Harrison Streets . 10 a.m. — Artists Guild of San Francisco Art Show, Washington Square, Filbert & Stockton Streets. 10 a.m. - 4 p.m. — San Francisco Society of Fine Arts Show,"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 7.92,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 2.42,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/whatsdoinginpark1988sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1988sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The subway's supplemental report weighing a construction tunnel near the square to extract the boring machine."
   },
   {
    "identifier": "sanfranciscothea193910sanf",
@@ -245,8 +133,149 @@
    "url": "https://archive.org/details/sanfranciscothea193910sanf",
    "deep_link": "https://archive.org/details/sanfranciscothea193910sanf?q=Washington+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "A history of Italian theatre describing crowds gathering in the square in 1905."
+  },
+  {
+   "identifier": "minutesofartcomm1957sanf",
+   "title": "Minutes of Art Commission of the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Art Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Washington Square",
+   "ocr_excerpts": [
+    "hich was seconded by Commissioner Knuth and carried: RESOLUTION NO. 6878-1957-S L1TH ANNUAL ART FESTIVAL WHEREAS the Visual Arts Conmittee of the Art Conmission has unanimously recommended that the Eleventh Annual Art Festival of the Art Conmission of the City and County of San Francisco be held in Washington Square, San Francisco, on September 26th, 27th, 28th and 29th, 1957, BE IT RESOLVED That at a regular meeting of the Art Commission held on April 1, 1957, the Art Conmission does hereby accept the recommendations of the Visual Arts Committee of the Art Conmission and does hereby set September 26th, 27th, 28th and 29th, 1957, as the official dates for the Eleventh Annual Art Festival; BE IT FURTHER RESOLVED That this Festival will take place in Washington Square, San Francisco; BE IT FURTHER RESOLVED That the Secretary is hereby authorized to request from the Honorable Board of Recreation and Park Conmission, formal approval for thi3 location for use on the specific dates. ADJOURNMENT There being no further business the meeting adjourned at 5 p.m. The nex",
+    "ction in Music Budget, March 4th Minutes 2. Band Request for April 3. Band Request for May 4. Band Requests for June 5. Municipal Chorus activities 5. VISUAL ARTS COMMITTEE 1. Martin Snipper - Festival Director for 1957 2. Letter from Recreation and Park Commission granting permission to use Washington Square for 1957 Art Festival 6. ADJOURNMENT 345p May 6, 1957 MINUTES The Minutes of the April 1, 1957, meeting were approved as written. CIVIC New Hall of Justice DESIGN COMMITTEE Commissioner Peterson moved for adoption of the following resolution, which was seconded by Conmissioner Sutter",
+    "r adoption of the following ARTS resolution, which was seconded by Commissioner Jackson and COMMITTEE carried: RESOLUTION NO. 6893-19 57-S MARTIN SNIPPER-1957 FESTIVAL DIRECTOR WHEREAS the Committee of Visual Arts has recommended Martin Snipper as Director for the 1957 Art Festival to be held in Washington Square September 26th, 27th, 28th and 29th, 1957, BE IT RESOLVED That at a regular meeting of the Art Commission held on May 6, 1957, Martin Snipper is hereby appointed Director of the 1957 Art Festival, and for which he is to receive as compensation for said services, the sum of Two Thousand ($2,000.",
+    "r date of April 16, 1957, from Mr. Edward McDevitt, Secretary of the Recreation and Park Commission, wherein he stated that Resolution No. 2643 of the Recreation and Park Commission granted permission for the Art Commission to hold its Eleventh Annual Art Festival September 26 through 29th, 1957, in Washington Square. ADJOURNMENT There being no further business the meeting adjourned at 4:35 P.m. The next regular meeting will be held on June 3, 1957, at 3:45 p.m., in the office of the Commission, 100 Larkin Street R"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.23,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.23,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesofartcomm1957sanf",
+   "deep_link": "https://archive.org/details/minutesofartcomm1957sanf?q=Washington+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Art Commission resolutions siting the 1957 Annual Art Festival in the square, with the park commission's permission."
+  },
+  {
+   "identifier": "whatsdoinginpark1988sanf",
+   "title": "What's doing in the parks?",
+   "creator": "San Francisco (Calif.). Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Washington Square",
+   "ocr_excerpts": [
+    "es from the Japanese Tea Garden, call 761-8272 for information, Golden Gate Park. Noon - 1:30 p.m. — House of Freaks Concert, a two piece band originating from Virginia, alternative rock & roll, stage area Union Square, Post & Stockton Streets. 10 a.m. — Artists Guild of San Francisco Art Show, Washington Square, Filbert & Stockton Streets. 10 a.m. - 4 p.m. — San Francisco Society of Fine Arts Show, Hoover Redwood Tree, near 19th Avenue & King Drive, Golden Gate Park. 11 a.m. - 5 p.m. — Open Gym, Racquetball, Weightroom, free, Mission Recreation Center, 2450 Harrison Street. SUNDAY, FEBRUARY 14 (more",
+    "epartment DOCUMENTS DEPT. FEB 1 1 1988 San »-K/\\iuui^c;o H»>Rljc LIBRARY FOR IMMEDIATE RELEASE Contact : Diane Palacio Linda Griffin 558-4268 WHAT'S DOING IN THE PARKS (FEBRUARY 20-26) SATURDAY, FEBRUARY 20 10 a.m. - 4 p.m. — San Francisco of Fine Arts Show thru Sunday, February 21, Washington Square, Filbert & Stockton Streets. 10:30 a.m. & 1:30 p.m. — Free Plant Walks, Strybing Arboretum Society, meet at the Strybing Store, Strybing Arboretum and Botanical Gardens, 9th Avenue and Lincoln Way, Golden Gate Park. 11 a.m. - 5 p.m. — Carriage rides in the park, tour leaves from the Japanese Tea",
+    "lacio Linda Griffin 558-4268 WHAT'S DOING IN THE PARKS^, (MARCH 12 - 18) SATURDAY, MARCH 12 6:30 a.m. - 12:30 p.m. — 10th Annual Sprint Footrace, Sunset Parking Lot located at Sunset & Lake Merced Boulevards . 10 a.m. - 4 p.m. — San Francisco Society of Fine 'Arts Show thru Sunday, March 13, Washington Square, Filbert & Stockton Streets. 10:30 a.m. & 1:30 p.m. — Free Plant Walks, Strybing Arboretum Society, meet at the Strybing Store, Strybing Arboretum and Botanical Gardens, 9th Avenue and Lincoln Way, Golden Gate Park. 11 a.m. - 5 p.m. — Carriage rides in the park, tour leaves from the Japanese Tea",
+    "e, Golden Gate Park San Francisco 941 17 2-2-2 S.F. Rec/Park Dept. What ' s Doing in the Parks SUNDAY, APRIL 3 10 a.m. — Artist Guild of San Francisco Art Show, Hoover Redwood Grove, 19th Avenue & Lincoln Way, Golden Gate Park 10 a.m. - 4 p.m. — San Francisco Society of Fine Arts Show, Washington Square, Filbert & Stockton Streets. 1 p.m. — Golden Gate Park Band Concert, conducted by Robert Hansen, Bandshell, Golden Gate Park. MONDAY, APRIL 4 3:30 - 5 p.m. — Jazz Dance, 7-12 years, free, Midtown Terrace Playground, Clarendon Drive & Olympia Way. 4-6 p.m. — Plant Families, an Introduction At",
+    "Pool, San Jose Avenue & Havelock Street. (more) .aren Lodge, Golden Gate Park San Francisco 941 17 2-2-2 S.F. Rec/Park Dept. What's Doing in the Parks SUNDAY, MAY 15 9 - 11:30 a.m. — Lap Swim, Garfield Pool, 26th & Harrison Streets . 10 a.m. — Artists Guild of San Francisco Art Show, Washington Square, Filbert & Stockton Streets. 10 a.m. - 4 p.m. — San Francisco Society of Fine Arts Show,"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.92,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.42,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/whatsdoinginpark1988sanf",
+   "deep_link": "https://archive.org/details/whatsdoinginpark1988sanf?q=Washington+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false,
+   "gloss": "Departmental events bulletins listing art shows staged in the square."
+  },
+  {
+   "identifier": "minutesrecreatio1989sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Washington Square",
+   "ocr_excerpts": [
+    "to 6/30/89 Approval of Minutes: 2/16/89 - Amendment to Page 13, 43 Statement of Terry Steinke RES. 15438 - Approved per day use per site with prohibition 225 against any sales on park property RES. 15478 - Approved request of S.F. Society of Fine Arts 271 and Artists Guild of S.F. to reserve Washington Square, Union Square and Hoover Redwood Grove in Golden Gate Park on specified dates in September, October and November, 1989, for art shows ATHLETICS RES. 15352 - see Gifts, Acceptance of - 130 From San Francisco Lawyer's Softball League, through Friends of Recreation and Parks, for maintenance and repai",
+    "S. 15265 - see Gifts, Acceptance of - ° A. From Security Pacific Bank, $2,600 for Tenderloin Recreation Center B. From St. Anthony's Foundation, $1,000 for Tenderloin Recreation Center D. From Chevron, USA, $500 for Latch Key Program RES. 15281 - Approved proposed renovation plan for Marini Plaza near Washington Square, sponsored by Friends of Recreation and Parks, not to exceed $50,000 General Manager's Report 0 Landscape Garden Show General Manager's Report - ° Friends' Field Day - August 4 General Manager's Report 0 Timotei Park to Park Event General Manager's Report - 0 PI aymobi 1 e - RES. 15524 - see Gifts, A",
+    "to increase hourly rate to $35 per hour for environmental services, total contract amount of $24,000 wi 1 1 not i ncrease RES. 15547 - see Mission Pool - Blue Dolphin Pools and Spas 343 reconstruction MONUMENTS, MEMORIALS & PLAQUES Appeal of the denial to place a plaque honoring Juana Briones 171 in Washington Square - Appeal Denied Mario Murillo Ministries two day evangelists meeting of 9/1 and 9/2 - Removed from Calendar President's Report Board of Supervisors has asked Commission to reconsider 261 placement of a plaque in Washington Square to honor Juana Briones RES. 15534 - Approved request to place \"Goddess of Democracy\" 331 statue in Portsmouth Square, Acceptance of Gift RES. 15535 - Commission denies proposal from French War Veterans Assn, of Northern California to erect a monument near Legion of Honor in honor of their fallen co",
+    "7/89: Earthquake Update 317 NAMING OF FACILITIES RES. 15340 - Approved the request to name the field at 116 Candlestick Park when in football configuration in honor of Bill Walsh, coach of the San Francisco 49ers (1979- 1 989) Appeal of the denial to place a plaque honoring Juana Briones 171 in Washington Square - Appeal denied President's Report - The Board of Supervisors asked Commission to reconsider 267 placement of a plaque in Washington Square to honor Juana Briones NORTH BEACH POOL General Manager's Report - Earthquake Damage 233 NURSERY SCHOOLS RES. 15400 - Approved the annual lease renewals and monthly 181 rental fees for nursery schools effective July 1, 1989 OCEAN VIEW PLAGROUND RES. 15359 - Approved"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.34,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.34,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 2.5,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesrecreatio1989sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1989sanf?q=Washington+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes reserving the square for art shows and funding the Marini Plaza renovation beside it."
   }
  ]
 }

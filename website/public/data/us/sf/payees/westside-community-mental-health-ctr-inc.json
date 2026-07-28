@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.733347+00:00",
+ "generated_at": "2026-07-28T11:43:47.702602+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 4458,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 171531038.55,
+    "n_vouchers": 2766
+   },
+   {
+    "department": "ADP Adult Probation",
+    "department_code": "ADP",
+    "usd": 46212133.81,
+    "n_vouchers": 623
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "usd": 15618492.47,
+    "n_vouchers": 652
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 4352866.67,
+    "n_vouchers": 203
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 3022066.56,
+    "n_vouchers": 14
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 1284230.14,
+    "n_vouchers": 91
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 1207713.23,
+    "n_vouchers": 63
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 195691.0,
+    "n_vouchers": 21
+   }
+  ],
+  "n_departments": 11,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 65074538.6,
+    "n_vouchers": 1430
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 59326308.03,
+    "n_vouchers": 954
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 2867369.56,
+    "n_vouchers": 110
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 2093063.06,
+    "n_vouchers": 51
+   },
+   {
+    "code": "538000",
+    "label": "CBO Services - Budget",
+    "spend_class": "purchase",
+    "usd": 105064.46,
+    "n_vouchers": 3
+   },
+   {
+    "code": "536440",
+    "label": "CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 22225.12,
+    "n_vouchers": 21
+   },
+   {
+    "code": "530110",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 18570.17,
+    "n_vouchers": 2
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 7071.8,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 13,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 18876014.05,
+  "n_recent_lines": 10,
+  "recent_lines": [
+   {
+    "department": "ADP Adult Probation",
+    "department_code": "ADP",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 11476791.7,
+    "n_vouchers": 125
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 4640610.17,
+    "n_vouchers": 55
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1444505.0,
+    "n_vouchers": 33
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 577789.34,
+    "n_vouchers": 24
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 345606.7,
+    "n_vouchers": 6
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 265441.73,
+    "n_vouchers": 21
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000025153",

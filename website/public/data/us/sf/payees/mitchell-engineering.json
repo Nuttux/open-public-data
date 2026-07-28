@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.736001+00:00",
+ "generated_at": "2026-07-28T11:43:47.707048+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -33,10 +33,142 @@
  "top_departments": [
   "DPW Public Works"
  ],
+ "profile": {
+  "n_vouchers": 1051,
+  "departments": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 98661909.85,
+    "n_vouchers": 572
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 68582495.38,
+    "n_vouchers": 223
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 20814998.9,
+    "n_vouchers": 230
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 7017434.5,
+    "n_vouchers": 23
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 61609.8,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 9055.2,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 6,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 178400245.35,
+    "n_vouchers": 814
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 2201134.61,
+    "n_vouchers": 12
+   },
+   {
+    "code": "527010",
+    "label": "Architectural Services",
+    "spend_class": "purchase",
+    "usd": 424401.11,
+    "n_vouchers": 4
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 94091.08,
+    "n_vouchers": 11
+   },
+   {
+    "code": "528990",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 81752.79,
+    "n_vouchers": 15
+   },
+   {
+    "code": "206810",
+    "label": "Liab Pybl fr Rest-Others",
+    "spend_class": "ledger",
+    "usd": 9055.2,
+    "n_vouchers": 1
+   },
+   {
+    "code": "479701",
+    "label": "Custom Work",
+    "spend_class": "ledger",
+    "usd": 8625.58,
+    "n_vouchers": 1
+   },
+   {
+    "code": "468111",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 7478.66,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 11,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 27625480.89,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 15257927.07,
+    "n_vouchers": 40
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 12056254.83,
+    "n_vouchers": 107
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 311298.99,
+    "n_vouchers": 4
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000029566",
-   "title": "Folsom Imp - SOMA&Mis Rplc",
+   "title": "Folsom Imp - SOMA&Mis Replacement",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 6912421.38,
@@ -45,7 +177,7 @@
   },
   {
    "contract_no": "1000031384",
-   "title": "Folsom STRTSCP PRJ",
+   "title": "Folsom Streetscape Project",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 17517740.82,
@@ -72,7 +204,7 @@
   },
   {
    "contract_no": "1000019955",
-   "title": "Aux WTR Sup SYS Clarendon",
+   "title": "Aux Water Sup SYS Clarendon",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 2160741.17,
@@ -81,7 +213,7 @@
   },
   {
    "contract_no": "1000036213",
-   "title": "SFPW Yard Fuel Station RPLC",
+   "title": "SFPW Yard Fuel Station Replacement",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 3858550.0,

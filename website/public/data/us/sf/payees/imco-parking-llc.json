@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.736653+00:00",
+ "generated_at": "2026-07-28T11:43:47.708278+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -31,6 +31,174 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 1685,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 158232610.89,
+    "n_vouchers": 973
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 25938769.77,
+    "n_vouchers": 234
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 286101.7,
+    "n_vouchers": 110
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 101740.0,
+    "n_vouchers": 205
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 84232.0,
+    "n_vouchers": 71
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "DEM",
+    "usd": 16192.0,
+    "n_vouchers": 12
+   },
+   {
+    "department": "DT  GSA - Technology",
+    "department_code": "TIS",
+    "usd": 13632.0,
+    "n_vouchers": 27
+   },
+   {
+    "department": "DAT District Attorney",
+    "department_code": "DAT",
+    "usd": 12296.0,
+    "n_vouchers": 39
+   }
+  ],
+  "n_departments": 11,
+  "categories": [
+   {
+    "code": "552110",
+    "label": "Taxes",
+    "spend_class": "obligation",
+    "usd": 94497769.05,
+    "n_vouchers": 618
+   },
+   {
+    "code": "435210",
+    "label": "Civic Center Garage",
+    "spend_class": "ledger",
+    "usd": 9776524.59,
+    "n_vouchers": 40
+   },
+   {
+    "code": "435218",
+    "label": "St. Mary's Garage",
+    "spend_class": "ledger",
+    "usd": 9683750.94,
+    "n_vouchers": 107
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 4185134.89,
+    "n_vouchers": 105
+   },
+   {
+    "code": "435225",
+    "label": "Prking Fees-VarRec-PrkFacilt",
+    "spend_class": "ledger",
+    "usd": 3278149.36,
+    "n_vouchers": 68
+   },
+   {
+    "code": "435226",
+    "label": "Music Concourse-Parking",
+    "spend_class": "ledger",
+    "usd": 3200344.88,
+    "n_vouchers": 19
+   },
+   {
+    "code": "529990",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 647989.96,
+    "n_vouchers": 2
+   },
+   {
+    "code": "535950",
+    "label": "Credit Card Processing Fees",
+    "spend_class": "unclear",
+    "usd": 354021.59,
+    "n_vouchers": 42
+   }
+  ],
+  "n_categories": 14,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 18011949.25,
+  "n_recent_lines": 16,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Taxes",
+    "spend_class": "obligation",
+    "usd": 13213865.73,
+    "n_vouchers": 111
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "label": "Civic Center Garage",
+    "spend_class": "ledger",
+    "usd": 3229396.54,
+    "n_vouchers": 13
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "label": "St. Mary's Garage",
+    "spend_class": "ledger",
+    "usd": 860377.36,
+    "n_vouchers": 13
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "label": "Music Concourse-Parking",
+    "spend_class": "ledger",
+    "usd": 280902.57,
+    "n_vouchers": 6
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 261514.6,
+    "n_vouchers": 5
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Garage Rent",
+    "spend_class": "purchase",
+    "usd": 93358.45,
+    "n_vouchers": 39
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000028028",

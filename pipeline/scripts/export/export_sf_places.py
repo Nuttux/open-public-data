@@ -49,25 +49,82 @@ POOL_LABEL = {
     "dl": "Internet Archive — Democracy's Library",
 }
 GATE_MIN_DOCS = 3
-SHELF_SALIENT_CAP = 6  # visible-without-expanding rows on the document shelf
+SHELF_SALIENT_CAP = 4  # visible-without-expanding rows on the document shelf
 
-# Document curation: every doc lands in exactly one narrative bucket so the
-# shelf reads as a curated case file, not an identifier dump. Order here is
-# the render order (most narratively useful first).
-DOC_GROUPS: list[tuple[str, str, re.Pattern]] = [
-    ("plans", "Plans & environmental review", re.compile(
-        r"environmental impact|feasibility study|master plan|transition plan|"
-        r"structure report|post occupancy|strategic plan", re.I)),
-    ("history", "Histories & surveys", re.compile(
-        r"\bhistory\b|guided tour|civic art collection|historic background|"
-        r"survey of art|economic performance", re.I)),
-    ("meetings", "Meetings & resolutions", re.compile(
-        r"\bminutes\b|\bagenda\b|journal of proceedings|\bresolution\b", re.I)),
-    ("reports", "Reports & records", re.compile(
-        r"annual report|weekly bulletin|salary ordinance|report of the|"
-        r"performance and efficiency|grand jury|cost.accounting", re.I)),
+# ── The archive presentation contract ────────────────────────────────────────
+# What a reader wants from a city archive is the handful of documents that
+# DECIDED or EXPLAINED something about this place. What the archive mostly
+# holds is the paperwork of governing: minutes, agendas, calendars, notices.
+#
+# So visibility is decided by DOCUMENT TYPE, read off the title, and the table
+# below IS the rule — inspectable, not a magic score. `tier` orders the shelf;
+# tier PROCEDURAL_TIER means the document never appears on the shelf at all
+# (it stays in the JSON and is reported as an honest count, never dropped
+# silently). Evidence scores only order documents WITHIN a tier; they can no
+# longer promote an "Agenda" above a grand jury report, which is exactly what
+# the previous salience-across-all-groups rule did on 89 of 107 procedural
+# documents. First match wins, so the specific patterns come first.
+PROCEDURAL_TIER = 9
+DOC_TYPES: list[tuple[str, str, int, re.Pattern]] = [
+    # ── Tier 1 — someone examined this place and reached a finding ──
+    ("audit", "Audit", 1, re.compile(
+        r"\baudit\b|performance and efficiency|performance review|"
+        r"poor controls|expenditures for calendar year", re.I)),
+    ("investigation", "Investigation", 1, re.compile(
+        r"\binvestigation\b|grand jury|neglect of reporting", re.I)),
+    # ── Tier 2 — someone studied this place before a decision ──
+    ("environmental_review", "Environmental review", 2, re.compile(
+        r"environmental impact|environmental statement|environmental assessment|"
+        r"negative declaration|initial study|notice of preparation|"
+        # CEQA volumes cite themselves by acronym, and a response volume is
+        # part of the same review — not an unclassified stray.
+        r"\b(EIR|FEIR|DEIR|EIS)\b|comments and responses", re.I)),
+    ("study", "Study", 2, re.compile(
+        r"feasibility|\bstudy\b|\bevaluation\b|\bassessment\b|\banalysis\b|"
+        r"\bsurvey\b|\binventory\b|findings? report|site selection", re.I)),
+    ("history", "History", 2, re.compile(
+        r"\bhistory\b|\bhistorical\b|historic structure|historic background|"
+        r"\bannals\b|guided tour|civic art collection", re.I)),
+    # ── Tier 3 — what the city said it would do ──
+    ("plan", "Plan", 3, re.compile(
+        r"master plan|strategic plan|comprehensive plan|improvement plan|"
+        r"transition plan|action plan|area plan|capital plan|development program|"
+        r"\bplan\b|program proposal|improvement program", re.I)),
+    ("annual_report", "Annual report", 3, re.compile(
+        r"annual report|financial report|statements of activities|"
+        r"activities report|state of the city", re.I)),
+    # ── Tier 4 — a report to someone, on something ──
+    ("report", "Report", 4, re.compile(
+        r"report of the|report to the|report on|\breport\b|"
+        r"post occupancy|\brecommendations?\b", re.I)),
+    # ── Tier 9 — procedural. The paperwork of governing, not the governing. ──
+    ("notice", "Notice", PROCEDURAL_TIER, re.compile(
+        r"^notice\b|\bnotice of meeting|notice of public|notice, ", re.I)),
+    ("proceeding", "Minutes & agendas", PROCEDURAL_TIER, re.compile(
+        r"\bminutes\b|\bagendas?\b|journal of proceedings|calendar of proceedings|"
+        r"\bresolution\b|order of business|\[release\]", re.I)),
+    ("calendar", "Calendar", PROCEDURAL_TIER, re.compile(
+        r"\bcalendar\b|programs and events|calendar of events", re.I)),
+    ("serial", "Bulletin or newsletter", PROCEDURAL_TIER, re.compile(
+        r"\bbulletin\b|\bmemo\b|trolley topics|what's doing|municipal record|"
+        r"data guide|bids? and contracts?|"
+        r"bid and contract opportunities|neighborhood profiles|news release", re.I)),
+    # A name in a directory or a roster is not a document about that name. These
+    # genres exist to LIST organisations, so a match inside one carries no
+    # information — it was half of every payee's visible shelf.
+    ("directory", "Directory", PROCEDURAL_TIER, re.compile(
+        r"\bdirectory\b|\bpolk's\b|crocker-langley|city directory", re.I)),
+    ("roster", "Roster or notice", PROCEDURAL_TIER, re.compile(
+        r"boards and commissions|boards, commissions|member terms|"
+        r"terms expired|policies of the board|policy manual|"
+        r"request for use of public meeting|meeting rooms summary|"
+        r"open board meeting notices|board meeting notices", re.I)),
 ]
-GROUP_WEIGHT = {"plans": 4, "history": 3, "reports": 2, "meetings": 1, "other": 1}
+DOC_TYPE_TIER = {k: tier for k, _, tier, _ in DOC_TYPES}
+DOC_TYPE_LABEL = {k: label for k, label, _, _ in DOC_TYPES}
+# Anything the table does not recognise: kept, ranked below every named
+# substantive type, above nothing that is procedural. Unknown ≠ worthless.
+UNCLASSIFIED_TIER = 5
 
 # Real name of the archive collection each department-shelf slug draws from —
 # always the collection's own identity, never the (possibly-fallback) owning
@@ -87,6 +144,19 @@ DEPT_ARCHIVE_LABEL = {
     "city-planning": "City Planning Department",
 }
 DEPT_SHELF_CAP = 3
+
+# ── Durable gloss store ─────────────────────────────────────────────────────
+# A gloss is expensive, human/LLM-authored prose grounded in a document's OCR.
+# It used to live ONLY inside places/<slug>.json, which assemble() rebuilds from
+# the linkage cache — so every routine export silently destroyed every gloss on
+# the site, and the only recovery was whatever happened to be left in a
+# scratchpad batch file. That trap fired twice in one day and cost ~110 glosses.
+#
+# Glosses now live here instead: a version-controlled seed, keyed
+# slug -> identifier -> gloss, that assemble() re-attaches on every run. The
+# artifact is disposable; the writing is not. There is no longer an ordering
+# rule to remember — export can run whenever, and glosses survive it.
+GLOSS_STORE = ROOT / "pipeline" / "seeds" / "sf_place_document_glosses.json"
 REFRESH_SHELF = False  # set by --refresh-shelf; see the prior-shelf note in assemble()
 
 # Mirrors link_sf_places.py's owning_dept_code -> archive-cache-slug map, so
@@ -115,17 +185,39 @@ def _title_stem(title: str) -> str:
     same publication ('San Francisco water and power', 1979/1985/1999/2005...)
     collapse to one curated row instead of a wall of near-duplicates."""
     t = title.lower()
-    t = re.sub(r"[:;,.\-–—()]", " ", t)
+    # Square brackets too: "[draft] environmental impact report" and "final
+    # environmental impact report" are the same publication, and leaving "[ ]"
+    # in the stem kept both on the shelf as separate rows.
+    t = re.sub(r"[:;,.\-–—()\[\]]", " ", t)
     t = re.sub(r"\b(draft|final|revised|summary|vol\.?\s*\w+|volume\s*\w+)\b", " ", t)
     t = re.sub(r"\s+", " ", t).strip()
     return t
 
 
-def classify_doc(title: str) -> tuple[str, str]:
-    for key, label, pat in DOC_GROUPS:
+# What a document IS beats what its subject happens to be called. "Agenda /
+# Assessment Appeals Board" is an agenda; "Agenda and Minutes / HIV Health
+# Services Planning Council, Needs Assessment" is an agenda. Both were being
+# promoted to tier 2 because the `study` pattern matches the word "assessment"
+# and DOC_TYPES is first-match-wins. When a title LEADS with a procedural form,
+# that form decides, whatever the body of the title mentions.
+PROCEDURAL_HEAD = re.compile(
+    r"^\s*\[?\s*(?:minutes?|agendas?|calendars?|notices?|journal of proceedings|"
+    r"meeting minutes|meeting agenda|agendas? and minutes|minutes and agendas|"
+    r"minutes and order of business)\b", re.I)
+
+
+def classify_doc(title: str) -> tuple[str, str, int]:
+    """(type key, human label, tier) for one document, from its title alone.
+
+    First match in DOC_TYPES wins, so the table's order is the precedence rule.
+    Deterministic and inspectable: given a title you can point at the row of the
+    table that decided its fate."""
+    if PROCEDURAL_HEAD.match(title):
+        return "proceeding", "Minutes & agendas", PROCEDURAL_TIER
+    for key, label, tier, pat in DOC_TYPES:
         if pat.search(title):
-            return key, label
-    return "other", "Other records"
+            return key, label, tier
+    return "unclassified", "Record", UNCLASSIFIED_TIER
 
 
 def _ocr_richness(d: dict) -> float:
@@ -163,11 +255,41 @@ def _archive_source_note(*doc_lists: list[dict]) -> str:
     return "Internet Archive — " + (" + ".join(parts) if parts else "public collections")
 
 
+def rank_documents(docs: list[dict]) -> list[dict]:
+    """Stamp doc_type / doc_type_label / doc_tier / procedural / salient on an
+    already-deduped shelf, and return it in shelf order.
+
+    Ranking is (tier, -evidence): the TYPE decides the band, evidence only
+    orders within it. Procedural documents are ranked last and marked
+    `procedural` — the fiche does not list them, and reports their count
+    instead. Idempotent, so it is safe to re-apply to shipped fiches (see
+    classify_sf_place_documents.py) without rebuilding documents[]."""
+    for d in docs:
+        key, label, tier = classify_doc(d["title"])
+        d["doc_type"] = key
+        d["doc_type_label"] = label
+        d["doc_tier"] = tier
+        d["procedural"] = tier >= PROCEDURAL_TIER
+        # `group` is the legacy shelf-bucket field. Keep it aligned with the
+        # type label so nothing downstream reads a stale bucket name.
+        d["group"] = label
+
+    # Within a tier, a document that carries a one-line gloss outranks one that
+    # does not: the shelf's whole promise is "here is what this says", and a
+    # row with only a catalogue title cannot keep it. Tier still wins outright,
+    # so an un-glossed audit never falls below a glossed agenda.
+    docs.sort(key=lambda d: (d["doc_tier"], 0 if d.get("gloss") else 1, -_shelf_score(d), d["title"]))
+
+    substantive = [d for d in docs if not d["procedural"]]
+    for i, d in enumerate(docs):
+        d["salient"] = (not d["procedural"]) and substantive.index(d) < SHELF_SALIENT_CAP
+    return docs
+
+
 def curate_documents(docs: list[dict]) -> list[dict]:
-    """Dedupe repeat editions, classify into narrative groups, rank by
-    salience within each group, and mark the top rows `salient` (shown
-    without expanding) vs the rest (behind "see all"). Deterministic — no
-    LLM call — so it is safe to re-run over every place, published or not."""
+    """Dedupe repeat editions, then classify + rank under the archive
+    presentation contract. Deterministic — no LLM call — so it is safe to
+    re-run over every place, published or not."""
     # Dedupe: same title stem -> keep the richest single edition, note count.
     by_stem: dict[str, list[dict]] = {}
     for d in docs:
@@ -185,35 +307,92 @@ def curate_documents(docs: list[dict]) -> list[dict]:
             )
         kept.append(best)
 
-    for d in kept:
-        key, label = classify_doc(d["title"])
-        d["group"] = label
-        # /2 keeps the relevance term on the same 0–5 scale the char-count term
-        # used to occupy, so narrative group still dominates and relevance orders
-        # within it.
-        d["_weight"] = GROUP_WEIGHT[key] * 10 + min(_ocr_richness(d) / 2, 5)
-        d["_group_key"] = key
+    return rank_documents(kept)
 
-    # Group display order follows GROUP_WEIGHT, not the order DOC_GROUPS happens
-    # to be declared in. Sorting by declaration index put "meetings" above
-    # "reports", so a bare "Agenda" was shown ahead of a grand jury report even
-    # though GROUP_WEIGHT already said reports outrank meetings 2:1.
-    declared = [k for k, _, _ in DOC_GROUPS] + ["other"]
-    group_order = sorted(declared, key=lambda k: (-GROUP_WEIGHT[k], declared.index(k)))
-    kept.sort(key=lambda d: (group_order.index(d["_group_key"]), -d["_weight"]))
 
-    # Salience is decided across the whole shelf on evidence, not by position in
-    # whichever group sorts first. Before this, the six documents a reader saw
-    # without expanding were the first six of the leading group — in practice
-    # "Agenda" on 25 fiches and "Minutes" on 23, the least informative titles in
-    # the corpus, while the audits and environmental reviews sat behind "see all".
-    for d in sorted(kept, key=lambda d: -_shelf_score(d))[:SHELF_SALIENT_CAP]:
-        d["salient"] = True
-    for d in kept:
-        d.setdefault("salient", False)
-        del d["_weight"]
-        del d["_group_key"]
-    return kept
+# Every kind of archive shelf in the SF app. Each is rebuilt by a different
+# script from a different cache, and every one of those rebuilds would destroy
+# glosses if they lived in the artifact — so they all read from here.
+GLOSS_KINDS = ("place", "payee")
+
+
+def load_gloss_store() -> dict[str, dict[str, dict[str, str]]]:
+    """{kind: {slug: {identifier: gloss}}}. Missing file is normal on a clone."""
+    empty = {k: {} for k in GLOSS_KINDS}
+    if not GLOSS_STORE.exists():
+        return empty
+    blob = json.loads(GLOSS_STORE.read_text()).get("glosses", {})
+    # Tolerate the first-generation layout ({slug: {id: gloss}}, places only).
+    if blob and not (set(blob) <= set(GLOSS_KINDS)):
+        return {"place": blob, "payee": {}}
+    return {k: blob.get(k, {}) for k in GLOSS_KINDS}
+
+
+def save_gloss_store(store: dict[str, dict[str, dict[str, str]]]) -> None:
+    GLOSS_STORE.parent.mkdir(parents=True, exist_ok=True)
+    counts = {k: sum(len(v) for v in store.get(k, {}).values()) for k in GLOSS_KINDS}
+    GLOSS_STORE.write_text(json.dumps({
+        "generated_at": now_iso(),
+        "note": (
+            "Durable, version-controlled store of OCR-grounded one-line document "
+            "glosses for every SF archive shelf. The scripts that rebuild those "
+            "shelves (export_sf_places.py for places, link_sf_payees.py for payees) "
+            "re-attach from here on every run, so a rebuild can never destroy them. "
+            "Written by `export_sf_places.py --harvest-glosses`; edit by hand only "
+            "if you have read the document's OCR."
+        ),
+        "n_by_kind": counts,
+        "n_glosses": sum(counts.values()),
+        "glosses": {k: {s: store.get(k, {})[s] for s in sorted(store.get(k, {}))}
+                    for k in GLOSS_KINDS},
+    }, indent=1, ensure_ascii=False, sort_keys=False) + "\n")
+
+
+def harvest_glosses() -> int:
+    """Sweep every gloss that currently exists anywhere into the store.
+
+    Covers both shelf kinds and the scratchpad batches. Purely additive —
+    harvesting can only ever gain glosses, never drop one.
+    """
+    store = load_gloss_store()
+    before = sum(len(v) for k in GLOSS_KINDS for v in store[k].values())
+
+    def take(kind: str, slug: str, ident: str, gloss: str | None) -> None:
+        if (gloss or "").strip():
+            store[kind].setdefault(slug, {})[ident] = gloss.strip()
+
+    # Scratchpad batches. A "payee:<slug>" key targets the payee shelf; a bare
+    # slug is a place, which is how every batch written so far is keyed.
+    for batch in sorted((ROOT / "scratchpad" / "sf_summaries").glob("batch*.json")):
+        for key, res in json.loads(batch.read_text()).items():
+            kind, _, slug = key.partition(":")
+            if not slug:
+                kind, slug = "place", key
+            if kind not in GLOSS_KINDS:
+                continue
+            for ident, gloss in (res.get("glosses") or {}).items():
+                take(kind, slug, ident, gloss)
+
+    for f in sorted(PLACES.glob("*.json")):
+        if f.name.startswith("_") or f.name in {"index.json", "reverse_index.json",
+                                                "places_in_progress.json"}:
+            continue
+        fiche = json.loads(f.read_text())
+        for d in fiche.get("documents") or []:
+            take("place", fiche["slug"], d["identifier"], d.get("gloss"))
+
+    for f in sorted(DLDOCS.glob("payee-*.json")):
+        blob = json.loads(f.read_text())
+        for d in blob.get("documents") or []:
+            take("payee", blob["slug"], d["identifier"], d.get("gloss"))
+
+    save_gloss_store(store)
+    counts = {k: sum(len(v) for v in store[k].values()) for k in GLOSS_KINDS}
+    after = sum(counts.values())
+    print(f"Gloss store: {after} glosses (+{after - before}) — "
+          + ", ".join(f"{k} {counts[k]}" for k in GLOSS_KINDS)
+          + f" → {GLOSS_STORE.relative_to(ROOT)}")
+    return 0
 
 
 def assemble() -> int:
@@ -227,6 +406,9 @@ def assemble() -> int:
     # Block 6B+: unified capital & construction (bond/contract/permit/dpw),
     # no-sum. Absent → the fiche omits the capital section.
     capital = (load(PLACES / "_capital.json") or {}).get("places", {})
+    # Glosses survive the rebuild because they do not live in the rebuilt file.
+    gloss_store = load_gloss_store()["place"]
+    gloss_dirty = False
     PLACES.mkdir(parents=True, exist_ok=True)
     DLDOCS.mkdir(parents=True, exist_ok=True)
 
@@ -257,6 +439,21 @@ def assemble() -> int:
             {**d, "source_label": POOL_LABEL.get(d["pool"], "Internet Archive")}
             for d in raw_docs
         ])
+
+        # Re-attach the durable glosses. Any gloss still on the prior fiche but
+        # missing from the store is adopted into it here, so a gloss written by
+        # hand and never harvested still cannot be destroyed by this run.
+        prior_gloss = {d["identifier"]: d["gloss"]
+                       for d in ((prior or {}).get("documents") or [])
+                       if (d.get("gloss") or "").strip()}
+        for ident, g in prior_gloss.items():
+            if gloss_store.get(slug, {}).get(ident) != g:
+                gloss_store.setdefault(slug, {})[ident] = g
+                gloss_dirty = True
+        for d in docs:
+            g = gloss_store.get(slug, {}).get(d["identifier"])
+            if g:
+                d["gloss"] = g
 
         dslug = DEPT_ARCHIVE_SLUG.get(pl["owning_dept_code"])
         dept_shelf_label = DEPT_ARCHIVE_LABEL.get(dslug, pl["owning_dept"])
@@ -343,8 +540,16 @@ def assemble() -> int:
         "generated_at": now_iso(), "places": gate,
     }, indent=1, ensure_ascii=False))
 
+    if gloss_dirty:
+        whole = load_gloss_store()
+        whole["place"] = gloss_store
+        save_gloss_store(whole)
+        print(f"Gloss store updated: adopted glosses found only on shipped fiches.")
+
+    n_glossed = sum(len(v) for v in gloss_store.values())
     ok = sum(1 for g in gate if g.get("meets_pre_summary"))
-    print(f"Assembled {len(gate)} candidate place fiches.")
+    print(f"Assembled {len(gate)} candidate place fiches "
+          f"({n_glossed} glosses re-attached from the store).")
     print(f"{ok} meet photo + docs≥{GATE_MIN_DOCS} + money≥1 (pre-summary). Block C writes summaries + gates.")
     for g in sorted(gate, key=lambda x: (not x.get("meets_pre_summary"), -x.get("n_docs", 0))):
         flag = "OK " if g.get("meets_pre_summary") else "   "
@@ -427,8 +632,13 @@ def main() -> int:
     ap.add_argument("--refresh-shelf", action="store_true",
                     help="let newly linked documents enter an already-curated shelf "
                          "(otherwise the prior shelf's identifiers are a closed set)")
+    ap.add_argument("--harvest-glosses", action="store_true",
+                    help="sweep every gloss currently on a fiche or in a scratchpad "
+                         "batch into the durable store, then exit")
     args = ap.parse_args()
     REFRESH_SHELF = args.refresh_shelf
+    if args.harvest_glosses:
+        return harvest_glosses()
     return finalize() if args.finalize else assemble()
 
 

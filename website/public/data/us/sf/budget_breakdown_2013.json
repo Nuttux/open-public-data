@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:34:55.303035+00:00",
+  "generated_at": "2026-07-28T11:43:33.385895+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -1250,16 +1250,6 @@
         "n_characters": 1
       },
       {
-        "code": "UNA",
-        "label": "General Fund Unallocated",
-        "display_name": null,
-        "org_group_code": "07",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 14
-      },
-      {
         "code": "PUC",
         "label": "PUC Public Utilities Commission",
         "display_name": "Public Utilities Commission (water, power, sewer)",
@@ -1268,6 +1258,16 @@
         "transfer_adjustment_usd": -150664932.0,
         "share_of_side": 0.0,
         "n_characters": 2
+      },
+      {
+        "code": "UNA",
+        "label": "General Fund Unallocated",
+        "display_name": null,
+        "org_group_code": "07",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 14
       }
     ]
   },
@@ -3656,14 +3656,14 @@
         1
       ],
       [
-        "DSS",
-        "039",
+        "DBI",
+        "060",
         300000.0,
         0
       ],
       [
-        "DBI",
-        "060",
+        "DSS",
+        "039",
         300000.0,
         0
       ],
@@ -3944,13 +3944,13 @@
         0
       ],
       [
-        "SCI",
+        "FAM",
         "06F",
         150000.0,
         0
       ],
       [
-        "FAM",
+        "SCI",
         "06F",
         150000.0,
         0
@@ -4208,14 +4208,14 @@
         0
       ],
       [
-        "ASR",
-        "098",
+        "ART",
+        "069",
         20000.0,
         0
       ],
       [
-        "ART",
-        "069",
+        "ASR",
+        "098",
         20000.0,
         0
       ],
@@ -4481,15 +4481,15 @@
       ],
       [
         "PUC",
-        "ELS",
-        -150664932.0,
-        1
-      ],
-      [
-        "PUC",
         "865",
         150664932.0,
         0
+      ],
+      [
+        "PUC",
+        "ELS",
+        -150664932.0,
+        1
       ],
       [
         "ADM",
@@ -4625,15 +4625,15 @@
       ],
       [
         "HRD",
-        "865",
-        64564100.0,
-        0
-      ],
-      [
-        "HRD",
         "ELS",
         -64564100.0,
         1
+      ],
+      [
+        "HRD",
+        "865",
+        64564100.0,
+        0
       ],
       [
         "PRT",
@@ -4774,13 +4774,13 @@
         0
       ],
       [
-        "REC",
+        "LIB",
         "100",
         37265000.0,
         0
       ],
       [
-        "LIB",
+        "REC",
         "100",
         37265000.0,
         0
@@ -5740,14 +5740,14 @@
         0
       ],
       [
-        "UNA",
-        "350",
+        "HHP",
+        "300",
         1300000.0,
         0
       ],
       [
-        "HHP",
-        "300",
+        "UNA",
+        "350",
         1300000.0,
         0
       ],
@@ -5909,15 +5909,15 @@
       ],
       [
         "REG",
-        "ELS",
-        -809792.0,
-        1
-      ],
-      [
-        "REG",
         "865",
         809792.0,
         0
+      ],
+      [
+        "REG",
+        "ELS",
+        -809792.0,
+        1
       ],
       [
         "ADP",
@@ -5987,15 +5987,15 @@
       ],
       [
         "HRC",
-        "865",
-        647946.0,
-        0
-      ],
-      [
-        "HRC",
         "ELS",
         -647946.0,
         1
+      ],
+      [
+        "HRC",
+        "865",
+        647946.0,
+        0
       ],
       [
         "CII",
@@ -6047,15 +6047,15 @@
       ],
       [
         "ECD",
-        "865",
-        521757.0,
-        0
-      ],
-      [
-        "ECD",
         "ELS",
         -521757.0,
         1
+      ],
+      [
+        "ECD",
+        "865",
+        521757.0,
+        0
       ],
       [
         "POL",
@@ -6353,15 +6353,15 @@
       ],
       [
         "FAM",
-        "ELS",
-        -154000.0,
-        1
-      ],
-      [
-        "FAM",
         "865",
         154000.0,
         0
+      ],
+      [
+        "FAM",
+        "ELS",
+        -154000.0,
+        1
       ],
       [
         "REC",
@@ -6389,15 +6389,15 @@
       ],
       [
         "ADP",
-        "ELS",
-        -122853.0,
-        1
-      ],
-      [
-        "ADP",
         "865",
         122853.0,
         0
+      ],
+      [
+        "ADP",
+        "ELS",
+        -122853.0,
+        1
       ],
       [
         "USD",

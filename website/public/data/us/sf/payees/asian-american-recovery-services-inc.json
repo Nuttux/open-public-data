@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.743046+00:00",
+ "generated_at": "2026-07-28T11:43:47.718721+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -24,6 +24,57 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 2301,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 119449499.9,
+    "n_vouchers": 2291
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 135802.5,
+    "n_vouchers": 10
+   }
+  ],
+  "n_departments": 2,
+  "categories": [],
+  "n_categories": 0,
+  "counts_are_floor": false,
+  "recent_fy": 2014,
+  "recent_total_usd": 16049443.3,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 14875503.2,
+    "n_vouchers": 254
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 1112906.0,
+    "n_vouchers": 27
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 61034.1,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

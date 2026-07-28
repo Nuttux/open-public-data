@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.742639+00:00",
+ "generated_at": "2026-07-28T11:43:47.717996+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,179 @@
  "top_departments": [
   "HOM HOMELESSNESS SERVICES"
  ],
+ "profile": {
+  "n_vouchers": 4101,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 83508176.44,
+    "n_vouchers": 1608
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 30018127.6,
+    "n_vouchers": 1221
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 5822983.93,
+    "n_vouchers": 576
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 3363589.04,
+    "n_vouchers": 312
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 1224678.42,
+    "n_vouchers": 294
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 386273.7,
+    "n_vouchers": 35
+   },
+   {
+    "department": "ENV Environment",
+    "department_code": "ENV",
+    "usd": 337012.1,
+    "n_vouchers": 48
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 202498.44,
+    "n_vouchers": 13
+   }
+  ],
+  "n_departments": 12,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 75086399.78,
+    "n_vouchers": 1726
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 2653740.3,
+    "n_vouchers": 160
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 2084220.43,
+    "n_vouchers": 66
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 1166062.92,
+    "n_vouchers": 246
+   },
+   {
+    "code": "539200",
+    "label": "Loans Issued By City",
+    "spend_class": "ledger",
+    "usd": 910505.0,
+    "n_vouchers": 13
+   },
+   {
+    "code": "536510",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 207958.04,
+    "n_vouchers": 30
+   },
+   {
+    "code": "536620",
+    "label": "Aps-Basic Services",
+    "spend_class": "purchase",
+    "usd": 50.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 8,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 9531196.47,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 9075106.19,
+    "n_vouchers": 163
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 175166.11,
+    "n_vouchers": 22
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 134546.72,
+    "n_vouchers": 16
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 127267.45,
+    "n_vouchers": 9
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 19110.0,
+    "n_vouchers": 8
+   }
+  ]
+ },
+ "identity": {
+  "description": "Community Housing Partnership is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under housing and shelter.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Community Housing Partnership",
+  "ein": "943112338",
+  "ntee_code": "L410",
+  "ntee_label": "Housing and shelter",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/943112338",
+  "checked_at": "2026-07-27T23:37:48.023043+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000021501",

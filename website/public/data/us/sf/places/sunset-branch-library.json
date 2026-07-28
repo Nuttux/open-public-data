@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.743609+00:00",
+ "generated_at": "2026-07-28T12:23:47.757420+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sunset-branch-library",
@@ -49,54 +49,23 @@
   "items": [],
   "payees": [],
   "n_payees": 0,
-  "payees_total_paid": 0,
-  "permits": [
-   {
-    "description": "interior remodel on two levels including new restrooms plumbing electrical and some new partitions.",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 861610.0,
-    "status": "expired",
-    "permit_date": "2005-11-08",
-    "permit_year": 2005
-   },
-   {
-    "description": "install a new fire alarm system for the building",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 8500.0,
-    "status": "expired",
-    "permit_date": "2006-04-10",
-    "permit_year": 2006
-   },
-   {
-    "description": "1st fl - fire only work to add a cellular dialer to the (e) fire alarm system; no ref pa (fire addition only)",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 7318.0,
-    "status": "complete",
-    "permit_date": "2023-01-19",
-    "permit_year": 2023
-   }
-  ],
-  "n_permits": 3,
-  "permits_total_declared": 877428.0,
-  "permits_by_year": [
-   {
-    "year": 2005,
-    "declared_usd": 861610.0
-   },
-   {
-    "year": 2006,
-    "declared_usd": 8500.0
-   },
-   {
-    "year": 2023,
-    "declared_usd": 7318.0
-   }
-  ]
+  "payees_total_paid": 0
  },
- "photo": null,
- "photo_credit": null,
- "summary_en": null,
- "published": false,
+ "photo": "/img/us/sf/places/sunset-branch-library.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/sunset-branch-library.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Sunset_Branch_Library_(4504043356).jpg",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Eric E Castro from San Francisco",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T23:54:05.645092+00:00"
+ },
+ "summary_en": "Sunset Branch is a Carnegie library, opened to the public in 1918 at 1305 18th Avenue: two storeys of concrete frame and reinforced masonry, 8,576 square feet, serving the Sunset. The commission minutes of the 1940s show how a building like it was kept up — a $390 interdepartmental work order to cover painting, and a $900 job estimate from Public Works to renew the copper saddle on the main vent, repair the copper gutters and install an iron ladder on the outside of the building. Its retrofit is described with the same specificity: the Arts Commission's Civic Design Review heard that the project involved disabled access at Irving and 18th Avenue, altering the exterior, and seismic bracing achieved by drilling through the masonry and inserting number 11 reinforcing bar through the facade — without disturbing the character of the building. The branch has also been funded to change what it holds. In 2002 the Board of Supervisors authorised the library to accept and expend a $10,000 grant from the California State Library's Partnerships for Change programme, under the federal Library Services and Technology Act, to enlarge the Asian language collection and increase Asian-interest and Asian-language programming here.",
+ "published": true,
  "money": {
   "budget_line": {
    "code": "LIB",
@@ -115,6 +84,50 @@
   "grants": []
  },
  "documents": [
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Sunset Branch Library",
+   "ocr_excerpts": [
+    "POTRERO BRANCH LIBRARY 64 BACKGROUND ! 64 SCOPE OF WORK 64 PROJECT COST 66 PROJECT SCHEDULE 66 PRESIDIO BRANCH LIBRARY 67 BACKGROUND 67 SCOPE OF WORK 67 PROJECT COST 68 PROJECT SCHEDULE 68 RICHMOND BRANCH LIBRARY .69 BACKGROUND 69 SCOPE OF WORK 69 PROJECT COST 71 PROJECT SCHEDULE 71 SUNSET BRANCH LIBRARY 72 BACKGROUND 72 SCOPE OF WORK 72 PROJECT COST 73 PROJECT SCHEDULE .73 VISITACION VALLEY BRANCH LIBRARY 74 BACKGROUND 74 SCOPE OF WORK : 74 PROJECT COST 75 PROJECT SCHEDULE 75 iii Branch Library Improvement Program WEST PORTAL BRANCH LIBRARY 76 BACKGROUND '. 76 SCOPE OF WORK 76 PRO",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 71 Branch Library Improvement Program SUNSET BRANCH LIBRARY BACKGROUND The Sunset Branch Library - a Carnegie branch - opened to the public in 1918, is located at 1305 18tn. Avenue. It is a two story building built of concrete frame and reinforced masonry construction. The building has a total square footage of 8,576. It serves the populations of the Sunset and portions of the Parkside and",
+    "heels, and temporary closure This relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Sunset Branch Library Project Cost Summary Rehabilitation and Improvements $1,610,000 Expansion $0 Total Project Cost Estimate $1,610,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Sunset Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 13 months Relocation and Construction 11 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.86,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Sunset+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The bond proposal describing the 1918 Carnegie building — concrete frame, reinforced masonry, 8,576 square feet."
+  },
   {
    "identifier": "minutesofartcomm1954sanf",
    "title": "Minutes of Art Commission of the City and County of San Francisco",
@@ -153,49 +166,13 @@
    "url": "https://archive.org/details/minutesofartcomm1954sanf",
    "deep_link": "https://archive.org/details/minutesofartcomm1954sanf?q=Sunset+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agenda19891991arts",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
-   "year": 1988,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "ocr_excerpts": [
-    "OFFICIO MEMBERS Presidents of the Fine Arts Museum Library Commission. Planning Commission, Recreation and Park Commission ACTING DIRECTOR Margie O'Drlscoll PROGRAMS Arts Festivals CMc Art Collection CMc Design Review Neighborhood Arts POPS Symphony Concerts Public Art Program Street Artists Licenses Sunset Branch Library Bureau of Architecture Glen H u n t 3001 Baker Street Private Request: Encroachment Fred Taylor, Ravi Anand Mayor's Emergency Coordination Center Bureau of Architecture Bruce Flynn, Jorqe Gutierrez PHASE(S) 1,11,111 L.Li, III 11 11 343 Sansome/Leidesdorf f Street Development Private Request",
-    "House 415-554-9679 Arts Commission Gallery 155 Grove Street 415-554-9682 Commissioners Excused Rai Okamoto Commissioners Present Robert LaRocca John Kriken Anne Healy Staff Present Lemora Martin, Acting Commission Secretary Jill Manton, Art Enrichment Curator Debra Lehane, Collections Manager I. SUNSET BRANCH LIBRARY Bureau of Architecture Glen Hunt Glen Hunt stated that this project involves handicapped access to the building at Irving and 18th Avenue, altering the exterior. Seismic bracing, by drilling through the masonry and inserting no. 11 rebar through the facade, without disturbing the character of the bu",
-    "SUNSET LIBRARY (Continued) Phase III approval was withheld, subject to final approval of lighting and planting plans. The following recommendation was made for presentation before the full Commission on 4 February: Motion to approve the handicapped accessibility and A seismic bracing plan for the Sunset Branch Library, Phases I, II. Moved: John Kriken Consensus: Unanimous 2. 3001 BAKER STREET Sidewalk encroachment Fred Taylor Mr. Taylor described this minor sidewalk encroachment by a fence and a corner detail attached to his apartment building on Lombard Street, one block from the Presidio Gate. He present",
-    "EMBARCADERO PLAZA Discussion Planning Commission ROMA pIV. SAN FRANCISCO INTERNATIONAL AIRPORT UAL PARKING GARAGE Phase I DPW Bureau of Architecture Howard Wong / V. TENDERLOIN CHILDREN'S PLAYGROUND 570 ELLIS ST. Phase II DPW Bureau of Architecture Robert Appleton, Robert Nist. Andrew Maloney /VI. SUNSET BRANCH LIBRARY Phase III DPW Bureau of Architecture Glen Hunt VII. FIFTH AND MISSION PARKING GARAGE Phase I, II Parking Authority Whistler Patri Architects Marie Zeller, Dana Merker VIII. OLD BUSINESS IX. NEW BUSINESS Discussion of Proposed Civic Center Master Plan X. ADJOURNMENT AGENDA. WPS 12/9/91 MINUTES",
-    "ussed. The Commissioners agreed to submit a recommendation for Phase II approval under Civic Design Committee Report at the January 6th, 1992 Arts Commission meeting. (REF: Civic Design Review Committee Minutes June 18, 1991 Phase I approval Civic Design Review Committee Minutes November 18, 1991) V. SUNSET BRANCH LIBRARY Bureau of Archi"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 6.51,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 1.01,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": -2.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/agenda19891991arts",
-   "deep_link": "https://archive.org/details/agenda19891991arts?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Art Commission minutes reviewing a Sunset branch and community centre submission."
   },
   {
    "identifier": "minutesofregular7194sanf",
@@ -235,9 +212,13 @@
    "url": "https://archive.org/details/minutesofregular7194sanf",
    "deep_link": "https://archive.org/details/minutesofregular7194sanf?q=Sunset+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "1940s commission resolutions covering painting, gutters and an iron ladder at the branch."
   },
   {
    "identifier": "resolution2002sanf_0",
@@ -275,9 +256,13 @@
    "url": "https://archive.org/details/resolution2002sanf_0",
    "deep_link": "https://archive.org/details/resolution2002sanf_0?q=Sunset+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A Board resolution accepting a $10,000 state grant to expand the branch's Asian language collection."
   },
   {
    "identifier": "adultcalendarofp1997sanf",
@@ -317,47 +302,59 @@
    "url": "https://archive.org/details/adultcalendarofp1997sanf",
    "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Sunset+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "calendar",
+   "doc_type_label": "Calendar",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Calendar",
+   "salient": false,
+   "gloss": "A programme calendar showing the branch's slide talks and evening events."
   },
   {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
+   "identifier": "agenda19891991arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
+   "year": 1988,
    "pool": "sfpl",
    "matched_alias": "Sunset Branch Library",
    "ocr_excerpts": [
-    "POTRERO BRANCH LIBRARY 64 BACKGROUND ! 64 SCOPE OF WORK 64 PROJECT COST 66 PROJECT SCHEDULE 66 PRESIDIO BRANCH LIBRARY 67 BACKGROUND 67 SCOPE OF WORK 67 PROJECT COST 68 PROJECT SCHEDULE 68 RICHMOND BRANCH LIBRARY .69 BACKGROUND 69 SCOPE OF WORK 69 PROJECT COST 71 PROJECT SCHEDULE 71 SUNSET BRANCH LIBRARY 72 BACKGROUND 72 SCOPE OF WORK 72 PROJECT COST 73 PROJECT SCHEDULE .73 VISITACION VALLEY BRANCH LIBRARY 74 BACKGROUND 74 SCOPE OF WORK : 74 PROJECT COST 75 PROJECT SCHEDULE 75 iii Branch Library Improvement Program WEST PORTAL BRANCH LIBRARY 76 BACKGROUND '. 76 SCOPE OF WORK 76 PRO",
-    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 71 Branch Library Improvement Program SUNSET BRANCH LIBRARY BACKGROUND The Sunset Branch Library - a Carnegie branch - opened to the public in 1918, is located at 1305 18tn. Avenue. It is a two story building built of concrete frame and reinforced masonry construction. The building has a total square footage of 8,576. It serves the populations of the Sunset and portions of the Parkside and",
-    "heels, and temporary closure This relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Sunset Branch Library Project Cost Summary Rehabilitation and Improvements $1,610,000 Expansion $0 Total Project Cost Estimate $1,610,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Sunset Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 13 months Relocation and Construction 11 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
+    "OFFICIO MEMBERS Presidents of the Fine Arts Museum Library Commission. Planning Commission, Recreation and Park Commission ACTING DIRECTOR Margie O'Drlscoll PROGRAMS Arts Festivals CMc Art Collection CMc Design Review Neighborhood Arts POPS Symphony Concerts Public Art Program Street Artists Licenses Sunset Branch Library Bureau of Architecture Glen H u n t 3001 Baker Street Private Request: Encroachment Fred Taylor, Ravi Anand Mayor's Emergency Coordination Center Bureau of Architecture Bruce Flynn, Jorqe Gutierrez PHASE(S) 1,11,111 L.Li, III 11 11 343 Sansome/Leidesdorf f Street Development Private Request",
+    "House 415-554-9679 Arts Commission Gallery 155 Grove Street 415-554-9682 Commissioners Excused Rai Okamoto Commissioners Present Robert LaRocca John Kriken Anne Healy Staff Present Lemora Martin, Acting Commission Secretary Jill Manton, Art Enrichment Curator Debra Lehane, Collections Manager I. SUNSET BRANCH LIBRARY Bureau of Architecture Glen Hunt Glen Hunt stated that this project involves handicapped access to the building at Irving and 18th Avenue, altering the exterior. Seismic bracing, by drilling through the masonry and inserting no. 11 rebar through the facade, without disturbing the character of the bu",
+    "SUNSET LIBRARY (Continued) Phase III approval was withheld, subject to final approval of lighting and planting plans. The following recommendation was made for presentation before the full Commission on 4 February: Motion to approve the handicapped accessibility and A seismic bracing plan for the Sunset Branch Library, Phases I, II. Moved: John Kriken Consensus: Unanimous 2. 3001 BAKER STREET Sidewalk encroachment Fred Taylor Mr. Taylor described this minor sidewalk encroachment by a fence and a corner detail attached to his apartment building on Lombard Street, one block from the Presidio Gate. He present",
+    "EMBARCADERO PLAZA Discussion Planning Commission ROMA pIV. SAN FRANCISCO INTERNATIONAL AIRPORT UAL PARKING GARAGE Phase I DPW Bureau of Architecture Howard Wong / V. TENDERLOIN CHILDREN'S PLAYGROUND 570 ELLIS ST. Phase II DPW Bureau of Architecture Robert Appleton, Robert Nist. Andrew Maloney /VI. SUNSET BRANCH LIBRARY Phase III DPW Bureau of Architecture Glen Hunt VII. FIFTH AND MISSION PARKING GARAGE Phase I, II Parking Authority Whistler Patri Architects Marie Zeller, Dana Merker VIII. OLD BUSINESS IX. NEW BUSINESS Discussion of Proposed Civic Center Master Plan X. ADJOURNMENT AGENDA. WPS 12/9/91 MINUTES",
+    "ussed. The Commissioners agreed to submit a recommendation for Phase II approval under Civic Design Committee Report at the January 6th, 1992 Arts Commission meeting. (REF: Civic Design Review Committee Minutes June 18, 1991 Phase I approval Civic Design Review Committee Minutes November 18, 1991) V. SUNSET BRANCH LIBRARY Bureau of Archi"
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 2.86,
-    "sf_context": false,
+    "score": 6.51,
+    "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
     "substantive": true,
     "substantive_direct": true,
-    "hits": 3,
-    "density": 1.36,
+    "hits": 5,
+    "density": 1.01,
     "title_hit": false
    },
    "materiality": {
-    "score": 5.0,
+    "score": -2.0,
     "money": true,
     "decision": false,
     "accountability": false,
     "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
+    "named_genre": false,
+    "generic_serial": true
    },
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Sunset+Branch+Library",
+   "url": "https://archive.org/details/agenda19891991arts",
+   "deep_link": "https://archive.org/details/agenda19891991arts?q=Sunset+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Civic Design Review minutes on the branch's disabled access and its seismic bracing through the facade."
   }
  ],
  "dept_shelf": [
@@ -396,9 +393,9 @@
   }
  ],
  "_gate": {
-  "has_photo": false,
+  "has_photo": true,
   "n_documents": 6,
   "n_money_links": 1,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.742677+00:00",
+ "generated_at": "2026-07-28T12:23:47.756762+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "richmond-branch-library",
@@ -49,50 +49,23 @@
   "items": [],
   "payees": [],
   "n_payees": 0,
-  "payees_total_paid": 0,
-  "permits": [
-   {
-    "description": "renovation of public library including the construction of an addition. work will include a seismic upgrade, new electrical and mechanical systems, site landscaping and accessibility work as required for disabled at richmond branch librabry.",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 8043933.0,
-    "status": "complete",
-    "permit_date": "2007-03-20",
-    "permit_year": 2007
-   },
-   {
-    "description": "installation of a new sprinkler system in library renovation. 140-new heads.",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 35000.0,
-    "status": "complete",
-    "permit_date": "2008-01-28",
-    "permit_year": 2008
-   },
-   {
-    "description": "new fire alarm system consisting of 1 fire alarm control panel w/ diacer, 1 annunciator panel, 39 smoke detectors, 3 heat detectors, 2 beam smoke detectors, 1 dual monitor module for sprinkler monitoring, 2 relay modules for elevator, 16 horn/strobe, 9 strobes.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 12000.0,
-    "status": "complete",
-    "permit_date": "2008-08-04",
-    "permit_year": 2008
-   }
-  ],
-  "n_permits": 3,
-  "permits_total_declared": 8090933.0,
-  "permits_by_year": [
-   {
-    "year": 2007,
-    "declared_usd": 8043933.0
-   },
-   {
-    "year": 2008,
-    "declared_usd": 47000.0
-   }
-  ]
+  "payees_total_paid": 0
  },
- "photo": null,
- "photo_credit": null,
- "summary_en": null,
- "published": false,
+ "photo": "/img/us/sf/places/richmond-branch-library.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/richmond-branch-library.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:The_Richmond_Branch_(4498292138).jpg",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Eric E Castro from San Francisco",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T22:52:13.221600+00:00"
+ },
+ "summary_en": "The Richmond branch was the first San Francisco library built with Carnegie funds: a two-storey concrete building of 9,300 square feet, put up in 1914 at 351 Ninth Avenue to serve the inner Richmond. Its rebuilding is documented from the money outwards. The Budget Committee appropriated $4,494,000 of 1990 Earthquake Safety Bond funds across the library's capital projects — $1,544,000 of it for the Richmond renovation, alongside $2,500,000 to complete Chinatown's — and then placed $980,400 on reserve pending the selection of a contractor, the contract cost details, and the contractor's minority- and women-owned business status. The renovation ran as an active project through the Library Commission's reports in 2002, with a public meeting held at the branch itself. Its art was chosen the same way: an artist selection panel including three Richmond residents, elected at a neighborhood meeting, picked three finalists whose proposals were exhibited in the branch for written public comment, and in December 2002 the Arts Commission approved an illuminated book-wall sculpture by Vince Koloski for the renovated library and authorised his contract to fabricate and install it. The construction permit, filed in 2007 and since completed, declares $8,043,933 for the renovation and its addition, a seismic upgrade, new electrical and mechanical systems, landscaping and accessibility work.",
+ "published": true,
  "money": {
   "budget_line": {
    "code": "LIB",
@@ -111,6 +84,50 @@
   "grants": []
  },
  "documents": [
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Richmond Branch Library",
+   "ocr_excerpts": [
+    "PORTOLA BRANCH LIBRARY 62 BACKGROUND 62 SCOPE OF WORK i 62 PROJECT COST 63 PROJECT SCHEDULE 63 POTRERO BRANCH LIBRARY 64 BACKGROUND ! 64 SCOPE OF WORK 64 PROJECT COST 66 PROJECT SCHEDULE 66 PRESIDIO BRANCH LIBRARY 67 BACKGROUND 67 SCOPE OF WORK 67 PROJECT COST 68 PROJECT SCHEDULE 68 RICHMOND BRANCH LIBRARY .69 BACKGROUND 69 SCOPE OF WORK 69 PROJECT COST 71 PROJECT SCHEDULE 71 SUNSET BRANCH LIBRARY 72 BACKGROUND 72 SCOPE OF WORK 72 PROJECT COST 73 PROJECT SCHEDULE .73 VISITACION VALLEY BRANCH LIBRARY 74 BACKGROUND 74 SCOPE OF WORK : 74 PROJECT COST 75 PROJECT SCHEDULE 75 iii Branch L",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 68 Branch Library Improvement Program RICHMOND BRANCH LIBRARY BACKGROUND The Richmond Branch Library, the first SFPL branch built with Carnegie funds, is a two- story 9.300 square foot concrete building constructed in 1914 located at 351 Ninth Avenue. It serves residents of the inner Richmond District. Children, families, individuals, and senior citizens use the library. This branch also draws many",
+    "heels, and temporary closure This relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Richmond Branch Library Project Cost Summary Rehabilitation and Improvements $6,090,000 Expansion $2,620,000 Total Project Cost Estimate $8,710,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Richmond Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 22 months Relocation and Construction 20 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.86,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Richmond+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The bond proposal describing the 1914 Carnegie building, the first branch the city built with that money."
+  },
   {
    "identifier": "minutesofregular2002sanf",
    "title": "Minutes of the regular meeting ...",
@@ -149,9 +166,57 @@
    "url": "https://archive.org/details/minutesofregular2002sanf",
    "deep_link": "https://archive.org/details/minutesofregular2002sanf?q=Richmond+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "4 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Library Commission reports tracking the renovation and the community meeting held at the branch."
+  },
+  {
+   "identifier": "noticeofartistse19arts",
+   "title": "Notice of artist selection panel meeting",
+   "creator": "Arts Commission of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Richmond Branch Library",
+   "ocr_excerpts": [
+    "ming Arts Public Art Suite 240 Community Arts & Education ultural eqijity Grants The Richmond Branch Community Artist Selection Panel will meet on Wednesday, RTisTs ^^c^Nsj^ September 18th, from 9 AM to Noon to select three artists to prepare artwork . ^ proposals for the expanded and renovated Richmond Branch Library. The Civic Art Collection r r r j Suite 70 Richmond Branch Community Artist Selection Panel includes three Richmond ITS Commission Gallery uelghborhood rcsldcnts who wcrc clcctcd at 3. Richmoud Library community 401 ^\"\"^ ^\"^^^\"^^^^ meeting held on the evening of June 27\"\". The community panelists",
+    "Panel specifically for this project. That panel, which met in mid- April, included three arts professionals. Marilyn Thompson, the Branch Library Improvement Program Manager, and Joan Jasper, Chief Curator of the Main Library. The artwork proposals by the three artist finalists will be exhibited at the Richmond Branch Library, probably in early November, for written public comment, which will be forwarded to the Richmond Branch Community Artist Selection Panel. The panel will meet again in mid-November to select the final artist with his or her artwork proposal for the new Richmond Branch Library. The final proposal must be approved by the Arts Commission and reviewed by the Library Commission. AUG 2 8 2002 SAN FRANCISCO PUBLIC LIBRARY You are welcome to attend the first Richmond Branch Community Artist Selection Panel meeting on September 18th at the Arts Commission offices. San Franc",
+    "09- VD .lioS s P A C Richard Newirth REcrok OF Cultural AffMRS PROGRAMS Civic Design Review Performing Arts SAN FRANCISCO ARTS COMMISSION BRANCH LIBRARY IMPROVEMENT ART ENRICHMENT PROGRAM ORIENTATION MEETING FOR THE THREE ARTIST SEMIFINALISTS PREPARING ARTWORK DESIGN PROPOSALS FOR THE RICHMOND BRANCH LIBRARY THE PUBLIC IS WELCOME TO ATTEND THIS MEETING TO PROVIDE INPUT TO THE ARTISTS PRIOR TO THE DEVELOPMENT OF THEIR PROPOSALS ] 0-1 0-02 Al 0:^7 MEETING DATE: WEDNESDAY, NOVEMBER 6, 2002 at 3 PM LOCATION: RICHMOND BRANCH LIBRARY, 351 NINTH AVENUE, RCVD 's:';' 2^'o BETWEEN GEARY AND CLEMENT IN THE RICHMOND DISTRICT Community Arts &. Education As part of the Branch Library Improvement Art Enrichment Program, three Bay ^STREETAR^sirLicTN^'sIsArea artists have been selected by the Richmond Branch Community^rtist Suite ^oggjg^^^Qj^ Panel to each prepare a proposal for the expanded and renovat^Qp. ir yirr^ .-p^^^ LLECTioNRichmond Branch Librarv. The three artists and their media are: vltlM I b DEPT. OCT 1 0 i^^i Civic Art coLiECTioNRichmond Branch Library. The three artists and their media are: Scott Donahue, concrete sculpture and reliefs '\"^orv^N^srENu^IJohanna Poethig, tile mosaics 415 554 608o(3qj.j^ MaFchcschi, lighting and metal sculpture SAN FRANCISCO PUBLIC LIBRAR"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.07,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.57,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/noticeofartistse19arts",
+   "deep_link": "https://archive.org/details/noticeofartistse19arts?q=Richmond+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "The notice convening a selection panel of Richmond residents to choose artists for the renovated branch."
   },
   {
    "identifier": "agenda20arts_0",
@@ -190,86 +255,13 @@
    "url": "https://archive.org/details/agenda20arts_0",
    "deep_link": "https://archive.org/details/agenda20arts_0?q=Richmond+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "noticeofartistse19arts",
-   "title": "Notice of artist selection panel meeting",
-   "creator": "Arts Commission of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Richmond Branch Library",
-   "ocr_excerpts": [
-    "ming Arts Public Art Suite 240 Community Arts & Education ultural eqijity Grants The Richmond Branch Community Artist Selection Panel will meet on Wednesday, RTisTs ^^c^Nsj^ September 18th, from 9 AM to Noon to select three artists to prepare artwork . ^ proposals for the expanded and renovated Richmond Branch Library. The Civic Art Collection r r r j Suite 70 Richmond Branch Community Artist Selection Panel includes three Richmond ITS Commission Gallery uelghborhood rcsldcnts who wcrc clcctcd at 3. Richmoud Library community 401 ^\"\"^ ^\"^^^\"^^^^ meeting held on the evening of June 27\"\". The community panelists",
-    "Panel specifically for this project. That panel, which met in mid- April, included three arts professionals. Marilyn Thompson, the Branch Library Improvement Program Manager, and Joan Jasper, Chief Curator of the Main Library. The artwork proposals by the three artist finalists will be exhibited at the Richmond Branch Library, probably in early November, for written public comment, which will be forwarded to the Richmond Branch Community Artist Selection Panel. The panel will meet again in mid-November to select the final artist with his or her artwork proposal for the new Richmond Branch Library. The final proposal must be approved by the Arts Commission and reviewed by the Library Commission. AUG 2 8 2002 SAN FRANCISCO PUBLIC LIBRARY You are welcome to attend the first Richmond Branch Community Artist Selection Panel meeting on September 18th at the Arts Commission offices. San Franc",
-    "09- VD .lioS s P A C Richard Newirth REcrok OF Cultural AffMRS PROGRAMS Civic Design Review Performing Arts SAN FRANCISCO ARTS COMMISSION BRANCH LIBRARY IMPROVEMENT ART ENRICHMENT PROGRAM ORIENTATION MEETING FOR THE THREE ARTIST SEMIFINALISTS PREPARING ARTWORK DESIGN PROPOSALS FOR THE RICHMOND BRANCH LIBRARY THE PUBLIC IS WELCOME TO ATTEND THIS MEETING TO PROVIDE INPUT TO THE ARTISTS PRIOR TO THE DEVELOPMENT OF THEIR PROPOSALS ] 0-1 0-02 Al 0:^7 MEETING DATE: WEDNESDAY, NOVEMBER 6, 2002 at 3 PM LOCATION: RICHMOND BRANCH LIBRARY, 351 NINTH AVENUE, RCVD 's:';' 2^'o BETWEEN GEARY AND CLEMENT IN THE RICHMOND DISTRICT Community Arts &. Education As part of the Branch Library Improvement Art Enrichment Program, three Bay ^STREETAR^sirLicTN^'sIsArea artists have been selected by the Richmond Branch Community^rtist Suite ^oggjg^^^Qj^ Panel to each prepare a proposal for the expanded and renovat^Qp. ir yirr^ .-p^^^ LLECTioNRichmond Branch Librarv. The three artists and their media are: vltlM I b DEPT. OCT 1 0 i^^i Civic Art coLiECTioNRichmond Branch Library. The three artists and their media are: Scott Donahue, concrete sculpture and reliefs '\"^orv^N^srENu^IJohanna Poethig, tile mosaics 415 554 608o(3qj.j^ MaFchcschi, lighting and metal sculpture SAN FRANCISCO PUBLIC LIBRAR"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 6.07,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 1.57,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.75,
-    "money": false,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/noticeofartistse19arts",
-   "deep_link": "https://archive.org/details/noticeofartistse19arts?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Richmond Branch Library",
-   "ocr_excerpts": [
-    "PORTOLA BRANCH LIBRARY 62 BACKGROUND 62 SCOPE OF WORK i 62 PROJECT COST 63 PROJECT SCHEDULE 63 POTRERO BRANCH LIBRARY 64 BACKGROUND ! 64 SCOPE OF WORK 64 PROJECT COST 66 PROJECT SCHEDULE 66 PRESIDIO BRANCH LIBRARY 67 BACKGROUND 67 SCOPE OF WORK 67 PROJECT COST 68 PROJECT SCHEDULE 68 RICHMOND BRANCH LIBRARY .69 BACKGROUND 69 SCOPE OF WORK 69 PROJECT COST 71 PROJECT SCHEDULE 71 SUNSET BRANCH LIBRARY 72 BACKGROUND 72 SCOPE OF WORK 72 PROJECT COST 73 PROJECT SCHEDULE .73 VISITACION VALLEY BRANCH LIBRARY 74 BACKGROUND 74 SCOPE OF WORK : 74 PROJECT COST 75 PROJECT SCHEDULE 75 iii Branch L",
-    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 68 Branch Library Improvement Program RICHMOND BRANCH LIBRARY BACKGROUND The Richmond Branch Library, the first SFPL branch built with Carnegie funds, is a two- story 9.300 square foot concrete building constructed in 1914 located at 351 Ninth Avenue. It serves residents of the inner Richmond District. Children, families, individuals, and senior citizens use the library. This branch also draws many",
-    "heels, and temporary closure This relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Richmond Branch Library Project Cost Summary Rehabilitation and Improvements $6,090,000 Expansion $2,620,000 Total Project Cost Estimate $8,710,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Richmond Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 22 months Relocation and Construction 20 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 2.86,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 1.36,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 5.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Arts Commission resolutions approving Vince Koloski's illuminated book-wall sculpture and his contract."
   },
   {
    "identifier": "2calendarmeetingo1995sanf",
@@ -308,8 +300,13 @@
    "url": "https://archive.org/details/2calendarmeetingo1995sanf",
    "deep_link": "https://archive.org/details/2calendarmeetingo1995sanf?q=Richmond+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Budget Committee papers allocating earthquake bond funds to the renovation and reserving $980,400 pending a contractor."
   }
  ],
  "dept_shelf": [
@@ -348,9 +345,9 @@
   }
  ],
  "_gate": {
-  "has_photo": false,
+  "has_photo": true,
   "n_documents": 5,
   "n_money_links": 1,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

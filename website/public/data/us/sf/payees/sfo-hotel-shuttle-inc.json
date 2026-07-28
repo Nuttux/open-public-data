@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.737893+00:00",
+ "generated_at": "2026-07-28T11:43:47.710098+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -30,6 +30,102 @@
  "top_departments": [
   "AIR Airport Commission"
  ],
+ "profile": {
+  "n_vouchers": 201,
+  "departments": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 173024115.19,
+    "n_vouchers": 201
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "527030",
+    "label": "Transportation Services",
+    "spend_class": "purchase",
+    "usd": 121275700.16,
+    "n_vouchers": 126
+   },
+   {
+    "code": "560290",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 669885.29,
+    "n_vouchers": 6
+   },
+   {
+    "code": "529990",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 370575.34,
+    "n_vouchers": 5
+   },
+   {
+    "code": "529210",
+    "label": "Veh Maint (Non Central Shops)",
+    "spend_class": "purchase",
+    "usd": 3334.5,
+    "n_vouchers": 1
+   },
+   {
+    "code": "531210",
+    "label": "Vehicle Rental",
+    "spend_class": "purchase",
+    "usd": 900.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "560410",
+    "label": "Shop, Bldg & Field Maint Eqpmt",
+    "spend_class": "purchase",
+    "usd": 0.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 16749482.97,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Transportation Services",
+    "spend_class": "purchase",
+    "usd": 16076263.18,
+    "n_vouchers": 15
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 669885.29,
+    "n_vouchers": 6
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Veh Maint (Non Central Shops)",
+    "spend_class": "purchase",
+    "usd": 3334.5,
+    "n_vouchers": 1
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Shop, Bldg & Field Maint Eqpmt",
+    "spend_class": "purchase",
+    "usd": 0.0,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000027921",

@@ -37,10 +37,9 @@ export default function SfBudgetTimelinePage() {
         }
         lede={
           <>
-            Total city finances from the 1880s to today, on a single scrubbable axis. The modern years
-            come straight from the adopted budget; the older ones are transcribed <em>verbatim</em> from
-            scanned municipal reports held at the Internet Archive — every figure linked to the exact
-            scanned page, and readable in today&rsquo;s dollars.
+            Total city finances from the 1880s to today. The modern years come from the adopted
+            budget; the older ones are transcribed <em>verbatim</em> from scanned municipal reports
+            at the Internet Archive, each linked to its page.
           </>
         }
         stats={

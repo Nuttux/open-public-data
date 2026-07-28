@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.725738+00:00",
+ "generated_at": "2026-07-28T11:43:47.689457+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -34,6 +34,174 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 4575,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 3935097762.35,
+    "n_vouchers": 1099
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 561262247.01,
+    "n_vouchers": 342
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 379510920.47,
+    "n_vouchers": 171
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 287355615.76,
+    "n_vouchers": 1118
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 253409641.62,
+    "n_vouchers": 132
+   },
+   {
+    "department": "WAR War Memorial",
+    "department_code": "WAR",
+    "usd": 96416055.43,
+    "n_vouchers": 76
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "usd": 94197972.61,
+    "n_vouchers": 36
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 89838440.23,
+    "n_vouchers": 193
+   }
+  ],
+  "n_departments": 34,
+  "categories": [
+   {
+    "code": "574110",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 2979872566.02,
+    "n_vouchers": 1290
+   },
+   {
+    "code": "571110",
+    "label": "Bond Redemption",
+    "spend_class": "obligation",
+    "usd": 1046047706.7,
+    "n_vouchers": 459
+   },
+   {
+    "code": "REST_CASH_INOUT_TRLT",
+    "label": "Rest Cash/Inv Out Treas LT",
+    "spend_class": "ledger",
+    "usd": 559037568.63,
+    "n_vouchers": 125
+   },
+   {
+    "code": "444999",
+    "label": "Other Federal Grants",
+    "spend_class": "ledger",
+    "usd": 350000000.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "530410",
+    "label": "Base Rent-Debt Svc-Bldg-Struct",
+    "spend_class": "obligation",
+    "usd": 310411889.36,
+    "n_vouchers": 221
+   },
+   {
+    "code": "480399",
+    "label": "Proceeds From Other S-T Debts",
+    "spend_class": "ledger",
+    "usd": 165620537.0,
+    "n_vouchers": 4
+   },
+   {
+    "code": "571310",
+    "label": "Cap Leases Principal Repaymnt",
+    "spend_class": "purchase",
+    "usd": 60545000.0,
+    "n_vouchers": 9
+   },
+   {
+    "code": "571210",
+    "label": "Loan Principal Repayment",
+    "spend_class": "ledger",
+    "usd": 54473961.44,
+    "n_vouchers": 29
+   }
+  ],
+  "n_categories": 57,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 636886819.4,
+  "n_recent_lines": 66,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 239726255.84,
+    "n_vouchers": 89
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Bond Redemption",
+    "spend_class": "obligation",
+    "usd": 182859973.11,
+    "n_vouchers": 34
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "label": "Rest Cash/Inv Out Treas LT",
+    "spend_class": "ledger",
+    "usd": 65546673.1,
+    "n_vouchers": 2
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 26273057.41,
+    "n_vouchers": 4
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Bond Redemption",
+    "spend_class": "obligation",
+    "usd": 14180000.0,
+    "n_vouchers": 12
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 13288782.37,
+    "n_vouchers": 60
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000028225",

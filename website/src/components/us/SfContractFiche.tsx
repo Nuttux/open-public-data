@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useT } from "@/lib/localeContext";
 import { fmtUsdCompact, fmtDateLong } from "@/lib/us/format";
 import Tip from "@/components/fusion/Tip";
+import { FicheMore } from "@/components/fiche";
 import Fy2018Note from "@/components/us/Fy2018Note";
-import { FAMILY_LABELS, typeLabel } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
+import { FAMILY_LABELS, typeLabel, typeSlug } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
 import type { SfContractFiche as SfContractFicheType } from "@/app/us/city/sf/contracts/us-sf-contracts-types";
 
 /**
@@ -22,7 +23,9 @@ const fill = (s: string, vars: Record<string, string | number>) => {
   return r;
 };
 
-const nfInt = new Intl.NumberFormat("en-US");
+
+/** Rows of the project team shown before the tail folds away. */
+const TEAM_FOLD = 8;
 
 function SpendCurve({ fiche }: { fiche: SfContractFicheType }) {
   const t = useT();
@@ -80,8 +83,15 @@ function SpendCurve({ fiche }: { fiche: SfContractFicheType }) {
                 <div
                   style={{
                     height: h,
-                    background: partial ? "transparent" : "var(--bleu)",
+                    // A provisional year still has to show its magnitude. This
+                    // used to be a hollow outline, so any contract whose only
+                    // payments fall in open fiscal years — 26% of fiches —
+                    // rendered a chart that looked empty next to a KPI saying
+                    // millions were paid. Tinted fill + dashed edge: the value
+                    // reads, and "not final yet" still reads.
+                    background: partial ? "rgba(45, 55, 128, 0.28)" : "var(--bleu)",
                     border: partial ? "1.5px dashed var(--bleu)" : "none",
+                    boxSizing: "border-box",
                   }}
                 />
               )}
@@ -116,6 +126,23 @@ function SpendCurve({ fiche }: { fiche: SfContractFicheType }) {
           )}
         </span>
       </div>
+      {/* These bars are the voucher join by fiscal year; the "paid" KPI is the
+        *  register's own lifetime figure. On 44% of contracts they differ —
+        *  usually because a still-open fiscal year appears here but not there.
+        *  Saying so beats letting the reader find two numbers that disagree. */}
+      {(() => {
+        const curveTotal = positive.reduce((a, p) => a + p.vouchers_paid_usd, 0);
+        const paid = fiche.contract.paid_usd;
+        if (paid <= 0 || Math.abs(curveTotal - paid) / paid <= 0.02) return null;
+        return (
+          <p style={{ margin: "8px 0 0", fontSize: 12, color: "var(--muted)", lineHeight: 1.5 }}>
+            {fill(t("us.sf.contracts.fiche.curve.reconcile"), {
+              curve: fmtUsdCompact(curveTotal),
+              paid: fmtUsdCompact(paid),
+            })}
+          </p>
+        );
+      })()}
       {negatives.length > 0 && (
         <p style={{ margin: "8px 0 0", fontSize: 12, color: "var(--muted)" }}>
           {t("us.sf.contracts.fiche.curve.negatives")}{" "}
@@ -129,29 +156,35 @@ function SpendCurve({ fiche }: { fiche: SfContractFicheType }) {
 }
 
 /**
- * Paid measured against the agreed ceiling. The larger of the two sets the
- * full track, so the overrun (ocre, beyond the "Agreed" marker) is visible
- * whenever payments accumulated past the base document — the single clearest
- * read of the fiche's agreed/paid KPIs.
+ * Paid measured against the agreed amount. The larger of the two sets the full
+ * track, so when payments accumulated past the base document the bar fills and
+ * the base is marked, rather than the bar appearing part-full.
+ *
+ * The excess is drawn in NEUTRAL GREY, never ocre. Ocre is this site's "look
+ * here" ink and the excess is not a finding: the register reconciles with
+ * itself perfectly (award = outstanding POs + payments + remaining,
+ * 31,795/31,795), but its "Payments Made" column does not match the City's
+ * voucher ledger on large multi-phase contracts — median 3.1x, verified
+ * PO-by-PO, cause unknown. So the bar shows the shape and stays silent about
+ * why. Suppressing it entirely was worse: it left a $5.1B-paid contract
+ * rendering a 43%-full bar directly under a KPI reading $5.1B.
  */
 function PaidVsAgreedBar({ fiche }: { fiche: SfContractFicheType }) {
   const t = useT();
   const agreed = fiche.contract.agreed_usd;
   const paid = fiche.contract.paid_usd;
-  const over = fiche.contract.paid_exceeds_agreed;
   if (agreed <= 0 && paid <= 0) return null;
+  const over = paid > agreed && agreed > 0;
 
   const ref = Math.max(agreed, paid, 1);
   const agreedPct = (agreed / ref) * 100;
   const paidPct = (paid / ref) * 100;
   const withinPct = Math.min(paidPct, agreedPct);
   const overrun = Math.max(0, paid - agreed);
-  const remaining = Math.max(0, agreed - paid);
-  const pctOfAgreed = agreed > 0 ? Math.round((paid / agreed) * 100) : null;
 
   return (
-    <section className="fx-fiche-section">
-      <div className="fx-fiche-h">{t("us.sf.contracts.fiche.bar.h")}</div>
+    <div>
+      <div className="fx-fiche-sub">{t("us.sf.contracts.fiche.money.sub_ceiling")}</div>
       <div
         role="img"
         aria-label={fill(t("us.sf.contracts.fiche.bar.aria"), {
@@ -162,9 +195,9 @@ function PaidVsAgreedBar({ fiche }: { fiche: SfContractFicheType }) {
       >
         {/* paid, within the agreed ceiling */}
         <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${withinPct}%`, background: "var(--bleu)" }} />
-        {/* overrun, beyond the agreed amount */}
+        {/* paid beyond the recorded base — neutral grey, see the note above */}
         {over && overrun > 0 && (
-          <div style={{ position: "absolute", left: `${agreedPct}%`, top: 0, bottom: 0, width: `${paidPct - agreedPct}%`, background: "var(--ocre)" }} />
+          <div style={{ position: "absolute", left: `${agreedPct}%`, top: 0, bottom: 0, width: `${paidPct - agreedPct}%`, background: "#9aa0ab" }} />
         )}
         {/* agreed marker — only meaningful when paid overshoots it */}
         {over && (
@@ -172,31 +205,29 @@ function PaidVsAgreedBar({ fiche }: { fiche: SfContractFicheType }) {
         )}
       </div>
       {over ? (
-        <p style={{ margin: "8px 0 0", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--ocre)" }}>
+        <p style={{ margin: "8px 0 0", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}>
           {fmtUsdCompact(paid)} {t("us.sf.contracts.fiche.kpi.paid").toLowerCase()} ·{" "}
           {fill(t("us.sf.contracts.fiche.bar.over"), { v: fmtUsdCompact(overrun) })}
           <span style={{ color: "var(--muted)" }}> · {t("us.sf.contracts.fiche.bar.agreed_marker")} {fmtUsdCompact(agreed)}</span>
         </p>
-      ) : (
-        <p style={{ margin: "8px 0 0", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}>
-          {pctOfAgreed != null && fill(t("us.sf.contracts.fiche.bar.of_agreed"), { pct: pctOfAgreed })}
-          {remaining > 0 && (
-            <> · {fill(t("us.sf.contracts.fiche.bar.remaining"), { v: fmtUsdCompact(remaining) })}</>
-          )}
-        </p>
-      )}
-    </section>
+      ) : null}
+    </div>
   );
 }
 
 export default function SfContractFiche({
   fiche,
   primePayeeSlug,
+  deptContractsHref,
 }: {
   fiche: SfContractFicheType;
   /** Slug of the prime contractor's recipient fiche when it is keyed (top ~200);
    *  null otherwise. Resolved from contracts_held inversion — a confident match. */
   primePayeeSlug?: string | null;
+  /** The department's CONTRACTS fiche, server-validated (null ⇒ plain text).
+   *  Never its budget fiche: from inside a contract, "the department" means
+   *  the department's other contracts, and the budget is a link it offers. */
+  deptContractsHref?: string | null;
 }) {
   const t = useT();
   const c = fiche.contract;
@@ -238,57 +269,129 @@ export default function SfContractFiche({
   const teamMembers = fiche.team.filter((m) => m.supplier);
   const showTeam = teamMembers.length > 1;
 
+  const teamRow = (m: SfContractFicheType["team"][number], i: number) => (
+    <tr key={`${m.supplier}-${m.role}-${i}`}>
+      <td className="c-lead" style={{ fontWeight: m.role === "Prime Contractor" ? 600 : 400 }}>
+        {m.role === "Prime Contractor" && primeHref ? (
+          <Link href={primeHref} scroll={false} style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>
+            {m.supplier}
+          </Link>
+        ) : (
+          m.supplier
+        )}
+        {m.lbe && (
+          <span style={{ fontFamily: "var(--f-mono)", fontSize: 10, color: "var(--bleu)", marginLeft: 8 }}>
+            LBE
+          </span>
+        )}
+      </td>
+      <td className="muted c-fig" data-label={t("us.sf.contracts.fiche.team.col.role")}>
+        {t(`us.sf.contracts.fiche.team.role.${m.role.replace(/\s/g, "_").toLowerCase()}`)}
+      </td>
+      <td className="num c-fig" data-label={t("us.sf.contracts.fiche.team.col.attached")}>
+        {m.role === "Prime Contractor" ? "—" : m.attached_usd != null ? fmtUsdCompact(m.attached_usd) : "—"}
+      </td>
+    </tr>
+  );
+
   return (
     <div>
-      <div className="fx-fiche-lead">
-        <p style={{ margin: 0, fontWeight: 600, color: "var(--ink)", fontSize: 17, lineHeight: 1.45 }}>
-          {c.title_plain || c.title}
-        </p>
-        {c.title_plain && c.title_plain !== c.title && (
-          <p
-            style={{ margin: "8px 0 0", fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".05em", color: "var(--muted)", cursor: "help" }}
-            title={t("us.sf.contracts.fiche.raw_title_tip")}
-          >
-            {t("us.sf.contracts.fiche.raw_title_label")} “{c.title}”
-          </p>
-        )}
-        {c.prime_contractor && (
-          <p style={{ margin: "10px 0 0", fontFamily: "var(--f-ui)", fontSize: 13.5, color: "var(--ink-2)" }}>
-            <span style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--muted)", marginRight: 8 }}>
-              {t("us.sf.contracts.fiche.prime_label")}
-            </span>
-            {primeHref ? (
-              <Link href={primeHref} style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", fontWeight: 600 }}>
-                {c.prime_contractor}
-              </Link>
-            ) : (
-              <span style={{ fontWeight: 600, color: "var(--ink)" }}>{c.prime_contractor}</span>
-            )}
-          </p>
-        )}
-        {badges.length > 0 && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 10 }}>
-            {badges.map((b) => (
-              <span
-                key={b.key}
-                title={b.tip}
+      {/* The page header already carries the title and the prime contractor.
+       *  What is NEW here: the register's own wording when it differs from the
+       *  plain-English title, the buying department as a way back OUT into its
+       *  other contracts, and the procurement badges. (Paris ContratFiche
+       *  resolution — the card used to repeat the H1 verbatim.) */}
+      {(c.what_concretely || (c.title_plain && c.title_plain !== c.title) || c.department || badges.length > 0) && (
+        <div className="fx-fiche-lead">
+          {/* The generated explanation leads, because on this register the
+           *  verbatim title is often unreadable. It is labelled as written
+           *  from the register's fields, and the raw title sits right below —
+           *  the reader can always see what the City actually recorded. */}
+          {c.what_concretely && (
+            <div style={{ marginBottom: 12 }}>
+              <div
                 style={{
                   fontFamily: "var(--f-mono)",
-                  fontSize: 10.5,
-                  letterSpacing: ".08em",
+                  fontSize: 10,
+                  letterSpacing: ".1em",
                   textTransform: "uppercase",
-                  color: b.tone,
-                  border: `1px solid ${b.tone}`,
-                  padding: "3px 8px",
-                  cursor: b.tip ? "help" : "default",
+                  color: "var(--muted)",
+                  marginBottom: 6,
                 }}
               >
-                {b.label}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
+                <Tip label={t("us.sf.contracts.fiche.gen.tip")}>
+                  {t("us.sf.contracts.fiche.gen.label")}
+                </Tip>
+              </div>
+              <p className="fx-fiche-lead-main" style={{ margin: 0 }}>
+                {c.what_concretely}
+              </p>
+            </div>
+          )}
+          {c.title_plain && c.title_plain !== c.title && (
+            <p
+              style={{ margin: 0, fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: ".04em", color: "var(--muted)", lineHeight: 1.6 }}
+              title={t("us.sf.contracts.fiche.raw_title_tip")}
+            >
+              {t("us.sf.contracts.fiche.raw_title_label")} “{c.title}”
+            </p>
+          )}
+          {c.department && (
+            <p
+              style={{
+                margin: c.title_plain && c.title_plain !== c.title ? "10px 0 0" : 0,
+                fontFamily: "var(--f-mono)",
+                fontSize: 11.5,
+                letterSpacing: ".04em",
+                color: "var(--muted)",
+                lineHeight: 1.6,
+              }}
+            >
+              {t("us.sf.contracts.fiche.dept_label")}{" "}
+              {deptContractsHref ? (
+                <Link
+                  href={deptContractsHref}
+                  scroll={false}
+                  style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+                >
+                  {c.department.replace(/^[A-Z]{2,4}\s+/, "")}
+                </Link>
+              ) : (
+                <span style={{ color: "var(--ink-2)" }}>{c.department.replace(/^[A-Z]{2,4}\s+/, "")}</span>
+              )}
+            </p>
+          )}
+          {badges.length > 0 && (
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 12,
+                marginTop: (c.title_plain && c.title_plain !== c.title) || c.department ? 10 : 0,
+              }}
+            >
+              {badges.map((b) => (
+                <span
+                  key={b.key}
+                  title={b.tip}
+                  style={{
+                    fontFamily: "var(--f-mono)",
+                    fontSize: 10.5,
+                    letterSpacing: ".08em",
+                    textTransform: "uppercase",
+                    color: b.tone,
+                    border: `1px solid ${b.tone}`,
+                    padding: "3px 8px",
+                    cursor: b.tip ? "help" : "default",
+                  }}
+                >
+                  {b.label}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="fx-fiche-kpis">
         <div className="fx-fiche-kpi">
@@ -303,13 +406,16 @@ export default function SfContractFiche({
           <div className="fx-fiche-kpi-label">
             <Tip label={fiche.spend_by_fy.note}>{t("us.sf.contracts.fiche.kpi.paid")}</Tip>
           </div>
-          <div className="fx-fiche-kpi-value tnum" style={c.paid_exceeds_agreed ? { color: "var(--ocre)" } : undefined}>
-            {fmtUsdCompact(c.paid_usd)}
-          </div>
+          {/* No ocre here. Ocre is the "look here" ink and paid > agreed is not
+              a finding — it is an artefact of the register's payments column,
+              which on multi-phase contracts also runs well above the City's own
+              voucher ledger for the same contract. Colouring it would accuse
+              the contract of an overrun we have not established. */}
+          <div className="fx-fiche-kpi-value tnum">{fmtUsdCompact(c.paid_usd)}</div>
           {paidRatio != null && (
-            <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, color: c.paid_exceeds_agreed ? "var(--ocre)" : "var(--muted)", marginTop: 3 }}>
+            <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, color: "var(--muted)", marginTop: 3 }}>
               {c.paid_exceeds_agreed ? (
-                <Tip label="Payments accumulate across contract modifications while the agreed amount reflects the base document, so paid can exceed agreed.">
+                <Tip label="The City publishes two payment figures per contract and they disagree here: the register's payments column exceeds its own agreed amount. Why the two disagree is not documented in the source.">
                   {t("us.sf.contracts.fiche.kpi.exceeds")}
                 </Tip>
               ) : (
@@ -337,15 +443,45 @@ export default function SfContractFiche({
         <div className="fx-fiche-kpi">
           <div className="fx-fiche-kpi-label">{t("us.sf.contracts.fiche.kpi.type")}</div>
           <div className="fx-fiche-kpi-value" style={{ fontSize: 15 }} title={c.contract_type ?? undefined}>
-            {typeLabel(c.contract_type)}
+            {/* The type was dead label text; it now opens the ranked fiche
+             *  for that facet (Recife `modalidade` parity). */}
+            {c.contract_type ? (
+              <Link
+                href={`/us/city/sf/contracts/type/${typeSlug(c.contract_type)}`}
+                scroll={false}
+                style={{ color: "inherit", borderBottom: "1px solid var(--bleu)", textDecoration: "none" }}
+              >
+                {typeLabel(c.contract_type)}
+              </Link>
+            ) : (
+              typeLabel(c.contract_type)
+            )}
           </div>
         </div>
       </div>
 
-      {/* Paid against the agreed ceiling */}
-      <PaidVsAgreedBar fiche={fiche} />
+      {/* ── The money: ceiling, then the payment curve. One heading, because
+        *  "paid vs agreed" and "paid per year" are the same question at two
+        *  resolutions — they used to be two sections with two headings. ── */}
+      <section className="fx-fiche-section">
+        <div className="fx-fiche-h">{t("us.sf.contracts.fiche.money.h")}</div>
+        <PaidVsAgreedBar fiche={fiche} />
+        <div style={{ marginTop: 26 }}>
+          <div className="fx-fiche-sub">{t("us.sf.contracts.fiche.money.sub_curve")}</div>
+          <SpendCurve fiche={fiche} />
+          <div style={{ marginTop: 10 }}>
+            <Fy2018Note variant="inline" />
+          </div>
+        </div>
+      </section>
 
-      {/* Term timeline */}
+      {/* ── The deal: how long it runs and what it was awarded under. The
+        *  authority string is the register's own words, quoted; a sole-source
+        *  waiver is a lawful route and is presented as the recorded basis,
+        *  not as a finding. ── */}
+      <section className="fx-fiche-section">
+        <div className="fx-fiche-h">{t("us.sf.contracts.fiche.deal.h")}</div>
+        <div className="fx-fiche-sub">{t("us.sf.contracts.fiche.deal.sub_term")}</div>
       {timeline && c.term_start && c.term_end ? (
         <div style={{ margin: "16px 0 0" }}>
           <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 7 }}>
@@ -387,11 +523,9 @@ export default function SfContractFiche({
           {c.term_end_is_placeholder && <> · {t("us.sf.contracts.fiche.tl.placeholder")}</>}
         </p>
       )}
-
-      {/* Sole-source: the authority string, verbatim */}
-      {c.sole_source && (
-        <section className="fx-fiche-section">
-          <div className="fx-fiche-h">{t("us.sf.contracts.fiche.sole.h")}</div>
+        {(c.purchasing_authority || c.sole_source) && (
+          <div style={{ marginTop: 26 }}>
+            <div className="fx-fiche-sub">{t("us.sf.contracts.fiche.deal.sub_auth")}</div>
           <div
             style={{
               padding: "12px 16px",
@@ -406,26 +540,31 @@ export default function SfContractFiche({
               {c.purchasing_authority ?? t("us.sf.contracts.fiche.sole.authority_none")}
             </span>
           </div>
-          <p style={{ margin: "10px 0 0", fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55 }}>
-            {t("us.sf.contracts.fiche.sole.neutral")}
-          </p>
-        </section>
-      )}
-
-      {/* Spend curve */}
-      <section className="fx-fiche-section">
-        <div className="fx-fiche-h">{t("us.sf.contracts.fiche.curve.h")}</div>
-        <SpendCurve fiche={fiche} />
-        <div style={{ marginTop: 10 }}>
-          <Fy2018Note variant="inline" />
-        </div>
+            {/* The family is the navigable facet — Recife's modalidade move:
+              *  from one contract you can see every other awarded the same way. */}
+            <p style={{ margin: "10px 0 0", fontSize: 12.5, color: "var(--muted)", lineHeight: 1.55 }}>
+              {c.sole_source && <>{t("us.sf.contracts.fiche.sole.neutral")} </>}
+              {c.authority_family && (
+                <Link
+                  href={`/us/city/sf/contracts/authority/${c.authority_family}`}
+                  scroll={false}
+                  style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+                >
+                  {fill(t("us.sf.contracts.fiche.deal.auth_link"), {
+                    family: FAMILY_LABELS[c.authority_family] ?? c.authority_family,
+                  })}
+                </Link>
+              )}
+            </p>
+          </div>
+        )}
       </section>
 
       {/* Project team */}
       {showTeam && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{t("us.sf.contracts.fiche.team.h")}</div>
-          <table className="fx-table" style={{ borderTop: 0 }}>
+          <table className="fx-table fx-table-cards" style={{ borderTop: 0 }}>
             <thead>
               <tr>
                 <th>{t("us.sf.contracts.fiche.team.col.supplier")}</th>
@@ -437,36 +576,15 @@ export default function SfContractFiche({
                 </th>
               </tr>
             </thead>
-            <tbody>
-              {teamMembers.slice(0, 40).map((m, i) => (
-                <tr key={`${m.supplier}-${m.role}-${i}`}>
-                  <td style={{ fontWeight: m.role === "Prime Contractor" ? 600 : 400 }}>
-                    {m.role === "Prime Contractor" && primeHref ? (
-                      <Link href={primeHref} style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>
-                        {m.supplier}
-                      </Link>
-                    ) : (
-                      m.supplier
-                    )}
-                    {m.lbe && (
-                      <span style={{ fontFamily: "var(--f-mono)", fontSize: 10, color: "var(--bleu)", marginLeft: 8 }}>
-                        LBE
-                      </span>
-                    )}
-                  </td>
-                  <td className="muted">{t(`us.sf.contracts.fiche.team.role.${m.role.replace(/\s/g, "_").toLowerCase()}`)}</td>
-                  <td className="num">
-                    {m.role === "Prime Contractor" ? "—" : m.attached_usd != null ? fmtUsdCompact(m.attached_usd) : "—"}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+            <tbody>{teamMembers.slice(0, TEAM_FOLD).map(teamRow)}</tbody>
           </table>
-          {teamMembers.length > 40 && (
-            <p style={{ margin: "8px 0 0", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}>
-              {fill(t("us.sf.contracts.fiche.team.more"), { n: nfInt.format(teamMembers.length - 40) })}
-            </p>
-          )}
+          {/* Was a dead "+N more" line: it named up to 190 subcontractors a
+           *  reader could never reach. Now it opens them. */}
+          <FicheMore count={teamMembers.length - TEAM_FOLD} noun="more on the team">
+            <table className="fx-table fx-table-cards" style={{ borderTop: 0 }}>
+              <tbody>{teamMembers.slice(TEAM_FOLD).map(teamRow)}</tbody>
+            </table>
+          </FicheMore>
           <p style={{ margin: "10px 0 0", fontSize: 12, color: "var(--muted)", fontStyle: "italic", lineHeight: 1.5 }}>
             {fiche.team_note}
           </p>
@@ -477,27 +595,6 @@ export default function SfContractFiche({
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{t("us.sf.contracts.fiche.sources.h")}</div>
         <dl>
-          <div className="fx-fiche-prop">
-            <dt>{t("us.sf.contracts.fiche.sources.no")}</dt>
-            <dd style={{ fontFamily: "var(--f-mono)" }}>{c.contract_no}</dd>
-          </div>
-          <div className="fx-fiche-prop">
-            <dt>{t("us.sf.contracts.fiche.sources.dept")}</dt>
-            <dd>{c.department ?? "—"}</dd>
-          </div>
-          {!c.sole_source && c.purchasing_authority && (
-            <div className="fx-fiche-prop">
-              <dt>
-                <Tip label={t("us.sf.contracts.fiche.sources.authority_tip")}>
-                  {t("us.sf.contracts.fiche.sources.authority")}
-                </Tip>
-              </dt>
-              <dd style={{ fontFamily: "var(--f-mono)", fontSize: 12 }}>
-                {c.purchasing_authority}
-                <span style={{ color: "var(--muted)" }}> · {FAMILY_LABELS[c.authority_family] ?? c.authority_family}</span>
-              </dd>
-            </div>
-          )}
           <div className="fx-fiche-prop">
             <dt>{t("us.sf.contracts.fiche.sources.dataset")}</dt>
             <dd>

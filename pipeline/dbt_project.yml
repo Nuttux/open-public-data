@@ -330,6 +330,21 @@ seeds:
         # The seed only picks WHICH (vendor × department × sub_object × FY)
         # lines to feature + the editorial label; every amount is computed
         # from the voucher data in mart_us_sf_payee_materiality.
+        # Sub-object spend classification (purchase / obligation / ledger /
+        # unclear) generated 2026-07-28 from the FY2018+ voucher universe:
+        # code-range defaults, label rules winning over them, `needs_review`
+        # flagging the material rows that only got a range default. Feeds
+        # mart_us_sf_spending_subobjects — display classification only, every
+        # dollar still comes from the vouchers.
+        seed_us_sf_subobject_class:
+          +column_types:
+            sub_object_code: STRING
+            sub_object: STRING
+            spend_class: STRING
+            basis: STRING
+            needs_review: STRING
+            classified_at: STRING
+
         seed_us_sf_payee_materiality:
           +column_types:
             slug: STRING

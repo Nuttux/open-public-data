@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.731050+00:00",
+ "generated_at": "2026-07-28T11:43:47.698576+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,74 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 879,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 348123963.19,
+    "n_vouchers": 879
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 184771209.25,
+    "n_vouchers": 586
+   },
+   {
+    "code": "OTH_ASSETS_CURR",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": 5500000.0,
+    "n_vouchers": 3
+   },
+   {
+    "code": "463599",
+    "label": "Misc Public Health Revenue",
+    "spend_class": "unclear",
+    "usd": -4696453.46,
+    "n_vouchers": 24
+   }
+  ],
+  "n_categories": 3,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 24583029.38,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 24583029.38,
+    "n_vouchers": 117
+   }
+  ]
+ },
+ "identity": {
+  "description": "Progress Foundation is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under mental health and crisis intervention.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Progress Foundation",
+  "ein": "941716828",
+  "ntee_code": "F30Z",
+  "ntee_label": "Mental health and crisis intervention",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/941716828",
+  "checked_at": "2026-07-27T23:35:50.052208+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000010016",
-   "title": "BHS",
+   "title": "Behavioral Health Services",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 221847999.0,
@@ -49,7 +113,7 @@
   },
   {
    "contract_no": "1000032350",
-   "title": "BHS",
+   "title": "Behavioral Health Services",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 7072405.0,

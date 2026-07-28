@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.728438+00:00",
+ "generated_at": "2026-07-28T11:43:47.693790+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,187 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 10061,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 699663713.28,
+    "n_vouchers": 9118
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 9346599.55,
+    "n_vouchers": 145
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "usd": 6103561.42,
+    "n_vouchers": 583
+   },
+   {
+    "department": "POL Police",
+    "department_code": "POL",
+    "usd": 1408889.41,
+    "n_vouchers": 86
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 610040.57,
+    "n_vouchers": 25
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 362027.2,
+    "n_vouchers": 65
+   },
+   {
+    "department": "ADP Adult Probation",
+    "department_code": "ADP",
+    "usd": 96652.0,
+    "n_vouchers": 15
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 80000.0,
+    "n_vouchers": 20
+   }
+  ],
+  "n_departments": 11,
+  "categories": [
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 269798890.89,
+    "n_vouchers": 1933
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 211053541.22,
+    "n_vouchers": 3672
+   },
+   {
+    "code": "530110",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 4324033.77,
+    "n_vouchers": 348
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 3477467.55,
+    "n_vouchers": 365
+   },
+   {
+    "code": "OTH_ASSETS_CURR",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": 683194.41,
+    "n_vouchers": 22
+   },
+   {
+    "code": "536340",
+    "label": "Non-CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 80000.0,
+    "n_vouchers": 20
+   },
+   {
+    "code": "OTHER_REC",
+    "label": "Other Receivables",
+    "spend_class": "ledger",
+    "usd": 47948.31,
+    "n_vouchers": 4
+   },
+   {
+    "code": "528990",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 38793.42,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 16,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 78373398.9,
+  "n_recent_lines": 7,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 45202158.52,
+    "n_vouchers": 235
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 32610344.95,
+    "n_vouchers": 476
+   },
+   {
+    "department": "POL Police",
+    "department_code": "POL",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 430957.12,
+    "n_vouchers": 15
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 69107.11,
+    "n_vouchers": 7
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Non-CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 40000.0,
+    "n_vouchers": 10
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 22445.2,
+    "n_vouchers": 4
+   }
+  ]
+ },
+ "identity": {
+  "description": "Healthright 360 is an IRS-recognized tax-exempt organization in San Francisco, CA. Its IRS activity code is not recorded in the registry.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Healthright 360",
+  "ein": "946129071",
+  "ntee_code": null,
+  "ntee_label": null,
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/946129071",
+  "checked_at": "2026-07-27T23:35:27.344358+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000010457",
@@ -49,7 +230,7 @@
   },
   {
    "contract_no": "1000018756",
-   "title": "Chk Writ srvcs non FSP vendors",
+   "title": "Chk Writ services non FSP vendors",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 107416172.0,
@@ -67,7 +248,7 @@
   },
   {
    "contract_no": "1000024366",
-   "title": "Prog Admin & Quality Mgmt",
+   "title": "Program Administration & Quality Management",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 6131265.0,
@@ -76,7 +257,7 @@
   },
   {
    "contract_no": "1000017200",
-   "title": "Non Medical Case Mgmt",
+   "title": "Non Medical Case Management",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 873696.0,

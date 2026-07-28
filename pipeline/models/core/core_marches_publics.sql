@@ -43,9 +43,15 @@ decp AS (
 -- Une règle SUBSTR unique rate ~96% des matchs pour 2019-2023 (vérifié en prod).
 --
 -- Règles de match, par ordre de priorité :
+--   0. num_marche == decp_id                      (id identique, 2019-2022)
 --   1. SUBSTR(num_marche, 5) == decp_id           (format moderne 2024+)
 --   2. (fournisseur_siret, date_notification)     (attrape les legacy)
 --      avec tolérance montant |o.max - d.notifie| / o.max < 15%
+--
+-- La règle 0 est indispensable : sur 2019-2022 Paris et DECP publient le MÊME
+-- id (`20212021T01505`), que le SUBSTR de la règle 1 tronque en `2021T01505`.
+-- Sans elle, 796 marchés (4,53 Md€) survivaient en double dans le UNION final,
+-- gonflant le total 2021 de +34%.
 --
 -- Un Paris row = 1 DECP match max (ROW_NUMBER sur match_rank).
 -- =============================================================================
@@ -54,12 +60,14 @@ paris_decp_candidates AS (
         o.numero_marche                             AS paris_num,
         d.decp_id,
         CASE
+            WHEN o.numero_marche = d.decp_id THEN 0
             WHEN SUBSTR(o.numero_marche, 5) = d.decp_id THEN 1
             ELSE 2
         END AS match_rank
     FROM ours AS o
     JOIN decp AS d
-      ON SUBSTR(o.numero_marche, 5) = d.decp_id
+      ON o.numero_marche = d.decp_id
+      OR SUBSTR(o.numero_marche, 5) = d.decp_id
       OR (
             o.fournisseur_siret IS NOT NULL
         AND o.fournisseur_siret = d.titulaire_siret
@@ -297,10 +305,35 @@ SELECT
         ELSE SAFE_DIVIDE(decp_montant_notifie - montant_max, montant_max)
     END AS ecart_plafond_vs_notifie,
 
-    -- Règle d'affichage "double chiffre" : différence > 5% ET deux sources présentes
+    -- Montant notifié DECP invraisemblable → on ne l'affiche pas.
+    --
+    -- Deux signatures d'erreur de saisie à la source (DECP est déclaré par
+    -- l'acheteur, ici parfois un syndicat type SIPPEREC, pas par la Ville) :
+    --   a) notifié >> plafond : impossible par construction pour un accord-cadre,
+    --      le notifié ne peut pas dépasser l'enveloppe autorisée. Signature
+    --      typique d'une saisie en centimes (×100).
+    --      Cas connu : 20191050000015 LINKT/SIPPEREC, 5,5 M€ côté Paris,
+    --      550 M€ côté DECP.
+    --   b) notifié dérisoire sur un marché conséquent : valeur placeholder.
+    --      Cas connus : 3 marchés PHICOGIS EUROPE 2024 notifiés à 10 €.
+    --
+    -- Le plafond >> notifié n'est PAS suspect : c'est le fonctionnement normal
+    -- d'un accord-cadre (enveloppe autorisée vs. commandes réellement passées).
+    CASE
+        WHEN decp_montant_notifie IS NULL OR montant_max IS NULL THEN FALSE
+        WHEN montant_max = 0 THEN FALSE
+        WHEN decp_montant_notifie > montant_max * 2 THEN TRUE
+        WHEN decp_montant_notifie < 100 AND montant_max > 10000 THEN TRUE
+        ELSE FALSE
+    END AS decp_montant_notifie_suspect,
+
+    -- Règle d'affichage "double chiffre" : différence > 5%, deux sources
+    -- présentes, et montant notifié jugé vraisemblable.
     CASE
         WHEN decp_montant_notifie IS NULL THEN FALSE
         WHEN montant_max = 0 THEN FALSE
+        WHEN decp_montant_notifie > montant_max * 2 THEN FALSE
+        WHEN decp_montant_notifie < 100 AND montant_max > 10000 THEN FALSE
         WHEN ABS(decp_montant_notifie - montant_max) / montant_max > 0.05 THEN TRUE
         ELSE FALSE
     END AS afficher_deux_montants,

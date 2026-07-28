@@ -1,0 +1,301 @@
+{
+ "generated_at": "2026-07-28T12:23:47.795083+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "animal-care-and-control-facility",
+ "name": "Animal Care and Control Facility",
+ "kind": "Civic building",
+ "family": "civic",
+ "address": "1419 Bryant St",
+ "lat": 37.768557,
+ "lon": -122.410534,
+ "owning_dept": {
+  "name": "City Administrator",
+  "code": "ADM"
+ },
+ "facility": {
+  "primary_name": "Animal Care and Control Facility",
+  "primary_address": "1419 BRYANT ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94103",
+  "primary_block_lot": "3904002",
+  "primary_department_name": "Gsa - Real Estate Division",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 94963,
+  "primary_latitude": 37.76855730900007,
+  "primary_longitude": -122.41053360099994,
+  "supervisor_district": 9,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 94963,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "3904002"
+  ],
+  "facilities": [
+   {
+    "facility_id": 3312,
+    "common_name": "Animal Care and Control Facility",
+    "block_lot": "3904002",
+    "gross_sq_ft": 94963,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": "/img/us/sf/places/animal-care-and-control-facility.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/animal-care-and-control-facility.jpg",
+  "source": "assets1.cbsnewsstatic.com",
+  "source_url": "https://www.cbsnews.com/sanfrancisco/news/sf-animal-care-control-new-shelter-facility-1419-bryant-street/",
+  "license": "UNVERIFIED",
+  "license_url": "",
+  "license_verified": false,
+  "provisional": true,
+  "author": "Bing",
+  "resolved_via": "web-search",
+  "fetched_at": "2026-07-27T23:07:15.671071+00:00"
+ },
+ "summary_en": "The city's animal shelter appears in San Francisco's capital documents as a problem to be solved. The 2016 Capital Plan describes the then-current shelter at 1200 15th Street as a seismically vulnerable building constructed in 1931, and lists a $49 million Animal Care and Control Facility Renovation and Seismic Retrofit among its earthquake and safety improvements; the adopted five-year financial plan folds the same work into a public health and safety bond alongside seismic strengthening at San Francisco General. The financing then changed shape. The mayor's proposed budget counts a replacement facility among the projects carried by Certificates of Participation, which the plan reserves for projects with a revenue source or critical seismic work, and on 29 November 2016 the Board of Supervisors authorized certificates of up to $60,500,000 to finance the acquisition, construction and improvement of an animal care and control facility. What was built shows on the parcel at 1419 Bryant Street: a $26.5 million permit, now complete, to convert a former transit-agency building — two new storeys inside the existing brick envelope, with new structural support — followed by a $2.9 million build-out of unoccupied third-floor shell space issued in 2025.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_usd": 287717708.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_compensation_usd": 168334637.06,
+   "n_employees": 1154,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "adoptedfiveyearf2015sanf",
+   "title": "Adopted five year financial plan : fiscal years ... through ... / City and County of San Francisco",
+   "creator": "San Francisco (Calif.)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Animal Care and Control Facility",
+   "ocr_excerpts": [
+    "016, which will include seismic strengthening of the SF General Hospital building 5, expanding the South East Health Center to allow improved coordination of primary care and behavioral health services in one of the most underserved areas of the City, seismically strengthening and renovating the City's Animal Care and Control facility, and relocating and rebuilding the Fire Department's Emergency Medical Service (EMS) facilities. This bond and these critical capital projects will be included in the City' upcoming Ten-Year Capital Plan. Page 90 of 122 City and County of San Francisco FIVE YEAR FINANCIAL PLAN Culture & Recreation",
+    "mall Business practices; • Improve government services by increasing language access and immigrant services, increasing responsiveness through technology and innovation, and mobilize City Hall services to the neighborhoods; • Strengthen the City's capital planning and infrastructure, including: renovating the Animal Care and Control facility; replacing the Office of the County Medical Examiner; expanding the Moscone Convention Center; and consolidating complementary City services into a new, resilient, accessible, city-owned office building. City Attorney • Retain and recruit quality employees by developing strategies for succession planning, a"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.61,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.61,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/adoptedfiveyearf2015sanf",
+   "deep_link": "https://archive.org/details/adoptedfiveyearf2015sanf?q=Animal+Care+and+Control+Facility",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The adopted five-year financial plan, listing the shelter's seismic strengthening among the bond-funded capital projects."
+  },
+  {
+   "identifier": "capitalplancityc2016sanf",
+   "title": "Capital plan : City & County of San Francisco",
+   "creator": "San Francisco, CA : City Administrator",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Animal Care and Control Facility",
+   "ocr_excerpts": [
+    "in Millions) Renewal Investments Funded Deferred Today’s Backlogs I Facilities 396 Streets 695 Subtotal 1,091 Projected for Next Ten Years Facilities 595 254 Streets 874 Other right-of-way assets 220 Subtotal 1,689 254 Subtotal, Renewals 1,689 1,345 Earthquake & Safety Improvements Animal Care and Control Facility Renovation & Seismic Retrofit 49 Auxiliary Water Supply System Improvements 175 DPH Administration Building Relocation 60 HOJ Relocation Projects 620 JUV Administrative Building Replacement 107 Office of Chief Medical Examiner (OCME) Facility 65 SFFD Ambulance Deployment Center Relocation 40 SFF",
+    "Prtfo.<(d Mediiu! BuU~ Public Health and Safety Bond Program. The Plan recommends a $31 1 milhon Pubhc Health and Safety bond for the June 2016 ballot. Two critical projects funded by the bond are described below while the remaining facihties are described in the Health and Human Ser\\tices Chapter. Animal Care and Control Facility Renovation and Seismic Retrofit. The City’s current animal shelter located at 1200 15th Street is a seismically vulnerable building constructed in the 1931. Considering the role of Animal Control Officers and the importance of providing a safe place for wildhfe and pets to be housed for general pubhc"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 1.33,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.33,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/capitalplancityc2016sanf",
+   "deep_link": "https://archive.org/details/capitalplancityc2016sanf?q=Animal+Care+and+Control+Facility",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The Capital Plan that costed the renovation and seismic retrofit at $49 million and called the 1931 shelter seismically vulnerable."
+  },
+  {
+   "identifier": "citycountyofsan2016sanf_2",
+   "title": "City and County of San Francisco mayor's proposed budget",
+   "creator": "San Francisco (Calif.)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Animal Care and Control Facility",
+   "ocr_excerpts": [
+    "the payment of debt service on $1.1 billion in long- term obligations expected to be outstanding during the fiscal year. Thes expenditures include $197.0 million in COPs anticipated to be issued in FY 2016- 17 for the War Memorial Veterans Building Seismic Upgrade and Improvement (WMVB), a replacement Animal Care and Control facility, and the Housing Trust Fund. The Mayor’s Proposed Budget reflects long-term obligation debt service of $112.8 million in FY 2016-17. In 1994, voters approved Proposition B, which authorized the issuance of up to $60.0 million in lease revenue bonds for the acquisition and construction of a combined d",
+    "which are paid down by the General Fund, are another financing method used to address infrastructure projects. COPs are reserved for projects with a revenue source, such as the Moscone Convention Center, or for critical seismic improvements such as those at the War Memorial Veteran’s Building and the Animal Care and Control Facility. COPs, which were added to the Plan in 2008, are limited to 3.25 percent of the discretionary General Fund budget. GENERAL FUND PAY-AS-YOU-GO CAPITAL INVESTMENTS The annual Pay-As-You-Go investment in the first year of the Ten-Year Capital Plan published in 2005 was $40.0 million, and was projected"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 1.16,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.16,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/citycountyofsan2016sanf_2",
+   "deep_link": "https://archive.org/details/citycountyofsan2016sanf_2?q=Animal+Care+and+Control+Facility",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The mayor's proposed budget, showing the replacement facility financed by Certificates of Participation rather than a bond."
+  },
+  {
+   "identifier": "resolution2016sanf_3",
+   "title": "Resolution",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Animal Care and Control Facility",
+   "ocr_excerpts": [
+    "Date Passed: November 29, 2016 Resolution authorizing the execution and delivery of Certificates of Participation on a tax-exempt or taxable basis evidencing and representing an aggregate principal amount not to exceed $60,500,000 to finance the costs of acquisition, construction, and improvement of an animal care and control facility to be located on property within the City; authorizing the issuance of commercial paper notes in advance of the delivery of the Certificates; approving the form of Trust Agreement between the City and County of San Francisco and the Trustee (including certain indemnities contained therein); authorizing",
+    "ect - Not to Exceed $60,500,000] Resolution authorizing the execution and delivery of Certificates of Participation on a tax-exempt or taxable basis evidencing and representing an aggregate principal amount not to exceed $60,500,000 to finance the costs of acquisition, construction, and improvement of an animal care and control facility to be located on property within the City; authorizing the issuance of commercial paper notes in advance of the delivery of the Certificates; approving the form of Trust Agreement between the City and County of San Francisco and the Trustee (including certain indemnities contained therein); authorizing"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.22,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.22,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/resolution2016sanf_3",
+   "deep_link": "https://archive.org/details/resolution2016sanf_3?q=Animal+Care+and+Control+Facility",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "The Board of Supervisors resolution of 29 November 2016 authorizing up to $60.5 million in Certificates of Participation for the facility."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "progressincitypl1948sanf",
+   "title": "Progress in city planning : a report to the people of San Francisco",
+   "year": 1948,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/progressincitypl1948sanf"
+  },
+  {
+   "identifier": "64summaryofregular1979san",
+   "title": "Summary of the regular meeting",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/64summaryofregular1979san"
+  },
+  {
+   "identifier": "southofmarketzon1988sanf",
+   "title": "South of Market zoning controls : proposal for adoption : with 12 month sunset clause",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/southofmarketzon1988sanf"
+  }
+ ],
+ "dept_shelf_label": "City Planning Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 4,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.730415+00:00",
+ "generated_at": "2026-07-28T11:43:47.697132+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -20,6 +20,87 @@
  "top_departments": [
   "RET Retirement System"
  ],
+ "profile": {
+  "n_vouchers": 277,
+  "departments": [
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "usd": 320168497.5,
+    "n_vouchers": 177
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 78280267.44,
+    "n_vouchers": 100
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "232520",
+    "label": "230750RETM&DDeferredCompensati",
+    "spend_class": "obligation",
+    "usd": 375073466.33,
+    "n_vouchers": 104
+   },
+   {
+    "code": "232525",
+    "label": "230750DeferredCompLoanProgram",
+    "spend_class": "ledger",
+    "usd": 23373959.01,
+    "n_vouchers": 102
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 70
+   }
+  ],
+  "n_categories": 3,
+  "counts_are_floor": false,
+  "recent_fy": 2020,
+  "recent_total_usd": 31514135.0,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "230750RETM&DDeferredCompensati",
+    "spend_class": "obligation",
+    "usd": 21776396.86,
+    "n_vouchers": 3
+   },
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "label": "230750RETM&DDeferredCompensati",
+    "spend_class": "obligation",
+    "usd": 7576688.81,
+    "n_vouchers": 1
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "230750DeferredCompLoanProgram",
+    "spend_class": "ledger",
+    "usd": 1616007.0,
+    "n_vouchers": 3
+   },
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "label": "230750DeferredCompLoanProgram",
+    "spend_class": "ledger",
+    "usd": 545042.33,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

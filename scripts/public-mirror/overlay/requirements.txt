@@ -1,0 +1,17 @@
+# Python dependencies for the public pipeline (transform + tests + ingestion).
+# Usage: pip install -r requirements.txt
+
+# dbt for BigQuery (the transformation + test engine)
+dbt-bigquery>=1.7.0
+
+# BigQuery client + dataframe stack (used by the ingestion scripts)
+google-cloud-bigquery>=3.0.0
+pandas>=2.0.0
+pyarrow>=14.0.0
+
+# HTTP (fetching from open-data source portals)
+requests>=2.28.0
+
+# PDF extraction for budget-annex sources
+pymupdf>=1.24.0
+pdfplumber>=0.10.0

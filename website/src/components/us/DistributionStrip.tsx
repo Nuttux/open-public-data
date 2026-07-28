@@ -46,6 +46,8 @@ type Labels = {
   chartAria: (year: number, nEmployees: string) => string;
   /** Group label for the year buttons. */
   scrubAria: string;
+  /** aria-label for one selectable bucket, e.g. "$150k–$175k, 2,431 employees". */
+  bucketAria?: (range: string, count: string) => string;
   /** "median" marker word. */
   median: string;
   /** Band edge labels. */
@@ -69,6 +71,17 @@ type Props = {
   /** Annotation slot rendered under the chart (e.g. part-time bump note). */
   annotation?: ReactNode;
   height?: number;
+  /**
+   * Makes the bars selectable. Passing this turns each bucket into a hit
+   * target: the histogram stops being a wall of anonymous bars and becomes
+   * the way into "who is paid here". The parent owns the selection so it can
+   * render the composition panel below the chart.
+   */
+  onSelectBucket?: (bucket: { floorUsd: number; ceilingUsd: number | null } | null) => void;
+  /** Floor of the currently selected bucket, or null for none. */
+  selectedFloorUsd?: number | null;
+  /** Called whenever the scrubbed year changes (the panel follows the year). */
+  onYearChange?: (year: number) => void;
 };
 
 const W = 760;
@@ -85,10 +98,18 @@ export default function DistributionStrip({
   initialYear,
   annotation,
   height = 300,
+  onSelectBucket,
+  selectedFloorUsd = null,
+  onYearChange,
 }: Props) {
   const [year, setYear] = useState(
     initialYear ?? points[points.length - 1]?.year,
   );
+  const selectable = typeof onSelectBucket === "function";
+  const pickYear = (y: number) => {
+    setYear(y);
+    onYearChange?.(y);
+  };
   const point = points.find((p) => p.year === year) ?? points[points.length - 1];
 
   // Fixed geometry across years: axis ends one bucket-width past the
@@ -139,7 +160,7 @@ export default function DistributionStrip({
               key={p.year}
               type="button"
               aria-pressed={on}
-              onClick={() => setYear(p.year)}
+              onClick={() => pickYear(p.year)}
               style={{
                 fontFamily: "var(--f-mono)",
                 fontSize: 11.5,
@@ -162,31 +183,77 @@ export default function DistributionStrip({
         role="img"
         aria-label={labels.chartAria(point.year, nStr)}
       >
-        {/* Bars */}
+        {/* Bars — hit targets when the parent wants a selection. The clickable
+            rect spans the full plot height so a 4px-tall bar is still easy to
+            hit; the visible bar is drawn separately. */}
         {point.histogram.map((b, i) => {
           const share = b.n_employees / point.n_employees;
           const x0 = x(b.floor_usd);
           const x1 = b.ceiling_usd == null ? W : x(b.ceiling_usd);
           const top = yTop(share);
           const open = b.ceiling_usd == null;
+          const selected = selectable && selectedFloorUsd === b.floor_usd;
           const rangeLabel = open
             ? labels.openBucket(fmtUsdTick(b.floor_usd))
             : `${fmtUsdTick(b.floor_usd)}–${fmtUsdTick(b.ceiling_usd as number)}`;
+          const title = `${rangeLabel} · ${fmtCount(b.n_employees)} ${labels.employees} (${(share * 100).toFixed(1)}%)`;
+          const fill = selected ? "#8c5e2a" : open ? "#9aa1ab" : "#0a0a0a";
           return (
             <g key={`${point.year}-${i}`}>
+              {selected && (
+                <rect
+                  x={x0 + 1}
+                  y={0}
+                  width={Math.max(x1 - x0 - 2, 1)}
+                  height={PLOT_H}
+                  fill="#8c5e2a"
+                  opacity={0.1}
+                />
+              )}
               <rect
                 x={x0 + 1}
                 y={top}
                 width={Math.max(x1 - x0 - 2, 1)}
                 height={PLOT_H - top}
-                fill={open ? "#9aa1ab" : "#0a0a0a"}
-                opacity={open ? 0.55 : 0.85}
+                fill={fill}
+                opacity={selected ? 1 : open ? 0.55 : 0.85}
                 style={{ transition: "y .25s ease, height .25s ease" }}
               >
-                <title>
-                  {`${rangeLabel} · ${fmtCount(b.n_employees)} ${labels.employees} (${(share * 100).toFixed(1)}%)`}
-                </title>
+                <title>{title}</title>
               </rect>
+              {selectable && (
+                <rect
+                  x={x0}
+                  y={0}
+                  width={Math.max(x1 - x0, 2)}
+                  height={PLOT_H}
+                  fill="transparent"
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={selected}
+                  aria-label={
+                    labels.bucketAria
+                      ? labels.bucketAria(rangeLabel, fmtCount(b.n_employees))
+                      : title
+                  }
+                  style={{ cursor: "pointer", outlineOffset: 2 }}
+                  onClick={() =>
+                    onSelectBucket?.(
+                      selected ? null : { floorUsd: b.floor_usd, ceilingUsd: b.ceiling_usd },
+                    )
+                  }
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      onSelectBucket?.(
+                        selected ? null : { floorUsd: b.floor_usd, ceilingUsd: b.ceiling_usd },
+                      );
+                    }
+                  }}
+                >
+                  <title>{title}</title>
+                </rect>
+              )}
             </g>
           );
         })}

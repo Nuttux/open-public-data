@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.766741+00:00",
+ "generated_at": "2026-07-28T12:23:47.783334+00:00",
  "slug": "pier-27-cruise-terminal",
  "name": "James R. Herman Cruise Terminal (Pier 27)",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -42,9 +42,13 @@
    "url": "https://archive.org/details/draftenvironment5120sanf",
    "deep_link": "https://archive.org/details/draftenvironment5120sanf?q=James+R.+Herman+Cruise+Terminal",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The environmental review joining the cruise terminal to the 34th America's Cup, certified in December 2011."
   },
   {
    "identifier": "sanfranciscocrui2120sanf",
@@ -84,8 +88,13 @@
    "url": "https://archive.org/details/sanfranciscocrui2120sanf",
    "deep_link": "https://archive.org/details/sanfranciscocrui2120sanf?q=San+Francisco+Cruise+Terminal",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The earlier certified report for a cruise terminal and mixed-use project, a plan later superseded."
   },
   {
    "identifier": "sanfranciscocrui1720sanf",
@@ -123,8 +132,13 @@
    "url": "https://archive.org/details/sanfranciscocrui1720sanf",
    "deep_link": "https://archive.org/details/sanfranciscocrui1720sanf?q=San+Francisco+Cruise+Terminal",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "That project's draft report, published for comment in November 2001."
   },
   {
    "identifier": "agendasminutess2015sanf_4",
@@ -164,8 +178,13 @@
    "url": "https://archive.org/details/agendasminutess2015sanf_4",
    "deep_link": "https://archive.org/details/agendasminutess2015sanf_4?q=Pier+27",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Port Commission papers with a status report on the finished terminal, and a free symphony on its plaza."
   },
   {
    "identifier": "agenda2011sanf_1",
@@ -205,9 +224,13 @@
    "url": "https://archive.org/details/agenda2011sanf_1",
    "deep_link": "https://archive.org/details/agenda2011sanf_1?q=Pier+27",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A Port Commission agenda taking comment on the terminal's environmental review and adopting the 10-year capital plan."
   }
  ]
 }

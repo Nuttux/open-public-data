@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.767233+00:00",
+ "generated_at": "2026-07-28T12:23:47.783997+00:00",
  "slug": "cable-car-barn",
  "name": "Cable Car Barn & Powerhouse",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -41,8 +41,13 @@
    "url": "https://archive.org/details/civilgrandjuryre198587cali",
    "deep_link": "https://archive.org/details/civilgrandjuryre198587cali?q=Cable+Car+Barn",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "investigation",
+   "doc_type_label": "Investigation",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Investigation",
+   "salient": true,
+   "gloss": "The Civil Grand Jury's finding on the 1982–84 cable car rebuild: the barn and drive system were reconstructed with unproven technology, and the jury lists defects an untrained eye could see — including a cable delivery door built a foot too low."
   },
   {
    "identifier": "4annualreportsanf",
@@ -80,8 +85,55 @@
    "url": "https://archive.org/details/4annualreportsanf",
    "deep_link": "https://archive.org/details/4annualreportsanf?q=Cable+Car+Powerhouse",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "A Municipal Railway annual report describing what the powerhouse at Washington and Mason actually does — housing the cable-winding machinery, with substations running it 365 days a year."
+  },
+  {
+   "identifier": "dataguide19901991990sanf",
+   "title": "The data guide, 1990-1991",
+   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
+   "year": 1990,
+   "pool": "sfpl",
+   "matched_alias": "Cable Car Museum",
+   "ocr_excerpts": [
+    "n Francisco. \" Northern California Railroad Club, 163 Tioga Avenue, San Francisco, CA 94134, a group well-known for its rail-fan excursions. Pacific Coast Chapter, Railway & Locomotive Historical Society, 1151 Street, Sacramento, CA 95814-2204 (phone: 916/447-9665). The Pacific Coast Chapter operates the cable car museum under contract with the city. 1895. Historic Streetcar NO. 578S, built in 41 Division at 15th and Harrison Streets. FACILITIES Muni Metro Streetcar System • 4' 8 1/2\" gauge single track - 40.8 miles. (4.6 miles will be added when the 2.3 mile J Church extension is completed ear",
+    "80 ft. SunsetTunnel- 4,232 ft. • Twin Peaks Tunnel - West Portal to East Portal, 1 1,920 ft.; West Portal to Castro St. Station, 12,255 ft. Cable Car System • 3 1/2' gauge single track - 8.7 miles. • Cables - four (California, Powell, Hyde, and Mason), eath powered by a 510 hp motor in the cable car barn. • Cable diameter - 1 5/16\". • Total cable length -10.72 miles. 42 Major Facilities: Army Street Facility - Army & 3rd Sts. (3000 3rd St.) Leased since 1984. Originally used as the division for the 60' diesels, it is now used as Maintenance Training headquarters and a storage area for diesels not in regular service. 80,000 sq. ft. Cable Car Barn - Washington & Mason Sts. (1201 Mason St.) Originally built in 1887 for the Ferries & Cliff House Rwy., rebuilt after the 1906 earthquake and fire, and in 1982-84. 83,741 sq. ft. (The cable car museum is located in the barn - phone: 415/474- 1887.) H. Welton Flynn Motor Coach Division - 15th & Harrison Sts. (1940 Harrison St.) A former U.S. Steel warehouse, it was dedicated in July 1989 and opened that October. As of September 1990, houses all 100 of the 60' diesels and 25 of the 40' diese"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.21,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 2.21,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/dataguide19901991990sanf",
+   "deep_link": "https://archive.org/details/dataguide19901991990sanf?q=Cable+Car+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false
   },
   {
    "identifier": "9minutes2000sanf",
@@ -120,47 +172,13 @@
    "url": "https://archive.org/details/9minutes2000sanf",
    "deep_link": "https://archive.org/details/9minutes2000sanf?q=Cable+Car+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "dataguide19901991990sanf",
-   "title": "The data guide, 1990-1991",
-   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
-   "year": 1990,
-   "pool": "sfpl",
-   "matched_alias": "Cable Car Museum",
-   "ocr_excerpts": [
-    "n Francisco. \" Northern California Railroad Club, 163 Tioga Avenue, San Francisco, CA 94134, a group well-known for its rail-fan excursions. Pacific Coast Chapter, Railway & Locomotive Historical Society, 1151 Street, Sacramento, CA 95814-2204 (phone: 916/447-9665). The Pacific Coast Chapter operates the cable car museum under contract with the city. 1895. Historic Streetcar NO. 578S, built in 41 Division at 15th and Harrison Streets. FACILITIES Muni Metro Streetcar System • 4' 8 1/2\" gauge single track - 40.8 miles. (4.6 miles will be added when the 2.3 mile J Church extension is completed ear",
-    "80 ft. SunsetTunnel- 4,232 ft. • Twin Peaks Tunnel - West Portal to East Portal, 1 1,920 ft.; West Portal to Castro St. Station, 12,255 ft. Cable Car System • 3 1/2' gauge single track - 8.7 miles. • Cables - four (California, Powell, Hyde, and Mason), eath powered by a 510 hp motor in the cable car barn. • Cable diameter - 1 5/16\". • Total cable length -10.72 miles. 42 Major Facilities: Army Street Facility - Army & 3rd Sts. (3000 3rd St.) Leased since 1984. Originally used as the division for the 60' diesels, it is now used as Maintenance Training headquarters and a storage area for diesels not in regular service. 80,000 sq. ft. Cable Car Barn - Washington & Mason Sts. (1201 Mason St.) Originally built in 1887 for the Ferries & Cliff House Rwy., rebuilt after the 1906 earthquake and fire, and in 1982-84. 83,741 sq. ft. (The cable car museum is located in the barn - phone: 415/474- 1887.) H. Welton Flynn Motor Coach Division - 15th & Harrison Sts. (1940 Harrison St.) A former U.S. Steel warehouse, it was dedicated in July 1989 and opened that October. As of September 1990, houses all 100 of the 60' diesels and 25 of the 40' diese"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 6.21,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 2,
-    "density": 2.21,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.75,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/dataguide19901991990sanf",
-   "deep_link": "https://archive.org/details/dataguide19901991990sanf?q=Cable+Car+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Municipal Railway minutes releasing final retention on a $15.8 million construction contract to Stacy and Witbeck."
   }
  ]
 }

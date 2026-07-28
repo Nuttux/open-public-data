@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.731627+00:00",
+ "generated_at": "2026-07-28T11:43:47.699554+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "HSA Human Services Agency"
  ],
+ "profile": {
+  "n_vouchers": 9352,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 95520869.5,
+    "n_vouchers": 2432
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 85939210.67,
+    "n_vouchers": 1953
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 64130599.87,
+    "n_vouchers": 2088
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 36875356.2,
+    "n_vouchers": 1763
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 25517334.28,
+    "n_vouchers": 673
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 10684980.5,
+    "n_vouchers": 399
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 846956.74,
+    "n_vouchers": 40
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 17916.7,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 10,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 198153591.79,
+    "n_vouchers": 4156
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 8481485.39,
+    "n_vouchers": 260
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 7726870.12,
+    "n_vouchers": 106
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 6300272.75,
+    "n_vouchers": 286
+   },
+   {
+    "code": "536510",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 1010927.8,
+    "n_vouchers": 46
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 30000.0,
+    "n_vouchers": 4
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 28525.07,
+    "n_vouchers": 149
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 48
+   }
+  ],
+  "n_categories": 10,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 33407516.49,
+  "n_recent_lines": 9,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 12242231.55,
+    "n_vouchers": 248
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 11513051.67,
+    "n_vouchers": 89
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 5588572.28,
+    "n_vouchers": 96
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2716905.56,
+    "n_vouchers": 70
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 814826.74,
+    "n_vouchers": 24
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 355390.56,
+    "n_vouchers": 12
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000021763",
@@ -49,7 +217,7 @@
   },
   {
    "contract_no": "1000021278",
-   "title": "CCCYO- St. Joseph's Family Ctr",
+   "title": "CCCYO- St. Joseph's Family Center",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 8791043.0,
@@ -229,7 +397,7 @@
   },
   {
    "contract_no": "1000036645",
-   "title": "Cccyo - RV RRH",
+   "title": "Cccyo - RV rapid re-housing",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 9569299.0,
@@ -274,7 +442,7 @@
   },
   {
    "contract_no": "1000037666",
-   "title": "Cccyo - SF Home RRH",
+   "title": "Cccyo - SF Home rapid re-housing",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 3595588.0,

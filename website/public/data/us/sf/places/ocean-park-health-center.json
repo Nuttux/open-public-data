@@ -1,0 +1,414 @@
+{
+ "generated_at": "2026-07-28T12:23:47.805006+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "ocean-park-health-center",
+ "name": "Ocean Park Health Center",
+ "kind": "Health facility",
+ "family": "health",
+ "address": "1351 24th Ave",
+ "lat": 37.762347,
+ "lon": -122.482676,
+ "owning_dept": {
+  "name": "Public Health",
+  "code": "DPH"
+ },
+ "facility": {
+  "primary_name": "Ocean Park Health Center",
+  "primary_address": "1351 24TH AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94122",
+  "primary_block_lot": "1779007",
+  "primary_department_name": "Public Health",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 16257,
+  "primary_latitude": 37.762347315000056,
+  "primary_longitude": -122.48267555499996,
+  "supervisor_district": 4,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 16257,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "1779007"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1199,
+    "common_name": "Ocean Park Health Center",
+    "block_lot": "1779007",
+    "gross_sq_ft": 16257,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 1,
+  "measure_totals": {},
+  "bond_programs": [
+   "Public Health and Safety"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "Ocean Park Health Center Seismic Assessment",
+    "bond_program": "Public Health and Safety",
+    "component": "Other Community Health Centers",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Ocean Park Health Center"
+   }
+  ],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": "/img/us/sf/places/ocean-park-health-center.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/ocean-park-health-center.jpg",
+  "source": "media.api.sf.gov",
+  "source_url": "https://www.sf.gov/location--ocean-park-health-center",
+  "license": "UNVERIFIED",
+  "license_url": "",
+  "license_verified": false,
+  "provisional": true,
+  "author": "Bing",
+  "resolved_via": "web-search",
+  "fetched_at": "2026-07-27T23:39:17.142919+00:00"
+ },
+ "summary_en": "Ocean Park Health Center — District Health Center No. 5 before it was renamed — serves the Sunset from 1351 24th Avenue, with a satellite clinic in the OMI district that screened patients and referred follow-up here. It is one of five sites the health department designated for sentinel surveillance, where screening criteria are deliberately held constant so that trends can be read over time: the department's sexually transmitted disease summaries track chlamydia positivity at this centre rising from 8.1 percent in 1996 to 18.7 percent in 1999, alongside City Clinic, Cole Street, Southeast and the Youth Guidance Center. Its accessibility upgrade is documented in an unusually procedural way. The Finance and Audits Committee considered transferring management of two projects — this centre's and the Silver Avenue Family Health Center's — from Public Works to the Mayor's Office of Community Development, specifically so that the work would be eligible for community development block grant funding and the city would avoid repaying $475,000 to the federal housing department; the papers put the centre's project budget at $817,908. The clinic has also been publicly defended: when cuts were proposed, speakers came before the Health Commission against the reduction of service here, among them a former public health nurse.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "DPH",
+   "name": "Public Health",
+   "total_usd": 3185025572.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "DPH",
+   "name": "Public Health",
+   "total_compensation_usd": 1583866801.6,
+   "n_employees": 8904,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "communityhealtha2000sanf",
+   "title": "Community health assessment and local plan, 2000-2005",
+   "creator": "San Francisco, CA : Department of Public Health",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Ocean Park Health Center",
+   "ocr_excerpts": [
+    "TINA (PEP.) 950 Stockton, #207, 94108 Managed Care Provider: Yes PH: 399-9646 Comprehensive medical svs. to age 18. OL: Mandarin, Cantonese TRANS: Muni 30, 15 HOURS: T, F, Sat 9 am - 12 pm; M, W & TH 9am - 5 pm CHDP MEDICAL PROVIDER REFERRAL LIST DISTRICT #5 (Rev. 4/99) CLINICS: OCEAN-PARK HEALTH CENTER (H.C. #5) 1351 24th AveVlrving, 94122 Managed Care Provider: Yes PH: 753-8100 ELIGIBILITY: SAN FRANCISCO RESIDENT OL: Chinese TRANS: Muni N, 71 HOURS: M-F8am-5pm OMI PROP. J SATTELITE CLINIC - Satellite of Ocean Park Health Center - SCREENING ONLY, FOLLOW-UP at Ocean-Park Health Center 446 Randolph St., 94132 Managed Care Provider: Yes.- SFHP PH: 586-8035 Comprehensive medical services to age 19; No age limit for HIV testing and counseling. OL: English Only TRANS: Muni M HOURS: Friday 10 a.m. - 6 p.m. UNIVERSITY OF CALIFORNIA SAN FRANCISCO MEDICAL CENTER (UCSF) - STANF",
+    "94124 Lois Borgmann Mission Neighborhood Health Center 240 Shotwell San Francisco, CA94110 Dr. Michael Drennan (415) 648-3022 (415) 715-4000 Terry- Giovannini (415) 552-3870 San Francisco General Hospital 1001 Potrero, # 5M San Francisco, CA94110 Mattie Peckenham (415) 206-3409 Ocean-Park Health Center 1351 24th Avenue San Francisco, CA 94122 Nelly Fong (415) 753-8100 South of Market Clinic University of California at San Francisco Planned Parenthood California Pacific Medical Center California Campus 551 Minna San Francisco, CA 94103 Christina Sprague (415) 626- 400 Parnassus, 8m F"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.22,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.22,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/communityhealtha2000sanf",
+   "deep_link": "https://archive.org/details/communityhealtha2000sanf?q=Ocean+Park+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A community health plan listing the centre and its OMI satellite, with languages and hours."
+  },
+  {
+   "identifier": "sanfranciscodepa2000sanf",
+   "title": "San Francisco Department of Public Health strategic plan : leading the way to a healthier community, December 2000",
+   "creator": "San Francisco (Calif.). Department of Public Health",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Ocean Park Health Center",
+   "ocr_excerpts": [
+    "Meetings Group No. of Attendees BVHP Health and Environmental Assessment Project Board 39 CHN Citywide Community Advisory Board 5 City-wide Alcohol Advisory Board 11 HIV Prevention Planning Council 30 Maternal Child and Adolescent Health Advisory Board 7 Mental Health Board (2 meetings) 45 Ocean Park Health Center Comm. Advisory Board 11 Ryan White CARE Council 35 Tom Waddell Health Center 10 Treatment on Demand Planning Council 27 Other Community Groups And Interested Stakeholders Group No. of Attendees Chinatown (Beacon Center) 115 DPH Contractors 28 NICOS 35 Potrero Hill (Potrero Hill Neighborh",
+    "Executive Director SF Community Clinic Consortium John Stansell Medical Director Positive Health Program Kevin Coulter Medical Director Children's Health Center Lawrence Marsco Administrative Nurse Positive Health Programs Lee Learman Medical Director Women's Health Center Lisa Johnson Medical Director Ocean-Park Health Center Lori Kohler Medical Director Family Health Center Madeline Ritchie Center Director Chinatown Public Health Center Marcellina Ogbu Center Director Maxine Hall Health Center Margie Hutchinson Certified Nurse Midwife Nurse Midwifery Service Marian Pena Center Director Tom Waddell Health Center/Homeless",
+    "amily Health Center, General Medicine Clinic, Positive Health Program / Ward 86, Women’s Health Center, Urgent Care Center) and 1 1 are in other community locations (Balboa Teen Clinic, Castro-Mission Health Center, Chinatown Public Health Center, Maxine Hall Health Center, North of Market Senior Services, Ocean Park Health Center, Potrero Hill Health Center, Silver Avenue Health Center, Southeast Health Center, Special Programs for Youth [SPY], and Tom Waddell Health Center). San Francisco Community Clinic Consortium - The Consortium represents the nonprofit primary care clinics in San Francisco which are governed by community bo"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.04,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.54,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscodepa2000sanf",
+   "deep_link": "https://archive.org/details/sanfranciscodepa2000sanf?q=Ocean+Park+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The department's strategic plan, recording the centre's community advisory board and its medical director."
+  },
+  {
+   "identifier": "resourceguideofs1997sanf",
+   "title": "A resource guide of services for seniors in San Francisco",
+   "creator": "San Francisco, CA : Department of Public Health, Office of Senior Information, Referral and Health Promotion",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Ocean Park Health Center",
+   "ocr_excerpts": [
+    "s - West C23 Mission Integrated Service Center C25 Southeast - Mission Geriatric Services C26 Geriatric Focused Primary Care Clinic C27 Health at Home - Home Health Agency C28 Laguna Honda Hospital and Rehabilitation Center C29 Adult Day Health Center C30 Maxine Hall Health Center C31 Ocean Park Health Center C32 Paramedic Division C34 Public Conservator C35 San Francisco General Hospital Medical Center C36 Silver Avenue Family Health Center C37 District Attorney \"s - Consumer Fraud and Environmental Protection Unit .... C39 Mayor's Assistance and Neighborhood Outreach (MANO) C40 Mayor's Office of",
+    "C14 District Health Center No. 2 (now known as Maxine Hall Health Center) C31 District Health Center No. 3 (now known as Silver Avenue Family Health Center) . . C37 District Health Center No. 4 (now known as Chinatown Public Health Center) C16 District Health Center No. 5 (now known as Ocean-Park Health Center) C32 Domestic Violence Counseling Center - La Casa de las Madres 110 Domestic Violence Victims Support (WOMAN, Inc.) 241 Donohoe Recovery Unit Downtown Senior Center 178 E EASE - Eviction Assistance Services & Education 58 EDD - Employment Development Department Job Search Center 30",
+    "r the Community 133 Northern California Council for the Community - Information and Referral Service (HELPLINE), formerly under United Way 134 Northern California Presbyterian Homes and Services 136 Northern California Society to Prevent Blindness, Inc 147 o OMI Senior Center 34 OWL 137 Ocean-Park Health Center C32 Older Women's League (OWL) San Francisco Chapter 137 Ombudsman/Long Term Care 64 On Lok Day Services - 30th Street Senior Services 138 On Lok Senior Health Services 139 Operation Concern (now known as New Leaf) Gay and Lesbian Outreach to Elders 128 Options for Women Over Forty",
+    "- West C23 Mission Integrated Service Center C25 Southeast - Mission Geriatric Services C26 Geriatric Focused Primary Care Clinic C27 Health at Home - Home Health Agency C28 Laguna Honda Hospital and Rehabilitation Center C29 Adult Day Health Center C30 Maxine Hall Health Center C31 Ocean Park Health Center C32 Paramedic Division C34 Public Conservator C35 San Francisco General Hospital Medical Center C36 Silver Avenue Family Health Center C37 District Attorney's - Consumer Fraud and Environmental Protection Unit .... C39 Mayor's Assistance and Neighborhood Outreach (MANO) C40 Mayor's Office of",
+    "enter No. 1 (Castro/Mission Health Center) C14 A- 14 S (Continued) District Health Center No. 2 (Maxine Hall Health Center) District Health Center No. 3 (Silver Avenue Family Health Center) C31 District Health Center No. 4 (Chinatown Public Health Center) C16 District Health Center No. 5 (Ocean-Park Health Center) C32 Division of Mental Health Central City Senior Unit C21 Chinatown North Beach Clinical"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.34,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.84,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/resourceguideofs1997sanf",
+   "deep_link": "https://archive.org/details/resourceguideofs1997sanf?q=Ocean+Park+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "A departmental guide recording that the centre was formerly District Health Center No. 5."
+  },
+  {
+   "identifier": "sanfranciscosexu1998sanf",
+   "title": "San Francisco sexually transmitted disease annual summary",
+   "creator": "San Francisco (Calif.). Sexually Transmitted Disease Control Section,San Francisco (Calif.). STD Prevention and Control Services",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Ocean Park Health Center",
+   "ocr_excerpts": [
+    "YOUTH 120 1 0.8% 75 1 1. 3% STREET OUTREACH: ADULT N/A N/A N/A 7 0 0. 0% 76 Screening Program Annual STD Summary, 1999 B. Sentinel Surveillance Five screening sites have been designated as \"sentinel surveillance\" sites: City Clinic, Cole Street Youth Clinic, Youth Guidance Center, Ocean Park Health Center, and Southeast Health Center. Screening criteria in these sites are guaranteed not to change so that we may examine trends in positivity over time. This is particularly important when screening for primarily asymptomatic diseases such as gonor- rhea and chlamydia. Additional data are collected on patien",
+    "scharge ordysuria). Screening site 1995 Screening for CHLAMYDIA GONORRHEA 1996 1997 1998 1999 1995 1996 1997 1998 1999 CITY CLINIC 33.5% 34.9% 31.1% 30.8% 30.5% 28.0% 36.1% 32.9% 33.8% 31.9% COLE STREET YOUTH CENTER 0.0% 17.8% 28.6% 20.9% 21.5% NONE 34.1% 28.7% 20.8% 21.5% OCEAN PARK HEALTH CENTER 0.0% 8.1% 16.8% 15.5% 18.7% NONE 17.5% 16.4% 14.7% 19.2% SOUTHEAST HEALTH CENTER 0.0% 23.2% 22.4% 29.5% 31.4% NONE 36.9% 22.2% 29.6% 32.2% YOUTH GUIDANCE CENTER 1.4% 24.6% 7.4% 0.6% 2.9% NONE 49.0% 12.1% 0.6% 2.9% 82 Sentinel Surveillance Annual STD Summary, 1999 C. Detention facilities Urine",
+    "19 36 2 . 4 (SUBTOTAL) 946 7 0 . 7 2,274 45 2 . 0 Screening Program 77 San Francisco Department of Public Health B. Sentinel Surveillance Five screening sites have been designated as \"sentinel surveillance\" sites for women: City Clinic, Cole Street Youth Clinic, Youth Guidance Center, Ocean Park Health Center, and Southeast Health Center. Due to data management problems, data from Ocean Park Health Center is not included this year. Screening criteria in these sites are guaranteed not to change so that we may examine trends in positiv- ity over time. This is particularly important when screening for primarily asymptomatic diseases such as gonorrhea and chlamydia. Additional data are collected on patien",
+    "2 . 7% (TOTAL) (SUBTOTAL) 13, 858 135 0 . . 9% 7, 946 237 3 . 0% 76 Screening program Annual STD Summary, 2001 B. Sentinel Surveillance Five screening sites have been designated as \"sentinel surveillance\" sites for women: City Clinic, Cole Street Youth Clinic, Youth Guidance Center, Ocean Park Health Center, and Southeast Health Center. While screening criteria at other screening sites may change and sites may be added or dropped in or- der to maximize the number of cases we find, the screening criteria in these sites have remained un- changed so that we may monitor trends in prevalence over time. Th",
+    ". .3% CASTRO -MISS ION HEALTH CENTER (HC#1) 510 12 2 . .4% 284 6 2 . 1% MAXINE HALL HEALTH CENTER (HC#2) 607 23 3. . 8% 145 8 5 . .5% SILVER AVENUE HEALTH CENTER (HC#3) 461 18 3 . 9% 40 2 5. . 0% CHINATOWN HEALTH CENTER (HC#4) 340 12 3. .5% 15 2 13. .3% OCEAN PARK HEALTH CENTER ("
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.9,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.4,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscosexu1998sanf",
+   "deep_link": "https://archive.org/details/sanfranciscosexu1998sanf?q=Ocean+Park+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "STD surveillance summaries tracking screening positivity at the centre, one of five sentinel sites."
+  },
+  {
+   "identifier": "minutes2003sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Ocean Park Health Center",
+   "ocr_excerpts": [
+    "h Outreach, spoke in opposition to cuts in HERC funding. Karen Ho, NICOS Chinese Health Coalition, asked the Commission to preserve Chinatown Mental Health services, the Chinatown North Beach Public Health Center and the anti-gambling programs. Reiko Fujiwara, spoke against the cuts in service at the Ocean Park Health Center. Peg Hickox, Director of OMI Family Center, is opposed to closing the program, which serves 500 people in an area of the city that does not have many services. Gloria Frush-Frederico, OMI Family Center Urgent Care Team, spoke in support of the OMI Family Center. Dr. Joe Cambi, OMI Family Center",
+    "of maintaining HERC and AACHIE programs, and making sure that programs for African- Americans continue. Kimberly Thornton spoke against making cuts to the nationally recognized transgender services. Agnes Morton, former public health nurse speaking against cuts in prevention, the AACHIE program, and the Ocean Park Health Center. Michael Bartolomie spoke about the benefit he received from the Bayview clubhouse. Roger Kat spoke about the need for more money in our system. Indy Turan spoke against cuts in case management at the Tom Waddell Clinic. Elliot Wagner, Director of Acupuncture Clinic at Tom Waddell Health Center,",
+    "ayor to find cuts elsewhere. Leslie Will said that people voted for the MHRF as it is — as a hospital — and not how it is proposed to be — a board and care home. Mark Ellinger spoke against cuts at Tom Waddell Clinic. Do not cut the public health budget. Yuliya Kogan spoke against cuts at the Ocean Park Health Center. It is the only clinic available for Russian speaking San Franciscans. Sasha Mosalov, Sunset Russian Tobacco Education Project, spoke in support of the program and the Ocean Park Health Center. Anatoliy Boubuov spoke in support of the Ocean Park Health Center. Do not cut. Gloria Peterson, Chinatown Public Health Center, asked the Commission not to make these draconian cuts. Rich Liu spoke in support of the Chinatown Public Health Center. AH Weinhouse, Lincoln High School teacher, said Ocean Park Health Center is the only health center in the Sunset. The access is already very limited. Do not cut back health services. Edward Hatter, Program Coordinator, Potrero Hill Neighborhood House, is opposed to the ZAP cuts. Margie Peterson said health is so important to people and should not be cut. Dr. Meg Sch",
+    "nts at the MHRF have been on the discharge fast track. Some of the patients' families do not drive and will not be able to visit patients who are not in San Francisco. Eve Meyer, San Francisco Suicide Prevention, thanked the Commission for its resolution. Sasha Mosalov spoke against cuts to the Ocean Park Health Center. He submitted a petition in support of keeping the clinic open (on file). Ellen Sakoloff, PHN, spoke i"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.28,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.28,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -0.5,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes2003sanf",
+   "deep_link": "https://archive.org/details/minutes2003sanf?q=Ocean+Park+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Health Commission minutes with public testimony against cuts in service at the centre."
+  },
+  {
+   "identifier": "4meetingminutes2003sanf",
+   "title": "Meeting minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Audits Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Ocean Park Health Center",
+   "ocr_excerpts": [
+    "from the Department of Public Works to the Mayor's Office of Community Development. The proposed resolution would transfer from the DPW to the MOCD the management and oversight authority for two accessibility upgrade projects, the Silver Avenue Family Health Center Project (1525 Silver Avenue) and the Ocean Park Health Center Project (1351 24th Avenue). The proposed resolution would also authorize a transfer of $475,000 of bond and grant funds (previously work- ordered from the Mayor's Office of Disability and the Department of Public Health to the DPW) from the DPW to the MOCD for the Silver Avenue Family Health Center Accessibility Upgrade Project and Ocean Park Health Center Accessibility Upgrade Project (see Comment No. 3). 1. Attachment I to this report, provided by Ms. Anna Yee of the MOCD, provides background information related to this proposed resolution as well as a description for the Silver Avenue Family Health Center and Ocean Park Health Center accessibility upgrade projects. According to Ms. Yee and as described in Attachment I. \"A MOCD grantee [3rd Street Economic Development Corporation] made a transaction without MOCD or HUD approval. The ineligible transaction generated program income for a total project worth of $475,000. HUD requires",
+    "lity Upgrade Projects, as noted above, that are CDBG eligible in order to avoid a $475,000 payment from the City to HUD, for the ineligible transaction described above. 2. Mr. Roger Wong of the DPW advises that the DPW is the project manager for the Silver Avenue Family Health Center Project and Ocean Park Health Center Project. Attachment II to this report, provided by Mr. Wong, shows the total budget and funding sources for the Projects. As shown in Attachment II, these Projects are funded by bond and grant funds totaling $1,384,400 and $817,908 for the Silver Avenue Family Health Center and Ocean Park Health Center Project accessibility upgrade projects respectively. Mr. Wong states that these accessibility upgrade projects are scheduled to be completed in the Spring of 2005. Ms. Yee states that DPW would continue to act a project manager for the accessibility upgrades for the Silver Avenue Family Health Center Project and the Ocean Park Health Center Project. 3. As previously noted, the proposed resolution would authorize the transfer of funds from DPW to MO CD. However, Ms. Yee reports in Attachment I, that MO CD does not require such a transfer of funds. Therefore, the Budget Analyst recommends that the proposed resolution be amended to dele",
+    ", new grating, talking signs at entrance, new ramp and striping; modify restrooms 36 Attachment i Budget and Fund Source Summary Facilities Fund Source Budget Remarks Silver Avenue Health Center DPH fund bond funds 831,400 Seismic / architectural MOD grant fu"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 1.92,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.42,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/4meetingminutes2003sanf",
+   "deep_link": "https://archive.org/details/4meetingminutes2003sanf?q=Ocean+Park+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Committee papers moving the centre's $817,908 accessibility project to keep it block-grant eligible."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "performanceeffic202008san",
+   "title": "Performance and efficiency review : Department of Public Health : Controller's Office analysis 2005-2008",
+   "year": 2005,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/performanceeffic202008san"
+  },
+  {
+   "identifier": "annualreportofde192425sanf",
+   "title": "Annual report of the Department of Public Health, San Francisco, California",
+   "year": 1925,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualreportofde192425sanf"
+  },
+  {
+   "identifier": "annualsalaryord197879sanf",
+   "title": "Annual salary ordinance",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualsalaryord197879sanf"
+  }
+ ],
+ "dept_shelf_label": "Public Health",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 6,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

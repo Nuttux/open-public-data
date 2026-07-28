@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import "@/app/fusion.css";
 
 import SfContractFiche from "@/components/us/SfContractFiche";
-import { loadSfContractFiche } from "../../data";
+import { loadSfContractFiche, sfContractDeptHref } from "../../data";
+import { contractLabel } from "../../us-sf-contracts-types";
 import { contractPrimePayeeSlug } from "@/lib/us/sf-payees-data";
 
 type Params = { no: string };
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     return { title: { absolute: "Contract not found" }, robots: { index: false } };
   }
   const c = fiche.contract;
-  const title = `${(c.title_plain || c.title || `Contract ${c.contract_no}`).slice(0, 70)} — SF contract ${c.contract_no}`;
+  const title = `${(contractLabel(c) || `Contract ${c.contract_no}`).slice(0, 70)} — SF contract ${c.contract_no}`;
   return {
     title,
     description: `San Francisco supplier contract ${c.contract_no} — ${c.prime_contractor ?? "unnamed prime"}, ${c.department ?? "City and County of San Francisco"}. Agreed and paid amounts, payment curve and project team from the SF Controller's open data.`,
@@ -39,6 +40,7 @@ export default async function SfContractPage({ params }: { params: Promise<Param
   if (!fiche) return notFound();
   const c = fiche.contract;
   const primePayeeSlug = contractPrimePayeeSlug(c.contract_no);
+  const deptContractsHref = sfContractDeptHref(c.department_code);
 
   return (
     <main id="main-content" tabIndex={-1}>
@@ -50,7 +52,7 @@ export default async function SfContractPage({ params }: { params: Promise<Param
             </Link>
           </div>
           <h1 className="fx-page-title" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
-            {c.title_plain || c.title || `Contract ${c.contract_no}`}
+            {contractLabel(c) || `Contract ${c.contract_no}`}
           </h1>
           <p className="fx-page-lede">
             {primePayeeSlug && c.prime_contractor ? (
@@ -63,12 +65,27 @@ export default async function SfContractPage({ params }: { params: Promise<Param
             ) : (
               c.prime_contractor ?? "—"
             )}
-            {c.department ? ` · ${c.department}` : ""}
+            {c.department ? (
+              <>
+                {" · "}
+                {deptContractsHref ? (
+                  <Link href={deptContractsHref} scroll={false} style={{ color: "inherit", borderBottom: "1px solid currentColor" }}>
+                    {c.department}
+                  </Link>
+                ) : (
+                  c.department
+                )}
+              </>
+            ) : null}
           </p>
         </div>
       </section>
       <div className="fx-fiche-wrap">
-        <SfContractFiche fiche={fiche} primePayeeSlug={primePayeeSlug} />
+        <SfContractFiche
+          fiche={fiche}
+          primePayeeSlug={primePayeeSlug}
+          deptContractsHref={deptContractsHref}
+        />
       </div>
     </main>
   );

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.725959+00:00",
+ "generated_at": "2026-07-28T11:43:47.689774+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 14120,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 3683513649.28,
+    "n_vouchers": 13389
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 11393744.6,
+    "n_vouchers": 402
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 3661490.8,
+    "n_vouchers": 109
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 1940549.55,
+    "n_vouchers": 22
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 407065.23,
+    "n_vouchers": 41
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 344909.0,
+    "n_vouchers": 35
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "DEM",
+    "usd": 299905.73,
+    "n_vouchers": 30
+   },
+   {
+    "department": "DAT District Attorney",
+    "department_code": "DAT",
+    "usd": 219181.74,
+    "n_vouchers": 16
+   }
+  ],
+  "n_departments": 23,
+  "categories": [
+   {
+    "code": "527860",
+    "label": "UC Medical Services",
+    "spend_class": "purchase",
+    "usd": 1897698875.55,
+    "n_vouchers": 2777
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 221417817.77,
+    "n_vouchers": 1030
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 98048399.89,
+    "n_vouchers": 3176
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 10786195.7,
+    "n_vouchers": 386
+   },
+   {
+    "code": "527810",
+    "label": "Physicians",
+    "spend_class": "purchase",
+    "usd": 2517766.98,
+    "n_vouchers": 16
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 1263532.98,
+    "n_vouchers": 37
+   },
+   {
+    "code": "486690",
+    "label": "Exp Rec Fr Human Services AAO",
+    "spend_class": "unclear",
+    "usd": 250000.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "536510",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 179950.69,
+    "n_vouchers": 15
+   }
+  ],
+  "n_categories": 19,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 311061788.89,
+  "n_recent_lines": 11,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "UC Medical Services",
+    "spend_class": "purchase",
+    "usd": 287997809.69,
+    "n_vouchers": 215
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 14644001.74,
+    "n_vouchers": 360
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 5526473.81,
+    "n_vouchers": 228
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1667338.8,
+    "n_vouchers": 44
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 464329.41,
+    "n_vouchers": 5
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 452990.06,
+    "n_vouchers": 6
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000008646",
@@ -139,7 +307,7 @@
   },
   {
    "contract_no": "1000033801",
-   "title": "UCSF Citywide- PSH Support Svc",
+   "title": "UCSF Citywide- permanent supportive housing Support Service",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 9999792.0,
@@ -166,7 +334,7 @@
   },
   {
    "contract_no": "1000035861",
-   "title": "LHH Clinical Practice Group",
+   "title": "Laguna Honda Hospital Clinical Practice Group",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 4729618.0,
@@ -229,7 +397,7 @@
   },
   {
    "contract_no": "1000036861",
-   "title": "BHS CYF MH Services",
+   "title": "Behavioral Health Services CYF MH Services",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 1679591.0,
@@ -256,7 +424,7 @@
   },
   {
    "contract_no": "1000035859",
-   "title": "LHH Dental Services",
+   "title": "Laguna Honda Hospital Dental Services",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 1971451.0,
@@ -274,7 +442,7 @@
   },
   {
    "contract_no": "1000035150",
-   "title": "St. Francis Visitation Svc",
+   "title": "St. Francis Visitation Service",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 3577000.0,
@@ -292,7 +460,7 @@
   },
   {
    "contract_no": "1000021750",
-   "title": "Maternity services at ZSFG",
+   "title": "Maternity services at Zuckerberg San Francisco General",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 330400.0,

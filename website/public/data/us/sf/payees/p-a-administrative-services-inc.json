@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.740592+00:00",
+ "generated_at": "2026-07-28T11:43:47.714343+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -28,10 +28,104 @@
  "top_departments": [
   "HSS Health Service System"
  ],
+ "profile": {
+  "n_vouchers": 1819,
+  "departments": [
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "usd": 147037507.97,
+    "n_vouchers": 1740
+   },
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "usd": 13520.16,
+    "n_vouchers": 79
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "556710",
+    "label": "Nc-Flex Benefit-Tpa Administer",
+    "spend_class": "unclear",
+    "usd": 142801413.38,
+    "n_vouchers": 1343
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 3970430.62,
+    "n_vouchers": 399
+   },
+   {
+    "code": "556150",
+    "label": "Medical-Health Plan Providers",
+    "spend_class": "obligation",
+    "usd": 32839.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "479999",
+    "label": "Other Non-Operating Revenue",
+    "spend_class": "ledger",
+    "usd": 30055.3,
+    "n_vouchers": 1
+   },
+   {
+    "code": "556310",
+    "label": "Med Multi Plans-Vision Care",
+    "spend_class": "unclear",
+    "usd": 548.68,
+    "n_vouchers": 1
+   },
+   {
+    "code": "OTH_ASSETS_CURR",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": -324837.05,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 20964332.88,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Nc-Flex Benefit-Tpa Administer",
+    "spend_class": "unclear",
+    "usd": 20457544.38,
+    "n_vouchers": 155
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 506188.5,
+    "n_vouchers": 36
+   },
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 600.0,
+    "n_vouchers": 8
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000009802",
-   "title": "FSA and COBRA Admin Services",
+   "title": "FSA and COBRA Administration Services",
    "department": "HSS Health Service System",
    "department_code": "HSS",
    "agreed_usd": 4667457.0,

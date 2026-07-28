@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.745214+00:00",
+ "generated_at": "2026-07-28T11:43:47.722739+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -30,6 +30,85 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 2339,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 101991752.79,
+    "n_vouchers": 2288
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 1185436.5,
+    "n_vouchers": 51
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 6484964.9,
+    "n_vouchers": 26
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 4642545.97,
+    "n_vouchers": 128
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 4008659.59,
+    "n_vouchers": 13
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 423993.23,
+    "n_vouchers": 64
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 110
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2021,
+  "recent_total_usd": 3738632.3,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 2339675.31,
+    "n_vouchers": 7
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1398956.99,
+    "n_vouchers": 15
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

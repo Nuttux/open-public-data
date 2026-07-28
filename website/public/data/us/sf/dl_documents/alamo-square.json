@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.727504+00:00",
+ "generated_at": "2026-07-28T12:23:47.742703+00:00",
  "slug": "alamo-square",
  "name": "Alamo Square",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -40,8 +40,13 @@
    "url": "https://archive.org/details/codeenforcementf1968sanf",
    "deep_link": "https://archive.org/details/codeenforcementf1968sanf?q=Alamo+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "The 1968 planning and public-works study that recommended part of the Alamo Square neighborhood for federally assisted code enforcement."
   },
   {
    "identifier": "finalenvironment2197sanf",
@@ -80,8 +85,13 @@
    "url": "https://archive.org/details/finalenvironment2197sanf",
    "deep_link": "https://archive.org/details/finalenvironment2197sanf?q=Alamo+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A 1976 environmental report that uses the Alamo Square program area as a comparison case for rents and real-estate prices."
   },
   {
    "identifier": "excerptsrelating19721973s",
@@ -121,8 +131,13 @@
    "url": "https://archive.org/details/excerptsrelating19721973s",
    "deep_link": "https://archive.org/details/excerptsrelating19721973s?q=Alamo+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "Public Works' code-enforcement returns: inspection and compliance counts for Alamo Square, and 89 street trees planted by neighborhood youths."
   },
   {
    "identifier": "annualreportofd1973sanf_1",
@@ -162,50 +177,57 @@
    "url": "https://archive.org/details/annualreportofd1973sanf_1",
    "deep_link": "https://archive.org/details/annualreportofd1973sanf_1?q=Alamo+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "The 1973 Public Works annual report, carrying the same compliance tables and street-tree costs for the Alamo Square area."
   },
   {
-   "identifier": "minutes1990sanf_2",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
+   "identifier": "section312loanli1968lync",
+   "title": "Section 312 loan limits : the implications for federally assisted code enforcement (FACE) in San Francisco",
+   "creator": "Lynch, Judith,San Francisco (Calif.). Dept. of Public Works,San Francisco (Calif.). Dept. of City Planning",
+   "year": 1968,
    "pool": "sfpl",
    "matched_alias": "Alamo Square",
    "ocr_excerpts": [
-    "AL ORDER OF BUSINESS (NOTE: The Committee may convene in Executive Session pursuant to Section 54956.9(a) of the California Government Code regarding potential litigation) 6. SIGNIFICANT NATURAL RESOURCE AREAS — CONSIDERATION OF CRITERIA 7. REVIEW OF OPEN SPACE PROPOSALS Renovat i on/Ma i ntenance Alamo Square - Renovation/Maintenance Alioto Mini Park - Renovation/Maintenance Bernal Hill Park Perimeter - Maintenance Buena Vista Park Interior Irrigation Loop - Renovation/Maintenance Campbel I /Rut land Mini Park - Renovation/Maintenance Folsom Playground - Renovation Golden Gate Park Big Rec Dressing Room - Renov",
-    "ager-Administration; Deborah Learner, Park Planner; Tim Lillyquist, Assistant to the General Manager; and Elaine Molinari, Director of Neighborhood Services, of the Recreation and Park Department 2. APPROVAL OF MINUTES Minutes of October 16, 1991 were approved as submitted. 3. PUBLIC COMMENT Alamo Square — Request for $103,000 to renovate Alamo Square according to plans already submitted to the Committee. Mission Playground — Request for funding for improvements to Mission Playground: security lighting, open the Valencia Streets entrance and security fenci ng. 23rd and Treat Streets — Request to acquire a site at 23rd and Treat Streets for open",
-    "Park and Open Space Advisory Committee. Members of the public may address the Committee for up to 3 minutes for individuals or up to 5 minutes for groups, or a lesser period time subject to the call of the Co-Chairs. STAFF REPORTS REVIEW OF OPEN SPACE PROPOSALS Renovat i on/Ma i ntenance Alamo Square - Renovation/Maintenance Al ioto Mini Park - Renovation/Maintenance Bernal Hill Park Perimeter - Maintenance Buena Vista Park Interior Irrigation Loop Campbe 1 1 /Rut I and Mini Park - Renovation/Maintenance Chinese Playground - Remodeling Excelsior Playground Folsom Playground - Renovation Frank I in Square",
-    "by the Park and Open Space Advisory Committee on matters stated, but not necessarily the chronological order in which the matters were taken up. City and County of San Francisco Recreation and Park Department 1992-93 OPEN SPACE PROGRAM PROJECT LIST October 29, 1991 Renovation /Mai ntenance 1. Alamo Square - Community request to upgrade play area, restrooms, lighting, walkways and develop landscape master plan. Cost estimate of $103,000 provided by community. (Given Priority 1 on 10/29 with recommendation that community match funds of up to $103,000) 2. Al ioto Mi ni Park - Community and staff request",
-    "ssarily the chronological order in which the matters were taken up. 3 5 3 I t City and County of San Francisco Recreation and Park Department 1992-93 OPEN SPACE PROGRAM PROJECT LIST November 6, 1991 Re novation /Mai nte nance I 1 . 2. 3. 4. 5. 5a. 6. 7. 8. 9. 10. 1 1 . 12. Alamo Square - Community request to u"
+    "sources indicate that commercial loans to finance rehabilitation of properties in declining areas of San Francisco are difficult, if not impossible, to obtain. More particularly, private funds are seldom available, at reasonable rates and terms, to property owners in the three proposed FACE areas, Alamo Square, Bernal Heights and Duboce Triangle. Open hearings, to which all property owners were invited, were held in each of the three areas, to test community reaction to the program and to assess both the need for and understanding of, FACE. At each hearing, speakers stressed the need for readily available financing. Many cited exhorbitant interest rates and short terms on the few loans which were offered, often by less than reputable finance firms. Since those hearings were held, early in 1968, several cases in the Alamo Square neighborhood have been investigated by the FACE staff, as part of a documentation of the difficulty of obtaining financing. The same kinds of difficulties have also occurred in the other two proposed areas, but because the Alamo 6 Square cases were more thoroughly investigated, only that infor- mation will be presented in this report. A block in the Alamo Square area was chosen for a complete investigation, which included inspections to determine code compliance costs, tenant interviews and meetings between owners and FACE loan officers. 3 One owner, who felt the program was essential to the neighbor hood, reported his own difficulties in obtaining a loan.",
+    "lost so much _ 7 _ ^ Code Enforcement Feasibjlity Sudty, May, 1968, available from the Property Conservation Division, S.F. Department of Public Works. revenue while his units were vacant. In April, 1968, another case was investigated by a FACE loan officer. A property owner in the proposed Alamo Square FACE area needed $9,000 to pay a due second mortgage. The holder of his first mortgage, a savings and loan company, would not refinance, citing two factors: first, the \"tight money\" market precluded any refinancing, and second, the Alamo Square neighborhood had been \"red-lined\" by the firm as a high risk area. The FACE loan officer investigated several other savings and loan companies, to see if private financing were available for this property owner. Only one institution was willing to refinance the mortgages, and indicated it would",
+    "w monthly installments and a \"balloon payment\" of almost $9,000 due at the end of the five-year period. A fully amortized loan was available from one mortgage company, which offered the money at 10%, plus 10 points, for five years. 8 Another case was investigated in October, 1968, when an Alamo Square property owner needed funds for rehabilitation. The twenty-five unit structure was acquired through a foreclosure, and the owner wanted a loan of mo"
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 7.28,
+    "score": 8.5,
     "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
     "substantive": true,
     "substantive_direct": true,
-    "hits": 5,
-    "density": 1.78,
+    "hits": 3,
+    "density": 7.91,
     "title_hit": false
    },
    "materiality": {
-    "score": -1.25,
+    "score": 2.5,
     "money": true,
-    "decision": true,
-    "accountability": false,
+    "decision": false,
+    "accountability": true,
     "contestation": false,
     "named_genre": false,
-    "generic_serial": true
+    "generic_serial": false
    },
-   "url": "https://archive.org/details/minutes1990sanf_2",
-   "deep_link": "https://archive.org/details/minutes1990sanf_2?q=Alamo+Square",
+   "url": "https://archive.org/details/section312loanli1968lync",
+   "deep_link": "https://archive.org/details/section312loanli1968lync?q=Alamo+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": false
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false,
+   "gloss": "A 1968 study of federal loan limits, recording that a savings and loan had red-lined the Alamo Square neighborhood as high risk."
   },
   {
    "identifier": "59minutesregula199697sanf",
@@ -245,47 +267,59 @@
    "url": "https://archive.org/details/59minutesregula199697sanf",
    "deep_link": "https://archive.org/details/59minutesregula199697sanf?q=Alamo+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Redevelopment Agency minutes at which the president of the Alamo Square Neighborhood Association spoke on nearby Western Addition parcels."
   },
   {
-   "identifier": "section312loanli1968lync",
-   "title": "Section 312 loan limits : the implications for federally assisted code enforcement (FACE) in San Francisco",
-   "creator": "Lynch, Judith,San Francisco (Calif.). Dept. of Public Works,San Francisco (Calif.). Dept. of City Planning",
-   "year": 1968,
+   "identifier": "minutes1990sanf_2",
+   "title": "Minutes",
+   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
+   "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Alamo Square",
    "ocr_excerpts": [
-    "sources indicate that commercial loans to finance rehabilitation of properties in declining areas of San Francisco are difficult, if not impossible, to obtain. More particularly, private funds are seldom available, at reasonable rates and terms, to property owners in the three proposed FACE areas, Alamo Square, Bernal Heights and Duboce Triangle. Open hearings, to which all property owners were invited, were held in each of the three areas, to test community reaction to the program and to assess both the need for and understanding of, FACE. At each hearing, speakers stressed the need for readily available financing. Many cited exhorbitant interest rates and short terms on the few loans which were offered, often by less than reputable finance firms. Since those hearings were held, early in 1968, several cases in the Alamo Square neighborhood have been investigated by the FACE staff, as part of a documentation of the difficulty of obtaining financing. The same kinds of difficulties have also occurred in the other two proposed areas, but because the Alamo 6 Square cases were more thoroughly investigated, only that infor- mation will be presented in this report. A block in the Alamo Square area was chosen for a complete investigation, which included inspections to determine code compliance costs, tenant interviews and meetings between owners and FACE loan officers. 3 One owner, who felt the program was essential to the neighbor hood, reported his own difficulties in obtaining a loan.",
-    "lost so much _ 7 _ ^ Code Enforcement Feasibjlity Sudty, May, 1968, available from the Property Conservation Division, S.F. Department of Public Works. revenue while his units were vacant. In April, 1968, another case was investigated by a FACE loan officer. A property owner in the proposed Alamo Square FACE area needed $9,000 to pay a due second mortgage. The holder of his first mortgage, a savings and loan company, would not refinance, citing two factors: first, the \"tight money\" market precluded any refinancing, and second, the Alamo Square neighborhood had been \"red-lined\" by the firm as a high risk area. The FACE loan officer investigated several other savings and loan companies, to see if private financing were available for this property owner. Only one institution was willing to refinance the mortgages, and indicated it would",
-    "w monthly installments and a \"balloon payment\" of almost $9,000 due at the end of the five-year period. A fully amortized loan was available from one mortgage company, which offered the money at 10%, plus 10 points, for five years. 8 Another case was investigated in October, 1968, when an Alamo Square property owner needed funds for rehabilitation. The twenty-five unit structure was acquired through a foreclosure, and the owner wanted a loan of mo"
+    "AL ORDER OF BUSINESS (NOTE: The Committee may convene in Executive Session pursuant to Section 54956.9(a) of the California Government Code regarding potential litigation) 6. SIGNIFICANT NATURAL RESOURCE AREAS — CONSIDERATION OF CRITERIA 7. REVIEW OF OPEN SPACE PROPOSALS Renovat i on/Ma i ntenance Alamo Square - Renovation/Maintenance Alioto Mini Park - Renovation/Maintenance Bernal Hill Park Perimeter - Maintenance Buena Vista Park Interior Irrigation Loop - Renovation/Maintenance Campbel I /Rut land Mini Park - Renovation/Maintenance Folsom Playground - Renovation Golden Gate Park Big Rec Dressing Room - Renov",
+    "ager-Administration; Deborah Learner, Park Planner; Tim Lillyquist, Assistant to the General Manager; and Elaine Molinari, Director of Neighborhood Services, of the Recreation and Park Department 2. APPROVAL OF MINUTES Minutes of October 16, 1991 were approved as submitted. 3. PUBLIC COMMENT Alamo Square — Request for $103,000 to renovate Alamo Square according to plans already submitted to the Committee. Mission Playground — Request for funding for improvements to Mission Playground: security lighting, open the Valencia Streets entrance and security fenci ng. 23rd and Treat Streets — Request to acquire a site at 23rd and Treat Streets for open",
+    "Park and Open Space Advisory Committee. Members of the public may address the Committee for up to 3 minutes for individuals or up to 5 minutes for groups, or a lesser period time subject to the call of the Co-Chairs. STAFF REPORTS REVIEW OF OPEN SPACE PROPOSALS Renovat i on/Ma i ntenance Alamo Square - Renovation/Maintenance Al ioto Mini Park - Renovation/Maintenance Bernal Hill Park Perimeter - Maintenance Buena Vista Park Interior Irrigation Loop Campbe 1 1 /Rut I and Mini Park - Renovation/Maintenance Chinese Playground - Remodeling Excelsior Playground Folsom Playground - Renovation Frank I in Square",
+    "by the Park and Open Space Advisory Committee on matters stated, but not necessarily the chronological order in which the matters were taken up. City and County of San Francisco Recreation and Park Department 1992-93 OPEN SPACE PROGRAM PROJECT LIST October 29, 1991 Renovation /Mai ntenance 1. Alamo Square - Community request to upgrade play area, restrooms, lighting, walkways and develop landscape master plan. Cost estimate of $103,000 provided by community. (Given Priority 1 on 10/29 with recommendation that community match funds of up to $103,000) 2. Al ioto Mi ni Park - Community and staff request",
+    "ssarily the chronological order in which the matters were taken up. 3 5 3 I t City and County of San Francisco Recreation and Park Department 1992-93 OPEN SPACE PROGRAM PROJECT LIST November 6, 1991 Re novation /Mai nte nance I 1 . 2. 3. 4. 5. 5a. 6. 7. 8. 9. 10. 1 1 . 12. Alamo Square - Community request to u"
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 8.5,
+    "score": 7.28,
     "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
     "substantive": true,
     "substantive_direct": true,
-    "hits": 3,
-    "density": 7.91,
+    "hits": 5,
+    "density": 1.78,
     "title_hit": false
    },
    "materiality": {
-    "score": 2.5,
+    "score": -1.25,
     "money": true,
-    "decision": false,
-    "accountability": true,
+    "decision": true,
+    "accountability": false,
     "contestation": false,
     "named_genre": false,
-    "generic_serial": false
+    "generic_serial": true
    },
-   "url": "https://archive.org/details/section312loanli1968lync",
-   "deep_link": "https://archive.org/details/section312loanli1968lync?q=Alamo+Square",
+   "url": "https://archive.org/details/minutes1990sanf_2",
+   "deep_link": "https://archive.org/details/minutes1990sanf_2?q=Alamo+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Open-space committee minutes listing Alamo Square for renovation and maintenance, with a $103,000 request from the public."
   }
  ]
 }

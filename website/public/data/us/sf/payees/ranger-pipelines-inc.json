@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.730325+00:00",
+ "generated_at": "2026-07-28T11:43:47.696996+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,10 +36,87 @@
  "top_departments": [
   "PUB Public Utilities Bureaus"
  ],
+ "profile": {
+  "n_vouchers": 620,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 368640811.12,
+    "n_vouchers": 409
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 29955364.62,
+    "n_vouchers": 80
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 6033396.3,
+    "n_vouchers": 113
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 4121122.6,
+    "n_vouchers": 18
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 143455037.46,
+    "n_vouchers": 264
+   },
+   {
+    "code": "553120",
+    "label": "Judgements - Legal Fees",
+    "spend_class": "unclear",
+    "usd": 1016000.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "468111",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 6989.58,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 3,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 9513208.17,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 9506218.59,
+    "n_vouchers": 24
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 6989.58,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000035760",
-   "title": "SJPV & Safe Impr: PH 2B&2C",
+   "title": "SJPV & Safe Improvement: PH 2B&2C",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 47575436.33,

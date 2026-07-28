@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.763111+00:00",
+ "generated_at": "2026-07-28T12:23:47.778851+00:00",
  "slug": "university-mound-reservoir",
  "name": "University Mound Reservoir",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -42,9 +42,13 @@
    "url": "https://archive.org/details/reportofsanfranc1936sanf",
    "deep_link": "https://archive.org/details/reportofsanfranc1936sanf?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": true,
+   "gloss": "A commission report listing the reservoir's addition among contracts let under the 1933 bond issue."
   },
   {
    "identifier": "sanfranciscowate00sanf",
@@ -84,9 +88,13 @@
    "url": "https://archive.org/details/sanfranciscowate00sanf",
    "deep_link": "https://archive.org/details/sanfranciscowate00sanf?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "A 1935 account giving the reservoir's capacity, elevation, and the pressure zone it supplies."
   },
   {
    "identifier": "springvalleywate06spri",
@@ -126,8 +134,13 @@
    "url": "https://archive.org/details/springvalleywate06spri",
    "deep_link": "https://archive.org/details/springvalleywate06spri?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "Testimony from the Spring Valley water litigation appraising the reservoir's excavation cost per yard."
   },
   {
    "identifier": "facilitiesreliab2000wate",
@@ -166,8 +179,13 @@
    "url": "https://archive.org/details/facilitiesreliab2000wate",
    "deep_link": "https://archive.org/details/facilitiesreliab2000wate?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "A regional reliability study describing the city's east-side pressure zones served from this reservoir."
   },
   {
    "identifier": "bulletinofdepart1909sanf",
@@ -208,8 +226,13 @@
    "url": "https://archive.org/details/bulletinofdepart1909sanf",
    "deep_link": "https://archive.org/details/bulletinofdepart1909sanf?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false,
+   "gloss": "Health department bulletins recording water samples taken at the reservoir's intake in 1908."
   }
  ]
 }

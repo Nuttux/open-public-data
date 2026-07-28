@@ -1,25 +1,49 @@
 "use client";
 
-import Link from "next/link";
+import { useState } from "react";
 import SectionHead from "@/components/fusion/SectionHead";
 import PageTOC from "@/components/fusion/PageTOC";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
-import BarRow from "@/components/fusion/BarRow";
-import SoleSourceTrend from "./SoleSourceTrend";
-import ExpandableList from "@/components/fusion/ExpandableList";
+import SfMoneyBar from "@/components/us/SfMoneyBar";
 import Tip from "@/components/fusion/Tip";
 import { useT } from "@/lib/localeContext";
-import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
+import { fmtUsdCompact } from "@/lib/us/format";
 import SfContractsSearch from "./SfContractsSearch";
-import { typeLabel } from "./us-sf-contracts-types";
+import ChartSource from "@/components/fusion/ChartSource";
+import SfSourceFooter from "@/components/us/SfSourceFooter";
+import { deptSlug } from "@/lib/us/sf-budget-slugs";
+import { FAMILY_LABELS, contractLabel, deptDisplayName, typeLabel, typeSlug } from "./us-sf-contracts-types";
 import type { SfContractsActive, SfContractsOverview } from "./us-sf-contracts-types";
+import type { SfDeptBar, SfPrimesData } from "./data";
 
 /**
  * /us/city/sf/contracts — EN-only (ADR-0010 D3): every string goes through
  * `us.sf.contracts.*` keys whose EN and FR values are identical English.
- * Every number comes from the two exports; the only client arithmetic is
- * shares already present in the files or min/max over exported rows.
+ * Every number comes from the exports or from a server-side sum over their
+ * rows (see data.ts); the only client arithmetic is shares already present
+ * in the files.
+ *
+ * TWO sections, down from six: the money (one bar, five lenses) and the
+ * search. The page used to be organised around register mechanics — types,
+ * authorities, flags, perimeters — as six stacked lists of 10-12 rows, and
+ * compensated for unreadable rows with free-floating explanatory boxes.
+ *   · "who it buys from" and "which departments sign" were two sections
+ *     reading the same $43.4B; they are one section with a toggle.
+ *   · sole-source was its own headline section opening on a near-flat line
+ *     (2.7 %→6.5 % across thirteen years, promising a trend the data has not
+ *     got). It survives as the "by how it was awarded" lens, alongside the
+ *     register's own authority families — where a lawful waiver path reads as
+ *     one route among several rather than as an accusation.
+ *   · the "$4.4B paid past agreed" material is gone rather than demoted. The
+ *     register's payments column runs a median 3.1x above the City's own
+ *     voucher ledger on multi-phase contracts and the cause is undetermined,
+ *     so the figure could not carry a section.
+ *
+ * KNOWN GAP: with those cuts the page states nothing. It is a good instrument
+ * — every slice opens a fiche — but it has no scene and no claim, and four of
+ * the five cuts sit behind a click nobody is obliged to make. The lens buttons
+ * are also untracked, so we cannot yet tell whether they are used.
  */
 
 const fill = (s: string, vars: Record<string, string | number>) => {
@@ -30,82 +54,157 @@ const fill = (s: string, vars: Record<string, string | number>) => {
 
 const nfInt = new Intl.NumberFormat("en-US");
 
-/** Per-section visible source line — local copy of the /us/national helper
- *  (2nd use; promote to a shared module on the 3rd, rule of three). */
-function SourceLine({
-  label,
-  links,
-  dataWord,
-}: {
-  label: string;
-  links: Array<{ name: string; href: string }>;
-  dataWord: string;
-}) {
-  return (
-    <figcaption className="fx-chart-source">
-      <b>{label}:</b>{" "}
-      {links.map((l, i) => (
-        <span key={l.href}>
-          {i > 0 && <span className="sep">·</span>}
-          {l.name}{" "}
-          <a href={l.href} target="_blank" rel="noopener noreferrer">
-            {dataWord} ↗
-          </a>
-        </span>
-      ))}
-    </figcaption>
-  );
-}
-
 export default function SfContractsClient({
   overview,
   active,
+  primes,
+  deptBars,
 }: {
   overview: SfContractsOverview;
   active: SfContractsActive;
+  primes: SfPrimesData;
+  deptBars: SfDeptBar[];
 }) {
   const t = useT();
   const hero = overview.hero;
-  const sole = overview.sole_source;
-  const lbe = overview.lbe;
   const dq = overview.data_quality;
 
-  const typesShown = overview.landscape.by_type.slice(0, 10);
-  const typesRest = overview.landscape.by_type.slice(10);
-  const restAgreed = typesRest.reduce((s, r) => s + r.agreed_usd, 0);
-  const restN = typesRest.reduce((s, r) => s + r.n_contracts, 0);
 
 
-  const polRow = sole.by_department.find((d) => d.department_code === "POL");
-  const dphRow = sole.by_department.find((d) => d.department_code === "DPH");
+  // One graphic, three readings. The page used to render these as three
+  // separate lists of 10-12 rows each; a 100% stacked bar answers "where does
+  // it go" at a glance and each slice opens the fiche for that slice, which is
+  // what Paris (StackedBarTheme on marchés categories) and Recife (temas) do.
+  const [lens, setLens] = useState<"type" | "supplier" | "dept" | "contract" | "authority">("type");
 
-  // Sole-source share over time — only the stability window (start years with
-  // enough recorded starts); older years are a thin, biased residue.
-  const soleTrendPoints = sole.stability
-    ? sole.by_start_year.filter(
-        (p) => p.year >= sole.stability!.year_from && p.year <= sole.stability!.year_to,
-      )
-    : [];
 
-  const heroVars = {
-    nActive: nfInt.format(hero.active.n_contracts),
-    agreed: fmtUsdCompact(hero.active.agreed_usd),
-    paid: fmtUsdCompact(hero.active.paid_usd),
-    grants: overview.landscape.grants ? fmtUsdCompact(overview.landscape.grants.agreed_usd) : "",
-  };
+  // Slices are sums over the exported active rows — the same arithmetic the
+  // BarRow lists did, rendered as one bar instead of three lists.
+  const activeAgreed = primes.active_agreed_usd;
+  const typeSlices = (() => {
+    const by = new Map<string, { amount: number; count: number }>();
+    for (const r of active.rows) {
+      if (!r.contract_type) continue;
+      const cur = by.get(r.contract_type) ?? { amount: 0, count: 0 };
+      cur.amount += r.agreed_usd;
+      cur.count += 1;
+      by.set(r.contract_type, cur);
+    }
+    return [...by.entries()].map(([k, v]) => ({ theme: typeLabel(k), raw: k, ...v }));
+  })();
+  const deptSlices = deptBars.map((d) => ({
+    theme: deptDisplayName(d.name),
+    raw: d.code,
+    amount: d.agreed_usd,
+    count: d.n_contracts,
+  }));
+  // "By contract" — the biggest individual commitments. This replaces the
+  // separate "largest sole-source contracts" list: one breakdown at the top
+  // answers "which contracts are the big ones", and the sole-source ones are
+  // reachable through the search filter rather than their own section.
+  const contractSlices = (() => {
+    const top = [...active.rows].sort((a, b) => b.agreed_usd - a.agreed_usd).slice(0, 8);
+    // Two different contracts can share a plain-English title (both McKesson
+    // pharmaceutical agreements read "Pharmaceuticals purchasing"), so add the
+    // supplier where a title repeats — otherwise the reader sees the same row
+    // twice with no way to tell them apart.
+    const seen = new Map<string, number>();
+    for (const r of top) {
+      const l = contractLabel(r);
+      seen.set(l, (seen.get(l) ?? 0) + 1);
+    }
+    return top.map((r) => {
+      const base = contractLabel(r);
+      const dup = (seen.get(base) ?? 0) > 1 && r.prime;
+      return {
+        theme: dup ? `${base} — ${r.prime}` : base,
+        raw: r.contract_no,
+        amount: r.agreed_usd,
+        count: 1,
+      };
+    });
+  })();
+
+  const supplierSlices = primes.rows.map((p) => ({
+    theme: p.name,
+    raw: p.name,
+    amount: p.agreed_usd,
+    count: p.n_contracts,
+  }));
+
+  // "How it was awarded" — a lens, not the section it used to be. That section
+  // read the register-wide aggregate ($93.1B over 31,860 contracts, 26,362 of
+  // them expired) directly under a breakdown of ACTIVE contracts ($43.4B over
+  // 5,128), with nothing on screen saying the population had changed.
+  //
+  // So it is recomputed here from the active rows rather than reusing
+  // overview.authority_families: a toggle whose total jumps from $43B to $93B
+  // is telling the reader two different things while looking like one.
+  // `authority_family` is on every active row, so this is the same arithmetic
+  // as typeSlices and deptSlices, over the same denominator.
+  const authoritySlices = (() => {
+    const by = new Map<string, { amount: number; count: number }>();
+    for (const r of active.rows) {
+      const fam = r.authority_family;
+      if (!fam) continue;
+      const cur = by.get(fam) ?? { amount: 0, count: 0 };
+      cur.amount += r.agreed_usd;
+      cur.count += 1;
+      by.set(fam, cur);
+    }
+    return [...by.entries()].map(([fam, v]) => ({
+      theme: FAMILY_LABELS[fam] ?? fam,
+      raw: fam,
+      ...v,
+    }));
+  })();
+
+  // StackedBarTheme draws at most 8 segments but legends up to 12, and folds
+  // whatever it was not given into "Other" using `total`. Handing it exactly 8
+  // keeps the bar's Other and the legend's Other the same number — otherwise
+  // the same bucket reads 75% on the bar and 69% in the legend.
+  const BAR_SLICES = 8;
+  const cap = <T extends { amount: number }>(list: T[]) =>
+    [...list].sort((a, b) => b.amount - a.amount).slice(0, BAR_SLICES);
+
+  // theme label -> destination fiche. Returns null for the "others" bucket and
+  // anything without a fiche, which StackedBarTheme renders un-clickable.
+  const typeHref = new Map(typeSlices.map((s2) => [s2.theme, `/us/city/sf/contracts/type/${typeSlug(s2.raw)}`]));
+  const deptHref = new Map(deptSlices.map((s2) => [s2.theme, `/us/city/sf/contracts/dept/${deptSlug(s2.raw)}`]));
+  const contractHref = new Map(
+    contractSlices.map((c) => [c.theme, `/us/city/sf/contracts/contract/${c.raw}`]),
+  );
+  const supplierHref = new Map(
+    primes.rows.map((p) => [
+      p.name,
+      p.payee_slug
+        ? `/us/city/sf/who-gets-paid/payee/${p.payee_slug}`
+        : `/us/city/sf/contracts/contract/${p.top_contract_no}`,
+    ]),
+  );
+
+  const authorityHref = new Map(
+    authoritySlices.map((s2) => [s2.theme, `/us/city/sf/contracts/authority/${s2.raw}`]),
+  );
+
+  const lensConfig = {
+    type: { slices: typeSlices, hrefs: typeHref, kicker: "money.kicker.type", other: "money.other.type" },
+    supplier: { slices: supplierSlices, hrefs: supplierHref, kicker: "money.kicker.supplier", other: "money.other.supplier" },
+    dept: { slices: deptSlices, hrefs: deptHref, kicker: "money.kicker.dept", other: "money.other.dept" },
+    contract: { slices: contractSlices, hrefs: contractHref, kicker: "money.kicker.contract", other: "money.other.contract" },
+    authority: { slices: authoritySlices, hrefs: authorityHref, kicker: "how.auth.kicker", other: "how.auth.other" },
+  }[lens];
 
   return (
     <div>
       <main id="main-content" tabIndex={-1}>
         <PageTOC
           items={[
-            { id: "sec-sole-source", label: t("us.sf.contracts.toc.sole") },
-            { id: "sec-landscape", label: t("us.sf.contracts.toc.landscape") },
+            { id: "sec-money", label: t("us.sf.contracts.toc.what") },
             { id: "sec-search", label: t("us.sf.contracts.toc.search") },
           ]}
         />
 
-        {/* ── Opener: folds the former "01 active portfolio" overview ── */}
         <PageIntro
           title={
             <>
@@ -115,30 +214,26 @@ export default function SfContractsClient({
           }
           lede={fill(t("us.sf.contracts.lede"), {
             n: nfInt.format(hero.register.n_contracts),
-            nActive: heroVars.nActive,
+            nActive: nfInt.format(hero.active.n_contracts),
           })}
           stats={
             <>
               <IntroStat
                 value={<AnimatedNumber value={hero.active.agreed_usd} format={(n) => fmtUsdCompact(n)} />}
-                label={fill(t("us.sf.contracts.s01.hero_label"), { n: heroVars.nActive })}
+                label={t("us.sf.contracts.s01.hero_label")}
               />
               <IntroStat
                 value={<AnimatedNumber value={hero.active.paid_usd} format={(n) => fmtUsdCompact(n)} />}
                 label={t("us.sf.contracts.s01.kpi.paid")}
               />
-              {overview.landscape.grants && (
-                <IntroStat
-                  value={
-                    <AnimatedNumber
-                      value={overview.landscape.grants.share_of_register_agreed * 100}
-                      format={(n) => n.toFixed(1)}
-                    />
-                  }
-                  unit="%"
-                  label={t("us.sf.contracts.s01.kpi.grants")}
-                />
-              )}
+              <IntroStat
+                value={<AnimatedNumber value={primes.n_primes} format={(n) => nfInt.format(Math.round(n))} />}
+                label={
+                  <Tip label={t("us.sf.contracts.s01.kpi.suppliers.tip")}>
+                    {t("us.sf.contracts.s01.kpi.suppliers")}
+                  </Tip>
+                }
+              />
               <IntroStat
                 value={<AnimatedNumber value={hero.register.n_contracts} format={(n) => nfInt.format(Math.round(n))} />}
                 label={
@@ -147,315 +242,79 @@ export default function SfContractsClient({
                   </Tip>
                 }
               />
-              <IntroStat
-                value={<AnimatedNumber value={sole.share_of_contracts * 100} format={(n) => n.toFixed(1)} />}
-                unit="%"
-                label={
-                  <Tip label={sole.flag_definition}>
-                    {t("us.sf.contracts.s01.kpi.sole")}
-                  </Tip>
-                }
-              />
-              <IntroStat
-                value={<AnimatedNumber value={lbe.prime.agreed_usd} format={(n) => fmtUsdCompact(n)} />}
-                label={
-                  <Tip label={t("us.sf.contracts.s01.kpi.lbe.tip")}>
-                    {t("us.sf.contracts.s01.kpi.lbe")}
-                  </Tip>
-                }
-              />
-              <IntroStat
-                value={<AnimatedNumber value={overview.non_profit.n_contracts} format={(n) => nfInt.format(Math.round(n))} />}
-                label={
-                  <Tip label={overview.non_profit.flag_definition}>
-                    {t("us.sf.contracts.s01.kpi.np")}
-                  </Tip>
-                }
-              />
             </>
           }
         >
-          <SourceLine
-            label={t("us.sf.contracts.source_label")}
-            dataWord={t("us.sf.contracts.source_data_word")}
-            links={[{ name: overview.source.name, href: overview.source.source_url }]}
+          <ChartSource
+            source={overview.source.name}
+            dataHref={overview.source.source_url}
+            methodHref="/us/city/sf/sources#sec-contracts"
           />
         </PageIntro>
 
-        {/* Sole-source (hoisted to first section) */}
-        <section className="fx-section" id="sec-sole-source">
+        {/* ── Where the money goes: one stacked bar, three lenses ──
+          *  Replaces three sections of 10-12 ranked rows each (suppliers,
+          *  contract types, departments). Same arithmetic, but the shape of
+          *  the portfolio is legible at a glance and every slice opens the
+          *  fiche for that slice — the Paris StackedBarTheme / Recife temas
+          *  pattern, which is what makes those pages navigable rather than
+          *  something to read top to bottom. ── */}
+        <section className="fx-section" id="sec-money">
           <div className="fx-wrap">
             <SectionHead
               title={
                 <>
-                  <Tip label={t("us.sf.contracts.s03.sub")}>
-                    {t("us.sf.contracts.s03.title.before")}
-                  </Tip>
-                  <em>{t("us.sf.contracts.s03.title.em")}</em>
+                  {t("us.sf.contracts.money.title.before")}
+                  <em>{t("us.sf.contracts.money.title.em")}</em>
                 </>
               }
-              subtitle={t("us.sf.contracts.s03.subtitle")}
-            />
-
-            {/* Twin-stat panel (Paris S05 layout) */}
-            <div
-              style={{
-                border: "1px solid var(--ink)",
-                padding: "22px 22px 18px",
-                background: "var(--bg)",
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                gap: 28,
-                alignItems: "baseline",
-              }}
-            >
-              <div>
-                <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>
-                  <Tip label={sole.flag_definition}>{t("us.sf.contracts.s03.stat1.label")}</Tip>
-                </div>
-                <div style={{ fontFamily: "var(--f-disp)", fontSize: 56, fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1 }}>
-                  {(sole.share_of_contracts * 100).toFixed(1)}
-                  <span style={{ fontSize: ".45em", fontWeight: 500, marginLeft: 4 }}>%</span>
-                </div>
-                <div style={{ fontFamily: "var(--f-mono)", fontSize: 11.5, color: "var(--muted)", marginTop: 6 }}>
-                  {fill(t("us.sf.contracts.s03.stat1.sub"), { n: nfInt.format(sole.n_contracts) })}
-                </div>
-              </div>
-              <div>
-                <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>
-                  {t("us.sf.contracts.s03.stat2.label")}
-                </div>
-                <div style={{ fontFamily: "var(--f-disp)", fontSize: 56, fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1 }}>
-                  {fmtUsdCompact(sole.agreed_usd)}
-                </div>
-                <div style={{ fontFamily: "var(--f-mono)", fontSize: 11.5, color: "var(--muted)", marginTop: 6 }}>
-                  {fill(t("us.sf.contracts.s03.stat2.sub"), {
-                    share: fmtShare(sole.share_of_agreed),
-                    paid: fmtUsdCompact(sole.paid_usd),
-                  })}
-                </div>
-              </div>
-            </div>
-
-            <p className="fx-note" style={{ marginTop: 14 }}>
-              {fill(t("us.sf.contracts.s03.neutral_active"), {
-                active: nfInt.format(sole.active.n_contracts),
+              subtitle={fill(t("us.sf.contracts.money.sub"), {
+                agreed: fmtUsdCompact(activeAgreed),
+                n: nfInt.format(hero.active.n_contracts),
               })}
-              {sole.stability && (
-                <span title={sole.stability.note}>
-                  {" "}
-                  {fill(t("us.sf.contracts.s03.neutral_range"), {
-                    min: (sole.stability.share_min * 100).toFixed(1),
-                    max: (sole.stability.share_max * 100).toFixed(1),
-                    y0: sole.stability.year_from,
-                    y1: sole.stability.year_to,
-                    floor: nfInt.format(sole.stability.min_starts_floor),
-                  })}
-                </span>
-              )}
-            </p>
-
-            {(polRow || dphRow) && (
-              <p style={{ margin: "18px 0 10px", fontFamily: "var(--f-ui)", fontSize: 14.5, lineHeight: 1.6, color: "var(--ink-2)" }}>
-                {polRow && (
-                  <>
-                    {fill(t("us.sf.contracts.s03.pol"), {
-                      share: fmtShare(polRow.share_of_dept_agreed ?? 0),
-                    })}{" "}
-                  </>
-                )}
-                {dphRow &&
-                  fill(t("us.sf.contracts.s03.dph"), {
-                    n: nfInt.format(dphRow.n_sole),
-                    share: fmtShare(dphRow.share_of_dept_contracts),
-                    agreed: fmtUsdCompact(dphRow.sole_agreed_usd),
-                  })}
-              </p>
-            )}
-
-            {soleTrendPoints.length > 1 && sole.stability && (
-              <figure style={{ margin: "8px 0 6px" }}>
-                <SoleSourceTrend
-                  points={soleTrendPoints}
-                  legend={t("us.sf.contracts.s03.trend.legend")}
-                  ariaLabel={fill(t("us.sf.contracts.s03.trend.aria"), {
-                    y0: sole.stability.year_from,
-                    y1: sole.stability.year_to,
-                  })}
-                />
-                <figcaption className="fx-chart-source">
-                  {fill(t("us.sf.contracts.s03.trend.note"), {
-                    floor: nfInt.format(sole.stability.min_starts_floor),
-                  })}
-                </figcaption>
-              </figure>
-            )}
-
-            <BarRow
-              reveal
-              header={{
-                left: t("us.sf.contracts.s03.hist.left"),
-                right: t("us.sf.contracts.s03.hist.right"),
-              }}
-              items={sole.by_department.slice(0, 8).map((d) => ({
-                label: d.department,
-                value: d.sole_agreed_usd,
-                display: fmtUsdCompact(d.sole_agreed_usd),
-                sub: fill(t("us.sf.contracts.s03.hist.row_sub"), {
-                  n: nfInt.format(d.n_sole),
-                  nAll: nfInt.format(d.n_contracts),
-                  shareN: fmtShare(d.share_of_dept_contracts),
-                  shareA: d.share_of_dept_agreed != null ? fmtShare(d.share_of_dept_agreed) : "—",
-                }),
-              }))}
             />
-
-            <div style={{ marginTop: 34 }}>
-              <ExpandableList
-                header={{
-                  left: <>{t("us.sf.contracts.s03.top.left")}</>,
-                  right: <>{t("us.sf.contracts.s03.top.right")}</>,
-                }}
-                items={sole.top_contracts.map((c, i) => {
-                  const refMax = sole.top_contracts[0].agreed_usd || 1;
-                  return {
-                    key: c.contract_no,
-                    label: (
-                      <span>
-                        <span style={{ fontFamily: "var(--f-mono)", color: "var(--ocre)", marginRight: 8 }}>
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        {c.title_plain || c.title}
-                      </span>
-                    ),
-                    barPct: (c.agreed_usd / refMax) * 100,
-                    meta: (
-                      <>
-                        {c.department} · {c.prime_contractor}
-                      </>
-                    ),
-                    value: fmtUsdCompact(c.agreed_usd),
-                    children: (
-                      <div style={{ fontFamily: "var(--f-ui)", fontSize: 14, lineHeight: 1.6 }}>
-                        <div
-                          style={{
-                            padding: "12px 16px",
-                            borderLeft: "3px solid var(--ocre)",
-                            background: "rgba(166, 118, 56, 0.05)",
-                            marginBottom: 12,
-                          }}
-                        >
-                          <div style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 6 }}>
-                            {t("us.sf.contracts.s03.top.authority_label")}
-                          </div>
-                          <span style={{ fontFamily: "var(--f-mono)", fontSize: 12.5, color: "var(--ink)" }}>
-                            {c.purchasing_authority ?? t("us.sf.contracts.s03.top.authority_none")}
-                          </span>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-                          <span style={{ color: "var(--ink-2)" }}>
-                            {fill(t("us.sf.contracts.s03.top.paid"), { paid: fmtUsdCompact(c.paid_usd) })}
-                            {c.is_active === true && <> · {t("us.sf.contracts.s03.top.active")}</>}
-                          </span>
-                          <Link
-                            href={`/us/city/sf/contracts/contract/${c.contract_no}`}
-                            scroll={false}
-                            style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", paddingBottom: 1 }}
-                          >
-                            {t("us.sf.contracts.fiche_link")}
-                          </Link>
-                        </div>
-                      </div>
-                    ),
-                  };
-                })}
-              />
-            </div>
-            <SourceLine
-              label={t("us.sf.contracts.source_label")}
-              dataWord={t("us.sf.contracts.source_data_word")}
-              links={[{ name: overview.source.name, href: overview.source.source_url }]}
-            />
-          </div>
-        </section>
-
-        {/* landscape by type */}
-        <section className="fx-section" id="sec-landscape">
-          <div className="fx-wrap">
-            <SectionHead
-              title={
-                <>
-                  {t("us.sf.contracts.s02.title.before")}
-                  <em>{t("us.sf.contracts.s02.title.em")}</em>
-                </>
-              }
-              subtitle={t("us.sf.contracts.s02.sub")}
-            />
-            <BarRow
-              reveal
-              header={{
-                left: t("us.sf.contracts.s02.header.left"),
-                right: t("us.sf.contracts.s02.header.right"),
-              }}
-              items={[
-                ...typesShown.map((r) => ({
-                  label: (
-                    <span title={r.contract_type}>{typeLabel(r.contract_type)}</span>
-                  ),
-                  value: r.agreed_usd,
-                  display: fmtUsdCompact(r.agreed_usd),
-                  sub: fill(t("us.sf.contracts.s02.row_sub"), {
-                    n: nfInt.format(r.n_contracts),
-                    paid: fmtUsdCompact(r.paid_usd),
-                    share: fmtShare(r.share_of_register_agreed),
-                  }),
-                })),
-                ...(typesRest.length > 0
-                  ? [{
-                      label: <span>{fill(t("us.sf.contracts.s02.rest"), { n: typesRest.length })}</span>,
-                      value: restAgreed,
-                      display: fmtUsdCompact(restAgreed),
-                      sub: fill(t("us.sf.contracts.s02.rest_sub"), { n: nfInt.format(restN) }),
-                    }]
-                  : []),
-              ]}
-            />
-            {overview.landscape.grants && (
-              <div
-                style={{
-                  marginTop: 24,
-                  padding: "16px 20px",
-                  border: "1px solid var(--ink)",
-                  background: "rgba(59, 99, 173, 0.04)",
-                  fontFamily: "var(--f-ui)",
-                  fontSize: 14,
-                  lineHeight: 1.6,
-                  color: "var(--ink-2)",
-                }}
-              >
-                <b style={{ color: "var(--ink)" }}>{t("us.sf.contracts.s02.grants.title")}</b>{" "}
-                {fill(t("us.sf.contracts.s02.grants.body"), {
-                  agreed: fmtUsdCompact(overview.landscape.grants.agreed_usd),
-                  n: nfInt.format(overview.landscape.grants.n_contracts),
-                  share: fmtShare(overview.landscape.grants.share_of_register_agreed),
-                })}{" "}
-                <Link
-                  href="/us/city/sf/who-gets-paid"
-                  style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+            <div className="fx-lensbar" role="group" aria-label="Breakdown lens">
+              {([
+                ["type", t("us.sf.contracts.money.by.type")],
+                ["dept", t("us.sf.contracts.money.by.dept")],
+                ["supplier", t("us.sf.contracts.money.by.supplier")],
+                ["contract", t("us.sf.contracts.money.by.contract")],
+                ["authority", "By how it was awarded"],
+              ] as const).map(([key, label]) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setLens(key)}
+                  aria-pressed={lens === key}
                 >
-                  {t("us.sf.contracts.s02.grants.link")}
-                </Link>
-              </div>
-            )}
-            <SourceLine
-              label={t("us.sf.contracts.source_label")}
-              dataWord={t("us.sf.contracts.source_data_word")}
-              links={[{ name: overview.source.name, href: overview.source.source_url }]}
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            <SfMoneyBar
+              key={lens}
+              slices={cap(lensConfig.slices).map((sl) => ({
+                id: sl.raw,
+                label: sl.theme,
+                amount: sl.amount,
+                count: sl.count,
+                href: lensConfig.hrefs.get(sl.theme) ?? null,
+              }))}
+              total={activeAgreed}
+              kicker={t(`us.sf.contracts.${lensConfig.kicker}`)}
+              otherLabel={t(`us.sf.contracts.${lensConfig.other}`)}
+            />
+
+            <ChartSource
+              source={overview.source.name}
+              dataHref={overview.source.source_url}
+              methodHref="/us/city/sf/sources#sec-contracts"
             />
           </div>
         </section>
 
-        {/* Search + active table */}
+        {/* ── Search ── */}
         <section className="fx-section" id="sec-search">
           <div className="fx-wrap">
             <SectionHead
@@ -470,17 +329,42 @@ export default function SfContractsClient({
             <SfContractsSearch rows={active.rows} />
             <p className="fx-note" style={{ marginTop: 16 }}>
               {fill(t("us.sf.contracts.s05.note"), {
+                // dq.n_paid_exceeds_agreed counts the whole register; the table
+                // above it shows only active contracts. Both numbers, labelled.
                 n: nfInt.format(dq.n_paid_exceeds_agreed),
+                nActive: nfInt.format(active.rows.filter((r) => r.paid_exceeds_agreed).length),
+                // Only these few can be read as a real gap; on the rest the
+                // register fails its own agreed = paid + remaining identity.
+                nRecon: nfInt.format(
+                  active.rows.filter(
+                    (r) => r.paid_exceeds_agreed && r.src_arithmetic_consistent === true,
+                  ).length,
+                ),
               })}
             </p>
-            <SourceLine
-              label={t("us.sf.contracts.source_label")}
-              dataWord={t("us.sf.contracts.source_data_word")}
-              links={[{ name: overview.source.name, href: overview.source.source_url }]}
+            <ChartSource
+              source={overview.source.name}
+              dataHref={overview.source.source_url}
+              methodHref="/us/city/sf/sources#sec-contracts"
             />
           </div>
         </section>
 
+        <SfSourceFooter
+          perimeter={overview.perimeter}
+          coverage={fill(t("us.sf.contracts.footer.coverage"), {
+            n: nfInt.format(dq.n_paid_exceeds_agreed),
+            // Say plainly how far the generated text reaches. It is partial and
+            // the reader should know that without having to notice it.
+            nGen: nfInt.format(active.rows.filter((r) => r.title_clear).length),
+          })}
+          source={{ name: overview.source.name, href: overview.source.source_url }}
+          sourcesAnchor="sec-contracts"
+          exports={[
+            { label: "contracts_overview.json", href: "/data/us/sf/contracts_overview.json" },
+            { label: "contracts_active.json", href: "/data/us/sf/contracts_active.json" },
+          ]}
+        />
       </main>
     </div>
   );

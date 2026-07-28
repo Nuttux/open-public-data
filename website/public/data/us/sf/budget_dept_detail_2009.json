@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.755174+00:00",
+  "generated_at": "2026-07-28T11:43:46.531500+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -10218,7 +10218,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "BACKSTROM MCCARLEY BERRY & CO LLC",
+            "vendor": "MONTAGUE DEROSE & ASSOCIATES LLC",
             "amount_usd": 33750.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -10227,7 +10227,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MONTAGUE DEROSE & ASSOCIATES LLC",
+            "vendor": "BACKSTROM MCCARLEY BERRY & CO LLC",
             "amount_usd": 33750.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -10487,18 +10487,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "ENERGY EFFICIENCY SOLAR INC",
+            "vendor": "BARBARA BYRNES",
             "amount_usd": 18000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 3,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "BARBARA BYRNES",
+            "vendor": "ENERGY EFFICIENCY SOLAR INC",
             "amount_usd": 18000.0,
-            "n_vouchers": 3,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -10532,15 +10532,6 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "LINNEA JOHNSON",
-            "amount_usd": 12000.0,
-            "n_vouchers": 2,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "ANGELA T MATT",
             "amount_usd": 12000.0,
             "n_vouchers": 2,
@@ -10559,7 +10550,16 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MICHAEL ANTHONY MATTHAY",
+            "vendor": "LINNEA JOHNSON",
+            "amount_usd": 12000.0,
+            "n_vouchers": 2,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "LEO S SCOTT",
             "amount_usd": 12000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
@@ -10980,18 +10980,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "STATE OF CAL ADMIN OFFICE OF THE COURTS",
+            "vendor": "INTL ASSOC OF OFFCL HUMAN RGHTS AGENCIES",
             "amount_usd": 500.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "INTL ASSOC OF OFFCL HUMAN RGHTS AGENCIES",
+            "vendor": "STATE OF CAL ADMIN OFFICE OF THE COURTS",
             "amount_usd": 500.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -14509,16 +14509,16 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "NORTH AMERICAN TITLE COMPANY",
+            "vendor": "CHICAGO TITLE COMPANY",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
-            "bucket": null,
+            "bucket": "supplier",
             "is_aggregation_line": false
           },
           {
-            "vendor": "FIRST AMERICAN TITLE COMPANY",
+            "vendor": "NORTH AMERICAN TITLE COMPANY",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -14536,12 +14536,12 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "CHICAGO TITLE COMPANY",
+            "vendor": "FIRST AMERICAN TITLE COMPANY",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
-            "bucket": "supplier",
+            "bucket": null,
             "is_aggregation_line": false
           }
         ],
@@ -17067,21 +17067,21 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SAN FRANCISCO APARTMENT ASSOC",
-            "amount_usd": 20000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "TENDERLOIN HOUSING CLINIC INC",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": "nonprofit",
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "SAN FRANCISCO APARTMENT ASSOC",
+            "amount_usd": 20000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
             "is_aggregation_line": false
           },
           {

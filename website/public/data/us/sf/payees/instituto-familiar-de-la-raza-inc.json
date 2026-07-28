@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.739026+00:00",
+ "generated_at": "2026-07-28T11:43:47.711942+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "CHF Children;Youth & Families"
  ],
+ "profile": {
+  "n_vouchers": 7770,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 96218921.12,
+    "n_vouchers": 5485
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 31247754.56,
+    "n_vouchers": 790
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 18405049.81,
+    "n_vouchers": 612
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 9329623.95,
+    "n_vouchers": 318
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 3876326.1,
+    "n_vouchers": 244
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 2642346.6,
+    "n_vouchers": 110
+   },
+   {
+    "department": "JUV Juvenile Probation",
+    "department_code": "JUV",
+    "usd": 471653.2,
+    "n_vouchers": 112
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 427950.5,
+    "n_vouchers": 74
+   }
+  ],
+  "n_departments": 12,
+  "categories": [
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 49063444.0,
+    "n_vouchers": 3088
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 45883679.22,
+    "n_vouchers": 1240
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 8926439.32,
+    "n_vouchers": 152
+   },
+   {
+    "code": "538400",
+    "label": "Rebate Programs",
+    "spend_class": "unclear",
+    "usd": 24793.89,
+    "n_vouchers": 2
+   },
+   {
+    "code": "439899",
+    "label": "Other City Property Rentals",
+    "spend_class": "unclear",
+    "usd": 500.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 4
+   },
+   {
+    "code": "463599",
+    "label": "Misc Public Health Revenue",
+    "spend_class": "unclear",
+    "usd": -8765.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "OTH_ASSETS_CURR",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": -465222.0,
+    "n_vouchers": 51
+   }
+  ],
+  "n_categories": 8,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 12312291.72,
+  "n_recent_lines": 6,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 4330485.79,
+    "n_vouchers": 254
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2890506.46,
+    "n_vouchers": 59
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2505467.55,
+    "n_vouchers": 86
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 2301429.15,
+    "n_vouchers": 27
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 299624.77,
+    "n_vouchers": 12
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": -15222.0,
+    "n_vouchers": 8
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000024733",
@@ -58,7 +226,7 @@
   },
   {
    "contract_no": "1000032710",
-   "title": "24-02 FRC Initiative",
+   "title": "24-02 Family Resource Center Initiative",
    "department": "DEC Dept of Early Childhood",
    "department_code": "DEC",
    "agreed_usd": 5729749.0,

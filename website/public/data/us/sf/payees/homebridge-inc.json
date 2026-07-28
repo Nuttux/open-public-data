@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.732889+00:00",
+ "generated_at": "2026-07-28T11:43:47.701845+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -33,10 +33,137 @@
  "top_departments": [
   "HSA Human Services Agency"
  ],
+ "profile": {
+  "n_vouchers": 699,
+  "departments": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 259352800.9,
+    "n_vouchers": 390
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 1724515.52,
+    "n_vouchers": 168
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 1149421.88,
+    "n_vouchers": 105
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 274885.0,
+    "n_vouchers": 37
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "537510",
+    "label": "IHSS Contract Payments",
+    "spend_class": "purchase",
+    "usd": 254188649.93,
+    "n_vouchers": 198
+   },
+   {
+    "code": "536610",
+    "label": "Spcl Circumstances For Adults",
+    "spend_class": "unclear",
+    "usd": 3626994.14,
+    "n_vouchers": 66
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 3486311.76,
+    "n_vouchers": 250
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 413199.87,
+    "n_vouchers": 18
+   },
+   {
+    "code": "536530",
+    "label": "Extended Sick Leave Benefits",
+    "spend_class": "unclear",
+    "usd": 32894.9,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 12
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 35716562.2,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "IHSS Contract Payments",
+    "spend_class": "purchase",
+    "usd": 35276125.04,
+    "n_vouchers": 14
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 344732.75,
+    "n_vouchers": 24
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 95704.41,
+    "n_vouchers": 11
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 12
+   }
+  ]
+ },
+ "identity": {
+  "description": "Homebridge Inc is an IRS-recognized tax-exempt organization in San Francisco, CA. Its IRS activity code is not recorded in the registry.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Homebridge Inc",
+  "ein": "942985244",
+  "ntee_code": null,
+  "ntee_label": null,
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/942985244",
+  "checked_at": "2026-07-27T23:36:07.694173+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000029585",
-   "title": "Homebridge Case Mgmt 23-27",
+   "title": "Homebridge Case Management 23-27",
    "department": "HSA Human Services Agency",
    "department_code": "HSA",
    "agreed_usd": 568322.0,

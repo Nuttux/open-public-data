@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.730661+00:00",
+ "generated_at": "2026-07-28T11:43:47.697608+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -27,6 +27,77 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 250,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 226428015.02,
+    "n_vouchers": 167
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 146426056.54,
+    "n_vouchers": 83
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 203125745.76,
+    "n_vouchers": 137
+   },
+   {
+    "code": "567110",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 144337739.74,
+    "n_vouchers": 73
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 18215.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "553110",
+    "label": "Judgements - Claims",
+    "spend_class": "unclear",
+    "usd": 9818.0,
+    "n_vouchers": 4
+   },
+   {
+    "code": "527070",
+    "label": "Env Contractor-Consulting Svcs",
+    "spend_class": "purchase",
+    "usd": 10.76,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 13560507.97,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 13560507.97,
+    "n_vouchers": 11
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000031223",

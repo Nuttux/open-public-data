@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.729552+00:00",
+ "generated_at": "2026-07-28T11:43:47.695740+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,158 @@
  "top_departments": [
   "MYR Mayor"
  ],
+ "profile": {
+  "n_vouchers": 1278,
+  "departments": [
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 191160668.16,
+    "n_vouchers": 49
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 121607679.77,
+    "n_vouchers": 255
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 84158145.07,
+    "n_vouchers": 376
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 69270346.25,
+    "n_vouchers": 267
+   },
+   {
+    "department": "SHF Sheriff",
+    "department_code": "SHF",
+    "usd": 36088118.3,
+    "n_vouchers": 13
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 28487355.4,
+    "n_vouchers": 111
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 8470375.93,
+    "n_vouchers": 138
+   },
+   {
+    "department": "ENV Environment",
+    "department_code": "ENV",
+    "usd": 1309155.0,
+    "n_vouchers": 7
+   }
+  ],
+  "n_departments": 16,
+  "categories": [
+   {
+    "code": "REST_CASH_INOUT_TRLT",
+    "label": "Rest Cash/Inv Out Treas LT",
+    "spend_class": "ledger",
+    "usd": 185986128.59,
+    "n_vouchers": 39
+   },
+   {
+    "code": "539200",
+    "label": "Loans Issued By City",
+    "spend_class": "ledger",
+    "usd": 27990320.08,
+    "n_vouchers": 66
+   },
+   {
+    "code": "530410",
+    "label": "Base Rent-Debt Svc-Bldg-Struct",
+    "spend_class": "obligation",
+    "usd": 27017979.09,
+    "n_vouchers": 57
+   },
+   {
+    "code": "566990",
+    "label": "Land Acquisition Cost",
+    "spend_class": "purchase",
+    "usd": 16007081.8,
+    "n_vouchers": 5
+   },
+   {
+    "code": "570000",
+    "label": "Debt Service-Budget",
+    "spend_class": "obligation",
+    "usd": 8757637.72,
+    "n_vouchers": 13
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 4512976.87,
+    "n_vouchers": 3
+   },
+   {
+    "code": "574110",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 1439170.13,
+    "n_vouchers": 12
+   },
+   {
+    "code": "552210",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 618343.95,
+    "n_vouchers": 21
+   }
+  ],
+  "n_categories": 15,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 17300885.78,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Base Rent-Debt Svc-Bldg-Struct",
+    "spend_class": "obligation",
+    "usd": 8998475.92,
+    "n_vouchers": 13
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "label": "Rest Cash/Inv Out Treas LT",
+    "spend_class": "ledger",
+    "usd": 8223962.5,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 77294.81,
+    "n_vouchers": 7
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Interest Earned-Tax Refund",
+    "spend_class": "ledger",
+    "usd": 1152.55,
+    "n_vouchers": 5
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000009555",

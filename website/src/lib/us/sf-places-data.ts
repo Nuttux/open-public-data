@@ -35,6 +35,16 @@ export type SfPlaceDoc = {
   gloss?: string | null;
   /** Narrative bucket assigned by export_sf_places.py's curate_documents(). */
   group: string;
+  /** Document type read off the title by export_sf_places.py's DOC_TYPES table
+   *  ("audit", "environmental_review", "proceeding", …) and the tier that table
+   *  assigns it. The tier, not a score, decides whether the shelf lists it. */
+  doc_type?: string;
+  doc_type_label?: string;
+  doc_tier?: number;
+  /** Minutes, agendas, calendars, notices, bulletins — the paperwork of
+   *  governing. Kept in the data, never listed on the shelf, reported as a
+   *  count so nothing is lost silently. */
+  procedural?: boolean;
   /** Top-salience rows shown without expanding "see all documents". */
   salient: boolean;
   /** e.g. "4 editions cited (1920–2005)" when repeat editions were collapsed. */
@@ -135,14 +145,6 @@ export type SfPlacePayee = {
   first_fiscal_year: number | null;
   last_fiscal_year: number | null;
 };
-export type SfPlacePermit = {
-  description: string | null;
-  permit_type: string | null;
-  declared_cost_usd: number | null;
-  status: string | null;
-  permit_date: string | null;
-  permit_year: number | null;
-};
 export type SfPlaceCapital = {
   n_items: number;
   measure_totals: Partial<Record<"bond_expended" | "contract_paid" | "permit_declared", number>>;
@@ -151,10 +153,6 @@ export type SfPlaceCapital = {
   payees: SfPlacePayee[];
   n_payees: number;
   payees_total_paid: number;
-  permits: SfPlacePermit[];
-  n_permits: number;
-  permits_total_declared: number;
-  permits_by_year: Array<{ year: number; declared_usd: number }>;
 } | null;
 
 export type SfPlaceFicheData = {

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.736825+00:00",
+ "generated_at": "2026-07-28T11:43:47.708589+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -33,6 +33,90 @@
  "top_departments": [
   "WTR Water Enterprise"
  ],
+ "profile": {
+  "n_vouchers": 416,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 146614619.93,
+    "n_vouchers": 351
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 33117493.9,
+    "n_vouchers": 58
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 1247954.2,
+    "n_vouchers": 6
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 1345.87,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 123168661.52,
+    "n_vouchers": 310
+   },
+   {
+    "code": "201670",
+    "label": "Liens Payable",
+    "spend_class": "unclear",
+    "usd": 86180.98,
+    "n_vouchers": 1
+   },
+   {
+    "code": "468111",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 7740.33,
+    "n_vouchers": 2
+   },
+   {
+    "code": "206810",
+    "label": "Liab Pybl fr Rest-Others",
+    "spend_class": "ledger",
+    "usd": 1345.87,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 7541829.13,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 7539131.2,
+    "n_vouchers": 21
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 2697.93,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000035875",

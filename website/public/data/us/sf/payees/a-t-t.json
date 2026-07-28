@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.733692+00:00",
+ "generated_at": "2026-07-28T11:43:47.703231+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,174 @@
  "top_departments": [
   "DT GSA - Technology"
  ],
+ "profile": {
+  "n_vouchers": 13025,
+  "departments": [
+   {
+    "department": "DT  GSA - Technology",
+    "department_code": "TIS",
+    "usd": 189346930.37,
+    "n_vouchers": 10319
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 28500025.29,
+    "n_vouchers": 1432
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 16264067.18,
+    "n_vouchers": 126
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 1449368.19,
+    "n_vouchers": 60
+   },
+   {
+    "department": "LIB Public Library",
+    "department_code": "LIB",
+    "usd": 904746.64,
+    "n_vouchers": 139
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "ECD",
+    "usd": 256950.3,
+    "n_vouchers": 52
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 213967.64,
+    "n_vouchers": 42
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 119198.9,
+    "n_vouchers": 11
+   }
+  ],
+  "n_departments": 26,
+  "categories": [
+   {
+    "code": "532310",
+    "label": "Telephone Chrgs (Tis Use Only)",
+    "spend_class": "unclear",
+    "usd": 92423822.5,
+    "n_vouchers": 4090
+   },
+   {
+    "code": "532410",
+    "label": "Telephone Chrgs-Non Work Order",
+    "spend_class": "unclear",
+    "usd": 6564024.59,
+    "n_vouchers": 730
+   },
+   {
+    "code": "529990",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 2055113.38,
+    "n_vouchers": 101
+   },
+   {
+    "code": "535960",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 1631463.52,
+    "n_vouchers": 68
+   },
+   {
+    "code": "527000",
+    "label": "Prof & Specialized Svcs-Bdgt",
+    "spend_class": "purchase",
+    "usd": 861442.54,
+    "n_vouchers": 2
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 755140.16,
+    "n_vouchers": 71
+   },
+   {
+    "code": "527610",
+    "label": "Systems Consulting Services",
+    "spend_class": "purchase",
+    "usd": 439457.49,
+    "n_vouchers": 13
+   },
+   {
+    "code": "529110",
+    "label": "Dp-Wp Equipment Maint",
+    "spend_class": "purchase",
+    "usd": 399915.72,
+    "n_vouchers": 6
+   }
+  ],
+  "n_categories": 22,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 12405750.99,
+  "n_recent_lines": 9,
+  "recent_lines": [
+   {
+    "department": "DT  GSA - Technology",
+    "department_code": "TIS",
+    "label": "Telephone Chrgs (Tis Use Only)",
+    "spend_class": "unclear",
+    "usd": 10939319.43,
+    "n_vouchers": 324
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Telephone Chrgs-Non Work Order",
+    "spend_class": "unclear",
+    "usd": 1104524.12,
+    "n_vouchers": 126
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 211700.0,
+    "n_vouchers": 5
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 69517.17,
+    "n_vouchers": 11
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "DEM",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 33313.12,
+    "n_vouchers": 2
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 28250.0,
+    "n_vouchers": 4
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000023340",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.725389+00:00",
+ "generated_at": "2026-07-28T11:43:47.688953+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -28,6 +28,174 @@
  "top_departments": [
   "GEN General City - Unallocated"
  ],
+ "profile": {
+  "n_vouchers": 11350,
+  "departments": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 6838668504.23,
+    "n_vouchers": 2349
+   },
+   {
+    "department": "RET Retirement System",
+    "department_code": "RET",
+    "usd": 1134434535.31,
+    "n_vouchers": 238
+   },
+   {
+    "department": "TTX Treasurer-Tax Collector",
+    "department_code": "TTX",
+    "usd": 43221855.33,
+    "n_vouchers": 687
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 4781964.51,
+    "n_vouchers": 47
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 4513768.24,
+    "n_vouchers": 1678
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "usd": 2702401.11,
+    "n_vouchers": 231
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 2373074.71,
+    "n_vouchers": 579
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 846567.32,
+    "n_vouchers": 1392
+   }
+  ],
+  "n_departments": 35,
+  "categories": [
+   {
+    "code": "230500",
+    "label": "230490CONFedIncomeTaxTaxUnIt1",
+    "spend_class": "obligation",
+    "usd": 2684296562.33,
+    "n_vouchers": 157
+   },
+   {
+    "code": "230610",
+    "label": "230490CONStateIncomeTaxTaxU1",
+    "spend_class": "obligation",
+    "usd": 1076334580.54,
+    "n_vouchers": 155
+   },
+   {
+    "code": "230530",
+    "label": "230490CONOasdiTaxTaxUnit1",
+    "spend_class": "obligation",
+    "usd": 990552806.22,
+    "n_vouchers": 156
+   },
+   {
+    "code": "232750",
+    "label": "232660CONSocSecCityShare,Gener",
+    "spend_class": "obligation",
+    "usd": 990237896.36,
+    "n_vouchers": 159
+   },
+   {
+    "code": "232850",
+    "label": "232840CONFederalIncomeTax,TaxU",
+    "spend_class": "obligation",
+    "usd": 783261093.2,
+    "n_vouchers": 53
+   },
+   {
+    "code": "232860",
+    "label": "232840CONStateIncomeTax,TaxUni",
+    "spend_class": "obligation",
+    "usd": 495461470.55,
+    "n_vouchers": 70
+   },
+   {
+    "code": "230560",
+    "label": "230490CONMedicareTaxTaxUnit1",
+    "spend_class": "obligation",
+    "usd": 317658699.04,
+    "n_vouchers": 156
+   },
+   {
+    "code": "232720",
+    "label": "232660CONMedicareCityShare,Gen",
+    "spend_class": "obligation",
+    "usd": 317370852.45,
+    "n_vouchers": 156
+   }
+  ],
+  "n_categories": 33,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 3627821.3,
+  "n_recent_lines": 22,
+  "recent_lines": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Bond Redemption",
+    "spend_class": "obligation",
+    "usd": 1916475.51,
+    "n_vouchers": 1
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 494277.92,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 483233.33,
+    "n_vouchers": 4
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Credit Card Processing Fees",
+    "spend_class": "unclear",
+    "usd": 229567.4,
+    "n_vouchers": 113
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "label": "Credit Card Processing Fees",
+    "spend_class": "unclear",
+    "usd": 184670.5,
+    "n_vouchers": 10
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Credit Card Processing Fees",
+    "spend_class": "unclear",
+    "usd": 131752.8,
+    "n_vouchers": 17
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

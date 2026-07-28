@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.740271+00:00",
+ "generated_at": "2026-07-28T11:43:47.713749+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -32,10 +32,178 @@
  "top_departments": [
   "PUC Public Utilities Commsn"
  ],
+ "profile": {
+  "n_vouchers": 5624,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 96557939.63,
+    "n_vouchers": 4510
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 34936771.52,
+    "n_vouchers": 610
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 9895771.8,
+    "n_vouchers": 158
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 4094396.16,
+    "n_vouchers": 112
+   },
+   {
+    "department": "CPC City Planning",
+    "department_code": "CPC",
+    "usd": 1801094.88,
+    "n_vouchers": 106
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 625552.51,
+    "n_vouchers": 56
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 520416.3,
+    "n_vouchers": 23
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 268265.0,
+    "n_vouchers": 25
+   }
+  ],
+  "n_departments": 14,
+  "categories": [
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 35458382.73,
+    "n_vouchers": 2222
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 31821424.61,
+    "n_vouchers": 1178
+   },
+   {
+    "code": "527080",
+    "label": "Construction Management Svcs",
+    "spend_class": "purchase",
+    "usd": 27309071.56,
+    "n_vouchers": 531
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 24670041.62,
+    "n_vouchers": 560
+   },
+   {
+    "code": "527070",
+    "label": "Env Contractor-Consulting Svcs",
+    "spend_class": "purchase",
+    "usd": 5657714.5,
+    "n_vouchers": 526
+   },
+   {
+    "code": "527010",
+    "label": "Architectural Services",
+    "spend_class": "purchase",
+    "usd": 2558780.22,
+    "n_vouchers": 234
+   },
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 1434109.96,
+    "n_vouchers": 46
+   },
+   {
+    "code": "553210",
+    "label": "Litigation Expenses",
+    "spend_class": "unclear",
+    "usd": 1037831.75,
+    "n_vouchers": 14
+   }
+  ],
+  "n_categories": 11,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 35835919.84,
+  "n_recent_lines": 12,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Management Svcs",
+    "spend_class": "purchase",
+    "usd": 12366075.8,
+    "n_vouchers": 221
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 8689665.37,
+    "n_vouchers": 574
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 6325565.41,
+    "n_vouchers": 329
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 5807237.76,
+    "n_vouchers": 21
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Env Contractor-Consulting Svcs",
+    "spend_class": "purchase",
+    "usd": 1896212.93,
+    "n_vouchers": 224
+   },
+   {
+    "department": "CPC City Planning",
+    "department_code": "CPC",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 226503.52,
+    "n_vouchers": 12
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000015367",
-   "title": "Mt Tnnl Constrn Mngnt Srvs",
+   "title": "Mt Tunnel Construction Management Services",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 24888173.0,
@@ -44,7 +212,7 @@
   },
   {
    "contract_no": "1000029994",
-   "title": "Wwe Cip - PRGM MGMT Conslt",
+   "title": "Wwe Cip - Program Management Consulting",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 49500000.0,
@@ -53,7 +221,7 @@
   },
   {
    "contract_no": "1000013299",
-   "title": "Natural Resources/Tech Svc",
+   "title": "Natural Resources/Tech Service",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 18620000.0,
@@ -62,7 +230,7 @@
   },
   {
    "contract_no": "1000018085",
-   "title": "Eng Srvs Dams Resvrs",
+   "title": "Eng Services Dams Resvrs",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 17586360.82,
@@ -71,7 +239,7 @@
   },
   {
    "contract_no": "1000023152",
-   "title": "Eng Srvs Tranms Pipelines",
+   "title": "Eng Services Tranms Pipelines",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 10570000.0,
@@ -89,7 +257,7 @@
   },
   {
    "contract_no": "1000023752",
-   "title": "Elctrl Eng Srvs HH Region",
+   "title": "Elctrl Eng Services HH Region",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 8446240.0,
@@ -98,7 +266,7 @@
   },
   {
    "contract_no": "1000028334",
-   "title": "As-Needed Envmntl Rv Srvs",
+   "title": "As-Needed Envmntl Rv Services",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 7263393.0,
@@ -134,7 +302,7 @@
   },
   {
    "contract_no": "1000027885",
-   "title": "Emrgcy Pln,Rsp,Trng,TechSr",
+   "title": "Emrgcy Pln,Rsp,Training,TechSr",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 2052000.0,
@@ -152,7 +320,7 @@
   },
   {
    "contract_no": "1000035493",
-   "title": "Power Affordability Prj Pl",
+   "title": "Power Affordability Project Pl",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 195300.0,

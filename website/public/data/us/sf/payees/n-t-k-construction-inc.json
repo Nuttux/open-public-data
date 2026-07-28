@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.732010+00:00",
+ "generated_at": "2026-07-28T11:43:47.700326+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,140 @@
  "top_departments": [
   "WWE Wastewater Enterprise"
  ],
+ "profile": {
+  "n_vouchers": 1047,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 170175816.12,
+    "n_vouchers": 325
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 68597055.27,
+    "n_vouchers": 235
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 22946984.9,
+    "n_vouchers": 147
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 22351602.0,
+    "n_vouchers": 146
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 15384355.49,
+    "n_vouchers": 193
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 81.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 6,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 140050446.9,
+    "n_vouchers": 168
+   },
+   {
+    "code": "567000",
+    "label": "Bldgs,Struct&Imprv Proj-Budget",
+    "spend_class": "purchase",
+    "usd": 438252.14,
+    "n_vouchers": 2
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 252819.35,
+    "n_vouchers": 4
+   },
+   {
+    "code": "201670",
+    "label": "Liens Payable",
+    "spend_class": "unclear",
+    "usd": 16012.5,
+    "n_vouchers": 1
+   },
+   {
+    "code": "479701",
+    "label": "Custom Work",
+    "spend_class": "ledger",
+    "usd": 417.89,
+    "n_vouchers": 1
+   },
+   {
+    "code": "206810",
+    "label": "Liab Pybl fr Rest-Others",
+    "spend_class": "ledger",
+    "usd": 81.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 21851757.65,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 13580053.35,
+    "n_vouchers": 32
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 6155846.28,
+    "n_vouchers": 9
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 1677524.88,
+    "n_vouchers": 3
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Bldgs,Struct&Imprv Proj-Budget",
+    "spend_class": "purchase",
+    "usd": 438252.14,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "label": "Liab Pybl fr Rest-Others",
+    "spend_class": "ledger",
+    "usd": 81.0,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000023831",
@@ -57,7 +191,7 @@
   },
   {
    "contract_no": "1000034559",
-   "title": "13TH Safety Impr Proj",
+   "title": "13TH Safety Improvement Project",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 4080923.04,

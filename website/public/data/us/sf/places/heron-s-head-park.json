@@ -1,0 +1,262 @@
+{
+ "generated_at": "2026-07-28T12:23:47.811183+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "heron-s-head-park",
+ "name": "Heron's Head Park",
+ "kind": "Park",
+ "family": "park",
+ "address": "32 Jennings St",
+ "lat": 37.739794,
+ "lon": -122.375518,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "facility": null,
+ "capital": {
+  "n_items": 1,
+  "measure_totals": {},
+  "bond_programs": [
+   "Clean and Safe Neighborhood Parks"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "Heron's Head Park Improvements",
+    "bond_program": "Clean and Safe Neighborhood Parks",
+    "component": "Waterfront Parks",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Heron's Head Park"
+   }
+  ],
+  "payees": [
+   {
+    "vendor": "LITERACY FOR ENVIRONMENTAL JUSTICE",
+    "paid_usd": 256154.41,
+    "n_contracts": 1,
+    "first_fiscal_year": 2021,
+    "last_fiscal_year": 2023
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 256154.41
+ },
+ "photo": "/img/us/sf/places/heron-s-head-park.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/heron-s-head-park.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Causeway_at_Heron%27s_Head_Park_(1),_April_2021.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Pi.1415926535",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-28T12:02:12.332085+00:00"
+ },
+ "summary_en": "Heron's Head is a park the city has largely paid other people to run. The Port Commission's minutes of 2004 record an authorisation to issue a request for proposals for education and public participation programmes here, and an amendment to the contract with Literacy for Environmental Justice to provide them, with the director's recommendation noting that community participation had been an important part of the park since its inception and a major contributor to its health. Four years later the commission was approving a licence allowing the same organisation to run grant-funded education and habitat improvement programmes on the site, and by 2013 it was issuing a request for proposals to lease the park's EcoCenter together with 6,058 square feet of non-exclusive licence area around it. The park is also a fixture of the working waterfront's calendar — the commission's announcements list it among the sites cleaned on Coastal Cleanup Day, alongside Warm Water Cove, Agua Vista Park and Mission Creek — and its entrance appears in the Port's waterfront parks bond programme beside Crane Cove Park and the Islais Creek shoreline. The money follows the documents exactly: Literacy for Environmental Justice has been paid $256,154.41 between 2021 and 2023.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "agendasanfranci2013sanf_1",
+   "title": "Agenda / San Francisco Port Commission",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Heron's Head Park",
+   "ocr_excerpts": [
+    "t Wharf Project - Selected to receive an award for 201 3 Airports & Ports Project of the Year from the San Francisco American Society of Civil Engineers - September 19, 201 3 at City Club of San Francisco • Coastal Cleanup Day - September 21 , 201 3 from 9 a.m. to 1 2 noon at Warm Water Cove, Heron's Head Park, Agua Vista Park and Mission Creek • Department of Public Works /San Francisco Giants Clean Sweep - September 28, 2013 from 9 a.m. to 1 2 noon at Islais Creek Park @ Third Street and Cargo Way A09102013 -3- B. Informational presentation by Water Emergency Transportation Authority (WET A): O",
+    "urchase contract; (4) the form of a bond purchase contract; (5) the preliminary form of Lilt? U Hit-rial OLaLtJI 1 ItJI U (tJIculiiy LU UlO DUNUb aMU the distribution of the statement; and (6) the form of the Continuing Disclosure Certificate of the Port and the execution of the certificate. 7 Heron's Head Park Jennings Street Action Authorization to Issue a Request for Proposals fr\\ 1 oaco tho 'F-i^nf^ ontor at Hornn c 1— IqoH ParL LU Lcdbc U ic LLUUcI llcl dl nciUM o ncdU rdis and surrounding 6.058 square feet of non- exclusive license area. 8 Pier 27 Action Authorization to execute an amendmen",
+    "of a lease and development agreement with Orton Development Inc. for the 20th Street Historic Buildings at Pier 70 4 Portwide Action Approval to revise the existing Board Resolution of Intention to form the Port Infrastructure Financing District and Designation of Project A09102013 -6- Areas 5 Heron's Head Park at Cargo and Jennings Street Action Authorization to Negotiate and Execute a Mutual Termination Agreement with Literacy for Environmental Justice for Termination of Lease L-13816, which includes the \"EcoCenter at Heron's Head Park\" and surrounding 6,058 square feet of non-exclusive license area, subject to Board of Supervisors approval of the Mutual Termination Agreement. 6 Tulare Park @ Army, Islais Street & Pier 90 Action Authorization to advertise for competitive bids for Construction Contract No. 2758, Bayview Gateway &",
+    "and adjacent to AT&T Park 2 Pier 9 Action Request approval of Port of San Francisco Lease Number L- 15721 with Autodesk, a Delaware Corporation for a term of eight (8) years for approximately 3,400 square feet of unimproved Pier 9 shed space DECEMBER 10, 2013 FACILITY/POLICY ITEM TITLE 1 Heron's Head Park at Cargo and Jennings Street Action Request authorization to execute a lease for the \"Eco Center at Heron's Head Park'' and surrounding 6,058 square feet of non-exclusive license area. DATE TO BE DETERMINED FACILITY/POLICY ITEM TITLE 1 Pier 27 Informational Presentation on the James R. Herman Cruise Terminal Management Agreement with Metro Cruise LLC 2 Pier 27 Action Approval of the James R. Herman Cruise",
+    "nomics In/Hi ictriol Tonontc Donofitc"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.37,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.87,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendasanfranci2013sanf_1",
+   "deep_link": "https://archive.org/details/agendasanfranci2013sanf_1?q=Heron's+Head+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Port papers leasing the park's EcoCenter and listing it among the Coastal Cleanup Day sites."
+  },
+  {
+   "identifier": "agenda2008sanf_1",
+   "title": "Agenda",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Heron's Head Park",
+   "ocr_excerpts": [
+    "23, 2008) • Request approval of Exclusive Negotiation Agreement and conceptual framework for Piers 30-32 project with SF Piers LLC (September 23, 2008) • Request approval of License No. 14544 to allow Literacy for Environmental Justice to run grant-funded education and habitat improvement programs at Heron's Head Park (September 23, 2008) • Request approval of parking meter rate schedule (October 14, 2008) • Informational presentation of lease with Solar City, Inc., a Delaware Corporation, for the premises located at Pier 96 Maintenance and Repair Building (October 14, 2008) • Informational Presentation regarding",
+    "funds and the City's bond report identified the project and bond issuance funding levels for waterfront parks projects: > Pier 43.5 Promenade > Brannan Street Wharf Park > BIue-Greenway Projects Bayfront Park at Mission Bay Pier 70 Crane Cove Park Warm Water Cove Park Islais Creek Shoreline Parks Heron's Head Park Entrance Design Standards and Enhancements to all Blue-Greenway Projects $7,800,000 2,900,000 22,100,000 THIS PRINT COVERS CALENDAR ITEM NO. 9A OF SAN FRANCISCO FAX 415 274 0528 Total Project Allocations $32,800,000 Bond Issuance Costs $700,000 Total Allocation to Waterfront Parks Projects",
+    "term. Overall, the Port's request for funding from the first bond sale includes of $2,433,125 or approximately 66% for preparatory work, including CEQA review, permitting, engineering and design work. Where construction can be completed in the very near future, the Port has included two projects: the Heron's Head Park project and the project for signs, site furnishings and lighting improvements to the Blue- Greenway. The total request for construction work is $880,000 or approximately 24% of the overall request. Also included is a $33 1,3 13 or 10% contingency for the work listed above. Port staff have been revie",
+    "t parks projects including (1) CEQA review and permitting for all of the waterfront parks projects; (2) the engineering design for the Pier 43.5 Promenade and Bayfront Park projects; (3) the Blue-Greenway planning efforts; (4) developing Blue-Greenway design standards; (5) design and construction of the Heron's Head Park entrance and parking lot; and (6) acquisition and installation of some of the signs, furnishings, and lighting in the Blue-Greenway; and Port staff have identified $130,462.77 in old revenue bond funds from closed out projects; and Port staff recommend that the $130,462.77 in old revenue bond funds",
+    "funds. The Port's supplemental appropriation is in the amount of $3,644,438. The funds will allow Port staff to do the CEQA review for all of the waterfront park projects in the bond as well as to begin the engineering design for Pier 43.5 promenade project, the Bayfront Park project, as well as Heron's Head Park. We would be able"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.28,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.78,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda2008sanf_1",
+   "deep_link": "https://archive.org/details/agenda2008sanf_1?q=Heron's+Head+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A licence for grant-funded education and habitat work, and the bond programme listing the park's entrance."
+  },
+  {
+   "identifier": "minutes2004sanf_2",
+   "title": "Minutes",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Heron's Head Park",
+   "ocr_excerpts": [
+    "Memorandum of Understanding between the Entertainment Commission and the Port regarding issuance of entertainment permits on Port property. (Resolution No. 04-53) 6. ENGINEERING & MAINTENANCE A. Request for authorization to issue a Request for Proposals for education and public participation programs at Heron's Head Park. (Resolution No. 04-54) B. Request for authorization to amend Contract No. 3048-03/04 with Literacy for Environmental Justice to provide education and public participation programs at Heron's Head Park. (Resolution No. 04-55) 7. ADMINISTRATIVE SERVICES A. Request for approval to accept the Port of San Francisco Nexus Study report prepared by Bay Area Economics. (Resolution No. 04-56) B. Request for authorization to expend $1 million in Port funds appropriated in Fiscal Year 2003/04 to reimburse t",
+    "2004 MEMBERS, PORT COMMISSION Hon. Wilfred Hsu, President Hon. Michael Hardeman, Vice President Hon. Kimberly Brandon Hon. Susan Bierman Hon. Ann Lazarus Monique Moyer Executive Director M Request for authorization to issue a Request for Proposals for education and public participation programs at Heron's Head Park. DIRECTOR'S RECOMMENDATION: AUTHORIZE STAFF TO ISSUE A REQUEST FOR PROPOSALS TO PROVIDE EDUCATION AND PUBLIC PARTICIPATION PROGRAMS AT HERON'S HEAD PARK. Background Community participation has been an important part of Heron's Head Park since its inception, and is a major contributor to the health and vitality of the park. Heron's Head Park offers a unique opportunity for local schools and other visitors to study and enjoy wetlands in their own backyard. The Port has sought to actively promote community involvement at the park and to help local schools take advantage of the hands-on educational experience available at Heron's Head Park. To that end, Port staff initially combined efforts with the City College of San Francisco Center for Habitat Restoration, to develop and conduct school and community participation programs at Herons Head Park from 1998 through 2000. This work was funded by a federal grant to City College. During that period, a part-time Park Coordinator with expertise in environmental education and wetland ecology developed a variety of programs for schools and community groups in the vicinity of Heron's Head Park, and for City College students. These programs offered opportunities to groups with a wide variety of ages and interests, from a short field trip for pre- scholars from a nearby child development center, to a semester-long series of field trips for a local high school science class, to independent",
+    "rt Commission Page 2 Concurrently, Literacy for Environmental Justice (LEJ), a community-based non-profit organization dedicated to providing environmental education programs to schools and youth groups in the Bay"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.91,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.41,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes2004sanf_2",
+   "deep_link": "https://archive.org/details/minutes2004sanf_2?q=Heron's+Head+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Port minutes commissioning education and public participation programmes at the park."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  }
+ ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 3,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

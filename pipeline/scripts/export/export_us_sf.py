@@ -19,6 +19,19 @@ Outputs (website/public/data/us/sf/):
       per-FY top-1,000 union — 4,068 vendors ≈95-97% of every FY's $),
       fetched by the page on first query (Paris beneficiaires_search
       pattern). Source: mart_us_sf_payees_search.
+    - payment_breakdowns.json : one fiscal year's payments cut three ways
+      (paying department, service area, kind of payee), every dimension
+      sharing the same denominator so the page's lens toggle re-cuts one
+      total. Source: mart_us_sf_payment_breakdowns.
+    - payee_profiles.json  (pipeline/cache/us_sf/, NOT public/data — it is a
+      pipeline intermediate, read only by normalize_sf_payees.py)
+                           : per-vendor rollups — paying departments with
+      dollars, sub-object categories (FY2018+) carrying spend_class, and
+      the most recently CLOSED fiscal year broken into department ×
+      category lines. This is what lets a payee fiche say what the City
+      pays a payee FOR; SF vendors carry no registry id, so the account
+      coding on their own payment lines is the only source-derived
+      description available. Source: mart_us_sf_payee_profile.
     - budget_vs_actual.json: adopted budget and actuals as SEPARATE labeled
       series per FY, plus the measured reconciliation perimeters and
       residuals. The two series are NOT published as a single comparable
@@ -51,6 +64,7 @@ Prérequis:
 """
 
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -61,8 +75,15 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from utils.logger import Logger  # noqa: E402
 
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_us_marts"
+# Overridable so a dev can verify an export against `dbt_us_dev_*_marts`
+# without a prod build (prod stays CI-only).
+DATASET = os.environ.get("BQ_MARTS_DATASET", "dbt_us_marts")
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "us" / "sf"
+# Intermediates consumed by a later pipeline step, not by the site. Kept out
+# of public/data so the shipped data directory stays exactly "what the site
+# reads" (payee_profiles.json is 8 MB and is baked into the per-payee fiches
+# by normalize_sf_payees.py, which is the only thing that ever opens it).
+CACHE_DIR = Path(__file__).parent.parent.parent / "cache" / "us_sf"
 
 SOURCE_PIPELINE = (
     "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → "
@@ -437,6 +458,301 @@ def build_top_payees(
             "close is still running, ~4 months) / in_progress. SF fiscal "
             "year N runs July 1 (N-1) to June 30 N."
         ),
+    }
+
+
+def build_spending_subobjects(rows: list[dict]) -> dict:
+    """
+    "What the City buys" — every sub-object, split by spend class.
+
+    The voucher file is the City's ledger, so ranking it raw answers the
+    wrong question: FY2025 opens on $3.4B of "Professional/Specialized Svcs"
+    and includes federal tax withholding, bond redemption and unearned
+    revenue. Each sub-object therefore carries a class from
+    seed_us_sf_subobject_class (purchase / obligation / ledger / unclear) and
+    the page presents the purchases as the section, the rest as context.
+
+    The exemplar on each row is the largest real vendor x department line in
+    that cell — derived, never curated, so it cannot be cherry-picked and it
+    refreshes with the data. FY2018+ only: the chart of accounts was
+    renumbered at FY2018 (see the mart header).
+    """
+    # Which categories get a drill list — i.e. which ones become an openable
+    # fiche. This was rank-based (top purchases only), which assumed the page's
+    # own ranking was the way in. It is not: a payee fiche lists that PAYEE's
+    # categories, and for a health plan or a bond trustee every one of them is
+    # obligation-class, so Kaiser's fiche was a column of dead labels.
+    #
+    # Materiality, not rank: a category carrying at least $100k in a year is
+    # openable. A rank cut makes reachability depend on what else happened that
+    # year; a money floor is a property of the row itself and covers the long
+    # tail that payee fiches actually link to.
+    DRILL_FLOOR_USD = 100_000
+
+    by_fy: dict[int, list[dict]] = {}
+    for r in rows:
+        fy_key = int(r["fiscal_year"])
+        drillable = abs(float(r["paid_usd"] or 0)) >= DRILL_FLOOR_USD
+        by_fy.setdefault(fy_key, []).append({
+            "code": r["sub_object_code"],
+            "label": r["sub_object"],
+            "spend_class": r["spend_class"],
+            "paid_usd": _f(r["paid_usd"], 2),
+            "n_vendors": int(r["n_vendors"]),
+            "n_departments": int(r["n_departments"]),
+            "share_of_year": _f(r["share_of_year"], 6),
+            "share_of_class": _f(r["share_of_class"], 6),
+            "exemplar": {
+                "vendor": r["exemplar_vendor"],
+                "department": r["exemplar_department"],
+                "department_code": r["exemplar_department_code"],
+                "amount_usd": _f(r["exemplar_usd"], 2),
+            } if r["exemplar_vendor"] else None,
+            # The drill list behind a clicked category. Same ranking as the
+            # exemplar (which is by construction its first row), so the panel
+            # can never contradict the line the reader clicked.
+            # n_payees_ranked is the count BEFORE the top-8 cut, so the UI
+            # states what it is not showing instead of implying completeness.
+            "top_payees": [
+                {
+                    "vendor": tp["vendor"],
+                    "department": tp["department"],
+                    "department_code": tp["department_code"],
+                    "amount_usd": _f(tp["usd"], 2),
+                }
+                for tp in (r.get("top_payees") or [])
+            ] if drillable else [],
+            "n_payees_ranked": (
+                int(r["n_payees_ranked"]) if drillable and r.get("n_payees_ranked") is not None else 0
+            ),
+        })
+
+    class_totals = {}
+    for fy, items in by_fy.items():
+        totals: dict[str, float] = {}
+        for it in items:
+            totals[it["spend_class"]] = totals.get(it["spend_class"], 0.0) + (it["paid_usd"] or 0.0)
+        class_totals[str(fy)] = {k: round(v, 2) for k, v in sorted(totals.items())}
+
+    ref = rows[0] if rows else {}
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_pipeline": SOURCE_PIPELINE,
+        "unit": "USD",
+        "grain": "fiscal_year x sub_object_code (FY2018+)",
+        "perimeter": (
+            "Every vendor-payment line in the Controller's voucher file from "
+            "FY2018 on, grouped by the City's own sub-object accounting code. "
+            "FY2018 is the floor because the chart of accounts was renumbered "
+            "that year: the same concept carries a different code before and "
+            "after, so a series across the break would silently split."
+        ),
+        "class_definitions": {
+            "purchase": "Goods and services bought from outside the City.",
+            "obligation": (
+                "Money out that is not a purchase: debt service, employee "
+                "benefit plans, tax withholding, payments to other governments."
+            ),
+            "ledger": (
+                "Balance-sheet and revenue lines that appear in the payments "
+                "file without being a payment for anything."
+            ),
+            "unclear": "Not confidently classified; shown folded, never as fact.",
+        },
+        "classification_note": (
+            "The class is a display classification of the City's sub-object "
+            "codes, not a figure from the source. Every dollar comes from the "
+            "vouchers; only the grouping is ours."
+        ),
+        "exemplar_note": (
+            "The example on each row is the largest single vendor x department "
+            "line in that category and year, excluding related government "
+            "units so a category is never illustrated by an internal transfer. "
+            "Totals still include every line."
+        ),
+        "source": {
+            "name": ref.get("dataset_name"),
+            "dataset_id": ref.get("dataset_id"),
+            "source_url": ref.get("dataset_page_url"),
+            "attribution": ref.get("attribution"),
+            "rows_updated_at": _ts(ref.get("rows_updated_at")),
+        },
+        "class_totals": class_totals,
+        "years": {str(fy): items for fy, items in sorted(by_fy.items())},
+    }
+
+
+def build_payment_breakdowns(rows: list[dict]) -> dict:
+    """
+    The same fiscal year's payments cut three ways: paying department, service
+    area, and kind of payee.
+
+    The who-gets-paid page had one breakdown (what the money bought) where the
+    contracts page has four, so a reader could see what was purchased and never
+    who paid for it. Every dimension here shares ONE denominator — the fiscal
+    year's total payments — so the page's lens toggle re-cuts a single pie
+    instead of silently changing what is being measured.
+
+    Only the top rows travel; the UI folds the remainder into "Other" using
+    `total_usd`, which is the true FY total from the mart, not the sum of the
+    rows shipped.
+    """
+    TOP_PER_DIMENSION = 10
+    by_fy: dict[int, dict] = {}
+    for r in rows:
+        fy = int(r["fiscal_year"])
+        entry = by_fy.setdefault(fy, {
+            "total_usd": _f(r["fy_total_usd"], 2),
+            "execution_status": r["execution_status"],
+            "dimensions": {},
+        })
+        dim = entry["dimensions"].setdefault(r["dimension"], [])
+        if int(r["rank_in_dimension"]) > TOP_PER_DIMENSION:
+            continue
+        dim.append({
+            "key": r["key"],
+            "label": r["label"],
+            "usd": _f(r["usd"], 2),
+            "n_payees": int(r["n_payees"]),
+            "share_of_fy": _f(r["share_of_fy"], 6),
+        })
+
+    ref = rows[0] if rows else {}
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_pipeline": SOURCE_PIPELINE,
+        "unit": "USD",
+        "grain": "fiscal_year x dimension x key",
+        "top_per_dimension": TOP_PER_DIMENSION,
+        "dimension_notes": {
+            "department": (
+                "The paying department, on the City's own code. Grouped on the "
+                "code and not the name: the FY2018 system migration re-cased "
+                "every label, so grouping on the label splits one department "
+                "in two."
+            ),
+            "org_group": (
+                "The Controller's seven service areas — the same top-level "
+                "grouping the budget page uses, so the two pages cut the money "
+                "the same way."
+            ),
+            "kind": (
+                "The display bucket of the PAYEE (supplier, nonprofit, "
+                "healthcare, fiscal agent, payroll pass-through, individual). "
+                "Vendors the classification seed does not cover are shown as "
+                "'unclassified' rather than dropped — the gap is a fact about "
+                "the classification, not a rounding error."
+            ),
+        },
+        "denominator_note": (
+            "Every dimension sums to the same figure: that fiscal year's total "
+            "payments. Switching lens re-cuts one total; it never changes what "
+            "is being measured."
+        ),
+        "source": {
+            "name": ref.get("source_name"),
+            "dataset_id": ref.get("source_dataset_id"),
+            "source_url": ref.get("source_url"),
+            "attribution": ref.get("source_attribution"),
+            "rows_updated_at": _ts(ref.get("source_rows_updated_at")),
+        },
+        "years": {str(fy): payload for fy, payload in sorted(by_fy.items())},
+    }
+
+
+def build_payee_profiles(rows: list[dict]) -> dict:
+    """
+    Per-payee rollups: what a payee is actually paid for.
+
+    Paris fills the equivalent slot from SIRENE — a supplier is keyed by
+    SIREN, so the fiche can state its activity, legal form and head office.
+    SF vendors carry no identifier, so the only thing that can describe a
+    payee from the source itself is the City's own account coding on its
+    payment lines: which department paid, and which sub-object it was
+    booked to ("Food", "Interpreters", "Rent/Lease-Building/Structure").
+
+    Keyed by the RAW Controller vendor string. normalize_sf_payees.py merges
+    these across the spelling variants it folds into one payee, so the fiche
+    sees one rollup per normalized entity, not per spelling.
+    """
+    ref = rows[0] if rows else {}
+    profiles: dict[str, dict] = {}
+    for r in rows:
+        profiles[r["vendor"]] = {
+            "total_paid_usd": _f(r["total_paid_usd"], 2),
+            "n_vouchers": int(r["n_vouchers"] or 0),
+            "n_departments": int(r["n_departments"] or 0),
+            "n_categories": int(r["n_categories"] or 0),
+            "departments": [
+                {
+                    "department": d["department"],
+                    "department_code": d["department_code"],
+                    "usd": _f(d["usd"], 2),
+                    "n_vouchers": int(d["n_vouchers"] or 0),
+                }
+                for d in (r.get("departments") or [])
+            ],
+            "categories": [
+                {
+                    "code": c["sub_object_code"],
+                    "label": c["sub_object"],
+                    "spend_class": c["spend_class"],
+                    "usd": _f(c["usd"], 2),
+                    "n_vouchers": int(c["n_vouchers"] or 0),
+                }
+                for c in (r.get("categories") or [])
+            ],
+            "categories_total_usd": _f(r["categories_total_usd"], 2),
+            "recent_fy": int(r["recent_fy"]) if r.get("recent_fy") is not None else None,
+            "recent_total_usd": _f(r["recent_total_usd"], 2),
+            "n_recent_lines": int(r["n_recent_lines"] or 0),
+            "recent_lines": [
+                {
+                    "department": l["department"],
+                    "department_code": l["department_code"],
+                    "label": l["sub_object"],
+                    "spend_class": l["spend_class"],
+                    "usd": _f(l["usd"], 2),
+                    "n_vouchers": int(l["n_vouchers"] or 0),
+                }
+                for l in (r.get("recent_lines") or [])
+            ],
+        }
+
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_pipeline": SOURCE_PIPELINE,
+        "unit": "USD",
+        "grain": "vendor (raw Controller display string)",
+        "count": len(profiles),
+        "perimeter": (
+            "Every payment line in the Controller's voucher file, rolled up "
+            "per vendor by paying department (all years) and by the City's "
+            "own sub-object accounting category (FY2018+, the chart-of-"
+            "accounts renumbering floor)."
+        ),
+        "recent_note": (
+            "The voucher file carries no payment DATE, only a fiscal year, so "
+            "a dated payment ledger cannot be built from this source. "
+            "`recent_lines` is instead the payee's most recently CLOSED "
+            "fiscal year broken into department x category lines — the "
+            "closest the data allows to 'what they were paid for lately'."
+        ),
+        "class_note": (
+            "spend_class (purchase / obligation / ledger / unclear) is a "
+            "display classification of the City's sub-object codes, not a "
+            "field from the source. It exists so a payee whose money is debt "
+            "service or an employee benefit plan is never described as though "
+            "the City bought something from them."
+        ),
+        "source": {
+            "name": ref.get("source_name"),
+            "dataset_id": ref.get("source_dataset_id"),
+            "source_url": ref.get("source_url"),
+            "attribution": ref.get("source_attribution"),
+            "rows_updated_at": _ts(ref.get("source_rows_updated_at")),
+        },
+        "profiles": profiles,
     }
 
 
@@ -1029,8 +1345,10 @@ def build_index(budget: dict, payees: dict, search: dict, bva: dict,
     }
 
 
-def write_json(payload: dict, filename: str, log: Logger) -> None:
-    output_file = OUTPUT_DIR / filename
+def write_json(payload: dict, filename: str, log: Logger, directory: Path | None = None) -> None:
+    target_dir = directory or OUTPUT_DIR
+    target_dir.mkdir(parents=True, exist_ok=True)
+    output_file = target_dir / filename
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
     size_kb = output_file.stat().st_size / 1024
@@ -1065,10 +1383,29 @@ def main() -> int:
     ))
     payees = build_top_payees(payee_rows, fy_rows, nonprofit_rows, materiality_rows)
 
+    log.section("mart_us_sf_spending_subobjects")
+    subobj_rows = fetch_rows(
+        client, "mart_us_sf_spending_subobjects", "fiscal_year, paid_usd DESC"
+    )
+    log.info("rows", extra=f"subobjects={len(subobj_rows)}")
+    spending_subobjects = build_spending_subobjects(subobj_rows)
+
     log.section("mart_us_sf_payees_search")
     search_rows = fetch_rows(client, "mart_us_sf_payees_search", "total_usd DESC")
     log.info("rows", extra=str(len(search_rows)))
     search = build_payees_search(search_rows)
+
+    log.section("mart_us_sf_payment_breakdowns")
+    breakdown_rows = fetch_rows(
+        client, "mart_us_sf_payment_breakdowns", "fiscal_year, dimension, rank_in_dimension"
+    )
+    log.info("rows", extra=str(len(breakdown_rows)))
+    payment_breakdowns = build_payment_breakdowns(breakdown_rows)
+
+    log.section("mart_us_sf_payee_profile")
+    profile_rows = fetch_rows(client, "mart_us_sf_payee_profile", "total_paid_usd DESC")
+    log.info("rows", extra=str(len(profile_rows)))
+    payee_profiles = build_payee_profiles(profile_rows)
 
     log.section("mart_us_sf_budget_vs_actual")
     bva_rows = fetch_rows(client, "mart_us_sf_budget_vs_actual", "side, fiscal_year")
@@ -1124,6 +1461,9 @@ def main() -> int:
     write_json(budget, "budget_by_year.json", log)
     write_json(payees, "top_payees.json", log)
     write_json(search, "payees_search.json", log)
+    write_json(payment_breakdowns, "payment_breakdowns.json", log)
+    write_json(payee_profiles, "payee_profiles.json", log, directory=CACHE_DIR)
+    write_json(spending_subobjects, "spending_subobjects.json", log)
     write_json(bva, "budget_vs_actual.json", log)
     for fy, payload in sorted(breakdowns.items()):
         write_json(payload, f"budget_breakdown_{fy}.json", log)

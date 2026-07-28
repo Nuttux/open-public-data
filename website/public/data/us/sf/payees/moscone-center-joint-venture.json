@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.728551+00:00",
+ "generated_at": "2026-07-28T11:43:47.694024+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,166 @@
  "top_departments": [
   "ADM Gen Svcs Agency-City Admin"
  ],
+ "profile": {
+  "n_vouchers": 1478,
+  "departments": [
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 665757755.41,
+    "n_vouchers": 1316
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "DEM",
+    "usd": 11980224.95,
+    "n_vouchers": 30
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 6107211.41,
+    "n_vouchers": 23
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 74146.4,
+    "n_vouchers": 7
+   },
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "usd": 40787.4,
+    "n_vouchers": 22
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "usd": 22038.9,
+    "n_vouchers": 10
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 22000.0,
+    "n_vouchers": 6
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 21085.4,
+    "n_vouchers": 7
+   }
+  ],
+  "n_departments": 21,
+  "categories": [
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 232484410.56,
+    "n_vouchers": 418
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 51193354.22,
+    "n_vouchers": 97
+   },
+   {
+    "code": "527000",
+    "label": "Prof & Specialized Svcs-Bdgt",
+    "spend_class": "purchase",
+    "usd": 40518039.86,
+    "n_vouchers": 61
+   },
+   {
+    "code": "567110",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 15809582.66,
+    "n_vouchers": 109
+   },
+   {
+    "code": "584030",
+    "label": "Capital Renewal Projects",
+    "spend_class": "purchase",
+    "usd": 6768210.0,
+    "n_vouchers": 30
+   },
+   {
+    "code": "530310",
+    "label": "Misc Facilities Rental",
+    "spend_class": "purchase",
+    "usd": 5688331.15,
+    "n_vouchers": 19
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 5025000.58,
+    "n_vouchers": 63
+   },
+   {
+    "code": "560990",
+    "label": "Other Equipment",
+    "spend_class": "purchase",
+    "usd": 4561799.53,
+    "n_vouchers": 15
+   }
+  ],
+  "n_categories": 16,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 50240560.77,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 29848051.93,
+    "n_vouchers": 50
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 11653734.66,
+    "n_vouchers": 63
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Advances",
+    "spend_class": "unclear",
+    "usd": 3995365.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Other Equipment",
+    "spend_class": "purchase",
+    "usd": 3697946.96,
+    "n_vouchers": 5
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Prof & Specialized Svcs-Bdgt",
+    "spend_class": "purchase",
+    "usd": 1045462.22,
+    "n_vouchers": 3
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000002234",

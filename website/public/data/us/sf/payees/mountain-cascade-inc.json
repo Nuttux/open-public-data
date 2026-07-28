@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.739586+00:00",
+ "generated_at": "2026-07-28T11:43:47.712675+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -26,6 +26,49 @@
  "top_departments": [
   "WWE Wastewater Enterprise"
  ],
+ "profile": {
+  "n_vouchers": 215,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 150750097.56,
+    "n_vouchers": 205
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 7742788.3,
+    "n_vouchers": 10
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 25488673.76,
+    "n_vouchers": 36
+   }
+  ],
+  "n_categories": 1,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 10863755.09,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 10863755.09,
+    "n_vouchers": 13
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000032174",
@@ -38,7 +81,7 @@
   },
   {
    "contract_no": "1000037857",
-   "title": "SEWPCP Boost Station Impr",
+   "title": "Southeast Water Pollution Control Plant Boost Station Improvement",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 8338362.5,

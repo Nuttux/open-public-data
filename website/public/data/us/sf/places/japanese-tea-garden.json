@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.735016+00:00",
+ "generated_at": "2026-07-28T12:23:47.749183+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "japanese-tea-garden",
@@ -75,12 +75,14 @@
  "photo_credit": {
   "photo": "/img/us/sf/places/japanese-tea-garden.jpg",
   "source": "Wikimedia Commons",
-  "file": "File:Japanese_tea_garden_Golden_Gate_Park.JPG",
-  "file_url": "https://commons.wikimedia.org/wiki/File:Japanese_tea_garden_Golden_Gate_Park.JPG",
-  "license": "CC BY 3.0",
-  "license_url": "https://creativecommons.org/licenses/by/3.0",
-  "author": "Asamudra (talk)",
-  "fetched_at": "2026-07-20T22:24:05.142916+00:00"
+  "source_url": "https://commons.wikimedia.org/wiki/File:Japanese_Tea_Garden_San_Francisco_December_2016_006.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "King of Hearts",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T22:50:03.929513+00:00"
  },
  "summary_en": "The Japanese Tea Garden appears chiefly in Golden Gate Park planning documents. A 2002 EIR for the Concourse Authority projects lists the garden as a contributing feature of the proposed park historic district and notes it \"has been determined eligible for listing on the California Register of Historical Resources,\" concluding the project would not materially alter it. Revisions to the New de Young Museum EIR (2000-2001) confirm the garden is \"individually eligible for listing on the National Register of Historic Places\" and analyze the museum's effect on it, including a proposed tower visible from the garden. It is operated by the Recreation and Park Department, whose FY2025 budget line is about $250M; no contract in the data names it.",
  "published": true,
@@ -140,9 +142,13 @@
    "url": "https://archive.org/details/newdeyoungmuseum2220sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2220sanf?q=Japanese+Tea+Garden",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
    "salient": true,
-   "gloss": "The 2000 de Young Museum EIR summary analyzing how the proposed museum tower would be visible from the garden."
+   "gloss": "The response volume for the de Young rebuild, revising the site plan to show how the new museum would sit against the Tea Garden and the Music Concourse."
   },
   {
    "identifier": "goldengateparkco1420sanf",
@@ -182,9 +188,13 @@
    "url": "https://archive.org/details/goldengateparkco1420sanf",
    "deep_link": "https://archive.org/details/goldengateparkco1420sanf?q=Japanese+Tea+Garden",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
    "salient": true,
-   "gloss": "A 2002 Concourse EIR listing the garden as a contributing historic-district feature, eligible for the California Register, and unaltered by the project."
+   "gloss": "The Concourse environmental review, which lists the Tea Garden among 123 contributing features of the proposed historic district and finds it individually eligible for the California Register."
   },
   {
    "identifier": "newdeyoungmuseum2020sanf",
@@ -222,9 +232,13 @@
    "url": "https://archive.org/details/newdeyoungmuseum2020sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2020sanf?q=Japanese+Tea+Garden",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
    "salient": true,
-   "gloss": "2001 de Young Museum EIR revisions confirming the garden's individual National Register eligibility and its position bounding the museum site."
+   "gloss": "The revised final report confirms the Tea Garden is individually eligible for the National Register — unlike the de Young and the Academy of Sciences, which qualify only as contributors."
   }
  ],
  "dept_shelf": [

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.727974+00:00",
+ "generated_at": "2026-07-28T11:43:47.692981+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,174 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 2249,
+  "departments": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 429997824.14,
+    "n_vouchers": 653
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 267814469.9,
+    "n_vouchers": 1220
+   },
+   {
+    "department": "CON Controller",
+    "department_code": "CON",
+    "usd": 73825751.59,
+    "n_vouchers": 263
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 5000000.0,
+    "n_vouchers": 4
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "ECD",
+    "usd": 3233980.3,
+    "n_vouchers": 10
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 1831738.52,
+    "n_vouchers": 54
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 1000000.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "CPC City Planning",
+    "department_code": "CPC",
+    "usd": 170129.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 17,
+  "categories": [
+   {
+    "code": "410110",
+    "label": "Prop Tax Curr Yr-Secured",
+    "spend_class": "obligation",
+    "usd": 229671209.7,
+    "n_vouchers": 52
+   },
+   {
+    "code": "448111",
+    "label": "Homeowners Prop Tax Relief",
+    "spend_class": "obligation",
+    "usd": 220466593.73,
+    "n_vouchers": 55
+   },
+   {
+    "code": "552410",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 50145504.55,
+    "n_vouchers": 389
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 41224710.41,
+    "n_vouchers": 42
+   },
+   {
+    "code": "410943",
+    "label": "Penalty-Costs-Redemption",
+    "spend_class": "obligation",
+    "usd": 29117792.44,
+    "n_vouchers": 41
+   },
+   {
+    "code": "528990",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 21209400.09,
+    "n_vouchers": 170
+   },
+   {
+    "code": "529990",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 15893585.64,
+    "n_vouchers": 173
+   },
+   {
+    "code": "410120",
+    "label": "Prop Tax Curr Yr-Unsecured",
+    "spend_class": "obligation",
+    "usd": 11446809.81,
+    "n_vouchers": 38
+   }
+  ],
+  "n_categories": 40,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 126995107.09,
+  "n_recent_lines": 27,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 36437849.55,
+    "n_vouchers": 21
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Homeowners Prop Tax Relief",
+    "spend_class": "obligation",
+    "usd": 34787953.15,
+    "n_vouchers": 8
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Prop Tax Curr Yr-Secured",
+    "spend_class": "obligation",
+    "usd": 33981386.7,
+    "n_vouchers": 4
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 13243378.95,
+    "n_vouchers": 132
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 5000000.0,
+    "n_vouchers": 4
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Prop Tax Curr Yr-Unsecured",
+    "spend_class": "obligation",
+    "usd": 2189062.75,
+    "n_vouchers": 4
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000033597",

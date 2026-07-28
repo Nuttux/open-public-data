@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.745000+00:00",
+ "generated_at": "2026-07-28T12:23:47.758748+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "bayview-branch-library",
@@ -38,6 +38,50 @@
  },
  "documents": [
   {
+   "identifier": "sanfranciscopubl6199sanf",
+   "title": "The San Francisco Public Library : the San Francisco Public Library has poor controls over cash from fines and other revenues",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "ocr_excerpts": [
+    "FRANCISCO OFFICE OF THE CONTROLLER Edward Harrington Controller July 6, 1999 San Francisco Public Library Commission 100 Larkin Street San Francisco, CA 94102 President and Members: The Control ler's^udits Division presents its report on the investigation of an allegation that employees of the Bayview branch library (Bayview) of the San Francisco Public Library (Library) were stealing money from fines and other revenues collected by the branch library. The report indicates that because Bayview does not keep adequate records of the revenues it collects, the auditors could not determine if employees have stolen mon",
+    "RD M. HA: Controller City Hall • 1 Dr. Carlton B. Goodlett Place • Room 316 • San Francisco CA 94102-4694 FAX 415-554-7466 Digitized by the Internet Archive in 2014 https://archive.org/details/sanfranciscopubl6199sanf SUMMARY RESULTS IN BRIEF In responding to allegations that employees of the Bayview branch library (Bayview) of the San Francisco Public Library (Library) were stealing fines and other revenues collected by Bayview, we found that Bayview and most of the 25 other branch libraries do not sufficiently document the fines they assess, collect, or waive for materials that borrowers return late. Consequen",
+    "ing, collecting, recording, and depositing of fines and other revenues. In addition, the Library should require staff members to document the instances in which they waive fines. CONTROLLER'S AUDITS DIVISION 1 3 1223 05226 1097 INTRODUCTION ALLEGATION A complainant alleged that employees in the Bayview branch library (Bayview) of the San Francisco Public Library were stealing money from the fines and other revenues collected at the branch library. BACKGROUND The San Francisco Public Library (Library) of the City and County of San Francisco (City) provides books, materials, and electronic resources for the childre",
+    "eport to the Library's accounting staff, who record the revenues into the Library's accounts in the Controller's Financial Accounting and Management Information System (FAMIS). CONTROLLER'S AUDITS DIVISION 2 SCOPE AND METHODOLOGY The purpose of our audit was to investigate whether employees at the Bayview branch library were stealing money from the fines and other revenues they collected. To conduct this investigation, we assessed the cash handling procedures used by the Bayview branch library, the other branch libraries, and the main library. We visited the main library and each of the 26 branch libraries between January 1 1 and January 21, 1999, and counted all the cash the libraries had collected and still retained at the time of our visits. We interviewed staff members at each location to learn about the cash-handling procedures. We also met with staff at the main library to obtain an understanding of the main library's pro"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 11.04,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.5,
+    "money": false,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscopubl6199sanf",
+   "deep_link": "https://archive.org/details/sanfranciscopubl6199sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "audit",
+   "doc_type_label": "Audit",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Audit",
+   "salient": true
+  },
+  {
    "identifier": "annualreportdepa2010sanf",
    "title": "Annual report / Department of Public Works, City and County of San Francisco",
    "creator": "San Francisco (Calif.). Department of Public Works",
@@ -75,7 +119,54 @@
    "url": "https://archive.org/details/annualreportdepa2010sanf",
    "deep_link": "https://archive.org/details/annualreportdepa2010sanf?q=Bayview+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true
+  },
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "ocr_excerpts": [
+    "PROGRAM BENEFITS 3 PROGRAM SCHEDULE 3 PROGRAM COST 4 INTRODUCTION 6 PURPOSE : 6 BACKGROUND 6 BOND PROGRAM 12 PROGRAM SCOPE 12 PROGRAM COST 16 PROGRAM SCHEDULE 17 CONTENTS OF THE REPORT , 18 ANZA BRANCH LIBRARY : 20 BACKGROUND 20 SCOPE OF WORK 20 PROJECT COST 22 PROJECT SCHEDULE 22 BAYVIEW BRANCH LIBRARY 23 BACKGROUND 23 SCOPE OF WORK 23 PROJECT COST 24 PROJECT SCHEDULE 24 BERNAL HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRAR",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 22 Branch Library Improvement Program BAYVIEW BRANCH LIBRARY BACKGROUND The Bayview -Anna Wadden Branch Library, built with a bequest from Anna Wadden, is a 6,427 square foot concrete building constructed in 1969, is located at 5075 3r<^. Street. It opened in 1969 and serves the population of Bayview Hunters Point and a portion of the Portola district. Ch",
+    "heels, and temporary closure. The relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Bayview Branch Library Project Cost Summary Rehabilitation and Improvements $3,480,000 Expansion $810,000 Total Project Cost Estimate $4,290,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Bayview Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 13 months Relocation and Construction 11 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 0.86,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
    "salient": true
   },
   {
@@ -116,48 +207,11 @@
    "url": "https://archive.org/details/minutesofregula1119sanf_0",
    "deep_link": "https://archive.org/details/minutesofregula1119sanf_0?q=Bayview+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agenda2012arts",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Bayview Branch Library",
-   "ocr_excerpts": [
-    "of the proposal for a tile and bronze mural by Precita Eyes for the front of the Bernal Heights Branch Library on Cortland Avenue. 20. Motion to approve revised designs for the Art on Market Street Poster Series by artist Paul Madonna. 21. Motion to approve designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. 22. Motion to authorize the Director of Cultural Affairs to enter into a contract with Johanna Poethig an amount not to exceed $49,000, for the design, fabrication, transportation and installation/consultation of an interior mural at Hamilton Recreation Center. 23. Motion to a",
-    "ned. President Beltran called for public comment on the remainder of the Consent Calendar. Public Comment: Mr. Warfield said that he would like a full discussion of the Visual Arts Committee minutes, items 17, 18 and 19 (regarding the Bemal Heights Library mural), and a separate discussion of the Bayview Branch Library, item 21. He asked for an explanation of procedure. President Beltran said she would sever items 17, 18 and 19, the Bemal Heights Library mural items, for separate consideration, but not the Visual Arts Committee minutes. She called for public comment on items 17, 18 and 19, the Bemal Heights Lib",
-    "w.sfgov3.org/index.aspx7page: Visual Arts Committee Recommendations (March 21, 2012) 14. RESOLUTION NO. 0402-12-105: Motion to approve revised designs for the Art on Market Street Poster Series by artist Paul Madonna. 15. RESOLUTION NO. 0402-12-106: Motion to approve designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. 16. RESOLUTION NO. 0402-12-107: Motion to authorize the Director of Cultural Affairs to enter into a contract with Johanna Poethig an amount not to exceed $49,000, for the design, fabrication, transportation and installation/consultation of an interior mural at Hamilton Recreatio",
-    "w.sfgov3.org/index.aspx7page: Visual Arts Committee Recommendations (March 21, 2012) 14. RESOLUTION NO. 0402-12-105: Motion to approve revised designs for the Art on Market Street Poster Series by artist Paul Madonna. 15. RESOLUTION NO. 0402-12-106: Motion to approve designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. 16. RESOLUTION NO. 0402-12-107: Motion to authorize the Director of Cultural Affairs to enter into a contract with Johanna Poethig an amount not to exceed $49,000, for the design, fabrication, transportation and installation/consultation of an interior mural at Hamilton Recreatio",
-    "Rebuilding Together San Francisco. 13. Motion to approve Rebar's proposal Handsignals for the public artwork for the revised design of McCoppin Hub. 14. Motion to approve final designs for interior and exterior artwork pieces and mock-up of interior artwork piece by artist Ron Saunders for the new Bayvie"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.84,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.34,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": -1.25,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/agenda2012arts",
-   "deep_link": "https://archive.org/details/agenda2012arts?q=Bayview+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
    "salient": false
   },
   {
@@ -197,8 +251,12 @@
    "url": "https://archive.org/details/agendasanfranci2011sanf_6",
    "deep_link": "https://archive.org/details/agendasanfranci2011sanf_6?q=Bayview+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
   },
   {
    "identifier": "minutesofregular2010sanf",
@@ -238,8 +296,12 @@
    "url": "https://archive.org/details/minutesofregular2010sanf",
    "deep_link": "https://archive.org/details/minutesofregular2010sanf?q=Bayview+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
   },
   {
    "identifier": "agendasminutesc2014sanf_1",
@@ -279,87 +341,57 @@
    "url": "https://archive.org/details/agendasminutesc2014sanf_1",
    "deep_link": "https://archive.org/details/agendasminutesc2014sanf_1?q=Bayview+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
    "salient": false
   },
   {
-   "identifier": "sanfranciscopubl6199sanf",
-   "title": "The San Francisco Public Library : the San Francisco Public Library has poor controls over cash from fines and other revenues",
-   "creator": "San Francisco (Calif.). Office of the Controller",
-   "year": 1999,
+   "identifier": "agenda2012arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco",
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "Bayview Branch Library",
    "ocr_excerpts": [
-    "FRANCISCO OFFICE OF THE CONTROLLER Edward Harrington Controller July 6, 1999 San Francisco Public Library Commission 100 Larkin Street San Francisco, CA 94102 President and Members: The Control ler's^udits Division presents its report on the investigation of an allegation that employees of the Bayview branch library (Bayview) of the San Francisco Public Library (Library) were stealing money from fines and other revenues collected by the branch library. The report indicates that because Bayview does not keep adequate records of the revenues it collects, the auditors could not determine if employees have stolen mon",
-    "RD M. HA: Controller City Hall • 1 Dr. Carlton B. Goodlett Place • Room 316 • San Francisco CA 94102-4694 FAX 415-554-7466 Digitized by the Internet Archive in 2014 https://archive.org/details/sanfranciscopubl6199sanf SUMMARY RESULTS IN BRIEF In responding to allegations that employees of the Bayview branch library (Bayview) of the San Francisco Public Library (Library) were stealing fines and other revenues collected by Bayview, we found that Bayview and most of the 25 other branch libraries do not sufficiently document the fines they assess, collect, or waive for materials that borrowers return late. Consequen",
-    "ing, collecting, recording, and depositing of fines and other revenues. In addition, the Library should require staff members to document the instances in which they waive fines. CONTROLLER'S AUDITS DIVISION 1 3 1223 05226 1097 INTRODUCTION ALLEGATION A complainant alleged that employees in the Bayview branch library (Bayview) of the San Francisco Public Library were stealing money from the fines and other revenues collected at the branch library. BACKGROUND The San Francisco Public Library (Library) of the City and County of San Francisco (City) provides books, materials, and electronic resources for the childre",
-    "eport to the Library's accounting staff, who record the revenues into the Library's accounts in the Controller's Financial Accounting and Management Information System (FAMIS). CONTROLLER'S AUDITS DIVISION 2 SCOPE AND METHODOLOGY The purpose of our audit was to investigate whether employees at the Bayview branch library were stealing money from the fines and other revenues they collected. To conduct this investigation, we assessed the cash handling procedures used by the Bayview branch library, the other branch libraries, and the main library. We visited the main library and each of the 26 branch libraries between January 1 1 and January 21, 1999, and counted all the cash the libraries had collected and still retained at the time of our visits. We interviewed staff members at each location to learn about the cash-handling procedures. We also met with staff at the main library to obtain an understanding of the main library's pro"
+    "of the proposal for a tile and bronze mural by Precita Eyes for the front of the Bernal Heights Branch Library on Cortland Avenue. 20. Motion to approve revised designs for the Art on Market Street Poster Series by artist Paul Madonna. 21. Motion to approve designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. 22. Motion to authorize the Director of Cultural Affairs to enter into a contract with Johanna Poethig an amount not to exceed $49,000, for the design, fabrication, transportation and installation/consultation of an interior mural at Hamilton Recreation Center. 23. Motion to a",
+    "ned. President Beltran called for public comment on the remainder of the Consent Calendar. Public Comment: Mr. Warfield said that he would like a full discussion of the Visual Arts Committee minutes, items 17, 18 and 19 (regarding the Bemal Heights Library mural), and a separate discussion of the Bayview Branch Library, item 21. He asked for an explanation of procedure. President Beltran said she would sever items 17, 18 and 19, the Bemal Heights Library mural items, for separate consideration, but not the Visual Arts Committee minutes. She called for public comment on items 17, 18 and 19, the Bemal Heights Lib",
+    "w.sfgov3.org/index.aspx7page: Visual Arts Committee Recommendations (March 21, 2012) 14. RESOLUTION NO. 0402-12-105: Motion to approve revised designs for the Art on Market Street Poster Series by artist Paul Madonna. 15. RESOLUTION NO. 0402-12-106: Motion to approve designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. 16. RESOLUTION NO. 0402-12-107: Motion to authorize the Director of Cultural Affairs to enter into a contract with Johanna Poethig an amount not to exceed $49,000, for the design, fabrication, transportation and installation/consultation of an interior mural at Hamilton Recreatio",
+    "w.sfgov3.org/index.aspx7page: Visual Arts Committee Recommendations (March 21, 2012) 14. RESOLUTION NO. 0402-12-105: Motion to approve revised designs for the Art on Market Street Poster Series by artist Paul Madonna. 15. RESOLUTION NO. 0402-12-106: Motion to approve designs for the artwork at the new Bayview Branch Library by artist Ron Saunders. 16. RESOLUTION NO. 0402-12-107: Motion to authorize the Director of Cultural Affairs to enter into a contract with Johanna Poethig an amount not to exceed $49,000, for the design, fabrication, transportation and installation/consultation of an interior mural at Hamilton Recreatio",
+    "Rebuilding Together San Francisco. 13. Motion to approve Rebar's proposal Handsignals for the public artwork for the revised design of McCoppin Hub. 14. Motion to approve final designs for interior and exterior artwork pieces and mock-up of interior artwork piece by artist Ron Saunders for the new Bayvie"
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 9.0,
+    "score": 5.84,
     "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
-    "substantive": true,
+    "substantive": false,
     "substantive_direct": true,
-    "hits": 4,
-    "density": 11.04,
+    "hits": 5,
+    "density": 0.34,
     "title_hit": false
    },
    "materiality": {
-    "score": 1.5,
-    "money": false,
-    "decision": false,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/sanfranciscopubl6199sanf",
-   "deep_link": "https://archive.org/details/sanfranciscopubl6199sanf?q=Bayview+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Bayview Branch Library",
-   "ocr_excerpts": [
-    "PROGRAM BENEFITS 3 PROGRAM SCHEDULE 3 PROGRAM COST 4 INTRODUCTION 6 PURPOSE : 6 BACKGROUND 6 BOND PROGRAM 12 PROGRAM SCOPE 12 PROGRAM COST 16 PROGRAM SCHEDULE 17 CONTENTS OF THE REPORT , 18 ANZA BRANCH LIBRARY : 20 BACKGROUND 20 SCOPE OF WORK 20 PROJECT COST 22 PROJECT SCHEDULE 22 BAYVIEW BRANCH LIBRARY 23 BACKGROUND 23 SCOPE OF WORK 23 PROJECT COST 24 PROJECT SCHEDULE 24 BERNAL HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRAR",
-    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 22 Branch Library Improvement Program BAYVIEW BRANCH LIBRARY BACKGROUND The Bayview -Anna Wadden Branch Library, built with a bequest from Anna Wadden, is a 6,427 square foot concrete building constructed in 1969, is located at 5075 3r<^. Street. It opened in 1969 and serves the population of Bayview Hunters Point and a portion of the Portola district. Ch",
-    "heels, and temporary closure. The relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Bayview Branch Library Project Cost Summary Rehabilitation and Improvements $3,480,000 Expansion $810,000 Total Project Cost Estimate $4,290,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Bayview Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 13 months Relocation and Construction 11 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 0.86,
-    "sf_context": false,
-    "rival_city": true,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 1.36,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 5.0,
+    "score": -1.25,
     "money": true,
-    "decision": false,
+    "decision": true,
     "accountability": false,
     "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
+    "named_genre": false,
+    "generic_serial": true
    },
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Bayview+Branch+Library",
+   "url": "https://archive.org/details/agenda2012arts",
+   "deep_link": "https://archive.org/details/agenda2012arts?q=Bayview+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
   }
  ],
  "dept_shelf": [

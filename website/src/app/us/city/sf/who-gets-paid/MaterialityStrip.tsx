@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import SectionHead from "@/components/fusion/SectionHead";
 import { useT } from "@/lib/localeContext";
 import { fmtUsdCompact } from "@/lib/us/format";
@@ -22,8 +23,14 @@ const fill = (s: string, vars: Record<string, string | number>) => {
 
 export default function MaterialityStrip({
   materiality,
+  deptHrefs = {},
+  vendorSlugMap = {},
 }: {
   materiality: WgpFile["materiality"];
+  /** dept code → budget fiche href, server-validated (missing = plain text). */
+  deptHrefs?: Record<string, string>;
+  /** raw vendor string → payee fiche slug, only for the keyed top ~200. */
+  vendorSlugMap?: Record<string, string>;
 }) {
   const t = useT();
   if (!materiality.items.length) return null;
@@ -84,10 +91,42 @@ export default function MaterialityStrip({
                   lineHeight: 1.55,
                 }}
               >
-                {fill(t("us.sf.wgp.s03.meta"), {
-                  vendor: it.vendor,
-                  department: deptDisplay(it.department),
-                })}
+                {/* The card named a vendor and a department in dead text.
+                 *  Both now open their fiche when one exists — only 2 of the
+                 *  6 vendors are keyed payees, so the link is conditional
+                 *  rather than assumed. */}
+                {(() => {
+                  const deptCode = (it.department ?? "").match(/^([A-Z]{2,4})\s/)?.[1] ?? "";
+                  const deptHref = deptHrefs[deptCode];
+                  const payeeSlug = vendorSlugMap[it.vendor];
+                  const vendorEl = payeeSlug ? (
+                    <Link
+                      href={`/us/city/sf/who-gets-paid/payee/${payeeSlug}`}
+                      scroll={false}
+                      style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+                    >
+                      {it.vendor}
+                    </Link>
+                  ) : (
+                    it.vendor
+                  );
+                  const deptEl = deptHref ? (
+                    <Link
+                      href={deptHref}
+                      scroll={false}
+                      style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+                    >
+                      {deptDisplay(it.department)}
+                    </Link>
+                  ) : (
+                    deptDisplay(it.department)
+                  );
+                  return (
+                    <>
+                      {vendorEl} · {deptEl}
+                    </>
+                  );
+                })()}
                 <br />
                 {it.sub_object} · FY{it.fiscal_year}
                 {it.execution_status !== "closed" && " · preliminary"}

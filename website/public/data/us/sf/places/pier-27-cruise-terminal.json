@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.766517+00:00",
+ "generated_at": "2026-07-28T12:23:47.783043+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "pier-27-cruise-terminal",
@@ -113,19 +113,40 @@
     "n_contracts": 1,
     "first_fiscal_year": 2020,
     "last_fiscal_year": 2020
+   },
+   {
+    "vendor": "ANA TERESA FERNANDEZ",
+    "paid_usd": 229585.41,
+    "n_contracts": 1,
+    "first_fiscal_year": 2024,
+    "last_fiscal_year": 2026
+   },
+   {
+    "vendor": "ONE HAT ONE HAND LLC DBA SCENE 2",
+    "paid_usd": 20473.75,
+    "n_contracts": 1,
+    "first_fiscal_year": 2026,
+    "last_fiscal_year": 2026
    }
   ],
-  "n_payees": 1,
-  "payees_total_paid": 843259.62,
-  "permits": [],
-  "n_permits": 0,
-  "permits_total_declared": 0.0,
-  "permits_by_year": []
+  "n_payees": 3,
+  "payees_total_paid": 1093318.78
  },
- "photo": null,
- "photo_credit": null,
- "summary_en": null,
- "published": false,
+ "photo": "/img/us/sf/places/pier-27-cruise-terminal.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/pier-27-cruise-terminal.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Princess_Embarkation_at_Pier_27_James_R._Herman_Cruise_Terminal_-_April_2026_-_Sarah_Stierch_02.jpg",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Missvain",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T22:59:03.083033+00:00"
+ },
+ "summary_en": "A cruise terminal at Pier 27 was proposed long before it was built. A supplemental environmental report for a cruise terminal and mixed-use project, tied to the Waterfront Land Use Plan certified in January 1997, was published in draft in November 2001 and certified in November 2002 — and then the plan changed. The Port's capital plan for 2012-21 describes a new strategy for bringing a cruise terminal to Pier 27, and in 2011 the Port Commission was taking public comment on a notice of preparation for a combined environmental review of the Pier 27 cruise ship terminal and the 34th America's Cup. That review, case 2010.0493E, covering the James R. Herman Cruise Terminal and Northeast Wharf Plaza, went to comments and responses on 1 December 2011 and was certified a fortnight later. What exists now is terminal and public space together: by 2015 the executive director's report is announcing a free symphony concert at Cruise Terminal Plaza and receiving a status report on activity at the terminal and Pier 35. The contracts recorded against the pier are for its public art — the artist Ana Teresa Fernandez engaged at $234,890 and paid $229,585 — set against a capital plan that had newly recognised a $40 million need for the Port's under-pier utility infrastructure.",
+ "published": true,
  "money": {
   "budget_line": {
    "code": "PRT",
@@ -217,9 +238,13 @@
    "url": "https://archive.org/details/draftenvironment5120sanf",
    "deep_link": "https://archive.org/details/draftenvironment5120sanf?q=James+R.+Herman+Cruise+Terminal",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The environmental review joining the cruise terminal to the 34th America's Cup, certified in December 2011."
   },
   {
    "identifier": "sanfranciscocrui2120sanf",
@@ -259,8 +284,13 @@
    "url": "https://archive.org/details/sanfranciscocrui2120sanf",
    "deep_link": "https://archive.org/details/sanfranciscocrui2120sanf?q=San+Francisco+Cruise+Terminal",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The earlier certified report for a cruise terminal and mixed-use project, a plan later superseded."
   },
   {
    "identifier": "sanfranciscocrui1720sanf",
@@ -298,8 +328,13 @@
    "url": "https://archive.org/details/sanfranciscocrui1720sanf",
    "deep_link": "https://archive.org/details/sanfranciscocrui1720sanf?q=San+Francisco+Cruise+Terminal",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "That project's draft report, published for comment in November 2001."
   },
   {
    "identifier": "agendasminutess2015sanf_4",
@@ -339,8 +374,13 @@
    "url": "https://archive.org/details/agendasminutess2015sanf_4",
    "deep_link": "https://archive.org/details/agendasminutess2015sanf_4?q=Pier+27",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Port Commission papers with a status report on the finished terminal, and a free symphony on its plaza."
   },
   {
    "identifier": "agenda2011sanf_1",
@@ -380,9 +420,13 @@
    "url": "https://archive.org/details/agenda2011sanf_1",
    "deep_link": "https://archive.org/details/agenda2011sanf_1?q=Pier+27",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A Port Commission agenda taking comment on the terminal's environmental review and adopting the 10-year capital plan."
   }
  ],
  "dept_shelf": [
@@ -421,9 +465,9 @@
   }
  ],
  "_gate": {
-  "has_photo": false,
+  "has_photo": true,
   "n_documents": 5,
   "n_money_links": 3,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

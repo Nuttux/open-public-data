@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.744473+00:00",
+ "generated_at": "2026-07-28T11:43:47.721250+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -27,6 +27,49 @@
  "top_departments": [
   "PUC Public Utilities Commsn"
  ],
+ "profile": {
+  "n_vouchers": 243,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 108563545.98,
+    "n_vouchers": 236
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 637446.9,
+    "n_vouchers": 7
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "533110",
+    "label": "Power For Resale",
+    "spend_class": "purchase",
+    "usd": 108563545.98,
+    "n_vouchers": 236
+   }
+  ],
+  "n_categories": 1,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 50000.0,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Power For Resale",
+    "spend_class": "purchase",
+    "usd": 50000.0,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000034495",

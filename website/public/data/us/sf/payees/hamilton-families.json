@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.745298+00:00",
+ "generated_at": "2026-07-28T11:43:47.722881+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -24,6 +24,127 @@
   "2027": 223286.55
  },
  "top_departments": [],
+ "profile": {
+  "n_vouchers": 1450,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 71731298.94,
+    "n_vouchers": 1079
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 27368026.09,
+    "n_vouchers": 219
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 2988951.13,
+    "n_vouchers": 88
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 649186.65,
+    "n_vouchers": 64
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 98172075.03,
+    "n_vouchers": 1341
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 2727730.02,
+    "n_vouchers": 85
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1659499.79,
+    "n_vouchers": 20
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 178157.97,
+    "n_vouchers": 4
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 12195057.28,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 9110265.04,
+    "n_vouchers": 112
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2487530.09,
+    "n_vouchers": 14
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 470934.48,
+    "n_vouchers": 14
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 74060.67,
+    "n_vouchers": 3
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 52267.0,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": {
+  "description": "Hamilton Families is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under housing and shelter.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Hamilton Families",
+  "ein": "943055602",
+  "ntee_code": "L41Z",
+  "ntee_label": "Housing and shelter",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/943055602",
+  "checked_at": "2026-07-27T23:38:17.734825+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000019042",

@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-07-27T17:06:09.771062+00:00",
+ "generated_at": "2026-07-28T12:23:47.817923+00:00",
  "places": [
   {
    "slug": "golden-gate-park",
    "name": "Golden Gate Park",
    "family": "park",
    "has_photo": true,
-   "n_docs": 11,
+   "n_docs": 9,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -15,7 +15,7 @@
    "name": "Coit Tower",
    "family": "park",
    "has_photo": true,
-   "n_docs": 7,
+   "n_docs": 5,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -41,26 +41,26 @@
    "slug": "washington-square",
    "name": "Washington Square",
    "family": "park",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 6,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "alamo-square",
    "name": "Alamo Square",
    "family": "park",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 7,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "buena-vista-park",
    "name": "Buena Vista Park",
    "family": "park",
    "has_photo": true,
-   "n_docs": 6,
+   "n_docs": 5,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -77,10 +77,10 @@
    "slug": "stern-grove",
    "name": "Sigmund Stern Grove",
    "family": "park",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 7,
    "n_money": 2,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "portsmouth-square",
@@ -88,7 +88,7 @@
    "family": "park",
    "has_photo": true,
    "n_docs": 9,
-   "n_money": 3,
+   "n_money": 4,
    "meets_pre_summary": true
   },
   {
@@ -96,7 +96,7 @@
    "name": "Glen Canyon Park",
    "family": "park",
    "has_photo": true,
-   "n_docs": 9,
+   "n_docs": 7,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -104,19 +104,19 @@
    "slug": "kezar-stadium",
    "name": "Kezar Stadium",
    "family": "park",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 7,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "camp-mather",
    "name": "Camp Mather",
    "family": "park",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "conservatory-of-flowers",
@@ -132,7 +132,7 @@
    "name": "Japanese Tea Garden",
    "family": "park",
    "has_photo": true,
-   "n_docs": 4,
+   "n_docs": 3,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -167,10 +167,10 @@
    "slug": "randall-museum",
    "name": "Randall Museum",
    "family": "culture",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 4,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "sf-main-library",
@@ -178,62 +178,62 @@
    "family": "library",
    "has_photo": true,
    "n_docs": 9,
-   "n_money": 2,
+   "n_money": 18,
    "meets_pre_summary": true
   },
   {
    "slug": "mission-branch-library",
    "name": "Mission Branch Library",
    "family": "library",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 4,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "chinatown-branch-library",
    "name": "Chinatown Branch Library",
    "family": "library",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 7,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "north-beach-branch-library",
    "name": "North Beach Branch Library",
    "family": "library",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "bernal-heights-branch-library",
    "name": "Bernal Heights Branch Library",
    "family": "library",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "richmond-branch-library",
    "name": "Richmond Branch Library",
    "family": "library",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "sunset-branch-library",
    "name": "Sunset Branch Library",
    "family": "library",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 6,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "eureka-valley-harvey-milk-branch-library",
@@ -257,28 +257,28 @@
    "slug": "excelsior-branch-library",
    "name": "Excelsior Branch Library",
    "family": "library",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "glen-park-branch-library",
    "name": "Glen Park Branch Library",
    "family": "library",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "zuckerberg-sf-general-hospital",
    "name": "Zuckerberg San Francisco General Hospital",
    "family": "health",
-   "has_photo": false,
-   "n_docs": 12,
+   "has_photo": true,
+   "n_docs": 8,
    "n_money": 24,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "laguna-honda-hospital",
@@ -286,44 +286,44 @@
    "family": "health",
    "has_photo": true,
    "n_docs": 9,
-   "n_money": 3,
+   "n_money": 17,
    "meets_pre_summary": true
   },
   {
    "slug": "southeast-health-center",
    "name": "Southeast Health Center",
    "family": "health",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 6,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "chinatown-public-health-center",
    "name": "Chinatown Public Health Center",
    "family": "health",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "maxine-hall-health-center",
    "name": "Maxine Hall Health Center",
    "family": "health",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "tom-waddell-clinic",
    "name": "Tom Waddell Urban Health Clinic",
    "family": "health",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 4,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "sf-city-hall",
@@ -338,17 +338,17 @@
    "slug": "war-memorial-opera-house",
    "name": "War Memorial Opera House",
    "family": "culture",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 7,
    "n_money": 3,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "davies-symphony-hall",
    "name": "Louise M. Davies Symphony Hall",
    "family": "culture",
    "has_photo": true,
-   "n_docs": 5,
+   "n_docs": 4,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -365,28 +365,28 @@
    "slug": "veterans-building",
    "name": "Veterans Building (Herbst Theatre)",
    "family": "culture",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "moscone-center",
    "name": "Moscone Center",
    "family": "civic",
    "has_photo": true,
-   "n_docs": 7,
-   "n_money": 1,
+   "n_docs": 6,
+   "n_money": 2,
    "meets_pre_summary": true
   },
   {
    "slug": "asian-art-museum",
    "name": "Asian Art Museum",
    "family": "culture",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 3,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "de-young-museum",
@@ -402,18 +402,18 @@
    "name": "Legion of Honor",
    "family": "culture",
    "has_photo": true,
-   "n_docs": 7,
-   "n_money": 1,
+   "n_docs": 5,
+   "n_money": 15,
    "meets_pre_summary": true
   },
   {
    "slug": "hall-of-justice",
    "name": "Hall of Justice",
    "family": "civic",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "hetch-hetchy",
@@ -421,7 +421,7 @@
    "family": "water",
    "has_photo": true,
    "n_docs": 9,
-   "n_money": 2,
+   "n_money": 30,
    "meets_pre_summary": true
   },
   {
@@ -429,7 +429,7 @@
    "name": "Sunol Water Temple",
    "family": "water",
    "has_photo": true,
-   "n_docs": 8,
+   "n_docs": 7,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -437,28 +437,28 @@
    "slug": "southeast-treatment-plant",
    "name": "Southeast Water Pollution Control Plant",
    "family": "water",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 8,
-   "n_money": 1,
-   "meets_pre_summary": false
+   "n_money": 6,
+   "meets_pre_summary": true
   },
   {
    "slug": "sunset-reservoir",
    "name": "Sunset Reservoir",
    "family": "water",
-   "has_photo": false,
-   "n_docs": 10,
+   "has_photo": true,
+   "n_docs": 8,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "university-mound-reservoir",
    "name": "University Mound Reservoir",
    "family": "water",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "ferry-building",
@@ -474,7 +474,7 @@
    "name": "Pier 70",
    "family": "port",
    "has_photo": true,
-   "n_docs": 6,
+   "n_docs": 5,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -491,19 +491,19 @@
    "slug": "fishermans-wharf",
    "name": "Fisherman's Wharf",
    "family": "port",
-   "has_photo": false,
-   "n_docs": 10,
+   "has_photo": true,
+   "n_docs": 8,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "pier-27-cruise-terminal",
    "name": "James R. Herman Cruise Terminal (Pier 27)",
    "family": "port",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 5,
    "n_money": 3,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "cable-car-barn",
@@ -518,23 +518,14 @@
    "slug": "muni-woods-division",
    "name": "Muni Woods Division",
    "family": "transit",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 6,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "muni-presidio-division",
    "name": "Muni Presidio Division",
-   "family": "transit",
-   "has_photo": false,
-   "n_docs": 7,
-   "n_money": 1,
-   "meets_pre_summary": false
-  },
-  {
-   "slug": "balboa-park-station",
-   "name": "Balboa Park Station / Green Yard",
    "family": "transit",
    "has_photo": true,
    "n_docs": 7,
@@ -542,13 +533,22 @@
    "meets_pre_summary": true
   },
   {
+   "slug": "balboa-park-station",
+   "name": "Balboa Park Station / Green Yard",
+   "family": "transit",
+   "has_photo": true,
+   "n_docs": 6,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
    "slug": "sffd-station-1",
    "name": "SFFD Station 1",
    "family": "fire",
-   "has_photo": false,
+   "has_photo": true,
    "n_docs": 7,
    "n_money": 1,
-   "meets_pre_summary": false
+   "meets_pre_summary": true
   },
   {
    "slug": "sffd-headquarters",
@@ -563,10 +563,388 @@
    "slug": "sffd-division-of-training",
    "name": "SFFD Division of Training",
    "family": "fire",
+   "has_photo": true,
+   "n_docs": 5,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "potrero-division",
+   "name": "Potrero Division",
+   "family": "civic",
+   "has_photo": true,
+   "n_docs": 6,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "office-of-the-chief-medical-examiner-building",
+   "name": "Office of the Chief Medical Examiner Building",
+   "family": "civic",
+   "has_photo": false,
+   "n_docs": 0,
+   "n_money": 1,
+   "meets_pre_summary": false
+  },
+  {
+   "slug": "public-safety-building",
+   "name": "Public Safety Building",
+   "family": "civic",
+   "has_photo": true,
+   "n_docs": 4,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "south-park",
+   "name": "South Park",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 7,
+   "n_money": 8,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "japantown-peace-plaza",
+   "name": "Japantown Peace Plaza",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 3,
+   "n_money": 2,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "900-innes",
+   "name": "900 Innes",
+   "family": "park",
    "has_photo": false,
    "n_docs": 5,
    "n_money": 1,
    "meets_pre_summary": false
+  },
+  {
+   "slug": "fire-station-13",
+   "name": "Fire Station #13",
+   "family": "fire",
+   "has_photo": true,
+   "n_docs": 5,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "sutter-stockton-parking-garage",
+   "name": "Sutter - Stockton Parking Garage",
+   "family": "transit",
+   "has_photo": false,
+   "n_docs": 9,
+   "n_money": 7,
+   "meets_pre_summary": false
+  },
+  {
+   "slug": "animal-care-and-control-facility",
+   "name": "Animal Care and Control Facility",
+   "family": "civic",
+   "has_photo": true,
+   "n_docs": 4,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "next-door-shelter",
+   "name": "Next Door Shelter",
+   "family": "civic",
+   "has_photo": true,
+   "n_docs": 3,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "emergency-operations-center",
+   "name": "Emergency Operations Center",
+   "family": "civic",
+   "has_photo": true,
+   "n_docs": 7,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "castro-mission-health-center",
+   "name": "Castro Mission Health Center",
+   "family": "health",
+   "has_photo": true,
+   "n_docs": 4,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "buchanan-street-mall",
+   "name": "Buchanan Street Mall",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 7,
+   "n_money": 2,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "south-sunset-clubhouse",
+   "name": "South Sunset Clubhouse",
+   "family": "park",
+   "has_photo": false,
+   "n_docs": 3,
+   "n_money": 1,
+   "meets_pre_summary": false
+  },
+  {
+   "slug": "moscone-rec-center",
+   "name": "Moscone Rec Center",
+   "family": "park",
+   "has_photo": false,
+   "n_docs": 2,
+   "n_money": 1,
+   "meets_pre_summary": false
+  },
+  {
+   "slug": "fire-station-15",
+   "name": "Fire Station #15",
+   "family": "fire",
+   "has_photo": true,
+   "n_docs": 5,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "ingleside-police-station",
+   "name": "Ingleside Police Station",
+   "family": "civic",
+   "has_photo": true,
+   "n_docs": 4,
+   "n_money": 2,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "pier-80",
+   "name": "Pier 80",
+   "family": "port",
+   "has_photo": true,
+   "n_docs": 6,
+   "n_money": 4,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "pier-27",
+   "name": "Pier 27",
+   "family": "port",
+   "has_photo": true,
+   "n_docs": 4,
+   "n_money": 3,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "civic-center-courthouse",
+   "name": "Civic Center Courthouse",
+   "family": "civic",
+   "has_photo": true,
+   "n_docs": 3,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "esprit-park",
+   "name": "Esprit Park",
+   "family": "park",
+   "has_photo": false,
+   "n_docs": 9,
+   "n_money": 1,
+   "meets_pre_summary": false
+  },
+  {
+   "slug": "curry-senior-center",
+   "name": "Curry Senior Center",
+   "family": "health",
+   "has_photo": true,
+   "n_docs": 6,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "old-mint",
+   "name": "Old Mint",
+   "family": "civic",
+   "has_photo": true,
+   "n_docs": 6,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "ocean-park-health-center",
+   "name": "Ocean Park Health Center",
+   "family": "health",
+   "has_photo": true,
+   "n_docs": 6,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "anza-branch-library",
+   "name": "Anza Branch Library",
+   "family": "library",
+   "has_photo": true,
+   "n_docs": 5,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "fire-station-18",
+   "name": "Fire Station #18",
+   "family": "fire",
+   "has_photo": true,
+   "n_docs": 4,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "fire-station-14",
+   "name": "Fire Station #14",
+   "family": "fire",
+   "has_photo": true,
+   "n_docs": 4,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "brooks-hall",
+   "name": "Brooks Hall",
+   "family": "civic",
+   "has_photo": true,
+   "n_docs": 6,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "african-american-art-and-culture-complex",
+   "name": "African American Art and Culture Complex",
+   "family": "civic",
+   "has_photo": true,
+   "n_docs": 5,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "crane-cove-park",
+   "name": "Crane Cove Park",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 4,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "pier-45",
+   "name": "Pier 45",
+   "family": "port",
+   "has_photo": true,
+   "n_docs": 7,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "pier-96",
+   "name": "Pier 96",
+   "family": "port",
+   "has_photo": true,
+   "n_docs": 5,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "heron-s-head-park",
+   "name": "Heron's Head Park",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 3,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "juri-commons",
+   "name": "Juri Commons",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 5,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "noe-valley-town-square",
+   "name": "Noe Valley Town Square",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 5,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "palace-of-fine-arts",
+   "name": "Palace of Fine Arts",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 5,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "sharp-park",
+   "name": "Sharp Park",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 5,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "hallidie-plaza",
+   "name": "Hallidie Plaza",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 6,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "corona-heights-park",
+   "name": "Corona Heights Park",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 4,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "park-branch-library",
+   "name": "Park Branch Library",
+   "family": "library",
+   "has_photo": false,
+   "n_docs": 8,
+   "n_money": 1,
+   "meets_pre_summary": false
+  },
+  {
+   "slug": "lincoln-park",
+   "name": "Lincoln Park",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 4,
+   "n_money": 1,
+   "meets_pre_summary": true
+  },
+  {
+   "slug": "balboa-park",
+   "name": "Balboa Park",
+   "family": "park",
+   "has_photo": true,
+   "n_docs": 6,
+   "n_money": 1,
+   "meets_pre_summary": true
   }
  ]
 }

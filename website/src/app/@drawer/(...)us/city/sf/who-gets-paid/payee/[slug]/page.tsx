@@ -4,6 +4,7 @@ import DetailDrawer from "@/components/fusion/DetailDrawer";
 import { ForcedLocale } from "@/lib/localeContext";
 import SfPayeeFiche from "@/components/us/SfPayeeFiche";
 import { loadSfPayee } from "@/lib/us/sf-payees-data";
+import { loadSfCategorySlugMap, loadSfDeptHrefs } from "@/lib/us/sf-category-links";
 import { fmtUsdCompact } from "@/lib/us/format";
 
 type Params = { slug: string };
@@ -30,7 +31,11 @@ export default async function DrawerSfPayeePage({ params }: { params: Promise<Pa
           backHref="/us/city/sf/who-gets-paid"
           breadcrumbLabel={payee.name}
         >
-          <SfPayeeFiche payee={payee} />
+          <SfPayeeFiche
+            payee={payee}
+            categorySlugs={loadSfCategorySlugMap()}
+            deptHrefs={loadSfDeptHrefs()}
+          />
         </DetailDrawer>
       </div>
     </ForcedLocale>

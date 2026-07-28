@@ -1,0 +1,40 @@
+NOTICE
+======
+
+This repository is a curated, public mirror of the deterministic data pipeline
+behind Qipu. It is published so that the figures on the site can be
+independently verified from their public sources.
+
+CODE
+----
+All source code in this repository is licensed under the PolyForm Noncommercial
+License 1.0.0 (see LICENSE). Free for non-commercial use, study, modification
+and sharing; commercial use is not granted by this license.
+
+DATA
+----
+This repository includes:
+
+  * Deterministic seed files (constants, mappings, thresholds, labels) derived
+    from official public open-data sources.
+
+  * Three FROZEN enrichment-output seed files:
+      - seed_cache_thematique_beneficiaires.csv
+      - seed_cache_siret_by_name.csv
+      - seed_cache_geo_ap.csv
+    These are the *outputs* of a separate, closed enrichment process. They are
+    included as fixed inputs so that classification-dependent figures reproduce
+    end to end. The process that generates them (prompts, models, compute) is
+    not part of this repository.
+
+Underlying source data belongs to its respective publishers (e.g. Ville de
+Paris / Paris Open Data, data.economie.gouv.fr / DECP, DGFiP, and the
+equivalent portals for other covered cities) and remains subject to their own
+terms and licenses. Dataset references are declared in the dbt sources and in
+each ingestion script.
+
+NOT INCLUDED
+------------
+The website/application, the enrichment code (LLM descriptions, summaries,
+thematic/geo/archive grounding), and media assets are maintained separately and
+are not part of this repository.

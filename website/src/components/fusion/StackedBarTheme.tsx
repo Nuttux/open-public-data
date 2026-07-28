@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { useT, useLocale } from "@/lib/localeContext";
 import { fill, numLocale } from "@/lib/fmt";
@@ -28,11 +29,20 @@ type Props = {
   /** Number of top entities highlighted in the Pareto callout (default 10). */
   paretoTopN?: number;
   /** Custom URL builder per theme — défaut: `${basePath}?theme=X`. Utile pour ouvrir
-   *  un drawer (ex: /investissements/chapitre/:slug) au lieu d'un filtre query. */
-  hrefBuilder?: (theme: string) => string;
+   *  un drawer (ex: /investissements/chapitre/:slug) au lieu d'un filtre query.
+   *  Peut renvoyer null : le segment est alors rendu sans lien (utile quand une
+   *  tranche n'a pas de fiche — p.ex. le bucket « autres », ou une ville dont
+   *  la dimension n'est pas navigable). Les appelants existants renvoient
+   *  toujours une string, donc comportement inchangé. */
+  hrefBuilder?: (theme: string) => string | null;
   /** Override the money formatter (default: EUR). Additive — pass a currency-
    *  specific formatter for non-euro places (e.g. BRL for Recife). */
   formatAmount?: (n: number) => string;
+  /** Replace the Pareto callout sentence entirely. The default is written in
+   *  euros ("… capture 29 € sur 100 €"), which is wrong on a dollar page, and
+   *  the right concentration statement differs by dimension anyway. Omit to
+   *  keep the default. */
+  paretoText?: ReactNode;
 };
 
 // Editorial palette — 10 clear, distinct hues, colorblind-conscious.
@@ -110,6 +120,7 @@ export default function StackedBarTheme({
   paretoTopN = 10,
   hrefBuilder,
   formatAmount,
+  paretoText,
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
@@ -127,7 +138,7 @@ export default function StackedBarTheme({
   };
   const fmtAmt = formatAmount ?? fmtEur;
   const effEntityNoun = entityNoun ?? t("fx.stacked.entity_default");
-  const buildHref = (theme: string) =>
+  const buildHref = (theme: string): string | null =>
     hrefBuilder ? hrefBuilder(theme) : `${basePath}?theme=${encodeURIComponent(theme)}`;
   const consolidated = consolidate(items);
   // Some loaders pass only top-N categories: sum(items) can be < total.
@@ -162,14 +173,36 @@ export default function StackedBarTheme({
           {barSegments.map((s, idx) => {
             const pct = (s.amount / total) * 100;
             const wide = pct >= 9;
+            const href = buildHref(s.theme);
+            const label = wide && (
+              <span className="fx-stackbar-seg-label">
+                <b>{trLabel(s.theme, locale)}</b>
+                <span>{Math.round(pct)} %</span>
+              </span>
+            );
+            const segTitle = fill(t("fx.stacked.seg_detail"), { theme: trLabel(s.theme, locale), amount: fmtAmt(s.amount), pct: pct.toFixed(1).replace(".", sep) });
+            const segStyle = { width: `${pct}%`, background: colorFor(s.theme, idx) };
+            if (!href) {
+              return (
+                <div
+                  key={s.theme}
+                  className="fx-stackbar-seg fx-stackbar-seg-static"
+                  style={segStyle}
+                  title={segTitle}
+                  aria-label={fill(t("fx.stacked.seg_aria"), { theme: trLabel(s.theme, locale), amount: fmtAmt(s.amount), pct: Math.round(pct) })}
+                >
+                  {label}
+                </div>
+              );
+            }
             return (
               <Link
                 key={s.theme}
-                href={buildHref(s.theme)}
+                href={href}
                 scroll={false}
                 className="fx-stackbar-seg"
-                style={{ width: `${pct}%`, background: colorFor(s.theme, idx) }}
-                title={fill(t("fx.stacked.seg_detail"), { theme: trLabel(s.theme, locale), amount: fmtAmt(s.amount), pct: pct.toFixed(1).replace(".", sep) })}
+                style={segStyle}
+                title={segTitle}
                 aria-label={fill(t("fx.stacked.seg_aria"), { theme: trLabel(s.theme, locale), amount: fmtAmt(s.amount), pct: Math.round(pct) })}
                 onClick={() =>
                   track("chart_element_click", {
@@ -181,12 +214,7 @@ export default function StackedBarTheme({
                   })
                 }
               >
-                {wide && (
-                  <span className="fx-stackbar-seg-label">
-                    <b>{trLabel(s.theme, locale)}</b>
-                    <span>{Math.round(pct)} %</span>
-                  </span>
-                )}
+                {label}
               </Link>
             );
           })}
@@ -215,10 +243,26 @@ export default function StackedBarTheme({
           <ul className="fx-stackbar-legend">
             {legendItems.map((s, idx) => {
               const pct = (s.amount / total) * 100;
+              const href = buildHref(s.theme);
+              const inner = (
+                <>
+                  <span className="sw" style={{ background: colorFor(s.theme, idx) }} />
+                  <span className="nm">{trLabel(s.theme, locale)}</span>
+                  <span className="pc">{pct >= 1 ? `${Math.round(pct)} %` : `< 1 %`}</span>
+                  <span className="am">{fmtAmt(s.amount)}</span>
+                </>
+              );
+              if (!href) {
+                return (
+                  <li key={s.theme}>
+                    <span className="fx-stackbar-legend-item fx-stackbar-legend-item-static">{inner}</span>
+                  </li>
+                );
+              }
               return (
                 <li key={s.theme}>
                   <Link
-                    href={buildHref(s.theme)}
+                    href={href}
                     scroll={false}
                     className="fx-stackbar-legend-item"
                     onClick={() =>
@@ -230,10 +274,7 @@ export default function StackedBarTheme({
                       })
                     }
                   >
-                    <span className="sw" style={{ background: colorFor(s.theme, idx) }} />
-                    <span className="nm">{trLabel(s.theme, locale)}</span>
-                    <span className="pc">{pct >= 1 ? `${Math.round(pct)} %` : `< 1 %`}</span>
-                    <span className="am">{fmtAmt(s.amount)}</span>
+                    {inner}
                   </Link>
                 </li>
               );
@@ -245,7 +286,7 @@ export default function StackedBarTheme({
       <div className="fx-stackbar-pareto">
         <span className="fx-stackbar-pareto-dot" />
         <span>
-          {(() => {
+          {paretoText ?? (() => {
             const parts = fill(t("fx.stacked.pareto"), {
               n: paretoTopN,
               noun: effEntityNoun,

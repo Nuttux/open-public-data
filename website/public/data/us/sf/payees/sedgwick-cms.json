@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.740190+00:00",
+ "generated_at": "2026-07-28T11:43:47.713621+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -25,6 +25,49 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 1557,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 149907748.8,
+    "n_vouchers": 1556
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 5774.44,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "UNEARN_REV_CHGS_SVCS",
+    "label": "Unearned Revenue-Chgs for Svcs",
+    "spend_class": "ledger",
+    "usd": 5774.44,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 1,
+  "counts_are_floor": false,
+  "recent_fy": 2024,
+  "recent_total_usd": 5774.44,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Unearned Revenue-Chgs for Svcs",
+    "spend_class": "ledger",
+    "usd": 5774.44,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

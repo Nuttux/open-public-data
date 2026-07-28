@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.740787+00:00",
+ "generated_at": "2026-07-28T11:43:47.714686+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -26,6 +26,138 @@
  "top_departments": [
   "PUB Public Utilities Bureaus"
  ],
+ "profile": {
+  "n_vouchers": 42,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 91270238.09,
+    "n_vouchers": 23
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 33800000.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 11303510.2,
+    "n_vouchers": 4
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 9725000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 65950.0,
+    "n_vouchers": 10
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 1000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 550.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 7,
+  "categories": [
+   {
+    "code": "567110",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 67942770.35,
+    "n_vouchers": 14
+   },
+   {
+    "code": "566990",
+    "label": "Land Acquisition Cost",
+    "spend_class": "purchase",
+    "usd": 49834867.04,
+    "n_vouchers": 9
+   },
+   {
+    "code": "563101",
+    "label": "Land Capitalized Expenditures",
+    "spend_class": "purchase",
+    "usd": 17016828.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "527410",
+    "label": "Realty Services",
+    "spend_class": "purchase",
+    "usd": 36672.7,
+    "n_vouchers": 10
+   },
+   {
+    "code": "551110",
+    "label": "Insurance Expense",
+    "spend_class": "purchase",
+    "usd": 29850.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 750.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 13801744.55,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 13800000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Realty Services",
+    "spend_class": "purchase",
+    "usd": 772.7,
+    "n_vouchers": 1
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "label": "Realty Services",
+    "spend_class": "purchase",
+    "usd": 550.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 421.85,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000030993",

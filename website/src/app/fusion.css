@@ -681,7 +681,10 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* Desktop ≥901px : grid 4 colonnes (4 cards en 1 ligne) */
 .theme-fusion .fx-hero-deck-rail {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* minmax(0,·) and not 1fr: a plain 1fr floors at the column's min-content, so
+   * one card with a longer figure ($361M against $6.7M) widened its own column
+   * and knocked the row out of alignment. */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
   align-items: stretch;
 }
@@ -2857,6 +2860,27 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.theme-fusion .fx-dualbars-row .l .s {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: .02em;
+  margin-top: 3px;
+}
+/* Wrapping variant — long category names (SF service areas, spending types)
+   get a wider, multi-line label column instead of a mid-word ellipsis. */
+.theme-fusion .fx-dualbars-wrap .fx-dualbars-row {
+  grid-template-columns: minmax(0, 1.4fr) minmax(56px, 1fr) 78px;
+  padding: 12px 0;
+}
+.theme-fusion .fx-dualbars-wrap .fx-dualbars-row .l {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.3;
+}
 .theme-fusion .fx-dualbars-row .track { height: 12px; position: relative; }
 .theme-fusion .fx-dualbars-row .fill { position: absolute; inset: 0; right: auto; background: var(--ink); }
 .theme-fusion .fx-dualbars-rouge .fill { background: var(--rouge); }
@@ -2941,6 +2965,10 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   /* Stacked on mobile: clear gap so RECETTES and DÉPENSES read as two blocks. */
   .theme-fusion .fx-dualbars-col + .fx-dualbars-col { margin-top: 30px; }
   .theme-fusion .fx-dualbars-row { grid-template-columns: 110px 1fr 70px; gap: 10px; }
+  .theme-fusion .fx-dualbars-wrap .fx-dualbars-row {
+    grid-template-columns: minmax(0, 1.25fr) minmax(36px, 1fr) 66px;
+    gap: 10px;
+  }
 }
 
 /* Callout paragraph used under flow viz and other sections */
@@ -3130,6 +3158,68 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-family: var(--f-mono);
   color: var(--ocre);
   font-size: 12px;
+}
+
+/* ── Table → cards on narrow screens ──────────────────────────────────────
+ *  Opt-in (`fx-table fx-table-cards`), never the default: some tables really
+ *  are grids you scan down a column, and those keep the horizontal scroll.
+ *
+ *  This is for the result tables where each row is one THING — a contract, a
+ *  payee — and the columns are that thing's attributes. At 390px five columns
+ *  cannot fit, and `overflow-x: auto` answers that by hiding the money off the
+ *  right edge behind a gesture nobody makes. So below 720px each <tr> becomes
+ *  a small card: the header row is dropped and every cell carries its own
+ *  label via `data-label`, which keeps ONE table in the DOM — no duplicated
+ *  mobile markup to drift out of sync, and the semantics stay a table.
+ *
+ *  Cells opt into placement with .c-lead (full width), .c-sub (full width,
+ *  quiet) and .c-fig (side-by-side figures). Anything unclassed spans. */
+@media (max-width: 720px) {
+  .theme-fusion .fx-table-cards thead { display: none; }
+  .theme-fusion .fx-table-cards,
+  .theme-fusion .fx-table-cards tbody { display: block; border-width: 0 0 1px; }
+  .theme-fusion .fx-table-cards tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px 14px;
+    padding: 13px 14px;
+    border-top: 1px solid var(--ink);
+  }
+  .theme-fusion .fx-table-cards td {
+    display: block;
+    padding: 0;
+    border: 0;
+    max-width: none !important;
+    grid-column: 1 / -1;
+  }
+  /* `order` re-sequences the card without touching the DOM, so the desktop
+     column order (contract · dept · agreed · paid · ends) is free to differ
+     from the card order (title · dept · agreed+ends · paid bar). Two c-fig
+     cells land side by side; everything else takes a full line. */
+  .theme-fusion .fx-table-cards td.c-lead { font-size: 14.5px; line-height: 1.35; order: 1; }
+  .theme-fusion .fx-table-cards td.c-sub { font-size: 12.5px; margin-top: 1px; order: 2; }
+  .theme-fusion .fx-table-cards td.c-wide { order: 2; }
+  .theme-fusion .fx-table-cards td.c-fig { grid-column: span 1; margin-top: 9px; order: 3; }
+  .theme-fusion .fx-table-cards td.c-bar { order: 4; }
+  /* The label the dropped <thead> used to carry, restored per cell. */
+  .theme-fusion .fx-table-cards td.c-fig::before,
+  .theme-fusion .fx-table-cards td.c-bar::before,
+  .theme-fusion .fx-table-cards td.c-wide::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .theme-fusion .fx-table-cards td.c-wide,
+  .theme-fusion .fx-table-cards td.c-bar { margin-top: 9px; }
+  /* .num is right-aligned for column scanning; in a card it heads its own
+     cell, so it reads left like everything else. */
+  .theme-fusion .fx-table-cards td.num { text-align: left; font-size: 17px; }
+  .theme-fusion .fx-table-cards tr:hover td { background: transparent; }
 }
 
 /* Year picker (matches mockup) */
@@ -3327,6 +3417,109 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 
 /* Stacked bar (100 %) — signature viz for "où va l'argent" */
+/* ══ SfBuysBar — purchase categories as one bar, click a segment to drill ══
+   Same visual language as .fx-stackbar (the Paris/Recife theme bar) but the
+   segments are buttons opening a local panel rather than links to a filtered
+   list, because the top payees ship with the row. */
+.theme-fusion .fx-buysbar {
+  display: flex; width: 100%; height: 56px; overflow: hidden;
+  border: 1px solid var(--ink); background: var(--bg); margin-top: 12px;
+}
+.theme-fusion .fx-buysbar-seg {
+  position: relative; display: flex; align-items: center; padding: 0 10px;
+  color: #fff; border: 0; border-right: 1px solid rgba(255,255,255,.35);
+  min-width: 0; overflow: hidden; cursor: pointer; font: inherit;
+  transition: filter .12s;
+}
+.theme-fusion .fx-buysbar-seg:last-child { border-right: 0; }
+.theme-fusion .fx-buysbar-seg:hover:not(:disabled) { filter: brightness(.85); }
+.theme-fusion .fx-buysbar-seg:disabled { cursor: default; }
+.theme-fusion .fx-buysbar-seg.is-open { box-shadow: inset 0 -4px 0 var(--ink); }
+.theme-fusion .fx-buysbar-seg--rest { cursor: default; }
+.theme-fusion .fx-buysbar-seg-label {
+  display: flex; flex-direction: column; gap: 2px; min-width: 0; text-align: left;
+}
+.theme-fusion .fx-buysbar-seg-label b {
+  font-family: var(--f-ui); font-size: 12px; font-weight: 600; line-height: 1.2;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.theme-fusion .fx-buysbar-seg-label span {
+  font-family: var(--f-mono); font-size: 10.5px; opacity: .85;
+}
+
+.theme-fusion .fx-buysbar-legend {
+  display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px;
+}
+.theme-fusion .fx-buysbar-key {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--f-ui); font-size: 12.5px; color: var(--ink-2);
+  background: none; border: 0; padding: 3px 0; cursor: pointer; text-align: left;
+}
+.theme-fusion .fx-buysbar-key:disabled,
+.theme-fusion .fx-buysbar-key--static { cursor: default; color: var(--muted); }
+.theme-fusion .fx-buysbar-key.is-open { color: var(--ink); font-weight: 600; }
+.theme-fusion .fx-buysbar-key:hover:not(:disabled) { color: var(--ink); }
+.theme-fusion .fx-buysbar-swatch {
+  width: 10px; height: 10px; flex-shrink: 0;
+}
+.theme-fusion .fx-buysbar-key-amt {
+  font-family: var(--f-mono); font-size: 11px; color: var(--muted);
+}
+
+.theme-fusion .fx-buysbar-panel {
+  margin-top: 18px; padding: 18px 20px;
+  background: var(--bg-cool); border: 1px solid var(--rule);
+}
+.theme-fusion .fx-buysbar-panel-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: 6px 18px; padding-bottom: 12px; border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-buysbar-panel-title {
+  margin: 0; font-family: var(--f-disp); font-size: 17px; font-weight: 700; color: var(--ink);
+}
+.theme-fusion .fx-buysbar-panel-stat {
+  font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); letter-spacing: .03em;
+}
+.theme-fusion .fx-buysbar-payees { margin-top: 4px; }
+.theme-fusion .fx-buysbar-payee {
+  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(50px, 1fr) auto;
+  gap: 12px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-buysbar-payee:last-child { border-bottom: 0; }
+.theme-fusion .fx-buysbar-payee-name { min-width: 0; font-size: 13.5px; line-height: 1.35; }
+.theme-fusion .fx-buysbar-payee-name a { color: var(--bleu); }
+.theme-fusion .fx-buysbar-payee-name a:hover { text-decoration: underline; }
+.theme-fusion .fx-buysbar-payee-dept {
+  display: block; font-family: var(--f-mono); font-size: 10.5px;
+  letter-spacing: .03em; color: var(--muted); margin-top: 3px;
+}
+.theme-fusion .fx-buysbar-payee-dept a { color: var(--muted); }
+.theme-fusion .fx-buysbar-payee-track {
+  position: relative; display: block; height: 8px; background: var(--rule);
+}
+.theme-fusion .fx-buysbar-payee-fill {
+  position: absolute; inset: 0 auto 0 0; background: var(--ink);
+}
+.theme-fusion .fx-buysbar-payee-amt {
+  font-family: var(--f-mono); font-size: 12.5px; font-weight: 600;
+  text-align: right; white-space: nowrap;
+}
+.theme-fusion .fx-buysbar-panel-foot {
+  margin: 12px 0 0; font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: .03em; color: var(--muted);
+}
+@media (max-width: 860px) {
+  /* Thin segments cannot be hit on a phone — the bar stays as the picture,
+     the legend below it becomes the control. */
+  .theme-fusion .fx-buysbar { height: 40px; }
+  .theme-fusion .fx-buysbar-seg { pointer-events: none; padding: 0 4px; }
+  .theme-fusion .fx-buysbar-seg-label span { display: none; }
+  .theme-fusion .fx-buysbar-legend { gap: 4px 12px; }
+  .theme-fusion .fx-buysbar-payee { grid-template-columns: minmax(0, 1fr) auto; }
+  .theme-fusion .fx-buysbar-payee-track { grid-column: 1 / -1; }
+  .theme-fusion .fx-buysbar-panel { padding: 14px 14px; }
+}
+
 .theme-fusion .fx-stackbar-card {
   padding: 28px 28px 24px;
   margin: 12px 0 30px;
@@ -3353,6 +3546,11 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   border: 1px solid var(--ink);
   background: var(--bg);
 }
+.theme-fusion .fx-stackbar-seg-static,
+.theme-fusion .fx-stackbar-legend-item-static {
+  cursor: default;
+}
+.theme-fusion .fx-stackbar-seg-static:hover { filter: none; }
 .theme-fusion .fx-stackbar-seg {
   position: relative;
   display: flex;
@@ -4012,6 +4210,23 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--ink-2);
   line-height: 1.55;
 }
+/* Registry facts under the identity line (legal name, activity code, EIN)
+   and the citation for where they came from. */
+.theme-fusion .fx-fiche-lead-meta {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.theme-fusion .fx-fiche-lead-meta:empty { display: none; }
+.theme-fusion .fx-fiche-lead-src {
+  margin: 8px 0 0;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .03em;
+  color: var(--muted);
+}
+.theme-fusion .fx-fiche-lead-src a { color: var(--bleu); border-bottom: 1px solid var(--bleu); }
 .theme-fusion .fx-fiche-lead-impact {
   margin: 12px 0 0;
   padding-top: 10px;
@@ -4166,6 +4381,16 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--muted);
   font-weight: 500;
   margin-left: 3px;
+}
+/* One line of context under a KPI (baseline year, share of the whole, gap to
+   the citywide median) — the fiches were writing this inline in five places
+   with five slightly different sizes. */
+.theme-fusion .fx-fiche-kpi-note {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.35;
 }
 
 .theme-fusion .fx-fiche-section { margin: 24px 0; }
@@ -4628,6 +4853,17 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+}
+/* Suggestions under the filter row rather than inside an empty state: label
+   and chips on one line, wrapping together on narrow screens. */
+.theme-fusion .fx-search-seeds-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 12px 0 2px;
+  border-top: 1px solid var(--rule);
+  margin-top: 12px;
 }
 .theme-fusion .fx-search-seed {
   font-family: var(--f-mono);
@@ -9640,7 +9876,10 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
     background: var(--bg);
     border-bottom: 1px solid var(--rule);
     padding: 8px 0;
-    margin: 0 -16px;
+    /* No negative bleed: <main> carries no padding at this width, so -16px
+     * put the bar 16px past both viewport edges and gave EVERY mobile page a
+     * horizontal scroll. The 16px inset the chips need lives on the <ul>. */
+    margin: 0;
   }
   .theme-fusion .fx-page-toc ul {
     list-style: none;
@@ -15431,6 +15670,11 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   .theme-fusion .fx-intro-lede { font-size: 13.5px; line-height: 1.45; }
   .theme-fusion .fx-intro-stats { gap: 8px 20px; margin-top: 10px; }
   .theme-fusion .fx-intro-stat b { font-size: 19px; }
+  /* Some stat labels are a short sentence ("paid through the City's financial
+     system"), and nowrap pushed those off the right edge. The label wraps; the
+     figure and its unit still never split. */
+  .theme-fusion .fx-intro-stat { white-space: normal; }
+  .theme-fusion .fx-intro-stat b { white-space: nowrap; }
   .theme-fusion .fx-page-intro { padding: 14px 0 12px; }
 }
 
@@ -15642,6 +15886,15 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 
 /* archive documents */
 .theme-fusion .fx-doc-list { list-style: none; margin: 0; padding: 0; }
+.theme-fusion .fx-doc-more > summary {
+  cursor: pointer;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--ink-2);
+  padding: 10px 0 2px;
+  border-top: 1px solid var(--rule);
+}
+.theme-fusion .fx-doc-more > summary:hover { color: var(--bleu); }
 .theme-fusion .fx-doc-list-compact .fx-doc-row { padding: 7px 0; }
 .theme-fusion .fx-doc-row { padding: 13px 0; border-top: 1px solid var(--rule); }
 .theme-fusion .fx-doc-title {
@@ -15675,6 +15928,87 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 }
 .theme-fusion .fx-doc-group-h:first-child { margin-top: 0; }
 .theme-fusion .fx-place-sources { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--rule); }
+
+/* ── The archive shelf (FicheArchiveShelf) ───────────────────────────────────
+ * Three lines per document and no fourth: what it says, what it is, where it
+ * is held. The old .fx-doc-row spent ~170px a document; this row is ~55px, so
+ * a shelf reads as a short ranked list rather than a scroll of provenance. */
+.theme-fusion .fx-shelf { list-style: none; margin: 0; padding: 0; }
+.theme-fusion .fx-shelf-row { padding: 11px 0; border-top: 1px solid var(--rule); }
+.theme-fusion .fx-shelf-row:first-child { border-top: 0; padding-top: 2px; }
+/* The gloss leads: a reader scans for meaning, not for catalogue titles. */
+.theme-fusion .fx-shelf-says {
+  margin: 0 0 3px; font-size: 14px; line-height: 1.45; color: var(--ink);
+}
+.theme-fusion .fx-shelf-title {
+  font-size: 12.5px; color: var(--ink-2); text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-shelf-title:hover { color: var(--bleu); border-bottom-color: var(--bleu); }
+.theme-fusion .fx-shelf-year { color: var(--muted); }
+.theme-fusion .fx-shelf-source {
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .03em;
+  color: var(--muted); margin-top: 2px;
+}
+.theme-fusion .fx-shelf-more > summary {
+  cursor: pointer; font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--bleu);
+  padding: 11px 0 2px; border-top: 1px solid var(--rule);
+}
+.theme-fusion .fx-shelf-withheld { margin-top: 10px; }
+
+/* ── The long-list fold (FicheMore) ─────────────────────────────────────────
+ * One expander style for every folded list on every fiche, so "+52 more
+ * permits" reads the same whether it sits under contracts, permits, vendors
+ * or departments. */
+.theme-fusion .fx-more > summary {
+  cursor: pointer; font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--bleu);
+  padding: 11px 2px 3px;
+}
+.theme-fusion .fx-more > summary:hover { color: var(--ink); }
+.theme-fusion .fx-more-body { padding-top: 2px; }
+
+/* Place identity, one line — replaced the three-tile "Facility record" block. */
+.theme-fusion .fx-place-identity {
+  margin: 0 0 20px; font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: .02em; line-height: 1.6; color: var(--ink-2);
+}
+.theme-fusion .fx-place-identity-src { color: var(--muted); }
+
+/* ── Place money blocks — the Paris LieuFiche grammar ───────────────────────
+ * A named heading carrying its OWN total, rows that are links when a target
+ * exists, and one note per block saying what the number measures. The flat
+ * version of this section had none of the three and read as a dump. */
+.theme-fusion .fx-place-lead {
+  margin: 0 0 20px; font-size: 13.5px; line-height: 1.6; color: var(--ink-2);
+}
+.theme-fusion .fx-place-block { margin: 0 0 26px; }
+.theme-fusion .fx-place-block-h {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink); font-weight: 600;
+  padding-bottom: 7px; border-bottom: 1px solid var(--ink);
+}
+.theme-fusion .fx-place-block-total { white-space: nowrap; }
+.theme-fusion .fx-place-block-count {
+  font-family: var(--f-disp); font-weight: 700; font-size: 14px; letter-spacing: -.01em;
+}
+.theme-fusion .fx-place-row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  padding: 10px 2px; border-bottom: 1px solid var(--rule);
+  font-size: 13px; color: var(--ink-2); text-decoration: none;
+}
+a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
+.theme-fusion .fx-place-row-label { flex: 1; }
+.theme-fusion .fx-place-row-arrow { color: var(--muted); }
+.theme-fusion .fx-place-row-sub {
+  display: block; font-family: var(--f-mono); font-size: 10px; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--muted); margin-top: 3px;
+}
+.theme-fusion .fx-place-row-amt { white-space: nowrap; }
+.theme-fusion .fx-place-row-agreed { font-size: 11px; color: var(--muted); }
+.theme-fusion .fx-place-dept-line { margin-top: 22px; }
 
 /* ── SF payee fiche (Block A2) ──────────────────────────────────────────── */
 .theme-fusion .fx-payee-hero { margin: 0 0 26px; }
@@ -15730,10 +16064,85 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .theme-fusion .fx-fiche-sub { font-size: 13.5px; color: var(--ink-2); margin: 0 0 14px; }
 .theme-fusion .fx-fiche-line { font-size: 15.5px; line-height: 1.5; margin: 0 0 14px; }
 .theme-fusion .fx-fiche-sources { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--rule); }
+
+/* Chips row opening an entity fiche — what KIND of thing this is, before any
+   number. Recife's RecebedorFiche and Paris's AssociationFiche both open this
+   way with an inline-styled div; this is the same thing, named. */
+.theme-fusion .fx-fiche-tags {
+  display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px;
+}
+/* fx-sm-tag is purely typographic elsewhere (the site-map rows), so in a chips
+   row the three tags ran together as one line of small caps with no boundary
+   between them. Bounded to this container so nothing else moves. */
+.theme-fusion .fx-fiche-tags .fx-sm-tag {
+  border: 1px solid var(--rule-hard);
+  padding: 3px 9px;
+  color: var(--ink-2);
+}
+
+/* ── FicheBreakdown: ranked money split (label · bar · amount) ─────────── */
+.theme-fusion .fx-fiche-bd-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(46px, 0.9fr) auto;
+  gap: 12px; align-items: center;
+  padding: 9px 0; border-bottom: 1px solid var(--rule);
+  color: inherit; text-decoration: none;
+}
+.theme-fusion .fx-fiche-bd-row:last-child { border-bottom: 0; }
+/* A linked row has to LOOK linked at rest, not only on hover — a breakdown
+   whose rows were silently navigable read as a static table, which is the
+   whole reason these bars existed and nobody clicked them. Same language as
+   the money bar rows: tinted label, row-tint + underline on hover, and a
+   chevron so the affordance survives for a reader who cannot see the tint. */
+.theme-fusion .fx-fiche-bd-row--link .fx-fiche-bd-label { color: var(--bleu); }
+/* Chevron on the VALUE, not the label: the label span contains the meta line
+   as a block child, so ::after on it lands under the second line instead of
+   beside the name. */
+.theme-fusion .fx-fiche-bd-row--link .fx-fiche-bd-value::after {
+  content: " ›"; color: var(--muted); font-weight: 400;
+}
+.theme-fusion .fx-fiche-bd-row--link:hover { background: rgba(10, 10, 10, .04); }
+.theme-fusion .fx-fiche-bd-row--link:hover .fx-fiche-bd-label {
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.theme-fusion .fx-fiche-bd-label {
+  min-width: 0; font-size: 14px; line-height: 1.35; font-weight: 500;
+}
+.theme-fusion .fx-fiche-bd-meta {
+  display: block; font-family: var(--f-mono); font-size: 10.5px;
+  letter-spacing: .03em; color: var(--muted); margin-top: 3px; font-weight: 400;
+}
+.theme-fusion .fx-fiche-bd-track {
+  position: relative; display: block; height: 8px; background: var(--rule);
+}
+.theme-fusion .fx-fiche-bd-fill {
+  position: absolute; inset: 0 auto 0 0; background: var(--bleu);
+}
+/* Money out that is not a purchase (debt service, benefit plans, ledger
+   lines): hollow, so it is never drawn like something the City bought. */
+.theme-fusion .fx-fiche-bd-fill--muted {
+  background: repeating-linear-gradient(45deg,
+    color-mix(in srgb, var(--bleu) 38%, transparent) 0 4px,
+    transparent 4px 8px);
+  outline: 1px solid color-mix(in srgb, var(--bleu) 40%, transparent);
+  outline-offset: -1px;
+}
+.theme-fusion .fx-fiche-bd-value {
+  font-family: var(--f-mono); font-size: 12.5px; font-weight: 600;
+  text-align: right; white-space: nowrap;
+}
+@media (max-width: 520px) {
+  .theme-fusion .fx-fiche-bd-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .theme-fusion .fx-fiche-bd-track { grid-column: 1 / -1; }
+}
 .theme-fusion .fx-fiche-years {
   display: flex; align-items: flex-end; gap: 3px; height: 90px; margin-top: 6px;
 }
-.theme-fusion .fx-fiche-year { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; }
+/* min-width: 0 — `flex: 1 1 0` alone will not shrink an item below its content
+ * width, so on a payee with a long history the year labels ('26·, '27·) set a
+ * floor and the whole strip ran past the right edge on a phone. The bars are
+ * the quantity; the labels give way, not the chart. */
+.theme-fusion .fx-fiche-year { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; }
 .theme-fusion .fx-fiche-year-bar-wrap { width: 100%; height: 74px; display: flex; align-items: flex-end; }
 .theme-fusion .fx-fiche-year-bar { width: 100%; background: var(--bleu); min-height: 2px; border-radius: 1px 1px 0 0; }
 /* Provisional (incomplete current year): hatched fill + muted outline so it
@@ -15886,3 +16295,543 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .theme-fusion .fx-evol-legend { display: flex; gap: 18px; flex-wrap: wrap; margin: 20px 0 4px; }
 .theme-fusion .fx-evol-leg { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; color: var(--fx-muted, #4a4a4a); }
 .theme-fusion .fx-evol-dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+
+/* ── two mechanical facts, side by side ──────────────────────────────────── */
+.theme-fusion .fx-sf-statpair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0;
+  margin-top: 26px;
+  border: 1px solid var(--ink);
+}
+.theme-fusion .fx-sf-stat { padding: 20px 22px; }
+.theme-fusion .fx-sf-stat + .fx-sf-stat { border-left: 1px solid var(--rule); }
+.theme-fusion .fx-sf-stat-v {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: clamp(34px, 4.2vw, 46px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ink);
+}
+.theme-fusion .fx-sf-stat-l {
+  margin-top: 10px;
+  font-family: var(--f-ui);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 46ch;
+}
+@media (max-width: 620px) {
+  .theme-fusion .fx-sf-stat + .fx-sf-stat {
+    border-left: none;
+    border-top: 1px solid var(--rule);
+  }
+}
+/* ── SfMoneyBar: 100% stacked bar + one aligned legend row per slice ──────── */
+/* ── Lens toggle ──────────────────────────────────────────────────────────
+ *  The switcher above a breakdown ("by department / by supplier / …"). One
+ *  class, because the same control now sits on contracts, payments and
+ *  payroll and they were drifting apart as separate inline styles.
+ *
+ *  Desktop: a segmented control — single outline, hairline dividers.
+ *  Mobile: the same options as a full-width grid, two per line. The other
+ *  option was a horizontal scroll strip (what the page TOC does), and it is
+ *  wrong here: a TOC chip you miss is a shortcut you miss, but a lens you
+ *  miss is a whole cut of the money you never learn exists. Every option
+ *  stays on screen. */
+.theme-fusion .fx-lensbar {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid var(--ink);
+  margin-bottom: 18px;
+}
+.theme-fusion .fx-lensbar button {
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.theme-fusion .fx-lensbar button + button { border-left: 1px solid var(--rule); }
+.theme-fusion .fx-lensbar button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+}
+@media (max-width: 720px) {
+  .theme-fusion .fx-lensbar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 1px;
+    background: var(--ink);
+    margin-bottom: 14px;
+  }
+  .theme-fusion .fx-lensbar button {
+    background: var(--bg);
+    padding: 9px 6px;
+    font-size: 10.5px;
+    letter-spacing: .03em;
+    white-space: normal;
+    line-height: 1.25;
+    /* 44px, not 40: WCAG 2.5.5 asks 44 and these are the section's primary
+       control. Measured at 34px before the grid treatment. */
+    min-height: 44px;
+  }
+  .theme-fusion .fx-lensbar button + button { border-left: 0; }
+  /* An odd count would leave a hole in the last row that reads as a button
+     that failed to render. The odd one out takes the full width instead. */
+  .theme-fusion .fx-lensbar button:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+
+.theme-fusion .fx-moneybar {
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  padding: 20px 22px 18px;
+}
+.theme-fusion .fx-moneybar-kicker {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.theme-fusion .fx-moneybar-track {
+  display: flex;
+  height: 34px;
+  width: 100%;
+  overflow: hidden;
+}
+.theme-fusion .fx-moneybar-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2px;
+  transition: filter .12s ease;
+}
+.theme-fusion .fx-moneybar-seg-pct {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: .02em;
+}
+.theme-fusion .fx-moneybar-legend {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+.theme-fusion .fx-moneybar-legend li + li {
+  border-top: 1px solid var(--rule);
+}
+.theme-fusion .fx-moneybar-row {
+  display: grid;
+  /* Fixed label column, NOT max-content: every row is its own grid, so
+   * max-content sizes per row and the bars start at different x — which makes
+   * them uncomparable, the one thing a bar has to be. A fixed width aligns
+   * every bar on the same baseline; long labels wrap inside it. */
+  grid-template-columns: 12px 300px minmax(60px, 1fr) 56px 88px;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 2px;
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--f-ui);
+  font-size: 14px;
+}
+.theme-fusion .fx-moneybar-row-link:hover {
+  background: rgba(10, 10, 10, .04);
+}
+.theme-fusion .fx-moneybar-row-link:hover .fx-moneybar-nm {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.theme-fusion .fx-moneybar-sw {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+.theme-fusion .fx-moneybar-nm {
+  min-width: 0;
+  line-height: 1.35;
+}
+.theme-fusion .fx-moneybar-mini {
+  display: block;
+  height: 6px;
+  background: var(--rule);
+  position: relative;
+}
+.theme-fusion .fx-moneybar-mini > span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: block;
+}
+.theme-fusion .fx-moneybar-pc,
+.theme-fusion .fx-moneybar-am {
+  font-family: var(--f-mono);
+  font-size: 12.5px;
+  text-align: right;
+}
+.theme-fusion .fx-moneybar-pc { color: var(--muted); }
+.theme-fusion .fx-moneybar-am { font-weight: 600; }
+.theme-fusion .fx-moneybar-foot {
+  margin: 14px 0 0;
+  font-family: var(--f-ui);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+@media (max-width: 720px) {
+  .theme-fusion .fx-moneybar { padding: 16px 14px 14px; }
+  /* The bar wraps to its own full-width line rather than being dropped.
+     Hiding it (the old rule) turned every breakdown into a column of numbers
+     on the device most people read on — which is the opposite of why these
+     sections were built as bars. Same two-line treatment FicheBreakdown uses,
+     so a breakdown looks like a breakdown on both surfaces. */
+  .theme-fusion .fx-moneybar-row {
+    grid-template-columns: 12px minmax(0, 1fr) 52px 78px;
+    gap: 6px 10px;
+    font-size: 13.5px;
+  }
+  .theme-fusion .fx-moneybar-mini {
+    grid-column: 2 / -1;
+    height: 5px;
+    margin-bottom: 2px;
+  }
+}
+
+/* ── Pay ladder (components/us/SfPayLadder) ─────────────────────────────────
+   A range plot: one row per kind of work, on a shared dollar scale. The
+   quantity read is an interval (where the middle half of that family sits),
+   so the mark is a band with a median tick — never a bar from zero, which
+   would read the low edge as a magnitude. Single hue; identity comes from the
+   row label, never from colour. The median tick borrows the red the
+   distribution histogram already uses for its median line, so the two
+   graphics in the same section read as one system. */
+.theme-fusion .fx-ladder {
+  border: 1px solid var(--ink);
+  background: var(--bg);
+}
+.theme-fusion .fx-ladder-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: .02em;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.theme-fusion .fx-ladder-rows { padding: 6px 0; }
+.theme-fusion .fx-ladder-row {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) 96px;
+  align-items: center;
+  gap: 22px;
+  padding: 11px 22px;
+  border-bottom: 1px solid var(--rule);
+  transition: background .12s;
+}
+.theme-fusion .fx-ladder-row:last-child { border-bottom: 0; }
+.theme-fusion .fx-ladder-row--link {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+.theme-fusion .fx-ladder-row--link:hover { background: var(--bg-hover); }
+.theme-fusion .fx-ladder-row--link:hover .fx-ladder-band { opacity: 1; }
+.theme-fusion .fx-ladder-row--link:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: -2px;
+}
+.theme-fusion .fx-ladder-label {
+  font-family: var(--f-ui);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.theme-fusion .fx-ladder-meta {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 3px;
+}
+.theme-fusion .fx-ladder-track {
+  position: relative;
+  display: block;
+  height: 16px;
+}
+.theme-fusion .fx-ladder-whisker {
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  background: var(--ink);
+  opacity: .32;
+  transform: translateY(-50%);
+}
+.theme-fusion .fx-ladder-band {
+  position: absolute;
+  top: 50%;
+  height: 9px;
+  border-radius: 4px;
+  background: var(--ink);
+  opacity: .82;
+  transform: translateY(-50%);
+}
+.theme-fusion .fx-ladder-median {
+  position: absolute;
+  top: 50%;
+  width: 3px;
+  height: 15px;
+  margin-left: -1.5px;
+  background: var(--rouge);
+  /* 2px surface ring so the tick stays visible over the dark band */
+  box-shadow: 0 0 0 1.5px var(--bg);
+  transform: translateY(-50%);
+}
+.theme-fusion .fx-ladder-cityline {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  width: 1px;
+  background: var(--ink);
+  opacity: .22;
+}
+.theme-fusion .fx-ladder-value {
+  font-family: var(--f-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: right;
+}
+.theme-fusion .fx-ladder-axis {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) 96px;
+  gap: 22px;
+  padding: 4px 22px 14px;
+  border-top: 1px solid var(--rule);
+}
+.theme-fusion .fx-ladder-track--axis { height: 16px; }
+.theme-fusion .fx-ladder-tick {
+  position: absolute;
+  top: 4px;
+  transform: translateX(-50%);
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.theme-fusion .fx-ladder-tick:first-child { transform: none; }
+.theme-fusion .fx-ladder-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 0;
+  padding: 0 22px 14px;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  color: var(--muted);
+}
+.theme-fusion .fx-ladder-key { display: inline-flex; align-items: center; gap: 6px; }
+.theme-fusion .fx-ladder-key-band {
+  width: 20px; height: 8px; border-radius: 4px;
+  background: var(--ink); opacity: .82;
+}
+.theme-fusion .fx-ladder-key-whisker {
+  width: 20px; height: 1px; background: var(--ink); opacity: .32;
+}
+.theme-fusion .fx-ladder-key-median {
+  width: 3px; height: 12px; background: var(--rouge);
+}
+.theme-fusion .fx-ladder-key-city {
+  width: 1px; height: 12px; background: var(--ink); opacity: .35;
+}
+
+@media (max-width: 720px) {
+  .theme-fusion .fx-ladder-row,
+  .theme-fusion .fx-ladder-axis {
+    grid-template-columns: minmax(0, 1fr) 84px;
+    gap: 6px 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  /* label spans the full width, band + value share the line below it */
+  .theme-fusion .fx-ladder-row .fx-ladder-label { grid-column: 1 / -1; }
+  .theme-fusion .fx-ladder-head,
+  .theme-fusion .fx-ladder-legend { padding-left: 14px; padding-right: 14px; }
+  .theme-fusion .fx-ladder-axis .fx-ladder-label { display: none; }
+}
+
+/* ── Bucket composition panel (the histogram's "who is paid here") ────────── */
+.theme-fusion .fx-bucketwho {
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  padding: 16px 18px 14px;
+  margin-top: 18px;
+}
+.theme-fusion .fx-bucketwho-kicker {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.theme-fusion .fx-bucketwho-title {
+  font-family: var(--f-disp);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+.theme-fusion .fx-bucketwho-title .u {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0;
+  margin-left: 8px;
+}
+.theme-fusion .fx-bucketwho-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(50px, 1fr) 104px;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--f-ui);
+  font-size: 13.5px;
+  color: inherit;
+  text-decoration: none;
+}
+.theme-fusion .fx-bucketwho-row:last-child { border-bottom: 0; }
+.theme-fusion a.fx-bucketwho-row:hover { background: var(--bg-hover); }
+.theme-fusion .fx-bucketwho-track {
+  position: relative;
+  height: 9px;
+  background: var(--rule);
+}
+.theme-fusion .fx-bucketwho-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--ink);
+  border-radius: 0 4px 4px 0;
+}
+.theme-fusion .fx-bucketwho-fill--pooled { background: var(--muted); opacity: .5; }
+.theme-fusion .fx-bucketwho-val {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: right;
+}
+.theme-fusion .fx-bucketwho-val span {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 10.5px;
+  margin-left: 6px;
+}
+.theme-fusion .fx-bucketwho-hint {
+  margin: 0;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── Pay band inside a fiche (percentile steps) ──────────────────────────────
+   Four rungs of the same exact percentiles the page's pay ladder draws, laid
+   out as steps so the shape of the band reads without a chart. The fiches had
+   no per-person figure at all before this — a family could be $1.1B with no
+   sense of what one of those jobs pays. */
+.theme-fusion .fx-payband {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.theme-fusion .fx-payband-step {
+  background: var(--bg);
+  padding: 10px 12px;
+}
+.theme-fusion .fx-payband-k {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.theme-fusion .fx-payband-step:nth-child(2) .fx-payband-k { color: var(--rouge); }
+.theme-fusion .fx-payband-v {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-top: 4px;
+}
+.theme-fusion .fx-payband-c {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.35;
+}
+@media (max-width: 560px) {
+  .theme-fusion .fx-payband { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Link line — navigation without restating a chart ────────────────────────
+   Sits under a chart whose series are entities you can open. Replaces the
+   ranked list that used to repeat, in words, the eight curves already drawn
+   above it: the list's only unique contribution was the way in, so only the
+   way in survives. */
+.theme-fusion .fx-linkline {
+  margin: 18px 0 0;
+  font-family: var(--f-ui);
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--ink-2);
+}
+.theme-fusion .fx-linkline-k {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 10px;
+}
+.theme-fusion .fx-linkline a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-linkline a:hover {
+  color: var(--bleu);
+  border-bottom-color: var(--bleu);
+}
+
+/* A footnote that is only a tooltip trigger — no callout border, because the
+   box was heavier than the one line it carried. */
+.theme-fusion .fx-footnote {
+  margin: 14px 0 0;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}

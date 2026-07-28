@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.735227+00:00",
+ "generated_at": "2026-07-28T12:23:47.749396+00:00",
  "slug": "japanese-tea-garden",
  "name": "Japanese Tea Garden",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -42,8 +42,13 @@
    "url": "https://archive.org/details/newdeyoungmuseum2220sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2220sanf?q=Japanese+Tea+Garden",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The response volume for the de Young rebuild, revising the site plan to show how the new museum would sit against the Tea Garden and the Music Concourse."
   },
   {
    "identifier": "goldengateparkco1420sanf",
@@ -83,8 +88,13 @@
    "url": "https://archive.org/details/goldengateparkco1420sanf",
    "deep_link": "https://archive.org/details/goldengateparkco1420sanf?q=Japanese+Tea+Garden",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The Concourse environmental review, which lists the Tea Garden among 123 contributing features of the proposed historic district and finds it individually eligible for the California Register."
   },
   {
    "identifier": "newdeyoungmuseum2020sanf",
@@ -122,8 +132,13 @@
    "url": "https://archive.org/details/newdeyoungmuseum2020sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2020sanf?q=Japanese+Tea+Garden",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The revised final report confirms the Tea Garden is individually eligible for the National Register — unlike the de Young and the Academy of Sciences, which qualify only as contributors."
   }
  ]
 }

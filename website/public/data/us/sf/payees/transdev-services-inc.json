@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.730491+00:00",
+ "generated_at": "2026-07-28T11:43:47.697259+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -33,6 +33,76 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 437,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 395908756.99,
+    "n_vouchers": 428
+   },
+   {
+    "department": "ENV Environment",
+    "department_code": "ENV",
+    "usd": 62453.11,
+    "n_vouchers": 8
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 100.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 3,
+  "categories": [
+   {
+    "code": "535910",
+    "label": "Paratransit Contract Expense",
+    "spend_class": "purchase",
+    "usd": 183939769.74,
+    "n_vouchers": 155
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 61311178.58,
+    "n_vouchers": 104
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 685225.58,
+    "n_vouchers": 9
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 26
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 28366495.12,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Paratransit Contract Expense",
+    "spend_class": "purchase",
+    "usd": 28366495.12,
+    "n_vouchers": 12
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

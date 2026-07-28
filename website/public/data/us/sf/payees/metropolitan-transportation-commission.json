@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.739682+00:00",
+ "generated_at": "2026-07-28T11:43:47.712800+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,126 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 779,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 140869845.54,
+    "n_vouchers": 643
+   },
+   {
+    "department": "CON Controller",
+    "department_code": "CON",
+    "usd": 14877092.92,
+    "n_vouchers": 108
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 2063787.8,
+    "n_vouchers": 10
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 224380.0,
+    "n_vouchers": 16
+   },
+   {
+    "department": "ENV Environment",
+    "department_code": "ENV",
+    "usd": 158200.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_departments": 5,
+  "categories": [
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 49356476.01,
+    "n_vouchers": 284
+   },
+   {
+    "code": "OTHR_OBLIG_AGNCY_FUN",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 14877092.92,
+    "n_vouchers": 108
+   },
+   {
+    "code": "527030",
+    "label": "Transportation Services",
+    "spend_class": "purchase",
+    "usd": 1720500.0,
+    "n_vouchers": 3
+   },
+   {
+    "code": "527610",
+    "label": "Systems Consulting Services",
+    "spend_class": "purchase",
+    "usd": 114150.83,
+    "n_vouchers": 5
+   },
+   {
+    "code": "585030",
+    "label": "Capital Proj Budget -Cfwd Only",
+    "spend_class": "unclear",
+    "usd": 40000.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "523020",
+    "label": "Local Field Exp",
+    "spend_class": "purchase",
+    "usd": 800.0,
+    "n_vouchers": 3
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 7191627.76,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 4751854.16,
+    "n_vouchers": 35
+   },
+   {
+    "department": "CON Controller",
+    "department_code": "CON",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 1753773.6,
+    "n_vouchers": 13
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Transportation Services",
+    "spend_class": "purchase",
+    "usd": 666000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 20000.0,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000030493",

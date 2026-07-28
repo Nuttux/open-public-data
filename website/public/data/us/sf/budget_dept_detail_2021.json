@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.878477+00:00",
+  "generated_at": "2026-07-28T11:43:46.633735+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -9069,14 +9069,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581170",
-          "label": "GF-Risk Management Svcs (AAO)",
+          "code": "581450",
+          "label": "GF-HR-Mgmt Training",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581450",
-          "label": "GF-HR-Mgmt Training",
+          "code": "581170",
+          "label": "GF-Risk Management Svcs (AAO)",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -10332,7 +10332,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Michael Jang",
+            "vendor": "Silverman Gallery LLC",
             "amount_usd": 24000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -10341,7 +10341,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Silverman Gallery LLC",
+            "vendor": "Michael Jang",
             "amount_usd": 24000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -21424,14 +21424,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581061",
-          "label": "Ef-PUC-Water",
+          "code": "581280",
+          "label": "DT SFGov TV Services",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581280",
-          "label": "DT SFGov TV Services",
+          "code": "581061",
+          "label": "Ef-PUC-Water",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -22278,18 +22278,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "RENAISSANCE ENTREPRENEURSHIP CENTER",
+            "vendor": "Shipyard Trust for the Arts",
             "amount_usd": 10000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 3,
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "Shipyard Trust for the Arts",
+            "vendor": "RENAISSANCE ENTREPRENEURSHIP CENTER",
             "amount_usd": 10000.0,
-            "n_vouchers": 3,
+            "n_vouchers": 2,
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -46691,12 +46691,12 @@
         "n_vendors": 5,
         "vendors": [
           {
-            "vendor": "TENDERLOIN HOUSING CLINIC INC",
+            "vendor": "SAN FRANCISCO APARTMENT ASSOC",
             "amount_usd": 20000.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": true,
             "is_related_govt_unit": false,
-            "bucket": "nonprofit",
+            "bucket": null,
             "is_aggregation_line": false
           },
           {
@@ -46709,12 +46709,12 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SAN FRANCISCO APARTMENT ASSOC",
+            "vendor": "TENDERLOIN HOUSING CLINIC INC",
             "amount_usd": 20000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": true,
             "is_related_govt_unit": false,
-            "bucket": null,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           },
           {

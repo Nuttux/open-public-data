@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.738114+00:00",
+ "generated_at": "2026-07-28T11:43:47.710529+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -26,6 +26,106 @@
  "top_departments": [
   "PUC Public Utilities Commsn"
  ],
+ "profile": {
+  "n_vouchers": 423,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 103495159.49,
+    "n_vouchers": 205
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 47680388.36,
+    "n_vouchers": 180
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 15237929.14,
+    "n_vouchers": 28
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 4114456.5,
+    "n_vouchers": 10
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 170374846.11,
+    "n_vouchers": 413
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 118195.45,
+    "n_vouchers": 4
+   },
+   {
+    "code": "468111",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 24391.72,
+    "n_vouchers": 5
+   },
+   {
+    "code": "479701",
+    "label": "Custom Work",
+    "spend_class": "ledger",
+    "usd": 10500.21,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 23389706.59,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 23040651.78,
+    "n_vouchers": 36
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 283261.06,
+    "n_vouchers": 94
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 56000.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 9793.75,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000028756",
@@ -38,7 +138,7 @@
   },
   {
    "contract_no": "1000028394",
-   "title": "AS Needed WTR SVS Line Rep",
+   "title": "AS Needed Water Services Line Repair",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 30289670.5,

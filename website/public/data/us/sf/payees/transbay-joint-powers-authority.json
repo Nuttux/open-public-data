@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.733169+00:00",
+ "generated_at": "2026-07-28T11:43:47.702264+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -31,6 +31,150 @@
  "top_departments": [
   "CII Commty Invest & Infrstrctr"
  ],
+ "profile": {
+  "n_vouchers": 109,
+  "departments": [
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 225910806.95,
+    "n_vouchers": 35
+   },
+   {
+    "department": "TJP Transbay Joint Power Auth",
+    "department_code": "TJP",
+    "usd": 10473543.37,
+    "n_vouchers": 2
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 9285863.8,
+    "n_vouchers": 29
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 2397188.13,
+    "n_vouchers": 3
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 2251102.1,
+    "n_vouchers": 2
+   },
+   {
+    "department": "CPC City Planning",
+    "department_code": "CPC",
+    "usd": 2044839.08,
+    "n_vouchers": 25
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 1996052.98,
+    "n_vouchers": 11
+   },
+   {
+    "department": "ART Arts Commission",
+    "department_code": "ART",
+    "usd": 33333.4,
+    "n_vouchers": 2
+   }
+  ],
+  "n_departments": 8,
+  "categories": [
+   {
+    "code": "552410",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 207763369.5,
+    "n_vouchers": 25
+   },
+   {
+    "code": "OTHR_OBLIG_AGNCY_FUN",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 10473543.37,
+    "n_vouchers": 2
+   },
+   {
+    "code": "552420",
+    "label": "Arbitrage Rebate To IRS",
+    "spend_class": "unclear",
+    "usd": 10178421.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "530110",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 9285863.8,
+    "n_vouchers": 29
+   },
+   {
+    "code": "585020",
+    "label": "Programmatic Proj-Bdgt-Cfwd",
+    "spend_class": "purchase",
+    "usd": 866000.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "527080",
+    "label": "Construction Management Svcs",
+    "spend_class": "purchase",
+    "usd": 516130.6,
+    "n_vouchers": 6
+   },
+   {
+    "code": "543990",
+    "label": "Other Equipment Maint Supplies",
+    "spend_class": "purchase",
+    "usd": 228690.75,
+    "n_vouchers": 1
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 94719.53,
+    "n_vouchers": 12
+   }
+  ],
+  "n_categories": 13,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 26628076.78,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 25667580.78,
+    "n_vouchers": 2
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 945975.0,
+    "n_vouchers": 3
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 14521.0,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

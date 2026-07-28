@@ -46,6 +46,27 @@ export function readDataJsonOrNull<T>(rel: string): T | null {
 }
 
 /**
+ * Filenames in a public/data directory, without extension, sorted.
+ *
+ * For the one-file-per-entity exports (SF contract fiches) where the set of
+ * keys IS the directory listing and there is no index file to read. Returns []
+ * when the directory is absent, so a branch without hydrated data degrades
+ * rather than failing the build. Not memoized: the only caller is the sitemap,
+ * which runs once.
+ */
+export function listDataDir(rel: string, ext = ".json"): string[] {
+  try {
+    return fs
+      .readdirSync(path.join(DATA_ROOT, rel))
+      .filter((f) => f.endsWith(ext))
+      .map((f) => f.slice(0, -ext.length))
+      .sort();
+  } catch {
+    return [];
+  }
+}
+
+/**
  * City-relative data path. Paris keeps its files at the data root
  * (rétro-compat, cf. project_marseille_v1_decisions P0.2); other cities live
  * under data/<city>/. Client components use the mirror in lib/city-paths.ts.

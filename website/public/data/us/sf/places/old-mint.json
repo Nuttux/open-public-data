@@ -1,0 +1,393 @@
+{
+ "generated_at": "2026-07-28T12:23:47.804288+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "old-mint",
+ "name": "Old Mint",
+ "kind": "Civic building",
+ "family": "civic",
+ "address": "88 5th St",
+ "lat": 37.782725,
+ "lon": -122.407233,
+ "owning_dept": {
+  "name": "City Administrator",
+  "code": "ADM"
+ },
+ "facility": {
+  "primary_name": "Old Mint",
+  "primary_address": "88 5TH ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94103",
+  "primary_block_lot": "3704011",
+  "primary_department_name": "Gsa - Real Estate Division",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 93568,
+  "primary_latitude": 37.78272539300008,
+  "primary_longitude": -122.40723324999999,
+  "supervisor_district": 6,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 93568,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "3704011"
+  ],
+  "facilities": [
+   {
+    "facility_id": 3011,
+    "common_name": "Old Mint",
+    "block_lot": "3704011",
+    "gross_sq_ft": 93568,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": "/img/us/sf/places/old-mint.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/old-mint.jpg",
+  "source": "Openverse (flickr)",
+  "source_url": "https://www.flickr.com/photos/24490133@N04/14287555209",
+  "license": "BY-NC 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc/2.0/",
+  "license_verified": false,
+  "provisional": true,
+  "author": "danishdynamite",
+  "resolved_via": "openverse",
+  "fetched_at": "2026-07-28T12:00:10.029700+00:00"
+ },
+ "summary_en": "The Old Mint — the \"Granite Lady\" at 88 Fifth Street — passed from the federal government to the city and has been waiting for a settled use ever since. In 1998 the Mid-Market project area committee was writing to the mayor's office asking for help assembling a public-private partnership to restore it, recording that the building's unsightly condition was a deterrent to the area and projected a negative image. The transfer was negotiated at nominal cost, and the city's register of real property duly lists the Old Mint, 47,515 square feet on Block 3704, Lot 11, \"quitclaimed from the Federal Gov to City\". The city then went looking for an operator. A 2002 request for proposals invited qualified entities to lease, rehabilitate, develop and operate the building; an Old Mint Task Force reviewed the resulting development proposals in January 2003; and the San Francisco Museum and Historical Society brought forward a re-use proposal of its own. A 2005 environmental determination describes the intended project — rehabilitation plus seismic upgrade and an addition to the three-storey-plus-attic building of about 86,300 square feet. What has actually been permitted since is holding work: $729,000 to strip out non-historic tenant interiors, temporary shoring of two attic walls, a temporary fire alarm system, and the replacement of a single entrance door for accessibility, with the deteriorated historic doors kept on site \"to guide future restoration\".",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_usd": 287717708.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_compensation_usd": 168334637.06,
+   "n_employees": 1154,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "reviewcommittees1420sanf",
+   "title": "Review committee's evaluation of the Old Mint development proposals",
+   "creator": "San Francisco (Calif.). Old Mint Task Force",
+   "year": 2003,
+   "pool": "sfpl",
+   "matched_alias": "Old Mint",
+   "ocr_excerpts": [
+    "SAN FRANCISCO PUBLIC LIBRARY REVIEW COMMITTEE'S EVALUATION OF THE OLD MINT DEVELOPMENT PROPOSALS DOCUMENTS DEPT. JAN I 5 2003 SAN FRANCISCO PUBLIC LIBRARY PREPARED FOR THE OLD MINT TASK FORCE Tuesday, January 14, 2003 5/5 San Francisco Public Library QOVERNME\\«T IWFCF.MATlON SA^; FPw\\NCisoo public ubbahy REFERENCE BOOK Not to be taken from the Library Old Mint Task Force City Hall 1 Dr. Carlton B. Goodlett Place, Room 436 San Francisco, Ca 94102 Tel. No. 554-6481 Fax No. 554-6018 www.sfgov.org/sfmint TO: OLD MINT TASK FORCE Walter Jebe, Chair Carolyn Diamond, Vice Chair Alessandro Baccari Michael Buhler Leslie M. Lava Stephen Mikesell Gina M. Nibbi Suheil Shatara cc: FROM: DATE: RE: Michael Cohen, Deputy City Attorney Yomi Agunbiade, Acting City Architect Harlan Kelly, Deputy Director of DPW Public Library Ms. Hala Hijazi, Mayor's Office of Economic Development Tuesday, January 14, 2003 Sta^s Summary of Evaluation of the Old Mint Development Proposals In preparation for the Old Mint Task Force meeting scheduled for Thursday, January 16, 2003 @ 4:30 p.m. in Room 408 in City Hall, please find enclosed the following: 1. The Review Committee's Summary of its' Evaluation of the Old Mint Development Proposals received from: a. Destination Club Partners b. Landair Project Resources/ Urban Initiatives/ Northern Real Estate c. San Francisco Museum and Historical Society 2. Supporting Consultant Evaluations prepared by: a. Carey & Co., the Historic Preservation Consultant/ Architect,",
+    "ants' Reports, and other relevant background information before making a FINAL RECOMMENDATION on Wednesdav, Januarv 29, 2003 at 4:00 p.m. in Room 400, Citv Hall. Digitized by the Internet Archive in 2014 https://archive.org/details/reviewcommittees1420sanf 3 1223 06286 5994 SUMMARY OF EVALUATION OF OLD MINT DEVELOPMENT PROPOSALS I. Background The Building and the RFP. The Old Mint is a National Historic Landmark and one of the City's most significant buildings. Although currently owned by the Federal Government, the City and the Federal Government—through the General Services Administration (\"GSA\")— have negotiated the terms of a no-cost transfer of the Old Mint. Prior to seeking Board of Supervisors approval of that transfer, City staff have sought to identify likely future uses of the building. Towards that end, the Mayor established the Old Mint Task Force to advise the City on the terms of the transfer from the Federal Government and to help City staff evaluate development plans for reuse of the Mint. On April 15, 2002, the Old Mint Task Force approved the form of a Request for Proposals (\"RFP\") soliciting development plans for the rehabilitation and reuse of the Old Mint. The RFP included specific submittal requirements and criteria for evaluating submittals. After once extend"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.32,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.32,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/reviewcommittees1420sanf",
+   "deep_link": "https://archive.org/details/reviewcommittees1420sanf?q=Old+Mint",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "The task force review committee's evaluation of the development proposals received, January 2003."
+  },
+  {
+   "identifier": "revisedmitigated2320sanf",
+   "title": "Revised mitigated negative declaration : [88 Fifth Street, the Old Mint]",
+   "creator": "San Francisco (Calif.). Planning Dept,San Francisco Museum and Historical Society",
+   "year": 2005,
+   "pool": "sfpl",
+   "matched_alias": "Old Mint",
+   "ocr_excerpts": [
+    "Person: Jim Lazarus, Executive Director Telephone: (415) 537-1105 Project Address: 88 Fifth Street Assessor's Block(s) and Lot(s): Block 3704, Lot 1 1 City and County: San Francisco Project Description: The proposed project is the rehabilitation plus seismic upgrade and addition to the United States Old Mint located at 88 Fifth Street in downtown San Francisco (Assessor's Block 3704, Lot 11). The existing three-story plus an attic 86,300 99,921 -gross-square-foot (gsf) building_would be retained, aiTd_additional square footage the first floor courtyard floor (circa 1970) will be removed (a deduct of 4 336 g",
+    "ignificant effects: pp. 4952-50 n cc: Project Sponsor Mark Luellen, Neighborhood Planner Board of Supervisors L.t;i'd°elas>er Decsicn File DOCUMENTS DEPT. Distribution List MAV 0 f; 7r\\f\\^ Historic Preservation List IVlAy I 0 LVUd SAN FRANCISCO PUBLIC LIBRARY INITIAL STUDY 88 Fifth Street, The Old Mint - Case No. 2003.0869E I. PROJECT DESCRIPTION The proposed project is the rehabilitation plus seismic upgrade and addition to the United States Old Mint located at 88 Fifth Street in downtown San Francisco (Assessor's Block 3704, Lot 11). See Figure 1, Project Location. The existing three-story plus an attic 86^^00- 99,921 -gross-square-foot (gsf) building would be retained, and additional square footage the first floor courtyard floor (circa 1970) will",
+    "to 13'-6\" above the existing roof plane. The top of this roof gallery will extend 13'-1 '/z\" above the southern edge of the courtyard parapet and 8'-0\" above the Mission Street facade parapet. The top glass enclosure would include a lookout deck for viewing the city skyline over the roof of the Old Mint building. A quality sit-down restaurant with a bar, public restrooms, a coin/money museum, other retail ' Tliese calculations were done using the San Francisco Plannins Code definitions whhoui deductions taken for ground level circulation, retail and other spaces necessary for the support of the buil",
+    "d on pages 14-15. ^ This summary of usable square feet excludes all exterior walls and thick masonry interior walls, therefore, the total square feet inside the building will not equal the gross square feet as defined bv the San Francisco Planning Code which is 2003.0869E: 88 Fifth Street, The Old Mint 1 tenant spaces and building support/back-of-house spaces and the new Historical Museum would occupy the ground floor of the building. The first floor would be occupied by the Historical Museum, a museum theater, gift shops and the San Francisco Visitor Information Center (Visitor Center), the latt",
+    "lleries. Figures 2 through 9 show the project site plan, floor plans, and elevations. The proposed project would also include the 24-hour closure of Jessie Street between Mint Street and Fifth Street to allow for outd"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 12.76,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 3.26,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/revisedmitigated2320sanf",
+   "deep_link": "https://archive.org/details/revisedmitigated2320sanf?q=Old+Mint",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The environmental determination for the intended rehabilitation, seismic upgrade and addition at 88 Fifth Street."
+  },
+  {
+   "identifier": "midmarketredevel1998sanf",
+   "title": "Mid-Market Redevelopment Survey Area newsletter",
+   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.). Mid-Market Project Area Committee,San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Old Mint",
+   "ocr_excerpts": [
+    "then move to Dr. Carlton B Goodlett Place and then to 5th Street. The total construction phase is about 90 days. During construction the old lights will remain functional so the area will con- tinue to be illuminated. \"Mint Alley\" Two projects are in the works on \"Mint Alley\" adjacent to the Old Mint between Market and Mission Streets. 54 Mint This site is an historic red brick structure being converted to commercial office space. It is designed to meet the needs of a growing com- mercial tenant and is approximately 16,700 total square feet. The completion date is scheduled for June 1999. The",
+    "ll be appointed soon and the Federal Government and the City will negotiate the transfer at a nominal cost, by the end of this summer. The Mid-Market PAC has written to Mayor Brown's office asking him to use his resources to help gener- ate a public/private partnership that could help restore the Old Mint. The PAC stated that the unsightly condition of the Mint is a deterrent to the area and projects a negative image. The PAC will continue to follow the Mint's issues. OLD MINTAT5TH& MISSION DETERIORATING COMMUNITY CONCERNS The Mid-Market PAC is community based and the public is encouraged to attend all PAC meetings and have their voices heard. In the past several months two issues have come to the attention of the PAC that caused concern to the community. These issues",
+    "5:30 to 7:30 p.m. at the Ramada Plaza hotel at 1231 Market Street. The public is encouraged to attend. Continued from page 3 PATRICIA SCHADE Patricia represents the Martin Building Co. that owns three properties in the Mid-Market area. These sites, on Jessie Street and Mint Street surround the Old Mint. Having recently moved their offices to the Mid-Market area the Martin Building Co. has become a community asset. Patricia has appeared before the Redevelopment Commission several times to testify on behalf of MM PAC issues. Since the Old Mint is a neighboring property there is high interest in the fate of the \"Granite Lady's\" future. Visions for the Mid-Market area include the re-use of the Old Mint, new nighttime activities including the creation of an arts and theatre corridor. New retail and restaurants to enliven the area night and day, drawing consumers from the downtown area, the City's various neighborhoods and the Bay Area regions. \"Parking is a high priority for the area to satisfy bot",
+    "nsider including the blocks from 7th to 1 0th on Market was pre- sented to the Agency Director Morales. The final recom- mendation of boundaries will be presented to the PAC in February 2001 . UPDATE ON THE MINT The Director of the Mayor's Office of Economic Development discussed the status of the Old Mint at 5th & Mission. The City will accept the Mint from the Federal Government once a Programmatic Agreement i"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.76,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.76,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/midmarketredevel1998sanf",
+   "deep_link": "https://archive.org/details/midmarketredevel1998sanf?q=Old+Mint",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A neighborhood newsletter recording the committee's appeal to the mayor over the Mint's deteriorating condition."
+  },
+  {
+   "identifier": "worthitsweightin2002sanf",
+   "title": "Worth its weight in gold : requests for proposals to lease, rehabilitate, develop, and operate the San Francisco old mint",
+   "creator": "San Francisco (Calif.)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Old Mint",
+   "ocr_excerpts": [
+    "ARKING GARAGE • BLD MINT FACADE GN FIFTH STREET • NDRTH TOWARD MARKET STREET 6 SF SHOPPING CENTER TME MAYOR On behalf of the Cit> and County of San Franciaco, / am pJea<sed tc anncunce a unique devetopment opportunity in the heart of San franci<jcc. JCncu-n oj the \"Qranixe Lady\", the historic Old Mint Building ii cne cf San Franciicc i mat iisnit)icant landmarki. The City and Ccunty cf San Franciscc ii interested in directing reuse of this building tor the benefit of it<j reAtdenti and riiitcri. The Mayor's Office of economic Development is seeking a highly qualified entity tc rehabilitate and operate this foca/ public structure. The preservation and development of this historic landmark is central tc the sccial and economic vitality of this City. We welcome your participation and encourage creative apprcaches tc makins the Old Mint Building a premiere attraction of cur City. Sincerely, Willie L. Brown. Jr. Mayor THE ©PP®ET1UHIITY One ot the City's primary goals is to rehabilitate, preserve and enhance the historic character ot the Old Mint. The City seeks proposals that will ensure design and development of the Old Mint in a manner that is sensitive to, and enhances the historic features ot the Old Mint. The Old Mint, constructed between 1869 and 1874, was designated a National Historic Landmark in ig6i and is listed on the National Register Historic Places. Another primary goal is to optimize public use and enjoyment ofj the building, such as the grand public spaces in the Old Mint's ground and fjirst floors. Respondents to this RFP are encouraged to identity areas within the Old Mint that will remain publicly accessible and to propose uses open to the general public fjcr as many ct the historically signifjicant areas ot the building. The Old Mint is considered one ot the last major Greek Revival buildings in the country associated with tederal architecture. In 1869, the Old Mint was designed and erected by Altred B. Mullet, supervising architect ot the US Treasury Department. It is San Francisco's oldest stone structure. The Old Mint occupies a prominent position in the historical, architectural, and economic development ot San Francisco and the nation. The Old Mint played a pivotal role in the tinancial history ot the United States. In the 19th century, this historic structure served as the chiet Federal Depository tcr gold and silver-mined in the West. Due to the Old Mint's unrivaled etticiency, the Coinage Act ot 1873 made it a branch ot the Philadelphia Mint. The Old Mint produced a signiticant portion ot the United States' coinage, including more gold than any other mint in the country, and by 1934 housed one-third ot the nation's gold reserve in its vaults. The Old Mint survived the great earthquake and tire ot 1906, thus saving two hundred "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.64,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 1,
+    "density": 1.14,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/worthitsweightin2002sanf",
+   "deep_link": "https://archive.org/details/worthitsweightin2002sanf?q=Old+Mint",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The city's request for proposals to lease, rehabilitate and operate the Old Mint."
+  },
+  {
+   "identifier": "officialmeetingn200206san",
+   "title": "Official meeting notice",
+   "creator": "San Francisco (Calif.). Museum and Historical Society Advisory Committee,San Francisco (Calif.). Board of Supervisors,Fine Arts Museums of San Francisco. Board of Trustees",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "Old Mint",
+   "ocr_excerpts": [
+    "nsibilities of the San Francisco Discussion Museum and Historical Society Advisory Committee (See Appendix C - List of Purposes and Responsibilities of the Advisory Committee) IX. Report on the Status of the San Francisco Museum and Historical Discussion Society's Re-Use Proposal for the San Francisco Old Mint, 88 Fifth Street, San Francisco - James Lazarus, Executive Director, San Francisco Museum and Historical Society X. Report on the Joint Project Between the Fine Arts Museums and Discussion San Francisco Museum and Historical Society Funded by the City and County of San Francisco to Catalogue and I",
+    "ed in a day. Mr. Lazarus noted that grant funds are being solicited in order to continue the effort to catalogue and inventory the SFMHS collection. There was no public comment. IX. Report on the Status of the San Francisco Museum and Historical Society's Re- Use Proposal for the San Francisco Old Mint, 88 Fifth Street, San Francisco - James Lazarus, Executive Director, San Francisco Museum and Historical Society Mr. Lazarus reported that the SFMHS administrative offices, library, and research activities are located in office space South of Market. The historical society functions, publications and mem",
+    "Musee Mecanique jointly operate a museum in this space effective in December 2002. The SFMHS collection is largely stored at Treasure Island, and the City has also provided a portion of the south court off the City Hall Rotunda for a series of San Francisco history displays. The transfer of the Old Mint located at Fifth and Mission Streets from the United States General Services Administration to the City of San Francisco has been initiated, and a Task Force of the City's Economic Development Office is considering the renovation and viability of Old Mint. The SFMHS submitted a comprehensive re- use proposal for the Old Mint, including a visitor center in partnership with the Convention and Visitors Bureau and special exhibit spaces for related collections (such as the history of coins and the Old Mint itself). There are two other proposals, one involving a private membership club / hotel and a low income housing proposal, each with a small museum component. It is expected that the Old Mint Task Force will make a recommendation on one of the three proposals to the Mayor next month for Board of Supervisors action in San 1 rancisco Museum and Historical Society Ad\\ isoi) Committee November 14,2002 January 2003. A three to six month period of exclusive negotiations would follow to f",
+    "s introduced Robert Mendelsohn, who coordinated the SFMHS re-use proposal working with Piero Patri, Principal of Patri.Merker. Architects, and Barry Howard, museum architect who designed the State Railway Museum in Sacramento. Mr. Mendelsohn commented on the City's interest in dete"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.28,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.28,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/officialmeetingn200206san",
+   "deep_link": "https://archive.org/details/officialmeetingn200206san?q=Old+Mint",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false,
+   "gloss": "A meeting notice carrying the Museum and Historical Society's re-use proposal for the building."
+  },
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2004",
+   "title": "Real property owned by the city and county of San Francisco / 2004",
+   "creator": null,
+   "year": 2004,
+   "pool": "dl",
+   "matched_alias": "Old Mint",
+   "ocr_excerpts": [
+    "Includes Block 3639, Lot 005A. OPEN SPACE (23RD ST & TREAT AVE): See Block 3639, Lot 005 for details. 005A 3639 HORACE MANN JR. HIGH SCHOOL 3351 23RD STREET SF Unified School District (SFUSD) aititp OZ 034 3643 HORACE MANN JR. HIGH SCHOOL FIRE STATION #1 (INACTIVE) 416 JESSIE STREET Fire Department 5,625 006 3704 FIRE STATION #1 (INACTIVE) OLD MINT 88 - 5TH ST Real Estate/ Administrative Services 47,515 011 3704 Quitclaimed from the Federal Gov to City. DOWNTOWN CAMPUS MISSION & 4TH ST SF Community College District 9,750 006 3705 DOWNTOWN CAMPUS RETAIL SHOPPING CENTER 5TH ST & MARKET ST SF Unified School District (SFUSD) 75,625 042 3705 75-year lease RETAIL SHOPPING CENTER DOWNTOWN SUB",
+    "OOL (ELEMENTARY) 001 1888 1775 44TH AVE J.L. ROBERTS SPECIAL SCHOOL 002 2005 44TH AVE SANTIAGO ST SUNSET TANK & PUMP STATION 014 2305 1347 45TH AVE FIRE STATION #23 029 1799 1201 48TH AVE SLOPE PROTECTION AND WALKWAY 050 2612 1300 4TH ST FIRE STATION #30 (INACTIVE) 004 3837 4TH ST CHANNEL ST 4TH ST/CHANNEL ST PARKING SITE 002 8714 88 5TH ST OLD MINT 011 3704 461 6TH AVE RICHMOND POLICE STATION 007 1538 200 6TH ST SOUTH MARKET PARK 010 3731 444 7TH AVE ARGUELLO MINI PARK 007 1538 555 7TH ST 555 7TH ST OFFICE BUILDING 031 3779 ADDISON DIAMOND HEIGHTS WALTER HAAS PLAYGROUND 001 7540 AGUA WAY TERESITA STANFORD HEIGHTS RESERVOIR WATER FACILITIES 001 2946A AGUA WAY TERESITA STANFORD HTS PLAY"
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": 1.69,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.69,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2004",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2004?q=Old+Mint",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false,
+   "gloss": "The city's property register, listing the Mint's parcel and its quitclaim from the federal government."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "progressincitypl1948sanf",
+   "title": "Progress in city planning : a report to the people of San Francisco",
+   "year": 1948,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/progressincitypl1948sanf"
+  },
+  {
+   "identifier": "64summaryofregular1979san",
+   "title": "Summary of the regular meeting",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/64summaryofregular1979san"
+  },
+  {
+   "identifier": "southofmarketzon1988sanf",
+   "title": "South of Market zoning controls : proposal for adoption : with 12 month sunset clause",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/southofmarketzon1988sanf"
+  }
+ ],
+ "dept_shelf_label": "City Planning Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 6,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

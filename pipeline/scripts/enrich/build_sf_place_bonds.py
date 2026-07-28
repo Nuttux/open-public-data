@@ -61,6 +61,20 @@ def is_category(name: str) -> bool:
     return any(m in n for m in CATEGORY_MARKERS)
 
 
+def is_housing_bond(program: str, component: str) -> bool:
+    """A housing bond spends on housing, whatever place name it borrows.
+
+    "Balboa Park Upper Yard Gap" is affordable housing on the Muni yard beside
+    the station; showing it as the park's capital work repeats the South Park
+    error, where supportive-housing contracts on South Park Street read as
+    park spending. Measured on the current seed this drops exactly two rows —
+    that one, and Laguna Honda's senior-housing predevelopment, which is
+    likewise housing built on hospital land rather than hospital spending.
+    """
+    n = f"{program} {component}".lower()
+    return "housing" in n
+
+
 def main() -> int:
     places = load_places()
 
@@ -107,6 +121,8 @@ def main() -> int:
     # ── bond projects → named work at the place (program-level $) ──
     for pr in projects:
         name = pr["planned_project_name"]
+        if is_housing_bond(pr.get("bond") or "", pr.get("component_or_program") or ""):
+            continue
         m = match_place(name, places)
         if not m:
             continue

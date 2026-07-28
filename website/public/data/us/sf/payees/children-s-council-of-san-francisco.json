@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.727247+00:00",
+ "generated_at": "2026-07-28T11:43:47.691874+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,167 @@
  "top_departments": [
   "CFC Children & Families Commsn"
  ],
+ "profile": {
+  "n_vouchers": 2280,
+  "departments": [
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 639764746.55,
+    "n_vouchers": 216
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 365432083.64,
+    "n_vouchers": 741
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 110824408.01,
+    "n_vouchers": 287
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 16774388.4,
+    "n_vouchers": 14
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 15300159.8,
+    "n_vouchers": 451
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 4687876.04,
+    "n_vouchers": 101
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 4001888.13,
+    "n_vouchers": 377
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 426107.92,
+    "n_vouchers": 91
+   }
+  ],
+  "n_departments": 10,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 940397909.03,
+    "n_vouchers": 918
+   },
+   {
+    "code": "536210",
+    "label": "Day Care Assistance",
+    "spend_class": "unclear",
+    "usd": 73448737.67,
+    "n_vouchers": 227
+   },
+   {
+    "code": "537360",
+    "label": "Fcs Childcare Aid Payments",
+    "spend_class": "unclear",
+    "usd": 9465000.04,
+    "n_vouchers": 41
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 1254665.33,
+    "n_vouchers": 120
+   },
+   {
+    "code": "538000",
+    "label": "CBO Services - Budget",
+    "spend_class": "purchase",
+    "usd": 288767.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "501010",
+    "label": "Perm Salaries-Misc-Regular",
+    "spend_class": "unclear",
+    "usd": 23895.0,
+    "n_vouchers": 3
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 8963.32,
+    "n_vouchers": 3
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 2655.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 9,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 149195033.94,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 148217132.07,
+    "n_vouchers": 63
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 792933.5,
+    "n_vouchers": 22
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 184968.37,
+    "n_vouchers": 15
+   }
+  ]
+ },
+ "identity": {
+  "description": "Childrens Council Of San Francisco is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under human services.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Childrens Council Of San Francisco",
+  "ein": "942221305",
+  "ntee_code": "P200",
+  "ntee_label": "Human services",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/942221305",
+  "checked_at": "2026-07-27T23:35:17.514358+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000028798",
-   "title": "Workforce Compensation & Admin",
+   "title": "Workforce Compensation & Administration",
    "department": "DEC Dept of Early Childhood",
    "department_code": "DEC",
    "agreed_usd": 164346004.0,

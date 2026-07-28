@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T12:59:31.490651+00:00",
+ "generated_at": "2026-07-28T11:45:20.602845+00:00",
  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py → raw.us_sf_city_facilities → dbt_us_staging → seed_us_sf_place_facilities (reviewed crosswalk) → dbt_us_marts.mart_us_sf_place_facilities → export_sf_place_facilities.py",
  "unit": "USD",
  "note": "Structured facility identity per place, from the SF City Facilities registry (dataset nc68-ngbr) via the reviewed place↔facility crosswalk. Address/APN/ownership/floor-area/building-count — identity, not money.",
@@ -9,124 +9,8 @@
   "source_url": "https://data.sfgov.org/d/nc68-ngbr",
   "attribution": "City & County of San Francisco (General Services Agency)"
  },
- "count": 53,
+ "count": 88,
  "places": {
-  "asian-art-museum": {
-   "primary_name": "Asian Art Museum",
-   "primary_address": "200 LARKIN ST",
-   "primary_city": "San Francisco",
-   "primary_zip": "94102",
-   "primary_block_lot": "0353001",
-   "primary_department_name": "Asian Art Museum",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 185000,
-   "primary_latitude": 37.78019145500008,
-   "primary_longitude": -122.41635365599996,
-   "supervisor_district": 5,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 185000,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "0353001"
-   ],
-   "facilities": [
-    {
-     "facility_id": 143,
-     "common_name": "Asian Art Museum",
-     "block_lot": "0353001",
-     "gross_sq_ft": 185000,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "de-young-museum": {
-   "primary_name": "De Young Museum",
-   "primary_address": "50 HAGIWARA TEA GARDEN DR",
-   "primary_city": "San Francisco",
-   "primary_zip": "94117",
-   "primary_block_lot": "1700001",
-   "primary_department_name": "Fine Arts Museums",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 292500,
-   "primary_latitude": 37.77158354300008,
-   "primary_longitude": -122.46881241199998,
-   "supervisor_district": 7,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 292500,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "1700001"
-   ],
-   "facilities": [
-    {
-     "facility_id": 577,
-     "common_name": "De Young Museum",
-     "block_lot": "1700001",
-     "gross_sq_ft": 292500,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "legion-of-honor": {
-   "primary_name": "Palace of the Legion of Honor",
-   "primary_address": "100 34TH AVE",
-   "primary_city": "San Francisco",
-   "primary_zip": "94121",
-   "primary_block_lot": "1313028",
-   "primary_department_name": "Fine Arts Museums",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 117000,
-   "primary_latitude": 37.784568026000045,
-   "primary_longitude": -122.50073460599998,
-   "supervisor_district": 1,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 117000,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "1313028"
-   ],
-   "facilities": [
-    {
-     "facility_id": 1222,
-     "common_name": "Palace of the Legion of Honor",
-     "block_lot": "1313028",
-     "gross_sq_ft": 117000,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "sffd-station-1": {
-   "primary_name": "Fire Station #1",
-   "primary_address": "935 FOLSOM ST",
-   "primary_city": "San Francisco",
-   "primary_zip": "94105",
-   "primary_block_lot": "3753313",
-   "primary_department_name": "Fire Department",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": null,
-   "primary_latitude": 37.77945652500006,
-   "primary_longitude": -122.40412015999999,
-   "supervisor_district": 6,
-   "n_facilities": 1,
-   "total_gross_sq_ft": null,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "3753313"
-   ],
-   "facilities": [
-    {
-     "facility_id": 691,
-     "common_name": "Fire Station #1",
-     "block_lot": "3753313",
-     "gross_sq_ft": null,
-     "is_city_owned": true
-    }
-   ]
-  },
   "bill-graham-civic-auditorium": {
    "primary_name": "Bill Graham Civic Auditorium",
    "primary_address": "99 GROVE ST",
@@ -185,234 +69,234 @@
     }
    ]
   },
-  "muni-presidio-division": {
-   "primary_name": "Presidio Division Bldg",
-   "primary_address": "949 PRESIDIO AVE",
+  "war-memorial-opera-house": {
+   "primary_name": "Opera House",
+   "primary_address": "301 VAN NESS AVE",
    "primary_city": "San Francisco",
-   "primary_zip": "94115",
-   "primary_block_lot": "1072001",
-   "primary_department_name": "Municipal Transportation Agency",
+   "primary_zip": "94102",
+   "primary_block_lot": "0786A001",
+   "primary_department_name": "War Memorial",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 158381,
-   "primary_latitude": 37.78328404200005,
-   "primary_longitude": -122.44650720099997,
-   "supervisor_district": 2,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 158381,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "1072001"
-   ],
-   "facilities": [
-    {
-     "facility_id": 1341,
-     "common_name": "Presidio Division Bldg",
-     "block_lot": "1072001",
-     "gross_sq_ft": 158381,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "cable-car-barn": {
-   "primary_name": "CABLE CAR BARN",
-   "primary_address": "1201 MASON ST",
-   "primary_city": "San Francisco",
-   "primary_zip": "94108",
-   "primary_block_lot": "0190005",
-   "primary_department_name": "Municipal Transportation Agency",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 83741,
-   "primary_latitude": 37.79488460500005,
-   "primary_longitude": -122.41192017299994,
-   "supervisor_district": 3,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 83741,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "0190005"
-   ],
-   "facilities": [
-    {
-     "facility_id": 366,
-     "common_name": "CABLE CAR BARN",
-     "block_lot": "0190005",
-     "gross_sq_ft": 83741,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "ferry-building": {
-   "primary_name": "Fac. 274-175 - Ferry Building Clock Tower",
-   "primary_address": "SAN FRANCISCO FERRY BLDG",
-   "primary_city": "San Francisco",
-   "primary_zip": "94105",
-   "primary_block_lot": "9900070",
-   "primary_department_name": "Port",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 298488,
-   "primary_latitude": 37.795463590000054,
-   "primary_longitude": -122.393613518,
-   "supervisor_district": 3,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 298488,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "9900070"
-   ],
-   "facilities": [
-    {
-     "facility_id": 657,
-     "common_name": "Fac. 274-175 - Ferry Building Clock Tower",
-     "block_lot": "9900070",
-     "gross_sq_ft": 298488,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "maxine-hall-health-center": {
-   "primary_name": "Maxine Hall Health Center",
-   "primary_address": "1301 PIERCE ST",
-   "primary_city": "San Francisco",
-   "primary_zip": "94115",
-   "primary_block_lot": "0728005A",
-   "primary_department_name": "Public Health",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 20590,
-   "primary_latitude": 37.78223856200003,
-   "primary_longitude": -122.43603595199994,
+   "primary_gross_sq_ft": 315700,
+   "primary_latitude": 37.77861781800004,
+   "primary_longitude": -122.42073324599994,
    "supervisor_district": 5,
    "n_facilities": 1,
-   "total_gross_sq_ft": 20590,
+   "total_gross_sq_ft": 315700,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "0728005A"
+    "0786A001"
    ],
    "facilities": [
     {
-     "facility_id": 1073,
-     "common_name": "Maxine Hall Health Center",
-     "block_lot": "0728005A",
-     "gross_sq_ft": 20590,
+     "facility_id": 1212,
+     "common_name": "Opera House",
+     "block_lot": "0786A001",
+     "gross_sq_ft": 315700,
      "is_city_owned": true
     }
    ]
   },
-  "chinatown-public-health-center": {
-   "primary_name": "Chinatown Public Health Center",
-   "primary_address": "1490 MASON ST",
+  "tom-waddell-clinic": {
+   "primary_name": "Tom Waddell Health Clinic",
+   "primary_address": "50 DR TOM WADDELL PL",
    "primary_city": "San Francisco",
-   "primary_zip": "94133",
-   "primary_block_lot": "0159046",
+   "primary_zip": "94102",
+   "primary_block_lot": "0811001",
    "primary_department_name": "Public Health",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 22500,
-   "primary_latitude": 37.79715914600007,
-   "primary_longitude": -122.41164554799997,
-   "supervisor_district": 3,
+   "primary_gross_sq_ft": 15000,
+   "primary_latitude": 37.777977674000056,
+   "primary_longitude": -122.41879401699998,
+   "supervisor_district": 5,
    "n_facilities": 1,
-   "total_gross_sq_ft": 22500,
+   "total_gross_sq_ft": 15000,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "0159046"
+    "0811001"
    ],
    "facilities": [
     {
-     "facility_id": 468,
-     "common_name": "Chinatown Public Health Center",
-     "block_lot": "0159046",
-     "gross_sq_ft": 22500,
+     "facility_id": 1775,
+     "common_name": "Tom Waddell Health Clinic",
+     "block_lot": "0811001",
+     "gross_sq_ft": 15000,
      "is_city_owned": true
     }
    ]
   },
-  "southeast-health-center": {
-   "primary_name": "Southeast Health Center",
-   "primary_address": "2401 KEITH ST",
+  "civic-center-courthouse": {
+   "primary_name": "Civic Center Courthouse",
+   "primary_address": "400 MCALLISTER ST",
    "primary_city": "San Francisco",
-   "primary_zip": "94124",
-   "primary_block_lot": "4849016",
+   "primary_zip": "94102",
+   "primary_block_lot": "0766002",
+   "primary_department_name": "Superior Court",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 231000,
+   "primary_latitude": 37.780436491000046,
+   "primary_longitude": -122.41965995399994,
+   "supervisor_district": 5,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 231000,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0766002"
+   ],
+   "facilities": [
+    {
+     "facility_id": 487,
+     "common_name": "Civic Center Courthouse",
+     "block_lot": "0766002",
+     "gross_sq_ft": 231000,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "asian-art-museum": {
+   "primary_name": "Asian Art Museum",
+   "primary_address": "200 LARKIN ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94102",
+   "primary_block_lot": "0353001",
+   "primary_department_name": "Asian Art Museum",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 185000,
+   "primary_latitude": 37.78019145500008,
+   "primary_longitude": -122.41635365599996,
+   "supervisor_district": 5,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 185000,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0353001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 143,
+     "common_name": "Asian Art Museum",
+     "block_lot": "0353001",
+     "gross_sq_ft": 185000,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "veterans-building": {
+   "primary_name": "Veterans Building",
+   "primary_address": "401 VAN NESS AVE",
+   "primary_city": "San Francisco",
+   "primary_zip": "94102",
+   "primary_block_lot": "0786A001",
+   "primary_department_name": "War Memorial",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 247500,
+   "primary_latitude": 37.77952755500007,
+   "primary_longitude": -122.42098063099996,
+   "supervisor_district": 5,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 247500,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0786A001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1817,
+     "common_name": "Veterans Building",
+     "block_lot": "0786A001",
+     "gross_sq_ft": 247500,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "emergency-operations-center": {
+   "primary_name": "Emergency Operations Center",
+   "primary_address": "1011 TURK ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94102",
+   "primary_block_lot": "0759001",
+   "primary_department_name": "Emergency Management",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 56000,
+   "primary_latitude": 37.781103760000065,
+   "primary_longitude": -122.42608731699994,
+   "supervisor_district": 5,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 56000,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0759001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 582,
+     "common_name": "Emergency Operations Center",
+     "block_lot": "0759001",
+     "gross_sq_ft": 56000,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "brooks-hall": {
+   "primary_name": "Brooks Hall",
+   "primary_address": "30 DR CARLTON B GOODLETT PL",
+   "primary_city": "San Francisco",
+   "primary_zip": "94102",
+   "primary_block_lot": "0788001",
+   "primary_department_name": "Gsa - Real Estate Division",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 114789,
+   "primary_latitude": 37.77907985200005,
+   "primary_longitude": -122.41795446399999,
+   "supervisor_district": 5,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 114789,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0788001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 198,
+     "common_name": "Brooks Hall",
+     "block_lot": "0788001",
+     "gross_sq_ft": 114789,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "curry-senior-center": {
+   "primary_name": "Curry Senior Center",
+   "primary_address": "333 TURK ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94102",
+   "primary_block_lot": "0345015",
    "primary_department_name": "Public Health",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 14604,
-   "primary_latitude": 37.72564580400007,
-   "primary_longitude": -122.39200110399997,
-   "supervisor_district": 10,
+   "primary_gross_sq_ft": null,
+   "primary_latitude": 37.78252335700006,
+   "primary_longitude": -122.41450720199998,
+   "supervisor_district": 5,
    "n_facilities": 1,
-   "total_gross_sq_ft": 14604,
+   "total_gross_sq_ft": null,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "4849016"
+    "0345015"
    ],
    "facilities": [
     {
-     "facility_id": 1621,
-     "common_name": "Southeast Health Center",
-     "block_lot": "4849016",
-     "gross_sq_ft": 14604,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "sunset-branch-library": {
-   "primary_name": "Sunset Branch Library",
-   "primary_address": "1305 18TH AVE",
-   "primary_city": "San Francisco",
-   "primary_zip": "94122",
-   "primary_block_lot": "1773001",
-   "primary_department_name": "Public Library",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 9434,
-   "primary_latitude": 37.76334875500004,
-   "primary_longitude": -122.47631075399994,
-   "supervisor_district": 7,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 9434,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "1773001"
-   ],
-   "facilities": [
-    {
-     "facility_id": 1682,
-     "common_name": "Sunset Branch Library",
-     "block_lot": "1773001",
-     "gross_sq_ft": 9434,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "richmond-branch-library": {
-   "primary_name": "Richmond Branch Library",
-   "primary_address": "351 9TH AVE",
-   "primary_city": "San Francisco",
-   "primary_zip": "94118",
-   "primary_block_lot": "1441007",
-   "primary_department_name": "Public Library",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 13900,
-   "primary_latitude": 37.78184424500006,
-   "primary_longitude": -122.46809920399994,
-   "supervisor_district": 1,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 13900,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "1441007"
-   ],
-   "facilities": [
-    {
-     "facility_id": 1404,
-     "common_name": "Richmond Branch Library",
-     "block_lot": "1441007",
-     "gross_sq_ft": 13900,
+     "facility_id": 571,
+     "common_name": "Curry Senior Center",
+     "block_lot": "0345015",
+     "gross_sq_ft": null,
      "is_city_owned": true
     }
    ]
@@ -446,118 +330,176 @@
     }
    ]
   },
-  "north-beach-branch-library": {
-   "primary_name": "North Beach Branch Library",
-   "primary_address": "850 COLUMBUS AVE",
+  "davies-symphony-hall": {
+   "primary_name": "Davies Symphony Hall",
+   "primary_address": "201 VAN NESS AVE",
    "primary_city": "San Francisco",
-   "primary_zip": "94133",
-   "primary_block_lot": "0075001",
-   "primary_department_name": "Public Library",
+   "primary_zip": "94102",
+   "primary_block_lot": "0810001",
+   "primary_department_name": "War Memorial",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 8500,
-   "primary_latitude": 37.80253081500007,
-   "primary_longitude": -122.41313485899997,
+   "primary_gross_sq_ft": 203500,
+   "primary_latitude": 37.77767015100005,
+   "primary_longitude": -122.42047689199995,
+   "supervisor_district": 5,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 203500,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0810001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 576,
+     "common_name": "Davies Symphony Hall",
+     "block_lot": "0810001",
+     "gross_sq_ft": 203500,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "animal-care-and-control-facility": {
+   "primary_name": "Animal Care and Control Facility",
+   "primary_address": "1419 BRYANT ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94103",
+   "primary_block_lot": "3904002",
+   "primary_department_name": "Gsa - Real Estate Division",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 94963,
+   "primary_latitude": 37.76855730900007,
+   "primary_longitude": -122.41053360099994,
+   "supervisor_district": 9,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 94963,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "3904002"
+   ],
+   "facilities": [
+    {
+     "facility_id": 3312,
+     "common_name": "Animal Care and Control Facility",
+     "block_lot": "3904002",
+     "gross_sq_ft": 94963,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "old-mint": {
+   "primary_name": "Old Mint",
+   "primary_address": "88 5TH ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94103",
+   "primary_block_lot": "3704011",
+   "primary_department_name": "Gsa - Real Estate Division",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 93568,
+   "primary_latitude": 37.78272539300008,
+   "primary_longitude": -122.40723324999999,
+   "supervisor_district": 6,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 93568,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "3704011"
+   ],
+   "facilities": [
+    {
+     "facility_id": 3011,
+     "common_name": "Old Mint",
+     "block_lot": "3704011",
+     "gross_sq_ft": 93568,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "ferry-building": {
+   "primary_name": "Fac. 274-175 - Ferry Building Clock Tower",
+   "primary_address": "SAN FRANCISCO FERRY BLDG",
+   "primary_city": "San Francisco",
+   "primary_zip": "94105",
+   "primary_block_lot": "9900070",
+   "primary_department_name": "Port",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 298488,
+   "primary_latitude": 37.795463590000054,
+   "primary_longitude": -122.393613518,
    "supervisor_district": 3,
    "n_facilities": 1,
-   "total_gross_sq_ft": 8500,
+   "total_gross_sq_ft": 298488,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "0075001"
+    "9900070"
    ],
    "facilities": [
     {
-     "facility_id": 1188,
-     "common_name": "North Beach Branch Library",
-     "block_lot": "0075001",
-     "gross_sq_ft": 8500,
+     "facility_id": 657,
+     "common_name": "Fac. 274-175 - Ferry Building Clock Tower",
+     "block_lot": "9900070",
+     "gross_sq_ft": 298488,
      "is_city_owned": true
     }
    ]
   },
-  "bernal-heights-branch-library": {
-   "primary_name": "Bernal Heights Branch Library",
-   "primary_address": "500 CORTLAND AVE",
+  "sffd-station-1": {
+   "primary_name": "Fire Station #1",
+   "primary_address": "935 FOLSOM ST",
    "primary_city": "San Francisco",
-   "primary_zip": "94110",
-   "primary_block_lot": "5707027",
-   "primary_department_name": "Public Library",
+   "primary_zip": "94105",
+   "primary_block_lot": "3753313",
+   "primary_department_name": "Fire Department",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 8777,
-   "primary_latitude": 37.73885128400008,
-   "primary_longitude": -122.41610523099996,
-   "supervisor_district": 9,
+   "primary_gross_sq_ft": null,
+   "primary_latitude": 37.77945652500006,
+   "primary_longitude": -122.40412015999999,
+   "supervisor_district": 6,
    "n_facilities": 1,
-   "total_gross_sq_ft": 8777,
+   "total_gross_sq_ft": null,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "5707027"
+    "3753313"
    ],
    "facilities": [
     {
-     "facility_id": 179,
-     "common_name": "Bernal Heights Branch Library",
-     "block_lot": "5707027",
-     "gross_sq_ft": 8777,
+     "facility_id": 691,
+     "common_name": "Fire Station #1",
+     "block_lot": "3753313",
+     "gross_sq_ft": null,
      "is_city_owned": true
     }
    ]
   },
-  "mission-branch-library": {
-   "primary_name": "Mission Branch Library",
-   "primary_address": "300 BARTLETT ST",
+  "esprit-park": {
+   "primary_name": "Esprit Park Maintenance Facility",
+   "primary_address": "700 MINNESOTA ST",
    "primary_city": "San Francisco",
-   "primary_zip": "94110",
-   "primary_block_lot": "6515001",
-   "primary_department_name": "Public Library",
+   "primary_zip": "94107",
+   "primary_block_lot": "4061002",
+   "primary_department_name": "Recreation And Parks",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 10479,
-   "primary_latitude": 37.75196896600005,
-   "primary_longitude": -122.41982646399998,
-   "supervisor_district": 9,
+   "primary_gross_sq_ft": null,
+   "primary_latitude": 37.761104816000056,
+   "primary_longitude": -122.39101348699995,
+   "supervisor_district": 10,
    "n_facilities": 1,
-   "total_gross_sq_ft": 10479,
+   "total_gross_sq_ft": null,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "6515001"
+    "4061002"
    ],
    "facilities": [
     {
-     "facility_id": 1117,
-     "common_name": "Mission Branch Library",
-     "block_lot": "6515001",
-     "gross_sq_ft": 10479,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "excelsior-branch-library": {
-   "primary_name": "Excelsior Branch Library",
-   "primary_address": "4400 MISSION ST",
-   "primary_city": "San Francisco",
-   "primary_zip": "94112",
-   "primary_block_lot": "6797046",
-   "primary_department_name": "Public Library",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 8302,
-   "primary_latitude": 37.72713052100005,
-   "primary_longitude": -122.43331540999998,
-   "supervisor_district": 11,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 8302,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "6797046"
-   ],
-   "facilities": [
-    {
-     "facility_id": 651,
-     "common_name": "Excelsior Branch Library",
-     "block_lot": "6797046",
-     "gross_sq_ft": 8302,
+     "facility_id": 647,
+     "common_name": "Esprit Park Maintenance Facility",
+     "block_lot": "4061002",
+     "gross_sq_ft": null,
      "is_city_owned": true
     }
    ]
@@ -591,6 +533,499 @@
     }
    ]
   },
+  "cable-car-barn": {
+   "primary_name": "CABLE CAR BARN",
+   "primary_address": "1201 MASON ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94108",
+   "primary_block_lot": "0190005",
+   "primary_department_name": "Municipal Transportation Agency",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 83741,
+   "primary_latitude": 37.79488460500005,
+   "primary_longitude": -122.41192017299994,
+   "supervisor_district": 3,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 83741,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0190005"
+   ],
+   "facilities": [
+    {
+     "facility_id": 366,
+     "common_name": "CABLE CAR BARN",
+     "block_lot": "0190005",
+     "gross_sq_ft": 83741,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "sutter-stockton-parking-garage": {
+   "primary_name": "Sutter - Stockton Parking Garage",
+   "primary_address": "444 STOCKTON ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94108",
+   "primary_block_lot": "0286017",
+   "primary_department_name": "Municipal Transportation Agency",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 745000,
+   "primary_latitude": 37.78998905900005,
+   "primary_longitude": -122.40643611499996,
+   "supervisor_district": 3,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 745000,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0286017"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1697,
+     "common_name": "Sutter - Stockton Parking Garage",
+     "block_lot": "0286017",
+     "gross_sq_ft": 745000,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "next-door-shelter": {
+   "primary_name": "Next Door Shelter",
+   "primary_address": "1001 POLK ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94109",
+   "primary_block_lot": "0694004",
+   "primary_department_name": "Police Department",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 37125,
+   "primary_latitude": 37.786116452000044,
+   "primary_longitude": -122.42004904499998,
+   "supervisor_district": 3,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 37125,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0694004"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1182,
+     "common_name": "Next Door Shelter",
+     "block_lot": "0694004",
+     "gross_sq_ft": 37125,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "mission-dolores-park": {
+   "primary_name": "Mission Dolores Park Clubhouse",
+   "primary_address": "646 DOLORES ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94110",
+   "primary_block_lot": "3586001",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 2100,
+   "primary_latitude": 37.759575924000046,
+   "primary_longitude": -122.42686802499998,
+   "supervisor_district": 8,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 2100,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "3586001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1122,
+     "common_name": "Mission Dolores Park Clubhouse",
+     "block_lot": "3586001",
+     "gross_sq_ft": 2100,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "mission-branch-library": {
+   "primary_name": "Mission Branch Library",
+   "primary_address": "300 BARTLETT ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94110",
+   "primary_block_lot": "6515001",
+   "primary_department_name": "Public Library",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 10479,
+   "primary_latitude": 37.75196896600005,
+   "primary_longitude": -122.41982646399998,
+   "supervisor_district": 9,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 10479,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "6515001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1117,
+     "common_name": "Mission Branch Library",
+     "block_lot": "6515001",
+     "gross_sq_ft": 10479,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "potrero-division": {
+   "primary_name": "POTRERO DIVISION",
+   "primary_address": "2500 MARIPOSA ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94110",
+   "primary_block_lot": "3971001",
+   "primary_department_name": "Municipal Transportation Agency",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 192000,
+   "primary_latitude": 37.76332958300003,
+   "primary_longitude": -122.408792646,
+   "supervisor_district": 9,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 192000,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "3971001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 3027,
+     "common_name": "POTRERO DIVISION",
+     "block_lot": "3971001",
+     "gross_sq_ft": 192000,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "bernal-heights-branch-library": {
+   "primary_name": "Bernal Heights Branch Library",
+   "primary_address": "500 CORTLAND AVE",
+   "primary_city": "San Francisco",
+   "primary_zip": "94110",
+   "primary_block_lot": "5707027",
+   "primary_department_name": "Public Library",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 8777,
+   "primary_latitude": 37.73885128400008,
+   "primary_longitude": -122.41610523099996,
+   "supervisor_district": 9,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 8777,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "5707027"
+   ],
+   "facilities": [
+    {
+     "facility_id": 179,
+     "common_name": "Bernal Heights Branch Library",
+     "block_lot": "5707027",
+     "gross_sq_ft": 8777,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "fire-station-13": {
+   "primary_name": "Fire Station #13",
+   "primary_address": "530 SANSOME ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94111",
+   "primary_block_lot": "0206017",
+   "primary_department_name": "Fire Department",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 18790,
+   "primary_latitude": 37.79551871100006,
+   "primary_longitude": -122.40135015599998,
+   "supervisor_district": 3,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 18790,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0206017"
+   ],
+   "facilities": [
+    {
+     "facility_id": 695,
+     "common_name": "Fire Station #13",
+     "block_lot": "0206017",
+     "gross_sq_ft": 18790,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "ingleside-police-station": {
+   "primary_name": "Ingleside Police Station",
+   "primary_address": "1 SERGEANT JOHN V YOUNG ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94112",
+   "primary_block_lot": "3179011",
+   "primary_department_name": "Police Department",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 18500,
+   "primary_latitude": 37.72477013400004,
+   "primary_longitude": -122.44625104499994,
+   "supervisor_district": 11,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 18500,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "3179011"
+   ],
+   "facilities": [
+    {
+     "facility_id": 897,
+     "common_name": "Ingleside Police Station",
+     "block_lot": "3179011",
+     "gross_sq_ft": 18500,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "excelsior-branch-library": {
+   "primary_name": "Excelsior Branch Library",
+   "primary_address": "4400 MISSION ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94112",
+   "primary_block_lot": "6797046",
+   "primary_department_name": "Public Library",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 8302,
+   "primary_latitude": 37.72713052100005,
+   "primary_longitude": -122.43331540999998,
+   "supervisor_district": 11,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 8302,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "6797046"
+   ],
+   "facilities": [
+    {
+     "facility_id": 651,
+     "common_name": "Excelsior Branch Library",
+     "block_lot": "6797046",
+     "gross_sq_ft": 8302,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "fire-station-15": {
+   "primary_name": "Fire Station #15",
+   "primary_address": "1000 OCEAN AVE",
+   "primary_city": "San Francisco",
+   "primary_zip": "94112",
+   "primary_block_lot": "3180001",
+   "primary_department_name": "Fire Department",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 12138,
+   "primary_latitude": 37.723488631000066,
+   "primary_longitude": -122.45292662899999,
+   "supervisor_district": 7,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 12138,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "3180001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 697,
+     "common_name": "Fire Station #15",
+     "block_lot": "3180001",
+     "gross_sq_ft": 12138,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "castro-mission-health-center": {
+   "primary_name": "Castro Mission Health Center",
+   "primary_address": "3850 17TH ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94114",
+   "primary_block_lot": "3564049",
+   "primary_department_name": "Public Health",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 15258,
+   "primary_latitude": 37.76293833600005,
+   "primary_longitude": -122.43187105399994,
+   "supervisor_district": 8,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 15258,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "3564049"
+   ],
+   "facilities": [
+    {
+     "facility_id": 391,
+     "common_name": "Castro Mission Health Center",
+     "block_lot": "3564049",
+     "gross_sq_ft": 15258,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "randall-museum": {
+   "primary_name": "Randall Museum",
+   "primary_address": "199 MUSEUM WAY",
+   "primary_city": "San Francisco",
+   "primary_zip": "94114",
+   "primary_block_lot": "2615002",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 32030,
+   "primary_latitude": 37.76442323800006,
+   "primary_longitude": -122.43814775799996,
+   "supervisor_district": 8,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 32030,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "2615002"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1369,
+     "common_name": "Randall Museum",
+     "block_lot": "2615002",
+     "gross_sq_ft": 32030,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "eureka-valley-harvey-milk-branch-library": {
+   "primary_name": "Eureka Valley/Harvey Milk Memorial Library",
+   "primary_address": "1 JOSE SARRIA CT",
+   "primary_city": "San Francisco",
+   "primary_zip": "94114",
+   "primary_block_lot": "3564095",
+   "primary_department_name": "Public Library",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 6465,
+   "primary_latitude": 37.76406037000004,
+   "primary_longitude": -122.43188171699995,
+   "supervisor_district": 8,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 6465,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "3564095"
+   ],
+   "facilities": [
+    {
+     "facility_id": 648,
+     "common_name": "Eureka Valley/Harvey Milk Memorial Library",
+     "block_lot": "3564095",
+     "gross_sq_ft": 6465,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "muni-presidio-division": {
+   "primary_name": "Presidio Division Bldg",
+   "primary_address": "949 PRESIDIO AVE",
+   "primary_city": "San Francisco",
+   "primary_zip": "94115",
+   "primary_block_lot": "1072001",
+   "primary_department_name": "Municipal Transportation Agency",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 158381,
+   "primary_latitude": 37.78328404200005,
+   "primary_longitude": -122.44650720099997,
+   "supervisor_district": 2,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 158381,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "1072001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1341,
+     "common_name": "Presidio Division Bldg",
+     "block_lot": "1072001",
+     "gross_sq_ft": 158381,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "african-american-art-and-culture-complex": {
+   "primary_name": "African American Art and Culture Complex",
+   "primary_address": "762 FULTON ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94115",
+   "primary_block_lot": "0781010",
+   "primary_department_name": "Arts Commission",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 34031,
+   "primary_latitude": 37.778280764000044,
+   "primary_longitude": -122.42923542199998,
+   "supervisor_district": 5,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 34031,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0781010"
+   ],
+   "facilities": [
+    {
+     "facility_id": 93,
+     "common_name": "African American Art and Culture Complex",
+     "block_lot": "0781010",
+     "gross_sq_ft": 34031,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "maxine-hall-health-center": {
+   "primary_name": "Maxine Hall Health Center",
+   "primary_address": "1301 PIERCE ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94115",
+   "primary_block_lot": "0728005A",
+   "primary_department_name": "Public Health",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 20590,
+   "primary_latitude": 37.78223856200003,
+   "primary_longitude": -122.43603595199994,
+   "supervisor_district": 5,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 20590,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0728005A"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1073,
+     "common_name": "Maxine Hall Health Center",
+     "block_lot": "0728005A",
+     "gross_sq_ft": 20590,
+     "is_city_owned": true
+    }
+   ]
+  },
   "sunset-reservoir": {
    "primary_name": "Sunset Reservoir",
    "primary_address": "1949 24TH AVE",
@@ -620,116 +1055,60 @@
     }
    ]
   },
-  "southeast-treatment-plant": {
-   "primary_name": "Water Pollution Control",
-   "primary_address": "PIER 34 1/2",
+  "fire-station-18": {
+   "primary_name": "Fire Station #18",
+   "primary_address": "1935 32ND AVE",
    "primary_city": "San Francisco",
-   "primary_zip": "94107",
-   "primary_block_lot": "9900070",
-   "primary_department_name": "Public Utilities Commission",
+   "primary_zip": "94116",
+   "primary_block_lot": "2102006",
+   "primary_department_name": "Fire Department",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": null,
-   "primary_latitude": 37.784125277000044,
-   "primary_longitude": -122.387727816,
-   "supervisor_district": 6,
+   "primary_gross_sq_ft": 15900,
+   "primary_latitude": 37.75098636300004,
+   "primary_longitude": -122.49054390699996,
+   "supervisor_district": 4,
    "n_facilities": 1,
-   "total_gross_sq_ft": null,
+   "total_gross_sq_ft": 15900,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "9900070"
+    "2102006"
    ],
    "facilities": [
     {
-     "facility_id": 3023,
-     "common_name": "Water Pollution Control",
-     "block_lot": "9900070",
-     "gross_sq_ft": null,
+     "facility_id": 700,
+     "common_name": "Fire Station #18",
+     "block_lot": "2102006",
+     "gross_sq_ft": 15900,
      "is_city_owned": true
     }
    ]
   },
-  "sunol-water-temple": {
-   "primary_name": "Sunol Water Temple",
-   "primary_address": "505 PALOMA WAY",
-   "primary_city": "Sunol",
-   "primary_zip": "94586",
-   "primary_block_lot": null,
-   "primary_department_name": "Public Utilities Commission",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": null,
-   "primary_latitude": 37.58547290400003,
-   "primary_longitude": -121.88550640999995,
-   "supervisor_district": null,
-   "n_facilities": 1,
-   "total_gross_sq_ft": null,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [],
-   "facilities": [
-    {
-     "facility_id": 1681,
-     "common_name": "Sunol Water Temple",
-     "block_lot": null,
-     "gross_sq_ft": null,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "glen-canyon-park": {
-   "primary_name": "Glen Park Rec Center",
-   "primary_address": "70 ELK ST",
+  "south-sunset-clubhouse": {
+   "primary_name": "South Sunset Clubhouse",
+   "primary_address": "2601 40TH AVE",
    "primary_city": "San Francisco",
-   "primary_zip": "94131",
-   "primary_block_lot": "7560002",
+   "primary_zip": "94116",
+   "primary_block_lot": "2456001",
    "primary_department_name": "Recreation And Parks",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 15200,
-   "primary_latitude": 37.73713482800008,
-   "primary_longitude": -122.44084568999995,
-   "supervisor_district": 8,
+   "primary_gross_sq_ft": 1500,
+   "primary_latitude": 37.738077944000054,
+   "primary_longitude": -122.49818747199998,
+   "supervisor_district": 4,
    "n_facilities": 1,
-   "total_gross_sq_ft": 15200,
+   "total_gross_sq_ft": 1500,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "7560002"
+    "2456001"
    ],
    "facilities": [
     {
-     "facility_id": 811,
-     "common_name": "Glen Park Rec Center",
-     "block_lot": "7560002",
-     "gross_sq_ft": 15200,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "coit-tower": {
-   "primary_name": "Coit Tower",
-   "primary_address": "1 TELEGRAPH HILL BLVD",
-   "primary_city": "San Francisco",
-   "primary_zip": "94133",
-   "primary_block_lot": "0086012",
-   "primary_department_name": "Recreation And Parks",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 5687,
-   "primary_latitude": 37.80236885100004,
-   "primary_longitude": -122.40576431799997,
-   "supervisor_district": 3,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 5687,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "0086012"
-   ],
-   "facilities": [
-    {
-     "facility_id": 501,
-     "common_name": "Coit Tower",
-     "block_lot": "0086012",
-     "gross_sq_ft": 5687,
+     "facility_id": 1617,
+     "common_name": "South Sunset Clubhouse",
+     "block_lot": "2456001",
+     "gross_sq_ft": 1500,
      "is_city_owned": true
     }
    ]
@@ -759,64 +1138,6 @@
      "common_name": "Buena Vista Park Bathrooms",
      "block_lot": "2601001",
      "gross_sq_ft": 400,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "washington-square": {
-   "primary_name": "Washington Square Bathrooms",
-   "primary_address": "600 COLUMBUS AVE",
-   "primary_city": "San Francisco",
-   "primary_zip": "94133",
-   "primary_block_lot": "0102001",
-   "primary_department_name": "Recreation And Parks",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 292,
-   "primary_latitude": 37.80096862000005,
-   "primary_longitude": -122.41054163099994,
-   "supervisor_district": 3,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 292,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "0102001"
-   ],
-   "facilities": [
-    {
-     "facility_id": 1839,
-     "common_name": "Washington Square Bathrooms",
-     "block_lot": "0102001",
-     "gross_sq_ft": 292,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "conservatory-of-flowers": {
-   "primary_name": "Conservatory of Flowers",
-   "primary_address": "100 JOHN F KENNEDY DR",
-   "primary_city": "San Francisco",
-   "primary_zip": "94117",
-   "primary_block_lot": "1263011",
-   "primary_department_name": "Recreation And Parks",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 27900,
-   "primary_latitude": 37.772642519000044,
-   "primary_longitude": -122.46020818699998,
-   "supervisor_district": 1,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 27900,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "1263011"
-   ],
-   "facilities": [
-    {
-     "facility_id": 522,
-     "common_name": "Conservatory of Flowers",
-     "block_lot": "1263011",
-     "gross_sq_ft": 27900,
      "is_city_owned": true
     }
    ]
@@ -879,220 +1200,587 @@
     }
    ]
   },
-  "randall-museum": {
-   "primary_name": "Randall Museum",
-   "primary_address": "199 MUSEUM WAY",
+  "conservatory-of-flowers": {
+   "primary_name": "Conservatory of Flowers",
+   "primary_address": "100 JOHN F KENNEDY DR",
    "primary_city": "San Francisco",
-   "primary_zip": "94114",
-   "primary_block_lot": "2615002",
+   "primary_zip": "94117",
+   "primary_block_lot": "1263011",
    "primary_department_name": "Recreation And Parks",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 32030,
-   "primary_latitude": 37.76442323800006,
-   "primary_longitude": -122.43814775799996,
-   "supervisor_district": 8,
+   "primary_gross_sq_ft": 27900,
+   "primary_latitude": 37.772642519000044,
+   "primary_longitude": -122.46020818699998,
+   "supervisor_district": 1,
    "n_facilities": 1,
-   "total_gross_sq_ft": 32030,
+   "total_gross_sq_ft": 27900,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "2615002"
+    "1263011"
    ],
    "facilities": [
     {
-     "facility_id": 1369,
-     "common_name": "Randall Museum",
-     "block_lot": "2615002",
-     "gross_sq_ft": 32030,
+     "facility_id": 522,
+     "common_name": "Conservatory of Flowers",
+     "block_lot": "1263011",
+     "gross_sq_ft": 27900,
      "is_city_owned": true
     }
    ]
   },
-  "mission-dolores-park": {
-   "primary_name": "Mission Dolores Park Clubhouse",
-   "primary_address": "646 DOLORES ST",
+  "de-young-museum": {
+   "primary_name": "De Young Museum",
+   "primary_address": "50 HAGIWARA TEA GARDEN DR",
    "primary_city": "San Francisco",
-   "primary_zip": "94110",
-   "primary_block_lot": "3586001",
-   "primary_department_name": "Recreation And Parks",
+   "primary_zip": "94117",
+   "primary_block_lot": "1700001",
+   "primary_department_name": "Fine Arts Museums",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 2100,
-   "primary_latitude": 37.759575924000046,
-   "primary_longitude": -122.42686802499998,
-   "supervisor_district": 8,
+   "primary_gross_sq_ft": 292500,
+   "primary_latitude": 37.77158354300008,
+   "primary_longitude": -122.46881241199998,
+   "supervisor_district": 7,
    "n_facilities": 1,
-   "total_gross_sq_ft": 2100,
+   "total_gross_sq_ft": 292500,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "3586001"
+    "1700001"
    ],
    "facilities": [
     {
-     "facility_id": 1122,
-     "common_name": "Mission Dolores Park Clubhouse",
-     "block_lot": "3586001",
-     "gross_sq_ft": 2100,
+     "facility_id": 577,
+     "common_name": "De Young Museum",
+     "block_lot": "1700001",
+     "gross_sq_ft": 292500,
      "is_city_owned": true
     }
    ]
   },
-  "veterans-building": {
-   "primary_name": "Veterans Building",
-   "primary_address": "401 VAN NESS AVE",
+  "richmond-branch-library": {
+   "primary_name": "Richmond Branch Library",
+   "primary_address": "351 9TH AVE",
    "primary_city": "San Francisco",
-   "primary_zip": "94102",
-   "primary_block_lot": "0786A001",
-   "primary_department_name": "War Memorial",
+   "primary_zip": "94118",
+   "primary_block_lot": "1441007",
+   "primary_department_name": "Public Library",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 247500,
-   "primary_latitude": 37.77952755500007,
-   "primary_longitude": -122.42098063099996,
-   "supervisor_district": 5,
+   "primary_gross_sq_ft": 13900,
+   "primary_latitude": 37.78184424500006,
+   "primary_longitude": -122.46809920399994,
+   "supervisor_district": 1,
    "n_facilities": 1,
-   "total_gross_sq_ft": 247500,
+   "total_gross_sq_ft": 13900,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "0786A001"
+    "1441007"
    ],
    "facilities": [
     {
-     "facility_id": 1817,
-     "common_name": "Veterans Building",
-     "block_lot": "0786A001",
-     "gross_sq_ft": 247500,
+     "facility_id": 1404,
+     "common_name": "Richmond Branch Library",
+     "block_lot": "1441007",
+     "gross_sq_ft": 13900,
      "is_city_owned": true
     }
    ]
   },
-  "war-memorial-opera-house": {
-   "primary_name": "Opera House",
-   "primary_address": "301 VAN NESS AVE",
+  "legion-of-honor": {
+   "primary_name": "Palace of the Legion of Honor",
+   "primary_address": "100 34TH AVE",
    "primary_city": "San Francisco",
-   "primary_zip": "94102",
-   "primary_block_lot": "0786A001",
-   "primary_department_name": "War Memorial",
+   "primary_zip": "94121",
+   "primary_block_lot": "1313028",
+   "primary_department_name": "Fine Arts Museums",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 315700,
-   "primary_latitude": 37.77861781800004,
-   "primary_longitude": -122.42073324599994,
-   "supervisor_district": 5,
+   "primary_gross_sq_ft": 117000,
+   "primary_latitude": 37.784568026000045,
+   "primary_longitude": -122.50073460599998,
+   "supervisor_district": 1,
    "n_facilities": 1,
-   "total_gross_sq_ft": 315700,
+   "total_gross_sq_ft": 117000,
    "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "0786A001"
+    "1313028"
    ],
    "facilities": [
     {
-     "facility_id": 1212,
-     "common_name": "Opera House",
-     "block_lot": "0786A001",
-     "gross_sq_ft": 315700,
+     "facility_id": 1222,
+     "common_name": "Palace of the Legion of Honor",
+     "block_lot": "1313028",
+     "gross_sq_ft": 117000,
      "is_city_owned": true
     }
    ]
   },
-  "davies-symphony-hall": {
-   "primary_name": "Davies Symphony Hall",
-   "primary_address": "201 VAN NESS AVE",
+  "fire-station-14": {
+   "primary_name": "Fire Station #14",
+   "primary_address": "551 26TH AVE",
    "primary_city": "San Francisco",
-   "primary_zip": "94102",
-   "primary_block_lot": "0810001",
-   "primary_department_name": "War Memorial",
-   "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 203500,
-   "primary_latitude": 37.77767015100005,
-   "primary_longitude": -122.42047689199995,
-   "supervisor_district": 5,
-   "n_facilities": 1,
-   "total_gross_sq_ft": 203500,
-   "n_owned": 1,
-   "n_leased": 0,
-   "apn_list": [
-    "0810001"
-   ],
-   "facilities": [
-    {
-     "facility_id": 576,
-     "common_name": "Davies Symphony Hall",
-     "block_lot": "0810001",
-     "gross_sq_ft": 203500,
-     "is_city_owned": true
-    }
-   ]
-  },
-  "sffd-division-of-training": {
-   "primary_name": "Fire Division of Training  - Treasure Island",
-   "primary_address": "600 AVENUE M",
-   "primary_city": "San Francisco",
-   "primary_zip": "94130",
-   "primary_block_lot": null,
+   "primary_zip": "94121",
+   "primary_block_lot": "1518009",
    "primary_department_name": "Fire Department",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 5040,
-   "primary_latitude": 37.82705932600004,
-   "primary_longitude": -122.36705181999997,
-   "supervisor_district": 6,
-   "n_facilities": 2,
-   "total_gross_sq_ft": 5040,
-   "n_owned": 2,
+   "primary_gross_sq_ft": 15900,
+   "primary_latitude": 37.77899264900003,
+   "primary_longitude": -122.48606162099998,
+   "supervisor_district": 1,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 15900,
+   "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "3594059"
+    "1518009"
    ],
    "facilities": [
     {
-     "facility_id": 688,
-     "common_name": "Fire Division of Training  - Treasure Island",
-     "block_lot": null,
-     "gross_sq_ft": 5040,
+     "facility_id": 696,
+     "common_name": "Fire Station #14",
+     "block_lot": "1518009",
+     "gross_sq_ft": 15900,
      "is_city_owned": true
-    },
+    }
+   ]
+  },
+  "anza-branch-library": {
+   "primary_name": "Anza Branch Library",
+   "primary_address": "550 37TH AVE",
+   "primary_city": "San Francisco",
+   "primary_zip": "94121",
+   "primary_block_lot": "1508012B",
+   "primary_department_name": "Public Library",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 8222,
+   "primary_latitude": 37.77856950700004,
+   "primary_longitude": -122.49725809499995,
+   "supervisor_district": 1,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 8222,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "1508012B"
+   ],
+   "facilities": [
     {
-     "facility_id": 689,
-     "common_name": "Fire Division of Training - Folsom St",
-     "block_lot": "3594059",
+     "facility_id": 128,
+     "common_name": "Anza Branch Library",
+     "block_lot": "1508012B",
+     "gross_sq_ft": 8222,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "sunset-branch-library": {
+   "primary_name": "Sunset Branch Library",
+   "primary_address": "1305 18TH AVE",
+   "primary_city": "San Francisco",
+   "primary_zip": "94122",
+   "primary_block_lot": "1773001",
+   "primary_department_name": "Public Library",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 9434,
+   "primary_latitude": 37.76334875500004,
+   "primary_longitude": -122.47631075399994,
+   "supervisor_district": 7,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 9434,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "1773001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1682,
+     "common_name": "Sunset Branch Library",
+     "block_lot": "1773001",
+     "gross_sq_ft": 9434,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "ocean-park-health-center": {
+   "primary_name": "Ocean Park Health Center",
+   "primary_address": "1351 24TH AVE",
+   "primary_city": "San Francisco",
+   "primary_zip": "94122",
+   "primary_block_lot": "1779007",
+   "primary_department_name": "Public Health",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 16257,
+   "primary_latitude": 37.762347315000056,
+   "primary_longitude": -122.48267555499996,
+   "supervisor_district": 4,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 16257,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "1779007"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1199,
+     "common_name": "Ocean Park Health Center",
+     "block_lot": "1779007",
+     "gross_sq_ft": 16257,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "moscone-rec-center": {
+   "primary_name": "Moscone Rec Center",
+   "primary_address": "1800 CHESTNUT ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94123",
+   "primary_block_lot": "0469001",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 8929,
+   "primary_latitude": 37.80145337000005,
+   "primary_longitude": -122.43304599299995,
+   "supervisor_district": 2,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 8929,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0469001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 2049,
+     "common_name": "Moscone Rec Center",
+     "block_lot": "0469001",
+     "gross_sq_ft": 8929,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "southeast-health-center": {
+   "primary_name": "Southeast Health Center",
+   "primary_address": "2401 KEITH ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94124",
+   "primary_block_lot": "4849016",
+   "primary_department_name": "Public Health",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 14604,
+   "primary_latitude": 37.72564580400007,
+   "primary_longitude": -122.39200110399997,
+   "supervisor_district": 10,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 14604,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "4849016"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1621,
+     "common_name": "Southeast Health Center",
+     "block_lot": "4849016",
+     "gross_sq_ft": 14604,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "900-innes": {
+   "primary_name": "900 Innes Ave",
+   "primary_address": "900 INNES AVE",
+   "primary_city": "San Francisco",
+   "primary_zip": "94124",
+   "primary_block_lot": "4629A010",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": null,
+   "primary_latitude": 37.73218698100004,
+   "primary_longitude": -122.37578143499996,
+   "supervisor_district": 10,
+   "n_facilities": 1,
+   "total_gross_sq_ft": null,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "4629A010"
+   ],
+   "facilities": [
+    {
+     "facility_id": 3339,
+     "common_name": "900 Innes Ave",
+     "block_lot": "4629A010",
      "gross_sq_ft": null,
      "is_city_owned": true
     }
    ]
   },
-  "moscone-center": {
-   "primary_name": "MOSCONE CENTER (South)",
-   "primary_address": "747 HOWARD ST",
+  "office-of-the-chief-medical-examiner-building": {
+   "primary_name": "Office of the Chief Medical Examiner Building",
+   "primary_address": "1 NEWHALL ST",
    "primary_city": "San Francisco",
-   "primary_zip": "94103",
-   "primary_block_lot": "3734091",
-   "primary_department_name": "Gsa - Convention Facilities Management",
+   "primary_zip": "94124",
+   "primary_block_lot": "4570030",
+   "primary_department_name": "Gsa - Medical Examiner",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 650000,
-   "primary_latitude": 37.783864032000054,
-   "primary_longitude": -122.40126286799995,
-   "supervisor_district": 6,
-   "n_facilities": 2,
-   "total_gross_sq_ft": 905444,
-   "n_owned": 2,
+   "primary_gross_sq_ft": 46000,
+   "primary_latitude": 37.73956591900003,
+   "primary_longitude": -122.37775235099997,
+   "supervisor_district": 10,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 46000,
+   "n_owned": 1,
    "n_leased": 0,
    "apn_list": [
-    "3734091",
-    "3735060"
+    "4570030"
    ],
    "facilities": [
     {
-     "facility_id": 1140,
-     "common_name": "MOSCONE CENTER (South)",
-     "block_lot": "3734091",
-     "gross_sq_ft": 650000,
+     "facility_id": 763,
+     "common_name": "Office of the Chief Medical Examiner Building",
+     "block_lot": "4570030",
+     "gross_sq_ft": 46000,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "glen-canyon-park": {
+   "primary_name": "Glen Park Rec Center",
+   "primary_address": "70 ELK ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94131",
+   "primary_block_lot": "7560002",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 15200,
+   "primary_latitude": 37.73713482800008,
+   "primary_longitude": -122.44084568999995,
+   "supervisor_district": 8,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 15200,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "7560002"
+   ],
+   "facilities": [
+    {
+     "facility_id": 811,
+     "common_name": "Glen Park Rec Center",
+     "block_lot": "7560002",
+     "gross_sq_ft": 15200,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "chinatown-public-health-center": {
+   "primary_name": "Chinatown Public Health Center",
+   "primary_address": "1490 MASON ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94133",
+   "primary_block_lot": "0159046",
+   "primary_department_name": "Public Health",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 22500,
+   "primary_latitude": 37.79715914600007,
+   "primary_longitude": -122.41164554799997,
+   "supervisor_district": 3,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 22500,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0159046"
+   ],
+   "facilities": [
+    {
+     "facility_id": 468,
+     "common_name": "Chinatown Public Health Center",
+     "block_lot": "0159046",
+     "gross_sq_ft": 22500,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "north-beach-branch-library": {
+   "primary_name": "North Beach Branch Library",
+   "primary_address": "850 COLUMBUS AVE",
+   "primary_city": "San Francisco",
+   "primary_zip": "94133",
+   "primary_block_lot": "0075001",
+   "primary_department_name": "Public Library",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 8500,
+   "primary_latitude": 37.80253081500007,
+   "primary_longitude": -122.41313485899997,
+   "supervisor_district": 3,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 8500,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0075001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1188,
+     "common_name": "North Beach Branch Library",
+     "block_lot": "0075001",
+     "gross_sq_ft": 8500,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "washington-square": {
+   "primary_name": "Washington Square Bathrooms",
+   "primary_address": "600 COLUMBUS AVE",
+   "primary_city": "San Francisco",
+   "primary_zip": "94133",
+   "primary_block_lot": "0102001",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 292,
+   "primary_latitude": 37.80096862000005,
+   "primary_longitude": -122.41054163099994,
+   "supervisor_district": 3,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 292,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0102001"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1839,
+     "common_name": "Washington Square Bathrooms",
+     "block_lot": "0102001",
+     "gross_sq_ft": 292,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "coit-tower": {
+   "primary_name": "Coit Tower",
+   "primary_address": "1 TELEGRAPH HILL BLVD",
+   "primary_city": "San Francisco",
+   "primary_zip": "94133",
+   "primary_block_lot": "0086012",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 5687,
+   "primary_latitude": 37.80236885100004,
+   "primary_longitude": -122.40576431799997,
+   "supervisor_district": 3,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 5687,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "0086012"
+   ],
+   "facilities": [
+    {
+     "facility_id": 501,
+     "common_name": "Coit Tower",
+     "block_lot": "0086012",
+     "gross_sq_ft": 5687,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "public-safety-building": {
+   "primary_name": "Public Safety Building",
+   "primary_address": "1245 3RD ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94158",
+   "primary_block_lot": "8719007",
+   "primary_department_name": "Police Department",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 185855,
+   "primary_latitude": 37.772553913000024,
+   "primary_longitude": -122.38918310799994,
+   "supervisor_district": 6,
+   "n_facilities": 1,
+   "total_gross_sq_ft": 185855,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [
+    "8719007"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1309,
+     "common_name": "Public Safety Building",
+     "block_lot": "8719007",
+     "gross_sq_ft": 185855,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "sunol-water-temple": {
+   "primary_name": "Sunol Water Temple",
+   "primary_address": "505 PALOMA WAY",
+   "primary_city": "Sunol",
+   "primary_zip": "94586",
+   "primary_block_lot": null,
+   "primary_department_name": "Public Utilities Commission",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": null,
+   "primary_latitude": 37.58547290400003,
+   "primary_longitude": -121.88550640999995,
+   "supervisor_district": null,
+   "n_facilities": 1,
+   "total_gross_sq_ft": null,
+   "n_owned": 1,
+   "n_leased": 0,
+   "apn_list": [],
+   "facilities": [
+    {
+     "facility_id": 1681,
+     "common_name": "Sunol Water Temple",
+     "block_lot": null,
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "sharp-park": {
+   "primary_name": "SHARP PARK GARDENERS SHED",
+   "primary_address": "2600 FRANCISCO BLVD",
+   "primary_city": "Pacifica",
+   "primary_zip": "94044",
+   "primary_block_lot": "016392120",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": null,
+   "primary_latitude": 37.62531098900007,
+   "primary_longitude": -122.48846401099996,
+   "supervisor_district": null,
+   "n_facilities": 2,
+   "total_gross_sq_ft": null,
+   "n_owned": 2,
+   "n_leased": 0,
+   "apn_list": [
+    "016392120"
+   ],
+   "facilities": [
+    {
+     "facility_id": 3163,
+     "common_name": "SHARP PARK GARDENERS SHED",
+     "block_lot": "016392120",
+     "gross_sq_ft": null,
      "is_city_owned": true
     },
     {
-     "facility_id": 1139,
-     "common_name": "MOSCONE CENTER Parking Garage",
-     "block_lot": "3735060",
-     "gross_sq_ft": 255444,
+     "facility_id": 3162,
+     "common_name": "SHARP PARK CLUBHOUSE & REST.",
+     "block_lot": "016392120",
+     "gross_sq_ft": null,
      "is_city_owned": true
     }
    ]
@@ -1134,6 +1822,42 @@
     }
    ]
   },
+  "portsmouth-square": {
+   "primary_name": "Portsmouth Square Clubhouse",
+   "primary_address": "733 KEARNY ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94111",
+   "primary_block_lot": "0209017",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 1860,
+   "primary_latitude": 37.794593054000075,
+   "primary_longitude": -122.40558573499999,
+   "supervisor_district": 3,
+   "n_facilities": 2,
+   "total_gross_sq_ft": 2496,
+   "n_owned": 2,
+   "n_leased": 0,
+   "apn_list": [
+    "0209017"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1324,
+     "common_name": "Portsmouth Square Clubhouse",
+     "block_lot": "0209017",
+     "gross_sq_ft": 1860,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1323,
+     "common_name": "Portsmouth Square Bathrooms",
+     "block_lot": "0209017",
+     "gross_sq_ft": 636,
+     "is_city_owned": true
+    }
+   ]
+  },
   "glen-park-branch-library": {
    "primary_name": "Park Branch Library",
    "primary_address": "1833 PAGE ST",
@@ -1171,81 +1895,155 @@
     }
    ]
   },
-  "portsmouth-square": {
-   "primary_name": "Portsmouth Square Clubhouse",
-   "primary_address": "733 KEARNY ST",
+  "park-branch-library": {
+   "primary_name": "Park Branch Library",
+   "primary_address": "1833 PAGE ST",
    "primary_city": "San Francisco",
-   "primary_zip": "94111",
-   "primary_block_lot": "0209017",
-   "primary_department_name": "Recreation And Parks",
+   "primary_zip": "94117",
+   "primary_block_lot": "1229031",
+   "primary_department_name": "Public Library",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 1860,
-   "primary_latitude": 37.794593054000075,
-   "primary_longitude": -122.40558573499999,
-   "supervisor_district": 3,
+   "primary_gross_sq_ft": 8825,
+   "primary_latitude": 37.770135518000075,
+   "primary_longitude": -122.45100115999998,
+   "supervisor_district": 5,
    "n_facilities": 2,
-   "total_gross_sq_ft": 2496,
+   "total_gross_sq_ft": 16010,
    "n_owned": 2,
    "n_leased": 0,
    "apn_list": [
-    "0209017"
+    "1229031",
+    "6745073"
    ],
    "facilities": [
     {
-     "facility_id": 1324,
-     "common_name": "Portsmouth Square Clubhouse",
-     "block_lot": "0209017",
-     "gross_sq_ft": 1860,
+     "facility_id": 1228,
+     "common_name": "Park Branch Library",
+     "block_lot": "1229031",
+     "gross_sq_ft": 8825,
      "is_city_owned": true
     },
     {
-     "facility_id": 1323,
-     "common_name": "Portsmouth Square Bathrooms",
-     "block_lot": "0209017",
-     "gross_sq_ft": 636,
+     "facility_id": 808,
+     "common_name": "Glen Park Branch Library",
+     "block_lot": "6745073",
+     "gross_sq_ft": 7185,
      "is_city_owned": true
     }
    ]
   },
-  "marina-green": {
-   "primary_name": "Marina Green Shops/Restaurants",
-   "primary_address": "1 YACHT RD",
+  "southeast-treatment-plant": {
+   "primary_name": "Southeast Waste Water Treatment Plant",
+   "primary_address": "1700 JERROLD AVE",
    "primary_city": "San Francisco",
-   "primary_zip": "94123",
-   "primary_block_lot": "0900003",
-   "primary_department_name": "Recreation And Parks",
+   "primary_zip": "94124",
+   "primary_block_lot": "5313002",
+   "primary_department_name": "Public Utilities Commission",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 1000,
-   "primary_latitude": 37.80700236100006,
-   "primary_longitude": -122.44565731699998,
-   "supervisor_district": 2,
-   "n_facilities": 3,
-   "total_gross_sq_ft": 2000,
-   "n_owned": 3,
+   "primary_gross_sq_ft": null,
+   "primary_latitude": 37.74072825800005,
+   "primary_longitude": -122.39101897699999,
+   "supervisor_district": 10,
+   "n_facilities": 2,
+   "total_gross_sq_ft": null,
+   "n_owned": 2,
    "n_leased": 0,
    "apn_list": [
-    "0900003"
+    "5313002",
+    "9900070"
    ],
    "facilities": [
     {
-     "facility_id": 1056,
-     "common_name": "Marina Green Shops/Restaurants",
-     "block_lot": "0900003",
-     "gross_sq_ft": 1000,
+     "facility_id": 1358,
+     "common_name": "Southeast Waste Water Treatment Plant",
+     "block_lot": "5313002",
+     "gross_sq_ft": null,
      "is_city_owned": true
     },
     {
-     "facility_id": 1054,
-     "common_name": "Marina Green Bathrooms East",
-     "block_lot": "0900003",
-     "gross_sq_ft": 500,
+     "facility_id": 3023,
+     "common_name": "Water Pollution Control",
+     "block_lot": "9900070",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "sffd-division-of-training": {
+   "primary_name": "Fire Division of Training  - Treasure Island",
+   "primary_address": "600 AVENUE M",
+   "primary_city": "San Francisco",
+   "primary_zip": "94130",
+   "primary_block_lot": null,
+   "primary_department_name": "Fire Department",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 5040,
+   "primary_latitude": 37.82705932600004,
+   "primary_longitude": -122.36705181999997,
+   "supervisor_district": 6,
+   "n_facilities": 2,
+   "total_gross_sq_ft": 5040,
+   "n_owned": 2,
+   "n_leased": 0,
+   "apn_list": [
+    "3594059"
+   ],
+   "facilities": [
+    {
+     "facility_id": 688,
+     "common_name": "Fire Division of Training  - Treasure Island",
+     "block_lot": null,
+     "gross_sq_ft": 5040,
      "is_city_owned": true
     },
     {
-     "facility_id": 1055,
-     "common_name": "Marina Green Bathrooms West",
-     "block_lot": "0900003",
-     "gross_sq_ft": 500,
+     "facility_id": 689,
+     "common_name": "Fire Division of Training - Folsom St",
+     "block_lot": "3594059",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "balboa-park": {
+   "primary_name": "Balboa Park Community Pool",
+   "primary_address": "51 HAVELOCK ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94112",
+   "primary_block_lot": "3179011",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 19925,
+   "primary_latitude": 37.72634633900003,
+   "primary_longitude": -122.44318335599996,
+   "supervisor_district": 11,
+   "n_facilities": 3,
+   "total_gross_sq_ft": 19925,
+   "n_owned": 3,
+   "n_leased": 0,
+   "apn_list": [
+    "3179011"
+   ],
+   "facilities": [
+    {
+     "facility_id": 155,
+     "common_name": "Balboa Park Community Pool",
+     "block_lot": "3179011",
+     "gross_sq_ft": 19925,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 156,
+     "common_name": "Balboa Park East Bathrooms",
+     "block_lot": "3179011",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 157,
+     "common_name": "Balboa Park West Bathrooms",
+     "block_lot": "3179011",
+     "gross_sq_ft": null,
      "is_city_owned": true
     }
    ]
@@ -1293,52 +2091,88 @@
     }
    ]
   },
-  "pier-39": {
-   "primary_name": "Pier 39 - Retail Shops",
-   "primary_address": "2 BEACH ST",
+  "marina-green": {
+   "primary_name": "Marina Green Shops/Restaurants",
+   "primary_address": "1 YACHT RD",
    "primary_city": "San Francisco",
-   "primary_zip": "94133",
-   "primary_block_lot": "9900070",
-   "primary_department_name": "Port",
+   "primary_zip": "94123",
+   "primary_block_lot": "0900003",
+   "primary_department_name": "Recreation And Parks",
    "primary_is_city_owned": true,
-   "primary_gross_sq_ft": 261972,
-   "primary_latitude": 37.81000729800007,
-   "primary_longitude": -122.41035284899999,
-   "supervisor_district": 3,
-   "n_facilities": 4,
-   "total_gross_sq_ft": 532244,
-   "n_owned": 4,
+   "primary_gross_sq_ft": 1000,
+   "primary_latitude": 37.80700236100006,
+   "primary_longitude": -122.44565731699998,
+   "supervisor_district": 2,
+   "n_facilities": 3,
+   "total_gross_sq_ft": 2000,
+   "n_owned": 3,
    "n_leased": 0,
    "apn_list": [
-    "9900070"
+    "0900003"
    ],
    "facilities": [
     {
-     "facility_id": 1916,
-     "common_name": "Pier 39 - Retail Shops",
-     "block_lot": "9900070",
-     "gross_sq_ft": 261972,
+     "facility_id": 1056,
+     "common_name": "Marina Green Shops/Restaurants",
+     "block_lot": "0900003",
+     "gross_sq_ft": 1000,
      "is_city_owned": true
     },
     {
-     "facility_id": 1722,
-     "common_name": "SWL 311 Pier 39 Garage",
-     "block_lot": null,
-     "gross_sq_ft": 242304,
+     "facility_id": 1054,
+     "common_name": "Marina Green Bathrooms East",
+     "block_lot": "0900003",
+     "gross_sq_ft": 500,
      "is_city_owned": true
     },
     {
-     "facility_id": 1917,
-     "common_name": "Pier 39 - Underwater World",
-     "block_lot": "9900070",
-     "gross_sq_ft": 18900,
+     "facility_id": 1055,
+     "common_name": "Marina Green Bathrooms West",
+     "block_lot": "0900003",
+     "gross_sq_ft": 500,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "palace-of-fine-arts": {
+   "primary_name": "Palace Of Fine Arts",
+   "primary_address": "3601 LYON ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94123",
+   "primary_block_lot": "0916002",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": null,
+   "primary_latitude": 37.80281810500003,
+   "primary_longitude": -122.44916839499996,
+   "supervisor_district": 2,
+   "n_facilities": 3,
+   "total_gross_sq_ft": 28300,
+   "n_owned": 3,
+   "n_leased": 0,
+   "apn_list": [
+    "0916002"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1220,
+     "common_name": "Palace of Fine Arts -Theater",
+     "block_lot": "0916002",
+     "gross_sq_ft": 28300,
      "is_city_owned": true
     },
     {
-     "facility_id": 1918,
-     "common_name": "Pier 39 1/2 Marginal Wharf",
-     "block_lot": "9900070",
-     "gross_sq_ft": 9068,
+     "facility_id": 1219,
+     "common_name": "Palace Of Fine Arts",
+     "block_lot": "0916002",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3075,
+     "common_name": "Palace Of Fine Arts - Rotunda",
+     "block_lot": "0916002",
+     "gross_sq_ft": null,
      "is_city_owned": true
     }
    ]
@@ -1438,6 +2272,163 @@
      "facility_id": 2046,
      "common_name": "Lake Merced maintenance facility 2",
      "block_lot": "7283004",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "pier-45": {
+   "primary_name": "Pier 45 - Shed B",
+   "primary_address": "PIER 45",
+   "primary_city": "San Francisco",
+   "primary_zip": "94133",
+   "primary_block_lot": "9900070",
+   "primary_department_name": "Port",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": null,
+   "primary_latitude": 37.809744472000034,
+   "primary_longitude": -122.41782759899996,
+   "supervisor_district": 3,
+   "n_facilities": 4,
+   "total_gross_sq_ft": null,
+   "n_owned": 4,
+   "n_leased": 0,
+   "apn_list": [
+    "9900070"
+   ],
+   "facilities": [
+    {
+     "facility_id": 3082,
+     "common_name": "Pier 45 - Shed B",
+     "block_lot": "9900070",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3081,
+     "common_name": "Pier 45 - Shed A",
+     "block_lot": "9900070",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3083,
+     "common_name": "Pier 45 - Shed C",
+     "block_lot": "9900070",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3084,
+     "common_name": "Pier 45 - Shed D",
+     "block_lot": "9900070",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "pier-39": {
+   "primary_name": "Pier 39 - Retail Shops",
+   "primary_address": "2 BEACH ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94133",
+   "primary_block_lot": "9900070",
+   "primary_department_name": "Port",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 261972,
+   "primary_latitude": 37.81000729800007,
+   "primary_longitude": -122.41035284899999,
+   "supervisor_district": 3,
+   "n_facilities": 4,
+   "total_gross_sq_ft": 532244,
+   "n_owned": 4,
+   "n_leased": 0,
+   "apn_list": [
+    "9900070"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1916,
+     "common_name": "Pier 39 - Retail Shops",
+     "block_lot": "9900070",
+     "gross_sq_ft": 261972,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1722,
+     "common_name": "SWL 311 Pier 39 Garage",
+     "block_lot": null,
+     "gross_sq_ft": 242304,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1917,
+     "common_name": "Pier 39 - Underwater World",
+     "block_lot": "9900070",
+     "gross_sq_ft": 18900,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1918,
+     "common_name": "Pier 39 1/2 Marginal Wharf",
+     "block_lot": "9900070",
+     "gross_sq_ft": 9068,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "pier-27": {
+   "primary_name": "PIER 27 SHED",
+   "primary_address": "PIER 27",
+   "primary_city": "San Francisco",
+   "primary_zip": "94111",
+   "primary_block_lot": "9900070",
+   "primary_department_name": "Port",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": null,
+   "primary_latitude": 37.804835437000065,
+   "primary_longitude": -122.40117517299996,
+   "supervisor_district": 3,
+   "n_facilities": 5,
+   "total_gross_sq_ft": 436042,
+   "n_owned": 5,
+   "n_leased": 0,
+   "apn_list": [
+    "9900070"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1289,
+     "common_name": "Pier 27  - Port’s primary cruise terminal.",
+     "block_lot": "9900070",
+     "gross_sq_ft": 420690,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 31,
+     "common_name": "2275 | Pier 27 Adm/Pier 29 Annex",
+     "block_lot": "9900070",
+     "gross_sq_ft": 11800,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1290,
+     "common_name": "Pier 27 - Office Annex",
+     "block_lot": "9900070",
+     "gross_sq_ft": 3552,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3229,
+     "common_name": "PIER 27 SHED",
+     "block_lot": "9900070",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3228,
+     "common_name": "PIER 27 OFFICE BUILDING",
+     "block_lot": "9900070",
      "gross_sq_ft": null,
      "is_city_owned": true
     }
@@ -1749,6 +2740,84 @@
     }
    ]
   },
+  "lincoln-park": {
+   "primary_name": "Lincoln Park Tank",
+   "primary_address": "39TH AVE & CLEMENT ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94121",
+   "primary_block_lot": "1313028",
+   "primary_department_name": "Recreation And Parks",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": null,
+   "primary_latitude": 37.784258410000064,
+   "primary_longitude": -122.49832261499995,
+   "supervisor_district": 1,
+   "n_facilities": 8,
+   "total_gross_sq_ft": 6053,
+   "n_owned": 8,
+   "n_leased": 0,
+   "apn_list": [
+    "1313028"
+   ],
+   "facilities": [
+    {
+     "facility_id": 1011,
+     "common_name": "Lincoln Park Golf Course Clubhouse",
+     "block_lot": "1313028",
+     "gross_sq_ft": 2000,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3006,
+     "common_name": "Lincoln Park Golf Cart Bldg",
+     "block_lot": "1313028",
+     "gross_sq_ft": 1920,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1013,
+     "common_name": "Lincoln Park Maintenance Buildings",
+     "block_lot": "1313028",
+     "gross_sq_ft": 1125,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1017,
+     "common_name": "Lincoln Park Sm Maint Bldg",
+     "block_lot": "1313028",
+     "gross_sq_ft": 684,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1014,
+     "common_name": "Lincoln Park Pump Station",
+     "block_lot": "1313028",
+     "gross_sq_ft": 324,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1018,
+     "common_name": "Lincoln Park Tank",
+     "block_lot": "1313028",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1015,
+     "common_name": "Lincoln Park Restrooms - 300 34th Ave",
+     "block_lot": "1313028",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1016,
+     "common_name": "Lincoln Park Restrooms - 32nd/Clement",
+     "block_lot": "1313028",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    }
+   ]
+  },
   "camp-mather": {
    "primary_name": "Camp Mather",
    "primary_address": "25250 MATHER RD",
@@ -1822,6 +2891,265 @@
      "facility_id": 383,
      "common_name": "Camp Mather Stage",
      "block_lot": "681600100",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "moscone-center": {
+   "primary_name": "Moscone West",
+   "primary_address": "747 HOWARD ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94103",
+   "primary_block_lot": "3724035",
+   "primary_department_name": "Gsa - Convention Facilities Management",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 775000,
+   "primary_latitude": 37.78325090200008,
+   "primary_longitude": -122.40328578099997,
+   "supervisor_district": 6,
+   "n_facilities": 9,
+   "total_gross_sq_ft": 2337073,
+   "n_owned": 9,
+   "n_leased": 0,
+   "apn_list": [
+    "3724035",
+    "3735060",
+    "0469001",
+    "3734091",
+    "3723115"
+   ],
+   "facilities": [
+    {
+     "facility_id": 2050,
+     "common_name": "Moscone West",
+     "block_lot": "3724035",
+     "gross_sq_ft": 775000,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1140,
+     "common_name": "MOSCONE CENTER (South)",
+     "block_lot": "3734091",
+     "gross_sq_ft": 650000,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 221,
+     "common_name": "MOSCONE NORTH",
+     "block_lot": "3723115",
+     "gross_sq_ft": 520000,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1139,
+     "common_name": "MOSCONE CENTER Parking Garage",
+     "block_lot": "3735060",
+     "gross_sq_ft": 255444,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1141,
+     "common_name": "Moscone Esplanade Ballroom",
+     "block_lot": "3734091",
+     "gross_sq_ft": 126000,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 2049,
+     "common_name": "Moscone Rec Center",
+     "block_lot": "0469001",
+     "gross_sq_ft": 8929,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1143,
+     "common_name": "Moscone Maintenance Facility",
+     "block_lot": "0469001",
+     "gross_sq_ft": 1200,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1138,
+     "common_name": "Moscone Bathrooms",
+     "block_lot": "0469001",
+     "gross_sq_ft": 500,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1142,
+     "common_name": "Moscone Fieldhouse and Bleachers",
+     "block_lot": "0469001",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "pier-80": {
+   "primary_name": "Pier 80 - Entry Canopy",
+   "primary_address": "271 CESAR CHAVEZ ST",
+   "primary_city": "San Francisco",
+   "primary_zip": "94124",
+   "primary_block_lot": "4304002",
+   "primary_department_name": "Port",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 11040,
+   "primary_latitude": 37.748940176000076,
+   "primary_longitude": -122.38139561499997,
+   "supervisor_district": 10,
+   "n_facilities": 9,
+   "total_gross_sq_ft": 17404,
+   "n_owned": 9,
+   "n_leased": 0,
+   "apn_list": [
+    "4304002"
+   ],
+   "facilities": [
+    {
+     "facility_id": 2013,
+     "common_name": "Pier 80 - Entry Canopy",
+     "block_lot": "4304002",
+     "gross_sq_ft": 11040,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 2015,
+     "common_name": "Pier 80 - Terminal Office",
+     "block_lot": "4304002",
+     "gross_sq_ft": 3552,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 2014,
+     "common_name": "Pier 80 - Office Bldg #2",
+     "block_lot": "4304002",
+     "gross_sq_ft": 1406,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 2016,
+     "common_name": "Pier 80 Office Bldg #1",
+     "block_lot": "4304002",
+     "gross_sq_ft": 1406,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3092,
+     "common_name": "Pier 80 - Gear & Maintenance Building",
+     "block_lot": "4304002",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3093,
+     "common_name": "Pier 80 - Service Building",
+     "block_lot": "4304002",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3094,
+     "common_name": "Pier 80 - Shed A",
+     "block_lot": "4304002",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3095,
+     "common_name": "Pier 80 - Shed D",
+     "block_lot": "4304002",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3096,
+     "common_name": "Pier 80 Administration Building",
+     "block_lot": "4304002",
+     "gross_sq_ft": null,
+     "is_city_owned": true
+    }
+   ]
+  },
+  "pier-96": {
+   "primary_name": "1960 | Pier 96",
+   "primary_address": "PIER 96",
+   "primary_city": "San Francisco",
+   "primary_zip": "94124",
+   "primary_block_lot": "4502A002",
+   "primary_department_name": "Port",
+   "primary_is_city_owned": true,
+   "primary_gross_sq_ft": 256361,
+   "primary_latitude": 37.74013457700005,
+   "primary_longitude": -122.36980458899995,
+   "supervisor_district": 10,
+   "n_facilities": 9,
+   "total_gross_sq_ft": 488373,
+   "n_owned": 9,
+   "n_leased": 0,
+   "apn_list": [
+    "4502A002"
+   ],
+   "facilities": [
+    {
+     "facility_id": 23,
+     "common_name": "1960 | Pier 96",
+     "block_lot": "4502A002",
+     "gross_sq_ft": 256361,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1297,
+     "common_name": "Pier 96 - Recycling/LASH Terminal",
+     "block_lot": "4502A002",
+     "gross_sq_ft": 186604,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1295,
+     "common_name": "Pier 96 - Maintenance Building",
+     "block_lot": "4502A002",
+     "gross_sq_ft": 25320,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1293,
+     "common_name": "Pier 96 - Entry Canopy",
+     "block_lot": "4502A002",
+     "gross_sq_ft": 10000,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1294,
+     "common_name": "Pier 96 - Exit Canopy",
+     "block_lot": "4502A002",
+     "gross_sq_ft": 5950,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1298,
+     "common_name": "Pier 96 - Storage",
+     "block_lot": "4502A002",
+     "gross_sq_ft": 1922,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1296,
+     "common_name": "Pier 96 - Office/Restroom",
+     "block_lot": "4502A002",
+     "gross_sq_ft": 1716,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 1299,
+     "common_name": "Pier 96 - Truck Scales",
+     "block_lot": "4502A002",
+     "gross_sq_ft": 500,
+     "is_city_owned": true
+    },
+    {
+     "facility_id": 3098,
+     "common_name": "Pier 96 - Administration Building",
+     "block_lot": "4502A002",
      "gross_sq_ft": null,
      "is_city_owned": true
     }

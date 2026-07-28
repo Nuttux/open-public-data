@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.736570+00:00",
+ "generated_at": "2026-07-28T11:43:47.708097+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "WWE Wastewater Enterprise"
  ],
+ "profile": {
+  "n_vouchers": 13975,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 65625362.74,
+    "n_vouchers": 1640
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 33059442.62,
+    "n_vouchers": 343
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 14808160.11,
+    "n_vouchers": 964
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 13108941.6,
+    "n_vouchers": 3148
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 9258574.1,
+    "n_vouchers": 826
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 8616642.02,
+    "n_vouchers": 885
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 8417496.0,
+    "n_vouchers": 878
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 6500637.83,
+    "n_vouchers": 740
+   }
+  ],
+  "n_departments": 45,
+  "categories": [
+   {
+    "code": "528010",
+    "label": "Scavenger Services",
+    "spend_class": "purchase",
+    "usd": 79124267.9,
+    "n_vouchers": 5905
+   },
+   {
+    "code": "OTHER_REC",
+    "label": "Other Receivables",
+    "spend_class": "ledger",
+    "usd": 4981642.06,
+    "n_vouchers": 50
+   },
+   {
+    "code": "528990",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 3616007.82,
+    "n_vouchers": 143
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 2798370.25,
+    "n_vouchers": 81
+   },
+   {
+    "code": "527070",
+    "label": "Env Contractor-Consulting Svcs",
+    "spend_class": "purchase",
+    "usd": 2542785.6,
+    "n_vouchers": 179
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 915745.46,
+    "n_vouchers": 58
+   },
+   {
+    "code": "528000",
+    "label": "Maint Svcs-Bldgs & Impvts-Bdgt",
+    "spend_class": "purchase",
+    "usd": 506335.41,
+    "n_vouchers": 22
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 294546.0,
+    "n_vouchers": 80
+   }
+  ],
+  "n_categories": 23,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 10020124.34,
+  "n_recent_lines": 36,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Scavenger Services",
+    "spend_class": "purchase",
+    "usd": 1872340.83,
+    "n_vouchers": 62
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Receivables",
+    "spend_class": "ledger",
+    "usd": 1649275.18,
+    "n_vouchers": 16
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "label": "Scavenger Services",
+    "spend_class": "purchase",
+    "usd": 1358350.22,
+    "n_vouchers": 25
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Scavenger Services",
+    "spend_class": "purchase",
+    "usd": 1011888.41,
+    "n_vouchers": 91
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Scavenger Services",
+    "spend_class": "purchase",
+    "usd": 970600.83,
+    "n_vouchers": 101
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Scavenger Services",
+    "spend_class": "purchase",
+    "usd": 714201.36,
+    "n_vouchers": 77
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

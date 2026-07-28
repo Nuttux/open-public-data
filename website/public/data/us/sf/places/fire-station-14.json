@@ -1,0 +1,306 @@
+{
+ "generated_at": "2026-07-28T12:23:47.806800+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "fire-station-14",
+ "name": "Fire Station #14",
+ "kind": "Fire station",
+ "family": "fire",
+ "address": "551 26th Ave",
+ "lat": 37.778993,
+ "lon": -122.486062,
+ "owning_dept": {
+  "name": "Fire Department",
+  "code": "FIR"
+ },
+ "facility": {
+  "primary_name": "Fire Station #14",
+  "primary_address": "551 26TH AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94121",
+  "primary_block_lot": "1518009",
+  "primary_department_name": "Fire Department",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 15900,
+  "primary_latitude": 37.77899264900003,
+  "primary_longitude": -122.48606162099998,
+  "supervisor_district": 1,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 15900,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "1518009"
+  ],
+  "facilities": [
+   {
+    "facility_id": 696,
+    "common_name": "Fire Station #14",
+    "block_lot": "1518009",
+    "gross_sq_ft": 15900,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": "/img/us/sf/places/fire-station-14.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/fire-station-14.jpg",
+  "source": "sf-fire.org",
+  "source_url": "https://sf-fire.org/fire-station/san-francisco-fire-station-14",
+  "license": "UNVERIFIED",
+  "license_url": "",
+  "license_verified": false,
+  "provisional": true,
+  "author": "Bing",
+  "resolved_via": "web-search",
+  "fetched_at": "2026-07-27T23:46:22.214755+00:00"
+ },
+ "summary_en": "Fire Station 14 stands at 551 26th Avenue on a 6,600-square-foot lot in the Richmond, listed each year in the city's register of the real property it owns. Its recent history is a renovation paid for in two halves. In 1998 the Finance Committee released $483,259 of 1992 Fire Protection Bond proceeds towards the station's construction contract, and on the same day a further $1,062,741 from a second source, bringing the project to $1,546,000; the building permit that followed, at $826,000, covers a seismic upgrade, a remodelled dormitory, an added locker room and a new roof. Why the work was needed is in the record. The 1990 survey of post-earthquake damage to general fund city buildings itemises cracks in the exterior wall front and rear, cracks in the backyard concrete pad, water coming through the retaining wall and into the apparatus floor through the second-floor atrium, and cracks in the roof — with the next action listed as negotiating the cost with the Federal Emergency Management Agency. Since then the station's permits have been about staying operational: replacing the apparatus bay doors with four-fold doors in 2018, and a standby generator carrying a minimum 72 hours of fuel.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "FIR",
+   "name": "Fire Department",
+   "total_usd": 513912614.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "FIR",
+   "name": "Fire Department",
+   "total_compensation_usd": 477279432.76,
+   "n_employees": 2054,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "realpropertyowne2001sanf",
+   "title": "Real property owned by the City and County of San Francisco / Real Estate Department",
+   "creator": "San Francisco (Calif.). Real Estate Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station 14",
+   "ocr_excerpts": [
+    "H SCHOOL SLOPE PROTECTION AT EL CAMINO DEL SEAL ROCK & EL CAMINO MAR DEL MAR SF Unified School District (SFUSD) Public Works 144,000 552 001 004 1461 1483 STATION 34 ANZA LIBRARY STATION 14 499 41 ST AVENUE FIRE STATION #34 550 37TH AVENUE ANZA LIBRARY 551 26TH AVENUE FIRE STATION #14 Fire Department Public Library Fire Department 5,410 GEARY OFF-STREET PARKING Wof 18TH AVE & GEARY STREET GEARY OFF-STREET PARKING Real Estate/ Administrative Services 18,000 001 012B 6,600 009 Includes Block 1518. Lot 010 STATION 1 4: See Block 1 51 6. Lot 009 for details 0 1 0",
+    "O LAND DESCRIPTION (with Facilities) ADDRESS JURISDICTION LANDAREA (Sq. Ft) PRESIDIO JR HIGH SCHOOL 450 30TH AVENUE SF Unified School Oistncl {SFUSD) FISCAL YEAR 2002-2003 LOT BLOCK SLOPE PROTECTION AT EL CAMINO DEL SEAL ROCK & EL CAMINO Public Works MAR FIRE STATION #34 ANZA LIBRARY FIRE STATION #14 GEARY OFF-STREET PARKING DEL MAR 499 41ST AVENUE 550 37TH AVENUE 551 26TH AVENUE Fire Department FIRE STATION #14: See Block 1518, Lot 009 for details. tiwe Services ,„ „„ ARGONNE PLAYGROUND GEARY OFF-STREET PARKING: See Block 1526. Lot 002 for details FIRE STATION #31 Asset transler Irom 91 1 Communication System Bond Sale. 8TH AVE SUBSTATION ARGUELLO MINI PARK RICHMOND POLICE STATION 441 12TH AVENUE",
+    "2425 25TH AVE ANC 1 EUCALYPTUS DR LAKESIDE SCHOOL 016 7295 2501 EQUIPMENT UNIT HEADQUARTERS 001 4279 2641 25TH ST MISSION EDUCATION CENTER 002 4277 2789 251hsf C-MED FACILITY 013 3101 25TH ST GARFIELO SQUARE 001 6523 3101 GARFIELD SQUARE (ROW) 002 6523 551 26TH AVE FIRE STATION #14 26TH AVE an: ' VICENTE ST PARKSIDE SQUARE 001 2469 3860 26TH ST FIRE STATION #1 1 6551 27TH AVE anc FULTON ST FULTON PLAYGROUND — — — ~ 1670 \" 28TH AVE anc 1 LAWTONST SUNSET PLAYGROUND 001 1915 28TH AVE anc 1 ORTEGA ST SUNSET RESERVOIR WATER FACILITIES 001 2107 69B 2N",
+    "uitclaimed from CCSF to SFUSD; 99-year lease to Rec-Park SLOPE PROTECTION AT EL CAMINO DEL MAR 450 30TH AVENUE PRESIDIO JR. HIGH SCHOOL SEAL ROCK & EL CAMINO DEL MAR SF Unified School District (SFUSD) Public Works 144,000 552 001 004 1461 1483 FIRE STATION #34 ANZA LIBRARY FIRE STATION #14 GEARY OFF-STREET PARKING ARGONNE PLAYGROUND 499 41 ST AVENUE FIRE STATION #34 550 37TH AVENUE ANZA LIBRARY 551 26TH AVENUE FIRE STATION #14 418 18TH AVE GEAR Y OFF-STREET PARKING W of 18TH AVE & GEARY STREET ARGONNE CLUBHOUSE Fire Department Public Library Fire Department 5,410 18,000 001 012B 6,600 009 Includes Block 1518. Lol 010 FIRE STATION #14: See Block 1518, Lot 009 for details. 010 Real Estate/ Administrative Services Recreation and Park 12,000 002 Includes Block 1526. Lot 028; 1526-028A. 36,000 007 1494 1508 1518 1518 1526 1526 Page 34 REAL PROPERTY OWNED BY THE CITY AND COUNTY OF SAN FRANCISCO LAND DESCRIPTION ta» F",
+    "Garage MISSION BRANCH LIBRARY NOE VALLEY OFFSTREET PAR"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.04,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.54,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/realpropertyowne2001sanf",
+   "deep_link": "https://archive.org/details/realpropertyowne2001sanf?q=Fire+Station+14",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The city's property register, giving the station's address, lot and land area."
+  },
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2004",
+   "title": "Real property owned by the city and county of San Francisco / 2004",
+   "creator": null,
+   "year": 2004,
+   "pool": "dl",
+   "matched_alias": "Fire Station 14",
+   "ocr_excerpts": [
+    "or details. 049 1439 CLEMENT OFF-STREET PARKING E OF 9TH AVE & CLEMENT Real Estate/ Administrative Services 9,000 028 1440 RICHMOND BRANCH LIBRARY GEARY OFF-STREET PARKING PRESIDIO JR. HIGH SCHOOL Quitclaimed from CCSF to SFUSD; 99-year lease to Rec-Park SLOPE PROTECTION AT EL CAMINO DEL MAR FIRE STATION #34 ANZA LIBRARY FIRE STATION #14 GEARY OFF-STREET PARKING ARGONNE PLAYGROUND STREET CLEMENT OFF-STREET PARKING 351 9TH AVENUE RICHMOND BRANCH LIBRARY N of GEARY & 21ST AVENUE 450 30TH AVENUE PRESIDIO JR. HIGH SCHOOL SEAL ROCK & EL CAMINO DEL MAR 499 41ST AVENUE FIRE STATION #34 550 37TH AVENUE ANZA LIBRARY 551 26TH AVENUE FIRE STATION #14 418 18TH AVE GEARY OFF-STREET PARKING W of 18TH AVE & GEARY STREET ARGONNE CLUBHOUSE Includes Block 1440, Lot 029; 1440-030. CLEMENT OFF-STREET PARKING: See Block 1440, Lot 028 for details. 029 CLEMENT OFF-STREET PARKING: See Block 1440, Lot 028 for details. 030 Public Library 36,000 007 PRESIDIO PARKWAY: See Block 1373, Lot 001 for details. 001 Real Estate/ Administrative Services Ueyhe 020 SF Unified School District (SFUSD) 144,000 001 Public Works 552 004 Fire Department 5,410 001 Public Library 18,000 012B Fire Department 6,600 009 Includes Block 1518, Lot 010. FIRE STATION #14: See Block 1518, Lot 009 for details. 010 Real Estate/ Administrative Services 12,000 002 Includes Block 1526, Lot 028; 1526-028A Recreation and Park 36,000 007 1461 1483 1494 1508 1518 1518 1526 1526 Page 34 REAL PROPERTY OWNED BY THE CITY AND COUNTY OF SAN FRANCISCO FISCAL YEAR 2003-2004 LAND DESCRIPTI",
+    "9 1350 25TH AVE JEFFERSON NURSERY 007 1779 2550 25TH AVE PARKSIDE CURRICULUM CENTER (CLOSED) 008 2425 25TH AVE EUCALYPTUS DR LAKESIDE SCHOOL 016 7295 2501 25TH ST EQUIPMENT UNIT HEADQUARTERS 001 4279 2641 25TH ST MISSION EDUCATION CENTER 002 4277 3101 25TH ST GARFIELD SQUARE 001 6523 3101 25TH ST GARFIELD SQUARE (ROW) 002 6523 551 26TH AVE FIRE STATION #14 009 1518 26TH AVE VICENTE ST PARKSIDE SQUARE 001 2469 3880 26TH ST FIRE STATION #11 043 6551 27TH AVE FULTON ST FULTON PLAYGROUND 009 4670 28TH AVE LAWTON ST SUNSET PLAYGROUND 001 1915 28TH AVE ORTEGA ST SUNSET RESERVOIR WATER FACILITIES 001 2107 698 2ND ST FIRE DEPT HQTRS/SALT WATER PUMPING STATION #1 006 3788 450 30TH AVE PRESIDIO JR. HIG"
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": 4.69,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.69,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2004",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2004?q=Fire+Station+14",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "A later edition of the same register, with the station's block and lot unchanged."
+  },
+  {
+   "identifier": "postquakerestor1519sanf_1",
+   "title": "Post-quake restoration of general fund city buildings : City and County of San Francisco, April 15, 1990",
+   "creator": "San Francisco, CA : Department of Public Works, Bureau of Engineering",
+   "year": 1990,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station 14",
+   "ocr_excerpts": [
+    "Station #6, 135 Sanchez Street El -37 Fire Station #7, 2300 Folsom Street El-41 Fire Station #8, 38 Bluxome Street El -36 Fire Station #10, 655 Presidio Avenue El -54 Fire Station #11, 3880 26th Street El -32 Fire Station #12, 1145 Stanyan Street El -43 Fire Station #13, 530 Sansome Street El -65 Fire Station #14, 551 26th Avenue El -50 Fire Station #15, 1000 Ocean Avenue El-38 Fire Station #16, 2251 Greenwich Street El-60 Fire Station #17, 1295 Shafter Avenue El -34 Fire Station #18, 1935 32nd Avenue El-48 Fire Station #19, 390 Buckingham Way El-184 Fire Station #20, 285 Olympia Way El -39 Fire Station #2",
+    "4/15/90 EARTHQUAKE REPAIRS FOR THIS BLDG INCL IN \"EQ. DAMAGE REPAIRS FOR VAR. CITY OWNED BLDGS, CONTRACT #1\" 1 NEXT ACTION; NEGOTIATE COST WITH FEMA LINE ITEM NO.: El-50 BOA JOB ORDER #: 2051Q ARCHITECT: M. DORIAN SITE: 551 26THAV AGENCY: FIRE CUENT: J. LYNCH BUILDING NO.: 31-710 BUILDING NAME: FIRE STATION #14 Damage to Building: cracks in exterior wall, front and rear, cracks in the backyard concrete pad. water is COMING THROUGH THE RETAINING WALL. WATER IS COMING INTO THE APPARATUS FLOOR THROUGH THE SECOND FLOOR ATRIIM. ADD: CRACKS IN ROOF. Action Taken: 11/02/89 BUILDING INSPECTED BY BECK AND FE"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.17,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.17,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/postquakerestor1519sanf_1",
+   "deep_link": "https://archive.org/details/postquakerestor1519sanf_1?q=Fire+Station+14",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The post-earthquake damage survey, itemising the station's cracked walls, leaking retaining wall and roof."
+  },
+  {
+   "identifier": "1minutes1998sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station 14",
+   "ocr_excerpts": [
+    "t in file) , b) File 98-0046. [Reserved Funds, Fire Department] Hearing to consider release of reserved funds, Fire Department (1992 Fire Protection Bond Proceeds - Ordinance 430-96) , in the amount of $483,259, for the purpose of funding the construction contract and related construction services of Fire Station No. 14; companion to File 000-98-047. (Department of Public Works) SPEAKERS: None. ACTION: Release of $483,259 approved. Filed. c) File 98-0047. [Reserved Funds, Department of Public Works] Hearing to consider release of reserved funds, Department of Public Works (State Grant, Resolution 1026-97) , in the amount oi $1,062,741, for the purpose of funding the construction contracl and related construction services of Fire Station No. 14; companion to File 000-98-046. (Department of Public Works) SPEAKERS: None. ACTION: Release of $1,062,741 approved. Filed. REGULAR ITEMS File 68-97-9. [Funds, Local Law Enforcement Block Grant] Resolution authorizing the Mayor of the City and County of San Francisco to apply for, accept and expe",
+    "and lc - Files 98-46 and 98-47 Department: Item: Amount: Source of Funds: Description: Department of Public Works (DPW) File 98-46: Hearing to consider the release of reserved funds in the amount of $483,259 of 1992 Fire Protection Bond Proceeds to fund a portion of the cost of renovating Fire Station #14. File 98-47: Hearing to consider the release of reserved funds in the amount of $1,062,741 to fund a portion of the cost of renovating Fire Station #14. $483,259 1.062,741 $1,546,000 File 98-46: File 98-47: File 98-46 File 98-47 Total Previously appropriated but reserved 1992 Fire Protection Bond Proceeds Previously appropriated but reserved Federal Hazard Mitigation Grant Funds granted by the Federal Emergency Management Agency The renovation work to be performed at Fire Station #14, which is located at 551 26th Avenue, consists of seismic upgrades, hazardous material abatement, increased accessibility to public areas, the construction of separate facilities for female firefighters, and mechanical and electrical improvements. File 98-46 In October of 1996, the Board of Supervisors",
+    "n of the bond program (File 101-96-12). Of the $14,233,588, a total of $7,864,100 was placed on reserve pending submission of cost details to the Finance Committee. This request is for release of $483,259 of the $7,864,100 on reserve for the purpose of funding a portion of the project to renovate Fire Station #14. BOARD OF SUPERVISORS BUDGET COMMITTEE 5 Memo to Finance Committee January 28, 1998 Meeting of Finance Committee File 98-47 In November of 1997, the Board of Supervisors authorized the Department of Public Works to accept and expend retroactively hazard mitigation grant funds in the amount of",
+    "148-97-5). Of the $6,216,434 authorized for"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.37,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.37,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/1minutes1998sanf",
+   "deep_link": "https://archive.org/details/1minutes1998sanf?q=Fire+Station+14",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Finance Committee papers releasing $483,259 of fire bond funds and $1,062,741 more for the station's renovation."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "minutesoffirecom2002sanf",
+   "title": "Minutes of the Fire Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesoffirecom2002sanf"
+  },
+  {
+   "identifier": "minutesoffirecom2003sanf",
+   "title": "Minutes of the Fire Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesoffirecom2003sanf"
+  },
+  {
+   "identifier": "minutesoffirecom2001sanf",
+   "title": "Minutes of the Fire Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesoffirecom2001sanf"
+  }
+ ],
+ "dept_shelf_label": "Fire Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 4,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

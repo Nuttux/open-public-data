@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.730587+00:00",
+ "generated_at": "2026-07-28T12:23:47.745319+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "portsmouth-square",
@@ -73,6 +73,13 @@
   ],
   "payees": [
    {
+    "vendor": "SWA & MEI ARCHITECTS JV",
+    "paid_usd": 6633814.51,
+    "n_contracts": 1,
+    "first_fiscal_year": 2020,
+    "last_fiscal_year": 2026
+   },
+   {
     "vendor": "CATHY LU STUDIO",
     "paid_usd": 30248.0,
     "n_contracts": 1,
@@ -87,133 +94,21 @@
     "last_fiscal_year": 2026
    }
   ],
-  "n_payees": 2,
-  "payees_total_paid": 40873.0,
-  "permits": [
-   {
-    "description": "priority processing ab-004. demolition of existing facilities exposing existing garage roof structure. installation of new waterproofing over existing garage roof structure. construction of new clubhouse and landscape/playground elements. miscellaneous offsite sidewalk and crosswalk improvements.",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 43000000.0,
-    "status": "issued",
-    "permit_date": "2026-06-23",
-    "permit_year": 2026
-   },
-   {
-    "description": "renov of an(e)parking garage. upgrades to(e)mech,elec,plumb & lighting systems; ada upgrades; waterproofing improvements & repair of(e)structure; reolocation of interior prog areas; replace interior stairs; enclosure of exterior stairs & mech openings; infill of interior structural bay (floor slab)",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 1987718.0,
-    "status": "complete",
-    "permit_date": "2017-04-13",
-    "permit_year": 2017
-   },
-   {
-    "description": "repair and replacement of (3) passenger elevators that serve the (e) portsmouth square parking garage under declaration of emergency per board of supervisors resolution 455-23",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 1500000.0,
-    "status": "complete",
-    "permit_date": "2024-01-17",
-    "permit_year": 2024
-   },
-   {
-    "description": "to erect 1 story, no basement, public restrooms.",
-    "permit_type": "new construction wood frame",
-    "declared_cost_usd": 650000.0,
-    "status": "complete",
-    "permit_date": "2014-08-07",
-    "permit_year": 2014
-   },
-   {
-    "description": "erect a one story recreation bldg",
-    "permit_type": "new construction wood frame",
-    "declared_cost_usd": 483000.0,
-    "status": "expired",
-    "permit_date": "1998-10-22",
-    "permit_year": 1998
-   },
-   {
-    "description": "remove & replace exterior cladding, remove & reinstall aluminum doors & windows w/new flashing & water proofing. remove pavers & concrete slab & install new waterproofing & concrete, remove soil at planters, install drain & waterproofing.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 353249.0,
-    "status": "complete",
-    "permit_date": "2009-05-22",
-    "permit_year": 2009
-   }
-  ],
-  "n_permits": 23,
-  "permits_total_declared": 48938812.0,
-  "permits_by_year": [
-   {
-    "year": 1998,
-    "declared_usd": 483000.0
-   },
-   {
-    "year": 2004,
-    "declared_usd": 125000.0
-   },
-   {
-    "year": 2005,
-    "declared_usd": 30000.0
-   },
-   {
-    "year": 2006,
-    "declared_usd": 10000.0
-   },
-   {
-    "year": 2008,
-    "declared_usd": 82000.0
-   },
-   {
-    "year": 2009,
-    "declared_usd": 353249.0
-   },
-   {
-    "year": 2011,
-    "declared_usd": 20000.0
-   },
-   {
-    "year": 2013,
-    "declared_usd": 169000.0
-   },
-   {
-    "year": 2014,
-    "declared_usd": 680000.0
-   },
-   {
-    "year": 2017,
-    "declared_usd": 2344718.0
-   },
-   {
-    "year": 2018,
-    "declared_usd": 40000.0
-   },
-   {
-    "year": 2019,
-    "declared_usd": 70000.0
-   },
-   {
-    "year": 2024,
-    "declared_usd": 1530545.0
-   },
-   {
-    "year": 2025,
-    "declared_usd": 1300.0
-   },
-   {
-    "year": 2026,
-    "declared_usd": 43000000.0
-   }
-  ]
+  "n_payees": 3,
+  "payees_total_paid": 6674687.51
  },
  "photo": "/img/us/sf/places/portsmouth-square.jpg",
  "photo_credit": {
   "photo": "/img/us/sf/places/portsmouth-square.jpg",
   "source": "Wikimedia Commons",
-  "file": "File:Portsmouth_Square_1.JPG",
-  "file_url": "https://commons.wikimedia.org/wiki/File:Portsmouth_Square_1.JPG",
-  "license": "CC BY-SA 4.0",
-  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-  "author": "BrokenSphere",
-  "fetched_at": "2026-07-20T22:23:07.114811+00:00"
+  "source_url": "https://commons.wikimedia.org/wiki/File:Portsmouth_Square_Clubhouse.jpg",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Kylelovesyou",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T22:46:26.093400+00:00"
  },
  "summary_en": "Portsmouth Square's record runs from the city's historic heart to a current rebuild. A 1940 WPA theatre history places the city's first schoolhouse and earliest English-language entertainment on Portsmouth Plaza. 1959 Recreation and Park Commission minutes note the square's use for Chinese New Year and a contemplated subterranean garage beneath it. A 1975 Open Space fund report allocates $15,000 for benches and shelters, completed in 1977. A 1984 EIR for 505 Montgomery Street finds the tower would shade up to 40% of the square. The square is operated by the Recreation and Park Department (FY2025 budget line about $250M); its capital record includes a $43,000,000 permit (2026) for a new clubhouse, plus Arts Commission public-art contracts ($30,248 and $10,625 paid).",
  "published": true,
@@ -232,6 +127,125 @@
    "fiscal_year": 2025
   },
   "contracts": [
+   {
+    "contract_no": "1000017212",
+    "title": "44918-1314-PORTSMOUTH Desi",
+    "prime": "SWA & MEI ARCHITECTS JV",
+    "department_code": "REC",
+    "agreed_usd": 1737393.0,
+    "paid_usd": 246026.33,
+    "evidence": "REC-44918-1314-PORTSMOUTH DESI",
+    "team": [
+     {
+      "supplier": "SWA & MEI ARCHITECTS JV",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 1737393.0
+     },
+     {
+      "supplier": "MEI ARCHITECTS",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 1816852.0
+     },
+     {
+      "supplier": "SWA GROUP",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 1462375.0
+     },
+     {
+      "supplier": "SOHA ENGINEERS",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 987141.0
+     },
+     {
+      "supplier": "TELAMON ENGINEERING CONSULTANTS INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 335572.0
+     },
+     {
+      "supplier": "MHC ENGINEERS INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 302200.0
+     },
+     {
+      "supplier": "MICROESTIMATING INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 217636.0
+     },
+     {
+      "supplier": "ACG ENGINEERS INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 207700.0
+     },
+     {
+      "supplier": "J S NOLAN & ASSOC LIGHTING DESIGN LLC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 172285.0
+     },
+     {
+      "supplier": "MATHEW J BITTLESTON SE",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 154240.0
+     },
+     {
+      "supplier": "CLEARSTORY INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 152330.0
+     },
+     {
+      "supplier": "MCGINNIS CHEN ASSOCIATES INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 75500.0
+     },
+     {
+      "supplier": "GEOTECHNICAL CONSULTANTS INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 60000.0
+     },
+     {
+      "supplier": "AR GREEN CONSULTING",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 39150.0
+     },
+     {
+      "supplier": "EMILY BORLAND SPECIFICATIONS INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 30000.0
+     },
+     {
+      "supplier": "SMITH FAUSE & MCDONALD INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 29790.0
+     },
+     {
+      "supplier": "INTERETHNICA INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 22740.0
+     },
+     {
+      "supplier": "BASE ENERGY INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 22400.0
+     }
+    ]
+   },
    {
     "contract_no": "1000036809",
     "title": "PARP-Portsmouth Square AC",
@@ -271,152 +285,18 @@
  },
  "documents": [
   {
-   "identifier": "C101697812",
-   "title": "City College of San Francisco Chinatown/North Beach campus : draft environmental impact report",
-   "creator": null,
-   "year": 1998,
-   "pool": "dl",
-   "matched_alias": "Portsmouth Square",
-   "collection": "igscalocalgovdocs",
-   "relevance": {
-    "score": 6.08,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 1.08,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 4.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/C101697812",
-   "deep_link": "https://archive.org/details/C101697812?q=Portsmouth+Square",
-   "source_label": "Internet Archive — Democracy's Library",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "The 1998 draft environmental impact report for City College's Chinatown/North Beach campus, assessing sunlight access and the open spaces around Portsmouth Square."
-  },
-  {
-   "identifier": "bankofcantonofca1982sanf",
-   "title": "Bank of Canton of California headquarters, [final] environmental impact report",
-   "creator": "San Francisco (Calif.). City Planning Commission",
-   "year": 1982,
-   "pool": "sfpl",
-   "matched_alias": "Portsmouth Square",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 3.24,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.74,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 4.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/bankofcantonofca1982sanf",
-   "deep_link": "https://archive.org/details/bankofcantonofca1982sanf?q=Portsmouth+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true,
-   "gloss": "A 1982 environmental impact report for the Bank of Canton headquarters, assessing height, bulk and historic resources in the blocks below the square."
-  },
-  {
-   "identifier": "505montgomerystr2519city",
-   "title": "505 Montgomery Street : [draft] environmental impact report",
-   "creator": "City and County of San Francisco, Department of City Planning",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Portsmouth Square",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 0.88,
-    "sf_context": false,
-    "rival_city": true,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.88,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 4.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/505montgomerystr2519city",
-   "deep_link": "https://archive.org/details/505montgomerystr2519city?q=Portsmouth+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": false,
-   "gloss": "A 1983 environmental impact report for 505 Montgomery Street, mapping the shadows the tower would cast across nearby open space."
-  },
-  {
-   "identifier": "minutesrecreatio1959sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Portsmouth Square",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.92,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.42,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.75,
-    "money": false,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/minutesrecreatio1959sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1959sanf?q=Portsmouth+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true,
-   "gloss": "1959 Recreation and Park Commission minutes on the square's use for Chinese New Year and a Guardsmen rally, and a proposed joint agreement for subterranean garage development beneath it."
-  },
-  {
    "identifier": "sanfranciscomuni2109sanf",
    "title": "San Francisco Municipal Transportation Agency : audit of City of San Francisco Portsmouth Plaza Parking Corporation",
    "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Municipal Transportation Agency,Portsmouth Plaza Parking Corp",
    "year": 2009,
    "pool": "sfpl",
    "matched_alias": "Portsmouth Plaza",
+   "ocr_excerpts": [
+    "RANCISCO PUBLIC LIBRARY o < San Francisco Public Library Government Information Center San Francisco Public library 100 Larkin Street. 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO MUNICIPAL TRANSPORTATION AGENCY: Audit of City of San Francisco Portsmouth Plaza Parking Corporation GOVERNMENT DOCUMENTS DEPT OCT 2 2 2009 October 21, 2009 SAN FRANCISCO PUBLIC LIBRARY CONTROLLER'S OFFICE CITY SERVICES AUDITOR The City Services Auditor was created within the Controller's Office through an amendment to the City Charter that was approved by voters in November",
+    "ield Controller Monique Zmuda Deputy Controller October 21, 2009 Municipal Transportation Agency Board 1 South Van Ness Avenue, 7th Floor San Francisco, CA 94103 Chairman and Members: The Controller's Office, City Services Auditor, presents its report concerning the audit of City of San Francisco Portsmouth Plaza Parking Corporation (Portsmouth). Portsmouth has a 50-year agreement, which ends March 28, 2010, with the Recreation and Park Commission of the City and County of San Francisco (City) to operate Portsmouth Square Parking Garage. As established in Administrative Code Section 17.8, the San Francisco Municipal Transportation Agency (MTA) has jurisdiction and control over all parking facilities. Reporting Period: May 1 , 2006, through April 30, 2008 Net Parking Revenues: $3,033,883 Fees Paid: $2,578,800 • Portsmou",
+    "udit plan agreed to by the Controller and the San Francisco Municipal Transportation Agency (MTA). Background The City and County of San Francisco (City) has a 50-year lease agreement, which commenced on March 29, 1960, and will expire on March 28, 2010. The lease is between City of San Francisco Portsmouth Plaza Parking Corporation (Portsmouth) and the City's Recreation and Park Commission (commission) because the garage was built underground and beneath a park. Portsmouth is administered through MTA, as required by Administrative Code Section 17.8, which states that MTA has jurisdiction and control over all parking facilities. Portsmouth, a corporation in which all issued and outstanding shares of stock are beneficially owned by the City, received a $3 million bond on October 1, 1959, to construct the Portsmouth Square Parking garage. Portsmouth currently operates the garage and does not profit by means of any management fee for operation of the garage. Portsmouth pays the City 85 percent of gross receipts less parking taxes and operating expenses (\"surplus payments\"), and retains 15 percent in its surplus revenue",
+    "ets these expenditures from gross revenues. Scope The purpose of this audit was to determine whether Portsmouth: • Complied with the reporting and payment provisions of its lease agreement with the commission. i • Reported and co"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 13.0,
@@ -441,114 +321,13 @@
    "url": "https://archive.org/details/sanfranciscomuni2109sanf",
    "deep_link": "https://archive.org/details/sanfranciscomuni2109sanf?q=Portsmouth+Plaza",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "audit",
+   "doc_type_label": "Audit",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Audit",
    "salient": true,
    "gloss": "The Controller's 2009 audit of the Portsmouth Plaza Parking Corporation, the non-profit operating the garage beneath the square."
-  },
-  {
-   "identifier": "findingsrecommen95cali",
-   "title": "Findings and recommendations concerning off street parking, Department of Parking and Traffic, San Francisco",
-   "creator": "California. Grand Jury (San Francisco)",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Portsmouth Square",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 9.0,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 12.23,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.75,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/findingsrecommen95cali",
-   "deep_link": "https://archive.org/details/findingsrecommen95cali?q=Portsmouth+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true,
-   "gloss": "A Civil Grand Jury report on off-street parking, examining the long-term ground leases and bond financing behind the city's non-profit garage corporations."
-  },
-  {
-   "identifier": "sanfranciscothea194015sanf",
-   "title": "Theatre buildings",
-   "creator": "Estavan, Lawrence,Gagey, Edmond McAdoo, 1901- San Francisco stage,United States. Work Projects Administration (Calif.)",
-   "year": 1940,
-   "pool": "sfpl",
-   "matched_alias": "Portsmouth Plaza",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 6.33,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.83,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/sanfranciscothea194015sanf",
-   "deep_link": "https://archive.org/details/sanfranciscothea194015sanf?q=Portsmouth+Plaza",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false,
-   "gloss": "A 1940 WPA history of San Francisco theatres locating the city's first schoolhouse and earliest 1849 English-language entertainment on and around Portsmouth Plaza."
-  },
-  {
-   "identifier": "generalmanagersr1975sanf",
-   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
-   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
-   "year": 1975,
-   "pool": "sfpl",
-   "matched_alias": "Portsmouth Square",
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 3.22,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.72,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.75,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": true,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/generalmanagersr1975sanf",
-   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Portsmouth+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false,
-   "gloss": "A 1975 Open Space fund report allocating $15,000 to install additional benches and shelters for the elderly at Portsmouth Square, completed October 1977."
   },
   {
    "identifier": "reporttosanfran1993sanf_1",
@@ -557,6 +336,11 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Portsmouth Square",
+   "ocr_excerpts": [
+    "contrast to their existing contracts which provide for a flat management fee and reimbursement for operating expenses. Further, the non-profits should design performance specifications and inspection checklists to ensure a satisfactory standard of service. All of the non-profit parking corporations, except Portsmouth Plaza Parking Corporation, have adhered to their leases with the City, including remitting the required percent of net revenues in a timely manner. However, between 1987 and 1993, Portsmouth Plaza Parking Corporation has been between one month to two years delinquent in remitting its lease payments due to the Recreation and Park Department. The last payment made by the corporation for Fiscal Year 1991-92, was remitted to the City in November of 1993, just prior to the release of this report. Currently the Portsmouth Plaza Parking Corporation owes the Recreation and Park Department $538,832 in back lease payments from the past six fiscal years. The Portsmouth Plaza Parking Corporation has consistently not adhered to the lease requirements and has not repaid a $500,000 construction loan made by the Recreation and Park Department. The City’s lease with the Portsmouth Plaza Parking Corporation should be terminated as expeditiously as possible. BQARD OF SUPERVISORS BUDGET ANALYST John L. Molinari, President and Members of the Parking and Traffic Commission November 22, 1993 Page 3 In FY 1991-92, two attorneys provided the six non-profit parking corporations with 2,970",
+    "of a corporate manager hired by two of the non-profit corporations, to the hourly rates of the two attorneys, reveals that the hourly rates of the attorneys are approximately 229 percent to 295 percent higher than the hourly rate of the corporate manager. The attorney for the Civic Plaza, Downtown, Portsmouth Plaza, and Uptown Parking Corporations frequently multiple billed his non-profit parking corporation clients for the same service. Such multiple billings resulted in an hourly rate of $550 for providing such activities as attending public meetings, reviewing meeting agendas and making telephone calls. The total",
+    "rages could increase or decrease parking rates to maximize revenues, while continuing to address the goal of encouraging short-term parkers, as follows: • Of the 15 City-owned garages, four charge less than $1.00 for the first hour, while the surrounding parking meters are $1.00 to $1.50 per hour. • Portsmouth Square and Fifth and Mission garages receive approximately $2,442 and $1,086 respectively more revenue per transient space than per monthly space. • Based on the high use of transient parking spaces, hourly rates could be raised at Portsmouth Square and Sutter-Stockton garages. However, each garage should analyze the impact on demand when making parking rate chan"
+   ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
     "score": 0.55,
@@ -581,9 +365,329 @@
    "url": "https://archive.org/details/reporttosanfran1993sanf_1",
    "deep_link": "https://archive.org/details/reporttosanfran1993sanf_1?q=Portsmouth+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
+   "doc_type": "audit",
+   "doc_type_label": "Audit",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Audit",
    "salient": true,
    "gloss": "A management audit of city-owned garages, comparing the non-profit operators' management fees and legal costs."
+  },
+  {
+   "identifier": "C101697812",
+   "title": "City College of San Francisco Chinatown/North Beach campus : draft environmental impact report",
+   "creator": null,
+   "year": 1998,
+   "pool": "dl",
+   "matched_alias": "Portsmouth Square",
+   "ocr_excerpts": [
+    "allow for sunlight access to Chinatown sidewalks (pursuant to Sections 132.3 and 254). CITY COLLEGE OF SAN FRANCISCO 44 CHINATOWN/NORTH BEACH CAMPUS EIR EIP 97242-01 APRIL 23, 1998 Broadway ey pref pr Hi | a La | : o a no i ; Oo = ’ - oO 2 ae oe } Q} i =| H =e 8 ed ea o a ag; gi 2 g isi 3 S ie g id Q v ningtan. Si PORTSMOUTH SQUARE Oo < =) Oey wnt | Sacramento S Use Districts LEGEND C-3-O Downtown Office District C-2 Community Business District NCD _ Neighborhood Commercial District RM-4 Residential, Mixed Districts, High Density P Public Use District Chinatown Mixed-Use Districts CCB Chinatown Community Business CVR Chinatown Visitor Retail",
+    "Environmental Setting and Impacts B. Aesthetics This area primarily consists of low-rise, multifamily residential buildings and retail establishments at street level. Other prominent features near the project site include Telegraph Hill and Coit Tower to the north, and buildings within Chinatown to the west. Open spaces in the area are Portsmouth Square on Kearny Street (one-half block southwest of the sites) and the Transamerica Pyramid’s Redwood Park (one block southeast of the sites). Jackson Square, located to the east of the project site, is bounded by Broadway on the north, Sansome Street on the east, Columbus Avenue on the west, and Washington Street on the south. This area is a hi",
+    "strict. The eight- story Columbus Tower at Columbus and Kearny is prominent in the foreground. Figure 16A shows the project site as part of the pattern of older buildings along Columbus Avenue. Figure 17A illustrates the view from Washington Street, west of the intersection of Kearny and Washington Streets looking east. Landscaped areas of Portsmouth Square appear in the foreground. Short-range features that can be seen include the Holiday Inn and various two- to four-story buildings north of Washington Street, and the Holiday Inn Financial District and Montgomery-Washington Tower to the south. Figure 18A is a view from Clay Street at Walter U. Lum Place. Views near the southwest corner of Portsmouth Square include Portsmouth Square in the foreground, two- to four-story commercial buildings on Washington Street in Chinatown, and the Holiday Inn Financial District, Montgomery-Washington Tower, 601 Montgomery Street, and the Transamerica Pyramid. IMPACTS SIGNIFICANCE CRITERIA The project would have a significant environmental effect on aesthetics if the development",
+    "Washington Street. The project would be intermediate in height from low-rise buildings in North Beach and Chinatown, and high-rise buildings in the Financial District (see Figure 17B). Taller buildings in the Financial District east and south of the project site would continue to be dominant elements. From viewpoints west of the site near Portsmouth Square, the project wou"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 6.08,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.08,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C101697812",
+   "deep_link": "https://archive.org/details/C101697812?q=Portsmouth+Square",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The 1998 draft environmental impact report for City College's Chinatown/North Beach campus, assessing sunlight access and the open spaces around Portsmouth Square."
+  },
+  {
+   "identifier": "bankofcantonofca1982sanf",
+   "title": "Bank of Canton of California headquarters, [final] environmental impact report",
+   "creator": "San Francisco (Calif.). City Planning Commission",
+   "year": 1982,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "ocr_excerpts": [
+    "Clay St. 40 18. View of 631 Clay St. 41 19. View of Old Sub-Treasury Building, 608-610 Commercial St. 45 • 20. Architectural and Historic Resources in Site Vicinity 47 21, Muni Routes and Traffic Circulation in Vicinity of the Project Site 56 22. View from Chinatown 69 • 22a. View from Portsmouth Square (Clay Street near Brenham Place) 69a • 23. Shadow Patterns on and near Project Site - Winter 74 iv I LIST OF FIGURES (Continued) Page • 24. Shadow Patterns on and near Project Site - Fall and Spring 75 • 25. Shadow Patterns on and near Project Site - Summer 76 26. Projected El",
+    "ulk of the structure, make the top of the tower distinct from other high-rise structures in the area, and respond to proposed Urban Design Policies in GDD. The central portion of the tower would 290 feet high, compared to 282 feet for the project. This alternative would shade a small portion of Portsmouth Square in morning hours in mid-March and mid-September. Other environmental effects would be similar to those of the project. After publication of the Draft EIR and prior to certification, this alternative has become the proposed project because, in the sponsor's opinion, its positive visual effects justify",
+    "the proposed site, the similarly reduced-scale Chinatown community includes residential, commercial and tourist-oriented land uses. The 632 Commercial Street building, adjacent to the site on the west, is occupied by offices and a KABL radio station recording studio. Open space in the area includes Portsmouth Square, one block west of the site, and Redwood Park, private open space maintained for public use as part of the Transamerica Pyramid, one block northeast of the site. The principal retail area in the City, centered at Union Square, begins about five blocks southwest of the site. Three of the five s",
+    "ons of the Transamerica Pyramid below the twentieth floor. Views to the southeast from the Chinatown Holiday Inn would be partially blocked by the project. These views are now interrupted by the 601 Montgomery Street building. Views from the upper floors of the 552 Montgomery Street building of Portsmouth Square and of buildings on Nob Hill to the west would be blocked by the project. From Portsmouth Square, the project would partially block views of some buildings to the east; it would not obstruct any views of the Bay (see Figure 22a, page 69a). The project would be visible in the downtown skyline from some long-range view points. The proposed structure would not be visible from Telegraph Hill,",
+    "uthern approaches to the City on the 68 Holiday Inn ■ m m m m mm ^ mm mi m ; HI UC {tni H» ■m HH mil ilin ; UIM mm iiniB mm IHIH 601 Montgomery Street mm mm m t^m (Revised Roof Design) SOURCE: Environmental Science Associates, Inc. 69a • Figure 22a: View from Portsmouth Square (Clay St"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.24,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.74,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/bankofcantonofca1982sanf",
+   "deep_link": "https://archive.org/details/bankofcantonofca1982sanf?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A 1982 environmental impact report for the Bank of Canton headquarters, assessing height, bulk and historic resources in the blocks below the square."
+  },
+  {
+   "identifier": "505montgomerystr2519city",
+   "title": "505 Montgomery Street : [draft] environmental impact report",
+   "creator": "City and County of San Francisco, Department of City Planning",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "ocr_excerpts": [
+    "L STREET 59 18. VIEW EAST OF PROJECT, FROM COMMERCIAL STREET EAST OF KEARNY STREET 66 19. VIEW EAST OF PROJECT, FROM SACRAMENTO STREET AT KEARNY STREET 67 20. VIEW NORTH OF PROJECT, FROM MONTGOMERY STREET AT CALIFORNIA STREET 68 21. VIEW OF PROJECT FROM NOB HILL 69 22. VIEW OF PROJECT FROM PORTSMOUTH SQUARE 70 (Continued) i v LIST OF FIGURES (continued) 23. PROJECT SHADOW PATTERN - MARCH/SEPTEMBER 21, 8:00/8:48 A.M. 73 24. PROJECT SHADOW PATTERN - MARCH/SEPTEMBER 21, 8:30/9:18 A.M. 74 25. PROJECT SHADOW PATTERN - MARCH/SEPTEMBER 21, 9:00/9:48 A.M. 75 26. PROJECT SHADOW PATTERN - MARCH/SEPTEMBER",
+    "21, 3:00/3:48 P.M. 77 28. PROJECT SHADOW PATTERN - DECEMBER 21, 9:00 A.M. 79 29. PROJECT SHADOW PATTERN - DECEMBER 21, 1:00 P.M. 80 30. PROJECT SHADOW PATTERN - JUNE 21, 9:00 A.M. 81 31. PROJECT SHADOW PATTERN - JUNE 21, 1:00 P.M. 82 32. PROJECT SHADOW PATTERN - JUNE 21, 4:00 P.M. 83 33. PORTSMOUTH SQUARE SOLAR FAN 84 34. SUN PATH ANALYSIS 86 35. MUNI AND BART ROUTES IN PROJECT AREA 95 36. PROJECTED ELECTRICAL DEMAND DISTRIBUTION 116 37. PROJECTED NATURAL GAS DEMAND DISTRIBUTION 116 38. ALTERNATIVE 2 - DOWNTOWN PLAN ALTERNATIVE 147 39. VIEW OF ALTERNATIVE 2 FROM PORTSMOUTH SQUARE 149 v I. Summary I. SUMMARY A. PROJECT DESCRIPTION The Empire Group proposes to construct a new office building and refurbish the exteriors of two existing buildings, with a variety of street-level retail uses. The sponsor's objectives are to realize a return on investment through the con",
+    "contrast in seals with the low-rise structures on Commercial St. and Sacramento St. and other development to the west. The project would obstruct views from lower floors of existing or under-construction high-rise buildings, including the Transamerica Pyramid and the Bank of Canton headquarters. From Portsmouth Square, the project would be visible and partially block views of some buildings to the southeast; it would not obstruct any street-level views of the Bay. It would be visible as part of a group of office towers on Montgomery St. between Sacramento and Washington Sts. The project would be visible in the downtown skyline from long-range viewpoints on Nob Hill and Russian Hill; it would not be a major visual focus because of the prominence of other taller structures. SHADOW AND WIND The project would increase morning shadows on Portsmouth Square in mid-winter/early-spring and mid-summer/early-fall months. The maximum effect would be from early March to early April and from early September to early October, when the project would shade up to about 40% of the whole square, from about 8 a.m. to 9 a.m. in March/April (from 9 a.m. to 10 a.m.",
+    "ale of a somewhat larger portion of Sacramento and Commercial Sts. than the project, by demolition of an additional low-rise building. The alternative would be less"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 0.88,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.88,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/505montgomerystr2519city",
+   "deep_link": "https://archive.org/details/505montgomerystr2519city?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": false,
+   "gloss": "A 1983 environmental impact report for 505 Montgomery Street, mapping the shadows the tower would cast across nearby open space."
+  },
+  {
+   "identifier": "findingsrecommen95cali",
+   "title": "Findings and recommendations concerning off street parking, Department of Parking and Traffic, San Francisco",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "ocr_excerpts": [
+    "icallv entrr \\ntr> o w*~ term gr0und lease with a corporation --a non profit jrpose of building the garage. In order to finance the on profit corporation would then issue bonds in its own irking garage for the convenience of the people who vay include the Union Square Garage, G\\ic Center Garage, Portsmouth Square Garage, Sutter/ ion Garage, and the Japan Center Garage . A as also formed, and issued bonds, to acquire the Garage. z land on which the non profit garages are built; the land from the City. Consequently, under the terms of isociated with operating the garage belong to the City, id by the non",
+    "ember 1, 1993 deadline has passed, the Department of Parking and Traffic has not yet been able to put together a consultant contract to conduct an analysis of the equipment and to prepare necessary bid specifications for new equipment. In another example of inconsistency, the City has permitted the Portsmouth Square Corporation to continue operating its garage even though the non profit corporation has, in fact, already paid off its bond holders. In a case like this the corporation would be expected to transfer ownership of the garage to the City and to dissolve the non profit corporation. However, the Portsmouth Square Garage has not yet been transferred to the City; the Portsmouth Square Corporation continues to operate the facility through a special agreement made with the City of San Francisco on September 25, 1981 allowing the Corporation to operate the garage with its original agreement to remain in force until March 28, 2010. 5. There is not now a Departmental mechanism to ass",
+    "e terms of the Vallejo Street Garage Management Agreement, require the Vallejo Street Garage to purchase and install new revenue equipment to replace the antiquated, high maintenance cost equipment now in use there. This stated requirement needs City support which should be given now. As soon as the Portsmouth Square Parking Corporation has completed the scheduled payment of its outstanding debt-approximately $544,000 owed to the Department of Park and Recreation—on time (Appendix G shows the ten year debt plan), its lease with the City should be terminated. Its unique agreement with the City is not an example to",
+    "of Off Street Parking, Parking and Traffic Commission: Sections 1, 2, 3, 4, 6, 7. Real Estate Department: Sections 2, 4. City Attorneys Office: Sections 2, 3, 4, 6. Controller: Sections 2, 3. Mayor: Section 5. 8 NON PROFIT GARAGES Name Union Square Civic Center Plaza Golden Gateway Portsmouth Square S utter/Stockton Fifth & Mission Japan Center Ellis-O'Farrell Current Status Bonds have been paid; under direct City control Bonds have been paid; under direct City control Bonds have been paid; under direct City control Bonds have been paid; non profit corporation continu"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 12.23,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/findingsrecommen95cali",
+   "deep_link": "https://archive.org/details/findingsrecommen95cali?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": false,
+   "gloss": "A Civil Grand Jury report on off-street parking, examining the long-term ground leases and bond financing behind the city's non-profit garage corporations."
+  },
+  {
+   "identifier": "generalmanagersr1975sanf",
+   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
+   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "ocr_excerpts": [
+    "(e) HELEN WILLS PLAYGROUND $100,000 (Renovate facility including improved children's play area and space for elderly) (f) NOE VALLEY TENNIS COURTS $100,000 (Renovate entire area, with special consideration being given to design presented by Friends of Moe Valley at public hearing on November 5.) (g) PORTSMOUTH SQUARE $15,000 ((Install additional benches and shelters for elderly.) (h) UPPER NOE VALLEY PLAYGROUND $40,000 (Rehabilitate children's play area) (i) VISITACION VALLEY PLAYGROUND $15,000 (Extend height of existing fence along Cora Street.) Est. Total Fiscal Year 1975-76 $658,000 -13- Fiscal Year 1976-77",
+    "Architect. NOE VALLEY TENNIS COURTS $100,000 (Renovate entire area, with special consideration being given to design presented by Friends of Noe Valley at public hearing on November 5,; 19/5) Status: Plans and specifications assigned to a consultant, Lanier and Sherrill, Archi- tects and Planners. PORTSMOUTH SQUARE $15,000 (Install additional benches and shelters for elderly,) Status : Bureau of Engineering staff is working on plans and specifications . UPPER NOE VALLEY PLAYGROUND $40,000 (Rehabilitate children's play area) Status : Bureau of Engineering staff is working on plans and specifications . VISI",
+    "ction (Planning funds $222 ,C:~ of $20,000 were allocated from the 1976 Program.)\" EERZ PLAYGROUND - Coffman Peel (Visitacicn Valley) - $50,000 Playground and building improvements ^MISSION DOLORES PARK - Children's Play Apparatus $70,000 > NORTH BEACH PLAYGROUND - Children's Play Apparatus $50,000 PORTSMOUTH SQUARE - Improvements $12,000 Total Fiscal Year 1977-78 $562,000 - 28 - COMMUNITY* DEVELOPMENT PROGRAM TO RENOVATE AND IMPROVE EXISTING RECREATIONAL FACILITIES 1975 PROGRAM Project 1. Chinese P/G Phase II New bldg. 2. Bernal P/G Bldg. Rehab. 3. Excelsior P/G Bldg Rehab. 4. Portola P/G > Bldg. R",
+    "HELEN WILLS PLAYGROUND $100,000 Renovate facility including improved children's play area and space for elderly Status: Assigned to Philip Choy (f) NOE VALLEY TENNIS COURTS $100,000 Renovate entire facility Status: Assigned to Lanier and Sherrill Bid advertise- ment expected in February, 1973 (g) PORTSMOUTH SQUARE $15,000 Install additional benches and shelters for elderly Status: Completed October 4, 1977 - 25 - Chinatown Churchill Alley (Churchill Alley and Vallejo St.) South of Market Reno Hotel site (6th and Harriet Streets) Development 1976-77 Churchill Alley Site Central City Site Jet's Drive I",
+    "HELEN WILLS PLAYGROUND $100,000 Renovate facility including improved children's play area and space for elderly Status: Assigned to Philip Choy (f) NOE VALLEY TENNIS COURTS $100,000 Renovate entire facility Status: Assigned to Lanier and Sherrill Bid advertise- ment expected in February, 1973 (g) PORTSMOUTH SQUARE $15,000 Install additional benches and she"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.22,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.72,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/generalmanagersr1975sanf",
+   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": false
+  },
+  {
+   "identifier": "sanfranciscothea194015sanf",
+   "title": "Theatre buildings",
+   "creator": "Estavan, Lawrence,Gagey, Edmond McAdoo, 1901- San Francisco stage,United States. Work Projects Administration (Calif.)",
+   "year": 1940,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Plaza",
+   "ocr_excerpts": [
+    "ON THEATRE . . .Frontispiece BELLA UNION THEATRE Preceding Page 1 Also in this picture are The Verandah, a gambling house jthe El Dorado saloon, with Ports- mouth Plasa in the fore- groimd, Telegraph Hill in the background. FOLLOWING PAGE THIRD JEmiY LIND THEATRE 47 Showing the El Dorado Saloon and Portsmouth Plaza. RUSS GARDENS , 70 MAGUIRE'S OPERA HOUSE . . . . , 97 SOUVENIR OPERA HOUSE PROGRAM 114 FIRST lECHANICS' PAVILION 181 SECTIONAL SPOT MAPS ... 240-246 Showing locations of early San Francisco Theatres. M. T,' \",~=[ 2Ic E 3V ^a IS 3(S '5t5-Tq- ^■Tse . F PROGRAM OF THE BELLA UNIO",
+    "it was to be some months before their minds were to be turned toward formal relaxation. There was no theatre built. When Stephen C, Massett gave the first public entertainment in English in San Francisco on June 22, 1849, he was forced to use a small redwood building on the southwest corner of Portsmouth Plaza which had served both as the city's first schoolhouse and as a police office,'** He cleared ^500 profit that night, at ;|p3 a person; yet if there had been an adequate hall available he might have made double that amount, for many a miner was forced to take his well- stuffed pockets somewhere e",
+    "was passed forbidding the sale of liquor in the theatres of San Francisco. Vi/hiskey went out of the the- atre and with It went the Bella Union. ORIGIN AS GAMBLING DEN Beginning in 1849 as a gambling saloon, the Bella Union v/ss situated on the north side of Washington Street near Kearny, facing Portsmouth Plaza. Not until later years did the theatre have a box office. There v;as an auditorium, provided v/ith chairs -- though v/ith no stage at first -• which one entered by passing through the saloon or a long narrov; hallway adjoining the saloon, at the end of which Madame Tetlow sat and sold tickets.",
+    "n March 24. Seeing the Elephant was the premiere offering at the Phoenix, introduc- ing the popular Sophie Edwin to San Francisco audiences. The Phoenix was a crude little place, on Pacific near Montgomery Street, and its name was not to save it any more than its namesake, the Exchange, located on Portsmouth Square. Both of them were destroyed in the fire of May 4, 1850. DOC ROBINSON BUILDS DRAT.iATIC MUSEm^ Doctor Robinson, however, had evidence of Phoenix blood in him. Burned out of his hall on May 4, 1850, he had begun preparations for a Dramatic Museum, toget^.er with James Evrard, former English manage",
+    "three months had for rival only its fellow circus, Rowe's Olympic. William Foley, who had bought Rowe's origi- nal amphitheatre and there staged the unpopular bullfights before seeing his building burn, had opened his own specially built amphitheatre on September 30, 1850. It was on the west side of Portsmouth Square and here performed a full troupe of equestrians, supported "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.33,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.83,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscothea194015sanf",
+   "deep_link": "https://archive.org/details/sanfranciscothea194015sanf?q=Portsmouth+Plaza",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false
+  },
+  {
+   "identifier": "minutesrecreatio1959sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Portsmouth Square",
+   "ocr_excerpts": [
+    "issioner Moore, the Commission decided to lend their support to the request which had been forwarded to the Civil Service Commission, if if if if if 3 - Concerning the communication of Ngai Ho Hong, Attorney at Law, 835 Clay Street, Room 206, San Francisco 8, California: requesting further use of Portsmouth Square in connection with the Chinese New Year celebration to be held on February 13-15, 1959 — Inasmuch as approval had been previously granted by the Com- mission on October 9, 1958 to Charles F. Wong, Attorney at Law, of the Chinese Chamber of Ccmnerce — the matter was referred to Raymond S, Kimbell,",
+    "subject to approval by City Building Inspectors and fire Department - and subject to the established rental fee. * (For acknowledgment by the Secretaiy and/or filed) , l.ett .e;rg : Mrs. Margaret Osborne duPont: renaming Clement Tennis Courts in her honor, Chinese Chamber of Commerce: re; use of Portsmouth Square in connection with Chinese New Year Festival. California Congress of Parents and Teachers, San Francisco Second District (Mrs. Ralph S. Doscher, President); to Messrs, Kimbell and Lang for information re; Land's End area, California Congress of Parents and Teachers, San Francisco Second District (Mrs.",
+    "dent APPROVAL OF MINUTES: ‘ ' The Minutes of the Regular Meeting of April 9, 1959 were approved as corrected, if * REQUESTS: On recommendation of the General Manager, and on motion of Commissioner Conway, seconded by Ccmraissioner Herz, and duly passed — the following requests were granted: 1 - Portsmouth Square - Guardsmen Rally; Permission granted to The Guardsmen for a Rally in Portsmouth Square on Friday evening. May 15, 1959, commencing at 7:30 PM, 2 \" Band Concourse - C oncerts ; a) Honoring Israel’s Eleventh Birthday, on Sunday, May 10, 1959, as requested by the American Zionist Council* b) Pacific Singing Society - for a concert on Sunday, August 23, 1959. c) Program honoring Polish",
+    "n Committee and Staff and the Board of Public Works, if if COMMISSION COMMITTEE - GENERAL DISCUSSIQH; 1 - Policy- re.'...Use . of Parks and Squares; Re^ilew of President Haas stated that in view of the restoration of policy for Civic Center Plaza and the contengjlated sub-surface use of use of Portsmouth Square and the increase in requests for programs parks and at the Music Concourse — Commission policy should be re- squares viewed with respect to the use thereof, and requested the Commission Committee to study the matter and m^e recommen- dations. if if if if if 2 - Concessions “ Mr, Robert Hovt^ Bu",
+    "* REPRESENTATIVES 1 ' Port-smouth Square Civic The Commission considered the matter of a Joint Working Agreement between the City and County of San Francisco, the Parking Authority, and the Recreation and Park Com- mission to facilitate and expedite the developme"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.92,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.42,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesrecreatio1959sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1959sanf?q=Portsmouth+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -624,7 +728,7 @@
  "_gate": {
   "has_photo": true,
   "n_documents": 9,
-  "n_money_links": 3,
+  "n_money_links": 4,
   "meets_pre_summary": true
  }
 }

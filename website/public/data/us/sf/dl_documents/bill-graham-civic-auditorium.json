@@ -1,46 +1,52 @@
 {
- "generated_at": "2026-07-27T17:06:09.755521+00:00",
+ "generated_at": "2026-07-28T12:23:47.769242+00:00",
  "slug": "bill-graham-civic-auditorium",
  "name": "Bill Graham Civic Auditorium",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
   {
-   "identifier": "drafttransitionp1994sanf",
-   "title": "Draft transition plan for the Department of Convention Facilities : Civic Auditorium and Brooks Exhibit Hall sites",
-   "creator": "San Francisco (Calif.). Dept. of Convention Facilities,San Francisco (Calif.). Bureau of Architecture",
-   "year": 1994,
-   "pool": "sfpl",
+   "identifier": "C124914403",
+   "title": "Analysis of the economic impacts of a proposed new arena",
+   "creator": null,
+   "year": 1993,
+   "pool": "dl",
    "matched_alias": "Bill Graham Civic Auditorium",
    "ocr_excerpts": [
-    "SAN FRANCISCO PUBLIC LIBRARY I 3 1223 04181 0285 WILLIAM L. LEE CHIEF ADMINISTRATIVE OFFICER NOTICE OF PUBLIC REVIEW AND COMMENT PERIOD DRAFT TRANSITION PLAN FOR THE DEPARTMENT OF CONVENTION FACILITIES BILL GRAHAM CIVIC AUDITORIUM AND BROOKS EXHIBIT HALL SITES jpartment of Convention Facilities of the City and County of San Francisco has developed a Draft Ition Plan for the Bill Graham Civic Auditorium and Brooks Exhibit Hall sites currently under |c renovation. In accordance with the Americans with Disabilities Act of 1990 (\"ADA\"), this jtion Plan addresses proposed structural changes to the Bill Graham Civic Auditorium and Brooks (ecessary to afford public program access by individuals with disabilities. [ransition Plan will be available for public review and comment after 9:00 a.m. on June 23, 1995. |lease of the Transition Plan will commence a 45 day public review period which will end at 5:00 ikUgust 7, 1995. Public comments will be documented and submitted to the Bureau of Architecture Itential incorporation into the final Transition Plan. Individual copies of this document entitled vrransiiion Plan for the Department of Convention Facilities Civic Auditorium and Brooks Exhibit \\ites may be reviewed at the following San Francisco Public Libraries and locations: Main Library Civic Center Bayview Chinatown Eureka Valley Excelsior Glen Park Ingleside Marina Merced North Beach Ocean View- Ortega Park Parkside Portola Portrero Presidio Sunset Visitation Valley",
-    "e California Relay Service at 1-800-735-2929 and reference the aforementioned voice one number. 401 VAN NESS AVENUE, ROOM 402, SAN FRANCISCO, CA 94102 TELEPHONE 415-554-4851; FAX 415-554-4849 NOTICE OF PUBLIC REVIEW AND COMMENT PERIOD DRAFT TRANSITION PLAN FOR THE DEPARTMENT OF CONVENTION FACILITIES BILL GRAHAM CIVIC AUDITORIUM AND BROOKS EXHIBIT HALL SITES The Department of Convention Facilities of the City and County of San Francisco has developed a Draft Transition Plan for the Bill Graham Civic Auditorium and Brooks Exhibit Hall sites currently under seismic renovation. In accordance v\\ith the Americans with Disabilities Act of 1990 (\"ADA\"), this Transition Plan addresses proposed structural changes to the Bill Graham Civic Auditorium and Brooks Hall necessar>' to afford public program access by individuals with disabilities. This Transition Plan will be available for public review and comment after 9:00 a.m. on June 23, 1995. The release of the Transition Plan will commence a 45 day public review period which will end at 5:00 p.m., August 7, 1995. Public comments will be documented and submitted to the Bureau of Architecture for potential incorporation into the final Transition Plan. Individual copies of this document entitled Draft Transition Plan for the Department of Convention Faciliti"
+    "s means that available venues are much fewer in the winter. This dearth of facilities is compounded by the playing schedule of the Warriors which runs from November to April, not counting playoff games. Until now, a wintertime non-stadium- sized event scheduled the night of a Warriors game has had the choice of only Bill Graham (San Francisco) Civic Auditorium, the Kaiser Center, and the Cow Palace. The San Jose Arena presents a new option for Bay Area events, when it is not occupied by its anchor tenant, the new Bay Area National Hockey League team, the San Jose Sharks. The site of the Arena is on the southeast side of downtown San Jose a few blocks from the Caltrain depot. The Arena is designed",
+    "and the public’s image of the facility. The Bay Area receives essentially all of the major touring family shows; in fact, several shows reported to ERA that their Oakland Arena shows in particular are among their most successful nationally. All major shows in the Bay Area do shows in the Oakland Arena, with some appearing at San Francisco (Bill Graham) Civic Auditorium or the Cow Palace as well. However, the Civic Auditorium and Cow Palace appear to be less successful venues for family shows. For example, the Ice Capades used to play both the Oakland Arena and San Francisco Civic Auditorium but have decided for now to play only Oakland because San Francisco was not nearly as successful. Sesame Street Live reports that their Oakland show is very successful, with rising attendance every year except 1989 when their show conflicted with the Warriors’ playoff schedule; this contrasts with their recently added Cow Palace shows which ha",
+    "er Events ERA interviews with promoters of other events such as family shows have indicated a strong liking for the current Oakland Arena. Most shows appear to have an excellent relationship with the Coliseum management and their Oakland runs are often among the most successful in the country. Some shows play the Cow Palace or San Francisco Civic Auditorium as well, but the interviews suggest that Oakland is considered a much more desirable venue than the other two locations. Several promoters stated that the new San Jose Arena would be an attractive facility and most would consider holding events there, but Oakland has traditionally been so strong that even without a new facility at the Coliseum"
    ],
-   "collection": "sanfranciscopubliclibrary",
+   "collection": "igscalocalgovdocs",
    "relevance": {
-    "score": 12.0,
+    "score": 7.6,
     "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
     "substantive": true,
     "substantive_direct": true,
-    "hits": 2,
-    "density": 8.2,
-    "title_hit": true
+    "hits": 3,
+    "density": 3.1,
+    "title_hit": false
    },
    "materiality": {
-    "score": 0.0,
+    "score": 4.0,
     "money": false,
     "decision": false,
     "accountability": false,
     "contestation": false,
-    "named_genre": false,
+    "named_genre": true,
     "generic_serial": false
    },
-   "url": "https://archive.org/details/drafttransitionp1994sanf",
-   "deep_link": "https://archive.org/details/drafttransitionp1994sanf?q=Bill+Graham+Civic+Auditorium",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "url": "https://archive.org/details/C124914403",
+   "deep_link": "https://archive.org/details/C124914403?q=Bill+Graham+Civic+Auditorium",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A 1993 economic study of a proposed new Bay Area arena, which counted the Civic Auditorium as one of only three winter venues in the region — and reported that touring shows found it markedly less successful than Oakland."
   },
   {
    "identifier": "sanfranciscocour2319sanf",
@@ -80,8 +86,58 @@
    "url": "https://archive.org/details/sanfranciscocour2319sanf",
    "deep_link": "https://archive.org/details/sanfranciscocour2319sanf?q=Bill+Graham+Civic+Auditorium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A 1994 environmental impact report for the new courts building, mapping the auditorium among the public buildings that frame Civic Center Plaza."
+  },
+  {
+   "identifier": "sanfranciscocour9199sanf",
+   "title": "San Francisco Courts Building : draft environmental impact report : draft summary of comments and responses",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1994,
+   "pool": "sfpl",
+   "matched_alias": "Bill Graham Civic Auditorium",
+   "ocr_excerpts": [
+    "ysical effects on the building would be appropriately stated during the Certificate of Appropriateness process. Please see the comments and responses for Shadow, p. C & R.34, for discussion of potential effects on the 12 windows. C&R.25 Summary of Comments and Responses Comment Each mention of \"BILL GRAHAM CIVIC AUDITORIUM\" in this (and other) EIR should include the parenthetical (\"EXPOSITION AUDITORIUM\"), which is the historically accurate name of this building (still visible on facade). (Commenter's emphasis) (Michael M. Levin) Response Civic Auditorium, as it is commonly known, is identified by its historic name Exposition Auditorium, as well as its recently adopted name, Bill Graham Civic Auditorium, on p. 45 of the EIR. The Board of Supervisors approved the renaming of the auditorium for the late rock music promoter on October 13, 1992. Other references in the EIR use the adopted name. CULTURAL RESOURCES Comment The proposed project area has the possibility of containing archaeological reso",
+    "pedestrian safety are very important. (Joseph Kaufman, Chairman, Zoning, North of Market Planning Coalition) Response As stated on EIR p. 38, most of the major City structures in the Civic Center will be undergoing seismic strengthening in the next several years. These include, as noted there, the Bill Graham Civic Auditorium, the Opera House and Veterans Buildings, the existing Main Library Building, and City Hall. In response to the first comment, as stated on EIR p. 24, first paragraph, seismic upgrading of City Hall is scheduled for completion in 1998. As stated on p. 37, the state is planning to demolish its offi",
+    "everal years. The following information on construction schedules comes from that Committee. The new Main Library is expected to be complete in late 1995. Ongoing asbestos removal from the existing Federal Building at 450 Golden Gate Avenue should be finished by then as well. Seismic strengthening of Bill Graham Civic Auditorium began in May 1994 and is to continue through late 1995. Demolition of existing structures on the Courts Building site, if approved, is planned to begin in mid- 1994 after EIR certification; excavation for the new Courts Building is planned to start later in 1994, C&R.64 Summary of Comments and",
+    "re planned to be under construction from early 1995 through 1998, and City Hall seismic work is planned for Spring 1995 to continue through 1998, as well. The Department of Public Health building (101 Grove Street) is scheduled for seismic renovation from mid-1995 to mid-1997. Following completion of Bill Graham Civic Auditorium strengthening, work on the Opera House is scheduled for early 1996 for completion in mid- 1997. Major work on the Veterans' Building will not begin until after City Hall is complete, as the Mayor and Board of "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.48,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.48,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscocour9199sanf",
+   "deep_link": "https://archive.org/details/sanfranciscocour9199sanf?q=Bill+Graham+Civic+Auditorium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "Comments and responses on the draft courts building report, recording the seismic strengthening then planned for most major Civic Center structures."
   },
   {
    "identifier": "525goldengateave1520sanf",
@@ -121,48 +177,55 @@
    "url": "https://archive.org/details/525goldengateave1520sanf",
    "deep_link": "https://archive.org/details/525goldengateave1520sanf?q=Bill+Graham+Civic+Auditorium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A 2001 environmental review of the administrative building at 525 Golden Gate Avenue, set within the Civic Center rebuilding that also produced the new Main Library."
   },
   {
-   "identifier": "sanfranciscocour9199sanf",
-   "title": "San Francisco Courts Building : draft environmental impact report : draft summary of comments and responses",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "identifier": "drafttransitionp1994sanf",
+   "title": "Draft transition plan for the Department of Convention Facilities : Civic Auditorium and Brooks Exhibit Hall sites",
+   "creator": "San Francisco (Calif.). Dept. of Convention Facilities,San Francisco (Calif.). Bureau of Architecture",
    "year": 1994,
    "pool": "sfpl",
    "matched_alias": "Bill Graham Civic Auditorium",
    "ocr_excerpts": [
-    "ysical effects on the building would be appropriately stated during the Certificate of Appropriateness process. Please see the comments and responses for Shadow, p. C & R.34, for discussion of potential effects on the 12 windows. C&R.25 Summary of Comments and Responses Comment Each mention of \"BILL GRAHAM CIVIC AUDITORIUM\" in this (and other) EIR should include the parenthetical (\"EXPOSITION AUDITORIUM\"), which is the historically accurate name of this building (still visible on facade). (Commenter's emphasis) (Michael M. Levin) Response Civic Auditorium, as it is commonly known, is identified by its historic name Exposition Auditorium, as well as its recently adopted name, Bill Graham Civic Auditorium, on p. 45 of the EIR. The Board of Supervisors approved the renaming of the auditorium for the late rock music promoter on October 13, 1992. Other references in the EIR use the adopted name. CULTURAL RESOURCES Comment The proposed project area has the possibility of containing archaeological reso",
-    "pedestrian safety are very important. (Joseph Kaufman, Chairman, Zoning, North of Market Planning Coalition) Response As stated on EIR p. 38, most of the major City structures in the Civic Center will be undergoing seismic strengthening in the next several years. These include, as noted there, the Bill Graham Civic Auditorium, the Opera House and Veterans Buildings, the existing Main Library Building, and City Hall. In response to the first comment, as stated on EIR p. 24, first paragraph, seismic upgrading of City Hall is scheduled for completion in 1998. As stated on p. 37, the state is planning to demolish its offi",
-    "everal years. The following information on construction schedules comes from that Committee. The new Main Library is expected to be complete in late 1995. Ongoing asbestos removal from the existing Federal Building at 450 Golden Gate Avenue should be finished by then as well. Seismic strengthening of Bill Graham Civic Auditorium began in May 1994 and is to continue through late 1995. Demolition of existing structures on the Courts Building site, if approved, is planned to begin in mid- 1994 after EIR certification; excavation for the new Courts Building is planned to start later in 1994, C&R.64 Summary of Comments and",
-    "re planned to be under construction from early 1995 through 1998, and City Hall seismic work is planned for Spring 1995 to continue through 1998, as well. The Department of Public Health building (101 Grove Street) is scheduled for seismic renovation from mid-1995 to mid-1997. Following completion of Bill Graham Civic Auditorium strengthening, work on the Opera House is scheduled for early 1996 for completion in mid- 1997. Major work on the Veterans' Building will not begin until after City Hall is complete, as the Mayor and Board of "
+    "SAN FRANCISCO PUBLIC LIBRARY I 3 1223 04181 0285 WILLIAM L. LEE CHIEF ADMINISTRATIVE OFFICER NOTICE OF PUBLIC REVIEW AND COMMENT PERIOD DRAFT TRANSITION PLAN FOR THE DEPARTMENT OF CONVENTION FACILITIES BILL GRAHAM CIVIC AUDITORIUM AND BROOKS EXHIBIT HALL SITES jpartment of Convention Facilities of the City and County of San Francisco has developed a Draft Ition Plan for the Bill Graham Civic Auditorium and Brooks Exhibit Hall sites currently under |c renovation. In accordance with the Americans with Disabilities Act of 1990 (\"ADA\"), this jtion Plan addresses proposed structural changes to the Bill Graham Civic Auditorium and Brooks (ecessary to afford public program access by individuals with disabilities. [ransition Plan will be available for public review and comment after 9:00 a.m. on June 23, 1995. |lease of the Transition Plan will commence a 45 day public review period which will end at 5:00 ikUgust 7, 1995. Public comments will be documented and submitted to the Bureau of Architecture Itential incorporation into the final Transition Plan. Individual copies of this document entitled vrransiiion Plan for the Department of Convention Facilities Civic Auditorium and Brooks Exhibit \\ites may be reviewed at the following San Francisco Public Libraries and locations: Main Library Civic Center Bayview Chinatown Eureka Valley Excelsior Glen Park Ingleside Marina Merced North Beach Ocean View- Ortega Park Parkside Portola Portrero Presidio Sunset Visitation Valley",
+    "e California Relay Service at 1-800-735-2929 and reference the aforementioned voice one number. 401 VAN NESS AVENUE, ROOM 402, SAN FRANCISCO, CA 94102 TELEPHONE 415-554-4851; FAX 415-554-4849 NOTICE OF PUBLIC REVIEW AND COMMENT PERIOD DRAFT TRANSITION PLAN FOR THE DEPARTMENT OF CONVENTION FACILITIES BILL GRAHAM CIVIC AUDITORIUM AND BROOKS EXHIBIT HALL SITES The Department of Convention Facilities of the City and County of San Francisco has developed a Draft Transition Plan for the Bill Graham Civic Auditorium and Brooks Exhibit Hall sites currently under seismic renovation. In accordance v\\ith the Americans with Disabilities Act of 1990 (\"ADA\"), this Transition Plan addresses proposed structural changes to the Bill Graham Civic Auditorium and Brooks Hall necessar>' to afford public program access by individuals with disabilities. This Transition Plan will be available for public review and comment after 9:00 a.m. on June 23, 1995. The release of the Transition Plan will commence a 45 day public review period which will end at 5:00 p.m., August 7, 1995. Public comments will be documented and submitted to the Bureau of Architecture for potential incorporation into the final Transition Plan. Individual copies of this document entitled Draft Transition Plan for the Department of Convention Faciliti"
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 3.48,
-    "sf_context": false,
+    "score": 12.0,
+    "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
     "substantive": true,
     "substantive_direct": true,
-    "hits": 4,
-    "density": 1.48,
-    "title_hit": false
+    "hits": 2,
+    "density": 8.2,
+    "title_hit": true
    },
    "materiality": {
-    "score": 6.5,
-    "money": true,
-    "decision": true,
+    "score": 0.0,
+    "money": false,
+    "decision": false,
     "accountability": false,
-    "contestation": true,
-    "named_genre": true,
+    "contestation": false,
+    "named_genre": false,
     "generic_serial": false
    },
-   "url": "https://archive.org/details/sanfranciscocour9199sanf",
-   "deep_link": "https://archive.org/details/sanfranciscocour9199sanf?q=Bill+Graham+Civic+Auditorium",
+   "url": "https://archive.org/details/drafttransitionp1994sanf",
+   "deep_link": "https://archive.org/details/drafttransitionp1994sanf?q=Bill+Graham+Civic+Auditorium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false
   },
   {
    "identifier": "economicperforma1719sanf",
@@ -202,7 +265,11 @@
    "url": "https://archive.org/details/economicperforma1719sanf",
    "deep_link": "https://archive.org/details/economicperforma1719sanf?q=Civic+Auditorium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Histories & surveys",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
    "salient": false
   },
   {
@@ -243,48 +310,13 @@
    "url": "https://archive.org/details/agenda1993sanf_1",
    "deep_link": "https://archive.org/details/agenda1993sanf_1?q=Bill+Graham+Civic+Auditorium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "C124914403",
-   "title": "Analysis of the economic impacts of a proposed new arena",
-   "creator": null,
-   "year": 1993,
-   "pool": "dl",
-   "matched_alias": "Bill Graham Civic Auditorium",
-   "ocr_excerpts": [
-    "s means that available venues are much fewer in the winter. This dearth of facilities is compounded by the playing schedule of the Warriors which runs from November to April, not counting playoff games. Until now, a wintertime non-stadium- sized event scheduled the night of a Warriors game has had the choice of only Bill Graham (San Francisco) Civic Auditorium, the Kaiser Center, and the Cow Palace. The San Jose Arena presents a new option for Bay Area events, when it is not occupied by its anchor tenant, the new Bay Area National Hockey League team, the San Jose Sharks. The site of the Arena is on the southeast side of downtown San Jose a few blocks from the Caltrain depot. The Arena is designed",
-    "and the public’s image of the facility. The Bay Area receives essentially all of the major touring family shows; in fact, several shows reported to ERA that their Oakland Arena shows in particular are among their most successful nationally. All major shows in the Bay Area do shows in the Oakland Arena, with some appearing at San Francisco (Bill Graham) Civic Auditorium or the Cow Palace as well. However, the Civic Auditorium and Cow Palace appear to be less successful venues for family shows. For example, the Ice Capades used to play both the Oakland Arena and San Francisco Civic Auditorium but have decided for now to play only Oakland because San Francisco was not nearly as successful. Sesame Street Live reports that their Oakland show is very successful, with rising attendance every year except 1989 when their show conflicted with the Warriors’ playoff schedule; this contrasts with their recently added Cow Palace shows which ha",
-    "er Events ERA interviews with promoters of other events such as family shows have indicated a strong liking for the current Oakland Arena. Most shows appear to have an excellent relationship with the Coliseum management and their Oakland runs are often among the most successful in the country. Some shows play the Cow Palace or San Francisco Civic Auditorium as well, but the interviews suggest that Oakland is considered a much more desirable venue than the other two locations. Several promoters stated that the new San Jose Arena would be an attractive facility and most would consider holding events there, but Oakland has traditionally been so strong that even without a new facility at the Coliseum"
-   ],
-   "collection": "igscalocalgovdocs",
-   "relevance": {
-    "score": 7.6,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 3.1,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 4.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/C124914403",
-   "deep_link": "https://archive.org/details/C124914403?q=Bill+Graham+Civic+Auditorium",
-   "source_label": "Internet Archive — Democracy's Library",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A 1993 agenda of the Seismic Safety Retrofit Bond Program board, the loan origination and servicing committee behind the city's earthquake strengthening."
   }
  ]
 }

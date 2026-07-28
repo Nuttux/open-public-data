@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.744049+00:00",
+ "generated_at": "2026-07-28T11:43:47.720450+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,187 @@
  "top_departments": [
   "HOM Homelessness Services"
  ],
+ "profile": {
+  "n_vouchers": 2696,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 50489319.42,
+    "n_vouchers": 841
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 23619259.38,
+    "n_vouchers": 400
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 19697794.8,
+    "n_vouchers": 670
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 7063964.44,
+    "n_vouchers": 201
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 3797902.84,
+    "n_vouchers": 168
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 3601971.85,
+    "n_vouchers": 106
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 3182066.31,
+    "n_vouchers": 216
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 1015162.0,
+    "n_vouchers": 58
+   }
+  ],
+  "n_departments": 10,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 81781230.94,
+    "n_vouchers": 1588
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1294017.47,
+    "n_vouchers": 54
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 1072918.55,
+    "n_vouchers": 22
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 299179.66,
+    "n_vouchers": 12
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 190410.3,
+    "n_vouchers": 17
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 48464.11,
+    "n_vouchers": 1
+   },
+   {
+    "code": "530110",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 30630.94,
+    "n_vouchers": 9
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 28139.43,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 10,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 11750863.49,
+  "n_recent_lines": 7,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 6594542.62,
+    "n_vouchers": 106
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 3117819.26,
+    "n_vouchers": 36
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 932436.35,
+    "n_vouchers": 26
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 469725.37,
+    "n_vouchers": 26
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 435984.0,
+    "n_vouchers": 16
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 172216.46,
+    "n_vouchers": 10
+   }
+  ]
+ },
+ "identity": {
+  "description": "Homeless Prenatal Program Inc is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under health care.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Homeless Prenatal Program Inc",
+  "ein": "943146280",
+  "ntee_code": "E99Z",
+  "ntee_label": "Health care",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/943146280",
+  "checked_at": "2026-07-27T23:38:03.511268+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000012859",
@@ -76,7 +257,7 @@
   },
   {
    "contract_no": "1000032709",
-   "title": "24-02 FRC Initiative",
+   "title": "24-02 Family Resource Center Initiative",
    "department": "DEC Dept of Early Childhood",
    "department_code": "DEC",
    "agreed_usd": 2805003.0,
@@ -85,7 +266,7 @@
   },
   {
    "contract_no": "1000027642",
-   "title": "Homeless Prenatal Prgrm",
+   "title": "Homeless Prenatal Program",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 1357564.0,
@@ -94,7 +275,7 @@
   },
   {
    "contract_no": "1000035557",
-   "title": "TAY - RRH",
+   "title": "TAY - rapid re-housing",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 6131147.0,

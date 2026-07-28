@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.729369+00:00",
+ "generated_at": "2026-07-28T11:43:47.695454+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,107 @@
  "top_departments": [
   "HSS Health Service System"
  ],
+ "profile": {
+  "n_vouchers": 1108,
+  "departments": [
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "usd": 588003951.7,
+    "n_vouchers": 1043
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 4229.56,
+    "n_vouchers": 65
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "556400",
+    "label": "Dental-Misc Employee",
+    "spend_class": "obligation",
+    "usd": 388879499.62,
+    "n_vouchers": 578
+   },
+   {
+    "code": "556430",
+    "label": "Dental-Retired Employee",
+    "spend_class": "obligation",
+    "usd": 167296294.62,
+    "n_vouchers": 218
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 15292885.46,
+    "n_vouchers": 108
+   },
+   {
+    "code": "527900",
+    "label": "Chn Services",
+    "spend_class": "purchase",
+    "usd": 292034.82,
+    "n_vouchers": 4
+   },
+   {
+    "code": "479999",
+    "label": "Other Non-Operating Revenue",
+    "spend_class": "ledger",
+    "usd": 27415.78,
+    "n_vouchers": 3
+   },
+   {
+    "code": "232680",
+    "label": "232660CONFringe-DentalCityShar",
+    "spend_class": "unclear",
+    "usd": 2801.69,
+    "n_vouchers": 29
+   },
+   {
+    "code": "232640",
+    "label": "232620CONHealth - Pers Dental",
+    "spend_class": "unclear",
+    "usd": 1427.87,
+    "n_vouchers": 36
+   }
+  ],
+  "n_categories": 7,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 68762431.3,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Dental-Misc Employee",
+    "spend_class": "obligation",
+    "usd": 45588951.4,
+    "n_vouchers": 64
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Dental-Retired Employee",
+    "spend_class": "obligation",
+    "usd": 21502006.3,
+    "n_vouchers": 24
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1671473.6,
+    "n_vouchers": 11
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

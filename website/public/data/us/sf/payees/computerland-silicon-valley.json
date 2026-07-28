@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.734932+00:00",
+ "generated_at": "2026-07-28T11:43:47.705268+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -34,6 +34,174 @@
  "top_departments": [
   "PUB Public Utilities Bureaus"
  ],
+ "profile": {
+  "n_vouchers": 15951,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 46860422.4,
+    "n_vouchers": 3048
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 31761901.88,
+    "n_vouchers": 1996
+   },
+   {
+    "department": "DT  GSA - Technology",
+    "department_code": "TIS",
+    "usd": 22433715.44,
+    "n_vouchers": 1329
+   },
+   {
+    "department": "LIB Public Library",
+    "department_code": "LIB",
+    "usd": 19471300.57,
+    "n_vouchers": 1011
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 18103352.82,
+    "n_vouchers": 1726
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 14865313.99,
+    "n_vouchers": 1088
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 8435904.59,
+    "n_vouchers": 469
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "usd": 8291730.77,
+    "n_vouchers": 485
+   }
+  ],
+  "n_departments": 49,
+  "categories": [
+   {
+    "code": "535960",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 27407219.76,
+    "n_vouchers": 2158
+   },
+   {
+    "code": "527610",
+    "label": "Systems Consulting Services",
+    "spend_class": "purchase",
+    "usd": 22810409.96,
+    "n_vouchers": 1781
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 16822454.69,
+    "n_vouchers": 834
+   },
+   {
+    "code": "549210",
+    "label": "Data Processing Supplies",
+    "spend_class": "purchase",
+    "usd": 13415995.39,
+    "n_vouchers": 687
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 11142119.21,
+    "n_vouchers": 868
+   },
+   {
+    "code": "560610",
+    "label": "Data Processing Equipment",
+    "spend_class": "purchase",
+    "usd": 5811015.9,
+    "n_vouchers": 103
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 5292529.98,
+    "n_vouchers": 414
+   },
+   {
+    "code": "549250",
+    "label": "Minor Data Processing Equipmnt",
+    "spend_class": "purchase",
+    "usd": 4803881.17,
+    "n_vouchers": 395
+   }
+  ],
+  "n_categories": 52,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 6703945.49,
+  "n_recent_lines": 73,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Systems Consulting Services",
+    "spend_class": "purchase",
+    "usd": 1314382.73,
+    "n_vouchers": 55
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Systems Consulting Services",
+    "spend_class": "purchase",
+    "usd": 820874.87,
+    "n_vouchers": 43
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 784930.53,
+    "n_vouchers": 35
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 474551.48,
+    "n_vouchers": 37
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Data Processing Supplies",
+    "spend_class": "purchase",
+    "usd": 375368.72,
+    "n_vouchers": 7
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Minor Data Processing Equipmnt",
+    "spend_class": "purchase",
+    "usd": 331628.11,
+    "n_vouchers": 9
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000034448",

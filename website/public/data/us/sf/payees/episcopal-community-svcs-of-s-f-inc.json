@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.728962+00:00",
+ "generated_at": "2026-07-28T11:43:47.694761+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "HSA Human Services Agency"
  ],
+ "profile": {
+  "n_vouchers": 10498,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 429032628.05,
+    "n_vouchers": 5598
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 137746531.4,
+    "n_vouchers": 2689
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 23081946.61,
+    "n_vouchers": 619
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 11788151.24,
+    "n_vouchers": 684
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 3241498.27,
+    "n_vouchers": 521
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 2952849.63,
+    "n_vouchers": 109
+   },
+   {
+    "department": "ADP Adult Probation",
+    "department_code": "ADP",
+    "usd": 1752562.51,
+    "n_vouchers": 81
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 954959.7,
+    "n_vouchers": 179
+   }
+  ],
+  "n_departments": 13,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 404291170.07,
+    "n_vouchers": 6045
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 14895283.27,
+    "n_vouchers": 197
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 10988977.7,
+    "n_vouchers": 300
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 4233494.38,
+    "n_vouchers": 116
+   },
+   {
+    "code": "536510",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 1834583.47,
+    "n_vouchers": 110
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 100863.75,
+    "n_vouchers": 8
+   },
+   {
+    "code": "LIAB_OTHR",
+    "label": "Liabilities-Other",
+    "spend_class": "ledger",
+    "usd": 15850.96,
+    "n_vouchers": 2
+   },
+   {
+    "code": "430170",
+    "label": "Interest Earned-Tax Refund",
+    "spend_class": "ledger",
+    "usd": 8304.72,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 13,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 59796894.27,
+  "n_recent_lines": 11,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 55271270.85,
+    "n_vouchers": 650
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1775795.12,
+    "n_vouchers": 88
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 1045121.98,
+    "n_vouchers": 38
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 648726.71,
+    "n_vouchers": 21
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 382307.89,
+    "n_vouchers": 12
+   },
+   {
+    "department": "ADP Adult Probation",
+    "department_code": "ADP",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 379909.21,
+    "n_vouchers": 12
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000019778",
@@ -220,7 +388,7 @@
   },
   {
    "contract_no": "1000029981",
-   "title": "DAS ECS Comm Srvcs FY23-27",
+   "title": "DAS ECS Communications Services FY23-27",
    "department": "HSA Human Services Agency",
    "department_code": "HSA",
    "agreed_usd": 1388891.0,
@@ -256,7 +424,7 @@
   },
   {
    "contract_no": "1000036300",
-   "title": "DAS ENP Cong 25-29",
+   "title": "DAS ENP Congregate 25-29",
    "department": "HSA Human Services Agency",
    "department_code": "HSA",
    "agreed_usd": 505098.0,
@@ -274,7 +442,7 @@
   },
   {
    "contract_no": "1000036302",
-   "title": "DAS AWD Cong 25-29",
+   "title": "DAS AWD Congregate 25-29",
    "department": "HSA Human Services Agency",
    "department_code": "HSA",
    "agreed_usd": 63963.0,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.726694+00:00",
+ "generated_at": "2026-07-28T11:43:47.690993+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,112 @@
  "top_departments": [
   "DPW GSA - Public Works"
  ],
+ "profile": {
+  "n_vouchers": 1170,
+  "departments": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 1561748728.36,
+    "n_vouchers": 600
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 354073784.7,
+    "n_vouchers": 438
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 21590244.9,
+    "n_vouchers": 123
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 7380.16,
+    "n_vouchers": 9
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "567110",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 902158757.48,
+    "n_vouchers": 218
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 149298946.98,
+    "n_vouchers": 97
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 836116.98,
+    "n_vouchers": 15
+   },
+   {
+    "code": "525210",
+    "label": "Exhibitions",
+    "spend_class": "purchase",
+    "usd": 66581.42,
+    "n_vouchers": 8
+   },
+   {
+    "code": "REF_PAY",
+    "label": "Refunds Payable",
+    "spend_class": "ledger",
+    "usd": 380.16,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 306518262.04,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 273076050.49,
+    "n_vouchers": 24
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 33442211.55,
+    "n_vouchers": 11
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 0.0,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000008346",

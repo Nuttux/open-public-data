@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.737629+00:00",
+ "generated_at": "2026-07-28T11:43:47.709866+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -26,6 +26,150 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 4247,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 91009456.15,
+    "n_vouchers": 955
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 81276066.83,
+    "n_vouchers": 3151
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 1141323.42,
+    "n_vouchers": 88
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 566490.31,
+    "n_vouchers": 46
+   },
+   {
+    "department": "DT  GSA - Technology",
+    "department_code": "TIS",
+    "usd": 6750.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 3781.73,
+    "n_vouchers": 4
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 3000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "DEM",
+    "usd": 0.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 8,
+  "categories": [
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 128488646.65,
+    "n_vouchers": 3567
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 35038175.75,
+    "n_vouchers": 465
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 8639769.53,
+    "n_vouchers": 135
+   },
+   {
+    "code": "OTH_ASSETS_CURR",
+    "label": "Other Assets Current",
+    "spend_class": "ledger",
+    "usd": 891258.41,
+    "n_vouchers": 14
+   },
+   {
+    "code": "535000",
+    "label": "Other Current Expenses - Bdgt",
+    "spend_class": "purchase",
+    "usd": 443448.27,
+    "n_vouchers": 3
+   },
+   {
+    "code": "530110",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 356328.0,
+    "n_vouchers": 5
+   },
+   {
+    "code": "536340",
+    "label": "Non-CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 123042.04,
+    "n_vouchers": 43
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 14523.06,
+    "n_vouchers": 11
+   }
+  ],
+  "n_categories": 12,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 17758189.14,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 9939675.04,
+    "n_vouchers": 432
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 7575872.0,
+    "n_vouchers": 70
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 242642.1,
+    "n_vouchers": 20
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000030849",
@@ -38,7 +182,7 @@
   },
   {
    "contract_no": "1000016119",
-   "title": "Prog Admin & Support Svcs",
+   "title": "Program Administration & Support Services",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 6287182.0,
@@ -56,7 +200,7 @@
   },
   {
    "contract_no": "1000011928",
-   "title": "Prog Admin Supp Svcs",
+   "title": "Program Administration Support Services",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 2932035.0,
@@ -83,7 +227,7 @@
   },
   {
    "contract_no": "1000022512",
-   "title": "Program Admin Services",
+   "title": "Program Administration Services",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 2834781.0,
@@ -92,7 +236,7 @@
   },
   {
    "contract_no": "1000024450",
-   "title": "| Prog Admin - MMP",
+   "title": "| Program Administration - MMP",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 3280166.0,
@@ -110,7 +254,7 @@
   },
   {
    "contract_no": "1000016265",
-   "title": "Program Admin & Supp Svcs",
+   "title": "Program Administration & Support Services",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 2151749.0,
@@ -128,7 +272,7 @@
   },
   {
    "contract_no": "1000028127",
-   "title": "Program Admin - BLISS",
+   "title": "Program Administration - BLISS",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 1374966.0,
@@ -146,7 +290,7 @@
   },
   {
    "contract_no": "1000035975",
-   "title": "Comm Wellness Health Promo",
+   "title": "Communications Wellness Health Promo",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 1792298.0,
@@ -155,7 +299,7 @@
   },
   {
    "contract_no": "1000016120",
-   "title": "Prog Admin & Support Svcs",
+   "title": "Program Administration & Support Services",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 677378.0,
@@ -164,7 +308,7 @@
   },
   {
    "contract_no": "1000025107",
-   "title": "| Program Admin Lactation",
+   "title": "| Program Administration Lactation",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 490000.0,
@@ -173,7 +317,7 @@
   },
   {
    "contract_no": "1000028303",
-   "title": "Program Admin and Support",
+   "title": "Program Administration and Support",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 205345.0,

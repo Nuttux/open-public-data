@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.734261+00:00",
+ "generated_at": "2026-07-28T11:43:47.704133+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -33,6 +33,97 @@
  "top_departments": [
   "PUB Public Utilities Bureaus"
  ],
+ "profile": {
+  "n_vouchers": 1007,
+  "departments": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 116899164.52,
+    "n_vouchers": 548
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 103659186.78,
+    "n_vouchers": 383
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 9349458.4,
+    "n_vouchers": 75
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 1247.2,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 176083733.43,
+    "n_vouchers": 425
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 482022.17,
+    "n_vouchers": 16
+   },
+   {
+    "code": "553120",
+    "label": "Judgements - Legal Fees",
+    "spend_class": "unclear",
+    "usd": 10000.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "536530",
+    "label": "Extended Sick Leave Benefits",
+    "spend_class": "unclear",
+    "usd": 1247.2,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 4
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 22287552.64,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 12716171.1,
+    "n_vouchers": 11
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 9571381.54,
+    "n_vouchers": 16
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000036387",
@@ -45,7 +136,7 @@
   },
   {
    "contract_no": "1000030008",
-   "title": "VL Pave Renov No.60 & SWR",
+   "title": "VL Pave Renov No.60 & Sewer",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 8569336.0,

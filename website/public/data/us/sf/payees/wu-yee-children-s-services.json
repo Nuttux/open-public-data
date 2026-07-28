@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.731226+00:00",
+ "generated_at": "2026-07-28T11:43:47.698914+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,165 @@
  "top_departments": [
   "CFC Children & Families Commsn"
  ],
+ "profile": {
+  "n_vouchers": 1584,
+  "departments": [
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 189889189.59,
+    "n_vouchers": 189
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 96312394.8,
+    "n_vouchers": 298
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 21244187.1,
+    "n_vouchers": 266
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 14434044.64,
+    "n_vouchers": 267
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 3424924.93,
+    "n_vouchers": 409
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 1600000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 1379704.29,
+    "n_vouchers": 126
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 765000.0,
+    "n_vouchers": 21
+   }
+  ],
+  "n_departments": 11,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 290983421.29,
+    "n_vouchers": 876
+   },
+   {
+    "code": "536210",
+    "label": "Day Care Assistance",
+    "spend_class": "unclear",
+    "usd": 1732885.36,
+    "n_vouchers": 41
+   },
+   {
+    "code": "OTHER_REC",
+    "label": "Other Receivables",
+    "spend_class": "ledger",
+    "usd": 113276.08,
+    "n_vouchers": 2
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 992.11,
+    "n_vouchers": 1
+   },
+   {
+    "code": "439899",
+    "label": "Other City Property Rentals",
+    "spend_class": "unclear",
+    "usd": 514.48,
+    "n_vouchers": 3
+   },
+   {
+    "code": "REF_PAY_AGNCY_FUND",
+    "label": "Refunds Payable-Agency Fund",
+    "spend_class": "ledger",
+    "usd": 14.47,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 26112366.24,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 25738754.22,
+    "n_vouchers": 38
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 225573.68,
+    "n_vouchers": 10
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 142829.04,
+    "n_vouchers": 11
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 5000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Other City Property Rentals",
+    "spend_class": "unclear",
+    "usd": 209.3,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": {
+  "description": "Wu Yee Childrens Services is an IRS-recognized tax-exempt organization in San Francisco, CA. Its IRS activity code is not recorded in the registry.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Wu Yee Childrens Services",
+  "ein": "942387002",
+  "ntee_code": null,
+  "ntee_label": null,
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/942387002",
+  "checked_at": "2026-07-27T23:35:51.120039+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000036193",
@@ -49,7 +208,7 @@
   },
   {
    "contract_no": "1000033034",
-   "title": "24-02 FRC Initiative",
+   "title": "24-02 Family Resource Center Initiative",
    "department": "DEC Dept of Early Childhood",
    "department_code": "DEC",
    "agreed_usd": 1409330.0,
@@ -58,7 +217,7 @@
   },
   {
    "contract_no": "1000037477",
-   "title": "FRC Cross Sector Grants",
+   "title": "Family Resource Center Cross Sector Grants",
    "department": "DEC Dept of Early Childhood",
    "department_code": "DEC",
    "agreed_usd": 350000.0,

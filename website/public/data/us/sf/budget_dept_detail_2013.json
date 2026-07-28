@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.787746+00:00",
+  "generated_at": "2026-07-28T11:43:46.565116+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -17237,15 +17237,15 @@
       "side": "Spending",
       "objects": [
         {
-          "code": "019",
-          "label": "Other Fringe Benefits",
-          "amount_usd": -2.0,
-          "is_transfer_adjustment": false
-        },
-        {
           "code": "014",
           "label": "Social Security",
           "amount_usd": 2.0,
+          "is_transfer_adjustment": false
+        },
+        {
+          "code": "019",
+          "label": "Other Fringe Benefits",
+          "amount_usd": -2.0,
           "is_transfer_adjustment": false
         }
       ],
@@ -26791,7 +26791,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SUSAN STERN",
+            "vendor": "MISSION STREET PRODUCTIONS, LLC",
             "amount_usd": 65270.9,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -26800,7 +26800,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MISSION STREET PRODUCTIONS, LLC",
+            "vendor": "SUSAN STERN",
             "amount_usd": 65270.9,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -34931,6 +34931,15 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "TENDERLOIN HOUSING CLINIC INC",
+            "amount_usd": 20000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "CAUSA JUSTA: JUST CAUSE",
             "amount_usd": 20000.0,
             "n_vouchers": 2,
@@ -34946,15 +34955,6 @@
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "TENDERLOIN HOUSING CLINIC INC",
-            "amount_usd": 20000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
             "is_aggregation_line": false
           }
         ],

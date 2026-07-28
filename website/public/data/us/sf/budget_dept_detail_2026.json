@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.926625+00:00",
+  "generated_at": "2026-07-28T11:43:46.680762+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -10894,14 +10894,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581250",
-          "label": "GF-City Planning",
+          "code": "581921",
+          "label": "ADM CMD Contractor Development",
           "amount_usd": 100000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581921",
-          "label": "ADM CMD Contractor Development",
+          "code": "581250",
+          "label": "GF-City Planning",
           "amount_usd": 100000.0,
           "is_transfer_adjustment": false
         },
@@ -10942,14 +10942,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581845",
-          "label": "GF-Police Accountability",
+          "code": "581280",
+          "label": "DT SFGov TV Services",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581280",
-          "label": "DT SFGov TV Services",
+          "code": "581845",
+          "label": "GF-Police Accountability",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -11025,43 +11025,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Kelley Finley",
-            "amount_usd": 3000.0,
-            "n_vouchers": 2,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "Cristine Blanco",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "JEROME REYES",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "Patricia Jameson",
-            "amount_usd": 3000.0,
-            "n_vouchers": 2,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "Francesca Villa Mateo",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -11079,7 +11043,34 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "JOHANNA POETHIG",
+            "vendor": "Cristine Blanco",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "Patricia Jameson",
+            "amount_usd": 3000.0,
+            "n_vouchers": 2,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "Kelley Finley",
+            "amount_usd": 3000.0,
+            "n_vouchers": 2,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "Francesca Villa Mateo",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -11089,6 +11080,15 @@
           },
           {
             "vendor": "Cherisse Iris Torres Alcantara",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "JOHANNA POETHIG",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -22442,14 +22442,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581930",
-          "label": "GF-Sheriff",
+          "code": "581450",
+          "label": "GF-HR-Mgmt Training",
           "amount_usd": 35000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581450",
-          "label": "GF-HR-Mgmt Training",
+          "code": "581930",
+          "label": "GF-Sheriff",
           "amount_usd": 35000.0,
           "is_transfer_adjustment": false
         },
@@ -28488,14 +28488,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "536510",
-          "label": "Homeless Hsng And Supportv Svc",
+          "code": "536230",
+          "label": "Kinship-Foster Care Emergency",
           "amount_usd": 60000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "536230",
-          "label": "Kinship-Foster Care Emergency",
+          "code": "536510",
+          "label": "Homeless Hsng And Supportv Svc",
           "amount_usd": 60000.0,
           "is_transfer_adjustment": false
         },
@@ -29741,14 +29741,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581166",
-          "label": "GF-Immigrant and Language Serv",
+          "code": "581320",
+          "label": "GF-District Attorney",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581320",
-          "label": "GF-District Attorney",
+          "code": "581166",
+          "label": "GF-Immigrant and Language Serv",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },

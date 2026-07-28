@@ -1,0 +1,398 @@
+{
+ "generated_at": "2026-07-28T12:23:47.807396+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "brooks-hall",
+ "name": "Brooks Hall",
+ "kind": "Civic building",
+ "family": "civic",
+ "address": "30 Dr Carlton B Goodlett Pl",
+ "lat": 37.77908,
+ "lon": -122.417954,
+ "owning_dept": {
+  "name": "City Administrator",
+  "code": "ADM"
+ },
+ "facility": {
+  "primary_name": "Brooks Hall",
+  "primary_address": "30 DR CARLTON B GOODLETT PL",
+  "primary_city": "San Francisco",
+  "primary_zip": "94102",
+  "primary_block_lot": "0788001",
+  "primary_department_name": "Gsa - Real Estate Division",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 114789,
+  "primary_latitude": 37.77907985200005,
+  "primary_longitude": -122.41795446399999,
+  "supervisor_district": 5,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 114789,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "0788001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 198,
+    "common_name": "Brooks Hall",
+    "block_lot": "0788001",
+    "gross_sq_ft": 114789,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": "/img/us/sf/places/brooks-hall.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/brooks-hall.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Brooks_Hall_site_plan.jpg",
+  "license": "Public domain",
+  "license_url": "",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Unknown illustrators. Presumed staff of San Francisco Department of Public Works, given the source.",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T23:50:15.405162+00:00"
+ },
+ "summary_en": "Brooks Hall is the exhibition space built in 1958 beneath Civic Center Plaza, with about 100,000 net square feet of floor — a figure the 1978 Yerba Buena Center environmental report uses when arguing over San Francisco's share of the national convention market. It has spent decades being reconsidered. The Planning Department's 1987 Civic Center development programme recommended retaining Brooks Hall as a convention facility, but reconfiguring its ramp and truck staging area, which stood in the way of turning Fulton Street between Hyde and Larkin into a pedestrian mall linking the new Asian Art Museum to the new Main Library. Then the library itself looked at it: the post-occupancy evaluation of the new Main Library, carried out in 1999 and 2000, devotes a section to the potential uses of Brooks Hall and how it might supplement the library's functions, and prices a library expansion into the hall at $10,343,204. The November 2000 branch library bond proposal duly carries a $5.00 million line for Brooks Hall within its $128.55 million programme. The city's property register lists it plainly as a subsurface portion at Grove and Larkin, its land area folded into the Civic Center Plaza figure above it — and the most recent permit on the site is for a 640-square-foot café kiosk built on top of the hall's roof.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_usd": 287717708.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_compensation_usd": 168334637.06,
+   "n_employees": 1154,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "sanfranciscopub4200ripl_0",
+   "title": "San Francisco Public Library Post Occupancy Evaluation",
+   "creator": "Ripley, Cynthia,Mason, Florence, librarian,Kent, Susan,Ripley Architects",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Brooks Hall",
+   "ocr_excerpts": [
+    "s and recommendations in Section 3 3 Findings and Recommendations Presentation of specific findings and recommendations for change, including, illustrations of Existing Facility Conditions and Proposed Changes in the Main Library and an illustration of Existing Facility Conditions and Proposed Changes in Brooks Hall 4 Project Clusters, Project Costs and Implementation Discussion of project clusters allowing the library to remain Open, with project costs 5 Study Participants and acknowledgments Contents -Volume 2 1 Outstanding Facility Problems Remaining from the Prime Construction Contract , « I t . a a \\ ' DOCUMENTS DEPT. 2 Survey Instruments and Analysis h ,P.U« « ^ JAN 1 1 2000 b. Staff Survey c. Way Finding Survey SAN FRANCISCO PUBLIC LIBRARY 3 Detailed Cost Information for Project Clusters 4 Information on Brooks Hall provided by San Francisco Department of Public Works 5 Comments from staff, the public following the presentation of the interim POE Report, August 1999 Digitized by the Internet Archive in 2014 https://archive.org/details/sanfranciscopub4200ripl_0 3 1223 05308 2278 3 -- a- a. < a i 9-1 \"5",
+    "- Third and Fourth Floor Service Desk Kelocation and New Furniture Installation Renovation Project 4b - Expand Collection Areas 1 '663'757 Renovation Project 5a - 5th Floor Relocate Periodical Shelving 3,719,894 and Increase Reading Room Seating 2,628,014 2,460,767 1,011,734 Library Expansion Into Brooks Hall $10,343,204 OLI 9955 San Francigra Pi ihlir I ihrarv 12/13/99 Renovation Project 1 San Francisco Main Library Building Renovation Renovation Project 1 - Lower Floor Project Summary - Classroom Additions and New Collection Shelving Cost P5.L2b, 4c Provide New Public Meeting Rooms & Electron",
+    "10.0 Finish Sitework None 4500 LB 15.00 ###### 75 EA 185.00 13,875 5 EA 1,500 7,500 1 LS 12,500 5700 SF 5700 SF 40 Ea 95 Ea 35 Ea 3.50 19,950 ####### 2.50 ###### 350.00 14,000 700.00 66,500 450.00 15,750 ####### None OLI 9955 San Francisco Public Library 12/13/99 Brooks Hall Page 1 of 3 San Francisco Main Library Building Renovation Brooks Hall Project Summary - Library Expansion Into Brooks Hall Cost 1 .0 Site Preparation 2.0 Substructure 3.0 Superstructure 4.0 Exterior Closure 5.0 Roofing & Waterproofing $268,800 None None None None 6.0 Interior Construction 7.0 Conveying Systems 8.0 Mechanical Systems 9.0 Electrical Systems 10.0 Finish Sitework Subtotal Costs 2,297,450 None 2,29",
+    "0 40,000 $6,103,150 General Conditions Contractor's Fee Design Contingency 9.0% 4.0% 15.0% Total Construction Cost $549,284 266,097 1,037,780 $7,956,310 Soft Cost Allowance 30.0% $2,386,893 Total Project Cost in November 1999 Dollars $10,343,204 OLI 9955 San Francisco Public Library Brooks Hall Page 2 of 3 n Francisco Main Library Building Renovation Brooks Hall Quantity Unit Price"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.46,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.46,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscopub4200ripl_0",
+   "deep_link": "https://archive.org/details/sanfranciscopub4200ripl_0?q=Brooks+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "The Main Library's post-occupancy evaluation, pricing a library expansion into Brooks Hall at $10.3 million."
+  },
+  {
+   "identifier": "sanfranciscopubl1619ripl",
+   "title": "San Francisco Public Library post occupancy evaluation : draft report",
+   "creator": "Ripley, Cynthia,Ripley Architects",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "Brooks Hall",
+   "ocr_excerpts": [
+    "uly 1 6, 1 999 Contents Volume 1 Executive Summary 1 Introduction and Background 2 Background and Key Issues Leading to the Study 3 Findings and Conclusions 4 Recommendations 5 Existing Facility Conditions and Proposed Changes - Main Library 6 Existing Facility Conditions and Proposed Changes - Brooks Hall 7 Proposed Regional Services Center at Mission Bay 8 Summary of Improved Public Services Capacity- Main Library, Brooks Hall, Regional Services Center 9 Cost plan and Project Phasing Contents -Volume 2 1 Project Detail Sheets and Photographs 2 Outstanding Facility Problenns Remaining from the Prime Construction Contract or not Under Warranty 3 Survey Instruments and Analysis a. Public Survey b. Staff Survey c. Way Finding Survey 4 Brooks Hall Study Provided by City 5 Credits and Sources 6 Appendixes -Shelving Calculations 4 48526 SFPL: ECONO 63 SFPL 05/10/02 Digitized by the Internet Archive in 2014 https://archive.org/details/sanfranciscopubl1619ripl Section One: Introduction and Background (7/15/99) This study grows out of the recom",
+    "airs, toilets, lockers, building environmental issues and materials handling systems 3. Maintenance and Operations An assessment of the adequacy of building operations is requested, including shelving space, furniture, maintenance and cleaning, water infiltration, wiring, and windows. 4. Potential Uses of Brooks Hall How Brooks Hall could supplement the Main Library functions. 5. Building Energy Efficiency Evaluation of the operating performance of the building including lighting, heating, air conditioning and automated systems. The study commenced in February 1 999 and a first phase report was filed in March 1 999. Because of t",
+    "stems, and conducted a number of performance tests of the buildings systems. Initial Problem Identification Initially the consultants categorized problems they identified into five broad areas: public use of library facilities, building design, library operations, maintenance/building operations and use of Brooks Hall. Prior to beginning their observations and interviews, the consultants were not sure if the building was the essential problem. After an initial walkthrough and discussions it was obvious that the building was indeed the problem and that staff had done what they could to compensate for its size and",
+    "xisting space to achieve a fit between the collections and the building Using existing documents the consultants prepared an analysis of floor plans demonstrating the shelving capacity per floor and searched for ways to increase capacity. Using existing documents the consultants prepared an analysis of Brooks Hall demonstrating amount of area, shelving and storage capacity. An analysis of the structural, mechanical and electrical systems in Brooks Hall was undertaken to verify appropriate"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.71,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.71,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscopubl1619ripl",
+   "deep_link": "https://archive.org/details/sanfranciscopubl1619ripl?q=Brooks+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "The draft of that evaluation, with a section on the potential uses of the hall."
+  },
+  {
+   "identifier": "yerbabuenacente2519sanf_2",
+   "title": "Yerba Buena Center : final environmental impact report",
+   "creator": "San Francisco (Calif.). City Planning Commission,San Francisco Redevelopment Agency (San Francisco, Calif.),San Francisco (Calif.). Dept. of City Planning",
+   "year": 1978,
+   "pool": "sfpl",
+   "matched_alias": "Brooks Hall",
+   "ocr_excerpts": [
+    "967, and 1968; this decline amounted to an 8% to 12% decline in delegate expenditures below previous levels. Although the average annual growth rate in convention delegate expenditures from 1965 to 1976 was 21%, the growth rate between 1965 and 1971 was only 6% per year, non compounded. Since Brooks Hall was constructed in 1958, with approximately 100,000 net square feet of exhibition space, and Civic Auditorium was completely remodeled in 1964, the relatively slow rate of annual growth in convention delegate expenditures between 1965 and 1971 cannot be traced to a lack of first rate new convention",
+    "divided into three smaller units, the smallest of which is proposed to be approximately 50,000 net square feet in size.) The YBC exhibition hall facilities will therefore be focusing on approximately 3% of the total U.S. convention industry, or from 270 to 350 total U.S. conventions each year. If Brooks Hall's exhibition facilities are put into the equation, the total U.S. market share is reduced even further, because Brooks Hall has approximately 100,000 net square feet of exhibition space. The total U.S. demand for exhibition space above 100,000 net square feet is estimated by World Convention Dates to be 1.5% of total U.S. convention business, or 135 to 180 conventions per year. The YBC exhibition facility, if it intends to capture a share of the national market for exhibition space above 100,000 net square feet (and not compete with the 100,000 N.S.F. offered by Brooks Hall), should therefore attract and hold on some annual sustainable basis, a market share of a total national market of 135 to 180 large conventions. Table 3 shows the relationship between exhibit space requirements of U.S. registered conventions, and the size, in terms of delegates attending U.S. convent",
+    "registrants 10% 101 163,620 1,620 3,000 and above registrants 6% 61 463,533 7,598 A 1 1 Convent i ons 100% 1 ,010 979,921 970 (Grand 40 Applying the 1.5% ratio of total U.S. conventions requiring exhibition space of the size being offered by the proposed YBC facility (in excess of Brooks Hall capacity) to the total 1981 San Francisco conventions projected above (1,010 conventions in 1981) results in a further breakdown of the 3,000 and above category of convention registrants as follows: Size 3,000 and above requiring YBC-type exhibit space (more than 100,000 net square feet) 3,000 and above requiring less than 100,000 net square feet (Brooks Hall & other facilities) TOTAL Ratio 1.5% 4.5% 6.0% Conventions 15 46 61 Delegate Registrants 195,000 Est, 268,533 Est, 463,533 Average Convention Size 13,000 Est 5,838 Est 7,598 From these projections, it is estimated that approximately 15 of the largest conventions could be expected to use the YBC exhibition facilities in 1981, without interfering "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.37,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.87,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/yerbabuenacente2519sanf_2",
+   "deep_link": "https://archive.org/details/yerbabuenacente2519sanf_2?q=Brooks+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A convention-market analysis giving the hall's 1958 construction and its 100,000 square feet of exhibition space."
+  },
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Brooks Hall",
+   "ocr_excerpts": [
+    "LIBRARY 76 BACKGROUND '. 76 SCOPE OF WORK 76 PROJECT COST 78 PROJECT SCHEDULE .....78 WESTERN ADDITION BRANCH LIBRARY 79 BACKGROUND 79 SCOPE OF WORK 79 PROJECT COST 80 PROJECT SCHEDULE 80 SYSTEM-WIDE SUPPORT CENTER 81 BACKGROUND 81 SCOPE OF WORK 81 PROJECT COST 82 PROJECT SCHEDULE 82 BROOKS HALL 83 BACKGROUND 83 SCOPE OF WORK 83 PROJECT COST 85 PROJECT SCHEDULE 85 ACKNOWLEDGMENTS 86 3 1223 05581 6764 iv Branch Library Improvement Program EXECUTIVE SUMMARY PURPOSE This bond program requests approval of the voters of City and County of San Francisco in November 2000 for $128.55 million for the rehabilitation of nineteen (19) branch library buildings, the construction of five (5) new branch library buildings, the construction of a new system-wide support center, and tenant improvements to Brooks Hall. The Introduction section of the report describes in detail each component of the program scope. This bond program combines San Francisco's long-term strategy since 1987 to reduce seismic risk in City-owned facilities with the capital improvement needs of the branch library system. BACKGROUND The San",
+    "X $3.08 M Portoia X $4.91 M Potrero X X X X X $4.79 M Presidio X $1.64 M Richmond X X X X X $8.71 M Sunset X $1.61 M Visitation Valley X $5.56 M West Portal X X X X X $4.68 M Western Addition X X X X $3.66 M System-Wide Support Center X $14.83 M Brooks Hall X X X $5.00 M Total $128.55 M Notes: 1 - An \"X\" means the Bond Program includes that particular category of work for that particular facility. 2- Bond Finance, Bond Council, City Attorney Fees, and other incidental City fees will be determined and incorporated into the final bond report s",
+    "ests voter approval of the City and County of San Francisco in November 2000 for $128.55 million for the rehabilitation of nineteen (19) branch library buildings, the construction of five (5) new branch library buildings, the construction of a new system-wide support center, and tenant improvements to Brooks Hall. This bond proposal continues the implementation of San Francisco's long-term strategy, initiated in 1987, to reduce seismic risk in City-owned facilities that may experience partial or total collapse during a major earthquake. The City has adopted ATC14 seismic engineering criteria in evaluating the co",
+    "esponsible for materials acquisition; Delivery Services, the unit which moves all types of materials through the library system; Branch Administration, the unit which manages all branch services and activities; and Outreach Services, including bookmobiles serving children and adults. Tenant Improvements to Brooks Hall Brooks Hall is an underground facility that can be reached by vehicle beyond the library's loading dock and by pedestrian connection from Bill Graham Auditorium. It was originally designed as an exhibitio"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.81,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.81,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Brooks+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The library bond proposal carrying a $5.00 million line for Brooks Hall."
+  },
+  {
+   "identifier": "civiccenterdevel1987sanf",
+   "title": "The Civic Center : a development program",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1987,
+   "pool": "sfpl",
+   "matched_alias": "Brooks Hall",
+   "ocr_excerpts": [
+    "ion. Funding could be added to the Library bond or to a capital improvements appropriation. o Convert the portion of Fulton Street between Hyde and Larkin into a genuine pedestrian mall, symbolically linking the new Asian Art Museum to the new Main Library. This would require reconfiguration of the Brooks Hall ramp and truck staging area. This must be accomplished without a negative impact on Brooks Hall. o Off-street parking for City-owned and operated vehicles within one of the new Civic Center structures — possibly under the new Main Library building. o Reserve space next to Davies Symphony Hall for future performing arts uses that may include: a small concert/recital hall with rehearsal space;",
+    "ary buildings. This deserves a feasibility study, given the area's increased activity and parking crunch. o Establish design requirements for private development at the southeast corner of Grove and Larkin Streets — since it is the only corner of the Civic Center not now in public hajids. o Retain Brooks Hall as a convention facility, but as mentioned above, re-configure its ramp as part of the desigTi for the new Main Library and of any plans for Fulton Mall. The attached report prepared by the Planning Department, \"The Civic Center: A Development Program\", describes these and other elements in greate",
+    "Library Building be used to meet the space needs of the Civil Division of the Superior Court. (This is the secondary option to meet a portion of the Court's space needs.) Marshall Square Block Construct a New Main Library Building on Marshall Square, and modify vehicular and pedestrian access to Brooks Hall. Convention Facilities Continue the use of Civic Auditorium/Brooks Hall as a convention complex to ensure that a broad range of convention facilities are provided for the city. Data Processing Center Consolidate the City's data processing activities at a single facility which meets modern industry standards. James Rolph, Jr. Plaza Restore original design concept for the James Rolph, Jr. Civic Center Plaza, and close and cover any unnecessary stairways to Brooks Hall and the Civic Center Garage. Off- Street Parking Facility Provide an off-street parking facility for City vehicles within a new Civic Center building. War Memorial Complex Relocate the Museum of Modern Art to a new facility which would provide a separate identity for the Museum and a more appropr",
+    "tes are based on a very preliminary review of each of the projects and they will be subject to change. Project Estimated Cost Magnitude (in millions) Proposed Financing* 1. Marshall Square, New Main Library Bui Iding The cost variables for this project include the full build-out of the site. Brooks Hall access, Fulton Mall improvements. Pioneer Monument modifications, architectural finishes, and special b"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.11,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.11,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/civiccenterdevel1987sanf",
+   "deep_link": "https://archive.org/details/civiccenterdevel1987sanf?q=Brooks+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false,
+   "gloss": "A Civic Center plan urging the hall be kept as a convention facility but its ramp reconfigured."
+  },
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2001",
+   "title": "Real property owned by the city and county of San Francisco / 2001",
+   "creator": null,
+   "year": 2001,
+   "pool": "dl",
+   "matched_alias": "Brooks Hall",
+   "ocr_excerpts": [
+    "ELLA HILL HUTCH COMMUNITY CTR BUCHANAN MALL PARK: See Block 0748, Lot 033 for details 023 0772 Page 26 © REAL PROPERTY OWNED BY THE CITY AND COUNTY OF SAN FRANCISCO LAND DESCRIPTION (with Facilities) WESTERN ADDITION CULTURAL CTR OFFICE/ADMINISTRATIVE BLDG CENTRAL FREEWAY PROPERTIES WAR MEMORIAL CITY HALL CIVIC CENTER BROOKS HALL Area included in Civic Center Plaza amount. CIVIC CENTER PLAZA CITY-OWNED PARCEL (0792022) CENTRAL FREEWAY PROPERTIES PERFORMING ARTS GARAGE FISCAL YEAR 2000-2001 LAND AREA HISTORICAL HISTORICAL ADDRESS JURISDICTION Sq. Ft LANDCOST IMPROVEMENT LOT BLOCK 762 FULTON STREET Arts Commission 37,812 $280,000 010 0781 WESTERN ADDIT",
+    "785 301 VAN NESS AVE War Memorial & Performing Arts 238,064 $2,400,000 $12,600,000 001 0786A Center WAR MEMORIAL OPERA HOUSE; WAR MEMORIAL VETERAN'S BLDG 1 CARLTON B. GOODLETT Real Estate/Administrative Services 237,600 $2,400,000 $14,400,000 001 0787 PLACE CITY HALL GROVE & LARKIN ST Real Estate/Administrative Services $3,937,000 001 0788 BROOKS HALL (Portion; subsurface) GROVE & LARKIN ST Recreation & Park 255,234 $2,600,000 $4,299,000 001 0788 CIVIC CENTER PLAZA GARAGE (subsurface) (Portion) 321 Fulton St Parking & Traffic Shai 022 0792 GOUGH BETWEEN GROVE Public Works 13,790 028 0792 & FULTON 360 GROVE STREET Parking & Traffic 47,732 $414,000 $5,000,000 029 0792 PERFORMING ARTS GAR",
+    "N GILMAN GILMAN OAKDALE LARKIN ST LARKIN ST CESAR CHAVEZ ST BUENA VISTA MANSELL AVE MIDDLE POINT RD JAMESTOWN JAMESTOWN ST JAMESTOWN ST ALAMEDA 07TH ST JAMESTOWN ST BUCHANAN ST STEINER ST LAND DESCRIPTION STATION 16 GRIFFITH ST SEWAGE PUMPING STATION PEDESTRIAN OVERPASS GILMAN PLAYGROUND INDIA BASIN OPEN SPACE BROOKS HALL CIVIC CENTER PLAZA BILL GRAHAM AUDITORIUM HEALTH CTR BLDG ART COMMISSION BLDG PERFORMING ARTS GARAGE STATION 21 NEW TRADITION ALTERNATIVE SCHOOL (ELEM.) CESAR CHAVEZ ST (REMAINDER) BUENA VISTA PARK WILLIAM DE AVILA SCHOOL (ELEMENTARY) CITY-OWNED PARCEL (6163038) SIR FRANCIS DRAKE SCH.(ELEM.) HARNEY WAY (REMAINDER) BAYSHORE BLV",
+    "TON DR) 004 7298 LAKE ST AND 18TH AVE RICHMOND PLAYGROUND 007 1378 LAKE ST AND 24TH AVE ROCHAMBEAU PLAYGROUND 006 1384 LARKIN 4ND OFARRELL ST JOHN MACAULAY PARK 002 0716 100 LARKIN ST NEW MAIN LIBRARY 001 0354 LARKIN ST 4ND BROADWAY BROADWAY TUNNEL REMAINDER 028 0154 LARKIN ST AND BROADWAY HELEN WILLS PLAYGROUND 001 0573 LARKIN ST AND GROVE BROOKS HALL 001 0788 LARKIN ST 4NO GROVE CIVIC CENTER PLAZA 001 0788 LARKIN ST ANO MCALLISTER ST POWER HOUSE - CIVIC CTR. 008 0347 LATHROP AVE ANDO GILLETTE OPEN SPACE (LATHROP AVENUE & GILLETTE) 081 4991 LAUREL AND CLAY PRESIDIO HTS PLAYGROUND 024 1009 LAWTON AND 20TH AVE UNDEDICATED ALLEY 018F 1866 LAWTON ST AND 07TH AVE LAKE HONDA TRACT (NE 7TH AVE)"
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": 6.18,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.18,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2001",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2001?q=Brooks+Hall",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false,
+   "gloss": "The city's property register, listing the hall as a subsurface portion beneath Civic Center Plaza."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "progressincitypl1948sanf",
+   "title": "Progress in city planning : a report to the people of San Francisco",
+   "year": 1948,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/progressincitypl1948sanf"
+  },
+  {
+   "identifier": "64summaryofregular1979san",
+   "title": "Summary of the regular meeting",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/64summaryofregular1979san"
+  },
+  {
+   "identifier": "southofmarketzon1988sanf",
+   "title": "South of Market zoning controls : proposal for adoption : with 12 month sunset clause",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/southofmarketzon1988sanf"
+  }
+ ],
+ "dept_shelf_label": "City Planning Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 6,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

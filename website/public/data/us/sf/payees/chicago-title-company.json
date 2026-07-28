@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.729968+00:00",
+ "generated_at": "2026-07-28T11:43:47.696309+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,10 +36,178 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 513,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 187574024.74,
+    "n_vouchers": 22
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 75459130.27,
+    "n_vouchers": 53
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 57336511.29,
+    "n_vouchers": 183
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "usd": 44653694.96,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 39276706.51,
+    "n_vouchers": 114
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 24826760.0,
+    "n_vouchers": 6
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 17322058.6,
+    "n_vouchers": 5
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 13299314.46,
+    "n_vouchers": 8
+   }
+  ],
+  "n_departments": 23,
+  "categories": [
+   {
+    "code": "567110",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 163879111.9,
+    "n_vouchers": 25
+   },
+   {
+    "code": "566990",
+    "label": "Land Acquisition Cost",
+    "spend_class": "purchase",
+    "usd": 96278689.51,
+    "n_vouchers": 14
+   },
+   {
+    "code": "566110",
+    "label": "Land-Direct Purchase",
+    "spend_class": "purchase",
+    "usd": 76674622.77,
+    "n_vouchers": 21
+   },
+   {
+    "code": "539200",
+    "label": "Loans Issued By City",
+    "spend_class": "ledger",
+    "usd": 24867557.0,
+    "n_vouchers": 118
+   },
+   {
+    "code": "536830",
+    "label": "OCII Payments To City Adm",
+    "spend_class": "unclear",
+    "usd": 11177206.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "563101",
+    "label": "Land Capitalized Expenditures",
+    "spend_class": "purchase",
+    "usd": 5000000.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "527410",
+    "label": "Realty Services",
+    "spend_class": "purchase",
+    "usd": 3693086.1,
+    "n_vouchers": 24
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 630000.0,
+    "n_vouchers": 21
+   }
+  ],
+  "n_categories": 19,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 21596543.04,
+  "n_recent_lines": 10,
+  "recent_lines": [
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 11617754.26,
+    "n_vouchers": 2
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "label": "Land Acquisition Cost",
+    "spend_class": "purchase",
+    "usd": 5380100.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Loans Issued By City",
+    "spend_class": "ledger",
+    "usd": 4055792.0,
+    "n_vouchers": 21
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 352970.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 180000.0,
+    "n_vouchers": 6
+   },
+   {
+    "department": "LIB Public Library",
+    "department_code": "LIB",
+    "label": "Base Rent-Debt Svc-Bldg-Struct",
+    "spend_class": "obligation",
+    "usd": 4847.65,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000038314",
-   "title": "527 Faxon Ave",
+   "title": "527 Faxon Avenue",
    "department": "MYR Mayor",
    "department_code": "MYR",
    "agreed_usd": 500000.0,
@@ -57,7 +225,7 @@
   },
   {
    "contract_no": "1000038445",
-   "title": "471-23rd Ave #6",
+   "title": "471-23rd Avenue #6",
    "department": "MYR Mayor",
    "department_code": "MYR",
    "agreed_usd": 420000.0,

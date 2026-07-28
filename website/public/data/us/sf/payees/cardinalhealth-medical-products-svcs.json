@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.734723+00:00",
+ "generated_at": "2026-07-28T11:43:47.704877+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,138 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 415666,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 224454092.64,
+    "n_vouchers": 415665
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "usd": 0.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 29887334.84,
+    "n_vouchers": 32476
+   },
+   {
+    "code": "544310",
+    "label": "Laboratory Supplies",
+    "spend_class": "purchase",
+    "usd": 5803013.84,
+    "n_vouchers": 4420
+   },
+   {
+    "code": "544990",
+    "label": "Other Hosp, Clinics&Lab Supply",
+    "spend_class": "purchase",
+    "usd": 3688727.9,
+    "n_vouchers": 7844
+   },
+   {
+    "code": "544410",
+    "label": "Medical Supplies",
+    "spend_class": "purchase",
+    "usd": 2179447.17,
+    "n_vouchers": 2737
+   },
+   {
+    "code": "ADVANCES",
+    "label": "Advances",
+    "spend_class": "unclear",
+    "usd": 1441064.0,
+    "n_vouchers": 5423
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 732193.97,
+    "n_vouchers": 476
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 691936.09,
+    "n_vouchers": 2443
+   },
+   {
+    "code": "544510",
+    "label": "Minor Medical Equipment",
+    "spend_class": "purchase",
+    "usd": 553798.39,
+    "n_vouchers": 1193
+   }
+  ],
+  "n_categories": 49,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 2086870.0,
+  "n_recent_lines": 18,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Laboratory Supplies",
+    "spend_class": "purchase",
+    "usd": 1086932.6,
+    "n_vouchers": 675
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Hosp, Clinics&Lab Supply",
+    "spend_class": "purchase",
+    "usd": 479838.44,
+    "n_vouchers": 306
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Medical Supplies",
+    "spend_class": "purchase",
+    "usd": 170372.91,
+    "n_vouchers": 297
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Minor Medical Equipment",
+    "spend_class": "purchase",
+    "usd": 143730.29,
+    "n_vouchers": 168
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Office Supplies",
+    "spend_class": "purchase",
+    "usd": 111942.44,
+    "n_vouchers": 15
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 43461.26,
+    "n_vouchers": 71
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

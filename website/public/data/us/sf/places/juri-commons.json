@@ -1,0 +1,327 @@
+{
+ "generated_at": "2026-07-28T12:23:47.811966+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "juri-commons",
+ "name": "Juri Commons",
+ "kind": "Park",
+ "family": "park",
+ "address": "324 San Jose Ave",
+ "lat": 37.749461,
+ "lon": -122.422059,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "facility": null,
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "CAZADORO CONSTRUCTION INC",
+    "paid_usd": 1034800.3,
+    "n_contracts": 1,
+    "first_fiscal_year": 2022,
+    "last_fiscal_year": 2022
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 1034800.3
+ },
+ "photo": "/img/us/sf/places/juri-commons.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/juri-commons.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Juri_Commons,_San_Francisco,_California,_US.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Clyde Charles Brown",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-28T12:02:16.768016+00:00"
+ },
+ "summary_en": "Juri Commons is a strip of the Mission the city bought on purpose. The general manager's 1975 report on the Open Space Acquisition and Park Renovation Fund lists, among that year's Mission priorities, the acquisition of the mini park site commonly known as \"Juri Commons\" — set beside the acquisition of a gymnasium site in the central Mission and a park site near the proposed senior citizens' centre in the Tenderloin. The city's property register still carries it under that description: OPEN SPACE (JURI COMMONS), 326 San Jose Avenue, Recreation and Park, 10,433 square feet. Being small has not kept it out of the city's measurement systems. The Controller's park maintenance scores track it year by year alongside Garfield Square and the Mission Recreation Center — 90.4 percent in 2007-08, 95.6 percent in 2008-09, then 86.6 percent at the halfway point of 2009-10 — and the reports print both the park's own score and the change from the year before, so a dip is as visible as a rise. Its recent renovation is carried by a single contract: Cazadoro Construction was paid $1,034,800.30 in 2022.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "fy200809parksannsanf",
+   "title": "FY 2008-09 parks annual report : parks scores citywide increased for fourth year, but disparities remain between districts",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2008,
+   "pool": "sfpl",
+   "matched_alias": "Juri Commons",
+   "ocr_excerpts": [
+    ".5% 10.8% 84.7% 88.9% 90.8% Joseph L. Alioto Performing Arts Piazza 3 91.8% 2.2% 89.6% 98.9% 81.1% Joseph Lee Recreation Center 10 97.7% 4.6% 93.1% Closed 50.1% Julius Kahn Playground 2 94.4% 2.9% 91.5% 88.2% 94.6% Junipero Serra Playground 7 96.7% n/a Closed 97.5% 93.6% Juri Commons 9 95.6% 5.3% 90.4% 95.4% 81.9% Justin Herman/Embarcadero Plaza 3 81.5% -7.2% 88.7% 94.0% 83.0% Kelloch Velasco Mini Park 10 98.2% 24.5% 73.7% 67.1% 83.3% Kid Power Park 6 90.3% 2.3% 88.0% 96.0% 98.9% Koshland Park 5 88.0% ■8.3% 96.3% 83.2% 87.7% Lafayette Park 2 87.",
+    "d Square RPD CON 90.3% 84.6% 84.9% 97.4% 84.2% 86.9% -8.1% Holly Park RPD CON 98.1% 92.9% 85.7% 97.6% 94.4% 90.7% 1.2% James Rolph Jr Playground RPD CON 92.9% 94.8% 100.0% 83.8% 100.0% 90.4% n/a Jose Coronado Playground RPD CON 81.7% 93.6% 92.0% 98.4% 69.8% 80.6% -10.6% Juri Commons RPD CON 93.5% 100.0% 93.5% 97.8% 100.0% 95.6% 5.3% Mission Rec Center RPD CON 96.9% 100.0% 100.0% 100.0% 84.4% 91.8% -1.2% Mullen/Peralta Mini Park RPD CON 100.0% 100.0% 100.0% 94.1% 99.0% 9.1% Palega Recreation Center RPD CON 86.7% 67.6% 85.3% 95.7% 96.8% 86.0% 5.4% Parq"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.92,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.92,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/fy200809parksannsanf",
+   "deep_link": "https://archive.org/details/fy200809parksannsanf?q=Juri+Commons",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "The following year's scores, with the park up 5.3 points to 95.6 percent."
+  },
+  {
+   "identifier": "fy200708parkssanf",
+   "title": "FY 2007-08 parks annual report : parks scores increased for third year and differences between district averages narrowed",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2007,
+   "pool": "sfpl",
+   "matched_alias": "Juri Commons",
+   "ocr_excerpts": [
+    "8.93% -1.92% 90.84% Joseph L. Alioto Performing Arts Piazza 3 89.61% -9.30% 98.90% 17.78% 81.13% Joseph Lee Recreation Center 10 93.15% n/a Closed n/a 50.14% Julius Kahn Playground 2 91.49% 3.29% 88.21% -6.40% 94.60% Junipero Serra Playground 7 Closed n/a 97.47% 3.88% 93.59% Juri Commons 9 90.35% ■5.07% 95.43% 13.52% 81.91% Justin Herman/Embarcadero Plaza 3 88.68% -5.34% 94.02% 11.05% 82.97% Kelloch Velasco Mini Park 10 73.71% 6.57% 67.13% -16.18% 83.31% Kid Power Park 6 88.01% ■7.96% 95.96% -2.95% 98.91% Koshland Park 5 96.32% 13.12% 83.20% -4.53% 87.73%",
+    ".59% 95.00% 87.50% 85.79% -10.87% Garfield Square RPD CSA 91.11% 95.35% 92.68% 100.00% 94.97% 11.27% Holly Park RPD CSA 85.87% 97.03% 88.68% 93.62% 89.49% 10.70% James Rolph Jr Playground RPD CSA closed Jose Coronado Playground RPD CSA 88.89% 90.67% 90.74% 95.86% 91.25% 10.65% Juri Commons RPD CSA 100.00% 88.37% 88.64% 88.37% 90.35% -5.07% Mission Recreation Center RPD CSA 100.00% 82.35% 91.04% 100.00% 97.37% 92.99% 0.18% Mullen/Peralta Mini Park RPD CSA 60.00% 90.00% 100.00% 100.00% 100.00% 85.71% 83.33% 100.00% 89.88% -10.12% Palega Recreation Center RPD CSA 81.48%"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.85,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 1.85,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/fy200708parkssanf",
+   "deep_link": "https://archive.org/details/fy200708parkssanf?q=Juri+Commons",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "The Controller's park scores, recording the park at 90.4 percent that year."
+  },
+  {
+   "identifier": "parkstandards6mo162010san",
+   "title": "Park standards, 6-month report FY 2009-10 : park scores citywide increased through the first half of FY 2009-10",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": 2009,
+   "pool": "sfpl",
+   "matched_alias": "Juri Commons",
+   "ocr_excerpts": [
+    "95.5% 84.7% 88.9% 90.8% Joseph L. Alioto Performing Arts Piazza 3 90.9% 91 .8% 89.6% 98.9% 81.1% Joseph Lee Recreation Center 10 95.9% 97.7% 93.1% Closed 50.1% Julius Kahn Playground 2 98.9% 94.4% 91.5% 88.2% 94.6% Junipero Serra Playground 7 96.6% 96.7% Closed 97.5% 93.6% Juri Commons 9 86.6% 95.6% 90.4% 95.4% 81 .9% Justin Herman/Embarcadero Plaza 3 95.9% 81.5% 88.7% 94.0% 83.0% Kelloch Velasco Mini Park 10 88.6% 98.2% 73.7% 67.1% 83.3% Kid Power Park 6 100.0% 90.3% 88.0% 96.0% 98.9% Koshland Park 5 92.0% 88.0% 96.3% 83.2% 87.7% Lafayette Park 2",
+    "o/Precita Mini Park RPD CON 100.0% 100.0% 100.0% 2.7% Garfield Square RPD CON 97.8% 81.2% 85.7% 86.5% -0.4% Holly Park RPD CON 100.0% 87.5% 93.8% 3.0% James Rolph Jr Playground RPD CON 100.0% 86.4% 81 .0% 88.5% -1.9% Jose Coronado Playground RPD CON 96.1% 91.8% 93.9% 13.3% Juri Commons RPD CON 85.7% 95.6% 69.8% 86.6% -9.0% Mission Rec Center RPD CON 97.4% 97.7% 97.5% 5.7% Mullen/Peralta Mini Park RPD CON 81.8% 100.0% 90.9% -8.1% Palega Recreation Center RPD CON 81 .3% 97.2% 89.2% 3.2% Parque Ninos Unidos RPD CON 100.0% 89.3% 94.9% 93.4% -2.9% Precita Par"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.59,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 2.59,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/parkstandards6mo162010san",
+   "deep_link": "https://archive.org/details/parkstandards6mo162010san?q=Juri+Commons",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": true,
+   "gloss": "A six-month report showing the park's score falling back to 86.6 percent."
+  },
+  {
+   "identifier": "generalmanagersr1975sanf",
+   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
+   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Juri Commons",
+   "ocr_excerpts": [
+    "(recommended for purchase in FY 1975-76) CENTRAL CITY: Acquisition of a park site adjacent to or near the proposed Senior Citizens Center - 2 - MISSION: Acquisition of a site for future development of a gymnasium in the central Mission Acquisition of the mini park site commonly known as \"Juri Commons\" Planning, design, demolition at the Knudsen/Blume site III. Renovation - Estimated Budget: $750,000 Alamo Square* Buena Vista Park Douglas Playground Eureka Valley Excelsior Playground* Helen Wills - Phase II Holly Park Julius Kahn Portola Playground* Potrero Hill Playground* Rossi Playground Cont",
+    ", 1975-76. Acquisition of a park site in the Central City (Tenderloin), adjacent to or near the Senior Citizen's facility proposed near Golden Gate and Jones . Acquisition of a site for future development of a gymnasium in the Central Mission. Acquisition of the mini park site commonly known as \"Juri Commons\". Planning, design, demolition on the Knudsen/ Blume site. Because of the importance of developing this site, the General Manager will ask that additional funds be applied to this project from the accured interest account. Because of the great interest centering on improvements in the high-need ne",
+    "the site at 2450 Harrison Street Acquisition of properties (Block 3612, Lots 2 and 4) on both sides of 2450 Harrison Street to provide sufficient space for proposed gym and open space Phase II development of the Knudsen site Planning, design, development of the mini park site commonly known as \"Juri Commons\" CENTRAL CITY: MISSION: - 3 - MISSION Acquisition of all or portion of property (lots (continued) 9,10,42,42A,43,43A,69-Block 5615) between 3235 and 3249 Mission Street for a park site connecting to \"Esmeralda Corridor\" SOUTH OF Phase I planning and development for a MARKET: proposed",
+    "976, and is the largest acquisition of the program in a high- need neighborhood. Development funds were recommended in FY 1976-77. Because of the size of this parcel, 4.5 acres, additional funds are recommended at this time. PLANNING, DESIGN, DEVELOPMENT OF THE MINI PARK SITE COMMONLY KNOWN AS \"JURI COMMONS\" SAN JOSE AND GUERRERO BETWEEN 26TH STREET In FY 1977-78 the Juri Commons property was recommended for acquisition. This property is an old Southern Pacific right-of-way and is located in an area that does not have a mini-park. The neighborhood is anxious to participate in the construction of this facility. ACQUISITION OF ALL OR PORTION OF LOTS 9, 10,42,42A,43,43A,69-Bl",
+    "Hts (77-3) Noriega & 15th Avenue 0.50 Partially acquired f -. — -~ ^ — : -r- _--•>. sj- a * » ^— » — f CLL A Extension (75-6) (73-9) Mo rag a & 14th Ave. 2.7 0 Golden Gate Hts. -5 /— I - I^AH ProDsrtv Location Acreage Purchase Pries/ Statu 3 India Basin (78-9) Juri Commons (77-6) Kearny St. Steps (78-9) Kelloch-Vela"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 1.22,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.72,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/generalmanagersr1975sanf",
+   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Juri+Commons",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": true,
+   "gloss": "Open-space fund papers listing the acquisition of the Juri Commons mini park among the Mission's priorities."
+  },
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2002",
+   "title": "Real property owned by the city and county of San Francisco / 2002",
+   "creator": null,
+   "year": 2002,
+   "pool": "dl",
+   "matched_alias": "Juri Commons",
+   "ocr_excerpts": [
+    "8 6517 GARFIELD SQUARE 3101 25TH ST Recreation and Park 127,400 001 6523 GARFIELD RECREATION HALL; GARFIELD SQ POOL BUILDING GARFIELD SQUARE (ROW) 3101 25TH ST Public Works 15,680 002 6523 MISSION NURSERY 2950 MISSION STREET SF Unified School District (SFUSD) 25,850 004 6529 MISSION NURSERY Includes Block 6529, Lot 019; 6529-020. OPEN SPACE (JURI COMMONS) 326 SAN JOSE AVE Recreation and Park 10,433 008 6532 NOE VALLEY BRANCH LIBRARY 451 JERSEY STREET Public Library 9,120 034 6539 NOE VALLEY BRANCH LIBRARY CLIPPER ST BUFFER STRIP 782 CLIPPER STREET Public Works 2,789 026 6541 Includes Block 6542, Lot 019; 6542-022; 6544-022 | SUFFER STRIP: See Block 8541 PE f PPE f PRI JAMES LICK JR. HIGH S",
+    "LEDGE 005 5548 CHINESE PLAYGROUND 018 0225 PRESIDIO BRANCH LIBRARY 012 1006 CLAIRE LILLIENTHAL SCHOOL (ELEMENTARY) 011 1014 TRAFFIC ISLAND (SAN JOSE AVE) . 001 7139A STATION 42 004 5924 ~ UNDEDICATED ST (51 SAN DIEGO) 007 7126A HILLCREST AND OCEAN VIEW LOTS 045 7174 ‘UNDEDICATED ST (DE LONG STREET & SAN DIEGO STREET) 051 7174 OPEN SPACE (JURI COMMONS) 008 6532 GENEVA CARBARN 036 6972 SAN JOSE AVE (REMAINDER AT 3051 SAN JOSE) 001 7159 SAN JOSE AVE (REMAINDER AT CUVIER ST) 030 6723 LRV STORAGE TRACKS 039 6973 SLOPE PROTECTION AT SAN JOSE 018 6719 ~ MUNI METRO RAIL CTR 015 6949 \"TRAFFIC ISLAND (SAN JOSE AVE) 001 7139A SLOPE PROTECTION AT SAN LEANDRO 016A 3257 UPPER NOE REC CENTER 007 66"
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": -0.24,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.76,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2002",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2002?q=Juri+Commons",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false,
+   "gloss": "The property register, giving the park's address, jurisdiction and 10,433 square feet."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  }
+ ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 5,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

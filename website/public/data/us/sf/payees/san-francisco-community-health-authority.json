@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.735181+00:00",
+ "generated_at": "2026-07-28T11:43:47.705699+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -27,6 +27,57 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 486,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 206507685.9,
+    "n_vouchers": 453
+   },
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "usd": 2183771.2,
+    "n_vouchers": 33
+   }
+  ],
+  "n_departments": 2,
+  "categories": [],
+  "n_categories": 0,
+  "counts_are_floor": false,
+  "recent_fy": 2017,
+  "recent_total_usd": 19899249.1,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 13714184.8,
+    "n_vouchers": 19
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 5377234.7,
+    "n_vouchers": 31
+   },
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 807829.6,
+    "n_vouchers": 12
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

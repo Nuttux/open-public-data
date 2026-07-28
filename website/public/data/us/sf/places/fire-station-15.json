@@ -1,0 +1,350 @@
+{
+ "generated_at": "2026-07-28T12:23:47.799343+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "fire-station-15",
+ "name": "Fire Station #15",
+ "kind": "Fire station",
+ "family": "fire",
+ "address": "1000 Ocean Ave",
+ "lat": 37.723489,
+ "lon": -122.452927,
+ "owning_dept": {
+  "name": "Fire Department",
+  "code": "FIR"
+ },
+ "facility": {
+  "primary_name": "Fire Station #15",
+  "primary_address": "1000 OCEAN AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94112",
+  "primary_block_lot": "3180001",
+  "primary_department_name": "Fire Department",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 12138,
+  "primary_latitude": 37.723488631000066,
+  "primary_longitude": -122.45292662899999,
+  "supervisor_district": 7,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 12138,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "3180001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 697,
+    "common_name": "Fire Station #15",
+    "block_lot": "3180001",
+    "gross_sq_ft": 12138,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": "/img/us/sf/places/fire-station-15.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/fire-station-15.jpg",
+  "source": "s3-media0.fl.yelpcdn.com",
+  "source_url": "https://www.yelp.com/biz/san-francisco-fire-department-station-15-san-francisco",
+  "license": "UNVERIFIED",
+  "license_url": "",
+  "license_verified": false,
+  "provisional": true,
+  "author": "Bing",
+  "resolved_via": "web-search",
+  "fetched_at": "2026-07-27T23:24:14.788805+00:00"
+ },
+ "summary_en": "Fire Station 15 sits at 1000 Ocean Avenue and doubles as Battalion 9 headquarters, occupying a portion of a large parcel it shares with the Balboa Reservoir's south basin, the Phelan Loop and the Ingleside branch library — so not every permit filed on the block is the station's work. Its own history is one of small, awkward sums. In the mid-1990s the Board had already appropriated $640,758 for seismic improvements when the Budget Committee was told the station's roof also needed replacing; a supplemental $69,300 brought the project to $710,058, and the Bureau of Architecture put the work out to bid jointly with Fire Station 38's, selecting the joint venture of Gomez and Chapot as low bidder. The station has also earned its keep in unexpected ways: in 2002 the Board approved a lease of cellular transmitter space here to Metro PCS, alongside Stations 6 and 40. And it has absorbed other districts' work — in 2003 the Finance and Audits Committee heard that during the closure of Fire Station 33, Engine 33 would operate out of Station 15 at Ocean and Phelan, staffed each day by the crew of whichever fire truck happened to be down for repair. Its own recent permits are a $410,000 reroofing and the replacement of a 20-kilowatt generator with an 80-kilowatt unit carrying 72 hours of fuel.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "FIR",
+   "name": "Fire Department",
+   "total_usd": 513912614.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "FIR",
+   "name": "Fire Department",
+   "total_compensation_usd": 477279432.76,
+   "n_employees": 2054,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "realpropertyowne2005sanf",
+   "title": "Real property owned by the City and County of San Francisco / Real Estate Department",
+   "creator": "San Francisco (Calif.). Real Estate Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station 15",
+   "ocr_excerpts": [
+    ") Oil 011 (Poftoni 001 (Portion) 3015 3030 3032A 010A 3059 3064 3064 3069 3088 3121 3148 3148 3148 3148 3179 3179 3179 3180 Page 48 REAL PROPERTY OWNED BY THE CITY AND COUNTY OF SAN FRANCISCO LAND DESCRIPTION (with FaciHties) ADDRESS JURISDICTION BALBOA RESERVOIR. SOUTH BASIN FIRE STATION #15 PHELAN LOOP RECHANNELIZATION ROAD INGLESIDE BRANCH LIBRARY Authorized Board Resolution 374-03. COMMODORE SLOAT SCHOOL (ELEMENTARY) 15 PHELAN AVENUE 1000 OCEAN AVENUE FIRE STATION »15 - BtOalnn HQ 9 OCEAN & PHELAN OCEAN & PHELAN 1298 OCEAN AVE SF Community Coll«ge Olalricl Fire Department MTA Public Works Public Library LAND AREA (Sq Ft) 4/4.Q04 18,316 fi2,046 10,208 1U20 201 JUNIPERO SERRA SF Unified School District (SFUSD) COMMODORE SLOA T SCHOOL [^UiMENTAHfi 1",
+    "OAKDALE ADAM ROGERS PARK 001 4715 OAKDALE GRIFFITH ST INDIA BASIN OPEN SPACE 005 4598 OAKDALli KI:1TII GEORGE WASHINGTON CARVER ELEMENTARY 003 4715 OAKDALE WENDELL ST JOSEPH LEE RECREATION CTR 001 5310 OCEAN GENEVA GENEVA AVE (REMAINDER AT OCEAN) - DPW 008 6947 1000 OCEAN AVE FIRE STATION #15 001 3180 1298 OCEAN AVE INGLESIDE BRANCH LIBRARY 017 3199 2500 OCEAN AVE LAKESIDE VILLAGE PARKING LOT 013 7225 3000 OCEAN AVE CENTRAL PUMP STATION/MERCED MANOR RESERVOIR 001 7206 600 OCEAN AVE BALBOA PARK Oil 3179 Page 143 . PROPERTY OWNED BY THE CITY COUNTY OF SAN FRANriQrn",
+    "061 3064 (PwftonJ 051 3004 021 3000 SEWER DRAINAGE (JOOST) 570 JOOST PUC/Clonn Wnlnr 6,000 010 3000 SUNNYSIDE SCHOOL (ELEMENTARY) EXCELSIOR OFF-STREET PARKING CITY COLLEGE BALBOA PARK INGLESIDE POLICE STATION BALBOA PARK RESERVOIR WATER FACILITIES BALBOA RESERVOIR. SOUTH BASIN FIRE STATION #15 250 FORESTER STREET SUNNYSIDE SCHOOL {ELEMENTAHY) 14-16 NORTON ST SF Unified School District (SFUSD). non-Cily 04,007 010 3121 Real Estoto/ Admlnlatmtlve Sorvlcos 10,000 007 EIXCELSIOn OFF-STREET PARKING: Soo Dlock IIHIl. I ol 00/ (or dtilnlln, EXCELSIOR OFF-STRr.PT PARKING; Son fllock 3 Mil,",
+    "BALBOA PK REC BLDG POOL ETC : 8ALD0A PK SOCCER STADIUM PHELAN & JUDSON Police INGLESIDE POUCE S TA TION 11 PHELAN PUC/Water Department RESER VOIRS/CO VERED/BALBOA/ BALBOA RESERVOIR, SOUTH BASIN 15 PHELAN AVENUE SF Community College Districl. non- Clly 1,190.101 42,001 769.26D 4/4.004 FIRE STATION #15 1000 OCEAN AVENUE Fire Department FIRE STATION tti ■ Batloicn HO t) 15,316 OIOA 051 fPofftonj 051 021 oia 019 007 00(1 035 010 (I 'oillmi) oil tl'niihn} Oil (I •itilinn) 001 O'otlhiO 001 (f'fitlhn) 001 (I'orlhn) 3059 3064 3064 30G9 3000 3121 3140 3140 3148 3140 3179 3179"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.32,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.32,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/realpropertyowne2005sanf",
+   "deep_link": "https://archive.org/details/realpropertyowne2005sanf?q=Fire+Station+15",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The city's property register, listing the station as Battalion HQ 9 on a shared parcel."
+  },
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2005",
+   "title": "Real property owned by the city and county of San Francisco / 2005",
+   "creator": null,
+   "year": 2005,
+   "pool": "dl",
+   "matched_alias": "Fire Station 15",
+   "ocr_excerpts": [
+    "DIUM (Portion) INGLESIDE POLICE STATION PHELAN & JUDSON Police 42,861 011 3179 INGLESIDE POLICE STATION (Portion) BALBOA PARK RESERVOIR WATER 11 PHELAN PUC/Water Department 769,269 001 3180 FACILITIES RESERVOIRS/COVERED/BALBOA/ (Portion) BALBOA RESERVOIR, SOUTH BASIN 15 PHELAN AVENUE SF Community College District 474,804 001 3180 (Portion) FIRE STATION #15 1000 OCEAN AVENUE Fire Department 15,316 001 3180 FIRE STATION #15 - Battalion HQ 9 (Portion) PHELAN LOOP OCEAN & PHELAN MTA 52,646 001 3180 (Portion) RECHANNELIZATION ROAD OCEAN & PHELAN Public Works 16,298 001 3180 (Portion) INGLESIDE BRANCH LIBRARY 1298 OCEAN AVE Public Library 11,120 017 3199 Authorized Board Resolution 374-03. COMMODORE SLOAT SCHOOL 201 JUNIPERO SERRA SF Unified School District (SFUSD",
+    "ENTARY 003 4715 Page 152 REAL PROPERTY OWNED BY THE CITY COUNTY OF SAN FRANCISCO FISCAL YEAR 2004-2005 ADDRESS CROSS REFERENCE LAND DESCRIPTION LOT BLOCK OAKDALE MENDELL ST JOSEPH LEE RECREATION CTR 001 5310 “OCEAN GENEVA ~—~—~—~—~—~——C GENEVA AVE(REMAINDERATOCEAN)-DPW””—<‘i‘i:é*™*™*™*~*~*~*”:”::CBSC‘(‘(S#(C#SCWQSTSC*~*# 7000 OCEAN AVE FIRE STATION #15 001 3180 4298 Ses OCEAN AVED P LENGLESIDEERANCHLIERARYS OIF ~*~*CSO Peer hc TOCEANAVE“ Ge LAKESIDE VILLAGE PARKING LOT yg peas < Sales ie 7? nes 3000 OCEANAVE~—~—~—~S——. CENTRAL PUMP STATIONMERCED MANORRESERVOIR~—~—~—CCSTSC“‘(SS*!*#*CON:C*~*# 600 OCEAN AVE BALBOA PARK 011 3179 OCEANAVE EUCALYPTUS M LINE RW 7226 OFARRELL ST LARKIN JOHN MACAUL"
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": 4.65,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.65,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2005",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2005?q=Fire+Station+15",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The same register showing the station's 15,316 square feet beside the reservoir and library."
+  },
+  {
+   "identifier": "2minutes2002sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station 15",
+   "ocr_excerpts": [
+    "Limited Partnership. (Real Estate Department) 1/9/02, RECEIVED AND ASSIGNED to Finance Committee. 020048 [Metro PCS Transmitter Lease] Resolution authorizing and approving a lease of cellular transmitter space at the Fire Station 40 at 2155 18th Avenue; Fire Station 6 at 135 Sanchez Street, and Fire Station 15 at 1000 Ocean Avenue, San Francisco to Metro PCS. (Real Estate Department) 1/9/02, RECEIVED AND ASSIGNED to Finance Committee. 020085 [Revenue Enhancement Working Group] Supervisor Ammiano Motion urging the Mayor, the Controller, the Treasurer and the City Attorney to form a Revenue Enhancement",
+    "t the Mental Health Rehabilitation Facility at San Francisco General Hospital to Sprint Spectrum Limited Partnership. Item 8, File 02-0048: Resolution authorizing and approving three leases for cellular transmitter space at Fire Station 40 at 2155 18th Avenue, Fire Station 6 at 135 Sanchez Street, and Fire Station 15 at 1000 Ocean Avenue, San Francisco to Metro PCS. Locations: Purpose of Leases: Lessor: Item 6. File 02-0046: Fire Station 30 is located at 1300 4th Street, on the southwest corner of 3rd Street (Assessor's Block 3837, Lot 4). Item 7. File 02-0047: The San Francisco General Hospital Mental",
+    "(Assessor's Block 4090, Lot 2). Item 8, File 02-0048: Fire Station 40 is located at 2155 18th Avenue between Santiago Street and Taravel Street (Assessor's Block 2199, Lot 3); Fire Station 6 is located at 135 Sanchez Street between Market Street and 14th Street (Assessor's Block 3524, Lot 25); and Fire Station 15 is located at 1000 Ocean Avenue on the northwest corner of Phelan Avenue (Assessor's Block 3780, Lot 1). To allow Bay Area Cellular Telephone Company dba AT&T Wireless, Sprint Spectrum Limited Partnership, and Metro PCS to locate cellular telephone transmitters on City- owned facilities. City and Co",
+    "02-0047: Approximately 189 square feet at $5,000 per month ($60,000 annually) Item 8. File 02-0048: Three leases: 1) Fire Station 40 - Approximately 20 square feet at $3,000 per month ($36,000 annually) 2) Fire Station 6 - Approximately 60 square feet at $3,000 per month ($36,000 annually) 3) Fire Station 15 - Approximately 24 square feet at $3,000 per month ($36,000 annually) Term of Five Leases: Five years expected to commence as of March 15, 2002, and to expire on March 14, 2007, five years after the commencement date. Right of Renewal: Rent Adjustments: Under the terms of each of the propo",
+    "ittee January 23, 2002 Finance Committee Meeting Item 8, File 02-0048: The proposed resolution would authorize three five-3rear leases between the City and Metro PCS for space on the roof of 1) Fire Station 40, located at 2155 18th Avenue, 2) Fire Station 6, located at 135 Sanchez Street, and 3) Fire Station 15, located at 1000 Ocean Avenue. Under the subject lease, "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.22,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.72,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/2minutes2002sanf",
+   "deep_link": "https://archive.org/details/2minutes2002sanf?q=Fire+Station+15",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "A resolution leasing cellular transmitter space at the station to Metro PCS."
+  },
+  {
+   "identifier": "1calendarmeetingo1994sanf",
+   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station 15",
+   "ocr_excerpts": [
+    "ments to Fire Station 11. The proposed supplemental funding of $375,073 would bring the total project cost to $1,320,332. Design/Engineering $27,000 Construction Services 21,000 Construction (additional seismic strengthening and asbestos abatement) 327,073 Total Additional Fire Station 11 Costs 375,073 Fire Station 15 (1000 Ocean Ave.) The roof of Fire Station 15 needs to be replaced. The Board of Supervisors previously appropriated $640,758 for seismic improvements to Fire Station 15. The proposed supplemental funding of $69,300 would bring the total project cost to $710,058. Construction $63,000 Construction Contingency (10 %) 6.300 Total Additional Fire Station 15 Costs 69,300 Fire Station 38 (2150 California St.) The roof of Fire Station 38 needs to be replaced. The Board of Supervisors previously appropriated $676,492 for seismic improvements to Fire Station 38. The proposed supplemental funding of $57,200 would bring the total project cost to $733,692.",
+    "ceived three bids for the combination of the Ashbury Tank House project construction ($34,847) and the Fire Station 11 project construction ($327,073) and selected the joint venture of Gomez and Chapot as the low bidder (Gomez is an MBE firm). The BOA received three bids for the combination of the Fire Station 15 project construction ($63,000) and the Fire Station 38 project construction ($52,000) and again selected the joint venture of Gomez and Chapot as the low bidder. The construction ($133,000) at Fire Station 8 will be performed by the joint venture currently renovating Fire Station 8, Cuevas and Manion",
+    "abatement and related costs at Fire Stations 15, 21, 38 and 11 and the Ashbury Tank House. The proposed releases of reserves totaling $3,113,629 would be used to fund seismic improvement construction, asbestos abatement and related costs for four Fire Stations and the Ashbury Tank House as follows: Fire Station 15 (1000 Ocean Ave.) Construction: Seismic Improvements Asbestos Abatement Subtotal Construction $477,190 24,018 $501,208 Project Contingency (11.0%) 55,000 Construction Services 84.550 Total Fire Station 15 Costs Fire Station 21 (1443 Grove St.) Construction: Seismic Improvements Asbestos Abatement Subtotal Construction $383,185 25,900 $409,085 Project Contingency (12.2%) 50,000 Construction Services 77.770 Total Fire Station 21 Costs Fire Station 38 (2150 California St.) Construction: Seismic Improv"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 1.77,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.27,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/1calendarmeetingo1994sanf",
+   "deep_link": "https://archive.org/details/1calendarmeetingo1994sanf?q=Fire+Station+15",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Budget Committee papers adding $69,300 for the station's roof on top of $640,758 of seismic work, and naming the low bidder."
+  },
+  {
+   "identifier": "4meetingminutes2003sanf",
+   "title": "Meeting minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Audits Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Fire Station 15",
+   "ocr_excerpts": [
+    "d of October 1, 2003 through June 30, 2004. 3. Ms. Ragan advises that during the closure of Fire Station 33, fire suppression and emergency medical service coverage had been planned to be provided to the Fire Engine 33 district as follows: • Fire suppression: Fire Engine 33 would operate out of Fire Station 15, located at Ocean and Phelan Avenues. Each day, Fire Engine 33 would be staffed by crews from whichever fire truck is down for repair that day. Ms. Ragan reports that there is one fire truck scheduled for repair or maintenance every day. Also, Ms. Ragan advises that whenever the Fire Department i",
+    "isors approves the $1,600,000 subject request. 3. Ms. Ragan advises that during the closure of Fire Station 33, fire suppression and emergency medical service coverage had been planned to be provided to the Fire Engine 33 district as follows: • Fire suppression: Fire Engine 33 would operate out of Fire Station 15, located at Ocean and Phelan Avenues. Each day, Fire Engine 33 would be staffed by crews from whichever fire truck is temporarily shut down for repair that day. Ms. Ragan reports that there is one fire truck scheduled for repair or maintenance lasting a few hours every day. Also, Ms. Ragan advise"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 1.28,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.28,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/4meetingminutes2003sanf",
+   "deep_link": "https://archive.org/details/4meetingminutes2003sanf?q=Fire+Station+15",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Committee minutes on Engine 33 operating out of this station during another station's closure."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "minutesoffirecom2002sanf",
+   "title": "Minutes of the Fire Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesoffirecom2002sanf"
+  },
+  {
+   "identifier": "minutesoffirecom2003sanf",
+   "title": "Minutes of the Fire Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesoffirecom2003sanf"
+  },
+  {
+   "identifier": "minutesoffirecom2001sanf",
+   "title": "Minutes of the Fire Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesoffirecom2001sanf"
+  }
+ ],
+ "dept_shelf_label": "Fire Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 5,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

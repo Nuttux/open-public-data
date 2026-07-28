@@ -20,6 +20,11 @@ Outputs (website/public/data/us/sf/):
       deliberately dropped — part-timer pollution), threshold counts,
       $25k histogram with sub-5 top-tail buckets merged into an open
       bucket at export time. Source: mart_us_sf_payroll_distribution.
+    - payroll_family_distribution.json : the same person-grain
+      distribution CUT BY job family — p25/p50/p75/p90 per family (the
+      "pay ladder": what a kind of work actually pays) and the same $25k
+      histogram per family (bucket composition: who sits in a band).
+      Source: mart_us_sf_payroll_family_distribution.
     - payroll_overtime.json       : citywide OT series 2013+, the
       OT>salary counter series (naive + floored), dept OT series 2017+
       (label-clean window per the study) and top OT titles (latest FY,
@@ -535,6 +540,95 @@ def build_distribution(rows: list[dict], high_rows: list[dict]) -> dict:
     }
 
 
+# ───────────────────────────────────────────── family distribution ──
+
+
+def build_family_distribution(rows: list[dict]) -> dict:
+    """The pay ladder + bucket composition (fiscal year × job family).
+
+    Two readings of one grain, both person-level:
+      - `p25/p50/p75/p90` per family → what a KIND of work actually pays;
+      - `histogram` per family → who sits in a given $25k band.
+
+    Zero-count buckets are omitted (the UI treats a missing bucket as 0);
+    the top bucket is open (`ceiling_usd` null), same convention as
+    payroll_distribution.json so the two files stack bucket for bucket.
+    """
+    ref = rows[0]
+    years: dict[str, list[dict]] = {}
+    for r in rows:
+        fy = str(int(r["fiscal_year"]))
+        histogram = [
+            {
+                "floor_usd": int(b["bucket_floor_usd"]),
+                "ceiling_usd": (
+                    int(b["bucket_ceiling_usd"])
+                    if b["bucket_ceiling_usd"] is not None
+                    else None
+                ),
+                "n_employees": int(b["n_employees"]),
+            }
+            for b in r["histogram"]
+            if int(b["n_employees"]) > 0
+        ]
+        years.setdefault(fy, []).append({
+            "display_family": r["display_family"],
+            "is_pooled": bool(r["is_pooled"]),
+            # None for the pooled row — it carries counts only.
+            "n_people": (
+                int(r["n_people_primary"]) if r["n_people_primary"] is not None else None
+            ),
+            "total_compensation_usd": _f(r["total_comp_usd"], 2),
+            "p25_usd": _f(r["p25_usd"], 0),
+            "p50_usd": _f(r["p50_usd"], 0),
+            "p75_usd": _f(r["p75_usd"], 0),
+            "p90_usd": _f(r["p90_usd"], 0),
+            "n_in_histogram": int(r["n_in_histogram"]),
+            "histogram": histogram,
+        })
+
+    # Biggest family first within each year — the UI re-sorts by median for
+    # the ladder, but a stable, meaningful default beats BigQuery order.
+    for fy in years:
+        years[fy].sort(
+            key=lambda x: (x["is_pooled"], -(x["n_in_histogram"] or 0)),
+        )
+
+    return {
+        **base_payload(ref),
+        "grain": "fiscal_year × display_family (person grain, primary family)",
+        "bucket_width_usd": int(ref["bucket_width_usd"]),
+        "attribution_note": (
+            "A person paid under several job codes in a year is counted "
+            "ONCE, under the family that paid them the most, and their "
+            "whole annual compensation is attributed to it — so these "
+            "counts add up to the citywide headcount exactly. This is NOT "
+            "the same measure as n_employees in "
+            "payroll_by_family_year.json, which counts a dual-role person "
+            "in both families (that file splits dollars, this one splits "
+            "people)."
+        ),
+        "ladder_note": (
+            "p25/p50/p75 are exact percentiles of per-person annual total "
+            "compensation (salary + overtime + other pay + benefits) inside "
+            "each family. A family's median reflects how much of the year "
+            "its people are paid for as much as its hourly rates: the "
+            "families the City staffs seasonally sit low on the ladder."
+        ),
+        "histogram_note": (
+            "Buckets of $25,000 from $0; the top bucket is open "
+            f"(ceiling_usd null). Named cells under {PUBLICATION_THRESHOLD} "
+            "people are pooled into the count-only 'Other roles' row of the "
+            "same year, which names no family. Zero-count buckets are "
+            "omitted. Summed over families, these cells reproduce the "
+            "citywide histogram in payroll_distribution.json exactly."
+        ),
+        "privacy": privacy_block(),
+        "years": years,
+        "n_rows": len(rows),
+    }
+
+
 # ───────────────────────────────────────────────────────────── overtime ──
 
 
@@ -649,7 +743,7 @@ def write_json(payload: dict, filename: str, log: Logger) -> None:
 
 def main() -> int:
     log = Logger("export_us_sf_payroll")
-    log.header("Export US San Francisco payroll → JSON (6 files)")
+    log.header("Export US San Francisco payroll → JSON (7 files)")
 
     log.info("output dir", extra=str(OUTPUT_DIR))
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -684,6 +778,12 @@ def main() -> int:
     log.info("high-earner rows", extra=str(len(high_rows)))
     distribution = build_distribution(dist_rows, high_rows)
 
+    log.section("mart_us_sf_payroll_family_distribution")
+    fam_dist_rows = fetch_rows(client, "mart_us_sf_payroll_family_distribution",
+                               "fiscal_year, display_family")
+    log.info("rows", extra=str(len(fam_dist_rows)))
+    family_distribution = build_family_distribution(fam_dist_rows)
+
     log.section("mart_us_sf_payroll_ot_titles")
     title_rows = fetch_rows(client, "mart_us_sf_payroll_ot_titles",
                             "overtime_usd DESC")
@@ -696,6 +796,7 @@ def main() -> int:
     write_json(by_family, "payroll_by_family_year.json", log)
     write_json(by_family_citywide, "payroll_by_family_citywide.json", log)
     write_json(distribution, "payroll_distribution.json", log)
+    write_json(family_distribution, "payroll_family_distribution.json", log)
     write_json(overtime, "payroll_overtime.json", log)
 
     log.section("Sanity check")

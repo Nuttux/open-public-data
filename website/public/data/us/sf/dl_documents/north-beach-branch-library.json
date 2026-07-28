@@ -1,9 +1,53 @@
 {
- "generated_at": "2026-07-27T17:06:09.741705+00:00",
+ "generated_at": "2026-07-28T12:23:47.755712+00:00",
  "slug": "north-beach-branch-library",
  "name": "North Beach Branch Library",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "North Beach Branch Library",
+   "ocr_excerpts": [
+    "NCH LIBRARY 44 BACKGROUND 44 SCOPE OF WORK '. 44 PROJECT COST 46 PROJECT SCHEDULE 46 MISSION BAY BRANCH LIBRARY 47 BACKGROUND .. 47 SCOPE OF WORK 47 PROJECT COST 48 PROJECT SCHEDULE 48 NOE VALLEY BRANCH LIBRARY 49 BACKGROUND : 49 SCOPE OF WORK 49 PROJECT COST 51 PROJECT SCHEDULE 51 NORTH BEACH BRANCH LIBRARY 52 BACKGROUND 52 SCOPE OF WORK : 52 PROJECT COST 54 PROJECT SCHEDULE 54 ORTEGA BRANCH LIBRARY 55 BACKGROUND 55 SCOPE OF WORK 55 PROJECT COST 57 PROJECT SCHEDULE 57 ii Branch Library Improvement Program PARK BRANCH LIBRARY 58 BACKGROUND 58 SCOPE OF WORK 58 PROJECT COST 59 PROJECT",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 51 Branch Library Improvement Program NORTH BEACH BRANCH LIBRARY BACKGROUND The North Beach Branch Library, opened to the public in 1959, is a 5,097 square foot building with an irregular plan configuration, is located at 2000 Mason Street, adjacent to a Recreation and Park facility. It serves North Beach, Telegraph Hill, the Financial District, and a portion of the Chinatown- District. Library services a",
+    "n program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. 53 Branch Library Improvement Program PROJECT COST North Beach Branch Library Project Cost Summary Rehabilitation and Improvements $3,190,000 Expansion $500,000 Total Project Cost Estimate $3,690,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE North Beach Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 26 months Relocation and Construction 19 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.86,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=North+Beach+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The bond proposal describing the 1959 branch — 5,097 square feet at 2000 Mason Street, beside a park facility."
+  },
   {
    "identifier": "minutesofregular1619sanf",
    "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
@@ -42,9 +86,13 @@
    "url": "https://archive.org/details/minutesofregular1619sanf",
    "deep_link": "https://archive.org/details/minutesofregular1619sanf?q=North+Beach+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Mid-1950s commission minutes on proposed alterations to the branch and a request for longer opening hours."
   },
   {
    "identifier": "minutesofregular2010sanf",
@@ -84,9 +132,58 @@
    "url": "https://archive.org/details/minutesofregular2010sanf",
    "deep_link": "https://archive.org/details/minutesofregular2010sanf?q=North+Beach+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes recording that the branch's programming failed accessibility law and had to stop."
+  },
+  {
+   "identifier": "adultcalendarofp1996sanf",
+   "title": "Adult calendar of programs and events",
+   "creator": "San Francisco Public Library",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "North Beach Branch Library",
+   "ocr_excerpts": [
+    "0 6 1995 SAN FRANCISCO PUBLIC LIBRARY Please call to make group reservations. Programs marked with an asterisk (*) are funded by the Friends of the San Francisco Public Library. Thursdays, February 1, 8, 22, 29 - 10:15 a.m. INFANT/TODDLER LAPSIT FOR INFANTS TO CHILDREN AGE 3 (WITH AN ADULT) North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursdays, February 1, 8, 15, 22, 29 - 10:30 a.m. INFANTS/TODDLER LAPSIT FOR INFANTS TO CHILDREN AGE 3 (WITH AN ADULT) Potrero Branch Library, 1616 20th St. (near Connecticut), (415) 695-6640 Thursdays, February 1, 8, 22, 29 - 10:45 a.m. PRESCHOOL STORYTIME FOR CHILDREN AGES 3-5 North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursdays, February 1, 8, 15, 22, 29 - 2:00 p.m. PRESCHOOL STORYTIME FOR CHILDREN AGE 3 - 5 Potrero Branch Library, 1616 20th St. (near Connecticut), (415) 695-6640 Fridays, February 2, 9, 16, 23 - 4:00 p.m. AFTERSCHOOL STORYTIME AND CRAFT PROGRAM FO",
+    "), (415) 666-7160 Thursdays, February 8, 15, 22, 29 - 10:30 a.m. INFANT/TODDLER LAPSIT FOR INFANTS TO CHILDREN AGE 3 (WITH AN ADULT) Presidio Branch Library, 3150 Sacramento St. (near Baker), (415) 292-2155 Thursday, February 8 - 3:30 p.m. *AFTERSCHOOL CRAFT PROGRAM FOR CHILDREN AGES 6 AND OLDER North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursday, February 8 - 3:30 p.m. AFTERSCHOOL FILM PROGRAM FOR CHILDREN OF ALL AGES Ocean View Branch Library, 111 Broad St. (near Plymouth), (415) 337-4785 Thursday, February 8 - 3:30 p.m. SPECIAL STORYTIME FOR CHILDREN AGES 6 AND OLDER - Storyteller",
+    "ruary 14 - 7:00 p.m. EVENING VIDEO PROGRAM FOR CHILDREN AGES 6 AND OLDER Sunset Branch Library, 1305 18th St. (at Irving), (415) 753-7130 February 15 - 10:00, 10:30 and 11:00 a.m. and 2:15 p.m. PRESCHOOL FILM PROGRAM FOR CHILDREN AGES 3 - 5 - \"Corduroy\" and \"Little Girl and the Gunny Wolf.\" North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursday, February 15 - 3:30 p.m. AFTERSCHOOL FILM PROGRAM FOR CHILDREN AGES 7 AND OLDER - \"African Story Journal\" Ingleside Branch Library, 387 Ashton Ave. (near Ocean), (415) 337-4745 Thursday, February 15 - 3:45 p.m. AFTERSCHOOL FILM PROGRAM FOR SCHOOL-AGE CHILDREN - \"Dragon Wore Tennis Shoes ' and \"Seven Wishes of Joanna Peabody.\" North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursday, February 15 - 4:00 p.m. CHINESE NEW YEAR CRAFT PROGRAM FOR CHILDREN OF ALL AGES Mission Branch Library, 3359 24th St. (at Bartlett), (415) 695-5090 Saturday, February 17 - 11:00 a.m. *BLACK HISTORY MONTH CELEBRATION FOR CHILDREN AGES 3 AND O",
+    ":00 p.m. *SCENIC SLIDE TOUR - \"Thailand\", presented by Carl Stein. Sunset Branch Library, 1305 - 18th Ave. (at Irving), (415) 753-7130 Tuesday, April 30 - 7:00 p.m. *CLOSE UP DOWN UNDER "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.07,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.07,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/adultcalendarofp1996sanf",
+   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=North+Beach+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "calendar",
+   "doc_type_label": "Calendar",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Calendar",
+   "salient": false,
+   "gloss": "A programme calendar showing the branch's weekly lapsits and afterschool craft sessions."
   },
   {
    "identifier": "agenda2013arts",
@@ -126,87 +223,13 @@
    "url": "https://archive.org/details/agenda2013arts",
    "deep_link": "https://archive.org/details/agenda2013arts?q=North+Beach+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "adultcalendarofp1996sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "ocr_excerpts": [
-    "0 6 1995 SAN FRANCISCO PUBLIC LIBRARY Please call to make group reservations. Programs marked with an asterisk (*) are funded by the Friends of the San Francisco Public Library. Thursdays, February 1, 8, 22, 29 - 10:15 a.m. INFANT/TODDLER LAPSIT FOR INFANTS TO CHILDREN AGE 3 (WITH AN ADULT) North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursdays, February 1, 8, 15, 22, 29 - 10:30 a.m. INFANTS/TODDLER LAPSIT FOR INFANTS TO CHILDREN AGE 3 (WITH AN ADULT) Potrero Branch Library, 1616 20th St. (near Connecticut), (415) 695-6640 Thursdays, February 1, 8, 22, 29 - 10:45 a.m. PRESCHOOL STORYTIME FOR CHILDREN AGES 3-5 North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursdays, February 1, 8, 15, 22, 29 - 2:00 p.m. PRESCHOOL STORYTIME FOR CHILDREN AGE 3 - 5 Potrero Branch Library, 1616 20th St. (near Connecticut), (415) 695-6640 Fridays, February 2, 9, 16, 23 - 4:00 p.m. AFTERSCHOOL STORYTIME AND CRAFT PROGRAM FO",
-    "), (415) 666-7160 Thursdays, February 8, 15, 22, 29 - 10:30 a.m. INFANT/TODDLER LAPSIT FOR INFANTS TO CHILDREN AGE 3 (WITH AN ADULT) Presidio Branch Library, 3150 Sacramento St. (near Baker), (415) 292-2155 Thursday, February 8 - 3:30 p.m. *AFTERSCHOOL CRAFT PROGRAM FOR CHILDREN AGES 6 AND OLDER North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursday, February 8 - 3:30 p.m. AFTERSCHOOL FILM PROGRAM FOR CHILDREN OF ALL AGES Ocean View Branch Library, 111 Broad St. (near Plymouth), (415) 337-4785 Thursday, February 8 - 3:30 p.m. SPECIAL STORYTIME FOR CHILDREN AGES 6 AND OLDER - Storyteller",
-    "ruary 14 - 7:00 p.m. EVENING VIDEO PROGRAM FOR CHILDREN AGES 6 AND OLDER Sunset Branch Library, 1305 18th St. (at Irving), (415) 753-7130 February 15 - 10:00, 10:30 and 11:00 a.m. and 2:15 p.m. PRESCHOOL FILM PROGRAM FOR CHILDREN AGES 3 - 5 - \"Corduroy\" and \"Little Girl and the Gunny Wolf.\" North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursday, February 15 - 3:30 p.m. AFTERSCHOOL FILM PROGRAM FOR CHILDREN AGES 7 AND OLDER - \"African Story Journal\" Ingleside Branch Library, 387 Ashton Ave. (near Ocean), (415) 337-4745 Thursday, February 15 - 3:45 p.m. AFTERSCHOOL FILM PROGRAM FOR SCHOOL-AGE CHILDREN - \"Dragon Wore Tennis Shoes ' and \"Seven Wishes of Joanna Peabody.\" North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursday, February 15 - 4:00 p.m. CHINESE NEW YEAR CRAFT PROGRAM FOR CHILDREN OF ALL AGES Mission Branch Library, 3359 24th St. (at Bartlett), (415) 695-5090 Saturday, February 17 - 11:00 a.m. *BLACK HISTORY MONTH CELEBRATION FOR CHILDREN AGES 3 AND O",
-    ":00 p.m. *SCENIC SLIDE TOUR - \"Thailand\", presented by Carl Stein. Sunset Branch Library, 1305 - 18th Ave. (at Irving), (415) 753-7130 Tuesday, April 30 - 7:00 p.m. *CLOSE UP DOWN UNDER "
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 6.07,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 1.07,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/adultcalendarofp1996sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "ocr_excerpts": [
-    "NCH LIBRARY 44 BACKGROUND 44 SCOPE OF WORK '. 44 PROJECT COST 46 PROJECT SCHEDULE 46 MISSION BAY BRANCH LIBRARY 47 BACKGROUND .. 47 SCOPE OF WORK 47 PROJECT COST 48 PROJECT SCHEDULE 48 NOE VALLEY BRANCH LIBRARY 49 BACKGROUND : 49 SCOPE OF WORK 49 PROJECT COST 51 PROJECT SCHEDULE 51 NORTH BEACH BRANCH LIBRARY 52 BACKGROUND 52 SCOPE OF WORK : 52 PROJECT COST 54 PROJECT SCHEDULE 54 ORTEGA BRANCH LIBRARY 55 BACKGROUND 55 SCOPE OF WORK 55 PROJECT COST 57 PROJECT SCHEDULE 57 ii Branch Library Improvement Program PARK BRANCH LIBRARY 58 BACKGROUND 58 SCOPE OF WORK 58 PROJECT COST 59 PROJECT",
-    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 51 Branch Library Improvement Program NORTH BEACH BRANCH LIBRARY BACKGROUND The North Beach Branch Library, opened to the public in 1959, is a 5,097 square foot building with an irregular plan configuration, is located at 2000 Mason Street, adjacent to a Recreation and Park facility. It serves North Beach, Telegraph Hill, the Financial District, and a portion of the Chinatown- District. Library services a",
-    "n program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. 53 Branch Library Improvement Program PROJECT COST North Beach Branch Library Project Cost Summary Rehabilitation and Improvements $3,190,000 Expansion $500,000 Total Project Cost Estimate $3,690,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE North Beach Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 26 months Relocation and Construction 19 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 2.86,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 1.36,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 5.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Arts Commission review of Bill Fontana's sound installation for the new branch, pared back to fit the budget."
   }
  ]
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.724760+00:00",
+ "generated_at": "2026-07-28T11:43:47.688054+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,129 @@
  "top_departments": [
   "GEN General City / Unallocated"
  ],
+ "profile": {
+  "n_vouchers": 826,
+  "departments": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 6915430752.55,
+    "n_vouchers": 236
+   },
+   {
+    "department": "USD County Education Office",
+    "department_code": "USD",
+    "usd": 2289929210.66,
+    "n_vouchers": 349
+   },
+   {
+    "department": "CCD SF Communtiy College Dist",
+    "department_code": "CCD",
+    "usd": 840686492.7,
+    "n_vouchers": 230
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 15532667.2,
+    "n_vouchers": 11
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "571110",
+    "label": "Bond Redemption",
+    "spend_class": "obligation",
+    "usd": 3349840000.0,
+    "n_vouchers": 45
+   },
+   {
+    "code": "LIAB_OTHR",
+    "label": "Liabilities-Other",
+    "spend_class": "ledger",
+    "usd": 1902445484.36,
+    "n_vouchers": 29
+   },
+   {
+    "code": "574110",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 1401504115.15,
+    "n_vouchers": 150
+   },
+   {
+    "code": "AGNCY_OBL_SCHL&CCD",
+    "label": "Agency Obl.-School&CollegeDist",
+    "spend_class": "obligation",
+    "usd": 101622222.2,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 1068683964.05,
+  "n_recent_lines": 9,
+  "recent_lines": [
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Liabilities-Other",
+    "spend_class": "ledger",
+    "usd": 386076534.47,
+    "n_vouchers": 1
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Bond Redemption",
+    "spend_class": "obligation",
+    "usd": 300830000.0,
+    "n_vouchers": 4
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 96598930.7,
+    "n_vouchers": 7
+   },
+   {
+    "department": "USD County Education Office",
+    "department_code": "USD",
+    "label": "Bond Redemption",
+    "spend_class": "obligation",
+    "usd": 84545000.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "CCD SF Communtiy College Dist",
+    "department_code": "CCD",
+    "label": "Liabilities-Other",
+    "spend_class": "ledger",
+    "usd": 84499750.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "CCD SF Communtiy College Dist",
+    "department_code": "CCD",
+    "label": "Bond Redemption",
+    "spend_class": "obligation",
+    "usd": 46700000.0,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

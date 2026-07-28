@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.741572+00:00",
+ "generated_at": "2026-07-28T11:43:47.716045+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,187 @@
  "top_departments": [
   "MYR Mayor"
  ],
+ "profile": {
+  "n_vouchers": 4623,
+  "departments": [
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 34381542.11,
+    "n_vouchers": 732
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 32636393.27,
+    "n_vouchers": 1838
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 19825350.22,
+    "n_vouchers": 516
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 16397356.44,
+    "n_vouchers": 220
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 13958215.87,
+    "n_vouchers": 79
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 4164989.65,
+    "n_vouchers": 158
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 3900077.74,
+    "n_vouchers": 151
+   },
+   {
+    "department": "WOM Status of Women",
+    "department_code": "WOM",
+    "usd": 3298065.46,
+    "n_vouchers": 411
+   }
+  ],
+  "n_departments": 27,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 102953184.83,
+    "n_vouchers": 2276
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 811706.92,
+    "n_vouchers": 20
+   },
+   {
+    "code": "538000",
+    "label": "CBO Services - Budget",
+    "spend_class": "purchase",
+    "usd": 613586.19,
+    "n_vouchers": 15
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 91415.41,
+    "n_vouchers": 5
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 75000.0,
+    "n_vouchers": 3
+   },
+   {
+    "code": "527110",
+    "label": "Social Services Contracts",
+    "spend_class": "purchase",
+    "usd": 60000.0,
+    "n_vouchers": 4
+   },
+   {
+    "code": "LIAB_OTHR",
+    "label": "Liabilities-Other",
+    "spend_class": "ledger",
+    "usd": 30000.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "530310",
+    "label": "Misc Facilities Rental",
+    "spend_class": "purchase",
+    "usd": 6830.0,
+    "n_vouchers": 3
+   }
+  ],
+  "n_categories": 9,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 14797594.1,
+  "n_recent_lines": 9,
+  "recent_lines": [
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 5722486.98,
+    "n_vouchers": 25
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 4140359.94,
+    "n_vouchers": 29
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1936089.06,
+    "n_vouchers": 54
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1806963.24,
+    "n_vouchers": 62
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 899946.69,
+    "n_vouchers": 26
+   },
+   {
+    "department": "WOM Status of Women",
+    "department_code": "WOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 217146.54,
+    "n_vouchers": 11
+   }
+  ]
+ },
+ "identity": {
+  "description": "Mission Neighborhood Centers Inc is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under human services.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Mission Neighborhood Centers Inc",
+  "ein": "941408150",
+  "ntee_code": "P280",
+  "ntee_label": "Human services",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/941408150",
+  "checked_at": "2026-07-27T23:37:36.142641+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000025883",
@@ -66,7 +247,7 @@
   },
   {
    "contract_no": "1000033046",
-   "title": "24-02 FRC Initiative",
+   "title": "24-02 Family Resource Center Initiative",
    "department": "DEC Dept of Early Childhood",
    "department_code": "DEC",
    "agreed_usd": 2362079.0,

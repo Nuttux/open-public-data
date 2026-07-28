@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.728759+00:00",
+ "generated_at": "2026-07-28T11:43:47.694432+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "HHP Hetch Hetchy Water & Power"
  ],
+ "profile": {
+  "n_vouchers": 13087,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 372942837.24,
+    "n_vouchers": 4002
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 209281082.4,
+    "n_vouchers": 1256
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 14762688.32,
+    "n_vouchers": 474
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 12136420.73,
+    "n_vouchers": 752
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 11932836.31,
+    "n_vouchers": 1205
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 4557614.76,
+    "n_vouchers": 145
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 4260055.9,
+    "n_vouchers": 181
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 4010961.93,
+    "n_vouchers": 3382
+   }
+  ],
+  "n_departments": 30,
+  "categories": [
+   {
+    "code": "533210",
+    "label": "Power Distrib Transmission",
+    "spend_class": "purchase",
+    "usd": 193540472.21,
+    "n_vouchers": 1631
+   },
+   {
+    "code": "533110",
+    "label": "Power For Resale",
+    "spend_class": "purchase",
+    "usd": 84583134.47,
+    "n_vouchers": 1328
+   },
+   {
+    "code": "533130",
+    "label": "Resale Of Gas",
+    "spend_class": "unclear",
+    "usd": 39311862.04,
+    "n_vouchers": 111
+   },
+   {
+    "code": "529990",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 18093389.84,
+    "n_vouchers": 192
+   },
+   {
+    "code": "552210",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 10612563.93,
+    "n_vouchers": 194
+   },
+   {
+    "code": "532110",
+    "label": "Elec Heat Water",
+    "spend_class": "purchase",
+    "usd": 8320574.02,
+    "n_vouchers": 3876
+   },
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 6328174.67,
+    "n_vouchers": 461
+   },
+   {
+    "code": "542110",
+    "label": "Electrical",
+    "spend_class": "purchase",
+    "usd": 5811596.76,
+    "n_vouchers": 108
+   }
+  ],
+  "n_categories": 47,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 75943998.91,
+  "n_recent_lines": 36,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Power For Resale",
+    "spend_class": "purchase",
+    "usd": 31131399.62,
+    "n_vouchers": 255
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Power Distrib Transmission",
+    "spend_class": "purchase",
+    "usd": 27590750.07,
+    "n_vouchers": 247
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Resale Of Gas",
+    "spend_class": "unclear",
+    "usd": 5437512.19,
+    "n_vouchers": 12
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Unearned Revenue-Chgs for Svcs",
+    "spend_class": "ledger",
+    "usd": 4699860.0,
+    "n_vouchers": 3
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 2001791.79,
+    "n_vouchers": 24
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 1639571.88,
+    "n_vouchers": 17
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000018475",
@@ -49,7 +217,7 @@
   },
   {
    "contract_no": "1000018483",
-   "title": "HHP-SFAC21.04 Gas Purchase",
+   "title": "Hetch Hetchy Power-SFAC21.04 Gas Purchase",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 43000000.0,
@@ -76,7 +244,7 @@
   },
   {
    "contract_no": "1000018474",
-   "title": "HHP-SFAC21.04 Service Conn",
+   "title": "Hetch Hetchy Power-SFAC21.04 Service Conn",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 10000000.0,
@@ -103,7 +271,7 @@
   },
   {
    "contract_no": "1000026362",
-   "title": "HHP Purchaseofpowermultipl",
+   "title": "Hetch Hetchy Power Purchaseofpowermultipl",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 4008100.0,

@@ -162,13 +162,7 @@ export default async function LicenceClient() {
             )}
           </div>
           <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Button
-              variant="primary"
-              href="https://github.com/AbstractsMachine/france-open-data-pipeline"
-            >
-              {isFr ? "Le code sur GitHub ↗" : "Code on GitHub ↗"}
-            </Button>
-            <Button href="https://www.gnu.org/licenses/agpl-3.0.html">
+            <Button variant="primary" href="https://www.gnu.org/licenses/agpl-3.0.html">
               {isFr ? "Texte intégral AGPL-3.0 ↗" : "Full AGPL-3.0 text ↗"}
             </Button>
           </div>

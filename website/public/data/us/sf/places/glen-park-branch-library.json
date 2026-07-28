@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.746644+00:00",
+ "generated_at": "2026-07-28T12:23:47.760212+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "glen-park-branch-library",
@@ -57,86 +57,23 @@
   "items": [],
   "payees": [],
   "n_payees": 0,
-  "payees_total_paid": 0,
-  "permits": [
-   {
-    "description": "interior remodel of both 1st & 2nd floors: new finishes, furniture fixture & equipment, electrical & mechanical systems, new public toilet facilities. correct access issues at sidewalk, curb ramp & exterior book drop. refurbish perimeter bookshelves & windows.",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 1087000.0,
-    "status": "complete",
-    "permit_date": "2009-12-29",
-    "permit_year": 2009
-   },
-   {
-    "description": "roof repair. exterior wall waterproof coating. exterior window repairs and painting. remove and replace existing roof access ladder in kind (ladder under a separate permit).",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 500000.0,
-    "status": "issued",
-    "permit_date": "2025-01-17",
-    "permit_year": 2025
-   },
-   {
-    "description": "fire life safety alarm system on both floors. install manual pull stations, smoke detectors, relays, heat detectors and strobes.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 30000.0,
-    "status": "issued",
-    "permit_date": "2010-06-29",
-    "permit_year": 2010
-   },
-   {
-    "description": "install fire sprinkler t.i.work, 78 heads.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 20000.0,
-    "status": "complete",
-    "permit_date": "2007-02-01",
-    "permit_year": 2007
-   },
-   {
-    "description": "temporary shoring and underpinning for new building at 1748 haight st on prop line app 200011014647s",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 10000.0,
-    "status": "issued",
-    "permit_date": "2002-06-21",
-    "permit_year": 2002
-   },
-   {
-    "description": "remodel existing fire sprinkler system in basement to accomodate new wall lay out. relocate 10 heads, add 5 heads, total 15 heads on ground floor.",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 4500.0,
-    "status": "issued",
-    "permit_date": "2010-07-20",
-    "permit_year": 2010
-   }
-  ],
-  "n_permits": 6,
-  "permits_total_declared": 1651500.0,
-  "permits_by_year": [
-   {
-    "year": 2002,
-    "declared_usd": 10000.0
-   },
-   {
-    "year": 2007,
-    "declared_usd": 20000.0
-   },
-   {
-    "year": 2009,
-    "declared_usd": 1087000.0
-   },
-   {
-    "year": 2010,
-    "declared_usd": 34500.0
-   },
-   {
-    "year": 2025,
-    "declared_usd": 500000.0
-   }
-  ]
+  "payees_total_paid": 0
  },
- "photo": null,
- "photo_credit": null,
- "summary_en": null,
- "published": false,
+ "photo": "/img/us/sf/places/glen-park-branch-library.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/glen-park-branch-library.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Exterior_of_San_Francisco_Glen_Park_Branch_Library_(2002).jpg",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Phliar",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T23:54:20.034419+00:00"
+ },
+ "summary_en": "For decades the Glen Park branch was a rented shopfront. The November 2000 bond proposal describes it plainly: at 653 Chenery Street, operating under a lease agreement on private property, with a total floor area of less than 1,000 square feet, open five days a week. The library's own minutes show the neighbourhood pressing for something better across two generations. In the earlier round, the Glen Park Property Owners Association and the Glen Park School parent-teacher association wrote asking that another location be found well in advance of the widening of Bosworth Street, which would force the branch to vacate its quarters — and residents said they would accept a smaller building if that were the only alternative to losing a branch library in the district altogether. By 2001 the commission was still searching: a member of the public argued that an owner's refusal to sell the \"Kelly\" site, the one the community favoured, should not remove it from consideration, and a neighbourhood meeting was called that October to weigh the options. The branch's public art was reworked as well — the Arts Commission moved to rescind the contract, capped at $36,000, that it had authorised with the artist team originally recommended by the branch's community selection panel.",
+ "published": true,
  "money": {
   "budget_line": {
    "code": "LIB",
@@ -155,6 +92,50 @@
   "grants": []
  },
  "documents": [
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Glen Park Branch Library",
+   "ocr_excerpts": [
+    "L HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRARY 31 BACKGROUND ■. 31 SCOPE OF WORK 31 PROJECT COST 33 PROJECT SCHEDULE 33 GLEN PARK BRANCH LIBRARY 34 BACKGROUND 34 SCOPE OF WORK 34 PROJECT COST 35 PROJECT SCHEDULE 35 i Branch Library Improvement Program GOLDEN GATE VALLEY BRANCH LIBRARY 36 BACKGROUND 36 SCOPE OF WORK 36 PROJECT COST : 38 PROJECT SCHEDULE 38 INGLESIDE BRANCH LIBRARY 39 BACKGROUND 39 SCOPE OF WORK 39 PROJECT CO",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 33 Branch Library Improvement Program GLEN PARK BRANCH LIBRARY BACKGROUND The Glen Park Branch Library, located at 653 Chenery Street, is operating under a lease agreement on private property. It has a total square footage of less than 1 ,000 and serves the population of the Glen Park District. The branch is open five days a week and is open from five to eight hours a day. The annual visits dur",
+    "eels, and temporary closure. This relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Glen Park Branch Library Project Cost Summary Site Acquisition and Development $1,790,000 New Building - $2,990,000 Total Project Cost Estimate $4,780,000 Project costs include estimates for each project component: site acquisition; site development; building construction; construction contingency; art enrichment; hazardous site mitigation; and move-in costs; Project cost figures are escalated to the anticipated mid- point of construction. PROJECT SCHEDULE Glen Park Branch Library Project Duration ACTIVITY DURATION Site Acquisition and Development 24 months Planning Design and Bid 24 months Relocation and Construction 19 months The actual project schedule is dependent upon identifying, selecting, and purchasing a site. In most cases, design work can overlap site acquisitio"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 0.86,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 5.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Glen+Park+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The bond proposal recording the branch as a sub-1,000-square-foot leasehold on private property."
+  },
   {
    "identifier": "minutesofregula2001sanf_0",
    "title": "Minutes of the regular meeting ...",
@@ -193,89 +174,13 @@
    "url": "https://archive.org/details/minutesofregula2001sanf_0",
    "deep_link": "https://archive.org/details/minutesofregula2001sanf_0?q=Glen+Park+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agenda20arts_11",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Glen Park Branch Library",
-   "ocr_excerpts": [
-    "ng term agreement, between the City and County of San Francisco and the Ingleside Presbyterian Church, for long term or permanent installation of public art on the section of its private property not used as a public sidewalk, located at 1345 Ocean Avenue in San Francisco (Block 6942, Lot 50). 5. Glen Park Branch Library Judy Moran Staff Report Discussion of status of the artwork for the Glen Park Branch Library. Motion: Motion to rescind Resolution 0712-04-154 authorizing the Director of Cultural Affairs to enter into contract in an amount not to exceed $36,000 with the Artist Team of Jeff Northam and Rufus Butler Seder to design, fabricate and install an artwork for the new Glen Park Branch Library. Motion: Motion to pay an honorarium to the Artist Team of Jeff Northam and Rufus Butler Seder in the amount of $1 ,250 for the development of three preliminary proposal sketches for an artwork for the new Glen Park Branch Library. Motion: Motion to approve the Artist Team of Reddy Lieb and Linda Raynsford, the alternate Artist Team recommended by the Glen Park Branch Community Artist Selection Panel, to design, fabricate, and deliver an artwork for the new Glen Park Branch Library. Motion: Motion to authorize the Director of Cultural Affairs to enter into contract in an amount not to exceed $35,000 with the Artist Team of Reddy Lieb and Linda Raynsford to design, fabricate and transport an artwork for the new Glen Park Branch Library. 6. Potrero Branch Library sfac: April 19 Page 3 of 5 Judy Moran Presentation of materials for Potrero Branch Library artist finalist. Motion: Motion to approve artist (name to be announced at meeting), recommended by the Potrero Branch Community Artist Selection Panel, to design, fabricate and",
-    "between the City and County of San Francisco and the Ingleside Presbyterian Church, for long-term or permanent installation of public art on the section of its private property not used as a public sidewalk, located at 1345 Ocean Avenue in San Francisco (Block 6942, Lot 50). Moved: Rinder/Hunter 5. Glen Park Branch Library Project Manager Judy Moran gave an update on the status of the Glen Park http://www.sfgov.org/site/sfac_page.asp?id=38970 4/28/2006 sfac: April 19 Page 6 of 16 Branch Library. Originally, the artist team of Jeff Northam and Rufus Butler Seder were recommended by the Glen Park Branch Community Artis",
-    "astic laminate material that also had a 3D motion effect with a collage of his photographs that depicted limited movement. The Commissioners agreed with the Arts Commission and Library staff assessment that the substitute plastic laminate material had a commercial feel that was not appropriate for the Glen Park Branch Library. The Commissioners also agreed with staff that they preferred not to continue with Northam alone, "
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 4.82,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 3,
-    "density": 0.32,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": -1.25,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/agenda20arts_11",
-   "deep_link": "https://archive.org/details/agenda20arts_11?q=Glen+Park+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesofregula1119sanf_1",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Glen Park Branch Library",
-   "ocr_excerpts": [
-    "for another party who failed to return a number of Library books. File. From Mrs. Joseph Schneider, Recording Secretary, Glen Park Property Owners Association, Inc., and from Mrs. John Simpson, President, Glen Park School Parent Teacher Association, re; suggestion that another location be found for the Glen Park Branch Library well in advance of the widening of Bosworth Street which will necessitate vacating present quarters. Acknowledge, advising that the Library De- partment is actively attempting to locate appropriate space in another building in the district. From Philip L. Rezos, Director of Property, re: request for ap",
-    "supplies of the brochure for distribution to patrons. From Mrs. John Simpson, President, Glen Park School Parent-Teacher Association, Mrs. Louise P. Dunn, Secretary, Glen Park Senior Citizens, and Mrs. Paul Gaffey, re: willingness of Glen Park District residents to approve a smaller building for the Glen Park Branch Library ^dien the present location is eliminated due to the widening of Bosworth Street, if that is the only alternative to eliminating a branch library in the area. FILE. From Mr. John M. Bransten, President of the Library Commission, re: expressing his regret that his absence from the City prevented hi",
-    "s. J. C. Baxter, a resident of the Glen Park District, addressed the Com- mission. She asked that the Commission consider the acquisition of six 25' x 100* lots situated on the north line of Bosworth Street, just west of 700 Bosworth (the location of the property the Library presently rents for the Glen Park Branch Library), for the construction of a permanent branch building for the district. Mrs. Baxter pointed out that the size of the site would permit off-street parking and suggested that the acquisition might be financed through the use of gas tax funds, which, at this time, would mean only a transfer of title.",
-    "y should be considered at this time. He thanked Mrs. Baxter and the other Glen Park residents for their interest and re- minded them that the Commission is committed to continuing a branch library in the district. Chairman Fanucchi reported on the efforts to secure another location to lease for the Glen Park Branch Library when the extension must be moved to make was for the widening of Bosworth Street. With respect to the vacant store at 598 Chenery Street the Chairman reported that the size was marginal in comparison to our needs, that the adjoining garage was of doubtful use for our pusposes and that at least",
-    "nucchi. On roll call the following were noted present: Commissioners Bransten, Cox, Fanucchi, Fleishhacker, Girdner, Heavey, Lepetich, Mohr, Salarno and Turner. Absent: Commissioner Nichols. BUILDING, DEVELOPMENT AND MAINTENANCE COMtllTTEE Chairman Fanucchi reported that the proposed new location for t"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 3.44,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.94,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/minutesofregula1119sanf_1",
-   "deep_link": "https://archive.org/details/minutesofregula1119sanf_1?q=Glen+Park+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Minutes on the search for a site, and the owner's refusal to sell the one the community wanted."
   },
   {
    "identifier": "adultcalendarofp1996sanf",
@@ -315,48 +220,103 @@
    "url": "https://archive.org/details/adultcalendarofp1996sanf",
    "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Glen+Park+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "calendar",
+   "doc_type_label": "Calendar",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Calendar",
+   "salient": false,
+   "gloss": "A programme calendar showing the old Chenery Street branch's preschool storytimes."
   },
   {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
+   "identifier": "minutesofregula1119sanf_1",
+   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "Glen Park Branch Library",
    "ocr_excerpts": [
-    "L HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRARY 31 BACKGROUND ■. 31 SCOPE OF WORK 31 PROJECT COST 33 PROJECT SCHEDULE 33 GLEN PARK BRANCH LIBRARY 34 BACKGROUND 34 SCOPE OF WORK 34 PROJECT COST 35 PROJECT SCHEDULE 35 i Branch Library Improvement Program GOLDEN GATE VALLEY BRANCH LIBRARY 36 BACKGROUND 36 SCOPE OF WORK 36 PROJECT COST : 38 PROJECT SCHEDULE 38 INGLESIDE BRANCH LIBRARY 39 BACKGROUND 39 SCOPE OF WORK 39 PROJECT CO",
-    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 33 Branch Library Improvement Program GLEN PARK BRANCH LIBRARY BACKGROUND The Glen Park Branch Library, located at 653 Chenery Street, is operating under a lease agreement on private property. It has a total square footage of less than 1 ,000 and serves the population of the Glen Park District. The branch is open five days a week and is open from five to eight hours a day. The annual visits dur",
-    "eels, and temporary closure. This relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Glen Park Branch Library Project Cost Summary Site Acquisition and Development $1,790,000 New Building - $2,990,000 Total Project Cost Estimate $4,780,000 Project costs include estimates for each project component: site acquisition; site development; building construction; construction contingency; art enrichment; hazardous site mitigation; and move-in costs; Project cost figures are escalated to the anticipated mid- point of construction. PROJECT SCHEDULE Glen Park Branch Library Project Duration ACTIVITY DURATION Site Acquisition and Development 24 months Planning Design and Bid 24 months Relocation and Construction 19 months The actual project schedule is dependent upon identifying, selecting, and purchasing a site. In most cases, design work can overlap site acquisitio"
+    "for another party who failed to return a number of Library books. File. From Mrs. Joseph Schneider, Recording Secretary, Glen Park Property Owners Association, Inc., and from Mrs. John Simpson, President, Glen Park School Parent Teacher Association, re; suggestion that another location be found for the Glen Park Branch Library well in advance of the widening of Bosworth Street which will necessitate vacating present quarters. Acknowledge, advising that the Library De- partment is actively attempting to locate appropriate space in another building in the district. From Philip L. Rezos, Director of Property, re: request for ap",
+    "supplies of the brochure for distribution to patrons. From Mrs. John Simpson, President, Glen Park School Parent-Teacher Association, Mrs. Louise P. Dunn, Secretary, Glen Park Senior Citizens, and Mrs. Paul Gaffey, re: willingness of Glen Park District residents to approve a smaller building for the Glen Park Branch Library ^dien the present location is eliminated due to the widening of Bosworth Street, if that is the only alternative to eliminating a branch library in the area. FILE. From Mr. John M. Bransten, President of the Library Commission, re: expressing his regret that his absence from the City prevented hi",
+    "s. J. C. Baxter, a resident of the Glen Park District, addressed the Com- mission. She asked that the Commission consider the acquisition of six 25' x 100* lots situated on the north line of Bosworth Street, just west of 700 Bosworth (the location of the property the Library presently rents for the Glen Park Branch Library), for the construction of a permanent branch building for the district. Mrs. Baxter pointed out that the size of the site would permit off-street parking and suggested that the acquisition might be financed through the use of gas tax funds, which, at this time, would mean only a transfer of title.",
+    "y should be considered at this time. He thanked Mrs. Baxter and the other Glen Park residents for their interest and re- minded them that the Commission is committed to continuing a branch library in the district. Chairman Fanucchi reported on the efforts to secure another location to lease for the Glen Park Branch Library when the extension must be moved to make was for the widening of Bosworth Street. With respect to the vacant store at 598 Chenery Street the Chairman reported that the size was marginal in comparison to our needs, that the adjoining garage was of doubtful use for our pusposes and that at least",
+    "nucchi. On roll call the following were noted present: Commissioners Bransten, Cox, Fanucchi, Fleishhacker, Girdner, Heavey, Lepetich, Mohr, Salarno and Turner. Absent: Commissioner Nichols. BUILDING, DEVELOPMENT AND MAINTENANCE COMtllTTEE Chairman Fanucchi reported that the proposed new location for t"
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 0.86,
+    "score": 3.44,
     "sf_context": false,
-    "rival_city": true,
+    "rival_city": false,
     "citywide_serial": false,
-    "substantive": true,
+    "substantive": false,
     "substantive_direct": true,
-    "hits": 3,
-    "density": 1.36,
+    "hits": 5,
+    "density": 0.94,
     "title_hit": false
    },
    "materiality": {
-    "score": 5.0,
+    "score": 1.0,
     "money": true,
     "decision": false,
     "accountability": false,
     "contestation": false,
-    "named_genre": true,
+    "named_genre": false,
     "generic_serial": false
    },
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Glen+Park+Branch+Library",
+   "url": "https://archive.org/details/minutesofregula1119sanf_1",
+   "deep_link": "https://archive.org/details/minutesofregula1119sanf_1?q=Glen+Park+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission correspondence from neighbourhood groups seeking a new site before Bosworth Street was widened."
+  },
+  {
+   "identifier": "agenda20arts_11",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Glen Park Branch Library",
+   "ocr_excerpts": [
+    "ng term agreement, between the City and County of San Francisco and the Ingleside Presbyterian Church, for long term or permanent installation of public art on the section of its private property not used as a public sidewalk, located at 1345 Ocean Avenue in San Francisco (Block 6942, Lot 50). 5. Glen Park Branch Library Judy Moran Staff Report Discussion of status of the artwork for the Glen Park Branch Library. Motion: Motion to rescind Resolution 0712-04-154 authorizing the Director of Cultural Affairs to enter into contract in an amount not to exceed $36,000 with the Artist Team of Jeff Northam and Rufus Butler Seder to design, fabricate and install an artwork for the new Glen Park Branch Library. Motion: Motion to pay an honorarium to the Artist Team of Jeff Northam and Rufus Butler Seder in the amount of $1 ,250 for the development of three preliminary proposal sketches for an artwork for the new Glen Park Branch Library. Motion: Motion to approve the Artist Team of Reddy Lieb and Linda Raynsford, the alternate Artist Team recommended by the Glen Park Branch Community Artist Selection Panel, to design, fabricate, and deliver an artwork for the new Glen Park Branch Library. Motion: Motion to authorize the Director of Cultural Affairs to enter into contract in an amount not to exceed $35,000 with the Artist Team of Reddy Lieb and Linda Raynsford to design, fabricate and transport an artwork for the new Glen Park Branch Library. 6. Potrero Branch Library sfac: April 19 Page 3 of 5 Judy Moran Presentation of materials for Potrero Branch Library artist finalist. Motion: Motion to approve artist (name to be announced at meeting), recommended by the Potrero Branch Community Artist Selection Panel, to design, fabricate and",
+    "between the City and County of San Francisco and the Ingleside Presbyterian Church, for long-term or permanent installation of public art on the section of its private property not used as a public sidewalk, located at 1345 Ocean Avenue in San Francisco (Block 6942, Lot 50). Moved: Rinder/Hunter 5. Glen Park Branch Library Project Manager Judy Moran gave an update on the status of the Glen Park http://www.sfgov.org/site/sfac_page.asp?id=38970 4/28/2006 sfac: April 19 Page 6 of 16 Branch Library. Originally, the artist team of Jeff Northam and Rufus Butler Seder were recommended by the Glen Park Branch Community Artis",
+    "astic laminate material that also had a 3D motion effect with a collage of his photographs that depicted limited movement. The Commissioners agreed with the Arts Commission and Library staff assessment that the substitute plastic laminate material had a commercial feel that was not appropriate for the Glen Park Branch Library. The Commissioners also agreed with staff that they preferred not to continue with Northam alone, "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.82,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.32,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda20arts_11",
+   "deep_link": "https://archive.org/details/agenda20arts_11?q=Glen+Park+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Arts Commission papers rescinding the $36,000 artwork contract for the branch."
   }
  ],
  "dept_shelf": [
@@ -395,9 +355,9 @@
   }
  ],
  "_gate": {
-  "has_photo": false,
+  "has_photo": true,
   "n_documents": 5,
   "n_money_links": 1,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

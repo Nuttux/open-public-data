@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.737418+00:00",
+ "generated_at": "2026-07-28T11:43:47.709515+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,75 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 4068,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 177387722.69,
+    "n_vouchers": 4065
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 40000.0,
+    "n_vouchers": 3
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 121717327.12,
+    "n_vouchers": 2866
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 501977.29,
+    "n_vouchers": 152
+   },
+   {
+    "code": "463599",
+    "label": "Misc Public Health Revenue",
+    "spend_class": "unclear",
+    "usd": -5267.62,
+    "n_vouchers": 11
+   }
+  ],
+  "n_categories": 3,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 21031796.08,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 21014310.64,
+    "n_vouchers": 506
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 17485.44,
+    "n_vouchers": 10
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000010136",
-   "title": "SUD Treatment Svcs",
+   "title": "SUD Treatment Services",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 87031676.0,
@@ -49,7 +114,7 @@
   },
   {
    "contract_no": "1000010465",
-   "title": "Bhs-Aoa-Sud",
+   "title": "Behavioral Health Services-Aoa-Sud",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 45226998.0,
@@ -85,7 +150,7 @@
   },
   {
    "contract_no": "1000035447",
-   "title": "UC Dsaam BHS Aoa/Sud Otop",
+   "title": "UC Dsaam Behavioral Health Services Aoa/Sud Otop",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 9994866.0,
@@ -103,7 +168,7 @@
   },
   {
    "contract_no": "1000036900",
-   "title": "BHS UCSF Citywide Roving",
+   "title": "Behavioral Health Services UCSF Citywide Roving",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 9482010.0,

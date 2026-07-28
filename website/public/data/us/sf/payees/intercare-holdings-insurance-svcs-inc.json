@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.743206+00:00",
+ "generated_at": "2026-07-28T11:43:47.719008+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,71 @@
  "top_departments": [
   "HRD Human Resources"
  ],
+ "profile": {
+  "n_vouchers": 961,
+  "departments": [
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "usd": 79720617.01,
+    "n_vouchers": 766
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 38259206.13,
+    "n_vouchers": 195
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 29016730.83,
+    "n_vouchers": 152
+   },
+   {
+    "code": "527220",
+    "label": "Financial Services",
+    "spend_class": "purchase",
+    "usd": 18293772.11,
+    "n_vouchers": 95
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 4
+   }
+  ],
+  "n_categories": 3,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 6308815.75,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 3570864.34,
+    "n_vouchers": 13
+   },
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "label": "Financial Services",
+    "spend_class": "purchase",
+    "usd": 2737951.41,
+    "n_vouchers": 13
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000028096",

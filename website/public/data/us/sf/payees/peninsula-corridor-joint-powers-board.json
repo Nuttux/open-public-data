@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.740955+00:00",
+ "generated_at": "2026-07-28T11:43:47.714996+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,158 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 314,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 136295616.63,
+    "n_vouchers": 276
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 6615000.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 975000.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 315550.0,
+    "n_vouchers": 15
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 36500.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "TJP Transbay Joint Power Auth",
+    "department_code": "TJP",
+    "usd": 17680.7,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 14750.0,
+    "n_vouchers": 3
+   },
+   {
+    "department": "DT  GSA - Technology",
+    "department_code": "TIS",
+    "usd": 7755.0,
+    "n_vouchers": 3
+   }
+  ],
+  "n_departments": 10,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 31111772.5,
+    "n_vouchers": 31
+   },
+   {
+    "code": "552410",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 23733509.82,
+    "n_vouchers": 53
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 7454986.68,
+    "n_vouchers": 12
+   },
+   {
+    "code": "527220",
+    "label": "Financial Services",
+    "spend_class": "purchase",
+    "usd": 6799501.0,
+    "n_vouchers": 16
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 6615000.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "553120",
+    "label": "Judgements - Legal Fees",
+    "spend_class": "unclear",
+    "usd": 975000.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "530110",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 74203.52,
+    "n_vouchers": 6
+   },
+   {
+    "code": "530310",
+    "label": "Misc Facilities Rental",
+    "spend_class": "purchase",
+    "usd": 27000.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 12,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 6640270.8,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 6615000.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 12730.8,
+    "n_vouchers": 1
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 7100.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 5440.0,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

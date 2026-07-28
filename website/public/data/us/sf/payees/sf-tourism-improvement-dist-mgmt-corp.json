@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.731900+00:00",
+ "generated_at": "2026-07-28T11:43:47.700183+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -26,6 +26,92 @@
  "top_departments": [
   "TTX Treasurer-Tax Collector"
  ],
+ "profile": {
+  "n_vouchers": 194,
+  "departments": [
+   {
+    "department": "TTX Treasurer-Tax Collector",
+    "department_code": "TTX",
+    "usd": 261813160.68,
+    "n_vouchers": 133
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 25390000.0,
+    "n_vouchers": 4
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 19216840.28,
+    "n_vouchers": 57
+   }
+  ],
+  "n_departments": 3,
+  "categories": [
+   {
+    "code": "OTHR_OBLIG_AGNCY_FUN",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 261316408.55,
+    "n_vouchers": 131
+   },
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 25390000.0,
+    "n_vouchers": 4
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 19216840.28,
+    "n_vouchers": 57
+   },
+   {
+    "code": "430199",
+    "label": "Interest Earned Adjustment",
+    "spend_class": "ledger",
+    "usd": 496752.13,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 34267177.94,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "TTX Treasurer-Tax Collector",
+    "department_code": "TTX",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 31618591.14,
+    "n_vouchers": 12
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2400000.0,
+    "n_vouchers": 14
+   },
+   {
+    "department": "TTX Treasurer-Tax Collector",
+    "department_code": "TTX",
+    "label": "Interest Earned Adjustment",
+    "spend_class": "ledger",
+    "usd": 248586.8,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

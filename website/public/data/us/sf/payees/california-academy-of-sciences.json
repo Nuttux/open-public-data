@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.741032+00:00",
+ "generated_at": "2026-07-28T11:43:47.715166+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,179 @@
  "top_departments": [
   "DPW GSA - Public Works"
  ],
+ "profile": {
+  "n_vouchers": 833,
+  "departments": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 88021842.0,
+    "n_vouchers": 45
+   },
+   {
+    "department": "SCI Academy Of Sciences",
+    "department_code": "SCI",
+    "usd": 50404094.91,
+    "n_vouchers": 531
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 3700969.91,
+    "n_vouchers": 201
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 1566803.33,
+    "n_vouchers": 10
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 393793.2,
+    "n_vouchers": 19
+   },
+   {
+    "department": "ENV Environment",
+    "department_code": "ENV",
+    "usd": 46384.73,
+    "n_vouchers": 12
+   },
+   {
+    "department": "LIB Public Library",
+    "department_code": "LIB",
+    "usd": 13609.14,
+    "n_vouchers": 4
+   },
+   {
+    "department": "ASR Assessor - Recorder",
+    "department_code": "ASR",
+    "usd": 13598.31,
+    "n_vouchers": 2
+   }
+  ],
+  "n_departments": 14,
+  "categories": [
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 12771838.88,
+    "n_vouchers": 48
+   },
+   {
+    "code": "584030",
+    "label": "Capital Renewal Projects",
+    "spend_class": "purchase",
+    "usd": 3103874.11,
+    "n_vouchers": 53
+   },
+   {
+    "code": "567000",
+    "label": "Bldgs,Struct&Imprv Proj-Budget",
+    "spend_class": "purchase",
+    "usd": 2904242.82,
+    "n_vouchers": 78
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2680198.33,
+    "n_vouchers": 104
+   },
+   {
+    "code": "527000",
+    "label": "Prof & Specialized Svcs-Bdgt",
+    "spend_class": "purchase",
+    "usd": 1379494.0,
+    "n_vouchers": 4
+   },
+   {
+    "code": "528990",
+    "label": "Other Bldg Maint Svcs",
+    "spend_class": "purchase",
+    "usd": 1178991.49,
+    "n_vouchers": 38
+   },
+   {
+    "code": "560610",
+    "label": "Data Processing Equipment",
+    "spend_class": "purchase",
+    "usd": 714879.0,
+    "n_vouchers": 12
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 655895.87,
+    "n_vouchers": 3
+   }
+  ],
+  "n_categories": 22,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 2315380.98,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "SCI Academy Of Sciences",
+    "department_code": "SCI",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 900668.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "SCI Academy Of Sciences",
+    "department_code": "SCI",
+    "label": "Bldgs,Struct&Imprv Proj-Budget",
+    "spend_class": "purchase",
+    "usd": 895019.0,
+    "n_vouchers": 31
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 265824.98,
+    "n_vouchers": 10
+   },
+   {
+    "department": "SCI Academy Of Sciences",
+    "department_code": "SCI",
+    "label": "Prof & Specialized Svcs-Bdgt",
+    "spend_class": "purchase",
+    "usd": 239413.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "SCI Academy Of Sciences",
+    "department_code": "SCI",
+    "label": "Equipment Purchase-Budget",
+    "spend_class": "purchase",
+    "usd": 14456.0,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": {
+  "description": "California Academy Of Sciences is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under arts, culture and humanities.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "California Academy Of Sciences",
+  "ein": "941156258",
+  "ntee_code": "A560",
+  "ntee_label": "Arts, culture and humanities",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/941156258",
+  "checked_at": "2026-07-27T23:37:29.604670+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000032533",

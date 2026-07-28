@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
-import { pushDrawer, popDrawer } from "@/lib/drawerState";
+import { pushDrawer, popDrawer, lockBodyScroll, unlockBodyScroll } from "@/lib/drawerState";
 
 type DrawerReferrer = { url: string; label: string };
 
@@ -106,37 +106,12 @@ export default function DetailDrawer({
     return () => popDrawer();
   }, []);
 
-  // Scroll lock that actually preserves the user's scroll position. Plain
-  // `overflow: hidden` on body loses scrollY when the page behind reflows
-  // (especially across drawer↔drawer transitions). The `position: fixed`
-  // + `top: -scrollY` trick keeps the visible frame stable and restores
-  // scroll on close.
+  // Scroll lock — refcounted in lib/drawerState so a drawer→drawer navigation
+  // keeps the ORIGINAL page offset. Locking per-instance used to lose it: the
+  // incoming drawer read window.scrollY while the body was still fixed (0).
   useEffect(() => {
-    const y = window.scrollY;
-    const body = document.body;
-    const prev = {
-      position: body.style.position,
-      top: body.style.top,
-      left: body.style.left,
-      right: body.style.right,
-      width: body.style.width,
-      overflow: body.style.overflow,
-    };
-    body.style.position = "fixed";
-    body.style.top = `-${y}px`;
-    body.style.left = "0";
-    body.style.right = "0";
-    body.style.width = "100%";
-    body.style.overflow = "hidden";
-    return () => {
-      body.style.position = prev.position;
-      body.style.top = prev.top;
-      body.style.left = prev.left;
-      body.style.right = prev.right;
-      body.style.width = prev.width;
-      body.style.overflow = prev.overflow;
-      window.scrollTo(0, y);
-    };
+    lockBodyScroll();
+    return () => unlockBodyScroll();
   }, []);
 
   // Track the drawer stack across same-tab navigations. If we arrive on this

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.731330+00:00",
+ "generated_at": "2026-07-28T11:43:47.699113+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,174 @@
  "top_departments": [
   "CHF Children;Youth & Families"
  ],
+ "profile": {
+  "n_vouchers": 1837,
+  "departments": [
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 253687855.97,
+    "n_vouchers": 401
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 23856469.9,
+    "n_vouchers": 109
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 17325760.35,
+    "n_vouchers": 98
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 12123476.0,
+    "n_vouchers": 26
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 6264175.51,
+    "n_vouchers": 141
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 6024303.16,
+    "n_vouchers": 350
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 3561973.04,
+    "n_vouchers": 161
+   },
+   {
+    "department": "ENV Environment",
+    "department_code": "ENV",
+    "usd": 2110628.94,
+    "n_vouchers": 83
+   }
+  ],
+  "n_departments": 33,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 139480518.88,
+    "n_vouchers": 221
+   },
+   {
+    "code": "435230",
+    "label": "Lombard - Retail",
+    "spend_class": "ledger",
+    "usd": 2855418.54,
+    "n_vouchers": 75
+   },
+   {
+    "code": "536210",
+    "label": "Day Care Assistance",
+    "spend_class": "unclear",
+    "usd": 2786780.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 2706314.47,
+    "n_vouchers": 113
+   },
+   {
+    "code": "539220",
+    "label": "Grants & Forgivable Loans",
+    "spend_class": "ledger",
+    "usd": 1297432.55,
+    "n_vouchers": 9
+   },
+   {
+    "code": "435212",
+    "label": "Lombard Garage",
+    "spend_class": "ledger",
+    "usd": 1198623.14,
+    "n_vouchers": 79
+   },
+   {
+    "code": "552410",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 1094702.96,
+    "n_vouchers": 17
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 1093919.21,
+    "n_vouchers": 47
+   }
+  ],
+  "n_categories": 30,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 15006707.82,
+  "n_recent_lines": 23,
+  "recent_lines": [
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 8481949.45,
+    "n_vouchers": 7
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 3930067.0,
+    "n_vouchers": 6
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Grants & Forgivable Loans",
+    "spend_class": "ledger",
+    "usd": 881601.79,
+    "n_vouchers": 7
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Lombard - Retail",
+    "spend_class": "ledger",
+    "usd": 469750.65,
+    "n_vouchers": 20
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 299809.23,
+    "n_vouchers": 9
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 277463.79,
+    "n_vouchers": 11
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000032701",
@@ -102,7 +270,7 @@
   },
   {
    "contract_no": "1000037992",
-   "title": "HHP Mission Bay Solar",
+   "title": "Hetch Hetchy Power Mission Bay Solar",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 653033.0,

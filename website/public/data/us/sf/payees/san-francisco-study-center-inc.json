@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.745000+00:00",
+ "generated_at": "2026-07-28T11:43:47.722185+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,191 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 4225,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 67830807.31,
+    "n_vouchers": 2556
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 21130331.22,
+    "n_vouchers": 1095
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 6836957.33,
+    "n_vouchers": 193
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "usd": 4365948.03,
+    "n_vouchers": 133
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 3153556.22,
+    "n_vouchers": 78
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 679127.77,
+    "n_vouchers": 39
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 572708.8,
+    "n_vouchers": 42
+   },
+   {
+    "department": "WOM Status of Women",
+    "department_code": "WOM",
+    "usd": 321009.73,
+    "n_vouchers": 6
+   }
+  ],
+  "n_departments": 24,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 34252737.25,
+    "n_vouchers": 1309
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 22174051.34,
+    "n_vouchers": 673
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 3568159.03,
+    "n_vouchers": 198
+   },
+   {
+    "code": "538100",
+    "label": "PUC Solar Incentive Program",
+    "spend_class": "unclear",
+    "usd": 18918.61,
+    "n_vouchers": 5
+   },
+   {
+    "code": "536340",
+    "label": "Non-CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 17551.83,
+    "n_vouchers": 7
+   },
+   {
+    "code": "527000",
+    "label": "Prof & Specialized Svcs-Bdgt",
+    "spend_class": "purchase",
+    "usd": 13323.33,
+    "n_vouchers": 4
+   },
+   {
+    "code": "527900",
+    "label": "Chn Services",
+    "spend_class": "purchase",
+    "usd": 11064.8,
+    "n_vouchers": 1
+   },
+   {
+    "code": "553210",
+    "label": "Litigation Expenses",
+    "spend_class": "unclear",
+    "usd": 8400.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 18,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 9376494.04,
+  "n_recent_lines": 11,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 4157495.13,
+    "n_vouchers": 123
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2410018.27,
+    "n_vouchers": 103
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 915825.53,
+    "n_vouchers": 17
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 834029.94,
+    "n_vouchers": 37
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 825387.51,
+    "n_vouchers": 7
+   },
+   {
+    "department": "WOM Status of Women",
+    "department_code": "WOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 210829.48,
+    "n_vouchers": 4
+   }
+  ]
+ },
+ "identity": {
+  "description": "San Francisco Study Center Inc is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under education.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "San Francisco Study Center Inc",
+  "ein": "942168838",
+  "ntee_code": "B90",
+  "ntee_label": "Education",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/942168838",
+  "checked_at": "2026-07-27T23:38:14.471896+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000017548",
-   "title": "SFSC Program Admin",
+   "title": "SFSC Program Administration",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 5738935.0,
@@ -76,7 +257,7 @@
   },
   {
    "contract_no": "1000024824",
-   "title": "| Program Admin & Support",
+   "title": "| Program Administration & Support",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 1978456.0,

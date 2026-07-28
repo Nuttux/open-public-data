@@ -1,0 +1,487 @@
+{
+ "generated_at": "2026-07-28T12:23:47.809332+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "pier-45",
+ "name": "Pier 45",
+ "kind": "Port facility",
+ "family": "port",
+ "address": "Pier 45",
+ "lat": 37.81028,
+ "lon": -122.418091,
+ "owning_dept": {
+  "name": "Port",
+  "code": "PRT"
+ },
+ "facility": {
+  "primary_name": "Pier 45 - Shed B",
+  "primary_address": "PIER 45",
+  "primary_city": "San Francisco",
+  "primary_zip": "94133",
+  "primary_block_lot": "9900070",
+  "primary_department_name": "Port",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": null,
+  "primary_latitude": 37.809744472000034,
+  "primary_longitude": -122.41782759899996,
+  "supervisor_district": 3,
+  "n_facilities": 4,
+  "total_gross_sq_ft": null,
+  "n_owned": 4,
+  "n_leased": 0,
+  "apn_list": [
+   "9900070"
+  ],
+  "facilities": [
+   {
+    "facility_id": 3082,
+    "common_name": "Pier 45 - Shed B",
+    "block_lot": "9900070",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3081,
+    "common_name": "Pier 45 - Shed A",
+    "block_lot": "9900070",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3083,
+    "common_name": "Pier 45 - Shed C",
+    "block_lot": "9900070",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3084,
+    "common_name": "Pier 45 - Shed D",
+    "block_lot": "9900070",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "SILVERADO CONTRACTORS INC",
+    "paid_usd": 2526330.65,
+    "n_contracts": 1,
+    "first_fiscal_year": 2022,
+    "last_fiscal_year": 2022
+   },
+   {
+    "vendor": "HOLLINS CONSULTING INC",
+    "paid_usd": 178591.5,
+    "n_contracts": 1,
+    "first_fiscal_year": 2021,
+    "last_fiscal_year": 2022
+   },
+   {
+    "vendor": "SCA ENVIRONMENTAL INC",
+    "paid_usd": 109565.9,
+    "n_contracts": 1,
+    "first_fiscal_year": 2021,
+    "last_fiscal_year": 2021
+   }
+  ],
+  "n_payees": 3,
+  "payees_total_paid": 2814488.05
+ },
+ "photo": "/img/us/sf/places/pier-45.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/pier-45.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Pier_45_(San_Francisco).jpg",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Syced",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-28T12:01:19.627621+00:00"
+ },
+ "summary_en": "Pier 45 is the pier the city kept trying to turn into something else. A 1974 report of the mayor's committee on Fisherman's Wharf describes the fishing boat basin lying between two large pier structures — Hyde Street to the west and Pier 45 to the east — and notes that neither was then used for maritime purposes. The plans that followed were frankly transactional: the amendments proposed by the Fisherman's Wharf Action Plan would have allowed a mixed use, predominantly residential development on Pier 45, and a 1987 Port staff report explains why — hotel and mixed-use development on the pier was to finance the fishing development across the water, until the State Lands Commission informed the Port in 1984 that residential use was not permissible. The Port went on soliciting anyway, receiving four hotel proposals in January 1987, and was still negotiating over the property in closed session in 2000. What was actually built there is the fishing infrastructure: the 1996 environmental report for the Hyde Street Fishing Harbour and Pier 45 Sheds A and C runs to a draft, a summary of comments and responses, and a final volume certified by the Planning Commission, and the 1992 waterfront plan lists Pier 28 as a temporary fish handling area only until the Pier 45 project was complete — while designating the pier itself for historic ships, as the berth of the submarine Pampanito. Three contracts name the pier, together worth $2.81 million paid: $2,526,330.65 to Silverado Contractors, $178,591.50 to Hollins Consulting and $109,565.90 to SCA Environmental.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_usd": 156434885.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_compensation_usd": 52732085.2,
+   "n_employees": 304,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "hydestreetfishin1996sanf_0",
+   "title": "Hyde Street Fishing Harbor/Pier 45 sheds A & C draft environmental impact report : draft summary of comments and responses",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 1996,
+   "pool": "sfpl",
+   "matched_alias": "Pier 45",
+   "ocr_excerpts": [
+    "mm nS5B» JBH_ B9HB ISM HI ■Ml HH B9i mm DOCUMENTS DEPARTMENT DOCUMENTS DEFT. SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not lu be taken from the Library FEB 1 9 ^ CODES CORNER City and County of San Francisco Department of city Planning HYDE STREET FISHING HARBOR / PIER 45 SHEDS A & C Draft Environmental Impact Report File No 93.574E SCH #94073023 Draft Summary of Comments and Responses November 26, 1996 DOCUMENTS DEP^. DEC 0 2 1996 SAN FRANCISCO PUBLIC LIBRARY Draft EIR Publication Date: April 26, 1996 Draft EIR Public Comment Period: June 10, 1996 Draft Publ",
+    "ng/zoning long range planning V ' FAX: 558-6409 FAX: 558-6426 FAX: 558-6409 FAX: 558-6426 TO WHOM IT MAY CONCERN From: Robert W. Passmore, Assistant Director - Implementation Re: Attached Comments and Responses to Draft Environmental Impact Report File # 93.574E - Hyde Street Fishing Harbor/Pier 45 Sheds A and C Date: November 1996 The Attached Responses to the Comments made by you and others on the subject Draft EIR are presented for your information and use in any hearings held to consider whether or not to approve the project itself. The City Planning Commission will determine whether t",
+    "wever, always write to the Commission members or to the President of the Planning Commission at 1660 Mission Street - 5th Floor and express your opinion about' the Responses. Thank you for your continuing interest in this document. G:\\WP5 1XC&RTRANS.MEM REF 387. 15 H995c Hyde Street Fishing Harbor/Pier 45 sheds 1996. City and County of San Francisco Department of city Planning HYDE STREET FISHING HARBOR / PIER 45 SHEDS A & C Draft Environmental Impact Report File No 93.574E SCH #94073023 Draft Summary of Comments and Responses November 26, 1996 Draft EIR Publication Date: April 26, 1996 Draft EIR Public Comment Period: June 10, 1996 Draft Public Hearing Date: June 6, 1996 Final EIR Certification Date:",
+    "C&R.2 Public Hearing (Verbal) Commenters C&R.3 C. COMMENTS AND RESPONSES C&R.5 1 . General Comments and Letters on the Proposed Project C&R.5 2. Project Description C&R.9 (a) Objectives of The Project Sponsor (Need for the Project) C&R.9 (b) Proposed Project (Harbor) C&R.25 (c) Proposed Project (Pier 45) C&R.32 (d) Approvals C&R.41 3. Environmental Setting C&R.50 (a) Land Use C&R.50 (b) Water Quality C&R.54 - Physical Conditions (Transport of Pollutants) C&R.54 - Sediments/Dredging C&R.60 - Sampling Program C&R.66 - Bacteria/Enterococcus C&R.78 - Microlayer Sampling C&R.86 - Water Quality Conditi",
+    "c) Marine Biology (d) Public Utilities / Public Services (e) Air Quality/Odor (f) Transportation/Parking (g) Historic Resources (h) Cumulative and Construction Impacts Mitigation Alternatives (a) Another Location (b) No Project (c) Fewer Improvements (scaled down project) (d) Maximum Expansion (e) Pier 45 Sheds A&C Comment"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 10.46,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.96,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 5.75,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/hydestreetfishin1996sanf_0",
+   "deep_link": "https://archive.org/details/hydestreetfishin1996sanf_0?q=Pier+45",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "Comments and responses on the environmental report for the fishing harbour and the pier's sheds."
+  },
+  {
+   "identifier": "hydestreetfishin1996sanf_1",
+   "title": "Hyde Street Fishing Harbor/Pier 45 sheds A & C : final environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 1996,
+   "pool": "sfpl",
+   "matched_alias": "Pier 45",
+   "ocr_excerpts": [
+    "HYDE STREET FISHING HARBOR / PIER 45 SHEDS A&C Final Environmental Impact Report File No. 93.574E SCH #94073023 DOCLIT^/'^^M'TS DEP' JAN 15 1997 SAN FRANCISCO PUBLIC LIBRARY Draft EIR Publication Date: April 26, 1996 Draft EIR Public Comment Period: June 10, 1996 Draft Public Hearing Date: June 6, 1996 Final EIR Certification Dat",
+    "ERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY 3 1223 04404 9857 SAN FRANCISCO CITY PLANNING COMMISSION MOTION NO. 14252 ADOPTING FINDINGS RELATED TO THE CERTIFICATION OF A FINAL ENVIRONMENTAL IMPACT REPORT FOR A PROPOSED HYDE STREET FISHING HARBOR AND NEW USES FOR PIER 45 -SHEDS A AND C, LOCATED AT FISHERMAN'S WHARF IN SAN FRANCISCO, OFF OF THE HYDE STREET PIER, AND AT PIER 45 AT THE FOOT OF TAYLOR STREET. MOVED, That the San Francisco City Planning Commission (hereinafter \"Commission\") hereby CERTIFIES the Final Environmental Impact Report identified as case file No. 93.574E, Hyde Street Fishing Harbor /Pier 45 Sheds A & C (hereinafter \"Project\") based upon the following findings: 1) The City and County of San Francisco, acting through the Department of City Planning (hereinafter \"Department\") fulfilled all procedural requirements of the California Environmental Quality Act (Cal. Pub. Res. Code Section 21000",
+    "ed that the preferred alternative for the Fishing Harbor is Alternative A- 1 as discussed in the Project Description Section of the Comments and Responses; the modified alternative presented by the Port for Sheds A & C during the comment f)eriod includes fish processing in response to input from the Pier 45 Advisory Committee. This Alternative is as shown in Figure 19A of the Draft Comments and Responses. The modified alternative for the Sheds is as described and analyzed in the Draft Comments and Responses Document. These alternatives consist primarily of minor revisions to the Alternatives described in",
+    "that the foregoing Motion was ADOPTED by the City Planning Commission at its regular meeting of December 12, 1996. AYES: Commissioners Antenore, Chinchilla, Joe, Lowenberg, Marks, Mills, and Manin NOES: None ABSENT: None REF 387.15 H995f ADOPTED: December 12, 1996 Hyde Street Fishing Harbor/Pier 45 sheds A [ 1996 ] Linda Avery Commission Secretaty City and County of San Francisco Planning Department HYDE STREET FISHING HARBOR / PIER 45 SHEDS A&C Final Environmental Impact Report File No. 93.574E SCH #94073023 Draft EIR Publication Date: April 26, 1996 Draft EIR Public Comment Period: June 10, 1996 Draft Public Hearing Date: June 6, 1996 Final EIR Certification Date: December, 12, 1996 Changes from the text of the Draft EIR are indicated by a solid line ( I ) at each revised section, paragraph, graphic or table. ^^^3 1223 04404 9857 Fisherman's Wharf Hyde Street Fishing Harbor & Pier 45, Sheds A "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 9.34,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.34,
+    "title_hit": true
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/hydestreetfishin1996sanf_1",
+   "deep_link": "https://archive.org/details/hydestreetfishin1996sanf_1?q=Pier+45",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The certified final environmental report for the harbour and Sheds A and C."
+  },
+  {
+   "identifier": "C124891468",
+   "title": "Staff report, Port of San Francisco, May 13, 1987 : summary of findings and recommendation for further study : commercial fishing facilities at Fisherman's Wharf",
+   "creator": "Rossi, Randall S",
+   "year": 1987,
+   "pool": "dl",
+   "matched_alias": "Pier 45",
+   "ocr_excerpts": [
+    "ic participation. Action plan policies address a full range of land use and urban design issues, but the plan is aimed at enhancing the San Francisco fishing industry. Key provisions are: o development of fish handling facilities on a new Hyde Street Pier o construction of a breakwater and vessel berths o hotel/ mixed use development on Pier 45 to finance the fishing development. The Action Plan originally provided for a condominium/hotel/ commercial development for Pier 45. However, in 1984 after completion of the Action Plan EIR, the State Lands Commission informed the Port that residential use is not permissable on this trust lands site. In response the Port authorized a task force of community, Port tenant, and other business group representatives to recommend an alternative land use plan for the pier. They",
+    "and Port Commission gave final approval to a plan for a free standing protective breakwater. This agreement resolved funding and siting issues and was a catalyst to planning the full fisheries development. The breakwater was completed in October 1986. In 1985, shortly after amending the Action Plan, the Port advanced planning on both the Pier 45 and Hyde St. projects. Requests for developer qualifications and proposals were issued for a hotel on Pier 45. Four proposals were received in January of 1987. In accordance with the Request for Proposals the developers proposed lump sum rent prepayments in excess of five million dollars to be used to help finance the fishing facilities development. Also in 1985, the Port engaged fisheries consultant Carol M. Brown to prepare a report on the Wha",
+    "in close consultation with Fisherman's Wharf industry tenants and underwent three complete reviews prior to adoption by the Commission in July 1986. During the Fall of 1986, an advisory committee, composed of industry, neighborhood, recreational, and Wharf merchant representatives was formed to assist in the coordinated development of both Pier 45 and Hyde Street projects. The Port, with advisory committee agreement, selected a conceptual design team of architects, engineers and financial consultants. Together with the fisheries consultant and Port staff, the team is especially suited to design fishing facilities in the complex Wharf setting. The scope of work was developed and all wor",
+    "Action Plan City Comprehensive Plan change and BCDC Plan application R. Rossi comes to Port EIR on F. W. Action Plan begun Bechtel Report on Breakwater and Hyde St. Pier (incomplete) Final EIR on \"Condo\" concept E. Gartland becomes Director Condos finally disallowed by State Lands Comm. Staff recommends new land uses for Pier 45 Port Commission appoints Task Force Task Force meetings ... Task Force Recommendation Port Commission adopts revisions to F. W. Action Plan (hotel) Consulta"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 9.0,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 8.38,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124891468",
+   "deep_link": "https://archive.org/details/C124891468?q=Pier+45",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A Port staff report explaining that hotel development here was meant to finance the fishing facilities."
+  },
+  {
+   "identifier": "amendmentstocomp1983sanf",
+   "title": "Amendments to the comprehensive plan, proposed by the Fisherman's Wharf action plan : final",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 45",
+   "ocr_excerpts": [
+    "erman's Wharf Action Plan 93 B. Level of Service Definitions 96 C. San Francisco Air Pollutant Summary 97 D. Relation Between the Proposed FWAP and the Existing Northeastern Waterfront Plan and BCDC Special Area Plan 1 99 E. Initial Study 109 ii LIST OF TABLES Page 1. Mode Split of Pier 45 Generated Trips 36 2. Existing and Projected Muni Load Factors 38 3. Existing and Projected Intersection Levels of Service - PM Peak Hour 39 4. Projected Worst-Case Local Sidewalk Carbon Monoxide Concentrations at Streets near the Project* 43 5. Typical Noise Levels of Construction Equipment At 50 Feet ... 44 6. Noise Levels on Pier 45 Generated by Jefferson Street Traffic . 45 LIST OF FIGURES Page 1. Vicinity Map 7 2. Site Affected by Comprehensive Plan Amendments 8 3. View of Pier 45 and Fisherman's Wharf Looking Northwest from Telegraph Hill 9 4. Land Use in the Fisherman's Wharf Vicinity 17 5. Planning Code Use Districts in the Fisherman's Wharf Vicinity . 18 • 6. Entrance to Pier 45 Looking North from Jefferson/Taylor Intersection 20 7. Existing Traffic Circulation and Muni Routes 22 • 8. Locations and Number of Spaces of Public Off-Street Parking Facilities 26 9. Existing Street System and Proposed Circulation Mitigation Measures 49 iii I. Summary I. SUMMARY",
+    "her here. This EIR specifically treats the proposed FWAP policies which require amendments to NEWP and additional designations not included in NEWP. These are described below. Summary of Comprehensive Plan Amendments FWAP includes a proposal for a mixed use, predominantly residential, development on Pier 45; it would allow housing, hotel, parking, office, convenience retail, institutional, public display and public access use of Pier 45. The above uses proposed under FWAP would require five changes in the language of NEWP: 1 I. Summary 1) In Policy 2 of Objective 1 in the Maritime and Industrial section of NEWP, Pier 45 would be deleted from the list of piers for use in continuing maritime activities. 2) In Policy 1 of Objective 1 in the Fisherman's Wharf Subarea Plan of NEWP, reference to fish processing on Pier 45 would be deleted. 3) In Policy 2 of Objective 1 in the Fisherman's Wharf Subarea Plan, reference to commercial fishing industrial use on Pier 45 would be deleted; new mixed uses and parking would be permitted. 4) In Policy 2 of Objective 3 in the Fisherman's Wharf Subarea Plan, new commercial-tourist uses would be prohibited because they rely heavily on the automobile for their success. The proposed mixed uses would generate traffic and require additional parking. 5) In Policy 3 of Objective 4 in the Fisherman's Wharf Subarea Plan, truck access in the Fish Alley Plaza would be allowed. FWAP would serve as a general guide to development of Fisherman's Wharf with a clear enumeration of permitted "
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.71,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.71,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/amendmentstocomp1983sanf",
+   "deep_link": "https://archive.org/details/amendmentstocomp1983sanf?q=Pier+45",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "Comprehensive plan amendments that would have allowed a predominantly residential development on the pier."
+  },
+  {
+   "identifier": "waterfrontplanph1992sanf",
+   "title": "Waterfront plan - phase one : preliminary land designations for water-dependent activities : key to map",
+   "creator": "San Francisco (Calif.). Waterfront Plan Advisory Board,Port of San Francisco (Calif.)",
+   "year": 1992,
+   "pool": "sfpl",
+   "matched_alias": "Pier 45",
+   "ocr_excerpts": [
+    "for herring fishing) New sites: None II. TENTATIVE DESIGNATIONS: Pending further review (hatched aqua) Portion of Pier 33 III. EXISTING SITES THAT SHOULD NOT CONTINUE IN CURRENT USE IN THE LONG-'EERM (not mapped) Pier 28 (site is in temporary use as a fish handling area until completion of the Pier 45 project) IV. AREAS OUTSIDE OF PORT JURISDICTION THAT COULD BE DESIGNATED None RECREATIONAL BOATING AND WATER USE I. PROPOSED DESIGNATIONS: Existing sites that should continue in recreational boating and water use and new expansion sites (solid orange) Existing sites: Waterside of China Basin Street",
+    "pletion of a new cruise terminal facility on Piers 30-32) IV. AREAS OUTSIDE OF PORT JURISDICTION THAT COULD BE DESIGNATED None HISTORIC SHIPS I. PROPOSED DESIGNATIONS: Existing sites that should continue in historic ship use and new expansion sites (solid brown) Existing sites: Hyde Street Pier, Pier 45 (Pompanito), Piers 3 and 5 (Santa Rosa and Klamath) New sites: None II. TENTATIVE DESIGNATIONS: Pending further review (hatched brown) None (The National Park Service is not currently recommending a move of the existing facility to Pier 46B. If such a recommendation should occur then use of this",
+    "54 (seasonal use for herring fishing) New sites: None II. Tentative Designations: Sites that merit further review. Portion of Pier 33 III. Existing Sites that Should not Continue in Current Use in the Long-term: Pier 28 (site is in temporary use as a fish handling area until completion of the Pier 45 project). IV. Areas Outside of Port Jurisdiction that Could Accommodate Fishing-related Activities: None RECREATIONAL BOATING AND WATER USE I. Recommended Designations: Existing sites that should continue in recreational boating, swirnming and water use, and new expansion sites. Existing sites: Watersid",
+    "d not Continue in Current Use in the Long-term: None IV. Areas Outside of Port Jurisdiction that Could Accommodate Cruise-related Use: None HISTORIC SHIPS I. Recommended Designations: Existing sites that should continue in historic ship use and new expansion sites. Existing sites: Hyde Street Pier, Pier 45 (Pompanito), Piers 3 and 5 (Santa Rosa and Klamath). New sites: None II. Tentative Designations: Sites that merit further review. None (The National Park Service is currently studying alternative expansion sites for the Historic Ship Museum located at the Hyde Street Pier. If this study results in",
+    "e fishing industry varies depending on the particular activity. Fish handling and distribution activities have the greatest growth potential. As a result of earth quake damage, the Port has secured funding and begun improvements to the existing fish handling and distribution space at Sheds B and D on Pier 45 in Fisherman's Wharf. If additional space is required to accommodate growth"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.1,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.6,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/waterfrontplanph1992sanf",
+   "deep_link": "https://archive.org/details/waterfrontplanph1992sanf?q=Pier+45",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false,
+   "gloss": "The waterfront plan designating the pier for historic ships and treating Pier 28 as temporary until it was done."
+  },
+  {
+   "identifier": "reportofmayorsci1974sanf",
+   "title": "Report of the Mayor's Citizens Committee for the Preservation and Beautification of the Fisherman's Wharf Area",
+   "creator": "San Francisco (Calif.). Mayor's Citizens Committee for the Preservation and Beautification of the Fisherman's Wharf Area",
+   "year": 1974,
+   "pool": "sfpl",
+   "matched_alias": "Pier 45",
+   "ocr_excerpts": [
+    "urants, and several hotels and motels. At the heart of the area is the fishing boat basin and the processing area which comprises the two waterfront blocks between Jones and Hyde Streets, known as \"Fish Alley.\" The boat basin lies between two large pier structures Hyde Street on the west and Pier 45 on the east. Neither of these piers is used for maritime purposes at present. The west side of the Hyde Street Pier has been declared a state monument and contains various historical exhibits. The east side has not been used since the Hyde Street Pier ceased to be used as a ferry boat terminus in 1938. It is in complete disrepair and cannot be utilized for any purpose without major rehabil itation. Pier 45 is a solid structure containing several storage sheds which are leased by the Port. For example, Crown Zellerbach Corporation uses one of these large sheds for storage of newsprint. However, this is generally considered to be only an interim use, and Pier 45 is earmarked for more intensive utilization in most planning studies and proposals for the area. B. Basic Premises In its approach to the problems of Fisherman's Wharf, the Mayor's Committee accepted several ideas as basic premises. Among these were the following: 1) As with any portion of the",
+    "kind of development that has already brought criticism to the Fisherman's Wharf area. The Port's 1965 drawing shows an even more extensive development of shops, restaurants, parking, and a motel /boatel built out over the water in the Hyde Street Pier area, with still more shops and restaurants on Pier 45 and along Fish Alley. In this concept, the processing area is transferred to a portion of Pier 45, but remains substantially the same size, as does the total number of berth spaces. In 1970, the Port submitted two concepts as part of its testimony for the first breakwater hearing. Both of these retain the existing processing area in Fish Alley while providing for expanded mooring capacity in two alternative configurations. Neither shows any suggested uses for the adjacent east side of the Hyde Street Pier, nor for Pier 45, which leaves many questions unanswered. No expansion of processing and support facilities is shown in either drawing, and the increased number of berth spaces were intended for recreational craft as well as commercial fishing boats. Moreover, the drawings were prepared without input from the fisherm",
+    ", both for turning purposes and for overall esthetic value. 3) Fish Alley and Hyde Street Extension Previous proposals have involved relocating the processing activities to a greatly enlarged Pier 47 in the center of the lagoon, which presents problems of bulk and access, and trans- ferring them to Pier 45, which might be acceptable from the Industry point of view but would eliminate major revenue"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.56,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.06,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": true,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/reportofmayorsci1974sanf",
+   "deep_link": "https://archive.org/details/reportofmayorsci1974sanf?q=Pier+45",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": false,
+   "gloss": "A mayor's committee report describing the pier as one wall of the fishing basin, then unused for maritime purposes."
+  },
+  {
+   "identifier": "minutes2000sanf_4",
+   "title": "Minutes",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 45",
+   "ocr_excerpts": [
+    "closed session to confer with Legal Counsel and Real Property Negotiator. B. CLOSED SESSION (1) CONFERENCE WITH REAL PROPERTY NEGOTIATOR - This is specifically authorized under California Government Code Section 54956.8. This session is closed to any non-Citv/Port representative. * a. Property: Pier 45 Person Negotiating: Port of San Francisco: Paul Osmundson, Director of Planning & Development -\"\" *The Bay Center: Christopher Martin *San Francisco at the Wharf: Dennis Barrie Under Negotiation: _ Price Terms of Payment _X_ Both An executive session has been calendared to provide Port staff with direction in negotiating with the successful bidder for the Pier 45 RJFP. b. Property: Rincon Park Restaurants at Folsom and Embarcadero Person Negotiating: Port of San Francisco: Paul Osmundson, Director of Planning & Development A06132000.doc 3 1223 03426 3807 f\\£ *Nice Ventures Inc.: Reed Hearon Under Negotiation: Price Terms of Payment X Both An exec",
+    "the Commission withdrew to executive session to discuss the following: B. CLOSED SESSION ( 1 ) CONFERENCE WITH REAL PROPERTY NEGOTIATOR - This is specifically authorized under California Government Code Section 54956.8. This session is closed to any non-City/Port representative. * a. Property: Pier 45 Port of San Francisco: Paul Osmundson, Director of Planning & Development *The Bay Center: Christopher Martin *San Francisco at the Wharf: Dennis Barrie A06132000.doc -1- b. Property: Rincon Park Restaurants at Folsom and Embarcadero Port of San Francisco: Paul Osmundson, Director of Planning & Deve",
+    "l design and construction review work. (Resolution No. 00-50) (Staff report provided to the Commission.) A06132000.doc C. Status Report on Facilities and Operations Project (Informational Item). 8. PLANNING & DEVELOPMENT A. Authorization to enter into negotiations for the development and lease of Pier 45 Shed A at Fisherman's Wharf for public attraction use. (Resolution No. 00-46) (Staff report provided to the Commission.) B. Approval of extension of Exclusive Negotiations for Mixed Use Development at Pier 2414. (Resolution No. 00-47) (Staff report provided to the Commission.) C. Status report on Por",
+    "Point-South Beach CAC meets regularly on the 3rd Monday of the month, from 5:00-7:00 p.m. at the South Beach Yacht Club (Pier 40 on The Embarcadero). Please contact Tiffany Bohee at 749-24S 1 for more information. nd Port Website Check out the Port's Weo'site at www.sfport.com Questions/Contacts Pier 45 Advisory Group Kirk Bennett Pier 70 Advisory Group Anne Cook Northeast Waterfront Advisory Group Kirk Bennett Ferry Building Waterfront Advisory Group Alec Bash Bryant Street Pier Advisory Group Anne Cook Southeast Waterfront Advisory Committee Braj Norris Port of San Francisco Reception Liz Fitzger",
+    "OM: June 8, 2000 MEMBERS, P"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.29,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.79,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -2.25,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes2000sanf_4",
+   "deep_link": "https://archive.org/details/minutes2000sanf_4?q=Pier+45",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Port minutes convening closed sessions to negotiate over the pier as real property."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "economicimpactso2000port",
+   "title": "The economic impacts of Port of San Francisco",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/economicimpactso2000port"
+  },
+  {
+   "identifier": "biennialreportof1938cali_0",
+   "title": "Biennial report of the Board of State Harbor Commissioners for ..",
+   "year": 1865,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/biennialreportof1938cali_0"
+  },
+  {
+   "identifier": "financialstateme1971sanf",
+   "title": "Financial statements and independent auditors' report",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/financialstateme1971sanf"
+  }
+ ],
+ "dept_shelf_label": "Port of San Francisco",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 7,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

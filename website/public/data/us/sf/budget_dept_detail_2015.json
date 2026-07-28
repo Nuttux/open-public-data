@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.803358+00:00",
+  "generated_at": "2026-07-28T11:43:46.580409+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -7667,14 +7667,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "026",
-          "label": "Court Fees and Other Compensation",
+          "code": "025",
+          "label": "Entertainment And Promotion",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "025",
-          "label": "Entertainment And Promotion",
+          "code": "026",
+          "label": "Court Fees and Other Compensation",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -24223,12 +24223,12 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "JAPANESE COMMUNITY YOUTH COUNCIL",
+            "vendor": "SELF HELP FOR THE ELDERLY",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
-            "bucket": "nonprofit",
+            "bucket": null,
             "is_aggregation_line": false
           },
           {
@@ -24241,21 +24241,21 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SELF HELP FOR THE ELDERLY",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "SAN FRANCISCO PARKS ALLIANCE",
             "amount_usd": 3000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "JAPANESE COMMUNITY YOUTH COUNCIL",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           },
           {
@@ -27655,9 +27655,9 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "PAUL BULLOCK",
+            "vendor": "JOSHUA DEWOLF",
             "amount_usd": 200.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -28013,7 +28013,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "CHRISTENSEN SUPERVISOR 2015",
+            "vendor": "AARON PESKIN FOR SUPERVISOR 2015",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -28022,7 +28022,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "AARON PESKIN FOR SUPERVISOR 2015",
+            "vendor": "CHRISTENSEN SUPERVISOR 2015",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -35470,21 +35470,21 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SAN FRANCISCO STUDY CENTER INC",
-            "amount_usd": 20000.0,
-            "n_vouchers": 2,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "ASIAN AMER ADVNCNG JSTC-ASIAN LAW CAUCUS",
             "amount_usd": 20000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "SAN FRANCISCO STUDY CENTER INC",
+            "amount_usd": 20000.0,
+            "n_vouchers": 2,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           }
         ],
@@ -36747,24 +36747,6 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "RICHMOND DISTRICT NEIGHBORHOOD CTR INC",
-            "amount_usd": 5000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "MISSION GRADUATES",
-            "amount_usd": 5000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "BOYS & GIRLS CLUBS OF SAN FRANCISCO",
             "amount_usd": 5000.0,
             "n_vouchers": 1,
@@ -36783,8 +36765,35 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "RICHMOND DISTRICT NEIGHBORHOOD CTR INC",
+            "amount_usd": 5000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "MISSION GRADUATES",
+            "amount_usd": 5000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "PORTOLA FAMILY CONNECTIONS INC",
             "amount_usd": 5000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "BAYVIEW ASSOCIATION FOR YOUTH",
+            "amount_usd": 2500.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
@@ -36802,15 +36811,6 @@
           },
           {
             "vendor": "SOUTH OF MARKET CHILDCARE INC",
-            "amount_usd": 2500.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "BAYVIEW ASSOCIATION FOR YOUTH",
             "amount_usd": 2500.0,
             "n_vouchers": 1,
             "is_non_profit": false,

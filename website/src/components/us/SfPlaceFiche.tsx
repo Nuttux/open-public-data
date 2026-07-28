@@ -4,6 +4,23 @@ import type { SfPlaceFicheData, SfPlaceDoc } from "@/lib/us/sf-places-data";
 import { loadSfPlacesIndex } from "@/lib/us/sf-places-data";
 import { deptSlug } from "@/lib/us/sf-budget-slugs";
 import { fmtUsd, fmtUsdCompact } from "@/lib/us/format";
+import { FicheArchiveShelf, FicheMore, type FicheArchiveDoc } from "@/components/fiche";
+import Tip from "@/components/fusion/Tip";
+import { payeeSlugIfKeyed } from "@/lib/us/sf-payees-data";
+
+/**
+ * A contractor row links to its payee fiche ONLY when that fiche exists — only
+ * the top ~200 payees by lifetime dollars are keyed, so roughly five in six
+ * vendor rows stay plain text. Never emit a link we cannot honour
+ * ("pas de suggestions mortes").
+ */
+function payeeHref(vendor: string): string | null {
+  const slug = vendor
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  return payeeSlugIfKeyed(slug) ? `/us/city/sf/who-gets-paid/payee/${slug}` : null;
+}
 
 /**
  * SF place fiche — the SF analogue of the Paris LieuFiche, EN-only. Section
@@ -20,6 +37,11 @@ import { fmtUsd, fmtUsdCompact } from "@/lib/us/format";
 // summary instead of a shorter narrative dressed up to look complete.
 const THIN_DOCS_THRESHOLD = 4;
 
+/** Archive rows visible before the single expander. */
+const SHELF_CAP = 4;
+/** Rows visible before the fold in each money list (bond items, vendors). */
+const MONEY_FOLD = 4;
+
 function Amt({ usd, full = false, size = 13 }: { usd: number; full?: boolean; size?: number }) {
   return (
     <span
@@ -31,52 +53,18 @@ function Amt({ usd, full = false, size = 13 }: { usd: number; full?: boolean; si
   );
 }
 
-/** One source link — a curated shelf entry, NOT a quote dump. Raw OCR is kept
- *  out of the reading flow (récit visible, per the Paris BMO doctrine); what a
- *  row may carry is a single OCR-grounded gloss — one plain line on what this
- *  scan shows about this place, written from the document's own text, never the
- *  old verbatim 280-char match fragment. Its deep link opens the scanned page
- *  with the match already highlighted, so the source is one click away. */
-function DocRow({ doc }: { doc: SfPlaceDoc }) {
-  return (
-    <li className="fx-doc-row">
-      <a href={doc.deep_link} target="_blank" rel="noopener noreferrer" className="fx-doc-title">
-        {doc.title}
-        {doc.year ? <span className="fx-doc-year"> · {doc.year}</span> : null} ↗
-      </a>
-      {doc.gloss ? <p className="fx-doc-gloss">{doc.gloss}</p> : null}
-      {doc.creator ? <div className="fx-doc-creator">{doc.creator}</div> : null}
-      <div className="fx-doc-source">
-        {doc.source_label}
-        {doc.variant_note ? ` · ${doc.variant_note}` : ""}
-      </div>
-    </li>
-  );
-}
-
-/** Groups an already curated+ordered document array by its `group` label,
- *  preserving the array's order (export_sf_places.py sorts group-then-salience,
- *  so a simple first-seen grouping reproduces the intended shelf layout). */
-function GroupedDocs({ docs }: { docs: SfPlaceDoc[] }) {
-  const groups: { group: string; docs: SfPlaceDoc[] }[] = [];
-  for (const d of docs) {
-    const last = groups[groups.length - 1];
-    if (last && last.group === d.group) last.docs.push(d);
-    else groups.push({ group: d.group, docs: [d] });
-  }
-  return (
-    <>
-      {groups.map((g, i) => (
-        <div key={`${g.group}-${i}`}>
-          <div className="fx-doc-group-h">{g.group}</div>
-          <ul className="fx-doc-list">
-            {g.docs.map((d) => <DocRow key={d.identifier} doc={d} />)}
-          </ul>
-        </div>
-      ))}
-    </>
-  );
-}
+/** SF document shape → the neutral archive-shelf row. The mapping is where the
+ *  contract is enforced: `creator` and the narrative `group` simply have no
+ *  destination, so they cannot come back as a fourth line or a section header. */
+const toShelfDoc = (d: SfPlaceDoc): FicheArchiveDoc => ({
+  id: d.identifier,
+  gloss: d.gloss,
+  title: d.title,
+  year: d.year,
+  href: d.deep_link,
+  sourceLabel: d.source_label,
+  variantNote: d.variant_note,
+});
 
 function FacilityRecord({ place }: { place: SfPlaceFicheData }) {
   const f = place.facility;
@@ -91,24 +79,24 @@ function FacilityRecord({ place }: { place: SfPlaceFicheData }) {
   if (owned !== null) facts.push({ label: "Tenure", value: owned ? "City-owned" : "Leased" });
   if (sqft) facts.push({ label: f.n_facilities > 1 ? "Floor area · all buildings" : "Floor area", value: `${sqft.toLocaleString("en-US")} sq ft` });
   else if (f.n_facilities > 1) facts.push({ label: "On site", value: `${f.n_facilities} buildings` });
+  // Address, tenure and size are facts a reader glances at once; three labelled
+  // tiles plus a registry footnote spent 144px saying so. One dotted line says
+  // the same thing in ~24px, and the money keeps the space.
   return (
-    <section className="fx-fiche-section">
-      <div className="fx-fiche-h">Facility record</div>
-      <div className="fx-place-facts">
-        {facts.map((x, i) => (
-          <div className="fx-place-fact" key={i}>
-            <div className="fx-place-fact-label">{x.label}</div>
-            <div className="fx-place-fact-value">{x.value}</div>
-          </div>
-        ))}
-      </div>
-      <p className="fx-fiche-note" style={{ marginTop: 10 }}>
-        City Facilities registry
-        {f.n_facilities > 1 ? <> · {f.n_facilities} buildings on site</> : null}
-        {f.primary_block_lot ? <> · parcel {f.primary_block_lot}</> : null}
-        {f.supervisor_district != null ? <> · Supervisor District {f.supervisor_district}</> : null}
-      </p>
-    </section>
+    <p className="fx-place-identity">
+      {facts.map((x, i) => (
+        <span key={i}>
+          {i > 0 ? " · " : ""}
+          {x.value}
+        </span>
+      ))}
+      {/* `facts` already carries the building count when there is no floor
+       *  area, so only add it when floor area took that slot. */}
+      {f.n_facilities > 1 && sqft ? <> · {f.n_facilities} buildings on site</> : null}
+      {f.primary_block_lot ? <> · parcel {f.primary_block_lot}</> : null}
+      {f.supervisor_district != null ? <> · District {f.supervisor_district}</> : null}
+      <span className="fx-place-identity-src"> · City Facilities registry</span>
+    </p>
   );
 }
 
@@ -119,212 +107,254 @@ function titleCase(s: string) {
 const MEASURE_LABEL: Record<string, string> = {
   bond_expended: "voter-bond funds spent",
   contract_paid: "paid to contractors",
-  permit_declared: "declared construction value",
 };
 
-/** Spend-by-year timeline (single series: permit declared value). A
- *  magnitude-over-time bar chart — one hue, no legend (title names it), bars to
- *  baseline, native <title> hover. Renders a CONTINUOUS year axis so quiet
- *  periods read as gaps and investment waves stand out. Server-rendered inline
- *  SVG (no client JS). Suppressed under 3 data-years — the itemized permit list
- *  carries those. */
-function SpendTimeline({ series }: { series: Array<{ year: number; declared_usd: number }> }) {
-  const withValue = series.filter((s) => s.declared_usd > 0);
-  if (withValue.length < 3) return null;
-  const y0 = withValue[0].year;
-  const y1 = withValue[withValue.length - 1].year;
-  const byYear = new Map(series.map((s) => [s.year, s.declared_usd]));
-  const years: number[] = [];
-  for (let y = y0; y <= y1; y++) years.push(y);
-  const max = Math.max(...withValue.map((s) => s.declared_usd));
-  const peak = withValue.reduce((a, b) => (b.declared_usd > a.declared_usd ? b : a));
-
-  // viewBox geometry (scales to container width). Plot area + a label gutter.
-  const W = 640, plotH = 96, padB = 18, padT = 16, H = plotH + padB + padT;
-  const n = years.length;
-  const slot = W / n;
-  const barW = Math.max(3, Math.min(slot - 2, 16));
-
+/**
+ * The money — built on the Paris LieuFiche grammar, because the flat version of
+ * this section read as a dump: four unlabelled lists, no totals, nothing
+ * clickable, and no sentence anywhere saying what a "declared value" was.
+ *
+ * The grammar, from fusion/LieuFiche.tsx:
+ *   - one LEAD sentence for the section, saying how to read it;
+ *   - each block is a named heading with ITS OWN total on the right, because a
+ *     block of rows with no total is a list, not an answer;
+ *   - every row is a link when a target exists, plain text when it does not
+ *     (never a dead link — the vendor list is only ~17% keyed);
+ *   - one short note per block saying what its number actually measures;
+ *   - the department budget stays a grey context line, never a headline.
+ *
+ * The two ledgers are never summed: a bond pays the contracts that do the work,
+ * so the same dollar can appear in both.
+ */
+function MoneyBlock({
+  title,
+  tip,
+  total,
+  note,
+  children,
+}: {
+  title: string;
+  tip?: string;
+  total?: ReactNode;
+  note?: ReactNode;
+  children: ReactNode;
+}) {
   return (
-    <figure style={{ margin: "0 0 18px" }}>
-      <figcaption className="fx-place-sub" style={{ marginBottom: 6 }}>
-        Construction on this parcel, by year
-        <span className="fx-place-contract-meta"> · declared permit value, {y0}–{y1}</span>
-      </figcaption>
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" preserveAspectRatio="none"
-        aria-label={`Declared construction value by year, ${y0} to ${y1}, peaking at ${fmtUsdCompact(peak.declared_usd)} in ${peak.year}.`}
-        style={{ display: "block", overflow: "visible" }}>
-        {/* baseline */}
-        <line x1={0} y1={padT + plotH} x2={W} y2={padT + plotH} stroke="var(--rule)" strokeWidth={1} />
-        {years.map((y, i) => {
-          const v = byYear.get(y) || 0;
-          const h = v > 0 ? Math.max(2, (v / max) * plotH) : 0;
-          const x = i * slot + (slot - barW) / 2;
-          const yTop = padT + plotH - h;
-          const isPeak = y === peak.year;
-          return v > 0 ? (
-            <g key={y}>
-              <rect x={x} y={yTop} width={barW} height={h} rx={2}
-                fill={isPeak ? "var(--bleu, #1f5fbf)" : "var(--ink-3, #9aa4b2)"}>
-                <title>{`${y} · ${fmtUsdCompact(v)} declared`}</title>
-              </rect>
-              {isPeak && (
-                <text x={x + barW / 2} y={yTop - 4} textAnchor="middle"
-                  style={{ fontFamily: "var(--f-mono)", fontSize: 10, fill: "var(--ink)" }}>
-                  {fmtUsdCompact(v)}
-                </text>
-              )}
-            </g>
-          ) : null;
-        })}
-        {/* sparse x labels: first, peak, last */}
-        {[y0, peak.year, y1].filter((y, i, a) => a.indexOf(y) === i).map((y) => {
-          const i = years.indexOf(y);
-          const x = i * slot + slot / 2;
-          return (
-            <text key={y} x={x} y={H - 4} textAnchor="middle"
-              style={{ fontFamily: "var(--f-mono)", fontSize: 9.5, fill: "var(--muted)" }}>
-              {y}
-            </text>
-          );
-        })}
-      </svg>
-    </figure>
+    <div className="fx-place-block">
+      <div className="fx-place-block-h">
+        <span>{tip ? <Tip label={tip}>{title}</Tip> : title}</span>
+        {total ? <span className="fx-place-block-total">{total}</span> : null}
+      </div>
+      {children}
+      {note ? <p className="fx-fiche-note">{note}</p> : null}
+    </div>
   );
 }
 
-/** The money — one merged section. Every place-specific money view lives here:
- *  the spend-by-year graph, voter-bond capital, construction permits and the
- *  vendors paid, each labelled by ledger and never summed (a bond fund pays the
- *  contracts). The department budget/payroll — identical across every
- *  same-department place — is compressed to a single grey context line, not a
- *  headline. */
+/** One row of a money list: label (+ sub-label), amount right. Wrapped in a
+ *  Link when `href` resolves, so a row is only ever clickable if it truly
+ *  leads somewhere. */
+function MoneyRow({
+  label,
+  sub,
+  amount,
+  href,
+}: {
+  label: ReactNode;
+  sub?: ReactNode;
+  amount?: ReactNode;
+  href?: string | null;
+}) {
+  const body = (
+    <>
+      <span className="fx-place-row-label">
+        {label}
+        {href ? <span aria-hidden="true" className="fx-place-row-arrow"> →</span> : null}
+        {sub ? <span className="fx-place-row-sub">{sub}</span> : null}
+      </span>
+      {amount ? <span className="fx-place-row-amt">{amount}</span> : null}
+    </>
+  );
+  return href ? (
+    <Link href={href} scroll={false} className="fx-place-row fx-row-link">
+      {body}
+    </Link>
+  ) : (
+    <div className="fx-place-row">{body}</div>
+  );
+}
+
 function MoneySection({ place }: { place: SfPlaceFicheData }) {
   const cap = place.capital;
   const bl = place.money.budget_line;
   const pl = place.money.payroll_line;
-  const contracts = place.money.contracts;
-  const hasCapital = !!cap && (cap.items.length > 0 || cap.payees.length > 0 || cap.permits.length > 0);
-  // contracts with dollars committed but not yet paid out (no payee row)
-  const committedTotal = contracts.reduce((a, c) => a + (c.agreed_usd || 0), 0);
-  const showCommitted = contracts.length > 0 && (!cap || cap.payees.length === 0);
-  if (!hasCapital && !showCommitted && !bl) return null;
+  const contracts = [...place.money.contracts].sort(
+    (a, b) => (b.paid_usd ?? b.agreed_usd ?? 0) - (a.paid_usd ?? a.agreed_usd ?? 0),
+  );
+  // Bond rows WITHOUT dollars are withheld (2026-07-28). 90 of the 95 crosswalk
+  // rows are `bond_project` — named work whose dollars the City reports at
+  // programme level, never per place. Rendered as rows they became a money
+  // heading with an empty total over a list of raw source strings ("RP Water
+  // Cnsrvtn Ggp Panhandle"), on 24 of the 27 fiches that carried the block.
+  // They return with the citywide bond page, which gives them the programme
+  // total to hang on — as context, not as a per-place figure.
+  const allBondItems = cap?.items ?? [];
+  const bondItems = allBondItems.filter((i) => (i.amount_usd ?? 0) > 0);
+  const bondNamedOnly = bondItems.length === 0 && allBondItems.length > 0;
+  const vendors = cap?.payees ?? [];
+  const hasAny = bondItems.length > 0 || vendors.length > 0 || contracts.length > 0;
+  if (!hasAny && !bl) return null;
 
-  const withMoney = cap?.items.filter((i) => i.amount_usd != null) ?? [];
-  const named = cap?.items.filter((i) => i.amount_usd == null) ?? [];
   const bondTotal = cap?.measure_totals.bond_expended;
-  const hasBond = (cap?.items.length ?? 0) > 0;
+  // Programmes named from the SHOWN rows only. Taking cap.bond_programs listed
+  // the same 2024 bond twice on ZSFG, because the spending and projects
+  // datasets spell it differently ("Healthy, Safe and Vibrant San Francisco"
+  // vs "Healthy, Safe, Vibrant SF").
+  const bondPrograms = [...new Set(bondItems.map((i) => i.bond_program).filter(Boolean) as string[])];
+
+  // How many ledgers actually have something to show — the lead sentence must
+  const ledgers = [
+    bondItems.length > 0 && "voter bonds",
+    (vendors.length > 0 || contracts.length > 0) && "city contracts",
+  ].filter(Boolean) as string[];
+  // Building permits were removed from the app entirely (2026-07-28). A permit
+  // records what an applicant DECLARED work would cost — frequently a private
+  // owner's work on a parcel the City merely shares, and often work that was
+  // withdrawn and never done. It is not public spending and does not belong on
+  // a fiche about public money. The mart still exists for lineage; nothing
+  // ships it.
+  const hasPublicMoney = bondItems.length > 0 || vendors.length > 0 || contracts.length > 0;
+
   return (
     <section className="fx-fiche-section">
-      <div className="fx-fiche-h">The money</div>
-      {cap && <SpendTimeline series={cap.permits_by_year} />}
-      {cap && hasBond && (bondTotal ? (
-        <p className="fx-place-money-line">
-          At least <Amt usd={bondTotal} /> of voter-approved bond funds have been spent on work
-          named for this place{cap.bond_programs.length ? <> ({cap.bond_programs.join("; ")} bond{cap.bond_programs.length > 1 ? "s" : ""})</> : null}.
+      <div className="fx-fiche-h fx-fiche-h--money">What public money did here</div>
+      {ledgers.length > 1 && (
+        <p className="fx-place-lead">
+          Two separate city ledgers name this place — {ledgers[0]} and {ledgers[1]}. Each is
+          counted on its own below and they are <b>never added together</b>: the same job can appear
+          in both, because a bond pays the contract that does the work.
         </p>
-      ) : (
-        <p className="fx-place-money-line">
-          Funded under {cap.bond_programs.length ? <>the {cap.bond_programs.join("; ")} bond{cap.bond_programs.length > 1 ? "s" : ""}</> : "voter-approved bonds"}.
-          The dollar figures for these are reported at the program level, not per project.
-        </p>
-      ))}
-      {withMoney.length > 0 && (
-        <ul className="fx-place-contracts">
-          {withMoney.map((i, k) => (
-            <li key={k} style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-              <span style={{ flex: 1 }}>
-                {titleCaseItem(i.item_name)}
-                <span className="fx-doc-source">
-                  {i.bond_program ? `${i.bond_program} bond · ` : ""}
-                  {i.amount_measure ? MEASURE_LABEL[i.amount_measure] : ""}
-                  {i.voter_approved_date ? ` · approved ${i.voter_approved_date.slice(0, 4)}` : ""}
-                </span>
-              </span>
-              {i.amount_usd != null && <Amt usd={i.amount_usd} />}
-            </li>
+      )}
+
+
+      {vendors.length > 0 && (
+        <MoneyBlock
+          title="Paid to contractors for work here"
+          tip="Money the City actually paid out, from its own payment records (vouchers), on contracts whose text names this place."
+          total={cap!.payees_total_paid ? <Amt usd={cap!.payees_total_paid} size={14} /> : undefined}
+          note={
+            <>
+              What the City actually paid, across {cap!.n_payees} contractor{cap!.n_payees === 1 ? "" : "s"}
+              {cap!.n_payees > vendors.length ? <> (the {cap!.n_payees - vendors.length} smallest are in the total but not listed)</> : null}.
+              Contractors big enough to have their own page are linked; the rest are named only.
+            </>
+          }
+        >
+          {vendors.slice(0, MONEY_FOLD).map((py, k) => (
+            <MoneyRow
+              key={k}
+              label={titleCaseItem(py.vendor)}
+              href={payeeHref(py.vendor)}
+              sub={py.first_fiscal_year ? `FY${py.first_fiscal_year}${py.last_fiscal_year && py.last_fiscal_year !== py.first_fiscal_year ? `–${py.last_fiscal_year}` : ""}${py.n_contracts > 1 ? ` · ${py.n_contracts} contracts` : ""}` : undefined}
+              amount={<Amt usd={py.paid_usd} />}
+            />
           ))}
-        </ul>
-      )}
-      {named.length > 0 && (
-        <>
-          <p className="fx-place-sub" style={{ marginTop: withMoney.length ? 14 : 6 }}>
-            Bond-funded projects here:
-          </p>
-          <ul className="fx-place-named-projects">
-            {named.map((i, k) => (
-              <li key={k}>
-                {titleCaseItem(i.item_name)}
-                {i.bond_program ? <span className="fx-place-contract-meta"> · {i.bond_program}</span> : null}
-              </li>
+          <FicheMore count={vendors.length - MONEY_FOLD} noun="more contractors">
+            {vendors.slice(MONEY_FOLD).map((py, k) => (
+              <MoneyRow
+                key={k}
+                label={titleCaseItem(py.vendor)}
+                href={payeeHref(py.vendor)}
+                sub={py.first_fiscal_year ? `FY${py.first_fiscal_year}` : undefined}
+                amount={<Amt usd={py.paid_usd} />}
+              />
             ))}
-          </ul>
-        </>
+          </FicheMore>
+        </MoneyBlock>
       )}
-      {cap && cap.permits.length > 0 && (
-        <>
-          <p className="fx-place-sub" style={{ marginTop: hasBond ? 16 : 2 }}>
-            Construction permits on this parcel
-            <span className="fx-place-contract-meta"> · {cap.n_permits} permit{cap.n_permits === 1 ? "" : "s"}, {" "}
-              {fmtUsdCompact(cap.permits_total_declared)} declared value</span>
-          </p>
-          <ul className="fx-place-contracts">
-            {cap.permits.map((pm, k) => (
-              <li key={k} style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-                <span style={{ flex: 1 }}>
-                  {sentenceCase(pm.description || "Construction permit")}
-                  <span className="fx-doc-source">
-                    {pm.permit_year ? `${pm.permit_year}` : ""}{pm.status ? ` · ${pm.status}` : ""}
-                  </span>
-                </span>
-                {pm.declared_cost_usd != null && <Amt usd={pm.declared_cost_usd} />}
-              </li>
+
+      {contracts.length > 0 && (
+        <MoneyBlock
+          title="The contracts that name this place"
+          tip="Contracts in the City's supplier register whose title or description names this place. Agreed is the ceiling written into the contract; paid is what has been drawn against it so far."
+          total={<span className="fx-place-block-count">{contracts.length}</span>}
+          note={<>Every line opens that contract&rsquo;s own page, with its spend curve and its subcontractors. Agreed amounts are ceilings, not spending.</>}
+        >
+          {contracts.slice(0, MONEY_FOLD).map((c) => (
+            <MoneyRow
+              key={c.contract_no}
+              label={c.title || c.contract_no}
+              href={`/us/city/sf/contracts/contract/${c.contract_no}`}
+              sub={[c.prime, c.department_code].filter(Boolean).join(" · ")}
+              amount={c.paid_usd ? <Amt usd={c.paid_usd} /> : c.agreed_usd ? <span className="fx-place-row-agreed"><Amt usd={c.agreed_usd} /> agreed</span> : undefined}
+            />
+          ))}
+          <FicheMore count={contracts.length - MONEY_FOLD} noun="more contracts">
+            {contracts.slice(MONEY_FOLD).map((c) => (
+              <MoneyRow
+                key={c.contract_no}
+                label={c.title || c.contract_no}
+                href={`/us/city/sf/contracts/contract/${c.contract_no}`}
+                sub={[c.prime, c.department_code].filter(Boolean).join(" · ")}
+                amount={c.paid_usd ? <Amt usd={c.paid_usd} /> : undefined}
+              />
             ))}
-          </ul>
-        </>
+          </FicheMore>
+        </MoneyBlock>
       )}
-      {cap && cap.payees.length > 0 && (
-        <>
-          <p className="fx-place-sub" style={{ marginTop: (hasBond || cap.permits.length) ? 16 : 2 }}>
-            Paid for work here <span className="fx-place-contract-meta">· {cap.n_payees} vendor{cap.n_payees === 1 ? "" : "s"} on this place&rsquo;s contracts</span>
-          </p>
-          <ul className="fx-place-contracts">
-            {cap.payees.map((py, k) => (
-              <li key={k} style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-                <span style={{ flex: 1 }}>
-                  {titleCaseItem(py.vendor)}
-                  {py.first_fiscal_year ? (
-                    <span className="fx-doc-source">
-                      FY{py.first_fiscal_year}{py.last_fiscal_year && py.last_fiscal_year !== py.first_fiscal_year ? `–${py.last_fiscal_year}` : ""}
-                      {py.n_contracts > 1 ? ` · ${py.n_contracts} contracts` : ""}
-                    </span>
-                  ) : null}
-                </span>
-                <Amt usd={py.paid_usd} />
-              </li>
+
+
+      {bondItems.length > 0 && (
+        <MoneyBlock
+          title="Voter-approved bond money"
+          tip="General obligation bonds: borrowing that San Francisco voters approved at the ballot box for a named capital programme. The City repays them from property tax."
+          total={bondTotal ? <Amt usd={bondTotal} size={14} /> : undefined}
+          note={<>Spent on work named for this place under the {bondPrograms.join("; ")} bond{bondPrograms.length > 1 ? "s" : ""}. A floor, not a ceiling: bond reporting is by programme, so work here that was not separately itemised is not in this figure.</>}
+        >
+          {bondItems.slice(0, MONEY_FOLD).map((i, k) => (
+            <MoneyRow
+              key={k}
+              label={titleCaseItem(i.item_name)}
+              sub={[i.bond_program ? `${i.bond_program} bond` : null, i.voter_approved_date ? `approved ${i.voter_approved_date.slice(0, 4)}` : null].filter(Boolean).join(" · ")}
+              amount={<Amt usd={i.amount_usd!} />}
+            />
+          ))}
+          <FicheMore count={bondItems.length - MONEY_FOLD} noun="more funded items">
+            {bondItems.slice(MONEY_FOLD).map((i, k) => (
+              <MoneyRow
+                key={k}
+                label={titleCaseItem(i.item_name)}
+                sub={i.bond_program ? `${i.bond_program} bond` : undefined}
+                amount={<Amt usd={i.amount_usd!} />}
+              />
             ))}
-          </ul>
-        </>
+          </FicheMore>
+        </MoneyBlock>
       )}
-      {showCommitted && committedTotal > 0 && (
-        <p className="fx-place-money-line" style={{ marginTop: hasCapital ? 14 : 2 }}>
-          <b className="tnum">{contracts.length}</b> city contract{contracts.length === 1 ? "" : "s"} name{contracts.length === 1 ? "s" : ""} this
-          place — <Amt usd={committedTotal} /> committed, payments not yet flowing.
-        </p>
-      )}
-      {(hasCapital || showCommitted) && (
-        <p className="fx-fiche-note" style={{ marginTop: 10 }}>
-          Figures come from different city ledgers (voter bonds, contracts, permits) and are not additive —
-          a bond fund pays the contracts for the same job. Sources: SF GO Bond program, vendor vouchers,
-          building permits (DataSF).
+      {!hasPublicMoney && (
+        <p className="fx-place-lead">
+          No city spending is recorded against this place by name.{" "}
+          {bondNamedOnly ? (
+            <>
+              Voter-approved bond work is named here, but San Francisco reports those dollars by
+              bond programme, never per site, so there is no amount to attribute to this place.
+            </>
+          ) : (
+            <>
+              San Francisco publishes contracts, bond items and vendor payments at project level,
+              and none of them names this site — so there is no figure to show, rather than a
+              figure of zero.
+            </>
+          )}
         </p>
       )}
       {bl && (
-        <p className="fx-fiche-note" style={{ marginTop: hasCapital || showCommitted ? 6 : 0 }}>
-          Operated by the{" "}
-          <Link href={`/us/city/sf/budget/dept/${deptSlug(bl.code)}?year=${bl.fiscal_year}`}>{bl.name}</Link>
-          {" — "}department budget <Amt usd={bl.total_usd} />
-          {pl ? <>, {pl.n_employees.toLocaleString("en-US")} staff citywide</> : null} (FY{bl.fiscal_year}), not this place&rsquo;s own.
+        <p className="fx-fiche-note fx-place-dept-line">
+          Run by the{" "}
+          <Link href={`/us/city/sf/budget/dept/${deptSlug(bl.code)}?year=${bl.fiscal_year}`} scroll={false}>{bl.name}</Link>
+          , whose whole-department budget is <Amt usd={bl.total_usd} />
+          {pl ? <> across {pl.n_employees.toLocaleString("en-US")} staff</> : null} (FY{bl.fiscal_year}) —
+          citywide, not this place&rsquo;s own. The City does not publish a running cost per building.
         </p>
       )}
     </section>
@@ -333,13 +363,16 @@ function MoneySection({ place }: { place: SfPlaceFicheData }) {
 
 function titleCaseItem(s: string) {
   // Keep known acronyms upper; title-case the rest for readability.
+  // Strip punctuation before the acronym test — "ZSFG," was failing the anchored
+  // match and rendering as "Zsfg," on the largest bond row on the site.
   return s.replace(/\w\S*/g, (t) =>
-    /^(ZSFG|LHH|SFGH|RP|COF|PES|EEI|NPC|IT|RR)$/i.test(t) ? t.toUpperCase() : t.charAt(0) + t.slice(1).toLowerCase(),
+    /^(ZSFG|LHH|SFGH|RP|COF|PES|EEI|NPC|IT|RR)$/i.test(t.replace(/\W/g, ""))
+      ? t.toUpperCase()
+      : t.charAt(0) + t.slice(1).toLowerCase(),
   );
 }
 
-/** Permit descriptions arrive all-lowercase; capitalize the first letter and
- *  trim to a readable length (they can be long paragraphs). */
+/** Long description strings arrive all-lowercase; capitalize and trim. */
 function sentenceCase(s: string) {
   const clean = s.trim();
   const short = clean.length > 130 ? clean.slice(0, 127).replace(/\s+\S*$/, "") + "…" : clean;
@@ -350,8 +383,19 @@ export default function SfPlaceFiche({ place }: { place: SfPlaceFicheData }) {
   const bl = place.money.budget_line;
   const contracts = place.money.contracts;
 
-  const shownDocs = place.documents.filter((d) => d.salient);
-  const hiddenDocs = place.documents.filter((d) => !d.salient);
+  // The shelf carries substantive documents only. Procedural ones (minutes,
+  // agendas, calendars, notices — classified by type upstream) are counted, not
+  // listed: they are the bulk of the archive and the least of what it says.
+  // Older fiches predate the `procedural` flag; absent it, nothing is withheld.
+  const proceduralDocs = place.documents.filter((d) => d.procedural);
+  const substantiveDocs = place.documents.filter((d) => !d.procedural);
+  // A handful of places (Conservatory of Flowers) have an archive record that
+  // IS commission minutes and nothing else — and their grounded summary says
+  // so, in as many words. Hiding every row there would leave a section that
+  // contradicts the paragraph above it. Demote, but do not erase the only
+  // record that exists: list them, and say plainly what they are.
+  const proceduralOnly = substantiveDocs.length === 0 && proceduralDocs.length > 0;
+  const shelfDocs = (proceduralOnly ? proceduralDocs : substantiveDocs).map(toShelfDoc);
   const thin = place.documents.length <= THIN_DOCS_THRESHOLD;
 
   // Headline: ONE place-specific money figure (the largest across ledgers,
@@ -365,9 +409,6 @@ export default function SfPlaceFiche({ place }: { place: SfPlaceFicheData }) {
       : null,
     cap?.payees_total_paid
       ? { value: cap.payees_total_paid, label: "paid to contractors for work here" }
-      : null,
-    cap?.permits_total_declared
-      ? { value: cap.permits_total_declared, label: "construction permitted on this parcel" }
       : null,
   ].filter((x): x is { value: number; label: string } => x != null && x.value > 0);
   const headline = headlineCandidates.sort((a, b) => b.value - a.value)[0] ?? null;
@@ -441,7 +482,9 @@ export default function SfPlaceFiche({ place }: { place: SfPlaceFicheData }) {
       {/* ── Headline stat — one place-specific money figure ── */}
       {headline && (
         <div className="fx-place-headline">
-          <div className="fx-place-headline-value tnum">{fmtUsd(headline.value)}</div>
+          <div className="fx-place-headline-value tnum" title={fmtUsd(headline.value)}>
+            {fmtUsdCompact(headline.value)}
+          </div>
           <div className="fx-place-headline-label">{headline.label}</div>
         </div>
       )}
@@ -449,42 +492,31 @@ export default function SfPlaceFiche({ place }: { place: SfPlaceFicheData }) {
       {/* ── Facility record (6A structured identity) ── */}
       <FacilityRecord place={place} />
 
-      {/* ── The money — one merged section: graph + bonds + permits + payees ── */}
+      {/* ── The money — bonds + contracts + payees. No permits: see MoneySection. ── */}
       <MoneySection place={place} />
 
-      {/* ── Archive document shelf ── */}
-      {place.documents.length > 0 && (
+      {/* ── Archive document shelf — the presentation contract ── */}
+      {shelfDocs.length > 0 && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h fx-fiche-h--moments">Sources in the archive</div>
-          <p className="fx-place-sub">
-            The {place.documents.length} document{place.documents.length === 1 ? "" : "s"} behind the summary above,
-            held at the Internet Archive — Democracy&rsquo;s Library plus IA&rsquo;s San Francisco Public Library
-            partnership scans. Every link opens the scanned page with the match highlighted.
-          </p>
-          <GroupedDocs docs={shownDocs} />
-          {hiddenDocs.length > 0 && (
-            <details>
-              <summary style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--bleu)", cursor: "pointer", padding: "12px 0" }}>
-                See all {place.documents.length} documents →
-              </summary>
-              <GroupedDocs docs={hiddenDocs} />
-            </details>
+          <div className="fx-fiche-h fx-fiche-h--moments">In the archive</div>
+          {proceduralOnly && (
+            <p className="fx-fiche-note" style={{ marginTop: 0, marginBottom: 8 }}>
+              Everything the archive holds on this place is commission paperwork — minutes and
+              calendars. Listed anyway, because it is the whole record.
+            </p>
           )}
+          <FicheArchiveShelf
+            docs={shelfDocs}
+            cap={SHELF_CAP}
+            withheld={proceduralOnly ? 0 : proceduralDocs.length}
+          />
         </section>
       )}
 
-      {/* ── Sources ── */}
-      <section className="fx-fiche-section">
-        <div className="fx-fiche-h">Sources</div>
-        <p className="fx-fiche-note" style={{ marginTop: 0 }}>
-          {place.sources.map((s, i) => (
-            <span key={i}>
-              {i > 0 ? " · " : ""}
-              <b>{s.label}</b>: {s.note}
-            </span>
-          ))}
-        </p>
-      </section>
+      {/* A standalone Sources section was a third statement of the same
+       *  provenance: every money figure already names its ledger, every shelf
+       *  row names its collection, and the page footer carries the dataset
+       *  links. Cut — the labels stay where the figures are. */}
 
       {/* ── Cross-links ── */}
       {related.length > 0 && (

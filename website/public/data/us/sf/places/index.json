@@ -1,9 +1,81 @@
 {
- "generated_at": "2026-07-22T15:25:07.877434+00:00",
+ "generated_at": "2026-07-28T12:24:24.574970+00:00",
  "unit": "USD",
- "count": 23,
+ "count": 95,
  "note": "Published SF places — each has a clean-licensed photo, ≥3 archive documents, ≥1 money link and a source-grounded summary.",
  "places": [
+  {
+   "slug": "african-american-art-and-culture-complex",
+   "name": "African American Art and Culture Complex",
+   "kind": "Civic building",
+   "family": "civic",
+   "lat": 37.778281,
+   "lon": -122.429235,
+   "photo": "/img/us/sf/places/african-american-art-and-culture-complex.jpg",
+   "owning_dept_code": "ART",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "alamo-square",
+   "name": "Alamo Square",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.7764,
+   "lon": -122.4346,
+   "photo": "/img/us/sf/places/alamo-square.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 7,
+   "n_contracts": 0
+  },
+  {
+   "slug": "animal-care-and-control-facility",
+   "name": "Animal Care and Control Facility",
+   "kind": "Civic building",
+   "family": "civic",
+   "lat": 37.768557,
+   "lon": -122.410534,
+   "photo": "/img/us/sf/places/animal-care-and-control-facility.jpg",
+   "owning_dept_code": "ADM",
+   "n_documents": 4,
+   "n_contracts": 0
+  },
+  {
+   "slug": "anza-branch-library",
+   "name": "Anza Branch Library",
+   "kind": "Library",
+   "family": "library",
+   "lat": 37.77857,
+   "lon": -122.497258,
+   "photo": "/img/us/sf/places/anza-branch-library.jpg",
+   "owning_dept_code": "LIB",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "asian-art-museum",
+   "name": "Asian Art Museum",
+   "kind": "Museum",
+   "family": "culture",
+   "lat": 37.7801,
+   "lon": -122.4163,
+   "photo": "/img/us/sf/places/asian-art-museum.jpg",
+   "owning_dept_code": "AAM",
+   "n_documents": 3,
+   "n_contracts": 0
+  },
+  {
+   "slug": "balboa-park",
+   "name": "Balboa Park",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.725515,
+   "lon": -122.444629,
+   "photo": "/img/us/sf/places/balboa-park.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
   {
    "slug": "balboa-park-station",
    "name": "Balboa Park Station / Green Yard",
@@ -13,8 +85,56 @@
    "lon": -122.4474,
    "photo": "/img/us/sf/places/balboa-park-station.jpg",
    "owning_dept_code": "MTA",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "bernal-heights-branch-library",
+   "name": "Bernal Heights Branch Library",
+   "kind": "Branch library",
+   "family": "library",
+   "lat": 37.739,
+   "lon": -122.4161,
+   "photo": "/img/us/sf/places/bernal-heights-branch-library.jpg",
+   "owning_dept_code": "LIB",
    "n_documents": 5,
    "n_contracts": 0
+  },
+  {
+   "slug": "bill-graham-civic-auditorium",
+   "name": "Bill Graham Civic Auditorium",
+   "kind": "Auditorium",
+   "family": "civic",
+   "lat": 37.7785,
+   "lon": -122.4174,
+   "photo": "/img/us/sf/places/bill-graham-civic-auditorium.jpg",
+   "owning_dept_code": "ADM",
+   "n_documents": 7,
+   "n_contracts": 1
+  },
+  {
+   "slug": "brooks-hall",
+   "name": "Brooks Hall",
+   "kind": "Civic building",
+   "family": "civic",
+   "lat": 37.77908,
+   "lon": -122.417954,
+   "photo": "/img/us/sf/places/brooks-hall.jpg",
+   "owning_dept_code": "ADM",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "buchanan-street-mall",
+   "name": "Buchanan Street Mall",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.779346,
+   "lon": -122.428555,
+   "photo": "/img/us/sf/places/buchanan-street-mall.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 7,
+   "n_contracts": 1
   },
   {
    "slug": "buena-vista-park",
@@ -25,7 +145,7 @@
    "lon": -122.4416,
    "photo": "/img/us/sf/places/buena-vista-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 3,
+   "n_documents": 5,
    "n_contracts": 0
   },
   {
@@ -37,7 +157,67 @@
    "lon": -122.4116,
    "photo": "/img/us/sf/places/cable-car-barn.jpg",
    "owning_dept_code": "MTA",
-   "n_documents": 6,
+   "n_documents": 4,
+   "n_contracts": 0
+  },
+  {
+   "slug": "camp-mather",
+   "name": "Camp Mather",
+   "kind": "Camp",
+   "family": "park",
+   "lat": 37.8794,
+   "lon": -119.856,
+   "photo": "/img/us/sf/places/camp-mather.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "castro-mission-health-center",
+   "name": "Castro Mission Health Center",
+   "kind": "Health facility",
+   "family": "health",
+   "lat": 37.762938,
+   "lon": -122.431871,
+   "photo": "/img/us/sf/places/castro-mission-health-center.jpg",
+   "owning_dept_code": "DPH",
+   "n_documents": 4,
+   "n_contracts": 0
+  },
+  {
+   "slug": "chinatown-branch-library",
+   "name": "Chinatown Branch Library",
+   "kind": "Branch library",
+   "family": "library",
+   "lat": 37.7952,
+   "lon": -122.4103,
+   "photo": "/img/us/sf/places/chinatown-branch-library.jpg",
+   "owning_dept_code": "LIB",
+   "n_documents": 7,
+   "n_contracts": 0
+  },
+  {
+   "slug": "chinatown-public-health-center",
+   "name": "Chinatown Public Health Center",
+   "kind": "Health center",
+   "family": "health",
+   "lat": 37.7973,
+   "lon": -122.411,
+   "photo": "/img/us/sf/places/chinatown-public-health-center.jpg",
+   "owning_dept_code": "DPH",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "civic-center-courthouse",
+   "name": "Civic Center Courthouse",
+   "kind": "Civic building",
+   "family": "civic",
+   "lat": 37.780436,
+   "lon": -122.41966,
+   "photo": "/img/us/sf/places/civic-center-courthouse.jpg",
+   "owning_dept_code": "CRT",
+   "n_documents": 3,
    "n_contracts": 0
   },
   {
@@ -49,7 +229,151 @@
    "lon": -122.4058,
    "photo": "/img/us/sf/places/coit-tower.jpg",
    "owning_dept_code": "REC",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "conservatory-of-flowers",
+   "name": "Conservatory of Flowers",
+   "kind": "Conservatory",
+   "family": "park",
+   "lat": 37.7726,
+   "lon": -122.4603,
+   "photo": "/img/us/sf/places/conservatory-of-flowers.jpg",
+   "owning_dept_code": "REC",
    "n_documents": 3,
+   "n_contracts": 0
+  },
+  {
+   "slug": "corona-heights-park",
+   "name": "Corona Heights Park",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.764788,
+   "lon": -122.439,
+   "photo": "/img/us/sf/places/corona-heights-park.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 4,
+   "n_contracts": 0
+  },
+  {
+   "slug": "crane-cove-park",
+   "name": "Crane Cove Park",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.76277778,
+   "lon": -122.38722222,
+   "photo": "/img/us/sf/places/crane-cove-park.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 4,
+   "n_contracts": 0
+  },
+  {
+   "slug": "curry-senior-center",
+   "name": "Curry Senior Center",
+   "kind": "Health facility",
+   "family": "health",
+   "lat": 37.782523,
+   "lon": -122.414507,
+   "photo": "/img/us/sf/places/curry-senior-center.jpg",
+   "owning_dept_code": "DPH",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "emergency-operations-center",
+   "name": "Emergency Operations Center",
+   "kind": "Civic building",
+   "family": "civic",
+   "lat": 37.781104,
+   "lon": -122.426087,
+   "photo": "/img/us/sf/places/emergency-operations-center.jpg",
+   "owning_dept_code": "DEM",
+   "n_documents": 7,
+   "n_contracts": 0
+  },
+  {
+   "slug": "excelsior-branch-library",
+   "name": "Excelsior Branch Library",
+   "kind": "Branch library",
+   "family": "library",
+   "lat": 37.7218,
+   "lon": -122.4327,
+   "photo": "/img/us/sf/places/excelsior-branch-library.jpg",
+   "owning_dept_code": "LIB",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "ferry-building",
+   "name": "Ferry Building",
+   "kind": "Terminal / market",
+   "family": "port",
+   "lat": 37.7955,
+   "lon": -122.3937,
+   "photo": "/img/us/sf/places/ferry-building.jpg",
+   "owning_dept_code": "PRT",
+   "n_documents": 7,
+   "n_contracts": 0
+  },
+  {
+   "slug": "fire-station-13",
+   "name": "Fire Station #13",
+   "kind": "Fire station",
+   "family": "fire",
+   "lat": 37.795519,
+   "lon": -122.40135,
+   "photo": "/img/us/sf/places/fire-station-13.jpg",
+   "owning_dept_code": "FIR",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "fire-station-14",
+   "name": "Fire Station #14",
+   "kind": "Fire station",
+   "family": "fire",
+   "lat": 37.778993,
+   "lon": -122.486062,
+   "photo": "/img/us/sf/places/fire-station-14.jpg",
+   "owning_dept_code": "FIR",
+   "n_documents": 4,
+   "n_contracts": 0
+  },
+  {
+   "slug": "fire-station-15",
+   "name": "Fire Station #15",
+   "kind": "Fire station",
+   "family": "fire",
+   "lat": 37.723489,
+   "lon": -122.452927,
+   "photo": "/img/us/sf/places/fire-station-15.jpg",
+   "owning_dept_code": "FIR",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "fire-station-18",
+   "name": "Fire Station #18",
+   "kind": "Fire station",
+   "family": "fire",
+   "lat": 37.750986,
+   "lon": -122.490544,
+   "photo": "/img/us/sf/places/fire-station-18.jpg",
+   "owning_dept_code": "FIR",
+   "n_documents": 4,
+   "n_contracts": 0
+  },
+  {
+   "slug": "fishermans-wharf",
+   "name": "Fisherman's Wharf",
+   "kind": "Waterfront district",
+   "family": "port",
+   "lat": 37.808,
+   "lon": -122.4177,
+   "photo": "/img/us/sf/places/fishermans-wharf.jpg",
+   "owning_dept_code": "PRT",
+   "n_documents": 8,
    "n_contracts": 0
   },
   {
@@ -61,7 +385,19 @@
    "lon": -122.4436,
    "photo": "/img/us/sf/places/glen-canyon-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 4,
+   "n_documents": 7,
+   "n_contracts": 0
+  },
+  {
+   "slug": "glen-park-branch-library",
+   "name": "Glen Park Branch Library",
+   "kind": "Branch library",
+   "family": "library",
+   "lat": 37.7333,
+   "lon": -122.4337,
+   "photo": "/img/us/sf/places/glen-park-branch-library.jpg",
+   "owning_dept_code": "LIB",
+   "n_documents": 5,
    "n_contracts": 0
   },
   {
@@ -73,7 +409,43 @@
    "lon": -122.4862,
    "photo": "/img/us/sf/places/golden-gate-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 4,
+   "n_documents": 9,
+   "n_contracts": 0
+  },
+  {
+   "slug": "hall-of-justice",
+   "name": "Hall of Justice",
+   "kind": "Civic building",
+   "family": "civic",
+   "lat": 37.7752,
+   "lon": -122.4036,
+   "photo": "/img/us/sf/places/hall-of-justice.jpg",
+   "owning_dept_code": "ADM",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "hallidie-plaza",
+   "name": "Hallidie Plaza",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.78444444,
+   "lon": -122.40805556,
+   "photo": "/img/us/sf/places/hallidie-plaza.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "heron-s-head-park",
+   "name": "Heron's Head Park",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.739794,
+   "lon": -122.375518,
+   "photo": "/img/us/sf/places/heron-s-head-park.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 3,
    "n_contracts": 0
   },
   {
@@ -85,8 +457,32 @@
    "lon": -119.7873,
    "photo": "/img/us/sf/places/hetch-hetchy.jpg",
    "owning_dept_code": "PUC",
+   "n_documents": 9,
+   "n_contracts": 29
+  },
+  {
+   "slug": "ingleside-police-station",
+   "name": "Ingleside Police Station",
+   "kind": "Police station",
+   "family": "civic",
+   "lat": 37.72477,
+   "lon": -122.446251,
+   "photo": "/img/us/sf/places/ingleside-police-station.jpg",
+   "owning_dept_code": "POL",
    "n_documents": 4,
    "n_contracts": 1
+  },
+  {
+   "slug": "pier-27-cruise-terminal",
+   "name": "James R. Herman Cruise Terminal (Pier 27)",
+   "kind": "Cruise terminal",
+   "family": "port",
+   "lat": 37.8035,
+   "lon": -122.398,
+   "photo": "/img/us/sf/places/pier-27-cruise-terminal.jpg",
+   "owning_dept_code": "PRT",
+   "n_documents": 5,
+   "n_contracts": 2
   },
   {
    "slug": "japanese-tea-garden",
@@ -101,6 +497,18 @@
    "n_contracts": 0
   },
   {
+   "slug": "japantown-peace-plaza",
+   "name": "Japantown Peace Plaza",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.785147,
+   "lon": -122.429806,
+   "photo": "/img/us/sf/places/japantown-peace-plaza.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 3,
+   "n_contracts": 1
+  },
+  {
    "slug": "mclaren-park",
    "name": "John McLaren Park",
    "kind": "Park",
@@ -108,6 +516,30 @@
    "lat": 37.7185,
    "lon": -122.4192,
    "photo": "/img/us/sf/places/mclaren-park.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "juri-commons",
+   "name": "Juri Commons",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.749461,
+   "lon": -122.422059,
+   "photo": "/img/us/sf/places/juri-commons.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "kezar-stadium",
+   "name": "Kezar Stadium",
+   "kind": "Stadium",
+   "family": "park",
+   "lat": 37.7669,
+   "lon": -122.4547,
+   "photo": "/img/us/sf/places/kezar-stadium.jpg",
    "owning_dept_code": "REC",
    "n_documents": 7,
    "n_contracts": 0
@@ -121,8 +553,8 @@
    "lon": -122.4556,
    "photo": "/img/us/sf/places/laguna-honda-hospital.jpg",
    "owning_dept_code": "DPH",
-   "n_documents": 8,
-   "n_contracts": 2
+   "n_documents": 9,
+   "n_contracts": 16
   },
   {
    "slug": "lake-merced",
@@ -133,7 +565,7 @@
    "lon": -122.4938,
    "photo": "/img/us/sf/places/lake-merced.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 9,
+   "n_documents": 10,
    "n_contracts": 0
   },
   {
@@ -145,6 +577,18 @@
    "lon": -122.5008,
    "photo": "/img/us/sf/places/legion-of-honor.jpg",
    "owning_dept_code": "FAM",
+   "n_documents": 5,
+   "n_contracts": 14
+  },
+  {
+   "slug": "lincoln-park",
+   "name": "Lincoln Park",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.783624,
+   "lon": -122.498168,
+   "photo": "/img/us/sf/places/lincoln-park.jpg",
+   "owning_dept_code": "REC",
    "n_documents": 4,
    "n_contracts": 0
   },
@@ -157,7 +601,7 @@
    "lon": -122.4204,
    "photo": "/img/us/sf/places/davies-symphony-hall.jpg",
    "owning_dept_code": "WAR",
-   "n_documents": 3,
+   "n_documents": 4,
    "n_contracts": 0
   },
   {
@@ -169,7 +613,31 @@
    "lon": -122.4426,
    "photo": "/img/us/sf/places/marina-green.jpg",
    "owning_dept_code": "REC",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "maxine-hall-health-center",
+   "name": "Maxine Hall Health Center",
+   "kind": "Health center",
+   "family": "health",
+   "lat": 37.7818,
+   "lon": -122.4344,
+   "photo": "/img/us/sf/places/maxine-hall-health-center.jpg",
+   "owning_dept_code": "DPH",
    "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "mission-branch-library",
+   "name": "Mission Branch Library",
+   "kind": "Branch library",
+   "family": "library",
+   "lat": 37.7527,
+   "lon": -122.42,
+   "photo": "/img/us/sf/places/mission-branch-library.jpg",
+   "owning_dept_code": "LIB",
+   "n_documents": 4,
    "n_contracts": 0
   },
   {
@@ -181,7 +649,7 @@
    "lon": -122.4269,
    "photo": "/img/us/sf/places/mission-dolores-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 5,
+   "n_documents": 7,
    "n_contracts": 1
   },
   {
@@ -193,8 +661,116 @@
    "lon": -122.4012,
    "photo": "/img/us/sf/places/moscone-center.jpg",
    "owning_dept_code": "ADM",
-   "n_documents": 4,
+   "n_documents": 6,
+   "n_contracts": 1
+  },
+  {
+   "slug": "muni-presidio-division",
+   "name": "Muni Presidio Division",
+   "kind": "Trolley yard",
+   "family": "transit",
+   "lat": 37.7859,
+   "lon": -122.4468,
+   "photo": "/img/us/sf/places/muni-presidio-division.jpg",
+   "owning_dept_code": "MTA",
+   "n_documents": 7,
    "n_contracts": 0
+  },
+  {
+   "slug": "muni-woods-division",
+   "name": "Muni Woods Division",
+   "kind": "Bus yard",
+   "family": "transit",
+   "lat": 37.7549,
+   "lon": -122.3906,
+   "photo": "/img/us/sf/places/muni-woods-division.jpg",
+   "owning_dept_code": "MTA",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "next-door-shelter",
+   "name": "Next Door Shelter",
+   "kind": "Civic building",
+   "family": "civic",
+   "lat": 37.786116,
+   "lon": -122.420049,
+   "photo": "/img/us/sf/places/next-door-shelter.jpg",
+   "owning_dept_code": "POL",
+   "n_documents": 3,
+   "n_contracts": 0
+  },
+  {
+   "slug": "noe-valley-town-square",
+   "name": "Noe Valley Town Square",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.751378,
+   "lon": -122.428938,
+   "photo": "/img/us/sf/places/noe-valley-town-square.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "north-beach-branch-library",
+   "name": "North Beach Branch Library",
+   "kind": "Branch library",
+   "family": "library",
+   "lat": 37.802,
+   "lon": -122.4146,
+   "photo": "/img/us/sf/places/north-beach-branch-library.jpg",
+   "owning_dept_code": "LIB",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "ocean-park-health-center",
+   "name": "Ocean Park Health Center",
+   "kind": "Health facility",
+   "family": "health",
+   "lat": 37.762347,
+   "lon": -122.482676,
+   "photo": "/img/us/sf/places/ocean-park-health-center.jpg",
+   "owning_dept_code": "DPH",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "old-mint",
+   "name": "Old Mint",
+   "kind": "Civic building",
+   "family": "civic",
+   "lat": 37.782725,
+   "lon": -122.407233,
+   "photo": "/img/us/sf/places/old-mint.jpg",
+   "owning_dept_code": "ADM",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "palace-of-fine-arts",
+   "name": "Palace of Fine Arts",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.803221,
+   "lon": -122.448732,
+   "photo": "/img/us/sf/places/palace-of-fine-arts.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "pier-27",
+   "name": "Pier 27",
+   "kind": "Port facility",
+   "family": "port",
+   "lat": 37.804933,
+   "lon": -122.401343,
+   "photo": "/img/us/sf/places/pier-27.jpg",
+   "owning_dept_code": "PRT",
+   "n_documents": 4,
+   "n_contracts": 2
   },
   {
    "slug": "pier-39",
@@ -205,7 +781,19 @@
    "lon": -122.4098,
    "photo": "/img/us/sf/places/pier-39.jpg",
    "owning_dept_code": "PRT",
-   "n_documents": 4,
+   "n_documents": 9,
+   "n_contracts": 0
+  },
+  {
+   "slug": "pier-45",
+   "name": "Pier 45",
+   "kind": "Port facility",
+   "family": "port",
+   "lat": 37.81028,
+   "lon": -122.418091,
+   "photo": "/img/us/sf/places/pier-45.jpg",
+   "owning_dept_code": "PRT",
+   "n_documents": 7,
    "n_contracts": 0
   },
   {
@@ -217,7 +805,31 @@
    "lon": -122.3855,
    "photo": "/img/us/sf/places/pier-70.jpg",
    "owning_dept_code": "PRT",
-   "n_documents": 4,
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "pier-80",
+   "name": "Pier 80",
+   "kind": "Port facility",
+   "family": "port",
+   "lat": 37.749739,
+   "lon": -122.381238,
+   "photo": "/img/us/sf/places/pier-80.jpg",
+   "owning_dept_code": "PRT",
+   "n_documents": 6,
+   "n_contracts": 3
+  },
+  {
+   "slug": "pier-96",
+   "name": "Pier 96",
+   "kind": "Port facility",
+   "family": "port",
+   "lat": 37.743358,
+   "lon": -122.376987,
+   "photo": "/img/us/sf/places/pier-96.jpg",
+   "owning_dept_code": "PRT",
+   "n_documents": 5,
    "n_contracts": 0
   },
   {
@@ -229,8 +841,92 @@
    "lon": -122.4053,
    "photo": "/img/us/sf/places/portsmouth-square.jpg",
    "owning_dept_code": "REC",
+   "n_documents": 9,
+   "n_contracts": 3
+  },
+  {
+   "slug": "potrero-division",
+   "name": "Potrero Division",
+   "kind": "Civic building",
+   "family": "civic",
+   "lat": 37.76333,
+   "lon": -122.408793,
+   "photo": "/img/us/sf/places/potrero-division.jpg",
+   "owning_dept_code": "MTA",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "public-safety-building",
+   "name": "Public Safety Building",
+   "kind": "Civic building",
+   "family": "civic",
+   "lat": 37.772554,
+   "lon": -122.389183,
+   "photo": "/img/us/sf/places/public-safety-building.jpg",
+   "owning_dept_code": "POL",
    "n_documents": 4,
-   "n_contracts": 2
+   "n_contracts": 0
+  },
+  {
+   "slug": "randall-museum",
+   "name": "Randall Museum",
+   "kind": "Museum",
+   "family": "culture",
+   "lat": 37.7592,
+   "lon": -122.4374,
+   "photo": "/img/us/sf/places/randall-museum.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 4,
+   "n_contracts": 0
+  },
+  {
+   "slug": "richmond-branch-library",
+   "name": "Richmond Branch Library",
+   "kind": "Branch library",
+   "family": "library",
+   "lat": 37.7807,
+   "lon": -122.4664,
+   "photo": "/img/us/sf/places/richmond-branch-library.jpg",
+   "owning_dept_code": "LIB",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "sffd-division-of-training",
+   "name": "SFFD Division of Training",
+   "kind": "Training facility",
+   "family": "fire",
+   "lat": 37.823,
+   "lon": -122.371,
+   "photo": "/img/us/sf/places/sffd-division-of-training.jpg",
+   "owning_dept_code": "FIR",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "sffd-station-1",
+   "name": "SFFD Station 1",
+   "kind": "Fire station",
+   "family": "fire",
+   "lat": 37.7796,
+   "lon": -122.4045,
+   "photo": "/img/us/sf/places/sffd-station-1.jpg",
+   "owning_dept_code": "FIR",
+   "n_documents": 7,
+   "n_contracts": 0
+  },
+  {
+   "slug": "sf-city-hall",
+   "name": "San Francisco City Hall",
+   "kind": "Civic building",
+   "family": "civic",
+   "lat": 37.7793,
+   "lon": -122.4193,
+   "photo": "/img/us/sf/places/sf-city-hall.jpg",
+   "owning_dept_code": "ADM",
+   "n_documents": 8,
+   "n_contracts": 1
   },
   {
    "slug": "sf-main-library",
@@ -241,8 +937,8 @@
    "lon": -122.4157,
    "photo": "/img/us/sf/places/sf-main-library.jpg",
    "owning_dept_code": "LIB",
-   "n_documents": 4,
-   "n_contracts": 1
+   "n_documents": 9,
+   "n_contracts": 17
   },
   {
    "slug": "san-francisco-zoo",
@@ -257,6 +953,66 @@
    "n_contracts": 0
   },
   {
+   "slug": "sharp-park",
+   "name": "Sharp Park",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.625504,
+   "lon": -122.486174,
+   "photo": "/img/us/sf/places/sharp-park.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "stern-grove",
+   "name": "Sigmund Stern Grove",
+   "kind": "Park / amphitheatre",
+   "family": "park",
+   "lat": 37.7357,
+   "lon": -122.4757,
+   "photo": "/img/us/sf/places/stern-grove.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 7,
+   "n_contracts": 1
+  },
+  {
+   "slug": "south-park",
+   "name": "South Park",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.781542,
+   "lon": -122.394015,
+   "photo": "/img/us/sf/places/south-park.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 7,
+   "n_contracts": 7
+  },
+  {
+   "slug": "southeast-health-center",
+   "name": "Southeast Health Center",
+   "kind": "Health center",
+   "family": "health",
+   "lat": 37.7346,
+   "lon": -122.3899,
+   "photo": "/img/us/sf/places/southeast-health-center.jpg",
+   "owning_dept_code": "DPH",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "southeast-treatment-plant",
+   "name": "Southeast Water Pollution Control Plant",
+   "kind": "Treatment plant",
+   "family": "water",
+   "lat": 37.739,
+   "lon": -122.3838,
+   "photo": "/img/us/sf/places/southeast-treatment-plant.jpg",
+   "owning_dept_code": "PUC",
+   "n_documents": 8,
+   "n_contracts": 5
+  },
+  {
    "slug": "sunol-water-temple",
    "name": "Sunol Water Temple",
    "kind": "Monument",
@@ -269,6 +1025,114 @@
    "n_contracts": 0
   },
   {
+   "slug": "sunset-branch-library",
+   "name": "Sunset Branch Library",
+   "kind": "Branch library",
+   "family": "library",
+   "lat": 37.7631,
+   "lon": -122.4759,
+   "photo": "/img/us/sf/places/sunset-branch-library.jpg",
+   "owning_dept_code": "LIB",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "sunset-reservoir",
+   "name": "Sunset Reservoir",
+   "kind": "Reservoir",
+   "family": "water",
+   "lat": 37.7523,
+   "lon": -122.4816,
+   "photo": "/img/us/sf/places/sunset-reservoir.jpg",
+   "owning_dept_code": "PUC",
+   "n_documents": 8,
+   "n_contracts": 0
+  },
+  {
+   "slug": "tom-waddell-clinic",
+   "name": "Tom Waddell Urban Health Clinic",
+   "kind": "Health center",
+   "family": "health",
+   "lat": 37.7818,
+   "lon": -122.4139,
+   "photo": "/img/us/sf/places/tom-waddell-clinic.jpg",
+   "owning_dept_code": "DPH",
+   "n_documents": 4,
+   "n_contracts": 0
+  },
+  {
+   "slug": "union-square",
+   "name": "Union Square",
+   "kind": "Plaza",
+   "family": "park",
+   "lat": 37.788,
+   "lon": -122.4074,
+   "photo": "/img/us/sf/places/union-square.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 9,
+   "n_contracts": 2
+  },
+  {
+   "slug": "university-mound-reservoir",
+   "name": "University Mound Reservoir",
+   "kind": "Reservoir",
+   "family": "water",
+   "lat": 37.7248,
+   "lon": -122.4033,
+   "photo": "/img/us/sf/places/university-mound-reservoir.jpg",
+   "owning_dept_code": "PUC",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "veterans-building",
+   "name": "Veterans Building (Herbst Theatre)",
+   "kind": "Civic building",
+   "family": "culture",
+   "lat": 37.7794,
+   "lon": -122.4211,
+   "photo": "/img/us/sf/places/veterans-building.jpg",
+   "owning_dept_code": "WAR",
+   "n_documents": 5,
+   "n_contracts": 0
+  },
+  {
+   "slug": "war-memorial-opera-house",
+   "name": "War Memorial Opera House",
+   "kind": "Opera house",
+   "family": "culture",
+   "lat": 37.7784,
+   "lon": -122.4207,
+   "photo": "/img/us/sf/places/war-memorial-opera-house.jpg",
+   "owning_dept_code": "WAR",
+   "n_documents": 7,
+   "n_contracts": 2
+  },
+  {
+   "slug": "washington-square",
+   "name": "Washington Square",
+   "kind": "Park",
+   "family": "park",
+   "lat": 37.8006,
+   "lon": -122.4103,
+   "photo": "/img/us/sf/places/washington-square.jpg",
+   "owning_dept_code": "REC",
+   "n_documents": 6,
+   "n_contracts": 0
+  },
+  {
+   "slug": "zuckerberg-sf-general-hospital",
+   "name": "Zuckerberg San Francisco General Hospital",
+   "kind": "Hospital",
+   "family": "health",
+   "lat": 37.7559,
+   "lon": -122.4048,
+   "photo": "/img/us/sf/places/zuckerberg-sf-general-hospital.jpg",
+   "owning_dept_code": "DPH",
+   "n_documents": 8,
+   "n_contracts": 23
+  },
+  {
    "slug": "de-young-museum",
    "name": "de Young Museum",
    "kind": "Museum",
@@ -277,7 +1141,7 @@
    "lon": -122.4687,
    "photo": "/img/us/sf/places/de-young-museum.jpg",
    "owning_dept_code": "FAM",
-   "n_documents": 7,
+   "n_documents": 8,
    "n_contracts": 0
   }
  ]

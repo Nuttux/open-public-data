@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.732402+00:00",
+ "generated_at": "2026-07-28T11:43:47.700957+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,155 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 2533,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 285729985.61,
+    "n_vouchers": 2481
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 490816.78,
+    "n_vouchers": 16
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 428798.3,
+    "n_vouchers": 28
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 8464.08,
+    "n_vouchers": 8
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 145221118.14,
+    "n_vouchers": 1453
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 5956786.37,
+    "n_vouchers": 99
+   },
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 778053.78,
+    "n_vouchers": 18
+   },
+   {
+    "code": "430170",
+    "label": "Interest Earned-Tax Refund",
+    "spend_class": "ledger",
+    "usd": 8464.08,
+    "n_vouchers": 8
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 12
+   },
+   {
+    "code": "430130",
+    "label": "Interest Earned - Loans-Leases",
+    "spend_class": "unclear",
+    "usd": -95671.0,
+    "n_vouchers": 25
+   },
+   {
+    "code": "463599",
+    "label": "Misc Public Health Revenue",
+    "spend_class": "unclear",
+    "usd": -334420.39,
+    "n_vouchers": 19
+   },
+   {
+    "code": "OTHER_REC",
+    "label": "Other Receivables",
+    "spend_class": "ledger",
+    "usd": -382592.0,
+    "n_vouchers": 26
+   }
+  ],
+  "n_categories": 9,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 18100034.64,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 18303145.92,
+    "n_vouchers": 197
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 29624.64,
+    "n_vouchers": 1
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Interest Earned-Tax Refund",
+    "spend_class": "ledger",
+    "usd": 8464.08,
+    "n_vouchers": 8
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Interest Earned - Loans-Leases",
+    "spend_class": "unclear",
+    "usd": -50974.0,
+    "n_vouchers": 12
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Receivables",
+    "spend_class": "ledger",
+    "usd": -190226.0,
+    "n_vouchers": 12
+   }
+  ]
+ },
+ "identity": {
+  "description": "Baker Places Inc is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under mental health and crisis intervention.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Baker Places Inc",
+  "ein": "941694551",
+  "ntee_code": "F990",
+  "ntee_label": "Mental health and crisis intervention",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/941694551",
+  "checked_at": "2026-07-27T23:36:02.240737+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000009940",

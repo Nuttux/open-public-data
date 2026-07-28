@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.726967+00:00",
+ "generated_at": "2026-07-28T11:43:47.691426+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -33,6 +33,154 @@
  "top_departments": [
   "HSA Human Services Agency"
  ],
+ "profile": {
+  "n_vouchers": 280,
+  "departments": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 1555116328.22,
+    "n_vouchers": 252
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 330978.0,
+    "n_vouchers": 9
+   },
+   {
+    "department": "DEC Dept of Early Childhood",
+    "department_code": "DEC",
+    "usd": 259560.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 17584.0,
+    "n_vouchers": 16
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 1175.4,
+    "n_vouchers": 1
+   },
+   {
+    "department": "WOM Status of Women",
+    "department_code": "WOM",
+    "usd": 11.43,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 6,
+  "categories": [
+   {
+    "code": "537810",
+    "label": "IHSS Ip Payments",
+    "spend_class": "purchase",
+    "usd": 1379432260.03,
+    "n_vouchers": 93
+   },
+   {
+    "code": "OTHR_OBLIG_AGNCY_FUN",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 174200783.15,
+    "n_vouchers": 115
+   },
+   {
+    "code": "REF_PAY",
+    "label": "Refunds Payable",
+    "spend_class": "ledger",
+    "usd": 664835.04,
+    "n_vouchers": 27
+   },
+   {
+    "code": "448998",
+    "label": "Prior Year State Revenue Adj",
+    "spend_class": "unclear",
+    "usd": 626375.0,
+    "n_vouchers": 3
+   },
+   {
+    "code": "440150",
+    "label": "CalStateDeptEd-Stage2ChildCare",
+    "spend_class": "unclear",
+    "usd": 259560.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "552410",
+    "label": "Payments To Other Govt",
+    "spend_class": "obligation",
+    "usd": 192075.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "552210",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 11242.0,
+    "n_vouchers": 9
+   },
+   {
+    "code": "UNEARN_GRANT_REV",
+    "label": "Unearned Grant/Subv Revenue",
+    "spend_class": "ledger",
+    "usd": 1175.4,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 10,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 212433298.25,
+  "n_recent_lines": 5,
+  "recent_lines": [
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "IHSS Ip Payments",
+    "spend_class": "purchase",
+    "usd": 190323681.0,
+    "n_vouchers": 6
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 22008016.86,
+    "n_vouchers": 16
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Refunds Payable",
+    "spend_class": "ledger",
+    "usd": 83874.39,
+    "n_vouchers": 4
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Prior Year State Revenue Adj",
+    "spend_class": "unclear",
+    "usd": 15811.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 1915.0,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

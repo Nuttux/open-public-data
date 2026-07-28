@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.732815+00:00",
+ "generated_at": "2026-07-28T11:43:47.701735+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -22,6 +22,56 @@
  "top_departments": [
   "DPW Public Works"
  ],
+ "profile": {
+  "n_vouchers": 71,
+  "departments": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 266808813.27,
+    "n_vouchers": 70
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 265847.9,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 266808813.27,
+    "n_vouchers": 70
+   },
+   {
+    "code": "530110",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 265847.9,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 2,
+  "counts_are_floor": false,
+  "recent_fy": 2023,
+  "recent_total_usd": 169117.17,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 169117.17,
+    "n_vouchers": 7
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

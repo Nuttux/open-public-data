@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.768205+00:00",
+ "generated_at": "2026-07-28T12:23:47.785153+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "muni-presidio-division",
@@ -49,86 +49,23 @@
   "items": [],
   "payees": [],
   "n_payees": 0,
-  "payees_total_paid": 0,
-  "permits": [
-   {
-    "description": "conversion of an assembly rm into an electronics shop for testing new eti trolley bus",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 614000.0,
-    "status": "complete",
-    "permit_date": "2001-10-02",
-    "permit_year": 2001
-   },
-   {
-    "description": "conversion of an assembly rm into an electronics shop for testing new eti trolley bus",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 614000.0,
-    "status": "complete",
-    "permit_date": "2001-10-02",
-    "permit_year": 2001
-   },
-   {
-    "description": "conversion of an assembly rm into an electronics shop for testing new eti trolley bus",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 614000.0,
-    "status": "complete",
-    "permit_date": "2001-10-02",
-    "permit_year": 2001
-   },
-   {
-    "description": "furnish and install new exhaust fan, new electrical conduits and wiring to power exhaust fan,new controls for exhaust fan, interloock with trailer a/c and provide a timed override switch, new condensor pump with piping to janitor's service sink, electrical conduit wire and cable data.wall/floor",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 400000.0,
-    "status": "complete",
-    "permit_date": "2021-01-21",
-    "permit_year": 2021
-   },
-   {
-    "description": "replacement of overhead rollup doors, replacement of bus lifts, replacement of swing gates",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 365000.0,
-    "status": "complete",
-    "permit_date": "2020-01-09",
-    "permit_year": 2020
-   },
-   {
-    "description": "barrier removal at 1 existing mens restroom and repair of exhaust fan. new plumbing fixtures. toilet partitions, and toilet accessories and finishes",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 244000.0,
-    "status": "complete",
-    "permit_date": "2018-05-02",
-    "permit_year": 2018
-   }
-  ],
-  "n_permits": 7,
-  "permits_total_declared": 2871000.0,
-  "permits_by_year": [
-   {
-    "year": 2001,
-    "declared_usd": 1842000.0
-   },
-   {
-    "year": 2015,
-    "declared_usd": 20000.0
-   },
-   {
-    "year": 2018,
-    "declared_usd": 244000.0
-   },
-   {
-    "year": 2020,
-    "declared_usd": 365000.0
-   },
-   {
-    "year": 2021,
-    "declared_usd": 400000.0
-   }
-  ]
+  "payees_total_paid": 0
  },
- "photo": null,
- "photo_credit": null,
- "summary_en": null,
- "published": false,
+ "photo": "/img/us/sf/places/muni-presidio-division.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/muni-presidio-division.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Muni_776_at_Presidio_Division,_July_2022.JPG",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Pi.1415926535",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T22:59:13.253481+00:00"
+ },
+ "summary_en": "Muni's Presidio Division at 949 Presidio Avenue has faced the same question for half a century: expand it, or move it. A 1975 regional transit study proposed six new or rebuilt divisions at a capital cost of $17.3 million, with Presidio to get improved trolley-coach accommodation and modernised Muni general offices; the same study notes that the central radio control room here housed the railway's main supervisory control facilities. In 1978 the Public Utilities Commission heard that Muni staff had opted to enlarge Presidio for both bus maintenance and office space instead of acquiring the U.S. Steel property — and then that a third alternative had emerged within days, involving underground facilities leased back from the federal government at the beach. The Budget Analyst's 1996 management audit of Muni put the question flatly: should the Presidio Division trolley facility be expanded at 949 Presidio, or relocated to free the site for revenue-generating development? Meanwhile the yard kept working. The commission approved a $22,019 modification to the division's heating and ventilation contract in 1988 and put shop-door rehabilitation out to bid; in 2001 an assembly room was converted, at $614,000, into an electronics shop for testing the new ETI trolley buses; and recent permits cover bus lifts, roll-up doors and an accessible restroom.",
+ "published": true,
  "money": {
   "budget_line": {
    "code": "MTA",
@@ -147,6 +84,97 @@
   "grants": []
  },
  "documents": [
+  {
+   "identifier": "managementaudito1996budg",
+   "title": "Management audit of the San Francisco Municipal Railway",
+   "creator": "Budget Analyst of the City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "ocr_excerpts": [
+    "ponent repair facility? • What other MUNI facilities should and could be located at Islais Creek? What is the optimum mix of uses for this site? BOARD OF SUPERVISORS BUDGET ANALYST Rudolf Nothenberg, President and Members of the Public Transportation Commission July 11, 1996 Page 28 • Should the Presidio Division trolley facility be expanded at 949 Presidio, or relocated to facilitate revenue-generating development at this site. Are there potential sites for such a relocation? • Where should the planned Metro East light rail vehicle facility be located? Depending upon the site selected, how soon will MUNI have",
+    "11 Cable Car Division Office Assistant 1 Starter 1 2 Potrero Division Yard Assistant 4 Manager's Office 1 Clerk 2 Clerk /Yard Assistant 1 Paymaster/Yard Assistant 1 Transfer Collection 2 Receiver 1 Shop Assistant 1 13 Flynn Division 5 Green Division 4 Kirkland Division 6 Presidio Division 3 Woods Division 9 Total 53 I Office of the Budget Analyst 79 Section 2.1 Special Duty Operators The SDO duties at the Potrero Division are representative of the types of duties performed at the other transit divisions, excluding the Cable Car Division. In addition to the two SDO pos",
+    "alent Location By Fay Period and Total Positions #5 #6 #7 Total DPT Headquarters 754 956 880 2,590 11.2 Cable Car Division 530 600 554 1,684 7.3 Flynn Division 547 535 774 1,856 8.1 Green Division 1,078 1377 1,286 3,741 16.3 Kirkland Division 609 524 574 1,707 7.4 Presidio Division 533 412 575 1,520 6.6 Potrero Division 1396 1,330 1,277 4,003 17.4 Woods Division 740 1.137 1.313 3.190 13.9 Total 6,187 6,871 7,233 20,291 88.2 Office of the Budget Analyst 80 Section 2.1 Special Duty Operators Approximately seven SDO assignments are for Union representat",
+    "Municipal Railway - April 5, 1996 Morning Afternoon Location Full time Part time Full time Part time Total Cable Car Division 0 0 2 0 2 Flynn Division 1 0 20 2 23 Green (Metro) Division 7 2 8 4 21 Kirkland Division 2 1 6 0 9 Potrero Division 10 0 25 0 35 Presidio Division 5 1 8 2 16 Woods Division 1 10 Q 14 Total 28 5 79 8 120 Office of the Budget Analyst 81 Section 2.1 Special Duty Operators As shown in the table above, on the morning of April 5, 1996, the Potrero Division reported a total of 10 transit line runs which were not dispatched",
+    "to accommodate both Boeing and Breda vehicles. • Existing facilities can not accommodate Bayshore Corridor expansion. Deferred Projects: • Metro East LRV Facility, to be located in Mission Bay, on 3rd Street, at Hunter's Point or at Breda assembly plant on Pier 80. Trolley Cars Potrero Division, Presidio Division • Presidio Division has no maintenance bays for articulated trolleys, which will comprise 38 percent of the trolley fleet by 1999. • Potrero Division renovation was poorly designed. Needs furth"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 3.21,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.71,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 6.5,
+    "money": true,
+    "decision": false,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/managementaudito1996budg",
+   "deep_link": "https://archive.org/details/managementaudito1996budg?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "audit",
+   "doc_type_label": "Audit",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Audit",
+   "salient": true,
+   "gloss": "A management audit of Muni asking whether the trolley facility should be expanded at 949 Presidio or moved to free the site."
+  },
+  {
+   "identifier": "coordinatedtrans1967simp",
+   "title": "Coordinated transit for the San Francisco Bay area--now to 1975 ; final report of Northern California Transit Demonstration Project",
+   "creator": "Simpson & Curtin, Inc.",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Trolley Coach Division",
+   "ocr_excerpts": [
+    "ed. Six new or rebuilt divisions are pro- posed at a capital cost of $17.3 million: • Kirkland Division — New garage and office facili- ties; • Ocean Division — New two-level storage and serv- ice facilities; • Potrero Division — Convert existing trolley coach structure to motor coach service operation; • Presidio Division — Improve existing trolley coach service accommodations and modernize Muni general offices; • Automotive Overhaul Shop — New two-story struc- ture for motor overhaul, body and paint shops, etc.; • Rail Service Facility — An underground installation with storage yard, servicing, repair and overhaul facilities",
+    "ma- chining, especially for White buses, PCC streetcars and trolley coaches. 4. Signal and Control Systems. Speed control and safety are provided for by two-aspect block signals in Twin Peaks and Sunset Tunnels; the cable car system has four types of signals; and the central radio control room at Presidio Division houses the main supervisory control facilities. All equipment signal systems are elemen- tary and adeqaute for the present opera- tion. 5. Powerplant and Substation Equipment. Muni presently operates and maintains seven substations and the power distribu- tion systems for trolley coaches and streetcars.",
+    "present complex for rail car shops and barn at Ocean-Geneva-Elkton, made available by relocation of rail service to the new Twin Peaks Subway. • Potrero Motor Coach Division requires modification to the existing adequate structure for conversion to motor coach service from present trolley coach use. • Presidio Trolley Coach Division needs improvements to existing facilities, and refurbishing of Muni General Offices with new partitions, fenestration, floor- ing, lighting and Geary Street entrance with elevators. • Automotive Overhaul Shop at 24th and Utah should be provided with a new double deck structure for enlargement of overhaul,",
+    "the AC Transit operation. Recommended improvements in Muni mainte- nance facilities include : • Kirkland Division— New garage and office facilities; • Ocean Division— New two-level storage and service facilities; • Potrero Division— Convert existing trolley coach structure to motor coach service operation; • Presidio Division— Improve existing trolley coach service accommodations and modernize Muni general offices; • Automotive Overhaul Shop— New two-story structure with improved accommodations for motor overhaul, body and paint shops, store- room and offices; • Rail Service Facility— An underground installa- tion with storage yard"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 2.49,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.49,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/coordinatedtrans1967simp",
+   "deep_link": "https://archive.org/details/coordinatedtrans1967simp?q=Presidio+Trolley+Coach+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "report",
+   "doc_type_label": "Report",
+   "doc_tier": 4,
+   "procedural": false,
+   "group": "Report",
+   "salient": true,
+   "gloss": "A regional transit study proposing $17.3m of division rebuilding, including modernised Muni offices at Presidio."
+  },
   {
    "identifier": "agendapublicutil1988sanf",
    "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
@@ -184,50 +212,13 @@
    "url": "https://archive.org/details/agendapublicutil1988sanf",
    "deep_link": "https://archive.org/details/agendapublicutil1988sanf?q=Presidio+Division",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "3minutes1978sanf",
-   "title": "Minutes",
-   "creator": "San Francisco Public Utilities Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Presidio Division",
-   "ocr_excerpts": [
-    "y, San Francisco Water Department, Hetch Hetchy Water and Power, 1978-79 through 1982-1983. Mr. Wentz stated that the Municipal Railway budget does reflect capital improvements for the current year. He said at the time the program was prepared it appeared that Muni staff had opted for enlarging the Presidio Division for both bus maintenance and office space in lieu of the U.S. Steel property and the Muni Metro Center. It now appears there is a difference of opinion among Muni staff as to which might be the best plan. Mr. Wentz requested three or four months for staff to make an analysis of the alternati",
-    "the meantime., he said, a submis- sion must be made to MTC. He suggested that the Commission report the current funding plan for the U.S. Steel property and for office space at the Muni Metro Center, which has already been approved by MTC and UMTA. If it is subsequently decided to enlarge the Presidio Division, a change in the submission to MTC will have to be executed . Mr. Wentz stated that within the past ♦••-o or three days a third alternative has emerged. This involves a possible lease back with the Federal Government (GGNRA) of some property at the beach. Facilities would be underground. Staff",
-    "IC and the $14 million is already programmed. Mr. Larry Martin, President, TWU Local 2 50 -A said the bathrooms will be down town with off street parking, which makes them expensive. Following discussion among Commission and staff, Commissioner McCrea requested that staff prepare an evaluation of the Presidio Division, Woods Division and U.S. Steel property in order to solve the storage problem in the next five years. He said sufficient contacts should be made with neighborhood groups so that part of the analysis is an assessment of probable neighborhood reaction. Commissioner Pilcher moved to adopt the Municipa",
-    "etermined essential to retain and/or replace the Kirkland facility if Muni goes ahead with another facility. Mr. Green stated it was recommended that Muni not go ahead with the U.S. Steel facility, and that Kirkland be retail Mr. Matoff added that space provided by the U.S. Ste^l facility and the Presidio Division would not be large enough to warrant closing Kirkland. There are six operating divisions, and thi from which diesels would be operated. Mr. Green stated that a study has concluded that Muni needs a of two diesel divisions. A property was sought to replace Kirkland, but all potential sites were",
-    "is already in a semi-industrial area, and it is fully enclosed. There are disadvantages. Tiie U.S. Steel site is not largy enough to replace Kirkland, and that would mean operating seven (7) divisions. The site is further away from lines causing the most expense in dead head time. Use of the Presidio division site involves adding a second deck, which wo"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.88,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 0.38,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": -1.25,
-    "money": true,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/3minutes1978sanf",
-   "deep_link": "https://archive.org/details/3minutes1978sanf?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Utilities Commission agendas approving a $22,019 HVAC modification and a bid call for the division's shop doors."
   },
   {
    "identifier": "bidcontractoppor1987sanf",
@@ -267,8 +258,13 @@
    "url": "https://archive.org/details/bidcontractoppor1987sanf",
    "deep_link": "https://archive.org/details/bidcontractoppor1987sanf?q=Presidio+Division",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false,
+   "gloss": "A purchasing bulletin locating a management-training contract at the division, 949 Presidio Avenue."
   },
   {
    "identifier": "munimemo1984sanf",
@@ -307,89 +303,59 @@
    "url": "https://archive.org/details/munimemo1984sanf",
    "deep_link": "https://archive.org/details/munimemo1984sanf?q=Presidio+Division",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false,
+   "gloss": "Muni's staff paper, with the division's electrical maintenance shop and an award ceremony held in its shops."
   },
   {
-   "identifier": "managementaudito1996budg",
-   "title": "Management audit of the San Francisco Municipal Railway",
-   "creator": "Budget Analyst of the City and County of San Francisco",
+   "identifier": "3minutes1978sanf",
+   "title": "Minutes",
+   "creator": "San Francisco Public Utilities Commission",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Presidio Division",
    "ocr_excerpts": [
-    "ponent repair facility? • What other MUNI facilities should and could be located at Islais Creek? What is the optimum mix of uses for this site? BOARD OF SUPERVISORS BUDGET ANALYST Rudolf Nothenberg, President and Members of the Public Transportation Commission July 11, 1996 Page 28 • Should the Presidio Division trolley facility be expanded at 949 Presidio, or relocated to facilitate revenue-generating development at this site. Are there potential sites for such a relocation? • Where should the planned Metro East light rail vehicle facility be located? Depending upon the site selected, how soon will MUNI have",
-    "11 Cable Car Division Office Assistant 1 Starter 1 2 Potrero Division Yard Assistant 4 Manager's Office 1 Clerk 2 Clerk /Yard Assistant 1 Paymaster/Yard Assistant 1 Transfer Collection 2 Receiver 1 Shop Assistant 1 13 Flynn Division 5 Green Division 4 Kirkland Division 6 Presidio Division 3 Woods Division 9 Total 53 I Office of the Budget Analyst 79 Section 2.1 Special Duty Operators The SDO duties at the Potrero Division are representative of the types of duties performed at the other transit divisions, excluding the Cable Car Division. In addition to the two SDO pos",
-    "alent Location By Fay Period and Total Positions #5 #6 #7 Total DPT Headquarters 754 956 880 2,590 11.2 Cable Car Division 530 600 554 1,684 7.3 Flynn Division 547 535 774 1,856 8.1 Green Division 1,078 1377 1,286 3,741 16.3 Kirkland Division 609 524 574 1,707 7.4 Presidio Division 533 412 575 1,520 6.6 Potrero Division 1396 1,330 1,277 4,003 17.4 Woods Division 740 1.137 1.313 3.190 13.9 Total 6,187 6,871 7,233 20,291 88.2 Office of the Budget Analyst 80 Section 2.1 Special Duty Operators Approximately seven SDO assignments are for Union representat",
-    "Municipal Railway - April 5, 1996 Morning Afternoon Location Full time Part time Full time Part time Total Cable Car Division 0 0 2 0 2 Flynn Division 1 0 20 2 23 Green (Metro) Division 7 2 8 4 21 Kirkland Division 2 1 6 0 9 Potrero Division 10 0 25 0 35 Presidio Division 5 1 8 2 16 Woods Division 1 10 Q 14 Total 28 5 79 8 120 Office of the Budget Analyst 81 Section 2.1 Special Duty Operators As shown in the table above, on the morning of April 5, 1996, the Potrero Division reported a total of 10 transit line runs which were not dispatched",
-    "to accommodate both Boeing and Breda vehicles. • Existing facilities can not accommodate Bayshore Corridor expansion. Deferred Projects: • Metro East LRV Facility, to be located in Mission Bay, on 3rd Street, at Hunter's Point or at Breda assembly plant on Pier 80. Trolley Cars Potrero Division, Presidio Division • Presidio Division has no maintenance bays for articulated trolleys, which will comprise 38 percent of the trolley fleet by 1999. • Potrero Division renovation was poorly designed. Needs furth"
+    "y, San Francisco Water Department, Hetch Hetchy Water and Power, 1978-79 through 1982-1983. Mr. Wentz stated that the Municipal Railway budget does reflect capital improvements for the current year. He said at the time the program was prepared it appeared that Muni staff had opted for enlarging the Presidio Division for both bus maintenance and office space in lieu of the U.S. Steel property and the Muni Metro Center. It now appears there is a difference of opinion among Muni staff as to which might be the best plan. Mr. Wentz requested three or four months for staff to make an analysis of the alternati",
+    "the meantime., he said, a submis- sion must be made to MTC. He suggested that the Commission report the current funding plan for the U.S. Steel property and for office space at the Muni Metro Center, which has already been approved by MTC and UMTA. If it is subsequently decided to enlarge the Presidio Division, a change in the submission to MTC will have to be executed . Mr. Wentz stated that within the past ♦••-o or three days a third alternative has emerged. This involves a possible lease back with the Federal Government (GGNRA) of some property at the beach. Facilities would be underground. Staff",
+    "IC and the $14 million is already programmed. Mr. Larry Martin, President, TWU Local 2 50 -A said the bathrooms will be down town with off street parking, which makes them expensive. Following discussion among Commission and staff, Commissioner McCrea requested that staff prepare an evaluation of the Presidio Division, Woods Division and U.S. Steel property in order to solve the storage problem in the next five years. He said sufficient contacts should be made with neighborhood groups so that part of the analysis is an assessment of probable neighborhood reaction. Commissioner Pilcher moved to adopt the Municipa",
+    "etermined essential to retain and/or replace the Kirkland facility if Muni goes ahead with another facility. Mr. Green stated it was recommended that Muni not go ahead with the U.S. Steel facility, and that Kirkland be retail Mr. Matoff added that space provided by the U.S. Ste^l facility and the Presidio Division would not be large enough to warrant closing Kirkland. There are six operating divisions, and thi from which diesels would be operated. Mr. Green stated that a study has concluded that Muni needs a of two diesel divisions. A property was sought to replace Kirkland, but all potential sites were",
+    "is already in a semi-industrial area, and it is fully enclosed. There are disadvantages. Tiie U.S. Steel site is not largy enough to replace Kirkland, and that would mean operating seven (7) divisions. The site is further away from lines causing the most expense in dead head time. Use of the Presidio division site involves adding a second deck, which wo"
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 3.21,
-    "sf_context": false,
+    "score": 5.88,
+    "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
     "substantive": false,
     "substantive_direct": true,
     "hits": 5,
-    "density": 0.71,
+    "density": 0.38,
     "title_hit": false
    },
    "materiality": {
-    "score": 6.5,
+    "score": -1.25,
     "money": true,
-    "decision": false,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/managementaudito1996budg",
-   "deep_link": "https://archive.org/details/managementaudito1996budg?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "coordinatedtrans1967simp",
-   "title": "Coordinated transit for the San Francisco Bay area--now to 1975 ; final report of Northern California Transit Demonstration Project",
-   "creator": "Simpson & Curtin, Inc.",
-   "year": 1975,
-   "pool": "sfpl",
-   "matched_alias": "Presidio Trolley Coach Division",
-   "ocr_excerpts": [
-    "ed. Six new or rebuilt divisions are pro- posed at a capital cost of $17.3 million: • Kirkland Division — New garage and office facili- ties; • Ocean Division — New two-level storage and serv- ice facilities; • Potrero Division — Convert existing trolley coach structure to motor coach service operation; • Presidio Division — Improve existing trolley coach service accommodations and modernize Muni general offices; • Automotive Overhaul Shop — New two-story struc- ture for motor overhaul, body and paint shops, etc.; • Rail Service Facility — An underground installation with storage yard, servicing, repair and overhaul facilities",
-    "ma- chining, especially for White buses, PCC streetcars and trolley coaches. 4. Signal and Control Systems. Speed control and safety are provided for by two-aspect block signals in Twin Peaks and Sunset Tunnels; the cable car system has four types of signals; and the central radio control room at Presidio Division houses the main supervisory control facilities. All equipment signal systems are elemen- tary and adeqaute for the present opera- tion. 5. Powerplant and Substation Equipment. Muni presently operates and maintains seven substations and the power distribu- tion systems for trolley coaches and streetcars.",
-    "present complex for rail car shops and barn at Ocean-Geneva-Elkton, made available by relocation of rail service to the new Twin Peaks Subway. • Potrero Motor Coach Division requires modification to the existing adequate structure for conversion to motor coach service from present trolley coach use. • Presidio Trolley Coach Division needs improvements to existing facilities, and refurbishing of Muni General Offices with new partitions, fenestration, floor- ing, lighting and Geary Street entrance with elevators. • Automotive Overhaul Shop at 24th and Utah should be provided with a new double deck structure for enlargement of overhaul,",
-    "the AC Transit operation. Recommended improvements in Muni mainte- nance facilities include : • Kirkland Division— New garage and office facilities; • Ocean Division— New two-level storage and service facilities; • Potrero Division— Convert existing trolley coach structure to motor coach service operation; • Presidio Division— Improve existing trolley coach service accommodations and modernize Muni general offices; • Automotive Overhaul Shop— New two-story structure with improved accommodations for motor overhaul, body and paint shops, store- room and offices; • Rail Service Facility— An underground installa- tion with storage yard"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 2.49,
-    "sf_context": false,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.49,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
+    "decision": true,
     "accountability": false,
     "contestation": false,
     "named_genre": false,
-    "generic_serial": false
+    "generic_serial": true
    },
-   "url": "https://archive.org/details/coordinatedtrans1967simp",
-   "deep_link": "https://archive.org/details/coordinatedtrans1967simp?q=Presidio+Trolley+Coach+Division",
+   "url": "https://archive.org/details/3minutes1978sanf",
+   "deep_link": "https://archive.org/details/3minutes1978sanf?q=Presidio+Division",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes weighing enlargement of the division against buying the U.S. Steel property."
   },
   {
    "identifier": "trolleytopics19501952sanf",
@@ -429,8 +395,13 @@
    "url": "https://archive.org/details/trolleytopics19501952sanf",
    "deep_link": "https://archive.org/details/trolleytopics19501952sanf?q=Presidio+Division",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false,
+   "gloss": "A railway staff magazine listing the trolley-coach lines the division ran, and welcoming its new operators."
   }
  ],
  "dept_shelf": [
@@ -469,9 +440,9 @@
   }
  ],
  "_gate": {
-  "has_photo": false,
+  "has_photo": true,
   "n_documents": 7,
   "n_money_links": 1,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

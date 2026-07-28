@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.742354+00:00",
+ "generated_at": "2026-07-28T11:43:47.717448+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,10 +36,80 @@
  "top_departments": [
   "DPW GSA - Public Works"
  ],
+ "profile": {
+  "n_vouchers": 889,
+  "departments": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 125685662.81,
+    "n_vouchers": 841
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 2790537.6,
+    "n_vouchers": 47
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 2494.4,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 3,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 70508121.2,
+    "n_vouchers": 370
+   },
+   {
+    "code": "201670",
+    "label": "Liens Payable",
+    "spend_class": "unclear",
+    "usd": 43174.41,
+    "n_vouchers": 3
+   },
+   {
+    "code": "536530",
+    "label": "Extended Sick Leave Benefits",
+    "spend_class": "unclear",
+    "usd": 2494.4,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 15
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 5988692.22,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 5988692.22,
+    "n_vouchers": 41
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000035743",
-   "title": "YGC Boiler RPLCMNT PRJ",
+   "title": "YGC Boiler RPLCMNT Project",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 576139.0,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.726184+00:00",
+ "generated_at": "2026-07-28T11:43:47.690168+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -31,6 +31,138 @@
  "top_departments": [
   "HSS Health Service System"
  ],
+ "profile": {
+  "n_vouchers": 3504,
+  "departments": [
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "usd": 3630890870.06,
+    "n_vouchers": 3497
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 1961.64,
+    "n_vouchers": 7
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "556140",
+    "label": "B Flx Medical-Claims Paid",
+    "spend_class": "obligation",
+    "usd": 1888728371.96,
+    "n_vouchers": 1488
+   },
+   {
+    "code": "556120",
+    "label": "B Flx Medical Capitation",
+    "spend_class": "obligation",
+    "usd": 740758784.6,
+    "n_vouchers": 255
+   },
+   {
+    "code": "556130",
+    "label": "B Flx Claims Paid",
+    "spend_class": "obligation",
+    "usd": 668243186.3,
+    "n_vouchers": 1251
+   },
+   {
+    "code": "556150",
+    "label": "Medical-Health Plan Providers",
+    "spend_class": "obligation",
+    "usd": 179138747.54,
+    "n_vouchers": 18
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 166806156.79,
+    "n_vouchers": 278
+   },
+   {
+    "code": "465305",
+    "label": "Private Insurance O-PGrossChrg",
+    "spend_class": "unclear",
+    "usd": 1415.15,
+    "n_vouchers": 5
+   },
+   {
+    "code": "UNEARN_REV_CHGS_SVCS",
+    "label": "Unearned Revenue-Chgs for Svcs",
+    "spend_class": "ledger",
+    "usd": 546.49,
+    "n_vouchers": 2
+   },
+   {
+    "code": "473300",
+    "label": "Employee PosttaxCityPlan-Cobra",
+    "spend_class": "unclear",
+    "usd": -34594.32,
+    "n_vouchers": 3
+   }
+  ],
+  "n_categories": 12,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 493032806.49,
+  "n_recent_lines": 7,
+  "recent_lines": [
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "B Flx Medical-Claims Paid",
+    "spend_class": "obligation",
+    "usd": 262444818.01,
+    "n_vouchers": 218
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "B Flx Claims Paid",
+    "spend_class": "obligation",
+    "usd": 98712915.96,
+    "n_vouchers": 201
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "B Flx Medical Capitation",
+    "spend_class": "obligation",
+    "usd": 87207612.16,
+    "n_vouchers": 28
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Medical-Health Plan Providers",
+    "spend_class": "obligation",
+    "usd": 48741490.81,
+    "n_vouchers": 5
+   },
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 20089622.03,
+    "n_vouchers": 37
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Private Insurance O-PGrossChrg",
+    "spend_class": "unclear",
+    "usd": 505.41,
+    "n_vouchers": 3
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

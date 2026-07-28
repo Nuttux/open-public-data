@@ -235,7 +235,7 @@ export function availableFiscalYears(byYear: SfBudgetByYear): number[] {
 
 // ─── Fiche assembly (dept / character drawers) ──────────────────────────────
 
-import { characterCodeFromSlug, deptCodeFromSlug } from "./sf-budget-slugs";
+import { characterCodeFromSlug, deptCodeFromSlug, serviceSlug } from "./sf-budget-slugs";
 
 export type SfSide = "spending" | "revenue";
 
@@ -250,6 +250,15 @@ export type SfDeptFicheData = {
   spending: SfDeptSideBlock | null;
   revenue: SfDeptSideBlock | null;
   bva: (SfBvaDeptRow & { fiscal_year: number }) | null;
+  /** Every comparable budget-vs-actual year for this department, oldest
+   *  first. The export carries the full coverage window; the fiche used to
+   *  show a single year of it. */
+  bvaSeries: Array<{
+    fiscal_year: number;
+    budget_usd: number | null;
+    actual_usd: number | null;
+    residual_pct: number | null;
+  }>;
   source: SfSourceBlock;
   as_of: string | null;
 };
@@ -314,12 +323,31 @@ export function loadSfDeptFiche(slug: string, fy: number): SfDeptFicheData | nul
 
   // Latest closed-year budget-vs-actual row for this department (Spending).
   let bva: SfDeptFicheData["bva"] = null;
+  let bvaSeries: SfDeptFicheData["bvaSeries"] = [];
   try {
     const bvaDepts = loadSfBvaDepartments();
     const years = bvaDepts.coverage.fiscal_years.slice().sort((a, b) => b - a);
     const bvaFy = years.includes(fy) ? fy : years[0];
     const row = bvaDepts.years[String(bvaFy)]?.spending.find((d) => d.code === code);
     if (row) bva = { ...row, fiscal_year: bvaFy };
+    // Full execution history — same rows, every covered year. Only
+    // comparable years are kept: a non-comparable year would put a bar
+    // next to the others that does not mean the same thing.
+    bvaSeries = bvaDepts.coverage.fiscal_years
+      .slice()
+      .sort((a, b) => a - b)
+      .map((y) => {
+        const r = bvaDepts.years[String(y)]?.spending.find((d) => d.code === code);
+        return r && r.is_comparable && r.budget_usd != null && r.actual_usd != null
+          ? {
+              fiscal_year: y,
+              budget_usd: r.budget_usd,
+              actual_usd: r.actual_usd,
+              residual_pct: r.residual_pct,
+            }
+          : null;
+      })
+      .filter((x): x is NonNullable<typeof x> => x !== null);
   } catch {
     /* bva export absent — fiche renders without the execution block */
   }
@@ -335,6 +363,7 @@ export function loadSfDeptFiche(slug: string, fy: number): SfDeptFicheData | nul
     spending: sideBlock(bd, "spending", code),
     revenue: sideBlock(bd, "revenue", code),
     bva,
+    bvaSeries,
     source: bd.source,
     as_of: bd.as_of,
   };
@@ -358,6 +387,103 @@ export type SfCharacterFicheData = {
   source: SfSourceBlock;
   as_of: string | null;
 };
+
+// ─── Service-area (organization group) fiche ───────────────────────────────
+// The top altitude of the org dimension: 7 service areas over 56 departments.
+// It exists as a fiche so the "by service" lens on /budget drills like every
+// other row instead of dead-ending in a picture.
+
+export type SfServiceFicheData = {
+  fiscal_year: number;
+  execution_status: SfExecutionStatus;
+  side: SfSide;
+  code: string;
+  label: string;
+  /** Net of the group's own transfer-adjustment lines, as exported. */
+  total_usd: number;
+  transfer_adjustment_usd: number;
+  share_of_side: number;
+  n_departments: number;
+  /** Departments in the group, sorted desc — shares are net/net, so valid. */
+  departments: {
+    code: string;
+    label: string;
+    display_name: string | null;
+    amount_usd: number;
+    share_of_group: number;
+    n_characters: number;
+  }[];
+  /** Positive character totals summed across the group's departments. These
+   *  are gross lines: no share is published against the net group total,
+   *  because the ratio would exceed 100 %. */
+  characters: { code: string; label: string; gloss: string | null; amount_usd: number }[];
+  /** Negative / transfer-adjustment cells, kept out of the bars. */
+  offsets: { code: string; label: string; gloss: string | null; amount_usd: number }[];
+  source: SfSourceBlock;
+  as_of: string | null;
+};
+
+export function loadSfServiceFiche(
+  slug: string,
+  fy: number,
+  sideHint?: SfSide,
+): SfServiceFicheData | null {
+  const bd = loadSfBudgetBreakdown(fy);
+  if (!bd || !bd.drill.available) return null;
+  const sides: SfSide[] = sideHint ? [sideHint] : ["spending", "revenue"];
+  for (const side of sides) {
+    const group =
+      bd.org_groups[side].find((g) => serviceSlug(g.label) === slug) ??
+      bd.org_groups[side].find((g) => g.code === slug);
+    if (!group) continue;
+
+    const deptRows = bd.departments[side]
+      .filter((d) => d.org_group_code === group.code)
+      .sort((a, b) => b.total_usd - a.total_usd);
+    const deptCodes = new Set(deptRows.map((d) => d.code));
+
+    const charIndex = new Map(bd.characters[side].map((c) => [c.code, c]));
+    const byChar = new Map<string, number>();
+    for (const [deptCode, charCode, amount] of bd.dept_characters[side]) {
+      if (!deptCodes.has(deptCode)) continue;
+      byChar.set(charCode, (byChar.get(charCode) ?? 0) + amount);
+    }
+    const characters: SfServiceFicheData["characters"] = [];
+    const offsets: SfServiceFicheData["offsets"] = [];
+    for (const [code, amount] of byChar) {
+      const meta = charIndex.get(code);
+      const item = { code, label: meta?.label ?? code, gloss: meta?.gloss ?? null, amount_usd: amount };
+      (amount < 0 ? offsets : characters).push(item);
+    }
+    characters.sort((a, b) => b.amount_usd - a.amount_usd);
+    offsets.sort((a, b) => a.amount_usd - b.amount_usd);
+
+    return {
+      fiscal_year: fy,
+      execution_status: bd.execution_status,
+      side,
+      code: group.code,
+      label: group.label,
+      total_usd: group.total_usd,
+      transfer_adjustment_usd: group.transfer_adjustment_usd,
+      share_of_side: group.share_of_side,
+      n_departments: group.n_departments,
+      departments: deptRows.map((d) => ({
+        code: d.code,
+        label: d.label,
+        display_name: d.display_name,
+        amount_usd: d.total_usd,
+        share_of_group: group.total_usd > 0 ? d.total_usd / group.total_usd : 0,
+        n_characters: d.n_characters,
+      })),
+      characters,
+      offsets,
+      source: bd.source,
+      as_of: bd.as_of,
+    };
+  }
+  return null;
+}
 
 // ─── budget_dept_detail_{fy}.json (third drill level: dept × character) ───
 
@@ -408,6 +534,10 @@ export type SfDeptCharacterDetailData = {
   side: SfSide;
   /** This dept × character cell's adopted-budget amount (from the breakdown mart). */
   amount_usd: number;
+  /** The whole department's amount on this side — lets the fiche state what
+   *  share of its department this category is, instead of re-printing the
+   *  department name the breadcrumb and lede already carry. */
+  dept_total_usd: number;
   /** Raw budget line items — same dataset as the rest of the page. */
   objects: SfDeptCharacterObjectRow[];
   /** Vendor payments (vouchers) matched to this cell — null where no voucher activity exists. */
@@ -462,6 +592,7 @@ export function loadSfDeptCharacterDetail(
       fiscal_year: fy,
       execution_status: bd.execution_status,
       dept: { code: deptCode, label: deptRow.label, display_name: deptRow.display_name },
+      dept_total_usd: deptRow.total_usd,
       character: { code: charCode, label: charRow.label, gloss: charRow.gloss },
       side,
       amount_usd: amount,

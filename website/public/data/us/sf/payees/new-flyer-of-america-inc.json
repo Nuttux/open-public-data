@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.727871+00:00",
+ "generated_at": "2026-07-28T11:43:47.692822+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,6 +35,107 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 1565,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 875321397.28,
+    "n_vouchers": 1565
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "560290",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 442382899.74,
+    "n_vouchers": 169
+   },
+   {
+    "code": "543310",
+    "label": "Vehicle Parts-Supplies",
+    "spend_class": "purchase",
+    "usd": 17967412.03,
+    "n_vouchers": 84
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 13167958.3,
+    "n_vouchers": 8
+   },
+   {
+    "code": "522020",
+    "label": "Training Costs Paid To Vendors",
+    "spend_class": "purchase",
+    "usd": 3273927.21,
+    "n_vouchers": 66
+   },
+   {
+    "code": "535710",
+    "label": "Subscriptions",
+    "spend_class": "unclear",
+    "usd": 2066080.8,
+    "n_vouchers": 5
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 971700.0,
+    "n_vouchers": 8
+   },
+   {
+    "code": "531990",
+    "label": "Other Equipment Rentals",
+    "spend_class": "purchase",
+    "usd": 386170.0,
+    "n_vouchers": 6
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 52812.6,
+    "n_vouchers": 1
+   },
+   {
+    "code": "529210",
+    "label": "Veh Maint (Non Central Shops)",
+    "spend_class": "purchase",
+    "usd": 4000.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 13,
+  "counts_are_floor": true,
+  "recent_fy": 2025,
+  "recent_total_usd": 566352.56,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Subscriptions",
+    "spend_class": "unclear",
+    "usd": 532800.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Training Costs Paid To Vendors",
+    "spend_class": "purchase",
+    "usd": 33552.56,
+    "n_vouchers": 8
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000034999",

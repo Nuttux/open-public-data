@@ -1,9 +1,52 @@
 {
- "generated_at": "2026-07-27T17:06:09.733989+00:00",
+ "generated_at": "2026-07-28T12:23:47.747983+00:00",
  "slug": "camp-mather",
  "name": "Camp Mather",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
+  {
+   "identifier": "civilgrandjuryre2002031cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "ocr_excerpts": [
+    "sferred to the Office of Contract Administration. REQUIRED RESPONSES HRC - 60 days Office of Contract Administration - 60 days Office of the Controller - 60 days Board of Supervisors - 90 days 14 A Report of the 2002-2003 Civil Grand Jury For the City and County of San Francisco SHARING CAMP MATHER, SAN FRANCISCO'S SECRET JEWEL, WITH ALL SAN FRANCISCANS Released June 2003 Reports of the Civil Grand Jury do not identify the individuals interviewed, pursuant to California Penal Code sec. 929. The California Legislature intended this provision to encourage full candor and cooperation by City and",
+    "for the officer or agency head to be prepared to discuss it (not exceeding six months from the release of this Report); or (4) the recommendation will not be implemented because it is not warranted or reasonable, with an explanation of why that is. (Cal. Penal Code, sees. 933, 933.05.) SHARING CAMP MATHER, SAN FRANCISCO'S SECRET JEWEL, WITH ALL SAN FRANCISCANS Summary of Recommendations 1 . Improve publicity and accessibility to Camp Mather. 2. Study and improve the usage of the Camp Mather facilities and grounds. OVERVIEW Camp Mather is a family camp located in Tuolumne County near the north entrance to Yosemite National Park. Located approximately 1 80 miles east of San Francisco at an elevation of 4,520 feet, Camp Mather is operated for San Francisco residents and their families by the San Francisco Recreation and Park Department (RPD). It has 90 rustic cabins and 20 tent sites, each able to accommodate up to six people, on approximately 400 acres. Full board, a camp store, and several recreational programs are provided for the campers. During a 12-week camping season, two weeks of which are reserved for seniors, approximately 6,000 persons, in 1 , 1 00 families, take advantage of the Camp Mather facilities. The camp can accommodate 529 people at each session. The number of applications for cabins and tent sites exceeds the available spaces. The privately run Strawberry Music Festival, draws another 1 0,000 people in total to Camp Mather on the Memorial Day and Labor Day weekends. Camp Mather is financially self-sufficient and. in past years, has contributed in excess of $300,000 annually to the RPD general fund. Camping fees and revenue from SMF and other concessions exceed the expense of operating Camp Mather. In a time of budget crisis, Camp Mather could produce additional revenue. Camp Mather was described several years ago in the press as \"the city's most carefully kept secret,\" one that most San Franciscans don't know exists. The location, lack of publicity, a complex application process, and failure to provide information about Camp Mather in languages other than English limit access to Camp Mather for many San Francisco residents. The Grand Jury define"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.5,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 7.25,
+    "money": true,
+    "decision": true,
+    "accountability": true,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/civilgrandjuryre2002031cali",
+   "deep_link": "https://archive.org/details/civilgrandjuryre2002031cali?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "investigation",
+   "doc_type_label": "Investigation",
+   "doc_tier": 1,
+   "procedural": false,
+   "group": "Investigation",
+   "salient": true,
+   "gloss": "The 2003 Civil Grand Jury report urging the city to open its \"secret jewel\" to more San Franciscans."
+  },
   {
    "identifier": "C124889945",
    "title": "San Francisco water & power : a history of the Municipal Water Department and Hetch Hetchy System",
@@ -40,8 +83,13 @@
    "url": "https://archive.org/details/C124889945",
    "deep_link": "https://archive.org/details/C124889945?q=Camp+Mather",
    "source_label": "Internet Archive — Democracy's Library",
-   "group": "Histories & surveys",
-   "salient": true
+   "doc_type": "history",
+   "doc_type_label": "History",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "History",
+   "salient": true,
+   "gloss": "A history of the Hetch Hetchy system, recording the end of sawmill operations at Hog Ranch — the site that became Camp Mather."
   },
   {
    "identifier": "annualreport195861sanf",
@@ -81,46 +129,13 @@
    "url": "https://archive.org/details/annualreport195861sanf",
    "deep_link": "https://archive.org/details/annualreport195861sanf?q=Camp+Mather",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "civilgrandjuryre2002031cali",
-   "title": "Civil Grand Jury reports",
-   "creator": "California. Grand Jury (San Francisco)",
-   "year": 1977,
-   "pool": "sfpl",
-   "matched_alias": "Camp Mather",
-   "ocr_excerpts": [
-    "sferred to the Office of Contract Administration. REQUIRED RESPONSES HRC - 60 days Office of Contract Administration - 60 days Office of the Controller - 60 days Board of Supervisors - 90 days 14 A Report of the 2002-2003 Civil Grand Jury For the City and County of San Francisco SHARING CAMP MATHER, SAN FRANCISCO'S SECRET JEWEL, WITH ALL SAN FRANCISCANS Released June 2003 Reports of the Civil Grand Jury do not identify the individuals interviewed, pursuant to California Penal Code sec. 929. The California Legislature intended this provision to encourage full candor and cooperation by City and",
-    "for the officer or agency head to be prepared to discuss it (not exceeding six months from the release of this Report); or (4) the recommendation will not be implemented because it is not warranted or reasonable, with an explanation of why that is. (Cal. Penal Code, sees. 933, 933.05.) SHARING CAMP MATHER, SAN FRANCISCO'S SECRET JEWEL, WITH ALL SAN FRANCISCANS Summary of Recommendations 1 . Improve publicity and accessibility to Camp Mather. 2. Study and improve the usage of the Camp Mather facilities and grounds. OVERVIEW Camp Mather is a family camp located in Tuolumne County near the north entrance to Yosemite National Park. Located approximately 1 80 miles east of San Francisco at an elevation of 4,520 feet, Camp Mather is operated for San Francisco residents and their families by the San Francisco Recreation and Park Department (RPD). It has 90 rustic cabins and 20 tent sites, each able to accommodate up to six people, on approximately 400 acres. Full board, a camp store, and several recreational programs are provided for the campers. During a 12-week camping season, two weeks of which are reserved for seniors, approximately 6,000 persons, in 1 , 1 00 families, take advantage of the Camp Mather facilities. The camp can accommodate 529 people at each session. The number of applications for cabins and tent sites exceeds the available spaces. The privately run Strawberry Music Festival, draws another 1 0,000 people in total to Camp Mather on the Memorial Day and Labor Day weekends. Camp Mather is financially self-sufficient and. in past years, has contributed in excess of $300,000 annually to the RPD general fund. Camping fees and revenue from SMF and other concessions exceed the expense of operating Camp Mather. In a time of budget crisis, Camp Mather could produce additional revenue. Camp Mather was described several years ago in the press as \"the city's most carefully kept secret,\" one that most San Franciscans don't know exists. The location, lack of publicity, a complex application process, and failure to provide information about Camp Mather in languages other than English limit access to Camp Mather for many San Francisco residents. The Grand Jury define"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 4.5,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 2,
-    "density": 0.5,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 7.25,
-    "money": true,
-    "decision": true,
-    "accountability": true,
-    "contestation": false,
-    "named_genre": true,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/civilgrandjuryre2002031cali",
-   "deep_link": "https://archive.org/details/civilgrandjuryre2002031cali?q=Camp+Mather",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "A Recreation and Park annual report counting 26,600 visits to the camp and describing its two pools."
   },
   {
    "identifier": "minutesrecreatio1967sanf",
@@ -159,9 +174,13 @@
    "url": "https://archive.org/details/minutesrecreatio1967sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1967sanf?q=Camp+Mather",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "5 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes setting the 1967 season's rates and awarding $13,887 to rebuild the camp's tennis courts."
   },
   {
    "identifier": "minutes199899sanf",
@@ -198,8 +217,13 @@
    "url": "https://archive.org/details/minutes199899sanf",
    "deep_link": "https://archive.org/details/minutes199899sanf?q=Camp+Mather",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes approving the first camp fee increase since 1995, to cover maintenance and repairs."
   }
  ]
 }

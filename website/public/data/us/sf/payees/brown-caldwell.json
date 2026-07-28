@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.736922+00:00",
+ "generated_at": "2026-07-28T11:43:47.708734+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -31,10 +31,81 @@
  "top_departments": [
   "PUB Public Utilities Bureaus"
  ],
+ "profile": {
+  "n_vouchers": 353,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 180409080.59,
+    "n_vouchers": 349
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 16774.8,
+    "n_vouchers": 4
+   }
+  ],
+  "n_departments": 2,
+  "categories": [
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 49228868.72,
+    "n_vouchers": 87
+   },
+   {
+    "code": "527080",
+    "label": "Construction Management Svcs",
+    "spend_class": "purchase",
+    "usd": 29338953.08,
+    "n_vouchers": 32
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 19310944.37,
+    "n_vouchers": 51
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 12401643.86,
+    "n_vouchers": 60
+   },
+   {
+    "code": "527010",
+    "label": "Architectural Services",
+    "spend_class": "purchase",
+    "usd": 5201062.36,
+    "n_vouchers": 9
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 9954780.39,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 9954780.39,
+    "n_vouchers": 18
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000000113",
-   "title": "Pl/Eng Sep Biosolid Digest",
+   "title": "Pl/Eng Southeast Plant Biosolid Digest",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 103271760.0,

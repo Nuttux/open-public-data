@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.732499+00:00",
+ "generated_at": "2026-07-28T11:43:47.701134+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,174 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 481304,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 283493417.73,
+    "n_vouchers": 481185
+   },
+   {
+    "department": "ADP Adult Probation",
+    "department_code": "ADP",
+    "usd": 73444.36,
+    "n_vouchers": 38
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "usd": 68491.14,
+    "n_vouchers": 9
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 35254.63,
+    "n_vouchers": 16
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 17008.4,
+    "n_vouchers": 8
+   },
+   {
+    "department": "DT  GSA - Technology",
+    "department_code": "TIS",
+    "usd": 10835.35,
+    "n_vouchers": 2
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 10358.06,
+    "n_vouchers": 5
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "DEM",
+    "usd": 7704.59,
+    "n_vouchers": 7
+   }
+  ],
+  "n_departments": 18,
+  "categories": [
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 82566361.0,
+    "n_vouchers": 119484
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 50332859.87,
+    "n_vouchers": 48638
+   },
+   {
+    "code": "544990",
+    "label": "Other Hosp, Clinics&Lab Supply",
+    "spend_class": "purchase",
+    "usd": 40703682.17,
+    "n_vouchers": 114181
+   },
+   {
+    "code": "544410",
+    "label": "Medical Supplies",
+    "spend_class": "purchase",
+    "usd": 22903031.96,
+    "n_vouchers": 28456
+   },
+   {
+    "code": "545990",
+    "label": "Other Safety Expenses",
+    "spend_class": "purchase",
+    "usd": 11256830.39,
+    "n_vouchers": 12186
+   },
+   {
+    "code": "544510",
+    "label": "Minor Medical Equipment",
+    "spend_class": "purchase",
+    "usd": 9730567.3,
+    "n_vouchers": 11146
+   },
+   {
+    "code": "549510",
+    "label": "Other Office Supplies",
+    "spend_class": "purchase",
+    "usd": 5807768.31,
+    "n_vouchers": 19866
+   },
+   {
+    "code": "544310",
+    "label": "Laboratory Supplies",
+    "spend_class": "purchase",
+    "usd": 4185560.3,
+    "n_vouchers": 3280
+   }
+  ],
+  "n_categories": 59,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 37010816.35,
+  "n_recent_lines": 32,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 9932429.09,
+    "n_vouchers": 9694
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Hosp, Clinics&Lab Supply",
+    "spend_class": "purchase",
+    "usd": 8184127.77,
+    "n_vouchers": 16930
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 6453141.77,
+    "n_vouchers": 4498
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Medical Supplies",
+    "spend_class": "purchase",
+    "usd": 4831792.76,
+    "n_vouchers": 5428
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Safety Expenses",
+    "spend_class": "purchase",
+    "usd": 2014440.75,
+    "n_vouchers": 2321
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Minor Medical Equipment",
+    "spend_class": "purchase",
+    "usd": 1602804.62,
+    "n_vouchers": 2006
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

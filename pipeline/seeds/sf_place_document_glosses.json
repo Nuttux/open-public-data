@@ -1,0 +1,792 @@
+{
+ "generated_at": "2026-07-28T12:23:47.818470+00:00",
+ "note": "Durable, version-controlled store of OCR-grounded one-line document glosses for every SF archive shelf. The scripts that rebuild those shelves (export_sf_places.py for places, link_sf_payees.py for payees) re-attach from here on every run, so a rebuild can never destroy them. Written by `export_sf_places.py --harvest-glosses`; edit by hand only if you have read the document's OCR.",
+ "n_by_kind": {
+  "place": 501,
+  "payee": 50
+ },
+ "n_glosses": 551,
+ "glosses": {
+  "place": {
+   "african-american-art-and-culture-complex": {
+    "annualreportarts2012arts": "The Arts Commission's annual report, showing the complex's $474,206 among the six cultural centre grants.",
+    "sanfranciscoarts2020sanf": "The Controller's review finding the complex spent its $355,854 properly but missed some reporting requirements.",
+    "agendacommunitya2006arts": "A grants committee meeting held at the complex, approving its programming plan and hotel-tax grant.",
+    "agendasminutesar2014arts": "Commission papers with the 2014-15 allocations, including the sub-grant passed to the Queer Cultural Center.",
+    "agenda2008arts_1": "Commission motions raising the complex's grant by $22,373, and setting the following year's ceiling."
+   },
+   "alamo-square": {
+    "codeenforcementf1968sanf": "The 1968 planning and public-works study that recommended part of the Alamo Square neighborhood for federally assisted code enforcement.",
+    "finalenvironment2197sanf": "A 1976 environmental report that uses the Alamo Square program area as a comparison case for rents and real-estate prices.",
+    "excerptsrelating19721973s": "Public Works' code-enforcement returns: inspection and compliance counts for Alamo Square, and 89 street trees planted by neighborhood youths.",
+    "annualreportofd1973sanf_1": "The 1973 Public Works annual report, carrying the same compliance tables and street-tree costs for the Alamo Square area.",
+    "section312loanli1968lync": "A 1968 study of federal loan limits, recording that a savings and loan had red-lined the Alamo Square neighborhood as high risk.",
+    "59minutesregula199697sanf": "Redevelopment Agency minutes at which the president of the Alamo Square Neighborhood Association spoke on nearby Western Addition parcels.",
+    "minutes1990sanf_2": "Open-space committee minutes listing Alamo Square for renovation and maintenance, with a $103,000 request from the public."
+   },
+   "animal-care-and-control-facility": {
+    "adoptedfiveyearf2015sanf": "The adopted five-year financial plan, listing the shelter's seismic strengthening among the bond-funded capital projects.",
+    "capitalplancityc2016sanf": "The Capital Plan that costed the renovation and seismic retrofit at $49 million and called the 1931 shelter seismically vulnerable.",
+    "citycountyofsan2016sanf_2": "The mayor's proposed budget, showing the replacement facility financed by Certificates of Participation rather than a bond.",
+    "resolution2016sanf_3": "The Board of Supervisors resolution of 29 November 2016 authorizing up to $60.5 million in Certificates of Participation for the facility."
+   },
+   "anza-branch-library": {
+    "annualreportdepa2010sanf": "Public Works' annual report recording the June 2011 reopening, the LEED Silver rebuild and the restoration of the gilt ceilings.",
+    "branchlibraryimp3200sanf": "The November 2000 bond proposal describing the 1932 building and costing its rehabilitation and expansion at $5.04 million.",
+    "minutesofregular1978sanf": "Library Commission minutes showing the commission itself meeting at the Anza branch in February 1978.",
+    "agenda2008arts_1": "Arts Commission agendas taking the branch's renovation through three phases of Civic Design Review in 2008-09.",
+    "adultcalendarofp1996sanf": "A 1996 programme calendar listing the branch's preschool storytimes and its Chinese New Year celebration."
+   },
+   "asian-art-museum": {
+    "asianartmuseumdr1819sanf": "The 1998 draft supplemental environmental impact report for the museum project, published for comment that July.",
+    "asianartmuseumpr1199sanf": "The 1996 addendum extending the Main Library's certified environmental report to cover the museum conversion.",
+    "agenda1990sanf_1": "Asian Art Commission minutes endorsing the jurisdictional transfer of the Main Library building to the museum."
+   },
+   "balboa-park": {
+    "balboaparkstatio2008sanf": "The planning department's comments and responses on the area plan's draft environmental report.",
+    "munijlineconnect1982unit": "A transit environmental statement weighing an alignment along the park's eastern boundary and its pool.",
+    "genevaofficebuil1419sanf": "A demolition environmental report on clearing room for boarding platforms at the park's transit stations.",
+    "balboaparkstatio2002sanf": "The 2002 draft area plan, describing a neighbourhood besieged by projects serving larger issues.",
+    "balboaparkstatio2009sanf": "A grant-funded study of pedestrian and bicycle connections across the station area.",
+    "ordinance2009sanf_1": "The 2009 ordinance establishing a monitoring programme for the adopted station area plan."
+   },
+   "balboa-park-station": {
+    "mitigatednegativ1820sanf": "A 2012 environmental review of housing at 1490 Ocean Avenue, assessed against the Balboa Park Area Plan that governs the station's surroundings.",
+    "preliminarymitig1420sanf": "The 2011 preliminary version of the same review for 1490 Ocean Avenue, weighed against the Balboa Park Area Plan and the city's Priority Policies.",
+    "noticeofmeetingc2011sanf": "A Municipal Transportation Agency meeting notice covering the dedication of the Geneva Yard and the agency's departmental climate action plan.",
+    "balboaparkstatio2002sanf": "The Planning Department's 2002 neighbourhood plan for the land around the station, written after two years of meetings with residents and framed as a remedy for fifty years of projects built here to serve the wider city.",
+    "balboaparkstatio2009sanf": "A 2009 SFMTA study, paid for by a state Safe Routes to Transit grant, setting out how to make walking and cycling to the station safer and easier."
+   },
+   "bernal-heights-branch-library": {
+    "branchlibraryimp3200sanf": "The bond proposal describing the 1940 building — concrete frame, two storeys, about 8,063 square feet.",
+    "minutesofregular2006sanf": "Commission minutes on the branch's renovation designs, and a call for a policy on appropriate use of library buildings.",
+    "adultcalendarofp1996sanf": "A programme calendar showing the branch's Spanish conversation group and writers' group.",
+    "agendasanfranci2011sanf_6": "Library Commission papers taking up the branch's artwork project for endorsement to the Arts Commission.",
+    "agenda2013arts": "Arts Commission minutes carrying public objection that the mural process had been \"semi-secret\"."
+   },
+   "bill-graham-civic-auditorium": {
+    "C124914403": "A 1993 economic study of a proposed new Bay Area arena, which counted the Civic Auditorium as one of only three winter venues in the region — and reported that touring shows found it markedly less successful than Oakland.",
+    "sanfranciscocour2319sanf": "A 1994 environmental impact report for the new courts building, mapping the auditorium among the public buildings that frame Civic Center Plaza.",
+    "525goldengateave1520sanf": "A 2001 environmental review of the administrative building at 525 Golden Gate Avenue, set within the Civic Center rebuilding that also produced the new Main Library.",
+    "sanfranciscocour9199sanf": "Comments and responses on the draft courts building report, recording the seismic strengthening then planned for most major Civic Center structures.",
+    "agenda1993sanf_1": "A 1993 agenda of the Seismic Safety Retrofit Bond Program board, the loan origination and servicing committee behind the city's earthquake strengthening."
+   },
+   "brooks-hall": {
+    "sanfranciscopub4200ripl_0": "The Main Library's post-occupancy evaluation, pricing a library expansion into Brooks Hall at $10.3 million.",
+    "sanfranciscopubl1619ripl": "The draft of that evaluation, with a section on the potential uses of the hall.",
+    "yerbabuenacente2519sanf_2": "A convention-market analysis giving the hall's 1958 construction and its 100,000 square feet of exhibition space.",
+    "branchlibraryimp3200sanf": "The library bond proposal carrying a $5.00 million line for Brooks Hall.",
+    "civiccenterdevel1987sanf": "A Civic Center plan urging the hall be kept as a convention facility but its ramp reconfigured.",
+    "igsl_san-francisco-real-prop-report_2001": "The city's property register, listing the hall as a subsurface portion beneath Civic Center Plaza."
+   },
+   "buchanan-street-mall": {
+    "fy200809parksannsanf": "The 2008-09 parks report scoring the mall at 85.2 percent.",
+    "fy200708parkssanf": "The 2007-08 report, showing the mall's score jumping nearly 16 points to 82.78 percent.",
+    "generalmanagersr1975sanf": "An open-space report recording the completed mall at $470,000, beside five permanent mini-parks.",
+    "parkstandards6mo162010san": "A mid-year report with the mall at 94.1 percent, its highest in the series.",
+    "igsl_san-francisco-real-prop-report_2006": "The city's property register, giving the mall's address, area and the five lots it spans.",
+    "newwesternadditi1971sanf": "A redevelopment brochure selling new homes on the strength of the mall before it was built.",
+    "artcommissionmin1973sanf": "Art Commission minutes approving phases I and II of the mall's design."
+   },
+   "buena-vista-park": {
+    "emergencyoperati1978sanf": "A 1978 feasibility study weighing five city-owned sites for an emergency operations centre, scored on line-of-sight microwave access to the transmitter at Christmas Tree Point.",
+    "parkhillresident2519sanf": "A 1983 environmental review of townhouse development at 355 Buena Vista Avenue East, on the 2.5-acre former Children's Hospital site above the park.",
+    "parkhillresident3019sanf": "The final 1983 report on the Park Hill project at 355 Buena Vista Avenue East, assessing visual quality and the shadows new townhouses would cast.",
+    "annualreportofbo1895sanf": "The Board of Park Commissioners' report for the year ending June 1895, under superintendent John McLaren, recording tree planting and thinning across the city's parks.",
+    "greaterhaightas2819sanf_0": "A 1984 cumulative assessment of development across Greater Haight-Ashbury, including a hospital expansion visible from surrounding high ground."
+   },
+   "cable-car-barn": {
+    "9minutes2000sanf": "Municipal Railway minutes releasing final retention on a $15.8 million construction contract to Stacy and Witbeck.",
+    "civilgrandjuryre198587cali": "The Civil Grand Jury's finding on the 1982–84 cable car rebuild: the barn and drive system were reconstructed with unproven technology, and the jury lists defects an untrained eye could see — including a cable delivery door built a foot too low.",
+    "4annualreportsanf": "A Municipal Railway annual report describing what the powerhouse at Washington and Mason actually does — housing the cable-winding machinery, with substations running it 365 days a year."
+   },
+   "camp-mather": {
+    "civilgrandjuryre2002031cali": "The 2003 Civil Grand Jury report urging the city to open its \"secret jewel\" to more San Franciscans.",
+    "C124889945": "A history of the Hetch Hetchy system, recording the end of sawmill operations at Hog Ranch — the site that became Camp Mather.",
+    "annualreport195861sanf": "A Recreation and Park annual report counting 26,600 visits to the camp and describing its two pools.",
+    "minutesrecreatio1967sanf": "Commission minutes setting the 1967 season's rates and awarding $13,887 to rebuild the camp's tennis courts.",
+    "minutes199899sanf": "Commission minutes approving the first camp fee increase since 1995, to cover maintenance and repairs."
+   },
+   "castro-mission-health-center": {
+    "sanfranciscodepa1997sanf": "The health department's annual report describing the Dimensions Clinic for LGBTQ youth established at the centre.",
+    "trialssearchguid2000comm": "A clinical trials guide listing the centre as an AIDS trial site, with its clinicians named.",
+    "resourceguideofs1997sanf": "A departmental guide recording that the centre was formerly District Health Center No. 1.",
+    "minutes200002sanf": "Health Commission minutes carrying clinic statistics and a Castro-Mission clinician's testimony on community-based planning."
+   },
+   "chinatown-branch-library": {
+    "sanfranciscopub1997reve_0": "A strategic audit itemising the bond releases that paid for the branch's design, renovation and art enrichment.",
+    "C124900584": "A 1982 development plan showing the branch among the cheapest per visit in the system and holding the Chinese-language collection.",
+    "chinatownneighbo1977sanf": "The 1977 neighborhood improvement plan, listing completion of the branch's community space as a district goal.",
+    "adultcalendarofp1997sanf": "A programme calendar showing the branch's community meeting room in use for lectures and talks.",
+    "agenda19arts_13": "Civic Design Review minutes introducing the renovation and calling Chinatown the most used library in the city.",
+    "calendarmeetingo1994sanf": "Budget Committee papers releasing $22,110 of 1988 library bond funds for asbestos abatement at the branch.",
+    "minutes1992sanf_1": "Open-space committee minutes carrying the branch among the district's development projects."
+   },
+   "chinatown-public-health-center": {
+    "sanfranciscochil1991ahma": "A lead-screening evaluation recording why capillary sampling mattered at this clinic, and the phlebotomy posts it funded.",
+    "sanfranciscodepa1997sanf": "The health department's annual report, describing the centre's bilingual cookbook and chronic-illness exercise programme.",
+    "resourceguideofs1997sanf": "A departmental guide to senior services, listing the centre among the city's district health centres.",
+    "agenda2003sanf_3": "Immigrant Rights Commission papers carrying residents' testimony against a 15 percent staff reduction at the centre.",
+    "minutes2000sanf": "Health Commission minutes showing the centre's medical director speaking for the department on tuberculosis control."
+   },
+   "civic-center-courthouse": {
+    "525goldengateave1520sanf": "An environmental report for the neighbouring site, describing the newly built courthouse and its dome.",
+    "agenda19arts_26": "Committee motions approving interim payments for the courthouse artwork and the jury assembly room furniture.",
+    "minutes1998arts": "Arts Commission resolutions closing out the courthouse artwork contracts and accepting Albert Paley's gates into the city collection."
+   },
+   "coit-tower": {
+    "surveyofartworki1953sanf": "A 1953 Art Commission survey of the city's artworks, cataloguing the WPA fresco panels by artist, medium and size — including Maxine Albro's 42-foot \"California\".",
+    "annualreportarts2012arts": "An Arts Commission annual report on the agency's programmes and civic-art projects, including the 40th anniversary of the Street Artist Licensing Program.",
+    "historicstructur01arts": "The Arts Commission's 1989 condition survey of the tower, element by element — exterior walls, the Columbus planter, the shaft, belvedere, balustrade and lantern — and a schedule of what maintenance each would need.",
+    "sanfranciscocivi00arts": "The Arts Commission's guide to the city's public art records that Coit Tower was its first historic case, opposed at the time as a 'blight' on Telegraph Hill, and that its murals were the first works funded under the federal Public Works of Art Project."
+   },
+   "conservatory-of-flowers": {
+    "meetingminutes19982001san": "Board minutes accepting gifts to the Recreation and Park Department, among them the San Francisco Orchid Society's contribution to the Golden Gate Park Orchid Fund."
+   },
+   "corona-heights-park": {
+    "parkhillresident2519sanf": "An environmental report giving the park's 16 acres, its two developed ones, its courts and museum.",
+    "minutesrecreatio1990sanf": "Commission minutes listing the park's tennis court resurfacing among completed capital projects.",
+    "minutes90sanf": "The general manager's report on the $90,000 erosion control project and the park's protection from art installations.",
+    "agenda2013arts": "Arts Commission minutes accepting the kinetic sculpture Windswept on the Randall Museum in the park."
+   },
+   "crane-cove-park": {
+    "2008cleansafenei2007sanf": "The 2008 parks bond report, describing the proposed park and budgeting it at $21.1 million.",
+    "agendasminutess2015sanf_8": "The authorisation to advertise for competitive construction bids on the park's first phase.",
+    "agendasanfranci014sanf_10": "Commission papers accepting $1 million of federal funding for walking and cycling routes in the project area.",
+    "agenda2013sanf_0": "Port papers allocating $8 million of revenue bonds and naming the other funds the park would draw on."
+   },
+   "curry-senior-center": {
+    "sanfranciscodepa2011sanf": "The department's annual report listing the centre among its primary care health centres and its contracted partners.",
+    "igsl_san-francisco-real-prop-report_2005": "The city's property register, listing the building under its former name at 331 Turk Street.",
+    "nonprofitopenboa2007vari": "The centre's own board meeting notices, filed with the city under the Sunshine Ordinance.",
+    "agendasminutessa2008sanf": "Mental Health Board papers scheduling a community forum at the centre.",
+    "minutes2005sanf": "Health Commission papers approving a $510,188 contract with the centre, and a Curry nurse's testimony on public health nursing.",
+    "agenda2011sanf_7": "Commission minutes marking World TB Day at the centre, on the centenary of its namesake."
+   },
+   "davies-symphony-hall": {
+    "annualrprt1978798384warm": "A War Memorial annual report from the years the hall was completed, noting that no capital funds were budgeted and that $40 million of improvements were financed by the Sponsors of the Performing Arts Center.",
+    "calendarofevents2012sanf": "The Performing Arts Center's calendar, describing the architectural and acoustical tours of Davies Hall run every Monday and by request.",
+    "schoolofartsmast1199sanf": "A 1997 environmental review of a School of the Arts proposal that maps Davies Hall among the Civic Center's public buildings and records which of them were then being seismically strengthened.",
+    "civiccenterstud1994sanf_0": "A 1994 study of Civic Center cultural facilities: it puts Davies Hall at 2,743 seats, notes the Symphony's right of first refusal under the City Charter, and that only about 30 days a year are left free to rent."
+   },
+   "de-young-museum": {
+    "newdeyoungmuseum2220sanf": "Comments and responses on the draft environmental impact report for the new de Young, issued by the Environmental Review Officer in November 2000.",
+    "minutesagendas2003fine": "Fine Arts Museums trustee minutes reporting year-end gifts of works of art and the Asian Art Museum's move into the old Main Library.",
+    "minutesorderofbu1994corp": "1994 minutes of the Corporation of the Fine Arts Museums, the fundraising body behind the de Young and the Legion of Honor.",
+    "newdeyoungmuseum2020sanf": "The revised final environmental report, sent back to Planning by the Board of Supervisors in 2001 to correct errors in the shadow and visual analysis of the proposed tower's height.",
+    "mhdeyoungmemoria1119fine": "A 1997 consultant's analysis for the Fine Arts Museums, projecting how many people a new de Young would draw and what it would return to the city in sales and parking tax.",
+    "newdeyoungsicmus2220sanf": "The 2000 draft environmental report for demolishing and rebuilding the museum — eight buildings totalling about 230,000 sq ft, with the Asian Art Museum moving to the Civic Center."
+   },
+   "emergency-operations-center": {
+    "civilgrandjuryre2002031cali": "A grand jury report on the centre's first mass-scale activation after 11 September 2001, and its limited space.",
+    "emergencyoperati1978sanf": "The 1978 feasibility study commissioned for a new emergency operations centre.",
+    "lomaprietarespon1994sanf": "A five-year review of the Loma Prieta response, recording how city emergency centres were activated.",
+    "earthquakesafety93sanf": "A master plan background report on the search for a new centre, the old one having been judged inadequate in 1974.",
+    "afteractionrepor1980sanf": "The after-action report on a 1980 earthquake medical exercise, with a section on operations at the centre.",
+    "guidebookfornewd2005lern": "The city's guidebook for department heads, describing how the centre is activated, staffed, and where its alternate is.",
+    "earthquakeprepar1992baya": "Regional preparedness guidelines telling care facilities to report their situation to the centre."
+   },
+   "excelsior-branch-library": {
+    "activitiesreport1959sanf": "The 1959 activities report explaining that the branch would replace a rented store, with $60,000 budgeted for a site.",
+    "branchlibraryimp3200sanf": "The November 2000 bond proposal describing the 1967 building — brick and stone, about 8,302 square feet.",
+    "minutesofregula1119sanf_1": "Library Commission resolutions approving the purchase of the two parcels and a further $18,715 for the land.",
+    "minutesofregula2005sanf_0": "Commission minutes on the renovated branch's reopening, and the neighborhood campaign that furnished it.",
+    "adultcalendarofp1996sanf": "A programme calendar showing the branch hosting citizenship workshops and free tax assistance."
+   },
+   "ferry-building": {
+    "C124909173": "A 1998 feasibility study of ferry service to SFO, which treats the Ferry Building as the hub where an airport boat would connect to the rest of the Bay Area network — and notes it would have no parking.",
+    "agenda198591sanf": "A 1985 Port Commission agenda covering pier development, container crane purchases and the rehabilitation of Piers 30/32.",
+    "minutes1993sanf_0": "Minutes of the Port Commission's regular meetings in 1993, the body that owns and manages the building.",
+    "bartseismicretro05unit": "Responses to comments on the BART seismic retrofit of the Transbay Tube, which runs beneath the waterfront to Montgomery Street station.",
+    "bartseismicretro2005unit": "The 2005 environmental assessment for retrofitting the 3.6-mile Transbay Tube, buried up to 132 feet below the Bay between Oakland and downtown.",
+    "ferrybuildingcom2919sanf": "The environmental review for redeveloping the Ferry Building complex, published in 1982 and certified in 1983 after an addendum and two public comment periods."
+   },
+   "fire-station-13": {
+    "transamericaiiid3119sanf": "An environmental report for the Transamerica III tower, measuring construction noise at the fire station across Sansome Street.",
+    "igsl_san-francisco-real-prop-report_2005": "The city's register of real property, listing the station's lot, block and land area.",
+    "postquakerestor1519sanf_1": "The 1990 post-earthquake survey, itemising Loma Prieta's damage to the station room by room.",
+    "2calendarmeetingo1989sanf": "Finance Committee papers approving up to $58,000 of bond funds for emergency apparatus doors at Stations 3 and 13.",
+    "journalseptdecofproceed88sanfrich": "A 1993 Board resolution authorising emergency replacement of the station's apparatus door."
+   },
+   "fire-station-14": {
+    "realpropertyowne2001sanf": "The city's property register, giving the station's address, lot and land area.",
+    "igsl_san-francisco-real-prop-report_2004": "A later edition of the same register, with the station's block and lot unchanged.",
+    "postquakerestor1519sanf_1": "The post-earthquake damage survey, itemising the station's cracked walls, leaking retaining wall and roof.",
+    "1minutes1998sanf": "Finance Committee papers releasing $483,259 of fire bond funds and $1,062,741 more for the station's renovation."
+   },
+   "fire-station-15": {
+    "realpropertyowne2005sanf": "The city's property register, listing the station as Battalion HQ 9 on a shared parcel.",
+    "igsl_san-francisco-real-prop-report_2005": "The same register showing the station's 15,316 square feet beside the reservoir and library.",
+    "2minutes2002sanf": "A resolution leasing cellular transmitter space at the station to Metro PCS.",
+    "1calendarmeetingo1994sanf": "Budget Committee papers adding $69,300 for the station's roof on top of $640,758 of seismic work, and naming the low bidder.",
+    "4meetingminutes2003sanf": "Committee minutes on Engine 33 operating out of this station during another station's closure."
+   },
+   "fire-station-18": {
+    "igsl_san-francisco-real-prop-report_2006": "A later register edition, with the station's lot, block and 15,000 square feet unchanged.",
+    "realpropertyowne2001sanf": "The city's property register, noting the station's transfer from the 911 communication system bond sale.",
+    "1calendarmeetingo1996sanf": "Budget Committee papers releasing $1,297,000 of 1992 fire protection bond funds for the station's construction.",
+    "8minutes1997sanf": "Finance Committee papers putting the station into an asset-transfer lease financing for the emergency radio system."
+   },
+   "fishermans-wharf": {
+    "reporttoboardofs1986sanf": "A management audit finding the Port did not know what maintaining the wharf cost, amid $3.68m of delinquent tenant accounts.",
+    "C124891468": "The Port's 1987 staff report on what the commercial fishing fleet and fish handlers actually needed at the wharf.",
+    "hydestreetfishin1996sanf_1": "The certified environmental report for the Hyde Street Fishing Harbor and Pier 45 sheds.",
+    "hydestreetfishin1996sanf_0": "Public comments on that report, including fishermen describing boats moored without water, power or toilets.",
+    "underwaterworlda2919sanf": "The initial study for the Underwater World aquarium at Pier 39, east of the wharf.",
+    "northpointparkma1976unit": "A 1976 federal environmental statement describing a proposed 1,900-foot breakwater at the wharf.",
+    "northernwaterfro1987sanf": "A planning study of the northern waterfront, mapping the distinctive areas of Fisherman's Wharf.",
+    "C123298834": "The Port's 1981 action plan for the wharf, arguing that its tourist appeal depended on keeping the maritime activity real."
+   },
+   "glen-canyon-park": {
+    "noticeofprepara1200sanf_0": "The 2009 notice launching environmental review of the Glen Park community plan, including proposed roundabouts along Bosworth Street.",
+    "draftenvironment2720sanf": "The environmental review of the Glen Park community plan, working through land use, transport, noise, air quality, greenhouse gases and cultural resources; open for comment April to June 2011.",
+    "2redevelopmentind1950sanf": "A 1950 redevelopment report to the Board of Supervisors on Diamond Heights, describing O'Shaughnessy Boulevard running along the rim of Glen Canyon as the area's western boundary.",
+    "diamondheightsne1961lack": "A 1961 urban design report to the Redevelopment Agency for the Diamond Heights neighbourhood centre, on the ridge above the canyon.",
+    "diamondheightsre1952sanf": "The 1951 redevelopment report for Diamond Heights, which found the existing Glen Park and Douglass playgrounds inadequate for the population the new district would bring, and about 66 acres of streets too steep to build.",
+    "sanfranciscorecy1199sanf": "A 1996 environmental review of the city's recycled water and groundwater plans, assessing two candidate reservoir sites inside McLaren Park."
+   },
+   "glen-park-branch-library": {
+    "branchlibraryimp3200sanf": "The bond proposal recording the branch as a sub-1,000-square-foot leasehold on private property.",
+    "minutesofregula2001sanf_0": "Minutes on the search for a site, and the owner's refusal to sell the one the community wanted.",
+    "adultcalendarofp1996sanf": "A programme calendar showing the old Chenery Street branch's preschool storytimes.",
+    "minutesofregula1119sanf_1": "Commission correspondence from neighbourhood groups seeking a new site before Bosworth Street was widened.",
+    "agenda20arts_11": "Arts Commission papers rescinding the $36,000 artwork contract for the branch."
+   },
+   "golden-gate-park": {
+    "C124920621": "A 1995 groundwater master plan identifying Recreation and Park as the city's largest groundwater user, with Golden Gate Park among the biggest consumers of non-potable water.",
+    "C124924803": "Working Paper #1 of the Recreation and Park Department's 1979 history of the park, tracing its origins to the Outside Lands land-title order of 1868.",
+    "C124895561": "The 1972 recreation and open space element of San Francisco's comprehensive plan, prepared by City Planning with Recreation and Park, setting citywide open-space policy.",
+    "goldengateparkco1820sanf": "The 2002 draft initial study for the Concourse Authority's projects, which triggered a full environmental impact report for the music concourse.",
+    "goldengateparkco1982sanf": "A 1982 comprehensive transportation study for the park, costing shuttle options from a Kezar-to-Concourse loop up to a park-wide system.",
+    "minutes1990sanf_2": "Minutes of the Open Space / Park Renovation Citizens Advisory Committee, the body reviewing park renovation spending.",
+    "goldengateparkst2007sanf": "The 2007 draft environmental review of the plan to renovate the park stables.",
+    "goldengateparkc1420sanf_0": "The Concourse Authority's response volume, answering objections about the underground car park's consistency with Proposition J, its access road, and the master plan's parking removals."
+   },
+   "hall-of-justice": {
+    "C124921847": "The Task Force on Prostitution's report, costing the transport of arrestees from district stations to 850 Bryant.",
+    "calendarofprocee1990sanf": "Police Commission proceedings convened in Room 551 of the Hall of Justice.",
+    "minutes2000sanf_7": "Commission minutes still meeting at 850 Bryant Street at the start of 2000.",
+    "minutespo1998sanf": "Police Commission agendas hearing disciplinary charges against named officers at the Hall of Justice.",
+    "sanfranciscopoli2010sanf": "A 2010 commission agenda showing the meeting moved to City Hall, with the Hall of Justice kept only as a document address."
+   },
+   "hallidie-plaza": {
+    "hotelramadasanfr3198sanf": "An environmental report finding a proposed hotel would shade part of the plaza on summer evenings.",
+    "midmarketstreetc1519sanf": "A conservation study treating the plaza as a project area and recommending heights for its sun exposure.",
+    "949marketstreetf7200sanf": "An environmental report making new shadow on the plaza one of the project's three central issues.",
+    "yerbabuenaredeve1419sanf": "A redevelopment supplement calculating the morning shadow a tower option would cast on the plaza.",
+    "marketstreetdev196873mark": "The Market Street project's account of the plaza as downtown's entryway, with its steps, escalators and information booth.",
+    "igsl_san-francisco-real-prop-report_2006": "The city's property register, carrying the plaza across two lots of Block 0341."
+   },
+   "heron-s-head-park": {
+    "agendasanfranci2013sanf_1": "Port papers leasing the park's EcoCenter and listing it among the Coastal Cleanup Day sites.",
+    "agenda2008sanf_1": "A licence for grant-funded education and habitat work, and the bond programme listing the park's entrance.",
+    "minutes2004sanf_2": "Port minutes commissioning education and public participation programmes at the park."
+   },
+   "hetch-hetchy": {
+    "C124920621": "A 1995 groundwater master plan setting the city's local supply against its surface water from the Hetch Hetchy system.",
+    "C124889945": "A year-by-year chronology of how the system was authorised — O'Shaughnessy's hiring as City Engineer, the Army Engineers' report, and the Raker Act's passage through Congress to Wilson's signature.",
+    "c124896060": "The 1988 mandatory rationing program of Hetch Hetchy Water and Power — rules, allotments and budget — written when storage was projected to last about 13 months for 2.1 million people.",
+    "p16255coll1_H1473828884850_file2": "The 2013 climate action strategy, which counts Hetch Hetchy's clean hydroelectricity among the sources of the city's municipal emissions reductions.",
+    "C101694962": "The final report of the PUC Infrastructure Task Force (2000-2002), convened on a capital programme then exceeding $4 billion and critical of the commission's project planning.",
+    "3annualreportsanf": "The Public Utilities Commission's 1975 annual report, recording a record 2,057,609,000 kilowatt-hours of hydroelectric generation for 1974-75.",
+    "sanfranciscowate00sanf": "The 1935 official account of the system, from the early local sources through the acquisition of Spring Valley and the reach into the Sierra Nevada.",
+    "sanfranciscowate1999hans": "The utility's own history of the system, tracing the aqueduct from the 1913 Raker Act and recording that the city bought out the Spring Valley Water Company for $39,962,606.51 in 1930.",
+    "sanfranciscowate2005hans": "The 2005 edition of the utility's history, carrying the timeline forward to the 1997 vote for $304 million of treatment-plant upgrades and the 2000–01 energy crisis."
+   },
+   "ingleside-police-station": {
+    "munijlineconnect1982unit": "A transit environmental statement placing the station inside Balboa Park, beside the pool and the Metro Center.",
+    "igsl_san-francisco-real-prop-report_2006": "The city's property register, giving the station's 42,861-square-foot portion of the Balboa Park parcel.",
+    "igsl_san-francisco-real-prop-report_2003": "An earlier register edition with the same parcel and jurisdiction.",
+    "minutespol1975sanf": "Police Commission minutes approving leaves of absence for officers stationed at Ingleside."
+   },
+   "japanese-tea-garden": {
+    "newdeyoungmuseum2220sanf": "The response volume for the de Young rebuild, revising the site plan to show how the new museum would sit against the Tea Garden and the Music Concourse.",
+    "goldengateparkco1420sanf": "The Concourse environmental review, which lists the Tea Garden among 123 contributing features of the proposed historic district and finds it individually eligible for the California Register.",
+    "newdeyoungmuseum2020sanf": "The revised final report confirms the Tea Garden is individually eligible for the National Register — unlike the de Young and the Academy of Sciences, which qualify only as contributors."
+   },
+   "japantown-peace-plaza": {
+    "fy200809parksannsanf": "The 2008-09 parks report, scoring the plaza at 95.4 percent after a 9.9-point gain.",
+    "fy200708parkssanf": "The 2007-08 parks report, showing the plaza's score slipping to 85.4 percent before it recovered.",
+    "parkstandards6mo162010san": "A mid-year park-standards report, with the plaza easing back to 90.0 percent."
+   },
+   "juri-commons": {
+    "fy200809parksannsanf": "The following year's scores, with the park up 5.3 points to 95.6 percent.",
+    "fy200708parkssanf": "The Controller's park scores, recording the park at 90.4 percent that year.",
+    "parkstandards6mo162010san": "A six-month report showing the park's score falling back to 86.6 percent.",
+    "generalmanagersr1975sanf": "Open-space fund papers listing the acquisition of the Juri Commons mini park among the Mission's priorities.",
+    "igsl_san-francisco-real-prop-report_2002": "The property register, giving the park's address, jurisdiction and 10,433 square feet."
+   },
+   "kezar-stadium": {
+    "greaterhaightas2819sanf_0": "A district-wide planning assessment listing Kezar Stadium reuse among the Haight-Ashbury's proposed projects.",
+    "minutesboardofpa1928sanf": "Board of Park Commissioners minutes from the stadium's construction era, indexing its architects and charges.",
+    "whatsdoinginpark1983sanf": "A departmental events bulletin showing Kezar Pavilion in weekly use for basketball.",
+    "indextominuteso1947sanf_0": "Commission records for 1947: the 49ers applying for football dates, and payments for repainting the stadium's walls and gates.",
+    "minutes199394sanf": "A 1993 resolution amending the stadium's permit policy to allow up to two floodlit events a week in the autumn.",
+    "minutesrecreatio1960sanf": "Minutes approving a ten-year 49ers contract, the Raiders' 1960 contract and $4,422 for a protective wall.",
+    "agenda19912006sanf": "Agendas of the Kezar Stadium Advisory Committee, on the stadium's fee schedule and a proposal to sell alcohol."
+   },
+   "laguna-honda-hospital": {
+    "C124917894": "A 1992 Budget Analyst memo to the Board's oversight committee, tabling the General Fund's contribution to AIDS care across DPH, SF General and Laguna Honda.",
+    "C101697973": "The US Department of Justice's civil-rights investigation of conditions at the hospital, opened in 1997 under CRIPA and reported to Mayor Brown in May 1998, with the Health Department's response attached.",
+    "lagunahondahospi1200sanf": "The December 2001 draft environmental impact report for replacing the hospital, the review behind the rebuilding programme.",
+    "assistedlivingf1200sanf_0": "A 2007 feasibility study for the Health Department on adding an assisted-living facility to the replacement hospital — cost estimates, licensing criteria and funding options.",
+    "lagunahondahospi2001impa": "A 2001 historical assessment finding the hospital significant as a record of the city's public health and elderly care, and architecturally significant for buildings such as the Classical Revival Clarendon Hall."
+   },
+   "lake-merced": {
+    "C124920621": "A 1995 groundwater master plan examining changes in Lake Merced's surface elevation and the case for retaining local groundwater.",
+    "C124889945": "A 1985 history of the Municipal Water Department, covering the Spring Valley Water Works era that shaped the city's peninsula watersheds.",
+    "C101694962": "The final report of the PUC Infrastructure Task Force (2000-2002) on the commission's capital programme and its deferred projects.",
+    "feasibilityevalu1919ch2m": "A 1998 engineering evaluation of ways to raise the lake's water level, scoring each alternative and costing them over a ten-year period.",
+    "lakemercedwaterr1993sanf": "A 1993 study for the Water Department reviewing existing data on how the lake is used and on its water quality.",
+    "lakemerced1998ba1999prep": "The Public Utilities Commission's baseline survey of what actually lives at the lake — vegetation types, wildlife, special-status species and fish observations back to 1949.",
+    "lakemercedwaters99camp": "A 1999 survey for the Public Utilities Commission identifying what could pollute the lake, prepared as part of the draft comprehensive management plan and recommending how to trace contamination back to its source."
+   },
+   "legion-of-honor": {
+    "minutesagendas2000fine_0": "Fine Arts Museums trustee minutes and agendas for 2000, the board that governs the Legion alongside the de Young.",
+    "minutesorderofbu1987corp": "1987 minutes of the Corporation of the Fine Arts Museums, including the cash raised toward balancing the 1987-88 budget.",
+    "annualreport1970fine": "The museums' 1970–71 report, its first under a single director for both the Legion and the de Young, pressing again for regular public transport to the Legion — then weekend-only, which the director says keeps older and poorer visitors away.",
+    "pacificcoastarch25192sanf": "A 1924 architectural journal reporting that the building's entire exterior, statuary included, was executed in cast stucco rather than stone veneer — a saving it puts at $150,000."
+   },
+   "lincoln-park": {
+    "recreationparkde2620sanf": "The Controller's concession audit of the golf course, and the 1983 lease under which it is operated.",
+    "finalreportgeote979dame": "A geotechnical study routing a sewer tunnel beneath the park.",
+    "annualreportofbo1912sanf": "The park commissioners' 1912 request for $25,000, noting the ground was recently the City Cemetery.",
+    "igsl_san-francisco-real-prop-report_2006": "The property register, giving the park's acreage and the facilities standing on it."
+   },
+   "marina-green": {
+    "technicalreportg1965cali": "A 1965 state highways report on the proposed Golden Gate Freeway, whose alternatives would have required relocating part of the Marina Yacht Harbor.",
+    "preliminarymitig2003sanf": "A 2002 environmental review of the marina renovation, detailing breakwater and jetty work in the West Harbor.",
+    "draftenvironment5120sanf": "The environmental review for the 34th America's Cup, which assessed the effects of an America's Cup village on the Green and on the wider Aquatic Park and Fort Mason setting.",
+    "scenicparkwayfor293sanf": "The Doyle Drive Task Force's 1993 report to the Board of Supervisors, describing the Green as one link in the bayfront recreation corridor running from the Marina to Fort Point."
+   },
+   "maxine-hall-health-center": {
+    "sanfranciscodepa1997sanf": "The department's annual report on the centre's outreach work, mammography re-screening and its UCSF mental-health groups.",
+    "resourceguideofs1997sanf": "A departmental guide recording that the centre was formerly District Health Center No. 2.",
+    "0meetingminutes1999sanf": "A 1999 committee item authorising a $25,000 Family Violence Prevention Fund grant for the centre's domestic violence project.",
+    "bidscontractsby2002sanf_0": "The 2002 bid notice for the centre's renovation — exam rooms, toilets, finishes, and a new exterior ramp.",
+    "minutes1997sanf": "Health Commission statistics counting 4,705 patient encounters at the centre in a single month, and the medical director's resignation."
+   },
+   "mclaren-park": {
+    "bridgemonthighsc5199sanf": "A 1990 environmental impact report on subdividing the Bridgemont High School site, illustrated with views from McLaren Park.",
+    "sanfranciscorecy1199sanf": "A 1996 environmental review of the recycled-water plan, which examined two possible sites inside the park for a Southeast Zone reservoir.",
+    "masterplanfordev1983sanf": "The Recreation and Park Department's 1983 development plan for the park, funded jointly by the state and the federal Land and Water Conservation Fund.",
+    "fy200708parksann32009sanf": "The Controller's park-condition scoring for FY2007-08 put John McLaren Park at 70.2 percent — down 14.8 points on the year, and among the five parks that narrowly avoided a D grade."
+   },
+   "mission-branch-library": {
+    "3calendarmeetingo1995sanf": "Budget Committee papers cutting the branch's bond-funded renovation release from $584,250 to $289,250.",
+    "adultcalendarofp1997sanf": "A programme calendar showing the branch's homework help and Spanish-language family storytime.",
+    "5minutes1997sanf": "Finance Committee papers on the vacant bond-funded coordinator post, and the lease of 2601 Mission Street.",
+    "agenda19arts_13": "Civic Design Review minutes taking the renovation through Phase I and locating the branch on 24th Street."
+   },
+   "mission-dolores-park": {
+    "C119703507": "A 1998 hearing transcript on the City College Mission campus in which neighbours, including Friends of Dolores Park, argue the outreach mailing list was wrong and the community was not properly consulted.",
+    "caseno20060144e61720sanf": "The 2006 notice of preparation for environmental review of the Second Church of Christ, Scientist site at 651 Dolores Street, a block from the park.",
+    "fy200809parksannsanf": "The FY2008-09 park scores place Mission Dolores Park among the ten lowest-rated parks in the city at 74.6 percent, down 11.8 points on the year.",
+    "generalmanagersr1975sanf": "A Recreation and Park capital programme listing $70,000 for children's play apparatus at Mission Dolores Park in the 1977 fiscal year."
+   },
+   "moscone-center": {
+    "comprehensiveann2004sanf": "The Controller's comprehensive annual financial report, the city's audited accounts — including the $100 million renewable energy revenue bond approved by voters in 2001.",
+    "finalmitigatedne2220sanf": "A 2004 environmental review of a 15- or 25-storey mixed-use tower at One Hawthorne Street, in the blocks behind the convention centre.",
+    "yerbabuenacenter2419sanf": "The response volume for the Yerba Buena environmental review, answering comments that the document should name Mayor Moscone's select committee and record that voters approved the centre's expansion under Proposition CB-2.",
+    "yerbabuenacenter1219sanf": "The 1991 subsequent environmental review, updating the 1978 Yerba Buena analysis to cover the convention centre expansion and everything else built since 1982."
+   },
+   "muni-presidio-division": {
+    "managementaudito1996budg": "A management audit of Muni asking whether the trolley facility should be expanded at 949 Presidio or moved to free the site.",
+    "coordinatedtrans1967simp": "A regional transit study proposing $17.3m of division rebuilding, including modernised Muni offices at Presidio.",
+    "agendapublicutil1988sanf": "Utilities Commission agendas approving a $22,019 HVAC modification and a bid call for the division's shop doors.",
+    "bidcontractoppor1987sanf": "A purchasing bulletin locating a management-training contract at the division, 949 Presidio Avenue.",
+    "munimemo1984sanf": "Muni's staff paper, with the division's electrical maintenance shop and an award ceremony held in its shops.",
+    "3minutes1978sanf": "Commission minutes weighing enlargement of the division against buying the U.S. Steel property.",
+    "trolleytopics19501952sanf": "A railway staff magazine listing the trolley-coach lines the division ran, and welcoming its new operators."
+   },
+   "muni-woods-division": {
+    "managementaudito1996budg": "A management audit counting the division's yard staff and its share of special-duty operator assignments.",
+    "munimemo1984sanf": "Muni's staff paper, awarding Maintenance Worker of the Month to the division's body and paint shop supervisor.",
+    "trolleytopics19731980sanf": "A staff magazine sending a Woods driver to the national bus roadeo as the city's champion.",
+    "0minutes2003sanf": "Advisory council minutes with the division's superintendent answering for service on the 37-Corbett.",
+    "minutesofmunicip2001muni": "Improvement fund minutes piloting the railway's first division open house at Woods.",
+    "noticeofmeetingc1999sanf": "A commission calendar adding the Woods motor coach division renovation to the federal programme of projects."
+   },
+   "next-door-shelter": {
+    "agendasminutess2005sanf_1": "Shelter Monitoring Committee papers seeking an investigation into a death at the shelter on Christmas Eve 2005.",
+    "agendaboardofsu2007sanf_3": "Board of Supervisors agendas logging residents' letters about the shelter and its management.",
+    "minutes2008sanf": "Rules Committee minutes hearing the shelter's director and site manager alongside its monitors."
+   },
+   "noe-valley-town-square": {
+    "resolution2015sanf_8": "The resolution accepting a $567,039 state urban greening grant for the square.",
+    "meetingminutesbo2016sanf": "The ordinance rezoning the site from a commercial district to Public and Open Space.",
+    "agendasminutesar2014arts": "Arts Commission motions approving the project's first two phases and its art enrichment plan.",
+    "legislationintro2015sanf": "Legislation accepting a $743,543 state Land and Water Conservation Fund grant for the project.",
+    "agendasminutesbu2015sanf": "Budget Committee papers on the $450,000 grant-in-place from the Parks Alliance."
+   },
+   "north-beach-branch-library": {
+    "branchlibraryimp3200sanf": "The bond proposal describing the 1959 branch — 5,097 square feet at 2000 Mason Street, beside a park facility.",
+    "minutesofregular1619sanf": "Mid-1950s commission minutes on proposed alterations to the branch and a request for longer opening hours.",
+    "minutesofregular2010sanf": "Commission minutes recording that the branch's programming failed accessibility law and had to stop.",
+    "adultcalendarofp1996sanf": "A programme calendar showing the branch's weekly lapsits and afterschool craft sessions.",
+    "agenda2013arts": "Arts Commission review of Bill Fontana's sound installation for the new branch, pared back to fit the budget."
+   },
+   "ocean-park-health-center": {
+    "communityhealtha2000sanf": "A community health plan listing the centre and its OMI satellite, with languages and hours.",
+    "sanfranciscodepa2000sanf": "The department's strategic plan, recording the centre's community advisory board and its medical director.",
+    "resourceguideofs1997sanf": "A departmental guide recording that the centre was formerly District Health Center No. 5.",
+    "sanfranciscosexu1998sanf": "STD surveillance summaries tracking screening positivity at the centre, one of five sentinel sites.",
+    "minutes2003sanf": "Health Commission minutes with public testimony against cuts in service at the centre.",
+    "4meetingminutes2003sanf": "Committee papers moving the centre's $817,908 accessibility project to keep it block-grant eligible."
+   },
+   "old-mint": {
+    "reviewcommittees1420sanf": "The task force review committee's evaluation of the development proposals received, January 2003.",
+    "revisedmitigated2320sanf": "The environmental determination for the intended rehabilitation, seismic upgrade and addition at 88 Fifth Street.",
+    "midmarketredevel1998sanf": "A neighborhood newsletter recording the committee's appeal to the mayor over the Mint's deteriorating condition.",
+    "worthitsweightin2002sanf": "The city's request for proposals to lease, rehabilitate and operate the Old Mint.",
+    "officialmeetingn200206san": "A meeting notice carrying the Museum and Historical Society's re-use proposal for the building.",
+    "igsl_san-francisco-real-prop-report_2004": "The city's property register, listing the Mint's parcel and its quitclaim from the federal government."
+   },
+   "pier-27": {
+    "draftenvironment6120sanf": "The environmental report for the terminal and America's Cup, with noise limits for generators at the pier.",
+    "port1980port": "The Port's handbook describing Piers 27-29 as a working breakbulk terminal with fifteen acres of cargo space.",
+    "agendasminutess2015sanf_4": "Port papers scheduling dredging at Pier 27 and a free symphony on its plaza.",
+    "agenda2013sanf_0": "Port Commission agendas on the cruise terminal, its second-phase revenue bonds and a donor recognition programme."
+   },
+   "pier-27-cruise-terminal": {
+    "draftenvironment5120sanf": "The environmental review joining the cruise terminal to the 34th America's Cup, certified in December 2011.",
+    "sanfranciscocrui2120sanf": "The earlier certified report for a cruise terminal and mixed-use project, a plan later superseded.",
+    "sanfranciscocrui1720sanf": "That project's draft report, published for comment in November 2001.",
+    "agendasminutess2015sanf_4": "Port Commission papers with a status report on the finished terminal, and a free symphony on its plaza.",
+    "agenda2011sanf_1": "A Port Commission agenda taking comment on the terminal's environmental review and adopting the 10-year capital plan."
+   },
+   "pier-39": {
+    "C124904252": "A Port of San Francisco strategic plan listing Pier 39's tenants and recreation leases among the port's income-producing properties.",
+    "C123298834": "The 1981 Fisherman's Wharf action plan, which takes Pier 39 as the eastern boundary of the study area and proposes limiting further commercial recreation there.",
+    "proposednorthpoi1976sanf": "A 1976 environmental impact report for the North Point Park/Marina proposal, a development plan running from Pier 37 through Pier 41.",
+    "northpointparkma1976unit": "The Army Corps of Engineers' 1976 environmental statement on the same waterfront proposal, covering Piers 37, 39 and 41 after fire destroyed most of Pier 37.",
+    "northernwaterfro1987sanf": "The 1987 Northern Waterfront findings report, surveying transit, pedestrian and loading conditions along the Jefferson Street frontage.",
+    "levisplazafinal1419sanf_0": "The final 1978 environmental report on Levi's Plaza, contested over a shortfall of several hundred parking spaces on the northern waterfront.",
+    "underwaterworlda1219sanf": "The 1988 draft environmental review of the proposal to build the Underwater World aquarium at the pier."
+   },
+   "pier-45": {
+    "hydestreetfishin1996sanf_0": "Comments and responses on the environmental report for the fishing harbour and the pier's sheds.",
+    "hydestreetfishin1996sanf_1": "The certified final environmental report for the harbour and Sheds A and C.",
+    "C124891468": "A Port staff report explaining that hotel development here was meant to finance the fishing facilities.",
+    "amendmentstocomp1983sanf": "Comprehensive plan amendments that would have allowed a predominantly residential development on the pier.",
+    "waterfrontplanph1992sanf": "The waterfront plan designating the pier for historic ships and treating Pier 28 as temporary until it was done.",
+    "reportofmayorsci1974sanf": "A mayor's committee report describing the pier as one wall of the fishing basin, then unused for maritime purposes.",
+    "minutes2000sanf_4": "Port minutes convening closed sessions to negotiate over the pier as real property."
+   },
+   "pier-70": {
+    "agenda2009sanf_3": "A 2009 Port Commission agenda covering the annual contracting activity report and planning items for port property.",
+    "agendasanfranci2013sanf_2": "A 2013 Port Commission agenda taking up Orton Development's proposal to lease and rehabilitate the 20th Street Historic Buildings at Pier 70.",
+    "minutes2008sanf_1": "Port Commission minutes on developer shortlisting and the tax-increment projections in the Port's capital plan.",
+    "containertermina1986moff": "A 1986 study of where a consolidated container terminal could go, weighing Pier 70 alongside Piers 80 and 94–96 and the privately-held land between them."
+   },
+   "pier-80": {
+    "10yearcapitalpla2006port": "The Port's capital plan proposing bond-funded cargo upgrades while listing Pier 80 among unfunded projects.",
+    "containertermina1986moff": "An engineering study arguing for expanding Pier 80 into a single consolidated container terminal.",
+    "port1980port": "The Port's handbook listing the pier's berths, operators and the shipping lines it served.",
+    "C124881581": "The Mission Bay agreement, transferring 26 acres and adjacent streets to the Port beside the terminal.",
+    "agenda19sanf_47": "Port Commission agendas awarding crane equipment and shed repair contracts at the pier.",
+    "minutes1999sanf_1": "Commission minutes recording the consolidation of cargo operations at Pier 80."
+   },
+   "pier-96": {
+    "10yearcapitalpla2006port": "The Port's capital plan listing $15.4 million of work here with no funding source identified.",
+    "wharfside1978sanf_1": "The Port's newsletter on the pier's return from a bankrupt lessee and the search for new steamship tenants.",
+    "agenda19sanf_47": "Commission agendas buying crane spare parts and contracting crane maintenance at the pier.",
+    "agendasanfranci014sanf_14": "A later solicitation for a bulk export terminal operation at the pier.",
+    "minutes2007sanf_0": "A request for proposals for a maritime terminal on fifteen acres and 800 feet of berth space."
+   },
+   "portsmouth-square": {
+    "C101697812": "The 1998 draft environmental impact report for City College's Chinatown/North Beach campus, assessing sunlight access and the open spaces around Portsmouth Square.",
+    "sanfranciscomuni2109sanf": "The Controller's 2009 audit of the Portsmouth Plaza Parking Corporation, the non-profit operating the garage beneath the square.",
+    "findingsrecommen95cali": "A Civil Grand Jury report on off-street parking, examining the long-term ground leases and bond financing behind the city's non-profit garage corporations.",
+    "reporttosanfran1993sanf_1": "A management audit of city-owned garages, comparing the non-profit operators' management fees and legal costs.",
+    "bankofcantonofca1982sanf": "A 1982 environmental impact report for the Bank of Canton headquarters, assessing height, bulk and historic resources in the blocks below the square.",
+    "505montgomerystr2519city": "A 1983 environmental impact report for 505 Montgomery Street, mapping the shadows the tower would cast across nearby open space."
+   },
+   "potrero-division": {
+    "managementaudito1996budg": "A management audit citing costly design flaws in the division's renovation, and its undispatched runs.",
+    "urbanmasstranspo1986cali": "The federal transit programme listing $3,413,200 for Potrero Division modifications, with its local match.",
+    "munimemo1984sanf": "A staff paper explaining why Potrero had to be rebuilt before the articulated trolley coaches arrived.",
+    "trolleytopics19501952sanf": "A railway staff magazine describing the supervisory and fleet training courses run at the division.",
+    "agendapublicutil1986sanf": "Utilities Commission agendas on the division's roof waterproofing and its first-floor heating system contract.",
+    "0minutes200001sanf": "Citizens' advisory council minutes from a tour of Muni's yards, including Potrero."
+   },
+   "public-safety-building": {
+    "annualreportdepa2010sanf": "Public Works' annual report, putting the project at $239 million among the bond's three components.",
+    "citycountyofsanf8201sanf": "The voter pamphlet for the bond that paid for the building, naming what it would house.",
+    "agenda2010arts_0": "An Arts Commission report noting the building as a new project for its visual arts committee.",
+    "agendasminutesvi2014arts": "Arts Commission minutes on the installation of Shimon Attie's artwork at the finished building."
+   },
+   "randall-museum": {
+    "annrep778085899091sanf": "Annual reports listing the museum's programmes — rockets, computers, a boat club, live animals, daily films.",
+    "generalmanagersr1992sanf": "Open-space fund papers allocating $20,000 to the museum and prioritising its environmental centre, garden and pond.",
+    "minutes1992sanf_1": "Citizens' advisory committee minutes carrying the museum's projects among the fund's priorities.",
+    "minutesrecreatio1986sanf": "Commission minutes transferring bequest money for a museum master plan, and negotiating over Museum Way development."
+   },
+   "richmond-branch-library": {
+    "branchlibraryimp3200sanf": "The bond proposal describing the 1914 Carnegie building, the first branch the city built with that money.",
+    "minutesofregular2002sanf": "Library Commission reports tracking the renovation and the community meeting held at the branch.",
+    "noticeofartistse19arts": "The notice convening a selection panel of Richmond residents to choose artists for the renovated branch.",
+    "agenda20arts_0": "Arts Commission resolutions approving Vince Koloski's illuminated book-wall sculpture and his contract.",
+    "2calendarmeetingo1995sanf": "Budget Committee papers allocating earthquake bond funds to the renovation and reserving $980,400 pending a contractor."
+   },
+   "san-francisco-zoo": {
+    "minutesrecreatio1974sanf": "1974 Recreation and Park Commission minutes, the resolutions governing zoo concessions and gifts alongside the department's other properties.",
+    "performanceaudit1119sanf": "The Budget Analyst's management audit of the zoo for the Board of Supervisors, conducted under Charter Section 2.114 while the zoo was run by the San Francisco Zoological Society.",
+    "sanfranciscozool1519sanf": "The final environmental review of the zoo's master plan, certified by the Planning Commission in January 1998.",
+    "sanfranciscozool1995sanf": "A 1995 engineering report for Public Works on the state of the zoo's underlying infrastructure.",
+    "annualreport195861sanf": "A Recreation and Park annual report recording rising zoo attendance, which it credits to the Zoological Society's publicity and to newly acquired animals."
+   },
+   "sf-city-hall": {
+    "historicstructur1219care": "The 1993 historic structure report on the building's fabric, prepared for the Bureau of Architecture.",
+    "C124921847": "The Task Force on Prostitution's report, recording a forum held at City Hall for sex workers to testify.",
+    "C124925524": "A regional survey counting San Francisco's seismic retrofits, City Hall among roughly seventy buildings.",
+    "agendasanfranci014sanf_35": "An Airports Commission calendar convening at City Hall rather than at the airport.",
+    "taxicabcommissio2000sanf": "Taxicab Commission agendas meeting in Room 400.",
+    "minutescitycount2000sanf": "Assessment Appeals Board hearings convened in Rooms 405 and 406.",
+    "municipalrecordc191710sanf": "The Board of Supervisors' weekly record, published from City Hall to preserve the city's current history.",
+    "2minutes1999sanf": "Finance Committee agendas meeting in Room 263, with instructions for written public comment."
+   },
+   "sf-main-library": {
+    "C101744619": "A Civil Grand Jury interim report finding that many city departments and commissions simply were not filing their required reports with the library's Documents Department, as the Administrative Code obliges them to.",
+    "historicstructur02page": "A 1998 historic structure report on the Old Main Library by Page & Turnbull, documenting the granite steps and elevations before its conversion to the Asian Art Museum.",
+    "sanfranciscopubl7200sanf": "The library's own strategic plan for 2003-2006, in draft, setting out how it would reprioritise its resources.",
+    "minutesofregular1998sanf": "Minutes of the Library Commission's regular meetings, the body that governs the system.",
+    "noticecommunityg2014sanf": "A notice listing the community groups meeting in the Main and branch libraries — the buildings in use as neighbourhood civic space.",
+    "sanfranciscopub4200ripl_0": "A post-occupancy evaluation of the new Main Library, commissioned after the strategic audit, measuring how the finished building actually served the services inside it.",
+    "sanfranciscomain7199sanf": "The 1991 draft environmental review for building the new Main Library."
+   },
+   "sffd-division-of-training": {
+    "1annualreport197174sanf": "The department's annual report placing the division at 2310 Folsom Street on its organisation chart.",
+    "minutesoffirecom2002sanf": "Commission minutes receiving the division's monthly report on its activities.",
+    "1minutes200203sanf": "A management audit finding the department's training split across three sections and three locations.",
+    "9agenda2006sanf": "A commission agenda with the division's recruit training captain addressing the commission.",
+    "journalofproceed1975sanf": "Fire Commission proceedings naming the division's chief and filing its accident reports."
+   },
+   "sffd-station-1": {
+    "surveyoffirehous1951vens": "The 1951 firehouse survey, noting that pre-1906 plans were lost in the fire.",
+    "reporttosanfran1992sanf_0": "A review of earthquake spending recording Station 1 as completed under Phase I of the safety bond.",
+    "reportonplanfor1952sanf": "The 1952 plan for firehouse locations, recommending which stations to keep and which to abandon.",
+    "ounceofpreventio1619cali": "A state hearing report listing seismic funding allocated to San Francisco fire stations.",
+    "reportofboardoff1892sanf": "An 1899 commissioners' report counting the company's apparatus, horses, alarms answered and inventory.",
+    "postquakerestor1519sanf_1": "The post-quake survey of city buildings, itemising the station among fire department sites.",
+    "minutesoffirecom2001sanf": "Fire Commission minutes with discipline and accident reports involving Engine 1."
+   },
+   "sharp-park": {
+    "annualreport196164sanf": "An annual report counting the park's rifle range and the competitions it hosted.",
+    "letteropinion71indexsanf": "City Attorney opinions on leasing the golf course to Pacifica and on its concessionaire.",
+    "igsl_san-francisco-real-prop-report_1971": "The property register listing the park among the city's holdings in San Mateo County.",
+    "igsl_san-francisco-real-prop-report_1999": "A later register edition, still carrying the park outside the city limits.",
+    "minutesboardofpa1945sanf": "Park commissioners' minutes on the camp buildings and the golf professional's rent."
+   },
+   "south-park": {
+    "preliminarymiti1420sanf_1": "An environmental determination for the adaptive reuse of One South Park.",
+    "alternativestore1996unit_0": "Freeway hearing testimony citing South Park among historic districts experiencing a rebirth.",
+    "rinconpointsouth2419envi": "A redevelopment environmental report placing the South Park neighborhood beside the project area.",
+    "programsrecommen1972sanf": "A planning report recording that of three South of Market parks, only South Park survived.",
+    "recreationopensp1973sanf": "The companion open-space programme, noting a promised replacement park was never developed.",
+    "generalmanagersr1975sanf": "Open-space fund papers allocating $50,000 to rehabilitate the play area and replace benches.",
+    "missionhousingde1620sanf": "A Controller's audit of the housing corporation running the South Park Street residential hotels."
+   },
+   "southeast-health-center": {
+    "sanfranciscochil1991ahma": "A lead-screening evaluation recording a 467 percent rise in screening at this centre, the network's largest.",
+    "bayviewhunterspo2004sanf": "A redevelopment environmental report describing the centre as the anchor of the Health Center Activity Node.",
+    "bayviewhunterspo2002bayv": "A community revitalisation plan listing the centre's staff among the project area committee.",
+    "budgetasapproved2002sanf": "Redevelopment Agency budgets starting and completing predevelopment studies for the centre's expansion.",
+    "agenda2003bayv_4": "Neighborhood committee agendas tracking the centre's development programme and the aging campus.",
+    "2minutes200102sanf": "Community facility commission minutes with the centre's executive director presenting its programmes."
+   },
+   "southeast-treatment-plant": {
+    "phasesiiiiiofres1819unit": "A federal environmental statement tracing Hunters Point's sewage flows to the plant.",
+    "draftenvironment1976yerb": "An environmental report stating the plant often cannot handle peak wet weather, discharging untreated sewage.",
+    "sanfranciscokais1319sanf": "An environmental report listing the sewer mains carrying a hospital campus's flows to the plant.",
+    "evaluationsanfra73jbgi": "A wastewater master plan evaluation giving the plant's flows, capacity and outfall into the Bay.",
+    "missionbaysubse1719sanf_1": "Public objections to the Mission Bay plan arguing the treatment plant was already strained.",
+    "stepifacilitiesp1979losa": "The facilities plan for a community building at the plant, with a greenhouse and skills training.",
+    "sanfranciscomast1519sanf": "The 1971 wastewater master plan, weighing options including phasing the plant out.",
+    "reportonwaterpol1971brow": "A consulting report on the city's water pollution control plants and their performance."
+   },
+   "stern-grove": {
+    "reportonstudyofp1947zuke": "A 1947 study noting the grove's fees and its concert programme sustained by voluntary contributions.",
+    "sigmundsterngrov2003halp": "Lawrence Halprin's improvement plan for the grove and Pine Lake Park, with its consultant team.",
+    "annualreport196770sanf": "An annual report describing the Stern Grove Carnival staged with a cast of 1,500.",
+    "annrep778085899091sanf": "Annual reports placing Pine Lake Day Camp at the grove's western end and a Spring Festival in it.",
+    "annualreport1950sanf": "A report listing the grove among the department's special activity centres.",
+    "annualreportofsa1949sanf": "A commission report locating the grove at 19th Avenue and Sloat Boulevard among the city's facilities.",
+    "sterngrovepinela2005sanf": "A project update recording the concert meadow's renovation, completed through a festival association gift."
+   },
+   "sunol-water-temple": {
+    "alamedawatershed1998sanf": "An appendix to the Alameda Watershed management plan, weighing gravel extraction and restoration alternatives north of Interstate 680 on the land around the temple.",
+    "sanfranciscopubl2006esaf": "The response volume for the dam-removal review, which warns that the water flowing through the temple is a character-defining feature — 'inflows are the temple's reason for being' — and that losing them could be read as a loss of integrity.",
+    "sanfranciscopubl2005sanf": "The environmental review of removing Sunol and Niles dams, explaining that groundwater recovered by the infiltration galleries discharges through the temple before running on to the Sunol Aqueduct.",
+    "sanfranciscowate2005hans": "The utility's history records that Spring Valley Water Company built the temple in 1910, to the design of Willis Polk, marking where its three East Bay water sources met.",
+    "americanswithdis00sanf": "The Water Department's 1997 disability-access transition plan, which schedules the work needed to bring the temple's public areas into compliance alongside the Pulgas temple and the Sunol treatment plants."
+   },
+   "sunset-branch-library": {
+    "branchlibraryimp3200sanf": "The bond proposal describing the 1918 Carnegie building — concrete frame, reinforced masonry, 8,576 square feet.",
+    "minutesofartcomm1954sanf": "Art Commission minutes reviewing a Sunset branch and community centre submission.",
+    "minutesofregular7194sanf": "1940s commission resolutions covering painting, gutters and an iron ladder at the branch.",
+    "resolution2002sanf_0": "A Board resolution accepting a $10,000 state grant to expand the branch's Asian language collection.",
+    "adultcalendarofp1997sanf": "A programme calendar showing the branch's slide talks and evening events.",
+    "agenda19891991arts": "Civic Design Review minutes on the branch's disabled access and its seismic bracing through the facade."
+   },
+   "sunset-reservoir": {
+    "sanandreaspipeli3079sanf": "An environmental report for a 66-inch pipeline proposed to increase flows to the reservoir.",
+    "feasibilityevalu1919ch2m": "A Lake Merced study weighing diversion of the reservoir's dewatering into the lake.",
+    "C124889945": "A history of the municipal water system, tracing the Sunset Pipeline that feeds the reservoir.",
+    "citydistribution7200sanf": "The commission's capital programme, recording the North Basin's 1938 roof and circulation problems.",
+    "reportofsanfranc1957sanf": "A water department report giving the daily volumes pumped to the reservoir from the Sunset Pipeline.",
+    "C101694962": "The task force's engineering correspondence on the reservoir upgrade it was asked to review.",
+    "finalreportjune12002sanf": "The infrastructure task force's report, judging the reservoir's stabilisation and seismic project poorly planned.",
+    "reportofsanfranc1937sanf": "A commission report listing the reservoir and its connecting pipes among 1933 bond contracts."
+   },
+   "tom-waddell-clinic": {
+    "sanfranciscodepa2005sanf": "The department's annual report listing the clinic and its community advisory board.",
+    "agendahealthcomm2013sanf": "The Director of Health announcing the clinic's opening at 230 Golden Gate Avenue.",
+    "agenda200304sanf": "Committee papers on the sobering centre partnership and the opiate treatment pilot run through the clinic.",
+    "minutes1997sanf": "Health Commission minutes recording an advisory board member's public praise for the clinic's care."
+   },
+   "union-square": {
+    "C124891981": "A 1984 study of sunlight and wind in four downtown areas, using Union Square as its worked example of how a new building's shadow would fall across a public space through the seasons.",
+    "C123300590": "The 1997 neighbourhood profiles, which give Union Square its own section with population and demographic breakdowns.",
+    "saksfifthavenueu1619sanf": "The 1978 review of the Saks Fifth Avenue project, weighing the demolition of the Fitzhugh Building and the displacement it caused, and studying how the new store's height would read from inside the square.",
+    "116124maidenlane8199sanf": "A 1999 environmental report for 116-124 Maiden Lane, on the rare homogeneous block of early twentieth-century commercial architecture off the square.",
+    "neimanmarcusdepa1978sanf": "The 1978 draft environmental report for the Neiman-Marcus store at Geary and Stockton, including the glass dome over the rotunda.",
+    "destinationdownt1994rose": "The 1994 downtown streetscape study, which found over 30% of downtown shoppers arrive on foot and proposed improvements for the Union Square area.",
+    "destinationdown1319rose_0": "The 1995 summary of the downtown streetscape plan, setting walkability investment against the 12 million tourists visiting each year.",
+    "destinationdownt1319rose": "The full 1995 downtown streetscape plan, with its street typology and the financing chapter for Union Square area improvements.",
+    "sanfranciscosnei1998sanf": "A 1998 Planning Department study of the city's neighbourhoods, with demographic and economic indicators for the downtown district."
+   },
+   "university-mound-reservoir": {
+    "reportofsanfranc1936sanf": "A commission report listing the reservoir's addition among contracts let under the 1933 bond issue.",
+    "sanfranciscowate00sanf": "A 1935 account giving the reservoir's capacity, elevation, and the pressure zone it supplies.",
+    "springvalleywate06spri": "Testimony from the Spring Valley water litigation appraising the reservoir's excavation cost per yard.",
+    "facilitiesreliab2000wate": "A regional reliability study describing the city's east-side pressure zones served from this reservoir.",
+    "bulletinofdepart1909sanf": "Health department bulletins recording water samples taken at the reservoir's intake in 1908."
+   },
+   "veterans-building": {
+    "civiccenterstudy1994sanf": "A Civic Center study describing the building's setbacks, Memorial Court and terracotta facing.",
+    "civiccenterstud1994sanf_0": "A cultural facilities plan recording the building's 1932 opening and its 1977 conversion into the Herbst Theater.",
+    "civiccenterdevel1987sanf": "A development programme listing the building among the Civic Center's completed monumental works.",
+    "taxicabcommissio1999sanf": "A Taxicab Commission special meeting convened in the Herbst Theater.",
+    "agenda1994sanf": "Charter reform committee agendas meeting in Room 219 of the Veterans Building."
+   },
+   "war-memorial-opera-house": {
+    "sanfranciscoperf1119sanf": "An environmental report for the performing arts centre built on the parking lot south of the Opera House.",
+    "annalsofsanfranc02fost": "A Federal Theatre Project history of the city's earlier opera houses and stages.",
+    "sttmntsofact19631978warm": "The trustees' own statements of activities, itemising repairs from the gold curtain to the carpeting.",
+    "reportonrehabili1196publ": "The 1965 rehabilitation study of the War Memorial Center by three architecture firms for the trustees.",
+    "anthologyofmusic00unit": "A WPA anthology of music criticism on who filled the city's opera house and its treasury.",
+    "sanfrancisc1119391940sanf": "A school district bulletin convening the teachers' institute in the Opera House in 1939.",
+    "calendarofevents2008sanf": "The centre's calendar, recording that the city owns and operates the Opera House."
+   },
+   "washington-square": {
+    "addendumtosupple2013unit": "A Central Subway environmental addendum giving the square's 2.15 acres and its historic district.",
+    "supplementaldraf2007unit": "The subway's supplemental report weighing a construction tunnel near the square to extract the boring machine.",
+    "sanfranciscothea193910sanf": "A history of Italian theatre describing crowds gathering in the square in 1905.",
+    "minutesofartcomm1957sanf": "Art Commission resolutions siting the 1957 Annual Art Festival in the square, with the park commission's permission.",
+    "whatsdoinginpark1988sanf": "Departmental events bulletins listing art shows staged in the square.",
+    "minutesrecreatio1989sanf": "Commission minutes reserving the square for art shows and funding the Marini Plaza renovation beside it."
+   },
+   "zuckerberg-sf-general-hospital": {
+    "performanceeffic202008san": "A Controller's review benchmarking the hospital's clinical quality, productivity and 97 percent occupancy.",
+    "overtimepayexpen1519sanf": "A Budget Analyst review of overtime, showing the hospital's payroll and staffing scale.",
+    "sanfranciscogene1519sanf": "An environmental report for the hospital's parking garage.",
+    "sanfranciscogene4200sanf": "The helipad feasibility study the Health Commission ordered after adopting the trauma care system plan.",
+    "C124908498": "A study of homeless programmes costing the hospital's care for patients with no address or payer at $9.1m.",
+    "sanfranciscogene2007sanf": "The hospital's institutional master plan update, with the helipad, generators and a new acute care hospital.",
+    "sanfranciscogene1987sanf": "The earlier master plan, with its transportation study and the skilled nursing bond programme.",
+    "C124917894": "A budget memo tracing General Fund contributions to the hospital and the AIDS office across a decade."
+   }
+  },
+  "payee": {
+   "charles-pankow-builders-ltd": {
+    "missionbaysubseq1719sanf": "The Mission Bay review took its construction traffic and parking projections straight from tables this firm supplied in 1997.",
+    "ordinance2016sanf": "An ordinance waiving the City's competitive-bidding rules under Administrative Code 6.61 to approve this firm as general contractor on the project."
+   },
+   "chicago-title-company": {
+    "C124920436": "A 1991 environmental review that cites a preliminary title report prepared by this company's Alameda County office to establish a right of access across the site."
+   },
+   "children-s-council-of-san-francisco": {
+    "reporttoboardof1997boar_0": "A Budget Analyst review of community development grants, describing this body as providing technical assistance to improve child and daycare services across the city."
+   },
+   "city-college-of-san-francisco": {
+    "C101697812": "The environmental review of the Chinatown/North Beach campus, recording the college's conditional agreements to buy the Columbus Avenue site and the adjacent parcel in 1997.",
+    "C101697894": "The volume answering objections to that Chinatown/North Beach review, before it was certified in July 1998.",
+    "C119703507": "The volume answering objections to the Mission campus review, published for comment in May 1998.",
+    "C101697900": "The environmental review of the Mission campus, which records that the college was leasing all three of its sites there from the school district.",
+    "C124914175": "A land use plan for Hunters Point Shipyard, which surveyed local training providers and found this college already offering the technician and two-year technical degrees the planned jobs would need."
+   },
+   "department-of-social-services": {
+    "C124908498": "A 1994 study for the Board of Supervisors tabulating what the City paid each homeless-services provider and what each was contracted to deliver.",
+    "C124918250": "The general plan's housing analysis, recording the redevelopment agency's homeless programme growing from one member of staff to seven, and its new partnership with this department.",
+    "beyondshelterhom1990sanf": "The 1990 statement of need, describing the housing referral unit this department set up with the Mayor's Office and community agencies at the Red Cross disaster centre after the earthquake.",
+    "beyondshelterhom1989sanf": "The 1989 implementation plan, in which this department, the Housing Authority, Public Health and the Redevelopment Agency form the City's first joint approach to homelessness."
+   },
+   "episcopal-community-svcs-of-s-f-inc": {
+    "civilgrandjuryre200809cali": "A Civil Grand Jury review of the City's nonprofit funding, in which this organisation appears among the scored grantees."
+   },
+   "kaiser-foundation-health-plan-inc": {
+    "annualreport19581971sanf": "The Health Service System's report on the four medical plans open to city employees, of which this was Plan II — an alternative added from 1947 alongside the System's own plan.",
+    "annualreportofhe19581971s": "The 1971 report on the same four plans, with this one still offered as Plan II beside the City's own medical-hospital plan.",
+    "kaiserpermanente1994kais": "The medical centre's master plan, setting out the terms on which the City's employees enrol — payroll verification, credit checks, and an obligation to offer the plan to all eligible staff on terms no worse than any alternative.",
+    "annualdepartment19711981sanf": "A departmental report to the mayor recording that the Health Service System had become a fully budgeted city department in 1961, and listing this plan as Plan II of the four then open to staff."
+   },
+   "mckesson-corporation": {
+    "environmentalimp2119sanf": "A 1983 downtown environmental review calculating how much new shadow a proposed tower would cast on Foremost-McKesson Plaza on spring and summer mornings.",
+    "C124886581": "The mayor's 1982 state-of-the-city address, announcing that this company's board chairman would lead the reconstituted Private Industry Council as federal job-programme funding fell by two thirds.",
+    "C124884963": "A survey of the city's commercial and industrial base, naming this company among the handful of major employers whose decisions could determine the Mission's industrial future.",
+    "C124892675": "A Bay Area Council study of corporate restructuring, carried out by a mergers-and-acquisitions task force on which this company sat alongside Chevron, Bank of America and McKinsey."
+   },
+   "pacific-gas-electric-co": {
+    "C124904191": "A 1979 review of a proposed resource conversion centre, the product of several years of joint work between the City, the Sanitary Fill Company and this utility to find an alternative to landfill.",
+    "annualreportofci197175san": "The City Attorney's report of the year's litigation, which includes Mark v. Pacific Gas & Electric Co. and the City, where a nonsuit was affirmed.",
+    "annualreportofco1944sanf": "The wartime Controller's accounts, which put $831,750.39 of the year's water and power operating expenses down to this utility's service charges and transmission rentals.",
+    "reportofbureauof19241925s": "The City Engineer's 1924 recommendation that the Board instruct the City Attorney to bring eminent domain proceedings and seize the parts of this company's distribution system needed to serve San Francisco."
+   },
+   "progress-foundation": {
+    "officeofsherifff1420sanf": "An audit of the Sheriff's programme for mentally ill offenders, recording that this organisation supplied the mental-health team doing assessment, case management and medication.",
+    "C101744877": "A Budget Committee analysis of mental-health contracts, itemising this organisation's residential programmes — La Posada among them — with the cost and the City's share of each.",
+    "C124905450": "The City's 1992 housing affordability strategy, which records this organisation running four residential care programmes with typical stays of three to five months."
+   },
+   "ranger-pipelines-inc": {
+    "humanrightscomm2220sanf_0": "A Controller's compliance audit examining Public Works' dealings with this contractor's joint venture — the firm is the subject of the audit, not a mention in it."
+   },
+   "richmond-area-multi-services-inc": {
+    "departmentofpubl2006sanf": "The Health Department's 2006 check that the nonprofits it funds filed the independent audits federal rules require, this organisation among them.",
+    "departmentofpubl1520sanf": "The same monitoring exercise for 2004.",
+    "departmentofpubl1820sanf": "The same monitoring exercise for 2005.",
+    "C101744877": "A Budget Committee analysis of the City's mental-health contracts, listing each provider's programmes with their cost and the City's share."
+   },
+   "san-francisco-county-transportation-auth": {
+    "vannessavenuebus2013vasq_0": "The final review of the Van Ness bus rapid transit project, carrying the state and federal agencies' comment letters addressed to this authority as the project's sponsor."
+   },
+   "san-francisco-unified-school-district": {
+    "C123298621": "A 1993 management audit of the Housing Authority, which found $1.9 million of payments-in-lieu-of-tax owed, roughly $200,000 of it due to special districts including this one.",
+    "C101697812": "A campus environmental review recording the long-term lease this district granted City College in 1981 for the former Hancock Grammar School.",
+    "C101697900": "The environmental review of City College's Mission campus, which at the time was operating on three sites leased from this district.",
+    "C124925153": "The housing element's data analysis, which singles out this district — with Muni — as one of the few city agencies holding land that could take new housing."
+   },
+   "sf-bay-area-rapid-transit-district": {
+    "annualreportsanf1953sanf": "A Public Utilities Commission report noting the $125,000 the Board of Supervisors put up in May 1959 for a city transit study, run in coordination with this district's own survey."
+   },
+   "tenderloin-housing-clinic-inc": {
+    "C124908498": "A 1994 study for the Board of Supervisors recording $95,000 of emergency shelter grant money to this organisation for housing placement services.",
+    "C101694360": "The Tenderloin 2000 survey, inventorying the neighbourhood's shelter beds and supported housing room by room.",
+    "C101744877": "A Budget Committee analysis of the City's mental-health and housing contracts, itemising each provider's programmes and their cost.",
+    "C101697894": "The response volume for the City College Chinatown campus review, answering objections — this organisation's director among the commenters — about replacement housing and relocation for displaced tenants."
+   },
+   "turner-construction-co": {
+    "yerbabuenacente2519sanf_0": "The Yerba Buena environmental review, which sourced its construction-period sewage flow figures from this company.",
+    "C101694740": "The redevelopment plan for Yerba Buena, recording this company's agreement over where excavation dewatering waste would be discharged to avoid overloading the Fourth Street pumping station.",
+    "C124883419": "A 1976 bond prospectus for the civic buildings, naming this company as construction manager across the whole programme.",
+    "C124883400": "The companion 1976 bond issue, with this company again as construction manager for the administration building, hall of justice and service complex."
+   },
+   "webcor-builders": {
+    "C101696094": "A 2004 feasibility study of what development at Rincon Hill could fund, prepared for SPUR with this firm advising on construction cost."
+   },
+   "wu-yee-children-s-services": {
+    "reporttoboardof1995boar_0": "A Budget Analyst review of the public housing rehabilitation programme, listing this organisation among the bodies funded under it."
+   }
+  }
+ }
+}

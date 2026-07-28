@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.745486+00:00",
+ "generated_at": "2026-07-28T11:43:47.723195+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -29,6 +29,92 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 2465,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 100067793.5,
+    "n_vouchers": 2465
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 23578948.54,
+    "n_vouchers": 361
+   },
+   {
+    "code": "541100",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 20015868.44,
+    "n_vouchers": 741
+   },
+   {
+    "code": "527030",
+    "label": "Transportation Services",
+    "spend_class": "purchase",
+    "usd": 12511106.06,
+    "n_vouchers": 90
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 3201312.32,
+    "n_vouchers": 68
+   },
+   {
+    "code": "543210",
+    "label": "Rail Vehicle Supplies",
+    "spend_class": "purchase",
+    "usd": 2684622.95,
+    "n_vouchers": 23
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 698212.88,
+    "n_vouchers": 52
+   },
+   {
+    "code": "560290",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 114196.25,
+    "n_vouchers": 5
+   },
+   {
+    "code": "535210",
+    "label": "Freight-Delivery",
+    "spend_class": "unclear",
+    "usd": 74977.24,
+    "n_vouchers": 67
+   }
+  ],
+  "n_categories": 15,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 226513.22,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 226513.22,
+    "n_vouchers": 21
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

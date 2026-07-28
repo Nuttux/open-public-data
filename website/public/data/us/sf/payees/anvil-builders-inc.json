@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.733467+00:00",
+ "generated_at": "2026-07-28T11:43:47.702805+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -31,6 +31,128 @@
  "top_departments": [
   "PUC Public Utilities Commsn"
  ],
+ "profile": {
+  "n_vouchers": 748,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 223751185.4,
+    "n_vouchers": 551
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 13274672.94,
+    "n_vouchers": 120
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 2848479.62,
+    "n_vouchers": 50
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 509606.24,
+    "n_vouchers": 8
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 422180.1,
+    "n_vouchers": 11
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 134922.6,
+    "n_vouchers": 4
+   },
+   {
+    "department": "GNL General City -Data Cleanup",
+    "department_code": "GNL",
+    "usd": 0.0,
+    "n_vouchers": 4
+   }
+  ],
+  "n_departments": 7,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 216498171.89,
+    "n_vouchers": 479
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 6417950.7,
+    "n_vouchers": 21
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 349730.07,
+    "n_vouchers": 7
+   },
+   {
+    "code": "468111",
+    "label": "Sale Of Water-SF Consumers",
+    "spend_class": "purchase",
+    "usd": 64475.46,
+    "n_vouchers": 3
+   },
+   {
+    "code": "206810",
+    "label": "Liab Pybl fr Rest-Others",
+    "spend_class": "ledger",
+    "usd": 36000.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "528050",
+    "label": "Grounds Maintenance",
+    "spend_class": "purchase",
+    "usd": 6050.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "435250",
+    "label": "Port-Rent Parking",
+    "spend_class": "unclear",
+    "usd": 2280.64,
+    "n_vouchers": 1
+   },
+   {
+    "code": "527080",
+    "label": "Construction Management Svcs",
+    "spend_class": "purchase",
+    "usd": 2089.84,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 9,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 32218993.39,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 32218993.39,
+    "n_vouchers": 90
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000029283",
@@ -43,7 +165,7 @@
   },
   {
    "contract_no": "1000021241",
-   "title": "Westside Pump Reliab Imprv",
+   "title": "Westside Pump Reliab Improvement",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 28861656.73,
@@ -61,7 +183,7 @@
   },
   {
    "contract_no": "1000034131",
-   "title": "Sewpcp 040/041/043 Imprmnt",
+   "title": "Southeast Water Pollution Control Plant 040/041/043 Imprmnt",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 10770215.0,
@@ -70,7 +192,7 @@
   },
   {
    "contract_no": "1000034336",
-   "title": "JOC-108 Gnrl Eng (A-Licen)",
+   "title": "job order contract-108 General Eng (A-Licen)",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 6292500.0,
@@ -79,7 +201,7 @@
   },
   {
    "contract_no": "1000026612",
-   "title": "MST As-Needed Tree Srvs-HH",
+   "title": "MST As-Needed Tree Services-HH",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 1746000.0,
@@ -88,7 +210,7 @@
   },
   {
    "contract_no": "1000035010",
-   "title": "Sunnydale PS Safety Improv",
+   "title": "Sunnydale PS Safety Improvement",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 4921244.0,
@@ -97,7 +219,7 @@
   },
   {
    "contract_no": "1000024929",
-   "title": "Master As-Needed Tree Srvs",
+   "title": "Master As-Needed Tree Services",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 500000.0,
@@ -106,7 +228,7 @@
   },
   {
    "contract_no": "1000037194",
-   "title": "SEWPCP 940 Maint Bldg&Renv",
+   "title": "Southeast Water Pollution Control Plant 940 Maintenance Building&Renv",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 8165435.05,
@@ -115,7 +237,7 @@
   },
   {
    "contract_no": "1000035483",
-   "title": "Procuremt & Install Valves",
+   "title": "Procuremt & Installation Valves",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 5288360.0,

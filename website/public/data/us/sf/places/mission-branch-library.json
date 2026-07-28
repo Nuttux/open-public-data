@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.740065+00:00",
+ "generated_at": "2026-07-28T12:23:47.754102+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "mission-branch-library",
@@ -49,98 +49,23 @@
   "items": [],
   "payees": [],
   "n_payees": 0,
-  "payees_total_paid": 0,
-  "permits": [
-   {
-    "description": "priority process: renovation & addition & selective demo of library. update reading spaces, bookstacks, (n) community rm & children's library, add'l restrms, staff spaces & landscaped patio. (n) mech, electr & fire protection systems. basement, penthouse & attic updates.",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 13011337.0,
-    "status": "issued",
-    "permit_date": "2023-02-15",
-    "permit_year": 2023
-   },
-   {
-    "description": "priority process: renovation & addition & selective demo of library. update reading spaces, bookstacks, (n) community rm & children's library, add'l restrms, staff spaces & landscaped patio. (n) mech, electr & fire protection systems. basement, penthouse & attic updates.",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 13011337.0,
-    "status": "issued",
-    "permit_date": "2023-02-15",
-    "permit_year": 2023
-   },
-   {
-    "description": "horizontal addition",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 2500000.0,
-    "status": "complete",
-    "permit_date": "1997-10-27",
-    "permit_year": 1997
-   },
-   {
-    "description": "add fire sprinkler system to existing bldg. new system no old one underground by others",
-    "permit_type": "otc alterations permit",
-    "declared_cost_usd": 188700.0,
-    "status": "issued",
-    "permit_date": "2024-09-03",
-    "permit_year": 2024
-   },
-   {
-    "description": "installation of fire alarm system including a celluar dialer, initiating and notification devices. ref pa# 202104198808.",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 118230.0,
-    "status": "issued",
-    "permit_date": "2025-12-08",
-    "permit_year": 2025
-   },
-   {
-    "description": "installation of fire alarm system including a celluar dialer, initiating and notification devices. ref pa# 202104198808.",
-    "permit_type": "additions alterations or repairs",
-    "declared_cost_usd": 118230.0,
-    "status": "issued",
-    "permit_date": "2025-12-08",
-    "permit_year": 2025
-   }
-  ],
-  "n_permits": 13,
-  "permits_total_declared": 29209119.0,
-  "permits_by_year": [
-   {
-    "year": 1991,
-    "declared_usd": 60485.0
-   },
-   {
-    "year": 1997,
-    "declared_usd": 2500000.0
-   },
-   {
-    "year": 1998,
-    "declared_usd": 17000.0
-   },
-   {
-    "year": 1999,
-    "declared_usd": 68442.0
-   },
-   {
-    "year": 2001,
-    "declared_usd": 76000.0
-   },
-   {
-    "year": 2023,
-    "declared_usd": 26022674.0
-   },
-   {
-    "year": 2024,
-    "declared_usd": 188700.0
-   },
-   {
-    "year": 2025,
-    "declared_usd": 275818.0
-   }
-  ]
+  "payees_total_paid": 0
  },
- "photo": null,
- "photo_credit": null,
- "summary_en": null,
- "published": false,
+ "photo": "/img/us/sf/places/mission-branch-library.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/mission-branch-library.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Mission_Library,_San_Francisco.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Dreamyshade",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T23:53:17.077170+00:00"
+ },
+ "summary_en": "The Mission branch's renovation is one of the better-documented small capital projects in the library system, largely because the Budget Committee kept trimming it. In the mid-1990s the committee considered releasing $584,250 of 1988 Library Improvement Bond interest for the renovation, pulled the item off the consent calendar, and approved it amended — reduced to $289,250. The Arts Commission's Civic Design Review took the renovation through Phase I with the Bureau of Architecture, whose presentation located the branch on 24th Street between Mission and Valencia, with Bartlett Street and Orange Alley as its cross streets. The project also had a staffing dimension the Finance Committee scrutinised: a coordinator post funded from bond money fell vacant in May 1997, and the library was told it could ask for bond funds again later if internal project coordination proved necessary for the renovation. While the work went on the branch needed somewhere to be — the Real Estate Department brought forward a resolution authorising the lease of 2601 Mission Street for the Mission Branch Library. Through all of it the branch kept running the programme that fills its calendar: homework help, family storytime, and storytime in Spanish.",
+ "published": true,
  "money": {
   "budget_line": {
    "code": "LIB",
@@ -160,86 +85,48 @@
  },
  "documents": [
   {
-   "identifier": "agenda19arts_13",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
-   "year": 1988,
+   "identifier": "3calendarmeetingo1995sanf",
+   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
+   "year": 1993,
    "pool": "sfpl",
    "matched_alias": "Mission Branch Library",
    "ocr_excerpts": [
-    "Educaiion 'S Symi'iiony Conceris PUIIIIC ARI I'llOGIlAM Street Artists Licenses Sum 70 415.252.2581 IT Commission Gaiiery 155 Grovi Street 415.554.9682 City and County of San Francisco III. FIREHOUSE N0.2/SAN FRANCISCO INTERNATIONAL AIRPORT PHASE III Goqo Heinrich, Pro,1ect Manager IV. MISSION BRANCH LIBRARY RENOVATION PHASE I Victor Talatala, Bureau of Architecture V. CITY HALL SEISMIC UPGRADE PHASE I Tom Thornton, Tony Irons/Bureau of Architecture VI. GOLDEN GATE PARK CAROUSEL Color selection ^ Joanne Wilson, Recreation and Park Department Donna Ernstson, Friends of Recreation and Parks, Inc. V",
-    "e to FHA regulations. Jamie Baer indicated that tne project designers are proposing a change in material textures as a response to the Committee's instructions to study the contrast created bv the striping. The building will be seen from a distance of a half a mile. See Reports and Orders. IV. MISSION BRANCH LIBRARY RENOVATION Victor Talatala/Bureau of Architecture PHASE I The Mission Branch Library is located on 24th Street between Mis^on and Valencia Streets with Bartlett Street and Orange Alley Page 1 Civic Design Review Committee Minutes/September 18. 1993 IV. MISSION BRANCH LIBRARY CONT . as the cross streets. The prelect consists of remodeling the interior space f accommodate changes in programing and adding a new addition to the rear of the building which will include restrooms, additional offices, a mechanical equipment room, an elevator, an interior stairwell from the secon",
-    "the Art Commission Gallery. The chosen method for upgrade is the Gunite shear wall scheme which will have no impact on the exterior. The Gunite method retains the building's historic elements and disturbs the building as little as possible. The Commissioners thanked Mr. So for the presentation. IV. MISSION BRANCH LIBRARY RENOVATION PHASE I Victor Talatala, Glen Hunt/Bureau of Architecture Neel Parikh/San Francisco Public Library Vic Talatala introduced the Mission Branch library renovation. The Mission Branch library was designed by Albert Lansberg and built in 1915. Albert Lansberg also designed the Chinatown Branch library, recently reviewed by the Commission. Neel Parikh, Chief of Branches for the Library reviewed the program which had been developed for the Mission Library. The project has two funding sources, a federal grant and bond funds. As a library, the building is inefficient. The Mission Branch Library is the 3rd busiest branch with the focal point being the Spanish speaking community. To develop the programming for the library, the Library partnered with community agencies. This has Increased the library's activity by 30%. One need identified by Community participation was the need for a computer",
-    "l was recommended for the style and color of the toilet/kiosks. No approva"
+    "project. (Department of Electricity and Telecommunications. BUDGET COMMITTEE 1 UTES PAGE 2 d) File 101-93-105.2. [Reserved Funds, Public Library] Consideration of release of reserved funds, Public Library (1988 Library Improvement Bond Interest), in the amount of $584,250, for the renovation of Mission Branch Library. (Public Library) e) File 101-94-89.1. [Reserved Funds, Department of Public Works] Consideration of release of reserved funds, Department of Public Works, (Special Recreation and Park Revenue Funds - Rent Credit from San Francisco 49'ers), in the amount of $141,000 for improvements to Candlestick Par",
+    "MS d AND e REMOVED FROM CONSENT CALENDAR. REMAINING ITEMS a-c, e-f APPROVED. FILED. VOTE: 3-0. d) File 101-93-105.2. [Reserved Funds, Public Library] Consideration of release of reserved funds, Public Library (1988 Library Improvement Bond Interest), in the amount of $584,250, for the renovation of Mission Branch Library. (Public Library) SPEAKER: DEPARTMENTAL REPRESENTATIVE: Harvey Rose, Budget Analyst. IN SUPPORT: None. OPPOSED: None. ACTION: HEARING HELD. AMENDED. REDUCE AMOUNT TO $289,250 AND APPROVE. FILED. e) File 101-94-89.1. [Reserved Funds, Department of Public Works] Consideration of release of reserve",
+    "-975-3857 50124076.IJP 05/^5/95 1 10 Memo to Budget Committee July 19, 1995 Item Id - File 101-93-105.2 Department: Item: Amount: Source of Funds: Description: Public Library Department of Public Works (DPW) Release of reserved funds, in the amount of $584,250 for the renovation of the Mission Branch Library. $584,250 1988 Public Library Improvement Bond Interest As the result of the 1988 Public Library Improvement Bond measure, approved by the voters in 1988, the Mission Branch Library is slated to undergo the following renovations: seismic upgrading, handicapped accessibility, additional public space, and additional space for the Mission Branch Library's collections. Requested Release of Reserve In April of 1994, the Board of Supervisors approved a request for a supplemental appropriation from the 1988 Public Library Improvement Bond interest funds, which included an amount of $1,208,551 for the renovation of the Mission Branch Library (File 101-93-105). The Board of Supervisors placed the entire amount of $1,208,551 on reserve, pending the selection of a contractor, the contractor cost details, and the MBE/WBE status of the contractor. In September of 1994, the Board of Supervisors approved a release of $150,000 of the reserved amount of $1,208,551 to replace the heating system in the Mission Branch Library, leaving a balance of $1,058,551 on reserve. Although the reserved amount of $1,058,551 was originally reserved for the construction services of an outside contractor, DPW is now requesting that the proposed $584,250 release of "
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 5.8,
+    "score": 5.29,
     "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
     "substantive": false,
     "substantive_direct": true,
-    "hits": 4,
-    "density": 0.8,
+    "hits": 3,
+    "density": 0.79,
     "title_hit": false
    },
    "materiality": {
-    "score": -2.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/agenda19arts_13",
-   "deep_link": "https://archive.org/details/agenda19arts_13?q=Mission+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited (1983–1988)",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "5minutes1997sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
-   "year": 1997,
-   "pool": "sfpl",
-   "matched_alias": "Mission Branch Library",
-   "ocr_excerpts": [
-    "o coordinate the remaining work. According to Mr. Price, the subject position became vacant as of May 1, 1997, although the Public Library may request bond fund monies to fill the position at a future date, if it is determined that internal project coordination is needed for the renovation of the Mission Branch Library. 1. A related supplemental appropriation of bond interest earnings (Item 16, File 101-96-64) may be considered by the Finance Committee in closed session. 2. The proposed supplemental appropriation ordinance was prepared by the Public Library and the DPW in approximately July, 1996. However, the forme",
-    "national Federation of Professional and Technical Engineers, Local 21, AFL-CIO and the City and County of San Francisco. (Department of Human Resources) ACTION: File 64-97-6. [Lease of Property at 2601 Mission Street] Resolution authorizing the lease of real property at 2601 Mission Street for the Mission Branch Library. (Real Estate Department) ACTION: File 170-97-3. [Bond Sale] Resolution authorizing and directing the sale of not to exceed $26,000,000 City and County of San Francisco General Obligation Bonds (Golden Gate Park Improvements, 1992), Series 1997A and not to exceed $22,050,000 City and County of San",
-    "415^554-746* 34 Memo to Finance Committee May 21, 1997 Finance Committee Meeting Item 7 - File 64-97-6 Department: Item: Location: Department of Real Estate (DRE) Pubic Library Resolution authorizing and approving a new lease of space at 2601 Mission Street for a temporary location for the Mission Branch Library while the Mission Branch Library undergoes seismic reinforcement and renovations. Fifth floor of the Bay View Federal Bank building located at 2601 Mission Street Purpose of Lease: To provide a temporary location for the Mission Branch Library, located at 3359-24th Street while the Mission Branch Library undergoes seismic reinforcement and renovations. Lessor: Lessee: No. of Sq. Ft. and Cost Per Month: Annual Cost: Term of Lease: Utilities and Janitorial Services: Source of Funds: Description: Bay View Federal Bank City and County of San Francisco 5,198 square feet @ approximately $1.25",
-    "5 years beginning upon execution of the lease, with the City having an option to cancel the lease at any time after the second year. Landlord is responsible for utilities and janitorial services. 1988 Public Library Improvement Bond Interest Earnings The proposed five-year lease would allow the Mission Branch Library, currently located at 3359-24th Street, a City-owned building, to temporarily relocate during seismic reinforcement and renovation of the building. According to Mr. Jim Cheng of the Department of Public Works, the seismic reinforcement and renovation work is anticipated to begin in November of 1997 and the Branch is scheduled to "
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.39,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.39,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": -1.25,
+    "score": 1.75,
     "money": true,
     "decision": true,
     "accountability": false,
     "contestation": false,
     "named_genre": false,
-    "generic_serial": true
+    "generic_serial": false
    },
-   "url": "https://archive.org/details/5minutes1997sanf",
-   "deep_link": "https://archive.org/details/5minutes1997sanf?q=Mission+Branch+Library",
+   "url": "https://archive.org/details/3calendarmeetingo1995sanf",
+   "deep_link": "https://archive.org/details/3calendarmeetingo1995sanf?q=Mission+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "3 editions cited (1983–1997)",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Budget Committee papers cutting the branch's bond-funded renovation release from $584,250 to $289,250."
   },
   {
    "identifier": "adultcalendarofp1997sanf",
@@ -279,48 +166,103 @@
    "url": "https://archive.org/details/adultcalendarofp1997sanf",
    "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Mission+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "calendar",
+   "doc_type_label": "Calendar",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Calendar",
+   "salient": false,
+   "gloss": "A programme calendar showing the branch's homework help and Spanish-language family storytime."
   },
   {
-   "identifier": "3calendarmeetingo1995sanf",
-   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
-   "year": 1993,
+   "identifier": "5minutes1997sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
+   "year": 1997,
    "pool": "sfpl",
    "matched_alias": "Mission Branch Library",
    "ocr_excerpts": [
-    "project. (Department of Electricity and Telecommunications. BUDGET COMMITTEE 1 UTES PAGE 2 d) File 101-93-105.2. [Reserved Funds, Public Library] Consideration of release of reserved funds, Public Library (1988 Library Improvement Bond Interest), in the amount of $584,250, for the renovation of Mission Branch Library. (Public Library) e) File 101-94-89.1. [Reserved Funds, Department of Public Works] Consideration of release of reserved funds, Department of Public Works, (Special Recreation and Park Revenue Funds - Rent Credit from San Francisco 49'ers), in the amount of $141,000 for improvements to Candlestick Par",
-    "MS d AND e REMOVED FROM CONSENT CALENDAR. REMAINING ITEMS a-c, e-f APPROVED. FILED. VOTE: 3-0. d) File 101-93-105.2. [Reserved Funds, Public Library] Consideration of release of reserved funds, Public Library (1988 Library Improvement Bond Interest), in the amount of $584,250, for the renovation of Mission Branch Library. (Public Library) SPEAKER: DEPARTMENTAL REPRESENTATIVE: Harvey Rose, Budget Analyst. IN SUPPORT: None. OPPOSED: None. ACTION: HEARING HELD. AMENDED. REDUCE AMOUNT TO $289,250 AND APPROVE. FILED. e) File 101-94-89.1. [Reserved Funds, Department of Public Works] Consideration of release of reserve",
-    "-975-3857 50124076.IJP 05/^5/95 1 10 Memo to Budget Committee July 19, 1995 Item Id - File 101-93-105.2 Department: Item: Amount: Source of Funds: Description: Public Library Department of Public Works (DPW) Release of reserved funds, in the amount of $584,250 for the renovation of the Mission Branch Library. $584,250 1988 Public Library Improvement Bond Interest As the result of the 1988 Public Library Improvement Bond measure, approved by the voters in 1988, the Mission Branch Library is slated to undergo the following renovations: seismic upgrading, handicapped accessibility, additional public space, and additional space for the Mission Branch Library's collections. Requested Release of Reserve In April of 1994, the Board of Supervisors approved a request for a supplemental appropriation from the 1988 Public Library Improvement Bond interest funds, which included an amount of $1,208,551 for the renovation of the Mission Branch Library (File 101-93-105). The Board of Supervisors placed the entire amount of $1,208,551 on reserve, pending the selection of a contractor, the contractor cost details, and the MBE/WBE status of the contractor. In September of 1994, the Board of Supervisors approved a release of $150,000 of the reserved amount of $1,208,551 to replace the heating system in the Mission Branch Library, leaving a balance of $1,058,551 on reserve. Although the reserved amount of $1,058,551 was originally reserved for the construction services of an outside contractor, DPW is now requesting that the proposed $584,250 release of "
+    "o coordinate the remaining work. According to Mr. Price, the subject position became vacant as of May 1, 1997, although the Public Library may request bond fund monies to fill the position at a future date, if it is determined that internal project coordination is needed for the renovation of the Mission Branch Library. 1. A related supplemental appropriation of bond interest earnings (Item 16, File 101-96-64) may be considered by the Finance Committee in closed session. 2. The proposed supplemental appropriation ordinance was prepared by the Public Library and the DPW in approximately July, 1996. However, the forme",
+    "national Federation of Professional and Technical Engineers, Local 21, AFL-CIO and the City and County of San Francisco. (Department of Human Resources) ACTION: File 64-97-6. [Lease of Property at 2601 Mission Street] Resolution authorizing the lease of real property at 2601 Mission Street for the Mission Branch Library. (Real Estate Department) ACTION: File 170-97-3. [Bond Sale] Resolution authorizing and directing the sale of not to exceed $26,000,000 City and County of San Francisco General Obligation Bonds (Golden Gate Park Improvements, 1992), Series 1997A and not to exceed $22,050,000 City and County of San",
+    "415^554-746* 34 Memo to Finance Committee May 21, 1997 Finance Committee Meeting Item 7 - File 64-97-6 Department: Item: Location: Department of Real Estate (DRE) Pubic Library Resolution authorizing and approving a new lease of space at 2601 Mission Street for a temporary location for the Mission Branch Library while the Mission Branch Library undergoes seismic reinforcement and renovations. Fifth floor of the Bay View Federal Bank building located at 2601 Mission Street Purpose of Lease: To provide a temporary location for the Mission Branch Library, located at 3359-24th Street while the Mission Branch Library undergoes seismic reinforcement and renovations. Lessor: Lessee: No. of Sq. Ft. and Cost Per Month: Annual Cost: Term of Lease: Utilities and Janitorial Services: Source of Funds: Description: Bay View Federal Bank City and County of San Francisco 5,198 square feet @ approximately $1.25",
+    "5 years beginning upon execution of the lease, with the City having an option to cancel the lease at any time after the second year. Landlord is responsible for utilities and janitorial services. 1988 Public Library Improvement Bond Interest Earnings The proposed five-year lease would allow the Mission Branch Library, currently located at 3359-24th Street, a City-owned building, to temporarily relocate during seismic reinforcement and renovation of the building. According to Mr. Jim Cheng of the Department of Public Works, the seismic reinforcement and renovation work is anticipated to begin in November of 1997 and the Branch is scheduled to "
    ],
    "collection": "sanfranciscopubliclibrary",
    "relevance": {
-    "score": 5.29,
+    "score": 5.39,
     "sf_context": true,
     "rival_city": false,
     "citywide_serial": false,
     "substantive": false,
     "substantive_direct": true,
-    "hits": 3,
-    "density": 0.79,
+    "hits": 4,
+    "density": 0.39,
     "title_hit": false
    },
    "materiality": {
-    "score": 1.75,
+    "score": -1.25,
     "money": true,
     "decision": true,
     "accountability": false,
     "contestation": false,
     "named_genre": false,
-    "generic_serial": false
+    "generic_serial": true
    },
-   "url": "https://archive.org/details/3calendarmeetingo1995sanf",
-   "deep_link": "https://archive.org/details/3calendarmeetingo1995sanf?q=Mission+Branch+Library",
+   "url": "https://archive.org/details/5minutes1997sanf",
+   "deep_link": "https://archive.org/details/5minutes1997sanf?q=Mission+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Finance Committee papers on the vacant bond-funded coordinator post, and the lease of 2601 Mission Street."
+  },
+  {
+   "identifier": "agenda19arts_13",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
+   "year": 1988,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "ocr_excerpts": [
+    "Educaiion 'S Symi'iiony Conceris PUIIIIC ARI I'llOGIlAM Street Artists Licenses Sum 70 415.252.2581 IT Commission Gaiiery 155 Grovi Street 415.554.9682 City and County of San Francisco III. FIREHOUSE N0.2/SAN FRANCISCO INTERNATIONAL AIRPORT PHASE III Goqo Heinrich, Pro,1ect Manager IV. MISSION BRANCH LIBRARY RENOVATION PHASE I Victor Talatala, Bureau of Architecture V. CITY HALL SEISMIC UPGRADE PHASE I Tom Thornton, Tony Irons/Bureau of Architecture VI. GOLDEN GATE PARK CAROUSEL Color selection ^ Joanne Wilson, Recreation and Park Department Donna Ernstson, Friends of Recreation and Parks, Inc. V",
+    "e to FHA regulations. Jamie Baer indicated that tne project designers are proposing a change in material textures as a response to the Committee's instructions to study the contrast created bv the striping. The building will be seen from a distance of a half a mile. See Reports and Orders. IV. MISSION BRANCH LIBRARY RENOVATION Victor Talatala/Bureau of Architecture PHASE I The Mission Branch Library is located on 24th Street between Mis^on and Valencia Streets with Bartlett Street and Orange Alley Page 1 Civic Design Review Committee Minutes/September 18. 1993 IV. MISSION BRANCH LIBRARY CONT . as the cross streets. The prelect consists of remodeling the interior space f accommodate changes in programing and adding a new addition to the rear of the building which will include restrooms, additional offices, a mechanical equipment room, an elevator, an interior stairwell from the secon",
+    "the Art Commission Gallery. The chosen method for upgrade is the Gunite shear wall scheme which will have no impact on the exterior. The Gunite method retains the building's historic elements and disturbs the building as little as possible. The Commissioners thanked Mr. So for the presentation. IV. MISSION BRANCH LIBRARY RENOVATION PHASE I Victor Talatala, Glen Hunt/Bureau of Architecture Neel Parikh/San Francisco Public Library Vic Talatala introduced the Mission Branch library renovation. The Mission Branch library was designed by Albert Lansberg and built in 1915. Albert Lansberg also designed the Chinatown Branch library, recently reviewed by the Commission. Neel Parikh, Chief of Branches for the Library reviewed the program which had been developed for the Mission Library. The project has two funding sources, a federal grant and bond funds. As a library, the building is inefficient. The Mission Branch Library is the 3rd busiest branch with the focal point being the Spanish speaking community. To develop the programming for the library, the Library partnered with community agencies. This has Increased the library's activity by 30%. One need identified by Community participation was the need for a computer",
+    "l was recommended for the style and color of the toilet/kiosks. No approva"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.8,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.8,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -2.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda19arts_13",
+   "deep_link": "https://archive.org/details/agenda19arts_13?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Civic Design Review minutes taking the renovation through Phase I and locating the branch on 24th Street."
   }
  ],
  "dept_shelf": [
@@ -359,9 +301,9 @@
   }
  ],
  "_gate": {
-  "has_photo": false,
+  "has_photo": true,
   "n_documents": 4,
   "n_money_links": 1,
-  "meets_pre_summary": false
+  "meets_pre_summary": true
  }
 }

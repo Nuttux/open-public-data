@@ -26,6 +26,7 @@ const pt: Record<string, string> = {
   "fx.pagehook.aria": "Compartilhar",
   "fx.export.label": "Baixar",
   "fx.chart.source": "Fonte",
+  "fx.chart.source_label": "Fonte:",
   "fx.chart.data": "Dados",
   "fx.chart.method": "Método",
 

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.744243+00:00",
+ "generated_at": "2026-07-28T11:43:47.720778+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,10 +35,108 @@
  "top_departments": [
   "PUB Public Utilities Bureaus"
  ],
+ "profile": {
+  "n_vouchers": 3103,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 91822758.53,
+    "n_vouchers": 1435
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 19911709.5,
+    "n_vouchers": 1662
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 53823.2,
+    "n_vouchers": 6
+   },
+   {
+    "department": "CAT City Attorney",
+    "department_code": "CAT",
+    "usd": 18280.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "527080",
+    "label": "Construction Management Svcs",
+    "spend_class": "purchase",
+    "usd": 16812886.51,
+    "n_vouchers": 38
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 6879403.99,
+    "n_vouchers": 553
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 4974286.23,
+    "n_vouchers": 274
+   },
+   {
+    "code": "527010",
+    "label": "Architectural Services",
+    "spend_class": "purchase",
+    "usd": 4580707.22,
+    "n_vouchers": 69
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 71142.83,
+    "n_vouchers": 6
+   },
+   {
+    "code": "527070",
+    "label": "Env Contractor-Consulting Svcs",
+    "spend_class": "purchase",
+    "usd": 10016.95,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 1026892.92,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 1011984.3,
+    "n_vouchers": 117
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 14908.62,
+    "n_vouchers": 6
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000000333",
-   "title": "HHWP Power TRNSM Line CLRNC MI",
+   "title": "Hetch Hetchy Water and Power Power Transmission Line Clearance MI",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 12000000.0,
@@ -56,7 +154,7 @@
   },
   {
    "contract_no": "1000000327",
-   "title": "HHWP Power TRNSM Line CLRNC MI",
+   "title": "Hetch Hetchy Water and Power Power Transmission Line Clearance MI",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 2100000.0,

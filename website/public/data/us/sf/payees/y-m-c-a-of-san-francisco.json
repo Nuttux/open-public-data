@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.742073+00:00",
+ "generated_at": "2026-07-28T11:43:47.717005+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -27,6 +27,117 @@
  "top_departments": [
   "CHF Children;Youth & Families"
  ],
+ "profile": {
+  "n_vouchers": 6921,
+  "departments": [
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 61170062.2,
+    "n_vouchers": 4085
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 22795337.0,
+    "n_vouchers": 754
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 17838134.5,
+    "n_vouchers": 453
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 14717409.9,
+    "n_vouchers": 444
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 7261092.5,
+    "n_vouchers": 841
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 2370096.0,
+    "n_vouchers": 17
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 1624478.3,
+    "n_vouchers": 98
+   },
+   {
+    "department": "DT  GSA - Technology",
+    "department_code": "TIS",
+    "usd": 470386.0,
+    "n_vouchers": 38
+   }
+  ],
+  "n_departments": 23,
+  "categories": [],
+  "n_categories": 0,
+  "counts_are_floor": false,
+  "recent_fy": 2017,
+  "recent_total_usd": 18859614.1,
+  "n_recent_lines": 17,
+  "recent_lines": [
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 7436455.2,
+    "n_vouchers": 368
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2723236.0,
+    "n_vouchers": 52
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2370096.0,
+    "n_vouchers": 17
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 2317351.5,
+    "n_vouchers": 72
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1607112.6,
+    "n_vouchers": 29
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1500694.5,
+    "n_vouchers": 162
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

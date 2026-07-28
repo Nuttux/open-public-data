@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.735026+00:00",
+ "generated_at": "2026-07-28T11:43:47.705455+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,6 +37,187 @@
  "top_departments": [
   "HSA Human Services Agency"
  ],
+ "profile": {
+  "n_vouchers": 7325,
+  "departments": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 109984695.91,
+    "n_vouchers": 2585
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 34682120.6,
+    "n_vouchers": 1357
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 30213124.48,
+    "n_vouchers": 1302
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 16862309.88,
+    "n_vouchers": 718
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 12453493.04,
+    "n_vouchers": 691
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 4471017.46,
+    "n_vouchers": 338
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 1395852.44,
+    "n_vouchers": 239
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 447395.0,
+    "n_vouchers": 32
+   }
+  ],
+  "n_departments": 14,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 127792529.03,
+    "n_vouchers": 3159
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 5650450.28,
+    "n_vouchers": 449
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 2400457.57,
+    "n_vouchers": 119
+   },
+   {
+    "code": "506070",
+    "label": "Programmatic Projects-Budget",
+    "spend_class": "purchase",
+    "usd": 1772277.72,
+    "n_vouchers": 60
+   },
+   {
+    "code": "536510",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 388434.0,
+    "n_vouchers": 36
+   },
+   {
+    "code": "536440",
+    "label": "CalWorks Wage Subsidy",
+    "spend_class": "unclear",
+    "usd": 87154.67,
+    "n_vouchers": 45
+   },
+   {
+    "code": "530110",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 72288.91,
+    "n_vouchers": 109
+   },
+   {
+    "code": "536520",
+    "label": "Rent Assist-Behalf Of Clients",
+    "spend_class": "purchase",
+    "usd": 66268.45,
+    "n_vouchers": 5
+   }
+  ],
+  "n_categories": 15,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 18200643.06,
+  "n_recent_lines": 9,
+  "recent_lines": [
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 13853700.75,
+    "n_vouchers": 270
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2175777.69,
+    "n_vouchers": 35
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1030144.08,
+    "n_vouchers": 36
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 411844.24,
+    "n_vouchers": 47
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 400078.0,
+    "n_vouchers": 11
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Homeless Hsng And Supportv Svc",
+    "spend_class": "unclear",
+    "usd": 171404.3,
+    "n_vouchers": 17
+   }
+  ]
+ },
+ "identity": {
+  "description": "Larkin Street Youth Services is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under human services.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Larkin Street Youth Services",
+  "ein": "942917999",
+  "ntee_code": "P300",
+  "ntee_label": "Human services",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/942917999",
+  "checked_at": "2026-07-27T23:36:32.796423+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000017436",
@@ -49,7 +230,7 @@
   },
   {
    "contract_no": "1000012315",
-   "title": "Larkin - Aarti Support Svcs",
+   "title": "Larkin - Aarti Support Services",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 8972417.0,
@@ -58,7 +239,7 @@
   },
   {
    "contract_no": "1000013600",
-   "title": "Larkin - Suppt Svcs at G-House",
+   "title": "Larkin - Suppt Services at G-House",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 8574662.0,
@@ -148,7 +329,7 @@
   },
   {
    "contract_no": "1000035530",
-   "title": "Larkin - TL to RRH & Rising Up",
+   "title": "Larkin - TL to rapid re-housing & Rising Up",
    "department": "HOM Homelessness Services",
    "department_code": "HOM",
    "agreed_usd": 9952741.0,
@@ -157,7 +338,7 @@
   },
   {
    "contract_no": "1000033477",
-   "title": "RFP 8816-BHS TAY",
+   "title": "RFP 8816-Behavioral Health Services TAY",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 2776218.0,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.726879+00:00",
+ "generated_at": "2026-07-28T11:43:47.691288+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -28,6 +28,100 @@
  "top_departments": [
   "WTR Water Enterprise"
  ],
+ "profile": {
+  "n_vouchers": 3076,
+  "departments": [
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 1153637002.0,
+    "n_vouchers": 2079
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 341311105.3,
+    "n_vouchers": 240
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 60421333.13,
+    "n_vouchers": 532
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 58183090.1,
+    "n_vouchers": 87
+   },
+   {
+    "department": "JUV Juvenile Probation",
+    "department_code": "JUV",
+    "usd": 18214254.3,
+    "n_vouchers": 23
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 11402975.0,
+    "n_vouchers": 12
+   },
+   {
+    "department": "DEM Emergency Management",
+    "department_code": "ECD",
+    "usd": 10455072.3,
+    "n_vouchers": 16
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 3455788.7,
+    "n_vouchers": 49
+   }
+  ],
+  "n_departments": 14,
+  "categories": [
+   {
+    "code": "574110",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 3128341.03,
+    "n_vouchers": 20
+   },
+   {
+    "code": "552210",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 106893.83,
+    "n_vouchers": 14
+   }
+  ],
+  "n_categories": 2,
+  "counts_are_floor": false,
+  "recent_fy": 2018,
+  "recent_total_usd": 3235234.86,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 3128341.03,
+    "n_vouchers": 20
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 106893.83,
+    "n_vouchers": 14
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.728170+00:00",
+ "generated_at": "2026-07-28T11:43:47.693313+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -24,6 +24,116 @@
  "top_departments": [
   "MTA Municipal Transprtn Agncy"
  ],
+ "profile": {
+  "n_vouchers": 1788,
+  "departments": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 735689199.62,
+    "n_vouchers": 1788
+   }
+  ],
+  "n_departments": 1,
+  "categories": [
+   {
+    "code": "560290",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 700848088.65,
+    "n_vouchers": 595
+   },
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 16976578.34,
+    "n_vouchers": 13
+   },
+   {
+    "code": "541100",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 15735718.55,
+    "n_vouchers": 1070
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 1756551.46,
+    "n_vouchers": 96
+   },
+   {
+    "code": "529990",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 197657.47,
+    "n_vouchers": 7
+   },
+   {
+    "code": "560990",
+    "label": "Other Equipment",
+    "spend_class": "purchase",
+    "usd": 127086.82,
+    "n_vouchers": 1
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 42141.07,
+    "n_vouchers": 4
+   },
+   {
+    "code": "543210",
+    "label": "Rail Vehicle Supplies",
+    "spend_class": "purchase",
+    "usd": 5377.26,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 8,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 142067212.53,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Automotive & Other Vehicles",
+    "spend_class": "purchase",
+    "usd": 138227238.42,
+    "n_vouchers": 85
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 3710205.81,
+    "n_vouchers": 316
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Equipment",
+    "spend_class": "purchase",
+    "usd": 127086.82,
+    "n_vouchers": 1
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 2681.48,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000012860",

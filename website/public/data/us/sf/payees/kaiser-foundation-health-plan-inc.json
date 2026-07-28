@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.725850+00:00",
+ "generated_at": "2026-07-28T11:43:47.689621+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -27,6 +27,117 @@
  "top_departments": [
   "HSS Health Service System"
  ],
+ "profile": {
+  "n_vouchers": 201,
+  "departments": [
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "usd": 4349266617.35,
+    "n_vouchers": 198
+   },
+   {
+    "department": "FIR Fire Department",
+    "department_code": "FIR",
+    "usd": 10700.0,
+    "n_vouchers": 2
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 100.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 3,
+  "categories": [
+   {
+    "code": "556150",
+    "label": "Medical-Health Plan Providers",
+    "spend_class": "obligation",
+    "usd": 4348284756.64,
+    "n_vouchers": 109
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 582328.49,
+    "n_vouchers": 62
+   },
+   {
+    "code": "556140",
+    "label": "B Flx Medical-Claims Paid",
+    "spend_class": "obligation",
+    "usd": 211400.0,
+    "n_vouchers": 5
+   },
+   {
+    "code": "556200",
+    "label": "Medical-Medical Claims Paid",
+    "spend_class": "obligation",
+    "usd": 26462.0,
+    "n_vouchers": 5
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 10700.0,
+    "n_vouchers": 2
+   },
+   {
+    "code": "549990",
+    "label": "Other Materials & Supplies",
+    "spend_class": "purchase",
+    "usd": 123.52,
+    "n_vouchers": 2
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 100.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 4
+   }
+  ],
+  "n_categories": 8,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 523342909.82,
+  "n_recent_lines": 1,
+  "recent_lines": [
+   {
+    "department": "HSS Health Service System",
+    "department_code": "HSS",
+    "label": "Medical-Health Plan Providers",
+    "spend_class": "obligation",
+    "usd": 523342909.82,
+    "n_vouchers": 11
+   }
+  ]
+ },
+ "identity": {
+  "description": "Kaiser Foundation Health Plan Inc is an IRS-recognized tax-exempt organization in Oakland, CA, classified under health care.",
+  "method": "irs_bmf",
+  "confidence": 0.92,
+  "legal_name": "Kaiser Foundation Health Plan Inc",
+  "ein": "941340523",
+  "ntee_code": "E310",
+  "ntee_label": "Health care",
+  "city": "Oakland",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/941340523",
+  "checked_at": "2026-07-27T23:35:05.481775+00:00"
+ },
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

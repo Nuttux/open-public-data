@@ -1,0 +1,65 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import "@/app/fusion.css";
+
+import SfDeptContractsFiche from "@/components/us/SfDeptContractsFiche";
+import { deptDisplayName } from "../../us-sf-contracts-types";
+import { loadSfContractDept, sfContractDeptSlugs } from "../../data";
+import { fmtUsdCompact } from "@/lib/us/format";
+
+type Params = { slug: string };
+
+/**
+ * Full-page fallback for a department's CONTRACTS fiche — direct URL
+ * navigation. In-app clicks are intercepted by the root-level drawer at
+ * app/@drawer/(...)us/city/sf/contracts/dept/[slug].
+ *
+ * Sibling of contracts/type/[slug]: a department inside the contracts page
+ * is a contracts facet, not a shortcut into the budget explorer.
+ */
+
+export function generateStaticParams(): Params[] {
+  return sfContractDeptSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+  const { slug } = await params;
+  const d = loadSfContractDept(slug);
+  if (!d) return { title: { absolute: "Department not found" }, robots: { index: false } };
+  const label = deptDisplayName(d.name);
+  return {
+    title: `${label} — SF contracts`,
+    description: `San Francisco contracts held by ${label}: ${d.n_active} agreements active today for ${fmtUsdCompact(d.activeAgreedUsd)} agreed, its biggest suppliers and its sole-source position, from the SF Controller's open data.`,
+  };
+}
+
+export default async function SfDeptContractsPage({ params }: { params: Promise<Params> }) {
+  const { slug } = await params;
+  const d = loadSfContractDept(slug);
+  if (!d) return notFound();
+  const label = deptDisplayName(d.name);
+
+  return (
+    <main id="main-content" tabIndex={-1}>
+      <section className="fx-page-header">
+        <div className="fx-wrap">
+          <div className="fx-page-kicker">
+            <Link href="/us/city/sf/contracts" style={{ color: "inherit" }}>
+              ← San Francisco · Contracts
+            </Link>
+          </div>
+          <h1 className="fx-page-title" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
+            {label}
+          </h1>
+          <p className="fx-page-lede">
+            What this department buys, and from whom · department code {d.code}
+          </p>
+        </div>
+      </section>
+      <div className="fx-fiche-wrap">
+        <SfDeptContractsFiche d={d} />
+      </div>
+    </main>
+  );
+}

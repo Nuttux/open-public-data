@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.740868+00:00",
+ "generated_at": "2026-07-28T11:43:47.714838+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,111 @@
  "top_departments": [
   "MYR Mayor"
  ],
+ "profile": {
+  "n_vouchers": 1241,
+  "departments": [
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 92981803.8,
+    "n_vouchers": 611
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "usd": 28372679.57,
+    "n_vouchers": 309
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "DSS",
+    "usd": 14791947.3,
+    "n_vouchers": 268
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 8686925.19,
+    "n_vouchers": 52
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 418.42,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 5,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 123585693.76,
+    "n_vouchers": 689
+   },
+   {
+    "code": "553120",
+    "label": "Judgements - Legal Fees",
+    "spend_class": "unclear",
+    "usd": 418.42,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 2,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 21621264.05,
+  "n_recent_lines": 4,
+  "recent_lines": [
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 15497777.37,
+    "n_vouchers": 46
+   },
+   {
+    "department": "HOM Homelessness Services",
+    "department_code": "HOM",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 3940572.61,
+    "n_vouchers": 39
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2182495.65,
+    "n_vouchers": 13
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "label": "Judgements - Legal Fees",
+    "spend_class": "unclear",
+    "usd": 418.42,
+    "n_vouchers": 1
+   }
+  ]
+ },
+ "identity": {
+  "description": "Eviction Defense Collaborative Inc is an IRS-recognized tax-exempt organization in San Francisco, CA, classified under housing and shelter.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Eviction Defense Collaborative Inc",
+  "ein": "943342323",
+  "ntee_code": "L01",
+  "ntee_label": "Housing and shelter",
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/943342323",
+  "checked_at": "2026-07-27T23:37:27.438919+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000033215",

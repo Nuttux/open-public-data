@@ -187,6 +187,24 @@ models:
       - name: source_url
         tests: [not_null]
 
+  - name: mart_us_sf_payee_profile
+    description: >
+      What the City pays a payee FOR — per-vendor rollups by paying
+      department (all years) and by the City's own sub-object accounting
+      category (FY2018+, the chart-of-accounts renumbering floor), plus the
+      payee's most recently CLOSED fiscal year broken into department ×
+      category lines. Exists because SF vendors carry no registry id, so the
+      account coding on their own payment lines is the only description of a
+      payee derivable from the source itself. Feeds the payee fiches via
+      export_us_sf.py → normalize_sf_payees.py.
+    columns:
+      - name: vendor
+        tests: [not_null, unique]
+      - name: total_paid_usd
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
   - name: mart_us_sf_payee_materiality
     description: >
       Curated "what a payment buys" lines with amounts computed from the
@@ -333,6 +351,37 @@ models:
         tests: [not_null]
       - name: source_url
         tests: [not_null]
+
+  - name: mart_us_sf_payroll_family_distribution
+    description: >
+      The citywide pay distribution CUT BY job family — fiscal year ×
+      display_family, person grain. Each person is counted once, under the
+      family that paid them the most that year, and their WHOLE annual
+      compensation is attributed to it, so Σ histogram cells over families
+      equals the citywide histogram exactly (assert_us_sf_payroll_family_
+      distribution_reconciles). Carries p25/p50/p75/p90 (the "pay ladder":
+      what a kind of work actually pays) and the same $25k-bucket histogram
+      as mart_us_sf_payroll_distribution (bucket composition: who sits in a
+      given band). n_people_primary is NOT comparable to n_employees in
+      mart_us_sf_payroll_by_family_year — that mart counts a dual-role
+      person in both families, this one attributes them to one.
+      Privacy: families under 5 people get no percentile row; bucket cells
+      under 5 are pooled per year into a count-only 'Other roles' row that
+      names no family.
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: display_family
+        tests: [not_null]
+      - name: n_in_histogram
+        tests: [not_null]
+      - name: histogram
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, display_family]
 
   - name: mart_us_sf_payroll_high_earner_titles
     description: >

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.897330+00:00",
+  "generated_at": "2026-07-28T11:43:46.652879+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -6066,21 +6066,21 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "YMCA OF SAN FRANCISCO",
-            "amount_usd": 282.0,
-            "n_vouchers": 1,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "RENAISSANCE ENTREPRENEURSHIP CENTER",
             "amount_usd": 282.0,
             "n_vouchers": 1,
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "YMCA OF SAN FRANCISCO",
+            "amount_usd": 282.0,
+            "n_vouchers": 1,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           },
           {
@@ -10852,14 +10852,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581370",
-          "label": "GF-Environment",
+          "code": "581150",
+          "label": "GF-Con-Payroll-Personnel",
           "amount_usd": 150000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581150",
-          "label": "GF-Con-Payroll-Personnel",
+          "code": "581370",
+          "label": "GF-Environment",
           "amount_usd": 150000.0,
           "is_transfer_adjustment": false
         },
@@ -14404,6 +14404,12 @@
           "is_transfer_adjustment": false
         },
         {
+          "code": "581320",
+          "label": "GF-District Attorney",
+          "amount_usd": 150000.0,
+          "is_transfer_adjustment": false
+        },
+        {
           "code": "581330",
           "label": "GF-Bus & Ecn Dev",
           "amount_usd": 150000.0,
@@ -14412,12 +14418,6 @@
         {
           "code": "581093",
           "label": "Sr-SAS-Urban Forestry",
-          "amount_usd": 150000.0,
-          "is_transfer_adjustment": false
-        },
-        {
-          "code": "581320",
-          "label": "GF-District Attorney",
           "amount_usd": 150000.0,
           "is_transfer_adjustment": false
         },
@@ -14470,8 +14470,8 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581270",
-          "label": "GF-City Attorney-Legal Service",
+          "code": "581067",
+          "label": "Sr-DPW-Building Repair",
           "amount_usd": 50000.0,
           "is_transfer_adjustment": false
         },
@@ -14482,8 +14482,8 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581067",
-          "label": "Sr-DPW-Building Repair",
+          "code": "581270",
+          "label": "GF-City Attorney-Legal Service",
           "amount_usd": 50000.0,
           "is_transfer_adjustment": false
         },
@@ -16364,14 +16364,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "TRAINING",
-          "label": "Training",
+          "code": "RENTLSE_EQUIP",
+          "label": "Rents/Leases-Equipment",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "RENTLSE_EQUIP",
-          "label": "Rents/Leases-Equipment",
+          "code": "TRAINING",
+          "label": "Training",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -27107,14 +27107,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "TAX_LIC_PERM",
-          "label": "Taxes: Licenses/Permits",
+          "code": "UTILITIES",
+          "label": "Utilities",
           "amount_usd": 3000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "UTILITIES",
-          "label": "Utilities",
+          "code": "TAX_LIC_PERM",
+          "label": "Taxes: Licenses/Permits",
           "amount_usd": 3000.0,
           "is_transfer_adjustment": false
         }
@@ -30015,14 +30015,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581320",
-          "label": "GF-District Attorney",
+          "code": "581166",
+          "label": "GF-Immigrant and Language Serv",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581166",
-          "label": "GF-Immigrant and Language Serv",
+          "code": "581320",
+          "label": "GF-District Attorney",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
@@ -37557,18 +37557,9 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "YMCA OF SAN FRANCISCO",
+            "vendor": "CHINATOWN COMMUNITY DEVELOPMENT CENTER",
             "amount_usd": 33950.0,
-            "n_vouchers": 2,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "BAY AREA VIDEO COALITION",
-            "amount_usd": 33950.0,
-            "n_vouchers": 2,
+            "n_vouchers": 9,
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -37584,18 +37575,27 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "LAVENDER YOUTH RECREATION & INFO CTR",
+            "vendor": "BAY AREA VIDEO COALITION",
             "amount_usd": 33950.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "CHINATOWN COMMUNITY DEVELOPMENT CENTER",
+            "vendor": "YMCA OF SAN FRANCISCO",
             "amount_usd": 33950.0,
-            "n_vouchers": 9,
+            "n_vouchers": 2,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "LAVENDER YOUTH RECREATION & INFO CTR",
+            "amount_usd": 33950.0,
+            "n_vouchers": 1,
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -41750,14 +41750,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581670",
-          "label": "GF-Mayor'S - Cdbg",
+          "code": "581980",
+          "label": "GF-Tax Collector",
           "amount_usd": 120000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581980",
-          "label": "GF-Tax Collector",
+          "code": "581670",
+          "label": "GF-Mayor'S - Cdbg",
           "amount_usd": 120000.0,
           "is_transfer_adjustment": false
         },

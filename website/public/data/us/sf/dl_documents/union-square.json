@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.726011+00:00",
+ "generated_at": "2026-07-28T12:23:47.741165+00:00",
  "slug": "union-square",
  "name": "Union Square",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -41,8 +41,13 @@
    "url": "https://archive.org/details/saksfifthavenueu1619sanf",
    "deep_link": "https://archive.org/details/saksfifthavenueu1619sanf?q=Union+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The 1978 review of the Saks Fifth Avenue project, weighing the demolition of the Fitzhugh Building and the displacement it caused, and studying how the new store's height would read from inside the square."
   },
   {
    "identifier": "116124maidenlane8199sanf",
@@ -82,8 +87,13 @@
    "url": "https://archive.org/details/116124maidenlane8199sanf",
    "deep_link": "https://archive.org/details/116124maidenlane8199sanf?q=Union+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A 1999 environmental report for 116-124 Maiden Lane, on the rare homogeneous block of early twentieth-century commercial architecture off the square."
   },
   {
    "identifier": "neimanmarcusdepa1978sanf",
@@ -123,9 +133,58 @@
    "url": "https://archive.org/details/neimanmarcusdepa1978sanf",
    "deep_link": "https://archive.org/details/neimanmarcusdepa1978sanf?q=Union+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Plans & environmental review",
-   "salient": true
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "The 1978 draft environmental report for the Neiman-Marcus store at Geary and Stockton, including the glass dome over the rotunda."
+  },
+  {
+   "identifier": "C124891981",
+   "title": "Sun, wind, and comfort : a study of open spaces and sidewalks in four downtown areas",
+   "creator": null,
+   "year": 1984,
+   "pool": "dl",
+   "matched_alias": "Union Square",
+   "ocr_excerpts": [
+    "ccess in all parks and other open spaces under the jurisdiction of the Recreation and Parks Department. In the central core area, the new ordi- nance will protect the Civic Center Plaza; the Father Alfred Boedekker and Sergeant Macauly Parks in the Tenderloin; the Chinese playground, and Portsmouth and St. Mary's Squares in Chinatown; and Union Square, Justin Herman Plaza, and the Embarcadero Parks in the retail and office districts. In addition, several amendments +9 the city plan- ning code proposed in June, 1984 to implement the provisions of the Downtown Plan also deal with sun access. One would require protec- tion of solar access to public open spaces not under Parks and Recreat",
+    "dentify the seasons and times of day during which additional shadows will be cast. Figures 6, 7, and 8 demon- strate how sky exposure studies for several points can be linked to pro- vide a picture of sunlight availa- Figure 5. Sun Path Analysis for Clay Street _ bility patterns in a major downtown at Portsmouth Square space (in this case, Union Square). [— 2 5 to Figure 7. Points selected for solar access analysis on Union Square Figure 8. Seasonal analysis of the times during which sunlight is available at each point on Union Square Ls To translate the sun availabil- ity concerns into development policy guidelines, the Sun and Light Report proposed the use of sun profile planes and solar zones to establish height limits that would preserve sunlight in critica! public spaces. The sun profile planes were sug- gested as a way of establishing street wall heights an",
+    "ernal pressures for more intensive development. Market conditions and evolving city plan- ning policies are making the area south of Market Street the place 25 i s____ where much of the central district's future expansion will be taking place. The Tenderloin faces the threat of change brought about by the westward expansion of the Union Square Hotel District. Along San Francisco's former auto row on Van Ness Avenue, city planning policies encourage replacement of the exist- ing structures with high density housing built above street level commercial uses. In each of these areas, the project team evaluated existing land use, building, and activity pat- terns, existing and pro",
+    "te between the alley and Clay cause the ci - fort percentages to remain quite low. Se / LAYS a Y/ ON EE: Development Under Current Controls 57 Mitigated Development Tenderloin This study area (Figure 16) takes in a large portion of the Ten- derloin, the high density commercial and residential district lying to the west of Union Square. The area's easternmost blocks function as a part of the Union Square hotel district and includes the new Air- porter bus terminal and the 40 story Hilton Hotel Tower at Taylor and Ellis) anithes cesterob. the fa"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 7.89,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.89,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124891981",
+   "deep_link": "https://archive.org/details/C124891981?q=Union+Square",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "study",
+   "doc_type_label": "Study",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Study",
+   "salient": true,
+   "gloss": "A 1984 study of sunlight and wind in four downtown areas, using Union Square as its worked example of how a new building's shadow would fall across a public space through the seasons."
   },
   {
    "identifier": "destinationdown1319rose_0",
@@ -165,129 +224,13 @@
    "url": "https://archive.org/details/destinationdown1319rose_0",
    "deep_link": "https://archive.org/details/destinationdown1319rose_0?q=Union+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "C124891981",
-   "title": "Sun, wind, and comfort : a study of open spaces and sidewalks in four downtown areas",
-   "creator": null,
-   "year": 1984,
-   "pool": "dl",
-   "matched_alias": "Union Square",
-   "ocr_excerpts": [
-    "ccess in all parks and other open spaces under the jurisdiction of the Recreation and Parks Department. In the central core area, the new ordi- nance will protect the Civic Center Plaza; the Father Alfred Boedekker and Sergeant Macauly Parks in the Tenderloin; the Chinese playground, and Portsmouth and St. Mary's Squares in Chinatown; and Union Square, Justin Herman Plaza, and the Embarcadero Parks in the retail and office districts. In addition, several amendments +9 the city plan- ning code proposed in June, 1984 to implement the provisions of the Downtown Plan also deal with sun access. One would require protec- tion of solar access to public open spaces not under Parks and Recreat",
-    "dentify the seasons and times of day during which additional shadows will be cast. Figures 6, 7, and 8 demon- strate how sky exposure studies for several points can be linked to pro- vide a picture of sunlight availa- Figure 5. Sun Path Analysis for Clay Street _ bility patterns in a major downtown at Portsmouth Square space (in this case, Union Square). [— 2 5 to Figure 7. Points selected for solar access analysis on Union Square Figure 8. Seasonal analysis of the times during which sunlight is available at each point on Union Square Ls To translate the sun availabil- ity concerns into development policy guidelines, the Sun and Light Report proposed the use of sun profile planes and solar zones to establish height limits that would preserve sunlight in critica! public spaces. The sun profile planes were sug- gested as a way of establishing street wall heights an",
-    "ernal pressures for more intensive development. Market conditions and evolving city plan- ning policies are making the area south of Market Street the place 25 i s____ where much of the central district's future expansion will be taking place. The Tenderloin faces the threat of change brought about by the westward expansion of the Union Square Hotel District. Along San Francisco's former auto row on Van Ness Avenue, city planning policies encourage replacement of the exist- ing structures with high density housing built above street level commercial uses. In each of these areas, the project team evaluated existing land use, building, and activity pat- terns, existing and pro",
-    "te between the alley and Clay cause the ci - fort percentages to remain quite low. Se / LAYS a Y/ ON EE: Development Under Current Controls 57 Mitigated Development Tenderloin This study area (Figure 16) takes in a large portion of the Ten- derloin, the high density commercial and residential district lying to the west of Union Square. The area's easternmost blocks function as a part of the Union Square hotel district and includes the new Air- porter bus terminal and the 40 story Hilton Hotel Tower at Taylor and Ellis) anithes cesterob. the fa"
-   ],
-   "collection": "igscalocalgovdocs",
-   "relevance": {
-    "score": 7.89,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 2.89,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.0,
-    "money": false,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/C124891981",
-   "deep_link": "https://archive.org/details/C124891981?q=Union+Square",
-   "source_label": "Internet Archive — Democracy's Library",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "sanfranciscosnei1998sanf",
-   "title": "San Francisco's neighborhoods : evolving economic activities",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": 1998,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "ocr_excerpts": [
-    "orce 6 1 San Francisco Planning Department I June 1998 SAN FRANCISCO' S NEIGHBORHOODS; E V O i... V I N G ECONOMIC ACTIVITIES REF 330.9794 Sa528 San Francisco's neighborhoods : 1998 . 3. The Neighborhoods DEMOGRAPHIC AND ECONOMIC INDICATORS DOWNTOWN NEIGHBORHOODS Financial District 63 Union Square/Downtown Retail 64 RING NEIGHBORHOODS North Beach/Chinatown 65 Van Ness/Western Addition 66 Marina/Fillmore 67 Civic Center 68 South of Market (SOMA) 69 Potrero 70 OUTLYING NEIGHBORHOODS Mission 7 1 South Bayshore 72 Excelsior 73 West Portal/Twin Peaks 74 Noe Valley/Upper Market 75 Richmon",
-    "entralization, especially in eating and drinking places, as ring and outlying neighborhoods such as Marina/Fillmore, Richmond, and Potrero continue to grow in activity. Together, these three neighborhoods gained 3,000 jobs in eating and drinking places between I 983 and 1 994 while Financial District and Union Square/Downtown Retail lost 2, 1 00 such jobs. This grov\\^h is partly fueled by regional visitors traveling to these neighborhoods co eat. • Although the traditional visitor neighborhoods (Union Square/Downtown Retail, Financial District, Civic Center, and North Beach/Chinatown) remain strong, SOMA is taking on a more visible role in the Hotel sector with a substantial employment increase of more than four times over twelve years. As SOMA hosts more economic activities overall, as well as being the",
-    "hborhoods Finance, Insurance, and Real Estate and Corporate Headquarters In 1 994, Financial District was the clear leader in F.I.R.E./Corp activity with almost 67% of jobs (48,800) and 47% (2 I 00) of establishments, illustrating that larger firms are more centralized. The other downtown neighborhood, Union Square/Downtown Retail, along with the six ring neighborhoods accounted for most of the remaining employment (27% of the total, with SOMA providing the greatest share at 7%) and establish- ments (36% of the total, with Union Square/Downtown Retail having the greatest share at 7%). The eight outlying neighborhoods accounted for 6% of jobs but a substantially greater 1 7% of firms. Between 1 983 and 1994, F.I.R.E./Corp lost jobs and establishments in most neighborhoods. Employ- ment in this subgroup declined in ten neighborhoods. Th",
-    "1 0 1 million (3.4% of the total) and $86 million (2.9% of the total) respectively. San Francisco Planning Department 6 June 1998 SAN FRANCISCO'S NEIGHBORHOODS; EVOLVING ECONOMIC ACTIVITIES 5. Marina/ Fillmore 4. Van Ness/ Western Addition 3. North Beach/ Chinatown Financial District 2. Union Square/ -Downtown Retail G. Civic Center 6. Parks ide/ Lakeshore 7. SOMA 9. Potrero 8. Mission 0. South Bayshore NEIGHBORHOOD 1983 1994 CMC CENTER ' ■ 4945 EXCELSIOR 898 582 FINANCIAL DISTRICT 65004 48837 MARINA/FILLMORE 1366 1840 MISSION 541 443 NORTH BEA"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 7.11,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 2.11,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/sanfranciscosnei1998sanf",
-   "deep_link": "https://archive.org/details/sanfranciscosnei1998sanf?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "destinationdownt1994rose",
-   "title": "Destination downtown : streetscape investments for a walkable city",
-   "creator": "Rose, Evan Stuart,San Francisco (Calif.). Dept. of City Planning,San Francisco County Transportation Authority",
-   "year": 1994,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "ocr_excerpts": [
-    ". .37 Street Typology . . . . . .38 Base Case Streets. . . . . .43 Second Level Streets . . . . . .45 Special Streets . . . . . . . 47 Typology Matrix . . . . . . 49 General Design Policies . . . . . .53 Alleyway Improvements . . . . . .59 Union Square Area Improvements . . . . .73 Financial District Improvements . . . . .85 South of Market Improvements . . . . .95 Design Guidelines . . . . . 105 Implementation . . . . . . 163 Credits ... . . . . 167 Planning Department, City and County of San Francisco Executi",
-    "of the 200,000 other people in the downtown area each day arrive by transit or by walking. Of these, over 30% of the shoppers downtown use walking as their primary mode of transportation. It is also estimated that 90% of the 12 million tourists that visit San Francisco each year walk through the Union Square area during their stay in the city. As these numbers indicate, there are many people who rely on the downtown pedestrian system as either their primary or secondary transportation mode. It is probable that the majority of the people who arrive downtown by auto will spend some time walking too. Ind",
-    "eetscape environment can have significant and adverse impacts on the economic vitality of the city as a whole. Visitors might choose not to visit again or pass along negative perceptions of San Francisco to their hometown friends and colleagues, regional shoppers might choose to go a mall instead of Union Square, and businesses, both large and small, might choose to locate in a clean, attractive, and well- maintained environment elsewhere. Ultimately, efforts to retain and improve upon the innate attractiveness and llivability of the City of San Francisco must include attention to all of the components of the",
-    "study. The boundaries as indicated on the map are Mason and Fifth Streets to the west, the Embarcadero to the east, Clay Street to the north (except Chinatown), and Folsom Street to the South. The district is further sub-dvided into three sub-areas that correspond to land use and zoning patterns: Union Square (Mason to Kearny, Market to Bush), the Financial District (Kearny to the Embarcadero, Market to Clay), and South of Market (Fifth to the Embarcadero, Market to Folsom). Study Area Boundaries Existing Streetscape Conditions While each street in the Downtown area raises specific issues and concerns,",
-    "comfort of pedestrians by giving them places to rest, socialize, and see the city. Downtown San Francisco is notable for the absence of many of these amenities. Street trees are limited, benches are rare, and historic streetlights are often removed. As important, significant and well-known areas like Union Square need streetscape designs that reflect the overall design quality of the district, especially if they are to successfully compete with ot"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 7.04,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": true,
-    "substantive_direct": true,
-    "hits": 5,
-    "density": 1.54,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 1.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/destinationdownt1994rose",
-   "deep_link": "https://archive.org/details/destinationdownt1994rose?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false,
+   "gloss": "The 1995 summary of the downtown streetscape plan, setting walkability investment against the 12 million tourists visiting each year."
   },
   {
    "identifier": "destinationdownt1319rose",
@@ -327,8 +270,104 @@
    "url": "https://archive.org/details/destinationdownt1319rose",
    "deep_link": "https://archive.org/details/destinationdownt1319rose?q=Union+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": false,
+   "gloss": "The full 1995 downtown streetscape plan, with its street typology and the financing chapter for Union Square area improvements."
+  },
+  {
+   "identifier": "sanfranciscosnei1998sanf",
+   "title": "San Francisco's neighborhoods : evolving economic activities",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Union Square",
+   "ocr_excerpts": [
+    "orce 6 1 San Francisco Planning Department I June 1998 SAN FRANCISCO' S NEIGHBORHOODS; E V O i... V I N G ECONOMIC ACTIVITIES REF 330.9794 Sa528 San Francisco's neighborhoods : 1998 . 3. The Neighborhoods DEMOGRAPHIC AND ECONOMIC INDICATORS DOWNTOWN NEIGHBORHOODS Financial District 63 Union Square/Downtown Retail 64 RING NEIGHBORHOODS North Beach/Chinatown 65 Van Ness/Western Addition 66 Marina/Fillmore 67 Civic Center 68 South of Market (SOMA) 69 Potrero 70 OUTLYING NEIGHBORHOODS Mission 7 1 South Bayshore 72 Excelsior 73 West Portal/Twin Peaks 74 Noe Valley/Upper Market 75 Richmon",
+    "entralization, especially in eating and drinking places, as ring and outlying neighborhoods such as Marina/Fillmore, Richmond, and Potrero continue to grow in activity. Together, these three neighborhoods gained 3,000 jobs in eating and drinking places between I 983 and 1 994 while Financial District and Union Square/Downtown Retail lost 2, 1 00 such jobs. This grov\\^h is partly fueled by regional visitors traveling to these neighborhoods co eat. • Although the traditional visitor neighborhoods (Union Square/Downtown Retail, Financial District, Civic Center, and North Beach/Chinatown) remain strong, SOMA is taking on a more visible role in the Hotel sector with a substantial employment increase of more than four times over twelve years. As SOMA hosts more economic activities overall, as well as being the",
+    "hborhoods Finance, Insurance, and Real Estate and Corporate Headquarters In 1 994, Financial District was the clear leader in F.I.R.E./Corp activity with almost 67% of jobs (48,800) and 47% (2 I 00) of establishments, illustrating that larger firms are more centralized. The other downtown neighborhood, Union Square/Downtown Retail, along with the six ring neighborhoods accounted for most of the remaining employment (27% of the total, with SOMA providing the greatest share at 7%) and establish- ments (36% of the total, with Union Square/Downtown Retail having the greatest share at 7%). The eight outlying neighborhoods accounted for 6% of jobs but a substantially greater 1 7% of firms. Between 1 983 and 1994, F.I.R.E./Corp lost jobs and establishments in most neighborhoods. Employ- ment in this subgroup declined in ten neighborhoods. Th",
+    "1 0 1 million (3.4% of the total) and $86 million (2.9% of the total) respectively. San Francisco Planning Department 6 June 1998 SAN FRANCISCO'S NEIGHBORHOODS; EVOLVING ECONOMIC ACTIVITIES 5. Marina/ Fillmore 4. Van Ness/ Western Addition 3. North Beach/ Chinatown Financial District 2. Union Square/ -Downtown Retail G. Civic Center 6. Parks ide/ Lakeshore 7. SOMA 9. Potrero 8. Mission 0. South Bayshore NEIGHBORHOOD 1983 1994 CMC CENTER ' ■ 4945 EXCELSIOR 898 582 FINANCIAL DISTRICT 65004 48837 MARINA/FILLMORE 1366 1840 MISSION 541 443 NORTH BEA"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.11,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 2.11,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/sanfranciscosnei1998sanf",
+   "deep_link": "https://archive.org/details/sanfranciscosnei1998sanf?q=Union+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false,
+   "gloss": "A 1998 Planning Department study of the city's neighbourhoods, with demographic and economic indicators for the downtown district."
+  },
+  {
+   "identifier": "destinationdownt1994rose",
+   "title": "Destination downtown : streetscape investments for a walkable city",
+   "creator": "Rose, Evan Stuart,San Francisco (Calif.). Dept. of City Planning,San Francisco County Transportation Authority",
+   "year": 1994,
+   "pool": "sfpl",
+   "matched_alias": "Union Square",
+   "ocr_excerpts": [
+    ". .37 Street Typology . . . . . .38 Base Case Streets. . . . . .43 Second Level Streets . . . . . .45 Special Streets . . . . . . . 47 Typology Matrix . . . . . . 49 General Design Policies . . . . . .53 Alleyway Improvements . . . . . .59 Union Square Area Improvements . . . . .73 Financial District Improvements . . . . .85 South of Market Improvements . . . . .95 Design Guidelines . . . . . 105 Implementation . . . . . . 163 Credits ... . . . . 167 Planning Department, City and County of San Francisco Executi",
+    "of the 200,000 other people in the downtown area each day arrive by transit or by walking. Of these, over 30% of the shoppers downtown use walking as their primary mode of transportation. It is also estimated that 90% of the 12 million tourists that visit San Francisco each year walk through the Union Square area during their stay in the city. As these numbers indicate, there are many people who rely on the downtown pedestrian system as either their primary or secondary transportation mode. It is probable that the majority of the people who arrive downtown by auto will spend some time walking too. Ind",
+    "eetscape environment can have significant and adverse impacts on the economic vitality of the city as a whole. Visitors might choose not to visit again or pass along negative perceptions of San Francisco to their hometown friends and colleagues, regional shoppers might choose to go a mall instead of Union Square, and businesses, both large and small, might choose to locate in a clean, attractive, and well- maintained environment elsewhere. Ultimately, efforts to retain and improve upon the innate attractiveness and llivability of the City of San Francisco must include attention to all of the components of the",
+    "study. The boundaries as indicated on the map are Mason and Fifth Streets to the west, the Embarcadero to the east, Clay Street to the north (except Chinatown), and Folsom Street to the South. The district is further sub-dvided into three sub-areas that correspond to land use and zoning patterns: Union Square (Mason to Kearny, Market to Bush), the Financial District (Kearny to the Embarcadero, Market to Clay), and South of Market (Fifth to the Embarcadero, Market to Folsom). Study Area Boundaries Existing Streetscape Conditions While each street in the Downtown area raises specific issues and concerns,",
+    "comfort of pedestrians by giving them places to rest, socialize, and see the city. Downtown San Francisco is notable for the absence of many of these amenities. Street trees are limited, benches are rare, and historic streetlights are often removed. As important, significant and well-known areas like Union Square need streetscape designs that reflect the overall design quality of the district, especially if they are to successfully compete with ot"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.04,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.54,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/destinationdownt1994rose",
+   "deep_link": "https://archive.org/details/destinationdownt1994rose?q=Union+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": false,
+   "gloss": "The 1994 downtown streetscape study, which found over 30% of downtown shoppers arrive on foot and proposed improvements for the Union Square area."
   },
   {
    "identifier": "C123300590",
@@ -366,8 +405,13 @@
    "url": "https://archive.org/details/C123300590",
    "deep_link": "https://archive.org/details/C123300590?q=Union+Square",
    "source_label": "Internet Archive — Democracy's Library",
-   "group": "Other records",
-   "salient": false
+   "doc_type": "serial",
+   "doc_type_label": "Bulletin or newsletter",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Bulletin or newsletter",
+   "salient": false,
+   "gloss": "The 1997 neighbourhood profiles, which give Union Square its own section with population and demographic breakdowns."
   }
  ]
 }

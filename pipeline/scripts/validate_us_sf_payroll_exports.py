@@ -41,8 +41,17 @@ FILES = [
     "payroll_by_dept_year.json",
     "payroll_by_family_year.json",
     "payroll_distribution.json",
+    "payroll_family_distribution.json",
     "payroll_overtime.json",
 ]
+
+# payroll_family_distribution.json publishes ONE count-only row per year
+# ("Other roles") holding the named cells that were too small to publish.
+# It names no family, carries no dollars, and is derivable by subtraction
+# from the citywide histogram that payroll_distribution.json already
+# publishes — so its cells are exempt from the n≥5 sweep. Every NAMED cell
+# in that file is checked by validate_family_distribution() below.
+POOLED_LABEL = "Other roles"
 
 passed = 0
 failed = 0
@@ -87,6 +96,10 @@ def validate_privacy(payloads: dict[str, dict]):
     print("\n── Privacy sweep: no published cell under n=5 ──")
     for name, data in payloads.items():
         if data is None:
+            continue
+        if name == "payroll_family_distribution.json":
+            # Swept by validate_family_distribution(), which knows which
+            # rows are the documented count-only pool.
             continue
         violations = []
         for path, n, allow_zero in walk_n_employees(data, name, False):
@@ -149,6 +162,92 @@ def validate_distribution(payloads: dict[str, dict]):
         open_buckets = [b for b in p["histogram"] if b["ceiling_usd"] is None]
         check(f"FY{fy}: exactly one open top bucket", len(open_buckets) == 1,
               f"{len(open_buckets)} open buckets")
+
+
+def validate_family_distribution(payloads: dict[str, dict]):
+    """The family cut of the distribution — privacy floor on NAMED cells,
+    and the two identities that make the cut trustworthy: summed over
+    families it must reproduce the citywide headcount and the citywide
+    histogram, bucket for bucket."""
+    print("\n── Family distribution (pay ladder + bucket composition) ──")
+    fam = payloads.get("payroll_family_distribution.json")
+    dist = payloads.get("payroll_distribution.json")
+    if not fam or not dist:
+        return
+
+    city_by_fy = {p["fiscal_year"]: p for p in dist["points"]}
+
+    for fy_s, rows in sorted(fam["years"].items()):
+        fy = int(fy_s)
+        city = city_by_fy.get(fy)
+        if city is None:
+            check(f"FY{fy}: has a citywide counterpart", False, "missing")
+            continue
+
+        named = [r for r in rows if not r["is_pooled"]]
+        pooled = [r for r in rows if r["is_pooled"]]
+
+        bad_cells = [
+            f"{r['display_family']} ${b['floor_usd']}: n={b['n_employees']}"
+            for r in named
+            for b in r["histogram"]
+            if b["n_employees"] < THRESHOLD
+        ]
+        check(f"FY{fy}: every NAMED bucket cell ≥ {THRESHOLD}",
+              not bad_cells, "; ".join(bad_cells[:3]))
+
+        bad_fams = [r["display_family"] for r in named
+                    if (r["n_people"] or 0) < THRESHOLD]
+        check(f"FY{fy}: every named family ≥ {THRESHOLD} people",
+              not bad_fams, str(bad_fams[:3]))
+
+        check(f"FY{fy}: at most one pooled row", len(pooled) <= 1,
+              f"{len(pooled)} pooled rows")
+        check(f"FY{fy}: pooled row carries no dollars and no headcount",
+              all(r["n_people"] is None and r["total_compensation_usd"] is None
+                  for r in pooled),
+              str([r["display_family"] for r in pooled]))
+
+        people = sum(r["n_people"] or 0 for r in named)
+        check(f"FY{fy}: Σ named n_people == citywide n_employees",
+              people == city["n_employees"],
+              f"{people} != {city['n_employees']}")
+
+        hist_n = sum(r["n_in_histogram"] for r in rows)
+        check(f"FY{fy}: Σ family histograms == citywide n_employees",
+              hist_n == city["n_employees"],
+              f"{hist_n} != {city['n_employees']}")
+
+        # Bucket for bucket against the citywide histogram. The citywide
+        # file merges its sparse top tail into the open bucket, so compare
+        # on floors and fold everything at or above the open floor.
+        open_floor = min(
+            (b["floor_usd"] for b in city["histogram"] if b["ceiling_usd"] is None),
+            default=None,
+        )
+        city_cells: dict[int, int] = {}
+        for b in city["histogram"]:
+            city_cells[b["floor_usd"]] = city_cells.get(b["floor_usd"], 0) + b["n_employees"]
+        fam_cells: dict[int, int] = {}
+        for r in rows:
+            for b in r["histogram"]:
+                floor = b["floor_usd"]
+                if open_floor is not None and floor >= open_floor:
+                    floor = open_floor
+                fam_cells[floor] = fam_cells.get(floor, 0) + b["n_employees"]
+        mismatched = [
+            f"${floor}: {fam_cells.get(floor, 0)} != {n}"
+            for floor, n in city_cells.items()
+            if fam_cells.get(floor, 0) != n
+        ]
+        check(f"FY{fy}: family cells reproduce the citywide histogram",
+              not mismatched, "; ".join(mismatched[:3]))
+
+        bad_mono = [
+            r["display_family"] for r in named
+            if not (r["p25_usd"] <= r["p50_usd"] <= r["p75_usd"] <= r["p90_usd"])
+        ]
+        check(f"FY{fy}: family percentiles monotone", not bad_mono, str(bad_mono[:3]))
 
 
 def validate_cross(payloads: dict[str, dict]):
@@ -230,6 +329,7 @@ def main() -> int:
     validate_privacy(payloads)
     validate_contract(payloads)
     validate_distribution(payloads)
+    validate_family_distribution(payloads)
     validate_cross(payloads)
     print(f"\n{'='*50}\n✅ {passed} passed   ❌ {failed} failed")
     return 1 if failed else 0

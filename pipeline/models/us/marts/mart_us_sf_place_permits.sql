@@ -52,6 +52,14 @@ SELECT
     permit_type,
     declared_cost_usd,
     status,
+    -- Did this permit ever become work? An application is not construction.
+    -- Measured on this mart (2026-07-28): $576M of declared value sits on
+    -- WITHDRAWN permits, $440M on expired ones and $430M on applications merely
+    -- filed. Fire Station 13's headline figure was almost entirely a 19-storey
+    -- hotel permit withdrawn in 2019 — money nobody ever spent, displayed as
+    -- though it had been. Only issued/completed/reinstated permits may be
+    -- totalled; the rest stay visible as rows, carrying their status.
+    LOWER(TRIM(status)) IN ('complete', 'issued', 'reinstated') AS is_effective,
     permit_date,
     completed_date,
     EXTRACT(YEAR FROM permit_date) AS permit_year

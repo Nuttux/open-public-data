@@ -8,6 +8,8 @@ import type {
   PayrollDistribution,
   PayrollOvertime,
   PayrollByFamilyCitywide,
+  PayrollFamilyDistribution,
+  PayrollFamilyDistRow,
 } from "./payroll-types";
 
 /**
@@ -45,6 +47,29 @@ export default function SfPayrollPage() {
   // section. The 2.9MB dept×family grain stays unloaded (fiches only).
   const byFamily = readJson<PayrollByFamilyCitywide>("payroll_by_family_citywide.json");
 
+  // The distribution cut by job family (~420KB on disk) — the pay ladder and
+  // the "who is paid in this band" panel. Slimmed here to the fields the
+  // client actually renders: the file's notes and provenance stay on disk and
+  // are linked from the source footer, not shipped in the RSC payload.
+  const famDistFile = readJson<PayrollFamilyDistribution>(
+    "payroll_family_distribution.json",
+  );
+  const familyDistribution: Record<string, PayrollFamilyDistRow[]> = {};
+  for (const [fyKey, rows] of Object.entries(famDistFile.years)) {
+    familyDistribution[fyKey] = rows.map((r) => ({
+      display_family: r.display_family,
+      is_pooled: r.is_pooled,
+      n_people: r.n_people,
+      total_compensation_usd: r.total_compensation_usd,
+      p25_usd: r.p25_usd,
+      p50_usd: r.p50_usd,
+      p75_usd: r.p75_usd,
+      p90_usd: r.p90_usd,
+      n_in_histogram: r.n_in_histogram,
+      histogram: r.histogram,
+    }));
+  }
+
   return (
     <PayrollClient
       byYear={byYear}
@@ -52,6 +77,11 @@ export default function SfPayrollPage() {
       distribution={distribution}
       overtime={overtime}
       byFamily={byFamily}
+      familyDistribution={familyDistribution}
+      familyDistNotes={{
+        ladder: famDistFile.ladder_note,
+        attribution: famDistFile.attribution_note,
+      }}
     />
   );
 }

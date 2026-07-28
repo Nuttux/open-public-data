@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.740039+00:00",
+ "generated_at": "2026-07-28T11:43:47.713388+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -27,6 +27,57 @@
  "top_departments": [
   "AIR Airport Commission"
  ],
+ "profile": {
+  "n_vouchers": 871,
+  "departments": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 146853642.5,
+    "n_vouchers": 277
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 4703008.7,
+    "n_vouchers": 594
+   }
+  ],
+  "n_departments": 2,
+  "categories": [],
+  "n_categories": 0,
+  "counts_are_floor": false,
+  "recent_fy": 2017,
+  "recent_total_usd": 29450026.4,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Bldg Struct Imprv-Direct Purch",
+    "spend_class": "purchase",
+    "usd": 15192262.0,
+    "n_vouchers": 19
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Other Equip Maint",
+    "spend_class": "purchase",
+    "usd": 14194358.2,
+    "n_vouchers": 26
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Inventories-Purchase",
+    "spend_class": "purchase",
+    "usd": 63406.2,
+    "n_vouchers": 20
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

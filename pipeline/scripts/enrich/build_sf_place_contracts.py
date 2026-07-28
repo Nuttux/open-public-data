@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -37,18 +38,37 @@ CORE = "open-data-france-484717.dbt_us_analytics.core_us_sf_contracts"
 # these can legitimately name any place. Used to gate WEAK aliases (bare
 # neighborhood/street names like "Glen Park", "Laguna Honda") which otherwise
 # match the library / BART / afterschool contract that merely shares the name.
-BUILDER_DEPTS = {"DPW", "GEN", "ADM", "GSA"}
+# ART builds nothing but commissions public art at places citywide, so it
+# works for other departments in the same way a builder does.
+BUILDER_DEPTS = {"DPW", "GEN", "ADM", "GSA", "ART"}
+
+# Contracts whose TITLE names a programme spread across many addresses, not a
+# place. "Scattered sites" is the housing term of art for exactly that, and the
+# match is worse than useless: every Mission Housing Development Corporation
+# "South Park Scattered Sites" contract was being credited to South Park the
+# PARK, putting $18.9M of affordable-housing money on a Rec & Park fiche. The
+# Controller's own audit of MHDC describes those sites as the Park View and
+# Madrid residential hotels, not the park.
+PROGRAMME_NOT_PLACE = re.compile(
+    r"scattered\s+sites?|small\s+site\s+funds?|citywide|various\s+locations", re.I)
 
 
 def alias_is_strong(alias: str, place: dict) -> bool:
-    """A strong alias is self-disambiguating: an all-caps acronym, a ≥3-word
-    phrase, or the place's own full name. Weak aliases (short neighborhood
-    names) must be corroborated by the contract's department."""
+    """A strong alias is self-disambiguating: an all-caps acronym or a ≥3-word
+    phrase. Everything shorter must be corroborated by the contract's
+    department.
+
+    The rule used to exempt any alias equal to the place's own full name, on the
+    theory that a place's name identifies it. Two-word names defeat that: "South
+    Park" is a park AND a street, and the exemption put every Mission Housing
+    Development Corporation supportive-housing contract at addresses on South
+    Park Street — $18.9M of it — onto the Recreation and Park fiche for the park.
+    Dropping the exemption sends those back through the department guard, which
+    keeps "PW South Park Reno" (Public Works, the builder) and rejects the
+    housing department's."""
     if alias.isupper() and alias.isalpha():
         return True
-    if len(alias.split()) >= 3:
-        return True
-    return alias.lower() == place["name"].lower()
+    return len(alias.split()) >= 3
 
 
 def bq_json(query: str) -> list[dict]:
@@ -75,6 +95,8 @@ def main() -> int:
     rows = []
     dropped_weak = 0
     for c in contracts:
+        if PROGRAMME_NOT_PLACE.search(c["contract_title"] or ""):
+            continue
         m = match_place(c["contract_title"], places)
         if not m:
             continue

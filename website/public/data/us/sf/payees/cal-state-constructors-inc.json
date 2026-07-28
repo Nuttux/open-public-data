@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.738195+00:00",
+ "generated_at": "2026-07-28T11:43:47.710696+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,120 @@
  "top_departments": [
   "WTR Water Enterprise"
  ],
+ "profile": {
+  "n_vouchers": 1097,
+  "departments": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 60779318.3,
+    "n_vouchers": 387
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 34703882.7,
+    "n_vouchers": 237
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 33324069.2,
+    "n_vouchers": 143
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 23595559.92,
+    "n_vouchers": 245
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 17132449.13,
+    "n_vouchers": 73
+   },
+   {
+    "department": "PRT Port",
+    "department_code": "PRT",
+    "usd": 608650.9,
+    "n_vouchers": 5
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 292993.1,
+    "n_vouchers": 7
+   }
+  ],
+  "n_departments": 7,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 82961341.51,
+    "n_vouchers": 507
+   },
+   {
+    "code": "527020",
+    "label": "Engineering Services",
+    "spend_class": "purchase",
+    "usd": 1057249.99,
+    "n_vouchers": 10
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 39367.2,
+    "n_vouchers": 3
+   },
+   {
+    "code": "543990",
+    "label": "Other Equipment Maint Supplies",
+    "spend_class": "purchase",
+    "usd": 9687.35,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 4,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 12464546.3,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 6073991.93,
+    "n_vouchers": 23
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 3956343.57,
+    "n_vouchers": 21
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 2434210.8,
+    "n_vouchers": 5
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000027489",
-   "title": "Sewp CTRL HVAC & Mac Upgrd",
+   "title": "Sewp Control HVAC & Mac Upgrade",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 6148642.4,
@@ -49,7 +159,7 @@
   },
   {
    "contract_no": "1000028885",
-   "title": "Joc J59 Gen Eng SVCS",
+   "title": "job order contract J59 Gen Eng Services",
    "department": "DPW GSA - Public Works",
    "department_code": "DPW",
    "agreed_usd": 3840735.42,
@@ -58,7 +168,7 @@
   },
   {
    "contract_no": "1000031825",
-   "title": "JOC-103 Gnrl Eng (A-Licen)",
+   "title": "job order contract-103 General Eng (A-Licen)",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 5050000.0,

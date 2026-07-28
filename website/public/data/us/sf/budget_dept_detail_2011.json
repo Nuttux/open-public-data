@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:35:08.773087+00:00",
+  "generated_at": "2026-07-28T11:43:46.550149+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -27106,7 +27106,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "LAW OFFICES OF RAFAEL C TRUJILLO",
+            "vendor": "LAW OFFICE OF FLOYD ANDREWS",
             "amount_usd": 50000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -27115,7 +27115,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "LAW OFFICE OF FLOYD ANDREWS",
+            "vendor": "LAW OFFICES OF RAFAEL C TRUJILLO",
             "amount_usd": 50000.0,
             "n_vouchers": 1,
             "is_non_profit": false,

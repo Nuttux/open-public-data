@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-27T17:06:09.751878+00:00",
+ "generated_at": "2026-07-28T12:23:47.766103+00:00",
  "slug": "tom-waddell-clinic",
  "name": "Tom Waddell Urban Health Clinic",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -41,9 +41,101 @@
    "url": "https://archive.org/details/sanfranciscodepa2005sanf",
    "deep_link": "https://archive.org/details/sanfranciscodepa2005sanf?q=Tom+Waddell+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "4 editions cited",
-   "group": "Reports & records",
-   "salient": true
+   "doc_type": "annual_report",
+   "doc_type_label": "Annual report",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Annual report",
+   "salient": true,
+   "gloss": "The department's annual report listing the clinic and its community advisory board."
+  },
+  {
+   "identifier": "agendahealthcomm2013sanf",
+   "title": "Agenda / Health Commission, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Tom Waddell Urban Health Clinic",
+   "ocr_excerpts": [
+    "a, MPA Director of Health City and County of San Francisco Edwin M. Lee, Mayor Director's Report for Health Commission Meeting of April 23, 2013 A current overview of issues affecting the state of public health in San Francisco http://www.sfdph.orq/dph/corr)upq/aboutdph/insideDept/dirRpts/default.asp Tom Waddell Urban Health Clinic to Open at 230 Golden Gate Avenue I am very pleased to announce the opening of Tom Waddell Urban Health Clinic (TWUHC) in the Kelly Cullen Community at 230 Golden Gate Avenue (former site of the historic YMCA). On April 15, the Tenderloin Area Center of Excellence (TACE) — a health program for homeless persons with HIV — became the first clinic occupants after a long tenure at 1 87 Golden Gate. Services for TACE patients will include primary care, case management, and breakfast and art programs. In early summer. Housing and Urban Health Clinic and Tom Waddell Health Center's primary care program will merge and move to TWUHC. Full occupancy of the TWUHC is scheduled to begin on July 8, 2013 when HUHC and TWHC begin operations. The Kelly Cullen Community includes 172 units of supportive housing for the chronically homeless. It is designed for people who face the most",
+    "The minutes of the April 2, 2013 Health Commission meeting were unanimously approved with the corrections noted above. 3) DIRECTOR'S REPORT Barbara Garcia, Director of Health, gave the report. The full report can be viewed at: http://www.sfdph.org/dph/comupg/aboutdph/insideDept/dirRpts/default.asp Tom Waddell Urban Health Clinic to Open at 230 Golden Gate Avenue I am very pleased to announce the opening of Tom Waddell Urban Health Clinic (TWUHC) in the Kelly Cullen Community at 230 Golden Gate Avenue (former site of the historic YMCA). On April 15, the Tenderloin Area Center of Excellence (TACE)— a health program for homeless persons with HIV— became the first clinic occupants after a long tenure at 187 Golden Gate. Services for TACE patients will include primary care, case management, and breakfast and art programs. In early summer, Housing and Urban Health Clinic and Tom Waddell Health Center's primary care program will merge and move to TWUHC. Full occupancy of the TWUHC is scheduled to begin on July 8, 2013 when HUHC and TWHC begin operations. The Kelly Culien Community includes 172 units of supportive housing for the chronically homeless. It is designed for people who face the mos"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.19,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.19,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/agendahealthcomm2013sanf",
+   "deep_link": "https://archive.org/details/agendahealthcomm2013sanf?q=Tom+Waddell+Urban+Health+Clinic",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "The Director of Health announcing the clinic's opening at 230 Golden Gate Avenue."
+  },
+  {
+   "identifier": "agenda200304sanf",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Health Commission. Joint Conference Committee for Community Health Network",
+   "year": 2004,
+   "pool": "sfpl",
+   "matched_alias": "Tom Waddell Health Center",
+   "ocr_excerpts": [
+    "medics and transported to the new sobering center. Those with indications of significant withdrawal or significant acute medical illness will continue to be transported to the hospital. The proposed McMillan Sobering Center will be operated through a partnership between the Department of Public Health's Tom Waddell Health Center, and Chemical Awareness Treatment Services (CATS), a non-profit agency. The Sobering Center will be co-located at CATS' McMillan Drop-In Center. CATS and the McMillan Drop-In Center were selected as the partner agency because: (1) the location is central in the City and is a block from the Tom Wadde",
+    "reatment in San Francisco and counteract the shortage of treatment in the City, the Office-Based Opiate Addiction Treatment (OBOAT) Program was developed. As a pilot program, OBOAT will provide methadone maintenance treatment and Buprenorphine for 90 patients in three clinics, Potrero Hill Health Center, Tom Waddell Health Center, and BAART, one private physician's office, and the County Jail in San Francisco. Methadone will be dispensed at San Francisco General Hospital (SFGH) Outpatient Pharmacy, and after a brief induction period at a specialized clinic. Buprenorphine will be dispensed at the Community Mental Health Services",
+    "ma Override since August 2003. While on Trauma Override the ED held 43 patients in September 2003. While on Trauma Override in September 2002, the ED held 37 patients awaiting inpatient beds. SFGH ED DIVERSION RATE 2002, 2003 ULIUUCI ill, 4TOJ Page 3 HIV Early Intervention Grant Awarded to Tom Waddell Health Center The Tom Waddell Health Center/Homeless Programs (TWHC/HP) has partnered with the Tenderloin AIDS Resource Center (TARC) to receive a Title III grant of $300,000 a year through 2007 for HIV Early Intervention Services Programs. The project's goal is to provide outpatient early intervention services with respect to HIV disease by exp",
+    "Community Health Network Joint Conference Committee. 101 Grove Street San Francisco, CA 94102-4505 3) CHN SECRETARY'S REPORT Gene O'Connell, SFGHMC Hospital Administrator, presented the Secretary's Report. Staff Update Barry Zevin Receives Community Hero Award Dr. Barry Zevin, Medical Director of Tom Waddell Health Center, is being recognized by Saint Francis Memorial Hospital as one of its 2004 Community Heroes. The recognition is accompanied by a $10,000 award to be donated to Tom Waddell Health Center. The Community Hero award is given to individuals who go \"above and beyond\" normal expectations to create a healthier environment for the community served by Saint Francis Memorial Hospital, especially the poor and underserved. As Medical Director of Tom Waddell Health Center, Dr Zevin has served homeless, indigent and underserved populations for many years. He is recogni"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.54,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.54,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -2.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda200304sanf",
+   "deep_link": "https://archive.org/details/agenda200304sanf?q=Tom+Waddell+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Committee papers on the sobering centre partnership and the opiate treatment pilot run through the clinic."
   },
   {
    "identifier": "minutes1997sanf",
@@ -83,87 +175,13 @@
    "url": "https://archive.org/details/minutes1997sanf",
    "deep_link": "https://archive.org/details/minutes1997sanf?q=Tom+Waddell+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "variant_note": "2 editions cited",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agenda200304sanf",
-   "title": "Agenda",
-   "creator": "San Francisco (Calif.). Health Commission. Joint Conference Committee for Community Health Network",
-   "year": 2004,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Health Center",
-   "ocr_excerpts": [
-    "medics and transported to the new sobering center. Those with indications of significant withdrawal or significant acute medical illness will continue to be transported to the hospital. The proposed McMillan Sobering Center will be operated through a partnership between the Department of Public Health's Tom Waddell Health Center, and Chemical Awareness Treatment Services (CATS), a non-profit agency. The Sobering Center will be co-located at CATS' McMillan Drop-In Center. CATS and the McMillan Drop-In Center were selected as the partner agency because: (1) the location is central in the City and is a block from the Tom Wadde",
-    "reatment in San Francisco and counteract the shortage of treatment in the City, the Office-Based Opiate Addiction Treatment (OBOAT) Program was developed. As a pilot program, OBOAT will provide methadone maintenance treatment and Buprenorphine for 90 patients in three clinics, Potrero Hill Health Center, Tom Waddell Health Center, and BAART, one private physician's office, and the County Jail in San Francisco. Methadone will be dispensed at San Francisco General Hospital (SFGH) Outpatient Pharmacy, and after a brief induction period at a specialized clinic. Buprenorphine will be dispensed at the Community Mental Health Services",
-    "ma Override since August 2003. While on Trauma Override the ED held 43 patients in September 2003. While on Trauma Override in September 2002, the ED held 37 patients awaiting inpatient beds. SFGH ED DIVERSION RATE 2002, 2003 ULIUUCI ill, 4TOJ Page 3 HIV Early Intervention Grant Awarded to Tom Waddell Health Center The Tom Waddell Health Center/Homeless Programs (TWHC/HP) has partnered with the Tenderloin AIDS Resource Center (TARC) to receive a Title III grant of $300,000 a year through 2007 for HIV Early Intervention Services Programs. The project's goal is to provide outpatient early intervention services with respect to HIV disease by exp",
-    "Community Health Network Joint Conference Committee. 101 Grove Street San Francisco, CA 94102-4505 3) CHN SECRETARY'S REPORT Gene O'Connell, SFGHMC Hospital Administrator, presented the Secretary's Report. Staff Update Barry Zevin Receives Community Hero Award Dr. Barry Zevin, Medical Director of Tom Waddell Health Center, is being recognized by Saint Francis Memorial Hospital as one of its 2004 Community Heroes. The recognition is accompanied by a $10,000 award to be donated to Tom Waddell Health Center. The Community Hero award is given to individuals who go \"above and beyond\" normal expectations to create a healthier environment for the community served by Saint Francis Memorial Hospital, especially the poor and underserved. As Medical Director of Tom Waddell Health Center, Dr Zevin has served homeless, indigent and underserved populations for many years. He is recogni"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 5.54,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 4,
-    "density": 0.54,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": -2.0,
-    "money": true,
-    "decision": false,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": true
-   },
-   "url": "https://archive.org/details/agenda200304sanf",
-   "deep_link": "https://archive.org/details/agenda200304sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agendahealthcomm2013sanf",
-   "title": "Agenda / Health Commission, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Health Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Urban Health Clinic",
-   "ocr_excerpts": [
-    "a, MPA Director of Health City and County of San Francisco Edwin M. Lee, Mayor Director's Report for Health Commission Meeting of April 23, 2013 A current overview of issues affecting the state of public health in San Francisco http://www.sfdph.orq/dph/corr)upq/aboutdph/insideDept/dirRpts/default.asp Tom Waddell Urban Health Clinic to Open at 230 Golden Gate Avenue I am very pleased to announce the opening of Tom Waddell Urban Health Clinic (TWUHC) in the Kelly Cullen Community at 230 Golden Gate Avenue (former site of the historic YMCA). On April 15, the Tenderloin Area Center of Excellence (TACE) — a health program for homeless persons with HIV — became the first clinic occupants after a long tenure at 1 87 Golden Gate. Services for TACE patients will include primary care, case management, and breakfast and art programs. In early summer. Housing and Urban Health Clinic and Tom Waddell Health Center's primary care program will merge and move to TWUHC. Full occupancy of the TWUHC is scheduled to begin on July 8, 2013 when HUHC and TWHC begin operations. The Kelly Cullen Community includes 172 units of supportive housing for the chronically homeless. It is designed for people who face the most",
-    "The minutes of the April 2, 2013 Health Commission meeting were unanimously approved with the corrections noted above. 3) DIRECTOR'S REPORT Barbara Garcia, Director of Health, gave the report. The full report can be viewed at: http://www.sfdph.org/dph/comupg/aboutdph/insideDept/dirRpts/default.asp Tom Waddell Urban Health Clinic to Open at 230 Golden Gate Avenue I am very pleased to announce the opening of Tom Waddell Urban Health Clinic (TWUHC) in the Kelly Cullen Community at 230 Golden Gate Avenue (former site of the historic YMCA). On April 15, the Tenderloin Area Center of Excellence (TACE)— a health program for homeless persons with HIV— became the first clinic occupants after a long tenure at 187 Golden Gate. Services for TACE patients will include primary care, case management, and breakfast and art programs. In early summer, Housing and Urban Health Clinic and Tom Waddell Health Center's primary care program will merge and move to TWUHC. Full occupancy of the TWUHC is scheduled to begin on July 8, 2013 when HUHC and TWHC begin operations. The Kelly Culien Community includes 172 units of supportive housing for the chronically homeless. It is designed for people who face the mos"
-   ],
-   "collection": "sanfranciscopubliclibrary",
-   "relevance": {
-    "score": 4.19,
-    "sf_context": true,
-    "rival_city": false,
-    "citywide_serial": false,
-    "substantive": false,
-    "substantive_direct": true,
-    "hits": 2,
-    "density": 0.19,
-    "title_hit": false
-   },
-   "materiality": {
-    "score": 0.75,
-    "money": false,
-    "decision": true,
-    "accountability": false,
-    "contestation": false,
-    "named_genre": false,
-    "generic_serial": false
-   },
-   "url": "https://archive.org/details/agendahealthcomm2013sanf",
-   "deep_link": "https://archive.org/details/agendahealthcomm2013sanf?q=Tom+Waddell+Urban+Health+Clinic",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Health Commission minutes recording an advisory board member's public praise for the clinic's care."
   }
  ]
 }

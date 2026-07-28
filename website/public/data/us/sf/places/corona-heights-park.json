@@ -1,0 +1,285 @@
+{
+ "generated_at": "2026-07-28T12:23:47.815264+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "corona-heights-park",
+ "name": "Corona Heights Park",
+ "kind": "Park",
+ "family": "park",
+ "address": "122 States St",
+ "lat": 37.764788,
+ "lon": -122.439,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "facility": null,
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "GRANITE EXCAVATION & DEMOLITION INC.",
+    "paid_usd": 60000.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2024,
+    "last_fiscal_year": 2024
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 60000.0
+ },
+ "photo": "/img/us/sf/places/corona-heights-park.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/corona-heights-park.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Corona_Heights_Park.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Fred Hsu (Wikipedia:User:Fredhsu on en.wikipedia)",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-28T12:03:05.495798+00:00"
+ },
+ "summary_en": "Corona Heights contains about 16 acres, of which only two are developed — a 1983 environmental report for a nearby housing project describes the rest as a flat grassy area and a rocky hilltop, with the Sidney Peixotto tennis courts and the Junior Museum on the developed part, and records that players waited for a court here much as they did at Buena Vista. The undeveloped ground is protected by policy as well as by terrain: when the Recreation and Park Commission adopted criteria for gifts of art, it listed the sites where art installations would not be permitted at all, and Corona Heights appears on that list beside Glen Canyon, Twin Peaks and Bernal Heights. What the city has spent here has gone into the ground rather than onto it. The general manager announced the completion of an erosion control project carried out by the San Francisco Conservation Corps — renovated pathways, fencing moved, retaining walls built and access improved, supervised by a Public Works landscape architect and funded by the Open Space Program at a total cost of $90,000 — and the commission's completed-projects list also records the resurfacing of the park's tennis courts. The exception on the hill is the Randall Museum's façade, which carries Charles Sowers's kinetic sculpture Windswept, accepted into the Civic Art Collection in 2013. One recent contract names the park: Granite Excavation & Demolition was paid $60,000 in 2024.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "parkhillresident2519sanf",
+   "title": "Park Hill residential : [draft] environmental impact report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Corona Heights Park",
+   "ocr_excerpts": [
+    "ns for implementing the Recreation and Open Space Element of the Comprehensive Plan of San Francisco. Recommendations made for Buena Vista Park include more lighting, better maintenance of existing lighting, more frequent police patrols, and preservation of the visual and natural qualities of the park. Corona Heights Park contains about 16 acres, two of which are developed. It is located about one block southeast of the project site. The park contains two tennis courts, the Sidney Peixotto courts. It is also the site of the 3unior Museum. The undeveloped area consists of a flat grassy area and a rocky hilltop. Du",
+    "blocks northeast of the project site. This 10-acre park consists of about a two-block, relatively flat, grassy area. Other recreational facilities in the project vicinity include two outdoor public tennis courts located at States St., about six blocks southeast of the project site (immediately south of Corona Heights Park). Tennis players at the State St. courts and the Sidney Peixotto courts in Corona Heights Park experience waits similar to those at Buena Vista Park./l/ Golden Gate Park is located about ten blocks west of the project site. It provides a full range of park facilities, including ball fields, hiking trails and tennis courts. Objectives of the Recreation and Open Space Element of the San Fran"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.74,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 2,
+    "density": 0.74,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/parkhillresident2519sanf",
+   "deep_link": "https://archive.org/details/parkhillresident2519sanf?q=Corona+Heights+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "An environmental report giving the park's 16 acres, its two developed ones, its courts and museum."
+  },
+  {
+   "identifier": "minutesrecreatio1990sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Corona Heights Park",
+   "ocr_excerpts": [
+    "Projects: 87 Michelangelo Park, Crocker Amazon Soccer Field Irrigation and Kezar Stadium Reconstruction Contract General Manager's Report - Completed Capital Projects: 172 Crocker Amazon Parking Lot; pavement of Crocker Amazon hard surface court areas General Manager's Report - Completed Capital Projects: Corona Heights Park, Tennis Court Resurfacing (Helen Wills, Excelsior, Herz, Rochambeau, Argonne, J.P. Murphy, Julius Kahn) General Manager's Report - Completed Capital Projects 289 CARROUSEL, GOLDEN GATE PARK RES. 15880 - see Free Admission Policy 351 CATHAY MORTUARY RES. 15649 - Approved proposed settlement between Cit",
+    ": Art installations, permanent or temporary, shall not be permitted in the following natural or undeveloped open spaces: a. Bernal Heights Park k. Glen Canyon b. Bayview Park 1 . Golden Gate Heights c . Billy Goat Hill m. Grandview Heights d. Brooks Property n. Interior Green Belt e . Corona Heights Park o. Lake Merced (Hater Department juri sdi ction) f. Dorothy Erskine Park p. Lake View Ashton Mini Park g. Duncan Castro Lots q. Twin Peaks h. Edgehill Mountain r . Tank Hi 1 1 i . Everson Digby Lots s . Kite Hill 3- Fairmont Plaza t. Park-Presidio Blvd. (median strip) IV. APPROVAL CRIT",
+    "invitations to this event by mail. COMPLETED CAPITAL PROJECTS I am pleased to announce that the San Francisco Conservation Corps has completed its contract work on the Corona Heights erosion control project. They renovated pathways, moved fencing, constructed retaining walls and improved access to the Corona Heights Park. The work was carried out under the supervision of Walt Kocian, Landscape Architect, Department of Public Works, who is to be highly commended. I invite all of you to enjoy the new pathways at Corona Heights Park. The project was funded by the Open Space Program at a total cost of $90,000. Tennis court resurfacing has been completed at Helen Wills, Excelsior, Herz, Rochambeau, Argonne, Folsom, J. P. Murphy and Julius Kahn. Due to favorable weather conditions, the contractor was able to complete this phase of",
+    "831 INCREASE IN CONTRACT CONTINGENCY RESOLVED, That this Commission approves the increase in contract contingency in the amount of $73,886.40 to Inter Coastal Repaving Contractors for court resurfacing. 293 Recreation and Park Commission Minutes October 18, 1990 4. CONSENT CALENDAR (Continued) g. CORONA HEIGHTS PARK INCREASE IN CONTRACT CONTINGENCY RES. NO. 15832 RESOLVED, That this Commission approves the increase in contract contingency in the amount of $12,000 to the San Francisco Conservation Corps for Corona Heights Park, Erosion Control Project. MARGARET HAYWARD PLAYGROUND OFFICE OF EMERGENCY SERVICES TEMPORARY USE PERMIT RES. NO. 15833 RESOLVED, That this Commission approves the temporary use permit with Office of Emergency Se"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.35,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.35,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.75,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutesrecreatio1990sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1990sanf?q=Corona+Heights+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes listing the park's tennis court resurfacing among completed capital projects."
+  },
+  {
+   "identifier": "minutes90sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Corona Heights Park",
+   "ocr_excerpts": [
+    "to the Commission when a gift is considered for final Commission approval. 6. Restricted sites: Art installations, permanent or temporary, shall not be permitted in the following natural or undeveloped open spaces: a. Bernal Heights Park b. Bayview Park c. Billy Goat Hill d. Brooks Property e. Corona Heights Park f. Dorothy Erskine Park g. Duncan Castro Lots h. Edgehill Mountain i . Everson Digby Lots j . Fairmont Plaza IV. APPROVAL CRITERIA k. Glen Canyon 1 . Golden Gate Heights m. Grandview Heights n. Interior Green Belt o. Lake Merced (Water Department jurisdiction) p. Lake View Ashton Mini",
+    "invitations to this event by mail. COMPLETED CAPITAL PROJECTS I am pleased to announce that the San Francisco Conservation Corps has completed its contract work on the Corona Heights erosion control project. They renovated pathways, moved fencing, constructed retaining walls and improved access to the Corona Heights Park. The work was carried out under the supervision of Walt Kocian, Landscape Architect, Department of Public Works, who is to be highly commended. I invite all of you to enjoy the new pathways at Corona Heights Park. The project was funded by the 0c - Space Program at a total cost of $90,000. Tennis court resurfacing has been completed at Helen Wills, Excelsior, Herz, Rochambeau, Argonne, Folsom, J. P. Murphy and Julius Kahn. Due to favorable weather conditions-, the contractor was able to complete this phase",
+    "INCREASE IN CONTRACT CONTINGENCY RESOLVED, That this Commission approves the increase in contract contingency in the amount of $73,886.40 to Inter Coastal Repaving Contractors for court resurfacing. 0/1 8/»0 RECREATION AND PARK COMMISSION MINUTES OCTOBER 18, 1990 4. CONSENT CALENDAR (Continued) g. CORONA HEIGHTS PARK RES. NO. 15832 INCREASE IN CONTRACT CONTINGENCY RESOLVED, That this Commission approves the increase in contract contingency in the amount of $12,000 to the San Francisco Conservation Corps for Corona Heights Park, Erosion Control Project. h. MARGARET HAYWARD PLAYGROUND RES. NO. 15833 OFFICE OF EMERGENCY SERVICES TEMPORARY USE PERMIT RESOLVED, That this Commission approves the temporary use permit with Office of Emergency Services for Emergency Operations Center at Margaret Hayward Clubhouse. i. RECREATION A"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 4.81,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.31,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes90sanf",
+   "deep_link": "https://archive.org/details/minutes90sanf?q=Corona+Heights+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "The general manager's report on the $90,000 erosion control project and the park's protection from art installations."
+  },
+  {
+   "identifier": "agenda2013arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Corona Heights Park",
+   "ocr_excerpts": [
+    "Motion: Motion to approve and accept into the Civic Art Collection Windswept, 201 1 by Charles Sowers -a kinetic sculpture approximately 18 ft. 3 in. high by 33 ft. 6 Vi in. wide, made of aluminum and aluminum composite panels installed on the east facing exterior fa9ade of the Randall Museum in Corona Heights Park. 15. America's Cup Public Art Project Susan Pontious Action Explanatory Document: Project Plan and Budget for America's Cup Art Enrichment Funding Presentation Time: Approximately 10 minutes Presentation of the Project Plan and Budget for America's Cup art enrichment funding. Motion: Motion to appro",
+    "n: Motion to approve and accept into the Civic Art Collection Windswept, 201 1 by Charles Sowers - a kinetic sculpture approximately 18 ft. 3 in. high by 33 ft. 6 Vi in. w ide, made of aluminum and aluminum composite panels installed on the east facing exterior fa9ade of the Randall Museum in Corona Heights Park. Moved: Sklar/Keehn The motion was unanimously approved 15. America's Cup Public Art Project Susan Pontious Action Ms. Pontious presented the Project Plan and Budget for America's Cup art enrichment fiinding. She reported that the artwork would be a temporary piece and could be approached in a va",
+    "ion: Motion to approve and accept into the Civic Art Collection Windswept, 201 1 by Charles Sowers - a kinetic sculpture approximately 18 ft. 3 in. high by 33 ft. 6 Vi in. wide. made of aluminum and aluminum composite panels installed on the east facing exterior fafade of the Randall Museum in Corona Heights Park. Moved: Sklar/Keehn The motion was unanimously approved 15. America's Cup Public Art Project Susan Pontious Action Ms. Pontious presented the Project Plan and Budget for America's Cup art enrichment fijnding. She reported that the artwork would be a temporary piece and could be approached in a va"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 1.71,
+    "sf_context": false,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 0.21,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda2013arts",
+   "deep_link": "https://archive.org/details/agenda2013arts?q=Corona+Heights+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Arts Commission minutes accepting the kinetic sculpture Windswept on the Randall Museum in the park."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  }
+ ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 4,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

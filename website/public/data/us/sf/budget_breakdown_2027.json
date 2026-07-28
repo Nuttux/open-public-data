@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T09:34:55.320628+00:00",
+  "generated_at": "2026-07-28T11:43:33.404498+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -3726,16 +3726,16 @@
         1
       ],
       [
-        "DPA",
-        "PROG_PROJ",
-        100000.0,
-        0
-      ],
-      [
         "REG",
         "ELU",
         -100000.0,
         1
+      ],
+      [
+        "DPA",
+        "PROG_PROJ",
+        100000.0,
+        0
       ],
       [
         "TIS",
@@ -4089,15 +4089,15 @@
       ],
       [
         "HRD",
-        "ELS",
-        -141369858.0,
-        1
-      ],
-      [
-        "HRD",
         "EXP_RECOVERY",
         141369858.0,
         0
+      ],
+      [
+        "HRD",
+        "ELS",
+        -141369858.0,
+        1
       ],
       [
         "GEN",
@@ -4178,13 +4178,13 @@
         0
       ],
       [
-        "LIB",
+        "REC",
         "PROP_TAX",
         78370000.0,
         0
       ],
       [
-        "REC",
+        "LIB",
         "PROP_TAX",
         78370000.0,
         0
@@ -4221,15 +4221,15 @@
       ],
       [
         "CON",
-        "EXP_RECOVERY",
-        69124889.0,
-        0
-      ],
-      [
-        "CON",
         "ELS",
         -69124889.0,
         1
+      ],
+      [
+        "CON",
+        "EXP_RECOVERY",
+        69124889.0,
+        0
       ],
       [
         "FIR",
@@ -4629,15 +4629,15 @@
       ],
       [
         "HSS",
-        "EXP_RECOVERY",
-        12110494.0,
-        0
-      ],
-      [
-        "HSS",
         "ELS",
         -12110494.0,
         1
+      ],
+      [
+        "HSS",
+        "EXP_RECOVERY",
+        12110494.0,
+        0
       ],
       [
         "REC",
@@ -4713,15 +4713,15 @@
       ],
       [
         "ADP",
-        "EXP_RECOVERY",
-        7802736.0,
-        0
-      ],
-      [
-        "ADP",
         "ELS",
         -7802736.0,
         1
+      ],
+      [
+        "ADP",
+        "EXP_RECOVERY",
+        7802736.0,
+        0
       ],
       [
         "DEC",
@@ -5133,13 +5133,13 @@
       ],
       [
         "FIR",
-        "INTER_REV_FED",
+        "OPER_TFR_IN",
         1458282.0,
         0
       ],
       [
         "FIR",
-        "OPER_TFR_IN",
+        "INTER_REV_FED",
         1458282.0,
         0
       ],
@@ -5205,15 +5205,15 @@
       ],
       [
         "DEM",
-        "ELS",
-        -1183938.0,
-        1
-      ],
-      [
-        "DEM",
         "EXP_RECOVERY",
         1183938.0,
         0
+      ],
+      [
+        "DEM",
+        "ELS",
+        -1183938.0,
+        1
       ],
       [
         "ART",
@@ -5282,13 +5282,13 @@
         0
       ],
       [
-        "CPC",
+        "PDR",
         "INTERGOV_REV_ST",
         700000.0,
         0
       ],
       [
-        "PDR",
+        "CPC",
         "INTERGOV_REV_ST",
         700000.0,
         0
@@ -5307,15 +5307,15 @@
       ],
       [
         "DPA",
-        "ELS",
-        -654795.0,
-        1
-      ],
-      [
-        "DPA",
         "EXP_RECOVERY",
         654795.0,
         0
+      ],
+      [
+        "DPA",
+        "ELS",
+        -654795.0,
+        1
       ],
       [
         "DBI",
@@ -5342,14 +5342,14 @@
         0
       ],
       [
-        "ECN",
-        "OPER_TFR_IN",
+        "DPH",
+        "INTERGOV_REV_OTH",
         600000.0,
         0
       ],
       [
-        "DPH",
-        "INTERGOV_REV_OTH",
+        "ECN",
+        "OPER_TFR_IN",
         600000.0,
         0
       ],
@@ -5648,6 +5648,12 @@
         0
       ],
       [
+        "CON",
+        "PROP_TAX",
+        100000.0,
+        0
+      ],
+      [
         "REG",
         "EXP_RECOVERY",
         100000.0,
@@ -5658,12 +5664,6 @@
         "ELS",
         -100000.0,
         1
-      ],
-      [
-        "CON",
-        "PROP_TAX",
-        100000.0,
-        0
       ],
       [
         "LIB",
@@ -5697,15 +5697,15 @@
       ],
       [
         "BOS",
-        "EXP_RECOVERY",
-        71996.0,
-        0
-      ],
-      [
-        "BOS",
         "ELS",
         -71996.0,
         1
+      ],
+      [
+        "BOS",
+        "EXP_RECOVERY",
+        71996.0,
+        0
       ],
       [
         "LIB",
@@ -5780,8 +5780,8 @@
         0
       ],
       [
-        "ECN",
-        "FINE_FORF_PENAL",
+        "PRT",
+        "EXP_RECOVERY",
         20000.0,
         0
       ],
@@ -5792,8 +5792,8 @@
         0
       ],
       [
-        "PRT",
-        "EXP_RECOVERY",
+        "ECN",
+        "FINE_FORF_PENAL",
         20000.0,
         0
       ],

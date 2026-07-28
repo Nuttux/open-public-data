@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.742439+00:00",
+ "generated_at": "2026-07-28T11:43:47.717583+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -25,6 +25,174 @@
  "top_departments": [
   "DT  GSA - Technology"
  ],
+ "profile": {
+  "n_vouchers": 1689,
+  "departments": [
+   {
+    "department": "DT  GSA - Technology",
+    "department_code": "TIS",
+    "usd": 66147692.09,
+    "n_vouchers": 394
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 12661472.22,
+    "n_vouchers": 113
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 11182014.27,
+    "n_vouchers": 122
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 10072179.0,
+    "n_vouchers": 55
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 6804123.2,
+    "n_vouchers": 141
+   },
+   {
+    "department": "CPC City Planning",
+    "department_code": "CPC",
+    "usd": 2332674.84,
+    "n_vouchers": 39
+   },
+   {
+    "department": "POL Police",
+    "department_code": "POL",
+    "usd": 2287556.95,
+    "n_vouchers": 72
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 2236172.12,
+    "n_vouchers": 109
+   }
+  ],
+  "n_departments": 41,
+  "categories": [
+   {
+    "code": "535960",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 98487606.14,
+    "n_vouchers": 922
+   },
+   {
+    "code": "549210",
+    "label": "Data Processing Supplies",
+    "spend_class": "purchase",
+    "usd": 6785181.92,
+    "n_vouchers": 290
+   },
+   {
+    "code": "529110",
+    "label": "Dp-Wp Equipment Maint",
+    "spend_class": "purchase",
+    "usd": 5289965.95,
+    "n_vouchers": 49
+   },
+   {
+    "code": "549250",
+    "label": "Minor Data Processing Equipmnt",
+    "spend_class": "purchase",
+    "usd": 3420299.33,
+    "n_vouchers": 120
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 3284758.62,
+    "n_vouchers": 92
+   },
+   {
+    "code": "560610",
+    "label": "Data Processing Equipment",
+    "spend_class": "purchase",
+    "usd": 1839007.98,
+    "n_vouchers": 24
+   },
+   {
+    "code": "550010",
+    "label": "Eqpmnt(5KOr_-Controlled Asset)",
+    "spend_class": "unclear",
+    "usd": 1689641.48,
+    "n_vouchers": 41
+   },
+   {
+    "code": "535990",
+    "label": "Other Current Expenses",
+    "spend_class": "purchase",
+    "usd": 1437466.65,
+    "n_vouchers": 12
+   }
+  ],
+  "n_categories": 26,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 22376534.96,
+  "n_recent_lines": 38,
+  "recent_lines": [
+   {
+    "department": "DT  GSA - Technology",
+    "department_code": "TIS",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 12250412.3,
+    "n_vouchers": 59
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Data Processing Supplies",
+    "spend_class": "purchase",
+    "usd": 2920508.14,
+    "n_vouchers": 5
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 1906688.88,
+    "n_vouchers": 8
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 1519943.26,
+    "n_vouchers": 4
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "label": "Software Licensing Fees",
+    "spend_class": "purchase",
+    "usd": 639022.22,
+    "n_vouchers": 9
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 551182.0,
+    "n_vouchers": 2
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000029070",

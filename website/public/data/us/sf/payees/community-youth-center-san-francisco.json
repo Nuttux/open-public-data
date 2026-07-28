@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.742758+00:00",
+ "generated_at": "2026-07-28T11:43:47.718229+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -37,10 +37,191 @@
  "top_departments": [
   "CHF Children;Youth & Families"
  ],
+ "profile": {
+  "n_vouchers": 5794,
+  "departments": [
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 64256688.52,
+    "n_vouchers": 2568
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 15394455.53,
+    "n_vouchers": 202
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 14820345.87,
+    "n_vouchers": 725
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 12930379.33,
+    "n_vouchers": 883
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "usd": 6613979.27,
+    "n_vouchers": 459
+   },
+   {
+    "department": "WOM Status of Women",
+    "department_code": "WOM",
+    "usd": 3338584.08,
+    "n_vouchers": 524
+   },
+   {
+    "department": "DBI Building Inspection",
+    "department_code": "DBI",
+    "usd": 2916981.16,
+    "n_vouchers": 129
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 2233663.25,
+    "n_vouchers": 34
+   }
+  ],
+  "n_departments": 19,
+  "categories": [
+   {
+    "code": "538010",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 86578771.59,
+    "n_vouchers": 2890
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 10432248.57,
+    "n_vouchers": 433
+   },
+   {
+    "code": "538000",
+    "label": "CBO Services - Budget",
+    "spend_class": "purchase",
+    "usd": 1042793.0,
+    "n_vouchers": 12
+   },
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 601153.83,
+    "n_vouchers": 46
+   },
+   {
+    "code": "530110",
+    "label": "Property Rent",
+    "spend_class": "purchase",
+    "usd": 79861.87,
+    "n_vouchers": 18
+   },
+   {
+    "code": "527510",
+    "label": "Management Consulting Services",
+    "spend_class": "purchase",
+    "usd": 76000.0,
+    "n_vouchers": 5
+   },
+   {
+    "code": "552115",
+    "label": "Sales-Use Tax",
+    "spend_class": "obligation",
+    "usd": 22344.32,
+    "n_vouchers": 1
+   },
+   {
+    "code": "525010",
+    "label": "Promotional & Entertainmnt Exp",
+    "spend_class": "purchase",
+    "usd": 1700.0,
+    "n_vouchers": 2
+   }
+  ],
+  "n_categories": 13,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 15560140.68,
+  "n_recent_lines": 11,
+  "recent_lines": [
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 8174112.4,
+    "n_vouchers": 150
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 2813784.4,
+    "n_vouchers": 33
+   },
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 1921465.64,
+    "n_vouchers": 48
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 1202770.0,
+    "n_vouchers": 36
+   },
+   {
+    "department": "ECN Economic & Wrkfrce Dvlpmnt",
+    "department_code": "ECN",
+    "label": "Community Based Org Srvcs",
+    "spend_class": "purchase",
+    "usd": 630537.98,
+    "n_vouchers": 16
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 264911.58,
+    "n_vouchers": 20
+   }
+  ]
+ },
+ "identity": {
+  "description": "Community Youth Center Of San Francisco is an IRS-recognized tax-exempt organization in San Francisco, CA. Its IRS activity code is not recorded in the registry.",
+  "method": "irs_bmf",
+  "confidence": 0.97,
+  "legal_name": "Community Youth Center Of San Francisco",
+  "ein": "941728818",
+  "ntee_code": null,
+  "ntee_label": null,
+  "city": "San Francisco",
+  "state": "CA",
+  "source_label": "IRS exempt-organization registry (ProPublica Nonprofit Explorer)",
+  "source_url": "https://projects.propublica.org/nonprofits/organizations/941728818",
+  "checked_at": "2026-07-27T23:37:49.195274+00:00"
+ },
  "contracts_held": [
   {
    "contract_no": "1000010830",
-   "title": "Mental Health Serv. at SF",
+   "title": "Mental Health Services. at SF",
    "department": "DPH Public Health",
    "department_code": "DPH",
    "agreed_usd": 9999999.0,

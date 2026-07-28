@@ -1,0 +1,570 @@
+{
+ "generated_at": "2026-07-28T12:23:47.800973+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "pier-80",
+ "name": "Pier 80",
+ "kind": "Port facility",
+ "family": "port",
+ "address": "271 Cesar Chavez St",
+ "lat": 37.749739,
+ "lon": -122.381238,
+ "owning_dept": {
+  "name": "Port",
+  "code": "PRT"
+ },
+ "facility": {
+  "primary_name": "Pier 80 - Entry Canopy",
+  "primary_address": "271 CESAR CHAVEZ ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94124",
+  "primary_block_lot": "4304002",
+  "primary_department_name": "Port",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 11040,
+  "primary_latitude": 37.748940176000076,
+  "primary_longitude": -122.38139561499997,
+  "supervisor_district": 10,
+  "n_facilities": 9,
+  "total_gross_sq_ft": 17404,
+  "n_owned": 9,
+  "n_leased": 0,
+  "apn_list": [
+   "4304002"
+  ],
+  "facilities": [
+   {
+    "facility_id": 2013,
+    "common_name": "Pier 80 - Entry Canopy",
+    "block_lot": "4304002",
+    "gross_sq_ft": 11040,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2015,
+    "common_name": "Pier 80 - Terminal Office",
+    "block_lot": "4304002",
+    "gross_sq_ft": 3552,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2014,
+    "common_name": "Pier 80 - Office Bldg #2",
+    "block_lot": "4304002",
+    "gross_sq_ft": 1406,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2016,
+    "common_name": "Pier 80 Office Bldg #1",
+    "block_lot": "4304002",
+    "gross_sq_ft": 1406,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3092,
+    "common_name": "Pier 80 - Gear & Maintenance Building",
+    "block_lot": "4304002",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3093,
+    "common_name": "Pier 80 - Service Building",
+    "block_lot": "4304002",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3094,
+    "common_name": "Pier 80 - Shed A",
+    "block_lot": "4304002",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3095,
+    "common_name": "Pier 80 - Shed D",
+    "block_lot": "4304002",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3096,
+    "common_name": "Pier 80 Administration Building",
+    "block_lot": "4304002",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "PASHA AUTOMOTIVE SERVICES",
+    "paid_usd": 5756416.61,
+    "n_contracts": 1,
+    "first_fiscal_year": 2018,
+    "last_fiscal_year": 2027
+   },
+   {
+    "vendor": "MANSON CONSTRUCTION CO",
+    "paid_usd": 1706067.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2026,
+    "last_fiscal_year": 2026
+   }
+  ],
+  "n_payees": 2,
+  "payees_total_paid": 7462483.61
+ },
+ "photo": "/img/us/sf/places/pier-80.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/pier-80.jpg",
+  "source": "Wikimedia Commons",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Pier_80_and_Muni_Metro_East_from_Potrero_Hill,_February_2019.JPG",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "license_verified": true,
+  "provisional": false,
+  "author": "Pi.1415926535",
+  "resolved_via": "commons",
+  "fetched_at": "2026-07-27T23:25:14.786029+00:00"
+ },
+ "summary_en": "Pier 80 is where San Francisco's cargo ended up. The Port's 1980 handbook already shows it as a working terminal serving Far East, South East Asia and Middle East lines; by the late 1990s the Port Commission was recording that the former cargo activities at Piers 27-29 had been consolidated here, and a 1986 engineering study of container terminal options argued for going further — expanding Pier 80 north toward Pier 70 into a single consolidated terminal with immediate rail access and miles of contiguous maritime land. The Mission Bay agreement fed it too: the Port gave up fifteen acres to Catellus and took back the 26-acre Western Pacific Yard and twelve acres of city streets adjacent to the Pier 80 terminal. Keeping it working is expensive and only partly funded — the Port's 10-year capital plan proposes revenue bond proceeds for Pier 80 cargo facility upgrades while listing Pier 80, 90 and 96 improvements among hundreds of millions in unfunded projects. Three contracts name the pier directly: Pasha Automotive Services operates auto services there, paid $5.36M against $9.65M agreed; Manson Construction was paid $1.65M of $3.71M for mooring and berthing improvements; and a roof replacement is agreed at $665,284 with nothing yet paid.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_usd": 156434885.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_compensation_usd": 52732085.2,
+   "n_employees": 304,
+   "fiscal_year": 2025
+  },
+  "contracts": [
+   {
+    "contract_no": "1000005320",
+    "title": "Pier 80 Operation Auto Services",
+    "prime": "PASHA AUTOMOTIVE SERVICES",
+    "department_code": "PRT",
+    "agreed_usd": 9652000.0,
+    "paid_usd": 5355181.81,
+    "evidence": "PRT PIER 80 OPRN AUTO SVS",
+    "team": [
+     {
+      "supplier": "PASHA AUTOMOTIVE SERVICES",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 9652000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035982",
+    "title": "Pier 80 Mooring & Berthing Imp",
+    "prime": "MANSON CONSTRUCTION CO",
+    "department_code": "PRT",
+    "agreed_usd": 3713500.0,
+    "paid_usd": 1649736.79,
+    "evidence": "Pier 80 Mooring & Berthing Imp",
+    "team": [
+     {
+      "supplier": "MANSON CONSTRUCTION CO",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 3713500.0
+     },
+     {
+      "supplier": "SILVERADO CONTRACTORS INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 1167000.0
+     },
+     {
+      "supplier": "SITECO SERVICES, INC.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 515000.0
+     },
+     {
+      "supplier": "Transpacific Steel, LLC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 123000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000037774",
+    "title": "Pier 80 M&R Roof Replacemen",
+    "prime": "BUHLER COMMERCIAL",
+    "department_code": "DPW",
+    "agreed_usd": 665284.28,
+    "paid_usd": 0.0,
+    "evidence": "PW Pier 80 M&R Roof Replacemen",
+    "team": [
+     {
+      "supplier": "BUHLER COMMERCIAL",
+      "role": "Prime Contractor",
+      "lbe": true,
+      "attached_usd": 665284.28
+     },
+     {
+      "supplier": "San Francisco Roofing Services Inc.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 946500.0
+     },
+     {
+      "supplier": "JANUS CORPORATION",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 129020.0
+     },
+     {
+      "supplier": "DELAO ELECTRIC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 20362.0
+     },
+     {
+      "supplier": "Top Coat Tier Painting Inc",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 19053.72
+     },
+     {
+      "supplier": "M C METAL INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 13700.0
+     }
+    ]
+   }
+  ],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "10yearcapitalpla2006port",
+   "title": "10-year capital plan : draft",
+   "creator": "Port of San Francisco (Calif.)",
+   "year": 2006,
+   "pool": "sfpl",
+   "matched_alias": "Pier 80",
+   "ocr_excerpts": [
+    "rt operations? Based on these criteria. Port staff recommend utilizing an estimated $85.9 million in revenue bond proceeds to fund projects, including: • Pier 9 sub- and super-structure improvements; • Pier 19 sub- and superstructure improvements; • Pier 50 Port Maintenance Facility upgrades; and • Pier 80 Cargo Facility upgrades. Public/Private Development Agreements: The Port's primary tool to fund facility upgrades has been public-private partnership development projects, which involves a 50 to 66-year lease for Port property, secured financing, and developer project delivery. Successful examples of this",
+    "illion in unfunded projects. Table V.l on Pages 37 - 38 identifies currently unfunded projects along the entire waterfront, including the Agriculture Building, Fisherman's Wharf 6 3/9/2006, 3:17:16PM PORT OF SAN FRANCISCO 10- YEAR CAPITAL PLAN DRAFT - FOR DISCUSSIONS PURPOSES ONLY improvements and Pier 80, 90 and 96 improvements. Perhaps the most critical unfunded project is $38.4 million in estimated costs to maintain the City's principal Cruise Facility, Pier 35. Speculating on potential funding options, this Plan identifies $493.8 million or 67% of the $734.3 million in Unfunded Projects, for future",
+    "he Port to at least repair it such that it can continue to provide that function. The $26.6 million will cover repairs and seismic upgrades required for the valley between Sheds A& B to allow access to Pier 50 and some sub-structure and superstructure repairs on the rest of the pier. 26,600,000 Pier 80 - Illinois and Cesar Chavez Sts Bulk and break- bulk cargo facility Pier 80 is currently under-utilized. There is potential to increase the volume of cargo processed through this facility to increase net revenues. Thus, financing the required repairs could be covered by increased revenues if the Port is better able to market this facility. The $26 million will cover most sup",
+    "ntified Pier 54 - Terry Francois Blvd south of Pier 50 33,182,000 None Identified Pier 52 - Public Boat Ramp 800,000 Grant Funding Pier 52 - Breakwater 3,000,000 Grant Funding Pier 70 - Total Complex 233,011,000 Balance not funded bf IFD - Development Project and/or other Public Funding Pier 80 - balance not funded through revenue bond 61,578,000 Other Public Funding Pier 90 12,972,000 None Identified Pier 96 15,377,000 None Identified Intermodal Transfer Facility 21,310,000 Transportation Grant Funding and/or Other Public Funding All Other Port Facilities 83,731,498 None Identified",
+    "e June 2006 statewide ballot. It may also be eligible for other State and federal transportation grant programs. 39 3/9/2006, 3:17:16PM PORT OF SAN FRANCISCO 10-YEAR CAPITAL PLAN DRAFT - FOR DISCUSSIONS PURPOSES ONLY Other Grant and/or Public Funding Some of the Port's facilities, such as the Pier 80 cargo"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.04,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 2.54,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/10yearcapitalpla2006port",
+   "deep_link": "https://archive.org/details/10yearcapitalpla2006port?q=Pier+80",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "plan",
+   "doc_type_label": "Plan",
+   "doc_tier": 3,
+   "procedural": false,
+   "group": "Plan",
+   "salient": true,
+   "gloss": "The Port's capital plan proposing bond-funded cargo upgrades while listing Pier 80 among unfunded projects."
+  },
+  {
+   "identifier": "containertermina1986moff",
+   "title": "Container terminal options",
+   "creator": "Moffatt & Nichol, Engineers,San Francisco (Calif.). Dept. of City Planning",
+   "year": 1986,
+   "pool": "sfpl",
+   "matched_alias": "Pier 80",
+   "ocr_excerpts": [
+    "ay Conservation & Development Commission (6CDC). This report investigates the technical feasibility of locating such a container terminal facility at an alternative location within the Central Waterfront area, in conjunction with Port holdings at Pier 70 and the present San Francisco Container Terminals (Pier 80 and Piers 94-96). Such a facility would require obtaining privately-held land between those two Port holdings to develop a consolidated container terminal facility. This report analyzes comparative cargo capacities, construction costs, Bay fill, and other aspects of container terminal concepts at Pier 50, Pier 70, Pier 80, and on tne land between Pier 70 and 80 (See Figure 1). If the Mission Rock facility were not developed as a container terminal. Piers 48-50 would remain in maritime use as at present. The analysis concludes that there would be equivalent cargo capacities with either container terminal concept: (1) tne consolidated terminal encompassing Pier 70, Pier 80 and lands in between; and (2) tnree separate terminals developed at Pier 50, Pier 70 and Pier 80. Six or seven berth options are available at either location. Seaport Plan cargo throughput goals can De met at either location. For the six berth option, the consolidated terminal would require from two to 20 acres less Bay fill than the separate terminals. For seven berths, consolidated wou",
+    "ate terminals. Land costs reduce tnis differential somewhat, but consolidated terminals would still cost less than separate terminals. This analysis suggests that the Port may gain operational advantages by looking towards consolidation of container terminal operations in an expanded 1 North Terminal (Pier 80 expanded toward Pier 70) of its present San Francisco Container Terminals. It would have immediate rail access, control several miles of contiguous maritime land, and be able to expand from existing facilities. There is greater likelihood of implementation with the consolidated plan. If the Port elected to proceed in this direction, a number of actions by the Port and other agencies may be required. 0 Establish feasibility of acquiring privately-held lands between Pier 80 and Pier 70, perhaps through exchange of Port lands in the Pier 50 vicinity. 0 Amend tne Port master plan to delete a Pier 50 container terminal, to be replaced with a consolidated Pier 80 to Pier 70 North Terminal. 0 If an exchange of Port land in the Pier 50 vicinity is necessary to oDtain lands for a consolidated facility, approval of the State Lands Commission and action by the State Legislature to authorize the transfer could be required. This would involve transfer of the",
+    "allow orientation of the whole development to the Bay as well as China Basin Channel. I. INTROUUCTION This Container Terminal Options study is one"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 7.93,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 3.43,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/containertermina1986moff",
+   "deep_link": "https://archive.org/details/containertermina1986moff?q=Pier+80",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "An engineering study arguing for expanding Pier 80 into a single consolidated container terminal."
+  },
+  {
+   "identifier": "port1980port",
+   "title": "The port",
+   "creator": "Port of San Francisco (Calif.)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 80",
+   "ocr_excerpts": [
+    "500 tons of bulk materials per hour (no vessel shifting required). CONSTRUCTION: Reinforced concrete silo and head house; timber and asphalt deck on timber piling. CONNECTIONS: Via Amador Street from Third Street; Southern Pacific Railway Tracks 8 LIQUID BULK ARMY STREET TERMINAL- TERMINAL— PIER 84 PIER 80 OPERATOR: Granex STEAMSHIP LINE: Various BERTHS: One at MLLW 35 alongside AREA: .4 acre CONSTRUCTION: Timber piles; timber deck and catwalk CONNECTIONS: Via Indiana Street; Southern Pacific Railway Tracks. OPERATOR: California Stevedore and Ballast Company STEAMSHIP LINES: Barber Blue Sea, Canadian W",
+    "an Francisco, the piers in maritime support activities are: 1, 3, 7, 9, 24, 26, 28, 33, 34, 36, 38, 40, 42, 43, 44, 45, 46 and 54. 13 STEAMSHIP LINES BARBER BLUE SEA Agency: Overseas Shipping Company Address: Phone: Berth: Service: One California St., San Francisco 94111 (415) 986-2114 Pier 80 Far East, South East Asia, Central America, Middle East CANADIAN TRANSPORTATION LINE Agency: Star Terminal Co., Inc. Address: Phone: Berth: Service: Pier 15-17, The Embarcadero, San Francisco 94117 (415) 981-6622 Pier 15-17 Canada, West Coast U.S.A., Hawaii CANADIAN WESTFAL-LARSEN LINE Agency: General Steamship Corporation, Ltd. Address: Phone: Berth: Service: 400 California St., San Francisco 94104 (415) 772-9200 Pier 80 South America COLUMBUS LINE Agency: Bakke Steamship Address: Phone: Berth: Service: 650 California St., San Francisco, 94108 (415) 433-4200 Pier 96 Australia, New Zealand DELTA STEAMSHIP LINES, INC. Address: Phone: Berth: Service: One Market Plaza, Steuart St. Tower, Suite 2700, San Francisco 94106 (415) 777-8200 Pier 30-32 Central and South America EAST ASIATIC COMPANY Agency: Overseas Shipping Company Address: Phone: Berth: Service: One California St., San Francisco 94111 (415) 986-2114 Pier 80 Far East, South East Asia ELMA-ARGENTINE LINES Agency: Transpacific Transportation Company Address: Phone: Berth: Service: 650 California St., San Francisco 94111 (415) 986-0786 Pier 27 South America 14 FARRELL LINES INC. Address: One Market Plaza, Suite 24-B, San Francisco 94105 Phone: (415)",
+    "AUTO LINERS Agency: Transpacific Transportation Company Address: 650 California St., San Francisco 94111 Phone: (415)986-0786 Berth: Pier 27-29 Service: Europe KARLANDER KANGAROO LINE Agency: Transpacific Transportation Company Address: 650 California St., San Francisco 94111 Phone: (415)986-0786 Berth: Pier 80 Service: Australia KNUTSEN LINE Agency: Bakke Steamship Address: 650 California St., San Francisco, 94108 Phone: (415)433-4200 Berth: Pier 50 Service: Far East, Australia, Southeast Asia 15 LLOYD BRASILIERO Agency: Kerr Steamship Company, Inc. Address: One Market Plaza, Suite 2400 Spear St. Tower, San Francisco 94105 Phone: (415)764-0200 Berth: Pier 80 Service"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 7.14,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/port1980port",
+   "deep_link": "https://archive.org/details/port1980port?q=Pier+80",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The Port's handbook listing the pier's berths, operators and the shipping lines it served."
+  },
+  {
+   "identifier": "C124881581",
+   "title": "Mission Bay : a new San Francisco neighborhood",
+   "creator": null,
+   "year": 1990,
+   "pool": "dl",
+   "matched_alias": "Pier 80",
+   "ocr_excerpts": [
+    "l basic infrastructure construction costs, except where City has grants, i.e. I-280 Program and Third/Fourth Street bridges. City provides maintenance. Other Land Transfers ¢ Port transfers 15 acres to Catellus for housing, retail and community service uses, and receives 26-acre Western Pacific Yard and 12 acres of City streets adjacent to Pier 80 Terminal; Port licenses 22 acres of land to Catellus for parks. ¢ City transfers 24 acres of former streets and obtains 16 acres of developable housing sites, at either 2 or 4 acres every 4 years, and 11-acre Seventh & Townsend site for public facilities use. Catellus dedicates 16 acres of new streets to City. ¢ City buys land for Metro Yar",
+    "on Bay street 10 grid and Metro right-of-way that, including about 59 acres of existing City streets, would total 75 acres. Overall, the City - and its Port - presently own about 145 acres of land within in Mission Bay, and would increase this total to about 189 acres in Mission Bay. The Port would also gain an additional 26 acres near Pier 80 (see Item 7, below). 7. Port Land Exchange and Open Space License The San Francisco Port, owner of certain Mission Bay properties, would transfer about 15 acres to Catellus. Market rate housing with associated retail would be built on about 12 acres, and the remaining 3+ acres would be transferred to the City for affordable housing and community facilities. In exchange for these properties, the Port would receive the 34.5- acre Western Pacific Yard adjacent to its Pier 80 Terminal. That site includes 26 acres owned by Catellus and about 12 acres of City streets. Beyond these land transfers the Port would license about 22 acres of land for Catellus to develop as parks. The Port would receive $60 million, the equivalent of $2 million annually for 30 years. With escalation, total license payments would exceed $1",
+    "0. 1% of office, hotel, community facility and park construction costs will be set aside for public art. 11. The Port will receive about $60)($2M/yr. for 30 years, escalated) for licensing 22 acres of land for Catellus to construct parks. 12. The Port will exchange 15 acres of Port lands within Mission Bay for 26 acres of Catellus land near Pier 80. LAND USES Housing SFPR (market rate & affordable City (affordable) Commercial Office Commercial/Lt. Industrial Major Retail Hotel Community & Cultural School Police, Fire & Recreation Cente Other Public Facilities 7th & Townsend Site Parks & Open Space Public Parks China Basin Channel Parks/Plazas, Commerci"
+   ],
+   "collection": "igscalocalgovdocs",
+   "relevance": {
+    "score": 7.5,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 3.0,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/C124881581",
+   "deep_link": "https://archive.org/details/C124881581?q=Pier+80",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The Mission Bay agreement, transferring 26 acres and adjacent streets to the Port beside the terminal."
+  },
+  {
+   "identifier": "agenda19sanf_47",
+   "title": "Agenda",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 80",
+   "ocr_excerpts": [
+    "19 and 23 as an International Trade Mart. 10. Request approval of licenses and leases. Staff recommends approval . 11. Request approval of amendment to United Shellfish Co. lease at Fisherman's Wharf. Staff recommends approval . 12. Request approval to accept bids for a telescopic spreader for the Pier 80 Paceco crane and to award contract. Staff recommends approval. 13. Request \"change in use\" to Intrepid Inc. License at Pier 54 bulkhead for the purposes of boat storage. Staff recommends approval. 14. Request approval of settlement claim of Maria Tateyama in the amount of $2,750. Date of acciden",
+    "work as of October 20, 1978, 88 days after scheduled completion c. Approval of contract time extension of 88 days. Page 2 d. Authorization to make final payment. Staff recommends approval, 11. Request approval of plans and specifications and authorization to solicit bids for Contract No. 2473, Pier 80 Shed A and B, end wall repair. Staff recommends approval, 12. Request approval to authorize the staff to solicit bids for Contract No, 2483 for custodial services. 13. Review bids received December 7, 1978 for Contract No. 2491 Pier 96 repair to power mast crane No, 4, Staff recommends rejectio",
+    "ease terms and conditions for use of Seawall Lots 335^336 by Bekins Van and Storage, and directing City Attorney to prepare a lease form. 8. Consideration of percentage rental policy relating to Licenses 10174, 10175 and 9980. f 9. Review bids received January 8, 1979 for Contract No. 2473 I \"Pier 80 Shed A and B End Wall Repair,\" NEW BUSINESS 10. Request approval of Licenses and Leases, T10202 to L10208. 11. Consideration of lease terms and conditions for the historic ferryboat SANTA ROSA, and directing City Attorney to prepare a lease form. 12. Consideration of lease terms and conditions",
+    "Attorney to draft lease on November 22, 1978,) Put over at Foreign Trade Zone, Inc's request until February 14, 1979o Consideration of Percentage Rental adjustments, Licenses 10174, 10175, and 9980, (Put over from Meeting of January 10, 1979.) NEW BUSINESS 9, Review bids for Contract No. 2473, \"Pier 80 Shed A and B end wall repair.\" 10, Consideration of lease with the San Francisco Eye Institute at Pier 50 Administration Building, and directing City Attorney to prepare a lease, 11, Request approval of Licenses and Leases, 10209 to 10216. 5P FEB 13 1979 DOCUMENTS DEPT. 8.F. PUaUC LIBRARY",
+    ". 8. Request approval to modify passenger head tax provisions of Tariff 3-C and to undertake certain improvements at Pier 35 (passenger terminal). 9. Review bids for demolition of Pier l6 (EDA/LPW project)* NEW BUSINESS 10. Request approval of license with LYKES BROS. STEAMSHIP COMPANY for use of Pier 80 in accordance with Tariff 3-0. •n. Request amendment to Charles Hall Page and Associates Contract No. SA"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 8.84,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 3.34,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/agenda19sanf_47",
+   "deep_link": "https://archive.org/details/agenda19sanf_47?q=Pier+80",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Port Commission agendas awarding crane equipment and shed repair contracts at the pier."
+  },
+  {
+   "identifier": "minutes1999sanf_1",
+   "title": "Minutes",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 80",
+   "ocr_excerpts": [
+    "servation efforts will be pursued by the Port as part of the approval process for individual projects, and may occur in advance of completing historic preservation policies for other waterfront areas. Agenda Item No. 8B Southern Waterfront Planning The Port has received several lease proposals for Pier 80, and Piers 90 through 96 in the Southern Waterfront. Many are for maritime industrial or other industrial activities south of Islais Creek. A number of these proposed uses (e.g. concrete-batching plants, crushing and recycling, storage of aggregate for concrete operations) have raised environmental and",
+    "ial Assistant Project Description The Waterfront Land Use Plan designates Piers 27-29 as a Transitional Maritime Area in recognition of the trend toward consolidating industrial maritime operations in the southern waterfront. The former cargo terminal activities at these piers have been consolidated at Pier 80, and the sites are now being used primarily for interim non-trust uses. The Waterfront Plan states that when these facilities are no longer required exclusively for maritime operations, reuse of the facilities should include a mix of maritime and commercial activities consistent with the goals for the",
+    "Regular Meeting 3. EXECUTIVE A. Executive Director's Report (1) New Tenants Information Package 4. CONSENT CALENDAR A. Approval of Monthly Parking Stall Rate Schedule. (Resolution No. 99-32) 5. MARITIME A. Approval of five-year Marine Terminal Agreement with Trans-Pacific Lines Ltd. at Pier 80. (Resolution No. 99-33) 6. REAL ESTATE 7. FACILITIES & OPERATIONS 8. PLANNING & DEVELOPMENT A. Authorizing the Executive Director of the Port of San Francisco to accept and expend $400,000 of State funds from the State of California Department of Boating and Waterways for marina pollution prev",
+    "ent Hon. Michael Hardeman Hon. Brian Mc Williams Hon. Pius Lee FROM: Douglas F. Wong jftlW Executive Director \\P^^ SUBJECT: Approval of the Trans-Pacific Lines Ltd. Marine Terminal Agreement DIRECTOR'S RECOMMENDATION: APPROVE THE 5-YEAR MARINE TERMINAL AGREEMENT WITH TRANS-PACIFIC LINES LTD. AT PIER 80 AND AUTHORIZE THE EXECUTIVE DIRECTOR TO SEEK APPROVAL FROM THE CITY'S RISK MANAGER TO AMEND THE AGREEMENT TO INCLUDE A MUTUAL INDEMNITY CLAUSE. Effective May V\\ Trans-Pacific Ltd. commenced a new transpacific container service, nominating Pier 80 as their Northern California port of call, offering a bi-weekly service between San Francisco, Los Angeles and Busan, Manila, PRC, and Hong Kong. The Port has concluded negotiations for a five-year Marine Terminal Agreement with Trans-Pacific Lines Ltd., marking the first fully containerized transpacifi",
+    "call at the Port since 1995. Material provisions of the agreement include the following: (i) five year term, commencing on May 1, 19"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 5.98,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 0.48,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": -1.25,
+    "money": true,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": true
+   },
+   "url": "https://archive.org/details/minutes1999sanf_1",
+   "deep_link": "https://archive.org/details/minutes1999sanf_1?q=Pier+80",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Commission minutes recording the consolidation of cargo operations at Pier 80."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "economicimpactso2000port",
+   "title": "The economic impacts of Port of San Francisco",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/economicimpactso2000port"
+  },
+  {
+   "identifier": "biennialreportof1938cali_0",
+   "title": "Biennial report of the Board of State Harbor Commissioners for ..",
+   "year": 1865,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/biennialreportof1938cali_0"
+  },
+  {
+   "identifier": "financialstateme1971sanf",
+   "title": "Financial statements and independent auditors' report",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/financialstateme1971sanf"
+  }
+ ],
+ "dept_shelf_label": "Port of San Francisco",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 6,
+  "n_money_links": 4,
+  "meets_pre_summary": true
+ }
+}

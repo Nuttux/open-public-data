@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.739859+00:00",
+ "generated_at": "2026-07-28T11:43:47.713065+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -36,6 +36,146 @@
  "top_departments": [
   "MYR Mayor"
  ],
+ "profile": {
+  "n_vouchers": 826,
+  "departments": [
+   {
+    "department": "MYR Mayor",
+    "department_code": "MYR",
+    "usd": 82527186.7,
+    "n_vouchers": 155
+   },
+   {
+    "department": "GEN General City - Unallocated",
+    "department_code": "GEN",
+    "usd": 18716836.0,
+    "n_vouchers": 32
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 15360542.7,
+    "n_vouchers": 124
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 15304085.36,
+    "n_vouchers": 260
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "usd": 10111809.89,
+    "n_vouchers": 104
+   },
+   {
+    "department": "CII Commty Invest & Infrstrctr",
+    "department_code": "CII",
+    "usd": 3750087.2,
+    "n_vouchers": 3
+   },
+   {
+    "department": "ADM GSA - City Administrator",
+    "department_code": "ADM",
+    "usd": 3638375.0,
+    "n_vouchers": 3
+   },
+   {
+    "department": "REC Recreation & Park Commsn",
+    "department_code": "REC",
+    "usd": 2800124.0,
+    "n_vouchers": 18
+   },
+   {
+    "department": "HHP Hetch Hetchy Water & Power",
+    "department_code": "HHP",
+    "usd": 594549.4,
+    "n_vouchers": 33
+   },
+   {
+    "department": "ETH Ethics Commission",
+    "department_code": "ETH",
+    "usd": 173.2,
+    "n_vouchers": 5
+   },
+   {
+    "department": "MTA Municipal Transprtn Agncy",
+    "department_code": "MTA",
+    "usd": 60.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 17,
+  "categories": [
+   {
+    "code": "552210",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 15304085.36,
+    "n_vouchers": 260
+   },
+   {
+    "code": "574110",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 9065648.39,
+    "n_vouchers": 97
+   },
+   {
+    "code": "574990",
+    "label": "Debt Svc-Admin And Fiscal Chrg",
+    "spend_class": "obligation",
+    "usd": 1140000.0,
+    "n_vouchers": 7
+   },
+   {
+    "code": "570000",
+    "label": "Debt Service-Budget",
+    "spend_class": "obligation",
+    "usd": 570000.0,
+    "n_vouchers": 6
+   },
+   {
+    "code": "553210",
+    "label": "Litigation Expenses",
+    "spend_class": "unclear",
+    "usd": 314.84,
+    "n_vouchers": 3
+   },
+   {
+    "code": "526990",
+    "label": "Other Fees",
+    "spend_class": "purchase",
+    "usd": 40.13,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": true,
+  "recent_fy": 2025,
+  "recent_total_usd": 2191418.77,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Fees Licenses Permits",
+    "spend_class": "unclear",
+    "usd": 1367174.11,
+    "n_vouchers": 23
+   },
+   {
+    "department": "AIR Airport Commission",
+    "department_code": "AIR",
+    "label": "Bond Interest-Expense",
+    "spend_class": "obligation",
+    "usd": 824244.66,
+    "n_vouchers": 12
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [],
  "n_contracts_held": 0,
  "variants": [

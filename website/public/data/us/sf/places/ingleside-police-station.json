@@ -1,0 +1,327 @@
+{
+ "generated_at": "2026-07-28T12:23:47.800222+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "ingleside-police-station",
+ "name": "Ingleside Police Station",
+ "kind": "Police station",
+ "family": "civic",
+ "address": "1 Sergeant John V Young St",
+ "lat": 37.72477,
+ "lon": -122.446251,
+ "owning_dept": {
+  "name": "Police Department",
+  "code": "POL"
+ },
+ "facility": {
+  "primary_name": "Ingleside Police Station",
+  "primary_address": "1 SERGEANT JOHN V YOUNG ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94112",
+  "primary_block_lot": "3179011",
+  "primary_department_name": "Police Department",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 18500,
+  "primary_latitude": 37.72477013400004,
+  "primary_longitude": -122.44625104499994,
+  "supervisor_district": 11,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 18500,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "3179011"
+  ],
+  "facilities": [
+   {
+    "facility_id": 897,
+    "common_name": "Ingleside Police Station",
+    "block_lot": "3179011",
+    "gross_sq_ft": 18500,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0
+ },
+ "photo": "/img/us/sf/places/ingleside-police-station.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/ingleside-police-station.jpg",
+  "source": "live.staticflickr.com",
+  "source_url": "https://www.flickr.com/photos/25229906@N00/52270876543",
+  "license": "UNVERIFIED",
+  "license_url": "",
+  "license_verified": false,
+  "provisional": true,
+  "author": "Bing",
+  "resolved_via": "web-search",
+  "fetched_at": "2026-07-27T23:25:09.562010+00:00"
+ },
+ "summary_en": "Ingleside Police Station stands inside Balboa Park, on Sergeant John Young Street — a 42,861-square-foot portion of the park's parcel, as the city's property register records it. A 1982 federal environmental statement for the Muni J Line connection describes the setting: between Havelock Street and Ocean Avenue lie Balboa Park, its swimming pool and the police station, with the Muni Metro Center and the Balboa Park BART station adjoining Ocean Avenue, and the park itself running to 27.5 acres. The station's ordinary life reaches the record through Police Commission minutes, which approve leaves of absence for officers posted here — including one in 1975 who took unpaid leave in order to campaign for a seat on the Board of Supervisors. The station is now being replaced. Clark Construction Group holds the Ingleside Police Station Replacement contract, agreed at $67,668,300, of which $284,506 had been paid when this record was taken — the ordinary shape of a large capital contract early in its life, where the city's commitment is made long before the money moves.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "POL",
+   "name": "Police",
+   "total_usd": 815292978.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "POL",
+   "name": "Police",
+   "total_compensation_usd": 714143931.48,
+   "n_employees": 3007,
+   "fiscal_year": 2025
+  },
+  "contracts": [
+   {
+    "contract_no": "1000030080",
+    "title": "Ingleside Police Station Replacement",
+    "prime": "CLARK CONSTRUCTION GROUP - CALIF LP",
+    "department_code": "DPW",
+    "agreed_usd": 67668300.0,
+    "paid_usd": 284506.0,
+    "evidence": "PW Ingleside Police Stn Repl",
+    "team": [
+     {
+      "supplier": "CLARK CONSTRUCTION GROUP - CALIF LP",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 67668300.0
+     }
+    ]
+   }
+  ],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "munijlineconnect1982unit",
+   "title": "Muni J Line connection project, San Francisco, California : draft environmental impact statement",
+   "creator": "United States. Urban Mass Transportation Administration,San Francisco (Calif.). Dept. of City Planning",
+   "year": 1982,
+   "pool": "sfpl",
+   "matched_alias": "Ingleside Police Station",
+   "ocr_excerpts": [
+    "attached single-family structures, apartments and some commercial uses near Santa Ysabel Avenue. The Community Assembly of God, Medical Dental Building and Shell Oil are all located near Santa Rosa Avenue. Further west, between Havelock Street and Ocean Avenue, is Balboa Park and swimming pool and the Ingleside Police Station. Balboa Park, the Muni Metro Center and the Balboa Park Bart station are the land uses adjoining Ocean Avenue south of the 1-280 freeway. The land uses adjacent to the east side of San Jose Avenue south of Ocean Avenue include attached homes, the San Miguel School of Bilingual Education, a coffee",
+    "one park is adjacent to a line. Balboa Park at San Jose Avenue and Havelock Street is a 27.5- acre city park. The park contains four baseball diamonds, four tennis courts, one regulation soccer field with pressbox, stands and snack bar, a playground, a swimming pool, bike racks, and playing field. Ingleside Police Station is located in Balboa Park on Sergeant John Young Street. d. Schools (see Figure 4, page 22) Each of the proposed alignments passes near Fairmount and San Miguel Elementary Schools, James Denman Junior and Balboa Senior High Schools. In addition, the Mission Station 1 1 Station 15 Station 26 St",
+    "ark Station, adjacent to the Muni Car Barns, and Sunnyside Conservatory. 146 V. Historic Properties and Parklands TABLE 19 ARCHITECTURALLY SIGNIFICANT BUILDINGS1 Building DCP Rating SAN JOSE ALIGNMENT San Jose Ave. and San Joan 0/ 1 George Washington Masonic Lodge Balboa Park Swimming Pool 2/2 Ingleside Police Station 0/0 San Jose Ave. and Ocean BART Station 2/3 MISSION STREET ALTERNATIVE College Terrace (22 homes) 1/2 4600 Mission St. Savings and Loan 2/2 Mission St. and Silver 1/2 S.F. Jewish Home for the Aged Balboa Park Swimming Pool 2/2 Ingleside Police Station 0/0 San Jose Ave. and Ocean BART Station 2/3 MONTEREY BOULEVARD ALIGNMENT All structures listed under the San Jose Ave. Alignment plus the following: 230 Monterey Blvd. Home 2/2 234-6 Monterey Blvd. 4/4 Sunnyside Conservatory 346 Hearst St. Homes I /2 394 Hearst St. 0/0 DCP Rating refers to",
+    "rties & Parklands adjacent to the alignments. Balboa Park at San Jose Avenue and Havelock Street is just north of the Muni Metro Center and therefore opposite the terminus for all three proposed alignments. The San Jose Avenue Alignment parallels the eastern boundary of the park. The park contains Ingleside Police Station, Balboa Swimming Pool, a soccer field complete with stands, press box and snack bar, four baseball diamonds, four tennis courts, a playground, bike racks and playing field. The park is characterized by mature cypress, bay, pine and eucalyptus trees. The park offices, gardening, equipment area and base"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 0.9,
+    "sf_context": false,
+    "rival_city": true,
+    "citywide_serial": false,
+    "substantive": false,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 0.9,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 4.0,
+    "money": false,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": true,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/munijlineconnect1982unit",
+   "deep_link": "https://archive.org/details/munijlineconnect1982unit?q=Ingleside+Police+Station",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "environmental_review",
+   "doc_type_label": "Environmental review",
+   "doc_tier": 2,
+   "procedural": false,
+   "group": "Environmental review",
+   "salient": true,
+   "gloss": "A transit environmental statement placing the station inside Balboa Park, beside the pool and the Metro Center."
+  },
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2006",
+   "title": "Real property owned by the city and county of San Francisco / 2006",
+   "creator": null,
+   "year": 2006,
+   "pool": "dl",
+   "matched_alias": "Ingleside Police Station",
+   "ocr_excerpts": [
+    "age 47 REAL PROPERTY OWNED BY THE CITY AND COUNTY OF SAN FRANCISCO LAND DESCRIPTION (with Facilities) SUNNYSIDE PLAYGROUND CITY-OWNED PARCEL (3059010A) SEWER DRAINAGE (MELROSE & EDNA) PORTOLA DR (REMAINDER) SEWER DRAINAGE (JOOST) SUNNYSIDE SCHOOL (ELEMENTARY) EXCELSIOR OFF-STREET PARKING CITY COLLEGE BALBOA PARK INGLESIDE POLICE STATION BALBOA PARK RESERVOIR WATER FACILITIES FISCAL YEAR 2005-2006 ADDRESS JURISDICTION LAND AREA (Sq. Ft) LOT BLOCK MT DAVIDSON PARK: See Block 2961A, Lot 002 for details. 003 3015 RESERVOIR LANDS (GLEN PARK): See Block 2901A, Lot 029 for details. 002 3030 MELROSE & EDNA Recreation and Park 46,750 021 3032A SUNNYSIDE PLGROUND: CLUBHOUSE Inc",
+    "07 for details. 034 3148 EXCELSIOR OFF-STREET PARKING: See Block 3148, Lot 007 for details. 035 3148 50 PHELAN AVENUE SF Community College District 2,418,625 010 3179 CITY COLLEGE (Portion) 600 OCEAN Recreation and Park 1,190,101 011 3179 BALBOA PK REC BLDG POOL ETC.; BALBOA PK SOCCER STADIUM (Portion) PHELAN & JUDSON Police 42,861 011 3179 INGLESIDE POLICE STATION (Portion) 11 PHELAN PUC/Water Department 769,269 001 3180 RESERVOIRS/COVERED/BALBOA/ (Portion) Page 48 REAL PROPERTY OWNED BY THE CITY AND COUNTY OF SAN FRANCISCO LAND DESCRIPTION (with Facilities) ADDRESS BALBOA RESERVOIR, SOUTH BASIN FIRE STATION #15 PHELAN LOOP RECHANNELIZATION ROAD INGLESIDE BRANCH LIBRARY Authori",
+    "ELAN MURRAY BAY CHESTNUT CLAY HUDSON OAKDALE VELASCO ULLOA 02ND ST 15TH AVE BURROWS ST CABRILLO ST JUDAH NEWCOMB NEWCOMB LAND DESCRIPTION — POLICE PISTOL RANGE MICHELANGELO PLAYGROUND PORT LANDS JONES ST TANK & TANK HOUSE YICK WOO SCHOOL (ELEMENTARY) SEWER DRAINAGE (JOOST) JUDAH SUBSTATION TERMINAL LOOP INGLESIDE POLICE STATION COMMODORE SLOAT SCHOOL (ELEMENTARY) JUSTINE ST PARCEL ST MARY'S PLAYGROUND PORT LANDS TELEGRAPH HILL PARK PORTSMOUTH SQUARE ST MARY'S SQUARE GARAGE PORTSMOUTH SQ. PARKING GARAGE YOUNGBLOOD-COLEMAN PLAYGROUND GEORGE WASHINGTON CARVER ELEMENTARY ~ SOUTHEAST HEALTH CTR OPEN SPACE/KELLOCH & VELASCO OPEN SPACE (NW ULLOA & KENSIN",
+    "T POLK ST POMONA ST PORTOLA DR PORTOLA DR PORTOLA DR PORTOLA DR POST ST POST ST POST ST POTRERO POTRERO POTRERO AVE POWELL POWELL ST POWELL ST POWELL ST PRAGUE ST JUDSON QUESADA INNES AVE ELLIS ST MCALLISTER ST CESAR CHAVEZ ST CESAR CHAVEZ ST BEACH LAND DESCRIPTION FIRE STATION #32 MAINTENANCE FACILITY INGLESIDE POLICE STATION BALBOA PARK RESERVOIR WATER FACILITIES BALBOA RESERVOIR, SOUTH BASIN CITY COLLEGE OPEN SPACE (QUESADA) ELECTRICAL SUBSTATION RAYMOND KIMBELL PLAYGROUND DISTRICT HEALTH CTR 2 PIERCE ST GARAGE REDDING SCHOOL (ELEMENTARY) POINT LOBOS SHORELINE DEVELOPMENT HOMELESS CENTER POLK ST. POLK & BUSH PARKING GARAGE COURTS BUILDING DR."
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": 6.36,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 4,
+    "density": 1.36,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2006",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2006?q=Ingleside+Police+Station",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "The city's property register, giving the station's 42,861-square-foot portion of the Balboa Park parcel."
+  },
+  {
+   "identifier": "igsl_san-francisco-real-prop-report_2003",
+   "title": "Real property owned by the city and county of San Francisco / 2003",
+   "creator": null,
+   "year": 2003,
+   "pool": "dl",
+   "matched_alias": "Ingleside Police Station",
+   "ocr_excerpts": [
+    "148, Lot 007 for details. 034 3148 EXCELSION OFF-STREET PARKING: See Block 3148, Lot 007 for details. 035 3148 CITY COLLEGE 50 PHELAN AVENUE SF Community College District 2 418.625 010 3179 CITY COLLEGE ; (Portion) BALBOA PARK 600 OCEAN Recreation and Park 4.039.254 011 3179 BALBOA PK REC BLOG POOL ETC.: BALBOA PK SOCCER STADIUM aa (Portion) INGLESIDE POLICE STATION PHELAN & JUDSON Police 42.861 011 3179 INGLESIDE POLICE STATION (Portion) BALBOA PARK RESERVOIR WATER 11 PHELAN PUC/Water Department 001 3180 769,269 FACILITIES RESERVOIRS/COVERED/BALBOA/ (Portion) BALBOA RESERVOIR, SOUTH BASIN 15 PHELAN AVENUE SF Community College District 474.804 001 3180 (Portion) FIRE STATION #15 1000 OCEAN AVENUE Fire Department 15.316 001 3180 FIRE STATION #15 - Battalion HQ 9 (P",
+    "4 0093 al JONESST is ~ TENDERLOIN TASK FORCE POLICE STATION _ 023 0338 1239 JONES ST JONES ST TANK & TANK HOUSE 004 0220 2245 ~JONESST te : YICK WOO SCHOOL (ELEMENTARY) 001 0072 7 379°C = = OST ~ SEWER DRAINAGE (JOOST) 018 3088 2710 7 ~ JUDAH JUDAH SUBSTATION 012 1787 JUDAH AND LAPLAYA sis TERMINAL LOOP 053 1805 : i ~ JUDSON AND PHELAN INGLESIDE POLICE STATION 011 3179 “201.—~CO~”*” JUNIPERO SERRA —t™ ~ COMMODORE SLOAT SCHOOL (ELEMENTARY). 001 3256 395 JUSTINDR a \"JUSTINE STPARCEL ry 048 5842 ; JUSTIN ST AND MURRAY > ST MARY'S PLAYGROUND 002 5801 : KEARNY AND CHESTNUT TELEGRAPH HILL PARK | 002 0055 so aie a Rehm a KEARNY AND CLAY PORTSMOUTH SQUARE —t#™” 017 9209 433 KEARNYST ST MARY'S SQUARE GARA",
+    "c 003B 4731 PALOU AND JENNINGS -ADAMROGERSPARK =—™ 7 i. 001 47150 PANORAMA AND CLARENDON INTERIOR GREEN BELT a Ori a Or eee PARK PRESIDIO BLVD AND GEARY BLVD ~ PRESIDIOPARKWAY i 001 4373.—CO” 194 a WPARICST © eae a he - FIRESTATION#3200«2«¢€@2~*«“‘C:*# itd 059 5720 700 PENNSYLVANIA AVE — MAINTENANCE FACILITY | 010 “4167 PHELAN AND JUDSON — INGLESIDE POLICE STATION a ci me si79 PHELAN AND OCEAN AVE “PHELANLOOP is : : “<—-0ot —Ssi«eGieo. 11 PHELANAVE BALBOA PARK RESERVOIR WATER FACILITIES i as ~001.—~ts:«‘“C«‘:«‘:«C BO Page 149 REAL PROPERTY OWNED BY THE CITY COUNTY OF SAN FRANCISCO FISCAL YEAR 2002-2003 ADDRESS CROSS REFERENCE LAND DESCRIPTION LOT BLOCK 15 PHELAN AVE BALBOA RESERVOIR, SOUTH B"
+   ],
+   "collection": "igsl_san-francisco-real-prop-report",
+   "relevance": {
+    "score": 5.52,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 3,
+    "density": 1.02,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 1.0,
+    "money": true,
+    "decision": false,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/igsl_san-francisco-real-prop-report_2003",
+   "deep_link": "https://archive.org/details/igsl_san-francisco-real-prop-report_2003?q=Ingleside+Police+Station",
+   "source_label": "Internet Archive — Democracy's Library",
+   "doc_type": "unclassified",
+   "doc_type_label": "Record",
+   "doc_tier": 5,
+   "procedural": false,
+   "group": "Record",
+   "salient": true,
+   "gloss": "An earlier register edition with the same parcel and jurisdiction."
+  },
+  {
+   "identifier": "minutespol1975sanf",
+   "title": "Minutes - Police Commission of the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Police Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Ingleside Police Station",
+   "ocr_excerpts": [
+    "a Leave of Absence Without Pay from August 4, 1975 to August 15, 1975, inclusive, be, and the same is hereby approved. AYES: Commissioners Buckley, Cardoza RESOLUTION NO. 290-75 REQUEST FOR A LEAVE OF ABSENCE WITHOUT PAY - APPROVED RESOLVED, that the request of Police Officer James K. Moore, Ingleside Police Station, for a Leave of Absence Without Pay from August 24, 1975 to Novem- ber 5, 1975, inclusive, in order to campaign for the office of Supervisor of the City and County of San Francisco, be, and the same is hereby approved. AYES: Commissioners Buckley, Cardoza R ES 0_L U T 10 N NO. 2 91- 75 _",
+    "sive. e) Police Officer Dennis P. Martel, Bureau of Special Services, for fifteen days, July 26, 1975 to August 9, 1975, inclus- ive . f) Police Officer Craig S. Piro, Field Patrol Company, for thirteen days, July 13, 1975 to July 26, 1975, inclusive. g) Police Officer Robert C. Sudano , Ingleside Police Station, for eight days, June 19, 1975, June 26, 1975, July 3, 1975, July 10, 1975, July 12, 1975, July 13, 1975, July 31, 1975, August 7, 1975. h) Police Officer Douglas L. Rowel 1, Central Pclice Station, for fifteen days, July 26, 2 84 - 197 5 to August 9, 19 75, inclus ] ve- il Poli",
+    "hereby approved. AYES: Commissioners Buckley, Garner, Cardoza PERMISSION TO TAKE LEAVES OF ABSENCE - APPROVED The requests of the following-named members of the Department for permission to take Leaves of Absence were approved: MILITARY LEAVES - WITH PAY: a) Police Officer Brian M. D'Arcy, Ingleside Police Station, for eleven days, July 21, 1975 to August 1, 1975, inclusive. b) Police Officer John J. Moroschok, Bureau of Special Services, for fourteen days, August 3, 1975 to August 16, 1975, inclusive. c) Police Officer Eugene C. Reed, Park Police Station, for thirteen days, July 13, 1975 to July 25,",
+    "9, 1975 to August 23, 1975, inclusive . AYES: Commissioners Buckley, Garner, Cardoza RETIREMENTS Communications were received from the Retirement Board officially notifying the Police Commission of the retirement of the following* named members of the Police Department: a) Sergeant John P. Bulen, Ingleside Police Station, for service, effective July 28, 1975. 310 b) Sergeant Julius P. Hiett, Richmond Police Station, for service, effective July 23, 1975. c) Inspector Earl T. O'Brien, Juvenile Bureau, for industrial disability, effective July 24, 1975, d) Inspector William Van Laak, Bureau of Inspectors, for",
+    "- Ms. Linda Aranda 37 Moffit Street San Francisco, California Mr. Robert Romero 117 Moffit Street San Francisco, California Police Officer Alan J. Bernardi Mission Police Station The following-named witnesses appeared for the Defense, were sworn and testified: Police Officer Leslie D. Hubble Ingleside Police Station Sergeant Joseph McQueen Ingleside Police Station (Attorneys for"
+   ],
+   "collection": "sanfranciscopubliclibrary",
+   "relevance": {
+    "score": 6.71,
+    "sf_context": true,
+    "rival_city": false,
+    "citywide_serial": false,
+    "substantive": true,
+    "substantive_direct": true,
+    "hits": 5,
+    "density": 1.21,
+    "title_hit": false
+   },
+   "materiality": {
+    "score": 0.75,
+    "money": false,
+    "decision": true,
+    "accountability": false,
+    "contestation": false,
+    "named_genre": false,
+    "generic_serial": false
+   },
+   "url": "https://archive.org/details/minutespol1975sanf",
+   "deep_link": "https://archive.org/details/minutespol1975sanf?q=Ingleside+Police+Station",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "doc_type": "proceeding",
+   "doc_type_label": "Minutes & agendas",
+   "doc_tier": 9,
+   "procedural": true,
+   "group": "Minutes & agendas",
+   "salient": false,
+   "gloss": "Police Commission minutes approving leaves of absence for officers stationed at Ingleside."
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "minutes2000sanf_7",
+   "title": "[Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutes2000sanf_7"
+  },
+  {
+   "identifier": "minutespol1982sanf",
+   "title": "Minutes - Police Commission of the City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutespol1982sanf"
+  },
+  {
+   "identifier": "minutespo1997sanf",
+   "title": "Minutes / Police Commission of the City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutespo1997sanf"
+  }
+ ],
+ "dept_shelf_label": "Police Department",
+ "dept_shelf_more": 3,
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 4,
+  "n_money_links": 2,
+  "meets_pre_summary": true
+ }
+}

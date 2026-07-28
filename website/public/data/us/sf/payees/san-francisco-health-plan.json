@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.734157+00:00",
+ "generated_at": "2026-07-28T11:43:47.703978+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -34,6 +34,118 @@
  "top_departments": [
   "DPH Public Health"
  ],
+ "profile": {
+  "n_vouchers": 652,
+  "departments": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "usd": 216900244.45,
+    "n_vouchers": 490
+   },
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "usd": 12877027.94,
+    "n_vouchers": 150
+   },
+   {
+    "department": "CHF Children;Youth & Families",
+    "department_code": "CHF",
+    "usd": 573442.0,
+    "n_vouchers": 10
+   },
+   {
+    "department": "CFC Children & Families Commsn",
+    "department_code": "CFC",
+    "usd": 138205.0,
+    "n_vouchers": 1
+   },
+   {
+    "department": "HSA Human Services Agency",
+    "department_code": "HSA",
+    "usd": 300.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "527990",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 151428055.58,
+    "n_vouchers": 504
+   },
+   {
+    "code": "OTHR_OBLIG_AGNCY_FUN",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 40684664.66,
+    "n_vouchers": 8
+   },
+   {
+    "code": "554120",
+    "label": "Refund Of Unused Grants",
+    "spend_class": "ledger",
+    "usd": 17493988.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "527890",
+    "label": "Other Medical Services",
+    "spend_class": "purchase",
+    "usd": 12649891.85,
+    "n_vouchers": 38
+   },
+   {
+    "code": "554130",
+    "label": "Interest Expense",
+    "spend_class": "unclear",
+    "usd": 1205294.0,
+    "n_vouchers": 1
+   },
+   {
+    "code": "465902",
+    "label": "Medi-Cal Net Revenue",
+    "spend_class": "ledger",
+    "usd": 300.0,
+    "n_vouchers": 1
+   }
+  ],
+  "n_categories": 6,
+  "counts_are_floor": true,
+  "recent_fy": 2025,
+  "recent_total_usd": 25869568.66,
+  "n_recent_lines": 3,
+  "recent_lines": [
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 17757270.6,
+    "n_vouchers": 46
+   },
+   {
+    "department": "DPH Public Health",
+    "department_code": "DPH",
+    "label": "Other Obligations-Agency Fund",
+    "spend_class": "obligation",
+    "usd": 6158981.39,
+    "n_vouchers": 3
+   },
+   {
+    "department": "HRD Human Resources",
+    "department_code": "HRD",
+    "label": "Other Professional Services",
+    "spend_class": "purchase",
+    "usd": 1953316.67,
+    "n_vouchers": 28
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000018922",

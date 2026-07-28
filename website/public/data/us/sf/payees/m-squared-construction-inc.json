@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:34:47.735467+00:00",
+ "generated_at": "2026-07-28T11:43:47.706080+00:00",
  "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
@@ -35,6 +35,97 @@
  "top_departments": [
   "DPW GSA - Public Works"
  ],
+ "profile": {
+  "n_vouchers": 1807,
+  "departments": [
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "usd": 108272662.95,
+    "n_vouchers": 1114
+   },
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "usd": 60137328.94,
+    "n_vouchers": 217
+   },
+   {
+    "department": "WTR Water Enterprise",
+    "department_code": "WTR",
+    "usd": 32580926.3,
+    "n_vouchers": 435
+   },
+   {
+    "department": "WWE Wastewater Enterprise",
+    "department_code": "CWP",
+    "usd": 2943528.7,
+    "n_vouchers": 41
+   }
+  ],
+  "n_departments": 4,
+  "categories": [
+   {
+    "code": "527040",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 128109046.37,
+    "n_vouchers": 698
+   },
+   {
+    "code": "200040",
+    "label": "Retainage Payable",
+    "spend_class": "ledger",
+    "usd": 894820.95,
+    "n_vouchers": 19
+   },
+   {
+    "code": "527060",
+    "label": "Construction Contingency",
+    "spend_class": "unclear",
+    "usd": 171460.25,
+    "n_vouchers": 2
+   },
+   {
+    "code": "460631",
+    "label": "Excavation Inspection",
+    "spend_class": "unclear",
+    "usd": 3895.72,
+    "n_vouchers": 1
+   },
+   {
+    "code": "EQ_CITY_TREAS_POOL",
+    "label": "Equity in City Treasury-Pooled",
+    "spend_class": "unclear",
+    "usd": 0.0,
+    "n_vouchers": 9
+   }
+  ],
+  "n_categories": 5,
+  "counts_are_floor": false,
+  "recent_fy": 2025,
+  "recent_total_usd": 10944404.88,
+  "n_recent_lines": 2,
+  "recent_lines": [
+   {
+    "department": "PUC Public Utilities Commsn",
+    "department_code": "PUC",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 10880333.74,
+    "n_vouchers": 26
+   },
+   {
+    "department": "DPW Public Works",
+    "department_code": "DPW",
+    "label": "Construction Contracts",
+    "spend_class": "purchase",
+    "usd": 64071.14,
+    "n_vouchers": 93
+   }
+  ]
+ },
+ "identity": null,
  "contracts_held": [
   {
    "contract_no": "1000032008",
@@ -56,7 +147,7 @@
   },
   {
    "contract_no": "1000038065",
-   "title": "WTR SWR RPLC 3RD to Griffi",
+   "title": "Water Sewer Replacement 3RD to Griffi",
    "department": "PUC Public Utilities Commsn",
    "department_code": "PUC",
    "agreed_usd": 11016657.0,
