@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-24T12:32:58.896661+00:00",
+ "generated_at": "2026-07-25T17:59:53.855193+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "country": "br",
  "scale": "city",
@@ -20,88 +20,105 @@
    "slug": "dispensa",
    "n_contratos": 843,
    "valor_total": 694008588.76,
-   "n_ativos": 45,
-   "valor_ativo": 1200000.0,
+   "n_ativos": 43,
+   "valor_ativo": 0.0,
+   "n_valor_suspeito": 0,
    "by_year": [
     {
      "ano": 2004,
      "n": 1,
-     "valor": 5100.0
+     "valor": 5100.0,
+     "n_com_valor": 1
     },
     {
      "ano": 2007,
      "n": 2,
-     "valor": 179084.71
+     "valor": 179084.71,
+     "n_com_valor": 2
     },
     {
      "ano": 2010,
      "n": 1,
-     "valor": 54267.89
+     "valor": 54267.89,
+     "n_com_valor": 1
     },
     {
      "ano": 2013,
      "n": 1,
-     "valor": 2036009.48
+     "valor": 2036009.48,
+     "n_com_valor": 1
     },
     {
      "ano": 2014,
      "n": 6,
-     "valor": 784273.64
+     "valor": 784273.64,
+     "n_com_valor": 6
     },
     {
      "ano": 2015,
      "n": 6,
-     "valor": 596401.69
+     "valor": 596401.69,
+     "n_com_valor": 6
     },
     {
      "ano": 2016,
      "n": 3,
-     "valor": 1089448.47
+     "valor": 1089448.47,
+     "n_com_valor": 3
     },
     {
      "ano": 2017,
      "n": 1,
-     "valor": 1.0
+     "valor": 1.0,
+     "n_com_valor": 1
     },
     {
      "ano": 2018,
      "n": 23,
-     "valor": 17345341.96
+     "valor": 17345341.96,
+     "n_com_valor": 22
     },
     {
      "ano": 2019,
      "n": 49,
-     "valor": 87964948.65
+     "valor": 87964948.65,
+     "n_com_valor": 48
     },
     {
      "ano": 2020,
      "n": 46,
-     "valor": 66287570.36
+     "valor": 66287570.36,
+     "n_com_valor": 43
     },
     {
      "ano": 2021,
      "n": 61,
-     "valor": 39001335.05
+     "valor": 39001335.05,
+     "n_com_valor": 40
     },
     {
      "ano": 2022,
      "n": 62,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 0
     },
     {
      "ano": 2023,
      "n": 54,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 0
     },
     {
      "ano": 2024,
      "n": 68,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 0
     },
     {
      "ano": 2025,
      "n": 63,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 0
     }
    ],
    "top_orgaos": [
@@ -262,6 +279,7 @@
      "orgao": "FUNDO MUNICIPAL DE SAUDE",
      "orgao_slug": null,
      "valor": 71269452.48,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -273,6 +291,7 @@
      "orgao": "SECRETARIA DE SANEAMENTO",
      "orgao_slug": "secretaria-de-saneamento",
      "valor": 50975278.7,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -284,6 +303,7 @@
      "orgao": "FUNDO MUNICIPAL DE SAUDE",
      "orgao_slug": null,
      "valor": 47050021.43,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -295,6 +315,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 37082039.5,
+     "valor_suspeito": false,
      "ano": 2019
     },
     {
@@ -306,6 +327,7 @@
      "orgao": "FUNDO MUNICIPAL DE SAUDE",
      "orgao_slug": null,
      "valor": 34028654.07,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -317,6 +339,7 @@
      "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
      "orgao_slug": null,
      "valor": 28960000.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -328,6 +351,7 @@
      "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
      "orgao_slug": null,
      "valor": 28660000.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -339,6 +363,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 27910872.0,
+     "valor_suspeito": false,
      "ano": 2021
     },
     {
@@ -350,6 +375,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 25956024.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -361,6 +387,7 @@
      "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
      "orgao_slug": null,
      "valor": 24146640.0,
+     "valor_suspeito": false,
      "ano": 2020
     },
     {
@@ -372,6 +399,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 19985493.3,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -383,6 +411,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 11844413.02,
+     "valor_suspeito": false,
      "ano": 2019
     },
     {
@@ -394,17 +423,19 @@
      "orgao": "FUNDO MUNICIPAL DE SAUDE",
      "orgao_slug": null,
      "valor": 8984947.86,
+     "valor_suspeito": false,
      "ano": 2020
     },
     {
-     "contrato_id": "aguardando-numera-o",
-     "numero": "Aguardando Numeração",
+     "contrato_id": "aguardando-numera-o-cf4b9800",
+     "numero": null,
      "objeto": "DISPENSA DE LICITAÇÃO COM BASE DO ART 24, VII DA LEI Nº 866/93, DO PROCESSO DISPENSA DE LICITAÇÃO Nº 33/2019, PARA CONTRATAÇÃO DA EMPRESA EMPREL, CMPJ 11.006.269/0001-00 QUE TEM POR OBJETO O FORNECIMENTO DE SISTEMA DE GESTÃO DE TERRITÓRIO COM APARELHOS EM COMODATO INCLUINDO FUNCIONALIDADES PARA COLETA, ORGANIZAÇÃO, MANUTENÇÃO DO SISTEMA, TREINAMENTO E SUPORTE AOS USUÁRIOS",
      "fornecedor": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
      "fornecedor_cnpj": "11006269000100",
      "orgao": "FUNDO MUNICIPAL DE SAUDE",
      "orgao_slug": null,
      "valor": 8563795.2,
+     "valor_suspeito": false,
      "ano": 2019
     },
     {
@@ -416,6 +447,7 @@
      "orgao": "FUNDO MUNICIPAL DE SAUDE",
      "orgao_slug": null,
      "valor": 7801771.68,
+     "valor_suspeito": false,
      "ano": null
     }
    ]
@@ -424,78 +456,85 @@
    "modalidade": "INEXIGIBILIDADE",
    "slug": "inexigibilidade",
    "n_contratos": 1573,
-   "valor_total": 15615685095.54,
-   "n_ativos": 96,
-   "valor_ativo": 15295275720.0,
+   "valor_total": 320409375.54,
+   "n_ativos": 94,
+   "valor_ativo": 0.0,
+   "n_valor_suspeito": 1,
    "by_year": [
     {
      "ano": 2014,
      "n": 4,
-     "valor": 410000.0
+     "valor": 410000.0,
+     "n_com_valor": 4
     },
     {
      "ano": 2015,
      "n": 15,
-     "valor": 12498334.24
+     "valor": 12498334.24,
+     "n_com_valor": 15
     },
     {
      "ano": 2016,
      "n": 11,
-     "valor": 16360680.26
+     "valor": 16360680.26,
+     "n_com_valor": 11
     },
     {
      "ano": 2017,
      "n": 3,
-     "valor": 153192.21
+     "valor": 153192.21,
+     "n_com_valor": 3
     },
     {
      "ano": 2018,
      "n": 31,
-     "valor": 10325255.62
+     "valor": 10325255.62,
+     "n_com_valor": 24
     },
     {
      "ano": 2019,
      "n": 26,
-     "valor": 14774547.9
+     "valor": 14774547.9,
+     "n_com_valor": 26
     },
     {
      "ano": 2020,
      "n": 26,
-     "valor": 17961756.27
+     "valor": 17961756.27,
+     "n_com_valor": 24
     },
     {
      "ano": 2021,
      "n": 68,
-     "valor": 8845048.18
+     "valor": 8845048.18,
+     "n_com_valor": 25
     },
     {
      "ano": 2022,
      "n": 172,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 0
     },
     {
      "ano": 2023,
      "n": 347,
-     "valor": 15295275720.0
+     "valor": 0.0,
+     "n_com_valor": 0
     },
     {
      "ano": 2024,
      "n": 393,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 0
     },
     {
      "ano": 2025,
      "n": 244,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 0
     }
    ],
    "top_orgaos": [
-    {
-     "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
-     "slug": "secretaria-de-desenvolvimento-urbano-e-licenciamento",
-     "valor": 15296115720.0,
-     "n": 8
-    },
     {
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "slug": "secretaria-de-educacao",
@@ -539,19 +578,19 @@
      "n": 24
     },
     {
+     "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+     "slug": null,
+     "valor": 8936853.46,
+     "n": 57
+    },
+    {
      "orgao": null,
      "slug": null,
-     "valor": 46677266.29,
-     "n": 1258
+     "valor": 38580412.83,
+     "n": 1209
     }
    ],
    "top_suppliers": [
-    {
-     "cnpj": "29036430000145",
-     "nome": "AGENCIA RECIFE PARA INOVACAO E ESTRATEGIA - ARIES",
-     "valor": 15295275720.0,
-     "n": 1
-    },
     {
      "cnpj": "08165091000208",
      "nome": "ECOPESA AMBIENTAL S.A.",
@@ -635,20 +674,15 @@
      "nome": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
      "valor": 8064627.68,
      "n": 25
+    },
+    {
+     "cnpj": "00000000419559",
+     "nome": "BANCO DO BRASIL S/A",
+     "valor": 7800000.0,
+     "n": 1
     }
    ],
    "top_contracts": [
-    {
-     "contrato_id": "3101-1007-2023",
-     "numero": "3101.1007/2023",
-     "objeto": "PESQUISA CIENTÍFICA, SOCIAL E URBANÍSTICA, DESENVOLVIMENTO TECNOLÓGICO E DESENVOLVIMENTO DE MODELOS INOVADORES DE GESTÃO DE CIDADES.",
-     "fornecedor": "AGENCIA RECIFE PARA INOVACAO E ESTRATEGIA - ARIES",
-     "fornecedor_cnpj": "29036430000145",
-     "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
-     "orgao_slug": "secretaria-de-desenvolvimento-urbano-e-licenciamento",
-     "valor": 15295275720.0,
-     "ano": 2023
-    },
     {
      "contrato_id": "5010-6013-2011",
      "numero": "5010.6013/2011",
@@ -658,6 +692,7 @@
      "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
      "orgao_slug": null,
      "valor": 62612881.83,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -669,6 +704,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 26996400.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -680,6 +716,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 12668911.51,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -691,6 +728,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 12538348.0,
+     "valor_suspeito": false,
      "ano": 2016
     },
     {
@@ -702,6 +740,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 11701561.5,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -713,6 +752,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 11220000.0,
+     "valor_suspeito": false,
      "ano": 2015
     },
     {
@@ -724,6 +764,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 10881000.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -735,6 +776,7 @@
      "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
      "orgao_slug": "secretaria-de-projetos-especiais",
      "valor": 9760763.98,
+     "valor_suspeito": false,
      "ano": 2020
     },
     {
@@ -746,6 +788,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 9440085.2,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -757,6 +800,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 9197850.5,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -768,6 +812,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 8911693.8,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -779,6 +824,7 @@
      "orgao": "SECRETARIA DE FINANÇAS",
      "orgao_slug": "secretaria-de-financas",
      "valor": 7800000.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -790,6 +836,7 @@
      "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
      "orgao_slug": "secretaria-de-administracao",
      "valor": 7200000.0,
+     "valor_suspeito": false,
      "ano": 2019
     },
     {
@@ -801,6 +848,19 @@
      "orgao": "SECRETARIA DE DESENVOLVIMENTO ECONÔMICO",
      "orgao_slug": "secretaria-de-desenvolvimento-economico",
      "valor": 5702310.7,
+     "valor_suspeito": false,
+     "ano": null
+    },
+    {
+     "contrato_id": "3501-0127-2014",
+     "numero": "3501.0127/2014",
+     "objeto": "GESTÃO ADMINISTRATIVA DOS PARQUES SANTANA E URBANO DA MACAXEIRA, EM CONFORMIDADE COM O PROGRAMA DE TRABALHO QUE INTEGRA ESTE CONTRATO, CONTEMPLANDO TODO OS SERVIÇOS PREVISTOS NO EDITAL",
+     "fornecedor": "INSTITUTO DE DESENVOLVIMENTO E GESTAO - IDG",
+     "fornecedor_cnpj": "04393475000146",
+     "orgao": "SECRETARIA DE TURISMO E LAZER",
+     "orgao_slug": "secretaria-de-turismo-e-lazer",
+     "valor": 5463234.0,
+     "valor_suspeito": false,
      "ano": null
     }
    ]
@@ -810,73 +870,87 @@
    "slug": "licitacao",
    "n_contratos": 2424,
    "valor_total": 7006345884.81,
-   "n_ativos": 75,
+   "n_ativos": 74,
    "valor_ativo": 212649536.36,
+   "n_valor_suspeito": 0,
    "by_year": [
     {
      "ano": 2013,
      "n": 6,
-     "valor": 11151091.45
+     "valor": 11151091.45,
+     "n_com_valor": 6
     },
     {
      "ano": 2014,
      "n": 38,
-     "valor": 32198446.86
+     "valor": 32198446.86,
+     "n_com_valor": 38
     },
     {
      "ano": 2015,
      "n": 47,
-     "valor": 43964722.46
+     "valor": 43964722.46,
+     "n_com_valor": 44
     },
     {
      "ano": 2016,
      "n": 43,
-     "valor": 1035733584.94
+     "valor": 1035733584.94,
+     "n_com_valor": 42
     },
     {
      "ano": 2017,
      "n": 59,
-     "valor": 77047134.83
+     "valor": 77047134.83,
+     "n_com_valor": 56
     },
     {
      "ano": 2018,
      "n": 64,
-     "valor": 66756492.13
+     "valor": 66756492.13,
+     "n_com_valor": 51
     },
     {
      "ano": 2019,
      "n": 131,
-     "valor": 396788798.9
+     "valor": 396788798.9,
+     "n_com_valor": 121
     },
     {
      "ano": 2020,
      "n": 104,
-     "valor": 834826896.02
+     "valor": 834826896.02,
+     "n_com_valor": 93
     },
     {
      "ano": 2021,
      "n": 136,
-     "valor": 133444259.19
+     "valor": 133444259.19,
+     "n_com_valor": 46
     },
     {
      "ano": 2022,
      "n": 192,
-     "valor": 224130829.59
+     "valor": 224130829.59,
+     "n_com_valor": 9
     },
     {
      "ano": 2023,
      "n": 242,
-     "valor": 33043691.45
+     "valor": 33043691.45,
+     "n_com_valor": 14
     },
     {
      "ano": 2024,
      "n": 179,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 1
     },
     {
      "ano": 2025,
      "n": 160,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 0
     }
    ],
    "top_orgaos": [
@@ -1037,6 +1111,7 @@
      "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
      "orgao_slug": null,
      "valor": 729976268.81,
+     "valor_suspeito": false,
      "ano": 2016
     },
     {
@@ -1048,6 +1123,7 @@
      "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
      "orgao_slug": null,
      "valor": 513549163.68,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1059,6 +1135,7 @@
      "orgao": "SECRETARIA DE TURISMO E LAZER",
      "orgao_slug": "secretaria-de-turismo-e-lazer",
      "valor": 506937289.84,
+     "valor_suspeito": false,
      "ano": 2020
     },
     {
@@ -1070,6 +1147,7 @@
      "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
      "orgao_slug": null,
      "valor": 249839914.0,
+     "valor_suspeito": false,
      "ano": 2016
     },
     {
@@ -1081,6 +1159,7 @@
      "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
      "orgao_slug": "secretaria-de-desenvolvimento-urbano-e-licenciamento",
      "valor": 212649536.36,
+     "valor_suspeito": false,
      "ano": 2022
     },
     {
@@ -1092,6 +1171,7 @@
      "orgao": "SECRETARIA DE CULTURA",
      "orgao_slug": "secretaria-de-cultura",
      "valor": 185762244.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1103,6 +1183,7 @@
      "orgao": "SECRETARIA DE CULTURA",
      "orgao_slug": "secretaria-de-cultura",
      "valor": 165998440.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1114,6 +1195,7 @@
      "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
      "orgao_slug": null,
      "valor": 149992063.2,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1125,6 +1207,7 @@
      "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
      "orgao_slug": "secretaria-de-administracao",
      "valor": 129000000.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1136,6 +1219,7 @@
      "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
      "orgao_slug": null,
      "valor": 128402640.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1147,6 +1231,7 @@
      "orgao": "SECRETARIA DE SANEAMENTO",
      "orgao_slug": "secretaria-de-saneamento",
      "valor": 122726428.07,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1158,6 +1243,7 @@
      "orgao": "SECRETARIA DE SAÚDE",
      "orgao_slug": "secretaria-de-saude-administracao-supervisionada",
      "valor": 116602009.19,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1169,6 +1255,7 @@
      "orgao": "FUNDO MUNICIPAL DE SAUDE",
      "orgao_slug": null,
      "valor": 87837770.9,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1180,6 +1267,7 @@
      "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
      "orgao_slug": null,
      "valor": 85232476.62,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1191,6 +1279,7 @@
      "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
      "orgao_slug": null,
      "valor": 76800000.0,
+     "valor_suspeito": false,
      "ano": null
     }
    ]
@@ -1202,51 +1291,61 @@
    "valor_total": 9632593.85,
    "n_ativos": 0,
    "valor_ativo": 0.0,
+   "n_valor_suspeito": 0,
    "by_year": [
     {
      "ano": 2014,
      "n": 6,
-     "valor": 87652.13
+     "valor": 87652.13,
+     "n_com_valor": 6
     },
     {
      "ano": 2015,
      "n": 2,
-     "valor": 26862.0
+     "valor": 26862.0,
+     "n_com_valor": 2
     },
     {
      "ano": 2016,
      "n": 2,
-     "valor": 26539.5
+     "valor": 26539.5,
+     "n_com_valor": 2
     },
     {
      "ano": 2017,
      "n": 2,
-     "valor": 10750.8
+     "valor": 10750.8,
+     "n_com_valor": 2
     },
     {
      "ano": 2018,
      "n": 4,
-     "valor": 49160.0
+     "valor": 49160.0,
+     "n_com_valor": 4
     },
     {
      "ano": 2019,
      "n": 2,
-     "valor": 64500.0
+     "valor": 64500.0,
+     "n_com_valor": 2
     },
     {
      "ano": 2020,
      "n": 3,
-     "valor": 44618.3
+     "valor": 44618.3,
+     "n_com_valor": 2
     },
     {
      "ano": 2021,
      "n": 3,
-     "valor": 54806.0
+     "valor": 54806.0,
+     "n_com_valor": 2
     },
     {
      "ano": 2022,
      "n": 1,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 0
     }
    ],
    "top_orgaos": [
@@ -1401,6 +1500,7 @@
      "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
      "orgao_slug": null,
      "valor": 5702310.7,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1412,6 +1512,7 @@
      "orgao": "SECRETARIA DE INFRAESTRUTURA",
      "orgao_slug": "secretaria-de-infraestrutura",
      "valor": 2204500.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1423,6 +1524,7 @@
      "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
      "orgao_slug": null,
      "valor": 842112.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1434,6 +1536,7 @@
      "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
      "orgao_slug": null,
      "valor": 273250.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1445,6 +1548,7 @@
      "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
      "orgao_slug": null,
      "valor": 100000.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1456,6 +1560,7 @@
      "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
      "orgao_slug": null,
      "valor": 52650.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1467,6 +1572,7 @@
      "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
      "orgao_slug": "secretaria-de-administracao",
      "valor": 48500.0,
+     "valor_suspeito": false,
      "ano": 2021
     },
     {
@@ -1478,6 +1584,7 @@
      "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
      "orgao_slug": null,
      "valor": 48000.0,
+     "valor_suspeito": false,
      "ano": 2019
     },
     {
@@ -1489,6 +1596,7 @@
      "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
      "orgao_slug": null,
      "valor": 34982.42,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1500,6 +1608,7 @@
      "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
      "orgao_slug": null,
      "valor": 32700.0,
+     "valor_suspeito": false,
      "ano": 2020
     },
     {
@@ -1511,6 +1620,7 @@
      "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
      "orgao_slug": "secretaria-de-administracao",
      "valor": 32400.0,
+     "valor_suspeito": false,
      "ano": 2018
     },
     {
@@ -1522,6 +1632,7 @@
      "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
      "orgao_slug": null,
      "valor": 23244.99,
+     "valor_suspeito": false,
      "ano": 2014
     },
     {
@@ -1533,6 +1644,7 @@
      "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
      "orgao_slug": null,
      "valor": 22911.02,
+     "valor_suspeito": false,
      "ano": 2014
     },
     {
@@ -1544,6 +1656,7 @@
      "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
      "orgao_slug": "secretaria-de-administracao",
      "valor": 16500.0,
+     "valor_suspeito": false,
      "ano": 2019
     },
     {
@@ -1555,6 +1668,7 @@
      "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
      "orgao_slug": null,
      "valor": 15800.0,
+     "valor_suspeito": false,
      "ano": null
     }
    ]
@@ -1564,68 +1678,81 @@
    "slug": "sarp",
    "n_contratos": 3035,
    "valor_total": 2121347404.38,
-   "n_ativos": 185,
+   "n_ativos": 181,
    "valor_ativo": 957945.48,
+   "n_valor_suspeito": 0,
    "by_year": [
     {
      "ano": 2014,
      "n": 77,
-     "valor": 7545229.1
+     "valor": 7545229.1,
+     "n_com_valor": 77
     },
     {
      "ano": 2015,
      "n": 67,
-     "valor": 24575360.55
+     "valor": 24575360.55,
+     "n_com_valor": 67
     },
     {
      "ano": 2016,
      "n": 108,
-     "valor": 28199338.23
+     "valor": 28199338.23,
+     "n_com_valor": 108
     },
     {
      "ano": 2017,
      "n": 84,
-     "valor": 34870025.38
+     "valor": 34870025.38,
+     "n_com_valor": 83
     },
     {
      "ano": 2018,
      "n": 206,
-     "valor": 137068310.64
+     "valor": 137068310.64,
+     "n_com_valor": 205
     },
     {
      "ano": 2019,
      "n": 326,
-     "valor": 387706842.56
+     "valor": 387706842.56,
+     "n_com_valor": 323
     },
     {
      "ano": 2020,
      "n": 182,
-     "valor": 170504025.03
+     "valor": 170504025.03,
+     "n_com_valor": 174
     },
     {
      "ano": 2021,
      "n": 181,
-     "valor": 85479344.69
+     "valor": 85479344.69,
+     "n_com_valor": 87
     },
     {
      "ano": 2022,
      "n": 283,
-     "valor": 7556079.38
+     "valor": 7556079.38,
+     "n_com_valor": 2
     },
     {
      "ano": 2023,
      "n": 453,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 0
     },
     {
      "ano": 2024,
      "n": 301,
-     "valor": 37500000.0
+     "valor": 37500000.0,
+     "n_com_valor": 1
     },
     {
      "ano": 2025,
      "n": 302,
-     "valor": 0.0
+     "valor": 0.0,
+     "n_com_valor": 0
     }
    ],
    "top_orgaos": [
@@ -1786,6 +1913,7 @@
      "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
      "orgao_slug": null,
      "valor": 375822720.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1797,6 +1925,7 @@
      "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
      "orgao_slug": null,
      "valor": 162840000.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1808,6 +1937,7 @@
      "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
      "orgao_slug": null,
      "valor": 112000000.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1819,6 +1949,7 @@
      "orgao": "SECRETARIA DE CULTURA",
      "orgao_slug": "secretaria-de-cultura",
      "valor": 61522200.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1830,6 +1961,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 45754538.16,
+     "valor_suspeito": false,
      "ano": 2019
     },
     {
@@ -1841,6 +1973,7 @@
      "orgao": "FUNDO MUNICIPAL DE SAUDE",
      "orgao_slug": null,
      "valor": 45685990.8,
+     "valor_suspeito": false,
      "ano": 2020
     },
     {
@@ -1852,6 +1985,7 @@
      "orgao": "FUNDO MUNICIPAL DE SAUDE",
      "orgao_slug": null,
      "valor": 45550758.6,
+     "valor_suspeito": false,
      "ano": 2019
     },
     {
@@ -1863,6 +1997,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 44618805.12,
+     "valor_suspeito": false,
      "ano": 2019
     },
     {
@@ -1874,6 +2009,7 @@
      "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
      "orgao_slug": null,
      "valor": 39095400.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1885,6 +2021,7 @@
      "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
      "orgao_slug": "secretaria-de-administracao",
      "valor": 37500000.0,
+     "valor_suspeito": false,
      "ano": 2024
     },
     {
@@ -1896,6 +2033,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 36330558.12,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1907,6 +2045,7 @@
      "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
      "orgao_slug": null,
      "valor": 35517600.0,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1918,6 +2057,7 @@
      "orgao": "PROCURADORIA GERAL DO MUNICÍPIO",
      "orgao_slug": "procuradoria-geral-do-municipio",
      "valor": 31245058.42,
+     "valor_suspeito": false,
      "ano": null
     },
     {
@@ -1929,6 +2069,7 @@
      "orgao": "SECRETARIA DE EDUCAÇÃO",
      "orgao_slug": "secretaria-de-educacao",
      "valor": 29850102.24,
+     "valor_suspeito": false,
      "ano": 2019
     },
     {
@@ -1940,6 +2081,7 @@
      "orgao": "SECRETARIA DE MEIO AMBIENTE",
      "orgao_slug": "secretaria-de-meio-ambiente",
      "valor": 27066360.0,
+     "valor_suspeito": false,
      "ano": null
     }
    ]

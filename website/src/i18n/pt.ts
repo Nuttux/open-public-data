@@ -175,6 +175,8 @@ const pt: Record<string, string> = {
   "br.recife.mod.n_contratos": "Contratos",
   "br.recife.mod.n_ativos": "Ativos hoje",
   "br.recife.mod.by_year": "Valor contratado por ano",
+  "br.recife.mod.anos_sem_valor":
+    "Em {anos} a fonte não publica o valor dos contratos ({n} contratos nesta modalidade). Esses anos ficam fora do gráfico: é ausência de dado, não ausência de contratação.",
   "br.recife.mod.by_orgao": "Órgãos que mais usam",
   "br.recife.mod.top_suppliers": "Maiores fornecedores",
   "br.recife.mod.top_contracts": "Maiores contratos",
@@ -285,8 +287,10 @@ const pt: Record<string, string> = {
   "br.recife.contrato.fornecedor": "Fornecedor",
   "br.recife.contrato.valor": "Valor do contrato",
   "br.recife.contrato.sem_valor": "Valor não divulgado",
+  "br.recife.contrato.sem_numero": "sem número",
+  "br.recife.contrato.valor_retido": "Valor retido — ver aviso",
   "br.recife.contrato.valor_alerta":
-    "Valor atípico, a verificar na fonte. Um contrato deste porte é raro e pode refletir um erro de digitação ou o teto de uma ata de registro de preços.",
+    "O valor publicado pela fonte supera todo o orçamento anual do município, o que não se sustenta para um contrato único. Por isso ele não é exibido aqui nem somado a nenhum total deste site. O contrato continua listado e pode ser conferido na fonte.",
   "br.recife.contrato.vigencia": "Vigência",
   "br.recife.contrato.orgao": "Órgão contratante",
   "br.recife.contrato.modalidade": "Modalidade",

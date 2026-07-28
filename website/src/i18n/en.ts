@@ -5531,6 +5531,8 @@ const en: Record<string, string> = {
   'br.recife.mod.n_contratos': 'Contracts',
   'br.recife.mod.n_ativos': 'Active today',
   'br.recife.mod.by_year': 'Contracted value by year',
+  'br.recife.mod.anos_sem_valor':
+    'For {anos} the source publishes no contract amounts ({n} contracts in this modality). Those years are left off the chart: the data is missing, not the contracting.',
   'br.recife.mod.by_orgao': 'Agencies that use it most',
   'br.recife.mod.top_suppliers': 'Top suppliers',
   'br.recife.mod.top_contracts': 'Top contracts',
@@ -5632,8 +5634,10 @@ const en: Record<string, string> = {
   'br.recife.contrato.fornecedor': 'Supplier',
   'br.recife.contrato.valor': 'Contract value',
   'br.recife.contrato.sem_valor': 'Value not disclosed',
+  'br.recife.contrato.sem_numero': 'unnumbered',
+  'br.recife.contrato.valor_retido': 'Value withheld — see note',
   'br.recife.contrato.valor_alerta':
-    'Atypical value — verify at source. A contract this size is rare and may reflect a data-entry error or a price-registration (registro de preços) ceiling.',
+    "The value published by the source exceeds the city's entire annual budget, which does not hold up for a single contract. It is therefore neither shown here nor added to any total on this site. The contract remains listed and can be checked at the source.",
   'br.recife.contrato.vigencia': 'Term',
   'br.recife.contrato.orgao': 'Contracting agency',
   'br.recife.contrato.modalidade': 'Modality',

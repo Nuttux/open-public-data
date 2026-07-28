@@ -88,7 +88,7 @@ export default function RecifeOrgaoFiche({
                 >
                   <td>
                     <Link href={`/br/city/recife/contratos/${c.contrato_id}`} onClick={(e) => e.stopPropagation()}>
-                      {c.numero}
+                      {c.numero ?? t("br.recife.contrato.sem_numero")}
                     </Link>
                     <div className="fx-fiche-sub">{titleCasePt(c.objeto)}</div>
                   </td>

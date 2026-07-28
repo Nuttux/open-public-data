@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-24T12:32:55.590618+00:00",
+ "generated_at": "2026-07-25T17:59:47.895647+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "country": "br",
  "scale": "city",
@@ -296,9 +296,9 @@
    "total_pago": 109573139.92,
    "subvencao_pago": 0.0,
    "is_subvencao": false,
-   "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
+   "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 3,
-   "tema": "Educação",
+   "tema": "Saúde e assistência",
    "resumo": "Empresa de comércio, possivelmente fornecedora de produtos diversos."
   },
   {
@@ -626,9 +626,9 @@
    "total_pago": 35499133.39,
    "subvencao_pago": 0.0,
    "is_subvencao": false,
-   "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
+   "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Educação",
+   "tema": "Infraestrutura e obras",
    "resumo": "Companhia estadual responsável pelo abastecimento de água e esgoto em Pernambuco."
   },
   {
@@ -1088,9 +1088,9 @@
    "total_pago": 22003943.08,
    "subvencao_pago": 0.0,
    "is_subvencao": false,
-   "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
+   "principal_orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA",
    "n_contratos": 5,
-   "tema": "Educação",
+   "tema": "Outros",
    "resumo": null
   },
   {
@@ -1781,9 +1781,9 @@
    "total_pago": 11067528.58,
    "subvencao_pago": 0.0,
    "is_subvencao": false,
-   "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
+   "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 4,
-   "tema": "Saúde e assistência",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1992,7 +1992,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE",
    "n_contratos": 8,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Saúde e assistência",
    "resumo": null
   },
   {
@@ -2487,7 +2487,7 @@
    "total_pago": 4283212.03,
    "subvencao_pago": 4283212.03,
    "is_subvencao": true,
-   "principal_orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA",
+   "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 0,
    "tema": "Educação",
    "resumo": null
@@ -2850,7 +2850,7 @@
    "total_pago": 2085000.0,
    "subvencao_pago": 2085000.0,
    "is_subvencao": true,
-   "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
+   "principal_orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
    "tema": "Saúde e assistência",
    "resumo": null
@@ -2915,20 +2915,20 @@
   {
    "tema": "Saúde e assistência",
    "slug": "saude-e-assistencia",
-   "n_organizacoes": 830,
-   "pago": 2470441195.24
+   "n_organizacoes": 970,
+   "pago": 2600891776.97
+  },
+  {
+   "tema": "Infraestrutura e obras",
+   "slug": "infraestrutura-e-obras",
+   "n_organizacoes": 371,
+   "pago": 1712108828.07
   },
   {
    "tema": "Serviços financeiros",
    "slug": "servicos-financeiros",
    "n_organizacoes": 5,
    "pago": 1701484300.69
-  },
-  {
-   "tema": "Infraestrutura e obras",
-   "slug": "infraestrutura-e-obras",
-   "n_organizacoes": 371,
-   "pago": 1662469910.08
   },
   {
    "tema": "Serviços administrativos",
@@ -2939,14 +2939,14 @@
   {
    "tema": "Gestão pública",
    "slug": "gestao-publica",
-   "n_organizacoes": 688,
-   "pago": 1166402261.62
+   "n_organizacoes": 681,
+   "pago": 1166531651.81
   },
   {
    "tema": "Educação",
    "slug": "educacao",
-   "n_organizacoes": 434,
-   "pago": 927902961.9
+   "n_organizacoes": 430,
+   "pago": 762277398.61
   },
   {
    "tema": "Infraestrutura urbana",
@@ -2958,13 +2958,13 @@
    "tema": "Outros",
    "slug": "outros",
    "n_organizacoes": 417,
-   "pago": 651043529.07
+   "pago": 661158601.86
   },
   {
    "tema": "Cultura, esporte e lazer",
    "slug": "cultura-esporte-e-lazer",
-   "n_organizacoes": 1733,
-   "pago": 563967597.3
+   "n_organizacoes": 1597,
+   "pago": 531680817.89
   },
   {
    "tema": "Alimentação e eventos",
@@ -2976,7 +2976,7 @@
    "tema": "Segurança urbana",
    "slug": "seguranca-urbana",
    "n_organizacoes": 176,
-   "pago": 308388203.16
+   "pago": 307809271.41
   },
   {
    "tema": "Sociedade civil",
@@ -2987,14 +2987,14 @@
   {
    "tema": "Desenvolvimento econômico",
    "slug": "desenvolvimento-economico",
-   "n_organizacoes": 103,
-   "pago": 28056047.1
+   "n_organizacoes": 108,
+   "pago": 36161301.15
   },
   {
    "tema": "Meio ambiente",
    "slug": "meio-ambiente",
-   "n_organizacoes": 21,
-   "pago": 1813621.14
+   "n_organizacoes": 23,
+   "pago": 1865678.84
   },
   {
    "tema": "Serviços técnicos",

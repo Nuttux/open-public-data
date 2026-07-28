@@ -76,6 +76,18 @@ def _ts(v):
     return v.isoformat() if v is not None else None
 
 
+def _val(c):
+    """Contract value for AGGREGATION — None when the mart flagged the source
+    amount as implausible (see mart_br_recife_contratos.valor_implausivel).
+
+    Recife's portal publishes at least one contract stated at more than the
+    city's entire annual budget. Summing it makes the modalidade ranking and
+    the by-year chart meaningless (INEXIGIBILIDADE reads as R$ 15.6 bn / #1
+    instead of R$ 320 M / smallest). The contract itself is still listed and
+    linkable — only the number is withheld, with the reason shown."""
+    return None if c.get("valor_implausivel") else _f(c["valor_contrato"])
+
+
 def rows(client, table, extra=""):
     q = f"SELECT * FROM `{PROJECT_ID}.{DATASET}.{table}` {extra}"
     return [dict(r) for r in client.query(q).result()]
@@ -356,9 +368,10 @@ def build_quem_recebe(client, log):
         cs = contr_by_doc.get(rec["cnpj"], [])
         rec["contratos"] = sorted(
             [{
-                "contrato_id": c["contrato_id"], "numero": c["numero_contrato"],
+                "contrato_id": c["contrato_id"], "numero": c["numero_contrato_publicavel"],
                 "objeto": c["objeto"], "orgao": c["orgao_contratante"],
-                "valor": _f(c["valor_contrato"]), "situacao": c["situacao"],
+                "valor": _val(c), "valor_suspeito": bool(c.get("valor_implausivel")),
+                "situacao": c["situacao"],
                 "ano": c["ano_contrato"],
             } for c in cs],
             key=lambda x: -(x["valor"] or 0))[:20]
@@ -480,18 +493,19 @@ def build_quem_recebe(client, log):
             "by_year": [],
             "contratos": sorted(
                 [{
-                    "contrato_id": c["contrato_id"], "numero": c["numero_contrato"],
+                    "contrato_id": c["contrato_id"], "numero": c["numero_contrato_publicavel"],
                     "objeto": c["objeto"], "orgao": c["orgao_contratante"],
-                    "valor": _f(c["valor_contrato"]), "situacao": c["situacao"],
+                    "valor": _val(c), "valor_suspeito": bool(c.get("valor_implausivel")),
+                    "situacao": c["situacao"],
                     "ano": c["ano_contrato"],
                 } for c in cs],
                 key=lambda x: -(x["valor"] or 0))[:20],
             "n_contratos": len(cs),
-            "total_contratado": round(sum(_f(c["valor_contrato"]) or 0 for c in cs), 2),
+            "total_contratado": round(sum(_val(c) or 0 for c in cs), 2),
             # contract-only suppliers have no payments → breakdown by órgão is
             # by CONTRACTED value (orgao_contratante), the analogous "by dept".
             "by_orgao": top_orgaos([
-                (o, sum(_f(c["valor_contrato"]) or 0 for c in g), len(g))
+                (o, sum(_val(c) or 0 for c in g), len(g))
                 for o, g in _group_by(cs, lambda c: c["orgao_contratante"]).items()
             ], resolve=_resolve),
             "contratos_only": True,
@@ -590,11 +604,21 @@ def build_contratos(client, log):
     items = []
     n_ativos = 0
     valor_ativo = 0.0
+    n_suspeitos = 0      # source amount implausible → withheld from every total
+    n_sem_valor = 0      # source publishes no amount at all
+    n_sem_ano = 0        # source publishes no year → absent from by-year charts
     for c in contratos:
         is_org = bool(c.get("is_org"))
         nome = c["razao_social"] if is_org else MASK_PESSOA_FISICA
-        val = _f(c["valor_contrato"])
+        suspeito = bool(c.get("valor_implausivel"))
+        val = _val(c)
         mod = c["modalidade"] or "—"
+        if suspeito:
+            n_suspeitos += 1
+        if val is None and not suspeito:
+            n_sem_valor += 1
+        if not c["ano_contrato"]:
+            n_sem_ano += 1
         modalidade_mix[mod]["n"] += 1
         modalidade_mix[mod]["valor"] += val or 0
         if c["is_ativo"]:
@@ -602,7 +626,7 @@ def build_contratos(client, log):
             valor_ativo += val or 0
         items.append({
             "contrato_id": c["contrato_id"],
-            "numero": c["numero_contrato"],
+            "numero": c["numero_contrato_publicavel"],
             "ano": c["ano_contrato"],
             "orgao": c["orgao_contratante"],
             "orgao_slug": resolve_orgao_slug(c["orgao_contratante"], exact, bykey),
@@ -612,6 +636,7 @@ def build_contratos(client, log):
             "fornecedor_cnpj": c["doc"] if is_org else None,
             "is_org": is_org,
             "valor": val,
+            "valor_suspeito": suspeito,
             "situacao": c["situacao"],
             "vigencia_inicio": _ts(c["vigencia_inicio"]),
             "vigencia_fim": _ts(c["vigencia_fim"]),
@@ -635,6 +660,17 @@ def build_contratos(client, log):
             "completo). Contratados pessoa física (CPF) aparecem como 'Pessoa "
             "física', sem identificação. valor = valor total do contrato."
         ),
+        "cobertura": {
+            "n_sem_valor": n_sem_valor,
+            "n_sem_ano": n_sem_ano,
+            "n_valor_suspeito": n_suspeitos,
+            "nota": (
+                "A fonte não publica valor para {sv} dos {tot} contratos e não "
+                "informa o ano de {sa} deles — esses ficam de fora dos totais e "
+                "do gráfico por ano. Outros {vs} têm valor incompatível com o "
+                "orçamento do município e são exibidos sem valor."
+            ).format(sv=n_sem_valor, tot=len(items), sa=n_sem_ano, vs=n_suspeitos),
+        },
         "headline": {
             "n_contratos": len(items),
             "n_ativos": n_ativos,
@@ -668,12 +704,17 @@ def build_modalidades(client, log):
         mod = c["modalidade"] or "—"
         a = agg.setdefault(mod, {
             "n": 0, "valor": 0.0, "n_ativos": 0, "valor_ativo": 0.0,
-            "by_year": defaultdict(lambda: [0, 0.0]),
+            "n_suspeitos": 0,
+            "by_year": defaultdict(lambda: [0, 0.0, 0]),  # [n, valor, n_com_valor]
             "orgaos": defaultdict(lambda: [0.0, 0]),
             "suppliers": defaultdict(lambda: {"nome": None, "valor": 0.0, "n": 0}),
             "contracts": [],
         })
-        val = _f(c["valor_contrato"]) or 0
+        # _val() withholds implausible source amounts — without this the
+        # INEXIGIBILIDADE fiche headlines R$ 15.6 bn off a single bad row.
+        val = _val(c) or 0
+        if c.get("valor_implausivel"):
+            a["n_suspeitos"] += 1
         a["n"] += 1
         a["valor"] += val
         if c["is_ativo"]:
@@ -683,6 +724,12 @@ def build_modalidades(client, log):
             yr = a["by_year"][c["ano_contrato"]]
             yr[0] += 1
             yr[1] += val
+            # Recife stopped publishing contract amounts after 2021 (98–100%
+            # of 2022+ rows carry no value at all). Without this counter a
+            # by-year chart would render those years as ~R$0 and read as "the
+            # city stopped contracting", when it only stopped disclosing.
+            if _val(c) is not None:
+                yr[2] += 1
         if c.get("orgao_contratante"):
             o = a["orgaos"][c["orgao_contratante"]]
             o[0] += val
@@ -698,24 +745,27 @@ def build_modalidades(client, log):
     items = {}
     for mod, a in agg.items():
         slug = slug_token(mod, "sem-modalidade")
-        by_year = sorted(({"ano": k, "n": v[0], "valor": round(v[1], 2)}
+        by_year = sorted(({"ano": k, "n": v[0], "valor": round(v[1], 2),
+                           "n_com_valor": v[2]}
                           for k, v in a["by_year"].items()), key=lambda x: x["ano"])
         top_suppliers = sorted(
             ({"cnpj": k, "nome": v["nome"] or k, "valor": round(v["valor"], 2), "n": v["n"]}
              for k, v in a["suppliers"].items()), key=lambda x: -x["valor"])[:15]
         top_contracts = sorted(
-            ({"contrato_id": c["contrato_id"], "numero": c["numero_contrato"],
+            ({"contrato_id": c["contrato_id"], "numero": c["numero_contrato_publicavel"],
               "objeto": c["objeto"],
               "fornecedor": c["razao_social"] if c.get("is_org") else MASK_PESSOA_FISICA,
               "fornecedor_cnpj": c["doc"] if c.get("is_org") else None,
               "orgao": c["orgao_contratante"], "orgao_slug": _resolve(c["orgao_contratante"]),
-              "valor": _f(c["valor_contrato"]), "ano": c["ano_contrato"]}
+              "valor": _val(c), "valor_suspeito": bool(c.get("valor_implausivel")),
+              "ano": c["ano_contrato"]}
              for c in a["contracts"]),
             key=lambda x: -(x["valor"] or 0))[:15]
         items[slug] = {
             "modalidade": mod, "slug": slug,
             "n_contratos": a["n"], "valor_total": round(a["valor"], 2),
             "n_ativos": a["n_ativos"], "valor_ativo": round(a["valor_ativo"], 2),
+            "n_valor_suspeito": a["n_suspeitos"],
             "by_year": by_year,
             "top_orgaos": top_orgaos([(o, v[0], v[1]) for o, v in a["orgaos"].items()],
                                      resolve=_resolve),
@@ -783,11 +833,12 @@ def build_orgaos(client, log):
             key=lambda x: -x["pago"])[:15]
         cs = contr_by_key.get(_key(orgao), [])
         top_contracts = sorted(
-            ({"contrato_id": c["contrato_id"], "numero": c["numero_contrato"],
+            ({"contrato_id": c["contrato_id"], "numero": c["numero_contrato_publicavel"],
               "objeto": c["objeto"],
               "fornecedor": c["razao_social"] if c.get("is_org") else MASK_PESSOA_FISICA,
               "fornecedor_cnpj": c["doc"] if c.get("is_org") else None,
-              "valor": _f(c["valor_contrato"]), "ano": c["ano_contrato"]}
+              "valor": _val(c), "valor_suspeito": bool(c.get("valor_implausivel")),
+              "ano": c["ano_contrato"]}
              for c in cs),
             key=lambda x: -(x["valor"] or 0))[:15]
         items[slug] = {
@@ -835,6 +886,8 @@ def build_licitacoes(client, log):
                     MASK_PESSOA_FISICA if r["doc_tipo"] == "cpf" else r["razao_social"]),
                 "valor_estimado": _f(r["valor_estimado"]),
                 "valor_homologado": _f(r["valor_homologado"]),
+                "n_lotes": r["n_lotes"],
+                "n_fornecedores": r["n_fornecedores"],
                 "economia": _f(r["economia"]),
                 "data": _ts(r["data_conclusao"]),
             })
@@ -855,8 +908,10 @@ def build_licitacoes(client, log):
         "country": "br", "scale": "city", "place": "recife",
         "unit": "BRL", "as_of": src["as_of"], "source": src,
         "perimeter": (
-            "Licitações da Prefeitura do Recife. valor homologado = valor "
-            "efetivamente adjudicado. O valor estimado da fonte é pouco "
+            "Licitações da Prefeitura do Recife, uma linha por processo "
+            "licitatório (a fonte publica uma linha por lote e repete o total "
+            "do processo em cada uma). valor homologado = valor efetivamente "
+            "adjudicado no processo. O valor estimado da fonte é pouco "
             "confiável (outliers grosseiros), por isso a 'economia' não é "
             "publicada como métrica."
         ),

@@ -73,13 +73,12 @@ export default function RecifeContratoFiche({
   const toneColor =
     conc?.tone === "ocre" ? "var(--ocre)" : conc?.tone === "ink" ? "var(--ink)" : "var(--ink-2)";
 
-  // Soft data-quality flag: a single municipal contract above R$1 bi is
-  // extraordinary (Recife's whole active-contract portfolio ≈ R$15 bi, and the
-  // 2nd-largest single contract is R$0.73 bi). Values this size are almost
-  // always a source artifact — a decimal shift or a registro-de-preços ceiling.
-  // We keep the value visible (per user) but flag it as "to verify".
-  const VALOR_CEIL = 1_000_000_000;
-  const valorSuspeito = hasValor(c.valor) && (c.valor as number) > VALOR_CEIL;
+  // Data-quality flag comes from the PIPELINE (mart_br_recife_contratos
+  // .valor_implausivel), not a constant hardcoded here: the ceiling is derived
+  // from the city's own largest annual committed spend, so it travels to other
+  // years and cities. The exporter withholds the amount (valor === null) from
+  // this contract AND from every total it would otherwise distort.
+  const valorSuspeito = Boolean(c.valor_suspeito);
 
   return (
     <div>
@@ -118,7 +117,12 @@ export default function RecifeContratoFiche({
 
       <FicheKpis
         items={[
-          { label: t("br.recife.contrato.valor"), value: hasValor(c.valor) ? fmtBrlCompact(c.valor) : t("br.recife.contrato.sem_valor") },
+          {
+            label: t("br.recife.contrato.valor"),
+            value: hasValor(c.valor)
+              ? fmtBrlCompact(c.valor)
+              : t(valorSuspeito ? "br.recife.contrato.valor_retido" : "br.recife.contrato.sem_valor"),
+          },
           {
             label: t("br.recife.contrato.fornecedor"),
             value: c.is_org
