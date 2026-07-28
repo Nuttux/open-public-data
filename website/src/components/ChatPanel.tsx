@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getChatSuggestions, CHAT_ASK_EVENT, sectionForPath } from "@/lib/chat/suggestions";
-import { useT, useLocale } from "@/lib/localeContext";
+import { scopeForPath, isChatEnabledPath, DEFAULT_SCOPE_ID, CHAT_SCOPES } from "@/lib/chat/scopes";
+import { useT, useLocale, ForcedLocale } from "@/lib/localeContext";
 import { toolLabel, toolRaw } from "@/lib/chat/toolLabels";
 
 // Le partage écrit sur disque (data/conversations) : indisponible sur un
@@ -14,7 +15,7 @@ import { toolLabel, toolRaw } from "@/lib/chat/toolLabels";
 const SHARE_ENABLED = process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_CHAT_SHARE === "on";
 
 type ToolCall = { name: string; input: Record<string, unknown> };
-type Msg = { role: "user" | "assistant"; content: string; tools?: ToolCall[]; thinking?: boolean; followups?: string[] };
+type Msg = { role: "user" | "assistant"; content: string; tools?: ToolCall[]; thinking?: boolean; followups?: string[]; interrupted?: boolean };
 
 const STORAGE_KEY = "open-public-data:chat:v1";
 const STORAGE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 jours
@@ -26,10 +27,23 @@ function loadStored(): Msg[] {
     if (!raw) return [];
     const parsed = JSON.parse(raw) as { ts: number; messages: Msg[] };
     if (!parsed?.messages || Date.now() - parsed.ts > STORAGE_MAX_AGE_MS) return [];
-    return parsed.messages;
+    return healInterrupted(parsed.messages);
   } catch {
     return [];
   }
+}
+
+/**
+ * La bulle assistant est créée VIDE puis remplie par le flux, et l'historique
+ * est persisté à chaque delta. Si le flux est coupé (rechargement de page,
+ * réseau, onglet fermé), on restaure une bulle vide que plus rien ne viendra
+ * remplir : elle affiche ses trois points indéfiniment alors que `loading`
+ * est déjà retombé. On la remplace au chargement par un message explicite.
+ */
+function healInterrupted(messages: Msg[]): Msg[] {
+  const last = messages[messages.length - 1];
+  if (!last || last.role !== "assistant" || last.content) return messages;
+  return [...messages.slice(0, -1), { ...last, interrupted: true, thinking: false }];
 }
 
 function saveStored(messages: Msg[]) {
@@ -113,8 +127,15 @@ function ChatPanelInner() {
   const t = useT();
   const { locale } = useLocale();
   const pathname = usePathname() ?? "/";
+  // Quelle ville la page regarde. Envoyé à l'API, qui le revalide : c'est la
+  // seule chose qui décide des données atteignables par le modèle.
+  const scope = scopeForPath(pathname) ?? DEFAULT_SCOPE_ID;
   const section = sectionForPath(pathname);
-  const suggestions = getChatSuggestions(section, locale);
+  const suggestions = getChatSuggestions(section, locale, scope);
+  // Deux libellés du panneau nomment la ville ("Données publiques · Paris").
+  // Ils sont désormais paramétrés {{city}} : sans ça, le panneau annonçait
+  // Paris sur les pages San Francisco.
+  const tCity = (key: string) => t(key).replace(/\{\{city\}\}/g, CHAT_SCOPES[scope].cityLabel);
   // Question mise en avant à côté du launcher — uniquement sur les pages de
   // données (le label parle des graphes ; la landing reste épurée : pilule seule).
   const teaser = section === "default" ? null : suggestions[0];
@@ -201,6 +222,20 @@ function ChatPanelInner() {
   useEffect(() => {
     if (hydrated) saveStored(messages);
   }, [messages, hydrated]);
+
+  // Changer de ville change les outils ET les données : garder l'historique
+  // ferait raisonner le modèle sur des chiffres parisiens avec les outils SF.
+  // La conversation part en archive (rien n'est perdu), le fil repart vide.
+  const scopeRef = useRef(scope);
+  useEffect(() => {
+    if (!hydrated || scopeRef.current === scope) return;
+    scopeRef.current = scope;
+    archiveCurrent(messages);
+    setMessages([]);
+    saveStored([]);
+    setError(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scope, hydrated]);
 
   // Teaser : masqué si déjà écarté dans cette session.
   useEffect(() => {
@@ -326,7 +361,7 @@ function ChatPanelInner() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ messages: wireHistory, locale }),
+        body: JSON.stringify({ messages: wireHistory, locale, scope }),
         signal: ctrl.signal,
       });
       if (!res.ok || !res.body) {
@@ -347,6 +382,15 @@ function ChatPanelInner() {
             const copy = [...m];
             const last = copy[copy.length - 1];
             if (last?.role === "assistant") copy[copy.length - 1] = { ...last, content: last.content + delta };
+            return copy;
+          });
+        } else if (event === "reset") {
+          // Le serveur a jeté un texte partiel émis avant un appel d'outil :
+          // on repart d'une bulle vide pour ne pas coller deux réponses.
+          setMessages((m) => {
+            const copy = [...m];
+            const last = copy[copy.length - 1];
+            if (last?.role === "assistant") copy[copy.length - 1] = { ...last, content: "" };
             return copy;
           });
         } else if (event === "thinking") {
@@ -494,7 +538,7 @@ function ChatPanelInner() {
             <span className="inline-block h-2 w-2 rounded-full bg-[#e11d1d]" />
             <div>
               <div className="text-sm font-semibold text-neutral-900">{t("chat.title")}</div>
-              <div className="text-[11px] text-neutral-500">{t("chat.subtitle")}</div>
+              <div className="text-[11px] text-neutral-500">{tCity("chat.subtitle")}</div>
             </div>
           </div>
           <div className="flex items-center gap-1">
@@ -580,7 +624,7 @@ function ChatPanelInner() {
             <div className="space-y-4">
               <div>
                 <p className="text-sm text-neutral-800">
-                  {t("chat.empty_title")}
+                  {tCity("chat.empty_title")}
                 </p>
                 <p className="mt-1 text-xs text-neutral-500">
                   {t("chat.empty_sub")}
@@ -666,6 +710,10 @@ function ChatPanelInner() {
                           </div>
                         )}
                       </>
+                    ) : m.interrupted ? (
+                      <div className="chat-md text-neutral-500 italic">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{t("chat.interrupted")}</ReactMarkdown>
+                      </div>
                     ) : m.thinking && (!m.tools || m.tools.length === 0) ? (
                       <div className="flex items-center gap-2 py-1 text-[11px] text-neutral-500 italic">
                         <span className="inline-flex gap-1">
@@ -746,15 +794,25 @@ function ChatPanelInner() {
 }
 
 /**
- * v0 US : le chat est soudé à Paris — prompt système, outils, chemins de
- * données (ADR-0010 D4). Sur les routes /us on ne rend rien, tant qu'un
- * « place context pack » US n'existe pas. Wrapper séparé pour garder
- * l'ordre des hooks stable quel que soit le chemin.
+ * Le chat n'est monté que sur les routes dont la ville a un scope (registry
+ * lib/chat/scopes.ts) : Paris et San Francisco aujourd'hui. Ailleurs — /us
+ * national, Recife, Marseille — aucun toolset n'existe encore, donc rien à
+ * rendre plutôt qu'un assistant qui répondrait avec les données d'une autre
+ * ville. Wrapper séparé pour garder l'ordre des hooks stable.
  */
 export default function ChatPanel() {
   const pathname = usePathname() ?? "/";
-  if (pathname === "/us" || pathname.startsWith("/us/")) return null;
-  // Recife (br) is Portuguese and not wired to the Paris chat corpus — hide it.
-  if (pathname === "/br" || pathname.startsWith("/br/")) return null;
+  if (!isChatEnabledPath(pathname)) return null;
+  // Le panneau est monté au niveau racine, donc HORS des layouts de route : il
+  // n'hérite pas du ForcedLocale des routes /us (même contrainte que le slot
+  // @drawer, cf. ADR-0010 D3) et affichait son chrome en français sur une page
+  // anglaise. Les scopes anglophones se le réappliquent ici.
+  if (scopeForPath(pathname) === "sf") {
+    return (
+      <ForcedLocale locale="en">
+        <ChatPanelInner />
+      </ForcedLocale>
+    );
+  }
   return <ChatPanelInner />;
 }

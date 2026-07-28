@@ -14,6 +14,13 @@ export function toolLabel(name: string, input: ToolInput, locale: "fr" | "en" = 
   const nature = typeof input.nature === "string" && input.nature ? ` « ${input.nature} »` : "";
   const natureEn = typeof input.nature === "string" && input.nature ? ` "${input.nature}"` : "";
 
+  // Outils SF — noms distincts de ceux de Paris (sauf list_datasets, traité
+  // pareil des deux côtés), donc un seul bloc suffit avant le fork de locale.
+  // Toujours en anglais : le scope SF répond en anglais et les libellés
+  // nomment des objets américains (fiscal year, character, payee).
+  const sf = sfToolLabel(name, input);
+  if (sf) return sf;
+
   if (locale === "en") {
     switch (name) {
       case "list_datasets":
@@ -88,6 +95,46 @@ export function toolLabel(name: string, input: ToolInput, locale: "fr" | "en" = 
       return "je regarde la demande de logement social";
     default:
       return name;
+  }
+}
+
+function sfToolLabel(name: string, input: ToolInput): string | null {
+  const fy = Number.isInteger(input.fiscal_year) ? ` FY${input.fiscal_year}` : "";
+  const q = typeof input.query === "string" && input.query ? ` ("${input.query}")` : "";
+  const dept = typeof input.department === "string" && input.department ? ` — ${input.department}` : "";
+  const dim = typeof input.dimension === "string" ? input.dimension.replace(/_/g, " ") : "department";
+
+  switch (name) {
+    case "get_budget_by_year":
+      return "pulling the adopted-budget series";
+    case "get_budget_breakdown":
+      return `breaking down the${fy} budget by ${dim}`;
+    case "get_department_budget":
+      return `checking the${fy} budget${dept} by character`;
+    case "get_department_line_items":
+      return `opening the${fy} line items and vendor payments`;
+    case "get_budget_vs_actual":
+      return `comparing adopted budget and actual spending${fy}`;
+    case "get_contracts_overview":
+      return "checking the contract register";
+    case "search_contracts":
+      return `searching active contracts${q}`;
+    case "get_top_payees":
+      return `checking who was paid the most${fy}`;
+    case "search_payee":
+      return `searching vendor payments${q}`;
+    case "get_payroll_by_year":
+      return fy ? `checking${fy} payroll` : "pulling the payroll series";
+    case "get_payroll_by_department":
+      return `checking${fy} payroll by department${dept}`;
+    case "get_payroll_by_family":
+      return `checking${fy} pay by job family${dept}`;
+    case "get_payroll_distribution":
+      return `checking how pay is distributed${fy}`;
+    case "get_payroll_overtime":
+      return `checking overtime${fy}`;
+    default:
+      return null;
   }
 }
 

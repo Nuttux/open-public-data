@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 /**
- * Génère src/lib/chat/dataContext.generated.ts à partir des exports JSON de
- * public/data. L'inventaire des datasets exposé au chat (années couvertes,
- * totaux annuels, thématiques) ne doit jamais être maintenu à la main :
- * il dérive sinon des données réelles (cf. règle "zéro chiffre hardcodé").
+ * Génère l'inventaire de données de chaque scope de chat à partir des exports
+ * JSON de public/data :
+ *   - src/lib/chat/paris/dataContext.generated.ts
+ *   - src/lib/chat/sf/dataContext.generated.ts
+ *
+ * L'inventaire exposé au chat (années couvertes, totaux annuels, thématiques)
+ * ne doit jamais être maintenu à la main : il dérive sinon des données réelles
+ * (cf. règle "zéro chiffre hardcodé").
  *
  * Usage : npm run gen:chat-context
  * Sortie volontairement sans timestamp pour des diffs stables.
@@ -14,7 +18,11 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DATA = path.join(ROOT, "public", "data");
-const OUT = path.join(ROOT, "src", "lib", "chat", "dataContext.generated.ts");
+const CHAT = path.join(ROOT, "src", "lib", "chat");
+const OUT = path.join(CHAT, "paris", "dataContext.generated.ts");
+const OUT_SF = path.join(CHAT, "sf", "dataContext.generated.ts");
+// Racine des exports par scope (Paris est à la racine, rétro-compat).
+const SF_DIR = path.join(DATA, "us", "sf");
 
 function read(rel) {
   const p = path.join(DATA, rel);
@@ -22,13 +30,28 @@ function read(rel) {
   return JSON.parse(fs.readFileSync(p, "utf-8"));
 }
 
-function yearsFromGlob(prefix) {
+function yearsFromGlob(prefix, dir = DATA) {
+  if (!fs.existsSync(dir)) return [];
   return fs
-    .readdirSync(DATA)
+    .readdirSync(dir)
     .map((f) => f.match(new RegExp(`^${prefix}_(\\d{4})\\.json$`)))
     .filter(Boolean)
     .map((m) => Number(m[1]))
     .sort((a, b) => a - b);
+}
+
+const banner = `// ⚠️ FICHIER GÉNÉRÉ — ne pas éditer à la main.
+// Source : exports JSON de public/data (pipeline → marts → exports).
+// Régénérer : npm run gen:chat-context
+`;
+
+function emit(outPath, name, inventory) {
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, `${banner}export const ${name} = ${JSON.stringify(inventory, null, 2)} as const;\n`);
+  console.log(`✓ ${path.relative(ROOT, outPath)} régénéré`);
+  for (const [k, v] of Object.entries(inventory)) {
+    if (!v) console.warn(`  ⚠ dataset absent: ${k}`);
+  }
 }
 
 const round0 = (v) => (typeof v === "number" ? Math.round(v) : v);
@@ -106,7 +129,11 @@ const logementSocial = logement && {
 };
 
 // ---- constantes sourcées (methodology.json) ----
-const metho = read("methodology.json");
+// Vit dans src/data (import build-time), PAS dans public/data : la lecture
+// pointait sur public/data et renvoyait null en silence, ce qui vidait la
+// population de l'inventaire — et donc les ratios par habitant du chat.
+const methoPath = path.join(ROOT, "src", "data", "methodology.json");
+const metho = fs.existsSync(methoPath) ? JSON.parse(fs.readFileSync(methoPath, "utf-8")) : null;
 const pick = (obj) =>
   obj && { value: obj.value, unit: obj.unit ?? null, source: obj.source ?? null };
 const constants = metho?.city && {
@@ -130,16 +157,79 @@ const inventory = {
   constants,
 };
 
-const banner = `// ⚠️ FICHIER GÉNÉRÉ — ne pas éditer à la main.
-// Source : exports JSON de public/data (pipeline → marts → exports).
-// Régénérer : npm run gen:chat-context
-`;
+emit(OUT, "GENERATED_DATA_INVENTORY", inventory);
 
-fs.writeFileSync(
-  OUT,
-  `${banner}export const GENERATED_DATA_INVENTORY = ${JSON.stringify(inventory, null, 2)} as const;\n`,
-);
-console.log(`✓ ${path.relative(ROOT, OUT)} régénéré`);
-for (const [k, v] of Object.entries(inventory)) {
-  if (!v) console.warn(`  ⚠ dataset absent: ${k}`);
-}
+// ---------------------------------------------------------------------------
+// Scope « sf » — exports us/sf/. Mêmes règles : rien à la main.
+// ---------------------------------------------------------------------------
+
+const sfRead = (rel) => read(path.join("us", "sf", rel));
+const sfYears = (prefix) => yearsFromGlob(prefix, SF_DIR);
+
+const sfBudget = sfRead("budget_by_year.json");
+const sfSpending = sfBudget?.sides?.spending?.points ?? [];
+const sfVsActual = sfRead("budget_vs_actual.json");
+const sfPayroll = sfRead("payroll_by_year.json");
+const sfPayees = sfRead("top_payees.json");
+const sfContracts = sfRead("contracts_overview.json");
+
+const sfInventory = {
+  budget: {
+    years: sfSpending.map((p) => p.fiscal_year),
+    // Le budget adopté est la référence citée partout : totaux + par habitant.
+    totalsByYear: Object.fromEntries(
+      sfSpending.map((p) => [
+        p.fiscal_year,
+        {
+          spending_usd: round0(p.total_usd),
+          per_resident_usd: round0(p.per_resident_usd),
+          execution_status: p.execution_status ?? null,
+        },
+      ]),
+    ),
+    population: sfBudget?.population
+      ? { value: sfBudget.population.value, year: sfBudget.population.year, source: sfBudget.population.source ?? null }
+      : null,
+  },
+  breakdown: { years: sfYears("budget_breakdown") },
+  deptDetail: { years: sfYears("budget_dept_detail") },
+  vsActual: {
+    years: (sfVsActual?.sides?.spending?.points ?? [])
+      .filter((p) => p.budget_net_usd != null && p.actual_all_usd != null)
+      .map((p) => p.fiscal_year),
+  },
+  payees: {
+    years: Object.keys(sfPayees?.years ?? {})
+      .map(Number)
+      .sort((a, b) => a - b),
+  },
+  payroll: {
+    years: (sfPayroll?.points ?? []).map((p) => p.fiscal_year),
+    latest: (() => {
+      const last = (sfPayroll?.points ?? []).at(-1);
+      return last
+        ? {
+            fiscal_year: last.fiscal_year,
+            total_compensation_usd: round0(last.total_compensation_usd),
+            n_employees: last.n_employees,
+            median_total_comp_usd: round0(last.median_total_comp_usd),
+          }
+        : null;
+    })(),
+  },
+  contracts: sfContracts?.hero
+    ? {
+        register: {
+          n_contracts: sfContracts.hero.register?.n_contracts ?? null,
+          agreed_usd: round0(sfContracts.hero.register?.agreed_usd),
+          paid_usd: round0(sfContracts.hero.register?.paid_usd),
+        },
+        active: {
+          n_contracts: sfContracts.hero.active?.n_contracts ?? null,
+          agreed_usd: round0(sfContracts.hero.active?.agreed_usd),
+        },
+      }
+    : null,
+};
+
+emit(OUT_SF, "GENERATED_SF_INVENTORY", sfInventory);

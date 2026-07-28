@@ -1,11 +1,13 @@
 import { GENERATED_DATA_INVENTORY as INV } from "./dataContext.generated";
-import { readDataJsonOrNull } from "../data/read";
+import { createScopedReader } from "../scopedRead";
+import { CHAT_SCOPES } from "../scopes";
 
-// Les exports ne changent qu'au déploiement — le reader partagé
-// (lib/data/read.ts) mémoïse, y compris les résultats négatifs.
-function loadJson<T = unknown>(rel: string): T | null {
-  return readDataJsonOrNull<T>(rel);
-}
+// Toolset du scope « paris ». Le reader est lié au scope à la construction :
+// aucun outil d'ici ne peut atteindre les exports d'une autre ville, et aucun
+// n'accepte de paramètre `city` que le modèle pourrait détourner.
+// Les exports ne changent qu'au déploiement — le reader mémoïse, y compris
+// les résultats négatifs.
+const loadJson = createScopedReader(CHAT_SCOPES.paris);
 
 /** Les années viennent des arguments du LLM — on ne les interpole dans un
  *  chemin de fichier que si ce sont bien des entiers. */
@@ -745,13 +747,5 @@ export const DISPATCH: Record<string, (args: ToolArgs) => unknown> = {
   get_logement_social,
 };
 
-export function runTool(name: string, args: unknown): unknown {
-  const fn = DISPATCH[name];
-  if (!fn) return { error: `tool inconnu: ${name}` };
-  const safeArgs = (args && typeof args === "object" ? args : {}) as ToolArgs;
-  try {
-    return fn(safeArgs);
-  } catch (e) {
-    return { error: `${(e as Error).name}: ${(e as Error).message}` };
-  }
-}
+// L'exécution passe par lib/chat/registry.ts (runScopedTool) : un seul point
+// de dispatch, qui cherche le nom DANS le scope et nulle part ailleurs.

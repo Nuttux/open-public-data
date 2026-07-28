@@ -17,9 +17,10 @@ import {
   get_bilan,
   get_hors_bilan,
   get_logement_social,
-  runTool,
 } from "./tools";
-import { SYSTEM_PROMPT } from "./systemPrompt";
+import { PARIS_SYSTEM_PROMPT } from "./prompt";
+import { runScopedTool } from "../registry";
+import { CHAT_SCOPES } from "../scopes";
 
 // Tests contre les vrais exports de public/data : si un export change de
 // forme, ces tests cassent avant que le chat ne réponde n'importe quoi.
@@ -217,20 +218,32 @@ describe("dette / bilan / garanties / logement", () => {
   });
 });
 
-describe("runTool & prompt", () => {
-  it("runTool dispatch + outil inconnu", () => {
-    expect(runTool("list_datasets", {})).toBeTruthy();
-    expect(runTool("nope", {})).toEqual({ error: "tool inconnu: nope" });
+describe("dispatch & prompt", () => {
+  it("dispatch scopé + outil inconnu", () => {
+    expect(runScopedTool(CHAT_SCOPES.paris, "list_datasets", {})).toBeTruthy();
+    expect(runScopedTool(CHAT_SCOPES.paris, "nope", {})).toHaveProperty("error");
     // args invalides → erreur JSON propre, pas de throw
-    expect(runTool("get_subventions_summary", { year: 1999 })).toHaveProperty("error");
+    expect(runScopedTool(CHAT_SCOPES.paris, "get_subventions_summary", { year: 1999 })).toHaveProperty("error");
   });
 
-  it("SYSTEM_PROMPT contient l'inventaire généré, sans 'undefined'", () => {
-    expect(SYSTEM_PROMPT).toContain("2024");
-    expect(SYSTEM_PROMPT).toContain("get_vote_vs_execute");
-    expect(SYSTEM_PROMPT).toContain("pluriannuelle");
-    expect(SYSTEM_PROMPT).not.toContain("undefined");
-    expect(SYSTEM_PROMPT.length).toBeGreaterThan(4000);
-    expect(SYSTEM_PROMPT.length).toBeLessThan(20000);
+  it("un outil SF n'est pas atteignable depuis le scope paris", () => {
+    // Le cloisonnement ne repose pas sur le prompt : le nom n'existe tout
+    // simplement pas dans la table de dispatch de ce scope.
+    expect(runScopedTool(CHAT_SCOPES.paris, "get_payroll_by_year", {})).toHaveProperty("error");
+  });
+
+  it("PARIS_SYSTEM_PROMPT contient l'inventaire généré, sans 'undefined'", () => {
+    expect(PARIS_SYSTEM_PROMPT).toContain("2024");
+    expect(PARIS_SYSTEM_PROMPT).toContain("get_vote_vs_execute");
+    expect(PARIS_SYSTEM_PROMPT).toContain("pluriannuelle");
+    expect(PARIS_SYSTEM_PROMPT).not.toContain("undefined");
+    expect(PARIS_SYSTEM_PROMPT.length).toBeGreaterThan(4000);
+    expect(PARIS_SYSTEM_PROMPT.length).toBeLessThan(20000);
+  });
+
+  it("le prompt Paris garde la population sourcée (ratios par habitant)", () => {
+    // Régression vécue : le générateur lisait methodology.json au mauvais
+    // endroit et vidait la population en silence.
+    expect(PARIS_SYSTEM_PROMPT).toContain("Population de Paris");
   });
 });

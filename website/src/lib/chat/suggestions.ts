@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/localeContext";
+import type { ChatScopeId } from "./scopes";
 
 // Questions suggérées par section et par langue — la vitrine du chat.
 // Règles éditoriales :
@@ -18,7 +19,9 @@ export type SectionKey =
   | "subventions"
   | "marches"
   | "logement"
-  | "investissements";
+  | "investissements"
+  // Rubrique propre à SF (Paris n'a pas de page paie).
+  | "payroll";
 
 const FR: Record<SectionKey, string[]> = {
   // 1res suggestions = vie quotidienne, neutres et impossibles à charter.
@@ -68,6 +71,8 @@ const FR: Record<SectionKey, string[]> = {
     "L'investissement voté est-il vraiment dépensé ?",
     "Quel est le plus gros marché de travaux en 2024 ?",
   ],
+  // Pas de page paie côté Paris : jamais atteint, gardé pour le typage.
+  payroll: [],
 };
 
 const EN: Record<SectionKey, string[]> = {
@@ -113,15 +118,89 @@ const EN: Record<SectionKey, string[]> = {
     "Is the voted investment actually spent?",
     "What is the biggest works contract in 2024?",
   ],
+  payroll: [],
 };
 
-export function getChatSuggestions(section: SectionKey, locale: Locale): string[] {
-  return (locale === "en" ? EN : FR)[section];
+// San Francisco — mêmes règles qu'en FR : rien qui tombe sur « pas dans mes
+// données », rien qui double une stat déjà affichée par la page, rien
+// d'éditorialement chargé en vitrine. Anglais uniquement : le scope SF répond
+// en anglais par défaut.
+// Reconstruit depuis la batterie d'éval du 2026-07-27 (31 questions, chaque
+// chiffre reconfronté aux sorties d'outils). Retenu : les questions dont la
+// réponse APPREND quelque chose qui n'est pas déjà sur la page. Écarté :
+//  - « How much per resident ? » et « What is the total budget ? » → déjà dans
+//    le hero de /budget ($15.9B, $19,269) ;
+//  - « What does a typical employee earn ? » et « How many people does the
+//    City employ ? » → déjà dans le hero de /payroll (médiane, effectif) ;
+//  - tout ce dont la réponse est noyée sous les mises en garde de périmètre
+//    (le per-habitant SF, à cause des fonds d'entreprise).
+const SF: Record<SectionKey, string[]> = {
+  // Vitrine = matérialité d'abord (comme les ordures et les piscines côté
+  // Paris), mais les 4 slots visent QUATRE motifs d'arrivée différents, pas
+  // les 4 meilleures réponses dans l'absolu :
+  //   1. le service qui passe chez moi                 → poubelles
+  //   2. le service que j'utilise tous les jours        → Muni
+  //   3. qui touche l'argent (presse, veille citoyenne) → fournisseurs
+  //   4. comment une ville marche / est-ce bien géré    → aéroport
+  // Chacune corrige au passage une idée fausse (les poubelles ne sont pas
+  // payées par le budget, la SFMTA est plus large que Muni, les plus gros
+  // « fournisseurs » sont des banques, l'aéroport s'autofinance) et elles
+  // couvrent quatre ordres de grandeur, de 119 M$ à 16,7 Md$.
+  default: [
+    "How much does it cost to collect the trash?",
+    "How much does Muni cost to run?",
+    "Which vendors were paid the most last fiscal year?",
+    "Does the airport make money for the City?",
+  ],
+  budget: [
+    "How much do San Francisco's public libraries cost?",
+    "What does the fire department cost?",
+    "Does the City spend what it budgets?",
+    "Which departments get the biggest share of the budget?",
+  ],
+  marches: [
+    "How much does it cost to collect the trash?",
+    "How much does the City spend fixing streets and potholes?",
+    "How many contracts are awarded without competition?",
+    "How much of the City's contract money goes out as grants?",
+  ],
+  subventions: [
+    "Which non-profits get the most money from the City?",
+    "Which vendors were paid the most last fiscal year?",
+    "How much does the City spend on the zoo?",
+    "Which departments pay out the most?",
+  ],
+  payroll: [
+    "Which jobs earn the most overtime?",
+    "Which departments have the biggest payrolls?",
+    "How does pay vary across the City workforce?",
+    "How much of the budget goes to salaries and benefits?",
+  ],
+  // Sections sans équivalent SF : on retombe sur les questions générales.
+  dette: [],
+  logement: [],
+  investissements: [],
+};
+
+export function getChatSuggestions(section: SectionKey, locale: Locale, scope: ChatScopeId = "paris"): string[] {
+  // Une rubrique sans jeu propre retombe sur les questions générales du scope,
+  // jamais sur un tableau vide (le panneau afficherait une liste morte).
+  const table = scope === "sf" ? SF : locale === "en" ? EN : FR;
+  return table[section].length ? table[section] : table.default;
 }
 
+/** Rubrique de la page courante — pilote seulement les questions suggérées. */
 export function sectionForPath(pathname: string): SectionKey {
-  const m = pathname.match(/^\/fr\/city\/[^/]+\/(budget|dette|subventions|marches|logement|investissements)(\/|$)/);
-  return (m?.[1] as SectionKey) ?? "default";
+  const fr = pathname.match(/^\/fr\/city\/[^/]+\/(budget|dette|subventions|marches|logement|investissements)(\/|$)/);
+  if (fr) return fr[1] as SectionKey;
+  // SF : on mappe les rubriques US sur les mêmes clés pour garder un seul
+  // jeu de sections (marches = contrats, subventions = paiements aux tiers).
+  const sf = pathname.match(/^\/us\/city\/sf\/(budget|contracts|who-gets-paid|payroll)(\/|$)/);
+  if (sf) {
+    const key = { budget: "budget", contracts: "marches", "who-gets-paid": "subventions", payroll: "payroll" } as const;
+    return key[sf[1] as keyof typeof key];
+  }
+  return "default";
 }
 
 // Événement interne « pose cette question » — écouté par ChatPanel.

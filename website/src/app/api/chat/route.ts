@@ -1,6 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { SYSTEM_PROMPT } from "@/lib/chat/systemPrompt";
-import { TOOL_SCHEMAS, runTool } from "@/lib/chat/tools";
+import { resolveScope } from "@/lib/chat/scopes";
+import { systemPromptFor, toolSchemasFor, runScopedTool } from "@/lib/chat/registry";
 
 export const runtime = "nodejs";
 export const maxDuration = 90;
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
     );
   }
 
-  let body: { messages?: ChatMessage[]; locale?: string };
+  let body: { messages?: ChatMessage[]; locale?: string; scope?: string };
   try {
     body = await req.json();
   } catch {
@@ -61,11 +61,19 @@ export async function POST(req: Request) {
     }
   }
 
-  // Deux variantes stables du system (fr/en) — chacune reste cacheable.
+  // La ville vient du client (la page que le lecteur regarde) mais n'est JAMAIS
+  // prise au mot : resolveScope ne rend qu'un scope connu, Paris par défaut.
+  // Le modèle ne reçoit ensuite que les outils de ce scope — il n'a aucun
+  // paramètre par lequel demander les données d'une autre ville.
+  const scope = resolveScope(body.scope);
+
+  // Variantes stables du system par (scope, langue) — chacune reste cacheable.
   const sessionLang =
-    body.locale === "en"
+    scope.promptLang === "fr" && body.locale === "en"
       ? "\n\n# Langue de session\nL'interface de l'utilisateur est en ANGLAIS. Réponds ENTIÈREMENT en anglais — texte, tableaux, libellés de liens et relances <followups> — sauf si l'utilisateur écrit explicitement en français."
-      : "";
+      : scope.promptLang === "en" && body.locale === "fr"
+        ? "\n\n# Session language\nThe user's interface is in FRENCH. Answer ENTIRELY in French — prose, tables, link labels and <followups> — unless the user explicitly writes in English."
+        : "";
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return new Response(JSON.stringify({ error: "missing key" }), { status: 500 });
@@ -92,8 +100,10 @@ export async function POST(req: Request) {
             model: MODEL,
             max_tokens: MAX_TOKENS,
             thinking: { type: "adaptive" },
-            system: [{ type: "text", text: SYSTEM_PROMPT + sessionLang, cache_control: { type: "ephemeral" } }],
-            tools: TOOL_SCHEMAS as unknown as Anthropic.Tool[],
+            system: [
+              { type: "text", text: systemPromptFor(scope) + sessionLang, cache_control: { type: "ephemeral" } },
+            ],
+            tools: toolSchemasFor(scope) as unknown as Anthropic.Tool[],
             messages,
           });
 
@@ -113,12 +123,20 @@ export async function POST(req: Request) {
           const final = await turn.finalMessage();
 
           if (final.stop_reason === "tool_use") {
+            // Le modèle écrit souvent une phrase AVANT de décider d'appeler un
+            // outil ("je n'ai pas 1985…"), puis rédige la vraie réponse au tour
+            // suivant : sans reset, le panneau affichait les deux collées, et
+            // l'accroche chiffrée se retrouvait au milieu du texte. On jette le
+            // texte partiel — le tour final le réénonce toujours en entier.
+            if (final.content.some((b) => b.type === "text" && b.text.trim())) {
+              send("reset", {});
+            }
             messages.push({ role: "assistant", content: final.content });
             const toolResults: Anthropic.ToolResultBlockParam[] = [];
             for (const block of final.content) {
               if (block.type === "tool_use") {
                 send("tool", { name: block.name, input: block.input });
-                const result = runTool(block.name, block.input);
+                const result = runScopedTool(scope, block.name, block.input);
                 toolResults.push({
                   type: "tool_result",
                   tool_use_id: block.id,
