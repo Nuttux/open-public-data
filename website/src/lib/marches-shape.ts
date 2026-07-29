@@ -11,6 +11,24 @@
 
 export const MULTI_ATTRIBUTAIRE_NAME = "MARCHE MULTIATTRIBUTAIRE";
 
+/** Placeholders the DECP export uses where a company name is missing, or where
+ *  one record covers several unnamed awardees. */
+const UNNAMED_TITULAIRES = new Set([MULTI_ATTRIBUTAIRE_NAME, "Non précisé", "Non precise"]);
+
+/**
+ * Is this titulaire a real, named company — i.e. would a supplier fiche for it
+ * mean anything?
+ *
+ * The money on those rows is real and stays in the totals, so the rows are not
+ * dropped; but linking them is a dead end. Category fiches were rendering
+ * "Non précisé" and "MARCHE MULTIATTRIBUTAIRE" as blue links to a supplier
+ * page describing a placeholder.
+ */
+export function isNamedTitulaire(name: string | null | undefined): boolean {
+  const n = (name ?? "").trim();
+  return n.length > 0 && !UNNAMED_TITULAIRES.has(n);
+}
+
 /** Row schema of the public marches_<year>.json files (data[] / marches[]). */
 export type RawMarcheRow = {
   numero_marche?: string;

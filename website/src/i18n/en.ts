@@ -1667,6 +1667,18 @@ const en: Record<string, string> = {
   'fx.mp.rank.out': 'below top',
   'fx.mp.rank.tip': 'cumulative by end {year}: {cumul} · rank {rank}',
   'fx.mp.rank.tip_click': 'click → supplier profile',
+  // Merged "What the City buys" section — two cuts of the same notified
+  // envelope for the displayed year.
+  'fx.mp.buy.lens_aria': 'Breakdown lens',
+  'fx.mp.buy.by_categorie': 'By category',
+  'fx.mp.buy.by_fournisseur': 'By supplier',
+  'fx.mp.buy.announce': '{lens}: €{total}bn notified in {year}.',
+  'fx.mp.buy.sub_fournisseur': 'The 10 biggest holders of the {year} year — {share}% of the envelope. Click a row for its profile.',
+  'fx.mp.buy.head.left': 'Rank · Supplier',
+  'fx.mp.buy.head.right': 'Envelope {year} · Contracts',
+  'fx.mp.buy.aria': 'Open profile for {name}',
+  'fx.mp.buy.n_contrats': '{n} contracts',
+  'fx.mp.rank.inline_h': 'Who holds the top of the ranking, {from}–{to} · top {share}% of the cumulative total',
   'fx.mp.rank.note': 'Amounts = notified ceilings (often multi-year envelopes), not executed spend. Ranked by cumulative total since 2013: an annual rank would be erratic — a framework agreement won in one year books its whole ceiling at once.',
   'fx.mp.rank.aria': 'Ranking of {n} suppliers by cumulative amounts, {from} to {to}',
   'fx.mp.rank.source.cite': 'Ville de Paris · Notified contracts {from}-{to} + DECP',
@@ -2690,6 +2702,9 @@ const en: Record<string, string> = {
 
   // ── ContratFiche ─────────────────────────────────────────────────────────────
   'fx.fiche.contrat.enveloppe': 'Max envelope',
+  'fx.fiche.contrat.hero_cap': 'maximum envelope of the contract',
+  'fx.fiche.contrat.hero_cap_plafond': 'contract ceiling',
+  'fx.fiche.contrat.notifie_pct': '{pct}% of the ceiling notified',
   'fx.fiche.contrat.duree': 'Contract duration',
   'fx.fiche.contrat.duree_unit': 'yrs',
   'fx.fiche.contrat.notifie': 'Notified on',
@@ -2754,6 +2769,8 @@ const en: Record<string, string> = {
   'fx.fiche.fourn.siege': "registered office in",
   'fx.fiche.fourn.effectif': "headcount",
   'fx.fiche.fourn.creee': "founded in",
+  'fx.fiche.fourn.hero_cap': 'paid by the City since {from}',
+  'fx.fiche.fourn.hero_cap_noyear': 'paid by the City',
   'fx.fiche.fourn.cumul': "Paris total",
   'fx.fiche.fourn.contrats': "Contracts",
   'fx.fiche.fourn.actif_depuis': "Active since",
@@ -2771,6 +2788,7 @@ const en: Record<string, string> = {
   'fx.fiche.fourn.annuaire': "Directory",
   'fx.fiche.fourn.historique': "Year-by-year history",
   'fx.fiche.fourn.contrats_row': "contracts",
+  'fx.fiche.fourn.contrat_row_one': "contract",
   'fx.fiche.fourn.repartition': "Breakdown by category",
   'fx.fiche.fourn.top8': "Notified contracts · top 8",
   'fx.fiche.fourn.contrats_label': "Notified contracts",
@@ -2778,6 +2796,7 @@ const en: Record<string, string> = {
   'fx.fiche.fourn.annuaire_link': "view on annuaire-entreprises.data.gouv.fr ↗",
   'fx.fiche.fourn.col.objet': "Subject",
   'fx.fiche.fourn.col.date': "Date",
+  'fx.fiche.fourn.more_noun': 'more contracts in the period',
   'fx.fiche.fourn.overflow': "+ {n} more contracts in the period.",
   'fx.fiche.fourn.avenir': "Coming soon: full SIRENE profile (NAF, headcount, founding, director), other client local authorities (via aggregated national DECP), official website.",
 
@@ -3067,6 +3086,7 @@ const en: Record<string, string> = {
   'fx.toc.execution': 'Voted/Executed',
   'fx.toc.sources': 'Sources',
   'fx.toc.explorer': 'Explore',
+  'fx.toc.achats': 'What the City buys',
   'fx.toc.nuee': 'Every beneficiary',
   'fx.toc.themes': 'Themes',
   'fx.toc.ou_va_argent': 'Where it goes',
@@ -3310,6 +3330,7 @@ const en: Record<string, string> = {
 
   // CategorieMarcheFiche
   'fx.categorie.kpi.enveloppe_max': 'Max envelope {year}',
+  'fx.categorie.hero_cap': 'of envelopes notified in this category in {year}',
   'fx.categorie.kpi.share_paris': 'Share of Paris total',
   'fx.categorie.kpi.contrats': 'Contracts',
   'fx.categorie.kpi.titulaires': 'Distinct contractors',

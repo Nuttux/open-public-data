@@ -4,9 +4,10 @@ import Link from "next/link";
 import type { ContratFiche as ContratFicheType, ContratProjetLink, ContratRanking, MarcheVulgarization, SireneCompany } from "@/lib/fusion-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
-import { cap, numLocale } from "@/lib/fmt";
+import { cap, fill, numLocale } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
+import { FicheStatHero } from "@/components/fiche";
 import { useCity } from "./CityContext";
 import Tip from "./Tip";
 
@@ -40,6 +41,8 @@ export default function ContratFiche({
   };
 
   const { v: vMax, u: uMax } = fmtEur(contrat.montantMax);
+  const hasFournisseurFiche = Boolean(contrat.fournisseurSiret && contrat.fournisseurSiret !== "#");
+  const fournisseurHref = `${basePath}/marches/fournisseur/${(contrat.fournisseurSiret ?? "").replace(/\s/g, "")}`;
   const dureeAnnees = contrat.dureeJours > 0
     ? (contrat.dureeJours / 365).toFixed(1).replace(".", locale === "en" ? "." : ",")
     : "—";
@@ -72,6 +75,16 @@ export default function ContratFiche({
   // Tags DECP (affichés en ligne sous l'objet, uniquement si ≠ null/vide).
   type Tag = { label: string; title?: string };
   const decpTags: Tag[] = [];
+  // Nature en tête de rangée quand la frise a absorbé la bande de KPI, mais
+  // pas si la famille CPV la redit déjà ("Travaux" sous "Travaux construction").
+  const natureLabel = trLabel(contrat.nature, locale);
+  if (
+    timeline &&
+    natureLabel &&
+    !(decp?.cpvFamille ?? "").toLowerCase().startsWith(natureLabel.toLowerCase())
+  ) {
+    decpTags.push({ label: natureLabel, title: t("fx.fiche.shared.nature") });
+  }
   // Catégorie en tag (l'ex-section Classification) — seulement quand elle
   // apporte plus que la nature déjà affichée en KPI.
   if (contrat.categorie && contrat.categorie !== "—" && contrat.categorie.toLowerCase() !== contrat.nature.toLowerCase()) {
@@ -134,36 +147,60 @@ export default function ContratFiche({
         ) : null
       )}
 
-      <div className="fx-fiche-kpis">
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">
-            {showNotifie ? (
-              <Tip label={t("fx.fiche.contrat.kpi.plafond_tip")}>
-                {t("fx.fiche.contrat.kpi.plafond")}
-              </Tip>
-            ) : (
-              t("fx.fiche.contrat.enveloppe")
-            )}
-          </div>
-          <div className="fx-fiche-kpi-value tnum">
+      {/* L'enveloppe porte la fiche. Elle était une cellule parmi quatre, à
+       * côté de « Travaux » : rien ne disait, en arrivant, de quelle somme on
+       * parle. */}
+      <FicheStatHero
+        value={
+          <>
             {vMax}
-            <span className="u">{uMax}</span>
-          </div>
-        </div>
-        {showNotifie && notifie && (
-          <div className="fx-fiche-kpi">
-            <div className="fx-fiche-kpi-label">
-              <Tip label={t("fx.fiche.contrat.kpi.notifie_tip")}>
-                {t("fx.fiche.contrat.kpi.notifie")}
-              </Tip>
+            <span className="fx-fiche-stat-unit">{uMax}</span>
+          </>
+        }
+        caption={
+          showNotifie ? (
+            <Tip label={t("fx.fiche.contrat.kpi.plafond_tip")}>{t("fx.fiche.contrat.hero_cap_plafond")}</Tip>
+          ) : (
+            t("fx.fiche.contrat.hero_cap")
+          )
+        }
+      />
+
+      {/* Plafond → notifié : la seule forme d'argent qu'un contrat porte, et
+       * elle n'existait que comme deux nombres côte à côte dont rien ne disait
+       * qu'ils se rapportent l'un à l'autre. Même geste que la barre
+       * empenhado→pago de Recife et le ceiling-vs-paid de SF. */}
+      {showNotifie && notifie && decp?.montantNotifie != null && (() => {
+        const pct = contrat.montantMax > 0
+          ? Math.round(Math.min(decp.montantNotifie! / contrat.montantMax, 1) * 100)
+          : 100;
+        return (
+          <div style={{ margin: "0 0 22px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 7 }}>
+              <span style={{ color: "var(--bleu)" }}>
+                {t("fx.fiche.contrat.kpi.notifie")} {notifie.v} {notifie.u}
+              </span>
+              <span>{t("fx.fiche.contrat.kpi.plafond")} {vMax} {uMax}</span>
             </div>
-            <div className="fx-fiche-kpi-value tnum" style={{ color: "var(--bleu)" }}>
-              {notifie.v}
-              <span className="u">{notifie.u}</span>
+            <div style={{ position: "relative", height: 4, background: "var(--rule)", borderRadius: 2 }} aria-hidden="true">
+              <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: `${pct}%`, background: "var(--bleu)", borderRadius: 2 }} />
+            </div>
+            <div
+              style={{ marginTop: 7, fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--muted)", cursor: "help" }}
+              title={t("fx.fiche.contrat.kpi.notifie_tip")}
+            >
+              {fill(t("fx.fiche.contrat.notifie_pct"), { pct: String(pct) })}
             </div>
           </div>
-        )}
-        {!timeline && (
+        );
+      })()}
+
+      {/* La bande de KPI ne sert plus que les contrats sans frise (durée et
+       * date de notification y sont déjà). Quand la frise existe, il ne
+       * restait qu'une cellule « Nature » : un encadré pleine largeur autour
+       * d'un mot. La nature descend alors dans la rangée de tags. */}
+      {!timeline && (
+        <div className="fx-fiche-kpis">
           <div className="fx-fiche-kpi">
             <div className="fx-fiche-kpi-label">{t("fx.fiche.contrat.duree")}</div>
             <div className="fx-fiche-kpi-value tnum">
@@ -171,22 +208,20 @@ export default function ContratFiche({
               <span className="u">{dureeAnnees !== "—" ? t("fx.fiche.contrat.duree_unit") : ""}</span>
             </div>
           </div>
-        )}
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.shared.nature")}</div>
-          <div className="fx-fiche-kpi-value" style={{ fontSize: 15 }}>
-            {trLabel(contrat.nature, locale)}
+          <div className="fx-fiche-kpi">
+            <div className="fx-fiche-kpi-label">{t("fx.fiche.shared.nature")}</div>
+            <div className="fx-fiche-kpi-value" style={{ fontSize: 15 }}>
+              {trLabel(contrat.nature, locale)}
+            </div>
           </div>
-        </div>
-        {!timeline && (
           <div className="fx-fiche-kpi">
             <div className="fx-fiche-kpi-label">{t("fx.fiche.contrat.notifie")}</div>
             <div className="fx-fiche-kpi-value" style={{ fontSize: 15 }}>
               {fmtDate(contrat.dateNotification)}
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {timeline && (
         <div
@@ -423,9 +458,22 @@ export default function ContratFiche({
           </div>
         ) : (
           <dl>
+            {/* Le nom EST le lien vers la fiche fournisseur. Avant, le nom
+             * était du texte mort et une septième rangée « VOIR → Fiche
+             * complète du fournisseur » portait le lien : deux rangées pour
+             * une entité, et le clic naturel (sur le nom) ne faisait rien.
+             * Même correction que SF sur le titulaire d'un contrat. */}
             <div className="fx-fiche-prop">
               <dt>{t("fx.fiche.shared.nom")}</dt>
-              <dd>{contrat.fournisseur}</dd>
+              <dd>
+                {hasFournisseurFiche ? (
+                  <Link href={fournisseurHref} scroll={false} style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", paddingBottom: 1 }}>
+                    {contrat.fournisseur}
+                  </Link>
+                ) : (
+                  contrat.fournisseur
+                )}
+              </dd>
             </div>
             {fournisseurSirene?.libelle_activite && (
               <div className="fx-fiche-prop">
@@ -445,24 +493,10 @@ export default function ContratFiche({
                 <dd>{fournisseurSirene.tranche_effectifs}</dd>
               </div>
             )}
-            {contrat.fournisseurSiret && contrat.fournisseurSiret !== "#" && (
+            {hasFournisseurFiche && (
               <div className="fx-fiche-prop">
                 <dt><Tip label={t("fx.fiche.siret.tip")}>SIRET</Tip></dt>
                 <dd style={{ fontFamily: "var(--f-mono)" }}>{contrat.fournisseurSiret}</dd>
-              </div>
-            )}
-            {contrat.fournisseurSiret && contrat.fournisseurSiret !== "#" && (
-              <div className="fx-fiche-prop">
-                <dt>{t("fx.fiche.contrat.voir")}</dt>
-                <dd>
-                  <Link
-                    href={`${basePath}/marches/fournisseur/${contrat.fournisseurSiret.replace(/\s/g, "")}`}
-                    style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", paddingBottom: 1 }}
-                    scroll={false}
-                  >
-                    {t("fx.fiche.contrat.fiche_fourn")}
-                  </Link>
-                </dd>
               </div>
             )}
           </dl>
@@ -473,56 +507,46 @@ export default function ContratFiche({
        * catégorie déjà portée par les tags CCAG/CPV, exercice déjà dans le
        * kicker — seul le périmètre (M57…) migre dans Sources, où il sert
        * l'audit. Une section de moins. */}
-      <section className="fx-fiche-section">
-        <div className="fx-fiche-h">{t("fx.fiche.shared.sources")}</div>
-        <dl>
-          <div className="fx-fiche-prop">
-            <dt>{t("fx.fiche.contrat.num_marche")}</dt>
-            <dd style={{ fontFamily: "var(--f-mono)" }}>{contrat.numero}</dd>
-          </div>
+      {/* Sources : un pied de fiche, pas une section. Trois rangées de
+       * tableau clé-valeur (« N° MARCHÉ », « DECP NAT. ») donnaient à la fin
+       * de la fiche le même poids visuel qu'à la concurrence ou au titulaire,
+       * pour un identifiant et un lien. */}
+      <footer className="fx-fiche-sources">
+        <p className="fx-footer-sources-meta">
+          <b>{t("fx.fiche.contrat.num_marche")}</b>{" "}
+          <span style={{ fontFamily: "var(--f-mono)" }}>{contrat.numero}</span>
           {contrat.perimetre && contrat.perimetre !== "—" && (
-            <div className="fx-fiche-prop">
-              <dt>{t("fx.fiche.contrat.perimetre")}</dt>
-              <dd>{contrat.perimetre}</dd>
-            </div>
+            <>
+              {" "}<span className="sep">·</span>{" "}
+              <b>{t("fx.fiche.contrat.perimetre")}</b> {contrat.perimetre}
+            </>
           )}
+          {" "}<span className="sep">·</span>{" "}
           {contrat.numero.startsWith("decp-") || slug !== "paris" ? (
             /* Marché issu des DECP consolidées OU d'une autre ville (SCDL sur
              * data.gouv) : pas de page par enregistrement, on pointe le jeu de
              * données consolidé. Le lien opendata.paris.fr ci-dessous ne vaut
              * que pour Paris (refine.num_marche vérifié 30/30 sur échantillon). */
-            <div className="fx-fiche-prop">
-              <dt>{t("fx.fiche.contrat.decp")}</dt>
-              <dd>
-                <a
-                  href="https://www.data.gouv.fr/fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
-                >
-                  {t("fx.fiche.contrat.decp_link")}
-                </a>
-              </dd>
-            </div>
+            <a
+              href="https://www.data.gouv.fr/fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("fx.fiche.contrat.decp_link")}
+            </a>
           ) : (
             /* Marché opendata Paris : refine.num_marche matche exactement la
              * ligne source (vérifié 30/30 sur échantillon). */
-            <div className="fx-fiche-prop">
-              <dt>{t("fx.fiche.contrat.opendata")}</dt>
-              <dd>
-                <a
-                  href={`https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/table/?refine.num_marche=${encodeURIComponent(contrat.numero)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
-                >
-                  {t("fx.fiche.contrat.opendata_link")}
-                </a>
-              </dd>
-            </div>
+            <a
+              href={`https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/table/?refine.num_marche=${encodeURIComponent(contrat.numero)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("fx.fiche.contrat.opendata_link")}
+            </a>
           )}
-        </dl>
-      </section>
+        </p>
+      </footer>
 
     </div>
   );

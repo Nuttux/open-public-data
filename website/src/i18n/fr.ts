@@ -1664,6 +1664,18 @@ const fr: Record<string, string> = {
   'fx.mp.rank.out': 'hors top',
   'fx.mp.rank.tip': 'cumul à fin {year} : {cumul} · rang {rank}',
   'fx.mp.rank.tip_click': 'cliquer → fiche fournisseur',
+  // Section fusionnée « Ce que la Ville achète » — deux découpes de la même
+  // enveloppe notifiée sur l'exercice affiché.
+  'fx.mp.buy.lens_aria': "Découpe de l'enveloppe notifiée",
+  'fx.mp.buy.by_categorie': 'Par catégorie',
+  'fx.mp.buy.by_fournisseur': 'Par fournisseur',
+  'fx.mp.buy.announce': '{lens} : {total} Md € notifiés en {year}.',
+  'fx.mp.buy.sub_fournisseur': "Les 10 plus gros titulaires de l'exercice {year} — {share} % de l'enveloppe. Cliquez une ligne pour sa fiche.",
+  'fx.mp.buy.head.left': 'Rang · Fournisseur',
+  'fx.mp.buy.head.right': 'Enveloppe {year} · Contrats',
+  'fx.mp.buy.aria': 'Ouvrir la fiche de {name}',
+  'fx.mp.buy.n_contrats': '{n} contrats',
+  'fx.mp.rank.inline_h': 'Qui tient le haut du classement, {from}–{to} · top {share} % du cumul',
   'fx.mp.rank.note': 'Montants = plafonds notifiés (enveloppes souvent pluriannuelles), pas la dépense exécutée. Classement par cumul depuis 2013 : un rang annuel serait erratique — un accord-cadre gagné une année pèse d’un coup tout son plafond.',
   'fx.mp.rank.aria': 'Classement de {n} fournisseurs par montants cumulés, de {from} à {to}',
   'fx.mp.rank.source.cite': 'Ville de Paris · Marchés notifiés {from}-{to} + DECP',
@@ -2687,6 +2699,9 @@ const fr: Record<string, string> = {
 
   // ── ContratFiche ─────────────────────────────────────────────────────────────
   'fx.fiche.contrat.enveloppe': 'Enveloppe max',
+  'fx.fiche.contrat.hero_cap': 'enveloppe maximale du marché',
+  'fx.fiche.contrat.hero_cap_plafond': 'plafond du marché',
+  'fx.fiche.contrat.notifie_pct': '{pct} % du plafond notifiés',
   'fx.fiche.contrat.duree': 'Durée contractuelle',
   'fx.fiche.contrat.duree_unit': 'ans',
   'fx.fiche.contrat.notifie': 'Notifié le',
@@ -2751,6 +2766,8 @@ const fr: Record<string, string> = {
   'fx.fiche.fourn.siege': "siège à",
   'fx.fiche.fourn.effectif': "effectif",
   'fx.fiche.fourn.creee': "créée en",
+  'fx.fiche.fourn.hero_cap': 'versés par la Ville depuis {from}',
+  'fx.fiche.fourn.hero_cap_noyear': 'versés par la Ville',
   'fx.fiche.fourn.cumul': "Cumul Paris",
   'fx.fiche.fourn.contrats': "Contrats",
   'fx.fiche.fourn.actif_depuis': "Actif depuis",
@@ -2768,6 +2785,7 @@ const fr: Record<string, string> = {
   'fx.fiche.fourn.annuaire': "Annuaire",
   'fx.fiche.fourn.historique': "Historique année par année",
   'fx.fiche.fourn.contrats_row': "contrats",
+  'fx.fiche.fourn.contrat_row_one': "contrat",
   'fx.fiche.fourn.repartition': "Répartition par catégorie",
   'fx.fiche.fourn.top8': "Contrats notifiés · top 8",
   'fx.fiche.fourn.contrats_label': "Contrats notifiés",
@@ -2775,6 +2793,7 @@ const fr: Record<string, string> = {
   'fx.fiche.fourn.annuaire_link': "voir sur annuaire-entreprises.data.gouv.fr ↗",
   'fx.fiche.fourn.col.objet': "Objet",
   'fx.fiche.fourn.col.date': "Date",
+  'fx.fiche.fourn.more_noun': 'autres contrats sur la période',
   'fx.fiche.fourn.overflow': "+ {n} autres contrats sur la période.",
   'fx.fiche.fourn.avenir': "À venir : profil SIRENE complet (NAF, effectifs, création, dirigeant), autres collectivités clientes (via DECP national agrégé), site web officiel.",
 
@@ -3064,6 +3083,7 @@ const fr: Record<string, string> = {
   'fx.toc.execution': 'Voté/Exécuté',
   'fx.toc.sources': 'Sources',
   'fx.toc.explorer': 'Explorer',
+  'fx.toc.achats': 'Ce que la Ville achète',
   'fx.toc.nuee': 'Chaque bénéficiaire',
   'fx.toc.themes': 'Thèmes',
   'fx.toc.ou_va_argent': "Où va l'argent",
@@ -3307,6 +3327,7 @@ const fr: Record<string, string> = {
 
   // CategorieMarcheFiche
   'fx.categorie.kpi.enveloppe_max': 'Enveloppe max {year}',
+  'fx.categorie.hero_cap': "d'enveloppes notifiées dans cette catégorie en {year}",
   'fx.categorie.kpi.share_paris': 'Part du total Paris',
   'fx.categorie.kpi.contrats': 'Contrats',
   'fx.categorie.kpi.titulaires': 'Titulaires distincts',

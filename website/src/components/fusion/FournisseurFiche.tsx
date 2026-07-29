@@ -8,6 +8,8 @@ import { useT, useLocale } from "@/lib/localeContext";
 import { fill, numLocale } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
+import { slugifyLabel } from "@/lib/projet-utils";
+import { FicheStatHero, FicheBreakdown, FicheMore } from "@/components/fiche";
 import { useCity } from "./CityContext";
 import FicheKpis from "./FicheKpis";
 import ShowMoreButton from "./ShowMoreButton";
@@ -41,7 +43,6 @@ export default function FournisseurFiche({
   const { v: vTot, u: uTot } = fmtEur(fournisseur.totalAmount);
   const firstYear = fournisseur.yearsActive[0];
   const maxByYear = Math.max(...fournisseur.byYear.map((y) => y.amount), 1);
-  const maxByCat = Math.max(...fournisseur.byCategory.map((c) => c.amount), 1);
 
   return (
     <div>
@@ -102,73 +103,96 @@ export default function FournisseurFiche({
         </p>
       )}
 
+      <FicheStatHero
+        value={
+          <>
+            {vTot}
+            <span className="fx-fiche-stat-unit">{uTot}</span>
+          </>
+        }
+        caption={
+          firstYear
+            ? fill(t("fx.fiche.fourn.hero_cap"), { from: firstYear })
+            : t("fx.fiche.fourn.hero_cap_noyear")
+        }
+      />
+
+      {/* « Années actives » et « Actif depuis » disaient la même chose sur un
+       * fournisseur présent chaque année depuis son premier contrat. Le cumul
+       * part dans le chiffre-titre. */}
       <FicheKpis
         items={[
-          { label: t("fx.fiche.fourn.cumul"), value: vTot, unit: uTot },
           { label: t("fx.fiche.fourn.contrats"), value: fournisseur.contratCount },
           { label: t("fx.fiche.fourn.actif_depuis"), value: firstYear ?? "—" },
-          { label: t("fx.fiche.fourn.annees"), value: fournisseur.yearsActive.length },
+          ...(fournisseur.yearsActive.length > 1
+            ? [{ label: t("fx.fiche.fourn.annees"), value: fournisseur.yearsActive.length }]
+            : []),
         ]}
       />
 
       {/* Contrats notifiés promu en position 1 après KPIs — c'est THE différentiateur
        * FOD (qui touche combien chez la Ville) vs annuaire SIRENE standard.
-       * Label dynamique : "Contrats notifiés" si <= 8, "Top 8" si on tronque. */}
+       *
+       * Le reste au-delà de huit était annoncé par « + 2 autres contrats sur la
+       * période » et s'arrêtait là : un compte honnête, mais une impasse. Il
+       * passe derrière l'unique dépliant du kit (FicheMore), donc rien n'est
+       * ni caché en silence ni hors d'atteinte. */}
       <section className="fx-fiche-section">
-        <div className="fx-fiche-h">
-          {fournisseur.contrats.length > 8
-            ? t("fx.fiche.fourn.top8")
-            : t("fx.fiche.fourn.contrats_label")}
-        </div>
-        <table className="fx-table" style={{ border: 0 }}>
-          <thead>
-            <tr>
-              <th>{t("fx.fiche.fourn.col.objet")}</th>
-              <th>{t("fx.fiche.shared.annee")}</th>
-              <th>{t("fx.fiche.fourn.col.date")}</th>
-              <th style={{ textAlign: "right" }}>{t("fx.fiche.shared.montant")}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {fournisseur.contrats.slice(0, 8).map((c) => {
-              const { v, u } = fmtEur(c.montant);
-              return (
-                <tr key={c.numero}>
-                  <td style={{ fontWeight: 500, maxWidth: 280 }}>
-                    {(() => {
-                      // Précédence partagée avec les pages liste : version
-                      // vulgarisée si elle existe, sinon repli regex sur le
-                      // libellé technique DECP.
-                      const clair = locale === "en" ? c.objetClairEn || c.objetClair : c.objetClair;
-                      const clean = clair || normalizeObjet(c.objet);
-                      const shown = clean.length > 70 ? clean.slice(0, 70) + "…" : clean;
-                      return c.numero ? (
-                        <Link
-                          href={`${basePath}/marches/contrat/${c.numero}`}
-                          scroll={false}
-                        >
-                          {shown}
-                        </Link>
-                      ) : (
-                        <span>{shown}</span>
-                      );
-                    })()}
-                  </td>
-                  <td className="rank">{c.year}</td>
-                  <td className="muted">{fmtDate(c.date)}</td>
-                  <td className="num">
-                    {v} <span className="muted">{u}</span>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        {fournisseur.contrats.length > 8 && (
-          <p style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", marginTop: 12 }}>
-            {fill(t("fx.fiche.fourn.overflow"), { n: fournisseur.contrats.length - 8 })}
-          </p>
-        )}
+        <div className="fx-fiche-h">{t("fx.fiche.fourn.contrats_label")}</div>
+        {(() => {
+          const CAP = 8;
+          const head = (
+            <thead>
+              <tr>
+                <th>{t("fx.fiche.fourn.col.objet")}</th>
+                <th>{t("fx.fiche.shared.annee")}</th>
+                <th>{t("fx.fiche.fourn.col.date")}</th>
+                <th style={{ textAlign: "right" }}>{t("fx.fiche.shared.montant")}</th>
+              </tr>
+            </thead>
+          );
+          const row = (c: FournisseurFicheType["contrats"][number]) => {
+            const { v, u } = fmtEur(c.montant);
+            // Précédence partagée avec les pages liste : version vulgarisée si
+            // elle existe, sinon repli regex sur le libellé technique DECP.
+            const clair = locale === "en" ? c.objetClairEn || c.objetClair : c.objetClair;
+            const clean = clair || normalizeObjet(c.objet);
+            const shown = clean.length > 70 ? clean.slice(0, 70) + "…" : clean;
+            return (
+              <tr key={c.numero}>
+                <td style={{ fontWeight: 500, maxWidth: 280 }}>
+                  {c.numero ? (
+                    <Link href={`${basePath}/marches/contrat/${c.numero}`} scroll={false}>
+                      {shown}
+                    </Link>
+                  ) : (
+                    <span>{shown}</span>
+                  )}
+                </td>
+                <td className="rank">{c.year}</td>
+                <td className="muted">{fmtDate(c.date)}</td>
+                <td className="num">
+                  {v} <span className="muted">{u}</span>
+                </td>
+              </tr>
+            );
+          };
+          const rest = fournisseur.contrats.slice(CAP);
+          return (
+            <>
+              <table className="fx-table" style={{ border: 0 }}>
+                {head}
+                <tbody>{fournisseur.contrats.slice(0, CAP).map(row)}</tbody>
+              </table>
+              <FicheMore count={rest.length} noun={t("fx.fiche.fourn.more_noun")}>
+                <table className="fx-table" style={{ border: 0 }}>
+                  {head}
+                  <tbody>{rest.map(row)}</tbody>
+                </table>
+              </FicheMore>
+            </>
+          );
+        })()}
       </section>
 
       {/* Historique année par année — conditionnel sur >1 année active : pour un
@@ -185,7 +209,10 @@ export default function FournisseurFiche({
                 rows={shown}
                 max={maxByYear}
                 countLabel={(y) => (
-                  <span className="muted">{y.count} {t("fx.fiche.fourn.contrats_row")}</span>
+                  <span className="muted">
+                    {y.count}{" "}
+                    {t(y.count === 1 ? "fx.fiche.fourn.contrat_row_one" : "fx.fiche.fourn.contrats_row")}
+                  </span>
                 )}
               />
             );
@@ -198,34 +225,25 @@ export default function FournisseurFiche({
         </section>
       )}
 
+      {/* Répartition par catégorie — désormais la primitive partagée, et
+       * surtout CLIQUABLE : chaque catégorie a sa fiche (/marches/categorie/
+       * <slug>) et la ligne y menait nulle part. Une fiche fournisseur doit
+       * pouvoir mener à « qui d'autre la Ville paie pour ça ». */}
       {fournisseur.byCategory.length > 1 && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{t("fx.fiche.fourn.repartition")}</div>
-          {fournisseur.byCategory.slice(0, 6).map((c) => {
-            const { v, u } = fmtEur(c.amount);
-            return (
-              <div
-                key={c.category}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 90px",
-                  gap: 14,
-                  padding: "6px 0",
-                  borderBottom: "1px solid var(--rule)",
-                  fontFamily: "var(--f-ui)",
-                  fontSize: 13,
-                }}
-              >
-                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  <span style={{ position: "relative", display: "inline-block", width: `${(c.amount / maxByCat) * 100}%`, height: 4, background: "var(--ink)", verticalAlign: "middle", marginRight: 8, maxWidth: "35%" }} />
-                  {trLabel(c.category, locale)}
-                </span>
-                <span style={{ textAlign: "right", fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 13 }}>
-                  {v} <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}>{u}</span>
-                </span>
-              </div>
-            );
-          })}
+          <FicheBreakdown
+            rows={fournisseur.byCategory.map((c) => ({
+              key: c.category,
+              label: trLabel(c.category, locale),
+              value: c.amount,
+              href: `${basePath}/marches/categorie/${slugifyLabel(c.category)}`,
+            }))}
+            format={(n) => {
+              const { v, u } = fmtEur(n);
+              return `${v} ${u}`;
+            }}
+          />
         </section>
       )}
     </div>

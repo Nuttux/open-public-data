@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { citySlugFromPathname } from "@/lib/methodology";
@@ -19,6 +20,8 @@ import MarchesSignature from "@/components/fusion/MarchesSignature";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
+import LensBar from "@/components/fusion/LensBar";
+import { useFmtEur } from "@/lib/use-fmt";
 import { fill, fmtBillions, fmtDec, fmtInt } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { MarchesPageData , FournisseursRankingData } from "@/lib/fusion-data";
@@ -64,6 +67,21 @@ export default function MarchesPublicsClient({
   const cityBase = `/fr/city/${citySlug}`;
   const marchesBase = `${cityBase}/marches`;
   const top10Pct = d.total > 0 ? (d.top10.reduce((s, ti) => s + ti.amount, 0) / d.total) * 100 : 0;
+  const fmtEur = useFmtEur();
+
+  /* « Ce que la Ville achète » — une section, deux découpes de la MÊME
+   * enveloppe notifiée sur l'exercice affiché : par catégorie d'achat, et
+   * par fournisseur. C'étaient deux sections.
+   *
+   * Attention au piège : le classement qui vivait ici (FournisseursBumpChart)
+   * n'était PAS une découpe de cette enveloppe — il cumule 2013→2024. En
+   * faire une lentille aurait donné un basculement dont le total change,
+   * c'est-à-dire trois affirmations différentes sous l'apparence d'une seule.
+   * La lentille fournisseur porte donc le classement de l'exercice (d.top10,
+   * même dénominateur), et le graphe multi-annuel descend dans la section
+   * « Évolution », qui est le cadre pluriannuel de la page. */
+  const [buyLens, setBuyLens] = useState<"categorie" | "fournisseur">("categorie");
+  const top10Max = Math.max(...d.top10.map((ti) => ti.amount), 1);
 
   return (
     <div className="theme-fusion">
@@ -74,11 +92,9 @@ export default function MarchesPublicsClient({
         items={[
           { id: "sec-signature", label: t("fx.toc.signature") },
           { id: "sec-procedure", label: t("fx.toc.procedure") },
-          { id: "sec-categorie", label: t("fx.toc.categories") },
-          { id: "sec-classement", label: t("fx.toc.classement") },
+          { id: "sec-categorie", label: t("fx.toc.achats") },
           { id: "sec-recherche", label: t("fx.toc.recherche") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
-          { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />
@@ -415,18 +431,72 @@ export default function MarchesPublicsClient({
                 <em><Tip label={t("fx.mp.s02.kind.tip")}>{t("fx.mp.s02.title.em")}</Tip></em>
               </>
             }
-            subtitle={t("fx.mp.s02.sub")}
+            subtitle={buyLens === "categorie" ? t("fx.mp.s02.sub") : fill(t("fx.mp.buy.sub_fournisseur"), { year: d.year, share: fmtDec(top10Pct, 0) })}
           />
-          <StackedBarTheme
-            items={d.byCategory.map((c) => ({ theme: c.category, amount: c.amount, count: c.count }))}
-            total={d.total}
-            concentrationTop10Pct={top10Pct}
-            year={d.year}
-            basePath={marchesBase}
-            kicker={fill(t("fx.mp.s02.kicker"), { year: d.year })}
-            entityNoun={t("fx.mp.s02.entity_noun")}
-            paretoContrast={t("fx.mp.s02.pareto_contrast")}
+          <LensBar
+            ariaLabel={t("fx.mp.buy.lens_aria")}
+            value={buyLens}
+            onChange={setBuyLens}
+            lenses={[
+              {
+                key: "categorie",
+                label: t("fx.mp.buy.by_categorie"),
+                announce: fill(t("fx.mp.buy.announce"), { lens: t("fx.mp.buy.by_categorie"), total: fmtBillions(d.total), year: d.year }),
+              },
+              {
+                key: "fournisseur",
+                label: t("fx.mp.buy.by_fournisseur"),
+                announce: fill(t("fx.mp.buy.announce"), { lens: t("fx.mp.buy.by_fournisseur"), total: fmtBillions(d.total), year: d.year }),
+              },
+            ]}
           />
+          {buyLens === "categorie" ? (
+            <StackedBarTheme
+              items={d.byCategory.map((c) => ({ theme: c.category, amount: c.amount, count: c.count }))}
+              total={d.total}
+              concentrationTop10Pct={top10Pct}
+              year={d.year}
+              basePath={marchesBase}
+              kicker={fill(t("fx.mp.s02.kicker"), { year: d.year })}
+              entityNoun={t("fx.mp.s02.entity_noun")}
+              paretoContrast={t("fx.mp.s02.pareto_contrast")}
+            />
+          ) : (
+            /* Même grammaire de classement que la page subventions —
+             * rang, nom, barre proportionnelle, montant, contexte, flèche. */
+            <div className="fx-top-list">
+              <div className="fx-top-head">
+                <span>{t("fx.mp.buy.head.left")}</span>
+                <span>{fill(t("fx.mp.buy.head.right"), { year: d.year })}</span>
+              </div>
+              {d.top10.map((ti) => {
+                const { v, u } = fmtEur(ti.amount);
+                return (
+                  <Link
+                    key={ti.siret || ti.name}
+                    href={`${marchesBase}/fournisseur/${ti.siret}`}
+                    scroll={false}
+                    className="fx-top-row"
+                    aria-label={fill(t("fx.mp.buy.aria"), { name: ti.name })}
+                  >
+                    <span className="r">{String(ti.rank).padStart(2, "0")}</span>
+                    <span className="name">{ti.name}</span>
+                    <span className="bar" style={{ position: "relative", height: 8, background: "var(--rule)" }}>
+                      <span className="fill" style={{ width: `${(ti.amount / top10Max) * 100}%`, background: "var(--ink)" }} />
+                    </span>
+                    <span className="v tnum">
+                      {v}
+                      <span className="u">{u}</span>
+                    </span>
+                    <span className="theme">
+                      {fill(t("fx.mp.buy.n_contrats"), { n: fmtInt(ti.nbContrats) })}
+                    </span>
+                    <span className="arrow" aria-hidden="true">→</span>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
           <ChartSource
             source={t("fx.mp.s02.source.cite")}
             dataHref="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
@@ -450,57 +520,8 @@ export default function MarchesPublicsClient({
               </PageHook>
             );
           })()}
-          <div
-            style={{
-              marginTop: 24,
-              padding: "14px 18px",
-              border: "1px solid var(--line)",
-              background: "rgba(59, 99, 173, 0.04)",
-              fontFamily: "var(--f-ui)",
-              fontSize: 13,
-              lineHeight: 1.6,
-              color: "var(--ink-2)",
-            }}
-          >
-            <b style={{ color: "var(--ink)" }}>{t("fx.mp.s01.cross.title")}</b> {t("fx.mp.s01.cross.body")}
-            {" "}
-            <Link href={`${cityBase}/budget`} style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_budget")}</Link>
-            {" · "}
-            <Link href={`${cityBase}/investissements`} style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_invest")}</Link>
-            {" · "}
-            <Link href="/methode#marches-publics" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_methode")}</Link>
-          </div>
         </div>
       </section>
-
-      {ranking && (
-        <section className="fx-section" id="sec-classement">
-          <div className="fx-wrap">
-            <SectionHead
-              title={
-                <>
-                  {t("fx.mp.rank.title.before")}
-                  <em>{t("fx.mp.rank.title.em")}</em>
-                  {t("fx.mp.rank.title.after")}
-                </>
-              }
-              subtitle={fill(t("fx.mp.rank.sub"), {
-                n: ranking.rows.length,
-                from: ranking.years[0],
-                to: ranking.years[ranking.years.length - 1],
-                share: Math.round(ranking.topSharePct),
-              })}
-            />
-            <FournisseursBumpChart data={ranking} ficheBase={marchesBase} />
-            <p className="fx-note">{t("fx.mp.rank.note")}</p>
-            <ChartSource
-              source={fill(t("fx.mp.rank.source.cite"), { from: ranking.years[0], to: ranking.years[ranking.years.length - 1] })}
-              dataHref="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
-              methodAnchor="marches"
-            />
-          </div>
-        </section>
-      )}
 
       <section className="fx-section" id="sec-recherche">
         <div className="fx-wrap">
@@ -550,6 +571,26 @@ export default function MarchesPublicsClient({
           <p className="fx-note">
             <b>{t("fx.s.note")}</b> : {t("fx.mp.s07.note")}
           </p>
+
+          {/* Le classement pluriannuel des fournisseurs vit ici, pas au-dessus
+           * en section propre : il cumule les mêmes années que la courbe, et
+           * une section « qui tient le haut du pavé depuis 2013 » sous une
+           * courbe « combien depuis 2013 » sont deux lectures d'une même
+           * période, pas deux sujets. */}
+          {ranking && (
+            <div style={{ marginTop: 34 }}>
+              <div className="fx-fiche-h" style={{ marginBottom: 10 }}>
+                {fill(t("fx.mp.rank.inline_h"), {
+                  from: ranking.years[0],
+                  to: ranking.years[ranking.years.length - 1],
+                  share: Math.round(ranking.topSharePct),
+                })}
+              </div>
+              <FournisseursBumpChart data={ranking} ficheBase={marchesBase} />
+              <p className="fx-note">{t("fx.mp.rank.note")}</p>
+            </div>
+          )}
+
           <ChartSource
             source={t("fx.mp.s05.source.cite")}
             dataHref="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
@@ -557,8 +598,6 @@ export default function MarchesPublicsClient({
           />
         </div>
       </section>
-
-      <RelatedArticles posts={posts} placeholders={MP_PLACEHOLDERS} />
 
       <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">
@@ -568,6 +607,16 @@ export default function MarchesPublicsClient({
           </div>
           <p className="fx-footer-sources-meta">
             <b>{t("fx.footer.source_label")}</b> : {t("fx.mp.footer.source")} <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> : {t("fx.mp.footer.coverage")}
+          </p>
+          {/* « Un marché notifié n'est pas une dépense » : c'était un encadré
+           * bleu de quatre lignes posé sous le graphe des catégories, sans un
+           * seul chiffre. La mise en garde compte, sa place est ici, avec les
+           * sources et le périmètre, et sur une ligne. */}
+          <p className="fx-footer-sources-meta">
+            <b>{t("fx.mp.s01.cross.title")}</b> {t("fx.mp.s01.cross.body")}{" "}
+            <Link href={`${cityBase}/budget`}>{t("fx.mp.s01.cross.link_budget")}</Link>
+            {" · "}
+            <Link href={`${cityBase}/investissements`}>{t("fx.mp.s01.cross.link_invest")}</Link>
           </p>
           <ExportRow
             items={[
@@ -583,6 +632,9 @@ export default function MarchesPublicsClient({
           />
         </div>
       </section>
+
+      {/* Le blog après les sources — cf. QuiRecoitClient. */}
+      <RelatedArticles posts={posts} placeholders={MP_PLACEHOLDERS} />
 
       </main>
       <Footer />
