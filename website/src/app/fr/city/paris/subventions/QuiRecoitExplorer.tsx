@@ -254,22 +254,19 @@ export default function QuiRecoitExplorer({
 
   const refMax = top10[0]?.amount ?? 1;
 
-  return (
+  /**
+   * Le classement des dix premiers — la vue par défaut de l'explorateur.
+   *
+   * C'était une section à part, juste au-dessus de la recherche : deux
+   * surfaces pour un même corpus, l'une qui montre dix noms, l'autre qui
+   * demande d'en taper un. Fusionnées, le classement devient ce que
+   * l'explorateur affiche tant qu'aucune requête n'est active, et taper
+   * remplace les dix lignes par les résultats. Une seule question à l'écran :
+   * qui reçoit, et comment le retrouver.
+   */
+  const ranking = (
     <>
-      {/* === SECTION 03 : TOP 10 === */}
-      <section className="fx-section" id="sec-top-benef">
-        <div className="fx-wrap">
-          <SectionHead
-            title={
-              <>
-                {t("fx.qr.top.title.before")}
-                <em>{t("fx.qr.top.title.em")}</em>
-                {t("fx.qr.top.title.after")}
-              </>
-            }
-            subtitle={fill(t("fx.qr.top.sub"), { year })}
-          />
-          <div className="fx-top-list">
+      <div className="fx-top-list">
             <div className="fx-top-head">
               <span>{t("fx.qr.top.head.left")}</span>
               <span>{fill(t("fx.qr.top.head.right"), { year })}</span>
@@ -322,21 +319,22 @@ export default function QuiRecoitExplorer({
             </b>{" "}
             {t("fx.qr.top.footer_pct")}
           </p>
-        </div>
-      </section>
+    </>
+  );
 
-      {/* === SECTION 04 : RECHERCHE === */}
+  return (
+    <>
       <section className="fx-section" id="recherche" ref={searchRef}>
         <div className="fx-wrap">
           <SectionHead
             title={
               <>
-                {t("fx.qr.search.title.before")}
-                <em>{t("fx.qr.search.title.em")}</em>
-                {t("fx.qr.search.title.after")}
+                {t("fx.qr.explorer.title.before")}
+                <em>{t("fx.qr.explorer.title.em")}</em>
+                {t("fx.qr.explorer.title.after")}
               </>
             }
-            subtitle={t("fx.qr.search.sub")}
+            subtitle={fill(t("fx.qr.explorer.sub"), { year })}
           />
           <div className="fx-search-wrap">
             <div className="fx-search-inner">
@@ -524,72 +522,33 @@ export default function QuiRecoitExplorer({
               </div>
             )}
 
-            {!hasQuery && (
-              <>
-                <div className="fx-search-placeholder">
-                  <p>
-                    {t("fx.qr.search.hint_before")}<b>{t("fx.qr.search.hint_two")}</b> {t("fx.qr.search.hint_after")}
-                  </p>
-                  <div className="fx-search-seeds">
-                    {visibleSeeds.map((s) => (
-                      <button
-                        key={s}
-                        type="button"
-                        className="fx-search-seed"
-                        onClick={() => {
-                          track("search_seed_click", { page: "qui-recoit", seed: s });
-                          setQuery(s);
-                        }}
-                      >
-                        « {s} »
-                      </button>
-                    ))}
-                  </div>
+            {/* Vue au repos : le classement lui-même, pas une invitation à
+             * taper. Les trois cartes « top 3 » qui vivaient ici répétaient
+             * les trois premières lignes du classement — supprimées, comme le
+             * paragraphe d'instructions qui les précédait : les exemples
+             * cliquables disent déjà quoi faire. */}
+            {!hasQuery && visibleSeeds.length > 0 && (
+              <div className="fx-search-seeds-row">
+                <span className="fx-search-filter-label">{t("fx.qr.search.seeds_label")}</span>
+                <div className="fx-search-seeds">
+                  {visibleSeeds.map((s) => (
+                    <button
+                      key={s}
+                      type="button"
+                      className="fx-search-seed"
+                      onClick={() => {
+                        track("search_seed_click", { page: "qui-recoit", seed: s });
+                        setQuery(s);
+                      }}
+                    >
+                      « {s} »
+                    </button>
+                  ))}
                 </div>
-                <div className="fx-results-grid">
-                  {top10.slice(0, 3).map((it, i) => {
-                    const { v, u } = fmtEur(it.amount);
-                    return (
-                      <Link
-                        key={i}
-                        href={ficheHref(it.name)}
-                        scroll={false}
-                        className="fx-result-card"
-                        onClick={() =>
-                          track("search_result_click", {
-                            page: "qui-recoit",
-                            entity_name: it.name,
-                            theme: it.theme,
-                            rank: i,
-                            results_count: 3,
-                            source: "idle_top",
-                          })
-                        }
-                      >
-                        <div className="fx-result-card-top">
-                          <span className="fx-result-card-type">{t("fx.qr.search.card.grant")}</span>
-                          <span>{year}</span>
-                        </div>
-                        <h3>{it.name}</h3>
-                        <div className="fx-result-card-amount tnum">
-                          {v}
-                          <span className="u">{u}</span>
-                        </div>
-                        <div className="fx-result-card-meta">
-                          <span className="fx-result-card-arr">
-                            {trLabel(it.theme ?? undefined, locale) || "—"}
-                          </span>
-                          <span className="fx-result-card-cta">
-                            {t("fx.qr.search.card.fiche")} <span className="chev">→</span>
-                          </span>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </>
+              </div>
             )}
           </div>
+          {!hasQuery && ranking}
           {personnesPhysiques && personnesPhysiques.amount > 0 && (
             <p style={{ fontFamily: "var(--f-mono)", fontSize: 11.5, color: "var(--muted)", letterSpacing: ".03em", marginTop: 14, lineHeight: 1.6 }}>
               {(() => {

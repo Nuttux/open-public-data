@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
-
 import type { ThemeSubventionsFiche } from "@/lib/fusion-data";
 import { fill, fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
 import { useCity } from "./CityContext";
+import { FicheStatHero, FicheBreakdown } from "@/components/fiche";
 import FicheKpis from "./FicheKpis";
 
 const THEME_COLORS: Record<string, string> = {
@@ -39,46 +38,49 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
 
   return (
     <div>
+      <FicheStatHero
+        value={
+          <>
+            {total.value}
+            <span className="fx-fiche-stat-unit">{total.unit}</span>
+          </>
+        }
+        caption={fill(t("fx.fiche.theme.hero_cap"), { theme: fiche.theme, year: fiche.year })}
+      />
+
+      {/* Bénéficiaires et subventions sont égaux dès qu'aucun bénéficiaire du
+       * thème n'a reçu deux versements — la bande affichait alors deux fois
+       * le même nombre sous deux libellés différents. */}
       <FicheKpis
         items={[
-          { label: fill(t("fx.fiche.theme.kpi.montant"), { year: fiche.year }), value: total.value, unit: total.unit },
           { label: t("fx.fiche.theme.kpi.part"), value: fmtDec(fiche.shareOfTotalPct, 1), unit: "%" },
           { label: t("fx.fiche.theme.kpi.benef"), value: fmtInt(fiche.nbBeneficiaires) },
-          { label: t("fx.fiche.theme.kpi.subv"), value: fmtInt(fiche.nbSubventions) },
+          ...(fiche.nbSubventions !== fiche.nbBeneficiaires
+            ? [{ label: t("fx.fiche.theme.kpi.subv"), value: fmtInt(fiche.nbSubventions) }]
+            : []),
         ]}
       />
 
+      {/* Le classement passe du tableau maison à la primitive partagée : même
+       * barre proportionnelle, même comportement de lien, que sur les fiches
+       * SF et Recife. La direction reste en seconde ligne (meta) plutôt qu'en
+       * suffixe du nom, où elle se faisait tronquer sur mobile. */}
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{fill(t("fx.fiche.theme.top10"), { year: fiche.year })}</div>
-        <div>
-          {fiche.topBeneficiaires.map((b, i) => {
-            const { value, unit } = fmtCompactEur(b.amount);
-            const pct = (b.amount / fiche.total) * 100;
-            return (
-              <Link
-                key={b.name}
-                href={`${basePath}/subventions/association/${encodeURIComponent(b.name)}`}
-                scroll={false}
-                className="fx-mini-row fx-mini-row-link"
-                style={{ gridTemplateColumns: "32px 1fr auto 90px" }}
-              >
-                <span className="rank">#{String(i + 1).padStart(2, "0")}</span>
-                <span style={{ fontWeight: 500 }}>
-                  {b.name}
-                  {b.direction && (
-                    <span style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, color: "var(--muted)", marginLeft: 8 }}>
-                      · {b.direction}
-                    </span>
-                  )}
-                </span>
-                <span className="muted fx-mini-hide-mobile">{fmtDec(pct, 1)} %</span>
-                <span className="num">
-                  {value} <span className="muted">{unit}</span>
-                </span>
-              </Link>
-            );
-          })}
-        </div>
+        <FicheBreakdown
+          cap={fiche.topBeneficiaires.length}
+          rows={fiche.topBeneficiaires.map((b) => ({
+            key: b.name,
+            label: b.name,
+            meta: b.direction ?? undefined,
+            value: b.amount,
+            href: `${basePath}/subventions/association/${encodeURIComponent(b.name)}`,
+          }))}
+          format={(n) => {
+            const { value, unit } = fmtCompactEur(n);
+            return `${value} ${unit}`;
+          }}
+        />
       </section>
 
       {fiche.evolution.length > 1 && (

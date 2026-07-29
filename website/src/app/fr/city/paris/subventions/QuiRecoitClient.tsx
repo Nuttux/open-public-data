@@ -1,5 +1,5 @@
 "use client";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { usePathname } from "next/navigation";
 import { citySlugFromPathname } from "@/lib/methodology";
 import { cityDataUrl } from "@/lib/city-paths";
@@ -19,6 +19,7 @@ import SubventionsBeeswarm from "@/components/fusion/SubventionsBeeswarm";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
+import LensBar from "@/components/fusion/LensBar";
 import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { QuiRecoitData } from "@/lib/fusion-data";
@@ -58,6 +59,14 @@ export default function QuiRecoitClient({
   const cityBasePath = `/fr/city/${citySlug}/subventions`;
   const swarmUrl = cityDataUrl(citySlug, `subventions/swarm_${d.year}.json`);
 
+  // « Où va l'argent » — une section, deux lentilles sur le MÊME total
+  // (d.total pour d.year) : la nuée classe les bénéficiaires un par un, la
+  // barre empilée regroupe par thème. Deux découpes d'une même somme, donc
+  // un basculement plutôt que deux sections empilées. La nuée reste la vue
+  // par défaut : c'est la scène signature de la page, et elle porte son
+  // chargement paresseux.
+  const [moneyLens, setMoneyLens] = useState<"benef" | "theme">("benef");
+
   return (
     <div className="theme-fusion">
       <Navbar />
@@ -65,12 +74,9 @@ export default function QuiRecoitClient({
 
       <PageTOC
         items={[
-          { id: "sec-nuee", label: t("fx.toc.nuee") },
-          { id: "sec-themes", label: t("fx.toc.themes") },
-          { id: "sec-top-benef", label: t("fx.toc.top_benef") },
-          { id: "recherche", label: t("fx.toc.recherche") },
+          { id: "sec-argent", label: t("fx.toc.ou_va_argent") },
+          { id: "recherche", label: t("fx.toc.top_benef") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
-          { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />
@@ -142,19 +148,63 @@ export default function QuiRecoitClient({
         )}
       </PageIntro>
 
-      <section className="fx-section" id="sec-nuee">
+      <section className="fx-section" id="sec-argent">
         <div className="fx-wrap">
           <SectionHead
             title={
               <>
-                {t("fx.qr.swarm.title.before")}
-                <em>{t("fx.qr.swarm.title.em")}</em>
-                {t("fx.qr.swarm.title.after")}
+                {t("fx.qr.money.title.before")}
+                <em>{t("fx.qr.money.title.em")}</em>
+                {t("fx.qr.money.title.after")}
               </>
             }
-            subtitle={fill(t("fx.qr.swarm.sub"), { year: d.year, nb: fmtInt(d.nbBeneficiaires) })}
+            subtitle={
+              moneyLens === "benef"
+                ? fill(t("fx.qr.swarm.sub"), { year: d.year, nb: fmtInt(d.nbBeneficiaires) })
+                : t("fx.qr.s02.sub")
+            }
           />
-          <SubventionsBeeswarm year={d.year} swarmUrl={swarmUrl} ficheBase={cityBasePath} />
+          <LensBar
+            ariaLabel={t("fx.qr.money.lens_aria")}
+            value={moneyLens}
+            onChange={setMoneyLens}
+            lenses={[
+              {
+                key: "benef",
+                label: t("fx.qr.money.by_benef"),
+                announce: fill(t("fx.qr.money.announce"), {
+                  lens: t("fx.qr.money.by_benef"),
+                  total: fmtBillions(d.total),
+                  year: d.year,
+                }),
+              },
+              {
+                key: "theme",
+                label: t("fx.qr.money.by_theme"),
+                announce: fill(t("fx.qr.money.announce"), {
+                  lens: t("fx.qr.money.by_theme"),
+                  total: fmtBillions(d.total),
+                  year: d.year,
+                }),
+              },
+            ]}
+          />
+          {moneyLens === "benef" ? (
+            <SubventionsBeeswarm year={d.year} swarmUrl={swarmUrl} ficheBase={cityBasePath} />
+          ) : (
+            <StackedBarTheme
+              items={d.byTheme.map((th) => ({ theme: th.theme, amount: th.amount, count: th.count }))}
+              total={d.total}
+              concentrationTop10Pct={d.concentrationTop10Pct}
+              year={d.year}
+              basePath={cityBasePath}
+              entityNoun={t("fx.qr.s02.entity_noun")}
+              paretoContrast={t("fx.qr.s02.pareto_contrast")}
+              hrefBuilder={(theme) =>
+                `${cityBasePath}/theme/${slugifyLabel(theme)}?year=${d.year}`
+              }
+            />
+          )}
           {(() => {
             const medianStr = d.medianSubvention >= 1_000_000
               ? `${fmtMillions(d.medianSubvention, 1)} M€`
@@ -186,40 +236,6 @@ export default function QuiRecoitClient({
               </PageHook>
             );
           })()}
-          <ChartSource
-            source={fill(t("fx.qr.s02.source.cite"), { year: d.year })}
-            dataHref="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
-            methodAnchor="subventions"
-          />
-        </div>
-      </section>
-
-      {/* « Par exemple » — même grammaire que marchés/investissements. */}
-
-      <section className="fx-section" id="sec-themes">
-        <div className="fx-wrap">
-          <SectionHead
-            title={
-              <>
-                {t("fx.qr.s02.title.before")}
-                <em><Tip label={t("fx.qr.s02.kind.tip")}>{t("fx.qr.s02.title.em")}</Tip></em>
-                {t("fx.qr.s02.title.after")}
-              </>
-            }
-            subtitle={t("fx.qr.s02.sub")}
-          />
-          <StackedBarTheme
-            items={d.byTheme.map((th) => ({ theme: th.theme, amount: th.amount, count: th.count }))}
-            total={d.total}
-            concentrationTop10Pct={d.concentrationTop10Pct}
-            year={d.year}
-            basePath={cityBasePath}
-            entityNoun={t("fx.qr.s02.entity_noun")}
-            paretoContrast={t("fx.qr.s02.pareto_contrast")}
-            hrefBuilder={(theme) =>
-              `${cityBasePath}/theme/${slugifyLabel(theme)}?year=${d.year}`
-            }
-          />
           <ChartSource
             source={fill(t("fx.qr.s02.source.cite"), { year: d.year })}
             dataHref="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
@@ -294,8 +310,6 @@ export default function QuiRecoitClient({
         </div>
       </section>
 
-      <RelatedArticles posts={posts} placeholders={QR_PLACEHOLDERS} />
-
       <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">
           <div className="fx-footer-sources-head">
@@ -324,6 +338,11 @@ export default function QuiRecoitClient({
           />
         </div>
       </section>
+
+      {/* Le blog reste, mais après les sources : la colonne vertébrale d'une
+       * page de données finit sur la donnée et sa provenance, pas sur trois
+       * cartes de promotion éditoriale. */}
+      <RelatedArticles posts={posts} placeholders={QR_PLACEHOLDERS} />
 
       </main>
       <Footer />
