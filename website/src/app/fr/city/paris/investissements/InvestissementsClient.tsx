@@ -21,6 +21,7 @@ import PageTOC from "@/components/fusion/PageTOC";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
+import { FicheMore } from "@/components/fiche";
 import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { InvestissementsData } from "@/lib/fusion-data";
@@ -107,10 +108,17 @@ export default function InvestissementsClient({
           <>
             {fmtInt(d.nbProjets)}{t("fx.inv.lede.a.pre")}
             <Tip label={t("fx.inv.lede.a.operations.tip")}>{t("fx.inv.lede.a.operations")}</Tip>
-            {t("fx.inv.lede.a.post")}{d.year}{t("fx.inv.lede.b")}
+            {t("fx.inv.lede.a.post")}{d.year}
+            {/* Le lede annonçait « dont 98 % géolocalisées » — vrai de
+             * l'extraction, trompeur à côté du total. Il dit maintenant ce
+             * que l'extraction pèse. */}
+            {", "}
             <b>
-              {fill(t("fx.inv.lede.pct.val"), { pct: fmtDec(d.pctGeo, 0) })}{" "}
-              <Tip label={t("fx.inv.lede.pct.term.tip")}>{t("fx.inv.lede.pct.term")}</Tip>
+              {fill(t("fx.inv.lede.coverage"), {
+                amount: fmtMillions(d.projetsAmount, 0),
+                pct: fmtDec(d.projetsCoveragePct, 0),
+                total: fmtBillions(d.total),
+              })}
             </b>
             {t("fx.inv.lede.c.pre")}
             <Tip label={t("fx.inv.lede.c.ca.tip")}>{t("fx.inv.lede.c.ca")}</Tip>
@@ -136,9 +144,26 @@ export default function InvestissementsClient({
               value={<AnimatedNumber value={d.nbProjets} format={(n) => fmtInt(n)} />}
               label={<Tip label={t("fx.inv.s02.kpi.projets.tip")}>{t("fx.inv.s02.kpi.projets")}</Tip>}
             />
+            {/* Ce qui était affiché ici, « 98 % géolocalisés », mesurait la part
+             * géolocalisée de l'extraction PDF — pas du total juste à gauche.
+             * Collé au « 2,12 Md€ », il se lisait « presque tout est sur la
+             * carte », alors que l'extraction pèse ~11 % de l'exercice. La
+             * bande porte donc la couverture réelle ; le taux de
+             * géolocalisation reste dans l'infobulle et sous la carte. */}
             <IntroStat
-              value={<AnimatedNumber value={d.pctGeo} format={(n) => `${fmtDec(n, 0)} %`} />}
-              label={<Tip label={t("fx.inv.s02.kpi.geo.tip")}>{t("fx.inv.s02.kpi.geo")}</Tip>}
+              value={<AnimatedNumber value={d.projetsCoveragePct} format={(n) => `${fmtDec(n, 0)} %`} />}
+              label={
+                <Tip
+                  label={fill(t("fx.inv.s02.kpi.couverture.tip"), {
+                    amount: fmtMillions(d.projetsAmount, 0),
+                    nb: fmtInt(d.nbProjets),
+                    total: fmtBillions(d.total),
+                    pctGeo: fmtDec(d.pctGeo, 0),
+                  })}
+                >
+                  {t("fx.inv.s02.kpi.couverture")}
+                </Tip>
+              }
             />
             {d.byChapitre[0] && (
               <IntroStat
@@ -192,9 +217,22 @@ export default function InvestissementsClient({
               {territoryView === "carte" ? (
                 <>
                   <ProjectMap points={d.geoPoints} year={d.year} height={620} />
+                  {/* L'ancienne note disait « 2 % des projets ne sont pas
+                   * géolocalisables … mais sont comptabilisés dans tous les
+                   * autres indicateurs ». Les deux moitiés induisaient en
+                   * erreur : les 2 % portent sur l'extraction, et les
+                   * indicateurs tirés de cette extraction (carte,
+                   * arrondissements, plus gros chantiers) ne couvrent pas le
+                   * total non plus. La note dit maintenant les deux échelles. */}
                   <p className="fx-note">
                     <b>{t("fx.inv.s03.note.b")}</b> :{" "}
-                    {fill(t("fx.inv.s03.note"), { pct: fmtDec(100 - d.pctGeo, 0) })}
+                    {fill(t("fx.inv.s03.note"), {
+                      amount: fmtMillions(d.projetsAmount, 0),
+                      nb: fmtInt(d.nbProjets),
+                      pct: fmtDec(d.projetsCoveragePct, 0),
+                      total: fmtBillions(d.total),
+                      pctNoGeo: fmtDec(100 - d.pctGeo, 0),
+                    })}
                   </p>
                   <ChartSource
                     source={fill(t("fx.inv.s03.source.cite"), { year: d.year })}
@@ -350,8 +388,7 @@ export default function InvestissementsClient({
             methodAnchor="investissements"
           />
           <p className="fx-note">
-            <b>{t("fx.inv.s06.note.b")}</b> :{" "}
-            {fill(t("fx.inv.s06.note"), { pct: Math.round(100 - d.pctGeo) })}
+            <b>{t("fx.inv.s06.note.b")}</b> : {t("fx.inv.s06.note")}
           </p>
         </div>
       </section>
@@ -368,8 +405,15 @@ export default function InvestissementsClient({
               </>
             }
           />
-          <div className="fx-projet-grid">
-            {d.topProjets.slice(0, 12).map((p, i) => {
+          {/* Douze cartes photo faisaient 2 122 px — 30 % de la page, le plus
+           * gros bloc, pour un top-N. Six cartes gardent la matérialité (des
+           * photos de vrais chantiers, c'est la force de cette page) et le
+           * reste passe derrière l'unique dépliant du kit, avec son compte
+           * honnête. `topProjets` en porte 24 : rien n'est tronqué en
+           * silence. */}
+          {(() => {
+            const CARDS = 6;
+            const card = (p: InvestissementsData["topProjets"][number], i: number) => {
               const inner = (
                 <>
                   <div className="fx-projet-card-thumb">
@@ -408,12 +452,25 @@ export default function InvestissementsClient({
                   {inner}
                 </div>
               );
-            })}
-          </div>
+            };
+            const rest = d.topProjets.slice(CARDS);
+            return (
+              <>
+                <div className="fx-projet-grid">
+                  {d.topProjets.slice(0, CARDS).map((p, i) => card(p, i))}
+                </div>
+                <FicheMore count={rest.length} noun={t("fx.inv.s01.more_noun")}>
+                  <div className="fx-projet-grid">
+                    {rest.map((p, i) => card(p, i + CARDS))}
+                  </div>
+                </FicheMore>
+              </>
+            );
+          })()}
         </div>
       </section>
 
-      <RelatedArticles posts={posts} placeholders={INV_PLACEHOLDERS} />
+      {/* Le blog après les sources — cf. QuiRecoitClient. */}
 
       <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">
@@ -450,6 +507,8 @@ export default function InvestissementsClient({
           />
         </div>
       </section>
+
+      <RelatedArticles posts={posts} placeholders={INV_PLACEHOLDERS} />
 
       </main>
       <Footer />

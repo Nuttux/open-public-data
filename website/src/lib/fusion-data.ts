@@ -2652,6 +2652,22 @@ export type InvestissementsData = {
   nbProjets: number;
   nbGeo: number;
   pctGeo: number;
+  /**
+   * Ce que pèsent les opérations recensées, et leur part du total de
+   * l'exercice.
+   *
+   * La page mélangeait deux dénominateurs sans le dire : le chiffre-titre
+   * (`total`, le compte administratif) et tout ce qui vient de l'extraction
+   * PDF projet par projet — carte, arrondissements, plus gros chantiers.
+   * Mesuré sur 2024 : 235 M€ sur 437 opérations, soit 11 % des 2 117 M€
+   * affichés en haut de page. `pctGeo` (98 %) mesure la part géolocalisée DE
+   * CET EXTRAIT, pas du total, et se lisait comme « 98 % de l'investissement
+   * est sur la carte ».
+   *
+   * Dérivé, jamais écrit en dur : le taux bouge d'un exercice à l'autre.
+   */
+  projetsAmount: number;
+  projetsCoveragePct: number;
   byChapitre: { label: string; amount: number; count: number }[];
   /** % du montant total capté par les 10 plus gros projets (pour la bannière Pareto). */
   top10ProjetsPct: number;
@@ -2873,6 +2889,8 @@ function loadInvestissementsDataCity(
     .map((y) => ({ year: y.year, total: y.depenses_total, horsDette: y.depenses_hors_dette }))
     .sort((a, b) => a.year - b.year);
 
+  const projectsAmount = projects.reduce((s, p) => s + (Number(p.montant) || 0), 0);
+
   return {
     year,
     availableYears,
@@ -2881,6 +2899,12 @@ function loadInvestissementsDataCity(
     nbProjets: projects.length,
     nbGeo,
     pctGeo: file.stats?.pct_geo ?? 0,
+    // Villes hors Paris : le fichier ville porte déjà les projets et le total
+    // sur le même périmètre, donc la couverture est de 100 % par construction.
+    // On la calcule quand même plutôt que de la coder à 100 : si un jour un
+    // export ville passe par une extraction partielle, le chiffre le dira.
+    projetsAmount: projectsAmount,
+    projetsCoveragePct: total > 0 ? (projectsAmount / total) * 100 : 0,
     byChapitre: (file.byChapitre ?? []).map((c) => ({
       label: c.label,
       amount: c.amount,
@@ -3051,6 +3075,10 @@ export function loadInvestissementsData(
   const top10Sum = sortedByAmount.slice(0, 10).reduce((s, p) => s + Number(p.montant ?? 0), 0);
   const top10ProjetsPct = latest.depenses_total > 0 ? (top10Sum / latest.depenses_total) * 100 : 0;
 
+  // Ce que l'extraction projet-par-projet couvre réellement du compte
+  // administratif de l'exercice. Cf. le commentaire sur projetsCoveragePct.
+  const projetsAmount = projets.reduce((s, p) => s + (Number(p.montant) || 0), 0);
+
   return {
     year,
     availableYears: usableYears,
@@ -3059,6 +3087,9 @@ export function loadInvestissementsData(
     nbProjets: projets.length,
     nbGeo,
     pctGeo: projets.length > 0 ? (nbGeo / projets.length) * 100 : 0,
+    projetsAmount: projetsAmount,
+    projetsCoveragePct:
+      latest.depenses_total > 0 ? (projetsAmount / latest.depenses_total) * 100 : 0,
     byChapitre: [...m57Agg.entries()]
       .map(([label, v]) => ({ label, amount: v.amount, count: v.count }))
       .sort((a, b) => b.amount - a.amount),
