@@ -1,0 +1,111 @@
+version: 2
+
+models:
+  - name: stg_us_mts_table_9
+    description: "MTS Table 9 typed — receipts by source + outlays by function, all line types kept (D/S/T)."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [record_date, src_line_nbr]
+    columns:
+      - name: record_date
+        tests: [not_null]
+      - name: src_line_nbr
+        tests: [not_null]
+      - name: data_type_cd
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['D', 'S', 'T']
+      - name: section
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['receipts', 'outlays']
+
+  - name: stg_us_mts_table_9_outlays_functions_subfunctions
+    description: "MTS Table 9A typed — outlays by function × subfunction, clean detail rows (verified: no embedded totals)."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [record_date, src_line_nbr]
+    columns:
+      - name: record_date
+        tests: [not_null]
+      - name: function_desc
+        tests: [not_null]
+
+  - name: stg_us_mts_table_5
+    description: "MTS Table 5 typed — outlays by agency/bureau/account, all line types kept."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [record_date, src_line_nbr]
+    columns:
+      - name: record_date
+        tests: [not_null]
+      - name: data_type_cd
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['D', 'S', 'T']
+
+  - name: stg_us_mts_receipts_outlays_deficit_surplus
+    description: "MTS monthly totals typed — millions of dollars, deficit positive as published."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [record_date, amt_category]
+    columns:
+      - name: record_date
+        tests: [not_null]
+      - name: amt_category
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - 'Receipts'
+                - 'Outlays'
+                - 'Deficit/Surplus (-)'
+                - 'Borrowing from the Public'
+                - 'Reduction of Operating Cash'
+                - 'By Other Means'
+      - name: mil_amt
+        tests: [not_null]
+
+  - name: stg_us_debt_to_penny
+    description: "Debt to the Penny typed — daily debt outstanding in dollars."
+    columns:
+      - name: record_date
+        tests: [not_null, unique]
+      - name: tot_pub_debt_out_amt
+        tests: [not_null]
+
+  - name: stg_us_debt_outstanding
+    description: "Historical Debt Outstanding typed — fiscal-year-end debt in dollars since 1790."
+    columns:
+      - name: record_date
+        tests: [not_null, unique]
+      - name: debt_outstanding_amt
+        tests: [not_null]
+
+  - name: stg_us_fiscaldata_catalog
+    description: "Fiscal Data catalog snapshot typed — provenance metadata per (endpoint, field)."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [endpoint, column_name]
+    columns:
+      - name: dataset_page_url
+        tests: [not_null]
+      - name: endpoint
+        tests: [not_null]
+
+  - name: stg_us_census_population
+    description: "Census Vintage 2025 national population estimates (pivoted, one US row)."
+    columns:
+      - name: area_name
+        tests:
+          - not_null
+          - unique
+          - accepted_values:
+              values: ['United States']
+      - name: popestimate_2025
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]

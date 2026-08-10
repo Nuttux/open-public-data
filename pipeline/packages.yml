@@ -1,0 +1,13 @@
+# dbt packages
+# Run `dbt deps` to install these packages
+# Documentation: https://docs.getdbt.com/docs/build/packages
+
+packages:
+  - package: dbt-labs/dbt_utils
+    version: ">=1.0.0"
+  
+  # Uncomment to add more useful packages:
+  # - package: dbt-labs/codegen
+  #   version: ">=0.12.0"
+  # - package: calogica/dbt_expectations
+  #   version: ">=0.10.0"

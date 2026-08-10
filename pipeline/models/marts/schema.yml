@@ -1,0 +1,655 @@
+# =============================================================================
+# Schema: Marts Layer
+#
+# Vues optimisées pour le frontend (export JSON)
+# =============================================================================
+
+version: 2
+
+models:
+  # ===========================================================================
+  # SUBVENTIONS TREEMAP
+  # ===========================================================================
+  - name: mart_subventions_treemap
+    meta:
+      domain: "subventions"
+      criticality: "high"
+    description: |
+      Agrégation des subventions par thématique pour visualisation treemap.
+      PAS DE GÉOLOCALISATION - les subventions vont à des organisations, pas des lieux.
+
+      Utilisé par: export_subventions_data.py → subventions/treemap_{year}.json
+    config:
+      materialized: view
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: thematique
+        description: "Thématique (Social, Culture & Sport, etc.)"
+        tests:
+          - not_null
+      - name: nb_beneficiaires
+        description: "Nombre de bénéficiaires uniques"
+      - name: montant_total
+        description: "Montant total (€)"
+        tests:
+          - not_null
+      - name: pct_total
+        description: "Pourcentage du total annuel"
+
+  # ===========================================================================
+  # SUBVENTIONS BÉNÉFICIAIRES
+  # ===========================================================================
+  - name: mart_subventions_beneficiaires
+    meta:
+      domain: "subventions"
+      criticality: "high"
+    description: |
+      Liste des bénéficiaires pour table filtrable.
+      Colonnes de filtrage: thematique, nature_juridique, direction, secteurs_activite.
+
+      Utilisé par: export_subventions_data.py → subventions/beneficiaires_{year}.json
+    config:
+      materialized: view
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: beneficiaire
+        description: "Nom du bénéficiaire"
+      - name: thematique
+        description: "Thématique classifiée (ode_thematique)"
+      - name: nature_juridique
+        description: "Type d'organisation (Association, Entreprise, etc.)"
+      - name: direction
+        description: "Direction municipale responsable"
+      - name: secteurs_activite
+        description: "Secteurs d'activité déclarés"
+      - name: montant_total
+        description: "Montant total (€)"
+        tests:
+          - not_null
+
+  # ===========================================================================
+  # CARTE INVESTISSEMENTS
+  # ===========================================================================
+  - name: mart_carte_investissements
+    meta:
+      domain: "investissements"
+      criticality: "high"
+    description: |
+      Projets d'investissement (AP) localisés pour la carte.
+      Filtrés: avec arrondissement au minimum.
+
+      Utilisé par: export_map_data.py → map/investissements_{year}.json
+    config:
+      materialized: view
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: ap_code
+        description: "Code AP unique"
+      - name: arrondissement
+        description: "Arrondissement (1-20)"
+        tests:
+          - not_null
+      - name: montant_total
+        description: "Montant total investissement (€)"
+        tests:
+          - not_null
+
+  # ===========================================================================
+  # STATS ARRONDISSEMENTS
+  # ===========================================================================
+  - name: mart_stats_arrondissements
+    description: |
+      Statistiques agrégées par arrondissement.
+      Combine: investissements et logements sociaux.
+      Note: Les subventions ne sont plus incluses (pas de géolocalisation).
+
+      Utilisé par: export_map_data.py → map/arrondissements_stats.json
+    config:
+      materialized: view
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: arrondissement
+        description: "Arrondissement (1-20)"
+        tests:
+          - not_null
+      - name: montant_investissements
+        description: "Total investissements localisés (€)"
+      - name: nb_logements_finances
+        description: "Nombre de logements sociaux financés"
+
+  # ===========================================================================
+  # ÉVOLUTION BUDGET
+  # ===========================================================================
+  - name: mart_evolution_budget
+    meta:
+      domain: "budget"
+      criticality: "high"
+    description: |
+      Agrégations temporelles du budget pour graphiques d'évolution.
+      Vues disponibles: par_sens, par_section, metriques, par_thematique.
+      Inclut: variations annuelles en pourcentage.
+
+      Utilisé par: frontend → graphiques évolution YoY
+    config:
+      materialized: view
+    columns:
+      - name: vue
+        description: "Type de vue: par_sens, par_section, metriques, par_thematique"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['par_sens', 'par_section', 'metriques', 'par_thematique']
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: type_budget
+        description: "execute (CA) ou vote (BP)"
+      - name: sens_flux
+        description: "Dépense ou Recette (NULL pour vue metriques)"
+        tests:
+          - not_null:
+              config:
+                where: "vue != 'metriques'"
+      - name: thematique_macro
+        description: "Thématique macro (Personnel, Subventions, Investissement, etc.)"
+      - name: montant_total
+        description: "Montant total (€, NULL pour vue metriques)"
+        tests:
+          - not_null:
+              config:
+                where: "vue != 'metriques'"
+      - name: variation_pct
+        description: "Variation par rapport à l'année précédente (%)"
+      - name: nb_lignes
+        description: "Nombre de lignes budgétaires agrégées"
+
+  # ===========================================================================
+  # BUDGET PAR NATURE (DONUT DRILL-DOWN)
+  # ===========================================================================
+  - name: mart_budget_nature
+    description: |
+      Agrégation croisée Nature × Thématique pour visualisation donut avec drill-down.
+      Niveau 1: répartition par nature (Personnel, Subventions, Achats, etc.)
+      Niveau 2: répartition par thématique au sein de chaque nature.
+
+      Utilisé par: export_budget_nature.py → budget_nature_{year}.json
+    config:
+      materialized: view
+    columns:
+      - name: niveau
+        description: "Niveau d'agrégation: niveau_1 (par nature) ou niveau_2 (nature × thématique)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['niveau_1', 'niveau_2']
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: nature
+        description: "Catégorie de flux (ode_categorie_flux): Personnel, Subventions, Achats, etc."
+        tests:
+          - not_null
+      - name: thematique
+        description: "Thématique (ode_thematique) - NULL pour niveau_1"
+      - name: montant
+        description: "Montant total (€)"
+        tests:
+          - not_null
+      - name: type_budget
+        description: "execute (CA) ou vote (BP)"
+      - name: nb_lignes
+        description: "Nombre de lignes budgétaires agrégées"
+
+  # ===========================================================================
+  # BILAN SANKEY (ÉTAT PATRIMONIAL)
+  # ===========================================================================
+  - name: mart_bilan_sankey
+    description: |
+      Agrégation du bilan comptable pour visualisation Sankey.
+      Structure: Actif (gauche) → Patrimoine Paris (centre) ← Passif (droite)
+      Inclut: KPIs financiers (ratio endettement, fonds propres, etc.)
+
+      Utilisé par: export_bilan_data.py → bilan_sankey_{year}.json
+    config:
+      materialized: view
+    columns:
+      - name: vue
+        description: "Type de vue: summary"
+        tests:
+          - not_null
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: total_actif_net
+        description: "Total Actif Net (€)"
+        tests:
+          - not_null
+      - name: total_passif_net
+        description: "Total Passif Net (€)"
+        tests:
+          - not_null
+      - name: fonds_propres
+        description: "Fonds propres (€)"
+      - name: dette_totale
+        description: "Dette totale (financière + non financière) (€)"
+      - name: ratio_endettement
+        description: "Ratio dette / fonds propres"
+      - name: pct_fonds_propres
+        description: "Part des fonds propres dans le passif (%)"
+
+  # ===========================================================================
+  # COMPARAISON VOTÉ vs EXÉCUTÉ
+  # ===========================================================================
+  - name: mart_vote_vs_execute
+    description: |
+      Comparaison du budget voté (BP) vs budget exécuté (CA).
+      JOIN de core_budget (CA) et core_budget_vote (BV).
+
+      Métriques:
+      - taux_execution_pct: Exécuté / Voté * 100
+      - ecart_absolu, ecart_relatif_pct
+      - montant_estime: estimation pour 2025-2026 via taux historique moyen
+      - confiance_estimation: haute/moyenne/basse
+
+      Couverture:
+      - Comparaison: 2019-2024 (CA + BV disponibles)
+      - Vote seul: 2025-2026 (BV uniquement, CA pas encore publié)
+
+      Utilisé par: export_vote_vs_execute.py → vote_vs_execute/*.json
+    config:
+      materialized: view
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: section
+        description: "Investissement ou Fonctionnement"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Investissement', 'Fonctionnement']
+      - name: sens_flux
+        description: "Dépense ou Recette"
+        tests:
+          - not_null
+      - name: chapitre_code
+        description: "Code chapitre M57"
+      - name: montant_vote
+        description: "Montant voté (€) - crédits BP"
+      - name: montant_execute
+        description: "Montant exécuté (€) - mandaté CA"
+      - name: taux_execution_pct
+        description: "Taux d'exécution = Exécuté / Voté * 100"
+      - name: ecart_absolu
+        description: "Écart absolu = Exécuté - Voté (€)"
+      - name: ecart_relatif_pct
+        description: "Écart relatif en % = (Exécuté - Voté) / Voté * 100"
+      - name: comparaison_possible
+        description: "TRUE si les deux sources existent pour cette année"
+      - name: vote_seul
+        description: "TRUE si seul le vote est disponible (2025-2026)"
+      - name: confiance_estimation
+        description: "Confiance: haute, moyenne, basse (basée sur historique)"
+        tests:
+          - accepted_values:
+              values: ['haute', 'moyenne', 'basse']
+              config:
+                where: "confiance_estimation IS NOT NULL"
+
+  # ===========================================================================
+  # CONCENTRATION (PARETO)
+  # ===========================================================================
+  - name: mart_concentration
+    description: |
+      Analyse Pareto de la concentration des dépenses.
+      Domaines: subventions (par bénéficiaire), investissements (par programme AP).
+      Métriques: rang, % cumulé, segment (top_80/top_95/reste).
+
+      Utilisé par: frontend → graphique Pareto + KPIs concentration
+    config:
+      materialized: view
+    columns:
+      - name: domaine
+        description: "Domaine d'analyse: subventions ou investissements"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['subventions', 'investissements']
+      - name: rang
+        description: "Position dans le classement (1 = plus gros montant)"
+        tests:
+          - not_null
+      - name: entite
+        description: "Nom du bénéficiaire ou du programme AP"
+        tests:
+          - not_null
+      - name: thematique
+        description: "Thématique classifiée"
+      - name: type_organisme
+        description: "Type: public, association, entreprise, personne_physique, autre"
+      - name: montant_total
+        description: "Montant total cumulé (€)"
+        tests:
+          - not_null
+      - name: pct_cumule
+        description: "Pourcentage cumulé (pour courbe Pareto)"
+      - name: pct_part
+        description: "Part de cette entité dans le total (%)"
+      - name: segment_pareto
+        description: "Segment: top_80, top_95, ou reste"
+        tests:
+          - accepted_values:
+              values: ['top_80', 'top_95', 'reste']
+
+  # ===========================================================================
+  # NOUVEAUX MARTS (Phases 1-18)
+  # ===========================================================================
+
+  - name: mart_logement_attente
+    description: |
+      Tension SLS par arrondissement parisien (DRIHL 2024).
+      Consommé par export_logement_attente.py → logement_attente_paris.json.
+    columns:
+      - name: code_insee
+        tests: [not_null]
+      - name: scope
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['paris_total', 'paris_non_precise', 'arrondissement', 'autre']
+      - name: arrondissement
+        description: "1-20 ou NULL"
+      - name: rang_tension
+        description: "1 = plus tendu (parmi 20 arr.)"
+
+  - name: mart_bilan_comptable
+    description: |
+      Slice row-level core_bilan_comptable pour Sankey + index.
+      Note (Issue #2): mart passthrough — à supprimer si export_bilan
+      peut lire core directement (déco-couplage de la règle).
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: type_bilan
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Actif', 'Passif']
+
+  - name: mart_budget_recettes_par_chapitre
+    description: |
+      Recettes UNION exec+vote par (annee × chapitre_code).
+      Consommé par export_evolution_data.py.
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: chapitre_code
+        tests: [not_null]
+
+  # Issue #4 — mart_data_availability polymorphe supprimé. Remplacé par 4
+  # marts typés ci-dessous (un par dataset).
+
+  - name: mart_data_availability_budget
+    description: "Disponibilité dataset budget par année (typed)."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: nb_lignes
+        tests: [not_null]
+
+  - name: mart_data_availability_subventions
+    description: "Disponibilité dataset subventions par année (typed)."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: nb_subventions
+        tests: [not_null]
+
+  - name: mart_data_availability_ap_projets
+    description: "Disponibilité dataset AP/investissements par année (typed)."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: nb_projets
+        tests: [not_null]
+
+  - name: mart_data_availability_logements
+    description: "Disponibilité dataset logements sociaux par année (typed)."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: nb_operations
+        tests: [not_null]
+
+  - name: mart_investissements_map
+    description: |
+      Slice row-level core_ap_projets pour la carte.
+      Note (Issue #2): passthrough avec ORDER BY uniquement.
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: ap_code
+        tests: [not_null]
+      - name: cle_technique
+        tests: [not_null]
+
+  - name: mart_logements_map
+    description: |
+      Slice row-level core_logements_sociaux pour la carte.
+      Note (Issue #2): passthrough avec ORDER BY uniquement.
+    columns:
+      - name: id_livraison
+        tests: [not_null]
+
+  - name: mart_budget_sankey_lines
+    description: |
+      Lignes budget UNION exec+vote pour le Sankey.
+      Filtre: montant > 0.
+
+      Colonnes consommées par le drawer poste (PosteFiche) côté front :
+      `fonction_libelle` (sous-thématique fonctionnelle — Musées, Piscines,
+      Théâtre…) sert à grouper les sub-postes ; `ode_categorie_flux`
+      (Personnel/Subvention/Achat/Investissement…) sert à afficher le tag
+      par row. Ces deux colonnes doivent rester présentes pour ne pas
+      régresser l'UX du drawer.
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: type_budget
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['execute', 'vote']
+      - name: sens_flux
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Dépense', 'Recette']
+      - name: fonction_libelle
+        description: "Sous-thématique fonctionnelle (COFOG-like). Groupe les sub-postes dans le drawer Paris."
+        tests: [not_null]
+      - name: ode_categorie_flux
+        description: "Catégorie de flux dérivée de nature_code. Tag par row dans le drawer."
+        tests: [not_null]
+
+  - name: mart_hors_bilan
+    description: |
+      Slice row-level core_dette_garantie pour export.
+      L'agrégation top-N reste en Python (export hors_bilan).
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: capital_restant
+        tests: [not_null]
+      - name: bucket_nature
+        tests: [not_null]
+
+  - name: mart_investissements_localises
+    description: |
+      Investissements localisés (PDF Annexe IL) — row-level.
+      Consommé par export_investissements_localises.py.
+    columns:
+      - name: annee_publication
+        tests: [not_null]
+      - name: projet_id
+        tests: [not_null]
+
+  - name: mart_deliberations
+    description: |
+      Deliberations Conseil de Paris (article × delib × session).
+      Consommé par export_deliberations.py.
+    columns:
+      - name: session_id
+        tests: [not_null]
+      - name: delib_id
+        tests: [not_null]
+
+  - name: mart_enrichment_caches
+    meta:
+      domain: "meta"
+      criticality: "medium"
+      linked_adr: "0004"
+      caveat: "STRING-typed payload; rely on cat10 singular tests"
+    description: |
+      Polymorphic — payload STRING JSON.
+      Note (Issue #3): à éclater en marts typés par cache.
+    columns:
+      - name: relative_path
+        tests:
+          - not_null
+          - unique
+
+  - name: mart_projet_marches
+    description: "Match scoré projet d'investissement × marché public."
+    columns:
+      - name: projet_id
+        tests: [not_null]
+
+  - name: mart_marches_fournisseurs
+    meta:
+      domain: "marches"
+      criticality: "high"
+      linked_adr: "0003"
+    description: "Marchés publics + SIRENE-aware fournisseur_nom."
+    columns:
+      - name: numero_marche
+        tests: [not_null]
+      - name: cle_technique
+        tests: [not_null]
+
+  - name: mart_marches_par_nature
+    description: "Agrégation marchés par nature/catégorie."
+    columns:
+      - name: annee
+        tests: [not_null]
+
+  # ===========================================================================
+  # MARSEILLE — Sankey budget lines
+  # ===========================================================================
+  - name: mart_marseille_budget_sankey_lines
+    description: |
+      Lignes budgétaires Marseille pour le Sankey, par type de flux
+      (Personnel, Achats, Subventions, Investissements matériels, etc.).
+
+      Différence vs mart_budget_sankey_lines (Paris) : Marseille n'a pas de
+      dimension fonctionnelle, donc pas de regroupement par politique
+      publique. À la place, `ode_categorie_flux` calculée à partir de
+      nature_code (universel M57).
+
+      Source : core_marseille_budget (filtré montant > 0)
+    columns:
+      - name: commune_slug
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['marseille']
+      - name: annee
+        tests: [not_null]
+      - name: type_budget
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['vote', 'execute']
+      - name: montant
+        tests: [not_null]
+      - name: ode_categorie_flux
+        description: "Catégorie de flux dérivée de nature_code (Personnel, Achats, Subventions, etc.)"
+        tests: [not_null]
+
+  - name: mart_logement_sru
+    description: "Taux SRU par arrondissement et par année (2001-2019, APUR). Contrat pour l'export logement_sru_arrondissements.json."
+    columns:
+      - name: arrondissement
+        tests:
+          - not_null
+      - name: taux_sru_pct
+        description: "100 × logements_sociaux / residences_principales, arrondi à 0,1 pt"
+        tests:
+          - not_null
+
+  - name: mart_logement_financement
+    description: |
+      Table de pont (bridge) reliant chaque EMPRUNT GARANTI distinct
+      (core_dette_garantie, buckets logement) au PROGRAMME de logements sociaux
+      qu'il a financé (core_logements_sociaux) — la chaîne de financement réelle
+      derrière un programme, au-delà du seul bailleur exploitant.
+
+      Grain : une ligne = un lien (emprunt distinct × programme). Un emprunt non
+      rattachable à un programme précis figure quand même (colonnes programme_*
+      NULL, match_basis = 'non_rattache') pour que le total de dette par bailleur
+      reste complet.
+
+      ⚠️ Sommes : « dette d'un programme » = SUM(montant_initial) sur ses liens
+      (direct) ; « dette d'un bailleur » = agréger par loan_id (un emprunt lié à
+      N programmes apparaît N fois — voir n_programmes_lies).
+
+      Bloc 1 (déterministe) : rattachement sur arrondissement + numéro + cœur de
+      voie (macros logement_financement.sql). Les 'non_rattache' (adresses
+      multiples, ZAC/lot, opérations non-logement) seront jugés par LLM (Bloc 2)
+      qui écrira un seed venant réviser leur match_basis.
+    columns:
+      - name: loan_id
+        description: "Hash de l'emprunt distinct (beneficiaire|objet|annee_mobilisation|montant_initial). Clé de déduplication pour totaux par bailleur."
+        tests:
+          - not_null
+      - name: id_livraison
+        description: "Programme lié (core_logements_sociaux). NULL si non_rattache."
+      - name: match_basis
+        description: |
+          Base du lien / raison de non-rattachement :
+          'adresse_exacte' (adresse+bailleur), 'adresse_arr' (adresse seule),
+          'portefeuille' (emprunt multi-adresses par nature), 'zac_operation'
+          (maille aménagement), 'non_rattache' (adresse unique sans programme trouvé).
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['adresse_exacte', 'adresse_arr', 'portefeuille', 'zac_operation', 'non_rattache']
+      - name: confiance
+        description: "'haute' | 'moyenne' pour les liens ; NULL si non rattaché."
+        tests:
+          - accepted_values:
+              values: ['haute', 'moyenne']
+              config:
+                where: "id_livraison IS NOT NULL"
+      - name: montant_initial
+        description: "Montant initial de l'emprunt garanti (EUR), constant sur les années de publication."
+      - name: source_url
+        description: "Source ODS de l'emprunt, conservée pour citation."
+        tests:
+          - not_null

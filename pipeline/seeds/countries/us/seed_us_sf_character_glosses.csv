@@ -1,0 +1,53 @@
+side,character_code,source_label,gloss,display_category,provenance,enriched_at
+Spending,SALARIES,Salaries,"Pay for the City's workforce — police officers, nurses, Muni operators, librarians and everyone else on the payroll.",standard,manual_in_session,2026-07-16
+Spending,MAND_FRING_BEN,Mandatory Fringe Benefits,"The employer's share of employee benefits the City is required to fund: pension contributions, health coverage, Social Security and Medicare.",standard,manual_in_session,2026-07-16
+Spending,NON_PERS_SVCS,Non-Personnel Services,"Services the City buys rather than staffs: professional services, maintenance contracts, utilities, rent, training, travel.",standard,manual_in_session,2026-07-16
+Spending,CITY_GR_PROG,City Grant Program,"Grants the City makes to outside organizations — mostly nonprofits delivering health, housing and social services.",standard,manual_in_session,2026-07-16
+Spending,SVCS_OTHER_DEPTS,Services Of Other Depts,"Internal billing: one City department paying another for its work (legal counsel, fleet, IT, real estate). Money that stays inside the City.",standard,manual_in_session,2026-07-16
+Spending,DEBT_SERVICE,Debt Service,"Principal and interest payments on bonds and other borrowing.",standard,manual_in_session,2026-07-16
+Spending,INTRA_TFR_OUT,Intrafund Transfers Out,"Accounting transfers between accounts inside the same fund — internal money movement, not services delivered. Cancelled citywide by the transfer adjustment.",standard,manual_in_session,2026-07-16
+Spending,OPER_TFR_OUT,Transfers Out,"Money moved from one City fund to another (for example General Fund support to Muni). Cancelled citywide by the transfer adjustment.",standard,manual_in_session,2026-07-16
+Spending,CAP_OUTLAY,Capital Outlay,"Purchases of physical assets: equipment, vehicles, building improvements, infrastructure.",standard,manual_in_session,2026-07-16
+Spending,AID_PMTS,Aid Payments,"Direct assistance paid to or on behalf of individuals — public-assistance grants such as CalWORKs and county adult assistance.",standard,manual_in_session,2026-07-16
+Spending,AID_ASSIST,Aid Assistance,"In-kind and support assistance tied to public-aid programs, alongside direct aid payments.",standard,manual_in_session,2026-07-16
+Spending,MTL_SUPP,Materials & Supplies,"Physical goods the City consumes: pharmaceuticals, fuel, food, office and maintenance supplies.",standard,manual_in_session,2026-07-16
+Spending,PROG_PROJ,Programmatic Projects,"Budget set aside for defined projects and initiatives, spent through the programs that carry them out.",standard,manual_in_session,2026-07-16
+Spending,UNAP_REV_RET,Unappropriated Rev Retained,"Revenue budgeted but deliberately not appropriated for spending — retained as fund balance or reserve.",standard,manual_in_session,2026-07-16
+Spending,UNAP_REV_DESIG,Unappropriated Rev-Designated,"Revenue set aside for a designated future purpose rather than appropriated for spending this year.",standard,manual_in_session,2026-07-16
+Spending,UNAP_REV_CHRT_RSV,Unapprop Rev-Charter Reserves,"Revenue routed to reserves required by the City Charter (rainy-day style reserves).",standard,manual_in_session,2026-07-16
+Spending,OTH_SUP_CARE_PERS,Other Support/Care of Persons,"Care purchased for people the City is responsible for: foster care, board-and-care, shelter beds, treatment placements.",standard,manual_in_session,2026-07-16
+Spending,FAC_MNTC,Facilities Maintenance,"Upkeep of City buildings and facilities: repairs, renovation and maintenance projects.",standard,manual_in_session,2026-07-16
+Spending,FID_BEN_PMT,Fiduciary-Benefit Payments,"Benefit payments made from fiduciary funds the City administers (retirement and health trusts).",standard,manual_in_session,2026-07-16
+Spending,OTH_EXP_NON_EXP,Other Expenses-Non Expend Type,"Accounting entries that are not cash spending (non-expenditure items).",standard,manual_in_session,2026-07-16
+Spending,CAP_EXP,Capitalized Expenditures,"Spending recorded as capital assets on the balance sheet rather than as an operating expense.",standard,manual_in_session,2026-07-16
+Spending,CONT_REF_DIST,Contribution Refund/Distrib,"Refunds or distributions of contributions, mainly retirement-system flows.",standard,manual_in_session,2026-07-16
+Spending,GEN_FUND_SUB,General Fund Subsidy Xfer Out,"General Fund subsidy transferred to departments whose own revenues do not cover their costs.",standard,manual_in_session,2026-07-16
+Spending,TFR_OUT_CAP_EXP,Transfer Out For Captl Expend,"Transfers out earmarked for capital spending in another fund.",standard,manual_in_session,2026-07-16
+Spending,OTH_FIN_USES,Other Financing Uses,"Other financing outflows, such as bond refundings and similar financing transactions.",standard,manual_in_session,2026-07-16
+Spending,CARRYFWD_BUD_ONLY,Carry-Forward Budgets Only,"Budget authority carried forward from a prior year — a budgeting entry, not new money.",standard,manual_in_session,2026-07-16
+Spending,OH_ALLOCS,Overhead and Allocations,"Overhead charged out to other departments and funds; appears negative where a department recovers its overhead costs from the departments it serves.",offset,manual_in_session,2026-07-16
+Spending,ELU,Transfer Adjustment - Uses,"The negative adjustment that cancels inter- and intra-fund transfers so the citywide total counts each dollar once.",adjustment,manual_in_session,2026-07-16
+Spending,999985,GFSUP GENERAL FUND SUPPORT,"Legacy placeholder for General Fund support (zero-value skeleton rows from the FY2018 system migration).",standard,manual_in_session,2026-07-16
+Revenue,CHGS_FOR_SERVICES,Charges for Services,"Fees charged for services — dominated by the City's enterprises billing their customers: hospital care billed to insurers and Medi-Cal, airport charges to airlines, water and sewer bills. Not primarily fees on residents.",standard,manual_in_session,2026-07-16
+Revenue,PROP_TAX,Property Taxes,"The City's share of the 1% property tax on assessed value, plus voter-approved add-ons.",standard,manual_in_session,2026-07-16
+Revenue,BUS_TAX,Business Taxes,"Taxes on business activity: gross receipts tax, homelessness gross receipts tax, business registration fees.",standard,manual_in_session,2026-07-16
+Revenue,OTHER_LOC_TAX,Other Local Taxes,"Local taxes other than property and business taxes: the City's sales-tax share, hotel tax, real-estate transfer tax, parking tax, utility users tax.",standard,manual_in_session,2026-07-16
+Revenue,INTERGOV_REV_ST,Intergovernmental: State,"Money from the State of California: health and social-services realignment funds and program reimbursements.",standard,manual_in_session,2026-07-16
+Revenue,INTER_REV_FED,Intergovernmental: Federal,"Federal money: Medicaid and Medicare reimbursements plus federal grants for housing, transit and emergencies.",standard,manual_in_session,2026-07-16
+Revenue,INTERGOV_REV_OTH,Intergovernmental: Other,"Money from other governments — regional agencies, other counties and special districts.",standard,manual_in_session,2026-07-16
+Revenue,RENTS_CONCESSIONS,Rents & Concessions,"Rent and concession income from City property: airport concessions, port leases, facility rentals.",standard,manual_in_session,2026-07-16
+Revenue,INT_INV_INC,Interest & Investment Income,"Earnings on the City's cash and investment pools.",standard,manual_in_session,2026-07-16
+Revenue,FINE_FORF_PENAL,"Fines, Forfeiture, & Penalties","Parking and traffic fines, court penalties, code-enforcement fines.",standard,manual_in_session,2026-07-16
+Revenue,LIC_PERM_FRAN,"Licenses, Permits,& Franchises","Business licenses, construction and use permits, franchise fees from utilities.",standard,manual_in_session,2026-07-16
+Revenue,CONTRIB_RET_HSS_HLTH,Contributions Ret/HSS/HlthCare,"Employee and employer contributions flowing into the retirement and health-benefit systems.",standard,manual_in_session,2026-07-16
+Revenue,OTH_REV,Other Revenues,"Revenue that fits no other category — settlements, donations, miscellaneous income.",standard,manual_in_session,2026-07-16
+Revenue,OTH_FIN_SRCS,Other Financing Sources,"Financing inflows: bond and loan proceeds, proceeds from asset sales.",standard,manual_in_session,2026-07-16
+Revenue,UNAPP_FD_BAL,Unappropriated Fund Balance,"Prior-year fund balance brought into the budget as a source of funding.",standard,manual_in_session,2026-07-16
+Revenue,OPER_TFR_IN,Transfers In,"Money received from another City fund — the receiving side of fund-to-fund transfers. Cancelled citywide by the transfer adjustment.",standard,manual_in_session,2026-07-16
+Revenue,TFR_IN_CAP_EXP,Transfer In-Capital Expenditur,"Transfers in earmarked for capital spending.",standard,manual_in_session,2026-07-16
+Revenue,CAP_CONTR_OTHER,Capital Contributions-Others,"Capital contributed by outside parties toward City assets.",standard,manual_in_session,2026-07-16
+Revenue,EXTRA_ITEM_GAIN,Extraordinary Items-Gain,"One-off extraordinary accounting gains.",standard,manual_in_session,2026-07-16
+Revenue,CONVRSN_REV_ACCTS,Conversion Revenue Accts,"Technical accounts from the financial-system conversion (zero-value skeleton rows).",standard,manual_in_session,2026-07-16
+Revenue,INTRAFD_TFR_IN,IntraFund Transfers In,"Accounting transfers between accounts inside the same fund — internal mechanics, not money coming in from outside.",internal,manual_in_session,2026-07-16
+Revenue,EXP_RECOVERY,Expenditure Recovery,"One department recovering its costs from another — internal billing income, the mirror of 'Services of Other Depts' on the spending side.",internal,manual_in_session,2026-07-16
+Revenue,ELS,Transfer Adjustment-Source,"The negative adjustment on the revenue side that cancels inter- and intra-fund transfers so the citywide total counts each dollar once.",adjustment,manual_in_session,2026-07-16

@@ -1,0 +1,31 @@
+# Env & secrets
+.env
+.env.local
+.env.*
+!.env.example
+!**/.env.example
+credentials.json
+*-credentials.json
+service-account*.json
+*.pem
+*.key
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# dbt
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# Local export output (rendered marts -> JSON)
+exports/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+*.swp

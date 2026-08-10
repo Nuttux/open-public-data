@@ -1,0 +1,109 @@
+version: 2
+
+models:
+  - name: core_us_outlays_by_function
+    description: >
+      US federal cash outlays by budget function (MTS Table 9, D|F rows).
+      19 functions per month since 2015-03-31, dollars. Negative rows are
+      real offsetting receipts.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [record_date, function_desc]
+    columns:
+      - name: record_date
+        tests: [not_null]
+      - name: function_desc
+        tests: [not_null]
+      - name: current_fytd_outlay_amt
+        tests: [not_null]
+
+  - name: core_us_receipts_by_source
+    description: >
+      US federal cash receipts by source (MTS Table 9 section 1, D|RSG rows).
+      9 detail rows per month since 2015-03-31, dollars.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [record_date, source_desc]
+    columns:
+      - name: record_date
+        tests: [not_null]
+      - name: source_desc
+        tests: [not_null]
+      - name: current_fytd_receipt_amt
+        tests: [not_null]
+
+  - name: core_us_outlays_by_agency
+    description: >
+      US federal cash outlays by agency (MTS Table 5, T|C rows at level 2 —
+      29 agencies per month). Gross / applicable receipts / net, dollars.
+      Sum + undistributed offsetting receipts = total outlays (tested).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [record_date, agency_desc]
+    columns:
+      - name: record_date
+        tests: [not_null]
+      - name: agency_desc
+        tests: [not_null]
+      - name: current_fytd_net_outlay_amt
+        tests: [not_null]
+
+  - name: core_us_debt
+    description: >
+      US public debt outstanding — 'daily' series (Debt to the Penny,
+      1993+, with public/intragov breakout) + 'annual_fy_end' series
+      (Historical Debt Outstanding, 1790+). Dollars. Series kept separate
+      (FFB accounting differs between them).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [series, record_date]
+    columns:
+      - name: series
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['daily', 'annual_fy_end']
+      - name: record_date
+        tests: [not_null]
+      - name: tot_pub_debt_out_amt
+        tests: [not_null]
+
+  - name: core_us_monthly_totals
+    description: >
+      Monthly receipts / outlays / budget balance since FY1981 (MTS long
+      series), converted from millions to dollars. Sign convention
+      normalized: category 'budget_balance' amt_usd = receipts − outlays
+      (surplus positive, deficit negative); the published value (deficit
+      positive, millions) is kept in amt_millions_as_published.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [record_date, category_src]
+    columns:
+      - name: record_date
+        tests: [not_null]
+      - name: category
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - receipts
+                - outlays
+                - budget_balance
+                - borrowing_from_public
+                - reduction_of_operating_cash
+                - by_other_means
+      - name: amt_usd
+        tests: [not_null]
+
+  - name: core_us_population
+    description: >
+      US national resident population per estimate year (Census PEP Vintage
+      2025, July 1 estimates 2020-2025). Carries source/source_url from the
+      sync config for per-resident scaling downstream.
+    columns:
+      - name: year
+        tests: [not_null, unique]
+      - name: population
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]

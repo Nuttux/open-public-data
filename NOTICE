@@ -1,0 +1,60 @@
+NOTICE
+======
+
+This repository is a curated, public mirror of the deterministic data pipeline
+behind Qipu. It is published so that the figures on the site can be
+independently verified from their public sources.
+
+CODE
+----
+All source code in this repository is licensed under the PolyForm Noncommercial
+License 1.0.0 (see LICENSE). Free for non-commercial use, study, modification
+and sharing; commercial use is not granted by this license.
+
+DATA
+----
+This repository includes:
+
+  * Deterministic seed files (constants, mappings, thresholds, labels) derived
+    from official public open-data sources.
+
+  * FROZEN enrichment-output cache files. These are the *outputs* of a
+    separate, closed enrichment process, included here as fixed inputs. The
+    process that generates them (prompts, models, compute) is not part of this
+    repository.
+
+      - seed_cache_thematique_beneficiaires.csv
+      - seed_cache_geo_ap.csv
+        Read by the dbt models. Classification-dependent figures (which theme,
+        which location a line is assigned to) reproduce end to end against them.
+
+PERSONAL DATA
+-------------
+The subventions source data mixes organisations with private individuals. This
+repository is filtered accordingly:
+
+  * The name-to-SIRET lookup cache is not published. It linked a beneficiary
+    name to a full legal name, SIRET, postcode and city — identifying detail
+    about real people that is not present in the source. No model reads it and
+    no published figure depends on it.
+
+  * Rows identifying natural persons are removed from the thematic cache above.
+    They carried no classification (they resolve to "Autre" either way), so the
+    published figures are unaffected.
+
+Underlying source data belongs to its respective publishers (e.g. Ville de
+Paris / Paris Open Data, data.economie.gouv.fr / DECP, DGFiP, and the
+equivalent portals for other covered cities) and remains subject to their own
+terms and licenses. Dataset references are declared in the dbt sources and in
+each ingestion script.
+
+NOT INCLUDED
+------------
+The website/application, the enrichment code (LLM descriptions, summaries,
+thematic/geo/archive grounding), and media assets are maintained separately and
+are not part of this repository.
+
+Editorial and enrichment *content* is likewise not included: curated place
+selections, generated glosses and plain-English descriptions, verified archive
+excerpts, and lieux curation. No dbt model reads these, so no figure published
+on the site depends on them.

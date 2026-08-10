@@ -1,0 +1,680 @@
+# =============================================================================
+# Schema: Staging Layer
+#
+# Documentation et tests pour les modèles staging.
+# Convention: colonnes standardisées en français, filtres qualité appliqués.
+# =============================================================================
+
+version: 2
+
+models:
+  # ===========================================================================
+  # BUDGET PRINCIPAL - Source de vérité
+  # ===========================================================================
+  - name: stg_budget_principal
+    description: |
+      Budget principal de la Ville de Paris (Compte Administratif exécuté).
+      SOURCE DE VÉRITÉ pour les totaux budgétaires.
+
+      Filtres appliqués:
+      - type_operation = 'Réel' (exclut 'Pour Ordre')
+      - montant > 0
+
+      Années: 2019-2024
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: section
+        description: "Section: Investissement ou Fonctionnement"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Investissement', 'Fonctionnement']
+      - name: sens_flux
+        description: "Dépense ou Recette"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Dépense', 'Recette']
+      - name: chapitre_code
+        description: "Code chapitre M57"
+        tests:
+          - not_null
+      - name: nature_code
+        description: "Code nature comptable (clé de jointure)"
+        tests:
+          - not_null
+      - name: fonction_code
+        description: "Code fonction (clé de jointure)"
+      - name: montant
+        description: "Montant mandaté après régularisation (€)"
+        tests:
+          - not_null
+      - name: cle_technique
+        description: "Clé technique unique"
+        tests:
+          - unique
+          - not_null
+
+  # ===========================================================================
+  # BUDGET VOTÉ (prévisionnel) - Entité séparée du CA
+  # ===========================================================================
+  - name: stg_budget_vote
+    description: |
+      Budget voté (Budget Primitif) de la Ville de Paris.
+      Entité SÉPARÉE du budget exécuté (stg_budget_principal).
+
+      Filtres appliqués:
+      - type_operation = 'Réel' (exclut 'Pour Ordre')
+      - type_du_vote LIKE '%budget primitif%' (exclut DM)
+      - montant > 0
+
+      Différences avec stg_budget_principal:
+      - montant = credits_votes_pmt (pas mandate_titre_apres_regul)
+      - Couverture: 2019-2026 (vs 2019-2024 pour le CA)
+
+      Années: 2019-2026
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: section
+        description: "Section: Investissement ou Fonctionnement"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Investissement', 'Fonctionnement']
+      - name: sens_flux
+        description: "Dépense ou Recette"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Dépense', 'Recette']
+      - name: chapitre_code
+        description: "Code chapitre M57"
+        tests:
+          - not_null
+      - name: nature_code
+        description: "Code nature comptable (clé de jointure)"
+        tests:
+          - not_null
+      - name: fonction_code
+        description: "Code fonction (clé de jointure)"
+      - name: montant
+        description: "Crédits votés (€) - montant PRÉVISIONNEL"
+        tests:
+          - not_null
+      - name: cle_technique
+        description: "Clé technique unique"
+        tests:
+          - unique
+          - not_null
+
+  # ===========================================================================
+  # AP PROJETS - Investissements nommés
+  # ===========================================================================
+  - name: stg_ap_projets
+    description: |
+      Autorisations de Programmes exécutées - Projets d'investissement.
+      Contient les projets physiques (piscines, écoles, parcs...).
+
+      Filtres appliqués:
+      - type_operation = 'Réel'
+      - sens_flux = 'Dépense'
+      - montant > 0
+
+      Années: 2018-2022
+      ⚠️ Représente ~10% du budget d'investissement total
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: ap_code
+        description: "Code AP unique"
+        tests:
+          - not_null
+      - name: ap_texte
+        description: "Description du projet (contient souvent l'adresse)"
+      - name: direction
+        description: "Direction gestionnaire (DJS, DEVE, DVD...)"
+      - name: nature_code
+        description: "Code nature comptable (clé de jointure avec budget)"
+      - name: fonction_code
+        description: "Code fonction (clé de jointure avec budget)"
+      - name: arrondissement_regex
+        description: "Arrondissement extrait par regex (1-20 ou NULL)"
+      - name: montant
+        description: "Montant mandaté (€)"
+        tests:
+          - not_null
+      - name: cle_technique
+        description: "Clé technique unique"
+        tests:
+          - not_null
+
+  # ===========================================================================
+  # SUBVENTIONS ALL - Toutes subventions versées
+  # ===========================================================================
+  - name: stg_subventions_all
+    description: |
+      Toutes les subventions versées (Annexe Compte Administratif).
+      Inclut associations, entreprises, établissements publics.
+
+      ⚠️ 2020-2021: noms bénéficiaires = NULL (données non publiées)
+
+      Années: 2018-2024
+    columns:
+      - name: annee
+        description: "Année fiscale (extraite de 'publication')"
+        tests:
+          - not_null
+      - name: beneficiaire
+        description: "Nom du bénéficiaire (NULL en 2020-2021)"
+      - name: beneficiaire_normalise
+        description: "Nom normalisé pour jointures (majuscules, sans articles)"
+      - name: categorie
+        description: "Catégorie (droit privé, droit public)"
+      - name: nature_juridique
+        description: "Nature juridique (Associations, Entreprises, État...)"
+      - name: montant
+        description: "Montant de la subvention (€)"
+        tests:
+          - not_null
+      - name: donnees_disponibles
+        description: "FALSE si données incomplètes (2020-2021)"
+        tests:
+          - not_null
+      - name: cle_technique
+        description: "Clé technique unique"
+        tests:
+          - unique
+          - not_null
+
+  # ===========================================================================
+  # ASSOCIATIONS - Détail avec SIRET
+  # ===========================================================================
+  - name: stg_associations
+    description: |
+      Subventions aux associations avec SIRET et direction.
+      Utilisé pour enrichir stg_subventions_all via jointure sur
+      (beneficiaire_normalise, annee).
+
+      Contient:
+      - SIRET (pour géolocalisation via API)
+      - Direction (pour classification thématique)
+      - Objet de la subvention
+
+      Années: 2013-2025
+    columns:
+      - name: annee
+        description: "Année budgétaire"
+        tests:
+          - not_null
+      - name: beneficiaire
+        description: "Nom du bénéficiaire"
+      - name: beneficiaire_normalise
+        description: "Nom normalisé (même logique que stg_subventions_all)"
+        tests:
+          - not_null
+      - name: siret
+        description: "SIRET 14 caractères (clé pour géolocalisation)"
+      - name: direction
+        description: "Direction responsable (DAC, DJS, DASES...)"
+      - name: objet
+        description: "Objet de la subvention"
+      - name: montant
+        description: "Montant voté (€)"
+        tests:
+          - not_null
+      - name: cle_technique
+        description: "Clé technique unique"
+        tests:
+          - unique
+          - not_null
+
+  # ===========================================================================
+  # LOGEMENTS SOCIAUX - Déjà géolocalisés
+  # ===========================================================================
+  - name: stg_logements_sociaux
+    description: |
+      Programmes de logements sociaux financés à Paris.
+      Déjà géolocalisés dans la source (geo_point_2d).
+
+      ~4k lignes
+    columns:
+      - name: id_livraison
+        description: "Identifiant unique du programme"
+      - name: annee
+        description: "Année de financement"
+      - name: adresse
+        description: "Adresse du programme"
+      - name: arrondissement
+        description: "Numéro d'arrondissement (1-20)"
+      - name: latitude
+        description: "Latitude GPS"
+      - name: longitude
+        description: "Longitude GPS"
+      - name: bailleur
+        description: "Nom du bailleur social"
+      - name: nb_logements
+        description: "Nombre total de logements financés"
+      - name: cle_technique
+        description: "Clé technique unique"
+        tests:
+          - unique
+          - not_null
+
+  # ===========================================================================
+  # MARCHÉS PUBLICS - Contexte (non sommable)
+  # ===========================================================================
+  - name: stg_marches_publics
+    description: |
+      Marchés publics de la collectivité parisienne (source opendata.paris.fr).
+
+      ⚠️ ATTENTION: montant_min/max sont des ENVELOPPES PLURIANNUELLES.
+      NE PAS SOMMER comme dépense annuelle !
+      Usage: contexte uniquement. Fusion avec DECP dans core_marches_publics.
+
+      Années: 2013-2024
+    columns:
+      - name: annee
+        description: "Année de notification"
+        tests:
+          - not_null
+      - name: numero_marche
+        description: "Numéro du marché (14 chars format Paris: AAAAAAAALNNNNN)"
+      - name: objet
+        description: "Objet du marché"
+      - name: nature
+        description: "Nature (travaux, services, fournitures)"
+      - name: fournisseur_nom
+        description: "Nom du titulaire"
+      - name: fournisseur_siret
+        description: "SIRET du titulaire"
+      - name: montant_min
+        description: "Montant minimum (ENVELOPPE - ne pas sommer)"
+      - name: montant_max
+        description: "Montant maximum (ENVELOPPE - ne pas sommer)"
+      - name: cle_technique
+        description: "Clé technique unique"
+        tests:
+          - unique
+          - not_null
+
+  # ===========================================================================
+  # DECP MARCHÉS PARIS - Enrichissement national
+  # ===========================================================================
+  - name: stg_decp_marches_paris
+    description: |
+      DECP (Données Essentielles de la Commande Publique) filtrée Ville de Paris.
+      Source: data.gouv.fr fichiers annuels consolidés.
+
+      Apporte les colonnes qui manquent côté opendata.paris.fr:
+      ccag, code_cpv, lieu_execution, offres_recues, considerations RSE,
+      montant notifié à la signature.
+
+      Clé de jointure avec stg_marches_publics:
+        SUBSTR(liste_des_marches.num_marche, 5) = stg_decp.decp_id
+
+      Dédup: par `id` (ROW_NUMBER sur source_year DESC) pour gérer les
+      republications. Le dédup multi-titulaires (N lignes = 1 accord-cadre)
+      est fait dans core_marches_publics.
+    columns:
+      - name: decp_id
+        description: "Identifiant DECP (10 char, ex: '2024T05699')"
+        tests:
+          - not_null
+          - unique
+      - name: annee_notification
+        description: "Année d'extraction depuis date_notification"
+      - name: objet
+        description: "Objet du marché"
+      - name: ccag
+        description: "Type CCAG: Travaux | Fournitures | PI | MOE | TIC"
+      - name: code_cpv
+        description: "Code CPV européen (8 chiffres)"
+      - name: montant_notifie
+        description: "Montant déclaré à la signature (≠ plafond)"
+      - name: lieu_execution_code
+        description: "Code lieu exec (département ou code postal)"
+      - name: titulaire_siret
+        description: "SIRET du premier titulaire"
+
+  # ===========================================================================
+  # BILAN COMPTABLE - État patrimonial
+  # ===========================================================================
+  - name: stg_bilan_comptable
+    description: |
+      Bilan comptable (état patrimonial) de la Ville de Paris.
+      Actif et Passif annuels avec valeurs brutes, amortissements et nettes.
+
+      Nettoyages appliqués:
+      - Normalisation de la casse (MAJUSCULES → Title Case)
+      - Correction orthographique (régularisations → régularisation)
+      - Agrégation des doublons (mêmes année/type/poste/detail)
+      - NULL → 0 (en comptabilité, absence = zéro)
+
+      Classification analytique ajoutée pour faciliter les agrégations.
+
+      Années: 2016-2024
+    columns:
+      - name: cle_technique
+        description: "Clé technique unique (année-type-hash_poste-hash_detail)"
+        tests:
+          - unique
+          - not_null
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: type_bilan
+        description: "Type: 'Actif' ou 'Passif'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Actif', 'Passif']
+      - name: poste
+        description: "Catégorie comptable normalisée (Actif immobilisé, Fonds propres...)"
+        tests:
+          - not_null
+      - name: detail
+        description: "Détail du poste (Terrains, Constructions, Réserves...)"
+      - name: montant_brut
+        description: "Valeur brute avant amortissements (€)"
+      - name: montant_amortissements
+        description: "Montant des amortissements et provisions (€)"
+      - name: montant_net
+        description: "Valeur nette = brut - amortissements (€)"
+      - name: categorie_analytique
+        description: "Classification de haut niveau pour agrégations (Immobilisations corporelles, Fonds propres...)"
+        tests:
+          - not_null
+      - name: nb_lignes_source
+        description: "Nombre de lignes sources agrégées (pour traçabilité)"
+
+  # ===========================================================================
+  # PDF BUDGET VOTÉ - Extraction des PDFs éditique BG
+  # ===========================================================================
+  - name: stg_pdf_budget_vote
+    description: |
+      Budget voté extrait des PDFs éditique BG (2020-2026).
+      UNION des seeds seed_pdf_budget_vote_{2020..2026}.
+
+      Années: 2020-2026
+    columns:
+      - name: annee
+        description: "Année fiscale"
+        tests:
+          - not_null
+      - name: section
+        description: "Section: Investissement ou Fonctionnement"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Investissement', 'Fonctionnement']
+      - name: sens_flux
+        description: "Dépense ou Recette"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Dépense', 'Recette']
+      - name: montant
+        description: "Montant voté extrait du PDF (€)"
+        tests:
+          - not_null
+      - name: cle_technique
+        description: "Clé technique unique"
+        tests:
+          - not_null
+
+  # ===========================================================================
+  # LOGEMENT — DRIHL FILE D'ATTENTE
+  # ===========================================================================
+  - name: stg_drihl_paris
+    description: |
+      Wrapper staging de seed_drihl_paris_2024 (extrait XLSX DRIHL).
+      Existe pour que core_logement_attente_arr ne référence pas le seed
+      directement (règle layering raw → stg → core).
+
+      Grain: code_insee × annee (75 + 75056 + 75101..75120)
+    columns:
+      - name: code_insee
+        description: "Code INSEE (75=Paris global ; 75056=non-précisé ; 75101..75120)"
+        tests:
+          - not_null
+      - name: annee
+        description: "Année du snapshot"
+        tests:
+          - not_null
+      - name: source
+        description: "Citation de la source (DRIHL)"
+        tests:
+          - not_null
+      - name: source_url
+        description: "URL pointant la publication DRIHL"
+
+  # ===========================================================================
+  # NOUVEAUX STG (Phases 1-18 du refactor layering)
+  # Tous les seeds-mappings et seeds-cache LLM sont désormais wrappés ici.
+  # ===========================================================================
+
+  - name: stg_dette_garantie
+    description: "Annexe IV-B Paris (emprunts garantis) — wrapper de raw.dette_garantie_paris."
+    columns:
+      - name: annee
+        tests: [not_null]
+      - name: beneficiaire
+        tests: [not_null]
+      - name: capital_restant
+        description: "Capital restant dû au 31/12 (€)"
+        tests: [not_null]
+      - name: taux_type
+        description: "F (fixe), V (variable), ou autre"
+
+  - name: stg_pdf_investissements_localises
+    description: "Investissements localisés extraits PDF Annexe IL — wrapper raw."
+    columns:
+      - name: annee_publication
+        tests: [not_null]
+      - name: projet_id
+        tests: [not_null]
+      - name: montant
+        tests: [not_null]
+      - name: confidence
+        description: "Confiance LLM 0..1"
+
+  - name: stg_deliberations_sessions
+    description: "Métadonnées sessions Conseil de Paris."
+    columns:
+      - name: session_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_deliberations_delibs
+    description: "Délibérations Conseil de Paris (titres + direction)."
+    columns:
+      - name: session_id
+        tests: [not_null]
+      - name: delib_id
+        tests: [not_null]
+
+  - name: stg_deliberations_articles
+    description: "Articles individuels (subventions) extraits des délibérations."
+    columns:
+      - name: session_id
+        tests: [not_null]
+      - name: delib_id
+        tests: [not_null]
+      - name: amount_eur
+        description: "Montant article (€) — peut être null si non extrait"
+
+  - name: stg_sirene_companies
+    description: "Cache SIRENE entreprises (recherche-entreprises.api.gouv.fr)."
+    columns:
+      - name: siren
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_enrichment_caches
+    description: |
+      Table polymorphe des caches d'enrichissement (LLM/SIRENE/photos).
+      Chaque ligne = un fichier JSON sous pipeline/cache/enrichment/.
+      Le payload est conservé en STRING — lossy par design.
+    columns:
+      - name: relative_path
+        tests:
+          - not_null
+          - unique
+
+  # (stg_drihl_paris défini plus haut — ligne 437)
+
+  # ─── Seed wrappers (mappings + caches LLM) ──────────────────────────────────
+
+  - name: stg_mapping_thematiques
+    description: "Mapping (chapitre, fonction) → thématique pour budget."
+    columns:
+      - name: thematique
+        tests: [not_null]
+
+  - name: stg_mapping_beneficiaires
+    description: "Regex pattern → thématique/sous-catégorie pour subventions."
+    columns:
+      - name: pattern
+        tests: [not_null]
+      - name: thematique
+        tests: [not_null]
+      - name: priorite
+        tests: [not_null]
+
+  - name: stg_mapping_directions
+    description: "Direction municipale → thématique."
+    columns:
+      - name: direction
+        tests:
+          - not_null
+          - unique
+      - name: thematique
+        tests: [not_null]
+
+  - name: stg_mapping_entites
+    description: "Regex pattern → nom canonique pour déduplication entités."
+    columns:
+      - name: pattern
+        tests: [not_null]
+      - name: nom_canonique
+        tests: [not_null]
+
+  - name: stg_cache_thematique_beneficiaires
+    description: "Cache LLM thématique par bénéficiaire normalisé."
+    columns:
+      - name: beneficiaire_normalise
+        tests:
+          - not_null
+          - unique
+      - name: ode_thematique
+        tests: [not_null]
+
+  - name: stg_lieux_connus
+    description: "Mapping pattern_match → lieu (adresse, arrondissement, coords)."
+    columns:
+      - name: pattern_match
+        tests: [not_null]
+      - name: nom_complet
+        tests: [not_null]
+      - name: arrondissement
+        description: "Arrondissement 1-20"
+
+  - name: stg_cache_geo_ap
+    description: "Cache LLM géolocalisation par ap_code."
+    columns:
+      - name: ap_code
+        tests:
+          - not_null
+          - unique
+      - name: ode_confiance
+        description: "Confiance 0..1 du géocodage LLM"
+
+  - name: stg_match_projet_marches
+    description: "Décisions de match scorées projet × marché."
+    columns:
+      - name: projet_id
+        tests: [not_null]
+      - name: numero_marche
+
+  # ===========================================================================
+  # MARSEILLE — Budget (M57 par nature, multi-schémas)
+  # ===========================================================================
+  - name: stg_marseille_budget
+    description: |
+      Budget primitif + Compte administratif Ville de Marseille (M57, par nature).
+      Normalise 3 schémas CSV différents (BP 2018-2024, CA legacy 2018-2019, CA modern 2020+)
+      vers un format aligné sur stg_budget_principal (Paris) avec commune_slug='marseille'.
+
+      ⚠ Marseille publie en mode VOTE PAR NATURE (chap 11/60/65 = type de charge),
+      pas en vote fonctionnel comme Paris. fonction_code/libelle = NULL.
+
+      Source : raw.marseille_{budget_primitif,compte_administratif}_{year} (12 tables annuelles)
+    columns:
+      - name: commune_slug
+        description: "Toujours 'marseille' — discriminator multi-villes"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['marseille']
+      - name: type_budget
+        description: "'vote' (BP) ou 'execute' (CA)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['vote', 'execute']
+      - name: annee
+        description: "Année fiscale"
+        tests: [not_null]
+      - name: section
+        description: "'Fonctionnement' ou 'Investissement'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Fonctionnement', 'Investissement']
+      - name: sens_flux
+        description: "'Dépense' ou 'Recette'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Dépense', 'Recette']
+      - name: chapitre_code
+      - name: nature_code
+      - name: montant
+        description: "Montant en euros (ABS, type FLOAT64)"
+        tests: [not_null]
+      - name: cle_technique
+        description: "Clé technique unique (marseille-<type>-<year>-<sect>-<sens>-<chap>-<nat>-<hash>)"
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_apur_sru
+    description: "Inventaire SRU par arrondissement 2001-2019 (APUR, licence ODbL). Seed figé — dernière ventilation infra-communale publiée en open data."
+    columns:
+      - name: arrondissement
+        description: "Numéro d'arrondissement (1-20)"
+        tests:
+          - not_null
+      - name: annee
+        description: "Année de l'inventaire SRU (au 1er janvier)"
+        tests:
+          - not_null
+      - name: logements_sociaux
+        description: "Logements sociaux comptabilisés au sens de la loi SRU"
+        tests:
+          - not_null
+      - name: residences_principales
+        description: "Résidences principales au sens SRU (dénominateur DGFiP)"
+        tests:
+          - not_null

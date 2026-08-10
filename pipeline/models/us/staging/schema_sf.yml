@@ -1,0 +1,305 @@
+version: 2
+
+models:
+  - name: stg_us_sf_budget
+    description: >
+      SF adopted budget lines (xdgd-c79v), typed 1:1 with raw. Net totals
+      depend on embedded negative Transfer Adjustment rows — kept. The
+      broken related_govt_unit column (mirrors revenue_or_spending) is
+      deliberately not exposed.
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: revenue_or_spending
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: budget_amt
+        tests: [not_null]
+
+  - name: stg_us_sf_actuals
+    description: >
+      SF spending and revenue actuals (bpnb-jwfb), typed 1:1 with raw.
+      related_govt_units casing normalized ({No,NO,Yes,YES} → {No,Yes} —
+      the verified casing bug, API-RECON §A.2).
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: revenue_or_spending
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: related_govt_units
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Yes', 'No']
+      - name: amount
+        tests: [not_null]
+
+  - name: stg_us_sf_vouchers
+    description: >
+      SF vendor payments / vouchers (n9pm-xkyq), typed 1:1 with raw
+      (~8.07M rows). Text data_as_of parsed from its UTC-offset format.
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: related_govt_units
+        tests:
+          - accepted_values:
+              values: ['Yes', 'No']
+
+  - name: stg_us_sf_contracts
+    description: >
+      SF supplier contracts (cqi5-hm2d), typed 1:1 with raw. Placeholder
+      far-future end dates (2200-12-31) capped to NULL with the published
+      value and a flag preserved.
+    columns:
+      - name: agreed_amt
+        tests: [not_null]
+      - name: project_team_constituent
+        tests: [not_null]
+
+  - name: stg_us_sf_comp
+    description: >
+      SF employee compensation (88g8-5mnd), typed 1:1 with raw. BOTH
+      year_type accountings kept (Calendar + Fiscal) — filtering is
+      downstream business.
+    columns:
+      - name: year
+        tests: [not_null]
+      - name: year_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Calendar', 'Fiscal']
+      - name: total_compensation
+        tests: [not_null]
+
+  - name: stg_us_sf_catalog
+    description: >
+      DataSF Socrata views metadata snapshot (dataset × column) — the
+      provenance source of truth (dataset page URLs, rows_updated_at)
+      for SF marts and exports.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [source_id, column_field_name]
+    columns:
+      - name: source_id
+        tests: [not_null]
+      - name: dataset_page_url
+        tests: [not_null]
+      - name: rows_updated_at
+        tests: [not_null]
+
+  - name: stg_us_sf_population
+    description: >
+      Census Vintage 2025 San Francisco city population row (SUMLEV 162,
+      STATE 06, PLACE 67000), July 1 estimates 2020-2025 pivoted as
+      published.
+    columns:
+      - name: area_name
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['San Francisco city']
+      - name: popestimate_2025
+        tests: [not_null]
+
+  - name: stg_us_sf_payee_buckets
+    description: >
+      Manual bucket classification of top voucher payees (1:1 with
+      seed_us_sf_payee_buckets; 232 rows after the Block 2 extension —
+      the measured per-FY top-30 union + all-time top-200 + six
+      study-named individual landlords). Buckets are display
+      categorization only — amounts always come from the voucher data.
+      `person` rows render as "individual payee" and are never featured
+      (personnes-physiques doctrine); is_aggregation_line marks the
+      Controller's aggregated vendor lines.
+    columns:
+      - name: vendor
+        tests: [not_null, unique]
+      - name: bucket
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - fiscal_agent_debt_service
+                - payroll_passthrough
+                - healthcare
+                - nonprofit
+                - supplier
+                - other
+                - person
+      - name: classification_note
+        tests: [not_null]
+      - name: classified_at
+        tests: [not_null]
+      - name: is_aggregation_line
+        tests: [not_null]
+
+  - name: stg_us_sf_payee_materiality
+    description: >
+      Curated "what a payment buys" picks (1:1 with
+      seed_us_sf_payee_materiality). The seed chooses WHICH voucher lines
+      to feature; amounts are computed from core_us_sf_vouchers in
+      mart_us_sf_payee_materiality — never stored here.
+    columns:
+      - name: slug
+        tests: [not_null, unique]
+      - name: vendor
+        tests: [not_null]
+      - name: department
+        tests: [not_null]
+      - name: sub_object
+        tests: [not_null]
+      - name: fiscal_year
+        tests: [not_null]
+      - name: label
+        tests: [not_null]
+
+  - name: stg_us_sf_job_family_display
+    description: >
+      SF payroll display-family map (1:1 with seed_us_sf_job_family_display):
+      the source's 59 native job-family codes + the synthetic ELEC family,
+      grouped by hand into 16 citizen-readable display families. Display
+      grouping only — amounts always come from the comp data.
+    columns:
+      - name: job_family_code
+        tests: [not_null, unique]
+      - name: display_family
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - Health & Hospitals
+                - Police
+                - Fire
+                - Justice & Corrections
+                - Security, Dispatch & Protection
+                - Transit Operations
+                - Trades & Maintenance
+                - Engineering & Inspection
+                - Social & Community Services
+                - Administration & Finance
+                - Management & Officials
+                - Information Technology
+                - Culture, Parks & Libraries
+                - Airport & Port Operations
+                - Custodial, Food & Service Aides
+                - Other & Unassigned
+      - name: classification_method
+        tests: [not_null]
+      - name: classified_at
+        tests: [not_null]
+
+  - name: stg_us_sf_job_reclass
+    description: >
+      SF payroll junk-title reclassification (1:1 with
+      seed_us_sf_job_reclass): the 103 job codes the source files under
+      "Untitled"/"Unassigned", assigned by hand to real families. Applied
+      only where the native family is junk — never overrides a source value.
+    columns:
+      - name: job_code
+        tests: [not_null, unique]
+      - name: reclass_family_code
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_us_sf_job_family_display')
+              field: job_family_code
+      - name: note
+        tests: [not_null]
+      - name: classified_at
+        tests: [not_null]
+
+  - name: stg_us_sf_purchasing_authority_families
+    description: >
+      Manual display-family classification of the register's 93 distinct
+      purchasing_authority strings (1:1 with
+      seed_us_sf_purchasing_authority_families, authored in-session
+      2026-07-16, human review pending). Families group the STRINGS for the
+      "how contracts get awarded" section — the sole-source lens is driven
+      by the source's sole_source_flg, and fiches render the authority
+      string verbatim.
+    columns:
+      - name: purchasing_authority
+        tests: [not_null, unique]
+      - name: authority_family
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - competitive_bid
+                - sole_source_waiver
+                - emergency
+                - grant
+                - government_agreement
+                - rent_real_estate
+                - legacy_none
+                - other
+      - name: classification_method
+        tests: [not_null]
+      - name: classified_at
+        tests: [not_null]
+
+  - name: stg_us_sf_dept_names
+    description: >
+      Modern-era (FY2019+) SF department display names (1:1 with
+      seed_us_sf_dept_names, Block 1 in-session enrichment). Display layer
+      only — source labels carried verbatim, never overwritten.
+    columns:
+      - name: department_code
+        tests: [not_null, unique]
+      - name: source_label
+        tests: [not_null]
+      - name: display_name
+        tests: [not_null]
+      - name: provenance
+        tests: [not_null]
+
+  - name: stg_us_sf_character_glosses
+    description: >
+      Modern-era SF budget character glosses, both sides (1:1 with
+      seed_us_sf_character_glosses, Block 1 in-session enrichment).
+      display_category drives UI placement (ranked bars vs internal /
+      adjustment / offsets blocks).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [side, character_code]
+    columns:
+      - name: side
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: character_code
+        tests: [not_null]
+      - name: gloss
+        tests: [not_null]
+      - name: display_category
+        tests:
+          - not_null
+          - accepted_values:
+              values: [standard, internal, adjustment, offset]
+      - name: provenance
+        tests: [not_null]
+
+  - name: stg_us_sf_bva_outliers
+    description: >
+      Structural-outlier annotations for the department-level
+      budget-vs-actual table (1:1 with seed_us_sf_bva_outliers): GEN and
+      PUC deviations are measured perimeter artifacts, not execution
+      stories.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [department_code, side]
+    columns:
+      - name: department_code
+        tests: [not_null]
+      - name: outlier_note
+        tests: [not_null]
+      - name: is_structural_outlier
+        tests: [not_null]

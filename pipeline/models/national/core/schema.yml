@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: core_budget_national
+    description: "Budget national dénormalisé - agrégé par (ville, année, catégorie M57)"
+    columns:
+      - name: commune_slug
+        tests: [not_null]
+      - name: annee
+        tests: [not_null]
+
+  - name: core_bilan_national
+    description: "Bilan patrimonial national - actif/passif par ville et année"
+
+  - name: core_marches_national
+    description: "Marchés publics DECP dénormalisés par ville"
+
+  - name: core_subventions_national
+    description: "Subventions nationales > 23k€ dénormalisées par ville"

@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: mart_us_daily_bread
+    description: >
+      US national daily-bread export shape — latest closed MTS month.
+      Receipts by source + outlays by function (detail rows) with per-side
+      totals (= published MTS totals via the tested T=ΣD identities),
+      per-resident scaling and per-row provenance (Fiscal Data dataset page
+      + API endpoint, Census population source).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [side, row_type, category]
+    columns:
+      - name: record_date
+        tests: [not_null]
+      - name: side
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['receipts', 'outlays']
+      - name: row_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['detail', 'total']
+      - name: category
+        tests: [not_null]
+      - name: current_fytd_amt
+        tests: [not_null]
+      - name: population
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+      - name: population_source_url
+        tests: [not_null]
+
+  - name: mart_us_debt_series
+    description: >
+      US public debt series for export — annual FY-end 1790+ (Historical
+      Debt Outstanding), month-end 1993+ and latest observation (Debt to
+      the Penny), with per-row provenance. Dollars.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [series, record_date]
+    columns:
+      - name: series
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['annual_fy_end', 'month_end', 'latest']
+      - name: record_date
+        tests: [not_null]
+      - name: tot_pub_debt_out_amt
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]

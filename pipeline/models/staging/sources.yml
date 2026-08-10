@@ -1,0 +1,635 @@
+# =============================================================================
+# Sources : Tables raw BigQuery - Paris Open Data
+#
+# Dataset: raw (open-data-france-484717.raw)
+# Tables synchronisées via scripts/sync/sync_city.py paris (ingester ODS
+# générique piloté par configs/cities/paris.yaml ; ex-sync_opendata.py, déprécié)
+#
+# CONVENTION DE NOMMAGE:
+#   Table raw = dataset_id OpenData en snake_case (aucune abréviation)
+#
+# ARCHITECTURE (6 sources essentielles):
+# - budget_principal: Budget exécuté (SOURCE DE VÉRITÉ macro)
+# - ap_projets: AP Exécutés (projets nommés)
+# - subventions: Annexe CA - Toutes subventions versées
+# - associations: Subventions associations (avec SIRET)
+# - logements_sociaux: Logements (déjà géolocalisés)
+# - marches_publics: Marchés publics (contexte, non sommable)
+#
+# FRESHNESS:
+#   14 sources monitorées dbt source freshness :
+#   - 9 OpenData Paris core (`_synced_at` stamped par sync_opendata.py /
+#     upload_bilan_comptable.py, activé 2026-05-19 après le premier full
+#     sync CI qui a peuplé la colonne)
+#   - 5 sources internes (sirene_companies, deliberations_*,
+#     pdf_investissements_localises, dette_garantie) avec leur propre
+#     `loaded_at` column
+#   Seuils warn=60j / error=180j (datasets Ville annuels, marge confortable).
+#   Pour détecter en plus un upstream gelé même si nos sync tournent
+#   (cas AP 2022, BV 2021), le check `source_max_year_coverage` dans
+#   run_data_quality_audit.py compare MAX(annee) raw vs année courante.
+# =============================================================================
+
+version: 2
+
+sources:
+  # ===========================================================================
+  # MARSEILLE — Sources data.gouv.fr (synced via sync_city.py marseille)
+  # ===========================================================================
+  - name: marseille_raw
+    description: "Données brutes Marseille (data.gouv.fr → BigQuery raw.marseille_*)"
+    database: open-data-france-484717
+    schema: raw
+    tables:
+      # Budget primitif — 7 années annuelles (M57 par nature)
+      - name: marseille_budget_primitif_2018
+      - name: marseille_budget_primitif_2019
+      - name: marseille_budget_primitif_2020
+      - name: marseille_budget_primitif_2021
+      - name: marseille_budget_primitif_2022
+      - name: marseille_budget_primitif_2023
+      - name: marseille_budget_primitif_2024
+      # Compte administratif — 5 années annuelles, ⚠ 2 schémas (2018-2019 vs 2020+)
+      - name: marseille_compte_administratif_2018
+      - name: marseille_compte_administratif_2019
+      - name: marseille_compte_administratif_2020
+      - name: marseille_compte_administratif_2021
+      - name: marseille_compte_administratif_2022
+      # Subventions Ville (SCDL) — 6 années annuelles (2017-2022)
+      - name: marseille_subventions_ville_2017
+      - name: marseille_subventions_ville_2018
+      - name: marseille_subventions_ville_2019
+      - name: marseille_subventions_ville_2020
+      - name: marseille_subventions_ville_2021
+      - name: marseille_subventions_ville_2022
+
+  - name: paris_raw
+    description: "Données brutes du budget de Paris (OpenData Paris)"
+    database: open-data-france-484717
+    schema: raw
+    
+    tables:
+      # =========================================================================
+      # BUDGET PRINCIPAL - Source de vérité pour les totaux
+      # =========================================================================
+      
+      - name: comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement
+        description: |
+          Budget principal de la Ville de Paris (Ville + Département).
+          Compte Administratif = Budget EXÉCUTÉ (dépenses réelles).
+          Norme comptable M57 à partir de 2019.
+          C'est la SOURCE DE VÉRITÉ pour les totaux globaux.
+
+          ~25k lignes, années 2019-2024
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
+        columns:
+          - name: exercice_comptable
+            description: "Année fiscale (INTEGER)"
+          - name: section_budgetaire_i_f
+            description: "'I' = Investissement, 'F' = Fonctionnement"
+          - name: sens_depense_recette
+            description: "'Dépenses' ou 'Recettes'"
+          - name: type_d_operation_r_o_i_m
+            description: "'Réel', 'Pour Ordre', 'Mixte'"
+          - name: chapitre_budgetaire_cle
+            description: "Code chapitre M57 (STRING)"
+          - name: chapitre_niveau_vote_texte_descriptif
+            description: "Libellé du chapitre"
+          - name: nature_budgetaire_cle
+            description: "Code nature comptable (STRING)"
+          - name: nature_budgetaire_texte
+            description: "Libellé nature"
+          - name: fonction_cle
+            description: "Code fonction (STRING)"
+          - name: fonction_texte
+            description: "Libellé fonction"
+          - name: mandate_titre_apres_regul
+            description: "Montant mandaté après régularisation (FLOAT)"
+
+      # =========================================================================
+      # BUDGET VOTÉ (prévisionnel) - Entité séparée du CA
+      # =========================================================================
+      
+      - name: budgets_votes_principaux_a_partir_de_2019_m57_ville_departement
+        description: |
+          Budget voté (Budget Primitif) de la Ville de Paris.
+          Contient les crédits VOTÉS par le Conseil de Paris (prévisionnel).
+          Entité SÉPARÉE du Compte Administratif (budget exécuté).
+          
+          ⚠️ Dataset STALE sur OpenData Paris (dernière MAJ: 2020-11-25)
+          Couverture: 2019-2021 uniquement.
+          Pour 2022-2026, les BV devront être extraits depuis PDFs.
+
+          Colonnes DIFFÉRENTES du CA (nommage plus ancien).
+
+          ~8.6k lignes, années 2019-2021
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
+        columns:
+          - name: exercice_comptable
+            description: "Année fiscale (TEXT, ex: '2020')"
+          - name: groupe_d_autorisation_i_f
+            description: "'Fonctionnement' ou 'Investissement' (en clair, pas I/F)"
+          - name: sens_depense_recette
+            description: "'Dépenses' ou 'Recettes'"
+          - name: type_d_operation_r_o_i_m
+            description: "'Réel', 'Pour Ordre', 'Mixte'"
+          - name: etape_budgetaire
+            description: "'Budget Primitif' ou 'Budget Suppl.' - type de vote"
+          - name: chapitre_niveau_vote_cle_non_composee
+            description: "Code chapitre M57 (STRING)"
+          - name: chapitre_niveau_vote_texte
+            description: "Libellé du chapitre"
+          - name: nature_reglementaire_cle_non_composee
+            description: "Code nature comptable (STRING)"
+          - name: nature_reglementaire_texte
+            description: "Libellé nature"
+          - name: rubrique_reglementaire_cle
+            description: "Code fonction/rubrique (STRING)"
+          - name: rubrique_reglementaire_texte
+            description: "Libellé fonction/rubrique"
+          - name: budget_vote_pmt
+            description: "Crédits votés (INTEGER, peut être NULL) - montant PRÉVISIONNEL"
+
+      # =========================================================================
+      # INVESTISSEMENTS (AP/CP) - Projets physiques nommés
+      # =========================================================================
+      
+      - name: comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de
+        description: |
+          Autorisations de Programmes EXÉCUTÉES (Compte Administratif).
+          Contient les projets d'équipement (piscines, écoles, parcs...) avec:
+          - Mission et direction gestionnaire
+          - Description détaillée du projet (souvent avec adresse/arrondissement)
+          - Codes nature et fonction budgétaires
+          
+          ATTENTION: Représente ~10% du budget d'investissement total.
+          ~7k lignes, années 2018-2022
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
+        columns:
+          - name: exercice_comptable
+            description: "Année fiscale (INTEGER)"
+          - name: budget
+            description: "Type de budget"
+          - name: section_budgetaire_i_f
+            description: "Section : I=Investissement, F=Fonctionnement"
+          - name: sens_depense_recette
+            description: "Direction du flux ('Dépenses' ou 'Recettes')"
+          - name: type_d_operation_r_o_i_m
+            description: "Type : R=Réel, O=Ordre, I=Interne, M=Mixte"
+          - name: mission_ap_cle
+            description: "Code de la mission AP"
+          - name: mission_ap_texte
+            description: "Libellé de la mission (ex: BPA - PISCINES)"
+          - name: direction_gestionnaire_cle
+            description: "Code direction gestionnaire"
+          - name: direction_gestionnaire_texte
+            description: "Nom de la direction (ex: DJS, DEVE, DVD)"
+          - name: autorisation_de_programme_cle
+            description: "Code AP unique"
+          - name: autorisation_de_programme_texte
+            description: "Description du projet - CONTIENT SOUVENT L'ADRESSE"
+          - name: nature_budgetaire_cle
+            description: "Code nature comptable"
+          - name: domaine_fonctionnel_rubrique_reglementaire_cle
+            description: "Code fonction"
+          - name: mandate_titre_apres_regul
+            description: "Montant mandaté après régul (FLOAT) - MONTANT EXÉCUTÉ"
+
+      # =========================================================================
+      # SUBVENTIONS - Détail des bénéficiaires
+      # =========================================================================
+      
+      - name: subventions_versees_annexe_compte_administratif_a_partir_de_2018
+        description: |
+          Annexe Compte Administratif - TOUTES subventions versées.
+          Inclut associations, entreprises, établissements publics.
+          Sans SIRET, mais avec catégorie et nature juridique.
+          
+          ~47k lignes, années 2018-2024
+          ⚠️ 2020-2021: noms bénéficiaires = NULL à la source.
+          La donnée nommée est ré-injectée via pdf_subventions_b811_paris
+          ci-dessous (extraite de l'annexe B8.1.1 du CA en PDF).
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
+        columns:
+          - name: publication
+            description: "Période de publication ('CA 2023', '2024')"
+          - name: collectivite
+            description: "Collectivité versante (Commune ou Département)"
+          - name: categorie_du_beneficiaire
+            description: "Catégorie (Personnes de droit privé, public)"
+          - name: nature_juridique_du_beneficiaire
+            description: "Nature juridique (Associations, Entreprises, État...)"
+          - name: nom_de_l_organisme_beneficiaire
+            description: "Nom du bénéficiaire (NULL en 2020-2021)"
+          - name: montant_de_la_subvention
+            description: "Montant versé (FLOAT)"
+          - name: prestations_en_nature
+            description: "Prestations en nature (FLOAT)"
+
+      - name: pdf_subventions_b811_paris
+        description: |
+          Annexe B8.1.1 du Compte Administratif (PDF Tome 3) — extraction
+          locale via `parse_subv_pdf_text.py` + chargement par
+          `sync_pdf_subventions_b811.py`.
+
+          Source nommée et exhaustive des subventions versées par la Ville
+          de Paris, imposée par la nomenclature M57 (CGCT L. 2313-1).
+          Utilisée pour combler le trou OpenData sur 2020 et 2021 où le
+          nom du bénéficiaire est NULL côté portail.
+
+          ~29k lignes, années 2020 et 2021 (extensible à d'autres exercices
+          si l'OpenData régresse).
+        loaded_at_field: loaded_at
+        columns:
+          - name: annee
+            description: "Année d'exercice (INTEGER, 2020 ou 2021)"
+          - name: source_pdf
+            description: "URL du PDF source (Tome 3 du CA)"
+          - name: source_section
+            description: "Section du PDF (B8.1.1 - Liste des concours...)"
+          - name: name
+            description: "Nom du bénéficiaire tel qu'imprimé dans le PDF"
+          - name: name_normalized
+            description: "Nom normalisé (UPPER, sans accents, sans articles)"
+          - name: montant_total
+            description: "Montant numéraire annuel (FLOAT)"
+          - name: prestations_nature
+            description: "Prestations en nature (FLOAT)"
+          - name: categorie
+            description: "Catégorie (Personnes de droit privé/public)"
+          - name: nature_juridique
+            description: "Nature juridique (Associations, Entreprises, Personnes physiques...)"
+          - name: nb_subventions
+            description: "Nombre de subventions agrégées (1 par défaut)"
+
+      - name: subventions_associations_votees
+        description: |
+          Subventions aux ASSOCIATIONS uniquement (détaillé avec SIRET).
+          Contient SIRET pour géolocalisation via API Entreprises.
+          
+          ~102k lignes, années 2013-2025
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
+        columns:
+          - name: numero_de_dossier
+            description: "Identifiant unique du dossier"
+          - name: annee_budgetaire
+            description: "Année de la subvention (INTEGER)"
+          - name: nom_beneficiaire
+            description: "Nom du bénéficiaire"
+          - name: numero_siret
+            description: "SIRET du bénéficiaire (FLOAT - doit être LPAD à 14 chars)"
+          - name: objet_du_dossier
+            description: "Objet de la subvention"
+          - name: montant_vote
+            description: "Montant voté (INTEGER)"
+          - name: direction
+            description: "Direction municipale responsable (DAC, DJS, DASES...)"
+          - name: nature_de_la_subvention
+            description: "Nature de la subvention"
+          - name: secteurs_d_activites_definies_par_l_association
+            description: "Secteurs d'activité de l'association"
+
+      # =========================================================================
+      # DONNÉES GÉOLOCALISÉES
+      # =========================================================================
+      
+      - name: logements_sociaux_finances_a_paris
+        description: |
+          Programmes de logements sociaux financés à Paris.
+          DÉJÀ GÉOLOCALISÉ (geo_point_2d disponible).
+
+          ~4k lignes
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
+        columns:
+          - name: identifiant_livraison
+            description: "ID unique du programme"
+          - name: adresse_du_programme
+            description: "Adresse complète"
+          - name: code_postal
+            description: "Code postal"
+          - name: annee_du_financement_agrement
+            description: "Année de financement (INTEGER)"
+          - name: bailleur_social
+            description: "Nom du bailleur"
+          - name: nombre_total_de_logements_finances
+            description: "Nombre total de logements (INTEGER)"
+          - name: dont_nombre_de_logements_pla_i
+            description: "Dont PLAI (très social)"
+          - name: dont_nombre_de_logements_plus
+            description: "Dont PLUS (social)"
+          - name: dont_nombre_de_logements_pls
+            description: "Dont PLS (intermédiaire)"
+          - name: mode_de_realisation
+            description: "Mode de réalisation"
+          - name: arrondissement
+            description: "Numéro d'arrondissement (INTEGER)"
+          - name: nature_de_programme
+            description: "Nature du programme"
+          - name: geo_point_2d
+            description: "Point GPS lat,lon (JSON STRING)"
+
+      # =========================================================================
+      # CONTEXTE - Ne pas sommer avec le budget
+      # =========================================================================
+      
+      - name: decp_marches_paris
+        description: |
+          DECP (Données Essentielles de la Commande Publique) filtrée Ville de Paris.
+          Source: data.gouv.fr (fichiers annuels consolidés).
+
+          Apporte par rapport à `liste_des_marches_de_la_collectivite_parisienne` :
+          - lieu_execution_code / lieu_execution_type_code (dépt du chantier)
+          - ccag (Travaux / Fournitures / PI / MOE / TIC)
+          - code_cpv (catégorisation standardisée européenne)
+          - offres_recues (signal concurrence)
+          - considerations_sociales / environnementales
+          - montant (= montant NOTIFIÉ à la signature, ≠ max plafond Paris)
+
+          Jointure avec liste_des_marches: SUBSTR(num_marche, 5) = decp.id
+
+          Ingéré via pipeline/scripts/sync/fetch_decp_paris.py
+          ~1k lignes / an, 2024+ (années à compléter via --year).
+
+      - name: liste_des_marches_de_la_collectivite_parisienne
+        description: |
+          Marchés publics de la collectivité parisienne.
+          ATTENTION: montant_min/max sont des ENVELOPPES PLURIANNUELLES.
+          NE PAS SOMMER comme dépense annuelle !
+
+          ~17k lignes, années 2013-2024
+        loaded_at_field: _synced_at
+        freshness:
+          warn_after: {count: 60, period: day}
+          error_after: {count: 180, period: day}
+        columns:
+          - name: annee_de_notification
+            description: "Année de notification (INTEGER)"
+          - name: numero_marche
+            description: "Numéro du marché"
+          - name: objet_du_marche
+            description: "Objet du marché"
+          - name: nature_du_marche
+            description: "Nature (travaux, services, fournitures)"
+          - name: fournisseur_nom
+            description: "Nom du titulaire"
+          - name: fournisseur_siret
+            description: "SIRET du titulaire"
+          - name: fournisseur_code_postal
+            description: "Code postal du titulaire"
+          - name: fournisseur_ville
+            description: "Ville du titulaire"
+          - name: montant_min
+            description: "Montant minimum (FLOAT) - ENVELOPPE PLURIANNUELLE"
+          - name: montant_max
+            description: "Montant maximum (FLOAT) - ENVELOPPE PLURIANNUELLE"
+          - name: date_de_notification
+            description: "Date de notification"
+          - name: duree_du_marche_en_jours
+            description: "Durée en jours (INTEGER)"
+
+      # =========================================================================
+      # BILAN COMPTABLE - État patrimonial
+      # =========================================================================
+      
+      - name: bilan_comptable
+        description: |
+          Bilan comptable de la Ville de Paris.
+          État patrimonial annuel (Actif/Passif).
+          Contient les valeurs brutes, amortissements et nettes.
+
+          ~500 lignes, années 2016-2024
+        # freshness désactivée : upload_bilan_comptable.py demande un CSV
+        # local et n'est pas tourné automatiquement. À ré-activer quand le
+        # sync sera automatisé (Issue à créer).
+        columns:
+          - name: Exercice comptable
+            description: "Année fiscale (INTEGER)"
+          - name: Actif/Passif
+            description: "Type: ACTIF ou PASSIF"
+          - name: Poste
+            description: "Catégorie comptable (ACTIF IMMOBILISE, FONDS PROPRES...)"
+          - name: Détail
+            description: "Détail du poste (Terrains, Constructions...)"
+          - name: BRUT
+            description: "Valeur brute (FLOAT)"
+          - name: AMORTISSEMENTS ET PROVISIONS
+            description: "Amortissements et provisions (FLOAT)"
+          - name: NET
+            description: "Valeur nette = BRUT - Amortissements (FLOAT)"
+
+      # =========================================================================
+      # HORS BILAN - Garanties d'emprunt accordées par la Ville
+      # =========================================================================
+
+      - name: enrichment_caches_paris
+        description: |
+          Table polymorphe des caches d'enrichissement (LLM, SIRENE,
+          photos, vulgarisations…). Chaque ligne = un fichier JSON sous
+          `pipeline/cache/enrichment/`. Chargée par
+          pipeline/scripts/sync/sync_enrichment_caches.py.
+        # TODO Issue #6: ajouter freshness quand sync_*.py écrira generated_at
+        # comme TIMESTAMP plutôt que STRING ISO.
+        columns:
+          - name: relative_path
+            description: "Chemin relatif sous pipeline/cache/enrichment/"
+          - name: payload
+            description: "JSON sérialisé (STRING)"
+          - name: size_bytes
+          - name: generated_at
+            description: "Horodatage du sync (STRING ISO; à passer en TIMESTAMP via Issue #6)"
+
+      - name: sirene_companies_paris
+        description: |
+          Cache SIRENE (recherche-entreprises.api.gouv.fr) chargé depuis
+          public/data/enrichment/sirene_companies.json via
+          pipeline/scripts/sync/sync_sirene_companies.py. Utilisé en JOIN
+          par les marts marchés pour combler `fournisseur_nom` quand
+          DECP/OpenData Paris ne le fournit pas.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 30, period: day}
+          error_after: {count: 90, period: day}
+        columns:
+          - name: siren
+            description: "SIREN à 9 chiffres (STRING)"
+          - name: nom
+            description: "Raison sociale"
+          - name: forme_juridique
+          - name: commune
+          - name: code_postal
+          - name: adresse
+          - name: loaded_at
+            description: "Horodatage du sync (TIMESTAMP UTC)"
+
+      - name: deliberations_sessions_paris
+        description: |
+          Métadonnées des sessions du Conseil de Paris (subventions extraites
+          des projets de délibération). Une ligne = une session.
+          Source: scrape Conseil de Paris + LLM extraction → JSON →
+          chargé via pipeline/scripts/sync/sync_deliberations.py.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 30, period: day}
+          error_after: {count: 90, period: day}
+        columns:
+          - name: session_id
+            description: "Identifiant de session (INTEGER)"
+          - name: generated_at
+            description: "Date de génération du JSON source"
+          - name: source
+            description: "Étiquette source"
+          - name: nb_delibs
+            description: "Nombre de délibérations dans la session (INTEGER)"
+          - name: nb_articles
+            description: "Nombre d'articles (subventions individuelles, INTEGER)"
+
+      - name: deliberations_delibs_paris
+        description: |
+          Délibérations du Conseil de Paris (titres + direction). Une ligne =
+          une délibération.
+        columns:
+          - name: session_id
+          - name: delib_id
+            description: "Identifiant délib (ex: '2024 DAC 102')"
+          - name: id_entite
+          - name: title
+          - name: direction_id
+          - name: direction_name
+
+      - name: deliberations_articles_paris
+        description: |
+          Articles individuels (subventions) extraits des délibérations.
+          Une ligne = un bénéficiaire-article.
+        columns:
+          - name: session_id
+          - name: delib_id
+          - name: direction_id
+          - name: direction_name
+          - name: article_num
+          - name: beneficiary
+          - name: siret
+          - name: amount_eur
+          - name: amount_raw
+          - name: motif
+          - name: dossier
+
+      - name: pdf_investissements_localises_paris
+        description: |
+          Investissements localisés extraits des PDFs Annexe IL des Comptes
+          Administratifs Paris (2019-2024). Chaque ligne = un projet.
+          Métadonnées d'extraction (page-total reconciliation, confidence
+          LLM) embarquées par projet.
+
+          Source: extraction Gemini Vision via
+          pipeline/scripts/tools/extract_pdf_investments.py, puis chargé
+          en BQ via pipeline/scripts/sync/sync_pdf_investissements_localises.py.
+          ~3k projets sur 6 années (2019-2024).
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 90, period: day}
+          error_after: {count: 365, period: day}
+        columns:
+          - name: year_publication
+            description: "Année de publication CA (INTEGER)"
+          - name: source
+            description: "Étiquette source (PDF Compte Administratif)"
+          - name: extraction_date
+            description: "Date de l'extraction Gemini Vision (STRING YYYY-MM-DD)"
+          - name: pages_traitees
+            description: "Nombre total de pages PDF analysées (INTEGER)"
+          - name: pages_il
+            description: "Nombre de pages IL réellement utiles (INTEGER)"
+          - name: total_attendu_m_eur
+            description: "Total attendu Annexe IL en M€ (FLOAT) — pour réconciliation"
+          - name: ecart_pourcent
+            description: "Écart % entre total extrait et total attendu (FLOAT)"
+          - name: valide
+            description: "Réconciliation OK (BOOL, true si ecart < seuil)"
+          - name: id
+            description: "Identifiant unique du projet (STRING)"
+          - name: annee
+            description: "Année comptable (INTEGER)"
+          - name: arrondissement
+            description: "Arrondissement extrait (INTEGER, 0 = non spécifié)"
+          - name: chapitre_code
+            description: "Code chapitre (STRING)"
+          - name: chapitre_libelle
+            description: "Libellé chapitre"
+          - name: nom_projet
+            description: "Nom du projet"
+          - name: montant
+            description: "Montant en € (FLOAT)"
+          - name: type_ap
+            description: "Type AP (entretien, equipement, voirie, …)"
+          - name: confidence
+            description: "Confiance LLM 0..1 (FLOAT)"
+          - name: source_page
+            description: "Page PDF de provenance (INTEGER)"
+          - name: source_pdf
+            description: "URL du PDF source"
+          - name: date_extraction
+            description: "Date d'extraction de cette ligne"
+
+      - name: dette_garantie_paris
+        description: |
+          Annexe IV-B du compte administratif : emprunts garantis par
+          la Ville de Paris (engagements hors bilan). Une ligne = un
+          emprunt garanti, avec bénéficiaire, banque prêteuse, montant
+          initial, capital restant dû, taux, durée.
+
+          Source: opendata.paris.fr / dataset `dette-garantie`
+          Ingéré via pipeline/scripts/sync/sync_dette_garantie.py
+          ~10k lignes / année, 2019-2024
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 90, period: day}
+          error_after: {count: 365, period: day}
+        columns:
+          - name: annee_de_publication
+            description: "Année de publication de l'annexe (INTEGER)"
+          - name: collectivite
+            description: "Émetteur (Ville de Paris)"
+          - name: nature
+            description: "Nature de l'opération garantie (logement, équipement…)"
+          - name: annee_de_mobilisation
+            description: "Année de souscription de l'emprunt (INTEGER)"
+          - name: designation_du_beneficiaire
+            description: "Bénéficiaire (organisme dont l'emprunt est garanti)"
+          - name: objet_de_l_emprunt_garanti
+            description: "Objet (souvent l'adresse de l'opération)"
+          - name: organisme_preteur_ou_chef_de_file
+            description: "Banque prêteuse"
+          - name: montant_initial
+            description: "Montant initial de l'emprunt (FLOAT, €)"
+          - name: capital_restant_du_au_31_12_de_l_annee_de_publication
+            description: "Capital restant dû au 31/12 (FLOAT, €) — engagement HB courant"
+          - name: duree_residuelle
+            description: "Durée résiduelle (FLOAT, années)"
+          - name: taux_initial_taux
+            description: "Type de taux: F=fixe, V=variable"
+          - name: taux_initial_index
+            description: "Index si variable (Euribor 3M, Livret A…)"
+          - name: taux_initial_taux_actuariel
+            description: "Taux actuariel à l'initial (FLOAT, %)"
+          - name: annuite_garantie_au_cours_de_l_exercice_en_interets
+            description: "Annuité intérêts (FLOAT, €)"
+          - name: annuite_garantie_au_cours_de_l_exercice_en_capital
+            description: "Annuité capital (FLOAT, €)"

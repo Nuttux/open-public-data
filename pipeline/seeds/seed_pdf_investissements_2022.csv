@@ -1,0 +1,447 @@
+id,annee,arrondissement,chapitre_code,chapitre_libelle,nom_projet,montant,type_ap,confidence,source_page,source_pdf,date_extraction
+2022_00_9_000,2022,0,,,Bibliothèque Charlotte Delbo - Refection de la cage d'escalier,60629.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_001,2022,0,,,"EE 11, rue d'Argenteuil - Modernisation cour oasis, travaux de sécurité",319237.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_002,2022,0,,,"EE 21, rue Saint-Louis en l'Ile - Modernisation de la cour OASIS",285329.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_003,2022,0,,,"EE 15, Neuve Saint-Pierre - Modernisation des menuiseries extérieures, aménagement cour Oasis",202787.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_004,2022,0,,,"EM18, Poulletier - Modernisation des sanitaires de la cour",176326.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_005,2022,0,,,"EE 6, rue de Louvois - Mise aux normes service restauration, travaux de sécurité",173133.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_006,2022,0,,,"Square Louis XIII - Aménagement des sanitaires PMR, Rénovation des sols",323650.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_007,2022,0,,,Trame verte Bourdon - Végétalisation,69208.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_008,2022,0,,,Rue du Temple - Travaux de transformation,482577.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_009,2022,0,,,Rue de Reaumur - Réfection de la Chaussée,198571.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_010,2022,0,,,Place André Malraux - Réfection de la Chaussée,103382.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_011,2022,0,,,Rue de la Verrerie - Travaux d'aménagement,135161.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_012,2022,0,,,"CC 132, rue Rambuteau - Restructuration crèche, travaux de sécurité",273350.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_013,2022,0,,,"CC 7-9, rue des Barres - Aménagement de la cour et du jardin extérieur",221283.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_014,2022,0,,,"CC 21, rue des Blancs Manteaux - Restructuration partielle",100404.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_015,2022,0,,,"CS Jean Dame - Création de sanitaire, Rénovation du parquet",117417.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_016,2022,0,,,Gymnase Saint-Merri - Désordres acoustiques au gymnase,71286.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_017,2022,0,,,"Eglise Saint Eustache - Restauration du massif d'entrée, autres travaux",2900408.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_018,2022,0,,,Eglise Saint-Louis en l'Île - Toitures et façades,1357293.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_019,2022,0,,,Eglise Saint-Gervais et Saint-Protais - Clocher et bras nord du transept,1251126.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_020,2022,0,,,Temple Des Billettes - Restauration façade principale Billettes,606858.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_021,2022,0,,,Boulevard Bourdon - Travaux végétalisation,350426.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_022,2022,0,,,Piscine Saint-Merri - Travaux de restructuration,225528.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_023,2022,0,,,"CC 26, rue Saint Roch - Travaux de restructuration",205909.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_024,2022,0,,,Participatif,2018.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_025,2022,0,,,Rénovation de la fontaine Niki de Saint Phalle,998012.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_026,2022,0,,,Agrandissement de la bibliothèque Charlotte Delbo,105529.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_027,2022,0,,,Aménagement du grenier de l'école des Tournelles,185255.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_028,2022,0,,,Paris championne du climat,298595.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_029,2022,0,,,Sauvons la fontaine Molière !,274363.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_030,2022,0,,,Renforcer les moyens d'action en faveur de la propreté,755210.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_031,2022,0,,,Pour une gestion de l'eau améliorée,123537.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_032,2022,0,,,Renforcer les actions et multiplier les lieux de solidarité,141000.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_00_9_033,2022,0,,,Végétaliser les murs et les toits des écoles Saint-Merri/Renard,129418.0,autre,0.7,9,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_000,2022,5,,,Bibliothèque Buffon - Restructuration des locaux,16659.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_001,2022,5,,,"EP 14, rue Victor Cousin - Modernisation du préau",59293.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_002,2022,5,,,garde corps de l'escalier S,40882.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_003,2022,5,,,"du schéma directeur securité-accessibilité, Restauration de la salle du Capitant",102709.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_004,2022,5,,,Rue Rollin - Réalisation d'un mur végétalisé,57369.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_005,2022,5,,,Jardin Tino Rossi - Réfection partielle des sols,51178.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_006,2022,5,,,"CC 11, rue Censier - Remplacement des menuiseries extérieures et de la biberonnie",152980.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_007,2022,5,,,"CC 4, rue Jean Calvin - Remplacement des menuiseries extérieures",149754.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_008,2022,5,,,thermique et de la ventilation,143813.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_009,2022,5,,,Boulevard Saint Marcel - Travaux divers,211793.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_010,2022,5,,,Boulevard de Port - Réfection de la chaussée du couloir de bus,139454.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_011,2022,5,,,Réfection de divers trottoirs de l'arrondissement,77169.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_012,2022,5,,,Colleges Pierre Alviset et Raymond Queneau - Modernisation des cuisines,535036.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_013,2022,5,,,Mairie du 5ème arrondissement - Schéma directeur sécurité-accessibilité,850890.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_014,2022,5,,,"Piscine 19, rue de Pontoise - Travaux de rénovation",5730507.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_015,2022,5,,,AP de Budget Participatif,2021.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_016,2022,5,,,Agir pour une ville plus propre,195863.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_05_12_017,2022,5,,,Réaménagement de la cour de l'école Arbalète,138280.0,autre,0.7,12,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_000,2022,6,,,extérieures,125990.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_001,2022,6,,,(sanitaires),158941.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_002,2022,6,,,EE 7 rue Jardinet - Modenisation du sol de la cour,110970.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_003,2022,6,,,du rez-de-chaussée,98458.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_004,2022,6,,,"EM Littré - Pose de stores électriques, modernisation de la toiture",81086.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_005,2022,6,,,"modernisation du réseau d'eau froide, travaux d'accessibilité des terrasses",80483.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_006,2022,6,,,douche dans les sanitaires,18365.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_007,2022,6,,,EE 42 rue Madame - Pose de stores,8732.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_008,2022,6,,,Entretien d'espaces verts Square F.Desruelles- Réfection de la clôture,139081.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_009,2022,6,,,"CC 15, rue Visconti - Végétalisation de la cour du RDC et pose de vitrage dans les sections",121977.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_010,2022,6,,,"sections, traitement des peintures",48190.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_011,2022,6,,,Gymnase Vaugirard Littré - Travaux d'entretien (locaux sociaux),22214.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_012,2022,6,,,Rue Mabillon - Réfection de la chaussée,75310.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_013,2022,6,,,Rue de Rennes - Rénovation de la chaussée et des trottoirs,153652.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_014,2022,6,,,Divers réfection de trottoirs,68957.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_015,2022,6,,,Rue Saint-Sulpice - Désamiantage de la chaussée,43739.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_016,2022,6,,,Boulevard Raspail (au niveau des rues de Vavin et Huysmans) - Rénovation de la chaussée,105727.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_017,2022,6,,,Saint-Sulpice - Travaux de restauration,181398.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_018,2022,6,,,CC Garancière - Travaux de restructuration,906604.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_019,2022,6,,,Participatif,2018.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_020,2022,6,,,Rénovation de la fresque de l’église Notre-Dame-des-Champs,226989.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_021,2022,6,,,Restaurer deux chapelles de l'église Saint-Sulpice,366642.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_022,2022,6,,,Des cours « Oasis » pour le groupe scolaire Littré,65143.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_023,2022,6,,,"Renaissance du cloître abbatial en végétal, square Laurent Prache",12611.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_06_15_024,2022,6,,,Réfection des trottoirs du 6e arrondissement,49565.0,autre,0.7,15,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_000,2022,7,,,menuiseries extérieures,263479.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_001,2022,7,,,différeRnts niveaux,171646.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_002,2022,7,,,extérieures et réfection de la salle de bains du logement du gardien,174371.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_003,2022,7,,,Jardin du Champs de Mars - Rénovation et mise en sécurité de l'aire de jeux,127707.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_004,2022,7,,,Square Missions étrangères - Rénovation des aires de jeu,58605.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_005,2022,7,,,"Etablissements de petite enfance Rue de Grenelle - Crèche collective - Restructuration de plan de change, Rénovation du sol de l'escalier",173510.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_006,2022,7,,,Centre Sportif Cler - Travaux de mise en accessibilité,256852.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_007,2022,7,,,Boulevard Raspail (à différents niveaux) - Travaux de rénovation de la chaussée,577846.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_008,2022,7,,,Avenue de Suffren (à différents niveaux) - Travaux de rénovation de la chaussée,515810.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_009,2022,7,,,Etablissements de petite enfance Rue de l'Université - Construction d'une crèche,3299129.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_010,2022,7,,,Ilot St Germain - Construction d'un gymnase,2018522.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_011,2022,7,,,AP de Budget Participatif,2021.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_07_18_012,2022,7,,,Restaurer et embellir les églises du 7e arrondissement,197322.0,autre,0.7,18,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_000,2022,8,,,Bibliothèque Europe - Réaménagement des locaux,37745.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_001,2022,8,,,EM Roquepine - Modernisation des deux cours,136079.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_002,2022,8,,,travaux de rénovation des sanitaires et du préau,67953.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_003,2022,8,,,conférences,60055.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_004,2022,8,,,Square Louis XVI- Rénovation du massif et d'une allée,50067.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_005,2022,8,,,Jardin des Champs-Elysées Travaux d'entretien,19695.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_006,2022,8,,,Hôtel Beaujon - Tavaux sur les extérieurs du bâtiment,155750.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_007,2022,8,,,du local poterie,26674.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_008,2022,8,,,Rue de Ponthieu - Travaux d'aménagement de la chaussée,53144.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_009,2022,8,,,Quartier de l'Europe,53257.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_010,2022,8,,,Rue de la Bienfaisance,222997.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_011,2022,8,,,Place de la Concorde - Travaux d'entretien,106818.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_012,2022,8,,,Rue de la Ville L'Evèque - Travaux d'entretien de la chaussée,101250.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_013,2022,8,,,Rue Saint Florentin - Travaux d'entretien des trottoirs,80565.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_014,2022,8,,,Rue Chauveau Lagarde,25643.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_015,2022,8,,,Eglise Sainte-Marie-Madeleine - Restauration de l'ensemble des façades,3259407.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_016,2022,8,,,Eglise Saint-Philippe du Roule - Restauration des toitures,748751.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_017,2022,8,,,École polyvalente Monceau - Travaux de restructuration et de construction,38988.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_018,2022,8,,,AP de Budget Participatif,2018.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_019,2022,8,,,Du Vert et du Bien-Être sur le parvis - Hôtel Beaujon,19548.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_020,2022,8,,,Rénovation de la chaussée de la rue de Monceau,149499.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_021,2022,8,,,Un 8e apaisé,6172.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_022,2022,8,,,Lutte contre les nuisances sonores sur les grands boulevards,17383.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_023,2022,8,,,Rénovation de la piste cyclable sur le boulevard Malesherbes,8896.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_08_21_024,2022,8,,,Patrimoine de voirie,2019.0,autre,0.7,21,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_000,2022,9,,,"EE 32, Bruxelles - Cour Oasis, Modernisation des salles adultes",503195.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_001,2022,9,,,"EE 32, rue Buffaut - Cour Oasis (Mis en place de revêtement clair)",140103.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_002,2022,9,,,"EM 34, rue Buffaut - Modernisation des salles adultes et des sanitaires",98623.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_003,2022,9,,,Mairie du 9ème arrondissement - Réfection façade Rossini de la salle polyvalente,29941.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_004,2022,9,,,"CC 25, rue de la Rochefoucauld - Modernisation section bébé",93294.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_005,2022,9,,,mur mitoyen,55686.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_006,2022,9,,,"Gymnase Valeyre - Agrandissement du mur d'escalade, Rénovations diverses",148970.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_007,2022,9,,,Rue La Bruyère (différents niveaux) - Travaux de rénovation de chaussée,159368.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_008,2022,9,,,Rue Condorcet - Travaux de rénovation de chaussée,155222.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_009,2022,9,,,Rue Louise-Émilie de la Tour d'Auvergne - Agrandissement du trottoire,80710.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_010,2022,9,,,Eglise De La Trinite - Restauration du massif d'entrée,6476861.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_011,2022,9,,,Eglise Notre-Dame de Lorette - Restauration des maçonneries et des structures,105298.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_012,2022,9,,,"EM 12, rue Chaptal - Mise aux normes de 3 cuisines",441825.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_013,2022,9,,,AP de Budget Participatif,2021.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_014,2022,9,,,Des Tableaux Numériques Interactifs dans toutes les classes,199917.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_09_24_015,2022,9,,,Redonner vie à la fontaine Pigalle,71864.0,autre,0.7,24,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_000,2022,10,,,"toiture, ravalement de la courette intérieure",302771.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_001,2022,10,,,"EE des Recollets - Création d'une salle, travaux de rénovation et reprise d'étanchéité",262919.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_002,2022,10,,,EM Martel - Réfection du préau et rénovation de la couverture,147424.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_003,2022,10,,,EM Paradis - Travaux suite aux désordres hourdis,120955.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_004,2022,10,,,EM Louis Blanc - Travaux de rénovation et d'étanchéité dans la cour,113492.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_005,2022,10,,,EM Pierre Bullet - Cour oasis,103458.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_006,2022,10,,,réfectoire de la maternelle et remplacement du sol amianté du préau,101848.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_007,2022,10,,,Jardin Villemin - Rénovation,82000.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_008,2022,10,,,Square des Recollets - Rénovation,36699.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_009,2022,10,,,Entretien d'espaces verts Square Alban Satagne - Rénovation du square,10887.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_010,2022,10,,,"CC Claude Vallefaux, - Travaux de modernisation des sols et des murs",217010.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_011,2022,10,,,réseau d'eau,34357.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_012,2022,10,,,"d'alarme, rénovation de la salle de spectacle",108904.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_013,2022,10,,,CPA Grange aux Belles - Création d'une réserve (Dojo) et travaux de peinture,71141.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_014,2022,10,,,CPA Jean Verdier - Amélioration de l'accueil,40456.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_015,2022,10,,,"TEP Verdun-Valmy , remplacement de la clôture (TEP)",50543.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_016,2022,10,,,CS Grange aux Belles - Sécurisation de la façade et travaux de maçonnerie,33873.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_017,2022,10,,,Gymnase Parmentier - Remplacement des buts,23182.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_018,2022,10,,,Rue Saint Vincent de Paul,723581.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_019,2022,10,,,"Rue du Château d'Eau, chaussée",192286.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_020,2022,10,,,Rue des Vinaigrier et Poulmarch - Réfection des trottoirs,113611.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_10_27_021,2022,10,,,Rue Boy Zélensky (entre n°1 et 10) - Travaux de réfection,111407.0,autre,0.7,27,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_000,2022,11,,,EE 77 boulevard de Belleville - Modernisation des menuiseries extérieurs,114728.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_001,2022,11,,,"EM 11 bis, avenue Parmentier - Modernisation de la couverture",126876.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_002,2022,11,,,"EM 10 bis, rue Duranti - Sécurisation et Amélioration des façades",102202.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_003,2022,11,,,"EE 8, cité Voltaire - Modernisation sanitaires 1er étage, Modernisation des portes et fenêtres",96765.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_004,2022,11,,,"EE 109 bis, avenue Parmentier - Modernisation de la couverture",91863.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_005,2022,11,,,Square des jardinières - Modernisation du TEP,54277.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_006,2022,11,,,"CC 13 bis, rue Popincourt - Modernisation des menuiseries, Restructuration des plans de change",120932.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_007,2022,11,,,"CC 62, rue Saint-Sabin - Remplacement des portes pivot",87758.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_008,2022,11,,,"TEP Philippe Auguste - Création d'une salle polyvalente, rénovation de la piste du terrain",150268.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_009,2022,11,,,désenfumage,54655.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_010,2022,11,,,"Avenue de la République - Piste cyclable, réfection de la chaussée",561113.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_011,2022,11,,,Boulevard de Ménilmontant - Réfection de la chaussée,223176.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_012,2022,11,,,République St Ambroise - Embellir Votre Quartier,134049.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_013,2022,11,,,Basilique Notre Dame Du Perpetuel Secours - Restauration des toitures,204706.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_014,2022,11,,,Eglise Saint-Joseph - Restauration du massif d'entrée,151602.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_015,2022,11,,,"Opérations individualisées 1er degré EM 12, Cité Souzy - Rénovation de la cuisine",1193077.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_016,2022,11,,,Mairie du 11ème arrondissement - Ravalement et couverture,859892.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_017,2022,11,,,CPA Mercoeur - Démolition Renovation,303436.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_018,2022,11,,,Rue du Faubourg Saint-Antoine - Travaux d'aménagement,1006195.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_019,2022,11,,,AP de Budget Participatif,2019.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_020,2022,11,,,Des cours embellies et équipées pour les élèves du 11e,289804.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_021,2022,11,,,Rénovons les terrains de sport du 11e,195147.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_022,2022,11,,,Réduire l'empreinte écologique des bâtiments,149204.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_023,2022,11,,,Refaire les trottoirs dégradés à Belleville Saint-Maur,284784.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_11_31_024,2022,11,,,Rénover et sécuriser les rues du quartier Belleville Saint-Maur,173416.0,autre,0.7,31,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_000,2022,12,,,travaux sur l'issue de secours,22997.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_001,2022,12,,,études sur le confort thermique,35985.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_002,2022,12,,,EE Charenton - Cour oasis et modernisation des menuiseries extérieures,557279.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_003,2022,12,,,des murs de la cours,391113.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_004,2022,12,,,"changement des portes côté cour, modernisation du sol de la cour",194404.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_005,2022,12,,,EM Baudelaire - Modernisation des menuiseries extérieures,182772.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_006,2022,12,,,EM Brèche aux Loups - Modernisation de la voie d'accès,168493.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_007,2022,12,,,"des escaliers, modernisation de la ventilation du réfectoire",108384.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_008,2022,12,,,EM Marsoulan - Modernisation du sol de la terrasse et rénovation de peinture,45566.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_009,2022,12,,,"d'aménagement de la terrasse (R+1), bureau du DGS",55444.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_010,2022,12,,,Square Jean Morin - Réaménagement de l'aire de jeux,93302.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_011,2022,12,,,Square Van Vollenhoven - Rénovation des portails et divers travaux,76027.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_012,2022,12,,,Parc de Bercy - Rénovation de la Roseraie,42850.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_013,2022,12,,,CC Pommard - Modernisation du poste de change,55591.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_014,2022,12,,,CC Daumesnil - Changement des plans de change,52207.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_015,2022,12,,,MC Montgallet - Changement des fenêtres du bureau de la directrice,14963.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_016,2022,12,,,CPA Musidora - Remplacement de fenêtres,42853.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_017,2022,12,,,et d'accessibilité,25953.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_018,2022,12,,,(travaux d'étanchéité),452700.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_019,2022,12,,,Aire de roller Bercy - Travaux de restructuration,32028.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_020,2022,12,,,CS Carnot - Rénovation des vestiaires et des sanitaires,120043.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_021,2022,12,,,CS Polygone - Système de sécurité incendie,44988.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_022,2022,12,,,Rue de Reuilly : Placette Reuilly,439041.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_023,2022,12,,,Rue de la Brèche aux Loups,268829.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_024,2022,12,,,Rue de Charenton- Travaux de désencombrement,148577.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_025,2022,12,,,Rue de Charenton - rue Poudhon - rue Taine,109668.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_026,2022,12,,,Rue de Reuilly - Mise à sens unique de la rue de Reuilly,302992.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_027,2022,12,,,Réfection des pieds d'arbre et végétalisation,194637.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_028,2022,12,,,Quai de la Rapée - Rénovation de la chaussée,175966.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_12_34_029,2022,12,,,Quai de Bercy - Travaux sur la piste cyclable du quai de Bercy,107487.0,autre,0.7,34,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_000,2022,13,,,"EM 100, rue Glacière - Modernisation des sanitaires, Opérations multiples",199386.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_001,2022,13,,,"d'éclairage, divers",162963.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_002,2022,13,,,EM 31 rue Château des Rentiers - Désamiantage des deux cages d'escalier,131444.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_003,2022,13,,,"de la salle des fêtes, divers travaux",74130.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_004,2022,13,,,Jardin Juan Miro - Réfection de l'aire de jeux,124507.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_005,2022,13,,,Jardin Yacine Kateb - Réfection des allées et des entrées,90699.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_006,2022,13,,,"CC 33, rue du Javelot - Travaux d'étancheité, Création d'une réserve au sous sol",262557.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_007,2022,13,,,"CC 10, rue de la Pointe d'Ivry - Mise aux normes du plan de change",121706.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_008,2022,13,,,"CS Carpentier - Remplacement du TGBT, rénovation des vestiaires",233784.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_009,2022,13,,,"CS Boutroux - Remplacement des eclisses, Rénovation des locaux sociaux",109304.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_010,2022,13,,,Divers rues - Embellir Votre Quartier Choisy,1052734.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_011,2022,13,,,Rue Caillaux - Travaux de rénovation de chaussée,178489.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_012,2022,13,,,Rue Jenner - Travaux de rénovation de chaussée,148762.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_013,2022,13,,,Sainte-Anne de la Butte-aux-Cailles - Consolidation pérenne,1040649.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_014,2022,13,,,rue Watt - Réalisation d'atelier cirque et arts de la rue,859920.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_015,2022,13,,,"EE A 53, rue Baudricourt - Modernisation de la cuisine et du réfectoire",5301177.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_016,2022,13,,,Ecole provisoire Franc-Nohain -Création,254304.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_017,2022,13,,,Mairie du 13ème arrondissement - Ravalement des façades,247029.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_018,2022,13,,,AP de Budget Participatif,2018.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_019,2022,13,,,Aménager et rénover l’église Notre-Dame-de-la-Gare,796547.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_020,2022,13,,,Pour un conservatoire plus adapté et mieux équipé,284035.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_021,2022,13,,,Des cantines plus agréables pour nos enfants dans quatre écoles du 13e,251193.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_022,2022,13,,,Des réfectoires ameliorés et des lieux de détente dans les écoles du 13e,332890.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_023,2022,13,,,Rénovation partielle du square René Le Gall,864986.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_13_38_024,2022,13,,,Aménagements cyclables et bus pour la rue Bobillot,106203.0,autre,0.7,38,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_000,2022,14,,,"EE Hypolite Maindron - Création d'une salle polyvalente, modernisation de la cour",268038.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_001,2022,14,,,"classes, traitement d'étanchéité de la terrase et restructuration de restauration",246517.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_002,2022,14,,,"EM Boulard - Traitement acoustique, modernisation des menuiseries extérieures sur rue",233535.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_003,2022,14,,,l'évacuation du bac à graisse,219858.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_004,2022,14,,,EM Maurice Ripoche - Modernisation des menuiseries et traitement de l'accoustique,180360.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_005,2022,14,,,EE Asseline - Modernisation de la cour,153969.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_006,2022,14,,,EE Jean Zay - Traitement de l'étanchéité du logement du gardien,36300.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_007,2022,14,,,Mairie - Réaménagement de l'accueil du RDC et modernisation de l'installation électrique,38693.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_008,2022,14,,,"Square Serment de Koufra - Travaux d'enretien , de végétalisation et d'arrosage",128087.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_009,2022,14,,,Square l'Abbé Lemire - Travaux de modernisation (type coulée verte) et d'entretien,94736.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_010,2022,14,,,Square du Chanoine Viollet - Travaux d'entretien,72993.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_011,2022,14,,,Parc Montsouris Travaux d'entretien courant,32397.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_012,2022,14,,,descente (accès sous-sol),109196.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_013,2022,14,,,CC Bardinet - Travaux de mise aux normes et de restructuration,52591.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_014,2022,14,,,CPA Marc Sangnier - Travaux d'entretien (infiltration au niveau de la terrasse),28571.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_015,2022,14,,,Gymnase Huyghens - Reprise d'étanchéité,165429.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_016,2022,14,,,d'athlétisme et création d'un accueil extérieur,105123.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_017,2022,14,,,Gymnase Alésia - Rénovation des vestiaires,79243.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_018,2022,14,,,Gymnase Cange - Travaux système de sécurité incendie,65854.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_019,2022,14,,,Grand Montparnasse,301396.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_020,2022,14,,,revêtements de la chaussée et des trottoirs et des signalisations horizontales,188910.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_021,2022,14,,,nouveau tapis,613588.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_022,2022,14,,,Rue Texel - Travaux de rénovation de la chaussée,175089.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_023,2022,14,,,Rue Gassendi - Travaux de rénovation de la chaussée,104468.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_024,2022,14,,,Eglise Saint-Pierre de Montrouge - Restauration de la flèche du clocher,563761.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_025,2022,14,,,"Ecole Spéciale d'architecture 254, boulevard Raspail - Restauration des façades",633444.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_026,2022,14,,,ZAC St Vincent Paul - Création d'une école,1793995.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_027,2022,14,,,Etablissements de petite enfance ZAC St Vincent Paul - Création d'une crèche,525950.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_028,2022,14,,,ZAC St Vincent Paul - Création d'un gymnase,1280054.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_029,2022,14,,,CS Elisabeth - Travaux de réfection de la piste d'athlétisme,592665.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_030,2022,14,,,Réinventer Montparnasse,523703.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_14_41_031,2022,14,,,Îlot Gaité Montparnasse - Aménagement de voirie avenue du Maine,1138601.0,autre,0.7,41,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_000,2022,15,,,"EE 10, rue Emeriau - Cour Oasis, Modernisation des classes",300560.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_001,2022,15,,,"EM 2, rue Theodore Deck - Travaux couverture",227908.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_002,2022,15,,,"EE 197, rue Saint-Charles - Modernisation des sanitaires",144842.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_003,2022,15,,,"EM 83, rue Mademoiselle - Adduction d'eau",128760.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_004,2022,15,,,Mairie du 15ème arrondissement - Travaux de cheminement Aire de jeux,159871.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_005,2022,15,,,Square Pablo Casals - Rénovation et d'accessibilité de l'aire de jeux,84750.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_006,2022,15,,,Jardin Boucicaut - Rénovation de l'aire de jeux,71094.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_007,2022,15,,,"CC 131, rue Falguière - Modernisation de la section des grands, étanchéité de la toiture",47686.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_008,2022,15,,,Gymnase Raymond Burgard - Réorganisation des locaux et changement d'énergie,239452.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_009,2022,15,,,TEP André Mourlon - Réfection des sols des deux terrains de tennis,193467.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_010,2022,15,,,Gymnase Montparnasse - Travaux de réfection des sols sportifs,197170.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_011,2022,15,,,Rue Brancion - Travaux de rénovation de chaussée,389704.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_012,2022,15,,,Rue Léon Lhermitte - Travaux de rénovation de chaussée,346044.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_013,2022,15,,,Rue du général Castelnau - Travaux de rénovation de chaussée,126980.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_014,2022,15,,,Divres rues - Embellir Votre Quartier,334730.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_015,2022,15,,,"GS 3, place du Cardinal Amette - Restructuration du groupe scolaire",713058.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_016,2022,15,,,"EM 99, rue Olivier de Serres - Extension et restructuration",188470.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_017,2022,15,,,Parc André Citroën - Travaux de rénovation,366490.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_018,2022,15,,,Stade Suzanne Lenglen - Rénovation Rugby,476468.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_019,2022,15,,,AP de Budget Participatif,2021.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_020,2022,15,,,Poursuivre la coulée verte dans le quartier Beaugrenelle,216182.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_021,2022,15,,,Des fruits et légumes bio « Made in 15e »,169170.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_022,2022,15,,,Des laveuses pour les trottoirs du 15e,94361.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_023,2022,15,,,De nouvelles rues intelligentes dans le 15e,684648.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_15_45_024,2022,15,,,En piste pour encore plus d'aménagements cyclables,215820.0,autre,0.7,45,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_000,2022,16,,,CM Francis Poullenc - Modernisation de l'auditorium et travaux dans la salle du personnel,135179.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_001,2022,16,,,EP Decamps - Réfection des sanitaires et de la toiture,104027.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_002,2022,16,,,EM Passy - Modernisation des menuiseries extérieures,82830.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_003,2022,16,,,EE Chernoviz - Modernisation des sanitaires et menuiseries extérieures,62094.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_004,2022,16,,,"Mairie - Ravalement extérieur, rénovation de la salle des fêtes, réaménagement des locaux",409267.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_005,2022,16,,,Parc Sainte Périne - Rénovation de l'aire de jeux,120000.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_006,2022,16,,,Square Jefferson - Rénovation de l'aire de jeux,57265.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_007,2022,16,,,"courant, mise en sécurité des grilles, restauration d'escliers",200762.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_008,2022,16,,,Jardin des Poètes - Rénovation des allées et des aires de jeux,132716.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_009,2022,16,,,l'éclairage,81810.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_010,2022,16,,,Square Jefferson - Travaux d'agrandissement,16895.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_011,2022,16,,,distribution d'eau,94833.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_012,2022,16,,,"CPA Point du jour, Antenne Mesnil Saint-Didier - Reprise de l'étanchéité de la toiture",180246.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_013,2022,16,,,CS Henry de Montherlant - Réfection du sol du tennis,127437.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_014,2022,16,,,Stade Christophe Dominici - Rénovation du logement,60323.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_015,2022,16,,,Embellir votre quartier - Auteuil Sud,327621.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_016,2022,16,,,Avenue de Versailles - Réfection de la chaussée,454448.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_017,2022,16,,,Opération sécurité divers carrefours 16e,109878.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_018,2022,16,,,Boulevard Murat - Réfection de la chaussée,452538.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_019,2022,16,,,Avenue d'Iéna - Réfection de la chaussée,283248.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_020,2022,16,,,sens cyclable,261751.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_021,2022,16,,,Allée de Longchamp - Réfection de la chaussée,238441.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_022,2022,16,,,Place Charles de Gaulle - Réfection des trottoirs,224597.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_023,2022,16,,,Boulevard Anatole France,145157.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_024,2022,16,,,Eglise Notre Dame d'Auteuil - Restauration des décors intérieurs et des vitraux,1260658.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_025,2022,16,,,Jardin des Serres d'Auteuil - Réfection de la couverture du local du personnel,123614.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_16_48_026,2022,16,,,Stade Coubertin - Réfection partielle de la couverture,32031.0,autre,0.7,48,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_000,2022,17,,,Bibliothèque Colette Vivier - Amélioration thermique escalier et toiture,329199.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_001,2022,17,,,"EM 8, rue Tapisseries - Réfection du sol de la cour",384337.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_002,2022,17,,,EM 20 rue Jouffroy d'Abbans - Réfection des menuiseries extérieurs,284967.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_003,2022,17,,,"élèctrique""",262941.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_004,2022,17,,,"EE 90, boulevard Bessieres - Réfection menuiseries et de la porte d'entrée",146509.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_005,2022,17,,,Mairie du 17ème arrondissement - Modernisation et aménagement de différents locaux,99957.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_006,2022,17,,,Square Saint-Odile - Rénovation de l'aire de jeux,302077.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_007,2022,17,,,"Square Auguste Balagny - Rémanégament du square, travaux divers",250076.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_008,2022,17,,,Square des Batignolles - Rénovation de l'aire de jeux,168646.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_009,2022,17,,,Parc Clichy-Batignolles - Rénovation de l'aire de jeux et des allées,118309.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_010,2022,17,,,"CC 30, rue Christine de Pisan - Modernisation postes de change T1/2",103840.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_011,2022,17,,,CS Courcelles - Réfection des menuiserie extérieures,124228.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_012,2022,17,,,"CS Max Rousié - Réorganisation des locaux sociaux, Rénovation du site entrainement",92586.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_013,2022,17,,,CS Leon Biancotto - Rénovation du gymnase,81275.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_014,2022,17,,,Rue de Rome - Travaux de voirie,761126.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_015,2022,17,,,"Place Richard Barret - Piétonnisation de la place, Travaux d'aménagement",556313.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_016,2022,17,,,Divres rues - Embellir Votre Quartier,417779.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_017,2022,17,,,Enseignement artistique Conservatoire Debussy - Création d'un auditorium,197729.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_018,2022,17,,,Parc Martin Luther King - Aménagement (phase 3),208011.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_019,2022,17,,,Porte Maillot - Réaménagement,7097978.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_020,2022,17,,,Participatif,2019.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_021,2022,17,,,La bibliothèque des Batignolles réaménagée et accessible,149579.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_022,2022,17,,,Rénovation au rez-de-chaussée de l'école Boursault,276684.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_023,2022,17,,,Rénovation des avenues de Saint-Ouen et de Clichy,552778.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_024,2022,17,,,Des trottoirs rénovés avenue de Clichy,217771.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_025,2022,17,,,Entretenir et sécuriser les rues et trottoirs du 17ème,170463.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_17_52_026,2022,17,,,Réaménagement de la rue de la Condamine,167301.0,autre,0.7,52,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_000,2022,18,,,"Bib. Robert.Sabatier - 29, rue Hermel - Modernisation de l'accès PMR",36900.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_001,2022,18,,,climatisation,323828.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_002,2022,18,,,"ravalement et d'isolation thermique, réfection du préau et de la petite cour",555110.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_003,2022,18,,,travaux d'étanchéité de la terrasse,154976.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_004,2022,18,,,de la façade,128131.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_005,2022,18,,,EP 3 rue Maurice Genevoix - Travaux de rénovation des satinaires et cour oasis,116608.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_006,2022,18,,,du réseau d'eau,103851.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_007,2022,18,,,"sanitaires, dévoiement des canalisations",101208.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_008,2022,18,,,aménagement des locaux sociaux et réparation de la verrière du hall central,98870.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_009,2022,18,,,brumisateurs),94745.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_010,2022,18,,,d'entretien,43044.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_011,2022,18,,,Square H.Huchard- Réaménagement partiel,39856.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_012,2022,18,,,"Jardin Eole - travaux divers (arrosage, plan fontaines et brumisateurs)",33506.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_013,2022,18,,,restructuration de la cuisine,271840.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_014,2022,18,,,de réparation de l'affaissement du sol (au niveau du portail),124900.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_015,2022,18,,,d'insonorisation,87426.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_016,2022,18,,,des menuiseries extérieures,57443.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_017,2022,18,,,"CC 5-7, rue Carpeaux - Réaménagement des 3 salles",50379.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_018,2022,18,,,CS des Poissonniers - Rénovation du site d'entrainement,199566.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_019,2022,18,,,CS Bertrand Dauvin - Rénovation des terrains de tennis et remplacement des clôtures,112638.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_020,2022,18,,,"de chauffage, de climatisation et de ventilation",99193.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_021,2022,18,,,reprise de vitrage,90131.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_022,2022,18,,,Aménagement de la voirie et marquage de la piste cyclable,252108.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_023,2022,18,,,"Patureau), travaux de pavage",141867.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_024,2022,18,,,Rue des Poissonniers,210091.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_025,2022,18,,,rabotage des trottoirs,159533.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_026,2022,18,,,"Rue du Ruisseau - Ralentisseurs, glissière de sécurité, affaissement de la voirie",138208.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_027,2022,18,,,Rue René Binet -Réfection de la chaussée,108768.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_028,2022,18,,,Rue Lapeyrère,87102.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_029,2022,18,,,Rue de Sofia,75914.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_18_55_030,2022,18,,,Rue Ganneron,87701.0,autre,0.7,55,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_000,2022,19,,,Bibliothèque Crimée - Rétablissement de la ventilation,36053.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_001,2022,19,,,"EM 20, rue Eugénie Cotton - Travaux d'étanchéïté et de réfection des cours",854868.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_002,2022,19,,,"aménagement des locaux (réfectoire, sanitaires, préau …)",452131.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_003,2022,19,,,"EE 8, rue Barbanegre - Modernisation de la cuisine, Travaux d'étanchéité",596318.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_004,2022,19,,,"EM 58, rue Archereau - Rénovation partielle de l'école, Sécurisation du mur mitoyen",477163.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_005,2022,19,,,"consolidation de la structure porteuse, Travaux divers",312571.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_006,2022,19,,,"fêtes, rénovation du système de sécurité incendie",53470.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_007,2022,19,,,"Eiffel, Entretien des ouvrages d'arts et du réseaux des allées",226917.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_008,2022,19,,,Square Claude Bernard - Rénovation des terrains de sport et des 1500m² des allées,174042.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_009,2022,19,,,électricité et installation d'un sèche linge,222738.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_010,2022,19,,,CC 8 rue Henri Ribière - Rénovation du pendant de fermeture,292577.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_011,2022,19,,,"CC 327, rue de Belleville - Réfection de l'étanchéité, Travaux de vitrerie et pose de stores",123663.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_012,2022,19,,,Salle de sports Archereau - Rénovation de la toiture,205025.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_013,2022,19,,,TEP Pierre Reverdy - Remplacement des sol,110799.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_014,2022,19,,,Divres rues - Embellir Votre Quartier,468702.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_015,2022,19,,,Rue Rébéval,111740.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_016,2022,19,,,Avenue Jean Jaurès,99070.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_017,2022,19,,,Quai de la Charente,77736.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_018,2022,19,,,Maison des réfugiés,5508281.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_019,2022,19,,,Parc des buttes Chaumont (Ile de la Falaise) - Etudes de diagnostic et mis en sécurité,472990.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_020,2022,19,,,Rue d'Aubervilliers - Aménagement du secteur Eole-Evangile,1170348.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_021,2022,19,,,AP de Budget Participatif,2019.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_022,2022,19,,,Des sanitaires neufs pour les écoles du 19 ème,155865.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_023,2022,19,,,Reconquête de la Petite Ceinture,113923.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_024,2022,19,,,De nouveaux espaces ludiques pour les parcs du 19e,65258.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_025,2022,19,,,Améliorer nos terrains d’éducation physique (TEP),167538.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_026,2022,19,,,Rénover les gymnases du 19e,121757.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_027,2022,19,,,Rénover les gymnases Lilas et Curial,298347.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_028,2022,19,,,Rénovation de la piscine Mathis,120584.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_19_59_029,2022,19,,,Ville refuge,835202.0,autre,0.7,59,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_000,2022,20,,,"Bibliothèque 66, rue des Couronnes - Restructuration partielle",13957.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_001,2022,20,,,"Bibliothèque Duras - 109, rue de Bagnolet - Travaux d'électricité",13076.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_002,2022,20,,,"""chauffage, ventilation et climatisation""",31117.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_003,2022,20,,,EE 103 rue des Amandiers - Cour Oasis,106830.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_004,2022,20,,,EM Amandiers - Sécurisation de l'enceinte et traitement des infiltrations,111489.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_005,2022,20,,,"remplacement de la trappe d'accès au sous-sol,",95516.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_006,2022,20,,,EP Davout - Travaux d'étanchéité sur les terrasses,97225.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_007,2022,20,,,réaménagement et création de sanitaires,117069.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_008,2022,20,,,EP Tourelles - Création d'une cour,172624.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_009,2022,20,,,"façade, dépose de plafond, restauration des escaliers",339609.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_010,2022,20,,,"EM Surmelin - Réaménagement de la cour , réparation des stores",149982.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_011,2022,20,,,"menuiseries, isolation des combles, réfection des planchers, ravalement de la mairie",759387.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_012,2022,20,,,Jardin Gabrielle Buffet - Rénovation de l'aire de jeux,69802.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_013,2022,20,,,Square Antoine-Blondin - Rénovation des aires de jeux et travaux de végétalisation,247410.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_014,2022,20,,,Square Docteur Variot - Aménagement d'un city-stade,57011.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_015,2022,20,,,Square de la Place de la Réunion - Rénovation des espaces et du réseau d'eau,48913.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_016,2022,20,,,Square Sarah Bernhardt - Travaux de rénovation,72358.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_017,2022,20,,,CC des Rigoles - Modernisation de la cuisine,141292.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_018,2022,20,,,CC Pelleport - Rénovation des locaux et travaux d'étanchéité,26038.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_019,2022,20,,,"CC Piat - Sécurisation de la cour, traitement acoustique de l'atrium",75081.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_020,2022,20,,,de la buanderie,37342.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_021,2022,20,,,Centre sportif Maryse Hilsz - Rénovation des vestaires 7 à 15,174830.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_022,2022,20,,,Gymnase Bretonneau - Travaux de désamiantage et rénovation de l'accueil,126003.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_023,2022,20,,,Gymnase Le Vau - Etudes suite aux affaissements,89217.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_024,2022,20,,,Embellir votre quartier - Saint Fargeau,168756.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_025,2022,20,,,Rue du Groupe Manouchian du 2 à 30 bis,39146.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_026,2022,20,,,Rue du Capitaine Ferber - Réfection de la chaussée,153846.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_027,2022,20,,,Rue Sorbier - Réfection de la chaussée,133407.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_028,2022,20,,,"Rue Charles-Cros , Réfection de la chaussée",80996.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_029,2022,20,,,Rue de Ménilmontant,63260.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_030,2022,20,,,Rue du Groupe Manouchian,55700.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_031,2022,20,,,EE 29 Rue du Télégraphe - Travaux de restructuration et de restauration,1058216.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_032,2022,20,,,EE Julien Lacroix - Reconstruction TEP,634281.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_033,2022,20,,,EE 73/75 Bd Davout - Construction de 10 classes,4797282.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_034,2022,20,,,Parc Python-Duvernois,263506.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_035,2022,20,,,Ménilmontant),204146.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_036,2022,20,,,"CC 73, boulevard Davout - Construction",2164417.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_037,2022,20,,,CC - 10/12 rue du Capitaine Marchal - Construction,876837.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_038,2022,20,,,TEP Amandiers - Travaux de restructuration,175978.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_039,2022,20,,,"CS Louis Lumière - Rénovation su 3ème terrain, rénovation du site, remplacement du gazon",388776.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06
+2022_20_62_040,2022,20,,,"Grand projet de renouvellement urbain - Square de la Salamandre, Saint Blaise",127972.0,autre,0.7,62,https://cdn.paris.fr/paris/2023/07/05/09-ca-2022-investissements-localises-3owH.pdf,2026-02-06

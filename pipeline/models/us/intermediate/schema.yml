@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: int_us_sf_comp_employee_year
+    description: >
+      SF compensation at PERSON grain (employee × year × year_type) —
+      per-employee component sums plus the overtime-exceeds-salary flags
+      (naive + the documented $1,000-salary-floor variant). Percentiles,
+      histograms and OT counters downstream are per-person statements and
+      must read this model, never raw rows (a ~6% multi-row share would
+      double-count people). BOTH year_type accountings kept — marts filter
+      to 'Fiscal'.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [year_type, year, employee_identifier]
+    columns:
+      - name: year
+        tests: [not_null]
+      - name: year_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Calendar', 'Fiscal']
+      - name: employee_identifier
+        tests: [not_null]
+      - name: total_compensation
+        tests: [not_null]
+      - name: n_rows
+        tests: [not_null]

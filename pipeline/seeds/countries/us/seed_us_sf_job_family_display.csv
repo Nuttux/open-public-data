@@ -1,0 +1,61 @@
+job_family_code,canonical_label,display_family,classification_method,classified_at
+2100,Hospital Administration,Health & Hospitals,manual,2026-07-16
+2200,Medical & Dental,Health & Hospitals,manual,2026-07-16
+2300,Nursing,Health & Hospitals,manual,2026-07-16
+2400,"Lab, Pharmacy & Med Techs",Health & Hospitals,manual,2026-07-16
+2500,Med Therapy & Auxiliary,Health & Hospitals,manual,2026-07-16
+2800,Public Health,Health & Hospitals,manual,2026-07-16
+Q000,Police Services,Police,manual,2026-07-16
+H000,Fire Services,Fire,manual,2026-07-16
+8100,Legal & Court,Justice & Corrections,manual,2026-07-16
+8300,Correction & Detention,Justice & Corrections,manual,2026-07-16
+8400,Probation & Parole,Justice & Corrections,manual,2026-07-16
+SCRT,SF Superior Court,Justice & Corrections,manual,2026-07-16
+8200,Protection & Apprehension,"Security, Dispatch & Protection",manual,2026-07-16
+8600,Emergency Coordination,"Security, Dispatch & Protection",manual,2026-07-16
+9100,Street Transit,Transit Operations,manual,2026-07-16
+9500,MTA Operations,Transit Operations,manual,2026-07-16
+7100,Administrative-Labor & Trades,Trades & Maintenance,manual,2026-07-16
+7200,Supervisory-Labor & Trade,Trades & Maintenance,manual,2026-07-16
+7300,Journeyman Trade,Trades & Maintenance,manual,2026-07-16
+7400,Skilled Labor,Trades & Maintenance,manual,2026-07-16
+7500,Semi-Skilled & General Labor,Trades & Maintenance,manual,2026-07-16
+5100,Administrative-DPW/PUC,Engineering & Inspection,manual,2026-07-16
+5200,Professional Engineering,Engineering & Inspection,manual,2026-07-16
+5300,Sub-Professional Engineering,Engineering & Inspection,manual,2026-07-16
+5500,Construction Project Mgmt,Engineering & Inspection,manual,2026-07-16
+5600,Energy & Environment,Engineering & Inspection,manual,2026-07-16
+6100,Health & Sanitation Inspection,Engineering & Inspection,manual,2026-07-16
+6200,Public Safety Inspection,Engineering & Inspection,manual,2026-07-16
+6300,Construction Inspection,Engineering & Inspection,manual,2026-07-16
+2900,Human Services,Social & Community Services,manual,2026-07-16
+5400,Community Development,Social & Community Services,manual,2026-07-16
+9700,Community Development,Social & Community Services,manual,2026-07-16
+1100,Administrative & Mgmt,Administration & Finance,manual,2026-07-16
+1200,Personnel,Administration & Finance,manual,2026-07-16
+1300,Pub Relations & Spec Assts,Administration & Finance,manual,2026-07-16
+1400,"Clerical, Secretarial & Steno",Administration & Finance,manual,2026-07-16
+1500,Administrative Secretarial,Administration & Finance,manual,2026-07-16
+1600,"Payroll, Billing & Accounting",Administration & Finance,manual,2026-07-16
+1800,"Budget, Admn & Stats Analysis",Administration & Finance,manual,2026-07-16
+1900,Purchasing & Storekeeping,Administration & Finance,manual,2026-07-16
+4100,Property Administration,Administration & Finance,manual,2026-07-16
+4200,Appraisal & Taxation,Administration & Finance,manual,2026-07-16
+4300,Revenue,Administration & Finance,manual,2026-07-16
+0900,Management,Management & Officials,manual,2026-07-16
+ELEC,Elected & Appointed Officials,Management & Officials,manual,2026-07-16
+1000,Information Systems,Information Technology,manual,2026-07-16
+1700,Computer Operatns & Repro Svcs,Information Technology,manual,2026-07-16
+3200,Recreation,"Culture, Parks & Libraries",manual,2026-07-16
+3300,Park & Zoo,"Culture, Parks & Libraries",manual,2026-07-16
+3400,Agriculture & Horticulture,"Culture, Parks & Libraries",manual,2026-07-16
+3500,Museum & Cultural Affairs,"Culture, Parks & Libraries",manual,2026-07-16
+3600,Library,"Culture, Parks & Libraries",manual,2026-07-16
+9200,Airport Operation,Airport & Port Operations,manual,2026-07-16
+9300,Port Operation,Airport & Port Operations,manual,2026-07-16
+2600,Dietary & Food,"Custodial, Food & Service Aides",manual,2026-07-16
+2700,Housekeeping & Laundry,"Custodial, Food & Service Aides",manual,2026-07-16
+9900,Public Service Aide,"Custodial, Food & Service Aides",manual,2026-07-16
+0000,Untitled,Other & Unassigned,manual,2026-07-16
+__UNASSIGNED__,Unassigned,Other & Unassigned,manual,2026-07-16
+SFRA,SF Redevelopment Agency,Other & Unassigned,manual,2026-07-16

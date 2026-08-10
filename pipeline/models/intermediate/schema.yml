@@ -1,0 +1,26 @@
+# =============================================================================
+# Schema: Intermediate Layer
+#
+# Convention (cf. docs/data-platform/04-layering-convention.md §2) :
+# `int_*` = composition CROSS-DOMAIN, post-core, avant mart. Servir
+# uniquement quand un même JOIN est consommé par plusieurs marts.
+#
+# Les anciens int_ap_projets_enrichis et int_subventions_enrichies (qui
+# faisaient des joins seed × stg avant core) ont été aplatis dans leurs
+# core_* respectifs (Phase 16 du refactor layering).
+# =============================================================================
+
+version: 2
+
+models:
+  - name: int_projet_marches
+    description: |
+      Cross-domain join : core_ap_projets × core_marches_publics × seed
+      seed_match_projet_marches → match scoré projet-marché. Lu par
+      mart_projet_marches.
+    columns:
+      - name: projet_id
+        tests:
+          - not_null
+      - name: numero_marche
+      - name: score

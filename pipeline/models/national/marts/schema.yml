@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: mart_sankey_national
+    description: "Données Sankey budget par (ville, année) - compatible BudgetData TypeScript"
+
+  - name: mart_benchmarking
+    description: "KPIs financiers comparés - 5 villes avec métriques par habitant et rankings"
+
+  - name: mart_evolution_national
+    description: "Tendances pluriannuelles budget par ville"
+
+  - name: mart_marches_national
+    description: "Marchés publics agrégés par (ville, année, catégorie CPV)"
+
+  - name: mart_subventions_national
+    description: "Subventions agrégées par (ville, année)"
+
+  - name: mart_bilan_national
+    description: "Patrimoine/bilan KPIs par (ville, année)"

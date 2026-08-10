@@ -1,0 +1,29 @@
+chave_tipo,chave,tema,prioridade
+cnae_secao,Saúde e assistência social,Saúde e assistência,1
+cnae_secao,Educação,Educação,1
+cnae_secao,Construção,Infraestrutura e obras,1
+cnae_secao,Energia e água,Infraestrutura urbana,1
+cnae_secao,Transporte e logística,Transporte e mobilidade,1
+cnae_secao,"Cultura, esporte e lazer","Cultura, esporte e lazer",1
+cnae_secao,Comércio,Comércio e suprimentos,1
+cnae_secao,Indústria,Indústria e produção,1
+cnae_secao,Indústria extrativa,Indústria e produção,1
+cnae_secao,Agropecuária,Abastecimento e meio rural,1
+cnae_secao,Alojamento e alimentação,Alimentação e eventos,1
+cnae_secao,Informação e comunicação,Tecnologia e comunicação,1
+cnae_secao,Finanças,Serviços financeiros,1
+cnae_secao,Imobiliário,Imóveis e locação,1
+cnae_secao,Serviços profissionais,Serviços técnicos,1
+cnae_secao,Serviços administrativos,Serviços administrativos,1
+cnae_secao,Administração pública,Gestão pública,1
+cnae_secao,Associações e serviços,Sociedade civil,1
+orgao_regex,(?i)sa[úu]de,Saúde e assistência,2
+orgao_regex,(?i)educa,Educação,2
+orgao_regex,(?i)(assist|direitos humanos|social|mulher|idoso|crian),Saúde e assistência,2
+orgao_regex,(?i)(infraestrutura|obras|servi[çc]os urbanos|manuten[çc]|zeladoria|limpeza),Infraestrutura e obras,2
+orgao_regex,(?i)(cultura|esporte|lazer|turismo|juventude),"Cultura, esporte e lazer",2
+orgao_regex,(?i)(mobilidade|tr[âa]nsito|transporte|cttu),Transporte e mobilidade,2
+orgao_regex,(?i)(fazenda|financ|planejamento|gest[ãa]o|administra|controladoria|procuradoria|governo|gabinete),Gestão pública,2
+orgao_regex,(?i)(meio ambiente|sustentabilidade|verde|parques),Meio ambiente,2
+orgao_regex,(?i)(seguran[çc]a|defesa civil|guarda),Segurança urbana,2
+orgao_regex,(?i)(desenvolvimento|inova|trabalho|emprego|econom),Desenvolvimento econômico,2

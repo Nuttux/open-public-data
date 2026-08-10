@@ -1,0 +1,5 @@
+tranche,seuil_rfr_par_part_min,seuil_rfr_par_part_max,taux_csg,taux_crds,taux_casa,taux_total,source,source_url,date_reference
+1,0,12230,0.000,0.000,0.000,0.000,"URSSAF - Taux de CSG sur les pensions de retraite et d'invalidité 2025 (exonération)",https://www.urssaf.fr/portail/home/taux-et-baremes/contributions-sociales-pension-retraite.html,2025-01-01
+2,12230,16410,0.038,0.005,0.000,0.043,"URSSAF - Taux de CSG sur les pensions (taux réduit) - BOFiP-IR 2025",https://www.urssaf.fr/portail/home/taux-et-baremes/contributions-sociales-pension-retraite.html,2025-01-01
+3,16410,25458,0.066,0.005,0.003,0.074,"URSSAF - Taux de CSG sur les pensions (taux médian) - BOFiP-IR 2025",https://www.urssaf.fr/portail/home/taux-et-baremes/contributions-sociales-pension-retraite.html,2025-01-01
+4,25458,,0.083,0.005,0.003,0.091,"URSSAF - Taux de CSG sur les pensions (taux normal) - BOFiP-IR 2025",https://www.urssaf.fr/portail/home/taux-et-baremes/contributions-sociales-pension-retraite.html,2025-01-01

@@ -1,0 +1,18 @@
+id,annee,arrondissement,thematique,thematique_en,nom_projet,montant,source
+marseille_2023_0000,2023,0,"Environnement, cadre de vie","Environment, living conditions","Les dépenses liées à cette thématique s’établissent à 24,58 M€, en augmentation de 2,8 M€ par rapport à 2022",24580000.0,PDF_CA
+marseille_2023_0001,2023,0,BMPM,BMPM,"Le budget exécuté pour la thématique BMPM représente 16,6 M€",16600000.0,PDF_CA
+marseille_2023_0002,2023,0,BMPM,BMPM,"d’autre part, les travaux sur les infrastructures, les centres d’incendie et de secours, les casernes, les logements des marins-pompiers et les points d’eau incendie",6900000.0,PDF_CA
+marseille_2023_0003,2023,0,"Urbanisme, habitat","Urban planning, housing","Les dépenses relatives à cette thématique s’élèvent à 18,86 M€, en progression de 3,9 M€ (+26%)",18860000.0,PDF_CA
+marseille_2023_0004,2023,0,"Urbanisme, habitat","Urban planning, housing","Les opérations (ANRU) de la mission rénovation urbaine et quartiers prioritaires (6,4 M€), notamment pour les financements de travaux concernant les secteurs d’habitat dégradé progressent de 5,5 M€",6400000.0,PDF_CA
+marseille_2023_0005,2023,0,"Urbanisme, habitat","Urban planning, housing","les frais liés aux droits de préemption urbains progressent de 2,1 M€",2100000.0,PDF_CA
+marseille_2023_0006,2023,0,"Urbanisme, habitat","Urban planning, housing","les études de faisabilité diverses (1,2 M€) et les mises en demeure (0,430 M€) représentent un volume financier en hausse de 1,1 M€",1200000.0,PDF_CA
+marseille_2023_0007,2023,0,"Urbanisme, habitat","Urban planning, housing","Les interventions spécifiques pour permettre le relogement des services municipaux progressent de 0,23 M€",230000.0,PDF_CA
+marseille_2023_0008,2023,0,"Sécurité (BMPM, police, vidéo)","Security (BMPM, police, video)","Cet agrégat représente 6,2 M€ de dépenses, en progression de 0,9 M€",6200000.0,PDF_CA
+marseille_2023_0009,2023,0,Immobilier et patrimoine,Real estate and heritage,"Ces dépenses représentent 6,1 M€",6100000.0,PDF_CA
+marseille_2023_0010,2023,0,Culture,Culture,"Les travaux sur les équipements emblématiques ou sites patrimoniaux, tels que la bastide de la Magalone et le monument aux morts d’orient, ont représenté 0,7 M€ en 2023",700000.0,PDF_CA
+marseille_2023_0011,2023,0,Culture,Culture,"les subventions d’équipement (près de 0,8 M€) au bénéfice d’associations diverses, en hausse de 0,33 M€",800000.0,PDF_CA
+marseille_2023_0012,2023,0,Culture,Culture,"les travaux de restauration, conservation, numérisation et des acquisitions de matériels (0,7 M€), en hausse de 0,2 M€",700000.0,PDF_CA
+marseille_2023_0013,2023,0,Culture,Culture,"les acquisitions d’œuvres, de fonds patrimoniaux (0,59 M€), en progression de 0,1 M€",590000.0,PDF_CA
+marseille_2023_0014,2023,0,Attractivité économique,Economic attractiveness,"L’attractivité économique représente un volume de dépenses d’investissement de 3,8 M€ et progresse de près de 0,3 M€",3800000.0,PDF_CA
+marseille_2023_0015,2023,0,Attractivité économique,Economic attractiveness,"C’est principalement les participations dans le cadre du Contrat de Plan État-Région (CPER) pour 3,5 M€ exécutés, en hausse de 0,7 M€",3500000.0,PDF_CA
+marseille_2023_0016,2023,0,Attractivité économique,Economic attractiveness,"C’est aussi les acquisitions et rénovations de locaux commerciaux pour redynamiser le centre-ville (0,26 M€ exécutés)",260000.0,PDF_CA

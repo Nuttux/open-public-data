@@ -1,0 +1,39 @@
+name: pipeline-ci
+
+# Proof-of-reproducibility: parse the dbt project and validate the graph on every
+# push / PR. A full `dbt build` requires BigQuery credentials and is intended to
+# run against an ephemeral `ci` dataset when a GCP identity is configured via
+# repository secrets (Workload Identity Federation); until then, parse + compile
+# guarantees the transformation graph is internally consistent.
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  dbt-parse:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dbt
+        run: pip install dbt-bigquery
+
+      - name: dbt deps
+        run: dbt deps
+
+      - name: dbt parse (validate the transformation graph)
+        run: dbt parse --target ci
+        env:
+          DBT_PROFILES_DIR: .
+          BQ_PROJECT: placeholder
+          GITHUB_RUN_ID: ${{ github.run_id }}

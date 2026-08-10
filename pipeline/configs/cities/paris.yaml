@@ -1,0 +1,105 @@
+# =============================================================================
+# Paris — sources configuration
+#
+# Read by `pipeline/scripts/sync/sync_city.py paris`.
+# Each source declares how to ingest one dataset into BigQuery `raw.*`.
+#
+# This config migrates the 7 essential Paris sources off the legacy hardcoded
+# `sync_opendata.py` onto the generic `ods_dataset` ingester. The raw table
+# names below are IDENTICAL to what the legacy script produced (verified
+# against pipeline/models/staging/sources.yml) so the dbt staging layer and
+# every downstream model are unchanged. Migration is a config swap, not a
+# schema change — see docs/adding-a-city.md.
+#
+# Source types:
+#   - ods_dataset      : Opendatasoft Explore API v2.1 (opendata.paris.fr)
+#   - datagouv_dataset : data.gouv.fr resource (CSV download via dataset slug)
+#   - pdf_municipal    : PDF download + text extraction (parsed in-session)
+# =============================================================================
+
+city_slug: paris
+city_name: Paris
+code_insee: "75056"   # verified against seeds/seed_communes_cibles.csv
+# siren_collectivite / siret_principal: identity fields belong to the country
+# profile layer (unused by ingestion); add when that layer resolves org ids.
+
+# BigQuery destination dataset for raw tables (override with --raw-dataset for
+# a shadow parity load).
+bq_raw_dataset: raw
+
+# Default Opendatasoft portal for every ods_dataset source below. A source may
+# override with its own `portal:` (e.g. a metropole portal).
+ods:
+  protocol: ods
+  domain: opendata.paris.fr
+  api_version: v2.1
+
+sources:
+  # ---------------------------------------------------------------------------
+  # BUDGET PRINCIPAL — Comptes Administratifs (exécuté, M57). Source de vérité.
+  # ---------------------------------------------------------------------------
+  - id: budget_principal
+    type: ods_dataset
+    dataset_id: comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement
+    target_table: comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement
+    description: "Comptes Administratifs - Budget Principal (Exécuté) - M57"
+    map_to: budget_line
+
+  # ---------------------------------------------------------------------------
+  # AP PROJETS — Comptes Administratifs, Autorisations de Programme (projets nommés)
+  # ---------------------------------------------------------------------------
+  - id: ap_projets
+    type: ods_dataset
+    dataset_id: comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de
+    target_table: comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de
+    description: "Comptes Administratifs - AP Exécutés (projets nommés avec mission/direction)"
+    map_to: budget_line
+
+  # ---------------------------------------------------------------------------
+  # SUBVENTIONS — Annexe CA, toutes subventions versées (tous bénéficiaires)
+  # ---------------------------------------------------------------------------
+  - id: subventions
+    type: ods_dataset
+    dataset_id: subventions-versees-annexe-compte-administratif-a-partir-de-2018
+    target_table: subventions_versees_annexe_compte_administratif_a_partir_de_2018
+    description: "Annexe CA - Toutes subventions versées"
+    map_to: subvention
+
+  - id: associations
+    type: ods_dataset
+    dataset_id: subventions-associations-votees-
+    target_table: subventions_associations_votees
+    description: "Subventions aux associations votées (avec SIRET pour géoloc)"
+    map_to: subvention
+
+  # ---------------------------------------------------------------------------
+  # LOGEMENTS SOCIAUX — programmes financés (déjà géolocalisés)
+  # geo_shape dropped: complex geometry, unused downstream (geo_point kept).
+  # ---------------------------------------------------------------------------
+  - id: logements_sociaux
+    type: ods_dataset
+    dataset_id: logements-sociaux-finances-a-paris
+    target_table: logements_sociaux_finances_a_paris
+    description: "Logements sociaux financés à Paris (géolocalisés)"
+    map_to: asset
+    drop_columns: ["geo_shape"]
+
+  # ---------------------------------------------------------------------------
+  # BUDGET VOTÉ — prévisionnel (BP, M57), entité séparée du CA
+  # ---------------------------------------------------------------------------
+  - id: budget_vote
+    type: ods_dataset
+    dataset_id: budgets-votes-principaux-a-partir-de-2019-m57-ville-departement
+    target_table: budgets_votes_principaux_a_partir_de_2019_m57_ville_departement
+    description: "Budgets Votés - Budget Principal (Prévisionnel) - M57"
+    map_to: budget_line
+
+  # ---------------------------------------------------------------------------
+  # MARCHÉS PUBLICS — contexte (enveloppes pluriannuelles, ne pas sommer)
+  # ---------------------------------------------------------------------------
+  - id: marches_publics
+    type: ods_dataset
+    dataset_id: liste-des-marches-de-la-collectivite-parisienne
+    target_table: liste_des_marches_de_la_collectivite_parisienne
+    description: "Marchés publics (enveloppes pluriannuelles - non sommables)"
+    map_to: marche

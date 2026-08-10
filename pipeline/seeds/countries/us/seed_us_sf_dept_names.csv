@@ -1,0 +1,62 @@
+department_code,source_label,display_name,provenance,enriched_at
+AAM,AAM Asian Art Museum,Asian Art Museum,manual_in_session,2026-07-16
+ADM,ADM GSA - City Administrator,City Administrator,manual_in_session,2026-07-16
+ADP,ADP Adult Probation,Adult Probation,manual_in_session,2026-07-16
+AIR,AIR Airport Commission,Airport (SFO),manual_in_session,2026-07-16
+ART,ART Arts Commission,Arts Commission,manual_in_session,2026-07-16
+ASR,ASR Assessor - Recorder,Assessor-Recorder,manual_in_session,2026-07-16
+BOA,BOA Board of Appeals,Board of Appeals,manual_in_session,2026-07-16
+BOS,BOS Board of Supervisors,Board of Supervisors,manual_in_session,2026-07-16
+CAT,CAT City Attorney,City Attorney,manual_in_session,2026-07-16
+CCD,CCD SF Communtiy College Dist,SF Community College District,manual_in_session,2026-07-16
+CFC,CFC Children & Families Commsn,Children & Families Commission,manual_in_session,2026-07-16
+CHF,CHF Children;Youth & Families,"Children, Youth & Their Families",manual_in_session,2026-07-16
+CII,CII Commty Invest & Infrstrctr,Community Investment & Infrastructure,manual_in_session,2026-07-16
+CON,CON Controller,Controller,manual_in_session,2026-07-16
+CPC,CPC City Planning,City Planning,manual_in_session,2026-07-16
+CRT,CRT Superior Court,Superior Court,manual_in_session,2026-07-16
+CSC,CSC Civil Service Commission,Civil Service Commission,manual_in_session,2026-07-16
+CSS,CSS Child Support Services,Child Support Services,manual_in_session,2026-07-16
+CTA,CTA SF County Transprtn Auth,County Transportation Authority,manual_in_session,2026-07-16
+DAT,DAT District Attorney,District Attorney,manual_in_session,2026-07-16
+DBI,DBI Building Inspection,Building Inspection,manual_in_session,2026-07-16
+DEC,DEC Dept of Early Childhood,Early Childhood,manual_in_session,2026-07-16
+DEM,DEM Emergency Management,Emergency Management,manual_in_session,2026-07-16
+DPA,DPA Police Accountabilty,Police Accountability,manual_in_session,2026-07-16
+DPH,DPH Public Health,Public Health,manual_in_session,2026-07-16
+DPW,DPW Public Works,Public Works,manual_in_session,2026-07-16
+ECN,ECN Economic & Wrkfrce Dvlpmnt,Economic & Workforce Development,manual_in_session,2026-07-16
+ENV,ENV Environment,Environment,manual_in_session,2026-07-16
+ETH,ETH Ethics Commission,Ethics Commission,manual_in_session,2026-07-16
+FAM,FAM Fine Arts Museum,Fine Arts Museums,manual_in_session,2026-07-16
+FIR,FIR Fire Department,Fire Department,manual_in_session,2026-07-16
+GEN,GEN General City - Unallocated,General City (unallocated),manual_in_session,2026-07-16
+GNL,GNL General City -Data Cleanup,General City (data cleanup),manual_in_session,2026-07-16
+HOM,HOM Homelessness Services,Homelessness & Supportive Housing,manual_in_session,2026-07-16
+HRC,HRC Human Rights Commission,Human Rights Commission,manual_in_session,2026-07-16
+HRD,HRD Human Resources,Human Resources,manual_in_session,2026-07-16
+HSA,HSA Human Services Agency,Human Services Agency,manual_in_session,2026-07-16
+HSS,HSS Health Service System,Health Service System,manual_in_session,2026-07-16
+JUV,JUV Juvenile Probation,Juvenile Probation,manual_in_session,2026-07-16
+LIB,LIB Public Library,Public Library,manual_in_session,2026-07-16
+LLB,LLB Law Library,Law Library,manual_in_session,2026-07-16
+MTA,MTA Municipal Transprtn Agncy,Municipal Transportation Agency (Muni),manual_in_session,2026-07-16
+MYR,MYR Mayor,Mayor,manual_in_session,2026-07-16
+PDR,PDR Public Defender,Public Defender,manual_in_session,2026-07-16
+POL,POL Police,Police,manual_in_session,2026-07-16
+PRT,PRT Port,Port,manual_in_session,2026-07-16
+PUC,PUC Public Utilities Commsn,"Public Utilities Commission (water, power, sewer)",manual_in_session,2026-07-16
+REC,REC Recreation & Park Commsn,Recreation & Parks,manual_in_session,2026-07-16
+REG,REG Elections,Elections,manual_in_session,2026-07-16
+RET,RET Retirement System,Retirement System,manual_in_session,2026-07-16
+RNT,RNT Rent Arbitration Board,Rent Board,manual_in_session,2026-07-16
+SAS,SAS Dept of Sanitation & Sts,Sanitation & Streets,manual_in_session,2026-07-16
+SCI,SCI Academy of Sciences,Academy of Sciences,manual_in_session,2026-07-16
+SDA,SDA Shrf Dept Ofc Inspctr Genl,Sheriff's Office of Inspector General,manual_in_session,2026-07-16
+SHF,SHF Sheriff,Sheriff,manual_in_session,2026-07-16
+TIS,DT  GSA - Technology,Technology,manual_in_session,2026-07-16
+TJP,TJP Transbay Joint Power Auth,Transbay Joint Powers Authority,manual_in_session,2026-07-16
+TTX,TTX Treasurer-Tax Collector,Treasurer & Tax Collector,manual_in_session,2026-07-16
+USD,USD County Education Office,County Office of Education,manual_in_session,2026-07-16
+WAR,WAR War Memorial,War Memorial & Performing Arts,manual_in_session,2026-07-16
+WOM,WOM Status of Women,Status of Women,manual_in_session,2026-07-16

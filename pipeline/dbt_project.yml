@@ -1,0 +1,674 @@
+# =============================================================================
+# Projet dbt : Paris Public Open Data
+# 
+# Ce projet transforme les données brutes du budget de Paris (BigQuery)
+# en tables analytiques prêtes pour la visualisation.
+# =============================================================================
+
+name: 'paris_public_open_data'
+version: '1.0.0'
+config-version: 2
+
+# Répertoire racine du projet
+profile: 'paris_open_data'
+
+# Chemins des fichiers dbt
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# Cible des fichiers compilés
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# =============================================================================
+# Configuration des seeds (référentiels et caches d'enrichissement)
+#
+# Types de seeds:
+# - seed_mapping_*: Mappings statiques (manuels)
+# - seed_cache_*: Caches d'enrichissement (peuplés par scripts Python)
+# =============================================================================
+seeds:
+  paris_public_open_data:
+    +schema: seeds
+    
+    # -------------------------------------------------------------------------
+    # Mapping thématiques (chapitre/fonction → thématique dashboard)
+    # -------------------------------------------------------------------------
+    seed_mapping_thematiques:
+      +column_types:
+        chapitre_code: STRING
+        fonction_prefix: STRING
+        thematique: STRING
+    
+    # -------------------------------------------------------------------------
+    # Mapping directions (direction → thématique)
+    # -------------------------------------------------------------------------
+    seed_mapping_directions:
+      +column_types:
+        direction: STRING
+        thematique: STRING
+        libelle_complet: STRING
+    
+    # -------------------------------------------------------------------------
+    # Mapping bénéficiaires (pattern regex → thématique pour drill-down Sankey)
+    # -------------------------------------------------------------------------
+    seed_mapping_beneficiaires:
+      +column_types:
+        pattern: STRING
+        thematique: STRING
+        sous_categorie: STRING
+        priorite: INT64
+    
+    # -------------------------------------------------------------------------
+    # Lieux connus (géolocalisation manuelle des équipements parisiens)
+    # -------------------------------------------------------------------------
+    seed_lieux_connus:
+      +column_types:
+        pattern_match: STRING
+        nom_complet: STRING
+        adresse: STRING
+        arrondissement: INT64
+        latitude: FLOAT64
+        longitude: FLOAT64
+    
+    # -------------------------------------------------------------------------
+    # Match Projet d'investissement → Marché public (peuplé par
+    # pipeline/scripts/enrich/match_projet_marches.py + score_projet_marches.py)
+    # -------------------------------------------------------------------------
+    seed_match_projet_marches:
+      +column_types:
+        projet_id: STRING
+        projet_year: INT64
+        projet_nom: STRING
+        projet_montant: FLOAT64
+        projet_arr: INT64
+        numero_marche: STRING
+        fournisseur_nom: STRING
+        fournisseur_siret: STRING
+        marche_objet: STRING
+        marche_annee: INT64
+        marche_montant: FLOAT64
+        score: FLOAT64
+        label: STRING
+        reason: STRING
+
+    # -------------------------------------------------------------------------
+    # Cache AP → Géoloc (peuplé par enrich_geo_ap_llm.py)
+    # -------------------------------------------------------------------------
+    seed_cache_geo_ap:
+      +column_types:
+        ap_code: STRING
+        ode_arrondissement: INT64
+        ode_adresse: STRING
+        ode_nom_lieu: STRING
+        ode_latitude: FLOAT64
+        ode_longitude: FLOAT64
+        ode_confiance: FLOAT64
+        ode_date_recherche: STRING
+        ode_source: STRING
+    
+    # -------------------------------------------------------------------------
+    # Cache Bénéficiaire → Thématique (peuplé par enrich_thematique_llm.py)
+    # -------------------------------------------------------------------------
+    seed_cache_thematique_beneficiaires:
+      +column_types:
+        beneficiaire_normalise: STRING
+        ode_thematique: STRING
+        ode_sous_categorie: STRING
+        ode_confiance: FLOAT64
+        ode_date_recherche: STRING
+        ode_source: STRING
+
+    # -------------------------------------------------------------------------
+    # Marseille — cache Bénéficiaire → Thématique
+    # (peuplé par enrich_thematique_marseille.py ; grounded secteur + keywords)
+    # -------------------------------------------------------------------------
+    seed_marseille_cache_thematique:
+      +column_types:
+        beneficiaire_normalise: STRING
+        ode_thematique: STRING
+        ode_sous_categorie: STRING
+        ode_confiance: FLOAT64
+        ode_source: STRING
+
+    # -------------------------------------------------------------------------
+    # Budget Voté (BP) extrait des PDFs éditique BG (2020-2026)
+    # Peuplé par: extract_pdf_budget_vote.py (pdfplumber)
+    # Un fichier par année: seed_pdf_budget_vote_{YYYY}.csv
+    # -------------------------------------------------------------------------
+    seed_pdf_budget_vote_2020:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2021:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2022:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2023:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2024:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2025:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+    seed_pdf_budget_vote_2026:
+      +column_types:
+        annee: INT64
+        section: STRING
+        sens_flux: STRING
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nature_code: STRING
+        nature_libelle: STRING
+        fonction_code: STRING
+        montant: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+
+    seed_pdf_investissements_2022:
+      +column_types:
+        id: STRING
+        annee: INT64
+        arrondissement: INT64
+        chapitre_code: STRING
+        chapitre_libelle: STRING
+        nom_projet: STRING
+        montant: FLOAT64
+        type_ap: STRING
+        confidence: FLOAT64
+        source_page: INT64
+        source_pdf: STRING
+        date_extraction: STRING
+
+    # -------------------------------------------------------------------------
+    # Methodology / référentiels (source unique de vérité pour le frontend)
+    # -------------------------------------------------------------------------
+    seed_city_constants:
+      +column_types:
+        key: STRING
+        value: STRING  # keep flexible: ints, floats and nb_arrondissements mixed
+        unit: STRING
+        source: STRING
+        source_url: STRING
+        date_reference: STRING
+        notes: STRING
+    seed_legal_thresholds:
+      +column_types:
+        key: STRING
+        value: STRING
+        unit: STRING
+        source: STRING
+        source_url: STRING
+        date_reference: STRING
+        notes: STRING
+    seed_editorial_params:
+      +column_types:
+        key: STRING
+        value: STRING
+        unit: STRING
+        rationale: STRING
+        date_reference: STRING
+
+    # -------------------------------------------------------------------------
+    # DRIHL — demandes et attributions logement social (annuel)
+    # -------------------------------------------------------------------------
+    seed_drihl_paris_2024:
+      +column_types:
+        code_insee: STRING
+        nom: STRING
+        niveau_geo: STRING
+        annee: INT64
+        demandes_choix1: INT64
+        attributions: INT64
+        ratio_dem_attrib: FLOAT64
+        delai_median_attribution_mois: FLOAT64
+        part_anciennete_5ans_plus: FLOAT64
+        source: STRING
+        source_url: STRING
+
+    seed_apur_sru_2001_2019:
+      +column_types:
+        arrondissement: INT64
+        label: STRING
+        annee: INT64
+        logements_sociaux: INT64
+        residences_principales: INT64
+        source: STRING
+        source_url: STRING
+        licence: STRING
+
+    # -------------------------------------------------------------------------
+    # Country seeds — US (ADR-0010 D3). `us_seeds` lands in the dbt_us_*
+    # dataset family via macros/generate_schema_name.sql.
+    # -------------------------------------------------------------------------
+    countries:
+      us:
+        +schema: us_seeds
+        # Manual bucket classification of top SF voucher payees (display
+        # categorization only — amounts come from raw.us_sf_vouchers).
+        # Extended 2026-07-16 (Block 2): the measured per-FY top-30 union +
+        # all-time top-200 classified in-session; is_aggregation_line flags
+        # the Controller's aggregated vendor lines (Single Payment Payees,
+        # HSA AP Interface) that are not real entities.
+        seed_us_sf_payee_buckets:
+          +column_types:
+            vendor: STRING
+            bucket: STRING
+            classification_note: STRING
+            classification_method: STRING
+            classified_at: STRING
+            is_aggregation_line: BOOLEAN
+        # Curated "what a payment buys" lines (Block 2 materiality strip).
+        # The seed only picks WHICH (vendor × department × sub_object × FY)
+        # lines to feature + the editorial label; every amount is computed
+        # from the voucher data in mart_us_sf_payee_materiality.
+        # Sub-object spend classification (purchase / obligation / ledger /
+        # unclear) generated 2026-07-28 from the FY2018+ voucher universe:
+        # code-range defaults, label rules winning over them, `needs_review`
+        # flagging the material rows that only got a range default. Feeds
+        # mart_us_sf_spending_subobjects — display classification only, every
+        # dollar still comes from the vouchers.
+        seed_us_sf_subobject_class:
+          +column_types:
+            sub_object_code: STRING
+            sub_object: STRING
+            spend_class: STRING
+            basis: STRING
+            needs_review: STRING
+            classified_at: STRING
+
+        seed_us_sf_payee_materiality:
+          +column_types:
+            slug: STRING
+            vendor: STRING
+            department: STRING
+            sub_object: STRING
+            fiscal_year: INT64
+            label: STRING
+            editorial_note: STRING
+            method: STRING
+            added_at: STRING
+        # SF payroll — native job-family code → display family (60 codes →
+        # 16 display families, by hand in-session per
+        # docs/us/block-studies/4-payroll.md). Display grouping only —
+        # amounts come from raw.us_sf_employee_comp.
+        seed_us_sf_job_family_display:
+          +column_types:
+            job_family_code: STRING
+            canonical_label: STRING
+            display_family: STRING
+            classification_method: STRING
+            classified_at: STRING
+        # SF payroll — reclassification of the 103 job codes the source
+        # leaves in the "Untitled"/"Unassigned" families (the court's own
+        # xxC scheme, mayoral staff grades, commissioners, OCII codes…).
+        # Applied ONLY where the native family is junk — never overrides
+        # a real source value.
+        seed_us_sf_job_reclass:
+          +column_types:
+            job_code: STRING
+            job_title_ref: STRING
+            reclass_family_code: STRING
+            reclass_family: STRING
+            note: STRING
+        # Purchasing-authority strings (93 distinct, queried 2026-07-16) →
+        # 8 display families (Block 3 contracts). Classifies the STRINGS
+        # only — the sole-source lens is driven by the source's
+        # sole_source_flg, never by this seed. Manual in-session seed,
+        # flagged for human review.
+        seed_us_sf_purchasing_authority_families:
+          +column_types:
+            purchasing_authority: STRING
+            authority_family: STRING
+            classification_note: STRING
+            classification_method: STRING
+            classified_at: STRING
+        # SF department display names (Block 1 enrichment, in-session).
+        # Provenance-flagged DISPLAY layer — source labels are kept verbatim
+        # in source_label and never overwritten in models.
+        seed_us_sf_dept_names:
+          +column_types:
+            department_code: STRING
+            source_label: STRING
+            display_name: STRING
+            provenance: STRING
+            enriched_at: STRING
+        # SF budget character glosses (Block 1 enrichment, in-session).
+        # One-line explanations of accounting characters + display_category
+        # (standard | internal | adjustment | offset) driving where the UI
+        # renders each character (ranked bars vs internal/offsets blocks).
+        seed_us_sf_character_glosses:
+          +column_types:
+            side: STRING
+            character_code: STRING
+            source_label: STRING
+            gloss: STRING
+            display_category: STRING
+            provenance: STRING
+            enriched_at: STRING
+        # SF budget-vs-actual structural outliers (GEN/PUC) — documented
+        # perimeter artifacts, measured on mart_us_sf_budget_vs_actual_dept.
+        seed_us_sf_bva_outliers:
+          +column_types:
+            department_code: STRING
+            side: STRING
+            is_structural_outlier: BOOLEAN
+            outlier_note: STRING
+            provenance: STRING
+            noted_at: STRING
+        # SF place↔City-Facilities crosswalk (Block 6 lieux, generated by
+        # scripts/enrich/build_sf_place_facilities.py then human-reviewed).
+        # Anchors each seed place to its facility_id(s) — the structured
+        # location backbone. Name-anchored (phrase match) + department-affinity
+        # guard; School District facilities excluded. is_primary flags the
+        # main building. Identity only — asserts no money.
+        seed_us_sf_place_facilities:
+          +column_types:
+            place_slug: STRING
+            facility_id: INT64
+            common_name: STRING
+            address: STRING
+            block_lot: STRING
+            apn_block: STRING
+            apn_lot: STRING
+            is_city_owned: BOOLEAN
+            gross_sq_ft: INT64
+            department_name: STRING
+            is_primary: BOOLEAN
+            match_method: STRING
+            match_evidence: STRING
+            distance_m: INT64
+        # SF place↔GO-bond crosswalk (Block 6B, build_sf_place_bonds.py then
+        # reviewed). bond_item rows carry EXACT place $ (expended); bond_project
+        # rows name the work (program-level $). Phrase-matched to place aliases.
+        seed_us_sf_place_bonds:
+          +column_types:
+            place_slug: STRING
+            source_kind: STRING
+            bond_program: STRING
+            item_name: STRING
+            expended_usd: FLOAT64
+            revised_budget_usd: FLOAT64
+            voter_approved_date: STRING
+            component: STRING
+            match_evidence: STRING
+        # SF place↔contract crosswalk (Block 6C, build_sf_place_contracts.py
+        # then reviewed). Phrase-matched contract titles + weak-alias/builder-
+        # dept guard. Feeds contract capital rows + the payee chain
+        # (mart_us_sf_place_payees joins these contract_nos to vouchers).
+        seed_us_sf_place_contracts:
+          +column_types:
+            place_slug: STRING
+            contract_no: STRING
+            contract_title: STRING
+            department_code: STRING
+            prime_contractor: STRING
+            agreed_usd: FLOAT64
+            paid_usd: FLOAT64
+            match_evidence: STRING
+      # -----------------------------------------------------------------------
+      # Brazil / Recife seeds → dbt_br_seeds (br-municipal family).
+      # -----------------------------------------------------------------------
+      br:
+        +schema: br_seeds
+        # CNAE-section / paying-agency → citizen theme (pt). Deterministic,
+        # grounded mapping — the primary theme path (the LLM classifier is the
+        # documented option for the tail). chave_tipo ∈ {cnae_secao, orgao_regex}.
+        seed_mapping_tema_recife:
+          +column_types:
+            chave_tipo: STRING
+            chave: STRING
+            tema: STRING
+            prioridade: INT64
+
+# =============================================================================
+# Configuration des modèles par couche
+# =============================================================================
+models:
+  paris_public_open_data:
+    # -------------------------------------------------------------------------
+    # Staging : Vues de nettoyage et typage
+    # -------------------------------------------------------------------------
+    staging:
+      +materialized: view
+      +schema: staging
+      +tags: ['staging']
+      +meta:
+        owner: "contact@qipu.org"
+        cadence: "on-demand (sync run cadence)"
+        cost_bucket: "low"  # views, no storage
+
+    # -------------------------------------------------------------------------
+    # Intermediate : Tables intermédiaires avec logique métier
+    # -------------------------------------------------------------------------
+    intermediate:
+      +materialized: table
+      +schema: intermediate
+      +tags: ['intermediate']
+      +meta:
+        owner: "contact@qipu.org"
+        cadence: "after stg refresh"
+        cost_bucket: "medium"
+
+    # -------------------------------------------------------------------------
+    # Core / Analytics : Tables finales dénormalisées (OBT)
+    # -------------------------------------------------------------------------
+    core:
+      +materialized: table
+      +schema: analytics
+      +tags: ['analytics', 'core']
+      +meta:
+        owner: "contact@qipu.org"
+        cadence: "after stg refresh"
+        cost_bucket: "medium"
+
+    # -------------------------------------------------------------------------
+    # Marts : Tables agrégées et optimisées pour l'export frontend
+    # -------------------------------------------------------------------------
+    marts:
+      +materialized: table
+      +schema: marts
+      +tags: ['marts']
+      +meta:
+        owner: "contact@qipu.org"
+        cadence: "before each export run"
+        cost_bucket: "low-medium"
+
+    # -------------------------------------------------------------------------
+    # National / multi-scale models (OFGL communes, DGFiP balances, DECP nat.,
+    # subventions nat.) — the scaffolding for pulling national / regional /
+    # provincial data. Currently +enabled: false: its raw_national.* sources
+    # aren't synced in the Paris-only pipeline and seed_communes_cibles needs
+    # its siren/dep/reg/geo columns restored before sync_national.py runs.
+    # Kept as the roadmap seam for multi-scale expansion (cf. ADR-0011).
+    # -------------------------------------------------------------------------
+    national:
+      +enabled: false
+
+    # -------------------------------------------------------------------------
+    # US models (Treasury Fiscal Data, Census) — dbt_us_* dataset family
+    # (ADR-0010 D3). The `us_*` schema prefixes are mapped to dbt_us_* by
+    # macros/generate_schema_name.sql, mirroring the dbt_paris_* naming.
+    # -------------------------------------------------------------------------
+    us:
+      staging:
+        +materialized: view
+        +schema: us_staging
+        +tags: ['us', 'staging']
+        +meta:
+          owner: "contact@qipu.org"
+          cadence: "on-demand (sync run cadence)"
+          cost_bucket: "low"  # views, no storage
+      intermediate:
+        +materialized: table
+        +schema: us_intermediate
+        +tags: ['us', 'intermediate']
+        +meta:
+          owner: "contact@qipu.org"
+          cadence: "after stg refresh"
+          cost_bucket: "low-medium"
+      core:
+        +materialized: table
+        +schema: us_analytics
+        +tags: ['us', 'core']
+        +meta:
+          owner: "contact@qipu.org"
+          cadence: "after stg refresh"
+          cost_bucket: "low-medium"
+      marts:
+        +materialized: table
+        +schema: us_marts
+        +tags: ['us', 'marts']
+        +meta:
+          owner: "contact@qipu.org"
+          cadence: "before each export run"
+          cost_bucket: "low"
+
+    # -------------------------------------------------------------------------
+    # Brazil / Recife models — dbt_br_* dataset family (ADR-0010 D3,
+    # br-municipal schema family). The `br_*` schema prefixes map to dbt_br_*
+    # via macros/generate_schema_name.sql, mirroring dbt_us_*. Brazilian
+    # municipal accounting (empenho→liquidação→pagamento; modalidade de
+    # aplicação; função/subfunção) is a genuinely new family, not FR/US.
+    # -------------------------------------------------------------------------
+    br:
+      staging:
+        +materialized: view
+        +schema: br_staging
+        +tags: ['br', 'staging']
+        +meta:
+          owner: "contact@qipu.org"
+          cadence: "on-demand (sync run cadence)"
+          cost_bucket: "low"  # views, no storage
+      intermediate:
+        +materialized: table
+        +schema: br_intermediate
+        +tags: ['br', 'intermediate']
+        +meta:
+          owner: "contact@qipu.org"
+          cadence: "after stg refresh"
+          cost_bucket: "low-medium"
+      core:
+        +materialized: table
+        +schema: br_analytics
+        +tags: ['br', 'core']
+        +meta:
+          owner: "contact@qipu.org"
+          cadence: "after stg refresh"
+          cost_bucket: "low-medium"
+      marts:
+        +materialized: table
+        +schema: br_marts
+        +tags: ['br', 'marts']
+        +meta:
+          owner: "contact@qipu.org"
+          cadence: "before each export run"
+          cost_bucket: "low"
+
+# =============================================================================
+# Configuration des snapshots — reproductibilité des chiffres publiés
+#
+# Cible : dataset BigQuery `dbt_paris_snapshots` (créé au premier run).
+# Chaque snapshot suit les colonnes business d'une source raw et stocke
+# les versions historiques via les colonnes dbt_valid_from / dbt_valid_to.
+#
+# À quoi ça sert :
+#   - Un journaliste cite "412 M€ versés à CASVP en 2024" en mars
+#   - En juin la Ville republie l'annexe avec corrections
+#   - On peut reconstituer ce que le chiffre disait en mars
+#
+# Run manuel : `dbt snapshot --target prod`
+# Run automatique : workflow .github/workflows/snapshots.yml (hebdomadaire)
+#
+# Couverture actuelle : 6 sources ID-keyed (subventions assoc., marchés
+# Paris + DECP, logements sociaux, AP projets, investissements PDF).
+# Sources sans clé stable (budget line items) → BQ table snapshots (TODO,
+# cf docs/runbooks/snapshots.md).
+# =============================================================================
+snapshots:
+  paris_public_open_data:
+    +target_schema: dbt_paris_snapshots
+    +file_format: bigquery
+
+# =============================================================================
+# Variables globales du projet
+# =============================================================================
+vars:
+  # Année de début pour les données M57 (nouvelle norme comptable)
+  annee_debut_m57: 2019
+  
+  # Filtre par défaut pour les opérations réelles
+  type_operation_reel: ['Réel', 'R']
+  
+  # Activation des caches d'enrichissement (mettre à true après enrichissement)
+  use_llm_cache_ap: false       # Cache LLM pour géoloc AP
+  use_llm_cache_theme: false    # Cache LLM pour thématiques subventions
+  use_lieux_connus: true        # Mapping manuel des lieux connus

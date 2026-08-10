@@ -1,0 +1,80 @@
+version: 2
+
+models:
+  - name: core_us_sf_budget
+    description: >
+      SF adopted budget OBT — row-level AAO lines FY2010-FY2027 with
+      transfer/adjustment flags. Net totals include the negative Transfer
+      Adjustment rows (kept per API-RECON §A.1). Rollups live in marts.
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: revenue_or_spending
+        tests: [not_null]
+      - name: budget_amt
+        tests: [not_null]
+      - name: is_transfer_adjustment
+        tests: [not_null]
+
+  - name: core_us_sf_actuals
+    description: >
+      SF actuals OBT — row-level spending/revenue FY1999-FY2027 with
+      related-govt-unit and transfer flags (the budget-vs-actual
+      reconciliation levers, measured in mart_us_sf_budget_vs_actual).
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: amount
+        tests: [not_null]
+      - name: is_related_govt_unit
+        tests: [not_null]
+
+  - name: core_us_sf_vouchers
+    description: >
+      SF vendor payments OBT — row-level voucher distribution lines
+      FY2007-FY2027 (~8.07M rows). Vendor stays the unkeyed portal string;
+      bucketing happens in mart_us_sf_top_payees via the manual seed.
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: vouchers_paid
+        tests: [not_null]
+
+  - name: core_us_sf_contracts
+    description: >
+      SF supplier contracts OBT — row-level contract × project-team-member
+      rows (summing agreed_amt double-counts; grain tested in
+      tests/us/assert_us_sf_contracts_grain.sql).
+    columns:
+      - name: agreed_amt
+        tests: [not_null]
+      - name: is_prime_contractor_row
+        tests: [not_null]
+
+  - name: core_us_sf_comp
+    description: >
+      SF employee compensation OBT — row-level comp records 2013-2025 with
+      BOTH year_type accountings exposed (filtering is mart business; the
+      Calendar/Fiscal split is tested in
+      tests/us/assert_us_sf_comp_year_type_split.sql).
+    columns:
+      - name: year
+        tests: [not_null]
+      - name: year_type
+        tests: [not_null]
+      - name: total_compensation
+        tests: [not_null]
+
+  - name: core_us_sf_population
+    description: >
+      San Francisco resident population per estimate year (Census PEP
+      Vintage 2025, July 1 estimates 2020-2025). Denominator for
+      per-resident scaling; plausibility tested in
+      tests/us/assert_us_sf_population_plausible.sql.
+    columns:
+      - name: year
+        tests: [not_null, unique]
+      - name: population
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
