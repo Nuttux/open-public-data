@@ -1,0 +1,592 @@
+#!/usr/bin/env python3
+"""Decode every chunk and compare it against the source arrays, element for element.
+
+    python3 pipeline/scripts/us_sf_city/verify_city_chunks.py
+
+This project has been bitten twice by data that decoded without complaining and
+was wrong: a cache holding HTML error pages under a `.gz` name, and a parcel key
+truncated by a fixed seven-character slice. So nothing here checks a count, a
+checksum or a byte total and calls it proof. Every element of every field is
+compared against the value the mock's own decoder produces from the mock's own
+payload, and the building geometry is compared after being replayed through a
+Python transcription of gen/part3.html's delta walk — the same walk the browser
+runs — not through the encoder's own arithmetic.
+"""
+from __future__ import annotations
+
+import json
+import pathlib
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+
+import numpy as np
+
+from _bldgsrc import read_bldg, replay
+from _chunk import field_array, read_chunk
+from _grid import NY
+from _srcload import ROOT, load, unb64
+
+OUT = ROOT / "website" / "public" / "data" / "us" / "sf" / "city"
+
+FAIL: list[str] = []
+CHECKS = 0
+ELEMENTS = 0
+
+
+def eq(what: str, a, b) -> None:
+    global CHECKS, ELEMENTS
+    CHECKS += 1
+    a = np.asarray(a)
+    b = np.asarray(b)
+    ELEMENTS += int(a.size)
+    if a.shape != b.shape:
+        FAIL.append(f"{what}: shape {a.shape} != {b.shape}")
+        return
+    if not np.array_equal(a, b):
+        n = int((a != b).sum())
+        i = int(np.argmax(a != b))
+        FAIL.append(f"{what}: {n} of {a.size} elements differ, first at {i}: {a[i]} != {b[i]}")
+
+
+def ok(what: str, cond: bool, detail: str = "") -> None:
+    """A named property, asserted. Counts as one comparison over one element:
+    the totals below stay a count of things actually compared, not of prose."""
+    global CHECKS, ELEMENTS
+    CHECKS += 1
+    ELEMENTS += 1
+    if not cond:
+        FAIL.append(f"{what}: FALSE {detail}")
+
+
+def load_chunk(key: str):
+    return read_chunk((OUT / f"{key}.qc").read_bytes())
+
+
+def nib(packed: np.ndarray, n: int) -> np.ndarray:
+    out = np.empty(n, dtype=np.uint8)
+    out[0::2] = packed[: out[0::2].size] & 15
+    out[1::2] = (packed[: n // 2] >> 4) & 15
+    return out
+
+
+def main() -> int:
+    man = json.loads((OUT / "manifest.json").read_text())
+    keys = [c["k"] for c in man["chunks"]]
+    print(f"{len(keys)} chunks in the manifest")
+
+    # ── 0. every chunk on disk opens, and its CRC holds ──────────────────
+    on_disk = sorted(str(p.relative_to(OUT))[:-3] for p in OUT.rglob("*.qc"))
+    eq("manifest lists exactly the chunks on disk", np.array(sorted(keys)), np.array(on_disk))
+    for k in keys:
+        try:
+            h, _ = load_chunk(k)
+        except Exception as e:                                    # noqa: BLE001
+            FAIL.append(f"{k}: {e}")
+            continue
+        if h["k"] != k:
+            FAIL.append(f"{k}: header says {h['k']!r}")
+    print(f"  {len(keys)} headers + CRCs verified")
+
+    # ── 1. terrain, coast, blocks, massing ───────────────────────────────
+    GEO = load("geo/geo-data.js", "GEO")
+    CITY = load("gen/city-data.js", "CITY")
+    h, p = load_chunk("base/terrain")
+    eq("terrain.dem", field_array(h, p, "dem"),
+       np.frombuffer(unb64(GEO["dem"]["data"]), dtype=np.uint8))
+    eq("terrain.mask", field_array(h, p, "mask"),
+       np.frombuffer(unb64(GEO["dem"]["mask"]), dtype=np.uint8))
+
+    h, p = load_chunk("base/coast")
+    for tag, rings in (("coast", CITY["coast"]), ("burn", CITY["burn"])):
+        eq(f"coast.{tag}Len", field_array(h, p, f"{tag}Len"),
+           np.array([len(r) for r in rings], dtype=np.uint32))
+        eq(f"coast.{tag}XY", field_array(h, p, f"{tag}XY"),
+           np.array([c for r in rings for c in r], dtype=np.float32).reshape(-1))
+
+    # loaded here and not in section 2: the block tier's colour comes out of this
+    # payload too, not only the buildings'.
+    PAINT = load("paint/paint-data.js", "PAINT")
+
+    h, p = load_chunk("base/blocks")
+    GB = GEO["blocks"]
+    for f, dt in (("cnt", np.uint16), ("sc", np.uint8), ("ox", np.float32),
+                  ("oy", np.float32), ("vx", np.int16), ("vy", np.int16),
+                  ("z", np.uint16), ("a", np.float32), ("hood", np.uint8)):
+        eq(f"blocks.{f}", field_array(h, p, f), np.frombuffer(unb64(GB[f]), dtype=dt))
+    ids = json.loads((OUT / "base" / "blocks-id.json").read_text())
+    eq("blocks-id.json ids", np.array(ids["id"]), np.array(GB["id"]))
+
+    # the roof colour of the block, element for element against paint/blocks.py's own
+    # output. The join is positional over 5,404 rings, so it is also checked from both
+    # ends: a length that silently agreed with nothing would tone every block wrong.
+    bidx = np.frombuffer(unb64(PAINT["bidx"]), dtype=np.uint8)
+    eq("blocks.bidx", field_array(h, p, "bidx"), bidx)
+    ok("blocks.bidx: PAINT.nb and PAINT.bidx both count GEO.blocks.n blocks",
+       PAINT["nb"] == GB["n"] == bidx.size, f"{PAINT['nb']} / {GB['n']} / {bidx.size}")
+    nreal = int((bidx != 255).sum())
+    nsent = int((bidx == 255).sum())
+    ok("blocks.bidx: 5,043 of 5,404 blocks carry a measured roof colour",
+       nreal == 5043 and nsent == 361, f"{nreal} measured, {nsent} sentinel")
+    ok("blocks.bidx: every measured index addresses the shipped 32-entry palette",
+       bool((bidx[bidx != 255] < len(PAINT["pal"])).all()),
+       f"max {int(bidx[bidx != 255].max())} against {len(PAINT['pal'])} entries")
+    print(f"  blocks: {nreal:,} of {bidx.size:,} carry a measured roof colour "
+          f"({100.0 * nreal / bidx.size:.1f} %), {nsent} are the 255 NOBLOCK sentinel")
+
+    LODM = load("lod/lod-data.js", "LODM")
+    h, p = load_chunk("base/massing")
+    for f, dt in (("off", np.uint32), ("ty", np.uint8), ("tc", np.uint8),
+                  ("th", np.uint8), ("solo", np.uint8)):
+        eq(f"massing.{f}", field_array(h, p, f), np.frombuffer(unb64(LODM[f]), dtype=dt))
+    solo = np.unpackbits(np.frombuffer(unb64(LODM["solo"]), dtype=np.uint8),
+                         bitorder="little")[: LODM["n"]].astype(bool)
+
+    # ── 2. buildings: geometry replayed through part3's own walk ─────────
+    B = read_bldg()
+    n, cnt, off, IX, IY = B["n"], B["cnt"], B["off"], B["IX"], B["IY"]
+    ROOFD = load("roofs/roof-data.js", "ROOFD")
+    STN = nib(np.frombuffer(unb64(ROOFD["st"]), dtype=np.uint8), n)
+    HFN = nib(np.frombuffer(unb64(ROOFD["hf"]), dtype=np.uint8), n)
+    pidx = np.frombuffer(unb64(PAINT["idx"]), dtype=np.uint8)
+    pflag = np.frombuffer(unb64(PAINT["flag"]), dtype=np.uint8)
+
+    seen = np.zeros(n, dtype=bool)
+    nvert = 0
+    for k in [c["k"] for c in man["chunks"] if c["kind"] == "bldg"]:
+        h, p = load_chunk(k)
+        gid = field_array(h, p, "gid").astype(np.int64)
+        if seen[gid].any():
+            FAIL.append(f"{k}: {int(seen[gid].sum())} buildings appear in more than one chunk")
+        seen[gid] = True
+        c = field_array(h, p, "cnt")
+        eq(f"{k}.cnt", c, cnt[gid])
+        # THE POINT OF THIS FILE: the chunk's own delta stream, walked exactly the
+        # way gen/part3.html walks it, must give back the same vertices as the
+        # source stream walked the same way.
+        gx, gy, goff = replay(c, field_array(h, p, "vx"), field_array(h, p, "vy"),
+                              field_array(h, p, "xi"), field_array(h, p, "xn"))
+        src_v = np.concatenate([np.arange(off[g], off[g] + cnt[g]) for g in gid])
+        eq(f"{k}.vertexX", gx, IX[src_v])
+        eq(f"{k}.vertexY", gy, IY[src_v])
+        nvert += int(gx.size)
+        for f, arr in (("h", B["h"]), ("yr", B["yr"]), ("u", B["u"]),
+                       ("st", STN), ("hf", HFN),
+                       ("paintIdx", pidx), ("paintFlag", pflag)):
+            eq(f"{k}.{f}", field_array(h, p, f), arr[gid])
+        # the cell claim: a non-solo building's centroid is inside the cell it names
+        if k.startswith("bldg/"):
+            tx, ty = (int(v) for v in k.split("/")[1].split("_"))
+            from _grid import CELL, ORIGIN_X, ORIGIN_Y
+            cx, cy = B["cx"][gid], B["cy"][gid]
+            inside = ((cx >= ORIGIN_X + tx * CELL) & (cx < ORIGIN_X + (tx + 1) * CELL) &
+                      (cy >= ORIGIN_Y + ty * CELL) & (cy < ORIGIN_Y + (ty + 1) * CELL))
+            if not inside.all():
+                FAIL.append(f"{k}: {int((~inside).sum())} centroids outside the cell")
+            if solo[gid].any():
+                FAIL.append(f"{k}: holds {int(solo[gid].sum())} solos, which belong to base/solo")
+        else:
+            if not solo[gid].all():
+                FAIL.append(f"{k}: holds {int((~solo[gid]).sum())} non-solos")
+    if not seen.all():
+        FAIL.append(f"buildings: {int((~seen).sum())} of {n} appear in no chunk")
+    eq("buildings: every vertex accounted for", np.array([nvert]), np.array([B["nv"]]))
+    print(f"  {n:,} buildings, {nvert:,} vertices replayed through part3's walk")
+
+    # ── 3. facades ───────────────────────────────────────────────────────
+    FACD = load("facade/facade-data.js", "FACD")
+    fty = np.frombuffer(unb64(FACD["ty"]), dtype=np.uint8)
+    st2 = nib(np.frombuffer(unb64(FACD["st2"]), dtype=np.uint8), n)
+    shop = np.unpackbits(np.frombuffer(unb64(FACD["shop"]), dtype=np.uint8),
+                         bitorder="little")[:n]
+    rb = np.unpackbits(np.frombuffer(unb64(FACD["role"]), dtype=np.uint8), bitorder="little")
+    role = (rb[0::2] + 2 * rb[1::2])[: B["nv"]].astype(np.uint8)
+    fseen = np.zeros(n, dtype=bool)
+    for k in [c["k"] for c in man["chunks"] if c["kind"] == "face"]:
+        h, p = load_chunk(k)
+        gid = field_array(h, p, "gid").astype(np.int64)
+        fseen[gid] = True
+        eq(f"{k}.ty", field_array(h, p, "ty"), fty[gid])
+        eq(f"{k}.st2", field_array(h, p, "st2"), st2[gid])
+        eq(f"{k}.shop", field_array(h, p, "shop"), shop[gid])
+        vsel = np.concatenate([np.arange(off[g], off[g] + cnt[g]) for g in gid])
+        eq(f"{k}.role", field_array(h, p, "role"), role[vsel])
+        # the pairing claim the renderer relies on
+        bkey = k.replace("face/", "bldg/").replace("base/solo-face", "base/solo")
+        hb, pb = load_chunk(bkey)
+        eq(f"{k} pairs with {bkey}", field_array(hb, pb, "gid"), field_array(h, p, "gid"))
+    if not fseen.all():
+        FAIL.append(f"facades: {int((~fseen).sum())} buildings have no facade chunk")
+
+    # ── 4. water: both levels, against the source grid ───────────────────
+    WATD = load("detail/water-data.js", "WATD")
+    grid = np.frombuffer(unb64(WATD["dep"]), dtype=np.uint8).reshape(WATD["nh"], WATD["nw"])
+    h, p = load_chunk("base/water0")
+    e = next(c for c in man["chunks"] if c["k"] == "base/water0")
+    eq("water0 == every 4th published node",
+       field_array(h, p, "dep").reshape(e["h"], e["w"]), grid[::WATD["mul"], ::WATD["mul"]])
+    covered = np.zeros_like(grid, dtype=bool)
+    for c in [c for c in man["chunks"] if c["kind"] == "water" and c["k"] != "base/water0"]:
+        h, p = load_chunk(c["k"])
+        sub = field_array(h, p, "dep").reshape(c["h"], c["w"])
+        ref = grid[c["gy"]:c["gy"] + c["h"], c["gx"]:c["gx"] + c["w"]]
+        eq(f"{c['k']}.dep", sub, ref)
+        covered[c["gy"]:c["gy"] + c["h"], c["gx"]:c["gx"] + c["w"]] = True
+    dropped = grid[~covered]
+    if dropped.any():
+        FAIL.append(f"water1: {int((dropped != 0).sum())} non-zero nodes are in no tile")
+    print(f"  water: {grid.size:,} nodes, {int((~covered).sum()):,} in all-land tiles "
+          f"that were dropped (all zero, checked)")
+
+    # ── 5. streets ───────────────────────────────────────────────────────
+    STS = load("street/street-data.js", "STSURF")
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    from encode_city_chunks import _decode_rings, _u16, _u32, _u8
+    R = _decode_rings(STS, "rn", "rlen", "rf", "rxy")
+    D = _decode_rings(STS, "dn", "dlen", "df", "dxy")
+    kbits = np.unpackbits(_u8(STS["dkb"]), bitorder="little")[: D["wx"].size]
+    sseen = np.zeros(STS["n"], dtype=bool)
+    for c in [c for c in man["chunks"] if c["kind"] == "strt"]:
+        h, p = load_chunk(c["k"])
+        fid = field_array(h, p, "fid").astype(np.int64)
+        sseen[fid] = True
+        for f, arr in (("kind", _u8(STS["kind"])), ("cls", _u8(STS["cls"])),
+                       ("cnn", _u32(STS["cnn"])), ("w", _u16(STS["w"])),
+                       ("fw", _u16(STS["fw"])), ("yr", _u16(STS["yr"])),
+                       ("imp", _u16(STS["imp"])), ("krb", _u16(STS["krb"]))):
+            eq(f"{c['k']}.{f}", field_array(h, p, f), arr[fid])
+        for tag, O in (("rw", R), ("rd", D)):
+            rings = np.concatenate([np.arange(O["fo"][i], O["fo"][i + 1]) for i in fid])
+            vsel = (np.concatenate([np.arange(O["off"][r], O["off"][r + 1]) for r in rings])
+                    if rings.size else np.zeros(0, dtype=np.int64))
+            eq(f"{c['k']}.{tag}N", field_array(h, p, f"{tag}N"), O["rn"][fid])
+            eq(f"{c['k']}.{tag}Len", field_array(h, p, f"{tag}Len"), O["rl"][rings])
+            eq(f"{c['k']}.{tag}X", field_array(h, p, f"{tag}X"),
+               O["wx"][vsel].astype(np.float32))
+            eq(f"{c['k']}.{tag}Y", field_array(h, p, f"{tag}Y"),
+               O["wy"][vsel].astype(np.float32))
+            if tag == "rd":
+                got = np.unpackbits(field_array(h, p, "rdKerb"), bitorder="little")[: vsel.size]
+                eq(f"{c['k']}.rdKerb", got, kbits[vsel])
+    if not sseen.all():
+        n_un = int((~sseen).sum())
+        exp = next(c for c in man["chunks"] if c["k"] == "base/street-misc")
+        FAIL.append(f"streets: {n_un} features are in no cell") if n_un != man["streets"]["unplaced"] \
+            else print(f"  streets: {n_un} features carry no right-of-way ring and are "
+                       f"in no cell (declared in the manifest)")
+
+    # ── 6. trees and canopy ──────────────────────────────────────────────
+    WRLD = load("world/world-data.js", "WORLD")
+    from encode_city_chunks import _wvarint
+    T = WRLD["tree"]
+    dk = _wvarint(_u8(T["k"]))
+    cn = _wvarint(_u8(T["c"]))
+    tkeys = np.cumsum(dk)
+    toff = np.zeros(cn.size + 1, dtype=np.int64)
+    np.cumsum(cn, out=toff[1:])
+    pos, yr = _u8(T["p"]), _u8(T["y"])
+    fb = np.unpackbits(_u8(T["f"]), bitorder="little")
+    form = (fb[0::2] + 2 * fb[1::2])[: T["n"]].astype(np.uint8)
+    big = np.unpackbits(_u8(T["b"]), bitorder="little")[: T["n"]].astype(np.uint8)
+    tseen = np.zeros(cn.size, dtype=bool)
+    ntree = 0
+    for c in [c for c in man["chunks"] if c["kind"] == "tree"]:
+        h, p = load_chunk(c["k"])
+        ck = field_array(h, p, "cellKey").astype(np.int64)
+        idx = np.searchsorted(tkeys, ck)
+        eq(f"{c['k']} cell keys resolve", tkeys[idx], ck)
+        tseen[idx] = True
+        eq(f"{c['k']}.cellCnt", field_array(h, p, "cellCnt"), cn[idx])
+        vsel = np.concatenate([np.arange(toff[i], toff[i + 1]) for i in idx])
+        for f, arr in (("pos", pos), ("form", form), ("big", big), ("yr", yr)):
+            eq(f"{c['k']}.{f}", field_array(h, p, f), arr[vsel])
+        ntree += int(vsel.size)
+    if not tseen.all():
+        FAIL.append(f"trees: {int((~tseen).sum())} source cells are in no chunk")
+    eq("trees: every tree accounted for", np.array([ntree]), np.array([T["n"]]))
+
+    K = WRLD["canopy"]
+    h, p = load_chunk("base/canopy")
+    eq("canopy.cellKey", field_array(h, p, "cellKey"), np.cumsum(_wvarint(_u8(K["k"]))))
+    eq("canopy.pos", field_array(h, p, "pos"), _u8(K["p"]))
+    eq("canopy.area", field_array(h, p, "area"), _u8(K["a"]))
+    h, p = load_chunk("base/canopy-tint")
+    eq("canopy-tint.demFrac", field_array(h, p, "demFrac"), _u8(WRLD["dem"]["f"]))
+
+    P_, W_ = WRLD["park"], WRLD["water"]
+    h, p = load_chunk("base/parks")
+    eq("parks.cls", field_array(h, p, "cls"), _u8(P_["cls"]))
+    eq("parks.len", field_array(h, p, "len"), _u16(P_["ln"]))
+    eq("parks.xy", field_array(h, p, "xy"),
+       np.frombuffer(unb64(P_["xy"]), dtype=np.int32))
+    eq("parks.waterLen", field_array(h, p, "waterLen"), _u16(W_["ln"]))
+    eq("parks.waterXY", field_array(h, p, "waterXY"),
+       np.frombuffer(unb64(W_["xy"]), dtype=np.int32))
+
+    h, p = load_chunk("base/street-misc")
+    for f, s in (("islandLen", "iln"), ("islandXY", "ixy"),
+                 ("stairLen", "sln"), ("stairXY", "sxy")):
+        eq(f"street-misc.{f}", field_array(h, p, f), _u16(STS[s]))
+    eq("street-misc.cov", field_array(h, p, "cov"), _u8(STS["cov"]))
+
+    # ── 6b. THE SURROUND, and the hillshade the units bug was measured on ──
+    CTX = load("gen/context-data.js", "CTX")
+    XW, XH = CTX["w"], CTX["h"]
+    h, p = load_chunk("base/surround")
+    eq("surround.dem", field_array(h, p, "dem"), _u8(CTX["dem"]))
+    eq("surround.land", field_array(h, p, "land"), _u8(CTX["land"]))
+    eq("surround.own", field_array(h, p, "own"), _u8(CTX["own"]))
+    eq("surround.segs", field_array(h, p, "segs"), _u16(CTX["segs"]))
+
+    man = json.loads((OUT / "manifest.json").read_text())
+    X = man["surround"]
+    # the cell is the divisor the hillshade needs; derive it again, independently
+    LON0, LAT0 = man["proj"]["lon0"], man["proj"]["lat0"]
+    KX = man["proj"]["mpd"] * man["proj"]["cosl"]
+    lo0, la0, lo1, la1 = CTX["bb"]
+    cw = (lo1 - lo0) / XW * KX
+    ch = (la1 - la0) / XH * man["proj"]["mpd"]
+    ok("surround.cellW", abs(X["cellW"] - cw) < 5e-4, f"{X['cellW']} vs {cw:.4f}")
+    ok("surround.cellH", abs(X["cellH"] - ch) < 5e-4, f"{X['cellH']} vs {ch:.4f}")
+    ok("surround.cell is 110.01 x 139.15 m",
+       abs(cw - 110.01) < 5e-3 and abs(ch - 139.15) < 5e-3, f"{cw:.4f} x {ch:.4f}")
+
+    # rebuild the field from the DECODED bytes, not from the source
+    Z = (field_array(h, p, "dem").astype(np.float64) / 255.0
+         * CTX["zmax"]).reshape(XH, XW)
+    landb = np.unpackbits(field_array(h, p, "land"))[:XW * XH].reshape(XH, XW) > 0
+    ownb = np.unpackbits(field_array(h, p, "own"))[:XW * XH].reshape(XH, XW) > 0
+    eq("surround.landCells", np.array([int(landb.sum())]), np.array([X["landCells"]]))
+    eq("surround.ownCells", np.array([int(ownb.sum())]), np.array([X["ownCells"]]))
+
+    SUN = np.array([0.2435, 0.6346, 0.73])   # terrain.ts SUN
+    ZEX = 3.3                                # projection.ts ZEX_BY_STEP[0]
+
+    def lam_fixed():
+        """buildSurroundLam with QF.xlam on: per-metre, whole grid, clamped."""
+        ip = np.clip(np.arange(XW) + 1, 0, XW - 1); im = np.clip(np.arange(XW) - 1, 0, XW - 1)
+        jp = np.clip(np.arange(XH) + 1, 0, XH - 1); jm = np.clip(np.arange(XH) - 1, 0, XH - 1)
+        gx = (Z[:, ip] - Z[:, im]) / 2 * (ZEX / cw)
+        gy = (Z[jp, :] - Z[jm, :]) / 2 * (ZEX / ch)
+        nz = 1 / np.sqrt(gx * gx + gy * gy + 1)
+        return np.clip(-gx * nz * SUN[0] - gy * nz * SUN[1] + nz * SUN[2], 0, 1)
+
+    def lam_shipped():
+        """what the mock painted: divide by 1.8, interior loop only, zeros left."""
+        L = np.zeros((XH, XW))
+        gx = (Z[:, 2:] - Z[:, :-2]) / 2 * (ZEX / 1.8)
+        gy = (Z[2:, :] - Z[:-2, :]) / 2 * (ZEX / 1.8)
+        gx, gy = gx[1:-1, :], gy[:, 1:-1]
+        nz = 1 / np.sqrt(gx * gx + gy * gy + 1)
+        L[1:-1, 1:-1] = np.clip(-gx * nz * SUN[0] - gy * nz * SUN[1] + nz * SUN[2], 0, 1)
+        return L
+
+    interior = np.zeros((XH, XW), bool); interior[1:-1, 1:-1] = True
+    il = landb & interior
+    ok("surround.interior land cells = 62,496", int(il.sum()) == 62496, str(int(il.sum())))
+    ok("surround.land cells = 63,352", int(landb.sum()) == 63352, str(int(landb.sum())))
+    # terrain.ts's own table, reproduced off the decoded chunk
+    TABLE = {"shipped": (0.000, 0.000, 0.081, 0.730, 0.294),
+             "per metre": (0.114, 0.296, 0.717, 0.942, 0.676)}
+    for nm, A in (("shipped", lam_shipped()), ("per metre", lam_fixed())):
+        v = A[il]
+        got = tuple(np.percentile(v, [1, 5, 50, 95])) + (v.mean(),)
+        want = TABLE[nm]
+        ok(f"surround hillshade [{nm}] matches terrain.ts's measured table",
+           all(abs(g - w) < 5e-4 for g, w in zip(got, want)),
+           "  ".join(f"{g:.3f}" for g in got))
+    zs = int((lam_shipped()[landb] == 0).sum())
+    ok("surround: the shipped path clipped 30,651 land cells (48.4 %) to zero",
+       zs == 30651 and abs(100 * zs / int(landb.sum()) - 48.4) < 0.05, str(zs))
+    border = int((landb & ~interior).sum())
+    ok("surround: 856 of those are the border ring the loop skips",
+       border == 856, str(border))
+    ok("surround: slope over-read 61x across and 77x down",
+       abs(cw / 1.8 - 61.1) < 0.1 and abs(ch / 1.8 - 77.3) < 0.1,
+       f"{cw / 1.8:.1f}x / {ch / 1.8:.1f}x")
+    # every `own` cell is a `land` cell — the paint list cannot invent land
+    ok("surround: every `own` cell is a `land` cell", bool((~landb & ownb).sum() == 0),
+       str(int((~landb & ownb).sum())))
+    sg = field_array(h, p, "segs").reshape(-1, 4)
+    ok("surround: every shoreline segment names a node in range",
+       bool((sg[:, 0] <= XW).all() and (sg[:, 2] <= XW).all()
+            and (sg[:, 1] <= XH).all() and (sg[:, 3] <= XH).all()), "")
+    # the bathymetry is this grid refined 4x — the two must share metres
+    W_ = man["water"]
+    ok("surround: the bathymetry is this grid refined mul=4",
+       W_["nw"] == XW * W_["mul"] + 1 and W_["nh"] == XH * W_["mul"] + 1,
+       f"{W_['nw']}x{W_['nh']} vs {XW}x{XH} mul {W_['mul']}")
+    ok("surround: its world frame is the same as the bathymetry's",
+       all(abs(a - b) < 0.15 for a, b in zip(X["world"], W_["world"])),
+       f"{X['world']} vs {W_['world']}")
+
+    # ── 6c. THE AUTHORED LANDMARKS ────────────────────────────────────────
+    HERO = load("wonder/hero-data.js", "HERO")
+    LRD = load("render/render-data.js", "LRD")
+    MARKS = load("marks/marks-data.js", "MARKS")
+    h, p = load_chunk("base/heroes")
+    side = json.loads((OUT / "base" / "heroes.json").read_text())
+
+    # part3.html's own HERO decoder, transcribed — the browser's walk, not the
+    # encoder's arithmetic. Every default is resolved exactly as it resolves it.
+    src_parts = []
+    for H_ in HERO["h"]:
+        for q_ in H_["p"]:
+            n_ = len(q_["r"]) // 2
+            src_parts.append({
+                "k": q_["k"], "n": n_,
+                "wx": np.float32([q_["r"][2 * t] for t in range(n_)]),
+                "wy": np.float32([q_["r"][2 * t + 1] for t in range(n_)]),
+                "z0": q_["z0"], "z1": q_["z1"], "m": q_["m"],
+                "c": q_["m"] if q_.get("c") is None else q_["c"],
+                "ink": int(q_.get("ink") or 0), "min": q_.get("px") or 0,
+                "w": q_.get("w") or 0, "pi": q_.get("pi") or 0,
+                "mg": q_.get("mg") or 0,
+                "dk": 0.75 if q_.get("dk") is None else q_["dk"],
+                "nb": int(q_.get("n") or 0),
+                "tx": (q_["t"][0] if q_.get("t") else 0),
+                "ty": (q_["t"][1] if q_.get("t") else 0),
+                "pu": np.float32([q_["p"][2 * t] for t in range(len(q_.get("p") or []) // 2)]),
+                "ps": np.float32([q_["p"][2 * t + 1] for t in range(len(q_.get("p") or []) // 2)]),
+            })
+    poff = field_array(h, p, "poff")
+    roff = field_array(h, p, "roff")
+    proff = field_array(h, p, "proff")
+    eq("hero.bi", field_array(h, p, "bi"), np.array([x["b"] for x in HERO["h"]]))
+    eq("hero.yr", field_array(h, p, "yr"), np.array([x["y"] for x in HERO["h"]]))
+    eq("hero.top", field_array(h, p, "top"),
+       np.array([round(x["ms"]["t"] * 100) for x in HERO["h"]]))
+    eq("hero.zr", field_array(h, p, "zr"),
+       np.array([round((x["zr"] if x.get("zr") is not None else x["ms"]["t"]) * 100)
+                 for x in HERO["h"]]))
+    eq("hero.acc", field_array(h, p, "acc"),
+       np.array([(x["ac"] if x.get("ac") is not None else -1) for x in HERO["h"]]))
+    eq("hero.hull", field_array(h, p, "hull"),
+       np.array([1 if x.get("hu") else 0 for x in HERO["h"]]))
+    for f_, k_ in (("msA", "a"), ("msH", "h"), ("msR", "r")):
+        eq(f"hero.{f_}", field_array(h, p, f_),
+           np.array([round(x["ms"][k_] * 100) for x in HERO["h"]]))
+    eq("hero.msYr", field_array(h, p, "msYr"),
+       np.array([x["ms"]["yr"] for x in HERO["h"]]))
+    eq("hero.msNv", field_array(h, p, "msNv"),
+       np.array([x["ms"]["nv"] for x in HERO["h"]]))
+    # the anchor IS part3's UX/UY for that building
+    eq("hero.ax", field_array(h, p, "ax"),
+       np.float32([B["cx"][x["b"]] for x in HERO["h"]]))
+    eq("hero.ay", field_array(h, p, "ay"),
+       np.float32([B["cy"][x["b"]] for x in HERO["h"]]))
+    eq("hero.poff", poff,
+       np.cumsum([0] + [len(x["p"]) for x in HERO["h"]]))
+    for f_, k_ in (("pk", "k"), ("pm", "m"), ("pink", "ink"), ("pc", "c"), ("pnb", "nb")):
+        eq(f"hero.{f_}", field_array(h, p, f_), np.array([s[k_] for s in src_parts]))
+    for f_, k_ in (("pz0", "z0"), ("pz1", "z1"), ("pmin", "min"), ("pw", "w"),
+                   ("pmg", "mg"), ("pdk", "dk"), ("ptx", "tx"), ("pty", "ty")):
+        eq(f"hero.{f_}", field_array(h, p, f_),
+           np.array([round(s[k_] * 100) for s in src_parts]))
+    eq("hero.ppi", field_array(h, p, "ppi"),
+       np.array([-1 if s["pi"] == 1e9 else round(s["pi"] * 100) for s in src_parts]))
+    # geometry, part by part, against the Float32Array the browser builds
+    rx = field_array(h, p, "rx"); ry = field_array(h, p, "ry")
+    pu = field_array(h, p, "pu"); ps = field_array(h, p, "ps")
+    for j, s in enumerate(src_parts):
+        eq(f"hero.part{j}.rx", rx[roff[j]:roff[j + 1]], s["wx"])
+        eq(f"hero.part{j}.ry", ry[roff[j]:roff[j + 1]], s["wy"])
+        eq(f"hero.part{j}.pu", pu[proff[j]:proff[j + 1]], s["pu"])
+        eq(f"hero.part{j}.ps", ps[proff[j]:proff[j + 1]], s["ps"])
+    ok("hero: 11 heroes, 127 parts, 3,259 ring vertices, 454 profile points",
+       len(HERO["h"]) == 11 and len(src_parts) == 127
+       and int(roff[-1]) == 3259 and int(proff[-1]) == 454,
+       f"{len(HERO['h'])}/{len(src_parts)}/{int(roff[-1])}/{int(proff[-1])}")
+    ok("hero: the centimetre store is exact — every authored value is a whole cm",
+       all(abs(s[k_] * 100 - round(s[k_] * 100)) < 1e-6
+           for s in src_parts for k_ in ("z0", "z1", "min", "w", "mg", "dk", "tx", "ty")),
+       "")
+    ok("hero: -1 is the pitch sentinel and only 1e9 maps to it",
+       all((s["pi"] == 1e9) == (v == -1)
+           for s, v in zip(src_parts, field_array(h, p, "ppi").tolist())), "")
+    # the gate's own ceiling: no part stands above the MEASURED top
+    top = field_array(h, p, "top"); pz1 = field_array(h, p, "pz1")
+    over = [(HERO["h"][q]["k"], int(pz1[j]), int(top[q]))
+            for q in range(len(HERO["h"]))
+            for j in range(poff[q], poff[q + 1]) if pz1[j] > top[q]]
+    ok("hero: nothing stands above the MEASURED top (the gate's own ceiling)",
+       not over, str(over[:3]))
+    ok("hero: the strings sidecar pairs 1-for-1 with the parts",
+       len(side["parts"]) == len(src_parts) and len(side["heroes"]) == len(HERO["h"]), "")
+    ok("hero: Sutro Tower alone is granted the convex-hull reference",
+       [x["k"] for x in HERO["h"] if x.get("hu")] == ["sutro"], "")
+
+    h, p = load_chunk("base/caps")
+    eq("cap.bi", field_array(h, p, "bi"), _u32(LRD["cap"]["i"]))
+    eq("cap.prof", field_array(h, p, "prof"), _u8(LRD["cap"]["p"]))
+    cpo = field_array(h, p, "poff")
+    eq("cap.poff", cpo, np.cumsum([0] + [len(x) for x in LRD["prof"]]))
+    cpu = field_array(h, p, "pu"); cps = field_array(h, p, "ps")
+    for k_, pr in enumerate(LRD["prof"]):
+        eq(f"cap.prof{k_}.u", cpu[cpo[k_]:cpo[k_ + 1]], np.float32([a for a, _ in pr]))
+        eq(f"cap.prof{k_}.s", cps[cpo[k_]:cpo[k_ + 1]], np.float32([b for _, b in pr]))
+    ok("cap: 68 caps, every one on a published building index",
+       int(field_array(h, p, "bi").size) == 68
+       and bool((field_array(h, p, "bi") < B["n"]).all()), "")
+    ok("cap: every profile is monotone in u and non-negative in s",
+       all(all(pr[i][0] <= pr[i + 1][0] for i in range(len(pr) - 1))
+           and all(s_ >= 0 for _, s_ in pr) for pr in LRD["prof"]), "")
+    ok("cap: no cap is given profile 0 (`prism`, the identity)",
+       int((field_array(h, p, "prof") == 0).sum()) == 0, "")
+
+    h, p = load_chunk("base/bridge")
+    ring = MARKS["ggb"]
+    eq("bridge.rx", field_array(h, p, "rx"), np.float32([a for a, _ in ring]))
+    eq("bridge.ry", field_array(h, p, "ry"), np.float32([b for _, b in ring]))
+    G = LRD["ggb"]; a_, b_ = G["ax"], G["bx"]
+    tow = [(a_[0] + (b_[0] - a_[0]) * t["t"], a_[1] + (b_[1] - a_[1]) * t["t"])
+           for t in G["towers"]]
+    eq("bridge.tx", field_array(h, p, "tx"), np.float32([t[0] for t in tow]))
+    eq("bridge.ty", field_array(h, p, "ty"), np.float32([t[1] for t in tow]))
+    import math as _m
+
+    def _sd(px, py, A, Bb):
+        vx, vy = Bb[0] - A[0], Bb[1] - A[1]
+        wx, wy = px - A[0], py - A[1]
+        L = vx * vx + vy * vy
+        t = 0.0 if L == 0 else max(0.0, min(1.0, (wx * vx + wy * vy) / L))
+        return _m.hypot(px - (A[0] + vx * t), py - (A[1] + vy * t))
+
+    dd = [min(_sd(px, py, ring[k], ring[k + 1]) for k in range(len(ring) - 1))
+          for px, py in tow]
+    ok("bridge: both published towers fall on the published deck within 31.0 m",
+       all(d <= 31.0 for d in dd), " ".join(f"{d:.2f} m" for d in dd))
+    ok("bridge: the two towers are 1304.4 m apart, the file's own figure",
+       abs(_m.dist(tow[0], tow[1]) - G["dtower"]) < 0.1,
+       f"{_m.dist(tow[0], tow[1]):.1f}")
+    Gm = man["landmarks"]["bridge"]
+    ok("bridge: the drawn year is 1937 — completion, not the 1933 start",
+       Gm["year"] == 1937 and Gm["yearLandmark"] == 1933
+       and MARKS["ggbYr"] == 1937, f"{Gm['year']}/{Gm['yearLandmark']}")
+
+    # ── 7. the guards actually fire ──────────────────────────────────────
+    from _chunk import read_chunk as rc
+    blob = (OUT / "base/terrain.qc").read_bytes()
+    for what, mangled in (("an HTML error page", b"<!DOCTYPE html>\n<html>" + blob[22:]),
+                          ("a truncated body", blob[:-1]),
+                          ("one flipped byte", blob[:-1] + bytes([blob[-1] ^ 0xFF]))):
+        try:
+            rc(mangled)
+        except ValueError:
+            pass
+        else:
+            FAIL.append(f"guard did not fire on {what}")
+    print("  guards fire on an HTML error page, a truncated body and one flipped byte")
+
+    print(f"\n{CHECKS:,} comparisons over {ELEMENTS:,} elements")
+    if FAIL:
+        print(f"\nFAILURES: {len(FAIL)}")
+        for f in FAIL[:40]:
+            print("  " + f)
+        return 1
+    print("FAILURES: none")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

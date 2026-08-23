@@ -16835,3 +16835,199 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   line-height: 1.6;
   color: var(--muted);
 }
+
+/* ───── THE CITY MAP (P4) ─────────────────────────────────────────────
+   The stage is a canvas with an OPAQUE ledger panel sitting on it, which is
+   why `Camera.strip()` clamps to the visible strip and not to the canvas:
+   clamping to the canvas would let a third of San Francisco slide underneath
+   the ledger and still count as on screen. `--fx-city-ledger` is the same
+   288 px `LEDGER_W` the camera is told about. */
+.theme-fusion .fx-city-wrap { --fx-city-ledger: 288px; }
+.theme-fusion .fx-city-frame { position: relative; }
+.theme-fusion .fx-city-stage {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--rule);
+  background: #ece7dc; /* HAZE — the same surround colour the canvas fills */
+  overflow: hidden;
+  border-radius: 2px;
+}
+.theme-fusion .fx-city-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+  outline: none;
+}
+.theme-fusion .fx-city-canvas:active { cursor: grabbing; }
+.theme-fusion .fx-city-canvas:focus-visible {
+  outline: 2px solid var(--bleu);
+  outline-offset: -2px;
+}
+.theme-fusion .fx-city-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(250, 250, 247, .72);
+}
+.theme-fusion .fx-city-ledger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--fx-city-ledger);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px 18px 22px;
+  background: var(--bg);
+  border-left: 1px solid var(--rule);
+  font-family: var(--f-ui);
+}
+.theme-fusion .fx-city-ledger-head {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.theme-fusion .fx-city-ledger-lede {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+.theme-fusion .fx-city-presets { display: flex; flex-wrap: wrap; }
+.theme-fusion .fx-city-preset {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  padding: 5px 9px;
+  border: 1px solid var(--ink);
+  border-left-width: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.theme-fusion .fx-city-preset:first-child { border-left-width: 1px; }
+.theme-fusion .fx-city-preset[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+}
+.theme-fusion .fx-city-loading {
+  margin: 16px 0 0;
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--ocre);
+}
+.theme-fusion .fx-city-stats { margin: 16px 0 0; }
+.theme-fusion .fx-city-stat {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px 0;
+  border-top: 1px solid var(--rule);
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+}
+.theme-fusion .fx-city-stat dt { color: var(--muted); margin: 0; }
+.theme-fusion .fx-city-stat dd { margin: 0; color: var(--ink); }
+
+/* the block drawer, inside the ledger */
+.theme-fusion .fx-city-panel {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 2px solid var(--ink);
+}
+.theme-fusion .fx-city-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.theme-fusion .fx-city-panel-kicker {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ocre);
+}
+.theme-fusion .fx-city-panel-title {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  margin: 2px 0 0;
+}
+.theme-fusion .fx-city-panel-close {
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+.theme-fusion .fx-city-panel-close:hover { border-color: var(--ink); }
+.theme-fusion .fx-city-panel-body { margin-top: 10px; }
+.theme-fusion .fx-city-help { margin-top: 10px; }
+.theme-fusion .fx-city-h3 {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  margin: 38px 0 8px;
+}
+.theme-fusion .fx-city-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
+  margin: 0 0 32px;
+}
+.theme-fusion .fx-city-fact dt {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.theme-fusion .fx-city-fact dd {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  margin: 3px 0 4px;
+}
+.theme-fusion .fx-city-fact p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+.theme-fusion .fx-city-sources { list-style: none; margin: 0; padding: 0; }
+.theme-fusion .fx-city-sources li {
+  padding: 9px 0;
+  border-top: 1px solid var(--rule);
+}
+.theme-fusion .fx-city-source-what { display: block; font-size: 14px; line-height: 1.5; }
+.theme-fusion .fx-city-source-who {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* the phone: the ledger stacks BELOW the map, which is exactly the case
+   `Camera.strip()` handles by passing ledgerW = 0 under NARROW_W. */
+@media (max-width: 819px) {
+  .theme-fusion .fx-city-wrap { --fx-city-ledger: 0px; }
+  .theme-fusion .fx-city-stage { height: 460px !important; }
+  .theme-fusion .fx-city-ledger {
+    position: static;
+    width: auto;
+    border: 1px solid var(--rule);
+    border-top: 0;
+  }
+}

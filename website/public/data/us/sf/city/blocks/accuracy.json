@@ -1,0 +1,30 @@
+{
+ "n": 906,
+ "exact": 84.8,
+ "within_one_block_face": 89.1,
+ "within_250m": 93.9,
+ "over_600m": 4.4,
+ "face_m": 120.0,
+ "near_m": 250.0,
+ "far_m": 600.0,
+ "by_tier": {
+  "addr": {
+   "n": 722,
+   "exact": 90.4,
+   "within_one_block_face": 92.9
+  },
+  "corner": {
+   "n": 170,
+   "exact": 60.6,
+   "within_one_block_face": 72.9
+  },
+  "segment": {
+   "n": 14,
+   "exact": 85.7,
+   "within_one_block_face": 85.7
+  }
+ },
+ "street_tier_note": "Street-tier decisions name a street and nothing else, so they are not scored here at all: they are not a claim about a block.",
+ "method": "Every decision whose text prints its own assessor block, joined again with that sentence hidden from the join, and scored against what the record said. Nothing in the address, segment or corner join reads the stated block.",
+ "generated_by": "blocks/measure_accuracy.py"
+}

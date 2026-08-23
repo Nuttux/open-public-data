@@ -1,0 +1,1 @@
+{"block_shards":256,"street_shards":1873,"street_cap":120,"block_shard_rule":"index in b[] modulo 256, formatted %02d","street_shard_rule":"street key, non-alphanumeric runs -> _"}
