@@ -4743,3 +4743,160 @@ stranger would look for.
   names, and §21.3 counts what it does turn away. Left as it is, on the record.
 - **The park wash is a flat slab over the city** (§21.2), and it is the parks
   pass's, not this file's. Filed in BUGS with its ablation numbers.
+
+---
+
+## 23. Block G1(a) — the pixel floors are not the district deficit, and here is the count
+
+`scene.ts` came to this block with one instruction: **measure what the gate
+rejects before moving a threshold.** It was the right instruction and the
+measurement closes the question in the other direction.
+
+### 23.1 The gate rejects most of the ink, not just most of the buildings
+
+District camera, Palace of Fine Arts, 2018, scale 0.135331, canonical
+1200 × 678 stage. `.parity/g1gate.py` replays `paintFootprints`'s own frame
+reject and its own `wpx` — `x1 − x0` over the projected roof ring — over every
+table the page holds, and buckets by count **and by projected roof area**,
+because *a gate that turns away 94 % of the buildings and 12 % of the ink is a
+different fact from one that turns away 94 % of both.*
+
+| floor | buildings under it | **building AREA under it** |
+|---|---|---|
+| `NEAR_PX` 9 — tray, storey lines, facades, ramped outline | 98.67 % | **84.16 %** |
+| `DE.tr0` 7 — the tray at all | 97.29 % | 77.83 % |
+| `STROKE_MIN_PX_B` 5 — **any outline at all** | 92.46 % | **66.63 %** |
+| `SHADOW_MIN_PX` 5 — the contact shadow | 92.46 % | 66.63 % |
+| `STOREY_W_PX` 14 | 99.64 % | 92.54 % |
+
+Two thirds of the district frame's building area is drawn as a flat fill with
+**no separating mark of any kind**, and five sixths of it gets none of the near
+path. That is a real and large ceiling on how much detail this layer can carry
+at this zoom, and it is worth having the number.
+
+### 23.2 But it is NOT the parity gap: both builds compute the same `px`
+
+The constants were checked by hand and are identical to the reference. That
+does not prove the **gates fire** identically, because each compares against a
+`px` its own build computes. So both builds were instrumented at the same
+camera and the same pinned scale (`.parity/g1both.py`) — the mock's own
+quantity off its own `UPBB` (`part3.html` L8862, `k2 = cam.scale` L8636)
+against production's `x1 − x0`:
+
+```
+                              mock                    prod
+  scale                   0.135331                0.135331
+  in frame                  47,755                  44,238
+  px p10                     1.492                   1.492
+  px p50                     2.818                   2.818
+  px p90                     4.641                   4.807
+  px p99                     9.613                   9.945
+
+  below NEAR_PX          98.79 % n / 85.05 % area   98.67 % / 84.16 %
+  below STROKE_MIN_PX_B  92.99 % n / 68.19 % area   92.46 % / 66.63 %
+  below DE.tr0           97.53 % n / 79.02 % area   97.29 % / 77.83 %
+  below STOREY_W_PX      99.67 % n / 93.01 % area   99.64 % / 92.54 %
+```
+
+**`p10` and `p50` agree to three decimal places.** The p90/p99 spread and every
+one of the sub-point differences in the table are the 3,517 buildings — 7.4 % —
+whose `bldg` chunks prod had not fetched when the shutter fell; they are the
+big ones at the edge of the frame, which is where a missing chunk moves a tail
+and not a median.
+
+**So the pixel floors are not the 3–5 % midtone deficit, and lowering one would
+be a parity regression rather than a fix.** Recorded here so the next agent
+does not spend a night on `NEAR_PX`. What the numbers in §23.1 *are* is a
+ceiling on a step-up, and it is bounded further: at this camera the buildings
+cover **32.2 %** of the stage, so two thirds of the frame the histogram
+measures is terrain, water, streets and canopy, and none of it is in these
+files.
+
+### 23.3 And the reference already says what a mark under 5 px does
+
+`buildings.ts` carries the mock's own sentence about the outline: *"below 5 px
+an outline is not a division between two houses, it is an anti-aliased smear
+that greys the whole fabric."* At district zoom the median building is
+**2.818 px** wide, so a 0.7 px line inside it is a third of its width. The
+cheap-mark-for-the-small-case idea does not survive that: there is no room
+between the two neighbours to put a mark, because at 2.8 px the mark and the
+gap are the same pixel.
+
+**What IS available at 2.8 px is the value of the fill itself**, which is
+already carrying the published height quartile (`RSHADE`, four steps, ±14 %)
+and the measured aerial colour (32 entries, §22.1) — and it reaches the fabric
+tier, not only the near path. That is the layer's whole vocabulary at this
+zoom and it is already fully wired.
+
+### 21.14 Which of the famous set are drawn, and which fall back to a prism
+
+The register the brief asked for, taken out of the shipped files
+(`base/heroes.json`, `base/caps.qc`, `base/places.qc`) rather than from memory:
+**12 heroes**, **68 shaped caps** (32 `dome`, 21 `crown`, 12 `campanile`, 2
+`spire`, 1 `arcade`), **5 buildings carry both**, and one bridge deck.
+
+| famous thing | in the places register | drawn as |
+|---|---|---|
+| Coit Tower | yes | HERO `coit` |
+| Ferry Building | yes | HERO `ferry` |
+| San Francisco City Hall | yes | HERO `cityhall` |
+| Palace Of Fine Arts | yes | HERO `pofahall` (§21.9) + `pofa` rotunda |
+| War Memorial Opera House | as `Opera House` | HERO `opera` |
+| The Old U.S. Mint | yes | HERO `oldmint` |
+| Conservatory of Flowers | as **`Conservatory Storage`** | HERO `conservatory` |
+| Peace Pagoda | as `Japanese Pagoda` | HERO `pagoda` |
+| Dutch / Murphy Windmill | yes | HERO |
+| Sutro Tower | **no row** | HERO `sutro`, never named |
+| Golden Gate Bridge | yes, no footprint | `drawBridge` |
+| James Flood Building | yes | cap `crown` |
+| Beach Chalet | yes | cap `dome` |
+| **Grace Cathedral** | yes, designated | **bare prism** |
+| **Fairmont Hotel** | yes | **bare prism** |
+| **Hyde Street Pier** | yes | **bare prism** |
+| Transamerica Pyramid | as `Transamerica Pyramid [Transamerica Center]` | cap |
+| Legion of Honor · Kezar Stadium · Salesforce Tower · SF Zoo | yes, **`bi` = −1** | no footprint at all |
+| de Young · Sts Peter and Paul · St Mary's Cathedral · Alcatraz · Cliff House · Oracle Park · Castro Theatre · Palace Hotel · Mission Dolores · Bay Bridge | **no row under any of those names** | never named |
+
+Two things in that table are findings in their own right. **`Sutro Tower` is a
+hero and is not in the places register**, so the map draws the most visible
+object in San Francisco at emphasis and never writes its name. And the
+**Conservatory of Flowers' footprint carries the name `Conservatory
+Storage`** — the register's row for the glasshouse is the maintenance building
+next to it.
+
+### 21.15 Grace Cathedral: authored, screenshotted, and taken out again
+
+Recorded so it is not re-attempted the same way. It was drawn with §21.9's
+machinery — a wall, a cornice on the published ring, and a three-band
+**pitched** roof — shipped, and looked at (`.parity/g3/out/grace-crop.png`).
+**It is not an improvement and it was removed.**
+
+The reason generalises. §21.9's section is a *roof*, and a roof only reads on a
+building you look **down** on. The Exhibition Hall is 14 m tall on a 272 m
+plan, so its roof is most of what the reader sees. Grace Cathedral is 30 m tall
+on a 102 × 72 m plan and its published 37-vertex ring has narrow arms, so the
+deepest inset the containment gate allows is **3.6 m on an 8.42 m
+half-width** — at the street camera, a chamfer a few pixels deep along the top
+edge of a 30 m wall. What the frame showed was a pale flat-topped slab that
+read no better than the prism it replaced, and slightly worse, because `stone`
+is lighter than the fabric around it.
+
+What Grace Cathedral needs is its **silhouette** — two west towers and a
+central tower over a nave — and per-element heights are in no field this
+pipeline reads. **30.0 m is the LIDAR top of the whole building**, so splitting
+it into a nave and towers would be inventing where the height went. It does not
+get drawn specially until there is a published plan or elevation behind it, and
+the rejection is kept in `heroes_extra.json` under `rejected` with that reason.
+
+Two things survive it and are kept:
+
+- **`roofKind`**, so the section can be a straight-slope `pitched` roof as well
+  as a truncated `segmental` arc. It is the right primitive for a nave and it
+  will be right for the next low building that needs one.
+- **the emitter can now REMOVE a hero it added.** A merge that only ever adds
+  is not idempotent with respect to its own seed: taking a row out of
+  `heroes_extra.json` would leave it shipped forever and the only way back
+  would be re-running the whole city encoder. The manifest records which keys
+  this file wrote, so a key that *was* ours and is no longer claimed is
+  dropped — **after** the byte-for-byte round trip has been proved, never
+  before, and rows that came out of the mock are never touched.

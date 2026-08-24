@@ -236,7 +236,7 @@ def build_parts(ring: list[tuple[float, float]], top_m: float, sec: dict) -> lis
     if not (rise > 0 and dmax > 0 and w > dmax):
         raise ValueError("the section does not close on this footprint")
     # solve rr from  dmax = w * (1 - sqrt(1 - rise/rr))
-    rr = rise / (1.0 - (1.0 - dmax / w) ** 2)
+    kind = sec.get("roofKind", "segmental")
     parts = []
 
     def solid(rg, z0, z1, mat, px, ink):
@@ -246,15 +246,29 @@ def build_parts(ring: list[tuple[float, float]], top_m: float, sec: dict) -> lis
 
     parts.append(solid(inset(ring, setback), 0.0, eaves, sec["matWall"], 0.0, 1))
     parts.append(solid(list(ring), eaves, r0, sec["matWall"], 1.0, 1))
+    # TWO ROOF SECTIONS, AND WHICH ONE IS A PROPERTY OF THE BUILDING.
+    #   segmental  the lower part of a circular arc — a long shed whose roof
+    #              curves, truncated flat where the published top stops it.
+    #              The arc's rise is solved BACKWARD from `dmax` so the section
+    #              never asks for an inset the ring will not take.
+    #   pitched    a straight slope — a nave, a hall, anything roofed with a
+    #              ridge. The inset is linear in height, so the bands are a
+    #              constant slope and the band count is a smoothness choice
+    #              rather than a shape one.
+    # Neither is measured and the record's `dr` says so. What IS measured is
+    # the ring, the top, and `dmax`.
+    rr = (rise / (1.0 - (1.0 - dmax / w) ** 2)) if kind == "segmental" else 0.0
     z = r0
     for k in range(nb):
-        t = rise * (k + 1) / nb
-        d = w * (1.0 - math.sqrt(max(0.0, 1.0 - t / rr)))
+        u = (k + 1) / nb
+        t = rise * u
+        d = (w * (1.0 - math.sqrt(max(0.0, 1.0 - t / rr))) if kind == "segmental"
+             else dmax * u)
         z1 = r0 + t
         parts.append(solid(inset(ring, round(d, 2)), z, z1, sec["matRoof"], 0.0, 1))
         z = z1
     return parts, {"w": round(w, 2), "dmax": dmax, "rise": round(rise, 2),
-                   "arcRise": round(rr, 2), "eaves": eaves}
+                   "kind": kind, "arcRise": round(rr, 2), "eaves": eaves}
 
 
 # ── read the shipped register back out of the chunk ─────────────────────────
@@ -389,10 +403,6 @@ def main() -> int:
     check = "--check" in sys.argv
     H, side = read_shipped()
     seed_keys = {h["k"] for h in json.loads(SEED.read_text())["heroes"]}
-    # THIS SCRIPT IS RE-RUNNABLE, SO "how many came out of the mock" CANNOT BE
-    # `len(H)`: on the second run the register on disk already carries the rows
-    # this file put there. It is the rows on disk that this seed does NOT claim.
-    base_n = sum(1 for h in H if h["k"] not in seed_keys)
 
     # ── THE ROUND TRIP, AND IT IS THE ONLY THING THAT MAKES A MERGE SAFE ────
     # This file rewrites a chunk it did not write. If reading the eleven back
@@ -408,6 +418,25 @@ def main() -> int:
     if "--roundtrip" in sys.argv:
         print(f"round trip: IDENTICAL, {len(rt):,} bytes, {len(H)} heroes")
         return 0
+
+    # ── A SEED THAT DROPS A HERO HAS TO DROP IT ON DISK TOO ────────────────
+    # A merge that only ever adds is not idempotent with respect to its own
+    # seed: taking a row out of `heroes_extra.json` would leave it shipped
+    # forever, and the only way back would be re-running the whole city
+    # encoder. The manifest records which keys this file put there, so a key
+    # that WAS ours and is no longer claimed is removed. Rows that came out of
+    # the mock are never touched by this.
+    prev = json.loads(MANIFEST.read_text()).get("landmarks", {}) \
+                                           .get("authoredHere", {}).get("keys", [])
+    dropped = [k for k in prev if k not in seed_keys]
+    if dropped:
+        H = [h for h in H if h["k"] not in dropped]
+        print(f"    dropped (no longer in the seed): {', '.join(dropped)}")
+    # THIS SCRIPT IS RE-RUNNABLE, SO "how many came out of the mock" CANNOT BE
+    # `len(H)`: on the second run the register on disk already carries the rows
+    # this file put there, and a row this run is about to drop is still in it.
+    # Counted after the drop, over the rows this seed does not claim.
+    base_n = sum(1 for h in H if h["k"] not in seed_keys)
     B = read_bldg()
     seed = json.loads(SEED.read_text())
 
@@ -507,9 +536,10 @@ def main() -> int:
     for k, geo, rec in added:
         print(f"    {k:12} b={rec['b']}  {rec['ms']['a']:,.1f} m2 on "
               f"{rec['ms']['nv']} vertices, top {rec['ms']['t']} m")
-        print(f"      section: half-width {geo['w']} m, deepest safe inset "
-              f"{geo['dmax']} m, eaves {geo['eaves']} m, roof rise "
-              f"{geo['rise']} m off a segmental arc of rise {geo['arcRise']} m")
+        print(f"      section: {geo['kind']}, half-width {geo['w']} m, deepest "
+              f"safe inset {geo['dmax']} m, eaves {geo['eaves']} m, roof rise "
+              f"{geo['rise']} m" + (f" off a segmental arc of rise {geo['arcRise']} m"
+                                    if geo['kind'] == 'segmental' else ""))
         print(f"      em: {rec['em']}")
     return 0
 

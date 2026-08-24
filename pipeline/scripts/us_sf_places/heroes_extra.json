@@ -16,8 +16,17 @@
         "roofBands": 3,
         "matWall": 4,
         "matRoof": 4,
-        "why": "eavesFrac, corniceM and wallSetbackM are the drawing; matWall and matRoof are `stucco`, which is the material the `pofa` record already authors for the rotunda's own walls -- the same building, the same register, the same authored material. eavesFrac 0.62 was 0.75 on the first cut and the roof came out 2.5 m of rise over 9.8 m of horizontal inset, a 14-degree slope that reads as a terrace rather than a roof; screenshot .parity/g3/out/hall-str.prod.after.png at the first value."
+        "why": "eavesFrac, corniceM and wallSetbackM are the drawing; matWall and matRoof are `stucco`, which is the material the `pofa` record already authors for the rotunda's own walls -- the same building, the same register, the same authored material. eavesFrac 0.62 was 0.75 on the first cut and the roof came out 2.5 m of rise over 9.8 m of horizontal inset, a 14-degree slope that reads as a terrace rather than a roof; screenshot .parity/g3/out/hall-str.prod.after.png at the first value.",
+        "roofKind": "segmental"
       }
+    }
+  ],
+  "rejected": [
+    {
+      "k": "grace",
+      "n": "Grace Cathedral",
+      "b": 139401,
+      "why": "AUTHORED, SCREENSHOTTED AND TAKEN OUT AGAIN, recorded so it is not re-attempted the same way. The section this file draws is a roof, and a roof only reads on a building you look DOWN on. The Exhibition Hall is 14 m tall on a 272 m plan, so its roof is most of what a reader sees. Grace Cathedral is 30 m tall on a 102 x 72 m plan, and its published 37-vertex ring has narrow arms, so the deepest inset the containment gate allows is 3.6 m on an 8.42 m half-width: at the street camera that is a chamfer a few pixels deep along the top edge of a 30 m wall, and what the frame shows is a pale flat-topped slab that reads no better than the prism it replaced -- arguably worse, because `stone` is lighter than the fabric around it. Screenshot .parity/g3/out/grace-crop.png.\\nWhat Grace Cathedral actually needs is its SILHOUETTE -- two west towers and a central tower over a nave -- and per-element heights for those are in no field this pipeline reads. 30.0 m is the LIDAR top of the whole building, so splitting it into a nave and towers would be inventing where the height went. It does not get drawn specially until there is a published plan or elevation behind it."
     }
   ]
 }
