@@ -972,14 +972,39 @@ describe("the envelope", () => {
 // ────────────────────────────────────────────────────────────────────────────
 
 describe("the roof", () => {
-  it("nothing claims a PITCHED roof — the published statistics do not support one", () => {
+  it("no roof form is claimed PER BUILDING — the published statistics support a population and nothing finer", () => {
+    /* AMENDED, and the amendment is the point. The original assertion was
+       that nothing claims a pitched roof at all, because the published LIDAR
+       aggregates cannot separate pitch from ground slope, building edge and
+       multiplicity — and that half is still true and still tested below by
+       the tower control's own number. What had never been asked was whether
+       the same statistic separates by ERA on a matched population, and
+       DRAW.md §35.2 measures that it does: the pre-1907 single-family cohort
+       carries 38-48 cm of modal offset against 4-6 cm for 1930-59, matched on
+       use, ring complexity, footprint size, ground slope and height.
+
+       So what this now asserts is the boundary: `drawHip` may exist, and it
+       must NOT read any per-building height statistic to decide whether to
+       fire. Its inputs are the ring, the projection and a colour — the caller
+       decides the population off the roll's two columns, in `palette.ts`. */
+    const src = roofsSource().replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "");
+    // the population is decided in palette.ts, not here
+    expect(src).not.toMatch(/\bstdcm|\bmajoritycm|\bmodal|\bvarietycm/i);
+    // and the cap is a cut-off, never squeezed to a minimum
+    expect(src).toMatch(/PITCH_MIN_RISE_PX/);
+    expect(src).not.toMatch(/Math\.max\([\d.]+,\s*risePx/);
+  });
+
+  it("the pitched cap does not move the statistic it is drawn from — the eave is below the published plane by exactly what the apex is above it", () => {
+    /* F2.4 was written for a flat roof, where the published median IS the top.
+       A pitched surface's median is mid-slope, which is what hgt_mediancm
+       measures over a pitched footprint, so the general form of the clause is
+       that the drawn roof must not change the statistic it is drawn from. */
     const src = roofsSource();
-    for (const word of ["ridge", "gable", "hip"]) {
-      // the words appear only inside the comments that explain why they are
-      // forbidden, never as a drawn primitive
-      expect(src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, ""))
-        .not.toMatch(new RegExp(`\\b${word}\\b`, "i"));
-    }
+    expect(src).toMatch(/const halfPx = risePx \* 0\.5;/);
+    // the eave takes +halfPx (down-screen, i.e. lower) and the apex -halfPx
+    expect(src).toMatch(/hipEY\[k\] = t\.by\[k\] \+ halfPx;/);
+    expect(src).toMatch(/- halfPx;/);
   });
 
   it("the drawn height is the published median, not the whole-metre byte, and it never moves it by more than the byte rounded away", () => {

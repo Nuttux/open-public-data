@@ -180,6 +180,7 @@ import {
 } from "@/lib/city/facades";
 import {
   bandOfHeight,
+  drawHip,
   drawStep,
   drawTray,
   drawsStoreyLines,
@@ -210,6 +211,7 @@ import { riseOf, risePhase } from "@/lib/city/film";
 import { SCRUB_MAX } from "@/lib/city/time";
 import {
   ERA_MEASURED,
+  isPitched,
   PAINT_C0,
   UMAT_ROOF,
   UMAT_WALL,
@@ -3272,8 +3274,32 @@ export class CityScene {
         ctx.stroke();
       }
 
+      /* ── THE PITCHED CAP, ON THE POPULATION THE RECORD SUPPORTS ──────
+         `palette.ts` §WHO IS PITCHED has the population and `roofs.ts` §THE
+         PRE-FIRE CITY IS PITCHED has the measurement behind it. A cap that
+         fires draws INSTEAD of the coping: a wood-frame roof has an eave, not
+         a parapet, and drawing both would be two different buildings on one
+         footprint. Under its own rise cut-off `drawHip` declines and the flat
+         roof already filled above is what stands. */
+      let hipped = false;
+      if (
+        n4 === nv &&
+        isPitched(tb.u[i] & USE_MASK, 1849 + tb.yr[i], (tb.u[i] & FLAG_NOYEAR) !== 0)
+      ) {
+        hipped = drawHip(f, {
+          bx: tx, by: ty,
+          rx: subarrayOf(tb.vxw, oo, nv), ry: subarrayOf(tb.vyw, oo, nv),
+          vo: 0, nv,
+          k2, kh,
+          cax: cf.ax, cay: cf.ay, cbx: cf.bx, cby: cf.by,
+          ax: cf.ax, ay: cf.ay, lmax,
+          roofColour: roofCol,
+          ink: wpx >= STROKE_MIN_PX_A ? edgeInk(roofCol, wpx) : null,
+        });
+      }
+
       // ── the coping, when the roof is worth one
-      const tw = trayW(wpx);
+      const tw = hipped ? 0 : trayW(wpx);
       if (tw > 0 && n4 === nv) {
         drawTray(f, {
           bx: tx, by: ty,

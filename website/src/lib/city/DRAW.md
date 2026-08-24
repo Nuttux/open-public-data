@@ -8191,3 +8191,244 @@ a 2.818 px building at the district camera still carries its fill. The roof
 and a block carries no use class and no build year — so the era rule has
 nothing to read there. Whole-city zoom changes only through the solos, which
 are drawn as footprints at every zoom. Named here rather than left to be found.
+
+---
+
+## 35. Block G1 — Daniel asked whether the satellite could make each building look like itself. Three questions, three different answers, all measured
+
+> *"ok but for the current era where satellite is available we can use that to
+> really approximate the look of each building — both the sides and the roof
+> etc — based on that, no, into a render?"*
+
+### 35.1 The roof colour: YES, and the flattener is the MEDIAN, not the palette
+
+§34.1 already excluded the 32-entry quantiser — the distribution is nearly
+flat, perplexity 29.0 of 32. So the question is what the **median** costs.
+`.parity/g1sat.py`: a seeded random sample of **6,000 footprints**, re-read off
+the SAME cached Esri tiles at the SAME zoom 18 and the SAME 1.5 m erosion
+`paint/sample.py` used, so the answer is about the exact pixels the shipped
+column was taken from.
+
+```
+  pixels inside one eroded footprint     p25 215   p50 282   p75 383
+
+  luminance rms about the MEDIAN         p25 13.3  p50 20.9  p75 32.0  p90 44.8
+  luminance rms about a TWO-PLANE fit    p25  7.6  p50 10.5  p75 14.3  p90 18.4
+  variance the second plane explains, median                    74.8 %
+  separation of the two planes           p25 26.5  p50 44.9  p75 68.7
+  share of pixels on the darker plane, p50                       0.33
+
+  chroma INSIDE a footprint      median 13.0,  p90 of the medians 17.0
+  the shipped quantiser's own error, for scale                    5.8
+```
+
+**The median throws away 3.6 x more than the quantiser does** — 20.9 levels
+against 5.8 — and a two-plane model recovers three quarters of it. The two
+planes sit **44.9 levels apart at the median building**, which is not a subtle
+texture: it is a light plane and a dark plane covering roughly two thirds and
+one third of the roof. *That is Daniel's word "uniform", measured.*
+
+**And there is still no hue in it.** Chroma inside a footprint is 13.0, the
+same as the chroma between footprints (§34.1's 14.6). A richer sample buys
+VALUE structure and no colour, which is worth knowing before anyone hopes for
+one.
+
+**Payload, before building it, as asked.** `paintIdx` u8 x 166,166 gzips to
+**107,289 bytes** today, which is the honest calibration for a spatially sorted
+u8 column on this tier. A two-plane model needs a light index, a dark index and
+a dark share — call it two more such columns, **about +215 KB gzipped, +11 %
+of the 1.93 MB `bldg` tier**. A coarse per-building texture is far more: even
+4 x 4 quantised cells is 16 bytes a building.
+
+**NOT BUILT, deliberately.** It needs a full 166,166-footprint re-sample and a
+new field on the `bldg` tier, which means regenerating the published chunks the
+night before a demo. The measurement is here so the next block starts from a
+number and not from a hope, and the recommended shape is the two-plane split
+rather than a texture: three quarters of the variance for two bytes.
+
+### 35.2 The roof FORM: LiDAR, and the answer is a POPULATION rule, not a per-building one
+
+The published LiDAR is **zonal statistics only** — `cells50cm_1st`, min, max,
+range, mean, std, variety, majority, minority, median per footprint, plus the
+same over bare earth (`roofs/cache/rt-*.json`). **There is no raster and no
+point cloud in this tree.** Fitting planes and finding ridges needs the returns
+themselves; USGS 3DEP publishes the 2010 flight, and that is a multi-day
+ingest, not a night's work.
+
+`roofs.ts`'s header already refuted pitch-from-statistics three ways. **It is
+still right, and here is the control that says so**, using its own tower
+argument on the statistic that best survives contamination — the offset between
+the modal 1 cm bin and the median, both robust to a minority of bad cells:
+
+```
+  326 buildings over 40 m — San Francisco towers, flat without exception
+      |mode - median| p50 = 115.5 cm
+```
+
+A statistic that reads 115 cm on a certainly-flat tower cannot be cut per
+building. **But nobody had split it by ERA on a matched population**, and that
+is a different question. Single family, simple ring (<= 6 vertices), 60-260 m2,
+ground range under the footprint < 0.6 m, and then matched on building height
+as well:
+
+```
+  |mode - median|, cm, median of each cell        by ROLL YEAR
+  height above zone min      ->1906   1907-29   1930-59   1960-89
+        200-300 cm              22        7         5         4
+        300-400 cm              38        8         5         7
+        400-500 cm              39       12         4        15
+        500-700 cm              48       26         6        16
+
+  share of the cell with |mode - median| >= 25 cm
+        200-300 cm            44.3 %   19.6 %    6.8 %    10.7 %
+        300-400 cm            64.1 %   27.5 %    8.1 %    26.3 %
+        400-500 cm            61.2 %   37.1 %   11.5 %    43.1 %
+        500-700 cm            65.2 %   50.5 %   22.1 %    40.6 %
+```
+
+Use class, footprint size, ring complexity, ground slope and building height
+are all held. **The pre-1907 cohort carries 5 to 8 times the modal offset of
+the 1930-59 cohort**, and `roofs.ts`'s own arithmetic says what those two
+numbers mean: *"a gable with a 2 m rise spreads its cells over about 200
+near-equal one-centimetre bins, so its modal bin would sit of the order of
+50 cm from the median"*, against 6 cm for one plane with noise on it. **The
+pre-1907 population sits at 38-48. The 1930-59 population sits at 4-6.** The
+two ends of that table are the two things the arithmetic predicts.
+
+It is also consistent with every piece of evidence `roofs.ts` already gathered
+rather than against it: its 32-house aerial sheet was the **Sunset**, which is
+1920s-40s stock — era 2, the flat end of this table — and the one named
+counterexample it quotes, *"the steeply gabled Haas-Lilienthal House"*, is
+**1886**, which is era 0.
+
+So: **not a per-building form field, which the tower control forbids; a
+population-level rule keyed on (use class, era), which the record now
+supports.** Section 36 builds it.
+
+### 35.3 The SIDES: no, and this is the one claim that must not be made
+
+Esri World Imagery is **orthorectified nadir**. It sees roofs. It cannot see a
+wall, and no amount of processing recovers one from a photograph taken from
+directly overhead. The imagery that does see facades — Bing Bird's Eye,
+Google's 45 degree, Nearmap, EagleView — is not openly licensed, and this
+project publishes nothing it cannot cite.
+
+**Walls therefore keep an honest treatment derived from the archetype, the era
+and the measured roof value, and no wall on this map is ever "approximated from
+satellite."** Written here so that it is a decision on the record rather than
+something that quietly does not happen.
+
+### 35.4 The principle this settles, and it is worth stating as a design rule
+
+Both usable sources are **dated**: the imagery is 2026-08-23, the LiDAR flight
+is 2010, and the roll is the 2025 closed roll. So the map's PRESENT can be
+near-photographic and its earlier years fall back to declared rules keyed on
+era and class. **The record gets more precise as it approaches the present** —
+which is true of the underlying data, is honest to say to a reader, and gives
+the film something to do: a century that resolves into focus as it runs.
+
+One caution that travels with the LiDAR: it is a **2010** measurement against a
+2016 footprint compilation, so **541 buildings the roll dates after the flight
+carry `FLAG_HEIGHT_STALE`** (`bldg-data.js` `meta.heightFlags`) and have no
+roof surface in the survey at all. Those keep the rule-based form and are
+flagged, never guessed.
+
+---
+
+## 36. Block G1 — the pitched cap. The pre-fire city is drawn as the wood city it was
+
+Daniel: *"not just the colours but also the shapes: most buildings have flat
+while some have their actual shape of roof and it's way better."*
+
+### 36.1 What it draws, and why a hip and not a gable
+
+A hip roof **is** the straight skeleton of its own plan, and a mitered inward
+offset is that skeleton's construction. `insetRing` already builds exactly that
+miter for `drawTray`, so `drawHip` reuses it rather than inventing a second
+offset: offset the published ring inward by the run, lift it by the rise, and
+join the two rings edge by edge.
+
+**Nothing chooses between a gable and a hip — the plan does.** A long thin
+footprint's offset ring collapses onto its own centreline and the cap comes out
+a gable with hipped ends; a squarer one keeps a short ridge platform. That is
+why this is one function and not two, and why there is no shape table anywhere
+in it.
+
+Each slope takes its value from `planeQuartile` — the **same** law the wall
+buckets use, off the same projection coefficients — so a slope facing the key
+light and a wall facing it cannot come to disagree about where the sun is.
+`PITCH_V` is centred on 1.0, so a pitched roof has the same mean value as the
+flat roof it replaces and the frame's tone does not move.
+
+### 36.2 It does not move the statistic it is drawn from
+
+`F2.4` was written for a flat roof, where the published median IS the top, and
+it says the coping sits at the published height and everything else below it.
+**A pitched surface's median is not its top — it is mid-slope**, and mid-slope
+is exactly what `hgt_mediancm` measures over a pitched footprint. So the
+general form of the same clause is *the drawn roof must not change the
+statistic it is drawn from*, and this cap satisfies it strictly: the eave sits
+`rise/2` below the published plane, the apex `rise/2` above, and **the drawn
+surface's own median is the published median to the centimetre**. The
+building's mass is unchanged and nothing is added to its height. Asserted in
+`draw.test.ts`.
+
+### 36.3 The run took three attempts and the failures are the useful part
+
+**One.** `run = 0.95 * area / perimeter`. Safe — that quantity is at or below
+the inradius for every simple polygon — but only TIGHT for a long thin plan and
+HALF the answer for a square: a rectangle `L x W` has `area/per = LW/2(L+W)`
+against an inradius of `W/2`, a ratio of `1 + W/L`. On a 10 x 20 m plan it gave
+run 3.17 m and a rise of 1.32 m where the plan supports 5.0 and 2.08, so every
+ridge came out a wide plateau.
+
+**Two.** Try the multipliers downward and take the first whose offset ring is
+still wound the way the plan is. Better, and **it produced a pale arrow
+standing out of a Noe Valley roof** (`out/P2-str-noe-1906.hip.prod.png`).
+43.1 % of the pitched population is a CONCAVE ring — 8,281 of 14,555 are convex
+— and **a mitered offset of a concave plan bowties before its area changes
+sign.** An area test cannot see a bowtie.
+
+**Three.** A bowtie reverses an edge. So the second acceptance test is that
+every offset edge still runs the way its plan edge ran, which is O(nv) and
+catches it. The alternative — refusing all 6,274 concave plans — would have
+left half of a Victorian block pitched and half of it flat, which reads as a
+bug rather than as a record.
+
+`nv > 12` is refused outright: 167 of 14,555, and above twelve vertices a plan
+is not a house. A refusal draws the flat roof the page always drew.
+
+### 36.4 The population, and what is deliberately outside it
+
+`palette.ts` §WHO IS PITCHED. Pre-1907, single family or multi-family, dated by
+the roll — **14,555 footprints, 8.76 % of the city today and 84 % of everything
+standing in the 1906 frame.** Outside it, and each for a reason:
+
+- **retail, office, industrial, hotel/institutional in every era** — the
+  downtown and South of Market stock is masonry with a parapet from the start,
+  and §35.2's table is a single-family measurement that is not evidence about
+  them.
+- **everything from 1907 on** — the flat end of that same table, 4 to 6 cm of
+  modal offset, one plane with noise on it.
+- **`mixed or not stated` and `FLAG_NOYEAR`** — no class, or a placeholder date.
+
+### 36.5 Zoom scope, stated rather than discovered
+
+The cap fires on the **near path only** (`wpx > NEAR_PX = 9`) and carries its
+own cut-off in CSS px of rise (`PITCH_MIN_RISE_PX = 2.0`), under which it is
+**not drawn at all** rather than squeezed to a minimum — the `gszV` distinction
+this file already records twice.
+
+So: **street and building zoom.** At block zoom a Mission house is about 7 px
+and does not reach the near path; at district it is 2.818 px (§30.1). Nothing
+changes at city, district or block zoom and nothing is spent there. Read that
+as the scope, not as a failure.
+
+### 36.6 What it looks like
+
+`out/P2-str-noe-1906.hip3.prod.png` — Noe Valley in 1906, a warm brown wood
+city of pitched roofs, against `out/P1-str-noe-2025.hip2.prod.png`, where the
+same blockface is a mix: the Victorians still pitched, everything the roll
+dates after the fire still flat, and the whole of it in the measured 2026
+colour. **That mix is the point.** It is the same map saying two true things
+about the same street.

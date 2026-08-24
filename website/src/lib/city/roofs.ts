@@ -41,9 +41,23 @@
  * the steeply gabled **Haas-Lilienthal House**, 276 cm. **There is no cut that
  * separates them.**
  *
- * **NO RIDGE, GABLE, HIP OR PITCH IS DRAWN BY THIS MODULE.** A city of
- * invented gables would be worse than a city of honest boxes. Asserted at run
- * time (F2.4).
+ * **AMENDED 2026-08-24, AND ONLY THE HALF THAT WAS TESTED.** Everything above
+ * is about deriving a roof form **per building** from these aggregates, and it
+ * is all still true: §THE PRE-FIRE CITY IS PITCHED below re-runs this section's
+ * own tower control and finds 326 buildings over 40 m — flat without exception
+ * in this city — carrying a modal offset of 115.5 cm. Nothing here cuts a
+ * per-building form, and `draw.test.ts` asserts that this module reads no
+ * height statistic at all.
+ *
+ * What was never asked is whether the same statistic separates by ERA on a
+ * MATCHED population. It does, by five to eight times, and `DRAW.md` §35.2 has
+ * the table. So this module now draws ONE pitched cap, on a population the
+ * caller selects from the roll's use class and year — a declared global rule,
+ * never a per-building claim, and never randomised. Every observation in this
+ * header is consistent with it rather than against it: the 32-house aerial
+ * sheet is the **Sunset**, 1920s-40s stock, the flat end of that table; and
+ * the one named counterexample it quotes, *"the steeply gabled
+ * Haas-Lilienthal House"*, is **1886**.
  *
  * A parapet is not a pitch: F2's own aerial sheets are what establish the
  * parapet as the CORRECT San Francisco form, so the tray below is allowed and
@@ -1013,3 +1027,284 @@ export const NOTHING_IS_PLACED_ON_A_ROOF = true;
  * pixels, 0.016 % of the frame.**
  */
 export const ROOF_BUCKET_SPLIT_NOTE = true;
+
+// ── the pitched cap ─────────────────────────────────────────────────────────
+
+/**
+ * THE PRE-FIRE CITY IS PITCHED, AND THE RECORD NOW SAYS SO — BY POPULATION.
+ *
+ * This module's header refutes deriving pitch **per building** from the
+ * published LIDAR aggregates, and that refutation stands: `DRAW.md` §35.2
+ * re-runs its own tower control and finds 326 buildings over 40 m — flat
+ * without exception in this city — carrying a modal offset of **115.5 cm**.
+ * A statistic that reads 115 cm on a certainly-flat tower cannot be cut per
+ * building, and nothing here cuts one.
+ *
+ * What had never been asked is whether the same statistic separates by ERA on
+ * a matched population. It does. Single family, ring of at most six vertices,
+ * 60-260 m2, bare-earth range under the footprint below 0.6 m, and then
+ * matched on building height as well (`DRAW.md` §35.2 has the full table):
+ *
+ * ```
+ *   |modal 1 cm bin - median|, cm      ->1906   1907-29   1930-59   1960-89
+ *     height 300-400 cm                  38        8         5         7
+ *     height 400-500 cm                  39       12         4        15
+ *     height 500-700 cm                  48       26         6        16
+ * ```
+ *
+ * and this file's own arithmetic says what those two ends mean: *"a gable with
+ * a 2 m rise spreads its cells over about 200 near-equal one-centimetre bins,
+ * so its modal bin would sit of the order of 50 cm from the median"*, against
+ * **6 cm** for one plane with noise on it. The pre-1907 cohort sits at 38-48.
+ * The 1930-59 cohort sits at 4-6.
+ *
+ * It is also consistent with every observation the header already made rather
+ * than against them: the 32-house aerial sheet that established the flat
+ * parapet was the **Sunset**, which is 1920s-40s stock — the flat end of that
+ * table — and the one named counterexample it quotes, *"the steeply gabled
+ * Haas-Lilienthal House"*, is **1886**.
+ *
+ * SO: **a global rule keyed on (use class, era), declared, never randomised
+ * and never per-building.** The caller decides who is in the population; this
+ * function only draws.
+ *
+ * ── AND IT DOES NOT MOVE THE PUBLISHED STATISTIC ────────────────────────
+ *
+ * `F2.4` was written for a flat roof, where the published median IS the top,
+ * and it says the coping sits at the published height and everything else
+ * below it. **A pitched surface's median is not its top — it is mid-slope**,
+ * which is exactly what `hgt_mediancm` measures over a pitched footprint. So
+ * the general form of the same clause is *the drawn roof must not change the
+ * statistic it is drawn from*, and this cap satisfies it strictly: the eave
+ * sits `rise/2` BELOW the published plane and the apex `rise/2` above, so the
+ * drawn surface's own median is the published median to the centimetre. The
+ * building's mass is unchanged and nothing is added to its height.
+ */
+
+/** the declared slope, as a rise over a run. 5:12 — the shallow-to-moderate
+ *  pitch of a San Francisco wood-frame roof behind its false front, not the
+ *  steep alpine gable a steeper number would draw. ONE for the whole city. */
+export const PITCH_RUN = 12 / 5;
+
+/** the apex never stands more than this above the published plane, metres —
+ *  a cut-off on a large footprint, whose inscribed offset would otherwise put
+ *  a barn on a corner store. DECLARED. */
+export const PITCH_MAX_HALFRISE_M = 1.3;
+
+/**
+ * THE RUN IS THE PLAN'S OWN INSCRIBED OFFSET, FOUND BY TRYING, NOT ESTIMATED.
+ *
+ * `area / perimeter` is a safe lower bound on the inradius for every simple
+ * polygon, and that is what the first cut used — but it is only TIGHT for a
+ * long thin plan and it is HALF the answer for a square: a rectangle L x W has
+ * `area/per = LW/2(L+W)` against an inradius of `W/2`, a ratio of `1 + W/L`.
+ * So on the San Francisco row house, which is the whole population here, the
+ * first cut drew about two thirds of the roof it should have and every ridge
+ * came out as a wide plateau. MEASURED on a 10 x 20 m plan: run 3.17 m and a
+ * rise of 1.32 m, where the plan supports 5.0 and 2.08.
+ *
+ * The offset that is wanted is the largest one whose MITERED ring has not
+ * turned itself inside out, and that is cheaper to test than to derive: walk
+ * the multipliers downward and take the first that survives. At the exact
+ * inradius a long plan's offset ring collapses onto its own centreline, which
+ * is not a failure — **it is the ridge**, and it is why the acceptance test is
+ * on the SIGN of the offset ring's area and not on its size.
+ *
+ * TWO tests, and the second one is the one that matters. **43.1 % of the
+ * pitched population is a CONCAVE ring** (8,281 of 14,555 are convex), and a
+ * mitered offset of a concave plan bowties before its area changes sign — one
+ * pale arrow standing out of a Noe Valley roof in
+ * `out/P2-str-noe-1906.hip.prod.png` is exactly that. A bowtie reverses an
+ * edge, so the second test is that **every offset edge still runs the way its
+ * plan edge ran**, which is O(nv) and catches it. Refusing all 6,274 concave
+ * plans instead would have left half of a Victorian block flat and half of it
+ * pitched, which reads as a bug rather than as a record.
+ */
+const PITCH_RUN_MULT: readonly number[] = [1.95, 1.6, 1.3, 1.0];
+
+/**
+ * The cap's own cut-off, CSS px of total rise on screen. Under it the cap is
+ * NOT DRAWN AT ALL — never squeezed to a minimum, which is the distinction
+ * `gszV` and `FSTEP_LIFT_PX` already record in this file.
+ */
+export const PITCH_MIN_RISE_PX = 2.0;
+
+/** the three slope values, as values of the roof's own colour, by
+ *  `planeQuartile` — the SAME law the wall buckets use, so a slope facing the
+ *  key light and a wall facing it cannot come to disagree about where the sun
+ *  is. Monotone, and centred on 1.0 so a pitched roof has the same mean value
+ *  as the flat roof it replaces. */
+export const PITCH_V: readonly number[] = [0.845, 0.935, 1.02, 1.075];
+
+const hipEX = new Float32Array(64),
+  hipEY = new Float32Array(64),
+  hipRX = new Float32Array(64),
+  hipRY = new Float32Array(64),
+  hipMX = new Float32Array(64),
+  hipMY = new Float32Array(64);
+
+export interface HipInput {
+  /** the ring projected at the PUBLISHED plane — `tx`/`ty` at the call site */
+  readonly bx: ArrayLike<number>;
+  readonly by: ArrayLike<number>;
+  /** the same ring, UNROTATED world metres */
+  readonly rx: ArrayLike<number>;
+  readonly ry: ArrayLike<number>;
+  readonly vo: number;
+  readonly nv: number;
+  /** projected px per world metre, down the screen */
+  readonly k2: number;
+  /** projected px per world metre of BUILT HEIGHT — `proj.zexb * cam.scale` */
+  readonly kh: number;
+  /** `proj.coeffs()`, for the world→screen inward offset */
+  readonly cax: number;
+  readonly cay: number;
+  readonly cbx: number;
+  readonly cby: number;
+  /** `planeQuartile`'s gradient axis and its length */
+  readonly ax: number;
+  readonly ay: number;
+  readonly lmax: number;
+  readonly roofColour: string;
+  /** the outline, or null under the stroke threshold */
+  readonly ink: string | null;
+}
+
+/**
+ * ONE HIPPED CAP — the mitered inward offset of the published ring, lifted.
+ *
+ * A hip roof IS the straight skeleton of its own plan, and a mitered inward
+ * offset is that skeleton's own construction: offset every edge inward by the
+ * run and the offset ring IS the ridge. `insetRing` already builds exactly
+ * that miter for `drawTray`, so this reuses it rather than inventing a second
+ * offset. A long footprint's offset ring collapses onto its centreline and the
+ * cap comes out a gable with hipped ends; a squarer one keeps a short ridge
+ * platform. **Nothing chooses between those two — the plan does.**
+ *
+ * The offset is `0.95 * area / perimeter`, which is at or below the inradius
+ * for every simple polygon (it equals it for a long rectangle and is half of
+ * it for a square), **so the ring can never invert and there is no clamp to
+ * tune.** The rise follows from the offset and the declared pitch, so a narrow
+ * house gets a low roof and a deep one a taller one, off the plan and not off
+ * a table.
+ *
+ * Returns false when the cap is under its own cut-off or the ring is longer
+ * than the scratch, and the caller then draws the flat roof it always drew.
+ */
+export function drawHip(f: Frame, t: HipInput): boolean {
+  const { nv } = t;
+  /* 12, not 64. Above it a plan is not a house — 167 of the 14,555 footprints
+     in the population carry more than twelve vertices — and the edge-reversal
+     test below is the only thing standing between a complicated ring and a
+     bowtie on the roof. A refusal here draws the flat roof, which is what the
+     page drew before. */
+  if (nv < 3 || nv > 12) return false;
+  // the plan's own area and perimeter, in world metres
+  let a2 = 0;
+  let per = 0;
+  for (let k = 0; k < nv; k++) {
+    const k1 = (k + 1) % nv;
+    const x0 = t.rx[t.vo + k],
+      y0 = t.ry[t.vo + k],
+      x1 = t.rx[t.vo + k1],
+      y1 = t.ry[t.vo + k1];
+    a2 += x0 * y1 - x1 * y0;
+    per += Math.hypot(x1 - x0, y1 - y0);
+  }
+  const area = Math.abs(a2) * 0.5;
+  if (!(per > 0) || !(area > 0)) return false;
+  const wind = a2 >= 0 ? 1 : -1;
+  insetRing(t.rx, t.ry, t.vo, nv, { mx: hipMX, my: hipMY });
+  /* the largest offset whose mitered ring is still wound the way the plan is.
+     `insetRing` returns the per-vertex miter DIRECTION at unit offset, so one
+     call serves every candidate and the loop is arithmetic. */
+  const d0 = area / per;
+  let run = 0;
+  for (let c = 0; c < PITCH_RUN_MULT.length; c++) {
+    const d = d0 * PITCH_RUN_MULT[c];
+    let s2 = 0;
+    for (let k = 0; k < nv; k++) {
+      const k1 = (k + 1) % nv;
+      const x0 = t.rx[t.vo + k] + hipMX[k] * d,
+        y0 = t.ry[t.vo + k] + hipMY[k] * d,
+        x1 = t.rx[t.vo + k1] + hipMX[k1] * d,
+        y1 = t.ry[t.vo + k1] + hipMY[k1] * d;
+      s2 += x0 * y1 - x1 * y0;
+    }
+    if (s2 * wind < 0) continue;
+    let simple = true;
+    for (let k = 0; k < nv && simple; k++) {
+      const k1 = (k + 1) % nv;
+      const ex = t.rx[t.vo + k1] - t.rx[t.vo + k],
+        ey = t.ry[t.vo + k1] - t.ry[t.vo + k];
+      const fx = ex + (hipMX[k1] - hipMX[k]) * d,
+        fy = ey + (hipMY[k1] - hipMY[k]) * d;
+      if (ex * fx + ey * fy < 0) simple = false;
+    }
+    if (simple) {
+      run = d;
+      break;
+    }
+  }
+  if (!(run > 0)) return false;
+  let half = (run / PITCH_RUN) * 0.5;
+  if (half > PITCH_MAX_HALFRISE_M) half = PITCH_MAX_HALFRISE_M;
+  const risePx = 2 * half * t.kh;
+  if (!(risePx >= PITCH_MIN_RISE_PX)) return false;
+
+  const halfPx = risePx * 0.5;
+  for (let k = 0; k < nv; k++) {
+    // the eave: the published ring, half the rise BELOW the published plane
+    hipEX[k] = t.bx[k];
+    hipEY[k] = t.by[k] + halfPx;
+    // the apex ring: the mitered inward offset, half the rise above it
+    const mx = hipMX[k],
+      my = hipMY[k];
+    hipRX[k] = t.bx[k] + (t.cax * mx + t.cay * my) * run * t.k2;
+    hipRY[k] = t.by[k] - (t.cbx * mx + t.cby * my) * run * t.k2 - halfPx;
+  }
+
+  const { ctx } = f;
+  /* PAINTER'S ORDER INSIDE THE CAP. Every slope of a roof seen from above is
+     visible, but the apex ring can project ABOVE a far eave once the vertical
+     exaggeration is applied, so the far slopes go down first and the near ones
+     over them. The far/near test is the ring's own screen winding — the same
+     one `drawTray` uses for the parapet's two faces, so the two cannot come to
+     disagree about which edge is which. */
+  const sgn = 1; // see `buildings.ts` BUGS §2 and the call site: the winding
+  //               test is screen-x and its sign is settled at +1.
+  for (let pass = 0; pass < 2; pass++) {
+    for (let k = 0; k < nv; k++) {
+      const k1 = (k + 1) % nv;
+      const nearEdge = (t.bx[k1] - t.bx[k]) * sgn > 0;
+      if ((pass === 0) === nearEdge) continue;
+      const q = planeQuartile(
+        t.rx[t.vo + k1] - t.rx[t.vo + k],
+        t.ry[t.vo + k1] - t.ry[t.vo + k],
+        t.ax, t.ay, t.lmax,
+      );
+      ctx.fillStyle = shade(t.roofColour, PITCH_V[q]);
+      ctx.beginPath();
+      ctx.moveTo(hipEX[k], hipEY[k]);
+      ctx.lineTo(hipEX[k1], hipEY[k1]);
+      ctx.lineTo(hipRX[k1], hipRY[k1]);
+      ctx.lineTo(hipRX[k], hipRY[k]);
+      ctx.closePath();
+      ctx.fill();
+    }
+  }
+  /* ONE OUTLINE, ON THE EAVE, and not one per slope. The four value steps
+     already separate the slopes from each other; what the line is for is
+     separating this building from the one beside it, which is the EAVE — and
+     an ink line down every hip turns a block of houses into a wire model. */
+  if (t.ink) {
+    ctx.strokeStyle = t.ink;
+    ctx.lineWidth = 0.7;
+    ctx.beginPath();
+    ctx.moveTo(hipEX[0], hipEY[0]);
+    for (let k = 1; k < nv; k++) ctx.lineTo(hipEX[k], hipEY[k]);
+    ctx.closePath();
+    ctx.stroke();
+  }
+  return true;
+}

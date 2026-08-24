@@ -331,3 +331,35 @@ export function roofEraTable(y: number): Uint8Array {
   }
   return out;
 }
+
+/**
+ * WHO IS PITCHED — the population, declared here beside the material timeline
+ * it shares its two columns with.
+ *
+ * `roofs.ts` §THE PRE-FIRE CITY IS PITCHED has the measurement and the tower
+ * control that keeps this a POPULATION rule rather than a per-building test.
+ * The population is the pre-1907 wood-frame dwelling: **single family and
+ * multi-family only**, dated by the roll to before the fire ordinance.
+ *
+ * What is deliberately NOT in it, and why:
+ *
+ * · **retail, office, industrial and hotel/institutional**, in every era. The
+ *   downtown and South of Market stock is masonry with a parapet from the
+ *   start; the measured table in `roofs.ts` is a single-family measurement and
+ *   is not evidence about them.
+ * · **everything from 1907 on**, which is the flat end of that same table —
+ *   4 to 6 cm of modal offset, one plane with noise on it.
+ * · **`mixed or not stated` and `FLAG_NOYEAR`**, refused here for the same
+ *   reason the covering timeline refuses them: no class, or a placeholder date.
+ *
+ * MEASURED SIZE: 15,854 footprints are dated before 1907 and **14,555 of
+ * those are single or multi family — 8.76 % of the city today**, against 84 %
+ * of everything standing in the 1906 frame.
+ */
+export const PITCH_ERA_MAX = 1907;
+
+export function isPitched(use: number, built: number, noYear: boolean): boolean {
+  if (noYear) return false;
+  if (use !== 0 && use !== 1) return false;
+  return built < PITCH_ERA_MAX;
+}
