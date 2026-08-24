@@ -14,6 +14,69 @@ const nextConfig: NextConfig = {
   // of eu.i.posthog.com, so ad blockers can't drop events. Keeps visitor
   // counts accurate (they undercount ~20-40% otherwise for this audience).
   skipTrailingSlashRedirect: true,
+
+  /**
+   * A PARIS PAGE DOES NOT NEED SAN FRANCISCO'S MAP.
+   *
+   * `lib/data/read.ts` and `lib/og/theme-image.ts` read files with
+   * `path.join(process.cwd(), "public", ...)` — DYNAMIC paths that Next's file
+   * tracing cannot resolve. It therefore does the safe thing and pulls the
+   * whole of `public/data` into every route that can reach those modules.
+   *
+   * Measured on this build: `fr/city/paris/lieu/[slug]` traces 350.9 MB, of
+   * which 245.9 MB is `public/data` and **111.4 MB of that is `us`** — the SF
+   * city map, which no French page reads. 161 of 229 route bundles were over
+   * Vercel's 250 MB uncompressed ceiling and the production build failed on
+   * `br/city/recife/contratos/[id]/opengraph-image` at 334.82 MB.
+   *
+   * The SF map added 2,738 files and took `public/data/us` to 126 MB, so this
+   * threshold was crossed by that work. The excludes below are the narrow,
+   * provable half of the fix: a route under one country never reads another
+   * country's data directory, so those bytes cannot be needed at runtime.
+   *
+   * This is NOT the whole fix. The right repair is to make the reads
+   * statically analysable — or to declare per-route
+   * `outputFileTracingIncludes` — so a route carries only the files it opens,
+   * rather than everything under `public/data` minus what we thought to
+   * subtract. That is a refactor, and it is written up rather than rushed.
+   */
+  outputFileTracingExcludes: {
+    '/fr/**': ['./public/data/us/**', './public/data/br/**'],
+    '/us/**': ['./public/data/br/**', './public/data/marseille/**',
+               './public/data/subventions/**', './public/data/marches-publics/**',
+               // 23.7 MB of French commune records. A San Francisco page has
+               // no use for them.
+               './public/data/communes-all/**',
+               // The city map is fetched by the BROWSER, tier by tier, as the
+               // camera moves. The server reads exactly three files out of
+               // this directory — manifest.json, blocks/block-index.json and
+               // blocks/accuracy.json (page.tsx:68-71) — and every other byte
+               // under it is a static asset served over HTTP, never opened by
+               // a function. 16 MB of per-street records, 13 MB of .qc tiers
+               // and the per-block shards were being carried into every US
+               // route for nothing.
+               './public/data/us/sf/city/blocks/street/**',
+               // The per-block shards are NOT excluded. `block-*.json` also
+               // matches block-index.json, which page.tsx:69 reads, and
+               // Turbopack cannot parse a `[0-9]` character class — it panics
+               // on the whole pattern set. Left in the bundle deliberately.
+               './public/data/us/sf/city/bldg/**',
+               './public/data/us/sf/city/strt/**',
+               './public/data/us/sf/city/tree/**',
+               './public/data/us/sf/city/face/**',
+               './public/data/us/sf/city/water1/**'],
+    '/br/**': ['./public/data/us/**', './public/data/marseille/**',
+               './public/data/subventions/**', './public/data/marches-publics/**'],
+    // The root page and the `(...)` intercepting drawer routes sit at the app
+    // root, so neither '/fr/**' nor '/us/**' matches them — they were still
+    // carrying the whole city map at 252 MB. None of them opens a map file.
+    '/page': ['./public/data/us/sf/city/**', './public/data/br/**'],
+    '/@drawer/**': ['./public/data/us/sf/city/**', './public/data/br/**'],
+    // The chart and poster endpoints render an image from a figure they are
+    // handed. Neither opens the city map.
+    '/api/**': ['./public/data/us/sf/city/**', './public/data/br/**'],
+  },
+
   async rewrites() {
     return [
       { source: '/ingest/static/:path*', destination: 'https://eu-assets.i.posthog.com/static/:path*' },
