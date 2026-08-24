@@ -5350,10 +5350,34 @@ frames are HISTORICAL years — B1 is 1925 and B4 is 1960 — and a year gate th
 differs by a few thousand footprints changes how much pale ground shows
 between the blocks, which is a large-area, dark-end-weighted, low-frequency
 difference that every dial in the table above is blind to.
-`.parity/g2count.py` puts `BLD_DRAWN` / `VEG_DRAWN` / `ST_DRAWN` from the
-reference beside `lastStats` from production at B1, B4 and a 2018 control; if
-the 2018 control agrees and the two historical years do not, the gap is a year
-gate and not a tone at all.
+`.parity/g2count.py` puts `BLD_DRAWN` / `VEG_CAN` / `ST_DRAWN` from the
+reference beside `lastStats` from production at B1, B4 and a 2018 control.
+
+**Measured, and it refutes the hypothesis:**
+
+```
+  camera            mock BLD_DRAWN   prod buildings   ratio
+  B1  1925              41,440          38,289        0.924
+  B4  1960              79,957          76,702        0.959
+  B2018  control        68,562          60,319        0.880
+```
+
+**The 2018 control is the WORST agreement, not the best.** A year gate would
+show as the two historical frames disagreeing and 2018 matching; the shortfall
+is present at every year and largest where there is no history in it at all.
+And it is the wrong size anyway: 12 % fewer marks over a built layer covering
+32.2 % of the stage, at the ~50 levels a building sits below the ground it
+stands on, is `0.12 × 0.322 × 50` ≈ **1.9 levels** against a gap of 11-13.
+
+One number worth carrying out of that table, unrelated to the gap: **the
+canopy blob COUNT is 15,991 here against the reference's 27,420** — 58 % —
+while §20.13 measures this build's canopy as the STRONGER of the two in low
+frequency. Both are true: `canOff` culls 30,756 cells as off-frame where the
+reference's `mgn = 200` test on the cell centre keeps them, so the reference is
+drawing blobs it cannot show. The visible blobs agree; the reference's extra
+11,429 are work, not picture.
+
+So the year gate is out, the mark count is out, and every dial is out.
 
 **Nothing in this section changed a pixel.** It is four instruments and a
 ranking, and its value is the eliminations: the canopy, the building tone
