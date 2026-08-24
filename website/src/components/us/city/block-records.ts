@@ -377,6 +377,76 @@ export function decadeGroups(decisions: readonly BlockDecision[]): DecadeGroup[]
   return out;
 }
 
+/**
+ * A RUN OF EMPTY DECADES IS ONE ROW, NOT SIX.
+ *
+ * The silence is information and it is not deleted — the panel's own caption
+ * under the rail says why the decades after 1999 are blank, so a rail that
+ * simply dropped them would contradict copy that ships. But six identical
+ * blank tracks in a column are six rows of furniture saying one thing, and on
+ * a quiet block they were most of the rail's height.
+ *
+ * So consecutive empty decades fold into a single track labelled with the two
+ * ends of the run — `1940s–1970s` — and a run of ONE is left exactly as it
+ * was, because a range with the same decade at both ends is worse than the
+ * decade on its own.
+ *
+ * **A run never crosses `afterSeries`.** An empty decade inside the Board's
+ * scanned series is a silence the record observed; one past its end is a
+ * decade the record never reached. They are drawn differently on purpose
+ * (§14g) and folding them together would say the two are the same thing.
+ */
+export interface DecadeRun {
+  /** the first and last decade the run covers, e.g. 2000 and 2020 */
+  readonly from: number;
+  readonly to: number;
+  /** how many decades it folds — always 2 or more; a run of one is not a run */
+  readonly n: number;
+  /** `2000s–2020s`, composed from the two ends and nothing else */
+  readonly label: string;
+  readonly afterSeries: boolean;
+}
+
+export type RailItem =
+  | { readonly kind: "decade"; readonly group: DecadeGroup }
+  | { readonly kind: "gap"; readonly run: DecadeRun };
+
+/** the rail's rows: every decade that holds something, and every silence once */
+export function railItems(groups: readonly DecadeGroup[]): RailItem[] {
+  const out: RailItem[] = [];
+  for (let i = 0; i < groups.length; i++) {
+    const g = groups[i];
+    if (g.rows.length > 0) {
+      out.push({ kind: "decade", group: g });
+      continue;
+    }
+    let j = i;
+    while (
+      j + 1 < groups.length &&
+      groups[j + 1].rows.length === 0 &&
+      groups[j + 1].afterSeries === g.afterSeries
+    ) {
+      j++;
+    }
+    if (j === i) {
+      out.push({ kind: "decade", group: g });
+    } else {
+      out.push({
+        kind: "gap",
+        run: {
+          from: g.decade,
+          to: groups[j].decade,
+          n: j - i + 1,
+          label: `${g.label}–${groups[j].label}`,
+          afterSeries: g.afterSeries,
+        },
+      });
+      i = j;
+    }
+  }
+  return out;
+}
+
 export interface BlockShape {
   readonly n: number;
   readonly firstYear: number;

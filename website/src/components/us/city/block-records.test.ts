@@ -4,6 +4,7 @@ import {
   blockSubjects,
   decadeGroups,
   printedHeading,
+  railItems,
   streetLabel,
   type BlockDecision,
 } from "./block-records";
@@ -67,6 +68,48 @@ describe("decadeGroups", () => {
   it("stretches past the present rather than dropping what a late row holds", () => {
     const g = decadeGroups([row({ y: NOW_DECADE + 10 })]);
     expect(g[g.length - 1].decade).toBe(NOW_DECADE + 10);
+  });
+
+  /**
+   * The silence is information and it stays on the rail — the caption under
+   * the rail says in words that the blank decades after 1999 are the record
+   * stopping and not the city stopping. What folds is the FURNITURE: four
+   * identical blank tracks saying one thing become one track saying it.
+   */
+  it("folds a run of empty decades into one track and leaves a lone one alone", () => {
+    const items = railItems(decadeGroups([row({ y: 1916 }), row({ y: 1977 })]));
+    const gap = items.find((i) => i.kind === "gap");
+    expect(gap?.kind).toBe("gap");
+    if (gap?.kind !== "gap") throw new Error("no gap");
+    // 1900s holds nothing and 1910s does, so the first fold is 1920s–1960s
+    expect(gap.run.label).toBe("1920s–1960s");
+    expect(gap.run.n).toBe(5);
+    // every decade still accounted for exactly once
+    const covered = items.reduce(
+      (n, i) => n + (i.kind === "gap" ? i.run.n : 1),
+      0,
+    );
+    expect(covered).toBe(decadeGroups([row({ y: 1916 }), row({ y: 1977 })]).length);
+    // a single empty decade is NOT a run: `1900s–1900s` is worse than `1900s`
+    expect(items[0].kind).toBe("decade");
+  });
+
+  /**
+   * An empty decade INSIDE the Board's scanned series is a silence the record
+   * observed; one past its end is a decade the record never reached. They are
+   * drawn differently on purpose, so a fold may not join them.
+   */
+  it("never folds across the end of the scanned series", () => {
+    const items = railItems(decadeGroups([row({ y: 1916 })]));
+    for (const i of items) {
+      if (i.kind !== "gap") continue;
+      expect(i.run.from <= 1990 && i.run.to >= 2000).toBe(false);
+    }
+    const after = items.filter((i) => i.kind === "gap" && i.run.afterSeries);
+    expect(after).toHaveLength(1);
+    if (after[0]?.kind !== "gap") throw new Error("no after-series gap");
+    expect(after[0].run.from).toBe(2000);
+    expect(after[0].run.to).toBe(NOW_DECADE);
   });
 
   it("heads a decade with the Board's own printed heading over rank order", () => {

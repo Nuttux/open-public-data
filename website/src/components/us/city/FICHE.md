@@ -2012,3 +2012,237 @@ matching `build_hood_facts.curate()` exactly:
 
 Until it lands the panel prints a claim it cannot keep. It is the only string
 affected.
+
+---
+
+## 19. Block F1, round ten — one grain, one form
+
+> "this is again too much information, there's no hierarchy or quick scan of
+> info, please evaluate this format"
+
+He is right, and the diagnosis that beat the obvious one is worth stating first
+because it is what the whole change turns on.
+
+**The redundancy was never hood-versus-block. It was PROSE-VERSUS-FIGURES at
+each level.** The neighbourhood said *"A neighbourhood of 53 blocks, 33 of them
+mostly single family residential. 28,506 people live here, in 15,913 homes."*
+and then, four rows immediately under it, `Blocks 53 · Mostly Single Family
+Residential · Residents 28,506 · Homes 15,913`. Every one of the four facts was
+printed twice, in two forms, at one grain — and a reader had to read both
+before they could know the two agreed. The same pattern ran again one level
+down.
+
+So: **prose for the neighbourhood, figures for the block, and neither is both.**
+
+### a. What was deleted, and where each fact went
+
+| deleted | the fact it carried is now |
+|---|---|
+| the hood's `Residents` / `Homes` / `Mostly` / `Blocks` rows | in the "In short" paragraph directly above them, verbatim |
+| the block's whole "In short" paragraph | rows: `Mostly` was the ground clause, `Residents`/`Homes` the people clause, `PUBLIC MONEY` the place clause |
+| — its record clause, which was in NO row | **two new rows**, `Board decisions 71` and `In the record 1906–1998` |
+| — its `quietAfter` clause | a caption under the rail, beside the other caption about the rail |
+| the block's money FIGURES, on 16 blocks | see §e |
+
+**Nothing was dropped without a home.** The one clause the block's paragraph
+said that no row said — *"The Board decided 71 things here between 1906 and
+1998"* — is `RecordFactRows`, folded into the roll's own list so the block is
+one table and not a table plus a stray pair.
+
+**The busiest decade did NOT become a row, deliberately.** *"most of them in the
+1900s"* is what the rail four rows below is FOR: a bar per decade scaled against
+the busiest one. A row restating it in five words is a caption on a drawing that
+already says it.
+
+`BlockSummary` still exists and still says all of it, and runs on exactly one
+path: the session where `hood-facts.json` did not arrive. There it is the only
+prose on the panel and has nothing to repeat.
+
+### b. Provenance is a footnote now, and it wants a home in `fusion.css`
+
+*"The 2020 Census, summed over the 82 of this neighbourhood's 90 blocks a census
+block resolves onto. City-wide that join carries 868,555 of the county's 873,965
+residents."* — **thirty-six words qualifying a five-word fact, set at the size of
+the fact.** It may never leave the page; it is the project's whole claim. So it
+drops a step instead: `NOTE` in `CityBlockPanel.tsx`, applied to the SIX
+how-we-know paragraphs and to nothing else.
+
+```
+census join (hood)   money coverage (hood)   ranking note (hood)
+assessor roll (block)   money coverage (block)   the two rail captions
+```
+
+NOT `money_ledgers` or `money_over`: those are refusals about the figure
+directly above them, and `money_ledgers` carries the link out of the panel.
+
+**FOR THE OWNER OF `src/app/fusion.css`.** Two inline objects are standing in
+for this. They want to be one class, next to `.fx-block-hint` at line ~17186:
+
+```css
+/* Provenance is a footnote, not a second paragraph. The sentence that says
+   what a figure was joined from may never leave the page — but it is longer
+   than the fact it qualifies, and at `fx-block-hint`'s 11.5 px it competed
+   with it. A footnote is the same sentence set so the eye can skip it and
+   come back. */
+.theme-fusion .fx-block-note {
+  margin: 7px 0 0;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: var(--muted);
+  opacity: .82;
+}
+/* `.fx-block-jump` sets 12.5 px of its own, which inside a footnote is
+   bigger than the footnote. */
+.theme-fusion .fx-block-note .fx-block-jump { font-size: 10.5px; }
+```
+
+When it lands, `NOTE` and `NOTE_LINK` are deleted and every `className=
+"fx-block-hint" style={NOTE}` becomes `className="fx-block-note"`.
+
+### c. Empty decades are collapsed, NOT deleted
+
+Deleting them was never available: the caption under the rail says in so many
+words that the blank decades after 1999 are *"because the record stops there,
+not because the city stopped deciding"*, so a rail that dropped them would
+contradict copy shipping on the same screen. The silence is information.
+
+What was furniture is the repetition. A run of two or more consecutive empty
+decades folds into ONE track carrying both its ends — `2000s–2020s` — and a run
+of one stays exactly as it was, because `1960s–1960s` is worse than `1960s`.
+
+**A run never crosses the end of the Board's scanned series.** An empty decade
+inside the series is a silence the record observed; one past it is a decade the
+record never reached, and §14g draws them differently on purpose. `railItems()`
+in `block-records.ts` is pure and has two tests: the fold's label and count, and
+that no run spans 1990→2000. It also asserts every decade is still accounted for
+exactly once, which is the check that the fold cannot lose a decade.
+
+`.fx-block-dec` is a 34 px column sized for `1960s`; a range is three times that
+and spilled over the track beside it. The range sizes to itself. What stays in
+its column is the COUNT at the right — the only number on the rail a reader
+compares down the page, and an empty run has none.
+
+### d. Three highlights — already shipped in §18f, verified here
+
+Unchanged, and the ranking was NOT touched. §18d's South of Market regression is
+still live and still the right call to leave alone: four scoring passes have
+been run, and judging a fifth after seeing its output is what
+`feedback_eval_rigor` names.
+
+**One correction to §18c, found by looking rather than by re-scoring.** It
+records that *"Lone Mountain's sidewalk hearing has fallen off the page"*. It has
+not: *"Fixing Date for Hearing Appeal of M. Schlosser Against Assessment for
+Improvement of Sidewalks on Grove Street"* is **still position 3 of 3** on Lone
+Mountain/USF. It is no longer the LEAD — the 1926 traffic-code conference is —
+which is the gain §18 actually bought. Recorded here so the next reader of §18c
+is not told something the page contradicts.
+
+### e. §16e's duplication, fixed — the fifth change, and how to revert it
+
+§16e found that on block 3724 the four money figures print **twice,
+identically**, once under `PUBLIC MONEY HERE` and again under the block's own
+`PUBLIC MONEY`, and did NOT fix it for one stated reason: *"there is no key to
+explain the absence, and a money section that shows a building and no figure,
+with nothing saying the figure is two screens up, reads as a section that failed
+to load."*
+
+With the hood's four fact rows gone, this became the largest remaining
+repetition on the panel — and on Moscone, which is a demo block. `tOr()` (§g)
+removes the only blocker, so §16e's fix ships **with its gate unchanged**:
+
+```
+places.length === 1 && hood.money.places_with_a_figure === 1
+                    && hood.money.top?.slug === places[0].slug
+```
+
+MEASURED against `block-money.json` and `hood-facts.json` together, rather than
+asserted: it fires on **16 blocks of 5,404, over 13 neighbourhoods** — the four
+Moscone blocks, Coit Tower, Kezar, Portsmouth Square, the Palace of Fine Arts,
+Laguna Honda, Zuckerberg SF General, Pier 70, Stern Grove, Glen Canyon, McLaren,
+the EOC, the Public Safety Building. **It does not fire on City Hall**: the
+Tenderloin carries five figures and City Hall is one of them, so the block's own
+are not the neighbourhood's. Read on the page for City Hall, Coit Tower and
+Kezar, all three correct.
+
+**One thing landing it caught.** The lead sentence ends *"…and every figure below
+is the whole of it"*, which with the figures gone is a sentence pointing at
+nothing. `money_spans` is suppressed under the same gate. Without that check the
+fix would have shipped a false claim to remove a repetition.
+
+**To revert:** pass `figuresAbove={null}` at the one call site. Nothing else
+depends on it.
+
+### f. Measured, not eyeballed
+
+Word counts of the panel's own `innerText`, at 390 px, by section:
+
+```
+                                    1170 Lone Mountain   3724 Moscone
+IN SHORT                                  68                 68
+PUBLIC MONEY HERE                          —                 74
+WHAT THE BOARD KEPT DECIDING HERE        173                136
+ON THIS BLOCK                             82                 68
+PUBLIC MONEY                               —                 83
+DECADE BY DECADE                         255                304
+TOTAL                                    594                750
+```
+
+And the section heads as a fraction of an 844 px screen, against §16d's table
+for the same block:
+
+```
+                                    3724 §16d   3724 §18f   3724 now
+PUBLIC MONEY HERE                     0.58         —          0.35
+WHAT THE BOARD KEPT DECIDING HERE     0.95         —          0.72
+ON THIS BLOCK                         2.00        1.60        1.30
+PUBLIC MONEY (the block's)            2.39         —          1.63
+DECADE BY DECADE                      2.82         —          2.06
+```
+
+**The whole money answer now opens at a third of a screen** and the block at
+1.30 — down from 2.00 two rounds ago. `.parity/f1words.py` is new and prints the
+first table; `.parity/f1mob.py` prints the second.
+
+**The measurement NOT to trust is the word count of the rail.** `.fx-block-line`
+is `-webkit-line-clamp: 3`, so a 40-word OCR headline occupies three lines on
+screen exactly as a 12-word one does. The rail is 43 % of the panel's words and
+nothing like 43 % of its height.
+
+**Where the length actually is now, and it is not something this round could
+cut.** After the fold, `DECADE BY DECADE` is the longest section on every block
+measured, and it is one clamped headline per decade — the rail IS the
+navigation, and each row is the only thing on screen saying what that decade
+holds. If the panel has to get shorter again, that is the section to take it
+out of, and the honest way is fewer decades on screen (a fold at the century's
+midpoint) rather than shorter lines, because the lines are the Board's own words
+and truncating them further is where a summary would start.
+
+### g. Keys — four for `en.ts` / `fr.ts`, and two now unused
+
+Behind `tOr(t, key, english)`, which is one function rather than §14/§16a's
+map-and-`tx()`: `useT` returns THE KEY ITSELF when a key is missing, so a bare
+`t()` would print `us.sf.thecity.panel.now_span` on the panel. **It disposes of
+itself** — the fallback is only reached while `t(k) === k`, so the day these
+land every call starts returning the dictionary's string and the literals go
+with the helper. English identical in both files, ADR-0010 D3.
+
+```ts
+'us.sf.thecity.panel.now_decisions': 'Board decisions',
+'us.sf.thecity.panel.now_span': 'In the record',
+'us.sf.thecity.panel.rail_gap_aria': '{range} — nothing on this block',
+'us.sf.thecity.panel.money_above': 'Its figures are under {hood} above — it is the only city place there that carries any.',
+```
+
+`money_above` is §16e's own text, unchanged.
+
+**Two keys have no caller any more** and can be deleted whenever it suits:
+`us.sf.thecity.panel.hood_now_blocks` ('Blocks' — the row is gone) and
+`us.sf.thecity.panel.hood_block_ground` ('A mostly {use} block.' — the paragraph
+is gone). `now_head` still has one caller, on the no-rollup fallback path.
+
+### h. State
+
+Typecheck clean, eslint clean on both files, **422/422** (420 + the two
+`railItems` tests). No `us.sf.` key reaches the screen — checked the way §14 and
+§16a checked it, by dumping the panel's `innerText` and grepping, on the blocks
+listed in §i.

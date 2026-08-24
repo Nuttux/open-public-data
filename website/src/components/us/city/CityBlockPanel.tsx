@@ -91,6 +91,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import { useT } from "@/lib/localeContext";
 import FicheArchiveShelf from "@/components/fiche/FicheArchiveShelf";
 import type { FicheArchiveDoc } from "@/components/fiche/types";
@@ -100,6 +101,7 @@ import {
   blockPlaces,
   blockShape,
   decadeGroups,
+  railItems,
   hasMoney,
   hoodAt,
   hoodBusiest,
@@ -120,11 +122,57 @@ import {
   type BlockPlace,
   type BlockRecord,
   type DecadeGroup,
+  type DecadeRun,
   type HoodFactsFile,
   type HoodRecord,
 } from "./block-records";
 
 const nfInt = new Intl.NumberFormat("en-US");
+
+/**
+ * FOOTNOTE WEIGHT — and IT WANTS A HOME IN `fusion.css`, which this block does
+ * not own. The rule is written out in FICHE.md §19 for the owner of that file
+ * to land as `.fx-block-note`; until it does, these two objects are it.
+ *
+ * The sentence that says what a figure was joined from is this project's whole
+ * claim and may never leave the page. But *"The 2020 Census, summed over the 50
+ * of this neighbourhood's 53 blocks a census block resolves onto. City-wide
+ * that join carries 868,555 of the county's 873,965 residents."* is THIRTY-SIX
+ * WORDS qualifying a five-word fact, and at `fx-block-hint`'s 11.5 px it read
+ * as a second paragraph competing with the first. A footnote is not a shorter
+ * sentence — it is the same sentence set so the eye can skip it and come back.
+ *
+ * Applied to the HOW-WE-KNOW paragraphs only: the census join, the two money
+ * coverage ratios, the ranking note, the assessor roll line, and the two
+ * captions under the rail. NOT to `money_ledgers` or `money_over`, which are
+ * refusals about the figure directly above them and carry the link out.
+ */
+const NOTE: CSSProperties = {
+  marginTop: 7,
+  fontSize: 10.5,
+  lineHeight: 1.4,
+  opacity: 0.82,
+};
+/** `.fx-block-jump` sets 12.5 px of its own, which inside a footnote is bigger
+    than the footnote. */
+const NOTE_LINK: CSSProperties = { fontSize: 10.5 };
+
+/**
+ * THREE KEYS ARE NOT IN THE DICTIONARIES YET — listed in FICHE.md §19 for the
+ * owner of `en.ts` / `fr.ts`, who lands them in both.
+ *
+ * `useT` returns THE KEY ITSELF when one is missing, so a bare `t()` would
+ * print `us.sf.thecity.panel.now_span` on the panel. This prints the English
+ * instead, and **it disposes of itself**: the fallback is only ever reached
+ * while `t(k) === k`, so the day the keys land every call here starts
+ * returning the dictionary's string and the three literals below can be
+ * deleted with the helper. Same disposal §14 and §16a made twice before, in
+ * one function rather than a map.
+ */
+function tOr(t: (k: string) => string, k: string, en: string): string {
+  const v = t(k);
+  return v === k ? en : v;
+}
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -234,43 +282,41 @@ export interface BlockContext {
  * one line and stops, which is the same discipline as the 810 blocks with no
  * Census ring: **state what the record holds, and state when it holds
  * nothing.**
+ *
+ * ── IT RUNS ONLY WHEN `hood-facts.json` DID NOT ARRIVE ───────────────────
+ * Under the neighbourhood this paragraph is gone, and every clause in it was
+ * already on screen as a row or a section: *"A mostly commercial office
+ * block"* is the `Mostly` row, *"19 people live on it, in one home"* is the
+ * two rows above it, and *"Moscone Center stands on it"* is the money section
+ * two lines down. The only clause that was NOT anywhere else — how many
+ * decisions, across what years — is now two rows of its own beside the rest
+ * (`BlockRecordRows`). **One grain, one form: prose for the neighbourhood,
+ * figures for the block.** What is left here is the whole fiche's fallback
+ * for a session where the rollup file failed, where this paragraph is the
+ * only prose on the panel and has nothing to repeat.
  */
 function BlockSummary({
   now,
   shape,
   place,
   hood,
-  underHood,
   t,
 }: {
   now: BlockNow | null;
   shape: ReturnType<typeof blockShape>;
   place: BlockPlace | null;
   hood: string;
-  /**
-   * The neighbourhood section is standing above this one, so the ground clause
-   * drops the hood name: under a heading that already says "Mission", "A
-   * mostly multi-family residential block in Mission" says it twice. Where the
-   * rollup file has not loaded there is no heading, and the full clause is
-   * what carries the reader's bearing.
-   */
-  underHood: boolean;
   t: (k: string) => string;
 }) {
   const bits: string[] = [];
 
   if (now?.use) {
     bits.push(
-      underHood
-        ? t("us.sf.thecity.panel.hood_block_ground").replace(
-            "{use}",
-            now.use.toLowerCase(),
-          )
-        : t("us.sf.thecity.panel.sum_ground")
-            .replace("{use}", now.use.toLowerCase())
-            .replace("{hood}", hood),
+      t("us.sf.thecity.panel.sum_ground")
+        .replace("{use}", now.use.toLowerCase())
+        .replace("{hood}", hood),
     );
-  } else if (hood && !underHood) {
+  } else if (hood) {
     bits.push(t("us.sf.thecity.panel.sum_ground_plain").replace("{hood}", hood));
   }
 
@@ -323,16 +369,6 @@ function BlockSummary({
     );
   }
 
-  /* The one thing the old lead said that the clauses above do not: a block
-     whose record stops two whole decades before the series does. That is about
-     THIS BLOCK falling silent, not about the Journal running out, and the two
-     are different sentences — see `blockShape.quietAfter`. */
-  if (shape?.quietAfter) {
-    bits.push(
-      t("us.sf.thecity.panel.shape_quiet").replace("{y}", String(shape.quietAfter)),
-    );
-  }
-
   if (place) {
     bits.push(t("us.sf.thecity.panel.sum_place").replace("{place}", place.name));
   }
@@ -340,12 +376,10 @@ function BlockSummary({
   if (bits.length === 0) return null;
   return (
     <>
-      {underHood ? null : (
-        <div className="fx-city-ledger-head fx-block-sec" style={{ marginTop: 10 }}>
-          {t("us.sf.thecity.panel.sum_head")}
-        </div>
-      )}
-      <p className="fx-block-lead" style={{ marginTop: underHood ? 8 : 0 }}>
+      <div className="fx-city-ledger-head fx-block-sec" style={{ marginTop: 10 }}>
+        {t("us.sf.thecity.panel.sum_head")}
+      </div>
+      <p className="fx-block-lead" style={{ marginTop: 0 }}>
         {bits.join(" ")}
       </p>
     </>
@@ -438,16 +472,28 @@ function HoodSummary({ hood, t }: { hood: HoodRecord; t: (k: string) => string }
 }
 
 /**
- * THE GROUND, one level up — and the denominator travels with every figure.
+ * THE NEIGHBOURHOOD'S PROVENANCE — the whole of what is left of "On the ground
+ * now", and it is a footnote.
  *
- * `residents_blocks` is on the record and it is printed, because only **2 of
- * the 41** neighbourhoods have a Census ring on every one of their blocks:
- * Bayview Hunters Point has 294 of 501. A resident count with no denominator
- * beside it would imply a completeness the join has not got. The city-wide
- * ratio is on the same line, so a reader can see that the missing rings cost
- * 0.6 % of the county rather than guess at it.
+ * > "this is again too much information, there's no hierarchy or quick scan of
+ * > info, please evaluate this format"
+ *
+ * **The four fact rows are gone: Residents, Homes, Mostly, Blocks.** Not
+ * because the figures are wrong but because the paragraph above already
+ * printed all four — *"A neighbourhood of 53 blocks, 33 of them mostly single
+ * family residential. 28,506 people live here, in 15,913 homes."* — so a
+ * reader met `Single Family Residential` twice at one grain, once as prose and
+ * once as a row, and had to read both to find out they were the same thing.
+ * **ONE GRAIN, ONE FORM: prose for the neighbourhood, figures for the block.**
+ *
+ * The sentence below is what does NOT go. `residents_blocks` is on the record
+ * because only **2 of the 41** neighbourhoods have a Census ring on every one
+ * of their blocks — Bayview Hunters Point has 294 of 501 — and a resident
+ * count with no denominator implies a completeness the join has not got. It
+ * drops to footnote weight (`NOTE`) rather than out: thirty-six words
+ * qualifying a five-word fact may not be set at the size of the fact.
  */
-function HoodNowRows({
+function HoodProvenance({
   hood,
   file,
   t,
@@ -457,51 +503,23 @@ function HoodNowRows({
   t: (k: string) => string;
 }) {
   return (
-    <>
-      <div className="fx-city-ledger-head fx-block-sec">
-        {t("us.sf.thecity.panel.now_head")}
-      </div>
-      <dl className="fx-city-ledger-facts">
-        {hood.residents > 0 ? (
-          <div className="fx-city-fact-row">
-            <dt>{t("us.sf.thecity.panel.now_residents")}</dt>
-            <dd>{nfInt.format(hood.residents)}</dd>
-          </div>
-        ) : null}
-        {hood.homes > 0 ? (
-          <div className="fx-city-fact-row">
-            <dt>{t("us.sf.thecity.panel.now_homes")}</dt>
-            <dd>{nfInt.format(hood.homes)}</dd>
-          </div>
-        ) : null}
-        {hood.use ? (
-          <div className="fx-city-fact-row">
-            <dt>{t("us.sf.thecity.panel.now_use")}</dt>
-            <dd>{hood.use}</dd>
-          </div>
-        ) : null}
-        <div className="fx-city-fact-row">
-          <dt>{t("us.sf.thecity.panel.hood_now_blocks")}</dt>
-          <dd>{nfInt.format(hood.blocks)}</dd>
-        </div>
-      </dl>
-      <p className="fx-block-hint" style={{ marginTop: 7 }}>
-        {t("us.sf.thecity.panel.hood_now_src")
-          .replace("{c}", String(file.census_year))
-          .replace("{n}", nfInt.format(hood.residents_blocks))
-          .replace("{all}", nfInt.format(hood.blocks))
-          .replace("{carried}", nfInt.format(file.coverage.residents_carried))
-          .replace("{total}", nfInt.format(file.coverage.residents_counted))}{" "}
-        <a
-          className="fx-block-jump"
-          href="https://data.census.gov/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t("us.sf.thecity.panel.now_census")}
-        </a>
-      </p>
-    </>
+    <p className="fx-block-hint" style={NOTE}>
+      {t("us.sf.thecity.panel.hood_now_src")
+        .replace("{c}", String(file.census_year))
+        .replace("{n}", nfInt.format(hood.residents_blocks))
+        .replace("{all}", nfInt.format(hood.blocks))
+        .replace("{carried}", nfInt.format(file.coverage.residents_carried))
+        .replace("{total}", nfInt.format(file.coverage.residents_counted))}{" "}
+      <a
+        className="fx-block-jump"
+        style={NOTE_LINK}
+        href="https://data.census.gov/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {t("us.sf.thecity.panel.now_census")}
+      </a>
+    </p>
   );
 }
 
@@ -616,7 +634,7 @@ function HoodMoney({
       {/* The coverage, printed where the section appears — a reader who meets
           this on one neighbourhood and not the next has to be able to tell
           "the city holds nothing here" from "this join does not reach here". */}
-      <p className="fx-block-hint" style={{ marginTop: 8 }}>
+      <p className="fx-block-hint" style={NOTE}>
         {t("us.sf.thecity.panel.hood_money_cover")
           .replace("{n}", nfInt.format(file.coverage.hoods_with_a_place))
           .replace("{all}", nfInt.format(file.coverage.hoods))
@@ -665,7 +683,13 @@ function HoodHighlights({ hood, t }: { hood: HoodRecord; t: (k: string) => strin
       <div className="fx-city-ledger-head fx-block-sec">
         {t("us.sf.thecity.panel.hood_hl_head")}
       </div>
-      <p className="fx-block-hint">{t("us.sf.thecity.panel.hood_hl_note")}</p>
+      {/* THE RANKING NOTE IS A METHOD NOTE, so it is a footnote: forty words
+          of how the sort works, over three lines it explains. It stays on the
+          page because a ranked list that will not say what it ranked on is the
+          one thing this panel may not ship. */}
+      <p className="fx-block-hint" style={NOTE}>
+        {t("us.sf.thecity.panel.hood_hl_note")}
+      </p>
       {/* CAP 6 AND NO FOLD, deliberately. Two folds over one shelf would have
           been two different claims wearing the same sentence: the shelf's own
           expander hides rows it HAS, and the cap in `build_hood_facts.py` hid
@@ -709,10 +733,17 @@ function HoodHighlights({ hood, t }: { hood: HoodRecord; t: (k: string) => strin
  */
 function NowRows({
   now,
+  shape,
   underHood,
   t,
 }: {
   now: BlockNow;
+  /**
+   * The block's record, as two rows at the foot of this same list. It is only
+   * ever passed under the neighbourhood, where the paragraph that used to
+   * carry those two figures has gone — see `RecordFactRows`.
+   */
+  shape: NonNullable<ReturnType<typeof blockShape>> | null;
   /**
    * The neighbourhood's own "On the ground now" is already on the page above,
    * under that exact heading. Printing it twice would make the two sets of
@@ -748,8 +779,9 @@ function NowRows({
             <dd>{now.use}</dd>
           </div>
         ) : null}
+        {shape ? <RecordFactRows shape={shape} t={t} /> : null}
       </dl>
-      <p className="fx-block-hint" style={{ marginTop: 7 }}>
+      <p className="fx-block-hint" style={NOTE}>
         {t("us.sf.thecity.panel.now_src").replace("{y}", String(now.rollYear))}{" "}
         {now.residents !== null
           ? t("us.sf.thecity.panel.now_src_pop").replace(
@@ -759,6 +791,7 @@ function NowRows({
           : t("us.sf.thecity.panel.now_no_pop")}{" "}
         <a
           className="fx-block-jump"
+          style={NOTE_LINK}
           href="https://data.sfgov.org/d/wv5m-vpq2"
           target="_blank"
           rel="noopener noreferrer"
@@ -770,6 +803,7 @@ function NowRows({
             {" · "}
             <a
               className="fx-block-jump"
+              style={NOTE_LINK}
               href="https://data.census.gov/"
               target="_blank"
               rel="noopener noreferrer"
@@ -779,6 +813,46 @@ function NowRows({
           </>
         ) : null}
       </p>
+    </>
+  );
+}
+
+/**
+ * THE BLOCK'S RECORD, AS FIGURES — the one clause the deleted paragraph said
+ * that nothing else on the panel did.
+ *
+ * *"The Board decided 71 things here between 1906 and 1998, most of them in
+ * the 1900s."* Three facts. Two of them are figures with no home anywhere else
+ * on the panel, so they become rows beside the roll's own. The third —
+ * **which decade was busiest — is deliberately NOT a row**: the rail directly
+ * below is a bar per decade scaled against the busiest one, so printing it as
+ * a fact restates in five words what the drawing is for.
+ *
+ * Only under the neighbourhood. Where the rollup did not load, `BlockSummary`
+ * is still saying all three in a sentence and these rows would be the second
+ * telling.
+ */
+function RecordFactRows({
+  shape,
+  t,
+}: {
+  shape: NonNullable<ReturnType<typeof blockShape>>;
+  t: (k: string) => string;
+}) {
+  return (
+    <>
+      <div className="fx-city-fact-row">
+        <dt>{tOr(t, "us.sf.thecity.panel.now_decisions", "Board decisions")}</dt>
+        <dd>{nfInt.format(shape.n)}</dd>
+      </div>
+      <div className="fx-city-fact-row">
+        <dt>{tOr(t, "us.sf.thecity.panel.now_span", "In the record")}</dt>
+        <dd>
+          {shape.firstYear === shape.lastYear
+            ? String(shape.firstYear)
+            : `${shape.firstYear}–${shape.lastYear}`}
+        </dd>
+      </div>
     </>
   );
 }
@@ -799,14 +873,37 @@ function NowRows({
 function PlaceMoney({
   place,
   href,
+  figuresAbove,
   t,
 }: {
   place: BlockPlace;
   href: string;
+  /**
+   * THE SAME FOUR FIGURES ARE ALREADY ON THIS PANEL, ten rows up.
+   *
+   * §16e found this and did not fix it, for one reason: *"there is no key to
+   * explain the absence, and a money section that shows a building and no
+   * figure, with nothing saying the figure is two screens up, reads as a
+   * section that failed to load."* `tOr` is that key until the dictionary has
+   * it, so the fix is the one §16e specced, gate unchanged: it fires only when
+   * the neighbourhood's ONE figure-carrying place is the ONE place standing on
+   * the picked block. MEASURED against `block-money.json` and `hood-facts.json`
+   * together: **16 blocks of 5,404, over 13 neighbourhoods** — the four Moscone
+   * blocks, Coit Tower, Kezar, Portsmouth Square, the Palace of Fine Arts,
+   * Laguna Honda, Zuckerberg SF General, Pier 70, Stern Grove, Glen Canyon,
+   * McLaren, the EOC and the Public Safety Building. It does NOT fire on City
+   * Hall: the Tenderloin carries five figures and City Hall is one of them, so
+   * the block's own are not the neighbourhood's.
+   *
+   * What is kept is the sentence, because it is the only thing this section
+   * says that the one above cannot: *which building stands on THIS block* —
+   * `Moscone West, 775,000 sq ft`.
+   */
+  figuresAbove: string | null;
   t: (k: string) => string;
 }) {
   const here = place.here[0];
-  const money = hasMoney(place);
+  const money = hasMoney(place) && !figuresAbove;
   // "Coit Tower stands here — 5,687 sq ft of Coit Tower." The register's name
   // for the building and the place's name are the same thing on a place that
   // is one building, and saying it twice is worse than not saying it at all.
@@ -830,7 +927,12 @@ function PlaceMoney({
               "{place}",
               place.name,
             )}
-        {place.n_blocks > 1
+        {/* "It stands on 4 blocks, and every figure below is the whole of it"
+            is a warning about figures, and where the figures are above rather
+            than below there are none for it to warn about — printing it would
+            have been a sentence pointing at nothing. The same refusal is
+            already carried by the neighbourhood's own lead. */}
+        {place.n_blocks > 1 && !figuresAbove
           ? " " +
             t("us.sf.thecity.panel.money_spans").replace(
               "{n}",
@@ -881,11 +983,17 @@ function PlaceMoney({
           screen. On Coit Tower, which has one payment and no contract, there is
           nothing to add and the sentence is just another line of grey. */}
       <p className="fx-block-hint" style={{ marginTop: 7 }}>
-        {!money
-          ? t("us.sf.thecity.panel.money_none") + " "
-          : place.n_contracts > 0 && place.n_payees > 0
-            ? t("us.sf.thecity.panel.money_ledgers") + " "
-            : ""}
+        {figuresAbove
+          ? tOr(
+              t,
+              "us.sf.thecity.panel.money_above",
+              "Its figures are under {hood} above — it is the only city place there that carries any.",
+            ).replace("{hood}", figuresAbove) + " "
+          : !money
+            ? t("us.sf.thecity.panel.money_none") + " "
+            : place.n_contracts > 0 && place.n_payees > 0
+              ? t("us.sf.thecity.panel.money_ledgers") + " "
+              : ""}
         {/* `next/link`, NOT an anchor. The place fiche already has a root-level
             intercepting drawer — `app/@drawer/(...)us/city/sf/places/place/
             [slug]` — and the root layout renders the slot, so this opens the
@@ -913,6 +1021,60 @@ const BAR_FLOOR = 4;
 
 /** one identity for "no rows", so a null record does not churn the memos */
 const EMPTY: readonly BlockDecision[] = [];
+
+/**
+ * A SILENCE, DRAWN ONCE.
+ *
+ * The empty decades are NOT deleted — the caption under this rail says in so
+ * many words that the blank decades after 1999 are the record stopping and not
+ * the city stopping, so a rail that dropped them would contradict copy that
+ * ships on the same screen. But a block quiet from 1940 to 1970 drew four
+ * identical blank tracks, and on the quiet blocks that was most of the rail's
+ * height for one piece of information.
+ *
+ * So a run of two or more folds into one track carrying both its ends. A run
+ * of ONE is still its own row (`railItems` returns it as a decade), because
+ * `1960s–1960s` is worse than `1960s`. And a run never crosses the end of the
+ * Board's scanned series, so the fainter track past it keeps meaning exactly
+ * what it meant.
+ */
+function DecadeGap({
+  run,
+  t,
+}: {
+  run: DecadeRun;
+  t: (k: string) => string;
+}) {
+  return (
+    <div
+      className="fx-block-blank"
+      aria-label={tOr(
+        t,
+        "us.sf.thecity.panel.rail_gap_aria",
+        "{range} — nothing on this block",
+      ).replace("{range}", run.label)}
+    >
+      <div className="fx-block-head">
+        {/* `.fx-block-dec` is a 34 px column sized for `1960s`, and
+            `2000s–2020s` is three times that — it would spill over the track
+            beside it. The range sizes to itself; what stays in its column is
+            the COUNT at the right, which is the only number on the rail a
+            reader compares down the page, and an empty run has none. */}
+        <span
+          className="fx-block-dec fx-block-dec-off"
+          style={{ flex: "0 0 auto", width: "auto" }}
+        >
+          {run.label}
+        </span>
+        <span
+          className="fx-block-flat"
+          style={run.afterSeries ? { opacity: 0.4 } : undefined}
+        />
+        <span className="fx-block-n" />
+      </div>
+    </div>
+  );
+}
 
 function DecadeRow({
   group,
@@ -1205,7 +1367,7 @@ export default function CityBlockPanel({
         {hood && hoods ? (
           <>
             <HoodSummary hood={hood} t={t} />
-            <HoodNowRows hood={hood} file={hoods} t={t} />
+            <HoodProvenance hood={hood} file={hoods} t={t} />
             <HoodMoney hood={hood} file={hoods} money={money} t={t} />
             <HoodHighlights hood={hood} t={t} />
             <div
@@ -1222,16 +1384,23 @@ export default function CityBlockPanel({
             </p>
           </>
         ) : null}
-        {/* IN SHORT, before anything else. "So people get straight to the
-            meat." It is assembled from the same fields the sections below
-            print, so it can never say more than they do. */}
-        {!loading ? (
+        {/* ── ONE GRAIN, ONE FORM ───────────────────────────────────────
+            > "this is again too much information, there's no hierarchy or
+            > quick scan of info, please evaluate this format"
+
+            The neighbourhood is PROSE and the block is FIGURES, and neither is
+            both. Under the neighbourhood this paragraph is gone: every clause
+            in it was already a row or a section three lines below, and the one
+            clause that was not — how many decisions, over what years — is
+            `BlockRecordRows`. It survives only for the session where
+            `hood-facts.json` did not arrive, where it is the only prose on the
+            panel and has nothing to say twice. */}
+        {!loading && !(hood && hoods) ? (
           <BlockSummary
             now={now}
             shape={shape}
             place={places[0] ?? null}
             hood={context?.hood ?? ""}
-            underHood={!!(hood && hoods)}
             t={t}
           />
         ) : null}
@@ -1241,7 +1410,20 @@ export default function CityBlockPanel({
             the `shape ?` branch would have hidden them on exactly the 324
             blocks whose only content this is. */}
         {now && facts ? (
-          <NowRows now={now} underHood={!!(hood && hoods)} t={t} />
+          <NowRows
+            now={now}
+            /* The record's two figures join the roll's rows, and only where
+               the paragraph that used to carry them is gone. */
+            shape={!loading && hood && hoods ? shape : null}
+            underHood={!!(hood && hoods)}
+            t={t}
+          />
+        ) : !loading && shape && hood && hoods ? (
+          /* The three blocks of 5,404 with no row in `block-facts.json` still
+             have a record, and it is still two figures. */
+          <dl className="fx-city-ledger-facts">
+            <RecordFactRows shape={shape} t={t} />
+          </dl>
         ) : null}
 
         {places.length > 0 && money ? (
@@ -1254,6 +1436,18 @@ export default function CityBlockPanel({
                 key={pl.slug}
                 place={pl}
                 href={placeHref(money, pl.slug)}
+                /* §16e's gate, unchanged: the neighbourhood's only
+                   figure-carrying place is this block's only place, so the
+                   four figures below would be the four figures above. */
+                figuresAbove={
+                  hood &&
+                  hoods &&
+                  places.length === 1 &&
+                  hood.money.places_with_a_figure === 1 &&
+                  hood.money.top?.slug === pl.slug
+                    ? hood.name
+                    : null
+                }
                 t={t}
               />
             ))}
@@ -1261,7 +1455,7 @@ export default function CityBlockPanel({
                 meets this section on one block and not on the next has to be
                 able to tell "the city holds nothing here" from "this join does
                 not reach here", and only a printed ratio does that. */}
-            <p className="fx-block-hint" style={{ marginTop: 8 }}>
+            <p className="fx-block-hint" style={NOTE}>
               {t("us.sf.thecity.panel.money_cover")
                 .replace("{n}", nfInt.format(money.coverage.blocks_with_a_place))
                 .replace("{all}", nfInt.format(money.coverage.blocks_total))
@@ -1299,15 +1493,39 @@ export default function CityBlockPanel({
               className="fx-block-rail"
               key={record?.blockId ?? "-"}
             >
-              {groups.map((g) => (
-                <DecadeRow key={g.decade} group={g} max={max} t={t} />
-              ))}
+              {railItems(groups).map((it) =>
+                it.kind === "gap" ? (
+                  <DecadeGap key={`g${it.run.from}`} run={it.run} t={t} />
+                ) : (
+                  <DecadeRow
+                    key={it.group.decade}
+                    group={it.group}
+                    max={max}
+                    t={t}
+                  />
+                ),
+              )}
             </div>
             {/* Daniel: "there's nothing included from the handoff to
                 digitalization — it's a shame." He is right, and the rail now
                 runs to the present so the gap is visible instead of the rail
                 just stopping. This says whose gap it is. */}
-            <p className="fx-block-hint" style={{ marginTop: 6 }}>
+            {/* THE BLOCK'S OWN SILENCE, and it is not the same sentence as
+                the one below it. `quietAfter` is THIS BLOCK falling quiet two
+                whole decades before the Board's series runs out; the line
+                under it is the series running out. They used to sit two
+                sections apart — one in the summary paragraph, one here — which
+                is what made them read as one hedge repeated. Both are facts
+                about the rail, so both are captions under the rail. */}
+            {shape.quietAfter ? (
+              <p className="fx-block-hint" style={NOTE}>
+                {t("us.sf.thecity.panel.shape_quiet").replace(
+                  "{y}",
+                  String(shape.quietAfter),
+                )}
+              </p>
+            ) : null}
+            <p className="fx-block-hint" style={NOTE}>
               {t("us.sf.thecity.panel.sum_rail_end").replace(
                 "{y}",
                 String(SERIES_LAST_YEAR),
