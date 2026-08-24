@@ -573,11 +573,10 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
      margin and a reader who has just clicked must be able to see what the
      fiche is about; the other forty are gone by the block stop. */
   const hoodLayer = ((): {
-    all: string | null;
     sel: string | null;
     wide: number;
   } => {
-    const none = { all: null, sel: null, wide: 0 };
+    const none = { sel: null, wide: 0 };
     if (!r || r.filmOn || !hoodRings) return none;
     const cityScale = r.cam.presetScale(0);
     const blockScale = r.cam.presetScale(2);
@@ -589,10 +588,9 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
     const selIdx = markIdx >= 0
       ? (sceneRef.current?.blockTable?.hood[markIdx] ?? -1)
       : -1;
-    /* Nothing to draw once the divisions have faded and no neighbourhood is
-       picked — and the whole loop is skipped rather than run to produce two
-       invisible paths. */
-    if (wide <= 0.002 && selIdx < 0) return none;
+    /* Nothing to draw with no neighbourhood picked, and nothing to draw once
+       the ramp has run out — the scrim IS the layer now. */
+    if (selIdx < 0 || wide <= 0.002) return none;
 
     const v = r.viewport;
     const lw = hostRef.current && hostRef.current.clientWidth < NARROW_W ? 0 : LEDGER_W;
@@ -618,13 +616,9 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
       return d;
     };
 
-    let all = "";
-    if (wide > 0.002) {
-      for (let hi = 0; hi < hoodRings.parts.length; hi++) {
-        if (hi === selIdx) continue;
-        all += path(hi);
-      }
-    }
+    /* ONLY THE SELECTED ONE IS BUILT. The other forty were drawn and then
+       removed — see the render below — and building their path anyway would
+       be 19,816 characters of string per render for nobody. */
     const sel = selIdx >= 0 ? path(selIdx) : "";
 
     /* NO LABELS HERE. Looked at the wide shot and every neighbourhood name
@@ -635,7 +629,7 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
        of names in an SVG over the canvas cannot see that budget and would
        fight it at every zoom. What this layer adds is the one thing that was
        missing: the BOUNDARY. */
-    return { all: all || null, sel: sel || null, wide };
+    return { sel: sel || null, wide };
   })();
 
   const goToStop = (i: number): void => {
@@ -718,7 +712,7 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
               margin is about; the sharp ring says which block answered.
               `pointer-events: none` so neither eats a click meant for the map,
               and `aria-hidden` because the panel says both in words. */}
-          {outline || hoodLayer.all || hoodLayer.sel ? (
+          {outline || hoodLayer.sel ? (
             <svg
               className="fx-city-outline"
               width="100%"
@@ -735,60 +729,42 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
                   top of it. A wash and a hairline: at the district stop this
                   is two hundred blocks, and anything heavier stops being a
                   region and becomes a stain over the city. */}
-              {/* THE OTHER FORTY — one ink, no fill, and gone by the block
-                  stop. `wide` carries the whole transition; there is no
-                  threshold anywhere in this block. */}
-              {hoodLayer.all ? (
-                <>
-                  {/* Cased, for the reason the block ring is: a single blue
-                      hairline over a city of pale roofs, dark parks and bright
-                      water is invisible on about half of it. Looked at the
-                      whole-city shot and could not find the boundaries at all
-                      before this. */}
-                  <path
-                    d={hoodLayer.all}
-                    fill="none"
-                    stroke="var(--bg, #fff)"
-                    strokeOpacity={0.7 * hoodLayer.wide}
-                    strokeWidth={3.5}
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d={hoodLayer.all}
-                    fill="none"
-                    stroke="var(--bleu)"
-                    strokeOpacity={0.85 * hoodLayer.wide}
-                    strokeWidth={1.25}
-                    strokeLinejoin="round"
-                  />
-                </>
-              ) : null}
-              {/* THE ONE THE MARGIN IS ABOUT. It keeps a floor at every zoom,
-                  because the fiche beside it is a claim about this ground and
-                  a reader who has just clicked has to be able to see which
-                  ground that is. The FILL, which would be a stain over two
-                  hundred blocks at close range, rides the ramp all the way to
-                  nothing; the boundary LINE is what survives. */}
-              {hoodLayer.sel ? (
-                <>
-                  <path
-                    d={hoodLayer.sel}
-                    fill="none"
-                    stroke="var(--bg, #fff)"
-                    strokeOpacity={0.6}
-                    strokeWidth={4.5}
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d={hoodLayer.sel}
-                    fill="var(--bleu)"
-                    fillOpacity={0.16 * hoodLayer.wide}
-                    stroke="var(--bleu)"
-                    strokeOpacity={0.5 + 0.4 * hoodLayer.wide}
-                    strokeWidth={2}
-                    strokeLinejoin="round"
-                  />
-                </>
+              {/* ── THE NEIGHBOURHOOD IS SHOWN BY FOCUS, NOT BY A FENCE ───
+                  Daniel: *"can you remove the blue borders from the districts
+                  it's weird?"* Right, and the reason is nameable: a saturated
+                  `--bleu` hairline was the only thing on this frame that is
+                  not in the map's own ink. Every other line here — street,
+                  kerb, coast, block edge — is a tone of the ground it sits on,
+                  so a UI blue over them read as a debug overlay laid on the
+                  drawing rather than as part of it.
+
+                  Taken off FIRST and looked at before anything replaced it,
+                  which turned two questions into one answer:
+
+                  1. **The other forty are gone.** With no stroke they were a
+                     5 % ink wash that could not be seen at any zoom, and they
+                     cost 19,816 characters of path on every render to draw it.
+                     They are not missed, because `labels.ts` has been drawing
+                     all 41 NAMES at this zoom all along, in the map's own type
+                     and inside its own ink budget. The names are the division.
+                  2. **The selected one is shown by focus.** Not a wash over it
+                     — that reads as a stain — but a paper scrim over everything
+                     ELSE, punched through by the hood's own outline with
+                     `evenodd`. It says *this is the ground the margin is
+                     talking about* using the one move a paper map already
+                     makes, and there is no line anywhere in it.
+
+                  The scrim rides the same `wide` ramp, so it is strongest at
+                  the whole-city stop where a neighbourhood is a shape, and gone
+                  by the block stop where the block's own ring takes over. */}
+              {hoodLayer.sel && r ? (
+                <path
+                  d={`M0,0H${r.viewport.W}V${r.viewport.H}H0Z${hoodLayer.sel}`}
+                  fillRule="evenodd"
+                  fill="var(--bg, #fff)"
+                  fillOpacity={0.42 * hoodLayer.wide}
+                  stroke="none"
+                />
               ) : null}
 
               {/* Drawn twice: a wide soft casing so the edge holds against a

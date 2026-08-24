@@ -1823,3 +1823,47 @@ is the payoff of having written it as a function rather than inline.
    run to the end of the series — so there is no hood sentence for it and none
    was written. A sentence for a state that does not occur is a sentence nobody
    has checked.
+
+---
+
+## 17. Block F1, round eight — the blue borders come off
+
+> "can you remove the blue borders from the districts it's weird?"
+
+He is right and the reason is nameable: **a saturated `--bleu` hairline was the
+only thing on that frame that is not in the map's own ink.** Every other line
+here — street, kerb, coast, block edge — is a tone of the ground it sits on, so
+a UI blue laid over them read as a debug overlay on the drawing rather than as
+part of it.
+
+Taken off FIRST and looked at before anything replaced it, which is the order
+that was asked for and the right one: the question was never *which colour*, it
+was *does this want a line at all*. Looking at the stripped frame answered two
+questions at once.
+
+**1. The other forty are gone entirely.** With the stroke off they were a 5 %
+ink wash that could not be seen at any zoom, and they cost **19,816 characters
+of path string on every render** to draw it. They are not missed, because
+`labels.ts` §the neighbourhood capitals has been drawing all 41 NAMES at that
+zoom all along, in the map's own type and inside its own shared ink budget.
+**The names are the division.** This is the second time this layer has tried to
+duplicate that file and the second time the answer was to delete mine (§15g was
+the first).
+
+**2. The selected one is shown by FOCUS, not by a fence.** Not a wash over it —
+a wash over 236 blocks reads as a stain — but a **paper scrim over everything
+else**, punched through by the neighbourhood's own outline with `fill-rule:
+evenodd`, one path, one subpath more than before. It says *this is the ground
+the margin is talking about* with the move a paper map already makes, and there
+is no line in it anywhere. It rides the same `wide` ramp, so it is strongest at
+the whole-city stop where a neighbourhood is a shape and gone by the block stop
+where the block's own ring takes over.
+
+`hood-rings.json` is still doing the work; what changed is that its geometry now
+cuts a hole rather than drawing an edge.
+
+**What is still blue is the BLOCK's ring**, and it stays: that is §14a, it is
+what Daniel asked for, and it is a single small figure under the pin rather than
+forty lines across the city. Screenshots `f1-e2sel-0` (whole city — the Mission
+is the only saturated ground on the frame) and `f1-e2sel-1` (district — the
+scrim at 0.23 reads as clearer air over the Mission, not as a dirty screen).
