@@ -6767,3 +6767,74 @@ that nobody later reads a block-and-street change as a failure at city zoom.
 
 **NOT STARTED.** This section is the scope, written before the code as the
 brief requires. No drawing has changed.
+
+---
+
+## 31. Block G1 — the coverage hypothesis: not supported, and the anti-correlation is why
+
+The lead was a good one and it came out of a line in my own report: *"the
+3,517 buildings (7.4 %) whose chunks prod hadn't fetched — the big ones at the
+frame edge, which move a tail and not a median."* A low-frequency measurement
+does not care about the median, and **a building that is not drawn has no
+colour to disagree about — it shows the ground instead**, which is lighter, is
+low-frequency, and is concentrated where buildings are dense. Every instrument
+before this compared VALUES; this one compares how much of the frame each build
+actually covers.
+
+### 31.1 Two things it settled, and one it could not
+
+`.parity/g1cover.py`, both builds, the same pinned scale, counting what each
+build's own cull ADMITS and summing the projected ring area:
+
+```
+  camera              mock n   prod n   ratio   mock area%  prod area%  deficit
+  B1 district (PFA)   47,755   39,329   0.824       18.23       15.83   2.39 %
+  B4 district (Miss)  85,284   83,999   0.985       30.52       30.29   0.23 %
+  D1 street              241      221   0.917       38.05       30.77   7.28 %
+```
+
+**The camera where BUGS §23 measures the LARGEST gap has the SMALLEST coverage
+deficit.** B4 is +13.7 and is short 0.23 % of stage with a count ratio of 0.985
+— essentially identical coverage. B1 is +11.7 and short 2.39 %. D1 is +0.2 and
+short 7.28 %. **The two quantities are anti-correlated**, and a cause cannot be
+smallest where its effect is largest. The fetch-policy hypothesis is not
+supported.
+
+The arithmetic agrees even taking B1's worst reading at face value: 2.39 % of
+stage at a building-against-ground contrast of roughly 40 levels is **+0.96 of
+frame luminance**, about 8 % of that camera's gap.
+
+### 31.2 And the instrument is NOT stable enough to have concluded the other way
+
+Said plainly because it bounds what §31.1 is worth. The same B1 camera measured
+**44,238 buildings and 17.63 % of stage** in `g1both.py` and **39,329 and
+15.83 %** here — 11 % apart, between two runs of the same tree. Production
+fetches progressively and `prod_ready` waits for the base tier and an empty
+queue, which does not guarantee that every `bldg` chunk covering the frame has
+landed. D1's 7.28 % is worse still: only ~240 buildings are in frame there, so
+a single chunk swings it, and its deficit map is mostly ±100 % on cells holding
+a handful of buildings.
+
+**So B1 and D1 are not evidence in either direction, and B4 is** — 84,000
+buildings is a population a chunk or two cannot move, and it is the camera with
+the largest gap. If someone wants to close this properly the fix is a readiness
+gate on the VISIBLE bldg chunks rather than on the queue, and then all three
+cameras become usable.
+
+### 31.3 Where the accounting stands, in one place
+
+Everything now measured, against a district gap of +11.7 to +13.7:
+
+| | contribution | |
+|---|---|---|
+| building colour tables + all four selectors (§27, §28, §29) | **< 0.5 levels** | excluded |
+| the missing `sunCast` pass (§27.3) | **+1.09 to +2.10** | 9-15 % |
+| missing building coverage (§31.1) | **≤ +0.96**, and 0.23 % of stage at B4 | ≤ 8 % |
+| the class wash `LRD.cls` (§29) | 1,052 footprints, 0.6 % of the city | not a shading term |
+| ground (`g2fn.py`, another agent) | identical, 4,800 of 4,800 | excluded |
+| streets, canopy (another agent) | bright-end layers | excluded |
+
+The building layer, its colour, its selectors and its coverage are all now
+excluded by measurement. **What is left is unaccounted for**, and that is a
+more useful state than it sounds: the remaining candidates are layers nobody
+has instrumented rather than the one four rounds of work have been pointed at.
