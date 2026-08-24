@@ -832,3 +832,219 @@ whether it can — so wait on the entry plate's own label instead. And a stage
 resize that is undone 600 ms later coalesces, `resize()`'s `changed` guard skips
 `planSlots`, and the sweep then measures the shipped constant under six different
 labels; assert the slot you got.
+
+---
+
+## 11 · Block M1, 2026-08-24 — the film has to lie linear in time
+
+> *"In the current film sometimes it jumps ahead in time then back again — it's
+> weird, the film has to lie linear in time."* · *"Film to be relevant key
+> moments (it never shows when construction on Golden Gate starts, when it
+> opens) and mind-blowing motion design (even if prerecorded)."*
+
+Three things, in that order: **the year must be monotone**, **the moments must
+be worth watching**, **the motion must land**. Written as the work happens.
+
+### 11.1 The rewind, found by instrumenting the clock rather than reading the table
+
+`.parity/m1time.py`, mode `seek`: the film paused, seeked every **50 ms** across
+its whole 134,000 ms, `where()` read at each step, `(t, shot, seg, year, z)`
+written down. `filmStateAt` is a pure lookup — that is §1's whole design claim —
+so a dense seek is the authored year curve exactly, and it carries the shot index
+beside it, which reading the payload does not.
+
+**2,681 samples. Exactly one backward interval, and it is not where the shot
+table suggests:**
+
+    t  74200 ->  74250   shot 7 hetch-hetchy (run)  year 1945 -> 1944   d=-1
+    t  74350 ->  74400   shot 7 hetch-hetchy (run)  year 1944 -> 1943   d=-1
+    t  74400 ->  74450   shot 7 hetch-hetchy (run)  year 1943 -> 1941   d=-2
+    t  74450 ->  74500   shot 7 hetch-hetchy (run)  year 1941 -> 1940   d=-1
+    t  74500 ->  74550   shot 7 hetch-hetchy (run)  year 1940 -> 1939   d=-1
+    t  74550 ->  74600   shot 7 hetch-hetchy (run)  year 1939 -> 1938   d=-1
+    t  74600 ->  74650   shot 7 hetch-hetchy (run)  year 1938 -> 1937   d=-1
+    t  74650 ->  74700   shot 7 hetch-hetchy (run)  year 1937 -> 1936   d=-1
+    t  74750 ->  74800   shot 7 hetch-hetchy (run)  year 1936 -> 1935   d=-1
+    9 backward samples, 10 years of rewind in total
+
+and the per-shot spans it resolves to:
+
+    shot id                    t0      t1  yFrom    yTo
+       1 burn                   0   11400   1906   1906
+       2 rebuild            11400   23400   1906   1911
+       3 civic-bonds        23400   31900   1912   1912
+       4 city-hall          31900   44900   1912   1917
+       5 tunnel             44900   54000   1917   1918
+       6 west-fills         54000   71800   1918   1944
+       7 hetch-hetchy       71800   82200   1945   1935    <- 10 years back
+       8 treasure-island    82200   95100   1935   1939
+       9 yerba-buena        95100  104000   1939   1966
+      10 to-now            104000  134000   1966   2018
+
+**It is the first of the brief's two candidate bugs and not the second.** The
+year does not lag the camera: `CityFilm.tsx`'s frame loop resolves ONE
+`filmStateAt` and hands `driveFilm` that call's `cx/cy/scale/step` and that same
+call's `year`, so the two cannot separate by construction (§11.2 measures it
+anyway, on the running film, because "cannot by construction" is what the back-
+wall bug also said). It is a **shot that is out of order because its subject
+genuinely belongs earlier** — which is the case the brief says to fix by moving
+the shot.
+
+**What the reader actually sees.** Shot 6 runs the west side out to 1945. Shot 7
+then pulls back to the whole peninsula and counts 1945 down to 1935 over 900 ms,
+un-building ten cohorts on a settled frame. Then shot 8 plays 1935 → 1936 → 1939
+and shot 9 plays 1939 → 1966: **1936 to 1945 is shown twice, forward, backward,
+forward.** `SCRIPT`'s own comment defends the countdown as reading "as a rewind
+rather than as a fault", and it is honest about the year label — but a rewind is
+still the film going backwards, and Daniel watched it and called it weird.
+
+`camera.json` shot 7 is where it comes from: `"year": {"from": 1945, "to": 1935,
+"run_ms": 0, "note": "hard cut back to 1935"}`. The shot was composed as a
+breath — target `null`, the whole-city fit, the longest hold in the film — and
+the year was pulled back to it because the water arrived in the thirties. The
+camera move is right and the year is the thing that is in the wrong place.
+
+### 11.2 The fix: the year line is derived, and it is asserted
+
+Two independent statements of one quantity is what let the rewind in. A shot
+opened on its **payload's** `y0` and closed on its **`SCRIPT`'s** run acts, and
+nothing ever compared one shot's closing year with the next one's opening year —
+so `camera.json`'s `"year": {"from": 1945, "to": 1935, "note": "hard cut back to
+1935"}` went through untouched and the two halves of the film's clock disagreed
+in silence.
+
+There is now one statement. `buildTimeline`:
+
+- **a shot opens on the year the previous shot closed on**, and `SCRIPT`'s `run`
+  acts are the only thing that moves it. `shots[i].y0` and `.y1` are no longer
+  read for the clock at all — only `shots[0].y0`, the year the film opens on;
+- **a `run` act that runs backward throws**, naming the shot and the act;
+- **every segment boundary is asserted non-decreasing** before the timeline is
+  returned — every boundary and not only the shot boundaries, because the rewind
+  lived inside a shot.
+
+`film.test.ts` builds the timeline against the **shipped payload** at module
+load, so those assertions are already 391 tests' worth of guard: a payload that
+reintroduces a rewind cannot get through the suite. No new test was needed and
+none was added.
+
+### 11.3 Where the ten years went, and the moment that was hiding in them
+
+Shot 6 does not lose 1936–1945 to a shorter run; the film goes on drawing those
+years in shots 8, 9 and 10. What shot 6 loses is the part of them it was
+*watching*, and the honest count is `film.json`'s own: **1,223 of the 1,350
+acceptances that shot exists for land by 1935**, and 127 after it. Same 16,000 ms
+over 17 years instead of 27, so the fill is also 1.06 years a second instead of
+1.69 — slower to watch than it was.
+
+Then the ten years had to go somewhere, and looking at what is actually on the
+frame in them answered Daniel's other question in the same breath.
+
+**The Golden Gate Bridge is already on this map, it already arrives in 1937, and
+the film already had it in shot.** `.parity/m1look.py` seeked shot 6's own camera
+to 1933, 1936, 1937 and 1938 and diffed the Golden Gate corner of each frame:
+
+    1933 -> 1936:  bbox (96, 0, 350, 260)   changed px    204   (the Presidio, noise)
+    1936 -> 1937:  bbox (118, 0, 165, 174)  changed px  3,416   <- the bridge
+    1937 -> 1938:  bbox None                changed px      0
+
+`out/m1gg6-strip.png` is the four frames side by side and you can see it land.
+The deck is `base/places.json`'s `ggb` ring — **DataSF 97yj-54sx, Article 10
+landmark no. 222, corroborated by US Census TIGERweb `Golden Gate Brg`** — drawn
+by `landmarks.ts` §`drawBridge` with its towers, cables and suspenders, gated at
+`GGB.year = 1937`: *the year the bridge was completed (19 April) and opened
+(27 May)*. The corpus says the same thing twice in the city's own voice —
+`golden-gate-bridge.json` beat 4 (Mayor's message, 7 Jan 1935,
+`journalofproceed30sanfrich` leaf 50, *"The Marin tower … has been completed —
+height 746 feet"*, completion set for May 1937) and beat 5 (8 Jan 1936,
+`journalofproceed31sanfrich` leaf 47, *"will open to traffic by May 1, 1937 … It
+was begun in December, 1932"*).
+
+So the film ran the year straight past the Golden Gate Bridge at 1.7 years a
+second with the camera pointed at the Sunset, and never said a word. That is
+exactly *"it never shows when construction on Golden Gate starts, when it
+opens"*, and the answer was already in the frame.
+
+**Shot 7 now carries it.** The breath keeps its first 3.6 s on 1935 with the
+water line and the `NOT ON THE MAP` badge — spoken over the year the record gives
+it, instead of over 1945 — and then the year runs two more years on the widest
+camera in the film and the bridge arrives, held for 2.8 s. The badge comes down
+at the same instant the deck goes up, because it is now driven off the entity the
+**current line** cites rather than off the shot's id: shot 7 has two subjects and
+one of them is emphatically on the map.
+
+    shot id                    t0      t1  yFrom    yTo
+       1 burn                   0   11400   1906   1906
+       2 rebuild            11400   23400   1906   1911
+       3 civic-bonds        23400   31900   1912   1912
+       4 city-hall          31900   44900   1912   1917
+       5 tunnel             44900   54000   1917   1918
+       6 west-fills         54000   71800   1918   1934
+       7 hetch-hetchy       71800   82200   1935   1937
+       8 treasure-island    82200   95100   1937   1939
+       9 yerba-buena        95100  104000   1939   1966
+      10 to-now            104000  134000   1966   2018
+
+    --- BACKWARD STEPS in the year, sample to sample ---
+      none
+
+Same harness, same 2,681 samples. `out/m1s7-t-76000.png` (1935, the water, its
+own leaf 44) and `out/m1s7-t-81500.png` (1937, the bridge, its own leaf 11).
+
+**The one line the payload does not carry.** Holding four seconds on a bridge
+while the plate talks about a water tunnel would be worse than silence, so shot 7
+gets a second line — `film.ts` §`SPOKEN`, the only line in the film that does not
+come through `build_film.py`'s gate, because `camera.json` and
+`build_film_payload.py` are another block's files tonight. It is not written: it
+is `entries/golden-gate-bridge.json` **beat 6**'s own `headline` and its own
+`source`, dated **1937-01-04**, which is the year on screen when it appears —
+
+> **Four months before it opens, the city learns the road to the bridge is its own
+> bill: a third of $1,650,000.**
+> `journalofproceed32sanfrich` leaf 11
+
+and `.parity/m1cite.py` holds it to the same standard the gate would, byte for
+byte, against that file:
+
+    film.ts §SPOKEN
+      copy   Four months before it opens, the city learns the road to the bridge
+             is its own bill: a third of $1,650,000.
+      cite   journalofproceed32sanfrich leaf 11  entity golden-gate-bridge
+    MATCHED beat  year 1937  date 1937-01-04  type funded
+      item  OK   leaf  OK   url  OK
+    every line in film.ts traces to the record
+
+`pickLine` prefers the payload's `build2` line over `SPOKEN` unconditionally, so
+migrating it is a payload change with **no** change in `film.ts`: add
+`build2.copy` and `build2.cite` to shot 7 and delete the `SPOKEN` entry.
+
+### 11.4 What this cost, stated rather than hidden
+
+- **The Bay Bridge deck now strikes out at map-year 1937**, one year after the
+  crossing opened, because shot 8 opens where shot 7 leaves the clock. It is a
+  film `build` and not a year gate — `skipBridgeGhost` keeps the base layer's
+  2025 alignment off the frame until the act finishes — and its citation is the
+  Mayor's own January 1936 message, on screen and dated. The film already shows
+  copy older than its map year in shots 5 and 6 (a 1914 quote over a 1935 frame),
+  so this is that contract and not a new one. It is still the thing in this block
+  most worth a payload pass: shot 8's first act was a `run` and is now a `hold`,
+  and it wants to be a `run` to 1938 or a re-pointed shot.
+- **The Golden Gate is small and near the top edge** at shot 7's `z` 1.10, which
+  is `target: null` — the fitCity centre, chosen when the shot was a whole-city
+  breath with no subject in it. It now has a subject and the framing has not
+  caught up. That is `camera.json`'s `target` and `offset`, not `film.ts`.
+- **A run never displays its own target year.** `Math.floor` of
+  `yFrom + (yTo−yFrom)·u` reaches `yTo` only at `u = 1`, so shot 6's run to 1935
+  shows 1934 for its last 940 ms and 1935 for 0 ms; the following move holds 1935
+  for 2,400 ms, so nothing is lost on screen, but the table above reads `1918 →
+  1934` for a run whose target is 1935 and that is why.
+
+### 11.5 Found on the way and NOT this block's to fix
+
+- **The `Golden Gate Bridge` place label is drawn from at least 1933, over open
+  water, with no bridge under it.** `out/m1gg6-strip.png`, panels 1 and 2: the
+  name and its diamond are on the frame at 1933 and 1936 and the deck is not.
+  The deck's own year gate is `GGB.year = 1937` and `base/places.json` carries
+  `ggbYr: 1937` beside the ring, so the year exists and the label is not reading
+  it. That is `labels.ts` / `scene.ts` / the marks encoder, and it is the same
+  class of defect as `marks.json`'s 244-places-dated-1906 (§7.3).

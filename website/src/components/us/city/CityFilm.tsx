@@ -501,6 +501,10 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
           id: liveRef.current?.payload.shots[st.shot]?.id,
           year: Math.floor(st.year), z: +(st.scale / (liveRef.current?.frames.base || 1)).toFixed(3),
           step: st.step, copy: st.line?.copy ?? null, risen: st.risen.length,
+          /* the badge follows the LINE and not the shot id (`film.ts` §badge),
+             so a harness has to be able to read what the film is SAYING as well
+             as what it is showing */
+          badge: st.badge, says: st.line?.cite?.entity ?? null,
           hide: st.hide.length, burn: +st.burn.toFixed(3), bridge: +st.bridge.toFixed(3),
         };
       },

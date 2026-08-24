@@ -288,10 +288,53 @@ export interface FilmPayload {
  */
 export type FilmAct =
   | { readonly k: "run"; readonly ms: number; readonly to: number; readonly curve: string;
-      readonly burn?: readonly [number, number, number, number] }
+      readonly burn?: readonly [number, number, number, number];
+      readonly line?: 1 | 2 }
   | { readonly k: "build"; readonly ms: number; readonly what: BuildWhat;
       readonly ent?: string; readonly curve: string; readonly line?: 1 | 2 }
-  | { readonly k: "hold"; readonly ms: number };
+  | { readonly k: "hold"; readonly ms: number; readonly line?: 1 | 2 };
+
+/**
+ * A SECOND LINE FOR A SHOT WHOSE PAYLOAD CARRIES ONLY ONE, AND WHY IT IS HERE.
+ *
+ * `build_film_payload.py` gives a shot one line, plus a second one only where
+ * the shot has a `build2` — an object the film raises. Shot 7 raises nothing:
+ * it is the breath, and it now spends its last four seconds on a year the
+ * fabric answers by itself, the year the **Golden Gate Bridge** arrives.
+ * Holding four seconds on a bridge while the plate talks about a water tunnel
+ * would be worse than holding four seconds on a bridge in silence, and worse
+ * again than saying what the record says about it.
+ *
+ * **Nothing here is written.** Both fields are copied out of the corpus entry
+ * the film already ships beside: `film/entries/golden-gate-bridge.json`, beat 6
+ * — its own `headline`, and its own `source.item` / `source.leaf` / `source.url`
+ * — dated 1937-01-04, which is the year on screen when it appears. Verified
+ * byte-for-byte against that file by `.parity/m1cite.py`, which is the same
+ * guarantee `film/build_film.py`'s gate gives every other line in the film:
+ * *a line on screen is a headline or a verbatim run of a quote that exists in
+ * `entries/` at the leaf the shot cites.*
+ *
+ * **It belongs in `camera.json`, not here.** This is one line living one file
+ * upstream of where the other nineteen live, because `camera.json`,
+ * `film-data.js` and `build_film_payload.py` are another block's files tonight.
+ * Moving it is a payload change and nothing in `film.ts` has to move with it:
+ * delete the entry, add `build2.copy` + `build2.cite` to shot 7, and `pickLine`
+ * picks the payload's up in preference to this without being touched.
+ */
+export const SPOKEN: Readonly<Record<string, FilmLine>> = {
+  "hetch-hetchy": {
+    copy:
+      "Four months before it opens, the city learns the road to the bridge is " +
+      "its own bill: a third of $1,650,000.",
+    cite: {
+      item: "journalofproceed32sanfrich",
+      leaf: 11,
+      url: "https://archive.org/details/journalofproceed32sanfrich/page/n11/mode/1up",
+      entity: "golden-gate-bridge",
+    },
+    kind: "scan",
+  },
+};
 
 export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
   burn: [
@@ -325,19 +368,56 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
     { k: "build", ms: 700, what: "placemark", ent: "twin-peaks-tunnel", curve: "settle" },
     { k: "hold", ms: 4200 },
   ],
-  "west-fills": [{ k: "run", ms: 16000, to: 1945, curve: "move" }],
+  /* 1918 → 1935, NOT 1918 → 1945. The shot is 27 years long only because the
+     next three shots' subjects — the Hetch Hetchy water (1935), the Bay Bridge
+     (1936) and Treasure Island (1939) — all fall INSIDE its span, and the film
+     used to play the whole span first and then step back into them. It now
+     stops where the next subject starts, which is what makes the year line
+     monotone without deleting anything: the west side goes on filling through
+     shots 8, 9 and 10, and 1,223 of the 1,350 acceptances this shot is for land
+     by 1935 (`film.json` §st.y, counted). Same 16,000 ms over 17 years instead
+     of 27, so the fill is also slower to watch than it was. */
+  "west-fills": [{ k: "run", ms: 16000, to: 1935, curve: "move" }],
+  /* THE BREATH, AND THE MOMENT THE FILM WAS MISSING.
+     This shot used to open at 1945 and count DOWN to 1935 — the film's only
+     backward interval, nine samples of it, measured in `.parity/m1time.py`.
+     It now opens on 1935, which is where shot 6 leaves the clock, and the water
+     line is spoken over the year the record gives it.
+
+     Then the year runs two more years on the widest camera in the film, and
+     **the Golden Gate Bridge arrives.** That is not a new drawing: the deck is
+     `base/places.json`'s `ggb` ring — DataSF 97yj-54sx Article 10 landmark no.
+     222, corroborated by US Census TIGERweb `Golden Gate Brg` — and
+     `landmarks.ts` §GGB gates it at **1937**, the year the bridge was completed
+     (19 April) and opened (27 May). The corpus says the same thing twice in the
+     city's own voice: `golden-gate-bridge.json` beat 4, the Mayor's message of
+     7 January 1935 (`journalofproceed30sanfrich` leaf 50) — *"The Marin tower …
+     has been completed — height 746 feet"* with the completion set for May 1937
+     — and beat 5, 8 January 1936 (`journalofproceed31sanfrich` leaf 47) —
+     *"will open to traffic by May 1, 1937 … It was begun in December, 1932."*
+
+     MEASURED, not assumed: `.parity/m1look.py` seeked shot 6's own camera to
+     1933, 1936, 1937 and 1938 and diffed the Golden Gate corner of each frame.
+     1936 → 1937 changes 3,416 pixels; 1937 → 1938 changes none. The bridge was
+     always there and the film always ran straight past it — at 1.7 years a
+     second, with the camera pointed at the Sunset. `out/m1gg6-strip.png`.
+
+     The hold that follows is the point: two seconds of nothing moving on the
+     frame the bridge just landed on. */
   "hetch-hetchy": [
-    /* The camera pulls back at 1945 and the year steps BACK to 1935 on the
-       settled frame. The renderer is a pure function of the year, so a step back
-       really does un-build the 1936–45 cohorts — and it reads as a rewind rather
-       than as a fault because the year on screen is counting down while it
-       happens. Pretending otherwise (a 1935 label over a 1945 city) would be the
-       map saying something untrue. */
-    { k: "run", ms: 900, to: 1935, curve: "move" },
-    { k: "hold", ms: 7100 },
+    { k: "hold", ms: 3600 },
+    { k: "run", ms: 1600, to: 1937, curve: "move", line: 2 },
+    { k: "hold", ms: 2800, line: 2 },
   ],
   "treasure-island": [
-    { k: "run", ms: 1000, to: 1936, curve: "move" },
+    /* opens at 1937, where shot 7 leaves the clock. The Bay Bridge deck is a
+       film BUILD rather than a year gate — `skipBridgeGhost` keeps the base
+       layer's 2025 alignment off the frame until this act finishes — so it
+       strikes out here on its own act and its own January 1936 citation, one
+       map-year after the crossing opened. That is the cost of putting the
+       Golden Gate on camera and it is stated rather than hidden; the film
+       already shows copy older than its map year in shots 5 and 6. */
+    { k: "hold", ms: 1000 },
     { k: "build", ms: 1600, what: "bridge", curve: "travel", line: 2 },
     { k: "hold", ms: 1200 },
     { k: "run", ms: 1500, to: 1939, curve: "move" },
@@ -382,14 +462,42 @@ export interface FilmTimeline {
  * One flat list of segments with absolute start times, so the state at any
  * millisecond is a LOOKUP and not a simulation. That is what makes a scrub land
  * on the same frame playback would have produced.
+ *
+ * ── THE YEAR LINE IS DERIVED HERE, AND IT IS MONOTONE ────────────────────────
+ *
+ * *"In the current film sometimes it jumps ahead in time then back again — it's
+ * weird, the film has to lie linear in time."*
+ *
+ * It did, and it was one interval. `.parity/m1time.py` seeked the paused film
+ * every 50 ms across all 134,000 of them and wrote down `(t, shot, seg, year)`:
+ * 2,681 samples, **nine of them backward, all inside shot 7's 900 ms run, 1945
+ * down to 1935**, after which shot 8 replayed 1935 → 1939. Nineteen thirty-six
+ * to nineteen forty-five was shown forward, backward and forward again.
+ *
+ * The cause was structural rather than arithmetic. A shot opened on its
+ * PAYLOAD's `y0` and closed on its acts, and nothing ever compared one shot's
+ * closing year with the next one's opening year — so `camera.json`'s own
+ * `"year": {"from": 1945, "to": 1935, "note": "hard cut back to 1935"}` went
+ * through untouched. Two independent statements of the same quantity, and the
+ * film believed both.
+ *
+ * There is now one. **A shot opens on the year the previous shot closed on**,
+ * `SCRIPT`'s `run` acts are the only thing that moves it, and the whole segment
+ * list is asserted non-decreasing before it is returned. The payload's `y0` and
+ * `y1` are no longer read for the clock — only `shots[0].y0`, the year the film
+ * opens on — so a future payload cannot reintroduce a rewind without this
+ * function throwing and naming the shot.
  */
 export function buildTimeline(d: FilmPayload): FilmTimeline {
   const segs: FilmSeg[] = [];
   const shotT0: number[] = [];
   const shotEnd: number[] = [];
   let t = d.runtime.titleMs;
-  segs.push({ k: "title", t0: 0, ms: d.runtime.titleMs, yFrom: d.shots[0].y0, yTo: d.shots[0].y0 });
+  const y0 = d.shots[0].y0;
+  segs.push({ k: "title", t0: 0, ms: d.runtime.titleMs, yFrom: y0, yTo: y0 });
 
+  /* the year the NEXT shot opens on: the one the last one closed on */
+  let open = y0;
   d.shots.forEach((s, si) => {
     const acts = SCRIPT[s.id];
     if (!acts) throw new Error(`film: no act script for shot ${s.id}`);
@@ -405,24 +513,43 @@ export function buildTimeline(d: FilmPayload): FilmTimeline {
        run. Found by looking at a frame sequence, which is the only way it was
        ever going to be found: the film runs, nothing throws, and the year is not
        a number. The camera travels at the year the shot opens on, which is also
-       the year the previous shot ended on. */
+       the year the previous shot ended on — and now that is not two facts that
+       have to agree, it is one number used twice. */
     if (s.move) {
-      segs.push({ k: "move", t0: t, ms: s.move, si, yFrom: s.y0, yTo: s.y0 });
+      segs.push({ k: "move", t0: t, ms: s.move, si, yFrom: open, yTo: open });
       t += s.move;
     }
-    let y = s.y0;
+    let y = open;
     acts.forEach((a, ai) => {
       const yTo = a.k === "run" ? a.to : y;
+      if (yTo < y)
+        throw new Error(
+          `film: shot ${s.id} act ${ai} runs the year BACKWARD, ${y} to ${yTo}`,
+        );
       segs.push({ k: a.k, t0: t, ms: a.ms, si, ai, a, yFrom: y, yTo });
       y = yTo;
       t += a.ms;
     });
+    open = y;
     shotEnd.push(t);
   });
 
-  const last = d.shots[d.shots.length - 1];
-  segs.push({ k: "end", t0: t, ms: d.runtime.endMs, yFrom: last.y1, yTo: last.y1 });
+  segs.push({ k: "end", t0: t, ms: d.runtime.endMs, yFrom: open, yTo: open });
   t += d.runtime.endMs;
+
+  /* THE ASSERTION THE FILM DID NOT HAVE. `buildTimeline` already refuses a shot
+     whose acts do not sum to its own running time; this is the same guarantee
+     for the other axis. Every segment boundary, not only the shot boundaries,
+     because a `run` act inside a shot is exactly where the rewind lived. */
+  for (let i = 1; i < segs.length; i++) {
+    if (segs[i].yFrom < segs[i - 1].yTo) {
+      const s = segs[i].si != null ? d.shots[segs[i].si!].id : segs[i].k;
+      throw new Error(
+        `film: the year goes BACKWARD at t=${segs[i].t0} (${s}): ` +
+          `${segs[i - 1].yTo} then ${segs[i].yFrom}. The film has to be linear in time.`,
+      );
+    }
+  }
   return { segs, total: t, shotT0, shotEnd };
 }
 
@@ -617,14 +744,21 @@ function pickLine(tl: FilmTimeline, d: FilmPayload, si: number, segIx: number): 
   const s = d.shots[si];
   const acts = SCRIPT[s.id];
   const base: FilmLine = { copy: s.copy, cite: s.cite, links: s.links, kind: s.kind };
+  /* the payload's own second line where it has one, and `SPOKEN`'s where it
+     does not — see §SPOKEN. The payload always wins, so moving that line into
+     `camera.json` needs no change here. */
   const alt: FilmLine | null =
     s.build2 && s.build2.copy
       ? { copy: s.build2.copy, cite: s.build2.cite, kind: "scan" }
-      : null;
+      : (SPOKEN[s.id] ?? null);
   let cur = s.id === "treasure-island" ? (alt ?? base) : base; // the bridge opens shot 8
   for (let ai = 0; ai < acts.length; ai++) {
     const a = acts[ai];
-    if (a.k !== "build" || a.line == null) continue;
+    /* ANY act can turn the line over, not only a `build`. It used to be builds
+       only, which meant a shot could not change what it was saying unless it
+       was also raising something — and shot 7's second subject is raised by the
+       FABRIC, on its own published year, not by the film. */
+    if (a.line == null) continue;
     const seg = tl.segs.find((x) => x.si === si && x.ai === ai);
     if (!seg || tl.segs[segIx].t0 < seg.t0) continue;
     cur = a.line === 2 ? (alt ?? base) : base;
@@ -815,10 +949,10 @@ export function filmStateAt(
       const a = sg.a as Extract<FilmAct, { k: "run" }>;
       year = sg.yFrom + (sg.yTo - sg.yFrom) * curveOf(a.curve)(u0);
     }
-  } else if (sg.k === "title") {
-    year = d.shots[0].y0;
-  } else if (sg.k === "end") {
-    year = d.shots[d.shots.length - 1].y1;
+  } else if (sg.k === "title" || sg.k === "end") {
+    /* off the SEGMENT and not off the payload's `y0`/`y1`, which are no longer
+       the film's clock — see `buildTimeline` §the year line is derived here */
+    year = sg.yTo;
   } else {
     year = sg.yTo;
   }
@@ -883,7 +1017,14 @@ export function filmStateAt(
     burn,
     bridge: r.bridge,
     line,
-    badge: s && s.id === "hetch-hetchy" && sg.k !== "move" ? "notOnThisMap" : null,
+    /* THE BADGE FOLLOWS THE LINE, NOT THE SHOT. It used to be `s.id ===
+       "hetch-hetchy"`, which was right while that shot had one subject. It now
+       has two, and the second one — the Golden Gate Bridge — is emphatically ON
+       the map: the badge has to come down at the same instant the deck comes
+       up, or the film contradicts its own frame. Driven off the entity the
+       CURRENT line cites, so it is a property of what is being said. */
+    badge:
+      sg.k !== "move" && line?.cite?.entity === "hetch-hetchy" ? "notOnThisMap" : null,
     hide: sg.si != null ? hideFor(d, si) : [],
     skipBridgeGhost: brEnd >= 0 && t < brEnd,
     progress: tl.total > 0 ? t / tl.total : 0,
