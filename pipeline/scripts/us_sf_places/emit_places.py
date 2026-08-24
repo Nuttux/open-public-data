@@ -39,6 +39,9 @@ ROOT = HERE.parents[2]
 sys.path.insert(0, str(ROOT / "pipeline" / "scripts" / "us_sf_city"))
 from _chunk import ChunkWriter  # noqa: E402
 
+sys.path.insert(0, str(HERE))
+import place_kinds  # noqa: E402
+
 SRC_IN = HERE / "cache" / "_places.json"
 OUT = ROOT / "website/public/data/us/sf/city"
 MANIFEST = OUT / "manifest.json"
@@ -131,6 +134,25 @@ SOURCES = {
         "what": "a hero the map draws at EMPHASIS and that no other register names. Sutro Tower is in none of the ten registers above, none of the 1,243 places already shipped, and not in USGS GNIS either, which carries Mount Sutro and Sutro Reservoir and not the tower. The hero record names its own anchoring register, its own year source and its measured footprint area and top; the row is read off those and `span` is this file's own ladder, max(sqrt(footprint area), the drawn height).",
         "rows": 1,
     },
+    "place_kind": {
+        "what": "the FAMILY a place's mark is drawn as - what kind of thing the register says it is",
+        "script": "pipeline/scripts/us_sf_places/place_kinds.py",
+        "fields": {
+            "nc68-ngbr": "department_name - the City department that OWNS the parcel",
+            "gtr9-ntp6": "propertytype",
+            "ib5c-xgwu": "facility_type",
+            "7e7j-59qk": "entity_type",
+            "5kya-mfst": "occupancy",
+            "65ik-7wqd": "type",
+            "6adp-a5yv": "NONE - Schools_College is a register of college campuses and the kind is its identity, not a column",
+        },
+        "no_kind_published": {
+            "97yj-54sx": "Article 10 publishes a name, an APN, an address, a landmark number, a year of designation and two links. No field says what the place is.",
+            "ejht-vp5d": "Article 11 publishes a rating, A/B/C/D.",
+            "nps-nrhp": "ResType is `building` on 33 of 37 rows and `site` on 1 - a form class, not a use.",
+        },
+        "gap": "684 of 2,197 places - 31.1 percent - come from the two historic-designation registers and carry no kind at all. They keep the plain mark. Churches are in none of these registers and USGS GNIS no longer carries a Church feature class (222 San Francisco rows, all natural or civil), so a church cannot be drawn as a church from any source this pipeline reads.",
+    },
     "place_extent": {
         "derived_from": ["ynuv-fyni", "wv5m-vpq2"],
         "what": "the extent a name is sized by: the shipped LIDAR building footprint the place resolves to (by assessor parcel, or by its own published point falling inside the ring), else the registry's own polygon",
@@ -166,6 +188,7 @@ FIELD_SOURCE = {
     "yrule": "place_year",
     "fl": "place_a10",
     "src": "place_extent",
+    "kind": "place_kind",
 }
 
 
@@ -483,6 +506,19 @@ def main() -> int:
         q["y0rule"] = YRULE[5]
     rep["structure_year_applied"] = {q["n"]: ggb_yr for q in ggb_rows}
 
+    # WHAT KIND OF THING EACH PLACE IS, joined from the registers' own category
+    # fields. See `place_kinds.py`: the join is the normalised name inside the
+    # place's OWN register, gated on distance, and the mapping onto the mark
+    # families is an exhaustive table that raises on a value it has not seen.
+    # A place whose register publishes no kind gets 0 and keeps the plain
+    # treatment; NOTHING here reads a name to decide what a place is.
+    fams = place_kinds.kinds_for(pl)[0]
+    fix = {f: i + 1 for i, f in enumerate(place_kinds.FAMILIES)}
+    kcol = [fix[f] if f else 0 for f in fams]
+    rep["byFamily"] = {f: sum(1 for g in fams if g == f)
+                       for f in place_kinds.FAMILIES}
+    rep["withKind"] = sum(1 for k in kcol if k)
+
     srcs = sorted({p["src"] for p in pl})
     six = {s: i for i, s in enumerate(srcs)}
     yix = {y: i for i, y in enumerate(YRULE)}
@@ -506,6 +542,7 @@ def main() -> int:
     )
     w.add("src", "u8", [six[p["src"]] for p in pl])
     w.add("yrule", "u8", [yruleof(p) for p in pl])
+    w.add("kind", "u8", kcol)
     blob = w.serialise()
     (OUT / "base" / "places.qc").write_bytes(blob)
     gzlen = len(gzip.compress(blob, 9))
@@ -515,6 +552,7 @@ def main() -> int:
         "t": [p["n"] for p in pl],
         "SRC": srcs,
         "YRULE": YRULE,
+        "KIND": place_kinds.FAMILIES,
         "ggb": doc["ggb"],
         "ggbYr": doc["ggbYr"],
         "meta": {
@@ -576,8 +614,12 @@ def main() -> int:
             "DESIGNATED it under Article 10 and it carries a mark; bit 1 = the Golden "
             "Gate Bridge deck; bit 2 = this row was already in base/marks.json. `src` "
             "indexes the sidecar's SRC, `yrule` its YRULE — which rung of the year "
-            "ladder this row's year came off. NAMES ARE IN base/places.json, beside the "
-            "chunk, exactly as base/marks.json and base/blocks-id.json are."
+            "ladder this row's year came off. `kind` is 0 where the place's register "
+            "publishes no kind of thing, else 1 + the index into the sidecar's KIND — "
+            "the family the mark is drawn as, joined from that register's own category "
+            "field by pipeline/scripts/us_sf_places/place_kinds.py. NAMES ARE IN "
+            "base/places.json, beside the chunk, exactly as base/marks.json and "
+            "base/blocks-id.json are."
         ),
     }
     man["sources"].update(SOURCES)
@@ -591,6 +633,9 @@ def main() -> int:
         "dropped": {
             k: rep[k] for k in rep if k.startswith("dropped")
         },
+        "kinds": dict(place_kinds.provenance(),
+                      withKind=rep["withKind"],
+                      byFamily=rep["byFamily"]),
         "sizeGate": (
             "PLACE_MIN_PX = 10 in src/lib/city/labels.ts: an un-designated name is "
             "written only where the thing it names is at least one line of type across "
@@ -622,12 +667,90 @@ def main() -> int:
     for s in srcs:
         print(f"    {s:12s} {sum(1 for p in pl if p['src'] == s):5d}")
 
+    write_kind_module(pl, fams)
+
     if "--marks" in sys.argv:
-        write_marks(pl, doc)
+        write_marks(pl, doc, kcol)
     return 0
 
 
-def write_marks(pl: list[dict], doc: dict) -> None:
+KIND_TS = ROOT / "website/src/lib/city/place-kinds.generated.ts"
+
+
+def write_kind_module(pl: list[dict], fams: list) -> None:
+    """`src/lib/city/place-kinds.generated.ts` — the family, by place name.
+
+    WHY A GENERATED MODULE AND NOT THE CHUNK, said plainly so it can be undone.
+    The renderer gets its places from `CityMap.tsx::decodeMarks`, which builds a
+    `PlaceLabel` out of five columns of `base/marks.json` and would need one
+    more line to carry a sixth. `base/marks.json` now ships that sixth column
+    (`k` + `KIND`, written above) so that line is all it takes — but until it is
+    taken, `labels.ts` reads the family out of this table instead, and
+    `PlaceLabel.kind` wins wherever it is set. **When `decodeMarks` learns the
+    column this file is deleted and one import goes with it; nothing else
+    moves.**
+
+    The key is the name because the name is what the label pass has: 2,197
+    places, **6 duplicate names**, and a duplicate is written only where every
+    row of that name agrees on its family, so the table can never attach a
+    kind to the wrong place.
+    """
+    byname: dict[str, set] = {}
+    for q, f in zip(pl, fams):
+        byname.setdefault(q["n"], set()).add(f)
+    rows = sorted((n, next(iter(v))) for n, v in byname.items()
+                  if len(v) == 1 and next(iter(v)))
+    dropped = sum(1 for v in byname.values() if len(v) > 1)
+    lines = [
+        "/**",
+        " * GENERATED by pipeline/scripts/us_sf_places/emit_places.py — do not edit.",
+        " *",
+        " * What KIND of thing each named place is, by name. The family is the",
+        " * register's OWN published category value mapped onto a short vocabulary of",
+        " * marks; the join and the mapping are"
+        " pipeline/scripts/us_sf_places/place_kinds.py",
+        " * and the provenance is in the manifest under `places.kinds`.",
+        " *",
+        f" * {len(rows):,} of {len(pl):,} places carry a family. The rest come from",
+        " * registers that publish no kind — Article 10 (a name and a designation),",
+        " * Article 11 (a rating) — and keep the plain mark. Churches are in none of",
+        " * these registers, so a church is one of them.",
+        " *",
+        " * THIS FILE IS A STOPGAP WITH A DELETION CONDITION. `base/marks.json` already",
+        " * ships the same column as `k` + `KIND`; the day `CityMap.tsx::decodeMarks`",
+        " * reads it into `PlaceLabel.kind`, delete this module and its import.",
+        " */",
+        "",
+        "/** the mark families, in the order the chunk's `kind` column indexes them */",
+        "export const PLACE_KIND_FAMILIES = [",
+    ]
+    for f in place_kinds.FAMILIES:
+        lines.append(f'  "{f}",')
+    lines += [
+        "] as const;",
+        "",
+        "export type PlaceKind = (typeof PLACE_KIND_FAMILIES)[number];",
+        "",
+        f"/** {len(rows):,} entries; {dropped} name(s) dropped for disagreeing with themselves */",
+        "const BY_NAME = new Map<string, PlaceKind>([",
+    ]
+    for n, f in rows:
+        lines.append(f'  [{json.dumps(n)}, "{f}"],')
+    lines += [
+        "]);",
+        "",
+        "/** the family the register published for this place, or undefined */",
+        "export function placeKindOf(name: string): PlaceKind | undefined {",
+        "  return BY_NAME.get(name);",
+        "}",
+        "",
+    ]
+    KIND_TS.write_text("\n".join(lines))
+    print(f"place-kinds.generated.ts  {KIND_TS.stat().st_size:,} bytes  "
+          f"{len(rows):,} names")
+
+
+def write_marks(pl: list[dict], doc: dict, kcol: list[int]) -> None:
     """`base/marks.json`, in that file's existing shape, carrying the merged list.
 
     Same fields, same base64 packing, same `d & 1` designation bit — the
@@ -651,6 +774,13 @@ def write_marks(pl: list[dict], doc: dict) -> None:
         "d": b64("B", [(1 if p["des"] else 0) | (2 if p["ggb"] else 0)
                        | (8 if p.get("_contained") else 0) for p in pl]),
         "src": b64("B", [six[p["src"]] for p in pl]),
+        # THE KIND TRAVELS ON THE SHIPPED FILE AS WELL AS THE CHUNK, so the
+        # renderer's own fetch can stop reading it out of a generated module the
+        # day `decodeMarks` is taught the column. `k` is 0 for no published kind
+        # and 1 + the index into `KIND` otherwise; a reader that does not know
+        # the key ignores it and nothing changes.
+        "k": b64("B", kcol),
+        "KIND": place_kinds.FAMILIES,
         "SRC": srcs,
         "ggb": doc["ggb"],
         "ggbYr": doc["ggbYr"],
@@ -666,12 +796,15 @@ def write_marks(pl: list[dict], doc: dict) -> None:
     print(f"base/marks.json   {p.stat().st_size:,} bytes  {len(pl):,} places (was 1,243)")
 
 
-OUTPUTS = ("places.qc", "places.json", "marks.json")
+OUTPUTS = ("places.qc", "places.json", "marks.json", "place-kinds.generated.ts")
 
 
 def _snapshot() -> dict:
-    return {n: (OUT / "base" / n).read_bytes()
-            for n in OUTPUTS if (OUT / "base" / n).exists()}
+    d = {n: (OUT / "base" / n).read_bytes()
+         for n in OUTPUTS if (OUT / "base" / n).exists()}
+    if KIND_TS.exists():
+        d[KIND_TS.name] = KIND_TS.read_bytes()
+    return d
 
 
 def check() -> int:

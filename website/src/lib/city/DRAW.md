@@ -9080,3 +9080,176 @@ One free consequence: the brightest entry is now 179 rather than 253, so
 `roofFineLUT`'s gamut headroom no longer flattens the top of the ramp
 (BUGS §4), and the four published `RSHADE` steps are visible on pale roofs for
 the first time.
+
+---
+
+## 40. Block G3 — "every named place has its own render". The census re-measured from the publishers' own schemas, and what the record will actually pay for
+
+### 40.1 The census is RIGHT, and it is now checked against the publishers and not against a note
+
+§21.32's number is the one the whole decision rests on, so it was re-derived
+from two independent places rather than inherited.
+
+**From the shipped file.** `cache/_places.json` carries **2,196** rows and
+`emit_places.py` adds Sutro Tower's, so `base/marks.json` `n` = **2,197**, and
+the split by register is exact:
+
+    627 nc68-ngbr · 392 ib5c-xgwu · 345 ejht-vp5d · 339 97yj-54sx
+    240 gtr9-ntp6 · 108 5kya-mfst ·  66 7e7j-59qk ·  37 nps-nrhp
+     30 6adp-a5yv ·  12 65ik-7wqd  (+1 base/heroes.json)
+
+**From the publishers.** The four registers the argument turns on were asked
+for their own column list (`data.sfgov.org/api/views/<id>.json`), today:
+
+| register | its columns, in full or in the part that matters |
+|---|---|
+| `97yj-54sx` Article 10 | `the_geom, apn, name, address, landmarkno, yeardesignated, designationdocument, photo, pimlink` |
+| `ejht-vp5d` Article 11 | …`_name, _apn, _stname, _surveyname, dwntwnrate_rating, dwntwnrate_explanation` |
+| `nc68-ngbr` City Facilities | …`common_name, block_lot, dept_id, **department_name**, gross_sq_ft`… |
+| `gtr9-ntp6` Rec & Parks Properties | …`property_name, acres, **propertytype**, complex, ownership`… |
+
+> **Article 10 publishes a name, an APN, an address, a landmark number, a year
+> of designation and two links. There is no field on that register that says
+> what kind of thing the place is, and Article 11's only category is a rating.
+> 684 of 2,197 rows — 31.1 % — are those two registers.** The predecessor's
+> number is confirmed at the source, not repeated.
+
+And where a category does exist it is three different fields, exactly as
+recorded: an **owner** (`department_name`), a **facility type**, a **property
+type**.
+
+### 40.2 The join is not a guess: the name resolves, and for one register it resolves to a tenth of a metre
+
+The kind is not in `_places.json` — the rows carry `n, x, y, span, bi, des,
+src, y0…` and no category — so it has to be re-joined from the registers. The
+join is the normalised name, and it is gated on distance in world metres
+through the manifest's own projection (`_geom.to_m`):
+
+| register | places | name resolves | median distance | p99 | ambiguous kind |
+|---|---|---|---|---|---|
+| `nc68-ngbr` | 627 | **623** | **0.0 m** | **0.1 m** | 1 |
+| `gtr9-ntp6` | 240 | **239** | 14.7 m | 279 m | 0 |
+| `ib5c-xgwu` | 392 | **392** | 3.4 m | 196 m | 0 |
+
+**The City Facilities join lands on the register's own point to a tenth of a
+metre**, because that is where the place's `x`/`y` came from in the first
+place; it is an identity join wearing a name's clothes. The other two are wider
+only because their `x`/`y` is the *footprint* the place resolved to, not the
+register centroid, and the register's polygon is the whole park.
+
+### 40.3 The two hopes that were tested and are dead, so nobody re-tests them
+
+**A kind from a SECOND register, for the 684 with none.** Every A10, A11 and
+NRHP row was looked up by name in all five kind-bearing registers within 60 m:
+
+> **11 of 339 Article 10 rows pick up a kind. 0 of 345 Article 11. 0 of 37
+> NRHP.** Four of the eleven are ambiguous. That is a 1.5 % recovery on the
+> gap, against the cost of a cross-register rule and its failure modes.
+> **Rejected.**
+
+**Churches, from USGS GNIS.** GNIS is the obvious escape from "the City
+publishes property and does not own churches" — its feature-class vocabulary
+historically carried `Church`, `School`, `Hospital`. The file already in
+`cache/gnis_ca.zip` was decoded: **222 rows in San Francisco County, and the
+classes are**
+
+    59 Populated Place · 28 Military · 21 Island · 20 Summit · 14 Bay ·
+    14 Cape · 14 Civil · 13 Lake · 9 Bar · 9 Reservoir · 6 Channel ·
+    4 Beach · 2 Woods · 2 Falls · 2 Flat · 2 Arch · 1 Stream · 1 Range · 1 Area
+
+> **There is not one man-made structure class left in it.** The USGS retired
+> the administrative feature classes — Church among them — from Domestic Names.
+> So **§21.32's church gap is confirmed and it is now confirmed against the
+> file, not against a memory**: Grace Cathedral, Sts Peter and Paul, Old St
+> Mary's and Mission Dolores reach this map through Article 10, which publishes
+> no kind, and no source in this pipeline's cache can say they are churches.
+> **A church will keep the plain designated mark, and that is the honest
+> answer to the part of the ask that named churches first.**
+
+### 40.4 What is drawn, and the two marks say two different things
+
+`labels.ts` §KINDMARK. The mark the register can pay for is a **family glyph**
+in the same 8.4 px box the designated diamond already occupies, drawn in the
+same ink behind the same paper halo, immediately before the name.
+
+| | |
+|---|---|
+| the **diamond** | Article 10: *the City has DESIGNATED this a landmark.* A **status**, which is exactly what that register publishes, and it does not change. |
+| the **glyph** | *what kind of thing this is.* Runs in the un-designated lane only. |
+
+**No place is ever asked to say both, and that falls out of the data rather
+than being arranged**: the register that designates is the register with no
+kind, so the two sets do not intersect.
+
+**18 families, and the vocabulary is short because the box is 8.4 px.** Two
+silhouettes that differ by less than a pixel are one silhouette, so
+`ib5c-xgwu`'s `Basketball Court`, `Tennis Court`, `Handball/Racquetball Court`,
+`Disc Golf` and `Archery Field` are five published values and one glyph:
+
+    park 370 · school 222 · works 163 · civic 79 · port 55 · office 51 ·
+    sport 48 · transit 47 · home 44 · water 43 · fire 43 · plaza 36 ·
+    garden 35 · arts 35 · library 19 · health 18 · hotel 17 · police 17
+
+**1,342 of 2,196 rows carry a family (61.1 %)**, 1,330 distinct names after the
+six self-disagreeing duplicates are dropped. The remainder splits into 721 from
+registers that publish no kind, 117 whose published value is not a kind of
+place (`Non-City` — an owner field with the owner withheld — `Aggregate`, two
+POPOS rows carrying a sentence of Planning Commission minutes), 11 ambiguous
+inside the gate and 5 whose name is not in their own register.
+
+**TWO PASSES, SILHOUETTE THEN CUT, and that is what makes it read at 8 px.** A
+halo stroked around a shape with internal detail closes the detail up. So the
+dark shape is one closed silhouette carrying the halo, and anything inside it —
+a window band, a book's spine, a paving joint, a cog's bore — is **cut back out
+in the halo colour on top**. The result is a black pictograph with light detail
+rather than a blob.
+
+**And the owner is called an owner.** `nc68-ngbr` publishes
+`department_name` — the City department that owns the parcel, not what stands
+on it. For a fire house, a station, a branch library, a school and a pier the
+two are the same fact. For `Gsa - Real Estate Division` they are not, which is
+why those 36 rows are `civic` and nothing narrower. The manifest says so under
+`places.kinds.ownerNotKind`.
+
+### 40.5 On the frame
+
+`.parity/g3/out/k1-1-city.prod.kind.png`, whole city, and the two lanes read
+apart at a glance: **Golden Gate Bridge, Palace Of Fine Arts, Coit Tower, Ferry
+Building, San Francisco City Hall, Mission High School and the Baker & Hamilton
+Building carry the diamond; Yerba Buena Natural Areas, Park Presidio Blvd,
+Bernal Heights Park and India Basin – Shoreline Park carry a tree; City College
+of San Francisco — Ocean carries a pennant.** At the district camera
+(`k1-2-dist`) Mission Creek Park is a tree and UCSF Mission Bay a pennant, and
+`out/kzoom1.png` / `out/kzoom2.png` are those two at 4× and 6× — the tree reads
+as a tree and the pennant as a pennant at their shipped size.
+
+**THE BLOCK, STREET AND BUILDING FRAMES OF THAT RUN ARE NOT TAKEN, and the
+reason is the one the brief names.** The third camera died on
+`capture.prod_ready`'s own gate — `RuntimeError: prod not ready` — against the
+**dev** server at :3000, which is being recompiled continuously. The production
+build at :3100 is at `7bc871f7` and does not contain this change. **This needs
+:3100 rebuilt on this commit before the three close cameras can be judged**,
+and until it is, the acceptance table for those three zooms is honestly absent
+rather than filled in from the dev server.
+
+### 40.6 The plumbing, and the one line that is somebody else's
+
+The family ships **twice**, on purpose:
+
+* `base/places.qc` gains a `kind` u8 column — 0 for none, else 1 + the index
+  into `base/places.json`'s new `KIND` — and `base/marks.json` gains the same
+  column as `k` + `KIND`. A reader that does not know the key ignores it. The
+  chunk grows 42,129 → **44,366 bytes** (23,202 gzipped) for 2,197 rows.
+* `src/lib/city/place-kinds.generated.ts`, a generated name → family table that
+  `labels.ts` falls back to.
+
+**The second one is a stopgap with a deletion condition, stated so it does not
+become permanent.** The renderer's places come from
+`CityMap.tsx::decodeMarks`, which builds a `PlaceLabel` from five columns of
+`base/marks.json`. That file now ships the sixth. **The day `decodeMarks` reads
+`m.k`/`m.KIND` into `PlaceLabel.kind`, delete `place-kinds.generated.ts` and
+its import; `PlaceLabel.kind` already wins over the table wherever it is set.**
+`CityMap.tsx` is not this block's file, which is why it was not edited.
+
+`emit_places.py --check` still says **deterministic: two runs, identical
+bytes**, over all four outputs.

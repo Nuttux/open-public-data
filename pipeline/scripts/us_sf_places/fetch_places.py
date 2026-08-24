@@ -36,6 +36,8 @@ SOCRATA = [
     ("7e7j-59qk", "schools", "Schools"),
     ("65ik-7wqd", "popos", "Privately Owned Public Open Spaces"),
     ("ib5c-xgwu", "rp_facilities", "Recreation and Parks Facilities"),
+    ("nc68-ngbr", "city_facilities", "City Facilities"),
+    ("gtr9-ntp6", "rp_properties", "Recreation and Parks Properties"),
     ("gtnh-hgvs", "city_lands", "City Lands"),
     ("38b7-6db3", "rp_funcareas", "Functional Areas maintained by Rec and Parks"),
     ("3nje-yn2u", "rpd_parks", "RPD Parks"),

@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/gtr9-ntp6.geojson?$limit=50000",
+ "what": "Recreation and Parks Properties",
+ "bytes": 1686705,
+ "rows": 255,
+ "sha256": "2d0f60be5a4f7cd3f94cc285623772bcd3cb99c69881c05f891fba759ac157d7",
+ "retrieved_utc": "2026-08-24T20:56:31Z"
+}

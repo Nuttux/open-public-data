@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/nc68-ngbr.geojson?$limit=50000",
+ "what": "City Facilities",
+ "bytes": 1070799,
+ "rows": 1734,
+ "sha256": "5799638d6e836570b290f39940bf0e6b0cc1129f7c0e0d544a0ad0de021062ec",
+ "retrieved_utc": "2026-08-24T20:56:24Z"
+}

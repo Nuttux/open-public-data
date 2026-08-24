@@ -1,0 +1,154 @@
+{
+ "id": "nc68-ngbr",
+ "name": "City Facilities",
+ "description": "City-owned and leased facilities maintained in the City's Facility System of Record (FSR). Does not include the following agencies which are not part of the City and County of San Francisco: SFHA, OCII and City College.\nThis dataset was developed through a process involving some of the primary stewards for the facility data and their stakeholders. It is meant to be a living reference and will be maintained and updated through established workflows and processes over time.  You can access the attached User Guide for more detail by clicking the red About button and scrolling to attachments.",
+ "attribution": "City and County of San Francisco",
+ "rowsUpdatedAt": 1787592066,
+ "columns": {
+  "facility_id": {
+   "name": "facility_id",
+   "type": "number",
+   "description": "System generated unique facility identifier"
+  },
+  "common_name": {
+   "name": "common_name",
+   "type": "text",
+   "description": "Commonly known/used facility name"
+  },
+  "address": {
+   "name": "address",
+   "type": "text",
+   "description": "Address or location description of facility"
+  },
+  "city": {
+   "name": "city",
+   "type": "text",
+   "description": "City where facility is located."
+  },
+  "zip_code": {
+   "name": "zip_code",
+   "type": "text",
+   "description": "ZIP Code where facility is located."
+  },
+  "block_lot": {
+   "name": "block_lot",
+   "type": "text",
+   "description": "The block and lot number, also known as the Assessor Parcel Number or APN.  For facilities with multiple APNs associated, the lowest numbered APN is used.  This will blank if in the facility is the right-of-way or outside of San Francisco county."
+  },
+  "owned_leased": {
+   "name": "owned_leased",
+   "type": "text",
+   "description": "Indicates if the facility is owned or leased by the City."
+  },
+  "dept_id": {
+   "name": "dept_id_for_jurisdiction",
+   "type": "number",
+   "description": "Department ID of the City department with jurisdiction over the facility."
+  },
+  "department_name": {
+   "name": "jurisdiction",
+   "type": "text",
+   "description": "Jurisdiction: department name of the City department with jurisdiction over the facility."
+  },
+  "gross_sq_ft": {
+   "name": "gross_sq_ft",
+   "type": "number",
+   "description": "Gross square footage of facility (original source: FRRM). Note: Incomplete data, updating as values are determined."
+  },
+  "longitude": {
+   "name": "longitude",
+   "type": "text",
+   "description": "The longitude of the facility's location."
+  },
+  "latitude": {
+   "name": "latitude",
+   "type": "text",
+   "description": "The latitude of the facility's location."
+  },
+  "supervisor_district": {
+   "name": "supervisor_district",
+   "type": "number",
+   "description": "Board of Supervisors District in which the facility is located, if applicable.  Note: there are city facilities that are outside the boundaries of the City and County of San Francisco."
+  },
+  "city_tenants": {
+   "name": "city_tenants",
+   "type": "text",
+   "description": "City departments that are tenants of the facility, separated by a semi-colon."
+  },
+  "land_id": {
+   "name": "land_id",
+   "type": "number",
+   "description": "Foreign key to City Lands table."
+  },
+  "geom": {
+   "name": "geom",
+   "type": "point",
+   "description": "The geometry/location column which allows the facility to be mapped in Socrata."
+  },
+  "data_last_updated": {
+   "name": "data_last_updated",
+   "type": "calendar_date",
+   "description": "Timestamp when the record (row) was last updated in the source system"
+  },
+  "data_as_of": {
+   "name": "data_as_of",
+   "type": "calendar_date",
+   "description": "Timestamp when the record (row) was last refreshed in the source system"
+  },
+  "data_loaded_at": {
+   "name": "data_loaded_at",
+   "type": "calendar_date",
+   "description": "Timestamp when the record (row) was was last updated here (in the data portal)"
+  },
+  ":@computed_region_ajp5_b2md": {
+   "name": "Analysis Neighborhoods",
+   "type": "number",
+   "description": ""
+  },
+  ":@computed_region_f58d_8dbm": {
+   "name": "DELETE - Neighborhoods_from_fyvs_ahh9",
+   "type": "number",
+   "description": ""
+  },
+  ":@computed_region_rxqg_mtj9": {
+   "name": "DELETE - Supervisor Districts",
+   "type": "number",
+   "description": ""
+  },
+  ":@computed_region_jx4q_fizf": {
+   "name": "DELETE - Current Police Districts",
+   "type": "number",
+   "description": ""
+  },
+  ":@computed_region_yftq_j783": {
+   "name": "DELETE - Fire Prevention Districts",
+   "type": "number",
+   "description": ""
+  },
+  ":@computed_region_bh8s_q3mv": {
+   "name": "DELETE - Zip Codes",
+   "type": "number",
+   "description": ""
+  },
+  ":@computed_region_jwn9_ihcz": {
+   "name": "Neighborhoods",
+   "type": "number",
+   "description": ""
+  },
+  ":@computed_region_6qbp_sg9q": {
+   "name": "SF Find Neighborhoods",
+   "type": "number",
+   "description": ""
+  },
+  ":@computed_region_qgnn_b9vv": {
+   "name": "Current Police Districts",
+   "type": "number",
+   "description": ""
+  },
+  ":@computed_region_26cr_cadq": {
+   "name": "Current Supervisor Districts",
+   "type": "number",
+   "description": ""
+  }
+ }
+}

@@ -20,6 +20,7 @@
  * of a linear one it is the named-place gate as well.
  */
 
+import { placeKindOf, type PlaceKind } from "./place-kinds.generated";
 import { type Frame, nameFitsFrame, sx, sy } from "./terrain";
 
 // ── the ink budget ──────────────────────────────────────────────────────────
@@ -365,6 +366,249 @@ export const MK_LEAD = 7;
 /** the diamond's own fill */
 export const MK_INK = "rgba(30,24,12,.86)";
 
+// ── §KINDMARK: the mark says WHAT KIND OF THING the place is ────────────────
+
+/**
+ * A CHURCH SHOULD READ AS A CHURCH, A PIER AS A PIER, A PARK AS A PARK — AND
+ * THE RECORD PAYS FOR ABOUT THREE FIFTHS OF THAT.
+ *
+ * Daniel: *"make sure every landmark or place that's named on the map has its
+ * unique render."* Measured before it was built (DRAW.md §40.1, and re-checked
+ * against the publishers' own column lists rather than inherited):
+ *
+ * > **684 of 2,197 named places — 31.1 % — come from Article 10 and Article
+ * > 11, which publish a name and a status and NO KIND.** Article 10's columns
+ * > are `name, apn, address, landmarkno, yeardesignated, designationdocument,
+ * > photo, pimlink`; Article 11's only category is a rating, A/B/C/D. Nothing
+ * > in either says what the place is.
+ *
+ * Where a kind does exist it is three heterogeneous fields — an owner
+ * (`nc68-ngbr department_name`), a facility type (`ib5c-xgwu`), a property type
+ * (`gtr9-ntp6`) — plus an occupancy, an entity type and a POPOS type. Joined
+ * and mapped by `pipeline/scripts/us_sf_places/place_kinds.py`, **1,330 of
+ * 2,197 places carry a family**; the rest keep the plain treatment.
+ *
+ * **AND CHURCHES ARE NOT AMONG THEM, WHICH IS THE HONEST HALF OF THE ANSWER.**
+ * The City publishes *property* and it does not own churches, so Grace
+ * Cathedral, Sts Peter and Paul, Old St Mary's and Mission Dolores reach this
+ * map only through Article 10. USGS GNIS was the obvious escape — its feature
+ * classes used to include `Church` — and the file in this pipeline's own cache
+ * was decoded to check: **222 rows in San Francisco County and not one
+ * man-made structure class left in the vocabulary.** A church keeps the plain
+ * designated mark until a source outside the City's property registers is
+ * added, and no glyph is guessed from a name.
+ *
+ * WHAT THE TWO MARKS MEAN, KEPT APART. The **diamond** is Article 10: the City
+ * has DESIGNATED this a landmark. That is a status, it is what that register
+ * publishes, and it does not change. The **family glyph** is a kind of thing,
+ * it runs in the un-designated lane, and it is drawn only where a register
+ * published one. A place that is both would be saying two things; no place is,
+ * because the register that designates is the register with no kind.
+ *
+ * THE VOCABULARY IS SHORT BECAUSE THE BOX IS 8.4 px. Two silhouettes that
+ * differ by less than a pixel are one silhouette, so `Basketball Court`,
+ * `Tennis Court`, `Handball/Racquetball Court`, `Disc Golf` and `Archery
+ * Field` are five published values and one glyph. The families are listed in
+ * `place-kinds.generated.ts`, in the order the chunk's `kind` column indexes
+ * them.
+ */
+export const GLYPH_R = MK_MARK_PX;
+
+/** the paper the glyph is set on — the same halo the names carry */
+export const GLYPH_HALO_W = 2.4;
+
+/** css px between the glyph and the first letter of the name after it */
+export const GLYPH_LEAD = 3.6;
+
+/**
+ * One family glyph, centred on `X, Y`, drawn `2 * r` across.
+ *
+ * TWO PASSES, SILHOUETTE THEN CUT, and that is what makes it read at 8 px. A
+ * halo stroked around a shape with internal detail closes the detail up; so
+ * the dark shape is a single closed silhouette carrying the halo, and anything
+ * inside it — a window band, a spine, a paving joint — is CUT back out in the
+ * halo colour on top. The result is a black pictograph with light detail
+ * rather than a blob.
+ */
+export function placeGlyph(
+  ctx: CanvasRenderingContext2D,
+  kind: PlaceKind,
+  X: number,
+  Y: number,
+  r: number,
+): void {
+  const gx = (u: number) => X + u * r;
+  const gy = (u: number) => Y + u * r;
+  const box = (x0: number, y0: number, x1: number, y1: number) => {
+    ctx.moveTo(gx(x0), gy(y0));
+    ctx.lineTo(gx(x1), gy(y0));
+    ctx.lineTo(gx(x1), gy(y1));
+    ctx.lineTo(gx(x0), gy(y1));
+    ctx.closePath();
+  };
+  const disc = (cx: number, cy: number, rr: number) => {
+    ctx.moveTo(gx(cx + rr), gy(cy));
+    ctx.arc(gx(cx), gy(cy), rr * r, 0, Math.PI * 2);
+    ctx.closePath();
+  };
+  const poly = (pts: readonly (readonly [number, number])[]) => {
+    ctx.moveTo(gx(pts[0][0]), gy(pts[0][1]));
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(gx(pts[i][0]), gy(pts[i][1]));
+    ctx.closePath();
+  };
+
+  ctx.beginPath();
+  switch (kind) {
+    case "park":                                   // a tree
+      disc(0, -0.3, 0.72);
+      box(-0.17, 0.1, 0.17, 1.0);
+      break;
+    case "garden":                                 // shoots in a bed
+      box(-1, 0.58, 1, 1.0);
+      box(-0.72, -0.62, -0.44, 0.58);
+      box(-0.14, -0.88, 0.14, 0.58);
+      box(0.44, -0.62, 0.72, 0.58);
+      break;
+    case "plaza":                                  // a paved square
+      box(-0.88, -0.88, 0.88, 0.88);
+      break;
+    case "water":                                  // two waves
+      for (const y0 of [-0.62, 0.12]) {
+        ctx.moveTo(gx(-0.95), gy(y0));
+        ctx.quadraticCurveTo(gx(-0.48), gy(y0 - 0.5), gx(0), gy(y0));
+        ctx.quadraticCurveTo(gx(0.48), gy(y0 + 0.5), gx(0.95), gy(y0));
+        ctx.lineTo(gx(0.95), gy(y0 + 0.42));
+        ctx.quadraticCurveTo(gx(0.48), gy(y0 + 0.92), gx(0), gy(y0 + 0.42));
+        ctx.quadraticCurveTo(gx(-0.48), gy(y0 - 0.08), gx(-0.95), gy(y0 + 0.42));
+        ctx.closePath();
+      }
+      break;
+    case "sport":                                  // a ball
+      disc(0, 0, 0.86);
+      break;
+    case "library":                                // an open book
+      poly([[-0.95, -0.45], [0, -0.75], [0.95, -0.45], [0.95, 0.6], [0, 0.9], [-0.95, 0.6]]);
+      break;
+    case "school":                                 // a pennant
+      box(-0.78, -1.0, -0.52, 1.0);
+      poly([[-0.52, -0.92], [0.88, -0.44], [-0.52, 0.04]]);
+      break;
+    case "fire":                                   // a flame
+      ctx.moveTo(gx(0), gy(-1.0));
+      ctx.bezierCurveTo(gx(0.72), gy(-0.3), gx(0.66), gy(0.28), gx(0.4), gy(0.62));
+      ctx.bezierCurveTo(gx(0.2), gy(0.9), gx(-0.2), gy(0.9), gx(-0.4), gy(0.62));
+      ctx.bezierCurveTo(gx(-0.66), gy(0.28), gx(-0.5), gy(-0.2), gx(0), gy(-1.0));
+      ctx.closePath();
+      break;
+    case "police": {                               // a star
+      const pts: [number, number][] = [];
+      for (let i = 0; i < 10; i++) {
+        const a = -Math.PI / 2 + (i * Math.PI) / 5;
+        const rr = i % 2 === 0 ? 1.0 : 0.44;
+        pts.push([Math.cos(a) * rr, Math.sin(a) * rr]);
+      }
+      poly(pts);
+      break;
+    }
+    case "transit":                                // a tram, head-on
+      poly([[-0.72, 0.78], [-0.72, -0.62], [-0.5, -0.88], [0.5, -0.88], [0.72, -0.62], [0.72, 0.78]]);
+      box(-0.6, 0.78, -0.28, 1.0);
+      box(0.28, 0.78, 0.6, 1.0);
+      break;
+    case "port":                                   // an anchor
+      box(-0.14, -0.9, 0.14, 0.72);
+      box(-0.72, -0.5, 0.72, -0.24);
+      ctx.moveTo(gx(-0.92), gy(0.14));
+      ctx.quadraticCurveTo(gx(-0.82), gy(0.98), gx(0), gy(0.98));
+      ctx.quadraticCurveTo(gx(0.82), gy(0.98), gx(0.92), gy(0.14));
+      ctx.lineTo(gx(0.62), gy(0.14));
+      ctx.quadraticCurveTo(gx(0.55), gy(0.66), gx(0), gy(0.66));
+      ctx.quadraticCurveTo(gx(-0.55), gy(0.66), gx(-0.62), gy(0.14));
+      ctx.closePath();
+      break;
+    case "health":                                 // a cross
+      box(-0.3, -0.95, 0.3, 0.95);
+      box(-0.95, -0.3, 0.95, 0.3);
+      break;
+    case "arts":                                   // a figure on a plinth
+      box(-0.92, 0.64, 0.92, 1.0);
+      box(-0.34, 0.1, 0.34, 0.64);
+      poly([[-0.34, 0.1], [-0.18, -0.36], [0.18, -0.36], [0.34, 0.1]]);
+      disc(0, -0.62, 0.3);
+      break;
+    case "civic":                                  // a pediment on columns
+      poly([[-1.0, -0.16], [0, -0.96], [1.0, -0.16]]);
+      box(-1.0, -0.16, 1.0, 0.04);
+      box(-0.7, 0.04, -0.42, 0.74);
+      box(-0.14, 0.04, 0.14, 0.74);
+      box(0.42, 0.04, 0.7, 0.74);
+      box(-1.0, 0.74, 1.0, 1.0);
+      break;
+    case "works":                                  // a cog
+      disc(0, 0, 0.66);
+      box(-0.18, -1.0, 0.18, 1.0);
+      box(-1.0, -0.18, 1.0, 0.18);
+      break;
+    case "home":                                   // a house
+      poly([[-0.98, -0.1], [0, -0.96], [0.98, -0.1]]);
+      box(-0.74, -0.1, 0.74, 0.96);
+      break;
+    case "hotel":                                  // a bed
+      box(-0.96, -0.6, -0.68, 0.86);
+      box(-0.96, 0.2, 0.96, 0.62);
+      poly([[-0.62, 0.2], [-0.62, -0.06], [-0.14, -0.06], [-0.14, 0.2]]);
+      break;
+    case "office":                                 // a tower
+      box(-0.64, -0.96, 0.64, 0.96);
+      break;
+  }
+  ctx.lineJoin = "round";
+  ctx.lineWidth = GLYPH_HALO_W;
+  ctx.strokeStyle = PLACE_HALO;
+  ctx.stroke();
+  ctx.fillStyle = MK_INK;
+  ctx.fill();
+
+  // ── the cut: what is taken back OUT of the silhouette, in the paper ──
+  ctx.beginPath();
+  let cut = true;
+  switch (kind) {
+    case "plaza":                                  // the paving joints
+      box(-0.1, -0.88, 0.1, 0.88);
+      box(-0.88, -0.1, 0.88, 0.1);
+      break;
+    case "sport":                                  // the seams
+      box(-0.1, -0.86, 0.1, 0.86);
+      box(-0.86, -0.1, 0.86, 0.1);
+      break;
+    case "library":                                // the spine
+      box(-0.09, -0.75, 0.09, 0.9);
+      break;
+    case "transit":                                // the window band
+      box(-0.46, -0.62, 0.46, -0.14);
+      box(-0.46, 0.16, 0.46, 0.34);
+      break;
+    case "works":                                  // the bore
+      disc(0, 0, 0.22);
+      break;
+    case "home":                                   // the door
+      box(-0.2, 0.3, 0.2, 0.96);
+      break;
+    case "office":                                 // the window rows
+      for (const y0 of [-0.66, -0.16, 0.34]) {
+        box(-0.4, y0, -0.08, y0 + 0.26);
+        box(0.08, y0, 0.4, y0 + 0.26);
+      }
+      break;
+    default:
+      cut = false;
+  }
+  if (cut) {
+    ctx.fillStyle = PLACE_HALO;
+    ctx.fill();
+  }
+}
+
 /**
  * THE PLACE NAMES ARE A THIRD TREATMENT, DISTINCT FROM BOTH LAYERS THEY SHARE
  * THE FRAME WITH.
@@ -418,6 +662,17 @@ export interface PlaceLabel {
   readonly cls: PlaceClass;
   /** the year it can first be named, or undefined for every year */
   readonly year?: number;
+  /**
+   * WHAT KIND OF THING THE REGISTER SAYS IT IS — see §KINDMARK.
+   *
+   * Optional because the producer does not set it yet: the renderer's places
+   * come from `CityMap.tsx::decodeMarks`, which reads five columns of
+   * `base/marks.json`. That file now ships the family as a sixth (`k` +
+   * `KIND`); until `decodeMarks` reads it, `placeNames` falls back to
+   * `placeKindOf(name)`, and **this field wins wherever it is set** so the
+   * migration is one line there and a deletion here.
+   */
+  readonly kind?: PlaceKind;
 }
 
 export interface PlaceResult {
@@ -490,7 +745,14 @@ export function placeNames(
       }
       ctx.font = `${des ? 600 : 500} ${des ? fs : fs * 0.94}px ${PLACE_FACE}`;
       const tw = ctx.measureText(p.name).width;
-      const bw = tw + (des ? 16 : 10),
+      /* §KINDMARK. The glyph runs in the UN-DESIGNATED lane only: the diamond
+         already says "the City designated this", and the register that
+         designates is the register that publishes no kind, so no place is ever
+         asked to say both. `p.kind` wins over the generated table so that
+         teaching `decodeMarks` the column is a one-line migration. */
+      const kind = des ? undefined : (p.kind ?? placeKindOf(p.name));
+      const gw = kind ? 2 * GLYPH_R + GLYPH_LEAD : 0;
+      const bw = tw + gw + (des ? 16 : 10),
         bh = fs + 5;
       const pr = f.proj.proj(p.wx, p.wy, elev(p.wx, p.wy));
       const X = sx(f, pr),
@@ -544,6 +806,20 @@ export function placeNames(
         ctx.strokeText(p.name, X + MK_LEAD, Y);
         ctx.fillStyle = LB_INK[0];
         ctx.fillText(p.name, X + MK_LEAD, Y);
+      } else if (kind) {
+        /* THE GROUP IS CENTRED ON THE PLACE, NOT THE NAME. The un-designated
+           name is written across the thing it names — that is the whole point
+           of the size gate — so the glyph and the name are centred together
+           and the anchor stays where it was. */
+        const half = (gw + tw) / 2;
+        placeGlyph(ctx, kind, X - half + GLYPH_R, Y, GLYPH_R);
+        ctx.textAlign = "left";
+        ctx.font = `500 ${fs * 0.94}px ${PLACE_FACE}`;
+        ctx.lineWidth = 3.4;
+        ctx.strokeStyle = PLACE_HALO;
+        ctx.strokeText(p.name, X - half + gw, Y);
+        ctx.fillStyle = LB_INK[1];
+        ctx.fillText(p.name, X - half + gw, Y);
       } else {
         ctx.textAlign = "center";
         ctx.strokeText(p.name, X, Y);
