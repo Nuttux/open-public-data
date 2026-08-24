@@ -329,6 +329,26 @@ export const WFLG: VegFlags = {
   parkShore: true,
   canopyTone: true,
 };
+
+/**
+ * §WFLG ON THE GLOBAL — the same dev-only hook `VPROBE` already has, and for a
+ * reason this block paid for.
+ *
+ * `WFLG.undated` is the only dial on this page that is **not** driven from the
+ * renderer: `CityScrub.tsx`'s year effect and `CityFilm.tsx` set it, so a
+ * harness that pokes `RR().setYear(y)` moves the clock and never touches the
+ * gate. That harness measured street trees FLAT at 21,009 across 1948-1960 and
+ * would have been read as "there is no 1955 cliff". There is one; it was the
+ * instrument that was not connected — the brief's own *"a dial read once at
+ * load reports +0.00 when flipped at draw time"*, inverted.
+ *
+ * Parking the object here lets `.parity` READ the gate it is measuring rather
+ * than assume it, with no source edit per run and nothing in the production
+ * bundle. `.parity/g2abl.py` and `g2canlo.py` already flip `parkCls` and
+ * `blobs` through it; `g2cliff.py` reads `undated` through it. The line itself
+ * predates this comment and carried none — which is how it came to be written
+ * a second time before `git show HEAD` found the first. DRAW.md §28.1.
+ */
 if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
   (globalThis as { __cityWFLG?: VegFlags }).__cityWFLG = WFLG;
 }

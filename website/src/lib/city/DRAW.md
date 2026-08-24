@@ -6879,7 +6879,11 @@ Two things went in so the next agent cannot repeat it:
 * **§WFLG ON THE GLOBAL** (`trees.ts`) parks `WFLG` on `globalThis.__cityWFLG`
   in dev, on `VPROBE`'s own pattern, so the harness **reads** the gate it is
   measuring instead of assuming it. Every row of the table below carries the
-  gate's live value.
+  gate's live value. **The hook was already there and carried no comment** —
+  `.parity/g2abl.py` and `g2canlo.py` have been flipping `parkCls` and `blobs`
+  through it — so what this block added is the paragraph saying why it exists,
+  after re-adding it from scratch and finding it already in `HEAD`. An
+  undocumented hook is a hook the next agent rebuilds.
 
 And a second false reading was underneath the first. `lastStats.trees` is
 `r.trees + r.blobs` (`scene.ts:2261`), and **at district zoom it is entirely
