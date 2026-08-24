@@ -6841,355 +6841,6 @@ has instrumented rather than the one four rounds of work have been pointed at.
 
 ---
 
-## 28. Block G2 — the 1955 cliff, named; and the department that keeps the record
-
-> Daniel: *"Trees appear mostly all of a sudden in 1955, but can't the trees be
-> seen in a certain dataset — either municipal record or some department that
-> takes care of landscaping infrastructure etc? Same for parks or any other
-> natural features like this."*
-
-Both halves are answered here and both answers are measured. **The cliff is
-real, it is 23,560 trees in one year at block zoom, and the field behind it is
-not a date at all.** And the dataset Daniel is describing exists, is published
-by exactly the department he guesses, and **is already the only source this map
-uses** — the cliff is that source's own edge, not an artefact laid over it.
-
-### 28.1 The instrument had to be connected first, and that is the whole §20 lesson inverted
-
-The first driver poked `RR().setYear(y)` across 1948–1960 and reported street
-trees **flat at 21,009 at every year**. Read literally that says there is no
-1955 cliff. It is wrong, and the reason is worth the paragraph:
-
-**the undated-tree gate is not in the renderer.** It is one line in
-`CityScrub.tsx`'s year effect —
-
-    WFLG.undated = year === undefined || year >= TREE_EARLIEST;   CityScrub.tsx:302
-
-— plus `time.ts` §`applyUndatedTreeGate` on the film's path. `setYear` moves
-the clock and leaves the gate exactly where it was. This is the brief's own
-*"a dial read once at load reports +0.00 when flipped at draw time"*, inverted:
-here the harness moved the clock and never touched the dial, and the answer
-came back +0.00 and looked like a finding.
-
-Two things went in so the next agent cannot repeat it:
-
-* **`.parity/g2cliff.py` drives `.fx-city-scrub-rail` with a real pointer
-  event** at the x that `CityScrub.yearAt` maps to the year it wants. That is
-  the gesture Daniel makes, and it is the only path that moves both.
-* **§WFLG ON THE GLOBAL** (`trees.ts`) parks `WFLG` on `globalThis.__cityWFLG`
-  in dev, on `VPROBE`'s own pattern, so the harness **reads** the gate it is
-  measuring instead of assuming it. Every row of the table below carries the
-  gate's live value. **The hook was already there and carried no comment** —
-  `.parity/g2abl.py` and `g2canlo.py` have been flipping `parkCls` and `blobs`
-  through it — so what this block added is the paragraph saying why it exists,
-  after re-adding it from scratch and finding it already in `HEAD`. An
-  undocumented hook is a hook the next agent rebuilds.
-
-And a second false reading was underneath the first. `lastStats.trees` is
-`r.trees + r.blobs` (`scene.ts:2261`), and **at district zoom it is entirely
-blobs**: `wTree = bandW(z, VZ_T0 = 2.9, VZ_T1 = 6.0)` is exactly 0 at z = 2.9,
-so no street tree is drawn at the district camera in any year and the number is
-flat by construction. §VPROBE splits the two and the table reports them apart.
-
-### 28.2 The count, with a control pair
-
-MEASURED, `.parity/g2cliff.py`, 1200 × 680 at DPR 2, driven through the page's
-own rail, each tier settled to a stable count before the probe is armed. The
-frame difference is the mean absolute difference of `GaussianBlur(6)` of the
-frame (BUGS.md §23 — a frame mean and a pixel count cannot see this), and
-**every camera shoots 1954 twice, minutes apart, before it shoots 1955**, so
-the step is read against this tree's own noise floor on a dev server four other
-agents are recompiling.
-
-| camera | year | `WFLG.undated` | street trees drawn | canopy blobs drawn | blurred ‖Δ‖ |
-|---|---:|---|---:|---:|---:|
-| block, Mission | 1954 | false | 0 | 3,254 | — |
-| block, Mission | 1954 | false | 0 | 3,254 | **0.000** control |
-| block, Mission | **1955** | **true** | **23,560** | 3,254 | **6.006** |
-| block, Mission | 1960 | true | 23,564 | 3,254 | 0.794 |
-| block, Sunset | 1954 | false | 0 | 2,414 | — |
-| block, Sunset | 1954 | false | 0 | 2,414 | **0.000** control |
-| block, Sunset | **1955** | **true** | **7,528** | 2,414 | **2.697** |
-| block, Sunset | 1960 | true | 7,529 | 2,414 | 0.721 |
-| street, Civic Center | 1954 | false | 0 | 30 | — |
-| street, Civic Center | 1954 | false | 0 | 30 | **0.000** control |
-| street, Civic Center | **1955** | **true** | **547** | 30 | **3.417** |
-| street, Civic Center | 1960 | true | 547 | 30 | 1.597 |
-| district, Mission | 1954 | false | 0 | 20,600 | — |
-| district, Mission | 1954 | false | 0 | 20,600 | **0.000** control |
-| district, Mission | 1955 | true | **0** | 20,600 | 0.463 |
-| district, Mission | 1960 | true | **0** | 20,600 | 1.278 |
-
-And the two remaining zooms, so the judgement is over all five:
-
-| camera | year | `WFLG.undated` | street trees drawn | canopy blobs drawn | blurred ‖Δ‖ |
-|---|---:|---|---:|---:|---:|
-| building, downtown | 1954 | false | 0 | 17 | — |
-| building, downtown | 1954 | false | 0 | 17 | **0.000** control |
-| building, downtown | **1955** | **true** | **392** | 17 | **3.366** |
-| building, downtown | 1960 | true | 392 | 17 | 1.776 |
-| whole city, home | 1954 | false | 0 | 0 | — |
-| whole city, home | 1954 | false | 0 | 0 | **0.000** control |
-| whole city, home | 1955 | true | **0** | **0** | 0.041 |
-| whole city, home | 1960 | true | 0 | 0 | 0.168 |
-
-**The cliff is on four of the five zooms and absent from the fifth.** At whole
-city z = 1.0 is below `VZ_C0 = 1.55` and no vegetation of any kind is drawn, so
-1954 → 1955 moves 0.041 and that is buildings. It is district zoom, where the
-canopy carries the whole green of the frame and street trees are weighted to
-zero, that hides it — and block, street and building zoom where a reader sees
-it.
-
-**A trap for whoever runs `g2cliff.py` next.** §VPROBE's counters are only
-reset when `drawVeg` runs. At the whole-city camera it never runs, so the
-1954 row above came back holding `886 / 392 / 17` — the PREVIOUS camera's
-numbers, verbatim. `st.trees` is the authoritative 0 there. Read the counters
-only where the pass they count actually executes.
-
-**The control pair is 0.000 at all six cameras** — byte-stable, so the 6.006
-is not noise. At the Mission block the single year 1954 → 1955 is **7.6 times**
-the whole five years 1955 → 1960, and those five years move the street-tree
-count by **four trees**, because only 178 rows in the entire file are dated
-1955–1960.
-
-**And the canopy column never moves.** 3,254 / 2,414 / 30 / 20,600 / 17 / 0 —
-one number per camera, identical at every year including 1906 — `base/canopy` ships `cellKey`, `pos` and `area` and no
-year (§20.2, manifest `kinds.canopy`), so it has no gate. `base/parks` ships
-`cls`, `len`, `xy` and no year either. **Of the three vegetation objects on
-this map only one is on the clock**, and the district row is the proof from the
-other side: at z = 2.9 the street trees are weighted out, and 1954 → 1955 moves
-0.463 — buildings, not trees.
-
-### 28.3 The field behind the cliff is a boolean, not a year
-
-There is no fabricated date here and nothing like the shipyard's 2015. The
-cliff is `WFLG.undated`, flipped against `TREE_EARLIEST = 1955`, applied to the
-`tkzw-k3nq` rows whose `plantdate` is **null** — 125,234 of them. `time.ts`
-takes the decision in the open and states the consequence in the file:
-
-> *"**1954 has no street trees and 1955 has 125,234.** One honest moment rather
-> than a smear of invented ones."*
-
-So the thing to hold onto is that **the cliff is a treatment, not a defect in
-the data** — and it is a treatment nobody has looked at on a frame since it
-landed. What it costs is above: at block zoom it is the largest single-year
-event on the whole rail for vegetation, larger than any five years around it.
-
-### 28.4 What Daniel guessed is right, and it is already the source
-
-**`tkzw-k3nq` — Street Tree List, San Francisco Public Works.** Every tree the
-City maintains or has permitted, with a coordinate, a species, a diameter and a
-plant date on some of them. That is precisely *"the department that takes care
-of landscaping infrastructure"*, and `build_world.py` §trees has read it since
-the vegetation layer was built. There is nothing to ingest; the question is
-what its ceiling is.
-
-MEASURED against the live API and the cached pull, 2026-08-24:
-
-| | rows | share |
-|---|---:|---:|
-| published rows | 198,436 | 100 % |
-| carrying a `plantdate` | **72,146** | **36.36 %** |
-| carrying a usable lat/lon | 195,365 | 98.45 % |
-| **dated AND placeable** | **70,077** | **35.31 %** |
-| carrying a permit number | 54,417 | 27.4 % |
-| undated but carrying a permit number | 3,196 | 1.6 % |
-| **undated and no permit either** | **123,094** | **62.0 %** |
-
-**The ceiling is 36 %, and the map is already at it** — the shipped `yr` covers
-70,076 and the measurement finds 70,077 dated-and-placeable rows. There is no
-slack. The permit column is the only other handle in the file and it adds 3,196
-rows that carry a permit **number** and no date, which is not a date.
-
-**And there is no second source.** The whole DataSF catalogue holds seventeen
-datasets matching *tree* and three matching *canopy*: one street-tree register
-(`tkzw-k3nq`), its map view, one Urban Tree Canopy (`ni2e-vpbg`, already used,
-a single 2013 aerial with no other vintage published), removal notifications
-and three 311 mirrors. Nothing else in the city dates a tree.
-
-### 28.5 The date was traced, and 1955 turns out to be a fact about San Francisco
-
-The brief's caution was earned: the shipyard's 2015 looked like a construction
-year and was a neighbouring block's median. So one row was traced rather than
-assumed, and then the whole early tail was.
-
-The twelve earliest dated rows in the file, straight off the API:
-
-    1955-09-19  Permit Number 6944   2963 Webster St
-    1955-10-20  Permit Number 11     501 Arkansas St
-    1955-10-24  Permit Number 12     1190 Sacramento St
-    1955-12-13  Permit Number 14     867 25th Ave
-    1956-01-06  Permit Number 15     2828 Divisadero St
-    1956-01-17  Permit Number 16     720 Montgomery St
-
-**The permit numbers run 11, 12, 14, 15, 16 in date order from October 1955.**
-That is a permit series opening. `plantdate` on these rows is the date of the
-street-tree **planting permit**, and 1955 is the year San Francisco's
-street-tree permit register begins. It is not a survey date and it is not a
-record-creation stamp — the two failure modes the caution named — and **1955 is
-not an arbitrary cutoff**: it is the first year the City has a permit for a
-tree.
-
-Two independent checks that it is a real date and not a stamp:
-
-* **Diameter falls monotonically with plant decade**, over 40,000 rows that
-  carry both. A survey date or a load stamp has no reason to do this.
-
-  | plant decade | n | median dbh (in) |
-  |---|---:|---:|
-  | 1950s | 76 | 11.5 |
-  | 1970s | 984 | 12.0 |
-  | 1980s | 2,086 | 11.0 |
-  | 1990s | 9,835 | 7.0 |
-  | 2000s | 13,269 | 3.0 |
-  | 2010s | 11,409 | 3.0 |
-
-* **No bulk-load day.** The largest single date in the file is 2000-06-23 with
-  319 trees — a planting crew's week, not a migration. A stamped field puts
-  tens of thousands on one day; this project has been burned by exactly that
-  twice (§28.7).
-
-**One thing the file does that the map does not say, and should.** The early
-curve has a **twelve-year hole**: 1955 (10 rows), 1956 (168), then **nothing at
-all from 1957 to 1968**, resuming 1969 (332), 1970 (72), 1971 (1), 1972
-(1,465). Whatever the register did between 1957 and 1968, it did not survive
-into this file. Any copy that calls 1955–2026 a planting curve is describing a
-curve with a decade missing out of the middle of its first third.
-
-### 28.6 Parks and natural features: there is no acquisition date published anywhere
-
-Daniel's second half is the better idea of the two — *a park appearing on the
-rail in the year the city bought it* — and it is the one the record cannot pay
-for. Every candidate was opened and every column read:
-
-| dataset | what | date columns |
-|---|---|---|
-| `gtr9-ntp6` Recreation and Parks Properties | 247 rings, already on the wire | `created_date`, `last_edited_date`, `data_as_of`, `data_loaded_at` |
-| `ib5c-xgwu` Recreation and Parks Facilities | 3,308 facilities | the same four |
-| `3nje-yn2u` RPD Parks | 1,080 park polygons | **none** |
-| `8du2-b837` Park Sections | 1,751 sections | **none** |
-| `gtnh-hgvs` City Lands | every City-owned parcel, all departments | `data_last_updated`, `data_as_of` |
-| `6df5-4k8u` DPW Active Parcel History | parcel splits and merges | `data_as_of` |
-
-**Not one acquisition date, in any of them.** `gtr9-ntp6`'s `created_date` and
-`data_as_of` are a single 2025-12-18 GIS load — already recorded as a dead end
-in `trees.ts` §the year, and re-confirmed here rather than taken on trust.
-`City Lands` looked like the one that would carry it and carries a `land_id`
-that joins straight to `gtr9-ntp6`, and its only date is when the row was last
-edited.
-
-So **no park boundary and no shoreline moves on the rail anywhere on this map,
-and no published City dataset can make one move.** The park rings are drawn
-identically in 1906 and 2025.
-
-What park names *do* have is a year, and it is worth knowing it is not this
-one. `emit_places.py` gives every place a `yr` off a four-rung ladder and ships
-which rung it used in `yrule`; parks come off *the made-land year of the
-ground* or *the first dated building standing inside the extent*, and 398 rows
-have no year at all and are named in every year. Those are honest statements
-about ground. **None of them is an acquisition.**
-
-**Where an acquisition date actually lives, and what it would cost.** The Board
-of Supervisors voted on every park the City bought, and this repo already holds
-the beginnings of that corpus — `pipeline/minutes/`, the Journal of Proceedings
-off the Internet Archive with a street gazetteer over it. Measured tonight:
-**903 extracted decisions, all from a single 1976 volume**, of which 17 mention
-a park at all and **none is an acquisition** (they are appropriations, a
-Candlestick lease suit, a surplus sale). The corpus would have to grow by two
-orders of magnitude and gain a parcel gazetteer before it could date one park
-ring, and that is a project, not a block. It is the right project — it is one
-of the very few ways this map could ever show the city *acquiring* something
-rather than building it — and nothing short of it will do.
-
-### 28.7 Left standing, and the one thing that is now inconsistent on the frame
-
-Nothing in the vegetation dating was changed by this section, and one thing
-that could be is deliberately left for Daniel because it is a judgement and not
-a bug:
-
-**at 1954 the block frame carries 3,254 canopy blobs and 0 street trees, and
-both cohorts are undated.** The canopy has no date because its source is one
-2013 aerial; the street trees have no date because `plantdate` is null on 62 %
-of the register. They are the same kind of ignorance and they get opposite
-treatments — the canopy draws in every year, the street trees are held to 1955.
-`time.ts` argues its side well and the alternative (holding the canopy too)
-would empty the 1906 city of vegetation entirely. But the two rules are in two
-files, they were decided separately, and **on one frame they contradict each
-other.** Whichever way it goes it should go the same way for both.
-
-The measurement that settles the cost either way is the table in §28.2, and the
-driver that produced it is `.parity/g2cliff.py`.
-
-### 21.27 A hero named its building by a POSITION IN A FILE, and nine of thirteen were one insertion from moving
-
-`heroes_extra.json` and the mock's own `wonder/hero-data.js` both say
-`"b": 137821`. That is not an identity. It is the building's rank in
-`gen/bldg-data.js`'s Hilbert-ordered delta chain, and the rank moves the moment
-the record count changes.
-
-**Measured, in this file, against the insertion that is actually pending.**
-Salesforce Tower is off the map because its only footprint returns 0.24 m and
-the shed filter cuts under 2 m (DATA-TRUTH 13.5a); rescuing it and 1190 Mission
-inserts two records, at 135,905 and 137,646. Of the thirteen heroes, the nine
-with `b ≥ 135,905` —
-
-    cityhall 149288 · ferry 142936 · coit 142291 · pofa 159057 · opera 149289
-    oldmint 136520 · pagoda 149817 · pofahall 159037 · transamerica 137821
-
-— all shift, and **nothing in the chain fails**: the round trip asserts the
-register's *shape*, and `data.ts landmarks()` asserts `meta.b === bi[q]`, which
-is the seed agreeing with itself. The Palace of Fine Arts' hall would be drawn
-on somebody else's plan in silence.
-
-**The key is the published footprint, because the stream carries nothing else.**
-`read_bldg()` returns ring vertices, a height byte, a roll year and a use class
-— no parcel key, no address, no external id. What it does carry is the
-footprint, and a footprint *is* an identity: **the ring's own centroid, its
-vertex count and its area**. That triple fingerprints the published record, so
-it survives a change in record count, a re-ordering, and the height fix that
-moved 134 bytes of `h` while leaving `cnt`, `vx`, `vy`, `xi`, `xn` identical.
-
-`emit_heroes.py` now resolves every hero — the mock's eleven included — against
-the stream at build time and **refuses to write on no match or more than one**.
-There is no fallback to the index; a fallback is the silent mis-attachment this
-exists to stop. `b` stays in the seed as an advisory record of what it resolved
-to last time, and is asserted, not trusted. The keys are harvested from the
-register (`--harvest-identity`), never typed, and they are a lookup key that is
-never read into the drawing.
-
-**Proved both ways, which is what the handover asked for:**
-
-| | result |
-|---|---|
-| today's ordering | all 13 resolve, uniquely, to the buildings they are on now |
-| the *rescued* ordering — two records inserted at 135,905 and 137,646 | all 13 resolve to the **same physical rings**; **9 of 13 raw indices move** |
-| output | `base/heroes.qc` **39,900 bytes, byte-identical**, `--check` says `IDENTICAL` |
-
-So the rescue is unblocked from this side.
-
-**The margin, per hero, because that is what protects the key from a real
-neighbour rather than from an index shift** — distance from the key's centroid
-to the nearest *other* building's centroid:
-
-    cityhall 125.2 m · dutchmill 120.9 m · ferry 93.2 m · opera 91.2 m
-    pagoda 67.7 m · oldmint 57.3 m · transamerica 53.4 m · coit 51.2 m
-    pofa 44.7 m · pofahall 44.7 m · conservatory 31.6 m · murphymill 29.1 m
-    sutro **0.5 m**
-
-**Sutro Tower is the one thin margin and it is not a defect — it is the reason
-the key is a triple.** Building 47,759 sits 0.45 m from 47,760's centroid: a
-3-vertex, 275 m² ring at 191 m, inside the 21-vertex, 662 m² ring at 210 m that
-is the hero. Two published footprints of the same structure. The centroid alone
-would be ambiguous; the vertex count and the area are not, and the resolver
-requires all three. Recorded so the next person does not "fix" the tolerance.
-
-Also fixed in the same pass: the `transamerica` record's `dr` said the drawn
-base takes *"four of its eight vertices"* and the emitter has printed **six**
-since it was written (§21.23's table is the correct one). The prose was wrong,
-not the geometry.
-
----
-
 ## 32. Block G1 — the assembly diff, and BUGS §23 is a pass production does not have
 
 Four layers now answer identically when asked what colour they give a thing
@@ -7534,3 +7185,495 @@ one comes back blank or stale, with a mask byte-identical to a previous frame's.
 `jump.py` re-forces the stage before every frame, asserts the pair's shapes
 match, and re-opens on any failure. Frames whose mask repeats a previous frame's
 exactly are stale and are discarded, not filed.
+
+### 21.31 The Bay Bridge: the record carries it, in the two registers the Golden Gate already uses
+
+Daniel: *"Where is the Bay Bridge? Other bridges and tunnels and other
+infrastructure like rail etc?"*
+
+**It is not in the places register at all.** `base/places.qc` has one bridge row
+— `Golden Gate Bridge`, row 14, `bi = −1`, span 1,753 m, from `97yj-54sx`
+Article 10 landmark no. 222. There is no Bay Bridge row under any name, and
+there could not be: it is a **Caltrans** structure, so no City property register
+carries it — the same shape as §21.19's federal-ground pattern, one level over.
+
+**But both halves of what a drawing needs ARE published, and this pipeline
+already reads both files for the Golden Gate.** Queried and counted rather than
+assumed:
+
+**The alignment — US Census TIGERweb Primary Roads** (the file
+`_encode_bridge` already cites as the Golden Gate's corroboration). Eight
+features named `Bay Brg` / `Sf Oakland Bay Brg` intersect
+(−122.42, 37.75)–(−122.30, 37.85):
+
+| span | lon | lat | verts |
+|---|---|---|---|
+| west span, Rincon Hill → Yerba Buena | −122.38789 … −122.36490 | 37.7888 … 37.81027 | 17 |
+| Yerba Buena Island, three short links | −122.36490 … −122.36416 | | 2 + 2 + 2 |
+| east span, two carriageways | −122.36416 … −122.34961 | 37.81077 … 37.81924 | 20 + 19 |
+| the Oakland end | −122.34976 … −122.32822 | 37.81924 … 37.82215 | 6 + 9 |
+
+**The dimensions and the year — FHWA National Bridge Inventory 2023,
+California** (`CA23.txt`, the exact file and year `ggb-nbi` already cites for
+structure 27 0052). Two structures are filed under county 075:
+
+    34 0003  'INTERSTATE 80' over 'SAN FRANCISCO BAY'
+             structure length 6,281.3 m - max span 704.1 m - deck width 19.1 m
+             navigational vertical clearance 56.4 m - YEAR_BUILT_027 1936
+    34 0006  'INTERSTATE 80' over the Gate/SF Bay
+             length 3,512.3 m - span 385 m - width 77.8 m - clearance 43.3 m
+             YEAR_BUILT_027 2013          (the replacement east span)
+
+That is the same field set, from the same file, that `GGB` is built out of —
+`deckLenM`, `spanM`, `deckW`, `deckZ`, and the completion year. **1936 is the
+year the Bay Bridge opened (12 November), and it takes the Golden Gate's own
+rule: the map draws where a bridge IS, so the gate is the completion year.**
+
+**What is NOT there, stated before anyone builds it.** The Golden Gate's two
+towers came from a *third* file — the FAA Digital Obstacle File — projected onto
+the published deck line. Whether the DOF carries the Bay Bridge's towers has
+**not** been checked here. Without it the deck can be drawn (flat, for the same
+published reason the Golden Gate's is flat — no deck height in either file) and
+the towers cannot, and a Bay Bridge without its west-span towers or its 2013
+self-anchored suspension tower is a line across the bay. **Check the DOF before
+promising the silhouette.**
+
+**The rest of the class, audited the same way:**
+
+- **Piers: already drawn, and named.** `base/places.qc` carries 30-odd `Pier NN`
+  rows with real footprints (`bi ≠ −1`) — Pier 17 Shed, Pier 45 Sheds A–D,
+  Pier 29 Bulkhead, Pier 96, Pier 48 Shed A — from the Port's own rows in
+  `nc68-ngbr` (213 Port facilities). They draw as prisms and they read as the
+  finger piers on the Embarcadero. Nothing missing.
+- **Tunnels: already named where the City maintains them.** `3psu-pn9h` carries
+  them as street centrelines with `TUNL` in the name — `ROBERT C LEVY TUNL` is
+  written on the block frame at Russian Hill. The Yerba Buena Island tunnel is
+  on the Bay Bridge alignment and is Caltrans's, so it is in the same class as
+  the bridge.
+- **Rail: not established.** Muni Metro and Caltrain rights of way have not been
+  looked for in `3psu-pn9h`; BART is a district, not the City, and publishes its
+  own alignment. Named as open, not claimed either way.
+- **Muni stops: a register with a position and no extent**, exactly §21.18's
+  Ocean Beach problem. `i28k-bkz6` is cached, **3,260 points**, and a stop has
+  no polygon in any City file. It belongs to whatever lane draws a mark from a
+  position, not to `placeIsBigEnough`.
+
+---
+
+## 33. Block G2 — the 1955 cliff, named; and the department that keeps the record
+
+> Daniel: *"Trees appear mostly all of a sudden in 1955, but can't the trees be
+> seen in a certain dataset — either municipal record or some department that
+> takes care of landscaping infrastructure etc? Same for parks or any other
+> natural features like this."*
+
+Both halves are answered here and both answers are measured. **The cliff is
+real, it is 23,560 trees in one year at block zoom, and the field behind it is
+not a date at all.** And the dataset Daniel is describing exists, is published
+by exactly the department he guesses, and **is already the only source this map
+uses** — the cliff is that source's own edge, not an artefact laid over it.
+
+### 33.1 The instrument had to be connected first, and that is the whole §20 lesson inverted
+
+The first driver poked `RR().setYear(y)` across 1948–1960 and reported street
+trees **flat at 21,009 at every year**. Read literally that says there is no
+1955 cliff. It is wrong, and the reason is worth the paragraph:
+
+**the undated-tree gate is not in the renderer.** It is one line in
+`CityScrub.tsx`'s year effect —
+
+    WFLG.undated = year === undefined || year >= TREE_EARLIEST;   CityScrub.tsx:302
+
+— plus `time.ts` §`applyUndatedTreeGate` on the film's path. `setYear` moves
+the clock and leaves the gate exactly where it was. This is the brief's own
+*"a dial read once at load reports +0.00 when flipped at draw time"*, inverted:
+here the harness moved the clock and never touched the dial, and the answer
+came back +0.00 and looked like a finding.
+
+Two things went in so the next agent cannot repeat it:
+
+* **`.parity/g2cliff.py` drives `.fx-city-scrub-rail` with a real pointer
+  event** at the x that `CityScrub.yearAt` maps to the year it wants. That is
+  the gesture Daniel makes, and it is the only path that moves both.
+* **§WFLG ON THE GLOBAL** (`trees.ts`) parks `WFLG` on `globalThis.__cityWFLG`
+  in dev, on `VPROBE`'s own pattern, so the harness **reads** the gate it is
+  measuring instead of assuming it. Every row of the table below carries the
+  gate's live value. **The hook was already there and carried no comment** —
+  `.parity/g2abl.py` and `g2canlo.py` have been flipping `parkCls` and `blobs`
+  through it — so what this block added is the paragraph saying why it exists,
+  after re-adding it from scratch and finding it already in `HEAD`. An
+  undocumented hook is a hook the next agent rebuilds.
+
+And a second false reading was underneath the first. `lastStats.trees` is
+`r.trees + r.blobs` (`scene.ts:2261`), and **at district zoom it is entirely
+blobs**: `wTree = bandW(z, VZ_T0 = 2.9, VZ_T1 = 6.0)` is exactly 0 at z = 2.9,
+so no street tree is drawn at the district camera in any year and the number is
+flat by construction. §VPROBE splits the two and the table reports them apart.
+
+### 33.2 The count, with a control pair
+
+MEASURED, `.parity/g2cliff.py`, 1200 × 680 at DPR 2, driven through the page's
+own rail, each tier settled to a stable count before the probe is armed. The
+frame difference is the mean absolute difference of `GaussianBlur(6)` of the
+frame (BUGS.md §23 — a frame mean and a pixel count cannot see this), and
+**every camera shoots 1954 twice, minutes apart, before it shoots 1955**, so
+the step is read against this tree's own noise floor on a dev server four other
+agents are recompiling.
+
+| camera | year | `WFLG.undated` | street trees drawn | canopy blobs drawn | blurred ‖Δ‖ |
+|---|---:|---|---:|---:|---:|
+| block, Mission | 1954 | false | 0 | 3,254 | — |
+| block, Mission | 1954 | false | 0 | 3,254 | **0.000** control |
+| block, Mission | **1955** | **true** | **23,560** | 3,254 | **6.006** |
+| block, Mission | 1960 | true | 23,564 | 3,254 | 0.794 |
+| block, Sunset | 1954 | false | 0 | 2,414 | — |
+| block, Sunset | 1954 | false | 0 | 2,414 | **0.000** control |
+| block, Sunset | **1955** | **true** | **7,528** | 2,414 | **2.697** |
+| block, Sunset | 1960 | true | 7,529 | 2,414 | 0.721 |
+| street, Civic Center | 1954 | false | 0 | 30 | — |
+| street, Civic Center | 1954 | false | 0 | 30 | **0.000** control |
+| street, Civic Center | **1955** | **true** | **547** | 30 | **3.417** |
+| street, Civic Center | 1960 | true | 547 | 30 | 1.597 |
+| district, Mission | 1954 | false | 0 | 20,600 | — |
+| district, Mission | 1954 | false | 0 | 20,600 | **0.000** control |
+| district, Mission | 1955 | true | **0** | 20,600 | 0.463 |
+| district, Mission | 1960 | true | **0** | 20,600 | 1.278 |
+
+And the two remaining zooms, so the judgement is over all five:
+
+| camera | year | `WFLG.undated` | street trees drawn | canopy blobs drawn | blurred ‖Δ‖ |
+|---|---:|---|---:|---:|---:|
+| building, downtown | 1954 | false | 0 | 17 | — |
+| building, downtown | 1954 | false | 0 | 17 | **0.000** control |
+| building, downtown | **1955** | **true** | **392** | 17 | **3.366** |
+| building, downtown | 1960 | true | 392 | 17 | 1.776 |
+| whole city, home | 1954 | false | 0 | 0 | — |
+| whole city, home | 1954 | false | 0 | 0 | **0.000** control |
+| whole city, home | 1955 | true | **0** | **0** | 0.041 |
+| whole city, home | 1960 | true | 0 | 0 | 0.168 |
+
+**The cliff is on four of the five zooms and absent from the fifth.** At whole
+city z = 1.0 is below `VZ_C0 = 1.55` and no vegetation of any kind is drawn, so
+1954 → 1955 moves 0.041 and that is buildings. It is district zoom, where the
+canopy carries the whole green of the frame and street trees are weighted to
+zero, that hides it — and block, street and building zoom where a reader sees
+it.
+
+**A trap for whoever runs `g2cliff.py` next.** §VPROBE's counters are only
+reset when `drawVeg` runs. At the whole-city camera it never runs, so the
+1954 row above came back holding `886 / 392 / 17` — the PREVIOUS camera's
+numbers, verbatim. `st.trees` is the authoritative 0 there. Read the counters
+only where the pass they count actually executes.
+
+**The control pair is 0.000 at all six cameras** — byte-stable, so the 6.006
+is not noise. At the Mission block the single year 1954 → 1955 is **7.6 times**
+the whole five years 1955 → 1960, and those five years move the street-tree
+count by **four trees**, because only 178 rows in the entire file are dated
+1955–1960.
+
+**And the canopy column never moves.** 3,254 / 2,414 / 30 / 20,600 / 17 / 0 —
+one number per camera, identical at every year including 1906 — `base/canopy` ships `cellKey`, `pos` and `area` and no
+year (§20.2, manifest `kinds.canopy`), so it has no gate. `base/parks` ships
+`cls`, `len`, `xy` and no year either. **Of the three vegetation objects on
+this map only one is on the clock**, and the district row is the proof from the
+other side: at z = 2.9 the street trees are weighted out, and 1954 → 1955 moves
+0.463 — buildings, not trees.
+
+### 33.3 The field behind the cliff is a boolean, not a year
+
+There is no fabricated date here and nothing like the shipyard's 2015. The
+cliff is `WFLG.undated`, flipped against `TREE_EARLIEST = 1955`, applied to the
+`tkzw-k3nq` rows whose `plantdate` is **null** — 125,234 of them. `time.ts`
+takes the decision in the open and states the consequence in the file:
+
+> *"**1954 has no street trees and 1955 has 125,234.** One honest moment rather
+> than a smear of invented ones."*
+
+So the thing to hold onto is that **the cliff is a treatment, not a defect in
+the data** — and it is a treatment nobody has looked at on a frame since it
+landed. What it costs is above: at block zoom it is the largest single-year
+event on the whole rail for vegetation, larger than any five years around it.
+
+### 33.4 What Daniel guessed is right, and it is already the source
+
+**`tkzw-k3nq` — Street Tree List, San Francisco Public Works.** Every tree the
+City maintains or has permitted, with a coordinate, a species, a diameter and a
+plant date on some of them. That is precisely *"the department that takes care
+of landscaping infrastructure"*, and `build_world.py` §trees has read it since
+the vegetation layer was built. There is nothing to ingest; the question is
+what its ceiling is.
+
+MEASURED against the live API and the cached pull, 2026-08-24:
+
+| | rows | share |
+|---|---:|---:|
+| published rows | 198,436 | 100 % |
+| carrying a `plantdate` | **72,146** | **36.36 %** |
+| carrying a usable lat/lon | 195,365 | 98.45 % |
+| **dated AND placeable** | **70,077** | **35.31 %** |
+| carrying a permit number | 54,417 | 27.4 % |
+| undated but carrying a permit number | 3,196 | 1.6 % |
+| **undated and no permit either** | **123,094** | **62.0 %** |
+
+**The ceiling is 36 %, and the map is already at it** — the shipped `yr` covers
+70,076 and the measurement finds 70,077 dated-and-placeable rows. There is no
+slack. The permit column is the only other handle in the file and it adds 3,196
+rows that carry a permit **number** and no date, which is not a date.
+
+**And there is no second source.** The whole DataSF catalogue holds seventeen
+datasets matching *tree* and three matching *canopy*: one street-tree register
+(`tkzw-k3nq`), its map view, one Urban Tree Canopy (`ni2e-vpbg`, already used,
+a single 2013 aerial with no other vintage published), removal notifications
+and three 311 mirrors. Nothing else in the city dates a tree.
+
+### 33.5 The date was traced, and 1955 turns out to be a fact about San Francisco
+
+The brief's caution was earned: the shipyard's 2015 looked like a construction
+year and was a neighbouring block's median. So one row was traced rather than
+assumed, and then the whole early tail was.
+
+The twelve earliest dated rows in the file, straight off the API:
+
+    1955-09-19  Permit Number 6944   2963 Webster St
+    1955-10-20  Permit Number 11     501 Arkansas St
+    1955-10-24  Permit Number 12     1190 Sacramento St
+    1955-12-13  Permit Number 14     867 25th Ave
+    1956-01-06  Permit Number 15     2828 Divisadero St
+    1956-01-17  Permit Number 16     720 Montgomery St
+
+**The permit numbers run 11, 12, 14, 15, 16 in date order from October 1955.**
+That is a permit series opening. `plantdate` on these rows is the date of the
+street-tree **planting permit**, and 1955 is the year San Francisco's
+street-tree permit register begins. It is not a survey date and it is not a
+record-creation stamp — the two failure modes the caution named — and **1955 is
+not an arbitrary cutoff**: it is the first year the City has a permit for a
+tree.
+
+Two independent checks that it is a real date and not a stamp:
+
+* **Diameter falls monotonically with plant decade**, over 40,000 rows that
+  carry both. A survey date or a load stamp has no reason to do this.
+
+  | plant decade | n | median dbh (in) |
+  |---|---:|---:|
+  | 1950s | 76 | 11.5 |
+  | 1970s | 984 | 12.0 |
+  | 1980s | 2,086 | 11.0 |
+  | 1990s | 9,835 | 7.0 |
+  | 2000s | 13,269 | 3.0 |
+  | 2010s | 11,409 | 3.0 |
+
+* **No bulk-load day.** The largest single date in the file is 2000-06-23 with
+  319 trees — a planting crew's week, not a migration. A stamped field puts
+  tens of thousands on one day; this project has been burned by exactly that
+  twice (§33.7).
+
+**One thing the file does that the map does not say, and should.** The early
+curve has a **twelve-year hole**: 1955 (10 rows), 1956 (168), then **nothing at
+all from 1957 to 1968**, resuming 1969 (332), 1970 (72), 1971 (1), 1972
+(1,465). Whatever the register did between 1957 and 1968, it did not survive
+into this file. Any copy that calls 1955–2026 a planting curve is describing a
+curve with a decade missing out of the middle of its first third.
+
+### 33.6 Parks and natural features: there is no acquisition date published anywhere
+
+Daniel's second half is the better idea of the two — *a park appearing on the
+rail in the year the city bought it* — and it is the one the record cannot pay
+for. Every candidate was opened and every column read:
+
+| dataset | what | date columns |
+|---|---|---|
+| `gtr9-ntp6` Recreation and Parks Properties | 247 rings, already on the wire | `created_date`, `last_edited_date`, `data_as_of`, `data_loaded_at` |
+| `ib5c-xgwu` Recreation and Parks Facilities | 3,308 facilities | the same four |
+| `3nje-yn2u` RPD Parks | 1,080 park polygons | **none** |
+| `8du2-b837` Park Sections | 1,751 sections | **none** |
+| `gtnh-hgvs` City Lands | every City-owned parcel, all departments | `data_last_updated`, `data_as_of` |
+| `6df5-4k8u` DPW Active Parcel History | parcel splits and merges | `data_as_of` |
+
+**Not one acquisition date, in any of them.** `gtr9-ntp6`'s `created_date` and
+`data_as_of` are a single 2025-12-18 GIS load — already recorded as a dead end
+in `trees.ts` §the year, and re-confirmed here rather than taken on trust.
+`City Lands` looked like the one that would carry it and carries a `land_id`
+that joins straight to `gtr9-ntp6`, and its only date is when the row was last
+edited.
+
+So **no park boundary and no shoreline moves on the rail anywhere on this map,
+and no published City dataset can make one move.** The park rings are drawn
+identically in 1906 and 2025.
+
+What park names *do* have is a year, and it is worth knowing it is not this
+one. `emit_places.py` gives every place a `yr` off a four-rung ladder and ships
+which rung it used in `yrule`; parks come off *the made-land year of the
+ground* or *the first dated building standing inside the extent*, and 398 rows
+have no year at all and are named in every year. Those are honest statements
+about ground. **None of them is an acquisition.**
+
+**Where an acquisition date actually lives, and what it would cost.** The Board
+of Supervisors voted on every park the City bought, and this repo already holds
+the beginnings of that corpus — `pipeline/minutes/`, the Journal of Proceedings
+off the Internet Archive with a street gazetteer over it. Measured tonight:
+**903 extracted decisions, all from a single 1976 volume**, of which 17 mention
+a park at all and **none is an acquisition** (they are appropriations, a
+Candlestick lease suit, a surplus sale). The corpus would have to grow by two
+orders of magnitude and gain a parcel gazetteer before it could date one park
+ring, and that is a project, not a block. It is the right project — it is one
+of the very few ways this map could ever show the city *acquiring* something
+rather than building it — and nothing short of it will do.
+
+### 33.7 Left standing, and the one thing that is now inconsistent on the frame
+
+Nothing in the vegetation dating was changed by this section, and one thing
+that could be is deliberately left for Daniel because it is a judgement and not
+a bug:
+
+**at 1954 the block frame carries 3,254 canopy blobs and 0 street trees, and
+both cohorts are undated.** The canopy has no date because its source is one
+2013 aerial; the street trees have no date because `plantdate` is null on 62 %
+of the register. They are the same kind of ignorance and they get opposite
+treatments — the canopy draws in every year, the street trees are held to 1955.
+`time.ts` argues its side well and the alternative (holding the canopy too)
+would empty the 1906 city of vegetation entirely. But the two rules are in two
+files, they were decided separately, and **on one frame they contradict each
+other.** Whichever way it goes it should go the same way for both.
+
+The measurement that settles the cost either way is the table in §33.2, and the
+driver that produced it is `.parity/g2cliff.py`.
+
+### 21.27 A hero named its building by a POSITION IN A FILE, and nine of thirteen were one insertion from moving
+
+`heroes_extra.json` and the mock's own `wonder/hero-data.js` both say
+`"b": 137821`. That is not an identity. It is the building's rank in
+`gen/bldg-data.js`'s Hilbert-ordered delta chain, and the rank moves the moment
+the record count changes.
+
+**Measured, in this file, against the insertion that is actually pending.**
+Salesforce Tower is off the map because its only footprint returns 0.24 m and
+the shed filter cuts under 2 m (DATA-TRUTH 13.5a); rescuing it and 1190 Mission
+inserts two records, at 135,905 and 137,646. Of the thirteen heroes, the nine
+with `b ≥ 135,905` —
+
+    cityhall 149288 · ferry 142936 · coit 142291 · pofa 159057 · opera 149289
+    oldmint 136520 · pagoda 149817 · pofahall 159037 · transamerica 137821
+
+— all shift, and **nothing in the chain fails**: the round trip asserts the
+register's *shape*, and `data.ts landmarks()` asserts `meta.b === bi[q]`, which
+is the seed agreeing with itself. The Palace of Fine Arts' hall would be drawn
+on somebody else's plan in silence.
+
+**The key is the published footprint, because the stream carries nothing else.**
+`read_bldg()` returns ring vertices, a height byte, a roll year and a use class
+— no parcel key, no address, no external id. What it does carry is the
+footprint, and a footprint *is* an identity: **the ring's own centroid, its
+vertex count and its area**. That triple fingerprints the published record, so
+it survives a change in record count, a re-ordering, and the height fix that
+moved 134 bytes of `h` while leaving `cnt`, `vx`, `vy`, `xi`, `xn` identical.
+
+`emit_heroes.py` now resolves every hero — the mock's eleven included — against
+the stream at build time and **refuses to write on no match or more than one**.
+There is no fallback to the index; a fallback is the silent mis-attachment this
+exists to stop. `b` stays in the seed as an advisory record of what it resolved
+to last time, and is asserted, not trusted. The keys are harvested from the
+register (`--harvest-identity`), never typed, and they are a lookup key that is
+never read into the drawing.
+
+**Proved both ways, which is what the handover asked for:**
+
+| | result |
+|---|---|
+| today's ordering | all 13 resolve, uniquely, to the buildings they are on now |
+| the *rescued* ordering — two records inserted at 135,905 and 137,646 | all 13 resolve to the **same physical rings**; **9 of 13 raw indices move** |
+| output | `base/heroes.qc` **39,900 bytes, byte-identical**, `--check` says `IDENTICAL` |
+
+So the rescue is unblocked from this side.
+
+**The margin, per hero, because that is what protects the key from a real
+neighbour rather than from an index shift** — distance from the key's centroid
+to the nearest *other* building's centroid:
+
+    cityhall 125.2 m · dutchmill 120.9 m · ferry 93.2 m · opera 91.2 m
+    pagoda 67.7 m · oldmint 57.3 m · transamerica 53.4 m · coit 51.2 m
+    pofa 44.7 m · pofahall 44.7 m · conservatory 31.6 m · murphymill 29.1 m
+    sutro **0.5 m**
+
+**Sutro Tower is the one thin margin and it is not a defect — it is the reason
+the key is a triple.** Building 47,759 sits 0.45 m from 47,760's centroid: a
+3-vertex, 275 m² ring at 191 m, inside the 21-vertex, 662 m² ring at 210 m that
+is the hero. Two published footprints of the same structure. The centroid alone
+would be ambiguous; the vertex count and the area are not, and the resolver
+requires all three. Recorded so the next person does not "fix" the tolerance.
+
+Also fixed in the same pass: the `transamerica` record's `dr` said the drawn
+base takes *"four of its eight vertices"* and the emitter has printed **six**
+since it was written (§21.23's table is the correct one). The prose was wrong,
+not the geometry.
+
+---
+
+### 21.32 "Every named place gets its own render" — the census that says whether that is thirteen or forty
+
+Daniel: *"I want every single place that is a landmark marked with a black dot,
+or even just a place that has a name on the map, to have its unique render."*
+
+Taken as a direction and answered with a measurement first, because the
+predecessor's test — the record has to support the form — will fail most of
+2,197 rows, and §21.24 already rejected 297 designated places as a class for
+exactly that reason.
+
+**Which register each shipped place comes from, and what kind-of-thing field
+that register actually publishes:**
+
+| register | places shipped | its own category field | distinct values |
+|---|---|---|---|
+| `nc68-ngbr` City Facilities | **627** | `department_name` — the OWNER, not the kind | 30 |
+| `ib5c-xgwu` Rec & Parks Facilities | **392** | `facility_type` | **68** |
+| `ejht-vp5d` Article 11 Rating | **345** | a rating (A/B/C/D) — **no kind** | – |
+| `97yj-54sx` Article 10 landmarks | **339** | **none** — a name and a designation | – |
+| `gtr9-ntp6` Rec & Parks Properties | **240** | `propertytype` | **11** |
+| `5kya-mfst` Tall Building Inventory | **108** | `primary_use` | 7 |
+| `7e7j-59qk` Schools | **66** | `entity_type` | 10 |
+| `nps-nrhp` National Register | 37 | – | – |
+| `6adp-a5yv` Schools_College | 30 | campus / institution | – |
+| `65ik-7wqd` POPOS | 12 | type | – |
+| `base/heroes.json` | 1 | – | – |
+
+> **684 of 2,197 places — 31 % — come from the two historic-designation
+> registers, which publish a name and a status and nothing at all about what
+> kind of thing the place is.** Article 10 and Article 11 exist to record that a
+> building is protected, not what it is. No family treatment can reach them from
+> their own row.
+
+**And where a category does exist it is three different kinds of field.**
+`nc68-ngbr` publishes an owner — *Recreation And Parks* 570, *Port* 213,
+*School District* 156, *Municipal Transportation Agency* 127, *Airport* 116,
+*Fire Department* 56, *Public Library* 29, *Police Department* 21. That is a
+usable family for a **civic** treatment (a fire station, a library, a school
+read differently) and it is useless for a form. `gtr9-ntp6` publishes the
+cleanest vocabulary on the site — *Neighborhood Park or Playground* 146, *Mini
+Park* 47, *Regional Park* 22, *Community Garden* 15, *Civic Plaza or Square* 10,
+*Library* 7, *Zoological Garden* 1 — **11 values, all of them a kind of ground**.
+`ib5c-xgwu`'s 68 values are mostly ground too: *Landscaped Area* 422,
+*Hardscaped Area* 354, *Non-landscaped Greenspace* 206, *Cargo Container* 188,
+against *Maintenance Building* 140, *Restroom* 77, *Clubhouse* 50, *Rec Center*
+17, *Fieldhouse* 16.
+
+**So the answer to "is this thirteen renders or forty" is: it is neither, and
+the honest shape is two different jobs.**
+
+1. **A family treatment is reachable for about two thirds of the register** —
+   1,475 of 2,197 rows carry *some* category field — but it would be a
+   treatment of the **mark**, not of the solid: a library, a fire station, a
+   pier, a school and a park reading as those things rather than as one black
+   diamond. That is `labels.ts`'s lane and it needs a mapping from three
+   heterogeneous vocabularies onto one, which is a decision to be made and
+   written down, not derived.
+2. **A unique SOLID needs a published form**, and §21.28 just measured how rare
+   that is: of the 180 rows in the one register that publishes a free-text
+   description, **six** say anything about a top, and two of those six are
+   already heroes. That is the ceiling on "unique renders" from today's sources
+   and it is not close to 2,197.
+
+**And one gap is worth naming because it is the most-asked-for family:**
+**churches are in none of these registers.** The City publishes property, and it
+does not own churches — Grace Cathedral and Sts Peter and Paul reach the map
+only through Article 10, which carries no kind. A church family would need a
+source outside the City's property registers.
