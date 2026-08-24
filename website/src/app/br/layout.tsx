@@ -5,6 +5,18 @@ import RegistryChrome from "@/components/RegistryChrome";
 import RegistryFooter from "@/components/RegistryFooter";
 import RecifeLangToggle from "@/components/br/RecifeLangToggle";
 
+import type { Metadata } from "next";
+
+/**
+ * Recife pages are written in Portuguese; the root layout declares fr_FR,
+ * which applied to them until this override.
+ * Only the locale is overridden — title, description and image still resolve
+ * from the page or the root as before.
+ */
+export const metadata: Metadata = {
+  openGraph: { locale: "pt_BR", alternateLocale: ["en_US"] },
+};
+
 /**
  * Layout for every /br route — Recife (br-municipal). Locale is pt by default
  * with an en toggle (br_locale cookie), server-rendered flash-free via

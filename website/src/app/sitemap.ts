@@ -152,8 +152,28 @@ export async function generateSitemaps() {
   return Array.from({ length: n + m + 1 }, (_, i) => ({ id: i }));
 }
 
-export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
+/**
+ * Next hands this the segment id as a PROMISE of the route string, not the
+ * number `generateSitemaps()` returned — see the generated handler in
+ * next/dist/build/webpack/loaders/next-metadata-route-loader.js:
+ *
+ *     const data = await handler({ id: targetIdPromise })
+ *
+ * The previous signature typed it `number`, so every numeric comparison below
+ * silently failed: `id === 0` was false, `id > n` was false, and
+ * `(id - 1) * CHUNK_SIZE` was NaN — which made the final `slice(NaN, NaN)`
+ * return nothing. Every segment therefore served an EMPTY <urlset>, so the
+ * ~35 000 commune pages were declared to no crawler at all.
+ */
+export default async function sitemap({
+  id: rawId,
+}: {
+  id: Promise<string> | string | number;
+}): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
+
+  const id = Number(await rawId);
+  if (!Number.isFinite(id)) return [];
 
   if (id === 0) {
     // Main pages + top-10 friendly slugs

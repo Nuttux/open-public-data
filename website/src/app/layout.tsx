@@ -41,19 +41,19 @@ export const metadata: Metadata = {
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
+  // Site-wide terms only: the site now covers three countries, so anything
+  // Paris- or France-specific belongs on the pages that are about them.
   keywords: [
-    "Paris",
     "open data",
+    "public spending",
+    "city budget",
+    "public contracts",
     "budget",
     "finances publiques",
-    "subventions",
     "marchés publics",
-    "logements sociaux",
-    "investissements",
-    "visualisation",
     "données ouvertes",
-    "villes françaises",
-    "DGFiP",
+    "gastos públicos",
+    "dados abertos",
   ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
@@ -84,6 +84,12 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large" },
   },
+  // Search Console verification. Set GOOGLE_SITE_VERIFICATION in the Vercel
+  // project to the token Google gives you ("HTML tag" method) — the tag then
+  // renders on every page. Left out entirely when unset, so no empty tag ships.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
   category: "Open data",
 };
 
