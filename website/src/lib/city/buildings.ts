@@ -1005,9 +1005,22 @@ export function drawnAsBuilding(
  */
 export const SHADOW_FILL = "rgba(72,60,42,0.16)";
 
+/**
+ * WHERE THE SUN IS, AS ONE PAIR OF NUMBERS, IN ONE PLACE.
+ *
+ * These two were literals inside `shadowOffset` and nowhere else, so the
+ * second thing in the renderer that needed to know which way the key light
+ * throws — the parapet's shadow on its own deck, `roofs.ts` `DE.castv` — would
+ * have had to re-type them, and two typed copies of one light is how a city
+ * ends up with a building's shadow going one way and its parapet's the other.
+ * Exported and imported instead. **`shadowOffset`'s arithmetic is unchanged.**
+ */
+export const KEY_DX = 0.34;
+export const KEY_DY = 0.20;
+
 /** down-LEFT, from the fixed upper-right key light. `[ox, oy]`, CSS px. */
 export function shadowOffset(hM: number, k2: number): readonly [number, number] {
-  return [Math.min(9, hM * k2 * 0.34), Math.min(7, hM * k2 * 0.20)];
+  return [Math.min(9, hM * k2 * KEY_DX), Math.min(7, hM * k2 * KEY_DY)];
 }
 
 /**

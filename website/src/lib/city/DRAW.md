@@ -4158,3 +4158,161 @@ be off; `g2shot.py` re-reads it per camera for that reason.
 
 **No client file was changed for this.** Every reader was already written and
 correct.
+
+---
+
+## 22. Block G1 — detail on the solid, and the fallback that had already been closed
+
+`lib/city/{buildings,roofs,facades}.ts` · `components/us/city/palette.ts` ·
+`pipeline/scripts/us_sf_city/{encode_city_chunks,_bldgsrc}.py`
+
+*Written as the work happened.*
+
+The complaint this block answers is Daniel's own: *"the palace of fine arts
+looks great but the buildings next to it are awful."* Shot at
+`(-913, 4778)` — the Palace of Fine Arts, from `base/marks.json` row 632 in its
+own decimetres, checked against the manifest projection on the published
+lat/lon 37.8029 / −122.4485 → (−924.2, 4775.6). Frames in `.parity/out-g1/`,
+`g1shot.py`, prod only: **the mock is the floor here and not the ceiling, so
+there is nothing to diff against.** What is measured is the solid itself.
+
+### 22.1 The roof-material join was already closed, and it is worth 98.4 % of the city
+
+The brief hands this block *"the measured roof colour reaches 1.6 % of
+buildings (2,403 of 150,905) against 99.9 % coverage in the source; find out
+why the join drops 98.4 % and fix it."*
+
+**It is fixed, it was fixed in `894c51ab`, and the count on the shipped page
+is the other way round.** `.parity/g1roof.py` walks every decoded `BldTable`
+the live page holds — `scene.solo` and every entry of `scene.bldCache` — and
+counts `ri >= PAINT_C0`:
+
+```
+  tables 13   n 32,887   measured 32,861   99.92 %
+  on the legend: 26, at ri 0/2/5/6/10/11/16/18/23
+  base/solo alone: 15,247 of 15,261, 99.91 %
+```
+
+The cause is written up at `scene.ts:259` and is worth repeating here because
+it is the shape of half this project's bugs: `paintFlag` is a **sample-quality**
+byte, not a coverage byte — `1 canopy · 2 shadow · 4 nosample` — and 163,480 of
+166,166 footprints carry **none** of the three, because a zero means the sample
+was CLEAN. `if (paintFlag[i])` therefore selected exactly the 2,686 roofs whose
+sample was *least* trustworthy and threw the other 163,480 measurements away.
+The gate is now `(paintFlag[i] & nosample) === 0`, and the bit is read off
+`manifest.buildings.paintFlagBits` rather than typed.
+
+So the terracotta speckle in the Mission is gone and **there is no roof-material
+work left to do in the pipeline.** `encode_city_chunks.py` `encode_buildings`
+already ships `paintIdx`/`paintFlag` per cell and the manifest already reports
+`paintSampled` 166,042 of 166,166 (99.93 %). Recorded here so the next agent
+does not re-run the join.
+
+### 22.2 The parapet had one face, and the city has a hundred and fifty thousand of the other one
+
+`DE` declares a parapet: 0.85 m tall, 0.40 m thick, one for the whole city,
+because **nothing published records a parapet per building**. `drawTray` drew
+its **inner** face — on exactly the edges whose outer face is not visible,
+which is geometry and not a rule — and its dropped deck, and then left the
+parapet's **outer** face to be painted as wall.
+
+That is not a simplification. The outer face is the same 0.85 m of declared
+solid seen from the other side, and it is the band that wraps the top of every
+flat roof in San Francisco. Painted as wall, every building in the city ended
+in one hard line where its roof met its wall, at every zoom the tray reaches.
+
+Landed as two more fills inside `drawTray`, which `scene.ts:2925` already calls
+for every near building — **no new call site, and nothing outside this file
+moved:**
+
+| | |
+|---|---|
+| `DE.outerv` | 0.90 — the parapet's outer face, a value of its own ROOF |
+| `DE.castv` | 0.855 — the shadow the parapet throws across its own deck |
+
+**Why the value is 0.90 and not the flattering answer.** Shot first at 0.965,
+which is what the physics suggests for a vertical plane under a horizontal
+coping. Three px of very-nearly-roof-colour reads as the coping bleeding onto
+the wall rather than as a band. At **0.90** the roof edge resolves into three
+legible steps — coping `1.0`, fascia `0.90`, wall — and the ordering is still
+forced rather than chosen: **under `deckv` because the face is vertical and the
+deck is not, over `innerv` because the near face is the one the key light
+reaches.** Same four houses on Bay Street at all three values:
+`out-g1/zoom-before.png`, `zoom-after1.png` (0.965), `zoom-after2.png` (0.90).
+
+**The shadow is not a choice.** One declared parapet under one declared key
+light gives one declared shadow. It is the deck ring MINUS the deck ring
+translated down-left, wound backwards so nonzero winding subtracts it in one
+fill — what is left is the crescent along the UP-RIGHT edges, which is the
+inside of the parapet the sun cannot reach. Even-odd would have kept the
+down-left crescent too and lit the wrong side of every roof in the city.
+
+And **the light is now one pair of numbers in one place.** `KEY_DX = 0.34` and
+`KEY_DY = 0.20` were literals inside `buildings.ts` `shadowOffset` and nowhere
+else, so the second thing that needed to know which way the sun throws would
+have had to re-type them. Exported, imported, and the suite asserts
+`shadowOffset`'s arithmetic is unchanged — two typed copies of one light is how
+a city ends up with a building's shadow going one way and its parapet's the
+other.
+
+Both fills carry `t.w`, so at the bottom of the tray's own ramp the drop is
+zero, the two rings coincide, and the roof is exactly the flat fill it was.
+**No new threshold and no new pixel floor.**
+
+### 22.3 What this changes, by camera, against a measured noise floor
+
+**The control first, because the first version of this table was wrong.** Two
+sweeps of the SAME tree, fresh browser each time, differ by **0.030 % of frame
+at the block camera and 0.026 % at the street camera** (`G1c/G1d.after` against
+`G1c/G1d.ctrl`). That is the floor everything below is read against, and it is
+what turned a claim I had already typed — *"the block camera is byte-identical"*
+— into its opposite. I had inferred identity from two frame means that agreed
+to a tenth. **A frame mean is not a frame.**
+
+| camera | z | changed px, before → after | × the noise floor |
+|---|---|---|---|
+| street, Palace of Fine Arts | 42.86 | 57,093 of 3,254,400 — **1.754 %** | 67× |
+| block, Palace of Fine Arts  | 7.20  | 22,189 — **0.682 %** | 23× |
+| block, Mission              | 7.20  | 20,580 — **0.632 %** | 21× |
+
+`out-g1/diff1.png` is the changed-pixel mask at the street camera and every
+mark on it is on a roof edge or on the up-right crescent of a deck.
+
+**And it reaches the block camera, which is where the histogram deficit is.**
+The parapet's projected height there is 0.46 px, so the band is sub-pixel and
+composites as a darkening of the roof edge rather than as a drawn line — which
+is the direction the deficit wants: block-camera frame mean moves
+164.0 / 176.7 / 161.8 → **163.4 / 176.3 / 161.7**. It is a small part of a
+3–5 % deficit, not a fix for it, and it is claimed as no more than that.
+
+### 22.4 Why the Presidio's buildings are blank slabs, and it is not a drawing bug
+
+The worst buildings on the Palace of Fine Arts frame are not the Marina houses
+— those carry openings, storey lines and a tray. They are the Presidio blocks
+across Gorgas and O'Reilly: 100 m of footprint, one flat roof, no window
+anywhere. `crop-presidio.before.png`.
+
+`emitFace` returns at `if (storeys <= 0)`, and `storeysOf(st, st2)` is the
+assessor roll's `number_of_stories`, which covers 91.3 % of the city and does
+not cover the Presidio, because the Presidio is federal and is not on the roll.
+The same footprints carry `FLAG_NOYEAR`, so `faVocab` takes them as
+`UNCLASSED` — no entrance, no shopfront, no cornice, no bay.
+
+**That is the record refusing, and it is right to refuse.** Drawing storeys on
+a building whose storeys nobody published would be inventing them. What those
+footprints CAN honestly take is exactly what §22.2 gives them — a declared
+parapet, drawn on every building in the city on the same terms — and that is
+the argument for a global treatment being allowed at all.
+
+Measured while we were there, so nobody chases it: the 64-vertex bound in
+`drawTray` turns away **17 footprints of 166,166 (0.010 %)**, p99 of the
+published vertex count is 14 and p99.9 is 33. The bound is not why the Presidio
+has no tray; the Presidio has a tray, and at that value against that roof it is
+9.5 % and nearly invisible, which is what §22.2 changed.
+
+Also refuted here: the large pale quads over the Presidio are **not**
+translucent. Sampled against a `layers.buildings = false` ablation
+(`g1abl.py`, `abl-*.png`), the ground under them reads (234, 222, 186) and the
+quad reads (143, 145, 141) — an opaque wall, not 16 % of `SHADOW_FILL` over
+sand, which would be (208, 196, 163). They are the walls of low buildings and
+the faint lines through them are their own storey lines at `wallF[wallO+1]`.

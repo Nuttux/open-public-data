@@ -69,9 +69,12 @@ import {
   INK_PX1,
   INK_W0,
   INK_W1,
+  KEY_DX,
+  KEY_DY,
   LOD_Z0,
   LOD_Z1,
   MASS_GAIN,
+  shadowOffset,
   tierW,
   type Massing,
 } from "./buildings";
@@ -1033,6 +1036,39 @@ describe("the roof", () => {
     expect(DE.thick).toBeGreaterThan(0);
     expect(DE.deckv).toBeLessThan(1);
     expect(DE.innerv).toBeLessThan(DE.deckv);
+  });
+
+  it("the parapet has BOTH faces, and the near one is lit and the far one is not", () => {
+    /* The tray drew the parapet's inner face and left its outer face to be
+       painted as wall, so the one declared feature every flat roof in this
+       city has existed on the far side of every building and nowhere on the
+       near side. Both faces are vertical, so both sit under the horizontal
+       coping; the near one takes the key light, so it sits over the far one.
+       Neither ordering is a preference — they are the two facts that already
+       put `innerv` under `deckv`. */
+    expect(DE.outerv).toBeLessThan(1);
+    expect(DE.outerv).toBeGreaterThan(DE.innerv);
+    // and the shadow the parapet throws on its own deck is darker than the
+    // deck it falls on, which is the only thing a shadow has to be
+    expect(DE.castv).toBeLessThan(DE.deckv);
+    expect(DE.castv).toBeGreaterThan(DE.innerv);
+  });
+
+  it("the parapet's shadow and the building's own shadow read ONE key light", () => {
+    /* `KEY_DX`/`KEY_DY` were literals inside `shadowOffset` and nowhere else.
+       The parapet's shadow on its own deck is thrown by the same sun, and a
+       second typed copy of a light is how a city ends up with a building's
+       shadow going one way and its parapet's the other. Read from the one
+       place, and asserted to still BE `shadowOffset`'s arithmetic. */
+    const k2 = 2.0;
+    for (const hM of [1, 4, 9, 40]) {
+      const [ox, oy] = shadowOffset(hM, k2);
+      expect(ox).toBeCloseTo(Math.min(9, hM * k2 * KEY_DX), 10);
+      expect(oy).toBeCloseTo(Math.min(7, hM * k2 * KEY_DY), 10);
+    }
+    // down-LEFT: the light is upper-right, so the across-offset leads
+    expect(KEY_DX).toBeGreaterThan(KEY_DY);
+    expect(KEY_DY).toBeGreaterThan(0);
   });
 
   it("two published moments support two planes and no more", () => {

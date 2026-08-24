@@ -52,7 +52,7 @@
  * of any roof stands above the measured top.*
  */
 
-import { planeQuartile, STROKE_MIN_PX_A } from "./buildings";
+import { KEY_DX, KEY_DY, planeQuartile, STROKE_MIN_PX_A } from "./buildings";
 import type { FormTable } from "./data";
 import { type Frame, shade } from "./terrain";
 
@@ -254,6 +254,42 @@ export const DE = {
   deckv: 0.905,
   /** the parapet's inner face */
   innerv: 0.82,
+  /**
+   * THE PARAPET'S **OUTER** FACE, as a value of its own roof colour.
+   *
+   * The tray drew the parapet's INNER face and left its outer face to be
+   * painted as wall — so the one declared feature every flat roof in this city
+   * has, the coping band that wraps the top of the wall, existed on the far
+   * side of every building and nowhere on the near side. It is the same 0.85 m
+   * of solid seen from the other side; painting it as wall is not a
+   * simplification, it is a different building.
+   *
+   * The value comes off the ROOF and not off the wall because that is what the
+   * band is: the roof turned up at its edge and capped. It is UNDER `1.0`
+   * because the outer face is vertical and the coping it sits under is
+   * horizontal, so it takes less of the sky term, and OVER `innerv` because
+   * the near face is the one the key light reaches — the same two facts that
+   * put `innerv` under `deckv`.
+   *
+   * Shot at `0.965` first, which is the physically flattering answer and the
+   * wrong one to look at: three px of very-nearly-roof-colour reads as the
+   * coping bleeding onto the wall rather than as a band. At **`0.90`** the
+   * roof edge resolves into three legible steps — coping `1.0`, fascia `0.90`,
+   * wall — and a building stops ending in one hard line.
+   * `out-g1/zoom-{before,after1,after2}.png`, same four houses on Bay Street.
+   */
+  outerv: 0.90,
+  /**
+   * THE SHADOW THE PARAPET THROWS ACROSS ITS OWN DECK.
+   *
+   * One declared parapet under one fixed key light is one declared shadow, and
+   * it is the only dark mark on a roof plane that is otherwise a single flat
+   * fill. The light is the same upper-right key `buildings.ts` `shadowOffset`
+   * uses, and the two RATIOS ARE READ FROM THERE rather than re-typed, so a
+   * building's contact shadow and its parapet's shadow cannot come to disagree
+   * about where the sun is.
+   */
+  castv: 0.855,
   /** the parapet's height, metres — DECLARED, one for the whole city */
   parapet: 0.85,
   /** the parapet's thickness, metres — DECLARED */
@@ -412,6 +448,62 @@ export function drawTray(f: Frame, t: TrayInput): boolean {
   for (let k = 1; k < t.nv; k++) deck.lineTo(trayIX[k], trayIY[k] + drop);
   deck.closePath();
   ctx.fill(deck);
+
+  /* ── THE PARAPET'S SHADOW ON ITS OWN DECK ──────────────────────────────
+     The deck was one flat fill of one value over the whole roof plane, which
+     at street zoom is the largest single area on the frame and the flattest.
+     A parapet is declared; a key light is declared; the shadow is then not a
+     choice, it is the two of them.
+
+     The band is the deck MINUS the deck translated DOWN-LEFT by the light's
+     own two ratios times the parapet's own projected height — so what is left
+     is the crescent along the UP-RIGHT edges, which is exactly the inside of
+     the parapet the sun cannot reach. Nonzero winding with the translated ring
+     wound BACKWARDS subtracts it in one fill; even-odd would have kept the
+     down-left crescent too and lit the wrong side of the roof.
+
+     It costs nothing where the tray costs nothing: `drop` carries `t.w`, so at
+     the bottom of the ramp the offset is zero, the two rings coincide and the
+     fill is empty. */
+  if (drop > 0.35) {
+    const sx = drop * KEY_DX;
+    const sy = drop * KEY_DY;
+    const cast = new Path2D();
+    cast.moveTo(trayIX[0], trayIY[0] + drop);
+    for (let k = 1; k < t.nv; k++) cast.lineTo(trayIX[k], trayIY[k] + drop);
+    cast.closePath();
+    // the same ring, translated down-left, wound the other way
+    cast.moveTo(trayIX[0] - sx, trayIY[0] + drop + sy);
+    for (let k = t.nv - 1; k >= 1; k--) {
+      cast.lineTo(trayIX[k] - sx, trayIY[k] + drop + sy);
+    }
+    cast.closePath();
+    ctx.fillStyle = shade(t.roofColour, DE.castv);
+    ctx.fill(cast);
+  }
+
+  /* ── THE PARAPET'S OUTER FACE ──────────────────────────────────────────
+     See `DE.outerv`. Drawn LAST of the tray's four fills because it is the
+     nearest of them to the reader: it stands on the wall, in front of the deck
+     and in front of the coping's own inner edge. On exactly the edges whose
+     outer face IS visible — the complement of the inner face's set, which is
+     why the two together wrap the whole ring and neither is a rule. */
+  const outer = new Path2D();
+  let anyO = false;
+  for (let k = 0; k < t.nv; k++) {
+    if (!t.outerVisible(k)) continue;
+    const u = (k + 1) % t.nv;
+    outer.moveTo(t.bx[k], t.by[k]);
+    outer.lineTo(t.bx[u], t.by[u]);
+    outer.lineTo(t.bx[u], t.by[u] + drop);
+    outer.lineTo(t.bx[k], t.by[k] + drop);
+    outer.closePath();
+    anyO = true;
+  }
+  if (anyO) {
+    ctx.fillStyle = shade(t.roofColour, DE.outerv);
+    ctx.fill(outer);
+  }
   return true;
 }
 
