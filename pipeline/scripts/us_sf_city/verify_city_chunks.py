@@ -620,72 +620,116 @@ def main() -> int:
                 "pu": np.float32([q_["p"][2 * t] for t in range(len(q_.get("p") or []) // 2)]),
                 "ps": np.float32([q_["p"][2 * t + 1] for t in range(len(q_.get("p") or []) // 2)]),
             })
-    poff = field_array(h, p, "poff")
-    roff = field_array(h, p, "roff")
-    proff = field_array(h, p, "proff")
-    eq("hero.bi", field_array(h, p, "bi"), np.array([x["b"] for x in HERO["h"]]))
-    eq("hero.yr", field_array(h, p, "yr"), np.array([x["y"] for x in HERO["h"]]))
-    eq("hero.top", field_array(h, p, "top"),
+    # ── THE SHIPPED REGISTER IS A MERGE, AND THIS FILE HAS TO KNOW IT ─────
+    # `base/heroes.qc` is written twice: encode_heroes() lays down the mock's
+    # ELEVEN, and us_sf_places/emit_heroes.py then merges its own seed on top
+    # (replace-or-append, keyed on `k`, through the same ChunkWriter). This
+    # verifier compared the whole shipped array against the mock, so it went
+    # red — 30 failures — the moment a legitimate twelfth hero shipped. A
+    # verifier that goes red for a correct change teaches people to ignore it,
+    # which is worse than not having one.
+    #
+    # The invariant that matters is the one emit_heroes.py asserts about
+    # itself: THE MOCK'S ELEVEN MUST SURVIVE THE MERGE UNCHANGED. So every
+    # per-field check below runs over the mock's own prefix, and the tail is
+    # checked separately against the seed that is supposed to have added it.
+    # `cut()` carries each field's UNIT, because they are not the same length:
+    # a per-hero field cuts to NH, a per-part field to NP, a ring-vertex array
+    # to roff[NP], a profile array to proff[NP]. Cutting a per-vertex array to
+    # NP is exactly the mistake this note exists to stop — it was made once,
+    # here, and it reported 436 failures instead of 30.
+    NH = len(HERO["h"])
+    NP = len(src_parts)
+    _poff_all = field_array(h, p, "poff")
+    _roff_all = field_array(h, p, "roff")
+    _proff_all = field_array(h, p, "proff")
+    NV = int(_roff_all[NP])
+    NPR = int(_proff_all[NP])
+    _UNIT = {"hero": NH, "part": NP, "vert": NV, "prof": NPR}
+
+    def cut(name, unit):
+        return field_array(h, p, name)[:_UNIT[unit]]
+
+    _shipped_keys = [x["k"] for x in side["heroes"]]
+    _seed = pathlib.Path(__file__).resolve().parent.parent / "us_sf_places" / "heroes_extra.json"
+    _seed_keys = ([x["k"] for x in json.loads(_seed.read_text())["heroes"]]
+                  if _seed.exists() else [])
+    ok("hero: the mock's eleven are the first eleven, in order, after the merge",
+       _shipped_keys[:NH] == [x["k"] for x in HERO["h"]], f"{_shipped_keys[:NH]}")
+    ok("hero: every hero past the mock's own comes from heroes_extra.json",
+       set(_shipped_keys[NH:]) <= set(_seed_keys),
+       f"extra {_shipped_keys[NH:]} against seed {_seed_keys}")
+
+    poff = _poff_all[:NH + 1]
+    roff = _roff_all[:NP + 1]
+    proff = _proff_all[:NP + 1]
+    eq("hero.bi", cut("bi", "hero"), np.array([x["b"] for x in HERO["h"]]))
+    eq("hero.yr", cut("yr", "hero"), np.array([x["y"] for x in HERO["h"]]))
+    eq("hero.top", cut("top", "hero"),
        np.array([round(x["ms"]["t"] * 100) for x in HERO["h"]]))
-    eq("hero.zr", field_array(h, p, "zr"),
+    eq("hero.zr", cut("zr", "hero"),
        np.array([round((x["zr"] if x.get("zr") is not None else x["ms"]["t"]) * 100)
                  for x in HERO["h"]]))
-    eq("hero.acc", field_array(h, p, "acc"),
+    eq("hero.acc", cut("acc", "hero"),
        np.array([(x["ac"] if x.get("ac") is not None else -1) for x in HERO["h"]]))
-    eq("hero.hull", field_array(h, p, "hull"),
+    eq("hero.hull", cut("hull", "hero"),
        np.array([1 if x.get("hu") else 0 for x in HERO["h"]]))
     for f_, k_ in (("msA", "a"), ("msH", "h"), ("msR", "r")):
-        eq(f"hero.{f_}", field_array(h, p, f_),
+        eq(f"hero.{f_}", cut(f_, "hero"),
            np.array([round(x["ms"][k_] * 100) for x in HERO["h"]]))
-    eq("hero.msYr", field_array(h, p, "msYr"),
+    eq("hero.msYr", cut("msYr", "hero"),
        np.array([x["ms"]["yr"] for x in HERO["h"]]))
-    eq("hero.msNv", field_array(h, p, "msNv"),
+    eq("hero.msNv", cut("msNv", "hero"),
        np.array([x["ms"]["nv"] for x in HERO["h"]]))
     # the anchor IS part3's UX/UY for that building
-    eq("hero.ax", field_array(h, p, "ax"),
+    eq("hero.ax", cut("ax", "hero"),
        np.float32([B["cx"][x["b"]] for x in HERO["h"]]))
-    eq("hero.ay", field_array(h, p, "ay"),
+    eq("hero.ay", cut("ay", "hero"),
        np.float32([B["cy"][x["b"]] for x in HERO["h"]]))
     eq("hero.poff", poff,
        np.cumsum([0] + [len(x["p"]) for x in HERO["h"]]))
     for f_, k_ in (("pk", "k"), ("pm", "m"), ("pink", "ink"), ("pc", "c"), ("pnb", "nb")):
-        eq(f"hero.{f_}", field_array(h, p, f_), np.array([s[k_] for s in src_parts]))
+        eq(f"hero.{f_}", cut(f_, "part"), np.array([s[k_] for s in src_parts]))
     for f_, k_ in (("pz0", "z0"), ("pz1", "z1"), ("pmin", "min"), ("pw", "w"),
                    ("pmg", "mg"), ("pdk", "dk"), ("ptx", "tx"), ("pty", "ty")):
-        eq(f"hero.{f_}", field_array(h, p, f_),
+        eq(f"hero.{f_}", cut(f_, "part"),
            np.array([round(s[k_] * 100) for s in src_parts]))
-    eq("hero.ppi", field_array(h, p, "ppi"),
+    eq("hero.ppi", cut("ppi", "part"),
        np.array([-1 if s["pi"] == 1e9 else round(s["pi"] * 100) for s in src_parts]))
     # geometry, part by part, against the Float32Array the browser builds
-    rx = field_array(h, p, "rx"); ry = field_array(h, p, "ry")
-    pu = field_array(h, p, "pu"); ps = field_array(h, p, "ps")
+    rx = cut("rx", "vert"); ry = cut("ry", "vert")
+    pu = cut("pu", "prof"); ps = cut("ps", "prof")
     for j, s in enumerate(src_parts):
         eq(f"hero.part{j}.rx", rx[roff[j]:roff[j + 1]], s["wx"])
         eq(f"hero.part{j}.ry", ry[roff[j]:roff[j + 1]], s["wy"])
         eq(f"hero.part{j}.pu", pu[proff[j]:proff[j + 1]], s["pu"])
         eq(f"hero.part{j}.ps", ps[proff[j]:proff[j + 1]], s["ps"])
-    ok("hero: 11 heroes, 127 parts, 3,259 ring vertices, 454 profile points",
-       len(HERO["h"]) == 11 and len(src_parts) == 127
-       and int(roff[-1]) == 3259 and int(proff[-1]) == 454,
-       f"{len(HERO['h'])}/{len(src_parts)}/{int(roff[-1])}/{int(proff[-1])}")
+    ok("hero: the mock ships 11 heroes, 127 parts, 3,259 ring vertices, 454 profile points",
+       NH == 11 and NP == 127 and NV == 3259 and NPR == 454, f"{NH}/{NP}/{NV}/{NPR}")
     ok("hero: the centimetre store is exact — every authored value is a whole cm",
        all(abs(s[k_] * 100 - round(s[k_] * 100)) < 1e-6
            for s in src_parts for k_ in ("z0", "z1", "min", "w", "mg", "dk", "tx", "ty")),
        "")
     ok("hero: -1 is the pitch sentinel and only 1e9 maps to it",
        all((s["pi"] == 1e9) == (v == -1)
-           for s, v in zip(src_parts, field_array(h, p, "ppi").tolist())), "")
+           for s, v in zip(src_parts, cut("ppi", "part").tolist())), "")
     # the gate's own ceiling: no part stands above the MEASURED top
-    top = field_array(h, p, "top"); pz1 = field_array(h, p, "pz1")
+    top = cut("top", "hero"); pz1 = cut("pz1", "part")
     over = [(HERO["h"][q]["k"], int(pz1[j]), int(top[q]))
             for q in range(len(HERO["h"]))
             for j in range(poff[q], poff[q + 1]) if pz1[j] > top[q]]
     ok("hero: nothing stands above the MEASURED top (the gate's own ceiling)",
        not over, str(over[:3]))
-    ok("hero: the strings sidecar pairs 1-for-1 with the parts",
-       len(side["parts"]) == len(src_parts) and len(side["heroes"]) == len(HERO["h"]), "")
+    ok("hero: the strings sidecar pairs 1-for-1 with the parts, at the MERGED length",
+       len(side["parts"]) == int(_poff_all[-1])
+       and len(side["heroes"]) == len(_poff_all) - 1,
+       f"sidecar {len(side['heroes'])}/{len(side['parts'])} against chunk "
+       f"{len(_poff_all) - 1}/{int(_poff_all[-1])}")
     ok("hero: Sutro Tower alone is granted the convex-hull reference",
        [x["k"] for x in HERO["h"] if x.get("hu")] == ["sutro"], "")
+    _hull_all = field_array(h, p, "hull")
+    ok("hero: no MERGED hero claims the convex-hull reference either",
+       not any(int(v) for v in _hull_all[NH:]), f"{[int(v) for v in _hull_all[NH:]]}")
 
     h, p = load_chunk("base/caps")
     eq("cap.bi", field_array(h, p, "bi"), _u32(LRD["cap"]["i"]))

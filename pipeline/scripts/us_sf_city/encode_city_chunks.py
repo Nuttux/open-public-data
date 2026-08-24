@@ -2015,6 +2015,17 @@ def main() -> int:
     # nothing in any log, because this script has no idea they existed. Two agents
     # hit it and both had to snapshot and merge by hand. So: carry those files
     # across the rebuild, and carry the manifest key with them.
+    # THE RULE, GENERALISED, BECAUSE THE LIST KEPT BEING WRONG.
+    # `CARRY` was a hand-maintained list of other people's files, and a
+    # hand-maintained list is only ever as current as the last person who was
+    # bitten. base/surround-coast.json was not on it — it is written by
+    # emit_surround_coast.py, this encoder does not rebuild it, and the rmtree
+    # below deleted it (`fix(sf): the Golden Gate was dry land` had shipped it
+    # two hours earlier). So the list is now a FLOOR and not the rule.
+    # The rule: snapshot everything under the directories about to be cleared,
+    # and after the run put back anything that was there before and that this
+    # run did not write. A file this encoder produces is overwritten normally;
+    # a file it knows nothing about survives, whoever added it and whenever.
     CARRY = ("base/places.qc", "base/places.json")
     if OUT.exists():
         import shutil
@@ -2023,6 +2034,14 @@ def main() -> int:
             f = OUT / rel
             if f.exists():
                 held[rel] = f.read_bytes()
+        # everything in the cleared directories, so nothing needs to be listed
+        held_all = {}
+        for name in CHUNK_DIRS:
+            d = OUT / name
+            if d.is_dir():
+                for f in d.rglob("*"):
+                    if f.is_file():
+                        held_all[str(f.relative_to(OUT))] = f.read_bytes()
         held_places = None
         mf = OUT / "manifest.json"
         if mf.exists():
@@ -2161,6 +2180,18 @@ def main() -> int:
     #
     # emit_heroes.py refuses to run unless the shipped heroes survive a
     # read/re-encode round trip byte for byte, so a failure here is loud.
+    # PUT BACK ANYTHING THIS RUN DID NOT WRITE. See the note beside `held_all`.
+    _restored = []
+    for rel, blob in held_all.items():
+        f = OUT / rel
+        if not f.exists():
+            f.parent.mkdir(parents=True, exist_ok=True)
+            f.write_bytes(blob)
+            _restored.append(rel)
+    if _restored:
+        print("carried across the rebuild (not written by this encoder): "
+              + ", ".join(sorted(_restored)))
+
     _heroes_qc = OUT / "base" / "heroes.qc"
     if _heroes_qc.exists():
         import subprocess, sys as _sys
