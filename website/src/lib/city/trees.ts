@@ -21,6 +21,7 @@
  */
 
 import type { Chunk } from "./data";
+import { borrowedCoast, coastRings, type Ring } from "./water";
 import {
   type Frame,
   lerpHex,
@@ -311,6 +312,8 @@ export interface VegFlags {
   trees: boolean;
   /** the park wash's per-class tone — off returns every ring to `WPKW` */
   parkCls: boolean;
+  /** the park wash is clipped to the published shoreline */
+  parkShore: boolean;
 }
 
 export const WFLG: VegFlags = {
@@ -319,6 +322,7 @@ export const WFLG: VegFlags = {
   blobs: true,
   trees: true,
   parkCls: true,
+  parkShore: true,
 };
 if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
   (globalThis as { __cityWFLG?: VegFlags }).__cityWFLG = WFLG;
@@ -1068,14 +1072,87 @@ export function decodeParks(chunk: Chunk): {
  * frame** before this existed; it is now a published reservoir drawn as one,
  * and whether a reservoir should read like a lake is still a call.
  */
+/**
+ * ONE PUBLISHED RING IN 328 IS 71 % OVER THE BAY, AND IT WAS BEING PAINTED.
+ *
+ * BUGS §22, ablated at the Marina block camera with prod's own `?layers=`
+ * switch: **`-parks` removes 7.27 % of the frame, 7.13 % of it gross.** The
+ * diff map (`out-g2/diff-parks-marina.png`) is one slab lying across the
+ * yacht harbour with building-shaped holes punched in it — the buildings draw
+ * at step 6 and the wash at step 3, so it is over the WATER, not over the
+ * roofs.
+ *
+ * **Which of the two possible causes it is, measured rather than guessed.**
+ * The ring geometry is not wrong for what it is: `gtr9-ntp6` publishes
+ * *Yacht Harbor and Marina Green* as ONE Recreation and Parks property and
+ * the harbour water is part of that property. Sampled at 8 m against the
+ * published shoreline (`base/coast`, txuc-3kzm, 4 rings / 425 vertices):
+ *
+ * ```
+ *   park ring area inside the published coast   1,379.0 ha
+ *   park ring area OUTSIDE it                      48.3 ha   3.4 %
+ *
+ *   rings with ANY area outside:  9 of 328
+ *     ring  35  cls 0  70.5 % outside = 47.245 ha   ← Yacht Harbor / Marina Green
+ *     ring 321  cls 0   5.3 % outside =  0.262 ha
+ *     ring 322  cls 0   2.8 % outside =  0.218 ha
+ *     ring 203  cls 1   7.4 % outside =  0.192 ha
+ *     ring 285  cls 1  12.2 % outside =  0.147 ha
+ *     ring 204  cls 1   6.3 % outside =  0.141 ha
+ *     ring 177  cls 1  16.4 % outside =  0.122 ha
+ *     ring 314  cls 1   0.9 % outside =  0.013 ha
+ *     ring 156  cls 3   1.4 % outside =  0.006 ha
+ *     the other 319                     0.000 ha
+ * ```
+ *
+ * **One ring is 47.2 of the 48.3 hectares.** So the treatment is exact and it
+ * costs the rest of the city 1.1 ha of sliver where eight waterfront parks
+ * overhang their own beach by a few metres — which is the right answer there
+ * too.
+ *
+ * **THE TEST IS THE PUBLISHED SHORELINE AND IT CANNOT BE THE DEM MASK.**
+ * Measured both ways: against `maskAt` with the coast fix applied, ring 35 is
+ * only **6 % wet**, because the mask is `txuc-3kzm` rasterised at 53.8 m and
+ * `coastFix` only removes cells more than 300 m outside the TIGERweb land
+ * polygon — a harbour inside its own breakwater is land to both. The DEM
+ * paints ground under that slab and the published shoreline is the only line
+ * on the wire that knows better.
+ *
+ * **This is the reference's own rule, arrived at from the other side.**
+ * `part3.html` L3739-45 keeps `drawParkRings` inside `drawTerrain` and says
+ * exactly why: *"A park ring is GROUND. It is a 0.46 wash under everything,
+ * and drawTerrain paints the water-side shore band and the surround names
+ * OVER it. Moved into drawCity it is painted over those instead, and MEASURED
+ * on the Marina frame that is 9.9 % of the stage: Yacht Harbor and Marina
+ * Green stopped being a strip along the shore and became a dark green slab
+ * lying across the harbour."* **That is this port's paint order** —
+ * `scene.paint` runs `drawShoreline` at step 3 and the parks at step 3b — and
+ * that sentence is this bug, written down by the author of the thing being
+ * ported, with its own measurement of 9.9 % against the 7.27 % measured here.
+ *
+ * Clipping to the published line gets the same picture without asking
+ * `scene.ts` to reorder, and it is stricter: the reference's fix only works
+ * within `SHORE_OUT` = 1,100 m of a coast segment with a wet side, and a clip
+ * works everywhere.
+ */
 export function drawParkRings(
   f: Frame,
   t: TerrainField,
   parks: readonly ParkRing[],
+  coast?: readonly Ring[] | null,
 ): number {
   const { ctx, W, H } = f;
   if (!parks.length) return 0;
   ctx.save();
+  /* THE WASH STOPS AT THE PUBLISHED SHORELINE. One clip for the whole pass:
+     the rings nest and close, so non-zero fills exactly the land the polygon
+     was built to describe. `WFLG.parkShore` ablates it. */
+  const cst = coast ?? borrowedCoast();
+  if (WFLG.parkShore && cst && cst.length) {
+    const land = new Path2D();
+    coastRings(land, f, t, cst);
+    ctx.clip(land, "nonzero");
+  }
   ctx.globalAlpha = PARK_WASH;
   ctx.fillStyle = WPKW;
   /* ONE fillStyle CHANGE PER CHANGE OF CLASS, not one per ring: the rings

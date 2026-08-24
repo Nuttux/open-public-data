@@ -1346,6 +1346,27 @@ let lastWater: WaterLayers | null = null;
  * The ink is `rgba(10,10,10,.42)` and `lineJoin` is left as the caller has it,
  * both as the reference has them.
  */
+/**
+ * THE PUBLISHED SHORELINE, BORROWED THE WAY `lastWater` IS BORROWED.
+ *
+ * `trees.ts` `drawParkRings` needs the coast and `scene.paint` does not hand
+ * it one — the same shape as `lastWater` above, with the same one-line
+ * deletion:
+ *
+ *     drawParkRings(f, t, this.parks, this.coast)
+ *
+ * in `scene.paint` §3. `drawParkRings`'s fourth argument is already optional
+ * and already preferred over this fallback, so that edit lands the same
+ * picture and deletes the module state. Until then the borrowed record is the
+ * one from ONE STATEMENT EARLIER in the same `paint()` — `drawShoreline` runs
+ * at step 3 and the parks at step 3b — at the same camera, in the same band.
+ */
+let lastCoast: readonly Ring[] | null = null;
+
+export function borrowedCoast(): readonly Ring[] | null {
+  return lastCoast;
+}
+
 export function drawShoreline(
   f: Frame,
   t: TerrainField,
@@ -1356,6 +1377,7 @@ export function drawShoreline(
     readonly shoalTexels?: number;
   },
 ): void {
+  lastCoast = coast;
   const { ctx } = f;
   const N = t.N;
   /* THE CORRIDOR FIRST, THEN THE INK — the reference's order, and the ink is

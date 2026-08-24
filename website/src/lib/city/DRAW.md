@@ -4746,6 +4746,117 @@ stranger would look for.
 
 ---
 
+### 20.7 One published ring in 328 is 71 % over the bay, and it was being painted
+
+Handed over by the landmarks agent with the ablation already done, BUGS §22:
+*"`drawParkRings` is painting one translucent green slab over the bay, the
+yacht harbour and the Marina's roofs. Ablating the Marina street camera with
+prod's own `?layers=` switch, `-parks` removes 6.88 % of the block frame."*
+
+Re-ablated here at the Marina BLOCK camera, `.parity/g2layers.py`:
+**`-parks` removes 7.27 % of the frame, 7.13 % of it gross.**
+
+**Which of the two candidate causes it is, measured rather than guessed.**
+The handover named two: the ring geometry genuinely extends over the water, or
+the ring is right and the fill is being painted without the cell mask
+`markCells` builds. It is the first, and the third clause of the report — *"and
+the Marina's roofs"* — is not so: `out-g2/diff-parks-marina.png` is the slab
+with **building-shaped holes punched in it**, because the buildings draw at
+`scene.paint` step 6 and the wash at step 3. The wash is under the roofs and
+over the water.
+
+The ring is not wrong for what it is. `gtr9-ntp6` publishes *Yacht Harbor and
+Marina Green* as ONE Recreation and Parks property and the harbour water is
+part of that property. Sampled at 8 m against the published shoreline
+(`base/coast`, txuc-3kzm, 4 rings / 425 vertices):
+
+```
+  park ring area inside the published coast   1,379.0 ha
+  park ring area OUTSIDE it                      48.3 ha    3.4 %
+
+  rings with ANY area outside:  9 of 328
+    ring  35  cls 0  70.5 % outside = 47.245 ha  ← Yacht Harbor / Marina Green
+    ring 321  cls 0   5.3 % outside =  0.262 ha
+    ring 322  cls 0   2.8 % outside =  0.218 ha
+    ring 203  cls 1   7.4 % outside =  0.192 ha
+    ring 285  cls 1  12.2 % outside =  0.147 ha
+    ring 204  cls 1   6.3 % outside =  0.141 ha
+    ring 177  cls 1  16.4 % outside =  0.122 ha
+    ring 314  cls 1   0.9 % outside =  0.013 ha
+    ring 156  cls 3   1.4 % outside =  0.006 ha
+    the other 319                     0.000 ha
+```
+
+**One ring is 47.2 of the 48.3 hectares.** So the treatment can be exact: it
+costs the rest of the city 1.1 ha of sliver where eight waterfront parks
+overhang their own beach by a few metres, which is the right answer there too.
+
+**AND THE TEST CANNOT BE THE DEM MASK, WHICH IS WHY IT LOOKED UNFIXABLE.**
+Measured both ways: against `maskAt` with `coastFix` applied, ring 35 is only
+**6 % wet.** The mask is `txuc-3kzm` rasterised at 53.8 m and `coastFix` only
+removes cells more than 300 m outside the TIGERweb land polygon — a harbour
+inside its own breakwater is land to both of them. The DEM paints ground under
+that slab, and the published shoreline is the only line on the wire that knows
+better. A `t.cellPark` clip would have been worse still: the ring exists
+precisely to give the park a published edge instead of a 53.8 m staircase.
+
+**This is the reference's own rule, arrived at from the other side.**
+`part3.html` L3739-45 keeps `drawParkRings` inside `drawTerrain` and says why:
+
+> A park ring is GROUND. It is a 0.46 wash under everything, and drawTerrain
+> paints the water-side shore band and the surround names OVER it. Moved into
+> drawCity it is painted over those instead, and MEASURED on the Marina frame
+> that is 9.9 % of the stage: Yacht Harbor and Marina Green stopped being a
+> strip along the shore and became a dark green slab lying across the harbour.
+
+**That is this port's paint order.** `scene.paint` runs `drawShoreline` at
+step 3 and the parks at step 3b, so the wash goes over the water-side repaint
+instead of under it. The bug was written down, with its own measurement of
+9.9 % against the 7.27 % measured here, by the author of the thing being
+ported — eight months before anyone reported it.
+
+**Clipping to the published line rather than asking `scene.ts` to reorder.**
+One `ctx.clip(coastRings, "nonzero")` for the whole pass. It gets the same
+picture without a call-site change, and it is STRICTER than the reorder: the
+reference's fix only reaches within `SHORE_OUT` = 1,100 m of a coast segment
+that has a wet side, and a clip reaches everywhere.
+
+The coast is borrowed the way `lastWater` is borrowed, with the same one-line
+deletion written above it in `water.ts`: `drawShoreline` runs one statement
+earlier in the same `paint()`, at the same camera, in the same band, and
+records the rings it was handed. `drawParkRings`'s fourth argument is already
+optional and already preferred, so `drawParkRings(f, t, this.parks, this.coast)`
+in `scene.paint` §3 lands the same picture and deletes the module state.
+
+MEASURED, `.parity/g2abl.py`, ablating `WFLG.parkShore`, control pair first:
+
+| camera | control moved / gross | treatment moved / gross | frame mean |
+|---|---|---|---|
+| **block, Marina** | 0.00 % / 0.00 % | **3.88 % / 3.72 %** | 165.56 → 166.68 |
+| district, Marina | 0.00 % / 0.00 % | 0.63 % / 0.57 % | 160.79 → 160.95 |
+| district, Civic Center | 0.00 % / 0.00 % | 0.64 % / 0.57 % | 165.84 → 166.00 |
+| district, GG Park | 0.41 % / 0.25 % | 0.69 % / 0.51 % | *control is a third of the effect — weak* |
+| whole city | 91.89 % / 58.77 % | — | *the chunk pipeline regenerated mid-shot (`base/solo-face` 404); discarded* |
+
+Before / after at the same camera and the same layer list:
+`out-g2/mar-all.png` against `out-g2/mar-clip.png` — **4.10 % of the frame,
+and on the pixels that move the mean goes 168.4 → 197.3**, which is a green
+slab coming off open water. Crops: `out-g2/crop-marina-before.png` and
+`out-g2/crop-marina-clip.png`, against the reference's own
+`out-g2/crop-marina-mock.png`.
+
+**What is left after it, named rather than hidden.** The Marina Green now
+reads as a strip along the shore, and where the yacht harbour's docks are, the
+wash keeps a run of thin green teeth. **They are the published shoreline's own
+geometry:** `base/coast` ring 0 serpentines through the harbour — vertices
+347-367 oscillate between y = 5075 and y = 5400 while x steps 190 → 520 — so
+the docks are INSIDE the published land polygon and the clip is right to keep
+them. The reference does not show them because it covers the whole basin with
+its park-FACILITY layer, `TYP.fac`, which draws the harbour as water with the
+docks combed across it (`out-g2/crop-marina-mock.png`). **That layer is not on
+this wire** — DRAW.md §16.8 already lists it as missing — so the teeth stay
+until it ships. Nothing is invented to hide them.
+
 ## 23. Block G1(a) — the pixel floors are not the district deficit, and here is the count
 
 `scene.ts` came to this block with one instruction: **measure what the gate
