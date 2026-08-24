@@ -595,3 +595,97 @@ Recorded so no one re-derives it.
 * **`yrbuilt` from the archived `ygi5-84iq` Land Use 2020 snapshot** — used by
   `gen_geo2.py` for the *block* layer, not the building layer — carries 16,928
   zeroes and the same 12,594-row 1900 dump. It has no 2014 mass either.
+
+---
+
+## 7. FIXED — the block key (commit 1 of the fix pass)
+
+`bldg/build_bldg.py` now keys the block fallback on the **published**
+assessor block instead of `pn[:4]`. `bldg/pnjoin.py` — the file whose whole job
+is to state the join key once so two files cannot drift — gains
+`block_index()` and `resolve_block()` beside the parcel-join rule it already
+held.
+
+**The rule, and why it is not a guess.** `acdm-wktn` ships `block_num` and
+`lot_num` as separate columns, so for any parcel in the fabric the block is
+*read*. For a parcel that is in neither the fabric nor the roll the longest
+published block prefix is used; block ids are only ever 4 or 5 characters
+(5,012 and 401 of 5,413), so the search is two lookups. Measured against the
+fabric's own `block_num` that prefix rule is right on **227,936 of 227,937**
+parcels — the single miss is `4991COM` (block 4991, lot COM), read as 4991C
+because 4991C is also a real block, which is why the direct lookup is tried
+first and the prefix rule only where there is nothing to look up. A parcel
+matching no published block now gets **no block year at all** and falls to
+`FLAG_NOYEAR`, because there is no block to take one from.
+
+Two things were wrong and both are fixed by the same key:
+* the p25 pool (`4591A/B/C/D` pooled as `4591`);
+* the made-land lookup — `made_land.json`'s own block lists are the published
+  ids, so its 5-character entries (`0410A`, `0417A`, `0417B` …) could never be
+  hit by a `pn[:4]` key at all, and its 4-character ones swept up every
+  lettered block beside them.
+
+### What moved
+
+Rebuilt `gen/bldg-data.js` and diffed the shipped `yr` bytes against the copy
+taken before the change:
+
+```
+                        before      after
+year from own parcel   142,679    142,679
+year from block p25     20,662     20,571
+no year at all           2,825      2,916      (+91 → FLAG_NOYEAR, correctly)
+raised to a fill date     1,484      1,487
+
+buildings whose YEAR CHANGED           534  of 166,166
+  moved earlier (a fake late year gone) 363
+  moved later                           171
+  |shift| >= 20 years                   303
+  |shift| >= 50 years                    88
+```
+
+**The Hunters Point Shipyard cliff is gone.** Inside the shipyard bounding box,
+708 buildings:
+
+```
+BEFORE  2015 219 · 1996 168 · 1981  95 · 1978 64 · 1976 41
+AFTER   1996 168 · 1989 158 · 1981 100 · 2016 68 · 1978 64 · 1976 41
+        219 buildings moved, median shift -26 years
+```
+
+The 219 split correctly: **158 take 1989, the p25 of block 4591A's own dated
+parcels — the block they actually sit on** — and 68 take 2016, block 4591C's
+p25, because those 68 *are* the Shipyard Phase 1 condominiums. City-wide the
+year 2015 loses **220** buildings (346 → 126) and 2014 is unchanged at 129.
+
+### The number that did NOT move, and why saying so matters
+
+**23,487 footprints are still drawn on a year that is not their own** — 20,571
+on a block p25 and 2,916 on the 1906 constant. That figure is fixed by the
+*roll*, not by the key: it is the count of footprints `wv5m-vpq2` does not
+date, and no change to a join key can date them. What the key controlled was
+*which* fabricated year those 23,487 receive, and that is what moved: 534
+buildings, 303 of them by twenty years or more, and the single largest
+fabricated cliff in the city dismantled.
+
+The honest headline is therefore **not** "23,487 → fewer". It is: the fallback
+now takes its year from the block the building is on, and the city's biggest
+one-frame arrival of buildings that were not built that year no longer happens.
+
+### Where the change lives
+
+The mock tree `scratchpad/sf-city-anim/` is 12 GB and has never been in this
+repository — `_bldgsrc.py` replays its *output*, `gen/bldg-data.js`, rather than
+holding its source. So the edited files themselves cannot be committed. The
+unified diff is at
+**`pipeline/scripts/us_sf_city/mock-patches/2026-08-24-block-key.patch`**, with
+the apply command in its header, and the same directory is where any later
+mock-side change from this agent will go.
+
+### Still to land in the browser
+
+`gen/bldg-data.js` is rebuilt; the published chunks under
+`website/public/data/us/sf/city/` are not. Landing it needs `lod/build_lod.py`
+(the massing rollup, which is where the 2015 block rows in §1.7 come from) and
+then `encode_city_chunks.py`, neither of which this agent owns. **Until both are
+re-run the browser still shows the 2015 cliff.**

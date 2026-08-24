@@ -1,0 +1,172 @@
+The mock tree `scratchpad/sf-city-anim/` is 12 GB and is not in this repository;
+`_bldgsrc.py` replays its output rather than holding its source. So a change to
+a mock builder has nowhere in git to live, and this directory is where it lives:
+one unified diff per change, applied from the mock root.
+
+    cd scratchpad/sf-city-anim && patch -p0 < <this file>
+    python3 bldg/build_bldg.py          # rewrites gen/bldg-data.js
+
+2026-08-24 — THE BLOCK KEY. `build_bldg.py` keyed its block fallback on
+`pn[:4]`, which is the assessor block only when the block is four characters.
+401 of San Francisco's 5,413 published blocks are five — four digits and a
+letter — so the key pooled 4591A, 4591B, 4591C and 4591D into one bucket and
+dated an 11,719 m2, 52 m Navy industrial hall on 4591A from the 25th-percentile
+year of 4591C's 523 Hunters Point Shipyard Phase 1 condominium rows: 2015.
+219 buildings arrived in that one frame.
+
+The block is published — acdm-wktn ships `block_num` and `lot_num` as separate
+columns — so `pnjoin.py`, the file that already states the PARCEL join key once
+so two files cannot drift, now states the BLOCK key too.
+
+Measured over the rebuilt gen/bldg-data.js: 534 of 166,166 buildings change
+year, 303 by twenty years or more; year 2015 loses 220; the shipyard's 219
+split into 158 at 1989 (block 4591A's own p25) and 68 at 2016 (4591C's, and
+those 68 are the condominiums). See DATA-TRUTH.md section 7.
+
+--- 8< ---
+--- /tmp/d1before/bldg/pnjoin.py	2026-08-24 15:35:17
++++ bldg/pnjoin.py	2026-08-24 15:31:09
+@@ -42,3 +42,61 @@
+     if w and w in roll:
+         return w
+     return s
++
++
++# ── THE BLOCK KEY ───────────────────────────────────────────────────────────
++# The parcel join above was fixed once (mblr[2:9] truncates a lettered block).
++# The BLOCK key was not, and it is the same defect one level up: `pn[:4]` is
++# only the assessor block when the block is four characters. 401 of the city's
++# 5,413 published blocks are five — four digits and a letter — so `pn[:4]`
++# pools 4591A, 4591B, 4591C and 4591D into one bucket called "4591".
++#
++# That is how the 25th-percentile year of 4591C's 523 Hunters Point Shipyard
++# Phase 1 CONDOMINIUM rows (2015-2023) came to date an 11,719 m2, 52 m Navy
++# industrial hall on 4591A to 2015. See pipeline/scripts/us_sf_city/DATA-TRUTH.md.
++#
++# The block is PUBLISHED: acdm-wktn ships `block_num` and `lot_num` as separate
++# columns, so for any parcel in the fabric the answer is read, not inferred.
++# For a parcel that is not in the fabric — 6,155 footprints join no active
++# parcel — the longest published block prefix is used instead. Measured against
++# the fabric's own block_num that rule is right on 227,936 of 227,937 parcels;
++# the single miss is 4991COM (block 4991, lot COM), read as 4991C because 4991C
++# is also a real block. Hence the order below: the LOOKUP first, the prefix rule
++# only where there is nothing to look up.
++
++
++def block_index(parcel_rows):
++    """acdm-wktn rows -> (pn -> block_num, {published block ids}).
++
++    `parcel_rows` is geo/cache/parcels.json: the active parcel fabric, one row
++    per parcel, carrying `block_num` and `lot_num`.
++    """
++    pn2b = {}
++    blocks = set()
++    for r in parcel_rows:
++        b = r.get("block_num") or ""
++        l = r.get("lot_num") or ""
++        if b and l:
++            blocks.add(b)
++            pn2b[b + l] = b
++    return pn2b, blocks
++
++
++def resolve_block(pn, index):
++    """The published assessor block this parcel number sits on, or ''.
++
++    Returns '' rather than a guess when no published block matches, because a
++    footprint with no block has no block fallback year either, and the caller
++    must be able to say so. Never returns pn[:4] blindly.
++    """
++    if not pn:
++        return ""
++    pn2b, blocks = index
++    b = pn2b.get(pn)
++    if b:
++        return b
++    # not in the fabric: the longest published prefix. Blocks are 4 or 5 chars.
++    for n in (5, 4):
++        if pn[:n] in blocks:
++            return pn[:n]
++    return ""
+--- /tmp/d1before/bldg/build_bldg.py	2026-08-24 15:35:17
++++ bldg/build_bldg.py	2026-08-24 15:31:49
+@@ -39,7 +39,14 @@
+               those parcels fall through to the block fallback below.
+ FALLBACK YEAR a footprint with no year of its own takes the 25th-percentile
+               year of the other parcels on its assessor block, and carries a
+-              flag saying so, so the page can count them.
++              flag saying so, so the page can count them. THE BLOCK IS THE
++              PUBLISHED ONE — acdm-wktn's `block_num`, resolved by
++              bldg/pnjoin.py. It used to be `pn[:4]`, which is the block only
++              when the block is four characters: 401 of 5,413 blocks are five,
++              so the key pooled 4591A/B/C/D and dated a 52 m Navy hall on 4591A
++              from 4591C's 2015-2023 condominiums. A footprint whose parcel
++              matches no published block now takes NO block year at all and
++              falls to FLAG_NOYEAR, because there is no block to take one from.
+ DROPPED       footprints under MIN_AREA m2 or under MIN_H m: sheds, garages,
+               canopies, stair bulkheads. Counted, reported, and worth 0.3 % of
+               the city's built footprint area.
+@@ -64,6 +71,9 @@
+ 
+ from shapely.geometry import Polygon
+ 
++sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++from pnjoin import block_index, resolve_block   # noqa: E402  the join key, once
++
+ HERE = os.path.dirname(os.path.abspath(__file__))
+ ROOT = os.path.dirname(HERE)
+ CACHE = os.path.join(HERE, "cache")
+@@ -142,11 +152,26 @@
+     d = pickle.load(open(os.path.join(CACHE, "parsed.pkl"), "rb"))
+     RAW, ROLL = d["b"], d["roll"]
+ 
++    # ── the PUBLISHED assessor block, per parcel ──────────────────────────
++    # acdm-wktn ships block_num and lot_num as separate columns. pnjoin.py
++    # states the rule; nothing here re-derives it from string slicing.
++    BLK = block_index(json.load(open(
++        os.path.join(ROOT, "geo", "cache", "parcels.json"))))
++    blk_of = {}
++
++    def block(pn):
++        b = blk_of.get(pn)
++        if b is None:
++            b = blk_of[pn] = resolve_block(pn, BLK)
++        return b
++
+     # ── the block fallback year, from the roll itself ─────────────────────
+     per_block = defaultdict(list)
+     for pn, v in ROLL.items():
+         if v[0]:
+-            per_block[pn[:4]].append(v[0])
++            b = block(pn)
++            if b:
++                per_block[b].append(v[0])
+     blk_yr = {}
+     for b, ys in per_block.items():
+         ys.sort()
+@@ -158,6 +183,10 @@
+     # the case that forces it: its buildings are dated 1939 by the roll and
+     # would otherwise be fine, but anything on fill that falls through to the
+     # block fallback would float on open water.
++    # made_land.json's own block lists are the PUBLISHED ids, 4 and 5
++    # characters (0410A, 0417A, 0417B ...). Keyed against pn[:4] the five-
++    # character entries could never be hit and the four-character ones swept up
++    # every lettered block beside them; keyed against block() both are exact.
+     ml = json.load(open(os.path.join(ROOT, "geo", "cache", "made_land.json")))
+     made_of = {}
+     for bk in ml["buckets"]:
+@@ -202,12 +231,12 @@
+         if v and v[0]:
+             yr = v[0]; n_pyr += 1
+         else:
+-            yr = blk_yr.get(pn[:4], 0)
++            yr = blk_yr.get(block(pn), 0)
+             if yr:
+                 flags |= FLAG_BLOCKYEAR; n_byr += 1
+             else:
+                 yr = 1906; flags |= FLAG_NOYEAR; n_noyr += 1
+-        m = made_of.get(pn[:4], 0)
++        m = made_of.get(block(pn), 0)
+         if m and yr < m:
+             yr = m; n_made += 1
+         rec.append([ring, h, yr, use | flags])
