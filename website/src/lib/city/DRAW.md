@@ -7792,3 +7792,58 @@ same round-trip-assert pattern as `emit_heroes.py`); `BridgeData` to carry its
 own `deckLenM/deckW/deckZ/spanM/towerFt/year`; and `drawBridge` to take those
 from the record instead of from `GGB`. **`scene.ts` needs no change** if
 `BridgeData` carries the second bridge, which is the shape to build.
+
+### 21.34 The vertical is 3.3 now — and the crown was fixed by the same argument
+
+Daniel took §21.30's trade knowingly: every hero ~20 % smaller at whole-city, in
+exchange for the stall going. `drawHero` now calls the law with **`WO_ZEXB`**,
+a named constant beside `WO_T`, and never with `f.proj.zexb`. Nothing in the
+curve moved — `WO_T`, `WO_EMAX`, `WO_R` and `ZEXB_DEFAULT` are all untouched;
+only which vertical the shortfall is measured against.
+
+**The crown came with it, and that was not the plan.** The handover asked
+whether `crownFactor` 3.0 → 1.0 was a second, independent motion needing its own
+fix. Measured (`.parity/g3/crown.probe.test.ts`, over the shipped register): the
+**peak rate does not move** — `max |dF/d ln z| = 1.484` at both verticals,
+because it is a property of `WO_FEAT` and the smoothstep and is scale-invariant
+in log space. **Where it happens moves, and it halves the crown's size on screen
+when it does:**
+
+| hero | deflates fastest at z | crown on screen there | | z | crown |
+|---|---|---|---|---|---|
+| | **was (1.6)** | | | **now (3.3)** | |
+| cityhall | 2.527 | **50.3 px** | | 1.225 | **24.4 px** |
+| ferry | 3.114 | 53.3 px | | 1.510 | 25.8 px |
+| coit | 4.333 | 56.2 px | | 2.101 | 27.3 px |
+| murphymill | 6.462 | 50.5 px | | 3.134 | 24.5 px |
+| opera | 4.725 | 34.0 px | | 2.324 | 16.7 px |
+
+The dome used to deflate hardest at **50 px**, where §"THE ACCENT" says its
+ribs, its lantern and its finial are all drawn. It now deflates hardest at
+**24 px**, which is the zoom that section describes as *"at 25 px City Hall's
+twenty gilt ribs, its lantern and its finial are all under their own cut-offs
+and the lead shell they sit on is the same value as the office block behind
+it"* — a coloured blob. **The motion is the same; it has moved to where nothing
+can resolve it.**
+
+**And both finish.** `E` now reaches exactly 1 at the block preset for City
+Hall, so `crownFactor(1) = 1`: the building stops being a landmark and becomes a
+building, and stays one from there in. Under the old call site City Hall sat at
+`E = 1.34`, `F = 1.17` at the **closest camera the page can reach** — still
+emphasised, still deflating, everywhere, always. That is the whole difference
+and it is asserted in `landmarks.test.ts`.
+
+**Locked, in a file of its own.** `src/lib/city/landmarks.test.ts`, 8 tests:
+the call site by source (`WO_ZEXB` twice, `proj.zexb` never, `ZEX_BY_STEP`
+never), `WO_ZEXB` read against `emit_heroes.py`'s own `EM_ZEXB` out of the `.py`
+so the sidecar and the renderer cannot drift, the three preset values, and that
+`E` and `F` both reach 1. `draw.test.ts` is untouched — its emphasis tests pass
+`1.6` explicitly and are properties of the curve, not of the call site.
+
+**One honesty note about the screenshots.** A before/after crop pair across this
+change is **not** a controlled comparison and is not presented as one: the
+"before" frames were shot ninety minutes earlier, and four other agents have
+committed to `terrain.ts`, `trees.ts`, `streets.ts` and `buildings.ts` in
+between. The controlled evidence for this change is the arithmetic and the
+elasticity, both above. What the frames are for is the separate question of
+whether the result looks right.
