@@ -477,11 +477,17 @@ export function placeNames(
     const des = lane === "designated";
     for (const p of places) {
       if (p.cls !== lane) continue;
-      if (p.year !== undefined && f.year !== undefined && f.year < p.year) continue;
+      if (p.year !== undefined && f.year !== undefined && f.year < p.year) {
+        lprobe(lane, p.name, "year", 0, 0, 0, 0);
+        continue;
+      }
       /* THE SIZE RULE IS THE UN-DESIGNATED LANE'S ALONE. A designated landmark
          is drawn with a mark of its own, and a mark does not shrink — which is
          what lets a nine-pixel building be named. */
-      if (!des && !placeIsBigEnough(p.spanM, cam.scale)) continue;
+      if (!des && !placeIsBigEnough(p.spanM, cam.scale)) {
+        lprobe(lane, p.name, "size", 0, 0, p.spanM, 0);
+        continue;
+      }
       ctx.font = `${des ? 600 : 500} ${des ? fs : fs * 0.94}px ${PLACE_FACE}`;
       const tw = ctx.measureText(p.name).width;
       const bw = tw + (des ? 16 : 10),
@@ -492,14 +498,24 @@ export function placeNames(
       /* the margin is the LABEL's own half-width, and for a designated place
          the label is not centred on the mark — it sits beside it */
       const ax = des ? X + MK_LEAD + tw / 2 : X;
-      if (!nameFitsFrame(ax, Y, bw, W, H)) continue;
+      if (!nameFitsFrame(ax, Y, bw, W, H)) {
+        lprobe(lane, p.name, "frame", ax, Y, bw, bh);
+        continue;
+      }
       const x0 = ax - bw / 2,
         x1 = ax + bw / 2,
         y0 = Y - bh / 2,
         y1 = Y + bh / 2;
-      if (!grid.fits(x0, y0, x1, y1)) continue;
+      if (!grid.fits(x0, y0, x1, y1)) {
+        lprobe(lane, p.name, "grid", ax, Y, bw, bh);
+        continue;
+      }
       // the budget is EXACT: admit only if the box fits in what is left
-      if (!budgets[lane].spend(bw, bh)) continue;
+      if (!budgets[lane].spend(bw, bh)) {
+        lprobe(lane, p.name, "ink", ax, Y, bw, bh);
+        continue;
+      }
+      lprobe(lane, p.name, "-", ax, Y, bw, bh);
       grid.add(x0, y0, x1, y1);
       ctx.lineJoin = "round";
       ctx.lineWidth = 3.4;
@@ -1112,12 +1128,19 @@ export function drawHoodNames(
       Y = sy(f, p);
     const t = h.name.toUpperCase();
     const bw = ctx.measureText(t).width + 16;
-    if (Math.abs(X - HX) > HX - bw / 2 || Math.abs(Y - HY) > HY - 30) continue;
+    if (Math.abs(X - HX) > HX - bw / 2 || Math.abs(Y - HY) > HY - 30) {
+      lprobe("hood", t, "frame", X, Y, bw, 20);
+      continue;
+    }
     const x0 = X - bw / 2,
       x1 = X + bw / 2,
       y0 = Y - 10,
       y1 = Y + 10;
-    if (!grid.fits(x0, y0, x1, y1)) continue;
+    if (!grid.fits(x0, y0, x1, y1)) {
+      lprobe("hood", t, "grid", X, Y, bw, 20);
+      continue;
+    }
+    lprobe("hood", t, "-", X, Y, bw, 20);
     grid.add(x0, y0, x1, y1);
     ctx.lineWidth = 4;
     ctx.strokeStyle = HOOD_HALO;
@@ -1129,4 +1152,51 @@ export function drawHoodNames(
   ctx.letterSpacing = "0px";
   ctx.restore();
   return placed;
+}
+
+// ── §LPROBE: one row per name considered, and the reason it was not written ──
+
+/**
+ * WHY A NAME IS NOT ON THE FRAME IS A COUNT, NOT AN ARGUMENT.
+ *
+ * `terrain.ts` §GPROBE's pattern, and for its reason: three lanes share one
+ * collision grid and two of them share an exact ink budget, so *"GOLDEN GATE
+ * PARK loses to GEARY BLVD"* is a claim about a sequence of `grid.fits` calls
+ * inside one frame and cannot be settled by reading either function. This
+ * records, per lane, every name the pass looked at and the first gate that
+ * turned it away.
+ *
+ * The reasons, in the order the passes apply them:
+ *
+ * | `why`   | the gate |
+ * |---|---|
+ * | `year`  | `f.year` is before the year the register lets it be written |
+ * | `size`  | `placeIsBigEnough` — the un-designated lane's alone |
+ * | `frame` | the box does not fit inside the visible strip |
+ * | `grid`  | something already on the shared grid overlaps the box |
+ * | `ink`   | the box does not fit in what is left of this lane's budget |
+ * | `-`     | written |
+ *
+ * Off by default, dev only, parked on `globalThis.__cityLPROBE` so a harness
+ * switches it on through the renderer hook and reads it back with no source
+ * edit. Capped, like GPROBE, so a film cannot grow it without bound.
+ */
+export const LPROBE: {
+  on: boolean;
+  log: { lane: string; name: string; why: string; x: number; y: number;
+         bw: number; bh: number }[];
+} = { on: false, log: [] };
+
+function lprobe(
+  lane: string, name: string, why: string,
+  x: number, y: number, bw: number, bh: number,
+): void {
+  if (!LPROBE.on) return;
+  if (LPROBE.log.length > 20000) return;
+  LPROBE.log.push({ lane, name, why, x: Math.round(x), y: Math.round(y),
+                    bw: Math.round(bw), bh: Math.round(bh) });
+}
+
+if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+  (globalThis as { __cityLPROBE?: typeof LPROBE }).__cityLPROBE = LPROBE;
 }

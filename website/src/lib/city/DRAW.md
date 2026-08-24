@@ -3813,3 +3813,291 @@ they say what they mean in an environment that has none:
    It is NOT a client bug: `manifest.json` `kinds.canopy` ships `cellKey`,
    `pos`, `area` and no year, where the reference reads its own `TIMED.canopy.yr`.
    The gate cannot be written until the encoder ships the field.
+
+## 20. Block G2 — the ground, and two floors that reject nothing
+
+The brief for this block named two constants in `trees.ts` as production
+inventions in the pattern that has produced most of the wins here — *"sixteen
+constants existed in production and nowhere in the source"* — and asked for a
+count before a change. **Both were counted and both reject nothing.** The
+count is in `.parity/out-g2/gates.json`, taken through §VPROBE out of the
+running page at six cameras, and it is reproduced below.
+
+### 20.1 `wpx = 4 · rp` exactly, so `wpx < 1.2` is a LOOSER floor than `rp < 0.7`
+
+The two quantities were being compared as if they were the same number. They
+are not, and the ratio between them is a constant of the sprite sheet:
+
+    wpx  = CROWN_M · 1.2247 · k / (2 · VSPR_R) · VSPR_W      trees.ts:801
+    VSPR_W = 4 · VSPR_R                                       trees.ts:354
+    ⇒ wpx = 2 · CROWN_M · 1.2247 · k
+
+    rp   = rm · 1.2247 · k,  rm = CROWN_M / 2                 part3.html:3984
+    ⇒ wpx = 4 · rp,          at every camera, for every tree
+
+So `wpx < 1.2` is **`rp < 0.30`**, against the reference's `rp < 0.7`.
+Production's floor is less than half of the reference's: it can only ever draw
+MORE crowns than `part3.html` does, never fewer. The suspicion was aimed the
+right way at the wrong sign.
+
+**And neither floor can fire in the band where street trees exist.** The tree
+layer is weighted by `bandW(z, VZ_T0 = 2.9, VZ_T1 = 6.0)`, which is exactly 0
+below z = 2.9. Production's floor needs `k < 0.0742` for the small crown —
+z < 1.59 at this page's own `cam.base` of 0.046666 — and by then `wTree` has
+been 0 for half the ladder.
+
+MEASURED, `.parity/g2gate.py`, 1200 × 678 at DPR 2, dev server, one camera per
+row, counters reset per rasterisation:
+
+| camera | z | crowns reaching the floor | `wpx < 1.2` drops | the REFERENCE's `rp < 0.7` would drop |
+|---|---:|---:|---:|---:|
+| city, home | 1.0 | 0 | **0** | 0 |
+| district, Sunset | 2.9 | 0 | **0** | 0 |
+| district, Sunset | 3.5 | 4,936 | **0** | **4,224** |
+| district, Sunset | 5.0 | 22,359 | **0** | 0 |
+| block, Mission | 7.2 | 42,854 | **0** | 0 |
+| street, downtown | 36.0 | 1,611 | **0** | 0 |
+
+**Zero, at every camera on the ladder.** And the last column is the reason the
+line is not being "fixed" to the reference's number: at z = 3.5 the reference's
+own gate would drop **4,224 of 4,936 crowns, 85.6 %** — it takes ink OUT of the
+district band, which is the opposite of the direction the frame histogram asks
+for. Porting `rp < 0.7` here would be a faithful port and a worse picture, and
+it would remove exactly the marks that earn the midtones.
+
+**Left as it is, deliberately, with the arithmetic written down.** The
+deviation is real and it is inert, and now it is inert *on the record* rather
+than on an argument.
+
+### 20.2 `BLOB_MIN_M2` = 58.06 m² rejects 0 of 50,897 canopy cells
+
+The gate is 25 ft squared. **The encoder already applied it**, which is why
+this file's copy of it has nothing to do: `trees.ts`'s own header says only the
+28,616 canopy polygons *over 625 sq ft* are shipped, and the cell areas that
+survive that are all above the same line.
+
+Decoded straight out of `base/canopy.qc` (`.parity/g2qc.py`, 50,897 cells):
+
+    area byte     min 26        p1 26     p50 86     max 227
+    area m²       min 58.729    p1 58.73  p50 194.3  max 512.8
+    BLOB_MIN_M2   58.06
+
+The published minimum is **58.729 m², 0.67 m² above the gate.** Not one cell
+in the city falls under it, at any zoom — `canArea` and `canAreaLost` are 0 on
+all six rows of the table above, where `canAreaLost` counts specifically the
+cells this gate drops that the reference's own `rp < 0.9` would have drawn.
+
+The gate that *does* bind is the reference's, and it is a zoom gate rather than
+an area one: `canRp` drops **4,150 cells at z = 2.9** and 0 from z = 3.5 up.
+
+**Both floors stay. Neither is the missing dark detail.** What is left after
+this section is the ground itself, and that is what the rest of this block is
+about.
+
+### 20.3 §VPROBE
+
+One counter per REASON a crown was not drawn, on `terrain.ts` §GPROBE's
+pattern and for its reason: a claim about which gate is costing the frame its
+midtones has to be a count taken out of the running page. Off by default, dev
+only, parked on `globalThis.__cityVPROBE` so the harness switches it on
+through the renderer hook and reads it back with no source edit.
+
+---
+
+## 21. Block G3 — the famous places: the grey bloc, the register, the names
+
+`lib/city/{landmarks,labels}.ts` · `pipeline/scripts/us_sf_places/`
+
+Daniel, pointing at the Marina: *"the Palace of Fine Arts looks great but the
+buildings next to it are awful and the exposition space behind is just a grey
+bloc."* Three questions come out of that and they have three different owners,
+so this section starts by saying which pixels belong to whom, measured, before
+anything is changed.
+
+### 21.0 The camera, and the harness that took it
+
+`.parity/g3/shot.py` — capture.py's own `prod_open`/`prod_shoot` (same stage,
+same settle gate, same blank-frame assert) with the anchor given as world
+metres instead of a key in `cameras.ANCHOR`. The anchor is **(-950, 4790)**,
+which is the Palace of Fine Arts, and the five zooms FOCUS.md judges by are
+taken on it:
+
+| camera | scale | step | buildings | `lastStats.labels` |
+|---|---|---|---|---|
+| `marina-1-city` | 0.04667 | 0 | 14,994 | 34 |
+| `marina-2-dist` | 0.13533 | 1 | 48,644 | 39 |
+| `marina-3-blk`  | 0.33600 | 2 |  7,329 | 39 |
+| `marina-4-str`  | 2.00000 | 2 |    537 |  9 |
+| `marina-5-bld`  | 6.00000 | 2 |    137 |  **0** |
+
+### 21.1 The grey bloc is a BUILDING, and the ablation says so
+
+The brief guessed *"a named place with a large footprint and no building
+geometry falls through to a flat fill."* **That is not what this is**, and the
+difference matters because the two have different owners.
+
+`base/places.qc` row 167 is `Exposition Space`:
+
+    x -966.8   y 4769.7   span 109 m   bi -1   yr 1906   fl 0
+    src ib5c-xgwu (Recreation and Parks Facilities)   yrule 3
+
+`bi = -1` — **the place resolves to no footprint at all.** It contributes a
+name and nothing else. It cannot be drawing a slab because the places layer
+draws no fill anywhere; it is a label lane.
+
+Ablated at `marina-4-str` with prod's own `?layers=` switch:
+
+| layer off | `stats.buildings` | the grey bloc |
+|---|---|---|
+| `-buildings` | 0 | **gone** (and so is the rotunda) |
+| `-massing`   | 537 | still there |
+| `-parks`     | 537 | still there |
+| `-veg`       | 537 | still there |
+
+`.parity/g3/out/marina-4-str.prod.nobld.png`. So the mass behind the rotunda is
+one **building footprint drawn as a bare prism** — it is the Palace of Fine
+Arts **Exhibition Hall**, Maybeck's 1915 curved shed, and the `Exposition
+Space` name simply lands beside it. Note also what else the ablation proves:
+**the heroes are drawn inside the buildings pass**, so `-buildings` takes the
+rotunda with it. That matches §8's own statement that a hero *replaces the
+prism inside the city draw's own near path*.
+
+**The fix that is mine is therefore not a ground treatment. It is a hero.**
+The thing Daniel pointed at is a famous building falling back to a prism
+because the register has eleven entries and it is not one of them.
+
+### 21.2 The flat slab that IS a fill is the park wash, and it is not mine
+
+At `marina-3-blk` a single translucent green slab lies across the whole Marina
+— over the bay, over the yacht harbour, over the roofs of the district — with a
+hard straight edge and nothing on it. `-parks` removes it: **6.88 % of the
+frame**, bbox (692, 316)-(2399, 1321). Compare `marina-3-blk.prod.png` with
+`marina-3-blk.prod.nopark.png`.
+
+It is `Yacht Harbor and Marina Green`, the Rec and Parks property whose own
+published ring is 819 m across, drawn as one even-odd fill. Two defects in it:
+
+1. it is painted **over the buildings**, so the Marina's own roofs are tinted
+   and the slab's edge cuts across them;
+2. it is a slab — no edge, no ground, nothing to say whether it is lawn, water
+   or apron.
+
+**Owner: the parks pass (§16.5), not `landmarks.ts` or `labels.ts`.** Recorded
+here with the ablation numbers so its owner does not have to re-derive them,
+and filed in BUGS.
+
+### 21.3 The size gate, counted at all five zooms
+
+`labels.ts:218` `PLACE_MIN_PX = 10`, and the gate is
+`spanM * 1.2247 * camScale >= PLACE_MIN_PX`. Of the 2,192 rows, **339 are
+designated** (Article 10, `fl` bit 0) and exempt; **1,853 are not** and must
+pass. Decoded straight out of `base/places.qc` (`.parity/g3/qc.py`):
+
+| camera | scale | min span it demands | un-designated admitted |
+|---|---|---|---|
+| city     | 0.04667 | 175.0 m | 64 of 1,853 |
+| district | 0.13533 |  60.3 m | 435 of 1,853 |
+| block    | 0.33600 |  24.3 m | 1,210 of 1,853 |
+| street   | 2.00000 |   4.1 m | 1,807 of 1,853 |
+| building | 6.00000 |   1.4 m | 1,853 of 1,853 |
+
+**590 of the 2,192 rows carry `bi = -1`** — no footprint, a name over ground.
+
+### 21.4 The order inside a lane is the FILE's, and the file is sorted by size
+
+`placeNames` walks `designated` then `named`, and inside each lane it walks the
+array in the order it was given. `base/places.qc` is **sorted by `span`
+descending** (asserted: `all(diff(span) <= 0)`; first five spans 2048, 1753,
+1584, 1127, 819; last five 2). So the tie-break for the ink budget is *the
+biggest thing wins*.
+
+That is a defensible rule and it is not the same rule as *the thing a stranger
+came to find wins*. It is the ranking question, not the threshold question, and
+it is what §21.6 measures before anything is changed.
+
+### 21.5 Ocean Beach is not in the register at all
+
+`Golden Gate Park` is row 0 (span 2,048 m, `bi = -1`, `fl` bit 2 — already in
+`marks.json`) and clears the gate at every zoom. `Ferry Building` is
+designated, so it is exempt from the gate entirely. **`Ocean Beach` is not a
+row.** It is not a Rec and Parks property, not an Article 10 landmark and not a
+City facility, so none of the seven registers `build_places.py` reads carries
+it. A stranger looking for the beach on the west edge finds no name on it.
+
+### 21.6 §LPROBE — the reason a name is not on the frame, counted
+
+Three lanes share one collision grid and two of them share an exact ink budget,
+so *"GOLDEN GATE PARK loses to X"* is a claim about a sequence of `grid.fits`
+calls inside one frame and cannot be settled by reading either function.
+`labels.ts` §LPROBE records one row per name each pass looked at and the first
+gate that turned it away — `year`, `size`, `frame`, `grid`, `ink`, or `-` for
+written. `terrain.ts` §GPROBE's pattern and for its reason: off by default, dev
+only, on `globalThis.__cityLPROBE`, read back by `.parity/g3/why.py`.
+
+At the **home whole-city camera**, 2018, 1200 x 678 @ DPR 2:
+
+| lane | considered | written | `year` | `size` | `grid` | `ink` |
+|---|---|---|---|---|---|---|
+| designated | 339   | **8**  | – | – | **200** | **131** |
+| named      | 1,853 | **7**  | 8 | 1,781 | 57 | – |
+| hood       | 41    | **12** | – | – | 29 | – |
+
+The whole-city frame of San Francisco writes **eight** landmark names. They are
+`Golden Gate Bridge`, `War Memorial Complex`, `Beach Chalet`, `Alcoa Building`,
+`Palace Of Fine Arts`, `Mission High School`, `Chronicle Building` and
+**`Maud's`** — a bar on Cole Street. `San Francisco City Hall`, `Coit Tower`
+and the `Ferry Building` are all refused, and all three for the same reason:
+**`grid`**.
+
+### 21.7 BEACH CHALET takes GOLDEN GATE PARK's box, and that is the whole bug
+
+The one that says it best, and it is arithmetic rather than an impression.
+`GOLDEN GATE PARK`'s box at the whole-city camera is
+
+    (116.0, 312.0) – (280.0, 332.0)
+
+and the only thing already on the grid that overlaps it is
+
+    designated 'Beach Chalet'  (87.0, 312.5) – (169.0, 327.5)
+
+53 px of overlap on x. The **Beach Chalet is a restaurant building standing
+inside Golden Gate Park**, and because it carries an Article 10 designation it
+runs in the *first* lane — before the neighbourhood capitals — so a building
+inside the park costs the whole park its name. Golden Gate Park is row 0 of the
+register, the largest span in the city (2,048 m), and it is **not named at any
+of the five zooms**: `hood → grid` at city, `hood → frame` and `named → frame`
+at district and below.
+
+The order that produces this is not arbitrary and it is not wrong on its own
+terms — inside a lane the register is walked in file order and the file is
+sorted by span (§21.4), and the lanes run designated → street spine → hoods →
+arterials → named → local (`scene.ts`). Each of those rules is defensible. The
+composition of them is **"the biggest building that has a designation, then
+whatever is left"**, and it is not the same rule as *the thing a stranger came
+to find*.
+
+**What is NOT the bug, so nobody re-runs it:** it is not `PLACE_MIN_PX`. That
+gate never sees Golden Gate Park's lane at city zoom (the hood pass has no size
+gate at all), it never sees a designated place (they are exempt), and at the
+whole-city camera it turns away 1,781 of 1,853 un-designated names — which is
+the gate doing what §21.3 measures, not what loses the famous ones. The
+constant is still a production invention with no counterpart in the reference
+and it should be judged as one, but the eight names on the wide frame are a
+**ranking** result, not a **threshold** result.
+
+### 21.8 At the two closest cameras almost nothing is named, and the reason is `frame`
+
+| camera | designated written | named written |
+|---|---|---|
+| city     | 8 | 7 |
+| district | 7 | 8 |
+| block    | 5 | 7 |
+| street   | **0** | 3 |
+| building | **0** | 1 |
+
+At the street camera all **339** designated places are refused for `frame` and
+1,796 of 1,853 named ones are; at the building camera 339 and 1,845. That is
+honest — a 200 m frame contains few registered places — but the consequence is
+that **the closer a reader gets to a building, the less the map will tell them
+about it**, and at the tightest zoom the frame carries no name at all
+(`marina-5-bld`, `lastStats.labels = 0`).
