@@ -5496,3 +5496,118 @@ keys against the shipped register and **refuses to write** if any is missing:
 
 Exit 1, nothing written. An ordering built against half a register can no
 longer reach disk quietly, and the message carries its own recovery.
+
+---
+
+## 25. Block G1 — the whole-city tier, measured; the massing solid gets its side, and it is small for a good reason
+
+`buildings.ts` `drawMassing` · `scene.ts` `paintMassing`
+
+The city tier had had no night's work and is the first frame anyone sees. Three
+questions were set before drawing anything, and the measurements are below.
+
+### 25.1 What the plate encodes, and the four things on the wire with no reader
+
+`base/massing` ships per block per year: **coverage `tc`, area-weighted mean
+height `th`, and the year `ty`.** `drawMassing` projected the block's ring at
+`th` and filled it at `COVA[cov] * alpha`. That is the whole tier. Four things
+were built every frame and read by nothing:
+
+| built by | what | read by |
+|---|---|---|
+| `massLUT` | `mwall` — 24 × 16 × 7 × 4 wall entries | **nothing** |
+| `paintMassing` | `wallIdx`, allocated per call | `drawMassing`: `void wallIdx;` |
+| `massAt` | `cov0`, `hgt0` — the state BEFORE this year's row | **nothing** |
+| `massAt` | `cohort` — the blocks that gained this year | **nothing** |
+
+plus two hardcodes in the bucket key: `fresh = 0` and haze bucket `0`.
+`part3.html` `drawMass` (L8717) reads all six. **Pattern 8 again, and this time
+it is the frame the piece is most often looked at in.**
+
+### 25.2 The tier CAN carry a silhouette, and the gate is the reference's own
+
+Measured on the shipped payload at the whole-city camera (`.parity/g1city.py`,
+`kh` = **0.0747** px per metre of height), over the 4,908 blocks with any
+coverage in 2018:
+
+```
+  projected wall dh   p10 0.448  p50 0.523  p90 0.821  p99 1.195  max 1.419 px
+  over 0.9 px         253 blocks — 5.15 % of blocks, 3.90 % of block area
+  block ring area     16.18 % of the stage
+  mean coverage       0.316
+```
+
+`MASS_WALL_PX` = **0.9**, and the reference's reason is exactly what the
+numbers say: *"the median block's mean height is 7 m, which projects 0.4 px of
+wall at the whole-city camera, and adding that to five thousand blocks is a
+vertical comb, not a city. Downtown, where the mean is 40 m and up, keeps its
+rise."* The gate keeps the 5 % that is downtown. It is a CUT-OFF — a block
+under it draws exactly the plate it drew before — and the whole pass exists
+only between the whole-city stop and the district one, because `paintMassing`
+returns at `alpha = 1 − tierW(z) ≤ 0.004`, which is `z ≥ 2.35`.
+
+`wallIdx` is now the mock's own `WI`: `legendTones` — the same function
+`decodeBld` uses for the 3.8 % of footprints that join no roll row, whose four
+candidate arrays are `part3.html` L5716-5721 element for element — read on the
+block's centre, over `buildURND`, which is byte-for-byte the mock's `RND` (same
+xorshift, same 19060418 seed). **It is a legend and it is declared as one**, and
+unlike `RI[b]` it was never overwritten by a measurement because nothing
+published measures the side of a block.
+
+### 25.3 And it is worth 0.183 % of the frame, because the silhouette was already there
+
+A/B against a terminal disable (the guard, not the threshold — §24.3):
+
+| camera | changed | direction |
+|---|---|---|
+| whole city | 5,969 px, **0.183 %** | −11.2/channel, 99.6 % darker |
+| district | 1 px | `massed` is 0 there; the tier is off |
+
+**That is the honest answer to "can the massing tier carry a silhouette", and
+it is mostly no** — not because the tier cannot, but because *the silhouette is
+already carried by a rule further up*. `build_lod.py` makes a **SOLO** of every
+building at least 20 m at its derived top — 1,753 of them — and a solo is drawn
+as itself at every zoom, excluded from its block's coverage and mean. So
+downtown's towers were already standing at whole-city zoom as themselves, and
+what the block wall adds underneath them is the 253 blocks' worth of mass
+between the towers. Before and after are `out-g1/sky-{before,after}.png` and
+they are very nearly the same picture.
+
+Landed anyway: it costs nothing under the gate, it removes two dead passes, and
+the mass between the towers is the part of downtown that was flat. **But it is
+not the whole-city fix**, and this section says so rather than banking 0.183 %
+as a win.
+
+### 25.4 The rebuild wave is on the wire, dated, guarded — and not drawn
+
+`massAt` already computes `cov0`/`hgt0`/`cohort`; `part3.html` reads them for
+two things production does not do: a block **grows into** its new mass over the
+arrival phase (`cov = cov0 + (cov − cov0)·MPH`) instead of stepping into it,
+and a block that genuinely grew takes the six-year ochre.
+
+The guard is the interesting part, and it is measured (`g1city.py`). The roll
+dates 12,594 parcels to exactly 1906 as its "not known", so an `age`-only tint
+puts the Presidio in ochre in the 1906 frame. `part3.html` gates on the share of
+the block's coverage that is NEW — `grew = (cov − cov0) ≥ 0.15·max(1, cov)`:
+
+```
+  year   blocks with cover   dated this year   and grew >= 15 %
+  1906         1,889              1,359            1,228   90.4 %
+  1907         2,191              1,258            1,086   86.3 %
+  1908         2,387              1,419            1,097   77.3 %
+  1909         2,440                823              486   59.1 %
+  1912         2,665                973              518   53.2 %
+  1960         4,612                428              101   23.6 %
+```
+
+**More than half the city's blocks change in 1906-1908 and nothing on screen
+says so.** The guard is doing real work — it removes 10 % of the 1906 cohort and
+23 % of the 1908 one — and the decay from 90 % to 24 % is the rebuild ending.
+
+NOT built here, deliberately: the arrival phase belongs to the film's clock
+(`risePh`, and `paintMassing` does not currently take it), and a treatment the
+film cannot drive is worse than none. **The contract the film needs is: pass the
+year's phase into `paintMassing`, and repaint only `row.cohort`** — because a
+massing solid is drawn at an alpha equal to its coverage, so repainting the
+whole city's massing twice composites `cov` twice and lands at `1−(1−cov)²`.
+`massAt`'s doc comment already carries the screenshot of that mistake.

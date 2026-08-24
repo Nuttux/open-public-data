@@ -826,6 +826,48 @@ export interface BlockGeometry {
  * Median 4 vertices, mean 6.9, max 388 (the Presidio) — so nothing downstream
  * may assume four corners.
  */
+/**
+ * THE MASSING SOLID'S OWN SKYLINE, AND THE ONE NUMBER THAT DECIDES IT.
+ *
+ * `drawMassing` painted the block's ring at its own mean height and stopped —
+ * so at the whole-city camera, the first frame anyone sees and the one the
+ * film opens on, San Francisco was **4,908 lids lying at their own heights
+ * with nothing under any of them.** `mwall` was built by `massLUT` every
+ * frame, `wallIdx` was allocated and passed by `paintMassing` every frame, and
+ * `drawMassing` ended `void wallIdx;`. Both halves of the side of the city
+ * were written, tested and called by nobody.
+ *
+ * **0.9 CSS px of projected wall, PER BLOCK.** The reference's own number and
+ * its own reason: *"the extrusion is only added when it is worth a pixel: the
+ * median block's mean height is 7 m, which projects 0.4 px of wall at the
+ * whole-city camera, and adding that to five thousand blocks is a vertical
+ * comb, not a city. Downtown, where the mean is 40 m and up, keeps its rise."*
+ *
+ * Measured on the shipped payload at the whole-city camera (`.parity/g1city.py`,
+ * `kh` = 0.0747 px per metre of height), over the 4,908 blocks that carry any
+ * coverage in 2018:
+ *
+ * ```
+ *   projected wall dh   p10 0.448   p50 0.523   p90 0.821   p99 1.195   max 1.419 px
+ *   over 0.9 px         253 blocks — 5.15 % of blocks, 3.90 % of block area
+ * ```
+ *
+ * So the gate keeps **the 5 % that is downtown** and refuses the other 95 %,
+ * which is the whole point: *the difference between San Francisco and any
+ * other grey blob at this zoom is that it has a skyline.* It is a CUT-OFF and
+ * not a floor — a block under it draws exactly the plate it drew before, never
+ * a wall squeezed to a minimum.
+ *
+ * And it costs nothing anywhere else: `paintMassing` returns at
+ * `alpha = 1 - tierW(z) <= 0.004`, which is `z >= LOD_Z1` = 2.35, so this
+ * whole pass exists only between the whole-city stop and the district one.
+ */
+export const MASS_WALL_PX = 0.9;
+
+/** the block ring's projected top, reused across blocks — max 388 (Presidio) */
+const massTX = new Float32Array(512);
+const massTY = new Float32Array(512);
+
 export const BLOCK_INSET_M = 1.5;
 
 export function blockRing(
@@ -908,7 +950,13 @@ export function drawMassing(
   // one bucket per (colour, coverage step, freshness) — because one fill()
   // carries one alpha, the alpha HAS to be a batch key
   const roofBuckets = new Map<number, Path2D>();
+  const wallBuckets = new Map<number, Path2D>();
   const alphas = new Map<number, number>();
+  const cf = f.proj.coeffs();
+  const lmax = Math.hypot(cf.ax, cf.ay) || 1;
+  /** px per metre of BUILT HEIGHT — `projb` adds `h * zexb` to the plane's
+   *  second coordinate, so this is neither of the two ground factors. */
+  const kh = f.proj.zexb * f.cam.scale;
   let n = 0;
   for (let o = 0; o < order.length; o++) {
     const b = order[o];
@@ -927,15 +975,68 @@ export function drawMassing(
       alphas.set(key, COVA[q] * opts.alpha);
     }
     const zg = t.elevM(g.cx[b], g.cy[b]);
-    for (let k = 0; k < ring.length; k++) {
+    const nk = ring.length;
+    for (let k = 0; k < nk; k++) {
       const pr = f.proj.projb(ring[k][0], ring[k][1], zg, h);
-      if (k) p.lineTo(sx(f, pr), sy(f, pr));
-      else p.moveTo(sx(f, pr), sy(f, pr));
+      const X = sx(f, pr), Y = sy(f, pr);
+      massTX[k] = X;
+      massTY[k] = Y;
+      if (k) p.lineTo(X, Y);
+      else p.moveTo(X, Y);
     }
     p.closePath();
+
+    /* ── THE SKYLINE ──────────────────────────────────────────────────
+       See `MASS_WALL_PX`. The top plate above is a plate: at whole-city zoom
+       the city was 4,908 lids lying at their own mean height with nothing
+       under any of them, and a mass with no side has no silhouette.
+
+       The extrusion is added ONLY where it is worth a pixel, and the gate is
+       PER BLOCK, so the Sunset stays a plate and downtown stands up. Same
+       front-face rule the buildings use — at this bearing a solid shows its
+       top and the edges whose projected run goes right — and the same
+       `planeQuartile` off the same coefficients, so a block and a building of
+       the same orientation take the same lambert bucket by construction.
+
+       `dh` is added DOWNWARD from the top ring rather than the top being
+       lifted off a base ring: screen x carries no height, so the base of a
+       vertical edge is its top plus `dh` in screen y, exactly, with no second
+       projection per vertex. */
+    const dh = h * kh;
+    if (dh > MASS_WALL_PX) {
+      const wo = ((wallIdx[b] * COVQ + q) * (FRESH_YEARS + 1) + fresh) * 4;
+      for (let k = 0; k < nk; k++) {
+        const u = (k + 1) % nk;
+        if (massTX[u] - massTX[k] <= 0) continue; // turned away from the camera
+        const lam = planeQuartile(
+          ring[u][0] - ring[k][0], ring[u][1] - ring[k][1],
+          cf.ax, cf.ay, lmax,
+        );
+        const wk = (wo + lam) * COVQ + q;
+        let wp = wallBuckets.get(wk);
+        if (!wp) {
+          wp = new Path2D();
+          wallBuckets.set(wk, wp);
+          alphas.set(-wk - 1, COVA[q] * opts.alpha);
+        }
+        wp.moveTo(massTX[k], massTY[k]);
+        wp.lineTo(massTX[u], massTY[u]);
+        wp.lineTo(massTX[u], massTY[u] + dh);
+        wp.lineTo(massTX[k], massTY[k] + dh);
+        wp.closePath();
+      }
+    }
     n++;
   }
   ctx.save();
+  /* THE WALLS FIRST, then the roofs over them — a lid is above its own side
+     and painter's order inside one block is not negotiable. The mock flushes
+     in this order for the same reason (`massFlush`). */
+  for (const [wk, p] of wallBuckets) {
+    ctx.globalAlpha = alphas.get(-wk - 1) ?? 1;
+    ctx.fillStyle = colours.mwall[(wk / COVQ) | 0] ?? "#c0b49a";
+    ctx.fill(p);
+  }
   for (const [key, p] of roofBuckets) {
     ctx.globalAlpha = alphas.get(key) ?? 1;
     const ci = Math.floor(key / (HZL * COVQ * (FRESH_YEARS + 1)));
@@ -944,7 +1045,6 @@ export function drawMassing(
     ctx.fill(p);
   }
   ctx.restore();
-  void wallIdx;
   return n;
 }
 

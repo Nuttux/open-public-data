@@ -77,6 +77,7 @@ import {
   LOD_Z0,
   LOD_Z1,
   MASS_GAIN,
+  MASS_WALL_PX,
   shadowOffset,
   SHADOW_FILL,
   tierW,
@@ -1082,6 +1083,23 @@ describe("the roof", () => {
     // down-LEFT: the light is upper-right, so the across-offset leads
     expect(KEY_DX).toBeGreaterThan(KEY_DY);
     expect(KEY_DY).toBeGreaterThan(0);
+  });
+
+  it("the massing solid's skyline is a per-block cut-off, and it keeps the 5 % that is downtown", () => {
+    /* `drawMassing` painted the ring at its own mean height and stopped, and
+       `mwall` + `wallIdx` were built and passed every frame and `void`ed.
+       Measured on the shipped payload at the whole-city camera (kh = 0.0747 px
+       per metre of height): dh p50 0.523 px over the 4,908 blocks with any
+       coverage, and 253 blocks — 5.15 % — over 0.9. */
+    const kh = 0.0747;
+    expect(7 * kh).toBeLessThan(MASS_WALL_PX);      // the median block, 7 m
+    expect(40 * kh).toBeGreaterThan(MASS_WALL_PX);  // downtown, 40 m and up
+    // it is a CUT-OFF: under it a block is exactly the plate it was, never a
+    // wall held at a minimum
+    expect(MASS_WALL_PX).toBeGreaterThan(0);
+    // and the pass cannot cost anything above the dissolve, because
+    // `paintMassing` returns at alpha = 1 - tierW(z) <= 0.004
+    expect(1 - tierW(LOD_Z1)).toBeLessThanOrEqual(0.004);
   });
 
   it("the wall's own foot is a cut-off and a ramp, never a floor, and it cannot invert", () => {

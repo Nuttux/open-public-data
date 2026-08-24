@@ -821,6 +821,7 @@ export class CityScene {
    */
   private roofNF: string[] | null = null;
   private blockRoof: Uint8Array | null = null;
+  private blockWall: Uint8Array | null = null;
   private heroMats: HeroMaterials | null = null;
   /** the hit test's uniform grid over the block rings — geometry only, so it
    *  outlives a band drop */
@@ -2248,7 +2249,7 @@ export class CityScene {
     const fade = fadeAmt(f);
     const colours = massLUT(pal, fade);
     const roofIdx = this.blockRoofIdx(bl);
-    const wallIdx = new Uint8Array(bl.n);
+    const wallIdx = this.blockWallIdx(bl);
     const alpha = 1 - wB;
     if (alpha <= 0.004) return 0;
     return drawMassing(
@@ -2287,6 +2288,50 @@ export class CityScene {
    * about them, so nothing is invented for them, and the fallback is named
    * here rather than hidden behind a default.
    */
+  /**
+   * THE MASSING SOLID'S WALL INDEX — the mock's own `WI`, which this file was
+   * allocating as a zero array and `drawMassing` was throwing away.
+   *
+   * `part3.html` L5710 builds `WI[b]` and `RI[b]` together from one rule: the
+   * **locale legend**, biased by distance from downtown and by which side of
+   * the Ferry-to-Castro line the block sits on, over a seeded per-block noise.
+   * `RI[b]` was then OVERWRITTEN by the measurement (`PA.bidx`, 5,043 of
+   * 5,404 blocks) and `blockRoofIdx` above carries that. **`WI[b]` was never
+   * overwritten, because nothing published measures the side of a block**, and
+   * the mock's own comment says what the legend is for: *"the bias by locale
+   * is what gives the wide shot a colour range instead of one beige."*
+   *
+   * So this is a legend and it is declared as one, exactly as the same rule is
+   * declared where `decodeBld` uses it for the 3.8 % of footprints that join
+   * no roll row. It is the SAME FUNCTION — `legendTones` in `palette.ts`,
+   * whose four candidate arrays are `part3.html` L5716-5721 element for
+   * element — read here on the block's own centre rather than a building's,
+   * and over `buildURND`, which is byte-for-byte the mock's own `RND` (the
+   * same xorshift, the same 19060418 seed).
+   *
+   * Cached: it is a pure function of the block table and cannot change.
+   */
+  private blockWallIdx(bl: BlockTable): Uint8Array {
+    const hit = this.blockWall;
+    if (hit && hit.length === bl.n) return hit;
+    const out = new Uint8Array(bl.n);
+    const tone = this.tone;
+    // the legend is measured against the three named points; with no tone
+    // context there is nothing to measure against and every block keeps 0
+    if (!tone) return out;
+    const rnd = buildURND(bl.n);
+    for (let b = 0; b < bl.n; b++) {
+      const r = Math.hypot(bl.cx[b] - tone.dtx, bl.cy[b] - tone.dty) / tone.maxR;
+      const side =
+        (bl.cx[b] - tone.fx) * tone.mvy - (bl.cy[b] - tone.fy) * tone.mvx < 0
+          ? 0
+          : 1;
+      out[b] = legendTones(r, side, rnd[b]).wall;
+    }
+    this.blockWall = out;
+    return out;
+  }
+
   private blockRoofIdx(bl: BlockTable): Uint8Array {
     const hit = this.blockRoof;
     if (hit && hit.length === bl.n) return hit;
