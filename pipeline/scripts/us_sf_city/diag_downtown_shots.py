@@ -13,7 +13,7 @@ OUT = os.environ.get("D1_SHOTS") or os.path.join(tempfile.gettempdir(), "d1-down
 TAG = os.environ.get("D1_TAG", "shot")
 os.makedirs(OUT, exist_ok=True)
 URL = "http://localhost:3000/us/city/sf/the-city"
-PRESETS = {"city": 0, "district": 1, "block": 2}
+PRESETS = {"city": 0, "district": 1, "block": 2, "street": 3}
 # The Transamerica Pyramid, 600 Montgomery, through projection.ts's proj() at
 # the 315 deg bearing: world (3101, 3919) -> plane (3798, 2328).
 TOWERS = "3798,2328"

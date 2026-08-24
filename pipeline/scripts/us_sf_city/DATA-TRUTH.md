@@ -1473,3 +1473,152 @@ Three buildings in the entire Tall Building Inventory exceed 255 m. **0.17 % to
 remove a correctness ceiling permanently, rather than 18 bytes to route around
 it.** Recommended: `u16`, done on its own, with the manifest's `maxDrawnM` and
 `clippedAtMax` dropping out of `meta.heightNote` when it lands.
+
+---
+
+## 15. Streets: the detail is real, published, ported — and gated off
+
+> *"Streets have zero detail. In the mockup they did — was that detail random or
+> did it come from data that was there?"*
+
+### 15.1 Every mark in the mock's street, and where it comes from
+
+Read out of `gen/part3.html` §BLOCK STREETSCAPE and checked against
+`streets.ts`. **Nothing in the mock's street was invented geometry.**
+
+| mark | source | published? |
+|---|---|---|
+| right-of-way surface | `h8n7-e4ns`, 22,191 polygons, 29.09 km² | **published area** |
+| carriageway | ROW **minus** every closed kerb ring that meets it | **published set operation**, nothing offset or buffered |
+| footway | the rest of the ROW — 7.66 km² | **derived from two published files** |
+| kerb line | `emxt-b6yg`, 1,961.6 km drawn | **published** |
+| islands / medians | `emxt-b6yg`, 1,120 rings | **published** |
+| public stairs | `aw7j-9354`, 268 runs | **published run** |
+| unpaved vs paved | Board of Supervisors paving order, `imp` | **published year**, 2,510 rows |
+| kerbed vs not | Board kerbing order, `krb` | **published year**, 2,538 rows |
+| street class | `3psu-pn9h` `classcode` | **published** |
+| width, footway width | `h8n7-e4ns` | **published** |
+
+**The independent check already in the file**: the published Sidewalk Widths
+study (`4g86-grxu`, AECOM 2014) gives 8.98 km² of footway against this
+derivation's 7.66 — two files, 14 % apart, neither used to build the other.
+And ROW 29.09 + assessor blocks 93.04 = 122.1 km² against San Francisco's
+published land area of 121.4.
+
+**What IS a uniform treatment, and must not be called data:** the four tones
+themselves; the extent tier's single blended tone (the 73.7/26.3 ratio is off
+this file's own km², but the colour is chosen); and the stair band width —
+`aw7j-9354` publishes a run and no width, which `streets.ts` already states as
+*"every stair in the city gets the same two numbers and neither is a
+measurement of that stair."*
+
+**So there is nothing to port.** Production has all of it: `periodOf`, the
+unpaved tone, the kerb, the islands, the stairs. The constants are identical to
+the mock's, line for line.
+
+### 15.2 The reason it looks like nothing: the gate, measured
+
+The surface tier is gated on **the footway band's own projected width**, and
+the city's median footway is 3.16 m. At `ST_KPROJ` = 0.9306:
+
+| zoom | cam.scale | ROW px | footway px | what a street actually draws |
+|---|---|---|---|---|
+| whole city | 0.068 | 1.32 | **0.20** | nothing — a line, no surface |
+| district | 0.140 | 2.72 | **0.41** | **one flat tone.** No roadway, no footway, no kerb |
+| block | 0.410 | 7.97 | **1.20** | surface only just fading in |
+| street | 1.639 | 31.87 | 4.82 | roadway + footway + published kerb |
+
+**Three of the five zooms draw a street as a single flat tone or a bare line.**
+That is Daniel's "zero detail", and it is not a data problem or a port problem —
+it is `ST_SRF_PX = 1.0` doing exactly what it was set to do.
+
+It was set there for frame time, and the measurements are in the file: the
+extent gate at 1 px promoted 11,917 rights of way at whole-city zoom for
+**126 ms**; the surface gate at 0.5 px cost **+211 ms** at district and was
+raised to 1 px for +56 ms. Those were correct decisions against the frame
+budget of the time. **What has not been re-measured is whether that budget is
+still the binding one** — and the decision to re-tune is a rendering call, not
+a data call, so it goes back to whoever owns the frame.
+
+### 15.3 Highways: in the data, half-drawn, and the ramps are simply absent
+
+`3psu-pn9h` classcode, measured against the street names it carries:
+
+```
+classcode 1 = FREEWAY MAINLINE   110 centrelines
+              HWY 101 N/S, I-280 N/S, I-80 E/W
+classcode 6 = FREEWAY RAMPS      109 centrelines
+              I-280 S OFF RAMP, HWY 101 N ON RAMP, I-80 W OFF RAMP …
+```
+
+The shipped centreline set is classcode **0–4** — 4,895 lines, of which
+**110 are class 1**. So:
+
+- **the freeway mainline draws, as a flat painted line on the ground;**
+- **all 109 ramps are absent from the map entirely** — no centreline, and the
+  right-of-way file gives class 6 only 29 polygons;
+- the right-of-way surface file covers only 44 class-1 polygons, so the
+  freeway has essentially no surface anywhere. The `cov` mask exists precisely
+  to keep their line at every zoom — `build_surface.py` names them: *"park
+  roads, the Great Highway, Sloat, the freeways"* are 534 centrelines with no
+  published ROW area, and without the mask they would vanish entirely.
+
+**And they are structures, not paint.** I-80 crosses the Bayshore on a viaduct,
+280 ends on an elevated stub, and this map draws both as a stripe on the dirt.
+That reads as wrong to someone who cannot say why, and the fix is not in the
+street layer — an elevated deck needs a height, and the only published height
+over those centrelines is the 2010 LiDAR first-return surface, which **did**
+see the decks. That is a real, measurable route and it is not attempted here.
+
+**The demolished freeways** — the Embarcadero and the Central — are not in
+`3psu-pn9h` at all, because it publishes what is there now. Showing them come
+down would need historical geometry from a different source, and the Board's
+own Journal is the obvious candidate. Worth doing, not costed here.
+
+---
+
+## 16. The three horizons, and what the record actually supports
+
+> *"Why is 'years covered' to 2013, film to 2018, but timeline all the way to
+> 2025? It should all be aligned, ideally to 2025."*
+
+**It should be aligned, and it should not be aligned to 2025.** Every series
+here thins to nothing years before its last row. The last row is not the
+horizon; it is the outlier.
+
+| series | source | ends "at" | **genuinely carries to** | how it thins |
+|---|---|---|---|---|
+| **Board decisions** | Journal of Proceedings, 91,391 placed | 2013 | **1999** | 1990s **4,185** rows → 2000s **26** → 2010s **49**. 2013 holds **seven rows** |
+| **building year** | assessor roll, on 166,166 footprints | 2025 | **2016** | ≥100 rows/yr through 2016; 2017 **29**, 2024 **6**, 2025 **3** |
+| **footprint outline** | `sf13m_BldgFoot_withZ_20161005i` | — | **Oct 2016** | one compilation. A building finished after it has no footprint at all |
+| **building height** | Pictometry LiDAR | — | **2010** | one flight |
+| **street acceptance** | Board, per right of way | 2023 | **2015** | ≥20 rows/yr through 2015; 12,146 of 22,191 rights of way have a year at all |
+| **paving order** | Board, `imp` | 1947 | **1947** | 2,510 rows, and it genuinely stops |
+| **assessor roll** | 2025 secured roll | 2025 | **2025** | the roll is current — but it dates *parcels*, not construction |
+
+### 16.1 The two findings that matter
+
+**"Years covered to 2013" is carried by seven rows.** The Journal corpus holds
+26 decisions in the entire 2000s against 4,185 in the 1990s. The corpus ends at
+**1999** and everything after is a scatter. This is the exact failure the
+number was supposed to prevent.
+
+**The fabric cannot go past 2016 whatever the rail says**, and two independent
+limits agree on it: the assessor's year series thins below 100 rows/yr after
+2016, and the footprint compilation *is* October 2016. A building completed in
+2020 has no outline to draw and no height to draw it at. Setting the rail to
+2025 does not make the city grow — it makes nine years of flat nothing.
+
+### 16.2 What I would hand the film agent
+
+- **The rail should stop at 2016**, or run to 2025 **only** with a visible
+  statement that the fabric stops in 2016 and the record thins after 1999.
+- **"Years covered" should read 1999, not 2013**, or read "1906–1999, with
+  scattered rows to 2013".
+- **The film's 2018 is the closest of the three to honest** and is still two
+  years past the fabric.
+- Demolitions are the one series I could not measure from the shipped chunks —
+  the block fiche states its own record "begins in 1980", and that claim should
+  be checked against its source by whoever owns it.
+
+**Nobody should set a horizon to a year the data reaches with single digits.**
