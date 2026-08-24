@@ -9580,3 +9580,95 @@ one.
 
 **The hero register is fourteen well-sourced records' worth of work and still
 thirteen heroes**, which is the trade §21.24 asked for.
+
+---
+
+## 42. Block G3 — what the frames show, what is locked, and the one line that is somebody else's
+
+### 42.1 The glyphs read at their shipped size, and here is the proof at 1:1
+
+`.parity/g3/out/kzoom3.png` is a 4× crop of `k3-2-dist.prod.kind3.png` — the
+Embarcadero district camera — with **nothing rescaled in the render**. Two
+names, side by side, from the same register:
+
+> **`Telesis Tower`** carries a tower with six lit windows. **`Millenium
+> Tower`** carries a house with a door. Both come from `5kya-mfst`'s own
+> `occupancy` field — *Office (Management, Information, Professional Services)*
+> and *Residential* — and at 8.4 px the two are not confusable.
+
+That is the whole claim of §40.4 tested the only way it can be: at size, on the
+fabric, next to each other. `out/kzoom1.png` and `out/kzoom2.png` do the same
+for `park` and `school`, and `out/kcrop-embar.png` is the frame they came off —
+Coit Tower, the Alcoa Building, the Ferry Building, the Italian American Bank,
+the Old U.S. Mint and City Hall all carrying the **diamond**, Telesis, Millenium,
+Mission Creek Park and Yerba Buena Natural Areas all carrying a **glyph**, and
+the two lanes reading apart without a legend.
+
+### 42.2 What is locked, and where
+
+`src/lib/city/place-kinds.test.ts`, **21 tests**, on `landmarks.test.ts`'s rule
+— what is asserted is a *decision about the record*, so it is asserted against
+the shipped files and the pipeline's own source, never restated where the two
+can drift:
+
+* the families are read out of `place_kinds.py`'s `FAMILIES`, out of
+  `base/places.json`'s `KIND` and out of the generated table, and all three
+  must be the same list **in the same order** — the chunk's `kind` column is
+  1 + that index, so order is load-bearing;
+* the census comes out of the manifest: **684** from the two registers with no
+  kind, and the per-family counts summing **exactly** to the coverage, so no row
+  is counted twice;
+* **every family draws a path and no two families draw the same path** — a
+  glyph that duplicates another glyph is worse than no glyph;
+* a designated place is never given a glyph *even when handed one*;
+* `PlaceLabel.kind` wins over the table, so the migration stays one line;
+* Sutro Tower's shipped top is 977 ft, with its obstacle number and both halves
+  of its cross-check on the record;
+* every rejection still carries a number, and the Cliff House one carries the
+  **corrected** number.
+
+**And that suite found a real defect in its first run.** The `water` glyph's
+Bézier control points reached **1.12** of a box whose half-width is 1.0. The
+label's own width is computed from that box, and the ink budget is *exact* — so
+a glyph whose hull leaves its box **lies about what it costs the frame.** It was
+also two 1 px ribbons with a 0.7 px gap, which at 8.4 px is one grey smudge.
+Redrawn as a body with a scalloped top: one silhouette, detail only on the top
+edge, every control point inside the box.
+
+**449 tests green**, typecheck clean, lint clean.
+
+### 42.3 What still needs Daniel, in order
+
+1. **Rebuild :3100 on `e704ea4d`.** The block, street and building cameras have
+   not been judged for either half of this block. Three separate attempts died
+   on `capture.prod_ready`'s own gate against the dev server at :3000, which is
+   being recompiled continuously — §40.5 and §41.4 say so where the frames
+   would otherwise be. The city and district cameras ARE judged and are in
+   §40.5 and §42.1.
+2. **`CityMap.tsx::decodeMarks`, one line**, filed as BUGS §33 with the exact
+   patch. `base/marks.json` already ships `k` + `KIND`; reading it deletes
+   `place-kinds.generated.ts` and takes 54.6 KB of bundle with it.
+3. **Nothing else is pending.** The seed's `rejected` list is the record of what
+   was checked and refused, and it is now seven entries with a measurement on
+   each.
+
+### 42.4 The honest summary of the ask
+
+Daniel: *"make sure every landmark or place that's named on the map has its
+unique render."*
+
+**A unique render for 2,197 places is not in the record and this block did not
+pretend otherwise.** What the record pays for, and what now ships:
+
+| | |
+|---|---|
+| a **kind of thing** on the mark | **1,342 of 2,196**, 61.1 %, from six registers' own category fields |
+| a **status** on the mark | 339, Article 10, the diamond that was already there |
+| **no mark information at all** | 684 from Article 10 + Article 11 — a name and a status and no kind — plus 117 whose published value is not a kind of place. **Churches are in this group and cannot leave it from any source in this pipeline.** |
+| a **hand-drawn hero** | still **13**, and one of them is now drawn to the height its own record has always cited |
+
+The thirteen did not become forty, and the reason is the test §21.24 set and
+§21.15 enforced: **the record has to support the form.** What the sweep for
+more heroes actually produced was three corrected or new rejections, the
+closing of §21.15's last escape by measurement — and, in the same run, the
+discovery that the most visible object in San Francisco was 88 m short.
