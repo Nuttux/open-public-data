@@ -9760,18 +9760,59 @@ change — `/Users/daniel/code/qipu-prod` on :3100 (before, untouched) and
 `/Users/daniel/code/qipu-g1` on :3300 (after). Camera asserted after every
 shutter, `.parity/g1pair.py`.
 
+```
+  camera                 buildings carrying a facade      DRAWN WALL AREA
+                              before -> after              before -> after
+  NB street,  z 42.9          88.1 % -> 95.0 %             84.8 % -> 96.0 %
+  NB block,   z  7.2          10.9 % -> 12.9 %             31.8 % -> 36.5 %
+  NH block,   z  7.2          11.4 % -> 14.0 %             30.1 % -> 36.0 %
+  NH street,  z 42.9          89.7 % ->   (not landed; the shot hung on the
+                                           after build and was killed for time)
+```
+
+**Read the AREA column, not the count.** At street zoom in North Beach the
+drawn wall area that carries openings goes **84.8 % to 96.0 %**, and the 4 %
+left is the measured party wall (§43.9). At block zoom the gain is 4.7 and 5.9
+points of area on a base of 31.8 and 30.1 — real, and small, because block zoom
+refuses on SIZE and this change does not touch a size refusal. The count column
+moves less than the area column at both zooms, which is the same fact §43.3
+measured from the other side: **the buildings the roll does not count are
+bigger than average.**
+
 **North Beach, street zoom, 2025 — Daniel's own frame.** `out-g1/
-NB-str.before.pair.png` against `out-g1/NB-str.aft.png`, and the crop
-`/tmp/nbstr-stack.png` is the one to look at: the large grey mass beside
-Francisco Middle School is **one blank polygon in the before frame and carries
-three rows of openings in the after**, and it is not alone on the blockface.
-**1.72 % of the frame's pixels move**, which is the right order for a change
-that touches 8.7 % of buildings and only the walls of the ones facing the
-reader.
+NB-str.before.pair.png` against `out-g1/NB-str.after.pair.png`, cropped to the
+window (300, 0)-(1100, 600): the large grey mass beside Francisco Middle School
+is **one blank polygon in the before frame and carries three rows of openings
+in the after**, and it is not alone on the blockface. **1.72 % of the frame's
+pixels move** — 1.23 % at the block camera — which is the right order for a
+change that touches 8.7 % of buildings and only the walls of the ones facing
+the reader.
 
 **And the frame is otherwise byte-stable.** Nothing else in the change can
 move a pixel: no height, no roof, no colour table, no threshold. The 1.72 % is
 all openings, and every one of them is on a wall that was blank.
+
+### 43.8b What it costs, with the CONTROL §36.7 did not have
+
+`.parity/g1cost2.py`, 25 renders per sample, `getImageData(0,0,1,1)` forced
+inside every one because Canvas 2D is deferred (BRIEF §6). The control is the
+**same build measured twice**, which is the thing §36.7 was missing when it
+read two of three cameras as FASTER with a feature ON:
+
+```
+  camera      before   before AGAIN   after   control spread   after - before
+  NB street    177.3        150.0     158.1        27.3            -19.2
+```
+
+**The control spread is 27.3 ms — 15 % — and the treatment difference is
+smaller than it in both directions.** The after build is 19 ms faster than one
+before run and 8 ms slower than the other. So the honest statement is: **the
+cost of this change is not resolvable above the instrument's own variance, and
+that variance is 27 ms.** It is not "free" and it is not measured to be
+anything; what is measured is the bound.
+
+That is the right order for the work added — the facade emitter runs on 13 %
+more wall area at this camera and it is one of a dozen passes in the frame.
 
 ### 43.9 What is NOT fixed here, said plainly so it is not looked for twice
 
