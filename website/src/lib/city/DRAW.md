@@ -2911,3 +2911,356 @@ means say the same thing:
 The city fabric is uniformly **+16 of 255 too bright at every zoom**, and the
 ground-only column above says it is not the ground. It is the buildings and the
 street surface over it. The buildings are not these files.
+
+---
+
+## 17. Block B7 — the hit test, and the data ceiling under it
+
+`components/us/city/scene.ts` · `lib/city/{buildings,facades,roofs,landmarks,palette}.ts`
+
+### 17.1 `pick()` marched the terrain, and the city is not the terrain
+
+BUGS.md §1, and the worst defect in the piece: **three clicks in four on a
+built-up frame returned nothing.**
+
+`CityScene.pick()` marched z downward from 320 m and stopped at the first
+crossing of the **DEM**. Buildings were not in the march. A reader who clicks a
+roof is clicking a surface `h · ZEXB` up the screen from the ground under it, so
+the resolved world point was the ground *behind* the building. The arithmetic,
+at band 2: the pixel's line runs `ZEX / (sA · √2)` = **3.37 world metres per
+unit of z**, and a metre of built height is `ZEXB/ZEX` = 0.8 of a unit — so a
+15 m storefront threw the answer **40 m up-street**, against a ~100 m block with
+a ~21 m street beside it.
+
+Measured over every 8th pixel of the stage, 14,432 samples per camera, film
+asserted off at the shutter (`.parity/b7pick.py`):
+
+| stop | before | after |
+|---|---|---|
+| street | 38.0 % | **56.3 %** |
+| block | 45.9 % | **68.8 %** |
+| district | 59.3 % | **86.1 %** |
+
+Three things landed, in the order they were measured, and the middle one is the
+one that mattered least:
+
+1. **The block prism.** March the massing tier's own solid — the published ring
+   extruded to `massRow.hgt[b]` over `elevM` at its centroid, which is exactly
+   what `drawMassing` paints. 38.0 → 47.4 / 45.9 → 57.8 / 59.3 → 73.7. The
+   blocks went behind a uniform grid (`blockHashOf`, 160 m cells, CSR buckets)
+   because the old linear sweep — 5,404 centroid rejections and a
+   `[number, number][]` allocated per candidate — is not affordable once per
+   march step. **The whole sweep got 5× faster while doing more work**: 165 ms
+   → 32 ms for 14,432 picks.
+2. **The footprints.** The block plate is not enough and the reason is a
+   published fact worth writing down: **`th` is an area-weighted mean over a
+   block's NON-solo members, and everything 20 m or over at its derived top is
+   a solo, so the largest `th` in the whole city is 19 m and the mean is 7.4**
+   (measured, all 5,404 blocks, 2025). Marching the plate corrects a 15 m
+   storefront by 7 m. So `footSolid` builds the same tables `paintFootprints`
+   draws from — `base/solo` plus the `bldg` chunks the view yields — and files
+   every footprint under its bbox with its roof in the march's units and the
+   block whose ring contains its **centroid**. No vertex is copied. Worth
+   +1.2 to +2.1 points, no more, and the reason is §17.2.
+3. **The right-of-way snap**, BUGS §1's own second candidate, and the largest
+   single win: +8.9 at the street stop, +11.3 at block, +10.3 at district.
+
+### 17.2 The ceiling is in `base/blocks`, and it is half the city
+
+**`base/blocks` does not tile San Francisco.** 5,404 rings, 93.0 km² of ring
+polygon (checked against the published `area` column: ratio 1.008, so the
+geometry is faithful — the rings are not shrunk), against the city's 121.5 km²
+of land. Drawn over the street frame — `.parity/out-b7/b7-rings-street.png`,
+every ring in magenta over the real page — **entire blocks in Russian Hill have
+no ring at all**, alternating with blocks that do.
+
+That is what the dead red islands in `b7-pm4-street.png` are, and it is not a
+hit-test bug. It also explains `base/solo`: 15,261 footprints, of which
+**13,813 (92 %) fall inside no ring at all**, brute-forced against all 5,404
+rings, median 49.8 m from the nearest one. `drawMassing`'s own doc calls these
+"buildings that stand on land the assessor does not divide into blocks"; the
+measurement says the land in question includes ordinary residential blocks in
+the middle of the city.
+
+**Hand-off to whoever owns the chunk encoder:** a `base/blocks` that covered the
+city would move the street stop from 56 % to something near 90 % on its own, and
+nothing in the client can substitute for it.
+
+### 17.3 What the snap is bounded by, and why two bounds
+
+A footprint the assessor puts on no block **occludes** — the pick returns −1
+rather than the block behind it. Measured both ways: letting the ray pass
+through such a footprint buys 1.8 points at the street stop and buys them by
+answering with a block up to a kilometre up-street (the march traverses ~1.1 km
+of world distance end to end), which is BUGS §1's *second* complaint — the pin
+and the record disagreeing — re-introduced to flatter the first.
+
+The snap that replaces it is bounded in **world metres** at 10.5 — half of San
+Francisco's standard 68.6 ft right of way, so it reaches a street's centre line
+and no further — and in **screen pixels** at 18, which is a guard rather than a
+dial: 10.5 m is 18.2 px at the street stop and 0.6 px at the whole-city stop, so
+the world bound governs at all four of the page's stops and the pixel bound only
+exists to stop a deeper zoom turning a fixed world distance into a snap the
+reader could see happen. Outside the bound the pick still returns −1, so open
+water still answers nothing.
+
+### 17.4 `sg.z(i, j) > 0` is off the shallows predicate (§16.3, closed)
+
+One deletion in `scene.ensurePlates`. `isLandOf` alone is the reference's whole
+land test. Every made-land parcel in the city reads 0 m on the 110 m surround
+grid — Treasure Island, the Marina fill, Mission Bay, the Embarcadero seawall —
+so the BFS called them water and laid the shallows plate opaque across them.
+
+## 18. Block B8 — the street names, and three chunks with no reader
+
+The brief is `.parity/FOCUS.md`. **The single most visible gap on the reference
+sheet was that the mock writes street names and this build wrote none**, on a
+layer that has been fully encoded since B6 and read by nobody since.
+
+### 18.1 What was on screen before, and what is on screen now — measured
+
+`.parity/b8shot.py`, five cameras under a `b8-` prefix, `MOCK_BASE` gated on the
+value (trap 6; `capture.mock_open` still gates on stability alone). The mock's
+own street names are identified **by the fonts its street lane sets** —
+`${LB_WT[rk]} ${(10.5|11|12) * LB_SIZE[rk]}px ui-sans-serif`, three strings no
+other lane on the page uses.
+
+    camera                     mock   prod before   prod after
+    b8-1-city-2018   z 1.0      10         0            9
+    b8-2-dist-dtown  z 2.9      30         0           26
+    b8-3-blk-dtown   z 7.2      37         0           38
+    b8-4-str-dtown   2.0 px/m    6         0            1
+    b8-5-bld-civic   6.0 px/m    0         0            0
+
+**"Before" is 0 at every camera and it is 0 by construction**, not by accident:
+`grep -rn 'streetLabels' src/components` returns nothing, and it returned
+nothing on the day the chunk shipped.
+
+On the whole-city frame the mock writes GEARY BLVD, 3RD ST, ALEMANY BLVD, CESAR
+CHAVEZ ST, SAN JOSE AVE, 19TH AVE, LOMBARD ST, GREAT HWY, SKYLINE BLVD and
+SLOAT BLVD. This build now writes seven of those ten, and MONTEREY BLVD and
+PAGE ST instead of LOMBARD ST, SAN JOSE AVE and SKYLINE BLVD. The block frame
+(`out-b8/b8-sheet.png`, middle and right panels) goes from a texture with no
+word on it to COLUMBUS AVE, GEARY ST, O'FARRELL ST, HOWARD ST, MARKET ST, THE
+EMBARCADERO, HARRISON ST, 6TH ST and 10TH ST — which is the difference between
+a picture of a city and a map of one.
+
+**The harness draws the layer with the real module and the real data and does
+not touch `scene.ts`**, which another agent owns tonight: `labels.ts` is
+bundled with esbuild into `.parity/b8/b8.js` and run against
+`RR().data.streetLabels()`, `RR().cam`, `RR().scene.proj`, `RR().scene.places`
+and `RR().scene.blocks`, into the visible canvas after the blit, with the buffer
+asserted 1:1 with the viewport first. Same module, same chunk, same camera.
+
+**And the order is the finding, twice over.** The first run put the street pass
+into the collision grid the finished frame left behind — i.e. after every
+landmark and every neighbourhood — and the wide shot came back with **4** names,
+without GEARY BLVD or 3RD ST. Run in the reference's own order
+(`placeNames(designated) → spine → hoods → arterials → placeNames(named) →
+locals`) into a fresh grid, the same camera gives **9**. §9 said the order
+carries the priority; this is that sentence with a number on it.
+
+### 18.2 The street camera's gap is the LEDGER, and it is measured name by name
+
+`.parity/b8why.py` lists every label whose rank passes the band gate and whose
+anchor is within 200 px of the frame, on both builds, at the street camera.
+**Fourteen candidates on each side, the same fourteen names, agreeing on X and
+Y to within one pixel** — which is the strongest check yet that
+`base/street-labels`'s `wx`/`wy` are the reference's own `G.labels.x/y`.
+
+Of the five the mock writes and this build does not:
+
+- **JESSIE ST (X 947), JESSIE EAST ST (1114) and STEVENSON ST (1146) are under
+  the 288 px ledger.** `part3.html` L7010 measures its margin off
+  `cv.clientWidth` and in the mock the canvas IS the visible strip; production
+  paints an opaque panel over the canvas's right edge, so those three are not
+  names the reader has. That is §16.4's clause applied to the pass it came
+  from, it is deliberate, and it costs about a quarter of the frame's
+  candidates at close zooms.
+- **STOCKTON ST and CYRIL MAGNIN ST are inside the strip and lose their box to
+  the designated place lane**, which runs first. Production's place register
+  carries **2,192** places against the reference's 995, so at street zoom the
+  first lane spends more of the frame than the reference's does. That is the
+  places layer's number, not this one's.
+
+### 18.3 `minLen`'s three magic numbers, and the two the reference left dead
+
+The gate is `nameFitsItsStreet` — *a name is only written where the thing it
+names is at least as long as the name* — and it is `part3.html`'s own
+replacement for `minLen` 1100 / 420 / 150 m, which at the three presets are
+75 / 82 / 74 px against a name that measures 70-90 px.
+
+Two things in the reference are **defined and never read**, and both are worth
+recording because the port had inherited one of them as if it were live:
+
+- **`LB_INK`.** `part3.html` L6723 defines `["rgba(38,30,16,.90)", ".74",
+  ".54"]` beside `LB_SIZE` and `LB_WT` and then fills every rank at
+  `rgba(38,30,16,.84)`. Two occurrences in the file: its definition and
+  nothing. **This port applies it**, which is a deviation of 0.06 alpha on the
+  wide shot (rank 0 only) and up to 0.30 on the block frame, where a local
+  street name is the thing that should be quietest. It is kept because it is
+  the three-treatment hierarchy §9 states and because the block frame carries
+  38 names, but it is a deviation and it is declared.
+- **`LOCAL_SHARE`.** Deleted in the reference in the same edit that made the
+  budget ink rather than a count, with the reason: *the pass runs in the city's
+  own published class order, so the arterials have first refusal by
+  construction and there is no remainder to protect.* `LOCAL_SHARE_MAX` stays
+  exported with that argument attached to it; nothing reads it.
+
+And **`spineOf` was missing its second half**: `part3.html` L6683 keeps a `seen`
+set of NAMES, because Geary is 214 published centreline segments and 15 label
+stretches and without the dedup the seven spine slots go to seven pieces of two
+streets. `spineOf` now takes an optional `nameOf`; the seven that come out of
+the shipped table are read off the data and there is no list.
+
+### 18.4 The three ink budgets, measured, and NOT merged
+
+FOCUS.md asks whether the street, place and neighbourhood names should share one
+pool. **The reference holds three separate pools and this port now matches it**,
+so here is what each is worth rather than an argument:
+
+    lane                    cap        measured, this build
+    street names          0.0750       0.0199 city · 0.0503 district · 0.0741 block
+    place names (x2)      0.0152 ea    0.0273-0.0295 total (§9)
+    neighbourhood names   none         0.0304 is the number they were MEASURED at
+
+- **The street cap binds only at the block frame** (0.0741 of 0.0750). At the
+  whole-city camera the layer spends 0.0199 and is stopped by the collision
+  grid and the length rule, not by the budget — so lowering the cap would do
+  nothing to the frame Daniel judges by and raising it would do nothing either.
+- **The district frame carries more name-ink than the whole-city frame**:
+  0.0503 + ~0.028 + hoods against 0.0199 + ~0.028 + hoods. That is real, it is
+  the reference's own behaviour (its cap is one number for all three bands),
+  and it is the thing a single shared pool would change.
+- **Merging them is a change to what the explorer draws, not a port of it**, and
+  it would need a budget on the hood pass, which has never had one. Left alone,
+  deliberately, and now with the three numbers written down.
+
+### 18.5 `base/street-misc` — 1,120 islands and 268 stairs, decoded, drawn
+
+`drawStreetMisc` in `streets.ts` is `part3.html` L6608-6672. Two clauses:
+
+- **the islands are drawn as FOOTWAY, because that is what a refuge is**, and
+  they publish no width of their own to tier on — so the gate is the frame's
+  median footway band. The reference's `3.16` at L6612 **is
+  `manifest.streets.stats.fw_p50`**, the city's own median published footway,
+  and it is passed in rather than written into the module: that is FOCUS.md's
+  "seven constants" pattern, found once more.
+- **the stairs are an honest global treatment and are declared as one.**
+  `aw7j-9354` publishes the run and neither a width nor a tread count, so every
+  stair is 2.2 m wide with a tick every 0.9 m and **neither number is a
+  measurement of that stair.** Drawn only where a tread is more than two pixels
+  from the next.
+
+`streetMisc()` is null until the `strt` tier lands at z = 1.75, which is below
+both gates, so the wide shot cannot change.
+
+### 18.6 The depth plate is 417 x 281 against 1665 x 1121, and the blocker is named
+
+`base/water0` is 117,177 of the 846,819 published NOAA nodes. `water1` carries
+the other 729,138 in 26 tiles, on the wire since P2, and
+`grep -rn 'water1' src/` returned the manifest reader and nothing else.
+`buildDepthPlate` in `water.ts` assembles them — one canvas at `meta.nw x
+meta.nh`, each tile `putImageData`'d at its own published `gx`/`gy`, a missing
+tile left transparent because a missing tile is all land and the encoder drops
+it for that reason, and a tile whose byte count disagrees with its own `w * h`
+throws naming the tile.
+
+**`blitGridPlate` needed no change**: it already takes `texelsPerCell`, and
+`mul` is 4. 1665 = 416x4 + 1 and 1121 = 280x4 + 1, so every fourth texel of the
+refined plate IS a node of the coarse one — which is what `assertRefinement`
+already refuses to proceed without.
+
+**Two things block it and neither is in these files.** `water1`'s tier `minZ` is
+**3.0**, so the tier is never fetched at the whole-city or district cameras and
+those two frames cannot be helped without a MANIFEST change — and that change
+costs 236,561 gzipped bytes against the base tier's 689,379, so it is a decision
+about the first paint. And the plate is assembled in `scene.ensurePlates`. The
+call site is six lines and it is in §18.8.
+
+### 18.7 The +16 of 255, ablated
+
+§16.0 measured production brighter than the reference at every camera and the
+ground-only column said it is not the ground. The street surface is the next
+largest area in the frame and it is in these files, so `.parity/b8bright.py`
+ablates it on both builds at once — `?layers=-streets` against `STSF.on = 0` —
+at the same year, preset and absolute scale.
+
+    camera            layer off      mock mean R      prod mean R    d
+    b8b-city z 1.0    as shipped        181.8            187.9      +6.1
+                      -streets          181.8            187.9      +6.1
+    b8b-dist z 2.9    as shipped        150.5            162.9     +12.4
+                      -streets          150.9            163.7     +12.8
+    b8b-blk  z 7.2    as shipped        152.1            159.0      +6.9
+                      -streets          152.5            161.2      +8.7
+
+**IT IS NOT THE STREET SURFACE.** Take the layer off both builds at once and
+the gap does not close — it OPENS, by 0.4 at district and 1.8 at block. The
+published right of way is slightly DARKER than the fabric it covers, so the
+street layer is pulling production TOWARDS the reference and removing it makes
+things worse. At the whole-city camera the two rows are identical to the tenth
+of a unit, because neither build draws a street surface there at all
+(`streetsResolve` and `STSF`'s own gate agree, which is itself worth having
+measured).
+
+**The built layer is where the frame's value is decided**, and this is the
+number to hand on:
+
+    camera            prod as shipped   prod -buildings   the built layer is worth
+    b8b-city                187.9            193.4              -5.5
+    b8b-dist                162.9            186.2             -23.3
+    b8b-blk                 159.0            199.7             -40.7
+
+That is **not** a paired ablation — the mock publishes no equivalent switch for
+its buildings, so the right-hand column is production against a reference that
+still has its city on, and the `d` of +35.7 / +47.6 in `b8-bright.json` means
+nothing on its own. What it does establish is the size of the term: at the
+district camera the built layer moves the frame 23.3 units and the whole
+disagreement is 12.4, so **a built layer 2 % too light accounts for all of it**,
+and neither the ground (§16.1's ground-only column) nor the streets (above) can.
+
+**Hand-off, and it is not these files:** the residual is in `buildings.ts` /
+`roofs.ts` / `facades.ts` / `palette.ts`. The instrument is
+`.parity/b8bright.py` — one prod page, `scene.layers` set at RUNTIME rather than
+through `?layers=` on the URL, because re-opening the page per ablation lost the
+canvas under `prod_shoot`'s poll loop three runs out of three.
+
+
+### 18.8 The call sites, which are all in `scene.ts` and none of them here
+
+`scene.ts` is another agent's tonight. Four one-place changes, in the order
+`scene.paint` would take them:
+
+```ts
+// paintStreets, after drawStreetSurface
+const misc = this.data.streetMisc();
+if (misc) drawStreetMisc(f, misc, t, { fwMedianM: stats.stats.fw_p50 });
+
+// ensurePlates, beside the base/water0 branch
+const tiles = this.data.manifest.chunks
+  .filter((c) => c.kind === "water" && c.tier === "water1")
+  .map((c) => ({ e: c, f: this.data.get(c.k) }))
+  .filter((t) => !!t.f);
+const fine = tiles.length ? buildDepthPlate(meta, tiles, makeCanvas) : null;
+if (fine) { this.depthPlate = fine; this.depthTexels = meta.mul; }
+// ...and `depthTexels: this.depthTexels ?? 1` at the drawWater call
+
+// step 8, THE NAMES — the street lane is three lines inside the existing pass
+const tbl = this.data.streetLabels();
+const sn = tbl
+  ? new StreetNamePass(f, tbl, this.labelGrid, (x, y) => t.elevM(x, y))
+  : null;
+//   placeNames(designated)  ← already there
+sn?.draw("spine");
+//   drawHoodNames           ← already there
+sn?.draw("arterials");
+//   placeNames(rest)        ← already there
+sn?.draw("local");
+st.labels += sn?.placed ?? 0;
+```
+
+and §15.7's centreline wiring, still open, still one call site.
+
+**The order is not cosmetic.** Measured on the whole-city camera: the street
+lane run last, after every landmark and every neighbourhood, places 4 names and
+loses GEARY BLVD and 3RD ST; run in the three places above it places 9.

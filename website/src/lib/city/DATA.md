@@ -883,3 +883,189 @@ Stated so the next block does not have to find it:
   different taxonomy. Left out deliberately rather than missed.
 - **The `hf` sub-metre residual, the tree fold and the storey supplement** are
   unchanged from §5; nothing here touched them.
+
+## 15. The street centrelines, the names, and the mask nobody was reading
+
+Block B6. Three things went onto the wire, and one thing that was already on it
+turned out to say something other than what its own note said.
+
+### 15.1 What was missing, and what it is worth — measured on the reference
+
+`3psu-pn9h` ships 4,895 centrelines of classcode 0-4 and **no chunk carried
+their geometry.** `manifest.kinds.strt` carries the right-of-way RING and the
+roadway ring; a ring is not a centreline, and stroking the far edge of a right
+of way draws a property line. `drawCentrelines` was complete and returned 0 for
+want of a `lines` array.
+
+DRAW.md §16.8 calls this *"the largest single thing missing from the wide
+shot"*. **Ablated on the mock itself it is not.** `part3.html` publishes
+`window.setStreetSkip`, one byte per centreline, which removes that layer and
+nothing else; shot at the same year, preset and absolute scale
+(`.parity/b6shot.py`, `out-b6/`):
+
+    camera            layer worth (px > 12/255)   mean |d|   frame mean RGB
+    W1-city-2018                  0.75 %            0.28     182.1 -> 181.8
+    W2-city-1906                  0.40 %            0.16     187.7 -> 187.5
+    W3-dist-dtown                 1.20 %            0.40     150.8 -> 150.5
+    W4-blk-dtown                  0.20 %            0.08     152.2 -> 152.1
+
+Production's whole-city frame sits 5.9 RGB above the mock's. **The centrelines
+are 0.3 of that 5.9.** The fine street-grid texture the wide shot reads as a
+street network survives the ablation intact: it is the block rings and the lot
+lines, which are a different layer and already shipped.
+
+**The street NAMES are the visible half of this block.** On the same crop the
+mock writes GEARY BLVD, LOMBARD ST, CESAR CHAVEZ ST, SAN JOSE AVE, ALEMANY
+BLVD, 19TH AVE and 3RD ST; production writes none, because
+`manifest.kinds.strt` had no name field and the only street text anywhere on
+the wire was `strt-misc.stairNames`.
+
+### 15.2 `base/street-misc`'s `cov` is one bit per CENTRELINE
+
+The manifest note said *"one bit per right of way"* and had said so for four
+blocks. `covn` is 4,895, which is the number of centrelines and not the 22,191
+rights of way, and `street/build_surface.py` sets the bit by testing **that
+centreline's own midpoint** against the published right-of-way polygons. 4,361
+of 4,895 are covered; the other 534 are the park roads, the Great Highway,
+Sloat and the freeways, which is why pass 1 of the draw never fades. The note
+and the field's provenance key are corrected; `cov` had also been attributed to
+`street_year`, the Board's date record, which had nothing to do with it.
+
+DRAW.md §16.6 also says 2,051 centrelines carry a date. **It is 2,966** —
+counted off `TIME.street.yr`. 1,929 more are bounded at or before 1906, the
+map's own first year, and are stored as 0 for that reason, which is probably
+where 2,051 came from.
+
+### 15.3 Three chunks, and why the split is on the class gate
+
+| key | kind | tier | minZ | n | bytes | gz |
+|---|---|---|---|---|---|---|
+| `base/street-lines` | `strt-line` | base | 0 | 999 | 41,632 | 26,373 |
+| `strt/street-lines-2` | `strt-line` | strt | 1.70 | 3,896 | 148,720 | 72,804 |
+| `base/street-labels` | `strt-label` | base | 0 | 337 | 6,780 | 5,263 |
+| `strt/street-labels-2` | `strt-label` | strt | 1.70 | 2,449 | 46,924 | 33,867 |
+
+**The split is `ST_CLS_MAX`, not the 1024 m grid.** `ST_CLS_MAX` is `[2, 3, 4]`
+by LOD band, so the whole-city frame strokes classes 0-2 and nothing else —
+999 lines, which are therefore the only ones the first paint can show, and they
+are base tier for exactly that reason. Classes 3 and 4 cannot be drawn below
+band 1 (`BANDS[0]` = sqrt(1 x 2.9) = 1.7029) and are fetched at 1.70. The label
+table splits the same way on the reference's own `rankMax` (`part3.html` L7025:
+0 at whole city, 1 at district, 2 at block), so base carries rank 0-1.
+
+Two reasons it is not tiled. **A centreline runs up to 3.1 km**, so a 1024 m
+cell cannot hold one: placing a feature by its midpoint and culling on the
+cell's extent would drop Sloat Blvd from a frame showing its western end.
+`strt` does not have this problem because a right of way is a small ring. And
+the whole network is 14,432 vertices — spread over 125 cells that is 39
+features and ~1.3 KB a request, against the ~35 KB `strt`'s own note calls a
+useful cell.
+
+**The base tier went from 657,743 to 689,379 gzipped bytes**, against the
+716,800 `data.test.ts` asserts: 27,421 to spare, and the ratio the test
+actually defends — the mock's 6,588,120 gzipped bytes before its first frame —
+is 9.56x, still above the 9 it requires. The ceiling was not moved. The
+manifest grew 139,478 -> 171,617 bytes, and 32 KB of that is the 2,397-entry
+street-name table, which is in the manifest rather than a sidecar because the
+label pass runs inside a frame and cannot wait on a fetch.
+
+### 15.4 The join, which is proved rather than assumed
+
+`gen/gen_geo2.py` drops `cnn` and `streetname` — the mock draws the network
+without ever naming a line — so both are recovered by replaying
+`geo/build_streets.py`'s filter over the fetched dataset (LineString, not a
+PAPER layer, at least two vertices) and taking the classcode 0-4 rows in order.
+**Douglas-Peucker keeps a line's first and last vertex**, so the first vertex
+survives the 3 m simplify untouched and is an exact witness: every one of the
+4,895 rows has to land its own first vertex on the shipped `ox`/`oy` and carry
+the shipped classcode, and the worst disagreement over all 4,895 is **0.0002 m**
+— the float32 the mock stores it in. A mismatch raises. The result is checked
+again against `time/out/ship-cnn.json`, a derivation that never looked at
+geo-data.js's geometry.
+
+**And two files call themselves `window.GEO`.** `geo/geo-data.js` is
+`gen_geo.py`'s full payload — 16,676 centrelines, every class.
+`gen/geo-data.js` is `gen_geo2.py`'s trim and it is the one the PAGE carries:
+4,895 of classcode 0-4, which is the array `TIME.street.yr` and
+`street-data.js`'s `cov` are both indexed on. The encoder loads the second for
+these chunks and the first for everything it loaded before. Getting this wrong
+does not fail loudly — it produces a plausible network with every name and
+every year off by an unknown amount — which is why the vertex check above
+exists.
+
+### 15.5 The mask is asserted equal on both sides
+
+Each line chunk carries `cov` re-indexed from the citywide mask through `fid`,
+and re-indexing is the one step that could shift a bit silently — the hazard
+`build_surface.py`'s own note names. So:
+
+- **the encoder** packs it from the citywide mask at `fid`, LSB first;
+- **`verify_city_chunks.py` §5b** compares every bit of every chunk against
+  `base/street-misc` at `fid`, and separately reassembles the two chunks into a
+  4,895-bit mask and asserts it equals the shipped one element for element;
+- **`CityData.streetLines()`** does the same comparison at decode time wherever
+  `base/street-misc` is also held, and throws naming the centreline.
+
+The round trip is now **5,713 comparisons over 9,017,287 elements**, up from
+5,671 over 8,931,857, with the magic, CRC and key guards unchanged and still
+proved to fire.
+
+### 15.6 What `data.ts` exposes
+
+- `streetLines(): readonly CentrelineCell[]` — the held chunks, base first, in
+  the exact shape `drawCentrelines(f, cells, t, { lines })` reads. Sync.
+- `streetLabels(): StreetLabelTable | null` — `rank` and `lengthM` are the two
+  arguments `labelOrder` and `spineOf` already take. `dx`/`dy` come back as the
+  published unit vector exactly: the source rounds to four decimals, so the i16
+  at x10000 is lossless, and the verifier asserts the round trip rather than
+  describing it.
+- `streetNames(): readonly string[]` — one table, indexed by `nm` on both the
+  label chunks and both line chunks. 0xFFFF means the City publishes no name;
+  measured, that is **0 of 4,895**.
+- `streetMisc(): StreetMisc | null` — 1,120 published traffic islands, 268
+  named stair runs and the coverage mask, expanded from the file's own u16-at-q
+  quantiser to world metres once and cached.
+
+### 15.7 What is NOT done, and it is one call site
+
+**`scene.paintStreets` does not hand the renderer any of this**, and it is not
+one of these files. Today it returns 0 before `drawCentrelines` is reached at
+all — its early return is `if (!cells.length) return 0` on the `strt` SURFACE
+cells, which do not exist below z = 1.75 — and when it does reach it, it passes
+no `lines` and a hardcoded `band: 0`. So the wide-shot frame is unchanged by
+this block, and pixel-identical by construction. The wiring is:
+
+```ts
+const lines = this.data.streetLines();
+const band = bandOf(view.z);
+// the centreline layer stands on its own: it draws at every zoom, and at the
+// whole-city frame there are no surface cells to gate it on
+if (lines.length) {
+  drawCentrelines(f, cells, t, {
+    medianW, covered: () => true, band, lines, year,
+  });
+}
+if (!cells.length) return 0;      // the SURFACE's gate, after the lines, not before
+```
+
+and `medianW` should become the per-class medians `SURF.MEDW` is — `part3.html`
+L6450-6454 reads them off the shipped widths per class — rather than
+`w_p50` repeated seven times, because the fade is per class on that class's own
+median and a single number makes all seven classes fade together.
+
+### 15.8 And the other one-line note, DRAW.md §16.3, still standing
+
+`scene.ensurePlates` line 1422 is still:
+
+```ts
+const sh = buildShoal(XW, XH, (i, j) => sg.z(i, j) > 0 && isLandOf(sg, i, j));
+```
+
+**`sg.z > 0` is not a land test.** A land bit is the land test; an elevation of
+zero is a measurement of flat ground. Every made-land parcel in the city reads
+0 m on the 110 m grid — Treasure Island, Mission Bay's fill, the Marina — so
+the BFS calls all of them water and the shallows plate goes down opaque over
+them, which is how TREASURE ISLAND came to be lettered over open water. The fix
+is to delete `sg.z(i, j) > 0 &&` and leave `isLandOf(sg, i, j)`, which is
+`xland(i, j)` — the whole of the reference's own predicate. `scene.ts` is not
+one of the files this block owns; the change is that one term.

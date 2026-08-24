@@ -37,10 +37,11 @@ const TL = buildTimeline(PAYLOAD);
 const FRAMES: FilmFrames = {
   base: 0.05,
   frames: PAYLOAD.shots.map((s, i) => ({
+    step: 0,
     cx: 1000 + i * 500,
     py: 2000 + i * 300,
     gz: 0,
-    scale: 0.05 * (s.z ?? 1 + i),
+    scale: 0.05 * (s.z || i + 1),
   })),
 };
 

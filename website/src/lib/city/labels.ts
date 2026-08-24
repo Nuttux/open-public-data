@@ -174,7 +174,17 @@ export const LB_INK: readonly string[] = [
   "rgba(38,30,16,.54)",
 ];
 
-/** the local classes may take at most 45 % of the budget */
+/**
+ * **THE REFERENCE DELETED THIS AND THE REASON IS WORTH KEEPING.**
+ *
+ * `LOCAL_SHARE` protected the REMAINDER of a *count* from the alleys once the
+ * arterials had refused it. `part3.html` L7050 removes it in the same edit that
+ * makes the budget ink rather than a count: *"the pass runs in the city's own
+ * published class order, so the arterials have first refusal by construction
+ * and there is no remainder to protect."* `StreetNamePass` does not read it;
+ * it is exported because it is the number that used to be here and a reader
+ * who greps for it should find the argument rather than nothing.
+ */
 export const LOCAL_SHARE_MAX = 0.45;
 
 /** the highest street class drawn as a label, per zoom band — it OPENS as you
@@ -586,11 +596,29 @@ export function spineOf(
   cls: Uint8Array,
   lengthM: Float32Array,
   take: number,
+  nameOf?: (i: number) => string,
 ): Int32Array {
   const idx: number[] = [];
   for (let i = 0; i < cls.length; i++) if (cls[i] === 0) idx.push(i);
   idx.sort((a, b) => lengthM[b] - lengthM[a]);
-  return Int32Array.from(idx.slice(0, take));
+  /* ONE STRETCH PER NAME, which is the half of `SPINE` this port did not have.
+     `part3.html` L6679-6690 keeps a `seen` set of NAMES: Geary is 214 published
+     centreline segments and 15 label stretches, and without the dedup the seven
+     slots are spent on seven pieces of the same two streets. Measured on the
+     shipped table: the seven that come out are GEARY BLVD, 3RD ST, MARKET ST,
+     ALEMANY BLVD, MISSION ST, GREAT HWY and SAN JOSE AVE — which is the right
+     answer, and it is read off the data rather than typed in. */
+  if (!nameOf) return Int32Array.from(idx.slice(0, take));
+  const seen = new Set<string>();
+  const out: number[] = [];
+  for (const i of idx) {
+    const t = nameOf(i);
+    if (seen.has(t)) continue;
+    seen.add(t);
+    out.push(i);
+    if (out.length >= take) break;
+  }
+  return Int32Array.from(out);
 }
 
 /**
@@ -602,6 +630,311 @@ export function spineOf(
  * which is the map's own first year, so no claim is made about 1870 either way.
  */
 export const PLACE_YEARS_ARE_ABOUT_THE_MAP = true;
+
+// ── the street names ────────────────────────────────────────────────────────
+
+/**
+ * HOW MUCH OF THE FRAME MAY BE STREET NAME — `part3.html` L6722.
+ *
+ * It was `streetCap` 20 / 26 / 30 by band, plus `LOCAL_SHARE` 0.45 of that for
+ * every local street. Band 2 runs from z = 4.57 to the ceiling, so across the
+ * whole close half of the ladder those were two constants — and they were what
+ * a reader hit when they zoomed in to find out what street they were on.
+ * MEASURED on the reference against the published stretches that are on screen
+ * and pass the length rule:
+ *
+ * ```
+ *   z      on screen   nameable   placed
+ *   4.57         388        183       30   <- streetCap
+ *   7.20         178        115       30   <- streetCap
+ *   12            70         66       25   <- LOCAL_SHARE, 14 of 14
+ *   20            21         20       15
+ *   36             7          7        7
+ * ```
+ *
+ * **A budget stated as a COUNT cannot scale with the frame, and it is not what
+ * a frame runs out of.** What a frame runs out of is room, so the budget is the
+ * label boxes' AREA as a share of the visible strip — the same unit `HOOD_INK`
+ * is in. The reference measured the street ink its old code drew at 0.021 whole
+ * city, 0.040-0.044 district and 0.049-0.057 block, and set 0.075 above all of
+ * them.
+ */
+export const STREET_INK = 0.075;
+
+/** the base type size by band, before `LB_SIZE[rank]` — `part3.html` L7091 */
+export const ST_LB_FS: readonly number[] = [10.5, 11, 12];
+
+/**
+ * ONE LABEL PER NAME AT THE WIDE SHOT, two at district, three at block.
+ *
+ * Geary is 214 published centreline segments and 15 label stretches. Without
+ * the cap the whole-city frame prints GREAT HWY twice and spends its budget on
+ * one street.
+ */
+export const ST_LB_NAME_CAP: readonly number[] = [1, 2, 3];
+
+/**
+ * …AND THE SECOND ONE HAS TO BE SOMEWHERE ELSE.
+ *
+ * The Financial District came back with STOCKTON ST printed twice within 300 px
+ * and FRONT ST twice within 400: two real stretches of one street, correctly
+ * labelled, reading as a bug.
+ */
+export const NAME_APART = 260;
+
+/** how much longer than its own label a street has to be before it is named */
+export const LBL_LEN_K = 1.0;
+
+/** the street label's paper halo — `part3.html` L7127 */
+export const ST_LB_HALO = "rgba(248,244,235,.92)";
+
+/**
+ * The published street-name stretches, structurally.
+ *
+ * This is `CityData.streetLabels()`'s table, declared here so `labels.ts` does
+ * not import the data layer: `rank` and `lengthM` are the two arguments
+ * `labelOrder` and `spineOf` already take, and `dx`/`dy` are a DIRECTION, not a
+ * place — they are pushed through the projection as a point and the angle taken
+ * from the difference with `proj(0, 0)`, which is exact because `proj` is
+ * linear in (x, y).
+ */
+export interface StreetNameTable {
+  readonly n: number;
+  readonly nm: Uint16Array;
+  readonly rank: Uint8Array;
+  /** the year the name is first written; 0 = written in every year */
+  readonly yr: Uint16Array;
+  readonly lengthM: Float32Array;
+  readonly wx: Float32Array;
+  readonly wy: Float32Array;
+  readonly dx: Float32Array;
+  readonly dy: Float32Array;
+  name(i: number): string;
+}
+
+/**
+ * THE SOURCE ZERO-PADS: `02ND ST`, `19TH AVE`, `03RD ST`.
+ *
+ * `part3.html` L7095. One leading zero, once, at a word boundary — so 3RD ST
+ * comes out of the file's own `03RD ST` and nothing else in the table moves.
+ */
+export function streetLabelText(published: string): string {
+  return published.replace(/\b0(\d)/, "$1");
+}
+
+/**
+ * THE STREET NAMES, WHICH 2,786 PUBLISHED STRETCHES WERE WAITING FOR.
+ *
+ * `part3.html`'s `street()` (L7069-7130), whole, as one object because **the
+ * pass is split in three and the three share state.** The reference's order is
+ *
+ * ```
+ *   placeNames(designated) → SPINE → hoods() → the arterials
+ *                          → placeNames(named) → the collectors and locals
+ * ```
+ *
+ * and the ink, the per-name cap and the 260 px separation are one running
+ * account across all three of those calls. A function taking a `pass` argument
+ * would have to be handed that account back every time; an object holds it, and
+ * the call site stays three lines.
+ *
+ * Every clause below is the reference's:
+ *
+ * - **the rank gate is the band's.** `rankMax` is 0 at whole city, 1 at
+ *   district, 2 at block — the same ladder `base/street-labels` (ranks 0-1) and
+ *   `strt/street-labels-2` are split on, which is why the base tier can draw
+ *   the whole-city frame's names before the `strt` tier lands.
+ * - **the treatment is the class**, three of them, ~30 % apart in size and
+ *   better than 40 % apart in value: an arterial is set larger, heavier and
+ *   darker than a local street, *"so a reader who is looking for somewhere to
+ *   rest their eye has somewhere to rest it."* Ranks 3-5 (private courts,
+ *   freeways, ramps) share the local treatment and are almost always gated out
+ *   by `rankMax` before they reach it.
+ * - **a name is not written before the street is there.** `yr` is the earliest
+ *   year any centreline in this label's own stretch can be put there; 0 is
+ *   written in every year.
+ * - **the orientation is pushed through the projection**, not taken from the
+ *   world bearing, so the label lies ON its street rather than across it.
+ * - **A NAME IS ONLY WRITTEN WHERE THE STREET IS AT LEAST AS LONG AS THE
+ *   NAME** — `nameFitsItsStreet`, the one rule that replaced `minLen`'s three
+ *   magic numbers.
+ * - **the collision box is the rotated envelope and the INK IS THE LABEL'S OWN
+ *   BOX.** San Francisco's grid runs at 45° to the screen at ROT 315, so nearly
+ *   every street name is set on a diagonal and its axis-aligned envelope is
+ *   ~3.9x its own area. Spending the envelope emptied the budget after
+ *   seventeen arterials and the frame came back with no collector and no local
+ *   on it at all — measured on the reference's first build of this patch.
+ *
+ * TWO CLAUSES ARE THIS PORT'S AND BOTH ARE DECLARED:
+ *
+ * 1. **The frame is the VISIBLE STRIP and it is centred on itself.** The
+ *    reference reads `cv.clientWidth` and in the mock the canvas IS the strip,
+ *    so it tests against `W / 2`. Production paints a 288 px opaque ledger over
+ *    the canvas's right edge at and above 820 CSS px, so a name written under it
+ *    is not a name the reader has — and §16.4 already found what happens when a
+ *    pass takes the strip's WIDTH and tests it against the CANVAS's centre. The
+ *    strip is `[0, vw]`; the test is that the whole box is inside it.
+ * 2. **`LB_INK` is applied, and the reference does not apply it.** `part3.html`
+ *    L6723 defines `LB_INK = [.90, .74, .54]` beside `LB_SIZE` and `LB_WT` and
+ *    then fills every rank at `rgba(38,30,16,.84)` — grep it: two occurrences in
+ *    the whole file, its definition and this note. Size and weight carry the
+ *    hierarchy there and value does not. Applying it is a deviation of at most
+ *    0.06 alpha on the wide shot (rank 0 only, .90 against .84) and up to 0.30
+ *    on the block frame, where a local street name is the thing that should be
+ *    quietest. It is kept because it is the treatment this port's own §9 states,
+ *    and it is written here rather than left to be discovered.
+ */
+export class StreetNamePass {
+  readonly budget: InkBudget;
+  private readonly order: Int32Array;
+  private readonly spine: Set<number>;
+  private readonly step: number;
+  private readonly rankMax: number;
+  private readonly nameCap: number;
+  private readonly hx: number;
+  private readonly hy: number;
+  private readonly used = new Map<string, number>();
+  private readonly at = new Map<string, [number, number][]>();
+  private readonly rank3: [number, number, number] = [0, 0, 0];
+  private nPlaced = 0;
+  private full = false;
+
+  constructor(
+    private readonly f: Frame,
+    private readonly table: StreetNameTable,
+    private readonly grid: LabelGrid,
+    private readonly elev: (x: number, y: number) => number,
+  ) {
+    const { W, H, cam } = f;
+    this.step = bandOfScale(cam);
+    this.rankMax = this.step;
+    this.nameCap = ST_LB_NAME_CAP[this.step];
+    const vw = W < LEDGER_MIN_W ? W : W - LEDGER_W;
+    this.hx = vw / 2;
+    this.hy = H / 2;
+    this.budget = new InkBudget(STREET_INK, Math.max(1, vw) * H);
+    this.order = labelOrder(table.rank, table.lengthM);
+    /* SEVEN, ONE PER NAME, LONGEST FIRST — and it is read off the data. There
+       is no list of important streets here and there must never be one. */
+    this.spine = new Set(
+      Array.from(spineOf(table.rank, table.lengthM, 7, (i) => table.name(i))),
+    );
+  }
+
+  get placed(): number {
+    return this.nPlaced;
+  }
+
+  /** placed this frame by class, so the hierarchy is a number and not an impression */
+  get byRank(): readonly [number, number, number] {
+    return this.rank3;
+  }
+
+  /** the fraction of the visible strip this layer spent */
+  get ink(): number {
+    return this.budget.spent;
+  }
+
+  /**
+   * One of the three sub-passes, in the reference's own order.
+   *
+   * `spine` — the seven longest rank-0 stretches, one per name, before the
+   * neighbourhood capitals. `arterials` — the rest of rank 0, in class-and-
+   * length order. `local` — everything above rank 0, after the named places.
+   */
+  draw(pass: "spine" | "arterials" | "local"): number {
+    const before = this.nPlaced;
+    const { ctx } = this.f;
+    ctx.save();
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    ctx.letterSpacing = "0px";
+    ctx.lineJoin = "round";
+    if (pass === "spine") {
+      for (const li of this.spine) if (!this.one(li)) break;
+    } else {
+      const wantLocal = pass === "local";
+      for (let o = 0; o < this.order.length; o++) {
+        const li = this.order[o];
+        if (this.spine.has(li)) continue;
+        if (this.table.rank[li] > 0 !== wantLocal) continue;
+        if (!this.one(li)) break;
+      }
+    }
+    ctx.restore();
+    return this.nPlaced - before;
+  }
+
+  /** false once the budget has refused a label — the reference's own `return` */
+  private one(li: number): boolean {
+    if (this.full) return false;
+    const { f, table } = this;
+    const { ctx, cam } = f;
+    if (table.rank[li] > this.rankMax) return true;
+    const y0 = table.yr[li];
+    if (y0 && f.year !== undefined && y0 > Math.floor(f.year)) return true;
+    const t0 = table.name(li);
+    if (!t0) return true;
+    if ((this.used.get(t0) ?? 0) >= this.nameCap) return true;
+    /* 0 arterial, 1 collector, 2 everything local */
+    const rk = table.rank[li] <= 0 ? 0 : table.rank[li] === 1 ? 1 : 2;
+    const wx = table.wx[li],
+      wy = table.wy[li];
+    const p = f.proj.proj(wx, wy, this.elev(wx, wy));
+    const X = sx(f, p),
+      Y = sy(f, p);
+    if (Math.abs(X - this.hx) > this.hx - 24) return true;
+    if (Math.abs(Y - this.hy) > this.hy - 26) return true;
+    const fs = ST_LB_FS[this.step] * LB_SIZE[rk];
+    /* the SAME face the place lane is set in — `part3.html` writes the string
+       out twice and this file holds one copy of it, which is why the constant
+       reads PLACE_FACE here */
+    ctx.font = `${LB_WT[rk]} ${fs}px ${PLACE_FACE}`;
+    const t = streetLabelText(t0);
+    const w = ctx.measureText(t).width + 6,
+      h = fs + 4;
+    if (!nameFitsItsStreet(table.lengthM[li], w * LBL_LEN_K, cam.scale)) return true;
+    const ang = streetLabelAngle(f, 0, 0, table.dx[li], table.dy[li]);
+    const ca = Math.abs(Math.cos(ang)),
+      sa = Math.abs(Math.sin(ang));
+    const ww = w * ca + h * sa,
+      hh = w * sa + h * ca;
+    const prev = this.at.get(t0);
+    if (prev) {
+      for (const q of prev)
+        if (Math.abs(q[0] - X) < NAME_APART && Math.abs(q[1] - Y) < NAME_APART)
+          return true;
+    }
+    const x0 = X - ww / 2,
+      x1 = X + ww / 2,
+      yy0 = Y - hh / 2,
+      yy1 = Y + hh / 2;
+    if (!this.grid.fits(x0, yy0, x1, yy1)) return true;
+    /* THE BUDGET IS EXACT and it spends THE LABEL'S OWN BOX, not the envelope
+       the collision grid uses. A refusal stops the pass, which is the
+       reference's `if (inkUsed >= inkCap) return` said one label earlier. */
+    if (!this.budget.spend(w, h)) {
+      this.full = true;
+      return false;
+    }
+    this.grid.add(x0, yy0, x1, yy1);
+    this.used.set(t0, (this.used.get(t0) ?? 0) + 1);
+    if (prev) prev.push([X, Y]);
+    else this.at.set(t0, [[X, Y]]);
+    this.nPlaced++;
+    this.rank3[rk]++;
+    ctx.save();
+    ctx.translate(X, Y);
+    ctx.rotate(ang);
+    ctx.lineWidth = 3.2;
+    ctx.strokeStyle = ST_LB_HALO;
+    ctx.strokeText(t, 0, 0);
+    ctx.fillStyle = LB_INK[rk];
+    ctx.fillText(t, 0, 0);
+    ctx.restore();
+    return true;
+  }
+}
 
 // ── the neighbourhood capitals ──────────────────────────────────────────────
 

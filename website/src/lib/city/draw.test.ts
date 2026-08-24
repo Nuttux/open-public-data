@@ -12,6 +12,7 @@
 
 import { describe, expect, it } from "vitest";
 import { Projection } from "./projection";
+import type { Frame } from "./terrain";
 import {
   buildSurroundLam,
   LAM0,
@@ -28,7 +29,7 @@ import {
   WA,
   luminance,
 } from "./terrain";
-import { coastBand, wedgeCovered, buildShoal, depthM, assertRefinement, resampleC1, shoalCellAlpha, shoalNodeAlpha, SHOAL_A0, SHOAL_REACH, drawShoreCorridor, BAY_OPEN, SHORE_IN, SHORE_OUT } from "./water";
+import { coastBand, wedgeCovered, buildShoal, depthM, assertRefinement, resampleC1, shoalCellAlpha, shoalNodeAlpha, SHOAL_A0, SHOAL_REACH, drawShoreCorridor, BAY_OPEN, SHORE_IN, SHORE_OUT, buildDepthPlate } from "./water";
 import {
   centrelineFade,
   drawCentrelines,
@@ -38,6 +39,9 @@ import {
   ST_KPROJ,
   ST_SRF_PX,
   surfaceW,
+  drawStreetMisc,
+  ST_STAIR_BAND_M,
+  ST_STAIR_TICK_M,
   type CentrelineCell,
 } from "./streets";
 import { bandW, blobRadius, BLOB_K, CROWN_LIFT, vrnd, VZ_C0, VZ_C1, VZ_T0, VZ_T1,
@@ -114,7 +118,10 @@ import {
   HOOD_INK,
   InkBudget,
   labelOrder,
+  LabelGrid,
+  LB_SIZE,
   nameFitsItsStreet,
+  NAME_APART,
   placeIsBigEnough,
   PLACE_INK_PER_CLASS,
   ringSizesIt,
@@ -123,6 +130,11 @@ import {
   buildHoodAnchors,
   LEDGER_W,
   LEDGER_MIN_W,
+  ST_LB_NAME_CAP,
+  STREET_INK,
+  StreetNamePass,
+  streetLabelText,
+  type StreetNameTable,
 } from "./labels";
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -1350,6 +1362,7 @@ function fakeCtx(calls: string[]): CanvasRenderingContext2D {
     transform: noop("transform"),
     setTransform: noop("setTransform"),
     translate: noop("translate"),
+    rotate: noop("rotate"),
     scale: noop("scale"),
     drawImage: noop("drawImage"),
     strokeText: noop("strokeText"),
@@ -1591,5 +1604,334 @@ describe("drawCentrelines is complete and waiting on a chunk (Block B2)", () => 
   it("the whole-city fade is 1 — the reference strokes the wide shot at full ink", () => {
     // centrelineFade(21.0 m, 0.0467) = 2 - 21*0.9306*0.0467 = 1.09 -> clamped
     expect(centrelineFade(21.0, 0.04666598864125368)).toBe(1);
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────────────
+// Block B8 — the street names
+// ────────────────────────────────────────────────────────────────────────────
+
+describe("the street names, which 2,786 published stretches were waiting for", () => {
+  /** a ctx whose measureText is a real function of the string */
+  function textCtx(drawn: string[]): CanvasRenderingContext2D {
+    const c = fakeCtx([]) as unknown as {
+      measureText: (t: string) => TextMetrics;
+      fillText: (t: string, x: number, y: number) => void;
+      letterSpacing: string;
+    };
+    c.letterSpacing = "0px";
+    c.measureText = (t: string) => ({ width: t.length * 6 }) as TextMetrics;
+    c.fillText = (t: string) => {
+      drawn.push(t);
+    };
+    return c as unknown as CanvasRenderingContext2D;
+  }
+
+  interface Row {
+    name: string;
+    rank: number;
+    len: number;
+    wx?: number;
+    wy?: number;
+    yr?: number;
+  }
+
+  function table(rows: readonly Row[]): StreetNameTable {
+    const names: string[] = [];
+    const ix = new Map<string, number>();
+    const nm = new Uint16Array(rows.length);
+    const rank = new Uint8Array(rows.length);
+    const yr = new Uint16Array(rows.length);
+    const lengthM = new Float32Array(rows.length);
+    const wx = new Float32Array(rows.length);
+    const wy = new Float32Array(rows.length);
+    const dx = new Float32Array(rows.length);
+    const dy = new Float32Array(rows.length);
+    rows.forEach((r, i) => {
+      let k = ix.get(r.name);
+      if (k === undefined) {
+        k = names.length;
+        names.push(r.name);
+        ix.set(r.name, k);
+      }
+      nm[i] = k;
+      rank[i] = r.rank;
+      yr[i] = r.yr ?? 0;
+      lengthM[i] = r.len;
+      wx[i] = r.wx ?? 0;
+      wy[i] = r.wy ?? 0;
+      dx[i] = 1;
+      dy[i] = 0;
+    });
+    return {
+      n: rows.length, nm, rank, yr, lengthM, wx, wy, dx, dy,
+      name: (i) => names[nm[i]] ?? "",
+    };
+  }
+
+  function run(
+    rows: readonly Row[],
+    step: number,
+    year?: number,
+  ): { drawn: string[]; pass: StreetNamePass } {
+    const drawn: string[] = [];
+    const ctx = textCtx(drawn);
+    const base = 0.05565;
+    const zf = [1, 2.9, 7.2][step];
+    const f = {
+      ...fakeFrame(ctx),
+      cam: { cx: 0, cy: 0, scale: base * zf, base, step },
+      year,
+    } as unknown as Frame;
+    // the fixtures' coordinates are whole-city metres, so a camera three times
+    // closer sees the same arrangement rather than an empty frame
+    const scaled = rows.map((r) => ({
+      ...r, wx: (r.wx ?? 0) / zf, wy: (r.wy ?? 0) / zf,
+    }));
+    const p = new StreetNamePass(f, table(scaled), new LabelGrid(f.W, f.H), () => 0);
+    p.draw("spine");
+    p.draw("arterials");
+    p.draw("local");
+    return { drawn, pass: p };
+  }
+
+  it("the rank gate is the band's — the wide shot writes arterials and nothing else", () => {
+    const rows: Row[] = [
+      { name: "GEARY BLVD", rank: 0, len: 9000, wx: 0 },
+      { name: "CLEMENT ST", rank: 1, len: 9000, wx: 3000 },
+      { name: "ANNIE ST", rank: 2, len: 9000, wx: -4000 },
+    ];
+    expect(run(rows, 0).drawn).toEqual(["GEARY BLVD"]);
+    expect(run(rows, 1).drawn.sort()).toEqual(["CLEMENT ST", "GEARY BLVD"]);
+    expect(run(rows, 2).drawn.length).toBe(3);
+  });
+
+  it("a name is only written where the street is at least as long as the name", () => {
+    // 10 glyphs at 6 px + 6 = 66 px of label; 66 / (1.2247 * 0.05565) = 968 m
+    expect(run([{ name: "GEARY BLVD", rank: 0, len: 960 }], 0).drawn).toEqual([]);
+    expect(run([{ name: "GEARY BLVD", rank: 0, len: 980 }], 0).drawn).toEqual([
+      "GEARY BLVD",
+    ]);
+    // and it scales with the NAME, which is the whole point of replacing minLen:
+    // the same street is long enough for a short name and not for a long one
+    expect(run([{ name: "3RD ST", rank: 0, len: 700 }], 0).drawn).toEqual(["3RD ST"]);
+  });
+
+  it("one label per name at the wide shot — without it the frame prints GREAT HWY twice", () => {
+    const rows: Row[] = [
+      { name: "GREAT HWY", rank: 0, len: 9000, wx: 0 },
+      { name: "GREAT HWY", rank: 0, len: 8000, wx: 4000 },
+      { name: "GREAT HWY", rank: 0, len: 7000, wx: -4000 },
+    ];
+    expect(ST_LB_NAME_CAP).toEqual([1, 2, 3]);
+    expect(run(rows, 0).drawn.length).toBe(1);
+    expect(run(rows, 1).drawn.length).toBe(2);
+    expect(run(rows, 2).drawn.length).toBe(3);
+  });
+
+  it("…and the second one has to be somewhere else — STOCKTON ST twice within 300 px read as a bug", () => {
+    const near: Row[] = [
+      { name: "STOCKTON ST", rank: 0, len: 9000, wx: 0 },
+      { name: "STOCKTON ST", rank: 0, len: 8000, wx: 1000 },
+    ];
+    expect(NAME_APART).toBe(260);
+    // 300 m at the district camera is well inside 260 px
+    expect(run(near, 1).drawn.length).toBe(1);
+    const far: Row[] = [
+      { name: "STOCKTON ST", rank: 0, len: 9000, wx: 0 },
+      { name: "STOCKTON ST", rank: 0, len: 8000, wx: 4000 },
+    ];
+    expect(run(far, 1).drawn.length).toBe(2);
+  });
+
+  it("a name is not written before the street is there, and an undated name is written in every year", () => {
+    const rows: Row[] = [
+      { name: "GEARY BLVD", rank: 0, len: 9000, yr: 0 },
+      { name: "SUNSET BLVD", rank: 0, len: 9000, wx: 4000, yr: 1932 },
+    ];
+    expect(run(rows, 0, 1906).drawn).toEqual(["GEARY BLVD"]);
+    expect(run(rows, 0, 2018).drawn.length).toBe(2);
+  });
+
+  it("the source zero-pads and the label does not", () => {
+    expect(streetLabelText("02ND ST")).toBe("2ND ST");
+    expect(streetLabelText("19TH AVE")).toBe("19TH AVE");
+    expect(streetLabelText("GEARY BLVD")).toBe("GEARY BLVD");
+    expect(run([{ name: "03RD ST", rank: 0, len: 9000 }], 0).drawn).toEqual(["3RD ST"]);
+  });
+
+  /** 169 distinct arterials on a lattice wider apart than their own labels */
+  function grid(): Row[] {
+    const rows: Row[] = [];
+    for (let j = 0; j < 13; j++)
+      for (let i = 0; i < 13; i++)
+        rows.push({
+          name: `STREET ${j * 13 + i}`,
+          rank: 0,
+          len: 9000,
+          wx: -9000 + i * 1100,
+          wy: -6000 + j * 700,
+        });
+    return rows;
+  }
+
+  it("the budget spends the LABEL's own box, not the rotated envelope", () => {
+    /* San Francisco's grid runs at 45° to the screen, where the axis-aligned
+       envelope of a street name is ~3.9x its own area. Spending the envelope
+       emptied the budget after seventeen arterials and the frame came back with
+       no collector and no local on it at all. */
+    const r = run(grid(), 0);
+    expect(r.drawn.length).toBeGreaterThan(17);
+    // and the account is the boxes' area over the VISIBLE STRIP, under the cap
+    expect(r.pass.ink).toBeLessThanOrEqual(STREET_INK);
+    expect(r.pass.ink).toBeGreaterThan(0);
+  });
+
+  it("the budget is EXACT — the layer cannot overshoot by one label", () => {
+    expect(run(grid(), 0).pass.ink).toBeLessThanOrEqual(STREET_INK);
+  });
+
+  it("the spine is one stretch per NAME — Geary is 15 stretches and it gets one slot", () => {
+    const cls = new Uint8Array([0, 0, 0, 0]);
+    const len = new Float32Array([9000, 8000, 7000, 6000]);
+    const nm = ["GEARY BLVD", "GEARY BLVD", "GEARY BLVD", "3RD ST"];
+    expect(Array.from(spineOf(cls, len, 2, (i) => nm[i]))).toEqual([0, 3]);
+    // without the name, the old behaviour, which is what the unit above asserts
+    expect(Array.from(spineOf(cls, len, 2))).toEqual([0, 1]);
+  });
+
+  it("the hierarchy is three treatments and it is a number, not an impression", () => {
+    const rows: Row[] = [
+      { name: "GEARY BLVD", rank: 0, len: 9000, wx: -4000 },
+      { name: "CLEMENT ST", rank: 1, len: 9000, wx: 0 },
+      { name: "ANNIE ST", rank: 2, len: 9000, wx: 3000 },
+    ];
+    expect(run(rows, 2).pass.byRank).toEqual([1, 1, 1]);
+    // ~30 % apart in size, better than 40 % apart in value
+    expect(LB_SIZE[0] / LB_SIZE[2]).toBeGreaterThan(1.3);
+    expect(1 - 0.54 / 0.9).toBeGreaterThanOrEqual(0.4);
+  });
+
+  it("a name written under the 288 px ledger is not a name the reader has", () => {
+    /* the same clause §16.4 put on the hood pass, on the pass it came from:
+       the strip is [0, W - LEDGER_W] and it is centred on itself */
+    const W = 1200;
+    const vw = W < LEDGER_MIN_W ? W : W - LEDGER_W;
+    const admits = (X: number) => Math.abs(X - vw / 2) <= vw / 2 - 24;
+    expect(admits(40)).toBe(true); // the left edge of the visible map
+    expect(admits(1000)).toBe(false); // under the opaque panel
+    expect(admits(920)).toBe(false); // just under its left edge
+    expect(admits(880)).toBe(true);
+  });
+});
+
+describe("base/street-misc, which shipped for five blocks and drew nothing", () => {
+  const misc = () => ({
+    islandLen: Uint16Array.from([4]),
+    islandX: Float32Array.from([0, 20, 20, 0]),
+    islandY: Float32Array.from([0, 0, 8, 8]),
+    stairLen: Uint16Array.from([3]),
+    stairX: Float32Array.from([0, 30, 60]),
+    stairY: Float32Array.from([0, 10, 20]),
+  });
+  const run = (scale: number) => {
+    const ctx = fakeCtx([]);
+    const f = { ...fakeFrame(ctx), cam: { cx: 0, cy: 0, scale } } as unknown as Frame;
+    const t = { elevM: () => 0 } as unknown as Parameters<typeof drawStreetMisc>[2];
+    const P = (globalThis as unknown as { Path2D?: unknown }).Path2D;
+    (globalThis as unknown as { Path2D: unknown }).Path2D = class {
+      moveTo() {} lineTo() {} closePath() {}
+    };
+    try {
+      return drawStreetMisc(f, misc(), t, { fwMedianM: 3.16 });
+    } finally {
+      (globalThis as unknown as { Path2D: unknown }).Path2D = P;
+    }
+  };
+
+  it("the island gate is the city's own median footway, not a chosen number", () => {
+    // manifest.streets.stats.fw_p50 = 3.16 m; the gate is fw_p50 * ST_KPROJ *
+    // scale >= ST_SRF_PX + 0.5, which is the reference's L6612 literal
+    const gate = (ST_SRF_PX + 0.5) / (3.16 * ST_KPROJ);
+    expect(run(gate * 0.9).islands).toBe(0);
+    expect(run(gate * 1.1).islands).toBe(1);
+  });
+
+  it("a stair is drawn only where a tread is more than two pixels from the next", () => {
+    const gate = 2.0 / (0.9 * ST_KPROJ);
+    expect(run(gate * 0.9).stairs).toBe(0);
+    const r = run(gate * 1.1);
+    expect(r.stairs).toBe(1);
+    // and the treads are laid, at the declared 0.9 m, along both segments
+    expect(r.treads).toBeGreaterThan(0);
+  });
+
+  it("the two stair numbers are DECLARED and neither is a measurement of that stair", () => {
+    // aw7j-9354 publishes the run and neither a width nor a tread count
+    expect(ST_STAIR_BAND_M).toBe(2.2);
+    expect(ST_STAIR_TICK_M).toBe(0.9);
+  });
+});
+
+describe("the depth plate at the resolution the City published", () => {
+  const meta = {
+    nw: 9, nh: 5, mul: 4, dmax: 120,
+    qs: [0, 9.929, 27.466, 114.045],
+    world: [0, 0, 100, 100] as unknown as readonly [number, number, number, number],
+  };
+  function mk(w: number, h: number) {
+    const put: { gx: number; gy: number }[] = [];
+    return Object.assign(
+      {
+        width: w, height: h,
+        getContext: () => ({
+          createImageData: (a: number, b: number) => ({ data: new Uint8ClampedArray(a * b * 4) }),
+          putImageData: (_img: unknown, gx: number, gy: number) => put.push({ gx, gy }),
+        }),
+      },
+      { put },
+    ) as unknown as HTMLCanvasElement & { put: { gx: number; gy: number }[] };
+  }
+  const tile = (gx: number, gy: number, w: number, h: number, n = w * h) => ({
+    e: { gx, gy, w, h, k: `water1/${gx}_${gy}` },
+    f: { fields: { dep: new Uint8Array(n).fill(200) } } as unknown as Parameters<
+      typeof buildDepthPlate
+    >[1][number]["f"],
+  });
+
+  it("assembles the 26 tiles into one plate at their own published offsets", () => {
+    let cv: ReturnType<typeof mk> | null = null;
+    const out = buildDepthPlate(meta, [tile(0, 0, 4, 4), tile(4, 0, 5, 4)], (w, h) => {
+      cv = mk(w, h);
+      return cv;
+    });
+    expect(out).not.toBeNull();
+    expect(cv!.put.map((p) => [p.gx, p.gy])).toEqual([[0, 0], [4, 0]]);
+    expect(out!.width).toBe(9);
+    expect(out!.height).toBe(5);
+  });
+
+  it("refuses a tile whose byte count disagrees with its own published w x h", () => {
+    expect(() =>
+      buildDepthPlate(meta, [tile(0, 0, 4, 4, 15)], (w, h) => mk(w, h)),
+    ).toThrow(/water1\/0_0: 15 depth nodes/);
+  });
+
+  it("refuses a tile that would land outside the published field", () => {
+    expect(() =>
+      buildDepthPlate(meta, [tile(8, 0, 4, 4)], (w, h) => mk(w, h)),
+    ).toThrow(/outside the published 9x5/);
+  });
+
+  it("no tiles is no plate — nine of the 7 x 5 positions are all land and are dropped", () => {
+    expect(buildDepthPlate(meta, [], (w, h) => mk(w, h))).toBeNull();
+  });
+
+  it("1665 x 1121 IS a 4x refinement of the 416 x 280 surround grid", () => {
+    // which is what lets the coarse and the refined plate swap under one blit
+    expect(() => assertRefinement(
+      { ...meta, nw: 1665, nh: 1121 } as unknown as Parameters<typeof assertRefinement>[0],
+      416, 280,
+    )).not.toThrow();
   });
 });

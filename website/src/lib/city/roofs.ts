@@ -143,13 +143,60 @@ export function roofStep(h: number, hq: Quartiles): number {
   return 3;
 }
 
-/** the fine roof LUT: four value steps of every roof colour */
+/**
+ * THE TOP OF THE RAMP RAN OFF THE TOP OF THE GAMUT, AND IT WENT PURE WHITE.
+ *
+ * BUGS.md §4: an unshaded `#ffffff` polygon punched into a Mission roof,
+ * sampled at exactly (255, 255, 255) over 3,493 pixels. It is not a missing
+ * material and it is not a fallback — it is this LUT.
+ *
+ * `RSHADE[3]` is 1.14 and `shade()` multiplies each channel and clips it at
+ * 255. **The measured aerial palette's four brightest entries are
+ * `#eeeee7 · #f3f4ee · #f8f9f5 · #fcfdfb`** — white membrane roofs, which San
+ * Francisco has a lot of — and 252 x 1.14 is 287. All three channels clip, so
+ * the top step of the top four of the thirty-two measured colours resolves to
+ * pure white.
+ *
+ * Two things are lost and the second is the worse one:
+ *
+ * · **the value step**, which is the whole point of this table — the four
+ *   steps are monotone in the published height and that monotonicity is the
+ *   information;
+ * · **the hue.** `#fcfdfb` is a hair green. Clipping each channel separately
+ *   drives it to neutral (255, 255, 255), so a measured colour is replaced by
+ *   one that was never on the roof. Every other roof on the frame carries a
+ *   tint; this one carries none, which is exactly what makes it read as a hole
+ *   rather than as a pale roof.
+ *
+ * So the lift is bounded by the colour's own headroom BEFORE it is applied,
+ * and bounded as ONE factor across all three channels — `255 / max(r, g, b)` —
+ * which is the largest lift that keeps the colour inside the gamut and
+ * therefore the largest one that keeps its hue. A roof already at the ceiling
+ * of the display simply does not brighten, which is the truth about it. The
+ * darkening steps are untouched: nothing clips downward.
+ */
 export function roofFineLUT(roof: readonly string[]): string[] {
   const out = new Array<string>(roof.length * RSHADE.length);
-  for (let c = 0; c < roof.length; c++)
+  for (let c = 0; c < roof.length; c++) {
+    const k1 = gamutHeadroom(roof[c]);
     for (let s = 0; s < RSHADE.length; s++)
-      out[c * RSHADE.length + s] = shade(roof[c], RSHADE[s]);
+      out[c * RSHADE.length + s] = shade(roof[c], Math.min(RSHADE[s], k1));
+  }
   return out;
+}
+
+/**
+ * The largest factor `shade()` may be given for this colour without any
+ * channel leaving the 0..255 gamut. Always >= 1: a colour with a channel
+ * already at 255 gets exactly 1 and does not move.
+ */
+export function gamutHeadroom(hex: string): number {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  const m = Math.max(r, g, b);
+  if (!(m > 0)) return 1;
+  return Math.max(1, 255 / m);
 }
 
 // ── the storey lines ────────────────────────────────────────────────────────

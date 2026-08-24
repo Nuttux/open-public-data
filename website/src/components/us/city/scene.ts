@@ -66,6 +66,7 @@ import {
 } from "@/lib/city/terrain";
 import {
   bayPlate,
+  buildDepthPlate,
   buildShoal,
   buildShoalHoles,
   decodeCoast,
@@ -77,11 +78,13 @@ import {
   inPoly,
   shoalCellAlpha,
   shoalNodeAlpha,
+  type DepthTile,
   type Ring,
   type WaterMeta,
 } from "@/lib/city/water";
 import {
   drawCentrelines,
+  drawStreetMisc,
   drawStreetSurface,
   ST_EXT_PX,
   ST_KPROJ,
@@ -117,6 +120,7 @@ import {
   edgeInk,
   edgeWidth,
   inkFor,
+  LOD_Z0,
   massAt,
   massingOf,
   massLUT,
@@ -189,6 +193,7 @@ import {
   drawHoodNames,
   LabelGrid,
   placeNames,
+  StreetNamePass,
   type HoodAnchor,
   type PlaceLabel,
 } from "@/lib/city/labels";
@@ -422,6 +427,149 @@ export interface BlockTable extends BlockGeometry {
 /** `paint/blocks.py`'s `NOBLOCK`: park, water or right of way — 361 of 5,404 */
 const BIDX_NONE = 255;
 
+/** the hit-test grid's cell, in metres — see `blockHashOf` for why 160 */
+const HIT_CELL_M = 160;
+
+/**
+ * THE RIGHT-OF-WAY SNAP'S TWO BOUNDS — see the call site in `pick`.
+ *
+ * `PICK_SNAP_M` is the load-bearing one: 10.5 m is half of San Francisco's
+ * standard 68.6 ft right of way, so the snap reaches the centre line of an
+ * ordinary street and no further. `PICK_SNAP_PX` is a guard, not a dial — at
+ * 18 CSS px the world bound governs at all four of the page's stops (10.5 m is
+ * 18.2 px at the street stop's scale and 0.6 px at the whole-city stop), and
+ * it is there so a zoom deeper than the four stops offer cannot turn a
+ * fixed world distance into a snap the reader can see happening.
+ */
+const PICK_SNAP_PX = 18;
+const PICK_SNAP_M = 10.5;
+
+/** plane units per world metre at this bearing: `proj()` is
+ *  `(xr − yr)·CA` and |(cR−sR, cR+sR)|/√2 is 1, so one world metre is `CA`
+ *  of plane, and one plane unit is `cam.scale` screen pixels. */
+const PLANE_PER_M = Math.cos(Math.PI / 6);
+
+/** squared distance from a point to a segment — the snap's own measurement */
+function segDist2(
+  x: number, y: number,
+  ax: number, ay: number,
+  bx: number, by: number,
+): number {
+  const dx = bx - ax;
+  const dy = by - ay;
+  const L = dx * dx + dy * dy;
+  let t = L > 0 ? ((x - ax) * dx + (y - ay) * dy) / L : 0;
+  t = t < 0 ? 0 : t > 1 ? 1 : t;
+  const px = ax + t * dx - x;
+  const py = ay + t * dy - y;
+  return px * px + py * py;
+}
+
+/** the hit test's uniform grid over the 5,404 published block rings */
+interface BlockHash {
+  readonly cell: number;
+  readonly x0: number;
+  readonly y0: number;
+  readonly nx: number;
+  readonly ny: number;
+  /** CSR offsets, length nx·ny+1 */
+  readonly start: Uint32Array;
+  readonly items: Int32Array;
+  readonly bx0: Float32Array;
+  readonly by0: Float32Array;
+  readonly bx1: Float32Array;
+  readonly by1: Float32Array;
+}
+
+/** the footprint grid's cell, in metres — the median footprint is ~12 m */
+const FOOT_CELL_M = 40;
+
+/** the hit test's uniform grid over the footprints the frame is drawing */
+interface FootHash {
+  readonly key: string;
+  readonly cell: number;
+  readonly x0: number;
+  readonly y0: number;
+  readonly nx: number;
+  readonly ny: number;
+  readonly start: Uint32Array;
+  readonly items: Int32Array;
+  readonly tables: readonly BldTable[];
+  readonly tbl: Int32Array;
+  readonly idx: Int32Array;
+  readonly bx0: Float32Array;
+  readonly by0: Float32Array;
+  readonly bx1: Float32Array;
+  readonly by1: Float32Array;
+  /** the roof, in the march's units — see `footSolid` */
+  readonly topZ: Float32Array;
+  /** the block whose ring contains this footprint's centroid, or −1 */
+  readonly blk: Int32Array;
+  readonly max: number;
+}
+
+/**
+ * The footprint the march has just entered, resolved to its block.
+ *
+ * −1 no footprint here · −2 a footprint the assessor puts on no block.
+ */
+function footUnder(h: FootHash, x: number, y: number, z: number): number {
+  const ii = Math.floor((x - h.x0) / h.cell);
+  const jj = Math.floor((y - h.y0) / h.cell);
+  if (ii < 0 || jj < 0 || ii >= h.nx || jj >= h.ny) return -1;
+  const c = jj * h.nx + ii;
+  for (let k = h.start[c]; k < h.start[c + 1]; k++) {
+    const i = h.items[k];
+    if (h.topZ[i] < z) continue;
+    if (x < h.bx0[i] || x > h.bx1[i] || y < h.by0[i] || y > h.by1[i]) continue;
+    const tb = h.tables[h.tbl[i]];
+    if (!ringHitBld(tb, h.idx[i], x, y)) continue;
+    return h.blk[i] >= 0 ? h.blk[i] : -2;
+  }
+  return -1;
+}
+
+/** `ringHit`, against a decoded footprint's own vertex run */
+function ringHitBld(tb: BldTable, i: number, x: number, y: number): boolean {
+  const o = tb.off[i];
+  const m = tb.off[i + 1] - o;
+  if (m < 3) return false;
+  let inside = false;
+  for (let a = 0, b = m - 1; a < m; b = a++) {
+    const xi = tb.vxw[o + a];
+    const yi = tb.vyw[o + a];
+    const xj = tb.vxw[o + b];
+    const yj = tb.vyw[o + b];
+    if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi)
+      inside = !inside;
+  }
+  return inside;
+}
+
+/**
+ * Point in a block's published ring, read straight off the typed arrays.
+ *
+ * `water.ts`'s `inPoly` takes `[number, number][]`, which meant the old hit
+ * test allocated one array of pairs per candidate block per click. The march
+ * runs this per step, so the allocation is the cost. Same crossing rule,
+ * no garbage.
+ */
+function ringHit(g: BlockGeometry, i: number, x: number, y: number): boolean {
+  const o = g.off[i];
+  const m = g.off[i + 1] - o;
+  if (m < 3) return false;
+  let inside = false;
+  for (let a = 0, b = m - 1; a < m; b = a++) {
+    const xi = g.rx[o + a];
+    const yi = g.ry[o + a];
+    const xj = g.rx[o + b];
+    const yj = g.ry[o + b];
+    if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi)
+      inside = !inside;
+  }
+  return inside;
+}
+
 function decodeBlocks(
   chunk: Chunk,
   hoodNames: readonly string[],
@@ -648,7 +796,9 @@ export class CityScene {
   private tone: ToneContext | null = null;
   /** `manifest.buildings.paintFlagBits.nosample` — see PAINT_NOSAMPLE_DEFAULT */
   private paintNoSample = PAINT_NOSAMPLE_DEFAULT;
-  private depthPlate: HTMLCanvasElement | null = null;
+  private depthPlate: HTMLCanvasElement | OffscreenCanvas | null = null;
+  /** `meta.mul` once the refined `water1` tiles are in the plate */
+  private depthTexels: number | null = null;
   private shoalPlate: HTMLCanvasElement | null = null;
   private blockOrder: Int32Array = new Int32Array(0);
   private massRowYear = -1;
@@ -667,6 +817,14 @@ export class CityScene {
   private roofNF: string[] | null = null;
   private blockRoof: Uint8Array | null = null;
   private heroMats: HeroMaterials | null = null;
+  /** the hit test's uniform grid over the block rings — geometry only, so it
+   *  outlives a band drop */
+  private blockHash: BlockHash | null = null;
+  /** each block's built top in the march's units, keyed on band + year */
+  private blockSolidCache: { key: string; top: Float32Array; max: number } | null =
+    null;
+  /** the same, for the footprints the block and street stops actually draw */
+  private footHash: FootHash | null = null;
 
   constructor(data: CityData, proj: Projection) {
     this.data = data;
@@ -1043,9 +1201,36 @@ export class CityScene {
    * THE HIT TEST. Which assessor block is under this canvas pixel?
    *
    * The pixel is a line in z (`projection.ts` §THE PIXEL IS A LINE), so this
-   * marches z downward from above the terrain and takes the first crossing of
-   * the drawn surface — `HIT_STEP_M`'s own rule, at `marchStepZ()`, so the step
-   * is a WORLD distance and stays one at every tilt and every band.
+   * marches z downward from above the drawn surface and takes the first
+   * crossing — `HIT_STEP_M`'s own rule, at `marchStepZ()`, so the step is a
+   * WORLD distance and stays one at every tilt and every band.
+   *
+   * ── THE MARCH USED TO BE AGAINST THE TERRAIN ONLY, AND THAT IS THE BUG ──
+   * BUGS.md §1. **The city is not the terrain.** A block stands on the ground
+   * as a solid, and a reader who clicks a roof is clicking a surface that is
+   * `h · ZEXB` up the screen from the ground under it. Marched against the
+   * DEM alone, the pixel resolved to the ground *behind* the building — at
+   * band 2 the line runs 3.37 world metres per unit z and a metre of built
+   * height is 0.8 of a unit, so a 15 m storefront threw the answer **40 m
+   * up-street**, and a block is ~100 m with a ~25 m street beside it. Measured
+   * over every 8th pixel of the stage, 14,432 samples a camera, only 38.0 % of
+   * the street frame answered at all; the live islands in
+   * `out-b5/b5-pickmap-street.png` are block-shaped and slid down-left off the
+   * blocks they belong to, which is that displacement drawn.
+   *
+   * So the march now crosses the SOLID first and the ground second, in that
+   * order, because the solid stands above the ground and therefore crosses
+   * first along a line walked from the camera outward. The solid it crosses is
+   * the massing tier's own prism — the block's published ring, extruded to
+   * `massRow.hgt[b]` over the elevation at its centroid, which is exactly what
+   * `drawMassing` paints and, at the footprint zooms, the mean of what
+   * `paintFootprints` paints on top of it. Nothing is invented: both terms are
+   * published columns and the third is `ZEXB`, which the projection already
+   * states to the reader.
+   *
+   * The blocks are behind a uniform-grid hash (`blockHash`) so the added test
+   * is a bucket lookup per step rather than 5,404 bbox rejections; the whole
+   * 14,432-sample sweep costs about the same as it did before.
    */
   pick(px: number, py: number, cam: ViewCamera, W: number, H: number): number {
     const step = bandOf(zOf(cam));
@@ -1055,32 +1240,438 @@ export class CityScene {
     const t = band.terrain;
     const plane = screenToPlane(px, py, W, H, cam);
     const dz = this.proj.marchStepZ();
+    const hx = this.blockHashOf(bl);
+    const solid = this.blockSolid(bl, t, step);
+    const foot = this.footSolid(bl, t, step, this.viewQuad(cam, W, H));
     let hitX = 0;
     let hitY = 0;
     let found = false;
-    for (let z = 320; z >= -20; z -= dz) {
+    const top = Math.max(solid.max, foot ? foot.max : -Infinity);
+    const z0 = Math.max(320, Math.ceil(top + dz));
+    for (let z = z0; z >= -20; z -= dz) {
       const w = this.proj.invAt(plane[0], plane[1], z);
-      const g = t.elevM(w[0], w[1]);
-      if (g >= z) {
-        hitX = w[0];
-        hitY = w[1];
+      const wx = w[0];
+      const wy = w[1];
+      if (foot && z <= foot.max) {
+        const b = footUnder(foot, wx, wy, z);
+        /* −2 is "a footprint stands here and the assessor puts it on NO block".
+           It occludes. Measured both ways over 14,432 samples: letting the ray
+           pass through such a footprint buys 1.8 points at the street stop
+           (47.0 → 48.8 %) and buys them by answering with a block that is
+           somewhere else — the ray travels ~1.1 km of world distance across
+           the march, so what it finds behind an off-block building is up to a
+           kilometre up-street from the pointer. That is BUGS §1's second
+           complaint, the pin and the record disagreeing, re-introduced to
+           flatter the first. 92 % of `base/solo` is off-block by construction
+           (13,813 of 15,261 measured, median 49.8 m from the nearest ring),
+           and for those the true answer is that there is no assessor block. */
+        if (b === -2) return -1;
+        if (b >= 0) return b;
+      }
+      if (z <= solid.max) {
+        const b = this.blockUnder(hx, bl, wx, wy, solid.top, z);
+        if (b >= 0) return b;
+      }
+      if (t.elevM(wx, wy) >= z) {
+        hitX = wx;
+        hitY = wy;
         found = true;
         break;
       }
     }
     if (!found) return -1;
-    // nearest-first over the blocks whose bbox contains the point
-    for (let i = 0; i < bl.n; i++) {
+    const b = this.blockUnder(hx, bl, hitX, hitY, null, 0);
+    if (b >= 0) return b;
+    /* ── THE RIGHT OF WAY, AND THE ONE SNAP THIS FILE ALLOWS ───────────
+       BUGS §1's second candidate. The assessor's rings do not tile the city:
+       they stop at the property line, and between them is the right of way —
+       measured, the published rings are 93.0 km2 against San Francisco's
+       121.5 km2 of land, and at the street stop only 38 % of the visible
+       GROUND is inside one. A reader who clicks the roadway has clicked
+       something the block table has no polygon for, and answering nothing is
+       not what they meant: the panel's own second line is *"another 378
+       decisions run along the streets this block fronts"*, so the block a
+       street fronts is a meaningful answer to a click on that street.
+       The snap is bounded twice, and both bounds matter:
+         · `PICK_SNAP_PX` in SCREEN pixels, so it is a pointer tolerance and
+           never grows when the reader zooms out;
+         · `PICK_SNAP_M` in WORLD metres — half of San Francisco's standard
+           68.6 ft right of way — so at the whole-city stop, where one pixel is
+           tens of metres, it collapses to nothing rather than dragging the
+           bay onto the nearest block.
+       Nothing is invented: the answer is a published ring, the distance to it
+       is measured, and outside the bound the pick still returns −1. */
+    const kx = Math.max(1e-9, cam.scale * PLANE_PER_M);
+    const tol = Math.min(PICK_SNAP_M, PICK_SNAP_PX / kx);
+    return this.nearestRing(hx, bl, hitX, hitY, tol);
+  }
+
+  /** the block whose ring edge is nearest this world point, within `tol` metres */
+  private nearestRing(
+    hx: BlockHash,
+    bl: BlockTable,
+    x: number,
+    y: number,
+    tol: number,
+  ): number {
+    if (!(tol > 0)) return -1;
+    const i0 = Math.floor((x - tol - hx.x0) / hx.cell);
+    const i1 = Math.floor((x + tol - hx.x0) / hx.cell);
+    const j0 = Math.floor((y - tol - hx.y0) / hx.cell);
+    const j1 = Math.floor((y + tol - hx.y0) / hx.cell);
+    let best = tol * tol;
+    let bi = -1;
+    const seen = new Set<number>();
+    for (let j = j0; j <= j1; j++) {
+      if (j < 0 || j >= hx.ny) continue;
+      for (let ii = i0; ii <= i1; ii++) {
+        if (ii < 0 || ii >= hx.nx) continue;
+        const c = j * hx.nx + ii;
+        for (let k = hx.start[c]; k < hx.start[c + 1]; k++) {
+          const i = hx.items[k];
+          if (seen.has(i)) continue;
+          seen.add(i);
+          if (
+            x < hx.bx0[i] - tol || x > hx.bx1[i] + tol ||
+            y < hx.by0[i] - tol || y > hx.by1[i] + tol
+          ) continue;
+          const o = bl.off[i];
+          const m = bl.off[i + 1] - o;
+          if (m < 3) continue;
+          for (let a = 0, b = m - 1; a < m; b = a++) {
+            const d = segDist2(
+              x, y,
+              bl.rx[o + b], bl.ry[o + b],
+              bl.rx[o + a], bl.ry[o + a],
+            );
+            if (d < best) {
+              best = d;
+              bi = i;
+            }
+          }
+        }
+      }
+    }
+    return bi;
+  }
+
+  /**
+   * THE FOOTPRINTS, AS SOLIDS THE HIT TEST CAN MARCH.
+   *
+   * The block prism above is exactly what `drawMassing` paints, and at the
+   * whole-city and district stops that IS the drawn city. At the block and
+   * street stops it is not: `paintFootprints` draws one prism per published
+   * footprint over it, and those are the surfaces the reader's pointer is on.
+   * They are also much taller than the block plate under them — **the block's
+   * `th` is an area-weighted mean over its NON-solo members, and everything
+   * 20 m or over at its derived top is a solo, so the largest `th` in the
+   * whole city is 19 m and the mean is 7.4** (measured, all 5,404 blocks,
+   * 2025). Marching the plate alone therefore corrects a 15 m storefront by
+   * 7 m and leaves two thirds of the displacement standing, which is what the
+   * first cut of this fix measured: 38.0 % → 47.4 % at the street stop, with
+   * whole blocks still answering nothing.
+   *
+   * So this builds the same tables `paintFootprints` draws from — `base/solo`
+   * plus whatever `bldg` chunks the view yields — and files every footprint
+   * under its own bbox with:
+   *
+   *   · `topZ`, the roof in the march's units: `elevM(cx, cy) + roofHeight(h,
+   *     hf) · ZEXB / ZEX`, which is `projb`'s own arithmetic;
+   *   · `blk`, the block whose published ring contains the footprint's
+   *     CENTROID — containment and nothing else, the same rule `build_lod.py`
+   *     joins by, so a pier or a Presidio barracks is not filed onto whichever
+   *     block happens to be nearest. Those come back −1 and are kept in the
+   *     march as OCCLUDERS: a click on one answers "nothing there", which is
+   *     true, rather than the block behind it, which is not.
+   *
+   * No vertex is copied — the ring test reads the decoded table in place.
+   *
+   * ONE HONEST APPROXIMATION, STATED: the year gate is not applied. The march
+   * crosses every footprint in the tables, including buildings the roll dates
+   * after the year on the rail. What it returns is a BLOCK, and the assessor's
+   * block ring is published for every year on the rail, so the answer is not
+   * wrong — it is only reachable through a solid that is not painted yet. The
+   * alternative is to thread the year through `pick()`, which is `CityMap`'s
+   * signature and not mine to change.
+   */
+  private footSolid(
+    bl: BlockTable,
+    t: TerrainField,
+    step: number,
+    view: CityView,
+  ): FootHash | null {
+    const tables: BldTable[] = [];
+    const keys: string[] = [];
+    if (this.solo) {
+      tables.push(this.solo);
+      keys.push("base/solo");
+    }
+    if (view.z >= LOD_Z0) {
+      for (const c of this.data.visible("bldg", view)) {
+        if (c.key === "base/solo") continue;
+        const b = this.bldFor(c);
+        if (b) {
+          tables.push(b);
+          keys.push(c.key);
+        }
+      }
+    }
+    if (!tables.length) return null;
+    const key = `${step}|${this.sceneVersion}|${keys.join(",")}`;
+    const hit = this.footHash;
+    if (hit && hit.key === key) return hit;
+
+    const kh = this.proj.zexb / Math.max(1e-6, this.proj.zex);
+    const hx = this.blockHashOf(bl);
+    let cap = 0;
+    for (const tb of tables) cap += tb.n;
+    const tbl = new Int32Array(cap);
+    const idx = new Int32Array(cap);
+    const bx0 = new Float32Array(cap);
+    const by0 = new Float32Array(cap);
+    const bx1 = new Float32Array(cap);
+    const by1 = new Float32Array(cap);
+    const topZ = new Float32Array(cap);
+    const blk = new Int32Array(cap);
+    let n = 0;
+    let x0 = Infinity;
+    let y0 = Infinity;
+    let x1 = -Infinity;
+    let y1 = -Infinity;
+    let max = -Infinity;
+    for (let ti = 0; ti < tables.length; ti++) {
+      const tb = tables[ti];
+      for (let i = 0; i < tb.n; i++) {
+        const o = tb.off[i];
+        const m = tb.off[i + 1] - o;
+        if (m < 3) continue;
+        let ax = Infinity;
+        let ay = Infinity;
+        let bxx = -Infinity;
+        let byy = -Infinity;
+        for (let k = 0; k < m; k++) {
+          const x = tb.vxw[o + k];
+          const y = tb.vyw[o + k];
+          if (x < ax) ax = x;
+          if (x > bxx) bxx = x;
+          if (y < ay) ay = y;
+          if (y > byy) byy = y;
+        }
+        const zt =
+          t.elevM(tb.cx[i], tb.cy[i]) + roofHeight(tb.h[i], tb.hf[i]) * kh;
+        tbl[n] = ti;
+        idx[n] = i;
+        bx0[n] = ax;
+        by0[n] = ay;
+        bx1[n] = bxx;
+        by1[n] = byy;
+        topZ[n] = zt;
+        blk[n] = this.blockUnder(hx, bl, tb.cx[i], tb.cy[i], null, 0);
+        if (ax < x0) x0 = ax;
+        if (ay < y0) y0 = ay;
+        if (bxx > x1) x1 = bxx;
+        if (byy > y1) y1 = byy;
+        if (zt > max) max = zt;
+        n++;
+      }
+    }
+    if (!n || !(x1 > x0) || !(y1 > y0)) return null;
+
+    const cell = FOOT_CELL_M;
+    const nx = Math.max(1, Math.ceil((x1 - x0) / cell) + 1);
+    const ny = Math.max(1, Math.ceil((y1 - y0) / cell) + 1);
+    const cellOf = (v: number, lo: number, nn: number): number =>
+      Math.max(0, Math.min(nn - 1, Math.floor((v - lo) / cell)));
+    const start = new Uint32Array(nx * ny + 1);
+    for (let i = 0; i < n; i++) {
+      const i0 = cellOf(bx0[i], x0, nx);
+      const i1 = cellOf(bx1[i], x0, nx);
+      const j0 = cellOf(by0[i], y0, ny);
+      const j1 = cellOf(by1[i], y0, ny);
+      for (let j = j0; j <= j1; j++)
+        for (let ii = i0; ii <= i1; ii++) start[j * nx + ii + 1]++;
+    }
+    for (let k = 0; k < nx * ny; k++) start[k + 1] += start[k];
+    const items = new Int32Array(start[nx * ny]);
+    const cur = Uint32Array.from(start.subarray(0, nx * ny));
+    for (let i = 0; i < n; i++) {
+      const i0 = cellOf(bx0[i], x0, nx);
+      const i1 = cellOf(bx1[i], x0, nx);
+      const j0 = cellOf(by0[i], y0, ny);
+      const j1 = cellOf(by1[i], y0, ny);
+      for (let j = j0; j <= j1; j++)
+        for (let ii = i0; ii <= i1; ii++) items[cur[j * nx + ii]++] = i;
+    }
+    this.footHash = {
+      key, cell, x0, y0, nx, ny, start, items,
+      tables, tbl, idx, bx0, by0, bx1, by1, topZ, blk, max,
+    };
+    return this.footHash;
+  }
+
+  /**
+   * THE BLOCK RINGS, IN A UNIFORM GRID.
+   *
+   * The hit test asks "which ring contains this world point?" once per march
+   * step instead of once per click, so the linear sweep it used to do — 5,404
+   * centroid rejections and then a `[number, number][]` allocated per
+   * candidate — is no longer affordable. This is the standard CSR bucket
+   * build: every block is filed under the cells its bounding box covers, and
+   * its bbox is kept so the ring test is reached only by the few that can
+   * possibly contain the point.
+   *
+   * `HIT_CELL_M` is 160 because the median assessor block is about 100 m and
+   * the median ring has 4 vertices: at 160 m most blocks file into one or two
+   * cells, and the Presidio — one ring, 6.1 km2, 388 vertices — files into a
+   * few hundred, which is what its bbox is worth.
+   */
+  private blockHashOf(bl: BlockTable): BlockHash {
+    if (this.blockHash) return this.blockHash;
+    const n = bl.n;
+    const bx0 = new Float32Array(n);
+    const by0 = new Float32Array(n);
+    const bx1 = new Float32Array(n);
+    const by1 = new Float32Array(n);
+    let x0 = Infinity;
+    let y0 = Infinity;
+    let x1 = -Infinity;
+    let y1 = -Infinity;
+    for (let i = 0; i < n; i++) {
       const o = bl.off[i];
       const m = bl.off[i + 1] - o;
-      if (m < 3) continue;
-      if (Math.abs(bl.cx[i] - hitX) > 900 || Math.abs(bl.cy[i] - hitY) > 900)
+      let ax = Infinity;
+      let ay = Infinity;
+      let bxx = -Infinity;
+      let byy = -Infinity;
+      for (let k = 0; k < m; k++) {
+        const x = bl.rx[o + k];
+        const y = bl.ry[o + k];
+        if (x < ax) ax = x;
+        if (x > bxx) bxx = x;
+        if (y < ay) ay = y;
+        if (y > byy) byy = y;
+      }
+      if (m < 3) {
+        ax = ay = 1;
+        bxx = byy = -1; // empty box: never a candidate
+      }
+      bx0[i] = ax;
+      by0[i] = ay;
+      bx1[i] = bxx;
+      by1[i] = byy;
+      if (m >= 3) {
+        if (ax < x0) x0 = ax;
+        if (ay < y0) y0 = ay;
+        if (bxx > x1) x1 = bxx;
+        if (byy > y1) y1 = byy;
+      }
+    }
+    if (!(x1 > x0) || !(y1 > y0)) {
+      x0 = 0;
+      y0 = 0;
+      x1 = 1;
+      y1 = 1;
+    }
+    const cell = HIT_CELL_M;
+    const nx = Math.max(1, Math.ceil((x1 - x0) / cell) + 1);
+    const ny = Math.max(1, Math.ceil((y1 - y0) / cell) + 1);
+    const cellOf = (v: number, lo: number, nn: number): number =>
+      Math.max(0, Math.min(nn - 1, Math.floor((v - lo) / cell)));
+    const counts = new Uint32Array(nx * ny + 1);
+    for (let i = 0; i < n; i++) {
+      if (!(bx1[i] >= bx0[i])) continue;
+      const i0 = cellOf(bx0[i], x0, nx);
+      const i1 = cellOf(bx1[i], x0, nx);
+      const j0 = cellOf(by0[i], y0, ny);
+      const j1 = cellOf(by1[i], y0, ny);
+      for (let j = j0; j <= j1; j++)
+        for (let ii = i0; ii <= i1; ii++) counts[j * nx + ii + 1]++;
+    }
+    for (let k = 0; k < nx * ny; k++) counts[k + 1] += counts[k];
+    const items = new Int32Array(counts[nx * ny]);
+    const cur = Uint32Array.from(counts.subarray(0, nx * ny));
+    for (let i = 0; i < n; i++) {
+      if (!(bx1[i] >= bx0[i])) continue;
+      const i0 = cellOf(bx0[i], x0, nx);
+      const i1 = cellOf(bx1[i], x0, nx);
+      const j0 = cellOf(by0[i], y0, ny);
+      const j1 = cellOf(by1[i], y0, ny);
+      for (let j = j0; j <= j1; j++)
+        for (let ii = i0; ii <= i1; ii++) items[cur[j * nx + ii]++] = i;
+    }
+    this.blockHash = {
+      cell, x0, y0, nx, ny, start: counts, items, bx0, by0, bx1, by1,
+    };
+    return this.blockHash;
+  }
+
+  /**
+   * The block whose ring contains this world point, or −1.
+   *
+   * With `top` supplied this is the SOLID test: the point must be inside the
+   * ring *and* the ray's z must have descended to or below the block's built
+   * top, so the answer is the first prism the line enters. With `top` null it
+   * is the plain ground containment the old hit test ended on.
+   */
+  private blockUnder(
+    hx: BlockHash,
+    bl: BlockTable,
+    x: number,
+    y: number,
+    top: Float32Array | null,
+    z: number,
+  ): number {
+    const ii = Math.floor((x - hx.x0) / hx.cell);
+    const jj = Math.floor((y - hx.y0) / hx.cell);
+    if (ii < 0 || jj < 0 || ii >= hx.nx || jj >= hx.ny) return -1;
+    const c = jj * hx.nx + ii;
+    for (let k = hx.start[c]; k < hx.start[c + 1]; k++) {
+      const i = hx.items[k];
+      if (x < hx.bx0[i] || x > hx.bx1[i] || y < hx.by0[i] || y > hx.by1[i])
         continue;
-      const ring: [number, number][] = new Array(m);
-      for (let k = 0; k < m; k++) ring[k] = [bl.rx[o + k], bl.ry[o + k]];
-      if (inPoly(hitX, hitY, ring)) return i;
+      if (top && top[i] < z) continue;
+      if (ringHit(bl, i, x, y)) return i;
     }
     return -1;
+  }
+
+  /**
+   * EACH BLOCK'S BUILT TOP, IN THE MARCH'S OWN UNITS.
+   *
+   * `projb` puts ground elevation on `ZEX` and built height on `ZEXB` — two
+   * different art dials, and the only function that carries both. `invAt`,
+   * which the march inverts through, knows `ZEX` only. So a block's roof sits
+   * at an EQUIVALENT z of `zg + h · ZEXB / ZEX`, and that ratio is a function
+   * of the band (0.485 at the whole-city ZEX of 3.3, 0.8 at the block ZEX of
+   * 2.0). Getting it wrong by using `h` directly would over-correct the very
+   * displacement this is here to remove.
+   *
+   * The ground term is the elevation at the block's CENTROID, not at the
+   * sampled point, because that is the `zg` `drawMassing` extrudes from — the
+   * hit test and the paint have to agree about where the solid is.
+   */
+  private blockSolid(
+    bl: BlockTable,
+    t: TerrainField,
+    step: number,
+  ): { top: Float32Array; max: number } {
+    const key = `${step}|${this.massRowYear}|${this.sceneVersion}`;
+    const hit = this.blockSolidCache;
+    if (hit && hit.key === key && hit.top.length === bl.n) return hit;
+    const row = this.massRow;
+    const kh = this.proj.zexb / Math.max(1e-6, this.proj.zex);
+    const top = new Float32Array(bl.n);
+    let max = -Infinity;
+    for (let b = 0; b < bl.n; b++) {
+      const zg = t.elevM(bl.cx[b], bl.cy[b]);
+      const h = row ? row.hgt[b] : 0;
+      const v = zg + h * kh;
+      top[b] = v;
+      if (v > max) max = v;
+    }
+    if (!(max > -Infinity)) max = 0;
+    this.blockSolidCache = { key, top, max };
+    return this.blockSolidCache;
   }
 
   /** the world point under a canvas pixel, at ground level — for the readout */
@@ -1317,6 +1908,33 @@ export class CityScene {
           st.labels += placeNames(f, des, this.labelGrid, (x, y) => t.elevM(x, y)).placed;
         }
       }
+      /* ── AND THE STREETS HAD NO NAMES ON THEM, AT ANY ZOOM ─────────────
+         `base/street-labels` and `strt/street-labels-2` ship **2,786 named
+         stretches**, `data.ts` decodes them into one table, `labels.ts` ships
+         `StreetNamePass` with its own ink budget, its own spine rule and its
+         own collision handling, and the suite asserts all of it — and NOTHING
+         IN `src/components` EVER CONSTRUCTED THE PASS. Production wrote zero
+         street names at every camera, by construction. Measured against the
+         mock: whole city 10 / 0, district 30 / 0, block 37 / 0.
+
+         THE ORDER IS NOT COSMETIC AND IT IS THE WHOLE OF THE FIX. The pass is
+         three sub-passes interleaved into the label pass at the three points
+         `part3.html` puts them — the seven spine stretches BEFORE the
+         neighbourhood capitals, the rest of rank 0 AFTER them, the local
+         streets after the un-designated places. Run instead as one block at
+         the end, into the grid the finished frame leaves behind, the
+         whole-city camera places 4 names and loses GEARY BLVD and 3RD ST; run
+         here it places 9. Same code, same data, same budget — a different
+         position in the pass list.
+
+         The three layers share ONE collision grid on purpose (§9's *"the same
+         NUMBER and not the same POOL"*), so a street name cannot be written
+         over a place name and neither layer has to know the other exists. */
+      const nameTbl = this.data.streetLabels();
+      const sn = nameTbl
+        ? new StreetNamePass(f, nameTbl, this.labelGrid, (x, y) => t.elevM(x, y))
+        : null;
+      sn?.draw("spine");
       /* ── THE DISTRICT CAPITALS, WHICH HAVE BEEN ON THE WIRE ALL ALONG ──
          `base/blocks` carries a `hood` byte per assessor block and the
          manifest carries 41 `hoodNames`; `decodeBlocks` has decoded both into
@@ -1338,11 +1956,14 @@ export class CityScene {
           f, this.hoodAnchors, this.labelGrid, (x, y) => t.elevM(x, y),
         );
       }
+      sn?.draw("arterials");
       // and the un-designated places last, into whatever the two above left
       const rest = pl.filter((q) => q.cls !== "designated");
       if (rest.length) {
         st.labels += placeNames(f, rest, this.labelGrid, (x, y) => t.elevM(x, y)).placed;
       }
+      sn?.draw("local");
+      st.labels += sn?.placed ?? 0;
     }
     return st;
   }
@@ -1373,7 +1994,7 @@ export class CityScene {
       depth: this.depthPlate ?? undefined,
       surround: sg,
       shoalTexels: 1,
-      depthTexels: 1,
+      depthTexels: this.depthTexels ?? 1,
     });
   }
 
@@ -1416,10 +2037,43 @@ export class CityScene {
           this.depthPlate = cv;
         }
       }
+      /* ── AND THE FOUR-TIMES PLATE, WHERE ITS TILES HAVE LANDED ──────────
+         The coarse field above is 417 x 281 nodes. `water1` ships the same
+         measurement at 1665 x 1121 — an EXACT refinement, 416 x 4 + 1 and
+         280 x 4 + 1, so every fourth texel of the fine plate is a node of the
+         coarse one and the two swap under the same blit with no seam.
+         `water.ts` ships `buildDepthPlate` and writes this call out in its own
+         doc; nothing called it. Its tier `minZ` is 3.0, so the two wide
+         cameras never fetch it and keep the coarse plate — which is a manifest
+         decision (+34 % on the first paint) and not one for this file. A tile
+         position with no chunk is DRY LAND, not a hole: nine of the 35 are
+         dropped by the encoder for that reason and stay transparent. */
+      const tiles = this.data.manifest.chunks
+        .filter((c) => c.kind === "water" && c.tier === "water1")
+        .map((c) => ({ e: c as unknown as DepthTile["e"], f: this.data.get(c.k) }))
+        .filter((x): x is DepthTile => !!x.f);
+      if (tiles.length) {
+        const fine = buildDepthPlate(meta, tiles, makeCanvas);
+        if (fine) {
+          this.depthPlate = fine;
+          this.depthTexels = meta.mul;
+        }
+      }
     }
 
     if (!this.shoalPlate) {
-      const sh = buildShoal(XW, XH, (i, j) => sg.z(i, j) > 0 && isLandOf(sg, i, j));
+      /* ── `sg.z(i, j) > 0` IS NOT A LAND TEST — DRAW.md §16.3 ────────────
+         The shallows plate's BFS asks "is this 110 m node land?" and the
+         predicate used to answer it with "and does it stand above sea level".
+         **Every made-land parcel in the city reads 0 m on that grid** —
+         Treasure Island, the Marina fill, Mission Bay, the Embarcadero
+         seawall — so the BFS called them water and the plate went down opaque
+         across them. Under the city's own cells it never showed; once the
+         shore corridor re-blitted the plate over them, Treasure Island came
+         back the colour of the sea with its own label on it (BUGS §6's
+         sibling). A land BIT is the land test. An elevation of zero is a
+         measurement of flat ground, not evidence of water. */
+      const sh = buildShoal(XW, XH, (i, j) => isLandOf(sg, i, j));
       const hole = buildShoalHoles(
         XW, XH,
         (i, j) => [
@@ -1498,7 +2152,7 @@ export class CityScene {
     }
     if (!cells.length) return 0;
     const stats = this.data.manifest.streets as unknown as {
-      stats: { w_p50: number };
+      stats: { w_p50: number; fw_p50: number };
     };
     const medianW = [
       stats.stats.w_p50, stats.stats.w_p50, stats.stats.w_p50,
@@ -1512,6 +2166,16 @@ export class CityScene {
       band: 0,
     });
     const r = drawStreetSurface(f, cells, { year, terrain: t });
+    /* ── 1,120 TRAFFIC ISLANDS AND 268 PUBLIC STAIRS, DECODED AND UNDRAWN ──
+       `base/street-misc` is on the wire, `data.streetMisc()` decodes it and
+       `streets.ts` ships `drawStreetMisc` with the call site written out in
+       its own doc comment. Nothing called it. The stairs are San Francisco's
+       own signature — a street that becomes a flight of steps because the hill
+       is too steep for a roadway — and the islands are what makes a boulevard
+       read as a boulevard. `streetMisc()` is null until the chunk lands, so
+       this is a no-op on the first paint rather than a gate. */
+    const misc = this.data.streetMisc();
+    if (misc) drawStreetMisc(f, misc, t, { fwMedianM: stats.stats.fw_p50 });
     return r.surfaces;
   }
 

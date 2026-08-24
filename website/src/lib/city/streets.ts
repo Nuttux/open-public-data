@@ -826,3 +826,194 @@ export function makeSkip(cnns: Iterable<number> | null): (c: number) => boolean 
 }
 
 export { fieldsOf as streetCellOf };
+
+// ── `base/street-misc`, which shipped for five blocks and drew nothing ───────
+
+/**
+ * The published islands, medians and stair runs.
+ *
+ * `base/street-misc` has carried **1,120 ISLANDS rings out of `emxt-b6yg` and
+ * 268 published stair runs out of `aw7j-9354`** since Block B4, and `CityData`
+ * has decoded them since B6. Nothing has ever drawn either. `part3.html`
+ * L6608-6672 draws both, at the end of the street surface and before the
+ * centrelines, and both clauses below are that code's.
+ *
+ * **THE ISLANDS ARE FOOTWAY, because that is what a refuge is.** They carry no
+ * width of their own to tier on, so the reference gates the whole layer on the
+ * FRAME's median footway band instead — and the `3.16` at L6612 is not a
+ * chosen number: it is `manifest.streets.stats.fw_p50`, the city's own median
+ * published footway, and it is passed in rather than written here for exactly
+ * the reason FOCUS.md gives about the other seven.
+ *
+ * **THE STAIRS ARE AN HONEST GLOBAL TREATMENT AND ARE DECLARED AS ONE.**
+ * `aw7j-9354` publishes the RUN of each stair and neither a width nor a tread
+ * count, so every stair in San Francisco is drawn `ST_STAIR_BAND_M` wide with a
+ * tick every `ST_STAIR_TICK_M`, and **neither number is a measurement of that
+ * stair.** They are drawn only where the tick is more than two pixels from the
+ * next one, so nothing is implied that cannot be seen.
+ *
+ * THE ONE CALL SITE, which is `scene.paintStreets` and not this file:
+ *
+ * ```ts
+ * const misc = this.data.streetMisc();
+ * if (misc) drawStreetMisc(f, misc, t, { fwMedianM: stats.stats.fw_p50 });
+ * ```
+ *
+ * after `drawStreetSurface` and before the return. `streetMisc()` is null until
+ * the `strt` tier lands at z = 1.75, which is below both gates anyway, so the
+ * wide shot is unchanged by construction.
+ */
+export interface StreetMiscGeom {
+  readonly islandLen: Uint16Array;
+  readonly islandX: Float32Array;
+  readonly islandY: Float32Array;
+  readonly stairLen: Uint16Array;
+  readonly stairX: Float32Array;
+  readonly stairY: Float32Array;
+}
+
+export interface StreetMiscResult {
+  /** island rings filled */
+  readonly islands: number;
+  /** stair runs stroked */
+  readonly stairs: number;
+  /** ticks laid across those runs */
+  readonly treads: number;
+}
+
+export function drawStreetMisc(
+  f: Frame,
+  misc: StreetMiscGeom,
+  t: TerrainField,
+  opts: {
+    /** `manifest.streets.stats.fw_p50` — the city's own median footway band */
+    readonly fwMedianM: number;
+    readonly kerb?: boolean;
+  },
+): StreetMiscResult {
+  const { ctx, cam, W, H } = f;
+  const k = cam.scale,
+    W2 = W / 2,
+    H2 = H / 2;
+  const kp = ST_KPROJ * k;
+  const cf = f.proj.coeffs();
+  const zex = f.proj.zex;
+  const mg = 64;
+  const save = ctx.globalAlpha;
+  let islands = 0,
+    stairs = 0,
+    treads = 0;
+
+  const px = (wx: number, wy: number): [number, number] => {
+    const pz = (t.elevM(wx, wy) + ST_LINE_LIFT_M) * zex;
+    return [
+      (cf.ax * wx + cf.ay * wy - cam.cx) * k + W2,
+      H2 - (cf.bx * wx + cf.by * wy + pz - cam.cy) * k,
+    ];
+  };
+
+  // THE ISLANDS AND MEDIANS — the same gate the footway pass uses, reached by a
+  // different route because a refuge publishes no width of its own.
+  if (misc.islandLen.length && opts.fwMedianM * kp >= ST_SRF_PX + 0.5) {
+    const P = new Path2D();
+    let v = 0,
+      any = false;
+    for (let r = 0; r < misc.islandLen.length; r++) {
+      const nv = misc.islandLen[r];
+      let open = false;
+      for (let i = 0; i < nv; i++) {
+        const [X, Y] = px(misc.islandX[v + i], misc.islandY[v + i]);
+        // the reference abandons the whole ring when its FIRST vertex is off
+        // screen; a ring is a small closed thing, so that is the cull
+        if (X < -mg || X > W + mg || Y < -mg || Y > H + mg) {
+          if (i === 0) break;
+          continue;
+        }
+        if (!open) {
+          P.moveTo(X, Y);
+          open = true;
+        } else P.lineTo(X, Y);
+      }
+      if (open) {
+        P.closePath();
+        islands++;
+        any = true;
+      }
+      v += nv;
+    }
+    if (any) {
+      ctx.fillStyle = ST_C_FOOT;
+      ctx.globalAlpha = ST_ALPHA;
+      ctx.fill(P);
+      if (opts.kerb !== false) {
+        ctx.strokeStyle = ST_C_KERB;
+        ctx.lineWidth = 1;
+        ctx.globalAlpha = 0.55;
+        ctx.stroke(P);
+      }
+    }
+  }
+
+  // THE STAIRS. Only where a tread is more than two pixels from the next.
+  if (misc.stairLen.length && ST_STAIR_TICK_M * kp > 2.0) {
+    const wpx = ST_STAIR_BAND_M * kp;
+    const P = new Path2D(),
+      T = new Path2D();
+    let v = 0,
+      any = false;
+    for (let r = 0; r < misc.stairLen.length; r++) {
+      const nv = misc.stairLen[r];
+      let prev: [number, number] | null = null;
+      let open = false;
+      for (let i = 0; i < nv; i++) {
+        const p = px(misc.stairX[v + i], misc.stairY[v + i]);
+        if (p[0] < -mg || p[0] > W + mg || p[1] < -mg || p[1] > H + mg) {
+          // THE PEN LIFTS OFF SCREEN rather than drawing a chord across the
+          // frame — the same clause `drawCentrelines` states.
+          open = false;
+          prev = null;
+          continue;
+        }
+        if (!open) {
+          P.moveTo(p[0], p[1]);
+          open = true;
+          any = true;
+          stairs++;
+        } else P.lineTo(p[0], p[1]);
+        if (prev) {
+          const dx = p[0] - prev[0],
+            dy = p[1] - prev[1];
+          const L = Math.hypot(dx, dy);
+          if (L > 0.5) {
+            const ux = dx / L,
+              uy = dy / L,
+              stp = ST_STAIR_TICK_M * kp;
+            for (let s = stp; s < L; s += stp) {
+              const mx = prev[0] + ux * s,
+                my = prev[1] + uy * s;
+              T.moveTo(mx - (uy * wpx) / 2, my + (ux * wpx) / 2);
+              T.lineTo(mx + (uy * wpx) / 2, my - (ux * wpx) / 2);
+              treads++;
+            }
+          }
+        }
+        prev = p;
+      }
+      v += nv;
+    }
+    if (any) {
+      ctx.globalAlpha = ST_ALPHA;
+      ctx.strokeStyle = ST_C_FOOT;
+      ctx.lineWidth = wpx;
+      ctx.lineCap = "butt";
+      ctx.stroke(P);
+      ctx.strokeStyle = ST_C_KERB;
+      ctx.lineWidth = 1;
+      ctx.globalAlpha = 0.5;
+      ctx.stroke(T);
+    }
+  }
+
+  ctx.globalAlpha = save;
+  return { islands, stairs, treads };
+}

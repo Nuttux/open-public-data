@@ -1386,3 +1386,102 @@ export function drawShoreline(
 }
 
 export type { Plane, Projection };
+
+// ── the depth plate at the resolution the City published ────────────────────
+
+/**
+ * THE PLATE IS 417 x 281 AND THE PUBLISHED FIELD IS 1665 x 1121.
+ *
+ * `scene.ensurePlates` builds the bathymetry out of `base/water0` alone — a
+ * 417 x 281 node grid, one node per 110 m surround cell, **117,681 of the
+ * 846,819 NOAA nodes the encoder shipped.** The other 729,138 are in
+ * `water1`'s 26 tiles, they have been on the wire since Block P2, and
+ * `grep -rn 'water1' src/` returns the manifest reader and nothing else.
+ *
+ * `blitGridPlate` has never needed a change for this: it already takes
+ * `texelsPerCell`, and `mul` is 4. `assertRefinement` already refuses a field
+ * that is not an exact refinement — 1665 = 416 x 4 + 1 and 1121 = 280 x 4 + 1,
+ * so **every fourth texel of the refined plate IS a node of the coarse one**,
+ * which is what makes level 0 loss-free with respect to level 1 and what lets
+ * the two be swapped under the same blit.
+ *
+ * TWO THINGS ARE OUTSIDE THESE FILES AND BOTH ARE NAMED:
+ *
+ * 1. **`water1`'s tier `minZ` is 3.0**, so the tier is not fetched at the two
+ *    wide cameras at all. The whole-city and district frames cannot be helped
+ *    by this without a MANIFEST change, and the manifest is the encoder's.
+ *    That change is not free: `water1` is 236,561 gzipped bytes against the
+ *    base tier's 689,379, so moving it to base is +34 % on the first paint and
+ *    is a decision about the first paint, not about the water.
+ * 2. **the plate is assembled in `scene.ensurePlates`**, which is not one of
+ *    these files. The call is
+ *
+ *    ```ts
+ *    const tiles = this.data.manifest.chunks
+ *      .filter((c) => c.kind === "water" && c.tier === "water1")
+ *      .map((c) => ({ e: c, f: this.data.get(c.k) }))
+ *      .filter((t) => !!t.f);
+ *    const fine = tiles.length ? buildDepthPlate(meta, tiles, makeCanvas) : null;
+ *    if (fine) { this.depthPlate = fine; this.depthTexels = meta.mul; }
+ *    ```
+ *
+ *    with `depthTexels: this.depthTexels ?? 1` at the `drawWater` call. It is
+ *    idempotent and it refuses rather than guessing: a tile whose byte count
+ *    does not match its own published `w * h` throws naming the tile.
+ *
+ * A MISSING TILE IS LAND, NOT A HOLE. Nine of the 7 x 5 tile positions carry no
+ * chunk because every node in them is dry, and the encoder drops them for that
+ * reason; the plate is created transparent and a dropped tile stays
+ * transparent, which is the same thing `v === 0` means inside a tile.
+ */
+export interface DepthTile {
+  /** the manifest entry: `gx`, `gy`, `w`, `h` in NODES of the refined grid */
+  readonly e: { readonly gx: number; readonly gy: number; readonly w: number; readonly h: number; readonly k?: string };
+  readonly f: Chunk;
+}
+
+export function buildDepthPlate(
+  meta: WaterMeta,
+  tiles: readonly DepthTile[],
+  makeCanvas: (w: number, h: number) => HTMLCanvasElement | OffscreenCanvas,
+): HTMLCanvasElement | OffscreenCanvas | null {
+  if (!tiles.length) return null;
+  const cv = makeCanvas(meta.nw, meta.nh);
+  cv.width = meta.nw;
+  cv.height = meta.nh;
+  const g = cv.getContext("2d") as CanvasRenderingContext2D | null;
+  if (!g) return null;
+  const ramp = depthRamp(meta.qs);
+  for (const t of tiles) {
+    const dep = t.f.fields.dep as Uint8Array | undefined;
+    if (!dep) continue;
+    const { gx, gy, w, h } = t.e;
+    if (dep.length !== w * h) {
+      throw new Error(
+        `${t.e.k ?? "water1 tile"}: ${dep.length} depth nodes for a published ${w}x${h}`,
+      );
+    }
+    if (gx + w > meta.nw || gy + h > meta.nh) {
+      throw new Error(
+        `${t.e.k ?? "water1 tile"}: ${gx}+${w} x ${gy}+${h} is outside the ` +
+          `published ${meta.nw}x${meta.nh} field`,
+      );
+    }
+    const img = g.createImageData(w, h);
+    for (let i = 0; i < w * h; i++) {
+      const v = dep[i];
+      const o = i * 4;
+      if (v === 0) {
+        img.data[o + 3] = 0; // dry: the source drops it, so does this
+        continue;
+      }
+      const c = depthColour(depthM(v, meta.dmax), ramp);
+      img.data[o] = c[0];
+      img.data[o + 1] = c[1];
+      img.data[o + 2] = c[2];
+      img.data[o + 3] = 255;
+    }
+    g.putImageData(img, gx, gy);
+  }
+  return cv;
+}

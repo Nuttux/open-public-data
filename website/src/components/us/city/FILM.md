@@ -431,6 +431,25 @@ sampling, self time by frame:
 city's own footprints are 1.2 % of it. That is §6's named residual, now measured
 rather than inferred.
 
+### `FILM_DPR` settled by looking, which is what the brief asked for
+
+`.parity/b3crop.py` — the same film millisecond at four settings of the dial, a
+300 × 190 CSS px crop of City Hall's own block at 3× nearest-neighbour,
+`b3-dprcrop-2x2.png`. Two things the harness had to get right, and the first pass
+got one of them wrong: the crop is taken **inside a move and near the end of a
+buffer's life**, because a buffer is sharp the instant it is painted and softest
+just before it is repainted; and it is taken at **the same film millisecond at
+every dial**, because running each dial for a fixed wall time lands it at a
+different `t` — the first pass compared z 28 against z 10.6 and would have
+reported the cheapest dial as the sharpest one.
+
+Looked at, at 3×: **0.55 is soft and it is obvious** — tree crowns blurred, the
+kerb line smeared, the building's step edges mush. **1.00, 1.40 and 1.70 are
+indistinguishable.** That is `camera.ts`'s own 1.91-of-255 measurement confirmed
+by eye rather than by arithmetic, and it settles the brief's question: the whole
+of the visible gain is 0.55 → 1.00, and 1.70 costs 48 % more on the worst frame
+of a move for a difference this crop cannot show. **`FILM_DPR` stays at 1.0.**
+
 ### Two sweeps that say no dial in this block's files can fix it
 
 **`FILM_DPR`** — `.parity/b3dpr.py`, the dial set on the settled page and the
@@ -521,13 +540,14 @@ One slow frame cannot do it (`KEEP_UP_W_MAX` 0.35: one 900 ms frame leaves the
 average at 0.67, two consecutive take it to 0.45), and nothing is decided in the
 first four seconds, where the ground is still landing.
 
-**Measured, same harness, same machine, before and after:**
+**Measured, same harness, same machine, before and after** (`.parity/b3seg.py`,
+a full 134-second playthrough each, no seeking and no pausing):
 
 | | before | after |
 |---|---:|---:|
-| whole film, wall clock | 269.1 s (×2.01) | **178.3 s (×1.33)** |
-| runs | ×3.07 | **×1.48** |
-| moves | ×1.73 | **×1.48** |
+| whole film, wall clock | 269.1 s (×2.01) | **184.8 s (×1.38)** |
+| runs | ×3.07 | **×1.52** |
+| moves | ×1.73 | **×1.88** |
 | worst frame, into 4 city-hall | 949 ms | **258 ms** |
 | worst frame, into 6 west-fills | 1,225 ms | **10 ms** |
 | worst frame, into 7 hetch-hetchy | 666 ms | **142 ms** |
@@ -537,9 +557,14 @@ first four seconds, where the ground is still landing.
 | rasterisations, run 6 | 27 | **6** |
 
 Four of the eight transitions now run at 120 fps end to end with **zero**
-rasterisations. The first move still pays 892 ms, and that is the film learning:
-the verdict is reached from frames this machine has actually drawn, so the
-evidence costs one move.
+rasterisations. The first move still pays 892 ms, and the `move` row above went
+UP rather than down — both are the same thing, and it is not a regression: the
+verdict is reached from frames this machine has actually drawn and nothing is
+decided before 20 s of playback, so the first travel is paid in full before the
+film knows. Buying that back would mean deciding from the startup, where the data
+layer is still landing cells and every frame is a rasterisation — measured at
+×56 on the film's first run segment, which would put a fast laptop on the spare
+version for the whole film on the strength of its first half second.
 
 **What it costs, stated rather than hidden: on a machine that cannot draw them,
 the eight camera travels are gone and the arrival wave is gone.** That is a real
@@ -746,7 +771,7 @@ earlier motion bug on this project survived.
 
 ## 10. Screenshots
 
-All at 1440 × 940, DPR 2, against the dev server.
+All at 1440 × 940, DPR 2, against the dev server unless a row says otherwise.
 
 | | |
 |---|---|
@@ -761,3 +786,49 @@ does not jump the camera, the accepted-street layer stays registered to the
 fabric through the blit, and no frame shows a stretched or half-painted buffer.
 What they do not show, because a still cannot, is the freeze at each of the two
 to five rasterisations — that is §6, and it is counted rather than looked at.
+
+### Block B3, 2026-08-24
+
+| | |
+|---|---|
+| `b3-seq-{A…F}-*-00…07` · `b3-sheet-{A…F}-*` | **six transitions × eight frames**, wide. A into shot 4 (z 3.2 → 28), B into shot 5 (28 → 2.6), C into shot 7, D into shot 8, E into shot 10 (the pull-out to the whole peninsula), F the title card into shot 1 |
+| `b3-mseq-*` · `b3-msheet-*` | **the same transitions at 390 px**, four of the six |
+| `b3-dprcrop-{0.55,1.00,1.40,1.70}` · `b3-dprcrop-2x2` | the same film millisecond mid-move at four settings of `FILM_DPR`, cropped to City Hall's block at 3× |
+| `b3-play-*` · `b3-play-sheet` | **the whole film played end to end**, a frame every 1.8 s of wall clock, nothing seeked and nothing paused |
+
+Read frame by frame, all six wide sheets and the four phone sheets: the zoom is
+monotone in both directions, no move crosses more than one LOD band and no
+crossing jumps the camera, the accepted-street underlay stays registered through
+the blit, and no frame carries a stretched or half-painted buffer. At 390 px the
+copy plate goes full width and stays readable, and the twelve place names are
+legible at whole-city.
+
+Two things the sheets show that were not being looked for:
+
+- **The title card's wash is a step, not a fade.** Three frames of a near-white
+  city, then the full-contrast 1906 frame at t = 3,000 with nothing in between at
+  a 257 ms sampling interval. `CURVE.fade` exists and this is not using it.
+- **The surround's cells are visible as blocks at 390 px** in the sky and the
+  open water — `terrain.ts`'s own grid at whole-city on a small stage, not the
+  film's buffer, which is painted at full device resolution there.
+
+### The harness
+
+Everything above is `.parity/b3*.py`, and each file says at the top which trap it
+is avoiding. Four of them are worth keeping:
+
+    b3fps.py    rAF counted during real playback; raster count printed beside the
+                fps, because a window with no rasterisations in it is a broken
+                measurement and not a fast one
+    b3prof.py   a real CDP CPU profile of one move, self time by frame
+    b3seg.py    the wall clock against the film clock, split by segment kind
+    b3crop.py   the same FILM millisecond at four dials, magnified
+
+Three practical notes for whoever runs them next. The dev server is shared with
+the other agents: five runs were lost to a navigation mid-measurement and one to
+`encode_city_chunks.py` clearing `public/data`, so every script retries.
+`__cityFilm.ready` is `!!liveRef.current` — whether the film is PLAYING, not
+whether it can — so wait on the entry plate's own label instead. And a stage
+resize that is undone 600 ms later coalesces, `resize()`'s `changed` guard skips
+`planSlots`, and the sweep then measures the shipped constant under six different
+labels; assert the slot you got.

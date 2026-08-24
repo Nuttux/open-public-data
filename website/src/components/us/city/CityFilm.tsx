@@ -152,13 +152,25 @@ const FILM_PLACE_CAP = 12;
    take it to 0.45 — one slow frame is a compile, a fetch or another tab, and
    two is the machine.
 
-   `MIN_MS` is 4,000: the title card is 3,000 and the first camera move is at
-   23,400, so nothing is decided while the ground is still landing and there is
-   still shot 1's hold and shot 2's run of evidence before the first travel. */
+   `SUSTAIN_MS` is what stops a dip deciding. The average has to stay under the
+   threshold for 900 ms of wall clock, and any frame that brings it back over
+   resets the count — so two 300 ms frames while a tier lands do not change the
+   film, and a camera move that is genuinely spending a second a frame does.
+
+   `MIN_MS` is 20,000, and 4,000 was not enough. MEASURED, `.parity/b3seg.py`:
+   the film's FIRST run segment costs 25.3 s of wall clock for 0.5 s of film,
+   x56 — the data layer is still landing cells, so `sceneVersion` moves and every
+   frame is a "content" rasterisation, and the fabric's first year cohort is
+   warming caches that are warm for every year after it. That is a startup cost
+   and not this machine's speed, and a verdict taken from it would put a fast
+   laptop on the spare version for the whole film. The first camera move is at
+   23,400, so 20,000 leaves the tail of shot 2's run as evidence and still
+   decides before the first travel. */
 const KEEP_UP = 0.6;
 const KEEP_UP_TAU = 900;
 const KEEP_UP_W_MAX = 0.35;
-const KEEP_UP_MIN_MS = 4000;
+const KEEP_UP_SUSTAIN_MS = 900;
+const KEEP_UP_MIN_MS = 20000;
 
 /* `?filmoff=accepted,subjects` — the film's own ablation switches, the same
    idiom `SceneLayers` uses and for the same reason: turning one pass off is how
@@ -244,6 +256,7 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
      while a reader watched would be worse than either version of it. */
   const keepRef = useRef(1);
   const playedRef = useRef(0);
+  const belowRef = useRef(0);
   const spareRef = useRef(false);
 
   useEffect(() => {
@@ -325,7 +338,11 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
         const w = Math.min(KEEP_UP_W_MAX, raw / KEEP_UP_TAU);
         keepRef.current += ((dt * 1000) / Math.max(1, raw) - keepRef.current) * w;
         playedRef.current += raw;
-        if (playedRef.current > KEEP_UP_MIN_MS && keepRef.current < KEEP_UP) {
+        belowRef.current = keepRef.current < KEEP_UP ? belowRef.current + raw : 0;
+        if (
+          playedRef.current > KEEP_UP_MIN_MS &&
+          belowRef.current > KEEP_UP_SUSTAIN_MS
+        ) {
           spareRef.current = true;
         }
       }
@@ -465,10 +482,6 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
       get on() { return onRef.current; },
       get total() { return liveRef.current?.timeline.total ?? 0; },
       get rasters() { return renderer?.rasterCount ?? -1; },
-      /** which shots' moves this machine turned into cuts, and how many frames
-       *  inside a move it drew slower than `CUT_FRAME_MS`. See §THE CUT THE
-       *  MACHINE ASKS FOR — a film that silently changes its own grammar has to
-       *  be able to say so. */
       /* Whether this machine dropped to the spare version, and the playback
          speed it measured to decide. A film that changes its own grammar has to
          be able to say that it did. See §THE VERSION THE MACHINE CAN PLAY. */
