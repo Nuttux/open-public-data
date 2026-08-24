@@ -1561,3 +1561,93 @@ GPU-backed browser `drawImage` is close to free and so is video decode, so the
 *absolute* numbers overstate the blit. The *ranking* survives and is what the
 decision rests on: if computing the city is 2 % of a travel here, it is no more
 than that anywhere, and the case for prerecording rests on it being most of it.
+
+## 16 · Block M1 — the three horizons, traced and measured
+
+> *"Why is 'years covered' to 2013, film to 2018, but timeline all the way to
+> 2025? It should all be aligned, ideally to 2025."*
+
+They disagree because **they are three different sources**, and the credibility
+problem is real but it is not that 2025 is wrong. It is that the page states
+three horizons without saying they are about different things. Traced, and each
+one measured rather than assumed:
+
+### 1906–2013 · "years covered" — the DECISION corpus, and it is a seven-block tail
+
+`app/us/city/sf/the-city/page.tsx:112`, `span: \`${first}–${last}\``, the min and
+max of `blocks/block-index.json`'s `y0`/`y1` — the years of the **76,419
+decisions placed on a block**, nothing to do with the buildings. It feeds
+`us.sf.thecity.note.record` ("read from {volumes} scanned volumes … {span}") and
+the record line on the map.
+
+Measured over that file: 4,679 of 5,404 blocks carry a decision year, and the
+distribution ends like this —
+
+    1995: 171 blocks    1998: 226
+    1996: 237           1999: 354      <- the corpus's own last full year
+    1997: 176           2002:  21
+                        2010:  42
+                        2013:   7      <- annualreportdep2013sanf_0
+
+**Seventy of 4,679 blocks have anything after 1999, and seven reach 2013.** So
+"1906–2013" is a true min–max and a misleading summary: it reads as coverage to
+2013 over a corpus that effectively stops in 1999. This is the one of the three
+that is actually wrong to a reader, and it is wrong in the *opposite* direction
+from the one Daniel suspected — it claims more recency than the record has, not
+less. **It is `page.tsx`'s line and not this block's file.**
+
+### 1906–2018 · the film — the last year in its own entity corpus
+
+Shot 10's `to-now` run target. 2018 is the last year in `gen/decisions-data.js`,
+the film's 41 entities: `embarcadero-seawall` 2014–2018, `sfo-capital-plan-bonds`
+2000–2018, `central-subway`, `mission-bay`, `earthquake-safety` and
+`sewer-system-improvement` all `y1: 2018`. The film ends where the corpus it is
+made of ends, which is the right rule, and the end card says so —
+*"every date on it comes from the assessor's roll."*
+
+### 1906–2025 · the rail — the assessor roll's own year, and it is honest
+
+`time.ts` §SCRUB_MAX, *"the secured assessor roll's own year, 2025 — the file the
+fabric's dates come from."* Checked against the roll rather than taken on trust:
+`bldg/cache/roll-*.json`, 200,864 parcels carrying a `year_property_built` —
+
+    2019:   407    2022:  652
+    2020: 1,228    2023:  208
+    2021:   693    2024:   18     2025: 36
+
+**4,089 parcels are dated 2018 or later and the roll's own maximum is 2025.** The
+rail is not running over a dead decade; buildings really do arrive across it. It
+should stay at 2025 and it is the one number here that needed no change.
+
+### What that means, and what it does not
+
+They should NOT all be set to 2025. Two of the three are already the honest end
+of the thing they describe, and the third is honest arithmetic over the wrong
+summary statistic. What the page is missing is not alignment, it is **a sentence
+that says which horizon belongs to which source** — the rail is the buildings,
+the film is the decisions the film is made of, and the record line is the minute
+books, which thin out sharply after 1999.
+
+**Recommended, and none of it is this block's file:**
+
+1. `page.tsx` should not publish `max(y1)` as a span. Either state the corpus's
+   own last full year (**1999**) or keep 2013 and say what is after 1999 — 70
+   blocks of 4,679 — the way `time.ts` §UNDATED states the undated cohorts.
+2. The rail already has the seam for the second half of that: `CityScrub`'s
+   caption carries one caveat per year, and *"the last acceptance in the volumes
+   read so far lands in 1947"* is exactly this shape. A decisions caveat past
+   1999 would be the same sentence for a different series.
+3. Coordinate with the data block before changing any of it — it has measured
+   the corpus (59 Journal volumes 1906–1998, 33,017 items 1948–1999) and those
+   figures should be the ones that reach the page, read from a file rather than
+   transcribed. §13.1 is what happens otherwise.
+
+**One measurement I could not close, and it is flagged rather than claimed.**
+`.parity/m1year.py` at the whole-city camera reports **88–96 px of change per
+year across 2019 → 2024**, all of it inside a 22 × 4 px strip that is the scrub
+handle — i.e. the drawn city not moving at all — which contradicts the 3,206
+parcels the roll dates in those years. One of the two is wrong and I did not
+settle which: the harness's own boot was disturbed by the second entry button
+landing mid-session (`.last` began selecting the method link), and two rows of
+that sweep are 85–92 % frame changes that are plainly layout and not history.
+**Re-run it before trusting either number.**
