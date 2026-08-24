@@ -380,6 +380,22 @@ export function insetRing(
   }
 }
 
+/**
+ * THE INWARD OFFSET OF A REGULAR N-GON, AS A SCALE ABOUT ITS OWN AXIS.
+ *
+ * `insetRing` has to miter a footprint per vertex because a published ring is
+ * any shape. The second solid's plan is not: it is the regular octagon
+ * `base/form` declares, so moving every edge in by `d` moves the circumradius
+ * in by `d / cos(pi/N)` — the apothem is what an edge offset acts on — and the
+ * whole ring is one multiply. Returns 0 when the offset would eat the polygon,
+ * so a caller can decline rather than draw an inside-out deck.
+ */
+export function ngonInsetScale(rad: number, n: number, inset: number): number {
+  const apo = rad * Math.cos(Math.PI / n);
+  if (!(apo > inset * 1.6)) return 0;
+  return 1 - inset / apo;
+}
+
 const trayMX = new Float32Array(64),
   trayMY = new Float32Array(64),
   trayIX = new Float32Array(64),
@@ -818,9 +834,98 @@ export function drawStep(f: Frame, t: StepInput): boolean {
     for (let k = 1; k < N; k++) ctx.lineTo(stepSX[tr + k], stepSY[tr + k]);
     ctx.closePath();
     ctx.fill();
+
+    /* ── AND THE PLATE IS A TRAY, FOR THE SAME REASON IT IS A DECK ─────
+       §19.1 established that a cap's top plate is a ROOF and gave it the
+       deck's value. It stopped there, so what a reader sees on top of every
+       tower downtown, on City Hall's drum and on the Ferry Building's clock
+       tower is **one flat octagon of one value** — the plainest plane on the
+       frame, standing on the most looked-at buildings in the city.
+
+       A tower's roof in San Francisco is a flat roof behind a parapet exactly
+       like the 150,000 under it, and `DE` already declares that parapet. So
+       the plate takes the same four fills `drawTray` gives a footprint — the
+       coping it was just filled with, the parapet's inner face, the inset and
+       dropped deck, its cast shadow, and the parapet's outer face — and NOT
+       one new declared number. The octagon is regular and convex, so the
+       inward offset that `insetRing` has to miter per vertex on a footprint is
+       here a scale about the cap's own axis: an edge moved in by `DE.thick`
+       moves the circumradius in by `DE.thick / cos(pi/N)`.
+
+       Gated on `capTray`, which is `trayW` on the plate's OWN drawn width, so
+       the cap and the roofs around it open their trays together and a cap
+       3 px wide at the whole-city camera is still exactly the flat fill §19.1
+       made it. */
+    const drop = DE.parapet * capTray * kh;
+    const fin = ngonInsetScale(rad * ts, N, DE.thick * capTray);
+    if (capTray > 0.002 && drop > 0.35 && fin > 0) {
+      const yTop = dh + (dt - dh) * stepPU[NR - 1];
+      const ix = (k: number): number => bxs + stepOX[k] * ts * fin;
+      const iy = (k: number): number => bys - stepOY[k] * ts * fin - yTop + drop;
+
+      // the parapet's inner face, on the facets whose outer face is turned away
+      const inner = new Path2D();
+      let anyI = false;
+      for (let k = 0; k < N; k++) {
+        if (stepVis[k]) continue;
+        const u = (k + 1) % N;
+        inner.moveTo(stepSX[tr + k], stepSY[tr + k]);
+        inner.lineTo(stepSX[tr + u], stepSY[tr + u]);
+        inner.lineTo(ix(u), iy(u));
+        inner.lineTo(ix(k), iy(k));
+        inner.closePath();
+        anyI = true;
+      }
+      if (anyI) {
+        ctx.fillStyle = shade(t.roofColour, DE.innerv);
+        ctx.fill(inner);
+      }
+      // the deck
+      const deck = new Path2D();
+      deck.moveTo(ix(0), iy(0));
+      for (let k = 1; k < N; k++) deck.lineTo(ix(k), iy(k));
+      deck.closePath();
+      ctx.fillStyle = shade(t.roofColour, DE.deckv);
+      ctx.fill(deck);
+      // and the parapet's shadow across it — the deck minus the deck
+      // translated down-left, wound backwards. See `DE.castv`.
+      const sx = drop * KEY_DX;
+      const sy = drop * KEY_DY;
+      const cast = new Path2D();
+      cast.moveTo(ix(0), iy(0));
+      for (let k = 1; k < N; k++) cast.lineTo(ix(k), iy(k));
+      cast.closePath();
+      cast.moveTo(ix(0) - sx, iy(0) + sy);
+      for (let k = N - 1; k >= 1; k--) cast.lineTo(ix(k) - sx, iy(k) + sy);
+      cast.closePath();
+      ctx.fillStyle = shade(t.roofColour, DE.castv);
+      ctx.fill(cast);
+      // the parapet's outer face, on the facets that show one
+      const outer = new Path2D();
+      let anyO = false;
+      for (let k = 0; k < N; k++) {
+        if (!stepVis[k]) continue;
+        const u = (k + 1) % N;
+        outer.moveTo(stepSX[tr + k], stepSY[tr + k]);
+        outer.lineTo(stepSX[tr + u], stepSY[tr + u]);
+        outer.lineTo(stepSX[tr + u], stepSY[tr + u] + drop);
+        outer.lineTo(stepSX[tr + k], stepSY[tr + k] + drop);
+        outer.closePath();
+        anyO = true;
+      }
+      if (anyO) {
+        ctx.fillStyle = shade(t.roofColour, DE.outerv);
+        ctx.fill(outer);
+      }
+    }
+
     if (t.ink && wpx * ts > STROKE_MIN_PX_A) {
       ctx.strokeStyle = t.ink;
       ctx.lineWidth = 0.7;
+      ctx.beginPath();
+      ctx.moveTo(stepSX[tr], stepSY[tr]);
+      for (let k = 1; k < N; k++) ctx.lineTo(stepSX[tr + k], stepSY[tr + k]);
+      ctx.closePath();
       ctx.stroke();
     }
   }

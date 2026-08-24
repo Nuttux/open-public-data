@@ -93,6 +93,7 @@ import {
   bandOfHeight,
   DE,
   drawsStoreyLines,
+  ngonInsetScale,
   RH_LEVELS,
   roofHeight,
   roofStep,
@@ -1069,6 +1070,27 @@ describe("the roof", () => {
     // down-LEFT: the light is upper-right, so the across-offset leads
     expect(KEY_DX).toBeGreaterThan(KEY_DY);
     expect(KEY_DY).toBeGreaterThan(0);
+  });
+
+  it("a cap's top plate is a tray, and its inset is a scale about its own axis", () => {
+    /* `insetRing` miters a published footprint per vertex because a published
+       ring is any shape. The second solid's plan is the regular octagon
+       `base/form` declares, so an edge offset is one multiply — the apothem is
+       what an edge offset acts on. */
+    for (const n of [3, 4, 6, 8, 12]) {
+      for (const rad of [4, 12, 40]) {
+        const d = rad * 0.05;
+        const k = ngonInsetScale(rad, n, d);
+        // the inset polygon's own apothem is exactly `d` smaller
+        const apo = rad * Math.cos(Math.PI / n);
+        expect(k * rad * Math.cos(Math.PI / n)).toBeCloseTo(apo - d, 9);
+        expect(k).toBeLessThan(1);
+        expect(k).toBeGreaterThan(0);
+      }
+    }
+    // and it declines rather than drawing an inside-out deck
+    expect(ngonInsetScale(1, 8, 1)).toBe(0);
+    expect(ngonInsetScale(0.5, 8, 0.4)).toBe(0);
   });
 
   it("two published moments support two planes and no more", () => {

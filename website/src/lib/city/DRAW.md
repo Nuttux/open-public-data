@@ -4507,3 +4507,86 @@ as well as the hall, so one extruded form is the wrong primitive for all of it.
 Drawing the colonnade needs a published bay rhythm this block does not have,
 and inventing one is the thing that is not allowed. The section is an honest
 improvement on a slab and it is not the finished building.
+
+### 22.5 The cap's top plate was the last flat plate in the renderer
+
+§19.1 established that a cap's top plate is a **roof** and gave it the deck's
+value. It stopped there, so what a reader saw on top of every tower downtown,
+on City Hall's drum and on the 526 other second solids was **one flat octagon
+of one value** — the plainest plane on the frame, standing on the most
+looked-at buildings in the city. `out-g1/capplate-caps.png`.
+
+A tower's roof in San Francisco is a flat roof behind a parapet exactly like
+the 150,000 under it, and `DE` already declares that parapet. So the plate now
+takes the same four fills §22.2 gives a footprint — the coping it was already
+filled with, the parapet's inner face, the inset dropped deck, its cast shadow,
+and the parapet's outer face — and **not one new declared number**.
+`out-g1/capplate-final.png`.
+
+The inset is the one piece of new arithmetic and it is smaller than the
+footprint's. `insetRing` has to miter a published ring per vertex because a
+published ring is any shape; the second solid's plan is the regular octagon
+`base/form` declares, so moving every edge in by `d` moves the circumradius in
+by `d / cos(π/N)` — the apothem is what an edge offset acts on — and the whole
+ring is one multiply. `ngonInsetScale` returns 0 rather than an inside-out deck
+when the offset would eat the polygon, and the suite checks the apothem
+identity at N = 3, 4, 6, 8, 12 and three radii.
+
+**Measured, and it is small.** Street camera over the Civic Center, against a
+same-sweep control of **0.000 %** (two shots inside one browser session are
+byte-identical): **3,006 px of 3,254,400, 0.092 %**, every one of them on a cap
+plate (`out-g1/diff-capplate.png`). At the block camera the plate's own
+`trayW` weight is 0.20 and the parapet's projected height is 0.09 px, so
+downtown is untouched — which is the ramp doing its job, not a failure. This is
+a **consistency** landing rather than a density one: after it there is no plane
+in this renderer that is a roof and is drawn flat.
+
+**A note on the harness, because it bit this block.** `capture.py` stamps every
+frame with a hash of the render modules for a reason. Between two of these
+sweeps another agent's `trees.ts` edits landed, and the Palace of Fine Arts
+street frame moved **8.45 %** — 92× my own change's size at the same camera — on
+a frame that is half tree canopy. Cross-sweep comparisons in this tree are only
+worth what the source stamp says they are. The numbers above are all
+within-sweep or against a control shot minutes apart.
+
+### 22.6 Handover — what is NOT done, and why, so nobody re-derives it
+
+**a. The district/block histogram deficit is still open and is not in these
+files.** §22.3 measures what the parapet reaches there and it is a small part
+of 3–5 %. `drawTray` is gated behind `near` (`NEAR_PX` = 9) and `trayW`
+(7 → 26 px), both `scene.ts` decisions, so no work in `roofs.ts` alone can put
+detail on a 6 px building.
+
+**b. A ground-floor plinth cannot be drawn from these files.** It needs the
+BASE ring and the wall's projected height; `TrayInput` carries the ROOF ring,
+the world ring and `k2`, and the call site is `scene.ts`. Adding two optional
+fields here would ship an interface nothing fills. Whoever owns `scene.ts`
+should pass `bx`/`by` at the base plane and `dhPx`, and then it is four lines
+in `drawTray`.
+
+**c. The storey line's ink is `scene.ts`'s choice, and it is the wall's own
+lambert bucket** (`lut.wallF[wallO + 1]`). That is `part3.html` L8994 exactly —
+checked, so it is not a port defect — but it is why the storey lines are nearly
+invisible on a pale wall, and it is the cheapest remaining dark-detail mark on
+a near building. `roofs.ts` owns the GATE (`drawsStoreyLines`, `STOREY_W_PX`)
+and not the colour.
+
+**d. The `CHAR` archetype column is worth less than it looks, because most of
+it already ships.** D2's research proposes an eleven-archetype byte off
+`property_class_code` at 94.91 %, headlined by *"a glazed band at grade"* for
+`flat_over_store` (3,559) and `storefront` (3,289). **`property_class_code` is
+already on the wire twice**: `encode_facades` ships `FACD.ty` as nine types at
+88.8 %, and `FACD.shop` as *the one bit that says the ground floor is a shop* —
+6,803 footprints, against CHAR's 3,559 + 3,289 = **6,848**. It is the same
+population. Measured on the live page over 32,887 loaded buildings
+(`.parity/g1char.py`): `shop` fires on **7.11 %**, and `faVocab` already routes
+it to `GND_SHOP`; the band draws, and it is visible on Mission Street at street
+zoom (`out-g1/G1m-crop.png`).
+
+So CHAR's real marginal value is the two things D2 does not headline:
+**UNCLASSED falls from 12.7 % to ~5 %** (4,171 of 32,887 loaded buildings are
+`ty` = UNCLASSED today), and `condo` splits out of `apartment`. Both are worth
++2.05 % of the `bldg` tier. Neither is a new silhouette, and **neither reaches
+the Presidio**, which fails at `storeys <= 0` before any type is consulted
+(§22.4). Whoever picks this up should size it against those two numbers rather
+than against the glazed band.
