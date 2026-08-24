@@ -6033,3 +6033,61 @@ tower, not just this one, and a hero is not the general fix.
   per-element heights no field here carries, which is the test Grace Cathedral
   failed. A shaped cap on any of them would be a guess about taper.
 - All three are in `heroes_extra.json` under `rejected`, with the numbers.
+
+### 21.25 The Pyramid was one of a class, and the class splits three ways
+
+The Pyramid's fix routes one building around `hgt_mediancm`. Before handing
+that statistic to whoever owns it, the size of the problem, measured: the Tall
+Building Inventory publishes `height_ft` on every row, **99 of its rows reach a
+drawn footprint**, and comparing the two gives
+
+> **79 of 99 are drawn short. Median shortfall 21.8 m, worst 231.1 m. 34 are
+> under 60 % of their published height.**
+
+That is not one defect. Sorted by cause it is three, and two of them are not
+the median at all.
+
+**A — the row joined the wrong footprint. 8 rows, and this one is mine.**
+`resolve()`'s rule is `max(area)`: the biggest ring on the parcel wins. That is
+right for a register that publishes only a point, and wrong for a tower
+standing on a podium. Spear Tower took a 28 m ring with a 172 m one beside it;
+Four Embarcadero Center an 11 m ring with a 151 m one; the PG&E Building a 12 m
+ring with a 145 m one. **It is the same rule as the label lane's "the biggest
+place wins" (§21.12), failing the same way.**
+
+Fixed where the row carries a published height: the tie is broken on **height
+agreement** instead of area. Every other register is untouched — none of them
+publishes one, `hft` is absent, and the rule falls straight back to
+`max(area)`. Measured churn over a full rebuild: **123 of 897 joins broke the
+tie on height, 6 rows changed footprint, 4 rows gained one, none lost one.**
+
+| | before | after |
+|---|---|---|
+| Spear Tower | span 76 | **172** |
+| One Embarcadero Center | 54 | **157** |
+| Four Embarcadero Center | 56 | **151** |
+| Hilton San Francisco | 72 | **148** |
+| Grand Hyatt San Francisco | 45 | **129** |
+
+**B — the LIDAR is older than the building. Not mine, and it is a clean
+gradient rather than a guess.** Median drawn/published by completion year:
+
+| completed | n | median drawn / published | under 60 % |
+|---|---|---|---|
+| before 1990 | 72 | **0.92** | 20 |
+| 1990–2010 | 17 | 0.63 | 8 |
+| 2011 or later | 10 | **0.46** | 6 |
+
+Park Tower, completed 2018, is drawn **5 m** against a published 173.1; Folsom
+Bay Tower, 2017, **7 m** against 121.9; Oceanwide Center I, 2017, **28 m**
+against 259.1. Those are excavations and podiums — the survey flew before the
+tower existed. `TODAYS_SHAPE` says the map draws a building at its *present*
+height, and for these it does not.
+
+**C — the median is the wrong statistic for a taper.** What is left once A and
+B are removed, and the Pyramid is its worst case. The pre-1990 median of 0.92
+is the useful number here: `hgt_mediancm` is fine for the flat-roofed box it
+was chosen for and fails on the shapes that make a skyline.
+
+**A is fixed. B and C are handed over with these numbers** — and the fix for
+neither is a hero.

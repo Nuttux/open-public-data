@@ -159,6 +159,13 @@ def reg_tall() -> list[dict]:
                 n=n, x=c[0], y=c[1], a=poly_area(f.get("geometry")),
                 apn=(p.get("mapblocklot") or "").strip() or None,
                 yr=int(yr) if yr and str(yr).strip().isdigit() else None,
+                # THE ONLY REGISTER HERE THAT PUBLISHES A HEIGHT, and `resolve`
+                # uses it to break the footprint tie. `height_ft` is filled on
+                # every row this register ships and its scope is buildings over
+                # 240 ft, so a row that resolves to a 12 m footprint has
+                # resolved to the podium and not the tower.
+                hft=(float(p["height_ft"]) if str(p.get("height_ft") or "").strip()
+                     .replace(".", "", 1).isdigit() else None),
                 yrField="date", sid=str(p.get("objectid") or ""), src="5kya-mfst",
             )
         )
@@ -479,7 +486,34 @@ def shipped() -> list[dict]:
 
 def resolve(places: list[dict], meta, grid, by_apn, rings) -> tuple[int, int]:
     """`marks/join_fp.py::resolve`, same two rules, same tie-break."""
-    nap = nco = 0
+    nap = nco = nh = 0
+    FT_M = 0.3048
+
+    def pick(cand, p):
+        """THE BIGGEST FOOTPRINT ON THE PARCEL WINS — and for a tower standing
+        on a podium that is the podium.
+
+        `marks/join_fp.py`'s rule is `max(area)`, and it is right for a register
+        that publishes only a point: the largest ring on the parcel is the
+        building the point is most likely to mean. It is wrong for the one
+        register here that publishes a HEIGHT. Measured against `height_ft`
+        over the 99 Tall Building Inventory rows that reach a footprint:
+        **eight of them joined a footprint under 75 % of their published height
+        while a footprint within 60 m matched it** — Spear Tower took a 28 m
+        ring with a 172 m one beside it, Four Embarcadero Center an 11 m ring
+        with a 151 m one, the PG&E Building a 12 m ring with a 145 m one.
+
+        So where the row carries a published height, the tie is broken on
+        HEIGHT AGREEMENT instead of area. Rows from every other register are
+        untouched: none of them publishes one, `hft` is absent, and the rule
+        falls straight back to `max(area)`.
+        """
+        hft = p.get("hft")
+        if hft:
+            want = hft * FT_M
+            return min(cand, key=lambda i: (abs(meta[i][5] - want), -meta[i][0])), True
+        return max(cand, key=lambda i: meta[i][0]), False
+
     for p in places:
         bi = None
         how = None
@@ -487,23 +521,25 @@ def resolve(places: list[dict], meta, grid, by_apn, rings) -> tuple[int, int]:
         if apn:
             cand = by_apn.get(apn, [])
             if cand:
-                bi = max(cand, key=lambda i: meta[i][0])
+                bi, byh = pick(cand, p)
                 how = "apn"
                 nap += 1
+                nh += 1 if byh else 0
         if bi is None:
             gx, gy = int(p["x"] // CELL), int(p["y"] // CELL)
-            best, bestA = -1, 0.0
+            hits = []
             for i in grid.get((gx, gy), ()):
                 A, mnx, mny, mxx, mxy, h, yr, pn = meta[i]
                 if p["x"] < mnx or p["x"] > mxx or p["y"] < mny or p["y"] > mxy:
                     continue
                 if not inside(rings[i], p["x"], p["y"]):
                     continue
-                if A > bestA:
-                    bestA, best = A, i
-            if best >= 0:
-                bi, how = best, "contain"
+                hits.append(i)
+            if hits:
+                bi, byh = pick(hits, p)
+                how = "contain"
                 nco += 1
+                nh += 1 if byh else 0
         if bi is not None:
             A, mnx, mny, mxx, mxy, h, yr, pn = meta[bi]
             p["bi"] = bi
@@ -512,6 +548,7 @@ def resolve(places: list[dict], meta, grid, by_apn, rings) -> tuple[int, int]:
             p["fpH"] = h
             p["fpYr"] = yr
             p["fpPn"] = pn
+    resolve.by_height = nh  # type: ignore[attr-defined]
     return nap, nco
 
 
@@ -538,6 +575,8 @@ def main() -> int:
     nap, nco = resolve(fresh, meta, grid, by_apn, rings)
     print(f"footprint join: {nap} by parcel, {nco} by containment, "
           f"{nap + nco} of {len(fresh)} ({100.0 * (nap + nco) / len(fresh):.1f} %)")
+    print(f"   of those, {getattr(resolve, 'by_height', 0)} broke the tie on the "
+          f"register's own published height rather than on area")
 
     # ── SPAN. BLOCK-N's ladder, unchanged. ──────────────────────────────
     for p in fresh:
