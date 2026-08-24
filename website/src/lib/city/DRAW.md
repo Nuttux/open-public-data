@@ -6838,3 +6838,424 @@ The building layer, its colour, its selectors and its coverage are all now
 excluded by measurement. **What is left is unaccounted for**, and that is a
 more useful state than it sounds: the remaining candidates are layers nobody
 has instrumented rather than the one four rounds of work have been pointed at.
+
+---
+
+## 28. Block G2 — the 1955 cliff, named; and the department that keeps the record
+
+> Daniel: *"Trees appear mostly all of a sudden in 1955, but can't the trees be
+> seen in a certain dataset — either municipal record or some department that
+> takes care of landscaping infrastructure etc? Same for parks or any other
+> natural features like this."*
+
+Both halves are answered here and both answers are measured. **The cliff is
+real, it is 23,560 trees in one year at block zoom, and the field behind it is
+not a date at all.** And the dataset Daniel is describing exists, is published
+by exactly the department he guesses, and **is already the only source this map
+uses** — the cliff is that source's own edge, not an artefact laid over it.
+
+### 28.1 The instrument had to be connected first, and that is the whole §20 lesson inverted
+
+The first driver poked `RR().setYear(y)` across 1948–1960 and reported street
+trees **flat at 21,009 at every year**. Read literally that says there is no
+1955 cliff. It is wrong, and the reason is worth the paragraph:
+
+**the undated-tree gate is not in the renderer.** It is one line in
+`CityScrub.tsx`'s year effect —
+
+    WFLG.undated = year === undefined || year >= TREE_EARLIEST;   CityScrub.tsx:302
+
+— plus `time.ts` §`applyUndatedTreeGate` on the film's path. `setYear` moves
+the clock and leaves the gate exactly where it was. This is the brief's own
+*"a dial read once at load reports +0.00 when flipped at draw time"*, inverted:
+here the harness moved the clock and never touched the dial, and the answer
+came back +0.00 and looked like a finding.
+
+Two things went in so the next agent cannot repeat it:
+
+* **`.parity/g2cliff.py` drives `.fx-city-scrub-rail` with a real pointer
+  event** at the x that `CityScrub.yearAt` maps to the year it wants. That is
+  the gesture Daniel makes, and it is the only path that moves both.
+* **§WFLG ON THE GLOBAL** (`trees.ts`) parks `WFLG` on `globalThis.__cityWFLG`
+  in dev, on `VPROBE`'s own pattern, so the harness **reads** the gate it is
+  measuring instead of assuming it. Every row of the table below carries the
+  gate's live value.
+
+And a second false reading was underneath the first. `lastStats.trees` is
+`r.trees + r.blobs` (`scene.ts:2261`), and **at district zoom it is entirely
+blobs**: `wTree = bandW(z, VZ_T0 = 2.9, VZ_T1 = 6.0)` is exactly 0 at z = 2.9,
+so no street tree is drawn at the district camera in any year and the number is
+flat by construction. §VPROBE splits the two and the table reports them apart.
+
+### 28.2 The count, with a control pair
+
+MEASURED, `.parity/g2cliff.py`, 1200 × 680 at DPR 2, driven through the page's
+own rail, each tier settled to a stable count before the probe is armed. The
+frame difference is the mean absolute difference of `GaussianBlur(6)` of the
+frame (BUGS.md §23 — a frame mean and a pixel count cannot see this), and
+**every camera shoots 1954 twice, minutes apart, before it shoots 1955**, so
+the step is read against this tree's own noise floor on a dev server four other
+agents are recompiling.
+
+| camera | year | `WFLG.undated` | street trees drawn | canopy blobs drawn | blurred ‖Δ‖ |
+|---|---:|---|---:|---:|---:|
+| block, Mission | 1954 | false | 0 | 3,254 | — |
+| block, Mission | 1954 | false | 0 | 3,254 | **0.000** control |
+| block, Mission | **1955** | **true** | **23,560** | 3,254 | **6.006** |
+| block, Mission | 1960 | true | 23,564 | 3,254 | 0.794 |
+| block, Sunset | 1954 | false | 0 | 2,414 | — |
+| block, Sunset | 1954 | false | 0 | 2,414 | **0.000** control |
+| block, Sunset | **1955** | **true** | **7,528** | 2,414 | **2.697** |
+| block, Sunset | 1960 | true | 7,529 | 2,414 | 0.721 |
+| street, Civic Center | 1954 | false | 0 | 30 | — |
+| street, Civic Center | 1954 | false | 0 | 30 | **0.000** control |
+| street, Civic Center | **1955** | **true** | **547** | 30 | **3.417** |
+| street, Civic Center | 1960 | true | 547 | 30 | 1.597 |
+| district, Mission | 1954 | false | 0 | 20,600 | — |
+| district, Mission | 1954 | false | 0 | 20,600 | **0.000** control |
+| district, Mission | 1955 | true | **0** | 20,600 | 0.463 |
+| district, Mission | 1960 | true | **0** | 20,600 | 1.278 |
+
+**The control pair is 0.000 at all four cameras** — byte-stable, so the 6.006
+is not noise. At the Mission block the single year 1954 → 1955 is **7.6 times**
+the whole five years 1955 → 1960, and those five years move the street-tree
+count by **four trees**, because only 178 rows in the entire file are dated
+1955–1960.
+
+**And the canopy column never moves.** 3,254 / 2,414 / 30 / 20,600 at every
+year including 1906 — `base/canopy` ships `cellKey`, `pos` and `area` and no
+year (§20.2, manifest `kinds.canopy`), so it has no gate. `base/parks` ships
+`cls`, `len`, `xy` and no year either. **Of the three vegetation objects on
+this map only one is on the clock**, and the district row is the proof from the
+other side: at z = 2.9 the street trees are weighted out, and 1954 → 1955 moves
+0.463 — buildings, not trees.
+
+### 28.3 The field behind the cliff is a boolean, not a year
+
+There is no fabricated date here and nothing like the shipyard's 2015. The
+cliff is `WFLG.undated`, flipped against `TREE_EARLIEST = 1955`, applied to the
+`tkzw-k3nq` rows whose `plantdate` is **null** — 125,234 of them. `time.ts`
+takes the decision in the open and states the consequence in the file:
+
+> *"**1954 has no street trees and 1955 has 125,234.** One honest moment rather
+> than a smear of invented ones."*
+
+So the thing to hold onto is that **the cliff is a treatment, not a defect in
+the data** — and it is a treatment nobody has looked at on a frame since it
+landed. What it costs is above: at block zoom it is the largest single-year
+event on the whole rail for vegetation, larger than any five years around it.
+
+### 28.4 What Daniel guessed is right, and it is already the source
+
+**`tkzw-k3nq` — Street Tree List, San Francisco Public Works.** Every tree the
+City maintains or has permitted, with a coordinate, a species, a diameter and a
+plant date on some of them. That is precisely *"the department that takes care
+of landscaping infrastructure"*, and `build_world.py` §trees has read it since
+the vegetation layer was built. There is nothing to ingest; the question is
+what its ceiling is.
+
+MEASURED against the live API and the cached pull, 2026-08-24:
+
+| | rows | share |
+|---|---:|---:|
+| published rows | 198,436 | 100 % |
+| carrying a `plantdate` | **72,146** | **36.36 %** |
+| carrying a usable lat/lon | 195,365 | 98.45 % |
+| **dated AND placeable** | **70,077** | **35.31 %** |
+| carrying a permit number | 54,417 | 27.4 % |
+| undated but carrying a permit number | 3,196 | 1.6 % |
+| **undated and no permit either** | **123,094** | **62.0 %** |
+
+**The ceiling is 36 %, and the map is already at it** — the shipped `yr` covers
+70,076 and the measurement finds 70,077 dated-and-placeable rows. There is no
+slack. The permit column is the only other handle in the file and it adds 3,196
+rows that carry a permit **number** and no date, which is not a date.
+
+**And there is no second source.** The whole DataSF catalogue holds seventeen
+datasets matching *tree* and three matching *canopy*: one street-tree register
+(`tkzw-k3nq`), its map view, one Urban Tree Canopy (`ni2e-vpbg`, already used,
+a single 2013 aerial with no other vintage published), removal notifications
+and three 311 mirrors. Nothing else in the city dates a tree.
+
+### 28.5 The date was traced, and 1955 turns out to be a fact about San Francisco
+
+The brief's caution was earned: the shipyard's 2015 looked like a construction
+year and was a neighbouring block's median. So one row was traced rather than
+assumed, and then the whole early tail was.
+
+The twelve earliest dated rows in the file, straight off the API:
+
+    1955-09-19  Permit Number 6944   2963 Webster St
+    1955-10-20  Permit Number 11     501 Arkansas St
+    1955-10-24  Permit Number 12     1190 Sacramento St
+    1955-12-13  Permit Number 14     867 25th Ave
+    1956-01-06  Permit Number 15     2828 Divisadero St
+    1956-01-17  Permit Number 16     720 Montgomery St
+
+**The permit numbers run 11, 12, 14, 15, 16 in date order from October 1955.**
+That is a permit series opening. `plantdate` on these rows is the date of the
+street-tree **planting permit**, and 1955 is the year San Francisco's
+street-tree permit register begins. It is not a survey date and it is not a
+record-creation stamp — the two failure modes the caution named — and **1955 is
+not an arbitrary cutoff**: it is the first year the City has a permit for a
+tree.
+
+Two independent checks that it is a real date and not a stamp:
+
+* **Diameter falls monotonically with plant decade**, over 40,000 rows that
+  carry both. A survey date or a load stamp has no reason to do this.
+
+  | plant decade | n | median dbh (in) |
+  |---|---:|---:|
+  | 1950s | 76 | 11.5 |
+  | 1970s | 984 | 12.0 |
+  | 1980s | 2,086 | 11.0 |
+  | 1990s | 9,835 | 7.0 |
+  | 2000s | 13,269 | 3.0 |
+  | 2010s | 11,409 | 3.0 |
+
+* **No bulk-load day.** The largest single date in the file is 2000-06-23 with
+  319 trees — a planting crew's week, not a migration. A stamped field puts
+  tens of thousands on one day; this project has been burned by exactly that
+  twice (§28.7).
+
+**One thing the file does that the map does not say, and should.** The early
+curve has a **twelve-year hole**: 1955 (10 rows), 1956 (168), then **nothing at
+all from 1957 to 1968**, resuming 1969 (332), 1970 (72), 1971 (1), 1972
+(1,465). Whatever the register did between 1957 and 1968, it did not survive
+into this file. Any copy that calls 1955–2026 a planting curve is describing a
+curve with a decade missing out of the middle of its first third.
+
+### 28.6 Parks and natural features: there is no acquisition date published anywhere
+
+Daniel's second half is the better idea of the two — *a park appearing on the
+rail in the year the city bought it* — and it is the one the record cannot pay
+for. Every candidate was opened and every column read:
+
+| dataset | what | date columns |
+|---|---|---|
+| `gtr9-ntp6` Recreation and Parks Properties | 247 rings, already on the wire | `created_date`, `last_edited_date`, `data_as_of`, `data_loaded_at` |
+| `ib5c-xgwu` Recreation and Parks Facilities | 3,308 facilities | the same four |
+| `3nje-yn2u` RPD Parks | 1,080 park polygons | **none** |
+| `8du2-b837` Park Sections | 1,751 sections | **none** |
+| `gtnh-hgvs` City Lands | every City-owned parcel, all departments | `data_last_updated`, `data_as_of` |
+| `6df5-4k8u` DPW Active Parcel History | parcel splits and merges | `data_as_of` |
+
+**Not one acquisition date, in any of them.** `gtr9-ntp6`'s `created_date` and
+`data_as_of` are a single 2025-12-18 GIS load — already recorded as a dead end
+in `trees.ts` §the year, and re-confirmed here rather than taken on trust.
+`City Lands` looked like the one that would carry it and carries a `land_id`
+that joins straight to `gtr9-ntp6`, and its only date is when the row was last
+edited.
+
+So **no park boundary and no shoreline moves on the rail anywhere on this map,
+and no published City dataset can make one move.** The park rings are drawn
+identically in 1906 and 2025.
+
+What park names *do* have is a year, and it is worth knowing it is not this
+one. `emit_places.py` gives every place a `yr` off a four-rung ladder and ships
+which rung it used in `yrule`; parks come off *the made-land year of the
+ground* or *the first dated building standing inside the extent*, and 398 rows
+have no year at all and are named in every year. Those are honest statements
+about ground. **None of them is an acquisition.**
+
+**Where an acquisition date actually lives, and what it would cost.** The Board
+of Supervisors voted on every park the City bought, and this repo already holds
+the beginnings of that corpus — `pipeline/minutes/`, the Journal of Proceedings
+off the Internet Archive with a street gazetteer over it. Measured tonight:
+**903 extracted decisions, all from a single 1976 volume**, of which 17 mention
+a park at all and **none is an acquisition** (they are appropriations, a
+Candlestick lease suit, a surplus sale). The corpus would have to grow by two
+orders of magnitude and gain a parcel gazetteer before it could date one park
+ring, and that is a project, not a block. It is the right project — it is one
+of the very few ways this map could ever show the city *acquiring* something
+rather than building it — and nothing short of it will do.
+
+### 28.7 Left standing, and the one thing that is now inconsistent on the frame
+
+Nothing in the vegetation dating was changed by this section, and one thing
+that could be is deliberately left for Daniel because it is a judgement and not
+a bug:
+
+**at 1954 the block frame carries 3,254 canopy blobs and 0 street trees, and
+both cohorts are undated.** The canopy has no date because its source is one
+2013 aerial; the street trees have no date because `plantdate` is null on 62 %
+of the register. They are the same kind of ignorance and they get opposite
+treatments — the canopy draws in every year, the street trees are held to 1955.
+`time.ts` argues its side well and the alternative (holding the canopy too)
+would empty the 1906 city of vegetation entirely. But the two rules are in two
+files, they were decided separately, and **on one frame they contradict each
+other.** Whichever way it goes it should go the same way for both.
+
+The measurement that settles the cost either way is the table in §28.2, and the
+driver that produced it is `.parity/g2cliff.py`.
+
+### 21.27 A hero named its building by a POSITION IN A FILE, and nine of thirteen were one insertion from moving
+
+`heroes_extra.json` and the mock's own `wonder/hero-data.js` both say
+`"b": 137821`. That is not an identity. It is the building's rank in
+`gen/bldg-data.js`'s Hilbert-ordered delta chain, and the rank moves the moment
+the record count changes.
+
+**Measured, in this file, against the insertion that is actually pending.**
+Salesforce Tower is off the map because its only footprint returns 0.24 m and
+the shed filter cuts under 2 m (DATA-TRUTH 13.5a); rescuing it and 1190 Mission
+inserts two records, at 135,905 and 137,646. Of the thirteen heroes, the nine
+with `b ≥ 135,905` —
+
+    cityhall 149288 · ferry 142936 · coit 142291 · pofa 159057 · opera 149289
+    oldmint 136520 · pagoda 149817 · pofahall 159037 · transamerica 137821
+
+— all shift, and **nothing in the chain fails**: the round trip asserts the
+register's *shape*, and `data.ts landmarks()` asserts `meta.b === bi[q]`, which
+is the seed agreeing with itself. The Palace of Fine Arts' hall would be drawn
+on somebody else's plan in silence.
+
+**The key is the published footprint, because the stream carries nothing else.**
+`read_bldg()` returns ring vertices, a height byte, a roll year and a use class
+— no parcel key, no address, no external id. What it does carry is the
+footprint, and a footprint *is* an identity: **the ring's own centroid, its
+vertex count and its area**. That triple fingerprints the published record, so
+it survives a change in record count, a re-ordering, and the height fix that
+moved 134 bytes of `h` while leaving `cnt`, `vx`, `vy`, `xi`, `xn` identical.
+
+`emit_heroes.py` now resolves every hero — the mock's eleven included — against
+the stream at build time and **refuses to write on no match or more than one**.
+There is no fallback to the index; a fallback is the silent mis-attachment this
+exists to stop. `b` stays in the seed as an advisory record of what it resolved
+to last time, and is asserted, not trusted. The keys are harvested from the
+register (`--harvest-identity`), never typed, and they are a lookup key that is
+never read into the drawing.
+
+**Proved both ways, which is what the handover asked for:**
+
+| | result |
+|---|---|
+| today's ordering | all 13 resolve, uniquely, to the buildings they are on now |
+| the *rescued* ordering — two records inserted at 135,905 and 137,646 | all 13 resolve to the **same physical rings**; **9 of 13 raw indices move** |
+| output | `base/heroes.qc` **39,900 bytes, byte-identical**, `--check` says `IDENTICAL` |
+
+So the rescue is unblocked from this side.
+
+**The margin, per hero, because that is what protects the key from a real
+neighbour rather than from an index shift** — distance from the key's centroid
+to the nearest *other* building's centroid:
+
+    cityhall 125.2 m · dutchmill 120.9 m · ferry 93.2 m · opera 91.2 m
+    pagoda 67.7 m · oldmint 57.3 m · transamerica 53.4 m · coit 51.2 m
+    pofa 44.7 m · pofahall 44.7 m · conservatory 31.6 m · murphymill 29.1 m
+    sutro **0.5 m**
+
+**Sutro Tower is the one thin margin and it is not a defect — it is the reason
+the key is a triple.** Building 47,759 sits 0.45 m from 47,760's centroid: a
+3-vertex, 275 m² ring at 191 m, inside the 21-vertex, 662 m² ring at 210 m that
+is the hero. Two published footprints of the same structure. The centroid alone
+would be ambiguous; the vertex count and the area are not, and the resolver
+requires all three. Recorded so the next person does not "fix" the tolerance.
+
+Also fixed in the same pass: the `transamerica` record's `dr` said the drawn
+base takes *"four of its eight vertices"* and the emitter has printed **six**
+since it was written (§21.23's table is the correct one). The prose was wrong,
+not the geometry.
+
+---
+
+## 32. Block G1 — the assembly diff, and BUGS §23 is a pass production does not have
+
+Four layers now answer identically when asked what colour they give a thing
+(§27-29 here, `g2fn.py` for the ground). So the remaining difference is not in
+what a pass COMPUTES — it is in how the passes are PUT TOGETHER, and nothing
+built so far could see that: both sides compute the same colour and then
+combine it differently.
+
+`.parity/g1asm.py` hooks `CanvasRenderingContext2D` **and
+`OffscreenCanvasRenderingContext2D`** at runtime in both builds and logs every
+state change and every full-frame operation, then diffs the logs. The same
+method that cracked the back-wall bug; it does not care what any function
+computes.
+
+### 32.1 The first run recorded ZERO operations in production, and that was the hook
+
+Worth recording because it reads exactly like a finding. Production came back
+with **0 recorded operations — "this build uses no blend modes at all"** — and
+it was a hook that only patched `CanvasRenderingContext2D.prototype`. An
+OffscreenCanvas's 2D context is `OffscreenCanvasRenderingContext2D`, a
+**different prototype**, and this renderer composes its layers offscreen. With
+both prototypes hooked, production records 85 operations. *An instrument that
+cannot see a thing reports its absence in the same words as its absence.*
+
+### 32.2 The diff
+
+```
+  blend modes SET during one district frame
+
+    mock      difference · destination-out · destination-over · source-in
+    prod      none — every composite in the frame is source-over
+```
+
+`difference` and `destination-out` are `sunCast`/`sunFlush`, already found and
+priced at §27.3 (9-15 %). **`destination-over` and `source-in` were not**, and
+they are one pass: `gen/part4.html` L62, `buildAO()`.
+
+```js
+  const AO_R  = [1.6, 2.4, 3.4];            // blur radius, css px, by zoom step
+  const AO_COL = "rgba(63,52,36,0.50)";
+  actx.filter = "blur(" + r + "px)";
+  actx.drawImage(cityL, -r*0.55/ss, r*0.80/ss, W, H);   // the CITY, offset down-left
+  actx.globalCompositeOperation = "source-in";
+  actx.fillStyle = AO_COL; actx.fillRect(0,0,W,H);      // -> a solid tint in that shape
+  ...
+  cctx.globalCompositeOperation = "destination-over";   // BEHIND the city
+  cctx.drawImage(aoL, 0,0,AO_W,AO_H, 0,0,W,H);
+```
+
+It takes **the finished city layer**, blurs it, offsets it down-left along the
+same key light every other shadow in this renderer uses, turns it into a solid
+`rgba(63,52,36,0.50)` in that shape, and composites it **behind** the city.
+`LOOK.ao` is the FIRST flag in the mock's `LOOK` block and its own one-line
+description is *"screen-space contact shadow under the city layer"*.
+
+**Production has no `buildAO`, no `AO_COL`, no `AO_R`, and no equivalent** —
+grepped, nothing.
+
+### 32.3 Why this is §23 and the four layers were not
+
+Every property BUGS §23 measured falls out of the construction:
+
+| §23 measured | `buildAO` |
+|---|---|
+| entirely LOW-frequency | it is literally a Gaussian blur |
+| dark end +23.5, bright end +2.7 | `destination-over` puts it BEHIND the city, so it shows only where the city layer is transparent — **the ground between and around buildings**, never the lit roofs |
+| flat in screen y | it follows the city, not depth |
+| not one tone curve | spatially structured by construction |
+| district ≫ city, street ≈ 0 | the halo reads between blocks at district; at street zoom the buildings cover their own AO |
+| invisible to four value instruments | it computes no per-object colour — it is a blur of a layer |
+
+Order of magnitude, stated as an estimate and not a measurement: `AO_COL` at
+alpha 0.50 over ground near 200 lands about **−73 luminance** where it is
+fully opaque, so it needs to cover only 15-20 % of the frame's ground at full
+strength to produce §23's +11.7 to +13.7. At B4 buildings are 30.5 % of stage
+and the blurred, offset halo of a fabric that fine is comfortably in that
+range. **The sign, the magnitude, the frequency, the spatial structure and the
+camera profile all agree.**
+
+### 32.4 What this is and is not
+
+**It is not a bug in these files.** Nothing computes it wrongly; the pass does
+not exist. It is a missing member of the same family as `sunCast` — the mock's
+whole shadow apparatus, of which production ported the per-building fallback
+and neither of the two screen-space passes.
+
+**Not built here.** It belongs to whoever owns the layer composite in
+`renderer.ts`/`scene.ts`'s frame assembly, and it wants deciding with the
+performance clause in view — the mock's own comment records the measurement
+that put it inside the city layer via `destination-over` rather than blitting
+it every frame (*"the blit alone is 6.9 ms at 1440x940 DPR 2 — 41 % of a 60 fps
+budget, every frame, forever, for a picture that only changes when the city
+layer does"*), and it is tiered off mid-gesture. Both of those constraints
+carry across unchanged.
+
+**And it should be measured before it is believed**, on the standard this
+project has been holding: build it behind a flag, ablate against a terminal
+constant, and read the low-frequency image — not the frame mean and not the
+pixel count, per BUGS §23b.

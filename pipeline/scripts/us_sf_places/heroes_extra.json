@@ -1,5 +1,5 @@
 {
-  "note": "Heroes authored on top of the eleven that encode_city_chunks.py moves out of the mock's wonder/hero-data.js. Read by emit_heroes.py, which MERGES them into base/heroes.qc + base/heroes.json. NO GEOMETRY IS TYPED IN THIS FILE: every ring, area, height, anchor and roll year is read out of the shipped footprint the record names. What is here is the choice of which published building gets drawn and how its SECTION is drawn, which is the same category as the 68 shaped caps -- 'the data fixes the top height and the plan area and says nothing about taper' (manifest kinds.cap).",
+  "note": "Heroes authored on top of the eleven that encode_city_chunks.py moves out of the mock's wonder/hero-data.js. Read by emit_heroes.py, which MERGES them into base/heroes.qc + base/heroes.json. NO GEOMETRY IS TYPED IN THIS FILE: every ring, area, height, anchor and roll year is read out of the shipped footprint the record names. What is here is the choice of which published building gets drawn and how its SECTION is drawn, which is the same category as the 68 shaped caps -- 'the data fixes the top height and the plan area and says nothing about taper' (manifest kinds.cap). WHICH BUILDING each hero is on is NOT the `b` literal: `b` is advisory and is asserted, and the thing that selects the footprint is the published identity under `attachments` -- see emit_heroes.py, WHICH BUILDING A HERO IS ON.",
   "heroes": [
     {
       "k": "pofahall",
@@ -27,7 +27,7 @@
       "y": 1972,
       "an": "the footprint this map's own register resolves the name to: base/places.qc row `Transamerica Pyramid [Transamerica Center]` carries bi 137821, from DataSF 5kya-mfst, the Tall Building Inventory, whose scope is every building over 240 ft.",
       "ys": "5kya-mfst `date`, the publisher's own \"Building's year of construction\", which reads 1972 on this row and agrees with its `completion_date`. The assessor's roll dates the parcel 1971 and that year is shipped alongside on `ms.yr`, so a reader can see both.",
-      "dr": "NOTHING ABOUT THIS FORM IS AUTHORED and the reason it is drawn at all is a measurement error, not a taste one. The fabric's height is `ynuv-fyni hgt_mediancm`, the MEDIAN LIDAR return over each footprint -- exactly right for a flat-roofed box and exactly wrong for a spire, because most of a tapering tower's footprint lies under its wide base. This 853 ft tower was drawn 68 m tall and its own shaped cap was then carved inside that 68 m solid, so the most recognisable tower in San Francisco was a stub its neighbours hid (.parity/g3/out/pyr-blk.prod.before.png). The published top, 853 ft from 5kya-mfst `height_ft`, replaces it.\nThe BASE is the largest convex figure the published footprint contains, on the footprint's own vertices: 2,945.0 m2 of 2,982.0, four of its eight vertices, 98.8 %. What it drops is a 9 x 7 m tab on one corner -- the lift and stair projection -- which is not the tower's plan. Two simpler repairs were tried and both are recorded in the emitter because both fail on this outline: the convex HULL covers 4.9 % MORE ground than the published footprint and slips a vertex-only gate, because a hull's vertices are always ring vertices; and shrinking that hull about its centroid until the whole polygon is inside the ring costs a 0.806 scale, which sits on landmarks.ts section 11's own 0.80 authoring-error floor. The convex-hull REFERENCE is not taken either: Sutro Tower alone is granted it and that invariant is asserted in data.test.ts.\nThe register's own `base_plan_size` 165x165 ft is NOT used and the disagreement is worth stating: that is a 50.3 m square, 2,529 m2, and the measured footprint's main quadrilateral is about 45.7 x 53.6 m, so a 50.3 m square does not fit inside it. The published plan is a design figure; the footprint is a measurement of the thing standing there, and every other hero on this map stands on its own footprint.\nThe TAPER has no free parameter: a pyramid is the surface between its base and a point at its top, so the plan scale at height z is 1 - z/top. The join between the shaft and the architectural cap is where the register's own description puts it -- \"50 story WSMF with 11 story architectural cap\", so 50/61 of the height, 213.11 m, where the plan is 11/61 of the base. A check on that split rather than an assumption: 853 ft over 61 storey-equivalents is 13.98 ft a storey, and the register's `typ_story_height` on comparable rows reads 14'9\". The two halves differ in MATERIAL and not in shape, and `facade_material` names both: \"concrete panel and sheet metal\". The two wings that carry the lifts and the stairs are NOT drawn: the register publishes no dimension for them.",
+      "dr": "NOTHING ABOUT THIS FORM IS AUTHORED and the reason it is drawn at all is a measurement error, not a taste one. The fabric's height is `ynuv-fyni hgt_mediancm`, the MEDIAN LIDAR return over each footprint -- exactly right for a flat-roofed box and exactly wrong for a spire, because most of a tapering tower's footprint lies under its wide base. This 853 ft tower was drawn 68 m tall and its own shaped cap was then carved inside that 68 m solid, so the most recognisable tower in San Francisco was a stub its neighbours hid (.parity/g3/out/pyr-blk.prod.before.png). The published top, 853 ft from 5kya-mfst `height_ft`, replaces it.\nThe BASE is the largest convex figure the published footprint contains, on the footprint's own vertices: 2,945.0 m2 of 2,982.0, six of its eight vertices, 98.8 %. What it drops is a 9 x 7 m tab on one corner -- the lift and stair projection -- which is not the tower's plan. Two simpler repairs were tried and both are recorded in the emitter because both fail on this outline: the convex HULL covers 4.9 % MORE ground than the published footprint and slips a vertex-only gate, because a hull's vertices are always ring vertices; and shrinking that hull about its centroid until the whole polygon is inside the ring costs a 0.806 scale, which sits on landmarks.ts section 11's own 0.80 authoring-error floor. The convex-hull REFERENCE is not taken either: Sutro Tower alone is granted it and that invariant is asserted in data.test.ts.\nThe register's own `base_plan_size` 165x165 ft is NOT used and the disagreement is worth stating: that is a 50.3 m square, 2,529 m2, and the measured footprint's main quadrilateral is about 45.7 x 53.6 m, so a 50.3 m square does not fit inside it. The published plan is a design figure; the footprint is a measurement of the thing standing there, and every other hero on this map stands on its own footprint.\nThe TAPER has no free parameter: a pyramid is the surface between its base and a point at its top, so the plan scale at height z is 1 - z/top. The join between the shaft and the architectural cap is where the register's own description puts it -- \"50 story WSMF with 11 story architectural cap\", so 50/61 of the height, 213.11 m, where the plan is 11/61 of the base. A check on that split rather than an assumption: 853 ft over 61 storey-equivalents is 13.98 ft a storey, and the register's `typ_story_height` on comparable rows reads 14'9\". The two halves differ in MATERIAL and not in shape, and `facade_material` names both: \"concrete panel and sheet metal\". The two wings that carry the lifts and the stairs are NOT drawn: the register publishes no dimension for them.",
       "section": {
         "form": "pyramid",
         "heightFt": 853,
@@ -68,5 +68,88 @@
       "b": null,
       "why": "CHECKED AS A CLASS AND REJECTED AS A CLASS. 297 designated places resolve to a footprint that is neither a hero nor one of the 68 shaped caps, so they draw as bare prisms. Ranked by span the top of that list is the Alcoa Building (116 m, 4 vertices), the Italian American Bank, Mission High School, the High School of Commerce, the Chronicle Building, the Palace Hotel garden courtyard, the Mills Building, the Fairmont Hotel, the Phelan Building, the Cable Car Barn. Almost every one of them IS a prism -- a downtown block with a flat roof -- and the ones that are not (Grace Cathedral's towers, Mission High's tower, the Fairmont's mansard) need per-element heights that no field this pipeline reads carries, which is the same test Grace Cathedral failed. A shaped cap would be a guess about taper on every one of them. Not done, and the reason is that the record does not support a form, not that the list is long."
     }
-  ]
+  ],
+  "attachments": {
+    "keys": {
+      "cityhall": {
+        "cx": 1656.385,
+        "cy": 2154.231,
+        "nv": 26,
+        "areaM2": 11251.5
+      },
+      "coit": {
+        "cx": 2828.933,
+        "cy": 4726.533,
+        "nv": 15,
+        "areaM2": 544.5
+      },
+      "conservatory": {
+        "cx": -1959.419,
+        "cy": 1403.871,
+        "nv": 31,
+        "areaM2": 1714.5
+      },
+      "dutchmill": {
+        "cx": -6285.0,
+        "cy": 1163.125,
+        "nv": 8,
+        "areaM2": 229.5
+      },
+      "ferry": {
+        "cx": 3915.333,
+        "cy": 3951.667,
+        "nv": 9,
+        "areaM2": 10235.5
+      },
+      "murphymill": {
+        "cx": -6221.875,
+        "cy": 556.875,
+        "nv": 8,
+        "areaM2": 453.0
+      },
+      "oldmint": {
+        "cx": 2710.292,
+        "cy": 2532.708,
+        "nv": 24,
+        "areaM2": 3451.0
+      },
+      "opera": {
+        "cx": 1506.294,
+        "cy": 2065.765,
+        "nv": 17,
+        "areaM2": 5668.0
+      },
+      "pagoda": {
+        "cx": 716.0,
+        "cy": 2791.0,
+        "nv": 8,
+        "areaM2": 136.5
+      },
+      "pofa": {
+        "cx": -913.213,
+        "cy": 4779.0,
+        "nv": 61,
+        "areaM2": 2324.0
+      },
+      "pofahall": {
+        "cx": -957.933,
+        "cy": 4780.167,
+        "nv": 30,
+        "areaM2": 12297.0
+      },
+      "sutro": {
+        "cx": -1306.762,
+        "cy": -529.524,
+        "nv": 21,
+        "areaM2": 662.0
+      },
+      "transamerica": {
+        "cx": 3108.125,
+        "cy": 3932.625,
+        "nv": 8,
+        "areaM2": 2982.0
+      }
+    },
+    "note": "WHICH PUBLISHED FOOTPRINT EACH HERO IS DRAWN ON, as an identity rather than as a position in a file. `b` in the records above and in the mock's own wonder/hero-data.js is a raw index into gen/bldg-data.js's Hilbert-ordered delta chain, and it moves whenever the record count changes -- rescuing Salesforce Tower and 1190 Mission inserts two records at 135,905 and 137,646, and NINE of the thirteen heroes would then attach to a different building with nothing failing. These keys are the published ring's own centroid (metres, the map's own plane), its vertex count and its area; emit_heroes.py resolves each one against the stream at build time and REFUSES TO WRITE if it matches no building or more than one. They are a lookup key and are never read into the drawing: every ring, area, height, anchor and roll year is still read out of the record the key resolves to. Harvested from the register with `emit_heroes.py --harvest-identity`, never typed."
+  }
 }

@@ -92,6 +92,159 @@ def em_for(top_m: float) -> dict:
     return {b: round(emphasis(top_m, EM_BASE * z), 3) for b, z in EM_Z.items()}
 
 
+# ── WHICH BUILDING A HERO IS ON, AND WHY IT MAY NOT BE AN INDEX ─────────
+#
+# `heroes_extra.json` and the mock's own `wonder/hero-data.js` both name the
+# building a hero is drawn on by a RAW STREAM INDEX -- `"b": 137821`. That
+# index is a POSITION IN A FILE, not an identity: it is the building's rank in
+# `gen/bldg-data.js`'s Hilbert-ordered delta chain, and it moves the moment the
+# record count changes.
+#
+# MEASURED, and it is not hypothetical. San Francisco's tallest building is off
+# this map: Salesforce Tower's only footprint returns 0.24 m from the 2010
+# LiDAR median and the shed filter cuts anything under 2 m (DATA-TRUTH 13.5a).
+# Rescuing it and 1190 Mission INSERTS two records, at 135,905 and 137,646. Of
+# the thirteen heroes, NINE carry a `b` at or above 135,905 --
+#
+#     cityhall 149288 - ferry 142936 - coit 142291 - pofa 159057 -
+#     opera 149289 - oldmint 136520 - pagoda 149817 - pofahall 159037 -
+#     transamerica 137821
+#
+# -- so nine of the thirteen would silently attach to a DIFFERENT building and
+# nothing in the chain would fail: the round trip asserts the register's shape,
+# not that `b` names the right footprint. The Palace of Fine Arts' hall would
+# be drawn on somebody else's plan, in silence.
+#
+# SO THE SEED NAMES A PUBLISHED IDENTITY AND THIS FILE RESOLVES IT.
+# The building stream carries no parcel key, no address and no external id --
+# `read_bldg()` returns ring vertices, a height byte, a roll year and a use
+# class, and nothing else. What it does carry is the published FOOTPRINT, and a
+# footprint is an identity: the ring's own centroid, its vertex count and its
+# area. That triple is a fingerprint of the published record itself, so it
+# survives any change in record count, any re-ordering, and the height fix that
+# moved 134 bytes of `h` while leaving `cnt`, `vx`, `vy`, `xi` and `xn`
+# byte-identical.
+#
+# It is a LOOKUP KEY and it is never read into the drawing. Every ring, area,
+# height, anchor and roll year the hero is drawn from is still read out of the
+# record this resolves to, which is the rule the module docstring states.
+#
+# A hero whose key resolves to no building, or to more than one, FAILS THE
+# BUILD. There is no fallback to the index -- a fallback is exactly the silent
+# mis-attachment this exists to stop.
+
+IDENT_TOL_M = 2.0
+"""The centroid match radius, metres. The stream's coordinates are whole
+metres (`_bldgsrc` asserts `q == 1.0`) and `cx`/`cy` are the arithmetic mean of
+the ring's own vertices, so an exact record match is exact to floating point;
+the radius exists so a future re-quantisation of the stream cannot break every
+key at once. The margin this leaves is measured and printed per hero."""
+
+IDENT_AREA_TOL_M2 = 0.5
+"""Ring area agreement, m2. Corroboration, not the key: two distinct buildings
+whose centroids agree to 2 m AND whose vertex counts agree AND whose areas
+agree to half a square metre are the same footprint."""
+
+
+def identity_of(B: dict, b: int) -> dict:
+    """The published fingerprint of building `b` -- read, never typed."""
+    o, c = int(B["off"][b]), int(B["cnt"][b])
+    ring = [(float(B["IX"][o + k]), float(B["IY"][o + k])) for k in range(c)]
+    return {"cx": round(float(B["cx"][b]), 3),
+            "cy": round(float(B["cy"][b]), 3),
+            "nv": c,
+            "areaM2": round(abs(ring_area(ring)), 1)}
+
+
+def resolve_identity(B: dict, ident: dict, k: str) -> int:
+    """The one building whose published footprint IS this one. Never falls back."""
+    import numpy as np
+    dx = B["cx"] - ident["cx"]
+    dy = B["cy"] - ident["cy"]
+    d2 = dx * dx + dy * dy
+    near = np.nonzero(d2 <= IDENT_TOL_M * IDENT_TOL_M)[0]
+    hit = []
+    for i in near:
+        i = int(i)
+        if int(B["cnt"][i]) != ident["nv"]:
+            continue
+        o, c = int(B["off"][i]), int(B["cnt"][i])
+        ring = [(float(B["IX"][o + t]), float(B["IY"][o + t])) for t in range(c)]
+        if abs(abs(ring_area(ring)) - ident["areaM2"]) > IDENT_AREA_TOL_M2:
+            continue
+        hit.append(i)
+    if len(hit) != 1:
+        raise SystemExit(
+            f"{k}: the hero's published footprint identity "
+            f"(centroid {ident['cx']}, {ident['cy']}; {ident['nv']} vertices; "
+            f"{ident['areaM2']} m2) resolves to {len(hit)} buildings "
+            f"{hit if hit else ''}. A hero may not fall back to a raw index -- "
+            f"see WHICH BUILDING A HERO IS ON. Nothing written.")
+    return hit[0]
+
+
+ATTACH_NOTE = (
+    "WHICH PUBLISHED FOOTPRINT EACH HERO IS DRAWN ON, as an identity rather "
+    "than as a position in a file. `b` in the records above and in the mock's "
+    "own wonder/hero-data.js is a raw index into gen/bldg-data.js's "
+    "Hilbert-ordered delta chain, and it moves whenever the record count "
+    "changes -- rescuing Salesforce Tower and 1190 Mission inserts two records "
+    "at 135,905 and 137,646, and NINE of the thirteen heroes would then attach "
+    "to a different building with nothing failing. These keys are the "
+    "published ring's own centroid (metres, the map's own plane), its vertex "
+    "count and its area; emit_heroes.py resolves each one against the stream "
+    "at build time and REFUSES TO WRITE if it matches no building or more than "
+    "one. They are a lookup key and are never read into the drawing: every "
+    "ring, area, height, anchor and roll year is still read out of the record "
+    "the key resolves to. Harvested from the register with "
+    "`emit_heroes.py --harvest-identity`, never typed."
+)
+
+
+def _with_inserts(B: dict, at: tuple[int, ...]) -> dict:
+    """The same stream with N records inserted at the given positions, so the
+    key's INDEX INDEPENDENCE can be asserted rather than argued. The inserted
+    rings are placeholders standing far outside the city; this models the shift
+    a rescue causes and makes no claim about what is rescued."""
+    import numpy as np
+    n = B["n"]
+    order = np.arange(n)
+    FAR = 1.0e6
+    cnt = list(B["cnt"]); cx = list(B["cx"]); cy = list(B["cy"])
+    rings = []
+    for i in range(n):
+        o, c = int(B["off"][i]), int(B["cnt"][i])
+        rings.append((B["IX"][o:o + c], B["IY"][o:o + c]))
+    ins = sorted(at)
+    for j, pos in enumerate(ins):
+        k = pos
+        cnt.insert(k, 4)
+        cx.insert(k, FAR + j)
+        cy.insert(k, FAR + j)
+        rings.insert(k, (np.array([FAR, FAR + 1, FAR + 1, FAR], dtype=np.int64),
+                         np.array([FAR, FAR, FAR + 1, FAR + 1], dtype=np.int64)))
+    cnt = np.array(cnt, dtype=np.int64)
+    off = np.zeros(len(cnt) + 1, dtype=np.int64)
+    np.cumsum(cnt, out=off[1:])
+    IX = np.concatenate([r[0] for r in rings])
+    IY = np.concatenate([r[1] for r in rings])
+    del order
+    return {"n": len(cnt), "cnt": cnt, "off": off, "IX": IX, "IY": IY,
+            "cx": np.array(cx, dtype=np.float64), "cy": np.array(cy, dtype=np.float64)}
+
+
+def identity_margin(B: dict, ident: dict, b: int) -> float:
+    """How far the nearest OTHER building's centroid is, metres. This is the
+    number that says how much room an inserted record has to steal the key:
+    anything nearer than IDENT_TOL_M could, and nothing else can."""
+    import numpy as np
+    dx = B["cx"] - ident["cx"]
+    dy = B["cy"] - ident["cy"]
+    d2 = dx * dx + dy * dy
+    d2[b] = float("inf")
+    return float(np.sqrt(d2.min()))
+
+
 # ── ring arithmetic ─────────────────────────────────────────────────────────
 
 def ring_area(r: list[tuple[float, float]]) -> float:
@@ -645,6 +798,61 @@ def main() -> int:
     B = read_bldg()
     seed = json.loads(SEED.read_text())
 
+    # ── EVERY HERO IS RE-ATTACHED BY IDENTITY, INCLUDING THE MOCK'S ELEVEN ──
+    # See WHICH BUILDING A HERO IS ON. The key lives in this file's own seed
+    # because it has to be written down somewhere to be stable, and it is
+    # harvested from the register rather than typed: `--harvest-identity`.
+    keys = seed.get("attachments", {}).get("keys", {})
+    if "--harvest-identity" in sys.argv:
+        want = {h["k"]: h["b"] for h in H} | {x["k"]: x["b"] for x in seed["heroes"]}
+        got = {k: identity_of(B, b) for k, b in sorted(want.items())}
+        seed.setdefault("attachments", {})["keys"] = got
+        seed["attachments"]["note"] = ATTACH_NOTE
+        SEED.write_text(json.dumps(seed, indent=2, ensure_ascii=False) + "\n")
+        for k, v in got.items():
+            print(f"    {k:14s} centroid ({v['cx']}, {v['cy']})  {v['nv']} vertices  "
+                  f"{v['areaM2']:,} m2   margin {identity_margin(B, v, want[k]):.1f} m")
+        print(f"harvested {len(got)} identities into {SEED.name}")
+        return 0
+
+    resolved: dict[str, int] = {}
+    margins: dict[str, float] = {}
+    for k in sorted({h["k"] for h in H} | {x["k"] for x in seed["heroes"]}):
+        if k not in keys:
+            raise SystemExit(
+                f"{k}: no published footprint identity in {SEED.name}. A hero "
+                f"may not name its building by a raw stream index -- see WHICH "
+                f"BUILDING A HERO IS ON. Run:\n"
+                f"    python3 pipeline/scripts/us_sf_places/emit_heroes.py "
+                f"--harvest-identity")
+        resolved[k] = resolve_identity(B, keys[k], k)
+        margins[k] = identity_margin(B, keys[k], resolved[k])
+    for h in H:
+        if h["k"] in resolved and resolved[h["k"]] != h["b"]:
+            raise SystemExit(
+                f"{h['k']}: the shipped register has it on building {h['b']} and "
+                f"its published footprint identity resolves to "
+                f"{resolved[h['k']]}. The building stream has changed under the "
+                f"chunk -- re-run encode_city_chunks.py, then this. Nothing "
+                f"written.")
+
+    # ── AND THE KEY HAS TO SURVIVE THE INSERTION IT EXISTS FOR ─────────────
+    # Modelled exactly: two records inserted at 135,905 and 137,646, which is
+    # where rescuing 1190 Mission and Salesforce Tower would put them. The two
+    # inserted rows carry a placeholder ring far outside the city -- this test
+    # is about INDEX INDEPENDENCE and makes no claim about their geometry; what
+    # protects the key from a real neighbour is the margin printed above.
+    shifted = _with_inserts(B, (135905, 137646))
+    for k, want in resolved.items():
+        b2 = resolve_identity(shifted, keys[k], k)
+        expect = want + (1 if want >= 135905 else 0)
+        expect += 1 if expect >= 137646 else 0
+        if b2 != expect:
+            raise SystemExit(f"{k}: the identity key is NOT index-independent: "
+                             f"{want} -> {b2}, expected {expect}")
+    stale = sum(1 for k, want in resolved.items()
+                if want != want + (1 if want >= 135905 else 0))
+
     # the emphasis fit, asserted against the eleven it was fitted to
     worst = 0.0
     for h in H:
@@ -657,7 +865,17 @@ def main() -> int:
 
     added = []
     for s in seed["heroes"]:
-        b = s["b"]
+        # THE RESOLVED INDEX, NOT THE LITERAL. `b` in the seed is advisory --
+        # it records which index this resolved to when the row was written, and
+        # it is asserted rather than trusted.
+        b = resolved[s["k"]]
+        if b != s["b"]:
+            raise SystemExit(
+                f"{s['k']}: the seed's advisory index is {s['b']} and its "
+                f"published footprint identity resolves to {b}. The stream has "
+                f"changed under the seed; update `b` to {b} (the identity is "
+                f"what selects the building, so the drawing is unaffected) and "
+                f"re-run. Nothing written.")
         if not 0 <= b < B["n"]:
             raise SystemExit(f"{s['k']}: building index {b} out of range")
         o = int(B["off"][b]); c = int(B["cnt"][b])
@@ -767,6 +985,11 @@ def main() -> int:
     }
     MANIFEST.write_text(json.dumps(man, separators=(",", ":")))
 
+    print(f"    identity: all {len(resolved)} heroes re-attached by their published "
+          f"footprint (centroid, vertex count, area); worst margin to another "
+          f"building {min(margins.values()):.1f} m; index-independence proved "
+          f"against a two-record insertion at 135,905 and 137,646, which moves "
+          f"{stale} of {len(resolved)} raw indices")
     print(f"base/heroes.qc    {len(blob):,} bytes  "
           f"({len(gzip.compress(blob, 9)):,} gzipped)  "
           f"{stat['n']} heroes ({base_n} from the mock, {len(added)} here)")
