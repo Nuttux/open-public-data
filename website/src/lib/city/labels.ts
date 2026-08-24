@@ -20,7 +20,7 @@
  * of a linear one it is the named-place gate as well.
  */
 
-import { placeKindOf, type PlaceKind } from "./place-kinds.generated";
+import type { PlaceKind } from "./place-kinds.generated";
 import { type Frame, nameFitsFrame, sx, sy } from "./terrain";
 
 // ── the ink budget ──────────────────────────────────────────────────────────
@@ -669,12 +669,13 @@ export interface PlaceLabel {
   /**
    * WHAT KIND OF THING THE REGISTER SAYS IT IS — see §KINDMARK.
    *
-   * Optional because the producer does not set it yet: the renderer's places
-   * come from `CityMap.tsx::decodeMarks`, which reads five columns of
-   * `base/marks.json`. That file now ships the family as a sixth (`k` +
-   * `KIND`); until `decodeMarks` reads it, `placeNames` falls back to
-   * `placeKindOf(name)`, and **this field wins wherever it is set** so the
-   * migration is one line there and a deletion here.
+   * Optional because 684 of 2,197 places — 31.1 % — genuinely carry NO
+   * published kind: the registers that DESIGNATE a place (Article 10, Article
+   * 11) publish a name and a status and no category at all, confirmed against
+   * their own column lists. Set from `base/marks.json`'s `k` + `KIND` by
+   * `CityMap.tsx::decodeMarks`, joined from six registers' own category fields
+   * by `pipeline/scripts/us_sf_places/place_kinds.py`, reaching 1,342 rows.
+   * A name is NEVER used to guess a kind.
    */
   readonly kind?: PlaceKind;
 }
@@ -753,8 +754,8 @@ export function placeNames(
          already says "the City designated this", and the register that
          designates is the register that publishes no kind, so no place is ever
          asked to say both. `p.kind` wins over the generated table so that
-         teaching `decodeMarks` the column is a one-line migration. */
-      const kind = des ? undefined : (p.kind ?? placeKindOf(p.name));
+         the record's own column, read by `decodeMarks`. */
+      const kind = des ? undefined : p.kind;
       const gw = kind ? 2 * GLYPH_R + GLYPH_LEAD : 0;
       const bw = tw + gw + (des ? 16 : 10),
         bh = fs + 5;

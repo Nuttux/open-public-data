@@ -87,6 +87,8 @@ interface HoodRingsFile {
   labels: number[][];
 }
 
+import type { PlaceKind } from "@/lib/city/place-kinds.generated";
+
 interface MarksFile {
   n: number;
   t: string[];
@@ -97,6 +99,9 @@ interface MarksFile {
   yr: string;
   d: string;
   src: string;
+  /** the SIXTH column: 0 = no published kind, else 1 + index into `KIND` */
+  k?: string;
+  KIND?: string[];
 }
 
 function b64(s: string): ArrayBuffer {
@@ -121,6 +126,15 @@ function decodeMarks(m: MarksFile): PlaceLabel[] {
   const s = new Uint16Array(b64(m.s));
   const yr = new Uint16Array(b64(m.yr));
   const d = new Uint8Array(b64(m.d));
+  // WHAT KIND OF THING THIS IS, joined from six registers' own category fields
+  // by pipeline/scripts/us_sf_places/place_kinds.py and reaching 1,342 of
+  // 2,196 rows. 0 means the record publishes no kind — 684 rows genuinely do
+  // not, because the register that DESIGNATES a place is the register with no
+  // category, so a diamond and a glyph never appear on the same place. A
+  // reader that does not know this key ignores it, which is why shipping it
+  // ahead of this line broke nothing. BUGS.md §33.
+  const kind = m.k ? new Uint8Array(b64(m.k)) : null;
+  const KIND = m.KIND ?? [];
   const out: PlaceLabel[] = [];
   for (let k = 0; k < m.n; k++) {
     out.push({
@@ -130,6 +144,7 @@ function decodeMarks(m: MarksFile): PlaceLabel[] {
       spanM: s[k],
       cls: (d[k] & 1) !== 0 ? "designated" : "named",
       ...(yr[k] ? { year: yr[k] } : {}),
+      ...(kind && kind[k] ? { kind: KIND[kind[k] - 1] as PlaceKind } : {}),
     });
   }
   return out;
