@@ -7677,3 +7677,26 @@ the honest shape is two different jobs.**
 does not own churches — Grace Cathedral and Sts Peter and Paul reach the map
 only through Article 10, which carries no kind. A church family would need a
 source outside the City's property registers.
+
+**And the second band boundary is clean too, which rules the last candidate
+out.** The sweep continued past `BANDS[1]` = 4.569, where `zex` steps 2.6 → 2.0:
+
+| z | band | drawn h |
+|---|---|---|
+| 3.920 | 1 | 146 |
+| 4.888 | **2** | 150 |
+| 5.663 | 2 | 152 |
+| 6.095 | 2 | 155 |
+| 6.560 | 2 | 160 |
+| 7.061 | 2 | 164 |
+
+A smooth continuation from 146 at the measured elasticity predicts 149.2 at
+z = 4.888; the frame reads **150**. **The hero's drawn size does not step at a
+band change** — `zex` moves the ground under the whole scene and not the
+building's own height, which is `zexb` and is fixed. Elasticity recovers to
+0.24 by the block camera, so the stall is a trough centred between the district
+and block presets and not a floor.
+
+(Frames 21 and 22 of that run are discarded: both came back with a mask
+covering the whole frame while the dev server was recompiling, which is the
+stale-frame signature the trap note above describes.)
