@@ -28,6 +28,9 @@ import {
   tiltOf,
   WA,
   luminance,
+  plateRect,
+  PLATE_KMAX,
+  PLATE_PAD,
 } from "./terrain";
 import { coastBand, wedgeCovered, buildShoal, depthM, assertRefinement, resampleC1, shoalCellAlpha, shoalNodeAlpha, SHOAL_A0, SHOAL_REACH, drawShoreCorridor, BAY_OPEN, SHORE_IN, SHORE_OUT, buildDepthPlate } from "./water";
 import {
@@ -1933,5 +1936,73 @@ describe("the depth plate at the resolution the City published", () => {
       { ...meta, nw: 1665, nh: 1121 } as unknown as Parameters<typeof assertRefinement>[0],
       416, 280,
     )).not.toThrow();
+  });
+});
+
+describe("the ground plate a camera move can use", () => {
+  /* The frame the film paints during a travel: the extended buffer at 1440 x
+     940 DPR 2, and a plate painted for it with C2's pad. `plateRect` is the
+     whole of the reuse decision — the similarity that takes a plate painted at
+     camera A to a frame at camera B, or null. */
+  const W = 2046,
+    H = 1336,
+    dpr = 2;
+  const pad = (n: number) => Math.round(PLATE_PAD * n * dpr);
+  const plateFor = (cx: number, cy: number, s: number, padded = true) => ({
+    pw: Math.round(W * dpr) + (padded ? 2 * pad(W) : 0),
+    ph: Math.round(H * dpr) + (padded ? 2 * pad(H) : 0),
+    cx,
+    cy,
+    s,
+  });
+  const cam = (cx: number, cy: number, scale: number) => ({ cx, cy, scale });
+
+  it("a plate at the frame's own camera lands 1:1 and covers it exactly", () => {
+    const p = plateFor(1000, 500, 0.15, false);
+    const r = plateRect(p, cam(1000, 500, 0.15), W, H, dpr, PLATE_KMAX);
+    expect(r).not.toBeNull();
+    expect(r!.dx).toBeCloseTo(0, 9);
+    expect(r!.dy).toBeCloseTo(0, 9);
+    expect(r!.dw).toBeCloseTo(W * dpr, 9);
+    expect(r!.dh).toBeCloseTo(H * dpr, 9);
+  });
+
+  it("the pad is where the coverage comes from: a pure pan of 5 % holds, a pan of 20 % does not", () => {
+    const s = 0.15;
+    const p = plateFor(1000, 500, s);
+    // the pad is 6 % a side, so it reaches 6 % of the frame's half-width
+    const halfW = W / 2 / s;
+    expect(plateRect(p, cam(1000 + halfW * 0.05, 500, s), W, H, dpr, PLATE_KMAX))
+      .not.toBeNull();
+    expect(plateRect(p, cam(1000 + halfW * 0.2, 500, s), W, H, dpr, PLATE_KMAX))
+      .toBeNull();
+  });
+
+  it("zooming IN is served until the magnification ceiling, and refused past it", () => {
+    const p = plateFor(1000, 500, 0.15);
+    // k = frameScale / plateScale, so a frame at 1.2x the plate's scale is a
+    // 1.2x magnification, and the world it needs is 1.2x SMALLER — coverage is
+    // never the binding constraint on a zoom-in, the ceiling is
+    expect(plateRect(p, cam(1000, 500, 0.15 * 1.2), W, H, dpr, PLATE_KMAX))
+      .not.toBeNull();
+    expect(plateRect(p, cam(1000, 500, 0.15 * (PLATE_KMAX + 0.05)), W, H, dpr, PLATE_KMAX))
+      .toBeNull();
+  });
+
+  it("zooming OUT is never magnified, and is bounded by the pad instead", () => {
+    const p = plateFor(1000, 500, 0.15);
+    // 1 + 2*PAD of zoom-out is exactly the pad, so a little less holds...
+    expect(plateRect(p, cam(1000, 500, 0.15 / (1 + 2 * PLATE_PAD - 0.005)), W, H, dpr, PLATE_KMAX))
+      .not.toBeNull();
+    // ...and a little more does not, however sharp it would be
+    expect(plateRect(p, cam(1000, 500, 0.15 / (1 + 2 * PLATE_PAD + 0.02)), W, H, dpr, PLATE_KMAX))
+      .toBeNull();
+  });
+
+  it("an UNPADDED plate serves only a zoom-in, which is why a travelling build pads", () => {
+    const p = plateFor(1000, 500, 0.15, false);
+    expect(plateRect(p, cam(1000, 500, 0.15 * 1.1), W, H, dpr, PLATE_KMAX)).not.toBeNull();
+    expect(plateRect(p, cam(1000, 500, 0.15 / 1.02), W, H, dpr, PLATE_KMAX)).toBeNull();
+    expect(plateRect(p, cam(1004, 500, 0.15), W, H, dpr, PLATE_KMAX)).toBeNull();
   });
 });

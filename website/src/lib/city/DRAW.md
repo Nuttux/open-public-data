@@ -3641,3 +3641,175 @@ Open, named, and NOT done:
   the client.
 · **BUGS §3's editorial half** — whether a building's shadow belongs on open
   water. The geometry is right (§19.2); the question is a call, not a bug.
+
+### 19.4 What landed
+
+`terrain.ts` §`plateFor`. Three rules, and the third is the one that took three
+tries to get right.
+
+**1 · A plate may be REUSED at another camera.** `SX`/`SY` are
+`(p − cam.c) · cam.scale + centre` and `proj()` never sees the camera, so the
+ground at camera B is exactly the ground at camera A under a uniform scale and
+a translation — the frame buffer's own similarity argument, one layer down.
+`plateBlit` returns that rectangle, or null when the plate does not cover the
+frame or would have to be blown up past `PLATE_KMAX` = 1.30. The key is split:
+`viewKey` (size, bearing, tilt, ZEX) plus the field, the dials, the burn and
+the node generation stay in the key; the centre and the scale move onto the
+plate, where they can be resampled from.
+
+**2 · A plate painted while the camera is travelling is painted at the MOTION
+TIER.** `FILM.md` §6b measured that the motion tier halves the worst frame and
+named it as `renderer.ts`'s word to say (`const moving = film ? false : …`).
+It does not have to be: `RS.*Move` is this file's own dial and the travel is
+this file's own signal. The tier is an ORDER rather than a name — a settled
+plate is a legal answer to a travelling frame, a motion-tier plate is not a
+legal answer to a settled one — so the first frame of a travel still reuses the
+hold's plate.
+
+**3 · A BUILD IS ALWAYS EXACT FOR ITS OWN FRAME.** This is the invariant, and
+two designs that measured better were thrown away for breaking it. Coverage
+therefore comes from a pad — `PLATE_PAD` = 6 % a side, `plateFrame` widens the
+Frame so the rasteriser's own culling reaches into it — and never from painting
+the plate at a different scale. A frame that builds gets a 1:1 integer sub-rect
+blit and cannot be resampled whatever the renderer thought it was doing; only a
+frame that REUSES a plate is resampled, and reuse is gated on travelling.
+
+The travel signal takes two answers because the page has two clocks. In the
+explorer `f.moving` is the truth. In the film `renderer.ts` forces it false, so
+the camera is the signal — a travel never repeats a camera, a hold repeats it
+every frame — which is safe there and only there, because the film keeps
+painting and a hold's second frame repaints the ground at its own tier.
+`f.year` is the discriminator and it is not a proxy: it is the film's year, and
+it is `undefined` exactly when there is no film.
+
+### 19.5 Two designs that measured better and were wrong
+
+**A margin-free plate painted at `scale / 1.10`.** 1.10× more world for no
+pixels at all — coverage paid in magnification headroom instead of raster. It
+measured better than what shipped on seven of the eight travels (worst frame
+733 / 709 / 900 / 517 / 426 / 650 / 608 / 675 ms). It is wrong because the
+frame that builds such a plate does not get it at 1:1. `.parity/c2settle.py`
+put the number on it: **a wheel zoom in the explorer is three ground passes,
+all three of them builds, and there is no fourth.** The page does not repaint
+after a gesture, so a resampled ground laid down on the last of them is the
+picture the reader keeps — and neither `f.moving` (true on all three) nor "the
+camera repeated itself" (it never does) identifies that frame in advance.
+
+**The same plate gated on the camera repeating itself, in the explorer too.**
+Same defect, plus a second one: it read a settled explorer frame as travelling
+and painted it at the motion tier, which is a quality regression the shipped
+key had never had.
+
+Measured after the pad, same harness: **zero resampled ground passes in the
+explorer across a drag-pan, a wheel zoom and a preset flight, and `ex = 1` on
+the last pass of all three.**
+
+### 19.6 What it cost and what it bought
+
+`.parity/c2blit.py`, `getImageData(0,0,1,1)` inside every timed region, on the
+film's own 4092 × 2672 buffer:
+
+| | ms |
+|---|---:|
+| 1:1 blit, whole canvas | 2.62 |
+| 1:1 blit, sub-rect out of the padded plate | 4.76 |
+| resampled, k = 1.03 / 1.15 / 1.30, smoothing on | 19.88 / 19.85 / 19.73 |
+| resampled, k = 1.15, smoothing OFF | 4.73 |
+
+**A resample is 20 ms and it does not depend on k**, so reuse costs about 17 ms
+a pass over an exact blit, against a build that costs hundreds. Smoothing stays
+on: 15 ms is not worth nearest-neighbour on a hillshade.
+
+`.parity/c2move.py`, one camera move per page load, 1440 × 940, DPR 2, headless
+Chromium with CPU raster, dev server:
+
+| move | worst frame | | p95 | | ground builds | |
+|---|---:|---:|---:|---:|---:|---:|
+| | before | after | before | after | before | after |
+| into 3 civic-bonds | 917 | **689** | 825 | **403** | 22 | **2** |
+| into 4 city-hall | 933 | **708** | 800 | **466** | 17 | **8** |
+| into 5 tunnel | 1,208 | **857** | 1,158 | **532** | 19 | **15** |
+| into 6 west-fills | 1,108 | **527** | 1,000 | **430** | 15 | **6** |
+| into 7 hetch-hetchy | 724 | **358** | 17.5 | 17.0 | 4 | **3** |
+| into 8 treasure-island | 696 | **646** | 600 | **283** | 19 | **2** |
+| into 9 yerba-buena | 804 | **583** | 663 | **371** | 21 | **2** |
+| into 10 to-now | 954 | **661** | 858 | **496** | 15 | **7** |
+| | | | | | **132** | **45** |
+
+Worst frame down 4–53 %, p95 down 30–65 %, ground builds down **66 %**.
+
+**And the number that is not in the table: `spare` latched on five of the eight
+travels before and on NONE of them after.** `CityFilm.tsx` drops to the cut-only
+version when a second of wall clock buys less than 0.6 s of film for long
+enough; on this machine the eight camera travels now stay above that line. The
+before column is therefore FLATTERED — five of those eight rows are partly a
+sequence of still frames rather than a travel, which is cheap — so the true
+distance is larger than the table shows. `into 6`'s median goes 8 → 206 ms for
+the same reason and it is not a regression: before, that move was not being
+drawn.
+
+### 19.7 What is left in the frozen frame, and it is not this file
+
+The worst frame of a move is now **one ground build**, and tolerance cannot make
+a build cheaper — it can only stop it happening. What is left is the per-node
+cost `FILM.md` §6b profiled: `paintCell` 436 ms and `rgbHex` 100 ms of a 2.5 s
+profile, neither of which scales with pixels, which is why the `FILM_DPR` sweep
+has a 480 ms intercept. That is the next thing to attack here and it was not
+attacked here.
+
+Two more, named for their owners:
+
+* **`renderer.ts` §contentKey, `YEAR_Q = 16`.** The reason a move rebuilds the
+  ground at all is that the film's year quantum forces a rasterisation every
+  sixteenth of a year while the camera is drifting five pixels. The plate now
+  survives those; the rasterisations themselves are still paid in full by every
+  other layer.
+* **`water.ts:702` had no guard on `createRadialGradient`** and its sibling at
+  `drawDepthHaze` has one. `.parity/BUGS.md` §20 — fixed here, since it is this
+  block's file: `kx > 0 && ky > 0`, checked before the cache is touched. Both
+  radii are positive multiples of `kx`, so that is the whole of the `R1 > R0`
+  test the sibling writes out. It throws intermittently, it takes the whole
+  frame's draw with it, and it is why a camera came back at z = −0.025.
+
+### 19.8 The suite
+
+Five assertions in `draw.test.ts` §"the ground plate a camera move can use",
+389 tests total. They are on `plateRect`, which is the whole of the reuse
+decision as a pure function of two cameras and two rectangles — no canvas, so
+they say what they mean in an environment that has none:
+
+* a plate at the frame's own camera lands at `dx = dy = 0` and `dw x dh` the
+  frame's own device size — the 1:1 case, asserted rather than assumed;
+* a pure pan of 5 % of the half-width holds and 20 % does not — **the pad is
+  where the coverage comes from**, stated as a number;
+* a zoom-IN is served to `PLATE_KMAX` and refused past it, and coverage is never
+  what binds on a zoom-in;
+* a zoom-OUT is never magnified and is bounded by the pad instead, however
+  sharp it would have been;
+* an UNPADDED plate serves a zoom-in and neither a zoom-out nor a four-unit
+  pan — which is the test that says why a travelling build pads at all.
+
+### 19.9 Not done here, and named
+
+1. **The per-node cost.** §19.7 — `paintCell` and `rgbHex` are a third of a
+   rasterisation and neither scales with pixels. Every dial in this file has now
+   been swept; this is the remaining structural win in `terrain.ts`.
+2. **The title card's wash is a step, not a fade, and `CURVE.fade` is unused.**
+   Not this file.
+3. **The surround's cells are visibly blocky at 390 px** — visible in
+   `.parity/out/c2-zoom-city.png` along the Marin and East Bay shore. The
+   surround grid is 110 x 139 m a cell and `drawSurround` paints it flat; the
+   ramp `cellRamp` builds is per-cell and the step is between cells.
+4. **`base/street-misc`'s 1,120 traffic islands and 268 named stairs** are
+   decoded (§18.5) and the shipped draw is `scene.ts`'s call, not this file's.
+5. **The depth plate is still 417 x 281 against the mock's 1665 x 1121**, and
+   `water1`'s 26 chunks are still unread. Its tier `minZ` is **3.0**, so it
+   cannot reach the two wide cameras without a manifest change —
+   `pipeline/`, not here. Stated so the next reader does not spend the evening
+   on it from this side.
+6. **The canopy has no year gate.** `part3.html` L3930 holds a canopy blob back
+   with `CNYR[c] > iy`; `trees.ts` `drawVeg` has no year test on the blob loop
+   at all, so every canopy cell in the city draws in every year, 1906 included.
+   It is NOT a client bug: `manifest.json` `kinds.canopy` ships `cellKey`,
+   `pos`, `area` and no year, where the reference reads its own `TIMED.canopy.yr`.
+   The gate cannot be written until the encoder ships the field.

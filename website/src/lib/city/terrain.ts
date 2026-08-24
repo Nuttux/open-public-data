@@ -1289,6 +1289,16 @@ export function paintGrain(
   w: number,
   h: number,
   mode?: GlobalCompositeOperation,
+  /**
+   * Where the tile's own origin sits, in the context's user space. THE PAPER
+   * DOES NOT PAN, so a plate painted with a pad has to anchor its tooth to the
+   * FRAME's origin and not the plate's — otherwise the tooth's phase jumps by
+   * the pad at the instant the camera settles and the padded plate is replaced
+   * by an exact one. 96 px tile at pattern scale 2 is a 192 px period and the
+   * pad is 123; a shift of two thirds of a period is the whole tooth moving.
+   */
+  ox = 0,
+  oy = 0,
 ): boolean {
   const lv = LOOK.grain | 0;
   const spec = lv > 0 && lv < GRAIN_LV.length ? GRAIN_LV[lv] : null;
@@ -1319,7 +1329,14 @@ export function paintGrain(
   if (mode) g.globalCompositeOperation = mode;
   g.globalAlpha = al;
   g.fillStyle = pat;
-  g.fillRect(0, 0, w, h);
+  if (ox || oy) {
+    g.save();
+    g.translate(ox, oy);
+    g.fillRect(-ox, -oy, w, h);
+    g.restore();
+  } else {
+    g.fillRect(0, 0, w, h);
+  }
   g.globalAlpha = a;
   g.globalCompositeOperation = o;
   return true;
@@ -1384,10 +1401,12 @@ interface GroundPlate {
   cx: number;
   cy: number;
   s: number;
-  /** the frame it was painted for, in CSS px */
+  /** the frame it was painted for, in CSS px, and its device-pixel pad */
   W: number;
   H: number;
   dpr: number;
+  padX: number;
+  padY: number;
   /** the quality tier it was painted at — see `plateFor`'s tier order */
   mv: boolean;
   cells: number;
@@ -1491,30 +1510,38 @@ function plateId(o: object): number {
  * settled camera gets a plate at its own scale and a pixel-exact 1:1 blit, so
  * nothing a reader stops on is resampled.
  */
-const PLATE_KMAX = 1.3;
+export const PLATE_KMAX = 1.3;
 
 /**
- * HOW A TRAVELLING PLATE BUYS ITS COVERAGE, AND WHY NOT WITH A MARGIN.
+ * HOW A TRAVELLING PLATE BUYS ITS COVERAGE, AND THE ONE INVARIANT IT MAY NOT
+ * BREAK.
  *
- * A plate has to cover more than the frame or the first pan puts a hole at the
- * edge. The obvious way is to paint it wider — and it was, at 6 % a side, and
- * MEASURED: builds across the film's eight travels fell 132 -> 38, and the
- * WORST frame of every move went UP by 1.10-1.26x, which is exactly the 1.25x
- * pixels the margin costs on a build. The worst frame of a move is the hitch;
- * paying for the other frames with it is the wrong trade.
+ * A plate has to hold more than the frame or the first pan puts a hole at the
+ * edge. There are two ways and only one of them is safe.
  *
- * `PLATE_COVER` buys the same coverage for no pixels at all: a plate painted
- * while the camera is travelling is painted at `scale / PLATE_COVER` into a
- * canvas of the frame's own size, so it holds 1.10x more world at the same
- * cost, and the frame reads it back magnified by 1.10. What that spends is
- * MAGNIFICATION HEADROOM, not raster: the plate starts at k = 1.10 of
- * `PLATE_KMAX`'s 1.30 rather than at 1.00.
+ * The cheap way is to paint the plate at `scale / 1.10` into a canvas of the
+ * frame's own size: 1.10x more world for no pixels at all, paid in
+ * magnification headroom instead of raster. It measured beautifully — worst
+ * frame of the eight travels 733 / 709 / 900 / 517 / 426 / 650 / 608 / 675 ms
+ * — and it is WRONG, because a plate painted that way does not serve the frame
+ * that built it at 1:1. `.parity/c2settle.py`: a wheel zoom in the explorer is
+ * three ground passes, all three of them BUILDS, and there is no fourth — the
+ * page does not repaint after a gesture, so a resampled ground laid down on
+ * the last of them is the picture the reader keeps. Neither `f.moving` nor
+ * "the camera repeated itself" identifies that frame in advance.
  *
- * The extra world costs `PLATE_COVER²` = 1.21x more DEM CELLS, and nothing per
- * pixel — and a cell at a smaller scale subdivides less, so the two partly
- * cancel. Measured in `DRAW.md` 19.5.
+ * So: **a build is always exact for its own frame**, and the coverage comes
+ * from a PAD — `PLATE_PAD` per side, as a fraction of the frame — which leaves
+ * the plate at the frame's own scale and centre. A frame that builds gets a
+ * 1:1 sub-rect blit and cannot be resampled by construction, whatever the
+ * renderer thought it was doing; only a frame that REUSES a plate is ever
+ * resampled, and reuse is gated on the camera travelling.
+ *
+ * The pad costs `(1+2*PAD)²` = 1.25x pixels on a build. It is paid on the
+ * motion tier (see `plateFor`), which is about half price, so it lands where a
+ * settled build never sees it.
  */
-const PLATE_COVER = 1.1;
+export const PLATE_PAD = 0.06;
 
 /**
  * The blit that takes a plate painted for camera A to a frame at camera B.
@@ -1532,25 +1559,51 @@ const PLATE_COVER = 1.1;
  * device size. Returns the destination rect, or null when the plate does not
  * cover the frame or would have to be magnified past `PLATE_KMAX`.
  */
+export interface PlateGeom {
+  /** the plate canvas, in device px */
+  readonly pw: number;
+  readonly ph: number;
+  /** the camera it was painted for */
+  readonly cx: number;
+  readonly cy: number;
+  readonly s: number;
+}
+
+export function plateRect(
+  p: PlateGeom,
+  cam: ViewCamera,
+  W: number,
+  H: number,
+  dpr: number,
+  kmax: number,
+): { dx: number; dy: number; dw: number; dh: number } | null {
+  const k = cam.scale / p.s;
+  if (!(k > 0) || k > kmax + 1e-9) return null;
+  const Wd = W * dpr,
+    Hd = H * dpr;
+  const dw = k * p.pw,
+    dh = k * p.ph;
+  const dx = (p.cx - cam.cx) * cam.scale * dpr + Wd / 2 - dw / 2;
+  const dy = Hd / 2 + (p.cy - cam.cy) * cam.scale * dpr - dh / 2;
+  // the frame's own device rect has to sit inside it, or the ground has a hole
+  if (dx > 1e-6 || dy > 1e-6 || dx + dw < Wd - 1e-6 || dy + dh < Hd - 1e-6)
+    return null;
+  return { dx, dy, dw, dh };
+}
+
 function plateBlit(
   p: GroundPlate,
   f: Frame,
   kmax: number,
 ): { dx: number; dy: number; dw: number; dh: number } | null {
-  const k = f.cam.scale / p.s;
-  if (!(k > 0) || k > kmax + 1e-9) return null;
-  const Wd = f.W * f.dpr,
-    Hd = f.H * f.dpr;
-  const dw = k * p.cv.width,
-    dh = k * p.cv.height;
-  const dx =
-    (p.cx - f.cam.cx) * f.cam.scale * f.dpr + Wd / 2 - (k * p.cv.width) / 2;
-  const dy =
-    (Hd / 2 + (p.cy - f.cam.cy) * f.cam.scale * f.dpr) - (k * p.cv.height) / 2;
-  // the frame's own device rect has to sit inside it, or the ground has a hole
-  if (dx > 1e-6 || dy > 1e-6 || dx + dw < Wd - 1e-6 || dy + dh < Hd - 1e-6)
-    return null;
-  return { dx, dy, dw, dh };
+  return plateRect(
+    { pw: p.cv.width, ph: p.cv.height, cx: p.cx, cy: p.cy, s: p.s },
+    f.cam,
+    f.W,
+    f.H,
+    f.dpr,
+    kmax,
+  );
 }
 
 /** true when this plate is the frame's camera exactly, to the device pixel */
@@ -1612,8 +1665,10 @@ function plateFor(
       }
       return { plate: p, hit: true };
     }
-  const w = Math.max(1, Math.round(f.W * f.dpr)),
-    h = Math.max(1, Math.round(f.H * f.dpr));
+  const padX = travelling ? Math.round(PLATE_PAD * f.W * f.dpr) : 0,
+    padY = travelling ? Math.round(PLATE_PAD * f.H * f.dpr) : 0;
+  const w = Math.max(1, Math.round(f.W * f.dpr) + 2 * padX),
+    h = Math.max(1, Math.round(f.H * f.dpr) + 2 * padY);
   // reuse a slot of the right size before allocating one
   let plate: GroundPlate | null = null;
   for (let i = 0; i < cache.length; i++)
@@ -1636,6 +1691,8 @@ function plateFor(
       W: 0,
       H: 0,
       dpr: 1,
+      padX: 0,
+      padY: 0,
       mv: false,
       cells: 0,
       subQuads: 0,
@@ -1647,10 +1704,12 @@ function plateFor(
   plate.rest = rest;
   plate.cx = f.cam.cx;
   plate.cy = f.cam.cy;
-  plate.s = travelling ? f.cam.scale / PLATE_COVER : f.cam.scale;
+  plate.s = f.cam.scale;
   plate.W = f.W;
   plate.H = f.H;
   plate.dpr = f.dpr;
+  plate.padX = padX;
+  plate.padY = padY;
   plate.mv = travelling || f.moving;
   cache.unshift(plate);
   while (cache.length > PLATE_SLOTS) cache.pop();
@@ -1658,16 +1717,17 @@ function plateFor(
 }
 
 /**
- * The Frame a plate is PAINTED through. A settled plate is the frame exactly; a
- * travelling one is the frame's own canvas at `scale / PLATE_COVER`, which is
- * where its coverage comes from. The rasteriser's culling reads `f.cam`, so
- * handing it the plate's camera is the whole of what this has to do.
+ * The Frame a plate is PAINTED through: the same camera, widened by the pad so
+ * the rasteriser's own culling reaches into the margin. `sx` is
+ * `(p - cx) * scale + W/2`, so widening W by `2*padX/dpr` moves every mark
+ * right by exactly `padX` device pixels — which is where the pad is — and the
+ * tier goes with the plate, not with the frame that asked for it.
  */
 function plateFrame(f: Frame, p: GroundPlate): Frame {
   const q = { ...f, ctx: p.g, moving: p.mv };
-  return p.s === f.cam.scale
-    ? q
-    : { ...q, cam: { cx: p.cx, cy: p.cy, scale: p.s } };
+  return p.padX || p.padY
+    ? { ...q, W: f.W + (2 * p.padX) / f.dpr, H: f.H + (2 * p.padY) / f.dpr }
+    : q;
 }
 
 /** lay a plate on the frame; 1:1 and integer-aligned when the camera matches */
@@ -1675,7 +1735,9 @@ function plateDraw(f: Frame, p: GroundPlate): void {
   f.ctx.save();
   f.ctx.setTransform(1, 0, 0, 1, 0, 0);
   if (plateExact(p, f)) {
-    f.ctx.drawImage(p.cv, 0, 0);
+    const Wd = Math.round(f.W * f.dpr),
+      Hd = Math.round(f.H * f.dpr);
+    f.ctx.drawImage(p.cv, p.padX, p.padY, Wd, Hd, 0, 0, Wd, Hd);
   } else {
     const b = plateBlit(p, f, PLATE_KMAX);
     if (b) f.ctx.drawImage(p.cv, b.dx, b.dy, b.dw, b.dh);
@@ -1684,13 +1746,31 @@ function plateDraw(f: Frame, p: GroundPlate): void {
 }
 
 /**
- * A travel is a camera that never repeats itself; a hold repeats every frame,
- * and that is the whole of the signal a resampled plate is gated on.
+ * IS THE CAMERA TRAVELLING — the one signal a resampled plate is gated on, and
+ * it takes two answers because the page has two clocks.
  *
- * It is remembered PER `rest` KEY rather than per cache, because the page paints
- * more than one canvas: the stage and the film's own extended buffer are
- * different sizes and alternate, and one shared last-camera would read every
- * settled frame as a travel and hand a hold a resampled ground.
+ * IN THE EXPLORER `f.moving` is the truth and it is used as the truth. A
+ * gesture rasterises two or three times and the LAST of those is the settle,
+ * with `moving` false — and nothing repaints after it, so a resampled ground
+ * laid down there would stay on screen until the reader touched the map again.
+ * MEASURED, `.parity/c2settle.py`: a wheel zoom is three ground passes, all
+ * three of them builds, and the last one is the picture the reader keeps.
+ *
+ * IN THE FILM `renderer.ts` forces `moving` false on every frame (`const
+ * moving = film ? false : …`, FILM.md §6b's open item 2), so there is no such
+ * signal and the camera itself is the signal: a travel never repeats a camera,
+ * a hold repeats it every frame. That is safe HERE and not in the explorer for
+ * one reason — the film keeps painting. The frame after a travel's last
+ * rasterisation asks for the same camera again, reads as settled, and repaints
+ * the ground at its own scale and its own tier.
+ *
+ * `f.year` is the discriminator, and it is not a proxy: it is the film's year,
+ * and it is `undefined` exactly when there is no film.
+ *
+ * The last camera is remembered PER `rest` KEY rather than per cache, because
+ * the page paints more than one canvas — the stage and the film's own extended
+ * buffer are different sizes and alternate, and one shared last-camera would
+ * read every settled frame as a travel.
  */
 const lastCam = new Map<string, string>();
 function travelling(rest: string, f: Frame): boolean {
@@ -1698,6 +1778,7 @@ function travelling(rest: string, f: Frame): boolean {
   const was = lastCam.get(rest);
   if (lastCam.size > 32) lastCam.clear();
   lastCam.set(rest, k);
+  if (f.year === undefined) return f.moving;
   return was !== undefined && was !== k;
 }
 
@@ -2122,7 +2203,15 @@ export function drawTerrain(
        * lays it over whatever is already there, which is exactly what filling
        * the frame at this point in the paint order does.
        */
-      paintGrain(slot.plate.g, f.W, f.H);
+      const pf = plateFrame(f, slot.plate);
+      paintGrain(
+        slot.plate.g,
+        pf.W,
+        pf.H,
+        undefined,
+        slot.plate.padX / f.dpr,
+        slot.plate.padY / f.dpr,
+      );
     }
     plateDraw(f, slot.plate);
     return { cells: slot.plate.cells, subQuads: slot.plate.subQuads };
