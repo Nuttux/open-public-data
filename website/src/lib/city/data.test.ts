@@ -697,12 +697,44 @@ d("the street centrelines, the names and the coverage mask", () => {
   it("every centreline is in exactly one chunk and carries a published class", async () => {
     const cd = await withStreets();
     const cells = cd.streetLines();
-    expect(cells.length).toBe(2);
+    // THREE chunks of this kind, and only two of them are keyed on G.streets.
+    // `strt/street-unimplied` is the 846 published centrelines no assessor
+    // block implies — the reason the Hunters Point shipyard had buildings and
+    // no streets — and it is a SEPARATE array with its own dense index, so it
+    // is excluded here by key and checked on its own terms below.
+    const UNIMPL = "strt/street-unimplied";
+    const keyed = cells.filter((c) => c.key !== UNIMPL);
+    expect(keyed.length).toBe(2);
     const seen = new Set<number>();
-    for (const c of cells) for (const f of c.fid) seen.add(f);
+    for (const c of keyed) for (const f of c.fid) seen.add(f);
     expect(seen.size).toBe(4895);
     for (let i = 0; i < 4895; i++) expect(seen.has(i)).toBe(true);
-    for (const c of cells) expect(c.cls.every((v) => v <= 4)).toBe(true);
+    for (const c of keyed) expect(c.cls.every((v) => v <= 4)).toBe(true);
+  });
+
+  it("the streets no block implies are a separate array, in the classes G.streets drops", async () => {
+    const cd = await withStreets();
+    const u = cd.streetLines().find((c) => c.key === "strt/street-unimplied");
+    expect(u).toBeDefined();
+    expect(u!.fid.length).toBe(846);
+    // its own dense index, NOT a position in G.streets
+    for (let i = 0; i < u!.fid.length; i++) expect(u!.fid[i]).toBe(i);
+    // classes 5, 6 and 7 only — 7 being "no published classcode at all", which
+    // the pipeline used to read as 5, the one class it drops
+    expect(u!.cls.every((v) => v >= 5 && v <= 7)).toBe(true);
+    // `cov` is zero for every one, and that is a measurement: h8n7-e4ns is the
+    // PUBLIC right of way and none of these has a polygon in it
+    let set = 0;
+    for (let i = 0; i < u!.fid.length; i++) {
+      if (((u!.cov[i >> 3] >> (i & 7)) & 1) === 1) set++;
+    }
+    expect(set).toBe(0);
+    // 741 of 846 carry no year from either source and are drawn in every year
+    let undated = 0;
+    for (const v of u!.yr) if (v === 0) undated++;
+    expect(undated).toBe(741);
+    // every one of them carries a published street name
+    for (const v of u!.nm) expect(v).not.toBe(0xffff);
   });
 
   it("`cov` in the line chunks IS `base/street-misc`'s mask, bit for bit", async () => {
@@ -714,6 +746,7 @@ d("the street centrelines, the names and the coverage mask", () => {
     // this re-counts it so the number is on the record too.
     let set = 0;
     for (const c of cd.streetLines()) {
+      if (c.key === "strt/street-unimplied") continue; // its own index, all zero
       for (let i = 0; i < c.fid.length; i++) {
         if (((c.cov[i >> 3] >> (i & 7)) & 1) === 1) set++;
       }
@@ -740,7 +773,10 @@ d("the street centrelines, the names and the coverage mask", () => {
   it("THE STREET NAMES EXIST NOW, and every centreline has one", async () => {
     const cd = await withStreets();
     const names = cd.streetNames();
-    expect(names.length).toBe(2397);
+    // 2,397 for the 4,895 keyed centrelines, plus 76 the 846 unimplied lines
+    // bring in — most of theirs are names the city already carries, which is
+    // why 846 lines add only 76 entries.
+    expect(names.length).toBe(2473);
     let unnamed = 0;
     for (const c of cd.streetLines()) {
       for (const v of c.nm) {
@@ -748,7 +784,8 @@ d("the street centrelines, the names and the coverage mask", () => {
         else expect(names[v]).toBeTruthy();
       }
     }
-    // 3psu-pn9h publishes a streetname for all 4,895
+    // 3psu-pn9h publishes a streetname for all 4,895, and for all 846 of the
+    // unimplied lines too
     expect(unnamed).toBe(0);
   });
 

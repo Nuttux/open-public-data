@@ -29,6 +29,14 @@ about to ship, so the question is asked of exactly what the reader will see.
     Golden Gate Park 85 · Marina (Fort Mason) 11 · Lincoln Park 10
     632 of them on a federal layer
 
+EACH LINE CARRIES ITS OWN `cnn`, recovered here and PROVED, not joined by
+position. geo/build_streets.py drops cnn when it writes streetlines.json, so the
+same filter is replayed over the fetched dataset and the join is proved the way
+encode_city_chunks.py::_centrelines() proves its own: Douglas-Peucker keeps a
+line's FIRST vertex, so that vertex survives the 3 m simplify untouched and is
+an exact witness. Measured over all 16,676 non-paper centrelines: worst
+first-vertex disagreement 0.0000 m. A single mismatch raises.
+
 IT IS A SEPARATE ARRAY, `G.streetsUnimplied`, AND THAT IS DELIBERATE.
 `TIME.street.yr` and street-data.js's `cov` mask are each keyed one-to-one on
 `G.streets`, and encode_city_chunks.py's `_centrelines()` replays a filter to
@@ -47,7 +55,7 @@ tree. See DATA-TRUTH.md section 8.
 
 --- 8< ---
 --- /tmp/gen_geo2.py.orig	2026-08-24 15:38:15
-+++ gen/gen_geo2.py	2026-08-24 15:44:03
++++ gen/gen_geo2.py	2026-08-24 16:04:47
 @@ -24,6 +24,22 @@
                    local collectors). Classes 5-6 — 11 781 residential and
                    private lines — are dropped: the gap between two real blocks
@@ -71,8 +79,16 @@ tree. See DATA-TRUTH.md section 8.
    labels/hoods    geo/build_streets.py's union-find stretches and 41 anchors.
  
  INFERRED
-@@ -48,6 +64,22 @@
+@@ -46,8 +62,30 @@
+ ROOT = os.path.dirname(HERE)
+ CACHE = os.path.join(ROOT, "geo", "cache")
  
++# geo/build_blocks.py §LON0's frame, restated here only to re-project the
++# fetched centreline's FIRST vertex for the cnn join witness below. Nothing
++# else in this file projects anything; streetlines.json arrives in metres.
++LON0, LAT0, MPD = -122.4380, 37.7600, 111320.0
++KX, KY = MPD * math.cos(math.radians(LAT0)), MPD
++
  BLOCK_TOL = 1.5          # geo/INTEGRATION.md §3: 6.0 squares off the Mission
  STREET_CLS_MAX = 4
 +# ── WHAT COUNTS AS "NO BLOCK IMPLIES THIS STREET" ──────────────────────────
@@ -94,11 +110,51 @@ tree. See DATA-TRUTH.md section 8.
  # LOT CAP — the honest number, and why it is 14.
  #   A block is 31 x 47 px at the deepest zoom the camera ladder reaches, so its
  #   perimeter is ~150 px. 14 divisions is one every 11 px. The median real block
-@@ -248,13 +280,64 @@
+@@ -248,13 +286,105 @@
              "cnt": b64("H", pcnt), "v": base64.b64encode(bytes(pv)).decode()}
      print(f"  party lines {kept:,} shipped of {avail:,} measured "
            f"({100*kept/avail:.0f}%) · median/block {statistics.median(pcnt):.0f}")
 +
++    # ── the cnn of every line in `lines`, recovered and PROVED ────────────
++    # geo/build_streets.py drops `cnn` when it writes streetlines.json, and the
++    # unimplied array needs it: without a key the encoder would have to join
++    # those lines by POSITION, which is the fragile thing _centrelines() only
++    # tolerates because it proves itself per feature. So the same filter is
++    # replayed over the fetched dataset — LineString, not a PAPER layer, at
++    # least two vertices — and the join is proved the same way _centrelines()
++    # proves its own: Douglas-Peucker keeps a line's FIRST vertex, so that
++    # vertex survives the 3 m simplify untouched and is an exact witness. A
++    # single mismatch raises; a cnn attached to the wrong line is worse than no
++    # cnn at all.
++    _raw = json.load(open(os.path.join(CACHE, "streets.json")))
++    _cnn, _k, _worst = [], 0, 0.0
++    for _r in _raw:
++        _g = _r.get("line")
++        if not _g or _g.get("type") != "LineString" or len(_g["coordinates"]) < 2:
++            continue
++        if (_r.get("layer") or "") in ("PAPER", "PAPER_FWYS", "PAPER_WATER", "PSEUDO"):
++            continue
++        if _k >= len(lines):
++            raise SystemExit("more non-paper rows than streetlines.json holds")
++        _c = _g["coordinates"][0]
++        _px = round((_c[0] - LON0) * KX, 1)
++        _py = round((_c[1] - LAT0) * KY, 1)
++        _q = lines[_k]["p"][0]
++        _d = max(abs(_px - _q[0]), abs(_py - _q[1]))
++        if _d > 0.01:
++            raise SystemExit(f"centreline {_k}: first vertex ({_px}, {_py}) is not "
++                             f"streetlines.json's ({_q[0]}, {_q[1]})")
++        _worst = max(_worst, _d)
++        try:
++            _cnn.append(int(float(_r["cnn"])))
++        except (TypeError, ValueError):
++            _cnn.append(0)
++        _k += 1
++    if _k != len(lines):
++        raise SystemExit(f"joined {_k} published rows onto {len(lines)} shipped lines")
++    print(f"  cnn recovered for all {_k:,} centrelines "
++          f"(worst first-vertex disagreement {_worst:.4f} m)")
+ 
 +    # ── which dropped centrelines does the block fabric fail to imply? ────
 +    # Tested against the rings this file is about to ship, so the question is
 +    # asked of exactly what the reader will see. Edges are walked, not filled:
@@ -124,7 +180,7 @@ tree. See DATA-TRUTH.md section 8.
 +                if (cx_ + dx, cy_ + dy) in occ:
 +                    return True
 +        return False
- 
++
 +    def unimplied_line(pts):
 +        n_ = hit = 0
 +        for i in range(len(pts) - 1):
@@ -142,10 +198,12 @@ tree. See DATA-TRUTH.md section 8.
      # ── streets, classes 0-4 ──────────────────────────────────────────────
      sx, sy, sc_, scls, sox, soy = [], [], [], [], [], []
 -    ns = 0
-+    ux, uy, uc_, ucls, uox, uoy = [], [], [], [], [], []
-+    ns = nu = 0
-     for Ln in lines:
+-    for Ln in lines:
 -        cl = int(Ln["c"] or 5)
++    ux, uy, uc_, ucls, uox, uoy = [], [], [], [], [], []
++    ucnn = []
++    ns = nu = 0
++    for _i, Ln in enumerate(lines):
 +        c_ = Ln["c"]
 +        cl = int(c_) if (isinstance(c_, str) and c_.strip().isdigit()) else (
 +            int(c_) if isinstance(c_, int) else CLS_NO_PUBLISHED_CLASS)
@@ -153,7 +211,7 @@ tree. See DATA-TRUTH.md section 8.
 +            if unimplied_line(Ln["p"]):
 +                p0 = Ln["p"][0]
 +                nu += 1
-+                uc_.append(len(Ln["p"])); ucls.append(cl)
++                uc_.append(len(Ln["p"])); ucls.append(cl); ucnn.append(_cnn[_i])
 +                uox.append(p0[0]); uoy.append(p0[1])
 +                for p in Ln["p"]:
 +                    ux.append(max(-32000, min(32000, int(round((p[0] - p0[0]) * 10)))))
@@ -161,11 +219,12 @@ tree. See DATA-TRUTH.md section 8.
              continue
          p0 = Ln["p"][0]
          ns += 1
-@@ -266,7 +349,13 @@
+@@ -266,7 +396,14 @@
      st = {"n": ns, "cnt": b64("H", sc_), "cls": b64("B", scls),
            "ox": b64("f", sox), "oy": b64("f", soy),
            "x": b64("h", sx), "y": b64("h", sy)}
 +    stu = {"n": nu, "cnt": b64("H", uc_), "cls": b64("B", ucls),
++           "cnn": b64("I", ucnn),
 +           "ox": b64("f", uox), "oy": b64("f", uoy),
 +           "x": b64("h", ux), "y": b64("h", uy),
 +           "implyM": IMPLY_M, "implyFrac": IMPLY_FRAC}
@@ -175,7 +234,7 @@ tree. See DATA-TRUTH.md section 8.
  
      # ── labels: names deduped; z is read off the DEM at runtime ───────────
      names, nidx = [], {}
-@@ -309,7 +398,8 @@
+@@ -309,7 +446,8 @@
                         "volumes": len(act["meta"]["volumes"]),
                         "mentions": act["meta"].get("mentions", 154980)},
          },

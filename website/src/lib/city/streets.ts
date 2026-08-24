@@ -122,6 +122,60 @@ export const ST_W: readonly number[] = [1.5, 1.5, 1.0, 1.0, 0.7, 0.7, 0.7];
 /** the highest class drawn as a line, per zoom band */
 export const ST_CLS_MAX: readonly number[] = [2, 3, 4];
 
+/* ── THE STREETS NO BLOCK IMPLIES ────────────────────────────────────────
+ *
+ * `gen_geo2.py` ships classcode 0-4 and drops 5-6, and its reason is a good
+ * one: *"the gap between two real blocks already IS the street."* On the
+ * ordinary San Francisco grid that is true — the space between two assessor
+ * blocks reads as a street without a line being drawn in it.
+ *
+ * **It is false wherever there are no blocks.** The Hunters Point Naval
+ * Shipyard is ONE assessor block of 2.934 km2, so no gap between blocks stands
+ * for anything, and the streets were simply absent under buildings that were
+ * drawn. `strt/street-unimplied` is the 846 published centrelines — 131.6 km,
+ * every one carrying a published street name — that no published block EDGE
+ * comes within 30 m of along at least a quarter of its length. Presidio 478,
+ * Bayview Hunters Point 113, Treasure Island 110, Golden Gate Park 85.
+ *
+ * They arrive as another `CentrelineCell` and are told apart by their CLASS:
+ * `G.streets` is 0-4 by construction and this chunk is 5, 6 or 7 only, which
+ * `verify_city_chunks.py` asserts on both sides. So one ceiling admits exactly
+ * this chunk and nothing else.
+ *
+ * `cls` 7 is **no published class**. 3psu-pn9h publishes 0-6; 780 rows publish
+ * none, and the pipeline used to read those as class 5 — the one class it
+ * drops. `ST_W` already clamps, so 7 takes the 0.7 px hairline with no change.
+ */
+export const ST_CLS_UNIMPLIED_MIN = 5;
+export const ST_CLS_UNIMPLIED_MAX = 7;
+
+/**
+ * The band from which they draw. **1, so they arrive at exactly the moment
+ * classes 3 and 4 already do** (`Z_LINES_2` = 1.70) rather than introducing a
+ * zoom step of its own: 131.6 km of line appearing at a boundary nothing else
+ * moves at would read as a bug. The tier's own fetch gate is `minZ` 1.75, so
+ * they cannot draw below it in any case.
+ */
+export const UNIMPLIED_FROM_BAND = 1;
+
+/**
+ * **741 of the 846 carry no year at all** — neither a vote in the Board's
+ * Journal nor a dated building on their frontage — and `yr = 0` means *drawn
+ * in every year*, which is the same rule the 125,234 undated street trees are
+ * drawn under.
+ *
+ * That is the honest contract and it has a failure mode the copy cannot fix on
+ * its own: a reader who scrubs to 1906 sees the Presidio's full modern road
+ * network laid over a burned city with nothing to say those lines are not a
+ * 1906 fact. So an undated line is drawn at this alpha and a dated one at
+ * full — an HONEST GLOBAL TREATMENT, declared as one, applied identically to
+ * every undated line and measuring nothing about any of them.
+ *
+ * It is one constant because the choice is one decision: 1 draws them exactly
+ * like dated lines, 0 hides them entirely, and neither is this file's to make.
+ */
+export const ST_UNDATED_ALPHA = 0.45;
+
 /**
  * THE STAIRS.
  *
@@ -616,6 +670,60 @@ export function drawCentrelines(
     }
     if (any) ctx.stroke();
   }
+
+  /* ── the streets no block implies ─────────────────────────────────────
+   * Their own loop rather than a wider ceiling on the one above, for two
+   * reasons that are both about not disturbing what already works: the loop
+   * above is keyed on `cov`, and every one of these has `cov` 0 by
+   * construction (there is no published right of way polygon for a Navy yard
+   * or a park road, which is half of why no block implies them); and they
+   * split on a second axis the loop above has no notion of — dated against
+   * undated. Two paths per class, so the whole layer is at most six strokes.
+   */
+  if (opts.band >= UNIMPLIED_FROM_BAND) {
+    for (let cls = ST_CLS_UNIMPLIED_MIN; cls <= ST_CLS_UNIMPLIED_MAX; cls++) {
+      ctx.lineWidth = ST_W[Math.min(cls, ST_W.length - 1)];
+      for (let undated = 0; undated < 2; undated++) {
+        const a = undated ? ST_UNDATED_ALPHA : 1;
+        if (a <= 0.004) continue;
+        ctx.globalAlpha = sga * a;
+        ctx.beginPath();
+        let any = false;
+        for (const c of lines) {
+          const nF = c.cls.length;
+          let o = 0;
+          for (let i = 0; i < nF; i++) {
+            const n = c.len[i];
+            const base = o;
+            o += n;
+            if (c.cls[i] !== cls) continue;
+            const y0 = c.yr[i];
+            if ((y0 === 0) !== (undated === 1)) continue;
+            if (y0 && y0 > yNow) continue;
+            let pen = false;
+            for (let v = 0; v < n; v++) {
+              const wx = c.x[base + v],
+                wy = c.y[base + v];
+              const pz = (t.elevM(wx, wy) + ST_LINE_LIFT_M) * zex;
+              const X = (cf.ax * wx + cf.ay * wy - cam.cx) * k + W2;
+              const Y = H2 - (cf.bx * wx + cf.by * wy + pz - cam.cy) * k;
+              if (X < -80 || X > W + 80 || Y < -80 || Y > H + 80) {
+                pen = false;
+                continue;
+              }
+              if (pen) ctx.lineTo(X, Y);
+              else ctx.moveTo(X, Y);
+              pen = true;
+              any = true;
+            }
+            drawn++;
+          }
+        }
+        if (any) ctx.stroke();
+      }
+    }
+  }
+
   ctx.globalAlpha = sga;
   ctx.restore();
   return drawn;

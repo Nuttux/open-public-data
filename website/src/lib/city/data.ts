@@ -1133,7 +1133,19 @@ export class CityData {
         y: f.y as Float32Array,
         cov: f.cov as Uint8Array,
       };
-      if (misc) {
+      // `strt/street-unimplied` IS THE SAME KIND AND NOT THE SAME INDEX.
+      // The cross-check below re-indexes the citywide mask through `fid`, and
+      // that only means anything while `fid` is a position in `G.streets`. The
+      // unimplied chunk — the 846 published centrelines no assessor block
+      // implies, which is why the Hunters Point shipyard had buildings and no
+      // streets — is a SEPARATE array with its own dense 0..n-1 index,
+      // deliberately, because `TIME.street.yr`, this mask, the encoder's
+      // positional replay and time/out/ship-cnn.json are all keyed one-to-one
+      // on `G.streets` and appending to it would have shifted all four. Its
+      // `cov` is zero for every feature and that is a measurement, not a
+      // placeholder: h8n7-e4ns is the PUBLIC right of way and a Navy yard is
+      // not in it. `verify_city_chunks.py` asserts both facts on the wire.
+      if (misc && k !== "strt/street-unimplied") {
         for (let i = 0; i < cell.fid.length; i++) {
           const mine = ((cell.cov[i >> 3] >> (i & 7)) & 1) === 1;
           if (mine !== misc.covered(cell.fid[i])) {

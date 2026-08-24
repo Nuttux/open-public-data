@@ -995,6 +995,169 @@ def encode_centrelines(GEO2: dict, TIMED: dict, STS: dict, names: list,
     return stats
 
 
+MAP_Y0 = 1906   # street/build_surface.py's own constant: the first year drawn
+
+
+def _exist_year(cnn: int, journal: dict, fabric: dict) -> int:
+    """street/build_surface.py's `exist_year`, restated once and then PROVED.
+
+    A street's date is not published. It is the earlier of two document claims:
+    the year the Board's Journal is first recorded acting on that centreline
+    (time/out/street-years.json) and the earliest assessor year among buildings
+    within 40 m of it (time/out/fabric-years.json). Anything at or before 1906
+    becomes 0, which this chunk format already defines as "undated, drawn in
+    every year".
+
+    Restating a rule is how two files drift, so `encode_unimplied()` below does
+    not simply trust this: it runs it over the 4,895 centrelines the mock has
+    ALREADY dated and refuses to ship unless it reproduces `TIME.street.yr`
+    exactly, element for element. If the rule ever diverges the encoder stops.
+    """
+    ry = journal.get(cnn, 0)
+    f = fabric.get(cnn, 0)
+    y = min(ry, f) if (ry and f) else (ry or f or 0)
+    return 0 if (not y or y <= MAP_Y0) else int(y)
+
+
+def encode_unimplied(GEO2: dict, TIMED: dict, names: list, nidx: dict) -> dict:
+    """`G.streetsUnimplied` — the 846 published centrelines no block implies.
+
+    gen_geo2.py ships classcode 0-4 and drops 5-6, because "the gap between two
+    real blocks already IS the street". That is true on the ordinary grid and
+    false where there are no blocks: the Hunters Point Naval Shipyard is ONE
+    assessor block, so nothing on the page stands for its streets and they were
+    simply absent — buildings with no streets under them.
+
+    These are a SEPARATE array and therefore a separate chunk, not more entries
+    in `strt/street-lines-2`. Four things are keyed one-to-one on `G.streets` —
+    `TIME.street.yr`, street-data.js's `cov` mask, `_centrelines()`'s
+    positional replay and time/out/ship-cnn.json — and appending to it would
+    shift all four silently.
+
+    They carry their own `cnn`, recovered and proved in gen_geo2.py by the
+    first-vertex witness, so the year join here is by KEY and not by position.
+    """
+    S = GEO2.get("streetsUnimplied")
+    if not S or not int(S["n"]):
+        return {"n": 0}
+    n = int(S["n"])
+    cnt = _u16(S["cnt"])
+    cls = _u8(S["cls"])
+    cnn = np.frombuffer(unb64(S["cnn"]), dtype=np.uint32)
+    ox = np.frombuffer(unb64(S["ox"]), dtype=np.float32)
+    oy = np.frombuffer(unb64(S["oy"]), dtype=np.float32)
+    vx = _i16(S["x"]).astype(np.float64)
+    vy = _i16(S["y"]).astype(np.float64)
+    off = np.zeros(n + 1, dtype=np.int64)
+    np.cumsum(cnt.astype(np.int64), out=off[1:])
+    x = np.empty(int(off[-1]), dtype=np.float32)
+    y = np.empty(int(off[-1]), dtype=np.float32)
+    for i in range(n):
+        a, b = int(off[i]), int(off[i + 1])
+        x[a:b] = ox[i] + vx[a:b] / 10.0
+        y[a:b] = oy[i] + vy[a:b] / 10.0
+
+    journal = {int(r["cnn"]): int(r["y"])
+               for r in load_json("time/out/street-years.json")["seg"] if r.get("y")}
+    fabric = {int(r[0]): int(r[1])
+              for r in load_json("time/out/fabric-years.json")["seg"] if r[1]}
+
+    # ── THE PROOF, BEFORE THE RULE IS USED ON ANYTHING NEW ────────────────
+    # Re-derive the year for the 4,895 the mock has already dated, and refuse
+    # to ship unless it matches TIME.street.yr element for element.
+    shipped = _u16(TIMED["street"]["yr"])
+    C = _centrelines(GEO2)
+    mine = np.array([_exist_year(int(c), journal, fabric) for c in C["cnn"]],
+                    dtype=np.uint16)
+    bad = int((mine != shipped).sum())
+    if bad:
+        i = int(np.nonzero(mine != shipped)[0][0])
+        raise ValueError(
+            f"the street-year rule has drifted from street/build_surface.py: it "
+            f"disagrees with TIME.street.yr on {bad} of {shipped.size} shipped "
+            f"centrelines (first at fid {i}, cnn {int(C['cnn'][i])}: "
+            f"{int(mine[i])} against {int(shipped[i])})")
+
+    yr = np.array([_exist_year(int(c), journal, fabric) for c in cnn], dtype=np.uint16)
+
+    # the published name, off the same dataset, joined by cnn
+    nm = np.full(n, 0xFFFF, dtype=np.uint16)
+    byc = {}
+    for r in load_json("geo/cache/streets.json"):
+        try:
+            byc[int(float(r["cnn"]))] = (r.get("streetname") or "").strip()
+        except (TypeError, ValueError, KeyError):
+            pass
+    for i, c in enumerate(cnn):
+        t = byc.get(int(c), "")
+        if not t:
+            continue
+        j = nidx.get(t)
+        if j is None:
+            j = nidx[t] = len(names)
+            names.append(t)
+        nm[i] = j
+
+    src("street_unimplied", dataset="3psu-pn9h", publisher="DataSF",
+        what="a published centreline of classcode 5, 6 or NONE that no published "
+             "assessor block edge comes within 30 m of, along at least a quarter "
+             "of its length — measured in gen/gen_geo2.py against the same block "
+             "rings this manifest ships. gen_geo2.py drops classes 5-6 because "
+             "'the gap between two real blocks already IS the street', which is "
+             "true on the grid and false where there are no blocks",
+        derived_from=["gen/gen_geo2.py", "acdm-wktn"],
+        not_measured="a class. 280 of the 846 carry NO published classcode at all "
+                     "and ship as 7; `int(c or 5)` used to call those 'local "
+                     "residential', which is the class that is dropped.")
+    prov = {
+        "fid": src("street_unimplied"),
+        "cls": src("street_unimplied"), "cnn": src("street_centreline"),
+        "nm": src("street_name"), "yr": src("street_line_year"),
+        "cov": src("street_cover"),
+        "len": src("street_centreline"),
+        "x": src("street_centreline"), "y": src("street_centreline"),
+    }
+    w = ChunkWriter("strt/street-unimplied", "strt-line")
+    w.add("fid", "u32", np.arange(n, dtype=np.uint32))
+    w.add("cls", "u8", cls)
+    w.add("cnn", "u32", cnn)
+    w.add("nm", "u16", nm)
+    w.add("yr", "u16", yr)
+    # `cov` IS ZERO FOR EVERY ONE OF THESE, AND THAT IS A MEASUREMENT.
+    # The bit means "a published right of way polygon contains this
+    # centreline's own midpoint". h8n7-e4ns is the PUBLIC right of way and none
+    # of these 846 has a polygon in it — a Navy yard is not public right of
+    # way, a park road is not a street — so every bit is 0 and the renderer's
+    # pass 1 strokes them without ever fading them into a surface, which is
+    # exactly right because there is no surface to fade into. Shipped rather
+    # than omitted so this chunk carries the same field list as the other two
+    # `strt-line` chunks and decodes through the same path.
+    _cov = np.packbits(np.zeros(n, dtype=np.uint8), bitorder="little")
+    w.add_bytes("cov", "u8", _cov.tobytes(), int(_cov.size))
+    w.add("len", "u16", cnt)
+    w.add("x", "f32", x).add("y", "f32", y)
+    emit(w, tier="strt", minZ=Z_STREET,
+         extent=[float(x.min()), float(y.min()), float(x.max()), float(y.max())],
+         prov=prov,
+         extra={"n": n, "dated": int((yr > 0).sum()), "undated": int((yr == 0).sum()),
+                "vertices": int(off[-1]), "implyM": S.get("implyM"),
+                "implyFrac": S.get("implyFrac")},
+         note="The streets NOTHING ELSE ON THE PAGE STANDS FOR. Same fields and "
+              "same units as base/street-lines, minus `cov`: there is no right of "
+              "way polygon for any of these, so there is nothing for the surface "
+              "to fade into and pass 0 does not apply. `yr` 0 means UNDATED and an "
+              f"undated line is drawn in every year — {int((yr == 0).sum())} of "
+              f"{n}, because these are the streets the Board's Journal had least "
+              "occasion to vote on and the assessor least occasion to date — which "
+              "is the same rule the undated trees are drawn under, and the page "
+              "must say so rather than let a reader at 1906 read the Presidio's "
+              "road network as a 1906 fact. `cls` 7 is 'no published class'.")
+    e = chunks[-1]
+    return {"n": n, "dated": int((yr > 0).sum()), "undated": int((yr == 0).sum()),
+            "vertices": int(off[-1]), "b": e["b"], "gz": e["gz"],
+            "implyM": S.get("implyM"), "implyFrac": S.get("implyFrac")}
+
+
 def encode_street_labels(GEO2: dict, TIMED: dict, names: list, nidx: dict) -> dict:
     """The street NAMES — 2,786 stretches over 2,292 distinct names.
 
@@ -2084,6 +2247,7 @@ def main() -> int:
     _names: list[str] = []
     _nidx: dict[str, int] = {}
     lstat = encode_centrelines(GEO2, TIMED, STS, _names, _nidx)
+    ustat = encode_unimplied(GEO2, TIMED, _names, _nidx)
     lbstat = encode_street_labels(GEO2, TIMED, _names, _nidx)
     tstat = encode_trees(WRLD)
     encode_marks(MARKS)
@@ -2119,6 +2283,7 @@ def main() -> int:
 
         "streets": {k: v for k, v in sstat.items() if k not in ("bytes", "gzip", "cells", "cite")},
         "centrelines": lstat,
+        "streetsUnimplied": ustat,
         "streetLabels": lbstat,
         "trees": {k: v for k, v in tstat.items() if k not in ("bytes", "gzip", "cells")},
         "sources": sources,

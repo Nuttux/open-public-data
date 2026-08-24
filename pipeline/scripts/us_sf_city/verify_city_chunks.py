@@ -365,7 +365,13 @@ def main() -> int:
 
     lseen = np.zeros(gn, dtype=bool)
     lcov = np.zeros(gn, dtype=np.uint8)
-    for c in [c for c in man["chunks"] if c["kind"] == "strt-line"]:
+    # `strt/street-unimplied` is the same KIND but not the same INDEX: its `fid`
+    # runs over its own 846, not over G.streets' 4,895, because it is a separate
+    # array precisely so that it cannot shift the four things keyed on that one.
+    # It gets its own block below.
+    UNIMPL = "strt/street-unimplied"
+    for c in [c for c in man["chunks"]
+              if c["kind"] == "strt-line" and c["k"] != UNIMPL]:
         h, p = load_chunk(c["k"])
         fid = field_array(h, p, "fid").astype(np.int64)
         if lseen[fid].any():
@@ -395,6 +401,57 @@ def main() -> int:
         eq(f"{c['k']}.nm names the street 3psu-pn9h publishes for that cnn", nm, want)
     ok("every one of the 4,895 centrelines is in exactly one chunk",
        bool(lseen.all()), f"{int((~lseen).sum())} missing")
+
+    # ── the streets no block implies, verified against their OWN array ─────
+    _uc = next((c for c in man["chunks"] if c["k"] == UNIMPL), None)
+    if _uc is not None:
+        U = GEO2["streetsUnimplied"]
+        un = int(U["n"])
+        h, p = load_chunk(UNIMPL)
+        ucnt = _u16(U["cnt"])
+        uoff = np.zeros(un + 1, dtype=np.int64)
+        np.cumsum(ucnt.astype(np.int64), out=uoff[1:])
+        eq("unimplied.fid is its own dense index", field_array(h, p, "fid"),
+           np.arange(un, dtype=np.uint32))
+        eq("unimplied.cls", field_array(h, p, "cls"), _u8(U["cls"]))
+        eq("unimplied.len", field_array(h, p, "len"), ucnt)
+        ucnn = np.frombuffer(unb64(U["cnn"]), dtype=np.uint32)
+        eq("unimplied.cnn", field_array(h, p, "cnn"), ucnn)
+        # the geometry, rebuilt from the shipped origin + deltas the same way
+        uox = np.frombuffer(unb64(U["ox"]), dtype=np.float32)
+        uoy = np.frombuffer(unb64(U["oy"]), dtype=np.float32)
+        uvx = _i16(U["x"]).astype(np.float64)
+        uvy = _i16(U["y"]).astype(np.float64)
+        ux = np.empty(int(uoff[-1]), dtype=np.float32)
+        uy = np.empty(int(uoff[-1]), dtype=np.float32)
+        for i in range(un):
+            a_, b_ = int(uoff[i]), int(uoff[i + 1])
+            ux[a_:b_] = uox[i] + uvx[a_:b_] / 10.0
+            uy[a_:b_] = uoy[i] + uvy[a_:b_] / 10.0
+        eq("unimplied.x", field_array(h, p, "x"), ux)
+        eq("unimplied.y", field_array(h, p, "y"), uy)
+        # NONE of these may be in the network keyed on G.streets — that is the
+        # whole reason the array is separate, and it is asserted, not assumed.
+        ok("unimplied: no cnn of these is also a shipped centreline",
+           not (set(int(v) for v in ucnn) & set(int(v) for v in ship_cnn)),
+           str(sorted(set(int(v) for v in ucnn) & set(int(v) for v in ship_cnn))[:5]))
+        ok("unimplied: every class is one gen_geo2.py DROPS (5, 6 or 7)",
+           bool(((field_array(h, p, "cls") >= 5) & (field_array(h, p, "cls") <= 7)).all()),
+           str(sorted(set(field_array(h, p, "cls").tolist()))))
+        ok("unimplied: cov is zero — there is no right of way polygon for any",
+           not int(np.unpackbits(field_array(h, p, "cov"),
+                                 bitorder="little")[:un].sum()), "")
+        unm = field_array(h, p, "nm")
+        uwant = np.array([lbl_names.index(by_cnn[int(v)]) if by_cnn.get(int(v)) else 0xFFFF
+                          for v in ucnn], dtype=np.uint16)
+        eq("unimplied.nm names the street 3psu-pn9h publishes for that cnn", unm, uwant)
+        ok("unimplied: every one carries a published street name",
+           not int((unm == 0xFFFF).sum()), f"{int((unm == 0xFFFF).sum())} unnamed")
+        uyr = field_array(h, p, "yr")
+        ok(f"unimplied: {_uc['undated']} of {un} are undated and drawn in every year",
+           int((uyr == 0).sum()) == int(_uc["undated"])
+           and int((uyr > 0).sum()) == int(_uc["dated"]),
+           f"{int((uyr == 0).sum())} undated / {int((uyr > 0).sum())} dated")
     eq("the two chunks reassemble base/street-misc's mask exactly", lcov, gcov)
     base_line = next(c for c in man["chunks"] if c["k"] == "base/street-lines")
     ok("the wide shot's own classes are in the BASE tier: ST_CLS_MAX[0] = 2",

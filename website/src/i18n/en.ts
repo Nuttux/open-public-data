@@ -4837,6 +4837,12 @@ const en: Record<string, string> = {
   'us.sf.thecity.panel.dem_counted': 'Completed permits only: a cancelled one is a building still standing.',
   'us.sf.thecity.panel.dem_aria': '{decade}s — {n} demolished on this block',
   'us.sf.thecity.panel.dem_cover': '{n} of {all} blocks carry one.',
+  'us.sf.thecity.panel.dem_lead_year': '{n} buildings on this block were demolished under a completed permit, in {y0}.',
+  /* the SHORT floor line, for a block that HAS a record. The long one exists to
+     stop an empty section reading as "nothing came down here"; a block showing
+     three demolitions cannot be misread that way, and on a 390 px screen the
+     long form ran six lines to say what the header already says. */
+  'us.sf.thecity.panel.dem_floor_short': 'This record begins in {y}; what came down before is not published block by block.',
   'us.sf.budget.strend.timeline_cta': '150 years of city money, from the 1880s →',
   'us.sf.budget.footer.perimeter': 'Adopted budget, all funds, City & County of San Francisco.',
   'us.sf.contracts.footer.coverage': 'Award and paid amounts come from different systems; {n} contracts across the register show more paid than agreed. Plain-English summaries cover {nGen} of the contracts active today — the register itself records no description, so the rest show its own wording.',

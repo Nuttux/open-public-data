@@ -36,6 +36,9 @@ import { coastBand, wedgeCovered, buildShoal, depthM, assertRefinement, resample
 import {
   centrelineFade,
   drawCentrelines,
+  ST_CLS_UNIMPLIED_MIN,
+  ST_UNDATED_ALPHA,
+  UNIMPLIED_FROM_BAND,
   extentW,
   ST_CLS_MAX,
   ST_EXT_PX,
@@ -1725,6 +1728,67 @@ describe("drawCentrelines is complete and waiting on a chunk (Block B2)", () => 
   it("the whole-city fade is 1 — the reference strokes the wide shot at full ink", () => {
     // centrelineFade(21.0 m, 0.0467) = 2 - 21*0.9306*0.0467 = 1.09 -> clamped
     expect(centrelineFade(21.0, 0.04666598864125368)).toBe(1);
+  });
+
+  /* ── THE STREETS NO BLOCK IMPLIES ────────────────────────────────────
+   * `strt/street-unimplied` — 846 published centrelines, 131.6 km, that no
+   * assessor block edge comes within 30 m of. They arrive as another
+   * CentrelineCell and are told apart by their CLASS: G.streets is 0-4 by
+   * construction, this chunk is 5, 6 or 7 only, and verify_city_chunks.py
+   * asserts both on the wire. Class 7 is "no published classcode at all".
+   */
+  const unimplied = (): CentrelineCell => ({
+    cls: Uint8Array.from([5, 7]),
+    yr: Uint16Array.from([0, 1955]), // one undated, one dated
+    len: Uint16Array.from([2, 2]),
+    x: Float32Array.from([0, 100, 0, 100]),
+    y: Float32Array.from([0, 0, 50, 50]),
+  });
+  it("classes 5-7 are drawn from UNIMPLIED_FROM_BAND and not below it", () => {
+    expect(UNIMPLIED_FROM_BAND).toBe(1);
+    // band 0 is the whole-city frame: ST_CLS_MAX[0] is 2 and these are not drawn
+    expect(run(0, 2018, [unimplied()])).toBe(0);
+    // band 1 is where classes 3-4 already arrive, so no new zoom step is made
+    expect(run(1, 2018, [unimplied()])).toBe(2);
+    expect(run(2, 2018, [unimplied()])).toBe(2);
+  });
+  it("an undated unimplied line is drawn in every year, a dated one is not", () => {
+    // 741 of the 846 carry no year from either source
+    expect(run(1, 1906, [unimplied()])).toBe(1);
+    expect(run(1, 1955, [unimplied()])).toBe(2);
+  });
+  it("the undated ones are drawn at ST_UNDATED_ALPHA and the dated at full", () => {
+    // the honest indication the coordinator asked for: a reader at 1906 must
+    // not read the Presidio's road network as a 1906 fact
+    expect(ST_UNDATED_ALPHA).toBeGreaterThan(0);
+    expect(ST_UNDATED_ALPHA).toBeLessThan(1);
+    const ctx = fakeCtx([]);
+    const f = fakeFrame(ctx) as unknown as Parameters<typeof drawCentrelines>[0];
+    const t = { elevM: () => 0 } as unknown as Parameters<typeof drawCentrelines>[2];
+    const seen: number[] = [];
+    const raw = ctx as unknown as { globalAlpha: number; stroke: () => void };
+    const realStroke = raw.stroke.bind(raw);
+    raw.stroke = () => {
+      seen.push(raw.globalAlpha);
+      realStroke();
+    };
+    drawCentrelines(f, [], t, {
+      medianW: [21, 21, 21, 15, 11],
+      covered: () => false,
+      band: 1,
+      year: 2018,
+      lines: [unimplied()],
+    });
+    // one stroke at full ink for the dated line, one at the reduced alpha for
+    // the undated one — two classes, one line each
+    expect(seen.some((a) => Math.abs(a - 1) < 1e-6)).toBe(true);
+    expect(seen.some((a) => Math.abs(a - ST_UNDATED_ALPHA) < 1e-6)).toBe(true);
+  });
+  it("a class-0..4 line is never picked up by the unimplied pass", () => {
+    // the two loops must not double-stroke: G.streets is 0-4 and the
+    // unimplied loop starts at 5
+    expect(ST_CLS_UNIMPLIED_MIN).toBe(5);
+    expect(run(2, 2018, [cell()])).toBe(2); // still 2, not 4
   });
 });
 
