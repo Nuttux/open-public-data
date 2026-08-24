@@ -347,7 +347,7 @@ export const WFLG: VegFlags = {
  * bundle. `.parity/g2abl.py` and `g2canlo.py` already flip `parkCls` and
  * `blobs` through it; `g2cliff.py` reads `undated` through it. The line itself
  * predates this comment and carried none — which is how it came to be written
- * a second time before `git show HEAD` found the first. DRAW.md §28.1.
+ * a second time before `git show HEAD` found the first. DRAW.md §33.1.
  */
 if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
   (globalThis as { __cityWFLG?: VegFlags }).__cityWFLG = WFLG;
