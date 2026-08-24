@@ -199,7 +199,63 @@ block. Measured against the true `block_num` published in `acdm-wktn`:
 
 Small next to §1.5, but it is the same class of defect and it is one line.
 
-### 1.7 The chrome line that states this is wrong
+### 1.7 What it looks like on screen: 47 % of Bayview is blank until 1990
+
+The fake year does not stay in the building layer. `lod/build_lod.py` rolls the
+buildings up into the per-block massing timeline that draws at city and
+district zoom, so the whole block inherits it. Reading `base/massing.qc`
+against `base/blocks.qc`:
+
+```
+block 4591A   2.934 km2   ONE massing row: (year 2015, coverage 14/255)
+block 4591C   0.227 km2   ONE massing row: (2015, 20)
+block 4591B   0.023 km2   ONE massing row: (2015, 31)
+block 4624    0.036 km2   ONE massing row: (2014, ...)
+block 4700    0.040 km2   ONE massing row: (1996, 41)
+```
+
+**Block 4591A is 2.934 km² — 24.5 % of Bayview Hunters Point's entire block
+area — and it is blank at every year from 1906 to 2014, then appears in 2015.**
+Block 4624 appears at **2014**, which is the year Daniel named.
+
+| by block area | Bayview | rest of the city |
+|---|---:|---:|
+| never gains massing in any year | 115 blocks, 2.05 km², **17.1 %** | 365 blocks, 4.79 km², 6.0 % |
+| first massing 1990 or later | 20 blocks, 3.59 km², **30.0 %** | 70 blocks, 1.31 km², 1.6 % |
+| **blank at every year before 1990** | **47.1 %** | **7.6 %** |
+
+Six times the rest of the city. That is the "zero buildings then suddenly many"
+Daniel described, it is measurable without opening the page, and every square
+metre of it traces back to §1.5: land the assessor does not date.
+
+### 1.8 Confirmed on screen
+
+Shot with Playwright at the district preset (z = 2.9), camera parked on the
+shipyard (plane 7470, −2382), only the year changed between frames —
+`diag_shipyard_shots.py` beside this file reproduces it.
+
+* **1940** — the Hunters Point peninsula is bare pale ground. No buildings, no
+  streets, one label ("Hunters Point Springs & Albion Brewery"). The Navy bought
+  the yard in 1939-40 and ran it through the war; the map shows nothing there.
+* **2013 and 2014** — identical. Still bare. The residential Bayview to the
+  west is dense and fully drawn.
+* **2015** — **about thirty large tan industrial buildings appear across the
+  whole peninsula in one frame.** Nothing else in the view changes.
+* **2016** — unchanged from 2015.
+
+That is Daniel's observation, reproduced, with the year corrected to 2015 and
+the cause established in §1.3.
+
+**One more thing those frames show, and it needs a decision.** The peninsula's
+*land* is drawn from 1906 onward at its present outline. `geo/cache/made_land.json`
+has four fill buckets — Yerba Buena Cove, the Marina, Treasure Island, Mission
+Bay — and **none of them is in Bayview**, so any fill placed at Hunters Point is
+drawn as dry land in every year the rail can reach. This is a coastline
+question, not a building one, and it is stated here as a measurement of the
+file rather than a claim about the history: **the four buckets are the whole of
+what this pipeline knows about made land, and they cover 219 blocks.**
+
+### 1.9 The chrome line that states this is wrong
 
 `website/src/lib/city/time.ts` `UNDATED` publishes
 
@@ -528,11 +584,12 @@ Recorded so no one re-derives it.
 * **`made_land.json` is not the cliff.** Four buckets — Yerba Buena Cove
   1850-75, Marina 1912-15, Treasure Island 1936-39, Mission Bay 2001-12. None
   covers Bayview and none ends in 2014. It moves 1,484 footprints.
-* **The massing timeline has no 2014 step.** Bayview's biggest coverage jumps
-  are 1906 (27 blocks), 1941 (20), 1907 (12), 1997 (11), 1947 (11). It does
-  show that **115 of Bayview's 501 blocks (23 %) never gain any massing in any
-  year**, against 365 of 4,903 (7.4 %) elsewhere — the shipyard and the Port,
-  and consistent with §1.5.
+* **Counting massing steps BY BLOCK hides the cliff — count them by AREA.**
+  Bayview's most common biggest-jump years are 1906 (27 blocks), 1941 (20),
+  1907 (12), 1997 (11), 1947 (11), and on that count 2015 looks like nothing:
+  it is three blocks. Those three blocks are 3.18 km², a quarter of the
+  neighbourhood. §1.7 is the same data weighted the way the eye weights it.
+  A block count is the wrong denominator for anything Bayview-shaped.
 * **`Z_STREET = 1.75` is a fetch policy, not a gate**, exactly as its comment
   says. It is not why Bayview's streets are thin; §2.1 is.
 * **`yrbuilt` from the archived `ygi5-84iq` Land Use 2020 snapshot** — used by
