@@ -85,6 +85,7 @@ import collections
 import glob
 import json
 import pathlib
+import math
 import re
 import sys
 from datetime import datetime, timezone
@@ -186,6 +187,7 @@ PROCEDURAL_HEAD = re.compile(
     r"^\s*(?:on\s+recommendation\s+of|read\s+and\s+ordered|ordered\s+filed|"
     r"referred\s+to\s+(?:the\s+)?committee|passed\s+for\s+second\s+reading|"
     r"finally\s+passed|action\s+deferred|adopted\s+by\s+the\s+following\s+vote|"
+    r"suspension\s+of\s+rules|"
     r"the\s+following\s+(?:resolution|ordinance)\s+was)\b", re.I)
 
 # Under this many characters a line is a fragment, not a sentence. The block
@@ -195,10 +197,90 @@ PROCEDURAL_HEAD = re.compile(
 # only passed over for a highlight.
 FRAGMENT_CHARS = 40
 
-# How many highlights a neighbourhood ships. Six is what fits above the fold in
-# a 252 px margin without the section becoming the page; the count the cap hid
-# ships with it so the reader is told rather than left to guess.
-HIGHLIGHT_CAP = 6
+# How many highlights a neighbourhood ships.
+#
+# **Six, and Daniel's answer was "five too many."** He is right, and fixing the
+# RANKING is what made three safe: while the sort was spread-only, positions 4-6
+# were where the good lines hid, so the cap was propping up a ranking that could
+# not be trusted at the top. With `distinctiveness x blocks` the top three are
+# the three, and the count the cap hid still ships beside them.
+HIGHLIGHT_CAP = 3
+
+# ── how DISTINCTIVE a line is to the neighbourhood it sits in ────────────────
+# Ranking by blocks-reached alone surfaces the most administratively SPREAD
+# item, which is reliably the least interesting one: routine paving touches many
+# blocks, so Lone Mountain/USF led with a hearing on an appeal against a
+# sidewalk assessment, and Mission with street acceptances.
+#
+# The fix is a hood-level inverse document frequency over the line's own words:
+# a token that appears in all 41 neighbourhoods (`acceptance`, `roadway`,
+# `appropriation`, `assessment`) scores 0, and one that appears in two scores
+# high. It is computed in the same pass over the same rows, it is deterministic,
+# and it is a count — no judgement anywhere in it.
+#
+# MEASURED, and the first two attempts were WORSE, which is why they are named
+# here rather than deleted:
+#
+#   * **distinctiveness alone** puts *"Splicer $5.50 Laborer (acting as
+#     Foreman).."* at the head of the Mission and a $225 personal-injury
+#     settlement at the head of the Sunset. Rarity in this corpus is mostly
+#     SURNAMES and scanning errors, not significance.
+#   * **distinctiveness x log(1 + blocks)** still over-weights rarity: the
+#     Sunset lost its 1927 Municipal Railway bond election — on 24 of its own
+#     blocks, which IS the Sunset's story — to that same settlement.
+#   * **distinctiveness x blocks**, linear, is what ships. It keeps every good
+#     line the spread sort found and drops the boilerplate the spread sort could
+#     not see past. Lone Mountain's sidewalk hearing falls from 1st to 4th and
+#     is replaced by the 1926 conference invitation and *"Selecting Western
+#     Addition Block No. 667 as Site for Proposed Lowell High School Building"*;
+#     the Mission gains the 1909 *"Denying Protest Against Locating 'The San
+#     Francisco Hospital'…"*, which is the origin of the hospital whose money
+#     the section above it reports.
+_TOKEN = re.compile(r"[a-z][a-z']{3,}")
+# Words that carry no neighbourhood signal because every volume is full of them.
+# Held short on purpose: the IDF does this job on its own for anything that is
+# genuinely everywhere, and a long hand-written stop list is a judgement about
+# what matters wearing the costume of a constant.
+_STOP = frozenset("""
+this that with from have been were which their there they them then than those
+upon shall will being said same such into over under between certain other more
+most also when what your board city county san francisco street streets avenue
+avenues resolution ordinance motion hereby thereof
+""".split())
+
+
+def _tokens(line: str) -> set[str]:
+    return {w for w in _TOKEN.findall(line.lower()) if w not in _STOP}
+
+
+# ── what a reader cannot read THROUGH ────────────────────────────────────────
+# The scans are 1906-1999 letterpress and the OCR is honest but not clean. A
+# reader reads straight past `Sciiool` for School and `IVIay` for May; nobody
+# reads `1,588.11 December (I, 11)07 - To the Barber Asphalt l*avinjr Company`,
+# which was heading a decade of the rail and reads as a broken page rather than
+# as the record.
+#
+# So the gate is on CHARACTERS and not on a dictionary: a token is broken when a
+# digit sits against a letter, when it carries punctuation no word carries, or
+# when four or more letters hold no vowel. It is deliberately not a spell check
+# — that would throw away every surname and every street the city ever named.
+# MEASURED over 10,570 group faces in six neighbourhoods: **84 % pass.**
+_BROKEN = re.compile(r"[A-Za-z][0-9]|[0-9][A-Za-z]|[^\sA-Za-z0-9'\-/&.,;:()$%\"]")
+_STRIP = ".,;:()[]\"'"
+JUNK_MAX = 0.10
+
+
+def junk_share(line: str) -> float:
+    """The share of this line's word tokens that a reader cannot read through."""
+    words = [w for w in line.split() if re.search(r"[A-Za-z]", w)]
+    if not words:
+        return 1.0
+    bad = 0
+    for w in words:
+        core = w.strip(_STRIP)
+        if _BROKEN.search(core) or (len(core) >= 4 and not re.search(r"[aeiouyAEIOUY]", core)):
+            bad += 1
+    return bad / len(words)
 
 # The dash the Board sets between a printed heading and the item beneath it.
 HEADING_DASH = re.compile(r"\s+[—–-]\s+")
@@ -218,6 +300,8 @@ def classify(row: dict) -> tuple[str, int]:
         return "cross_reference", PROCEDURAL_TIER
     if len(line) < FRAGMENT_CHARS:
         return "fragment", PROCEDURAL_TIER
+    if junk_share(line) > JUNK_MAX:
+        return "unreadable", PROCEDURAL_TIER
     g = row.get("g") or ""
     p = int(row.get("p") or 0)
     for key, _label, tier, test in TIERS:
@@ -384,7 +468,53 @@ def membership() -> tuple[list[str], list[str], dict[str, int]]:
     return names, ids, {b: int(hood[i]) for i, b in enumerate(ids)}
 
 
-def curate(rows: list[tuple[str, int, dict]]) -> tuple[list[dict], dict[str, int]]:
+def hood_token_df(per_rows: dict[int, list[tuple[str, int, dict]]]) -> tuple[collections.Counter, int]:
+    """In how many of the 41 neighbourhoods each word appears, and how many
+    neighbourhoods carry a record at all. One pass over the rows already read."""
+    df: collections.Counter[str] = collections.Counter()
+    n = 0
+    for rows in per_rows.values():
+        if not rows:
+            continue
+        n += 1
+        seen: set[str] = set()
+        for _b, _k, row in rows:
+            seen |= _tokens(row.get("t") or "")
+        for w in seen:
+            df[w] += 1
+    return df, n
+
+
+# The mean over the line's THREE most distinctive words, not over all of them.
+#
+# Averaging over every token penalises a long, specific line for the common
+# words it needs to be a sentence: *"Removal and Abandonment of Street Railway
+# Tracks — Ninth Street Between the Southeasterly Line of Bryant Street and the
+# Northwesterly Line of Market Street"* is dragged under a six-word line by
+# `street`, `line` and `between`. Asking instead *does this line name a few
+# unusual things* is length-neutral, and it is what lifted the Sunset's 1953
+# Underground District back over a $225 injury settlement.
+DISTINCT_TOP = 3
+
+
+def distinctiveness(line: str, df: collections.Counter, n_hoods: int) -> float:
+    """Mean inverse hood-frequency of the line's most distinctive words.
+
+    0 for a line made entirely of words every neighbourhood's record uses.
+    """
+    words = _tokens(line)
+    if not words:
+        return 0.0
+    best = sorted((math.log(n_hoods / max(1, df[w])) for w in words),
+                  reverse=True)[:DISTINCT_TOP]
+    return sum(best) / len(best)
+
+
+def curate(
+    rows: list[tuple[str, int, dict]],
+    df: collections.Counter,
+    n_hoods: int,
+) -> tuple[list[dict], dict[str, int]]:
     """Dedupe -> classify -> rank -> cap. Deterministic; no model call.
 
     `rows` is (blockId, the row's own rank inside its block, the row). The rank
@@ -412,8 +542,11 @@ def curate(rows: list[tuple[str, int, dict]]) -> tuple[list[dict], dict[str, int
         if tier >= PROCEDURAL_TIER:
             continue
         years = [r.get("y") for _b, _k, r in group if r.get("y")]
+        line = (row.get("t") or "").strip()
+        n_blocks = len({b for b, _k, _r in group})
+        dist = distinctiveness(line, df, n_hoods)
         out.append({
-            "t": (row.get("t") or "").strip(),
+            "t": line,
             "y": int(row.get("y") or 0),
             "u": row.get("u") or "",
             "b": block_id,
@@ -424,17 +557,24 @@ def curate(rows: list[tuple[str, int, dict]]) -> tuple[list[dict], dict[str, int
             # how many printings folded in, and on how many of the
             # neighbourhood's own blocks they land. Both are counts.
             "n": len(group),
-            "nb": len({b for b, _k, _r in group}),
+            "nb": n_blocks,
+            # both halves of the score ship, so a reader of the file can see
+            # WHY a line is at the top and not only that it is
+            "d": round(dist, 3),
+            "score": round(dist * n_blocks, 2),
             "y0": min(years) if years else 0,
             "y1": max(years) if years else 0,
             "a": max(int(r.get("a") or 0) for _b, _k, r in group),
             "_rank": rank,
         })
 
-    # (tier, -blocks reached, -money printed, the pipeline's own rank, the line)
-    # TIER WINS OUTRIGHT — evidence only orders within a band, which is exactly
-    # `rank_documents`'s rule. `t` last so the order is stable across runs.
-    out.sort(key=lambda o: (o["tier"], -o["nb"], -o["a"], o["_rank"], o["t"]))
+    # (tier, -distinctiveness x blocks, the pipeline's own rank, the line)
+    # TIER STILL WINS OUTRIGHT — evidence only orders within a band, which is
+    # `rank_documents`'s rule. What changed is the evidence: it was blocks
+    # reached alone, which ranks the most administratively spread item first.
+    # See the measurement above `_TOKEN` for the two scores that were tried and
+    # rejected before this one. `t` last so the order is stable across runs.
+    out.sort(key=lambda o: (o["tier"], -o["score"], o["_rank"], o["t"]))
     for o in out:
         del o["_rank"]
     return out, dict(counts)
@@ -502,6 +642,10 @@ def build() -> None:
             hoods_of_place[slug].add(hi)
     straddling = sorted(s for s, h in hoods_of_place.items() if len(h) > 1)
 
+    token_df, n_with_record = hood_token_df(per_rows)
+    print(f"  vocabulary : {len(token_df)} words over the "
+          f"{n_with_record} neighbourhoods that carry a record")
+
     out_hoods = []
     type_counts: collections.Counter[str] = collections.Counter()
     for hi, name in enumerate(names):
@@ -522,7 +666,7 @@ def build() -> None:
                 use[facts["useNames"][u]] += 1
 
         r = rec.get(hi)
-        highlights, counts = curate(per_rows.get(hi, []))
+        highlights, counts = curate(per_rows.get(hi, []), token_df, n_with_record)
         type_counts.update(counts)
         shown = highlights[:HIGHLIGHT_CAP]
 
@@ -613,7 +757,12 @@ def build() -> None:
         "curation": {
             "method": (
                 "dedupe by stem, classify against the tier table, rank by "
-                "evidence inside the tier, cap, and count what the cap hid. "
+                "DISTINCTIVENESS x BLOCKS REACHED inside the tier, cap, and "
+                "count what the cap hid. Distinctiveness is the mean inverse "
+                "hood-frequency of the line's own words, so boilerplate every "
+                "neighbourhood's record carries scores 0 and falls; ranking on "
+                "blocks alone put a sidewalk-assessment hearing at the head of "
+                "Lone Mountain/USF. "
                 "Deterministic — no model pass. The lines are the Board's own "
                 "and every one links to the scan leaf it was printed on."
             ),
@@ -624,6 +773,8 @@ def build() -> None:
                          "tier": PROCEDURAL_TIER}],
             "cap": HIGHLIGHT_CAP,
             "fragment_chars": FRAGMENT_CHARS,
+            "junk_max": JUNK_MAX,
+            "distinct_top": DISTINCT_TOP,
             "classified": dict(sorted(type_counts.items())),
         },
         "coverage": cov,

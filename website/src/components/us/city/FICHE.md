@@ -1867,3 +1867,128 @@ what Daniel asked for, and it is a single small figure under the pin rather than
 forty lines across the city. Screenshots `f1-e2sel-0` (whole city — the Mission
 is the only saturated ground on the frame) and `f1-e2sel-1` (district — the
 scrim at 0.23 reads as clearer air over the Mission, not as a dirty screen).
+
+---
+
+## 18. Block F1, round nine — ranking by what is DISTINCTIVE, and where it fails
+
+> "Ranking by how many blocks a line lands on surfaces the most *administratively
+> spread* item, which is reliably the least interesting one."
+
+Correct, and the evidence was on the page: **Lone Mountain/USF led with *"Fixing
+Date for Hearing Appeal of M. Schlosser Against Assessment for Improvement of
+Sidewalks"*.** Routine paving touches many blocks, so the spread sort ranked
+paving.
+
+### a. Two scores were tried before this one, and both were WORSE
+
+Named here rather than deleted, because a rejected measurement is the only
+evidence that the shipped one was chosen rather than guessed.
+
+**Distinctiveness alone** — the mean inverse hood-frequency of a line's own
+words — is worse than the spread sort it replaces:
+
+```
+Mission           "Splicer $5.50 Laborer (acting as Foreman).."
+Sunset/Parkside   "Authorizing Settlement of Claim of Mabel Molenda by
+                   Pasrment of $225."
+```
+
+**Rarity in this corpus is mostly SURNAMES and scanning errors, not
+significance.** A one-off person's name is maximally rare by construction.
+
+**Distinctiveness × log(1 + blocks)** still over-weights rarity: the Sunset lost
+its **1927 Municipal Railway bond election, on 24 of its own blocks** — which is
+the Sunset's actual story — to that same $225 settlement.
+
+**Distinctiveness × blocks, linear,** is what ships. It keeps what the spread
+sort found and drops what the spread sort could not see past.
+
+### b. And the mean is taken over the three most distinctive words, not all of them
+
+Averaging over every token penalises a long, specific line for the common words
+it needs to be a sentence: *"Removal and Abandonment of Street Railway Tracks —
+Ninth Street Between the Southeasterly Line of Bryant Street…"* is dragged under
+a six-word line by `street`, `line` and `between`. Asking instead **does this
+line name a few unusual things** is length-neutral, and it is what lifted the
+Sunset's 1953 Underground District back over the settlement.
+
+### c. What it produces now
+
+```
+Sunset/Parkside   1927  Giving Notice of Special Election for Bonds for
+                        Municipal Railway Extensions.
+                  1953  Creating Underground District No. 137, Eucalyptus Drive…
+Mission           1917  Spring Valley Water Company to Connect Up Drinking
+                        Fountains on Mission Street.
+Bayview H. Point  1935  Spur Track, Pacific Can Company, Across Newhall Street…
+Fin. District     1918  Sailors' Home Property Relinquished to United States
+                        Government.
+Tenderloin        1930  Masquerade Ball Permit, United Slovenian Societies of
+                        San Francisco, Eagle's Auditorium, 375 Golden Gate…
+                  1929  Granting Laundry Permit, James R. Kenny… 388-390 Eddy St
+Lone Mountain     1926  Invitation to Cities and Towns of Northern California
+                        and Los Angeles to Attend Conference…
+```
+
+The Tenderloin's masquerade ball and laundry permit are exactly the *"a stable,
+a laundry"* the change was asked for, and Lone Mountain's sidewalk hearing has
+fallen off the page.
+
+### d. WHERE IT FAILS, and it is not a bug
+
+**South of Market got worse and I am not going to hide it.** Before:
+*"Removal and Abandonment of Street Railway Tracks — Ninth Street…"*, *"Creating
+Underground District, Ninth Street…"*, *"Ordering Construction of Bond Sewer in
+Islais Creek."* After: *"Board of Public Works to Recommend Bitulithic Pavement
+on Sixtli Street"*, *"Providing $400 for Extra Work on Board of Heaitin
+Quarters"*.
+
+The cause is a real limitation of the signal and worth stating plainly:
+**where a CITYWIDE programme lands densely in one neighbourhood, a measure of
+"distinctive to this neighbourhood" reads it as boilerplate.** Streetcar-track
+removal happened all over San Francisco; it was concentrated in South of Market.
+Distinctiveness cannot tell that apart from paving, because by its own
+definition it is not distinctive.
+
+**One net regression against five clear gains** is the honest score. The route
+out is not another tuning pass — it is a second signal that measures *density*
+(this neighbourhood holds an unusual SHARE of the city's rows on this subject)
+rather than rarity, which would rescue SoMa's streetcars without re-promoting
+Lone Mountain's sidewalks. Not attempted tonight, because I have now made four
+scoring passes and **`feedback_eval_rigor` is exactly about judging a change
+after having seen its output.** Recorded for a decision instead.
+
+### e. The OCR gate — tier 9, on characters, not on a dictionary
+
+> "The decade rail is printing raw OCR. *1,588.11 December (I, 11)07 — To the
+> Barber Asphalt l\*avinjr Company* reads as a broken page."
+
+A reader reads straight past `Sciiool` for School and `IVIay` for May; nobody
+reads `l*avinjr`. So the gate is on **characters**: a token is broken when a
+digit sits against a letter, when it carries punctuation no word carries, or
+when four or more letters hold no vowel. A line whose broken share is over
+**10 %** joins the tier-9 band — counted, never shown — beside the Journal's
+machinery, its cross-references and the fragments.
+
+It is deliberately **not a spell check**, which would throw away every surname
+and every street the city ever named. MEASURED over 10,570 group faces: **84 %
+pass.** City-wide it moves **4,177 group faces** into tier 9.
+
+### f. Six highlights became three
+
+> "Six highlights is five too many."
+
+Three, and **fixing the ranking is what made three safe**: while the sort was
+spread-only, positions 4–6 were where the good lines hid, so the cap was
+propping up a ranking that could not be trusted at the top. The count the cap
+hid still ships beside them.
+
+Measured at 390 px: **`ON THIS BLOCK` moved from screen 2.00 to 1.60**, a fifth
+off the length of the panel, with money still opening at 0.58.
+
+### g. State
+
+Typecheck clean, eslint clean, **420/420**. `hood-facts.json` 58 KB. Both halves
+of the score — `d` and `score` — ship on every highlight, so a reader of the
+file can see WHY a line is at the top and not only that it is.

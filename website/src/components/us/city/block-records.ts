@@ -796,9 +796,25 @@ export interface HoodHighlight {
    * **How many of the neighbourhood's own blocks this same printed subject
    * lands on.** A count, not a judgement, and the one signal a block cannot
    * carry: it is the difference between a decision that touched one corner and
-   * one that reorganised a district. It is the primary sort inside a tier.
+   * one that reorganised a district.
    */
   readonly nb: number;
+  /**
+   * How DISTINCTIVE the line's words are to this neighbourhood — the mean
+   * inverse hood-frequency of its three most unusual words. 0 for a line made
+   * of the boilerplate every neighbourhood's record carries.
+   */
+  readonly d: number;
+  /**
+   * `d * nb`, and the sort inside a tier. Ranking on `nb` alone surfaced the
+   * most administratively SPREAD item, which is reliably the least interesting
+   * one — routine paving touches many blocks — so Lone Mountain/USF led with a
+   * hearing on an appeal against a sidewalk assessment. Both halves ship so a
+   * reader of the file can see why a line is at the top and not only that it
+   * is. `build_hood_facts.py` carries the two scores that were tried and
+   * rejected before this one.
+   */
+  readonly score: number;
   readonly y0: number;
   readonly y1: number;
   /** the largest single figure printed on any of the folded rows, 0 where none */
