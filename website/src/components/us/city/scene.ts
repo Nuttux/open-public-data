@@ -32,6 +32,7 @@
 import {
   Projection,
   screenToPlane,
+  ZEX_BY_STEP,
   type ViewCamera,
 } from "@/lib/city/projection";
 import {
@@ -43,8 +44,10 @@ import {
   type Chunk,
   type CityView,
   type HeroData,
+  type FormTable,
   type LandmarkTable,
   type SurroundData,
+  type SurroundCoast,
 } from "@/lib/city/data";
 import {
   TerrainField,
@@ -56,15 +59,13 @@ import {
   shade,
   skylitN,
   HAZE,
-  SUN,
-  LAM0,
+  WA,
   type Frame,
   type SurroundGrid,
   type TerrainProj,
 } from "@/lib/city/terrain";
 import {
   bayPlate,
-  blitGridPlate,
   buildShoal,
   buildShoalHoles,
   decodeCoast,
@@ -82,6 +83,8 @@ import {
 import {
   drawCentrelines,
   drawStreetSurface,
+  ST_EXT_PX,
+  ST_KPROJ,
   type StreetCell,
 } from "@/lib/city/streets";
 import {
@@ -92,10 +95,12 @@ import {
   drawWaterBodies,
   VZ_C0,
   VZ_T0,
+  assertTreeGrid,
   type CanopyCells,
   type ParkRing,
   type SpriteSheet,
   type TreeCell,
+  type TreeGrid,
 } from "@/lib/city/trees";
 import {
   addContactShadow,
@@ -104,14 +109,18 @@ import {
   buildURND,
   colourLUT,
   coverageAlpha,
+  COVER_GAIN,
   drawMassing,
   drawnAsBuilding,
   extremeQuad,
   fillContactShadow,
+  edgeInk,
+  edgeWidth,
   inkFor,
   massAt,
   massingOf,
   massLUT,
+  planeQuartile,
   shadowOffset,
   streamOrder,
   tierW,
@@ -136,16 +145,39 @@ import {
   faceGroupAlpha,
   faceGroupPath,
   faEra,
+  faRamp,
+  FA_RAMP,
   flushFaces,
   newFaceGroups,
-  openingInBand,
   storeysOf,
   faceTakesOpenings,
-  FA_DOOR_H,
+  FA_CORN_M,
+  FA_SHOP_FASCIA,
   FA_SHOP_SILL,
+  FA_SHOP_TOE,
+  GND_AS_ABOVE,
+  GND_ENTRANCE,
+  GND_SHOP,
+  GND_VEHICLE,
+  ROLE_BACK,
+  ROLE_FRONT,
+  doorBay,
+  faGlassy,
+  FA_CORN_T,
   FA_MIN_DH_PX,
 } from "@/lib/city/facades";
-import { bandOfHeight, drawTray, roofHeight, trayW } from "@/lib/city/roofs";
+import {
+  bandOfHeight,
+  drawStep,
+  drawTray,
+  drawsStoreyLines,
+  roofFineLUT,
+  roofHeight,
+  roofStep,
+  trayW,
+  STOREY_W_PX,
+  type Quartiles,
+} from "@/lib/city/roofs";
 import {
   drawBridge,
   drawHero,
@@ -153,10 +185,15 @@ import {
   type HeroMaterials,
 } from "@/lib/city/landmarks";
 import {
+  buildHoodAnchors,
+  drawHoodNames,
   LabelGrid,
   placeNames,
+  type HoodAnchor,
   type PlaceLabel,
 } from "@/lib/city/labels";
+import { riseOf, risePhase } from "@/lib/city/film";
+import { SCRUB_MAX } from "@/lib/city/time";
 import {
   PAINT_C0,
   UMAT_ROOF,
@@ -203,11 +240,51 @@ export interface BldTable {
   /** roof / wall palette index, resolved once from the published columns */
   readonly ri: Uint8Array;
   readonly wi: Uint8Array;
+  /**
+   * WHERE THIS BUILDING'S PUBLISHED HEIGHT STANDS INSIDE ITS OWN BAND, 0..3
+   * — `part3.html`'s `RSH`, off `manifest.buildings.hq`. See `paintFootprints`
+   * for what it was costing to leave it unread.
+   */
+  readonly rsh: Uint8Array;
 }
 
 const BLDG_Q = 1.0; // BLDG.q — the published 1 m vertex quantiser
 
-function decodeBld(chunk: Chunk, year0: number, tone: ToneContext): BldTable {
+/**
+ * `paintFlag` IS NOT A COVERAGE FLAG, and reading it as one inverted the
+ * measured roof colour off 98.4 % of the city.
+ *
+ * The column is `PAINT.flagBits` — three independent SAMPLE-QUALITY bits,
+ * shipped verbatim as `manifest.buildings.paintFlagBits` so this file does
+ * not have to hard-code them:
+ *
+ *     1  canopy    the footprint is over half tree canopy in the imagery
+ *     2  shadow    over half deep shadow
+ *     4  nosample  nothing came back; `paintIdx` holds the city median
+ *
+ * 163,480 of 166,166 carry NONE of the three — a zero means the sample was
+ * CLEAN. So `if (paintFlag[i])` selected exactly the 2,686 roofs whose sample
+ * is the *least* trustworthy and threw the other 163,480 measurements away,
+ * which is why 98.4 % of roofs fell back to `UMAT_ROOF` and four of its
+ * sixteen materials are terracotta.
+ *
+ * `part3.html` §7256 assigns `URI[i] = PAINT_C0 + PIDX[i]` for every building
+ * with no test at all — it loads `PFLG` and never consults it. This file
+ * differs from the mock in one respect and one only: the 124 footprints whose
+ * `nosample` bit is set keep the legend, because for those `paintIdx` is the
+ * city median rather than a measurement of that roof, and this project does
+ * not paint an unmeasured building in a measured colour. 124 of 166,166 is
+ * 0.07 % and it is below the threshold of anything visible; the reason to do
+ * it is that it keeps the field load-bearing and honest.
+ */
+const PAINT_NOSAMPLE_DEFAULT = 4;
+
+function decodeBld(
+  chunk: Chunk,
+  year0: number,
+  tone: ToneContext,
+  noSampleBit: number,
+): BldTable {
   const f = chunk.fields;
   const gid = f.gid as Uint32Array;
   const cnt = f.cnt as Uint8Array;
@@ -265,7 +342,17 @@ function decodeBld(chunk: Chunk, year0: number, tone: ToneContext): BldTable {
 
   const ri = new Uint8Array(n);
   const wi = new Uint8Array(n);
+  /* THE ROOF'S VALUE INSIDE ITS OWN BAND. `part3.html` L1113 builds this off
+     `UH[i]` — the PUBLISHED byte, not the byte plus `roofs.ts`'s 0.25 m
+     residual — so it is built off the byte here too. The residual is +-0.375 m
+     against quartiles that sit 0.42 m apart in band 0, so reading the
+     corrected height would move a step on the buildings nearest a boundary and
+     the two builds would disagree on a value nobody could point at. */
+  const rsh = new Uint8Array(n);
+  const hq = tone.hq;
+  const hasHq = hq.length > 0;
   for (let i = 0; i < n; i++) {
+    if (hasHq) rsh[i] = roofStep(h[i], hq);
     const use = u[i] & USE_MASK;
     const noyr = (u[i] & FLAG_NOYEAR) !== 0;
     const wl = UMAT_WALL[use];
@@ -282,15 +369,27 @@ function decodeBld(chunk: Chunk, year0: number, tone: ToneContext): BldTable {
       const r = Math.hypot(cx[i] - tone.dtx, cy[i] - tone.dty) / tone.maxR;
       const side =
         (cx[i] - tone.fx) * tone.mvy - (cy[i] - tone.fy) * tone.mvx < 0 ? 0 : 1;
-      const t = legendTones(r, side, tone.rnd(i));
+      /* THE NOISE IS INDEXED BY THE PUBLISHED BUILDING, NOT BY THE ROW.
+         `URND[i]` in the mock is keyed on the global footprint index; `i` here
+         is the position inside THIS CHUNK, so every chunk restarted the
+         sequence at zero and the locale legend handed out a different tone
+         from the reference on every footprint whose parcel joins no roll row.
+         MEASURED against the running mock over the 15,261 footprints of
+         `base/solo`: 3,053 of them — 20.0 % — carried a different wall
+         material, and they are the buildings the legend exists for. */
+      const t = legendTones(r, side, tone.rnd(gid[i]));
       wi[i] = t.wall;
       ri[i] = t.roof;
     }
-    // THE ROOF IS MEASURED — it replaces the legend for every building that
-    // carries a sampled aerial colour. paintFlag 0 means no sample.
-    if (paintFlag[i]) ri[i] = PAINT_C0 + paintIdx[i];
+    /* THE ROOF IS MEASURED, AND IT REPLACES THE LEGEND FOR EVERY BUILDING
+       THE IMAGERY RETURNED A SAMPLE FOR — 166,042 of 166,166, 99.9 %. Only
+       the `nosample` bit withholds it. See PAINT_NOSAMPLE_DEFAULT above for
+       what the other two bits are and what the gate that used to be here
+       cost. Placed after the tone loop, before the published-class override
+       below, which is part3.html's own order. */
+    if ((paintFlag[i] & noSampleBit) === 0) ri[i] = PAINT_C0 + paintIdx[i];
   }
-  return { n, gid, off, vxw, vyw, cx, cy, h, hf, yr, u, st, paintIdx, paintFlag, ri, wi };
+  return { n, gid, off, vxw, vyw, cx, cy, h, hf, yr, u, st, paintIdx, paintFlag, ri, wi, rsh };
 }
 
 /** the three named points the locale legend is measured against */
@@ -302,6 +401,8 @@ interface ToneContext {
   mvx: number;
   mvy: number;
   maxR: number;
+  /** `manifest.buildings.hq` — the published height quartiles, per band */
+  hq: Quartiles;
   rnd: (i: number) => number;
 }
 
@@ -529,6 +630,9 @@ export class CityScene {
   private blocks: BlockTable | null = null;
   private massing: Massing | null = null;
   private urnd: Float32Array | null = null;
+  private veg: TreeGrid | null = null;
+  private surroundCoast: SurroundCoast | null = null;
+  private coastAsked = false;
   private solo: BldTable | null = null;
   private soloFace: Chunk | null = null;
   private bldCache = new Map<string, BldTable>();
@@ -538,17 +642,29 @@ export class CityScene {
   private waterBodies: ParkRing[] = [];
   private surroundData: SurroundData | null = null;
   private landmarkTable: LandmarkTable | null = null;
+  private form: FormTable | null = null;
   private places: PlaceLabel[] = [];
   private sprite: SpriteSheet | null = null;
   private tone: ToneContext | null = null;
+  /** `manifest.buildings.paintFlagBits.nosample` — see PAINT_NOSAMPLE_DEFAULT */
+  private paintNoSample = PAINT_NOSAMPLE_DEFAULT;
   private depthPlate: HTMLCanvasElement | null = null;
   private shoalPlate: HTMLCanvasElement | null = null;
   private blockOrder: Int32Array = new Int32Array(0);
   private massRowYear = -1;
   private massRow: ReturnType<typeof massAt> | null = null;
   private labelGrid: LabelGrid | null = null;
+  private hoodAnchors: HoodAnchor[] | null = null;
+  /** the city's depth range, computed once — `hazeIdx` */
+  private depthRange: [number, number] | null = null;
   private roofLut: ColourTables | null = null;
   private roofLutKey = "";
+  /**
+   * `roofF` AGAIN, FOUR VALUE STEPS WIDE — `part3.html`'s `CL_ROOFN`.
+   * Rebuilt only when `roofLut` is, which is keyed on a fade quantised to a
+   * 64th, so a zoom is a cache hit on all but a few frames.
+   */
+  private roofNF: string[] | null = null;
   private blockRoof: Uint8Array | null = null;
   private heroMats: HeroMaterials | null = null;
 
@@ -569,11 +685,25 @@ export class CityScene {
     return this.data.has("base/terrain");
   }
 
+  /**
+   * A COUNTER THE RENDERER'S CONTENT KEY CAN SEE.
+   *
+   * Dropping the band caches is not enough on its own: a settled camera is
+   * shown through a pre-painted buffer, and `contentKey` is what decides
+   * whether that buffer still stands for what the scene would draw. The key
+   * carried the step, the year, the data version and the dissolve weight — and
+   * nothing at all for *the scene rebuilt its own caches*. So the coast clip
+   * landed, the bands were dropped, and the frame on screen went on being the
+   * one painted before it, for as long as the reader did not touch anything.
+   */
+  sceneVersion = 0;
+
   /** the DEM-derived caches depend on chunks that arrive later; drop them */
   invalidateBands(): void {
     this.bands.clear();
     this.depthPlate = null;
     this.shoalPlate = null;
+    this.sceneVersion++;
   }
 
   get blockTable(): BlockTable | null {
@@ -593,7 +723,32 @@ export class CityScene {
     const d = this.data;
     const m = d.manifest;
 
+    /* THE SECOND SOLID AND THE THIRD. Sync and cheap — `base/form` is 7 KB of
+       base tier and carries no prose — so it is resolved here rather than
+       awaited like the landmark table. Null until the chunk lands, and null
+       means every building draws the one prism it drew before, which is what
+       stood there. */
+    if (!this.form) this.form = d.form();
+
+    /* THE COAST CLIP FETCHES ITSELF, ONCE, THE FIRST TIME THE SURROUND IS
+       HELD. It is a sidecar and not a chunk, so `loadBase` does not know about
+       it; and it is not on the first-paint path, because a surround with no
+       clip is what this map has always drawn. Kicked off from here rather than
+       from the shell so the route does not have to know either. */
+    if (!this.coastAsked && d.has("base/surround")) {
+      this.coastAsked = true;
+      void this.loadCoastClip().catch(() => {
+        /* a missing sidecar reads as the cell staircase, which is what was
+           there before it existed — never as a broken frame */
+      });
+    }
+
     if (!this.tone) {
+      /* the flag's own key, published beside it. A manifest that predates the
+         key keeps the transcribed default rather than dropping the column. */
+      const fb = (m.buildings as { paintFlagBits?: { nosample?: number } })
+        .paintFlagBits;
+      if (typeof fb?.nosample === "number") this.paintNoSample = fb.nosample;
       const p = m.proj as unknown as TerrainProj;
       const dt = p.downtown;
       const fe = p.ferry;
@@ -606,9 +761,23 @@ export class CityScene {
       // the same xorshift the mock seeds with the 1906 date, so the tie-break
       // inside a family is reproducible rather than random
       const rnd = buildURND(1 << 18);
+      /* `maxR` IS PUBLISHED AND WAS TYPED IN. `assignBldTones()` normalises
+         each footprint's distance from downtown by the LARGEST such distance
+         in the city, and a client holding a few chunks cannot compute that —
+         so the encoder measures it over all 166,166 published centroids and
+         ships it. The port had 12000, which is 0.09 % out and appears nowhere
+         in the source; the measured figure is 11,988.916 m. */
+      const mr = (m.buildings as { maxR?: number }).maxR;
+      /* THE PUBLISHED HEIGHT QUARTILES, PER BAND — `manifest.buildings.hq`,
+         twelve numbers derived from the same `hgt_mediancm` column the bands
+         are cut from. A manifest without them yields an empty table and
+         `roofStep` then returns 0 for every building, which is exactly the
+         single-flat-tone this port had before. */
+      const hq = ((m.buildings as { hq?: number[][] }).hq ?? []) as unknown as Quartiles;
       this.tone = {
         dtx: dt[0], dty: dt[1], fx: fe[0], fy: fe[1], mvx, mvy,
-        maxR: 12000,
+        maxR: typeof mr === "number" && mr > 0 ? mr : 12000,
+        hq,
         rnd: (i) => rnd[i & ((1 << 18) - 1)],
       };
     }
@@ -637,7 +806,7 @@ export class CityScene {
 
     const soloChunk = d.get("base/solo");
     if (!this.solo && soloChunk && this.tone) {
-      this.solo = decodeBld(soloChunk, 1849, this.tone);
+      this.solo = decodeBld(soloChunk, 1849, this.tone, this.paintNoSample);
     }
     if (!this.soloFace) this.soloFace = d.get("base/solo-face") ?? null;
 
@@ -690,9 +859,27 @@ export class CityScene {
     this.landmarkTable = await this.data.landmarks();
   }
 
+  /**
+   * The surround's own coastline — the ring the whole surround pass is cut at.
+   *
+   * Fetched beside the landmarks and NOT awaited by the first paint: with no
+   * coast the surround draws exactly what it drew before, its own 110 x 139 m
+   * cell staircase, and the clip arrives as a correction rather than as a
+   * blank frame. The band caches hold the order the reach cells go in, so this
+   * drops them.
+   */
+  async loadCoastClip(): Promise<void> {
+    if (this.surroundCoast) return;
+    this.surroundCoast = await this.data.surroundCoast();
+    if (this.surroundCoast) this.invalidateBands();
+  }
+
   /** the place names, from `base/marks.json` */
   setPlaces(p: PlaceLabel[]): void {
     this.places = p;
+    // the film's shortened list is derived from this one
+    this.filmPlaces = null;
+    this.filmPlacesFor = -1;
   }
 
   /** The DEM walk `fitCity` needs. Every third node inside the coast mask. */
@@ -724,8 +911,18 @@ export class CityScene {
     const chunk = this.data.get("base/terrain");
     if (!chunk) return null;
     const p = this.data.manifest.proj as unknown as TerrainProj;
-    const zex = [3.3, 2.6, 2.0][step] ?? 3.3;
+    /* ONE LADDER, NOT TWO. This was a literal `[3.3, 2.6, 2.0]` sitting beside
+       `projection.ts`'s `ZEX_BY_STEP`, and the two were free to disagree — which
+       is the shape of the bug that was actually shipped: the ground was built
+       from this copy while `proj.zex` never left 3.3, so the city was drawn at
+       an exaggeration its own ground was not. `renderer.ts` now puts the band on
+       the projection every frame; this reads the same table it does. */
+    const zex = ZEX_BY_STEP[step] ?? ZEX_BY_STEP[0];
     const t = new TerrainField(chunk, p, { zex });
+    /* the city's own ground stops at the published land, not at the county
+       line — see `TerrainField.coastFix`. Null until the sidecar lands, and
+       the band caches are dropped when it does. */
+    t.coastFix = this.surroundCoast?.cityOffshoreBits ?? null;
 
     // the ground tint is a measurement, and it is on the first-paint path
     const tint = this.data.get("base/canopy-tint");
@@ -741,7 +938,16 @@ export class CityScene {
       // §11: `lam` is terrain.ts's and `order` is the projection's, so the
       // composition is the caller's and it is four lines.
       const lam = buildSurroundLam(s.XW, s.XH, s.z, s.cellW, s.cellH, zex);
-      const order = s.surroundOrder((x, y) => this.proj.depth(x, y));
+      /* THE REACH CELLS GO IN THE ORDER, NOT INTO A SECOND PASS. They are
+         water cells by the hydrography's own bit and they are painted only
+         because the clip guarantees that all they can cover is published land
+         a neighbouring cell could not reach. Without a coast to clip at they
+         are not added at all — see `surroundOrder`. */
+      const cc = this.surroundCoast;
+      const order = s.surroundOrder(
+        (x, y) => this.proj.depth(x, y),
+        cc ? (i, j) => cc.reach(i, j) : null,
+      );
       sg = { ...s, lam, order };
     }
     const cache: BandCache = { terrain: t, surround: sg, key };
@@ -750,11 +956,84 @@ export class CityScene {
   }
 
   /** the `bldg` table for a held chunk, decoded once */
+  /**
+   * THE GROUND, for anything outside this file that needs to stand on it.
+   *
+   * Band 0's `TerrainField`, which is the one the camera's own fit is measured
+   * against. The film asks for it once per keyframe and once per street vertex,
+   * never in a frame loop.
+   */
+  elevAt(x: number, y: number): number {
+    const b = this.bandFor(0);
+    return b ? b.terrain.elevM(x, y) : 0;
+  }
+
+  /**
+   * ONE PUBLISHED FOOTPRINT, BY ITS GLOBAL INDEX.
+   *
+   * The film raises exactly two of these and both indices are published joins
+   * made elsewhere: City Hall's out of the landmark register's own parcel, the
+   * 1917 Main Library's out of the 1914 Journal's corner description resolved to
+   * APN 0353001. Neither is computed here.
+   *
+   * Returns null while the cell holding it has not arrived, which is what
+   * progressive loading looks like — the film's `hide` then does nothing either,
+   * so the fabric simply draws what it has and nothing is claimed twice.
+   */
+  footprintOf(gid: number): {
+    vx: Float32Array; vy: Float32Array; n: number; h: number; cx: number; cy: number;
+  } | null {
+    const tables: BldTable[] = [];
+    if (this.solo) tables.push(this.solo);
+    for (const t of this.bldCache.values()) tables.push(t);
+    for (const tb of tables) {
+      for (let i = 0; i < tb.n; i++) {
+        if (tb.gid[i] !== gid) continue;
+        const o = tb.off[i];
+        const n = tb.off[i + 1] - o;
+        return {
+          vx: tb.vxw.subarray(o, o + n),
+          vy: tb.vyw.subarray(o, o + n),
+          n,
+          h: roofHeight(tb.h[i], tb.hf[i]),
+          cx: tb.cx[i],
+          cy: tb.cy[i],
+        };
+      }
+    }
+    return null;
+  }
+
+  /**
+   * THE CITY'S OWN DEPTH RANGE, off the published assessor blocks.
+   *
+   * `part3.html` takes it over all 166,166 building centroids inside
+   * `buildBldOrder()`; this client holds only the chunks the camera has asked
+   * for, so it is taken over `base/blocks` — 5,404 centroids, always loaded,
+   * covering the same built extent. Computed once: the bearing is fixed at
+   * 315° and `depth()` is linear in world x and y, so nothing about the camera
+   * moves it.
+   */
+  private cityDepthRange(): [number, number] {
+    if (this.depthRange) return this.depthRange;
+    const bl = this.blocks;
+    if (!bl || bl.n === 0) return [0, 1];
+    let lo = Infinity;
+    let hi = -Infinity;
+    for (let i = 0; i < bl.n; i++) {
+      const d = this.proj.depth(bl.cx[i], bl.cy[i]);
+      if (d < lo) lo = d;
+      if (d > hi) hi = d;
+    }
+    this.depthRange = [lo, hi];
+    return this.depthRange;
+  }
+
   private bldFor(chunk: Chunk): BldTable | null {
     const hit = this.bldCache.get(chunk.key);
     if (hit) return hit;
     if (!this.tone) return null;
-    const t = decodeBld(chunk, 1849, this.tone);
+    const t = decodeBld(chunk, 1849, this.tone, this.paintNoSample);
     if (this.bldCache.size > 200) this.bldCache.clear();
     this.bldCache.set(chunk.key, t);
     return t;
@@ -819,9 +1098,56 @@ export class CityScene {
     return null;
   }
 
+  /* ── THE RUNGS `view.z` IS COMPARED AGAINST, OUT OF THE MANIFEST ───────
+     `data.ts` selects a tier with `if (view.z < c.minZ) continue`, and every
+     `minZ` the encoder writes is a rung of the named ladder: 1.55, 2.9, 3.0,
+     4.0. Read once; the manifest does not change under a mounted page. */
+  private rungs: readonly number[] | null = null;
+
+  private tierRungs(): readonly number[] {
+    if (!this.rungs) {
+      const seen = new Set<number>();
+      for (const t of Object.values(this.data.manifest.tiers))
+        if (t.minZ > 0) seen.add(t.minZ);
+      this.rungs = [...seen].sort((a, b) => a - b);
+    }
+    return this.rungs;
+  }
+
+  /**
+   * A VIEW AT A RUNG MUST BE ABLE TO SHOW THAT RUNG'S TIER.
+   *
+   * `z` is a QUOTIENT, `cam.scale / cam.base`, and a quotient of two doubles
+   * does not have to reproduce the rung exactly even when the camera is
+   * arithmetically on it. MEASURED, at the district preset with the parity
+   * harness driving: `0.13533136705963567 / 0.046665988641253695` =
+   * **2.899999999999999**, one ulp under 2.9 — so `view.z < 2.9` held, the
+   * `strt` tier (`minZ` 2.9, 125 chunks, 22,191 rights of way) was never
+   * requested and never yielded, and the street layer drew **nothing at all
+   * six district cameras**. Not a missing feature and not a slow tier: a
+   * strict comparison against a rung, decided in the sixteenth digit.
+   *
+   * So the number handed to the data layer is snapped when it is within a few
+   * ulp of a rung. Eight ulp of 2.9 is 1.4e-14; no gesture, no wheel and no
+   * preset can express a zoom that close to a rung and mean a different one,
+   * and nothing further away is touched.
+   *
+   * ONLY THE SELECTOR IS SNAPPED. `paint()` reads its own `zOf(cam)` raw and
+   * keeps it raw — every ramp the drawing hangs off (`tierW`, the canopy fade,
+   * the street's own per-feature extent) is a continuous curve of the camera,
+   * and `CAMERA.md` finding 5 is that a floor on a DRAWN quantity is a step in
+   * the first derivative and the cause of every float and lurch bug this
+   * project has had. Quantise the key, never the value. This is a key.
+   */
+  private tierZ(z: number): number {
+    for (const r of this.tierRungs())
+      if (Math.abs(z - r) <= r * 8 * Number.EPSILON) return r;
+    return z;
+  }
+
   /** the world-space view quad — the four inverse-projected screen corners */
   viewQuad(cam: ViewCamera, W: number, H: number): CityView {
-    const z = zOf(cam);
+    const z = this.tierZ(zOf(cam));
     const corners: [number, number][] = [];
     for (const [px, py] of [[0, 0], [W, 0], [W, H], [0, H]] as const) {
       const pl = screenToPlane(px, py, W, H, cam);
@@ -836,6 +1162,75 @@ export class CityScene {
   // ── the paint ────────────────────────────────────────────────────────────
 
   layers: SceneLayers = { ...ALL_LAYERS };
+
+  /* ── WHAT THE FILM OWNS, AND ONLY WHILE IT IS RUNNING ─────────────────
+     Two fields, both null/false in the explorer, so nothing below changes for
+     a reader who never presses play.
+
+     `filmHide` is the set of `gid`s the FABRIC must not draw because the film
+     is raising them itself. `filmRunning` is whether the year is MOVING, which
+     is the difference between "everything built by this year is simply there"
+     and "this year's cohort is arriving now" — the fractional year drives the
+     arrival wave only in the second case. */
+  filmHide: ReadonlySet<number> | null = null;
+  filmRunning = false;
+
+  /* The accepted streets, painted UNDER the fabric and OVER the ground. That
+     order is the record's own: the Board accepts a street, and the assessor
+     dates the houses on it later. It is a pass and not a layer, so it goes here
+     rather than into `SceneLayers` — nothing but the film ever sets it. */
+  filmUnderlay: ((f: Frame) => void) | null = null;
+
+  /**
+   * THE 1906 BURNED DISTRICT, as published rings.
+   *
+   * `ff3a-iqhv`, seven rings, 130 vertices on the main one. The scene already
+   * flags the DEM cells inside them, which is how the ground knows; the film
+   * strokes the boundary itself, because in shot 1 the line is the only thing
+   * that moves and it has to be painted at viewport size rather than into a
+   * cached layer.
+   */
+  burnRings(): readonly Ring[] {
+    return this.burn;
+  }
+
+  /**
+   * ── THE FILM IS NOT A GAZETTEER ──────────────────────────────────────
+   *
+   * MEASURED on the mock's first frame at 1440x900: **thirty-one labels, of
+   * which nineteen were street names**, competing with a red hairline that is
+   * the entire subject of the shot. A street atlas is the right answer for an
+   * explorer, where the reader is looking things up, and the wrong one for a
+   * film, where they are being shown one thing.
+   *
+   * Some names have to stay, for a reason a screenshot settles: without them
+   * the wide frame is an abstract shape, and one recognisable name beside
+   * another is what makes it San Francisco. So the film keeps the LARGEST
+   * places and caps them.
+   *
+   * WHICH ones is not a choice. The mock ordered neighbourhoods by how many
+   * assessor blocks each holds; there is no neighbourhood label layer here, so
+   * the order is each place's own published span — `marks/build_marks.py`'s
+   * `s`, the extent of the footprint or registry polygon it resolves to. Both
+   * are data-derived and give the same order every run. `labels.ts`'s ink
+   * budget, collision grid and year gate all still apply on top; this only
+   * shortens the list they are given.
+   */
+  filmPlaceCap: number | null = null;
+
+  private filmPlaces: PlaceLabel[] | null = null;
+  private filmPlacesFor = -1;
+
+  private placesForFrame(): readonly PlaceLabel[] {
+    const cap = this.filmPlaceCap;
+    if (cap === null) return this.places;
+    if (this.filmPlaces && this.filmPlacesFor === cap) return this.filmPlaces;
+    this.filmPlaces = [...this.places]
+      .sort((a, b) => b.spanM - a.spanM || a.name.localeCompare(b.name))
+      .slice(0, cap);
+    this.filmPlacesFor = cap;
+    return this.filmPlaces;
+  }
 
   paint(f: Frame, opts: { year?: number } = {}): SceneStats {
     const L = this.layers;
@@ -861,14 +1256,17 @@ export class CityScene {
     if (L.water) this.paintWaterBed(f, band);
 
     // 2 ── the surround, then the city's own ground, both over the plates
-    if (L.surround) drawSurround(f, t, band.surround);
+    if (L.surround) drawSurround(f, t, band.surround, this.surroundCoast?.rings ?? null);
     if (L.terrain) {
       const tr = drawTerrain(f, t, 0);
       st.cells = tr.cells;
     }
 
-    // 3 ── the shallows, and the published shoreline over whatever the raster did
-    if (L.water) this.paintShoal(f, band);
+    /* 3 ── the published shoreline over whatever the raster did. THE SHOAL IS
+       NO LONGER HERE: it is a wash and the depth plate under it is a
+       measurement, so it goes between the bay and the depth in step 1, which
+       is the reference's order. Blitting it at this point put it over the
+       depth AND over the land. */
     if (L.shore && this.coast.length) drawShoreline(f, t, this.coast);
 
     // 3 ── the parks and the published water bodies
@@ -876,7 +1274,11 @@ export class CityScene {
     if (L.parks && this.waterBodies.length) drawWaterBodies(f, t, this.waterBodies);
 
     // 4 ── the streets
-    if (L.streets && z >= VZ_T0) st.streets = this.paintStreets(f, t, view, opts.year);
+    if (L.streets && this.streetsResolve(cam.scale))
+      st.streets = this.paintStreets(f, t, view, opts.year);
+
+    // 4b ── the streets the Board voted, on the year it voted them
+    if (this.filmUnderlay) this.filmUnderlay(f);
 
     // 5 ── the vegetation
     if (L.veg && z >= VZ_C0) st.trees = this.paintVeg(f, t, view, z);
@@ -885,17 +1287,62 @@ export class CityScene {
     const wB = tierW(z);
     st.wB = wB;
     if (L.massing) st.massed = this.paintMassing(f, t, step, wB, opts.year);
-    if (L.buildings) st.buildings = this.paintFootprints(f, t, view, z, step, wB);
+    if (L.buildings) st.buildings = this.paintFootprints(f, t, view, z, step, wB, opts.year);
 
     // 7 ── the landmarks the record points the whole map at
     const lm = this.landmarkTable;
     if (L.bridge && lm?.bridge) drawBridge(f, lm.bridge, opts.year);
 
     // 8 ── the names, last, over everything, on one ink budget
-    if (L.labels && this.places.length) {
+    if (L.labels) {
       this.labelGrid = new LabelGrid(f.W, f.H);
-      const r = placeNames(f, this.places, this.labelGrid, (x, y) => t.elevM(x, y));
-      st.labels = r.placed;
+      /* ── THE ORDER IS THE PRIORITY, AND THE HOODS SIT IN THE MIDDLE ──
+         `part3.html`'s label pass is `placeNames(lane 0)` → the arterials →
+         `hoods()` → the rest of the streets → `placeNames(lane 1)`, and the
+         reason it states is specificity: *a landmark name names one building,
+         a neighbourhood name names a district, and a reader can find Market
+         Street by looking at the picture and cannot find City Hall.* So the
+         designated landmarks get first refusal, the DISTRICT CAPITALS come
+         next, and the un-designated places take what is left.
+         Placing every place first put GOLDEN GATE PARK, INNER SUNSET and WEST
+         OF TWIN PEAKS out of the district frame — their boxes were taken by
+         the small lowercase place labels that stand in the same fields. The
+         split is done here, by lane, rather than inside `placeNames`: each
+         call uses only the budget of the lane it is handed, so the per-class
+         ink allowance is unchanged. */
+      const pl = this.places.length ? this.placesForFrame() : [];
+      if (pl.length) {
+        const des = pl.filter((q) => q.cls === "designated");
+        if (des.length) {
+          st.labels += placeNames(f, des, this.labelGrid, (x, y) => t.elevM(x, y)).placed;
+        }
+      }
+      /* ── THE DISTRICT CAPITALS, WHICH HAVE BEEN ON THE WIRE ALL ALONG ──
+         `base/blocks` carries a `hood` byte per assessor block and the
+         manifest carries 41 `hoodNames`; `decodeBlocks` has decoded both into
+         `BlockTable` since P2 and nothing read them. They are the LARGEST TYPE
+         IN THE MOCK'S DISTRICT FRAME — eight names on B3 — and production
+         wrote none of them, which is a large part of why that frame reads as a
+         texture and the mock's reads as a map.
+         The anchor is DERIVED and not typed in: the area-weighted centroid of
+         the blocks carrying the name, so twenty-two small downtown blocks do
+         not out-vote four large ones. Built once, because it is a function of
+         the chunk and not of the camera.
+         THE COLLISION GRID IS DELIBERATELY THE ONE THE PLACE NAMES JUST USED.
+         That is §9's *"the same NUMBER and not the same POOL"*: two label
+         layers on one ink budget, so a hood name cannot be written over a
+         place name and neither layer has to know about the other. */
+      if (this.blocks) {
+        if (!this.hoodAnchors) this.hoodAnchors = buildHoodAnchors(this.blocks);
+        st.labels += drawHoodNames(
+          f, this.hoodAnchors, this.labelGrid, (x, y) => t.elevM(x, y),
+        );
+      }
+      // and the un-designated places last, into whatever the two above left
+      const rest = pl.filter((q) => q.cls !== "designated");
+      if (rest.length) {
+        st.labels += placeNames(f, rest, this.labelGrid, (x, y) => t.elevM(x, y)).placed;
+      }
     }
     return st;
   }
@@ -908,26 +1355,26 @@ export class CityScene {
       (this.data.manifest.proj as unknown as TerrainProj).downtown,
     );
     if (sg) this.ensurePlates(sg);
+    /* ── BAY, THEN SHOAL, THEN DEPTH — the reference's own order ────────
+       `drawTerrain` in part3.html lays the bay gradient, then the shore band,
+       then the published bathymetry, and it states the reason at the call: the
+       depth goes "OVER the shore band — which is untouched, and is a distance
+       from land and says so." That is the project's hierarchy expressed as a
+       paint order: **the published field ends up on top of the declared one.**
+       Production had the shoal blitted at step 3, after the surround and after
+       the DEM, so a declared wash sat over a published measurement — and the
+       previous agent's fix inside `drawWater` measured no change at all,
+       because `paintWaterBed` never passes `shoal` and the real blit was
+       somewhere else entirely. It is here now, between the two, where the
+       reference puts it. */
     drawWater(f, {
       bay: bay as (CanvasImageSource & { width: number; height: number }) | undefined,
+      shoal: this.shoalPlate ?? undefined,
       depth: this.depthPlate ?? undefined,
       surround: sg,
+      shoalTexels: 1,
       depthTexels: 1,
     });
-  }
-
-  /**
-   * The shallows, AFTER the land.
-   *
-   * `water.ts` is explicit that this band is "distance from land, in cells, so
-   * the shallows can be a shade lighter" and NOT a depth claim — the depth
-   * claim is the plate above, which is published. It goes down last because it
-   * is a wash on the water's own surface and it has no land test either.
-   */
-  private paintShoal(f: Frame, band: BandCache): void {
-    const sg = band.surround;
-    if (!sg || !this.shoalPlate) return;
-    blitGridPlate(f, this.shoalPlate, sg, 1);
   }
 
   /**
@@ -1006,6 +1453,39 @@ export class CityScene {
     }
   }
 
+  /**
+   * IS ANY PUBLISHED RIGHT OF WAY WIDE ENOUGH TO BE A SURFACE YET?
+   *
+   * THIS GATE USED TO BE `z >= VZ_T0`, AND `VZ_T0` IS A TREE. It is
+   * `trees.ts`'s threshold for promoting a canopy blob to individual trees —
+   * 2.9, which is also `ZSTEPS[1]`, which is why nobody noticed. A layer that
+   * asks another layer's constant whether it should draw is not gated, it is
+   * coincident: measured (`.parity/GAPS.md` §2), `scene.streets` read **0 at
+   * all six district cameras and all four whole-city cameras** while the mock
+   * drew the whole carriageway grid at district — Sunset Blvd, a divided
+   * boulevard in the mock, was not drawn at all.
+   *
+   * The street layer's own rule is published and it is metric, not banded:
+   * `streets.ts` opens the EXTENT tier when a right of way projects **2 px**
+   * wide (`ST_EXT_PX`, argued there against the city's median of 1.32 px at
+   * whole-city zoom), and at ROT 315 a width at an unknown bearing projects at
+   * `ST_KPROJ`. So the layer is worth dispatching exactly when the city's
+   * ninetieth-percentile right of way — `w_p90`, out of the encoder's own
+   * manifest, 25.7 m; the same number and the same test the mock uses — clears
+   * that gate. Nothing here is chosen: both constants and the width are read.
+   *
+   * Below it every feature would fail `extentW` one at a time and the layer
+   * would draw nothing for the cost of the whole cull loop. Above it the
+   * per-feature ramp in `drawStreetSurface` decides, continuously, which is
+   * where that decision belongs.
+   */
+  private streetsResolve(scale: number): boolean {
+    const m = this.data.manifest.streets as unknown as
+      { stats?: { w_p90?: number } } | undefined;
+    const wM = m?.stats?.w_p90;
+    return typeof wM === "number" && wM > 0 && wM * ST_KPROJ * scale > ST_EXT_PX;
+  }
+
   private paintStreets(
     f: Frame,
     t: TerrainField,
@@ -1031,8 +1511,28 @@ export class CityScene {
       covered: () => true,
       band: 0,
     });
-    const r = drawStreetSurface(f, cells, { year });
+    const r = drawStreetSurface(f, cells, { year, terrain: t });
     return r.surfaces;
+  }
+
+  /**
+   * THE VEGETATION GRID IS READ OFF THE CATALOGUE, NOT OFF A CONSTANT.
+   *
+   * `cellKey = row * gw + col`, and `gw` moved in the encoder on 2026-08-23
+   * while the renderer's copy of it did not. Every tree and every canopy blob
+   * in the city was decoded on the old width for a day and placed in the
+   * Pacific. Reading the encoder's own number is the only version of this that
+   * cannot drift; `assertTreeGrid` throws if the 130 entries disagree.
+   */
+  private vegGrid(): TreeGrid {
+    if (!this.veg) {
+      this.veg = assertTreeGrid(
+        this.data.manifest.chunks.filter(
+          (c) => c.kind === "tree" || c.kind === "canopy",
+        ) as unknown as Readonly<Record<string, unknown>>[],
+      );
+    }
+    return this.veg;
   }
 
   private paintVeg(f: Frame, t: TerrainField, view: CityView, z: number): number {
@@ -1045,7 +1545,7 @@ export class CityScene {
     for (const c of this.data.visible("canopy", view))
       canopy.push(c.fields as unknown as CanopyCells);
     if (!trees.length && !canopy.length) return 0;
-    const r = drawVeg(f, t, this.sprite, trees, canopy, z);
+    const r = drawVeg(f, t, this.sprite, trees, canopy, z, this.vegGrid());
     return r.trees + r.blobs;
   }
 
@@ -1182,21 +1682,39 @@ export class CityScene {
     z: number,
     step: number,
     wB: number,
+    year: number | undefined,
   ): number {
     const mg = this.massing;
     const urnd = this.urnd;
     if (!mg || !urnd) return 0;
     const fade = fadeAmt(f);
     const key = fade.toFixed(4) + "|" + step;
-    if (this.roofLutKey !== key || !this.roofLut) {
+    if (this.roofLutKey !== key || !this.roofLut || !this.roofNF) {
       const pal = {
         roof: roofPalette((this.data.manifest.buildings as { palette: string[] }).palette),
         wall: wallPalette(),
       };
       this.roofLut = colourLUT(pal, fade, step);
+      /* ── THE PUBLISHED VALUE REACHED NO ROOF AT ALL ────────────────────
+         `roofs.ts` ships `RSHADE`, `roofStep` and `roofFineLUT`, `DRAW.md` §7
+         records them as landed, `draw.test.ts` asserts them — and NOTHING IN
+         THE RENDERER CALLED ANY OF THE THREE. Every roof of a given palette
+         entry was one flat value at every zoom, which is the thing the
+         published quartiles exist to break: 121,419 of 166,166 footprints —
+         every house in the Sunset and the Richmond — fall in height band 0 and
+         so shared ONE tone, and at the district camera the mock's own
+         measurement is 40,119 of 42,462 roofs in frame sharing sixteen.
+
+         `part3.html` L1127 is exactly this: `CL_ROOFN[j*4+q] = shade(CL_ROOFF
+         [j], RSHADE[q])`, and `roofFineLUT` already has that shape. Not one
+         new byte on the wire — `rsh` is built from the height byte at decode. */
+      this.roofNF = roofFineLUT(this.roofLut.roofF);
       this.roofLutKey = key;
     }
     const lut = this.roofLut;
+    const roofNF = this.roofNF ?? roofFineLUT(lut.roofF);
+    /** `COVER_GAIN[step]`, the one number `colourLUT` already resolved */
+    const gain = COVER_GAIN[step] ?? 1;
 
     /** the `bldg` chunk and the `face` chunk that mirrors it, key for key */
     const tables: { tb: BldTable; face: Chunk | null }[] = [];
@@ -1225,7 +1743,29 @@ export class CityScene {
     if (!tables.length) return 0;
 
     const { ctx, W, H } = f;
-    const iy = 2025;
+    /* ── THE FOOTPRINT TIER IS ON THE CLOCK TOO ───────────────────────
+       This was `const iy = 2025` — a hardcoded present, so the massing tier
+       un-built with the year and the footprints above the dissolve did not.
+       At the district camera that is a whole-city block plan thinning while
+       every one of its 87,774 buildings stays standing, which is not a
+       century scrub, it is two maps of different years in one frame.
+       The gate is the roll's own: a footprint arrives in the year the secured
+       assessor roll dates the building on its parcel, and `FLAG_NOYEAR` is
+       honoured — the roll dates 12,594 parcels to its own "not known", and
+       those are drawn in EVERY year rather than being given one. Nothing here
+       invents a date; a building the record cannot date is counted, not
+       hidden and not stamped. See `time.ts` §THE ONE RULE.
+       `year === undefined` is "every year", which is what a deep link, a
+       settled explorer and the cached layer all need. */
+    const iy = year === undefined ? SCRUB_MAX : Math.floor(year);
+    const clock = year !== undefined;
+    /* the fabric's own arrival wave: far-to-near across the frame with a
+       per-building jitter, over the first 38.5 % of the year's passage. Off a
+       run this is 1 for everything, which is `rise = 1` — the state
+       `tintIndex` was written to expect when no clock is running. */
+    const phase = clock ? risePhase(year, this.filmRunning) : 1;
+    const staggering = phase < 1;
+    const hidden = this.filmHide;
     /* Projected px per world metre, from the one equation. At the 315° bearing
        proj() is axis-aligned, so a world metre is `cA·√2·scale` px ACROSS the
        screen and `sA·√2·scale` px DOWN it — and a metre of BUILT HEIGHT is
@@ -1237,6 +1777,8 @@ export class CityScene {
     const k2 = f.proj.sA * Math.SQRT2 * f.cam.scale;
     const kh = f.proj.zexb * f.cam.scale;
     const cf = f.proj.coeffs();
+    /** `LMAX` — `part3.html` L1312, the length of the screen-x gradient */
+    const lmax = Math.hypot(cf.ax, cf.ay) || 1;
     const faceOn = z >= 4.0;
     const groups = faceOn ? newFaceGroups() : null;
 
@@ -1259,6 +1801,13 @@ export class CityScene {
       for (let i = 0; i < tb.n; i++) {
         if (!drawnAsBuilding(urnd, mg, tb.gid[i], wB)) continue;
         if (tb.off[i + 1] - tb.off[i] < 3) continue;
+        /* the clock, and the one thing the film may overrule. A footprint the
+           film is RAISING must not also be drawn by the fabric underneath it at
+           full height — the roll dates City Hall's parcel 1906, which is the
+           parcel and not the building, so without this the move into shot 4
+           arrives on a finished City Hall, deletes it and rebuilds it. */
+        if (hidden !== null && hidden.has(tb.gid[i])) continue;
+        if (clock && (tb.u[i] & FLAG_NOYEAR) === 0 && iy < 1849 + tb.yr[i]) continue;
         const hM = roofHeight(tb.h[i], tb.hf[i]);
         const zg = t.elevM(tb.cx[i], tb.cy[i]);
         const pcx = cf.ax * tb.cx[i] + cf.ay * tb.cy[i];
@@ -1278,6 +1827,16 @@ export class CityScene {
     const ord = streamOrder(srcD.subarray(0, m));
     const [dlo, dhi] = ord.range;
     const dspan = dhi - dlo || 1;
+    /* THE AERIAL FADE IS NORMALISED OVER THE CITY, THE BAND INDEX OVER THE
+       FRAME, and the two are different quantities. `ord.range` is the depth
+       range of the buildings in THIS stream, which is the right denominator
+       for the painter's-order bands (it spends all of them on what is on
+       screen) and the wrong one for the haze: normalised per frame, a
+       building's aerial fade would change as the camera moved and the whole
+       fabric would breathe. `part3.html` normalises the haze over
+       `bldDepthRange`, which is city-wide and computed once. */
+    const [hzLo, hzHi] = this.cityDepthRange();
+    const hzSpan = hzHi - hzLo || 1;
 
     /* ── THE HEROES, KEYED TO THEIR OWN BUCKET FLOOR ──────────────────
        See `paintHeroes`. Prepared here because the flush depths have to be
@@ -1311,6 +1870,21 @@ export class CityScene {
       if (!p) { p = new Path2D(); mp.set(c, p); }
       return p;
     };
+    /* ── THE SECOND SOLID'S OWN QUEUE, AND WHY IT IS DEFERRED ─────────
+       A cap is HELD until its band's roofs have been flushed. Draw it when the
+       building is reached and the batched roof of a neighbour in the same band
+       — including, at the fabric tier, the building's OWN roof — is filled
+       afterwards and paints straight over it. That is the correctness cost
+       `form/BLOCK-C.md` paid for the cylinder with two extra colour buckets;
+       a pending list is cheaper, because a cap is one of at most 522 objects
+       in a frame and not one of 90,000.
+       It is flushed at the band, not at the frame, for the reason everything
+       else here is: a queue that spans the whole city has thrown painter's
+       order away again. */
+    const capQ: {
+      slot: number; ux: number; uy: number; zg: number; h: number;
+      rise: number; roof: string; wallO: number; ink: string | null;
+    }[] = [];
     /* ONE BAND, COMPOSITED INTO THE CITY LAYER — the shadow first, because it
        is under everything this band stands up; then the walls, the roofs and
        the outlines. A nearer band is painted after, over it, which is the
@@ -1325,6 +1899,22 @@ export class CityScene {
         ctx.lineWidth = 0.7;
         for (const [col, p] of strokeBatch) { ctx.strokeStyle = col; ctx.stroke(p); }
         strokeBatch.clear();
+      }
+      /* AND THE CAPS LAST, over the roofs they stand on and under the band in
+         front of them. `drawStep` runs its own two pixel floors and returns
+         false below either, so a queued cap is not necessarily a drawn one. */
+      if (capQ.length) {
+        const form = this.form;
+        if (form) {
+          for (const q of capQ) {
+            drawStep(f, {
+              form, slot: q.slot, zg: q.zg, h: q.h, rise: q.rise,
+              ux: q.ux, uy: q.uy,
+              wall: lut.wallF, wallO: q.wallO, roofColour: q.roof, ink: q.ink,
+            });
+          }
+        }
+        capQ.length = 0;
       }
     };
 
@@ -1341,7 +1931,7 @@ export class CityScene {
       if (bx0 !== bandIx) { flushBand(); bandIx = bx0; }
       /* the landmarks of this bucket, before the buildings that are nearer
          than they are and after every building in their own bucket */
-      while (hq < heroQ.n && heroQ.flushD[hq] > dpt) { this.drawOneHero(f, heroQ, hq++, fade); }
+      while (hq < heroQ.n && heroQ.flushD[hq] > dpt) { this.drawOneHero(f, heroQ, hq++, fade, gain); }
 
       const tbe = tables[srcT[j]];
       const tb = tbe.tb;
@@ -1351,8 +1941,27 @@ export class CityScene {
 
       const oo = tb.off[i];
       const nv = tb.off[i + 1] - oo;
-      const hM = roofHeight(tb.h[i], tb.hf[i]);
+      const hFull = roofHeight(tb.h[i], tb.hf[i]);
       const zg = t.elevM(tb.cx[i], tb.cy[i]);
+
+      /* ── THE ARRIVAL WAVE, which SHELL.md §8b.1 left to this block because
+         the film owns the clock. A building of THIS year's cohort GROWS out of
+         the ground and lands pale, settling into its own colour — so a cohort
+         reads as construction rather than as a switch being thrown.
+         FAR EDGE OF THE FRAME FIRST, which agrees with painter's order: a
+         building that arrives later always paints OVER one that arrived
+         earlier, never under. `dn` is normalised on the SCREEN and not on the
+         whole city, because a cohort seen at district zoom occupies a narrow
+         slice of world depth and a world-normalised stagger collapses it into a
+         flash at exactly the zoom where the reader is closest to it. */
+      let rise = 1;
+      if (staggering && (tb.u[i] & FLAG_NOYEAR) === 0 && 1849 + tb.yr[i] === iy) {
+        const pcyG = cf.bx * tb.cx[i] + cf.by * tb.cy[i] + zg * f.proj.zex;
+        const dn = Math.max(0, Math.min(1, (H / 2 - (pcyG - f.cam.cy) * f.cam.scale) / H));
+        rise = riseOf(phase, dn, urnd[tb.gid[i] % urnd.length]);
+        if (rise <= 0.001) continue;
+      }
+      const hM = rise >= 1 ? hFull : hFull * rise;
 
       /* Project the ring twice, base and roof, THROUGH THE COEFFICIENTS.
          `proj.coeffs()` exists for exactly this loop — "pre-projection loops
@@ -1398,17 +2007,36 @@ export class CityScene {
 
       const wallCi = tb.wi[i];
       const roofCi = tb.ri[i];
-      const hz = hazeIdx(f, tb.cx[i], tb.cy[i]);
+      const hz = hazeIdx(f, tb.cx[i], tb.cy[i], hzLo, hzSpan);
       const dhPx = hM * kh;
       /* THE TINT — the ochre of new construction and the arrival ramp, off
          `colourLUT`'s own `NF1`-wide tables. `FLAG_NOYEAR` is not "1849": the
          roll dates 12,594 parcels to its own "not known", and treating those
          as a year put the Presidio in ochre in the mock's 1906 frame. A
          building the roll does not date takes tint 0 and no ochre. */
-      const fi = (tb.u[i] & FLAG_NOYEAR) !== 0 ? 0 : tintIndex(iy - (1849 + tb.yr[i]), 1);
-      const roofCol = lut.roofF[(roofCi * HZL + hz) * NF1 + fi] ?? "#9a9384";
+      const fi = (tb.u[i] & FLAG_NOYEAR) !== 0 ? 0 : tintIndex(iy - (1849 + tb.yr[i]), rise);
+      const roofCol =
+        roofNF[(((roofCi * HZL + hz) * NF1 + fi) << 2) + tb.rsh[i]] ?? "#9a9384";
       const wallO = ((wallCi * HZL + hz) * NF1 + fi) * 4;
       const near = wpx > NEAR_PX;
+
+      /* ── THE SECOND SOLID, QUEUED ────────────────────────────────────
+         488 buildings whose own published statistics say there is a mass
+         standing above the plane this loop just drew, and 40 more the step
+         model cannot see and the published CLASS can — a steeple is a handful
+         of 50 cm cells. Queued for ALL THREE rungs, because the gate that
+         matters is not the building's width but the cap's own lift: at
+         whole-city zoom the Ferry Building's tower is 0.9 px wide and 5.0 px
+         tall, and *a skyline is made of lifts, not of widths.* `drawStep`
+         applies both floors itself. */
+      const fslot = this.form ? this.form.slotOf[gid] : 0;
+      if (fslot) {
+        capQ.push({
+          slot: fslot - 1, ux: tb.cx[i], uy: tb.cy[i], zg, h: hM, rise,
+          roof: roofCol, wallO,
+          ink: inkFor(roofCol, EDGE_SHADE),
+        });
+      }
 
       /* ── THE RECT RUNG: one path call, the whole silhouette ───────────
          `RECT_SCALE` is 0.0 — "settled: the rect tier is for motion only" — so
@@ -1476,8 +2104,10 @@ export class CityScene {
           const dx = tx[k1] - tx[k];
           if (dx * sgn <= 0) continue; // turned away from the camera
           const q = n4 === nv
-            ? wallQuartile(
-                tb.vxw[oo + k], tb.vyw[oo + k], tb.vxw[oo + k1], tb.vyw[oo + k1],
+            ? planeQuartile(
+                tb.vxw[oo + k1] - tb.vxw[oo + k],
+                tb.vyw[oo + k1] - tb.vyw[oo + k],
+                cf.ax, cf.ay, lmax,
               )
             : 1;
           const col = lut.wallF[wallO + q] ?? "#c0b49a";
@@ -1498,14 +2128,58 @@ export class CityScene {
           ctx.closePath();
           const topY = Math.min(ty[k], ty[k1]);
           const botY = Math.max(by[k], by[k1]);
+          /* `WA.wallpx` = 11 CSS px of WALL HEIGHT above which a wall carries
+             its grade — `part3.html` L8973, `grad = WA.faces && dh >= WA.wallpx`.
+             This port had `botY - topY > 6`: nobody's number, and not even the
+             mock's QUANTITY — `botY - topY` is the wall quad's vertical extent,
+             which is `dhPx` PLUS however far the base falls across the wall, so
+             a long wall turned across the screen passed the test on its own
+             footprint rather than on its height. The gate is the height; the
+             gradient still spans the quad it fills. */
           ctx.fillStyle =
-            botY - topY > 6 ? wallGrad(ctx, topY, botY, col) : col;
+            dhPx >= WA.wallpx ? wallGrad(ctx, topY, botY, col) : col;
           ctx.fill();
 
           if (groups && dhPx >= FA_MIN_DH_PX && n4 === nv) {
             this.emitFace(
-              groups, tb, tbe.face, i, k, k1, bx, by, tx, ty, dhPx, q,
+              f, groups, tb, tbe.face, i, k, k1, bx, by, nv, dhPx, q,
             );
+          }
+        }
+
+        /* ── THE STOREY LINES, AND THEY HAD NEVER BEEN DRAWN ────────────
+           `roofs.ts` exports `drawsStoreyLines`, `storeyBandPx`,
+           `STOREY_MIN_PX` and `STOREY_W_PX`; `DRAW.md` §7 lists them; the
+           suite asserts the cut-off — and no draw call read any of them. On a
+           Financial District wall 130 px tall this is the only mark that says
+           how many floors are behind it, and it is most of the difference
+           between a tower and a pale slab. `part3.html` L8994.
+
+           A CUT-OFF, NOT A SIZE FLOOR: a band under `STOREY_MIN_PX` is not
+           drawn at all, never squeezed to a minimum — the distinction measured
+           on `gszV`, where a floor made a landmark stop shrinking with the city
+           under it. It does nothing in the Sunset, whose median house the roll
+           counts as one storey, and the 8.7 % the roll does not count get
+           none rather than a guess. */
+        if (near && n4 === nv && wpx >= STOREY_W_PX) {
+          const nst = storeysOf(
+            tb.st[i],
+            tbe.face ? ((tbe.face.fields.st2 as Uint8Array)[i] ?? 0) : 0,
+          );
+          if (nst > 1 && drawsStoreyLines(dhPx, nst)) {
+            ctx.strokeStyle = lut.wallF[wallO + 1] ?? "#c0b49a";
+            ctx.lineWidth = 0.7;
+            ctx.beginPath();
+            for (let k = 0; k < nv; k++) {
+              const k1 = (k + 1) % nv;
+              if ((tx[k1] - tx[k]) * sgn <= 0) continue;
+              for (let sn = 1; sn < nst; sn++) {
+                const fy = (dhPx * sn) / nst;
+                ctx.moveTo(bx[k], by[k] - fy);
+                ctx.lineTo(bx[k1], by[k1] - fy);
+              }
+            }
+            ctx.stroke();
           }
         }
       }
@@ -1540,9 +2214,17 @@ export class CityScene {
       ctx.fillStyle = roofCol;
       ctx.fill();
 
+      /* THE OUTLINE, RAMPED ON THE BUILDING'S OWN WIDTH. Below `INK_PX0` this
+         is the 0.7 px hairline at `EDGE_SHADE` the page has always drawn, so
+         nothing at whole-city or district zoom moves. Above it the line opens
+         to 1.5 px through two darker values of the same roof — which is the
+         difference between a Financial District that reads as buildings and
+         one that reads as a continuous slab of pale grey. The port drew 0.9 px
+         at one value at every zoom; `buildings.ts` §"AND THE OUTLINE OPENS
+         INTO A DRAWN LINE" has the measurement. */
       if (wpx >= STROKE_MIN_PX_A) {
-        ctx.strokeStyle = inkFor(roofCol, EDGE_SHADE);
-        ctx.lineWidth = 0.9;
+        ctx.strokeStyle = edgeInk(roofCol, wpx);
+        ctx.lineWidth = edgeWidth(wpx);
         ctx.stroke();
       }
 
@@ -1561,18 +2243,23 @@ export class CityScene {
       }
 
       if (groups) {
-        flushFaces(
-          f, groups,
-          lut.wallF[wallO + 2] ?? "#c0b49a",
-          false,
-        );
+        /* A CURTAIN WALL REFLECTS THE SKY INSTEAD OF SHOWING A ROOM, and this
+           argument was hardcoded `false` — so every post-1950 office tower in
+           the Financial District took the punched-opening value. See
+           `faGlassy`. The era is the roll's and a footprint the roll does not
+           date has none, exactly as `emitFace` reads it. */
+        const era = (tb.u[i] & FLAG_NOYEAR) !== 0 ? -1 : faEra(1849 + tb.yr[i]);
+        const ty = tbe.face
+          ? ((tbe.face.fields.ty as Uint8Array)[i] ?? 0)
+          : 0;
+        flushFaces(f, groups, lut.wallF, wallO, era >= 0 && faGlassy(ty, era));
         resetGroups(groups);
       }
       drawn++;
     }
     // whatever is left of the near end, and every landmark nearer than it
     flushBand();
-    while (hq < heroQ.n) this.drawOneHero(f, heroQ, hq++, fade);
+    while (hq < heroQ.n) this.drawOneHero(f, heroQ, hq++, fade, gain);
     ctx.restore();
     void coverageAlpha;
     void skylitN;
@@ -1620,6 +2307,12 @@ export class CityScene {
     const fd: number[] = [];
     for (const h of lm.heroes) {
       if (iy < h.year) continue; // the prism draws — that is what stood there
+      /* AND THE FILM'S OWN SUBJECT IS NOT DRAWN TWICE. `filmHide` takes the
+         footprint out of the fabric; without the same test here City Hall's
+         drawn dome kept standing under the blue prism the film is raising on
+         top of it, so the shot showed a finished building with a construction
+         painted over it. Same rule, same set, both halves. */
+      if (this.filmHide !== null && this.filmHide.has(h.bi)) { gids.add(h.bi); continue; }
       items.push({ hero: h, zg: t.elevM(h.ax, h.ay) });
       fd.push(bucketFloor(ord, f.proj.depth(h.ax, h.ay)));
       gids.add(h.bi);
@@ -1635,11 +2328,20 @@ export class CityScene {
     };
   }
 
-  private drawOneHero(f: Frame, q: HeroQueue, k: number, fade: number): void {
+  private drawOneHero(
+    f: Frame, q: HeroQueue, k: number, fade: number, gain: number,
+  ): void {
     const it = q.items[k];
     drawHero(f, it.hero, q.mat, q.mats, it.zg, {
       fade,
       haze: HAZE,
+      /* THE FRAME'S OWN COVER GAIN, and the heroes were not drawn at it.
+         `colourLUT` applies `COVER_GAIN[step]` to all 166,166 buildings and
+         `heroMat` applies the same `g` to every hero; this port applied it to
+         the fabric only, so at whole-city zoom every landmark stood 25 %
+         brighter than the city around it. Passed in because nothing in
+         `landmarks.ts` may read the camera — see `lmLOD`. */
+      gain,
       rise: 1,
       // the year is P5's; with no clock running everything published is there
       year: undefined,
@@ -1657,6 +2359,7 @@ export class CityScene {
    * storey count is zero gets no bands and therefore no openings.
    */
   private emitFace(
+    f: Frame,
     g: ReturnType<typeof newFaceGroups>,
     tb: BldTable,
     face: Chunk | null,
@@ -1665,8 +2368,7 @@ export class CityScene {
     k1: number,
     bx: Float64Array,
     by: Float64Array,
-    tx: Float64Array,
-    ty: Float64Array,
+    nv: number,
     dhPx: number,
     q: number,
   ): void {
@@ -1679,36 +2381,221 @@ export class CityScene {
     const st2 = face ? ((face.fields.st2 as Uint8Array)[i] ?? 0) : 0;
     const storeys = storeysOf(tb.st[i], st2);
     if (storeys <= 0) return;
-    const role = face ? ((face.fields.role as Uint8Array)[o + k] ?? 1) : 1;
+    const roles = face ? (face.fields.role as Uint8Array) : null;
+    const role = roles ? (roles[o + k] ?? ROLE_FRONT) : ROLE_FRONT;
     if (!faceTakesOpenings(role)) return;
-    const w = faceWeights({
-      Lm, Hm, dhPx, storeys, role,
-      type: face ? ((face.fields.ty as Uint8Array)[i] ?? 0) : 0,
-      era: faEra(1849 + tb.yr[i]),
-      shop: face ? ((face.fields.shop as Uint8Array)[i] ?? 0) === 1 : false,
-      camScale: 1,
-    });
-    if (w.bands <= 0 || w.opening <= 0.002) return;
 
-    const p = faceGroupPath(g.open, q);
-    faceGroupAlpha(g.aOpen, q, w.opening);
-    const bandPx = dhPx / Math.max(1, w.bands);
-    const openW = Math.max(1, (bx[k1] - bx[k]) / Math.max(2, Math.round(Lm / 4)));
-    const cols = Math.max(1, Math.round(Lm / 4));
-    for (let b = 0; b < w.bands; b++) {
-      const oi = openingInBand(w.bandM, 0.62, 2.4, FA_SHOP_SILL);
-      const hpx = (oi.h / Math.max(0.001, w.bandM)) * bandPx;
-      const yTop = ty[k] + b * bandPx + (bandPx - hpx) * 0.45;
-      for (let c = 0; c < cols; c++) {
-        const u0 = (c + 0.28) / cols;
-        const u1 = (c + 0.72) / cols;
-        const ax = bx[k] + (bx[k1] - bx[k]) * u0;
-        const bx2 = bx[k] + (bx[k1] - bx[k]) * u1;
-        p.rect(Math.min(ax, bx2), yTop, Math.abs(bx2 - ax), Math.max(0.6, hpx));
+    const ex = bx[k1] - bx[k],
+      ey = by[k1] - by[k];
+    const wallPx = Math.hypot(ex, ey);
+    if (wallPx < 3) return;
+
+    /* THE ERA IS THE ROLL'S, AND A FOOTPRINT THE ROLL DOES NOT DATE HAS NONE.
+       `FLAG_NOYEAR` is 12,594 parcels the roll marks "not known"; reading an
+       era off 1849 + 0 gives them the 1906 vocabulary, which is a date the
+       record does not hold. `faVocab` takes era < 0 as UNCLASSED. */
+    const era = (tb.u[i] & FLAG_NOYEAR) !== 0 ? -1 : faEra(1849 + tb.yr[i]);
+    const w = faceWeights({
+      Lm, Hm, dhPx, wallPx, storeys, role,
+      type: face ? ((face.fields.ty as Uint8Array)[i] ?? 0) : 0,
+      era,
+      shop: face ? ((face.fields.shop as Uint8Array)[i] ?? 0) === 1 : false,
+      camScale: f.cam.scale,
+    });
+    if (w.bands <= 0) return;
+    if (w.opening <= 0.002 && w.ground <= 0.002 && w.cornice <= 0.002 && w.bay <= 0.002) {
+      return;
+    }
+
+    /* px per metre ALONG the wall and UP it. Everything below is stated in
+       world metres and multiplied by one of these two, which is the whole
+       reason this layer needs no stroke and no DPR decision: a feature is the
+       size the camera makes it and nothing is clamped. */
+    const hs = wallPx / Lm;
+    const vs = dhPx / Hm;
+    /* a rectangle ON the wall: `s` along the base in [0,1], `v` up in metres */
+    const rect = (
+      p: Path2D, s0: number, s1: number, v0: number, v1: number,
+    ): void => {
+      const ax = bx[k] + ex * s0, ay = by[k] + ey * s0;
+      const cx = bx[k] + ex * s1, cy = by[k] + ey * s1;
+      p.moveTo(ax, ay - v0 * vs);
+      p.lineTo(cx, cy - v0 * vs);
+      p.lineTo(cx, cy - v1 * vs);
+      p.lineTo(ax, ay - v1 * vs);
+      p.closePath();
+    };
+
+    const m = w.m;
+    const fh = w.bandM;
+    const isFront = role === ROLE_FRONT;
+    const openP = w.opening > 0.002 ? faceGroupPath(g.open, q) : null;
+    if (openP) faceGroupAlpha(g.aOpen, q, w.opening);
+    const gndP = w.ground > 0.002 && w.gnd !== GND_AS_ABOVE
+      ? faceGroupPath(g.shop, q) : null;
+    if (gndP) faceGroupAlpha(g.aShop, q, w.ground);
+    const litP = w.sill > 0.002 ? faceGroupPath(g.lit, q) : null;
+    if (litP) faceGroupAlpha(g.aLit, q, w.sill);
+    const barP = w.bar > 0.002 ? faceGroupPath(g.bar, q) : null;
+    if (barP) faceGroupAlpha(g.aBar, q, w.bar);
+
+    /* THE DOOR BAY IS THE ONE AGAINST THE PARTY WALL. Deterministic, off the
+       measured role of the two edges either side of this one — a San Francisco
+       row house puts its entry against the wall it shares, and where neither
+       neighbour is a party edge the entry is in the middle bay. */
+    const prevRole = roles ? (roles[o + ((k + nv - 1) % nv)] ?? ROLE_BACK) : ROLE_BACK;
+    const nextRole = roles ? (roles[o + ((k + 1) % nv)] ?? ROLE_BACK) : ROLE_BACK;
+    const db = doorBay(m, prevRole, nextRole);
+
+    for (let fl = 0; fl < w.bands; fl++) {
+      const y0 = fl * fh;
+      const ground = fl === 0;
+
+      if (ground && w.gnd === GND_SHOP) {
+        /* ── THE SHOPFRONT ─────────────────────────────────────────────
+           The published class says the ground floor is a shop, so it is
+           glazed ACROSS the frontage from the pavement to its fascia, with a
+           mullion at each bay. One band, not a row of punched holes, and that
+           is the whole difference between a Mission blockface and a Sunset
+           one. The glazing reaches `FA_SHOP_TOE` of the pavement rather than
+           standing on the 0.42 m stallriser: at block zoom the ground floor is
+           four pixels tall, the riser eats the bottom one, and the dark band
+           then floats and reads as shadow under a house. The riser survives as
+           a LIT LINE where there are pixels for it to be one in. */
+        const top = y0 + fh - Math.min(FA_SHOP_FASCIA, fh * 0.24);
+        const bot = y0 + Math.min(FA_SHOP_TOE, fh * 0.04);
+        if (gndP && top - bot > 0.7) {
+          const gap = 0.10 / Lm;
+          rect(gndP, gap, 1 - gap, bot, top);
+          if (litP) {
+            const rz = y0 + Math.min(FA_SHOP_SILL, fh * 0.14);
+            rect(litP, gap, 1 - gap, rz - Math.min(0.07, fh * 0.02), rz);
+            rect(litP, gap, 1 - gap, top, top + Math.min(0.20, fh * 0.06));
+            const mw = Math.max(0.045, 0.9 / Math.max(hs, 1e-3)) / Lm;
+            for (let b = 1; b < m; b++) {
+              const c = b / m;
+              rect(litP, c - mw, c + mw, bot, top);
+            }
+          }
+        }
+        continue;
+      }
+
+      if (ground && w.gnd === GND_VEHICLE) {
+        /* a warehouse or a garage: ONE wide low opening, at the door bay */
+        if (gndP) {
+          const c = (db + 0.5) / m, hw = w.gw / (2 * Lm);
+          rect(gndP, c - hw, c + hw, y0 + 0.06, y0 + 0.06 + w.gh);
+          if (litP) {
+            rect(litP, c - hw, c + hw, y0 + 0.06 + w.gh,
+                 y0 + 0.06 + w.gh + Math.min(0.18, fh * 0.05));
+          }
+        }
+        continue;
+      }
+
+      if (!openP) {
+        /* the ordinary opening has not arrived, but an ENTRANCE is a much
+           bigger object and may have. Draw it and nothing else on this floor. */
+        if (ground && w.gnd === GND_ENTRANCE && gndP) {
+          const c = (db + 0.5) / m, dhw = w.gw / (2 * Lm);
+          rect(gndP, c - dhw, c + dhw, y0 + 0.04, y0 + 0.04 + w.gh);
+        }
+        continue;
+      }
+
+      const leftover = fh - w.oh;
+      if (leftover < 0.12) continue;
+      const sill = w.sill_m;
+      const hw = w.ow / (2 * Lm);
+      for (let b = 0; b < m; b++) {
+        const c = (b + 0.5) / m;
+        if (ground && w.gnd === GND_ENTRANCE && b === db) {
+          /* THE ENTRANCE. A door reaches the ground; a window does not. */
+          if (!gndP) continue;
+          const dhw = w.gw / (2 * Lm);
+          rect(gndP, c - dhw, c + dhw, y0 + 0.04, y0 + 0.04 + w.gh);
+          if (litP) {
+            rect(litP, c - dhw * 1.14, c + dhw * 1.14, y0 + 0.04 + w.gh,
+                 y0 + 0.04 + w.gh + Math.min(0.22, fh * 0.06));
+          }
+          continue;
+        }
+        rect(openP, c - hw, c + hw, y0 + sill, y0 + sill + w.oh);
+        if (litP) {
+          /* the SILL under it, and the LIT REVEAL down its LEFT jamb. The key
+             light in this frame is upper-RIGHT — the same light every contact
+             shadow is thrown from — so the jamb that faces it is the left one,
+             and it is the only part of a recessed opening brighter than the
+             wall. */
+          rect(litP, c - hw * 1.16, c + hw * 1.16,
+               y0 + sill - Math.min(0.15, fh * 0.045), y0 + sill);
+          const rv = Math.max(0.035, 0.7 / Math.max(hs, 1e-3)) / Lm;
+          rect(litP, c - hw, c - hw + rv, y0 + sill, y0 + sill + w.oh);
+        }
+        if (barP) {
+          /* the glazing bar: one mullion and one meeting rail, which is what
+             turns a dark rectangle into a window at street zoom */
+          const bt = Math.max(0.035, 0.7 / Math.max(hs, 1e-3)) / Lm;
+          rect(barP, c - bt, c + bt, y0 + sill, y0 + sill + w.oh);
+          const rh = Math.max(0.03, 0.7 / Math.max(vs, 1e-3));
+          rect(barP, c - hw, c + hw,
+               y0 + sill + w.oh * 0.54 - rh, y0 + sill + w.oh * 0.54 + rh);
+        }
       }
     }
-    void openW;
-    void FA_DOOR_H;
+
+    /* ── THE BAY, UNDER the openings so the openings sit IN it ─────────── */
+    if (w.bay > 0.002) {
+      const b0 = w.gnd === GND_ENTRANCE && m > 1 ? (db === 0 ? 1 : 0) : 0;
+      const b1 = w.gnd === GND_ENTRANCE && m > 1 ? (db === m - 1 ? m - 1 : m) : m;
+      if (b1 > b0) {
+        /* THE RAMP IS ON THE BAY'S OWN RUN, NOT ON THE WHOLE WALL.
+           `faceWeights` can only see the wall, so it returns the eligibility
+           and the wall-wide ramp; the bay a house actually carries is the run
+           of bays the entrance does not take, which on a two-bay Sunset front
+           is ONE of them. Ramping it on the whole frontage opens it at half
+           the size it earned. `part3.html` L1058: `faRamp((b1-b0)/m*wpx,
+           FA.by0, FA.by1)`. */
+        const aBay = faRamp(
+          ((b1 - b0) / m) * wallPx, FA_RAMP.bay[0], FA_RAMP.bay[1],
+        );
+        const inset = Math.min(0.12, 0.5 / Math.max(1, m));
+        const s0 = b0 / m + inset * 0.25, s1 = b1 / m - inset * 0.25;
+        const v0 = fh, v1 = Hm - (w.hasCornice ? FA_CORN_M : 0.10);
+        if (aBay > 0.002 && (v1 - v0) * vs >= 2.0) {
+          const byP = faceGroupPath(g.bay, q);
+          faceGroupAlpha(g.aBay, q, aBay);
+          rect(byP, s0, s1, v0, v1);
+          /* AND THE TWO MARKS THAT MAKE IT A PROJECTION RATHER THAN A PANEL:
+             the shaded right cheek and the soffit under it, in the plane of
+             the wall, at `FA_V.shad`. Without them a bay is a slightly lighter
+             rectangle and reads as paint. */
+          const shP = faceGroupPath(g.shad, q);
+          faceGroupAlpha(g.aShad, q, aBay);
+          const tw = Math.max(0.06, 0.9 / Math.max(hs, 1e-3)) / Lm;
+          rect(shP, s1 - tw, s1, v0, v1);
+          rect(shP, s0, s1, v0, v0 + Math.max(0.10, 1.1 / Math.max(vs, 1e-3)));
+        }
+      }
+    }
+
+    /* ── THE CORNICE ──────────────────────────────────────────────────
+       Pre-1950 and a type that carries one, on a wall the footprint measures
+       as a front. IN THE PLANE OF THE WALL: a band of the wall's own colour
+       one value up, and the shadow it throws under itself. Nothing is added
+       above the MEASURED top and the silhouette does not move. */
+    if (w.cornice > 0.002 && isFront && Hm > FA_CORN_M * 2.4) {
+      const cp = faceGroupPath(g.lit, q);
+      faceGroupAlpha(g.aLit, q, w.cornice);
+      rect(cp, 0, 1, Hm - FA_CORN_M, Hm);
+      /* AND THE SHADOW IT THROWS UNDER ITSELF. `FA_CORN_T` — 0.14 m — has been
+         exported by `facades.ts` since P3 and read by nothing, so the cornice
+         was a pale band with no depth. `part3.html` L1082. */
+      const sp = faceGroupPath(g.shad, q);
+      faceGroupAlpha(g.aShad, q, w.cornice);
+      rect(sp, 0, 1, Hm - FA_CORN_M - FA_CORN_T, Hm - FA_CORN_M);
+    }
   }
 }
 
@@ -1764,11 +2651,13 @@ function resetGroups(g: ReturnType<typeof newFaceGroups>): void {
     g.lit[i] = null;
     g.bay[i] = null;
     g.shop[i] = null;
+    g.shad[i] = null;
     g.aOpen[i] = 0;
     g.aBar[i] = 0;
     g.aLit[i] = 0;
     g.aBay[i] = 0;
     g.aShop[i] = 0;
+    g.aShad[i] = 0;
   }
 }
 
@@ -1793,31 +2682,55 @@ function fadeAmt(f: Frame): number {
   return Math.round(v * 64) / 64;
 }
 
-/** the haze index into the colour table — 16 steps, invisible at that step */
-function hazeIdx(f: Frame, x: number, y: number): number {
-  const d = f.proj.depth(x, y);
-  const t = Math.max(0, Math.min(1, (d + 12000) / 24000));
-  return Math.max(0, Math.min(HZL - 1, Math.round((1 - t) * (HZL - 1))));
+/**
+ * THE HAZE WAS ON THE WRONG END OF THE CITY — AGAIN.
+ *
+ * `part3.html`'s Block M note records finding exactly this in its own fabric
+ * tier and fixing it: *"bx = 0 is the horizon and bx = BANDS is the reader's
+ * feet ... `dn = bx/BANDS` therefore put the MAXIMUM haze on the NEAREST
+ * buildings and none at all on the far ones — the opposite of aerial
+ * perspective, and the reason turning fadeAmt up made the foreground recede
+ * instead of the background."*
+ *
+ * This port had the same inversion, in the only place it computes the index:
+ *
+ * ```
+ *   d = depth(x, y)                       LARGER d is FARTHER — `buildBldOrder`
+ *   t = (d + 12000) / 24000               buckets on (hi - d) and draws bucket 0
+ *   hz = round((1 - t) * 15)              first, which is the horizon
+ * ```
+ *
+ * so `hz`, which `colourLUT` blends toward `HAZE` in proportion to, was LARGEST
+ * on the nearest buildings.
+ *
+ * And the two numbers under it were nobody's. `part3.html` L8945 is
+ * `((dpt - dlo)/dspan)^2.5 * (HZL-1) | 0` — normalised over the city's OWN
+ * depth range and on a 2.5 power, so the haze is concentrated at the far end
+ * where aerial perspective puts it. A fixed ±12,000 window is 24,000 plane
+ * units against a city that spans about a third of that, so the sixteen steps
+ * were being spent on depth the city does not occupy and the fabric came out
+ * within two steps of flat.
+ *
+ * THE RANGE IS THE ASSESSOR BLOCKS' AND NOT THE BUILDINGS'. `buildBldOrder`
+ * computes the buildings' own range, but only over the chunks that happen to be
+ * held; the mock has all 166,166 centroids in memory and this client does not.
+ * `base/blocks` is city-wide, always loaded, and its 5,404 centroids are the
+ * same built extent — the substitution is stated rather than hidden, and the
+ * bearing is fixed at 315° so the range is computed once.
+ */
+function hazeIdx(f: Frame, x: number, y: number, dlo: number, dspan: number): number {
+  const t = (f.proj.depth(x, y) - dlo) / dspan;
+  const z = (Math.pow(t < 0 ? 0 : t > 1 ? 1 : t, 2.5) * (HZL - 1)) | 0;
+  return z < 0 ? 0 : z > HZL - 1 ? HZL - 1 : z;
 }
 
-/**
- * The wall's step on the four-value ramp: 0 turned furthest from the key light,
- * 3 turned toward it. The light is `SUN`, and the anchor is `LAM0` — a wall
- * standing edge-on to the sun sits in the middle of the ramp.
- */
-function wallQuartile(
-  x0: number, y0: number, x1: number, y1: number,
-): number {
-  const dx = x1 - x0;
-  const dy = y1 - y0;
-  const l = Math.hypot(dx, dy) || 1;
-  // the outward normal of a wall in plan, unit, z = 0
-  const nx = dy / l;
-  const ny = -dx / l;
-  const lam = Math.max(0, nx * SUN[0] + ny * SUN[1]);
-  const t = Math.max(0, Math.min(1, lam / Math.max(0.001, LAM0)));
-  return Math.max(0, Math.min(3, Math.round(t * 3)));
-}
+/* `wallQuartile` WAS A THIRD FUNCTION FOR ONE QUANTITY. It ran
+   `max(0, n · SUN)` clamped by `LAM0` — the terrain's world-space sun vector —
+   while `landmarks.ts` was already running the reference's own rule on the
+   projection's coefficients, and `roofs.ts` a third variant. Every wall turned
+   away from the light took step 0 instead of spreading over 0 and 1, so a
+   block of houses came out two values where the reference gives it four. See
+   `planeQuartile` in `buildings.ts`. Deleted. */
 
 /**
  * Flag the DEM cells a set of published rings covers.

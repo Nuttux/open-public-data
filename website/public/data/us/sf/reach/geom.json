@@ -1,0 +1,2481 @@
+{
+ "_": "Published geometry for what San Francisco decided outside its own boundary. Emitted by pipeline/scripts/us_sf_reach/build_reach_geom.py. Coordinates live in reach/geom.qc; this file is the index and the provenance.",
+ "chunk": {
+  "file": "us/sf/reach/geom.qc",
+  "key": "reach/geom",
+  "kind": "reach",
+  "bytes": 36556,
+  "features": 62,
+  "rings": 373,
+  "vertices": 3869,
+  "classes": [
+   "county",
+   "watershed",
+   "reservoir",
+   "aqueduct",
+   "airport",
+   "cemetery",
+   "cityland",
+   "dam"
+  ],
+  "kinds": [
+   "area",
+   "line",
+   "point"
+  ],
+  "sources": [
+   "caltrans-airports",
+   "cpad-2026a",
+   "gtnh-hgvs",
+   "nhd-flowline",
+   "nhd-waterbody",
+   "nid",
+   "tiger-arealm",
+   "txuc-3kzm"
+  ],
+  "fields": [
+   {
+    "n": "fcls",
+    "t": "u8",
+    "o": 0,
+    "c": 62
+   },
+   {
+    "n": "fkind",
+    "t": "u8",
+    "o": 62,
+    "c": 62
+   },
+   {
+    "n": "fsrc",
+    "t": "u8",
+    "o": 124,
+    "c": 62
+   },
+   {
+    "n": "fr0",
+    "t": "u16",
+    "o": 186,
+    "c": 62
+   },
+   {
+    "n": "frn",
+    "t": "u16",
+    "o": 310,
+    "c": 62
+   },
+   {
+    "n": "fbb",
+    "t": "i32",
+    "o": 436,
+    "c": 248
+   },
+   {
+    "n": "rv0",
+    "t": "u32",
+    "o": 1428,
+    "c": 373
+   },
+   {
+    "n": "rvn",
+    "t": "u32",
+    "o": 2920,
+    "c": 373
+   },
+   {
+    "n": "rhole",
+    "t": "u8",
+    "o": 4412,
+    "c": 373
+   },
+   {
+    "n": "x",
+    "t": "i32",
+    "o": 4788,
+    "c": 3869
+   },
+   {
+    "n": "y",
+    "t": "i32",
+    "o": 20264,
+    "c": 3869
+   }
+  ]
+ },
+ "projection": {
+  "from": "manifest.proj",
+  "x": "(lon - lon0) * mpd * cosl",
+  "y": "(lat - lat0) * mpd",
+  "lon0": -122.438,
+  "lat0": 37.76,
+  "mpd": 111320.0,
+  "cosl": 0.790582709628753,
+  "quantum_m": 1.0,
+  "note": "cosl is frozen at San Francisco's latitude, so east-west scale drifts with distance from 37.76. The drift is measured per feature into proj_worst_m and each feature also carries its true lon/lat bounding box."
+ },
+ "simplify": {
+  "method": "Douglas-Peucker, topology preserving, in world metres",
+  "tol_m": 40.0,
+  "worst_deviation_m": 58.88,
+  "note": "measured as the largest distance from any ORIGINAL vertex to the simplified ring. Nothing is dropped for being small; a shape ships whole or not at all."
+ },
+ "counts": {
+  "airport": 1,
+  "aqueduct": 1,
+  "cemetery": 22,
+  "cityland": 20,
+  "county": 2,
+  "dam": 1,
+  "reservoir": 11,
+  "watershed": 4
+ },
+ "outside_test": {
+  "against": "txuc-3kzm, the published county boundary",
+  "test": "the polygon's representative point is outside the ring, and further out than min_m",
+  "min_m": 1000.0,
+  "nearest_kept_m": 9369.7,
+  "furthest_dropped_m": 526.7,
+  "kept": 27,
+  "dropped_border_artefact": 16,
+  "dropped_names": [
+   "900 Innes Ave Site",
+   "CANDLESTICK ACCESS",
+   "HARNEY WAY (REMAINDER)",
+   "HUNTERS PT EXPWY (REMAINDER)",
+   "MARINA GREEN",
+   "PORT LANDS",
+   "SEAL ROCKS",
+   "STATE RELINQUISHMENT (1975)",
+   "Treasure Island Development Authority",
+   "VACANT LAND - CARROLL AVE WATER LOT",
+   "VACANT LAND - FITZGERALD",
+   "WEST OF AQUATIC PARK MARINE LOTS",
+   "WET WATER RETENSION BASIN",
+   "YACHT HARBOR"
+  ],
+  "note": "the dropped rows are all waterfront: two DataSF registers disagreeing about where the shoreline is by tens of metres. The band between the furthest dropped and the nearest kept is empty, which is why the cut can be stated rather than argued."
+ },
+ "not_drawn": [
+  {
+   "thing": "the Mountain Tunnel — Hetch Hetchy Reservoir to Moccasin",
+   "why": "NHD's named 'Hetch Hetchy Aqueduct' feature stops at Moccasin. The upper reach is not in it, and nothing here will connect the reservoir to the line's east end with a segment we drew."
+  },
+  {
+   "thing": "the Farallones' own reach beyond the published boundary ring",
+   "why": "the islands ship because txuc-3kzm contains them. Nothing else about them is asserted."
+  },
+  {
+   "thing": "a legal boundary for SFO",
+   "why": "none is published. The FAA's aviation services carry runways and aprons and never property; Caltrans, TIGER and OSM all publish a facility footprint and they disagree by 15 %. The polygon here is labelled a footprint."
+  },
+  {
+   "thing": "the aqueduct's tunnels as separate objects",
+   "why": "OpenStreetMap identifies them individually and its members carry source=NHD, i.e. they were seeded from the same federal line and hand-refined. Until that hand-refinement is checked, the federal line is the one that ships."
+  }
+ ],
+ "sources": {
+  "caltrans-airports": {
+   "publisher": "Caltrans — Division of Aeronautics",
+   "title": "Airport Boundaries (CHaviation)",
+   "url": "https://caltrans-gis.dot.ca.gov/arcgis/rest/services/CHaviation/Airport_Boundaries/FeatureServer/0",
+   "what": "OBJECTID 218, the SFO polygon that matches the real footprint",
+   "trap": "Caltrans ships TWO SFO polygons. OBJECTID 208 is larger and runs far east into the Bay and is not the airport. This file carries 218 and not 208."
+  },
+  "cpad-2026a": {
+   "publisher": "GreenInfo Network — California Protected Areas Database",
+   "title": "CPAD Holdings, current release",
+   "url": "https://services1.arcgis.com/4ZKi1B1zTblbwgWB/arcgis/rest/services/CPAD_Holdings_Current_Release/FeatureServer/0",
+   "what": "255 parcel-aligned holdings whose owner is 'San Francisco - Public Utilities Commission, City and County of'",
+   "note": "preferred over PAD-US 4.1, which is a dissolved 2023 re-publication of this same data — 15 blobs against 255 holdings. The endpoints advertised on data.ca.gov time out; this GreenInfo service is the reachable one.",
+   "trap": "the Alameda watershed is filed under UNIT_NAME 'San Francisco Watershed Lands'. Querying 'SFPUC Alameda Watershed' returns 4 features, not 85.",
+   "derived": "CPAD is itself compiled from county assessor and agency records; its lineage was not independently verified here."
+  },
+  "gtnh-hgvs": {
+   "publisher": "DataSF",
+   "title": "City Lands",
+   "url": "https://data.sfgov.org/d/gtnh-hgvs",
+   "what": "the city's own register of the land it owns",
+   "note": "the dataset's own description says: \"Not all lands are within the City and County proper. The City owns properties outside of its boundaries.\""
+  },
+  "nhd-flowline": {
+   "publisher": "USGS — National Hydrography Dataset",
+   "title": "NHD Flowline (Large Scale), GNIS_NAME 'Hetch Hetchy Aqueduct'",
+   "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/6",
+   "what": "43 line features, one GNIS id (00243393), public domain"
+  },
+  "nhd-waterbody": {
+   "publisher": "USGS — National Hydrography Dataset",
+   "title": "NHD Waterbody (Large Scale)",
+   "url": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/12",
+   "what": "the reservoirs, by GNIS name, with the published surface area"
+  },
+  "nid": {
+   "publisher": "US Army Corps of Engineers — National Inventory of Dams",
+   "title": "NID CA00123",
+   "url": "https://nid.sec.usace.army.mil/api/dams/CA00123/inventory",
+   "what": "O'Shaughnessy Dam: the coordinate, the height, the year and the owner",
+   "note": "GNIS carries NO dams in California — the class was retired — so a federal or state dam register is the only place this position exists. The NID row's own sourceAgency is 'California', i.e. the state DSOD."
+  },
+  "tiger-arealm": {
+   "publisher": "US Census Bureau — TIGER/Line 2024",
+   "title": "Area Landmarks, California (tl_2024_06_arealm)",
+   "url": "https://www2.census.gov/geo/tiger/TIGER2024/AREALM/tl_2024_06_arealm.zip",
+   "what": "MTFCC K2582 (Cemetery) inside the Colma box",
+   "note": "a file download; TIGERweb's REST service does not carry AREALM — verified negative. TIGER has Olivet Memorial Park and OpenStreetMap does not, so the obvious cartographic source is the incomplete one here."
+  },
+  "txuc-3kzm": {
+   "publisher": "DataSF",
+   "title": "City and County of San Francisco boundary",
+   "url": "https://data.sfgov.org/d/txuc-3kzm",
+   "what": "the LEGAL boundary, which is why the Farallon Islands are in it",
+   "note": "the same dataset base/coast is cut from; it runs kilometres into the Pacific and straight across the Golden Gate"
+  }
+ },
+ "features": [
+  {
+   "id": "sf-county",
+   "name": "City and County of San Francisco",
+   "class": "county",
+   "kind": "area",
+   "source": "txuc-3kzm",
+   "county": "San Francisco",
+   "metric": null,
+   "rings": 21,
+   "vertices": 574,
+   "bbox_world_m": [
+    -6772,
+    -5779,
+    9709,
+    18896
+   ],
+   "bbox_lonlat": [
+    -122.514948,
+    37.708089,
+    -122.327681,
+    37.929747
+   ],
+   "simplify_worst_m": 39.81,
+   "proj_worst_m": 5.9,
+   "derived": null,
+   "outside_locator": false,
+   "note": "the legal boundary, not the shoreline",
+   "caveats": null
+  },
+  {
+   "id": "farallon-islands",
+   "name": "Farallon Islands",
+   "class": "county",
+   "kind": "area",
+   "source": "txuc-3kzm",
+   "county": "San Francisco",
+   "metric": null,
+   "rings": 17,
+   "vertices": 110,
+   "bbox_world_m": [
+    -59016,
+    -7424,
+    -49373,
+    1414
+   ],
+   "bbox_lonlat": [
+    -123.108582,
+    37.693249,
+    -122.999008,
+    37.772713
+   ],
+   "simplify_worst_m": 58.88,
+   "proj_worst_m": 44.9,
+   "derived": null,
+   "outside_locator": false,
+   "note": "California Government Code 23138: \"The islands known as the Farralones (Farallons) are a part of said city and county.\" They are 50 km offshore and inside the same published boundary the map's own coastline is cut from.",
+   "caveats": null
+  },
+  {
+   "id": "cityland-1199",
+   "name": "Camp Mather",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Recreation and Parks",
+    "city": "Groveland",
+    "land_id": [
+     "1199"
+    ]
+   },
+   "rings": 1,
+   "vertices": 9,
+   "bbox_world_m": [
+    226852,
+    12973,
+    228530,
+    14238
+   ],
+   "bbox_lonlat": [
+    -119.86036,
+    37.876539,
+    -119.8413,
+    37.887903
+   ],
+   "simplify_worst_m": 2.0,
+   "proj_worst_m": 395.7,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1311",
+   "name": "Furman Bequest",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 8,
+    "department": "Recreation and Parks",
+    "city": "Bakersfield · Coalinga · Lost Hills · McKittrick",
+    "land_id": [
+     "1311",
+     "1312",
+     "1313",
+     "1314",
+     "1315",
+     "1316",
+     "1317",
+     "1318"
+    ]
+   },
+   "rings": 11,
+   "vertices": 63,
+   "bbox_world_m": [
+    180393,
+    -263796,
+    308624,
+    -181117
+   ],
+   "bbox_lonlat": [
+    -120.388262,
+    35.390287,
+    -118.931209,
+    36.133003
+   ],
+   "simplify_worst_m": 27.43,
+   "proj_worst_m": 9261.6,
+   "derived": null,
+   "outside_locator": true,
+   "note": "8 parcels of one bequest, in 4 Kern and Fresno county oil towns",
+   "caveats": null
+  },
+  {
+   "id": "cityland-1211",
+   "name": "Garcia Residential Gate",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Sunol",
+    "land_id": [
+     "1211"
+    ]
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    49999,
+    -22772,
+    50331,
+    -22451
+   ],
+   "bbox_lonlat": [
+    -121.869878,
+    37.555434,
+    -121.866112,
+    37.558319
+   ],
+   "simplify_worst_m": 24.2,
+   "proj_worst_m": 138.6,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1204",
+   "name": "H. Hetchy-Warnerville Substation/Switchyard",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Oakdale",
+    "land_id": [
+     "1204"
+    ]
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    143846,
+    -2142,
+    144042,
+    -1928
+   ],
+   "bbox_lonlat": [
+    -120.803524,
+    37.740754,
+    -120.801298,
+    37.742677
+   ],
+   "simplify_worst_m": 0.0,
+   "proj_worst_m": 37.4,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-921",
+   "name": "Hidden Valley/Log Cabin Ranch",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Juvenile Probation",
+    "city": "La Honda",
+    "land_id": [
+     "921"
+    ]
+   },
+   "rings": 2,
+   "vertices": 27,
+   "bbox_world_m": [
+    14935,
+    -51589,
+    17250,
+    -49830
+   ],
+   "bbox_lonlat": [
+    -122.2683,
+    37.296573,
+    -122.241998,
+    37.312373
+   ],
+   "simplify_worst_m": 29.2,
+   "proj_worst_m": 106.4,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1203",
+   "name": "Meter House No. 2",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Oakdale",
+    "land_id": [
+     "1203"
+    ]
+   },
+   "rings": 1,
+   "vertices": 4,
+   "bbox_world_m": [
+    140633,
+    -2679,
+    140650,
+    -2658
+   ],
+   "bbox_lonlat": [
+    -120.840053,
+    37.735932,
+    -120.839844,
+    37.736127
+   ],
+   "simplify_worst_m": 11.75,
+   "proj_worst_m": 45.7,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1200",
+   "name": "Moccasin Reservoir and Lands",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Moccasin",
+    "land_id": [
+     "1200"
+    ]
+   },
+   "rings": 3,
+   "vertices": 22,
+   "bbox_world_m": [
+    187240,
+    4268,
+    189462,
+    6041
+   ],
+   "bbox_lonlat": [
+    -120.310571,
+    37.798341,
+    -120.285193,
+    37.814334
+   ],
+   "simplify_worst_m": 39.5,
+   "proj_worst_m": 137.6,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1202",
+   "name": "Oakdale Office/Warehouse",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Oakdale",
+    "land_id": [
+     "1202"
+    ]
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    139907,
+    1082,
+    140023,
+    1211
+   ],
+   "bbox_lonlat": [
+    -120.84829,
+    37.769723,
+    -120.846971,
+    37.770879
+   ],
+   "simplify_worst_m": 0.0,
+   "proj_worst_m": 20.6,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1197",
+   "name": "PUC Water Millbrae",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Millbrae",
+    "land_id": [
+     "1197"
+    ]
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    3534,
+    -17230,
+    3902,
+    -16897
+   ],
+   "bbox_lonlat": [
+    -122.39785,
+    37.605219,
+    -122.393659,
+    37.608211
+   ],
+   "simplify_worst_m": 7.12,
+   "proj_worst_m": 8.1,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1231",
+   "name": "PUC Water Quality Bureau",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Burlingame",
+    "land_id": [
+     "1231"
+    ]
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    5384,
+    -18423,
+    5524,
+    -18279
+   ],
+   "bbox_lonlat": [
+    -122.376825,
+    37.594503,
+    -122.375236,
+    37.595802
+   ],
+   "simplify_worst_m": 0.0,
+   "proj_worst_m": 12.3,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1201",
+   "name": "Rock River Lime Facility",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Jamestown",
+    "land_id": [
+     "1201"
+    ]
+   },
+   "rings": 1,
+   "vertices": 12,
+   "bbox_world_m": [
+    168934,
+    5792,
+    170566,
+    7485
+   ],
+   "bbox_lonlat": [
+    -120.51846,
+    37.812027,
+    -120.499893,
+    37.827235
+   ],
+   "simplify_worst_m": 23.08,
+   "proj_worst_m": 154.1,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-935",
+   "name": "San Bruno Jail Complex",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Sheriff",
+    "city": "San Bruno",
+    "land_id": [
+     "935"
+    ]
+   },
+   "rings": 1,
+   "vertices": 11,
+   "bbox_world_m": [
+    -2142,
+    -15697,
+    -1378,
+    -14545
+   ],
+   "bbox_lonlat": [
+    -122.462362,
+    37.618989,
+    -122.45366,
+    37.629575
+   ],
+   "simplify_worst_m": 36.03,
+   "proj_worst_m": 4.1,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-635",
+   "name": "San Francisco International Airport",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Airport (SFO)",
+    "city": "San Francisco",
+    "land_id": [
+     "635"
+    ]
+   },
+   "rings": 2,
+   "vertices": 57,
+   "bbox_world_m": [
+    3106,
+    -17899,
+    10425,
+    -13342
+   ],
+   "bbox_lonlat": [
+    -122.402705,
+    37.599211,
+    -122.319542,
+    37.640148
+   ],
+   "simplify_worst_m": 36.7,
+   "proj_worst_m": 22.6,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-25",
+   "name": "Sharp Park",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Recreation and Parks",
+    "city": "Pacifica",
+    "land_id": [
+     "25"
+    ]
+   },
+   "rings": 3,
+   "vertices": 41,
+   "bbox_world_m": [
+    -5218,
+    -15525,
+    -2304,
+    -14492
+   ],
+   "bbox_lonlat": [
+    -122.497286,
+    37.620536,
+    -122.464181,
+    37.629814
+   ],
+   "simplify_worst_m": 27.62,
+   "proj_worst_m": 9.8,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1212",
+   "name": "San Antonio Pump Station / Sunol WTP Lands",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Sunol",
+    "land_id": [
+     "1212"
+    ]
+   },
+   "rings": 1,
+   "vertices": 14,
+   "bbox_world_m": [
+    49913,
+    -25070,
+    51536,
+    -21769
+   ],
+   "bbox_lonlat": [
+    -121.870857,
+    37.534796,
+    -121.852418,
+    37.564447
+   ],
+   "simplify_worst_m": 39.8,
+   "proj_worst_m": 156.2,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1209",
+   "name": "Sunol Water Temple Lands",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Sunol",
+    "land_id": [
+     "1209"
+    ]
+   },
+   "rings": 1,
+   "vertices": 13,
+   "bbox_world_m": [
+    48073,
+    -20277,
+    49823,
+    -18583
+   ],
+   "bbox_lonlat": [
+    -121.891759,
+    37.577851,
+    -121.871884,
+    37.593082
+   ],
+   "simplify_worst_m": 39.48,
+   "proj_worst_m": 120.9,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1210",
+   "name": "Sunol Watershed Keepers House",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Sunol",
+    "land_id": [
+     "1210"
+    ]
+   },
+   "rings": 1,
+   "vertices": 8,
+   "bbox_world_m": [
+    48278,
+    -22400,
+    49150,
+    -21299
+   ],
+   "bbox_lonlat": [
+    -121.889429,
+    37.55878,
+    -121.879409,
+    37.568673
+   ],
+   "simplify_worst_m": 39.57,
+   "proj_worst_m": 133.3,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1205",
+   "name": "Tesla Portal / Tesla Treatment Facility",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Tracy",
+    "land_id": [
+     "1205"
+    ]
+   },
+   "rings": 1,
+   "vertices": 7,
+   "bbox_world_m": [
+    89500,
+    -14114,
+    89955,
+    -13581
+   ],
+   "bbox_lonlat": [
+    -121.421045,
+    37.633211,
+    -121.415877,
+    37.638001
+   ],
+   "simplify_worst_m": 24.57,
+   "proj_worst_m": 153.5,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1206",
+   "name": "Thomas Shaft Disinfection Sta",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Tracy",
+    "land_id": [
+     "1206"
+    ]
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    82811,
+    -16443,
+    83108,
+    -15984
+   ],
+   "bbox_lonlat": [
+    -121.497047,
+    37.612291,
+    -121.493672,
+    37.616418
+   ],
+   "simplify_worst_m": 27.58,
+   "proj_worst_m": 165.7,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cityland-1208",
+   "name": "Water Enterprise Warehouse",
+   "class": "cityland",
+   "kind": "area",
+   "source": "gtnh-hgvs",
+   "county": null,
+   "metric": {
+    "parcels": 1,
+    "department": "Public Utilities Commission",
+    "city": "Sunol",
+    "land_id": [
+     "1208"
+    ]
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    48533,
+    -18626,
+    48651,
+    -18525
+   ],
+   "bbox_lonlat": [
+    -121.886538,
+    37.592652,
+    -121.885113,
+    37.593588
+   ],
+   "simplify_worst_m": 11.35,
+   "proj_worst_m": 109.8,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "sfpuc-peninsula-watershed",
+   "name": "SFPUC Peninsula Watershed",
+   "class": "watershed",
+   "kind": "area",
+   "source": "cpad-2026a",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 21910.1,
+    "holdings": 103,
+    "unit_name": "SFPUC Peninsula Watershed"
+   },
+   "rings": 37,
+   "vertices": 539,
+   "bbox_world_m": [
+    -3509,
+    -35028,
+    14058,
+    -15397
+   ],
+   "bbox_lonlat": [
+    -122.477872,
+    37.445342,
+    -122.278139,
+    37.621684
+   ],
+   "simplify_worst_m": 39.94,
+   "proj_worst_m": 58.8,
+   "derived": "the union of 103 published CPAD holdings. The parcels are CPAD's; the union is ours, and the acreage quoted is the sum of the holdings' own ACRES field, not a measurement of the unioned shape.",
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "sfpuc-alameda-watershed",
+   "name": "SFPUC Alameda Watershed",
+   "class": "watershed",
+   "kind": "area",
+   "source": "cpad-2026a",
+   "county": "Alameda · Santa Clara",
+   "metric": {
+    "acres_published": 34707.0,
+    "holdings": 85,
+    "unit_name": "San Francisco Watershed Lands"
+   },
+   "rings": 143,
+   "vertices": 898,
+   "bbox_world_m": [
+    43426,
+    -38121,
+    64908,
+    -16901
+   ],
+   "bbox_lonlat": [
+    -121.944563,
+    37.417553,
+    -121.70047,
+    37.608176
+   ],
+   "simplify_worst_m": 57.2,
+   "proj_worst_m": 286.2,
+   "derived": "the union of 85 published CPAD holdings. The parcels are CPAD's; the union is ours, and the acreage quoted is the sum of the holdings' own ACRES field, not a measurement of the unioned shape.",
+   "outside_locator": false,
+   "note": null,
+   "caveats": [
+    "CPAD files the Alameda watershed under UNIT_NAME 'San Francisco Watershed Lands'. The name on this row is the one the SFPUC uses; the source's own string is carried in `unit_name`."
+   ]
+  },
+  {
+   "id": "sunol-regional-wilderness",
+   "name": "Sunol Regional Wilderness",
+   "class": "watershed",
+   "kind": "area",
+   "source": "cpad-2026a",
+   "county": "Alameda",
+   "metric": {
+    "acres_published": 3794.5,
+    "holdings": 20,
+    "unit_name": "Sunol Regional Wilderness"
+   },
+   "rings": 4,
+   "vertices": 91,
+   "bbox_world_m": [
+    49610,
+    -28594,
+    58498,
+    -24263
+   ],
+   "bbox_lonlat": [
+    -121.874295,
+    37.503133,
+    -121.773303,
+    37.542039
+   ],
+   "simplify_worst_m": 37.69,
+   "proj_worst_m": 201.3,
+   "derived": "the union of 20 published CPAD holdings. The parcels are CPAD's; the union is ours, and the acreage quoted is the sum of the holdings' own ACRES field, not a measurement of the unioned shape.",
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "hetch-hetchy-water-and-power",
+   "name": "Hetch Hetchy Water and Power",
+   "class": "watershed",
+   "kind": "area",
+   "source": "cpad-2026a",
+   "county": "Tuolumne",
+   "metric": {
+    "acres_published": 2706.2,
+    "holdings": 32,
+    "unit_name": "Hetch Hetchy Water and Power"
+   },
+   "rings": 21,
+   "vertices": 216,
+   "bbox_world_m": [
+    161040,
+    4000,
+    237800,
+    25623
+   ],
+   "bbox_lonlat": [
+    -120.608162,
+    37.795901,
+    -119.735965,
+    37.99017
+   ],
+   "simplify_worst_m": 41.12,
+   "proj_worst_m": 707.2,
+   "derived": "the union of 32 published CPAD holdings. The parcels are CPAD's; the union is ours, and the acreage quoted is the sum of the holdings' own ACRES field, not a measurement of the unioned shape.",
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "wb-calaveras-reservoir",
+   "name": "Calaveras Reservoir",
+   "class": "reservoir",
+   "kind": "area",
+   "source": "nhd-waterbody",
+   "county": null,
+   "metric": {
+    "km2_published": 4.799,
+    "parts": 1,
+    "gnis_id": "00220379"
+   },
+   "rings": 1,
+   "vertices": 91,
+   "bbox_world_m": [
+    53295,
+    -33979,
+    57310,
+    -29474
+   ],
+   "bbox_lonlat": [
+    -121.832428,
+    37.454764,
+    -121.786808,
+    37.495236
+   ],
+   "simplify_worst_m": 39.69,
+   "proj_worst_m": 225.8,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "wb-cherry-lake",
+   "name": "Cherry Lake",
+   "class": "reservoir",
+   "kind": "area",
+   "source": "nhd-waterbody",
+   "county": null,
+   "metric": {
+    "km2_published": 7.097,
+    "parts": 1,
+    "gnis_id": "00255077"
+   },
+   "rings": 2,
+   "vertices": 70,
+   "bbox_world_m": [
+    221692,
+    23881,
+    224033,
+    30037
+   ],
+   "bbox_lonlat": [
+    -119.918992,
+    37.974527,
+    -119.892142,
+    38.029828
+   ],
+   "simplify_worst_m": 39.91,
+   "proj_worst_m": 816.8,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "wb-hetch-hetchy-reservoir",
+   "name": "Hetch Hetchy Reservoir",
+   "class": "reservoir",
+   "kind": "area",
+   "source": "nhd-waterbody",
+   "county": null,
+   "metric": {
+    "km2_published": 8.128,
+    "parts": 1,
+    "gnis_id": "00261289"
+   },
+   "rings": 1,
+   "vertices": 78,
+   "bbox_world_m": [
+    233066,
+    17320,
+    244476,
+    22637
+   ],
+   "bbox_lonlat": [
+    -119.789755,
+    37.915519,
+    -119.660057,
+    37.96336
+   ],
+   "simplify_worst_m": 39.62,
+   "proj_worst_m": 648.3,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "wb-lake-eleanor",
+   "name": "Lake Eleanor",
+   "class": "reservoir",
+   "kind": "area",
+   "source": "nhd-waterbody",
+   "county": null,
+   "metric": {
+    "km2_published": 4.13,
+    "parts": 1,
+    "gnis_id": "00259830"
+   },
+   "rings": 14,
+   "vertices": 114,
+   "bbox_world_m": [
+    224930,
+    23837,
+    229322,
+    26389
+   ],
+   "bbox_lonlat": [
+    -119.8822,
+    37.974077,
+    -119.832294,
+    37.997053
+   ],
+   "simplify_worst_m": 39.21,
+   "proj_worst_m": 736.6,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "wb-lower-crystal-springs-reservoir",
+   "name": "Lower Crystal Springs Reservoir",
+   "class": "reservoir",
+   "kind": "area",
+   "source": "nhd-waterbody",
+   "county": null,
+   "metric": {
+    "km2_published": 2.371,
+    "parts": 1,
+    "gnis_id": "00234208"
+   },
+   "rings": 1,
+   "vertices": 97,
+   "bbox_world_m": [
+    4031,
+    -28032,
+    7654,
+    -22541
+   ],
+   "bbox_lonlat": [
+    -122.392218,
+    37.508162,
+    -122.350973,
+    37.557516
+   ],
+   "simplify_worst_m": 39.86,
+   "proj_worst_m": 25.6,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "wb-moccasin-reservoir",
+   "name": "Moccasin Reservoir",
+   "class": "reservoir",
+   "kind": "area",
+   "source": "nhd-waterbody",
+   "county": null,
+   "metric": {
+    "km2_published": 0.119,
+    "parts": 1,
+    "gnis_id": "00228886"
+   },
+   "rings": 1,
+   "vertices": 6,
+   "bbox_world_m": [
+    187596,
+    5333,
+    188325,
+    5832
+   ],
+   "bbox_lonlat": [
+    -120.306689,
+    37.807848,
+    -120.298011,
+    37.812388
+   ],
+   "simplify_worst_m": 37.83,
+   "proj_worst_m": 133.0,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "wb-pilarcitos-lake",
+   "name": "Pilarcitos Lake",
+   "class": "reservoir",
+   "kind": "area",
+   "source": "nhd-waterbody",
+   "county": null,
+   "metric": {
+    "km2_published": 0.362,
+    "parts": 1,
+    "gnis_id": "00253890"
+   },
+   "rings": 1,
+   "vertices": 29,
+   "bbox_world_m": [
+    -185,
+    -23663,
+    1464,
+    -22476
+   ],
+   "bbox_lonlat": [
+    -122.440107,
+    37.547431,
+    -122.421366,
+    37.55842
+   ],
+   "simplify_worst_m": 38.72,
+   "proj_worst_m": 4.1,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "wb-priest-reservoir",
+   "name": "Priest Reservoir",
+   "class": "reservoir",
+   "kind": "area",
+   "source": "nhd-waterbody",
+   "county": null,
+   "metric": {
+    "km2_published": 0.187,
+    "parts": 1,
+    "gnis_id": "00231055"
+   },
+   "rings": 1,
+   "vertices": 13,
+   "bbox_world_m": [
+    190685,
+    4507,
+    191352,
+    5130
+   ],
+   "bbox_lonlat": [
+    -120.271357,
+    37.800486,
+    -120.263739,
+    37.806082
+   ],
+   "simplify_worst_m": 29.18,
+   "proj_worst_m": 119.1,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "wb-san-andreas-lake",
+   "name": "San Andreas Lake",
+   "class": "reservoir",
+   "kind": "area",
+   "source": "nhd-waterbody",
+   "county": null,
+   "metric": {
+    "km2_published": 1.965,
+    "parts": 1,
+    "gnis_id": "00253895"
+   },
+   "rings": 1,
+   "vertices": 52,
+   "bbox_world_m": [
+    -289,
+    -20047,
+    2455,
+    -16216
+   ],
+   "bbox_lonlat": [
+    -122.441346,
+    37.579917,
+    -122.410109,
+    37.614349
+   ],
+   "simplify_worst_m": 37.44,
+   "proj_worst_m": 5.9,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "wb-san-antonio-reservoir",
+   "name": "San Antonio Reservoir",
+   "class": "reservoir",
+   "kind": "area",
+   "source": "nhd-waterbody",
+   "county": null,
+   "metric": {
+    "km2_published": 3.118,
+    "parts": 1,
+    "gnis_id": "00232370"
+   },
+   "rings": 1,
+   "vertices": 104,
+   "bbox_world_m": [
+    51755,
+    -21845,
+    55645,
+    -18227
+   ],
+   "bbox_lonlat": [
+    -121.849927,
+    37.563762,
+    -121.805656,
+    37.596265
+   ],
+   "simplify_worst_m": 39.06,
+   "proj_worst_m": 140.7,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "wb-upper-crystal-springs-reservoir",
+   "name": "Upper Crystal Springs Reservoir",
+   "class": "reservoir",
+   "kind": "area",
+   "source": "nhd-waterbody",
+   "county": null,
+   "metric": {
+    "km2_published": 2.41,
+    "parts": 1,
+    "gnis_id": "00236879"
+   },
+   "rings": 2,
+   "vertices": 73,
+   "bbox_world_m": [
+    7550,
+    -30921,
+    10330,
+    -27657
+   ],
+   "bbox_lonlat": [
+    -122.352207,
+    37.482137,
+    -122.320626,
+    37.511553
+   ],
+   "simplify_worst_m": 43.37,
+   "proj_worst_m": 38.4,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "hetch-hetchy-aqueduct",
+   "name": "Hetch Hetchy Aqueduct",
+   "class": "aqueduct",
+   "kind": "line",
+   "source": "nhd-flowline",
+   "county": null,
+   "metric": {
+    "km_published": 190.0,
+    "features": 43,
+    "gnis_id": "00243393",
+    "east_end_lon": -120.2653
+   },
+   "rings": 43,
+   "vertices": 151,
+   "bbox_world_m": [
+    10261,
+    -32033,
+    191212,
+    5958
+   ],
+   "bbox_lonlat": [
+    -122.321412,
+    37.472247,
+    -120.265325,
+    37.813548
+   ],
+   "simplify_worst_m": 39.55,
+   "proj_worst_m": 189.3,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": [
+    "This named feature ENDS AT MOCCASIN (longitude -120.2653), not at Hetch Hetchy Reservoir (-119.789). It is 190.00 km — about 118 miles — of the system the city calls its 150-mile aqueduct. The upper Mountain Tunnel reach is not part of the named feature, so a label reading '150 miles' beside this line would be describing a different object."
+   ]
+  },
+  {
+   "id": "sfo",
+   "name": "San Francisco International Airport",
+   "class": "airport",
+   "kind": "area",
+   "source": "caltrans-airports",
+   "county": "San Mateo",
+   "metric": {
+    "objectid": 218,
+    "faa_site": "02187.*A",
+    "acres_measured": 2276
+   },
+   "rings": 2,
+   "vertices": 75,
+   "bbox_world_m": [
+    2649,
+    -17650,
+    7306,
+    -13344
+   ],
+   "bbox_lonlat": [
+    -122.407906,
+    37.601446,
+    -122.354984,
+    37.640159
+   ],
+   "simplify_worst_m": 39.83,
+   "proj_worst_m": 14.3,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": [
+    "No legal or cadastral boundary for SFO is published anywhere, by anyone. The FAA's aviation services carry runways and aprons and never property. This polygon is an aviation FACILITY FOOTPRINT and is labelled as one.",
+    "Measured on this run, in the map's own frame: Caltrans 218 is 2,276 acres. The city's OWN register of the land it owns there — City Lands land_id 635, also in this file — is 4,540 acres, 2.0 times as large, and 91 % of the Caltrans footprint falls inside it. The Airport cites about 5,207 acres including submerged Bay land. So the two shapes do not disagree about the airport; they are answering two different questions, and the file ships both.",
+    "Caltrans ships a second SFO polygon, OBJECTID 208, 2,784 acres, which runs far east into the Bay. It is not the airport and it is not in this file."
+   ]
+  },
+  {
+   "id": "cem-110413862071",
+   "name": "Pet's Rest Cemetery",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 0.0,
+    "areaid": "110413862071"
+   },
+   "rings": 1,
+   "vertices": 4,
+   "bbox_world_m": [
+    -958,
+    -9066,
+    -951,
+    -9046
+   ],
+   "bbox_lonlat": [
+    -122.448957,
+    37.67856,
+    -122.448803,
+    37.678735
+   ],
+   "simplify_worst_m": 7.94,
+   "proj_worst_m": 1.1,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-1104481025248",
+   "name": "Tung Sen Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 5.5,
+    "areaid": "1104481025248"
+   },
+   "rings": 1,
+   "vertices": 6,
+   "bbox_world_m": [
+    -2235,
+    -10560,
+    -2095,
+    -10374
+   ],
+   "bbox_lonlat": [
+    -122.463393,
+    37.665142,
+    -122.461806,
+    37.666806
+   ],
+   "simplify_worst_m": 39.33,
+   "proj_worst_m": 2.9,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-1107052604925",
+   "name": "Woodlawn Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 0.0,
+    "areaid": "1107052604925"
+   },
+   "rings": 1,
+   "vertices": 4,
+   "bbox_world_m": [
+    -2249,
+    -8625,
+    -2243,
+    -8604
+   ],
+   "bbox_lonlat": [
+    -122.46356,
+    37.682523,
+    -122.46349,
+    37.682712
+   ],
+   "simplify_worst_m": 2.7,
+   "proj_worst_m": 2.4,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-1107052604926",
+   "name": "Woodlawn Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 58.8,
+    "areaid": "1107052604926"
+   },
+   "rings": 1,
+   "vertices": 8,
+   "bbox_world_m": [
+    -2876,
+    -9034,
+    -2116,
+    -8637
+   ],
+   "bbox_lonlat": [
+    -122.470684,
+    37.678843,
+    -122.462046,
+    37.682415
+   ],
+   "simplify_worst_m": 37.85,
+   "proj_worst_m": 3.1,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413854126",
+   "name": "Salem Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 26.3,
+    "areaid": "110413854126"
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    -1913,
+    -9222,
+    -1308,
+    -8721
+   ],
+   "bbox_lonlat": [
+    -122.459736,
+    37.677157,
+    -122.452865,
+    37.68166
+   ],
+   "simplify_worst_m": 35.66,
+   "proj_worst_m": 2.1,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413855103",
+   "name": "Chinese Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 34.2,
+    "areaid": "110413855103"
+   },
+   "rings": 1,
+   "vertices": 6,
+   "bbox_world_m": [
+    -3298,
+    -10594,
+    -2820,
+    -10087
+   ],
+   "bbox_lonlat": [
+    -122.475478,
+    37.664833,
+    -122.470048,
+    37.669419
+   ],
+   "simplify_worst_m": 31.57,
+   "proj_worst_m": 4.2,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413855261",
+   "name": "Hoy Sun Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 16.1,
+    "areaid": "110413855261"
+   },
+   "rings": 1,
+   "vertices": 7,
+   "bbox_world_m": [
+    -750,
+    -9260,
+    -515,
+    -8771
+   ],
+   "bbox_lonlat": [
+    -122.446524,
+    37.676816,
+    -122.443762,
+    37.681251
+   ],
+   "simplify_worst_m": 37.66,
+   "proj_worst_m": 0.8,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413855327",
+   "name": "Italian Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 50.0,
+    "areaid": "110413855327"
+   },
+   "rings": 1,
+   "vertices": 11,
+   "bbox_world_m": [
+    -2238,
+    -9019,
+    -1516,
+    -8465
+   ],
+   "bbox_lonlat": [
+    -122.463431,
+    37.678977,
+    -122.455229,
+    37.683959
+   ],
+   "simplify_worst_m": 29.92,
+   "proj_worst_m": 2.4,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413855818",
+   "name": "Serbian Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 18.2,
+    "areaid": "110413855818"
+   },
+   "rings": 1,
+   "vertices": 7,
+   "bbox_world_m": [
+    -1200,
+    -9084,
+    -914,
+    -8571
+   ],
+   "bbox_lonlat": [
+    -122.451689,
+    37.678398,
+    -122.448308,
+    37.683004
+   ],
+   "simplify_worst_m": 31.12,
+   "proj_worst_m": 1.3,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413856301",
+   "name": "Japanese Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 4.1,
+    "areaid": "110413856301"
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    -1806,
+    -8606,
+    -1633,
+    -8465
+   ],
+   "bbox_lonlat": [
+    -122.458519,
+    37.682662,
+    -122.456559,
+    37.683961
+   ],
+   "simplify_worst_m": 17.77,
+   "proj_worst_m": 1.9,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413859525",
+   "name": "Cypress Lawn Memorial Pk",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 15.8,
+    "areaid": "110413859525"
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    -1317,
+    -8895,
+    -1052,
+    -8454
+   ],
+   "bbox_lonlat": [
+    -122.452959,
+    37.680096,
+    -122.449959,
+    37.684055
+   ],
+   "simplify_worst_m": 15.58,
+   "proj_worst_m": 1.4,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413859528",
+   "name": "Cypress Lawn Memorial Pk",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 163.3,
+    "areaid": "110413859528"
+   },
+   "rings": 1,
+   "vertices": 14,
+   "bbox_world_m": [
+    -2233,
+    -10392,
+    -647,
+    -9084
+   ],
+   "bbox_lonlat": [
+    -122.463375,
+    37.666647,
+    -122.445351,
+    37.678398
+   ],
+   "simplify_worst_m": 39.01,
+   "proj_worst_m": 2.7,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413859628",
+   "name": "Golden Hills Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 12.7,
+    "areaid": "110413859628"
+   },
+   "rings": 1,
+   "vertices": 10,
+   "bbox_world_m": [
+    -845,
+    -9207,
+    -644,
+    -8785
+   ],
+   "bbox_lonlat": [
+    -122.447603,
+    37.677295,
+    -122.445312,
+    37.681081
+   ],
+   "simplify_worst_m": 39.86,
+   "proj_worst_m": 0.9,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413857447",
+   "name": "Greenlawn Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 37.4,
+    "areaid": "110413857447"
+   },
+   "rings": 1,
+   "vertices": 14,
+   "bbox_world_m": [
+    -2635,
+    -9538,
+    -1978,
+    -8907
+   ],
+   "bbox_lonlat": [
+    -122.468112,
+    37.674318,
+    -122.460473,
+    37.679987
+   ],
+   "simplify_worst_m": 31.74,
+   "proj_worst_m": 3.0,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413860389",
+   "name": "Greek Orthodox Memorial Pk",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 9.6,
+    "areaid": "110413860389"
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    -2136,
+    -9390,
+    -1864,
+    -9070
+   ],
+   "bbox_lonlat": [
+    -122.462272,
+    37.675648,
+    -122.459178,
+    37.678522
+   ],
+   "simplify_worst_m": 28.91,
+   "proj_worst_m": 2.4,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413857999",
+   "name": "Holy Cross Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 320.1,
+    "areaid": "110413857999"
+   },
+   "rings": 1,
+   "vertices": 14,
+   "bbox_world_m": [
+    -1173,
+    -10521,
+    547,
+    -9102
+   ],
+   "bbox_lonlat": [
+    -122.451333,
+    37.665485,
+    -122.431783,
+    37.678233
+   ],
+   "simplify_worst_m": 23.93,
+   "proj_worst_m": 1.4,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-1104481025218",
+   "name": "Hoy Sun Ning Yung Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 15.3,
+    "areaid": "1104481025218"
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    -2343,
+    -10377,
+    -1942,
+    -10105
+   ],
+   "bbox_lonlat": [
+    -122.464622,
+    37.666781,
+    -122.460068,
+    37.669228
+   ],
+   "simplify_worst_m": 44.64,
+   "proj_worst_m": 2.9,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413859566",
+   "name": "Eternal Home Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 11.2,
+    "areaid": "110413859566"
+   },
+   "rings": 1,
+   "vertices": 9,
+   "bbox_world_m": [
+    -2111,
+    -9077,
+    -1478,
+    -8727
+   ],
+   "bbox_lonlat": [
+    -122.461987,
+    37.678459,
+    -122.454795,
+    37.681604
+   ],
+   "simplify_worst_m": 22.41,
+   "proj_worst_m": 2.3,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413861067",
+   "name": "Japanese Cemetry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 0.7,
+    "areaid": "110413861067"
+   },
+   "rings": 1,
+   "vertices": 4,
+   "bbox_world_m": [
+    -1821,
+    -8465,
+    -1733,
+    -8357
+   ],
+   "bbox_lonlat": [
+    -122.45882,
+    37.683954,
+    -122.457697,
+    37.684925
+   ],
+   "simplify_worst_m": 22.67,
+   "proj_worst_m": 1.9,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413861378",
+   "name": "Hills of Eternity Cmtry",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 29.6,
+    "areaid": "110413861378"
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    -1534,
+    -9550,
+    -929,
+    -8985
+   ],
+   "bbox_lonlat": [
+    -122.455427,
+    37.674211,
+    -122.448554,
+    37.679284
+   ],
+   "simplify_worst_m": 6.52,
+   "proj_worst_m": 1.8,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413854594",
+   "name": "Olivet Memorial Pk",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 76.4,
+    "areaid": "110413854594"
+   },
+   "rings": 1,
+   "vertices": 11,
+   "bbox_world_m": [
+    -1821,
+    -8870,
+    -1199,
+    -7969
+   ],
+   "bbox_lonlat": [
+    -122.458691,
+    37.680317,
+    -122.451619,
+    37.688417
+   ],
+   "simplify_worst_m": 17.78,
+   "proj_worst_m": 1.8,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "cem-110413856481",
+   "name": "Home of Peace",
+   "class": "cemetery",
+   "kind": "area",
+   "source": "tiger-arealm",
+   "county": "San Mateo",
+   "metric": {
+    "acres_published": 26.1,
+    "areaid": "110413856481"
+   },
+   "rings": 1,
+   "vertices": 5,
+   "bbox_world_m": [
+    -1689,
+    -9417,
+    -1073,
+    -8895
+   ],
+   "bbox_lonlat": [
+    -122.457197,
+    37.675402,
+    -122.450193,
+    37.680096
+   ],
+   "simplify_worst_m": 11.68,
+   "proj_worst_m": 1.9,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  },
+  {
+   "id": "oshaughnessy-dam",
+   "name": "O'Shaughnessy Dam",
+   "class": "dam",
+   "kind": "point",
+   "source": "nid",
+   "county": "Tuolumne",
+   "metric": {
+    "nid_id": "CA00123",
+    "height_ft": 312,
+    "length_ft": 900,
+    "completed": 1923,
+    "owner": "San Francisco Public Utilities Commission",
+    "river": "Tuolumne River"
+   },
+   "rings": 1,
+   "vertices": 1,
+   "bbox_world_m": [
+    233132,
+    20973,
+    233132,
+    20973
+   ],
+   "bbox_lonlat": [
+    -119.789,
+    37.9484,
+    -119.789,
+    37.9484
+   ],
+   "simplify_worst_m": 0.0,
+   "proj_worst_m": 595.0,
+   "derived": null,
+   "outside_locator": false,
+   "note": null,
+   "caveats": null
+  }
+ ],
+ "corpus_check": {
+  "_": "how many of the corpus's beats name each published shape. A shape with zero is geometry without a record behind it — still the city's land, but not the same kind of claim as Hetch Hetchy, and a component should not present the two alike.",
+  "corpus": "scratchpad/sf-city-anim/entries, 41 entries",
+  "counted": "beat `quote` and `headline` — the Journal's own words. Our `note` text is swept separately and reported as in_our_notes_only, never as a hit.",
+  "traps": "'Colman' is a Supervisor and is not Colma; 'O'Shaughnessy' is the City Engineer far more often than the dam, so that pattern requires the word Dam.",
+  "terms": {
+   "hetch-hetchy-aqueduct": [
+    "Hetch[- ]?Hetchy"
+   ],
+   "oshaughnessy-dam": [
+    "O'Shaughnessy Dam"
+   ],
+   "sfo": [
+    "Mills Field",
+    "San Francisco Airport",
+    "San Mateo County"
+   ],
+   "cityland-635": [
+    "Mills Field",
+    "San Francisco Airport"
+   ],
+   "sfpuc-peninsula-watershed": [
+    "Crystal Springs",
+    "Pulgas"
+   ],
+   "sfpuc-alameda-watershed": [
+    "Alameda Creek",
+    "Calaveras",
+    "Irvington"
+   ],
+   "cityland-25": [
+    "Sharp Park"
+   ],
+   "cityland-1199": [
+    "Camp Mather"
+   ],
+   "cityland-1200": [
+    "Moccasin"
+   ],
+   "cityland-1205": [
+    "Tesla"
+   ],
+   "cityland-1209": [
+    "Sunol"
+   ],
+   "farallon-islands": [
+    "Farallon\\w*",
+    "Farralon\\w*"
+   ],
+   "COLMA": [
+    "Colma\\b"
+   ]
+  },
+  "hits": {
+   "hetch-hetchy-aqueduct": {
+    "beats": 21,
+    "entries": [
+     "hetch-hetchy",
+     "water-system-improvement-program"
+    ],
+    "in_our_notes_only": [
+     "auxiliary-water-supply-system",
+     "event-san-mateo-consolidation-1931",
+     "sunset-tunnel"
+    ]
+   },
+   "oshaughnessy-dam": {
+    "beats": 2,
+    "entries": [
+     "hetch-hetchy"
+    ],
+    "in_our_notes_only": null
+   },
+   "sfo": {
+    "beats": 8,
+    "entries": [
+     "event-san-mateo-consolidation-1931",
+     "mills-field-sfo"
+    ],
+    "in_our_notes_only": [
+     "treasure-island"
+    ]
+   },
+   "cityland-635": {
+    "beats": 4,
+    "entries": [
+     "mills-field-sfo"
+    ],
+    "in_our_notes_only": [
+     "treasure-island"
+    ]
+   },
+   "sfpuc-peninsula-watershed": {
+    "beats": 2,
+    "entries": [
+     "hetch-hetchy"
+    ],
+    "in_our_notes_only": null
+   },
+   "sfpuc-alameda-watershed": {
+    "beats": 3,
+    "entries": [
+     "hetch-hetchy",
+     "water-system-improvement-program"
+    ],
+    "in_our_notes_only": null
+   },
+   "cityland-25": {
+    "beats": 0,
+    "entries": [],
+    "in_our_notes_only": null
+   },
+   "cityland-1199": {
+    "beats": 0,
+    "entries": [],
+    "in_our_notes_only": null
+   },
+   "cityland-1200": {
+    "beats": 5,
+    "entries": [
+     "hetch-hetchy"
+    ],
+    "in_our_notes_only": null
+   },
+   "cityland-1205": {
+    "beats": 1,
+    "entries": [
+     "hetch-hetchy"
+    ],
+    "in_our_notes_only": null
+   },
+   "cityland-1209": {
+    "beats": 0,
+    "entries": [],
+    "in_our_notes_only": null
+   },
+   "farallon-islands": {
+    "beats": 0,
+    "entries": [],
+    "in_our_notes_only": [
+     "clean-water-program"
+    ]
+   },
+   "COLMA": {
+    "beats": 0,
+    "entries": [],
+    "in_our_notes_only": null
+   }
+  }
+ }
+}

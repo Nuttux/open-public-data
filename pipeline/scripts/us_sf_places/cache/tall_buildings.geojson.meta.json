@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/5kya-mfst.geojson?$limit=50000",
+ "what": "Tall Building Inventory",
+ "bytes": 485727,
+ "rows": 180,
+ "sha256": "5864fc1d82064a7e3135ad1a0d071fc153d9b2f0e47efae932007ec4706867ce",
+ "retrieved_utc": "2026-08-23T21:33:49Z"
+}

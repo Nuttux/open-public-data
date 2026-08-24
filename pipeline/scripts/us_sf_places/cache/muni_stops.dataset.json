@@ -1,0 +1,139 @@
+{
+ "id": "i28k-bkz6",
+ "name": "Muni Stops",
+ "description": "<strong>A. SUMMARY </strong>\nAll transit stops in the SFMTA system (e.g. Muni bus and transit stops).\n\n<strong>B. METHODOLOGY  </strong>\nStop data is exported from the Trapeze scheduling system and represents the most up to date location of transit stops. \n\n<strong>C. UPDATE FREQUENCY  </strong>\nUpdated by \u201cSign-up\u201d, when transit system changes are put into effect. Updates range from every 3-6 months.\n\n<strong>D. HOW TO USE THIS DATASET </strong>\nThis dataset is derived from the GTFS data that the SFMTA makes available via <u><a href=\"https://511.org/open-data/transit\">Metropolitan Transit Commission's 511 Open Transit Data Portal</a></u>. GTFS files are the standard way to communicate transit schedules, and include the schedule for trips, stop locations, and route paths. The SFMTA publishes new GTFS files whenever the schedule changes. This dataset (shapefile) provides supplementary information for each Muni stop \u2013 like what stop amenities (shelters, signs, etc.) are present at each stop. SFMTA's GTFS files are available to download from the <u><a href=\"https://511.org/open-data/transit\">Metropolitan Transit Commission's 511 Open Transit Data Portal</a></u> and also on the <u><a href=\"https://data.sfgov.org/d/dni7-qpv3\">Open Data Portal</a></u>.\n\n<strong>E. RELATED DATASETS </strong>\n<u><a href=\"https://data.sfgov.org/d/dni7-qpv3\">SFMTA General Transit Feed Specification (GTFS) Production Data</a></u>.",
+ "attribution": "SFMTA",
+ "rowsUpdatedAt": 1775928791,
+ "columns": {
+  "objectid": {
+   "name": "OBJECTID",
+   "type": "number",
+   "description": ""
+  },
+  "stopname": {
+   "name": "STOPNAME",
+   "type": "text",
+   "description": null
+  },
+  "trapezestopabbr": {
+   "name": "TRAPEZESTOPABBR",
+   "type": "text",
+   "description": null
+  },
+  "rucusstopabbr": {
+   "name": "RUCUSSTOPABBR",
+   "type": "text",
+   "description": null
+  },
+  "stopid": {
+   "name": "STOPID",
+   "type": "number",
+   "description": ""
+  },
+  "latitude": {
+   "name": "LATITUDE",
+   "type": "number",
+   "description": null
+  },
+  "longitude": {
+   "name": "LONGITUDE",
+   "type": "number",
+   "description": null
+  },
+  "accessibilitymask": {
+   "name": "ACCESSIBILITYMASK",
+   "type": "number",
+   "description": null
+  },
+  "atstreet": {
+   "name": "ATSTREET",
+   "type": "text",
+   "description": null
+  },
+  "onstreet": {
+   "name": "ONSTREET",
+   "type": "text",
+   "description": null
+  },
+  "position": {
+   "name": "POSITION",
+   "type": "text",
+   "description": null
+  },
+  "orientation": {
+   "name": "ORIENTATION",
+   "type": "text",
+   "description": null
+  },
+  "serviceplanningstoptype": {
+   "name": "SERVICEPLANNINGSTOPTYPE",
+   "type": "text",
+   "description": null
+  },
+  "shelter": {
+   "name": "SHELTER",
+   "type": "number",
+   "description": null
+  },
+  "insert_timestamp": {
+   "name": "INSERT_TIMESTAMP",
+   "type": "text",
+   "description": ""
+  },
+  "sde_id": {
+   "name": "SDE_ID",
+   "type": "number",
+   "description": ""
+  },
+  "signupid": {
+   "name": "SIGNUPID",
+   "type": "number",
+   "description": ""
+  },
+  "supervisor_district": {
+   "name": "SUPERVISOR_DISTRICT",
+   "type": "text",
+   "description": null
+  },
+  "shape": {
+   "name": "shape",
+   "type": "point",
+   "description": "location as point"
+  },
+  "data_as_of": {
+   "name": "data_as_of",
+   "type": "calendar_date",
+   "description": "Timestamp when data was last processed"
+  },
+  "data_loaded_at": {
+   "name": "data_loaded_at",
+   "type": "calendar_date",
+   "description": "Timestamp when the data was last loaded into the Open Data Portal"
+  },
+  ":@computed_region_qgnn_b9vv": {
+   "name": "Current Police Districts",
+   "type": "number",
+   "description": "This column was automatically created in order to record in what polygon from the dataset 'Current Police Districts' (qgnn-b9vv) the point in column 'shape' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens."
+  },
+  ":@computed_region_26cr_cadq": {
+   "name": "Current Supervisor Districts",
+   "type": "number",
+   "description": "This column was automatically created in order to record in what polygon from the dataset 'Current Supervisor Districts' (26cr-cadq) the point in column 'shape' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens."
+  },
+  ":@computed_region_ajp5_b2md": {
+   "name": "Analysis Neighborhoods",
+   "type": "number",
+   "description": "This column was automatically created in order to record in what polygon from the dataset 'Analysis Neighborhoods' (ajp5-b2md) the point in column 'shape' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens."
+  },
+  ":@computed_region_jwn9_ihcz": {
+   "name": "Neighborhoods",
+   "type": "number",
+   "description": "This column was automatically created in order to record in what polygon from the dataset 'Neighborhoods' (jwn9-ihcz) the point in column 'shape' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens."
+  },
+  ":@computed_region_6qbp_sg9q": {
+   "name": "SF Find Neighborhoods",
+   "type": "number",
+   "description": "This column was automatically created in order to record in what polygon from the dataset 'SF Find Neighborhoods' (6qbp-sg9q) the point in column 'shape' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens."
+  }
+ }
+}

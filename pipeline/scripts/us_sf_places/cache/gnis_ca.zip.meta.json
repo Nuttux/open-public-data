@@ -1,0 +1,8 @@
+{
+ "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_CA_Text.zip",
+ "what": "USGS GNIS Domestic Names, California",
+ "bytes": 2268185,
+ "rows": null,
+ "sha256": "a1a6f7aafd9efcfd08789b827583a2209d0c95e244cc4339c3d74a48366ba4fd",
+ "retrieved_utc": "2026-08-23T21:34:27Z"
+}

@@ -1,0 +1,69 @@
+{
+ "id": "gtnh-hgvs",
+ "name": "City Lands",
+ "description": "<strong>A. SUMMARY</strong>\nThis data represents the boundaries of City-owned lands maintained in the City's Facility System of Record (FSR).  \nNote: Not all lands are within the City and County proper. The City owns properties outside of its boundaries, including lands managed by SF Recreation and Parks, SF Public Utilities Commission, and other agencies.  \nCertain lands are managed by following agencies which are not directly part of the City and County of San Francisco, but are included here for reference: <u><a href=\"https://sfha.org/\">San Francisco Housing Authority (SFHA)</a></u>, <u><a href=\"https://sfocii.org/\">San Francisco Office of Community Investment and Infrastructure (OCII)</a></u>, and <u><a href=\"https://www.ccsf.edu/\">City College of San Francisco</a></u>.\n\n<strong>B. HOW THE DATASET IS CREATED</strong>\nThe Enterprise GIS program in the Department of Technology is the technical custodian of the FSR. This team creates and maintains this dataset in conjunction with the Real Estate Division and the Capital Planning Program of the City Administrator\u2019s Office, who act as the primary business data stewards for this data. \n\n<strong>C. UPDATE PROCESS</strong>\nThere are a handful of events that may trigger changes to this dataset:\n1. The sale of a property\n2. The leasing of a property\n3. The purchase of a property\n4. The change in jurisdiction of a property (e.g. from MTA to DPW)\n5. The removal or improvement of the property\nEach of these changes triggers a workflow that updates the FSR. The Real Estate Division and Capital Planning make updates on an ongoing basis. The full dataset is reviewed quarterly to ensure nothing is missing or needs to be corrected. \nUpdates to the data, once approved, are immediately reflected in the internal system and are updated here in the open dataset on a monthly basis.\n\n<strong>D. HOW TO USE THIS DATASET</strong>\nSee <u><a href=\"https://data.sfgov.org/d/8sce-d4fx\">here</a></u> for an interactive map of all the City lands in this dataset. \nTo track the facilities on City lands, join this dataset to the <u><a href=\"https://data.sfgov.org/d/nc68-ngbr\">City Facilities</a></u> dataset using the land_id field. \nIf you see an error in the data, you can submit a change request with the relevant information to dtis.helpdesk@sfgov.org. Please be as specific about the error as you can (including relevant land_id(s)). \n\n<strong>E. RELATED DATASETS</strong>\n<u><a href=\"https://data.sfgov.org/d/nc68-ngbr\">City Facilities</a></u>",
+ "attribution": "City and County of San Francisco",
+ "rowsUpdatedAt": 1787506001,
+ "columns": {
+  "land_id": {
+   "name": "land_id",
+   "type": "text",
+   "description": "Unique Identifier"
+  },
+  "land_name": {
+   "name": "land_name",
+   "type": "text",
+   "description": "Name of land. i.e., property owned by City and County of San Francisco"
+  },
+  "dept_id": {
+   "name": "dept_id",
+   "type": "text",
+   "description": "Foreign key to Department table in Facility System of Record (FSR) database"
+  },
+  "address": {
+   "name": "address",
+   "type": "text",
+   "description": "Address of City Land"
+  },
+  "city": {
+   "name": "city",
+   "type": "text",
+   "description": "Address City"
+  },
+  "zip": {
+   "name": "zip",
+   "type": "text",
+   "description": "Address ZIP Code"
+  },
+  "category": {
+   "name": "category",
+   "type": "text",
+   "description": "Category of department (useful for mapping purposes)"
+  },
+  "department_name": {
+   "name": "department_name",
+   "type": "text",
+   "description": "Name of Department with Jurisdiction"
+  },
+  "shape": {
+   "name": "shape",
+   "type": "multipolygon",
+   "description": "Geometry of City Land encoded as multipolygon"
+  },
+  "data_last_updated": {
+   "name": "data_last_updated",
+   "type": "calendar_date",
+   "description": "Timestamp when the record (row) was last updated in the source system"
+  },
+  "data_as_of": {
+   "name": "data_as_of",
+   "type": "calendar_date",
+   "description": "Timestamp when the record (row) was last refreshed in the source system"
+  },
+  "data_loaded_at": {
+   "name": "data_loaded_at",
+   "type": "calendar_date",
+   "description": "Timestamp when the record (row) was was last updated here (in the data portal)"
+  }
+ }
+}

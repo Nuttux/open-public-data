@@ -1,0 +1,144 @@
+{
+ "whole": {
+  "z": 1,
+  "step": 0,
+  "scale": 0.04666598864125368,
+  "year": 2018,
+  "cells": 43186,
+  "buildings": 14994,
+  "streets": 0,
+  "labels": 27,
+  "place": {
+   "count": 27,
+   "labels": 27,
+   "ink": 0.05,
+   "names": [
+    "Golden Gate Bridge",
+    "War Memorial Complex",
+    "Beach Chalet",
+    "Alcoa Building",
+    "Palace Of Fine Arts",
+    "Mission High School",
+    "Chronicle Building",
+    "Maud's",
+    "Golden Gate Park",
+    "Lake Merced Park",
+    "John McLaren Park",
+    "San Francisco Zoo",
+    "Lincoln Park",
+    "Glen Canyon Park",
+    "Crocker Amazon Playground",
+    "Sunset Dunes",
+    "Twin Peaks",
+    "BAYVIEW HUNTERS POINT",
+    "PRESIDIO",
+    "TREASURE ISLAND",
+    "BERNAL HEIGHTS",
+    "OUTER MISSION",
+    "MISSION BAY",
+    "PACIFIC HEIGHTS",
+    "INNER RICHMOND",
+    "HAIGHT ASHBURY",
+    "NORTH BEACH"
+   ]
+  },
+  "frameMean": [
+   186.5,
+   193.8,
+   193.9
+  ],
+  "frameSd": [
+   37.8,
+   29.2,
+   27.2
+  ],
+  "src": "78e0fd17"
+ },
+ "district": {
+  "z": 2.9,
+  "step": 1,
+  "scale": 0.13533136705963567,
+  "year": 2018,
+  "cells": 10773,
+  "buildings": 29541,
+  "streets": 4971,
+  "labels": 19,
+  "place": {
+   "count": 19,
+   "labels": 19,
+   "ink": 0.0352,
+   "names": [
+    "War Memorial Complex",
+    "Alcoa Building",
+    "Italian American Bank",
+    "Mission High School",
+    "Ferry Building",
+    "Chronicle Building",
+    "Fairmont Hotel",
+    "Yerba Buena Natural Areas",
+    "Mission Creek Park",
+    "Lafayette Park",
+    "Cityside Parks",
+    "Jefferson Square",
+    "Pier 17 - Shed Building",
+    "H. WELTON FLYNN DIV.",
+    "MISSION",
+    "NOB HILL",
+    "NORTH BEACH",
+    "TENDERLOIN",
+    "CHINATOWN"
+   ]
+  },
+  "frameMean": [
+   141.4,
+   158.0,
+   170.5
+  ],
+  "frameSd": [
+   47.1,
+   37.4,
+   38.2
+  ],
+  "src": "78e0fd17"
+ },
+ "block": {
+  "z": 7.2,
+  "step": 2,
+  "scale": 0.3359951182170265,
+  "year": 2018,
+  "cells": 4323,
+  "buildings": 11688,
+  "streets": 3568,
+  "labels": 12,
+  "place": {
+   "count": 12,
+   "labels": 12,
+   "ink": 0.0261,
+   "names": [
+    "War Memorial Complex",
+    "Alcoa Building",
+    "Italian American Bank",
+    "Chronicle Building",
+    "High School Of Commerce",
+    "The Hobart Building",
+    "Joseph L Alioto Performing Arts Piazza",
+    "Moscone West",
+    "Embarcadero Plaza",
+    "MOSCONE CENTER (South)",
+    "1455 Market St Building",
+    "UN Plaza"
+   ]
+  },
+  "frameMean": [
+   159.4,
+   158.5,
+   142.3
+  ],
+  "frameSd": [
+   46.7,
+   42.6,
+   42.6
+  ],
+  "src": "78e0fd17"
+ }
+}

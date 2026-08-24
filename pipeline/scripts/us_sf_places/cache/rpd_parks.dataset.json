@@ -1,0 +1,49 @@
+{
+ "id": "3nje-yn2u",
+ "name": "RPD Parks",
+ "description": "Park Lands layer developed by the San Francisco Recreation and Parks Department. Note the wide extent of the map is because RPD manages Camp Mather to the West.",
+ "attribution": null,
+ "rowsUpdatedAt": 1468373464,
+ "columns": {
+  "map_park_n": {
+   "name": "map_park_n",
+   "type": "text",
+   "description": null
+  },
+  "the_geom": {
+   "name": "the_geom",
+   "type": "multipolygon",
+   "description": null
+  },
+  "perimeter": {
+   "name": "perimeter",
+   "type": "number",
+   "description": null
+  },
+  "gis_fd_pk": {
+   "name": "gis_fd_pk",
+   "type": "number",
+   "description": null
+  },
+  "x": {
+   "name": "x",
+   "type": "number",
+   "description": null
+  },
+  "y": {
+   "name": "y",
+   "type": "number",
+   "description": null
+  },
+  "sqft": {
+   "name": "sqft",
+   "type": "number",
+   "description": null
+  },
+  "acres": {
+   "name": "acres",
+   "type": "number",
+   "description": null
+  }
+ }
+}

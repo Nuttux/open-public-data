@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/65ik-7wqd.geojson?$limit=50000",
+ "what": "Privately Owned Public Open Spaces",
+ "bytes": 79579,
+ "rows": 81,
+ "sha256": "83a4558eaddb9d5031c72fd917690ed645050ef9b3884356914872f817be8b93",
+ "retrieved_utc": "2026-08-23T21:33:54Z"
+}

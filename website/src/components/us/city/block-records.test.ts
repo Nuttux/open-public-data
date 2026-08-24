@@ -1,0 +1,200 @@
+import { describe, expect, it } from "vitest";
+import {
+  blockShape,
+  blockSubjects,
+  decadeGroups,
+  printedHeading,
+  streetLabel,
+  type BlockDecision,
+} from "./block-records";
+
+/**
+ * The three readings of `d[]` the fiche depends on are pure, and each of them
+ * makes a claim in the reader's language that has to stay true:
+ *
+ *   · `decadeGroups`  — the shape, including the decades that hold nothing
+ *   · `blockShape`    — "the {decade}s hold the most of them" and "nothing
+ *                        lands here after {y}"
+ *   · `blockSubjects` — "{n} decisions the volume heads “{label}”"
+ *
+ * The last is the one worth guarding hardest: it prints a count of the
+ * record's own words, and a fold that merged two different printed headings
+ * would put a number under a heading the volume never gave those items.
+ */
+
+let seq = 0;
+function row(p: Partial<BlockDecision> & { y: number }): BlockDecision {
+  seq += 1;
+  return {
+    y: p.y,
+    d: p.d ?? "",
+    k: p.k ?? "R",
+    p: p.p ?? 4,
+    f: p.f ?? 2,
+    a: p.a ?? 0,
+    u: p.u ?? `journalofproceed25sanfrich/${seq}`,
+    t: p.t ?? "A line the volume prints.",
+    ...(p.g ? { g: p.g } : {}),
+  };
+}
+
+describe("decadeGroups", () => {
+  it("draws the empty decades between two distant decisions", () => {
+    const g = decadeGroups([row({ y: 1916 }), row({ y: 1977 })]);
+    expect(g[0].decade).toBe(1900);
+    expect(g[g.length - 1].decade).toBe(1990);
+    const busy = g.filter((d) => d.rows.length > 0).map((d) => d.decade);
+    expect(busy).toEqual([1910, 1970]);
+    // the run of silence is drawn, not implied
+    expect(g.filter((d) => d.rows.length === 0)).toHaveLength(8);
+  });
+
+  it("stretches past 1990 rather than dropping what the reports hold", () => {
+    const g = decadeGroups([row({ y: 2010 })]);
+    expect(g[g.length - 1].decade).toBe(2010);
+  });
+
+  it("heads a decade with the Board's own printed heading over rank order", () => {
+    const g = decadeGroups([
+      row({ y: 1921, t: "Elser, for repaving Mission street between the…" }),
+      row({ y: 1922, t: "Street Lights — Install 400 M. R. Lombard street.", g: "h" }),
+    ]);
+    const twenties = g.find((d) => d.decade === 1920);
+    expect(twenties?.headline?.g).toBe("h");
+  });
+
+  it("reaches a quarter of the way down a busy decade for that heading", () => {
+    // A busy decade ranks a printed heading fifth. The flat reach of three
+    // never saw it, and block 3704's 1930s was headed by a mid-clause body
+    // sentence while `Regulating Hours of Work…` sat two rows below.
+    const body = (i: number) =>
+      row({ y: 1930, t: `A body sentence that starts mid-clause, ${i}.` });
+    const rows = [
+      body(0),
+      body(1),
+      body(2),
+      body(3),
+      row({ y: 1937, t: "Regulating Hours of Work on Street Railway Tracks.", g: "h" }),
+      ...Array.from({ length: 15 }, (_, i) => body(5 + i)),
+    ];
+    expect(decadeGroups(rows).find((d) => d.decade === 1930)?.headline?.g).toBe("h");
+    // and a decade of four rows still stops at three, so a much better-ranked
+    // row is never demoted for the sake of a tidier line
+    expect(
+      decadeGroups([body(0), body(1), body(2), rows[4]]).find((d) => d.decade === 1930)
+        ?.headline?.g,
+    ).toBeUndefined();
+  });
+
+  it("passes over a fragment for a whole line when neither is a heading", () => {
+    const g = decadeGroups([
+      row({ y: 1925, t: "Fortysixth Avenue and Irving Street." }),
+      row({
+        y: 1927,
+        t: "Install 400 M. R. Northeast corner Forty-sixth avenue and Irving street.",
+      }),
+    ]);
+    expect(g.find((d) => d.decade === 1920)?.headline?.y).toBe(1927);
+  });
+
+  it("never heads a decade with a row the volume prints no line for", () => {
+    const g = decadeGroups([row({ y: 1931, t: "  " }), row({ y: 1932, t: "A whole printed line about a sewer." })]);
+    expect(g.find((d) => d.decade === 1930)?.headline?.y).toBe(1932);
+  });
+});
+
+describe("blockShape", () => {
+  it("names a busiest decade only when one decade actually holds more", () => {
+    const even = blockShape([row({ y: 1911 }), row({ y: 1921 })]);
+    expect(even?.busiest).toBeNull();
+    const clear = blockShape([row({ y: 1911 }), row({ y: 1912 }), row({ y: 1921 })]);
+    expect(clear?.busiest?.decade).toBe(1910);
+  });
+
+  it("says a block went quiet only when it falls short of the series' end", () => {
+    // the Journal runs out in 1999; a block whose last decision is 1999 has
+    // not fallen silent, the series has
+    expect(blockShape([row({ y: 1999 })])?.quietAfter).toBeNull();
+    expect(blockShape([row({ y: 1947 })])?.quietAfter).toBe(1947);
+  });
+
+  it("returns null when nothing carries a year", () => {
+    expect(blockShape([])).toBeNull();
+  });
+});
+
+describe("printedHeading", () => {
+  it("reads the label the volume prints before its own dash", () => {
+    expect(
+      printedHeading(row({ y: 1926, g: "h", t: "Street Lights — Install 400 M. R." })),
+    ).toBe("Street Lights");
+  });
+
+  it("refuses a body sentence, whatever punctuation it carries", () => {
+    expect(
+      printedHeading(row({ y: 1926, t: "John Shea, No. 1830 Folsom street — nineteen horses." })),
+    ).toBeNull();
+  });
+
+  it("refuses a label that is too long to be a heading or has no word in it", () => {
+    expect(printedHeading(row({ y: 1926, g: "h", t: `${"x".repeat(70)} — a line` }))).toBeNull();
+    expect(printedHeading(row({ y: 1926, g: "h", t: "1909 — a line" }))).toBeNull();
+  });
+});
+
+describe("blockSubjects", () => {
+  const rows = [
+    row({ y: 1913, g: "h", t: "Oil and Boiler Permits — Standard Glass Works." }),
+    row({ y: 1928, g: "p", t: "Oil and Boiler Permits, — Mrs. Emma Ingham." }),
+    row({ y: 1915, g: "h", t: "Stable Permits — Koerber Coal Co., for 4 horses." }),
+    row({ y: 1915, g: "h", t: "STABLE PERMIT — John Cuddihy, two horses." }),
+    row({ y: 1917, g: "h", t: "Oil Permits — Green Valley Bakery." }),
+    row({ y: 1931, t: "2147 Folsom street, 27 feet — H. Friedrichs." }),
+  ];
+
+  it("counts a printed heading only where the volume prints it here again", () => {
+    const s = blockSubjects(rows);
+    expect(s.map((x) => x.label)).toEqual(["Oil and Boiler Permits", "Stable Permits"]);
+    expect(s[0].rows).toHaveLength(2);
+    expect(s[0].firstYear).toBe(1913);
+    expect(s[0].lastYear).toBe(1928);
+  });
+
+  it("folds case, spacing, trailing punctuation and a plural, and nothing else", () => {
+    const s = blockSubjects(rows);
+    // `Stable Permits` and `STABLE PERMIT` are one subject…
+    expect(s[1].rows).toHaveLength(2);
+    // …and `Oil Permits` is NOT folded into `Oil and Boiler Permits`, which
+    // would be a judgement about what two permits have in common
+    expect(s.some((x) => x.label === "Oil Permits")).toBe(false);
+  });
+
+  it("shows the form the volume prints most often here", () => {
+    const s = blockSubjects([
+      row({ y: 1915, g: "h", t: "Stable Permits — one." }),
+      row({ y: 1916, g: "h", t: "Stable Permits — two." }),
+      row({ y: 1917, g: "h", t: "STABLE PERMIT — three." }),
+    ]);
+    expect(s[0].label).toBe("Stable Permits");
+    expect(s[0].rows).toHaveLength(3);
+  });
+
+  it("says nothing at all rather than something thin", () => {
+    expect(blockSubjects([rows[4], rows[5]])).toEqual([]);
+  });
+
+  it("keeps the most-printed first and caps the list", () => {
+    const many = [1, 2, 3, 4, 5].flatMap((i) =>
+      [0, 1].map((k) => row({ y: 1910 + i, g: "h", t: `Subject ${i} — item ${k}.` })),
+    );
+    const s = blockSubjects(many, 4);
+    expect(s).toHaveLength(4);
+  });
+});
+
+describe("streetLabel", () => {
+  it("spells a street key the way a reader writes it", () => {
+    expect(streetLabel("PINE|ST")).toBe("Pine St");
+    expect(streetLabel("GOLDEN GATE|AVE")).toBe("Golden Gate Ave");
+  });
+});

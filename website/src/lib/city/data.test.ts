@@ -646,3 +646,141 @@ d("the authored landmarks", () => {
     }
   });
 });
+
+d("the street centrelines, the names and the coverage mask", () => {
+  /** the whole network, once every tier that carries it is held */
+  const withStreets = async () => {
+    const cd = await loaded();
+    for (const c of cd.manifest.chunks) {
+      if (c.kind === "strt-line" || c.kind === "strt-label" || c.k === "base/street-misc") {
+        await (cd as unknown as {
+          fetchChunk(k: string): Promise<unknown>;
+        }).fetchChunk(c.k);
+      }
+    }
+    return cd;
+  };
+
+  it("THE WIDE SHOT'S OWN CLASSES ARE IN THE BASE TIER, and the rest is not", async () => {
+    const cd = await loaded();
+    // ST_CLS_MAX[0] = 2: the whole-city frame strokes classes 0-2 and nothing
+    // else, so those 999 lines are the only ones the first paint can show.
+    const cells = cd.streetLines();
+    expect(cells.length).toBe(1);
+    expect(cells[0].key).toBe("base/street-lines");
+    expect(cells[0].cls.every((c) => c <= 2)).toBe(true);
+    expect(cells[0].fid.length).toBe(999);
+    // and it is a real network, not a stub: 3,262 vertices over 999 features
+    let v = 0;
+    for (const n of cells[0].len) v += n;
+    expect(cells[0].x.length).toBe(v);
+    expect(cells[0].y.length).toBe(v);
+  });
+
+  it("the second chunk cannot be asked for below the band that draws it", () => {
+    const m = manifest();
+    const e = m.chunks.find((c) => c.k === "strt/street-lines-2")!;
+    // BANDS[0] = sqrt(ZSTEPS[0] * ZSTEPS[1]) = 1.7029 is the first zoom at which
+    // ST_CLS_MAX admits class 3 at all.
+    expect(e.tier).toBe("strt");
+    expect(e.minZ).toBeGreaterThan(1.5);
+    expect(e.minZ).toBeLessThan(Math.sqrt(1 * 2.9));
+  });
+
+  it("every centreline is in exactly one chunk and carries a published class", async () => {
+    const cd = await withStreets();
+    const cells = cd.streetLines();
+    expect(cells.length).toBe(2);
+    const seen = new Set<number>();
+    for (const c of cells) for (const f of c.fid) seen.add(f);
+    expect(seen.size).toBe(4895);
+    for (let i = 0; i < 4895; i++) expect(seen.has(i)).toBe(true);
+    for (const c of cells) expect(c.cls.every((v) => v <= 4)).toBe(true);
+  });
+
+  it("`cov` in the line chunks IS `base/street-misc`'s mask, bit for bit", async () => {
+    const cd = await withStreets();
+    const misc = cd.streetMisc();
+    expect(misc).not.toBeNull();
+    expect(misc!.covN).toBe(4895);
+    // `streetLines()` throws on a disagreement, so reaching here is the proof;
+    // this re-counts it so the number is on the record too.
+    let set = 0;
+    for (const c of cd.streetLines()) {
+      for (let i = 0; i < c.fid.length; i++) {
+        if (((c.cov[i >> 3] >> (i & 7)) & 1) === 1) set++;
+      }
+    }
+    // 4,361 of 4,895 have a published right of way; the other 534 are the park
+    // roads, the Great Highway, Sloat and the freeways, and they never fade.
+    expect(set).toBe(4361);
+  });
+
+  it("`base/street-misc` also carries 1,120 islands and 268 stairs", async () => {
+    const cd = await withStreets();
+    const m = cd.streetMisc()!;
+    expect(m.islandLen.length).toBe(1120);
+    expect(m.stairLen.length).toBe(268);
+    expect(m.stairNames.length).toBe(268);
+    let iv = 0;
+    for (const n of m.islandLen) iv += n;
+    expect(m.islandX.length).toBe(iv);
+    // decoded to world metres, so they land on the city and not at the origin
+    expect(Math.min(...m.islandX)).toBeGreaterThan(-9000);
+    expect(Math.max(...m.islandX)).toBeLessThan(9000);
+  });
+
+  it("THE STREET NAMES EXIST NOW, and every centreline has one", async () => {
+    const cd = await withStreets();
+    const names = cd.streetNames();
+    expect(names.length).toBe(2397);
+    let unnamed = 0;
+    for (const c of cd.streetLines()) {
+      for (const v of c.nm) {
+        if (v === 0xffff) unnamed++;
+        else expect(names[v]).toBeTruthy();
+      }
+    }
+    // 3psu-pn9h publishes a streetname for all 4,895
+    expect(unnamed).toBe(0);
+  });
+
+  it("the label table is rank-ordered by band, and base carries 0-1", async () => {
+    const cd = await loaded();
+    const t = cd.streetLabels();
+    expect(t).not.toBeNull();
+    // part3.html L7025: rankMax is 0 at whole city, 1 at district, 2 at block.
+    expect(t!.rank.every((r) => r <= 1)).toBe(true);
+    expect(t!.n).toBe(337);
+    const full = await withStreets();
+    expect(full.streetLabels()!.n).toBe(2786);
+  });
+
+  it("a label's direction round-trips the published unit vector", async () => {
+    const cd = await loaded();
+    const t = cd.streetLabels()!;
+    for (let i = 0; i < t.n; i++) {
+      expect(Math.hypot(t.dx[i], t.dy[i])).toBeCloseTo(1, 3);
+      expect(t.name(i).length).toBeGreaterThan(0);
+    }
+    // the longest rank-0 stretch in San Francisco, read off the data
+    let best = -1, bi = -1;
+    for (let i = 0; i < t.n; i++) {
+      if (t.rank[i] === 0 && t.lengthM[i] > best) { best = t.lengthM[i]; bi = i; }
+    }
+    expect(t.name(bi)).toBe("GEARY BLVD");
+  });
+
+  it("every field of both kinds names a source in the manifest", async () => {
+    const cd = await loaded();
+    for (const kind of ["strt-line", "strt-label"]) {
+      const schema = cd.manifest.kinds[kind];
+      expect(schema, kind).toBeTruthy();
+      for (const f of schema.fields) {
+        const p = cd.provenanceOf(kind, f.n);
+        expect(p, `${kind}.${f.n}`).toBeTruthy();
+        expect(String(p!.what).length).toBeGreaterThan(20);
+      }
+    }
+  });
+});

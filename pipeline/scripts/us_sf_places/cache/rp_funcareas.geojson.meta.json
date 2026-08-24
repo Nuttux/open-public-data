@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/38b7-6db3.geojson?$limit=50000",
+ "what": "Functional Areas maintained by Rec and Parks",
+ "bytes": 25712561,
+ "rows": 7473,
+ "sha256": "0c951b90129eea9da12d8f44b06549b6fd0dabd7fcc575920919dab66c30d35f",
+ "retrieved_utc": "2026-08-23T21:34:19Z"
+}

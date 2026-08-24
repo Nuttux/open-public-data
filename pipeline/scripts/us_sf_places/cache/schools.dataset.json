@@ -1,0 +1,134 @@
+{
+ "id": "7e7j-59qk",
+ "name": "Schools",
+ "description": "<strong>A. SUMMARY</strong>\nThis dataset is a list of all schools in San Francisco from the California Department of Education. The dataset contains additional information such as type of school and location.\n\n<strong>B. HOW THE DATASET IS CREATED</strong>\nThis dataset was downloaded from the California Department of Education website (https://www.cde.ca.gov/). It only includes schools in San Francisco that are Open as of February 2026.\n\n<strong>C. UPDATE PROCESS</strong>\nThis dataset will update on an as-needed basis.\n\n<strong>D. HOW TO USE THIS DATASET</strong>\nThis dataset can be used to analyze the quantity and type of schools in San Francisco.\n\n<strong>E. RELATED DATASETS</strong>\n- <u><a href=\"https://data.sfgov.org/Geographic-Locations-and-Boundaries/SFUSD-School-Attendance-Areas-2024-2025-/e6tr-sxwg/about_data\">SFUSD School Attendance Areas (2024-2025)</a></u>",
+ "attribution": null,
+ "rowsUpdatedAt": 1770416375,
+ "columns": {
+  "record_type": {
+   "name": "record_type",
+   "type": "text",
+   "description": ""
+  },
+  "cds_code": {
+   "name": "cds_code",
+   "type": "number",
+   "description": ""
+  },
+  "district": {
+   "name": "district",
+   "type": "text",
+   "description": ""
+  },
+  "school": {
+   "name": "school",
+   "type": "text",
+   "description": ""
+  },
+  "status": {
+   "name": "status",
+   "type": "text",
+   "description": ""
+  },
+  "open_date": {
+   "name": "open_date",
+   "type": "calendar_date",
+   "description": ""
+  },
+  "charter_yesno": {
+   "name": "charter_yesno",
+   "type": "checkbox",
+   "description": ""
+  },
+  "educational_program_type": {
+   "name": "educational_program_type",
+   "type": "text",
+   "description": ""
+  },
+  "entity_type": {
+   "name": "entity_type",
+   "type": "text",
+   "description": ""
+  },
+  "low_grade": {
+   "name": "low_grade",
+   "type": "text",
+   "description": ""
+  },
+  "high_grade": {
+   "name": "high_grade",
+   "type": "text",
+   "description": ""
+  },
+  "public_yesno": {
+   "name": "public_yesno",
+   "type": "checkbox",
+   "description": ""
+  },
+  "website": {
+   "name": "website",
+   "type": "text",
+   "description": ""
+  },
+  "latitude": {
+   "name": "latitude",
+   "type": "text",
+   "description": ""
+  },
+  "longitude": {
+   "name": "longitude",
+   "type": "text",
+   "description": ""
+  },
+  "street_address": {
+   "name": "street_address",
+   "type": "text",
+   "description": ""
+  },
+  "street_city": {
+   "name": "street_city",
+   "type": "text",
+   "description": ""
+  },
+  "street_state": {
+   "name": "street_state",
+   "type": "text",
+   "description": ""
+  },
+  "street_zip": {
+   "name": "street_zip",
+   "type": "text",
+   "description": ""
+  },
+  "phone": {
+   "name": "phone",
+   "type": "text",
+   "description": ""
+  },
+  "point": {
+   "name": "point",
+   "type": "point",
+   "description": ""
+  },
+  "analysis_neighborhood": {
+   "name": "analysis_neighborhood",
+   "type": "text",
+   "description": ""
+  },
+  "supervisor_district": {
+   "name": "supervisor_district",
+   "type": "number",
+   "description": ""
+  },
+  "data_as_of": {
+   "name": "data_as_of",
+   "type": "calendar_date",
+   "description": ""
+  },
+  "data_loaded_at": {
+   "name": "data_loaded_at",
+   "type": "calendar_date",
+   "description": "Timestamp the data was uploaded to the open data portal."
+  }
+ }
+}

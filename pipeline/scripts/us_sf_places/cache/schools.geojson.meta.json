@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/7e7j-59qk.geojson?$limit=50000",
+ "what": "Schools",
+ "bytes": 187653,
+ "rows": 235,
+ "sha256": "c55a0677cb2d491f9b1633ceed3ea9bfbb322c8ccabe2a80d077ff6516e7ae57",
+ "retrieved_utc": "2026-08-23T21:33:53Z"
+}

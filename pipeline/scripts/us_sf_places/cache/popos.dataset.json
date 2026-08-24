@@ -1,0 +1,164 @@
+{
+ "id": "65ik-7wqd",
+ "name": "Privately Owned Public Open Spaces",
+ "description": "Privately-owned public open spaces (POPOS) are publicly accessible spaces in forms of plazas, terraces, atriums, small parks, and even snippets which are provided and maintained by private developers. In San Francisco, POPOS mostly appear in the Downtown office district area. Prior to 1985, developers provided POPOS under three general circumstances: voluntarily, in exchange for a density bonus, or as a condition of approval. The 1985 Downtown Plan created the first systemic requirements for developers to provide publicly accessible open space as a part of projects in C-3 Districts. The goal was to \u201cprovide in the downtown quality open space in sufficient quantity and variety to meet the needs of downtown workers, residents and visitors.\u201d (See Planning Code Section 138 for regulations). Since then, project sponsors for residential projects may provide POPOS instead of their required open spaces in the Downtown Residential (DTR) and Eastern Neighborhoods (Section 135 of the Planning Code). Learn more at http://sf-planning.org/privately-owned-public-open-space-and-public-art-popos",
+ "attribution": null,
+ "rowsUpdatedAt": 1787483259,
+ "columns": {
+  "name": {
+   "name": "NAME",
+   "type": "text",
+   "description": "POPOS name "
+  },
+  "popos_address": {
+   "name": "POPOS_ADDRESS",
+   "type": "text",
+   "description": "POPOS address"
+  },
+  "hours": {
+   "name": "HOURS",
+   "type": "text",
+   "description": "Opening hours"
+  },
+  "type": {
+   "name": "TYPE",
+   "type": "text",
+   "description": "Type of POPOS"
+  },
+  "landscaping": {
+   "name": "LANDSCAPING",
+   "type": "text",
+   "description": "Description of landscaping"
+  },
+  "seating_no": {
+   "name": "SEATING_No",
+   "type": "text",
+   "description": "Number of seats"
+  },
+  "food_service": {
+   "name": "FOOD_SERVICE",
+   "type": "text",
+   "description": "Food service availability"
+  },
+  "art": {
+   "name": "Art",
+   "type": "text",
+   "description": "Art present"
+  },
+  "restrooms": {
+   "name": "RESTROOMS",
+   "type": "text",
+   "description": "Restrooms availability"
+  },
+  "accessibility": {
+   "name": "Accessibility",
+   "type": "text",
+   "description": "Accessibility"
+  },
+  "location": {
+   "name": "LOCATION",
+   "type": "text",
+   "description": "Description of the location"
+  },
+  "year": {
+   "name": "YEAR",
+   "type": "text",
+   "description": "Year opened"
+  },
+  "source": {
+   "name": "SOURCE",
+   "type": "text",
+   "description": "Source"
+  },
+  "food": {
+   "name": "Food",
+   "type": "text",
+   "description": "Food available - Y or N"
+  },
+  "seating": {
+   "name": "Seating",
+   "type": "text",
+   "description": "Seating available - Y or N"
+  },
+  "description": {
+   "name": "Description",
+   "type": "text",
+   "description": "Description"
+  },
+  "seating_and_tables": {
+   "name": "Seating_and_Tables",
+   "type": "text",
+   "description": "Seating and tables available - Y or N"
+  },
+  "hours_type": {
+   "name": "Hours_Type",
+   "type": "text",
+   "description": "Opening hours by category"
+  },
+  "subject_to_downtown_pln": {
+   "name": "Subject_To_Downtown_PLN",
+   "type": "text",
+   "description": "POPOS subject to the SF Downtown Plan"
+  },
+  "signage": {
+   "name": "Signage",
+   "type": "text",
+   "description": "Signage present"
+  },
+  "amenities": {
+   "name": "Amenities",
+   "type": "text",
+   "description": "Amenities"
+  },
+  "block_num": {
+   "name": "BLOCK_NUM",
+   "type": "text",
+   "description": "Block number"
+  },
+  "lot_num": {
+   "name": "LOT_NUM",
+   "type": "text",
+   "description": "Lot number"
+  },
+  "parcel_num": {
+   "name": "PARCEL_NUM",
+   "type": "text",
+   "description": "Parcel number"
+  },
+  "restroom": {
+   "name": "Restroom",
+   "type": "checkbox",
+   "description": "Restrooms available True/False"
+  },
+  "indoor": {
+   "name": "Indoor",
+   "type": "checkbox",
+   "description": "True is POPOS is indoors"
+  },
+  "special_amenities": {
+   "name": "Special_Amenities",
+   "type": "checkbox",
+   "description": "Any special amenities present"
+  },
+  "map_id": {
+   "name": "Map ID",
+   "type": "text",
+   "description": "Map ID - ID used in the PDF 'printable' map"
+  },
+  "latitude": {
+   "name": "latitude",
+   "type": "number",
+   "description": "latitude"
+  },
+  "longitude": {
+   "name": "longitude",
+   "type": "number",
+   "description": "longitude"
+  },
+  "point": {
+   "name": "point",
+   "type": "point",
+   "description": ""
+  }
+ }
+}

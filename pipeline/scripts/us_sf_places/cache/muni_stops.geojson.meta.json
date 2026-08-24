@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/i28k-bkz6.geojson?$limit=50000",
+ "what": "Muni Stops",
+ "bytes": 2015449,
+ "rows": 3260,
+ "sha256": "9b0207ef447dad25fd05c0b6de32dde310190ee71eb3969e2b8ace262bb78007",
+ "retrieved_utc": "2026-08-23T21:34:23Z"
+}

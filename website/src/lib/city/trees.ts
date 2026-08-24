@@ -132,61 +132,122 @@ export const RASTER_BIAS_1M = 0.8928;
 // ── the published grid, and the defect in it ────────────────────────────────
 
 /**
- * THE TREE GRID IS FOLDED, AND IT WAS ALREADY FOLDED.
+ * THE TREE GRID WAS FOLDED, IT IS NOT FOLDED ANY MORE, AND THIS FILE STILL
+ * CARRIED THE FOLD.
  *
- * `world/build_world.py` buckets trees as `B[gj * GW + gi]` with `GW = 400`
- * columns of 24 m — 9,600 m. From that grid's own origin the city is 14,272 m
- * wide, so **595 columns are needed**. `gi` reaches 594, the key aliases, and
- * a tree at column 450 is written to `(gj + 1, column 50)`.
+ * `world/build_world.py` bucketed trees as `B[gj * GW + gi]` with `GW = 400`
+ * columns of 24 m — 9,600 m — while from that grid's own origin the city is
+ * 14,272 m wide and needs **595 columns**. `gi` reached 594, the key aliased,
+ * and a tree at column 450 was written to `(gj + 1, column 50)`: 9,600 m west
+ * and 24 m north of where it stands. **It was fixed at source on 2026-08-23**
+ * (`GW = 600`, `encode_city_chunks.py TREE_FOLD`) and the export has shipped
+ * `gw: 600` on every `tree` and `canopy` chunk entry since.
  *
- * This is not an inference. **Column 0 is x = -7,200, open Pacific about 800 m
- * west of Ocean Beach, and it holds 192 tree cells.** There are no street
- * trees in the ocean. `gi` also saturates at exactly 399 in both the tree and
- * the canopy array, and the cells-per-column histogram is flat at ~180 across
- * all 400 columns with no taper at either edge, which a real city does not do.
- * **No tree is drawn east of x = 2,376 m**, roughly Van Ness, and the western
- * half of the city carries the eastern half's trees on top of its own.
+ * **This module went on decoding it at 400 for a day**, which is worse than
+ * the original defect: the fold at least put every tree somewhere consistent,
+ * and `k % 400` over keys built for a 600-wide grid puts them nowhere at all.
+ * Measured on `tree/10_10.qc`, whose declared extent is
+ * `[2048, 2048, 3072, 3072]`:
  *
- * The true column is **not recoverable** from the shipped file — the modulo
- * destroyed it. So the trees are carried through byte-faithfully and placed
- * where the mock's own draw code places them, so the render is unchanged and
- * the defect is not made *worse* here. `manifest.sources.tree.defect` and
- * `.canopy.defect` say all of this, so nothing downstream can present these
- * positions as fact.
+ * ```
+ *   gw = 400   x -7,200 .. 2,376    y  6,360 .. 7,896   (the open Pacific,
+ *                                                        and 4 km north of
+ *                                                        the chunk it is in)
+ *   gw = 600   x  2,040 .. 3,048    y  2,040 .. 3,048   (inside its own box)
+ * ```
  *
- * **The fix is one constant in `world/build_world.py` and a regenerated
- * `world-data.js`; it belongs there, not here, because inventing a position
- * here would be inventing data.**
+ * Every one of the 129 tree chunks and the one canopy chunk agrees. That is
+ * the check: **the grid width is right when, and only when, a chunk's own
+ * cells land inside the extent the encoder computed for it**, and the encoder
+ * computed that extent from the cell centres with the same arithmetic.
+ *
+ * So the width is no longer a constant here at all — it is **read off the
+ * chunk entry the encoder wrote**, and `assertTreeGrid` refuses a set of
+ * entries that do not agree. A constant in this file and a constant in the
+ * encoder are two places to write one number down, and this is what that costs.
  */
-export const TREE_GRID_W = 400;
-export const TREE_CELL_M = 24;
-/** the vegetation grid's own origin, in world metres */
-export const TREE_X0 = -7200;
-export const TREE_Y0 = -6600;
+export interface TreeGrid {
+  /** columns in the source's own key: `cellKey = row * gw + col` */
+  readonly gw: number;
+  /** the cell's side, world metres */
+  readonly cell: number;
+  /** the vegetation grid's own origin, world metres */
+  readonly x0: number;
+  readonly y0: number;
+  /** the sub-cell lattice: `pos` is two nibbles over a `q` x `q` grid */
+  readonly q: number;
+}
 
-export function cellOf(key: number): { gi: number; gj: number } {
-  return { gi: key % TREE_GRID_W, gj: (key / TREE_GRID_W) | 0 };
+/** What the export ships today. Read the manifest; this is the fallback and
+ *  the fixture, not the authority. */
+export const TREE_GRID: TreeGrid = { gw: 600, cell: 24, x0: -7200, y0: -6600, q: 16 };
+
+/**
+ * The grid every `tree` and `canopy` chunk entry agrees on, or a throw.
+ *
+ * `decodeChunk` already refuses a chunk that is the wrong bytes; this refuses
+ * a catalogue that is the wrong *shape*. Both exist for the same reason —
+ * this map has twice been wrong in a way that decoded, typechecked and drew.
+ */
+export function assertTreeGrid(
+  entries: readonly Readonly<Record<string, unknown>>[],
+): TreeGrid {
+  let g: TreeGrid | null = null;
+  for (const e of entries) {
+    const num = (k: string): number | null =>
+      typeof e[k] === "number" ? (e[k] as number) : null;
+    const gw = num("gw"), cell = num("cell"), x0 = num("x0"), y0 = num("y0"), q = num("q");
+    if (gw === null || cell === null || x0 === null || y0 === null || q === null) continue;
+    const here: TreeGrid = { gw, cell, x0, y0, q };
+    if (!g) g = here;
+    else if (
+      g.gw !== gw || g.cell !== cell || g.x0 !== x0 || g.y0 !== y0 || g.q !== q
+    ) {
+      throw new Error(
+        `vegetation grid disagrees: ${JSON.stringify(g)} vs ${JSON.stringify(here)}`,
+      );
+    }
+  }
+  return g ?? TREE_GRID;
+}
+
+export function cellOf(key: number, g: TreeGrid = TREE_GRID): { gi: number; gj: number } {
+  return { gi: key % g.gw, gj: (key / g.gw) | 0 };
 }
 
 /**
- * Positions are quantised to **1.5 m** — one byte per tree, a 16x16 lattice in
- * a 24 m cell — and that is coarser than the 1 m the footprints carry *on
- * purpose*: a tree crown is drawn 6.6 or 10.0 m across and does not align to a
- * lot line, so 1.5 m is 3.7 px of slack on a 36 px crown at the ceiling, where
- * a building edge at the same slack would be visible against its neighbour.
+ * Positions are quantised to **`cell / q` = 1.5 m** — one byte per tree, a
+ * 16 x 16 lattice in a 24 m cell — and that is coarser than the 1 m the
+ * footprints carry *on purpose*: a tree crown is drawn 6.6 or 10.0 m across
+ * and does not align to a lot line, so 1.5 m is 3.7 px of slack on a 36 px
+ * crown at the ceiling, where a building edge at the same slack would be
+ * visible against its neighbour.
+ *
+ * **The lattice site is its CENTRE and not its corner** — `(n + 0.5)·cell/q`,
+ * which is what `part3.html` `drawVeg` does with the same byte. Reading the
+ * corner shifts every tree and every blob in the city 0.75 m north-west of
+ * where the mock draws it, which is 1.8 px at the detail ceiling.
  */
-export const TREE_Q = 1.5;
+export function treeQ(g: TreeGrid = TREE_GRID): number {
+  return g.cell / g.q;
+}
+
+/** @deprecated the published quantum, kept for the fixtures: `cell / q`. */
+export const TREE_Q = TREE_GRID.cell / TREE_GRID.q;
 
 export function treeWorld(
   key: number,
   pos: number,
+  g: TreeGrid = TREE_GRID,
 ): { x: number; y: number } {
-  const { gi, gj } = cellOf(key);
-  const ox = pos & 15,
-    oy = (pos >> 4) & 15;
+  const gi = key % g.gw,
+    gj = (key / g.gw) | 0;
+  const step = g.cell / g.q;
+  const ox = (pos % g.q) + 0.5,
+    oy = ((pos / g.q) | 0) + 0.5;
   return {
-    x: TREE_X0 + gi * TREE_CELL_M + ox * TREE_Q,
-    y: TREE_Y0 + gj * TREE_CELL_M + oy * TREE_Q,
+    x: g.x0 + gi * g.cell + ox * step,
+    y: g.y0 + gj * g.cell + oy * step,
   };
 }
 
@@ -209,8 +270,26 @@ export function treeWorld(
  * Two date fields that WERE dead ends, recorded so nobody re-checks them:
  * `gtr9-ntp6`'s `created_date` / `data_as_of` are a single 2025-12-18 GIS
  * load, so Recreation and Parks properties cannot be dated.
+ *
+ * **AND 1955 IS NOT THE ENCODING BASE.** `build_world.py` writes
+ * `max(1, min(255, y - 1900))`, so the byte is years since **1900** — which is
+ * what makes 2026 fit in a `u8` at all, and what `part3.html`'s own gate reads
+ * (`if (yr) { if (1900 + yr > iy) continue; }`). This file decoded it at 1955
+ * for a day. The gate is `year !== undefined` and the film's clock is P5's, so
+ * nothing on screen has been wrong yet — but the first frame of the first
+ * scrub would have held every tree in the city back by 55 years, and the
+ * failure is silent because a held tree looks exactly like a tree that is not
+ * there.
+ *
+ * 1955 survives as what it actually is: the earliest date **in the file**, and
+ * therefore the year before which the register has nothing to say about any
+ * tree in it.
  */
-export const TREE_YEAR0 = 1955;
+export const TREE_YEAR_BASE = 1900;
+export const TREE_EARLIEST = 1955;
+/** @deprecated read `TREE_YEAR_BASE` to decode `yr`, `TREE_EARLIEST` for the
+ *  fact about the file. This name meant both and was one of them. */
+export const TREE_YEAR0 = TREE_YEAR_BASE;
 
 export interface VegFlags {
   /** draw the trees whose planting date is not published */
@@ -224,6 +303,38 @@ export interface VegFlags {
 }
 
 export const WFLG: VegFlags = { undated: true, tint: true, blobs: true, trees: true };
+
+/**
+ * A MOTION RUNG FOR THE VEGETATION WAS WRITTEN, MEASURED, AND TAKEN BACK OUT.
+ *
+ * With `gw` decoded correctly the drawn tree count at the block preset goes
+ * from 2,333 to 31,066, and the first frame-interval measurement of an
+ * 18-notch wheel zoom out of whole city looked like a clear indictment:
+ *
+ * ```
+ *                     median   p95      worst    frames >250 ms
+ *   with vegetation   8.4 ms   241.6    917.3    4
+ *   ?layers=-veg      8.4 ms   165.9    316.0    1
+ * ```
+ *
+ * So the dissolve weight was multiplied by 0.30 while the camera moves — the
+ * same `vrnd(i) >= w` index test, so a subset and not a reshuffle — and
+ * measured again. **It did not move the worst frame** (774.9 / 916.6 with the
+ * rung against 917.3 without it), and the next `?layers=-veg` control came
+ * back at **1,016.7 ms with the vegetation switched off entirely.**
+ *
+ * The run-to-run variance is larger than the effect, so the first table does
+ * not show what it looked like it showed. What every run agrees on is the part
+ * that matters: **the median frame is 8.4 ms in every configuration** — a
+ * gesture is a blit and none of this runs during one — and the long frames are
+ * the handful of full RE-rasterisations a zoom forces when it crosses a band,
+ * which are 300-1,000 ms with the vegetation and 300-1,000 ms without it.
+ *
+ * The rung is not here because a change that costs the reader trees during
+ * every move has to buy something measurable, and this one did not. The band
+ * crossing is the real object and it is not this module's.
+ */
+export const VEG_HAS_NO_MOTION_RUNG = true;
 
 // ── the sprite sheet ────────────────────────────────────────────────────────
 
@@ -245,15 +356,92 @@ export const VSPR_H = VSPR_R * 5.4;
 /** where the ground point sits in the sprite */
 export const VSPR_AY = VSPR_R * 4.2;
 
-export const TREE_GREENS: readonly string[] = [
-  "#5f7a45", // broadleaf
-  "#4a6b46", // conifer
-  "#6f8a4e", // palm
-  "#66804a", // unclassed
+/**
+ * ONE TONE PER PUBLISHED CLASS, NEVER A HASH, AND THREE VALUES OF IT.
+ *
+ * `part3.html` `vspriteSheet` L3805-3812. The port shipped ONE flat green per
+ * family and dropped the other two values of each:
+ *
+ * ```
+ *                reference mid / lit / dk        this port shipped
+ *   broadleaf    #6f8f4e  #93ae66  #4d6a37       #5f7a45   (flat)
+ *   conifer      #4d6f52  #6a8c68  #33503b       #4a6b46   (flat)
+ *   palm         #7e9a4c  #a2b96a  #5a7135       #6f8a4e   (flat)
+ *   unclassed    #75904f  #96ac68  #53693a       #66804a   (flat)
+ * ```
+ *
+ * Every shipped green was DARKER than the reference's own mid — 12 to 16
+ * levels — and with the lit lobe gone the crown had no direction, which is
+ * what made the canopy read as a green mass with a dot texture at the district
+ * camera where every crown in the frame is a canopy cell.
+ *
+ * Block M §5 is why there is one tone per class and not one per tree: 166,166
+ * meaningless differences is noise, and noise reads as confetti.
+ */
+export interface CrownTone {
+  readonly mid: string;
+  readonly lit: string;
+  readonly dk: string;
+}
+
+export const TREE_FAM: readonly CrownTone[] = [
+  { mid: "#6f8f4e", lit: "#93ae66", dk: "#4d6a37" }, // broadleaf
+  { mid: "#4d6f52", lit: "#6a8c68", dk: "#33503b" }, // conifer
+  { mid: "#7e9a4c", lit: "#a2b96a", dk: "#5a7135" }, // palm
+  { mid: "#75904f", lit: "#96ac68", dk: "#53693a" }, // unclassed
 ];
+
+/**
+ * THE CANOPY MASS IS ITS OWN TONE AND ITS OWN HEIGHT.
+ *
+ * `part3.html` L3866-3868: index 9 — a cell more than 55 % covered — is
+ * `#5f7f45 / #83a05c / #415c30`, and index 8 is the broadleaf family's own
+ * row. The port drew both as one flat `#5b7742`.
+ */
+export const CANOPY_FAM: CrownTone = {
+  mid: "#5f7f45",
+  lit: "#83a05c",
+  dk: "#415c30",
+};
+
+/** the mid tone of each family, kept as its own export for the ground tint */
+export const TREE_GREENS: readonly string[] = TREE_FAM.map((f) => f.mid);
 
 /** crown diameter in metres, by the one published size bit */
 export const CROWN_M: readonly [number, number] = [6.6, 10.0];
+
+/**
+ * THE SMALL CROWN IS 0.76 OF THE SPRITE, NOT 0.66.
+ *
+ * `part3.html` L3819, `VSPR_R*(big?1.0:0.76)`. The sprite radius is not what
+ * sizes a STREET tree — `CROWN_M` does that, through `rp/S.r` — but it IS
+ * what sizes the crown inside its own cell of the sheet, so a small crown was
+ * being drawn at 87 % of the area the reference draws it at.
+ */
+export const CROWN_SMALL_K = 0.76;
+
+/**
+ * A CANOPY MASS SITS 1.30 RADII UP, NOT 2.613.
+ *
+ * `part3.html` L3868: `const R=VSPR_R, cy=VSPR_AY-R*1.30`. `CROWN_LIFT`
+ * = 2·ZEXB/1.2247 = 2.613 is the lift of a TREE, whose crown sits two radii of
+ * real height above its own ground point. A canopy cell is not a tree standing
+ * on the ground; it is the mass itself, and the reference sits it at half that
+ * — *"the same wash, no trunk, sitting lower on the ground"*. The port lifted
+ * it by the tree's number and floated every blob in Golden Gate Park a full
+ * crown-diameter north of the cell it is measured over.
+ */
+export const CANOPY_LIFT = 1.3;
+
+/** the six lobes a broadleaf crown is made of: x, y, r, all in crown radii */
+const LOBES: readonly (readonly [number, number, number])[] = [
+  [0, 0, 1.0],
+  [-0.52, 0.12, 0.68],
+  [0.52, 0.1, 0.66],
+  [-0.22, -0.46, 0.62],
+  [0.28, -0.44, 0.6],
+  [0, 0.46, 0.62],
+];
 
 export interface SpriteSheet {
   readonly canvas: CanvasImageSource;
@@ -264,67 +452,160 @@ export interface SpriteSheet {
 }
 
 /**
- * Draw the sheet once, at a size that is a multiple of the largest crown any
- * camera reaches, and blit it. The sheet is a function of the palette and of
- * nothing the camera does, so a pan does not rebuild it.
+ * Draw the sheet once and blit it. The sheet is a function of the palette and
+ * of nothing the camera does, so a pan does not rebuild it.
+ *
+ * **THE LIGHT IS UPPER-RIGHT ON SCREEN** — VISUAL-SPEC §1.3, resolved in
+ * favour of the faces, and the same light the walls and the cast shadows
+ * already use. So the lit lobe is up-right and the shadow falls down-left.
+ * That is the whole reason a crown has three values and not one: a flat disc
+ * has no light on it and cannot agree with the buildings beside it.
+ *
+ * Ported shape for shape from `part3.html` L3795-3885 — the six-lobe
+ * broadleaf silhouette, the three-value conifer cone, the eight fronds and
+ * four lit fronds of a palm, the stroked trunk, and the two canopy masses.
+ * The port that this replaces drew one ellipse per crown, no trunk, and a
+ * cone with no shading.
  */
 export function buildSpriteSheet(
   makeCanvas: (w: number, h: number) => HTMLCanvasElement | OffscreenCanvas,
 ): SpriteSheet | null {
-  const n = TREE_GREENS.length * 2 + 2;
+  const n = TREE_FAM.length * 2 + 2;
   const c = makeCanvas(Math.ceil(VSPR_W * n), Math.ceil(VSPR_H));
   const g = c.getContext("2d") as CanvasRenderingContext2D | null;
   if (!g) return null;
+  const TAU = Math.PI * 2;
   for (let k = 0; k < n; k++) {
-    const fam = Math.min(TREE_GREENS.length - 1, k >> 1);
-    const big = (k & 1) === 1;
-    const isCanopy = k >= TREE_GREENS.length * 2;
-    const cx = k * VSPR_W + VSPR_W / 2;
-    const r = VSPR_R * (big ? 1 : 0.66);
-    const cy = VSPR_AY - r * CROWN_LIFT;
-    // the ground shadow first, so a crown lands on it
-    g.globalAlpha = 0.16;
-    g.fillStyle = "#3a3524";
-    g.beginPath();
-    g.ellipse(cx, VSPR_AY, r * 0.9, r * 0.42, 0, 0, Math.PI * 2);
-    g.fill();
-    g.globalAlpha = 1;
-    g.fillStyle = isCanopy ? "#5b7742" : TREE_GREENS[fam];
-    g.beginPath();
-    if (fam === 2 && !isCanopy) {
-      // a palm: a trunk and a splayed crown, not a ball
-      g.moveTo(cx - r * 0.09, VSPR_AY);
-      g.lineTo(cx + r * 0.09, VSPR_AY);
-      g.lineTo(cx + r * 0.05, cy);
-      g.lineTo(cx - r * 0.05, cy);
-      g.closePath();
-      g.fill();
+    g.save();
+    g.translate(k * VSPR_W + VSPR_W / 2, 0);
+    if (k < TREE_FAM.length * 2) {
+      const fam = k >> 1,
+        big = (k & 1) === 1;
+      const F = TREE_FAM[fam];
+      const R = VSPR_R * (big ? 1 : CROWN_SMALL_K),
+        cy = VSPR_AY - R * CROWN_LIFT;
+      // contact shadow on the ground, down-left, soft
+      g.save();
+      g.globalAlpha = 0.2;
+      g.fillStyle = "#3b3222";
       g.beginPath();
-      for (let a = 0; a < 7; a++) {
-        const th = Math.PI + (a / 6) * Math.PI;
-        g.moveTo(cx, cy);
-        g.quadraticCurveTo(
-          cx + Math.cos(th) * r * 0.7,
-          cy + Math.sin(th) * r * 0.5,
-          cx + Math.cos(th) * r,
-          cy + Math.sin(th) * r * 0.8 + r * 0.25,
-        );
-      }
-      g.lineWidth = Math.max(1, r * 0.16);
-      g.strokeStyle = TREE_GREENS[fam];
+      g.ellipse(-R * 0.3, VSPR_AY - R * 0.06, R * 0.92, R * 0.4, 0, 0, TAU);
+      g.fill();
+      g.restore();
+      // trunk
+      g.strokeStyle = "#5d4a33";
+      g.lineWidth = Math.max(1.6, R * 0.13);
+      g.lineCap = "round";
+      g.beginPath();
+      g.moveTo(0, VSPR_AY - R * 0.1);
+      g.lineTo(0, cy + R * 0.25);
       g.stroke();
-      continue;
-    }
-    if (fam === 1 && !isCanopy) {
-      // a conifer: a cone
-      g.moveTo(cx, cy - r * 1.25);
-      g.lineTo(cx + r * 0.85, cy + r * 0.9);
-      g.lineTo(cx - r * 0.85, cy + r * 0.9);
-      g.closePath();
+      if (fam === 2) {
+        // a palm: fronds, not a crown. Eight, on the file's word for it.
+        g.strokeStyle = F.mid;
+        g.lineWidth = Math.max(2, R * 0.2);
+        g.lineCap = "round";
+        for (let a = 0; a < 8; a++) {
+          const th = -Math.PI / 2 + (a - 3.5) * 0.4;
+          g.beginPath();
+          g.moveTo(0, cy + R * 0.3);
+          g.quadraticCurveTo(
+            Math.cos(th) * R * 0.8,
+            cy + R * 0.3 + Math.sin(th) * R * 0.75,
+            Math.cos(th) * R * 1.25,
+            cy + R * 0.3 + Math.sin(th) * R * 0.55 + R * 0.3,
+          );
+          g.stroke();
+        }
+        g.strokeStyle = F.lit;
+        g.lineWidth = Math.max(1, R * 0.09);
+        for (let a = 0; a < 4; a++) {
+          const th = -Math.PI / 2 + (a - 1.2) * 0.42;
+          g.beginPath();
+          g.moveTo(0, cy + R * 0.3);
+          g.quadraticCurveTo(
+            Math.cos(th) * R * 0.8,
+            cy + R * 0.3 + Math.sin(th) * R * 0.75,
+            Math.cos(th) * R * 1.2,
+            cy + R * 0.3 + Math.sin(th) * R * 0.55 + R * 0.26,
+          );
+          g.stroke();
+        }
+      } else if (fam === 1) {
+        // a conifer: a cone, three flat wash values, no gradient
+        const top = cy - R * 1.15,
+          bot = cy + R * 0.95;
+        g.fillStyle = F.mid;
+        g.beginPath();
+        g.moveTo(0, top);
+        g.lineTo(R * 0.95, bot);
+        g.lineTo(-R * 0.95, bot);
+        g.closePath();
+        g.fill();
+        g.fillStyle = F.lit;
+        g.beginPath();
+        g.moveTo(0, top);
+        g.lineTo(R * 0.95, bot);
+        g.lineTo(0, bot);
+        g.closePath();
+        g.fill();
+        g.fillStyle = F.dk;
+        g.beginPath();
+        g.moveTo(-R * 0.3, top + R * 0.55);
+        g.lineTo(-R * 0.95, bot);
+        g.lineTo(-R * 0.2, bot);
+        g.closePath();
+        g.fill();
+      } else {
+        // a broadleaf crown: overlapping lobes, so the silhouette is lumpy
+        g.fillStyle = F.mid;
+        g.beginPath();
+        for (const L of LOBES) {
+          g.moveTo(L[0] * R + L[2] * R, cy + L[1] * R);
+          g.arc(L[0] * R, cy + L[1] * R, L[2] * R, 0, TAU);
+        }
+        g.fill();
+        g.fillStyle = F.lit;
+        g.beginPath();
+        g.arc(R * 0.3, cy - R * 0.34, R * 0.62, 0, TAU);
+        g.arc(R * 0.62, cy + R * 0.02, R * 0.42, 0, TAU);
+        g.fill();
+        g.fillStyle = F.dk;
+        g.beginPath();
+        g.arc(-R * 0.36, cy + R * 0.4, R * 0.52, 0, TAU);
+        g.fill();
+      }
     } else {
-      g.ellipse(cx, cy, r, r * 0.92, 0, 0, Math.PI * 2);
+      // a canopy mass: the same wash, no trunk, sitting lower on the ground
+      const dense = k - TREE_FAM.length * 2 === 1;
+      const R = VSPR_R,
+        cy = VSPR_AY - R * CANOPY_LIFT;
+      const F = dense ? CANOPY_FAM : TREE_FAM[0];
+      g.save();
+      g.globalAlpha = 0.22;
+      g.fillStyle = "#3b3222";
+      g.beginPath();
+      g.ellipse(-R * 0.26, VSPR_AY - R * 0.3, R * 1.02, R * 0.44, 0, 0, TAU);
+      g.fill();
+      g.restore();
+      g.fillStyle = F.mid;
+      g.beginPath();
+      for (const L of LOBES) {
+        g.moveTo(L[0] * R * 1.05 + L[2] * R * 1.05, cy + L[1] * R * 0.9);
+        g.arc(L[0] * R * 1.05, cy + L[1] * R * 0.9, L[2] * R * 1.05, 0, TAU);
+      }
+      g.fill();
+      g.fillStyle = F.lit;
+      g.beginPath();
+      g.arc(R * 0.34, cy - R * 0.32, R * 0.66, 0, TAU);
+      g.arc(R * 0.66, cy + R * 0.04, R * 0.44, 0, TAU);
+      g.fill();
+      g.fillStyle = F.dk;
+      g.beginPath();
+      g.arc(-R * 0.4, cy + R * 0.36, R * 0.56, 0, TAU);
+      g.fill();
     }
-    g.fill();
+    g.restore();
   }
   return { canvas: c, w: VSPR_W, h: VSPR_H, ay: VSPR_AY, n };
 }
@@ -337,7 +618,7 @@ export interface TreeCell {
   readonly pos: Uint8Array;
   readonly form: Uint8Array;
   readonly big: Uint8Array;
-  /** years from `TREE_YEAR0`; 0 = the date is not published */
+  /** years from `TREE_YEAR_BASE` = 1900; 0 = the date is not published */
   readonly yr: Uint8Array;
 }
 
@@ -371,6 +652,7 @@ export function drawVeg(
   trees: readonly TreeCell[],
   canopy: readonly CanopyCells[],
   z: number,
+  grid: TreeGrid = TREE_GRID,
 ): VegResult {
   const { ctx, cam, W, H } = f;
   let nT = 0,
@@ -380,62 +662,152 @@ export function drawVeg(
   const wTree = WFLG.trees ? bandW(z, VZ_T0, VZ_T1) : 0;
   const year = f.year;
 
-  if (wCan > 0.002) {
+  /* ── NO `proj()` INSIDE EITHER LOOP ────────────────────────────────────
+     `proj()` returns a NEW two-element array and does four multiplies of its
+     own trig. `buildings.ts` paid for that lesson once — "at district the
+     footprint loop ran over 880,000 vertices, so calling it twice a vertex
+     allocated 1.8 million two-element arrays per rasterisation" — and
+     `proj.coeffs()` exists for exactly this shape of loop. There are 195,310
+     trees and 50,897 canopy cells, so this is the same loop again.
+
+     MEASURED, because a claim about frames has to be: with the vegetation
+     grid decoded correctly the drawn tree count went from 2,333 to 31,066 at
+     the block preset, and an 18-notch wheel zoom out of whole city fell from
+     45.9 rAF/s with `?layers=-veg` to 31.2 with it. The three changes below
+     are the mock's own arithmetic, not a cheaper approximation of it. */
+  const cf = f.proj.coeffs();
+  const zex = f.proj.zex;
+  const k = cam.scale;
+  const W2 = W / 2,
+    H2 = H / 2;
+  const cell = grid.cell;
+
+  /*
+   * ── THE CANOPY IS THE SAME KIND OF OBJECT AS A STREET TREE ─────────────
+   *
+   * This layer was one `Path2D` of flat ellipses filled once at
+   * `globalAlpha 0.5` in a single green. `part3.html` §drawVeg draws **the
+   * sprite sheet's own two canopy masses**, one blit a cell, far to near,
+   * with the ground shadow the sheet already carries — the sheet has been
+   * building those two sprites all along (`isCanopy`, indices 8 and 9) and
+   * nothing was asking for them.
+   *
+   * The difference is the whole of the district band: `VZ_T0` = 2.9 is
+   * exactly the district preset, so `bandW(2.9, 2.9, 6.0)` is 0 and **there
+   * are no street trees in that frame at all** — every crown a reader sees
+   * over the Sunset and inside Golden Gate Park at 2.9x is a canopy cell.
+   * Drawn as one flat fill they are a green mass with a dot texture; drawn as
+   * the mock draws them they are crowns with shadows and the meadows read as
+   * meadows. Parity §7's "counted but barely drawn at band 1" is this.
+   *
+   * The two gates are the reference's own and they are different gates: the
+   * 58.06 m2 floor is on the PUBLISHED area (the tint already carries a cell
+   * that small), and `rp < 0.9` is on the DRAWN radius, which is what stops a
+   * blit that cannot resolve. Far to near is `descending cellKey`, because
+   * `cellKey = row * gw + col` and at ROT 315 `depth()` reduces to world y,
+   * so a descending row IS painter order and no sort is needed.
+   */
+  if (wCan > 0.002 && sheet) {
     ctx.save();
-    ctx.globalAlpha = 0.5;
-    ctx.fillStyle = "#5b7742";
-    const p = new Path2D();
-    let idx = 0;
-    for (const c of canopy) {
-      for (let i = 0; i < c.cellKey.length; i++, idx++) {
-        if (vrnd(idx) >= wCan) continue;
-        const areaM2 = (c.area[i] / 255) * TREE_CELL_M * TREE_CELL_M;
+    const pxm = 1.2247 * k;
+    const amax = cell * cell;
+    const canopy0 = TREE_GREENS.length * 2;
+    let base = 0;
+    for (const c of canopy) base += c.cellKey.length;
+    for (let ci = canopy.length - 1; ci >= 0; ci--) {
+      const c = canopy[ci];
+      base -= c.cellKey.length;
+      for (let i = c.cellKey.length - 1; i >= 0; i--) {
+        if (vrnd(base + i) >= wCan) continue;
+        const areaM2 = (c.area[i] / 255) * amax;
         if (areaM2 < BLOB_MIN_M2) continue;
-        const w = treeWorld(c.cellKey[i], c.pos[i]);
-        const r = blobRadius(areaM2);
-        const pr = f.proj.proj(w.x, w.y, t.elevM(w.x, w.y));
-        const X = sx(f, pr),
-          Y = sy(f, pr) - r * CROWN_LIFT * cam.scale;
-        const rx = r * 1.2247 * cam.scale;
-        if (X + rx < -8 || X - rx > W + 8 || Y + rx < -8 || Y - rx > H + 8)
-          continue;
-        p.moveTo(X + rx, Y);
-        p.ellipse(X, Y, rx, rx * 0.82, 0, 0, Math.PI * 2);
+        const rp = blobRadius(areaM2) * pxm;
+        if (rp < 0.9) continue;
+        const w = treeWorld(c.cellKey[i], c.pos[i], grid);
+        const pz = t.elevM(w.x, w.y) * zex;
+        const X = (cf.ax * w.x + cf.ay * w.y - cam.cx) * k + W2;
+        const Y = H2 - (cf.bx * w.x + cf.by * w.y + pz - cam.cy) * k;
+        const sc = rp / VSPR_R;
+        const dw = VSPR_W * sc,
+          dh = VSPR_H * sc;
+        if (X + dw < -8 || X - dw > W + 8 || Y < -8 || Y - dh > H + 8) continue;
+        const si = Math.min(
+          sheet.n - 1,
+          canopy0 + (areaM2 > amax * 0.55 ? 1 : 0),
+        );
+        ctx.drawImage(
+          sheet.canvas,
+          si * VSPR_W,
+          0,
+          VSPR_W,
+          VSPR_H,
+          X - dw / 2,
+          Y - VSPR_AY * sc,
+          dw,
+          dh,
+        );
         nB++;
       }
     }
-    ctx.fill(p);
     ctx.restore();
   }
 
   if (wTree > 0.002 && sheet) {
     ctx.save();
+    /* the two crown sizes are the same two for every tree in the city, so the
+       drawn size is two numbers and not a divide per tree */
+    const wpxS = ((CROWN_M[0] * 1.2247 * k) / (2 * VSPR_R)) * VSPR_W;
+    const wpxB = ((CROWN_M[1] * 1.2247 * k) / (2 * VSPR_R)) * VSPR_W;
     let idx = 0;
     for (const c of trees) {
       let vo = 0;
-      for (let k = 0; k < c.cellKey.length; k++) {
-        const cnt = c.cellCnt[k];
+      for (let ci = 0; ci < c.cellKey.length; ci++) {
+        const cnt = c.cellCnt[ci];
         const base = vo;
         vo += cnt;
+        /* ── THE CELL IS CULLED BEFORE ANY TREE IN IT IS TOUCHED, AND THE
+               ELEVATION IS READ ONCE FOR THE CELL ──────────────────────────
+           `part3.html` `drawVeg` projects the cell's own centre, rejects the
+           whole cell against the frame with a 200 px margin, and then takes
+           `elevDrawn(bx + cel/2, by + cel/2)` ONCE for every tree standing in
+           it. A 24 m cell is under 60 px at the detail ceiling, so one DEM
+           sample across it is the same sample the per-tree read would return
+           to within one bilinear step of a 53.8 m grid — and it is what the
+           reference does, so this is a port and not an economy. */
+        const gi = c.cellKey[ci] % grid.gw,
+          gj = (c.cellKey[ci] / grid.gw) | 0;
+        const bxw = grid.x0 + gi * cell,
+          byw = grid.y0 + gj * cell;
+        const mxw = bxw + cell * 0.5,
+          myw = byw + cell * 0.5;
+        const cX = (cf.ax * mxw + cf.ay * myw - cam.cx) * k + W2;
+        const cY = H2 - (cf.bx * mxw + cf.by * myw - cam.cy) * k;
+        if (cX < -200 || cX > W + 200 || cY < -200 || cY > H + 400) {
+          idx += cnt;
+          continue;
+        }
+        const pz = t.elevM(mxw, myw) * zex;
+        const step = cell / grid.q;
         for (let i = 0; i < cnt; i++, idx++) {
           const j = base + i;
           if (vrnd(idx) >= wTree) continue;
           const yy = c.yr[j];
           if (yy === 0) {
             if (!WFLG.undated) continue;
-          } else if (year !== undefined && year < TREE_YEAR0 + yy) continue;
-          const w = treeWorld(c.cellKey[k], c.pos[j]);
-          const dM = CROWN_M[c.big[j] ? 1 : 0];
-          const pr = f.proj.proj(w.x, w.y, t.elevM(w.x, w.y));
-          const X = sx(f, pr),
-            Y = sy(f, pr);
-          const wpx = ((dM * 1.2247 * cam.scale) / (2 * VSPR_R)) * VSPR_W;
+          } else if (year !== undefined && year < TREE_YEAR_BASE + yy) continue;
+          const pos = c.pos[j];
+          const wx = bxw + ((pos % grid.q) + 0.5) * step;
+          const wy = byw + (((pos / grid.q) | 0) + 0.5) * step;
+          const big = c.big[j] !== 0;
+          const wpx = big ? wpxB : wpxS;
           if (wpx < 1.2) continue;
+          const X = (cf.ax * wx + cf.ay * wy - cam.cx) * k + W2;
+          const Y = H2 - (cf.bx * wx + cf.by * wy + pz - cam.cy) * k;
           const hpx = (wpx / VSPR_W) * VSPR_H;
           const ay = (wpx / VSPR_W) * VSPR_AY;
           if (X + wpx < -8 || X - wpx > W + 8 || Y < -8 || Y - hpx > H + 8)
             continue;
-          const si = Math.min(sheet.n - 1, (c.form[j] & 3) * 2 + (c.big[j] ? 1 : 0));
+          const si = Math.min(sheet.n - 1, (c.form[j] & 3) * 2 + (big ? 1 : 0));
           ctx.drawImage(
             sheet.canvas,
             si * VSPR_W,
@@ -535,23 +907,53 @@ export function drawParkRings(
   t: TerrainField,
   parks: readonly ParkRing[],
 ): number {
-  const { ctx } = f;
+  const { ctx, W, H } = f;
   if (!parks.length) return 0;
   ctx.save();
   ctx.globalAlpha = PARK_WASH;
   ctx.fillStyle = WPKW;
-  const p = new Path2D();
+  /* ── ONE FILL A RING, NOT ONE FILL FOR ALL OF THEM ─────────────────────
+     This built every ring into a single `Path2D` and filled it `"evenodd"`.
+     Two things follow and both are visible over Golden Gate Park and Lake
+     Merced:
+       - **even-odd CANCELS an overlap.** 328 published rings are not disjoint
+         — a park ring and the recreation-area ring drawn on top of it are two
+         rings over the same ground — and every such overlap came out as a HOLE
+         in the wash, tan ground inside a park with a hard published edge round
+         it.
+       - **and the wash stops accumulating.** `part3.html` L3758-3773 fills each
+         ring separately at `globalAlpha = 0.46`, so two rings over the same
+         ground compose to 0.708 and read as the two claims they are. One fill
+         of a merged path composes once.
+     The bbox cull is the reference's own, and it is per ring for the same
+     reason: a ring that cannot be seen costs a `fill()` in a merged path
+     whether it is in frame or not. */
+  let drawn = 0;
   for (const ring of parks) {
+    if (!ring.length) continue;
+    let x0 = 1e9,
+      x1 = -1e9,
+      y0 = 1e9,
+      y1 = -1e9;
+    const p = new Path2D();
     for (let i = 0; i < ring.length; i++) {
       const pr = f.proj.proj(ring[i][0], ring[i][1], t.elevM(ring[i][0], ring[i][1]));
-      if (i) p.lineTo(sx(f, pr), sy(f, pr));
-      else p.moveTo(sx(f, pr), sy(f, pr));
+      const X = sx(f, pr),
+        Y = sy(f, pr);
+      if (X < x0) x0 = X;
+      if (X > x1) x1 = X;
+      if (Y < y0) y0 = Y;
+      if (Y > y1) y1 = Y;
+      if (i) p.lineTo(X, Y);
+      else p.moveTo(X, Y);
     }
+    if (x1 < -8 || x0 > W + 8 || y1 < -8 || y0 > H + 8) continue;
     p.closePath();
+    ctx.fill(p);
+    drawn++;
   }
-  ctx.fill(p, "evenodd");
   ctx.restore();
-  return parks.length;
+  return drawn;
 }
 
 export function drawWaterBodies(
@@ -563,6 +965,7 @@ export function drawWaterBodies(
   if (!bodies.length) return 0;
   ctx.save();
   ctx.fillStyle = WLAKE;
+  let last: Path2D | null = null;
   for (const ring of bodies) {
     if (!ring.length) continue;
     // one elevation for the whole body
@@ -577,6 +980,22 @@ export function drawWaterBodies(
     }
     p.closePath();
     ctx.fill(p);
+    last = p;
+  }
+  /* ── THE TRAILING STROKE, AND WHY IT IS SAFE HERE ──────────────────────
+     `part3.html` L3670 strokes OUTSIDE the loop, so it strokes whatever path
+     the loop left on the context — the LAST water body — deliberately, and
+     with its own hazard note: reaching that line having drawn nothing strokes
+     the last ring `drawParkRings` left behind, and a dark outline appears
+     round a park. DRAW.md §13.7 left this unported for exactly that reason.
+     It is safe in this port because there is no shared current path: each body
+     is its own `Path2D`, so "the last body" is a value, and a pass that drew
+     nothing has `null` and strokes nothing. The hazard was a property of the
+     context, not of the treatment. */
+  if (last) {
+    ctx.strokeStyle = "rgba(28,44,60,.30)";
+    ctx.lineWidth = 0.9;
+    ctx.stroke(last);
   }
   ctx.restore();
   return bodies.length;

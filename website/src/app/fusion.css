@@ -16836,21 +16836,38 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   color: var(--muted);
 }
 
-/* ───── THE CITY MAP (P4) ─────────────────────────────────────────────
-   The stage is a canvas with an OPAQUE ledger panel sitting on it, which is
-   why `Camera.strip()` clamps to the visible strip and not to the canvas:
-   clamping to the canvas would let a third of San Francisco slide underneath
-   the ledger and still count as on screen. `--fx-city-ledger` is the same
-   288 px `LEDGER_W` the camera is told about. */
-.theme-fusion .fx-city-wrap { --fx-city-ledger: 288px; }
+/* ───── THE CITY MAP ──────────────────────────────────────────────────
+   The map IS the page. The stage runs the full width of the window, the
+   chrome sitting on it is the least that still tells a reader what to do,
+   and everything that EXPLAINS the map is under it: one line, with the
+   rest behind a disclosure that has to be opened.
+
+   `--fx-city-h` is the stage height, and it is a variable because three
+   separate things have to agree on it — the stage, the entry plate that
+   sits over it (rendered by the page rather than by `CityMap`, so the
+   <h1> is in the server HTML), and the placeholder `next/dynamic` paints
+   while the canvas module is still loading.
+
+   `--fx-city-ledger` is the same 288 px `LEDGER_W` the camera is told
+   about: `Camera.strip()` clamps to the visible strip and not to the
+   canvas, or a third of San Francisco would slide under the ledger and
+   still count as being on screen. */
+.theme-fusion .fx-city-shell,
+.theme-fusion .fx-city-wrap {
+  --fx-city-ledger: 288px;
+  --fx-city-h: min(74vh, 720px);
+}
+.theme-fusion .fx-city-shell { position: relative; }
 .theme-fusion .fx-city-frame { position: relative; }
 .theme-fusion .fx-city-stage {
   position: relative;
   width: 100%;
-  border: 1px solid var(--rule);
+  height: var(--fx-city-h);
+  min-height: 380px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
   background: #ece7dc; /* HAZE — the same surround colour the canvas fills */
   overflow: hidden;
-  border-radius: 2px;
 }
 .theme-fusion .fx-city-canvas {
   display: block;
@@ -16863,7 +16880,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-city-canvas:active { cursor: grabbing; }
 .theme-fusion .fx-city-canvas:focus-visible {
   outline: 2px solid var(--bleu);
-  outline-offset: -2px;
+  outline-offset: -3px;
 }
 .theme-fusion .fx-city-overlay {
   position: absolute;
@@ -16872,47 +16889,244 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   place-items: center;
   background: rgba(250, 250, 247, .72);
 }
+
+/* ── the entry plate ──────────────────────────────────────────────────
+   The first thing on the page, over the map rather than above it, and it
+   goes away the moment the reader takes it up. It stops short of the
+   ledger so it never covers the record margin.
+
+   ── IT IS A CARD, AND IT USED TO BE A WASH ─────────────────────────────
+   The plate shipped as a 100deg gradient — .97 at the left edge, still .58
+   at 58 % of the frame — laid over the FULL HEIGHT of the stage. MEASURED
+   at 1600 x 1000 on the district camera, the same frame with the plate and
+   with `display:none` on it (`.parity/v1plate.py`), by eighths of the
+   stage:
+
+     x 400-600   mean luminance 153.7 -> 231.0   RMS contrast kept  73 %
+     x 600-800   mean luminance 155.4 -> 217.5   RMS contrast kept  39 %
+     x 800-1000  mean luminance 154.9 -> 192.8   RMS contrast kept  65 %
+
+   Two fifths of the drawing, at the camera the page opens on, at a third
+   of its own contrast — and none of that is where the text is. On a phone
+   it was worse: the wash covered the whole 390 px width and the city was a
+   ghost behind the copy at every column.
+
+   So the text takes a card with an edge, and the map is the map. What is
+   covered is covered honestly and everything else is at full strength: the
+   card is 460 x 440 at 1600 x 1000, 19 % of the stage, against 62 % of the
+   frame veiled before. Same idiom as the film's own paused panel. */
+.theme-fusion .fx-city-entry {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: var(--fx-city-ledger);
+  height: var(--fx-city-h);
+  min-height: 380px;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 clamp(20px, 3.4vw, 52px) clamp(24px, 4vw, 54px);
+  /* THE PLATE IS NOT A LID. The city is visible around it, so a reader who
+     reaches past the text and grabs the map must get the map — only the
+     card itself takes the pointer. Grabbing the canvas dismisses the plate;
+     see `TheCityClient`. */
+  pointer-events: none;
+}
+.theme-fusion .fx-city-entry-in {
+  /* the measure is the TEXT's, so the card's own padding is added back:
+     47ch of copy inside a 24 px gutter, not 47ch minus the gutter */
+  max-width: calc(47ch + 48px);
+  pointer-events: auto;
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  padding: 20px 24px 22px;
+}
+.theme-fusion .fx-city-kicker {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ocre);
+  margin-bottom: 12px;
+}
+.theme-fusion .fx-city-title {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.03;
+  font-size: clamp(30px, 4.2vw, 54px);
+  margin: 0;
+}
+.theme-fusion .fx-city-title em { font-style: italic; }
+.theme-fusion .fx-city-entry-lede {
+  margin: 14px 0 0;
+  font-size: clamp(14.5px, 1.2vw, 16.5px);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 44ch;
+}
+/* the narrow plate's one instruction — hidden wherever the full lede shows */
+.theme-fusion .fx-city-entry-lede-short { display: none; }
+.theme-fusion .fx-city-entry-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.theme-fusion .fx-city-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  height: 48px;
+  padding: 0 22px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--f-disp);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+.theme-fusion .fx-city-start:hover { background: var(--bg); color: var(--ink); }
+.theme-fusion .fx-city-start svg { fill: currentColor; }
+.theme-fusion .fx-city-entry-meta {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.theme-fusion .fx-city-entry-alt {
+  margin-top: 14px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: 0 0 2px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.theme-fusion .fx-city-entry-alt:hover { border-bottom-color: var(--ink); }
+
+/* ── the controls that sit on the map ─────────────────────────────────
+   Top right, against the ledger's edge and clear of the entry plate's
+   text, which is bottom left and is where the film's year goes too. These
+   are the four camera stops out of `camera.ts`, and they are the one
+   thing on this page a reader can press and see the city change. */
+.theme-fusion .fx-city-controls {
+  position: absolute;
+  top: 16px;
+  right: calc(var(--fx-city-ledger) + 16px);
+  z-index: 6;
+  display: flex;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+}
+.theme-fusion .fx-city-controls-cap {
+  align-self: center;
+  padding: 0 9px 0 10px;
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-right: 1px solid var(--rule);
+  line-height: 2.6;
+}
+.theme-fusion .fx-city-preset {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 7px 11px;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.theme-fusion .fx-city-preset:last-child { border-right: 0; }
+.theme-fusion .fx-city-preset[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+}
+/* BETWEEN TWO STOPS, WHICH IS WHERE A WHEEL LEAVES THE CAMERA. `aria-pressed`
+   is exact and stays exact — standing on a stop and being nearest to one are
+   different claims — so the nearest stop is marked with a rule under the
+   label rather than with the pressed state. Without it the one control that
+   says how close the view is spent most of its life saying nothing. */
+.theme-fusion .fx-city-preset[data-near="true"] {
+  color: var(--bleu);
+  box-shadow: inset 0 -3px 0 var(--bleu);
+}
+
+/* ── the record margin ────────────────────────────────────────────────
+   288 px of the frame, reserved. Idle it says what the map is and what a
+   click gets you; when a block is picked the record takes it over. */
 .theme-fusion .fx-city-ledger {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
+  /* over everything the stage draws: the stage is full width and the margin
+     is laid ON it, so the pin and the camera stops must never paint into it */
+  z-index: 8;
   width: var(--fx-city-ledger);
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 18px 18px 22px;
   background: var(--bg);
-  border-left: 1px solid var(--rule);
+  border-left: 1px solid var(--ink);
   font-family: var(--f-ui);
 }
 .theme-fusion .fx-city-ledger-head {
-  font-family: var(--f-disp);
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 8px;
 }
 .theme-fusion .fx-city-ledger-lede {
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.5;
-  color: var(--muted);
-  margin: 0 0 14px;
+  color: var(--ink-2);
+  margin: 0 0 16px;
 }
-.theme-fusion .fx-city-presets { display: flex; flex-wrap: wrap; }
-.theme-fusion .fx-city-preset {
+.theme-fusion .fx-city-ledger-facts { margin: 0; }
+.theme-fusion .fx-city-fact-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 0;
+  border-top: 1px solid var(--rule);
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+.theme-fusion .fx-city-fact-row dt { color: var(--muted); margin: 0; }
+.theme-fusion .fx-city-fact-row dd {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--f-mono);
+  font-size: 12px;
+}
+/* ── A CLICK THAT FOUND NOTHING ───────────────────────────────────────
+   The pick resolves the point under the pointer against the terrain, so a
+   click on a roof lands on the ground behind the building and often in the
+   roadway, where no block matches — 38 % of the street-stop frame answers.
+   The line says so rather than leaving the reader to wonder whether the page
+   is dead. It sits above the record so an open record stays open under it. */
+.theme-fusion .fx-city-miss {
+  margin: 0 0 12px;
+  padding: 7px 9px;
+  border: 1px solid var(--rule);
+  background: var(--bg-2, transparent);
   font-family: var(--f-mono);
   font-size: 11px;
-  padding: 5px 9px;
-  border: 1px solid var(--ink);
-  border-left-width: 0;
-  background: transparent;
-  color: var(--ink);
-  cursor: pointer;
-}
-.theme-fusion .fx-city-preset:first-child { border-left-width: 1px; }
-.theme-fusion .fx-city-preset[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--bg);
+  line-height: 1.5;
+  color: var(--ocre);
 }
 .theme-fusion .fx-city-loading {
   margin: 16px 0 0;
@@ -16921,25 +17135,9 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   line-height: 1.6;
   color: var(--ocre);
 }
-.theme-fusion .fx-city-stats { margin: 16px 0 0; }
-.theme-fusion .fx-city-stat {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 5px 0;
-  border-top: 1px solid var(--rule);
-  font-family: var(--f-mono);
-  font-size: 11.5px;
-}
-.theme-fusion .fx-city-stat dt { color: var(--muted); margin: 0; }
-.theme-fusion .fx-city-stat dd { margin: 0; color: var(--ink); }
 
-/* the block drawer, inside the ledger */
-.theme-fusion .fx-city-panel {
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 2px solid var(--ink);
-}
+/* the block record, inside the margin */
+.theme-fusion .fx-city-panel { padding-top: 2px; }
 .theme-fusion .fx-city-panel-head {
   display: flex;
   align-items: flex-start;
@@ -16971,63 +17169,556 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 .theme-fusion .fx-city-panel-close:hover { border-color: var(--ink); }
 .theme-fusion .fx-city-panel-body { margin-top: 10px; }
-.theme-fusion .fx-city-help { margin-top: 10px; }
-.theme-fusion .fx-city-h3 {
-  font-family: var(--f-disp);
-  font-weight: 700;
-  font-size: 22px;
-  letter-spacing: -0.02em;
-  margin: 38px 0 8px;
-}
-.theme-fusion .fx-city-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 18px;
-  margin: 0 0 32px;
-}
-.theme-fusion .fx-city-fact dt {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.theme-fusion .fx-city-fact dd {
-  font-family: var(--f-disp);
-  font-weight: 700;
-  font-size: 28px;
-  letter-spacing: -0.02em;
-  margin: 3px 0 4px;
-}
-.theme-fusion .fx-city-fact p {
-  font-size: 13px;
+
+/* ── THE FICHE'S OWN FURNITURE ────────────────────────────────────────
+   Everything below was inline in `CityBlockPanel.tsx` while this file
+   belonged to another block. It is here now, where the hover and focus
+   states an inline style cannot carry can be written, and every colour is
+   a theme token so the panel inherits the page's palette rather than
+   setting one of its own. 252 px of content inside a 288 px margin is
+   what all of it is sized for. */
+.theme-fusion .fx-block-lead {
+  margin: 9px 0 0;
+  font-size: 13.5px;
   line-height: 1.5;
+  color: var(--ink-2);
+}
+.theme-fusion .fx-block-hint {
+  margin: 1px 0 0;
+  font-size: 11.5px;
+  line-height: 1.45;
   color: var(--muted);
-  margin: 0;
 }
-.theme-fusion .fx-city-sources { list-style: none; margin: 0; padding: 0; }
-.theme-fusion .fx-city-sources li {
-  padding: 9px 0;
-  border-top: 1px solid var(--rule);
+.theme-fusion .fx-block-sec { margin-top: 16px; margin-bottom: 6px; }
+
+/* the way down to the streets, and the way back out of a filter */
+.theme-fusion .fx-block-nearby { margin: 8px 0 0; }
+.theme-fusion .fx-block-jump {
+  border: 0;
+  padding: 0;
+  background: none;
+  font: inherit;
+  font-size: 12.5px;
+  line-height: 1.45;
+  text-align: left;
+  color: var(--bleu);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
 }
-.theme-fusion .fx-city-source-what { display: block; font-size: 14px; line-height: 1.5; }
-.theme-fusion .fx-city-source-who {
-  display: block;
+.theme-fusion .fx-block-jump:hover { color: var(--ink); }
+.theme-fusion .fx-block-locate {
+  margin-top: 7px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  padding: 3px 8px;
   font-family: var(--f-mono);
-  font-size: 11px;
+  font-size: 10px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.theme-fusion .fx-block-locate:hover { border-color: var(--ink); color: var(--ink); }
+
+/* ── the subjects ─────────────────────────────────────────────────────
+   The Board's own printed headings, counted where it printed the same one
+   here more than once, and each one a filter on the rail below. Pressed
+   is the same black the camera stops use, so one idiom answers "this is
+   the one you are looking at" everywhere on the page. */
+.theme-fusion .fx-block-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+.theme-fusion .fx-block-subject {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  max-width: 100%;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  padding: 4px 7px;
+  font-size: 11.5px;
+  line-height: 1.3;
+  text-align: left;
+  color: var(--ink);
+  cursor: pointer;
+}
+.theme-fusion .fx-block-subject:hover { border-color: var(--ink); }
+.theme-fusion .fx-block-subject-n {
+  font-family: var(--f-mono);
+  font-size: 10px;
   color: var(--muted);
-  margin-top: 2px;
+}
+.theme-fusion .fx-block-subject[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+.theme-fusion .fx-block-subject[aria-pressed="true"] .fx-block-subject-n {
+  color: var(--bg);
 }
 
-/* the phone: the ledger stacks BELOW the map, which is exactly the case
-   `Camera.strip()` handles by passing ledgerW = 0 under NARROW_W. */
+/* ── the decade rail ──────────────────────────────────────────────────
+   One row per decade from 1900 on, and the empty ones are drawn: a block
+   busy until 1947 and silent afterwards shows the silence as a run of
+   flat track rather than leaving it to be inferred from an absence. */
+.theme-fusion .fx-block-rail { margin-top: 6px; }
+.theme-fusion .fx-block-row { border-top: 1px solid var(--rule); }
+.theme-fusion .fx-block-blank {
+  border-top: 1px solid var(--rule);
+  padding: 6px 0;
+}
+.theme-fusion .fx-block-sum {
+  display: block;          /* this is what suppresses the disclosure marker */
+  list-style: none;
+  cursor: pointer;
+  padding: 7px 0 8px;
+}
+.theme-fusion .fx-block-sum::-webkit-details-marker { display: none; }
+.theme-fusion .fx-block-sum:hover .fx-block-line { color: var(--bleu); }
+.theme-fusion .fx-block-sum:focus-visible {
+  outline: 2px solid var(--bleu);
+  outline-offset: 2px;
+}
+.theme-fusion .fx-block-head { display: flex; align-items: center; gap: 7px; }
+.theme-fusion .fx-block-dec {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .04em;
+  color: var(--ink-2);
+  width: 34px;
+  flex: 0 0 34px;
+}
+.theme-fusion .fx-block-dec-off { color: var(--muted); }
+.theme-fusion .fx-block-track {
+  position: relative;
+  flex: 1 1 auto;
+  height: 7px;
+  background: var(--rule);
+}
+.theme-fusion .fx-block-flat {
+  flex: 1 1 auto;
+  height: 2px;
+  background: var(--rule);
+}
+.theme-fusion .fx-block-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--bleu);
+}
+.theme-fusion .fx-block-n {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--muted);
+  width: 20px;
+  flex: 0 0 20px;
+  text-align: right;
+}
+/* Three lines and then it stops. These are the record's own sentences and
+   some run to sixty words; a decade whose headline takes six lines pushes
+   the next decade off the rail and the rail stops being a shape. */
+.theme-fusion .fx-block-line {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin-top: 4px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.theme-fusion .fx-block-open {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .04em;
+  color: var(--bleu);
+}
+.theme-fusion .fx-block-open::after { content: " \203A"; }
+/* OPEN, THE ROW WOULD SAY THE SAME LINE TWICE. The headline IS one of the
+   rows in the shelf underneath — the best-ranked one — so a decade opened
+   printed its own first sentence, then printed it again with its date and its
+   link. Both the headline and the "read all" cue stand down and the shelf
+   answers. */
+.theme-fusion .fx-block-row[open] .fx-block-open,
+.theme-fusion .fx-block-row[open] .fx-block-line { display: none; }
+.theme-fusion .fx-block-row[open] .fx-block-sum { padding-bottom: 4px; }
+.theme-fusion .fx-block-body { padding: 0 0 10px; }
+
+/* ── THE PIN ──────────────────────────────────────────────────────────
+   The block the open record belongs to, on the map. Anchored on the point
+   the reader clicked, converted to the projection plane, so it holds its
+   spot through every pan and zoom. It never takes the pointer: the map
+   under it stays grabbable and clickable. */
+.theme-fusion .fx-city-pin {
+  position: absolute;
+  z-index: 6;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.theme-fusion .fx-city-pin-ring {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: rgba(250, 250, 247, .35);
+  box-shadow: 0 0 0 2px rgba(250, 250, 247, .8);
+}
+.theme-fusion .fx-city-pin-id {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+
+/* ── under the stage ──────────────────────────────────────────────────
+   `fx-city-transport` is the row the film's play button and year axis
+   land in; it draws nothing until something is put in it. Then the help
+   line, then the one-line note with the method behind a disclosure. */
+.theme-fusion .fx-city-transport {
+  border-bottom: 1px solid var(--ink);
+  background: var(--bg);
+}
+
+/* ── THE YEAR RAIL ────────────────────────────────────────────────────
+   A rail from 1906 to 2025, the years the Board is recorded accepting
+   streets marked on it, and a play button. It is the one control that
+   changes WHAT is on the map rather than how close you are to it, so it
+   gets the full width of the row and the year gets display type.
+
+   Every mark on it comes out of the record: the ochre bars are years the
+   sweep carries an acceptance, sized on that year's own count; the hollow
+   ones are the thirteen years inside the span with no ingested volume, and
+   they are drawn rather than left blank so a flat stretch cannot be read as
+   a quiet one; the coloured chips are the named things the record dates, in
+   `film-draw.ts`'s five family colours. */
+.theme-fusion .fx-city-scrub {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 11px 24px 9px;
+}
+.theme-fusion .fx-city-scrub-play {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+}
+.theme-fusion .fx-city-scrub-play svg { fill: currentColor; }
+.theme-fusion .fx-city-scrub-play:hover { background: var(--ink); color: var(--bg); }
+/* the year is the readout, so it is display type and tabular, and it is wide
+   enough for four figures that nothing shifts as the clock runs */
+.theme-fusion .fx-city-scrub-year {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  min-width: 4ch;
+  color: var(--ink);
+}
+/* THE RECORD IS ABOVE THE LINE AND THE HOLES IN IT ARE BELOW. The ochre bars
+   grow up off the baseline, one per year the sweep carries an acceptance and
+   sized on that year's own count; the grey ticks hang below it, one per year
+   with no volume read. Two directions, so a reader can tell a quiet year from
+   an unread one at a glance instead of reading the caption for it. */
+.theme-fusion .fx-city-scrub-rail {
+  position: relative;
+  height: 44px;
+  cursor: ew-resize;
+  touch-action: none;
+}
+.theme-fusion .fx-city-scrub-rail:focus-visible {
+  outline: 2px solid var(--bleu);
+  outline-offset: 3px;
+}
+.theme-fusion .fx-city-scrub-base {
+  position: absolute;
+  left: 0; right: 0; top: 20px;
+  height: 1px;
+  background: var(--ink);
+}
+.theme-fusion .fx-city-scrub-done {
+  position: absolute;
+  left: 0; top: 19px;
+  height: 3px;
+  background: var(--ink);
+}
+.theme-fusion .fx-city-scrub-vote {
+  position: absolute;
+  bottom: 24px;
+  width: 2px;
+  background: var(--ocre);
+  pointer-events: none;
+}
+.theme-fusion .fx-city-scrub-gap {
+  position: absolute;
+  top: 21px;
+  width: 2px;
+  height: 7px;
+  background: var(--muted);
+  opacity: .5;
+  pointer-events: none;
+}
+/* a named thing the record dates: a small diamond sitting on the line, in its
+   family's colour out of `film-draw.ts` §FAM */
+.theme-fusion .fx-city-scrub-moment {
+  position: absolute;
+  top: 15px;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  transform: rotate(45deg);
+  box-shadow: 0 0 0 1.5px var(--bg);
+  pointer-events: none;
+}
+.theme-fusion .fx-city-scrub-dec {
+  position: absolute;
+  top: 29px;
+  transform: translateX(-50%);
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  color: var(--muted);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.theme-fusion .fx-city-scrub-head {
+  position: absolute;
+  top: 14px;
+  transform: translateX(-50%);
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--bleu);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--bleu);
+  pointer-events: none;
+}
+.theme-fusion .fx-city-scrub-speed { display: flex; border: 1px solid var(--rule); }
+.theme-fusion .fx-city-scrub-speed button {
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  padding: 7px 10px;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.theme-fusion .fx-city-scrub-speed button:last-child { border-right: 0; }
+.theme-fusion .fx-city-scrub-speed button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+}
+/* the line under the rail spans it, because it is about the year the rail is
+   on and not about the button beside it */
+.theme-fusion .fx-city-scrub-note {
+  grid-column: 1 / -1;
+  margin: 2px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 18px;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.theme-fusion .fx-city-scrub-count { color: var(--ink-2); }
+.theme-fusion .fx-city-scrub-next { color: var(--ink); }
+.theme-fusion .fx-city-scrub-caveat { color: var(--muted); flex: 1 1 42ch; }
+
 @media (max-width: 819px) {
-  .theme-fusion .fx-city-wrap { --fx-city-ledger: 0px; }
-  .theme-fusion .fx-city-stage { height: 460px !important; }
+  .theme-fusion .fx-city-scrub {
+    grid-template-columns: auto auto 1fr;
+    gap: 10px 12px;
+    padding: 10px 14px 8px;
+  }
+  .theme-fusion .fx-city-scrub-year { font-size: 24px; }
+  .theme-fusion .fx-city-scrub-rail { grid-column: 1 / -1; grid-row: 2; height: 44px; }
+  .theme-fusion .fx-city-scrub-speed { grid-column: 3; grid-row: 1; justify-self: end; }
+  .theme-fusion .fx-city-scrub-dec-minor { display: none; }
+}
+.theme-fusion .fx-city-help {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  padding: 10px 0 11px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.theme-fusion .fx-city-help kbd {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  border: 1px solid var(--rule);
+  padding: 0 4px;
+}
+.theme-fusion .fx-city-note {
+  background: var(--bg-warm);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--muted-2);
+}
+.theme-fusion .fx-city-note > .fx-wrap > details > summary {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  cursor: pointer;
+  list-style: none;
+  padding: 9px 0;
+  padding-right: 170px; /* clear of the floating "Ask the data" button */
+}
+.theme-fusion .fx-city-note summary::-webkit-details-marker { display: none; }
+.theme-fusion .fx-city-note-line { flex: 0 1 auto; min-width: 0; }
+.theme-fusion .fx-city-note-more {
+  flex: none;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--bleu);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  white-space: nowrap;
+}
+.theme-fusion .fx-city-note details[open] > summary {
+  border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-city-note-body {
+  padding: 14px 0 22px;
+  max-width: 72ch;
+}
+.theme-fusion .fx-city-note-body h3 {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: 20px 0 8px;
+}
+.theme-fusion .fx-city-note-body p { margin: 0 0 10px; }
+.theme-fusion .fx-city-sources {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+}
+.theme-fusion .fx-city-sources li {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--ink-2);
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  padding: 3px 8px;
+}
+.theme-fusion .fx-city-sources li a { color: var(--bleu); }
+.theme-fusion .fx-city-sources li span { color: var(--muted); }
+
+/* ── the phone ────────────────────────────────────────────────────────
+   The ledger stacks BELOW the map, which is the case `Camera.strip()`
+   was written for: `ledgerW` is passed as 0 and the visible strip is the
+   whole canvas. The entry plate then covers the full width. */
+@media (max-width: 819px) {
+  .theme-fusion .fx-city-shell,
+  .theme-fusion .fx-city-wrap {
+    --fx-city-ledger: 0px;
+    --fx-city-h: min(66vh, 560px);
+  }
+  /* The card gets the width; the map keeps the top of the stage. The lede
+     is dropped here and nowhere else — the same sentence is printed under
+     the map, in the note, 300 px further down the same screen, and on a
+     390 px screen it is the difference between seeing San Francisco on
+     first sight and seeing four lines of type over a ghost of it. */
+  .theme-fusion .fx-city-entry-in { max-width: none; padding: 15px 17px 17px; }
+  .theme-fusion .fx-city-entry-lede { display: none; }
+  /* …and the instruction it took with it comes back on its own line. The
+     note under the map repeats the sentence about the buildings; it does
+     not repeat this one, and clicking a block is the whole interaction. */
+  .theme-fusion .fx-city-entry-lede-short {
+    display: block;
+    margin: 10px 0 0;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+  .theme-fusion .fx-city-entry { padding-bottom: 14px; }
+  /* every line the card can lose is a line of San Francisco it gives back:
+     at the whole-city fit the city sits across the MIDDLE of a 390 x 844
+     screen, so the card's top edge is what decides whether the reader sees
+     it. The kicker and the running time each fit one line here. */
+  .theme-fusion .fx-city-kicker { font-size: 10px; letter-spacing: .05em; margin-bottom: 8px; }
+  .theme-fusion .fx-city-entry-meta { font-size: 10px; letter-spacing: .02em; }
+  .theme-fusion .fx-city-entry-row { margin-top: 16px; }
+  .theme-fusion .fx-city-entry-alt { margin-top: 10px; }
+  .theme-fusion .fx-city-note > .fx-wrap > details > summary { padding-right: 0; }
   .theme-fusion .fx-city-ledger {
     position: static;
     width: auto;
     border: 1px solid var(--rule);
     border-top: 0;
   }
+
+  /* ── THE YEAR RAIL COMES UP TO THE MAP ────────────────────────────────
+     Stacked, the DOM order is map, record margin, year rail — and the
+     margin is 237 px, so on a 390 x 844 screen the rail was the third
+     thing down and entirely below the fold. The rail is the control that
+     changes WHAT is on the map rather than how close you are to it, and a
+     reader who never scrolls past the margin never finds out this map has
+     a century in it. So on a stacked layout it follows the map directly,
+     and the margin follows the rail. `display: contents` on the frame is
+     what lets the margin — which is inside the frame, because on a wide
+     screen it is painted ON the canvas — take its own place in the
+     column. */
+  .theme-fusion .fx-city-wrap { display: flex; flex-direction: column; }
+  .theme-fusion .fx-city-frame { display: contents; }
+  .theme-fusion .fx-city-stage { order: 1; }
+  .theme-fusion .fx-city-transport { order: 2; border-top: 0; }
+  .theme-fusion .fx-city-ledger { order: 3; }
+  .theme-fusion .fx-city-wrap > .fx-wrap { order: 4; }
+
+  /* ── TARGET SIZE, AND ONLY WHERE A FINGER IS THE POINTER ──────────────
+     WCAG 2.2 SC 2.5.8 asks 24 x 24 CSS px; Apple and Google both publish
+     44 and 48. Measured here at 390 x 844 before this rule: the four
+     camera stops and the three speed buttons were 30.3 px tall and the
+     play button 40. The type does not grow — only the region that takes
+     the touch. */
+  .theme-fusion .fx-city-preset {
+    min-height: 44px;
+    padding: 7px 12px;
+  }
+  /* the four stops already run the width of a phone; the cap is the first
+     thing to go */
+  .theme-fusion .fx-city-controls-cap { display: none; }
+  .theme-fusion .fx-city-scrub-play { width: 44px; height: 44px; }
+  .theme-fusion .fx-city-scrub-speed button { min-height: 44px; padding: 7px 12px; }
+
+  /* the keyboard line is written for a keyboard */
+  .theme-fusion .fx-city-help-keys { display: none; }
 }

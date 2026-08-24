@@ -1,0 +1,8 @@
+{
+ "url": "https://mapservices.nps.gov/arcgis/rest/services/cultural_resources/nrhp_locations/MapServer/1/query?where=1%3D1&geometry=-123.20%2C37.60%2C-122.28%2C37.86&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=%2A&returnGeometry=true&outSR=4326&f=geojson",
+ "what": "NRHP layer 1",
+ "bytes": 82852,
+ "rows": 31,
+ "sha256": "6d9e7eb4c36a60e58077e255d7a307613a1e63872f7d1099ce60b26c60bff85f",
+ "retrieved_utc": "2026-08-23T21:34:28Z"
+}

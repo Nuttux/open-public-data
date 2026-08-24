@@ -1,0 +1,179 @@
+{
+ "id": "ib5c-xgwu",
+ "name": "Recreation and Parks Facilities",
+ "description": "Facilities maintained by the Recreation and Parks Department. A facility in this dataset represents a structural or physical amenity within a property's boundaries.",
+ "attribution": null,
+ "rowsUpdatedAt": 1787454489,
+ "columns": {
+  "objectid": {
+   "name": "objectid",
+   "type": "text",
+   "description": ""
+  },
+  "facility_name": {
+   "name": "facility_name",
+   "type": "text",
+   "description": ""
+  },
+  "facility_id": {
+   "name": "facility_id",
+   "type": "text",
+   "description": ""
+  },
+  "squarefeet": {
+   "name": "squarefeet",
+   "type": "number",
+   "description": ""
+  },
+  "perimeterlength": {
+   "name": "perimeterlength",
+   "type": "number",
+   "description": ""
+  },
+  "acres": {
+   "name": "acres",
+   "type": "number",
+   "description": ""
+  },
+  "longitude": {
+   "name": "longitude",
+   "type": "number",
+   "description": ""
+  },
+  "latitude": {
+   "name": "latitude",
+   "type": "number",
+   "description": ""
+  },
+  "address": {
+   "name": "address",
+   "type": "text",
+   "description": ""
+  },
+  "city": {
+   "name": "city",
+   "type": "text",
+   "description": ""
+  },
+  "state": {
+   "name": "state",
+   "type": "text",
+   "description": ""
+  },
+  "zipcode": {
+   "name": "zipcode",
+   "type": "text",
+   "description": ""
+  },
+  "facility_type": {
+   "name": "facility_type",
+   "type": "text",
+   "description": ""
+  },
+  "property_id": {
+   "name": "property_id",
+   "type": "text",
+   "description": ""
+  },
+  "property_name": {
+   "name": "property_name",
+   "type": "text",
+   "description": ""
+  },
+  "floors": {
+   "name": "floors",
+   "type": "text",
+   "description": ""
+  },
+  "complex": {
+   "name": "complex",
+   "type": "text",
+   "description": ""
+  },
+  "ownership": {
+   "name": "ownership",
+   "type": "text",
+   "description": ""
+  },
+  "supdist": {
+   "name": "supdist",
+   "type": "text",
+   "description": ""
+  },
+  "land_id": {
+   "name": "land_id",
+   "type": "text",
+   "description": ""
+  },
+  "psa": {
+   "name": "psa",
+   "type": "text",
+   "description": ""
+  },
+  "analysis_neighborhood": {
+   "name": "analysis_neighborhood",
+   "type": "text",
+   "description": ""
+  },
+  "state_senate": {
+   "name": "state_senate",
+   "type": "text",
+   "description": ""
+  },
+  "mons_neighborhood": {
+   "name": "mons_neighborhood",
+   "type": "text",
+   "description": ""
+  },
+  "police_district": {
+   "name": "police_district",
+   "type": "text",
+   "description": ""
+  },
+  "us_congress": {
+   "name": "us_congress",
+   "type": "text",
+   "description": ""
+  },
+  "realtor_neighborhood": {
+   "name": "realtor_neighborhood",
+   "type": "text",
+   "description": ""
+  },
+  "state_assembly": {
+   "name": "state_assembly",
+   "type": "text",
+   "description": ""
+  },
+  "planning_neighborhood": {
+   "name": "planning_neighborhood",
+   "type": "text",
+   "description": ""
+  },
+  "shape": {
+   "name": "shape",
+   "type": "multipolygon",
+   "description": ""
+  },
+  "created_date": {
+   "name": "created_date",
+   "type": "calendar_date",
+   "description": ""
+  },
+  "last_edited_date": {
+   "name": "last_edited_date",
+   "type": "calendar_date",
+   "description": ""
+  },
+  "data_as_of": {
+   "name": "data_as_of",
+   "type": "calendar_date",
+   "description": ""
+  },
+  "data_loaded_at": {
+   "name": "data_loaded_at",
+   "type": "calendar_date",
+   "description": ""
+  }
+ }
+}

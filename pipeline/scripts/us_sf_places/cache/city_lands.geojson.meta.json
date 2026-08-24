@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/gtnh-hgvs.geojson?$limit=50000",
+ "what": "City Lands",
+ "bytes": 3653613,
+ "rows": 1035,
+ "sha256": "ad30d727b50a1bcb4b5147345a5295ee8ef12c8bdf07da9a42a6fa2d177b9b90",
+ "retrieved_utc": "2026-08-23T21:34:04Z"
+}

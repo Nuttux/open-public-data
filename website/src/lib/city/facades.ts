@@ -75,6 +75,61 @@ export const FA_CORN_M = 0.6,
 export const FA_SHOP_SILL = 0.42,
   FA_SHOP_FASCIA = 0.72;
 
+/**
+ * THE SEVEN VALUES A FACE IS DRAWN IN, AND EVERY ONE IS A VALUE OF THE WALL'S
+ * OWN COLOUR.
+ *
+ * `part3.html` §THE ENVELOPE carries them on its `FA` object as
+ * `glass / glassM / litv / bayv / shadv / awnv`, and this port had four of
+ * them typed in at different numbers with nothing behind the difference:
+ *
+ * ```
+ *              mock    port as landed
+ *   glass      0.575   0.52     an opening 10 % darker on every wall in the city
+ *   glassM     0.735   0.74
+ *   litv       1.115   1.12  (sill/reveal) and 1.2 (the glazing bar)
+ *   bayv       1.045   1.04
+ *   shadv      0.795   — the group does not exist
+ *   ground     glass   0.62     a shopfront darker than the windows above it
+ * ```
+ *
+ * The mock has **no separate value for a glazing bar**: sills, lit reveals,
+ * glazing bars and the cornice band are one group at `litv`. This port keeps
+ * the bar in its own group so it can be drawn OVER the opening — see
+ * `flushFaces` — but it is drawn at `litv`, because 1.2 was a number nobody
+ * chose.
+ */
+export const FA_V = {
+  /** an opening, as a value of its own wall colour */
+  glass: 0.575,
+  /** ...for a curtain wall, which reflects the sky instead of showing a room */
+  glassM: 0.735,
+  /** sills, lit reveals, glazing bars and the cornice band */
+  lit: 1.115,
+  /** the bay's own face */
+  bay: 1.045,
+  /** the shadow a cornice or a bay throws on the wall under it */
+  shad: 0.795,
+} as const;
+
+/**
+ * A CURTAIN WALL REFLECTS THE SKY INSTEAD OF SHOWING A ROOM.
+ *
+ * `part3.html` §9034 passes `(era >= 4) || (type === OFFICE && era >= 3)` into
+ * `faFlush`, so post-1980 of any type and an office from 1950 on take
+ * `glassM`. Both halves are the published year column read in Block WARMTH's
+ * own bands, and nothing else decides it.
+ *
+ * **This port passed `false`.** Every tower in the Financial District — which
+ * is where Daniel was looking when he wrote *"you cant distinguish any
+ * building"* — was drawn with punched dark holes at 0.52 of its wall instead of
+ * a sky-lit curtain wall at 0.735, a gap of 0.215 of the wall's value on the
+ * one class of building the whole frame is made of.
+ */
+export function faGlassy(type: number, era: number): boolean {
+  return era >= 4 || (FA_TYPES[type] === "OFFICE" && era >= 3);
+}
+
 // ── the ramps ───────────────────────────────────────────────────────────────
 
 /**
@@ -214,9 +269,28 @@ export function storeysOf(st: number, st2: number): number {
 
 // ── the role bits ───────────────────────────────────────────────────────────
 
-export const ROLE_PARTY = 0;
+/**
+ * THE TWO BITS, AND THEY WERE THE WRONG WAY ROUND.
+ *
+ * `facade/build_facade.py` L291 writes the stream and names its own values in
+ * the same line: **`role = np.zeros(NV, np.uint8)  # 0 back, 1 front, 2
+ * party`**, and `part3.html` `faWall` reads it back the same way twice —
+ * `if (FA.party && role === 2) return 0` for the party rule, and `pv === 2` for
+ * which end of a wall the entrance is against.
+ *
+ * P3 landed `ROLE_PARTY = 0` and `ROLE_BACK = 2`. Nothing threw, nothing failed
+ * a test, and the consequence went straight into the frame the piece is looked
+ * at in: `faceTakesOpenings` refused every one of the city's **back** walls and
+ * allowed all **163,536 measured party edges**, which is the opposite of the
+ * rule the constant is named for. A row of Mission houses was drawn with
+ * windows in the walls it shares with its neighbours.
+ *
+ * `ROLE_SIDE = 3` is kept and is unreachable — the stream is two bits and the
+ * builder writes three values.
+ */
+export const ROLE_BACK = 0;
 export const ROLE_FRONT = 1;
-export const ROLE_BACK = 2;
+export const ROLE_PARTY = 2;
 export const ROLE_SIDE = 3;
 
 /**
@@ -252,6 +326,10 @@ export const FA = {
    *  The clause is satisfied by the blit, not by this. */
   motion: 1,
 };
+
+if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+  (globalThis as { __cityFA?: typeof FA }).__cityFA = FA;
+}
 
 export function faBayOK(
   type: number,
@@ -322,6 +400,18 @@ export interface FaceInput {
   readonly Hm: number;
   /** the wall's projected height in CSS px */
   readonly dhPx: number;
+  /**
+   * The wall's own projected LENGTH in CSS px.
+   *
+   * Not `Lm · 1.2247 · camScale`: that is the across-screen factor and it is
+   * the length of a wall that happens to run across the screen. A wall turned
+   * into the frame projects shorter, and every ramp below is keyed on the
+   * feature's *projected* size, so using the maximum for all of them opens the
+   * detail early on exactly the walls that can least afford it. Optional
+   * because the fixtures do not have a projection; it defaults to that
+   * maximum, which is what the first cut used everywhere.
+   */
+  readonly wallPx?: number;
   /** the published storey count, `st` first then `st2` */
   readonly storeys: number;
   readonly role: number;
@@ -342,6 +432,22 @@ export interface FaceWeights {
   readonly bands: number;
   /** the band height, metres */
   readonly bandM: number;
+  /** ── the geometry the weights were computed FROM, so the emitter does not
+   *     recompute it and the two cannot disagree ─────────────────────────── */
+  /** bays across this wall, from the era's own module */
+  readonly m: number;
+  /** the opening's width and height, metres */
+  readonly ow: number;
+  readonly oh: number;
+  /** where it sits in the leftover of its band, metres off the floor */
+  readonly sill_m: number;
+  /** what the ground floor is: `GND_*` */
+  readonly gnd: number;
+  /** the ground-floor feature's width and height, metres */
+  readonly gw: number;
+  readonly gh: number;
+  /** does this (type, era) carry a projecting cornice at all */
+  readonly hasCornice: boolean;
 }
 
 /**
@@ -365,6 +471,14 @@ export function faceWeights(i: FaceInput): FaceWeights {
     bay: 0,
     bands: 0,
     bandM: 0,
+    m: 0,
+    ow: 0,
+    oh: 0,
+    sill_m: 0,
+    gnd: GND_AS_ABOVE,
+    gw: 0,
+    gh: 0,
+    hasCornice: false,
   };
   if (!FA.on) return zero;
   if (i.dhPx < FA_MIN_DH_PX) return zero;
@@ -372,25 +486,77 @@ export function faceWeights(i: FaceInput): FaceWeights {
   // The 14.8 % (now 8.6 %) with no storey count get NO OPENINGS, not a guess.
   // The gap is visible in the frame and it should be.
   if (i.storeys <= 0) return zero;
+  if (i.Lm < 1.2 || i.Hm < 2.0) return zero;
   const bands = i.storeys;
   const bandM = i.Hm / bands;
-  const px = (m: number) => m * 1.2247 * i.camScale;
-  const opW = px(bandM * FA_HMAX_F * 0.5);
+
+  /* THE TWO PROJECTED RATES, and they are different quantities. `hs` is px per
+     metre ALONG this wall and `vs` is px per metre UP it — `projb` adds height
+     to the plane's second coordinate only, so a metre of wall height is
+     `zexb · scale` whatever the wall's bearing, while a metre of wall LENGTH
+     is foreshortened by how far the wall is turned out of the screen. Every
+     ramp below is keyed on the one that actually shrinks for that feature:
+     an opening on `min(width, height)`, a cornice on its band's DEPTH, a bay
+     on its own projected WIDTH. */
+  const hs = (i.wallPx ?? i.Lm * 1.2247 * i.camScale) / Math.max(1e-6, i.Lm);
+  const vs = i.dhPx / Math.max(1e-6, i.Hm);
+
+  const v = faVocab(i.type, i.era, i.shop);
+  const m = bayCount(i.Lm, v.mod);
+  const ow = (i.Lm / m) * v.wf;
+  const op = openingInBand(bandM, v.hf, v.hx, v.sf);
+  const owpx = ow * hs;
+  const ohpx = op.h * vs;
+  const opMin = Math.min(owpx, ohpx);
+
+  /* THE GROUND FLOOR IS A DIFFERENT SIZE OF OBJECT AND ARRIVES AT A DIFFERENT
+     CAMERA. A shopfront is the whole frontage by two-thirds of a storey; a
+     window is a fifth of a bay by half of one. Ramping the two together is
+     what made a Mission blockface read as walls until the windows appeared all
+     at once. `FA_RAMP.ground` starts at 1.2 px against the opening's 0.9 and
+     is over by 3.6 — but on a much larger feature, so it is over first. */
+  const isFront = i.role === ROLE_FRONT;
+  const gnd = isFront && i.era >= 0 ? v.ground : GND_AS_ABOVE;
+  const fh = bandM;
+  const gh =
+    gnd === GND_SHOP
+      ? fh - Math.min(FA_SHOP_FASCIA, fh * 0.24) - Math.min(FA_SHOP_TOE, fh * 0.14)
+      : gnd === GND_VEHICLE
+        ? Math.min(FA_VEH_H, fh * 0.78)
+        : gnd === GND_ENTRANCE
+          ? Math.min(FA_DOOR_H, fh * 0.82)
+          : 0;
+  const gw =
+    gnd === GND_SHOP
+      ? i.Lm
+      : gnd === GND_VEHICLE
+        ? Math.min(FA_VEH_W, i.Lm * 0.62)
+        : gnd === GND_ENTRANCE
+          ? Math.max(ow * FA_DOOR_W, 0.75)
+          : 0;
+
   return {
-    opening: faRamp(opW, FA_RAMP.op[0], FA_RAMP.op[1]),
-    ground: faRamp(px(Math.min(i.Lm, 6)), FA_RAMP.ground[0], FA_RAMP.ground[1]),
-    sill: faRamp(opW, FA_RAMP.sill[0], FA_RAMP.sill[1]),
-    bar: faRamp(opW, FA_RAMP.bar[0], FA_RAMP.bar[1]),
-    // the cornice is keyed on the BAND's own projected depth
-    cornice:
-      i.era < 2
-        ? faRamp(px(FA_CORN_M) * 0.7071, FA_RAMP.cornice[0], FA_RAMP.cornice[1])
-        : 0,
+    opening: faRamp(opMin, FA_RAMP.op[0], FA_RAMP.op[1]),
+    ground: gnd ? faRamp(Math.min(gw * hs, gh * vs), FA_RAMP.ground[0], FA_RAMP.ground[1]) : 0,
+    sill: faRamp(opMin, FA_RAMP.sill[0], FA_RAMP.sill[1]),
+    bar: faRamp(owpx, FA_RAMP.bar[0], FA_RAMP.bar[1]),
+    /* the cornice is keyed on the BAND's own projected DEPTH — 0.60 m of wall
+       standing up, so `vs` and not `hs`, and it is small in pixels long after
+       the building is large. */
+    cornice: v.cornice ? faRamp(FA_CORN_M * vs, FA_RAMP.cornice[0], FA_RAMP.cornice[1]) : 0,
     bay: faBayOK(i.type, i.era, i.role, i.storeys)
-      ? faRamp(px(2.4), FA_RAMP.bay[0], FA_RAMP.bay[1])
+      ? faRamp(i.Lm * hs, FA_RAMP.bay[0], FA_RAMP.bay[1])
       : 0,
     bands,
     bandM,
+    m,
+    ow,
+    oh: op.h,
+    sill_m: op.sill,
+    gnd,
+    gw,
+    gh,
+    hasCornice: v.cornice,
   };
 }
 
@@ -410,11 +576,14 @@ export interface FaceGroups {
   readonly lit: (Path2D | null)[];
   readonly bay: (Path2D | null)[];
   readonly shop: (Path2D | null)[];
+  /** the shadow a cornice or a bay throws on the wall under it */
+  readonly shad: (Path2D | null)[];
   readonly aOpen: Float32Array;
   readonly aBar: Float32Array;
   readonly aLit: Float32Array;
   readonly aBay: Float32Array;
   readonly aShop: Float32Array;
+  readonly aShad: Float32Array;
 }
 
 export function newFaceGroups(): FaceGroups {
@@ -425,11 +594,13 @@ export function newFaceGroups(): FaceGroups {
     lit: mk(),
     bay: mk(),
     shop: mk(),
+    shad: mk(),
     aOpen: new Float32Array(4),
     aBar: new Float32Array(4),
     aLit: new Float32Array(4),
     aBay: new Float32Array(4),
     aShop: new Float32Array(4),
+    aShad: new Float32Array(4),
   };
 }
 
@@ -454,11 +625,33 @@ export function faceGroupAlpha(a: Float32Array, lam: number, w: number): void {
  * Flush one building's face groups. The colours all come from the wall's own
  * colour through `shade()`, so **this layer adds no new colour claim
  * whatsoever.**
+ *
+ * ── A WINDOW ON A SUNLIT WALL AND A WINDOW ON A SHADED ONE WERE THE SAME
+ *    COLOUR ────────────────────────────────────────────────────────────────
+ * `faFlush` reads `W4[WO + lam]` — **the wall colour of the lambert bucket it
+ * is filling.** This port was handed one string, `wallF[wallO + 2]`, and used
+ * it for all four: a corner building's two visible walls came out at two
+ * values with the same openings punched in both, which flattens the corner
+ * exactly where the corner is the thing that says the building is a solid.
+ * The four values are already built and already the batch key; the fix is to
+ * pass the table and the offset instead of one entry out of it.
+ *
+ * ── THE ORDER, AND THE ONE DELIBERATE DEPARTURE ──────────────────────────
+ * `faFlush`'s order is shadow, bay, lit, ground, garage, opening, awning: the
+ * bay is **under** the openings so an opening sits IN it, and the shadow is
+ * under everything. This port had the bay filled AFTER the openings, over its
+ * own windows, contradicting `emitFace`'s own comment. Corrected.
+ *
+ * The departure is the glazing bar, which the mock does not separate — it goes
+ * into the lit group and is therefore covered by the opening filled after it.
+ * Here it is its own group, filled last, at `FA_V.lit`: the same value, drawn
+ * where it can be seen.
  */
 export function flushFaces(
   f: Frame,
   g: FaceGroups,
-  wallColour: string,
+  wallF: readonly string[],
+  wallO: number,
   glassy: boolean,
 ): void {
   const { ctx } = f;
@@ -472,15 +665,164 @@ export function flushFaces(
       const p = arr[lam];
       if (!p || a[lam] <= 0.002) continue;
       ctx.globalAlpha = a[lam];
-      ctx.fillStyle = shade(wallColour, k);
+      ctx.fillStyle = shade(wallF[wallO + lam] ?? "#c0b49a", k);
       ctx.fill(p);
     }
   };
+  const gl = glassy ? FA_V.glassM : FA_V.glass;
+  fill(g.shad, g.aShad, FA_V.shad);
+  fill(g.bay, g.aBay, FA_V.bay);
+  // the ground-floor feature takes the SAME value as the openings above it —
+  // `faFlush` fills FAG_GN with `gl`, not with a value of its own
+  fill(g.shop, g.aShop, gl);
   // the opening: a hole in a wall, so it is the wall's own colour taken down
-  fill(g.open, g.aOpen, glassy ? 0.74 : 0.52);
-  fill(g.shop, g.aShop, 0.62);
-  fill(g.bay, g.aBay, 1.04);
-  fill(g.lit, g.aLit, 1.12);
-  fill(g.bar, g.aBar, 1.2);
+  fill(g.open, g.aOpen, gl);
+  fill(g.lit, g.aLit, FA_V.lit);
+  fill(g.bar, g.aBar, FA_V.lit);
   ctx.restore();
+}
+
+// ── the vocabulary: five numbers per (type, era), and never per building ────
+
+/**
+ * THE DECLARED VOCABULARY, PORTED. `part3.html` §THE ENVELOPE `FA_VOCAB`.
+ *
+ * Block P3 landed this module's *law* — the ramps, the gates, the party rule,
+ * the storey supplement, the batching — and left the tables the law reads out.
+ * Without them `emitFace` had to make the rhythm up, and it did: **a column
+ * every 4 m, an opening from 0.28 to 0.72 of it, on every building in the
+ * city.** Every window in San Francisco was the same window, and the whole
+ * point of the file above — *what is per building is which convention it gets,
+ * and that is four published columns* — bought nothing.
+ *
+ * These are the mock's own numbers, carried across unchanged, and its own
+ * account of them travels with them because it is the honest one:
+ *
+ * ```
+ *   mod  metres of wall per bay
+ *   wf   the opening's width, as a fraction of the bay
+ *   hf   the opening's height, as a fraction of ITS OWN STOREY BAND
+ *   hx   the cap on that height, IN METRES — a window is not four metres tall
+ *        however tall the band the roll and the LIDAR leave it
+ *   sf   where the opening sits in the leftover: 0 = on the floor, 1 = against
+ *        the ceiling. Above 0.5 because a sill stands further off the floor
+ *        than a lintel hangs from the slab.
+ *   cn   1 if this type in this era carries a projecting cornice
+ * ```
+ *
+ * **Every row is monotone across the eras** — the module widens, the opening
+ * widens, the glass grows, the sill drops and the cornice stops. A 1908 sash is
+ * tall and narrow in a 3.3 m bay; a 1968 opening is wide and low in a 4.4 m
+ * bay; a 2005 office is very nearly all glass. Those directions are the period,
+ * and they are a **convention declared once per (type, era)**, not a
+ * measurement of any building — `manifest.facade.NOT_MEASURED` says so in the
+ * page's own words.
+ *
+ * `UNCLASSED` is deliberately duller than a classed building: one plain module
+ * across all five eras, no entrance, no shopfront, no cornice and no bay,
+ * because the record knows less about those 8,356 footprints and the drawing
+ * should say so.
+ */
+interface FaVocabRow {
+  readonly mod: readonly number[];
+  readonly wf: readonly number[];
+  readonly hf: readonly number[];
+  readonly hx: readonly number[];
+  readonly sf: readonly number[];
+  readonly cn: readonly number[];
+}
+
+const FA_VOCAB: Readonly<Record<string, FaVocabRow>> = {
+  HOUSE: { mod: [3.3, 3.4, 3.7, 4.3, 4.7], wf: [.42, .44, .50, .60, .66], hf: [.52, .51, .48, .42, .46], hx: [2.10, 2.05, 1.95, 1.70, 2.05], sf: [.70, .70, .68, .62, .58], cn: [1, 1, 1, 0, 0] },
+  FLATS: { mod: [3.2, 3.3, 3.6, 4.2, 4.6], wf: [.44, .46, .52, .62, .70], hf: [.53, .52, .49, .43, .47], hx: [2.15, 2.10, 2.00, 1.75, 2.10], sf: [.70, .70, .68, .62, .58], cn: [1, 1, 1, 0, 0] },
+  APARTMENT: { mod: [3.1, 3.2, 3.5, 4.2, 4.8], wf: [.46, .48, .56, .66, .76], hf: [.54, .53, .50, .45, .52], hx: [2.15, 2.10, 2.00, 1.80, 2.30], sf: [.70, .69, .67, .62, .56], cn: [1, 1, 1, 0, 0] },
+  RETAIL: { mod: [3.6, 3.8, 4.2, 5.0, 5.6], wf: [.52, .56, .62, .72, .84], hf: [.55, .54, .52, .48, .58], hx: [2.30, 2.25, 2.15, 1.95, 2.55], sf: [.68, .68, .66, .60, .52], cn: [1, 1, 1, 0, 0] },
+  OFFICE: { mod: [3.1, 3.3, 3.7, 4.5, 5.4], wf: [.50, .55, .62, .80, .92], hf: [.56, .56, .55, .56, .68], hx: [2.40, 2.35, 2.30, 2.25, 2.90], sf: [.66, .66, .64, .55, .45], cn: [1, 1, 1, 0, 0] },
+  INDUSTRIAL: { mod: [6.0, 6.0, 6.4, 7.2, 8.0], wf: [.62, .64, .70, .76, .82], hf: [.44, .44, .43, .40, .42], hx: [2.60, 2.60, 2.50, 2.30, 2.60], sf: [.62, .62, .60, .56, .52], cn: [0, 0, 0, 0, 0] },
+  INSTITUTION: { mod: [4.2, 4.4, 4.6, 5.2, 5.8], wf: [.42, .44, .50, .62, .74], hf: [.58, .57, .54, .48, .55], hx: [2.80, 2.75, 2.60, 2.30, 2.80], sf: [.68, .68, .66, .60, .54], cn: [1, 1, 1, 0, 0] },
+  HOTEL: { mod: [3.1, 3.2, 3.4, 4.0, 4.6], wf: [.46, .48, .54, .64, .74], hf: [.54, .53, .50, .45, .50], hx: [2.15, 2.10, 2.05, 1.85, 2.25], sf: [.70, .69, .67, .62, .56], cn: [1, 1, 1, 0, 0] },
+  GARAGE: { mod: [6.0, 6.0, 6.4, 7.0, 7.4], wf: [.60, .62, .68, .74, .78], hf: [.30, .30, .30, .29, .30], hx: [1.40, 1.40, 1.40, 1.35, 1.40], sf: [.78, .78, .76, .74, .72], cn: [0, 0, 0, 0, 0] },
+  UNCLASSED: { mod: [4.4, 4.4, 4.4, 4.4, 4.4], wf: [.50, .50, .50, .50, .50], hf: [.48, .48, .48, .48, .48], hx: [2.00, 2.00, 2.00, 2.00, 2.00], sf: [.66, .66, .66, .66, .66], cn: [0, 0, 0, 0, 0] },
+};
+
+/** The ground floor by type. `part3.html` `FA_GROUND`. The published shop bit
+ *  overrides it to `GND_SHOP`. */
+export const GND_AS_ABOVE = 0;
+export const GND_ENTRANCE = 1;
+export const GND_SHOP = 2;
+export const GND_VEHICLE = 3;
+
+const FA_GROUND: Readonly<Record<string, number>> = {
+  HOUSE: GND_ENTRANCE, FLATS: GND_ENTRANCE, APARTMENT: GND_ENTRANCE,
+  RETAIL: GND_SHOP, OFFICE: GND_ENTRANCE, INDUSTRIAL: GND_VEHICLE,
+  INSTITUTION: GND_ENTRANCE, HOTEL: GND_ENTRANCE, GARAGE: GND_VEHICLE,
+  UNCLASSED: GND_AS_ABOVE,
+};
+
+/** metres. The glazing runs to this far off the pavement, and the stallriser
+ *  survives as a LIT LINE (`FA_SHOP_SILL`) at the detail tier. A shopfront
+ *  standing on a 0.42 m riser at block zoom is one dark band floating a pixel
+ *  off the ground, which reads as shadow under a house and not as a shop. */
+export const FA_SHOP_TOE = 0.10;
+
+export interface FaVocab {
+  /** metres of wall per bay */
+  readonly mod: number;
+  /** the opening's width as a fraction of the bay */
+  readonly wf: number;
+  /** the opening's height as a fraction of its own storey band */
+  readonly hf: number;
+  /** the cap on that height, metres */
+  readonly hx: number;
+  /** where the opening sits in the leftover */
+  readonly sf: number;
+  /** does this (type, era) carry a projecting cornice */
+  readonly cornice: boolean;
+  /** what the ground floor is: `GND_*` */
+  readonly ground: number;
+}
+
+/**
+ * The convention for one (type, era), with the record's own two refusals in it:
+ *
+ *  - a footprint the roll gives **no type** takes `UNCLASSED` — and so does one
+ *    whose parcel and whose block both carry **no year** (`FLAG_NOYEAR`,
+ *    signalled here as `era < 0`), because reading an era off a date the record
+ *    does not hold is inventing the date.
+ *  - the published **shop bit** promotes the ground floor to a shopfront on
+ *    7,044 footprints whatever the type says, because that bit is a reading of
+ *    a column and `FA_GROUND` is a convention about a class.
+ */
+export function faVocab(type: number, era: number, shop: boolean): FaVocab {
+  const unclassed = era < 0 || type < 0 || type >= FA_TYPES.length;
+  const name = unclassed ? "UNCLASSED" : FA_TYPES[type];
+  const row = FA_VOCAB[name] ?? FA_VOCAB.UNCLASSED;
+  const e = unclassed ? 0 : Math.max(0, Math.min(4, era));
+  const g = shop ? GND_SHOP : (FA_GROUND[name] ?? GND_AS_ABOVE);
+  return {
+    mod: row.mod[e], wf: row.wf[e], hf: row.hf[e], hx: row.hx[e], sf: row.sf[e],
+    cornice: row.cn[e] === 1, ground: g,
+  };
+}
+
+/** How many bays this wall's module divides it into. At least one. */
+export function bayCount(Lm: number, mod: number): number {
+  const m = Math.round(Lm / mod);
+  return m < 1 ? 1 : m;
+}
+
+/**
+ * WHICH BAY THE DOOR IS IN, AND IT IS NOT A HASH.
+ *
+ * A San Francisco row house puts its entry against the party wall, so the bay
+ * used is the one at the END of this wall that meets a **measured** party edge;
+ * where neither end does, it is the middle bay. Deterministic — the same for
+ * every building with the same measurements, which is the whole difference
+ * between this and a seeded pattern.
+ */
+export function doorBay(m: number, prevRole: number, nextRole: number): number {
+  if (m <= 1) return 0;
+  if (prevRole === ROLE_PARTY && nextRole !== ROLE_PARTY) return 0;
+  if (nextRole === ROLE_PARTY && prevRole !== ROLE_PARTY) return m - 1;
+  return (m - 1) >> 1;
 }

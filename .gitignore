@@ -84,3 +84,6 @@ tsconfig.tsbuildinfo
 tmp-screenshots/
 screenshots/
 .claude/
+
+# parity harness (Block Q1) — local only, never committed
+website/.parity/

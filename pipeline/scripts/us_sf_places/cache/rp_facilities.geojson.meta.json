@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/ib5c-xgwu.geojson?$limit=50000",
+ "what": "Recreation and Parks Facilities",
+ "bytes": 17333774,
+ "rows": 2692,
+ "sha256": "2b31c86748458efd599e4f56c2e51a49a72152eb38ffaa48e8b468c4a7bd7bc4",
+ "retrieved_utc": "2026-08-23T21:34:01Z"
+}

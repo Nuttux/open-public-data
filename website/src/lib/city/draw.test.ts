@@ -28,16 +28,21 @@ import {
   WA,
   luminance,
 } from "./terrain";
-import { coastBand, wedgeCovered, buildShoal, depthM, assertRefinement, resampleC1, shoalCellAlpha, shoalNodeAlpha, SHOAL_A0, SHOAL_REACH } from "./water";
+import { coastBand, wedgeCovered, buildShoal, depthM, assertRefinement, resampleC1, shoalCellAlpha, shoalNodeAlpha, SHOAL_A0, SHOAL_REACH, drawShoreCorridor, BAY_OPEN, SHORE_IN, SHORE_OUT } from "./water";
 import {
   centrelineFade,
+  drawCentrelines,
   extentW,
+  ST_CLS_MAX,
   ST_EXT_PX,
   ST_KPROJ,
   ST_SRF_PX,
   surfaceW,
+  type CentrelineCell,
 } from "./streets";
-import { bandW, blobRadius, BLOB_K, CROWN_LIFT, vrnd, VZ_C0, VZ_C1, VZ_T0, VZ_T1 } from "./trees";
+import { bandW, blobRadius, BLOB_K, CROWN_LIFT, vrnd, VZ_C0, VZ_C1, VZ_T0, VZ_T1,
+  TREE_EARLIEST, TREE_YEAR_BASE, WFLG } from "./trees";
+import { applyUndatedTreeGate, TREE_UNDATED_FROM, undatedTreesVisible } from "./time";
 import {
   bucketFloor,
   buildBldOrder,
@@ -47,6 +52,16 @@ import {
   COVQ,
   COV_GAMMA,
   drawnAsBuilding,
+  edgeInk,
+  edgeWidth,
+  EDGE_SHADE,
+  inkFor,
+  INK_HI,
+  INK_LO,
+  INK_PX0,
+  INK_PX1,
+  INK_W0,
+  INK_W1,
   LOD_Z0,
   LOD_Z1,
   MASS_GAIN,
@@ -105,6 +120,9 @@ import {
   ringSizesIt,
   spanOfFootprint,
   spineOf,
+  buildHoodAnchors,
+  LEDGER_W,
+  LEDGER_MIN_W,
 } from "./labels";
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -224,6 +242,81 @@ describe("the level-of-detail ladder", () => {
 // ────────────────────────────────────────────────────────────────────────────
 // coverage is the alpha
 // ────────────────────────────────────────────────────────────────────────────
+
+/* ── the outline ramp — the regression that cost a night ─────────────────
+   `inkFor` was written with Rec.709 luminance and without the band scale `s`,
+   so it returned the SAME ink for every value of `k` and the size ramp
+   `part3.html` draws above `INK_PX0` would have been wired to a constant.
+   These are on the arithmetic, not on the picture, because the picture at the
+   two wide cameras is identical either way — which is why nobody saw it. */
+describe("the roof outline opens with the building", () => {
+  const L601 = (hex: string): number => {
+    const r = parseInt(hex.slice(1, 3), 16),
+      g = parseInt(hex.slice(3, 5), 16),
+      b = parseInt(hex.slice(5, 7), 16);
+    return 0.299 * r + 0.587 * g + 0.114 * b;
+  };
+  // three roofs off the shipped palettes: pale stucco, blue-grey and dark tar
+  const ROOFS = ["#e2d6bb", "#b0bec8", "#a4977f", "#5c584f", "#7f8182"];
+
+  it("the ink is a DARKER VALUE OF ITS OWN ROOF, never a fixed black", () => {
+    for (const c of ROOFS) {
+      const ink = inkFor(c, EDGE_SHADE);
+      expect(L601(ink)).toBeLessThan(L601(c));
+      expect(L601(ink)).toBeGreaterThan(0);
+    }
+  });
+
+  it("at EDGE_SHADE the gap sits inside the shipped [32,52] band", () => {
+    for (const c of ROOFS) {
+      const gap = L601(c) - L601(inkFor(c, EDGE_SHADE));
+      // the clamp is on the luminance gap; rounding to bytes moves it a little
+      expect(gap).toBeGreaterThanOrEqual(INK_LO - 1);
+      expect(gap).toBeLessThanOrEqual(INK_HI + 1);
+    }
+  });
+
+  it("and the two darker bands are ACTUALLY DARKER — `s` scales the clamp", () => {
+    for (const c of ROOFS) {
+      const g0 = L601(c) - L601(inkFor(c, EDGE_SHADE));
+      const g1 = L601(c) - L601(inkFor(c, EDGE_SHADE * 0.82));
+      const g2 = L601(c) - L601(inkFor(c, EDGE_SHADE * 0.66));
+      expect(g1).toBeGreaterThan(g0 + 5);
+      expect(g2).toBeGreaterThan(g1 + 5);
+    }
+  });
+
+  it("below INK_PX0 nothing moves: the wide cameras are unchanged", () => {
+    for (const c of ROOFS) {
+      for (const px of [0, 3, 7, 12, 19.99]) {
+        expect(edgeInk(c, px)).toBe(inkFor(c, EDGE_SHADE));
+        expect(edgeWidth(px)).toBe(INK_W0);
+      }
+    }
+  });
+
+  it("the width opens 0.7 -> 1.5 over INK_PX0 -> INK_PX1 and stops there", () => {
+    expect(edgeWidth(INK_PX0)).toBeCloseTo(INK_W0, 10);
+    expect(edgeWidth(INK_PX1)).toBeCloseTo(INK_W1, 10);
+    expect(edgeWidth(400)).toBeCloseTo(INK_W1, 10);
+    // monotone, and no step anywhere in the ramp
+    let prev = -1;
+    for (let px = 0; px <= 120; px += 0.25) {
+      const w = edgeWidth(px);
+      expect(w).toBeGreaterThanOrEqual(prev - 1e-12);
+      prev = w;
+    }
+  });
+
+  it("a Financial District tower gets a line a reader can see", () => {
+    // 100 px is about what a FiDi tower measures at the fourth preset
+    const c = "#b0bec8";
+    expect(edgeWidth(100)).toBeCloseTo(INK_W1, 10);
+    const wide = L601(c) - L601(edgeInk(c, 100));
+    const narrow = L601(c) - L601(edgeInk(c, 10));
+    expect(wide).toBeGreaterThan(narrow * 1.4);
+  });
+});
 
 describe("coverage is the alpha", () => {
   it("a block is painted at an alpha equal to its measured built coverage — cov*roof + (1-cov)*ground is exactly what a fill at alpha cov over the terrain computes", () => {
@@ -1291,3 +1384,212 @@ function roofsSource(): string {
 function landmarksSource(): string {
   return readSource("landmarks.ts");
 }
+
+/* ── THE UNDATED TREE GATE — WHICH CONSTANT IT BINDS TO IS THE WHOLE RULE ──
+   `tkzw-k3nq` publishes 195,310 street trees; 125,234 carry no planting date
+   and the earliest date anywhere in the file is 1955, so the register has
+   nothing to say about a tree standing in 1906. Block T's decision is that an
+   undated tree is not drawn before 1955.
+
+   `TREE_UNDATED_FROM` read `TREE_YEAR0`, which `trees.ts` marks @deprecated
+   for exactly this reason: it is `TREE_YEAR_BASE` = 1900, the offset the `yr`
+   byte is decoded against, not `TREE_EARLIEST` = 1955. The gate therefore
+   tested `year >= 1900` — true at every year the rail can reach — and all
+   125,234 undated trees drew in 1906. Silent, because a tree drawn fifty
+   years early still looks like a tree. These cases are here so the two
+   constants can never be confused again. */
+describe("the undated tree gate", () => {
+  it("binds to TREE_EARLIEST (1955), not to the storage offset (1900)", () => {
+    expect(TREE_UNDATED_FROM).toBe(TREE_EARLIEST);
+    expect(TREE_EARLIEST).toBe(1955);
+    expect(TREE_YEAR_BASE).toBe(1900);
+    expect(TREE_UNDATED_FROM).not.toBe(TREE_YEAR_BASE);
+  });
+
+  it("hides the undated cohort before 1955 and shows it from 1955", () => {
+    for (const y of [1849, 1906, 1925, 1954]) {
+      expect(undatedTreesVisible(y)).toBe(false);
+    }
+    for (const y of [1955, 1960, 2018, 2026]) {
+      expect(undatedTreesVisible(y)).toBe(true);
+    }
+  });
+
+  it("draws them when there is no clock at all — the gate is about the year", () => {
+    expect(undatedTreesVisible(undefined)).toBe(true);
+  });
+
+  it("applyUndatedTreeGate sets WFLG.undated and returns the previous value", () => {
+    const was = WFLG.undated;
+    try {
+      WFLG.undated = true;
+      expect(applyUndatedTreeGate(1906)).toBe(true);
+      expect(WFLG.undated).toBe(false);
+      expect(applyUndatedTreeGate(1955)).toBe(false);
+      expect(WFLG.undated).toBe(true);
+    } finally {
+      WFLG.undated = was;
+    }
+  });
+});
+
+/* ── Block U2: the neighbourhood capitals ──────────────────────────────────
+   The anchor is DERIVED, so it is asserted rather than eyeballed: it is the
+   area-weighted centroid of the blocks that carry the name, which is not the
+   mean of the block centroids and must not be. */
+describe("buildHoodAnchors", () => {
+  const table = (
+    hood: number[],
+    cx: number[],
+    cy: number[],
+    area: number[],
+    names: string[],
+  ) => ({
+    hood: Uint8Array.from(hood),
+    hoodNames: names,
+    cx: Float32Array.from(cx),
+    cy: Float32Array.from(cy),
+    area: Float32Array.from(area),
+  });
+
+  it("weights by the published area, not by the count of blocks", () => {
+    // three small blocks at x = 0 and one large one at x = 100
+    const a = buildHoodAnchors(
+      table([0, 0, 0, 0], [0, 0, 0, 100], [0, 0, 0, 0], [10, 10, 10, 970], ["A"]),
+    );
+    expect(a).toHaveLength(1);
+    // area-weighted: (3*10*0 + 970*100) / 1000 = 97, not the plain mean of 25
+    expect(a[0].wx).toBeCloseTo(97, 6);
+    expect(a[0].areaM2).toBeCloseTo(1000, 6);
+  });
+
+  it("emits one anchor per name that any block carries, and none for the rest", () => {
+    const a = buildHoodAnchors(
+      table([0, 2, 2], [0, 10, 20], [0, 4, 6], [1, 1, 1], ["A", "B", "C"]),
+    );
+    expect(a.map((h) => h.name).sort()).toEqual(["A", "C"]);
+  });
+
+  it("orders by the ground each name describes — largest first, deterministic", () => {
+    const a = buildHoodAnchors(
+      table([0, 1, 2], [0, 0, 0], [0, 0, 0], [5, 900, 90], ["A", "B", "C"]),
+    );
+    expect(a.map((h) => h.name)).toEqual(["B", "C", "A"]);
+  });
+
+  it("ignores a hood byte with no name behind it rather than indexing past the table", () => {
+    const a = buildHoodAnchors(table([0, 7], [0, 999], [0, 999], [1, 1], ["A"]));
+    expect(a).toHaveLength(1);
+    expect(a[0].wx).toBe(0);
+  });
+});
+
+/* ── Block B2: the shore corridor, the hood margin, the centrelines ─────────
+   Three landings, three properties that a picture alone cannot pin down. */
+
+describe("the shore corridor (Block B2)", () => {
+  const ring: [number, number][] = [
+    [0, 0], [1000, 0], [1000, 1000], [0, 1000],
+  ];
+  const grid = (isLand: ((i: number, j: number) => boolean) | undefined) =>
+    ({
+      XW: 4, XH: 4,
+      mx: Float64Array.from([-2000, -1000, 0, 1000, 2000]),
+      my: Float64Array.from([-2000, -1000, 0, 1000, 2000]),
+      z: () => 0,
+      lam: new Float32Array(16),
+      segs: new Uint16Array(0),
+      order: new Int32Array(0),
+      isLand,
+    }) as unknown as Parameters<typeof drawShoreCorridor>[3]["surround"];
+
+  it("draws nothing without a surround grid — a corridor is not built on a guess", () => {
+    const ctx = fakeCtx([]);
+    const f = fakeFrame(ctx) as unknown as Parameters<typeof drawShoreCorridor>[0];
+    const t = { elevM: () => 0 } as unknown as Parameters<typeof drawShoreCorridor>[1];
+    expect(drawShoreCorridor(f, t, [ring], {})).toBe(0);
+    expect(drawShoreCorridor(f, t, [ring], { surround: null })).toBe(0);
+  });
+
+  it("draws nothing when the grid carries no land bit", () => {
+    const ctx = fakeCtx([]);
+    const f = fakeFrame(ctx) as unknown as Parameters<typeof drawShoreCorridor>[0];
+    const t = { elevM: () => 0 } as unknown as Parameters<typeof drawShoreCorridor>[1];
+    expect(drawShoreCorridor(f, t, [ring], { surround: grid(undefined) })).toBe(0);
+  });
+
+  it("BAY_OPEN is opaque and it is the page's own open-water tone", () => {
+    // the reference fills the corridor at full strength and lays the graded
+    // shallows back over it; a hazed fill here would be the bay plate again
+    expect(BAY_OPEN).toBe("#87a6c6");
+    expect(SHORE_OUT).toBe(1100);
+    expect(SHORE_IN).toBe(130);
+  });
+});
+
+describe("the hood margin is measured on the VISIBLE STRIP (Block B2)", () => {
+  /* The ledger is `right: 0`, so the strip is [0, W - LEDGER_W] and its centre
+     is LEDGER_W/2 LEFT of the canvas centre. Testing the strip's WIDTH against
+     the CANVAS's centre threw away the left 144 px and admitted 144 px of
+     ledger. The rule, stated as arithmetic: the whole box is inside [0, vw]. */
+  const admits = (X: number, bw: number, W = 1200) => {
+    const vw = W < LEDGER_MIN_W ? W : W - LEDGER_W;
+    const HX = vw / 2;
+    return Math.abs(X - HX) <= HX - bw / 2;
+  };
+  it("admits a name at the left edge of the visible strip", () => {
+    expect(admits(60, 100)).toBe(true);
+  });
+  it("refuses a name that would be written under the ledger", () => {
+    expect(admits(1000, 100)).toBe(false);
+    expect(admits(912 - 40, 100)).toBe(false); // half of it under the panel
+  });
+  it("refuses a name that runs off the left edge", () => {
+    expect(admits(20, 100)).toBe(false);
+  });
+  it("under 820 px there is no ledger and the strip is the canvas", () => {
+    expect(admits(400, 100, 800)).toBe(true);
+    expect(admits(60, 100, 800)).toBe(true);
+  });
+});
+
+describe("drawCentrelines is complete and waiting on a chunk (Block B2)", () => {
+  const cell = (): CentrelineCell => ({
+    cls: Uint8Array.from([0, 3]),
+    yr: Uint16Array.from([0, 1930]),
+    len: Uint16Array.from([2, 2]),
+    x: Float32Array.from([0, 100, 0, 100]),
+    y: Float32Array.from([0, 0, 50, 50]),
+  });
+  const run = (band: number, year?: number, lines?: CentrelineCell[]) => {
+    const ctx = fakeCtx([]);
+    const f = fakeFrame(ctx) as unknown as Parameters<typeof drawCentrelines>[0];
+    const t = { elevM: () => 0 } as unknown as Parameters<typeof drawCentrelines>[2];
+    return drawCentrelines(f, [], t, {
+      medianW: [21, 21, 21, 15, 11],
+      covered: () => false,
+      band,
+      year,
+      lines,
+    });
+  };
+  it("returns 0 when no chunk carries the geometry — today's behaviour", () => {
+    expect(run(0)).toBe(0);
+    expect(run(0, 2018, [])).toBe(0);
+  });
+  it("the class gate is the band's own, and it OPENS as you zoom", () => {
+    expect(ST_CLS_MAX[0]).toBe(2);
+    expect(ST_CLS_MAX[2]).toBe(4);
+    // class 3 is not drawn at the whole-city band and is at the block band
+    expect(run(0, 2018, [cell()])).toBe(1);
+    expect(run(2, 2018, [cell()])).toBe(2);
+  });
+  it("an undated line is drawn in every year; a dated one waits for its year", () => {
+    expect(run(2, 1906, [cell()])).toBe(1); // only the undated class-0 line
+    expect(run(2, 1930, [cell()])).toBe(2);
+  });
+  it("the whole-city fade is 1 — the reference strokes the wide shot at full ink", () => {
+    // centrelineFade(21.0 m, 0.0467) = 2 - 21*0.9306*0.0467 = 1.09 -> clamped
+    expect(centrelineFade(21.0, 0.04666598864125368)).toBe(1);
+  });
+});

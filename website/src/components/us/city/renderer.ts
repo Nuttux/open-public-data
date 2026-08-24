@@ -33,6 +33,7 @@ import {
   Camera,
   bandOf,
   decideRaster,
+  decideRasterExternal,
   easeOutCubic,
   easeZoom,
   leadCentre,
@@ -57,15 +58,64 @@ import {
   cityBBoxByBand,
   fitCity,
   margin,
+  type BBox,
   type NavMode,
   type Placement,
   type Rastered,
   type SlotPlan,
 } from "@/lib/city/camera";
-import { projection } from "@/lib/city/projection";
+import { projection, type RebuildReason } from "@/lib/city/projection";
+import type { Frame as SceneFrame } from "@/lib/city/terrain";
 import { HAZE } from "@/lib/city/terrain";
 import type { CityData } from "@/lib/city/data";
 import { CityScene, type SceneStats } from "./scene";
+
+/**
+ * ── THE FILM'S DRIVE ─────────────────────────────────────────────────────
+ *
+ * `camera.ts` §decideRasterExternal: *"for a fixed projection, two camera states
+ * differ by a pure scale and a translation, so one drawImage of a buffer painted
+ * at camera A is EXACTLY the frame camera B would have painted — not an
+ * approximation of it. Nothing in that fact cares who moved the camera."* The
+ * gesture path was written for a reader's finger; the film's rails are the same
+ * camera moving on somebody else's clock.
+ *
+ * What differs is the last clause. A finger's next position is a guess, so the
+ * gesture path leads off the pan velocity. **A film's next position is known**,
+ * so the caller hands the buffer plan in — `film.ts` §planFilmBuffer walks the
+ * actual trajectory over the next 460 ms and takes the union of the viewports it
+ * will ask for. That is why a two-second move costs a handful of rasterisations
+ * instead of one a frame, and it is the whole of *no visible hitch during a
+ * camera move*.
+ *
+ * The renderer stays dumb about the film: it is handed a camera, a year, a
+ * buffer plan and two paint callbacks, and it owns none of them.
+ */
+export interface FilmDrive {
+  readonly cx: number;
+  readonly cy: number;
+  readonly scale: number;
+  readonly step: number;
+  /** fractional inside a run; the CONTENT KEY quantises it, the paint does not */
+  readonly year: number;
+  readonly running: boolean;
+  /** where the buffer is painted, out of `planFilmBuffer` */
+  readonly plan: { readonly cx: number; readonly cy: number; readonly scale: number } | null;
+  /** `gid`s the fabric must not draw because the film is raising them */
+  readonly hide: ReadonlySet<number> | null;
+  /** painted INTO the buffer, under the fabric and over the ground — the
+   *  accepted streets, whose order is the record's own: the Board accepts a
+   *  street, and the assessor dates the houses on it later. It is handed the
+   *  scene's own `Frame`, so it lands at the BUFFER's camera and not the
+   *  viewport's, which is what makes a blit of it exact. */
+  readonly underlay: ((f: SceneFrame) => void) | null;
+  /** painted on the GLASS at viewport size, after the blit — the bridge deck
+   *  and the subject's own name. Neither belongs in a buffer: one is a
+   *  two-point line over open water that changes every frame and occludes
+   *  nothing, and the other is text that would be re-rasterised with 166,166
+   *  buildings every time it moved. */
+  readonly overlay: ((ctx: CanvasRenderingContext2D, W: number, H: number) => void) | null;
+}
 
 export interface RendererState {
   /** whole-city 1.0 → free max 12 */
@@ -97,6 +147,9 @@ interface Slot {
   cv: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
 }
+
+/** Steps of the film's year that the content key resolves. See `contentKey`. */
+export const YEAR_Q = 16;
 
 export class CityRenderer {
   private readonly canvas: HTMLCanvasElement;
@@ -154,6 +207,16 @@ export class CityRenderer {
   private fadeT0 = -1e9;
   private paintedStep = -1;
 
+  /* ── THE PAN CLAMP'S BOX, ONE PER BAND, HELD ──────────────────────────
+     `cityBBoxByBand` measures each band against a SCRATCH projection carrying
+     that band's ZEX, so its three boxes do not depend on the live dials and
+     survive a band change. Holding them is what lets a band change re-point
+     the clamp in two lines instead of re-walking the DEM. Dropped and rebuilt
+     by `refit()`, which is also the only thing a tilt or a bearing change has
+     to call. */
+  private bandBoxes: BBox[] | null = null;
+  private unsubProj: (() => void) | null = null;
+
   // data arrival
   private dataVersion = 0;
   private frozenDataVersion = 0;
@@ -168,6 +231,7 @@ export class CityRenderer {
     cells: 0, massed: 0, buildings: 0, streets: 0, trees: 0, labels: 0, wB: 0,
   };
   private year: number | undefined = undefined;
+  private film: FilmDrive | null = null;
 
   constructor(
     canvas: HTMLCanvasElement,
@@ -179,6 +243,17 @@ export class CityRenderer {
     this.data = data;
     this.scene = scene;
     this.opts = opts;
+    /* ── A HANDLE FOR THE PARITY HARNESS, DEV ONLY ────────────────────
+       Every comparison against the mock has to be taken at the SAME absolute
+       scale as well as the same preset, because `cam.step` selects both
+       `cam.base` and `ZEX` — an agent on this project once read a 75 %
+       difference out of two frames that were only at different scales. A
+       preset button cannot express "this scale at this centre", so the
+       harness needs the object. `process.env.NODE_ENV` is inlined by the
+       bundler, so this branch is dead code in a production build. */
+    if (process.env.NODE_ENV !== "production") {
+      (globalThis as { __cityRenderer?: CityRenderer }).__cityRenderer = this;
+    }
     // ALPHA:FALSE IS CORRECTNESS. See the header.
     const c = canvas.getContext("2d", { alpha: false });
     if (!c) throw new Error("2d context unavailable");
@@ -201,6 +276,17 @@ export class CityRenderer {
       if (key === "base/terrain") this.refit();
       this.invalidate();
     });
+    /* ── THE PROJECTION IS A DIAL AND THE RENDERER HOLDS DERIVED STATE ────
+       `projection.ts` raises a TYPED rebuild event rather than calling a list
+       of rebuild functions by name, and the reason matters here: a band change
+       moves ZEX ONLY, so the scene's per-band terrain (built at that band's own
+       ZEX) and every table pre-projected at z = 0 survive it, while the pan
+       clamp's world box and the raster buffer do not. A tilt or a bearing
+       change moves the plane itself and nothing survives.
+       Subscribing rather than doing this inline at the call site is what makes
+       an EXTERNAL `setBand()` — the parity harness drives one — land on a
+       renderer that is still self-consistent. */
+    this.unsubProj = projection.onRebuild((reason) => this.onProjRebuild(reason));
     this.wire();
   }
 
@@ -247,6 +333,7 @@ export class CityRenderer {
     const ext = this.scene.extent();
     if (!ext || this.W <= 0) return;
     const boxes = cityBBoxByBand(projection, ext);
+    this.bandBoxes = boxes;
     const step = this.cam.syncStep();
     this.cam.bbox = boxes[step] ?? boxes[0];
     const fit = fitCity(boxes[0], this.W, this.H, this.ledgerW);
@@ -259,8 +346,10 @@ export class CityRenderer {
     this.cur = null;
   }
 
+  private ledgerWOverride: number | null = null;
+
   private get ledgerW(): number {
-    return this.opts.ledgerW ?? LEDGER_W;
+    return this.ledgerWOverride ?? this.opts.ledgerW ?? LEDGER_W;
   }
 
   destroy(): void {
@@ -270,6 +359,8 @@ export class CityRenderer {
     this.unwire();
     this.unsub?.();
     this.unsub = null;
+    this.unsubProj?.();
+    this.unsubProj = null;
     this.slots.clear();
     this.fadeCv = null;
   }
@@ -277,6 +368,93 @@ export class CityRenderer {
   setYear(y: number | undefined): void {
     this.year = y;
     this.invalidate();
+  }
+
+  /** The film runs full-bleed, with no ledger painted over the stage, so the
+   *  fit and the pan clamp have to be told the strip IS the canvas. */
+  setLedgerW(px: number): void {
+    if (this.ledgerWOverride === px) return;
+    this.ledgerWOverride = px;
+    this.refit();
+    this.invalidate();
+  }
+
+  /**
+   * Hand the camera to the film, or take it back.
+   *
+   * Called once per animation frame while the film is running. Nothing is
+   * animated here — the film owns its own clock and hands in a resolved camera —
+   * so this is a setter and a repaint, and the whole of the *externally driven*
+   * path is `render()`'s `if (this.film)` branch.
+   *
+   * `null` gives the camera back to the reader at exactly where the film left
+   * it, which is the film's own contract: **the frame it stopped on IS the
+   * explorer.**
+   */
+  driveFilm(d: FilmDrive | null): void {
+    const leaving = this.film !== null && d === null;
+    this.film = d;
+    if (d) {
+      this.cam.scale = d.scale;
+      this.cam.cx = d.cx;
+      this.cam.cy = d.cy;
+      this.cam.step = d.step;
+      this.year = d.year;
+      this.scene.filmHide = d.hide;
+      this.scene.filmRunning = d.running;
+      this.scene.filmUnderlay = d.underlay;
+      this.mode = "idle";
+    } else {
+      this.scene.filmHide = null;
+      this.scene.filmRunning = false;
+      this.scene.filmUnderlay = null;
+      if (leaving) {
+        /* the buffer holds a camera and a content key the settled path is about
+           to make stale, so it is DROPPED rather than trusted */
+        this.cur = null;
+        this.cam.thawBand();
+        this.cam.syncStep();
+      }
+    }
+    this.dirty = true;
+    this.start();
+  }
+
+  get filmOn(): boolean {
+    return this.film !== null;
+  }
+
+  /** The composed scene, for the film: the ground it puts its keyframes on and
+   *  the two published footprints it raises. Read-only from outside. */
+  get composition(): CityScene {
+    return this.scene;
+  }
+
+  /** The fit the film's `z` is a multiple of. */
+  /** rasterisations since mount, and why the last one happened. The film's
+   *  measurement reads these: a move that costs a handful of rasters is a move
+   *  served from the blit, and a move that costs one a frame is not. */
+  get rasterCount(): number {
+    return this.rasters;
+  }
+
+  get rasterWhy(): string {
+    return this.lastWhy;
+  }
+
+  get fitBase(): number {
+    return this.cam.base;
+  }
+
+  get viewport(): { W: number; H: number; dpr: number } {
+    return { W: this.W, H: this.H, dpr: this.DPR };
+  }
+
+  /** The `fi` slot's own size in CSS px — what `planFilmBuffer` has to fit a
+   *  window of trajectory inside. */
+  filmSlot(): { W: number; H: number } | null {
+    const s = this.slots.get("fi");
+    return s ? { W: s.plan.W, H: s.plan.H } : null;
   }
 
   /** repaint on the next frame */
@@ -409,6 +587,25 @@ export class CityRenderer {
     }
     const step = this.cam.syncStep();
 
+    /* ── THE BAND IS PUT ON THE PROJECTION HERE, AND THIS IS THE ONLY PLACE ──
+       `bandFor()` builds each band's `TerrainField` at that band's own ZEX;
+       everything the city stands ON that ground with — the block massing, the
+       building prisms, the heroes, the hit test's `invAt` march and the pan
+       clamp's box — reads `proj.zex`. Left unsynced the two disagree, and the
+       disagreement is a RIGID VERTICAL DISPLACEMENT of `h·(3.3 − ZEX_band)·
+       cam.scale`: proportional to ground elevation and to zoom, so 2 px on flat
+       ground at whole city and 280–360 px — a quarter of the frame — on the
+       hills at the Street preset. Measured before this line existed:
+       `.parity/GAPS.md` §1, the `Δy` column.
+       It goes at the TOP of render() and not inside `rasterise()` because the
+       band has to be on the projection before `decideRaster` reads `cur.step`,
+       before the cross-fade snapshot, and before `place()` — and because the
+       hit test, which runs between frames, must march the ground the reader is
+       actually looking at.
+       `setBand` is idempotent: it returns without emitting when ZEX already
+       matches, so a held frame costs one comparison. */
+    projection.setBand(step);
+
     // the band cross-fade: a band change is a projection change, so the two
     // pictures cannot be blended in the buffer — they are blended on the glass.
     if (this.paintedStep >= 0 && step !== this.paintedStep && this.fadeCv) {
@@ -420,29 +617,65 @@ export class CityRenderer {
       }
     }
 
-    const moving = this.mode !== "idle";
+    const film = this.film;
+    /* ── A FILM MOVE DOES NOT TAKE THE MOTION RUNGS, AND IT WAS MEASURED ──
+       `buildings.ts`'s two motion rungs — `RECT_SCALE`'s area-preserving
+       silhouette and `QUAD_PX`'s four real vertices — look like the obvious
+       lever on a mid-move rasterisation, and they were tried here. **They
+       bought nothing**: over the seven camera moves, rAF-counted, the worst
+       frame moved 605–1443 ms to 551–1300 ms, which is inside the run-to-run
+       spread. Ablating the film's own two passes as well (`?filmoff=accepted,
+       subjects`) moved it no further.
+       So the cost of a rasterisation here is not the footprint loop, and the
+       ladder's own argument says why it would not be: `buildings.ts` puts the
+       loop at "about 0.7 µs a building", which is 60 ms for the whole city.
+       What is left is the per-raster work that does not scale with either the
+       rungs or the resolution — `TerrainField`'s 67,600 nodes and the
+       surround's 56,330 cells — and that is also why `camera.ts`'s own
+       `FILM_DPR` table only moves the worst frame 1036 → 729 ms for a 3.3×
+       cut in pixels. See FILM.md §the frame rate.
+       Turning the rungs on for a film move would therefore trade the picture —
+       silhouettes instead of buildings, in the one part of the film that is
+       watched rather than scrubbed — for nothing measurable, which is the same
+       trade the mock's own massing hold was retired for. */
+    const moving = film ? false : this.mode !== "idle";
     const lowRes = moving;
     const wantSlot: SlotPlan["name"] =
-      moving ? (this.mode === "zoom" ? "zo" : "lo") : "hi";
+      film ? "fi" : moving ? (this.mode === "zoom" ? "zo" : "lo") : "hi";
     const key = this.contentKey(step);
     const placement: Placement | null = this.cur
       ? place(this.cur, this.cam, this.W, this.H, this.DPR, !moving)
       : null;
 
-    const d = decideRaster({
-      cur: this.cur,
-      placement,
-      camStep: step,
-      key,
-      moving,
-      lowRes,
-      isHiSlot: this.curSlot === "hi",
-      mode: this.mode,
-      now,
-      lastRaster: this.lastRaster,
-      W: this.W,
-      H: this.H,
-    });
+    /* ── THE ONE CLAUSE THE FILM CHANGES ──────────────────────────────
+       A gesture is repainted on a magnification ceiling it has to GUESS at from
+       velocity; the film knows its own trajectory, so `decideRasterExternal`
+       drops the velocity clauses and keeps the four structural ones — no
+       buffer, a band change, the buffer stopped covering, the content moved on.
+       Everything else about this frame is the shipped path, byte for byte. */
+    const d = film
+      ? decideRasterExternal({
+          cur: this.cur,
+          placement,
+          camStep: step,
+          key,
+          W: this.W,
+          H: this.H,
+        })
+      : decideRaster({
+          cur: this.cur,
+          placement,
+          camStep: step,
+          key,
+          moving,
+          lowRes,
+          isHiSlot: this.curSlot === "hi",
+          mode: this.mode,
+          now,
+          lastRaster: this.lastRaster,
+          W: this.W,
+          H: this.H,
+        });
 
     if (d.need) {
       this.rasterise(wantSlot, key, step, now);
@@ -474,7 +707,50 @@ export class CityRenderer {
       g.restore();
       g.setTransform(this.DPR, 0, 0, this.DPR, 0, 0);
     }
+    /* THE OVERLAY IS ON THE GLASS, at viewport size, after everything. The
+       subject's name is culled against the frame the READER is looking at, so
+       the blit and a settled render agree by construction rather than by luck —
+       a label that blinks on when a rasterisation lands is exactly the artefact
+       a blit is supposed not to have. */
+    if (film?.overlay) film.overlay(g, this.W, this.H);
     this.paintedStep = step;
+  }
+
+  /**
+   * A DIAL MOVED. What is still true, by reason.
+   *
+   * `"band"` — ZEX only. The scene's band caches are keyed per band and each
+   * was built at its own ZEX, so they stand; the tree sprite sheet bakes ZEXB,
+   * not ZEX, so it stands; every table pre-projected at z = 0 stands. Two
+   * things do not. The pan clamp's world box is per band and the box the
+   * camera is being held inside is now the wrong band's — `CAMERA.md` finding
+   * 7, the failure mode that does not throw and does not draw wrong, it just
+   * pulls the camera toward a city that is not there. And the raster buffer was
+   * painted on the other plane, so it cannot be blitted across this: the blit
+   * is a similarity transform and a ZEX change is not one.
+   *
+   * `"tilt"` / `"bearing"` — the plane itself moved. The fit, the boxes and
+   * every band cache are all functions of it, so this is a full `refit()` and a
+   * dropped scene. Nothing calls those setters on this page yet; the branch is
+   * here because the event is typed and a reason that is silently ignored is
+   * how the stale-box bug got in the first time.
+   */
+  private onProjRebuild(reason: RebuildReason): void {
+    if (reason === "band") {
+      const boxes = this.bandBoxes;
+      if (boxes) {
+        const step = this.cam.step;
+        this.cam.bbox = boxes[step] ?? boxes[0];
+        // re-hold the camera inside the box it is actually in now, rather than
+        // leaving it outside one until the reader's next gesture
+        this.cam.clamp(this.W, this.H, this.ledgerW);
+      }
+    } else {
+      this.scene.invalidateBands();
+      this.refit();
+    }
+    this.cur = null;
+    this.invalidate();
   }
 
   private paintEmpty(): void {
@@ -509,7 +785,17 @@ export class CityRenderer {
        that band is supposed to look like anyway". The buffer catches up on the
        settle, which is the one frame that can afford it. */
     const dv = this.mode === "idle" ? this.dataVersion : this.frozenDataVersion;
-    return `${step}|${this.year ?? "all"}|${dv}|${quantiseForKey(w)}`;
+    /* ── AND WHY THE FILM'S YEAR IS QUANTISED IN THE KEY ────────────────
+       `CAMERA.md` finding 6: **quantise the KEY, never the VALUE.** Inside a run
+       the year is fractional and it drives the fabric's arrival wave, so left
+       raw it is a cache miss every frame — the same jumpy-zoom bug wearing a
+       different hat. `YEAR_Q` steps a year, so the wave gets its steps and a
+       26-second run gets `YEAR_Q` rasterisations a year rather than 120 a
+       second. Outside a run the year is pinned at `iy + 0.999` and this rounds
+       to one value for the whole hold, which is why a hold is free. */
+    const y = this.year;
+    const yk = y === undefined ? "all" : Math.round(y * YEAR_Q);
+    return `${step}|${yk}|${dv}|${this.scene.sceneVersion}|${quantiseForKey(w)}`;
   }
 
   private rasterise(
@@ -528,7 +814,14 @@ export class CityRenderer {
     let bcx = this.cam.cx;
     let bcy = this.cam.cy;
     let bscale = this.cam.scale;
-    if (name === "lo") {
+    if (name === "fi") {
+      const plan = this.film?.plan;
+      if (plan) {
+        bcx = plan.cx;
+        bcy = plan.cy;
+        bscale = plan.scale;
+      }
+    } else if (name === "lo") {
       const c = leadCentre(this.cam, size, this.W, this.H, this.vx, this.vy);
       bcx = c.cx;
       bcy = c.cy;
@@ -594,6 +887,11 @@ export class CityRenderer {
   // ── listeners ────────────────────────────────────────────────────────────
 
   private onDown = (e: PointerEvent): void => {
+    /* WHILE THE FILM IS RUNNING THE CAMERA IS NOT THE READER'S. A press is one
+       of the film's four ways out and the film's own handler takes it; the
+       gesture machine must not also start a drag underneath, or the reader
+       lands in the explorer at a camera the film never stopped at. */
+    if (this.film) return;
     if (this.touches.size >= 2) return;
     this.touches.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (this.touches.size === 2) {
@@ -686,6 +984,7 @@ export class CityRenderer {
   };
 
   private onWheel = (e: WheelEvent): void => {
+    if (this.film) return;
     e.preventDefault();
     const r = this.canvas.getBoundingClientRect();
     this.zAnchor = [e.clientX - r.left, e.clientY - r.top];
@@ -711,6 +1010,7 @@ export class CityRenderer {
    * the pointer path, from `camera.ts`.
    */
   private onKey = (e: KeyboardEvent): void => {
+    if (this.film) return;
     const big = e.shiftKey ? KEY_PAN_BIG : KEY_PAN;
     const px = this.W * big;
     const py = this.H * big;

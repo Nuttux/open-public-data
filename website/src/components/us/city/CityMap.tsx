@@ -3,32 +3,32 @@
 /**
  * THE REACT SHELL.
  *
- * React at the edges only: mount, resize, teardown, and the drawer. The render
- * loop is `CityRenderer` and it is imperative — **no frame goes through React
- * state**. The one bridge is `onState`, which is throttled to the browser's own
- * animation frame and only ever feeds the readout strip, never the canvas.
+ * React at the edges only: mount, resize, teardown, and the block record. The
+ * render loop is `CityRenderer` and it is imperative — **no frame goes through
+ * React state**. The one bridge is `onState`, which is throttled to the
+ * browser's own animation frame and only ever feeds text, never the canvas.
  *
- * ── PROGRESSIVE, AND HONEST ABOUT IT ─────────────────────────────────────
- * The manifest lands first (23 KB gz). The twelve base-tier chunks stream in
- * behind it — 649 KB gz, **682 KB with the manifest** — and the map paints as
- * each one arrives rather than after the last one does: the ground appears,
- * then the bay, then the block massing, then the landmarks. Everything past
- * that is fetched by the camera: footprints at z ≥ 1.55, the refined
- * bathymetry at 3.0, street surfaces and trees at 2.9, facades at 4.0.
+ * ── WHAT IS ON THE MAP, AND WHAT IS UNDER IT ─────────────────────────────
+ * On the stage: the canvas, the four camera stops, and whatever the caller
+ * puts in `hud`. Under it: whatever the caller puts in `transport`. Those two
+ * slots and `onReady` are the whole seam the film needs — see PAGE.md.
  *
- * The loading line says which of those is outstanding and stops saying
- * anything once the base tier is complete. It is not a spinner over a blank
- * frame — the frame under it is already drawable.
+ * The map paints as its data arrives rather than after all of it has: the
+ * ground first, then the bay, then the blocks, then the landmarks, and the
+ * closer the camera goes the more it asks for. The margin says the city is
+ * still drawing and stops saying it once the first pass is complete. It is
+ * not a spinner over a blank frame — the frame under it is already drawable.
  */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { CityData } from "@/lib/city/data";
-import { projection } from "@/lib/city/projection";
-import { LEDGER_W, NARROW_W, ZSTEPS } from "@/lib/city/camera";
+import { projection, screenToPlane, SX, SY, type Plane } from "@/lib/city/projection";
+import { LEDGER_W, NARROW_W } from "@/lib/city/camera";
 import type { PlaceLabel } from "@/lib/city/labels";
 import { CityScene, parseLayers } from "./scene";
 import { CityRenderer, type RendererState } from "./renderer";
 import CityBlockPanel, { type BlockContext } from "./CityBlockPanel";
+import { useT } from "@/lib/localeContext";
 import {
   assertJoin,
   loadBlockIndex,
@@ -39,7 +39,24 @@ import {
 
 const nfInt = new Intl.NumberFormat("en-US");
 
-const PRESET_LABELS = ["Whole city", "District", "Block", "Street"];
+/* ── prefers-reduced-motion, read at the press ────────────────────────────
+   Read when the button is pressed and not at mount, so a reader who changes
+   the setting with the page open gets the map they have just asked for. The
+   film reads it the same way, once a frame — see `CityFilm`. */
+export function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true
+  );
+}
+
+/** the four camera stops of `camera.ts`, named for a reader */
+const PRESET_KEYS = [
+  "us.sf.thecity.map.view_city",
+  "us.sf.thecity.map.view_district",
+  "us.sf.thecity.map.view_block",
+  "us.sf.thecity.map.view_street",
+];
 
 interface MarksFile {
   n: number;
@@ -89,12 +106,31 @@ function decodeMarks(m: MarksFile): PlaceLabel[] {
   return out;
 }
 
-export default function CityMap({
-  height = 660,
-}: {
-  height?: number;
-}) {
+/** What `onReady` hands back: the camera, and a way to focus the map. */
+export interface CityMapHandle {
+  /** put keyboard focus on the map surface */
+  focus(): void;
+  /** the imperative half — `setYear`, `goToPreset`, `home`, `invalidate` */
+  renderer: CityRenderer;
+}
+
+export interface CityMapProps {
+  /** drawn over the canvas: the film's year and its beat card go here */
+  hud?: ReactNode;
+  /** drawn under the stage, full width: the film's play button and axis */
+  transport?: ReactNode;
+  /** replaces the idle content of the record margin (not the block record) */
+  ledger?: ReactNode;
+  /** what the margin says about the record while nothing is selected */
+  record?: { blocks: number; withRecord: number; decisions: number; span: string };
+  /** called once, when the renderer exists */
+  onReady?: (handle: CityMapHandle) => void;
+}
+
+export default function CityMap({ hud, transport, ledger, record, onReady }: CityMapProps) {
+  const t = useT();
   const hostRef = useRef<HTMLDivElement>(null);
+  const ledgerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rendererRef = useRef<CityRenderer | null>(null);
   const sceneRef = useRef<CityScene | null>(null);
@@ -105,31 +141,98 @@ export default function CityMap({
   const [baseTotal, setBaseTotal] = useState(0);
   const [failed, setFailed] = useState<string | null>(null);
   const [joinNote, setJoinNote] = useState<string | null>(null);
-  const [record, setRecord] = useState<BlockRecord | null>(null);
+  const [blockRecord, setBlockRecord] = useState<BlockRecord | null>(null);
   const [blockCtx, setBlockCtx] = useState<BlockContext | null>(null);
   const [picking, setPicking] = useState(false);
+  /** the last click resolved to no block — see `onPick` */
+  const [missed, setMissed] = useState(false);
+  /* WHERE THE READER PUT THE PIN. The pick returns an index and no position,
+     so the mark is anchored on the point that was clicked, converted to the
+     projection PLANE — a similarity transform away from the screen at any
+     camera, so the pin stays on the spot through every pan and zoom instead
+     of being recomputed from a centroid the block table would have to be
+     asked for. See `projection.ts` §plane → screen. */
+  const [mark, setMark] = useState<Plane | null>(null);
+  const ptrRef = useRef<{ x: number; y: number; at: number } | null>(null);
+
+  // `onReady` is read through a ref: a caller that passes an inline arrow
+  // must not be able to tear the renderer down and rebuild it on a re-render.
+  const onReadyRef = useRef(onReady);
+  onReadyRef.current = onReady;
 
   const onPick = useCallback((blockIndex: number) => {
     const scene = sceneRef.current;
     const index = indexRef.current;
+    /* ── A CLICK THAT FINDS NOTHING IS NOT A CLICK THAT SAYS "CLOSE THIS" ──
+       `scene.pick()` resolves the point under the pointer against the TERRAIN
+       and buildings are not in that march, so a click on a roof lands on the
+       ground behind it and often in the roadway, where no block ring matches.
+       Measured on this build with `.parity/b5pickmap.py`: at the street stop
+       only 38 % of the stage answers with a block, at the block stop 46 %.
+
+       That used to wipe the record the reader had open. So three clicks out of
+       four on a built-up frame threw away a century of decisions and put back
+       the idle panel, with nothing said. The record now stays until the reader
+       closes it, and the margin says a click found nothing. */
     if (blockIndex < 0) {
-      setRecord(null);
-      setBlockCtx(null);
+      setMissed(true);
       return;
     }
+    setMissed(false);
     const bt = scene?.blockTable;
     if (!bt || !index) return;
     setBlockCtx({
       id: index.b[blockIndex] ?? "—",
       hood: bt.hoodNames[bt.hood[blockIndex]] ?? "San Francisco",
       areaM2: bt.area[blockIndex] ?? 0,
+      // `ns[i]` has been in the T0 index all along and the fiche was never
+      // handed it, so a block whose whole record is on its streets could not
+      // say so until the reader opened a fold. FICHE.md §4 asked for this.
+      streetDecisions: index.ns[blockIndex] ?? 0,
     });
+    /* The pointer is recorded in the CAPTURE phase on the stage, which runs
+       before the canvas's own listener, so the position that produced this
+       pick is already here when the renderer calls back. A pick from the
+       keyboard (`Enter` picks the middle of the frame) leaves it stale, and
+       the fallback is that same middle. */
+    const rr = rendererRef.current;
+    if (rr) {
+      const v = rr.viewport;
+      const p = ptrRef.current;
+      const fresh = p && performance.now() - p.at < 1500;
+      setMark(
+        screenToPlane(
+          fresh && p ? p.x : v.W / 2,
+          fresh && p ? p.y : v.H / 2,
+          v.W,
+          v.H,
+          rr.cam,
+        ),
+      );
+    }
     setPicking(true);
     void loadBlockRecord(index, blockIndex)
-      .then((r) => setRecord(r))
-      .catch(() => setRecord(null))
+      .then((r) => setBlockRecord(r))
+      .catch(() => setBlockRecord(null))
       .finally(() => setPicking(false));
   }, []);
+
+  /* ── ON A PHONE THE RECORD IS NOT BESIDE THE MAP, IT IS UNDER IT ──────
+     Under NARROW_W the margin stacks below the stage, and the stage is 66 vh,
+     so a block picked at the top of the screen answers off the bottom of it:
+     the reader clicks, the map does nothing they can see, and the record they
+     asked for is a scroll away. The panel is brought to the reader instead.
+     `block: "nearest"` so the map above it is not thrown off screen, and the
+     jump is instant under `prefers-reduced-motion`. */
+  useEffect(() => {
+    const host = hostRef.current;
+    const el = ledgerRef.current;
+    if (!blockCtx || !el || !host || host.clientWidth >= NARROW_W) return;
+    el.scrollIntoView({
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+      block: "nearest",
+    });
+  }, [blockCtx]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -138,6 +241,7 @@ export default function CityMap({
     let disposed = false;
     let renderer: CityRenderer | null = null;
     let ro: ResizeObserver | null = null;
+    let cleanupKeys: (() => void) | null = null;
 
     void (async () => {
       let data: CityData;
@@ -164,6 +268,10 @@ export default function CityMap({
         },
       });
       rendererRef.current = renderer;
+      onReadyRef.current?.({
+        focus: () => canvasRef.current?.focus(),
+        renderer,
+      });
 
       const nBase = data.manifest.chunks.filter((c) => c.tier === "base").length;
       setBaseTotal(nBase);
@@ -173,6 +281,45 @@ export default function CityMap({
           data.manifest.chunks.filter((c) => c.tier === "base" && data.has(c.k)).length,
         );
       });
+
+      /* ── HOME IS THE LARGEST FLIGHT ON THE PAGE ─────────────────────
+         The renderer's own key handler glides `home()` over 620 ms, and
+         from the Street stop on a phone that is a hundredfold zoom-out
+         across the whole frame — the clearest case of the motion
+         `prefers-reduced-motion` asks us to remove. Everything else the
+         keyboard does (arrows, + and −, Enter) is already instant.
+         Captured on the STAGE, which is an ancestor of the canvas, so it
+         runs before the renderer's listener rather than after it. */
+      const onHomeKey = (e: KeyboardEvent): void => {
+        if (e.key !== "Home" || !prefersReducedMotion()) return;
+        const rr = rendererRef.current;
+        if (!rr || rr.filmOn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const v = rr.viewport;
+        rr.cam.home(v.W, v.H, host.clientWidth < NARROW_W ? 0 : LEDGER_W);
+        rr.cam.thawBand();
+        rr.invalidate();
+      };
+      host.addEventListener("keydown", onHomeKey, true);
+
+      /* ── THE PIN NEEDS THE POINT, AND THE PICK ONLY CARRIES AN INDEX ────
+         Recorded on the STAGE in the capture phase, which runs before the
+         canvas's own pointer listener, so by the time the renderer calls
+         `onPick` the position that caused it is already in hand. */
+      const onPtr = (e: PointerEvent): void => {
+        const rect = canvas.getBoundingClientRect();
+        ptrRef.current = {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+          at: performance.now(),
+        };
+      };
+      host.addEventListener("pointerup", onPtr, true);
+      cleanupKeys = () => {
+        host.removeEventListener("keydown", onHomeKey, true);
+        host.removeEventListener("pointerup", onPtr, true);
+      };
 
       ro = new ResizeObserver(() => {
         const w = host.clientWidth;
@@ -234,6 +381,7 @@ export default function CityMap({
     return () => {
       disposed = true;
       ro?.disconnect();
+      cleanupKeys?.();
       renderer?.destroy();
       rendererRef.current = null;
       sceneRef.current = null;
@@ -242,125 +390,263 @@ export default function CityMap({
 
   const r = rendererRef.current;
   const z = state?.z ?? 1;
-  const loadingBase = baseTotal > 0 && baseDone < baseTotal;
+  const drawing = baseTotal > 0 && baseDone < baseTotal;
+
+  /* ── THE FOUR STOPS ───────────────────────────────────────────────────
+     `Camera.pressedPreset()` answers which stop the camera is standing on,
+     on the ABSOLUTE scale. The test that shipped here was `z > 11.5` for the
+     fourth button — MAXZ, from before the ceiling became absolute — and at
+     390 x 844 the ceiling is z 100.2, so STREET read pressed from z 11.5 up,
+     eight times short of the stop it names.
+
+     Under `prefers-reduced-motion` the press CUTS. The glide is 520 ms of
+     large-field zoom — 4x on a desktop, 14x on a phone, because the ceiling
+     is fixed and the fit is not — and that is the vestibular motion the
+     setting asks us to remove. The stop it lands on is the same one. */
+  const pressed = r ? r.cam.pressedPreset() : 0;
+
+  /* ── AND WHICH STOP THE READER IS NEAREST ─────────────────────────────
+     `pressedPreset()` answers −1 anywhere between two stops, which is where
+     a wheel, a pinch and every window resize leave the camera — so the four
+     buttons spent most of their life with none of them marked, and the one
+     control that says how close the view is said nothing. `aria-pressed`
+     stays exact, because standing on a stop and being nearest to one are not
+     the same claim; the nearest stop is marked visually, which is what the
+     eye is asking. */
+  const near = ((): number => {
+    if (!r) return 0;
+    let best = 0;
+    let bestD = Infinity;
+    for (let i = 0; i < r.cam.presetCount(); i++) {
+      const sc = r.cam.presetScale(i);
+      if (sc <= 0) continue;
+      const d = Math.abs(Math.log(r.cam.scale / sc));
+      if (d < bestD) {
+        bestD = d;
+        best = i;
+      }
+    }
+    return best;
+  })();
+
+  /* the pin, in canvas pixels, or null when it is off the frame or the film
+     has the camera */
+  const markPos = ((): { x: number; y: number } | null => {
+    if (!mark || !r || !blockCtx || r.filmOn) return null;
+    const v = r.viewport;
+    const x = SX(mark, v.W, r.cam);
+    const y = SY(mark, v.H, r.cam);
+    /* The stage runs the FULL width and the record margin is an opaque panel
+       laid on its right — the same fact the camera's own clamp is built on.
+       A pin drawn past the strip's edge would be sitting under the margin, on
+       a part of the city the reader cannot see, so it is not drawn. */
+    const lw = hostRef.current && hostRef.current.clientWidth < NARROW_W ? 0 : LEDGER_W;
+    if (x < -40 || y < -40 || x > v.W - lw || y > v.H + 40) return null;
+    return { x, y };
+  })();
+
+  const goToStop = (i: number): void => {
+    const rr = rendererRef.current;
+    const host = hostRef.current;
+    if (!rr) return;
+    if (prefersReducedMotion()) {
+      const v = rr.viewport;
+      const lw = host && host.clientWidth < NARROW_W ? 0 : LEDGER_W;
+      rr.cam.cutTo(rr.cam.presetScale(i), v.W, v.H, lw);
+      rr.invalidate();
+    } else {
+      rr.goToPreset(i);
+    }
+  };
+
+  /* ── TAKE ME BACK TO IT ───────────────────────────────────────────────
+     The record is open in the margin and the block it belongs to can be
+     three screens away after one drag, or under the pointer and 30 metres
+     wide at the whole-city stop. The pin is a plane point, which is what
+     `centreOn` takes.
+
+     THE ORDER IS THE WHOLE OF IT, and the first version had it backwards.
+     `clamp()` is scale-dependent — at the whole-city stop the camera cannot
+     roam at all, because the city is fitted — so centring first and zooming
+     after left the block wherever the zoom happened to carry it, off to one
+     side of the frame. The scale is set first and the centre second, so the
+     clamp and the frame bias both do their arithmetic at the scale the
+     reader is going to be looking at.
+
+     It CUTS. A 520 ms flight would be the better answer if the position
+     could fly with it, and `glideTo` interpolates the centre it is given at
+     the scale it starts from; a jump-cut to the block a reader has asked to
+     be taken to reads as an arrival, and it is the same move
+     `prefers-reduced-motion` would get anyway. */
+  const locate = (): void => {
+    const rr = rendererRef.current;
+    const host = hostRef.current;
+    if (!rr || !mark) return;
+    const v = rr.viewport;
+    const lw = host && host.clientWidth < NARROW_W ? 0 : LEDGER_W;
+    rr.cam.cutTo(Math.max(rr.cam.scale, rr.cam.presetScale(2)), v.W, v.H, lw);
+    rr.cam.centreOn(mark, v.W, v.H, lw);
+    rr.cam.follow = false;
+    rr.invalidate();
+    /* On a phone the record is UNDER the map, so "find it on the map" moved a
+       camera the reader could not see. The stage is brought back to them, the
+       same way a pick brings the record to them. */
+    if (host && host.clientWidth < NARROW_W)
+      host.scrollIntoView({
+        behavior: prefersReducedMotion() ? "auto" : "smooth",
+        block: "nearest",
+      });
+  };
 
   return (
     <div className="fx-city-wrap">
       <div className="fx-city-frame">
-      <div
-        ref={hostRef}
-        className="fx-city-stage"
-        style={{ height }}
-      >
-        <canvas
-          ref={canvasRef}
-          tabIndex={0}
-          role="img"
-          aria-label={
-            `San Francisco drawn from the city's own published record, seen from the south-east at ` +
-            `${projection.elevationDeg().toFixed(1)} degrees above the horizon. ` +
-            `Zoom ${z.toFixed(1)} times the whole-city fit. ` +
-            (state
-              ? `${nfInt.format(state.scene.buildings)} buildings and ${nfInt.format(state.scene.massed)} assessor blocks are drawn in this frame.`
-              : "Loading.") +
-            ` Use the arrow keys to pan, plus and minus to zoom, Home for the whole city, and Enter to open the record for the block at the centre of the frame.`
-          }
-          className="fx-city-canvas"
-        />
+        <div ref={hostRef} className="fx-city-stage">
+          <canvas
+            ref={canvasRef}
+            tabIndex={0}
+            role="img"
+            aria-label={[
+              t("us.sf.thecity.map.alt").replace("{z}", z.toFixed(1)),
+              state
+                ? t("us.sf.thecity.map.alt_drawn")
+                    .replace("{buildings}", nfInt.format(state.scene.buildings))
+                    .replace("{blocks}", nfInt.format(state.scene.massed))
+                : t("us.sf.thecity.map.drawing"),
+              t("us.sf.thecity.map.keys"),
+            ].join(" ")}
+            className="fx-city-canvas"
+          />
 
-        {failed ? (
-          <div className="fx-city-overlay" role="status">
-            <p className="fx-fiche-note">
-              The city&rsquo;s data could not be loaded: {failed}
-            </p>
-          </div>
-        ) : null}
+          {hud}
 
-      </div>
+          {/* THE BLOCK THE RECORD IN THE MARGIN BELONGS TO. Without it the
+              reader clicked a block, the margin filled with a century of
+              decisions, and nothing on the map said which of the 5,404
+              blocks under the pointer had answered. */}
+          {markPos ? (
+            <div
+              className="fx-city-pin"
+              style={{ left: `${markPos.x}px`, top: `${markPos.y}px` }}
+              aria-hidden="true"
+            >
+              <span className="fx-city-pin-ring" />
+              <span className="fx-city-pin-id">{blockCtx?.id}</span>
+            </div>
+          ) : null}
 
-      {/* THE LEDGER IS AN OPAQUE PANEL ON THE CANVAS, which is why the camera
-          fits and clamps to the visible STRIP and not to the canvas: clamping
-          to the canvas would let a third of San Francisco slide underneath it
-          and still count as on screen. Under NARROW_W it stacks below instead,
-          and `ledgerW` is passed as 0 so the strip IS the canvas. */}
-      <div className="fx-city-ledger">
-          <div className="fx-city-ledger-head">San Francisco</div>
-          <p className="fx-city-ledger-lede">
-            Every building, block, street and tree on this map is a published
-            record. Click a block to read what the city decided there.
-          </p>
-
-          <div role="group" aria-label="Zoom presets" className="fx-city-presets">
-            {PRESET_LABELS.map((label, i) => (
+          <div
+            role="group"
+            aria-label={t("us.sf.thecity.map.view")}
+            className="fx-city-controls"
+          >
+            {/* The four stops read as four labels floating over the map until
+                something says they are a control. The group already carries
+                the accessible name; this is the same thing for the eye. */}
+            <span className="fx-city-controls-cap" aria-hidden="true">
+              {t("us.sf.thecity.map.view_cap")}
+            </span>
+            {PRESET_KEYS.map((key, i) => (
               <button
-                key={label}
+                key={key}
                 type="button"
                 className="fx-city-preset"
-                aria-pressed={
-                  i < ZSTEPS.length
-                    ? Math.abs(Math.log(z / ZSTEPS[i])) < 0.05
-                    : z > 11.5
-                }
-                onClick={() => r?.goToPreset(i)}
+                aria-pressed={pressed === i}
+                data-near={pressed < 0 && near === i ? "true" : undefined}
+                onClick={() => goToStop(i)}
               >
-                {label}
+                {t(key)}
               </button>
             ))}
           </div>
 
-          {loadingBase ? (
-            <p className="fx-city-loading" role="status" aria-live="polite">
-              Loading the first paint — {baseDone} of {baseTotal} base chunks.
-              The map is already drawing what has arrived.
+          {failed ? (
+            <div className="fx-city-overlay" role="status">
+              <p className="fx-fiche-note">
+                {t("us.sf.thecity.map.failed")} {failed}
+              </p>
+            </div>
+          ) : null}
+        </div>
+
+        {/* THE RECORD MARGIN IS AN OPAQUE PANEL ON THE CANVAS, which is why
+            the camera fits and clamps to the visible STRIP and not to the
+            canvas: clamping to the canvas would let a third of San Francisco
+            slide underneath it and still count as on screen. Under NARROW_W
+            it stacks below instead, and `ledgerW` is passed as 0 so the strip
+            IS the canvas. */}
+        <div ref={ledgerRef} className="fx-city-ledger">
+          {/* WHAT HAPPENED WHEN NOTHING HAPPENED. Without this the reader
+              clicks a building, the map does not move, the margin does not
+              change, and there is no way to tell a miss from a dead page. */}
+          {missed ? (
+            <p className="fx-city-miss" role="status" aria-live="polite">
+              {t("us.sf.thecity.map.no_block")}
             </p>
-          ) : blockCtx ? null : (
-            <dl className="fx-city-stats">
-              <Stat k="Zoom" v={`${z.toFixed(2)}×`} />
-              <Stat k="Buildings drawn" v={nfInt.format(state?.scene.buildings ?? 0)} />
-              <Stat k="Blocks massed" v={nfInt.format(state?.scene.massed ?? 0)} />
-              <Stat k="Street areas" v={nfInt.format(state?.scene.streets ?? 0)} />
-              <Stat k="Trees & canopy" v={nfInt.format(state?.scene.trees ?? 0)} />
-              <Stat k="Names placed" v={nfInt.format(state?.scene.labels ?? 0)} />
-              <Stat
-                k="Data held"
-                v={`${((state?.heldBytes ?? 0) / 1048576).toFixed(1)} MB`}
-              />
-              {state && state.inFlight > 0 ? (
-                <Stat k="Fetching" v={`${state.inFlight} chunk${state.inFlight === 1 ? "" : "s"}`} />
-              ) : null}
-            </dl>
-          )}
-
-          {joinNote ? <p className="fx-fiche-note">{joinNote}</p> : null}
-
+          ) : null}
           {blockCtx ? (
             <CityBlockPanel
-              record={record}
+              record={blockRecord}
               context={blockCtx}
+              city={record ? { blocks: record.blocks, withRecord: record.withRecord } : undefined}
               loading={picking}
+              onLocate={mark ? locate : undefined}
               onClose={() => {
                 setBlockCtx(null);
-                setRecord(null);
+                setBlockRecord(null);
+                setMark(null);
+                setMissed(false);
               }}
             />
-          ) : null}
-      </div>
+          ) : (
+            <>
+              <div className="fx-city-ledger-head">
+                {t("us.sf.thecity.margin.head")}
+              </div>
+              <p className="fx-city-ledger-lede">
+                {t("us.sf.thecity.margin.lede")}
+              </p>
+
+              {ledger ?? (record ? (
+                <dl className="fx-city-ledger-facts">
+                  <div className="fx-city-fact-row">
+                    <dt>{t("us.sf.thecity.margin.decisions")}</dt>
+                    <dd className="tnum">{nfInt.format(record.decisions)}</dd>
+                  </div>
+                  <div className="fx-city-fact-row">
+                    <dt>{t("us.sf.thecity.margin.years")}</dt>
+                    <dd className="tnum">{record.span}</dd>
+                  </div>
+                  <div className="fx-city-fact-row">
+                    <dt>{t("us.sf.thecity.margin.blocks")}</dt>
+                    <dd className="tnum">
+                      {nfInt.format(record.withRecord)} / {nfInt.format(record.blocks)}
+                    </dd>
+                  </div>
+                </dl>
+              ) : null)}
+
+              {drawing ? (
+                <p className="fx-city-loading" role="status" aria-live="polite">
+                  {t("us.sf.thecity.map.drawing")}
+                </p>
+              ) : null}
+
+              {joinNote ? <p className="fx-fiche-note">{joinNote}</p> : null}
+            </>
+          )}
+        </div>
       </div>
 
-      <p className="fx-doc-source fx-city-help">
-        Drag to pan · scroll or pinch to zoom · click a block for its record ·
-        keyboard: arrows pan, <kbd>+</kbd>/<kbd>−</kbd> zoom, <kbd>Home</kbd>{" "}
-        resets, <kbd>Enter</kbd> opens the block at the centre of the frame.
-      </p>
-    </div>
-  );
-}
+      {transport ? <div className="fx-city-transport">{transport}</div> : null}
 
-function Stat({ k, v }: { k: string; v: string }) {
-  return (
-    <div className="fx-city-stat">
-      <dt>{k}</dt>
-      <dd className="tnum">{v}</dd>
+      <div className="fx-wrap">
+        <div className="fx-city-help">
+          <span>{t("us.sf.thecity.map.help")}</span>
+          {transport ? <span>{t("us.sf.thecity.map.help_years")}</span> : null}
+          <span className="fx-city-help-keys">{t("us.sf.thecity.map.help_keys")}</span>
+        </div>
+      </div>
     </div>
   );
 }

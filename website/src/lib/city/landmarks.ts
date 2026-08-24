@@ -413,9 +413,27 @@ export function accentOf(crownMaterials: readonly string[]): string | null {
   return bc >= 0.12 ? best : null;
 }
 
-/** the blend, which goes to zero exactly as the ornament arrives */
+/**
+ * `part3.html` L7640. THE HEIGHT OF THE BLEND IS A NUMBER AND IT WAS DROPPED.
+ *
+ * `_hAccA = WO_ACC * (1 - op)`, and the same `_hAccA` is then used for the
+ * crown's cap AND for its wall — `heroMat` does `top = lerpHex(top, A[1], qa)`
+ * and `wall = lerpHex(wall, A[2], qa)` with one `qa`.
+ *
+ * This port returned `1 - op` with no `WO_ACC` at all, and then `heroMaterial`
+ * multiplied the WALL by 0.55 while `capColour` used the whole thing. So City
+ * Hall's cap came out 18 % more gilt than the reference and its drum 35 % less
+ * — a difference between two parts of the same dome, out of one number split
+ * two ways.
+ *
+ * Quantised to a twelfth, as the mock quantises it into its own cache key, so
+ * the two builds land on the same value rather than within a rounding of it.
+ */
+export const WO_ACC = 0.85;
+
 export function accentBlend(ornamentW: number): number {
-  return Math.max(0, 1 - ornamentW);
+  const a = WO_ACC * Math.max(0, 1 - ornamentW);
+  return a > 0.01 ? Math.round(a * 12) / 12 : 0;
 }
 
 // ── the family colour ───────────────────────────────────────────────────────
@@ -483,9 +501,29 @@ export function bandLambert(
   dHeight: number,
   facing: number,
 ): number {
-  const leansIn = dHeight > 0 && -dRadius > dHeight;
-  if (leansIn) return facing >= 0 ? 3 : 2;
+  if (bandLeansIn(dRadius, dHeight)) return facing >= 0 ? 3 : 2;
   return facing >= 0 ? 3 : 0;
+}
+
+/**
+ * AND THE TEST IS THE MOCK'S, WHICH IS NOT WHAT THIS PORT LANDED.
+ *
+ * `part3.html` L7908: `const taper = dS > 0.004; const up = taper && dS >
+ * dU*0.55`, where `dS` is the radius DECREASE over the band and `dU` its rise.
+ * This port had `dHeight > 0 && -dRadius > dHeight` — a threshold of 1.0
+ * against the reference's 0.55, recorded as a divergence rather than fixed.
+ *
+ * The difference is every band that shrinks between 0.55 and 1.0 of its own
+ * rise: the whole shallow part of a dome and the shoulder of a crown. Those
+ * bands were taking a WALL value keyed on their azimuth — the far ones bright
+ * and the near ones dark — which is the exact failure the note above this
+ * function describes and which it only half fixed. The mock's `taper` gate
+ * also stands in for `dHeight > 0`: a band that shrinks while going nowhere
+ * (or down) is up-facing too, and the port's height test refused it.
+ */
+export function bandLeansIn(dRadius: number, dHeight: number): boolean {
+  const dS = -dRadius;
+  return dS > 0.004 && dS > dHeight * 0.55;
 }
 
 // ── the LOD, and the thing it must never read ──────────────────────────────
@@ -665,18 +703,36 @@ export function heroMaterial(
   haze: string,
   accent: string | null,
   accentBlendW: number,
+  gain: number,
 ): string {
   const m = mats.mats[mi] ?? (["#b9b2a2", "#d0c9ba", "#6f6a60"] as const);
   let c = m[0];
-  if (accent && accentBlendW > 0) c = lerpHex(c, accent, accentBlendW * 0.55);
+  if (accent && accentBlendW > 0.01) c = lerpHex(c, accent, accentBlendW);
   if (fade > 0.004) c = lerpHex(c, haze, fade);
-  return skylit(c, 0.66 + 0.1 * lam, (lam - 1.5) / 1.5);
+  return skylit(c, (0.66 + 0.1 * lam) * gain, (lam - 1.5) / 1.5);
 }
 
-/** the ink for one material, taken from that material's own dark */
-export function heroInk(mats: HeroMaterials, mi: number): string {
+/**
+ * THE GAIN THE WHOLE FRAME IS DRAWN AT, AND THE HEROES WERE NOT DRAWN AT IT.
+ *
+ * `heroMat` opens `const g = COVER_GAIN[cam.step] || 1` and multiplies every
+ * one of the four wall steps, the cap and the ink by it — *"a hero's material
+ * recedes on the SAME curve the fabric's own roofs recede on, so a landmark at
+ * the back of the frame is at the back of the frame."* `colourLUT` in this port
+ * already takes the gain and applies it to all 166,166 buildings; the heroes
+ * did not, so at whole-city zoom every landmark stood 25 % brighter than the
+ * city around it — the precise thing the deleted sprites were deleted for.
+ */
+export function heroGain(gain: number | undefined): number {
+  return typeof gain === "number" && gain > 0 ? gain : 1;
+}
+
+/** the ink for one material, taken from that material's own dark.
+ *  `shade(m[2], 0.9)` was here and 0.9 is nobody's number: `heroMat` shades the
+ *  dark by the frame's own `g`, exactly as it shades the cap and the walls. */
+export function heroInk(mats: HeroMaterials, mi: number, gain: number): string {
   const m = mats.mats[mi];
-  return m ? shade(m[2], 0.9) : LM_INK;
+  return m ? shade(m[2], gain) : LM_INK;
 }
 
 /**
@@ -786,6 +842,13 @@ export interface HeroDrawOptions {
   readonly year?: number;
   /** while a beat is HELD, the decision's family colour */
   readonly family?: string | null;
+  /**
+   * `COVER_GAIN[camStep]` — the frame's own cover gain, passed IN because
+   * nothing in this file may read `cam.scale` (see `lmLOD`) and because the
+   * caller has already resolved the step for `colourLUT`. Absent means 1,
+   * which is the settled value at block zoom.
+   */
+  readonly gain?: number;
 }
 
 /**
@@ -966,12 +1029,13 @@ function capColour(
   accentW: number,
   fade: number,
   haze: string,
+  gain: number,
 ): string {
   let top = mat[mi]?.[1] ?? "#d0c9ba";
   if (accentMi >= 0 && accentW > 0.01)
     top = lerpHex(top, mat[accentMi]?.[1] ?? top, accentW);
   if (fade > 0.004) top = lerpHex(top, haze, fade);
-  return top;
+  return shade(top, gain);
 }
 
 function drawSolid(
@@ -1000,6 +1064,7 @@ function drawSolid(
       HSY[b + t] = cys + (HBSY[t] - cys) * sc - oy - yy;
     }
   }
+  const gain = heroGain(o.gain);
   const crown = part.z0 >= s.zr - 1e-3;
   const accMi = crown ? s.accentMat : -1;
   const accent = accMi >= 0 ? (mat[accMi]?.[2] ?? null) : null;
@@ -1010,12 +1075,10 @@ function drawSolid(
     const dRadius = part.profile[r + 1].s - part.profile[r].s;
     const dHeight = part.profile[r + 1].u - part.profile[r].u;
     const taper = -dRadius > 0.004;
-    /* DIVERGES from the mock, and it is the landed rule that diverges:
-       `part3.html` treats a band as up-facing at `−dRadius > 0.55·dHeight`;
-       `bandLambert`'s own `leansIn` is `−dRadius > dHeight`. The landed test is
-       the stricter one, so slightly fewer bands take the sky's two steps. The
-       function is called for exactly the case it documents. */
-    const leans = dHeight > 0 && -dRadius > dHeight;
+    /* THE MOCK'S OWN TEST, no longer a recorded divergence — see
+       `bandLeansIn`. `taper` and the lean now come from one function so the
+       two cannot drift apart again. */
+    const leans = bandLeansIn(dRadius, dHeight);
     for (let t = 0; t < n; t++) {
       if (!p.vis[t] && !taper) continue;
       const u = (t + 1) % n;
@@ -1041,7 +1104,7 @@ function drawSolid(
   for (let q = 0; q < 4; q++) {
     const path = lamPath[q];
     if (!path) continue;
-    let col = heroMaterial(mats, part.mat, q, o.fade, o.haze, accent, s.accentW);
+    let col = heroMaterial(mats, part.mat, q, o.fade, o.haze, accent, s.accentW, gain);
     if (o.family) col = heldMaterial(col, o.family, false);
     ctx.fillStyle = col;
     ctx.fill(path);
@@ -1054,7 +1117,7 @@ function drawSolid(
   if (wpx > WO_INK_MIN) {
     ctx.save();
     ctx.globalAlpha = (ctx.globalAlpha || 1) * Math.min(1, (wpx - WO_INK_MIN) / WO_INK_MIN) * WO_INK;
-    ctx.strokeStyle = heroInk(mats, part.mat);
+    ctx.strokeStyle = heroInk(mats, part.mat, gain);
     ctx.lineJoin = "round";
     ctx.lineWidth = Math.max(0.6, Math.min(WO_INK_MAX, wpx / 95));
     for (let q = 0; q < 4; q++) { const path = lamPath[q]; if (path) ctx.stroke(path); }
@@ -1064,7 +1127,7 @@ function drawSolid(
   const tr = (NR - 1) * n;
   if (part.profile[NR - 1].s > 0.03) {
     let top = capColour(mat, part.accentMat >= 0 ? part.accentMat : part.mat,
-      accMi, s.accentW, o.fade, o.haze);
+      accMi, s.accentW, o.fade, o.haze, gain);
     if (o.family) top = heldMaterial(top, o.family, true);
     ctx.fillStyle = top;
     ctx.beginPath();
@@ -1073,7 +1136,7 @@ function drawSolid(
     ctx.closePath();
     ctx.fill();
     if (part.ink && p.rw * part.profile[NR - 1].s * f.cam.scale * s.plan > 5.0) {
-      ctx.strokeStyle = heroInk(mats, part.accentMat >= 0 ? part.accentMat : part.mat);
+      ctx.strokeStyle = heroInk(mats, part.accentMat >= 0 ? part.accentMat : part.mat, gain);
       ctx.lineWidth = 0.7;
       ctx.lineJoin = "round";
       ctx.stroke();
@@ -1092,10 +1155,11 @@ function drawArcade(
   mats: HeroMaterials, o: HeroDrawOptions,
 ): void {
   const { ctx } = f;
+  const gain = heroGain(o.gain);
   const n = part.rx.length;
   baseRing(part, p, f, s);
   const k2 = f.cam.scale, zexb = f.proj.zexb;
-  const wallC = heroMaterial(mats, part.mat, 1, o.fade, o.haze, null, 0);
+  const wallC = heroMaterial(mats, part.mat, 1, o.fade, o.haze, null, 0, gain);
   const dark = shade(wallC, part.dark || 0.75);
   const zb = heroZ(s, part.z0) * s.rise * zexb * k2 * s.plan;
   const zt = heroZ(s, part.z1) * s.rise * zexb * k2 * s.plan;
@@ -1174,7 +1238,7 @@ function drawArcade(
  */
 function drawRib(
   f: Frame, part: HeroPartInput, p: PartProj, s: HeroState,
-  mats: HeroMaterials,
+  mats: HeroMaterials, o: HeroDrawOptions,
 ): void {
   const { ctx } = f;
   const n = part.rx.length, NR = part.profile.length;
@@ -1184,7 +1248,7 @@ function drawRib(
   const cxs = (s.ax + (p.cx - s.ax) * s.plan - f.cam.cx) * k2 + W2;
   const cys = H2 - (s.ay + (p.cy - s.ay) * s.plan + s.zZ - f.cam.cy) * k2;
   const w = part.z0 >= s.zr - 1e-3 ? s.F : 1;
-  ctx.strokeStyle = heroInk(mats, part.mat);
+  ctx.strokeStyle = heroInk(mats, part.mat, heroGain(o.gain));
   /* a rib is a line ON a surface that is now up to `WO_EMAX` times bigger, so
      its weight grows with the drawing rather than sitting at 0.9 px — which at
      emphasis read as a hairline scratched over a large dome. Clamped so it
@@ -1277,7 +1341,7 @@ export function drawHero(
     if (a < 0.999) ctx.globalAlpha = prev * a;
     if (part.kind === "solid") drawSolid(f, part, p, s, mats, mat, opts);
     else if (part.kind === "arcade") drawArcade(f, part, p, s, mats, opts);
-    else drawRib(f, part, p, s, mats);
+    else drawRib(f, part, p, s, mats, opts);
     ctx.globalAlpha = prev;
   }
   return true;

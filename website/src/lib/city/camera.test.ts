@@ -128,6 +128,51 @@ describe("the zoom ladder", () => {
     expect(Math.abs(cam.presetScale(3) - cam.maxScale())).toBeLessThan(1e-9);
     expect(cam.presetScale(0)).toBeCloseTo(cam.base * ZSTEPS[0], 12);
   });
+
+  it("the fourth stop is the same CLOSENESS on two viewports whose fit differs", () => {
+    /* Block V1. The button says STREET on both screens, so it has to mean the
+       same thing on both: the same px per world unit, and therefore a
+       DIFFERENT multiple of the fit. Measured on the page at 1600 × 1000 and
+       390 × 844: z 29.79× and z 100.22×, both at scale 2.0. */
+    const wide = makeCam(new Projection(), 1600, 1000);
+    const phone = makeCam(new Projection(), 390, 844);
+    expect(phone.base).toBeLessThan(wide.base * 0.6); // the fits really differ
+    expect(wide.presetScale(3)).toBeCloseTo(phone.presetScale(3), 12);
+    const zWide = wide.presetScale(3) / wide.base;
+    const zPhone = phone.presetScale(3) / phone.base;
+    expect(zPhone / zWide).toBeCloseTo(wide.base / phone.base, 9);
+  });
+
+  it("says which stop the camera is standing on, on the absolute scale", () => {
+    /* The test this replaces was `z > 11.5` in CityMap, left over from MAXZ:
+       on a phone, where the ceiling is z 100, it called every scale from 11.5
+       up "Street". */
+    const cam = makeCam(new Projection(), 390, 844);
+    for (let i = 0; i < cam.presetCount(); i++) {
+      cam.scale = cam.presetScale(i);
+      expect(cam.pressedPreset()).toBe(i);
+    }
+    cam.scale = cam.base * 12; // deep, and nowhere near the ceiling
+    expect(cam.z()).toBeGreaterThan(11.5);
+    expect(cam.pressedPreset()).toBe(-1);
+    // and within the snap of a stop, it is that stop
+    cam.scale = cam.base * ZSTEPS[1] * 1.02;
+    expect(cam.pressedPreset()).toBe(1);
+  });
+
+  it("cuts to a stop without a glide, and lands where the glide would have", () => {
+    const glided = makeCam();
+    const cut = makeCam();
+    glided.scale = glided.presetScale(2);
+    glided.clamp(W, H, LEDGER_W);
+    cut.cutTo(cut.presetScale(2), W, H, LEDGER_W);
+    expect(cut.scale).toBeCloseTo(glided.scale, 12);
+    expect(cut.cx).toBeCloseTo(glided.cx, 9);
+    expect(cut.cy).toBeCloseTo(glided.cy, 9);
+    // and it cannot be used to leave the ladder
+    cut.cutTo(1e6, W, H, LEDGER_W);
+    expect(cut.scale).toBeCloseTo(cut.maxScale(), 12);
+  });
 });
 
 describe("zoom toward the pointer", () => {

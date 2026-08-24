@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/r7bn-7v9c.geojson?$limit=50000",
+ "what": "Civic Art Collection",
+ "bytes": 964353,
+ "rows": 1038,
+ "sha256": "f3fd25fe7157e5657869f4dbbb2f20fec4c83095197d77ce1bb993ce6184d22c",
+ "retrieved_utc": "2026-08-23T21:34:25Z"
+}

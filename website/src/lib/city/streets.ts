@@ -1,8 +1,9 @@
 /**
  * streets.ts — the right-of-way surface, the carriageway, the kerb, the footway.
  *
- * Block P3. Ported from `gen/part3.html` §STREETS AND NAMES and
- * §THE STREET IS A SURFACE, with `street/BLOCK-STREETSCAPE.md`.
+ * Block P3, re-derived against the mock on parity night (Block U1). Ported
+ * from `gen/part3.html` §STREETS AND NAMES and §THE STREET IS A SURFACE, with
+ * `street/BLOCK-STREETSCAPE.md`.
  *
  * San Francisco publishes the **positive** space. The brief for this layer
  * guessed the assessor block rings would be the strongest lever — the negative
@@ -29,7 +30,7 @@
  */
 
 import type { Chunk } from "./data";
-import { type Frame, sx, sy, TerrainField } from "./terrain";
+import { type Frame, TerrainField } from "./terrain";
 
 // ── the projection constant ─────────────────────────────────────────────────
 
@@ -59,6 +60,8 @@ export const ST_KPROJ = Math.sqrt(1.2247 * 0.7071);
  * half-drawn twice or not drawn at all.**
  */
 export const ST_EXT_PX = 2.0;
+/** …and the top of that octave, where the area carries the street alone. */
+export const ST_EXT_PX1 = 4.0;
 
 /**
  * SURFACE — roadway and footway as separate tones with the published kerb
@@ -71,6 +74,8 @@ export const ST_EXT_PX = 2.0;
  * frame from **+211 ms to +56 ms**.
  */
 export const ST_SRF_PX = 1.0;
+/** …and the top of ITS octave: no footway under one pixel, all of it at two. */
+export const ST_SRF_PX1 = 2.0;
 
 export const ST_ALPHA = 0.8;
 
@@ -82,6 +87,27 @@ export const ST_C_RAW = "#c6b696";
 export const ST_C_FOOT = "#e0d8c8";
 /** the published kerb line */
 export const ST_C_KERB = "#8b8375";
+
+function hexMix(a: string, b: string, t: number): string {
+  const A = parseInt(a.slice(1), 16),
+    B = parseInt(b.slice(1), 16);
+  const m = (s: number): number =>
+    Math.round((((A >> s) & 255) * (1 - t) + ((B >> s) & 255) * t));
+  return (
+    "#" + ((1 << 24) | (m(16) << 16) | (m(8) << 8) | m(0)).toString(16).slice(1)
+  );
+}
+
+/**
+ * THE EXTENT TIER'S SINGLE TONE IS NOT THE FOOTWAY.
+ *
+ * It is the area-weighted mix of the two tones it cannot yet resolve —
+ * **73.7 % roadway, 26.3 % footway, off this file's own km2** (21.436 and
+ * 7.655 of 29.091, `manifest.streets.stats`). The port painted the whole right
+ * of way `ST_C_FOOT` instead, which is the pale web over the Sunset in the
+ * parity-night before crop: #e0d8c8 where the mock has #bdb6ab.
+ */
+export const ST_C_MIX = hexMix(ST_C_ROAD, ST_C_FOOT, 0.263);
 
 /**
  * one lineWidth per class, so the whole class is ONE path and ONE stroke.
@@ -141,26 +167,27 @@ export function centrelineFade(medianW: number, camScale: number): number {
  * frame by the city's own widths and **no frame is a different picture from
  * the one before it.**
  *
- * `S(t) = t^2(3-2t)`; the derivative is zero at both ends, so nothing pops on
- * and nothing is clamped to a minimum. *A pixel floor is a step in the
- * derivative.*
+ * **The ramp is LINEAR over its own octave, and that is the mock's own
+ * arithmetic** (`ea = (wpx - ST_EXT_PX) / (ST_EXT_PX1 - ST_EXT_PX)`), not a
+ * taste. The line and the area have to SUM TO ONE over 2 px to 4 px and the
+ * line's fade is linear; a smoothstep on one half of a partition of unity
+ * breaks the sum, and the port had one. At the district camera the difference
+ * is a factor of 1.6 on the largest layer in the frame: at the city's median
+ * 2.63 px the linear weight is 0.316 and the smoothed one 0.2.
  */
-export function smoothstep(t: number): number {
-  if (t <= 0) return 0;
-  if (t >= 1) return 1;
-  return t * t * (3 - 2 * t);
+function ramp(px: number, lo: number, hi: number): number {
+  const t = (px - lo) / (hi - lo);
+  return t <= 0 ? 0 : t >= 1 ? 1 : t;
 }
 
 /** the extent tier's weight for one feature of published width `wM` metres */
 export function extentW(wM: number, camScale: number): number {
-  const px = wM * ST_KPROJ * camScale;
-  return smoothstep((px - ST_EXT_PX) / ST_EXT_PX);
+  return ramp(wM * ST_KPROJ * camScale, ST_EXT_PX, ST_EXT_PX1);
 }
 
 /** the surface tier's weight for one feature of published footway band `fwM` */
 export function surfaceW(fwM: number, camScale: number): number {
-  const px = fwM * ST_KPROJ * camScale;
-  return smoothstep((px - ST_SRF_PX) / ST_SRF_PX);
+  return ramp(fwM * ST_KPROJ * camScale, ST_SRF_PX, ST_SRF_PX1);
 }
 
 // ── the decoded network ─────────────────────────────────────────────────────
@@ -170,9 +197,21 @@ export interface StreetCell {
   readonly kind: Uint8Array;
   readonly cls: Uint8Array;
   readonly cnn: Uint32Array;
-  /** right-of-way width, decimetres */
+  /** right-of-way width, DECIMETRES (`w[i] * 0.1` is metres) */
   readonly w: Uint16Array;
-  /** footway band, centimetres */
+  /**
+   * footway band, DECIMETRES — the same quantum as `w`, and the port divided
+   * it by 100. Measured on the shipped chunks: raw p50 **30**, against
+   * `manifest.streets.stats.fw_p50` of **3.16 m**.
+   *
+   * Ten times too narrow shut the tier at three of the four presets: the
+   * WIDEST band in the city (31.8 m) computed 0.14 px at whole city, 0.40 at
+   * district and 0.99 at block, so no right of way anywhere in the frame had
+   * a carriageway or a kerb. At the fourth preset that one outlier cleared
+   * 1 px at 5.92 — and because the port also took the frame's MAXIMUM weight
+   * rather than each feature's own, one 31.8 m band then painted every
+   * carriageway in the frame at full alpha. The two faults hid each other.
+   */
   readonly fw: Uint16Array;
   /** the year the Board accepted or ordered it; 0 = undated */
   readonly yr: Uint16Array;
@@ -180,10 +219,12 @@ export interface StreetCell {
   readonly imp: Uint16Array;
   /** the year it was kerbed; 0 = undated */
   readonly krb: Uint16Array;
+  /** RINGS PER FEATURE. `rwLen` is per RING, not per feature. */
   readonly rwN: Uint8Array;
   readonly rwLen: Uint16Array;
   readonly rwX: Float32Array;
   readonly rwY: Float32Array;
+  /** rings per feature: 0 on 108 rights of way, 2 on 69, 3 on 3 */
   readonly rdN: Uint8Array;
   readonly rdLen: Uint16Array;
   readonly rdX: Float32Array;
@@ -201,6 +242,7 @@ function fieldsOf(c: Chunk): StreetCell {
  * One bit per roadway vertex says whether that edge is a kerb or the outer
  * edge of the right of way — **so the kerb is drawn only where a kerb was
  * published, and the far edge of the right of way is not drawn as one.**
+ * 1,961.6 km of the former, 1,768.9 km of the latter.
  */
 export function isKerbEdge(cell: StreetCell, vertex: number): boolean {
   return ((cell.rdKerb[vertex >> 3] >> (vertex & 7)) & 1) === 1;
@@ -246,6 +288,158 @@ export function periodOf(
   };
 }
 
+// ── the pre-projection, because the mock has one ────────────────────────────
+
+/**
+ * `proj()` is LINEAR in world (x, y), so the plane coordinate of a right-of-way
+ * vertex depends on the BEARING, the TILT and ZEX and on nothing the camera
+ * does. The mock builds `SFPX/SFPY/SDPX/SDPY/SBOX` once in `buildSurfProj()`
+ * and rebuilds them from `setRot()` and nothing else; here the same thing is a
+ * `WeakMap` from the cell's own field object, so a chunk the cache evicts
+ * takes its projection with it.
+ *
+ * **The key has to carry the terrain field as well as the three projection
+ * numbers.** A plane coordinate has `z * zex` inside it, `zex` moves with the
+ * band (`ZEX_BY_STEP` = 3.3 / 2.6 / 2.0) and `TerrainField` is rebuilt per
+ * band too — so a cache keyed on the bearing alone would draw the district's
+ * streets at the whole city's exaggeration.
+ *
+ * 259,699 vertices citywide, 5.1 per right of way and 6.6 per roadway: the
+ * whole city is about 2 MB of cache, and only cells the camera has asked for
+ * are ever built.
+ */
+interface SurfaceGeom {
+  readonly key: string;
+  readonly terrain: TerrainField | null;
+  /** feature -> first ring, `n + 1` entries */
+  readonly rwFo: Int32Array;
+  /** ring -> first vertex, `rings + 1` entries */
+  readonly rwOff: Int32Array;
+  readonly rwPX: Float32Array;
+  readonly rwPY: Float32Array;
+  readonly rdFo: Int32Array;
+  readonly rdOff: Int32Array;
+  readonly rdPX: Float32Array;
+  readonly rdPY: Float32Array;
+  /** four numbers a feature: the plane box of its right of way */
+  readonly box: Float32Array;
+}
+
+const GEOM = new WeakMap<StreetCell, SurfaceGeom>();
+
+/**
+ * THE RING INDEX, WHICH THE PORT DID NOT HAVE.
+ *
+ * `rwN[i]` is how many RINGS feature `i` owns and `rwLen[r]` is how many
+ * vertices ring `r` owns; the port read `rwLen[i]` as the vertex count of
+ * feature `i`. Measured on the shipped chunks: `rwN` is 2 on 2 features and
+ * `rdN` is 0 on 108, 2 on 69 and 3 on 3 — and **one mismatch desynchronises
+ * every feature after it in that cell**, so the roadway path of most cells was
+ * built out of some other feature's vertices.
+ */
+function ringIndex(
+  n: number,
+  ringN: Uint8Array,
+  ringLen: Uint16Array,
+): { fo: Int32Array; off: Int32Array } {
+  const fo = new Int32Array(n + 1);
+  let r = 0;
+  for (let i = 0; i < n; i++) {
+    fo[i] = r;
+    r += ringN[i];
+  }
+  fo[n] = r;
+  const off = new Int32Array(r + 1);
+  let v = 0;
+  for (let k = 0; k < r; k++) {
+    off[k] = v;
+    v += ringLen[k];
+  }
+  off[r] = v;
+  return { fo, off };
+}
+
+/**
+ * THE VERTEX HEIGHT IS THE TERRAIN'S, NOT ZERO.
+ *
+ * The port put every right-of-way vertex through `proj(x, y, 0.4)` — sea level
+ * plus 40 cm — while the mock uses `elevDrawn(x, y) + 0.8` and lets ZEX lift
+ * it. At the district band ZEX is 2.6 and the scale 0.135, so a 30 m Sunset
+ * street was drawn **10.5 px** off the blocks it runs between and Mt Davidson's
+ * streets **98 px** off theirs. The 0.8 m is the mock's own lift, and it is
+ * there so the surface wins the z-fight with the ground it is painted on.
+ */
+function buildGeom(
+  f: Frame,
+  cell: StreetCell,
+  t: TerrainField | null,
+): SurfaceGeom {
+  const p = f.proj;
+  const key = `${p.rotDeg}|${p.sA}|${p.zex}`;
+  const hit = GEOM.get(cell);
+  if (hit && hit.key === key && hit.terrain === t) return hit;
+
+  const n = cell.cls.length;
+  const { ax, ay, bx, by } = p.coeffs();
+  const zex = p.zex;
+  const plane = (
+    X: Float32Array,
+    Y: Float32Array,
+  ): [Float32Array, Float32Array] => {
+    const m = X.length;
+    const px = new Float32Array(m),
+      py = new Float32Array(m);
+    for (let i = 0; i < m; i++) {
+      const x = X[i],
+        y = Y[i];
+      const z = t ? t.elevM(x, y) + 0.8 : 0.4;
+      px[i] = ax * x + ay * y;
+      py[i] = bx * x + by * y + z * zex;
+    }
+    return [px, py];
+  };
+  const rw = ringIndex(n, cell.rwN, cell.rwLen);
+  const rd = ringIndex(n, cell.rdN, cell.rdLen);
+  const [rwPX, rwPY] = plane(cell.rwX, cell.rwY);
+  const [rdPX, rdPY] = plane(cell.rdX, cell.rdY);
+
+  const box = new Float32Array(n * 4);
+  for (let i = 0; i < n; i++) {
+    let x0 = Infinity,
+      x1 = -Infinity,
+      y0 = Infinity,
+      y1 = -Infinity;
+    for (let r = rw.fo[i]; r < rw.fo[i + 1]; r++)
+      for (let v = rw.off[r]; v < rw.off[r + 1]; v++) {
+        const X = rwPX[v],
+          Y = rwPY[v];
+        if (X < x0) x0 = X;
+        if (X > x1) x1 = X;
+        if (Y < y0) y0 = Y;
+        if (Y > y1) y1 = Y;
+      }
+    box[i * 4] = x0;
+    box[i * 4 + 1] = x1;
+    box[i * 4 + 2] = y0;
+    box[i * 4 + 3] = y1;
+  }
+  const g: SurfaceGeom = {
+    key,
+    terrain: t,
+    rwFo: rw.fo,
+    rwOff: rw.off,
+    rwPX,
+    rwPY,
+    rdFo: rd.fo,
+    rdOff: rd.off,
+    rdPX,
+    rdPY,
+    box,
+  };
+  GEOM.set(cell, g);
+  return g;
+}
+
 // ── the draw ────────────────────────────────────────────────────────────────
 
 export interface StreetDrawResult {
@@ -258,18 +452,96 @@ export interface StreetDrawResult {
 }
 
 /**
- * The centrelines, drawn ON THE GROUND, BEFORE the blocks.
+ * THE CENTRELINE LAYER, WHOLE — AND THE CHUNK IT IS WAITING FOR.
  *
- * A block then paints over the half of a street that is behind it — which is
- * correct occlusion in this projection, because an extruded block covers its
- * own footprint and everything up-screen of it, and up-screen is away.
+ * `3psu-pn9h` ships 4,895 centrelines of classes 0-4 and **no chunk in
+ * `public/data/us/sf/city` carries their geometry.** `manifest.kinds.strt`
+ * carries `rwX/rwY` (the right-of-way RING) and `rdX/rdY` (the roadway ring);
+ * a ring is not a centreline, and stroking the far edge of a right of way
+ * draws a property line, which the reference never does. That is why the
+ * whole-city frame has no street network where the mock has a city of lines:
+ * `ST_CLS_MAX[0] = 2`, so at the whole-city preset the reference strokes
+ * classes 0-2 at **full alpha** — `centrelineFade(21.0, 0.0467)` clamps to 1 —
+ * and this build strokes nothing at all.
  *
- * One `Path2D` per class, one `stroke()` per class. Two passes a class: the
- * covered centrelines at the faded alpha, the uncovered ones at full.
+ * **This function is now the reference's `drawStreets` in full**, and the only
+ * thing missing is `lines`. Hand it a `CentrelineCell[]` and the layer is on;
+ * hand it none and it returns 0 exactly as before. Every clause below is
+ * `part3.html` L6271-6330's:
+ *
+ * - **the class gate is the band's**, `ST_CLS_MAX[cam.step]`;
+ * - **two passes a class**, `_cp` from 0 to `2*mx+1`, the low bit choosing the
+ *   pass: pass 0 is the centrelines a published right of way covers and it
+ *   FADES as that right of way becomes a surface; pass 1 is the **534
+ *   centrelines with no published right of way** — the park roads, the Great
+ *   Highway, Sloat, the freeways — which never fade, *"so a park road does not
+ *   vanish at the zoom where the avenues become surfaces"*;
+ * - **the fade is per class, on that class's own median published width**,
+ *   `centrelineFade(medianW[cls], cam.scale)`, so *"a class stops being a line
+ *   exactly when its own median member has finished becoming a surface"*;
+ * - **one `lineWidth` and one `stroke()` per class**, never per feature — the
+ *   reference measured 2,528 `stroke()` calls at 7.4 ms of a 16 ms frame;
+ * - **the year gate is `y0 && y0 > yNow`**, so an undated centreline is drawn
+ *   in every year. Only 2,051 of the 4,895 carry a date the Board voted, and
+ *   the standing decision — *"this layer is the 2025 street map at every
+ *   year"* — is stated in the reference and carried here rather than quietly
+ *   improved;
+ * - **the elevation is sampled once per vertex**, `elevM + 0.8`, because the
+ *   reference measured 14,432 `elevM` calls per pass per frame for a number
+ *   that cannot change;
+ * - **and the pen lifts off-screen** (`±80 px`) instead of drawing a chord
+ *   across the frame.
+ *
+ * THE CHUNK, stated so the encode is a small job and not a design one. One
+ * `strt-line` kind, tier `strt`, `minZ` **0** — not 1.75, because the layer's
+ * whole job is the wide shot — tiled on the same 1024 m grid as `strt`:
+ *
+ *     fid   u32   the centreline's own id
+ *     cls   u8    3psu-pn9h classcode rank, 0-4, the same ranks ST_W indexes
+ *     cnn   u32   so a line can be joined to the right of way it belongs to
+ *     yr    u16   the year the Board voted it, 0 = undated (2,051 non-zero)
+ *     cov   1 bit per feature: does a published right of way cover this line?
+ *     n     u8    vertices
+ *     len   u16   per feature
+ *     x,y   f32   ABSOLUTE world metres, the same choice `strt` states and for
+ *                 the same reason — a cell has to be independently decodable
+ *
+ * `cov` already exists on the wire in `base/street-misc` (`covn` = 4,895, one
+ * bit per right of way) and is decoded by nobody; if the line chunk carries
+ * its own copy the two must be asserted equal rather than assumed to be.
  */
+export interface CentrelineCell {
+  readonly cls: Uint8Array;
+  /** the year the Board voted it; 0 = undated, and an undated line is drawn */
+  readonly yr: Uint16Array;
+  /** vertices per feature */
+  readonly len: Uint16Array;
+  /** world metres, absolute, packed feature after feature */
+  readonly x: Float32Array;
+  readonly y: Float32Array;
+  /** one bit per feature: a published right of way covers this line */
+  readonly cov?: Uint8Array;
+}
+
+/** the reference's own ink for the whole layer — `part3.html` L6283 */
+export const ST_LINE_INK = "rgba(58,44,20,.20)";
+
+/** world metres the line is lifted off the DEM before it is projected — L6249 */
+export const ST_LINE_LIFT_M = 0.8;
+
+/**
+ * THE BRIDGE, AND HOW TO REMOVE IT.
+ *
+ * `drawStreetSurface` needs the terrain under every vertex and its caller did
+ * not hand it one. `scene.paintStreets` passes `{ year, terrain: t }` now —
+ * §15.6 landed it — so this assignment is dead weight kept only until the
+ * centreline layer has data and this function is doing its own work again.
+ */
+let bridged: TerrainField | null = null;
+
 export function drawCentrelines(
   f: Frame,
-  cells: readonly StreetCell[],
+  _cells: readonly StreetCell[],
   t: TerrainField,
   opts: {
     /** per-class median published width, metres, read off the shipped widths at load */
@@ -278,56 +550,74 @@ export function drawCentrelines(
     readonly covered: (cell: StreetCell, i: number) => boolean;
     readonly band: number;
     readonly ink?: string;
+    /** the published centrelines, once a chunk carries them */
+    readonly lines?: readonly CentrelineCell[];
+    readonly year?: number;
   },
 ): number {
-  const { ctx, cam } = f;
-  const clsMax = ST_CLS_MAX[Math.min(ST_CLS_MAX.length - 1, opts.band)];
-  const ink = opts.ink ?? "rgba(78,72,60,.52)";
+  bridged = t;
+  const lines = opts.lines;
+  if (!lines || !lines.length) return 0;
+  const { ctx, cam, W, H } = f;
+  const mx = ST_CLS_MAX[Math.min(opts.band, ST_CLS_MAX.length - 1)];
+  const yNow = opts.year === undefined ? 9999 : Math.floor(opts.year);
+  const cf = f.proj.coeffs();
+  const zex = f.proj.zex;
+  const k = cam.scale,
+    W2 = W / 2,
+    H2 = H / 2;
+  const sga = ctx.globalAlpha;
   let drawn = 0;
-  for (let pass = 0; pass < 2; pass++) {
-    // pass 0 = covered (faded), pass 1 = uncovered (full)
-    for (let c = 0; c <= clsMax; c++) {
-      const a =
-        pass === 0 ? centrelineFade(opts.medianW[c] ?? 20.9, cam.scale) : 1;
-      if (a <= 0.002) continue;
-      const p = new Path2D();
-      let any = false;
-      for (const cell of cells) {
-        const n = cell.cls.length;
-        let vo = 0;
-        for (let i = 0; i < n; i++) {
-          const nv = cell.rwLen[i];
-          const base = vo;
-          vo += nv;
-          if (cell.cls[i] !== c) continue;
-          if (opts.covered(cell, i) !== (pass === 0)) continue;
-          for (let k = 0; k < nv; k++) {
-            const wx = cell.rwX[base + k],
-              wy = cell.rwY[base + k];
-            // Terrain elevation at every street vertex, sampled once per cell
-            // and cached by the caller: `elevM()` is two clamps and an array
-            // read, but 14,432 of them per frame per pass — and the animated
-            // pass runs the city draw twice — is real money for a number that
-            // cannot change.
-            const pr = f.proj.proj(wx, wy, t.elevM(wx, wy) + 0.8);
-            if (k) p.lineTo(sx(f, pr), sy(f, pr));
-            else p.moveTo(sx(f, pr), sy(f, pr));
+  ctx.save();
+  ctx.strokeStyle = opts.ink ?? ST_LINE_INK;
+  for (let cp = 0; cp <= mx * 2 + 1; cp++) {
+    const cls = cp >> 1,
+      pass = cp & 1;
+    // pass 0 fades as the right of way becomes a surface; pass 1 never does
+    const la = opts.medianW[cls] > 0 ? centrelineFade(opts.medianW[cls], k) : 1;
+    const a = pass ? 1 : la;
+    if (a <= 0.004) continue;
+    ctx.globalAlpha = sga * a;
+    ctx.lineWidth = ST_W[Math.min(cls, ST_W.length - 1)];
+    ctx.beginPath();
+    let any = false;
+    for (const c of lines) {
+      const nF = c.cls.length;
+      let o = 0;
+      for (let i = 0; i < nF; i++) {
+        const n = c.len[i];
+        const base = o;
+        o += n;
+        if (c.cls[i] !== cls) continue;
+        if (c.cov) {
+          const covered = ((c.cov[i >> 3] >> (i & 7)) & 1) === 1;
+          if (covered === (pass === 1)) continue;
+        } else if (pass) continue;
+        const y0 = c.yr[i];
+        if (y0 && y0 > yNow) continue;
+        let pen = false;
+        for (let v = 0; v < n; v++) {
+          const wx = c.x[base + v],
+            wy = c.y[base + v];
+          const pz = (t.elevM(wx, wy) + ST_LINE_LIFT_M) * zex;
+          const X = (cf.ax * wx + cf.ay * wy - cam.cx) * k + W2;
+          const Y = H2 - (cf.bx * wx + cf.by * wy + pz - cam.cy) * k;
+          if (X < -80 || X > W + 80 || Y < -80 || Y > H + 80) {
+            pen = false;
+            continue;
           }
+          if (pen) ctx.lineTo(X, Y);
+          else ctx.moveTo(X, Y);
+          pen = true;
           any = true;
-          drawn++;
         }
+        drawn++;
       }
-      if (!any) continue;
-      ctx.save();
-      ctx.globalAlpha = a;
-      ctx.strokeStyle = ink;
-      ctx.lineWidth = ST_W[c] ?? 0.7;
-      ctx.lineJoin = "round";
-      ctx.lineCap = "round";
-      ctx.stroke(p);
-      ctx.restore();
     }
+    if (any) ctx.stroke();
   }
+  ctx.globalAlpha = sga;
+  ctx.restore();
   return drawn;
 }
 
@@ -337,125 +627,187 @@ export function drawCentrelines(
  * Both gates are **per feature**, so promotion is staggered across the frame
  * by the city's own widths and no frame is a different picture from the one
  * before it. Neither weight is a threshold: the ramp is an ALPHA.
+ *
+ * **16 ramp buckets x paved x kerbed.** A bucket is one `Path2D` and one fill,
+ * so the whole city's ground is at most 64 fills however many rights of way
+ * are on screen, and `ea`/`sa` stay continuous per feature and are quantised
+ * only into the bucket that carries their colour. The port took the MAXIMUM
+ * weight over the frame and applied it to every feature, which at the district
+ * camera painted the city's median right of way at 1.0 where its own published
+ * width earns 0.316 — the whole layer 3.2x too opaque.
  */
 export function drawStreetSurface(
   f: Frame,
   cells: readonly StreetCell[],
-  opts: { readonly year?: number; readonly skip?: (cnn: number) => boolean },
+  opts: {
+    readonly year?: number;
+    readonly skip?: (cnn: number) => boolean;
+    /** the band's terrain field; see `bridged` */
+    readonly terrain?: TerrainField | null;
+  },
 ): StreetDrawResult {
   const { ctx, cam, W, H } = f;
-  let lines = 0,
-    surfaces = 0,
+  const k = cam.scale,
+    W2 = W / 2,
+    H2 = H / 2;
+  const kp = ST_KPROJ * k;
+  let surfaces = 0,
     held = 0;
+  const t = opts.terrain ?? bridged;
 
-  // one path per tone, so the whole tier is four fills
-  const rowPath = new Path2D();
-  const roadPaved = new Path2D();
-  const roadRaw = new Path2D();
-  const kerbPath = new Path2D();
-  let aExtent = 0,
-    aSurface = 0;
+  // 16 buckets x (paved, kerbed). The right of way and the carriageway share
+  // the key, so a feature's two paths always carry the same tone decision.
+  const NB = 16;
+  const rowP = new Array<Path2D | undefined>(NB * 4);
+  const roadP = new Array<Path2D | undefined>(NB * 4);
+  const kerbP = new Array<Path2D | undefined>(4);
+  const mg = 64;
+  let any = false;
 
   for (const cell of cells) {
     const n = cell.cls.length;
-    let rwo = 0,
-      rdo = 0,
-      kerbBit = 0;
+    const g = buildGeom(f, cell, t);
     for (let i = 0; i < n; i++) {
-      const rwn = cell.rwLen[i],
-        rdn = cell.rdLen[i];
-      const rwBase = rwo,
-        rdBase = rdo;
-      rwo += rwn;
-      rdo += rdn;
-      const kb = kerbBit;
-      kerbBit += rdn;
-
-      if (opts.skip && opts.skip(cell.cnn[i])) continue;
-      const per = periodOf(cell, i, opts.year);
-      if (!per.exists) continue;
-
-      const wM = cell.w[i] / 10;
-      const fwM = cell.fw[i] / 100;
-      const we = extentW(wM, cam.scale);
-      if (we <= 0.002) {
-        held++;
-        continue;
-      }
-      const ws = surfaceW(fwM, cam.scale);
-      if (we > aExtent) aExtent = we;
-      if (ws > aSurface) aSurface = ws;
-
       // cull before the path: the clip region an off-screen feature would add
       // is what the fill after it has to rasterise
-      let minX = Infinity,
-        maxX = -Infinity,
-        minY = Infinity,
-        maxY = -Infinity;
-      const put = (p: Path2D, base: number, count: number): void => {
-        for (let k = 0; k < count; k++) {
-          const pr = f.proj.proj(cell.rwX[base + k], cell.rwY[base + k], 0.4);
-          const X = sx(f, pr),
-            Y = sy(f, pr);
-          if (X < minX) minX = X;
-          if (X > maxX) maxX = X;
-          if (Y < minY) minY = Y;
-          if (Y > maxY) maxY = Y;
-          if (k) p.lineTo(X, Y);
-          else p.moveTo(X, Y);
-        }
-        p.closePath();
-      };
-      const scratch = new Path2D();
-      put(scratch, rwBase, rwn);
-      if (maxX < -8 || minX > W + 8 || maxY < -8 || minY > H + 8) {
+      const X0 = (g.box[i * 4] - cam.cx) * k + W2;
+      if (X0 > W + mg) continue;
+      const X1 = (g.box[i * 4 + 1] - cam.cx) * k + W2;
+      if (X1 < -mg) continue;
+      const Y1 = H2 - (g.box[i * 4 + 2] - cam.cy) * k;
+      if (Y1 < -mg) continue;
+      const Y0 = H2 - (g.box[i * 4 + 3] - cam.cy) * k;
+      if (Y0 > H + mg) continue;
+
+      if (opts.skip && opts.skip(cell.cnn[i])) {
         held++;
         continue;
       }
-      rowPath.addPath(scratch);
-      surfaces++;
+      // THE CLOCK. A right of way is not drawn before the year the Board is
+      // recorded accepting the street it carries. 0 means the record is
+      // silent, and a silent street is drawn from the first year the map
+      // draws.
+      const per = periodOf(cell, i, opts.year);
+      if (!per.exists) {
+        held++;
+        continue;
+      }
 
-      if (ws > 0.002 && rdn > 0) {
-        const road = per.paved ? roadPaved : roadRaw;
-        for (let k = 0; k < rdn; k++) {
-          const pr = f.proj.proj(cell.rdX[rdBase + k], cell.rdY[rdBase + k], 0.4);
-          if (k) road.lineTo(sx(f, pr), sy(f, pr));
-          else road.moveTo(sx(f, pr), sy(f, pr));
-        }
-        road.closePath();
-        if (per.kerbed)
-          for (let k = 0; k < rdn; k++) {
-            if (!isKerbEdge(cell, kb + k)) continue;
-            const a = f.proj.proj(cell.rdX[rdBase + k], cell.rdY[rdBase + k], 0.4);
-            const j = (k + 1) % rdn;
-            const b = f.proj.proj(cell.rdX[rdBase + j], cell.rdY[rdBase + j], 0.4);
-            kerbPath.moveTo(sx(f, a), sy(f, a));
-            kerbPath.lineTo(sx(f, b), sy(f, b));
+      const ea = ramp(cell.w[i] * 0.1 * kp, ST_EXT_PX, ST_EXT_PX1);
+      if (ea <= 0.004) continue;
+      let sa = ramp(cell.fw[i] * 0.1 * kp, ST_SRF_PX, ST_SRF_PX1);
+      if (sa > 0 && sa < 0.02) sa = 0; // a pass that cannot be seen is not built
+
+      // AN UNKERBED STREET IS ONE TONE WALL TO WALL, because there is no kerb
+      // to divide the roadway from the footway. 1,974 of them stand unkerbed
+      // before the Board orders one.
+      const eff = per.kerbed ? sa : 0;
+      const q =
+        eff > 0 ? 8 + Math.min(7, (eff * 8) | 0) : Math.min(7, (ea * 8) | 0);
+      const key = q * 4 + (per.paved ? 0 : 2) + (per.kerbed ? 0 : 1);
+
+      let P = rowP[key];
+      if (!P) P = rowP[key] = new Path2D();
+      for (let r = g.rwFo[i]; r < g.rwFo[i + 1]; r++) {
+        const a = g.rwOff[r],
+          b = g.rwOff[r + 1];
+        if (b - a < 3) continue;
+        P.moveTo((g.rwPX[a] - cam.cx) * k + W2, H2 - (g.rwPY[a] - cam.cy) * k);
+        for (let v = a + 1; v < b; v++)
+          P.lineTo((g.rwPX[v] - cam.cx) * k + W2, H2 - (g.rwPY[v] - cam.cy) * k);
+        P.closePath();
+      }
+      surfaces++;
+      any = true;
+
+      if (eff > 0) {
+        let Z = roadP[key];
+        if (!Z) Z = roadP[key] = new Path2D();
+        const kbk = Math.min(3, (eff * 4) | 0);
+        let K = kerbP[kbk];
+        if (!K) K = kerbP[kbk] = new Path2D();
+        for (let r = g.rdFo[i]; r < g.rdFo[i + 1]; r++) {
+          const a = g.rdOff[r],
+            b = g.rdOff[r + 1];
+          if (b - a < 3) continue;
+          let px = (g.rdPX[a] - cam.cx) * k + W2,
+            py = H2 - (g.rdPY[a] - cam.cy) * k;
+          Z.moveTo(px, py);
+          for (let v = a + 1; v < b; v++)
+            Z.lineTo(
+              (g.rdPX[v] - cam.cx) * k + W2,
+              H2 - (g.rdPY[v] - cam.cy) * k,
+            );
+          Z.closePath();
+          // THE KERB. One bit per roadway vertex says whether the edge leaving
+          // it is a published kerb ring or the outer edge of the right of way.
+          // Only the first is stroked, and it is stroked as RUNS, so a kerb
+          // that turns forty corners is one subpath and not forty.
+          let open = false;
+          for (let v = a; v < b; v++) {
+            const nx = v + 1 < b ? v + 1 : a;
+            const qx = (g.rdPX[nx] - cam.cx) * k + W2,
+              qy = H2 - (g.rdPY[nx] - cam.cy) * k;
+            if (isKerbEdge(cell, v)) {
+              if (!open) {
+                K.moveTo(px, py);
+                open = true;
+              }
+              K.lineTo(qx, qy);
+            } else open = false;
+            px = qx;
+            py = qy;
           }
+        }
       }
     }
   }
 
-  if (surfaces) {
-    ctx.save();
-    // the right of way, in one tone: the footway is what is left of it
-    ctx.globalAlpha = ST_ALPHA * aExtent;
-    ctx.fillStyle = ST_C_FOOT;
-    ctx.fill(rowPath, "evenodd");
-    if (aSurface > 0.002) {
-      ctx.globalAlpha = ST_ALPHA * aSurface;
-      ctx.fillStyle = ST_C_ROAD;
-      ctx.fill(roadPaved, "evenodd");
-      ctx.fillStyle = ST_C_RAW;
-      ctx.fill(roadRaw, "evenodd");
-      ctx.globalAlpha = ST_ALPHA * aSurface * 0.9;
-      ctx.strokeStyle = ST_C_KERB;
-      ctx.lineWidth = 0.8;
-      ctx.stroke(kerbPath);
-    }
-    ctx.restore();
+  if (!any) return { lines: 0, surfaces, held };
+
+  const save = ctx.globalAlpha;
+  // THE RIGHT OF WAY. `evenodd` was a defect and not a style: the file
+  // publishes SEGMENT areas and INTERSECTION areas, 14,397 and 7,794, and they
+  // overlap at every corner — so one accumulated path filled evenodd cancelled
+  // every junction in the city to a hole. The mock fills nonzero.
+  for (let key = 0; key < NB * 4; key++) {
+    const P = rowP[key];
+    if (!P) continue;
+    const q = key >> 2,
+      paved = !(key & 2),
+      kerbed = !(key & 1);
+    const sa = q >= 8 ? (q - 8 + 0.5) / 8 : 0;
+    const ea = q >= 8 ? 1 : (q + 0.5) / 8;
+    ctx.fillStyle = kerbed
+      ? hexMix(ST_C_MIX, ST_C_FOOT, sa)
+      : paved
+        ? ST_C_ROAD
+        : ST_C_RAW;
+    ctx.globalAlpha = ST_ALPHA * ea;
+    ctx.fill(P);
   }
-  return { lines, surfaces, held };
+  // the carriageway inside it
+  for (let key = 0; key < NB * 4; key++) {
+    const Z = roadP[key];
+    if (!Z) continue;
+    const q = key >> 2,
+      paved = !(key & 2);
+    ctx.fillStyle = paved ? ST_C_ROAD : ST_C_RAW;
+    ctx.globalAlpha = ST_ALPHA * ((q - 8 + 0.5) / 8);
+    ctx.fill(Z);
+  }
+  ctx.strokeStyle = ST_C_KERB;
+  ctx.lineJoin = "round";
+  ctx.lineCap = "butt";
+  for (let b = 0; b < 4; b++) {
+    const K = kerbP[b];
+    if (!K) continue;
+    ctx.lineWidth = Math.min(1.6, 0.7 + 0.9 * ((b + 0.5) / 4));
+    ctx.globalAlpha = 0.62 * ((b + 0.5) / 4);
+    ctx.stroke(K);
+  }
+  ctx.globalAlpha = save;
+  return { lines: 0, surfaces, held };
 }
 
 /**

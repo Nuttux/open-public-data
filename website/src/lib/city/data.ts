@@ -64,6 +64,20 @@ const CRC_TABLE: Uint32Array = (() => {
   return t;
 })();
 
+/** base64 -> bytes. `atob` in the browser, `Buffer` under vitest's node env. */
+function b64Bytes(b64: string): Uint8Array {
+  if (typeof atob === "function") {
+    const bin = atob(b64);
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+  return new Uint8Array(
+    (globalThis as { Buffer?: { from(s: string, e: string): Uint8Array } })
+      .Buffer!.from(b64, "base64"),
+  );
+}
+
 export function crc32(bytes: Uint8Array): number {
   let c = 0xffffffff;
   for (let i = 0; i < bytes.length; i++) c = CRC_TABLE[(c ^ bytes[i]) & 0xff] ^ (c >>> 8);
@@ -278,7 +292,38 @@ export interface SurroundData {
    * Francisco*. Building it over `isLand` instead of `isOwn` would paint the
    * city twice at two different resolutions in two different tones.
    */
-  surroundOrder(depth: (x: number, y: number) => number): Int32Array;
+  surroundOrder(
+    depth: (x: number, y: number) => number,
+    extra?: ((i: number, j: number) => boolean) | null,
+  ): Int32Array;
+}
+
+/**
+ * The REGIONAL shoreline, and the two bit-fields that make it usable.
+ *
+ * `base/coast` is San Francisco's own DataSF ring — 4 rings, 425 vertices —
+ * and it is what the city's shoreline pass inks. It is NOT the surround's
+ * coast: clipping Marin, the East Bay and San Mateo to San Francisco's own
+ * outline deletes them, which was measured by doing it. The surround's coast
+ * is the US Census TIGERweb areal hydrography the surround's own land mask was
+ * rasterised FROM — 12 rings, 3,168 vertices, over the same 416 x 280 grid —
+ * and it ships beside the chunks as `base/surround-coast.json`, the way
+ * `base/heroes.json` and `base/marks.json` do.
+ *
+ * `reach` and `cityOffshore` are one bit per cell each; see
+ * `pipeline/scripts/us_sf_city/emit_surround_coast.py` for what each is for
+ * and what published file it came out of.
+ */
+export interface SurroundCoast {
+  readonly rings: readonly (readonly (readonly [number, number])[])[];
+  /** a water cell whose fill may REACH the ring, because a neighbour is land */
+  reach(i: number, j: number): boolean;
+  /** a CITY DEM cell more than `city_pad_m` outside the published land */
+  cityOffshore(i: number, j: number): boolean;
+  /** the same bits, raw, for `TerrainField.coastFix` — SAME `i*N + j` order as
+   *  `maskAt`, which is why it can be handed straight over */
+  readonly cityOffshoreBits: Uint8Array;
+  readonly meta: Readonly<Record<string, unknown>>;
 }
 
 // ── the authored landmarks ──────────────────────────────────────────────────
@@ -368,6 +413,76 @@ export interface CapData {
   readonly profileName: string;
 }
 
+/**
+ * One of the six profiles `base/caps` ships, as the draw path wants it.
+ *
+ * `u` is the fraction of the MEASURED lift and `s` the fraction of the MEASURED
+ * radius, and **every `u` and every `s` is ≤ 1** — that single property is what
+ * makes a drawn cap honest, and `verify_city_chunks.py` §6d asserts it over
+ * every point of every profile rather than trusting this sentence.
+ */
+export interface StepProfile {
+  readonly name: string;
+  readonly u: Float32Array;
+  readonly s: Float32Array;
+}
+
+/**
+ * THE SECOND SOLID AND THE THIRD — `base/form`, and the chunk the 68 shaped
+ * caps were blocked on.
+ *
+ * Every building on this map is one prism at `hgt_mediancm`. A median is the
+ * right statistic for a building's MASS and the wrong one for its SILHOUETTE:
+ * it is by construction the height half the roof is below, so a tower, a drum,
+ * a spire, a campanile or a penthouse — anything a MINORITY of the roof does —
+ * is averaged out of the picture. The Ferry Building publishes a median of
+ * 15.2 m over a maximum of 71.4 m, and the page drew 15.2.
+ *
+ * `form/model3.py` recovers the second plane from three published columns and a
+ * cell count with no fitting, and `typo/mast.py` reaches the 40 the step model
+ * cannot see — a steeple is a handful of 50 cm cells — through the PUBLISHED
+ * CLASS of the place under the roof. **Both are one slot stream here for the
+ * same reason they are one in the mock: a mast is drawn by the second solid's
+ * own machinery and adds not one line to any draw loop.**
+ *
+ * The slots are ordered second-solid-first: `[0, nStep)` are Block C's steps
+ * and `[nStep, n)` are the masts, which is the order `part3.html` appends them
+ * in and the order `verify_city_chunks.py` compares against the two sources.
+ */
+export interface FormTable {
+  /** slots — 488 second solids followed by the 40 masts that survive the merge */
+  readonly n: number;
+  /** where the masts begin */
+  readonly nStep: number;
+  /** the octagon the derived area was computed for: 8 */
+  readonly octN: number;
+  /** the published building each slot stands on */
+  readonly bi: Uint32Array;
+  /** the measured top — `hgt_maxcm` — in metres */
+  readonly top: Float32Array;
+  /** the octagon's circumradius, metres */
+  readonly rad: Float32Array;
+  /** its plan rotation: the footprint's own dominant edge direction, radians */
+  readonly ang: Float32Array;
+  /** metres from the vertex mean (`BldTable.cx`/`cy`) to the AREA centroid */
+  readonly dx: Float32Array;
+  readonly dy: Float32Array;
+  /** 0 = a step, 1 = a mast, 2 = a mast the published class gives a spire */
+  readonly mast: Uint8Array;
+  /** the profile per SLOT. 0 is `prism`, the identity, and means no shaped cap */
+  readonly prof: Uint8Array;
+  readonly profiles: readonly StepProfile[];
+  /**
+   * building index → slot + 1, and 0 for the 165,638 buildings with no slot.
+   *
+   * A typed array and not a `Map`: this is read once per building per
+   * rasterisation, ~90,000 times at the district camera, and 332 KB of
+   * `Uint16Array` is the cheapest form of that question. 528 slots fit a
+   * `Uint16Array` with the +1 to spare.
+   */
+  readonly slotOf: Uint16Array;
+}
+
 /** `landmarks.ts`'s `BridgeDeck`, plus the record behind it. */
 export interface BridgeData {
   readonly ring: readonly (readonly [number, number])[];
@@ -404,6 +519,100 @@ interface HeroSidecar {
 }
 
 const PART_KIND = ["solid", "arcade", "rib"] as const;
+
+
+// ── the street centrelines, the names, and the mask the fade wants ──────────
+
+/**
+ * ONE CHUNK OF PUBLISHED CENTRELINES, in the shape `drawCentrelines` reads.
+ *
+ * `3psu-pn9h` ships 4,895 lines of classcode 0-4 and until this decoder existed
+ * NO chunk carried their geometry — `manifest.kinds.strt` carries the right-of-way
+ * RING and the roadway ring, and stroking the far edge of a right of way draws a
+ * property line. That is why the whole-city frame had no street network where the
+ * mock has a city of lines: `ST_CLS_MAX[0] = 2`, the reference strokes classes 0-2
+ * at full ink on the wide shot, and this build stroked nothing.
+ *
+ * `cls`, `yr`, `len`, `x`, `y` and `cov` are exactly what the renderer asks for;
+ * `fid`, `cnn` and `nm` are the joins, and they are what makes the `cov`
+ * cross-check below possible at all.
+ */
+export interface CentrelineCell {
+  readonly key: string;
+  /** the centreline's index in the published array — the order `cov` is keyed on */
+  readonly fid: Uint32Array;
+  /** 3psu-pn9h classcode, 0-4, the ranks `ST_W` indexes */
+  readonly cls: Uint8Array;
+  /** so a line can be joined to the right of way it belongs to */
+  readonly cnn: Uint32Array;
+  /** index into `streetNames()`; 0xFFFF where the City publishes no name */
+  readonly nm: Uint16Array;
+  /** the year the Board voted it; 0 = undated, and an undated line is drawn */
+  readonly yr: Uint16Array;
+  /** vertices per feature */
+  readonly len: Uint16Array;
+  /** world metres, absolute, packed feature after feature */
+  readonly x: Float32Array;
+  readonly y: Float32Array;
+  /** one bit per feature IN THIS CHUNK, LSB first: a right of way covers it */
+  readonly cov: Uint8Array;
+}
+
+/**
+ * The street NAMES — 2,786 published stretches over 2,397 distinct names.
+ *
+ * `rank` and `lengthM` are the two arguments `labelOrder` and `spineOf` take,
+ * and they are the file's own: rank is `geo/build_streets.py`'s LABEL rank
+ * (classcode 2/3 to 0, 4 to 1, 5 to 2, and the freeways to the bottom, because
+ * a freeway is the least useful thing to name on a map of San Francisco) and
+ * `lengthM` is the summed length of the stretch's own segments.
+ *
+ * `dx`/`dy` are a DIRECTION and not a place: the reference pushes them through
+ * `proj()` as a point and takes the angle of the difference from `proj(0,0)`,
+ * which is exact because `proj` is linear in (x, y).
+ */
+export interface StreetLabelTable {
+  readonly n: number;
+  readonly names: readonly string[];
+  /** index into `names` */
+  readonly nm: Uint16Array;
+  readonly rank: Uint8Array;
+  /** the year the name is first written; 0 = written in every year */
+  readonly yr: Uint16Array;
+  readonly lengthM: Float32Array;
+  readonly wx: Float32Array;
+  readonly wy: Float32Array;
+  readonly dx: Float32Array;
+  readonly dy: Float32Array;
+  name(i: number): string;
+}
+
+/**
+ * `base/street-misc`, which shipped for four blocks and was decoded by nobody:
+ * 1,120 published traffic islands, 268 named stair runs, and **the 4,895-bit
+ * coverage mask the centreline fade wants**.
+ *
+ * The manifest note used to call `cov` *one bit per right of way*. It is not:
+ * `covn` is 4,895, which is the number of CENTRELINES, and the bit is set by
+ * testing that centreline's own midpoint against the published right-of-way
+ * polygons. 4,361 of 4,895 are covered.
+ */
+export interface StreetMisc {
+  /** vertices per island ring */
+  readonly islandLen: Uint16Array;
+  readonly islandX: Float32Array;
+  readonly islandY: Float32Array;
+  /** vertices per stair run */
+  readonly stairLen: Uint16Array;
+  readonly stairX: Float32Array;
+  readonly stairY: Float32Array;
+  readonly stairNames: readonly string[];
+  /** one bit per centreline, LSB first, in the published array's own order */
+  readonly cov: Uint8Array;
+  readonly covN: number;
+  /** does a published right of way cover the centreline with this `fid`? */
+  covered(fid: number): boolean;
+}
 
 // ── the spatial query ───────────────────────────────────────────────────────
 
@@ -518,7 +727,14 @@ export class CityData {
   private counts = { fetched: 0, cancelled: 0, failed: 0, evicted: 0 };
   private surroundCache: SurroundData | null = null;
   private landmarkCache: LandmarkTable | null = null;
+  private formCache: FormTable | null = null;
   private sidecar: HeroSidecar | null = null;
+  private coastCache: SurroundCoast | null = null;
+  private lineCache: readonly CentrelineCell[] | null = null;
+  private lineCacheKey = "";
+  private labelCache: StreetLabelTable | null = null;
+  private labelCacheKey = "";
+  private miscCache: StreetMisc | null = null;
   private readonly listeners = new Set<(key: string) => void>();
 
   private constructor(manifest: CityManifest, opts: CityDataOptions) {
@@ -653,11 +869,19 @@ export class CityData {
       isLand: (i, j) => bit(land, j * XW + i),
       isOwn: (i, j) => bit(own, j * XW + i),
       centre: (i, j) => [world[0] + (i + 0.5) * cellW, world[1] + (j + 0.5) * cellH],
-      surroundOrder(depth) {
+      surroundOrder(depth, extra) {
         const idx: number[] = [];
         for (let j = 0; j < XH; j++) {
           for (let i = 0; i < XW; i++) {
-            if (bit(own, j * XW + i)) idx.push(j * XW + i);
+            /* `extra` is the coast clip's own margin and NOTHING else. A cell
+               it adds is water by the hydrography's own bit, so it may only
+               ever paint the part of itself that is inside the published ring
+               — which is why it is safe here and would not be without the
+               clip. Passing it without clipping paints a second, coarser copy
+               of the shoreline. */
+            if (bit(own, j * XW + i) || (extra ? extra(i, j) : false)) {
+              idx.push(j * XW + i);
+            }
           }
         }
         const d = new Float64Array(idx.length);
@@ -676,6 +900,375 @@ export class CityData {
     };
     this.surroundCache = s;
     return s;
+  }
+
+  /**
+   * The surround's own coastline. Resolves to null if `base/surround` is not
+   * held; throws if the sidecar's grid is not the shipped surround's, because
+   * a bit-field read against the wrong stride decodes silently and draws a
+   * plausible wrong coast.
+   */
+  async surroundCoast(): Promise<SurroundCoast | null> {
+    if (this.coastCache) return this.coastCache;
+    const e = this.byKey.get("base/surround");
+    if (!e) return null;
+    const res = await this.doFetch(`${this.baseUrl}/base/surround-coast.json`);
+    if (!res.ok) throw new Error(`base/surround-coast.json: HTTP ${res.status}`);
+    const d = (await res.json()) as {
+      w: number; h: number; cn: number; nv: number;
+      start: number[]; count: number[]; x: number[]; y: number[];
+      xtra: string; cfix: string; meta: Record<string, unknown>;
+    };
+    if (d.w !== e.w || d.h !== e.h) {
+      throw new Error(
+        `base/surround-coast.json is ${d.w}x${d.h}, base/surround is ${String(e.w)}x${String(e.h)}`,
+      );
+    }
+    const rings: [number, number][][] = [];
+    for (let r = 0; r < d.start.length; r++) {
+      const s0 = d.start[r], n = d.count[r];
+      const ring: [number, number][] = new Array(n);
+      for (let k = 0; k < n; k++) ring[k] = [d.x[s0 + k], d.y[s0 + k]];
+      rings.push(ring);
+    }
+    const xtra = b64Bytes(d.xtra);
+    const cfix = b64Bytes(d.cfix);
+    const bit = (a: Uint8Array, k: number): boolean =>
+      ((a[k >> 3] >> (7 - (k & 7))) & 1) === 1;
+    const XW = d.w, CN = d.cn;
+    const out: SurroundCoast = {
+      rings,
+      reach: (i, j) => bit(xtra, j * XW + i),
+      // `cfix` is keyed i*N + j — the CITY grid's own column-major order, which
+      // is not the surround's. Kept as the builder wrote it.
+      cityOffshore: (i, j) => bit(cfix, i * CN + j),
+      cityOffshoreBits: cfix,
+      meta: d.meta,
+    };
+    this.coastCache = out;
+    return out;
+  }
+
+  /**
+   * The 488 second solids, the 40 masts and the six cap profiles.
+   *
+   * SYNC, unlike `landmarks()`: there is no prose to fetch. Every sentence this
+   * carries is in the manifest's own provenance and none of it is per-slot, so
+   * the draw path can ask for it inside a rasterisation and get an answer or a
+   * null, which is what every other reader on that path does.
+   *
+   * `base/caps` is folded in here rather than left in `LandmarkTable` because a
+   * cap is not a landmark: it is a PROFILE swept around one of these solids, and
+   * the two halves shipped apart for four blocks with nothing drawing either.
+   * `LandmarkTable.caps` stays as the record a fiche prints; this is the
+   * geometry the renderer sweeps.
+   *
+   * Returns null if `base/form` is not held — the caller draws the prism, which
+   * is what stood there before this chunk existed.
+   */
+  form(): FormTable | null {
+    if (this.formCache) return this.formCache;
+    const fc = this.get("base/form");
+    if (!fc) return null;
+    const e = this.byKey.get("base/form");
+    const f = fc.fields;
+    const sbi = f.bi as Uint32Array;
+    const mbi = f.mbi as Uint32Array;
+    const nStep = sbi.length;
+    const nAll = nStep + mbi.length;
+    const nb = (this.manifest.buildings as { n: number }).n;
+
+    const bi = new Uint32Array(nAll);
+    const top = new Float32Array(nAll);
+    const rad = new Float32Array(nAll);
+    const ang = new Float32Array(nAll);
+    const dx = new Float32Array(nAll);
+    const dy = new Float32Array(nAll);
+    const mast = new Uint8Array(nAll);
+    const slotOf = new Uint16Array(nb);
+
+    const stop = f.top as Uint16Array;
+    const srad = f.rad as Uint16Array;
+    const sang = f.ang as Uint8Array;
+    const sdx = f.dx as Int16Array;
+    const sdy = f.dy as Int16Array;
+    const A = Math.PI / 2 / 255;
+    for (let s = 0; s < nStep; s++) {
+      const i = sbi[s];
+      bi[s] = i;
+      top[s] = stop[s] * 0.1; // decimetres -> metres
+      rad[s] = srad[s] * 0.01; // centimetres -> metres
+      ang[s] = sang[s] * A;
+      dx[s] = sdx[s] * 0.1;
+      dy[s] = sdy[s] * 0.1;
+      slotOf[i] = s + 1;
+    }
+    /* NEVER TWO SOLIDS OVER ONE ROOF. `mast.py` already drops the 44 footprints
+       that carry Block C's step and the encoder asserts the two streams are
+       disjoint, so this test never fires — it is `part3.html`'s own merge, kept
+       because it is the one line that makes the invariant true HERE rather than
+       true somewhere upstream. A slot skipped is a mast not drawn, never a
+       second claim over one roof. */
+    const mtop = f.mtop as Uint16Array;
+    const mrad = f.mrad as Uint16Array;
+    const mang = f.mang as Uint8Array;
+    const mdx = f.mdx as Int16Array;
+    const mdy = f.mdy as Int16Array;
+    const msp = f.mspire as Uint8Array;
+    let put = nStep;
+    for (let k = 0; k < mbi.length; k++) {
+      const i = mbi[k];
+      if (slotOf[i]) continue;
+      bi[put] = i;
+      top[put] = mtop[k] * 0.1;
+      rad[put] = mrad[k] * 0.01;
+      ang[put] = mang[k] * A;
+      dx[put] = mdx[k] * 0.1;
+      dy[put] = mdy[k] * 0.1;
+      mast[put] = msp[k] ? 2 : 1;
+      slotOf[i] = put + 1;
+      put++;
+    }
+
+    // ── the six profiles, and which slot takes which ──────────────────────
+    const profiles: StepProfile[] = [];
+    const prof = new Uint8Array(nAll);
+    const cc = this.get("base/caps");
+    const ce = this.byKey.get("base/caps");
+    if (cc && ce) {
+      const names = (ce.profiles ?? []) as string[];
+      const po = cc.fields.poff as Uint32Array;
+      const pu = cc.fields.pu as Float32Array;
+      const ps = cc.fields.ps as Float32Array;
+      for (let k = 0; k + 1 < po.length; k++) {
+        profiles.push({
+          name: names[k] ?? String(k),
+          u: pu.subarray(po[k], po[k + 1]),
+          s: ps.subarray(po[k], po[k + 1]),
+        });
+      }
+      const cbi = cc.fields.bi as Uint32Array;
+      const cpr = cc.fields.prof as Uint8Array;
+      for (let k = 0; k < cbi.length; k++) {
+        const s = slotOf[cbi[k]];
+        if (s) prof[s - 1] = cpr[k];
+      }
+      /* THE SPIRE IS CHOSEN BY THE PUBLISHED CLASS AND BY NOTHING ELSE.
+         `mspire` is the class table's own bit — church, and the nine others
+         `mast.py` names — and it is the only thing on this path that picks a
+         shape. A mast without it draws the prism, which is a box on a roof and
+         is exactly what a fire station's hose tower is. */
+      const spire = profiles.findIndex((p) => p.name === "spire");
+      if (spire > 0) {
+        for (let s = nStep; s < put; s++) if (mast[s] === 2 && !prof[s]) prof[s] = spire;
+      }
+    }
+
+    const t: FormTable = {
+      n: put,
+      nStep,
+      octN: (e?.octN as number) ?? 8,
+      bi: bi.subarray(0, put),
+      top: top.subarray(0, put),
+      rad: rad.subarray(0, put),
+      ang: ang.subarray(0, put),
+      dx: dx.subarray(0, put),
+      dy: dy.subarray(0, put),
+      mast: mast.subarray(0, put),
+      prof: prof.subarray(0, put),
+      profiles,
+      slotOf,
+    };
+    this.formCache = t;
+    return t;
+  }
+
+
+  // ── the street centrelines, the names, and the mask ───────────────────────
+
+  /**
+   * Every held chunk of published centrelines, base tier first.
+   *
+   * SYNC and cheap: the chunks are already typed arrays in the shape the
+   * renderer reads, so this only assembles the list. Hand the result straight
+   * to `drawCentrelines` as `opts.lines`.
+   *
+   * The layer is split on `ST_CLS_MAX`, the LOD band's own class gate, and not
+   * on the 1024 m grid — a centreline runs up to 3.1 km and does not fit a
+   * cell. `base/street-lines` is classes 0-2, the whole-city frame's own
+   * network, and it is in the base tier so the first paint has it;
+   * `strt/street-lines-2` is classes 3-4 at `minZ` 1.70, which is BANDS[0] and
+   * therefore the first zoom at which either class can be drawn at all.
+   *
+   * **AND THE MASK IS CHECKED, NOT TRUSTED.** Each chunk carries `cov`
+   * re-indexed from the citywide mask through `fid`, and re-indexing is the one
+   * step that could shift a bit silently — which is exactly what the mock's own
+   * note warns about (*"a regenerated geo-data.js must not be able to shift
+   * this by one"*). Where `base/street-misc` is also held, every bit is
+   * compared against it once per chunk and a disagreement throws.
+   */
+  streetLines(): readonly CentrelineCell[] {
+    const keys: string[] = [];
+    for (const c of this.manifest.chunks) {
+      if (c.kind === "strt-line" && this.held.has(c.k)) keys.push(c.k);
+    }
+    keys.sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+    const tag = keys.join("|");
+    if (this.lineCache && this.lineCacheKey === tag) return this.lineCache;
+    const misc = this.streetMisc();
+    const out: CentrelineCell[] = [];
+    for (const k of keys) {
+      const c = this.get(k);
+      if (!c) continue;
+      const f = c.fields;
+      const cell: CentrelineCell = {
+        key: k,
+        fid: f.fid as Uint32Array,
+        cls: f.cls as Uint8Array,
+        cnn: f.cnn as Uint32Array,
+        nm: f.nm as Uint16Array,
+        yr: f.yr as Uint16Array,
+        len: f.len as Uint16Array,
+        x: f.x as Float32Array,
+        y: f.y as Float32Array,
+        cov: f.cov as Uint8Array,
+      };
+      if (misc) {
+        for (let i = 0; i < cell.fid.length; i++) {
+          const mine = ((cell.cov[i >> 3] >> (i & 7)) & 1) === 1;
+          if (mine !== misc.covered(cell.fid[i])) {
+            throw new Error(
+              `${k}: cov bit ${i} (centreline ${cell.fid[i]}) is ${String(mine)}, ` +
+              `base/street-misc says ${String(misc.covered(cell.fid[i]))}`,
+            );
+          }
+        }
+      }
+      out.push(cell);
+    }
+    this.lineCache = out;
+    this.lineCacheKey = tag;
+    return out;
+  }
+
+  /** The name of centreline `nm[i]`, or `null` where the City publishes none. */
+  streetNames(): readonly string[] {
+    return (this.byKey.get("base/street-labels")?.names ?? []) as string[];
+  }
+
+  /**
+   * The published street-name stretches, base tier first, as one table.
+   *
+   * Rebuilt when the set of held label chunks changes and cached otherwise:
+   * the label pass runs inside a frame and cannot afford to concatenate 2,786
+   * entries on every one.
+   *
+   * Returns null before `base/street-labels` lands.
+   */
+  streetLabels(): StreetLabelTable | null {
+    const keys: string[] = [];
+    for (const c of this.manifest.chunks) {
+      if (c.kind === "strt-label" && this.held.has(c.k)) keys.push(c.k);
+    }
+    keys.sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+    if (keys.length === 0) return null;
+    const tag = keys.join("|");
+    if (this.labelCache && this.labelCacheKey === tag) return this.labelCache;
+    const parts = keys.map((k) => this.get(k)).filter((c): c is Chunk => !!c);
+    let n = 0;
+    for (const c of parts) n += (c.fields.rank as Uint8Array).length;
+    const nm = new Uint16Array(n);
+    const rank = new Uint8Array(n);
+    const yr = new Uint16Array(n);
+    const lengthM = new Float32Array(n);
+    const wx = new Float32Array(n);
+    const wy = new Float32Array(n);
+    const dx = new Float32Array(n);
+    const dy = new Float32Array(n);
+    let o = 0;
+    for (const c of parts) {
+      const f = c.fields;
+      const m = (f.rank as Uint8Array).length;
+      nm.set(f.nm as Uint16Array, o);
+      rank.set(f.rank as Uint8Array, o);
+      yr.set(f.yr as Uint16Array, o);
+      const L = f.len as Uint16Array;
+      const px = f.x as Float32Array;
+      const py = f.y as Float32Array;
+      const pdx = f.dx as Int16Array;
+      const pdy = f.dy as Int16Array;
+      for (let i = 0; i < m; i++) {
+        lengthM[o + i] = L[i];
+        wx[o + i] = px[i];
+        wy[o + i] = py[i];
+        // x10000 is the encoder's, and it is exact: the source rounds the unit
+        // vector to four decimals, so this is the published number back again.
+        dx[o + i] = pdx[i] / 10000;
+        dy[o + i] = pdy[i] / 10000;
+      }
+      o += m;
+    }
+    const names = this.streetNames();
+    const t: StreetLabelTable = {
+      n, names, nm, rank, yr, lengthM, wx, wy, dx, dy,
+      name: (i) => names[nm[i]] ?? "",
+    };
+    this.labelCache = t;
+    this.labelCacheKey = tag;
+    return t;
+  }
+
+  /**
+   * `base/street-misc` — the islands, the stairs and the coverage mask.
+   *
+   * Coordinates are u16 at scale `q` from `(ox, oy)`, which is the file's own
+   * quantiser and not this decoder's; they are expanded to world metres once
+   * and cached, because both readers walk every vertex per frame.
+   *
+   * Returns null before the `strt` tier lands, which is why `streetLines()`
+   * treats the cross-check as available-or-not rather than required: the wide
+   * shot draws the layer from `base/street-lines` alone, and `base/street-misc`
+   * is not fetched until z >= 1.75.
+   */
+  streetMisc(): StreetMisc | null {
+    if (this.miscCache) return this.miscCache;
+    const c = this.get("base/street-misc");
+    const e = this.byKey.get("base/street-misc");
+    if (!c || !e) return null;
+    const q = e.q as number;
+    const ox = e.ox as number;
+    const oy = e.oy as number;
+    const expand = (xy: Uint16Array): [Float32Array, Float32Array] => {
+      const nv = xy.length >> 1;
+      const X = new Float32Array(nv);
+      const Y = new Float32Array(nv);
+      for (let i = 0; i < nv; i++) {
+        X[i] = ox + xy[i * 2] * q;
+        Y[i] = oy + xy[i * 2 + 1] * q;
+      }
+      return [X, Y];
+    };
+    const [ix, iy] = expand(c.fields.islandXY as Uint16Array);
+    const [sx, sy] = expand(c.fields.stairXY as Uint16Array);
+    const cov = c.fields.cov as Uint8Array;
+    const covN = e.covn as number;
+    if (cov.length * 8 < covN) {
+      throw new Error(`base/street-misc: ${cov.length} bytes for ${covN} bits`);
+    }
+    const m: StreetMisc = {
+      islandLen: c.fields.islandLen as Uint16Array,
+      islandX: ix, islandY: iy,
+      stairLen: c.fields.stairLen as Uint16Array,
+      stairX: sx, stairY: sy,
+      stairNames: (e.stairNames ?? []) as string[],
+      cov, covN,
+      // LSB first within each byte — the order `build_surface.py` packed it in
+      // and the order `drawCentrelines` reads it in. Read the other way round
+      // it decodes silently and fades the wrong half of the city.
+      covered: (fid) => ((cov[fid >> 3] >> (fid & 7)) & 1) === 1,
+    };
+    this.miscCache = m;
+    return m;
   }
 
   // ── the authored landmarks ────────────────────────────────────────────────

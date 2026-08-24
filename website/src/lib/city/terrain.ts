@@ -86,6 +86,7 @@ export const QF = {
   water: 1, // the bay recedes with the same haze the land recedes with
   warm: 1, // two illuminants instead of one scalar
   relief: 1, // the surround's Lambert swing, re-derived now that XLAM is real
+  coast: 1, // the surround is cut at the published shoreline, not at its cells
 };
 
 /**
@@ -103,6 +104,7 @@ export const QF = {
  */
 export const WA = {
   smooth: 1, // the two terrain rasters are bilinear over their own nodes
+  ramp: 1, // a cell the pixel floor pinned to k=1 ramps instead of stepping
   shoal: 1, // the shallows are one interpolated plate, not 13,409 quads
   tgt: 1.5, // the largest value step, of 255, a sub-quad seam may carry
   minpx: 2.4, // css px: the MOTION floor. Settled, see RS.minpxDev.
@@ -112,7 +114,33 @@ export const WA = {
   wbot: 0.855, // ...and at the bottom, where the street is
   iq: "low" as ImageSmoothingQuality, // bilinear. "high" is a multi-pass resample and this is an UPSCALE
   gq: 3, // css px the wall gradient's ends quantise to, for the cache key
-  hazecap: 0.42, // how far the far shore may wash toward the paper
+  /* css px the CELL ramp's ends quantise to. Not `gq`: at DPR 1 the surround
+     cell is 3.69 css px tall and a 3 px quantum collapses the ramp to a
+     constant, which is the thing it exists to remove. At 0.5 the endpoint is
+     within a quarter pixel of the cell's own edge, so the colour at the edge
+     is off by at most `step/(2·cellPx)` — 0.6 of 255 on the p95 cell — against
+     the 8.86 it removes. Rows share exact y, so the hit rate is a row. */
+  rampq: 0.5,
+  /**
+   * How far the far shore may wash toward the paper.
+   *
+   * **0.62, and the port shipped 0.42.** `part3.html` L1790, `WA.hazecap:
+   * 0.62`, with its own comment — *"and it comes back out at the shipped
+   * number. warmth/haze.py"* — so the number is a re-derivation, not a taste.
+   *
+   * It is read in three places that must agree, and at 0.42 two of them did
+   * not: `TerrainField.hazeAt` (the land, and the depth plate's own per-node
+   * fade), `drawDepthHaze` (the same fade as one fill), and `bayPlate`, whose
+   * far stop is written `lerpHex(BAY_OPEN, HAZE, 0.62)` — the literal, from
+   * the reference, sitting beside a cap of 0.42.
+   *
+   * MEASURED on the open Pacific at B3, the far field where the cap binds:
+   * the mock reads 191,200,206 and `lerpHex(BAY_OPEN, HAZE, .62)` is
+   * 197.6,206.3,211.6; prod read 172,188,203 against `lerp(.42)` =
+   * 177.4,193.3,207.2. The distance was being under-painted by a fifth of the
+   * whole fade over everything more than 3.4 km from downtown.
+   */
+  hazecap: 0.62,
 };
 
 /**
@@ -135,6 +163,15 @@ export const WA = {
  * banding, it is the antialiased overlap between sub-quads, which is noise
  * around zero and not a picture.
  */
+if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+  (globalThis as { __cityWA?: typeof WA }).__cityWA = WA;
+  (globalThis as { __cityQF?: typeof QF }).__cityQF = QF;
+  /* `window.LOOK` in the mock, and the switch every LOOK treatment is ablated
+     through. `LOOK.grain` in particular has to be reachable from a probe or
+     the paper cannot be measured, only asserted. */
+  (globalThis as { __cityLOOK?: typeof LOOK }).__cityLOOK = LOOK;
+}
+
 export const RS = {
   on: 1,
   minpxDev: 2, // DEVICE px: the settled floor on a terrain sub-quad
@@ -400,13 +437,47 @@ export function rgbHex(r: number, g: number, b: number): string {
 
 // ── the ground palette ──────────────────────────────────────────────────────
 
-/** ground, low to high; the park row; the canopy end of the tint ramp */
-export const WG0 = "#d9d3bf",
-  WG1 = "#c8bda1";
-export const WPK0 = "#b9c79a",
-  WPK1 = "#9fb283";
-export const WCN0 = "#a9bd8c",
-  WCN1 = "#7d9a63";
+/**
+ * ground, low to high; the park row; the canopy end of the tint ramp.
+ *
+ * THESE SIX WERE INVENTED BY THE PORT. THEY ARE THE REFERENCE'S AGAIN.
+ *
+ * `gen/part3.html` L3360-3361 and L3456 — identical in every one of the six
+ * `part3.html` snapshots under `scratchpad/sf-city-anim` and in the served
+ * `mock-frame.html` L4735-4736 / L4831, and read back off the RUNNING mock,
+ * whose `terrainColor(10, 0.73, 0, 0, 0)` returns `#f7eed4` where this port's
+ * returned `#d9d3be`:
+ *
+ * ```
+ *            reference   this port shipped   error, of 255
+ *   WG0      #f8f0d8     #d9d3bf             -31 -29 -25
+ *   WG1      #dcc79a     #c8bda1             -20 -10  +7
+ *   WPK0     #eef0d8     #b9c79a             -53 -41 -62
+ *   WPK1     #d3d3a8     #9fb283             -52 -33 -37
+ *   WCN0     #c9d79c     #a9bd8c             -32 -26 -16
+ *   WCN1     #7c9455     #7d9a63              +1  +6 +14
+ * ```
+ *
+ * The ground is 70.8 % of the district frame and this table is what it is made
+ * of. Bare ground came out about THIRTY LEVELS DARK and twenty-five COLD — the
+ * Sunset read grey where the reference reads tan — and the park row, 41 to 62
+ * levels off and the worst of the six, turned the reference's pale
+ * yellow-green meadow into a mid sage. `grep -rn 'd9d3bf'` over the whole of
+ * `scratchpad/sf-city-anim` finds nothing: these numbers are not a stale
+ * revision of the source, they are not in it.
+ *
+ * `WFLG.pal` is the reference's own switch — "the earthier ground, water and
+ * park values" — and it ships at 1, so the shipped pair is the first one. The
+ * `pal: 0` pair is carried because the flag is, and because an ablation switch
+ * is the only way to measure what it does.
+ */
+export const WPAL = { pal: 1 };
+export const WG0 = WPAL.pal ? "#f8f0d8" : "#faf6ec",
+  WG1 = WPAL.pal ? "#dcc79a" : "#e2d5b8";
+export const WPK0 = "#eef0d8",
+  WPK1 = "#d3d3a8";
+export const WCN0 = "#c9d79c",
+  WCN1 = "#7c9455";
 
 /** elevation quantum of the ramp, and the canopy quantum */
 export const WTQ = 64,
@@ -561,6 +632,7 @@ export class TerrainField {
 
   private readonly dem: Uint8Array;
   private readonly maskBits: Uint8Array;
+  private coastFixBits: Uint8Array | null = null;
 
   /** the diffuse term, per node */
   readonly lam: Float32Array;
@@ -608,9 +680,42 @@ export class TerrainField {
     this.tsh = this.buildTsh(opts.terrs ?? 6);
   }
 
+  /**
+   * A CELL MORE THAN 300 m OUTSIDE THE PUBLISHED LAND IS NOT LAND.
+   *
+   * `base/terrain`'s `mask` is DataSF `txuc-3kzm` rasterised at 53.815 m, and
+   * `txuc-3kzm` is the boundary of the **City and County of San Francisco** —
+   * a LEGAL boundary. It runs kilometres offshore into the Pacific and
+   * straight across the Golden Gate. **4,787 of the 43,187 ground cells —
+   * 11.1 %, 13.86 km2 — are open water painted in the city's ground tone**, and
+   * their 53.8 m edge is the straight line in the water at the south-west of
+   * the opening frame, and the reason the strait does not read as a strait.
+   *
+   * `cityOffshore` is one published bit per cell out of
+   * `base/surround-coast.json`: this cell's centre is more than `city_pad_m`
+   * = 300 m outside the TIGERweb land polygon. The 300 m is argued in
+   * `coast/build_coast.py` and it is not a fudge — **within 300 m of the shore
+   * DataSF wins**, because it is the city's own register of its own waterfront,
+   * and that is what keeps the Embarcadero's finger piers, Fort Mason and the
+   * Aquatic Park breakwater, which are real made land the county-scale
+   * hydrography does not carry.
+   *
+   * Applied HERE rather than in the cell loop, because `maskAt` is also what
+   * the node average, the depth order and `fitCity`'s own extent walk read: a
+   * cell that is not land must not be land to any of them.
+   */
+  set coastFix(bits: Uint8Array | null) {
+    this.coastFixBits = QF.coast ? bits : null;
+  }
+
   maskAt(i: number, j: number): number {
     const k = i * this.N + j;
-    return (this.maskBits[k >> 3] >> (7 - (k & 7))) & 1;
+    if ((this.maskBits[k >> 3] >> (7 - (k & 7))) & 1) {
+      const cf = this.coastFixBits;
+      if (cf && (cf[k >> 3] >> (7 - (k & 7))) & 1) return 0;
+      return 1;
+    }
+    return 0;
   }
 
   elevAt(i: number, j: number): number {
@@ -774,6 +879,17 @@ export class TerrainField {
   }
 
   /**
+   * The node colour cache's generation.
+   *
+   * `GROUND_PLATE` keys on it, so anything that drops the node colours drops
+   * the plate painted from them — which is the whole of what `invalidateNodes`
+   * has to reach for the ground to stay correct.
+   */
+  get nodeGen(): number {
+    return this.tnKey;
+  }
+
+  /**
    * THE NODE IS THE THING THAT CARRIES A COLOUR.
    *
    * A node's park / burn / canopy is the mean over the up-to-four LAND cells
@@ -852,7 +968,559 @@ export class TerrainField {
  */
 export const HAZE = LOOK.aerial ? "#ece7dc" : "#e6e9ef";
 
+// ── tracking is geometry, not a character ───────────────────────────────────
+
+/**
+ * TRACKING IS GEOMETRY, NOT A CHARACTER.
+ *
+ * The surround names used to be tracked out by joining the letters with U+2009
+ * THIN SPACE, **and that made the width of every label a property of whichever
+ * font happened to be resolved at the moment the layer was painted.**
+ * MEASURED: U+2009 advances 2.0 px in JetBrains Mono and 6.0 px in the fallback
+ * monospace — "MARIN COUNTY" comes out 116 px in one and 204 px in the other,
+ * **76 % wider**.
+ *
+ * The webfont is fetched with `display=swap` and these names are baked into the
+ * CACHED ground, so a layer painted before the font landed kept fallback
+ * metrics; the two ground buffers are baked independently, so they could hold
+ * different metrics and the cross-fade turned them into a doubled, illegible
+ * label. **That is what ALCATRAZ, ANGEL ISLAND and MARIN COUNTY were doing in
+ * the whole-city shot.**
+ *
+ * So the letters are advanced here, by a fraction of the type size, and **no
+ * spacing character is involved.** The shell must additionally drop the ground
+ * cache when `document.fonts.ready` settles, so nothing painted early can
+ * survive to be cross-faded against something painted late — that half belongs
+ * to P4 and is stated here because this is where the bug shows.
+ */
+export const NAME_TRACK = 0.46;
+
+/**
+ * How much of the bottom of the frame a surround name may not be written in.
+ * 24 px is just the halo. The FILM raises it to clear its copy plate; nothing
+ * else writes to it.
+ */
+export let NAME_BOT = 24;
+export function setNameBot(px: number | null): void {
+  NAME_BOT = px == null || !(px > 24) ? 24 : px;
+}
+
+export function trackedWidth(
+  ctx: CanvasRenderingContext2D,
+  s: string,
+  size: number,
+): number {
+  const gap = size * NAME_TRACK;
+  let w = -gap;
+  for (let i = 0; i < s.length; i++) w += ctx.measureText(s[i]).width + gap;
+  return w;
+}
+
+/**
+ * Every halo first, then every letter — **one letter's halo laid over the
+ * previous letter's ink is exactly what makes tracked-out type look chewed.**
+ */
+export function trackedText(
+  ctx: CanvasRenderingContext2D,
+  s: string,
+  x: number,
+  y: number,
+  size: number,
+): void {
+  const gap = size * NAME_TRACK;
+  const adv: number[] = [];
+  let w = -gap;
+  for (let i = 0; i < s.length; i++) {
+    const a = ctx.measureText(s[i]).width;
+    adv.push(a);
+    w += a + gap;
+  }
+  const x0 = x - w / 2;
+  let cx = x0;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] !== " ") ctx.strokeText(s[i], cx, y);
+    cx += adv[i] + gap;
+  }
+  cx = x0;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] !== " ") ctx.fillText(s[i], cx, y);
+    cx += adv[i] + gap;
+  }
+}
+
+/**
+ * THE MARGIN IS THE NAME'S OWN HALF-WIDTH.
+ *
+ * `trackedText` centres on x, so a 40 px constant is a margin for a name 80 px
+ * wide. SAN MATEO COUNTY tracks out to 151 px at size 10 and MARIN COUNTY to
+ * 116, so on any frame narrow enough for their anchors to sit inside 40 px of
+ * the edge **they were written straight off it**.
+ */
+export function nameFitsFrame(
+  x: number,
+  y: number,
+  textW: number,
+  W: number,
+  H: number,
+): boolean {
+  return !(x - textW / 2 < 6 || x + textW / 2 > W - 6 || y < 24 || y > H - NAME_BOT);
+}
+
+
+// ── the surround's own names ────────────────────────────────────────────────
+
+/**
+ * One published name on the surround — `base/surround`'s own `labels`.
+ */
+export interface SurroundName {
+  readonly n: string;
+  readonly x: number;
+  readonly y: number;
+  /** a water body rather than a landmass */
+  readonly w?: number;
+  /** set smaller — the register's own bit, the two islands */
+  readonly sm?: number;
+}
+
+export const SURROUND_SIZE = 10;
+/** the smaller size, for the two islands the register marks `sm` */
+export const SURROUND_SIZE_SM = 8.5;
+export const SURROUND_INK_LAND = "rgba(72,66,54,.86)";
+export const SURROUND_INK_WATER = "rgba(60,80,122,.80)";
+export const SURROUND_HALO = "rgba(252,251,246,.86)";
+
+/**
+ * NAMING THE SURROUND IS THE OTHER HALF OF RECOGNISABILITY, and this layer was
+ * written, ported, unit-tested and READ BY NOTHING.
+ *
+ * `trackedWidth`, `trackedText`, `NAME_TRACK`, `NAME_BOT` and the frame margin
+ * above are all here for these seven names, and the only thing missing was the
+ * call — **the same defect this port already records against `LB_ORDER`**,
+ * which sorted every street label and had one occurrence in the whole tree,
+ * its own definition.
+ *
+ * The names are PUBLISHED: seven of them on the `base/surround` chunk entry —
+ * MARIN COUNTY, THE EAST BAY, ALCATRAZ, ANGEL ISLAND, SAN MATEO COUNTY,
+ * PACIFIC OCEAN, SAN FRANCISCO BAY — each with a world position out of
+ * `gen_context.py`. Nothing here types a coordinate or a name, and a grid that
+ * carries none draws none.
+ *
+ * *An unlabelled grey mass north of the bridge is not Marin to anyone who has
+ * not lived here.*
+ *
+ * WHOLE CITY ONLY, which is the reference's own `if (cam.step > 0) return`: at
+ * district zoom the surround is mostly off-frame and its names point off the
+ * edge of it.
+ *
+ * A WATER NAME SITS AT SEA LEVEL AND A LAND NAME ON THE GROUND. `w` is the
+ * published bit for a water body; a water name is projected at z = 0 and a land
+ * name at the surround's own elevation, or SAN FRANCISCO BAY rides up the East
+ * Bay hills behind it.
+ */
+export function surroundNames(
+  f: Frame,
+  labels: readonly SurroundName[],
+  elev: (x: number, y: number) => number,
+): number {
+  const { ctx, W, H, cam } = f;
+  const c = cam as { step?: number; scale: number; base?: number };
+  const b = typeof c.base === "number" && c.base > 0 ? c.base : 0.05565;
+  const step = typeof c.step === "number" ? c.step : c.scale / b < 2.35 ? 0 : 1;
+  if (step > 0 || !labels.length) return 0;
+  let n = 0;
+  ctx.save();
+  ctx.textAlign = "left";
+  ctx.textBaseline = "middle";
+  for (const L of labels) {
+    const size = L.sm ? SURROUND_SIZE_SM : SURROUND_SIZE;
+    ctx.font = `500 ${size}px "JetBrains Mono",ui-monospace,monospace`;
+    const p = f.proj.proj(L.x, L.y, L.w ? 0 : elev(L.x, L.y));
+    const x = sx(f, p),
+      y = sy(f, p);
+    const tw = trackedWidth(ctx, L.n, size);
+    if (!nameFitsFrame(x, y, tw, W, H)) continue;
+    ctx.lineWidth = 3.2;
+    ctx.lineJoin = "round";
+    ctx.strokeStyle = SURROUND_HALO;
+    ctx.fillStyle = L.w ? SURROUND_INK_WATER : SURROUND_INK_LAND;
+    trackedText(ctx, L.n, x, y, size);
+    n++;
+  }
+  ctx.textAlign = "center";
+  ctx.restore();
+  return n;
+}
+
+// ── the paper ───────────────────────────────────────────────────────────────
+
+/**
+ * A canvas, or nothing at all under Node.
+ *
+ * `draw.test.ts` runs in vitest with no DOM and no rasteriser, and the rule
+ * this port is held to is no new dependencies — so everything in this file
+ * that needs a real canvas asks for one here and **no-ops when there is
+ * none**, rather than pulling one in.
+ */
+type AnyCanvas = HTMLCanvasElement | OffscreenCanvas;
+
+function newCanvas(w: number, h: number): AnyCanvas | null {
+  if (typeof OffscreenCanvas !== "undefined") return new OffscreenCanvas(w, h);
+  if (typeof document !== "undefined") {
+    const c = document.createElement("canvas");
+    c.width = w;
+    c.height = h;
+    return c;
+  }
+  return null;
+}
+
+function ctxOf(c: AnyCanvas): CanvasRenderingContext2D | null {
+  return c.getContext("2d") as CanvasRenderingContext2D | null;
+}
+
+/**
+ * BLOCK M: THE PAPER. And it is 100 % of the frame at low magnitude, which is
+ * why it is worth its place: it is exactly the faint 12-32 band that dominates
+ * every whole-city row of the parity difference.
+ *
+ * Vector flat is the other half of the 90s read. One 96 x 96 tile of
+ * DETERMINISTIC value noise, tiled over the ground at low alpha, is how
+ * illustration escapes it. The tooth is in SCREEN space and does not move with
+ * the camera, which is correct: **the paper does not pan.** Seeded, built
+ * once; a per-frame noise would shimmer, and a randomised one would be
+ * invented data with a different value every reload.
+ *
+ * The tile carries **both signs of its own alpha** — a warm dark tooth and a
+ * warm light one, alpha-weighted — so ONE `source-over` fill does what a
+ * two-way `overlay` blend was doing. That is the whole of why it is
+ * affordable: a full-frame separable blend mode over 5.4 M pixels is not a
+ * per-frame effect in this renderer (MEASURED in the mock at 1440 x 940 DPR 2:
+ * playback 117 -> 33 fps, a district pan 46 -> 21).
+ *
+ * ITS HISTORY IS WORTH KEEPING, because a later write-up got it backwards and
+ * claimed the treatment had been rejected. It was not. It was **measured at
+ * 11 ms per ground rasterisation and deliberately kept**, because it suits the
+ * register — and it is paid per ground rasterisation rather than per frame,
+ * which here means it is paid inside `GROUND_PLATE` and not otherwise.
+ */
+const GRAIN_SEED = 19060418;
+
+function grainTile(wash: boolean): AnyCanvas | null {
+  const n = 96,
+    m = wash ? 8 : n;
+  const src = newCanvas(m, m);
+  if (!src) return null;
+  const sg = ctxOf(src);
+  if (!sg) return null;
+  const im = sg.createImageData(m, m),
+    d = im.data;
+  let s = GRAIN_SEED >>> 0;
+  for (let i = 0; i < m * m; i++) {
+    s ^= s << 13;
+    s >>>= 0;
+    s ^= s >>> 17;
+    s ^= s << 5;
+    s >>>= 0;
+    const v = s / 4294967296 - 0.5; // -0.5 .. +0.5
+    const dark = v < 0;
+    d[i * 4] = dark ? 58 : 255;
+    d[i * 4 + 1] = dark ? 48 : 252;
+    d[i * 4 + 2] = dark ? 32 : 242;
+    d[i * 4 + 3] = Math.round(Math.abs(v) * 2 * 255);
+  }
+  sg.putImageData(im, 0, 0);
+  if (!wash) return src;
+  /*
+   * AND THE OTHER KIND OF PAPER. The tile above is a TOOTH: per-pixel noise,
+   * the grain of the sheet. Gouache board has a second texture that is not
+   * grain at all — the WASH, the low-frequency unevenness of a flat colour
+   * laid down by hand, which is what separates a painted flat from a vector
+   * flat. Same machinery, an 8 x 8 field smoothed up to 96 x 96 by the
+   * browser's own bilinear filter, so one cell is ~12 css px instead of 1.
+   * Same seed.
+   */
+  const c = newCanvas(n, n);
+  if (!c) return null;
+  const g = ctxOf(c);
+  if (!g) return null;
+  g.imageSmoothingEnabled = true;
+  g.imageSmoothingQuality = "high";
+  g.drawImage(src, 0, 0, n, n);
+  return c;
+}
+
+let GRAIN_TOOTH: AnyCanvas | null = null,
+  GRAIN_WASH: AnyCanvas | null = null,
+  GRAIN_BUILT = false;
+
+/**
+ * `LOOK.grain` level -> [pattern scale, alpha, which tile].
+ *
+ * **At DPR 2 a one-device-pixel grain is not a tooth, it is mush**: the
+ * browser resolves it below the eye's acuity and what arrives is a flat 2 %
+ * darkening. The tooth has to be 2-3 device pixels to read as paper at all,
+ * which is what the scale of 2 is for. The shipped level is 1.
+ */
+export const GRAIN_LV: readonly (readonly [number, number, number] | null)[] = [
+  null,
+  [2, 0.03, 0],
+  [2, 0.03, 0],
+  [2, 0.055, 0],
+  [2, 0.09, 0],
+  [1, 0.22, 1],
+  [2, 0.34, 1],
+  [1, 0.45, 1],
+];
+
+/** patterns belong to the context that made them — the `wallGrad` rule. */
+const grainPatterns = new WeakMap<
+  CanvasRenderingContext2D,
+  Map<number, CanvasPattern | null>
+>();
+
+/**
+ * Tooth the whole of `w x h`, in the context's own units.
+ *
+ * Returns false where there is no paper to lay — no canvas factory (Node), or
+ * `LOOK.grain` off — so a caller can count what it actually painted.
+ */
+export function paintGrain(
+  g: CanvasRenderingContext2D,
+  w: number,
+  h: number,
+  mode?: GlobalCompositeOperation,
+): boolean {
+  const lv = LOOK.grain | 0;
+  const spec = lv > 0 && lv < GRAIN_LV.length ? GRAIN_LV[lv] : null;
+  if (!spec) return false;
+  const [sc, al, tl] = spec;
+  if (!GRAIN_BUILT) {
+    GRAIN_TOOTH = grainTile(false);
+    GRAIN_WASH = grainTile(true);
+    GRAIN_BUILT = true;
+  }
+  const tile = tl ? GRAIN_WASH : GRAIN_TOOTH;
+  if (!tile) return false;
+  let m = grainPatterns.get(g);
+  if (!m) {
+    m = new Map();
+    grainPatterns.set(g, m);
+  }
+  let pat = m.get(lv);
+  if (pat === undefined) {
+    pat = g.createPattern(tile, "repeat");
+    if (pat && typeof DOMMatrix !== "undefined" && pat.setTransform)
+      pat.setTransform(new DOMMatrix([sc, 0, 0, sc, 0, 0]));
+    m.set(lv, pat);
+  }
+  if (!pat) return false;
+  const a = g.globalAlpha,
+    o = g.globalCompositeOperation;
+  if (mode) g.globalCompositeOperation = mode;
+  g.globalAlpha = al;
+  g.fillStyle = pat;
+  g.fillRect(0, 0, w, h);
+  g.globalAlpha = a;
+  g.globalCompositeOperation = o;
+  return true;
+}
+
+/** drop every cached grain pattern — a `LOOK.grain` move */
+export function invalidateGrain(): void {
+  GRAIN_BUILT = false;
+  GRAIN_TOOTH = null;
+  GRAIN_WASH = null;
+}
+
+// ── the ground is rasterised once per (band, camera), not once per frame ────
+
+/**
+ * THE GROUND IS THE FRAME'S COST, AND IT IS MEASURED.
+ *
+ * `scratchpad/r2/rastercost.py` times `scene.paint` itself with a
+ * `getImageData` flush INSIDE the timed region — Canvas 2D is deferred and
+ * timing the call alone measures JS only, which has fooled four agents on this
+ * project — and forces a full re-render (`cur = null`) for every sample, so
+ * nothing incremental is being measured. Per-layer by prod's own `?layers=`
+ * ablation, 1200 x 680, DPR 2, median of 7-19 samples:
+ *
+ * ```
+ *   camera            all      -surround   -terrain    ground's share
+ *   A4 whole city     404 ms   178 ms      308 ms      322 ms   80 %
+ *   B3 district       459 ms   447 ms      197 ms      261 ms   57 %
+ * ```
+ *
+ * **The surround is 226 ms of the whole-city frame and the city's own DEM is
+ * 261 ms of the district frame**, and at district the surround is off-frame
+ * and free. That is `FILM.md` §6's residual, measured rather than left as a
+ * residual: between rasterisations the film is free and every rasterisation is
+ * a frozen frame, and 57-80 % of every one of them is ground that **did not
+ * change**.
+ *
+ * So each of the two ground passes keeps a plate. The plate is painted at the
+ * frame's own size and blitted 1:1, which is **exact**: `source-over` is
+ * associative, so painting the cells into a transparent plate and compositing
+ * that over the water is pixel-for-pixel what painting the cells straight onto
+ * the water does, antialiased edges included.
+ *
+ * WHAT THE KEY DOES AND DOES NOT CARRY. It carries the camera, so it does NOT
+ * survive a zoom — and that is deliberate rather than a shortfall. A
+ * scale-tolerant plate (paint at camera A, blit at camera B) is exact in
+ * geometry by the same similarity argument the frame buffer itself rests on,
+ * but it is a resample: holding it to 1.3x of its painted scale over the
+ * film's z 3.2 -> 28 move needs about seven plates where the buffer currently
+ * takes two to five rasterisations. **It would do more work, not less**, so it
+ * is not done. What the key omits is the year, the tier and the data: those
+ * are what force most re-rasterisations, and the ground is identical across
+ * all of them. A century scrub at a fixed camera, a hold while a tier lands
+ * and the settle raster after a move now cost the ground once.
+ */
+interface GroundPlate {
+  readonly cv: AnyCanvas;
+  readonly g: CanvasRenderingContext2D;
+  key: string;
+  cells: number;
+  subQuads: number;
+}
+
+/**
+ * HOW MANY PLATES MAY EXIST AT ONCE, AND WHY IT IS A GLOBAL CAP.
+ *
+ * A plate is a full device-resolution RGBA canvas — 13 MB at the 1200 x 680
+ * stage at DPR 2, and about 16 MB at the film's own buffer, which is painted
+ * with the motion margin on it. There is one `TerrainField` and one
+ * `SurroundGrid` PER BAND, so a cache hung off each of them with two slots
+ * apiece is **twelve** live full-frame canvases, 150-190 MB, for a page that is
+ * shown to a room off one laptop. Only one band is ever drawn in a frame, so
+ * the cap is global rather than per band and the field's identity goes in the
+ * KEY: two slots each for the ground and the surround, which is what the
+ * renderer's own two buffer sizes need and nothing more.
+ */
+const PLATE_SLOTS = 2;
+
+/** a stable id per field/grid, so the identity can live in the key string */
+const plateIds = new WeakMap<object, number>();
+let plateIdNext = 1;
+function plateId(o: object): number {
+  let id = plateIds.get(o);
+  if (id === undefined) {
+    id = plateIdNext++;
+    plateIds.set(o, id);
+  }
+  return id;
+}
+
+function plateFor(
+  cache: GroundPlate[],
+  W: number,
+  H: number,
+  dpr: number,
+  key: string,
+): { plate: GroundPlate; hit: boolean } | null {
+  const w = Math.max(1, Math.round(W * dpr)),
+    h = Math.max(1, Math.round(H * dpr));
+  for (let i = 0; i < cache.length; i++) {
+    const p = cache[i];
+    if (p.cv.width !== w || p.cv.height !== h) continue;
+    if (p.key !== key) continue;
+    if (i) {
+      cache.splice(i, 1);
+      cache.unshift(p);
+    }
+    return { plate: p, hit: true };
+  }
+  // reuse a slot of the right size before allocating one
+  let plate: GroundPlate | null = null;
+  for (let i = 0; i < cache.length; i++)
+    if (cache[i].cv.width === w && cache[i].cv.height === h) {
+      plate = cache.splice(i, 1)[0];
+      break;
+    }
+  if (!plate) {
+    const cv = newCanvas(w, h);
+    if (!cv) return null;
+    const g = ctxOf(cv);
+    if (!g) return null;
+    plate = { cv, g, key: "", cells: 0, subQuads: 0 };
+  }
+  plate.g.setTransform(1, 0, 0, 1, 0, 0);
+  plate.g.clearRect(0, 0, w, h);
+  plate.g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  plate.key = key;
+  cache.unshift(plate);
+  while (cache.length > PLATE_SLOTS) cache.pop();
+  return { plate, hit: false };
+}
+
+/**
+ * Everything a ground rasterisation is a function of, other than the geometry
+ * the caller keys separately. The dials are live objects the studies page
+ * mutates in place, so their VALUES go in the key rather than a generation
+ * counter that nothing would bump.
+ */
+function dialsKey(moving: boolean, dpr: number): string {
+  const t = resTune(dpr, moving);
+  return (
+    `${t.tgt}|${t.kmax}|${t.minpx}|${WA.smooth}|${WA.ramp}|${WA.rampq}|` +
+    `${WA.hazecap}|${QWARM}|${LOOK.grain}|${LOOK.aerial}|${LOOK.palette}|` +
+    `${QF.warm}|${QF.relief}|${QF.xlam}|${QF.coast}|${WFLG.tint}`
+  );
+}
+
+function camKey(f: Frame): string {
+  const c = f.cam;
+  return `${f.W}x${f.H}@${f.dpr}|${c.cx}|${c.cy}|${c.scale}|${f.proj.rotDeg}|${f.proj.sA}|${f.proj.zex}`;
+}
+
 // ── one cell, painted as the piece of surface it is ─────────────────────────
+
+/**
+ * THE RAMP IS CACHED THE WAY `wallGrad` IS, AND FOR THE SAME REASON.
+ *
+ * `createLinearGradient` per cell is the mistake this file already recorded
+ * once: per face at block zoom it took `drawCity` from 60.3 ms to 74.0. On a
+ * uniform grid the cache hits hard, because **every cell in a surround ROW
+ * shares its two y-coordinates** — only the two colours vary along it — so the
+ * key is a row key plus a colour pair. Ends quantise to `WA.gq` CSS px, and
+ * the cache hangs off the CONTEXT, because a gradient belongs to the context
+ * that made it and the suite paints into a canvas of its own.
+ */
+const rampCaches = new WeakMap<
+  CanvasRenderingContext2D,
+  Map<string, CanvasGradient>
+>();
+
+function cellRamp(
+  ctx: CanvasRenderingContext2D,
+  down: boolean,
+  x0: number,
+  y0: number,
+  x2: number,
+  y2: number,
+  a: string,
+  b: string,
+): CanvasGradient {
+  let m = rampCaches.get(ctx);
+  if (!m) {
+    m = new Map();
+    rampCaches.set(ctx, m);
+  }
+  const q = WA.rampq;
+  const p0 = Math.round((down ? y0 : x0) / q) * q;
+  const p1 = Math.round((down ? y2 : x2) / q) * q;
+  const key = `${down ? "v" : "h"}|${p0}|${p1}|${a}|${b}`;
+  let g = m.get(key);
+  if (!g) {
+    g = down
+      ? ctx.createLinearGradient(0, p0, 0, p1 === p0 ? p0 + 1 : p1)
+      : ctx.createLinearGradient(p0, 0, p1 === p0 ? p0 + 1 : p1, 0);
+    g.addColorStop(0, a);
+    g.addColorStop(1, b);
+    if (m.size > 6000) m.clear();
+    m.set(key, g);
+  }
+  return g;
+}
 
 /**
  * The corner arrays are (screen x, screen y) at the four nodes.
@@ -996,6 +1664,59 @@ export function paintCell(
      way — the fast path's only advantage is skipping the bilinear, and the
      bilinear at k = 1 returns the same mean of the four corners. */
   if (kx === 1 && ky === 1 && bu === 0 && bv === 0) {
+    /* ── THE PIXEL FLOOR IS A STEP IN THE DERIVATIVE, AND AT DPR 1 IT LANDS
+           ON EVERY SURROUND CELL ────────────────────────────────────────
+       `k` is `min(ceil(d/tgt), floor(px/minpx))`, and `minpx` is 2 DEVICE px
+       at every DPR. At DPR 2 the surround cell is 12.02 x 7.38 device px and
+       the vertical subdivision runs up to 7; at DPR 1 the same cell is
+       6.01 x 3.69 and `floor(3.69/2)` pins `ky` to **1 on every cell of the
+       surround, whatever the value step is**. The cell is then painted as the
+       MEAN of its four nodes, so the bilinear surface this whole function
+       exists to draw is replaced by a staircase whose tread is the cell:
+       measured vertical cell-to-cell step median **1.48**, p95 **8.86**, max
+       **20.70** of 255, against a `tgt` of 1.5.
+
+       The floor itself is right and stays — a sub-quad finer than the pixel it
+       lands in is paint nobody can see. What is wrong is painting a CONSTANT
+       when the floor bites. A linear gradient down the cell is the same number
+       of fills, needs no sub-quad, and along the axis it runs on it is
+       **exactly** the bilinear surface: with `k = 1` in that axis the bilinear
+       reduces to a linear interpolation between the two edge means. The other
+       axis keeps the mean, which is what the flat path already did in both.
+
+       Only where the step is worth it (`> tgt`), and never while the camera is
+       moving — `resTune` sets `tgt = 0` for a move, which is also what pins
+       `kx`/`ky` to 1 there, so the guard on `tgt` keeps a gesture on exactly
+       the fills it had. */
+    const eU = Math.abs((cr[1] + cr[2]) - (cr[0] + cr[3])) * 0.5;
+    const eV = Math.abs((cr[3] + cr[2]) - (cr[0] + cr[1])) * 0.5;
+    const eUg = Math.abs((cg[1] + cg[2]) - (cg[0] + cg[3])) * 0.5;
+    const eVg = Math.abs((cg[3] + cg[2]) - (cg[0] + cg[1])) * 0.5;
+    const eUb = Math.abs((cb[1] + cb[2]) - (cb[0] + cb[3])) * 0.5;
+    const eVb = Math.abs((cb[3] + cb[2]) - (cb[0] + cb[1])) * 0.5;
+    const stepU = Math.max(eU, eUg, eUb);
+    const stepV = Math.max(eV, eVg, eVb);
+    if (WA.ramp && tgt > 0 && Math.max(stepU, stepV) > tgt) {
+      const down = stepV >= stepU;
+      const gA = down
+        ? rgbHex((cr[0] + cr[1]) * 0.5, (cg[0] + cg[1]) * 0.5, (cb[0] + cb[1]) * 0.5)
+        : rgbHex((cr[0] + cr[3]) * 0.5, (cg[0] + cg[3]) * 0.5, (cb[0] + cb[3]) * 0.5);
+      const gB = down
+        ? rgbHex((cr[3] + cr[2]) * 0.5, (cg[3] + cg[2]) * 0.5, (cb[3] + cb[2]) * 0.5)
+        : rgbHex((cr[1] + cr[2]) * 0.5, (cg[1] + cg[2]) * 0.5, (cb[1] + cb[2]) * 0.5);
+      ctx.fillStyle = cellRamp(ctx, down, x0, y0, x2, y2, gA, gB);
+      if (flat) ctx.fillRect(x0, y0, x1 - x0, y3 - y0);
+      else {
+        ctx.beginPath();
+        ctx.moveTo(x0, y0);
+        ctx.lineTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.lineTo(x3, y3);
+        ctx.closePath();
+        ctx.fill();
+      }
+      return 1;
+    }
     ctx.fillStyle = rgbHex(
       (cr[0] + cr[1] + cr[2] + cr[3]) * 0.25,
       (cg[0] + cg[1] + cg[2] + cg[3]) * 0.25,
@@ -1112,10 +1833,58 @@ export interface TerrainDrawResult {
  * a multiple of world y — but it is computed through the projection so a
  * bearing change still means something.
  */
+const terrainPlates: GroundPlate[] = [];
+
 export function drawTerrain(
   f: Frame,
   t: TerrainField,
   burnT = 0,
+): TerrainDrawResult {
+  const key =
+    `#${plateId(t)}|${camKey(f)}|${dialsKey(f.moving, f.dpr)}|${burnT}|${t.nodeGen}`;
+  const slot = plateFor(terrainPlates, f.W, f.H, f.dpr, key);
+  if (slot) {
+    if (!slot.hit) {
+      const r = rasteriseTerrain(
+        { ...f, ctx: slot.plate.g },
+        t,
+        burnT,
+      );
+      slot.plate.cells = r.cells;
+      slot.plate.subQuads = r.subQuads;
+      /*
+       * THE PAPER IS PART OF THE GROUND, NOT PART OF THE FRAME, and it belongs
+       * at the END of the ground rasterisation for the same reason the mock
+       * puts it there: there is one ground render and every caller gets the
+       * same one. Painting it around the CALL SITES instead satisfied neither
+       * side of the burn cross-fade assertion — 11/255 against a tolerance of
+       * 8 with one plate grained, 12 with both grained and the direct render
+       * not.
+       *
+       * It tooths the WHOLE plate, not only the cells, so the water and the
+       * surround under it come back with the same tooth on them: over a
+       * transparent plate pixel the tile composites premultiplied and the blit
+       * lays it over whatever is already there, which is exactly what filling
+       * the frame at this point in the paint order does.
+       */
+      paintGrain(slot.plate.g, f.W, f.H);
+    }
+    f.ctx.save();
+    f.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    f.ctx.drawImage(slot.plate.cv, 0, 0);
+    f.ctx.restore();
+    return { cells: slot.plate.cells, subQuads: slot.plate.subQuads };
+  }
+  // no canvas factory: paint straight through, and tooth the frame in place
+  const r = rasteriseTerrain(f, t, burnT);
+  paintGrain(f.ctx, f.W, f.H);
+  return r;
+}
+
+function rasteriseTerrain(
+  f: Frame,
+  t: TerrainField,
+  burnT: number,
 ): TerrainDrawResult {
   const { ctx, W, H } = f;
   const tune = resTune(f.dpr, f.moving);
@@ -1255,6 +2024,27 @@ export interface SurroundGrid {
   readonly segs: Uint16Array;
   /** far-to-near cell order */
   readonly order: Int32Array;
+  /**
+   * THE LAND BIT, WHICH THE SHELL HAS ALWAYS SUPPLIED AND NOBODY DECLARED.
+   *
+   * `data.ts` decodes `base/surround`'s `own`/`land` bitsets and the shell
+   * hands `drawSurround` a grid carrying an `isLand(i, j)`. It was reachable
+   * only through a cast — `scene.ts` keeps a private `isLandOf()` whose whole
+   * body is that cast, and `water.ts`'s shore corridor needs the same bit for
+   * the reference's own `wet` test. Optional, because a grid supplied by a
+   * test is not obliged to have one, and a caller that has no land bit gets
+   * no corridor rather than a corridor built on a guess.
+   */
+  readonly isLand?: (i: number, j: number) => boolean;
+  /**
+   * The surround's own published names, if the shell is carrying them.
+   *
+   * `data.ts` decodes `base/surround`'s seven `labels` into `SurroundData`, and
+   * the shell hands `drawSurround` a spread of that record — so the names are
+   * ALREADY here at runtime and were simply not declared. Optional, because a
+   * grid supplied by a test is not obliged to have any.
+   */
+  readonly labels?: readonly SurroundName[];
 }
 
 /**
@@ -1349,13 +2139,122 @@ const xn = {
 /** `g.order` as a membership test, per grid — see `drawSurround` */
 const ownSets = new WeakMap<SurroundGrid, Uint8Array>();
 
+/**
+ * THE SURROUND'S COASTLINE IS THE PUBLISHED RING, NOT THE CELL EDGE.
+ *
+ * `part3.html` §4426 sets ONE clip for the whole surround at the published
+ * shoreline and draws every cell inside it, rather than a clip per coastal
+ * cell. Without it the far shore is the 110.01 x 139.15 m cell lattice: a
+ * staircase whose tread is longer than a San Francisco block, on the two edges
+ * of the frame the eye reads as the horizon.
+ *
+ * **The ring sits ON the surface, not above it.** The cell quads take each
+ * corner at that corner's own node elevation, so the drawn surface inside a
+ * cell is the bilinear interpolation of the four; `proj()` is linear in
+ * (x, y, z), so the bilinear interpolation of the four PROJECTED corners is
+ * exactly the projection of the bilinearly interpolated surface, and a ring
+ * vertex sampled the same way lands exactly on the quad it is cutting. A flat
+ * sea-level ring would slice the tops off the Marin headlands wherever the
+ * coast is a cliff.
+ *
+ * What is NOT ported, and it is a real difference rather than an omission:
+ * the mock's `CO.reach` and `CO.city` bits (`COAST.xtra` / `COAST.cfix`, one
+ * per grid cell) are not in this export — `base/coast` ships the rings and the
+ * burn polygon and nothing else. `reach` lets a water cell that touches
+ * surround land be painted so the fill can REACH the ring; without it the fill
+ * stops at the last cell whose centre is land, and where that cell is more than
+ * one cell short of the ring a sliver of plate shows between the two. Measured
+ * rather than assumed — see SHELL.md. **REPORTED to P1: `surround` wants
+ * `xtra`.**
+ */
+function surroundZ(g: SurroundGrid, x: number, y: number): number {
+  const dx = (g.mx[g.XW] - g.mx[0]) / g.XW,
+    dy = (g.my[g.XH] - g.my[0]) / g.XH;
+  let u = (x - g.mx[0]) / dx,
+    v = (y - g.my[0]) / dy;
+  let i = u | 0,
+    j = v | 0;
+  if (i < 0) i = 0;
+  if (j < 0) j = 0;
+  if (i > g.XW - 1) i = g.XW - 1;
+  if (j > g.XH - 1) j = g.XH - 1;
+  let fu = u - i,
+    fv = v - j;
+  if (fu < 0) fu = 0;
+  if (fu > 1) fu = 1;
+  if (fv < 0) fv = 0;
+  if (fv > 1) fv = 1;
+  const i1 = i < g.XW - 1 ? i + 1 : i,
+    j1 = j < g.XH - 1 ? j + 1 : j;
+  const a = g.z(i, j),
+    b = g.z(i1, j),
+    c = g.z(i1, j1),
+    d = g.z(i, j1);
+  return (a + (b - a) * fu) * (1 - fv) + (d + (c - d) * fu) * fv;
+}
+
+const surroundPlates: GroundPlate[] = [];
+
 export function drawSurround(
   f: Frame,
   t: TerrainField,
   g: SurroundGrid | null,
+  coast?: readonly (readonly (readonly [number, number])[])[] | null,
 ): number {
   if (!g) return 0;
+  /*
+   * 226 ms of the 404 ms whole-city rasterisation, MEASURED — see
+   * `GROUND_PLATE`. The same plate, on the same terms: 56,330 cells that do
+   * not change when the year, the tier or a chunk does, and a key that carries
+   * the camera so nothing is ever resampled.
+   */
+  const key =
+    `#${plateId(g)}|${camKey(f)}|${dialsKey(f.moving, f.dpr)}|${t.nodeGen}|` +
+    `${xn.key}|${coast ? coast.length : -1}`;
+  const slot = plateFor(surroundPlates, f.W, f.H, f.dpr, key);
+  if (slot) {
+    if (!slot.hit)
+      slot.plate.subQuads = rasteriseSurround(
+        { ...f, ctx: slot.plate.g },
+        t,
+        g,
+        coast,
+      );
+    f.ctx.save();
+    f.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    f.ctx.drawImage(slot.plate.cv, 0, 0);
+    f.ctx.restore();
+    return slot.plate.subQuads;
+  }
+  return rasteriseSurround(f, t, g, coast);
+}
+
+function rasteriseSurround(
+  f: Frame,
+  t: TerrainField,
+  g: SurroundGrid,
+  coast?: readonly (readonly (readonly [number, number])[])[] | null,
+): number {
   const { ctx, W, H } = f;
+  /* ONE clip, set once, and every cell drawn inside it. Every ring is closed
+     and the interiors nest, so this fills non-zero exactly as the polygon was
+     built. `QF.coast` turns it off in one page for a before/after. */
+  const clipping = QF.coast && !!coast && coast.length > 0;
+  if (clipping && coast) {
+    ctx.save();
+    ctx.beginPath();
+    for (const ring of coast) {
+      for (let i = 0; i < ring.length; i++) {
+        const x0 = ring[i][0],
+          y0 = ring[i][1];
+        const p = f.proj.proj(x0, y0, surroundZ(g, x0, y0));
+        if (i) ctx.lineTo(sx(f, p), sy(f, p));
+        else ctx.moveTo(sx(f, p), sy(f, p));
+      }
+      ctx.closePath();
+    }
+    ctx.clip();
+  }
   const tune = resTune(f.dpr, f.moving);
   const XNW = g.XW + 1,
     XNH = g.XH + 1;
@@ -1485,6 +2384,11 @@ export function drawSurround(
     ctx.lineTo(sx(f, b), sy(f, b));
   }
   ctx.stroke();
+  if (clipping) ctx.restore();
+  /* the surround's names, with the ground and not with the city — which is
+     where `part3.html` paints them, from inside `drawTerrain` and after the
+     surround's own coastline */
+  if (g.labels && g.labels.length) surroundNames(f, g.labels, (x, y) => surroundZ(g, x, y));
   return subQuads;
 }
 

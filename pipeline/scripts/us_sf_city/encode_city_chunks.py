@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import base64
 import json
+import math
 import pathlib
 import sys
 
@@ -34,7 +35,7 @@ import numpy as np
 from _bldgsrc import read_bldg, rechain
 from _chunk import ChunkWriter
 from _grid import CELL, NX, NY, ORIGIN_X, ORIGIN_Y, cell_extent, cell_id, cells_of
-from _srcload import MOCK, ROOT, load, unb64
+from _srcload import MOCK, ROOT, load, load_json, unb64
 
 OUT = ROOT / "website" / "public" / "data" / "us" / "sf" / "city"
 # Every top-level directory under OUT that THIS script writes, and no other.
@@ -49,7 +50,14 @@ CHUNK_DIRS = ("base", "bldg", "face", "strt", "tree", "water1")
 Z_MASSING = 0.0     # base tier: always
 Z_BUILDINGS = 1.55  # LOD_Z0 — the dissolve begins; footprints start arriving
 Z_TREES = 2.90      # VZ_T0 in part3 — street trees fade in
-Z_STREET = 2.90     # the street SURFACE gate is per-feature px, not a zoom
+Z_STREET = 1.75     # the street SURFACE gate is per-feature px, not a zoom — and this
+                    # constant is only the FETCH policy, which has to be satisfied before
+                    # the gate can open. It was 2.90, borrowed from Z_TREES, so the data
+                    # arrived a whole band after the mock starts drawing carriageway.
+                    # Measured: at z=1.75 both builds draw 0 cells; at z=1.80 the mock
+                    # draws 1,157 and production drew 0 because the tier was never asked
+                    # for. 1.75 is the last zoom at which neither draws, so the chunk is
+                    # in hand the moment the per-feature rule opens. See SHELL.md §13.
 Z_FACADE = 4.00     # the facade generator engages when a wall is worth openings
 Z_WATER1 = 3.00     # the 4x-refined bathymetry
 Z_CANOPY = 1.55     # VZ_C0 in part3 — canopy blobs fade in
@@ -334,11 +342,23 @@ def _bldg_prov() -> dict:
                         not_measured="the roof from above TODAY. Not the colour anyone painted "
                                      "the front, not a claim about roofing material, and not the "
                                      "colour the building was in any past year."),
-        "paintFlag": src("paint"),
+        "paintFlag": src(
+            "paint_flag", publisher="Esri World Imagery (ArcGIS Online public tiles)",
+            what="SAMPLE QUALITY, one bit per condition, NOT a coverage flag: 1 = the "
+                 "footprint is more than half tree canopy in the imagery (1,889), 2 = "
+                 "more than half deep shadow (829), 4 = no sample was returned and "
+                 "paintIdx holds the city median instead (124). 163,480 of 166,166 "
+                 "carry none of the three. `paintIdx` is a measurement for every "
+                 "building whose bit 4 is CLEAR — 166,042 of 166,166, 99.9 % — which is "
+                 "the field a reader of this column wants, and is why the bit names "
+                 "ship beside it.",
+            not_measured="anything about whether the colour exists. A zero here means "
+                         "the sample was CLEAN, not that there was none."),
     }
 
 
-def encode_buildings(B: dict, ROOFD: dict, PAINT: dict, solo: np.ndarray) -> dict:
+def encode_buildings(B: dict, ROOFD: dict, PAINT: dict, solo: np.ndarray,
+                     PROJ_DOWNTOWN) -> dict:
     n = B["n"]
     cnt, off, IX, IY = B["cnt"], B["off"], B["IX"], B["IY"]
     st = np.frombuffer(unb64(ROOFD["st"]), dtype=np.uint8)   # packed nibbles
@@ -401,8 +421,16 @@ def encode_buildings(B: dict, ROOFD: dict, PAINT: dict, solo: np.ndarray) -> dic
             stats["cells"] += 1
             stats["bytes"] += e["b"]
             stats["gzip"] += e["gz"]
+    dtx, dty = PROJ_DOWNTOWN
+    maxR = float(np.hypot(B["cx"] - dtx, B["cy"] - dty).max())
     return {**stats, "useNames": B["useNames"], "n": n, "nSolo": int(solo.sum()),
-            "palette": PAINT["pal"], "hq": ROOFD["hq"]}
+            "maxR": round(maxR, 3),
+            "palette": PAINT["pal"], "hq": ROOFD["hq"],
+            # THE BIT NAMES TRAVEL WITH THE COLUMN. `paintFlag` is a sample-quality
+            # byte, not a coverage byte, and a reader who cannot see which bit is
+            # which cannot tell a canopied roof from a missing one.
+            "paintFlagBits": PAINT["flagBits"],
+            "paintSampled": int((pflag & PAINT["flagBits"]["nosample"] == 0).sum())}
 
 
 def encode_facades(FACD: dict, B: dict, solo: np.ndarray) -> None:
@@ -617,6 +645,7 @@ def encode_streets(STS: dict) -> dict:
     kerb ring of emxt-b6yg that meets it. Nothing is offset, buffered or widened;
     the boundary between pavement and carriageway is the published kerb and
     nothing else."""
+    _line_sources()
     n = STS["n"]
     R = _decode_rings(STS, "rn", "rlen", "rf", "rxy")
     D = _decode_rings(STS, "dn", "dlen", "df", "dxy")
@@ -705,13 +734,350 @@ def encode_streets(STS: dict) -> dict:
     emit(w, tier="strt", minZ=Z_STREET, extent=None,
          prov={"islandLen": src("street_row"), "islandXY": src("street_row"),
                "stairLen": src("street_row"), "stairXY": src("street_row"),
-               "cov": src("street_year")},
+               "cov": src("street_cover")},
          extra={"q": STS["q"], "ox": STS["ox"], "oy": STS["oy"],
                 "stairNames": STS["snm"], "covn": STS["covn"]},
          note="1,120 published islands and 268 published stair runs, citywide — too few "
               "to tile. Coordinates are u16 at scale q from (ox, oy): world = ox + v*q. "
-              "`cov` is one bit per right of way: does the Board's record cover it?")
+              "`cov` is one bit per CENTRELINE — NOT per right of way, which this note "
+              "said for four blocks and which `covn` = 4,895 refutes. It is indexed by "
+              "gen/geo-data.js's own G.streets order, LSB first within each byte, and "
+              "street/build_surface.py sets it by testing that centreline's own midpoint "
+              "against the published right-of-way polygons.")
     return {**stats, "n": n, "stats": STS["stats"], "cite": STS["cite"]}
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# STREET CENTRELINES — the city of lines, and the names written along it
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# `3psu-pn9h` publishes 17,170 centreline segments; geo/build_streets.py keeps
+# the 16,676 that are neither platted-but-unbuilt nor degenerate, and
+# gen/gen_geo2.py ships the 4,895 of classcode 0-4 as `G.streets`. THAT ARRAY IS
+# THE INDEX THE WHOLE LAYER IS KEYED ON: `TIME.street.yr` is one entry per
+# element of it, and so is `street-data.js`'s `cov` mask, whose own note says a
+# regenerated geo-data.js must not be able to shift it by one. So the chunks
+# below keep the shipped array's ORDER, carry `fid` — the index itself — and the
+# verifier checks every `cov` bit against the citywide mask AT `fid` rather than
+# trusting a position.
+#
+# TWO CHUNKS, SPLIT ON THE CLASS GATE AND NOT ON A CELL.
+#   `ST_CLS_MAX` is [2, 3, 4] by LOD band, so band 0 — the whole-city frame —
+#   strokes classes 0-2 and nothing else. Those 999 lines ARE the wide shot's
+#   street network, so they are base tier and fetched before the first paint.
+#   Classes 3 and 4 cannot be drawn until band 1 (z >= sqrt(1 * 2.9) = 1.7029)
+#   and are fetched at 1.70 and not before. That is this record's own rule —
+#   nothing is fetched before the camera can show it — applied to the axis this
+#   layer is actually gated on.
+#
+#   NOT TILED, for two measured reasons. (1) A centreline runs up to 3.1 km, so
+#   a 1024 m cell cannot hold one: placing a feature by its midpoint and culling
+#   on the cell's extent would drop Sloat Blvd from a frame showing its western
+#   end. `strt` does not have this problem because a right of way is a small
+#   ring. (2) The whole network is 14,432 vertices; spread over 125 cells that is
+#   39 features and ~1.3 KB a request, and `strt`'s own note puts the useful cell
+#   at ~35 KB.
+LINE_BASE_CLS_MAX = 2    # ST_CLS_MAX[0] — website/src/lib/city/streets.ts
+Z_LINES_2 = 1.70         # BANDS[0] = sqrt(ZSTEPS[0] * ZSTEPS[1]) = 1.7029
+LABEL_BASE_RANK_MAX = 1  # part3.html L7025: rankMax at cam.step 1
+
+
+def _line_sources() -> None:
+    """Register the centreline and label sources WITH their notes, once.
+
+    `src()` is a setdefault: the first call for a key fixes its note, so a bare
+    `src("street_cover")` reached first would freeze an empty one. Every key the
+    three street-line chunks use is defined here, and `encode_streets` calls
+    this before any of them is referenced.
+    """
+    src("street_centreline", dataset="3psu-pn9h", publisher="DataSF",
+        what="the published centreline of classcode 0-4, in world metres",
+        quantised="0.1 m, after Douglas-Peucker at 3.0 m in geo/build_streets.py",
+        derived_from=["geo/build_streets.py", "gen/gen_geo2.py"])
+    src("street_centreline_index", dataset="3psu-pn9h", publisher="DataSF",
+        what="the centreline's index in gen/geo-data.js `G.streets` — the order "
+             "TIME.street.yr and street-data.js's `cov` are BOTH keyed on, carried so "
+             "neither can be shifted by one silently",
+        script="scratchpad/sf-city-anim/gen/gen_geo2.py")
+    src("street_name", dataset="3psu-pn9h", publisher="DataSF",
+        what="`streetname`. gen_geo2.py drops the column, so it is joined back onto the "
+             "shipped array by replaying geo/build_streets.py's filter and checking "
+             "every feature's own first vertex against the shipped one")
+    src("street_line_year",
+        publisher="San Francisco Board of Supervisors / DataSF",
+        what="the earlier of (a) the year the Board's Journal records street work on "
+             "this cnn and (b) the earliest wv5m-vpq2 roll year among the ynuv-fyni "
+             "footprints within 40 m of the line. 0 = undated and the line is drawn in "
+             "every year; 1,929 of the 4,895 are bounded at or before 1906, which is "
+             "the map's first year, and read 0 for that reason",
+        not_measured="3psu-pn9h's own date_added is a 1998 bulk load and carries no "
+                     "street history — 14,514 of 17,170 rows share one date",
+        script="scratchpad/sf-city-anim/time/build_time.py")
+    src("street_cover", derived_from=["h8n7-e4ns"], publisher="DataSF",
+        what="one bit per CENTRELINE, LSB first within each byte: does a published "
+             "right of way contain this centreline's own midpoint? 4,361 of 4,895 do; "
+             "the other 534 are the park roads, the Great Highway, Sloat and the "
+             "freeways, and they keep their line at every zoom",
+        script="scratchpad/sf-city-anim/street/build_surface.py")
+    src("street_label", dataset="3psu-pn9h", publisher="DataSF",
+        what="one label per continuous STRETCH of a named street: union-find over "
+             "segment endpoints snapped to 25 m, anchored at the midpoint of the "
+             "longest near-straight run inside the stretch. `len` is the summed length "
+             "of that stretch's own segments in metres; `rank` is build_streets.py's "
+             "LABEL RANK (classcode 2/3 -> 0, 4 -> 1, 5 -> 2, 0 -> 3, 1 -> 4, 6 -> 5) "
+             "and is NOT the classcode",
+        script="scratchpad/sf-city-anim/geo/build_streets.py")
+    src("street_label_year",
+        what="the year of the earliest centreline in this label's own stretch; 0 = the "
+             "name is written in every year",
+        derived_from=["street_line_year"],
+        script="scratchpad/sf-city-anim/time/build_time.py")
+
+
+def _centrelines(GEO2: dict) -> dict:
+    """The 4,895 shipped centrelines, with `cnn` and `streetname` joined back on.
+
+    gen_geo2.py drops both columns — the mock draws the network without ever
+    naming a line — so they are recovered by replaying geo/build_streets.py's
+    filter over the fetched dataset (LineString, not a PAPER layer, at least two
+    vertices) and taking the classcode 0-4 rows in order.
+
+    THE JOIN IS PROVED, NOT ASSUMED. Every one of the 4,895 rows has to land its
+    own first vertex on the shipped `ox`/`oy` and carry the shipped classcode.
+    Douglas-Peucker keeps a line's first and last vertex, so the first vertex
+    survives the 3 m simplify untouched and is an exact witness; measured, the
+    worst disagreement over all 4,895 is 0.0002 m, which is the float32 the mock
+    stores it in. A single mismatch raises: a name attached to the wrong line is
+    worse than no name at all.
+    """
+    S = GEO2["streets"]
+    n = int(S["n"])
+    cnt = _u16(S["cnt"])
+    cls = _u8(S["cls"])
+    ox = np.frombuffer(unb64(S["ox"]), dtype=np.float32)
+    oy = np.frombuffer(unb64(S["oy"]), dtype=np.float32)
+    vx = _i16(S["x"]).astype(np.float64)
+    vy = _i16(S["y"]).astype(np.float64)
+    off = np.zeros(n + 1, dtype=np.int64)
+    np.cumsum(cnt.astype(np.int64), out=off[1:])
+    x = np.empty(int(off[-1]), dtype=np.float32)
+    y = np.empty(int(off[-1]), dtype=np.float32)
+    for i in range(n):
+        a, b = int(off[i]), int(off[i + 1])
+        x[a:b] = ox[i] + vx[a:b] / 10.0
+        y[a:b] = oy[i] + vy[a:b] / 10.0
+
+    # geo/build_streets.py's own frame and its own filter, restated once
+    PAPER = {"PAPER", "PAPER_FWYS", "PAPER_WATER", "PSEUDO"}
+    LON0, LAT0, MPD = -122.4380, 37.7600, 111320.0
+    KX = MPD * math.cos(math.radians(LAT0))
+    KY = MPD
+    rows = load_json("geo/cache/streets.json")
+    cnn = np.zeros(n, dtype=np.uint32)
+    name = [""] * n
+    k = 0
+    worst = 0.0
+    for r in rows:
+        g = r.get("line")
+        if not g or g.get("type") != "LineString":
+            continue
+        if (r.get("layer") or "") in PAPER:
+            continue
+        cs = g["coordinates"]
+        if len(cs) < 2:
+            continue
+        cc = (r.get("classcode") or "").strip()
+        if not (cc.isdigit() and int(cc) <= 4):
+            continue
+        if k >= n:
+            raise ValueError("more classcode 0-4 rows than gen/geo-data.js ships")
+        px = round((cs[0][0] - LON0) * KX, 1)
+        py = round((cs[0][1] - LAT0) * KY, 1)
+        d = max(abs(px - float(ox[k])), abs(py - float(oy[k])))
+        if d > 0.01:
+            raise ValueError(f"centreline {k}: first vertex ({px}, {py}) is not the "
+                             f"shipped ({float(ox[k])}, {float(oy[k])})")
+        worst = max(worst, d)
+        if int(cc) != int(cls[k]):
+            raise ValueError(f"centreline {k}: classcode {cc} is not the shipped "
+                             f"{int(cls[k])}")
+        cnn[k] = np.uint32(int(r["cnn"]))
+        name[k] = (r.get("streetname") or "").strip()
+        k += 1
+    if k != n:
+        raise ValueError(f"joined {k} published rows onto {n} shipped centrelines")
+
+    # a second, independent derivation of the same join, where the mock kept one
+    shipcnn = MOCK / "time" / "out" / "ship-cnn.json"
+    if shipcnn.exists():
+        other = json.loads(shipcnn.read_text())
+        if len(other) != n or any(int(other[i]) != int(cnn[i]) for i in range(n)):
+            raise ValueError("the cnn join disagrees with time/out/ship-cnn.json")
+    return {"n": n, "cnt": cnt, "cls": cls, "off": off, "x": x, "y": y,
+            "cnn": cnn, "name": name, "worstJoin": worst}
+
+
+def encode_centrelines(GEO2: dict, TIMED: dict, STS: dict, names: list,
+                       nidx: dict) -> dict:
+    """The centreline network, in the two chunks band 0 and band 1 ask for."""
+    C = _centrelines(GEO2)
+    n = C["n"]
+    yr = _u16(TIMED["street"]["yr"])
+    if yr.size != n:
+        raise ValueError(f"TIME.street.yr has {yr.size} entries for {n} centrelines")
+    covn = int(STS["covn"])
+    if covn != n:
+        raise ValueError(f"street-data.js covn={covn} for {n} centrelines — the mask is "
+                         "keyed on gen/geo-data.js and the two have drifted apart")
+    cov = np.unpackbits(_u8(STS["cov"]), bitorder="little")[:n]
+
+    nm = np.full(n, 0xFFFF, dtype=np.uint16)
+    for i, t in enumerate(C["name"]):
+        if not t:
+            continue
+        j = nidx.get(t)
+        if j is None:
+            j = nidx[t] = len(names)
+            names.append(t)
+        nm[i] = j
+
+    prov = {
+        "fid": src("street_centreline_index"),
+        "cls": src("street_cls"),
+        "cnn": src("street_centreline"),
+        "nm": src("street_name"),
+        "yr": src("street_line_year"),
+        "cov": src("street_cover"),
+        "len": src("street_centreline"),
+        "x": src("street_centreline"), "y": src("street_centreline"),
+    }
+    stats = {"n": n, "dated": int((yr > 0).sum()), "covered": int(cov.sum()),
+             "unnamed": int((nm == 0xFFFF).sum()), "vertices": int(C["off"][-1]),
+             "worstJoinM": round(float(C["worstJoin"]), 6), "chunks": {}}
+    for key, tier, minZ, lo, hi in (
+        ("base/street-lines", "base", Z_MASSING, 0, LINE_BASE_CLS_MAX),
+        ("strt/street-lines-2", "strt", Z_LINES_2, LINE_BASE_CLS_MAX + 1, 255),
+    ):
+        ids = np.nonzero((C["cls"] >= lo) & (C["cls"] <= hi))[0]
+        vsel = np.concatenate([np.arange(C["off"][i], C["off"][i + 1]) for i in ids])
+        w = ChunkWriter(key, "strt-line")
+        w.add("fid", "u32", ids.astype(np.uint32))
+        w.add("cls", "u8", C["cls"][ids])
+        w.add("cnn", "u32", C["cnn"][ids])
+        w.add("nm", "u16", nm[ids])
+        w.add("yr", "u16", yr[ids])
+        pack = np.packbits(cov[ids].astype(np.uint8), bitorder="little")
+        w.add_bytes("cov", "u8", pack.tobytes(), int(pack.size))
+        w.add("len", "u16", C["cnt"][ids])
+        w.add("x", "f32", C["x"][vsel]).add("y", "f32", C["y"][vsel])
+        emit(w, tier=tier, minZ=minZ,
+             extent=[float(C["x"][vsel].min()), float(C["y"][vsel].min()),
+                     float(C["x"][vsel].max()), float(C["y"][vsel].max())],
+             prov=prov,
+             extra={"n": int(ids.size), "clsMin": lo,
+                    "clsMax": int(C["cls"][ids].max()),
+                    "vertices": int(vsel.size), "covered": int(cov[ids].sum()),
+                    "dated": int((yr[ids] > 0).sum())},
+             note="The published street centrelines, ABSOLUTE in world metres (f32) — "
+                  "`strt`'s own choice for `strt`'s own reason, and here it is what "
+                  "makes a chunk independently decodable. `cov` is one bit per feature "
+                  "IN THIS CHUNK, LSB first, re-indexed from the citywide mask through "
+                  "`fid`: pass 0 of the draw strokes the covered lines and fades them as "
+                  "the right of way becomes a surface, pass 1 strokes the uncovered ones "
+                  "and never fades them. `yr` 0 means undated and an undated line is "
+                  "drawn in every year. `nm` indexes `names` on base/street-labels, and "
+                  "0xFFFF is a centreline the City publishes no name for. The split "
+                  "between the two chunks is ST_CLS_MAX — the LOD band's own class gate "
+                  "— and not the 1024 m grid: a centreline runs up to 3.1 km and does "
+                  "not fit in a cell.")
+        e = chunks[-1]
+        stats["chunks"][key] = {"n": int(ids.size), "b": e["b"], "gz": e["gz"]}
+    return stats
+
+
+def encode_street_labels(GEO2: dict, TIMED: dict, names: list, nidx: dict) -> dict:
+    """The street NAMES — 2,786 stretches over 2,292 distinct names.
+
+    geo/build_streets.py builds a stretch by union-find over segment endpoints
+    snapped to 25 m, because linemerge alone leaves Market Street in 78 pieces;
+    the anchor is the midpoint of the longest near-straight run inside the
+    stretch, so the name lies along a straight rather than bending round a
+    corner. `rank` is that file's LABEL rank and not the classcode: the arterials
+    take rank 0-1 and the freeways fall to the bottom, because a freeway is the
+    least useful thing to name on a map of San Francisco.
+
+    `dx`/`dy` ship as i16 at x10000. The source rounds the unit vector to four
+    decimals, so that is an EXACT integer and the round trip is lossless. They
+    are a direction and not a place: `part3.html` L7086 pushes (dx, dy) through
+    proj() as a point and takes the angle of the difference from proj(0, 0).
+
+    TWO CHUNKS, SPLIT ON THE REFERENCE'S OWN BAND GATE. `part3.html` L7025 is
+    `rankMax = cam.step===0 ? 0 : (cam.step===1 ? 1 : 2)`, so the whole-city
+    frame can write rank 0 and the district frame rank 0-1 — 337 of the 2,786.
+    Those are base tier. The 2,449 local stretches cannot be written below band
+    1 and are fetched at 1.70 beside the class 3-4 centrelines.
+    """
+    LB = GEO2["labels"]
+    n = len(LB["i"])
+    for t in LB["t"]:
+        if t not in nidx:
+            nidx[t] = len(names)
+            names.append(t)
+    nm = np.array([nidx[LB["t"][i]] for i in LB["i"]], dtype=np.uint16)
+    lyr = _u16(TIMED["label"]["yr"])
+    if lyr.size != n:
+        raise ValueError(f"TIME.label.yr has {lyr.size} entries for {n} labels")
+    rank = np.asarray(LB["r"], dtype=np.uint8)
+    lx = np.asarray(LB["x"], dtype=np.float32)
+    ly = np.asarray(LB["y"], dtype=np.float32)
+    dx = np.round(np.asarray(LB["dx"], dtype=np.float64) * 10000).astype(np.int16)
+    dy = np.round(np.asarray(LB["dy"], dtype=np.float64) * 10000).astype(np.int16)
+    L = np.asarray(LB["L"], dtype=np.int64)
+    if int(L.max()) > 65535:
+        raise ValueError("a stretch is longer than u16 metres")
+
+    prov = {
+        "nm": src("street_name"),
+        "rank": src("street_label"), "len": src("street_label"),
+        "x": src("street_label"), "y": src("street_label"),
+        "dx": src("street_label"), "dy": src("street_label"),
+        "yr": src("street_label_year"),
+    }
+    out: dict = {}
+    for key, tier, minZ, lo, hi in (
+        ("base/street-labels", "base", Z_MASSING, 0, LABEL_BASE_RANK_MAX),
+        ("strt/street-labels-2", "strt", Z_LINES_2, LABEL_BASE_RANK_MAX + 1, 255),
+    ):
+        ids = np.nonzero((rank >= lo) & (rank <= hi))[0]
+        w = ChunkWriter(key, "strt-label")
+        w.add("nm", "u16", nm[ids])
+        w.add("rank", "u8", rank[ids])
+        w.add("yr", "u16", lyr[ids])
+        w.add("len", "u16", L[ids].astype(np.uint16))
+        w.add("x", "f32", lx[ids]).add("y", "f32", ly[ids])
+        w.add("dx", "i16", dx[ids]).add("dy", "i16", dy[ids])
+        emit(w, tier=tier, minZ=minZ,
+             extent=[float(lx[ids].min()), float(ly[ids].min()),
+                     float(lx[ids].max()), float(ly[ids].max())],
+             prov=prov,
+             extra={"n": int(ids.size), "rankMin": lo,
+                    "rankMax": int(rank[ids].max()),
+                    "dated": int((lyr[ids] > 0).sum()),
+                    **({"names": names, "distinct": len(names),
+                        "dxyScale": 10000, "lenUnit": "m"} if tier == "base" else {})},
+             note="`names` is the whole street-name table for this record and it travels "
+                  "with the BASE chunk, because base/street-lines indexes it too: a name "
+                  "exists once on the wire, and 0xFFFF on a centreline means the City "
+                  "publishes none for it. `dx`/`dy` are the stretch's unit direction at "
+                  "x10000 — an exact integer, because the source rounds to four decimals "
+                  "— and are pushed through proj() as a POINT to get the angle the name "
+                  "is set at. `yr` 0 means the name is written in every year. The split "
+                  "between the two chunks is part3.html L7025's own `rankMax` by LOD "
+                  "band: rank 0 at whole city, 0-1 at district, everything at block.")
+        e = chunks[-1]
+        out[key] = {"n": int(ids.size), "b": e["b"], "gz": e["gz"]}
+    return {"n": n, "distinct": len(names), "dated": int((lyr > 0).sum()),
+            "chunks": out}
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -1412,6 +1778,194 @@ def _seg_dist(px: float, py: float, a, b) -> float:
     return math.hypot(px - (a[0] + vx * t), py - (a[1] + vy * t))
 
 
+def encode_form(FORM: dict, TYPO: dict, LRD: dict, B: dict) -> dict:
+    """`form-data.js` (Block C) and `typo-data.js`'s mast (the third solid).
+
+    THIS IS THE CHUNK THE 68 SHAPED CAPS WERE BLOCKED ON, AND THE REASON IS
+    WORTH KEEPING. `base/caps` has shipped `bi` and `prof` and the six-entry
+    profile table since P4: which building gets a dome, which gets a spire, and
+    what a dome's silhouette is. What it never shipped is the SOLID the profile
+    shapes. `lrStep` sweeps a profile around a cap whose top, radius, plan
+    angle and centre come from somewhere else entirely — `window.FORM` — so
+    with `base/form` missing there was a shape and nothing to put it on, and
+    all 68 caps, the second solid under them and the third solid beside them
+    were absent from a page that had every byte of the shape.
+
+    ── WHAT THE SECOND SOLID IS ────────────────────────────────────────────
+    Every one of the 166,166 buildings is drawn as one prism at `hgt_mediancm`.
+    A median is right for a building's MASS and wrong for its SILHOUETTE: it is
+    by construction the height half the roof is below, so a tower, a drum, a
+    campanile or a penthouse — anything a MINORITY of the roof does — is
+    averaged out of existence. The Ferry Building publishes a median of 15.2 m
+    and a maximum of 71.4 m; the page drew 15.2 and the clock tower was gone.
+
+    `form/model3.py` recovers the second plane from three published columns and
+    a cell count, with no fitting:
+
+        L  = hgt_mediancm             the plane already drawn — UNCHANGED
+        T  = hgt_maxcm                the highest 50 cm cell in the footprint
+        f  = (hgt_meancm - L)/(T - L) the fraction of cells that must stand at
+                                      T for the published MEAN to come out
+        A2 = f * hgt_cells50cm * 0.25 the upper plane's area, m2
+
+    gated at `T - L >= 6 m` (one San Francisco storey, from that file's own
+    calibration of LIDAR height against the assessor's storey count) and
+    `A2 >= 58.06 m2` (25 ft x 25 ft, one San Francisco lot frontage squared —
+    below it sits the stair bulkhead, the lift overrun, the chimney and the
+    aerial). It fires on 488 footprints, 0.29 % of the city.
+
+    ── AND THE THIRD ──────────────────────────────────────────────────────
+    The step model cannot see a steeple: a steeple is a handful of 50 cm cells
+    and fails the area gate by two orders of magnitude. `typo/mast.py` reaches
+    it through the PUBLISHED CLASS of the place under it, which is not a
+    marginal enrichment — church 18 of 25, against a base rate of 2.1 % — and
+    guards it with two other published instruments disagreeing: the aerial
+    imagery's canopy flag (a LIDAR maximum over an overhanging tree is the
+    tree) and a neighbouring footprint within 12 m publishing 85 % of the same
+    maximum (two footprints that close cannot be told apart by a zonal
+    statistic over either). 40 masts, and their plan is DECLARED at the same
+    58.06 m2 on a footprint at least four times that.
+
+    Both are one stream here for the same reason they are one stream in the
+    mock: a mast is drawn by the SECOND solid's own machinery — same octagon,
+    same projection, same painter's order, same year gate — and not one line of
+    any draw loop is added for it.
+
+    ── WHAT IS NOT SHIPPED ────────────────────────────────────────────────
+    `FORM.k`, the inset ratio. `build_form.py` built two outlines and compared
+    them on screen: INSET scales the footprint's own ring to the derived area,
+    which on the Ferry Building draws a 26 x 7 m blade at 71 m and asserts a
+    SHAPE for the tower that nothing measured. CORE — a regular octagon of the
+    derived area, turned onto the footprint's own dominant edge direction —
+    asserts only the area, which is the thing that was derived. CORE is what
+    the mock draws, `k` has no reader anywhere in `part1-4.html`, and shipping
+    a field whose only use was rejected would invite someone to use it.
+    """
+    fi = np.frombuffer(unb64(FORM["i"]), dtype=np.uint32)
+    ft = np.frombuffer(unb64(FORM["t"]), dtype=np.uint16)
+    fr = np.frombuffer(unb64(FORM["r"]), dtype=np.uint16)
+    fa = np.frombuffer(unb64(FORM["an"]), dtype=np.uint8)
+    fdx = np.frombuffer(unb64(FORM["dx"]), dtype=np.int16)
+    fdy = np.frombuffer(unb64(FORM["dy"]), dtype=np.int16)
+    n = int(FORM["n"])
+    for name, arr in (("i", fi), ("t", ft), ("r", fr), ("an", fa),
+                      ("dx", fdx), ("dy", fdy)):
+        if arr.size != n:
+            raise ValueError(f"FORM.{name}: {arr.size} values for n={n}")
+    if int(fi.max()) >= B["n"]:
+        raise ValueError(f"FORM.i addresses building {int(fi.max())} of {B['n']}")
+
+    M = TYPO["mast"]
+    mi = np.frombuffer(unb64(M["i"]), dtype=np.uint32)
+    mt = np.frombuffer(unb64(M["t"]), dtype=np.uint16)
+    mr = np.frombuffer(unb64(M["r"]), dtype=np.uint16)
+    ma = np.frombuffer(unb64(M["an"]), dtype=np.uint8)
+    mdx = np.frombuffer(unb64(M["dx"]), dtype=np.int16)
+    mdy = np.frombuffer(unb64(M["dy"]), dtype=np.int16)
+    msp = np.frombuffer(unb64(M["spire"]), dtype=np.uint8)
+    mn = int(M["n"])
+    for name, arr in (("i", mi), ("t", mt), ("r", mr), ("an", ma),
+                      ("dx", mdx), ("dy", mdy), ("spire", msp)):
+        if arr.size != mn:
+            raise ValueError(f"TYPO.mast.{name}: {arr.size} values for n={mn}")
+    if mn and int(mi.max()) >= B["n"]:
+        raise ValueError(f"mast.i addresses building {int(mi.max())} of {B['n']}")
+
+    # NEVER TWO SOLIDS OVER ONE ROOF. `mast.py` already drops the footprints that
+    # carry Block C's step, and the client's merge skips a building that already
+    # has a slot; this is the assertion that makes the invariant true HERE rather
+    # than true somewhere upstream.
+    both = np.intersect1d(fi, mi)
+    if both.size:
+        raise ValueError(f"{both.size} buildings carry both a step and a mast: "
+                         f"{both[:8].tolist()}")
+
+    # AND EVERY CAP HAS A SOLID TO SHAPE. `base/caps` names a BUILDING; the
+    # profile is swept around the slot that building carries, so a cap whose
+    # building has no slot is a shape with nothing to put it on — which is
+    # exactly the state this chunk exists to end.
+    ci = np.frombuffer(unb64(LRD["cap"]["i"]), dtype=np.uint32)
+    slots = np.concatenate([fi, mi])
+    miss = ci[~np.isin(ci, slots)]
+    if miss.size:
+        raise ValueError(f"{miss.size} of {ci.size} caps sit on a building with no "
+                         f"form slot: {miss[:8].tolist()}")
+
+    w = ChunkWriter("base/form", "form")
+    w.add("bi", "u32", fi).add("top", "u16", ft).add("rad", "u16", fr)
+    w.add("ang", "u8", fa).add("dx", "i16", fdx).add("dy", "i16", fdy)
+    w.add("mbi", "u32", mi).add("mtop", "u16", mt).add("mrad", "u16", mr)
+    w.add("mang", "u8", ma).add("mdx", "i16", mdx).add("mdy", "i16", mdy)
+    w.add("mspire", "u8", msp)
+
+    g = FORM["meta"]["gates"]
+    step = src(
+        "form-step", publisher="DataSF",
+        dataset="ynuv-fyni (LIDAR zonal statistics per building footprint)",
+        what="a SECOND solid on the 488 footprints whose own published statistics say "
+             "there is one. `top` is hgt_maxcm, the highest 50 cm cell in the "
+             "footprint. `rad` is the circumradius of a regular octagon whose area is "
+             "f x hgt_cells50cm x 0.25 m2, where f = (hgt_meancm - hgt_mediancm)/"
+             "(hgt_maxcm - hgt_mediancm) — gated at minStepM="
+             f"{g['minStepM']}, minUpperM2="
+             f"{g['minUpperM2']}, fMax={g['fMax']}"
+             ". The base plane is unchanged: this is purely additive.",
+        script="scratchpad/sf-city-anim/form/build_form.py",
+        not_measured="WHERE inside the footprint the upper plane stands — the zonal "
+                     "statistics are aggregates over the whole polygon and carry no "
+                     "location, so it is drawn at the footprint's own area centroid; "
+                     "nor its OUTLINE, which is drawn as a regular octagon of the "
+                     "derived area turned onto the footprint's own dominant edge "
+                     "direction; nor HOW MANY steps — two published moments support "
+                     "two planes and a third is not identifiable from this file.")
+    mast = src(
+        "form-mast", publisher="DataSF",
+        dataset="ynuv-fyni hgt_maxcm + the place class from nc68-ngbr department_name, "
+                "gtr9-ntp6 propertytype, rzic-39gi proptype",
+        what="a THIRD solid on 40 footprints whose published CLASS makes a LIDAR "
+             "maximum attributable — church 18 of 25 against a 2.1 % base rate. Two "
+             "guards, each a different published instrument disagreeing: the aerial "
+             "canopy flag, and a published footprint within 12 m carrying 85 % of the "
+             "same maximum. Minimum lift "
+             f"{M['minLift']} m. `mspire` is 1 where the class is one that carries a "
+             "spire, and it is the only thing that chooses the spire profile.",
+        script="scratchpad/sf-city-anim/typo/mast.py",
+        not_measured="the PLAN of the mast. Nothing published says how wide a steeple "
+                     "is; it is DECLARED at "
+                     f"{M['planM2']} m2 — the step model's own minimum, 25 ft x 25 ft "
+                     "— on a footprint at least four times that, so the drawn plan is "
+                     "never more than a quarter of the roof it stands on. `park` and "
+                     "`landmark` are excluded as classes: a park building is a restroom "
+                     "under a tree, and an Article 10 designation is a LISTING and not "
+                     "a building.")
+    prov = {k: step for k in ("bi", "top", "rad", "ang", "dx", "dy")}
+    prov.update({k: mast for k in ("mbi", "mtop", "mrad", "mang", "mdx", "mdy",
+                                   "mspire")})
+    emit(w, tier="base", minZ=Z_MASSING, extent=None, prov=prov,
+         extra={"n": n, "octN": int(FORM["octN"]), "nMast": mn,
+                "nSpire": int((msp != 0).sum()),
+                "gates": g, "mastPlanM2": M["planM2"],
+                "mastMinLiftM": M["minLift"],
+                "declined": FORM["meta"]["counts"],
+                "mastByClass": M["by_class"], "mastDeclined": M["drop"]},
+         note="Slot s stands on building bi[s]. `top` is DECIMETRES above the same "
+              "datum the building's own height byte uses; `rad` is the octagon's "
+              "circumradius in CENTIMETRES; `ang` is its plan rotation, the footprint's "
+              "own dominant edge direction, as u8 x (pi/2)/255; `dx`,`dy` are DECIMETRES "
+              "from the vertex mean the client already holds (`BldTable.cx`/`cy`) to the "
+              "footprint's true AREA centroid. The `m*` fields are the third solid and "
+              "carry the same units; the client appends them to the same slot stream, "
+              "skipping any building that already has a slot. `octN` is 8 and is the "
+              "octagon the area was derived for. A cap in `base/caps` names a building; "
+              "it draws on THIS building's slot.")
+    # The chunk is 7,464 bytes for 488 second solids and 40 third: the whole of
+    # the city's silhouette above its own median plane, in less than a district
+    # cell of footprints.
+    return {"n": n, "octN": int(FORM["octN"]), "mast": mn,
+            "spire": int((msp != 0).sum()),
+            "byte": w.payload_bytes}
+
+
 def encode_marks(MARKS: dict) -> None:
     keep = {k: v for k, v in MARKS.items() if k != "n"}
     (OUT / "base").mkdir(parents=True, exist_ok=True)
@@ -1435,6 +1989,17 @@ def main() -> int:
     MARKS = load("marks/marks-data.js", "MARKS")
     HERO = load("wonder/hero-data.js", "HERO")
     LRD = load("render/render-data.js", "LRD")
+    FORM = load("form/form-data.js", "FORM")
+    TYPO = load("typo/typo-data.js", "TYPO")
+    TIMED = load("time/time-data.js", "TIME")
+    # TWO FILES CALL THEMSELVES `window.GEO` AND THEY ARE NOT THE SAME RECORD.
+    # `geo/geo-data.js` is gen_geo.py's full payload — 16,676 centrelines, every
+    # class. `gen/geo-data.js` is gen_geo2.py's trim and it is the one the PAGE
+    # carries: 4,895 centrelines of classcode 0-4, which is the array both
+    # TIME.street.yr and street-data.js's `cov` mask are indexed on. The
+    # centreline chunks take the second, and `_centrelines()` refuses a mismatch
+    # rather than encoding a shifted join.
+    GEO2 = load("gen/geo-data.js", "GEO")
 
     # THIS DIRECTORY IS NOT ALL OURS, AND THE FIRST RE-RUN PROVED IT.
     # `blocks/` under OUT is written by scratchpad/sf-city-anim/blocks/build_index.py
@@ -1443,8 +2008,28 @@ def main() -> int:
     # server-side 404 on blocks/block-index.json. Only what this script writes
     # is cleared: the chunk directories it is about to rebuild, plus the two
     # top-level files it owns. Anything else in OUT is left alone.
+    # AND `base/places.*` IS NOT THIS SCRIPT'S EITHER. us_sf_places/emit_places.py
+    # writes base/places.qc, base/places.json and the manifest's `places` key as a
+    # read-modify-write on top of whatever this encoder last produced. Clearing
+    # `base/` wholesale therefore dropped 2,192 named places — silently, with
+    # nothing in any log, because this script has no idea they existed. Two agents
+    # hit it and both had to snapshot and merge by hand. So: carry those files
+    # across the rebuild, and carry the manifest key with them.
+    CARRY = ("base/places.qc", "base/places.json")
     if OUT.exists():
         import shutil
+        held = {}
+        for rel in CARRY:
+            f = OUT / rel
+            if f.exists():
+                held[rel] = f.read_bytes()
+        held_places = None
+        mf = OUT / "manifest.json"
+        if mf.exists():
+            try:
+                held_places = json.loads(mf.read_text()).get("places")
+            except Exception:
+                held_places = None
         for name in CHUNK_DIRS:
             d = OUT / name
             if d.is_dir():
@@ -1453,6 +2038,12 @@ def main() -> int:
             f = OUT / name
             if f.exists():
                 f.unlink()
+        OUT.mkdir(parents=True, exist_ok=True)
+        for rel, blob in held.items():
+            f = OUT / rel
+            f.parent.mkdir(parents=True, exist_ok=True)
+            f.write_bytes(blob)
+        globals()["_HELD_PLACES"] = held_places
     OUT.mkdir(parents=True, exist_ok=True)
 
     encode_terrain(GEO, CITY)
@@ -1460,12 +2051,21 @@ def main() -> int:
     encode_blocks(GEO, PAINT)
     solo = encode_massing(LODM)
     B = read_bldg()
-    bstat = encode_buildings(B, ROOFD, PAINT, solo)
+    bstat = encode_buildings(B, ROOFD, PAINT, solo, CITY["proj"]["downtown"])
     fstat = encode_facades(FACD, B, solo)
     wstat = encode_water(WATD, CTX, CITY["proj"])
     xstat = encode_surround(CTX, CITY["proj"])
     hstat = encode_heroes(HERO, LRD, MARKS, B, solo)
+    mstat = encode_form(FORM, TYPO, LRD, B)
     sstat = encode_streets(STS)
+    # ONE NAME TABLE FOR THE WHOLE RECORD. base/street-labels owns `names`; both
+    # centreline chunks index it. Built here and threaded through both, so a
+    # street name exists once on the wire and the two cannot disagree about an
+    # index.
+    _names: list[str] = []
+    _nidx: dict[str, int] = {}
+    lstat = encode_centrelines(GEO2, TIMED, STS, _names, _nidx)
+    lbstat = encode_street_labels(GEO2, TIMED, _names, _nidx)
     tstat = encode_trees(WRLD)
     encode_marks(MARKS)
 
@@ -1496,12 +2096,21 @@ def main() -> int:
         "water": wstat,
         "surround": xstat,
         "landmarks": hstat,
+        "form": mstat,
 
         "streets": {k: v for k, v in sstat.items() if k not in ("bytes", "gzip", "cells", "cite")},
+        "centrelines": lstat,
+        "streetLabels": lbstat,
         "trees": {k: v for k, v in tstat.items() if k not in ("bytes", "gzip", "cells")},
         "sources": sources,
         "chunks": sorted(chunks, key=lambda c: c["k"]),
     }
+    # Put back the `places` key emit_places.py added on top of the last build, so a
+    # plain re-run of this encoder does not drop 2,192 named places from the map.
+    _hp = globals().get("_HELD_PLACES")
+    if _hp is not None and "places" not in manifest:
+        manifest["places"] = _hp
+        print("carried the places key across the rebuild")
     (OUT / "manifest.json").write_text(
         json.dumps(manifest, separators=(",", ":"), ensure_ascii=False, sort_keys=False))
 
@@ -1513,6 +2122,26 @@ def main() -> int:
         print(f"  {t:8s} z>={v['minZ']:<5} {v['chunks']:4d} chunks  "
               f"{v['bytes']:>10,}  {v['gzipBytes']:>10,} gz")
     print("manifest", len(json.dumps(manifest, separators=(',', ':'))), "bytes")
+
+    # AND PUT THE NAMED PLACES BACK, because this script rebuilds base/marks.json
+    # from the mock and that is the file the renderer actually reads.
+    # us_sf_places/emit_places.py merges 2,192 places from ten registers into it as
+    # a read-modify-write; a plain re-run of this encoder drops 949 of them and
+    # restores a stale 1,243, silently, with nothing in any log. That has now
+    # happened twice and cost two agents a recovery each. Carrying the .qc across
+    # the rebuild (above) is not enough on its own — the merge has to be re-applied.
+    # Re-running the emitter is idempotent and takes about a second.
+    _places_qc = OUT / "base" / "places.qc"
+    if _places_qc.exists():
+        import subprocess, sys as _sys
+        _emit = pathlib.Path(__file__).resolve().parent.parent / "us_sf_places" / "emit_places.py"
+        if _emit.exists():
+            r = subprocess.run([_sys.executable, str(_emit), "--marks"],
+                               capture_output=True, text=True)
+            if r.returncode == 0:
+                print("re-applied the named places into base/marks.json")
+            else:
+                print("WARNING: emit_places.py --marks failed:\n" + (r.stderr or r.stdout))
     return 0
 
 

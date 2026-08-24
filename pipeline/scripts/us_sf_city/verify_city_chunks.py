@@ -25,7 +25,7 @@ import numpy as np
 from _bldgsrc import read_bldg, replay
 from _chunk import field_array, read_chunk
 from _grid import NY
-from _srcload import ROOT, load, unb64
+from _srcload import MOCK, ROOT, load, unb64
 
 OUT = ROOT / "website" / "public" / "data" / "us" / "sf" / "city"
 
@@ -193,6 +193,55 @@ def main() -> int:
     eq("buildings: every vertex accounted for", np.array([nvert]), np.array([B["nv"]]))
     print(f"  {n:,} buildings, {nvert:,} vertices replayed through part3's walk")
 
+    # ── 2b. the measured roof colour REACHES the renderer ────────────────
+    # Element-for-element equality above proves the bytes are the ones the mock
+    # packed. It does not prove the renderer can USE them, and for eleven weeks
+    # it could not: `paintFlag` was read as a coverage flag, it is a sample-
+    # QUALITY bitfield, and the gate that resulted put the measured colour on
+    # 2,686 of 166,166 roofs — 1.6 % — while the source covers 99.9 %. Nothing
+    # in this file noticed, because nothing in this file asked what the column
+    # MEANS. These do.
+    bits = PAINT["flagBits"]
+    ok("paint.flagBits names exactly canopy, shadow and nosample",
+       set(bits) == {"canopy", "shadow", "nosample"}, str(sorted(bits)))
+    ok("paint.flagBits are three distinct single bits",
+       sorted(bits.values()) == [1, 2, 4], str(sorted(bits.values())))
+    ok("manifest.buildings.paintFlagBits is PAINT.flagBits verbatim — the "
+       "renderer resolves the nosample mask from it and must not guess",
+       man["buildings"].get("paintFlagBits") == bits,
+       str(man["buildings"].get("paintFlagBits")))
+    ok("paintFlag carries no bit flagBits does not name",
+       int((pflag & ~(bits["canopy"] | bits["shadow"] | bits["nosample"])).sum()) == 0,
+       f"max flag {int(pflag.max())}")
+    # the three populations the source's own META states, counted here
+    for name, want in (("canopy", 1889), ("shadow", 829)):
+        got = int(((pflag & bits[name]) != 0).sum())
+        ok(f"paintFlag: {want:,} roofs carry the {name} bit, as PAINT.meta.FLAGGED says",
+           got == want, f"{got:,}")
+    # AND THE ONE THAT MATTERS. `nosample` is the only bit that withholds a
+    # measurement; every other footprint has one, and the renderer paints it.
+    sampled = int(((pflag & bits["nosample"]) == 0).sum())
+    ok("paintIdx is a measurement for 166,042 of 166,166 footprints (99.9 %) — "
+       "the figure manifest.sources.paint publishes",
+       sampled == 166042 and sampled == man["buildings"]["paintSampled"],
+       f"{sampled:,} here, {man['buildings']['paintSampled']:,} in the manifest")
+    ok("paintFlag ZERO is the COMMON case — a clean sample, not a missing one. "
+       "Whatever reads this column must not treat 0 as absence",
+       int((pflag == 0).sum()) == 163480, f"{int((pflag == 0).sum()):,} of {n:,}")
+    ok("every sampled paintIdx addresses the shipped 32-entry palette",
+       bool((pidx[(pflag & bits["nosample"]) == 0] < len(PAINT["pal"])).all()),
+       f"max {int(pidx.max())} against {len(PAINT['pal'])} entries")
+    # and the same three statements about the bytes that actually shipped,
+    # summed over the chunks rather than over the source arrays
+    cf = np.concatenate([field_array(*load_chunk(k), "paintFlag")
+                         for k in [c["k"] for c in man["chunks"] if c["kind"] == "bldg"]])
+    ok("the SHIPPED chunks carry the same 166,042 sampled footprints",
+       int(((cf & bits["nosample"]) == 0).sum()) == 166042 and cf.size == n,
+       f"{int(((cf & bits['nosample']) == 0).sum()):,} of {cf.size:,}")
+    print(f"  paint: {sampled:,} of {n:,} roofs carry a measured colour "
+          f"({100.0 * sampled / n:.1f} %); {int((pflag != 0).sum()):,} carry a "
+          f"quality bit, which is NOT the same question")
+
     # ── 3. facades ───────────────────────────────────────────────────────
     FACD = load("facade/facade-data.js", "FACD")
     fty = np.frombuffer(unb64(FACD["ty"]), dtype=np.uint8)
@@ -241,7 +290,7 @@ def main() -> int:
     # ── 5. streets ───────────────────────────────────────────────────────
     STS = load("street/street-data.js", "STSURF")
     sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-    from encode_city_chunks import _decode_rings, _u16, _u32, _u8
+    from encode_city_chunks import _decode_rings, _i16, _u16, _u32, _u8
     R = _decode_rings(STS, "rn", "rlen", "rf", "rxy")
     D = _decode_rings(STS, "dn", "dlen", "df", "dxy")
     kbits = np.unpackbits(_u8(STS["dkb"]), bitorder="little")[: D["wx"].size]
@@ -274,6 +323,128 @@ def main() -> int:
         FAIL.append(f"streets: {n_un} features are in no cell") if n_un != man["streets"]["unplaced"] \
             else print(f"  streets: {n_un} features carry no right-of-way ring and are "
                        f"in no cell (declared in the manifest)")
+
+    # ── 5b. the street CENTRELINES and the names written along them ──────
+    # The chunks are compared against the array the MOCK'S OWN DECODER produces
+    # from gen/geo-data.js — `ox[i] + vx[k]/10`, part3.html L157-160 — and never
+    # against the encoder's copy of it. `cnn` and the name table are checked
+    # against a SECOND, independent derivation: time/out/ship-cnn.json, which
+    # film/streets_accept.py built without looking at geo-data.js's geometry, and
+    # the published rows keyed by that cnn.
+    GEO2 = load("gen/geo-data.js", "GEO")
+    TIMED = load("time/time-data.js", "TIME")
+    GS = GEO2["streets"]
+    gn = int(GS["n"])
+    gcnt = _u16(GS["cnt"])
+    gcls = _u8(GS["cls"])
+    gox = np.frombuffer(unb64(GS["ox"]), dtype=np.float32)
+    goy = np.frombuffer(unb64(GS["oy"]), dtype=np.float32)
+    gvx = _i16(GS["x"]).astype(np.float64)
+    gvy = _i16(GS["y"]).astype(np.float64)
+    goff = np.zeros(gn + 1, dtype=np.int64)
+    np.cumsum(gcnt.astype(np.int64), out=goff[1:])
+    gx = np.empty(int(goff[-1]), dtype=np.float32)
+    gy = np.empty(int(goff[-1]), dtype=np.float32)
+    for i in range(gn):
+        a, b = int(goff[i]), int(goff[i + 1])
+        gx[a:b] = gox[i] + gvx[a:b] / 10.0
+        gy[a:b] = goy[i] + gvy[a:b] / 10.0
+    gyr = _u16(TIMED["street"]["yr"])
+    gcov = np.unpackbits(_u8(STS["cov"]), bitorder="little")[:gn]
+    ok("street-data.js `covn` is one bit per CENTRELINE, not per right of way",
+       int(STS["covn"]) == gn, f"covn={STS['covn']} n={gn}")
+
+    ship_cnn = np.array([int(v) for v in json.loads(
+        (MOCK / "time" / "out" / "ship-cnn.json").read_text())], dtype=np.uint32)
+    eq("ship-cnn.json is one cnn per shipped centreline",
+       np.array([ship_cnn.size]), np.array([gn]))
+    by_cnn = {}
+    for r in json.loads((MOCK / "geo" / "cache" / "streets.json").read_text()):
+        by_cnn.setdefault(int(r["cnn"]), (r.get("streetname") or "").strip())
+    lbl_names = next(c for c in man["chunks"] if c["k"] == "base/street-labels")["names"]
+
+    lseen = np.zeros(gn, dtype=bool)
+    lcov = np.zeros(gn, dtype=np.uint8)
+    for c in [c for c in man["chunks"] if c["kind"] == "strt-line"]:
+        h, p = load_chunk(c["k"])
+        fid = field_array(h, p, "fid").astype(np.int64)
+        if lseen[fid].any():
+            FAIL.append(f"{c['k']}: a centreline is in two chunks")
+        lseen[fid] = True
+        eq(f"{c['k']}.cls", field_array(h, p, "cls"), gcls[fid])
+        eq(f"{c['k']}.len", field_array(h, p, "len"), gcnt[fid])
+        eq(f"{c['k']}.yr", field_array(h, p, "yr"), gyr[fid])
+        eq(f"{c['k']}.cnn", field_array(h, p, "cnn"), ship_cnn[fid])
+        vsel = np.concatenate([np.arange(goff[i], goff[i + 1]) for i in fid])
+        eq(f"{c['k']}.x", field_array(h, p, "x"), gx[vsel])
+        eq(f"{c['k']}.y", field_array(h, p, "y"), gy[vsel])
+        # THE MASK IS ASSERTED EQUAL, NOT ASSUMED EQUAL. `cov` in a line chunk is
+        # the citywide mask re-indexed through `fid`, and the re-indexing is the
+        # one step that could silently shift a bit.
+        cb = np.unpackbits(field_array(h, p, "cov"), bitorder="little")[: fid.size]
+        eq(f"{c['k']}.cov == base/street-misc.cov at fid", cb, gcov[fid])
+        lcov[fid] = cb
+        # and the class gate the chunk exists for
+        lo, hi = int(c["clsMin"]), int(c["clsMax"])
+        ok(f"{c['k']}: every feature is inside its declared class band {lo}-{hi}",
+           bool(((gcls[fid] >= lo) & (gcls[fid] <= hi)).all()))
+        # the name, joined through the cnn the OTHER derivation produced
+        nm = field_array(h, p, "nm")
+        want = np.array([lbl_names.index(by_cnn[int(v)]) if by_cnn.get(int(v)) else 0xFFFF
+                         for v in ship_cnn[fid]], dtype=np.uint16)
+        eq(f"{c['k']}.nm names the street 3psu-pn9h publishes for that cnn", nm, want)
+    ok("every one of the 4,895 centrelines is in exactly one chunk",
+       bool(lseen.all()), f"{int((~lseen).sum())} missing")
+    eq("the two chunks reassemble base/street-misc's mask exactly", lcov, gcov)
+    base_line = next(c for c in man["chunks"] if c["k"] == "base/street-lines")
+    ok("the wide shot's own classes are in the BASE tier: ST_CLS_MAX[0] = 2",
+       base_line["tier"] == "base" and base_line["minZ"] == 0.0
+       and int(base_line["clsMax"]) == 2,
+       f"tier={base_line['tier']} minZ={base_line['minZ']} clsMax={base_line['clsMax']}")
+    print(f"  centrelines: {gn:,} in 2 chunks, {int(gcov.sum()):,} covered, "
+          f"{int((gyr > 0).sum()):,} dated, {int(goff[-1]):,} vertices")
+
+    LB = GEO2["labels"]
+    ln = len(LB["i"])
+    lbyr = _u16(TIMED["label"]["yr"])
+    lrank = np.asarray(LB["r"], dtype=np.uint8)
+    seen_lbl = 0
+    for c in [c for c in man["chunks"] if c["kind"] == "strt-label"]:
+        h, p = load_chunk(c["k"])
+        lo, hi = int(c["rankMin"]), int(c["rankMax"])
+        ids = np.nonzero((lrank >= lo) & (lrank <= hi))[0]
+        seen_lbl += ids.size
+        eq(f"{c['k']}.rank", field_array(h, p, "rank"), lrank[ids])
+        eq(f"{c['k']}.yr", field_array(h, p, "yr"), lbyr[ids])
+        eq(f"{c['k']}.len", field_array(h, p, "len"),
+           np.asarray(LB["L"], dtype=np.int64)[ids].astype(np.uint16))
+        eq(f"{c['k']}.x", field_array(h, p, "x"),
+           np.asarray(LB["x"], dtype=np.float32)[ids])
+        eq(f"{c['k']}.y", field_array(h, p, "y"),
+           np.asarray(LB["y"], dtype=np.float32)[ids])
+        # x10000 is LOSSLESS: the source rounds the unit vector to four decimals
+        for f_, s_ in (("dx", "dx"), ("dy", "dy")):
+            got = field_array(h, p, f_).astype(np.float64) / 10000.0
+            eq(f"{c['k']}.{f_} round-trips the published unit vector exactly",
+               got, np.asarray(LB[s_], dtype=np.float64)[ids])
+        nm = field_array(h, p, "nm")
+        eq(f"{c['k']}.nm resolves to the stretch's own published name",
+           np.array([lbl_names[int(v)] for v in nm]),
+           np.array([LB["t"][LB["i"][int(i)]] for i in ids]))
+    eq("every published stretch is in exactly one label chunk",
+       np.array([seen_lbl]), np.array([ln]))
+    lbl_base = next(c for c in man["chunks"] if c["k"] == "base/street-labels")
+    ok("the whole-city and district ranks are in the BASE tier: part3 L7025 "
+       "rankMax is 0 then 1",
+       lbl_base["tier"] == "base" and lbl_base["minZ"] == 0.0
+       and int(lbl_base["rankMax"]) == 1,
+       f"tier={lbl_base['tier']} rankMax={lbl_base['rankMax']}")
+    ok("the name table holds every name the two label chunks and both line "
+       "chunks index, and no name twice",
+       len(lbl_names) == len(set(lbl_names)),
+       f"{len(lbl_names)} entries, {len(set(lbl_names))} distinct")
+    print(f"  street labels: {ln:,} stretches / {len(lbl_names):,} distinct names, "
+          f"{int((lbyr > 0).sum()):,} dated")
 
     # ── 6. trees and canopy ──────────────────────────────────────────────
     WRLD = load("world/world-data.js", "WORLD")
@@ -563,6 +734,164 @@ def main() -> int:
     ok("bridge: the drawn year is 1937 — completion, not the 1933 start",
        Gm["year"] == 1937 and Gm["yearLandmark"] == 1933
        and MARKS["ggbYr"] == 1937, f"{Gm['year']}/{Gm['yearLandmark']}")
+
+    # ── 6d. THE SECOND SOLID AND THE THIRD, AND THE RULE THE CAPS OBEY ────
+    # `base/caps` shipped 68 building indices, 68 profile indices and the six
+    # profiles since P4, and not one of them could be drawn: `lrStep` sweeps a
+    # profile around a solid whose top, radius, plan angle and centre come from
+    # `window.FORM`, and that file had never been encoded. So the shape shipped
+    # and the thing it shapes did not. These compare the chunk element for
+    # element against BOTH source files, and then assert the two properties the
+    # caps were built under — carved INSIDE the measured solid, and the
+    # measured VOLUME conserved — because those are the claims the manifest
+    # makes to a reader and neither is checkable from the bytes alone.
+    FORM = load("form/form-data.js", "FORM")
+    TYPO = load("typo/typo-data.js", "TYPO")
+    h, p = load_chunk("base/form")
+    for f_, k_, dt in (("bi", "i", np.uint32), ("top", "t", np.uint16),
+                       ("rad", "r", np.uint16), ("ang", "an", np.uint8),
+                       ("dx", "dx", np.int16), ("dy", "dy", np.int16)):
+        eq(f"form.{f_}", field_array(h, p, f_),
+           np.frombuffer(unb64(FORM[k_]), dtype=dt))
+    M = TYPO["mast"]
+    for f_, k_, dt in (("mbi", "i", np.uint32), ("mtop", "t", np.uint16),
+                       ("mrad", "r", np.uint16), ("mang", "an", np.uint8),
+                       ("mdx", "dx", np.int16), ("mdy", "dy", np.int16),
+                       ("mspire", "spire", np.uint8)):
+        eq(f"form.{f_}", field_array(h, p, f_),
+           np.frombuffer(unb64(M[k_]), dtype=dt))
+    fbi = field_array(h, p, "bi")
+    mbi = field_array(h, p, "mbi")
+    ftop = field_array(h, p, "top").astype(np.float64) * 0.1
+    frad = field_array(h, p, "rad").astype(np.float64) * 0.01
+    ok("form: 488 second solids, the count model3.py's two gates fire on",
+       fbi.size == 488 and man["form"]["n"] == 488, f"{fbi.size}")
+    ok("form: 40 third solids, and 10 of them carry the spire bit",
+       mbi.size == 40 and int((field_array(h, p, "mspire") != 0).sum()) == 10,
+       f"{mbi.size} masts")
+    ok("form: every slot addresses a published building",
+       int(fbi.max()) < B["n"] and int(mbi.max()) < B["n"],
+       f"max {max(int(fbi.max()), int(mbi.max()))} of {B['n']}")
+    # NEVER TWO SOLIDS OVER ONE ROOF — the client merges these two streams and
+    # the merge must not be the first thing to notice a collision.
+    ok("form: no building carries both a step and a mast",
+       np.intersect1d(fbi, mbi).size == 0,
+       f"{np.intersect1d(fbi, mbi).size} collisions")
+    # THE STEP STANDS ABOVE THE PLANE ALREADY DRAWN. `top` is hgt_maxcm and the
+    # building's own byte is the median rounded to a whole metre, so the drawn
+    # margin bottoms out below the 6.0 m gate; roofs.ts records 5.70 m measured
+    # and this is that measurement, taken from the shipped bytes.
+    hb = B["h"][fbi].astype(np.float64)
+    lift = ftop - hb
+    ok("form: every second solid stands ABOVE the height byte already drawn, "
+       "worst margin 5.70 m against a 6.0 m gate on the unrounded median",
+       float(lift.min()) > 5.6, f"worst {float(lift.min()):.2f} m")
+    ok("form: the mast lifts at least 8.0 m over its own drawn roof, "
+       "mast.py's minLift",
+       float((field_array(h, p, "mtop").astype(np.float64) * 0.1
+              - B["h"][mbi].astype(np.float64)).min()) >= 7.5,
+       f"worst {float((field_array(h, p, 'mtop').astype(np.float64) * 0.1 - B['h'][mbi].astype(np.float64)).min()):.2f} m")
+    # THE DERIVED AREA IS AN AREA OF THE ROOF IT STANDS ON, not a claim about
+    # a bigger building: model3.py caps A2 at the footprint's own area.
+    OCT_A = 0.5 * 8 * np.sin(2 * np.pi / 8)
+    a2 = OCT_A * frad * frad
+    ok("form: 58.06 m2 <= the derived plan area, model3.py's MIN_UPPER_M2 "
+       "(25 ft x 25 ft, one San Francisco lot frontage squared)",
+       float(a2.min()) >= 58.0, f"smallest {float(a2.min()):.2f} m2")
+    ok("form: the mast's plan is the DECLARED 58.06 m2 on every one of the 40 "
+       "— it is not measured and it does not vary",
+       float(np.ptp(OCT_A * (field_array(h, p, "mrad").astype(np.float64)
+                             * 0.01) ** 2)) < 0.02,
+       f"spread {float(np.ptp(OCT_A * (field_array(h, p, 'mrad').astype(np.float64) * 0.01) ** 2)):.4f} m2")
+
+    # ── and the two rules render/BLOCK-LR.md's caps were built under ───────
+    # 1. CARVED INSIDE. Every u and every s is <= 1: no ring of a cap is wider
+    #    than the measured radius and none is higher than the measured top, so
+    #    a drawn cap is always SMALLER than what was measured, never larger.
+    ch, cp = load_chunk("base/caps")
+    cpo = field_array(ch, cp, "poff")
+    cpu = field_array(ch, cp, "pu")
+    cps = field_array(ch, cp, "ps")
+    cbi = field_array(ch, cp, "bi")
+    cprof = field_array(ch, cp, "prof")
+    ok("caps: every profile point is INSIDE the measured solid — u <= 1 and "
+       "s <= 1 over all six profiles, which is what makes a drawn cap honest",
+       bool((cpu <= 1.0).all() and (cps <= 1.0).all() and (cpu >= 0).all()
+            and (cps >= 0).all()),
+       f"max u {float(cpu.max()):.4f} max s {float(cps.max()):.4f}")
+    for k_ in range(len(cpo) - 1):
+        u_ = cpu[cpo[k_]:cpo[k_ + 1]]
+        ok(f"caps: profile {k_} ({man['chunks'] and LRD['profN'][k_]}) is "
+           f"monotone in u and spans the whole solid",
+           bool((np.diff(u_) >= 0).all()) and float(u_[0]) == 0.0
+           and float(u_[-1]) == 1.0,
+           f"u {float(u_[0])}..{float(u_[-1])}")
+    # 2. THE MEASURED VOLUME IS KEPT, NOT MERELY NOT-EXCEEDED. Block C's
+    #    cylinder is not an outline, it is a VOLUME: A2 x (T - L) is exactly
+    #    the volume the published mean measures standing above the median
+    #    plane. Carving a dome out of it would throw a third of that volume
+    #    away and the drawn landmark would UNDER-read the file, so lrStep
+    #    rescales the radius by 1/sqrt(int s^2 du). This asserts that the
+    #    rescale is well-defined for every profile and recovers the cylinder,
+    #    and prints what each profile costs in width.
+    vscale = np.ones(len(cpo) - 1)
+    print("  caps: volume conserved by the 1/sqrt(int s^2 du) radius rescale")
+    for k_ in range(len(cpo) - 1):
+        u_ = np.asarray(cpu[cpo[k_]:cpo[k_ + 1]], dtype=np.float64)
+        s_ = np.asarray(cps[cpo[k_]:cpo[k_ + 1]], dtype=np.float64)
+        # the same conical-frustum quadrature lrStep runs, exactly
+        v = float(np.sum(np.diff(u_) * (s_[:-1] ** 2 + s_[:-1] * s_[1:]
+                                        + s_[1:] ** 2) / 3.0))
+        vs = 1.0 / np.sqrt(v) if v > 0.02 else 1.0
+        v2 = v * vs * vs
+        n_ = int((cprof == k_).sum())
+        ok(f"caps: profile {k_} rescaled by 1/sqrt(int s^2 du) has the volume "
+           f"of the measured cylinder",
+           abs(v2 - 1.0) < 1e-9, f"{v2:.12f}")
+        vscale[k_] = vs
+        print(f"    {LRD['profN'][k_]:<10} {n_:3d} caps  int s^2 du "
+              f"{v:.4f}  radius x{vs:.4f}")
+    # AND THE WIDENING IS NOT A LICENCE. Conserving the volume of a solid that
+    # narrows upward means widening its BASE — 9 % on a dome, 60 % on a spire —
+    # so the drawn cap is no longer inside the measured cylinder and the file
+    # says so ("a domed cap comes out about 9 % wider"). What it must still be
+    # inside is the BUILDING: a cap wider than the roof it stands on would be
+    # asserting a plan the footprint refuses. MEASURED over all 68, worst 42.3 %
+    # of the footprint and median 14.0 %.
+    qq = B["q"]
+    fpa = {}
+    for i_ in set(int(v_) for v_ in cbi):
+        o_, n2_ = B["off"][i_], B["off"][i_ + 1] - B["off"][i_]
+        xs = B["IX"][o_:o_ + n2_] * qq
+        ys = B["IY"][o_:o_ + n2_] * qq
+        fpa[i_] = abs(float(np.sum(xs * np.roll(ys, -1) - np.roll(xs, -1) * ys))) / 2
+    slotR = {}
+    for j_ in range(fbi.size):
+        slotR[int(fbi[j_])] = float(frad[j_])
+    mrad_ = field_array(h, p, "mrad").astype(np.float64) * 0.01
+    for j_ in range(mbi.size):
+        slotR[int(mbi[j_])] = float(mrad_[j_])
+    worst = max((OCT_A * (slotR[int(cbi[k_])] * vscale[int(cprof[k_])]) ** 2)
+                / fpa[int(cbi[k_])] for k_ in range(cbi.size))
+    ok("caps: after the volume rescale, not one of the 68 is wider than the "
+       "footprint it stands on — worst 42.3 % of its own roof",
+       worst <= 0.43, f"worst {worst * 100:.1f} %")
+    # AND EVERY CAP HAS A SOLID TO SHAPE — the whole point of this chunk.
+    slots = np.concatenate([fbi, mbi])
+    ok("caps: all 68 sit on a building base/form gives a slot — a cap with no "
+       "solid under it is 68 bytes of shape and nothing shaped, which is the "
+       "state this chunk ends",
+       bool(np.isin(cbi, slots).all()), f"{int(np.isin(cbi, slots).sum())} of {cbi.size}")
+    ok("caps: profile 0 is `prism`, the identity, and no cap uses it",
+       LRD["profN"][0] == "prism" and int((cprof == 0).sum()) == 0,
+       f"{int((cprof == 0).sum())} caps on prism")
+    # the manifest's own figures, against the bytes
+    fm = man["form"]
+    ok("manifest.form matches the chunk", fm["n"] == fbi.size
+       and fm["mast"] == mbi.size and fm["octN"] == 8,
+       json.dumps({k: fm[k] for k in ("n", "mast", "octN")}))
+    print(f"  form: {fbi.size} second solids + {mbi.size} third, "
+          f"{man['chunks'] and [c['b'] for c in man['chunks'] if c['k'] == 'base/form'][0]:,} bytes")
 
     # ── 7. the guards actually fire ──────────────────────────────────────
     from _chunk import read_chunk as rc

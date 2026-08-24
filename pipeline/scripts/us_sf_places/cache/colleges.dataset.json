@@ -1,0 +1,49 @@
+{
+ "id": "6adp-a5yv",
+ "name": "Schools_College",
+ "description": "Public and private colleges within San Francisco from National Center of Education Statistics data. College locations represented as boundaries. As of 2011. You can get updated institutional characteristics data at https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx",
+ "attribution": null,
+ "rowsUpdatedAt": 1468786075,
+ "columns": {
+  "the_geom": {
+   "name": "the_geom",
+   "type": "multipolygon",
+   "description": null
+  },
+  "institutio": {
+   "name": "institutio",
+   "type": "text",
+   "description": null
+  },
+  "campus": {
+   "name": "campus",
+   "type": "text",
+   "description": null
+  },
+  "address": {
+   "name": "address",
+   "type": "text",
+   "description": null
+  },
+  "webaddress": {
+   "name": "webaddress",
+   "type": "text",
+   "description": null
+  },
+  "phone": {
+   "name": "phone",
+   "type": "number",
+   "description": null
+  },
+  "st_area_sh": {
+   "name": "st_area_sh",
+   "type": "number",
+   "description": null
+  },
+  "st_length": {
+   "name": "st_length_",
+   "type": "number",
+   "description": null
+  }
+ }
+}

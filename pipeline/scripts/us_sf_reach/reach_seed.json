@@ -1,0 +1,121 @@
+{
+  "_": "REACH SEED — which of the 41 archival entries lie outside the map, and the RECORD'S OWN WORDS for it.",
+  "_rule": "Every row whose `reach` is not `in_city` MUST carry an `evidence` block, and `fragment` must appear VERBATIM inside that beat's `quote` in scratchpad/sf-city-anim/entries/<id>.json. build_reach.py fails if it does not. No coordinate appears anywhere in this file: a position is a published-geometry question and is answered in REACH.md §4, not here.",
+  "_vocab": {
+    "in_city": "the subject lies inside the City and County of San Francisco. This is the piece's default and is NOT separately verified per entry.",
+    "made_land": "inside the county, but on ground the city manufactured; it is not on the 1906 shoreline.",
+    "shared": "the subject crosses the county line and San Francisco is one of several parties to it.",
+    "outside": "the subject lies outside the county line.",
+    "annexation": "the subject IS territory outside the line — the city proposing to move its own boundary.",
+    "unstated": "the subject is known to be outside, but THIS entry's record never says so. Carried as a gap, not filled in."
+  },
+  "rows": [
+    {
+      "id": "mills-field-sfo",
+      "reach": "outside",
+      "county_named_in_record": "San Mateo",
+      "evidence": {
+        "beat": 2,
+        "fragment": "there is not a sufficiently large area of land within the con fines of the City and County of San Francisco suitable for airport purposes",
+        "note": "Resolution No. 26816 (New Series), 14 February 1927. The Board wrote the reason for leaving its own boundary into the operative text of the resolution. OCR has split 'confines'; the fragment is quoted as the page reads."
+      },
+      "corroboration": {
+        "beat": 9,
+        "fragment": "San Mateo County provide adequate fire fighting equipment for the San Francisco Airport"
+      }
+    },
+    {
+      "id": "hetch-hetchy",
+      "reach": "outside",
+      "county_named_in_record": null,
+      "evidence": {
+        "beat": 18,
+        "fragment": "the first flow of Sierra snow water from the Hetch-Hetchy system, through the Coast Range tunnel into Crystal Springs Reservoir",
+        "note": "1935 mayoral message. The entry's own geometry_source records that the corpus names the fixed points but describes land 'in section and township, not in coordinates', so the line cannot be drawn from the record."
+      },
+      "corroboration": {
+        "beat": 7,
+        "fragment": "130.34 acres of land situated in Sections"
+      }
+    },
+    {
+      "id": "event-san-mateo-consolidation-1931",
+      "reach": "annexation",
+      "county_named_in_record": "San Mateo",
+      "evidence": {
+        "beat": 0,
+        "fragment": "Consolidation of San Francisco and San Mateo County",
+        "note": "The Mayor's annual message lists annexing the next county along as ordinary city business. San Francisco voted 80,156 to 21,679 for the Charter article that would have governed it."
+      }
+    },
+    {
+      "id": "water-system-improvement-program",
+      "reach": "outside",
+      "county_named_in_record": null,
+      "evidence": {
+        "beat": 0,
+        "fragment": "restoring the Hetch Hetchy Valley in Yosemite National Park",
+        "note": "The modern rebuild of the same system. Its entry records pieces 'across three counties'."
+      }
+    },
+    {
+      "id": "golden-gate-bridge",
+      "reach": "shared",
+      "county_named_in_record": "Marin",
+      "evidence": {
+        "beat": 0,
+        "fragment": "the City and County of San Francisco and the County of Marin, two political subdivisions of the State of California",
+        "note": "San Francisco is one member of a bridge district, not the owner. The north tower stands in Marin County."
+      },
+      "corroboration": {
+        "beat": 4,
+        "fragment": "The Marin tower of the Golden Gate Bridge has been completed"
+      }
+    },
+    {
+      "id": "bay-bridge",
+      "reach": "shared",
+      "county_named_in_record": "Alameda",
+      "evidence": {
+        "beat": 2,
+        "fragment": "a bridge between Rincon Hill and Alameda",
+        "note": "A state crossing. The city's end is in San Francisco; the far end is not."
+      },
+      "corroboration": {
+        "beat": 7,
+        "fragment": "San Francisco-Oakland Bay Bridge"
+      }
+    },
+    {
+      "id": "treasure-island",
+      "reach": "made_land",
+      "county_named_in_record": null,
+      "evidence": {
+        "beat": 6,
+        "fragment": "the shoal lands, upon which Treasure Island has been reclaimed, were acquired by the City and County of San Francisco from the State of California",
+        "note": "Inside the county, and inside the chunk grid, but it is not ground the city was given — it is ground the city made, on a state conveyance that said airport purposes only."
+      }
+    },
+    {
+      "id": "treasure-island-redevelopment",
+      "reach": "made_land",
+      "county_named_in_record": null,
+      "evidence": {
+        "beat": 2,
+        "fragment": "Treasure Island/Yerba Buena Island",
+        "note": "The modern successor on the same made ground."
+      }
+    },
+    {
+      "id": "sfo-capital-plan-bonds",
+      "reach": "unstated",
+      "county_named_in_record": null,
+      "evidence": null,
+      "gap": {
+        "sought": "any statement, in these 12 beats, of where the Airport is",
+        "searched": "all 12 beats of entries/sfo-capital-plan-bonds.json, for 33 place names outside the City and County of San Francisco",
+        "result": "NOT FOUND. The modern Legistar matters say 'the Airport' and never 'San Mateo County'. The 1927 record knows the airport is in another county and argues about it; the 2000-2018 record has stopped saying. This entry is outside the county on the same subject as mills-field-sfo, but ITS OWN record does not establish it, so it is carried as a gap rather than inferred."
+      }
+    }
+  ]
+}

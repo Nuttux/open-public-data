@@ -52,6 +52,8 @@
  * of any roof stands above the measured top.*
  */
 
+import { planeQuartile, STROKE_MIN_PX_A } from "./buildings";
+import type { FormTable } from "./data";
 import { type Frame, shade } from "./terrain";
 
 // ── the height residual ─────────────────────────────────────────────────────
@@ -209,9 +211,17 @@ export const DE = {
   parapet: 0.85,
   /** the parapet's thickness, metres — DECLARED */
   thick: 0.4,
-  /** the ramp, in CSS px of the building's own projected width */
-  tr0: 6.0,
-  tr1: 22.0,
+  /** the ramp, in CSS px of the building's own projected width.
+   *
+   * THESE WERE 6.0 AND 22.0, WHICH ARE `LR_FORM_PX` AND `LR_FORM_FULL` — a
+   * DIFFERENT ramp in the same file, the one that fades a cap's shape to the
+   * prism. `part3.html`'s `DE.tr0/tr1` are **7.0 and 26.0**, and 26 is the
+   * number this file's own note two paragraphs down already quotes: *"the
+   * previous edge band switched on in ONE STEP at 26 css px of building
+   * width"*. The tray was opening a pixel early and reaching full inset four
+   * pixels early on every building in the city. */
+  tr0: 7.0,
+  tr1: 26.0,
 };
 
 /**
@@ -411,6 +421,233 @@ export function stepFraction(L: number, T: number, mean: number): number {
 
 export function stepFires(L: number, T: number, a2: number): boolean {
   return T - L >= STEP_GATE_DH_M && a2 >= STEP_GATE_A2_M2;
+}
+
+// ── the step, drawn ─────────────────────────────────────────────────────────
+
+/**
+ * THE SHAPE FADES TO THE PRISM AS THE CAP GETS SMALL.
+ *
+ * At `LR_FORM_PX` of lift a dome **is** Block C's cylinder, and it opens
+ * continuously from there to `LR_FORM_FULL`. So nothing changes shape on a
+ * threshold, and the change is keyed on the CAP'S OWN SIZE and not on the
+ * camera — which staggers it across the city instead of landing every dome in
+ * San Francisco on one frame of a zoom. That is `roofs/BLOCK-F2.md` §2.3's
+ * distinction for the ink line, applied to a silhouette.
+ */
+export const LR_FORM_PX = 6.0;
+export const LR_FORM_FULL = 22.0;
+
+/** the sweep's scratch: 16 profile levels of at most 8 octagon vertices */
+const stepSX = new Float32Array(16 * 8);
+const stepSY = new Float32Array(16 * 8);
+const stepPU = new Float32Array(16);
+const stepPS = new Float32Array(16);
+const stepWX = new Float32Array(8);
+const stepWY = new Float32Array(8);
+const stepOX = new Float32Array(8);
+const stepOY = new Float32Array(8);
+const stepLam = new Uint8Array(8);
+const stepVis = new Uint8Array(8);
+const stepPath: (Path2D | null)[] = [null, null, null, null];
+
+/* THE CAP SHADES BY THE SAME LAW AS THE SOLID IT STANDS ON, and it did not.
+   `octQuartile` was `max(0, n · SUN)` clamped at `LAM0`, which is neither the
+   building's rule nor the reference's — see `planeQuartile` in `buildings.ts`
+   for both, and for what the clamp was costing. Deleted; the call site reads
+   the shared function off the projection's own coefficients. */
+
+export interface StepInput {
+  readonly form: FormTable;
+  readonly slot: number;
+  /** the terrain the building stands on, world metres, UNEXAGGERATED */
+  readonly zg: number;
+  /** the roof plane already drawn, world metres, AFTER the arrival rise */
+  readonly h: number;
+  /** the arrival wave: the second solid grows with the building under it */
+  readonly rise: number;
+  /** the vertex mean the building's own ring was drawn about — `BldTable.cx` */
+  readonly ux: number;
+  readonly uy: number;
+  /** `colourLUT`'s wall table and this building's offset into it */
+  readonly wall: ArrayLike<string>;
+  readonly wallO: number;
+  readonly roofColour: string;
+  /** the outline, or null when the cap is under the stroke threshold */
+  readonly ink: string | null;
+}
+
+/**
+ * ONE SECOND SOLID — the octagon of the derived area, swept by the profile its
+ * published class was given, standing on the plane the page already drew.
+ *
+ * Two floors, both in PIXELS OF THE THING ITSELF, and a cap that falls under
+ * either is **not drawn at all** — it is never drawn larger than it is, which
+ * is what the retired sprite ladder got wrong.
+ *
+ *   `FSTEP_LIFT_PX`  how far the top plane stands above the roof, on screen.
+ *                    This is the one that matters at whole-city zoom, where the
+ *                    Ferry Building's tower is 0.9 px wide and 5.0 px tall — *a
+ *                    skyline is made of lifts, not of widths.*
+ *   `FSTEP_W_PX`     how wide it is, so a 4 × 4 m core on a distant house is
+ *                    not a path call for a smear.
+ *
+ * ── AND THE MEASURED QUANTITY IS KEPT, NOT JUST NOT-EXCEEDED ────────────
+ * Block C's cylinder is not an outline, it is a **volume**: the area comes from
+ * the published mean, and `A2 × (T − L)` is exactly the volume that mean
+ * measures standing above the median plane. Carving a dome out of that cylinder
+ * throws a third of the volume away and the drawn landmark would *under*-read
+ * the file. So the radius is rescaled by `1/√(∫s²du)` — the drawn solid of
+ * revolution has the SAME volume as the cylinder, with the shape being the only
+ * thing that changed. A hemisphere is ⅔ of its cylinder, so a domed cap comes
+ * out about 9 % wider; a spire, nearer a cone at ⅓, comes out 60 % wider.
+ * Computed on the BLENDED profile, so the rescale is continuous with `w` and
+ * nothing jumps.
+ *
+ * The widening is not a licence, and `verify_city_chunks.py` §6d bounds it
+ * where it matters: after the rescale not one of the 68 caps is wider than the
+ * footprint it stands on — worst 42.3 % of its own roof, median 14.0 %.
+ */
+export function drawStep(f: Frame, t: StepInput): boolean {
+  const F = t.form;
+  const s = t.slot;
+  const { ctx, cam, proj } = f;
+  const kh = proj.zexb * cam.scale;
+  const top = F.top[s] * t.rise;
+  const lift = (top - t.h) * kh;
+  if (lift < FSTEP_LIFT_PX) return false;
+  const c = proj.coeffs();
+  const lmax = Math.hypot(c.ax, c.ay) || 1;
+  const kx = lmax * cam.scale;
+  const rad = F.rad[s];
+  const wpx = 2 * rad * kx;
+  if (wpx < FSTEP_W_PX) return false;
+
+  /* ── the profile, blended toward the cylinder by the cap's own size ──── */
+  const pi = F.prof[s];
+  const p = pi > 0 ? F.profiles[pi] : undefined;
+  let NR = 2;
+  if (p && p.u.length > 1 && p.u.length <= 16) {
+    const w = Math.max(
+      0,
+      Math.min(1, (Math.min(lift, wpx * 2.2) - LR_FORM_PX) / (LR_FORM_FULL - LR_FORM_PX)),
+    );
+    if (w > 0.001) {
+      NR = p.u.length;
+      let vsum = 0;
+      for (let r = 0; r + 1 < NR; r++) {
+        const s0 = p.s[r] + (1 - p.s[r]) * (1 - w);
+        const s1 = p.s[r + 1] + (1 - p.s[r + 1]) * (1 - w);
+        vsum += (p.u[r + 1] - p.u[r]) * (s0 * s0 + s0 * s1 + s1 * s1) / 3;
+      }
+      const vs = vsum > 0.02 ? 1 / Math.sqrt(vsum) : 1;
+      for (let r = 0; r < NR; r++) {
+        stepPU[r] = p.u[r];
+        stepPS[r] = (p.s[r] + (1 - p.s[r]) * (1 - w)) * vs;
+      }
+    }
+  }
+  if (NR === 2) {
+    // Block C's own cylinder — profile 0, `prism`, the identity
+    stepPU[0] = 0; stepPS[0] = 1;
+    stepPU[1] = 1; stepPS[1] = 1;
+  }
+
+  /* ── the octagon, at the AREA centroid and in the footprint's own grid ─
+     `dx`,`dy` carry the vertex mean the building was drawn about to the
+     footprint's true area centroid, and `ang` turns the octagon onto the
+     footprint's own dominant edge direction — so a stepped tower shares its
+     building's grid instead of sitting at an arbitrary angle to it. */
+  const N = Math.min(8, F.octN);
+  const ccx = t.ux + F.dx[s];
+  const ccy = t.uy + F.dy[s];
+  const W2 = f.W / 2;
+  const H2 = f.H / 2;
+  const bxs = (c.ax * ccx + c.ay * ccy - cam.cx) * cam.scale + W2;
+  const bys = H2 - (c.bx * ccx + c.by * ccy + t.zg * proj.zex - cam.cy) * cam.scale;
+  const TAU = Math.PI * 2;
+  const a0 = F.ang[s];
+  for (let k = 0; k < N; k++) {
+    const th = a0 + (TAU * k) / N;
+    const ox = rad * Math.cos(th);
+    const oy = rad * Math.sin(th);
+    stepWX[k] = ox;
+    stepWY[k] = oy;
+    stepOX[k] = (c.ax * ox + c.ay * oy) * cam.scale;
+    stepOY[k] = (c.bx * ox + c.by * oy) * cam.scale;
+  }
+  // screen winding at the base ring, then the same front-face sign test the
+  // building's own walls run — one rule for both, at any bearing
+  let s2 = 0;
+  for (let k = 0; k < N; k++) {
+    const k1 = (k + 1) % N;
+    s2 += stepOX[k] * -stepOY[k1] - stepOX[k1] * -stepOY[k];
+  }
+  const sgn = s2 >= 0 ? 1 : -1;
+  for (let k = 0; k < N; k++) {
+    const k1 = (k + 1) % N;
+    stepVis[k] = (stepOX[k1] - stepOX[k]) * sgn > 0 ? 1 : 0;
+    stepLam[k] = planeQuartile(
+      stepWX[k1] - stepWX[k], stepWY[k1] - stepWY[k], c.ax, c.ay, lmax,
+    );
+  }
+
+  const dh = t.h * kh;
+  const dt = top * kh;
+  for (let r = 0; r < NR; r++) {
+    const sc = stepPS[r];
+    const yy = dh + (dt - dh) * stepPU[r];
+    for (let k = 0; k < N; k++) {
+      stepSX[r * N + k] = bxs + stepOX[k] * sc;
+      stepSY[r * N + k] = bys - stepOY[k] * sc - yy;
+    }
+  }
+
+  /* ONE PATH PER LAMBERT VALUE OVER THE WHOLE CAP, not one fill per facet: a
+     dome is seven rings of eight and that is 56 quads, which as four fills is
+     four fills and as 56 fills is a stall. */
+  stepPath[0] = stepPath[1] = stepPath[2] = stepPath[3] = null;
+  for (let r = 0; r + 1 < NR; r++) {
+    /* a band that faces UP takes the next value of the same ramp — the gouache
+       move, three flat bands and no gradient */
+    const up = (stepPU[r] + stepPU[r + 1]) * 0.5 > 0.72 ? 1 : 0;
+    for (let k = 0; k < N; k++) {
+      if (!stepVis[k]) continue;
+      const u = (k + 1) % N;
+      const q = Math.min(3, stepLam[k] + up);
+      let pth = stepPath[q];
+      if (!pth) { pth = new Path2D(); stepPath[q] = pth; }
+      pth.moveTo(stepSX[r * N + k], stepSY[r * N + k]);
+      pth.lineTo(stepSX[r * N + u], stepSY[r * N + u]);
+      pth.lineTo(stepSX[(r + 1) * N + u], stepSY[(r + 1) * N + u]);
+      pth.lineTo(stepSX[(r + 1) * N + k], stepSY[(r + 1) * N + k]);
+      pth.closePath();
+    }
+  }
+  for (let q = 0; q < 4; q++) {
+    const pth = stepPath[q];
+    if (!pth) continue;
+    ctx.fillStyle = t.wall[t.wallO + q] ?? t.roofColour;
+    ctx.fill(pth);
+  }
+
+  // the top plate, in the building's own roof colour — a cap is a roof
+  const tr = (NR - 1) * N;
+  const ts = stepPS[NR - 1];
+  if (ts > 0.02) {
+    ctx.fillStyle = t.roofColour;
+    ctx.beginPath();
+    ctx.moveTo(stepSX[tr], stepSY[tr]);
+    for (let k = 1; k < N; k++) ctx.lineTo(stepSX[tr + k], stepSY[tr + k]);
+    ctx.closePath();
+    ctx.fill();
+    if (t.ink && wpx * ts > STROKE_MIN_PX_A) {
+      ctx.strokeStyle = t.ink;
+      ctx.lineWidth = 0.7;
+      ctx.stroke();
+    }
+  }
+  return true;
 }
 
 /**

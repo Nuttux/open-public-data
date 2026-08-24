@@ -72,6 +72,27 @@ export const MAXZ = 12;
    published rings for 4,000 footprints: median 1.01 m, p95 1.65 m, which at
    the ceiling is 2.5 px on a building drawn 37 px wide.
 
+   ── WHAT THE FOURTH STOP MEANS, DECIDED ───────────────────────────────
+   STREET is a fixed CLOSENESS and not a fixed amount of city: 2.0 px per
+   world unit, 2.454 CSS px per published metre, on every screen. A bigger
+   window shows more of San Francisco at that closeness; it does not show it
+   any finer, because the file has nothing finer in it. Measured on this
+   build through the real button, `.parity/v1shot.py`:
+
+     1600 x 1000   base 0.067134   fourth stop z 29.79x   scale 2.0
+      768 x 1024   base 0.039298   fourth stop z 50.89x   scale 2.0
+      390 x  844   base 0.019956   fourth stop z 100.22x  scale 2.0
+
+   The z column is the thing that varies, and it is not the ceiling moving:
+   it is one constant divided by three different fits. The alternative —
+   a fixed multiple of the fit, which is what MAXZ was — makes the RECORD's
+   own limit a function of the browser window, so the same press draws a
+   building 37 px wide on a desktop and 13 px wide on a phone, and a link
+   sent from one screen lands at a different closeness on another. The
+   footprints are shipped on a one-metre lattice (`encode_city_chunks.py`:
+   "integer world metres, BLDG.q = 1.0"), so at this stop one quantum is
+   2.45 px — resolved, and no finer.
+
    THIS IS A CLAMP. It is not in any layer key and it must never be: the
    jumpy-zoom bug was a continuous function of cam.scale inside a cache key.
    See `quantiseForKey`. */
@@ -298,6 +319,29 @@ export class Camera implements ViewCamera {
     return ZSTEPS.length + 1;
   }
 
+  /* ── WHICH STOP THE READER IS STANDING ON ─────────────────────────────
+     Compared on the ABSOLUTE scale, one stop at a time, because the four
+     stops are not all in the same unit: the first three are multiples of the
+     fit and the fourth is a fixed closeness. A single fit-relative test can
+     therefore not answer this question, and the one that shipped —
+     `z > 11.5`, MAXZ + a rounding — said STREET from z 11.5 up. On this
+     build the ceiling is z 29.8 at 1600 x 1000 and z 100.2 at 390 x 844, so
+     on a phone the button claimed the reader was at Street while they were
+     still eight times short of it.
+
+     Deepest stop first, so that on a viewport where two stops land within
+     SNAP of each other — possible only where base x 7.2 is already at the
+     ceiling — the button that reads pressed is the one that cannot go any
+     further. Returns −1 when the camera is between stops, which is where a
+     wheel leaves it and is the honest answer. */
+  pressedPreset(): number {
+    for (let i = this.presetCount() - 1; i >= 0; i--) {
+      const s = this.presetScale(i);
+      if (s > 0 && Math.abs(Math.log(this.scale / s)) < SNAP) return i;
+    }
+    return -1;
+  }
+
   /** The visible strip, not the canvas. The ledger is an opaque panel sitting
    *  ON the canvas, so clamping to the canvas would let a third of San
    *  Francisco slide underneath it and count as "on screen". Returns
@@ -382,6 +426,18 @@ export class Camera implements ViewCamera {
     const s = this.strip(W, H, ledgerW);
     this.cx = p[0] + s.offX;
     this.cy = p[1] + (H * 0.1) / this.scale;
+    this.clamp(W, H, ledgerW);
+  }
+
+  /* ── A CUT ────────────────────────────────────────────────────────────
+     The stop the glide would have arrived at, arrived at now. This is the
+     reduced-motion path for the four camera buttons: a 520 ms flight that
+     crosses 14x of zoom on a phone is exactly the large-field motion
+     `prefers-reduced-motion` is asking us not to make. Nothing else is
+     subtracted — the same stop, the same clamp, the same band. */
+  cutTo(scale: number, W: number, H: number, ledgerW = 0): void {
+    this.scale = Math.min(this.maxScale(), Math.max(this.base * MINZ, scale));
+    this.thawBand();
     this.clamp(W, H, ledgerW);
   }
 
@@ -905,6 +961,23 @@ export interface SlotTune {
   mZoom?: number;
 }
 
+/**
+ * DEV-ONLY. The film's two buffer dials, reachable from a probe — the same
+ * idiom `terrain.ts` uses for `__cityWA`, and for the same reason: the film
+ * buffer's resolution and its margin are a cost-against-sharpness trade whose
+ * two sides have to be measured against each other, and a constant that can
+ * only be changed by editing the file gets measured once and argued about
+ * afterwards. `planSlots` runs on a stage resize, so a probe sets a dial and
+ * resizes the stage.
+ */
+export const FDIALS: { dpr: number; margin: number } = {
+  dpr: FILM_DPR,
+  margin: 0, // 0 = whatever `margin(W)` says
+};
+if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+  (globalThis as { __cityFDIALS?: typeof FDIALS }).__cityFDIALS = FDIALS;
+}
+
 export function planSlots(
   W: number,
   H: number,
@@ -912,10 +985,11 @@ export function planSlots(
   tune: SlotTune = {},
 ): SlotPlan[] {
   const mMotion = W < NARROW_W ? (tune.mPhone ?? M_PHONE) : (tune.mDesk ?? M_DESK);
+  const mFilm = FDIALS.margin > 0 ? FDIALS.margin : mMotion;
   const spec: Array<[SlotPlan["name"], number, number]> = [
     ["hi", DPR, M_SETTLED],
     ["lo", Math.max(1, DPR * (tune.motionDPR ?? MOTION_DPR)), mMotion],
-    ["fi", Math.max(1, DPR * (tune.filmDPR ?? FILM_DPR)), mMotion],
+    ["fi", Math.max(1, DPR * (tune.filmDPR ?? FDIALS.dpr)), mFilm],
     ["zo", Math.max(1, DPR * (tune.motionDPR ?? MOTION_DPR)), tune.mZoom ?? M_ZOOM],
   ];
   return spec.map(([name, dpr, m]) => {

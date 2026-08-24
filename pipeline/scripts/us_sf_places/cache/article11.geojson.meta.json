@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/ejht-vp5d.geojson?$limit=50000",
+ "what": "Article 11 Rating (downtown conservation)",
+ "bytes": 756784,
+ "rows": 786,
+ "sha256": "4733a9a135fc98114ae826decd62c7732039191de92859a938d02185cd972d0e",
+ "retrieved_utc": "2026-08-23T21:33:50Z"
+}

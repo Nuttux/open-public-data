@@ -1,0 +1,99 @@
+{
+ "id": "ejht-vp5d",
+ "name": "Article 11 Rating",
+ "description": "Parcels rated under Article 11 of the Planning Code (Historic Preservation).",
+ "attribution": null,
+ "rowsUpdatedAt": 1708521872,
+ "columns": {
+  "the_geom": {
+   "name": "the_geom",
+   "type": "multipolygon",
+   "description": null
+  },
+  "individuals_article_11_objectid": {
+   "name": "OBJECTID",
+   "type": "number",
+   "description": null
+  },
+  "individuals_article_11_casenumber": {
+   "name": "CaseNumber",
+   "type": "text",
+   "description": null
+  },
+  "individuals_article_11_pos": {
+   "name": "POS",
+   "type": "text",
+   "description": null
+  },
+  "individuals_article_11_datelisted": {
+   "name": "DateListed",
+   "type": "date",
+   "description": null
+  },
+  "individuals_article_11_id": {
+   "name": "Id",
+   "type": "number",
+   "description": null
+  },
+  "individuals_article_11_apn": {
+   "name": "APN",
+   "type": "text",
+   "description": null
+  },
+  "individuals_article_11_name": {
+   "name": "Name",
+   "type": "text",
+   "description": null
+  },
+  "individuals_article_11_lowstnum": {
+   "name": "LowStNum",
+   "type": "text",
+   "description": null
+  },
+  "individuals_article_11_highstnum": {
+   "name": "HighStNum",
+   "type": "text",
+   "description": null
+  },
+  "individuals_article_11_stname": {
+   "name": "StName",
+   "type": "text",
+   "description": null
+  },
+  "individuals_article_11_sttype": {
+   "name": "StType",
+   "type": "text",
+   "description": null
+  },
+  "individuals_article_11_surveyname": {
+   "name": "SurveyName",
+   "type": "text",
+   "description": null
+  },
+  "individuals_article_11_filepath": {
+   "name": "FilePath",
+   "type": "text",
+   "description": null
+  },
+  "individuals_article_11_article11": {
+   "name": "Article11",
+   "type": "text",
+   "description": null
+  },
+  "dwntwnrate_objectid": {
+   "name": "OBJECTID_2",
+   "type": "number",
+   "description": null
+  },
+  "dwntwnrate_rating": {
+   "name": "RATING",
+   "type": "text",
+   "description": null
+  },
+  "dwntwnrate_explanation": {
+   "name": "EXPLANATION",
+   "type": "text",
+   "description": null
+  }
+ }
+}

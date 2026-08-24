@@ -37,3 +37,19 @@ def unb64(s: str) -> bytes:
     the client. This function exists only to READ the mock.
     """
     return base64.b64decode(s)
+
+
+def load_json(rel: str) -> object:
+    """Read a plain published cache under <MOCK> — NOT a `window.X =` payload.
+
+    `_srcload.load()` covers everything the mock ships to the page. Two columns
+    of DataSF 3psu-pn9h never reach the page at all and so are in none of those
+    payloads: the centreline's own `cnn` and its `streetname`. gen/gen_geo2.py
+    drops both — the mock draws the network without ever naming a line — so the
+    only place either exists is `geo/cache/streets.json`, the fetched dataset
+    itself (geo/fetch.py). This reads it, and nothing else about it is special:
+    it is strict JSON on disk, under the same tree, and the join back onto the
+    shipped array is PROVED per feature rather than assumed (see
+    `_centrelines()`).
+    """
+    return json.loads((MOCK / rel).read_text())

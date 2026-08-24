@@ -270,6 +270,50 @@ export const NEAR_PX = 9;
  * NEGATIVE: one `Path2D` per band per colour is unchanged, and roughly a third
  * of the buildings in a district frame stop contributing to it.
  */
+/**
+ * THE WALL'S LAMBERT STEP, AND IT WAS A DIFFERENT FUNCTION IN THREE PLACES.
+ *
+ * `part3.html` computes this ONCE, in `rebuildProjected()` L1327, and reads the
+ * result back for building walls (`UELAM`), for the Transamerica taper
+ * (`FLAMU`) and for every hero part (`P.lam`):
+ *
+ * ```
+ *   const L = hypot(ex, ey), nx = ey/L, ny = -ex/L;      // outward normal, plan
+ *   const t = (ax*nx + ay*ny) / LMAX;                    // LMAX = hypot(ax, ay)
+ *   lam = clamp(0, 3, round((t*0.5 + 0.5) * 3));
+ * ```
+ *
+ * `(ax, ay)` is `coeffs()` — the world-space gradient of SCREEN X — so `t` is
+ * the cosine between the wall's outward normal and screen-right, in **[-1, 1]**,
+ * mapped linearly onto the four steps. *The key light in this frame is upper
+ * right*, and this is that sentence as arithmetic.
+ *
+ * This port had `landmarks.ts` doing exactly that and `scene.ts`'s
+ * `wallQuartile` and `roofs.ts`'s `octQuartile` doing something else entirely:
+ * `max(0, n · SUN)` clamped by `LAM0` — the TERRAIN's world-space sun vector,
+ * which is a three-component direction for a surface that can tilt, applied to
+ * a vertical wall that cannot. Two consequences, both visible:
+ *
+ *  - **the negative half of the range collapses.** Every wall turned away from
+ *    the light — half of every building in the city — took step 0, the coolest
+ *    and darkest of the four, instead of spreading over 0 and 1. A block of
+ *    houses came out two values where the reference gives it four.
+ *  - **the ramp is not the projection's.** `SUN` is fixed in world x/y; the
+ *    reference's direction is the camera's own, so at any other bearing the two
+ *    would not even agree in sign.
+ *
+ * One function now, in one file, and the three call sites read it.
+ */
+export function planeQuartile(
+  ex: number, ey: number, ax: number, ay: number, lmax: number,
+): number {
+  const L = Math.hypot(ex, ey) || 1;
+  const nx = ey / L, ny = -ex / L;
+  const t = (ax * nx + ay * ny) / (lmax || 1);
+  const q = Math.round((t * 0.5 + 0.5) * 3);
+  return q < 0 ? 0 : q > 3 ? 3 : q;
+}
+
 export const EDGE_SHADE = 0.62;
 export const STROKE_MIN_PX_A = 3.0;
 export const STROKE_MIN_PX_B = 5.0;
@@ -297,12 +341,60 @@ export function inkFor(hex: string, k: number): string {
   const r = parseInt(hex.slice(1, 3), 16),
     g = parseInt(hex.slice(3, 5), 16),
     b = parseInt(hex.slice(5, 7), 16);
-  const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  const want = Math.max(INK_LO, Math.min(INK_HI, lum * (1 - k)));
-  const f = lum > 0.5 ? Math.max(0, (lum - want) / lum) : 1 - k;
-  const q = (v: number) => Math.max(0, Math.min(255, Math.round(v * f)));
-  const hx = (v: number) => (v < 16 ? "0" : "") + v.toString(16);
-  return "#" + hx(q(r)) + hx(q(g)) + hx(q(b));
+  // Rec.601, which is what `_inkFor` weights with. The port had Rec.709
+  // (0.2126/0.7152/0.0722) — a different luminance, so a different clamp, so a
+  // different ink on every roof in the city. Nothing in the source uses 709.
+  const L = 0.299 * r + 0.587 * g + 0.114 * b;
+  if (!(L > 1)) return shade(hex, k);
+  /* AND THE BAND SCALES WITH `k`. `s` is the whole reason the two darker size
+     bands below can be darker: at `k = EDGE_SHADE` it is 1 and the clamp is the
+     shipped [32,52]; at `EDGE_SHADE*0.66` it is 1.58 and the band opens to
+     [50,82], which is what lets a 72 px tower carry a line a reader can see.
+     The port dropped `s`, so every value of `k` was clamped back into the same
+     [32,52] and `inkFor(c, EDGE_SHADE*0.66)` returned very nearly
+     `inkFor(c, EDGE_SHADE)` — the ramp would have been wired to nothing. */
+  const s = (1 - k) / (1 - EDGE_SHADE);
+  const d = Math.min(INK_HI * s, Math.max(INK_LO * s, L * (1 - k)));
+  return shade(hex, Math.max(0, 1 - d / L));
+}
+
+/* ── AND THE OUTLINE OPENS INTO A DRAWN LINE ────────────────────────────
+ *
+ * *"The outline is what separates one house from the one it shares a party
+ * wall with: two neighbours of the same tone and height are one shape without
+ * it."* At district zoom that is a 0.7 px hairline and it is enough. At STREET
+ * zoom a Financial District tower is a hundred pixels wide, and a 0.7 px line
+ * at `EDGE_SHADE` on a pale roof is not an outline — it is a seam, and the
+ * frame Daniel sent back is a continuous wall of grey with no building in it.
+ *
+ * `part3.html` ramps BOTH the value and the width on the building's own
+ * projected size: `INK_PX0` → `INK_PX1` takes the width 0.7 → 1.5 px, and the
+ * ink steps through two darker values of the SAME roof — `EDGE_SHADE*0.82`,
+ * then `EDGE_SHADE*0.66`. **Still a value of its own roof**, which is Block M's
+ * finding; a flat black outline on a pale gouache wash is the poster contrast
+ * that finding replaced.
+ *
+ * Keyed on the BUILDING and not on the camera, so the change is staggered
+ * across the fabric and there is nothing to pop — and below `INK_PX0` this
+ * returns exactly what the page already drew, so the whole-city and district
+ * frames are byte-identical.
+ */
+export const INK_PX0 = 20;
+export const INK_PX1 = 72;
+export const INK_W0 = 0.7;
+export const INK_W1 = 1.5;
+
+/** the outline's colour at a building of `px` projected width */
+export function edgeInk(roof: string, px: number): string {
+  if (px < INK_PX0) return inkFor(roof, EDGE_SHADE);
+  return inkFor(roof, EDGE_SHADE * (px >= INK_PX1 ? 0.66 : 0.82));
+}
+
+/** the outline's width at a building of `px` projected width */
+export function edgeWidth(px: number): number {
+  if (px < INK_PX0) return INK_W0;
+  const k = px >= INK_PX1 ? 1 : (px - INK_PX0) / (INK_PX1 - INK_PX0);
+  return INK_W0 + (INK_W1 - INK_W0) * k;
 }
 
 /** ART-SPEC §7.5: party lines in ink, not in white. White on a light roof reads

@@ -1,0 +1,249 @@
+{
+ "_": "Decisions the Board made that this map does not show. Built by pipeline/scripts/us_sf_reach/build_reach.py; every classification is held against the quote it came from at build time.",
+ "vocab": {
+  "in_city": "the subject lies inside the City and County of San Francisco. This is the piece's default and is NOT separately verified per entry.",
+  "made_land": "inside the county, but on ground the city manufactured; it is not on the 1906 shoreline.",
+  "shared": "the subject crosses the county line and San Francisco is one of several parties to it.",
+  "outside": "the subject lies outside the county line.",
+  "annexation": "the subject IS territory outside the line — the city proposing to move its own boundary.",
+  "unstated": "the subject is known to be outside, but THIS entry's record never says so. Carried as a gap, not filled in."
+ },
+ "extent": {
+  "chunk_grid_km": 16.384,
+  "chunk_grid_note": "the only ground the camera lets a reader reach: MINZ = 1 in lib/city/camera.ts stops the pull-back at the whole-city fit, and cityBBox() builds the pan clamp from the city's own coastline mask.",
+  "surround_plate_km": [
+   45.76,
+   38.96
+  ],
+  "surround_plate_note": "already shipped, already loaded, currently unreachable: US Census TIGERweb shoreline + USGS 3DEP elevation, 63,352 land cells.",
+  "measured_pullback_limit_z": 0.76,
+  "measured_pullback_note": "measured by pipeline/scripts/us_sf_reach/reach_zsweep.py: below z ~0.76 the surround plate's own rectangular edge enters the frame and the world becomes a slab on paper. That is ~26 km across, against the ~36 km a frame would need to hold the airport."
+ },
+ "counts": {
+  "entries_total": 41,
+  "entries_classified": 9,
+  "by_reach": {
+   "annexation": 1,
+   "made_land": 2,
+   "outside": 3,
+   "shared": 2,
+   "unstated": 1
+  },
+  "off_map": 5,
+  "off_map_beats": 63
+ },
+ "rows": [
+  {
+   "id": "bay-bridge",
+   "name": "San Francisco–Oakland Bay Bridge",
+   "kind": "bridge",
+   "reach": "shared",
+   "county_named_in_record": "Alameda",
+   "beats": 8,
+   "geometry_source": "PARTIAL IN RECORD — the corpus gives endpoints ('a bridge between Rincon Hill and Alameda', 1929 n52) and structural landmarks (Yerba Buena Island, the West Bay towers and centre anchorage, the Oakland tide lands). No alignment. Needs an external line.",
+   "position": null,
+   "position_note": "NO POSITION. The record describes this land in section and township, not in coordinates. See REACH.md §4.",
+   "evidence": {
+    "year": 1929,
+    "headline": "The Board wires Congress that it is under a public mandate to get a bridge built between Rincon Hill and Alameda.",
+    "fragment": "a bridge between Rincon Hill and Alameda",
+    "note": "A state crossing. The city's end is in San Francisco; the far end is not.",
+    "item": "journalofproceed24sanfrich",
+    "leaf": 52,
+    "url": "https://archive.org/details/journalofproceed24sanfrich/page/n52/mode/1up"
+   },
+   "corroboration": {
+    "year": 1936,
+    "headline": "Nine months from opening, the Mayor prices the bridge at $77,600,000 and names the next fight: the tolls.",
+    "fragment": "San Francisco-Oakland Bay Bridge",
+    "note": null,
+    "item": "journalofproceed31sanfrich",
+    "leaf": 46,
+    "url": "https://archive.org/details/journalofproceed31sanfrich/page/n46/mode/1up"
+   }
+  },
+  {
+   "id": "event-san-mateo-consolidation-1931",
+   "name": "The charter amendment to annex San Mateo County",
+   "kind": "city_event",
+   "reach": "annexation",
+   "county_named_in_record": "San Mateo",
+   "beats": 8,
+   "geometry_source": "N/A. The proposal is framed as 'all or any part of the area of the County of San Mateo' — deliberately open-ended, with no boundary. If it had passed, the geometry would have been San Mateo County's.",
+   "position": null,
+   "position_note": "NO POSITION. The record describes this land in section and township, not in coordinates. See REACH.md §4.",
+   "evidence": {
+    "year": 1931,
+    "headline": "The Mayor's annual message lists annexing the next county along as ordinary city business.",
+    "fragment": "Consolidation of San Francisco and San Mateo County",
+    "note": "The Mayor's annual message lists annexing the next county along as ordinary city business. San Francisco voted 80,156 to 21,679 for the Charter article that would have governed it.",
+    "item": "journalofproceed26sanfrich",
+    "leaf": 44,
+    "url": "https://archive.org/details/journalofproceed26sanfrich/page/n44/mode/1up"
+   }
+  },
+  {
+   "id": "golden-gate-bridge",
+   "name": "Golden Gate Bridge",
+   "kind": "bridge",
+   "reach": "shared",
+   "county_named_in_record": "Marin",
+   "beats": 9,
+   "geometry_source": "NOT IN RECORD — the corpus names the two ends by their structures ('the Marin tower', 'the south pier near Fort Point') and its city-side approach street (Funston Avenue), never an alignment. Needs an external line.",
+   "position": null,
+   "position_note": "NO POSITION. The record describes this land in section and township, not in coordinates. See REACH.md §4.",
+   "evidence": {
+    "year": 1930,
+    "headline": "San Francisco signs away the bridge it applied to build, to a district spanning six counties.",
+    "fragment": "the City and County of San Francisco and the County of Marin, two political subdivisions of the State of California",
+    "note": "San Francisco is one member of a bridge district, not the owner. The north tower stands in Marin County.",
+    "item": "journalofproceed25sanfrich",
+    "leaf": 913,
+    "url": "https://archive.org/details/journalofproceed25sanfrich/page/n913/mode/1up"
+   },
+   "corroboration": {
+    "year": 1935,
+    "headline": "The Marin tower is finished at 746 feet, and the completion date is set for May 1937.",
+    "fragment": "The Marin tower of the Golden Gate Bridge has been completed",
+    "note": null,
+    "item": "journalofproceed30sanfrich",
+    "leaf": 50,
+    "url": "https://archive.org/details/journalofproceed30sanfrich/page/n50/mode/1up"
+   }
+  },
+  {
+   "id": "hetch-hetchy",
+   "name": "Hetch Hetchy",
+   "kind": "water_system",
+   "reach": "outside",
+   "county_named_in_record": null,
+   "beats": 21,
+   "geometry_source": "PARTLY IN RECORD. The corpus names the fixed points — O'Shaughnessy Dam, Early Intake, Moccasin Creek power house, the Foothill Division tunnels to the San Joaquin Valley, the 47-mile San Joaquin pipe line, the Tesla and Irvington portals of the 28-mile Coast Range Tunnel, the Alameda Creek portal, the Bay Division and Dumbarton crossing, Pulgas tunnel and Crystal Springs Reservoir — and calls the whole 'our 150-mile aqueduct'. Land is described in section and township, not in coordinates, so the line still has to be drawn from outside.",
+   "position": null,
+   "position_note": "NO POSITION. The record describes this land in section and township, not in coordinates. See REACH.md §4.",
+   "evidence": {
+    "year": 1935,
+    "headline": "On 28 October the first Sierra snow water comes through the tunnel, and the Mayor declares the fear of famine laid for all time.",
+    "fragment": "the first flow of Sierra snow water from the Hetch-Hetchy system, through the Coast Range tunnel into Crystal Springs Reservoir",
+    "note": "1935 mayoral message. The entry's own geometry_source records that the corpus names the fixed points but describes land 'in section and township, not in coordinates', so the line cannot be drawn from the record.",
+    "item": "journalofproceed30sanfrich",
+    "leaf": 44,
+    "url": "https://archive.org/details/journalofproceed30sanfrich/page/n44/mode/1up"
+   },
+   "corroboration": {
+    "year": 1921,
+    "headline": "The city drops its condemnation suit and buys the power plant site from Caroline Cavagnaro for $13,500.",
+    "fragment": "130.34 acres of land situated in Sections",
+    "note": null,
+    "item": "journalofproceed1921sanfrich",
+    "leaf": 494,
+    "url": "https://archive.org/details/journalofproceed1921sanfrich/page/n494/mode/1up"
+   }
+  },
+  {
+   "id": "mills-field-sfo",
+   "name": "Mills Field → San Francisco Municipal Airport (SFO)",
+   "kind": "airport",
+   "reach": "outside",
+   "county_named_in_record": "San Mateo",
+   "beats": 10,
+   "geometry_source": "PARTIAL IN RECORD — Res. 26816 gives a legal description ('Sections 34 and 35 of Township 3 South, Range 5 West, and Section 2 … Township 4 South, Range 5 West') and the Mayor gives '150 acres, about three miles south of South San Francisco and east of the Bay Shore highway'. That is a survey-grid description in San Mateo County, not a mappable boundary without a township-and-range lookup.",
+   "position": null,
+   "position_note": "NO POSITION. The record describes this land in section and township, not in coordinates. See REACH.md §4.",
+   "evidence": {
+    "year": 1927,
+    "headline": "The Board picks a site and writes into the text that it is temporary: no permanent one can be judged without a year of watching the weather.",
+    "fragment": "there is not a sufficiently large area of land within the con fines of the City and County of San Francisco suitable for airport purposes",
+    "note": "Resolution No. 26816 (New Series), 14 February 1927. The Board wrote the reason for leaving its own boundary into the operative text of the resolution. OCR has split 'confines'; the fragment is quoted as the page reads.",
+    "item": "journalofproceed22sanfrich",
+    "leaf": 277,
+    "url": "https://archive.org/details/journalofproceed22sanfrich/page/n277/mode/1up"
+   },
+   "corroboration": {
+    "year": 1949,
+    "headline": "Whose fire engines put out fires at an airport in the next county?",
+    "fragment": "San Mateo County provide adequate fire fighting equipment for the San Francisco Airport",
+    "note": null,
+    "item": "journalofproceed44sanfrich",
+    "leaf": 104,
+    "url": "https://archive.org/details/journalofproceed44sanfrich/page/n104/mode/1up"
+   }
+  },
+  {
+   "id": "sfo-capital-plan-bonds",
+   "name": "The Airport's Second Series Bonds",
+   "kind": "revenue_bond_programme",
+   "reach": "unstated",
+   "county_named_in_record": null,
+   "beats": 12,
+   "geometry_source": "NOT IN THE RECORD as coordinates. The matters name the Airport as a whole and, in 2018, its parts: Terminal 1, Terminal 3 West, the AirTrain, runways and taxiways, the waste water treatment plant. Any drawn geometry has to come from outside.",
+   "position": null,
+   "position_note": "NO POSITION. The record describes this land in section and township, not in coordinates. See REACH.md §4.",
+   "gap": {
+    "sought": "any statement, in these 12 beats, of where the Airport is",
+    "searched": "all 12 beats of entries/sfo-capital-plan-bonds.json, for 33 place names outside the City and County of San Francisco",
+    "result": "NOT FOUND. The modern Legistar matters say 'the Airport' and never 'San Mateo County'. The 1927 record knows the airport is in another county and argues about it; the 2000-2018 record has stopped saying. This entry is outside the county on the same subject as mills-field-sfo, but ITS OWN record does not establish it, so it is carried as a gap rather than inferred."
+   }
+  },
+  {
+   "id": "treasure-island",
+   "name": "Treasure Island and the 1939 Golden Gate International Exposition",
+   "kind": "made_land",
+   "reach": "made_land",
+   "county_named_in_record": null,
+   "beats": 10,
+   "geometry_source": "PARTIAL IN RECORD — the corpus locates it as 'the shoal lands immediately north of Yerba Buena Island in San Francisco Bay' and sizes it at 'approximately 400 acres' being reclaimed (1937 n98). No boundary. Needs an external polygon.",
+   "position": null,
+   "position_note": "NO POSITION. The record describes this land in section and township, not in coordinates. See REACH.md §4.",
+   "evidence": {
+    "year": 1939,
+    "headline": "The state's conveyance says airport purposes only. Anything else and the island goes back.",
+    "fragment": "the shoal lands, upon which Treasure Island has been reclaimed, were acquired by the City and County of San Francisco from the State of California",
+    "note": "Inside the county, and inside the chunk grid, but it is not ground the city was given — it is ground the city made, on a state conveyance that said airport purposes only.",
+    "item": "journalofproceed34sanfrich",
+    "leaf": 720,
+    "url": "https://archive.org/details/journalofproceed34sanfrich/page/n720/mode/1up"
+   }
+  },
+  {
+   "id": "treasure-island-redevelopment",
+   "name": "Treasure Island, Again",
+   "kind": "district_redevelopment",
+   "reach": "made_land",
+   "county_named_in_record": null,
+   "beats": 7,
+   "geometry_source": "THE ISLAND ITSELF, which is the one geometry in this half of the corpus that needs no reconstruction. The record works in leases (South Waterfront, Land and Structures, Marina, Childcare, Event Venues) and in the boundary of the special tax district, which exists as a recorded map referenced but not reproduced.",
+   "position": null,
+   "position_note": "NO POSITION. The record describes this land in section and township, not in coordinates. See REACH.md §4.",
+   "evidence": {
+    "year": 2011,
+    "headline": "The tax increment pledge is drafted in March and never acted on. In June the state abolishes redevelopment.",
+    "fragment": "Treasure Island/Yerba Buena Island",
+    "note": "The modern successor on the same made ground.",
+    "item": null,
+    "leaf": null,
+    "url": "https://webapi.legistar.com/v1/sfgov/matters/24006"
+   }
+  },
+  {
+   "id": "water-system-improvement-program",
+   "name": "Rebuilding the Hetch Hetchy System",
+   "kind": "water_system",
+   "reach": "outside",
+   "county_named_in_record": null,
+   "beats": 12,
+   "geometry_source": "NAMED, NOT DRAWN. The record identifies pieces by name across three counties -- Calaveras Dam, the New Irvington Tunnel, the Bay Tunnel under San Francisco Bay, Crystal Springs Bypass Tunnel, San Joaquin Pipelines, Alameda Siphon No. 4, Harry Tracy and Sunol Valley treatment plants, Mountain Tunnel. Alignments are in the engineering drawings, not here.",
+   "position": null,
+   "position_note": "NO POSITION. The record describes this land in section and township, not in coordinates. See REACH.md §4.",
+   "evidence": {
+    "year": 2002,
+    "headline": "The other option — tear it out and give the valley back — is introduced, and filed by the Clerk without action.",
+    "fragment": "restoring the Hetch Hetchy Valley in Yosemite National Park",
+    "note": "The modern rebuild of the same system. Its entry records pieces 'across three counties'.",
+    "item": null,
+    "leaf": null,
+    "url": "https://webapi.legistar.com/v1/sfgov/matters/5923"
+   }
+  }
+ ]
+}

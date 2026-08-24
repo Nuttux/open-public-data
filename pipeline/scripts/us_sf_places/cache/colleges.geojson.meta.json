@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/6adp-a5yv.geojson?$limit=50000",
+ "what": "Schools_College",
+ "bytes": 33597,
+ "rows": 46,
+ "sha256": "2872cd8072f050d7da04627c19b0f6081302d43093cffaca978ca12f2a89ad34",
+ "retrieved_utc": "2026-08-23T21:33:52Z"
+}

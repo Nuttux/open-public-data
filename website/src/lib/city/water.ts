@@ -28,6 +28,7 @@ import {
   RS,
   lerpHex,
   resTune,
+  rgbHex,
   sx,
   sy,
   TerrainField,
@@ -641,11 +642,24 @@ let bayKey = "";
  * plate drawn for a different camera. What the finding forbids is a
  * continuous scale in the key of a buffer whose CONTENTS do not depend on it.
  */
+/**
+ * The aerial anchor, remembered from whoever last laid the bay.
+ *
+ * `hazeAt` is measured from the manifest's own `proj.downtown`, and the shell
+ * hands that number to `bayPlate` on the frame immediately before it asks for
+ * the water. `drawWater` needs the same point for the depth plate's own fade
+ * and is not handed it, so the module keeps the one it was given rather than
+ * writing a coordinate down here. **With nothing handed to it, the fade is not
+ * painted** — no anchor is invented.
+ */
+let hazeAnchor: readonly [number, number] | null = null;
+
 export function bayPlate(
   f: Frame,
   makeCanvas: (w: number, h: number) => HTMLCanvasElement | OffscreenCanvas,
   downtown: readonly [number, number],
 ): HTMLCanvasElement | OffscreenCanvas | null {
+  hazeAnchor = downtown;
   const tune = resTune(f.dpr, f.moving);
   const ss = tune.bayss || BAY_SS;
   const { W, H, cam } = f;
@@ -769,18 +783,156 @@ export function assertRefinement(meta: WaterMeta, XW: number, XH: number): void 
 }
 
 /**
- * The depth ramp. Stops are the published quantiles; the colours between them
- * are one whole step per quantile interval off the page's own two water tones.
+ * The ramp's SHAPE, in whole `BAY_SHOAL -> BAY_OPEN` steps.
+ *
+ * `spread` is one step per published quantile interval; `tail` is where the
+ * deepest stop sits, in those steps. Both are **DECLARED**, as they are in the
+ * source: the published quantiles fix where the stops are and the direction
+ * the water darkens, and how far apart the tones sit is this port's reading of
+ * "one whole step per quantile interval". The 0.75 rather than 1.0 is the
+ * source's own number and the check on it is in `depthRamp`.
  */
-export function depthRamp(qs: readonly number[]): {
+export const DE_SPREAD = 0.75;
+export const DE_TAIL = 2.2;
+
+/** the four `u` values the published quantiles sit at */
+export const depthU_stops = (): readonly number[] => [
+  0,
+  DE_SPREAD,
+  2 * DE_SPREAD,
+  DE_TAIL * DE_SPREAD,
+];
+
+/**
+ * `u(d)` — piecewise linear through the published quantiles, in ramp steps.
+ *
+ * The quantiles are NOT evenly spaced in metres (0 / 9.929 / 27.466 / 114.045)
+ * and are evenly spaced in `u`, which is the whole point: the tone follows the
+ * DISTRIBUTION rather than the depth, so the half of the bay that is shallower
+ * than 9.9 m gets a whole step of the ramp to itself instead of the first
+ * ninth of it.
+ */
+export function depthU(d: number, qs: readonly number[]): number {
+  const U = depthU_stops();
+  if (d <= qs[1])
+    return U[0] + ((U[1] - U[0]) * (d - qs[0])) / Math.max(1e-6, qs[1] - qs[0]);
+  if (d <= qs[2])
+    return U[1] + ((U[2] - U[1]) * (d - qs[1])) / Math.max(1e-6, qs[2] - qs[1]);
+  return (
+    U[2] +
+    (U[3] - U[2]) *
+      Math.min(1, (d - qs[2]) / Math.max(1e-6, qs[3] - qs[2]))
+  );
+}
+
+/**
+ * The area-weighted mean of `u` over a published depth field.
+ *
+ * Every node of the shipped grid covers the same area, so a plain mean over
+ * the non-zero codes IS the area-weighted mean. Zero is land: the encoder
+ * drops it, so it is not water averaged as shallow.
+ *
+ * Exported so `DEPTH_UM` can be re-derived from the shipped chunk rather than
+ * believed.
+ */
+export function depthMeanU(
+  dep: Uint8Array,
+  dmax: number,
+  qs: readonly number[],
+): number {
+  const hist = new Float64Array(256);
+  for (let k = 0; k < dep.length; k++) hist[dep[k]]++;
+  hist[0] = 0;
+  let s = 0,
+    n = 0;
+  for (let b = 1; b < 256; b++) {
+    if (!hist[b]) continue;
+    s += depthU(depthM(b, dmax), qs) * hist[b];
+    n += hist[b];
+  }
+  return n ? s / n : 0;
+}
+
+/**
+ * THE LEVEL IS NOT A CHOICE AT ALL, AND IT WAS BEING CHOSEN.
+ *
+ * The ramp is re-centred so that **the area-weighted mean colour of the water
+ * is the value Block W set for the open bay.** What the bathymetry changes is
+ * the VARIATION, not the level — the discipline `roofs/BLOCK-F2.md` §2.4 used
+ * for the roof's own band.
+ *
+ * The first cut of this port shipped four hand-picked stops
+ * (`BAY_SHOAL, #a9c4d6, BAY_OPEN, lerp(BAY_OPEN, #39597e, .55)`) and did NOT
+ * re-centre. MEASURED over the 53,128 water nodes of the shipped
+ * `base/water0`, the mean colour that ramp paints is
+ *
+ * ```
+ *   painted   168.6, 195.1, 213.5
+ *   BAY_OPEN  135.0, 166.0, 198.0
+ *   error     +33.6, +29.1, +15.5   of 255
+ * ```
+ *
+ * — the bay was **a third of a level too pale over its whole area**, which is
+ * exactly parity §6's "one pale blue-grey wash" and most of why the wide frame
+ * reads washed out. It is low magnitude per pixel and enormous in area, so it
+ * does not announce itself.
+ *
+ * `DEPTH_UM` is that mean, in `u`, over the shipped field. It is a MEASURED
+ * constant with a stated target, the way `terrain.ts`'s `XBASE_K` is, and it
+ * is re-derivable:
+ *
+ * ```
+ *   depthMeanU(city.get("base/water0").fields.dep, 120, manifest.water.qs)
+ *   = 0.718468   over 53,128 water nodes
+ * ```
+ *
+ * **The check that the arithmetic is right and not merely self-consistent**:
+ * at this spread the second stop comes out `#85a4c5`, and the source records
+ * that stop as `#84a4c5` — one level, on a number neither side copied from the
+ * other. The first comes out a pale `#b4cddb` and the deepest `#4c74ab`.
+ *
+ * The level-0 field is every fourth node of the 4x refinement, and every node
+ * of either grid covers equal area, so the coarse field is an unbiased area
+ * sample of the fine one and the mean is the same quantity.
+ */
+export const DEPTH_UM = 0.718468;
+
+/**
+ * The depth ramp. Stops are the published quantiles; the colours are
+ * `BAY_OPEN + (u - um) * (BAY_OPEN - BAY_SHOAL)`, so the direction and the
+ * step are the page's own two water tones and **the mean is BAY_OPEN by
+ * construction.**
+ *
+ * `depthColour` interpolates linearly in `d` between stops, and `u` is
+ * piecewise linear in `d` between exactly those stops, so the interpolated
+ * colour is `OP + (u(d) - um) * D` at every depth and not only at the stops.
+ */
+export function depthRamp(
+  qs: readonly number[],
+  um: number = DEPTH_UM,
+): {
   stops: readonly number[];
   colours: readonly string[];
 } {
-  const deep = lerpHex(BAY_OPEN, "#39597e", 0.55);
-  return {
-    stops: qs,
-    colours: [BAY_SHOAL, "#a9c4d6", BAY_OPEN, deep],
-  };
+  const SH = [
+    parseInt(BAY_SHOAL.slice(1, 3), 16),
+    parseInt(BAY_SHOAL.slice(3, 5), 16),
+    parseInt(BAY_SHOAL.slice(5, 7), 16),
+  ];
+  const OP = [
+    parseInt(BAY_OPEN.slice(1, 3), 16),
+    parseInt(BAY_OPEN.slice(3, 5), 16),
+    parseInt(BAY_OPEN.slice(5, 7), 16),
+  ];
+  const U = depthU_stops();
+  const colours = U.map((u) =>
+    rgbHex(
+      OP[0] + (u - um) * (OP[0] - SH[0]),
+      OP[1] + (u - um) * (OP[1] - SH[1]),
+      OP[2] + (u - um) * (OP[2] - SH[2]),
+    ),
+  );
+  return { stops: qs, colours };
 }
 
 /** linear interpolation along the published ramp; returns [r,g,b]. */
@@ -894,34 +1046,341 @@ export interface WaterLayers {
   readonly surround?: SurroundGrid | null;
   readonly depthTexels?: number;
   readonly shoalTexels?: number;
+  /** the aerial anchor — `manifest.proj.downtown`, the point `hazeAt` measures from */
+  readonly downtown?: readonly [number, number];
 }
 
+/**
+ * THE WATER RECEDES ON THE LAND'S OWN RULE, AND THE DEPTH PLATE WAS NOT.
+ *
+ * `part3.html` §depthPlate hazes **inside the plate**, per node, in world
+ * metres: `hz = clamp((|w - downtown| - 3400) / 15000, 0, WA.hazecap)` — the
+ * same expression `TerrainField.hazeAt` runs, so *"the water and the land
+ * recede on one rule"*. This port builds the depth plate from the published
+ * ramp alone and hazes nothing, and the bay plate underneath it — which does
+ * carry the fade — is covered by it.
+ *
+ * MEASURED on the district frame at Ocean Beach, over the open Pacific strip:
+ * with the ramp re-centred and no fade, prod's sea runs
+ * **-53.5, -34.6, -11.5 of 255 against the mock's**. The two errors had been
+ * cancelling: the un-recentred ramp was about +33 too pale everywhere, which
+ * happened to sit near the fade's own +99 out at the frame edge and left the
+ * near bay pale by the whole of it. *The same shape as `XBASE_K`'s fallback,
+ * and worth recording twice.*
+ *
+ * It goes down as ONE fill and that is a fact about this projection, not a
+ * saving: `proj` is `D · Rot(ROT)` with `Rot` an isometry, so a world circle
+ * is an ellipse whose axes are screen x and screen y. `hazeAt` is linear in
+ * the world radius and flat past its cap, so the ramp is exactly two stops —
+ * 0 at 3,400 m and `WA.hazecap` at the radius the cap is reached,
+ * `3400 + 15000 * hazecap`, beyond which a radial gradient holds its last stop
+ * of its own accord. **Nothing here is a curve fitted to the plate's own
+ * numbers; it is the plate's own numbers.**
+ */
+export function drawDepthHaze(f: Frame, downtown: readonly [number, number]): boolean {
+  const cap = WA.hazecap;
+  if (!(cap > 0) || !QF.water) return false;
+  const { ctx, W, H, cam } = f;
+  const dp = f.proj.proj(downtown[0], downtown[1], 0);
+  const cx = sx(f, dp),
+    cy = sy(f, dp);
+  const kx = f.proj.cA * Math.SQRT2 * cam.scale,
+    ky = f.proj.sA * Math.SQRT2 * cam.scale;
+  if (!(kx > 0) || !(ky > 0)) return false;
+  const R0 = 3400 * kx,
+    R1 = (3400 + 15000 * cap) * kx;
+  if (!(R1 > R0)) return false;
+  const hz = HAZE;
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.scale(1, ky / kx);
+  ctx.translate(-cx, -cy);
+  const gr = ctx.createRadialGradient(cx, cy, R0, cx, cy, R1);
+  gr.addColorStop(0, hexA(hz, 0));
+  gr.addColorStop(1, hexA(hz, cap));
+  ctx.fillStyle = gr;
+  const pad = Math.max(W, H) * (kx / ky) + Math.abs(cy) * (kx / ky) + 2;
+  ctx.fillRect(-pad, cy - pad, W + 2 * pad, 2 * pad);
+  ctx.restore();
+  return true;
+}
+
+function hexA(hex: string, a: number): string {
+  return (
+    "rgba(" +
+    parseInt(hex.slice(1, 3), 16) +
+    "," +
+    parseInt(hex.slice(3, 5), 16) +
+    "," +
+    parseInt(hex.slice(5, 7), 16) +
+    "," +
+    a +
+    ")"
+  );
+}
+
+/**
+ * THE DEPTH GOES OVER THE SHOAL BAND, NOT UNDER IT. THIS PORT HAD IT BACKWARDS.
+ *
+ * `part3.html` `drawTerrain` L5338-5345 lays them bay -> shoal -> depth, and
+ * says why at the call:
+ *
+ * > BLOCK DETAIL: and the water knows how deep it is. **OVER the shore band —
+ * > which is untouched, and is a distance from land and says so** — and UNDER
+ * > drawContext, so every pixel of the plate that reaches the land is painted
+ * > over by the land.
+ *
+ * That sentence is §2's own hierarchy as a paint order: the depth is
+ * PUBLISHED, the shoal band is a DECLARED TREATMENT whose correlation with
+ * depth is r2 = 0.092, and **the published field is the one that ends up on
+ * top.** This function blitted depth first and laid the band over it.
+ *
+ * **MEASURED, AND IT MOVED NOTHING, AND THAT IS THE FINDING.** B3, the open
+ * Pacific, three rows sampled at three columns each: nine pixels for nine,
+ * identical before and after. The reason is that `L.shoal` is never supplied —
+ * `scene.ts` `paintWaterBed` hands `drawWater` `{bay, depth, surround,
+ * depthTexels}` and blits the shallows itself from `paintShoal`, at step 3,
+ * **after `drawSurround` and `drawTerrain`**. So the inversion is real and it
+ * is two files away; this order is corrected so that a caller that does supply
+ * `shoal` gets the reference's order, and the note that matters is in
+ * `DRAW.md` §13.6 against the call site that has it.
+ *
+ * The aerial fade stays WITH the depth, immediately after its blit, because in
+ * the reference it is baked INSIDE that plate per node.
+ */
 export function drawWater(f: Frame, L: WaterLayers): void {
   const { ctx, W, H } = f;
+  lastWater = L;
   if (L.bay) {
     ctx.save();
     ctx.imageSmoothingEnabled = true;
     ctx.drawImage(L.bay, 0, 0, W, H);
     ctx.restore();
   }
-  if (L.depth && L.surround)
-    blitGridPlate(f, L.depth, L.surround, L.depthTexels ?? 1);
   if (L.shoal && L.surround)
     blitGridPlate(f, L.shoal, L.surround, L.shoalTexels ?? 1);
+  if (L.depth && L.surround) {
+    blitGridPlate(f, L.depth, L.surround, L.depthTexels ?? 1);
+    // the fade the plate does not carry — over the depth and under the land,
+    // which is where the mock bakes it
+    const anchor = L.downtown ?? hazeAnchor;
+    if (anchor) drawDepthHaze(f, anchor);
+  }
 }
 
-/** the published shoreline, in ink, over whatever the raster did. */
+/**
+ * THE SHORE CORRIDOR'S WATER SIDE, WHICH WAS WRITTEN AND CALLED BY NOBODY.
+ *
+ * `coastBand`, `wedgeCovered` and `drawShoreUnderfill` have shipped since
+ * Block P3 with their measurements, their corner-cap proof and their specs —
+ * and `grep -rn coastBand src/` outside this file returns the doc-comment in
+ * `DRAW.md` and nothing else. **Neither half of the corridor has ever been
+ * painted in production.** DRAW.md §13.6 recorded the consequence as an open
+ * question it declined to guess at:
+ *
+ * > the mock's near Pacific carries a large, sharply bounded blue mass —
+ * > 151,178,204 at its darkest — where prod runs 187 to 197 across the same
+ * > ground … I could not close it and I am not going to guess at it.
+ *
+ * It is this pass, and it is not a guess. `part3.html` L5432-5449, after the
+ * city's cells and before the coastline ink:
+ *
+ * ```js
+ * if(LOOK.shore&&coastBand(ctx,W,H,40,SHORE_OUT)>0){
+ *   ctx.save(); ctx.clip();
+ *   ctx.beginPath(); ctx.rect(-2,-2,W+4,H+4);
+ *   for(const ring of C.coast){ ...proj(x,y,max(0.4,elevM(x,y)))... }
+ *   ctx.fillStyle=BAY_OPEN; ctx.fill("evenodd");
+ *   drawShoal(ctx,W,H,15);
+ *   ctx.restore();
+ * }
+ * ```
+ *
+ * **`BAY_OPEN` OPAQUE, AND THAT IS THE POINT.** Everywhere else the bay is a
+ * hazed plate; here, inside 1,100 m of a published shoreline, the water is
+ * repainted at full strength and the graded shallows are laid back over it.
+ * The mock's own comment says why — *"painted in the shoal tone rather than
+ * open bay, because within a few hundred metres of the shore that is what the
+ * water already is"* — and its second job is the one `coastBand`'s doc-comment
+ * is entirely about: the 53.8 m raster's cream staircase runs several hundred
+ * metres past the published line into the bay, and this fill is what cuts it
+ * back out.
+ *
+ * MEASURED, ablating the mock's own flags at the Sunset district camera over
+ * the six screen columns the band crosses: turning `DE.water`, `DE.bed`,
+ * `WA.shoal` or `WA.hazecap` off moves those pixels by at most 2 of 255, so
+ * the blue mass is none of the depth plate, the seabed relief, the shallows or
+ * the haze. It is this fill, and the mock reads 147,175,202 where production
+ * reads 188,199,207 — **41, 24 and 5 levels, over the whole 1,100 m coastal
+ * corridor of every frame that has a coast in it.**
+ *
+ * The `wet` test is the mock's, on the SURROUND raster's own land bit and not
+ * on the city DEM: *"a segment with land on both sides is the San Mateo county
+ * line, not a beach, and it gets no corridor."*
+ */
+export function drawShoreCorridor(
+  f: Frame,
+  t: TerrainField,
+  coast: readonly Ring[],
+  L: {
+    readonly surround?: SurroundGrid | null;
+    readonly shoal?: (CanvasImageSource & { width: number; height: number }) | undefined;
+    readonly shoalTexels?: number;
+  },
+): number {
+  const sg = L.surround;
+  if (!sg || !coast.length) return 0;
+  const isLand = sg.isLand;
+  if (!isLand) return 0;
+  const { ctx, W, H } = f;
+  const gx = sg.XW / (sg.mx[sg.XW] - sg.mx[0]),
+    gy = sg.XH / (sg.my[sg.XH] - sg.my[0]);
+  const wet = (px: number, py: number): number => {
+    const i2 = ((px - sg.mx[0]) * gx) | 0,
+      j2 = ((py - sg.my[0]) * gy) | 0;
+    return i2 < 0 || j2 < 0 || i2 >= sg.XW || j2 >= sg.XH ? 1 : isLand(i2, j2) ? 0 : 1;
+  };
+  const band = new Path2D();
+  // the mock's own inM here is 40, not SHORE_IN: the land side of this pass is
+  // the under-fill's, and 40 m is the sliver the even-odd fill needs to sit on
+  // so that the seam lands under the published line rather than beside it.
+  const n = coastBand(band, f, coast, wet, 40, SHORE_OUT);
+  if (n <= 0) return 0;
+  ctx.save();
+  ctx.clip(band, "nonzero");
+  /* ── AND THE SHALLOWS ARE CLIPPED TO THE WATER SIDE, WHICH THE REFERENCE
+     GETS FOR FREE AND THIS BUILD DOES NOT ────────────────────────────────
+     `part3.html` lays the even-odd fill and then calls `drawShoal` inside the
+     corridor clip alone, because ITS shoal plate is already transparent over
+     land: `xland(i,j)` is the whole land test behind the band's BFS.
+     Production's is not. `scene.ensurePlates` builds the field with
+
+         buildShoal(XW, XH, (i, j) => sg.z(i, j) > 0 && isLandOf(sg, i, j))
+
+     and **`sg.z > 0` is not a land test.** Treasure Island is made land whose
+     110 m surround node reads 0 m, so the shallows treat the whole island as
+     water and the plate is opaque over it. Under the cells that never showed;
+     re-blitted over them by this pass it painted the entire island the shoal
+     tone — MEASURED by ablation, `?layers=-shore` restores the cream
+     staircase and `?layers=` (all on) does not.
+     So the clip is intersected with the even-odd water side before either
+     mark is laid. That cannot remove anything the reference draws — its plate
+     is already zero on land — and it makes the published shoreline the
+     boundary of both marks instead of only of one. The `sg.z > 0` term is a
+     `scene.ts` line and it is written up in DRAW.md §16.3 for its owner. */
+  const outside = new Path2D();
+  outside.rect(-2, -2, W + 4, H + 4);
+  coastRings(outside, f, t, coast);
+  ctx.clip(outside, "evenodd");
+  ctx.fillStyle = BAY_OPEN;
+  ctx.fillRect(-2, -2, W + 4, H + 4);
+  // the graded band, exactly as it was laid — the plate the bay pass already
+  // built, re-blitted inside the corridor because the fill above covered it
+  if (L.shoal && sg) blitGridPlate(f, L.shoal, sg, L.shoalTexels ?? 1);
+  ctx.restore();
+  return n;
+}
+
+/**
+ * THE LAYERS THE CORRIDOR NEEDS, BORROWED FROM THE SIBLING CALL — AND HOW TO
+ * DELETE THIS.
+ *
+ * `scene.paint` calls `drawWater(f, {bay, shoal, depth, surround, …})` at step
+ * 1 and `drawShoreline(f, t, this.coast)` at step 3 of the SAME frame. The
+ * corridor is drawn at step 3 by the reference's order and needs the shoal
+ * plate and the surround grid that step 1 was handed. `streets.ts` already
+ * carries this exact pattern for `drawStreetSurface` and names the one-line
+ * change that removes it; this one is:
+ *
+ *     drawShoreline(f, t, this.coast, { surround: sg, shoal: this.shoalPlate })
+ *
+ * in `scene.paint` §3, with `sg = band.surround`. `drawShoreline`'s fourth
+ * argument is already optional and already preferred over this fallback, so
+ * that edit lands the same picture and deletes the module state. Until then
+ * the borrowed record is the one from one statement earlier in the same
+ * `paint()`, at the same camera, in the same band.
+ */
+let lastWater: WaterLayers | null = null;
+
+/**
+ * The published shoreline, in ink, over whatever the raster did — **and only
+ * where the raster has land to be the shore OF.**
+ *
+ * `part3.html` L5456-5474, and its comment is the whole of it:
+ *
+ * > Coastline ink. Only where the 77 m DEM raster actually has land within a
+ * > cell: the vector shoreline resolves piers and slivers the raster cannot,
+ * > and stroking those draws INK FLOATING ON EMPTY WATER.
+ *
+ * This port drew every vertex of every ring as one closed path. Two
+ * consequences, both visible on the district frame at Ocean Beach:
+ *
+ * - **the ink ran out into the open Pacific** — txuc-3kzm resolves piers,
+ *   breakwaters and offshore slivers that the 53.8 m mask calls water, and a
+ *   closed ring drawn through them is a dark line with nothing on either side
+ *   of it;
+ * - **the line climbed the hill.** `coastRings` projects at
+ *   `max(0.4, elevM(x, y))`, which is right for the FILL — the ring must not
+ *   sink under the water plate it bounds — and wrong for the INK, which the
+ *   reference projects at a flat `0.4`. At Lands End and Fort Funston the
+ *   ground behind the line rises 60-100 m, so the ink was lifted a projected
+ *   `z * ZEX` up the screen and left the shore it names.
+ *
+ * The gate is the reference's own 3 x 3: a vertex is drawn if any of the nine
+ * cells around it is land. `maskAt` already applies the offshore coast fix
+ * (`QF.coast`), which is the reference's `!xcfix(ii, jj)` — so the two tests
+ * are one call here. The pen lifts on a vertex that fails, so a run of
+ * offshore vertices leaves a GAP rather than a chord across the bay.
+ *
+ * The ink is `rgba(10,10,10,.42)` and `lineJoin` is left as the caller has it,
+ * both as the reference has them.
+ */
 export function drawShoreline(
   f: Frame,
   t: TerrainField,
   coast: readonly Ring[],
+  layers?: {
+    readonly surround?: SurroundGrid | null;
+    readonly shoal?: (CanvasImageSource & { width: number; height: number }) | undefined;
+    readonly shoalTexels?: number;
+  },
 ): void {
   const { ctx } = f;
+  const N = t.N;
+  /* THE CORRIDOR FIRST, THEN THE INK — the reference's order, and the ink is
+     the last thing in `drawTerrain` before the names. Painting the ink first
+     and the corridor over it would rub out the line the corridor exists to
+     make visible. */
+  if (QF.shore) drawShoreCorridor(f, t, coast, layers ?? lastWater ?? {});
   ctx.save();
-  ctx.strokeStyle = "rgba(24,22,16,.46)";
+  ctx.strokeStyle = "rgba(10,10,10,.42)";
   ctx.lineWidth = 1.0;
-  ctx.lineJoin = "round";
-  coastRings(ctx, f, t, coast);
+  ctx.beginPath();
+  for (const ring of coast) {
+    let pen = false;
+    for (let i = 0; i < ring.length; i++) {
+      const g = t.toGrid(ring[i][0], ring[i][1]);
+      const gi = Math.round(g[0]),
+        gj = Math.round(g[1]);
+      let ok = false;
+      for (let a = -1; a <= 1 && !ok; a++)
+        for (let b = -1; b <= 1 && !ok; b++) {
+          const ii = gi + a,
+            jj = gj + b;
+          if (ii >= 0 && jj >= 0 && ii < N && jj < N && t.maskAt(ii, jj)) ok = true;
+        }
+      if (!ok) {
+        pen = false;
+        continue;
+      }
+      const p = f.proj.proj(ring[i][0], ring[i][1], 0.4);
+      const x = sx(f, p),
+        y = sy(f, p);
+      if (pen) ctx.lineTo(x, y);
+      else ctx.moveTo(x, y);
+      pen = true;
+    }
+  }
   ctx.stroke();
   ctx.restore();
 }

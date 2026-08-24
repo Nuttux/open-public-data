@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/3nje-yn2u.geojson?$limit=50000",
+ "what": "RPD Parks",
+ "bytes": 1329383,
+ "rows": 222,
+ "sha256": "d7248bf925b12641ddc33de3d2aa5c4654653a0d74ef88cdfd0d8bc078c1eb0d",
+ "retrieved_utc": "2026-08-23T21:34:21Z"
+}

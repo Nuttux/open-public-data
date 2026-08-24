@@ -1,0 +1,109 @@
+{
+ "id": "38b7-6db3",
+ "name": "Functional Areas maintained by Recreation and Parks Department",
+ "description": "Functional areas maintained by the Recreation and Parks Department. A functional area is a physical area within a facility designated for a specific purpose.This includes a mix of recreation areas and non-recreation facilities like roadways, basketball courts, playgrounds, picnic areas, etc.",
+ "attribution": null,
+ "rowsUpdatedAt": 1787454434,
+ "columns": {
+  "objectid": {
+   "name": "objectid",
+   "type": "text",
+   "description": ""
+  },
+  "funcarea_id": {
+   "name": "funcarea_id",
+   "type": "text",
+   "description": ""
+  },
+  "squarefeet": {
+   "name": "squarefeet",
+   "type": "number",
+   "description": ""
+  },
+  "perimeterlength": {
+   "name": "perimeterlength",
+   "type": "number",
+   "description": ""
+  },
+  "longitude": {
+   "name": "longitude",
+   "type": "number",
+   "description": ""
+  },
+  "latitude": {
+   "name": "latitude",
+   "type": "number",
+   "description": ""
+  },
+  "area_number": {
+   "name": "area_number",
+   "type": "text",
+   "description": ""
+  },
+  "tma_name": {
+   "name": "tma_name",
+   "type": "text",
+   "description": ""
+  },
+  "facility_id": {
+   "name": "facility_id",
+   "type": "text",
+   "description": ""
+  },
+  "facility_name": {
+   "name": "facility_name",
+   "type": "text",
+   "description": ""
+  },
+  "property_id": {
+   "name": "property_id",
+   "type": "text",
+   "description": ""
+  },
+  "property_name": {
+   "name": "property_name",
+   "type": "text",
+   "description": ""
+  },
+  "functional_area_type": {
+   "name": "functional_area_type",
+   "type": "text",
+   "description": ""
+  },
+  "functional_area_subtype": {
+   "name": "functional_area_subtype",
+   "type": "text",
+   "description": ""
+  },
+  "floor": {
+   "name": "floor",
+   "type": "text",
+   "description": ""
+  },
+  "shape": {
+   "name": "shape",
+   "type": "multipolygon",
+   "description": ""
+  },
+  "created_date": {
+   "name": "created_date",
+   "type": "calendar_date",
+   "description": "timestamp from ArcGIS Online"
+  },
+  "last_edited_date": {
+   "name": "last_edited_date",
+   "type": "calendar_date",
+   "description": "timestamp from ArcGIS Online"
+  },
+  "data_as_of": {
+   "name": "data_as_of",
+   "type": "calendar_date",
+   "description": ""
+  },
+  "data_loaded_at": {
+   "name": "data_loaded_at",
+   "type": "calendar_date",
+   "description": ""
+  }
+ }
+}

@@ -1,0 +1,148 @@
+{
+ "whole": {
+  "z": 1,
+  "step": 0,
+  "scale": 0.04666598864125368,
+  "year": 2018,
+  "cells": 43186,
+  "buildings": 14994,
+  "streets": 0,
+  "labels": 29,
+  "place": {
+   "count": 29,
+   "labels": 29,
+   "ink": 0.0565,
+   "names": [
+    "Golden Gate Bridge",
+    "War Memorial Complex",
+    "Beach Chalet",
+    "Alcoa Building",
+    "Palace Of Fine Arts",
+    "Mission High School",
+    "Chronicle Building",
+    "Maud's",
+    "Golden Gate Park",
+    "Lake Merced Park",
+    "John McLaren Park",
+    "San Francisco Zoo",
+    "Lincoln Park",
+    "City College of San Francisco \u2014 Ocean",
+    "Glen Canyon Park",
+    "Sunset Dunes",
+    "BAYVIEW HUNTERS POINT",
+    "PRESIDIO",
+    "TREASURE ISLAND",
+    "BERNAL HEIGHTS",
+    "NOE VALLEY",
+    "OUTER MISSION",
+    "MISSION BAY",
+    "PACIFIC HEIGHTS",
+    "INNER RICHMOND",
+    "TWIN PEAKS",
+    "VISITACION VALLEY",
+    "HAIGHT ASHBURY",
+    "NORTH BEACH"
+   ]
+  },
+  "frameMean": [
+   186.6,
+   193.9,
+   194.0
+  ],
+  "frameSd": [
+   38.0,
+   29.5,
+   27.4
+  ],
+  "src": "78e0fd17"
+ },
+ "district": {
+  "z": 2.9,
+  "step": 1,
+  "scale": 0.13533136705963567,
+  "year": 2018,
+  "cells": 10773,
+  "buildings": 29541,
+  "streets": 4971,
+  "labels": 18,
+  "place": {
+   "count": 18,
+   "labels": 18,
+   "ink": 0.0358,
+   "names": [
+    "War Memorial Complex",
+    "Alcoa Building",
+    "Italian American Bank",
+    "Mission High School",
+    "Ferry Building",
+    "Chronicle Building",
+    "Fairmont Hotel",
+    "Yerba Buena Natural Areas",
+    "University of California-San Francisco \u2014 Mission Bay",
+    "Mission Creek Park",
+    "Lafayette Park",
+    "Cityside Parks",
+    "Jefferson Square",
+    "MISSION",
+    "NOB HILL",
+    "NORTH BEACH",
+    "TENDERLOIN",
+    "CHINATOWN"
+   ]
+  },
+  "frameMean": [
+   141.4,
+   157.9,
+   170.4
+  ],
+  "frameSd": [
+   47.1,
+   37.4,
+   38.2
+  ],
+  "src": "78e0fd17"
+ },
+ "block": {
+  "z": 7.2,
+  "step": 2,
+  "scale": 0.3359951182170265,
+  "year": 2018,
+  "cells": 4323,
+  "buildings": 11688,
+  "streets": 3568,
+  "labels": 15,
+  "place": {
+   "count": 15,
+   "labels": 15,
+   "ink": 0.0261,
+   "names": [
+    "War Memorial Complex",
+    "Alcoa Building",
+    "Italian American Bank",
+    "Chronicle Building",
+    "High School Of Commerce",
+    "The Hobart Building",
+    "BANK OF AMERICA",
+    "Civic Center Plaza",
+    "Millenium Tower",
+    "Shaklee Terraces",
+    "Trinity Alley",
+    "One California",
+    "THE EMPORIUM",
+    "Moscone West",
+    "Jasper"
+   ]
+  },
+  "frameMean": [
+   159.4,
+   158.6,
+   142.3
+  ],
+  "frameSd": [
+   46.7,
+   42.6,
+   42.6
+  ],
+  "src": "78e0fd17"
+ }
+}
