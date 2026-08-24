@@ -1945,16 +1945,33 @@ Gate, i.e. to reorder two authored shots and their cameras, which is not a chang
 to make the night before a demo. **Left as authored, and it is stated on screen's
 own terms rather than silently.**
 
-**The `Golden Gate Bridge` place LABEL from 1933 is real and is not in these
-files.** `landmarks.ts` §GGB gates the DECK at 1937 and the film's own
-measurement confirms it draws nothing before then (1936 → 1937 changes 3,416 px
-in that corner, 1937 → 1938 changes none). The label comes off `emit_places.py`'s
-four-rung ladder, which dates a place from the made-land year of its ground or
-the first dated building inside its extent — neither of which is a bridge's
-completion. **For `labels.ts` / the places pipeline: a place whose geometry is a
-landmark the renderer already dates should take the landmark's year.** It is a
-name floating over open water for four years and it is the kind of thing a
-reader notices immediately.
+**The `Golden Gate Bridge` place LABEL is real, and it is now VERIFIED on a
+frame rather than reported.** Two crops out of the sweep above, same camera, same
+shot, two map years:
+
+| frame | t | map year | what is at the Golden Gate |
+|---|---:|---:|---|
+| `out-m1/gg-022.png` | 75,439 | **1935** | **"◆ Golden Gate Bridge" over open water. No bridge.** |
+| `out-m1/gg-024.png` | 82,297 | **1937** | the same label, with the towers and cables under it |
+
+So the anchor is right and only the YEAR is wrong. `landmarks.ts` §GGB gates the
+DECK at 1937 and it is honoured — the 1935 frame draws no bridge, which also
+corroborates the predecessor's pixel measurement (1936 → 1937 changes 3,416 px
+in that corner, 1937 → 1938 changes none).
+
+**And it is worse than a stray label, because of WHERE it sits in the film.**
+Shot 7's whole subject is the Golden Gate arriving in 1937 — three and a half
+seconds of hold on the frame it lands on, over the Mayor's own 1935 and 1936
+messages. The label tells the reader the bridge is there **two shots early**, so
+the film's reveal is of a thing the map has already named. It is the single most
+visible editorial defect I saw in the whole replay.
+
+The label comes off `emit_places.py`'s four-rung ladder, which dates a place from
+the made-land year of its ground or the first dated building inside its extent —
+neither of which is a bridge's completion. **For `labels.ts` / the places
+pipeline: a place whose geometry IS a landmark the renderer already dates should
+take the landmark's year.** `landmarks.ts` already holds 1937 for this one and
+1936 for the Bay Bridge; the ladder should read them rather than re-derive.
 
 **The 2019–2024 "the city does not change" reading was taken at the wrong
 camera, and no re-run is needed to say so.** §16 flagged it honestly rather than
@@ -1999,12 +2016,18 @@ seeks the film's own clock the way `b3seq.py` does, takes a full-page CLIP so
 there is no stability wait, and **re-boots one page and carries on at the frame
 it was on** instead of restarting a seven-minute sweep.
 
-**23 frames across the first 62 s of the 134 s film**, `out-m1/half-sheet.png`,
-`forceSpare=false` so the camera is judged as authored:
+**31 frames across the first 103 s of the 134 s film** — shots 1 through 9 of 10
+— `out-m1/half-sheet.png` and `out-m1/tail-sheet.png`, `forceSpare=false` so the
+camera is judged as authored. (An earlier revision of this section said 23 frames
+and 62 s: that was the count at the moment I built the first sheet, and the run
+went on for eight more frames before the tree was recompiled under it. Corrected
+against `ls` rather than memory, which is the same check that caught §17.1.)
 
-- **the year line is monotone the whole way** — 1906, 1906, 1910, 1911, 1912,
-  1912, 1915, 1917, 1917, 1918, 1919, 1927 — which is the thing the predecessor
-  block fixed and it is still fixed. No sample goes backwards.
+- **the year line is monotone over all thirty-one samples** — 1906, 1906, 1910,
+  1911, 1912, 1912, 1915, 1917, 1917, 1918, 1919, 1927, 1932, 1934, 1935, 1935,
+  1936, 1937, 1937, 1938, 1939, 1939, 1962, 1966 — which is the thing the
+  predecessor block fixed and it is still fixed. No sample goes backwards, and
+  the sweep now covers the shots where it used to (7 through 9).
 - **the chrome survived the `setState` change.** The title card, the copy plate,
   every citation link, the two buttons and the progress hairline are present and
   correct on every frame, including the frames where nothing discrete had changed
