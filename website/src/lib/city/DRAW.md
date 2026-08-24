@@ -5226,6 +5226,141 @@ needs — `SN.step` 32, `SN.cool` 1, `SN.minpx` 0.7, `SN.punchpx` 14,
 file's `SN`, because a constant with no reader is the defect this port keeps
 finding.
 
+### 20.13 Every treatment in the reference, ranked by low frequency — and none of them is the gap
+
+BUGS §23's method note is the whole of this section: *a frame mean and a
+changed-pixel count are both blind to a low-frequency difference.* So the
+instrument is `GaussianBlur(6)` of the frame, and the question asked of every
+switch in the reference is **how many levels of blurred image does this dial
+own, and where in the tone range.**
+
+`.parity/g2dials.py`, B1 (district Civic Center 1925) and B4 (district Mission
+1960), one mock page load, each dial flipped alone and put back, binned by the
+reference's OWN low-frequency deciles.
+
+**The gap, reproduced independently on this sweep** (`.parity/g2canlo.py` for
+production's side, same cameras, same pinned scale):
+
+```
+              reference LOW   production LOW    gap
+  B1             164.05           175.08       +11.03
+  B4             153.67           166.90       +13.23
+```
+
+which is BUGS §23's +11.7 / +13.7 to within the sweep, so the object is real
+and stable across sessions.
+
+#### The ranking
+
+```
+  == B1 ==                              == B4 ==
+  dial OFF        dLOW  d(dark) d(brt)  dLOW  d(dark) d(brt)
+  WFLG.canopy    +5.98  +14.58  +1.43  +6.93  +16.93  +1.71
+  LOOK.shore     -7.00   -0.01  -2.05  -1.01   +0.01  -8.49
+  WFLG.tint      +2.75   +3.25  +0.83  +2.60   +2.74  +0.49
+  SN.bld+mass    +1.33   +2.71  +0.02  +2.14   +2.59  +0.06
+  LOOK.edge      -1.61   -1.07  -0.04  -2.69   -0.98  -0.13
+  WA.smooth      +0.83   +0.61  +0.53  +0.86   +0.49  +0.39
+  LOOK.grain     +0.52   +0.09  +1.18  +0.38   +0.07  +1.14
+  LOOK.aerial    -0.26   -0.46  -0.01  -0.22   -0.34  -0.00
+  DE.deck        -0.25   -0.28  +0.01  -0.06   -0.15  +0.03
+  DE.tray        +0.16   +0.48  +0.02  +0.27   +0.49  +0.05
+  LOOK.depthfix  -0.17   -0.12  -0.00  +0.34   +0.07  +0.01
+  WFLG.parks     +0.10   +0.13  +0.04  +0.11   +0.13  +0.04
+  DE.bed         +0.05   +0.15  -0.00  +0.02   +0.00  +0.01
+  QF.warm        -0.05   -0.07  -0.00  -0.08   -0.05  -0.06
+  SN.terr        +0.01   +0.02  +0.00  +0.01   +0.01  +0.00
+```
+
+**The canopy is the largest by a factor of three, and its shape IS the gap's
+shape** — +14.6 / +16.9 in the darkest decile against +1.4 / +1.7 in the
+ninth. For an hour it looked like the answer.
+
+#### It is not the canopy: production's is STRONGER
+
+Production's own `WFLG.blobs`, same cameras, same blur, same binning
+(`.parity/g2canlo.py`):
+
+```
+                  reference        production
+  B1  dLOW          +5.98            +6.86
+      d(dark)      +14.58           +20.44
+  B4  dLOW          +6.93            +8.30
+      d(dark)      +16.93           +22.34
+```
+
+**Production darkens its dark decile 5.9 and 5.4 levels MORE than the
+reference does with the same layer.** The canopy is not a deficit here, it is
+a surplus — so it does not explain a gap in which production is too LIGHT, and
+part of it is §20.8's own tone change pulling the right way. Grid, count and
+gate all match: `amax` 576, `cell` 24, `gw` 600, `q` 16, `x0/y0` −7200/−6600
+on both sides, and VPROBE reads `canSeen` = 50,897, which is the reference's
+own `n`.
+
+#### Four rows of that table were invalid, and +0.00 is what a trap looks like
+
+`LOOK.attr`, `LOOK.palette`, `WA.warm` and `WFLG.trees` all came back at
+**exactly +0.00**. That is not a measurement. `assignBldTones()` runs ONCE at
+load and reads `LOOK.attr` and `WA.warm`; dropping the raster keys
+re-rasterises with the tones already assigned. It is the same trap as
+`WFLG.canopyTone` needing `scene.sprite = null` (§20.8) and `QF.tintsm`
+happening at assignment (§20.9) — **a dial read at build time cannot be
+ablated at draw time, and it reports zero rather than failing.**
+
+Re-tested the only way they can be, with an init script that presets
+`window.LOOK` / `window.WA` BEFORE the page loads so the reference's own
+`Object.assign({…}, window.LOOK || {})` picks it up (`.parity/g2load.py`, six
+fresh mock loads, `cam.base` identical on all six):
+
+```
+                    == B1 ==                  == B4 ==
+  preset at LOAD    dLOW  d(dark) d(brt)     dLOW  d(dark) d(brt)
+  LOOK.attr=0      +0.16   +0.99  +0.01     -0.94   +0.43  -0.00
+  WA.warm=0        +0.04   +0.88  +0.01     -1.07   +0.32  -0.01
+  LOOK.palette=0   -0.02   -0.04  -0.00     -0.02   -0.03  -0.00
+  WORLDF.pal=0     +2.10   +0.90  +3.90     +2.01   +0.67  +2.61
+  WA.faces=0       +0.01   +0.03  +0.00     +0.01   +0.01  +0.00
+```
+
+**The whole building-tone apparatus is worth about one level in the dark
+decile.** `WA.warm` selects the measured `UMAT_WALL` / `UMAT_ROOF` material
+tables against the eight-tone fallback and it is worth **+0.88 / +0.32** — so
+the roof-and-wall material question, which looked like the obvious large-area
+suspect, is not this. `WORLDF.pal` is the only one over two levels and it is
+the GROUND palette, which production ships identically (`WPAL.pal = 1`).
+
+#### What that leaves, stated as a bound rather than a guess
+
+```
+  the gap                                B1 +11.03   B4 +13.23
+  sunCast, missing here (§20.12)            +1.33      +2.14
+  canopy, STRONGER here                     -5.88      -5.41
+  every other dial measured, largest        <1.1       <1.1
+```
+
+**No switchable treatment in the reference accounts for it, and the largest
+one runs the wrong way.** Whatever it is, it is always-on in both builds and
+differs in value or in content — which is precisely the class of difference
+that no ablation can find, because ablating it removes the same thing from
+both.
+
+The remaining hypothesis, and the one this block ran out of night on: **the two
+builds may not be drawing the same content at these cameras.** Both of §23's
+frames are HISTORICAL years — B1 is 1925 and B4 is 1960 — and a year gate that
+differs by a few thousand footprints changes how much pale ground shows
+between the blocks, which is a large-area, dark-end-weighted, low-frequency
+difference that every dial in the table above is blind to.
+`.parity/g2count.py` puts `BLD_DRAWN` / `VEG_DRAWN` / `ST_DRAWN` from the
+reference beside `lastStats` from production at B1, B4 and a 2018 control; if
+the 2018 control agrees and the two historical years do not, the gap is a year
+gate and not a tone at all.
+
+**Nothing in this section changed a pixel.** It is four instruments and a
+ranking, and its value is the eliminations: the canopy, the building tone
+tables, the ground palette, the seabed, the aerial fade, the grain, the roof
+deck and tray, and the terrain self-shadow are each measured and each too
+small, on the one metric that can see the thing being looked for.
+
 ## 23. Block G1(a) — the pixel floors are not the district deficit, and here is the count
 
 `scene.ts` came to this block with one instruction: **measure what the gate
