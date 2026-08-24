@@ -52,7 +52,7 @@ import {
 } from "./streets";
 import { bandW, blobRadius, BLOB_K, CROWN_LIFT, vrnd, VZ_C0, VZ_C1, VZ_T0, VZ_T1,
   TREE_EARLIEST, TREE_YEAR_BASE, WFLG } from "./trees";
-import { applyUndatedTreeGate, TREE_UNDATED_FROM, undatedTreesVisible } from "./time";
+import { applyUndatedTreeGate, undatedTreesVisible } from "./time";
 import {
   bucketFloor,
   buildBldOrder,
@@ -1540,47 +1540,49 @@ function landmarksSource(): string {
   return readSource("landmarks.ts");
 }
 
-/* ── THE UNDATED TREE GATE — WHICH CONSTANT IT BINDS TO IS THE WHOLE RULE ──
+/* ── THE UNDATED TREE COHORT IS NOT ON THE CLOCK, AND THAT IS THE RULE ────
    `tkzw-k3nq` publishes 195,310 street trees; 125,234 carry no planting date
-   and the earliest date anywhere in the file is 1955, so the register has
-   nothing to say about a tree standing in 1906. Block T's decision is that an
-   undated tree is not drawn before 1955.
+   and the earliest date anywhere in the file is 1955.
 
-   `TREE_UNDATED_FROM` read `TREE_YEAR0`, which `trees.ts` marks @deprecated
-   for exactly this reason: it is `TREE_YEAR_BASE` = 1900, the offset the `yr`
-   byte is decoded against, not `TREE_EARLIEST` = 1955. The gate therefore
-   tested `year >= 1900` — true at every year the rail can reach — and all
-   125,234 undated trees drew in 1906. Silent, because a tree drawn fifty
-   years early still looks like a tree. These cases are here so the two
-   constants can never be confused again. */
+   This gate has been wrong twice in opposite directions and both are worth a
+   case. It first bound to `TREE_YEAR0` — `TREE_YEAR_BASE` = 1900, the offset
+   the `yr` byte is decoded against, not `TREE_EARLIEST` = 1955 — so it tested
+   `year >= 1900`, true at every year the rail can reach, and drew all 125,234
+   in 1906 by accident. Corrected to 1955, it produced the largest single-year
+   event on the whole rail: MEASURED at the Mission block camera, 1954 -> 1955
+   moves 6.006 against a 0.000 control, 7.6x the whole of 1955 -> 1960
+   (DRAW.md §33.2). And on that same 1954 frame the block carried 3,254 canopy
+   blobs, whose file dates nothing either and which draw in every year.
+
+   Settled 2026-08-24, `time.ts` §THE UNDATED TREES: the undated cohort draws
+   in EVERY year, like the canopy, like an undated street centreline, like the
+   2,916 FLAG_NOYEAR footprints. A tree that CARRIES a date still keeps it —
+   that gate is in `trees.ts` and is untouched. These cases hold the new rule
+   and keep the two constants from being confused again. */
 describe("the undated tree gate", () => {
-  it("binds to TREE_EARLIEST (1955), not to the storage offset (1900)", () => {
-    expect(TREE_UNDATED_FROM).toBe(TREE_EARLIEST);
+  it("keeps TREE_EARLIEST and the storage offset distinct", () => {
     expect(TREE_EARLIEST).toBe(1955);
     expect(TREE_YEAR_BASE).toBe(1900);
-    expect(TREE_UNDATED_FROM).not.toBe(TREE_YEAR_BASE);
+    expect(TREE_EARLIEST).not.toBe(TREE_YEAR_BASE);
   });
 
-  it("hides the undated cohort before 1955 and shows it from 1955", () => {
-    for (const y of [1849, 1906, 1925, 1954]) {
-      expect(undatedTreesVisible(y)).toBe(false);
-    }
-    for (const y of [1955, 1960, 2018, 2026]) {
+  it("draws the undated cohort in every year, 1906 included", () => {
+    for (const y of [1849, 1906, 1925, 1954, 1955, 1960, 2018, 2026]) {
       expect(undatedTreesVisible(y)).toBe(true);
     }
   });
 
-  it("draws them when there is no clock at all — the gate is about the year", () => {
+  it("draws them when there is no clock at all", () => {
     expect(undatedTreesVisible(undefined)).toBe(true);
   });
 
-  it("applyUndatedTreeGate sets WFLG.undated and returns the previous value", () => {
+  it("applyUndatedTreeGate leaves WFLG.undated on and returns the previous value", () => {
     const was = WFLG.undated;
     try {
-      WFLG.undated = true;
-      expect(applyUndatedTreeGate(1906)).toBe(true);
-      expect(WFLG.undated).toBe(false);
-      expect(applyUndatedTreeGate(1955)).toBe(false);
+      WFLG.undated = false;
+      expect(applyUndatedTreeGate(1906)).toBe(false);
+      expect(WFLG.undated).toBe(true);
+      expect(applyUndatedTreeGate(1955)).toBe(true);
       expect(WFLG.undated).toBe(true);
     } finally {
       WFLG.undated = was;

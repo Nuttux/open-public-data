@@ -52,9 +52,14 @@ dishonest.
 | when | what it says |
 |---|---|
 | the year has no ingested volume | no volume for it has been read yet, so the record has nothing to say about that year |
-| the year is before 1955 | the earliest planting date anywhere in the street tree file is 1955, so the 125,234 trees it does not date are not drawn before then |
+| the year is after 1999 | the Board's Journal is scanned to 1999; what comes after it is unrecorded here, not empty. The block panel's own sentence, key and all |
 | the year is after 1947 | the last acceptance in the volumes read so far lands in 1947, and the buildings after it come from the assessor's roll — which is why the city keeps filling in while the rail stays empty |
-| otherwise, once a year is set | 138,368 of the 367,614 buildings, streets, trees and named places carry no date in any published file and are drawn in every year |
+| otherwise, once a year is set | 128,690 of the 367,614 buildings, streets, trees and named places carry no date in any published file and are drawn in every year |
+
+**The 1955 tree caveat was the fourth of these and is gone with the rule it
+described** (2026-08-24). Undated street trees are drawn in every year now, like
+the canopy — `time.ts` §THE UNDATED TREES, FILM.md §17.1 — so those 125,234 fall
+into the last row, where the caption had already been counting them.
 
 Every number in those lines is interpolated from `time.ts`'s `UNDATED` and from
 the payload's own years. None of them is typed into the copy.
@@ -102,29 +107,37 @@ costs one rasterisation and a fractional one costs nothing.
 
 ## 7. Found and NOT fixed
 
-- **`time.ts`'s `TREE_UNDATED_FROM` is 1900, not 1955, and the whole undated
-  tree gate is therefore off.** It reads `TREE_YEAR0`, which `trees.ts` marks
-  `@deprecated` for exactly this reason: it is `TREE_YEAR_BASE`, the offset the
-  year byte is stored against, and not `TREE_EARLIEST`, the earliest date
-  anywhere in the file. *"This name meant both and was one of them."* Through
-  `applyUndatedTreeGate` the test becomes `year >= 1900`, which is true at
-  every year this rail can reach, so all 125,234 undated trees would be drawn
-  in 1906 — the exact defect the clock exists to fix, and silent, because a
-  tree drawn early looks like a tree.
+**The first two entries here are CLOSED, 2026-08-24 — FILM.md §17.**
 
-  `time.ts` is another block's file and was not edited. The rail sets
-  `WFLG.undated` against `TREE_EARLIEST` itself, with the reason in the code,
-  and **that whole branch goes back to one `applyUndatedTreeGate(year)` call
-  the moment the constant is corrected.**
+- ~~`TREE_UNDATED_FROM` is 1900, not 1955~~ — closed twice over. The constant
+  was corrected to `TREE_EARLIEST`, and then the rule it guarded was changed:
+  the undated cohort is drawn in **every** year, like the canopy beside it,
+  because at 1954 the Mission block carried 3,254 undated canopy blobs and 0
+  undated street trees and the two files contradicted each other on one frame.
+  MEASURED: the 1954 → 1955 step at that camera fell from **6.006 to 0.151**
+  against a 0.000 control, while the district camera — where street trees are
+  weighted to zero — reported 0.463 before and 0.463 after, which is the proof
+  the delta was trees and nothing else. The hand-written gate in this file is
+  one `applyUndatedTreeGate(year)` call again. `time.ts` §THE UNDATED TREES.
 
-- **The rail is empty over its last 78 years.** 1948 to 2025 carries no mark,
-  because the street-acceptance sweep ends at 1947, and the caption is the only
-  thing that says so. The city visibly keeps building through that stretch —
-  the buildings are the assessor's roll, not the Journal — so the two do not
-  contradict each other, but a reader who only looks at the rail could read the
-  empty half as a quiet half. A second series over that stretch (the 76,419
-  placed decisions already on the page have years) is the obvious next thing,
-  and it is a data question rather than a control one.
+- ~~The rail is empty over its last 78 years~~ — the stretch past `lastSwept`
+  is now **hatched as unrecorded rather than left bare**, on the block panel's
+  own precedent (`block-records.ts` §SERIES_LAST_YEAR, *"not empty,
+  unrecorded"*), and past 1999 the caption says whose gap it is in the panel's
+  own words. Inline styles, not `fusion.css`: the geometry is a function of
+  `lastSwept`, which comes out of the payload. The second series over that
+  stretch is still the right next thing and is still a data question — the
+  Board's record does not stop in 1999, it moves to **Legistar, 30,428 matters
+  2000–2018**, which carries no location and so cannot be placed on a block
+  until it gets the address-extraction pass the Journal got.
+
+- **Two dictionary sentences now describe the old treatment.** Both
+  `us.sf.thecity.scrub.past_sweep` (*"…while the rail stays empty"*) and
+  `us.sf.thecity.panel.sum_rail_end` (*"the decades after it are blank"*) say
+  *empty* / *blank* about stretches that are now drawn faint in both surfaces.
+  The claim is still honest — nothing is recorded there — but the word is a
+  half-step behind the frame. Dictionary keys are not this block's file;
+  FILM.md §17.2 carries the proposed wording.
 
 - **The cohort does not rise.** `scene.filmRunning` is what turns on the
   per-building stagger, and it is set only by `driveFilm`. The rail does not

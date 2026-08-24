@@ -34,7 +34,7 @@
    out loud.
    ═══════════════════════════════════════════════════════════════════════ */
 
-import { TREE_EARLIEST, WFLG } from "./trees";
+import { WFLG } from "./trees";
 
 /**
  * THE SPAN, and both ends are published.
@@ -52,57 +52,98 @@ export const SCRUB_MIN = 1906;
 export const SCRUB_MAX = 2025;
 
 /**
- * ── THE UNDATED TREES, AND THE ONE HONEST MOMENT ─────────────────────────
+ * ── THE UNDATED TREES: THE RULE CHANGED, 2026-08-24, AND HERE IS WHY ──────
  *
  * `tkzw-k3nq` publishes 195,310 street trees. 70,076 carry a planting date over
- * 61 distinct years, 1955–2026 — a real planting curve, not a bulk-load stamp,
- * which was checked before it was used. **125,234 carry none**, and the earliest
- * date anywhere in the file is 1955, so the file has nothing whatever to say
- * about a tree standing in 1919.
+ * 61 distinct years, 1955–2026. **125,234 carry none**, and the earliest date
+ * anywhere in the file is 1955, so the file has nothing whatever to say about a
+ * tree standing in 1919.
  *
- * TAKEN: an undated tree is not drawn before 1955. That is a statement about
- * `tkzw-k3nq` and not about a tree.
+ * WHAT THIS FILE USED TO DO: hold the undated cohort back until 1955. It stated
+ * the consequence in the open — *"1954 has no street trees and 1955 has
+ * 125,234"* — and called it one honest moment rather than a smear of invented
+ * ones. The reasoning was sound and the frame was not.
  *
- * REJECTED, and worth recording: spreading the undated cohort across the dated
- * cohort's own planting curve, so that the 1906 frame carries the share of them
- * the measured curve implies. It would have looked better at every year and it
- * would have put a date on 125,234 trees that no file gives one to.
+ * **MEASURED** (`.parity/g2cliff.py`, driving the page's own rail with a real
+ * pointer event and reading the live gate off `globalThis.__cityWFLG`; blurred
+ * frame delta, DRAW.md §33.2). Every camera shot 1954 twice before it shot
+ * 1955, so the step is read against this tree's own noise floor:
  *
- * The consequence, stated: **1954 has no street trees and 1955 has 125,234.**
- * One honest moment rather than a smear of invented ones.
+ *     block, Mission   1954→1954   0.000  control
+ *     block, Mission   1954→1955   6.006     ← 7.6× the whole of 1955→1960
+ *     block, Sunset    1954→1955   2.697
+ *     street, Civic    1954→1955   3.417
+ *     building, dtwn   1954→1955   3.366
  *
- * THE CONSTANT THIS BINDS TO IS THE WHOLE RULE, AND IT WAS THE WRONG ONE.
- * Until now this read `TREE_YEAR0`, which `trees.ts` marks `@deprecated` for
- * precisely this reason: it is `TREE_YEAR_BASE`, **1900**, the storage offset
- * the `yr` byte is decoded against, and not `TREE_EARLIEST`, **1955**, the
- * earliest planting date the file holds. Its own comment says the name "meant
- * both and was one of them."
+ * Four of the five zooms show it. The fifth (district) hides it only because
+ * `bandW(z, VZ_T0=2.9, …)` weights street trees to zero there. Those five
+ * years 1955→1960 move the count by **four trees**, because 178 rows in the
+ * whole file are dated in them: the pop is the treatment, not the planting.
  *
- * So the gate tested `year >= 1900`, which is true at every year the rail can
- * reach, and all 125,234 undated trees drew in 1906 — the honesty rule above,
- * inverted, and silent, because a tree drawn fifty years early still looks
- * like a tree. It is worth 1.64 % of the district frame across 1955.
+ * THE CONTRADICTION THAT SETTLED IT, and it is on a single frame. At 1954 the
+ * Mission block carries **3,254 canopy blobs and 0 street trees.** Both cohorts
+ * are undated. The canopy has no date because its source is one 2013 aerial
+ * (`base/canopy` ships cellKey, pos and area and no year, so it has no gate);
+ * the street trees have no date because `plantdate` is null on 62 % of the
+ * register. Same ignorance, opposite treatments, decided in two different
+ * files — and this map's own stated rule, three paragraphs up, is that a thing
+ * the record cannot date is *declared, counted, and drawn in every year*.
+ *
+ * **TAKEN, and this is the change: an undated street tree is drawn in every
+ * year, exactly like the canopy and exactly like an undated street centreline
+ * (`streets.ts` §the year gate) and the 2,916 `FLAG_NOYEAR` footprints.** The
+ * 1955 pop is gone and the two vegetation files now agree.
+ *
+ * **THE COST, STATED RATHER THAN BURIED: an undated tree now appears in 1906**,
+ * which the canopy has always done. That is a claim about `tkzw-k3nq` — it does
+ * not know when this tree was planted — and not a claim that the tree was there.
+ * The rail's caption says so at every year: `us.sf.thecity.scrub.undated` reads
+ * *"…carry no date in any published file, and are drawn in every year"*, and it
+ * has said that about these 125,234 trees the whole time. Under the old gate the
+ * caption and the gate contradicted each other; they no longer do.
+ *
+ * STILL TRUE, AND UNCHANGED: **a tree that carries a date keeps it.** The 70,076
+ * dated rows are gated on their own planting year in `trees.ts` and nothing here
+ * touches that. Only the cohort the file does not date changes treatment.
+ *
+ * AND 1955 IS REAL, WHICH IS WHY IT SURVIVES AS `TREE_EARLIEST`. Traced rather
+ * than assumed (DRAW.md §33.5): the earliest rows carry permit numbers 11, 12,
+ * 14, 15, 16 in date order from October 1955, so `plantdate` is the date of the
+ * street-tree **planting permit** and 1955 is the year San Francisco's permit
+ * register opens. It is not a survey date and not a load stamp — median trunk
+ * diameter falls monotonically with plant decade across 40,000 rows that carry
+ * both (1950s 11.5 in → 2000s 3.0 in), and the largest single date in the file
+ * is 319 trees, a planting crew's week rather than a migration.
+ *
+ * ONE THING THE FILE DOES THAT NO COPY ON THIS PAGE SAYS: the dated curve has a
+ * **twelve-year hole**. 1955 (10 rows), 1956 (168), then **nothing at all from
+ * 1957 to 1968**, resuming 1969 (332), 1970 (72), 1971 (1), 1972 (1,465).
+ * Whatever the register did in those twelve years did not survive into this
+ * file, so anything calling 1955–2026 a planting curve is describing a curve
+ * with a decade missing out of the first third of it. It costs nothing on the
+ * frame — those years simply add no trees — and it is recorded here because it
+ * is the kind of gap that gets mistaken for a fact about the city.
+ *
+ * REJECTED, AND STILL REJECTED: spreading the undated cohort across the dated
+ * cohort's own planting curve, so the 1906 frame carries the share the measured
+ * curve implies. It would put a date on 125,234 trees that no file gives one to.
+ * Drawing them in every year claims nothing about any of them.
  */
-export const TREE_UNDATED_FROM = TREE_EARLIEST;
-
-export function undatedTreesVisible(year: number | undefined): boolean {
-  return year === undefined || year >= TREE_UNDATED_FROM;
+export function undatedTreesVisible(_year: number | undefined): boolean {
+  return true;
 }
 
 /**
  * `trees.ts` ships `WFLG.undated` as a LOOK ablation switch — "draw the trees
  * whose planting date is not published" — and its own default is to draw them in
- * every year. Block T's decision moves that from a switch to a function of the
- * clock, and this is the one place the two meet.
+ * every year. This function used to turn that switch into a function of the
+ * clock. **It no longer does**, for the reason above, and it is kept rather than
+ * deleted because it is the one place the clock and that flag meet: if the
+ * undated cohort ever goes back on the clock — a permit-date backfill, a second
+ * register — this is the seam, and there is exactly one of it.
  *
- * It is a mutation of a module-level flag, which is not lovely, and it is
- * honest about being one: `trees.ts` is a landed module whose exported rules
- * this block may not change, and the alternative — a second undated gate in the
- * scene — would put the same decision in two places. **See FILM.md §what needs a
- * different shape:** the gate belongs in `trees.ts`, taking the year, and this
- * function is the seam until it does.
- *
- * Returns the previous value so a caller can put it back.
+ * It still returns the previous value, so the film's save/restore contract holds
+ * for an ablation run that flips `WFLG.undated` by hand.
  */
 export function applyUndatedTreeGate(year: number | undefined): boolean {
   const was = WFLG.undated;
@@ -258,10 +299,16 @@ export const UNDATED: readonly UndatedCohort[] = [
  * One line of chrome, and it has to be the line the copy actually says.
  *
  * `n` is everything the record does not date — 149,261 of 367,614. `everyYear`
- * is the part of it that is drawn in EVERY year, which is the stronger and
- * narrower claim the caption used to make about all of it: 128,599. The
- * difference is the 20,662 footprints that arrive once, on their block's
- * estimate rather than their own parcel's.
+ * is the part of it that is drawn in EVERY year: **128,690**, which is
+ * 125,234 undated trees + 424 undated centrelines + 2,916 `FLAG_NOYEAR`
+ * footprints + 116 undated places. The difference from `n` is exactly the
+ * **20,571** `FLAG_BLOCKYEAR` footprints, which arrive once, on their block's
+ * p25 estimate rather than their own parcel's roll year.
+ *
+ * (This paragraph read 128,599 and 20,662 until 2026-08-24. Neither figure was
+ * the sum of the table below it — the table is what the caption prints, so the
+ * screen was right and the comment was stale by 91. Recomputed from `UNDATED`
+ * rather than retyped.)
  */
 export function undatedTotal(): { n: number; of: number; everyYear: number } {
   return UNDATED.reduce(

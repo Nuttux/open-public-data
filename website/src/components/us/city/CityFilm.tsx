@@ -61,7 +61,7 @@ import {
   type FilmState,
   type FilmTimeline,
 } from "@/lib/city/film";
-import { SCRUB_MAX, applyUndatedTreeGate } from "@/lib/city/time";
+import { SCRUB_MAX } from "@/lib/city/time";
 import { useT } from "@/lib/localeContext";
 import type { CityRenderer } from "./renderer";
 import {
@@ -285,9 +285,25 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
   const rafRef = useRef(0);
   const onRef = useRef(false);
   const pausedRef = useRef(false);
-  const treesRef = useRef<boolean | null>(null);
   /** the year the last painted frame was on — what `exit` hands to the rail */
   const yearRef = useRef<number>(SCRUB_MAX);
+  /* ── NO FRAME GOES THROUGH REACT, AND NOW THE FILM OBEYS IT TOO ────────
+     `CityMap`'s rule, which `CityScrub` has always followed and this loop did
+     not: **React state is touched only when something DISCRETE changes.** The
+     loop used to call `setState(s)` on all sixty frames a second, and the CDP
+     profile of a single 2.4 s travel showed ~130 ms of `jsxDEV` inside it —
+     a whole `FilmChrome` re-render, style diff and recalc per frame, to move
+     two numbers.
+
+     Only two things in `FilmState` genuinely change every frame: the progress
+     hairline's width and the title card's wash. Both are one style on one
+     node, so both are written straight onto their node here, exactly as the
+     rail writes its handle. Everything else — the year as an INTEGER, the
+     shot, the card, the badge, the line of copy — changes a few times a
+     minute, and that is what `setState` is now for. */
+  const cardRef = useRef<HTMLDivElement>(null);
+  const barRef = useRef<HTMLElement>(null);
+  const shownRef = useRef<FilmState | null>(null);
   /* ── THE VERSION THE MACHINE CAN PLAY ──────────────────────────────────
      `keepRef` is the film's own playback speed, averaged over wall time;
      `spareRef` latches once it has been under `KEEP_UP` for long enough, and
@@ -445,8 +461,12 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
         }
       }
 
-      // the fabric's undated trees are a statement about their own file
-      applyUndatedTreeGate(s.year);
+      /* THE UNDATED TREES ARE NO LONGER ON THE CLOCK, so the film no longer
+         drives their gate. `applyUndatedTreeGate(s.year)` used to run here on
+         EVERY frame — sixty mutations a second of a module-level flag — to
+         hold 125,234 trees back until 1955. `time.ts` §THE UNDATED TREES draws
+         them in every year now, like the canopy, and the film's own 1955 pop
+         goes with the rail's. */
       yearRef.current = s.year;
 
       const slot = renderer.filmSlot();
@@ -473,7 +493,30 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
           ? null
           : (g, W, H) => paintOverlay(g, W, H, renderer, live, s),
       });
-      setState(s);
+      /* THE TWO CONTINUOUS VALUES, WRITTEN ONTO THEIR NODES. Neither is text
+         and neither changes layout: one is a width on the hairline, one is an
+         opacity on the card wash. */
+      if (barRef.current) barRef.current.style.width = `${s.progress * 100}%`;
+      if (cardRef.current) cardRef.current.style.opacity = String(s.cardAlpha);
+
+      /* AND THE DISCRETE ONES, WHICH ARE THE ONLY REASON TO RE-RENDER. `line`
+         is compared by identity because it IS the payload's own object, so a
+         new line is a new reference; `year` by its FLOOR because that is what
+         the plate prints and what the street count is read at. */
+      const prev = shownRef.current;
+      if (
+        prev === null ||
+        prev.line !== s.line ||
+        prev.card !== s.card ||
+        prev.badge !== s.badge ||
+        prev.shot !== s.shot ||
+        prev.segIx !== s.segIx ||
+        prev.running !== s.running ||
+        Math.floor(prev.year) !== Math.floor(s.year)
+      ) {
+        shownRef.current = s;
+        setState(s);
+      }
       rafRef.current = requestAnimationFrame(frame);
     },
     [renderer],
@@ -492,7 +535,8 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
     liveRef.current = live;
     if (tRef.current >= live.timeline.total) tRef.current = 0;
     biasRef.current = 0;
-    if (treesRef.current === null) treesRef.current = applyUndatedTreeGate(undefined);
+    /* the first frame of a run always renders: nothing is on screen to compare to */
+    shownRef.current = null;
     setExitYear(null);
     /* the film is full-bleed: no ledger is painted over the stage, so the fit
        and the pan clamp are told the strip IS the canvas */
@@ -521,13 +565,9 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
     stopLoop();
     setOn(false);
     setPaused(false);
-    /* THE ROLL IS THE ROLL AGAIN, and the undated trees are back to whatever the
-       explorer's own switch says. The reader is left standing at the camera and
-       the year the film stopped on — the frame it stopped on IS the explorer. */
-    if (treesRef.current !== null) {
-      applyUndatedTreeGate(treesRef.current ? 9999 : undefined);
-      treesRef.current = null;
-    }
+    /* The save/restore of `WFLG.undated` that used to sit here went with the
+       gate the film was driving: there is nothing to put back, because the
+       film no longer changes it. */
     renderer.composition.filmPlaceCap = null;
     renderer.driveFilm(null);
     /* THE FRAME IT STOPPED ON IS THE EXPLORER, and it took a year rail for
@@ -676,6 +716,8 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
       <FilmChrome
         payload={payload}
         state={state}
+        cardRef={cardRef}
+        barRef={barRef}
         paused={paused}
         atEnd={tRef.current >= total - 1}
         streetsDone={acceptedThrough(bands, Math.floor(state.year))}
@@ -872,7 +914,7 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
 
 function FilmChrome({
   payload, state, paused, atEnd, streetsDone, streetsTotal, source,
-  onToggle, onExit, onSeek, shotT0, total,
+  cardRef, barRef, onToggle, onExit, onSeek, shotT0, total,
 }: {
   payload: FilmPayload;
   state: FilmState;
@@ -881,6 +923,10 @@ function FilmChrome({
   streetsDone: number;
   streetsTotal: number;
   source: ReturnType<typeof streetSourceAt>;
+  /** the card wash and the progress hairline: the two values the frame loop
+   *  writes straight onto the DOM rather than through a render */
+  cardRef: React.RefObject<HTMLDivElement | null>;
+  barRef: React.RefObject<HTMLElement | null>;
   onToggle: () => void;
   onExit: () => void;
   onSeek: (f: number) => void;
@@ -908,7 +954,7 @@ function FilmChrome({
            an element removed from the DOM does not transition out — and a wall
            -clock transition could not be scrubbed to anyway. `film.ts`
            §cardAlpha. */
-        <div className="fx-film-card" style={{ opacity: state.cardAlpha }}>
+        <div ref={cardRef} className="fx-film-card" style={{ opacity: state.cardAlpha }}>
           <h2>{card.head}</h2>
           <p>{card.sub}</p>
         </div>
@@ -1027,7 +1073,7 @@ function FilmChrome({
         }}
       >
         <i />
-        <u style={{ width: `${state.progress * 100}%` }} />
+        <u ref={barRef} style={{ width: `${state.progress * 100}%` }} />
         {shotT0.map((x) => (
           <s key={x} style={{ left: `${(100 * x) / (total || 1)}%` }} />
         ))}

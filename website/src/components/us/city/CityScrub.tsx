@@ -25,14 +25,20 @@
  *   - thirteen years inside the span have no ingested volume at all, so the
  *     rail is empty through them. That is the sweep and not the city, and those
  *     years are drawn hollow instead of simply being blank;
- *   - the sweep's last acceptance lands in 1947. After it the rail carries
- *     nothing, and the city on screen still fills in, because the buildings
- *     come from the assessor's roll and not from the Journal;
- *   - the tree file's earliest planting date is 1955, so the trees it does not
- *     date are not drawn before then. Scrub across 1955 and 125,234 trees
- *     arrive at once. That is one honest moment rather than a smear of invented
- *     ones — `time.ts` §THE UNDATED TREES — and the readout says so at any year
- *     before it.
+ *   - the sweep's last acceptance lands in 1947. After it the rail carries no
+ *     bars, and the city on screen still fills in, because the buildings come
+ *     from the assessor's roll and not from the Journal. That stretch is drawn
+ *     as UNRECORDED rather than left blank — a dashed line rather than a solid
+ *     one — on the block panel's own precedent, because eight empty decades
+ *     read as eight quiet ones;
+ *   - past 1999 the Board's Journal itself runs out. The record does not stop
+ *     there: it moves to Legistar, 30,428 matters for 2000–2018, which carries
+ *     no location and so cannot be placed on a block yet. The caption at those
+ *     years is the same sentence the block panel prints under its own rail.
+ *
+ * The 1955 tree caveat used to be the fourth of these and is gone with the rule
+ * it described: undated street trees are drawn in every year now, like the
+ * canopy — `time.ts` §THE UNDATED TREES.
  *
  * ── NO FRAME GOES THROUGH REACT ──────────────────────────────────────────
  * `CityMap`'s own rule. While the rail is playing, the handle and the filled
@@ -52,12 +58,15 @@ import type { FilmPayload } from "@/lib/city/film";
 import {
   SCRUB_MAX,
   SCRUB_MIN,
-  UNDATED,
+  applyUndatedTreeGate,
   hasVolume,
   undatedTotal,
 } from "@/lib/city/time";
-import { TREE_EARLIEST, WFLG } from "@/lib/city/trees";
 import { useT } from "@/lib/localeContext";
+/* THE YEAR THE BOARD'S OWN SERIES RUNS OUT, read from the block panel's file
+   rather than typed a second time. The rail and the panel are two views of one
+   corpus and they must not disagree about where it stops. */
+import { SERIES_LAST_YEAR } from "./block-records";
 import { FAM } from "./film-draw";
 import type { CityRenderer } from "./renderer";
 
@@ -282,24 +291,15 @@ export function useCityScrub(
   /* ── the one place the year reaches the city ──────────────────────────── */
   useEffect(() => {
     if (!renderer || filmOn) return;
-    /* ── THE UNDATED TREES, AND A SEAM THAT SHOULD NOT BE HERE ────────────
-       The gate belongs to `time.ts` §applyUndatedTreeGate and this should be
-       one call to it. It is not, because `TREE_UNDATED_FROM` reads
-       `TREE_YEAR0`, and `trees.ts` marks `TREE_YEAR0` @deprecated for the
-       exact reason that it is `TREE_YEAR_BASE` — **1900**, the offset the byte
-       is stored against — and not `TREE_EARLIEST`, 1955, the earliest date
-       anywhere in the file. "This name meant both and was one of them."
-
-       Through `applyUndatedTreeGate` the test is `year >= 1900`, which is true
-       at every year this rail can reach, so all 125,234 undated trees would be
-       drawn in 1906 — the exact defect the clock exists to fix, and silent,
-       because a tree that is drawn early looks like a tree.
-
-       `time.ts` is another block's file. The gate is applied here against the
-       file's own earliest date until that constant is corrected, and this
-       whole branch goes back to `applyUndatedTreeGate(year)` when it is.
-       See TIMELINE.md §found and not fixed. */
-    WFLG.undated = year === undefined || year >= TREE_EARLIEST;
+    /* ── THE UNDATED TREES, AND THE SEAM IS ONE CALL AGAIN ────────────────
+       This used to be `WFLG.undated = year === undefined || year >= 1955`,
+       written out here because `time.ts`'s constant was the storage offset
+       and not the file's earliest date. That constant was fixed, and then the
+       rule itself changed: `time.ts` §THE UNDATED TREES now draws the undated
+       cohort in EVERY year, like the canopy beside it, so there is no
+       125,234-tree pop across 1955 to scrub through. The decision, the
+       measurement and the cost live in that one file; this is one call to it. */
+    applyUndatedTreeGate(year);
     renderer.setYear(year);
   }, [renderer, filmOn, year]);
 
@@ -431,6 +431,41 @@ export function useCityScrub(
         <div className="fx-city-scrub-base" />
         <div ref={doneRef} className="fx-city-scrub-done" />
 
+        {/* ── UNRECORDED, NOT EMPTY ──────────────────────────────────────
+            Everything past the last swept acceptance carried no mark at all,
+            which is 78 of the rail's 119 years drawn as blank — and blank
+            reads as *the city stopped*. It did not: the buildings keep
+            arriving across that whole stretch out of the assessor's roll,
+            which the reader can watch happening on the map while the rail
+            says nothing. So the stretch is HATCHED rather than left bare, on
+            `block-records.ts` §SERIES_LAST_YEAR's own precedent — its decade
+            rail draws the same decades faint rather than dropping them.
+
+            Inline rather than in `fusion.css` on purpose: the geometry is a
+            function of `lastSwept`, which comes out of the payload, and the
+            stylesheet is another block's file. It sits in the bar zone above
+            the line (the bars grow up from y=20 in a 44 px rail), so it
+            touches neither the baseline, the filled track nor the handle. */}
+        <div
+          className="fx-city-scrub-unrec"
+          aria-hidden="true"
+          title={t("us.sf.thecity.scrub.past_sweep").replace(
+            "{year}",
+            String(rail.lastSwept),
+          )}
+          style={{
+            position: "absolute",
+            left: `${pct(rail.lastSwept)}%`,
+            right: 0,
+            top: 5,
+            height: 15,
+            pointerEvents: "none",
+            opacity: 0.2,
+            background:
+              "repeating-linear-gradient(135deg, var(--muted) 0 1px, transparent 1px 5px)",
+          }}
+        />
+
         {/* the years the record accepts streets in, on their own count */}
         {rail.votes.map((v) => (
           <div
@@ -515,7 +550,6 @@ function ScrubNote({
     drawn = rail.cum[i];
   }
   const next = rail.moments.find((m) => m.y > iy) ?? null;
-  const trees = UNDATED.find((c) => c.key === "trees");
   const un = undatedTotal();
 
   const streets = t("us.sf.thecity.scrub.streets")
@@ -524,15 +558,33 @@ function ScrubNote({
     .replace("{year}", String(iy));
 
   /* ONE caveat, and it is whichever one the year the reader is on has earned.
-     Stacking all three reads as a disclaimer and gets skipped, which is the
-     one outcome that makes the rail dishonest. */
+     Stacking them reads as a disclaimer and gets skipped, which is the one
+     outcome that makes the rail dishonest.
+
+     THE TREE CAVEAT IS GONE, and that is the point of it. It read "the earliest
+     planting date anywhere in the street tree file is 1955, so the 125,234 it
+     does not date are not drawn before then" — a true sentence about a rule
+     that no longer exists. `time.ts` §THE UNDATED TREES draws that cohort in
+     every year now, so those trees fall into the LAST branch here along with
+     the undated centrelines, the `FLAG_NOYEAR` footprints and the undated
+     places, which is where the caption had already been counting them. The key
+     `us.sf.thecity.scrub.trees` is left in both dictionaries and is now unused;
+     see FILM.md §17 for the replacement text proposed for it. */
   let caveat: string | null = null;
   if (!hasVolume(iy) && iy <= rail.lastSwept) {
     caveat = t("us.sf.thecity.scrub.no_volume").replace("{year}", String(iy));
-  } else if (year !== undefined && iy < TREE_EARLIEST && trees) {
-    caveat = t("us.sf.thecity.scrub.trees")
-      .replace("{n}", nf.format(trees.n))
-      .replace("{year}", String(TREE_EARLIEST));
+  } else if (year !== undefined && iy > SERIES_LAST_YEAR) {
+    /* PAST THE SCANNED SERIES: the same sentence the block panel prints under
+       its own decade rail, and deliberately the same one rather than a second
+       wording for the same fact. The Board's Journal is scanned to 1999; what
+       comes after it is UNRECORDED here, not empty — the record moves to
+       Legistar, which carries 30,428 Board matters for 2000–2018 in the same
+       form, and placing them on blocks needs the address-extraction pass the
+       Journal got. `block-records.ts` §SERIES_LAST_YEAR owns the year. */
+    caveat = t("us.sf.thecity.panel.sum_rail_end").replace(
+      "{y}",
+      String(SERIES_LAST_YEAR),
+    );
   } else if (year !== undefined && iy > rail.lastSwept) {
     caveat = t("us.sf.thecity.scrub.past_sweep").replace(
       "{year}",
@@ -541,14 +593,13 @@ function ScrubNote({
   } else if (year !== undefined) {
     /* `everyYear`, NOT `n`. The sentence this key holds ends "…carry no date in
        any published file, and are drawn in every year", which is the narrower
-       of the two claims `time.ts` §UNDATED now separates: 128,599 things carry
-       no date at all, and a further 20,662 footprints carry one that is not
-       their own — a block's p25 estimate rather than their own parcel's roll
-       year. Those arrive once, in the wrong year, and calling them "drawn in
-       every year" would be a second wrong sentence in place of the one this
-       block just fixed. The 23,487 that arrive on a borrowed year is the
-       figure `UNDATED` carries and the copy for it belongs with the
-       `FLAG_BLOCKYEAR` treatment (DATA-TRUTH §5b), which is landing elsewhere. */
+       of the two claims `time.ts` §UNDATED separates: 128,690 things carry no
+       date at all — 125,234 of them street trees — and a further 20,571
+       footprints carry one that is not their own, a block's p25 estimate rather
+       than their own parcel's roll year. Those arrive once, in the wrong year,
+       and calling them "drawn in every year" would be a second wrong sentence.
+       The copy for the borrowed years belongs with the `FLAG_BLOCKYEAR`
+       treatment (DATA-TRUTH §5b), which is landing elsewhere. */
     caveat = t("us.sf.thecity.scrub.undated")
       .replace("{n}", nf.format(un.everyYear))
       .replace("{of}", nf.format(un.of));

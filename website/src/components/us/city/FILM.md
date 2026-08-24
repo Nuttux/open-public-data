@@ -1651,3 +1651,174 @@ settle which: the harness's own boot was disturbed by the second entry button
 landing mid-session (`.last` began selecting the method link), and two rows of
 that sweep are 85–92 % frame changes that are plainly layout and not history.
 **Re-run it before trusting either number.**
+
+## 17 · Block M1b, 2026-08-24 — the 1955 tree pop, and the rail past the record
+
+Three tasks, in the order they show on screen: the pop a reader hits when they
+scrub, the eight decades of rail that looked empty and were not, and the frames
+over 100 ms.
+
+### 17.1 The pop: the argument was a contradiction on one frame, not a preference
+
+The ground block had already named this exactly and measured it, so nothing here
+re-derives it (DRAW.md §33). `WFLG.undated` is a **boolean**, not a date field.
+It was flipped against `TREE_EARLIEST = 1955` and applied to the 125,234
+`tkzw-k3nq` rows whose `plantdate` is null, and `time.ts` stated the consequence
+in the open: *"1954 has no street trees and 1955 has 125,234."*
+
+| camera | 1954 → 1954 | 1954 → **1955** | 1955 → 1960 |
+|---|---:|---:|---:|
+| block, Mission | 0.000 | **6.006** | 0.794 |
+| block, Sunset | 0.000 | **2.697** | 0.721 |
+| street, Civic Center | 0.000 | **3.417** | 1.597 |
+| building, downtown | 0.000 | **3.366** | 1.776 |
+| district, Mission | 0.000 | 0.463 | 1.278 |
+
+**RE-MEASURED AFTER THE FIX, same harness, same four cameras, same control
+pair, `.parity/g2cliff.py`:**
+
+| camera | 1954 → 1954 | 1954 → **1955** | 1955 → 1960 |
+|---|---:|---:|---:|
+| block, Mission | 0.000 | **0.151** (was 6.006) | 0.836 |
+| block, Sunset | 0.000 | **0.374** (was 2.697) | 0.800 |
+| street, Civic Center | 0.000 | **0.000** (was 3.417) | 1.594 |
+| district, Mission | 0.000 | **0.463** (was 0.463) | 1.278 |
+
+The pop is gone: 1954 → 1955 is now **smaller than** 1955 → 1960 at every
+camera, which is the opposite of what it was, and at the street camera the two
+frames are byte-identical. What is left is buildings arriving.
+
+**And the district row is the control that makes the rest of the table
+trustworthy.** At z = 2.9 street trees are weighted to exactly zero, so nothing
+about trees can move there — and it reports **0.463 before the change and 0.463
+after it**, unchanged to three decimals across a two-hour gap on a dev server
+four agents are recompiling. The delta the other three lost was trees and
+nothing else.
+
+Four of five zooms showed it. The fifth was not a counter-example: at z = 2.9 `bandW(z,
+VZ_T0 = 2.9, …)` weights street trees to exactly zero, so nothing about trees
+can move at the district camera in any year.
+
+**What settled it is a single frame, not the size of the step.** At 1954 the
+Mission block carries **3,254 canopy blobs and 0 street trees.** Both cohorts are
+undated: the canopy because its source is one 2013 aerial and `base/canopy` ships
+no year at all, the street trees because 62 % of the register has no `plantdate`.
+Same ignorance, opposite treatments, decided in two different files — and
+`time.ts`'s own stated rule, at the top of the file it was written in, is that a
+thing no source can date is *declared, counted, and drawn in every year.*
+
+So the caption was already right and the gate was wrong.
+`us.sf.thecity.scrub.undated` has read *"…carry no date in any published file,
+and are drawn in every year"* the whole time, and `undatedTotal().everyYear`
+counts those 125,234 trees inside it. Under the old gate the sentence on screen
+and the code drawing the frame contradicted each other.
+
+**LANDED: an undated street tree is drawn in every year** — like the canopy, like
+an undated street centreline (`streets.ts` §the year gate), like the 2,916
+`FLAG_NOYEAR` footprints. Three call sites, one rule:
+
+- `time.ts` §THE UNDATED TREES — the decision, the measurement, the cost, and the
+  1957–1968 hole, in the file that took the original decision.
+  `undatedTreesVisible()` returns true; `TREE_UNDATED_FROM` is **deleted**,
+  because a constant named "undated from" with no gate behind it is the next
+  agent's hour.
+- `CityScrub.tsx` — the hand-written `WFLG.undated = year === undefined || year
+  >= TREE_EARLIEST` in the year effect goes back to one
+  `applyUndatedTreeGate(year)`. TIMELINE.md §7's first "found and NOT fixed" is
+  closed twice over: the constant it named was corrected, and then the rule it
+  was guarding was changed.
+- `CityFilm.tsx` — the film drove the same gate **on every frame**, sixty
+  mutations a second of a module-level flag, plus a save/restore pair around
+  `play`/`exit`. All of it is gone. The film had the same 1955 pop inside shot 9
+  and it goes with the rail's.
+
+**THE COST, and it is not hidden: an undated tree now appears in 1906.** The
+canopy has always done this. It is a claim about `tkzw-k3nq` — the file does not
+know when this tree was planted — and not a claim that the tree was there. A
+tree that **carries** a date still keeps it: the 70,076 dated rows are gated on
+their own planting year in `trees.ts` and nothing here touched that.
+
+**1955 stays in the file as `TREE_EARLIEST` because it is real.** Traced rather
+than assumed: the earliest rows carry permit numbers 11, 12, 14, 15, 16 in date
+order from October 1955, so it is the year the street-tree permit register opens,
+not a load stamp — and median trunk diameter falls monotonically with plant
+decade across 40,000 rows (1950s 11.5 in → 2000s 3.0 in).
+
+**And the file has a twelve-year hole nothing on the page said out loud.** 1955
+(10 rows), 1956 (168), then **nothing at all from 1957 to 1968**, resuming 1969
+(332). It is now written into `time.ts` §THE UNDATED TREES, because it is exactly
+the kind of gap that gets read as a fact about the city.
+
+### 17.2 The rail past the record: unrecorded, not empty
+
+TIMELINE.md §7's second finding was *"the rail is empty over its last 78 years"* —
+1948 to 2025 carries no mark, because the street-acceptance sweep ends at 1947,
+and only the caption said so. Sixty-five per cent of the rail read as a quiet
+century.
+
+Two changes, and both borrow from work that already exists rather than inventing
+a second treatment for the same fact:
+
+- **The stretch past `lastSwept` is hatched rather than left bare.** Faint
+  diagonal hatching in the bar zone above the line — it touches neither the
+  baseline, the filled track nor the handle — carrying the `past_sweep` sentence
+  as its title. This is `block-records.ts` §SERIES_LAST_YEAR's own precedent:
+  its decade rail draws the decades past the series faint instead of dropping
+  them, *"not empty, unrecorded."* Inline styles rather than `fusion.css`,
+  because the geometry is a function of `lastSwept`, which comes out of the
+  payload, and the stylesheet is another block's file.
+- **Past 1999 the caption says whose gap it is**, in the block panel's own
+  words: `us.sf.thecity.panel.sum_rail_end`, live in both dictionaries, with
+  `SERIES_LAST_YEAR` imported from `block-records.ts` rather than typed a second
+  time. The rail and the panel are two views of one corpus and must not disagree
+  about where it stops.
+
+**The correction that made this the right shape.** The Board's decisions do not
+end in 1999 — the *scanning* does. The record moves to **Legistar, 30,428 Board
+matters for 2000–2018**, in the same form the Journal used. What Legistar lacks
+is a location, so placing those on blocks needs the same address-extraction pass
+the Journal got, which is a project and not a night's work. The rail says
+"unrecorded", which is true, rather than "empty", which is not.
+
+**The caveat ladder is now four cases and still one line**, in this order: no
+ingested volume for this year → past the Board's scanned series (1999) → past the
+street sweep (1947) → the standing undated line. The 1955 tree caveat is **gone
+with the rule it described**; those trees fall into the last case, where the
+caption had already been counting them. `us.sf.thecity.scrub.trees` is now unused
+in both dictionaries.
+
+**PROPOSED KEY, for whoever owns the dictionaries** — not landed, because inventing
+a key here is how two wordings for one fact start. Either delete
+`us.sf.thecity.scrub.trees` or replace its text with something the new rule can
+carry, e.g. *"{dated} of the {of} street trees carry a planting date, the
+earliest in {year}; the rest are drawn in every year, like the tree canopy."*
+`{dated}` = 70,076, `{of}` = 195,310, `{year}` = 1955 — all three already in
+`time.ts` §UNDATED.
+
+### 17.3 A stale figure in a comment, found while re-reading it
+
+`time.ts` §UNDATED's prose said `everyYear` was **128,599** and the difference
+from `n` was **20,662**. Neither is the sum of the table three lines below it:
+125,234 + 424 + 2,916 + 116 = **128,690**, and 149,261 − 128,690 = **20,571**,
+which is exactly `FLAG_BLOCKYEAR`'s count. `undatedTotal()` computes from the
+table, so the screen was right and the comment was stale by 91 — the same class
+of error as §13.1, one order of magnitude smaller. Recomputed rather than
+retyped, and the arithmetic is written next to the number.
+
+### 17.4 The three horizons: what `page.tsx` should say, written out for its owner
+
+§16 measured all three and its verdict stands: they should NOT all be 2025,
+because two of the three are already the honest end of the thing they describe.
+The one that is wrong to a reader is `page.tsx:112`.
+
+    span: `${first}–${last}`     // min/max of block-index.json y0/y1
+
+`last` is 2013 and it is a seven-block tail: **70 of 4,679 blocks carry anything
+after 1999 and seven reach 2013** (`annualreportdep2013sanf_0`). It reads as
+coverage to 2013 over a corpus that effectively stops in 1999 — claiming more
+recency than the record has. **Recommended, and it is not this block's file:**
+publish `SERIES_LAST_YEAR` (1999) as the span's end and say what is past it,
+which is now the same sentence the rail and the panel both print
+(`us.sf.thecity.panel.sum_rail_end`). Three surfaces, one wording, one constant.
+The film's 2018 and the rail's 2025 are each their own corpus's last year and
+need no change.
