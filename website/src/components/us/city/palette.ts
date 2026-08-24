@@ -271,19 +271,144 @@ export const REROOF_YEARS = 25;
 /** the sentinel in `roofEraTable`: this (use, year) takes the MEASURED colour */
 export const ERA_MEASURED = 255;
 
+/* ════════════════════════════════════════════════════════════════════════
+   §38's CORRECTION — AN ERA IS A FAMILY, NOT A COLOUR, AND THE PHOTOGRAPH
+   SAYS WHICH MEMBER
+   ════════════════════════════════════════════════════════════════════════
+
+   The first version of this table was `[use][era] -> one material`, and
+   `DRAW.md` §38 has what that measured. Area-weighted over the standing stock,
+   in effective colours (material x the published height-quartile shade step):
+
+   ```
+     the measured present                       113.7
+     the mock's OWN roof rule, which this
+       table replaced — UMAT_ROOF[use][band*2+era]  30.7
+     this table, at 1985                          11.4   <- 
+   ```
+
+   **It was a quarter of the variety of the rule it generalised**, because it
+   generalised the era dimension from two to five and DELETED the height-band
+   dimension that rule carries — and the arithmetic then guarantees the
+   collapse: `cover ∈ (Y − REROOF, Y]` for every standing building, so the
+   whole city's coverings always fall inside ONE 25-year window, and a 25-year
+   window can overlap at most two of the four era bands. Every roof in San
+   Francisco was the same age to within twenty-five years, in every frame.
+   The mean roof luminance ran **155 → 98 → 169** across the century: a city
+   that darkens for eighty years to a value darker than any part of the
+   measured present, then climbs 71 levels in twenty-five. Daniel, watching the
+   second half of that: *"the roof is ok but then at some point in time more
+   and more of them become white."*
+
+   So each (use, era) cell is now a FAMILY of four materials, ordered dark to
+   light, and **which member a roof takes is read off the roof's own measured
+   brightness** — `paintIdx >> 3`, the building's position in the 32-entry
+   aerial palette, which `manifest.buildings.palette` documents as ordered dark
+   to light and which is a MEASUREMENT of that roof.
+
+   What that claims and what it does not:
+
+   · It does NOT claim the roof was that colour in 1915. The material is the
+     era's, declared, exactly as before.
+   · It DOES carry the one per-building fact about roof value that exists —
+     that this roof is darker than its neighbour — across the whole timeline
+     instead of only into the present. A big pale shed stays the pale member of
+     whatever its era's fabric is; a dark house stays the dark one.
+   · It costs **no new byte**: `paintIdx` is already on the `bldg` tier and
+     already decoded, and the table stays a per-year rebuild of 7 x 256 x 4 =
+     7,168 bytes read with one indexed load per footprint.
+
+   MEASURED, the same instrument (`.parity/g1fam2.py`), effective colours and
+   the mean the frame carries:
+
+   ```
+        Y     before   after      meanLum before -> after
+     1915       50.8    68.7          133.6 -> 134.1
+     1950       20.1    40.4          119.4 -> 128.6
+     1985       11.4    29.5           97.8 -> 116.2
+     2025      113.7   113.7          168.7 -> 168.7   (unchanged, by construction)
+   ```
+
+   The mid-century now carries **as much variety as the mock's own rule** and
+   the luminance V is 39 levels deep instead of 71. **The present frame does not
+   move at all**: era 4 is `ERA_MEASURED` for every family, so 2014-2025 is
+   byte-identical to what shipped, which is the property §34.4 was built around.
+
+   ── THE UNDATED BUILDING IS DATED BY THE FRAME ────────────────────────────
+
+   §34.5 refused `FLAG_NOYEAR` — the roll dates those parcels to its own "not
+   known" and `yr` holds a placeholder 1906 — and gave them the measured colour
+   in every year. MEASURED: that is **19.2 % of the roof area standing in
+   1915**, wearing a photograph taken in 2026. It is the largest single
+   anachronism left on the map and §34.2's own argument says so.
+
+   The refusal was of the wrong thing. What the record does not hold is the
+   BUILDING's date; the FRAME's date is known exactly. So an undated building
+   takes the covering era **of the year being displayed** — its roof is a roof
+   of that year, which is the only thing anyone can say about it — and its use
+   class, which the roll does state, is read as usual. Nothing is derived from
+   the placeholder. At 2025 that lands in era 4, so the present frame is again
+   unchanged.
+
+   **`mixed or not stated` keeps its refusal**, and now for a second reason as
+   well as the first: the class is genuinely absent, AND giving those 6,066
+   footprints a class-generic family measured WORSE — 32.6 effective colours at
+   1915 against 68.7 — because for them the photograph is the only thing
+   carrying any variety at all. Refusing is both the honest answer and the
+   better-looking one, which is not usually how it goes.                    */
+
+/** how many members an era family has, and the shift that picks one */
+export const PAINT_BUCKET_SHIFT = 3;
+export const PAINT_BUCKETS = 4;
+
 /**
- * `[use][era] -> WA_ROOF material index`, with the last era carrying
- * `ERA_MEASURED`. `null` is the honest bucket — no era claim at all.
- * Rows are `manifest.buildings.useNames`, in order.
+ * `[use][era][measured-brightness bucket] -> WA_ROOF material index`, dark to
+ * light within each family. Rows are `manifest.buildings.useNames`, in order;
+ * `null` is the honest bucket — no era claim at all. The fifth era is
+ * `ERA_MEASURED` for every family and is not in this table.
+ *
+ * The families, and each is a claim about San Francisco stated here rather
+ * than hidden in a constant:
+ *
+ * · **→1906 · redwood shingle**, which is why the fire behaved as it did. A
+ *   shingle roof weathers from dark red-brown to silver, so the family is a
+ *   real range and not a decoration.
+ * · **1907–1929 · the rebuild** — gravel-surfaced built-up roofing on the flat
+ *   stock, clay tile on the Mediterranean-revival institutions and hotels
+ *   (52.6 % of the standing hotel/institutional stock dates from this band).
+ * · **1930–1959 · built-up bitumen with a mineral cap**, darker and cooler
+ *   than the gravel before it; the cap came in a range of granule colours.
+ * · **1960–1989 · smooth asphalt**, the darkest the city gets, with ballasted
+ *   gravel on the big flat commercial roofs at the light end.
  */
-export const UROOF_ERA: readonly (readonly number[] | null)[] = [
-  /* single family         */ [3, 13, 15, 11, ERA_MEASURED],
-  /* multi-family          */ [3, 1, 15, 11, ERA_MEASURED],
-  /* retail                */ [15, 1, 1, 11, ERA_MEASURED],
-  /* office                */ [5, 6, 1, 6, ERA_MEASURED],
-  /* industrial            */ [10, 10, 10, 6, ERA_MEASURED],
-  /* hotel / institutional */ [5, 2, 1, 6, ERA_MEASURED],
+export const UROOF_ERA: readonly (readonly (readonly number[])[] | null)[] = [
+  /* single family         */ [[11, 3, 13, 0], [15, 3, 8, 13], [11, 15, 8, 13], [11, 1, 15, 10]],
+  /* multi-family          */ [[11, 3, 13, 0], [1, 15, 8, 13], [11, 1, 8, 13], [11, 1, 15, 10]],
+  /* retail                */ [[11, 15, 8, 0], [1, 10, 8, 0], [11, 1, 10, 8], [11, 6, 1, 10]],
+  /* office                */ [[6, 5, 10, 12], [6, 5, 10, 8], [6, 1, 10, 12], [11, 6, 1, 12]],
+  /* industrial            */ [[11, 1, 10, 8], [11, 1, 10, 8], [11, 1, 10, 8], [11, 6, 1, 10]],
+  /* hotel / institutional */ [[6, 5, 10, 12], [7, 2, 13, 0], [6, 1, 10, 12], [11, 6, 1, 12]],
   /* mixed or not stated   */ null,
+];
+
+/**
+ * THE CLASS-GENERIC FAMILY, for a thing that carries no use class — the block
+ * at the massing tier. Four eras, dark to light within each, indexed by the
+ * block's own measured brightness (`bidx >> 3`). The fifth era is the
+ * measurement itself and is not in this table.
+ *
+ * It is deliberately NOT used for the 6,066 footprints the roll leaves as
+ * `mixed or not stated`: there the photograph is per BUILDING and carries the
+ * variety, and substituting a generic family measured worse (32.6 effective
+ * colours at 1915 against 68.7, `.parity/g1fam2.py`). A block's `bidx` is
+ * already an area-weighted mean over its own buildings, so there is no such
+ * per-building variety left to lose.
+ */
+export const UROOF_BLOCK: readonly (readonly number[])[] = [
+  [11, 3, 13, 0],
+  [1, 15, 8, 13],
+  [11, 1, 10, 8],
+  [11, 6, 1, 10],
 ];
 
 /** the covering year: the last re-covering on the declared cycle, at or before `y` */
@@ -304,29 +429,44 @@ export const YR0 = 1849;
 export const YR_N = 256;
 
 /**
- * THE WHOLE RULE, RESOLVED ONCE PER DISPLAYED YEAR, AS A 7 x 256 BYTE TABLE.
+ * The year byte an UNDATED footprint is read at: the displayed year itself,
+ * clamped into the byte. See the note above — the record does not hold the
+ * building's date, but it holds the frame's.
+ */
+export function frameYearByte(y: number): number {
+  return Math.max(0, Math.min(YR_N - 1, Math.floor(y) - YR0));
+}
+
+/**
+ * THE WHOLE RULE, RESOLVED ONCE PER DISPLAYED YEAR, AS A 7 x 256 x 4 BYTE TABLE.
  *
- * The draw loop reads one array element per building — `tab[use * 256 + yrByte]`
- * — and takes the building's own `ri` when it reads `ERA_MEASURED`. So a rule
- * that is a function of four things costs one indexed load per footprint, and
- * the table itself is 1,792 bytes rebuilt only when the year on the rail
- * changes. Nothing is added to the colour LUT: every material here is already
- * a `WA_ROOF` entry, so `roofF`/`roofNF` index it unchanged and the haze, the
+ * The draw loop reads one array element per building —
+ * `tab[((use * 256 + yrByte) << 2) + (paintIdx >> 3)]` — and takes the
+ * building's own `ri` when it reads `ERA_MEASURED`. So a rule that is a
+ * function of five things costs one indexed load per footprint, and the table
+ * itself is 7,168 bytes rebuilt only when the year on the rail changes.
+ * Nothing is added to the colour LUT: every material here is already a
+ * `WA_ROOF` entry, so `roofF`/`roofNF` index it unchanged and the haze, the
  * ochre and the four `RSHADE` steps all still apply.
  */
 export function roofEraTable(y: number): Uint8Array {
-  const out = new Uint8Array(UROOF_ERA.length * YR_N);
+  const out = new Uint8Array(UROOF_ERA.length * YR_N * PAINT_BUCKETS);
   for (let u = 0; u < UROOF_ERA.length; u++) {
     const row = UROOF_ERA[u];
-    const o = u * YR_N;
+    const o = u * YR_N * PAINT_BUCKETS;
     if (!row) {
-      out.fill(ERA_MEASURED, o, o + YR_N);
+      out.fill(ERA_MEASURED, o, o + YR_N * PAINT_BUCKETS);
       continue;
     }
     for (let k = 0; k < YR_N; k++) {
       const built = YR0 + k;
-      const m = row[coveringEra(coveringYear(built, y))] ?? ERA_MEASURED;
-      out[o + k] = m === ERA_MEASURED ? ERA_MEASURED : WAM(m);
+      const fam = row[coveringEra(coveringYear(built, y))];
+      const p = o + (k << 2);
+      if (!fam) {
+        out.fill(ERA_MEASURED, p, p + PAINT_BUCKETS);
+        continue;
+      }
+      for (let b = 0; b < PAINT_BUCKETS; b++) out[p + b] = WAM(fam[b]);
     }
   }
   return out;

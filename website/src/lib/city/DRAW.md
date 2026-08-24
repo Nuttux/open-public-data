@@ -8618,3 +8618,240 @@ and a difference between two SERVERS is not a difference between two passes.
 I checked that the camera was the same, that the frame was the same size, that
 the build was deterministic and that the coverage was the same, and never
 checked that the two builds were the same program.
+
+---
+
+## 38. Block G1 — "more and more of them become white", measured. The ladder is not the bug; the ladder's MIDDLE is, and the whole-city tier never had a ladder at all
+
+Daniel, looking at §34's era colour on the rail:
+
+> *"dude the roof is ok but then at some point in time more and more of them
+> become white.."*
+
+The 1915 city reads. Something between there and the present does not. This
+section prints the number that decides it **before** naming a cause, because
+§37.5 is the record of what happens otherwise.
+
+### 38.1 The one number: the terminal era's share of the city, by display year
+
+`.parity/g1white.py` — offline, no browser. It reads the same two columns the
+draw loop reads (`bldg-data.js` `u`, `yr`) and re-implements `palette.ts`
+`coveringYear` / `coveringEra` / `UROOF_ERA` line for line, so a disagreement
+between this table and the page is a bug in one of them and not in the
+question. Area is each ring's own shoelace, because **what a reader sees is
+roof AREA, not roof count** — and those two answers differ by a factor of two
+here.
+
+```
+     Y  standing  TERMINAL %n  TERMINAL %area  meanLum  %area>180  %area>200
+  1890     5,389         55.6            84.4    155.6       27.6       16.6
+  1906    18,770         18.4            44.7    135.7       15.0        8.9
+  1915    49,633          9.7            25.2    132.7        9.3        6.1
+  1930    89,304          6.3            16.4    133.8        6.1        4.0
+  1950   129,892          5.0            13.0    120.2        5.0        3.3
+  1975   152,458          5.1            11.5    105.3        4.4        3.0
+  1985   157,172          5.1            11.2     98.4        4.3        2.9
+  1990   159,681         11.0            17.0    103.1        6.6        4.6
+  2000   163,097         45.5            48.7    130.1       21.0       15.2
+  2010   165,278         85.8            86.3    159.2       36.3       26.1
+  2014   165,655        100.0           100.0    170.5       42.4       30.6
+  2025   166,166        100.0           100.0    170.4       42.4       30.5
+```
+
+**Both of the candidate causes I was handed are refuted by this table.**
+
+- **The ladder advances by CALENDAR, not by re-covering count.** `scene.ts`
+  reads `eraRoof[use * 256 + yr]` off `roofEraTable(iy)`, which is
+  `row[coveringEra(coveringYear(built, y))]` — the era of the covering YEAR. A
+  roof re-covered in 1950 wears a 1950 material, and a building built in 1906
+  is in era `1930-59` at Y = 1980 no matter that it is its third covering. If
+  the ladder counted coverings, the terminal share would climb monotonically
+  from 1906; it does not — it FALLS from 1906 to 1985 and only then rises.
+- **The terminal era does not start too early.** It is empty until Y = 1990,
+  which is exactly the boundary `ROOF_ERA_YEARS` declares, and the material is
+  a 1990s material from the first frame it appears in. Before 1990 the only
+  buildings wearing the measured colour are the declared refusals.
+
+### 38.2 What the same run DOES name, and it is the opposite complaint
+
+Two things, and neither had been measured.
+
+**One — the refusals are 5.4 % of the CITY and 11.9 % of its AREA, and 25 % of
+1915.** §34.5 counted them as *"8,982 buildings"* and *"5.03 %"*, which is the
+count. The buildings the roll gives no use class and no year are the BIG ones —
+the sheds, the halls, the piers, the Presidio — so by the measure a reader
+actually sees they are **11.87 % of roof area**, and in the thin early city
+they are **25.2 % of 1915 and 44.7 % of 1906**. A quarter of the 1915 frame's
+roof area is already wearing the 2026 photograph. That is a floor under every
+early year, it was reported at less than half its visual size, and it is
+honest — those buildings have no era to be given — but it must be stated in the
+unit that matters.
+
+**Two — and this is the defect — the era ladder COLLAPSES THE MID-CENTURY.**
+`.parity/g1var.py`, area-weighted over the standing stock. **The first version
+of this table was WRONG and is corrected here in place**: it counted only the
+material index and forgot that `scene.ts` indexes `roofNF` with `tb.rsh[i]` as
+well, so every material already carries the four published height-quartile
+value steps (`roofs.ts` `RSHADE`). The right unit is (material x shade), with
+the gamut headroom applied exactly as `roofFineLUT` applies it:
+
+```
+     Y  eff.colours   lum sd  top colour %area  mean lum
+  1890         95.9     45.2               4.8     155.0
+  1906         50.5     40.2              14.1     136.3
+  1915         50.8     36.1              10.2     133.6
+  1930         32.6     32.2              13.7     133.6
+  1950         20.1     29.9              23.5     119.4
+  1975         22.4     31.0              18.9     104.6
+  1985         11.4     30.6              28.9      97.8    <-
+  1990         15.2     36.6              26.5     102.5
+  2000         49.2     52.9              15.3     128.7
+  2010        112.8     53.6               4.1     157.6
+  2025        113.7     49.6               2.1     168.7
+```
+
+**The city carries 113.7 effective roof colours today and 11.4 in 1985 — a
+tenth of the variety, at the frame in the middle of the rail.** `UROOF_ERA`'s
+era-3 column is `[11, 11, 11, 6, 6, 6]`, six use classes sharing two materials,
+and era 2 is `[15, 15, 1, 1, 10, 1]`, six sharing three. And the luminance path
+is a deep V — **155 → 98 → 169** — so the city darkens for eighty years to a
+value darker than any part of the measured present, then climbs 71 levels in
+twenty-five.
+
+### 38.3 The arithmetic that GUARANTEES the collapse, which is the real bug
+
+It is not the material choices. It is the covering rule itself:
+
+```
+  cover(b, Y) = b + REROOF * floor((Y - b) / REROOF)   ⇒   cover ∈ (Y - 25, Y]
+```
+
+**Every standing building's covering date lies inside ONE 25-year window that
+slides with the display year** — that is the property §34.4 relies on to keep
+the present frame unchanged, and it is the same property that empties the city
+of variety everywhere else. The era bands are 23, 30 and 30 years wide, so a
+window 25 years wide can never overlap more than two of them, and usually
+overlaps one. **At any display year the whole city is wearing at most two
+eras' materials, by construction.** The stagger §34.4 measured — 5.94 % of the
+city re-covering in the worst single year — is a stagger in *when a building
+changes*, not in *what its neighbours are wearing*, and only the second one is
+visible in a still frame.
+
+A real city's roofs are dispersed in age: some are two years old and some are
+sixty, on the same block, in every year. This rule makes them all the same age
+to within twenty-five years, everywhere, always. That is the mechanism behind
+both numbers above, and it is why re-picking the materials would only move the
+collapse and not remove it.
+
+### 38.4 The fix: an era is a FAMILY, and the photograph says which member
+
+`palette.ts` §38's correction has the full statement. In short, three changes,
+each of which removes a claim rather than adding one:
+
+**One — `UROOF_ERA[use][era]` becomes `UROOF_ERA[use][era][bucket]`**, a family
+of four materials ordered dark to light, and the member a roof takes is
+`paintIdx >> 3` — **the building's own measured position in the 32-entry aerial
+ramp**, which `manifest.buildings.palette` documents as ordered dark to light.
+The material is still the era's and still declared. What is new is that the one
+per-building fact about roof VALUE that exists — that this roof is darker than
+its neighbour — now travels across the whole timeline instead of only into the
+present. It costs **no new byte**: `paintIdx` is already decoded on the `bldg`
+tier, the table is a per-year rebuild of 7 x 256 x 4 = 7,168 bytes, and the
+draw loop still does one indexed load per footprint.
+
+**Two — the undated footprint is dated by the FRAME.** §34.5 refused
+`FLAG_NOYEAR` and gave those 2,916 the measured colour in every year;
+**that is 19.2 % of the roof area standing in 1915, wearing a photograph taken
+in 2026**, and it is the largest anachronism §34.2's own argument leaves on the
+map. The refusal was of the wrong thing: what the record does not hold is the
+BUILDING's date, and the FRAME's date is known exactly. So those read their own
+class row — the roll does state the class — at the year on the rail. Nothing is
+derived from the placeholder. The ochre `fi` still refuses them, because that
+one is about the age of the *building*, which the roll really does not know.
+
+**Three — the massing tier gets the same timeline**, which §34.8 named and
+left. MEASURED at the whole-city camera, production build, camera asserted:
+**2,910 blocks drawn in 1915 and 4,913 in 2025, every one of them wearing the
+2026 photograph in every year of the film** — a city visibly filling up with
+white, in the one frame the piece is most often looked at in. A block has no
+build year and no use class, so it takes the frame's era (rule two) and the
+class-generic family, and its member is `bidx >> 3`, the block's own measured
+brightness in the same ramp. The 361 blocks nothing measured keep the published
+height band.
+
+**What was tried and rejected:** giving the 6,066 `mixed or not stated`
+footprints a class-generic family too. It measured WORSE — 32.6 effective
+colours at 1915 against 68.7 — because for those the photograph is the only
+thing carrying any per-building variety at all. Refusing is both the honest
+answer and the better-looking one, which is not usually how it goes.
+
+### 38.5 What it moves, measured on the same instrument
+
+`.parity/g1fam2.py`, area-weighted over the standing stock, effective colours =
+`exp(H)` over (material x published shade step) with the gamut headroom applied
+exactly as `roofFineLUT` applies it:
+
+```
+     Y     eff.colours          mean roof luminance      2026-photograph
+          before   after         before   after           % of roof area
+  1915      50.8    68.7          133.6   134.1           25.2  ->  18.9
+  1930      32.6    51.1          133.6   133.3           16.4  ->  12.6
+  1950      20.1    40.4          119.4   128.6           13.0  ->  10.2
+  1975      22.4    38.6          104.6   120.5           11.5  ->   9.3
+  1985      11.4    29.5           97.8   116.2           11.2  ->   9.1
+  2025     113.7   113.7          168.7   168.7          100.0  -> 100.0
+```
+
+Three things to read off it:
+
+- **The mid-century carries as much variety as the mock's own roof rule** —
+  29.5 against that rule's 30.7 — where it carried a third of it.
+- **The luminance V is 39 levels deep instead of 71.** The path is now
+  156 · 134 · 133 · 129 · 121 · 116 · 121 · 140 · 161 · 169 — a century that
+  drifts, rather than a trough with a cliff out of it.
+- **The present frame does not move at all.** Era 4 is `ERA_MEASURED` for every
+  family, so 2014-2025 is byte-identical to what shipped, on both tiers. That
+  is §34.4's property 1, preserved by construction and not by luck.
+
+### 38.6 The two-plane roof: what §35.1 measured is REAL, and the cheap version of it would be an invention
+
+§35.1 is the strongest number in this file — inside one footprint the luminance
+rms about the median is **20.9**, a two-plane fit cuts it to **10.5** and
+explains **74.8 %** of the variance, the two planes sit **44.9 levels apart**,
+and the darker one holds **33 %** of the pixels. The proposal handed to me was
+to derive those two planes for free from the sun direction and each building's
+own ring — a lit side and a shaded side — instead of re-sampling at +215 KB.
+
+**I did not build it, and the reason is not cost.** It would be false about the
+majority of the population it would be applied to.
+
+- The split was fitted on **Esri nadir imagery**. Two levels 44.9 apart holding
+  67 % and 33 % of a footprint is what an OCCLUDED region looks like — a lower
+  wing, a light well, a parapet's own shadow, mechanical plant, a taller
+  neighbour's shadow — or two roof sections of different age. It is not a
+  measurement of two slopes.
+- **A flat roof has no two slopes.** San Francisco's commercial and industrial
+  stock is flat with a parapet from the start (§36.4's own population argument,
+  in the other direction), and §35.2's LiDAR table measures the 1930-59 cohort
+  at 4-6 cm of modal offset — one plane with noise on it. Painting a
+  sun-facing bright half and a shaded half onto a flat roof puts a slope on a
+  building the record says is flat, everywhere, in every year.
+- Where the direction IS known the renderer already draws it: `drawHip` takes
+  each slope's value from `planeQuartile`, the same law the walls use, so a
+  pitched roof and a wall facing the same light cannot disagree (§36.1).
+
+**What the measurement is actually evidence for, and this is the useful
+hand-off:** the dark third has a *cause the renderer could compute* — most of
+it is occlusion, and occlusion is geometry this page already holds. **That is
+`buildAO`**, written, tested and shipping at `AO_ALPHA = 0.0` (§33, BUGS §23).
+So §35.1's 74.8 % is not an argument for a fake slope and not only an argument
+for a re-sample: it is a measured target for the AO pass, which is the pass
+that puts a *correctly placed* dark region on a roof. The next agent to get a
+valid on/off pair should judge it against this number.
+
+The honest alternatives, in the order I would take them: (1) verify AO on a
+valid pair and turn it on; (2) re-sample two levels and a share per footprint,
++215 KB, which measures where the dark region is instead of guessing;
+(3) nothing. **Not (4), a directional gradient declared as "derived, not
+sampled", which would read as detail and be wrong about every flat roof in the
+city.**

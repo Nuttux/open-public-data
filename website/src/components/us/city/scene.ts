@@ -211,8 +211,12 @@ import { riseOf, risePhase } from "@/lib/city/film";
 import { SCRUB_MAX } from "@/lib/city/time";
 import {
   ERA_MEASURED,
+  frameYearByte,
   isPitched,
+  coveringEra,
+  PAINT_BUCKET_SHIFT,
   PAINT_C0,
+  UROOF_BLOCK,
   UMAT_ROOF,
   UMAT_WALL,
   USE_MASK,
@@ -837,6 +841,7 @@ export class CityScene {
   private eraRoof: Uint8Array | null = null;
   private eraRoofYear = Number.NaN;
   private blockRoof: Uint8Array | null = null;
+  private blockRoofYear = Number.NaN;
   private blockWall: Uint8Array | null = null;
   private aoCv: OffscreenCanvas | null = null;
   private heroMats: HeroMaterials | null = null;
@@ -2449,7 +2454,7 @@ export class CityScene {
     };
     const fade = fadeAmt(f);
     const colours = massLUT(pal, fade);
-    const roofIdx = this.blockRoofIdx(bl);
+    const roofIdx = this.blockRoofIdx(bl, iy);
     const wallIdx = this.blockWallIdx(bl);
     const alpha = 1 - wB;
     if (alpha <= 0.004) return 0;
@@ -2533,22 +2538,55 @@ export class CityScene {
     return out;
   }
 
-  private blockRoofIdx(bl: BlockTable): Uint8Array {
+  /**
+   * THE MASSING TIER HAD NO TIMELINE AT ALL, AND AT WHOLE-CITY ZOOM IT IS MOST
+   * OF THE FRAME.
+   *
+   * §34.8 named this and left it: `bidx` is the area-weighted mean of the same
+   * 2026 aerial measurement, and *"a block carries no use class and no build
+   * year — so the era rule has nothing to read there."* MEASURED at the
+   * whole-city camera, production build, camera asserted: **2,910 blocks are
+   * drawn in 1915 and 4,913 in 2025**, every one of them wearing the
+   * photograph, in every year of the film. Blocks arrive as the city is built,
+   * so what that draws is a city filling up with 2026 white — which is, in the
+   * one place where it is most visible, exactly the thing Daniel is looking at.
+   *
+   * A block has no build year. It does not need one: `palette.ts` §38 already
+   * settled what to do with an undated thing — **its covering is dated by the
+   * FRAME**, which is known exactly, and that is the same rule the undated
+   * footprint now takes. A block has no use class either, so it takes the
+   * class-generic family, and WHICH member it takes is `bidx >> 3`: the
+   * block's own measured brightness, in the same 32-entry ramp, which is a
+   * measurement of that block and is the only per-block fact about roof value
+   * there is.
+   *
+   * At the present year the era is the terminal one and this returns
+   * `PAINT_C0 + bidx` for every block — the whole-city frame at 2025 is
+   * byte-identical to what shipped, which is §34.4's property 1 arriving on
+   * the second tier.
+   *
+   * The 361 blocks with no measurement at all (park, water, right of way) keep
+   * the published height band, as before: nothing measured them, so nothing is
+   * invented for them.
+   */
+  private blockRoofIdx(bl: BlockTable, iy: number): Uint8Array {
     const hit = this.blockRoof;
-    if (hit && hit.length === bl.n) return hit;
+    if (hit && hit.length === bl.n && this.blockRoofYear === iy) return hit;
     const out = new Uint8Array(bl.n);
     const row = this.massRow;
     const BY_BAND = [WAM(3), WAM(8), WAM(10), WAM(1)];
+    const fam = UROOF_BLOCK[coveringEra(iy)] ?? null;
     for (let b = 0; b < bl.n; b++) {
       const m = bl.bidx[b];
       if (m !== BIDX_NONE) {
-        out[b] = PAINT_C0 + m;
+        out[b] = fam ? WAM(fam[m >> PAINT_BUCKET_SHIFT]) : PAINT_C0 + m;
         continue;
       }
       const h = row ? row.hgt[b] : 0;
       out[b] = BY_BAND[bandOfHeight(h)];
     }
     this.blockRoof = out;
+    this.blockRoofYear = iy;
     return out;
   }
 
@@ -2693,6 +2731,8 @@ export class CityScene {
       this.eraRoofYear = iy;
     }
     const eraRoof = this.eraRoof;
+    /* the year byte an UNDATED footprint is read at — the frame's own year */
+    const eraYB = frameYearByte(iy);
     /* the fabric's own arrival wave: far-to-near across the frame with a
        per-building jitter, over the first 38.5 % of the year's passage. Off a
        run this is 1 for everything, which is `rise = 1` — the state
@@ -2960,13 +3000,25 @@ export class CityScene {
 
       const wallCi = tb.wi[i];
       /* THE ROOF WEARS THE COVERING OF ITS OWN LAST RE-COVERING, not the
-         photograph of 2026. `ERA_MEASURED` — the whole of the present era, the
-         5.03 % the roll gives no use class, and every `FLAG_NOYEAR` footprint
-         — falls through to `ri`, which is what the page drew before this. The
-         `FLAG_NOYEAR` refusal is made by reading row 6, the null row, which is
-         the same refusal `fi` makes four lines down on the same byte. */
-      const uEra = (tb.u[i] & FLAG_NOYEAR) !== 0 ? 6 : tb.u[i] & USE_MASK;
-      const eraCi = eraRoof[uEra * YR_N + tb.yr[i]];
+         photograph of 2026 — and WHICH member of that era's family it wears is
+         read off its own measured brightness, `paintIdx >> 3`. `palette.ts`
+         §38's correction has the measurement: one material per (use, era) left
+         the 1985 city on 11.4 effective colours against the measured present's
+         113.7, because `cover ∈ (Y − 25, Y]` puts the whole city inside one
+         era at once. `ERA_MEASURED` — the whole of the present era and the
+         6,066 the roll gives no use class — falls through to `ri`, which is
+         what the page drew before this.
+         A `FLAG_NOYEAR` footprint is NOT refused here any more: it reads its
+         own class row at the year on the RAIL (`eraYB`), because the record
+         does not hold the building's date but it holds the frame's, and
+         19.2 % of the roof area standing in 1915 was otherwise wearing a
+         photograph taken in 2026. The ochre `fi` four lines down still refuses
+         it — that one is about the AGE of the building, which is the thing the
+         roll really does not know. */
+      const uEra = tb.u[i] & USE_MASK;
+      const ybEra = (tb.u[i] & FLAG_NOYEAR) !== 0 ? eraYB : tb.yr[i];
+      const eraCi =
+        eraRoof[((uEra * YR_N + ybEra) << 2) + (tb.paintIdx[i] >> PAINT_BUCKET_SHIFT)];
       const roofCi = eraCi === ERA_MEASURED ? tb.ri[i] : eraCi;
       const hz = hazeIdx(f, tb.cx[i], tb.cy[i], hzLo, hzSpan);
       const dhPx = hM * kh;
