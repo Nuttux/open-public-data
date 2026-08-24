@@ -759,3 +759,14 @@ it on the map" button still centres on the pick rather than on the place. If a f
 time of every file, which is the reproducibility record — and ignores the blobs, which
 `--fetch` puts back. `us_sf_places/cache` commits its blobs (53 MB of them); this one does not,
 deliberately.
+
+### j. Where this block's commit actually is
+
+**F1's whole diff landed inside `5d74ea1c`, whose message is another agent's.** Two agents were
+committing to `refactor/paris-parity` within the same minute; the other one's `git add` swept
+F1's staged index into its own commit before F1's `git commit` ran, and the commit came back
+`no changes added to commit`. Nothing was lost — every file above is in `5d74ea1c` at its final
+state, verified field by field — and **history was deliberately not rewritten**, because an
+amend or a rebase on a branch two other agents are actively committing to would have destroyed
+their work to tidy a message. The message this diff should have carried is in the empty commit
+that follows it, and the whole of the reasoning is §9 and §10 above.
