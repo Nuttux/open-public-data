@@ -469,7 +469,7 @@ d("the surround raster", () => {
 });
 
 d("the authored landmarks", () => {
-  it("gives twelve heroes, 132 parts and 3,409 ring vertices", async () => {
+  it("gives thirteen heroes, 134 parts and 3,421 ring vertices", async () => {
     const cd = await loaded();
     const t = await cd.landmarks();
     expect(t).not.toBeNull();
@@ -480,10 +480,10 @@ d("the authored landmarks", () => {
        round trip byte for byte before it adds anything. So this assertion is a
        statement about the MERGED register and the manifest's own
        `landmarks.authoredHere` says which rows are whose. DRAW.md §21.9. */
-    expect(t!.heroes.length).toBe(12);
-    expect(t!.heroes.reduce((a, h) => a + h.parts.length, 0)).toBe(132);
+    expect(t!.heroes.length).toBe(13);
+    expect(t!.heroes.reduce((a, h) => a + h.parts.length, 0)).toBe(134);
     expect(t!.heroes.reduce(
-      (a, h) => a + h.parts.reduce((b, p) => b + p.rx.length, 0), 0)).toBe(3409);
+      (a, h) => a + h.parts.reduce((b, p) => b + p.rx.length, 0), 0)).toBe(3421);
   });
 
   it("nothing stands above the MEASURED top — the gate's own ceiling", async () => {

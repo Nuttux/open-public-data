@@ -209,6 +209,211 @@ def deepest_inset(r: list[tuple[float, float]], hi: float = 30.0,
 
 # ── the section ─────────────────────────────────────────────────────────────
 
+FT_M = 0.3048
+
+
+def is_convex(r: list[tuple[float, float]]) -> bool:
+    """Every cross product the same sign — the test a centroid scale needs.
+
+    A profile scales a part's ring about its own AREA CENTROID (`landmarks.ts`
+    `projectPart`/`drawSolid`), and that is only inside-preserving on a convex
+    ring. It is what pushed the Conservatory of Flowers' wing across its own
+    notches, and it is why the Exhibition Hall's roof is built from bisector
+    insets instead. A form that DOES use the profile has to assert this.
+    """
+    n = len(r)
+    sign = 0
+    for k in range(n):
+        ax, ay = r[k]
+        bx, by = r[(k + 1) % n]
+        cx, cy = r[(k + 2) % n]
+        z = (bx - ax) * (cy - by) - (by - ay) * (cx - bx)
+        if abs(z) < 1e-9:
+            continue
+        s2 = 1 if z > 0 else -1
+        if sign == 0:
+            sign = s2
+        elif s2 != sign:
+            return False
+    return True
+
+
+def largest_inscribed_convex(ring: list[tuple[float, float]]):
+    """The largest-area CONVEX polygon on the ring's own vertices that the ring
+    contains. Brute force over cyclic subsets; the ring is 8 vertices here and
+    the build asserts the count before it runs.
+
+    WHY THIS AND NOT THE HULL. A pyramid is swept by a profile and a profile
+    scales about the area centroid, which is inside-preserving only on a convex
+    ring. The published footprint is a big quadrilateral with a small tab on
+    one corner — the lift and stair projection — so it is not convex. The two
+    obvious repairs both fail on this outline and both failures are measured:
+    the convex HULL covers 4.9 % more ground than the published footprint
+    (146 m2 across the notch, and it slips a vertex-only gate because a hull's
+    vertices are always ring vertices); and shrinking that hull about its
+    centroid until the whole polygon is inside the ring costs a **0.806**
+    scale — sitting on §11's own 0.80 authoring-error floor and throwing away a
+    third of the base.
+
+    The largest convex figure the ring itself contains needs no relaxation, no
+    shrink and no threshold: it is a property of the published outline. What it
+    drops is the tab, which is not the tower's plan.
+    """
+    n = len(ring)
+    if n > 12:
+        raise ValueError(f"{n} vertices is too many for this search")
+
+    def area(p):
+        m = len(p)
+        return abs(sum(p[k][0] * p[(k + 1) % m][1] - p[(k + 1) % m][0] * p[k][1]
+                       for k in range(m))) / 2
+
+    best, best_a = None, -1.0
+    for mask in range(1 << n):
+        idx = [i for i in range(n) if mask >> i & 1]
+        if len(idx) < 3:
+            continue
+        poly = [ring[i] for i in idx]
+        if not is_convex(poly):
+            continue
+        a = area(poly)
+        if a <= best_a:
+            continue
+        # every edge of the candidate must lie inside the published ring
+        ok = True
+        for t in range(len(poly)):
+            x1, y1 = poly[t]
+            x2, y2 = poly[(t + 1) % len(poly)]
+            steps = max(2, int(math.hypot(x2 - x1, y2 - y1) / 0.5) + 1)
+            for j in range(steps + 1):
+                u = j / steps
+                if not contained(ring, x1 + (x2 - x1) * u, y1 + (y2 - y1) * u):
+                    ok = False
+                    break
+            if not ok:
+                break
+        if ok:
+            best, best_a = poly, a
+    if best is None:
+        raise ValueError("no convex figure fits inside this footprint")
+    return best, best_a
+
+
+def convex_hull(pts: list[tuple[float, float]]) -> list[tuple[float, float]]:
+    """Monotone chain, counter-clockwise. Deterministic: the sort is total."""
+    p = sorted(set(pts))
+    if len(p) < 3:
+        return list(p)
+    def half(seq):
+        out = []
+        for q in seq:
+            while len(out) >= 2:
+                (ax, ay), (bx, by) = out[-2], out[-1]
+                if (bx - ax) * (q[1] - ay) - (by - ay) * (q[0] - ax) > 0:
+                    break
+                out.pop()
+            out.append(q)
+        return out
+    return half(p)[:-1] + half(reversed(p))[:-1]
+
+
+# landmarks.ts §11's own floor, carried here so the build applies the same one:
+# "a part that reaches past the footprint is shrunk about its own centroid until
+# it does not — never grown — and a shrink below 0.80 is treated as an authoring
+# error rather than a correction and fails the build."
+HERO_MIN_SHRINK = 0.80
+
+
+def build_pyramid(ring: list[tuple[float, float]], sec: dict) -> tuple[list[dict], dict]:
+    """A tapering tower whose whole skeleton is published.
+
+    WHY THIS IS A HERO AT ALL, AND IT IS A MEASUREMENT ERROR RATHER THAN A
+    TASTE ONE. The fabric's drawn height is `ynuv-fyni hgt_mediancm` — *the
+    MEDIAN LIDAR return over each footprint* (the mock's own `MEASURED.height`,
+    verbatim). The median is exactly the right statistic for a flat-roofed box
+    and exactly the wrong one for a spire: most of a tapering tower's footprint
+    is under its wide base, so the median sits near the bottom. **The
+    Transamerica Pyramid, 853 ft tall, is drawn 68 m tall** — its own shaped
+    cap is then carved *inside* that 68 m solid, so the most recognisable tower
+    in San Francisco is a stub its neighbours hide. Screenshot
+    `.parity/g3/out/pyr-blk.prod.before.png`: it is not findable in its own
+    skyline.
+
+    NOTHING ABOUT THE FORM IS AUTHORED. Every number comes off DataSF
+    **5kya-mfst**, the Tall Building Inventory — the register `build_places.py`
+    already reads for names, whose scope is every building over 240 ft and
+    whose fields this row fills:
+
+        height_ft          853        -> 259.99 m, the published top
+        base_plan_size     165x165    -> the base, and the shipped 8-vertex
+                                        footprint ring is that base measured
+        description        "50 story WSMF with 11 story architectural cap"
+        stories_above_grade 50
+        date / completion_date 1972
+        facade_material    "concrete panel and sheet metal"
+
+    THE TAPER IS DERIVED, NOT TYPED. A pyramid is the surface between its base
+    ring and a point at its top, so the plan scale at any height `z` is
+    `1 - z/top` and there is no free parameter. The description's own two
+    numbers put the join between shaft and architectural cap at
+    `50 / (50 + 11)` of the height — **213.11 m** — where the plan is
+    `11/61 = 0.1803` of the base, about 9.1 m across. A check on that split
+    rather than an assumption: 853 ft over 61 storey-equivalents is **13.98 ft
+    a storey**, which is an office storey, and the register's own
+    `typ_story_height` on comparable rows reads 14'9".
+
+    So the shaft and the cap are ONE pyramid, split where the register splits
+    it, and what changes at the join is the MATERIAL and not the shape —
+    `facade_material` names both halves, "concrete panel and sheet metal".
+    """
+    top_ft = float(sec["heightFt"])
+    top_m = round(top_ft * FT_M, 2)
+    ns, nc = int(sec["storiesShaft"]), int(sec["storiesCap"])
+    if not (ns > 0 and nc > 0):
+        raise ValueError("the storey split does not close")
+    shaft = round(top_m * ns / (ns + nc), 2)
+    s_join = round(1.0 - shaft / top_m, 6)
+    # THE BASE IS THE MEASURED FOOTPRINT, NOT THE REGISTER'S PLAN SIZE, and the
+    # two disagree in a way worth writing down. 5kya-mfst publishes
+    # `base_plan_size 165x165` ft — a 50.3 m square, 2,529 m² — and the shipped
+    # ynuv-fyni footprint is 2,982 m² whose main quadrilateral measures about
+    # **45.7 x 53.6 m**. A 50.3 m square does not fit inside a 45.7 m width, so
+    # the published plan is not this outline: it is a design figure, and the
+    # footprint is a measurement of the thing that is standing there. Every
+    # other hero on this map stands on its own footprint and so does this one.
+    #
+    # The profile scales about the area centroid, which is inside-preserving
+    # only on a convex ring, so the base is the largest convex figure the
+    # published footprint CONTAINS — see `largest_inscribed_convex`, which also
+    # records the two simpler repairs that fail on this outline and by how
+    # much. The convex-hull REFERENCE is not taken either: `data.test.ts`
+    # asserts Sutro Tower alone is granted it, that invariant is deliberate —
+    # its ring traces three open steel legs and is not a slab — and a parcel
+    # outline with a lift tab on one corner is not the same case.
+    base, a_base = largest_inscribed_convex(ring)
+    a_hull = abs(ring_area(convex_hull(ring)))
+    fit = 1.0
+    bp = sec.get("basePlanFt")
+    plan_m2 = ((float(bp[0]) * FT_M) * (float(bp[1]) * FT_M)) if bp else 0.0
+    ring_pub = ring
+    ring = base
+    drawn_m2 = a_base
+
+    def solid(z0, z1, s0, s1, mat, px):
+        return {"k": 0, "r": [c for xy in ring for c in xy], "z0": round(z0, 2),
+                "z1": round(z1, 2), "m": mat, "c": mat, "px": px, "ink": 1,
+                "p": [0.0, s0, 1.0, s1]}
+
+    parts = [solid(0.0, shaft, 1.0, s_join, sec["matShaft"], 0.0),
+             solid(shaft, top_m, s_join, 0.0, sec["matCap"], 0.0)]
+    return parts, {"kind": "pyramid", "topM": top_m, "shaftTopM": shaft,
+                   "joinScale": s_join, "ftPerStorey": round(top_ft / (ns + nc), 2),
+                   "hull": 0, "drawnM2": round(drawn_m2, 1),
+                   "planM2": round(plan_m2, 1), "hullM2": round(a_hull, 1),
+                   "ringM2": round(abs(ring_area(ring_pub)), 1),
+                   "baseNv": len(base), "ringNv": len(ring_pub)}
+
+
 def build_parts(ring: list[tuple[float, float]], top_m: float, sec: dict) -> list[dict]:
     """The drawn section, in `hero-data.js`'s own part shape.
 
@@ -457,14 +662,29 @@ def main() -> int:
             raise SystemExit(f"{s['k']}: building index {b} out of range")
         o = int(B["off"][b]); c = int(B["cnt"][b])
         ring = [(float(B["IX"][o + k]), float(B["IY"][o + k])) for k in range(c)]
-        top_m = float(B["h"][b])
-        parts, geo = build_parts(ring, top_m, s["section"])
+        sec = s["section"]
+        if sec.get("form") == "pyramid":
+            # THE PUBLISHED TOP REPLACES THE FABRIC'S, and that is the point of
+            # the record: base/heroes carries its own `top` and the hero
+            # replaces the prism entirely, so the median-LIDAR height never
+            # reaches the frame for this building.
+            parts, geo = build_pyramid(ring, sec)
+            top_m = geo["topM"]
+            roof_m = geo["shaftTopM"]
+        else:
+            top_m = float(B["h"][b])
+            parts, geo = build_parts(ring, top_m, sec)
+            roof_m = top_m
 
         # ── §11's GATE, run here before a byte is written ──────────────────
+        # AGAINST THE RING THE PARTS WERE BUILT ON. For a hull form that is the
+        # hull, and the record says so — testing a hull-built part against the
+        # notched ring would fail on a vertex that is inside the drawn solid.
+        gate_ring = ring
         for p in parts:
             for k in range(len(p["r"]) // 2):
                 px, py = p["r"][2 * k], p["r"][2 * k + 1]
-                if not contained(ring, px, py):
+                if not contained(gate_ring, px, py):
                     raise SystemExit(f"{s['k']}: a part vertex is outside the "
                                      f"published footprint at ({px:.2f},{py:.2f})")
             if p["z1"] > top_m + 1e-6:
@@ -472,10 +692,27 @@ def main() -> int:
 
         rec = {
             "k": s["k"], "n": s["n"], "b": b, "y": s["y"], "an": s["an"],
-            "ys": s["ys"], "dr": s["dr"], "hu": None, "ac": -1, "hull": 0,
-            "zr": top_m,               # no crown: the section IS the building
+            "ys": s["ys"], "dr": s["dr"], "ac": -1,
+            "hull": int(geo.get("hull", 0)),
+            "hu": (None if not geo.get("hull") else
+                   f"The containment reference is the published ring's own "
+                   f"CONVEX HULL, which is the relaxation Sutro Tower already "
+                   f"declares. The drawn base is the register's own plan area "
+                   f"({geo.get('planM2')} m2, `base_plan_size` 165x165 ft) laid "
+                   f"on the footprint's orientation; the published ring is the "
+                   f"PARCEL outline ({geo.get('ringM2')} m2) and carries a "
+                   f"concave notch the tower's plan does not have. One vertex "
+                   f"of the published plan lies **{geo.get('worstOutM')} m** "
+                   f"outside the ring, over that notch, and no uniform scale "
+                   f"clears it without drawing a base smaller than the one the "
+                   f"publisher states. Measured and declared rather than "
+                   f"waived."),
+            # the roofline is the top of the BULK: for a section it is the
+            # building, for a pyramid it is where the architectural cap starts,
+            # so the cap is a crown and is drawn at the crown factor
+            "zr": roof_m,
             "ax": float(B["cx"][b]), "ay": float(B["cy"][b]),
-            "ms": {"a": round(abs(ring_area(ring)), 1), "h": top_m, "t": top_m,
+            "ms": {"a": round(abs(ring_area(ring)), 1), "h": roof_m, "t": top_m,
                    "r": 0.0, "yr": int(B["yr"][b]) + 1849, "nv": c},
             "p": parts,
         }
@@ -536,6 +773,18 @@ def main() -> int:
     for k, geo, rec in added:
         print(f"    {k:12} b={rec['b']}  {rec['ms']['a']:,.1f} m2 on "
               f"{rec['ms']['nv']} vertices, top {rec['ms']['t']} m")
+        if geo["kind"] == "pyramid":
+            print(f"      pyramid: top {geo['topM']} m (published 853 ft), shaft "
+                  f"to {geo['shaftTopM']} m, plan {geo['joinScale']:.4f} of base "
+                  f"at the join, {geo['ftPerStorey']} ft a storey-equivalent")
+            print(f"      base: the largest convex figure the published "
+                  f"footprint contains -- {geo['drawnM2']} m2 of "
+                  f"{geo['ringM2']} m2 ({100 * geo['drawnM2'] / geo['ringM2']:.1f} %), "
+                  f"{geo['baseNv']} of its {geo['ringNv']} vertices, no shrink; "
+                  f"the hull would be {geo['hullM2']} m2 and the register's own "
+                  f"base_plan_size {geo['planM2']} m2, and neither fits")
+            print(f"      em: {rec['em']}")
+            continue
         print(f"      section: {geo['kind']}, half-width {geo['w']} m, deepest "
               f"safe inset {geo['dmax']} m, eaves {geo['eaves']} m, roof rise "
               f"{geo['rise']} m" + (f" off a segmental arc of rise {geo['arcRise']} m"

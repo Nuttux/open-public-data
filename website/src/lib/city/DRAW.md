@@ -5932,3 +5932,104 @@ much as its treatment measures nothing.*
 the LOW-frequency image, +11.7 to +13.7 mean, +23.5 in the darkest decile.
 1.0 % of frame at 20 % alpha cannot be that, and this section says so rather
 than banking a real bug fix as a fix for a different problem. See §27.
+
+### 21.22 The Transamerica Pyramid was 68 m tall, and the cause is a median
+
+The famous set, worked through the way §21.14 audited it. Two of the three the
+brief flagged turned out not to be broken, and saying so is the finding:
+
+- **City Hall's dome is drawn and it reads.** `fam-cityhall-blk.prod.fam.png` —
+  a gilt-capped drum with its finial, unmistakable at block zoom. 33 parts.
+- **The Ferry Building's tower is drawn and it reads.** `fam-ferry-str.prod.
+  fam.png` — clock faces, arcaded belfry, terracotta pyramidal roof, and the
+  arcaded hall under it. 13 parts. Nothing to do to either.
+- **Sutro Tower now carries its name** (§21.20) and draws as a needle rather
+  than a trident. Its published ring traces the three legs and the hero uses
+  them; the cross-arms are not in any field here, so they are not drawn.
+
+**The one that was broken is the Transamerica Pyramid, and it is a measurement
+error rather than a taste one.** The fabric's drawn height is
+`ynuv-fyni hgt_mediancm` — *the MEDIAN LIDAR return over each footprint*, the
+mock's own `MEASURED.height`, verbatim. The median is exactly the right
+statistic for a flat-roofed box and **exactly the wrong one for a spire**:
+most of a tapering tower's footprint lies under its wide base, so the median
+sits near the bottom.
+
+> **An 853 ft tower was drawn 68 m tall**, and its shaped `campanile` cap was
+> then carved *inside* that 68 m solid. `pyr-blk.prod.before.png`: the most
+> recognisable tower in San Francisco is not findable in its own skyline.
+
+Nothing about the replacement is authored. Every number is off DataSF
+**5kya-mfst**, the Tall Building Inventory — a register `build_places.py`
+already reads for names, whose scope is every building over 240 ft:
+
+| field | value | used for |
+|---|---|---|
+| `height_ft` | 853 | the top, 259.99 m |
+| `description` | "50 story WSMF with 11 story architectural cap" | the shaft/cap join |
+| `date`, `completion_date` | 1972 | the year |
+| `facade_material` | "concrete panel and sheet metal" | the two materials |
+| `base_plan_size` | 165x165 | **not used** — see below |
+
+**The taper has no free parameter.** A pyramid is the surface between its base
+and a point at its top, so the plan scale at height `z` is `1 − z/top`. The
+description's own two numbers put the join at `50/(50+11)` of the height —
+**213.11 m**, where the plan is `11/61 = 0.1803` of the base. A check on that
+split rather than an assumption: 853 ft over 61 storey-equivalents is **13.98
+ft a storey**, and the register's own `typ_story_height` on comparable rows
+reads 14'9". The two halves differ in material, not in shape.
+
+### 21.23 The base took three attempts and the two failures are the useful part
+
+**`base_plan_size 165x165` is not used, and the disagreement is worth stating.**
+That is a 50.3 m square, 2,529 m². The measured footprint is 2,982 m² and its
+main quadrilateral is about **45.7 × 53.6 m** — a 50.3 m square does not fit
+inside a 45.7 m width. The published plan is a design figure; the footprint is
+a measurement of the thing standing there, and every other hero stands on its
+own footprint.
+
+The footprint is not convex — a 9 × 7 m tab on one corner, the lift and stair
+projection — and a profile scales about the **area centroid**, which is
+inside-preserving only on a convex ring. Two obvious repairs, both measured,
+both rejected:
+
+| repair | measured | why not |
+|---|---|---|
+| the convex **hull** | 3,127 m², **4.9 % MORE ground than the published footprint** | it draws outside the record — and it **slips a vertex-only gate**, because a hull's vertices are always ring vertices, so §11's gate as written passes it at a shrink of 1.0 while 146 m² of solid sits over the notch |
+| hull, then §11's shrink | scale **0.806** | sits on §11's own 0.80 authoring-error floor and throws away a third of the base |
+
+**What is used is the largest convex figure the published footprint contains,
+on the footprint's own vertices: 2,945.0 m² of 2,982.0 — 98.8 %, six of its
+eight vertices, no shrink, no relaxation.** What it drops is the tab, which is
+not the tower's plan.
+
+**And the convex-hull REFERENCE was not taken.** `data.test.ts` asserts *"Sutro
+Tower alone is granted the convex-hull reference, with its reason"*, and taking
+it here turned that test red — which is the test doing its job. That invariant
+is deliberate: Sutro's ring traces three open steel legs and is not a slab; a
+parcel outline with a lift tab on it is not the same case. The test is
+unchanged.
+
+Measured after: `em` 2.569 / 1.063 / 1.0, so it is drawn at true size from
+district zoom in and emphasised only on the wide frame. `pyr-blk.prod.
+after.png` — the tallest thing in the Financial District, and named.
+
+**A note for whoever owns the building heights**: this hero routes *one*
+building around `hgt_mediancm`. The statistic is wrong for every tapering
+tower, not just this one, and a hero is not the general fix.
+
+### 21.24 What was checked and rejected, so the list is not re-walked
+
+- **Cliff House and Sutro Baths: zero shipped footprints within 420 m.** Both
+  stand on GGNRA land at Point Lobos, outside the drawn city — no ring, no
+  anchor, no measured top, and a hero needs all three. Same family as §21.19.
+- **The 297 designated places drawn as bare prisms, rejected as a class.**
+  Ranked by span: the Alcoa Building (116 m, 4 vertices), the Italian American
+  Bank, Mission High School, the High School of Commerce, the Chronicle
+  Building, the Palace Hotel garden courtyard, the Mills Building, the Fairmont
+  Hotel, the Phelan Building, the Cable Car Barn. **Almost every one of them
+  IS a prism** — a downtown block with a flat roof — and the ones that are not
+  (Grace Cathedral's towers, Mission High's tower, the Fairmont's mansard) need
+  per-element heights no field here carries, which is the test Grace Cathedral
+  failed. A shaped cap on any of them would be a guess about taper.
+- All three are in `heroes_extra.json` under `rejected`, with the numbers.

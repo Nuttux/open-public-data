@@ -19,6 +19,28 @@
         "why": "eavesFrac, corniceM and wallSetbackM are the drawing; matWall and matRoof are `stucco`, which is the material the `pofa` record already authors for the rotunda's own walls -- the same building, the same register, the same authored material. eavesFrac 0.62 was 0.75 on the first cut and the roof came out 2.5 m of rise over 9.8 m of horizontal inset, a 14-degree slope that reads as a terrace rather than a roof; screenshot .parity/g3/out/hall-str.prod.after.png at the first value.",
         "roofKind": "segmental"
       }
+    },
+    {
+      "k": "transamerica",
+      "n": "Transamerica Pyramid",
+      "b": 137821,
+      "y": 1972,
+      "an": "the footprint this map's own register resolves the name to: base/places.qc row `Transamerica Pyramid [Transamerica Center]` carries bi 137821, from DataSF 5kya-mfst, the Tall Building Inventory, whose scope is every building over 240 ft.",
+      "ys": "5kya-mfst `date`, the publisher's own \"Building's year of construction\", which reads 1972 on this row and agrees with its `completion_date`. The assessor's roll dates the parcel 1971 and that year is shipped alongside on `ms.yr`, so a reader can see both.",
+      "dr": "NOTHING ABOUT THIS FORM IS AUTHORED and the reason it is drawn at all is a measurement error, not a taste one. The fabric's height is `ynuv-fyni hgt_mediancm`, the MEDIAN LIDAR return over each footprint -- exactly right for a flat-roofed box and exactly wrong for a spire, because most of a tapering tower's footprint lies under its wide base. This 853 ft tower was drawn 68 m tall and its own shaped cap was then carved inside that 68 m solid, so the most recognisable tower in San Francisco was a stub its neighbours hid (.parity/g3/out/pyr-blk.prod.before.png). The published top, 853 ft from 5kya-mfst `height_ft`, replaces it.\nThe BASE is the largest convex figure the published footprint contains, on the footprint's own vertices: 2,945.0 m2 of 2,982.0, four of its eight vertices, 98.8 %. What it drops is a 9 x 7 m tab on one corner -- the lift and stair projection -- which is not the tower's plan. Two simpler repairs were tried and both are recorded in the emitter because both fail on this outline: the convex HULL covers 4.9 % MORE ground than the published footprint and slips a vertex-only gate, because a hull's vertices are always ring vertices; and shrinking that hull about its centroid until the whole polygon is inside the ring costs a 0.806 scale, which sits on landmarks.ts section 11's own 0.80 authoring-error floor. The convex-hull REFERENCE is not taken either: Sutro Tower alone is granted it and that invariant is asserted in data.test.ts.\nThe register's own `base_plan_size` 165x165 ft is NOT used and the disagreement is worth stating: that is a 50.3 m square, 2,529 m2, and the measured footprint's main quadrilateral is about 45.7 x 53.6 m, so a 50.3 m square does not fit inside it. The published plan is a design figure; the footprint is a measurement of the thing standing there, and every other hero on this map stands on its own footprint.\nThe TAPER has no free parameter: a pyramid is the surface between its base and a point at its top, so the plan scale at height z is 1 - z/top. The join between the shaft and the architectural cap is where the register's own description puts it -- \"50 story WSMF with 11 story architectural cap\", so 50/61 of the height, 213.11 m, where the plan is 11/61 of the base. A check on that split rather than an assumption: 853 ft over 61 storey-equivalents is 13.98 ft a storey, and the register's `typ_story_height` on comparable rows reads 14'9\". The two halves differ in MATERIAL and not in shape, and `facade_material` names both: \"concrete panel and sheet metal\". The two wings that carry the lifts and the stairs are NOT drawn: the register publishes no dimension for them.",
+      "section": {
+        "form": "pyramid",
+        "heightFt": 853,
+        "storiesShaft": 50,
+        "storiesCap": 11,
+        "matShaft": 3,
+        "matCap": 15,
+        "why": "heightFt, storiesShaft and storiesCap are read straight off 5kya-mfst -- `height_ft`, and the two numbers in `description`. basePlanFt is carried for the record and is NOT used to size the base: it does not fit the measured footprint, and `dr` says so. matShaft is `concrete` and matCap is `silver`, which is that row's own `facade_material`, \"concrete panel and sheet metal\", split at the join the description gives.",
+        "basePlanFt": [
+          165,
+          165
+        ]
+      }
     }
   ],
   "rejected": [
@@ -27,6 +49,24 @@
       "n": "Grace Cathedral",
       "b": 139401,
       "why": "AUTHORED, SCREENSHOTTED AND TAKEN OUT AGAIN, recorded so it is not re-attempted the same way. The section this file draws is a roof, and a roof only reads on a building you look DOWN on. The Exhibition Hall is 14 m tall on a 272 m plan, so its roof is most of what a reader sees. Grace Cathedral is 30 m tall on a 102 x 72 m plan, and its published 37-vertex ring has narrow arms, so the deepest inset the containment gate allows is 3.6 m on an 8.42 m half-width: at the street camera that is a chamfer a few pixels deep along the top edge of a 30 m wall, and what the frame shows is a pale flat-topped slab that reads no better than the prism it replaced -- arguably worse, because `stone` is lighter than the fabric around it. Screenshot .parity/g3/out/grace-crop.png.\\nWhat Grace Cathedral actually needs is its SILHOUETTE -- two west towers and a central tower over a nave -- and per-element heights for those are in no field this pipeline reads. 30.0 m is the LIDAR top of the whole building, so splitting it into a nave and towers would be inventing where the height went. It does not get drawn specially until there is a published plan or elevation behind it."
+    },
+    {
+      "k": "cliffhouse",
+      "n": "Cliff House",
+      "b": null,
+      "why": "NO FOOTPRINT. There are ZERO shipped building footprints within 420 m of the Cliff House and Sutro Baths, measured against _bldgsrc.read_bldg(). Both stand on GGNRA land at Point Lobos, outside the drawn city, so there is no ring, no ground anchor and no measured top -- a hero needs all three. Same family as DRAW.md section 21.19: the pipeline's inputs are City property registers and this is federal ground."
+    },
+    {
+      "k": "sutrobaths",
+      "n": "Sutro Baths",
+      "b": null,
+      "why": "NO FOOTPRINT, for the same reason as the Cliff House above; see that entry."
+    },
+    {
+      "k": "bareprisms",
+      "n": "the 297 designated places drawn as bare prisms",
+      "b": null,
+      "why": "CHECKED AS A CLASS AND REJECTED AS A CLASS. 297 designated places resolve to a footprint that is neither a hero nor one of the 68 shaped caps, so they draw as bare prisms. Ranked by span the top of that list is the Alcoa Building (116 m, 4 vertices), the Italian American Bank, Mission High School, the High School of Commerce, the Chronicle Building, the Palace Hotel garden courtyard, the Mills Building, the Fairmont Hotel, the Phelan Building, the Cable Car Barn. Almost every one of them IS a prism -- a downtown block with a flat roof -- and the ones that are not (Grace Cathedral's towers, Mission High's tower, the Fairmont's mansard) need per-element heights that no field this pipeline reads carries, which is the same test Grace Cathedral failed. A shaped cap would be a guess about taper on every one of them. Not done, and the reason is that the record does not support a form, not that the list is long."
     }
   ]
 }
