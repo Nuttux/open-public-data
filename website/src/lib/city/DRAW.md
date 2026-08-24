@@ -6384,3 +6384,106 @@ was chosen for and fails on the shapes that make a skyline.
 
 **A is fixed. B and C are handed over with these numbers** — and the fix for
 neither is a hero.
+
+---
+
+## 27. Block G1 — the buildings' colour tables are exonerated, the way the ground was
+
+`buildings.ts` §READ THE VALUE OUT OF BOTH BUILDS · `palette.ts` · `.parity/g1clut.py`
+
+BUGS.md §23 put the district gap entirely in the LOW-frequency image — +11.7 to
++13.7 mean, +23.5 in the darkest decile — and three independent lines pointed
+here, at *"whatever lifts the SHADED end of the built layer — the wall's
+lambert ramp's bottom quartile, the aerial fade, or the haze index."*
+
+**It is not the tables.** `colourLUT`'s source was first read line for line
+against `part3.html` L6018-6100 and matches, including the placement of `gain`
+— which is the trap: the reference shades the BASE by `gain` and skylits with a
+bare lambert on the index-0 path, and multiplies `gain` INTO the lambert on the
+fresh path, and production does both the same way. So the instrument, following
+§GROUND: export the function OBJECTS the renderer runs, reach the reference's
+declarations, sample the whole input domain, subtract.
+
+### 27.1 The index shift again, and it has to be read before it is believed
+
+Raw, the roof tables look catastrophic: 1,552 of 2,688 entries differ, dL mean
++28. They are the same colours at shifted indices, which is §15.5 restated:
+
+```
+  roof palette   mock 69   prod 56        PAINT_C0  mock 37   prod 24
+  wall palette   mock 37   prod 24
+  prod[i] == mock[ i < 24 ? i : i + 13 ]   — verified, for BOTH palettes
+  in mock and not in prod: 13   ·   in prod and not in mock: 0
+```
+
+The 13 are the class wash `LRD.cls` §15.5 already named as the last material
+difference — 1,052 footprints, 0.6 % of the city, still the natural next chunk
+and still not a frame-wide shading term.
+
+### 27.2 Aligned, they are the same table
+
+Over **3 fades × 3 camSteps × 4 tables**, with production's palette index
+mapped onto the reference's:
+
+```
+  wall     IDENTICAL, every entry, every fade, every camStep
+  wallF    IDENTICAL — 18,432 of 18,432
+  roof  }  476 of 300,672 entries differ in total
+  roofF }  worst |dL| anywhere  2.11
+```
+
+**476 of 300,672, worst 2.11 luminance steps**, and those are hex-rounding in
+`shade`/`lerpHex` at a channel boundary, not a term. Against a gap of +11.7 to
++23.5 this exonerates the building colour tables the way `g2fn.py` exonerated
+the ground — and it exonerates the coordinator's prime suspect specifically:
+**`wallF` is bit-identical, so the wall's lambert ramp and its bottom quartile
+are not it.**
+
+### 27.3 The sun pass IS missing, and it is worth a tenth of the gap
+
+`part3.html` ships an entire shadow block production does not have. `SN`
+(L2124): `on/bld/mass/terr` all 1, **`step: 32`** luminance steps subtracted
+inside a shadow, `cool: 1` (in the SUN's own colour), `minpx: 0.7`,
+`punchpx: 14`, `masscov: 128`. `sunCast` builds a full-resolution mask in depth
+order — footprint UNION its offset copy plus the sweep quads — punches every
+drawn body back out, and blits under `globalCompositeOperation = "difference"`,
+which is a **constant subtraction** rather than a proportional multiply.
+
+Production ships `drawCity`'s FALLBACK branch instead (`SHADOW_FILL`), and both
+`buildings.ts` and `SHELL.md` §8 already say so — as a deliberate cost
+decision whose visual cost had never been priced.
+
+Priced (`.parity/g1sun.py`, the mask rasterised exactly as `sunCast`/`sunFlush`
+build it, not estimated):
+
+```
+  camera             casters  punched   swept %   net mask %   x32     BUGS 23
+  A4  city             5,834        3      0.71         0.27   0.09        4.9
+  B1  district        48,107       29     15.54         3.40   1.09       11.7
+  B4  district        89,626      169     29.35         6.56   2.10       13.7
+  D1  street             262      257     24.89         0.47   0.15        0.2
+```
+
+**It accounts for 9-15 % of the district gap and it is not the answer** —
+agreeing with the coordinator's independent +2.7 / +2.5 in the darkest decile.
+Two things in that table are worth keeping. The ORDER is right (district ≫ city,
+street ≈ 0), and the street camera explains itself: **257 of 262 casters clear
+`punchpx`**, so at street zoom the mask punches itself away, which is exactly
+where BUGS §23 measures no gap at all.
+
+The first version of this measurement marked BOUNDING BOXES and reported a net
+mask of 0.28 %. That is worthless and is recorded so nobody repeats it: the
+mask is the DIFFERENCE of two nearly coincident regions, and a bbox punch
+swallows the swept crescent entirely.
+
+### 27.4 What this leaves, stated precisely
+
+The table a pixel reads is identical. What a pixel gets is the table **plus the
+index chosen for it** — `roofNF[((ri·HZL + hz)·NF1 + fi) << 2 | rsh]`. So the
+remaining search space is not a value, it is a **selector**: `ri` (which palette
+entry), `hz` (the haze band), `fi` (the freshness/arrival), `rsh` (the published
+height quartile). Those are four small integer distributions, each comparable
+between the builds by the same instrument that settled the tables — dump the
+histogram of each on both sides at one district camera and subtract. That is a
+much smaller search than the one this block started with, and §27.2 is what
+made it small.

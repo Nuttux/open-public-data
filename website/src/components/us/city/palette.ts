@@ -134,3 +134,19 @@ export function storeyBand(st: number): number {
 export function heightBand(h: number): number {
   return h < 9 ? 0 : h < 15 ? 1 : h < 25 ? 2 : 3;
 }
+
+/* The palettes themselves, for the same instrument `buildings.ts` §READ THE
+ * VALUE OUT OF BOTH BUILDS exports `colourLUT` for: a table can only differ
+ * through its inputs once its source matches, and these are the inputs.
+ * Dev only. */
+if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+  (globalThis as { __cityPAL?: unknown }).__cityPAL = {
+    wallPalette,
+    roofPalette,
+    PAINT_C0,
+    WA_M0,
+    UMAT_WALL,
+    UMAT_ROOF,
+    legendTones,
+  };
+}

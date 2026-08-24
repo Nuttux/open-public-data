@@ -1263,3 +1263,37 @@ export function tintIndex(age: number, rise: number): number {
 export function streamOrder(depth: Float32Array): BldOrder {
   return buildBldOrder(depth);
 }
+
+/* ── READ THE VALUE OUT OF BOTH BUILDS AT THE SAME INPUT ──────────────────
+ *
+ * BUGS.md §23's gap is always-on in both builds, so it cannot be ablated:
+ * switching the term off removes it from both sides. `terrain.ts` §GROUND
+ * settled the ground the only way an always-on VALUE difference can be
+ * settled — sample the pure function on both sides over its whole domain and
+ * subtract — and got 4,800 of 4,800 identical to the float.
+ *
+ * `colourLUT` is a pure function of (palette, fade, camStep) exactly as
+ * `terrainRGB` is of its five numbers, so the same instrument reaches it.
+ * This exports the FUNCTION OBJECTS the renderer runs, not copies, and the
+ * PALETTES they are called with — because a table can only differ through its
+ * inputs once its source has been read line for line against the reference's,
+ * which it has.
+ *
+ * Dev only.
+ */
+if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+  (globalThis as { __cityCLUT?: unknown }).__cityCLUT = {
+    colourLUT,
+    massLUT,
+    inkFor,
+    edgeInk,
+    consts: () => ({
+      HZL, NF1, FRESH_YEARS, ARRQ, FRESH, TONE_COOL, TONE_WARM,
+      COVER_GAIN: [...COVER_GAIN], MASS_GAIN, COVQ, COV_GAMMA,
+      COVA: Array.from(COVA), EDGE_SHADE, INK_LO, INK_HI,
+      MASS_WALL_PX, KEY_DX, KEY_DY,
+      SHADOW_FILL, STROKE_MIN_PX_A, STROKE_MIN_PX_B, SHADOW_MIN_PX,
+      WALL_MIN_PX, NEAR_PX, QUAD_PX, LOD_Z0, LOD_Z1,
+    }),
+  };
+}
