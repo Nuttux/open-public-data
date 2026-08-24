@@ -3,8 +3,13 @@
 /**
  * THE BLOCK FICHE — what happened on one assessor block, and when.
  *
- * A reader clicks a block and gets four things, in this order:
+ * A reader clicks a block and gets six things, in this order:
  *
+ *   0. WHAT IS HERE NOW — residents, homes, the ground's use and what the roll
+ *      values it at, and, on the 70 blocks the city holds a published place on,
+ *      what that place takes in public money. This comes FIRST because it is
+ *      what a stranger who has just clicked a shape on a map is asking, and
+ *      because the answer to "what happened here" is unreadable without it.
  *   1. a short lead — how much the record holds here, across what years, and
  *      how much more sits on the streets the block fronts
  *   2. THE SUBJECTS — the headings the Board printed here more than once,
@@ -52,6 +57,30 @@
  * until the reader asks for them. Flattening the two into one list would be
  * presenting a street's record as a block's.
  *
+ * ── WHAT IS HERE NOW, AND WHAT IS A JOIN ─────────────────────────────────
+ * Two files, both emitted by `pipeline/scripts/us_sf_city/build_block_facts.py`
+ * and both keyed on the assessor block id the map already publishes.
+ *
+ *   `block-facts.json`  the closed assessor roll, which names this block in a
+ *                       column of its own — so it is not a join at all — plus
+ *                       the 2020 Census count, which IS one and says so.
+ *   `block-money.json`  the published Qipu place fiches, reached by the City
+ *                       Facilities APN. 70 of 5,404 blocks carry one and 33
+ *                       carry a money figure. **The panel prints that ratio**
+ *                       rather than letting a silent absence read as nothing.
+ *
+ * Three rules this section is written under, and none of them bend:
+ *
+ *   - **null is not zero.** 810 blocks have no census ring resolving onto them
+ *     and the residents row is ABSENT there, never "0". A zero would be a claim
+ *     that nobody lives on a block the count simply does not reach.
+ *   - **the money is the whole place's.** Moscone Center stands on four blocks
+ *     and reports the same $776.3 M agreed on each. `n_blocks` is on the record
+ *     and the panel says it in words. Nothing is apportioned, because no
+ *     published file apportions it.
+ *   - **the two ledgers are never added.** Contracts and payments are different
+ *     city files; the place fiches already carry that warning and so does this.
+ *
  * ── WHY NOT A ROUTED DRAWER ──────────────────────────────────────────────
  * The site's drawer architecture is one root-level `(...)` route per ENTITY.
  * An assessor block is not an entity on this site — there are 5,404 of them,
@@ -66,14 +95,25 @@ import FicheArchiveShelf from "@/components/fiche/FicheArchiveShelf";
 import type { FicheArchiveDoc } from "@/components/fiche/types";
 import {
   archiveHref,
+  blockNow,
+  blockPlaces,
   blockShape,
   blockSubjects,
   decadeGroups,
+  hasMoney,
+  loadBlockFacts,
+  loadBlockMoney,
   loadStreetRecord,
+  placeHref,
   streetLabel,
+  usdShort,
   KIND_WORDING,
   TIER_WORDING,
   type BlockDecision,
+  type BlockFactsFile,
+  type BlockMoneyFile,
+  type BlockNow,
+  type BlockPlace,
   type BlockRecord,
   type BlockSubject,
   type DecadeGroup,
@@ -151,6 +191,269 @@ export interface BlockContext {
    * fold they had no reason to open.
    */
   streetDecisions: number;
+}
+
+/**
+ * THE STRINGS THIS BLOCK ADDS, and why they are declared here.
+ *
+ * Every other string on this panel is a `us.sf.thecity.panel.*` key in both
+ * `en.ts` and `fr.ts` — B4 put them there and deleted the fallback map that
+ * used to stand in this file. These twenty-two are new and `en.ts`/`fr.ts` are
+ * owned elsewhere tonight, and `useT` returns THE KEY ITSELF when a key is
+ * missing, so hardcoding through `t()` alone would render `us.sf.thecity.panel.
+ * now_head` into the margin. So the English is declared here and `tx()` prefers
+ * a real dictionary entry over it: the moment the keys land in `en.ts` they take
+ * over with no change to this file, and this map can then be deleted.
+ * FICHE.md §10 carries them ready to paste.
+ */
+const EN_NOW: Record<string, string> = {
+  "us.sf.thecity.panel.now_head": "On the ground now",
+  "us.sf.thecity.panel.now_residents": "Residents",
+  "us.sf.thecity.panel.now_homes": "Homes",
+  "us.sf.thecity.panel.now_use": "Mostly",
+  "us.sf.thecity.panel.now_value": "Assessed at",
+  "us.sf.thecity.panel.now_src":
+    "The {y} assessor roll, which names this block in a row of its own.",
+  "us.sf.thecity.panel.now_src_pop":
+    "Residents and homes are the {c} Census, counted on its own block and carried onto this one.",
+  "us.sf.thecity.panel.now_no_pop":
+    "No Census block's parcels sit here, so no count of people or homes is shown.",
+  "us.sf.thecity.panel.now_zero":
+    "It carries no value here, as it does on {n} of the city's blocks.",
+  "us.sf.thecity.panel.now_roll": "See the roll",
+  "us.sf.thecity.panel.now_census": "See the Census",
+  "us.sf.thecity.panel.money_head": "Public money",
+  "us.sf.thecity.panel.money_stands": "{name} stands here — {sqft} sq ft of {place}.",
+  "us.sf.thecity.panel.money_stands_plain": "{place} stands here.",
+  "us.sf.thecity.panel.money_stands_same": "{place} stands here — {sqft} sq ft of it.",
+  "us.sf.thecity.panel.money_spans":
+    "It stands on {n} blocks, and every figure below is the whole of it.",
+  "us.sf.thecity.panel.money_contracts": "Contracts",
+  "us.sf.thecity.panel.money_agreed": "Agreed",
+  "us.sf.thecity.panel.money_paid": "Paid",
+  "us.sf.thecity.panel.money_payees": "Vendors paid",
+  "us.sf.thecity.panel.money_ledgers":
+    "Contracts and payments are different city files and are not added together.",
+  "us.sf.thecity.panel.money_over":
+    "Agreed and paid are two different city files that the city has not reconciled here, so paid standing above agreed is not an overrun.",
+  "us.sf.thecity.panel.money_none":
+    "No city ledger names this place, so no figure is shown for it.",
+  "us.sf.thecity.panel.money_link": "The full record for {place}",
+  "us.sf.thecity.panel.money_cover":
+    "A published city place resolves to {n} of the city's {all} blocks; {m} of those carry a figure.",
+};
+
+/** the dictionary first, the English above only where the key is not in it yet */
+function tx(t: (k: string) => string, key: string): string {
+  const v = t(key);
+  return v === key ? (EN_NOW[key] ?? key) : v;
+}
+
+/**
+ * WHAT IS HERE NOW — four rows and a source line, in the margin's own idiom.
+ *
+ * `fx-city-fact-row` is the label/value row `CityMap` already draws in the
+ * ledger above this panel, reused verbatim: nothing new is styled, and the
+ * block's modern facts read as the same kind of object as the map's own.
+ *
+ * The RESIDENTS ROW IS ABSENT, not zero, where the Census resolved nothing
+ * here — see the file's `pop: -1`. The line under the rows says so in words,
+ * because an absent row with no explanation reads as an oversight.
+ */
+function NowRows({
+  now,
+  zeroBlocks,
+  t,
+}: {
+  now: BlockNow;
+  /** how many blocks the roll values at nothing — so "$0" is not read as a hole */
+  zeroBlocks: number;
+  t: (k: string) => string;
+}) {
+  return (
+    <>
+      <div className="fx-city-ledger-head fx-block-sec">
+        {tx(t, "us.sf.thecity.panel.now_head")}
+      </div>
+      <dl className="fx-city-ledger-facts">
+        {now.residents !== null ? (
+          <div className="fx-city-fact-row">
+            <dt>{tx(t, "us.sf.thecity.panel.now_residents")}</dt>
+            <dd>{nfInt.format(now.residents)}</dd>
+          </div>
+        ) : null}
+        {now.homes !== null ? (
+          <div className="fx-city-fact-row">
+            <dt>{tx(t, "us.sf.thecity.panel.now_homes")}</dt>
+            <dd>{nfInt.format(now.homes)}</dd>
+          </div>
+        ) : null}
+        {now.use ? (
+          <div className="fx-city-fact-row">
+            <dt>{tx(t, "us.sf.thecity.panel.now_use")}</dt>
+            <dd>{now.use}</dd>
+          </div>
+        ) : null}
+        <div className="fx-city-fact-row">
+          <dt>{tx(t, "us.sf.thecity.panel.now_value")}</dt>
+          <dd>{usdShort(now.valueUsd)}</dd>
+        </div>
+      </dl>
+      <p className="fx-block-hint" style={{ marginTop: 7 }}>
+        {tx(t, "us.sf.thecity.panel.now_src").replace("{y}", String(now.rollYear))}{" "}
+        {/* 480 of 5,401 blocks are valued at nothing — the roll carries no
+            figure on the ground the city, the state and the federal government
+            own, and City Hall's own parcel is one of them. Alone, "$0" reads
+            as a hole in the data; with the count beside it, it reads as what
+            the roll says. */}
+        {now.valueUsd === 0 && zeroBlocks > 0
+          ? tx(t, "us.sf.thecity.panel.now_zero").replace(
+              "{n}",
+              nfInt.format(zeroBlocks),
+            ) + " "
+          : ""}
+        {now.residents !== null
+          ? tx(t, "us.sf.thecity.panel.now_src_pop").replace(
+              "{c}",
+              String(now.censusYear),
+            )
+          : tx(t, "us.sf.thecity.panel.now_no_pop")}{" "}
+        <a
+          className="fx-block-jump"
+          href="https://data.sfgov.org/d/wv5m-vpq2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {tx(t, "us.sf.thecity.panel.now_roll")}
+        </a>
+        {now.residents !== null ? (
+          <>
+            {" · "}
+            <a
+              className="fx-block-jump"
+              href="https://data.census.gov/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {tx(t, "us.sf.thecity.panel.now_census")}
+            </a>
+          </>
+        ) : null}
+      </p>
+    </>
+  );
+}
+
+/**
+ * PUBLIC MONEY — one entry per published place standing on this block.
+ *
+ * The sentence names the place's own building on THIS block where the register
+ * gives one, because that is the only thing in the whole money file at block
+ * grain: block 3724 is Moscone West, 3723 is Moscone North. Everything under it
+ * is the WHOLE place's, and the second sentence says so whenever the place
+ * stands on more than one block.
+ *
+ * A place with no ledger row prints the sentence and then says there is no
+ * figure, rather than showing nothing — an empty money section under a named
+ * civic building reads as "this costs nothing", which is not what the files say.
+ */
+function PlaceMoney({
+  place,
+  href,
+  t,
+}: {
+  place: BlockPlace;
+  href: string;
+  t: (k: string) => string;
+}) {
+  const here = place.here[0];
+  const money = hasMoney(place);
+  // "Coit Tower stands here — 5,687 sq ft of Coit Tower." The register's name
+  // for the building and the place's name are the same thing on a place that
+  // is one building, and saying it twice is worse than not saying it at all.
+  const sameName =
+    !!here?.name &&
+    here.name.replace(/[^a-z0-9]/gi, "").toLowerCase() ===
+      place.name.replace(/[^a-z0-9]/gi, "").toLowerCase();
+  return (
+    <div style={{ marginTop: 10 }}>
+      <p className="fx-block-lead" style={{ marginTop: 0 }}>
+        {here && here.name && here.sqft > 0
+          ? tx(
+              t,
+              sameName
+                ? "us.sf.thecity.panel.money_stands_same"
+                : "us.sf.thecity.panel.money_stands",
+            )
+              .replace("{name}", here.name)
+              .replace("{sqft}", nfInt.format(here.sqft))
+              .replace("{place}", place.name)
+          : tx(t, "us.sf.thecity.panel.money_stands_plain").replace(
+              "{place}",
+              place.name,
+            )}
+        {place.n_blocks > 1
+          ? " " +
+            tx(t, "us.sf.thecity.panel.money_spans").replace(
+              "{n}",
+              String(place.n_blocks),
+            )
+          : ""}
+      </p>
+      {money ? (
+        <dl className="fx-city-ledger-facts" style={{ marginTop: 7 }}>
+          {place.n_contracts > 0 ? (
+            <>
+              <div className="fx-city-fact-row">
+                <dt>{tx(t, "us.sf.thecity.panel.money_contracts")}</dt>
+                <dd>{nfInt.format(place.n_contracts)}</dd>
+              </div>
+              <div className="fx-city-fact-row">
+                <dt>{tx(t, "us.sf.thecity.panel.money_agreed")}</dt>
+                <dd>{usdShort(place.agreed_usd)}</dd>
+              </div>
+              <div className="fx-city-fact-row">
+                <dt>{tx(t, "us.sf.thecity.panel.money_paid")}</dt>
+                <dd>{usdShort(place.paid_usd)}</dd>
+              </div>
+            </>
+          ) : null}
+          {place.n_payees > 0 ? (
+            <div className="fx-city-fact-row">
+              <dt>
+                {tx(t, "us.sf.thecity.panel.money_payees")}
+                {` (${nfInt.format(place.n_payees)})`}
+              </dt>
+              <dd>{usdShort(place.payees_paid_usd)}</dd>
+            </div>
+          ) : null}
+        </dl>
+      ) : null}
+      {/* PAID ABOVE AGREED IS NOT AN OVERRUN. The two figures come out of two
+          city files the city has not reconciled — the Southeast Water Pollution
+          Control Plant reads $597.7 M agreed and $682.5 M paid — and printing
+          them one above the other without saying so invites the one reading
+          that would be a headline and is not in the data. */}
+      {money && place.paid_usd > place.agreed_usd && place.n_contracts > 0 ? (
+        <p className="fx-block-hint" style={{ marginTop: 6 }}>
+          {tx(t, "us.sf.thecity.panel.money_over")}
+        </p>
+      ) : null}
+      {/* The "do not add these" line is only earned when both ledgers are on
+          screen. On Coit Tower, which has one payment and no contract, there is
+          nothing to add and the sentence is just another line of grey. */}
+      <p className="fx-block-hint" style={{ marginTop: 7 }}>
+        {!money
+          ? tx(t, "us.sf.thecity.panel.money_none") + " "
+          : place.n_contracts > 0 && place.n_payees > 0
+            ? tx(t, "us.sf.thecity.panel.money_ledgers") + " "
+            : ""}
+        <a className="fx-block-jump" href={href}>
+          {tx(t, "us.sf.thecity.panel.money_link").replace("{place}", place.name)}
+        </a>
+      </p>
+    </div>
+  );
 }
 
 /** what the city as a whole holds — so a blank block has a bearing */
@@ -316,6 +619,25 @@ export default function CityBlockPanel({
   const [streets, setStreets] = useState<Record<string, BlockDecision[]>>({});
   const [openStreets, setOpenStreets] = useState(false);
   const [subject, setSubject] = useState<string | null>(null);
+  // The two modern-fact files. One fetch each for the whole session — both are
+  // memoised inside `block-records`, so a second panel does not re-request —
+  // and both fail soft to null, which renders exactly what this panel rendered
+  // before this section existed.
+  const [facts, setFacts] = useState<BlockFactsFile | null>(null);
+  const [money, setMoney] = useState<BlockMoneyFile | null>(null);
+
+  useEffect(() => {
+    let live = true;
+    void loadBlockFacts().then((f) => {
+      if (live) setFacts(f);
+    });
+    void loadBlockMoney().then((m) => {
+      if (live) setMoney(m);
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
 
   // Escape closes, and focus lands on the panel when it opens — the same
   // behaviour the routed drawers have, without the route.
@@ -377,6 +699,12 @@ export default function CityBlockPanel({
   const max = groups.reduce((m, g) => Math.max(m, g.rows.length), 0);
   const streetN = context?.streetDecisions ?? 0;
 
+  // Both are keyed on the block id, and both are read only when the file has
+  // actually arrived — a block with no row in either simply draws neither
+  // section rather than a heading over nothing.
+  const now = facts && context ? blockNow(facts, context.id) : null;
+  const places = money && context ? blockPlaces(money, context.id) : [];
+
   /** open the street fold and take the reader down to it in one press */
   const goToStreets = (): void => {
     setOpenStreets(true);
@@ -430,6 +758,48 @@ export default function CityBlockPanel({
       </div>
 
       <div className="fx-city-panel-body">
+        {/* WHAT IS HERE NOW, above the record and outside its loading gate.
+            The roll and the census arrive on their own fetch, and a block with
+            no decisions at all still has residents on it — putting these inside
+            the `shape ?` branch would have hidden them on exactly the 324
+            blocks whose only content this is. */}
+        {now && facts ? (
+          <NowRows
+            now={now}
+            zeroBlocks={facts.coverage.blocks_with_no_assessed_value ?? 0}
+            t={t}
+          />
+        ) : null}
+
+        {places.length > 0 && money ? (
+          <>
+            <div className="fx-city-ledger-head fx-block-sec">
+              {tx(t, "us.sf.thecity.panel.money_head")}
+            </div>
+            {places.map((pl) => (
+              <PlaceMoney
+                key={pl.slug}
+                place={pl}
+                href={placeHref(money, pl.slug)}
+                t={t}
+              />
+            ))}
+            {/* The coverage is 1.3 % and the panel says the number. A reader who
+                meets this section on one block and not on the next has to be
+                able to tell "the city holds nothing here" from "this join does
+                not reach here", and only a printed ratio does that. */}
+            <p className="fx-block-hint" style={{ marginTop: 8 }}>
+              {tx(t, "us.sf.thecity.panel.money_cover")
+                .replace("{n}", nfInt.format(money.coverage.blocks_with_a_place))
+                .replace("{all}", nfInt.format(money.coverage.blocks_total))
+                .replace(
+                  "{m}",
+                  nfInt.format(money.coverage.blocks_with_a_money_figure),
+                )}
+            </p>
+          </>
+        ) : null}
+
         {loading ? (
           <p className="fx-fiche-note">{t("us.sf.thecity.panel.loading")}</p>
         ) : shape ? (

@@ -499,3 +499,223 @@ export function blockSubjects(
   out.sort((a, b) => b.rows.length - a.rows.length || a.firstYear - b.firstYear);
   return out.slice(0, cap);
 }
+
+/* ────────────────────────────────────────────────────────────────────────────
+ * WHAT THE BLOCK IS NOW — the two files `build_block_facts.py` emits.
+ *
+ * The rail above answers *what did the city decide here*. It says nothing
+ * about what stands on the ground today, and a reader who has just clicked a
+ * shape on a map wants that first: how many people live here, what the ground
+ * is used for, what it is worth — and, where the city holds a place on it,
+ * what that place takes in public money.
+ *
+ * Both files are keyed on the SAME assessor block id `base/blocks-id.json`
+ * publishes, both are fetched once and cached for the session, and both FAIL
+ * SOFT: a missing file leaves the panel exactly as it was before this landed
+ * rather than throwing inside a click handler.
+ *
+ * ── WHAT IS A JOIN HERE AND WHAT IS NOT ──────────────────────────────────
+ * The roll is not a join: `wv5m-vpq2` publishes `block` as its own column.
+ * The Census IS a join and it is stated on the file — see `pop` below.
+ * The place is the City Facilities APN, and the two guards that keep it
+ * honest live in the build script, not here. FICHE.md §9 carries the numbers.
+ * ──────────────────────────────────────────────────────────────────────── */
+
+/** the columnar file, as `build_block_facts.py --build` writes it */
+export interface BlockFactsFile {
+  readonly roll_year: number;
+  readonly census_year: number;
+  readonly useNames: readonly string[];
+  readonly coverage: {
+    readonly blocks_total: number;
+    readonly blocks_on_the_roll: number;
+    readonly blocks_with_population: number;
+    /** how many blocks the roll carries no value on — 480 of 5,401 */
+    readonly blocks_with_no_assessed_value: number;
+    readonly census_rings: number;
+    readonly census_rings_placed: number;
+    readonly residents_carried: number;
+    readonly residents_counted: number;
+    readonly plurality_ge_90pct: number | null;
+  };
+  readonly b: readonly string[];
+  /** parcels on the closed roll */
+  readonly np: readonly number[];
+  /**
+   * `number_of_units` summed over the block's parcel rows. **NOT a count of
+   * homes and never shown as one** — see `BlockNow.homes`. Carried because the
+   * file carries its own evidence.
+   */
+  readonly u: readonly number[];
+  /** assessed value, THOUSANDS of USD — land + improvements + fixtures */
+  readonly v: readonly number[];
+  /** built floor area, HUNDREDS of square feet */
+  readonly ar: readonly number[];
+  /** index into `useNames`; -1 where the roll gives this block no parcel */
+  readonly us: readonly number[];
+  /** 2020 Census residents; **-1 means NOT KNOWN, and is never shown as 0** */
+  readonly pop: readonly number[];
+  /** 2020 Census housing units; -1 where no census ring resolved here */
+  readonly hu: readonly number[];
+}
+
+/** one block's row, decoded into the units a sentence is written in */
+export interface BlockNow {
+  readonly parcels: number;
+  /**
+   * **NOT the roll's `number_of_units`.** That field reads 0 on every
+   * CONDOMINIUM parcel, because there the parcel IS the home: 155,111 Single
+   * Family Residential rows carry 121,707 units between them city-wide, and
+   * block 0311 — a downtown tower of 76 condominium parcels — reads **11**.
+   * `homes` is the 2020 Census's own HU100 for the ring that resolved here,
+   * which reads 76 on that block and 406,628 city-wide, the published county
+   * total. It comes from the same ring and the same rule as `residents`, so
+   * the two are present or absent together and never disagree about which
+   * ground they describe.
+   */
+  readonly homes: number | null;
+  /** assessed value in whole USD */
+  readonly valueUsd: number;
+  /** built floor area in square feet */
+  readonly builtSqFt: number;
+  /**
+   * The use the most parcels here are on the roll under, **in the roll's own
+   * words** — one of nine: Single Family Residential, Multi-Family
+   * Residential, Miscellaneous/Mixed-Use, Commercial Misc, Commercial Retail,
+   * Industrial, Commercial Office, Commercial Hotel, Government. An earlier
+   * cut folded these onto the seven classes the map colours buildings by and
+   * turned `Government` into "hotel / institutional"; nothing is folded now.
+   */
+  readonly use: string | null;
+  /**
+   * the residents the 2020 Census counted, or **null where no census ring
+   * resolved onto this block**. Null is not zero and must never be drawn as
+   * one: 810 of the 5,404 blocks are in that state and a "0 residents" on a
+   * block the Census simply did not reach here would be a claim nobody made.
+   */
+  readonly residents: number | null;
+  readonly rollYear: number;
+  readonly censusYear: number;
+}
+
+/** one published place standing on this block, and what it takes */
+export interface BlockPlace {
+  readonly slug: string;
+  readonly name: string;
+  readonly kind: string | null;
+  readonly dept: string | null;
+  /** the place's own buildings whose published APN names THIS block */
+  readonly here: readonly { readonly name: string | null; readonly sqft: number }[];
+  readonly here_sqft: number;
+  readonly place_sqft: number;
+  /** how many blocks the place stands on — the figures below are all of it */
+  readonly n_blocks: number;
+  readonly n_contracts: number;
+  readonly agreed_usd: number;
+  readonly paid_usd: number;
+  readonly n_payees: number;
+  readonly payees_paid_usd: number;
+  readonly n_documents: number;
+}
+
+export interface BlockMoneyFile {
+  readonly coverage: {
+    readonly blocks_total: number;
+    readonly blocks_with_a_place: number;
+    readonly blocks_with_a_money_figure: number;
+    readonly places_published: number;
+    readonly places_resolved_to_a_block: number;
+    readonly places_unresolved: number;
+  };
+  /** `/us/city/sf/places/place/{slug}` */
+  readonly href: string;
+  readonly b: Readonly<Record<string, readonly BlockPlace[]>>;
+}
+
+let factsPromise: Promise<BlockFactsFile | null> | null = null;
+let moneyPromise: Promise<BlockMoneyFile | null> | null = null;
+let factsRow: Map<string, number> | null = null;
+
+/** fetch once, and never let a missing file take the panel down with it */
+function loadSoft<T>(url: string): Promise<T | null> {
+  return fetch(url)
+    .then((r) => (r.ok ? (r.json() as Promise<T>) : null))
+    .catch(() => null);
+}
+
+export function loadBlockFacts(): Promise<BlockFactsFile | null> {
+  if (!factsPromise) factsPromise = loadSoft<BlockFactsFile>(`${BASE}/block-facts.json`);
+  return factsPromise;
+}
+
+export function loadBlockMoney(): Promise<BlockMoneyFile | null> {
+  if (!moneyPromise) moneyPromise = loadSoft<BlockMoneyFile>(`${BASE}/block-money.json`);
+  return moneyPromise;
+}
+
+/**
+ * The block's row, decoded.
+ *
+ * `b[]` here is the file's OWN id array and is not assumed to be in the same
+ * order as `block-index.json`'s — the two are built by different scripts and
+ * one of them ships only the blocks that carry something, so they are joined
+ * by id and the index is built once.
+ */
+export function blockNow(file: BlockFactsFile, blockId: string): BlockNow | null {
+  if (!factsRow || factsRow.size !== file.b.length) {
+    factsRow = new Map(file.b.map((id, i) => [id, i]));
+  }
+  const i = factsRow.get(blockId);
+  if (i === undefined) return null;
+  const useIdx = file.us[i] ?? -1;
+  const pop = file.pop[i] ?? -1;
+  const hu = file.hu[i] ?? -1;
+  return {
+    parcels: file.np[i] ?? 0,
+    homes: hu >= 0 ? hu : null,
+    valueUsd: (file.v[i] ?? 0) * 1000,
+    builtSqFt: (file.ar[i] ?? 0) * 100,
+    use: useIdx >= 0 ? (file.useNames[useIdx] ?? null) : null,
+    residents: pop >= 0 ? pop : null,
+    rollYear: file.roll_year,
+    censusYear: file.census_year,
+  };
+}
+
+/** every published place whose own facility APN names this block */
+export function blockPlaces(
+  file: BlockMoneyFile,
+  blockId: string,
+): readonly BlockPlace[] {
+  return file.b[blockId] ?? [];
+}
+
+/**
+ * A place carries a money figure only when a city ledger names it. 33 of the
+ * 5,404 blocks are in that state and the panel says so rather than letting a
+ * silent absence read as "this place costs nothing".
+ */
+export function hasMoney(p: BlockPlace): boolean {
+  return p.n_contracts > 0 || p.n_payees > 0;
+}
+
+export function placeHref(file: BlockMoneyFile, slug: string): string {
+  return file.href.replace("{slug}", slug);
+}
+
+/**
+ * `$776,309,499` is unreadable in a 252 px margin and `$776.3M` is what the
+ * figure is worth to a reader placing it. Rounded DOWN in magnitude, never up,
+ * so the short form never overstates the published number.
+ *
+ * **Under a million the figure is printed in full.** City Hall's one contract
+ * is $5,617 agreed and $3,175 paid; abbreviating those to `$5k` and `$3k`
+ * throws away most of what was published to save four characters, and a
+ * four-figure sum is not a sum a reader needs help placing.
+ */
+export function usdShort(n: number): string {
+  const a = Math.abs(n);
+  if (a >= 1e9) return `$${(Math.trunc(n / 1e8) / 10).toFixed(1)}bn`;
+  if (a >= 1e6) return `$${(Math.trunc(n / 1e5) / 10).toFixed(1)}M`;
+  return `$${new Intl.NumberFormat("en-US").format(Math.trunc(n))}`;
+}

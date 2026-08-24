@@ -1,0 +1,7 @@
+# The blobs are 30 MB and `build_block_facts.py --fetch` puts them back.
+# What is COMMITTED is the sidecar beside each one: the URL it came from, its
+# byte count, its row count, its sha256 and the minute it was retrieved. That
+# is the reproducibility record, and it is checkable without re-fetching.
+*
+!.gitignore
+!*.meta.json

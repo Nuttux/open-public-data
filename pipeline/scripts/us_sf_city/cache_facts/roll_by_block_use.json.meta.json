@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/wv5m-vpq2.json?%24select=block%2Cuse_definition%2Ccount%281%29+AS+parcels%2Csum%28property_area%29+AS+built_sqft&%24where=closed_roll_year%3D2025&%24group=block%2Cuse_definition&%24limit=80000",
+ "what": "wv5m-vpq2 use_definition counted per assessor block",
+ "bytes": 1301317,
+ "rows": 13549,
+ "sha256": "34f9c8a1589a6c20868679a82c3c78b75fd2e0addd055d3ff778373c422e8d12",
+ "retrieved_utc": "2026-08-24T13:03:58Z"
+}

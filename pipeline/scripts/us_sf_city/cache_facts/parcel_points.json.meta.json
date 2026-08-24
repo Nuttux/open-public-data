@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/acdm-wktn.json?%24select=block_num%2Ccentroid_latitude%2Ccentroid_longitude&%24where=active%3Dtrue+AND+centroid_latitude+IS+NOT+NULL",
+ "what": "acdm-wktn active parcels, published centroid only",
+ "bytes": 25074396,
+ "rows": 227668,
+ "sha256": "6ce9bd7e3e9c97c92aeefeaf29acd632fe682b8d39040f07cb31ad3a1c78438a",
+ "retrieved_utc": "2026-08-24T13:04:51Z"
+}

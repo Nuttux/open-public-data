@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/wv5m-vpq2.json?%24select=block%2Ccount%281%29+AS+parcels%2Csum%28number_of_units%29+AS+units%2Csum%28property_area%29+AS+built_sqft%2Csum%28lot_area%29+AS+lot_sqft%2Csum%28assessed_land_value%29+AS+land_usd%2Csum%28assessed_improvement_value%29+AS+impr_usd%2Csum%28assessed_fixtures_value%29+AS+fixt_usd&%24where=closed_roll_year%3D2025&%24group=block&%24limit=20000",
+ "what": "wv5m-vpq2 roll 2025, summed by the file's own `block` column",
+ "bytes": 847175,
+ "rows": 5405,
+ "sha256": "158f37ea4ceb6549039ae64a9ce34c5b2b237a77c6519b60fb32d68e752607bf",
+ "retrieved_utc": "2026-08-24T13:03:52Z"
+}

@@ -1,0 +1,8 @@
+{
+ "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer/10/query?where=STATE%3D%2706%27+AND+COUNTY%3D%27075%27&outFields=GEOID%2CPOP100%2CHU100%2CINTPTLAT%2CINTPTLON%2CAREALAND&returnGeometry=true&outSR=4326&f=geojson",
+ "what": "2020 Census blocks in San Francisco County, POP100 + HU100 + ring",
+ "bytes": 4230305,
+ "rows": 5986,
+ "sha256": "350ce93bbe96935ee1635410d24bbf670803c459fcecd2215b3d21c12a27f507",
+ "retrieved_utc": "2026-08-24T13:05:08Z"
+}

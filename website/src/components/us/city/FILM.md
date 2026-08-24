@@ -1048,3 +1048,83 @@ migrating it is a payload change with **no** change in `film.ts`: add
   `ggbYr: 1937` beside the ring, so the year exists and the label is not reading
   it. That is `labels.ts` / `scene.ts` / the marks encoder, and it is the same
   class of defect as `marks.json`'s 244-places-dated-1906 (§7.3).
+
+## 12 · Block M1 — the moments, each checked against what the map can draw
+
+> *"Film to be relevant key moments (it never shows when construction on Golden
+> Gate starts, when it opens)."*
+
+A moment is only a shot if the map can **render its subject at its year**. That
+was checked rather than assumed, two ways: what the shipped chunks can date at
+all, and — for each candidate — how much of the frame actually moves across the
+year in question.
+
+**What carries a year in the shipped data, and it is the whole list**
+(`manifest.json` §kinds): `bldg.yr`, `hero.yr`, `strt.yr`, `strt-line.yr`,
+`strt-label.yr`, `tree.yr`, `places.yr`, plus the seven published burn rings and
+the Golden Gate deck's own `ggbYr`. **`parks`, `water`, `coast`, `surround`,
+`massing`, `face`, `form` and `canopy` carry no year at all.** Nothing that is
+not on that list can be a shot, whatever the record says about it.
+
+**And what the frame does across a year** — `.parity/m1year.py`, which drives
+`__cityRenderer.setYear` at the explorer's own whole-city camera, waits for the
+raster count to advance (a screenshot taken before it lands shows the previous
+year, which cost two byte-identical stills earlier tonight) and diffs
+consecutive years. Only adjacent pairs are meaningful:
+
+| across | moved | of frame |
+|---|---:|---:|
+| 1914 → 1915 · the Exposition year | 15,575 px | 0.390 % |
+| 1915 → 1916 | 5,253 | 0.131 % |
+| 1935 → 1936 · the Bay Bridge opens | 1,599 | 0.040 % |
+| **1936 → 1937 · the Golden Gate opens** | **5,007** | **0.125 %** |
+| 1937 → 1938 | 1,964 | 0.049 % |
+| 1971 → 1972 · BART opens | 1,474 | 0.037 % |
+| 1972 → 1973 | 3,213 | 0.080 % |
+| 1990 → 1991 · the Embarcadero Freeway comes down | 1,218 | 0.030 % |
+| 1991 → 1992 | 5,388 | 0.135 % |
+
+### The verdicts
+
+| moment | the record | can the map show it | |
+|---|---|---|---|
+| the 1906 fire | 18 April 1906, seven published rings, DataSF `ff3a-iqhv` | **yes** — the hairline, and the fabric inside it is empty because the roll dates what is standing | shot 1 |
+| the rebuild wave | 1906 → 1912 | **yes** — 63 acceptances and the roll | shot 2 |
+| the civic bonds | 1912, 45,129 to 4,036 | **yes** — precision ring | shot 3 |
+| City Hall, Main Library | 1912 → 1917 | **yes** — two published footprints | shot 4 |
+| the Twin Peaks tunnel | 1917 → 1918 | a bore is invisible; **placemark only** | shot 5 |
+| the west side fills | 1918 → 1935 | **yes** — 1,223 acceptances, ~40,000 footprints | shot 6 |
+| the Hetch Hetchy water | 28 Oct 1934, the Mayor's message of 7 Jan 1935 | **no** — `NOT ON THE MAP` | shot 7a |
+| **the Golden Gate Bridge** | **1937**, DataSF `97yj-54sx` landmark 222 + TIGERweb | **yes, measured** — 3,416 px in its own corner at 1936 → 1937, none at 1937 → 1938 | **shot 7b, new** |
+| the Bay Bridge | 1936 | **yes** — the west span's deck is in the payload | shot 8 |
+| Treasure Island | 1939 | **yes** — ring, made land, roll | shot 8 |
+| Yerba Buena / Moscone | 1966 | **yes** — ring | shot 9 |
+| **the Panama-Pacific Exposition, 1915** | `ppie.json`, seven beats, 1912–1916 | **NO** | rejected |
+| **BART, 1972** | — | **NO** | rejected |
+| **the Embarcadero Freeway coming down, 1991** | `embarcadero-freeway-demolition.json`, 1990–96 | **NO** | rejected |
+
+### Why the three rejected ones are rejected, in their own data
+
+- **The Exposition.** `ppie.json`'s own `geometry_source` reads *"NOT IN RECORD —
+  the corpus names the district ('Harbor View', 'the Marina') and streets around
+  it, never a boundary."* There is no extent to draw. And its one surviving
+  structure cannot be dated either: `base/marks.json`, decoded, dates **`Palace
+  Of Fine Arts` 1906 and `Exposition Space` 1906** — the `FLAG_NOYEAR` fallback
+  §7.3 already flags, now at **326 of 2,192 places dated 1906 and 399 undated**.
+  The 0.390 % that moves across 1914 → 1915 is downtown: the change density is a
+  single cluster at two thirds of the frame's width, over Rincon and the produce
+  district, and it is the roll rebuilding after the fire. The Marina does not
+  move. `out/m1y-1915-pair.png`.
+- **BART.** There is no BART entity among the corpus's 41, and there is no
+  transit geometry with a year in any shipped chunk. **0.037 % of the frame moves
+  across 1971 → 1972** — less than the 1972 → 1973 background. A shot on the year
+  BART opened would be a still frame with a caption.
+- **The Embarcadero Freeway.** The corpus has the entity and the dates. The map
+  cannot have the subject: **the fabric is the assessor's roll, which dates what
+  is standing today**, so a structure demolished in 1991 was never drawn in any
+  year and taking it down changes nothing. **0.030 % across 1990 → 1991.** This
+  is the same limit as *"we can never show past buildings that may have been
+  destroyed"* in the brief, and it is a data question rather than a film one.
+
+Every one of those three has a real record behind it, and none of them is a shot
+until something is published that the map can put on the ground.
