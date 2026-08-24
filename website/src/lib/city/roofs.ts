@@ -217,6 +217,38 @@ export function gamutHeadroom(hex: string): number {
 export const STOREY_MIN_PX = 4.0;
 export const STOREY_W_PX = 14;
 
+/**
+ * THE STOREY LINE IS ONE STEP UNDER THE WALL IT IS ON, NOT ONE FIXED BUCKET.
+ *
+ * `part3.html` L8994 strokes every storey line in `W4[WO+1]` — the wall
+ * table's bucket **1**, whatever bucket the wall itself took. That is ported
+ * faithfully and it is not a port defect, but bucket 1 is fixed and the wall
+ * under it is not: `colourLUT` builds the four buckets at `0.66 + 0.1q`,
+ * monotone, so one mark comes out **darker** than a bucket-3 wall,
+ * **invisible** on a bucket-1 wall and **lighter** than a bucket-0 wall.
+ *
+ * Measured (`.parity/g1storey.py`) at the street camera, over every visible
+ * wall of every building past the storey gate, weighted by the wall's own
+ * drawn area — and the assumption it refuted is worth keeping: the walls that
+ * lose the mark are the DARK ones, not the pale ones.
+ *
+ * ```
+ *   camera        bucket 0     1       2       3
+ *   Marina         27.3 %    6.9 %   4.4 %   61.4 %
+ *   Mission        23.3 %    1.4 %   0.6 %   74.7 %
+ *   downtown        2.8 %    7.3 %  45.1 %   44.8 %
+ * ```
+ *
+ * A floor line is the shadow under a slab, so it belongs one step under
+ * **whatever plane it is drawn on**. This value is that step, and it is not an
+ * art choice: it is the table's own adjacent-bucket ratio, which runs
+ * `0.66/0.76 = 0.868`, `0.76/0.86 = 0.884`, `0.86/0.96 = 0.896`. **0.88**
+ * reproduces "one bucket darker" to within 1.6 % on all three real steps and,
+ * unlike an index, still exists below bucket 0 — which is exactly the case a
+ * bucket index cannot serve.
+ */
+export const STOREY_INK_V = 0.88;
+
 export function storeyBandPx(wallPx: number, storeys: number): number {
   return storeys > 0 ? wallPx / storeys : 0;
 }

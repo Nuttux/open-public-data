@@ -5094,3 +5094,129 @@ build. `decodeMarks` in `CityMap.tsx` reads `d & 1` and is unaffected.
   `emit_heroes.py` and then `emit_places.py --marks`, in that order** — the
   place ranking reads `base/heroes.json`, so the hero register has to be right
   before the places are ordered against it.
+
+---
+
+## 24. Block G1(b,c) — two marks on the wall, and an ablation that measured the opposite of what it claimed
+
+`facades.ts` · `roofs.ts` · `scene.ts`
+
+§23 closed (a): the pixel floors are not the deficit and lowering one would be
+a parity regression. What it left is (b) and (c), both of which needed
+`scene.ts`, which this block was given.
+
+### 24.1 The wall's own foot, and two wrong versions of it
+
+`buildings.ts` `SHADOW_FILL` lays a contact shadow **on the ground** and stops
+at the wall. The wall's own foot got nothing, so every building in this city
+met the pavement at a hard edge carrying the same value as three storeys up.
+
+That is not a missing architectural element — this project has no right to
+invent a plinth and `part3.html` has none. **It is the other half of a shadow
+the renderer already declares.** A surface a pavement's width from a pavement
+takes less of the sky than the same surface nine metres up, and the ground
+beside it is already drawn on exactly that basis.
+
+**Version one, `shade(col, 0.90)` flat over the bottom 0.9 m.** A rectangle of
+one darker value with a hard top edge reads as a plinth, which is the claim we
+are not entitled to, and at 2.9 px it read as neither.
+
+**Version two, a gradient in the wall's own colour — and it came out LIGHTER
+than the wall it was drawn on.** `terrain.ts` `WA.wbot` is **0.855**, so a wall
+tall enough to carry `wallGrad` is already at 0.855 of its colour where it
+meets the street; an opaque 0.82 band computed off the FLAT colour overwrote
+that with something paler. Caught by sampling a column rather than by looking:
+one Bay Street wall at x = 1860, y 826-830 went **(161,152,136) → (174,165,148)**.
+The mark was *removing* contact. `out-g1/one-{z5,foot2}.png`.
+
+**Version three, and it is the right one: an occlusion has no colour.** It
+darkens whatever is under it, and what is under it here is `wallGrad`, a
+shopfront's glazing, a garage door or a flat fill. So the foot is the SAME INK
+`SHADOW_FILL` lays on the ground — `rgb(72, 60, 42)` — at an alpha running from
+zero at the top of the band to `FA_FOOT_A` = 0.2 at the contact line. It
+composites over anything, **it cannot invert**, and it makes the claim it
+should: one shadow, drawn on the ground and on the wall it belongs to. The same
+column now reads −3, −12, −16, −23, −25, −31 over six device px and 0 above.
+
+`footWeight` is a cut-off and a ramp on the band's own drawn height, not a
+floor: at the block camera the band is 0.9 × 1.6 × 0.336 = **0.484 px** and it
+returns 0, so nothing is smeared across a fabric that cannot resolve it.
+
+### 24.2 The storey line is one step under the wall it is ON
+
+`scene.ts` stroked every storey line in `lut.wallF[wallO + 1]`, which is
+`part3.html` L8994 exactly (`W4[WO+1]`) — **not a port defect.** But bucket 1
+is fixed and the wall under it is not: `colourLUT` builds the four buckets at
+`0.66 + 0.1q`, monotone, so one mark comes out darker than a bucket-3 wall,
+**invisible** on a bucket-1 wall and **lighter** than a bucket-0 wall.
+
+Measured (`.parity/g1storey.py`) at the street camera, over every visible wall
+of every building past the storey gate, weighted by the wall's own drawn area —
+and it refuted the assumption that sent me looking. **The walls that lose the
+mark are the DARK ones, not the pale ones:**
+
+```
+  camera        bucket 0     1       2       3
+  Marina         27.3 %    6.9 %   4.4 %   61.4 %
+  Mission        23.3 %    1.4 %   0.6 %   74.7 %
+  downtown        2.8 %    7.3 %  45.1 %   44.8 %
+```
+
+`STOREY_INK_V` = **0.88** is not "darker looks better". A floor line is the
+shadow under a slab, so it belongs one step under **whatever plane it is drawn
+on**, and 0.88 is the table's OWN adjacent-bucket ratio — `0.66/0.76 = 0.868`,
+`0.76/0.86 = 0.884`, `0.86/0.96 = 0.896`. It reproduces "one bucket darker" to
+within 1.6 % on all three real steps and, unlike an index, still exists below
+bucket 0 — which is a quarter of the drawn wall area and exactly the case an
+index cannot serve. Batched by the wall's own bucket into at most four paths,
+so a tower is four strokes and not four hundred.
+
+### 24.3 The ablation measured the opposite of what it claimed, and the numbers after it
+
+The first A/B disabled the foot by setting `FA_FOOT_PX0` to `1e9`. **That
+turned it fully ON.** `footWeight` is
+`t = (bandPx − PX0) / (PX1 − PX0)`, and with `PX0 = 1e9` both numerator and
+denominator are large and negative: `t = (0.484 − 1e9)/(4 − 1e9) ≈ 1`. The
+"off" run had the foot at full weight at **every** camera including block zoom,
+so the table came out **+5.5 per channel and 2.3 % darker** — my own change
+apparently making the city lighter. Ablating by a threshold is ablating through
+the arithmetic under test; the second ablation sets `FA_FOOT_A = 0` and
+`STOREY_INK_V = 1`, which are terminal.
+
+Corrected, two sweeps minutes apart with those two constants the only
+difference:
+
+| camera | changed px | of frame | on changed px | darker |
+|---|---|---|---|---|
+| street, Palace of Fine Arts | 64,710 | **1.988 %** | −7.3 / channel | **100.0 %** |
+| street, Mission | 89,833 | **2.760 %** | −7.8 | **100.0 %** |
+| block, downtown | 31,236 | 0.960 % | −10.5 | **100.0 %** |
+| block, Palace of Fine Arts | 75 | 0.002 % | −7.0 | 100.0 % |
+
+**Not one changed pixel anywhere got lighter**, which is what an occlusion and
+a slab shadow have to be and is now proved rather than asserted. Same-sweep
+control 0.000 %. The block cameras separate cleanly for the right reason: the
+foot is under its cut-off at both, and downtown's 0.96 % is storey lines on
+towers wide enough to pass `STOREY_W_PX`, which is dark detail at the zoom §23
+says nothing else can reach.
+
+### 24.4 What it costs, timed with the queue forced inside the measurement
+
+BRIEF trap 6 — Canvas 2D is deferred and timing a detached canvas measures JS
+only. `.parity/g1cost.py` ends each timed region with `getImageData(0,0,1,1)`
+on the live canvas, so the flush is inside the clock. Twelve rasterisations a
+camera, three cold ones dropped, median:
+
+```
+                    without      with     delta
+  street  Marina    97.70 ms   104.80 ms   +7.1  (+7.3 %)
+  street  Mission  126.50 ms   136.00 ms   +9.5  (+7.5 %)
+  block   downtown 320.10 ms   319.05 ms   -1.05 (the foot is under its cut-off)
+```
+
+One gradient fill per visible wall of every NEAR building, the gradient
+quantised and cached on the ctx exactly as `wallGrad` is. **It cannot reach the
+one surviving performance clause**: a camera move is served from a blit of a
+pre-painted buffer (`camera.ts` `decideRaster`), so a move does not
+re-rasterise. 7 % of a rasterisation that already runs 320 ms at its worst
+camera is the honest price and it is stated rather than buried.

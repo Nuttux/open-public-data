@@ -75,6 +75,7 @@ import {
   LOD_Z1,
   MASS_GAIN,
   shadowOffset,
+  SHADOW_FILL,
   tierW,
   type Massing,
 } from "./buildings";
@@ -88,12 +89,20 @@ import {
   ROLE_PARTY,
   ROLE_FRONT,
   storeysOf,
+  FA_DOOR_H,
+  FA_FOOT_A,
+  FA_FOOT_INK,
+  FA_FOOT_M,
+  FA_FOOT_PX0,
+  FA_FOOT_PX1,
+  footWeight,
 } from "./facades";
 import {
   bandOfHeight,
   DE,
   drawsStoreyLines,
   ngonInsetScale,
+  STOREY_INK_V,
   RH_LEVELS,
   roofHeight,
   roofStep,
@@ -1070,6 +1079,57 @@ describe("the roof", () => {
     // down-LEFT: the light is upper-right, so the across-offset leads
     expect(KEY_DX).toBeGreaterThan(KEY_DY);
     expect(KEY_DY).toBeGreaterThan(0);
+  });
+
+  it("the wall's own foot is a cut-off and a ramp, never a floor, and it cannot invert", () => {
+    /* Under the cut-off the wall is exactly the flat fill it was; the band is
+       never held at a minimum height. At the block camera the band is
+       0.9 x 1.6 x 0.336 = 0.484 px, which is under it. */
+    expect(footWeight(FA_FOOT_PX0)).toBe(0);
+    expect(footWeight(0.9 * 1.6 * 0.336)).toBe(0);
+    expect(footWeight(FA_FOOT_PX1)).toBe(1);
+    expect(footWeight(100)).toBe(1);
+    // zero derivative at both ends, monotone, no step
+    const h = (FA_FOOT_PX1 - FA_FOOT_PX0) / 4000;
+    const d = (v: number) => (footWeight(v + h) - footWeight(v - h)) / (2 * h);
+    expect(Math.abs(d(FA_FOOT_PX0 + h))).toBeLessThan(1e-3);
+    expect(Math.abs(d(FA_FOOT_PX1 - h))).toBeLessThan(1e-3);
+    let prev = -1;
+    for (let i = 0; i <= 400; i++) {
+      const w = footWeight(FA_FOOT_PX0 + ((FA_FOOT_PX1 - FA_FOOT_PX0) * i) / 400);
+      expect(w).toBeGreaterThanOrEqual(prev);
+      prev = w;
+    }
+    /* AND IT CARRIES NO COLOUR. Two earlier versions did and the second came
+       out LIGHTER than the wall it was drawn on, because `WA.wbot` is 0.855
+       and an opaque band computed off the FLAT colour overwrote the gradient
+       already there. The ink is `SHADOW_FILL`'s own rgb, so the mark can only
+       ever darken what is under it. */
+    const rgb = (s: string): string =>
+      s.replace(/^rgba?\(/, "").split(",").slice(0, 3)
+        .map((v) => v.trim()).join(",");
+    expect(rgb(FA_FOOT_INK + ",1")).toBe(rgb(SHADOW_FILL));
+    expect(FA_FOOT_A).toBeGreaterThan(0);
+    expect(FA_FOOT_A).toBeLessThan(1);
+    // and it is under the sill of every opening the vocabulary places
+    expect(FA_FOOT_M).toBeLessThan(FA_DOOR_H);
+  });
+
+  it("the storey line is one step under the wall it is ON, not one fixed bucket", () => {
+    /* `colourLUT` builds the wall buckets at `0.66 + 0.1q`, monotone, so
+       `part3.html`'s fixed `W4[WO+1]` is darker than a bucket-3 wall,
+       invisible on a bucket-1 wall and LIGHTER than a bucket-0 wall.
+       `STOREY_INK_V` is the table's own adjacent-bucket ratio, which is the
+       one quantity that reproduces "one step darker" AND still exists below
+       bucket 0 — the case an index cannot serve. */
+    const bucket = (q: number) => 0.66 + 0.1 * q;
+    for (let q = 1; q < 4; q++) {
+      const ratio = bucket(q - 1) / bucket(q);
+      expect(Math.abs(STOREY_INK_V - ratio)).toBeLessThan(0.017);
+    }
+    // strictly darker on every bucket, including the darkest
+    expect(STOREY_INK_V).toBeLessThan(1);
+    expect(STOREY_INK_V).toBeGreaterThan(0.8);
   });
 
   it("a cap's top plate is a tray, and its inset is a scale about its own axis", () => {

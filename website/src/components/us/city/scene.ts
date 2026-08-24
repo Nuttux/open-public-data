@@ -168,7 +168,11 @@ import {
   doorBay,
   faGlassy,
   FA_CORN_T,
+  FA_FOOT_CAP,
+  FA_FOOT_M,
   FA_MIN_DH_PX,
+  footGrad,
+  footWeight,
 } from "@/lib/city/facades";
 import {
   bandOfHeight,
@@ -179,6 +183,7 @@ import {
   roofHeight,
   roofStep,
   trayW,
+  STOREY_INK_V,
   STOREY_W_PX,
   type Quartiles,
 } from "@/lib/city/roofs";
@@ -2790,6 +2795,11 @@ export class CityScene {
 
       // ── the walls, back to front is not needed: one wall faces the camera
       if (dhPx >= WALL_MIN_PX) {
+        /* the foot band, resolved ONCE for this building: its height is
+           declared in world metres, so its drawn height is the same on every
+           wall of the same building and the ramp is read on that. */
+        const footBand = near ? FA_FOOT_M * kh : 0;
+        const footW = near ? footWeight(footBand) : 0;
         for (let k = 0; k < n4; k++) {
           const k1 = (k + 1) % n4;
           const dx = tx[k1] - tx[k];
@@ -2831,6 +2841,44 @@ export class CityScene {
             dhPx >= WA.wallpx ? wallGrad(ctx, topY, botY, col) : col;
           ctx.fill();
 
+          /* ── THE WALL'S OWN FOOT ────────────────────────────────────
+             `SHADOW_FILL` lays a contact shadow ON THE GROUND and stops at
+             the wall, so every building in the city met the pavement at a
+             hard edge with the same value on it as three storeys up. This is
+             the other half of a shadow the renderer already declares — see
+             `facades.ts` §THE WALL'S OWN FOOT for why it is that and not an
+             invented plinth. Drawn HERE, inside the wall loop, because this
+             is the one place that already holds the wall's own lambert
+             bucket: the band is a value of `col` and never a new colour.
+
+             `footWeight` is a cut-off and a ramp on the band's OWN drawn
+             height, so it opens with the camera and is not drawn at all
+             where it cannot be resolved. Screen x carries no height, so the
+             band is the wall quad with its top edge brought down. */
+          if (footW > 0.002) {
+            const bandK = Math.min(footBand, (by[k] - ty[k]) * FA_FOOT_CAP);
+            const bandK1 = Math.min(footBand, (by[k1] - ty[k1]) * FA_FOOT_CAP);
+            if (bandK > 0.05 && bandK1 > 0.05) {
+              /* a FALLOFF and not a band: a rectangle of one darker value
+                 with a hard top edge reads as a plinth, which is a claim
+                 about the building. The gradient spans the quad it fills,
+                 exactly as `wallGrad` does above it. */
+              ctx.fillStyle = footGrad(
+                ctx,
+                Math.min(by[k] - bandK, by[k1] - bandK1),
+                Math.max(by[k], by[k1]),
+                footW,
+              );
+              ctx.beginPath();
+              ctx.moveTo(bx[k], by[k]);
+              ctx.lineTo(bx[k1], by[k1]);
+              ctx.lineTo(bx[k1], by[k1] - bandK1);
+              ctx.lineTo(bx[k], by[k] - bandK);
+              ctx.closePath();
+              ctx.fill();
+            }
+          }
+
           if (groups && dhPx >= FA_MIN_DH_PX && n4 === nv) {
             this.emitFace(
               f, groups, tb, tbe.face, i, k, k1, bx, by, nv, dhPx, q,
@@ -2858,19 +2906,61 @@ export class CityScene {
             tbe.face ? ((tbe.face.fields.st2 as Uint8Array)[i] ?? 0) : 0,
           );
           if (nst > 1 && drawsStoreyLines(dhPx, nst)) {
-            ctx.strokeStyle = lut.wallF[wallO + 1] ?? "#c0b49a";
+            /* ── AND THE LINE IS DARKER THAN THE WALL IT IS ON ───────────
+               This was one stroke of `wallF[wallO + 1]` over every visible
+               wall, which is `part3.html` L8994 exactly (`W4[WO+1]`), so it
+               is not a port defect — but bucket 1 is a FIXED bucket and the
+               wall under it is not. `colourLUT` builds the four buckets at
+               `0.66 + 0.1q`, monotone, so the same line is darker than a
+               bucket-3 wall, INVISIBLE on a bucket-1 wall, and LIGHTER than
+               a bucket-0 wall — one mark meaning three different things.
+
+               MEASURED (`.parity/g1storey.py`), street camera, over every
+               visible wall of every building past the storey gate, weighted
+               by the wall's own drawn area:
+
+                 camera        bucket 0    1      2      3
+                 Marina         27.3 %   6.9 %  4.4 %  61.4 %
+                 Mission        23.3 %   1.4 %  0.6 %  74.7 %
+                 downtown        2.8 %   7.3 % 45.1 %  44.8 %
+
+               So the line reads correctly on 45-75 % of the drawn wall area
+               and inverts or vanishes on 5-34 % of it — and the inverted
+               ones are the DARK walls, not the pale ones I had assumed.
+
+               The fix is `STOREY_INK_V` — one step under WHATEVER plane the
+               line is drawn on, which is what a floor line is: the shadow
+               under a slab. `roofs.ts` has why the step is 0.88 and why it
+               is not a bucket INDEX (index q-1 has nothing under bucket 0,
+               and bucket 0 is a quarter of the drawn wall area here).
+               Batched by the wall's own bucket into at most four paths, so a
+               tower is four strokes and not four hundred. */
             ctx.lineWidth = 0.7;
-            ctx.beginPath();
+            for (let q = 0; q < 4; q++) stLine[q] = null;
             for (let k = 0; k < nv; k++) {
               const k1 = (k + 1) % nv;
               if ((tx[k1] - tx[k]) * sgn <= 0) continue;
+              const wq = planeQuartile(
+                tb.vxw[oo + k1] - tb.vxw[oo + k],
+                tb.vyw[oo + k1] - tb.vyw[oo + k],
+                cf.ax, cf.ay, lmax,
+              );
+              let p = stLine[wq];
+              if (!p) { p = new Path2D(); stLine[wq] = p; }
               for (let sn = 1; sn < nst; sn++) {
                 const fy = (dhPx * sn) / nst;
-                ctx.moveTo(bx[k], by[k] - fy);
-                ctx.lineTo(bx[k1], by[k1] - fy);
+                p.moveTo(bx[k], by[k] - fy);
+                p.lineTo(bx[k1], by[k1] - fy);
               }
             }
-            ctx.stroke();
+            for (let q = 0; q < 4; q++) {
+              const p = stLine[q];
+              if (!p) continue;
+              ctx.strokeStyle = shade(
+                lut.wallF[wallO + q] ?? "#c0b49a", STOREY_INK_V,
+              );
+              ctx.stroke(p);
+            }
           }
         }
       }
@@ -3291,6 +3381,10 @@ export class CityScene {
 }
 
 // ═══ helpers ═══════════════════════════════════════════════════════════════
+
+/** the storey lines of ONE building, bucketed by the wall's own lambert so
+ *  each bucket is one stroke. Four entries, reused across buildings. */
+const stLine: (Path2D | null)[] = [null, null, null, null];
 
 /** four scratch vertex buffers, grown on demand and reused across buildings */
 const RING_BUFS: Float64Array[] = [

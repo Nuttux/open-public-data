@@ -75,6 +75,117 @@ export const FA_CORN_M = 0.6,
 export const FA_SHOP_SILL = 0.42,
   FA_SHOP_FASCIA = 0.72;
 
+/* ── THE WALL'S OWN FOOT ─────────────────────────────────────────────────
+ *
+ * `buildings.ts` `SHADOW_FILL` lays a contact shadow ON THE GROUND and stops
+ * at the wall. **The wall's own foot gets nothing**, so every building in this
+ * city meets the pavement at a hard edge with the same value on it as three
+ * storeys up. This is not a missing architectural element — this file would
+ * have no right to invent a plinth, and `part3.html` has none — it is the
+ * OTHER HALF OF A SHADOW THE RENDERER ALREADY DECLARES. A surface a pavement's
+ * width from a pavement takes less of the sky than the same surface nine
+ * metres up, and the ground beside it is already drawn on exactly that basis.
+ *
+ * One declared band, one for the whole city, in **the wall's own colour** at a
+ * value of it — exactly as every other mark in this file is a value of the
+ * wall it sits on. No new colour, and no claim about any building.
+ *
+ * `FA_FOOT_M` 0.9 m is where the band stops reading as contact and starts
+ * reading as a plinth, which WOULD be a claim. It also sits under the sill of
+ * every opening `FA_VOCAB` places and over `FA_SHOP_TOE` — so a shopfront's
+ * glazing paints straight back over it and a shop keeps its glass to the
+ * pavement by construction rather than by a rule.
+ *
+ * `FA_FOOT_CAP` is a geometric constraint and not a taste: the foot of a wall
+ * cannot be most of the wall. On a 2.2 m shed 0.9 m would be 41 % of it.
+ */
+export const FA_FOOT_M = 0.9;
+/**
+ * THE FOOT IS THE SAME INK AS THE SHADOW ON THE GROUND, AND IT IS TRANSLUCENT.
+ *
+ * Two versions of this were shot and both were wrong for the same reason.
+ * Flat `shade(col, 0.90)` reads as a PLINTH — a rectangle of one darker value
+ * with a hard top edge, which is a claim about the building. A gradient in the
+ * wall's own colour fixed the edge and broke something worse: **it came out
+ * LIGHTER than the wall it was drawn on.** `terrain.ts` `WA.wbot` is 0.855, so
+ * a wall tall enough to carry `wallGrad` is already at 0.855 of its colour
+ * where it meets the street, and an opaque 0.82 band computed off the FLAT
+ * colour overwrote it with something paler. Measured down one Bay Street wall,
+ * `.parity/out-g1/one-{z5,foot2}.png`, x = 1860: (161,152,136) became
+ * (174,165,148) — the mark was *removing* contact.
+ *
+ * An occlusion does not have a colour. It darkens whatever is under it, and
+ * what is under it here is `wallGrad`, a shopfront's glazing, a garage door or
+ * a flat fill. So the foot is **the same ink `buildings.ts` `SHADOW_FILL`
+ * lays on the ground** — `rgb(72, 60, 42)` — at an alpha that runs from zero
+ * at the top of the band to `FA_FOOT_A` at the contact line. It composites
+ * over anything, it can never invert, and it makes the claim it should: that
+ * this is one shadow, drawn on the ground and on the wall it belongs to.
+ */
+export const FA_FOOT_INK = "72, 60, 42";
+/** the alpha at the contact line. `SHADOW_FILL` is 0.16 flat on the ground. */
+export const FA_FOOT_A = 0.2;
+/** the foot is never more than this fraction of the wall it stands at */
+export const FA_FOOT_CAP = 0.22;
+/** the ramp, in CSS px of the BAND'S OWN drawn height */
+export const FA_FOOT_PX0 = 1.1,
+  FA_FOOT_PX1 = 4.0;
+
+/**
+ * `S(t) = t²(3−2t)` on the band's own projected height.
+ *
+ * **A CUT-OFF AND A RAMP, NEVER A FLOOR.** Under `FA_FOOT_PX0` the band is not
+ * drawn at all and the wall is exactly the flat fill it was; it is never held
+ * at a minimum height, which is the pattern behind every float and lurch this
+ * project has had. At the block camera the band is 0.9 × 1.6 × 0.336 = 0.48 px
+ * and this returns 0, so nothing is smeared across a fabric that cannot
+ * resolve it — see DRAW.md §23, which measures why that is the right answer
+ * there and not a shortfall.
+ */
+export function footWeight(bandPx: number): number {
+  const t = (bandPx - FA_FOOT_PX0) / (FA_FOOT_PX1 - FA_FOOT_PX0);
+  if (t <= 0) return 0;
+  if (t >= 1) return 1;
+  return t * t * (3 - 2 * t);
+}
+
+const footCaches = new WeakMap<
+  CanvasRenderingContext2D, Map<string, CanvasGradient>
+>();
+
+/**
+ * The foot's falloff: `SHADOW_FILL`'s own ink at alpha 0 at the top of the
+ * band, running to `FA_FOOT_A` at the contact line, ramped by `footWeight` so
+ * it opens with the camera and reaches nothing at the bottom of its own ramp.
+ * It carries no colour of its own, so it cannot be lighter than what it is
+ * drawn over — see `FA_FOOT_INK` for the version that was.
+ *
+ * Quantised and cached on the ctx exactly as `wallGrad` is, because a gradient
+ * object per wall per frame is 4,000 allocations at the street camera and the
+ * two ends round to the same pair of pixels across a whole blockface.
+ */
+export function footGrad(
+  g: CanvasRenderingContext2D,
+  yTop: number,
+  yBot: number,
+  w: number,
+): CanvasGradient {
+  let m = footCaches.get(g);
+  if (!m) { m = new Map(); footCaches.set(g, m); }
+  const a = Math.round(yTop), b = Math.round(yBot);
+  const wq = Math.round(w * 16);
+  const k = a + "|" + b + "|" + wq;
+  let gr = m.get(k);
+  if (gr === undefined) {
+    gr = g.createLinearGradient(0, a, 0, b === a ? a + 1 : b);
+    gr.addColorStop(0, `rgba(${FA_FOOT_INK}, 0)`);
+    gr.addColorStop(1, `rgba(${FA_FOOT_INK}, ${(FA_FOOT_A * wq) / 16})`);
+    if (m.size > 6000) m.clear();
+    m.set(k, gr);
+  }
+  return gr;
+}
+
 /**
  * THE SEVEN VALUES A FACE IS DRAWN IN, AND EVERY ONE IS A VALUE OF THE WALL'S
  * OWN COLOUR.
