@@ -1674,3 +1674,152 @@ Cesar Chavez and Potrero, with block 3549's own ring and pin inside it), and
   frame it had. The real transport control does, and that is what was measured.)
 - **No frame cost.** A real drag at the whole-city stop: 88 fps with the layer,
   88 fps with `hood-rings.json` aborted at the network.
+
+---
+
+## 16. Block F1, round seven — the fallbacks deleted, the cap owned up to, and the rail specced
+
+### a. `EN_HOOD` and `tx()` are gone
+
+Twenty-seven keys landed in both dictionaries (`1492d9c7`) and every call is now
+a plain `t()`. Checked the way §14 checked the thirteen before them, because
+`useT` returns THE KEY ITSELF when one is missing and a diff cannot see that:
+the panel's own `innerText` dumped on **nine blocks spanning nine different
+neighbourhoods** — 3549, 0787, 3724, 0001, 1705, 5313, 0086, 1263, 6745 — and
+grepped for `us.sf.`. **Zero.**
+
+### b. The cap now says what it hid
+
+The section ranks 91,391 rows and shows six, and until this pass a reader had no
+way to tell *"this is what the Board did here"* from *"these are the six the
+ranking put on top"*. `highlights_hidden` was on the record and unprinted, which
+is a hole of exactly the kind §9c was written to close one level down.
+
+**Two folds over one shelf would have been two different claims wearing the same
+sentence.** The shelf's own expander hides rows it HAS; the cap in
+`build_hood_facts.py` hid rows that were never shipped. `2,358 more lines` on an
+expander that reveals three is true and reads as a lie. So the shelf's cap is
+now `docs.length` — every shipped line on screen — and the count below is the
+one the pipeline cap hid:
+
+```
+Mission          2,358        Golden Gate Park       8
+South of Market  1,813        Glen Park            480
+Tenderloin       1,562        Russian Hill         900
+```
+
+Golden Gate Park's 8 is the check that the number is real and not a constant.
+
+### c. Three edge cases read aloud on the phone, all correct
+
+- **Bayview Hunters Point** — *"2 of the 3 city places standing here carry a
+  figure, the largest of them Southeast Water Pollution Control Plant"*, then
+  $611.7 M agreed against $689.5 M paid and the **paid-above-agreed line firing
+  at hood level** exactly as it does on the block. That refusal travels with the
+  rollup because it is a property of the two source files.
+- **Golden Gate Park** — *"Kezar Stadium is the one city place standing here"*,
+  payees only, so no contracts row, **no "do not add these" line** (only one
+  ledger is on screen, §9g's rule), and **$919,013 printed in full** rather than
+  abbreviated.
+- **Russian Hill** — no money section at all, absent rather than empty, which is
+  §9c's decision holding one level up.
+
+### d. Mobile, measured rather than eyeballed
+
+390 × 844, both a neighbourhood and a block populated. Section heads as a
+fraction of a screen, so the order is a number:
+
+```
+                                    3724 (SoMa)   5313 (Bayview)
+IN SHORT                              0.15            0.15
+ON THE GROUND NOW                     0.29            0.29
+PUBLIC MONEY HERE                     0.58            0.57
+WHAT THE BOARD KEPT DECIDING HERE     0.95            1.08
+ON THIS BLOCK                         2.00            2.20
+PUBLIC MONEY (the block's)            2.39            2.60
+DECADE BY DECADE                      2.82            2.99
+```
+
+**§13f's rule holds: the rarest thing the panel knows is on the first screen.**
+Money reaches 20 of 41 neighbourhoods and it opens at 0.58 — the whole answer,
+figures and link, above the fold. Six highlights cost 1.05 screens, and looked
+at rather than counted they are not a wall: each is a gloss and two small lines.
+Screenshots `f1-mbfiche-3724`, `f1-mbfiche-5313`, `f1-mbfirst-*`, and
+`.parity/f1mob.py`, which prints the table above.
+
+### e. One thing reading it aloud caught and I did NOT fix — with the reason
+
+**On block 3724 the money figures appear twice, identically**: $776.3 M agreed /
+$360.5 M paid / $372.3 M to six vendors, once under `PUBLIC MONEY HERE` and
+again under the block's own `PUBLIC MONEY`. It happens whenever the
+neighbourhood's only figure-carrying place is the one standing on the picked
+block — which is rare across the map and true of two of the demo's best blocks,
+Moscone and City Hall.
+
+They are two true statements at two grains and each section is self-contained.
+The tempting fix is to drop the figure ROWS from the block's section and keep
+its sentence, which is the one thing it says that the hood's does not — *which
+building stands here*, `Moscone West, 775,000 sq ft`. **Not done, deliberately:
+there is no key to explain the absence**, and a money section that shows a
+building and no figure, with nothing saying the figure is two screens up, reads
+as a section that failed to load. That is a worse failure than a repetition.
+
+It wants one key and then it is five lines:
+
+```ts
+'us.sf.thecity.panel.money_above': 'Its figures are under {hood} above — it is the only city place there that carries any.',
+```
+
+gated on `places.length === 1 && hood.money.places_with_a_figure === 1 &&
+hood.money.top?.slug === places[0].slug`, which is exactly the observed case and
+nothing else.
+
+### f. The neighbourhood decade rail — specced, not started
+
+Over an hour, so per the coordinator's instruction it is written down and
+stopped. Daniel has said twice the decade system is right, which is the argument
+for doing it properly.
+
+**What exists.** `hood-facts.json` already ships `record.dec` — `[decade,
+count]` per hood, ascending — so the SHAPE of a neighbourhood's century is on
+the wire and nothing draws it. What is missing is what a rail is for: rows to
+open into.
+
+**Why it is a pipeline block and not a panel change.** A hood's decisions are
+spread across all 256 shards, because a block's shard is `blockIndex % 256` and
+a neighbourhood's blocks are contiguous in space, not in the index. Reading a
+hood's rows in the browser means fetching **21 MB**. It cannot be done at click
+time and it must not be bundled: 41 hoods × ~12 decades × 3 lines is ~1,500 rows
+at ~200 bytes, ~300 KB, against `hood-facts.json`'s current 81 KB.
+
+**The shape it wants** is the one the block record already uses — a T1 shard per
+entity, fetched on the click that needs it:
+
+```
+website/public/data/us/sf/city/blocks/hood/<i>.json      ~7 KB each
+  { i, dec: [ { decade, n, rows: [ <the curated top 3, same fields as
+                                    highlights> ] } ] }
+```
+
+**Built by re-running `curate()` per (hood, decade)** — it already takes a list
+of `(blockId, rank, row)` and is pure, so the change is one extra grouping key
+and a second write. The tier table, the dedupe, the procedural and
+cross-reference demotions and the blocks-reached sort all apply unchanged, which
+is the payoff of having written it as a function rather than inline.
+
+**Three things the panel must keep when it draws it.**
+
+1. **`afterSeries` still applies.** All 142 Journal volumes end in 1998–99, so a
+   hood rail must draw the decades past the series as *unrecorded* and not
+   *empty*, with `sum_rail_end` under it. That sentence is about the record
+   stopping and is true at every grain.
+2. **Two rails on one panel is one rail too many.** The block's rail is the one
+   that opens into whole shelves. A hood rail should be the SHAPE — the bars and
+   the decade's best line — and should not compete with it. The likely answer is
+   that the hood rail replaces `WHAT THE BOARD KEPT DECIDING HERE` rather than
+   joining it, since a decade's best line and a top-ranked line are the same
+   material sorted two ways.
+3. **`quietAfter` does not transfer.** No neighbourhood falls silent — 40 of 41
+   run to the end of the series — so there is no hood sentence for it and none
+   was written. A sentence for a state that does not occur is a sentence nobody
+   has checked.
