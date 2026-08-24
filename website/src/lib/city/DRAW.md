@@ -5455,6 +5455,70 @@ by +0.88 / +0.32 on an always-on table there (`WA.warm`'s `UMAT_WALL` /
 `UMAT_ROOF` against the eight-tone fallback), and **where there is one such
 disagreement there are likely to be more.**
 
+### 20.15 The street surface lives in the bright end, so it is not the dark-end gap either
+
+The largest always-on layer over the ground that is not the buildings, run the
+same way in BOTH builds — the reference's `drawStreetSurface` and `drawStreets`
+replaced whole with no-ops (a terminal override of a function declaration, not
+an arithmetic nudge), production's own `?layers=` list without `streets`:
+
+```
+  == B1 ==  streets OFF, each relative to its own frame
+     reference   LOW 164.05  dark 118.9  ->  dLOW +1.81  d(dark) +0.20  d(bright) +2.13
+     production  LOW 175.02  dark 126.9  ->  dLOW +0.99  d(dark) +0.26  d(bright) +1.70
+
+  == B4 ==
+     reference   LOW 153.67  dark 115.7  ->  dLOW +2.02  d(dark) -0.13  d(bright) +2.73
+     production  LOW 167.15  dark 122.4  ->  dLOW +1.01  d(dark) -0.07  d(bright) -0.22
+```
+
+**Production's street layer is worth about half the reference's** — 1.0
+against 1.8-2.0 of low-frequency mean — which is a real difference and a real
+finding for `streets.ts`. But **both builds put it almost entirely in the
+BRIGHT end**: in the darkest decile the layer is worth +0.20 / +0.26 and
+−0.13 / −0.07, which is nothing on either side. **Streets are not the dark-end
+gap.**
+
+*The B4 production row is flagged rather than quoted: that page load hit
+`manifest.json` ENOENT and a `base/canopy` 404 while the chunk pipeline was
+regenerating, and its −0.22 bright figure does not agree with B1's +1.70. The
+dark-decile figure, which is the one this section turns on, agrees on all four
+rows.*
+
+### 20.16 Where the dark-end gap has to be now
+
+Everything measured in §20.12-§20.15, against a gap of **+11.03 (B1) /
++13.23 (B4)** whose darkest decile is **+23.5 / +14.2**:
+
+| term | how measured | dark-decile weight |
+|---|---|---|
+| the ground's colour | **function sampled in both builds, 4,800 inputs** | **0.00 — identical** |
+| the canopy | layer ablated in both | production **stronger** by 5.9 / 5.4 |
+| the street surface | layer ablated in both | +0.2 / −0.1 in both |
+| `sunCast` | reference switched to production's branch | **+2.7 / +2.5** ← the only real one |
+| building tone tables (`WA.warm`) | preset before load | +0.88 / +0.32 |
+| `LOOK.attr` | preset before load | +0.99 / +0.43 |
+| ground palette (`WORLDF.pal`) | preset before load | +0.90 / +0.67 |
+| terrain self-shadow, seabed, aerial fade, grain, roof deck/tray, faces, parks, edge, smooth | ablated | each < 1.1 |
+| the mark COUNT | `BLD_DRAWN` vs `lastStats`, 3 years | ≈ 1.9, and the 2018 control is the worst |
+
+**The ground is exonerated exactly and the two next-largest layers over it are
+exonerated by measurement. What is left is the buildings' own values** — and
+that is where §19.4 pointed a night ago, in its own words: *"the term to look
+for is whatever lifts the SHADED end of the built layer — the wall's lambert
+ramp's bottom quartile, the aerial fade, or the haze index — and not a gain on
+the palette."* §20.13 then caught the two builds already disagreeing on an
+always-on table there. It is the same finger, from three directions.
+
+**And it is now cheap to settle.** `colourLUT` in `buildings.ts` is a pure
+function of (class, face, lambert, haze band) exactly as `terrainRGB` is a
+pure function of five numbers. §GROUND is the pattern: export the function
+object from a dev-only global, reach the reference's counterpart — already a
+top-level declaration — sample the domain, subtract. **It took one page load
+and 4,800 samples to exonerate the ground to the float; the same instrument
+on `CL_WALLF` / `CL_ROOF` will either name the constant or exonerate the
+buildings the same way**, and there is nowhere left for it to hide after that.
+
 ## 23. Block G1(a) — the pixel floors are not the district deficit, and here is the count
 
 `scene.ts` came to this block with one instruction: **measure what the gate
