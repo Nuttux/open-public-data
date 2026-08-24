@@ -6920,14 +6920,40 @@ agents are recompiling.
 | district, Mission | 1955 | true | **0** | 20,600 | 0.463 |
 | district, Mission | 1960 | true | **0** | 20,600 | 1.278 |
 
-**The control pair is 0.000 at all four cameras** — byte-stable, so the 6.006
+And the two remaining zooms, so the judgement is over all five:
+
+| camera | year | `WFLG.undated` | street trees drawn | canopy blobs drawn | blurred ‖Δ‖ |
+|---|---:|---|---:|---:|---:|
+| building, downtown | 1954 | false | 0 | 17 | — |
+| building, downtown | 1954 | false | 0 | 17 | **0.000** control |
+| building, downtown | **1955** | **true** | **392** | 17 | **3.366** |
+| building, downtown | 1960 | true | 392 | 17 | 1.776 |
+| whole city, home | 1954 | false | 0 | 0 | — |
+| whole city, home | 1954 | false | 0 | 0 | **0.000** control |
+| whole city, home | 1955 | true | **0** | **0** | 0.041 |
+| whole city, home | 1960 | true | 0 | 0 | 0.168 |
+
+**The cliff is on four of the five zooms and absent from the fifth.** At whole
+city z = 1.0 is below `VZ_C0 = 1.55` and no vegetation of any kind is drawn, so
+1954 → 1955 moves 0.041 and that is buildings. It is district zoom, where the
+canopy carries the whole green of the frame and street trees are weighted to
+zero, that hides it — and block, street and building zoom where a reader sees
+it.
+
+**A trap for whoever runs `g2cliff.py` next.** §VPROBE's counters are only
+reset when `drawVeg` runs. At the whole-city camera it never runs, so the
+1954 row above came back holding `886 / 392 / 17` — the PREVIOUS camera's
+numbers, verbatim. `st.trees` is the authoritative 0 there. Read the counters
+only where the pass they count actually executes.
+
+**The control pair is 0.000 at all six cameras** — byte-stable, so the 6.006
 is not noise. At the Mission block the single year 1954 → 1955 is **7.6 times**
 the whole five years 1955 → 1960, and those five years move the street-tree
 count by **four trees**, because only 178 rows in the entire file are dated
 1955–1960.
 
-**And the canopy column never moves.** 3,254 / 2,414 / 30 / 20,600 at every
-year including 1906 — `base/canopy` ships `cellKey`, `pos` and `area` and no
+**And the canopy column never moves.** 3,254 / 2,414 / 30 / 20,600 / 17 / 0 —
+one number per camera, identical at every year including 1906 — `base/canopy` ships `cellKey`, `pos` and `area` and no
 year (§20.2, manifest `kinds.canopy`), so it has no gate. `base/parks` ships
 `cls`, `len`, `xy` and no year either. **Of the three vegetation objects on
 this map only one is on the clock**, and the district row is the proof from the
@@ -7263,3 +7289,248 @@ carry across unchanged.
 project has been holding: build it behind a flag, ablate against a terminal
 constant, and read the low-frequency image — not the frame mean and not the
 pixel count, per BUGS §23b.
+
+### 21.28 The nine shaped caps that went, named — and six of them are a real loss with no form behind them
+
+Re-decoded after the height byte was widened to u16, which changed the answer:
+at `17443f4e` the Pyramid still had its cap because its prism clipped at 255 m;
+at the true 260.0 m the second solid falls inside the prism and the cap goes
+with it. **`base/caps.qc` 68 → 59, `base/form.qc` 488 → 478.**
+
+| bi | name in the places register | published height | on screen |
+|---|---|---|---|
+| 137821 | Transamerica Pyramid | 260 m | **nothing lost — HERO** (§21.26) |
+| 142936 | Ferry Building | 75 m | **nothing lost — HERO `ferry`** |
+| 149288 | San Francisco City Hall | 91 m | **nothing lost — HERO `cityhall`** |
+| 60435  | 1455 Market St Building | 126 m, roll 1979 | a cap goes |
+| 136893 | InterContinental San Francisco | 107 m, roll 2008 | a cap goes |
+| 137310 | The Paramount | 145 m, roll 2002 | a cap goes |
+| 142959 | Hills Brothers Coffee Plant | 69 m, roll 1991 | a cap goes |
+| 143052 | BridgeView | 109 m, roll 2002 | a cap goes |
+| 143053 | *(no place row)* | 122 m, roll 2016 | a cap goes |
+| 137358 | Four Seasons Hotel | 137 m, roll 2001 | a **form slot** only, no cap |
+
+The three heroes are skipped by `heroQueue`'s `gids`, so their prisms and the
+caps standing on them were never drawn. **Three of the nine losses are
+invisible.**
+
+**Is a hero the right answer for the other six? No, and the register says so
+in one number.** `5kya-mfst` carries a free-text `description` on **162 of its
+180 rows**, and exactly **six** of those name anything about the top:
+
+    600 Montgomery St   "50 story WSMF with 11 story architectural cap"   -> the Pyramid, done
+    1 Dr Carlton B Goodlett Pl  "dimension of dome: 90 ft"                -> City Hall, already a hero
+    55 4th St           "irregular stepbacks and podiums for a 38 story hotel"
+    75 Hawthorne St     "20 story concrete paneled tower with setbacks and glass near top"
+    333 Bush St         "concrete-clad tower with setbacks at corners and upper floors"
+    655 Montgomery St   "25 story, concrete clad steel moment frame with many setbacks"
+
+**None of the six cap-losers is on that list.** Their own descriptions carry a
+frame type and a facade material and nothing about a top. And the four rows
+that *do* say "setbacks" say only that setbacks exist — not where, not how
+deep, not how many. That is the same test Grace Cathedral failed (§21.15): the
+record names a feature and publishes no dimension for it, so drawing one would
+be a guess about taper.
+
+**So the six are recorded as an honest loss, not as a hero backlog.** What they
+lost was a step derived from `form/model3.py`'s own statistics over a height
+that has since been replaced by a published one; the fix is for that derivation
+to run against whatever height ships, which is the data agent's own stated
+conclusion, and it is not a hero.
+
+### 21.29 The landmark scaling, measured as a function — the law has no step, and that is not the end of it
+
+Daniel: *"the landmarks, because we want them visible from high, look huge then
+they resize as we zoom and this transition is really not seamless and looks
+ultra weird — you have these landmarks jumping in and out of place, it's
+freaky."*
+
+**First, the law itself is clean, and saying so narrows the search.**
+`.parity/g3/emph.probe.test.ts` runs `landmarks.ts`'s own `emphasis()` (not a
+re-implementation — the file is imported) over 601 log-spaced camera scales
+from z = 0.7 to 9.0 for each of the thirteen heroes, and reports the drawn top
+in pixels, `E`, and `emphasisElasticity`:
+
+> **Worst second difference of the drawn height across the whole sweep:
+> 0.0044 px** (sutro and transamerica; ≤ 0.0016 px for the other eleven).
+> A size-1 step in the first derivative would read about 0.0126 at this
+> sampling. **There is no pixel floor and no release point in `emphasis`.**
+
+`S'` peaks at 1.5 and `WO_R = 1.5·log2(WO_EMAX)` makes the elasticity land in
+[0, 1] exactly as §"A PIXEL FLOOR IS A STEP IN THE DERIVATIVE" claims. That
+claim is now measured over the shipped register rather than asserted.
+
+**Second, the law is being asked a different question than the one the shipped
+numbers answer, and that is a finding.** `drawHero` calls
+
+    emphasis(recognisableTop(top, planArea, f.proj.zexb), f.cam.scale,
+             f.proj.zexb, f.H)
+
+and `f.proj.zexb` is **`ZEXB_DEFAULT = 1.6`** — the built-height dial. But
+§21.10 fitted the mock's own thirty-three shipped `em` values and they are
+consistent with **`zexb = 3.30` and `H = 1140`**, worst error 0.0007, and
+`emit_heroes.py` asserts that fit on every run. Those are not two opinions
+about one number: the reference applied **one** dial to terrain and buildings
+together (`projection.ts`: *"before this split, `proj` applied ONE dial to
+both"*), so in the mock a hero's honest drawn height was `top · 3.3 · scale`.
+This port splits the dials, so the honest drawing is `top · 1.6 · scale` —
+shorter — and the law correctly answers that it falls further short.
+
+The consequence is arithmetic, not aesthetic. The law's argument is
+`WO_T·H / (top·zexb·scale)`, so what matters is `H/zexb`:
+
+| | H | zexb | H/zexb | emphasis, in octaves, against the mock |
+|---|---|---|---|---|
+| the mock's shipped `em` | 1140 | 3.30 | 345.5 | – |
+| this port at the harness stage | 678 | 1.60 | 423.8 | **+0.29 octaves** |
+| this port at a 1000 px stage | 1000 | 1.60 | 625.0 | **+0.86 octaves** |
+
+**and the port is therefore pinned against the `WO_EMAX = 5.0` ceiling for most
+of the usable zoom range.** Measured at the canonical 1200 × 678 stage, the z
+at which each hero first comes off 5.0 — the app's own presets are z = 1
+(whole city), 2.9 (district), 7.2 (block):
+
+| hero | leaves the ceiling at z | E @ z=1 | E @ 2.9 | E @ 7.2 |
+|---|---|---|---|---|
+| transamerica | already off it | 3.12 | 1.18 | 1.00 |
+| sutro | 0.53 | 3.75 | 1.39 | 1.00 |
+| cityhall | 1.27 | 5.00 | 3.18 | 1.34 |
+| ferry | 1.56 | 5.00 | 3.79 | 1.61 |
+| pofahall | 1.61 | 5.00 | 3.88 | 1.65 |
+| coit | 2.17 | 5.00 | 4.66 | 2.22 |
+| opera | 2.37 | 5.00 | 4.82 | 2.42 |
+| pofa | 3.01 | 5.00 | 5.00 | 3.05 |
+| oldmint | 3.04 | 5.00 | 5.00 | 3.07 |
+| murphymill | 3.24 | 5.00 | 5.00 | 3.26 |
+| conservatory | 4.31 | 5.00 | 5.00 | 4.09 |
+| pagoda | 6.19 | 5.00 | 5.00 | 4.89 |
+| dutchmill | **8.57** | 5.00 | 5.00 | **5.00** |
+
+**Eleven of thirteen are at the maximum across the whole wide half of the zoom
+and then fall away by a factor of three or four over the second half.** That is
+exactly the shape Daniel describes — *huge, then resizing* — and it is not a
+bug in `emphasis`; it is what `emphasis` does when it is handed a smaller
+honest drawing than the numbers were set against. At the mock's own `zexb`,
+City Hall leaves the ceiling at z = 0.61 instead of 1.27 and reads 1.57 at
+district instead of 3.18.
+
+**Third, there IS a genuine discontinuity in the chain and it is not in this
+file.** `ZEX_BY_STEP = [3.3, 2.6, 2.0]` steps at the two band boundaries,
+z = √2.9 = 1.703 and z = √(2.9·7.2) = 4.569 (`camera.ts BANDS`). `zex`
+multiplies **terrain** height, so a hero's ground anchor is `zg · zex` and it
+moves the instant the band flips — but so does the ground under it and every
+building beside it, because `zex` is the whole scene's dial. Measured on the
+first sweep: City Hall's drawn foot moved 32 device px between z = 1.643 and
+z = 1.735, of which ~27 px is the ordinary 5.6 % scale change and ~5 px is the
+band. It is a scene-wide lurch at two scales, it is `camera.ts`'s and
+`terrain.ts`'s, and it is filed rather than fixed here.
+
+**What is NOT yet settled, and the instrument that will settle it.** A first
+sweep toggled the whole `heroes` layer and read City Hall's mask collapsing 38 %
+in one step — **that was a second hero leaving the viewport**, not the subject
+moving, and it is recorded so the mistake is not repeated. `.parity/g3/jump.py`
+narrows `scene.landmarkTable.heroes` to **one** hero for the `on` frame and
+empties it for the `off` frame, from the same page, so the difference is that
+hero against the prism it replaced and nothing else in the city can enter it.
+The candidate it is built to test is the **crown**: `crownFactor(E) = 1 +
+(E−1)·0.5` runs 3.0 → 1.0 as `E` runs 5 → 1, and everything above the roofline
+is scaled by it in all three axes, so City Hall's dome deflates into its own
+roof over the same zoom — while `partAlpha`'s ramps open the ribs and the
+lantern and `accentBlend` takes the gold away. Three treatments reorganising
+the top of one building over one gesture is a much better candidate for
+*"jumping in and out of place"* than a discontinuity nobody can find in the
+arithmetic.
+
+### 21.30 Measured on the frame: it is not a jump, it is a STALL — and its cause is one argument
+
+`.parity/g3/jump.py`, City Hall, 21 settled frames over a continuous log zoom
+z = 0.900 → 3.920 at the canonical 1200 × 678 stage. Each frame is shot twice
+from the **same page** with `scene.landmarkTable.heroes` narrowed to that one
+hero and then emptied, so the difference is the hero against the prism it
+replaced and nothing else in the city can enter the mask.
+
+The hero's own drawn extent, device px, and the elasticity computed between
+consecutive frames (`d ln h / d ln z` — 1 means it scales with the city, 0
+means it holds its size):
+
+| z | drawn h | elasticity to the next frame |
+|---|---|---|
+| 0.900 | 66 | 0.99 |
+| 1.043 | 77 | 0.86 |
+| 1.208 | 88 | 1.19 |
+| 1.399 | 102 | 0.78 |
+| 1.621 | 114 | **0.58** |
+| 1.745 | 119 | 0.45 |
+| 2.022 | 127 | 0.42 |
+| 2.342 | 134 | 0.20 |
+| 2.713 | 139 | 0.29 |
+| 2.920 | 142 | **0.10** |
+| 3.383 | 145 | **0.00** |
+| 3.920 | 146 | 0.09 |
+
+> **From the district preset to z = 3.92 the city grows 1.342× and City Hall
+> grows 1.028×.** Over the whole sweep the city grows 4.36× and the landmark
+> grows 2.21×.
+
+**There is no step anywhere in that column** — it is a smooth slide from 1 to 0
+— which agrees with §21.29's arithmetic and settles the shape of the defect.
+What a reader sees is not a pop. It is a landmark that **stops growing while
+the city keeps growing**, so it visibly sinks back into the block it stands on
+over a couple of seconds of wheel. That reads as the landmark coming loose from
+its site, and "jumping in and out of place" is a fair description of it.
+
+**And the stall is in the wrong place, by an amount that is one number.**
+`emphasisElasticity`'s own docstring says the flat spot is intended — *"at its
+flattest it is 0 — it holds its size for an instant."* The reference put that
+instant past the wide end of the range. This port puts it in the middle,
+because the law is handed `zexb = 1.6` where the reference had a single dial at
+3.3:
+
+    log2(3.3 / 1.6) = 1.045 octaves of extra shortfall,
+    against a ramp whose whole length is WO_R = 1.5 * log2(5) = 3.48 octaves.
+
+> **The entire emphasis ramp is shifted 30 % of its own length toward the
+> zoomed-in end.** Everything else follows from that: eleven of thirteen heroes
+> pinned at the 5.0 ceiling across the wide half (§21.29), and the elasticity's
+> zero landing between the district and block presets instead of past them.
+
+**This is a calibration, not a bug, and it is NOT changed here.** `WO_T`,
+`WO_EMAX` and `WO_R` are the art direction's own contact-sheeted numbers and
+`ZEXB_DEFAULT = 1.6` is `ZEX_ART` from `art/iso.py`, stated to the reader on the
+page. Moving any of them is an art decision, so what this block does is state
+the one-line change and what it predicts, measured:
+
+    drawHero: emphasis(recognisableTop(...), f.cam.scale, f.proj.zexb, f.H)
+                                                          ^^^^^^^^^^^^
+
+At the reference's own 3.3 the same hero reads `E` **4.17 / 1.57 / 1.00** at the
+three presets instead of **5.00 / 3.18 / 1.34**, the ceiling is left at z = 0.61
+instead of z = 1.27, and the stall moves out past the block camera. The cost is
+that a hero at whole-city zoom is 20 % smaller than it is today. **Nobody should
+take that trade without Daniel seeing both**, and the harness to show him both
+is `jump.py` with one argument changed.
+
+**Two things this rules OUT, so they are not re-searched:**
+
+- **`emphasis` has no pixel floor and no release point.** 601-sample sweep over
+  all thirteen heroes, worst second difference of the drawn height **0.0044 px**
+  against ~0.0126 for a size-1 step in the first derivative (§21.29).
+- **`partAlpha` does not switch parts on.** Every ornament gate has the mock's
+  own ramp over it — `min(1, (open − min)/(min·1.15 + 0.9))` — so a cornice
+  fades in over its own threshold. A part appearing is a fade, not a pop.
+
+**What is still open on this**: the band step in `ZEX_BY_STEP` (§21.29, a
+scene-wide lurch at z = 1.703 and 4.569, `camera.ts`'s and `terrain.ts`'s), and
+the **crown**: `crownFactor` runs 3.0 → 1.0 as `E` runs 5 → 1, so a dome
+deflates into its own roof over the same gesture that stalls the building. That
+is a second, independent motion on the same object and it has not been isolated
+yet — `jump.py` can do it by masking above `zr`.
+
+**A harness trap worth the sentence, since it cost two runs**: the dev server is
+shared with four other agents and recompiles constantly. A recompile restores
+the page to full-bleed and the canvas comes back **3240 × 1436 instead of
+2400 × 1356**, so the pair cannot be differenced at all; and a frame shot during
+one comes back blank or stale, with a mask byte-identical to a previous frame's.
+`jump.py` re-forces the stage before every frame, asserts the pair's shapes
+match, and re-opens on any failure. Frames whose mask repeats a previous frame's
+exactly are stale and are discarded, not filed.
