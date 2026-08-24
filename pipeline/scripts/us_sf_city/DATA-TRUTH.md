@@ -851,3 +851,136 @@ handing every other agent a 2,079-vertex diff to chase.** That is why this
 change was spliced. The likely cause is set or dict iteration order feeding the
 Douglas-Peucker in `main()`'s ring pass; it is worth twenty minutes to someone
 who owns that file.
+
+---
+
+## 9. FIXED — the flag contract is shipped, not remembered (commit 3 of the fix pass)
+
+### What was actually wrong, which is not what it looked like
+
+§5b said the renderer ignores `FLAG_NOYEAR`. **That was wrong and I withdraw
+it.** `scene.ts` honours it in four places, and the important one is
+
+```ts
+if (clock && (tb.u[i] & FLAG_NOYEAR) === 0 && iy < 1849 + tb.yr[i]) continue;
+```
+
+— a building with bit 4 set is **not year-gated at all**, i.e. drawn in every
+year. That is already the "draw in every year, flagged" rule `time.ts` applies
+to the undated trees, already applied to the 2,916 undated buildings. Nobody
+needs to choose it; it is in the tree.
+
+What is genuinely not read is **`FLAG_BLOCKYEAR`** (bit 3, **20,571**
+buildings). Those are gated on a year that is real but belongs to their block,
+and nothing distinguishes them from the 142,679 gated on their own.
+
+### The real defect: the numbers were copied, not read
+
+While this was being measured, the renderer owner landed §5a into `time.ts` —
+correctly, with the right total. But they had to **hand-copy** `20,662` and
+`2,825` out of my write-up, because nothing in the payload publishes them. And
+those two numbers had already moved: the block-key fix in §7 shifted 91
+footprints from the block-p25 cohort into the no-year cohort. **They were stale
+the moment they were typed.**
+
+That is the same failure mode as `12,594` — a *parcel* count of the 1900 dump,
+lifted out of `ingest.py`'s comment, published as a *footprint* count and
+repeated in nine places across `scene.ts`, `FILM.md`, `SHELL.md`, `DRAW.md` and
+`time.ts`. The bug is not any one number. **It is that the payload never said
+what was in it, so every consumer copied.**
+
+### So the payload now says
+
+`gen/bldg-data.js` `meta.yearFlags`, measured on the run that writes the file:
+
+```json
+{ "field": "u", "useMask": 7,
+  "note": "`u` is the use class in bits 0-2 and two year-provenance bits above it.",
+  "flags": [
+    { "name": "FLAG_BLOCKYEAR", "bit": 3, "mask": 8,  "n": 20571,
+      "means":   "the year is the 25th-percentile year of the other parcels on
+                  this building's own published assessor block. A real year,
+                  but not this building's.",
+      "drawnAs": "arrives once, on a year that is not its own" },
+    { "name": "FLAG_NOYEAR",    "bit": 4, "mask": 16, "n": 2916,
+      "means":   "no published source dates this building. `yr` holds 1906,
+                  which is a placeholder and not a date.",
+      "drawnAs": "no year gate — drawn in every year" } ],
+  "datedByItsOwnParcel": 142679, "notItsOwnYear": 23487, "of": 166166 }
+```
+
+Checked against the `u` byte itself on the same run: bit 3 set on 20,571, bit 4
+on 2,916, use class after masking maxes at 6 of 6. **Every payload array —
+`cnt`, `vx`, `vy`, `xi`, `xn`, `h`, `yr`, `u` — is byte-identical before and
+after.** This commit changes `meta` and nothing else.
+
+The bare literal `1906` is now `UNDATED_PLACEHOLDER_YEAR`, with the comment
+saying what it is. `0` was considered and rejected: it decodes to 1849 through
+the `year0` offset, so it would be a different wrong year rather than none.
+Changing the sentinel is a cross-file contract change and belongs to the
+renderer.
+
+### **For whoever owns `time.ts`: the two figures you landed are stale**
+
+`20,662 → 20,571` and `2,825 → 2,916`. The total, **23,487 of 166,166 (14.1 %)**,
+is unchanged and cannot move — it is the count `wv5m-vpq2` does not date.
+`everyYear` should be **2,916**. Read them from `meta.yearFlags` so this cannot
+happen a third time.
+
+### The single constant, and why it is not mine to set
+
+The choice the coordinator put to Daniel is already half-made by the tree:
+`FLAG_NOYEAR` = drawn in every year, today. The open question is
+`FLAG_BLOCKYEAR` — 20,571 buildings arriving once, on a year that is real but
+someone else's. The two candidate treatments are
+
+* **draw them from their block's year, marked** — what happens now, minus the
+  silence;
+* **draw them in every year, like the undated** — consistent, and it removes
+  20,571 fabricated arrivals from the animation at the cost of 12.4 % of the
+  fabric being present in 1906.
+
+Both are one line in `scene.ts` against `FLAG_BLOCKYEAR`, both need the same
+bit, and the bit is already in every chunk. **The value is Daniel's call.** What
+this commit guarantees is that whichever is chosen, the number beside it on the
+page comes out of the file rather than out of someone's memory.
+
+---
+
+## 10. The 1947 street cliff, in one paragraph a reader could be shown
+
+Item 4 of the fix pass: not a bug, but it has to be said on the page.
+
+> **Why the street votes stop in 1947.** Every date on a street here comes from
+> a document, not a database: San Francisco publishes whether a street was ever
+> accepted, but not when. So the years come from the Board of Supervisors' own
+> *Journal of Proceedings*, scanned and read — 2,051 roadway acceptances across
+> 27 volumes, each one a vote you can open at the page. They run from 1906 and
+> the last one is in 1947. **That is the record stopping, not the city.** Two
+> things move underneath it. The 1932 Charter shifted this work from the Board
+> to appointed departments: across the same volumes, the Department of Public
+> Works is named in 124 items in the twenty-six years to 1931 and in 3,349 in
+> the sixteen years after, and the roadway-acceptance vote disappears from the
+> Journal entirely after 1948. From 1978 the record changes shape again and
+> streets arrive as approved subdivision maps. San Francisco kept building
+> streets after 1947; the Board simply stopped being the one who wrote them
+> down. The map still fills in after 1947 — those streets are dated from the
+> earliest building the assessor records on their frontage — but no vote is
+> marked on the rail, and the rail says so rather than going quiet.
+
+Short caption variant, for beside the rail:
+
+> Marks are votes in the Board's Journal, 1906–1947. The 1932 Charter moved
+> street acceptance to the Department of Public Works and the vote leaves the
+> Journal after 1948; from 1978 streets arrive as subdivision maps instead.
+> The record stops, not the city.
+
+Every figure in both is from `diag_street_years.py` and §3, and each is
+clickable: the last acceptance is THRIFT ST,
+[`journalofproceed42sanfrich` leaf 1487](https://archive.org/details/journalofproceed42sanfrich/page/n1487/mode/1up).
+
+**One caution for whoever puts this on the page.** Do not write "the Board
+stopped accepting streets" — the corpus shows the *vote* leaving the Journal,
+which is a claim about the record. Whether the Board's legal role changed, and
+exactly when, is a charter question this data cannot settle, and the paragraph
+above is worded to claim only what was measured.

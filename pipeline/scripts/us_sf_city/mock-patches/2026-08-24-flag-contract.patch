@@ -1,0 +1,109 @@
+Apply from the mock root:  cd scratchpad/sf-city-anim && patch -p0 < <this file>
+Applies ON TOP of 2026-08-24-block-key.patch.
+    python3 bldg/build_bldg.py      # rewrites gen/bldg-data.js (meta only)
+
+2026-08-24 — SHIP THE FLAG CONTRACT INSTEAD OF REMEMBERING IT.
+
+FLAG_BLOCKYEAR (bit 3) and FLAG_NOYEAR (bit 4) have ridden in the `u` byte
+since this file was written, and NOTHING IN THE PAYLOAD SAID SO. Every consumer
+that wanted the numbers hand-copied them out of a source comment — which is
+exactly how "12,594", a PARCEL count of the roll's 1900 dump, came to be
+published on the page as a FOOTPRINT count and repeated in nine places.
+
+`meta.yearFlags` now ships the bit, the mask, the count, what the flag means and
+how the thing is drawn, measured on the run that wrote the file. A consumer that
+reads it cannot go stale; a consumer that copies it can, and did.
+
+Also: the bare literal 1906 in the FLAG_NOYEAR branch is now
+UNDATED_PLACEHOLDER_YEAR, with a comment saying what it is — a placeholder that
+keeps the stream fixed-width, not a date, and not to be read as one. (0 was
+considered and rejected: it decodes to 1849 through the year0 offset, so it
+would be a different wrong year rather than none. Changing the sentinel is a
+cross-file contract change and belongs with the renderer.)
+
+Verified: every payload array — cnt, vx, vy, xi, xn, h, yr, u — is BYTE-IDENTICAL
+before and after. This changes `meta` and nothing else. The shipped counts are
+checked against the `u` byte itself: bit 3 set on 20,571, bit 4 on 2,916, use
+class after masking maxes at 6 of 6.
+
+NOTE FOR WHOEVER OWNS website/src/lib/city/time.ts: the figures landed there as
+20,662 / 2,825 are now 20,571 / 2,916 — the block-key fix moved 91 footprints
+from the block-p25 cohort into the no-year cohort, correctly, because they sit
+on no published block. The total, 23,487 of 166,166, is unchanged and cannot
+move. Read them from meta.yearFlags rather than copying them a second time.
+
+--- 8< ---
+--- /tmp/d1before2/bldg/build_bldg.py	2026-08-24 15:48:21
++++ bldg/build_bldg.py	2026-08-24 15:47:17
+@@ -99,10 +99,22 @@
+     "Miscellaneous/Mixed-Use": 6,
+ }
+ USE_UNKNOWN = 6
++USE_MASK = 7            # bits 0-2 — the index into USE_CLASSES
+ FLAG_BLOCKYEAR = 8      # bit 3 — year is the block's p25, not this parcel's
+ FLAG_NOYEAR = 16        # bit 4 — no parcel on this block carries a year
+ 
++# THE PLACEHOLDER, NAMED. A building with FLAG_NOYEAR has no year from any
++# published source, and this is the byte that goes in the `yr` slot so the
++# stream stays fixed-width. It is NOT a claim that anything was built in 1906
++# and no reader should treat it as one: the only honest reading of `yr` on a
++# footprint whose bit 4 is set is "unknown", and the renderer already honours
++# that by not year-gating those buildings at all (scene.ts, `FLAG_NOYEAR`).
++# 1906 rather than 0 because 0 decodes to 1849 through the year0 offset, which
++# would be a different wrong year rather than none; changing the sentinel is a
++# cross-file contract change and belongs with the renderer, not here.
++UNDATED_PLACEHOLDER_YEAR = 1906
+ 
++
+ def b64(fmt, vals):
+     return base64.b64encode(struct.pack("<%d%s" % (len(vals), fmt), *vals)).decode()
+ 
+@@ -235,7 +247,8 @@
+             if yr:
+                 flags |= FLAG_BLOCKYEAR; n_byr += 1
+             else:
+-                yr = 1906; flags |= FLAG_NOYEAR; n_noyr += 1
++                yr = UNDATED_PLACEHOLDER_YEAR
++                flags |= FLAG_NOYEAR; n_noyr += 1
+         m = made_of.get(block(pn), 0)
+         if m and yr < m:
+             yr = m; n_made += 1
+@@ -314,6 +327,38 @@
+                             "PRESENT footprint and PRESENT height.",
+             "EDITORIAL": "made land — a building on fill is not drawn before the date "
+                          "the fill is bucketed to, and those buckets are our judgement.",
++            # THE FLAG CONTRACT, SHIPPED RATHER THAN REMEMBERED.
++            # Both flags have ridden in the `u` byte since this file was
++            # written and nothing said so in the payload, so every consumer
++            # that wanted the numbers hand-copied them out of a comment. That
++            # is exactly how "12,594" — a PARCEL count of the 1900 dump — came
++            # to be published on the page as a FOOTPRINT count, and to be
++            # repeated in nine places. These are measured on this run.
++            "yearFlags": {
++                "field": "u",
++                "useMask": USE_MASK,
++                "note": "`u` is the use class in bits 0-2 and two year-provenance "
++                        "bits above it. Mask before indexing useNames.",
++                "flags": [
++                    {"name": "FLAG_BLOCKYEAR", "bit": 3, "mask": FLAG_BLOCKYEAR,
++                     "n": n_byr,
++                     "means": "the year is the 25th-percentile year of the other "
++                              "parcels on this building's own published assessor "
++                              "block. A real year, but not this building's.",
++                     "drawnAs": "arrives once, on a year that is not its own"},
++                    {"name": "FLAG_NOYEAR", "bit": 4, "mask": FLAG_NOYEAR,
++                     "n": n_noyr,
++                     "means": "no published source dates this building: neither its "
++                              "own parcel nor any parcel on its block carries a "
++                              f"year_property_built. `yr` holds "
++                              f"{UNDATED_PLACEHOLDER_YEAR}, which is a placeholder "
++                              "and not a date.",
++                     "drawnAs": "no year gate — drawn in every year"},
++                ],
++                "datedByItsOwnParcel": n_pyr,
++                "notItsOwnYear": n_byr + n_noyr,
++                "of": len(rec),
++            },
+             "counts": {
+                 "source": len(RAW), "drawn": len(rec),
+                 "droppedSmall": drop_small, "droppedLow": drop_low,
