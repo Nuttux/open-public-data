@@ -6653,3 +6653,117 @@ With the tables identical (§27.2) and three of four selectors identical, `ri`
 is the last thing in the building layer that can carry it, and it is one
 histogram: dump `ri` on both sides at one district camera and subtract. The
 instrument is `g1clut.py` with a different payload.
+
+---
+
+## 29. Block G1 — `ri` closed, and the building layer is exonerated
+
+The last selector, joined **per building on `gid`** and compared as the
+RESOLVED COLOUR rather than the index — because the two palettes are 69 and 56
+entries (§27.1) and an index comparison across them is the *"+13 on every one
+of them"* trap §15.5 already recorded. `.parity/g1ri.py`, over the 119,001
+buildings production holds at the district camera:
+
+```
+                      same COLOUR              dL mean over ALL buildings
+  roof   117,991 of 119,001   99.15 %                    +0.242
+  wall   117,988 of 119,001   99.15 %                    -0.106
+```
+
+The 1,010 roofs and 1,013 walls that differ are **the same population, and it
+is one already named**: every mock index in the worst pairs falls in 24-36,
+which is exactly the 13-entry block production's palettes lack — `LRD.cls`, the
+class wash, 1,052 footprints, 0.6 % of the city, §15.5's *"last material
+difference between the two builds"*. It is still worth shipping and it is still
+about 5 KB. It is not a shading term.
+
+### 29.1 The whole building colour path, summed
+
+| | contribution |
+|---|---|
+| the colour TABLES, aligned (§27.2) | 476 of 300,672 entries, worst 2.11 |
+| `hz` — the block-vs-building depth domain (§28.2) | ≈ **+0.27** |
+| `rsh`, `fi` (§28.4) | identical, by reading both flushes |
+| `ri` — the resolved roof colour (§29) | **+0.242** |
+| `ri` — the resolved wall colour (§29) | **−0.106** |
+
+**Under half a luminance level, total, against a gap of +11.7 to +23.5.** The
+building layer is exonerated the way `g2fn.py` exonerated the ground — not
+statistically, but by reading the same value out of both builds at the same
+input, per building, over the whole population.
+
+What is left in these files that the reference has and production does not is
+the **`sunCast` pass**, priced at §27.3 as 9-15 % of the gap, and the class
+wash above. Neither is the remainder. **The gap is not in the building layer's
+colour, and that is now a measurement rather than a suspicion.**
+
+---
+
+## 30. Block G1 — the archetypes, and the zoom scope BEFORE any drawing code
+
+Daniel: *"You said there's data with many buildings architectural style etc,
+please do use that data. I'd ideally like almost all buildings to be faithfully
+rendered."* And, of the whole map: *"I like the current art direction and want
+to keep it, the level of detail is still too antiquated."* So: more detail in
+the same voice.
+
+`property_class_code` gives **157,716 of 166,166 — 94.91 %** a named archetype,
+zero unmapped, zero blank (`pipeline/docs/sf_building_character.md`).
+
+### 30.1 The zoom scope, settled by measurement and not by ambition
+
+§23.1 and §23.2 already measured this and it decides §8's whole ambition:
+
+```
+  at the DISTRICT camera
+    median building width            2.818 px
+    building area with NO outline    66.63 %
+    buildings on the NEAR path        1.33 %
+```
+
+**Archetype silhouettes are BLOCK and STREET only — for all eleven, not for
+most of them.** At city and district an archetype cannot change a drawing three
+pixels wide; the facade tier does not run there at all (`faceOn` is `z >= 4.0`),
+and 98.7 % of the fabric is in a batched path whose entire vocabulary is one
+fill and one outline. Eleven archetypes that all read the same at district zoom
+is eleven times the work for nothing.
+
+Daniel's brief says all five zooms must be beautiful. **It does not say every
+fix must work at all five**, and being explicit about which zoom a change
+serves is how the five stay honest. Stated here before any drawing code, so
+that nobody later reads a block-and-street change as a failure at city zoom.
+
+### 30.2 The order, and one thing that must be said plainly rather than sold
+
+1. **`industrial` (3,169) and `institution` (1,879) first.** They are the two
+   whose MASSING genuinely differs, which is the one property that survives
+   being small, and they are the archetypes a reader is most likely to catch
+   being wrong — a Dogpatch warehouse drawn as a house.
+2. **The UNCLASSED recovery, 12.7 % → ~5 %.** Measured on the live page
+   (`.parity/g1char.py`): 4,171 of 32,887 loaded buildings take `ty` =
+   UNCLASSED today, which is `FA_VOCAB`'s deliberately dull row — one plain
+   module across all five eras, no entrance, no shopfront, no cornice, no bay.
+   Roughly 12,000 buildings city-wide move from *"we know nothing"* to *"we
+   know what kind of thing this is"*, **and it costs no new drawing at all.**
+3. **`flat_over_store` (3,559) and `storefront` (3,289) last of the three, and
+   this is the plain statement**: `FACD.shop` already ships **6,803** footprints
+   against CHAR's 3,559 + 3,289 = **6,848** — the same population — already
+   routed to `GND_SHOP` by `faVocab`, and already drawing on Mission Street
+   (`out-g1/G1m-crop.png`). This is a **legibility and coverage upgrade, not a
+   new capability**, and presenting it as the headline would be selling
+   something the map already does.
+
+### 30.3 The three rules, and the one that will be tempting to break
+
+- **`unknown` (8,450) keeps exactly the look the city draws today.** Not a
+  twelfth silhouette. Never randomised.
+- **Differentiate WITHIN an archetype only with columns already shipped** —
+  year, storeys, the measured roof colour, the published height. Never a new
+  claim.
+- **The Presidio slabs stay out of it.** They fail at `storeys <= 0` in
+  `emitFace` before any type is consulted (§22.4). That is the record refusing,
+  not a gap, and an archetype cannot supply a storey count the roll does not
+  publish.
+
+**NOT STARTED.** This section is the scope, written before the code as the
+brief requires. No drawing has changed.
