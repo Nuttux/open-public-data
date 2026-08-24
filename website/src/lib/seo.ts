@@ -11,7 +11,10 @@
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
-export const SITE_URL = 'https://qipu.org';
+// The apex 308-redirects to www in production, so www is the host that
+// actually serves. Pointing canonicals, OG urls and ~42 000 sitemap entries at
+// the redirecting apex asked every crawler to resolve a hop it did not need.
+export const SITE_URL = 'https://www.qipu.org';
 export const SITE_NAME = 'Qipu';
 export const DEFAULT_OG_IMAGE = '/og-default.png';
 export const DEFAULT_LOCALE = 'fr_FR';
@@ -64,9 +67,14 @@ function _assemble(
   const canonical = input.path ?? '/';
   const ogLocale = locale === 'en' ? 'en_US' : DEFAULT_LOCALE;
   const altLocale = locale === 'en' ? ['fr_FR'] : ['en_US'];
+  // hreflang only means something when each language has its own URL. Here the
+  // locale is carried by a cookie, so every language shares one address:
+  // declaring fr-FR and en-US on the same href told search engines nothing and
+  // left Portuguese unmentioned entirely. Alternates are emitted only when a
+  // page genuinely has per-language URLs.
   const languages = input.alternates
     ? { 'fr-FR': input.alternates.fr, 'en-US': input.alternates.en }
-    : { 'fr-FR': canonical, 'en-US': canonical };
+    : undefined;
 
   // Only set images when an explicit override is provided. Otherwise let Next.js
   // resolve `opengraph-image.tsx` from the route segment (closest match wins).

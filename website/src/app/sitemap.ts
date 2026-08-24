@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/seo';
 import { listCities } from '@/lib/cities';
-import { listAllCommunesMeta } from '@/lib/all-communes';
+import { listAllCommunesMeta, loadAllCommunesGeneratedAt } from '@/lib/all-communes';
 import { listDataDir } from '@/lib/data/read';
 import {
   sfAuthorityFamilies,
@@ -175,6 +175,12 @@ export default async function sitemap({
   const id = Number(await rawId);
   if (!Number.isFinite(id)) return [];
 
+  // Commune pages change when their export is regenerated, not when a crawler
+  // asks. Stamping them with `now` made every page claim it had just changed,
+  // on every crawl, which is how a site teaches Google to ignore its lastmod.
+  const dataDate = loadAllCommunesGeneratedAt();
+  const communeModified = dataDate ? new Date(dataDate) : now;
+
   if (id === 0) {
     // Main pages + top-10 friendly slugs
     const main = MAIN_ROUTES.map(({ path, priority }) => ({
@@ -225,7 +231,7 @@ export default async function sitemap({
 
   return slice.map((c) => ({
     url: `${SITE_URL}/fr/city/${c.slug}`,
-    lastModified: now,
+    lastModified: communeModified,
     changeFrequency: 'yearly' as const,
     // Lower priority for tail communes; higher for bigger pop.
     priority: c.pop > 50000 ? 0.4 : c.pop > 10000 ? 0.3 : 0.2,

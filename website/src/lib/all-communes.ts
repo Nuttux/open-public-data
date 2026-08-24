@@ -102,6 +102,12 @@ export function loadAllCommunesSource(): {
 }
 
 /** All communes meta — used by sitemap. */
+/** When the commune export was generated — a real lastmod for the sitemap,
+ *  instead of "now", which tells crawlers every page changed on every crawl. */
+export function loadAllCommunesGeneratedAt(): string | null {
+  return loadMeta()?.generated_at ?? null;
+}
+
 export function listAllCommunesMeta(): AllCommunesMeta["communes_meta"] {
   return loadMeta()?.communes_meta ?? [];
 }

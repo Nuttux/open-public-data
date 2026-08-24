@@ -58,13 +58,9 @@ export const metadata: Metadata = {
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
-  alternates: {
-    canonical: "/",
-    languages: {
-      "fr-FR": "/",
-      "en-US": "/",
-    },
-  },
+  // No languages map: the locale is a cookie, so the three languages share one
+  // URL and hreflang would be declaring alternates that do not exist.
+  alternates: { canonical: "/" },
   openGraph: {
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
