@@ -4823,6 +4823,20 @@ const en: Record<string, string> = {
   'us.sf.thecity.panel.money_none': 'No city ledger names this place, so no figure is shown for it.',
   'us.sf.thecity.panel.money_link': 'The full record for {place}',
   'us.sf.thecity.panel.money_cover': "A published city place resolves to {n} of the city's {all} blocks; {m} of those carry a figure.",
+  /* what came down — see components/us/city/FICHE.md §12. dem_floor runs on
+     EVERY block, with something and with nothing: a reader has to be able to
+     tell "none came down here" from "the record does not go back that far",
+     and on the Western Addition only the second is true. */
+  'us.sf.thecity.panel.dem_head': 'Torn down since {y}',
+  'us.sf.thecity.panel.dem_lead': '{n} buildings on this block were demolished under a completed permit, {y0} to {y1}.',
+  'us.sf.thecity.panel.dem_lead_one': 'One building on this block was demolished under a completed permit, in {y0}.',
+  'us.sf.thecity.panel.dem_units': 'Homes in them',
+  'us.sf.thecity.panel.dem_none': 'No completed demolition is on file for this block.',
+  'us.sf.thecity.panel.dem_floor': "This record begins in {y}. What came down before is not published block by block — the city's 1906 schedule covers 36 municipal buildings and no private ones, and the Board approved the 1960s clearances without recording which buildings they took.",
+  'us.sf.thecity.panel.dem_src': 'See the permits',
+  'us.sf.thecity.panel.dem_counted': 'Completed permits only: a cancelled one is a building still standing.',
+  'us.sf.thecity.panel.dem_aria': '{decade}s — {n} demolished on this block',
+  'us.sf.thecity.panel.dem_cover': '{n} of {all} blocks carry one.',
   'us.sf.budget.strend.timeline_cta': '150 years of city money, from the 1880s →',
   'us.sf.budget.footer.perimeter': 'Adopted budget, all funds, City & County of San Francisco.',
   'us.sf.contracts.footer.coverage': 'Award and paid amounts come from different systems; {n} contracts across the register show more paid than agreed. Plain-English summaries cover {nGen} of the contracts active today — the register itself records no description, so the rest show its own wording.',
