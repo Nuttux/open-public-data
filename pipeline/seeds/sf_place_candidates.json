@@ -493,23 +493,18 @@
    "kind": "Branch library",
    "family": "library",
    "aliases": [
-    "Glen Park Branch Library",
-    "Park Branch Library"
+    "Glen Park Branch Library"
    ],
    "owning_dept": "Public Library",
    "owning_dept_code": "LIB",
    "address": "2825 Diamond St",
-   "lat": 37.7333,
-   "lon": -122.4337,
+   "lat": 37.734005,
+   "lon": -122.433796,
    "wiki": "Glen Park Branch Library",
    "block_lots": [
-    "1229031",
     "6745073"
    ],
-   "campus_buildings": [
-    "Park Branch Library"
-   ],
-   "gross_sq_ft": 16010
+   "gross_sq_ft": 7185
   },
   {
    "slug": "zuckerberg-sf-general-hospital",
@@ -718,8 +713,7 @@
     "MOSCONE CENTER",
     "Moscone Esplanade Ballroom",
     "Moscone West",
-    "Moscone North",
-    "Moscone"
+    "Moscone North"
    ],
    "owning_dept": "City Administrator",
    "owning_dept_code": "ADM",
@@ -2014,11 +2008,10 @@
    "owning_dept": "Public Library",
    "owning_dept_code": "LIB",
    "address": "1833 Page St",
-   "lat": 37.752058,
-   "lon": -122.442417,
+   "lat": 37.770091,
+   "lon": -122.45101,
    "block_lots": [
-    "1229031",
-    "6745073"
+    "1229031"
    ],
    "promoted_from_pool": {
     "score": 5.605,
