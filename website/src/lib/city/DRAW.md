@@ -4316,3 +4316,194 @@ translucent. Sampled against a `layers.buildings = false` ablation
 quad reads (143, 145, 141) — an opaque wall, not 16 % of `SHADOW_FILL` over
 sand, which would be (208, 196, 163). They are the walls of low buildings and
 the faint lines through them are their own storey lines at `wallF[wallO+1]`.
+
+### 20.5 Bayview's shoreline never moves — and neither does anyone else's
+
+Handed to this block as *"`made_land.json` has four fill buckets and none of
+them is in Bayview, so the Hunters Point peninsula is drawn as dry land in
+1906"*, with three candidate causes: a genuine gap, a fill that predates the
+rail, or **a bucket under a name the loader does not match**. Measured, and it
+is the first — but the framing is too narrow by the whole city.
+
+**It is not a name mismatch, and there is no loader.** `geo/made_land.py`
+`BUCKETS` is a four-entry Python literal, not a lookup, and the four are
+constructed there:
+
+| id | neighbourhood | elev cut | dated | tier |
+|---|---|---:|---|---|
+| `yerba_buena_cove` | Financial District/South Beach | 6.0 m | 1850–1875 | EDITORIAL — NOT IN CORPUS |
+| `marina` | Marina | 6.5 m | 1912–1915 | EDITORIAL — DATED FROM CORPUS |
+| `treasure_island` | Treasure Island | 8.0 m | 1936–1939 | EDITORIAL — DATED FROM CORPUS |
+| `mission_bay` | Mission Bay | 7.0 m | 2001–2012 | EDITORIAL — DATES THE PLATTING, NOT THE FILL |
+
+No Bayview, no Hunters Point, no India Basin, no Islais Creek, no Candlestick.
+`grep -rn 'made_land\|madeLand' website/src` returns **nothing**: the file is a
+pipeline input and never reaches the client at all. `DATA-TRUTH.md` §6 says
+what it does reach — *"it moves 1,484 footprints"* — and those are BUILDING
+years.
+
+**And the ground does not carry a year in this build, anywhere.** That is a
+proof off the manifest rather than a sample off the screen:
+
+    terrain   dem · mask
+    coast     coastLen · coastXY · burnLen · burnXY
+    parks     cls · len · xy · waterLen · waterXY
+    surround  dem · land · own · segs
+
+Not one year field among them, and no `yr` key on any of the four chunks. So
+**no shoreline in San Francisco moves on the rail** — not Bayview, not the
+Marina, not Mission Bay, not Yerba Buena Cove. BUGS §6 already files one
+instance of this as *"Treasure Island exists in 1906"*; it is the general case.
+
+**What the reference does, and it is much less than the framing assumes.**
+`part3.html` L3618 is explicit: the years at which GROUND changes are *"the
+made-land fill dates carried by the 21 park rings that stand on fill, and
+nothing else. Three of them."* The reference's DEM mask and its coastline are
+as static as this port's. What it holds back is 21 park RINGS, through
+`PKYR` = `TIMED.park.yr`, and:
+
+    base/parks fields: cls · len · xy · waterLen · waterXY   — no `yr`
+
+**so the field has no counterpart on this wire.** `drawParkRings` therefore
+has no year test, exactly as `drawVeg`'s canopy loop has none (§19.9 item 6),
+and for exactly the same reason: the encoder does not ship the field. It is a
+DATA gap in both cases and it cannot be written from the client side.
+
+**Not invented here, and that is the point.** Hunters Point's fill is
+documented — the Navy yard's history is in the record — but every bucket in
+`made_land.py` is stamped `EDITORIAL` by its own author, one citation each,
+with the SELECTION of blocks called a judgement in the file's docstring. A
+fifth bucket drawn from an impression of when the Navy filled the peninsula
+would be a coastline drawn from an impression, and it would be indistinguishable
+on screen from a measured one. **The gap is declared, not closed.**
+
+Two things would close it properly, both upstream:
+
+1. **`base/parks` gains `yr`**, u16, 0 = undated, which is `TIMED.park.yr`'s
+   own shape and reproduces the reference exactly. 21 rings of 328 are
+   non-zero there. Smallest useful change; it does not move the shoreline, it
+   holds back the parks that stand on fill.
+2. **A dated land mask.** The honest source is not `made_land.py`: it is USGS
+   OFR 2006-1037, which `made_land.py`'s own docstring names and rejects —
+   *"maps the made land and gives no years."* Mapping made land without dating
+   it is still worth shipping, because a mask of WHICH ground is fill would let
+   the page say so without claiming a year. Dating it needs a source nobody in
+   this tree has yet found.
+
+### 21.9 The grey bloc is a hero now — the Palace of Fine Arts Exhibition Hall
+
+The register has eleven heroes and the building Daniel pointed at is not one of
+them. It is building **159037**: a 272 m crescent, **12,297 m² on 30 published
+vertices, 14 m tall**, and drawn as one bare prism it is the grey slab behind
+the rotunda. The `pofa` record already knew about it and said so in its own
+`dr` field — *"the colonnade that curves round the lagoon is a separate set of
+published footprints and is drawn by the fabric, not by this"* — which is
+exactly the complaint: the fabric draws it as a slab.
+
+**`pipeline/scripts/us_sf_places/emit_heroes.py`** merges heroes authored in
+this directory on top of the eleven `encode_city_chunks.py` moves out of the
+mock. `emit_places.py`'s own sidecar pattern, for its own reason: that encoder
+owns the mock's payloads and its re-runs must stay byte-identical, and this
+hero is not in the mock. It carries the same trap and states it — re-running
+`encode_city_chunks.py` puts the eleven back, so this must run after it.
+
+**It proves the eleven survive before it adds anything.** The script reads them
+back out of the shipped chunk, re-encodes them, and refuses to run unless the
+result is byte-identical to what is on disk. It is: **38,048 bytes, 11
+heroes.** Without that assertion every re-run would silently rewrite eleven
+landmarks and the first symptom would be a hero moving.
+
+**No geometry is typed in the seed.** The ring, the area, the height, the
+ground anchor and the roll year all come out of `_bldgsrc.read_bldg()` — the
+same function the encoder reads them with. `heroes_extra.json` carries which
+published building is drawn, its year and the register that gives it, and the
+**section**, which is the shaped-cap category the manifest already declares:
+*"the data fixes the top height and the plan area and says nothing about
+taper."*
+
+**A segmental roof on a crescent cannot reach a ridge line, and the arithmetic
+says so instead of the drawing hiding it.** The ring's equivalent half-width is
+its own area / perimeter — 12,297 / 677.3 = **18.16 m**, the width of the
+straight band with the same two numbers. A segmental arc of rise `r` has
+half-width `w·sqrt(1 − t/r)`, so its ridge sits at an inset of `w`, and `w` is
+**almost twice** the deepest inset this ring will take: searched to 0.1 m, the
+deepest bisector inset at which every vertex is still inside the published ring
+is **9.8 m**. So the arc's rise is solved *backward* from that (5.48 m), and
+what is drawn is the lower part of it, truncated flat where the published 14.0
+m top stops it. The flat is where the measurement ends, not where the roof
+does, and the record says so.
+
+Each roof band stands on a **per-vertex bisector inset** and not on a profile
+scaled about the centroid — the Conservatory of Flowers' own rule, and here for
+a sharper version of its reason: this footprint is a crescent whose area
+centroid does not lie inside it at all. §11's gate is then re-run over every
+generated vertex before a byte is written, with one clause a crossing test
+alone gets wrong: **the cornice stands on the published ring itself**, so all
+30 of its vertices are exactly ON the boundary and `inside()` answers false for
+every one. A point within a micrometre of the boundary counts as contained.
+
+### 21.10 `em` is not authored, and the two parameters behind it are fitted and asserted
+
+The sidecar carries `em = {whole, district, block}` per hero and the mock ships
+the values without the parameters. They are recoverable: `emphasis(top,
+camScale, zexb, H)` at `cam.base = 0.04666598864125368` and z = 1.0 / 2.9 / 7.2
+reproduces **all thirty-three shipped values** at
+
+    zexb = 3.30      H = 1140      worst error 0.0007
+
+so a new hero's `em` is the same function of its own measured top and not a
+number typed in. The emitter asserts the fit against the shipped register on
+every run and refuses to write if it drifts past 0.002.
+
+**Recorded because the brief said otherwise:** this block was told the existing
+heroes were drawn at `ZEXB = 1.6`. The shipped `em` values are not consistent
+with 1.6 at any `H`; they are consistent with **3.30**, which is also
+`manifest.proj.zex` and the `zex` the renderer reports at every camera. The
+fitted value is used.
+
+### 21.11 The emphasis law asks about the top, and for a long low building that is the wrong question
+
+`emphasis` measures how far short the honest drawing falls **in drawn height**.
+For every hero the mock authored that is right, because for every one of them
+the height is what the building is recognised by. It is wrong for a building
+recognised by its plan, and this one is: 272 m end to end and 14 m tall.
+
+Asked about its top it is handed `E = 4.94` at block zoom, which draws a 272 m
+building **1,344 m long — 452 px on a 1,200 px frame**, over the rotunda it
+stands behind and out into the bay. `recognisableTop` asks for the larger of
+the drawn top and the footprint's own plan span, and the plan span is
+`sqrt(area)` — **the register's own definition**, `emit_places.py`'s `span`
+being *"max(sqrt(footprint area), the drawn height)"*, so the project has one
+rule and not two. That hands it **2.76** and 252 px, which is what City Hall
+reads at.
+
+**It changes ten of the twelve heroes by nothing at all.** Measured over the
+shipped register at `zexb = 3.3`, `sqrt(area)` exceeds `top · zexb` on exactly
+two rows:
+
+| hero | sqrt(area) | top · zexb | |
+|---|---|---|---|
+| cityhall | 106.1 | 290.4 | – |
+| ferry | 101.2 | 235.6 | – |
+| sutro | 25.7 | 693.0 | – |
+| **oldmint** | **58.7** | **52.8** | plan wins, marginally |
+| **pofahall** | **110.9** | **46.2** | plan wins, decisively |
+
+The plan area is computed from the hero's own rings inside `landmarks.ts`
+(`planAreaOf`, the largest part ring's shoelace) and cached on the record, so
+nothing new is shipped and nothing in the file reads the camera.
+
+**Judged at all five zooms**, prod, 2018, 1200 × 678 @ DPR 2, anchor
+(−957.9, 4780.2) — `.parity/g3/out/hall-*.prod.{before,after2}.png` and
+`marina-2-dist.prod.after2.png`. City: the crescent is 63 px and reads as one
+warm mass beside the dome. District: dome and hall together read as a monument
+on their own site rather than a dome beside grey mush. Block and street: a
+warm stucco crescent with a cornice and a stepped segmental roof where a flat
+grey-green slab was. Building: the corner carries an edge and a section; the
+Presidio prisms beside it do not, and they are not this file's.
+
+**Still open, and named:** the same footprint carries the peristyle colonnade
+as well as the hall, so one extruded form is the wrong primitive for all of it.
+Drawing the colonnade needs a published bay rhythm this block does not have,
+and inventing one is the thing that is not allowed. The section is an honest
+improvement on a slab and it is not the finished building.

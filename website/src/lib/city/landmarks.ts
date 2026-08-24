@@ -314,6 +314,55 @@ export function crownFactor(E: number): number {
   return 1 + (E - 1) * WO_FEAT;
 }
 
+/**
+ * THE LAW ASKS WHETHER THE HONEST DRAWING IS TOO SMALL TO RECOGNISE, AND IT
+ * ASKED IT ABOUT THE TOP ALONE.
+ *
+ * `emphasis` measures the shortfall as `top * ZEXB * cam.scale` — the drawn
+ * HEIGHT in pixels. For every hero the mock authored that is the right
+ * quantity, because for every one of them the height is the dimension the
+ * building is recognised by. **It is the wrong quantity for a building whose
+ * recognisable dimension is its plan**, and the Palace of Fine Arts Exhibition
+ * Hall is one: 12,297 m2 of published footprint, 272 m end to end, and 14 m
+ * tall. Asked about its top it reads as a thing too small to see and is handed
+ * `E = 4.94` at block zoom — which draws a 272 m building 1,344 m long, **452
+ * px on a 1,200 px frame**, over the rotunda it stands behind and out into the
+ * bay. Asked about the larger of the two it is handed 2.76, and 252 px, which
+ * is what City Hall reads at.
+ *
+ * So the quantity is the larger of the drawn top and the footprint's own plan
+ * span, converted back into the units `emphasis` takes. The plan span is
+ * `sqrt(area)` — **the register's own definition**, `emit_places.py`'s `span`
+ * being *"max(sqrt(footprint area), the drawn height)"* — so there is one rule
+ * on the project and not two.
+ *
+ * **It changes ten of the twelve heroes by nothing at all.** Measured over the
+ * shipped register at `zexb = 3.3`: `sqrt(area)` exceeds `top * zexb` on the
+ * Old Mint (58.7 against 52.8) and on the Exhibition Hall (110.9 against
+ * 46.2), and on nothing else. City Hall is 106.1 against 290.4, Sutro Tower
+ * 25.7 against 693.0.
+ */
+export function planAreaOf(parts: readonly { rx: Float32Array; ry: Float32Array }[]): number {
+  let big = 0;
+  for (const p of parts) {
+    const n = p.rx.length;
+    if (n < 3) continue;
+    let a2 = 0;
+    for (let i = 0; i < n; i++) {
+      const j = (i + 1) % n;
+      a2 += p.rx[i] * p.ry[j] - p.rx[j] * p.ry[i];
+    }
+    const a = Math.abs(a2) / 2;
+    if (a > big) big = a;
+  }
+  return big;
+}
+
+export function recognisableTop(topM: number, planAreaM2: number, zexb: number): number {
+  if (!(planAreaM2 > 0) || !(zexb > 0)) return topM;
+  return Math.max(topM, Math.sqrt(planAreaM2) / zexb);
+}
+
 export function planScale(E: number, topM: number, zrM: number): number {
   const F = crownFactor(E);
   const denom = zrM + (topM - zrM) * F;
@@ -1565,6 +1614,8 @@ const WO_CLKN = 40;
  * anchor, so the anchor is a fixed point of the whole transform and the drawing
  * stays where the published files put it.
  */
+const planAreaCache = new WeakMap<object, number>();
+
 export function drawHero(
   f: Frame,
   hero: HeroInput,
@@ -1576,7 +1627,18 @@ export function drawHero(
   if (opts.year !== undefined && Math.floor(opts.year) < hero.year) return false;
   const { ctx } = f;
   const c = f.proj.coeffs();
-  const E = emphasis(hero.top, f.cam.scale, f.proj.zexb, f.H);
+  /* the recognisable size, not the top — see `recognisableTop`. Cached
+     because it is a pure function of the hero's own rings and the rings do not
+     change between frames. */
+  let pa = planAreaCache.get(hero);
+  if (pa === undefined) {
+    pa = planAreaOf(hero.parts);
+    planAreaCache.set(hero, pa);
+  }
+  const E = emphasis(
+    recognisableTop(hero.top, pa, f.proj.zexb),
+    f.cam.scale, f.proj.zexb, f.H,
+  );
   const accentMat = accentMatIndex(mat, hero.accent);
   const zr = hero.zr > 0 ? hero.zr : hero.top;
   const plan = planScale(E, hero.top, zr);

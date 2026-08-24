@@ -1,0 +1,23 @@
+{
+  "note": "Heroes authored on top of the eleven that encode_city_chunks.py moves out of the mock's wonder/hero-data.js. Read by emit_heroes.py, which MERGES them into base/heroes.qc + base/heroes.json. NO GEOMETRY IS TYPED IN THIS FILE: every ring, area, height, anchor and roll year is read out of the shipped footprint the record names. What is here is the choice of which published building gets drawn and how its SECTION is drawn, which is the same category as the 68 shaped caps -- 'the data fixes the top height and the plan area and says nothing about taper' (manifest kinds.cap).",
+  "heroes": [
+    {
+      "k": "pofahall",
+      "n": "Palace of Fine Arts Exhibition Hall",
+      "b": 159037,
+      "y": 1915,
+      "an": "the footprint that DataSF 97yj-54sx Article 10 landmark no. 88 (`Palace Of Fine Arts`) resolves to in this map's own register: base/places.qc carries `bi` 159037 on that row, with the designation bit set. The rotunda beside it is a different footprint (159057) and is the hero `pofa`.",
+      "ys": "the same register and the same reasoning the `pofa` record already carries: rzic-39gi gives landmark no. 88 a `yearbuilt` of 0, so the register has no year for it; 1915 is the year of the Panama-Pacific International Exposition the corpus's own `ppie` entry carries, and the roll dates this footprint 1906, which is FLAG_NOYEAR and not a year.",
+      "dr": "The crescent is the published footprint and 14.0 m is the published height; both are read out of the shipped record and neither is authored. What is DRAWN is the section, on the shaped-cap rule: a wall set back 0.70 m, a cornice band at the full published ring, and a roof drawn as a segmental arc over the ring's own equivalent half-width (its area / perimeter), truncated flat where the published 14.0 m top stops it. Every roof band stands on a per-vertex bisector inset of the published ring -- the Conservatory of Flowers' own containment rule -- and the deepest inset drawn is the deepest one at which every vertex of the inset ring is still inside the published ring, searched rather than typed. Nothing stands outside the published footprint and nothing above the published top. The colonnade that curves round the lagoon is a separate set of published footprints and is drawn by the fabric, which is what the `pofa` record already says.",
+      "section": {
+        "eavesFrac": 0.62,
+        "corniceM": 1.0,
+        "wallSetbackM": 0.7,
+        "roofBands": 3,
+        "matWall": 4,
+        "matRoof": 4,
+        "why": "eavesFrac, corniceM and wallSetbackM are the drawing; matWall and matRoof are `stucco`, which is the material the `pofa` record already authors for the rotunda's own walls -- the same building, the same register, the same authored material. eavesFrac 0.62 was 0.75 on the first cut and the roof came out 2.5 m of rise over 9.8 m of horizontal inset, a 14-degree slope that reads as a terrace rather than a roof; screenshot .parity/g3/out/hall-str.prod.after.png at the first value."
+      }
+    }
+  ]
+}

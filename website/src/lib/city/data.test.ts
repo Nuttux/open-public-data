@@ -469,14 +469,21 @@ d("the surround raster", () => {
 });
 
 d("the authored landmarks", () => {
-  it("gives eleven heroes, 127 parts and 3,259 ring vertices", async () => {
+  it("gives twelve heroes, 132 parts and 3,409 ring vertices", async () => {
     const cd = await loaded();
     const t = await cd.landmarks();
     expect(t).not.toBeNull();
-    expect(t!.heroes.length).toBe(11);
-    expect(t!.heroes.reduce((a, h) => a + h.parts.length, 0)).toBe(127);
+    /* ELEVEN OF THESE COME OUT OF THE MOCK and one does not. `emit_heroes.py`
+       merges the register authored in `pipeline/scripts/us_sf_places/` on top
+       of the eleven `encode_city_chunks.py` moves out of
+       `wonder/hero-data.js`, and it proves the eleven survive a read/re-encode
+       round trip byte for byte before it adds anything. So this assertion is a
+       statement about the MERGED register and the manifest's own
+       `landmarks.authoredHere` says which rows are whose. DRAW.md §21.9. */
+    expect(t!.heroes.length).toBe(12);
+    expect(t!.heroes.reduce((a, h) => a + h.parts.length, 0)).toBe(132);
     expect(t!.heroes.reduce(
-      (a, h) => a + h.parts.reduce((b, p) => b + p.rx.length, 0), 0)).toBe(3259);
+      (a, h) => a + h.parts.reduce((b, p) => b + p.rx.length, 0), 0)).toBe(3409);
   });
 
   it("nothing stands above the MEASURED top — the gate's own ceiling", async () => {
