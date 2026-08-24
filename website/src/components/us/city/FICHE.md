@@ -2246,3 +2246,39 @@ Typecheck clean, eslint clean on both files, **422/422** (420 + the two
 `railItems` tests). No `us.sf.` key reaches the screen — checked the way §14 and
 §16a checked it, by dumping the panel's `innerText` and grepping, on the blocks
 listed in §i.
+
+### i. Looked at on a REAL `next build`, at 1440 and at 390
+
+`__cityRenderer` is inlined out of a production bundle by design (`renderer.ts`
+gates it on `NODE_ENV`), so `onPick(i)` does not exist there and the selection
+has to be a real canvas click — which §14a already established is the only way
+to see the pin and the ring where they actually land. Two new harnesses do it:
+`.parity/f1prod.py` presses through `CityEntry`, clicks a grid and keeps the
+click whose panel carries every section; `.parity/f1prodw2.py` shoots the 1440
+margin in scroll steps, because `.fx-city-ledger` is a fixed-height scroll
+container and an element shot of the panel inside it comes back as a tall blank
+with the page's overlays composited in.
+
+`/Users/daniel/code/qipu-prod` was rebuilt at **730fd89c** and **port 3100 now
+serves that**, not 35524e0e.
+
+- `f1-p10mfull` — 390 px, Sunset/Parkside block 2115, every section: prose,
+  footnote, the money answer whole, three lines, the block's five rows, the
+  rail with `1950s–1960s` and `2000s–2020s` folded and `1900s` / `1990s` left
+  alone.
+- `f1-p10wsc0..4` — the 1440 margin end to end, Nob Hill block 0297. `sc2` is
+  the one to look at: the block is five rows and a footnote, and it is the
+  first version of this panel a reader can take in without reading it.
+- `f1-r10fiche-1170` / `-3724`, `f1-r10first-1170` — the dev-server pass the
+  work was iterated on.
+
+**What looking caught that measuring did not.** `.fx-block-dec` is a 34 px
+column and `2000s–2020s` spilled over the track beside it; the range sizes to
+itself now. And Moscone's lead still ended *"every figure below is the whole of
+it"* after the figures had gone — §e.
+
+**What is still true and still ugly, in Daniel's own terms.** The three
+highlight glosses are set LARGER than "In short", because `FicheArchiveShelf`
+is the house archive component and sizes its own gloss. Under a page whose
+lead is 13.5 px that is a hierarchy inversion, and it is the biggest thing on
+the panel this round did not fix. It is not this block's file.
