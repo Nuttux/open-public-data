@@ -321,6 +321,42 @@ const pt: Record<string, string> = {
   "br.recife.contrato.mod_gloss.compra":
     "Compra direta: aquisição direta de baixo valor, sem processo licitatório.",
   "br.recife.contrato.source": "Fonte: Contratos — Prefeitura do Recife.",
+
+  // ── Para cidades (página /pour-les-villes + bloco de encerramento) ────────
+  "fx.foot.link.cities": "Para cidades",
+
+  "fx.contact.c4.n": "Cidades",
+  "fx.contact.c4.h": "Sua cidade",
+  "fx.contact.c4.p": "Você quer este site para a sua prefeitura.",
+
+  "fx.closing.title": "Este site pode existir para a sua cidade.",
+  "fx.closing.text": "Ele é feito a partir dos dados que a prefeitura já publica.",
+  "fx.closing.cta": "Para cidades",
+
+  "fx.cities.meta.title": "Para cidades",
+  "fx.cities.meta.desc": "A gente parte dos dados que a sua cidade já publica. Escreva e a gente vê o que dá para fazer.",
+  "fx.cities.kicker": "— Para cidades",
+  "fx.cities.title.before": "Este site existe para Paris, San Francisco e Recife. ",
+  "fx.cities.title.em": "Pode existir para a sua cidade",
+  "fx.cities.title.after": ".",
+  "fx.cities.lede": "A gente parte dos dados que a sua cidade já publica. O que dá para fazer com eles depende do que tem lá dentro.",
+  "fx.cities.live.label": "Já no ar",
+
+  "fx.cities.s01.kind": "Exemplos",
+  "fx.cities.s01.title.before": "Como fica ",
+  "fx.cities.s01.title.em": "em outras cidades",
+  "fx.cities.ex1.h": "O orçamento de Paris, rubrica por rubrica",
+  "fx.cities.ex2.h": "O que San Francisco paga, salário por salário",
+  "fx.cities.ex3.h": "Os contratos do Recife, contrato por contrato",
+  "fx.cities.ex.see": "Ver",
+  "fx.cities.s02.kind": "Escrever",
+  "fx.cities.s02.title.before": "Diga ",
+  "fx.cities.s02.title.em": "qual cidade",
+  "fx.cities.s02.b1": "A gente trabalha com os seus dados abertos: nada instalado do seu lado, nenhum acesso aos seus sistemas.",
+  "fx.cities.s02.b2": "Mande o nome da prefeitura e o link dos dados.",
+  "fx.cities.s02.b3": "A gente olha e diz o que dá para fazer.",
+  "fx.cities.s02.btn": "Escrever para daniel@qipu.org",
+  "fx.cities.s02.btn2": "Ver o método",
 };
 
 export default pt;

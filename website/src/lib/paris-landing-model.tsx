@@ -5,6 +5,7 @@ import { fmtInt, fmtBillions, fmtMillions, fill, numLocale } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { LandingModel, DeckCard, MarqueeItem } from "@/components/landing/types";
+import { landingClosing } from "@/lib/landing-closing";
 
 /**
  * Paris adapter for the shared landing template. Maps LandingStats + i18n → a
@@ -245,6 +246,7 @@ export function buildParisLandingModel(
       ],
     },
     extras: <ParisLandingTail t={t} locale={locale} posts={posts} />,
+    closing: landingClosing(locale === "en" ? "en" : "fr"),
   };
 }
 

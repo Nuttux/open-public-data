@@ -4,6 +4,7 @@ import PlaceSwitcher from "@/components/PlaceSwitcher";
 import { loadBudget, loadQuemRecebe, loadContratos, funcaoSlug } from "@/lib/br/recife-data";
 import { loadPlace } from "@/lib/br/recife-places-data";
 import { fmtBrl, fmtBrlCompact, fmtBrlDeck, fmtInt } from "@/lib/br/format";
+import { landingClosing } from "@/lib/landing-closing";
 
 const BASE = "/br/city/recife";
 
@@ -149,6 +150,7 @@ export function buildRecifeLandingModel(locale: Locale): LandingModel {
       delta: s.scaleDelta(fmtBrl(perYear), refAno.ano),
     },
     chips: { heading: s.chips_h, items: chips },
+    closing: landingClosing(locale === "en" ? "en" : "pt"),
   };
 }
 

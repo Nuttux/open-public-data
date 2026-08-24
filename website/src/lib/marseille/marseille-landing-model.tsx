@@ -2,6 +2,7 @@ import type { LandingModel, DeckCard, MarqueeItem, LandingChip } from "@/compone
 import type { Locale } from "@/lib/localeContext";
 import PlaceSwitcher from "@/components/PlaceSwitcher";
 import { fmtBillions, fmtInt, fmtMillions } from "@/lib/fmt";
+import { landingClosing } from "@/lib/landing-closing";
 import {
   MARSEILLE_ARRONDISSEMENT_PATHS,
   MARSEILLE_VIEWBOX,
@@ -134,6 +135,7 @@ export function buildMarseilleLandingModel(locale: Locale, data: MarseilleLandin
       delta: s.scaleDelta(`${fmtInt(perYear)} €`, budYear),
     },
     chips: { heading: s.chips_h, items: chips },
+    closing: landingClosing(locale === "en" ? "en" : "fr"),
   };
 }
 

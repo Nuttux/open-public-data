@@ -76,6 +76,16 @@ export type LandingChipStrip = {
   items: LandingChip[];
 };
 
+/** The closing act: one quiet line inviting another city to have the same
+ *  thing built. Strings arrive resolved (lib/landing-closing.ts) so the
+ *  template stays free of i18n, like every other part of this model. */
+export type LandingClosing = {
+  title: string;
+  text: string;
+  cta: string;
+  href: string;
+};
+
 export type LandingModel = {
   hero: LandingHeroModel;
   deck?: DeckCard[];
@@ -86,4 +96,6 @@ export type LandingModel = {
   chips?: LandingChipStrip;
   /** Escape hatch for city-specific tail acts (Paris analyses + méthode). */
   extras?: ReactNode;
+  /** Closing act, rendered last on every city landing. */
+  closing?: LandingClosing;
 };

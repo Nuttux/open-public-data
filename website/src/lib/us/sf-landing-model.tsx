@@ -6,6 +6,7 @@ import { loadSfPlace, loadSfPlacesIndex, placeForContract } from "@/lib/us/sf-pl
 import { loadSfPayee, loadSfPayeesIndex, type SfPayeeIndexEntry } from "@/lib/us/sf-payees-data";
 import { deptSlug } from "@/lib/us/sf-budget-slugs";
 import { fmtUsdCompact } from "@/lib/us/format";
+import { landingClosing } from "@/lib/landing-closing";
 
 const nfInt = new Intl.NumberFormat("en-US");
 
@@ -395,6 +396,7 @@ export function buildSfLandingModel(): LandingModel {
         { href: "/us/city/sf/sources", title: "Sources & method", desc: "Every dataset — perimeters, privacy, method." },
       ],
     },
+    closing: landingClosing("en"),
   };
 }
 

@@ -93,6 +93,7 @@ export function franceFooterModel(
 
   const project: FooterLink[] = [
     { href: "/methode", label: t("fx.foot.link.methode") },
+    { href: "/pour-les-villes", label: t("fx.foot.link.cities") },
     { href: "/contact", label: t("fx.foot.link.contact") },
   ];
 
@@ -141,6 +142,10 @@ export function registryFooterModel(
   // pages are France-authored, so we don't advertise them as this place's.
   const project: FooterLink[] = [];
   if (place?.slug === "sf") project.push({ href: `${place.path}/sources`, label: t("fx.foot.link.sources") });
+  // /pour-les-villes lives outside the country trees, so it carries the reader's
+  // language explicitly — otherwise a Recife or SF visitor lands on French copy.
+  const citiesLang = country === "br" ? "pt" : "en";
+  project.push({ href: `/pour-les-villes?lang=${citiesLang}`, label: t("fx.foot.link.cities") });
   project.push({ href: "/contact", label: t("fx.foot.link.contact") });
 
   // Legal column — POC-honest minimum: the jurisdiction-neutral pages only.

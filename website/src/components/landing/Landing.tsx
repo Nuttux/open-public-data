@@ -4,6 +4,7 @@ import LandingDeck from "./LandingDeck";
 import LandingMarquee from "./LandingMarquee";
 import LandingScale from "./LandingScale";
 import LandingChips from "./LandingChips";
+import LandingClosing from "./LandingClosing";
 
 /**
  * Generic landing template. A city builds a LandingModel from its own data and
@@ -13,7 +14,8 @@ import LandingChips from "./LandingChips";
  * Paris and /us provide chrome differently.
  *
  * Fold = hero + deck + marquee (first viewport). Below the fold: the scale act
- * and the section chips, then any city-specific tail acts via `extras`.
+ * and the section chips, then any city-specific tail acts via `extras`,
+ * and finally the closing act inviting another city to have the same built.
  */
 export default function Landing({ model }: { model: LandingModel }) {
   return (
@@ -31,6 +33,7 @@ export default function Landing({ model }: { model: LandingModel }) {
       {model.scale && <LandingScale scale={model.scale} />}
       {model.chips && <LandingChips {...model.chips} />}
       {model.extras}
+      {model.closing && <LandingClosing closing={model.closing} />}
     </main>
   );
 }

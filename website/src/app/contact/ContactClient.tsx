@@ -63,6 +63,12 @@ export default async function ContactClient() {
               <p>{t("fx.contact.c3.p")}</p>
               <a href="mailto:daniel@qipu.org?subject=Presse">Daniel Shavit · daniel@qipu.org ↗</a>
             </div>
+            <div>
+              <div className="n">{t("fx.contact.c4.n")}</div>
+              <h3>{t("fx.contact.c4.h")}</h3>
+              <p>{t("fx.contact.c4.p")}</p>
+              <a href="/pour-les-villes" data-cta="for_cities_contact">{t("fx.foot.link.cities")} ↗</a>
+            </div>
           </div>
 
           <div className="fx-note" style={{ marginTop: 32 }}>
