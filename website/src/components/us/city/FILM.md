@@ -1701,7 +1701,32 @@ three cameras stamped 18:21–18:29 and one stamped 17:51, half an hour before t
 change went in. "0.463 before and 0.463 after" was the same file twice.
 
 `G2CAMS=<name>` now re-runs one camera, and the trap is written into
-`g2cliff.py` beside it. The honest version of the control is below.
+`g2cliff.py` beside it.
+
+**And the control that was actually wanted is not a pixel diff at all — it is
+`§VPROBE`'s own counter, which the same run printed and I did not read.** The
+harness reports how many street trees the pass DREW at each year, and the fix is
+visible in that column directly, with no frame arithmetic in the way:
+
+| camera | year | gate | street trees drawn | canopy | blurred ‖Δ‖ |
+|---|---:|---|---:|---:|---:|
+| block, Sunset | 1954 | **true** | **7,528** | 2,414 | 0.000 control |
+| block, Sunset | 1955 | true | **7,528** | 2,414 | 0.374 |
+| block, Sunset | 1960 | true | 7,529 | 2,414 | 0.800 |
+| street, Civic Center | 1954 | **true** | **547** | 30 | 0.000 control |
+| street, Civic Center | 1955 | true | **547** | 30 | 0.000 |
+| street, Civic Center | 1960 | true | 547 | 30 | 1.594 |
+
+Read the gate column first: it says **`true` at 1954**, which is the whole change
+in one word — before, it read `false` there and `true` at 1955. Then the tree
+column: **the same number either side of 1955**, 7,528 and 7,528, 547 and 547,
+where the old table had 0 → 7,528 and 0 → 547. The residual 0.374 at the Sunset
+block is therefore not trees by construction — the tree count did not move — it
+is the buildings the roll dates in 1955. At Civic Center even that is zero and the
+two frames are byte-identical.
+
+That is a stronger claim than the one I tried to make with a control camera, it
+was in the run's own stdout the whole time, and it costs no second sweep.
 
 Four of five zooms showed it. The fifth was not a counter-example: at z = 2.9 `bandW(z,
 VZ_T0 = 2.9, …)` weights street trees to exactly zero, so nothing about trees
@@ -1885,6 +1910,19 @@ the badge, the shot, the segment, `running`, or the **integer** year. This is
 `CityMap`'s own rule — *"React state is touched only when the INTEGER year
 changes"* — which the rail followed and the film did not.
 
+**AND THE FIRST VERSION OF THIS WAS WRONG IN A WAY WORTH WRITING DOWN.** It kept
+`style={{width: state.progress*100+'%'}}` in the JSX *and* wrote the node
+imperatively. That is two writers on one property and React wins: a render for
+any other reason — the reader pressing pause, a new line of copy arriving —
+re-applies `state.progress`, which is now whatever it was at the last DISCRETE
+change, seconds earlier. **The hairline would have jumped backwards on every
+pause**, which is precisely the class of motion bug this file's own notes say a
+single still cannot show. The fix is one writer: the two continuous values are
+not in the rendered tree at all, they live in a ref the frame loop writes, and
+`FilmChrome` has a `useLayoutEffect` with **no dependency array** that re-applies
+them after every render, before paint. Anyone tempted to "simplify" that back
+into an inline style is re-introducing the race.
+
 **And the honest hybrid from §15.3 cannot be built from this file.** "Rasterise
 the first buffer of the next move during the hold before it" is still the right
 idea and it is blocked on a fact in `renderer.ts`: there is **one** film slot.
@@ -1894,3 +1932,57 @@ is where the reader is standing still reading a line of copy. It needs a second
 film slot (`fi2`) that the blit does not read from until the move starts, which
 is a renderer change and not a film one. Written down here so the next person
 does not discover the single slot after building the rest of it.
+
+### 17.6 The open items from M1, each closed or handed on with a reason
+
+**Shot 8's Bay Bridge at map-year 1937 is deliberate and is already argued in
+`film.ts`.** The crossing opened November 1936; the deck strikes out at the top
+of shot 8, which opens on 1937 because that is where shot 7 leaves the clock.
+`film.ts` §treasure-island states the cost in the source — *"one map-year after
+the crossing opened … the cost of putting the Golden Gate on camera"*. The only
+fix that keeps the year line monotone is to put the Bay Bridge BEFORE the Golden
+Gate, i.e. to reorder two authored shots and their cameras, which is not a change
+to make the night before a demo. **Left as authored, and it is stated on screen's
+own terms rather than silently.**
+
+**The `Golden Gate Bridge` place LABEL from 1933 is real and is not in these
+files.** `landmarks.ts` §GGB gates the DECK at 1937 and the film's own
+measurement confirms it draws nothing before then (1936 → 1937 changes 3,416 px
+in that corner, 1937 → 1938 changes none). The label comes off `emit_places.py`'s
+four-rung ladder, which dates a place from the made-land year of its ground or
+the first dated building inside its extent — neither of which is a bridge's
+completion. **For `labels.ts` / the places pipeline: a place whose geometry is a
+landmark the renderer already dates should take the landmark's year.** It is a
+name floating over open water for four years and it is the kind of thing a
+reader notices immediately.
+
+**The 2019–2024 "the city does not change" reading was taken at the wrong
+camera, and no re-run is needed to say so.** §16 flagged it honestly rather than
+claiming it. The roll dates **3,206 parcels** across those six years — 1.9 % of
+166,166 footprints, scattered citywide. At the whole-city camera, where that
+sweep was run, a footprint is well under a pixel and `.parity/g2cliff.py`'s own
+table shows the same thing from the other side: at `city-home` even the arrival
+of 125,234 trees moved 0.041. **A whole-city frame cannot resolve 1.9 % of the
+fabric and its silence is not evidence.** The measurement to trust is the block
+or street camera at 2018 → 2025, and the harness for it already exists
+(`g2cliff.py` with `SEQ` changed and `G2CAMS=blk-mission`). Neither number was
+wrong; they were about different things.
+
+**The fabricated-year flags are untouched**, as instructed — `FLAG_BLOCKYEAR`'s
+20,571 borrowed years are still drawn and still counted separately in
+`time.ts` §UNDATED, and revisiting them belongs with building permits.
+
+**`spareCamera` latching on the first travel is still unresolved and this block
+did not touch the latch.** `CityFilm` §THE VERSION THE MACHINE CAN PLAY argues
+the one-way latch well and its reasoning does not depend on how fast this
+particular box is: once `spare` is on the film is cheap and `keepUp` climbs for
+that reason alone, so re-examining it is meaningless. What is worth saying for
+the demo is the consequence rather than the mechanism: **if it latches, the
+camera CUTS instead of travelling for the rest of the run**, which is the
+opposite of what Daniel is asking the film for. It is measured on frames the
+machine has actually drawn, so on a GPU-backed browser it should not fire — but
+that is the one thing to look at on the demo machine, and `window.__cityFilm
+.forceSpare = false` is the override if it does.
+
+**The Hunters Point 2014 → 2015 figure in these notes predates the encoder
+re-run** and is not re-quoted anywhere in §17.

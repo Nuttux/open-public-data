@@ -40,6 +40,7 @@
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -304,6 +305,17 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
   const cardRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLElement>(null);
   const shownRef = useRef<FilmState | null>(null);
+  /* AND THE TRAP UNDERNEATH THIS, WHICH IS WHY THE VALUES LIVE IN A REF.
+     The first version of this kept `style={{width: state.progress*100+'%'}}` in
+     the JSX and wrote the node imperatively as well. That is a race with two
+     writers and React wins it: a render for ANY other reason — the reader
+     pressing pause, the line of copy changing — re-applies `state.progress`,
+     which is now whatever it was at the last DISCRETE change, seconds ago. The
+     hairline would jump backwards on every pause. So the two continuous values
+     are not in the rendered tree at all: they live here, the frame loop writes
+     them, and `FilmChrome`'s layout effect re-applies them after every render,
+     before paint. One writer, one source. */
+  const liveDrawRef = useRef({ progress: 0, cardAlpha: 0 });
   /* ── THE VERSION THE MACHINE CAN PLAY ──────────────────────────────────
      `keepRef` is the film's own playback speed, averaged over wall time;
      `spareRef` latches once it has been under `KEEP_UP` for long enough, and
@@ -496,6 +508,8 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
       /* THE TWO CONTINUOUS VALUES, WRITTEN ONTO THEIR NODES. Neither is text
          and neither changes layout: one is a width on the hairline, one is an
          opacity on the card wash. */
+      liveDrawRef.current.progress = s.progress;
+      liveDrawRef.current.cardAlpha = s.cardAlpha;
       if (barRef.current) barRef.current.style.width = `${s.progress * 100}%`;
       if (cardRef.current) cardRef.current.style.opacity = String(s.cardAlpha);
 
@@ -718,6 +732,7 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
         state={state}
         cardRef={cardRef}
         barRef={barRef}
+        liveDraw={liveDrawRef}
         paused={paused}
         atEnd={tRef.current >= total - 1}
         streetsDone={acceptedThrough(bands, Math.floor(state.year))}
@@ -914,7 +929,7 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
 
 function FilmChrome({
   payload, state, paused, atEnd, streetsDone, streetsTotal, source,
-  cardRef, barRef, onToggle, onExit, onSeek, shotT0, total,
+  cardRef, barRef, liveDraw, onToggle, onExit, onSeek, shotT0, total,
 }: {
   payload: FilmPayload;
   state: FilmState;
@@ -927,6 +942,7 @@ function FilmChrome({
    *  writes straight onto the DOM rather than through a render */
   cardRef: React.RefObject<HTMLDivElement | null>;
   barRef: React.RefObject<HTMLElement | null>;
+  liveDraw: React.RefObject<{ progress: number; cardAlpha: number }>;
   onToggle: () => void;
   onExit: () => void;
   onSeek: (f: number) => void;
@@ -935,6 +951,16 @@ function FilmChrome({
 }) {
   const t = useT();
   const nf = useMemo(() => new Intl.NumberFormat("en-US"), []);
+  /* NO DEPENDENCY ARRAY: after EVERY render, before paint. The two continuous
+     values are not in the tree, so this is the only thing that puts them back
+     when React rebuilds these nodes — a pause, a new line of copy, the card
+     mounting. Without it the hairline would show its width at the last discrete
+     change instead of now. */
+  useLayoutEffect(() => {
+    const v = liveDraw.current;
+    if (barRef.current) barRef.current.style.width = `${v.progress * 100}%`;
+    if (cardRef.current) cardRef.current.style.opacity = String(v.cardAlpha);
+  });
   const iy = Math.floor(state.year);
   /* the shot's own entity, not the badge token: the reach file is keyed on the
      entry id, so the sentence belongs to whatever the shot is about */
@@ -954,7 +980,7 @@ function FilmChrome({
            an element removed from the DOM does not transition out — and a wall
            -clock transition could not be scrubbed to anyway. `film.ts`
            §cardAlpha. */
-        <div ref={cardRef} className="fx-film-card" style={{ opacity: state.cardAlpha }}>
+        <div ref={cardRef} className="fx-film-card">
           <h2>{card.head}</h2>
           <p>{card.sub}</p>
         </div>
@@ -1073,7 +1099,7 @@ function FilmChrome({
         }}
       >
         <i />
-        <u ref={barRef} style={{ width: `${state.progress * 100}%` }} />
+        <u ref={barRef} />
         {shotT0.map((x) => (
           <s key={x} style={{ left: `${(100 * x) / (total || 1)}%` }} />
         ))}
