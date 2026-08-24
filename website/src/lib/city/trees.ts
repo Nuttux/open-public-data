@@ -25,9 +25,11 @@ import { borrowedCoast, coastRings, type Ring } from "./water";
 import {
   type Frame,
   lerpHex,
+  skylit,
   sx,
   sy,
   TerrainField,
+  tiltOf,
   WCN1,
   WG1,
   WPK1,
@@ -314,6 +316,8 @@ export interface VegFlags {
   parkCls: boolean;
   /** the park wash is clipped to the published shoreline */
   parkShore: boolean;
+  /** the canopy's tone follows the published coverage and the DEM's own light */
+  canopyTone: boolean;
 }
 
 export const WFLG: VegFlags = {
@@ -323,6 +327,7 @@ export const WFLG: VegFlags = {
   trees: true,
   parkCls: true,
   parkShore: true,
+  canopyTone: true,
 };
 if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
   (globalThis as { __cityWFLG?: VegFlags }).__cityWFLG = WFLG;
@@ -428,6 +433,88 @@ export const CANOPY_FAM: CrownTone = {
   dk: "#415c30",
 };
 
+/**
+ * THE CANOPY MASS HAD TWO GREENS AND THE FIELD UNDER IT HAS 227 VALUES.
+ *
+ * The brief: *"canopy depth — a shadow beneath the crown, MORE THAN ONE
+ * GREEN, crowns that overlap rather than tile"*, and Golden Gate Park at the
+ * block camera reading as one flat mat.
+ *
+ * `base/canopy` ships `area`, one byte a cell — the measured canopy area
+ * inside that cell over the cell's own 576 m². It is a CONTINUOUS published
+ * coverage fraction and both builds used it twice: once for the blob's radius,
+ * and once as a **binary** `area > 0.55 · amax ? dense : broadleaf`. A field
+ * whose quartiles are 49 / 86 / 149 of 255 was being asked one yes/no
+ * question, at the 72nd percentile.
+ *
+ * **TWO PUBLISHED LEVERS, AND NEITHER INVENTS A COLOUR.**
+ *
+ * 1 · **COVERAGE.** Four bins at the field's own quartiles — 49, 86, 149 —
+ *     which split the 50,897 cells 24.5 / 25.4 / 25.0 / 25.2 %. The tone at
+ *     bin 0 is `TREE_FAM[0]`, the broadleaf row, and at bin 3 is
+ *     `CANOPY_FAM`: **the reference's own two endpoints**, with bins 1 and 2
+ *     at a third and two thirds between them. It generalises the binary
+ *     choice rather than replacing it, and a sixth green never enters the
+ *     register.
+ *
+ * 2 · **THE LIGHT ON THE GROUND THE CROWN STANDS ON.** A crown was drawn with
+ *     the same three values whether it stood on the sunlit side of Mount
+ *     Sutro or in the shade behind it, while the ground under it was not.
+ *     Each tone is put through `skylit(tone, 0.86 + 0.20·lam, tiltOf(lam))` —
+ *     **`terrainRGB`'s own expression, character for character** — on the DEM
+ *     node under the cell, with `lamSh` so a crown inside a hill's own shadow
+ *     goes cool through `SKYC` exactly as the ground does. Nothing here is a
+ *     new light model; it is the page's light model reaching a layer that had
+ *     been left out of it.
+ *
+ * `lam` is quantised to `CANOPY_SHADE_N` levels over **[0.40, 1.00]** rather
+ * than over [0, 1]: the measured field runs p01 0.113, p05 0.453, median
+ * 0.730, p95 0.905, so uniform bins over the whole range would spend three
+ * fifths of the sheet on values the city does not have.
+ *
+ * **This is a DECLARED STEP UP, not a parity fix.** `part3.html` draws two
+ * canopy sprites and this draws 20. `WFLG.canopyTone` ablates it back to the
+ * reference's two.
+ */
+export const CANOPY_COV_Q: readonly number[] = [49, 86, 149];
+export const CANOPY_SHADE_N = 5;
+export const CANOPY_SHADE_LO = 0.4;
+
+/** the coverage bin a published `area` byte falls in, 0..3 */
+export function canopyCovBin(areaByte: number): number {
+  let b = 0;
+  while (b < CANOPY_COV_Q.length && areaByte >= CANOPY_COV_Q[b]) b++;
+  return b;
+}
+
+/** the shade bin a diffuse term falls in, 0..CANOPY_SHADE_N-1 */
+export function canopyShadeBin(lam: number): number {
+  const t = (lam - CANOPY_SHADE_LO) / (1 - CANOPY_SHADE_LO);
+  const i = Math.floor(t * CANOPY_SHADE_N);
+  return i < 0 ? 0 : i >= CANOPY_SHADE_N ? CANOPY_SHADE_N - 1 : i;
+}
+
+/** the tone of a coverage bin: the reference's two endpoints, interpolated */
+export function canopyToneOf(cov: number, shade: number): CrownTone {
+  const u = cov / CANOPY_COV_Q.length;
+  const base: CrownTone = {
+    mid: lerpHex(TREE_FAM[0].mid, CANOPY_FAM.mid, u),
+    lit: lerpHex(TREE_FAM[0].lit, CANOPY_FAM.lit, u),
+    dk: lerpHex(TREE_FAM[0].dk, CANOPY_FAM.dk, u),
+  };
+  // the centre of the shade bin, so no bin is lit by its own edge
+  const lam =
+    CANOPY_SHADE_LO +
+    ((shade + 0.5) / CANOPY_SHADE_N) * (1 - CANOPY_SHADE_LO);
+  const k = 0.86 + 0.2 * lam;
+  const tl = tiltOf(lam);
+  return {
+    mid: skylit(base.mid, k, tl),
+    lit: skylit(base.lit, k, tl),
+    dk: skylit(base.dk, k, tl),
+  };
+}
+
 /** the mid tone of each family, kept as its own export for the ground tint */
 export const TREE_GREENS: readonly string[] = TREE_FAM.map((f) => f.mid);
 
@@ -494,7 +581,12 @@ export interface SpriteSheet {
 export function buildSpriteSheet(
   makeCanvas: (w: number, h: number) => HTMLCanvasElement | OffscreenCanvas,
 ): SpriteSheet | null {
-  const n = TREE_FAM.length * 2 + 2;
+  /* 8 crowns (4 published form classes x the one published size bit), then
+     the canopy masses. The reference has two of those; with the coverage
+     quartiles and the shade bins it is 4 x CANOPY_SHADE_N, and `WFLG.
+     canopyTone` off collapses it back to the reference's two. */
+  const nCan = WFLG.canopyTone ? (CANOPY_COV_Q.length + 1) * CANOPY_SHADE_N : 2;
+  const n = TREE_FAM.length * 2 + nCan;
   const c = makeCanvas(Math.ceil(VSPR_W * n), Math.ceil(VSPR_H));
   const g = c.getContext("2d") as CanvasRenderingContext2D | null;
   if (!g) return null;
@@ -601,10 +693,17 @@ export function buildSpriteSheet(
       }
     } else {
       // a canopy mass: the same wash, no trunk, sitting lower on the ground
-      const dense = k - TREE_FAM.length * 2 === 1;
+      const ci = k - TREE_FAM.length * 2;
       const R = VSPR_R,
         cy = VSPR_AY - R * CANOPY_LIFT;
-      const F = dense ? CANOPY_FAM : TREE_FAM[0];
+      /* THE INDEX IS (coverage bin, shade bin) IN THAT ORDER, so a run of
+         cells at one coverage is contiguous in the sheet. With the treatment
+         off the two slots are the reference's own: broadleaf, then dense. */
+      const F = WFLG.canopyTone
+        ? canopyToneOf((ci / CANOPY_SHADE_N) | 0, ci % CANOPY_SHADE_N)
+        : ci === 1
+          ? CANOPY_FAM
+          : TREE_FAM[0];
       g.save();
       g.globalAlpha = 0.22;
       g.fillStyle = "#3b3222";
@@ -785,6 +884,7 @@ export function drawVeg(
     const pxm = 1.2247 * k;
     const amax = cell * cell;
     const canopy0 = TREE_GREENS.length * 2;
+    const tN1 = t.N - 1;
     let base = 0;
     for (const c of canopy) base += c.cellKey.length;
     for (let ci = canopy.length - 1; ci >= 0; ci--) {
@@ -814,10 +914,25 @@ export function drawVeg(
           if (VPROBE.on) VPROBE.canOff++;
           continue;
         }
-        const si = Math.min(
-          sheet.n - 1,
-          canopy0 + (areaM2 > amax * 0.55 ? 1 : 0),
-        );
+        /* THE PUBLISHED COVERAGE AND THE DEM'S OWN LIGHT PICK THE SPRITE.
+           `c.area[i]` is the byte the encoder shipped, so the bin is taken on
+           the published value rather than on a re-derived area; `lamSh` is
+           read at the DEM node under the cell, with no allocation — `toGrid`
+           returns a new array and there are 50,897 of these a rasterisation. */
+        let si: number;
+        if (WFLG.canopyTone) {
+          const gx = (w.x - t.proj.X0) * t.proj.s;
+          const gy = (w.y - t.proj.Y0) * t.proj.s;
+          const gi = gx < 0 ? 0 : gx > tN1 ? tN1 : Math.round(gx);
+          const gj = gy < 0 ? 0 : gy > tN1 ? tN1 : Math.round(gy);
+          si =
+            canopy0 +
+            canopyCovBin(c.area[i]) * CANOPY_SHADE_N +
+            canopyShadeBin(t.lamSh(gi * t.N + gj));
+        } else {
+          si = canopy0 + (areaM2 > amax * 0.55 ? 1 : 0);
+        }
+        si = Math.min(sheet.n - 1, si);
         ctx.drawImage(
           sheet.canvas,
           si * VSPR_W,

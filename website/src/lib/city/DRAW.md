@@ -4857,6 +4857,76 @@ docks combed across it (`out-g2/crop-marina-mock.png`). **That layer is not on
 this wire** — DRAW.md §16.8 already lists it as missing — so the teeth stay
 until it ships. Nothing is invented to hide them.
 
+### 20.8 The canopy had two greens and the field under it has 227 values
+
+The brief's second target: *"canopy depth — a shadow beneath the crown, MORE
+THAN ONE GREEN, crowns that overlap rather than tile"*, and Golden Gate Park
+at the block camera reading as one flat green mat with a dot texture.
+
+`base/canopy` ships `area`, one byte a cell: the measured canopy area inside
+that cell over the cell's own 576 m². **It is a continuous published coverage
+fraction and both builds asked it one yes/no question** —
+`area > 0.55 · amax ? dense : broadleaf`, at the 72nd percentile of a field
+whose quartiles are 49 / 86 / 149 of 255.
+
+**TWO PUBLISHED LEVERS, AND NEITHER INVENTS A COLOUR.**
+
+**1 · Coverage.** Four bins at the field's OWN quartiles — 49, 86, 149 — which
+split the 50,897 cells 24.5 / 25.4 / 25.0 / 25.2 %. Bin 0's tone is
+`TREE_FAM[0]`, the broadleaf row, and bin 3's is `CANOPY_FAM`: **the
+reference's own two endpoints**, with bins 1 and 2 a third and two thirds
+between them. It generalises the binary choice rather than replacing it, and a
+sixth green never enters the register.
+
+**2 · The light on the ground the crown stands on.** A crown was drawn with
+the same three values whether it stood on the sunlit side of Mount Sutro or in
+the shade behind it, while the ground under it was not. Each tone now goes
+through `skylit(tone, 0.86 + 0.20·lam, tiltOf(lam))` — **`terrainRGB`'s own
+expression, character for character** — read at the DEM node under the cell
+through `lamSh`, so a crown inside a hill's own shadow goes cool through
+`SKYC` exactly as the ground does. Nothing here is a new light model; it is
+the page's light model reaching a layer that had been left out of it.
+
+`lam` is quantised to five levels over **[0.40, 1.00]** and not over [0, 1]:
+the measured field runs p01 0.113, p05 0.453, median 0.730, p95 0.905, so
+uniform bins over the whole range would spend three fifths of the sheet on
+values the city does not have. 4 × 5 = **20 canopy sprites against the
+reference's 2**, in a sheet that is built once and is a function of the
+palette alone.
+
+**This is a DECLARED STEP UP, not a parity fix**, and `WFLG.canopyTone`
+collapses it back to the reference's two sprites for an ablation.
+
+MEASURED, `.parity/g2abl.py`, control pair first, and the sprite sheet is
+dropped on every toggle (`scene.sprite = null`) — without that the "off" frame
+indexes the 20-sprite sheet with the reference's two indices and the row is
+meaningless:
+
+| camera | control moved / gross | treatment moved / gross | frame mean |
+|---|---|---|---|
+| **block, Golden Gate Park** | 0.00 % / 0.00 % | **20.69 % / 2.11 %** | 144.59 → **143.81** |
+| district, GG Park (z 3.6) | 0.00 % / 0.00 % | **14.64 % / 1.36 %** | 154.10 → **153.49** |
+| street, GG Park (z 18) | 0.00 % / 0.00 % | **29.30 % / 2.58 %** | 136.71 → **136.07** |
+| district, Sunset | 95.42 % / 82.88 % | — | *the chunk pipeline regenerated mid-shot; discarded* |
+| whole city | 91.82 % / 58.89 % | — | *same; discarded* |
+
+**It touches 15-29 % of a vegetated frame and it moves the frame DARKER by
+0.6-0.8 levels** — the direction §18.7/§19.4 says the district and block
+frames need, arrived at by giving a published field back its resolution rather
+than by a gain. Pictures: `out-g2/can-ggp-before.png` against
+`out-g2/can-ggp-after.png`, crops `crop-can-before.png` / `crop-can-after.png`
+— the grove around Stow Lake and the Arboretum darkens and the fringes toward
+the meadows lighten, so the mass has an inside.
+
+**What is NOT fixed, and cannot be from here.** *"Crowns that overlap rather
+than tile"*: a blob's radius is `sqrt(area/π)·1.128` and 1.128 is `2/√π`, so a
+cell whose canopy fills it draws a disc that exactly circumscribes its own
+24 m cell — adjacent full cells touch and do not overlap, which is the lattice
+still visible in Golden Gate Park. Widening `BLOB_K` would draw more canopy
+than the file measures, and sub-cell placement was rejected in §4 for the
+reason that governs this whole port: **every one of those positions would be
+invented.** The lattice is the grid the source publishes.
+
 ## 23. Block G1(a) — the pixel floors are not the district deficit, and here is the count
 
 `scene.ts` came to this block with one instruction: **measure what the gate
