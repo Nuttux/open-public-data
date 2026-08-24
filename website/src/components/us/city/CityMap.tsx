@@ -22,8 +22,17 @@
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { CityData } from "@/lib/city/data";
-import { projection, screenToPlane, SX, SY, type Plane } from "@/lib/city/projection";
+import { proj, projection, screenToPlane, SX, SY, type Plane } from "@/lib/city/projection";
 import { LEDGER_W, NARROW_W } from "@/lib/city/camera";
+
+/**
+ * `base/blocks`'s `z` is the ring's ground elevation, quantised u16. The
+ * encoder names the field and not its step, so it was measured off the shipped
+ * chunk against ground whose elevation the city publishes: Lake Merced's block
+ * reads 76, Twin Peaks' reads 2362, and the file's maximum is 2667 against a
+ * 282 m high point. Ten units to the metre.
+ */
+const BLOCK_Z_PER_M = 10;
 import type { PlaceLabel } from "@/lib/city/labels";
 import { CityScene, parseLayers } from "./scene";
 import { CityRenderer, type RendererState } from "./renderer";
@@ -153,6 +162,11 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
      of being recomputed from a centroid the block table would have to be
      asked for. See `projection.ts` §plane → screen. */
   const [mark, setMark] = useState<Plane | null>(null);
+  /* WHICH block, not just where the reader clicked. `onPick` hands over an
+     index into the block table and the pin threw it away, so the panel could
+     say "block 3724" and the map could not draw 3724's own edge. */
+  const [markIdx, setMarkIdx] = useState<number>(-1);
+
   const ptrRef = useRef<{ x: number; y: number; at: number } | null>(null);
 
   // `onReady` is read through a ref: a caller that passes an inline arrow
@@ -179,6 +193,7 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
       return;
     }
     setMissed(false);
+    setMarkIdx(blockIndex);
     const bt = scene?.blockTable;
     if (!bt || !index) return;
     setBlockCtx({
@@ -445,6 +460,52 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
     return { x, y };
   })();
 
+  /* ── THE BLOCK'S OWN EDGE ─────────────────────────────────────────────
+     A pin says WHERE the reader clicked. It does not say what "this block"
+     means, and the whole margin is a claim about one — its residents, its
+     roll, its century of decisions. Two blocks can be forty metres apart and
+     a point between them belongs to neither in a reader's eye.
+
+     So the block's PUBLISHED RING is drawn on the ground. Nothing here is
+     invented: `rx`/`ry` are the vertices `base/blocks` ships, the same ones
+     the hit test walks to decide the click landed here at all — so the shape
+     drawn IS the shape that answered.
+
+     Projected with the same `proj()` the renderer uses, at ONE elevation for
+     the whole ring, which is the convention the massing pass already sets:
+     its prism is "the block's published ring, extruded over the elevation at
+     its centroid". A city block is about 120 m and its own rise is small
+     against the error of pretending it is flat.
+
+     Recomputed on every render, like `markPos`, because `onState` fires as
+     the camera moves — so the outline is glued to the ground through every
+     pan and zoom rather than being redrawn on a timer. */
+  const outline = ((): string | null => {
+    if (markIdx < 0 || !r || r.filmOn) return null;
+    const bt = sceneRef.current?.blockTable;
+    if (!bt) return null;
+    const o = bt.off[markIdx];
+    const m = bt.off[markIdx + 1] - o;
+    if (m < 3) return null;
+    const v = r.viewport;
+    const lw = hostRef.current && hostRef.current.clientWidth < NARROW_W ? 0 : LEDGER_W;
+    const zc = bt.z[markIdx] / BLOCK_Z_PER_M;
+    const pts: string[] = [];
+    let seen = false;
+    for (let a = 0; a < m; a++) {
+      const pl = proj(bt.rx[o + a], bt.ry[o + a], zc);
+      const x = SX(pl, v.W, r.cam);
+      const y = SY(pl, v.H, r.cam);
+      if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+      if (x > -200 && y > -200 && x < v.W - lw + 200 && y < v.H + 200) seen = true;
+      pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+    }
+    /* Every vertex off the visible strip means the block is behind the record
+       margin or off frame; the pin takes itself down in that case and so does
+       this, rather than painting an edge over a city the reader cannot see. */
+    return seen ? pts.join(" ") : null;
+  })();
+
   const goToStop = (i: number): void => {
     const rr = rendererRef.current;
     const host = hostRef.current;
@@ -519,6 +580,46 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
           />
 
           {hud}
+
+          {/* THE BLOCK'S OWN EDGE, under the pin. The pin says where the
+              reader clicked; this says what "this block" is — which is what
+              every figure in the margin is a claim about. `pointer-events:
+              none` so it never eats a click meant for the map, and
+              `aria-hidden` because the panel says the block id in words. */}
+          {outline ? (
+            <svg
+              className="fx-city-outline"
+              width="100%"
+              height="100%"
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                inset: 0,
+                pointerEvents: "none",
+                overflow: "visible",
+              }}
+            >
+              {/* Drawn twice: a wide soft casing so the edge holds against a
+                  pale roof or a bright park, then the line itself. One stroke
+                  in one colour disappears over half the city. */}
+              <polygon
+                points={outline}
+                fill="none"
+                stroke="var(--bg, #fff)"
+                strokeOpacity={0.55}
+                strokeWidth={5}
+                strokeLinejoin="round"
+              />
+              <polygon
+                points={outline}
+                fill="var(--bleu)"
+                fillOpacity={0.1}
+                stroke="var(--bleu)"
+                strokeWidth={1.75}
+                strokeLinejoin="round"
+              />
+            </svg>
+          ) : null}
 
           {/* THE BLOCK THE RECORD IN THE MARGIN BELONGS TO. Without it the
               reader clicked a block, the margin filled with a century of

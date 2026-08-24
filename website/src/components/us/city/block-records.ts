@@ -234,6 +234,29 @@ export const RAIL_FROM = 1900;
 export const RAIL_TO = 1990;
 
 /**
+ * THE LAST YEAR THE BOARD'S OWN SERIES CARRIES.
+ *
+ * All 142 Journal volumes in this corpus end in 1998–99, so the rail used to
+ * stop at the 1990s and a reader saw a century of decisions simply stop. That
+ * reads as *the city stopped deciding things here*, which is false and is the
+ * one thing a rail must never say. MEASURED over 40 of the 256 shards:
+ *
+ *   1900s 1,012 · 1910s 3,752 · 1920s 4,630 · 1930s 1,458 · 1940s 807
+ *   1950s   532 · 1960s   467 · 1970s   806 · 1980s 1,130 · 1990s 734
+ *   2000s     5 · 2010s    14   ← the DPW annual reports, and nothing else
+ *
+ * The rail now runs to the present and the decades past the series are drawn
+ * as what they are: **not empty, unrecorded.** `afterSeries` is what marks
+ * them, and the panel says the reason in words underneath.
+ *
+ * A modern source EXISTS and is not in this pipeline: SF's Legistar carries
+ * 30,428 Board matters for 2000–2018 with titles in the same form the Journal
+ * used. Placing them on blocks needs the same address-extraction pass the
+ * Journal got. See FICHE.md §14.
+ */
+export const SERIES_LAST_YEAR = 1999;
+
+/**
  * "Went quiet" is measured against the SERIES, not against the rail.
  *
  * The Journal runs 1906–1999 and the rail is allowed to run past it, because
@@ -268,6 +291,12 @@ export interface DecadeGroup {
    * is never demoted for the sake of a tidier line.
    */
   readonly headline: BlockDecision | null;
+  /**
+   * This decade is past the end of the Board's scanned series. It is not empty
+   * because nothing happened; it is empty because the record stops. Drawn
+   * differently, and explained in words rather than left to be inferred.
+   */
+  readonly afterSeries: boolean;
 }
 
 /**
@@ -330,7 +359,10 @@ export function decadeGroups(decisions: readonly BlockDecision[]): DecadeGroup[]
   const years = decisions.map((d) => d.y).filter((y) => y > 0);
   const decs = years.map((y) => Math.floor(y / 10) * 10);
   const from = Math.min(RAIL_FROM, ...(decs.length ? [Math.min(...decs)] : []));
-  const to = Math.max(RAIL_TO, ...(decs.length ? [Math.max(...decs)] : []));
+  /* To the CURRENT decade, not to the end of the record. A rail that stops
+     where the scanning stopped tells the reader the city stopped. */
+  const now = Math.floor(new Date().getFullYear() / 10) * 10;
+  const to = Math.max(RAIL_TO, now, ...(decs.length ? [Math.max(...decs)] : []));
   const out: DecadeGroup[] = [];
   for (let dec = from; dec <= to; dec += 10) {
     const rows = bucket.get(dec) ?? [];
@@ -339,6 +371,7 @@ export function decadeGroups(decisions: readonly BlockDecision[]): DecadeGroup[]
       label: `${dec}s`,
       rows,
       headline: pickHeadline(rows),
+      afterSeries: dec > Math.floor(SERIES_LAST_YEAR / 10) * 10,
     });
   }
   return out;

@@ -39,19 +39,34 @@ function row(p: Partial<BlockDecision> & { y: number }): BlockDecision {
 }
 
 describe("decadeGroups", () => {
+  const NOW_DECADE = Math.floor(new Date().getFullYear() / 10) * 10;
+
   it("draws the empty decades between two distant decisions", () => {
     const g = decadeGroups([row({ y: 1916 }), row({ y: 1977 })]);
     expect(g[0].decade).toBe(1900);
-    expect(g[g.length - 1].decade).toBe(1990);
     const busy = g.filter((d) => d.rows.length > 0).map((d) => d.decade);
     expect(busy).toEqual([1910, 1970]);
-    // the run of silence is drawn, not implied
-    expect(g.filter((d) => d.rows.length === 0)).toHaveLength(8);
+    // the run of silence is drawn, not implied — every decade of the rail
+    // except the two that hold something
+    expect(g.filter((d) => d.rows.length === 0)).toHaveLength(g.length - 2);
   });
 
-  it("stretches past 1990 rather than dropping what the reports hold", () => {
-    const g = decadeGroups([row({ y: 2010 })]);
-    expect(g[g.length - 1].decade).toBe(2010);
+  /**
+   * The rail used to stop at the 1990s, where the Board's scanned series
+   * stops, and a reader saw a century of decisions simply end — which reads as
+   * the city having stopped deciding. It now runs to the CURRENT decade and
+   * marks everything past the series as unrecorded rather than empty.
+   */
+  it("runs to the present, not to the end of the record", () => {
+    const g = decadeGroups([row({ y: 1916 })]);
+    expect(g[g.length - 1].decade).toBe(NOW_DECADE);
+    expect(g.find((d) => d.decade === 1990)?.afterSeries).toBe(false);
+    expect(g.find((d) => d.decade === 2000)?.afterSeries).toBe(true);
+  });
+
+  it("stretches past the present rather than dropping what a late row holds", () => {
+    const g = decadeGroups([row({ y: NOW_DECADE + 10 })]);
+    expect(g[g.length - 1].decade).toBe(NOW_DECADE + 10);
   });
 
   it("heads a decade with the Board's own printed heading over rank order", () => {

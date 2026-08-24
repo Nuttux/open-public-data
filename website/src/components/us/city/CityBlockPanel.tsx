@@ -89,17 +89,16 @@
  * behaviour, and no URL of its own.
  */
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useT } from "@/lib/localeContext";
 import FicheArchiveShelf from "@/components/fiche/FicheArchiveShelf";
 import type { FicheArchiveDoc } from "@/components/fiche/types";
 import {
   archiveHref,
-  blockDemolitions,
   blockNow,
   blockPlaces,
   blockShape,
-  blockSubjects,
   decadeGroups,
   hasMoney,
   loadBlockFacts,
@@ -107,17 +106,16 @@ import {
   loadStreetRecord,
   placeHref,
   streetLabel,
+  SERIES_LAST_YEAR,
   usdShort,
   KIND_WORDING,
   TIER_WORDING,
   type BlockDecision,
-  type BlockDemolitions,
   type BlockFactsFile,
   type BlockMoneyFile,
   type BlockNow,
   type BlockPlace,
   type BlockRecord,
-  type BlockSubject,
   type DecadeGroup,
 } from "./block-records";
 
@@ -196,152 +194,144 @@ export interface BlockContext {
 }
 
 /**
- * TWO STRINGS THIS PASS ADDS, on the same arrangement as the thirty-five before
- * them: declared here behind `tx()` because `useT` returns the key itself when
- * a key is missing, deleted the moment they land in `en.ts` / `fr.ts`.
- * FICHE.md §13g has them.
+ * EIGHT STRINGS THIS PASS ADDS. Same arrangement as the thirty-seven before
+ * them — declared here behind `tx()` because `useT` returns the key itself when
+ * one is missing, deleted the moment they land. FICHE.md §14g has them.
  */
-const EN_DEM2: Record<string, string> = {
-  "us.sf.thecity.panel.dem_lead_year":
-    "{n} buildings on this block were demolished under a completed permit, in {y0}.",
-  // The SHORT floor line, for a block that HAS a record. The long one exists to
-  // stop an empty section reading as "nothing came down here"; a block showing
-  // three demolitions cannot be misread that way, and on a 390 px screen the
-  // long form ran six lines to say something the header already says.
-  "us.sf.thecity.panel.dem_floor_short":
-    "This record begins in {y}; what came down before is not published block by block.",
+const EN_SUM: Record<string, string> = {
+  "us.sf.thecity.panel.sum_head": "In short",
+  "us.sf.thecity.panel.sum_ground": "A mostly {use} block in {hood}.",
+  "us.sf.thecity.panel.sum_ground_plain": "A block in {hood}.",
+  "us.sf.thecity.panel.sum_people": "{n} people live on it, in {h} homes.",
+  "us.sf.thecity.panel.sum_people_one_home": "{n} people live on it, in one home.",
+  "us.sf.thecity.panel.sum_people_one": "One person lives on it, in {h} homes.",
+  "us.sf.thecity.panel.sum_people_none": "The Census counts nobody living on it.",
+  "us.sf.thecity.panel.sum_record":
+    "The Board decided {n} things here between {y0} and {y1}, most of them in the {d}s.",
+  "us.sf.thecity.panel.sum_record_flat":
+    "The Board decided {n} things here between {y0} and {y1}.",
+  "us.sf.thecity.panel.sum_record_one": "The Board decided one thing here, in {y0}.",
+  "us.sf.thecity.panel.sum_record_none": "The Board's record places nothing on it.",
+  "us.sf.thecity.panel.sum_place": "{place} stands on it.",
+  "us.sf.thecity.panel.sum_rail_end":
+    "The Board's Journal is scanned to {y}. The decades after it are blank because the record stops there, not because the city stopped deciding.",
 };
 
 function tx(t: (k: string) => string, key: string): string {
   const v = t(key);
-  return v === key ? (EN_DEM2[key] ?? key) : v;
+  return v === key ? (EN_SUM[key] ?? key) : v;
 }
 
 /**
- * WHAT CAME DOWN — and the seventy-year hole, said out loud on every block.
+ * IN SHORT — the block in four clauses, and not one word that is not a field.
  *
- * The map's buildings are survivorship only: every footprint it draws is one
- * standing today. This is the first thing on the page that shows the city
- * REMOVING something, and it reaches back only to 1980.
+ * "A summary of the block from the objective data and the voting record so
+ * people get straight to the meat." The danger in that ask is obvious: a
+ * summary is where prose creeps in and starts generalising past what the
+ * record says. So this is **assembled, not written**. Every clause is one
+ * sentence over one field, and a clause whose field is missing is DROPPED
+ * rather than hedged:
  *
- * **The floor sentence runs whether or not the block has anything**, which is
- * the whole design. 1,687 of 5,404 blocks carry a completed demolition; on the
- * other 3,717 an empty section would read as "nothing was ever demolished
- * here". For the Western Addition — cleared under redevelopment in the 1960s,
- * two decades before this series opens — that would be the single most
- * misleading sentence on the site. Same rule as the 810 blocks with no Census
- * ring: show the absence of the RECORD, never a zero.
+ *   the ground   the roll's own dominant use, and the published hood
+ *   the people   the Census count carried onto this block, or its absence
+ *   the record   how many decisions, across what years, and the busiest decade
+ *                — `blockShape` only names a decade that actually leads
+ *   the place    the published city place standing here, where there is one
  *
- * All ten `us.sf.thecity.panel.dem_*` keys are in `en.ts` and `fr.ts`
- * (`f72af9a1`), so this calls `t()` like the rest of the panel; the `EN_DEM`
- * fallback that stood in while they landed is gone, as `EN_NOW` was before it.
+ * Nothing is ranked, characterised or compared. There is no adjective in it
+ * that the assessor did not print. A block where nothing is known says so in
+ * one line and stops, which is the same discipline as the 810 blocks with no
+ * Census ring: **state what the record holds, and state when it holds
+ * nothing.**
  */
-function DemolitionRows({
-  dem,
-  blocksWithAny,
-  blocksTotal,
+function BlockSummary({
+  now,
+  shape,
+  place,
+  hood,
   t,
 }: {
-  dem: BlockDemolitions;
-  blocksWithAny: number;
-  blocksTotal: number;
+  now: BlockNow | null;
+  shape: ReturnType<typeof blockShape>;
+  place: BlockPlace | null;
+  hood: string;
   t: (k: string) => string;
 }) {
-  const max = dem.byDecade.reduce((m, d) => Math.max(m, d.n), 0);
-  const liveDecades = dem.byDecade.filter((d) => d.n > 0).length;
+  const bits: string[] = [];
+
+  if (now?.use) {
+    bits.push(
+      tx(t, "us.sf.thecity.panel.sum_ground")
+        .replace("{use}", now.use.toLowerCase())
+        .replace("{hood}", hood),
+    );
+  } else if (hood) {
+    bits.push(tx(t, "us.sf.thecity.panel.sum_ground_plain").replace("{hood}", hood));
+  }
+
+  if (now && now.residents !== null) {
+    bits.push(
+      now.residents === 0
+        ? tx(t, "us.sf.thecity.panel.sum_people_none")
+        : tx(
+            t,
+            now.residents === 1
+              ? "us.sf.thecity.panel.sum_people_one"
+              : now.homes === 1
+                ? "us.sf.thecity.panel.sum_people_one_home"
+                : "us.sf.thecity.panel.sum_people",
+          )
+            .replace("{n}", nfInt.format(now.residents))
+            .replace("{h}", nfInt.format(now.homes ?? 0)),
+    );
+  }
+
+  if (!shape) {
+    bits.push(tx(t, "us.sf.thecity.panel.sum_record_none"));
+  } else if (shape.n === 1) {
+    bits.push(
+      tx(t, "us.sf.thecity.panel.sum_record_one").replace(
+        "{y0}",
+        String(shape.firstYear),
+      ),
+    );
+  } else {
+    bits.push(
+      tx(
+        t,
+        shape.busiest
+          ? "us.sf.thecity.panel.sum_record"
+          : "us.sf.thecity.panel.sum_record_flat",
+      )
+        .replace("{n}", nfInt.format(shape.n))
+        .replace("{y0}", String(shape.firstYear))
+        .replace("{y1}", String(shape.lastYear))
+        .replace("{d}", String(shape.busiest?.decade ?? "")),
+    );
+  }
+
+  /* The one thing the old lead said that the clauses above do not: a block
+     whose record stops two whole decades before the series does. That is about
+     THIS BLOCK falling silent, not about the Journal running out, and the two
+     are different sentences — see `blockShape.quietAfter`. */
+  if (shape?.quietAfter) {
+    bits.push(
+      t("us.sf.thecity.panel.shape_quiet").replace("{y}", String(shape.quietAfter)),
+    );
+  }
+
+  if (place) {
+    bits.push(tx(t, "us.sf.thecity.panel.sum_place").replace("{place}", place.name));
+  }
+
+  if (bits.length === 0) return null;
   return (
     <>
-      <div className="fx-city-ledger-head fx-block-sec">
-        {t("us.sf.thecity.panel.dem_head").replace(
-          "{y}",
-          String(dem.recordFrom),
-        )}
+      <div className="fx-city-ledger-head fx-block-sec" style={{ marginTop: 10 }}>
+        {tx(t, "us.sf.thecity.panel.sum_head")}
       </div>
-      {dem.total > 0 ? (
-        <>
-          <p className="fx-block-lead" style={{ marginTop: 0 }}>
-            {(dem.total === 1
-              ? t("us.sf.thecity.panel.dem_lead_one")
-              : dem.firstYear === dem.lastYear
-                ? tx(t, "us.sf.thecity.panel.dem_lead_year")
-                : t("us.sf.thecity.panel.dem_lead")
-            )
-              .replace("{n}", nfInt.format(dem.total))
-              .replace("{y0}", String(dem.firstYear))
-              .replace("{y1}", String(dem.lastYear))}
-          </p>
-          {/* The same rail idiom the decades below use, so a reader meets one
-              shape twice rather than two shapes once. Empty decades are drawn
-              here too: a block cleared in the 1980s and untouched since is a
-              different thing from one losing a building every decade.
-
-              But ONLY where there is a shape to show. Where everything came
-              down in ONE decade the rail is four flatlines and one bar, and it
-              says nothing the sentence above it has not already said — the lead
-              names the year. Measured on a phone: it cost fourteen lines of a
-              390 px screen to report two buildings. */}
-          {liveDecades > 1 ? (
-          <div className="fx-block-rail" style={{ marginTop: 8 }}>
-            {dem.byDecade.map((d) => (
-              <div className="fx-block-blank" key={d.decade}>
-                <div className="fx-block-head">
-                  <span
-                    className={d.n ? "fx-block-dec" : "fx-block-dec fx-block-dec-off"}
-                  >
-                    {d.decade}s
-                  </span>
-                  {d.n > 0 ? (
-                    <span
-                      className="fx-block-track"
-                      aria-label={t("us.sf.thecity.panel.dem_aria")
-                        .replace("{decade}", String(d.decade))
-                        .replace("{n}", String(d.n))}
-                    >
-                      <span
-                        className="fx-block-bar"
-                        style={{ width: `${max ? (100 * d.n) / max : 0}%` }}
-                      />
-                    </span>
-                  ) : (
-                    <span className="fx-block-flat" />
-                  )}
-                  <span className="fx-block-n tnum">{d.n || ""}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          ) : null}
-          {dem.units > 0 ? (
-            <dl className="fx-city-ledger-facts" style={{ marginTop: 8 }}>
-              <div className="fx-city-fact-row">
-                <dt>{t("us.sf.thecity.panel.dem_units")}</dt>
-                <dd>{nfInt.format(dem.units)}</dd>
-              </div>
-            </dl>
-          ) : null}
-        </>
-      ) : (
-        <p className="fx-block-lead" style={{ marginTop: 0 }}>
-          {t("us.sf.thecity.panel.dem_none")}
-        </p>
-      )}
-      <p className="fx-block-hint" style={{ marginTop: 7 }}>
-        {(dem.total > 0
-          ? tx(t, "us.sf.thecity.panel.dem_floor_short")
-          : t("us.sf.thecity.panel.dem_floor")
-        ).replace("{y}", String(dem.recordFrom))}{" "}
-        {dem.total > 0 ? t("us.sf.thecity.panel.dem_counted") + " " : ""}
-        {t("us.sf.thecity.panel.dem_cover")
-          .replace("{n}", nfInt.format(blocksWithAny))
-          .replace("{all}", nfInt.format(blocksTotal))}{" "}
-        <a
-          className="fx-block-jump"
-          href="https://data.sfgov.org/d/i98e-djp9"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t("us.sf.thecity.panel.dem_src")}
-        </a>
+      <p className="fx-block-lead" style={{ marginTop: 0 }}>
+        {bits.join(" ")}
       </p>
     </>
   );
@@ -364,12 +354,9 @@ function DemolitionRows({
  */
 function NowRows({
   now,
-  zeroBlocks,
   t,
 }: {
   now: BlockNow;
-  /** how many blocks the roll values at nothing — so "$0" is not read as a hole */
-  zeroBlocks: number;
   t: (k: string) => string;
 }) {
   return (
@@ -396,24 +383,9 @@ function NowRows({
             <dd>{now.use}</dd>
           </div>
         ) : null}
-        <div className="fx-city-fact-row">
-          <dt>{t("us.sf.thecity.panel.now_value")}</dt>
-          <dd>{usdShort(now.valueUsd)}</dd>
-        </div>
       </dl>
       <p className="fx-block-hint" style={{ marginTop: 7 }}>
         {t("us.sf.thecity.panel.now_src").replace("{y}", String(now.rollYear))}{" "}
-        {/* 480 of 5,401 blocks are valued at nothing — the roll carries no
-            figure on the ground the city, the state and the federal government
-            own, and City Hall's own parcel is one of them. Alone, "$0" reads
-            as a hole in the data; with the count beside it, it reads as what
-            the roll says. */}
-        {now.valueUsd === 0 && zeroBlocks > 0
-          ? t("us.sf.thecity.panel.now_zero").replace(
-              "{n}",
-              nfInt.format(zeroBlocks),
-            ) + " "
-          : ""}
         {now.residents !== null
           ? t("us.sf.thecity.panel.now_src_pop").replace(
               "{c}",
@@ -549,9 +521,17 @@ function PlaceMoney({
           : place.n_contracts > 0 && place.n_payees > 0
             ? t("us.sf.thecity.panel.money_ledgers") + " "
             : ""}
-        <a className="fx-block-jump" href={href}>
+        {/* `next/link`, NOT an anchor. The place fiche already has a root-level
+            intercepting drawer — `app/@drawer/(...)us/city/sf/places/place/
+            [slug]` — and the root layout renders the slot, so this opens the
+            fiche over the map with the camera and the open block behind it. A
+            plain <a> is a document navigation: it bypasses the interception and
+            throws the whole city away to show one building. The drawer route is
+            a server component reading `loadSfPlace` off disk, so nothing here
+            has to fetch or hold the fiche's data. */}
+        <Link className="fx-block-jump" href={href}>
           {t("us.sf.thecity.panel.money_link").replace("{place}", place.name)}
-        </a>
+        </Link>
       </p>
     </div>
   );
@@ -591,7 +571,14 @@ function DecadeRow({
       >
         <div className="fx-block-head">
           <span className="fx-block-dec fx-block-dec-off">{group.label}</span>
-          <span className="fx-block-flat" />
+          {/* Past the end of the Board's scanned series the track is drawn
+              fainter still. An empty decade inside the series is a silence the
+              record observed; one after it is a decade the record never
+              reached, and the two must not look the same. */}
+          <span
+            className="fx-block-flat"
+            style={group.afterSeries ? { opacity: 0.4 } : undefined}
+          />
           <span className="fx-block-n" />
         </div>
       </div>
@@ -663,39 +650,6 @@ function DecadeRow({
  * that block and the last year it did. Nothing is hidden by the press — the
  * count on the button says how many rows it holds, and one press clears it.
  */
-function SubjectRow({
-  subjects,
-  active,
-  onPick,
-  t,
-}: {
-  subjects: readonly BlockSubject[];
-  active: string | null;
-  onPick: (key: string | null) => void;
-  t: (k: string) => string;
-}) {
-  return (
-    <div
-      className="fx-block-subjects"
-      role="group"
-      aria-label={t("us.sf.thecity.panel.subjects_aria")}
-    >
-      {subjects.map((s) => (
-        <button
-          key={s.key}
-          type="button"
-          className="fx-block-subject"
-          aria-pressed={active === s.key}
-          onClick={() => onPick(active === s.key ? null : s.key)}
-        >
-          <span>{s.label}</span>
-          <span className="fx-block-subject-n tnum">{s.rows.length}</span>
-        </button>
-      ))}
-    </div>
-  );
-}
-
 export default function CityBlockPanel({
   record,
   context,
@@ -719,7 +673,6 @@ export default function CityBlockPanel({
   const streetsRef = useRef<HTMLDetailsElement>(null);
   const [streets, setStreets] = useState<Record<string, BlockDecision[]>>({});
   const [openStreets, setOpenStreets] = useState(false);
-  const [subject, setSubject] = useState<string | null>(null);
   // The two modern-fact files. One fetch each for the whole session — both are
   // memoised inside `block-records`, so a second panel does not re-request —
   // and both fail soft to null, which renders exactly what this panel rendered
@@ -766,7 +719,6 @@ export default function CityBlockPanel({
       panelRef.current?.closest(".fx-city-ledger") ?? panelRef.current?.parentElement;
     if (host instanceof HTMLElement) host.scrollTop = 0;
     setStreets({});
-    setSubject(null);
     setOpenStreets(
       (record?.decisions.length ?? 0) === 0 && (record?.streets.length ?? 0) > 0,
     );
@@ -789,14 +741,11 @@ export default function CityBlockPanel({
   }, [openStreets, record]);
 
   // `record?.decisions ?? []` builds a new array on every render, and a new
-  // array is a new dependency, so the subjects were recomputed on every
-  // frame the map emitted while the panel was open.
+  // array is a new dependency, so the shape was recomputed on every frame the
+  // map emitted while the panel was open.
   const here = useMemo(() => record?.decisions ?? EMPTY, [record]);
   const shape = blockShape(here);
-  const subjects = useMemo(() => blockSubjects(here), [here]);
-  const picked = subjects.find((s) => s.key === subject) ?? null;
-  const shown = picked ? picked.rows : here;
-  const groups = shown.length > 0 ? decadeGroups(shown) : [];
+  const groups = here.length > 0 ? decadeGroups(here) : [];
   const max = groups.reduce((m, g) => Math.max(m, g.rows.length), 0);
   const streetN = context?.streetDecisions ?? 0;
 
@@ -804,7 +753,6 @@ export default function CityBlockPanel({
   // actually arrived — a block with no row in either simply draws neither
   // section rather than a heading over nothing.
   const now = facts && context ? blockNow(facts, context.id) : null;
-  const dem = facts && context ? blockDemolitions(facts, context.id) : null;
   const places = money && context ? blockPlaces(money, context.id) : [];
 
   /** open the street fold and take the reader down to it in one press */
@@ -860,17 +808,25 @@ export default function CityBlockPanel({
       </div>
 
       <div className="fx-city-panel-body">
+        {/* IN SHORT, before anything else. "So people get straight to the
+            meat." It is assembled from the same fields the sections below
+            print, so it can never say more than they do. */}
+        {!loading ? (
+          <BlockSummary
+            now={now}
+            shape={shape}
+            place={places[0] ?? null}
+            hood={context?.hood ?? ""}
+            t={t}
+          />
+        ) : null}
         {/* WHAT IS HERE NOW, above the record and outside its loading gate.
             The roll and the census arrive on their own fetch, and a block with
             no decisions at all still has residents on it — putting these inside
             the `shape ?` branch would have hidden them on exactly the 324
             blocks whose only content this is. */}
         {now && facts ? (
-          <NowRows
-            now={now}
-            zeroBlocks={facts.coverage.blocks_with_no_assessed_value ?? 0}
-            t={t}
-          />
+          <NowRows now={now} t={t} />
         ) : null}
 
         {places.length > 0 && money ? (
@@ -902,53 +858,10 @@ export default function CityBlockPanel({
           </>
         ) : null}
 
-        {/* WHAT CAME DOWN, under the money rather than over it.
-            Rendered whenever the file has loaded and the block is one the roll
-            knows — NOT only when the block has a demolition — because the 1980
-            floor is the point and 3,717 of 5,404 blocks need to be told it.
-
-            It sits BELOW `Public money` because it is on every block and the
-            money is on 66. Judged on a phone: with demolitions above, a block
-            that HAS money pushed it most of a screen down, and the rarest thing
-            the panel knows was the hardest to reach. The always-present section
-            yields to the rare one. */}
-        {dem && facts && now ? (
-          <DemolitionRows
-            dem={dem}
-            blocksWithAny={facts.demolition.blocks_with_any}
-            blocksTotal={facts.coverage.blocks_total}
-            t={t}
-          />
-        ) : null}
-
         {loading ? (
           <p className="fx-fiche-note">{t("us.sf.thecity.panel.loading")}</p>
         ) : shape ? (
           <>
-            <p className="fx-block-lead">
-              {(shape.n === 1
-                ? t("us.sf.thecity.panel.lead_one")
-                : t("us.sf.thecity.panel.lead")
-              )
-                .replace("{n}", nfInt.format(shape.n))
-                .replace("{y0}", String(shape.firstYear))
-                .replace("{y1}", String(shape.lastYear))}
-              {shape.busiest
-                ? " " +
-                  t("us.sf.thecity.panel.shape_busiest").replace(
-                    "{decade}",
-                    String(shape.busiest.decade),
-                  )
-                : ""}
-              {shape.quietAfter
-                ? " " +
-                  t("us.sf.thecity.panel.shape_quiet").replace(
-                    "{y}",
-                    String(shape.quietAfter),
-                  )
-                : ""}
-            </p>
-
             {streetN > 0 && record && record.streets.length > 0 ? (
               <p className="fx-block-nearby">
                 <button type="button" className="fx-block-jump" onClick={goToStreets}>
@@ -962,59 +875,29 @@ export default function CityBlockPanel({
               </p>
             ) : null}
 
-            {subjects.length > 0 ? (
-              <>
-                <div className="fx-city-ledger-head fx-block-sec">
-                  {t("us.sf.thecity.panel.subjects_head")}
-                </div>
-                <p className="fx-block-hint">
-                  {t("us.sf.thecity.panel.subjects_hint")}
-                </p>
-                <SubjectRow
-                  subjects={subjects}
-                  active={subject}
-                  onPick={setSubject}
-                  t={t}
-                />
-              </>
-            ) : null}
 
             <div className="fx-city-ledger-head fx-block-sec">
               {t("us.sf.thecity.panel.rail_head")}
             </div>
-            {picked ? (
-              <p className="fx-block-hint">
-                {t(
-                  picked.firstYear === picked.lastYear
-                    ? "us.sf.thecity.panel.rail_filtered_one_year"
-                    : "us.sf.thecity.panel.rail_filtered",
-                )
-                  .replace("{n}", String(picked.rows.length))
-                  .replace("{label}", picked.label)
-                  .replace("{y0}", String(picked.firstYear))
-                  .replace("{y1}", String(picked.lastYear))}{" "}
-                <button
-                  type="button"
-                  className="fx-block-jump"
-                  onClick={() => setSubject(null)}
-                >
-                  {t("us.sf.thecity.panel.rail_unfilter").replace(
-                    "{n}",
-                    nfInt.format(shape.n),
-                  )}
-                </button>
-              </p>
-            ) : (
-              <p className="fx-block-hint">{t("us.sf.thecity.panel.rail_hint")}</p>
-            )}
+            <p className="fx-block-hint">{t("us.sf.thecity.panel.rail_hint")}</p>
             <div
               className="fx-block-rail"
-              key={`${record?.blockId ?? "-"}:${subject ?? ""}`}
+              key={record?.blockId ?? "-"}
             >
               {groups.map((g) => (
                 <DecadeRow key={g.decade} group={g} max={max} t={t} />
               ))}
             </div>
+            {/* Daniel: "there's nothing included from the handoff to
+                digitalization — it's a shame." He is right, and the rail now
+                runs to the present so the gap is visible instead of the rail
+                just stopping. This says whose gap it is. */}
+            <p className="fx-block-hint" style={{ marginTop: 6 }}>
+              {tx(t, "us.sf.thecity.panel.sum_rail_end").replace(
+                "{y}",
+                String(SERIES_LAST_YEAR),
+              )}
+            </p>
           </>
         ) : (
           <>

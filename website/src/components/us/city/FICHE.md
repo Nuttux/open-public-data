@@ -1180,3 +1180,184 @@ held for.
 
 Screenshots: `f1-k1phone-3724` (**before** the reorder), `f1-k2phone-3724` (**after**),
 `f1-k2block-0762` (the Western Addition, full floor paragraph intact).
+
+---
+
+## 14. Block F1, round five — Daniel's review
+
+Seven items. Six landed; one is a handoff.
+
+### a. The block's own edge, on the ground — `CityMap.tsx`
+
+> "When I click a block I get a point… it doesn't indicate a polygon on the ground with the
+> border of that block."
+
+The **published ring** is now drawn under the pin. `base/blocks` ships `ox/oy` per block and
+`vx/vy` per vertex at a per-block quantum of `(1 << sc) / 10`, which `decodeBlocks` already
+reconstructs into absolute world metres as `rx`/`ry` — **the same vertices the hit test walks to
+decide the click landed here at all.** So the shape drawn *is* the shape that answered.
+
+Projected with the renderer's own `proj()` at one elevation for the whole ring, which is the
+convention the massing pass already sets (its prism is *"the block's published ring, extruded
+over the elevation at its centroid"*). An SVG overlay beside the pin, recomputed every render —
+`onState` fires as the camera moves — so it is glued to the ground through every pan and zoom.
+
+**`base/blocks.z` has no published step.** The encoder names the field (*"the ring's ground
+elevation"*) and not its unit, so it was measured off the shipped chunk against ground the city's
+elevation is known for: Lake Merced's block reads **76**, Twin Peaks' **2362**, and the file's
+maximum is **2667** against a 282 m high point. **Ten units to the metre**, and `BLOCK_Z_PER_M`
+says so where it is used.
+
+**A false alarm worth recording.** The ring first appeared to project ~456 px off the pin. It did
+not: `onPick(i)` called from a script never sets a pointer position, so the pin falls back to the
+middle of the frame — 576 px, which is exactly `(1440 − 288) / 2`. `proj` and `invAt` round-trip
+to the decimal. Verified instead with a **real canvas click**: block 3549, pin at (620, 339),
+ring centroid at (638, 316) — 29 px apart, which is the click landing off-centre inside its own
+block. Screenshot `f1-c1click-620_430`.
+
+### b. The place fiche opens over the map — one word
+
+> "Can the Qipu place fiche open directly in the side drawer… without going to another page?"
+
+**Yes, and it needed `<a>` → `next/link`.** The route already existed:
+`app/@drawer/(...)us/city/sf/places/place/[slug]/page.tsx`, root-level, one drawer per entity,
+exactly the doctrine — and the root layout renders the `{drawer}` slot. A plain anchor is a
+document navigation and **bypasses the interception**, throwing the whole city away to show one
+building.
+
+It costs nothing to feed: the drawer route is a server component calling `loadSfPlace(slug)` off
+disk, so the city page holds no fiche data. Measured after the click: URL becomes
+`/us/city/sf/places/place/moscone-center`, **`canvas` still mounted**, `.fx-drawer` present —
+the map, the camera and the open block are all still behind it. Screenshot `f1-drawer-desktop`.
+
+### c–e. Three things removed
+
+- **The assessed value is gone**, and the `$0`-on-480-blocks apparatus with it — that existed
+  only to keep the row honest, and the row is no longer there.
+- **"What comes up more than once" is gone** — `blockSubjects`, the chips, the filter state and
+  the filtered-rail hint. The function stays in `block-records.ts` with its tests; nothing renders
+  it.
+- **The demolition section is gone from the fiche.** See §f.
+
+### f. Demolitions — a handoff, not a deletion
+
+> "demolition should be about the buildings appearing and disappearing but not be in the fiches."
+
+`build_block_facts.py`, the permit join and the 1980 floor all stay. **What a renderer needs is
+already in `block-facts.json`** and needs no new pipeline work:
+
+```
+dem : { "<block>": [ n per decade …, units, firstYear, lastYear ] }
+demolition : { dataset, from_decade, from_year, decades, blocks_with_any,
+               units_demolished, series_note, THE_RECORD_STARTS_IN_1980 }
+```
+
+Per-building rather than per-block — the form a vanishing building wants — is one edit to the
+build: `cache_facts/demolitions.json` holds **block, lot, completed_date, storeys and use for
+all 4,511 rows**, and the panel only ever needed the block-level rollup. **The rules travel with
+the data:**
+
+1. **A permit is not a demolition.** Count `status = complete` only. 1,630 of the 7,310 were
+   cancelled, expired or withdrawn, and a building whose permit was withdrawn is standing.
+2. **Date on `completed_date`**, not on the filing.
+3. **The record starts in 1980 and there is nothing before it.** A building that vanishes on the
+   rail in 1994 is a fact; a building that never vanishes is *not* evidence it stood. The
+   Western Addition was cleared in the 1960s and no file enumerates it.
+4. **There is no footprint.** The building is gone from `ynuv-fyni`, so the honest rendering is a
+   marker or a parcel-shaped ghost, never a modelled solid (DATA-TRUTH §4.1).
+
+### g. The rail runs to the present, and says whose gap it is
+
+> "there's nothing included from the handoff to digitalization… it's a shame."
+
+He is right, and the cause is measured. Over 40 of the 256 shards:
+
+```
+1900s 1,012 · 1910s 3,752 · 1920s 4,630 · 1930s 1,458 · 1940s 807
+1950s   532 · 1960s   467 · 1970s   806 · 1980s 1,130 · 1990s 734
+2000s     5 · 2010s    14   ← the DPW annual reports, and nothing else
+```
+
+**All 142 Journal volumes in this corpus end in 1998–99.** The rail stopped at the 1990s, so a
+reader saw a century of decisions simply stop — which reads as the city having stopped deciding.
+
+The rail now runs to the **current decade**, and every decade past the series is drawn as
+*unrecorded* rather than *empty* (`DecadeGroup.afterSeries`, a fainter track), with one sentence
+under it: *"The Board's Journal is scanned to 1999. The decades after it are blank because the
+record stops there, not because the city stopped deciding."*
+
+**A modern source exists and is not in this pipeline.** SF's Legistar — the Board's own
+legislative system — is already being fetched into `pipeline/minutes/cache/legistar/`:
+**30,428 matters for 2000–2018**, ~1,200–2,200 a year, carrying `MatterTitle`, `MatterIntroDate`
+and `MatterTypeName` in the same form the Journal used (*"Ordinance amending…"*, *"Motion
+appointing…"*). **It carries no location** — placing it on blocks needs the same
+address-extraction and block-placement pass the Journal got. That is a pipeline block, not a
+panel change, and it is the one thing that would actually close this gap.
+
+Two tests in `block-records.test.ts` asserted the old 1990 end. They encoded the behaviour Daniel
+asked to change, so they were updated rather than worked around, and one was added for
+`afterSeries`. 18 → 19.
+
+### h. "In short" — assembled, never written
+
+> "there should be a summary of the block from the objective data and the voting record so people
+> get straight to the meat."
+
+The danger in that ask is that a summary is where prose creeps in and starts generalising past
+the record. So **every clause is one sentence over one field, and a clause whose field is missing
+is dropped rather than hedged.** Nothing is ranked, characterised or compared, and there is no
+adjective in it the assessor did not print.
+
+```
+the ground   the roll's own dominant use, verbatim, and the published hood
+the people   the Census count carried onto this block — or nothing at all
+the record   how many, across what years, and the busiest decade — and
+             `blockShape` only names a decade that actually leads
+the silence  `quietAfter`, which is THIS BLOCK falling quiet, never the
+             Journal running out — two different sentences
+the place    the published city place standing here, where there is one
+```
+
+Block 3549: *"A mostly multi-family residential block in Mission. 367 people live on it, in 130
+homes. The Board decided 41 things here between 1906 and 1990, most of them in the 1910s."*
+
+Block 0001, where almost nothing is known, degrades to two clauses and stops: *"A mostly
+miscellaneous/mixed-use block in Russian Hill. The Board's record places nothing on it."*
+
+**The old record lead is gone** — with the summary above it, it was printing the same sentence
+one section down, which is the fault §4 already caught twice.
+
+### i. Mobile
+
+At 390 px one screen now carries the summary, the ground facts and the whole money answer, and
+reaches "Decade by decade" at its foot. Before this pass a reader met four sections before the
+rail; the summary means they no longer have to reach it to know what the block is.
+Screenshot `f1-m2phone-3724`. One grammar bug found by looking and fixed: *"in 1 homes"*.
+
+### j. State and keys
+
+Typecheck clean, eslint clean on all three files, **`block-records.test.ts` 19/19**. The full
+suite has one failure in `draw.test.ts` (`the surface tier is gated on the narrower dimension`),
+which is the in-flight `roofs.ts`/streets work the coordinator named and is not in any file this
+block owns.
+
+Thirteen keys for `en.ts` / `fr.ts` — declared in `EN_SUM` behind `tx()`, deleted when they land:
+
+```ts
+'us.sf.thecity.panel.sum_head': 'In short',
+'us.sf.thecity.panel.sum_ground': 'A mostly {use} block in {hood}.',
+'us.sf.thecity.panel.sum_ground_plain': 'A block in {hood}.',
+'us.sf.thecity.panel.sum_people': '{n} people live on it, in {h} homes.',
+'us.sf.thecity.panel.sum_people_one_home': '{n} people live on it, in one home.',
+'us.sf.thecity.panel.sum_people_one': 'One person lives on it, in {h} homes.',
+'us.sf.thecity.panel.sum_people_none': 'The Census counts nobody living on it.',
+'us.sf.thecity.panel.sum_record': 'The Board decided {n} things here between {y0} and {y1}, most of them in the {d}s.',
+'us.sf.thecity.panel.sum_record_flat': 'The Board decided {n} things here between {y0} and {y1}.',
+'us.sf.thecity.panel.sum_record_one': 'The Board decided one thing here, in {y0}.',
+'us.sf.thecity.panel.sum_record_none': "The Board's record places nothing on it.",
+'us.sf.thecity.panel.sum_place': '{place} stands on it.',
+'us.sf.thecity.panel.sum_rail_end': "The Board's Journal is scanned to {y}. The decades after it are blank because the record stops there, not because the city stopped deciding.",
+```
+
+The two from §13g (`dem_lead_year`, `dem_floor_short`) are **no longer needed** — the section
+they belonged to has left the fiche.
