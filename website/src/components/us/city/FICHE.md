@@ -1021,3 +1021,162 @@ behind `tx()`, because `useT` returns the key itself when one is missing. **When
 'us.sf.thecity.panel.dem_src': 'See the permits',
 'us.sf.thecity.panel.dem_aria': '{decade}s — {n} demolished on this block',
 ```
+
+---
+
+## 13. Block F1, round four — is 30 blocks the ceiling? Measured: yes.
+
+> "Public money reaches 30 of 5,404 blocks… Go and find out whether the ceiling is real."
+
+It is real, it is a property of San Francisco's published files rather than of this corpus, and
+the measurement is below. **No stretched join was shipped.**
+
+### a. The finding, in one line
+
+**No dataset San Francisco publishes carries both a dollar and a location.** The money files are
+dimensioned by *organisation* — department, fund, program, object, vendor. The location files
+carry no money. The only bridge between them is a **name in free text**, and sweeping every name
+against every contract reaches **48 blocks**.
+
+### b. Every money source, checked against its own column list
+
+Not sampled rows — Socrata omits null fields from a sample, which is how a `contract_no` can
+look absent when it is not. These are read from each dataset's `/api/views/<id>.json`.
+
+| dataset | rows | money | any location field |
+|---|---|---|---|
+| `xdgd-c79v` Budget (AAO) | ~390k | yes | **none** — dept / program / fund |
+| `bpnb-jwfb` Spending & revenue | ~763k | yes | **none** |
+| `n9pm-xkyq` Vendor payments (vouchers) | **8.07M** | yes | **none** — vendor, dept, fund, object, purchase_order |
+| `cqi5-hm2d` Supplier contracts | 49,070 | yes | **none of its 21 columns** |
+| `m793-kis4` GO bond spending | 151 | yes | **none** — bond, component |
+| `d3dc-v5yr` GO bond projects | 305 | names only | **none** — `planned_project_name` is a name |
+| `88g8-5mnd` Employee compensation | ~1.1M | yes | **none** |
+
+And the mirror image — the files that *do* know where they are:
+
+| dataset | rows | location | money |
+|---|---|---|---|
+| `nc68-ngbr` City Facilities | 1,734 | `block_lot` + point | **none** |
+| `gtnh-hgvs` City Lands | 1,035 | polygon + address | **none** — it is the leased/owned registry and it carries no rent |
+| `ib5c-xgwu` Rec & Park facilities | 2,687 | geometry | **none** |
+| `btxj-k9uh` DPW projects | 8,220 | 2,932 points | **none** — its own staging header says *"Carries NO money of its own"* |
+| `i98e-djp9` Building permits | large | block+lot, 100 % | applicant's declared construction value, **not city spend** |
+
+The two columns never overlap. `contract_no` is the contracts file's only key, and nothing in it
+is spatial.
+
+### c. Each route the brief named, measured
+
+**Leases — city money reaching ground the city does not own.** The registry is `gtnh-hgvs` City
+Lands, 1,035 rows, and its whole column list is `address, category, city, department_name,
+dept_id, land_id, land_name, shape, zip`. **No rent, no term, no dollar of any kind.** It is an
+identity file, like City Facilities. (It is now the *point* source for two place fiches after
+`5c51ff4a` — that is what it is good for.)
+
+**Capital projects with a site.** The one real bridge in the whole pipeline: `btxj-k9uh` carries
+`client_contract_id`, which joins to a contract's money. Measured live:
+
+```
+8,220  DPW project rows
+2,932  carry a point
+1,168  carry a client_contract_id
+  236  carry BOTH
+   20  DISTINCT contract ids among those 236
+        — and three of the twenty are the strings 'N/A', 'NA', 'NONE'
+   25  distinct project names
+```
+
+**Twenty contract ids, seventeen of them real.** That is not a money layer.
+
+**Contracts or payments with an address, a parcel or a site.** None, per §b. `scope_of_work` is
+free text and is the only spatial signal that exists anywhere in the money files.
+
+### d. The exhaustive sweep — the actual ceiling
+
+If the ceiling were *editorial* — the size of the 95-place corpus — then sweeping the **whole**
+City Facilities register against **every** contract would beat it. So that was run.
+
+```
+1,333  facility names testable (of 1,734 rows; the rest have no parseable APN)
+32,413  distinct contracts (from 49,070 contract x team-member rows)
+    51  contracts whose title or scope_of_work names a city facility
+    48  DISTINCT BLOCKS  =  0.9 % of the map
+```
+
+Run twice — once with the pipeline's own conservative rule (min 8 chars, generic names like
+`fire station` and `library` excluded) and once with **no filters at all**, minimum 5 characters.
+**Both return 48 blocks.** The GO bond projects file, the most site-named money there is, reaches
+**12**.
+
+**So the ceiling is 48 blocks and the panel reaches 30.** The headroom is +18 blocks — 0.56 % to
+0.9 % — and there is no route to more. The limit is not the place corpus: it is that **San
+Francisco names its contracts by service and department, not by site**. The hits look like
+`COPYSMART MFD COUNTY JAILS`, `PW City Hall Backup Power Gen`, `ROOF REPLACEMENT - COIT TOWER` —
+the exceptions, not the rule. The overwhelming majority of the city's 32,413 contracts are
+citywide services with no site to name.
+
+**That is the answer, and this block stopped there rather than stretching the join.**
+
+### e. The one real headroom, and it is not money
+
+**533 of 5,404 blocks (9.9 %) hold a city facility** — eight times the 66 the panel reaches —
+because the facility register knows where all 1,734 of its rows are. What it cannot do is say
+what any of them cost.
+
+So there is a genuine option here, and it is **a different claim**: a section saying *the city
+owns a building on this block, and this department runs it* on 533 blocks, with money on the 30
+where money exists. That is worth having and it is honest. It is **not built here**, because
+Daniel asked for the money to be wired in and turning `Public money` into `The city's buildings`
+on 467 blocks that have no money is a change to what the section means, not a coverage
+improvement. Recorded for a decision rather than taken unilaterally.
+
+### f. Judged on a phone, and it moved two things
+
+Screenshot at 390 px with all four sections populated (block **3724**, Moscone West — money,
+demolitions, 71 decisions). The coordinator's read was right and the phone showed a second
+problem underneath it.
+
+**Before:** one screen got the reader the head, `On the ground now`, and `Torn down since 1980`
+— and `Public money` only began at the very bottom edge. The rarest thing the panel knows was
+the hardest thing to reach.
+
+**And the demolition section was spending fourteen lines to report two buildings**: a five-row
+decade rail of which four rows were flatlines, under a six-line grey paragraph, for
+*"2 buildings … 2001 to 2001"*.
+
+Three changes:
+
+1. **`Public money` now sits above `Torn down`.** The always-present section (every block) yields
+   to the rare one (66 blocks). On 3724 the whole money answer — $776.3 M agreed, $360.5 M paid —
+   is now on the first screen.
+2. **The demolition rail draws only where it has a shape to show**, i.e. more than one decade
+   holds something. In a single decade it was four flatlines and a bar saying what the sentence
+   above it already said. Block 3721, which spans three decades, keeps its rail.
+3. **The floor line is long where it is load-bearing and short where it is not.** The full
+   paragraph exists to stop an empty section reading as *"nothing came down here"*; a block
+   showing three demolitions cannot be misread that way. **Block 0762 in the Western Addition
+   still gets every word of it** — that was checked, not assumed.
+
+`2001 to 2001` is now `in 2001`.
+
+### g. Two keys for `en.ts` and `fr.ts`
+
+```ts
+'us.sf.thecity.panel.dem_lead_year': '{n} buildings on this block were demolished under a completed permit, in {y0}.',
+'us.sf.thecity.panel.dem_floor_short': 'This record begins in {y}; what came down before is not published block by block.',
+```
+
+The ten from `f72af9a1` are in and `EN_DEM` is deleted; these two are behind `tx()` in `EN_DEM2`
+and go the same way.
+
+### h. State
+
+Typecheck clean, eslint clean. **`block-records.test.ts` 18/18.** The full suite is
+intermittently red from another agent's in-flight chunk regeneration — three failures in
+`data.test.ts` around `CityData.streetLines` and the `strt/*.qc` chunks, and two 404s in the
+browser console from the same cause. None of it is in a file this block owns and none of it was
+held for.
+
+Screenshots: `f1-k1phone-3724` (**before** the reorder), `f1-k2phone-3724` (**after**),
+`f1-k2block-0762` (the Western Addition, full floor paragraph intact).

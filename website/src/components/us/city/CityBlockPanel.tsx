@@ -196,41 +196,25 @@ export interface BlockContext {
 }
 
 /**
- * THE TEN STRINGS THIS SECTION ADDS.
- *
- * Same arrangement as the twenty-five that landed in `68082652`: `useT` returns
- * THE KEY ITSELF when a key is missing, so a new section cannot call `t()` until
- * its keys are in `en.ts` and `fr.ts`, which are owned elsewhere. The English is
- * declared here, `tx()` prefers a real dictionary entry over it, and the moment
- * these land both this map and `tx` are deleted again. FICHE.md §12 has them
- * ready to paste.
+ * TWO STRINGS THIS PASS ADDS, on the same arrangement as the thirty-five before
+ * them: declared here behind `tx()` because `useT` returns the key itself when
+ * a key is missing, deleted the moment they land in `en.ts` / `fr.ts`.
+ * FICHE.md §13g has them.
  */
-const EN_DEM: Record<string, string> = {
-  "us.sf.thecity.panel.dem_head": "Torn down since {y}",
-  "us.sf.thecity.panel.dem_lead":
-    "{n} buildings on this block were demolished under a completed permit, {y0} to {y1}.",
-  "us.sf.thecity.panel.dem_lead_one":
-    "One building on this block was demolished under a completed permit, in {y0}.",
-  "us.sf.thecity.panel.dem_units": "Homes in them",
-  "us.sf.thecity.panel.dem_none":
-    "No completed demolition is on file for this block.",
-  // The sentence the whole section exists for. It runs on EVERY block, with
-  // something and with nothing, because a reader has to be able to tell "none
-  // came down" from "the record does not go back that far" — and on the
-  // Western Addition, cleared in the 1960s, only the second is true.
-  "us.sf.thecity.panel.dem_floor":
-    "This record begins in {y}. What came down before is not published block by block — the city's 1906 schedule covers 36 municipal buildings and no private ones, and the Board approved the 1960s clearances without recording which buildings they took.",
-  "us.sf.thecity.panel.dem_src": "See the permits",
-  "us.sf.thecity.panel.dem_counted":
-    "Completed permits only: a cancelled one is a building still standing.",
-  "us.sf.thecity.panel.dem_aria": "{decade}s — {n} demolished on this block",
-  "us.sf.thecity.panel.dem_cover": "{n} of {all} blocks carry one.",
+const EN_DEM2: Record<string, string> = {
+  "us.sf.thecity.panel.dem_lead_year":
+    "{n} buildings on this block were demolished under a completed permit, in {y0}.",
+  // The SHORT floor line, for a block that HAS a record. The long one exists to
+  // stop an empty section reading as "nothing came down here"; a block showing
+  // three demolitions cannot be misread that way, and on a 390 px screen the
+  // long form ran six lines to say something the header already says.
+  "us.sf.thecity.panel.dem_floor_short":
+    "This record begins in {y}; what came down before is not published block by block.",
 };
 
-/** the dictionary first, the English above only where the key is not in it yet */
 function tx(t: (k: string) => string, key: string): string {
   const v = t(key);
-  return v === key ? (EN_DEM[key] ?? key) : v;
+  return v === key ? (EN_DEM2[key] ?? key) : v;
 }
 
 /**
@@ -247,6 +231,10 @@ function tx(t: (k: string) => string, key: string): string {
  * two decades before this series opens — that would be the single most
  * misleading sentence on the site. Same rule as the 810 blocks with no Census
  * ring: show the absence of the RECORD, never a zero.
+ *
+ * All ten `us.sf.thecity.panel.dem_*` keys are in `en.ts` and `fr.ts`
+ * (`f72af9a1`), so this calls `t()` like the rest of the panel; the `EN_DEM`
+ * fallback that stood in while they landed is gone, as `EN_NOW` was before it.
  */
 function DemolitionRows({
   dem,
@@ -260,10 +248,11 @@ function DemolitionRows({
   t: (k: string) => string;
 }) {
   const max = dem.byDecade.reduce((m, d) => Math.max(m, d.n), 0);
+  const liveDecades = dem.byDecade.filter((d) => d.n > 0).length;
   return (
     <>
       <div className="fx-city-ledger-head fx-block-sec">
-        {tx(t, "us.sf.thecity.panel.dem_head").replace(
+        {t("us.sf.thecity.panel.dem_head").replace(
           "{y}",
           String(dem.recordFrom),
         )}
@@ -272,8 +261,10 @@ function DemolitionRows({
         <>
           <p className="fx-block-lead" style={{ marginTop: 0 }}>
             {(dem.total === 1
-              ? tx(t, "us.sf.thecity.panel.dem_lead_one")
-              : tx(t, "us.sf.thecity.panel.dem_lead")
+              ? t("us.sf.thecity.panel.dem_lead_one")
+              : dem.firstYear === dem.lastYear
+                ? tx(t, "us.sf.thecity.panel.dem_lead_year")
+                : t("us.sf.thecity.panel.dem_lead")
             )
               .replace("{n}", nfInt.format(dem.total))
               .replace("{y0}", String(dem.firstYear))
@@ -282,7 +273,14 @@ function DemolitionRows({
           {/* The same rail idiom the decades below use, so a reader meets one
               shape twice rather than two shapes once. Empty decades are drawn
               here too: a block cleared in the 1980s and untouched since is a
-              different thing from one losing a building every decade. */}
+              different thing from one losing a building every decade.
+
+              But ONLY where there is a shape to show. Where everything came
+              down in ONE decade the rail is four flatlines and one bar, and it
+              says nothing the sentence above it has not already said — the lead
+              names the year. Measured on a phone: it cost fourteen lines of a
+              390 px screen to report two buildings. */}
+          {liveDecades > 1 ? (
           <div className="fx-block-rail" style={{ marginTop: 8 }}>
             {dem.byDecade.map((d) => (
               <div className="fx-block-blank" key={d.decade}>
@@ -295,7 +293,7 @@ function DemolitionRows({
                   {d.n > 0 ? (
                     <span
                       className="fx-block-track"
-                      aria-label={tx(t, "us.sf.thecity.panel.dem_aria")
+                      aria-label={t("us.sf.thecity.panel.dem_aria")
                         .replace("{decade}", String(d.decade))
                         .replace("{n}", String(d.n))}
                     >
@@ -312,10 +310,11 @@ function DemolitionRows({
               </div>
             ))}
           </div>
+          ) : null}
           {dem.units > 0 ? (
             <dl className="fx-city-ledger-facts" style={{ marginTop: 8 }}>
               <div className="fx-city-fact-row">
-                <dt>{tx(t, "us.sf.thecity.panel.dem_units")}</dt>
+                <dt>{t("us.sf.thecity.panel.dem_units")}</dt>
                 <dd>{nfInt.format(dem.units)}</dd>
               </div>
             </dl>
@@ -323,16 +322,16 @@ function DemolitionRows({
         </>
       ) : (
         <p className="fx-block-lead" style={{ marginTop: 0 }}>
-          {tx(t, "us.sf.thecity.panel.dem_none")}
+          {t("us.sf.thecity.panel.dem_none")}
         </p>
       )}
       <p className="fx-block-hint" style={{ marginTop: 7 }}>
-        {tx(t, "us.sf.thecity.panel.dem_floor").replace(
-          "{y}",
-          String(dem.recordFrom),
-        )}{" "}
-        {dem.total > 0 ? tx(t, "us.sf.thecity.panel.dem_counted") + " " : ""}
-        {tx(t, "us.sf.thecity.panel.dem_cover")
+        {(dem.total > 0
+          ? tx(t, "us.sf.thecity.panel.dem_floor_short")
+          : t("us.sf.thecity.panel.dem_floor")
+        ).replace("{y}", String(dem.recordFrom))}{" "}
+        {dem.total > 0 ? t("us.sf.thecity.panel.dem_counted") + " " : ""}
+        {t("us.sf.thecity.panel.dem_cover")
           .replace("{n}", nfInt.format(blocksWithAny))
           .replace("{all}", nfInt.format(blocksTotal))}{" "}
         <a
@@ -341,7 +340,7 @@ function DemolitionRows({
           target="_blank"
           rel="noopener noreferrer"
         >
-          {tx(t, "us.sf.thecity.panel.dem_src")}
+          {t("us.sf.thecity.panel.dem_src")}
         </a>
       </p>
     </>
@@ -874,19 +873,6 @@ export default function CityBlockPanel({
           />
         ) : null}
 
-        {/* WHAT CAME DOWN, between the ground as it is and the money on it.
-            Rendered whenever the file has loaded and the block is one the roll
-            knows — NOT only when the block has a demolition — because the 1980
-            floor is the point and 3,717 of 5,404 blocks need to be told it. */}
-        {dem && facts && now ? (
-          <DemolitionRows
-            dem={dem}
-            blocksWithAny={facts.demolition.blocks_with_any}
-            blocksTotal={facts.coverage.blocks_total}
-            t={t}
-          />
-        ) : null}
-
         {places.length > 0 && money ? (
           <>
             <div className="fx-city-ledger-head fx-block-sec">
@@ -914,6 +900,25 @@ export default function CityBlockPanel({
                 )}
             </p>
           </>
+        ) : null}
+
+        {/* WHAT CAME DOWN, under the money rather than over it.
+            Rendered whenever the file has loaded and the block is one the roll
+            knows — NOT only when the block has a demolition — because the 1980
+            floor is the point and 3,717 of 5,404 blocks need to be told it.
+
+            It sits BELOW `Public money` because it is on every block and the
+            money is on 66. Judged on a phone: with demolitions above, a block
+            that HAS money pushed it most of a screen down, and the rarest thing
+            the panel knows was the hardest to reach. The always-present section
+            yields to the rare one. */}
+        {dem && facts && now ? (
+          <DemolitionRows
+            dem={dem}
+            blocksWithAny={facts.demolition.blocks_with_any}
+            blocksTotal={facts.coverage.blocks_total}
+            t={t}
+          />
         ) : null}
 
         {loading ? (
