@@ -5120,6 +5120,112 @@ but that was a MEAN over sampled pixels, and a relief term is exactly the kind
 of mark that moves a spread while leaving a mean alone. It is the remaining
 candidate and it is the one to measure next.
 
+### 20.12 The unported `sunCast` is a real contributor and it is one ninth of the gap
+
+BUGS §23 re-diagnosed the district deficit as entirely LOW-FREQUENCY and
+dark-end weighted — B1 **+23.5** in the mock's darkest decile against **+2.7**
+in the ninth — and asked this file for a terrain cast term or an ambient
+occlusion the port has none of. Neither exists:
+
+* **`LOOK.ao` has no reader in EITHER build.** `grep -rn 'LOOK.ao' src` and
+  `grep -n 'LOOK\.ao' part3.html` both return nothing. `RS.aoss` / `aossMove`
+  are plumbed through `resTune` here and through `RS_AOSS` there, and neither
+  side reads the result: prod's only consumer of a `ResTune` field is
+  `water.ts:664` reading `bayss`. **There is no AO pass to port.**
+* **There is no separate terrain CAST term.** A hill shadowing the ground
+  beyond it is `TSH`, which this file has and which §20.3 corrected; the
+  reference's `sunCast` is for OBJECTS.
+
+### 20.12.1 What `sunCast` is, and that production ported the branch that never runs
+
+`part3.html` 8933 and 9079, the near path and the banded fabric path, are the
+same shape:
+
+```js
+if (SN.on && SN.bld) { sunCast(BSX, BSY, nv, dh, …); }   // THE CITY CASTS
+else if (h > 2)      { ctx.fillStyle = "rgba(72,60,42,0.16)"; … }
+```
+
+`SN.on` and `SN.bld` both ship at **1**, so **the shipped reference always
+takes `sunCast` and the `rgba(72,60,42,0.16)` fill is the `else` that never
+runs.** Production ported the `else`. `buildings.ts` §"THE CONTACT SHADOW, AND
+THE ONE THING IT IS NOT" and `SHELL.md` §8b.2 both say so in as many words —
+they describe `sunCast` as *"a different, larger object"* and what is drawn as
+*"`drawCity`'s OWN fallback"*, which it is, and which the reference does not
+reach.
+
+The two are different in kind, not degree:
+
+```
+  reference   a mask canvas at rgbHex(32·SUNC) = (33.7, 32.0, 28.6),
+              blitted globalCompositeOperation = "difference", alpha 1
+              → |D − 31.4|, a CONSTANT −31.4 wherever a shadow falls
+
+  production  rgba(72,60,42,0.16), source-over
+              → D + 0.16(58 − D), which is −22.7 at D = 200
+                and only −9.9 at D = 120, and vanishes as D → 58
+```
+
+**A `source-over` fill toward a fixed dark colour stops darkening as the
+destination darkens; a `difference` blit subtracts a constant.** So the
+per-pixel gap is `40.7 − 0.16·D` — monotone falling with brightness, +21.5 at
+D = 120, +5.5 at D = 220. That is BUGS §23's exact shape, and it is why this
+looked like the whole answer.
+
+### 20.12.2 IT IS NOT THE WHOLE ANSWER, AND THE ARITHMETIC ABOVE IS OUT BY EIGHT
+
+**Measured before believing it**, against a terminal constant in the reference
+itself rather than through the arithmetic under test: `.parity/g2sn.py` sets
+`SN.bld = 0` and `SN.mass = 0` in the mock — which makes the REFERENCE take
+production's own branch — and re-shoots B1 and B4 at the same pinned camera.
+One boolean, one variable, both frames from one page load.
+
+```
+  == B1 · the reference with sunCast ON against its own fallback ==
+     LOW mean  164.05 -> 165.38     delta +1.33
+     decile     0     1     2     3     4     5     6     7     8     9
+     lo(ON)   118.6 131.5 140.0 148.4 157.5 167.8 178.3 189.2 196.7 209.7
+     gap       +2.7  +3.1  +3.1  +2.3  +1.3  +0.6  +0.2  +0.1  +0.0  +0.0
+
+  == B4 ==
+     LOW mean  153.67 -> 155.81     delta +2.14
+     decile     0     1     2     3     4     5     6     7     8     9
+     lo(ON)   115.5 128.3 135.4 141.4 147.0 152.9 159.7 168.1 182.0 205.4
+     gap       +2.5  +3.9  +3.7  +3.4  +2.9  +2.2  +1.5  +0.8  +0.4  +0.1
+```
+
+**The shape is right and the size is not.** The ablation falls monotonically
+with brightness and dies at the bright end, exactly as §23 measures — and it
+is **+1.33 of B1's +11.7 gap (11.4 %) and +2.14 of B4's +13.7 (15.6 %).**
+In the darkest decile it is +2.7 where the gap is +23.5: **one ninth.**
+
+**And my own prediction was +21.5 in that decile.** The blend arithmetic gives
+the delta INSIDE a shadow; the low-frequency gap is that delta times the
+shadow's AREA FRACTION inside the blur kernel, and that fraction is 8-16 %,
+not 1. Writing the per-pixel arithmetic and reading it as a frame number is
+the same class of error as reading a frame mean and calling it a picture.
+
+### 20.12.3 The bound this leaves for whoever finds the rest
+
+The A/B is now a CALIBRATED instrument: a mark that covers ~10 % of the frame
+with a −30 per-pixel delta buys **1.3-2.1 levels** of low frequency. The gap is
+**11.7-13.7**.
+
+So the remaining cause is almost certainly **not a mark at all**. Ten levels of
+low frequency, weighted to the dark end, needs either a large-area tone —
+something covering most of the frame at −10 to −15 — or a mark with an area
+fraction near 1. Candidates of that size at district zoom, in descending area:
+the built ground under the blocks, the street surface, and the wall/roof value
+ramps. **`sunCast` is worth porting on its own merits (it is the branch the
+reference actually runs, and it is 1.3-2.1 levels), and nobody should spend a
+night on it expecting twelve.**
+
+Not this file's: `sunCast` is `buildings.ts` + `scene.ts`, and the constants it
+needs — `SN.step` 32, `SN.cool` 1, `SN.minpx` 0.7, `SN.punchpx` 14,
+`SN.quads` 1, `SN.masscov` 128 — are named here rather than added to this
+file's `SN`, because a constant with no reader is the defect this port keeps
+finding.
+
 ## 23. Block G1(a) — the pixel floors are not the district deficit, and here is the count
 
 `scene.ts` came to this block with one instruction: **measure what the gate
