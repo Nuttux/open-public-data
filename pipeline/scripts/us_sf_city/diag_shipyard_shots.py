@@ -11,12 +11,13 @@ bounding box (world 6099.5, -4010.0):
     xr = x*cos315 - y*sin315 ; yr = x*sin315 + y*cos315
     plane = ((xr - yr) * cos30, (xr + yr) * 0.42)   = (7470, -2382)
 
-Output goes to a `shots/` directory beside wherever this file is run from; the
-images are not committed.
+Output goes to $D1_SHOTS, or a temp directory. Nothing is written inside the
+repository and no image is committed.
 """
-import asyncio, os, json
+import asyncio, os, json, tempfile
 from playwright.async_api import async_playwright
-OUT=os.path.dirname(os.path.abspath(__file__))+"/shots"; os.makedirs(OUT, exist_ok=True)
+OUT=os.environ.get("D1_SHOTS") or os.path.join(tempfile.gettempdir(), "d1-shots")
+os.makedirs(OUT, exist_ok=True)
 URL="http://localhost:3000/us/city/sf/the-city"
 YEARS=[1940,1990,2013,2014,2015,2016]
 CX, CY = 7470.0, -2382.0
