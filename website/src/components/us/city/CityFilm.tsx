@@ -132,6 +132,10 @@ function useReachBadge(entity: string | null): ReachBadge | null {
  *  choice. */
 const FILM_PLACE_CAP = 12;
 
+/** §THE DIAL — dev builds only, read once a frame. `null` is the film's own
+ *  verdict; `true`/`false` override it so a camera move can be MEASURED. */
+const FDIAL: { spare: boolean | null } = { spare: null };
+
 /* ── WHETHER THE FILM IS KEEPING UP WITH ITSELF ────────────────────────
    One number, and it is the film's own: **how much film time a second of wall
    clock buys.** The clock below clamps `dt` at 50 ms, so a frame that takes
@@ -392,10 +396,22 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
          the first year cohort warming caches, and it is evidence about neither.
          See §whether the film is keeping up, and `film.ts` §the two costs are
          not one verdict. */
+      /* ── THE DIAL, DEV BUILDS ONLY ─────────────────────────────────────
+         `camera.ts` §FDIALS and `film.ts` §FWIN are reachable from a probe for
+         exactly this reason: so the next person re-measures instead of
+         re-deriving. This is the third. **A camera move cannot be measured
+         while `spare` is latched** — the camera cuts at the head of the move
+         and what a harness records is a still hold, which is how a sweep of all
+         eight moves came back reading 600–1,024 ms worst frames for travels
+         that were not happening. `.parity/c2move.py` prints `spare` on every
+         row precisely so that is visible; this is what lets it be turned off.
+         It overrides the verdict and nothing else — it cannot change a date, a
+         framing or a line of copy. */
+      const dial = FDIAL.spare;
       const s = filmStateAt(live.payload, live.timeline, live.frames, tRef.current, {
         reduced: red,
-        spareCamera: spareCamRef.current,
-        spareWave: spareWaveRef.current,
+        spareCamera: dial === null ? spareCamRef.current : dial,
+        spareWave: dial === null ? spareWaveRef.current : dial,
         cyBias: biasRef.current,
         zexFor: () => projection.zex,
       });
@@ -437,7 +453,7 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
       /* A cut has no trajectory to lead the buffer along — the camera is already
          standing on the incoming frame — so it takes the settled path. */
       const plan =
-        s.seg.k === "move" && slot && !red && !spareCamRef.current
+        s.seg.k === "move" && slot && !red && !(FDIAL.spare ?? spareCamRef.current)
           ? planFilmBuffer(
               live.payload, live.timeline, live.frames, tRef.current,
               { cx: s.cx, cy: s.cy, scale: s.scale, step: s.step },
@@ -560,9 +576,13 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
       /* Whether this machine dropped to the spare version, and the playback
          speed it measured to decide. A film that changes its own grammar has to
          be able to say that it did. See §THE VERSION THE MACHINE CAN PLAY. */
-      get spare() { return spareCamRef.current || spareWaveRef.current; },
-      get spareCamera() { return spareCamRef.current; },
-      get spareWave() { return spareWaveRef.current; },
+      get spare() { return FDIAL.spare ?? (spareCamRef.current || spareWaveRef.current); },
+      /* the dial, dev builds only — see §THE DIAL. `null` is the film's own
+         verdict, `true`/`false` override it. */
+      get forceSpare() { return FDIAL.spare; },
+      set forceSpare(v: boolean | null) { FDIAL.spare = v; },
+      get spareCamera() { return FDIAL.spare ?? spareCamRef.current; },
+      get spareWave() { return FDIAL.spare ?? spareWaveRef.current; },
       get keepUp() { return +keepRef.current.toFixed(3); },
       get why() { return renderer?.rasterWhy ?? ""; },
       get t() { return tRef.current; },

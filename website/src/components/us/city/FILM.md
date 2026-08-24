@@ -1419,3 +1419,145 @@ What DID change on every machine, headless included:
 mid-travel paints the ground at settled quality, and B3 measured the motion tier
 halving the worst frame. It is one word and it is not this block's word. With it,
 `spareCamera` would very likely stop latching here too.
+
+## 15 · Block M1 — should the film be prerecorded? Measured before building
+
+> *"For the film it's quite laggy when you zoom in and out of parts. Isn't it
+> better to have each slide and transition be recorded so it's smooth and
+> perfect, and then with arrows you just switch frames, but there's zero
+> computation?"*
+
+The instinct is right about the symptom and the measurement says it is wrong
+about the cause. **The film is no longer spending a travel computing the city.
+It is spending it moving pixels — and a prerecorded film moves the same pixels.**
+
+### 15.1 Where a travel's time goes, measured on a travel
+
+Every earlier sweep of the eight moves measured **cuts, not travels**. `spare`
+latches on the first move and from then on the camera cuts at the head and the
+remaining milliseconds are a still hold, so a harness records a hold and prints
+it under a move's name. `c2move.py` printed `spare` on every row precisely so
+that would be visible, and it was: `spare=True` on seven of eight rows.
+
+`CityFilm.tsx` §THE DIAL now overrides the verdict in dev builds — the third dial
+after `camera.ts` §FDIALS and `film.ts` §FWIN, and for the same stated reason.
+With `M1FORCE=live`, `spare=False` asserted on **every** row:
+
+| move | z | median | p95 | worst | frames > 100 ms | rasters | ground rebuilt |
+|---|---|---:|---:|---:|---:|---:|---|
+| 3 civic-bonds | 2.05 → 3.20 | 25.1 | 482.9 | 775.0 | 32 | 32 | 2 of 40 |
+| 4 city-hall | 3.20 → 28.0 | 16.6 | 17.4 | 691.7 | 4 | 4 | 5 of 12 |
+| 5 tunnel | 27.98 → 2.60 | 16.7 | 550.0 | 826.1 | 26 | 26 | 14 of 29 |
+| **6 west-fills** | **2.60 → 1.90** | **8.3** | **9.3** | **10.4** | **0** | **0** | 3 of 4 |
+| 7 hetch-hetchy | 1.90 → 1.10 | 16.6 | 317.0 | 1000.0 | 21 | 21 | 8 of 31 |
+| 8 treasure-island | 1.10 → 2.55 | 15.1 | 324.9 | 650.0 | 18 | 18 | 2 of 19 |
+| 9 yerba-buena | 2.55 → 3.60 | 16.4 | 400.1 | 417.1 | 12 | 12 | 1 of 21 |
+| 10 to-now | 3.60 → 1.10 | 16.6 | 491.7 | 1083.5 | 13 | 13 | 5 of 23 |
+
+Three things fall straight out of that table.
+
+**The count of frames over 100 ms equals the count of rasterisations, on every
+row.** Not approximately — exactly, eight times out of eight. So the lag *is* the
+rasterisations and there is nothing else slow in a move. Between them the film
+draws at 8–25 ms.
+
+**Move 6 costs zero rasterisations and its worst frame is 10.4 ms.** A two-second
+travel, already perfectly smooth, from live data, today. That is the existence
+proof: smooth is reachable without prerecording anything, and what separates move
+6 from move 7 is only how many buffers the move needs.
+
+**The pull-outs are the expensive ones and the pushes are cheap.** Move 4 zooms in
+8.75× for four rasterisations; move 5 zooms out 10.8× for twenty-six. A blit can
+magnify a buffer it already has, and cannot invent area outside it, so zooming out
+misses on coverage and re-rasterises. That is a `margin` miss, not a slow scene.
+
+### 15.2 And the ground is no longer the cost — the blit is
+
+A real CDP CPU profile of the move into shot 7, `spare` forced off, 2,400 ms of
+wall clock and 3,455 ms of samples:
+
+    1,259.4 ms  36.5%  (program)          — outside JS: raster and composite
+      856.4 ms  24.8%  drawImage
+      185.6 ms   5.4%  fill
+      184.7 ms   5.3%  drawImage
+      176.2 ms   5.1%  restore
+      122.2 ms   3.5%  drawImage
+       18.9 ms   0.5%  paintCell          terrain.ts
+       18.1 ms   0.5%  paintFootprints    scene.ts
+       17.4 ms   0.5%  paint              scene.ts
+      ~130 ms   ~3.8%  jsxDEV             react-jsx-dev-runtime (dev build only)
+
+Against B3's profile of the same class of move **before** the ground plate:
+
+    782 ms  30.8%  fill
+    436 ms  17.2%  paintCell   terrain.ts
+    262 ms  10.3%  restore
+     30 ms   1.2%  paintFootprints
+
+**`paintCell` went from 436 ms and 17.2 % to 32 ms and 0.9 %.** The ground plate
+did exactly what it was built to do, and it is confirmed independently by the
+table above: 1 of 21, 2 of 19, 2 of 40 ground rebuilds on the moves that hit.
+
+What replaced it is **`drawImage`, about 1,175 ms across four entries — 34 % —
+plus 36.5 % `(program)`**, which is raster and composite outside JS. Computing
+the city is now `paintCell` + `paintFootprints` + `paint` = **68 ms of 3,455, two
+per cent.**
+
+### 15.3 The three designs, costed
+
+**A · Prerecord to frames or video.** *Runtime cost: not zero.* This is the
+finding that matters. The bottleneck measured above is not computation, it is
+pushing a full-viewport image at DPR 2 — 2,880 × 1,880 — to the screen every
+frame. **A decoded video frame is the same pixels through the same path.** On this
+harness (headless Chromium, CPU raster, no GPU) it would buy the 2 % that is scene
+computation and pay the same 70 % that is pixel throughput; on a GPU-backed
+browser both are nearly free, which is where the lag Daniel is seeing mostly comes
+from in the first place. And it costs: the year rail cannot drive it, a reader
+cannot stop and open a block, the copy cannot be translated without a re-render,
+one aspect ratio ships, and **every data fix landed tonight silently stops
+applying to the film** — the 23,487 borrowed years, the Hunters Point block key —
+until someone remembers to re-bake. A film that is a picture of the record as of
+the day it was baked is not this project's claim.
+
+**B · Prerender at load into offscreen canvases.** *Not viable at quality, and the
+arithmetic is not close.* Eight moves at 60 fps is ~960 frames; at 2,880 × 1,880 ×
+4 bytes that is **20.8 GB**. At DPR 1 and 15 fps it is 162 MB and 240 full
+rasterisations to produce — at the ~0.5 s each measured above, **two minutes of
+load-time hitch** before the reader sees anything. Reduced to only the frames a
+move actually needs, it becomes 4–32 buffers per move, which is what the blit
+already does.
+
+**C · Keep it live and remove the cost.** *Recommended*, on the strength of move 6:
+a travel that needs no rasterisation is already perfect from live data. The work is
+to make more moves look like move 6, and the measurement names where:
+
+1. **`renderer.ts` — `const moving = film ? false : …`.** A film rasterisation
+   taken mid-travel paints the ground at settled quality. B3 measured the motion
+   tier halving the worst frame (875 → 342, 1,075 → 492, 775 → 500). One word,
+   another block's file, still unattempted. This is the largest single item.
+2. **More margin when the camera is pulling out.** §15.1: the expensive moves are
+   the pull-outs and they are expensive because the buffer does not cover the new
+   area. The film knows its whole trajectory in advance — that is `planFilmBuffer`'s
+   premise — so a pull-out can be given an asymmetric margin that a gesture could
+   not, because a finger's next position is a guess and a film's is known.
+3. **`setState` every frame.** `CityFilm`'s frame loop calls `setState(s)` on all
+   sixty frames a second; the profile shows ~130 ms of `jsxDEV` inside a 2.4 s
+   move. `CityScrub` already follows the page's own rule — *"React state is touched
+   only when the INTEGER year changes"* — and the film does not follow it. The
+   hairline is the only thing that genuinely changes every frame and it is one
+   node's width. This one is in this block's file and is the cheapest of the three.
+
+**The honest hybrid, and why it is not what it sounds like.** "Live map,
+prerecorded transitions" is attractive and the memory arithmetic kills the full
+version: even one buffer is 21.7 MB at DPR 2, so holding a move's 21 buffers is
+456 MB. What *does* work is the same idea one buffer deep — **rasterise the first
+buffer of the next move during the hold before it**, where the machine is idle at
+120 fps. That removes the first and usually worst freeze of every move for the cost
+of one slot, and it keeps every property of the live map. It belongs with item 2.
+
+**Caveat, stated rather than buried.** All of this is headless Chromium with CPU
+raster on the dev server, with four agents recompiling the tree throughout. On a
+GPU-backed browser `drawImage` is close to free and so is video decode, so the
+*absolute* numbers overstate the blit. The *ranking* survives and is what the
+decision rests on: if computing the city is 2 % of a travel here, it is no more
+than that anywhere, and the case for prerecording rests on it being most of it.

@@ -158,6 +158,11 @@ export default function TheCityClient({ data }: { data: TheCityPageData }) {
                     .replace("{buildings}", nfInt.format(data.buildings))
                     .replace("{decisions}", nfInt.format(data.decisions))
             }
+            /* TWO DOORS. The film used to TAKE OVER this button the moment it
+               could play, so a reader who came for the map was offered the
+               film and nothing else. They are two different things to want.
+               No new copy: `entry.start` is the map's own label and it is
+               what this button already said before the film landed. */
             primary={{
               label: film.ready
                 ? t(
@@ -172,7 +177,20 @@ export default function TheCityClient({ data }: { data: TheCityPageData }) {
                 else mapRef.current?.focus();
               },
             }}
-            secondary={{
+            secondary={
+              /* only once the film owns the primary — before that the primary
+                 IS this door and two of it would be a bug, not a choice */
+              film.ready
+                ? {
+                    label: t("us.sf.thecity.entry.start"),
+                    onClick: () => {
+                      setIntro(false);
+                      mapRef.current?.focus();
+                    },
+                  }
+                : undefined
+            }
+            alt={{
               label: t("us.sf.thecity.entry.method"),
               onClick: () => {
                 setIntro(false);
