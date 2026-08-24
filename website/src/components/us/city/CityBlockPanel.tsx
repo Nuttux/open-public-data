@@ -95,6 +95,7 @@ import FicheArchiveShelf from "@/components/fiche/FicheArchiveShelf";
 import type { FicheArchiveDoc } from "@/components/fiche/types";
 import {
   archiveHref,
+  blockDemolitions,
   blockNow,
   blockPlaces,
   blockShape,
@@ -110,6 +111,7 @@ import {
   KIND_WORDING,
   TIER_WORDING,
   type BlockDecision,
+  type BlockDemolitions,
   type BlockFactsFile,
   type BlockMoneyFile,
   type BlockNow,
@@ -191,6 +193,159 @@ export interface BlockContext {
    * fold they had no reason to open.
    */
   streetDecisions: number;
+}
+
+/**
+ * THE TEN STRINGS THIS SECTION ADDS.
+ *
+ * Same arrangement as the twenty-five that landed in `68082652`: `useT` returns
+ * THE KEY ITSELF when a key is missing, so a new section cannot call `t()` until
+ * its keys are in `en.ts` and `fr.ts`, which are owned elsewhere. The English is
+ * declared here, `tx()` prefers a real dictionary entry over it, and the moment
+ * these land both this map and `tx` are deleted again. FICHE.md §12 has them
+ * ready to paste.
+ */
+const EN_DEM: Record<string, string> = {
+  "us.sf.thecity.panel.dem_head": "Torn down since {y}",
+  "us.sf.thecity.panel.dem_lead":
+    "{n} buildings on this block were demolished under a completed permit, {y0} to {y1}.",
+  "us.sf.thecity.panel.dem_lead_one":
+    "One building on this block was demolished under a completed permit, in {y0}.",
+  "us.sf.thecity.panel.dem_units": "Homes in them",
+  "us.sf.thecity.panel.dem_none":
+    "No completed demolition is on file for this block.",
+  // The sentence the whole section exists for. It runs on EVERY block, with
+  // something and with nothing, because a reader has to be able to tell "none
+  // came down" from "the record does not go back that far" — and on the
+  // Western Addition, cleared in the 1960s, only the second is true.
+  "us.sf.thecity.panel.dem_floor":
+    "This record begins in {y}. What came down before is not published block by block — the city's 1906 schedule covers 36 municipal buildings and no private ones, and the Board approved the 1960s clearances without recording which buildings they took.",
+  "us.sf.thecity.panel.dem_src": "See the permits",
+  "us.sf.thecity.panel.dem_counted":
+    "Completed permits only: a cancelled one is a building still standing.",
+  "us.sf.thecity.panel.dem_aria": "{decade}s — {n} demolished on this block",
+  "us.sf.thecity.panel.dem_cover": "{n} of {all} blocks carry one.",
+};
+
+/** the dictionary first, the English above only where the key is not in it yet */
+function tx(t: (k: string) => string, key: string): string {
+  const v = t(key);
+  return v === key ? (EN_DEM[key] ?? key) : v;
+}
+
+/**
+ * WHAT CAME DOWN — and the seventy-year hole, said out loud on every block.
+ *
+ * The map's buildings are survivorship only: every footprint it draws is one
+ * standing today. This is the first thing on the page that shows the city
+ * REMOVING something, and it reaches back only to 1980.
+ *
+ * **The floor sentence runs whether or not the block has anything**, which is
+ * the whole design. 1,687 of 5,404 blocks carry a completed demolition; on the
+ * other 3,717 an empty section would read as "nothing was ever demolished
+ * here". For the Western Addition — cleared under redevelopment in the 1960s,
+ * two decades before this series opens — that would be the single most
+ * misleading sentence on the site. Same rule as the 810 blocks with no Census
+ * ring: show the absence of the RECORD, never a zero.
+ */
+function DemolitionRows({
+  dem,
+  blocksWithAny,
+  blocksTotal,
+  t,
+}: {
+  dem: BlockDemolitions;
+  blocksWithAny: number;
+  blocksTotal: number;
+  t: (k: string) => string;
+}) {
+  const max = dem.byDecade.reduce((m, d) => Math.max(m, d.n), 0);
+  return (
+    <>
+      <div className="fx-city-ledger-head fx-block-sec">
+        {tx(t, "us.sf.thecity.panel.dem_head").replace(
+          "{y}",
+          String(dem.recordFrom),
+        )}
+      </div>
+      {dem.total > 0 ? (
+        <>
+          <p className="fx-block-lead" style={{ marginTop: 0 }}>
+            {(dem.total === 1
+              ? tx(t, "us.sf.thecity.panel.dem_lead_one")
+              : tx(t, "us.sf.thecity.panel.dem_lead")
+            )
+              .replace("{n}", nfInt.format(dem.total))
+              .replace("{y0}", String(dem.firstYear))
+              .replace("{y1}", String(dem.lastYear))}
+          </p>
+          {/* The same rail idiom the decades below use, so a reader meets one
+              shape twice rather than two shapes once. Empty decades are drawn
+              here too: a block cleared in the 1980s and untouched since is a
+              different thing from one losing a building every decade. */}
+          <div className="fx-block-rail" style={{ marginTop: 8 }}>
+            {dem.byDecade.map((d) => (
+              <div className="fx-block-blank" key={d.decade}>
+                <div className="fx-block-head">
+                  <span
+                    className={d.n ? "fx-block-dec" : "fx-block-dec fx-block-dec-off"}
+                  >
+                    {d.decade}s
+                  </span>
+                  {d.n > 0 ? (
+                    <span
+                      className="fx-block-track"
+                      aria-label={tx(t, "us.sf.thecity.panel.dem_aria")
+                        .replace("{decade}", String(d.decade))
+                        .replace("{n}", String(d.n))}
+                    >
+                      <span
+                        className="fx-block-bar"
+                        style={{ width: `${max ? (100 * d.n) / max : 0}%` }}
+                      />
+                    </span>
+                  ) : (
+                    <span className="fx-block-flat" />
+                  )}
+                  <span className="fx-block-n tnum">{d.n || ""}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          {dem.units > 0 ? (
+            <dl className="fx-city-ledger-facts" style={{ marginTop: 8 }}>
+              <div className="fx-city-fact-row">
+                <dt>{tx(t, "us.sf.thecity.panel.dem_units")}</dt>
+                <dd>{nfInt.format(dem.units)}</dd>
+              </div>
+            </dl>
+          ) : null}
+        </>
+      ) : (
+        <p className="fx-block-lead" style={{ marginTop: 0 }}>
+          {tx(t, "us.sf.thecity.panel.dem_none")}
+        </p>
+      )}
+      <p className="fx-block-hint" style={{ marginTop: 7 }}>
+        {tx(t, "us.sf.thecity.panel.dem_floor").replace(
+          "{y}",
+          String(dem.recordFrom),
+        )}{" "}
+        {dem.total > 0 ? tx(t, "us.sf.thecity.panel.dem_counted") + " " : ""}
+        {tx(t, "us.sf.thecity.panel.dem_cover")
+          .replace("{n}", nfInt.format(blocksWithAny))
+          .replace("{all}", nfInt.format(blocksTotal))}{" "}
+        <a
+          className="fx-block-jump"
+          href="https://data.sfgov.org/d/i98e-djp9"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {tx(t, "us.sf.thecity.panel.dem_src")}
+        </a>
+      </p>
+    </>
+  );
 }
 
 /**
@@ -650,6 +805,7 @@ export default function CityBlockPanel({
   // actually arrived — a block with no row in either simply draws neither
   // section rather than a heading over nothing.
   const now = facts && context ? blockNow(facts, context.id) : null;
+  const dem = facts && context ? blockDemolitions(facts, context.id) : null;
   const places = money && context ? blockPlaces(money, context.id) : [];
 
   /** open the street fold and take the reader down to it in one press */
@@ -714,6 +870,19 @@ export default function CityBlockPanel({
           <NowRows
             now={now}
             zeroBlocks={facts.coverage.blocks_with_no_assessed_value ?? 0}
+            t={t}
+          />
+        ) : null}
+
+        {/* WHAT CAME DOWN, between the ground as it is and the money on it.
+            Rendered whenever the file has loaded and the block is one the roll
+            knows — NOT only when the block has a demolition — because the 1980
+            floor is the point and 3,717 of 5,404 blocks need to be told it. */}
+        {dem && facts && now ? (
+          <DemolitionRows
+            dem={dem}
+            blocksWithAny={facts.demolition.blocks_with_any}
+            blocksTotal={facts.coverage.blocks_total}
             t={t}
           />
         ) : null}

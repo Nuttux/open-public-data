@@ -277,7 +277,32 @@ def fetch(refresh: bool) -> None:
                _soql("nc68-ngbr", {"select": "facility_id,block_lot,latitude,longitude"}),
                len(rows), "nc68-ngbr City Facilities, identity + point per facility")
 
-    # 5. the Census's own block rings, with the count on them.
+    # 5. DBI demolition permits — what came down, and when.
+    #    `permit_type = 6` is DBI's own code for a demolition. ONLY `status =
+    #    complete` is read: 619 cancelled, 606 expired, 405 withdrawn and 745
+    #    still merely issued are permits to demolish, not demolitions, and a
+    #    building whose permit was withdrawn is standing. All 4,511 complete
+    #    rows carry a completed_date, so the year is the year it came down and
+    #    not the year somebody asked.
+    if need("demolitions.json"):
+        print("  DBI demolition permits (complete only)")
+        rows = _page(
+            "i98e-djp9",
+            {
+                "select": ("permit_number,block,lot,completed_date,"
+                           "number_of_existing_stories,existing_use,existing_units"),
+                "where": "permit_type='6' AND status='complete'",
+                "order": "permit_number",
+            },
+        )
+        blob = json.dumps(rows).encode()
+        _write("demolitions.json", blob,
+               _soql("i98e-djp9", {"select": "block,lot,completed_date",
+                                   "where": "permit_type='6' AND status='complete'"}),
+               len(rows),
+               "i98e-djp9 permit_type 6, status complete — dated, block-keyed removals")
+
+    # 6. the Census's own block rings, with the count on them.
     if need("census_blocks.json"):
         print("  2020 census blocks (TIGERweb)")
         q = urllib.parse.urlencode(
@@ -455,6 +480,59 @@ def build() -> None:
     print(f"          {len(pop):,} of {len(ids):,} blocks receive a count "
           f"({100 * len(pop) / len(ids):.1f}%)")
 
+    # ── what came down ────────────────────────────────────────────────────
+    # The building layer is SURVIVORSHIP ONLY — `build_bldg.py` says so in its
+    # own docstring: every footprint in ynuv-fyni is a building standing today,
+    # in every year the map draws. This is the one published file that puts a
+    # dated, located removal back, and DATA-TRUTH.md §4 measured its limits
+    # before a line of this was written:
+    #
+    #   1906        36 CITY buildings from the fire schedule. Not private stock.
+    #   1907-1979   NOTHING per building. The Board's Journal names the
+    #               Redevelopment Agency 227 times in 1960-75 and enumerates an
+    #               individual demolition 49 times: it approved the clearance
+    #               without recording what came down. Western Addition A-1 and
+    #               A-2 and Yerba Buena would need SFRA's own project records,
+    #               which are not on DataSF and not in this corpus.
+    #   1980-2026   this file.
+    #
+    # So a block with nothing here is a block THE RECORD DOES NOT REACH, not a
+    # block where nothing came down, and the panel has to say the 1980 floor on
+    # its face. The Western Addition is the case that makes it non-negotiable:
+    # it was cleared before this series begins, and a silent zero there would be
+    # the most misleading sentence on the site.
+    dem_rows = json.load(open(CACHE / "demolitions.json"))
+    dem_year: dict[str, list[int]] = defaultdict(list)
+    dem_units: Counter = Counter()
+    dem_off = 0
+    for r in dem_rows:
+        b = (r.get("block") or "").strip()
+        if b not in known:
+            dem_off += 1
+            continue
+        cd = r.get("completed_date") or ""
+        if len(cd) < 4 or not cd[:4].isdigit():
+            continue
+        dem_year[b].append(int(cd[:4]))
+        try:
+            dem_units[b] += int(_f(r.get("existing_units")))
+        except (TypeError, ValueError):
+            pass
+    dem_from = min((min(v) for v in dem_year.values()), default=1980)
+    dem_to = max((max(v) for v in dem_year.values()), default=1980)
+    dem_decs = list(range((dem_from // 10) * 10, (dem_to // 10) * 10 + 10, 10))
+    dem: dict[str, list[int]] = {}
+    for b, years in sorted(dem_year.items()):
+        per_dec = [0] * len(dem_decs)
+        for y in years:
+            per_dec[dem_decs.index((y // 10) * 10)] += 1
+        dem[b] = per_dec + [dem_units[b], min(years), max(years)]
+    print(f"  demolitions: {len(dem_rows):,} completed permits, "
+          f"{len(dem_rows) - dem_off:,} on a drawn block, {dem_off} not")
+    print(f"               {len(dem):,} of {len(ids):,} blocks carry one "
+          f"({100 * len(dem) / len(ids):.1f}%), {dem_from}-{dem_to}, "
+          f"{sum(dem_units.values()):,} dwelling units in them")
+
     # ── emit block-facts.json ─────────────────────────────────────────────
     b_out, np_, u_, v_, ar_, us_, pop_, hu_ = [], [], [], [], [], [], [], []
     for bid in ids:
@@ -522,6 +600,50 @@ def build() -> None:
                 if purity else None
             ),
         },
+        "demolition": {
+            "dataset": "i98e-djp9",
+            "name": "Building Permits (DBI), permit_type 6 — demolitions",
+            "publisher": "City & County of San Francisco (Department of Building Inspection)",
+            "url": "https://data.sfgov.org/d/i98e-djp9",
+            "licence": "DataSF open data — Open Data Commons PDDL",
+            "counted": (
+                "status = complete ONLY, and dated on completed_date. 4,511 of "
+                "the 7,310 demolition permits are complete and all 4,511 carry "
+                "that date. The 619 cancelled, 606 expired, 405 withdrawn and "
+                "745 merely issued are permits to demolish and not demolitions: "
+                "a building whose permit was withdrawn is standing."
+            ),
+            # MEASURED, because "since 1980" and "since 1983" are different
+            # claims and the panel must make the one that is true. DBI's
+            # electronic permit file effectively opens in 1980 — exactly ONE of
+            # the 7,310 demolition permits was filed before 1980-01-01 — but the
+            # earliest COMPLETED demolition in it is 1983-03-02, filed 1982-08-03.
+            # The panel dates on completion, so its rail opens on the 1980s;
+            # `from_decade` is what it prints and `from_year` is what it holds.
+            "from_decade": (dem_from // 10) * 10,
+            "from_year": dem_from,
+            "series_note": (
+                "DBI's demolition permit file opens in 1980: 1 of the 7,310 "
+                "permits was filed before 1980-01-01. The earliest COMPLETED "
+                "demolition is 1983-03-02 (filed 1982-08-03), so a rail dated on "
+                "completion opens on the 1980s and holds nothing in 1980-82."
+            ),
+            "to_year": dem_to,
+            "decades": dem_decs,
+            "blocks_with_any": len(dem),
+            "units_demolished": sum(dem_units.values()),
+            "row": "one per decade in `decades`, then dwelling units, first year, last year",
+            "THE_RECORD_STARTS_IN_1980": (
+                "A block absent from `dem` is a block THIS RECORD DOES NOT "
+                "REACH, not a block where nothing came down, and anything "
+                "reading this file must say so. DATA-TRUTH.md §4: the 1906 "
+                "schedule covers 36 CITY buildings and no private stock, and "
+                "1907-1979 is unrecoverable per building — the Board's Journal "
+                "names the Redevelopment Agency 227 times in 1960-75 and "
+                "enumerates an individual demolition 49 times. The Western "
+                "Addition was cleared before this series begins."
+            ),
+        },
         "sources": {k: SOURCES[k] for k in ("roll", "parcels", "census")},
         "not_measured": (
             "The assessed value is what the closed roll carries, which is "
@@ -533,6 +655,7 @@ def build() -> None:
         ),
         "b": b_out, "np": np_, "u": u_, "v": v_, "ar": ar_, "us": us_,
         "pop": pop_, "hu": hu_,
+        "dem": dem,
     }
     OUT.mkdir(parents=True, exist_ok=True)
     p = OUT / "block-facts.json"

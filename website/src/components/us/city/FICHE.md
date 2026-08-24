@@ -891,3 +891,133 @@ was swapped for another, not added.
 
 Typecheck clean, eslint clean on both components, **392 tests green** (up from 391 — one arrived
 from another agent; F1 added none). Screenshots `f1-v7*`.
+
+---
+
+## 12. Block F1, round three — what was torn down, and the seventy-year hole under it
+
+> "A block should say what was torn down on it."
+
+The map's buildings are **survivorship only** — `build_bldg.py` says so in its own docstring:
+every footprint in `ynuv-fyni` is a building standing today, drawn in every year the map draws.
+This is the first thing on the page that shows the city **removing** something.
+
+### a. The source, and why only a third of its rows are counted
+
+`i98e-djp9`, DBI's permit file, `permit_type = 6`. DATA-TRUTH.md §4 had already measured the
+series, so nothing here re-measures it — but §4 counts **permits**, and a permit is not a
+demolition:
+
+```
+7,310  demolition permits
+4,511  status = complete   ← the only ones counted
+  745  issued        619 cancelled      606 expired
+  405  withdrawn     236 filed          … and eight more statuses
+```
+
+**1,630 of them are cancelled, expired or withdrawn. A building whose permit was withdrawn is
+standing.** So the panel counts `status = complete` only, and dates each one on
+`completed_date` — the year it came down, not the year somebody asked. All 4,511 carry that
+date.
+
+The join needs nothing: **block and lot are on 100 % of the rows**, and it is the same assessor
+block the roll and the map already key on. No geocoding, no plurality rule, no guard.
+
+| | |
+|---|---|
+| completed demolitions landing on a drawn block | **4,500 of 4,511** (11 name a block the map does not draw) |
+| blocks carrying at least one | **1,687 of 5,404 — 31.2 %** |
+| dwelling units in those buildings | **13,168** |
+| span | **1983 – 2026** |
+
+### b. "Since 1980" and "since 1983" are different claims, and the panel makes the true one
+
+`from_year` is **1983**, not 1980: the earliest *completed* demolition is 1983-03-02, filed
+1982-08-03. But DBI's permit file itself opens in 1980 — **exactly one of the 7,310 permits was
+filed before 1980-01-01** — and what a reader needs to know is how far back they may look, not
+which year happens to hold the first completion.
+
+So the file ships **both**. `from_decade` (1980) is what the panel prints and what the rail
+opens on; `from_year` (1983) is held beside it with `series_note` recording the difference.
+Printing "since 1983" would have understated the record's reach; hardcoding 1980 would have been
+a number I did not measure.
+
+### c. The floor sentence runs on every block, and that is the whole design
+
+**1,687 blocks have something. The other 3,717 get the section anyway.**
+
+An empty section reads as *"nothing was ever demolished here"*. For the **Western Addition** —
+cleared under redevelopment in the 1960s, two decades before this series opens — that is the
+single most misleading sentence this site could print. DATA-TRUTH.md §4.3 measured why nothing
+can fill the gap: over 1960–75 the Board's Journal names the Redevelopment Agency **227 times**
+and enumerates an individual demolition **49 times**. *The Board approved the clearance without
+recording what came down.* And §4.2: the 1906 fire schedule is the City accounting for **36 of
+its own buildings** — engine houses and the like — with no private stock in it at all.
+
+Block **0762, Western Addition**, 453 parcels, 592 residents, 445 homes, is the case that proves
+the rule. It reads:
+
+> **TORN DOWN SINCE 1980**
+> No completed demolition is on file for this block.
+> *This record begins in 1980. What came down before is not published block by block — the
+> city's 1906 schedule covers 36 municipal buildings and no private ones, and the Board approved
+> the 1960s clearances without recording which buildings they took. 1,687 of 5,404 blocks carry
+> one.* → See the permits
+
+It is the same rule as the 810 blocks with no Census ring: **show the absence of the record,
+never a zero.** The file enforces it too — `demolition.THE_RECORD_STARTS_IN_1980` says in the
+JSON that a block absent from `dem` is a block the record does not reach, so anything else
+reading this file inherits the obligation.
+
+### d. The rail is the rail
+
+Where a block has something, the decades draw in **the same idiom as the decision rail below**,
+empty ones included — a reader meets one shape twice rather than two shapes once, and a block
+cleared in one decade and untouched since is visibly different from one losing a building every
+decade. Block **3721** (South of Market, the Yerba Buena build-out) reads `1980s 6 · 1990s 6 ·
+2000s 18` and then two flatlines, over `30 buildings on this block were demolished under a
+completed permit, 1986 to 2005`. `Homes in them` is a fact row, shown only where the permits
+recorded any.
+
+Nothing new is styled here either: `fx-block-rail`, `fx-block-dec`, `fx-block-track`,
+`fx-block-bar`, `fx-block-flat`, `fx-block-n`, `fx-city-fact-row`.
+
+### e. The map layer is a separate question and is not answered here
+
+Daniel has not decided whether a demolition **layer on the map** is worth shipping with a
+seventy-year hole. This is not that question. A fiche stating what the record holds, with its
+start date in its own header, is honest at any coverage — and the data carries no footprint
+anyway (the building is gone from `ynuv-fyni`), so a map layer would be a marker or a
+parcel-shaped ghost, never a modelled solid. DATA-TRUTH.md §4.1 says so; §4.5 costs the only
+source that *would* give footprints — successive Sanborn atlases — as a project, not a task.
+
+### f. State
+
+Typecheck clean, eslint clean, **392 tests green**. One transient failure was seen and is not
+mine: `data.test.ts` reported `base/heroes: expected 39620 to be 38048` while another agent was
+rewriting `heroes.qc` and `manifest.json` — both files' mtime was inside the test run — and it
+passed again forty seconds later, untouched.
+
+Screenshots `f1-d2*` and `f1-d3*`: `f1-d2block-3721` (the rail, 30 demolitions),
+`f1-d3phone-0762` (**the Western Addition case at 390 px**), `f1-d2phone-fiche-3721` (both rails
+on one phone screen). `.parity/f1shot.py` gained a `scrollIntoView` before the phone shot — the
+page kept the previous block's scroll position, so mobile shots were landing in the footer.
+
+### g. Ten keys for `en.ts` and `fr.ts`
+
+Same arrangement as the twenty-five in `68082652`: declared in `EN_DEM` in `CityBlockPanel.tsx`
+behind `tx()`, because `useT` returns the key itself when one is missing. **When these land,
+`EN_DEM` and `tx()` both get deleted again** — the file has done that once already.
+
+```ts
+'us.sf.thecity.panel.dem_head': 'Torn down since {y}',
+'us.sf.thecity.panel.dem_lead': '{n} buildings on this block were demolished under a completed permit, {y0} to {y1}.',
+'us.sf.thecity.panel.dem_lead_one': 'One building on this block was demolished under a completed permit, in {y0}.',
+'us.sf.thecity.panel.dem_units': 'Homes in them',
+'us.sf.thecity.panel.dem_none': 'No completed demolition is on file for this block.',
+'us.sf.thecity.panel.dem_floor': "This record begins in {y}. What came down before is not published block by block — the city's 1906 schedule covers 36 municipal buildings and no private ones, and the Board approved the 1960s clearances without recording which buildings they took.",
+'us.sf.thecity.panel.dem_counted': 'Completed permits only: a cancelled one is a building still standing.',
+'us.sf.thecity.panel.dem_cover': '{n} of {all} blocks carry one.',
+'us.sf.thecity.panel.dem_src': 'See the permits',
+'us.sf.thecity.panel.dem_aria': '{decade}s — {n} demolished on this block',
+```

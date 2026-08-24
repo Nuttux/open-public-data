@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/i98e-djp9.json?%24select=block%2Clot%2Ccompleted_date&%24where=permit_type%3D%276%27+AND+status%3D%27complete%27",
+ "what": "i98e-djp9 permit_type 6, status complete \u2014 dated, block-keyed removals",
+ "bytes": 898473,
+ "rows": 4511,
+ "sha256": "c36cee71f8939fccbadc8d097a601dbec3c1e3cbda1d9b5775429b4ddbc13798",
+ "retrieved_utc": "2026-08-24T13:51:07Z"
+}

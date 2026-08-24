@@ -58,8 +58,21 @@ Each place now holds only its own, and **Glen Park's real branch is primary**.
 primary, the place's published point was in the Haight too — so the block its APN
 named and the point it was checked against **agreed with each other, and both
 were wrong**. Every downstream guard passed it, and `glen-park-branch-library`
-resolved to **block 1229, in Haight Ashbury, 4.3 km from Glen Park**. A guard
-cannot catch a self-consistent defect. Only the seed can.
+resolved to **block 1229, in Haight Ashbury, 4.3 km from Glen Park**.
+
+> **A downstream guard cannot catch a self-consistent defect. Only the seed can.**
+
+That is the general rule this review exists to record, and it is why a defect
+like this one has to be fixed here rather than guarded further down: every guard
+downstream compares two things, and when the same bad row has corrupted both of
+them, the comparison passes.
+
+It went further than the crosswalk. **Both libraries carried both parcels**, and
+the proof was sitting in the shipped point: `park-branch-library`'s published
+lat/lon was **1.7 m from the exact midpoint of the two libraries** — an average
+taken over both. `gross_sq_ft: 16010` was the two summed; Glen Park's own is
+**7,185**. Both points now come from DataSF `city_lands`, land_id 205 and 922
+(coordinator, `5c51ff4a`).
 
 ---
 
@@ -124,10 +137,15 @@ Both corrected defects came from **one alias apiece** in
 
 `build_sf_place_facilities.py`'s department-affinity guard cannot see either:
 Moscone Center is `ADM`, which accepts any non-school department, and both
-libraries are `LIB`. **Until those two aliases are removed, re-running the
-builder will reintroduce all six rows**, and this file will have to be reviewed
-again. A rule worth adding to the builder: *an alias that is another candidate
-place's whole name is not an alias.*
+libraries are `LIB`.
+
+**CLOSED — both aliases were removed in `5c51ff4a`**, so re-running the builder
+no longer reintroduces the six rows. The rule they argue for is still worth
+having in the builder: *an alias that is another candidate place's whole name is
+not an alias.* Note that the bare `"Moscone"` alias was not simply a slip —
+aliases also drive Internet Archive full-text matching, and this city's mayor was
+named Moscone, so a first-name-basis alias earns its keep in one subsystem while
+breaking another.
 
 ---
 

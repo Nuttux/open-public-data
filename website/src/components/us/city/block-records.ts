@@ -557,6 +557,25 @@ export interface BlockFactsFile {
   readonly pop: readonly number[];
   /** 2020 Census housing units; -1 where no census ring resolved here */
   readonly hu: readonly number[];
+  /**
+   * What came down. **Keyed by block id, and a block that is ABSENT is a block
+   * the record does not reach — not a block where nothing was demolished.**
+   * Each row is one count per decade in `demolition.decades`, then the dwelling
+   * units in those buildings, then the first and last year.
+   */
+  readonly dem: Readonly<Record<string, readonly number[]>>;
+  readonly demolition: {
+    readonly dataset: string;
+    readonly url: string;
+    /** the decade the series opens on — 1980, and what the panel prints */
+    readonly from_decade: number;
+    /** the earliest COMPLETED demolition in the file — 1983, held not printed */
+    readonly from_year: number;
+    readonly to_year: number;
+    readonly decades: readonly number[];
+    readonly blocks_with_any: number;
+    readonly units_demolished: number;
+  };
 }
 
 /** one block's row, decoded into the units a sentence is written in */
@@ -596,6 +615,71 @@ export interface BlockNow {
   readonly residents: number | null;
   readonly rollYear: number;
   readonly censusYear: number;
+}
+
+/**
+ * WHAT CAME DOWN ON THIS BLOCK, and the seventy-year hole underneath it.
+ *
+ * The building layer of this map is **survivorship only**: every footprint in
+ * `ynuv-fyni` is a building standing today, drawn in every year. This is the
+ * one published file that puts a dated, located removal back, and it starts in
+ * **1980**. DATA-TRUTH.md §4 measured what is on the other side of that line:
+ *
+ *   1906        36 CITY buildings out of the fire schedule. Not private stock.
+ *   1907–1979   **nothing per building.** The Board's Journal names the
+ *               Redevelopment Agency 227 times in 1960–75 and enumerates an
+ *               individual demolition 49 times — it approved the clearance
+ *               without recording what came down.
+ *
+ * So `total === 0` here means **the record does not reach this block**, and the
+ * panel says the 1980 floor whether or not the block has anything. The Western
+ * Addition is why: it was cleared before this series begins, and a silent zero
+ * there would be the most misleading sentence on the site.
+ */
+export interface BlockDemolitions {
+  /** completed demolition permits on this block, 0 where the record has none */
+  readonly total: number;
+  /** one `{decade, n}` per decade of the series, EMPTY ONES INCLUDED */
+  readonly byDecade: readonly { readonly decade: number; readonly n: number }[];
+  /** dwelling units the roll recorded in those buildings, 0 where none */
+  readonly units: number;
+  /** first and last year something came down here, null when nothing did */
+  readonly firstYear: number | null;
+  readonly lastYear: number | null;
+  /**
+   * The decade the series opens on — **1980, and it goes on the face of the
+   * section.** Not `from_year`: DBI's permit file opens in 1980 (one permit of
+   * 7,310 was filed before it) but the earliest COMPLETED demolition is March
+   * 1983, and "since 1983" would understate how far back a reader may look
+   * while "since 1980" is what the rail actually draws.
+   */
+  readonly recordFrom: number;
+  readonly recordTo: number;
+}
+
+export function blockDemolitions(
+  file: BlockFactsFile,
+  blockId: string,
+): BlockDemolitions {
+  const d = file.demolition;
+  const row = file.dem?.[blockId];
+  const decs = d?.decades ?? [];
+  if (!row || row.length < decs.length + 3) {
+    return {
+      total: 0, byDecade: [], units: 0, firstYear: null, lastYear: null,
+      recordFrom: d?.from_decade ?? 1980, recordTo: d?.to_year ?? 0,
+    };
+  }
+  const counts = row.slice(0, decs.length);
+  return {
+    total: counts.reduce((a, b) => a + b, 0),
+    byDecade: decs.map((decade, i) => ({ decade, n: counts[i] ?? 0 })),
+    units: row[decs.length] ?? 0,
+    firstYear: row[decs.length + 1] ?? null,
+    lastYear: row[decs.length + 2] ?? null,
+    recordFrom: d.from_decade,
+    recordTo: d.to_year,
+  };
 }
 
 /** one published place standing on this block, and what it takes */
