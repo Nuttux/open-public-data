@@ -984,3 +984,165 @@ stopped accepting streets" — the corpus shows the *vote* leaving the Journal,
 which is a claim about the record. Whether the Board's legal role changed, and
 exactly when, is a charter question this data cannot settle, and the paragraph
 above is worded to claim only what was measured.
+
+---
+
+## 11. STANDING HAZARDS in this tree
+
+Written down so the next person does not discover them at the worst moment.
+None is caused by this agent's work; all three were found by running something
+and diffing the result against a backup taken first, which is the practice
+these entries are really arguing for.
+
+### 11.1 `gen/geo-data.js` is not byte-reproducible
+
+Run the **unmodified** `gen_geo2.py` over the **unchanged** caches and the file
+comes back different: `blocks.vx` and `blocks.vy` return with **2,079 of 74,042
+deltas moved by exactly one quantum**. Everything else — `streets` included —
+is identical.
+
+```
+cd scratchpad/sf-city-anim
+cp gen/geo-data.js /tmp/before.js
+python3 gen/gen_geo2.py
+cmp /tmp/before.js gen/geo-data.js     # differs at char 80977
+cp /tmp/before.js gen/geo-data.js      # put it back
+```
+
+Sub-decimetre and invisible — a block-zoom pixel is 1.2 m — but the project's
+own rule is that the same input bytes give the same output bytes, and until it
+is fixed **nobody can regenerate `geo-data.js` in a shared tree without handing
+every other agent a 2,079-vertex diff to chase.** That is why §8's change was
+spliced into the file rather than regenerated. Likely cause: set or dict
+iteration order feeding the Douglas-Peucker in `main()`'s ring pass.
+
+### 11.2 `emit_places.py` reorders `base/places.*` on every run
+
+`encode_city_chunks.py` re-applies `emit_places.py --marks` at the end of every
+run, by design, because a plain rebuild used to drop 2,192 named places. But
+the emitter is **not stable**: run it twice in a row and `places.json`'s name
+table comes back in a different order, with the same 2,192 members.
+
+```
+python3 pipeline/scripts/us_sf_places/emit_places.py --marks   # twice
+# base/places.json, base/places.qc and base/marks.json all differ
+```
+
+So `base/places.json`, `base/places.qc` and `base/marks.json` show as modified
+after **any** encoder run, by anyone, forever. The set is identical and the
+three stay mutually consistent, so it is churn and not corruption — but it puts
+three unrelated files in every diff, and the manifest's recorded `gz` for
+`base/places` goes stale by a few bytes because it is measured before the merge.
+Another agent independently hit this and wrote it into a commit message the
+same hour: *"data.test.ts's base/places byte count flaps while chunks are being
+regenerated in this tree."* Two agents have now paid for it separately, which
+is the signal that it should be fixed rather than worked around.
+
+### 11.3 The shared git index is shared
+
+Staging files and committing are two calls, and between them another agent's
+`git commit` will sweep up **everything staged, including yours**. It happened
+to this agent's streets landing: eleven files staged here were committed under
+`845e04c1 "i18n: the block panel's two short-form demolition keys"`, whose
+author had no idea they were carrying them. The content landed intact and the
+tree is correct; the record is wrong, and a `git log` written for an auditor is
+one of the things this project says it cares about.
+
+**Stage and commit in ONE call.** `git add … && git commit …`, never two.
+
+---
+
+## 12. What is on screen now, and what is not
+
+### 12.1 The buildings — LANDED AND VISIBLE
+
+`lod/build_lod.py` and `encode_city_chunks.py` re-run, so the corrected years
+reach the browser.
+
+```
+block 4591A   BEFORE  one row: (2015, cov 14)     AFTER  (1950, 0), (1989, 14)
+block 4591B   BEFORE  one row: (2015, cov 31)     AFTER  (1981, 31)
+block 4591C   BEFORE  one row: (2015, cov 20)     AFTER  (2016, 20)   <- the condominiums
+base/massing.qc   45,450 rows -> 47,498
+```
+
+Shot at the district preset with the camera parked on the shipyard and only the
+year changing. Share of map pixels differing by more than 12/255 between
+consecutive frames:
+
+```
+              BEFORE    AFTER
+2013 -> 2014   0.14 %   0.14 %
+2014 -> 2015   1.44 %   0.03 %      the cliff, 48x smaller
+2015 -> 2016      —     0.15 %
+```
+
+At 2014 the peninsula was bare ground. It now carries the Navy-era industrial
+stock from 1989, and 2014 and 2015 are indistinguishable.
+`diag_shipyard_shots.py` reproduces the frames.
+
+### 12.2 The streets — ON THE WIRE, DRAWN BY NOBODY
+
+`strt/street-unimplied.qc` ships and the browser holds it — confirmed live in
+the page, `{n: 846, undated: 741}`. `streets.ts` draws it, behind two constants,
+and four cases in `draw.test.ts` cover the band gate, the
+undated-in-every-year rule, the two alpha groups and the guarantee that a class
+0–4 line is never double-stroked by both loops.
+
+**It does not appear on screen, and neither does any other centreline.**
+`scene.paintStreets` calls `drawCentrelines` with no `lines` and a hardcoded
+`band: 0`, so the function returns 0 on its first line. **The entire centreline
+layer — the existing 4,895 as well as these 846 — is decoded by nobody.**
+`data.ts`'s `streetLines()` has no caller outside its own tests. This is the
+brief's own pattern 8: *four whole passes were written, tested and called by
+nobody.*
+
+`DATA.md` §15.7 already writes the wiring out, eight lines in `paintStreets`:
+
+```ts
+const lines = this.data.streetLines();
+const band = bandOf(view.z);
+if (lines.length) {
+  drawCentrelines(f, cells, t, { medianW, covered: () => true, band, lines, year });
+}
+if (!cells.length) return 0;      // the SURFACE's gate, AFTER the lines
+```
+
+**It was not done here on purpose.** `scene.ts` was edited six minutes before
+the commit that shipped the chunk, by the agent who owns it, and turning on the
+whole centreline layer is that agent's deliberate change — a citywide visual
+step — not a side effect of one carried by a data fix. The screenshot at the
+Presidio camera is the evidence for both halves: dense canopy and buildings,
+Presidio Blvd and Mason St *labelled*, and not one line drawn through the
+Presidio or Golden Gate Park.
+
+**On flicker, since the gate is now mine.** The 30 m and quarter-length rules
+are thresholds, and a threshold is a step in the derivative — but they are
+evaluated **once, in the pipeline**, and baked into the chunk, so they cannot
+flicker with the camera or the clock. The only live step is the band gate, and
+`UNIMPLIED_FROM_BAND = 1` puts it on a boundary the layer already moves at
+(`Z_LINES_2` = 1.70, where classes 3–4 arrive) rather than making a new one:
+131.6 km appearing where nothing else changes would read as a bug. The year
+gate is per feature at that feature's own year, the same mechanism every other
+dated thing uses. This could not be *observed* on screen, for the reason above,
+and that is stated rather than glossed.
+
+### 12.3 Two traps automated on the way through
+
+Both were sprung by re-running the encoder, and both are now impossible rather
+than documented.
+
+* **The encoder ate a file it did not write.** `base/surround-coast.json` was
+  deleted by the rebuild two hours after `fix(sf): the Golden Gate was dry land`
+  shipped it, because the carry list was a hand-maintained list of other
+  people's files. It is now a floor, not the rule: everything under the cleared
+  directories is snapshotted and anything the run did not write is put back,
+  with a line in the log naming it.
+* **The encoder dropped an authored hero.** `encode_heroes()` rebuilds the
+  mock's eleven and `emit_heroes.py` merges its seed on top; its own docstring
+  says *"this must be re-run after it"* and it was still not automated, so a
+  re-run for an unrelated reason silently dropped the Palace of Fine Arts
+  Exhibition Hall. Now re-applied automatically, as `emit_places.py` already
+  was. And `verify_city_chunks.py`, which had been red for 30 checks since the
+  twelfth hero shipped, now checks the invariant that matters — the mock's
+  eleven survive the merge unchanged — instead of the count.
