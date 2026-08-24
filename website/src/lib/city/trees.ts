@@ -21,7 +21,16 @@
  */
 
 import type { Chunk } from "./data";
-import { type Frame, sx, sy, TerrainField } from "./terrain";
+import {
+  type Frame,
+  lerpHex,
+  sx,
+  sy,
+  TerrainField,
+  WCN1,
+  WG1,
+  WPK1,
+} from "./terrain";
 
 // ── the ladder ──────────────────────────────────────────────────────────────
 
@@ -300,9 +309,20 @@ export interface VegFlags {
   blobs: boolean;
   /** the street trees */
   trees: boolean;
+  /** the park wash's per-class tone — off returns every ring to `WPKW` */
+  parkCls: boolean;
 }
 
-export const WFLG: VegFlags = { undated: true, tint: true, blobs: true, trees: true };
+export const WFLG: VegFlags = {
+  undated: true,
+  tint: true,
+  blobs: true,
+  trees: true,
+  parkCls: true,
+};
+if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+  (globalThis as { __cityWFLG?: VegFlags }).__cityWFLG = WFLG;
+}
 
 /**
  * A MOTION RUNG FOR THE VEGETATION WAS WRITTEN, MEASURED, AND TAKEN BACK OUT.
@@ -929,14 +949,90 @@ export const WPKW = "#93ad6a";
 /** an inland lake or reservoir */
 export const WLAKE = "#7f9fbe";
 
-export type ParkRing = readonly (readonly [number, number])[];
+/**
+ * ONE TONE PER PUBLISHED PROPERTY TYPE — the sixth decoded field with no
+ * reader, and the reference has it too.
+ *
+ * `base/parks` ships `cls`, one byte a ring, and it is not a drawing hint: it
+ * is DataSF `gtr9-ntp6`'s own `propertytype`, ranked by
+ * `world/build_world.py` L274 and shipped through `encode_city_chunks.py`
+ * L1220. **`part3.html` L3317 decodes it into `WPARKC` and `grep -n WPARKC`
+ * over the whole reference returns that one line and nothing else** — the
+ * fifth pass this project has found written and read by nobody, and this port
+ * inherited the habit: `decodeParks` returned `cls` and `scene.ts` L980 threw
+ * it away.
+ *
+ * The published ranks and what they hold:
+ *
+ * ```
+ *   0  Regional Park · Parkway · Zoological Garden · Family Camp     55 rings
+ *   1  Neighborhood Park or Playground                              187 rings
+ *   2  Mini Park                                                     45 rings
+ *   3  Civic Plaza or Square · Library · Concession ·
+ *      Other Non-Park Property                                       29 rings
+ *   4  Community Garden                                              12 rings
+ * ```
+ *
+ * **A CIVIC PLAZA IS NOT GRASS.** Union Square, Civic Center Plaza, UN Plaza
+ * and 26 other properties the register itself calls a plaza, a library or a
+ * concession were washed in the same meadow green as Golden Gate Park, which
+ * is the largest single thing making the open ground read as one flat fill.
+ *
+ * **The five tones are a DRAWING CONVENTION and they are stated as one.** The
+ * source publishes a type, not a colour. What is not invented is the palette:
+ * every tone is `WPKW` moved toward a value **this page already paints**, by a
+ * stated fraction, so no sixth colour enters the register.
+ *
+ * ```
+ *   0  lerp(WPKW, WCN1, 0.35)   toward the CANOPY's own dark green: the
+ *                               regional parks are the ones that hold forest
+ *   1  WPKW                     unchanged — 187 of 328 rings, so the frame's
+ *                               mean park tone does not move
+ *   2  WPKW                     unchanged: a mini park is a small one, not a
+ *                               different surface
+ *   3  lerp(WPKW, WG1, 0.72)    toward the page's own BARE GROUND tan: paved
+ *   4  lerp(WPKW, WPK1, 0.35)   toward the park ground's own pale: cultivated
+ * ```
+ *
+ * `PARK_WASH` stays 0.46 for every class, because §16.5's composite is what
+ * makes two overlapping rings read as the two claims they are, and a per-class
+ * alpha would break that arithmetic.
+ */
+export const PARK_TONE: readonly string[] = [
+  lerpHex(WPKW, WCN1, 0.35),
+  WPKW,
+  WPKW,
+  lerpHex(WPKW, WG1, 0.72),
+  lerpHex(WPKW, WPK1, 0.35),
+];
+
+/**
+ * A ring, with the published property type it came in on.
+ *
+ * The class rides on the ring rather than in a parallel array because the
+ * ring is what every caller already holds: `scene.ts` stores `p.parks` and
+ * hands it to `markCells` and to `drawParkRings`, and a parallel `cls` array
+ * has to be carried by every one of them or dropped by one of them — which is
+ * exactly how it came to be dropped. An array with an own property is still
+ * an array to `for (const [x, y] of ring)`.
+ */
+export type ParkRing = readonly (readonly [number, number])[] & {
+  /** the published `gtr9-ntp6` propertytype rank; undefined = not supplied */
+  readonly cls?: number;
+};
 
 export function decodeParks(chunk: Chunk): {
   parks: ParkRing[];
   cls: Uint8Array;
   water: ParkRing[];
 } {
-  const read = (lenName: string, xyName: string): ParkRing[] => {
+  const cls = chunk.fields.cls;
+  const clsA = cls instanceof Uint8Array ? cls : new Uint8Array(0);
+  const read = (
+    lenName: string,
+    xyName: string,
+    withCls: boolean,
+  ): ParkRing[] => {
     const len = chunk.fields[lenName];
     const xy = chunk.fields[xyName];
     if (!len || !xy) return [];
@@ -944,20 +1040,22 @@ export function decodeParks(chunk: Chunk): {
     let o = 0;
     for (let r = 0; r < len.length; r++) {
       const n = len[r];
-      const ring: [number, number][] = new Array(n);
+      const ring = new Array(n) as [number, number][] & { cls?: number };
       // decimetres, i32 x 10 — the published quantum, 0.05 m worst error
       for (let k = 0; k < n; k++)
         ring[k] = [xy[o + k * 2] / 10, xy[o + k * 2 + 1] / 10];
+      /* THE CLASS RIDES ON THE RING. See `ParkRing`: a parallel array is
+         dropped by whichever caller forgets it, and one already had. */
+      if (withCls && r < clsA.length) ring.cls = clsA[r];
       out.push(ring);
       o += n * 2;
     }
     return out;
   };
-  const cls = chunk.fields.cls;
   return {
-    parks: read("len", "xy"),
-    cls: cls instanceof Uint8Array ? cls : new Uint8Array(0),
-    water: read("waterLen", "waterXY"),
+    parks: read("len", "xy", true),
+    cls: clsA,
+    water: read("waterLen", "waterXY", false),
   };
 }
 
@@ -980,6 +1078,11 @@ export function drawParkRings(
   ctx.save();
   ctx.globalAlpha = PARK_WASH;
   ctx.fillStyle = WPKW;
+  /* ONE fillStyle CHANGE PER CHANGE OF CLASS, not one per ring: the rings
+     arrive in the register's own order, which is the order the overlaps
+     compose in, so they are not sorted — but consecutive rings of one
+     property are common and the assignment is skipped when the tone repeats. */
+  let tone = WPKW;
   /* ── ONE FILL A RING, NOT ONE FILL FOR ALL OF THEM ─────────────────────
      This built every ring into a single `Path2D` and filled it `"evenodd"`.
      Two things follow and both are visible over Golden Gate Park and Lake
@@ -1016,6 +1119,13 @@ export function drawParkRings(
       else p.moveTo(X, Y);
     }
     if (x1 < -8 || x0 > W + 8 || y1 < -8 || y0 > H + 8) continue;
+    const c = WFLG.parkCls ? ring.cls : undefined;
+    const want =
+      c !== undefined && c < PARK_TONE.length ? PARK_TONE[c] : WPKW;
+    if (want !== tone) {
+      tone = want;
+      ctx.fillStyle = want;
+    }
     p.closePath();
     ctx.fill(p);
     drawn++;

@@ -4590,3 +4590,83 @@ So CHAR's real marginal value is the two things D2 does not headline:
 the Presidio**, which fails at `storeys <= 0` before any type is consulted
 (§22.4). Whoever picks this up should size it against those two numbers rather
 than against the glazed band.
+
+### 20.6 `parks.cls` — a published field with no reader, in this port AND in the reference
+
+The brief's first target: *"tonal separation in parks and open ground — right
+now large areas are one flat fill. Grass, sand, scrub and paved plaza are
+different things and the land-use source can tell them apart."*
+
+It can, and it already ships. `base/parks` carries `cls`, one byte a ring —
+**not a drawing hint, DataSF `gtr9-ntp6`'s own `propertytype`**, ranked in
+`world/build_world.py` L274 and written by `encode_city_chunks.py` L1220.
+
+**Nobody reads it, on either side of the port.**
+
+    part3.html:3317  const WPARKC = (WRLD&&WRLD.park&&WRLD.park.n)
+                                    ? unb64(WRLD.park.cls) : null;
+    $ grep -n WPARKC part3.html
+    3317: … (one line, the declaration)
+
+That is the reference decoding it and never using it — the fifth pass this
+project has found written and read by nobody (§16.1, §17.1, §18.8, §19.3).
+This port inherited the habit one step further along: `decodeParks` returned
+`cls` and `scene.ts` L980 assigned `p.parks` and `p.water` and dropped it.
+
+So every one of the 328 rings was washed in one green, `WPKW` at 0.46 —
+Golden Gate Park and Union Square in the same paint.
+
+| rank | published property type | rings |
+|---:|---|---:|
+| 0 | Regional Park · Parkway · Zoological Garden · Family Camp | 55 |
+| 1 | Neighborhood Park or Playground | 187 |
+| 2 | Mini Park | 45 |
+| 3 | **Civic Plaza or Square** · Library · Concession · Other Non-Park Property | 29 |
+| 4 | Community Garden | 12 |
+
+**The five tones are a DRAWING CONVENTION and are stated as one.** The register
+publishes a type, not a colour. What is NOT invented is the palette: each tone
+is `WPKW` moved toward a value this page already paints, by a stated fraction,
+so no sixth colour enters the register.
+
+    0  lerp(WPKW, WCN1, 0.35) = #8ba463   toward the CANOPY's own dark green
+    1  WPKW                   = #93ad6a   unchanged — 187 of 328 rings
+    2  WPKW                   = #93ad6a   unchanged
+    3  lerp(WPKW, WG1,  0.72) = #c8c08d   toward the page's own BARE-GROUND tan
+    4  lerp(WPKW, WPK1, 0.35) = #a9ba80   toward the park ground's own pale
+
+`PARK_WASH` stays 0.46 for every class: §16.5's composite is what makes two
+overlapping rings read as the two claims they are, and a per-class alpha would
+break that arithmetic.
+
+**The class rides on the ring, not in a parallel array.** `ParkRing` is now
+`readonly [number,number][] & { readonly cls?: number }` and `decodeParks`
+attaches it. That is deliberate and it is the fix for how the field came to be
+dropped: a parallel array has to be carried by `scene.ts`'s field, by
+`markCells` and by `drawParkRings`, and it only takes one of them to forget.
+An array with an own property is still an array to `for (const [x, y] of ring)`,
+so no call site changed and none can lose it again.
+
+MEASURED, `.parity/g2abl.py`, ablating `WFLG.parkCls` at one camera per row,
+with a same-configuration CONTROL pair shot first so a tier still landing
+cannot be read as the treatment:
+
+| camera | control moved / gross | treatment moved / gross | frame mean |
+|---|---|---|---|
+| whole city | 0.00 % / 0.00 % | **1.47 %** / 0.01 % | 191.90 → 191.85 |
+| district, Civic Center | 0.00 % / 0.00 % | **1.44 %** / 0.04 % | 165.83 → 165.78 |
+| block, Civic Center | 0.00 % / 0.00 % | **0.12 %** / 0.09 % | 152.52 → 152.54 |
+| block, Golden Gate Park | 0.00 % / 0.00 % | **2.92 %** / 0.00 % | 144.70 → 144.60 |
+| street, downtown | 0.00 % / 0.00 % | 0.03 % / 0.02 % | 139.13 → 139.14 |
+| district, GG Park | 8.78 % / 5.03 % | 11.12 % / 5.04 % | *control is larger than the effect — the row says nothing* |
+
+**It is a small, targeted, tone-NEUTRAL change and it should be sold as one:**
+1.4–2.9 % of the wide frames move, the gross band moves 0.04 %, and the frame
+mean does not move at all. What it buys is that Civic Center Plaza, Union
+Square and 27 other properties the register itself calls a plaza, a library or
+a concession stop being lawns. `out-g2/cls-blk-civic.png` is the picture.
+
+**The GG-Park district row is honest about failing.** That camera had a tier
+still landing under both halves of the ablation, so its control moved more
+than the treatment did and the row is discarded rather than quoted. Every
+other row's control is a byte-identical pair.
