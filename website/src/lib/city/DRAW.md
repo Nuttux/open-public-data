@@ -7867,3 +7867,83 @@ arithmetic (§21.29), the 21-frame before curve (§21.30) and
 `landmarks.test.ts`, not an after-sequence.** `.parity/g3/jump.py` is the
 instrument and it takes about twenty minutes on a quiet server; it should be
 re-run against a build, not a dev server, before this is shown as motion.
+
+### 21.35 The Bay Bridge is drawn — west crossing, four towers, out of the same three files
+
+Built, not spec'd. `pipeline/scripts/us_sf_places/emit_bay_bridge.py` merges the
+west crossing into `base/bridge`; `data.ts` reads N bridges; `drawBridge` draws
+them. **`scene.ts` was not touched**, which was the shape to build and it held.
+
+**The merge is safe because the round trip proves it, twice.** The script reads
+whatever is on disk back out and re-encodes it before adding anything:
+
+    round trip: IDENTICAL, 256 bytes, 1 bridge(s), 5 ring / 2 towers
+    round trip: IDENTICAL, 472 bytes, 2 bridge(s), 5 ring / 2 towers + 5 ring / 4 towers
+
+The first line is the safety proof against the city encoder's own output — if
+the Golden Gate did not survive a read/re-encode, every run would silently move
+a bridge. The second is the **idempotence** proof: re-running the script on its
+own output is a no-op. `encode_city_chunks.py` still rebuilds `base/bridge` from
+the mock and drops the Bay Bridge, so this must be re-run after it, and the
+manifest's `authoredHere.note` says so.
+
+**The layout is why one bridge stayed byte-identical.** `rx/ry` and `tx/ty` are
+flat streams over all bridges and `rn/tn` are per-bridge counts; **a chunk with
+one bridge carries no counts at all** and is exactly what the encoder writes.
+`data.ts` reads absent counts as one bridge, which is what it always did.
+
+**What is published and what is a drawing decision**, kept apart in the manifest:
+
+| | |
+|---|---|
+| alignment | TIGERweb Primary Roads OID `11017076382872`, 17 vertices, Rincon Hill → Yerba Buena Island |
+| towers | FAA DOF, 4 obstacles, **11.8 / 20.2 / 14.6 / 8.8 m** off the deck line — all inside `GGB_TOWER_TOL_M` |
+| dimensions | FHWA NBI `34 0003` — deck 19.1 m, clearance 56.4 m, max span 704.1 m |
+| year | `YEAR_BUILT_027` = **1936**, so on this map the Bay Bridge opens a year **before** the Golden Gate, which is what happened |
+| **the ring** | **DERIVED.** This bridge is in no City register, so there is no landmark parcel to draw. The quad is the published centreline offset by half the published deck width — the roadway exactly, where the Golden Gate's ring is its parcel and is wider (32.3 m against a published 18.9 m roadway). |
+| **the east span** | **NOT DRAWN**, and declared. `34 0006` is a self-anchored suspension bridge with one tower and an asymmetric cable that this cable model does not describe. Wrong form is worse than absent. |
+
+**A quad may stand for 17 vertices, and that is measured.** `drawBridge` reads a
+straight axis off the ring's end edges. The alignment runs **3,133.0 m** along
+its path against **3,131.6 m** end to end — straight to within **1.4 m over
+3.1 km**, ratio 1.00047. The emitter asserts it at 0.5 % and refuses otherwise.
+
+**THE CABLE IS A GENERALISATION, NOT A BRANCH — and it is right about this
+bridge by construction.** One parabola per gap between consecutive towers,
+through the first head, the deck at the midpoint and the second head. With two
+towers of equal height it is the expression it replaces, term for term, so the
+Golden Gate's curve is unchanged — asserted over 400 samples at three tower
+placements. The luck worth recording: the west crossing is **two suspension
+bridges in series sharing a central anchorage**, where the cable comes down to
+deck level. The FAA's four towers sit **701.3 / 748.5 / 701.3 m** apart — the two
+main spans and the gap containing that anchorage — and a curve that touches the
+deck at every midpoint puts the cable on the anchorage **without being told it
+is there**.
+
+One thing the generalisation did need: **a clamp at the deck**. When two heads
+differ the parabola's linear term moves its minimum off centre and 0.20 m under
+the roadway — the west crossing's fourth tower is 463 ft against its neighbours'
+520. A cable below its own deck is wrong however small, and with equal heads the
+clamp never binds.
+
+**THE CROSS-CHECK, restated because it is the reason to trust the whole thing.**
+Those spacings are whole arc-seconds from an aviation obstruction file. The
+**704.1 m** is a highway inventory field. Nobody reconciled them. Two of the
+three agree to **0.4 %**.
+
+**On screen** (`.parity/g3/out/bay-crop.png`, z = 2.2): four towers, the cable
+rising over each and touching the deck between, suspenders drawn, the deck
+running from Rincon Hill out to Yerba Buena. The Golden Gate is unchanged
+(`ggb-crop.png`) and both bridges appear in one frame.
+
+**One pre-existing thing this made visible, and it is not mine.** A grey line
+runs along the Bay Bridge's alignment and continues past Yerba Buena toward
+Oakland — the **street layer** carries the bridge roadway as a street centreline
+and draws it flat, at ground level, over open water. It was there before this
+block with no structure above it. Filed as BUGS §32 for the streets owner.
+
+**Ten new tests** in `landmarks.test.ts`: the two-bridge record, the 1936 gate
+before 1937, all four towers inside the tolerance, the cross-check, the
+straightness, the east span declared rather than missing, the three new fields
+naming sources that carry a SHA-256, the derived-ring statement, and the two
+cable properties. 419 green.

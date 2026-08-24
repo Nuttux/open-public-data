@@ -484,13 +484,30 @@ export interface FormTable {
 }
 
 /** `landmarks.ts`'s `BridgeDeck`, plus the record behind it. */
-export interface BridgeData {
+export interface BridgeSpan {
   readonly ring: readonly (readonly [number, number])[];
   readonly towers: readonly (readonly [number, number])[];
+  /** each tower's head, metres above sea level — the FAA file's AMSL, per tower */
+  readonly towerZ?: readonly number[];
+  /** NBI navigational vertical clearance, metres */
+  readonly deckZ?: number;
+  /** the year it EXISTED — NBI completion */
+  readonly year?: number;
+}
+
+export interface BridgeData extends BridgeSpan {
   /** the year it EXISTED — NBI completion, 1937 */
   readonly year: number;
   /** the landmark register's `yearbuilt`, 1933 — when work BEGAN */
   readonly yearLandmark: number;
+  /**
+   * EVERY OTHER BRIDGE IN THE CHUNK. `base/bridge` shipped one bridge as two
+   * flat vertex streams; `emit_bay_bridge.py` added the Bay Bridge's west
+   * crossing and the chunk now carries per-bridge counts in `rn`/`tn`. A chunk
+   * WITHOUT them is one bridge and reads exactly as before, which is what let
+   * the Golden Gate's own bytes survive the merge unchanged.
+   */
+  readonly more: readonly BridgeSpan[];
 }
 
 export interface LandmarkTable {
@@ -1402,13 +1419,43 @@ export class CityData {
       const bry = bc.fields.ry as Float32Array;
       const btx = bc.fields.tx as Float32Array;
       const bty = bc.fields.ty as Float32Array;
+      /* THE COUNTS ARE OPTIONAL AND THAT IS THE POINT. One bridge ships two
+         flat streams and no counts, which is the shape the city encoder writes
+         and the shape this read has always handled; `emit_bay_bridge.py` adds
+         `rn`/`tn`/`tz` and a second bridge without touching the first bridge's
+         bytes. Absent counts ⇒ the whole stream is one bridge. */
+      const rn = bc.fields.rn as Uint16Array | undefined;
+      const tn = bc.fields.tn as Uint16Array | undefined;
+      const tz = bc.fields.tz as Float32Array | undefined;
+      const meta = (be.bridges ?? []) as {
+        deckZ?: number; year?: number;
+      }[];
+      const nb = rn?.length ?? 1;
+      const spans: BridgeSpan[] = [];
+      for (let q = 0, ro = 0, to = 0; q < nb; q++) {
+        const rc = rn ? rn[q] : brx.length;
+        const tc = tn ? tn[q] : btx.length;
+        spans.push({
+          ring: Array.from({ length: rc }, (_, i) =>
+            [brx[ro + i], bry[ro + i]] as const),
+          towers: Array.from({ length: tc }, (_, i) =>
+            [btx[to + i], bty[to + i]] as const),
+          towerZ: tz
+            ? Array.from({ length: tc }, (_, i) => tz[to + i])
+            : undefined,
+          deckZ: meta[q]?.deckZ,
+          year: meta[q]?.year,
+        });
+        ro += rc;
+        to += tc;
+      }
       bridge = {
-        ring: Array.from(brx, (v, i) => [v, bry[i]] as const),
-        towers: Array.from(btx, (v, i) => [v, bty[i]] as const),
+        ...spans[0],
         // 1937 is completion and opening. 1933 is when work began, and a map
         // that draws where a bridge IS wants the year it existed.
-        year: be.year as number,
+        year: (spans[0].year ?? be.year) as number,
         yearLandmark: be.yearLandmark as number,
+        more: spans.slice(1),
       };
     }
 

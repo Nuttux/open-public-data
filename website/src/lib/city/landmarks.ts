@@ -716,6 +716,26 @@ export const GGB_TOWER_TOL_M = 31.0;
 export interface BridgeDeck {
   readonly ring: readonly (readonly [number, number])[];
   readonly towers: readonly (readonly [number, number])[];
+  /**
+   * Each tower's head in metres above sea level — the FAA obstacle file's AMSL
+   * figure, per tower. Optional, and when it is absent every tower is
+   * `GGB.towerFt`, which is what the Golden Gate's two are: the file gives both
+   * of them 760 ft, so the uniform case is this array with equal entries and
+   * NOT a separate code path.
+   */
+  readonly towerZ?: readonly number[];
+  /** NBI navigational vertical clearance, metres. Absent ⇒ `GGB.deckZ`. */
+  readonly deckZ?: number;
+  /** the year it EXISTED — NBI completion. Absent ⇒ `GGB.year`. */
+  readonly year?: number;
+  /**
+   * EVERY OTHER BRIDGE IN THE CHUNK, and the reason `scene.ts` did not have to
+   * change. `base/bridge` shipped one bridge as two flat vertex streams; it now
+   * ships N with per-bridge counts, and `drawBridge` draws the head span and
+   * then each of these through the same code. A city with one bridge leaves it
+   * undefined and nothing about that city's drawing changes.
+   */
+  readonly more?: readonly BridgeDeck[];
 }
 
 /**
@@ -796,13 +816,43 @@ export const GGB_LEG_SHA = "#95491f";
 export const GGB_BRACE = "rgba(120,58,26,.9)";
 export const GGB_SHADOW = "rgba(72,60,42,0.13)";
 
+/**
+ * EVERY BRIDGE IN THE RECORD, THROUGH ONE PASS.
+ *
+ * The Bay Bridge's west crossing joined `base/bridge` from
+ * `emit_bay_bridge.py`, built from the same three published files the Golden
+ * Gate is built from — TIGERweb Primary Roads for the alignment, the FAA
+ * Digital Obstacle File for the towers, FHWA NBI 2023 for the dimensions and
+ * the year. It is drawn by exactly this code, and the three things that used to
+ * be Golden Gate constants — the deck's clearance, the tower heads and the year
+ * — are now read off the record, per bridge.
+ *
+ * **It is a generalisation, not a branch.** Two towers with equal heads is the
+ * four-tower case with N = 2, and the piecewise cable below reduces to the
+ * single parabola the Golden Gate was drawn with. `drawSpan` has no idea which
+ * bridge it is drawing.
+ */
 export function drawBridge(
   f: Frame,
   deck: BridgeDeck,
   year: number | undefined,
   elevM?: (x: number, y: number) => number,
 ): number {
-  if (year !== undefined && year < GGB.year) return 0;
+  let n = drawSpan(f, deck, year, elevM);
+  for (const m of deck.more ?? []) n += drawSpan(f, m, year, elevM);
+  return n;
+}
+
+function drawSpan(
+  f: Frame,
+  deck: BridgeDeck,
+  year: number | undefined,
+  elevM?: (x: number, y: number) => number,
+): number {
+  /* the year it EXISTED, off the record. The Bay Bridge's NBI completion year
+     is 1936 and the Golden Gate's is 1937, so on this map the Bay Bridge opens
+     first — which is what happened. */
+  if (year !== undefined && year < (deck.year ?? GGB.year)) return 0;
   const ring = deck.ring;
   if (ring.length < 4 || deck.towers.length < 2) return 0;
 
@@ -831,8 +881,11 @@ export function drawBridge(
   const dpx = L * k * (Math.hypot(cf.ax, cf.ay) || 1);
   if (dpx < GGB_MIN_PX) return 0;
 
-  const dz = GGB.deckZ;
-  const th = GGB.towerFt * 0.3048;
+  const dz = deck.deckZ ?? GGB.deckZ;
+  /* one head per tower. `GGB.towerFt` is the fallback for a record that does
+     not carry them, and it is what the Golden Gate's own two are. */
+  const heads = deck.towers.map((_, i) =>
+    deck.towerZ?.[i] ?? GGB.towerFt * 0.3048);
   const { ctx } = f;
   const P = (t: number, lat: number, hh: number): [number, number] => {
     const pr = f.proj.proj(ax + ux * t * L + nx * lat, ay + uy * t * L + ny * lat, hh);
@@ -841,10 +894,14 @@ export function drawBridge(
   /* where the two published towers fall along that centreline.
      `GGB_TOWER_TOL_M` is the assertion that they fall ON it; this is the same
      projection, used rather than checked. */
-  const tt = deck.towers
-    .map((t) => ((t[0] - ax) * ux + (t[1] - ay) * uy) / L)
-    .map((t) => Math.max(0, Math.min(1, t)))
-    .sort((p2, q) => p2 - q);
+  const twr = deck.towers
+    .map((t, i) => ({
+      t: Math.max(0, Math.min(1, ((t[0] - ax) * ux + (t[1] - ay) * uy) / L)),
+      h: heads[i],
+    }))
+    .sort((p2, q) => p2.t - q.t);
+  const tt = twr.map((x) => x.t);
+  const th = twr.map((x) => x.h);
   const t0 = tt[0];
   const t1 = tt[tt.length - 1];
 
@@ -901,19 +958,48 @@ export function drawBridge(
   /* the cable, as a parabola. y(t) over the main span has its low point at the
      deck at mid-span and its ends at the tower heads; the side spans run from
      each tower head down to the deck at the published extent. */
+  /* ── THE CABLE, ONE PARABOLA PER GAP BETWEEN CONSECUTIVE TOWERS ──────
+     The Golden Gate's rule, unchanged and now stated once per span: the low
+     point is drawn AT the deck, so the sag is the difference between two
+     published figures and not a number of its own. Between two towers the
+     curve passes through the first head, the deck at the midpoint and the
+     second head; outside the end towers it runs from a head down to the deck at
+     the published extent.
+
+     WITH TWO EQUAL TOWERS THIS IS THE EXPRESSION IT REPLACES, term for term —
+     `dz + u²(th − dz)` — which is what makes it a generalisation rather than a
+     second bridge's special case.
+
+     AND IT IS RIGHT ABOUT THE BAY BRIDGE BY CONSTRUCTION, WHICH IS LUCK WORTH
+     RECORDING. The west crossing is two suspension bridges in series sharing a
+     CENTRAL ANCHORAGE, where the cable comes all the way down to deck level.
+     The FAA file's four towers sit at 701.3, 748.5 and 701.3 m apart — the two
+     main spans and the gap containing that anchorage — and a curve that touches
+     the deck at the midpoint of every gap puts the cable on the anchorage
+     without being told it is there. */
   const cabZ = (t: number): number => {
-    if (t >= t0 && t <= t1) {
-      const m = (t0 + t1) / 2;
-      const hw = (t1 - t0) / 2 || 1e-6;
-      const u = (t - m) / hw;
-      return dz + (th - dz) * u * u;
-    }
-    if (t < t0) {
+    if (t <= t0) {
       const u = (t0 - t) / (t0 || 1e-6);
-      return th - (th - dz) * u * u;
+      return th[0] - (th[0] - dz) * u * u;
     }
-    const u = (t - t1) / (1 - t1 || 1e-6);
-    return th - (th - dz) * u * u;
+    if (t >= t1) {
+      const e = th.length - 1;
+      const u = (t - t1) / (1 - t1 || 1e-6);
+      return th[e] - (th[e] - dz) * u * u;
+    }
+    let i = 0;
+    while (i < tt.length - 2 && t > tt[i + 1]) i++;
+    const hw = (tt[i + 1] - tt[i]) / 2 || 1e-6;
+    const u = (t - (tt[i] + tt[i + 1]) / 2) / hw;
+    /* through (−1, th[i]), (0, dz), (+1, th[i+1]).
+       CLAMPED AT THE DECK, and it is not cosmetic: when the two heads DIFFER
+       the parabola's linear term moves its minimum off centre and takes it
+       slightly under the deck — 0.20 m on the west crossing's fourth tower,
+       which is 463 ft against its neighbours' 520. A cable drawn below its own
+       roadway is wrong however small. With equal heads the linear term is zero
+       and this never binds, so the Golden Gate's curve is untouched. */
+    return Math.max(dz, dz + u * u * ((th[i] + th[i + 1]) / 2 - dz)
+                          + u * ((th[i + 1] - th[i]) / 2));
   };
   const NS = Math.max(14, Math.min(56, dpx / 12) | 0);
 
@@ -991,28 +1077,32 @@ export function drawBridge(
      than a longer piece of deck — see the note above this function. */
   const legL = GGB.legM / L;
   const legW = GGB.legM / 2;
-  for (const t of [t0, t1]) {
+  /* EVERY published tower. The Golden Gate has two and this is [t0, t1]; the
+     Bay Bridge's west crossing has four and they are all drawn. */
+  for (let ti = 0; ti < tt.length; ti++) {
+    const t = tt[ti];
+    const thT = th[ti];
     // far leg first, then the near one, so the tower has depth
     for (const lat of [-half, half]) {
       const l0 = lat - legW;
       const l1 = lat + legW;
       const a = P(t, l0, 0);
       const b = P(t, l1, 0);
-      const c = P(t, l1, th);
-      const d = P(t, l0, th);
+      const c = P(t, l1, thT);
+      const d = P(t, l0, thT);
       poly([a, b, c, d], GGB_LEG_LIT);
       const e = P(t + legL, l1, 0);
-      const g = P(t + legL, l1, th);
+      const g = P(t + legL, l1, thT);
       poly([b, e, g, c], GGB_LEG_SHA);
-      if (dpx > GGB_LEGTOP_PX) poly([d, c, g, P(t + legL, l0, th)], GGB_LEG_TOP);
+      if (dpx > GGB_LEGTOP_PX) poly([d, c, g, P(t + legL, l0, thT)], GGB_LEG_TOP);
     }
     if (dpx > GGB_BRACE_PX) {
       ctx.strokeStyle = GGB_BRACE;
       ctx.lineWidth = Math.max(0.8, dpx / 520);
       ctx.beginPath();
       for (const fr of [0.32, 0.55, 0.76, 0.955]) {
-        const a = P(t, -half, th * fr);
-        const b = P(t, half, th * fr);
+        const a = P(t, -half, thT * fr);
+        const b = P(t, half, thT * fr);
         ctx.moveTo(a[0], a[1]);
         ctx.lineTo(b[0], b[1]);
       }
