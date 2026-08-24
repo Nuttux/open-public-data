@@ -47,6 +47,7 @@ from _chunk import ChunkWriter, field_array, read_chunk  # noqa: E402
 from _bldgsrc import read_bldg  # noqa: E402
 
 SEED = HERE / "heroes_extra.json"
+CACHE = HERE / "cache"
 OUT = ROOT / "website/public/data/us/sf/city"
 MANIFEST = OUT / "manifest.json"
 KEY = "base/heroes"
@@ -689,6 +690,122 @@ def _cm(v: float, what: str) -> int:
     return int(r)
 
 
+FT_M = 0.3048
+"""The international foot, exactly, which is what the FAA publishes in."""
+
+TOP_SCALE_MAX = 2.0
+"""How far a published top may move a hero that was drawn to a LIDAR median.
+
+A guard, not a tuning knob. The Transamerica Pyramid was drawn at 26 % of its
+published height (§21.22) and this is the same defect, so the factor is allowed
+to be large -- but a factor beyond 2 means the seed and the register are
+describing different structures and the build should stop rather than draw a
+tower twice as tall as anything measured."""
+
+
+def dof_agl_ft(oas: str) -> int | None:
+    """The FAA Digital Obstacle File's own `AGL` for one obstacle, re-read.
+
+    THE NUMBER IS NOT TAKEN FROM THE SEED IF THE FILE IS HERE. `faa_dof.zip` is
+    15.4 MB and is fetched rather than committed (`cache/.gitignore` says so and
+    its `.meta.json` carries the URL and the sha256), so this verifies when the
+    file is present and says loudly when it is not. It is the same file, the
+    same field and the same parse `emit_bay_bridge.py::towers_from_dof` uses for
+    the Golden Gate's and the Bay Bridge's towers.
+    """
+    z = CACHE / "faa_dof.zip"
+    if not z.exists():
+        return None
+    import io
+    import re
+    import zipfile
+    with zipfile.ZipFile(z) as zf:
+        with io.TextIOWrapper(zf.open("DOF.DAT"), encoding="latin-1") as fh:
+            for i, ln in enumerate(fh):
+                if i < 4 or len(ln) < 90:
+                    continue
+                if ln[0:9].strip() != oas:
+                    continue
+                m = re.match(r"\s*(\S.*?)\s+(\d)\s+(\d{5})\s+(\d{5})\s", ln[62:])
+                if m:
+                    return int(m.group(3))
+    return None
+
+
+def apply_published_tops(H: list[dict], seed: dict) -> list[tuple]:
+    """A hero drawn to a LIDAR median when its own record already cites a
+    PUBLISHED top.
+
+    SUTRO TOWER IS THE CASE THIS EXISTS FOR, AND IT IS THE SAME DEFECT AS THE
+    PYRAMID'S. `ynuv-fyni hgt_mediancm` is the MEDIAN LIDAR return over a
+    footprint -- exactly right for a flat-roofed box and exactly wrong for a
+    lattice tower, because most of a tripod's footprint has sky over it. The
+    map drew the most visible object in San Francisco at **210.0 m**. Its own
+    shipped record has always said, in `an` and again in `dr`, that the FAA
+    Digital Obstacle File publishes obstacle `06-000120` at **977 ft above
+    ground in the same place** -- the record cited the number it was not using.
+
+    THE FORM IS NOT TOUCHED AND THAT IS THE WHOLE ARGUMENT. The mock authored
+    Sutro Tower as six stacked parts whose heights are fractions of its top --
+    63.0 / 117.6 / 180.6 / 210.0 m are 0.300 / 0.560 / 0.860 / 1.000 -- and each
+    part carries its own three-vertex plan, so the taper lives in the RINGS and
+    not in the heights. Multiplying every `z` by one factor therefore evaluates
+    the same authored proportional model against a published top instead of a
+    measured one. **No ring moves, no vertex is invented, and the silhouette is
+    the one that was already there, at the height its own record publishes.**
+
+    IDEMPOTENT BY CONSTRUCTION, which matters because `H` is read back out of
+    the register this writes. A hero already at its published top is skipped, so
+    a second run is a no-op and `--check` still says IDENTICAL; and if
+    `encode_city_chunks.py` rebuilds the register from the mock, the next run
+    puts it back.
+    """
+    tops = seed.get("publishedTops", {})
+    done = []
+    for k in sorted(tops):
+        spec = tops[k]
+        h = next((x for x in H if x["k"] == k), None)
+        if h is None:
+            raise SystemExit(
+                f"publishedTops names `{k}` and no such hero is in the register. "
+                f"Nothing written.")
+        want = round(float(spec["ft"]) * FT_M, 2)
+        agl = dof_agl_ft(spec["oas"]) if spec.get("oas") else None
+        if agl is not None and agl != int(spec["ft"]):
+            raise SystemExit(
+                f"{k}: the seed says the FAA publishes {spec['ft']} ft for "
+                f"obstacle {spec['oas']} and the cached DOF says {agl} ft. "
+                f"Nothing written.")
+        was = float(h["ms"]["t"])
+        f = want / was
+        if abs(f - 1.0) < 1e-4:
+            done.append((k, was, want, 1.0, agl, True))
+            continue
+        if not 0.5 < f < TOP_SCALE_MAX:
+            raise SystemExit(
+                f"{k}: the published top {want} m is {f:.2f}x the register's "
+                f"{was} m. Beyond {TOP_SCALE_MAX}x the two are not describing "
+                f"the same structure. Nothing written.")
+        hi = max(p["z1"] for p in h["p"])
+        if hi > was + 1e-6:
+            raise SystemExit(
+                f"{k}: a part already stands at {hi} m above a measured top of "
+                f"{was} m, so the authored heights are not fractions of it and "
+                f"a single factor is the wrong transformation. Nothing written.")
+        # ROUNDED TO THE CHUNK'S OWN QUANTUM. `_cm` refuses anything that is
+        # not a whole number of centimetres, which is the encoding's contract
+        # and also what makes two runs byte-identical: a float product is not.
+        for p in h["p"]:
+            p["z0"] = round(p["z0"] * f, 2)
+            p["z1"] = round(p["z1"] * f, 2)
+        h["zr"] = round(h["zr"] * f, 2)
+        h["ms"] = dict(h["ms"], h=round(h["ms"]["h"] * f, 2), t=want)
+        h["em"] = em_for(want)
+        h["dr"] = spec["dr"]
+        done.append((k, was, want, f, agl, False))
+    return done
+
+
 def encode(H: list[dict], side: dict) -> bytes:
     bi, yrs, top, zr, acc, hull = [], [], [], [], [], []
     msA, msH, msR, msYr, msNv, ax, ay = [], [], [], [], [], [], []
@@ -939,6 +1056,12 @@ def main() -> int:
         H.append(rec)
         added.append((s["k"], geo, rec))
 
+    # ── the published top, applied AFTER the emphasis fit is asserted ─────
+    # The fit above is checked against the register as shipped, which is the
+    # only thing it can be checked against; `em` for an overridden hero is then
+    # recomputed from its new top by the same `em_for`.
+    tops = apply_published_tops(H, seed)
+
     blob, stat = encode(H, side)
     if check:
         cur = (OUT / "base" / "heroes.qc").read_bytes()
@@ -961,6 +1084,17 @@ def main() -> int:
             ch["profPts"] = stat["profPts"]
     lm = man["landmarks"]
     lm.update({k: stat[k] for k in ("n", "parts", "verts", "profPts")})
+    lm["publishedTops"] = {
+        "note": ("A hero whose drawn top was the MEDIAN LIDAR return over its "
+                 "footprint and whose own record cites a published height. The "
+                 "authored heights are fractions of the old top, so one factor "
+                 "on every z evaluates the same authored form against the "
+                 "published number; no ring moves."),
+        "applied": {k: {"wasM": was, "isM": want, "factor": round(f, 6),
+                        "dofAglFt": agl,
+                        "src": seed["publishedTops"][k]["src"]}
+                    for k, was, want, f, agl, _ in tops},
+    }
     lm["authoredHere"] = {
         "script": "pipeline/scripts/us_sf_places/emit_heroes.py",
         "seed": "pipeline/scripts/us_sf_places/heroes_extra.json",
@@ -990,6 +1124,14 @@ def main() -> int:
           f"building {min(margins.values()):.1f} m; index-independence proved "
           f"against a two-record insertion at 135,905 and 137,646, which moves "
           f"{stale} of {len(resolved)} raw indices")
+    for k, was, want, f, agl, already in tops:
+        src = (f"FAA DOF re-read: {agl} ft" if agl is not None
+               else "!! faa_dof.zip ABSENT - NOT re-verified this run")
+        if already:
+            print(f"    {k:12} already at its published top {want} m ({src})")
+        else:
+            print(f"    {k:12} top {was} m -> {want} m, x{f:.4f} on every "
+                  f"authored z; rings untouched ({src})")
     print(f"base/heroes.qc    {len(blob):,} bytes  "
           f"({len(gzip.compress(blob, 9)):,} gzipped)  "
           f"{stat['n']} heroes ({base_n} from the mock, {len(added)} here)")

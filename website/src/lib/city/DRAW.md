@@ -9253,3 +9253,330 @@ its import; `PlaceLabel.kind` already wins over the table wherever it is set.**
 
 `emit_places.py --check` still says **deterministic: two runs, identical
 bytes**, over all four outputs.
+
+---
+
+## 41. Block G1 — "make sure my entire map is full of details". The cause census at Daniel's own cameras, and the answer is a ZOOM answer before it is a data answer
+
+Daniel: *"there's many buildings which have a facade or roof, others have
+nothing, just a flat single colour polygon side. Can you make sure my entire
+map is full of details."* Two frames, buildings carrying window rows standing
+next to flat untextured slabs **at the same camera**.
+
+The hypothesis handed to me was `emitFace`'s `storeys <= 0` early-out —
+`encode_city_chunks.py:329` publishes `roof_st` on 151,634 of 166,166 (91.3 %),
+so ~14,500 buildings can never carry a facade at any zoom. **It is real, it is
+the largest cause that is not a pixel size, and it is not most of what he is
+looking at.** Here is the count, before the cause.
+
+### 41.1 The census — every gate a wall must pass, at four cameras
+
+`.parity/g1face.py`, against the **production build at 7bc871f7** (port 3100,
+`PARITY_PROD`), camera asserted after every shot. A building is charged to the
+FIRST gate that **no visible wall of it** survives; the gate chain is
+`scene.ts`'s and `facades.ts`'s in their own order. Two weightings, because
+BUGS §23b's lesson is that they disagree: by count, and by the building's own
+**drawn wall area**, which is what a reader sees.
+
+North Beach = the Columbus / August Alley anchor of §39.6 (2530, 4774);
+Nob Hill / Chinatown = (2560, 3880), the line Joice St and the Stockton Tunnel
+sit on. Year 2025.
+
+```
+  BLOCK zoom, z = 7.2                    NORTH BEACH            NOB HILL/CTOWN
+                                     count  %cnt  %AREA      count  %cnt  %AREA
+  HAS A FACADE                         950  10.9   31.8      1,182  11.4   30.1
+  every feature sub-pixel (ramp)     3,080  35.4   35.7      3,713  36.0   36.5
+  the quad rung: n4 !== nv           1,929  22.2    9.6      2,019  19.6    8.3
+  no visible wall over 3 px          1,679  19.3    8.3      1,962  19.0    8.1
+  storeys <= 0                         666   7.7   12.5        924   9.0   14.8
+  every visible wall is a PARTY wall   277   3.2    2.0        381   3.7    2.1
+  dhPx < FA_MIN_DH_PX                  116   1.3    0.2        148   1.4    0.2
+
+  STREET zoom, z = 42.9                  NORTH BEACH            NOB HILL/CTOWN
+  HAS A FACADE                       1,344  88.1   84.8      1,319  89.7   89.9
+  storeys <= 0                         105   6.9   11.2         73   5.0    7.0
+  every visible wall is a PARTY wall    76   5.0    4.0         79   5.4    3.2
+```
+
+Read those two tables together and the shape of the complaint is settled:
+
+1. **At STREET zoom the facade layer already reaches 88-90 % of buildings and
+   85-90 % of drawn wall area.** Exactly TWO causes account for everything
+   else, and **not one of them is a pixel size**: the missing storey count, and
+   the measured party wall — which is a refusal the record earned (§ROLE_PARTY:
+   163,536 measured party edges, and a party wall has no windows).
+2. **At BLOCK zoom the facade layer reaches 11 % of buildings and 31 % of
+   area**, and **69 % of the area it does not reach is refused for SIZE** —
+   sub-pixel features (36 %), the quad rung (9 %), walls under 3 px (8 %). Those
+   refusals are `faRamp` and `QUAD_PX` doing exactly what §23 says they should:
+   *no parapet, storey line or fine mark can close a gap that lives at the
+   low-frequency scale*, and smearing one across a fabric that cannot resolve it
+   is how every float and lurch bug on this project started.
+
+**So there is no single fix.** At the zoom where a facade is legible the answer
+is the storey count; at the zoom where it is not, the answer is that a facade
+was never the right mark and §23's large-area tone is (`AO_ALPHA`, parked,
+BUGS §23).
+
+### 41.2 The tier gate is NOT a second bug — the two numbers agree
+
+The brief asked whether part of this is `face`'s own `minZ: 4.0` against the
+fabric path's `faceOn = z >= 4.0`. **They are the same number and they agree.**
+`manifest.json` `tiers.face.minZ = 4.0`; `scene.ts:2756` `const faceOn = z >= 4.0`.
+Both of Daniel's frames sit far above it — a **local** street name (August
+Alley, Joice St are rank 2) needs `labels.ts` band 2, which starts at z = 4.57,
+so any frame in which he can read those names is already past the facade gate.
+The ladder in `.parity/g1zoom.py` measures the whole curve for the record.
+
+### 41.3 The storey gap, profiled — it is ONE population refused THREE times
+
+`roof-data.js` `st` is a **4-bit nibble**, `min(15, round(number_of_stories))`,
+0 = the roll publishes none. Over all 166,166:
+
+```
+  st == 0    14,532   8.75 %      st == 15 (the clamp)   255
+```
+
+By use class, and this is the finding:
+
+```
+  class                     total     st==0     share
+  single family           105,967     3,451      3.3 %
+  multi-family             40,868     1,277      3.1 %
+  retail                    5,973       985     16.5 %
+  office                    1,492       126      8.4 %
+  industrial                2,610       512     19.6 %
+  hotel / institutional       891        32      3.6 %
+  mixed or not stated       8,365     8,149     97.4 %
+```
+
+**56 % of the whole gap is `mixed or not stated`** — and 97.4 % of that class
+carries no storey count. It is the same 8,365 footprints that §34.5 refuses a
+roof material to (the `null` row of `UMAT_ROOF`), and the same ones `faVocab`
+draws as `UNCLASSED`. One population, refused by three independent columns,
+which is why it reads as a district of blank slabs rather than as scattered
+noise — *the Presidio's blank slabs are the record refusing*, in North Beach.
+
+And the gap population is **bigger than average**: 7.7 % of the count at the
+block camera carries 12.5 % of the drawn wall area, and its height p99 is 29 m
+against the city's 19 m. The sheds, the mixed downtown blocks and the
+industrial stock.
+
+### 41.4 The divisor: the brief's 14'9" is NOT what the Tall Building Inventory publishes
+
+Checked, because it decides whether a declared divisor has a published number
+behind it. `5kya-mfst`'s `typ_story_height` is a **feet-and-inches string**,
+present on 130 of 180 rows. Parsed:
+
+```
+  typ_story_height   p10 9.42   p25 10.00   p50 12.42   p75 13.00   p90 13.17 ft
+  modes              13'0" (22)   12'6" (17)   10'0" (11)   9'8" (9)
+  p50 in metres      3.785
+  height_ft / stories_above_grade, 179 rows      p50 13.00 ft = 3.962 m
+```
+
+**The median is 12'5", not 14'9".** Both the field and the arithmetic on the
+same rows land near 12-13 ft, and there is no 14'9" anywhere in the
+distribution's middle. Worth saying out loud: that figure would have been
+17-24 % too large, which on a 12 m building is a whole band.
+
+And the deeper problem with using it at all: **it is measured on 130 TOWERS**,
+and the population that needs a divisor is not towers. The city's own relation
+says so.
+
+### 41.5 What a divisor is actually worth, calibrated on the column itself
+
+The only honest calibration is against the 151,379 buildings that DO publish a
+count. `round(H / d)` against the published `st`, best single `d` per class:
+
+```
+  class                        n      best d    exact    within +-1   | d=4.4958 exact
+  single family          102,494       4.70     74.1 %      97.3 %    |    70.0 %
+  multi-family            39,520       4.05     68.3 %      96.1 %    |    67.2 %
+  retail                   4,983       4.35     58.3 %      89.7 %    |    58.3 %
+  office                   1,243       4.10     57.1 %      90.6 %    |    51.3 %
+  industrial               2,098       4.70     59.7 %      96.7 %    |    58.3 %
+  hotel / institutional      825       3.75     65.7 %      93.5 %    |    44.1 %
+  mixed or not stated        216       4.70     75.9 %      94.4 %    |    75.5 %
+  ALL CLASSES            151,379       4.70     70.1 %
+```
+
+**One global divisor of 4.70 m reproduces the published storey count exactly on
+70.1 % of the city and within one band on 96-97 % of the residential stock.**
+That is the number that decides whether this is allowed to ship, and it is
+larger than I expected — the relation the roll declines to state is nonetheless
+tight enough to draw a rhythm from.
+
+Note what 4.70 is NOT: it is not a floor-to-floor. `FA_NO_FITTED_FLOOR_HEIGHT`
+already measured why — a "1-storey" Sunset house measures 6.0 m because it has
+a level the Assessor does not count as floor area, and 4.70 is that discrepancy
+folded in. **Which is exactly why it may be used to choose a band count and may
+NEVER be used to claim a storey.** The two are different quantities and this
+section is the record that they were not confused.
+
+
+---
+
+## 41. Block G3 — the heroes. The audit re-measured, and the one hero whose own record cited the number it was not drawn to
+
+### 41.1 Sutro Tower was 88 m short, and the citation for the right number was already in the file
+
+**The most visible object in San Francisco was drawn at 210.0 m.** It is 977 ft.
+
+`base/heroes.json`'s `sutro` record has said so since it was written. Its `an`
+reads *"the published footprint that the FAA Digital Obstacle File's obstacle
+06-000120 (TOWER, 977 ft above ground, 1,811 ft above sea level) falls
+inside"*, and its `dr` says the FAA *"publishes the obstacle at 977 ft above
+ground in the same place"* — **and the tower was drawn to the 210.0 m LIDAR
+median anyway.** The record cited the number it was not using, which is BRIEF
+§8's pattern one level in.
+
+**It is the Transamerica Pyramid's defect, exactly** (§21.22). `ynuv-fyni
+hgt_mediancm` is the MEDIAN return over a footprint — right for a flat-roofed
+box, wrong for a tripod, because most of a lattice tower's footprint has sky
+over it. 88 m, **30 %**.
+
+**THE CROSS-CHECK, and it is the reason to trust it.** Two federal files that
+were never reconciled agree:
+
+| | |
+|---|---|
+| FAA DOF `06-000120` | AGL **977 ft**, AMSL **1,811 ft**, at 37 45 19.32N 122 27 09.83W — a surveyed position, not the whole arc-second the bridge towers carry |
+| so the file's own ground | 1811 − 977 = 834 ft = **254.20 m** |
+| USGS 3DEP at those exact coordinates | **254.88 m** (`epqs.nationalmap.gov`, 1 m raster, acquired 2023-03-04) |
+| | **0.7 m apart, 0.3 %** |
+
+One is an aviation obstruction survey and the other a lidar elevation model.
+Nobody fitted them to each other.
+
+**THE FORM IS NOT TOUCHED, AND THAT IS THE WHOLE ARGUMENT.** The mock authored
+Sutro Tower as six stacked parts whose heights are *fractions of its top* —
+63.0 / 68.25 / 114.45 / 117.6 / 180.6 / 210.0 m are **0.300 / 0.325 / 0.545 /
+0.560 / 0.860 / 1.000** — and each part carries its own three-vertex plan, so
+**the taper lives in the rings and not in the heights**. One factor on every `z`
+therefore evaluates the same authored proportional model against a published
+top instead of a measured one. No ring moves, no vertex is invented, and the
+FAA publishes a position, a type and two heights and no geometry.
+
+### 41.2 The emphasis law absorbs the correction at the wide camera, and that is not a disappointment — it is the law working
+
+Measured, `em_for` at the three presets, before and after:
+
+| camera | drawn height ×em, 210 m | 297.79 m | change |
+|---|---|---|---|
+| whole city | 3.151 → **661.7** | 2.244 → **668.2** | **+1.0 %** |
+| district | 1.192 → 250.3 | 1.017 → **302.9** | **+21.0 %** |
+| block | 1.000 → 210.0 | 1.000 → **297.8** | **+41.8 %** |
+
+**Emphasis exists to make a small thing recognisable, so a taller thing needs
+less of it, and at the whole-city camera the two nearly cancel.** The
+correction is therefore invisible on the wide frame — the screenshot
+`out/su-1-city.prod.sutro.png` looks the same and *should* — and lands entirely
+at the district and block cameras, which are the two a reader actually looks at
+the tower from. Anyone comparing wide frames and seeing nothing has not found a
+bug.
+
+### 41.3 The mechanism, and the proof that it changed only this
+
+`heroes_extra.json` gains a `publishedTops` block and `emit_heroes.py` an
+`apply_published_tops`. Four properties, each of which exists because of a way
+this could go wrong:
+
+1. **The number is re-read, not typed.** `dof_agl_ft("06-000120")` opens
+   `cache/faa_dof.zip` and parses the same field with the same expression
+   `emit_bay_bridge.py::towers_from_dof` uses. **The build stops if the file
+   and the seed disagree**; this run printed `FAA DOF re-read: 977 ft`. If the
+   zip is absent (it is 15.4 MB and fetched, not committed) it says so loudly
+   rather than passing quietly.
+2. **Idempotent.** `H` is read back out of the register this writes, so a hero
+   already at its published top is skipped. Two runs are a no-op:
+   `--check` says **round trip: IDENTICAL** after the write.
+3. **Quantised to the chunk's own unit.** Every scaled `z` is rounded to the
+   centimetre, which is what `_cm` demands and also what makes two runs
+   byte-identical — a float product is not.
+4. **THE SAFETY PROOF, which is the one that matters.** With `publishedTops`
+   removed from the seed and nothing else changed, the emitter reproduces the
+   shipped register **byte-for-byte** (`round trip: IDENTICAL`, 39,900 bytes).
+   So the only thing in the output that moved is Sutro Tower's height.
+
+All thirteen heroes re-attached by their published footprint identity, worst
+margin 0.5 m (Sutro's own, and §21.27 records why that is a triple and not a
+radius), index-independence re-proved against the two-record insertion at
+135,905 and 137,646 — **9 of 13 raw indices move and all 13 resolve to the same
+physical rings.** `emit_heroes.py` was run **before** `emit_places.py`, in that
+order, for §21.21's reason, and the place count afterwards is **2,197**.
+
+### 41.4 On the frame, and the "before" that is NOT a control
+
+`.parity/g3/out/sutro-blk2.png`, the block camera on the tower's own anchor:
+the shaft rises from the ridge past the whole upper half of the frame, the
+platform flare reads at its foot, **the taper is legible now that there is
+enough height for it to happen over**, and it is unambiguously the tallest
+thing in that half of the city. `out/su-1-city.prod.sutro.png` (whole city) and
+`out/su-2-dist.prod.sutro.png` (district) are the other two; the street and
+building cameras were not reached — the dev server's `prod_ready` gate failed
+again, which is §40.5's problem and the same reason.
+
+**`out/sutro-ba.png` is a side-by-side against `fam-sutro-blk.prod.fam.png`
+from 16:28 today at the identical camera — and it is NOT a controlled
+comparison, which is worth more than the picture is.** The two frames straddle
+§21.34's own commit: the earlier one was shot when `drawHero` called the
+emphasis law with the old vertical and this one after `WO_ZEXB = 3.3`. The
+apparent growth in that pair is therefore **two changes, not one**, and reading
+1.42× out of it would be wrong — the eyeballed ratio is nearer 1.9. **The
+controlled evidence for this change is the arithmetic in §41.2 and the two
+emitter proofs in §41.3.** The frame is for the separate question of whether it
+looks right, and it does.
+
+### 41.5 The audit, re-measured — three rejections corrected or added, and one of them corrects a number this file published
+
+Written into `heroes_extra.json` under `rejected`, which §21.24 established as
+the place for them, with the measurement beside each.
+
+**The Cliff House entry was WRONG and is corrected.** It said *"there are ZERO
+shipped building footprints within 420 m of the Cliff House and Sutro Baths,
+measured against `_bldgsrc.read_bldg()`"*. Re-run over all **166,166** shipped
+footprints: **there are 34 within 420 m and the nearest is 391 m away.** Those
+34 are the houses on the Richmond side of the Great Highway. The rejection is
+unchanged — there is no ring *under* the Cliff House, so no anchor and no
+measured top — but it is now stated as what the stream says.
+
+**Alcatraz, measured for the first time.** §21.14 listed it as *"no row under
+any of those names"*. The island's centre projects to (1320.1, 7425.0) and
+**there are zero footprints within 420 m; the nearest building in the whole
+stream is 1,785 m away.** The cellhouse, the lighthouse and the warden's house
+are NPS property and are in none of the eleven registers. Same family as
+§21.19.
+
+**Salesforce Tower is blocked, not rejected**, and the number is current: the
+nearest ring to its published position is **41.9 m away and 3.0 m tall**.
+There is nothing for an identity key to name until the rescue lands, and
+`emit_heroes.py`'s index-independence assertion is modelled on exactly that
+insertion and passes — so the register is ready for it. And when it lands it
+is a hero with a *published height and a prism form*: `5kya-mfst`'s
+`description` for that row says nothing about a top.
+
+**And §21.15's last escape is closed by measurement.** Grace Cathedral needs
+per-element tower heights and §21.15 said no field carries them. The FAA
+Digital Obstacle File is the one federal source that publishes a height for a
+*structure* rather than for a parcel, it is already in this directory's cache,
+and it is already cited by two heroes and two bridges — so it was read out over
+the whole city:
+
+    159 obstacles inside San Francisco
+    97 BLDG · 14 UTILITY POLE · 13 TOWER · 12 CRANE · 11 BRIDGE · 4 STACK ·
+    4 BLDG-TWR · 2 TANK · 1 VERTICAL STRUCTURE · 1 MONUMENT
+
+> **There is no SPIRE, no CHURCH and no CATHEDRAL in it, and nothing stands
+> within 300 m of Grace Cathedral, Sts Peter and Paul, St Mary's or Mission
+> Dolores.** The single MONUMENT is Coit Tower — 161 ft AGL, 25 m from the
+> hero, already drawn — and the four BLDG-TWR are downtown telecom rooftops.
+
+So §21.15 stands, and it now stands on a measurement rather than on an
+assumption. **The same run is what found Sutro Tower**, which is the honest
+shape of the night: the sweep that closed the church question opened the tower
+one.
+
+**The hero register is fourteen well-sourced records' worth of work and still
+thirteen heroes**, which is the trade §21.24 asked for.

@@ -54,19 +54,37 @@
       "k": "cliffhouse",
       "n": "Cliff House",
       "b": null,
-      "why": "NO FOOTPRINT. There are ZERO shipped building footprints within 420 m of the Cliff House and Sutro Baths, measured against _bldgsrc.read_bldg(). Both stand on GGNRA land at Point Lobos, outside the drawn city, so there is no ring, no ground anchor and no measured top -- a hero needs all three. Same family as DRAW.md section 21.19: the pipeline's inputs are City property registers and this is federal ground."
+      "why": "NO FOOTPRINT AT THE PLACE. Re-measured 2026-08-24 against _bldgsrc.read_bldg() over all 166,166 shipped footprints, because the earlier version of this entry said `ZERO shipped building footprints within 420 m` and that is not what the stream says: there are 34 within 420 m and THE NEAREST IS 391 m AWAY. Those 34 are the houses on the Richmond side of the Great Highway, not the Cliff House. The rejection is unchanged and is now stated as what it is -- there is no ring under the Cliff House, so no ground anchor and no measured top, and a hero needs all three. Both it and Sutro Baths stand on GGNRA land at Point Lobos, outside the drawn city; same family as DRAW.md section 21.19, the pipeline's inputs are City property registers and this is federal ground."
     },
     {
       "k": "sutrobaths",
       "n": "Sutro Baths",
       "b": null,
-      "why": "NO FOOTPRINT, for the same reason as the Cliff House above; see that entry."
+      "why": "NO FOOTPRINT AT THE PLACE, for the same reason as the Cliff House above and measured in the same run; see that entry, whose number was corrected 2026-08-24."
     },
     {
       "k": "bareprisms",
       "n": "the 297 designated places drawn as bare prisms",
       "b": null,
       "why": "CHECKED AS A CLASS AND REJECTED AS A CLASS. 297 designated places resolve to a footprint that is neither a hero nor one of the 68 shaped caps, so they draw as bare prisms. Ranked by span the top of that list is the Alcoa Building (116 m, 4 vertices), the Italian American Bank, Mission High School, the High School of Commerce, the Chronicle Building, the Palace Hotel garden courtyard, the Mills Building, the Fairmont Hotel, the Phelan Building, the Cable Car Barn. Almost every one of them IS a prism -- a downtown block with a flat roof -- and the ones that are not (Grace Cathedral's towers, Mission High's tower, the Fairmont's mansard) need per-element heights that no field this pipeline reads carries, which is the same test Grace Cathedral failed. A shaped cap would be a guess about taper on every one of them. Not done, and the reason is that the record does not support a form, not that the list is long."
+    },
+    {
+      "k": "alcatraz",
+      "n": "Alcatraz",
+      "b": null,
+      "why": "NO FOOTPRINT WITHIN 1.7 KM. Measured 2026-08-24 against _bldgsrc.read_bldg(): the island's centre projects to (1320.1, 7425.0) in the map's own plane and there are ZERO shipped footprints within 420 m of it -- the nearest building in the whole stream is 1,785 m away, on the waterfront. The cellhouse, the lighthouse and the warden's house are all federal (NPS/GGNRA) and are in none of the eleven registers this pipeline reads. DRAW.md section 21.14 listed Alcatraz as `no row under any of those names`; this adds the reason, which is that there is no ring either. Same family as the Cliff House and section 21.19."
+    },
+    {
+      "k": "salesforce",
+      "n": "Salesforce Tower",
+      "b": null,
+      "why": "BLOCKED UPSTREAM, NOT REJECTED ON ITS MERITS, and re-measured 2026-08-24 so the number is current. San Francisco's tallest building has no drawable footprint in this stream: the nearest ring to its published position is 41.9 m away and 3.0 m tall, and the 2010 LIDAR median over its own parcel returns 0.24 m against a shed filter that cuts anything under 2 m (DATA-TRUTH 13.5a). A hero is attached BY PUBLISHED FOOTPRINT IDENTITY and refuses to write when its key matches no building, so there is nothing for a key to name until the rescue lands -- which inserts two records at 135,905 and 137,646 and is somebody else's block. The index-independence assertion in emit_heroes.py is modelled on exactly that insertion and passes, so the hero register is ready for it. When the ring exists, `5kya-mfst height_ft` publishes the top, and the taper does NOT have a published description -- the register's `description` for 415 Mission St says nothing about a top (DRAW.md section 21.28's list of six), so it would be a hero with a published height and a prism form, not a shaped one."
+    },
+    {
+      "k": "churchspires",
+      "n": "Grace Cathedral, Sts Peter and Paul, St Mary's, Mission Dolores -- a per-element height from the FAA",
+      "b": null,
+      "why": "THE ONE ROUTE LEFT FOR SECTION 21.15's PROBLEM, TESTED AND EMPTY. Section 21.15 rejected Grace Cathedral because its silhouette needs per-element tower heights and `no field this pipeline reads carries them` -- 30.0 m is the LIDAR top of the whole building. The FAA Digital Obstacle File is the one federal source that publishes a height for a STRUCTURE rather than for a parcel, and it is already in this directory's cache and already cited by two heroes and two bridges. Read out over the whole city 2026-08-24: 159 obstacles inside San Francisco, and the type census is 97 BLDG, 14 UTILITY POLE, 13 TOWER, 12 CRANE, 11 BRIDGE, 4 STACK, 4 BLDG-TWR, 2 TANK, 1 VERTICAL STRUCTURE, 1 MONUMENT. THERE IS NO SPIRE, NO CHURCH AND NO CATHEDRAL IN IT, and nothing stands within 300 m of Grace Cathedral, Sts Peter and Paul, St Mary's or Mission Dolores. The single MONUMENT is Coit Tower (161 ft AGL, 25 m from the hero, already drawn) and the four BLDG-TWR are downtown telecom rooftops. So section 21.15's rejection stands with its last escape closed, and it is closed by measurement rather than by assumption."
     }
   ],
   "attachments": {
@@ -151,5 +169,16 @@
       }
     },
     "note": "WHICH PUBLISHED FOOTPRINT EACH HERO IS DRAWN ON, as an identity rather than as a position in a file. `b` in the records above and in the mock's own wonder/hero-data.js is a raw index into gen/bldg-data.js's Hilbert-ordered delta chain, and it moves whenever the record count changes -- rescuing Salesforce Tower and 1190 Mission inserts two records at 135,905 and 137,646, and NINE of the thirteen heroes would then attach to a different building with nothing failing. These keys are the published ring's own centroid (metres, the map's own plane), its vertex count and its area; emit_heroes.py resolves each one against the stream at build time and REFUSES TO WRITE if it matches no building or more than one. They are a lookup key and are never read into the drawing: every ring, area, height, anchor and roll year is still read out of the record the key resolves to. Harvested from the register with `emit_heroes.py --harvest-identity`, never typed."
+  },
+  "publishedTops": {
+    "sutro": {
+      "ft": 977,
+      "oas": "06-000120",
+      "src": "US FAA Digital Obstacle File, obstacle 06-000120, TOWER, 00977 ft AGL / 01811 ft AMSL at 37 45 19.32N 122 27 09.83W. The same federal file, the same AGL field and the same parse this pipeline already uses for the Golden Gate's two towers and the Bay Bridge's four (DRAW.md 21.33). Re-read from cache/faa_dof.zip at build time and asserted against this number; the build stops if they disagree.",
+      "why": "THE RECORD ALREADY CITED THE NUMBER IT WAS NOT USING. base/heroes.json's `an` for this hero has always read \"the published footprint that the FAA Digital Obstacle File's obstacle 06-000120 (TOWER, 977 ft above ground, 1,811 ft above sea level) falls inside\", and `dr` said the FAA publishes 977 ft \"in the same place\" -- and the tower was still drawn to the 210.0 m LIDAR median. That is the Transamerica Pyramid's defect exactly (DRAW.md 21.22): `hgt_mediancm` is the MEDIAN return over a footprint, which is right for a flat-roofed box and wrong for a tripod, because most of a lattice tower's footprint has sky over it. 88 m, 30 %, on the most visible object in San Francisco.",
+      "crosscheck": "Two federal files that were never reconciled agree. The DOF's own AMSL minus AGL is 1811 - 977 = 834 ft = 254.2 m of ground under the tower; USGS 3DEP, queried at the DOF's own coordinates (epqs.nationalmap.gov, 1 m raster, acquired 2023-03-04), returns 254.88 m. 0.7 m apart, 0.3 %. Nobody fitted that: one is an aviation obstruction survey and the other is a lidar elevation model.",
+      "formNotPublished": "THE FORM IS NOT CHANGED AND NO FORM IS INVENTED. The FAA publishes a position, a type (TOWER) and two heights; it publishes no geometry. The three legs, the two platform flares and the mast are the mock's own authored model and they are kept exactly as they are -- what moves is only the height they are evaluated at.",
+      "dr": "The three-armed footprint's 64 m extent is measured, and the FAA publishes the obstacle at 977 ft above ground in the same place -- 297.79 m, which is the top this hero is drawn to. The 210.0 m this map drew it at until 2026-08-24 was `ynuv-fyni hgt_mediancm`, the MEDIAN LIDAR return over the footprint: right for a flat-roofed box and wrong for a tripod, because most of a lattice tower's footprint has sky over it. The correction is a factor on every authored height and NOTHING ELSE: the mock's six parts sit at 0.300 / 0.325 / 0.545 / 0.560 / 0.860 / 1.000 of the top and each carries its own three-vertex plan, so the taper lives in the rings and one factor evaluates the same authored model against the published number. No ring moves and no vertex is invented. The DOF's own AMSL minus AGL puts 834 ft of ground under the tower and USGS 3DEP returns 254.88 m at the same coordinates, 0.3 % apart -- two federal files agreeing without being made to. The tapering triangular mass, the two platform flares and the mast are drawn. THE LEGS ARE NOT DRAWN SEPARATELY: this is an open lattice drawn as solid members, which is what every other building on this map is drawn as, and the three legs the published ring traces are 2 m wide -- at the widest camera in the film one of them is under a pixel."
+    }
   }
 }
