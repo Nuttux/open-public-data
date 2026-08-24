@@ -4999,6 +4999,127 @@ t`) and so is this. `canopyFrac` became a getter/setter pair so the call site
 did not change, re-assigning the same array is a no-op, and `QF.tintsm` = 0
 keeps the raw field for an ablation.
 
+### 20.10 Ocean Beach is not gated out — it is not on the wire, and the beach it names is a bathroom
+
+Handed over as *"Ocean Beach cannot be named and `terrain.ts` already contains
+the solution: your `surroundNames` already sizes seven names that have a
+position and no extent"*, with the mechanism given as **the place-label gate
+sizing a name from an extent that GNIS cannot supply.**
+
+**The rule is right and the mechanism is one layer further out.** Measured
+against the shipped chunk:
+
+```
+  base/places      2,193 rows
+  span == 0        0 of 2,193          ← there is no extent-less row to gate
+  SRC              5kya-mfst · 65ik-7wqd · 6adp-a5yv · 7e7j-59qk · 97yj-54sx
+                   base/heroes.json · ejht-vp5d · gtr9-ntp6 · ib5c-xgwu
+                   nc68-ngbr · nps-nrhp
+```
+
+**No GNIS among the eleven sources, and not one row with a null extent.** The
+222 GNIS rows never reach the client at all: `build_places.py` needs an extent
+to build a row, so a register that publishes none cannot enter the chunk, and
+the client's gate never gets a chance to reject anything. `places.json`'s own
+`meta.real` names what does get in — *"DataSF 97yj-54sx (Article 10
+landmarks), gtr9-ntp6 (Recreation and Parks properties), nc68-ngbr (City
+Facilities)"* — **three property registers.**
+
+**And the register makes the handover's point better than the handover did.**
+Searching the 2,193 shipped names:
+
+```
+  "Ocean Beach"   1 hit:  LA PLAYA/CABRILLO OCEAN BEACH SFMTA Operator Bathroom
+  "Lands End"     0
+  "Baker Beach"   0
+  "China Beach"   0
+  "Alcatraz"      0     (it is named — off base/surround, not off base/places)
+  "Fort Mason"    1 hit:  Salt Water Pumping Station #2 (Fort Mason)
+```
+
+The only Ocean Beach this map's register knows is **a transit operator's
+bathroom at La Playa and Cabrillo**, and the only Fort Mason is a salt-water
+pump. That is the pattern stated exactly: *the City publishes extents because
+it publishes property*, and on federal or state ground it owns the fittings
+and not the land.
+
+**What `surroundNames` already is, and what it needs.** It is not
+surround-specific and never was:
+
+```ts
+surroundNames(f, labels: readonly {n, x, y, w?, sm?}[], elev): number
+```
+
+— a list of NAMES WITH POSITIONS AND NO EXTENT, each drawn at a declared fixed
+size (`SURROUND_SIZE` 10, `SURROUND_SIZE_SM` 8.5 for the register's own `sm`
+bit), projected at the ground under it or at sea level if the register calls
+it water, halo'd, and rejected only by `nameFitsFrame`. **There is no extent
+anywhere in it.** The one thing coupling it to the surround is a single line —
+`if (step > 0 || !labels.length) return 0`, the reference's own whole-city
+gate — and the one thing missing is rows to hand it.
+
+**So the change is two, and neither is in this file:**
+
+1. **`build_places.py` admits a row with no extent**, with its own `src` rank
+   for GNIS and a flag saying the extent is absent, so nothing downstream can
+   read a missing extent as a small one.
+2. **`labels.ts` calls `surroundNames` with those rows** — or `scene.ts` does,
+   beside its existing `drawSurround` call — with the fixed-size rule instead
+   of the extent ladder, and with a zoom gate of its own, because a beach that
+   is 3 km long is worth naming at district zoom where the surround's counties
+   are not.
+
+**Nothing speculative is added here for it.** This port already carries five
+passes that were written, tested and called by nobody (§16.1, §17.1, §18.8,
+§19.3, §20.6); writing a sixth against rows that do not exist would be the
+same mistake with better intentions. The function is general, the rule is
+written down, and the encoder change is one row-level predicate.
+
+### 20.11 The coarse depth plate is NOT why the water is flat
+
+§16.8 names *"the depth plate is still 417 x 281 against the reference's
+1665 x 1121"* as an open item, and the water was on this block's queue as
+*"a big area and mostly one value"*. Measured, and the obvious suspect is
+eliminated.
+
+At the whole-city fit the water's own tonal spread, over the pixels each build
+paints blue:
+
+```
+                p5     p25    p50    p75    p95    IQR    sd
+  production  151.0  179.0  194.7  201.7  210.7   22.7   17.9
+  reference   145.7  173.3  193.7  203.3  211.3   30.0   21.6
+```
+
+Same median to a level, **and a quarter less interquartile spread.** So the
+water IS measurably flatter here.
+
+**It is not the plate's resolution.** `water1`'s 26 tiles were decoded
+straight out of the chunks and the coarse field rebuilt from them by taking
+every 4th node — which is what `base/water0` is, and `assertRefinement`
+guarantees it — then bilinearly resampled back to 1665 x 1121 and compared to
+the fine field over all **846,819 published water nodes**:
+
+```
+  depth byte   mean |d| 0.72 of 255   p50 0.2   p90 1.2   p99 10.1   max 61
+  in metres    mean 0.17 m            p90 0.32 m                     max 16.9 m
+```
+
+**The coarse plate is the fine plate to within a fifth of a metre for nine
+tenths of the bay.** Its p99 is ten bytes and its worst cell is a scour edge
+in the Gate. Raising `water1`'s `minZ` from 3.0 so the wide cameras fetch it
+would cost 26 chunks on the first paint and buy 0.7 of 255. **That item can be
+closed.**
+
+What is left to explain the missing quarter of the spread, named and NOT
+measured here: the reference bakes a Lambert hillshade of the bay floor inside
+its depth plate (`DE.bed`, `bedex` 18, `bedamp` 0.70, `bedatt` 12, attenuating
+as `exp(-d/12)` so it shows only on the shelf) and this build has none. §16.8
+ablated it on the reference at one district camera and got at most 2 of 255 —
+but that was a MEAN over sampled pixels, and a relief term is exactly the kind
+of mark that moves a spread while leaving a mean alone. It is the remaining
+candidate and it is the one to measure next.
+
 ## 23. Block G1(a) — the pixel floors are not the district deficit, and here is the count
 
 `scene.ts` came to this block with one instruction: **measure what the gate
