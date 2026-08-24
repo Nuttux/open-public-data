@@ -205,6 +205,47 @@ export function ngonScale(n: number): number {
  * **`T = 0.135, WO_EMAX = 5.0` is the cell where the dome is unmistakable and
  * the building still sits on its own block.**
  */
+/**
+ * THE VERTICAL THE LAW IS CALIBRATED AGAINST, AND WHY IT IS NOT `proj.zexb`.
+ *
+ * `emphasis` asks how far short the honest drawing falls, and the answer is in
+ * octaves of `WO_T·H / (top · zexb · scale)`. **`WO_T` and `WO_EMAX` were
+ * contact-sheeted against a build in which `proj` applied ONE dial to terrain
+ * and buildings together** (`projection.ts`: *"before this split, `proj`
+ * applied ONE dial to both"*), and that dial was 3.3. This port splits them and
+ * draws built height at `ZEXB_DEFAULT = 1.6`, so handing the law `proj.zexb`
+ * tells it the drawing falls **1.045 octaves further short than the numbers
+ * were set against** — `log2(3.3/1.6)` — on a ramp whose whole length is
+ * `WO_R = 3.48` octaves. **That shifted the entire emphasis curve 30 % of its
+ * own length toward the zoomed-in end.**
+ *
+ * MEASURED BEFORE IT WAS CHANGED, DRAW.md §21.29–21.30. Eleven of the thirteen
+ * heroes sat pinned at the `WO_EMAX` ceiling across the whole wide half of the
+ * zoom, and the ramp's flat spot — where the elasticity is 0 and a landmark
+ * **holds its screen size while the city keeps growing** — landed between the
+ * district and block presets instead of past them. On 21 settled frames of a
+ * continuous zoom on City Hall the elasticity slid 0.99 → **0.00**, and from
+ * the district preset to z = 3.92 **the city grew 1.342× and City Hall grew
+ * 1.028×.** That is what a reader was seeing: not a jump — no step exists,
+ * worst second difference of the drawn height 0.0044 px against ~0.0126 for a
+ * size-one step — but a landmark coming loose from its own block.
+ *
+ * It is the same 3.30 `emit_heroes.py` fitted the mock's thirty-three shipped
+ * `em` values to and asserts on every run, so `base/heroes.json`'s `em` and
+ * what the renderer computes are now the same function of the same numbers.
+ *
+ * THE COST IS DECLARED AND WAS ACCEPTED: every hero is ~20 % smaller at
+ * whole-city zoom. City Hall reads 4.17 / 1.57 / 1.00 at the three presets
+ * where it read 5.00 / 3.18 / 1.34.
+ *
+ * It is NOT `ZEX_BY_STEP`. That steps 3.3 → 2.6 → 2.0 with the LOD band and is
+ * the terrain's dial; a camera-dependent number in here would put a step
+ * straight back into a function whose whole argument is that it has none.
+ * `landmarks.ts` may not read the camera (see `lmLOD`), and this constant is
+ * the reason the rule holds.
+ */
+export const WO_ZEXB = 3.3;
+
 export const WO_T = 0.135;
 export const WO_EMAX = 5.0;
 /** `1.5 * log2(WO_EMAX)`; see `emphasisElasticity` for why exactly this */
@@ -1635,9 +1676,13 @@ export function drawHero(
     pa = planAreaOf(hero.parts);
     planAreaCache.set(hero, pa);
   }
+  /* WO_ZEXB, not `f.proj.zexb` — see the constant. Both arguments have to be
+     the SAME dial: `recognisableTop` converts a plan span into the units the
+     law's shortfall is measured in, so a plan compared against a top under a
+     different vertical is not a comparison. */
   const E = emphasis(
-    recognisableTop(hero.top, pa, f.proj.zexb),
-    f.cam.scale, f.proj.zexb, f.H,
+    recognisableTop(hero.top, pa, WO_ZEXB),
+    f.cam.scale, WO_ZEXB, f.H,
   );
   const accentMat = accentMatIndex(mat, hero.accent);
   const zr = hero.zr > 0 ? hero.zr : hero.top;

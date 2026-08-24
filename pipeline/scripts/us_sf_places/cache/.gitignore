@@ -1,0 +1,8 @@
+# THE TWO BIG FEDERAL FILES ARE FETCHED, NOT COMMITTED.
+# `nbi_ca23.txt` is 10.6 MB and `faa_dof.zip` is 15.4 MB — an order of
+# magnitude over anything else in this directory (the next largest is
+# gnis_ca.zip at 2.3 MB). Their `.meta.json` IS committed and carries the URL
+# and the sha256, which is the reproducibility contract every other source here
+# keeps; `fetch_bay_bridge.py` re-fetches them and skips whatever is present.
+nbi_ca23.txt
+faa_dof.zip

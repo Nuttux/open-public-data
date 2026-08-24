@@ -1,0 +1,6 @@
+{
+ "url": "https://aeronav.faa.gov/Obst_Data/DAILY_DOF_DAT.ZIP",
+ "what": "FAA Digital Obstacle File, DAILY_DOF_DAT",
+ "bytes": 15429245,
+ "sha256": "1f48bd55dd0700f1f563463cc5060e166f5c7de4ee51742ca8cb8b216ca1968d"
+}

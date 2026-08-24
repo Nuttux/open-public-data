@@ -7700,3 +7700,95 @@ and block presets and not a floor.
 (Frames 21 and 22 of that run are discarded: both came back with a mask
 covering the whole frame while the dev server was recompiling, which is the
 stale-frame signature the trap note above describes.)
+
+### 21.33 The Bay Bridge is fully in the record — alignment, towers and dimensions, with an independent cross-check
+
+Daniel's call: the Bay Bridge is the highest-value landmark still missing. It is
+**not in any City register** — it is a Caltrans structure and every register
+this pipeline reads is a register of *City property*, the same shape as §21.19
+one level out. But all three files the **Golden Gate** is built from carry it,
+and they have now been fetched, projected and checked rather than cited.
+`pipeline/scripts/us_sf_places/fetch_bay_bridge.py` caches all three with their
+sha256.
+
+**1 — the alignment. US Census TIGERweb Primary Roads**, the file
+`_encode_bridge` already names as the Golden Gate's corroboration. Eight
+features, projected through the manifest's own `proj` (verified against it:
+the Ferry Building lands at **(3898.7, 3951.9)** against `manifest.proj.ferry`
+`[3898.7396…, 3951.86]`):
+
+| OID | length | plane metres |
+|---|---|---|
+| `11017076382872` | **3,133.0 m** | (4409.7, 3206.1) Rincon Hill → (6433.4, 5595.9) Yerba Buena |
+| `11017076382857` / `…923` / `11017057427537` | 101.0 / 22.5 / 82.4 m | the Yerba Buena Island links |
+| `1108311086458`, `11017076382947` | 1,607.3 / 1,601.2 m | the east span, two carriageways |
+| `1104485866556`, `110167283642` | 1,754.6 / 1,923.0 m | the Oakland end, wholly outside the county |
+
+**And it is clipped by the Golden Gate's own rule.** That record's reason for
+stopping mid-channel is *"both files stop at 37.8254 N, the county line, because
+that is where San Francisco stops."* TIGER does **not** stop there for this
+bridge, so the boundary is taken from **TIGERweb `State_County`** — the same
+service `encode_city_chunks` already cites — `STATE 06 / COUNTY 075`, 2 rings,
+AREAWATER 479,701,999 m², so it carries the bay. Measured against it:
+
+> **60 of the alignment's 77 vertices are inside San Francisco County.** The
+> west crossing is entirely inside (both ends), the Yerba Buena links are
+> inside, the two east-span carriageways cross the line, and the two Oakland
+> segments are wholly outside.
+
+**2 — the towers. FAA Digital Obstacle File**, the same file and the same
+`AGL`/`AMSL` pair the Golden Gate's two towers come from. Nine `BRIDGE`
+obstacles fall inside the county; **four of them sit on the west crossing's
+published deck line, inside that record's own 31 m tolerance**:
+
+| OAS # | plane | AGL | AMSL | off the deck line |
+|---|---|---|---|---|
+| `06-000110` | (4616, 3432) | 517 ft | 520 ft | **11.8 m** |
+| `06-001197` | (5080, 3958) | 517 ft | 520 ft | **20.3 m** |
+| `06-001196` | (5544, 4546) | 517 ft | 520 ft | **14.6 m** |
+| `06-001194` | (6009, 5071) | 460 ft | 463 ft | **8.8 m** |
+
+The east span's own structures are in the file too and land 723–1,150 m off the
+*west* line, which is correct — they belong to the east alignment:
+`06-030864` at 536 ft is the 2013 self-anchored suspension tower. And the
+Golden Gate's `06-000771` appears 8,389 m off, which is the extraction proving
+itself.
+
+**THE CROSS-CHECK, and it is the reason to trust this.** Two independent
+federal files agree without being made to. The spacings between those four DOF
+towers are
+
+    701.4 m   749.0 m   701.3 m
+
+against FHWA NBI's own published `MAX_SPAN_LEN_MT_048` for structure
+**34 0003** of **704.1 m**. Nobody fitted that: the positions are whole
+arc-seconds from an aviation file and the span is a highway inventory field.
+Two of the three agree to **0.4 %**.
+
+**3 — the dimensions and the year. FHWA NBI 2023, California**, the same file
+and year as the Golden Gate's 27 0052:
+
+    34 0003  length 6,281.3 m - max span 704.1 m - deck width 19.1 m
+             navigational vertical clearance 56.4 m - YEAR_BUILT 1936
+             YEAR_RECONSTRUCTED 1962
+    34 0006  length 3,512.3 m - max span 385 m - deck width 77.8 m
+             clearance 43.3 m - YEAR_BUILT 2013        (the replacement east span)
+
+The year takes the Golden Gate's own rule — the map draws where a bridge *is*,
+so the gate is completion: **1936** for the west crossing, and the east span
+changes in **2013**, which the film can actually show.
+
+**So the answer to "check the FAA file before promising a silhouette" is: the
+towers are there, and the silhouette is promised.** Deck, piers, four west-span
+towers and the 2013 east tower are all published. The deck is drawn **flat**,
+for the Golden Gate's own published reason: no deck height is in either file.
+
+**What is left is renderer wiring, and it is specified rather than done.**
+`base/bridge` carries one bridge as bare `rx/ry/tx/ty`, `data.ts` builds one
+`BridgeData` from it, and `landmarks.ts drawBridge` reads the Golden Gate's
+figures from the module-level `GGB` const. A second bridge needs: offsets in
+the chunk (the emitter is `emit_bay_bridge.py`, this directory's own sidecar,
+same round-trip-assert pattern as `emit_heroes.py`); `BridgeData` to carry its
+own `deckLenM/deckW/deckZ/spanM/towerFt/year`; and `drawBridge` to take those
+from the record instead of from `GGB`. **`scene.ts` needs no change** if
+`BridgeData` carries the second bridge, which is the shape to build.

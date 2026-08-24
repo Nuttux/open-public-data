@@ -1,0 +1,6 @@
+{
+ "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Transportation/MapServer/2/query?where=NAME+LIKE+%27%25Bay+Brg%25%27&geometry=-122.42%2C37.75%2C-122.3%2C37.85&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=NAME%2CMTFCC%2COID&returnGeometry=true&outSR=4326&f=json",
+ "what": "US Census TIGERweb Primary Roads, NAME LIKE '%Bay Brg%' inside (-122.42, 37.75, -122.3, 37.85): 8 features",
+ "bytes": 4345,
+ "sha256": "47d3c8c30d1d2a7a119eeb3bc78ffcaddb8b0c2d31845d3d1541d65b111b6ed7"
+}
