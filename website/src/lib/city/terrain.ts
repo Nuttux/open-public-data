@@ -608,6 +608,74 @@ export interface TerrainProj {
   readonly castro: readonly [number, number];
 }
 
+/**
+ * `SN` in the mock — Block SHADOW, and the two of its numbers this file owns.
+ *
+ * **BOTH WERE WRONG, AND BOTH IN THE SAME DIRECTION.** `part3.html` L2136-37:
+ *
+ * ```
+ *   terrk: 0.80,   // share of the direct term a terrain shadow removes
+ *   terrs: 34,     // exaggerated metres of overshoot for a FULL terrain shadow
+ * ```
+ *
+ * against this file's own defaults of `terrs ?? 6` and `shadow.k ?? 1`, which
+ * nothing overrides — `grep -rn 'terrs\|shadow:' src/components` returns
+ * nothing, so 6 and 1 were live at every camera. Neither number is anywhere in
+ * `scratchpad/sf-city-anim`.
+ *
+ * **`terrs` is a saturation, so 6 against 34 is not "a bit more shadow".**
+ * `tsh = min(1, over / terrs)`, and the shipped `over` on the cells that have
+ * any runs p25 7.4 m, p50 14.7, p75 33.1, p95 61.9. At `terrs = 34` the
+ * median shadowed cell lands at 0.43 and the field is a modelled ramp across
+ * the published quartiles. At 6 the median lands at **1.0** — clipped — so
+ * three quarters of the shadowed ground carries the same value and the
+ * penumbra the 1-2-1 blur exists to make is a cliff with a blur on it.
+ * *A saturation destroys relief in the one place the map is trying to show
+ * it.*
+ *
+ * **And `terrk = 1` drives `lam` to exactly 0.** `lamSh = lam * (1 - k * tsh)`,
+ * and at `k = 1` with `tsh` clipped to 1 the diffuse term is annihilated,
+ * which sends `tiltOf(lam)` to its floor of −1: the cell is rendered wholly
+ * through `SKYC` at the bottom of the ramp. The reference leaves 20 % of the
+ * direct term in, so a shadowed slope keeps a trace of the sun and reads as
+ * shaded ground rather than as a hole.
+ *
+ * **What it is worth, stated honestly: not much, because the field is small.**
+ * Re-marched offline over the 37,754 land cells (`.parity/g2qc.py` + the same
+ * arithmetic), **only 0.8 % of them are in terrain self-shadow at all** — the
+ * sun sits at 47° and the DEM is a 53.8 m raster, so few cells occlude any
+ * other.
+ *
+ * MEASURED on the GROUND ALONE — `?layers=surround,terrain,water,shore,parks`,
+ * `.parity/g2ground.py`, so a label re-placing itself between two runs cannot
+ * be read as the treatment. **The first attempt at this measurement was the
+ * full frame and it reported 1.22 % moved at Nob Hill with a max of 224; the
+ * diff map (`out-g2/diff-shadow-nobhill.png`) is street names, place markers
+ * and Grace Cathedral, and none of it is ground.**
+ *
+ * ```
+ *   camera            moved >2   gross >12   the moved pixels: before -> after
+ *   whole city          0.08 %     0.00 %          174.90 -> 177.11
+ *   district Twin Peaks 0.35 %     0.00 %          165.17 -> 167.44
+ *   district Nob Hill   0.09 %     0.00 %          158.72 -> 160.48
+ *   district GG Park    0.37 %     0.00 %          166.45 -> 168.71
+ *   block Twin Peaks    0.33 %     0.00 %          155.19 -> 157.01
+ * ```
+ *
+ * A third of a percent of the ground, about **+2 levels** on the pixels it
+ * touches, and the gross band does not move at all. It does NOT add dark
+ * detail — it un-clips a saturated one, which is a different thing and the
+ * correct one. It is landed for the reason every constant in this file is: a
+ * number that exists in production and nowhere in the source is the pattern
+ * that has produced most of the wins here.
+ */
+export const SN = {
+  /** share of the direct term a terrain shadow removes — `part3.html` L2136 */
+  terrk: 0.8,
+  /** exaggerated metres of overshoot for a FULL terrain shadow — L2137 */
+  terrs: 34,
+};
+
 export interface TerrainOptions {
   /** terrain exaggeration at the band the field is built for; `ZEX_BY_STEP` */
   readonly zex?: number;
@@ -668,7 +736,7 @@ export class TerrainField {
     this.cellM = 1 / proj.s;
     this.zex = opts.zex ?? 3.3;
     this.shadowOn = opts.shadow?.on ?? true;
-    this.shadowK = opts.shadow?.k ?? 1;
+    this.shadowK = opts.shadow?.k ?? SN.terrk;
     const N = this.N;
     this.cellPark = new Uint8Array(N * N);
     this.cellBurn = new Uint8Array(N * N);
@@ -677,7 +745,7 @@ export class TerrainField {
     this.tnB = new Float32Array(N * N);
     this.tnST = new Int32Array(N * N);
     this.lam = this.buildLam();
-    this.tsh = this.buildTsh(opts.terrs ?? 6);
+    this.tsh = this.buildTsh(opts.terrs ?? SN.terrs);
   }
 
   /**
