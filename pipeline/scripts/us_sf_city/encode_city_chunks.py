@@ -397,7 +397,7 @@ def encode_buildings(B: dict, ROOFD: dict, PAINT: dict, solo: np.ndarray,
         w.add("cnt", "u8", cnt[ids])
         w.add("vx", "i8", vx).add("vy", "i8", vy)
         w.add("xi", "u32", xi).add("xn", "u16", xn)
-        w.add("h", "u8", B["h"][ids]).add("yr", "u8", B["yr"][ids]).add("u", "u8", B["u"][ids])
+        w.add("h", "u16", B["h"][ids]).add("yr", "u8", B["yr"][ids]).add("u", "u8", B["u"][ids])
         w.add("st", "u8", STN[ids]).add("hf", "u8", HFN[ids])
         w.add("paintIdx", "u8", pidx[ids]).add("paintFlag", "u8", pflag[ids])
         vsel = np.concatenate([np.arange(off[g], off[g] + cnt[g]) for g in ids])

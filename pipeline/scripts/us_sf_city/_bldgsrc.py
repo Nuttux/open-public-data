@@ -73,7 +73,9 @@ def read_bldg() -> dict:
     return {
         "n": n, "q": q, "cnt": cnt, "off": off, "nv": nv,
         "IX": IX, "IY": IY, "cx": cx, "cy": cy,
-        "h": np.frombuffer(unb64(B["h"]), dtype=np.uint8),
+        # `h` is a u16 of whole metres (u8 until 2026-08-24 — 255 m is
+        # below the top of this city; see bldg/build_bldg.py MAX_H)
+        "h": np.frombuffer(unb64(B["h"]), dtype=np.uint16),
         "yr": np.frombuffer(unb64(B["yr"]), dtype=np.uint8),
         "u": np.frombuffer(unb64(B["u"]), dtype=np.uint8),
         "useNames": B["useNames"], "meta": B["meta"],

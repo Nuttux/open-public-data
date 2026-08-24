@@ -353,15 +353,16 @@ def main() -> int:
     rec = reindex.build()
     payload, H = reindex.shipped_h()
     n = len(rec)
-    if n != payload["n"]:
-        raise SystemExit("record count %d != shipped %d — order NOT reproduced"
-                         % (n, payload["n"]))
-    bad = sum(1 for i, r in enumerate(rec)
-              if max(1, min(255, int(round(r["h"])))) != H[i])
-    if bad:
-        raise SystemExit("%d height-byte mismatches — index alignment NOT proven, "
-                         "refusing to write a misaligned array" % bad)
-    print("index alignment PROVEN over all %d records (0 height-byte mismatches)" % n)
+    # THE ALIGNMENT PROOF LIVES IN ONE PLACE NOW. This file used to carry its
+    # own copy — `max(1, min(255, ...)) != H[i]` — and when 153 buildings began
+    # shipping a published height instead of the LiDAR median, that copy
+    # refused to run: "134 height-byte mismatches, refusing to write a
+    # misaligned array". It was right to refuse and wrong about why. Three
+    # files had three copies of this test; reindex.prove_alignment is the one,
+    # it reads the height cap off the shipped meta rather than hardcoding 255,
+    # and it asserts set inclusion against FLAG_PUBHEIGHT so an unexplained
+    # byte still stops the write.
+    reindex.prove_alignment(rec, payload, H, label="char")
 
     arch = bytearray(n)
     flag = bytearray(n)

@@ -186,9 +186,22 @@ d("the tiling does what the zoom ladder asks of it", () => {
      * paint is a small fraction of the 6,588,120 gzipped bytes the mock parses
      * before its first frame. At 649,052 for the tier and 681,661 including
      * the manifest and the hero sidecar, that is still 9.7x less. The ceiling
-     * is set at 700 KB so a careless addition still trips it.
+     * is set so a careless addition still trips it.
+     *
+     * AND IT MOVED AGAIN ON 2026-08-24, for a measured reason rather than a
+     * careless one. `h` went from u8 to u16 because 255 m is below the top of
+     * this city — the Transamerica Pyramid is 260.0 m and drew at 255, and
+     * Salesforce Tower is 326.1. `base/solo` carries a height for each of the
+     * 15,265 solo buildings, so the widening costs **+2,185 gzipped bytes
+     * there**; `base/massing` moved +3,752 because the block rollup reads the
+     * heights that changed. +5,695 in total, against a tier that was already
+     * within 7 KB of the old ceiling.
+     *
+     * The ratio is what to watch, and it is the assertion two lines down. It
+     * is now 9.17x and it was 9.7x — the next addition to this tier should
+     * make that number the argument, not this one.
      */
-    expect(b.gz).toBeLessThan(700 * 1024);
+    expect(b.gz).toBeLessThan(740 * 1024);
     expect(b.gz).toBeGreaterThan(600 * 1024); // if this falls, something was dropped
     const mock = 6_588_120;
     expect(mock / b.gz).toBeGreaterThan(9);
@@ -594,8 +607,11 @@ d("the authored landmarks", () => {
     const dropped = (cd.manifest as unknown as {
       form: { droppedStaleStep?: number };
     }).form.droppedStaleStep ?? 0;
-    expect(dropped).toBe(9);
-    expect(t!.caps.length).toBe(60);
+    // TEN since the height byte was widened to u16: the Transamerica Pyramid
+    // stopped drawing at the old 255 m ceiling and went to its published
+    // 260.0, which put one more derived step underneath its own roof.
+    expect(dropped).toBe(10);
+    expect(t!.caps.length).toBe(59);
     // profile 0 is `prism` — the identity — and a cap that is a prism is not a cap
     expect(t!.caps.every((c) => c.profile !== 0)).toBe(true);
     expect(new Set(t!.caps.map((c) => c.profileName))).toEqual(

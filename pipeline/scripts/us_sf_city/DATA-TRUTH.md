@@ -1622,3 +1622,112 @@ limits agree on it: the assessor's year series thins below 100 rows/yr after
   be checked against its source by whoever owns it.
 
 **Nobody should set a horizon to a year the data reaches with single digits.**
+
+---
+
+## 17. RECOVERED — the u16 height, verified element for element
+
+The previous agent died on an API error with §14.6's widening built but not
+committed: `_bldgsrc.py`, `encode_city_chunks.py`, `build_building_character.py`
+and 142 regenerated chunks sitting in a shared tree. This section is the proof
+that was taken **before** anything was committed, because a half-landed wire
+format is the worst thing that can be in a tree five agents share.
+
+### 17.1 The change, in three lines
+
+```
+encode_city_chunks.py   w.add("h", "u8",  …)  ->  w.add("h", "u16", …)
+_bldgsrc.py             dtype=np.uint8        ->  dtype=np.uint16
+bldg/build_bldg.py      MAX_H = 255           ->  MAX_H = 65535     (mock, untracked)
+```
+
+`build_building_character.py`'s own copy of the alignment proof went with it —
+it hardcoded `min(255, …)` and would have refused to run. The single proof is
+now `reindex.prove_alignment`, which reads the cap off the shipped meta.
+
+### 17.2 What actually moved, over all 166,166 buildings
+
+Decoded both sides — `git show HEAD:` against the working tree — and compared
+every field of every chunk element for element.
+
+| | old | new |
+|---|---|---|
+| `bldg/*.qc` — 138 chunks, 150,901 buildings | `h` u8 | `h` u16 |
+| `h` **values** changed in the bldg tier | — | **0** |
+| every other field (`gid cnt vx vy xi xn yr u st hf paintIdx paintFlag`) | — | **byte-identical, all 138** |
+| `base/solo.qc` — 15,265 buildings | max 255, **two** rows at 255 | max **260**, none at 255 |
+| `solo.h` elements differing | — | **exactly 2** |
+
+```
+idx 12514  gid 137672   255 -> 259      Oceanwide Center
+idx 12606  gid 137821   255 -> 260      Transamerica Pyramid
+```
+
+**Two bytes in nine million.** Every other element of every other array is the
+same value it was, so building order and geometry are untouched — which is the
+property `FORM.i`, `TYPO.mast.i`, `LRD.cap.i` and the authored hero register all
+rest on (§14.3).
+
+`verify_city_chunks.py` re-derives all of it from the mock's own payloads:
+**5,731 comparisons over 9,033,753 elements, no failures.**
+
+### 17.3 The cost is real but it is **not** the figure §14.6 recorded
+
+§14.6 costed the widening at **+9,493 gzipped bytes, 0.17 %**. Measured on the
+141 files that actually changed, gzip level 9:
+
+```
+raw   3,883,404 -> 4,049,666     +166,262     (§14.6's "+166 KB raw" reproduces)
+gz    2,140,726 -> 2,158,842     +18,116
+```
+
+Against the manifest's 5,454,891 gzipped bytes that is **0.33 %, not 0.17 %** —
+the raw half of the estimate was right and the compressed half was low by 1.9x.
+The verdict does not change at 0.33 %; the record does. *A number in this file
+that has been re-measured and moved must say so, or the next agent inherits the
+wrong one.*
+
+### 17.4 The client needed no change, and this was checked rather than assumed
+
+`data.ts` decodes through a generic `Dtype` union and a dtype -> TypedArray map,
+so the field's own header carries the width. Grepped the draw path for a 255
+assumption on height: every 255 in `buildings.ts` and `roofs.ts` is a colour or
+a coverage byte. Nothing else read `h` as a byte.
+
+### 17.5 The one thing the widening cost: Transamerica's spire
+
+`base/caps.qc` came back with **59 records, not 60**, and `base/form.qc` with
+**478, not 479**. Both are the same building, `bi 137821`, the Pyramid — and
+this is not a bug in the widening, it is §13's published heights finishing what
+they started.
+
+`form_survivors()` drops a second solid when its top plane `T` is at or below
+the shipped height, because a step inside the prism is a step the building does
+not have. Measured over the 488:
+
+```
+bi        h shipped   T (LiDAR max)     gap
+137821       260.0        258.5        -1.5   <- newly dropped
+60435        126.0         98.1       -27.9
+143053       122.0         89.6       -32.4
+…                                             (10 total, all FLAG_PUBHEIGHT)
+```
+
+Transamerica's `T` is **258.5 m** — the 2010 first return off the spire. While
+`h` was clipped to 255 the step cleared the prism by 3.5 m and survived; at the
+published 260.0 it is 1.5 m under it and goes. The cap goes with it, because a
+cap is a profile swept around its slot's top plane.
+
+So the Pyramid now draws as **a flat prism at its published 260.0 m** where it
+drew **255 m plus a 3.5 m stub and a spire**. Both are wrong in different
+places and the new one is wrong in the smaller place — but *one of the city's
+two published spire caps is now off the skyline*, and that should be said out
+loud rather than discovered later.
+
+**The real fix is upstream and is not mine**: `form/model3.py` derives `T` and
+`L` from `hgt_maxcm`/`hgt_mediancm` while `h` now ships a published height for
+153 buildings. For a FLAG_PUBHEIGHT tower the honest reconstruction is prism to
+the LiDAR **median** with the second solid rising to the **published** height —
+not prism to the published height with a second solid that has nowhere to go.
+That inverts which number `h` carries for 153 rows and repoints the
+FLAG_PUBHEIGHT alignment proof, so it is a scoped change, not a patch.
