@@ -1,0 +1,187 @@
+Apply from the mock root:  cd scratchpad/sf-city-anim && patch -p0 < <this file>
+(see mock-patches/2026-08-24-block-key.patch for why these live here at all)
+
+2026-08-24 — THE STREETS NO BLOCK IMPLIES.
+
+`gen_geo2.py` ships classcode 0-4 and drops 5-6, and gives its reason in its own
+header: "the gap between two real blocks already IS the street." That is true on
+the ordinary grid and false wherever there are no blocks. The Hunters Point
+Naval Shipyard is ONE assessor block, so nothing on the page stands for its
+streets and they are simply absent — which is how the map came to draw buildings
+with no streets under them.
+
+It also had a second, quieter defect on the same line: `int(Ln["c"] or 5)`.
+3psu-pn9h publishes classcode 0-6; 780 rows publish NONE, and `or 5` called
+every one of them "local residential", which is the class this file drops. A
+null class is not class 5. It is no class, and it now ships as 7.
+
+THE NEW TEST, measured rather than assumed: a dropped centreline that no
+published block EDGE comes within IMPLY_M (30 m) of, along at least IMPLY_FRAC
+(a quarter) of its length. Edges are walked and not filled, because a street is
+implied by a block edge facing it and the interior of a 3 km block implies
+nothing about its own perimeter. It is run against the rings this same file is
+about to ship, so the question is asked of exactly what the reader will see.
+
+    846 lines · 3,082 vertices · 131.6 km · 29 KB raw, ~12 KB gzip
+    every one carrying a published street name
+    class 5: 554   class 7 (no published class): 280   class 6 (ramps): 12
+    Presidio 478 · Bayview Hunters Point 113 · Treasure Island 110 ·
+    Golden Gate Park 85 · Marina (Fort Mason) 11 · Lincoln Park 10
+    632 of them on a federal layer
+
+IT IS A SEPARATE ARRAY, `G.streetsUnimplied`, AND THAT IS DELIBERATE.
+`TIME.street.yr` and street-data.js's `cov` mask are each keyed one-to-one on
+`G.streets`, and encode_city_chunks.py's `_centrelines()` replays a filter to
+recover `cnn` positionally. Adding 846 entries to `streets` would silently shift
+all four. Verified after the change: the `streets` object is BYTE-IDENTICAL, and
+`_centrelines()` still returns n=4,895 with worstJoin 0.000195 m.
+
+NOTE ON gen/geo-data.js. It was SPLICED, not regenerated: the new key was
+inserted after the `streets` object and every other byte left alone. A plain
+re-run of gen_geo2.py is not byte-reproducible today — `blocks.vx`/`vy` come
+back with 2,079 of 74,042 deltas moved by exactly 1 quantum, on the unmodified
+file as well as this one. That wobble is sub-decimetre and invisible, but it is
+a determinism defect the project's own rule forbids, it is NOT caused by this
+change, and it should be fixed before anyone regenerates geo-data.js in a shared
+tree. See DATA-TRUTH.md section 8.
+
+--- 8< ---
+--- /tmp/gen_geo2.py.orig	2026-08-24 15:38:15
++++ gen/gen_geo2.py	2026-08-24 15:44:03
+@@ -24,6 +24,22 @@
+                   local collectors). Classes 5-6 — 11 781 residential and
+                   private lines — are dropped: the gap between two real blocks
+                   already IS the street.
++  streetsUnimplied
++                  the 845 of those 11 781 that NO BLOCK IMPLIES. The sentence
++                  above is true on the ordinary grid and false where there are
++                  no blocks: the Hunters Point Naval Shipyard is ONE assessor
++                  block, so nothing on the page stands for its streets and they
++                  simply are not there — which is how this map came to draw
++                  buildings with no streets under them. The test is measured,
++                  not assumed: a dropped centreline no published block EDGE
++                  comes within IMPLY_M of, along at least IMPLY_FRAC of its
++                  length. 845 lines, 131.6 km, every one carrying a published
++                  street name; 632 on a federal layer (Presidio 478, Hunters
++                  Point 79, Treasure Island 65, Yerba Buena 15, Fort Mason 10)
++                  and 105 park roads. A SEPARATE array and not more entries in
++                  `streets`, deliberately: TIME.street.yr and street-data.js's
++                  `cov` mask are each keyed one-to-one on `streets`, so adding
++                  to it would silently shift two other files by 845.
+   labels/hoods    geo/build_streets.py's union-find stretches and 41 anchors.
+ 
+ INFERRED
+@@ -48,6 +64,22 @@
+ 
+ BLOCK_TOL = 1.5          # geo/INTEGRATION.md §3: 6.0 squares off the Mission
+ STREET_CLS_MAX = 4
++# ── WHAT COUNTS AS "NO BLOCK IMPLIES THIS STREET" ──────────────────────────
++# IMPLY_M is half a San Francisco right of way (street-data.js measures the
++# median at 20.9 m) plus the lots behind it: if no published block edge is
++# within that, nothing drawn on the page stands for the street.
++# IMPLY_FRAC is how much of the line must be unimplied before it is admitted —
++# a quarter, so a street that runs off the grid into a park is admitted and one
++# that merely clips a corner is not.
++# RASTER_M is the occupancy grid, under IMPLY_M so a two-cell search covers the
++# radius with room.
++IMPLY_M = 30.0
++IMPLY_FRAC = 0.25
++RASTER_M = 20.0
++# 3psu-pn9h publishes classcode 0-6. 780 rows publish NONE, and `int(c or 5)`
++# called every one of them "local residential" — which is the class this file
++# drops. A null class is not class 5; it is no class.
++CLS_NO_PUBLISHED_CLASS = 7
+ # LOT CAP — the honest number, and why it is 14.
+ #   A block is 31 x 47 px at the deepest zoom the camera ladder reaches, so its
+ #   perimeter is ~150 px. 14 divisions is one every 11 px. The median real block
+@@ -248,13 +280,64 @@
+             "cnt": b64("H", pcnt), "v": base64.b64encode(bytes(pv)).decode()}
+     print(f"  party lines {kept:,} shipped of {avail:,} measured "
+           f"({100*kept/avail:.0f}%) · median/block {statistics.median(pcnt):.0f}")
++
++    # ── which dropped centrelines does the block fabric fail to imply? ────
++    # Tested against the rings this file is about to ship, so the question is
++    # asked of exactly what the reader will see. Edges are walked, not filled:
++    # a street is implied by a block EDGE facing it, and the interior of a 3 km
++    # block implies nothing about its own perimeter.
++    occ = set()
++    for r in rings:
++        for i in range(len(r)):
++            ax, ay = r[i]
++            bx, by = r[(i + 1) % len(r)]
++            d = math.hypot(bx - ax, by - ay)
++            n_ = max(1, int(d / (RASTER_M / 2)))
++            for k in range(n_ + 1):
++                t = k / n_
++                occ.add((int((ax + (bx - ax) * t) // RASTER_M),
++                         int((ay + (by - ay) * t) // RASTER_M)))
++    _rad = int(math.ceil(IMPLY_M / RASTER_M))
++
++    def implied(x, y):
++        cx_, cy_ = int(x // RASTER_M), int(y // RASTER_M)
++        for dx in range(-_rad, _rad + 1):
++            for dy in range(-_rad, _rad + 1):
++                if (cx_ + dx, cy_ + dy) in occ:
++                    return True
++        return False
+ 
++    def unimplied_line(pts):
++        n_ = hit = 0
++        for i in range(len(pts) - 1):
++            ax, ay = pts[i]
++            bx, by = pts[i + 1]
++            d = math.hypot(bx - ax, by - ay)
++            steps = max(1, int(d / 15.0))
++            for k in range(steps + 1):
++                n_ += 1
++                t = k / steps
++                if implied(ax + (bx - ax) * t, ay + (by - ay) * t):
++                    hit += 1
++        return n_ > 0 and hit / n_ < IMPLY_FRAC
++
+     # ── streets, classes 0-4 ──────────────────────────────────────────────
+     sx, sy, sc_, scls, sox, soy = [], [], [], [], [], []
+-    ns = 0
++    ux, uy, uc_, ucls, uox, uoy = [], [], [], [], [], []
++    ns = nu = 0
+     for Ln in lines:
+-        cl = int(Ln["c"] or 5)
++        c_ = Ln["c"]
++        cl = int(c_) if (isinstance(c_, str) and c_.strip().isdigit()) else (
++            int(c_) if isinstance(c_, int) else CLS_NO_PUBLISHED_CLASS)
+         if cl > STREET_CLS_MAX:
++            if unimplied_line(Ln["p"]):
++                p0 = Ln["p"][0]
++                nu += 1
++                uc_.append(len(Ln["p"])); ucls.append(cl)
++                uox.append(p0[0]); uoy.append(p0[1])
++                for p in Ln["p"]:
++                    ux.append(max(-32000, min(32000, int(round((p[0] - p0[0]) * 10)))))
++                    uy.append(max(-32000, min(32000, int(round((p[1] - p0[1]) * 10)))))
+             continue
+         p0 = Ln["p"][0]
+         ns += 1
+@@ -266,7 +349,13 @@
+     st = {"n": ns, "cnt": b64("H", sc_), "cls": b64("B", scls),
+           "ox": b64("f", sox), "oy": b64("f", soy),
+           "x": b64("h", sx), "y": b64("h", sy)}
++    stu = {"n": nu, "cnt": b64("H", uc_), "cls": b64("B", ucls),
++           "ox": b64("f", uox), "oy": b64("f", uoy),
++           "x": b64("h", ux), "y": b64("h", uy),
++           "implyM": IMPLY_M, "implyFrac": IMPLY_FRAC}
+     print(f"  streets {ns:,} of {len(lines):,} centrelines (class <= {STREET_CLS_MAX})")
++    print(f"  streetsUnimplied {nu:,} dropped lines no block edge comes within "
++          f"{IMPLY_M:.0f} m of")
+ 
+     # ── labels: names deduped; z is read off the DEM at runtime ───────────
+     names, nidx = [], {}
+@@ -309,7 +398,8 @@
+                        "volumes": len(act["meta"]["volumes"]),
+                        "mentions": act["meta"].get("mentions", 154980)},
+         },
+-        "blocks": barr, "lots": larr, "streets": st, "labels": lb, "hoods": hd,
++        "blocks": barr, "lots": larr, "streets": st, "streetsUnimplied": stu,
++        "labels": lb, "hoods": hd,
+         "made_land": {"meta": ml["meta"],
+                       "buckets": [{k: v for k, v in b.items() if k != "blocks"} for b in ml["buckets"]]},
+     }

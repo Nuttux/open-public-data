@@ -689,3 +689,165 @@ mock-side change from this agent will go.
 (the massing rollup, which is where the 2015 block rows in §1.7 come from) and
 then `encode_city_chunks.py`, neither of which this agent owns. **Until both are
 re-run the browser still shows the 2015 cliff.**
+
+---
+
+## 8. FIXED — the streets no block implies (commit 2 of the fix pass)
+
+§2.2 said the class gate was "a deliberate LOD decision and not a data defect".
+That was half right, and the half that was wrong is the half Daniel put his
+finger on.
+
+### The gate's own reason, and where it stops being true
+
+`gen/gen_geo2.py` ships classcode 0-4 and drops 5-6. Its header says why:
+
+> "Classes 5-6 — 11,781 residential and private lines — are dropped: **the gap
+> between two real blocks already IS the street.**"
+
+That is a good rule and on the ordinary San Francisco grid it is true — the
+space between two assessor blocks reads as a street without a line being drawn
+in it. **It is false wherever there are no blocks.** The Hunters Point Naval
+Shipyard is *one* assessor block, 2.934 km² of it; there is no gap between
+blocks there, so nothing on the page stands for a street, and the streets are
+simply not there. Buildings with no streets under them, exactly as reported.
+
+### The second defect, on the same line
+
+```python
+cl = int(Ln["c"] or 5)          # gen_geo2.py:256, before
+```
+
+`3psu-pn9h` publishes classcode 0-6. **780 rows publish none**, and `or 5`
+called every one of them "local residential" — which is the class this file
+drops. A null class is not class 5. It is no class, and it now ships as **7**.
+Those 780 are concentrated exactly where you would expect: Presidio 191,
+Bayview Hunters Point 184, Mission Bay 60, Treasure Island 56.
+
+*(A correction to §2.1's prose while I am here: I wrote that `STREETS_YBI` and
+`PARKS_NPS_FTMASON` were dropped for a null classcode. They are not — all 29 and
+all 23 carry classcode 5. The federal layers are dropped by **two** mechanisms:
+null class (110 Hunters Point + 56 Treasure Island + 176 Presidio) and plain
+class 5 (5 + 158 + 29 + 23 + 324). The table's own numbers were right; the
+sentence over-generalised from them.)*
+
+### The rule that replaces it
+
+Not "class ≤ 4" and not "class ≤ 4 or null", but:
+
+> **class ≤ 4, OR the block fabric does not imply this line.**
+
+Measured, not assumed: a dropped centreline that no published block **edge**
+comes within `IMPLY_M` = 30 m of, along at least `IMPLY_FRAC` = a quarter of its
+length. 30 m is half a San Francisco right of way — `street-data.js` measures
+the median at 20.9 m — plus the lots behind it. Edges are walked rather than
+filled, because a street is implied by a block edge *facing* it and the interior
+of a 3 km block implies nothing about its own perimeter. The test runs against
+the rings `gen_geo2.py` is about to ship, so the question is asked of exactly
+what the reader will see.
+
+`diag_street_implied.py` beside this file is the standalone measurement.
+
+```
+centrelines shipped today (class 0-4)          4,895
+centrelines dropped (class 5-6 and null)      11,781
+  of those, implied by no block edge             846      131.6 km
+
+  PARKS_NPS_PRESIDIO   463   55.84 km      STREETS_HUNTERSP   79   12.83 km
+  PARKS                105   28.49 km      STREETS_TI         65    8.78 km
+  STREETS               83   10.35 km      STREETS_YBI        15    2.90 km
+  FREEWAYS              20   10.51 km      PARKS_NPS_FTMASON  10    0.95 km
+
+  Presidio 478 · Bayview Hunters Point 113 · Treasure Island 110 ·
+  Golden Gate Park 85 · Marina 11 · Lincoln Park 10
+  632 on a federal layer · 846 of 846 carry a published street name
+```
+
+**It is 5.1 % of the network and it is the 5.1 % that nothing else stands for.**
+Fort Mason is handled — 10 of its 23 lines qualify; the other 13 run between
+blocks that do exist and the grid already implies them. Golden Gate Park's roads
+come back too, which nobody asked for and which is the point: *a rule that is
+wrong in one neighbourhood is usually wrong everywhere.*
+
+### It is a separate array, and that is the load-bearing decision
+
+`G.streetsUnimplied`, not 846 more entries in `G.streets`. Four things are keyed
+one-to-one on `G.streets` and all four would have shifted silently:
+
+* `TIME.street.yr` — one entry per shipped centreline, and the encoder raises
+  if the counts disagree;
+* `street-data.js`'s `cov` mask, likewise (`covn != n` raises);
+* `encode_city_chunks.py::_centrelines()`, which recovers `cnn` and
+  `streetname` by **replaying the filter positionally**;
+* `time/out/ship-cnn.json`, the independent cross-check on that join.
+
+Verified after the change: the `streets` object is **byte-identical**, and
+`_centrelines()` still returns n = 4,895 with worstJoin 0.000195 m — the same
+figure the manifest already records.
+
+### The honest treatment, and the constant it hangs on
+
+These lines are a **different claim** from the ones in `G.streets`, and the
+array boundary is what says so:
+
+* *this is a published street centreline, with a published name;*
+* *no published class — or a class this map does not otherwise draw;*
+* *no assessor block stands for it;*
+* *and for 453 of the 846, **no year** — neither a vote in the Journal nor a
+  dated building on the frontage.*
+
+An undated line is `yr = 0`, and the encoder's own note already fixes what that
+means: **"`yr` 0 means undated and an undated line is drawn in every year."**
+That is the same rule `time.ts` applies to the 125,234 undated trees, and it
+falls out of the existing contract without a new decision. Which is the point:
+this is *not* "a street built in 2015". It is a street whose date nobody
+published, drawn as such.
+
+### What is applied, and what is not
+
+**Applied and verified** — `gen/gen_geo2.py` carries the new rule, and
+`gen/geo-data.js` carries `streetsUnimplied` (846 lines, 3,082 vertices, 29 KB
+raw / ~12 KB gzip). The diff is committed as
+`mock-patches/2026-08-24-unimplied-streets.patch`.
+
+`geo-data.js` was **spliced, not regenerated**: the new key was inserted after
+the `streets` object and every other byte left alone, and the result was proved
+by parsing both files and comparing every original key for equality. The reason
+is §8's postscript below.
+
+**NOT applied — two files this agent does not own, and both are needed before a
+single line appears on screen.** Written out so neither has to be rediscovered:
+
+1. **`pipeline/scripts/us_sf_city/encode_city_chunks.py`** — emit the array as
+   one chunk. It needs no new machinery: `encode_centrelines()` already writes
+   `strt/street-lines-2` over the class range `(LINE_BASE_CLS_MAX + 1, 255)`,
+   so classes 5, 6 and 7 are already inside its band. The work is a third
+   entry that reads `GEO2["streetsUnimplied"]` instead of `_centrelines()`,
+   ships `fid`/`cls`/`len`/`x`/`y`, and sets `yr` from `TIME.street.yr` by a
+   **cnn join, not a positional replay** — which means `geo/build_streets.py`
+   should carry `cnn` into `streetlines.json` first (purely additive;
+   `gen_geo2.py` ignores keys it does not read). Tier `strt`, `minZ` = the
+   band it is drawn from.
+2. **`website/src/lib/city/streets.ts`** — `ST_CLS_MAX = [2, 3, 4]` gates the
+   existing network by band and would exclude all of these. They should not go
+   through that gate at all: they are a separate array with a separate claim.
+   One constant — `UNIMPLIED_FROM_BAND` — decides from which zoom band they
+   draw, and the choice of value is Daniel's, not mine. `ST_W` already clamps
+   (`ST_W[Math.min(cls, ST_W.length - 1)]`), so class 7 takes 0.7 px, a
+   hairline, with no change.
+
+### Postscript: `gen/geo-data.js` is not byte-reproducible today
+
+Found while validating the above, and it is not caused by it. Running the
+**unmodified** `gen_geo2.py` over the **unchanged** caches produces a file that
+differs from the one in the tree: `blocks.vx` and `blocks.vy` come back with
+**2,079 of 74,042 deltas moved by exactly 1 quantum**. Everything else,
+`streets` included, is identical.
+
+It is sub-decimetre and invisible — a block-zoom pixel is 1.2 m — but the
+project's own rule is that the same input bytes give the same output bytes, and
+until it is fixed **nobody can regenerate `geo-data.js` in a shared tree without
+handing every other agent a 2,079-vertex diff to chase.** That is why this
+change was spliced. The likely cause is set or dict iteration order feeding the
+Douglas-Peucker in `main()`'s ring pass; it is worth twenty minutes to someone
+who owns that file.
