@@ -17190,6 +17190,22 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   color: var(--muted);
 }
 .theme-fusion .fx-block-sec { margin-top: 16px; margin-bottom: 6px; }
+/* HOW WE KNOW, at footnote weight. The provenance sentences are longer than
+   the facts they qualify and were set at the same size, so the panel read as
+   one undifferentiated block. They stay reachable and legible — this project's
+   whole claim is that a reader can click through to the source — they just
+   stop competing with the figure. NOT for `money_ledgers`/`money_over`: those
+   are refusals ABOUT the figure above and carry the link out. See
+   components/us/city/FICHE.md §19b. */
+.theme-fusion .fx-block-note {
+  margin: 7px 0 0;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: var(--muted);
+  opacity: .82;
+}
+.theme-fusion .fx-block-note .fx-block-jump { font-size: 10.5px; }
+
 
 /* the way down to the streets, and the way back out of a filter */
 .theme-fusion .fx-block-nearby { margin: 8px 0 0; }
@@ -17721,4 +17737,100 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 
   /* the keyboard line is written for a keyboard */
   .theme-fusion .fx-city-help-keys { display: none; }
+}
+
+
+/* ── Landing closing block — "this site can exist for your city" ──────────
+   Sits at the very bottom of a city landing. Deliberately quiet: no accent
+   fill, no button chrome competing with the section chips above it. */
+.theme-fusion .fx-closing {
+  border-top: 1px solid var(--ink);
+  padding: 56px 0 64px;
+}
+.theme-fusion .fx-closing-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 40px;
+}
+.theme-fusion .fx-closing-text { max-width: 52ch; }
+.theme-fusion .fx-closing-title {
+  font-family: var(--f-disp);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  margin: 0 0 10px;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.theme-fusion .fx-closing-sub {
+  font-family: var(--f-ui);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+.theme-fusion .fx-closing-cta {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--bleu);
+  border-bottom: 1px solid var(--bleu);
+  padding-bottom: 2px;
+  white-space: nowrap;
+}
+.theme-fusion .fx-closing-cta:hover { color: var(--ink); border-bottom-color: var(--ink); }
+@media (max-width: 768px) {
+  .theme-fusion .fx-closing { padding: 40px 0 48px; }
+  .theme-fusion .fx-closing-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── /pour-les-villes — running prose + the "already live" proof strip ──── */
+.theme-fusion .fx-cities-live {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 14px;
+  margin-top: 6px;
+}
+.theme-fusion .fx-cities-live-label {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ocre);
+}
+.theme-fusion .fx-cities-live a {
+  font-family: var(--f-disp);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px;
+}
+.theme-fusion .fx-cities-live a:hover { border-bottom-color: var(--ink); }
+.theme-fusion .fx-cities-live-sep { color: var(--muted); font-size: 13px; }
+.theme-fusion .fx-cities-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  max-width: 60ch;
+}
+.theme-fusion .fx-cities-bullets li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 9px;
+  font-family: var(--f-ui);
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.theme-fusion .fx-cities-bullets li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--ocre);
 }
