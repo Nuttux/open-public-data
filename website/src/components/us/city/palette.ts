@@ -212,15 +212,16 @@ if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") 
       ships today, building for building.
    2. **The change is staggered by the city's own build years, not by a
       random.** MEASURED over the 157,184 footprints this rule applies to: the
-      worst single display-year re-covering cohort is **9,335 buildings,
-      5.94 %** — and only the fraction of those that cross a material boundary
+      worst single display-year re-covering cohort is **9,088 buildings,
+      5.78 %** at `REROOF_YEARS = 30` (9,335 and 5.94 % at 25) — and only the fraction of those that cross a material boundary
       changes colour at all. There is no frame on which San Francisco re-roofs
       itself at once, which is the failure mode BUGS §24 records for the trees.
 
-   `REROOF_YEARS = 25` is DECLARED. It is inside the service life of every
-   covering in the table below — asphalt shingle, built-up bitumen and
-   single-ply membrane are all roughly 20–30 year products — and it is short
-   enough that (Y − 25) is past the last era boundary at the present, which is
+   `REROOF_YEARS` is DECLARED, and it shipped at 25 here; §38.8 moved it to 30
+   and says why. Either way it is inside the service life of every covering in
+   the table below — asphalt shingle, built-up bitumen and single-ply membrane
+   are all roughly 20–30 year products — and short enough that
+   (Y − REROOF_YEARS) is past the last era boundary at the present, which is
    what makes property 1 hold.
 
    ── THE MATERIALS ─────────────────────────────────────────────────────────
@@ -265,8 +266,25 @@ if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") 
 /** the covering-timeline era boundaries — see the note above */
 export const ROOF_ERA_YEARS: readonly number[] = [1907, 1930, 1960, 1990];
 
-/** the declared re-covering cycle, years */
-export const REROOF_YEARS = 25;
+/**
+ * The declared re-covering cycle, years. **30, not 25**, and §38.8 has the
+ * measurement: the cycle is also the width of the window every standing
+ * building's covering date sits in, so it is the single number that controls
+ * how many eras the city wears at once AND how fast the fabric converts to the
+ * measured present. At 25 the whole city had converted by 2014; at 30 it
+ * converts by 2020, which spreads the thing Daniel actually described — *"at
+ * some point in time more and more of them become white"* — over the decades
+ * California's cool-roof provisions actually landed in, and lifts the 1985
+ * fabric from 29.5 to 34.4 effective colours as a side effect.
+ *
+ * It stays inside the service life of every covering in the table below —
+ * asphalt shingle, built-up bitumen and single-ply membrane are all roughly
+ * 20-30 year products, and a real re-covering interval is a service life plus
+ * whatever deferral the owner can stand. It is also short enough that
+ * `Y − REROOF_YEARS` is past the last era boundary at the present, which is
+ * what keeps the 2025 frame identical.
+ */
+export const REROOF_YEARS = 30;
 
 /** the sentinel in `roofEraTable`: this (use, year) takes the MEASURED colour */
 export const ERA_MEASURED = 255;

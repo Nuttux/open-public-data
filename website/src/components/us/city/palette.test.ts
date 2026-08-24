@@ -13,6 +13,7 @@ import {
   UROOF_ERA,
   UROOF_BLOCK,
   WA_M0,
+  REROOF_YEARS,
   YR_N,
   coveringEra,
   coveringYear,
@@ -59,10 +60,13 @@ describe("the roof covering timeline", () => {
   });
 
   it("advances by CALENDAR, not by how many coverings have happened", () => {
-    // a 1906 building's third re-covering is a 1981 covering, which is the
-    // 1960-89 era — not three steps toward the terminal one. DRAW.md §38.1.
-    expect(coveringYear(1906, 1985)).toBe(1981);
-    expect(coveringEra(1981)).toBe(3);
+    // a 1906 building's Nth re-covering is dated by the CALENDAR, so at 1985
+    // it sits in the 1960-89 era — not N steps toward the terminal one, which
+    // is what a count-based ladder would do. DRAW.md §38.1.
+    expect(coveringYear(1906, 1985)).toBe(1906 + REROOF_YEARS * Math.floor(79 / REROOF_YEARS));
+    expect(coveringEra(coveringYear(1906, 1985))).toBe(3);
+    // and a building four coverings older sits in the SAME era as one built
+    // inside that era, because only the covering year is consulted
     expect(coveringEra(coveringYear(1906, 1985))).toBe(coveringEra(coveringYear(1975, 1985)));
   });
 });

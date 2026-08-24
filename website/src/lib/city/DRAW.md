@@ -8802,10 +8802,15 @@ exactly as `roofFineLUT` applies it:
   2025     113.7   113.7          168.7   168.7          100.0  -> 100.0
 ```
 
+(Those "after" numbers are at `REROOF_YEARS = 25`, the value that shipped with
+§34. §38.8 then moved the cycle to 30, which lifts 1985 again to 34.4 and is
+the last change in this block.)
+
 Three things to read off it:
 
 - **The mid-century carries as much variety as the mock's own roof rule** —
-  29.5 against that rule's 30.7 — where it carried a third of it.
+  29.5 against that rule's 30.7, and 34.4 once §38.8 lands — where it carried
+  a third of it.
 - **The luminance V is 39 levels deep instead of 71.** The path is now
   156 · 134 · 133 · 129 · 121 · 116 · 121 · 140 · 161 · 169 — a century that
   drifts, rather than a trough with a cliff out of it.
@@ -8905,3 +8910,41 @@ a fabric — brown, tan, slate and pale roofs next to each other, the way the
 1915 frame Daniel approved of already did. **The 1915 frame itself is
 essentially unmoved** (mean 133.6 → 134.1), which was the requirement: the fix
 had to reach the years he objected to without touching the year he liked.
+
+### 38.8 `REROOF_YEARS` is not a detail — it is the width of the window, and it sets the ramp
+
+The cycle length does two things at once, and the second one is Daniel's
+sentence:
+
+1. it is the width of the window every standing building's covering date sits
+   in (`cover ∈ (Y − REROOF, Y]`), so it sets how many era bands the city can
+   wear at once — §38.3;
+2. it sets **when the fabric finishes converting to the measured present**. The
+   whole city is terminal from the first year `Y − REROOF ≥ 1990`. At 25 that
+   is **2014**; at 30 it is **2020**; at 35 it is 2025.
+
+Measured on the same instrument, with the families and the frame-dated
+undated footprint already in:
+
+```
+   REROOF    eff.colours 1985   mean lum 1985   photograph's % of roof area
+                                                 1990   2000   2010   2025
+     25             29.5            116.2        17.0   48.7   86.3   100
+     30             34.4            117.9        13.8   45.9   71.6   100
+     35             36.5            118.9        14.1   43.5   61.3   100
+```
+
+**Shipped: 30.** It is inside the service life of every covering the table
+declares — asphalt shingle, built-up bitumen and single-ply membrane are all
+roughly 20-30 year products, and a real re-covering interval is a service life
+plus whatever deferral the owner can stand — and it spreads the conversion over
+the decades California's cool-roof provisions actually landed in instead of
+finishing it in 2014. 35 buys a little more of both and is outside the range
+the materials note declares, so it is not taken.
+
+What this costs: the frames from **2014 to 2019** are no longer identical to
+what shipped (some roofs there wear the 1960-89 covering rather than the
+photograph). **2020-2025 still is, exactly**, which is the property that
+matters and the one `palette.test.ts` asserts. §34.4's stagger figure moves in
+the right direction too: the worst single display-year re-covering cohort is
+9,088 buildings (5.78 %) at 30 against 9,335 (5.94 %) at 25.
