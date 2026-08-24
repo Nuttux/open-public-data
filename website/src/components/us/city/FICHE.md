@@ -1992,3 +1992,23 @@ off the length of the panel, with money still opening at 0.58.
 Typecheck clean, eslint clean, **420/420**. `hood-facts.json` 58 KB. Both halves
 of the score — `d` and `score` — ship on every highlight, so a reader of the
 file can see WHY a line is at the top and not only that it is.
+
+### h. ONE KEY IS NOW FACTUALLY WRONG ON SCREEN — for the owner of `en.ts`/`fr.ts`
+
+`us.sf.thecity.panel.hood_hl_note` still reads:
+
+> "The Board's own printed lines, **ranked by how many of this neighbourhood's
+> blocks each one lands on.** Nothing is summarised: every line is the volume's
+> own and opens the page it is printed on."
+
+That was true of the spread sort and **is no longer true of the code**. It is a
+methodology claim printed on the page that does not match what the page does,
+which is the one class of error this project may not ship. The replacement,
+matching `build_hood_facts.curate()` exactly:
+
+```ts
+'us.sf.thecity.panel.hood_hl_note': "The Board's own printed lines, ranked by how unusual their words are across the city's other neighbourhoods and how many of this one's blocks each lands on. Nothing is summarised: every line is the volume's own and opens the page it is printed on.",
+```
+
+Until it lands the panel prints a claim it cannot keep. It is the only string
+affected.
