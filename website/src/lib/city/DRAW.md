@@ -8432,3 +8432,124 @@ same blockface is a mix: the Victorians still pitched, everything the roll
 dates after the fire still flat, and the whole of it in the measured 2026
 colour. **That mix is the point.** It is the same map saying two true things
 about the same street.
+
+### 36.7 What it costs, and the honest thing to say about the instrument
+
+`.parity/g1hipcost.py`, 25 renders per camera, **`getImageData(0,0,1,1)` forced
+inside every sample** because Canvas 2D is deferred and a timer around a draw
+call otherwise measures JS (BRIEF §6). Ablated against a terminal `return
+false` in `isPitched`, never through the threshold under test (BUGS §23b).
+
+```
+  camera                buildings    cap ON     cap OFF     delta
+  street, Noe, 1906           500    73.6 ms    70.6 ms     +3.0
+  street, Noe, 2025         1,152   107.1 ms   115.5 ms     -8.4
+  street, Civic, 2025         398   116.3 ms   120.5 ms     -4.2
+```
+
+**Two of the three came out FASTER with the cap ON, which cannot be a causal
+effect, so the instrument's own run-to-run variance is at least 8 ms — about
+7 % — and that bounds what this table can say.** What it says is: the cap's
+cost is not resolvable above that variance, and the largest reading anywhere is
+**+3.0 ms at the camera with the most pitched buildings in frame**, which is
+itself smaller than the noise measured at the other two. It is not a stutter,
+and this is not a measurement precise enough to claim any number as the cost.
+
+The dev server is the reason. This wants re-running against a quiet production
+build, the way §33.3's AO test is.
+
+**And it costs nothing at three of the five zooms** — city, district and block
+never reach the near path (§36.5), so `drawHip` is not called there at all.
+The two block/district cameras in the first run measured 139.7 and 138.5 ms
+with the cap shipped, which is the same work they did before it existed.
+
+---
+
+## 37. Block G1 — §33.3 run at last, and the useful half of it is the CONTROL
+
+`AO_ALPHA` ships at `0.0` and **it still does**, but the acceptance test written
+at §33.3 has now actually been run rather than described, against the two quiet
+production builds — `localhost:3100` (AO off) and `:3200` (AO on at 1.0), real
+`next build`, no dev server and no recompiles. `.parity/g1ao3.py` (shoot, camera
+asserted after every shutter, abort rather than file a wrong frame) and
+`.parity/g1aojudge.py` (judge, on the `GaussianBlur(6)` low-frequency image,
+never a frame mean and never a pixel count).
+
+### 37.1 THE PRODUCTION BUILD IS DETERMINISTIC, and nothing on this project knew that
+
+The control that four earlier attempts never had. The **same** AO-off build,
+two independent page sessions minutes apart, camera asserted both times:
+
+```
+  ao3-B4.off.png   md5 c2b301ccb232c7110712b0491b902ba1
+  ao3-B4.off2.png  md5 c2b301ccb232c7110712b0491b902ba1     distinct files, 26 min apart
+  ao3-A4.off.png   md5 ad0cfbaf33d38318b42563c2de778b76
+  ao3-A4.off2.png  md5 ad0cfbaf33d38318b42563c2de778b76
+```
+
+**Byte-identical.** So a difference between two frames off a production build is
+a real difference, and the run-to-run instability §31.2 measured — 44,238
+buildings against 39,329 at the same camera — is a property of the DEV SERVER,
+not of the renderer. Every visual measurement on this project should move here.
+
+### 37.2 A4 passes, and the signature is the proof it is measuring the pass
+
+AO composites a dark tint `source-over` under the city. It can darken a pixel or
+leave it alone. **It can never brighten one**, and that gives a free test of
+whether an on/off pair is measuring the pass or measuring something else:
+
+```
+  camera   mean d   pixels BRIGHTER by >2   max brightening   pixels DARKER by >2
+   A4      -6.57            0.00 %                +0.0              20.63 %
+   B1      +0.37            9.52 %              +166.4              27.00 %
+   B4      +2.54           18.92 %              +166.1              39.45 %
+```
+
+**At A4 not one pixel of 3.4 million brightens.** That is exactly and only what
+a darkening composite does, so the A4 pair is the AO pass and nothing else. And
+on the low-frequency image, against the mock:
+
+```
+  A4 whole city      low-freq gap    +14.68  ->  +8.10        45 % closed
+     by decile of the MOCK's own low-frequency value:
+       [ 94-144]  +46.1 -> +39.5
+       [144-163]  +29.2 -> +18.4
+       [163-177]  +16.0 ->  +7.2
+       [177-190]   +8.4 ->  +2.1
+       [190-210]   +1.6 ->  -2.0      <- the bright end, moved 3.6
+       [210-229]   -9.7 ->  -9.9      <- and this one, 0.2
+     detail rms      17.37 -> 16.69   (mock 19.32)  -3.9 %, no collapse
+```
+
+Monotone in the mock's own darkness, strongest exactly where BUGS §23 says the
+gap is, bright end nearly still, detail intact. **That is §33.3's criterion 2
+and criterion 3, passed, at A4.**
+
+### 37.3 B1 and B4 are VOID — and this time the cause is named
+
+9.52 % and 18.92 % of those frames get BRIGHTER, by up to 166 levels. **No
+darkening composite can do that**, so the district pair is not a measurement of
+AO in either direction — the two builds are drawing different CONTENT at
+district zoom, not different code. Given §37.1's determinism within a build,
+the remaining candidate is the one §31.2 already named: `prod_ready` waits for
+the base tier and an empty queue, which does not guarantee that every `bldg`
+chunk covering a district frame has landed, and the two servers hold
+independent caches. A4 does not suffer it because the whole-city frame is the
+massing tier and one small chunk set.
+
+**The fix is the one §31.2 already wrote down** — gate readiness on the VISIBLE
+`bldg` chunks rather than on the queue — and until it is in, no district camera
+on two different servers is evidence about anything.
+
+### 37.4 So AO stays OFF, and this is not a hedge
+
+§33.3's criterion 2 asks for B1 **and** B4 to come down. They are untested, not
+passed. Criterion 4 — frame-sequence a camera move, because a single still
+cannot show a stutter and the reference tiers its AO off mid-gesture
+(`self.__CITY_FAST`) in a way this port has never had — has not been run at all.
+One camera of three, and the cheapest one, is not an acceptance.
+
+`AO_ALPHA = 0.0` costs nothing and moves no pixel. What has changed is that the
+next person inherits a deterministic instrument, a control that proves it, a
+brightening test that says in one number whether a pair is measuring the pass,
+and one camera that already passes.
