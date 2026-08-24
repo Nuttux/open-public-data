@@ -32,7 +32,7 @@ from the block-p25 cohort into the no-year cohort, correctly, because they sit
 on no published block. The total, 23,487 of 166,166, is unchanged and cannot
 move. Read them from meta.yearFlags rather than copying them a second time.
 
---- 8< ---
+=== the diff begins below this line ===
 --- /tmp/d1before2/bldg/build_bldg.py	2026-08-24 15:48:21
 +++ bldg/build_bldg.py	2026-08-24 15:47:17
 @@ -99,10 +99,22 @@

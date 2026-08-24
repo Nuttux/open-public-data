@@ -23,7 +23,7 @@ year, 303 by twenty years or more; year 2015 loses 220; the shipyard's 219
 split into 158 at 1989 (block 4591A's own p25) and 68 at 2016 (4591C's, and
 those 68 are the condominiums). See DATA-TRUTH.md section 7.
 
---- 8< ---
+=== the diff begins below this line ===
 --- /tmp/d1before/bldg/pnjoin.py	2026-08-24 15:35:17
 +++ bldg/pnjoin.py	2026-08-24 15:31:09
 @@ -42,3 +42,61 @@

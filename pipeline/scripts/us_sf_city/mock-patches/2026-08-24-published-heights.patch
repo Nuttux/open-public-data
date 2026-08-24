@@ -1,0 +1,316 @@
+Apply from the mock root:  cd scratchpad/sf-city-anim && patch -p0 < <this file>
+Applies ON TOP of 2026-08-24-block-key.patch and 2026-08-24-flag-contract.patch.
+    python3 bldg/build_bldg.py      # rewrites gen/bldg-data.js
+    python3 lod/build_lod.py        # the massing rollup reads the new heights
+    (then encode_city_chunks.py from the repo)
+
+2026-08-24 — THE HEIGHT WAS A MEASUREMENT OF 2010.
+
+`hgt_mediancm` is the median cell of (first return minus bare earth) over each
+footprint. The dataset's own methodology document, SF_BldgFoot_2017-05, says
+both grids are "derived from 2 ppsm airborne LiDAR from Pictometry of 2010",
+while the footprints themselves are a 2016 compilation
+(sf13m_BldgFoot_withZ_20161005i). That is two defects in one column:
+
+  A building finished after 2010 is drawn at whatever stood on its lot when the
+  plane went over. Salesforce Tower, 326.1 m, returns 0.24 m — the scan caught
+  the excavation.
+
+  And a median is the wrong statistic for anything that tapers, steps or has a
+  tower on a podium, because most of such a building's footprint sits under its
+  wide base and the median lands there. The Transamerica Pyramid, 260.0 m,
+  drew 67.8.
+
+THE FIX. `5kya-mfst` Tall Building Inventory publishes `height_ft` for 180
+named buildings. Where a row joins a footprint that is the height, and the
+building carries FLAG_PUBHEIGHT (bit 5) so the page can say so. Where it does
+not, the LiDAR median stands, and a building the roll dates after the 2010
+flight carries FLAG_HEIGHT_STALE (bit 6) instead. `meta.heightFlags` ships both
+counts, measured on the run, the way meta.yearFlags already does.
+
+NOTHING IS DERIVED FROM STOREYS. The register publishes its own
+`typ_story_height` and it does not agree with a published height divided by a
+storey count, so neither is used to invent the other.
+
+RESOLUTION IS PUBLISHED AGAINST PUBLISHED. A parcel can carry several
+footprints and `max(area)` gives the published height to the podium, which is
+how Spear Tower came to be drawn at 27.8 m against 172.2. The footprint whose
+own LiDAR median is NEAREST the published height takes it, provided it reaches
+half of it; where nothing reaches half — the building postdates the flight, so
+none of it is in the 2010 grid — the largest takes it, because that is the only
+thing left to say.
+
+MEASURED, over the 155 rows that resolve: 124 heights raised, 31 lowered,
+median change +7.1 m. The reductions are rooftop mechanical plant coming off a
+LiDAR first-return surface that the register does not count; the largest is
+680 Folsom, 13 storeys, published 166 ft, drawn 69.6 m.
+
+WHAT THIS DOES NOT DO, AND WHY. The MIN_H filter still tests the LiDAR value,
+so two footprints a published height would rescue stay off the map — Salesforce
+Tower at 0.24 m and 1190 Mission at 1.01 m. Rescuing them changes the RECORD
+COUNT, and the count is the index every other per-building payload is keyed on:
+roofs st/hf are packed nibbles of length (n+1)//2, paint idx/flag are one byte
+per building, form-data indexes the stream directly, lod/blockof.npy caches an
+assignment per building. San Francisco's tallest building is missing from the
+map and that is written down rather than fixed by breaking four other files.
+
+VERIFIED: cnt, vx, vy, xi, xn and useNames are BYTE-IDENTICAL before and after,
+so building order and geometry have not moved and every index-keyed array still
+aligns. 134 of the 166,166 height bytes change; the use class (u & 7) is
+unchanged.
+
+=== the diff begins below this line ===
+--- /tmp/d1verify/bldg/build_bldg.py	2026-08-24 15:48:54
++++ bldg/build_bldg.py	2026-08-24 17:07:01
+@@ -9,13 +9,36 @@
+            a rectangle. (A rectangle substitution WAS tested — 97 % of San
+            Francisco's buildings are rectangles to within 1.2 m — and it saved
+            20 KB of 1.6 MB, so it was dropped and the real outline kept.)
+-HEIGHT     the same dataset's `hgt_mediancm`: the MEDIAN LIDAR return over the
+-           footprint, in centimetres above that footprint's own ground. Median,
+-           not max, because max is the chimney, the lift overrun and the
+-           aerial. Cross-checked against the assessor's storey count before it
+-           was trusted: 1 storey -> 5.9 m, 2 -> 8.6, 3 -> 11.1, 4 -> 12.2,
++HEIGHT     `ynuv-fyni`'s `hgt_mediancm` — the MEDIAN cell of (first return
++           minus bare earth) over the footprint, in centimetres. Median, not
++           max, because max is the chimney, the lift overrun and the aerial.
++           Cross-checked against the assessor's storey count before it was
++           trusted: 1 storey -> 5.9 m, 2 -> 8.6, 3 -> 11.1, 4 -> 12.2,
+            6 -> 22.2 — a San Francisco ground floor plus 3-4 m a floor.
+            Quantised to 1 m here.
++
++           AND IT IS A MEASUREMENT OF 2010, WHICH IS TWO PROBLEMS.
++           The dataset's own methodology document says both grids are
++           "derived from 2 ppsm airborne LiDAR from Pictometry of 2010",
++           while the footprints themselves are a 2016 compilation
++           (`sf13m_BldgFoot_withZ_20161005i`). So:
++             * a building finished after 2010 is drawn at whatever stood on
++               its lot when the plane went over. Salesforce Tower, 326.1 m,
++               returns 0.24 m — the scan caught the excavation — and was
++               dropped from the map entirely by the MIN_H filter below;
++             * and a median is the wrong statistic for anything that tapers,
++               steps or has a tower on a podium, because most of such a
++               building's footprint sits under its wide base and the median
++               lands there. The Transamerica Pyramid, 260.0 m, drew 67.8.
++
++PUBLISHED  `5kya-mfst` Tall Building Inventory publishes `height_ft` for 180
++HEIGHT     named buildings. Where a row joins a footprint, THAT is the height
++           used and the building carries FLAG_PUBHEIGHT so the page can say
++           so. Where it does not, the LiDAR median stands, and a building the
++           roll dates after the 2010 flight carries FLAG_HEIGHT_STALE instead.
++           NOTHING IS DERIVED FROM STOREYS. The register publishes its own
++           `typ_story_height` and it does not agree with a height divided by a
++           storey count, so neither is used to invent the other.
+ YEAR       `wv5m-vpq2` secured roll 2025, `year_property_built`. Footprint to
+            parcel on mblr[2:] == parcel_number, resolved by bldg/pnjoin.py:
+            95.8 % join, 85.9 % of footprints get a year of their own.
+@@ -99,9 +122,15 @@
+     "Miscellaneous/Mixed-Use": 6,
+ }
+ USE_UNKNOWN = 6
++MAX_H = 255             # the `h` byte is a u8 of whole metres. Three
++                        # published heights exceed it; see MEASURED.heightNote.
+ USE_MASK = 7            # bits 0-2 — the index into USE_CLASSES
+ FLAG_BLOCKYEAR = 8      # bit 3 — year is the block's p25, not this parcel's
+ FLAG_NOYEAR = 16        # bit 4 — no parcel on this block carries a year
++FLAG_PUBHEIGHT = 32     # bit 5 — height is 5kya-mfst `height_ft`, not the LiDAR
++FLAG_HEIGHT_STALE = 64  # bit 6 — the roll dates this building AFTER the 2010
++                        #          flight, so the height is what stood there in
++                        #          2010 and not what stands there now
+ 
+ # THE PLACEHOLDER, NAMED. A building with FLAG_NOYEAR has no year from any
+ # published source, and this is the byte that goes in the `yr` slot so the
+@@ -158,11 +187,76 @@
+             x, y = y, x
+         s >>= 1
+     return h
++
++
++LIDAR_YEAR = 2010       # the flight the hgt_* grids come from, out of the
++                        # dataset's own SF_BldgFoot_2017-05_description.pdf
++
++
++def published_heights(RAW):
++    """`5kya-mfst` height_ft -> {index into RAW: metres}, joined and RESOLVED.
++
++    The register keys on `mapblocklot`, which is the parcel number this file
++    already joins footprints to. Most parcels carry one footprint and the row
++    is unambiguous. Where a parcel carries several — a tower on a podium — the
++    published height belongs to ONE of them, and picking `max(area)` gives it
++    to the podium, which is how Spear Tower came to be drawn at 27.8 m against
++    a published 172.2.
++
++    THE RESOLUTION IS PUBLISHED AGAINST PUBLISHED. The footprint whose own
++    LiDAR median is nearest the published height takes it, provided it reaches
++    half of it — the tower's own returns are in the grid even when the median
++    over the whole site is not. Where NO footprint reaches half (the building
++    postdates the 2010 flight, so none of it is in the grid at all), the
++    largest takes it, because that is the only thing left to say and the
++    alternative is to leave a 326 m building off the map.
++    """
++    import collections as _c
++    seed = os.path.join(ROOT, "..", "..", "pipeline", "scripts", "us_sf_city",
++                        "cache_height", "tall_buildings.json")
++    if not os.path.exists(seed):
++        print("  NOTE: no tall_buildings.json — every height is the LiDAR median")
++        return {}, {"rows": 0}
++    rows = json.load(open(seed))
++    by_pn = _c.defaultdict(list)
++    for i, r in enumerate(RAW):
++        by_pn[r["pn"]].append(i)
++
++    def med(i):
++        r = RAW[i]
++        h = r["hmed"]
++        if h is None: h = r["hmean"]
++        if h is None: h = r["hmax"]
++        return (h or 0) / 100.0
++
++    out, st = {}, _c.Counter()
++    for t in rows:
++        pn = (t.get("mapblocklot") or "").strip()
++        try:
++            m = float(t["height_ft"]) * 0.3048
++        except (TypeError, ValueError, KeyError):
++            st["no published height"] += 1; continue
++        idx = by_pn.get(pn)
++        if not idx:
++            st["no footprint on that parcel"] += 1; continue
++        near = [i for i in idx if med(i) >= 0.5 * m]
++        if near:
++            pick = min(near, key=lambda i: abs(med(i) - m))
++            st["resolved on the LiDAR match"] += 1
++        else:
++            pick = max(idx, key=lambda i: RAW[i]["a"])
++            st["nothing in the 2010 grid — largest footprint"] += 1
++        if pick in out and out[pick] >= m:
++            st["parcel already claimed by a taller row"] += 1; continue
++        out[pick] = m
++        st["rows applied"] += 1
++    return out, dict(st)
+ 
+ 
+ def main():
+     d = pickle.load(open(os.path.join(CACHE, "parsed.pkl"), "rb"))
+     RAW, ROLL = d["b"], d["roll"]
++    PUBH, PUBH_STATS = published_heights(RAW)
+ 
+     # ── the PUBLISHED assessor block, per parcel ──────────────────────────
+     # acdm-wktn ships block_num and lot_num as separate columns. pnjoin.py
+@@ -208,13 +302,33 @@
+     rec = []
+     drop_small = drop_low = drop_bad = 0
+     n_pyr = n_byr = n_noyr = n_made = 0
+-    for r in RAW:
++    n_pubh = n_stale = n_clip = 0
++    for _i, r in enumerate(RAW):
+         h = r["hmed"]
+         if h is None: h = r["hmean"]
+         if h is None: h = r["hmax"]
+         h = (h or 0) / 100.0
++        hflags = 0
++        pub = PUBH.get(_i)
++        # THE MIN_H TEST STAYS ON THE LIDAR VALUE, AND THAT COSTS SOMETHING.
++        # A published height would rescue two footprints this filter drops —
++        # Salesforce Tower, 326.1 m, whose only footprint returns 0.24 m
++        # because the 2010 scan caught the excavation, and 1190 Mission at
++        # 1.01 m. Rescuing them changes the RECORD COUNT, and the count is the
++        # index every other per-building payload is keyed on: roofs `st`/`hf`
++        # are packed nibbles of length (n+1)//2, paint `idx`/`flag` are one
++        # byte per building, form-data indexes the stream directly, and
++        # lod/blockof.npy caches an assignment per building. The encoder
++        # asserts all of those and would refuse. So the two stay off the map
++        # until those payloads are regenerated in the same pass, and the fact
++        # that San Francisco's tallest building is missing is written down
++        # rather than quietly fixed by breaking four other files.
+         if h < MIN_H:
+             drop_low += 1; continue
++        if pub:
++            h = pub
++            hflags |= FLAG_PUBHEIGHT
++            n_pubh += 1
+         if r["a"] < MIN_AREA:
+             drop_small += 1; continue
+         try:
+@@ -252,8 +366,14 @@
+         m = made_of.get(block(pn), 0)
+         if m and yr < m:
+             yr = m; n_made += 1
+-        rec.append([ring, h, yr, use | flags])
++        if not pub and v and v[0] and v[0] > LIDAR_YEAR:
++            hflags |= FLAG_HEIGHT_STALE; n_stale += 1
++        if h > MAX_H:
++            n_clip += 1
++        rec.append([ring, h, yr, use | flags | hflags])
+ 
++    print(f"height: published {n_pubh:,} · stale (built after the {LIDAR_YEAR} "
++          f"flight) {n_stale:,} · clipped at {MAX_H} m {n_clip:,}   {PUBH_STATS}")
+     print(f"kept {len(rec):,}   dropped: under {MIN_AREA:.0f} m2 {drop_small:,}, "
+           f"under {MIN_H:.0f} m {drop_low:,}, degenerate {drop_bad:,}")
+     print(f"year: parcel {n_pyr:,} ({n_pyr/len(rec):.1%})  block p25 {n_byr:,} "
+@@ -296,7 +416,7 @@
+             # a simplified ring never has a 127 m edge, but assert it
+             assert -128 <= dx <= 127 and -128 <= dy <= 127, (dx, dy)
+             vx.append(dx); vy.append(dy); ax, ay = bx, by
+-        H.append(max(1, min(255, int(round(h)))))
++        H.append(max(1, min(MAX_H, int(round(h)))))
+         YR.append(max(0, min(255, yr - 1849)))
+         U.append(u)
+ 
+@@ -312,8 +432,20 @@
+                 "footprint": f"DataSF ynuv-fyni Building Footprints — {len(RAW):,} "
+                              f"published outlines, Douglas-Peucker at {SIMP_TOL} m, "
+                              f"snapped to a {QUANT} m grid",
+-                "height": "ynuv-fyni hgt_mediancm — the median LIDAR return over each "
+-                          "footprint, cm above its own ground. Quantised to 1 m.",
++                "height": f"5kya-mfst Tall Building Inventory `height_ft` where a row "
++                          f"joins ({n_pubh:,} footprints, FLAG_PUBHEIGHT); otherwise "
++                          f"ynuv-fyni hgt_mediancm, the median cell of (first return "
++                          f"minus bare earth) over the footprint. Quantised to 1 m.",
++                "heightNote": f"BOTH hgt_* grids are 2 ppsm airborne LiDAR from "
++                              f"Pictometry of {LIDAR_YEAR} — the dataset's own "
++                              f"SF_BldgFoot_2017-05_description.pdf says so — while the "
++                              f"footprints are a 2016 compilation. A median is also the "
++                              f"wrong statistic for anything that tapers or steps, "
++                              f"because most of the footprint sits under the wide base. "
++                              f"{n_stale:,} footprints the roll dates after {LIDAR_YEAR} "
++                              f"carry FLAG_HEIGHT_STALE. The `h` byte is a u8 of whole "
++                              f"metres, so {n_clip:,} published heights above {MAX_H} m "
++                              f"are drawn at {MAX_H}.",
+                 "year": "wv5m-vpq2 secured roll 2025, year_property_built, joined "
+                         "footprint→parcel on the whole mblr[2:] == parcel_number "
+                         "(95.8 % join; the seven-character slice this used to take "
+@@ -334,6 +466,24 @@
+             # is exactly how "12,594" — a PARCEL count of the 1900 dump — came
+             # to be published on the page as a FOOTPRINT count, and to be
+             # repeated in nine places. These are measured on this run.
++            "heightFlags": {
++                "field": "u",
++                "lidarYear": LIDAR_YEAR,
++                "maxDrawnM": MAX_H,
++                "flags": [
++                    {"name": "FLAG_PUBHEIGHT", "bit": 5, "mask": FLAG_PUBHEIGHT,
++                     "n": n_pubh,
++                     "means": "the height is 5kya-mfst's published height_ft for this "
++                              "building, not a LiDAR median."},
++                    {"name": "FLAG_HEIGHT_STALE", "bit": 6, "mask": FLAG_HEIGHT_STALE,
++                     "n": n_stale,
++                     "means": f"the roll dates this building after the {LIDAR_YEAR} "
++                              "flight, so its height is whatever stood on the lot when "
++                              "the plane went over — not necessarily a building."},
++                ],
++                "clippedAtMax": n_clip,
++                "resolution": PUBH_STATS,
++            },
+             "yearFlags": {
+                 "field": "u",
+                 "useMask": USE_MASK,
+@@ -364,6 +514,8 @@
+                 "droppedSmall": drop_small, "droppedLow": drop_low,
+                 "droppedBad": drop_bad,
+                 "yearFromParcel": n_pyr, "yearFromBlock": n_byr, "yearNone": n_noyr,
++                "heightPublished": n_pubh, "heightStale": n_stale,
++                "heightClipped": n_clip,
+                 "vertices": sum(cnt), "minAreaM2": MIN_AREA, "minHeightM": MIN_H,
+                 "simplifyM": SIMP_TOL,
+             },

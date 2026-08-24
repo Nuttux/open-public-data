@@ -53,7 +53,7 @@ a determinism defect the project's own rule forbids, it is NOT caused by this
 change, and it should be fixed before anyone regenerates geo-data.js in a shared
 tree. See DATA-TRUTH.md section 8.
 
---- 8< ---
+=== the diff begins below this line ===
 --- /tmp/gen_geo2.py.orig	2026-08-24 15:38:15
 +++ gen/gen_geo2.py	2026-08-24 16:04:47
 @@ -24,6 +24,22 @@

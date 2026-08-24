@@ -1154,3 +1154,171 @@ than documented.
   was. And `verify_city_chunks.py`, which had been red for 30 checks since the
   twelfth hero shipped, now checks the invariant that matters — the mock's
   eleven survive the merge unchanged — instead of the count.
+
+---
+
+## 13. The height was a measurement of 2010
+
+Same shape as the year: a number standing in for a different number, on screen
+at every zoom.
+
+### 13.1 What `hgt_mediancm` actually is, from the document that defines it
+
+`ynuv-fyni`'s attached methodology PDF, `SF_BldgFoot_2017-05_description.pdf`,
+defines all three grids:
+
+> **First Return Surface [1st]** — "a 50cm gridded first return model, derived
+> from **2 ppsm airborne LiDAR from Pictometry of 2010**."
+> **Bare Earth Surface [gnd]** — "derived from 2 ppsm airborne LiDAR from
+> Pictometry of 2010."
+> **Feature Height Surface [hgt]** — "a 50cm gridded difference model,
+> pixelwise-subtracting [First Return Surface − Bare Earth Surface]."
+
+So the height is **2010**, and the footprints are not: the same document says
+the compilation reviewed was `sf13m_BldgFoot_withZ_20161005i` — **October
+2016**. A six-year gap between the outline and the height, in one row.
+
+**That is the flight date, established from the publisher's own document and
+not inferred.** Two defects follow from it.
+
+**B. The LiDAR is older than the building.** A building finished after 2010 is
+drawn at whatever stood on its lot when the plane went over.
+
+**C. A median is the wrong statistic for a taper.** Most of a stepped
+building's footprint sits under its wide base, so the median lands there.
+
+### 13.2 The size of the class
+
+| | |
+|---|---|
+| footprints drawn | 166,166 |
+| **B** — roll year after the 2010 flight, drawn | **551** (0.33 %) |
+| **B** — same, but dropped by the 2 m filter | 33 |
+| **C** — `hgt_max ≥ 2 × hgt_median` | **5,891** (3.5 %) |
+| **C** — `hgt_max ≥ 3 × hgt_median` | 1,352 (0.8 %) |
+
+**B is not a systematic tilt on a decade of construction, and that is worth
+saying because it is what I expected to find.** 551 of 166,166. The cohort's
+median drawn height is 9.1 m against 6.8 m for the whole fabric — *higher*,
+because most post-2010 roll years are renovations and condo conversions of
+buildings that were already standing in 2010, not new construction on bare
+ground.
+
+A fabric-wide *ratio* cannot be reported, and that is the honest answer rather
+than a missing one: **no published height exists for the other 165,000
+buildings.** The only register that publishes one is the Tall Building
+Inventory, and it covers 180.
+
+### 13.3 Where it is severe: `5kya-mfst`, 157 rows joined
+
+| completion | n | median drawn / published |
+|---|---|---|
+| pre-1990 | 119 | **0.92** |
+| 1990–2010 | 24 | **0.73** |
+| 2011+ | 14 | **0.28** |
+
+The gradient is B. The 0.92 at the top — a tower that predates the flight still
+drawn 8 % short — is C.
+
+```
+Salesforce Tower           published 326.1 m   drawn   0.2      <- excavation
+Oceanwide Center I                   259.1             27.7
+Transamerica Pyramid                 260.0             67.8     <- the taper
+Park Tower                           173.1              4.5
+Pacific Gas & Electric Bldg          145.1             12.3
+```
+
+**Salesforce Tower is not on the map at all.** Its only footprint returns
+0.24 m and `build_bldg.py` drops anything under 2 m as a shed or a canopy.
+
+### 13.4 The fix, and what it refuses to do
+
+`5kya-mfst` publishes `height_ft` for all 180 rows. Where a row joins a
+footprint that is the height and the building carries **`FLAG_PUBHEIGHT`**
+(bit 5). Where it does not, the LiDAR median stands, and a building the roll
+dates after 2010 carries **`FLAG_HEIGHT_STALE`** (bit 6). `meta.heightFlags`
+ships both counts measured on the run, as `meta.yearFlags` already does.
+
+**Resolution is published against published.** A parcel can carry several
+footprints and `max(area)` gives the height to the podium — how Spear Tower
+came to be drawn at 27.8 m against 172.2. The footprint whose own LiDAR median
+is *nearest* the published height takes it, provided it reaches half of it;
+where nothing reaches half (the building postdates the flight, so none of it is
+in the 2010 grid) the largest takes it.
+
+**Nothing is derived from storeys.** The register publishes `typ_story_height`
+and it does not agree with a published height divided by a storey count, so
+neither is used to invent the other.
+
+```
+applied to 155 rows · 124 raised · 31 lowered · median change +7.1 m
+134 of the 166,166 height bytes change · tallest drawn 218 m -> 255 m
+```
+
+The 31 reductions are **rooftop mechanical plant coming off**: the LiDAR
+first-return surface includes it (and the document says grayscale dilation was
+applied to the grid, which biases it up), the register does not count it. The
+largest is 680 Folsom — 13 storeys, published 166 ft — drawn 69.6 m. The
+register is right.
+
+**Order and geometry are byte-identical.** `cnt`, `vx`, `vy`, `xi`, `xn` and
+`useNames` are unchanged, so every index-keyed array still aligns. The use
+class `u & 7` is unchanged. Only `h` and the two new flag bits move.
+
+### 13.5 Three things this deliberately does not fix
+
+**a. Salesforce Tower stays off the map.** The `MIN_H` filter still tests the
+LiDAR value. A published height would rescue two footprints — Salesforce at
+0.24 m and 1190 Mission at 1.01 m — but rescuing them changes the **record
+count**, and the count is the index every other per-building payload is keyed
+on: roofs `st`/`hf` are packed nibbles of length `(n+1)//2`, paint `idx`/`flag`
+are one byte per building, `form-data` indexes the stream directly,
+`lod/blockof.npy` caches an assignment per building. The encoder asserts all
+four and would refuse. **San Francisco's tallest building is missing from the
+map, and it stays missing until those payloads are regenerated in the same
+pass.** Written down rather than fixed by breaking four other files.
+
+**b. Three published heights exceed the `h` byte.** It is a u8 of whole metres,
+so 255 m is the ceiling. Salesforce (326.1) is absent anyway; Transamerica
+(260.0) and Oceanwide Center I (259.1) draw at 255. Two buildings, 5 m and
+4 m short, declared in `meta.heightNote` and `manifest.buildings`. Widening the
+field is a chunk-format change.
+
+**c. Nine second solids and eight shaped caps were dropped.** `form/model3.py`
+derives an upper plane `T` from the same statistics the base height came from,
+gated at `T − L ≥ 6 m`. Where the register's height now exceeds `T`, the step
+stands *inside* the prism — a step the building does not have. Nine of the 488
+are in that state and **every one is `FLAG_PUBHEIGHT`**, which is the check that
+the cause is understood. They are dropped, and the eight of the 68 caps sitting
+on them go with them, because a cap is a profile swept around its slot's top
+plane and a cap with no slot is a shape with nothing to put it on.
+
+**The trade is stated rather than hidden: eight towers lose a shaped top and
+gain their published height.** The Transamerica Pyramid is one of them — a flat
+top at 260.0 m against a pointed one at 67.8. The right long-term answer is for
+`model3.py` to derive from whatever height ships.
+
+### 13.6 On screen
+
+Camera parked on the Transamerica Pyramid's own plane coordinate, only the data
+changing between the pairs. `diag_downtown_shots.py` reproduces them.
+
+```
+whole city    0.20 % of map pixels changed
+district      1.62 %
+block         9.31 %
+```
+
+At block zoom the Financial District has its height back: Transamerica,
+Embarcadero Center, Spear Tower and One California all stand at their published
+heights where they stood at a third of them.
+
+### 13.7 A latent bug in this directory's own patch files
+
+Found while verifying this one. `mock-patches/*.patch` carried a `--- 8< ---`
+separator between the prose header and the diff, and `patch` reads a line
+beginning `---` as a diff header — so it silently mis-parsed the first hunk.
+The separator is now `=== the diff begins below this line ===` and the `+++`
+paths are normalised to the mock root. **All four patches now apply in order to
+pristine baselines and reproduce the live files byte for byte**, which is the
+check that should have been run on the first one.

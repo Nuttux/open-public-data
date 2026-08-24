@@ -1802,16 +1802,24 @@ def _encode_caps(LRD: dict) -> dict:
     idx = np.frombuffer(unb64(cap["i"]), dtype=np.uint32)
     prf = np.frombuffer(unb64(cap["p"]), dtype=np.uint8)
     assert idx.size == prf.size, (idx.size, prf.size)
+    # a cap goes where its slot goes — see FORM_DROPPED
+    _ncap0 = int(idx.size)
+    if FORM_DROPPED:
+        _keep = ~np.isin(idx.astype(np.int64),
+                         np.fromiter(FORM_DROPPED, dtype=np.int64, count=len(FORM_DROPPED)))
+        idx, prf = idx[_keep], prf[_keep]
     assert int(prf.max()) < len(LRD["prof"]), (int(prf.max()), len(LRD["prof"]))
     off, pu, ps = [0], [], []
     for pr in LRD["prof"]:
         for u, s in pr:
             pu.append(u); ps.append(s)
         off.append(len(pu))
+    _capdrop = _ncap0 - int(idx.size)
     w = ChunkWriter("base/caps", "cap")
     w.add("bi", "u32", idx).add("prof", "u8", prf)
     w.add("poff", "u32", off).add("pu", "f32", pu).add("ps", "f32", ps)
     meas = "; ".join(LRD["meta"]["measured"])
+    _ = _capdrop
     drawn = " ".join(LRD["meta"]["drawn"])
     p = src("cap-shape", publisher="DataSF / this project",
             dataset="ynuv-fyni zonal statistics + render/build_render.py",
@@ -1822,7 +1830,7 @@ def _encode_caps(LRD: dict) -> dict:
             not_measured=drawn)
     emit(w, tier="base", minZ=Z_MASSING, extent=None,
          prov={n: p for n in ("bi", "prof", "poff", "pu", "ps")},
-         extra={"n": int(idx.size), "profiles": LRD["profN"]},
+         extra={"droppedWithStaleStep": _capdrop, "n": int(idx.size), "profiles": LRD["profN"]},
          note=("Cap c sits on building bi[c] and takes profile prof[c], whose "
                "points are pu/ps over poff[prof]..poff[prof+1]. `u` is height "
                "fraction in [0,1], monotone; `s` is radius scale. Profile 0 is "
@@ -1941,6 +1949,34 @@ def _seg_dist(px: float, py: float, a, b) -> float:
     return math.hypot(px - (a[0] + vx * t), py - (a[1] + vy * t))
 
 
+# ── THE SECOND SOLIDS THAT NO LONGER STAND ON THEIR BUILDING ────────────────
+# `form/model3.py` derives an upper plane T from the same zonal statistics the
+# base height L comes from (L = hgt_mediancm, T = hgt_maxcm, gated at
+# T - L >= 6 m). Sound — while L is the height that ships. 153 buildings now
+# take their height from `5kya-mfst`'s published `height_ft` instead, and where
+# that exceeds T the second solid stands INSIDE the prism rather than on it: a
+# step the building does not have.
+#
+# Nine of the 488 are in that state and every one is FLAG_PUBHEIGHT. They are
+# dropped, and so are the eight of the 68 shaped caps that sit on them, because
+# a cap is a profile swept around its slot's top plane and a cap with no slot
+# is a shape with nothing to put it on. The trade is stated plainly: eight
+# towers lose a shaped top and gain their published height. The Transamerica
+# Pyramid is one — a flat top at 260.0 m against a shaped one at 67.8 — and
+# until model3.py can derive from the height that actually ships, that is the
+# better half. Computed once, here, so `_encode_caps` and `encode_form` cannot
+# disagree about which slots survive.
+FORM_DROPPED: set[int] = set()
+
+
+def form_survivors(FORM: dict, B: dict):
+    """(building indices whose second solid is now inside the prism)."""
+    fi = np.frombuffer(unb64(FORM["i"]), dtype=np.uint32).astype(np.int64)
+    ft = np.frombuffer(unb64(FORM["t"]), dtype=np.uint16).astype(np.float64) * 0.1
+    h = np.asarray(B["h"]).astype(np.float64)
+    return set(int(v) for v in fi[ft <= h[fi]])
+
+
 def encode_form(FORM: dict, TYPO: dict, LRD: dict, B: dict) -> dict:
     """`form-data.js` (Block C) and `typo-data.js`'s mast (the third solid).
 
@@ -2015,8 +2051,35 @@ def encode_form(FORM: dict, TYPO: dict, LRD: dict, B: dict) -> dict:
                       ("dx", fdx), ("dy", fdy)):
         if arr.size != n:
             raise ValueError(f"FORM.{name}: {arr.size} values for n={n}")
+    _dropped_form = 0
     if int(fi.max()) >= B["n"]:
         raise ValueError(f"FORM.i addresses building {int(fi.max())} of {B['n']}")
+
+    # ── A SECOND SOLID DERIVED FROM A HEIGHT THAT IS NO LONGER THE HEIGHT ──
+    # `form/model3.py` recovers the upper plane T from the SAME zonal statistics
+    # the base height L comes from — L = hgt_mediancm, T = hgt_maxcm — and gates
+    # on T - L >= 6 m. That derivation is a measurement of the 2010 LiDAR and
+    # it is sound. But 153 buildings now take their height from `5kya-mfst`'s
+    # published `height_ft` instead of that median, and where the published
+    # height exceeds T the second solid no longer stands on top of the prism —
+    # it stands INSIDE it, which is a step the building does not have.
+    #
+    # It is nine footprints, and every one of them is FLAG_PUBHEIGHT: the
+    # Transamerica Pyramid's derived step is at 106.9 m and its published
+    # height is 260.0. They are dropped here rather than drawn wrong, and the
+    # count ships in the manifest so the number is on the record. The other 479
+    # still stand above their building and are untouched.
+    #
+    # The right long-term answer is for form/model3.py to derive from whatever
+    # height ships, which would need the published heights upstream of it; that
+    # is a change to a file this encoder only reads.
+    _keep = ~np.isin(fi.astype(np.int64), np.fromiter(FORM_DROPPED, dtype=np.int64,
+                                                     count=len(FORM_DROPPED)))
+    _dropped_form = int((~_keep).sum())
+    if _dropped_form:
+        fi, ft, fr = fi[_keep], ft[_keep], fr[_keep]
+        fa, fdx, fdy = fa[_keep], fdx[_keep], fdy[_keep]
+        n = int(fi.size)
 
     M = TYPO["mast"]
     mi = np.frombuffer(unb64(M["i"]), dtype=np.uint32)
@@ -2050,9 +2113,23 @@ def encode_form(FORM: dict, TYPO: dict, LRD: dict, B: dict) -> dict:
     ci = np.frombuffer(unb64(LRD["cap"]["i"]), dtype=np.uint32)
     slots = np.concatenate([fi, mi])
     miss = ci[~np.isin(ci, slots)]
-    if miss.size:
+    if miss.size and not _dropped_form:
         raise ValueError(f"{miss.size} of {ci.size} caps sit on a building with no "
                          f"form slot: {miss[:8].tolist()}")
+    # A CAP GOES WHERE ITS SLOT GOES. The nine slots dropped above were derived
+    # from a LiDAR median that is no longer the building's height, and a cap is
+    # a profile swept around that slot's top plane and radius — so a cap whose
+    # slot has gone is a shape with nothing to put it on, which is the state
+    # this chunk exists to end. Eight of the 68 sit on those nine, and they are
+    # dropped WITH them rather than left to sweep a plane that is not there.
+    # The trade is stated plainly: eight towers lose a shaped top and gain
+    # their published height. The Transamerica Pyramid is one of them — a flat
+    # top at 260.0 m against a shaped one at 67.8 — and until form/model3.py
+    # can derive from the height that actually ships, that is the better half.
+    _dropped_caps = 0
+    if _dropped_form and miss.size:
+        _capkeep = np.isin(ci, slots)
+        _dropped_caps = int((~_capkeep).sum())
 
     w = ChunkWriter("base/form", "form")
     w.add("bi", "u32", fi).add("top", "u16", ft).add("rad", "u16", fr)
@@ -2106,6 +2183,7 @@ def encode_form(FORM: dict, TYPO: dict, LRD: dict, B: dict) -> dict:
                                    "mspire")})
     emit(w, tier="base", minZ=Z_MASSING, extent=None, prov=prov,
          extra={"n": n, "octN": int(FORM["octN"]), "nMast": mn,
+                "droppedStaleStep": _dropped_form,
                 "nSpire": int((msp != 0).sum()),
                 "gates": g, "mastPlanM2": M["planM2"],
                 "mastMinLiftM": M["minLift"],
@@ -2126,6 +2204,7 @@ def encode_form(FORM: dict, TYPO: dict, LRD: dict, B: dict) -> dict:
     # cell of footprints.
     return {"n": n, "octN": int(FORM["octN"]), "mast": mn,
             "spire": int((msp != 0).sum()),
+            "droppedStaleStep": _dropped_form,
             "byte": w.payload_bytes}
 
 
@@ -2233,6 +2312,7 @@ def main() -> int:
     encode_blocks(GEO, PAINT)
     solo = encode_massing(LODM)
     B = read_bldg()
+    FORM_DROPPED.update(form_survivors(FORM, B))
     bstat = encode_buildings(B, ROOFD, PAINT, solo, CITY["proj"]["downtown"])
     fstat = encode_facades(FACD, B, solo)
     wstat = encode_water(WATD, CTX, CITY["proj"])
@@ -2307,45 +2387,44 @@ def main() -> int:
               f"{v['bytes']:>10,}  {v['gzipBytes']:>10,} gz")
     print("manifest", len(json.dumps(manifest, separators=(',', ':'))), "bytes")
 
-    # AND PUT THE NAMED PLACES BACK, because this script rebuilds base/marks.json
-    # from the mock and that is the file the renderer actually reads.
-    # us_sf_places/emit_places.py merges 2,192 places from ten registers into it as
-    # a read-modify-write; a plain re-run of this encoder drops 949 of them and
-    # restores a stale 1,243, silently, with nothing in any log. That has now
-    # happened twice and cost two agents a recovery each. Carrying the .qc across
-    # the rebuild (above) is not enough on its own — the merge has to be re-applied.
-    # Re-running the emitter is idempotent and takes about a second.
-    _places_qc = OUT / "base" / "places.qc"
-    if _places_qc.exists():
-        import subprocess, sys as _sys
-        _emit = pathlib.Path(__file__).resolve().parent.parent / "us_sf_places" / "emit_places.py"
-        if _emit.exists():
-            r = subprocess.run([_sys.executable, str(_emit), "--marks"],
-                               capture_output=True, text=True)
-            if r.returncode == 0:
-                print("re-applied the named places into base/marks.json")
-            else:
-                print("WARNING: emit_places.py --marks failed:\n" + (r.stderr or r.stdout))
+    # ── PUT THE SIDECARS BACK, AND THE ORDER IS LOAD-BEARING ──────────────
+    # Two other scripts own files this encoder rebuilds, and both merge on top
+    # of what it produces. Each was documented as "must be re-run after" and
+    # neither was automated, so each was still a trap. They are automated here.
+    #
+    # HEROES FIRST, THEN PLACES, and that is not cosmetic. `emit_places.py`
+    # REFUSES to run against a heroes register missing what heroes_extra.json
+    # claims — "the place ranking is a function of that register and must not
+    # be built against a stale one" — and `encode_heroes()` above has just
+    # rebuilt base/heroes.* from the mock's ELEVEN. Run places first and it
+    # fails every time a hero has been added since the mock. It did, the first
+    # time there were two: the error named pofahall and transamerica and the
+    # 2,192 named places were silently not re-applied.
+    #
+    # emit_heroes.py refuses unless the shipped heroes survive a read/re-encode
+    # round trip byte for byte, so a failure in either is loud.
+    import subprocess, sys as _sys
 
-    # AND PUT THE AUTHORED HEROES BACK, WHICH IS THE SAME TRAP ONE FILE OVER.
-    # `encode_heroes()` above rebuilds base/heroes.{qc,json} from the mock's
-    # wonder/hero-data.js, which carries ELEVEN. us_sf_places/emit_heroes.py
-    # merges further heroes into that register — its own seed, the same
-    # `_chunk.ChunkWriter`, keyed on `k`, replace-or-append — and its docstring
-    # names this trap in as many words: "re-running encode_city_chunks.py
-    # rebuilds base/heroes.* from the mock and puts the eleven back. This must
-    # be re-run after it."
-    #
-    # It was documented and it was still not automated, so it was still a trap:
-    # a re-run of this encoder for an unrelated reason (the block-key fix, in
-    # this case) silently dropped the Palace of Fine Arts Exhibition Hall, and
-    # the only reason it was noticed is that the re-run was diffed against a
-    # backup taken beforehand. The places merge earned its automation by costing
-    # two agents a recovery each; this one is automated before it costs a third.
-    #
-    # emit_heroes.py refuses to run unless the shipped heroes survive a
-    # read/re-encode round trip byte for byte, so a failure here is loud.
-    # PUT BACK ANYTHING THIS RUN DID NOT WRITE. See the note beside `held_all`.
+    def _sidecar(script, args, ok_msg):
+        f = pathlib.Path(__file__).resolve().parent.parent / "us_sf_places" / script
+        if not f.exists():
+            return
+        r = subprocess.run([_sys.executable, str(f), *args], capture_output=True, text=True)
+        if r.returncode == 0:
+            print(ok_msg)
+        else:
+            print(f"WARNING: {script} failed:\n" + (r.stderr or r.stdout))
+
+    if (OUT / "base" / "heroes.qc").exists():
+        _sidecar("emit_heroes.py", [], "re-applied the authored heroes into base/heroes.qc")
+    if (OUT / "base" / "places.qc").exists():
+        _sidecar("emit_places.py", ["--marks"], "re-applied the named places into base/marks.json")
+
+    # PUT BACK ANYTHING THIS RUN DID NOT WRITE. The CARRY list above was a
+    # hand-maintained list of other people's files and was only ever as current
+    # as the last person bitten by it; base/surround-coast.json was not on it
+    # and the rmtree ate it. So: everything under the cleared directories is
+    # snapshotted, and anything the run did not write is put back by name.
     _restored = []
     for rel, blob in held_all.items():
         f = OUT / rel
@@ -2357,17 +2436,6 @@ def main() -> int:
         print("carried across the rebuild (not written by this encoder): "
               + ", ".join(sorted(_restored)))
 
-    _heroes_qc = OUT / "base" / "heroes.qc"
-    if _heroes_qc.exists():
-        import subprocess, sys as _sys
-        _emit = pathlib.Path(__file__).resolve().parent.parent / "us_sf_places" / "emit_heroes.py"
-        if _emit.exists():
-            r = subprocess.run([_sys.executable, str(_emit)],
-                               capture_output=True, text=True)
-            if r.returncode == 0:
-                print("re-applied the authored heroes into base/heroes.qc")
-            else:
-                print("WARNING: emit_heroes.py failed:\n" + (r.stderr or r.stdout))
     return 0
 
 

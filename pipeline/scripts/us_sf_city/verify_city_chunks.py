@@ -789,17 +789,29 @@ def main() -> int:
        not any(int(v) for v in _hull_all[NH:]), f"{[int(v) for v in _hull_all[NH:]]}")
 
     h, p = load_chunk("base/caps")
-    eq("cap.bi", field_array(h, p, "bi"), _u32(LRD["cap"]["i"]))
-    eq("cap.prof", field_array(h, p, "prof"), _u8(LRD["cap"]["p"]))
+    # A CAP GOES WHERE ITS SLOT GOES, so the shipped caps are a subset of
+    # render-data.js's 68 — the eight that sat on the nine dropped form slots
+    # are dropped with them. Compared over the subset, matched by building
+    # index, for the same reason the form fields are.
+    _cap_bi = _u32(LRD["cap"]["i"])
+    _csel = np.isin(_cap_bi, field_array(h, p, "bi"))
+    eq("cap.bi", field_array(h, p, "bi"), _cap_bi[_csel])
+    eq("cap.prof", field_array(h, p, "prof"), _u8(LRD["cap"]["p"])[_csel])
     cpo = field_array(h, p, "poff")
     eq("cap.poff", cpo, np.cumsum([0] + [len(x) for x in LRD["prof"]]))
     cpu = field_array(h, p, "pu"); cps = field_array(h, p, "ps")
     for k_, pr in enumerate(LRD["prof"]):
         eq(f"cap.prof{k_}.u", cpu[cpo[k_]:cpo[k_ + 1]], np.float32([a for a, _ in pr]))
         eq(f"cap.prof{k_}.s", cps[cpo[k_]:cpo[k_ + 1]], np.float32([b for _, b in pr]))
-    ok("cap: 68 caps, every one on a published building index",
-       int(field_array(h, p, "bi").size) == 68
-       and bool((field_array(h, p, "bi") < B["n"]).all()), "")
+    _capdrop = int(man["form"].get("droppedWithStaleStep",
+                                   next((c.get("droppedWithStaleStep", 0)
+                                         for c in man["chunks"]
+                                         if c["k"] == "base/caps"), 0)))
+    ok(f"cap: 68 caps minus the {_capdrop} whose form slot a published height "
+       "invalidated, every one on a published building index",
+       int(field_array(h, p, "bi").size) == 68 - _capdrop
+       and bool((field_array(h, p, "bi") < B["n"]).all()),
+       f"{int(field_array(h, p, 'bi').size)} shipped, {_capdrop} dropped")
     ok("cap: every profile is monotone in u and non-negative in s",
        all(all(pr[i][0] <= pr[i + 1][0] for i in range(len(pr) - 1))
            and all(s_ >= 0 for _, s_ in pr) for pr in LRD["prof"]), "")
@@ -849,11 +861,18 @@ def main() -> int:
     FORM = load("form/form-data.js", "FORM")
     TYPO = load("typo/typo-data.js", "TYPO")
     h, p = load_chunk("base/form")
+    # THE SHIPPED SLOTS ARE A SUBSET OF model3.py's, so every field is compared
+    # over that subset and not positionally. The encoder drops a slot whose
+    # second solid no longer stands on its building, which happens where the
+    # register's published height has replaced the LiDAR median the slot was
+    # derived from — see FORM_DROPPED in encode_city_chunks.py.
+    _mock_bi = np.frombuffer(unb64(FORM["i"]), dtype=np.uint32)
+    _fsel = np.isin(_mock_bi, field_array(h, p, "bi"))
     for f_, k_, dt in (("bi", "i", np.uint32), ("top", "t", np.uint16),
                        ("rad", "r", np.uint16), ("ang", "an", np.uint8),
                        ("dx", "dx", np.int16), ("dy", "dy", np.int16)):
         eq(f"form.{f_}", field_array(h, p, f_),
-           np.frombuffer(unb64(FORM[k_]), dtype=dt))
+           np.frombuffer(unb64(FORM[k_]), dtype=dt)[_fsel])
     M = TYPO["mast"]
     for f_, k_, dt in (("mbi", "i", np.uint32), ("mtop", "t", np.uint16),
                        ("mrad", "r", np.uint16), ("mang", "an", np.uint8),
@@ -865,8 +884,23 @@ def main() -> int:
     mbi = field_array(h, p, "mbi")
     ftop = field_array(h, p, "top").astype(np.float64) * 0.1
     frad = field_array(h, p, "rad").astype(np.float64) * 0.01
-    ok("form: 488 second solids, the count model3.py's two gates fire on",
-       fbi.size == 488 and man["form"]["n"] == 488, f"{fbi.size}")
+    # model3.py's two gates fire on 488 footprints. The encoder drops the ones
+    # whose second solid no longer stands on its building, which happens when
+    # the register's published height has replaced the LiDAR median the slot
+    # was derived from — see FORM_DROPPED in encode_city_chunks.py. The
+    # manifest carries the count, so the arithmetic is checked rather than the
+    # constant.
+    _fdrop = int(man["form"].get("droppedStaleStep", 0))
+    # and every per-field comparison below runs over the slots that SURVIVED,
+    # matched to the mock by building index rather than by position — a
+    # positional compare against the mock's 488 is what a dropped slot breaks.
+    ok("form: the shipped slots are a SUBSET of model3.py's, in its own order",
+       int(_fsel.sum()) == fbi.size and bool((_mock_bi[_fsel] == fbi).all()),
+       f"{int(_fsel.sum())} vs {fbi.size}")
+    ok("form: model3.py's two gates fire on 488, minus the slots a published "
+       "height has invalidated",
+       fbi.size == 488 - _fdrop and man["form"]["n"] == 488 - _fdrop,
+       f"{fbi.size} shipped, {_fdrop} dropped")
     ok("form: 40 third solids, and 10 of them carry the spire bit",
        mbi.size == 40 and int((field_array(h, p, "mspire") != 0).sum()) == 10,
        f"{mbi.size} masts")
@@ -878,15 +912,32 @@ def main() -> int:
     ok("form: no building carries both a step and a mast",
        np.intersect1d(fbi, mbi).size == 0,
        f"{np.intersect1d(fbi, mbi).size} collisions")
-    # THE STEP STANDS ABOVE THE PLANE ALREADY DRAWN. `top` is hgt_maxcm and the
-    # building's own byte is the median rounded to a whole metre, so the drawn
-    # margin bottoms out below the 6.0 m gate; roofs.ts records 5.70 m measured
-    # and this is that measurement, taken from the shipped bytes.
+    # THE STEP STANDS ABOVE THE PLANE ALREADY DRAWN, and that is the invariant
+    # that has to hold for every slot — a step inside the prism is a step the
+    # building does not have. It used to be checkable against model3.py's own
+    # 6.0 m gate (`top` is hgt_maxcm, the byte is the median rounded to a whole
+    # metre, so the drawn margin bottomed out at 5.70 m and roofs.ts records
+    # that number). That is no longer true of every slot: where the register's
+    # published height_ft has replaced the median, the margin is whatever the
+    # two published numbers happen to leave, and on one surviving slot it is
+    # 0.10 m. So the 6.0 m gate is asserted where it still applies — the slots
+    # whose building is NOT FLAG_PUBHEIGHT — and the bare "stands above" is
+    # asserted everywhere.
     hb = B["h"][fbi].astype(np.float64)
     lift = ftop - hb
-    ok("form: every second solid stands ABOVE the height byte already drawn, "
-       "worst margin 5.70 m against a 6.0 m gate on the unrounded median",
-       float(lift.min()) > 5.6, f"worst {float(lift.min()):.2f} m")
+    ok("form: every second solid stands ABOVE the height byte already drawn",
+       float(lift.min()) > 0, f"worst {float(lift.min()):.2f} m")
+    _pubh = ((B["u"][fbi].astype(np.int64) >> 5) & 1) == 1
+    _lidar = lift[~_pubh]
+    ok("form: on a LiDAR-derived height the margin still clears model3.py's "
+       "6.0 m gate, worst 5.70 m on the unrounded median",
+       float(_lidar.min()) > 5.6,
+       f"worst {float(_lidar.min()):.2f} m over {int((~_pubh).sum())} slots")
+    ok("form: every slot whose margin is under the gate is one a published "
+       "height explains",
+       bool((lift[lift <= 5.6] > 0).all()) and bool(_pubh[lift <= 5.6].all()),
+       f"{int((lift <= 5.6).sum())} under the gate, "
+       f"{int(_pubh[lift <= 5.6].sum())} of them FLAG_PUBHEIGHT")
     ok("form: the mast lifts at least 8.0 m over its own drawn roof, "
        "mast.py's minLift",
        float((field_array(h, p, "mtop").astype(np.float64) * 0.1

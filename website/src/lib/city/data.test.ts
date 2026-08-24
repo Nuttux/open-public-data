@@ -581,10 +581,21 @@ d("the authored landmarks", () => {
     for (const p of pitches) expect(p).toBeGreaterThanOrEqual(0);
   });
 
-  it("gives 68 shaped caps, none of them the identity profile", async () => {
+  it("gives the shaped caps whose form slot survived, none of them the identity profile", async () => {
     const cd = await loaded();
     const t = await cd.landmarks();
-    expect(t!.caps.length).toBe(68);
+    // render-data.js authors 68. A cap is a profile swept around its building's
+    // SECOND SOLID, and nine of those slots were derived from a LiDAR median
+    // that the Tall Building Inventory's published height_ft has replaced — a
+    // step at 106.9 m inside a building now drawn 260.0 m tall is a step the
+    // Transamerica Pyramid does not have. Those slots are dropped and the
+    // eight caps sitting on them go with them: they gain their published
+    // height and lose a shaped top. The manifest carries both counts.
+    const dropped = (cd.manifest as unknown as {
+      form: { droppedStaleStep?: number };
+    }).form.droppedStaleStep ?? 0;
+    expect(dropped).toBe(9);
+    expect(t!.caps.length).toBe(60);
     // profile 0 is `prism` — the identity — and a cap that is a prism is not a cap
     expect(t!.caps.every((c) => c.profile !== 0)).toBe(true);
     expect(new Set(t!.caps.map((c) => c.profileName))).toEqual(
