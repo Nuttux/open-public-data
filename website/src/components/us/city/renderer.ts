@@ -463,6 +463,45 @@ export class CityRenderer {
     this.start();
   }
 
+  /**
+   * COMING TO REST IS A REPAINT, AND IT HAS TO SAY SO.
+   *
+   * MEASURED, 2026-08-24, Mission at block zoom, DPR 2: after a gentle drag
+   * the renderer reported `mode: "idle"` while `curSlot` was still `"lo"` —
+   * the motion buffer, painted at `DPR * MOTION_DPR` = 1.1 — and it stayed
+   * there for as long as the page was left alone. `drawImage` was stretching
+   * its 1,584 device px across 2,880: **a 1.818x upscale of every pixel on the
+   * glass, and 1.818 is exactly 1/MOTION_DPR.** Laplacian energy, which is what
+   * a glyph edge is made of, was 18.667 against 50.293 for the same camera
+   * re-rasterised — 2.69x. That is why the fonts were soft. A missing pass
+   * cannot blur text; text is drawn crisp at its own scale or it is scaled.
+   *
+   * `decideRaster`'s `sharpen` clause is correct and would have caught it on
+   * the very next frame:
+   *
+   *     if (!lowRes && (!isHiSlot || |k - 1| > 0.004)) -> need: true
+   *
+   * It was never evaluated, because there was never a next frame. `tick()`
+   * renders on `animating || dirty`; a transition to `idle` makes `advance()`
+   * return false, and every one of these sites left `dirty` false, so the loop
+   * did its last tick without rendering and then stopped.
+   *
+   * So the invariant is stated once, here, instead of four times by accident:
+   * **the renderer may not come to rest on a buffer it has not painted for the
+   * camera it is resting at.** Every path that ends a motion goes through this.
+   *
+   * `onDown` deliberately does not: pressing the pointer stops an inertia coast
+   * but it is not coming to rest — `onMove` or `onUp` always follows, and both
+   * repaint. Marking it dirty there would buy a full settled rasterisation at
+   * the start of every drag, which at block zoom is 1.8 s of stall for a frame
+   * nobody sees.
+   */
+  private restIdle(): void {
+    this.mode = "idle";
+    this.cam.thawBand();
+    this.dirty = true;
+  }
+
   private start(): void {
     if (this.running || this.disposed) return;
     this.running = true;
@@ -541,16 +580,14 @@ export class CityRenderer {
       this.cam.clamp(this.W, this.H, this.ledgerW);
       if (t >= 1) {
         this.glide = null;
-        this.mode = "idle";
-        this.cam.thawBand();
+        this.restIdle();
       }
       live = true;
     } else if (this.mode === "zoom") {
       const s = easeZoom(this.cam.scale, this.zTarget, dt);
       this.cam.zoomAt(s, this.zAnchor[0], this.zAnchor[1], this.W, this.H, this.ledgerW);
       if (now > this.settleAt && Math.abs(s - this.zTarget) / this.zTarget < 0.001) {
-        this.mode = "idle";
-        this.cam.thawBand();
+        this.restIdle();
       } else {
         live = true;
       }
@@ -564,8 +601,7 @@ export class CityRenderer {
       this.vy *= k;
       this.cam.panBy(this.vx * dt, this.vy * dt, this.W, this.H, this.ledgerW);
       if (Math.hypot(this.vx, this.vy) < INERT_STOP) {
-        this.mode = "idle";
-        this.cam.thawBand();
+        this.restIdle();
       } else {
         live = true;
       }
@@ -976,11 +1012,16 @@ export class CityRenderer {
     }
     this.dragging = false;
     if (Math.hypot(this.vx, this.vy) >= INERT_STOP) this.mode = "inertia";
-    else {
-      this.mode = "idle";
-      this.cam.thawBand();
-    }
-    this.start();
+    else this.restIdle();
+    /* `start()` kicks the loop but does NOT set `dirty`, so a drag that ended
+       below INERT_STOP went straight to `idle` and the loop ticked once
+       without rendering — leaving the 1.1-dpr motion buffer magnified on the
+       glass. See restIdle(). `invalidate()` is `dirty = true; start()`, a
+       strict superset, and it costs one settled rasterisation per gesture,
+       which is what `contentKey`'s own argument for freezing the data version
+       already assumes: "the buffer catches up on the settle, which is the one
+       frame that can afford it". */
+    this.invalidate();
   };
 
   private onWheel = (e: WheelEvent): void => {
