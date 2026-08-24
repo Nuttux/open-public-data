@@ -29,6 +29,7 @@ from __future__ import annotations
 import base64
 import gzip
 import json
+import math
 import pathlib
 import struct
 import sys
@@ -123,6 +124,12 @@ SOURCES = {
         "what": "Recreation and Parks Facilities — a structural or physical amenity within a property's boundaries",
         "rows": 2692,
         "dropped": "1,768 rows whose name the register also puts on another row (a category, not a name), then 387 more whose name is built only out of their own property's name and the file's own vocabulary of facility types",
+    },
+    "place_hero": {
+        "dataset": "base/heroes.json",
+        "publisher": "this map's own authored landmark register",
+        "what": "a hero the map draws at EMPHASIS and that no other register names. Sutro Tower is in none of the ten registers above, none of the 1,243 places already shipped, and not in USGS GNIS either, which carries Mount Sutro and Sutro Reservoir and not the tower. The hero record names its own anchoring register, its own year source and its measured footprint area and top; the row is read off those and `span` is this file's own ladder, max(sqrt(footprint area), the drawn height).",
+        "rows": 1,
     },
     "place_extent": {
         "derived_from": ["ynuv-fyni", "wv5m-vpq2"],
@@ -257,6 +264,91 @@ def contained_flags(pl: list[dict]) -> list[bool]:
     return out
 
 
+HERO_SRC = "base/heroes.json"
+
+
+def hero_rows(pl: list[dict]) -> list[dict]:
+    """A hero the map draws at EMPHASIS and never names gets a row of its own.
+
+    SUTRO TOWER IS IN NONE OF THE REGISTERS. It is the most visible object in
+    San Francisco — 210 m on a ridge, visible from most of the city on a clear
+    day — the map draws it as one of the twelve authored landmarks, and the
+    name lane had nothing to write. Checked, one by one, and this list is the
+    point of the paragraph:
+
+      * DataSF 97yj-54sx Article 10 landmarks and rzic-39gi — no
+      * DataSF ejht-vp5d Article 11 Rating — no
+      * DataSF gtr9-ntp6 Recreation and Parks Properties — no
+      * DataSF ib5c-xgwu Recreation and Parks Facilities — no
+      * DataSF nc68-ngbr City Facilities — no
+      * DataSF 5kya-mfst Tall Building Inventory — no; it is a TOWER, not a
+        building, and that register's own scope is buildings over 240 ft
+      * DataSF 6adp-a5yv Schools_College, 7e7j-59qk Schools,
+        65ik-7wqd POPOS — no
+      * US NPS National Register of Historic Places — no
+      * the 1,243 places already in `base/marks.json` — no
+      * **USGS GNIS Domestic Names, California** (in `cache/`, 222 rows in San
+        Francisco County) — no. GNIS carries `Mount Sutro` (Summit, id 253951)
+        and `Sutro Reservoir` (Reservoir, id 235840). It does not carry the
+        tower.
+
+    THE PUBLISHED SOURCE THAT DOES CARRY IT IS THE MAP'S OWN HERO REGISTER, and
+    that register is not a guess: `base/heroes.json` names, per hero, the
+    register that anchors it to its footprint (`an`), the register its year
+    comes from (`ys`), and its measured footprint area and top (`ms`). Every
+    field of the row below is read off that record — the name, the ground
+    anchor, the footprint index, the year — and `span` is the register's own
+    ladder applied unchanged, `max(sqrt(footprint area), the drawn height)`.
+    Nothing is authored here.
+
+    The rule is general and it adds exactly one row today: **a hero with no
+    place row gets one.** Add a hero and its name follows.
+    """
+    if not HEROES.exists():
+        return []
+    side = json.loads(HEROES.read_text())
+    # THE GROUND ANCHOR IS ON THE CHUNK, NOT THE SIDECAR. `ax`/`ay` are f32
+    # fields of base/heroes.qc — the footprint's own vertex mean, which is what
+    # part3.html takes a hero's ground anchor from — so they are read from
+    # there rather than approximated from anything else.
+    hq = (OUT / "base" / "heroes.qc")
+    ax = ay = None
+    if hq.exists():
+        b = hq.read_bytes()
+        hl, plen, _crc = struct.unpack("<III", b[4:16])
+        hdr = json.loads(b[16:16 + hl].decode())
+        poff = (16 + hl + 7) // 8 * 8
+        pay = b[poff:poff + plen]
+        f = {q["n"]: q for q in hdr["fields"]}
+        ax = struct.unpack_from(f"<{f['ax']['c']}f", pay, f["ax"]["o"])
+        ay = struct.unpack_from(f"<{f['ay']['c']}f", pay, f["ay"]["o"])
+    have = {q.get("bi") for q in pl if q.get("bi") is not None}
+    out = []
+    for q, h in enumerate(side["heroes"]):
+        if h["b"] in have:
+            continue
+        if ax is None:
+            raise SystemExit("base/heroes.qc is missing; a hero row needs its anchor")
+        ms = h["ms"]
+        out.append({
+            "n": h["n"],
+            "x": float(ax[q]),
+            "y": float(ay[q]),
+            "span": max(math.sqrt(float(ms["a"])), float(ms["t"])),
+            "bi": h["b"],
+            "y0": int(h["y"]),
+            "y0rule": "the register's own year",
+            "des": 0,
+            "ggb": 0,
+            "old": 0,
+            "src": HERO_SRC,
+            "spanFrom": "hero",
+            "fpBy": None, "sid": None, "nrhpListed": None,
+            "a11": None, "yrField": None,
+        })
+    return out
+
+
 def order_places(pl: list[dict]) -> list[dict]:
     """THE ORDER IN THIS FILE IS THE ORDER THE INK BUDGET IS SPENT IN.
 
@@ -323,8 +415,11 @@ def order_places(pl: list[dict]) -> list[dict]:
 
 def main() -> int:
     doc = json.loads(SRC_IN.read_text())
-    pl = order_places(doc["places"])
-    rep = doc["report"]
+    extra = hero_rows(doc["places"])
+    pl = order_places(doc["places"] + extra)
+    rep = dict(doc["report"])
+    if extra:
+        rep["from_hero_register"] = [q["n"] for q in extra]
 
     srcs = sorted({p["src"] for p in pl})
     six = {s: i for i, s in enumerate(srcs)}
