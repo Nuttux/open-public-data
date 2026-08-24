@@ -39,9 +39,26 @@ trap cleanup EXIT
 git -C "$REPO" archive HEAD "$DATA_REL" | tar -x -C "$BASELINE"
 
 # 2. Regenerate the exports (Paris) into the live tree.
+#
+# COULD-NOT-CHECK IS NOT THE SAME AS A NUMBER CHANGED, and conflating them is
+# how this gate lost its authority. A missing mart, an expired credential or a
+# dropped network all used to surface as "a published number changed — review
+# before pushing", which is a false accusation; the reader learns the gate
+# cries wolf and reaches for SKIP_PARITY=1 reflexively, which is exactly what
+# happened on 2026-08-24 when dbt_paris_marts.mart_budget_nature returned 404
+# and blocked a push that touched no Paris file at all.
+#
+# So a failure to REGENERATE exits 3 and says so. Only a real difference
+# between the regenerated output and the committed baseline exits 1.
 for s in "${scripts[@]}"; do
   echo "→ regenerating $s"
-  "$PY" "$EXPORT_DIR/$s" --city paris
+  if ! "$PY" "$EXPORT_DIR/$s" --city paris; then
+    echo "✗ COULD NOT CHECK: $s failed to run, so this gate has no opinion on" >&2
+    echo "  whether a published number changed. This is not a parity failure." >&2
+    echo "  Usual causes: a mart that does not exist in BigQuery, expired" >&2
+    echo "  credentials, or no network. Fix the cause or run the gate in CI." >&2
+    exit 3
+  fi
 done
 
 # 2b. Apply the grand-public label pass. The real pipeline (export_all.py) runs
@@ -49,7 +66,10 @@ done
 # name_original. The gate must mirror it — otherwise every re-export reverts to
 # raw M57 jargon and looks like a regression against the (friendly) baseline.
 echo "→ applying friendly labels (post)"
-"$PY" "$EXPORT_DIR/../audit/apply_friendly_labels.py"
+if ! "$PY" "$EXPORT_DIR/../audit/apply_friendly_labels.py"; then
+  echo "✗ COULD NOT CHECK: the friendly-label pass failed; see above." >&2
+  exit 3
+fi
 
 # 3. Tolerant compare regenerated (live) vs committed baseline.
 rc=0
