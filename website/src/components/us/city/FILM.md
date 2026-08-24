@@ -1986,3 +1986,106 @@ that is the one thing to look at on the demo machine, and `window.__cityFilm
 
 **The Hunters Point 2014 → 2015 figure in these notes predates the encoder
 re-run** and is not re-quoted anywhere in §17.
+
+### 17.7 Watched, and what the sheets show
+
+The rule this project keeps re-learning is that a single still cannot show a
+stutter. `m1play.py` could not deliver on this tree tonight — it plays in wall
+time and takes an ELEMENT screenshot, and with four agents recompiling, the
+execution context is destroyed by a Fast Refresh roughly every two minutes and
+Playwright's stability wait times out on a canvas that is being repainted. Three
+consecutive runs died. `.parity/m1watch.py` replaces it for this purpose: it
+seeks the film's own clock the way `b3seq.py` does, takes a full-page CLIP so
+there is no stability wait, and **re-boots one page and carries on at the frame
+it was on** instead of restarting a seven-minute sweep.
+
+**23 frames across the first 62 s of the 134 s film**, `out-m1/half-sheet.png`,
+`forceSpare=false` so the camera is judged as authored:
+
+- **the year line is monotone the whole way** — 1906, 1906, 1910, 1911, 1912,
+  1912, 1915, 1917, 1917, 1918, 1919, 1927 — which is the thing the predecessor
+  block fixed and it is still fixed. No sample goes backwards.
+- **the chrome survived the `setState` change.** The title card, the copy plate,
+  every citation link, the two buttons and the progress hairline are present and
+  correct on every frame, including the frames where nothing discrete had changed
+  for two seconds. This is what a per-frame `setState` was buying and it was
+  buying nothing.
+- **shot 4's City Hall block at z = 28 is where the buildings agent's brief
+  lives.** Grey prisms, flat caps, one purple hero. It is the frame Daniel means
+  by *"the buildings next to it are awful"* and nothing in these files can help
+  it.
+- **one frame in twenty-three came back nearly blank** — cream ground, correct
+  copy plate, no city. It is the frame immediately after a re-boot, so the most
+  likely reading is a chunk set that had not landed rather than a render defect,
+  and it is recorded rather than claimed. Worth one look on a quiet tree.
+
+The whole-city frames now carry visible green at 1906, which they did not this
+morning: that is §17.1 on the frame.
+
+**The two camera moves, eight frames each** — `out-m1/watch-into-5-tunnel-sheet
+.png` (shot 4 → 5, z 28 → 2.6, a 10.8× PULL-OUT, the most expensive class of
+move in §15.1's table) and `out-m1/watch-into-8-treasure-sheet.png` (shot 7 → 8,
+z 1.10 → 2.55, a push-in):
+
+- **both are monotone in scale.** No frame in either shows less of the city than
+  the frame before on the pull-out, or more on the push-in. There is no lurch and
+  no backtrack.
+- **the band crossing does not jump the camera.** The tunnel move crosses step 2
+  → step 1 between frames 2 and 3 and the ground goes on being the same ground —
+  which is what `renderer.ts`'s `projection.setBand()` at the top of `render()`
+  and the band cross-fade are for, and they are working.
+- **the copy plate changes on its own beat, not on the camera's**, and it changes
+  once inside each move rather than flickering — which is what §17.5's
+  `setState` gate does on a frame sheet.
+- and the shot-8 sheet is what turned up §17.8.
+
+### 17.8 `skipBridgeGhost` is computed every frame and read by nobody
+
+Frame-sequencing the move into shot 8 is what turned this up, which is the whole
+argument for frame-sequencing: it is invisible on a still of the shot itself and
+obvious on the frame before it.
+
+`out-m1/watch-into-8-treasure-00.png`, t = 81,800 ms, map year 1937 — **two Bay
+Bridges on one frame.** An ochre suspension structure with towers running from
+Rincon Hill part-way across, and under and past it a flat grey line continuing
+the full width of the bay, past Treasure Island, to the far shore. They do not
+even share an alignment for their whole length. `out-m1/bay-00.png` is the crop.
+
+The grey one is the street right-of-way file. `streets.ts` §makeSkip says so in
+the open:
+
+> *"The Bay Bridge's own alignment is IN the 2025 right-of-way file, so it is
+> drawn across open water in 1906, and shot 8's subject — the bridge arriving in
+> 1936 — is a line that firms up rather than a line that appears. Nothing here
+> decides anything: the hook exists, `gen/` ships it empty and the explorer never
+> sets it."*
+
+`film.ts` answers exactly that, and its answer is wired to nothing:
+
+    grep -rn "skipBridgeGhost" src/
+      film.ts:479   the comment explaining it
+      film.ts:784   the field on FilmState
+      film.ts:1187  the assignment, computed every frame
+
+**Three hits, and all three are the producer.** No consumer anywhere in `src/`.
+This is BRIEF.md §8's pattern verbatim — *"four whole passes were written, tested
+and called by nobody"* — and it has been paying for a boolean on every frame of
+the film since it landed.
+
+**What wiring it needs, and it is not in these files.** Two ends, and each is
+owned elsewhere:
+
+1. **the CNNs.** `makeSkip(cnns)` takes the centreline ids to suppress and `gen/`
+   ships that list EMPTY. Somebody has to emit the Bay Bridge's own CNNs into it
+   — a pipeline pass, `pipeline/scripts/us_sf_city/`.
+2. **the call.** `scene.ts` / `streets.ts` must ask the film for the flag on the
+   frames it is true, the same way `scene.filmHide` already takes the film's
+   hide set. `FilmState.skipBridgeGhost` is already the right shape and already
+   on the right clock — the film clock, not the year, *"because the year reaches
+   1936 before the build act runs and the ghost would beat the film to its own
+   subject."*
+
+Until both land, shot 8 animates a bridge the frame is already showing, which is
+the one thing that shot cannot afford. It is not a regression from tonight and it
+is not urgent for the demo — but it IS the kind of thing Daniel will see, because
+the bridge is the thing he is looking at.
