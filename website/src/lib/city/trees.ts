@@ -645,6 +645,54 @@ export interface VegResult {
  * layer, whose key already carries the year and the tier, because a tree has a
  * year and a blob has a zoom.
  */
+/**
+ * §VPROBE — one counter per REASON a crown was not drawn.
+ *
+ * `terrain.ts` §GPROBE's pattern, for the same reason: a claim about which
+ * gate is costing the frame its midtones has to be a COUNT taken out of the
+ * running page, not an argument about a constant. Off by default, dev only,
+ * parked on `globalThis` so the parity harness can switch it on through the
+ * renderer hook and read it back without a source edit.
+ */
+export const VPROBE: {
+  on: boolean;
+  z: number;
+  k: number;
+  /** canopy cells that reached the gates, after the dissolve */
+  canSeen: number;
+  /** dropped by BLOB_MIN_M2 */
+  canArea: number;
+  /** dropped by BLOB_MIN_M2 having passed the reference's OWN gate (rp >= 0.9) */
+  canAreaLost: number;
+  /** dropped by rp < 0.9 — the reference's gate, and the only one it has */
+  canRp: number;
+  /** dropped by the frame cull */
+  canOff: number;
+  canDrawn: number;
+  /** street trees that reached the gates, after the dissolve and the year */
+  trSeen: number;
+  /** dropped by this file's `wpx < 1.2` */
+  trFloor: number;
+  /** would be dropped by the REFERENCE's `rp < 0.7`, i.e. `wpx < 2.8` */
+  trRefFloor: number;
+  trOff: number;
+  trDrawn: number;
+} = {
+  on: false, z: 0, k: 0,
+  canSeen: 0, canArea: 0, canAreaLost: 0, canRp: 0, canOff: 0, canDrawn: 0,
+  trSeen: 0, trFloor: 0, trRefFloor: 0, trOff: 0, trDrawn: 0,
+};
+function vprobeReset(z: number, k: number) {
+  Object.assign(VPROBE, {
+    z, k,
+    canSeen: 0, canArea: 0, canAreaLost: 0, canRp: 0, canOff: 0, canDrawn: 0,
+    trSeen: 0, trFloor: 0, trRefFloor: 0, trOff: 0, trDrawn: 0,
+  });
+}
+if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+  (globalThis as { __cityVPROBE?: typeof VPROBE }).__cityVPROBE = VPROBE;
+}
+
 export function drawVeg(
   f: Frame,
   t: TerrainField,
@@ -661,6 +709,7 @@ export function drawVeg(
   const wCan = WFLG.blobs ? bandW(z, VZ_C0, VZ_C1) : 0;
   const wTree = WFLG.trees ? bandW(z, VZ_T0, VZ_T1) : 0;
   const year = f.year;
+  if (VPROBE.on) vprobeReset(z, cam.scale);
 
   /* ── NO `proj()` INSIDE EITHER LOOP ────────────────────────────────────
      `proj()` returns a NEW two-element array and does four multiplies of its
@@ -720,8 +769,15 @@ export function drawVeg(
       for (let i = c.cellKey.length - 1; i >= 0; i--) {
         if (vrnd(base + i) >= wCan) continue;
         const areaM2 = (c.area[i] / 255) * amax;
-        if (areaM2 < BLOB_MIN_M2) continue;
         const rp = blobRadius(areaM2) * pxm;
+        if (VPROBE.on) {
+          VPROBE.canSeen++;
+          if (areaM2 < BLOB_MIN_M2) {
+            VPROBE.canArea++;
+            if (rp >= 0.9) VPROBE.canAreaLost++;
+          } else if (rp < 0.9) VPROBE.canRp++;
+        }
+        if (areaM2 < BLOB_MIN_M2) continue;
         if (rp < 0.9) continue;
         const w = treeWorld(c.cellKey[i], c.pos[i], grid);
         const pz = t.elevM(w.x, w.y) * zex;
@@ -730,7 +786,10 @@ export function drawVeg(
         const sc = rp / VSPR_R;
         const dw = VSPR_W * sc,
           dh = VSPR_H * sc;
-        if (X + dw < -8 || X - dw > W + 8 || Y < -8 || Y - dh > H + 8) continue;
+        if (X + dw < -8 || X - dw > W + 8 || Y < -8 || Y - dh > H + 8) {
+          if (VPROBE.on) VPROBE.canOff++;
+          continue;
+        }
         const si = Math.min(
           sheet.n - 1,
           canopy0 + (areaM2 > amax * 0.55 ? 1 : 0),
@@ -747,6 +806,7 @@ export function drawVeg(
           dh,
         );
         nB++;
+        if (VPROBE.on) VPROBE.canDrawn++;
       }
     }
     ctx.restore();
@@ -800,13 +860,20 @@ export function drawVeg(
           const wy = byw + (((pos / grid.q) | 0) + 0.5) * step;
           const big = c.big[j] !== 0;
           const wpx = big ? wpxB : wpxS;
+          if (VPROBE.on) {
+            VPROBE.trSeen++;
+            if (wpx < 1.2) VPROBE.trFloor++;
+            if (wpx < 2.8) VPROBE.trRefFloor++;
+          }
           if (wpx < 1.2) continue;
           const X = (cf.ax * wx + cf.ay * wy - cam.cx) * k + W2;
           const Y = H2 - (cf.bx * wx + cf.by * wy + pz - cam.cy) * k;
           const hpx = (wpx / VSPR_W) * VSPR_H;
           const ay = (wpx / VSPR_W) * VSPR_AY;
-          if (X + wpx < -8 || X - wpx > W + 8 || Y < -8 || Y - hpx > H + 8)
+          if (X + wpx < -8 || X - wpx > W + 8 || Y < -8 || Y - hpx > H + 8) {
+            if (VPROBE.on) VPROBE.trOff++;
             continue;
+          }
           const si = Math.min(sheet.n - 1, (c.form[j] & 3) * 2 + (big ? 1 : 0));
           ctx.drawImage(
             sheet.canvas,
@@ -820,6 +887,7 @@ export function drawVeg(
             hpx,
           );
           nT++;
+          if (VPROBE.on) VPROBE.trDrawn++;
           if (yy === 0) nU++;
         }
       }

@@ -4101,3 +4101,60 @@ honest — a 200 m frame contains few registered places — but the consequence 
 that **the closer a reader gets to a building, the less the map will tell them
 about it**, and at the tightest zoom the frame carries no name at all
 (`marina-5-bld`, `lastStats.labels = 0`).
+
+### 20.4 `base/surround-coast.json` was 404 — the encoder shipped, the file never did
+
+The pattern this project keeps finding is a constant that exists in production
+and nowhere in the source, or a pass written and called by nobody. **This is
+that pattern one level out: an encoder written, documented, asserted against
+the shipped grid, and its output never committed.**
+
+`data.ts` `surroundCoast()` fetches `base/surround-coast.json`. In the running
+page it answered:
+
+    Error: base/surround-coast.json: HTTP 404
+
+and `scene.surroundCoast` was `false` on every frame. Three readers were
+therefore dead:
+
+1. **`TerrainField.coastFix` was null**, so `maskAt` was the raw `txuc-3kzm`
+   mask — the boundary of the **City and County** of San Francisco, a LEGAL
+   line that runs kilometres into the Pacific and straight across the Golden
+   Gate. `terrain.ts` documents the consequence in its own doc comment and it
+   was live: **5,433 city DEM cells of open water painted in the city's ground
+   tone.** That is the straight tan edge in the water at the south-west of the
+   opening frame, and it is why the strait did not read as a strait — the
+   ground ran across the Gate from the Presidio to Marin with the bridge drawn
+   over dry land.
+2. **`drawSurround` was handed `rings = null`**, so the surround had no coast
+   to clip at and BUGS §5's *"staircase of raster squares"* — ranked the
+   largest single flaw in the opening frame — had nothing to cut it.
+3. **`surroundOrder`'s reach cells were not added**, which is the sliver of bay
+   plate between the surround fill and the ring.
+
+`pipeline/scripts/us_sf_city/emit_surround_coast.py` builds it out of
+`scratchpad/sf-city-anim/coast/coast-data.js`, which is in the tree, and its
+own header documents all three arrays and the 4,787-cell figure. It had simply
+never been run into `website/public/data/`. One command:
+
+    12 rings, 3,168 vertices, 3,017 reach cells, 5,433 city cells offshore,
+    worst quantiser error 0.699 m,  67,588 bytes (20,130 gzipped)
+
+MEASURED at the whole-city camera, `.parity/g2shot.py`, before and after:
+
+| | ground cells drawn |
+|---|---:|
+| before | 43,186 |
+| after | **37,754** |
+
+−5,432, which is the sidecar's own 5,433 offshore bits to within one cell that
+is off the frame. Pictures: `out-g2/base-city.png` against
+`out-g2/coastfix-city.png` — the Golden Gate is water in the second one.
+
+**And it moves `cam.base`**, because `fitCity` walks the same mask: the
+whole-city fit is measured over the city's real extent instead of over its
+legal one. Any harness that reads `cam.base` once and then shoots a sweep will
+be off; `g2shot.py` re-reads it per camera for that reason.
+
+**No client file was changed for this.** Every reader was already written and
+correct.
