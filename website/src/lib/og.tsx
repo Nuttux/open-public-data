@@ -22,11 +22,40 @@ export const ogFmtMnFr = (n: number, digits = 0) =>
 
 /** "1,25 Md€" / "312,4 M€" / "46 k€" / "950 €" — the entity-OG string form. */
 export const ogFmtEur = (n: number) => {
-  if (n >= 1e9) return `${(n / 1e9).toFixed(2).replace(".", ",")} Md€`;
-  if (n >= 1e6) return `${(n / 1e6).toFixed(1).replace(".", ",")} M€`;
+  // Decimals drop once the magnitude makes them rounding rather than
+  // information — at hundreds of millions, the tenth is noise.
+  if (n >= 1e9) return `${(n / 1e9).toFixed(n >= 1e10 ? 0 : 2).replace(".", ",")} Md€`;
+  if (n >= 1e6) {
+    const m = n / 1e6;
+    return `${m >= 100 ? Math.round(m).toLocaleString("fr-FR") : m.toFixed(1).replace(".", ",")} M€`;
+  }
   if (n >= 1e3) return `${Math.round(n / 1000).toLocaleString("fr-FR")} k€`;
   return `${n.toLocaleString("fr-FR")} €`;
 };
+
+/** USD, en-US grouping — San Francisco cards. */
+export const ogFmtUsd = (n: number) => {
+  if (n >= 1e9) return `$${(n / 1e9).toFixed(n >= 1e10 ? 0 : 2)}B`;
+  if (n >= 1e6) return `$${(n / 1e6).toFixed(n / 1e6 >= 100 ? 0 : 1)}M`;
+  if (n >= 1e3) return `$${Math.round(n / 1e3).toLocaleString("en-US")}k`;
+  return `$${Math.round(n).toLocaleString("en-US")}`;
+};
+
+/** BRL, pt-BR grouping and scale words — Recife cards.
+ *  Decimals are dropped once the magnitude makes them noise: at hundreds of
+ *  millions the tenth of a million is rounding, not information. */
+export const ogFmtBrl = (n: number) => {
+  if (n >= 1e9) return `R$ ${(n / 1e9).toFixed(n >= 1e10 ? 0 : 1).replace(".", ",")} bi`;
+  if (n >= 1e6) {
+    const m = n / 1e6;
+    return `R$ ${(m >= 100 ? Math.round(m).toLocaleString("pt-BR") : m.toFixed(1).replace(".", ","))} mi`;
+  }
+  if (n >= 1e3) return `R$ ${Math.round(n / 1e3).toLocaleString("pt-BR")} mil`;
+  return `R$ ${Math.round(n).toLocaleString("pt-BR")}`;
+};
+
+export const ogFmtEn = (n: number) => n.toLocaleString("en-US");
+export const ogFmtPt = (n: number) => n.toLocaleString("pt-BR");
 
 export type OgStat = {
   label: string;
@@ -108,7 +137,7 @@ export function ogCard(opts: {
               fontWeight: 800,
             }}
           >
-            FO
+            Q
           </div>
           <div style={{ display: "flex" }}>Qipu · {route}</div>
         </div>
@@ -127,7 +156,13 @@ export function ogCard(opts: {
         </div>
         <div
           style={{
-            display: "flex",
+            // -webkit-box + line clamp, not flex: a long headline (a Recife
+            // procurement "objeto", a verbose contract title) would otherwise
+            // run straight through the stats row below it.
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
             marginTop: 14,
             fontSize: titleSize,
             fontWeight: 800,

@@ -1,0 +1,226 @@
+{
+ "_note": "Illustration par thème pour les cartes de partage (fiches sans photo propre). Chaque image est une photo déjà utilisée dans l'app, avec son crédit d'origine.",
+ "themes": {
+  "bibliotheque": {
+   "theme": "bibliotheque",
+   "file": "/img/themes/bibliotheque.jpg",
+   "lieu": "Médiathèque James Baldwin",
+   "ville": "Paris",
+   "type": "Bibliothèque",
+   "credit": {
+    "auteur": "—",
+    "licence": "—",
+    "source": "Wikipédia",
+    "url": "https://fr.wikipedia.org/wiki/M%C3%A9diath%C3%A8que_James-Baldwin"
+   }
+  },
+  "parcs": {
+   "theme": "parcs",
+   "file": "/img/themes/parcs.jpg",
+   "lieu": "Parc Montsouris",
+   "ville": "Paris",
+   "type": "Parc",
+   "credit": {
+    "auteur": "GFreihalter",
+    "licence": "CC BY-SA 4.0",
+    "source": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/wiki/File:Paris_14e_Parc_Montsouris_Lac_970.jpg"
+   }
+  },
+  "sport": {
+   "theme": "sport",
+   "file": "/img/themes/sport.jpg",
+   "lieu": "Piscine Georges-Vallerey",
+   "ville": "Paris",
+   "type": "Piscine",
+   "credit": {
+    "auteur": "Guilhem Vellut from Paris, France",
+    "licence": "CC BY 2.0",
+    "source": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/wiki/File:Piscine_Georges_Vallerey,_Paris_8_April_2017.jpg"
+   }
+  },
+  "culture": {
+   "theme": "culture",
+   "file": "/img/themes/culture.jpg",
+   "lieu": "Musée Carnavalet",
+   "ville": "Paris",
+   "type": "Musée",
+   "credit": {
+    "auteur": "—",
+    "licence": "—",
+    "source": "Wikipédia",
+    "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Carnavalet"
+   }
+  },
+  "pompiers": {
+   "theme": "pompiers",
+   "file": "/img/themes/pompiers.jpg",
+   "lieu": "Fire Station #18",
+   "ville": "San Francisco",
+   "type": "Fire station",
+   "credit": {
+    "auteur": "Bing",
+    "licence": "UNVERIFIED",
+    "source": "sf-fire.org",
+    "url": "https://sf-fire.org/fire-station/san-francisco-fire-station-18"
+   }
+  },
+  "administration": {
+   "theme": "administration",
+   "file": "/img/themes/administration.jpg",
+   "lieu": "Mairie du 20e",
+   "ville": "Paris",
+   "type": "Mairie",
+   "credit": {
+    "auteur": "Chabe01",
+    "licence": "CC BY-SA 4.0",
+    "source": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/wiki/File:Mairie_20e_arrondissement_Paris_4.jpg"
+   }
+  },
+  "port": {
+   "theme": "port",
+   "file": "/img/themes/port.jpg",
+   "lieu": "Fisherman's Wharf",
+   "ville": "San Francisco",
+   "type": "Waterfront district",
+   "credit": {
+    "auteur": "King of Hearts",
+    "licence": "CC BY-SA 4.0",
+    "source": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/wiki/File:Fisherman%27s_Wharf_San_Francisco_January_2013_002.jpg"
+   }
+  },
+  "eau": {
+   "theme": "eau",
+   "file": "/img/themes/eau.jpg",
+   "lieu": "Southeast Water Pollution Control Plant",
+   "ville": "San Francisco",
+   "type": "Treatment plant",
+   "credit": {
+    "auteur": "Bing",
+    "licence": "UNVERIFIED",
+    "source": "carollo.com",
+    "url": "https://carollo.com/solutions/san-francisco-southeast-water-pollution-control-plant-headworks-project/"
+   }
+  },
+  "marche": {
+   "theme": "marche",
+   "file": "/img/themes/marche.jpg",
+   "lieu": "Marché Saint-Quentin",
+   "ville": "Paris",
+   "type": "Marché couvert",
+   "credit": {
+    "auteur": "—",
+    "licence": "—",
+    "source": "Wikipédia",
+    "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Saint-Quentin"
+   }
+  },
+  "urbain": {
+   "theme": "urbain",
+   "file": "/img/themes/urbain.jpg",
+   "lieu": "Place de la République",
+   "ville": "Paris",
+   "type": "Place",
+   "credit": {
+    "auteur": "—",
+    "licence": "—",
+    "source": "Wikipédia",
+    "url": "https://fr.wikipedia.org/wiki/Place_de_la_R%C3%A9publique_(Paris)"
+   }
+  },
+  "sante": {
+   "theme": "sante",
+   "file": "/img/themes/sante.jpg",
+   "lieu": "Zuckerberg San Francisco General Hospital",
+   "ville": "San Francisco",
+   "type": "Hospital",
+   "credit": {
+    "auteur": "9yz",
+    "licence": "CC BY-SA 4.0",
+    "source": "Wikimedia Commons",
+    "url": "https://commons.wikimedia.org/wiki/File:Zuckerberg_San_Francisco_General_Hospital.jpg"
+   }
+  },
+  "transport": {
+   "theme": "transport",
+   "file": "/img/themes/transport.jpg",
+   "lieu": "Balboa Park Station / Green Yard",
+   "ville": "San Francisco",
+   "type": "Rail yard / station",
+   "credit": {
+    "auteur": "Pi.1415926535",
+    "licence": "CC BY-SA 4.0",
+    "source": "Wikimedia Commons",
+    "url": ""
+   }
+  },
+  "br_education": {
+   "theme": "br_education",
+   "file": "/img/themes/br_education.jpg",
+   "lieu": "Escola Municipal Darcy Ribeiro, Recife",
+   "ville": "Recife",
+   "type": "—",
+   "credit": {
+    "auteur": "—",
+    "licence": "—",
+    "source": "Prefeitura do Recife / enrichissement éditorial",
+    "url": ""
+   }
+  },
+  "br_parcs": {
+   "theme": "br_parcs",
+   "file": "/img/themes/br_parcs.jpg",
+   "lieu": "Parque Dona Lindu, Recife",
+   "ville": "Recife",
+   "type": "—",
+   "credit": {
+    "auteur": "—",
+    "licence": "—",
+    "source": "Prefeitura do Recife / enrichissement éditorial",
+    "url": ""
+   }
+  },
+  "br_sante": {
+   "theme": "br_sante",
+   "file": "/img/themes/br_sante.jpg",
+   "lieu": "Unidade de Saúde Bidu Krause, Recife",
+   "ville": "Recife",
+   "type": "—",
+   "credit": {
+    "auteur": "—",
+    "licence": "—",
+    "source": "Prefeitura do Recife / enrichissement éditorial",
+    "url": ""
+   }
+  },
+  "br_urbain": {
+   "theme": "br_urbain",
+   "file": "/img/themes/br_urbain.jpg",
+   "lieu": "Praça Gregório Bezerra, Recife",
+   "ville": "Recife",
+   "type": "—",
+   "credit": {
+    "auteur": "—",
+    "licence": "—",
+    "source": "Prefeitura do Recife / enrichissement éditorial",
+    "url": ""
+   }
+  },
+  "br_sport": {
+   "theme": "br_sport",
+   "file": "/img/themes/br_sport.jpg",
+   "lieu": "Geraldão, Recife",
+   "ville": "Recife",
+   "type": "—",
+   "credit": {
+    "auteur": "—",
+    "licence": "—",
+    "source": "Prefeitura do Recife / enrichissement éditorial",
+    "url": ""
+   }
+  }
+ }
+}

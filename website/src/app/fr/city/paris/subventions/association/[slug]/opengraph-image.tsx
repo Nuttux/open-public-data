@@ -1,11 +1,12 @@
-import { renderAssociationOg, ogSize } from "@/lib/og/association-card";
+import { OG_CARD_SIZE } from "@/lib/og/card";
+import { renderParisAssociationOg } from "@/lib/og/fr-paris-cards";
 
 export const runtime = "nodejs";
-export const alt = "Association — Qipu";
-export const size = ogSize;
+export const size = OG_CARD_SIZE;
 export const contentType = "image/png";
+export const alt = "Association subventionnée — Qipu";
 
 export default async function OG({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  return renderAssociationOg("paris", slug);
+  return renderParisAssociationOg(slug);
 }

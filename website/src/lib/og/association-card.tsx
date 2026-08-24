@@ -69,7 +69,7 @@ export async function renderAssociationOg(city: string, slug: string) {
               fontWeight: 800,
             }}
           >
-            FO
+            Q
           </div>
           Qipu
         </div>
