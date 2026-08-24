@@ -4670,3 +4670,76 @@ a concession stop being lawns. `out-g2/cls-blk-civic.png` is the picture.
 still landing under both halves of the ablation, so its control moved more
 than the treatment did and the row is discarded rather than quoted. Every
 other row's control is a byte-identical pair.
+
+### 21.12 The tie-break, and the three names it puts back on the wide frame
+
+§21.7 measured the ranking. The array order **is** the ranking — `placeNames`
+walks each class in the order it is handed and the grid is first-come — and
+`build_places.py` hands it over sorted by span descending. Span order alone is
+what produced this, and every line of it is that rule working exactly as
+written:
+
+| refused | span | to | span | |
+|---|---|---|---|---|
+| San Francisco City Hall | 106 | War Memorial Complex | 149 | the block across Van Ness |
+| Ferry Building | 101 | Alcoa Building | 116 | 400 m away in the Financial District |
+| Coit Tower | 23 | — | — | row 1,437; the grid is full long before the walk reaches it |
+
+**The tie-break added is not a list of famous buildings.** It is a second
+published register on this same site: `base/heroes.json` — the buildings the
+map spends its *emphasis* on, drawn up to five times their measured size
+precisely because they would otherwise be too small to recognise. A place that
+resolves to one of those footprints is both the most certainly-a-landmark thing
+the frame can name and the thing most likely to be under the reader's eye,
+because it is the largest object drawn. `emit_places.py` `order_places` lifts
+those rows to the front **stably**, so everything else keeps span order
+exactly, and the building indices come out of the shipped register: add or
+remove a hero and the ranking follows with no edit.
+
+Eleven of the 2,192 rows move (Sutro Tower's footprint carries no place row),
+and six of the eleven are in the un-designated class — the Opera House, the
+Palace of Fine Arts Theater, `Conservatory Storage`, the Murphy and Dutch
+Windmills, the Japanese Pagoda. That is the same rule applied to the same
+question and it is declared rather than avoided; at the whole-city camera all
+six are below `PLACE_MIN_PX` anyway, so what it changes is the block frame,
+where it names the windmills and the pagoda the map is drawing.
+
+Measured, same camera, same harness (`.parity/g3/why.py`, `home-1-city`):
+
+|  | before | after |
+|---|---|---|
+| designated written | 8 | 8 |
+| `San Francisco City Hall` | `grid` | **written** |
+| `Coit Tower` | `grid` | **written** |
+| `Ferry Building` | `grid` | **written** |
+| designated lost to `grid` | 200 | 180 |
+
+The whole-city frame of San Francisco was naming `Maud's`, the `Alcoa Building`
+and the `Chronicle Building`. It now names **Coit Tower, the Ferry Building and
+San Francisco City Hall**. `home-1-city.prod.why.png`. At district the same
+three come in (City Hall was `grid`, Coit Tower was `ink`); at block City Hall
+comes in; the two closest cameras are unchanged, and nothing was lost that a
+stranger would look for.
+
+### 21.13 What this block did NOT fix, with the measurement, so it is not re-derived
+
+- **GOLDEN GATE PARK is still not named at any zoom.** `Beach Chalet` still
+  takes its box: the chalet is a restaurant *inside* the park and it carries an
+  Article 10 designation, so it runs in the first lane, before the hood
+  capitals. The honest fix is **containment** — a place whose extent lies
+  inside another named place's extent is a detail of it, not a competitor with
+  it — and that needs the registry rings, which live in `build_places.py`'s
+  own fetch and not in the shipped chunk. Named, not done.
+- **`Ocean Beach` is not a row in any of the seven registers** (§21.5). It is
+  also not one of the 41 neighbourhood capitals. The west edge of the city
+  carries `GREAT HWY` and no beach.
+- **The Transamerica Pyramid, the Old Mint and the Conservatory of Flowers are
+  not in the places register under those names.** The Old Mint and the
+  Conservatory are *heroes* — the map draws them at emphasis and never names
+  them. The Conservatory's footprint carries the place name `Conservatory
+  Storage`.
+- **`PLACE_MIN_PX = 10` is still a production invention with no counterpart in
+  the reference.** §21.6 refutes the theory that it is what loses the famous
+  names, and §21.3 counts what it does turn away. Left as it is, on the record.
+- **The park wash is a flat slab over the city** (§21.2), and it is the parks
+  pass's, not this file's. Filed in BUGS with its ablation numbers.

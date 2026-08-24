@@ -161,9 +161,55 @@ FIELD_SOURCE = {
 }
 
 
+HEROES = OUT / "base" / "heroes.json"
+
+
+def order_places(pl: list[dict]) -> list[dict]:
+    """THE ORDER IN THIS FILE IS THE ORDER THE INK BUDGET IS SPENT IN.
+
+    `labels.ts` `placeNames` walks each class in the order it is handed, and
+    the collision grid is first-come, so the array order IS the ranking. What
+    `build_places.py` hands over is sorted by `span` descending, and that rule
+    — *the biggest thing wins* — is what the whole-city frame of San Francisco
+    was measured doing (DRAW.md §21.6):
+
+        written   Golden Gate Bridge · War Memorial Complex · Beach Chalet ·
+                  Alcoa Building · Palace Of Fine Arts · Mission High School ·
+                  Chronicle Building · Maud's
+        refused   San Francisco City Hall (span 106, loses its box to War
+                  Memorial Complex, span 149, the block across Van Ness) ·
+                  Ferry Building (101, loses to Alcoa Building, 116, four
+                  hundred metres away) · Coit Tower (23, the grid is full long
+                  before the walk reaches it)
+
+    Every one of those is span order doing exactly what it says. It is not the
+    same rule as *the thing a stranger came to find*.
+
+    THE TIE-BREAK ADDED HERE IS NOT A LIST OF FAMOUS BUILDINGS. It is a second
+    published register on this same site: `base/heroes.json`, the buildings the
+    map spends its EMPHASIS on — drawn up to five times their measured size
+    precisely because they would otherwise be too small to recognise. A place
+    that resolves to one of those footprints is both the most certainly-a-
+    landmark thing the frame can name and the thing most likely to be under the
+    reader's eye, because it is the largest object drawn. So those rows go
+    first and **everything else keeps `build_places.py`'s span order exactly**:
+    the sort is stable and its only key is that one bit.
+
+    Derived, not typed: the building indices come out of the shipped hero
+    register. If a hero is added or removed the ranking follows with no edit
+    here.
+    """
+    if not HEROES.exists():
+        return pl
+    hero_bi = {h["b"] for h in json.loads(HEROES.read_text())["heroes"]}
+    if not hero_bi:
+        return pl
+    return sorted(pl, key=lambda q: 0 if q.get("bi") in hero_bi else 1)
+
+
 def main() -> int:
     doc = json.loads(SRC_IN.read_text())
-    pl = doc["places"]
+    pl = order_places(doc["places"])
     rep = doc["report"]
 
     srcs = sorted({p["src"] for p in pl})
@@ -281,6 +327,14 @@ def main() -> int:
             "whole city, 50.6 m at the district and 20.4 m at the block. A DESIGNATED "
             "place is exempt: it is drawn with a mark, and a mark does not shrink."
         ),
+        "order": (
+            "The row order IS the ranking: labels.ts `placeNames` walks each "
+            "class in the order it is handed and the collision grid is "
+            "first-come. build_places.py sorts by `span` descending; this file "
+            "then stably lifts the rows whose footprint is in base/heroes.json "
+            "to the front, and changes nothing else. See `order_places` for "
+            "what span order alone was measured doing to City Hall, the Ferry "
+            "Building and Coit Tower."),
         "inkNote": (
             "The ink budget is EXACT and it binds at all three cameras, so more places "
             "cannot put more ink on the frame — only different ink. What changes is "
