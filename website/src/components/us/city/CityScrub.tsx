@@ -539,8 +539,18 @@ function ScrubNote({
       String(rail.lastSwept),
     );
   } else if (year !== undefined) {
+    /* `everyYear`, NOT `n`. The sentence this key holds ends "…carry no date in
+       any published file, and are drawn in every year", which is the narrower
+       of the two claims `time.ts` §UNDATED now separates: 128,599 things carry
+       no date at all, and a further 20,662 footprints carry one that is not
+       their own — a block's p25 estimate rather than their own parcel's roll
+       year. Those arrive once, in the wrong year, and calling them "drawn in
+       every year" would be a second wrong sentence in place of the one this
+       block just fixed. The 23,487 that arrive on a borrowed year is the
+       figure `UNDATED` carries and the copy for it belongs with the
+       `FLAG_BLOCKYEAR` treatment (DATA-TRUTH §5b), which is landing elsewhere. */
     caveat = t("us.sf.thecity.scrub.undated")
-      .replace("{n}", nf.format(un.n))
+      .replace("{n}", nf.format(un.everyYear))
       .replace("{of}", nf.format(un.of));
   }
 

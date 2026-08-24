@@ -113,12 +113,42 @@ export function applyUndatedTreeGate(year: number | undefined): boolean {
 /**
  * ── WHAT THE RECORD CANNOT DATE, COUNTED ─────────────────────────────────
  *
- * Every figure here is measured, and every one of them is a cohort that is drawn
- * in EVERY year because no published file gives it one. The page has to be able
- * to say so; a scrub that silently draws undated things as if they were dated is
- * the defect this whole block exists to fix.
+ * Every figure here is measured, and every one of them is a cohort the record
+ * does not date. The page has to be able to say so; a scrub that silently draws
+ * undated things as if they were dated is the defect this whole block exists to
+ * fix.
  *
- * `n` is the size of the cohort, `of` the population it comes out of.
+ * `n` is the size of the cohort, `of` the population it comes out of, and
+ * `everyYear` is the part of `n` that carries no date **at all** and is
+ * therefore drawn in every year. The two are not the same claim and the copy on
+ * screen must not treat them as one.
+ *
+ * ── THE BUILDINGS FIGURE WAS A PARCEL COUNT, AND IT WAS PUBLISHED ────────
+ *
+ * This shipped `n: 12594, of: 166166` under *"footprints the assessor's roll
+ * does not date"*, and `CityScrub`'s caption prints the sum of this table to a
+ * reader. **12,594 is not a footprint count.** It is the number of PARCELS
+ * carrying the 1900 dump value, out of `ingest.py`'s own comment, put next to a
+ * denominator of 166,166 footprints — two different units in one ratio.
+ *
+ * The measured footprint figures were already computed and already shipped, in
+ * `gen/bldg-data.js` `meta.counts`, and nothing read them:
+ *
+ *     drawn            166,166
+ *     yearFromParcel   142,679   its own parcel's roll year
+ *     yearFromBlock     20,662   its BLOCK's p25 estimate — a real year, not its own
+ *     yearNone           2,825   the 1906 constant, FLAG_NOYEAR — no year at all
+ *
+ * 142,679 + 20,662 + 2,825 = 166,166, so the three partition the fabric.
+ * **23,487 of 166,166 — 14.1 % — arrive on a year that is not their own**, and
+ * that is the number this row now carries. Only the 2,825 are drawn in every
+ * year; the other 20,662 arrive once, in the wrong year, which is why
+ * `everyYear` exists rather than one number doing both jobs.
+ *
+ * Measured by the data block, `pipeline/scripts/us_sf_city/DATA-TRUTH.md`
+ * §1.9 and §5a. `FLAG_BLOCKYEAR` (bit 3) and `FLAG_NOYEAR` (bit 4) are already
+ * in every `bldg` chunk's `u` byte and the renderer does not read them yet
+ * (§5b); when it does, this table is what the copy beside it should say.
  */
 export interface UndatedCohort {
   readonly key: string;
@@ -126,6 +156,9 @@ export interface UndatedCohort {
   readonly of: number;
   readonly what: string;
   readonly source: string;
+  /** of `n`, how many carry no date at all and are drawn in EVERY year.
+   *  Absent means the whole cohort is. */
+  readonly everyYear?: number;
 }
 
 export const UNDATED: readonly UndatedCohort[] = [
@@ -145,10 +178,13 @@ export const UNDATED: readonly UndatedCohort[] = [
   },
   {
     key: "buildings",
-    n: 12594,
+    n: 23487,
     of: 166166,
-    what: "footprints the assessor's roll does not date",
-    source: "DataSF wv5m-vpq2, secured roll 2025",
+    everyYear: 2825,
+    what:
+      "footprints the assessor's roll does not date on their own parcel — " +
+      "20,662 on their block's estimate, 2,825 on a 1906 constant",
+    source: "DataSF wv5m-vpq2, secured roll 2025 · bldg-data.js meta.counts",
   },
   {
     key: "places",
@@ -159,12 +195,23 @@ export const UNDATED: readonly UndatedCohort[] = [
   },
 ];
 
-/** One line of chrome: how much of what the reader is looking at carries no
- *  date. Formatted by the caller, because the words are the caller's. */
-export function undatedTotal(): { n: number; of: number } {
+/**
+ * One line of chrome, and it has to be the line the copy actually says.
+ *
+ * `n` is everything the record does not date — 149,261 of 367,614. `everyYear`
+ * is the part of it that is drawn in EVERY year, which is the stronger and
+ * narrower claim the caption used to make about all of it: 128,599. The
+ * difference is the 20,662 footprints that arrive once, on their block's
+ * estimate rather than their own parcel's.
+ */
+export function undatedTotal(): { n: number; of: number; everyYear: number } {
   return UNDATED.reduce(
-    (a, c) => ({ n: a.n + c.n, of: a.of + c.of }),
-    { n: 0, of: 0 },
+    (a, c) => ({
+      n: a.n + c.n,
+      of: a.of + c.of,
+      everyYear: a.everyYear + (c.everyYear ?? c.n),
+    }),
+    { n: 0, of: 0, everyYear: 0 },
   );
 }
 

@@ -1128,3 +1128,92 @@ consecutive years. Only adjacent pairs are meaningful:
 
 Every one of those three has a real record behind it, and none of them is a shot
 until something is published that the map can put on the ground.
+
+## 13 · Block M1 — a published figure that was the wrong unit, and the 2015 pop
+
+### 13.1 `time.ts` published a parcel count as a footprint count
+
+Routed by the data block (`pipeline/scripts/us_sf_city/DATA-TRUTH.md` §1.9, §5a)
+and fixed here, because `time.ts` is this block's file and `CityScrub`'s caption
+prints the **sum of that table straight to a reader**.
+
+It shipped
+
+    { key: "buildings", n: 12594, of: 166166,
+      what: "footprints the assessor's roll does not date" }
+
+and **12,594 is not a footprint count.** It is the number of PARCELS carrying the
+1900 dump value, out of `ingest.py`'s own comment, sitting on a denominator of
+166,166 footprints — two units in one ratio. The measured footprint figures were
+already computed and already shipped in `gen/bldg-data.js` `meta.counts`, and
+nothing in `src/` read them:
+
+    drawn            166,166
+    yearFromParcel   142,679   its own parcel's roll year
+    yearFromBlock     20,662   its BLOCK's p25 estimate — a real year, not its own
+    yearNone           2,825   the 1906 constant, FLAG_NOYEAR — no year at all
+
+They partition the fabric (142,679 + 20,662 + 2,825 = 166,166), so **23,487 of
+166,166 — 14.1 % — arrive on a year that is not their own**, and that is what the
+row now carries.
+
+**Two claims, not one, and the caption was making the stronger one about all of
+it.** `us.sf.thecity.scrub.undated` ends *"…carry no date in any published file,
+and are drawn in every year"*, which is true of the trees, the streets, the
+places and the 2,825 — and **false of the 20,662**, which arrive exactly once, in
+the wrong year. So `UndatedCohort` gains `everyYear`, `undatedTotal()` returns
+both, and the caption is fed the one its own sentence describes:
+
+| | before | after |
+|---|---:|---:|
+| the caption's number | 138,368 of 367,614 | **128,599 of 367,614** |
+| what `UNDATED` carries for buildings | 12,594 parcels | **23,487 footprints (14.1 %)** |
+| of which drawn in every year | — | **2,825** |
+
+The 23,487 is now a number the page **holds** and does not yet **say**. Saying it
+is the `FLAG_BLOCKYEAR` treatment — bit 3 and bit 4 are already in every `bldg`
+chunk's `u` byte and the renderer does not read them (DATA-TRUTH §5b) — and that
+is landing in another block's files, so the copy for it lands with the flag
+rather than being guessed at here.
+
+### 13.2 Checked against the shots, and one of them is exposed
+
+*"Do not build a shot that depends on a year in that 14 %."* None does — §11.3
+established that six of the ten shots are composed against a framing and a line,
+three against a decision's own year out of the corpus, and shot 4's two
+footprints are hidden from the fabric for the whole shot precisely so the roll's
+date cannot reach the frame. But two shots have the defect **on** them:
+
+**Shot 1 opens on 1906, and 2,825 footprints are stamped 1906 by a constant.**
+`build_bldg.py:207` — `yr = 1906; flags |= FLAG_NOYEAR`. The shot's whole subject
+is a hairline round a burned district with an empty fabric inside it, and the
+film's copy says the emptiness is the roll dating what is standing today. Some of
+what IS drawn in that frame is there because the pipeline had nothing and wrote
+1906 rather than "unknown". Nothing in this block can separate them on the frame
+until `FLAG_NOYEAR` is read; **the film does not claim those buildings are 1906
+buildings, and it should not be made to.**
+
+**Shot 10 runs 1966 → 2018 and crosses 2015.** Measured, `.parity/m1year.py` at
+the whole-city camera:
+
+| across | moved | of frame |
+|---|---:|---:|
+| 2012 → 2013 | 350 px | 0.009 % |
+| 2013 → 2014 | 5,151 | 0.129 % |
+| **2014 → 2015** | **29,616** | **0.741 %** |
+| 2015 → 2016 | 1,434 | 0.036 % |
+| 2016 → 2017 | 104 | 0.003 % |
+
+**Twenty times the year on either side of it**, and the change density is a single
+cell of a 16 × 10 grid, over Hunters Point. `out/m1by-2015-pair.png` is the pair:
+an empty peninsula at 2014, and at 2015 about eight large industrial hulls at
+once. That is Daniel's *"there's zero buildings then in 2014 so many appear all
+at once"*, measured at whole-city zoom, and it is the largest single-year change
+anywhere in the film's last fifty years.
+
+Shot 10's run is 18,000 ms over 52 years — 2.9 years a second — so 2015 gets
+about **345 ms**, and 0.741 % of the frame appearing in a third of a second reads
+as a flicker rather than as history. The film is not composed against it and
+nothing here should paper over it: the root cause is a block key that pools four
+real assessor blocks and it is being fixed in the data block. **Recorded so that
+whoever re-times shot 10 knows what is in it.**
