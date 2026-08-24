@@ -6487,3 +6487,169 @@ between the builds by the same instrument that settled the tables — dump the
 histogram of each on both sides at one district camera and subtract. That is a
 much smaller search than the one this block started with, and §27.2 is what
 made it small.
+
+---
+
+### 21.26 The Pyramid: the hero is what is drawn, and the flat top was never on screen
+
+The handover said two candidate answers were on screen and nobody knew which
+was winning. **The hero wins, at every one of the five zooms, and the flat top
+the data agent reported is a property of a draw call that never fires for this
+building.**
+
+Proved rather than eyeballed. `.parity/g3/shot.py pyrv 3108.1 3932.6` — the
+Pyramid's own hero anchor out of `base/heroes.qc` (`ax`, `ay`) — taken twice,
+once as shipped and once with prod's own `?layers=-heroes`, and differenced
+(`.parity/g3/adiff.py`, threshold 6/255):
+
+| camera | scale | frame the heroes own | Transamerica reads as |
+|---|---|---|---|
+| city     | 0.04667 | 0.277 % | a needle above the skyline, apex clear of every neighbour |
+| district | 0.13533 | 0.901 % | **a tapering spire**, the tallest thing in the frame |
+| block    | 0.33600 | 2.034 % | **a pyramid, pointed, full height** — `out/z-blk-crop.png` |
+| street   | 2.00000 | 10.704 % | the lower shaft, leaving frame at the top |
+| building | 6.00000 | 9.086 % | the same, filling it |
+
+`out/z-4-str-heromask.png` is the street frame with the hero's own pixels
+painted magenta: a 234 px-wide solid rising from behind the block in front of
+it and off the top of the frame. That is the base of a 260 m tower at 2 px/m,
+and it is correct — at street zoom the visible slice of a pyramid whose plan
+goes 1.00 → 0.72 over the frame's height is a slightly tapered wall.
+
+**Why the two reports do not conflict.** `scene.ts heroQueue` adds every hero's
+`bi` to `gids`, and *"the hero's building is then SKIPPED when the stream
+reaches it, so the prism is not drawn inside the drawing that replaced it."*
+Building 137821 is a hero, so its prism — and the shaped cap standing on it —
+are not drawn at all. The data agent measured the fabric; the fabric is not
+what a reader sees here.
+
+**And the commit message names the wrong building.** It says *"eight towers
+lose a shaped top … the Transamerica Pyramid is one of them."* Decoded from the
+two registers on either side of `17443f4e` (`base/caps.qc` 68 → 60 rows,
+`base/form.qc` 488 → 479):
+
+> **137821 is in `caps.qc` and in `form.qc` before AND after.** The Pyramid
+> lost neither. The eight rows that left `caps.qc` are 60435, 136893, 137310,
+> 142936, 142959, 143052, 143053, 149288, and the ninth form slot with no cap
+> on it is 137358.
+
+Named from `base/places.qc`'s own `bi` join:
+
+| bi | place register name | cap prof | visible? |
+|---|---|---|---|
+| 60435  | 1455 Market St Building | 4 | to check |
+| 136893 | InterContinental San Francisco | 4 | to check |
+| 137310 | The Paramount | 4 | to check |
+| **142936** | **Ferry Building** | 3 | **no — HERO `ferry` replaces the prism** |
+| 142959 | Hills Brothers Coffee Plant | 1 | to check |
+| 143052 | BridgeView | 4 | to check |
+| 143053 | (no place row) | 4 | to check |
+| **149288** | **San Francisco City Hall** | 1 | **no — HERO `cityhall` replaces the prism** |
+| 137358 | Four Seasons Hotel (form slot only, no cap) | – | to check |
+
+So **three of the nine are invisible losses** — two heroes plus the Pyramid,
+which never lost anything. §21.22's *"City Hall's dome is drawn and it reads"*
+and *"the Ferry Building's tower is drawn and it reads"* both still hold, and
+the screenshots above are the re-check.
+
+**The one real hazard the height change leaves on this building, stated:** the
+hero is year-gated at 1972 (`heroQueue`: `if (iy < h.year) continue`). Below
+that year the fabric prism draws instead, and the fabric prism is now a **255 m
+flat slab** (the u8 ceiling, DATA-TRUTH 13.5b) standing on a parcel the roll
+dates 1971. One year of the film shows a flat 255 m block where the Pyramid
+would be. That is the general `TODAYS_SHAPE`/published-height tension and it is
+the fabric's, not this file's; recorded so it is not rediscovered as a hero bug.
+
+---
+
+## 28. Block G1 — the `hz` selector, and a finding I nearly filed that was wrong
+
+§27.4 reduced the search to four selectors — `ri`, `hz`, `fi`, `rsh`. `hz` was
+taken first because it had a name.
+
+### 28.1 The haze cap was already fixed; this is a different quantity
+
+`WA.hazecap` **0.42 against the reference's 0.62** is a real defect and it is
+already closed: `terrain.ts:144` reads 0.62 and its own doc comment at :128
+records the fix. That constant is the TERRAIN and WATER radial haze. The
+building `hz` is a different quantity entirely — a band index over `HZL` = 16
+into `colourLUT`'s aerial fade — and grepping first is what kept these apart.
+
+### 28.2 The two builds compute `hz` with the same arithmetic
+
+```
+  mock  hzScale = (HZL-1)/(fadeAmt||1)
+        hzi     = (fadeAmt * t^2.5 * hzScale) | 0      <- fadeAmt CANCELS
+  prod  z       = (t^2.5 * (HZL-1)) | 0
+```
+
+and `t = (depth − dlo)/dspan` on both sides, off the same `depth()`
+(`x(cR+sR) + y(cR−sR)`, identical in both). What differs is **the domain**, and
+`scene.ts` `cityDepthRange` states it rather than hiding it: the mock's `dlo`,
+`dhi` are over all **166,166 building centroids**, production's over the
+**5,404 block centroids**, because this client holds only the chunks it has
+fetched.
+
+Measured (`.parity/g1hz.py`), at the district camera:
+
+```
+  mock, 166,166 building centroids   span 20,003.7
+  prod, 5,404 block centroids        span 18,938.6      ratio 0.9468
+  mean hz band   mock 1.536   prod 1.653   delta +0.117 of 16
+```
+
+A band is worth roughly `fadeAmt·(HAZE − roof)/15`, so **+0.117 bands is about
++0.27 luminance on a roof pixel.** Against a gap of +11.7 to +23.5, the
+substitution is real, is now measured, and is **not it**.
+
+### 28.3 THE FINDING I NEARLY FILED, AND WHY IT WAS WRONG
+
+Reading the two fabric-tier key expressions side by side:
+
+```
+  part3.html L9117   rq = (URI[i]*4 + deRSH(i)) * NF1 + fi          <- no hz
+  scene.ts   L2789   roofNF[(((ri*HZL + hz)*NF1 + fi) << 2) + rsh]  <- hz
+```
+
+I had this written up as *"production applies the aerial haze to the fabric
+tier and the reference does not"* — a large-area, systematically-lightening
+term on 98.7 % of the district frame's buildings, with the right shape and the
+right camera profile. I measured it: **+2.28 mean roof luminance at B1, +4.2 in
+the darkest decile falling monotonically to −0.0 in the brightest**, and
+**+0.000 at the street camera because all 554 buildings there are near.** That
+is BUGS §23's signature almost exactly.
+
+**It is wrong.** The mock hazes the fabric too — not in the key, in the
+**flush**. `part3.html` L8681 fills each batched bucket with
+`CL_ROOFN[((c*HZL + bandHz)*NF1 + f)*4 + sh]`, where `bandHz` is computed once
+per depth band at L8833. Expand it and it is the same quantity:
+
+```
+  bandHz = (fadeAmt · dn^2.5 · hzScale) | 0,   dn = 1 − bx/BANDS = (dpt−dlo)/dspan
+         = ( t^2.5 · (HZL−1) ) | 0             — production's `hazeIdx`, exactly
+  max |bandHz − hazeIdx| over the 128 bands, same dlo/dspan:  1
+```
+
+The only difference is that the mock quantises the depth through its 128
+painter's-order bands first and production computes it per building — **at most
+one band apart** — plus §28.2's 0.117.
+
+So what my +2.28 measured is **the size of the haze term itself**, which both
+builds have, and not a difference between them. *An ablation against nothing is
+not a measurement.* The mistake was reading a key expression and stopping
+before the flush that consumes it; the check that caught it was expanding both
+expressions to the same variables instead of comparing their shapes.
+
+### 28.4 Where the selector hunt stands
+
+| selector | verdict |
+|---|---|
+| `hz` | same function, same domain to within 0.117 bands ≈ **+0.27 luminance**. Not it. |
+| `rsh` | the mock's fabric bucket carries `deRSH(i)` and its flush reads `CL_ROOFN[…*4+sh]` — the same table at the same index as production. Same. |
+| `fi` | at a 2018 camera with the clock stopped, `tintIndex` is 0 on both sides for everything outside `FRESH_YEARS`. |
+| `ri` | **not yet measured** — the one left. |
+
+With the tables identical (§27.2) and three of four selectors identical, `ri`
+is the last thing in the building layer that can carry it, and it is one
+histogram: dump `ri` on both sides at one district camera and subtract. The
+instrument is `g1clut.py` with a different payload.
