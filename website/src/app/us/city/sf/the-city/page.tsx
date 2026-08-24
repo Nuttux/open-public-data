@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 
 import TheCityClient, { type TheCityPageData } from "./TheCityClient";
+import { SERIES_LAST_YEAR } from "@/components/us/city/block-records";
 
 /**
  * /us/city/sf/the-city — server component (ADR-0010 D3, EN-only), on the same
@@ -109,7 +110,17 @@ export default function SfTheCityPage() {
     unplaced: blockIndex.meta.n_unplaced,
     blocksWithRecord: withRecord,
     volumes: blockIndex.meta.leaf_mapped_volumes.length,
-    span: `${first}–${last}`,
+    // THE SPAN IS THE SERIES, NOT THE MAXIMUM. `max(y1)` is 2013 and it is
+    // carried by SEVEN rows: the Board's decades run 4,185 in the 1990s, then
+    // 26 and 49. All 142 Journal volumes end in 1998-99, so the scanned series
+    // ends at SERIES_LAST_YEAR and the handful of later rows are DPW annual
+    // reports, not the Board's proceedings. Printing "1906-2013" over that
+    // tells a reader the record reaches 2013, and the fourteen years it
+    // implies are almost entirely empty. The record does not stop in 1999 —
+    // it moves to Legistar, 30,428 matters for 2000-2018 — but Legistar
+    // carries no location and is not in this pipeline, which is the thing the
+    // page has to say rather than paper over.
+    span: `${first}–${Math.min(last, SERIES_LAST_YEAR)}`,
     accuracy: { n: accuracy.n, exact: accuracy.exact },
     publishers: [...byPublisher.entries()]
       .map(([name, v]) => ({ name, datasets: v.datasets.size, url: v.url }))
