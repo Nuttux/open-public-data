@@ -153,24 +153,62 @@ const FILM_PLACE_CAP = 12;
    two is the machine.
 
    `SUSTAIN_MS` is what stops a dip deciding. The average has to stay under the
-   threshold for 900 ms of wall clock, and any frame that brings it back over
-   resets the count — so two 300 ms frames while a tier lands do not change the
-   film, and a camera move that is genuinely spending a second a frame does.
+   threshold for long enough, and any frame that brings it back over resets the
+   count — so two 300 ms frames while a tier lands do not change the film, and a
+   camera move that is genuinely spending a second a frame does.
 
-   `MIN_MS` is 20,000, and 4,000 was not enough. MEASURED, `.parity/b3seg.py`:
-   the film's FIRST run segment costs 25.3 s of wall clock for 0.5 s of film,
-   x56 — the data layer is still landing cells, so `sceneVersion` moves and every
-   frame is a "content" rasterisation, and the fabric's first year cohort is
-   warming caches that are warm for every year after it. That is a startup cost
-   and not this machine's speed, and a verdict taken from it would put a fast
-   laptop on the spare version for the whole film. The first camera move is at
-   23,400, so 20,000 leaves the tail of shot 2's run as evidence and still
-   decides before the first travel. */
+   ── THE VERDICT WAS BEING TAKEN ON THE WRONG SECONDS, AND IT COST THE FILM
+      ITS WHOLE MOTION DESIGN ──────────────────────────────────────────────
+
+   *"The camera moves and the year advances; what is missing is the sense that
+   something is happening."* On this machine, after the ground plate landed
+   (09962711), it was missing because it had been switched off.
+
+   `MIN_MS` used to be 20,000 ms of WALL clock, on the reasoning that "the first
+   camera move is at 23,400, so 20,000 leaves the tail of shot 2's run as
+   evidence and still decides before the first travel." Both halves of that are
+   the mistake. **The tail of shot 2's run IS the startup cost** — the same
+   paragraph says so, `.parity/b3seg.py` measured the first run segment at x56 —
+   and **deciding before the first travel means deciding without one frame of
+   the thing being judged**, since travels and the arrival wave are the only two
+   things `spare` changes.
+
+   MEASURED, `.parity/m1keep.py`, this machine, a real playthrough with nothing
+   seeked and nothing paused:
+
+     wall   film  keepUp  spare  rasters  seg
+     11.6   10.7   1.000  false      20   shot 1 hold      <- the locked camera
+     12.4   11.4   1.000  false      21   shot 2 run       <- the first cohort
+     14.6   13.1   0.748  false      27
+     16.0   13.9   0.562  false      35
+     16.9   14.4   0.612   TRUE      39   <- LATCHED
+     17.3   14.8   0.752   true      39
+     18.9   16.4   0.922   true      40
+
+   Twelve seconds at 1.000, then **1.4 seconds** of shot 2's first year cohort
+   warming caches — 17 rasterisations in four seconds — and the film threw away
+   all eight travels and the entire arrival wave for the remaining 117 seconds.
+   Over the whole run this machine's median `keepUp` past 20 s is **0.907**,
+   half again over the threshold. It can play the film. It was not being asked
+   to.
+
+   So the gate is no longer a stopwatch. **Nothing is decided until the camera
+   has actually tried to travel** — `firstMoveT0`, the film's own first `move`
+   segment, which is where the thing being judged begins — and `SUSTAIN_MS` is
+   the length of the film's SHORTEST move (1,800 ms), so what decides is a
+   travel and not a hiccup inside one. A machine that genuinely cannot draw a
+   travel still latches inside the first one and loses only that one, which is
+   the trade B3 already measured and accepted.
+
+   The latch stays one-way. Not for the reason it was: it is meaningless to
+   re-examine, because once `spare` is on the film is cheap and `keepUp` climbs
+   for that reason alone — 0.562 to 0.922 in two seconds above. The answer is to
+   make the first look correct, not to add a second one. */
 const KEEP_UP = 0.6;
 const KEEP_UP_TAU = 900;
 const KEEP_UP_W_MAX = 0.35;
-const KEEP_UP_SUSTAIN_MS = 900;
-const KEEP_UP_MIN_MS = 20000;
+/** the shortest move in the film, so a travel decides and a hiccup does not */
+const KEEP_UP_SUSTAIN_MS = 1800;
 
 /* `?filmoff=accepted,subjects` — the film's own ablation switches, the same
    idiom `SceneLayers` uses and for the same reason: turning one pass off is how
@@ -212,6 +250,10 @@ export interface CityFilmApi {
 interface Live {
   payload: FilmPayload;
   timeline: FilmTimeline;
+  /** the film's own first `move` segment — where the thing `spare` replaces
+   *  begins, and therefore the earliest millisecond that is evidence about
+   *  whether this machine can play it */
+  firstMoveT0: number;
   frames: FilmFrames;
   streets: AcceptedStreets;
   deck: Plane[][];
@@ -255,9 +297,14 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
      between two viewings, and a film that changed its own grammar back and forth
      while a reader watched would be worse than either version of it. */
   const keepRef = useRef(1);
-  const playedRef = useRef(0);
-  const belowRef = useRef(0);
-  const spareRef = useRef(false);
+  /* one average per thing being judged: a run's frames say nothing about
+     whether this machine can draw a travel, and vice versa */
+  const keepCamRef = useRef(1);
+  const keepWaveRef = useRef(1);
+  const belowCamRef = useRef(0);
+  const belowWaveRef = useRef(0);
+  const spareCamRef = useRef(false);
+  const spareWaveRef = useRef(false);
 
   useEffect(() => {
     let dead = false;
@@ -301,7 +348,9 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
         : new AcceptedStreets(payload.st, bands, projection, elev);
     const deckSrc = payload.shots.find((s) => s.build2?.w)?.build2?.w;
     const deck = held?.deck?.length ? held.deck : deckSrc ? projectDeck(deckSrc, projection) : [];
-    return { payload, timeline, frames, streets, deck, W, H };
+    const firstMoveT0 =
+      timeline.segs.find((sg) => sg.k === "move")?.t0 ?? timeline.total;
+    return { payload, timeline, frames, streets, deck, W, H, firstMoveT0 };
   }, [renderer, payload, timeline, bands]);
 
   /* ── ONE FRAME ────────────────────────────────────────────────────────────
@@ -334,25 +383,51 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
       /* Weighted by WALL time, so one 900 ms frame counts for as much as
          fifty-six 16 ms ones — which is the whole point, since it is the long
          frames that are the film not playing. */
-      if (!pausedRef.current && lastRef.current) {
-        const w = Math.min(KEEP_UP_W_MAX, raw / KEEP_UP_TAU);
-        keepRef.current += ((dt * 1000) / Math.max(1, raw) - keepRef.current) * w;
-        playedRef.current += raw;
-        belowRef.current = keepRef.current < KEEP_UP ? belowRef.current + raw : 0;
-        if (
-          playedRef.current > KEEP_UP_MIN_MS &&
-          belowRef.current > KEEP_UP_SUSTAIN_MS
-        ) {
-          spareRef.current = true;
-        }
-      }
-      const spare = spareRef.current;
+      /* THE EVIDENCE HAS TO BE ABOUT THE THING BEING JUDGED, and there are two
+         things. A travel and a run fail for different reasons and on different
+         frames — a mid-move rasterisation is the ground being repainted under a
+         moving camera, a run's is the fabric changing under a fixed one — so
+         each is judged on its own segments and neither is judged on anything
+         else. Everything before the film's first travel is a locked camera and
+         the first year cohort warming caches, and it is evidence about neither.
+         See §whether the film is keeping up, and `film.ts` §the two costs are
+         not one verdict. */
       const s = filmStateAt(live.payload, live.timeline, live.frames, tRef.current, {
         reduced: red,
-        spare,
+        spareCamera: spareCamRef.current,
+        spareWave: spareWaveRef.current,
         cyBias: biasRef.current,
         zexFor: () => projection.zex,
       });
+
+      /* JUDGE EACH HALF ONLY ON FRAMES WHERE THAT HALF IS ACTUALLY RUNNING.
+         A travel and a wave fail for different reasons and on different frames
+         — a mid-move rasterisation is the ground being repainted under a moving
+         camera, a wave's is the fabric changing under a fixed one — so neither
+         is judged on the other's frames, and nothing is judged before the
+         film's first travel, where the camera is locked and the first year
+         cohort is warming caches.
+
+         `s.running` and not `seg === "run"`: a run whose years are too short to
+         hold a stagger has no wave in it (`film.ts` §waveFits), and it used to
+         be the frames that condemned the wave everywhere else. */
+      const which: "cam" | "wave" | null =
+        tRef.current < live.firstMoveT0 ? null
+        : s.seg.k === "move" ? "cam"
+        : s.running ? "wave"
+        : null;
+      if (!pausedRef.current && lastRef.current && which) {
+        const k = which === "cam" ? keepCamRef : keepWaveRef;
+        const below = which === "cam" ? belowCamRef : belowWaveRef;
+        const w = Math.min(KEEP_UP_W_MAX, raw / KEEP_UP_TAU);
+        k.current += ((dt * 1000) / Math.max(1, raw) - k.current) * w;
+        keepRef.current = k.current;
+        below.current = k.current < KEEP_UP ? below.current + raw : 0;
+        if (below.current > KEEP_UP_SUSTAIN_MS) {
+          if (which === "cam") spareCamRef.current = true;
+          else spareWaveRef.current = true;
+        }
+      }
 
       // the fabric's undated trees are a statement about their own file
       applyUndatedTreeGate(s.year);
@@ -362,7 +437,7 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
       /* A cut has no trajectory to lead the buffer along — the camera is already
          standing on the incoming frame — so it takes the settled path. */
       const plan =
-        s.seg.k === "move" && slot && !red && !spare
+        s.seg.k === "move" && slot && !red && !spareCamRef.current
           ? planFilmBuffer(
               live.payload, live.timeline, live.frames, tRef.current,
               { cx: s.cx, cy: s.cy, scale: s.scale, step: s.step },
@@ -485,7 +560,9 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
       /* Whether this machine dropped to the spare version, and the playback
          speed it measured to decide. A film that changes its own grammar has to
          be able to say that it did. See §THE VERSION THE MACHINE CAN PLAY. */
-      get spare() { return spareRef.current; },
+      get spare() { return spareCamRef.current || spareWaveRef.current; },
+      get spareCamera() { return spareCamRef.current; },
+      get spareWave() { return spareWaveRef.current; },
       get keepUp() { return +keepRef.current.toFixed(3); },
       get why() { return renderer?.rasterWhy ?? ""; },
       get t() { return tRef.current; },
@@ -757,7 +834,7 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
    about to look at. At .78 the 1906 city is legible under the words. */
 .fx-film-card{position:absolute;inset:0;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;gap:14px;
-  background:rgba(250,250,247,.78);transition:opacity 420ms}
+  background:rgba(250,250,247,.78)}
 .fx-film-card h2{margin:0;font-family:var(--f-disp,Georgia,serif);font-weight:700;
   font-size:clamp(28px,3.4vw,46px);letter-spacing:-.03em;max-width:22ch}
 .fx-film-card p{margin:0;font-size:15.5px;color:#5a5348;max-width:56ch;line-height:1.5}
@@ -807,7 +884,11 @@ function FilmChrome({
       <div className="fx-film-scrim" />
 
       {card ? (
-        <div className="fx-film-card">
+        /* THE WASH IS ON THE FILM'S CLOCK. `transition: opacity` never ran —
+           an element removed from the DOM does not transition out — and a wall
+           -clock transition could not be scrubbed to anyway. `film.ts`
+           §cardAlpha. */
+        <div className="fx-film-card" style={{ opacity: state.cardAlpha }}>
           <h2>{card.head}</h2>
           <p>{card.sub}</p>
         </div>

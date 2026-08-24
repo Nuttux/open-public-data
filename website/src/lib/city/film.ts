@@ -143,11 +143,76 @@ const curveOf = (n: string | null | undefined): ((x: number) => number) =>
    FAR FIRST, because that agrees with painter's order: a building that arrives
    later always paints OVER one that arrived earlier, never under. */
 export const STAGGER_TOTAL = 520;
+
+/**
+ * ── AND A YEAR THAT IS SHORTER THAN THE STAGGER HAS NO WAVE IN IT ─────────
+ *
+ * `STAGGER_TOTAL` shipped declared and **read by nothing** — the same pattern
+ * as `roofF`/`wallF`, `GGB.suspenderM` and the four uncalled passes. This is
+ * what it means.
+ *
+ * The wave is `RISE_WIN` of a year long, so how much of it a reader sees
+ * depends entirely on how long a year lasts, and the film's runs differ by a
+ * factor of sixteen:
+ *
+ *     shot 2  rebuild        6 yr / 12,000 ms = 0.50 yr/s   year 2,000 ms
+ *     shot 5  tunnel         1 / 1,600        = 0.63        1,600
+ *     shot 8  treasure isl.  1 / 1,500        = 0.67        1,500
+ *     shot 6  west-fills    17 / 16,000       = 1.06          941   <- the showcase
+ *     shot 7  the bridge     2 / 1,600        = 1.25          800
+ *     shot 10 to-now        52 / 18,000       = 2.89          346
+ *     shot 4  city-hall      3 / 900          = 3.33          270
+ *     shot 9  yerba-buena   27 / 3,400        = 7.94          126
+ *
+ * At shot 9's rate a year is 126 ms and its rise window is 49 ms — three frames
+ * at 60 Hz. There is no wave there to see, and asking for one costs the same
+ * rasterisation per `YEAR_Q` step as a wave that reads: **71 rasterisations a
+ * second, which no machine draws.**
+ *
+ * MEASURED, `.parity/m1keep.py`: judged apart, the wave's verdict was decided
+ * by **shot 4's 900 ms run at z 28** — the film's shortest, fastest run at its
+ * deepest zoom — and shot 9's run measures `keepUp` 0.26–0.34 *with the wave
+ * already off*, so it is the year RATE and not the wave that is unaffordable
+ * there. Condemning the wave on those frames threw it away on shot 6, where
+ * the same trace measures 0.80–0.93.
+ *
+ * So the wave runs where there is room for it: **a year must last at least
+ * `STAGGER_TOTAL` for the depth stagger to have any.** Above that rate the year
+ * lands whole, which is what it already looks like, and costs one rasterisation
+ * a year instead of nine. Shot 9 goes from 243 to 27.
+ */
+export function waveFits(years: number, ms: number): boolean {
+  return years > 0 && ms / years >= STAGGER_TOTAL;
+}
 export const STAGGER_JITTER = 0.18;
 /** the fraction of a year the cohort rises over */
 export const RISE_WIN = 0.385;
 /** how much of that window is spent staggering */
 export const RISE_LEAD = 0.55;
+
+/** how much of a year the year's own street acceptances draw over */
+export const ST_ENTER_WIN = 0.55;
+
+/**
+ * The largest fraction of a year anything downstream actually reads.
+ *
+ * The arrival wave is finished at `RISE_WIN` and the accepted streets at
+ * `ST_ENTER_WIN`; past the later of the two the frame does not change again
+ * until the next integer year. Derived from both rather than typed, so moving
+ * either constant cannot silently start pinning the year while something is
+ * still animating on it.
+ */
+export const YEAR_LIVE = Math.max(RISE_WIN, ST_ENTER_WIN);
+
+/**
+ * How long a title or end card takes to wash in or out, ms.
+ *
+ * 700 of the title's 3,000, so two thirds of the card's life is a still page to
+ * read and the last third is the 1906 city arriving under it. It is a declared
+ * motion constant in the same class as `STAGGER_TOTAL`, not a figure out of a
+ * file, and nothing on screen depends on its value being any particular number.
+ */
+export const CARD_WASH = 700;
 
 /** The per-building entrance curve. `dn` is 0 at the far edge of the frame and
  *  1 at the near edge; `hash` is the building's own deterministic jitter. */
@@ -671,6 +736,28 @@ export interface FilmState {
   readonly seg: FilmSeg;
   readonly shot: number;
   readonly card: "title" | "end" | null;
+  /**
+   * How opaque that card is, 0..1 — **on the film's clock, not on a CSS
+   * transition.**
+   *
+   * `CityFilm`'s card is mounted by `card ? … : null` and carries
+   * `transition: opacity 420ms`, which never runs: an element removed from the
+   * DOM does not transition out. B3's own frame sheet caught the symptom and
+   * named the cause — *"the title card's wash is a step, not a fade. `CURVE.fade`
+   * exists and this is not using it"* — three frames of a near-white city and
+   * then the full-contrast 1906 frame with nothing in between at a 257 ms
+   * shutter. It is the film's first gesture and it was a cut.
+   *
+   * A CSS transition could not have been right anyway: it runs on wall time, so
+   * a scrub to the middle of the wash would land on whatever the browser
+   * happened to be doing rather than on the frame playback produces. This is a
+   * lookup like everything else in this file.
+   *
+   * Kept under `reduced` and under `spare`. A cross-fade is not vestibular —
+   * `camera.json` §reduced_motion makes the same call for the year — and it
+   * costs no rasterisation, because it is one DOM opacity.
+   */
+  readonly cardAlpha: number;
   /** the camera, already resolved: what the renderer is told to be */
   readonly cx: number;
   readonly cy: number;
@@ -856,6 +943,37 @@ export interface FilmStateOpts {
    * measures anything. See `CityFilm.tsx` §THE VERSION THE MACHINE CAN PLAY.
    */
   readonly spare?: boolean;
+  /**
+   * ── AND THE TWO COSTS ARE NOT ONE VERDICT ────────────────────────────────
+   *
+   * `spare` above names two separate costs and then throws away both together
+   * on one number. They do not fail together. A rasterisation taken mid-travel
+   * costs 0.6–1.2 s because the ground plate misses on every frame of a move; a
+   * run costs a rasterisation per `YEAR_Q` step of the year on a camera that is
+   * standing still and hitting the plate every time. One is the ground being
+   * repainted under a moving camera, the other is the fabric changing under a
+   * fixed one.
+   *
+   * MEASURED, `.parity/m1keep.py`, this machine: after the year is pinned once
+   * nothing reads it (§filmStateAt), shot 2's run halves its rasterisation rate
+   * and `keepUp` climbs back to **0.99 by the end of the run** — while the
+   * first travel, on the same playthrough, sits at **0.16**. This machine can
+   * draw the wave and cannot draw the travels, and one flag could only tell it
+   * to give up both.
+   *
+   * So they are judged apart, each on its own segments. `spare` still means
+   * both, which is what a caller with one verdict wants and what the tests
+   * assert; `spareCamera` and `spareWave` are the halves.
+   *
+   * A cut camera with a running year is not a new invention: it is exactly the
+   * shape `camera.json` §reduced_motion argues for — *"a year going from 1924
+   * to 1925 while the camera is still is not vestibular"* — and it is the half
+   * of the film Daniel named: **a build wave sweeping a district rather than
+   * buildings blinking on.**
+   */
+  readonly spareCamera?: boolean;
+  /** the years land whole and the arrival wave never starts. See `spareCamera`. */
+  readonly spareWave?: boolean;
   /** carried from the previous frame; see `frameOf`'s band note */
   readonly cyBias?: number;
   /**
@@ -889,6 +1007,9 @@ export function filmStateAt(
 ): FilmState {
   const frames = ff.frames;
   const reduced = !!opts.reduced;
+  /* `spare` is both halves; see FilmStateOpts §the two costs are not one verdict */
+  const spareCam = !!(opts.spare || opts.spareCamera);
+  const spareWav = !!(opts.spare || opts.spareWave);
   const t = Math.max(0, Math.min(tl.total, tRaw));
   const ix = segAt(tl, t);
   const sg = tl.segs[ix];
@@ -903,7 +1024,7 @@ export function filmStateAt(
   if (sg.k === "move") {
     A = si > 0 ? frames[si - 1] : frames[si];
     B = frames[si];
-    u = reduced || opts.spare ? 1 : curveOf(s.curve)(u0);
+    u = reduced || spareCam ? 1 : curveOf(s.curve)(u0);
   } else if (sg.k === "title") {
     A = B = frames[0];
     u = 1;
@@ -927,7 +1048,7 @@ export function filmStateAt(
   // ── the year ──────────────────────────────────────────────────────────────
   let year: number;
   if (sg.k === "run") {
-    if (reduced || opts.spare) {
+    if (reduced || spareWav) {
       /* ── REDUCED MOTION IS NOT REDUCED HISTORY ────────────────────────
          Pinning a run at its end value put shot 2 at 1912 for its whole twelve
          seconds, shot 6 at 1945, shot 9 at 1966 and shot 10 at 2018 — four of
@@ -956,21 +1077,46 @@ export function filmStateAt(
   } else {
     year = sg.yTo;
   }
-  const running = sg.k === "run" && !reduced && !opts.spare && sg.yTo > sg.yFrom;
+  const running =
+    sg.k === "run" &&
+    !reduced &&
+    !spareWav &&
+    sg.yTo > sg.yFrom &&
+    waveFits(sg.yTo - sg.yFrom, sg.ms);
   const iy = Math.floor(year + (running ? 0 : 0.0001));
   /* Outside a run the year is pinned at iy + 0.999 with `running` false, which
      is what tells the renderer "everything built by this year is simply there".
      Inside a run the fractional year drives the fabric's own arrival wave — the
      one already tuned to stagger far-to-near with a per-building jitter.
-     Nothing here re-implements it. */
-  const yearOut = running ? year : iy + 0.999;
+     Nothing here re-implements it.
+
+     ── AND IT IS PINNED AGAIN AS SOON AS NOTHING IS READING IT ────────────
+     `renderer.ts` §contentKey quantises this year to `YEAR_Q` = 16 steps, so a
+     run costs SIXTEEN rasterisations a year — FILM.md §6b measures that at
+     ~2,100 rasterisations and 172 s of wall clock across the film's runs, and
+     it is the single largest cost in the piece.
+
+     Only the first `YEAR_LIVE` of a year is read by anything. The arrival wave
+     is over at `RISE_WIN` (0.385) and the year's street acceptances are drawn
+     in by 0.55; past that the fabric is byte-identical until the next integer.
+     Handing out the raw fraction anyway moved the content key seven more times
+     a year and repainted the same frame each time.
+
+     So the year goes out pinned once the year's own motion is finished, which
+     takes a run from sixteen rasterisations a year to nine. **Nothing on screen
+     changes**: `scene.ts`'s `risePhase` reads `iy + 0.999` as `f >= RISE_WIN`,
+     which is the cohort fully risen, exactly what it computed from the raw
+     fraction at that point. `stEnter` below keeps using the true fraction,
+     because it is this file's own number and never goes through the key. */
+  const frac = year - iy;
+  const yearOut = running && frac < YEAR_LIVE ? year : iy + 0.999;
 
   // ── the accepted streets ──────────────────────────────────────────────────
   let stEnter = 1;
   if (running && !reduced) {
     /* the year's acceptances draw over the first 55 % of that year's passage,
        so they are finished and settled before the next year opens */
-    stEnter = Math.max(0, Math.min(1, (year - iy) / 0.55));
+    stEnter = Math.max(0, Math.min(1, frac / ST_ENTER_WIN));
   }
 
   // ── what is rising ────────────────────────────────────────────────────────
@@ -1009,6 +1155,18 @@ export function filmStateAt(
     seg: sg,
     shot: si,
     card: sg.k === "title" ? "title" : sg.k === "end" ? "end" : null,
+    /* the title washes OUT over its last `CARD_WASH` ms, so the 1906 city comes
+       up under the words; the end card washes IN over its first. Both on
+       `CURVE.fade`, which was already in this file and read by one call. */
+    cardAlpha:
+      sg.k === "title"
+        ? 1 -
+          CURVE.fade(
+            Math.max(0, Math.min(1, (t - sg.t0 - (sg.ms - CARD_WASH)) / CARD_WASH)),
+          )
+        : sg.k === "end"
+          ? CURVE.fade(Math.max(0, Math.min(1, (t - sg.t0) / CARD_WASH)))
+          : 0,
     cx, cy, scale, step, zex,
     year: yearOut,
     running,

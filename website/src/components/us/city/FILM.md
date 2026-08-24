@@ -1244,3 +1244,178 @@ the encoder re-run that puts it on screen is queued, so the 0.741 % above is wha
 the running page still does and not what it will do. Nothing in this block is
 timed against it, and it wants re-measuring — `python3 .parity/m1year.py m1by
 2013 2014 2015 2016` — once the re-run lands.
+
+## 14 · Block M1 — the motion, and the thing that was switched off
+
+> *"Mind-blowing motion design (even if prerecorded)."* · *"The camera moves and
+> the year advances; what is missing is the sense that something is happening —
+> a build wave sweeping a district rather than buildings blinking on, a hold on
+> the moment that matters, a cut that lands."*
+
+The hold and the cut are §11.3: the Golden Gate lands at 1937 and the film stops
+on it for 2.8 s. This section is the wave, and the wave turned out not to be a
+thing that needed designing. **It already existed and it was being switched off
+on every playthrough, by a verdict taken in the first seventeen seconds.**
+
+### 14.1 The film decided it could not play itself, from the wrong seconds
+
+`spare` — the version a machine that cannot draw the travels plays instead — cuts
+the camera and lands the years whole, which is to say **it turns the arrival wave
+off and makes buildings blink on**. It latches once, one way, and B3 gated it on
+`KEEP_UP_MIN_MS = 20,000` ms of wall clock, reasoning that *"the first camera
+move is at 23,400, so 20,000 leaves the tail of shot 2's run as evidence and
+still decides before the first travel."*
+
+Both halves of that are the mistake. The tail of shot 2's run **is** the startup
+cost — the same paragraph says so — and deciding before the first travel means
+deciding without one frame of the thing being judged.
+
+`.parity/m1keep.py`, a real playthrough, nothing seeked, nothing paused:
+
+    wall   film  keepUp  spare  rasters  seg
+    11.6   10.7   1.000  false      20   shot 1 hold      <- the locked camera
+    12.4   11.4   1.000  false      21   shot 2 run       <- the first cohort
+    14.6   13.1   0.748  false      27
+    16.0   13.9   0.562  false      35
+    16.9   14.4   0.612   TRUE      39   <- LATCHED
+    17.3   14.8   0.752   true      39
+    18.9   16.4   0.922   true      40
+
+Twelve seconds at 1.000, then **1.4 seconds** of the first year cohort warming
+caches — seventeen rasterisations in four — and the film threw away all eight
+travels and the whole arrival wave for the remaining 117 seconds. Median `keepUp`
+past 20 s on the same run: **0.907**. The machine could play the film and was not
+being asked to. Note the two rows after the latch: `keepUp` climbs to 0.92 *because*
+`spare` is on, so the film can never see its own mistake.
+
+**The gate is no longer a stopwatch.** Nothing is decided until the camera has
+actually tried to travel (`firstMoveT0`, the film's own first `move` segment) and
+`KEEP_UP_SUSTAIN_MS` is 1,800 — the length of the shortest move in the film — so
+a travel decides and a hiccup inside one does not.
+
+### 14.2 One verdict was two, and they do not fail together
+
+A mid-move rasterisation is the ground being repainted under a moving camera; a
+run's is the fabric changing under a fixed one, hitting the ground plate every
+time. `spare` named both costs and then threw away both on one number.
+
+Judged apart — `spareCamera`, `spareWave`, each averaged only over its own
+segments — this machine says plainly which is which:
+
+    spare camera : LATCHED at film 23,886 ms, shot 3 (move)      <- the first travel
+    spare wave   : LATCHED at film 47,756 ms, shot 5 (run)
+
+A cut camera with a running year is not an invention: it is the shape
+`camera.json` §reduced_motion argues for — *"a year going from 1924 to 1925 while
+the camera is still is not vestibular"* — and it is the half Daniel named.
+
+### 14.3 A year that is shorter than the stagger has no wave in it
+
+`STAGGER_TOTAL = 520` shipped **declared and read by nothing** — the same pattern
+as `roofF`/`wallF`, `GGB.suspenderM` and the four uncalled passes. This is what
+it means.
+
+The wave is `RISE_WIN` of a year long, so how much of it a reader sees depends on
+how long a year lasts, and the film's runs differ by a factor of sixteen:
+
+| shot | years / ms | yr/s | a year lasts | rise window |
+|---|---|---:|---:|---:|
+| 2 rebuild | 6 / 12,000 | 0.50 | 2,000 ms | 770 ms |
+| 5 tunnel | 1 / 1,600 | 0.63 | 1,600 | 616 |
+| 8 treasure island | 1 / 1,500 | 0.67 | 1,500 | 578 |
+| **6 west-fills** | 17 / 16,000 | **1.06** | **941** | **363** |
+| 7 the bridge | 2 / 1,600 | 1.25 | 800 | 308 |
+| 10 to-now | 52 / 18,000 | 2.89 | 346 | 133 |
+| 4 city-hall | 3 / 900 | 3.33 | 270 | 104 |
+| 9 yerba-buena | 27 / 3,400 | **7.94** | **126** | **49** |
+
+At shot 9's rate a year is 126 ms and its rise window is **49 ms — three frames**.
+There is no wave there to see, and asking for one costs the same rasterisation
+per `YEAR_Q` step as a wave that reads: **71 rasterisations a second.** Measured:
+shot 9's run sat at `keepUp` 0.26–0.34 *with the wave already off*, so it is the
+year RATE and not the wave that is unaffordable there — and condemning the wave
+on those frames threw it away on shot 6, where the same trace measures 0.80–0.93.
+
+So `waveFits`: **a year must last at least `STAGGER_TOTAL` for the depth stagger
+to have room.** Above that rate the year lands whole — which is what it already
+looked like — at one rasterisation a year instead of nine. And the wave's own
+verdict is taken from `s.running` rather than from "this is a run", so the runs
+that never had a wave in them cannot condemn the ones that do.
+
+Measured after, same harness: **shot 9's run 0.26–0.34 → 0.974, shot 10's →
+0.959.**
+
+### 14.4 The year was being handed out long after anything read it
+
+`renderer.ts` §contentKey quantises the film's year to `YEAR_Q` = 16 steps, so a
+run costs sixteen rasterisations a year — §6b measures that at ~2,100
+rasterisations and 172 s of wall clock across the film's runs, the single largest
+cost in the piece.
+
+Only the first `YEAR_LIVE` of a year is read by anything: the wave is over at
+`RISE_WIN` (0.385) and the year's street acceptances are drawn in by
+`ST_ENTER_WIN` (0.55). Past that the fabric is byte-identical until the next
+integer, and the raw fraction was still going out — moving the content key seven
+more times a year and repainting the same frame each time.
+
+The year is now pinned to `iy + 0.999` once its own motion is finished, derived
+from `Math.max(RISE_WIN, ST_ENTER_WIN)` rather than typed, so moving either
+constant cannot silently start pinning while something is still animating.
+**Sixteen rasterisations a year becomes nine and nothing on screen changes** —
+`scene.ts`'s `risePhase` reads `iy + 0.999` as `f >= RISE_WIN`, the cohort fully
+risen, which is exactly what it computed from the raw fraction at that point.
+
+Measured on shot 2's run, same harness, same film milliseconds: **19 rasterisations
+a second of film → 10**, and `keepUp` through that run climbed from a floor of
+0.305 to 0.99 by the end of it.
+
+### 14.5 The title card was a cut, and the film's first gesture
+
+B3's frame sheet found it and named the cause: *"the title card's wash is a step,
+not a fade. `CURVE.fade` exists and this is not using it."* The card is mounted by
+`card ? … : null` and carried `transition: opacity 420ms`, which never runs —
+**an element removed from the DOM does not transition out.**
+
+A CSS transition could not have been right anyway: it runs on wall time, so a
+scrub into the middle of the wash would land on whatever the browser happened to
+be doing rather than on the frame playback produces. `FilmState.cardAlpha` is a
+lookup like everything else in this file — the title washes out over its last
+`CARD_WASH` = 700 ms and the end card washes in over its first, both on
+`CURVE.fade`.
+
+Measured, mean luminance of the whole frame across the wash
+(`out/m1card-strip.png`):
+
+    t = 2,000   234.3      the card, over a ghost of the city
+    t = 2,500   216.2
+    t = 2,800   197.3
+    t = 2,980   191.9      the 1906 frame, the words gone
+
+Kept under `reduced` and under `spare`. A cross-fade is not vestibular and it
+costs no rasterisation, because it is one DOM opacity.
+
+### 14.6 Where this leaves the film, honestly
+
+On a machine that can draw the travels, `spareCamera` never latches and the eight
+travels play as authored. On this harness — **headless Chromium, CPU raster, the
+dev server, four other agents recompiling the tree throughout** — it still latches
+on the first travel, because a travel here genuinely costs 0.6–1.2 s a frame.
+§6b's fourth open item stands and this block did not settle it: *"whether any of
+this is a headless artefact"* is still open, and a GPU-backed browser is a
+different measurement.
+
+What DID change on every machine, headless included:
+
+- the verdict is taken on frames that are evidence about the thing being judged,
+  so a fast laptop is no longer condemned by its own startup;
+- the two halves are judged apart, so losing the travels no longer costs the wave;
+- the wave runs where there is room for it and stops pretending everywhere else,
+  which is better motion **and** 9× cheaper on shots 4, 9 and 10;
+- a run costs nine rasterisations a year instead of sixteen, for no visible change;
+- the film's first gesture is a wash rather than a cut.
+
+**Still open, and named rather than attempted:** `renderer.ts`'s
+`const moving = film ? false : …` (§6b item 2) — a film rasterisation taken
+mid-travel paints the ground at settled quality, and B3 measured the motion tier
+halving the worst frame. It is one word and it is not this block's word. With it,
+`spareCamera` would very likely stop latching here too.
