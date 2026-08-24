@@ -171,6 +171,11 @@ export function datasetJsonLd(input: {
   /** Spatial coverage, ex: "Paris, France" */
   spatialCoverage?: string;
   license?: string;
+  /** Who produced the underlying data. Defaults to the City of Paris for the
+   *  Paris sections that were the first callers; a commune's figures come
+   *  from the national treasury, San Francisco's from DataSF, Recife's from
+   *  the Prefeitura. */
+  creator?: string;
 }) {
   return {
     '@context': 'https://schema.org',
@@ -185,7 +190,7 @@ export function datasetJsonLd(input: {
       ? { '@type': 'Place', name: input.spatialCoverage }
       : undefined,
     license: input.license ?? 'https://opendatacommons.org/licenses/odbl/',
-    creator: { '@type': 'Organization', name: 'Ville de Paris' },
+    creator: { '@type': 'Organization', name: input.creator ?? 'Ville de Paris' },
     publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     isAccessibleForFree: true,
   };

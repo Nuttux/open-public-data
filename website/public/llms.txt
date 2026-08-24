@@ -1,34 +1,80 @@
 # Qipu
 
-> Open data de la Ville de Paris et des 20 plus grandes villes françaises, rendue lisible. Budget, subventions, marchés publics, logements sociaux, investissements : visualisations interactives et données téléchargeables.
+> Public money, made legible. Qipu takes the data a city already publishes —
+> budgets, contracts, grants, payroll, public works — and turns it into pages a
+> resident can read, with every figure linked back to the file it came from.
+> Three cities are live in three languages, alongside every French commune.
 
-Site produit par Qipu, une initiative citoyenne indépendante. Pipeline open source qui transforme les Comptes administratifs (Open Data Paris) et les données DGFiP / OFGL / DECP en visualisations Sankey, tableaux de bord et cartes.
+Independent project, open pipeline. Sources are official open data portals and
+public accounts: Paris Open Data, DGFiP/OFGL, DECP (France), DataSF and the
+Internet Archive (United States), Prefeitura do Recife (Brazil). Nothing here is
+an estimate: each figure carries a link to the dataset row that produced it.
 
-## Sections principales
+## Cities
 
-- [Accueil](https://qipu.org/): vue d'ensemble du budget de Paris.
-- [Budget de Paris](https://qipu.org/budget): 11,7 Md€ en 2026 (budget voté), ventilés en Sankey par section (fonctionnement / investissement), par thématique et par entité. Séries 2019-2026. Source : Open Data Paris (Comptes administratifs).
-- [Évolution pluriannuelle](https://qipu.org/evolution): recettes, dépenses, solde, épargne brute depuis 2019, avec comparaison voté vs exécuté.
-- [Subventions](https://qipu.org/subventions): plus de 6 000 subventions / an versées par Paris aux associations et organismes. Années 2018-2024 (2020-2021 manquantes pour cause COVID).
-- [Investissements](https://qipu.org/investissements): projets municipaux géolocalisés arrondissement par arrondissement, extraits des PDFs du Conseil de Paris.
-- [Patrimoine & dette](https://qipu.org/patrimoine): bilan comptable annuel (actif, passif, fonds propres, dette financière).
-- [Marchés publics](https://qipu.org/marches-publics): commande publique de Paris depuis 2017 (source DECP).
-- [Logements sociaux](https://qipu.org/logements): carte des logements sociaux financés par Paris depuis 2010.
-- [Tableau de bord](https://qipu.org/tableau-de-bord): KPI financiers synthétiques (coût par habitant, taux d'épargne, part de l'investissement).
-- [Prévision / voté vs exécuté](https://qipu.org/prevision): écarts entre budget voté et dépenses réellement exécutées.
-- [Blog](https://qipu.org/blog): articles méthodologiques et décryptages.
-- [Villes françaises](https://qipu.org/fr/villes): comparaison des finances des 20 plus grandes villes de France (source DGFiP normalisée).
+- [Paris](https://qipu.org/): budget, grants, public contracts, investments,
+  social housing, debt, and 182 places with the money that reached each.
+- [San Francisco](https://qipu.org/us/city/sf): budget 2007–2027 and a timeline
+  back to 1888, contracts, payroll, who the city pays, and 171 places with their
+  archival record.
+- [Recife](https://qipu.org/br/city/recife): orçamento, 7 912 contratos, quem
+  recebe, and 1 068 lugares. In Portuguese.
+- [Marseille](https://qipu.org/fr/city/marseille): budget, places, work in
+  progress.
 
-## Données et méthodologie
+## France, nationally
 
-- **Paris** : principale source = Open Data Paris (Comptes administratifs), complétée par les PDFs du Conseil de Paris (investissements localisés) et la SCDL (subventions).
-- **Villes françaises** : source = DGFiP (Comptes individuels des collectivités) + OFGL + DECP. Ces données sont normalisées au format national, ce qui permet la comparaison inter-villes. Attention : pour Paris, les chiffres DGFiP de la section Villes diffèrent du Compte administratif officiel utilisé sur `/budget` (périmètres comptables différents, écart possible de plusieurs centaines de millions d'euros).
-- Pipeline : open source (Python, BigQuery, dbt) — transformation reproductible.
-- Population Paris utilisée pour les ratios par habitant : 2 133 111 (INSEE).
-- Années COVID (2020, 2021) marquées d'un astérisque sur les graphiques d'évolution et exclues de certaines comparaisons.
+- [State budget](https://qipu.org/fr/national/budget): where national revenue
+  comes from and where it goes.
+- [Daily bread](https://qipu.org/fr/national/daily-bread): the same money seen
+  per inhabitant, per day.
+- [Debt](https://qipu.org/fr/national/dette) ·
+  [Taxation](https://qipu.org/fr/national/fiscalite) ·
+  [The State](https://qipu.org/fr/national/etat)
+- **Every French commune** has a budget page at
+  `https://qipu.org/fr/city/{commune-slug}` — 34 932 of them, built from the
+  accounts published by the DGFiP and harmonised by the OFGL. Example:
+  [Lille](https://qipu.org/fr/city/lille).
+- [Compare communes](https://qipu.org/comparer)
 
-## Licence
+## Paris sections
 
-- Données brutes : licences d'origine (Licence Ouverte pour Open Data Paris, ODbL pour certaines).
-- Code source : pipeline reproductible (accès sur demande).
-- Contenu éditorial : libre de réutilisation avec attribution.
+- [Budget](https://qipu.org/fr/city/paris/budget) ·
+  [Grants](https://qipu.org/fr/city/paris/subventions) ·
+  [Public contracts](https://qipu.org/fr/city/paris/marches) ·
+  [Investments](https://qipu.org/fr/city/paris/investissements) ·
+  [Social housing](https://qipu.org/fr/city/paris/logement) ·
+  [Debt and assets](https://qipu.org/fr/city/paris/dette) ·
+  [Places](https://qipu.org/fr/city/paris/lieux)
+
+## Entity pages
+
+Every organisation, contract, supplier and place has its own page:
+
+- `https://qipu.org/fr/city/paris/lieu/{slug}` — a Paris place
+- `https://qipu.org/fr/city/paris/subventions/association/{name}` — a grant recipient
+- `https://qipu.org/fr/city/paris/marches/contrat/{number}` — a Paris contract
+- `https://qipu.org/us/city/sf/places/place/{slug}` — a San Francisco place
+- `https://qipu.org/us/city/sf/who-gets-paid/payee/{slug}` — a San Francisco payee
+- `https://qipu.org/us/city/sf/contracts/contract/{number}` — a San Francisco contract
+- `https://qipu.org/br/city/recife/lugares/{slug}` — a Recife place
+- `https://qipu.org/br/city/recife/quem-recebe/{cnpj}` — a Recife recipient
+
+## Method and limits
+
+- [Method](https://qipu.org/methode): how each figure is built, source by source.
+- [Corrections](https://qipu.org/corrections): every correction, with its date
+  and scope.
+- [Analyses](https://qipu.org/analyses): written pieces.
+- [For cities](https://qipu.org/pour-les-villes): what it takes to build this for
+  another city.
+
+Known limits, stated because they matter when citing this site: grants data for
+Paris is missing 2020–2021; French procurement coverage depends on what each
+authority declares to DECP; San Francisco's paid and agreed contract amounts
+come from two different datasets and do not always reconcile; individual private
+persons who receive grants are never named or indexed.
+
+## Contact
+
+daniel@qipu.org

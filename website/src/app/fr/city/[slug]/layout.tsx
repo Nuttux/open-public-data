@@ -3,6 +3,7 @@ import { findCommuneByAny } from "@/lib/all-communes";
 import { getCityOrNull } from "@/lib/cities";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
 import { CommuneNavProvider, type CommuneNav } from "@/components/CommuneNavContext";
+import { datasetJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 /**
  * Provides commune-scoped navigation context to the chrome (Navbar +
@@ -40,5 +41,48 @@ export default async function CityLayout({
   // resolvable name; otherwise leave the default chrome untouched (value null).
   const value: CommuneNav | null =
     sections.length > 0 && nom ? { slug, nom, sections } : null;
-  return <CommuneNavProvider value={value}>{children}</CommuneNavProvider>;
+
+  // Dataset + Breadcrumb schema for every commune page. The site publishes
+  // Dataset markup on a handful of Paris and Marseille hubs but on none of the
+  // ~35k commune pages, which are the bulk of the corpus and the pages a
+  // search or an AI engine is most likely to surface for "budget commune X".
+  const commune = findCommuneByAny(slug);
+  const rich = getCityOrNull(slug);
+  const label = nom ?? slug;
+  const where = commune
+    ? `${commune.nom}, ${commune.dep_name}, France`
+    : rich
+      ? `${rich.nom}, France`
+      : "France";
+  const schemas = nom
+    ? [
+        datasetJsonLd({
+          name: `${label} — finances locales`,
+          description: `Budget, dette et fiscalité de la commune de ${label}, à partir des comptes publiés par la DGFiP et harmonisés par l'OFGL.`,
+          path: `/fr/city/${slug}`,
+          keywords: ["budget communal", "finances locales", "dette", "fiscalité", label],
+          spatialCoverage: where,
+          creator: "DGFiP / OFGL",
+          license: "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+        }),
+        breadcrumbJsonLd([
+          { name: "Qipu", path: "/" },
+          { name: "Communes", path: "/comparer" },
+          { name: label, path: `/fr/city/${slug}` },
+        ]),
+      ]
+    : [];
+
+  return (
+    <CommuneNavProvider value={value}>
+      {schemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+      {children}
+    </CommuneNavProvider>
+  );
 }
