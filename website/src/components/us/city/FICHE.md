@@ -1655,3 +1655,22 @@ Cesar Chavez and Potrero, with block 3549's own ring and pin inside it), and
 3. **A hood-level "went quiet"** has no sentence. `quietAfter` is a block idea
    and no hood falls silent, so nothing was written rather than writing a
    sentence for a state that does not occur.
+
+### k. Verified after the commit, on the running page
+
+- **No `us.sf.` key reaches the screen.** The panel's `innerText` dumped on five
+  blocks — 3549, 0787, 3724, 0001, 1705 — and grepped: none. That is the check
+  §14 used twice and it is the one that proves `EN_SUM`'s deletion was safe.
+- **The place fiche still opens OVER the map, and now from the neighbourhood's
+  own link too.** After the click: URL `/us/city/sf/places/place/moscone-center`,
+  `canvas` still mounted, `.fx-drawer` present. **A first run reported this
+  BROKEN and it was the harness**: the link sits at y = 911 in a 900 px viewport,
+  and Playwright's `.click()` without `scroll_into_view_if_needed` never landed
+  on it. The three remaining `<a>` in the panel are all external `https://`
+  source links with `target="_blank"`, which is what an anchor is for.
+- **The film clears the divisions**, exactly as it clears the pin — 4 SVG paths
+  and a pin before, 0 and none during. (Setting `renderer.filmOn` from a script
+  does NOT show this: nothing pushes a React render, so the overlay keeps the
+  frame it had. The real transport control does, and that is what was measured.)
+- **No frame cost.** A real drag at the whole-city stop: 88 fps with the layer,
+  88 fps with `hood-rings.json` aborted at the network.
