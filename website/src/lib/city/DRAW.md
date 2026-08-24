@@ -8855,3 +8855,53 @@ valid pair and turn it on; (2) re-sample two levels and a share per footprint,
 (3) nothing. **Not (4), a directional gradient declared as "derived, not
 sampled", which would read as detail and be wrong about every flat roof in the
 city.**
+
+### 38.7 The frames, and the control that came free with them
+
+`.parity/g1yr4.py` — the same camera in four years, city zoom and district
+zoom, camera asserted after every shutter, the frame's own luminance read back
+through `getImageData` in the same run. BEFORE is the production build at
+`:3100` (commit `35524e0e`); AFTER is the same four cameras with this block in.
+
+```
+  camera                      bld     massed    mean L      % > 200
+                                              before/after  before/after
+  W-city-1915               6,480     2,910   195.4/194.9   48.3/47.8
+  W-city-1950              10,576     4,393   193.4/192.0   44.7/43.8
+  W-city-1980              13,052     4,775   192.6/189.8   43.7/42.5
+  W-city-2025              15,019     4,913   192.2/192.2   42.9/42.9
+  D-dist-miss-1915         38,006         0   181.0/181.1   47.9/47.9
+  D-dist-miss-1950         69,516         0   168.8/169.8   36.5/36.6
+  D-dist-miss-1980         84,502         0   158.4/161.1   30.6/30.7
+  D-dist-miss-2025         91,889         0   165.5/165.5   27.8/27.8
+
+  per-pixel, before vs after
+  D-dist-miss-1915   mean|d| 1.68   14 % of pixels move > 4   max  98
+  D-dist-miss-1950   mean|d| 2.91   14 % of pixels move > 4   max 116
+  W-city-1950        mean|d| 1.88   10 % of pixels move > 4   max 139
+  W-city-2025        mean|d| 0.000   0.000 % move > 2         max   0
+  D-dist-miss-2025   mean|d| 0.000   0.000 % move > 2         max   0
+```
+
+**Not one pixel of 3.25 million moves at 2025, on either tier.** §34.4's
+property 1 is not an argument in a comment any more; it is a measurement, and
+`palette.test.ts` asserts the mechanism behind it.
+
+And a control nobody set out to run: **the 2025 pair is byte-identical across a
+PRODUCTION build and a DEV server**, different processes, different ports, half
+an hour apart. §37.1 established determinism within a production build; this
+says that at an asserted camera on these two cameras the dev server draws the
+same frame as production. It does not license dev for the AO work — that is a
+low-frequency difference of a few levels and §31.2's instability was measured
+on chunk COVERAGE at a district camera — but it does mean the before/after
+above is a single-variable comparison and not a comparison of two servers,
+which is the mistake §37.5 records.
+
+What the four frames look like, which is the part a number cannot carry:
+`out/crop-{yr4,fam}-D1950.jpg` and `out/crop-{yr4,fam}-D1980.jpg` are the same
+900 x 600 crop of the Mission. Before, both years are a single dark olive mass
+with the individual houses barely separable. After, the same blockfaces read as
+a fabric — brown, tan, slate and pale roofs next to each other, the way the
+1915 frame Daniel approved of already did. **The 1915 frame itself is
+essentially unmoved** (mean 133.6 → 134.1), which was the requirement: the fix
+had to reach the years he objected to without touching the year he liked.
