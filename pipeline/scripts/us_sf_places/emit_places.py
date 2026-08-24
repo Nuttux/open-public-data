@@ -154,6 +154,7 @@ YRULE = [
     "the roll year of the footprint it resolves to",
     "the first dated building inside its own extent",
     "the made-land year of the ground under it",
+    "the completion year of the structure the renderer draws under it",
 ]
 
 FIELD_SOURCE = {
@@ -459,6 +460,28 @@ def main() -> int:
     rep = dict(doc["report"])
     if extra:
         rep["from_hero_register"] = [q["n"] for q in extra]
+
+    # THE NAME MAY NOT PREDATE THE THING. `97yj-54sx` gives the Golden Gate
+    # Bridge `yearbuilt` 1933 — the year construction BEGAN — and this file was
+    # writing that as the first year the name may be drawn. `landmarks.ts`
+    # §GGB already made the correction in its own words ("construction began
+    # and 1937 is when the bridge was completed, 19 April") and this file
+    # already ships `ggbYr: 1937` beside the ring. Two independent statements
+    # of one quantity, and the label was reading the wrong one: verified on the
+    # film's own frames, "Golden Gate Bridge" was written over open water at
+    # map-year 1935, two shots before the deck it names arrives.
+    #
+    # The row that carries the structure is flagged in the data itself, so this
+    # is an exact join and not a name match. It asserts rather than falls back:
+    # a rung that silently does nothing is how the first version of this bug
+    # survived.
+    ggb_yr = int(doc["ggbYr"])
+    ggb_rows = [q for q in pl if q.get("ggb")]
+    assert ggb_rows, "no place row carries the ggb flag - the rung cannot fire"
+    for q in ggb_rows:
+        q["y0"] = ggb_yr
+        q["y0rule"] = YRULE[5]
+    rep["structure_year_applied"] = {q["n"]: ggb_yr for q in ggb_rows}
 
     srcs = sorted({p["src"] for p in pl})
     six = {s: i for i, s in enumerate(srcs)}
