@@ -162,6 +162,99 @@ FIELD_SOURCE = {
 
 
 HEROES = OUT / "base" / "heroes.json"
+PARKS = OUT / "base" / "parks.qc"
+
+# THE GROUND HAS TO BE MATERIALLY BIGGER THAN THE THING STANDING ON IT.
+# A ring is a container only where its area is at least this many times the
+# place's own extent area (`span` squared, which is how `span` is defined). It
+# is a statement about what "inside" is worth saying, not a tuning knob: at 1x
+# a park would contain itself, and Golden Gate Park's own point sits inside
+# Golden Gate Park.
+CONTAINED_RATIO = 4.0
+
+
+def _park_rings() -> list[tuple[float, float, float, float, float, list]]:
+    """`base/parks.qc`'s own polygons, decoded. World metres.
+
+    The published extents of the parks, in the file the map already draws them
+    from: `cls` per ring, `len` vertices per ring, `xy` as i32 DECIMETRES. Read
+    here rather than re-fetched, so a containment claim is a claim about the
+    ground the reader can see.
+    """
+    if not PARKS.exists():
+        return []
+    b = PARKS.read_bytes()
+    hl, pl_, crc = struct.unpack("<III", b[4:16])
+    hdr = json.loads(b[16:16 + hl].decode())
+    poff = (16 + hl + 7) // 8 * 8
+    pay = b[poff:poff + pl_]
+    f = {q["n"]: q for q in hdr["fields"]}
+    ln = struct.unpack_from(f"<{f['len']['c']}H", pay, f["len"]["o"])
+    xy = struct.unpack_from(f"<{f['xy']['c']}i", pay, f["xy"]["o"])
+    out, o = [], 0
+    for n in ln:
+        r = [(xy[o + 2 * k] / 10.0, xy[o + 2 * k + 1] / 10.0) for k in range(n)]
+        o += 2 * n
+        if len(r) < 3:
+            continue
+        a2 = sum(r[k][0] * r[(k + 1) % len(r)][1] - r[(k + 1) % len(r)][0] * r[k][1]
+                 for k in range(len(r)))
+        xs = [q[0] for q in r]
+        ys = [q[1] for q in r]
+        out.append((abs(a2) / 2, min(xs), min(ys), max(xs), max(ys), r))
+    return out
+
+
+def _in_ring(r: list, px: float, py: float) -> bool:
+    n = len(r)
+    ins = False
+    for k in range(n):
+        x1, y1 = r[k]
+        x2, y2 = r[(k + 1) % n]
+        if (y1 > py) != (y2 > py):
+            if x1 + (py - y1) * (x2 - x1) / (y2 - y1) > px:
+                ins = not ins
+    return ins
+
+
+def contained_flags(pl: list[dict]) -> list[bool]:
+    """Which places stand INSIDE a published ground materially larger than them.
+
+    THE CLASS OF BUG THIS IS FOR, measured before it was fixed. The whole-city
+    frame could not write GOLDEN GATE PARK at any of the five zooms, and the
+    only thing on the shared collision grid that overlapped its box was
+    `Beach Chalet` — a restaurant standing inside the park, which carries an
+    Article 10 designation and therefore runs in the FIRST lane, before the
+    neighbourhood capitals. That is not one bad row. **498 of the 2,192 places
+    stand inside a park ring at least four times their own extent**, twelve of
+    them designated, and every one of them is a candidate to spend a ground's
+    own name: Mother's Building inside the Zoo, the Stow Lake Boathouse inside
+    Golden Gate Park, the Trocadero Clubhouse inside Stern Grove, City Cemetery
+    inside Lincoln Park, four branch libraries inside their own parks.
+
+    THE RANKING HAD NO NOTION OF ONE PLACE BEING INSIDE ANOTHER, and that is
+    the defect. Span order alone says a 129 m restaurant outranks nothing at
+    all, because the 2,048 m park it stands in is in a different lane and the
+    lanes are ordered by `scene.ts`, not by this file.
+    """
+    rings = _park_rings()
+    if not rings:
+        return [False] * len(pl)
+    out = []
+    for q in pl:
+        px, py = float(q["x"]), float(q["y"])
+        own = float(q.get("span") or 0.0) ** 2
+        hit = False
+        for a, x0, y0, x1, y1, r in rings:
+            if not (x0 <= px <= x1 and y0 <= py <= y1):
+                continue
+            if a < CONTAINED_RATIO * own:
+                continue
+            if _in_ring(r, px, py):
+                hit = True
+                break
+        out.append(hit)
+    return out
 
 
 def order_places(pl: list[dict]) -> list[dict]:
@@ -199,12 +292,33 @@ def order_places(pl: list[dict]) -> list[dict]:
     register. If a hero is added or removed the ranking follows with no edit
     here.
     """
-    if not HEROES.exists():
+    hero_bi = ({h["b"] for h in json.loads(HEROES.read_text())["heroes"]}
+               if HEROES.exists() else set())
+    cont = contained_flags(pl)
+    for q, c in zip(pl, cont):
+        q["_contained"] = bool(c)
+    if not hero_bi and not any(cont):
         return pl
-    hero_bi = {h["b"] for h in json.loads(HEROES.read_text())["heroes"]}
-    if not hero_bi:
-        return pl
-    return sorted(pl, key=lambda q: 0 if q.get("bi") in hero_bi else 1)
+    # TWO KEYS, AND WHICH ONE WINS IS THE WHOLE ARGUMENT.
+    #
+    #   1. a hero's footprint goes FIRST
+    #   2. a place standing inside a materially larger published ground goes
+    #      LAST
+    #
+    # A hero beats containment and it has to: Coit Tower stands inside Pioneer
+    # Park and the Palace of Fine Arts rotunda inside its own lagoon ring, and
+    # both are the REASON a reader is looking at that ground. The map already
+    # spends its emphasis on them. Demoting them would undo the fix in the
+    # commit above.
+    #
+    # And demotion is not a re-lane: it cannot put Golden Gate Park ahead of
+    # Beach Chalet, because one is designated and the other is not and
+    # `scene.ts` walks the classes in a fixed order. What it does is spend the
+    # designated class's EXACT ink budget on the rows that are not standing on
+    # somebody else's name first — and at the whole-city camera that budget
+    # binds after eight names, so the ground gets its box back.
+    return sorted(pl, key=lambda q: (0 if q.get("bi") in hero_bi else 1,
+                                     1 if q["_contained"] else 0))
 
 
 def main() -> int:
@@ -230,7 +344,8 @@ def main() -> int:
     w.add(
         "fl",
         "u8",
-        [(1 if p["des"] else 0) | (2 if p["ggb"] else 0) | (4 if p["old"] else 0) for p in pl],
+        [(1 if p["des"] else 0) | (2 if p["ggb"] else 0) | (4 if p["old"] else 0)
+         | (8 if p.get("_contained") else 0) for p in pl],
     )
     w.add("src", "u8", [six[p["src"]] for p in pl])
     w.add("yrule", "u8", [yruleof(p) for p in pl])
@@ -376,7 +491,8 @@ def write_marks(pl: list[dict], doc: dict) -> None:
         "s": b64("H", [max(1, min(65535, int(round(p["span"])))) for p in pl]),
         "b": b64("i", [p["bi"] if p["bi"] is not None else -1 for p in pl]),
         "yr": b64("H", [max(0, min(65535, int(p["y0"]))) for p in pl]),
-        "d": b64("B", [(1 if p["des"] else 0) | (2 if p["ggb"] else 0) for p in pl]),
+        "d": b64("B", [(1 if p["des"] else 0) | (2 if p["ggb"] else 0)
+                       | (8 if p.get("_contained") else 0) for p in pl]),
         "src": b64("B", [six[p["src"]] for p in pl]),
         "SRC": srcs,
         "ggb": doc["ggb"],

@@ -5011,3 +5011,86 @@ Two things survive it and are kept:
   this file wrote, so a key that *was* ours and is no longer claimed is
   dropped — **after** the byte-for-byte round trip has been proved, never
   before, and rows that came out of the mock are never touched.
+
+### 21.16 The ranking had no notion of one place being inside another — 498 of 2,192
+
+§21.13 left GOLDEN GATE PARK unnamed at all five zooms with the cause named:
+`Beach Chalet`, a restaurant standing *inside* the park, carries an Article 10
+designation and therefore runs in the **first** lane, before the neighbourhood
+capitals, and takes the park's box. That is not one bad row. Measured against
+`base/parks.qc` — the published park polygons the map already draws, decoded in
+`emit_places.py` `_park_rings`:
+
+> **498 of the 2,192 places stand inside a park ring at least four times their
+> own extent. Twelve of them are designated.**
+
+The twelve, by span: `Beach Chalet` (129 m, inside an 856,308 m² ring),
+`Palace Of Fine Arts`, `Mother's Building` (61 m, inside the Zoo),
+`Marina Branch Library`, `Parkside Branch Library`, `Richmond Branch Carnegie
+Library`, `Coit Tower`, `Stow Lake Boathouse` (16 m, inside 982,912 m² of
+Golden Gate Park), `Trocadero Clubhouse` (Stern Grove), `City Cemetery`
+(Lincoln Park), `Shipwright's Cottage`, `Sunnyside Conservatory`. Every one is
+a candidate to spend a ground's own name on the wide frame.
+
+**The ratio is a statement, not a knob.** A ring is a container only where its
+area is at least **four times** the place's own extent area (`span²`, which is
+how `span` is defined). At 1× a park contains itself: Golden Gate Park's own
+point sits inside Golden Gate Park.
+
+**And demotion is not a re-lane.** It cannot put `Golden Gate Park` ahead of
+`Beach Chalet` — one is designated and one is not, and `scene.ts` walks the
+classes in a fixed order that this file cannot reach. What it does is make the
+designated class spend its **exact** ink budget on the rows that are not
+standing on somebody else's name first, and at the whole-city camera that
+budget binds after eight names, so the ground gets its box back. Two sort keys
+and the precedence between them is the whole argument:
+
+1. a **hero's** footprint goes first;
+2. a place standing inside a materially larger published ground goes **last**.
+
+**A hero beats containment and it has to.** Coit Tower stands inside Pioneer
+Park and the Palace of Fine Arts inside its own lagoon ring — both are flagged,
+both are the *reason* a reader is looking at that ground, and the map already
+spends its emphasis on them. Demoting them would undo §21.12.
+
+Measured, `.parity/g3/why.py`, home whole-city camera:
+
+| | before §21.12 | after §21.12 | after this |
+|---|---|---|---|
+| `GOLDEN GATE PARK` (hood) | `grid` | `grid` | **written** |
+| `San Francisco City Hall` | `grid` | written | written |
+| `Coit Tower` | `grid` | written | written |
+| `Ferry Building` | `grid` | written | written |
+| hood names placed | 12 | 12 | **13** |
+| designated written | 8 | 8 | 7 |
+
+The frame gains `GOLDEN GATE PARK` and `HAIGHT ASHBURY` and loses `Beach
+Chalet` and `Mother's Building`.
+
+**And it costs nothing when the reader is looking at the thing.** Acceptance
+test, camera anchored on Beach Chalet itself (−6354, 1035): `Beach Chalet` is
+written at city, district **and** block, and at district it is written
+*alongside* `Golden Gate Park`. The demotion only stops a contained place from
+spending a distant ground's name on a frame that is not about it.
+
+The bit is shipped and inspectable — `fl` bit 3 in `base/places.qc` and `d` bit
+3 in `base/marks.json` — so the claim can be checked without re-running the
+build. `decodeMarks` in `CityMap.tsx` reads `d & 1` and is unaffected.
+
+### 21.17 Two harness traps this cost an hour to, both worth the sentence
+
+- **`emit_places.py … | head -3` truncates the build.** `head` closes the pipe,
+  the writer takes SIGPIPE, and the script dies *after* `base/places.qc` and
+  *before* `write_marks`. The chunk and the sidecar then disagree with
+  `base/marks.json` — which is the file `CityMap` actually fetches — and the
+  frame does not change while every number you check says it should have.
+  Measured: `places.qc` had Beach Chalet at row 1,722 and `marks.json` had it
+  at 131. **Never pipe an emitter into `head`.**
+- **Re-running `encode_city_chunks.py` reverts both sidecar registers.** It
+  rebuilt `base/heroes.*` and `base/marks.json` from the mock mid-session and
+  put the eleven heroes and the span-ordered marks back. This is the trap
+  `emit_places.py` and `emit_heroes.py` both state in their own docstrings, and
+  it is real: **after any run of the city encoder, re-run
+  `emit_heroes.py` and then `emit_places.py --marks`, in that order** — the
+  place ranking reads `base/heroes.json`, so the hero register has to be right
+  before the places are ordered against it.
