@@ -115,10 +115,11 @@ costs one rasterisation and a fractional one costs nothing.
   because at 1954 the Mission block carried 3,254 undated canopy blobs and 0
   undated street trees and the two files contradicted each other on one frame.
   MEASURED: the 1954 → 1955 step at that camera fell from **6.006 to 0.151**
-  against a 0.000 control, while the district camera — where street trees are
-  weighted to zero — reported 0.463 before and 0.463 after, which is the proof
-  the delta was trees and nothing else. The hand-written gate in this file is
-  one `applyUndatedTreeGate(year)` call again. `time.ts` §THE UNDATED TREES.
+  against a 0.000 control; at the street camera it fell from 3.417 to **0.000**,
+  byte-identical. The hand-written gate in this file is one
+  `applyUndatedTreeGate(year)` call again. `time.ts` §THE UNDATED TREES,
+  FILM.md §17.1 — which also carries the false control row this block published
+  and withdrew, and the harness trap behind it.
 
 - ~~The rail is empty over its last 78 years~~ — the stretch past `lastSwept`
   is now **hatched as unrecorded rather than left bare**, on the block panel's

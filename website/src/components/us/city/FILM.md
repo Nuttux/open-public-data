@@ -1682,18 +1682,26 @@ pair, `.parity/g2cliff.py`:**
 | block, Mission | 0.000 | **0.151** (was 6.006) | 0.836 |
 | block, Sunset | 0.000 | **0.374** (was 2.697) | 0.800 |
 | street, Civic Center | 0.000 | **0.000** (was 3.417) | 1.594 |
-| district, Mission | 0.000 | **0.463** (was 0.463) | 1.278 |
 
-The pop is gone: 1954 → 1955 is now **smaller than** 1955 → 1960 at every
-camera, which is the opposite of what it was, and at the street camera the two
-frames are byte-identical. What is left is buildings arriving.
+The pop is gone: 1954 → 1955 is now **smaller than** 1955 → 1960 at all three,
+which is the opposite of what it was, and at the street camera the two frames
+are byte-identical — zero trees changed hands.
 
-**And the district row is the control that makes the rest of the table
-trustworthy.** At z = 2.9 street trees are weighted to exactly zero, so nothing
-about trees can move there — and it reports **0.463 before the change and 0.463
-after it**, unchanged to three decimals across a two-hour gap on a dev server
-four agents are recompiling. The delta the other three lost was trees and
-nothing else.
+**A FALSE ROW, CAUGHT AND WITHDRAWN, and the trap is worth more than the row
+was.** This table first carried a fourth line — *district, Mission, 0.463 before
+and 0.463 after* — presented as the control that made the other three
+trustworthy: street trees are weighted to exactly zero at z = 2.9, so a camera
+that cannot draw one should report the same number either side of a tree change.
+The reasoning is right and the number was not measured. **The district camera
+failed all five of its retries** (`prod not ready`, then `Execution context was
+destroyed` — a Fast Refresh from another agent) and `g2cliff.py` writes its PNGs
+under fixed names, so the run left the PREVIOUS sweep's files on disk and my
+differ read them happily. `ls -la` on the output directory is what caught it:
+three cameras stamped 18:21–18:29 and one stamped 17:51, half an hour before the
+change went in. "0.463 before and 0.463 after" was the same file twice.
+
+`G2CAMS=<name>` now re-runs one camera, and the trap is written into
+`g2cliff.py` beside it. The honest version of the control is below.
 
 Four of five zooms showed it. The fifth was not a counter-example: at z = 2.9 `bandW(z,
 VZ_T0 = 2.9, …)` weights street trees to exactly zero, so nothing about trees
@@ -1822,3 +1830,67 @@ which is now the same sentence the rail and the panel both print
 (`us.sf.thecity.panel.sum_rail_end`). Three surfaces, one wording, one constant.
 The film's 2018 and the rail's 2025 are each their own corpus's last year and
 need no change.
+
+### 17.5 Smoothness: one lever landed, and the largest one is already dead in its own file
+
+§15.3 costed three designs and recommended C, "keep it live and remove the
+cost", with three named items. Two of the three do not survive contact.
+
+**Item 1 — `renderer.ts`'s `const moving = film ? false : …` — was already
+tried, measured and rejected, in that file's own comment.** It is directly above
+the line, it names the ablation it ran, and it prints the numbers:
+
+> *"`buildings.ts`'s two motion rungs … look like the obvious lever on a
+> mid-move rasterisation, and they were tried here. **They bought nothing**:
+> over the seven camera moves, rAF-counted, the worst frame moved 605–1443 ms
+> to 551–1300 ms, which is inside the run-to-run spread. Ablating the film's
+> own two passes as well (`?filmoff=accepted,subjects`) moved it no further."*
+
+It then gives the reason, which is the same one §15.2's profile gives from the
+other side: the cost of a film rasterisation is not the footprint loop —
+`buildings.ts` puts that at ~0.7 µs a building, 60 ms for the whole city — it is
+`TerrainField`'s 67,600 nodes and the surround's 56,330 cells, work that scales
+with neither the rungs nor the resolution. That is also why `FILM_DPR` only
+moves the worst frame 1,036 → 729 ms for a 3.3× cut in pixels.
+
+**So §15.3 item 1 is out of date and should not be handed to the buildings agent
+as a one-word fix.** The 875 → 342 halvings it cites are B3's numbers for a
+*gesture*, where `moving` also changes the slot and the placement rounding; on
+the film path the same switch was measured separately and bought nothing. This
+was worth an hour to find and would have been worth several to land and then
+discover.
+
+**Item 2 — an asymmetric margin on pull-outs — is the wrong trade for this
+demo, and it is my file so the recommendation is mine to make.**
+`planFilmBuffer` already unions the EXACT viewports over the window; there is no
+margin to widen. The only dial that lengthens a pull-out's window is the
+sharpness bound, `cover >= smax / kCap`, where `smax` is the scale at the head of
+the window. Relaxing it — taking the bound a sample or two into the window, or
+raising `EXT_K_MAX` for pull-outs only — buys rasterisations by **magnifying the
+buffer during the move**, i.e. by making the travelling frames softer. Daniel's
+first sentence in the brief is that the graphics are not detailed enough. Trading
+sharpness for frame rate in the one part of the film that is watched rather than
+scrubbed is the wrong direction tonight. Recorded, not taken.
+
+**Item 3 — `setState` on all sixty frames — LANDED, and it is in this file.**
+`CityFilm`'s frame loop called `setState(s)` every frame, re-rendering
+`FilmChrome` and diffing its whole tree, to move two numbers; §15.2's profile
+found ~130 ms of `jsxDEV` inside one 2.4 s move. Only two values in `FilmState`
+genuinely change every frame — the progress hairline's width and the title
+card's wash — and each is one style on one node. Both are now written straight
+onto their node through a ref, exactly as `CityScrub` has always written its
+handle, and `setState` fires only when something DISCRETE changes: the line of
+copy (compared by identity, because it IS the payload's own object), the card,
+the badge, the shot, the segment, `running`, or the **integer** year. This is
+`CityMap`'s own rule — *"React state is touched only when the INTEGER year
+changes"* — which the rail followed and the film did not.
+
+**And the honest hybrid from §15.3 cannot be built from this file.** "Rasterise
+the first buffer of the next move during the hold before it" is still the right
+idea and it is blocked on a fact in `renderer.ts`: there is **one** film slot.
+`wantSlot = film ? "fi" : …` is taken for holds as well as moves, so pre-warming
+`fi` with the move's wide buffer would make the *hold* blit from it — and a hold
+is where the reader is standing still reading a line of copy. It needs a second
+film slot (`fi2`) that the blit does not read from until the move starts, which
+is a renderer change and not a film one. Written down here so the next person
+does not discover the single slot after building the rest of it.
