@@ -158,6 +158,7 @@ import {
   flushFaces,
   newFaceGroups,
   storeysOf,
+  derivedBands,
   faceTakesOpenings,
   FA_CORN_M,
   FA_SHOP_FASCIA,
@@ -221,6 +222,7 @@ import {
   UMAT_WALL,
   USE_MASK,
   FLAG_NOYEAR,
+  FLAG_HEIGHT_STALE,
   WAM,
   heightBand,
   legendTones,
@@ -3502,7 +3504,23 @@ export class CityScene {
     const Hm = roofHeight(tb.h[i], tb.hf[i]);
     const st2 = face ? ((face.fields.st2 as Uint8Array)[i] ?? 0) : 0;
     const storeys = storeysOf(tb.st[i], st2);
-    if (storeys <= 0) return;
+    /* ── THE 14,532 THE ROLL DOES NOT COUNT ──────────────────────────
+       This was `if (storeys <= 0) return;` and it is the largest cause of
+       Daniel's "others have nothing, just a flat single colour polygon side"
+       that is not a pixel size: 8.75 % of the city, flat at EVERY zoom in
+       EVERY year, and 56 % of it is the one `mixed or not stated` class that
+       three separate columns already refuse (DRAW.md §43.3).
+       `derivedBands` is a DECLARED rhythm off the MEASURED height, not a
+       storey — `facades.ts` §THE BAND COUNT has the direction of the
+       derivation, the divisor's calibration against the published column
+       (70.3 % exact, 96.3 % within one band over 151,379 footprints) and the
+       three refusals. `FLAG_HEIGHT_STALE` still gets the flat wall, because
+       its height is not its own. */
+    const bandsFallback =
+      storeys > 0
+        ? 0
+        : derivedBands(Hm, (tb.u[i] & FLAG_HEIGHT_STALE) !== 0);
+    if (storeys <= 0 && bandsFallback <= 0) return;
     const roles = face ? (face.fields.role as Uint8Array) : null;
     const role = roles ? (roles[o + k] ?? ROLE_FRONT) : ROLE_FRONT;
     if (!faceTakesOpenings(role)) return;
@@ -3518,7 +3536,7 @@ export class CityScene {
        record does not hold. `faVocab` takes era < 0 as UNCLASSED. */
     const era = (tb.u[i] & FLAG_NOYEAR) !== 0 ? -1 : faEra(1849 + tb.yr[i]);
     const w = faceWeights({
-      Lm, Hm, dhPx, wallPx, storeys, role,
+      Lm, Hm, dhPx, wallPx, storeys, bandsFallback, role,
       type: face ? ((face.fields.ty as Uint8Array)[i] ?? 0) : 0,
       era,
       shop: face ? ((face.fields.shop as Uint8Array)[i] ?? 0) === 1 : false,

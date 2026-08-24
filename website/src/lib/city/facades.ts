@@ -378,6 +378,93 @@ export function storeysOf(st: number, st2: number): number {
   return st > 0 ? st : st2;
 }
 
+/* ── THE BAND COUNT WHERE THE ROLL PUBLISHES NO STOREY COUNT ─────────────
+ *
+ * `roof-data.js` `st` is `min(15, round(number_of_stories))` in four bits, and
+ * **0 means the roll publishes none: 14,532 of 166,166, 8.75 %.** Those got no
+ * bands, therefore no openings, therefore a flat wall **at every zoom, in every
+ * year, for ever** — which is the largest cause of Daniel's *"others have
+ * nothing, just a flat single colour polygon side"* that is not a pixel size.
+ * DRAW.md §43.1 has the census; §43.3 has who they are, and it is one
+ * population refused three times: **8,149 of the 14,532 are `mixed or not
+ * stated`**, the same class §34.5 refuses a roof material to and `faVocab`
+ * draws as `UNCLASSED`.
+ *
+ * THIS IS THE OPPOSITE DIRECTION FROM THE ONE `FA_NO_FITTED_FLOOR_HEIGHT`
+ * REFUSES, AND THE DIFFERENCE IS THE WHOLE JUSTIFICATION.
+ *
+ * That refusal is about **height from storeys**: taking a published count and
+ * an assumed floor-to-floor and asserting a building is that tall. It invents a
+ * measurement, and it stays refused — nothing here touches `h`, and no
+ * building's height, mass or roof plane moves by a millimetre.
+ *
+ * This is **bands from height**: the height is MEASURED per building (the
+ * LiDAR median, `hgt_mediancm`), and dividing a measured height by a declared
+ * divisor to decide how many rows of openings to draw is a global treatment
+ * with a stated divisor. It is the same kind of statement `FA_VOCAB` already
+ * is — `manifest.facade.NOT_MEASURED` says in the page's own words that the
+ * roll does not record where a window is and that the whole vocabulary is a
+ * convention declared once per (type, era). **The storey count was the one
+ * measured input into that convention; where it is absent this replaces it
+ * with a declared one, and says so.**
+ *
+ * THE DIVISOR, AND WHY IT IS NOT THE TALL BUILDING INVENTORY'S.
+ *
+ * `5kya-mfst` publishes `typ_story_height` on 130 of 180 rows, and it reads
+ * **p50 12'5" = 3.785 m** — not the 14'9" this block was handed, which is not
+ * anywhere in the middle of that distribution (DRAW.md §43.4). It is also a
+ * measurement of 130 TOWERS, and the population that needs a divisor is sheds,
+ * mixed blocks and unclassed stock. So the divisor is calibrated on **the
+ * published column itself**, over the 151,379 footprints that carry one:
+ *
+ * ```
+ *   round(H / 4.70) against the roll's own number_of_stories
+ *     exact                 70.3 %
+ *     within one band       96.3 %
+ *     mean signed error     -0.19 bands
+ * ```
+ *
+ * **4.70 m is NOT a floor-to-floor and must never be quoted as one.**
+ * `FA_NO_FITTED_FLOOR_HEIGHT` measured why: a "1-storey" Sunset house measures
+ * 6.0 m because it carries a level the Assessor does not count as floor area.
+ * 4.70 is that discrepancy folded in — it is the number that best reproduces
+ * *the column*, which is the only thing it is ever used for.
+ *
+ * THE THREE PROPERTIES THAT KEEP IT HONEST.
+ *
+ * 1. **A published count always wins.** `storeysOf` is untouched and is read
+ *    first; this is a third fallback under `st` and `st2`, never a contest.
+ * 2. **It never becomes a storey.** The storey LINES (`drawsStoreyLines`) and
+ *    the bay window (`faBayOK`) are marks whose only meaning is *this many
+ *    floors*, and both keep reading `storeysOf` — published, or nothing. Only
+ *    the opening RHYTHM, which was already a declared convention, reads this.
+ * 3. **A height that is not the building's is refused.** `FLAG_HEIGHT_STALE`
+ *    (bit 6, 541 footprints) marks a building the roll dates after the 2010
+ *    LiDAR flight: its height is whatever stood on the lot when the plane went
+ *    over. 16 of those are in this population and they keep the flat wall.
+ *
+ * Eligible: **14,516 of 166,166, 8.74 %.** 24 of them clamp at 15, which is the
+ * same clamp `build_roofs.py` puts on the published nibble, kept so the two
+ * arrive on one scale.
+ */
+export const FA_BAND_M = 4.7;
+
+/** the published nibble's own ceiling, `min(15, ...)` in `build_roofs.py` */
+export const FA_BAND_MAX = 15;
+
+/**
+ * How many bands to divide a wall into when the roll publishes no storey
+ * count. `heightStale` is `u & FLAG_HEIGHT_STALE` — a height that is not this
+ * building's is not evidence about this building, and returns 0, which is the
+ * flat wall the page always drew.
+ */
+export function derivedBands(Hm: number, heightStale: boolean): number {
+  if (heightStale) return 0;
+  if (!(Hm > 0)) return 0;
+  const b = Math.round(Hm / FA_BAND_M);
+  return b < 1 ? 1 : b > FA_BAND_MAX ? FA_BAND_MAX : b;
+}
+
 // ── the role bits ───────────────────────────────────────────────────────────
 
 /**
@@ -523,8 +610,15 @@ export interface FaceInput {
    * maximum, which is what the first cut used everywhere.
    */
   readonly wallPx?: number;
-  /** the published storey count, `st` first then `st2` */
+  /** the published storey count, `st` first then `st2`. 0 = the roll has none. */
   readonly storeys: number;
+  /**
+   * The DECLARED band count to fall back on when the roll publishes no storey
+   * count — `derivedBands(Hm, heightStale)`. Optional and **defaults to 0**,
+   * which is the refusal this file shipped before it existed, so every fixture
+   * that does not pass it measures exactly the old behaviour.
+   */
+  readonly bandsFallback?: number;
   readonly role: number;
   readonly type: number;
   readonly era: number;
@@ -594,11 +688,16 @@ export function faceWeights(i: FaceInput): FaceWeights {
   if (!FA.on) return zero;
   if (i.dhPx < FA_MIN_DH_PX) return zero;
   if (!faceTakesOpenings(i.role)) return zero;
-  // The 14.8 % (now 8.6 %) with no storey count get NO OPENINGS, not a guess.
-  // The gap is visible in the frame and it should be.
-  if (i.storeys <= 0) return zero;
   if (i.Lm < 1.2 || i.Hm < 2.0) return zero;
-  const bands = i.storeys;
+  /* THE ROLL'S OWN COUNT FIRST, ALWAYS. `bandsFallback` is only ever consulted
+     where `st` and `st2` are both silent, and it is a DECLARED rhythm and not a
+     storey — see FA_BAND_M for the direction of the derivation, the divisor's
+     calibration against the published column, and the three refusals that keep
+     it from ever becoming a claim about a building. 0 there is the flat wall
+     this file drew before, which is still what a FLAG_HEIGHT_STALE footprint
+     gets. */
+  const bands = i.storeys > 0 ? i.storeys : (i.bandsFallback ?? 0);
+  if (bands <= 0) return zero;
   const bandM = i.Hm / bands;
 
   /* THE TWO PROJECTED RATES, and they are different quantities. `hs` is px per

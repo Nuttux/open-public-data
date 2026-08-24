@@ -93,6 +93,11 @@ import {
   ROLE_PARTY,
   ROLE_FRONT,
   storeysOf,
+  derivedBands,
+  FA_BAND_M,
+  FA_BAND_MAX,
+  FA_NO_FITTED_FLOOR_HEIGHT,
+  faBayOK,
   FA_DOOR_H,
   FA_FOOT_A,
   FA_FOOT_INK,
@@ -952,6 +957,52 @@ describe("the envelope", () => {
       Lm: 14, Hm: 11, dhPx: 40, storeys: 0,
       role: ROLE_FRONT, type: 0, era: 1, shop: false, camScale: 1.2,
     }).opening).toBe(0);
+  });
+
+  it("the DECLARED band count is a third fallback and never contests a published one", () => {
+    // A published count always wins, whatever the height would have said.
+    // 11 m / 4.70 would be 2 bands; the roll says 3, so it is 3.
+    expect(faceWeights({
+      Lm: 14, Hm: 11, dhPx: 40, storeys: 3, bandsFallback: 2,
+      role: ROLE_FRONT, type: 0, era: 1, shop: false, camScale: 1.2,
+    }).bands).toBe(3);
+    // and where the roll is silent the declared rhythm is used
+    expect(faceWeights({
+      Lm: 14, Hm: 11, dhPx: 40, storeys: 0, bandsFallback: 2,
+      role: ROLE_FRONT, type: 0, era: 1, shop: false, camScale: 1.2,
+    }).bands).toBe(2);
+    // the field DEFAULTS to the refusal, so no fixture changes meaning
+    expect(faceWeights({
+      Lm: 14, Hm: 11, dhPx: 40, storeys: 0,
+      role: ROLE_FRONT, type: 0, era: 1, shop: false, camScale: 1.2,
+    }).bands).toBe(0);
+  });
+
+  it("bands are derived from the MEASURED height, and a height that is not the building's is refused", () => {
+    // the direction that is allowed: measured height -> declared band count
+    expect(derivedBands(11, false)).toBe(Math.round(11 / FA_BAND_M));
+    expect(derivedBands(6.0, false)).toBe(1);
+    // never zero bands on a standing building, never more than the published
+    // nibble's own ceiling
+    expect(derivedBands(1.0, false)).toBe(1);
+    expect(derivedBands(400, false)).toBe(FA_BAND_MAX);
+    // FLAG_HEIGHT_STALE: the roll dates it after the 2010 flight, so `h` is
+    // whatever stood on the lot. No rhythm is drawn from it.
+    expect(derivedBands(11, true)).toBe(0);
+    // and the divisor is NOT a floor-to-floor — FA_NO_FITTED_FLOOR_HEIGHT
+    // stays true and no height is ever computed FROM a storey count.
+    expect(FA_NO_FITTED_FLOOR_HEIGHT).toBe(true);
+  });
+
+  it("the declared rhythm never becomes a STOREY — the bay still reads the roll", () => {
+    // faBayOK is a claim about floors, so it takes the published count only:
+    // a footprint the roll does not count gets no bay however tall it is.
+    expect(faBayOK(0, 0, ROLE_FRONT, 3)).toBe(true);
+    expect(faBayOK(0, 0, ROLE_FRONT, 0)).toBe(false);
+    expect(faceWeights({
+      Lm: 14, Hm: 11, dhPx: 40, storeys: 0, bandsFallback: 3,
+      role: ROLE_FRONT, type: 0, era: 1, shop: false, camScale: 1.2,
+    }).bay).toBe(0);
   });
 
   it("the sill is a FRACTION of the band, not a metre offset", () => {

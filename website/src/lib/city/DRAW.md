@@ -9253,171 +9253,6 @@ its import; `PlaceLabel.kind` already wins over the table wherever it is set.**
 
 `emit_places.py --check` still says **deterministic: two runs, identical
 bytes**, over all four outputs.
-
----
-
-## 41. Block G1 — "make sure my entire map is full of details". The cause census at Daniel's own cameras, and the answer is a ZOOM answer before it is a data answer
-
-Daniel: *"there's many buildings which have a facade or roof, others have
-nothing, just a flat single colour polygon side. Can you make sure my entire
-map is full of details."* Two frames, buildings carrying window rows standing
-next to flat untextured slabs **at the same camera**.
-
-The hypothesis handed to me was `emitFace`'s `storeys <= 0` early-out —
-`encode_city_chunks.py:329` publishes `roof_st` on 151,634 of 166,166 (91.3 %),
-so ~14,500 buildings can never carry a facade at any zoom. **It is real, it is
-the largest cause that is not a pixel size, and it is not most of what he is
-looking at.** Here is the count, before the cause.
-
-### 41.1 The census — every gate a wall must pass, at four cameras
-
-`.parity/g1face.py`, against the **production build at 7bc871f7** (port 3100,
-`PARITY_PROD`), camera asserted after every shot. A building is charged to the
-FIRST gate that **no visible wall of it** survives; the gate chain is
-`scene.ts`'s and `facades.ts`'s in their own order. Two weightings, because
-BUGS §23b's lesson is that they disagree: by count, and by the building's own
-**drawn wall area**, which is what a reader sees.
-
-North Beach = the Columbus / August Alley anchor of §39.6 (2530, 4774);
-Nob Hill / Chinatown = (2560, 3880), the line Joice St and the Stockton Tunnel
-sit on. Year 2025.
-
-```
-  BLOCK zoom, z = 7.2                    NORTH BEACH            NOB HILL/CTOWN
-                                     count  %cnt  %AREA      count  %cnt  %AREA
-  HAS A FACADE                         950  10.9   31.8      1,182  11.4   30.1
-  every feature sub-pixel (ramp)     3,080  35.4   35.7      3,713  36.0   36.5
-  the quad rung: n4 !== nv           1,929  22.2    9.6      2,019  19.6    8.3
-  no visible wall over 3 px          1,679  19.3    8.3      1,962  19.0    8.1
-  storeys <= 0                         666   7.7   12.5        924   9.0   14.8
-  every visible wall is a PARTY wall   277   3.2    2.0        381   3.7    2.1
-  dhPx < FA_MIN_DH_PX                  116   1.3    0.2        148   1.4    0.2
-
-  STREET zoom, z = 42.9                  NORTH BEACH            NOB HILL/CTOWN
-  HAS A FACADE                       1,344  88.1   84.8      1,319  89.7   89.9
-  storeys <= 0                         105   6.9   11.2         73   5.0    7.0
-  every visible wall is a PARTY wall    76   5.0    4.0         79   5.4    3.2
-```
-
-Read those two tables together and the shape of the complaint is settled:
-
-1. **At STREET zoom the facade layer already reaches 88-90 % of buildings and
-   85-90 % of drawn wall area.** Exactly TWO causes account for everything
-   else, and **not one of them is a pixel size**: the missing storey count, and
-   the measured party wall — which is a refusal the record earned (§ROLE_PARTY:
-   163,536 measured party edges, and a party wall has no windows).
-2. **At BLOCK zoom the facade layer reaches 11 % of buildings and 31 % of
-   area**, and **69 % of the area it does not reach is refused for SIZE** —
-   sub-pixel features (36 %), the quad rung (9 %), walls under 3 px (8 %). Those
-   refusals are `faRamp` and `QUAD_PX` doing exactly what §23 says they should:
-   *no parapet, storey line or fine mark can close a gap that lives at the
-   low-frequency scale*, and smearing one across a fabric that cannot resolve it
-   is how every float and lurch bug on this project started.
-
-**So there is no single fix.** At the zoom where a facade is legible the answer
-is the storey count; at the zoom where it is not, the answer is that a facade
-was never the right mark and §23's large-area tone is (`AO_ALPHA`, parked,
-BUGS §23).
-
-### 41.2 The tier gate is NOT a second bug — the two numbers agree
-
-The brief asked whether part of this is `face`'s own `minZ: 4.0` against the
-fabric path's `faceOn = z >= 4.0`. **They are the same number and they agree.**
-`manifest.json` `tiers.face.minZ = 4.0`; `scene.ts:2756` `const faceOn = z >= 4.0`.
-Both of Daniel's frames sit far above it — a **local** street name (August
-Alley, Joice St are rank 2) needs `labels.ts` band 2, which starts at z = 4.57,
-so any frame in which he can read those names is already past the facade gate.
-The ladder in `.parity/g1zoom.py` measures the whole curve for the record.
-
-### 41.3 The storey gap, profiled — it is ONE population refused THREE times
-
-`roof-data.js` `st` is a **4-bit nibble**, `min(15, round(number_of_stories))`,
-0 = the roll publishes none. Over all 166,166:
-
-```
-  st == 0    14,532   8.75 %      st == 15 (the clamp)   255
-```
-
-By use class, and this is the finding:
-
-```
-  class                     total     st==0     share
-  single family           105,967     3,451      3.3 %
-  multi-family             40,868     1,277      3.1 %
-  retail                    5,973       985     16.5 %
-  office                    1,492       126      8.4 %
-  industrial                2,610       512     19.6 %
-  hotel / institutional       891        32      3.6 %
-  mixed or not stated       8,365     8,149     97.4 %
-```
-
-**56 % of the whole gap is `mixed or not stated`** — and 97.4 % of that class
-carries no storey count. It is the same 8,365 footprints that §34.5 refuses a
-roof material to (the `null` row of `UMAT_ROOF`), and the same ones `faVocab`
-draws as `UNCLASSED`. One population, refused by three independent columns,
-which is why it reads as a district of blank slabs rather than as scattered
-noise — *the Presidio's blank slabs are the record refusing*, in North Beach.
-
-And the gap population is **bigger than average**: 7.7 % of the count at the
-block camera carries 12.5 % of the drawn wall area, and its height p99 is 29 m
-against the city's 19 m. The sheds, the mixed downtown blocks and the
-industrial stock.
-
-### 41.4 The divisor: the brief's 14'9" is NOT what the Tall Building Inventory publishes
-
-Checked, because it decides whether a declared divisor has a published number
-behind it. `5kya-mfst`'s `typ_story_height` is a **feet-and-inches string**,
-present on 130 of 180 rows. Parsed:
-
-```
-  typ_story_height   p10 9.42   p25 10.00   p50 12.42   p75 13.00   p90 13.17 ft
-  modes              13'0" (22)   12'6" (17)   10'0" (11)   9'8" (9)
-  p50 in metres      3.785
-  height_ft / stories_above_grade, 179 rows      p50 13.00 ft = 3.962 m
-```
-
-**The median is 12'5", not 14'9".** Both the field and the arithmetic on the
-same rows land near 12-13 ft, and there is no 14'9" anywhere in the
-distribution's middle. Worth saying out loud: that figure would have been
-17-24 % too large, which on a 12 m building is a whole band.
-
-And the deeper problem with using it at all: **it is measured on 130 TOWERS**,
-and the population that needs a divisor is not towers. The city's own relation
-says so.
-
-### 41.5 What a divisor is actually worth, calibrated on the column itself
-
-The only honest calibration is against the 151,379 buildings that DO publish a
-count. `round(H / d)` against the published `st`, best single `d` per class:
-
-```
-  class                        n      best d    exact    within +-1   | d=4.4958 exact
-  single family          102,494       4.70     74.1 %      97.3 %    |    70.0 %
-  multi-family            39,520       4.05     68.3 %      96.1 %    |    67.2 %
-  retail                   4,983       4.35     58.3 %      89.7 %    |    58.3 %
-  office                   1,243       4.10     57.1 %      90.6 %    |    51.3 %
-  industrial               2,098       4.70     59.7 %      96.7 %    |    58.3 %
-  hotel / institutional      825       3.75     65.7 %      93.5 %    |    44.1 %
-  mixed or not stated        216       4.70     75.9 %      94.4 %    |    75.5 %
-  ALL CLASSES            151,379       4.70     70.1 %
-```
-
-**One global divisor of 4.70 m reproduces the published storey count exactly on
-70.1 % of the city and within one band on 96-97 % of the residential stock.**
-That is the number that decides whether this is allowed to ship, and it is
-larger than I expected — the relation the roll declines to state is nonetheless
-tight enough to draw a rhythm from.
-
-Note what 4.70 is NOT: it is not a floor-to-floor. `FA_NO_FITTED_FLOOR_HEIGHT`
-already measured why — a "1-storey" Sunset house measures 6.0 m because it has
-a level the Assessor does not count as floor area, and 4.70 is that discrepancy
-folded in. **Which is exactly why it may be used to choose a band count and may
-NEVER be used to claim a storey.** The two are different quantities and this
-section is the record that they were not confused.
-
-
----
-
 ## 41. Block G3 — the heroes. The audit re-measured, and the one hero whose own record cited the number it was not drawn to
 
 ### 41.1 Sutro Tower was 88 m short, and the citation for the right number was already in the file
@@ -9672,3 +9507,288 @@ The thirteen did not become forty, and the reason is the test §21.24 set and
 more heroes actually produced was three corrected or new rejections, the
 closing of §21.15's last escape by measurement — and, in the same run, the
 discovery that the most visible object in San Francisco was 88 m short.
+
+---
+
+
+---
+
+## 43. Block G1 — "make sure my entire map is full of details". The cause census at Daniel's own cameras, and the answer is a ZOOM answer before it is a data answer
+
+Daniel: *"there's many buildings which have a facade or roof, others have
+nothing, just a flat single colour polygon side. Can you make sure my entire
+map is full of details."* Two frames, buildings carrying window rows standing
+next to flat untextured slabs **at the same camera**.
+
+The hypothesis handed to me was `emitFace`'s `storeys <= 0` early-out —
+`encode_city_chunks.py:329` publishes `roof_st` on 151,634 of 166,166 (91.3 %),
+so ~14,500 buildings can never carry a facade at any zoom. **It is real, it is
+the largest cause that is not a pixel size, and it is not most of what he is
+looking at.** Here is the count, before the cause.
+
+### 43.1 The census — every gate a wall must pass, at four cameras
+
+`.parity/g1face.py`, against the **production build at 7bc871f7** (port 3100,
+`PARITY_PROD`), camera asserted after every shot. A building is charged to the
+FIRST gate that **no visible wall of it** survives; the gate chain is
+`scene.ts`'s and `facades.ts`'s in their own order. Two weightings, because
+BUGS §23b's lesson is that they disagree: by count, and by the building's own
+**drawn wall area**, which is what a reader sees.
+
+North Beach = the Columbus / August Alley anchor of §39.6 (2530, 4774);
+Nob Hill / Chinatown = (2560, 3880), the line Joice St and the Stockton Tunnel
+sit on. Year 2025.
+
+```
+  BLOCK zoom, z = 7.2                    NORTH BEACH            NOB HILL/CTOWN
+                                     count  %cnt  %AREA      count  %cnt  %AREA
+  HAS A FACADE                         950  10.9   31.8      1,182  11.4   30.1
+  every feature sub-pixel (ramp)     3,080  35.4   35.7      3,713  36.0   36.5
+  the quad rung: n4 !== nv           1,929  22.2    9.6      2,019  19.6    8.3
+  no visible wall over 3 px          1,679  19.3    8.3      1,962  19.0    8.1
+  storeys <= 0                         666   7.7   12.5        924   9.0   14.8
+  every visible wall is a PARTY wall   277   3.2    2.0        381   3.7    2.1
+  dhPx < FA_MIN_DH_PX                  116   1.3    0.2        148   1.4    0.2
+
+  STREET zoom, z = 42.9                  NORTH BEACH            NOB HILL/CTOWN
+  HAS A FACADE                       1,344  88.1   84.8      1,319  89.7   89.9
+  storeys <= 0                         105   6.9   11.2         73   5.0    7.0
+  every visible wall is a PARTY wall    76   5.0    4.0         79   5.4    3.2
+```
+
+Read those two tables together and the shape of the complaint is settled:
+
+1. **At STREET zoom the facade layer already reaches 88-90 % of buildings and
+   85-90 % of drawn wall area.** Exactly TWO causes account for everything
+   else, and **not one of them is a pixel size**: the missing storey count, and
+   the measured party wall — which is a refusal the record earned (§ROLE_PARTY:
+   163,536 measured party edges, and a party wall has no windows).
+2. **At BLOCK zoom the facade layer reaches 11 % of buildings and 31 % of
+   area**, and **69 % of the area it does not reach is refused for SIZE** —
+   sub-pixel features (36 %), the quad rung (9 %), walls under 3 px (8 %). Those
+   refusals are `faRamp` and `QUAD_PX` doing exactly what §23 says they should:
+   *no parapet, storey line or fine mark can close a gap that lives at the
+   low-frequency scale*, and smearing one across a fabric that cannot resolve it
+   is how every float and lurch bug on this project started.
+
+**So there is no single fix.** At the zoom where a facade is legible the answer
+is the storey count; at the zoom where it is not, the answer is that a facade
+was never the right mark and §23's large-area tone is (`AO_ALPHA`, parked,
+BUGS §23).
+
+### 43.2 The tier gate is NOT a second bug — the two numbers agree
+
+The brief asked whether part of this is `face`'s own `minZ: 4.0` against the
+fabric path's `faceOn = z >= 4.0`. **They are the same number and they agree.**
+`manifest.json` `tiers.face.minZ = 4.0`; `scene.ts:2756` `const faceOn = z >= 4.0`.
+Both of Daniel's frames sit far above it — a **local** street name (August
+Alley, Joice St are rank 2) needs `labels.ts` band 2, which starts at z = 4.57,
+so any frame in which he can read those names is already past the facade gate.
+The ladder in `.parity/g1zoom.py` measures the whole curve for the record.
+
+### 43.3 The storey gap, profiled — it is ONE population refused THREE times
+
+`roof-data.js` `st` is a **4-bit nibble**, `min(15, round(number_of_stories))`,
+0 = the roll publishes none. Over all 166,166:
+
+```
+  st == 0    14,532   8.75 %      st == 15 (the clamp)   255
+```
+
+By use class, and this is the finding:
+
+```
+  class                     total     st==0     share
+  single family           105,967     3,451      3.3 %
+  multi-family             40,868     1,277      3.1 %
+  retail                    5,973       985     16.5 %
+  office                    1,492       126      8.4 %
+  industrial                2,610       512     19.6 %
+  hotel / institutional       891        32      3.6 %
+  mixed or not stated       8,365     8,149     97.4 %
+```
+
+**56 % of the whole gap is `mixed or not stated`** — and 97.4 % of that class
+carries no storey count. It is the same 8,365 footprints that §34.5 refuses a
+roof material to (the `null` row of `UMAT_ROOF`), and the same ones `faVocab`
+draws as `UNCLASSED`. One population, refused by three independent columns,
+which is why it reads as a district of blank slabs rather than as scattered
+noise — *the Presidio's blank slabs are the record refusing*, in North Beach.
+
+And the gap population is **bigger than average**: 7.7 % of the count at the
+block camera carries 12.5 % of the drawn wall area, and its height p99 is 29 m
+against the city's 19 m. The sheds, the mixed downtown blocks and the
+industrial stock.
+
+### 43.4 The divisor: the brief's 14'9" is NOT what the Tall Building Inventory publishes
+
+Checked, because it decides whether a declared divisor has a published number
+behind it. `5kya-mfst`'s `typ_story_height` is a **feet-and-inches string**,
+present on 130 of 180 rows. Parsed:
+
+```
+  typ_story_height   p10 9.42   p25 10.00   p50 12.42   p75 13.00   p90 13.17 ft
+  modes              13'0" (22)   12'6" (17)   10'0" (11)   9'8" (9)
+  p50 in metres      3.785
+  height_ft / stories_above_grade, 179 rows      p50 13.00 ft = 3.962 m
+```
+
+**The median is 12'5", not 14'9".** Both the field and the arithmetic on the
+same rows land near 12-13 ft, and there is no 14'9" anywhere in the
+distribution's middle. Worth saying out loud: that figure would have been
+17-24 % too large, which on a 12 m building is a whole band.
+
+And the deeper problem with using it at all: **it is measured on 130 TOWERS**,
+and the population that needs a divisor is not towers. The city's own relation
+says so.
+
+### 43.5 What a divisor is actually worth, calibrated on the column itself
+
+The only honest calibration is against the 151,379 buildings that DO publish a
+count. `round(H / d)` against the published `st`, best single `d` per class:
+
+```
+  class                        n      best d    exact    within +-1   | d=4.4958 exact
+  single family          102,494       4.70     74.1 %      97.3 %    |    70.0 %
+  multi-family            39,520       4.05     68.3 %      96.1 %    |    67.2 %
+  retail                   4,983       4.35     58.3 %      89.7 %    |    58.3 %
+  office                   1,243       4.10     57.1 %      90.6 %    |    51.3 %
+  industrial               2,098       4.70     59.7 %      96.7 %    |    58.3 %
+  hotel / institutional      825       3.75     65.7 %      93.5 %    |    44.1 %
+  mixed or not stated        216       4.70     75.9 %      94.4 %    |    75.5 %
+  ALL CLASSES            151,379       4.70     70.1 %
+```
+
+**One global divisor of 4.70 m reproduces the published storey count exactly on
+70.1 % of the city and within one band on 96-97 % of the residential stock.**
+That is the number that decides whether this is allowed to ship, and it is
+larger than I expected — the relation the roll declines to state is nonetheless
+tight enough to draw a rhythm from.
+
+Note what 4.70 is NOT: it is not a floor-to-floor. `FA_NO_FITTED_FLOOR_HEIGHT`
+already measured why — a "1-storey" Sunset house measures 6.0 m because it has
+a level the Assessor does not count as floor area, and 4.70 is that discrepancy
+folded in. **Which is exactly why it may be used to choose a band count and may
+NEVER be used to claim a storey.** The two are different quantities and this
+section is the record that they were not confused.
+
+
+---
+
+### 43.6 The ladder, and the one cause that does NOT open with the camera
+
+`.parity/g1zoom.py`, North Beach anchor, thirteen camera scales, the same census
+at each. All figures are **% of drawn wall area** except the first.
+
+```
+     z     bld   OK %cnt  OK %AREA   quad  st<=0  party  wpx<3   ramp   dh<2
+  3.00  29,548     0.00      0.00    0.00   0.00   0.00   0.00   0.00   0.00
+  3.60  22,383     0.00      0.00    0.00   0.00   0.00   0.00   0.00   0.00
+  4.00  18,501     0.68      1.39   28.53  12.97   1.55  13.52  39.32   2.72
+  4.40  15,654     1.44      6.35   23.85  13.75   1.69  12.72  40.18   1.46
+  5.00  12,996     2.62      8.92   18.90  14.18   1.82  11.58  43.88   0.72
+  6.00  10,706     5.87     21.41   13.44  13.37   1.81   9.73  39.91   0.33
+  7.20   8,697    10.92     31.76    9.62  12.47   1.96   8.33  35.71   0.15
+  9.00   7,385    19.69     42.29    6.45  10.96   2.29   6.13  31.81   0.07
+ 12.00   5,725    54.45     70.64    3.47  10.23   2.50   5.26   7.89   0.00
+ 16.00   4,258    81.61     82.51    0.10  11.84   2.89   2.53   0.13   0.00
+ 22.00   2,737    86.08     84.00    0.01  12.58   2.87   0.49   0.06   0.00
+ 30.00   2,137    87.18     85.47    0.00  11.47   3.04   0.03   0.00   0.00
+```
+
+Three things fall out of it and the third is the one that decides the block.
+
+**The step at z = 4.0 is real and it is the tier's own gate.** 0.00 % at 3.60,
+1.39 % at 4.00 — the facade layer goes from nothing to something at one
+threshold, exactly where `tiers.face.minZ` and `faceOn` both sit. It is a step
+in the derivative and it is **deliberate**, not a defect: at z = 4.0 the layer
+is worth 1.4 % of wall area, so what it steps into is almost nothing. Recorded
+because §7 says a pixel floor is a step in the derivative and this one has an
+owner.
+
+**Everything that is a SIZE refusal falls monotonically and disappears.** The
+quad rung 28.5 → 0.0, `wallPx < 3` 13.5 → 0.0, `dhPx < 2` 2.7 → 0.0, and the
+ramp holds a plateau to z = 9 and then collapses between 9 and 12 (31.8 → 7.9).
+That collapse **is** the facade layer arriving; the whole climb from 10.9 % to
+54.5 % of buildings happens in that one octave.
+
+**`storeys <= 0` is the only row in the table that is FLAT.** It sits at
+10-14 % of drawn wall area at **every zoom from 4.0 to 30.0**, while every other
+cause falls by two or three orders of magnitude. That is the signature of a
+**data** cause and not a **size** cause: it does not open with the camera,
+because no camera can make a record say something it does not say. It is the
+one hole that a reader can zoom into and never fill, and it is the reason this
+block fixes that one and leaves the others alone.
+### 43.7 The change, and what in it is measured and what is declared
+
+`facades.ts` §THE BAND COUNT WHERE THE ROLL PUBLISHES NO STOREY COUNT, and
+`scene.ts` `emitFace`, where `if (storeys <= 0) return;` becomes a third
+fallback under `st` and `st2`:
+
+```
+  bands = st  >  0  ? st                     the roll's own count
+        : st2 >  0  ? st2                    the supplement (§FA_ST2)
+        : derivedBands(H, heightStale)       DECLARED: round(H / 4.70), 1..15
+```
+
+MEASURED: every building's height (`hgt_mediancm`), every published storey
+count, the divisor's accuracy against that column (70.3 % exact, 96.3 % within
+one band), the census and the ladder above. DECLARED: the divisor 4.70 m, and
+the decision to divide a measured height by it rather than to leave the wall
+blank. **Nothing about any individual building is asserted that was not
+asserted before** — the whole opening vocabulary was already a convention
+declared per (type, era), and `manifest.facade.NOT_MEASURED` already says so.
+
+The three refusals, each of which had to be written rather than assumed:
+
+- **A published count is never contested.** `storeysOf` is unchanged and is
+  read first.
+- **The derived number never becomes a STOREY.** `drawsStoreyLines` and
+  `faBayOK` are marks that mean *this many floors* and both still read
+  `storeysOf` — published, or nothing. Asserted in `draw.test.ts`.
+- **`FLAG_HEIGHT_STALE` keeps the flat wall.** 541 footprints the roll dates
+  after the 2010 flight; 16 are in this population. A height that is not the
+  building's is not evidence about the building.
+
+Eligible: **14,516 of 166,166, 8.74 %.** 24 clamp at 15, the published nibble's
+own ceiling.
+
+### 43.8 The acceptance test is the pair, and here it is
+
+Two PRODUCTION builds of the same commit `7bc871f7`, differing only in this
+change — `/Users/daniel/code/qipu-prod` on :3100 (before, untouched) and
+`/Users/daniel/code/qipu-g1` on :3300 (after). Camera asserted after every
+shutter, `.parity/g1pair.py`.
+
+**North Beach, street zoom, 2025 — Daniel's own frame.** `out-g1/
+NB-str.before.pair.png` against `out-g1/NB-str.aft.png`, and the crop
+`/tmp/nbstr-stack.png` is the one to look at: the large grey mass beside
+Francisco Middle School is **one blank polygon in the before frame and carries
+three rows of openings in the after**, and it is not alone on the blockface.
+**1.72 % of the frame's pixels move**, which is the right order for a change
+that touches 8.7 % of buildings and only the walls of the ones facing the
+reader.
+
+**And the frame is otherwise byte-stable.** Nothing else in the change can
+move a pixel: no height, no roof, no colour table, no threshold. The 1.72 % is
+all openings, and every one of them is on a wall that was blank.
+
+### 43.9 What is NOT fixed here, said plainly so it is not looked for twice
+
+- **The party walls.** 3-5 % of buildings at street zoom have every
+  camera-facing wall marked `ROLE_PARTY` and get no openings. That refusal is
+  earned — 163,536 measured party edges — but a party wall the camera can SEE
+  is a party wall whose neighbour is shorter than it, and those do carry
+  windows in the world. Not touched, because the alternative is to overrule a
+  measurement with a guess. Worth a block of its own.
+- **Everything the ramp refuses at block zoom.** 36 % of the wall area, and
+  §43.6 shows it opening with the camera exactly as it should. §23 has already
+  measured that the district deficit is large-area TONE and not fine marks;
+  the answer there is `AO_ALPHA`, which ships at 0.0 and is still unverified
+  (BUGS §23, DRAW §33.3, §37).
+- **The 15-storey clamp.** `build_roofs.py` packs `st` into four bits, so 255
+  buildings — every tower over fifteen floors — draw fifteen bands. It is a
+  clamp and not a wrap (`min(15, s)`), so nothing is silently zero, but a
+  48-storey tower wearing fifteen storey rows is a visible untruth at street
+  zoom downtown. Fixing it costs one more nibble on the `bldg` tier.
+

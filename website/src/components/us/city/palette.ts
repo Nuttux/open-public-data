@@ -219,6 +219,15 @@ export function legendTones(
    can say how many. */
 export const USE_MASK = 7;
 export const FLAG_NOYEAR = 16;
+/**
+ * `bldg-data.js` `meta.heightFlags`, bit 6, **541 footprints**: the roll dates
+ * this building AFTER the 2010 LiDAR flight, so `h` is whatever stood on the
+ * lot when the plane went over — not necessarily this building, and not
+ * necessarily a building. Anything that reads a MEASUREMENT off the height
+ * rather than just drawing it has to refuse these: `facades.ts` `derivedBands`
+ * is the first to, and DRAW.md §35.4 is where the flight date was recorded.
+ */
+export const FLAG_HEIGHT_STALE = 64;
 
 /** the roll's year bands: 1906 / 1925 / 1950 / 1980 */
 export function yearBand(y: number): number {
