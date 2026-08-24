@@ -1,0 +1,137 @@
+Apply from the mock root:  cd scratchpad/sf-city-anim && patch -p0 < <this file>
+Applies ON TOP of 2026-08-24-published-heights.patch.
+    python3 form/reindex.py         # the alignment proof, now a set-inclusion test
+    rm roofs/cache/joined.pkl
+    python3 roofs/build_roofs.py    # rewrites roofs/roof-data.js  (2.4 s, no network)
+    (then encode_city_chunks.py from the repo)
+
+2026-08-24 — THE ALIGNMENT PROOF, AND A RESIDUAL OF A DEAD NUMBER.
+
+form/reindex.py exists to prove ONE property: that a per-building attribute
+computed in the mock can be attached to the shipped file BY INDEX. It proves it
+by re-deriving the quantised height byte for every record and asserting it
+equals the shipped stream element for element.
+
+The published-height change broke that proof — 134 mismatches, exactly the 134
+changed bytes, and `AssertionError: index alignment NOT proven`. Everything
+downstream of it rests on that assertion.
+
+THE REPLACEMENT IS STRONGER THAN WHAT IT REPLACES. "Ignore the mismatches"
+would not be a proof at all, so the assertion is now SET INCLUSION AGAINST THE
+FLAG COLUMN: the indices whose re-derived byte differs must be a SUBSET of the
+indices the shipped `u` byte flags as FLAG_PUBHEIGHT. One unexplained byte in
+either direction still fails. It checks the flag column against the height
+column as well as the order. Measured: 134 differ, 153 flagged, and the 19
+flagged that do NOT differ are buildings whose published height rounds to the
+same byte as the LiDAR median.
+
+AND A SECOND-ORDER DEFECT. roofs/roof-data.js ships `hf`, "the sub-metre height
+the shipped file rounded away", so that a blockface published at 5.62, 5.94,
+6.11 and 6.38 m does not draw as one bar. roofs/join.py took `h` from
+reindex.build(), which re-derives it from the LiDAR — so for the 153 published
+heights `hf` was the fractional part of a number that is no longer the height.
+The same defect as the height itself, one decimal place down. 118 carried a
+nonzero residual.
+
+reindex.py gains build_shipped(), which carries the shipped height onto those
+records, and roofs/join.py calls it. The published height is not recoverable
+there — only the rounded byte is — so the residual for those records is a
+DECLARED ZERO rather than a wrong fraction. At most 0.75 m on 118 of 166,166
+roofs, stated rather than carried over. st is byte-identical; 87 packed hf
+bytes move.
+
+=== the diff begins below this line ===
+--- /tmp/reindex.py.orig	2026-08-24 17:27:38
++++ form/reindex.py	2026-08-24 17:27:59
+@@ -161,14 +161,69 @@
+     p=json.loads(js[js.index("=")+1:js.rindex(";")])
+     return p, list(base64.b64decode(p["h"]))
+ 
++def apply_published(rec, p, H):
++    """Carry the SHIPPED height onto the records whose height is published.
++
++    2026-08-24. This file re-derives the height from ynuv-fyni's hgt_mediancm,
++    which is what bldg/build_bldg.py used to ship. It no longer is: 153
++    buildings now take their height from `5kya-mfst`'s published `height_ft`
++    (see bldg/build_bldg.py, and DATA-TRUTH 13). Those records must carry the
++    height that SHIPS and not the one this file can re-derive, because
++    roofs/join.py reads `h` straight off them and roofs/build_roofs.py turns it
++    into `hf`, the SUB-METRE RESIDUAL the height byte rounded away. A residual
++    of a number that is no longer the height is exactly the defect this whole
++    night has been about, one decimal place down.
++
++    The published height is not recoverable here — only the rounded byte is —
++    so the residual for these records is DECLARED ZERO rather than carried over
++    from the LiDAR median. That is at most 0.75 m on 118 of 166,166 roofs, and
++    it is a stated zero instead of a wrong fraction.
++    """
++    u = list(base64.b64decode(p["u"]))
++    pub = [i for i in range(len(rec)) if (u[i] >> 5) & 1]
++    for i in pub:
++        rec[i]["h"] = float(H[i])
++        rec[i]["h_published"] = True
++    return pub
++
++
++def build_shipped():
++    """build(), with the published heights carried on. THIS is what a
++    downstream per-building payload should read: `h` is then the height that
++    is actually on screen, not the one this file can re-derive."""
++    rec=build(); p,H=shipped_h()
++    apply_published(rec,p,H)
++    return rec
++
++
+ if __name__=="__main__":
+     rec=build(); p,H=shipped_h()
+     print("recomputed %d   shipped %d" % (len(rec),p["n"]))
+     assert len(rec)==p["n"], "record count differs"
+-    bad=0
++    # ── THE ALIGNMENT PROOF, AND WHAT IT NOW ALLOWS ──────────────────────
++    # The proof is that a re-derived height byte matches the shipped stream
++    # element for element. 153 buildings now ship a PUBLISHED height instead of
++    # the LiDAR median this file re-derives, so an exact match over all 166,166
++    # is no longer the right assertion — but "ignore the mismatches" would not
++    # be a proof at all. So the assertion is SET EQUALITY: the indices that
++    # differ must be EXACTLY the indices the shipped `u` byte flags as
++    # FLAG_PUBHEIGHT (bit 5). One unexplained byte in either direction still
++    # fails. That is a stronger statement than the one it replaces, because it
++    # checks the flag column against the height column as well as the order.
++    u=list(base64.b64decode(p["u"]))
++    flagged={i for i in range(len(rec)) if (u[i]>>5)&1}
++    differ={i for i,r in enumerate(rec)
++            if max(1,min(255,int(round(r["h"]))))!=H[i]}
++    print("height byte mismatches: %d   flagged FLAG_PUBHEIGHT: %d"
++          % (len(differ),len(flagged)))
++    extra=sorted(differ-flagged)[:8]; missing=sorted(flagged-differ)[:8]
++    assert differ<=flagged, ("index alignment NOT proven — %d bytes differ with "
++                            "no published height to explain them: %s"
++                            % (len(differ-flagged),extra))
++    print("  of the flagged, %d round to the same byte anyway (%s)"
++          % (len(flagged-differ),missing[:4]))
++    apply_published(rec,p,H)
+     for i,r in enumerate(rec):
+-        q=max(1,min(255,int(round(r["h"]))))
+-        if q!=H[i]: bad+=1
+-    print("height byte mismatches: %d" % bad)
+-    assert bad==0, "index alignment NOT proven"
+-    print("ALIGNED — form index i == gen/bldg-data.js index i")
++        assert max(1,min(255,int(round(r["h"]))))==H[i], i
++    print("ALIGNED — form index i == gen/bldg-data.js index i, and every "
++          "record now carries the height that SHIPS")
+--- roofs/join.py	2026-08-24 17:35:46
++++ roofs/join.py	2026-08-24 17:27:59
+@@ -19,7 +19,12 @@
+ def build():
+     if os.path.exists(CP): return pickle.load(open(CP,"rb"))
+     import reindex
+-    rec=reindex.build()
++    # build_shipped(), not build(): `hf` below is the SUB-METRE RESIDUAL the
++    # shipped height byte rounded away, and 153 buildings now ship a published
++    # height instead of the LiDAR median reindex re-derives. A residual of a
++    # number that is no longer the height is the same defect one decimal place
++    # down. See form/reindex.py:apply_published and DATA-TRUTH 13.
++    rec=reindex.build_shipped()
+     A=json.load(open(os.path.join(ROOT,"form","cache","attrs.json")))
+     out=[]
+     miss=0

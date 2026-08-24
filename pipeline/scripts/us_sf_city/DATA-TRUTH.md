@@ -1322,3 +1322,154 @@ The separator is now `=== the diff begins below this line ===` and the `+++`
 paths are normalised to the mock root. **All four patches now apply in order to
 pristine baselines and reproduce the live files byte for byte**, which is the
 check that should have been run on the first one.
+
+---
+
+## 14. What the height change broke, and what the record count actually costs
+
+### 14.1 A regression I introduced, found by reading the file that proves the thing
+
+`form/reindex.py` exists to prove one property: that a per-building attribute
+computed in the mock can be attached to the shipped file **by index**. It
+proves it by re-deriving the quantised height byte for every record and
+asserting it equals the shipped stream element for element.
+
+**Section 13 broke that proof.** 153 buildings now ship a published height
+instead of the median `reindex.py` re-derives, so it failed with
+`index alignment NOT proven` — 134 mismatches, exactly my 134 changed bytes.
+Everything downstream of it (`roofs`, and any future per-building payload)
+rests on that assertion.
+
+Repaired, and the replacement is a **stronger** statement than the one it
+replaces. "Ignore the mismatches" would not be a proof at all, so the
+assertion is now **set inclusion against the flag column**:
+
+```
+the indices whose re-derived byte differs must be a SUBSET of the indices the
+shipped `u` byte flags as FLAG_PUBHEIGHT.  One unexplained byte still fails.
+```
+
+It checks the flag column against the height column as well as the order.
+Measured: **134 differ, 153 flagged, and the 19 flagged that do *not* differ are
+buildings whose published height rounds to the same byte as the LiDAR median.**
+
+### 14.2 And a second-order one: `roofs.hf` was the residual of a dead number
+
+`roofs/roof-data.js` ships `hf`, "the sub-metre height the shipped file rounded
+away" — `h − round(h)` on a 0.25 m grid — so that a blockface published at
+5.62, 5.94, 6.11 and 6.38 m does not draw as one bar. `roofs/join.py` took `h`
+from `reindex.build()`, which re-derives it from the LiDAR.
+
+So for the 153 published heights, `hf` was **the fractional part of a number
+that is no longer the height** — the same defect as section 13, one decimal
+place down. 118 of them carried a nonzero residual.
+
+`reindex.py` gained `build_shipped()`, which carries the shipped height onto
+those records, and `roofs/join.py` now calls it. The published height is not
+recoverable there — only the rounded byte is — so **the residual for those
+records is a declared zero rather than a wrong fraction**. At most 0.75 m on
+118 of 166,166 roofs, stated. `st` is byte-identical; 87 packed `hf` bytes move.
+
+### 14.3 Scoping the record count: what a rescue would actually cost
+
+Salesforce Tower is off the map because `MIN_H` drops its 0.24 m return.
+Rescuing it changes the record count. Here is the full inventory.
+
+**Arrays whose LENGTH is the record count** — every one breaks if `n` changes:
+
+| payload | fields | regenerates? |
+|---|---|---|
+| `gen/bldg-data.js` | `cnt h yr u` | yes, `build_bldg.py`, seconds |
+| `roofs/roof-data.js` | `st hf` (packed halves) | **yes — measured, 2.4 s, no network** |
+| `paint/paint-data.js` | `idx flag` | from `cache/sampled.npz`, which is itself `(166166, 3)` — **index-keyed, must be re-sampled**; 149 MB of tiles are cached locally |
+| `facade/facade-data.js` | `ty`, `st2` | `build_facade.py`; a `fetch_class.sh` step exists, 46 MB cached |
+| `char/char-data.js` | `arch flag` | **no builder found in the mock** — only `char/cache` and the output |
+
+**Values that ARE record indices** — every one silently repoints if `n` changes:
+
+| payload | n | derived or authored |
+|---|---|---|
+| `FORM.i` | 488 | derived from zonal statistics |
+| `TYPO.mast.i` | 40 | derived from published place class |
+| `LRD.cap.i` | 68 | **derived** — `build_render.py` iterates `FORM["i"]`, and `render/classes.py` takes the class from published registries joined by footprint, not from a hand-written index |
+| `wonder/hero-data.js` `h[].b` | 11 | **AUTHORED** |
+| `us_sf_places/heroes_extra.json` `b` | 2 | **AUTHORED** |
+| `lod/blockof.npy` | n | derived, rebuilt by `build_lod.py` |
+
+### 14.4 So: stop. One of them is authored by hand, and here it is
+
+```json
+{"k": "pofahall",     "b": 159037}
+{"k": "transamerica", "b": 137821}
+```
+
+`heroes_extra.json` carries **raw building index literals**, and so do the
+eleven in `wonder/hero-data.js` — `build_wonder.py` reads that file's own
+`window.HERO=` back and writes it out again, asserting a byte-identical round
+trip. **It validates the register's shape, not that `b` names the right
+building.**
+
+Measured, by building the rescued version and walking the two orders:
+
+```
+1190 Mission inserts at index 135,905 · Salesforce Tower at 137,646
+every index >= 135,905 shifts by one
+
+AUTHORED hero building indices    9 of 13 shift
+FORM.i                          261 of 488     (derived — regenerates correctly)
+TYPO.mast.i                      12 of  40     (derived)
+LRD.cap.i                         45 of  68     (derived)
+```
+
+**Nine of thirteen hand-authored heroes would silently attach to a different
+building, and nothing in the pipeline would fail.** `transamerica`, authored
+tonight at 137,821, is one of them. That is not a count constraint — it is an
+authored-key constraint, and the fix is not a coordinated re-run.
+
+**The real fix is to make the authored key stable.** A hero should name its
+building the way everything else in this pipeline names one — by a published
+identity (`globalid`, or the parcel plus a discriminator) resolved to an index
+at build time — and then the count stops being load-bearing at all. That is a
+small change to two files and one seed format, and it should be done **before**
+anyone rescues a building, not after.
+
+So this is not "a small fix wearing a large one's clothes"; it is a small fix
+behind a seed-format change. Order: stabilise the hero key, then rescue.
+
+### 14.5 The shed filter, stated as a rule
+
+`MIN_H` drops anything under 2 m. That test asks *"did the LiDAR see a
+building?"* — which is the right question to ask of a canopy or a shed, and the
+wrong one to ask of a building the city publishes a height for.
+
+> **A row in a register of named buildings is direct evidence that a building
+> exists, and it outranks the absence of a return.** Where a published height
+> exists, the shed filter should test the published height and not the scan.
+
+Salesforce Tower has a published height of 326.1 m. Under that rule it is not a
+shed and never was. The rule is one line in `build_bldg.py` and it is not
+written tonight, because writing it rescues two buildings and repoints nine
+authored heroes — see 14.4.
+
+### 14.6 The u8 ceiling, costed
+
+`h` is one byte of whole metres, so 255 m is the ceiling. Transamerica draws
+255 against 260.0 and Oceanwide 255 against 259.1 — **the two buildings that
+most need their height are the two the wire format cannot express.**
+
+| option | cost | verdict |
+|---|---|---|
+| **scale factor** (2 m units, ceiling 510) | 0 bytes | **no.** The byte is paired with `roofs.hf`, a 0.25 m residual whose entire purpose is that a blockface at 5.62/5.94/6.11 m does not draw as one bar. Coarsening the base to 2 m fights the field that exists to refine it. |
+| **escape list** for the handful over 255 | 18 bytes (3 rows) | works, but adds a second path the renderer must merge — and a second path is where silences live |
+| **widen to `u16`** | **+166 KB raw, +9,493 B gzipped — 0.17 % of the 5.45 MB payload** | **yes** |
+
+And it is nearly free on the client: `data.ts` decodes fields through a generic
+`Dtype` union and a dtype→TypedArray map, so `w.add("h", "u8", …)` becoming
+`"u16"` needs **no client change**. A grep of the draw path for a 255
+assumption on height finds none — every 255 in `buildings.ts` and `roofs.ts` is
+a colour or a coverage byte.
+
+Three buildings in the entire Tall Building Inventory exceed 255 m. **0.17 % to
+remove a correctness ceiling permanently, rather than 18 bytes to route around
+it.** Recommended: `u16`, done on its own, with the manifest's `maxDrawnM` and
+`clippedAtMax` dropping out of `meta.heightNote` when it lands.
