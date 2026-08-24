@@ -7847,3 +7847,23 @@ committed to `terrain.ts`, `trees.ts`, `streets.ts` and `buildings.ts` in
 between. The controlled evidence for this change is the arithmetic and the
 elasticity, both above. What the frames are for is the separate question of
 whether the result looks right.
+
+**What the district camera looks like after it** — `.parity/g3/out/look-01.png`,
+City Hall's anchor, z = 2.9, the preset where the stall was worst. The Palace of
+Fine Arts reads as a monument on its own site, crescent and rotunda together;
+**City Hall is a pale civic block with a legible dome rather than a white box
+three times its own size**; Coit Tower, the Chronicle Building, the Old Mint and
+the State Armory are all named; the Financial District reads as a cluster of
+towers. That is the trade Daniel accepted, on screen.
+
+**And the motion sequence at the stall range did NOT get taken, which is stated
+rather than glossed.** Three separate attempts died: `capture.prod_shoot`'s
+settle gate polls the scene counts for up to 90 s a frame and could not complete
+a five-camera sweep, and the hand-rolled shooter lost its execution context
+repeatedly — the dev server is being recompiled continuously by four other
+agents, and a frame shot during one comes back blank, stale, or at
+3240 × 1436 instead of 2400 × 1356. **The evidence for the fix is therefore the
+arithmetic (§21.29), the 21-frame before curve (§21.30) and
+`landmarks.test.ts`, not an after-sequence.** `.parity/g3/jump.py` is the
+instrument and it takes about twenty minutes on a quiet server; it should be
+re-run against a build, not a dev server, before this is shown as motion.
