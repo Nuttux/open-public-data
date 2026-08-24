@@ -2142,6 +2142,36 @@ def main() -> int:
                 print("re-applied the named places into base/marks.json")
             else:
                 print("WARNING: emit_places.py --marks failed:\n" + (r.stderr or r.stdout))
+
+    # AND PUT THE AUTHORED HEROES BACK, WHICH IS THE SAME TRAP ONE FILE OVER.
+    # `encode_heroes()` above rebuilds base/heroes.{qc,json} from the mock's
+    # wonder/hero-data.js, which carries ELEVEN. us_sf_places/emit_heroes.py
+    # merges further heroes into that register — its own seed, the same
+    # `_chunk.ChunkWriter`, keyed on `k`, replace-or-append — and its docstring
+    # names this trap in as many words: "re-running encode_city_chunks.py
+    # rebuilds base/heroes.* from the mock and puts the eleven back. This must
+    # be re-run after it."
+    #
+    # It was documented and it was still not automated, so it was still a trap:
+    # a re-run of this encoder for an unrelated reason (the block-key fix, in
+    # this case) silently dropped the Palace of Fine Arts Exhibition Hall, and
+    # the only reason it was noticed is that the re-run was diffed against a
+    # backup taken beforehand. The places merge earned its automation by costing
+    # two agents a recovery each; this one is automated before it costs a third.
+    #
+    # emit_heroes.py refuses to run unless the shipped heroes survive a
+    # read/re-encode round trip byte for byte, so a failure here is loud.
+    _heroes_qc = OUT / "base" / "heroes.qc"
+    if _heroes_qc.exists():
+        import subprocess, sys as _sys
+        _emit = pathlib.Path(__file__).resolve().parent.parent / "us_sf_places" / "emit_heroes.py"
+        if _emit.exists():
+            r = subprocess.run([_sys.executable, str(_emit)],
+                               capture_output=True, text=True)
+            if r.returncode == 0:
+                print("re-applied the authored heroes into base/heroes.qc")
+            else:
+                print("WARNING: emit_heroes.py failed:\n" + (r.stderr or r.stdout))
     return 0
 
 
