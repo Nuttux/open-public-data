@@ -1133,8 +1133,8 @@ until something is published that the map can put on the ground.
 
 ### 13.1 `time.ts` published a parcel count as a footprint count
 
-Routed by the data block (`pipeline/scripts/us_sf_city/DATA-TRUTH.md` §1.9, §5a)
-and fixed here, because `time.ts` is this block's file and `CityScrub`'s caption
+Routed by the data block (`pipeline/scripts/us_sf_city/DATA-TRUTH.md` §1.9) and
+fixed here, because `time.ts` is this block's file and `CityScrub`'s caption
 prints the **sum of that table straight to a reader**.
 
 It shipped
@@ -1144,37 +1144,56 @@ It shipped
 
 and **12,594 is not a footprint count.** It is the number of PARCELS carrying the
 1900 dump value, out of `ingest.py`'s own comment, sitting on a denominator of
-166,166 footprints — two units in one ratio. The measured footprint figures were
-already computed and already shipped in `gen/bldg-data.js` `meta.counts`, and
-nothing in `src/` read them:
+166,166 footprints — two units in one ratio. It had propagated into nine files.
 
-    drawn            166,166
-    yearFromParcel   142,679   its own parcel's roll year
-    yearFromBlock     20,662   its BLOCK's p25 estimate — a real year, not its own
-    yearNone           2,825   the 1906 constant, FLAG_NOYEAR — no year at all
+The footprint figures were already measured and already shipped, and nothing in
+`src/` read them. `gen/bldg-data.js` now carries `meta.yearFlags` — bit, mask,
+count, meaning and draw behaviour per flag:
 
-They partition the fabric (142,679 + 20,662 + 2,825 = 166,166), so **23,487 of
-166,166 — 14.1 % — arrive on a year that is not their own**, and that is what the
-row now carries.
+| flag | bit | n | drawn as |
+|---|---:|---:|---|
+| `FLAG_BLOCKYEAR` | 3 | 20,571 | arrives once, on a year that is not its own |
+| `FLAG_NOYEAR` | 4 | 2,916 | no year gate — drawn in every year |
+
+**23,487 of 166,166 — 14.1 % — arrive on a year that is not their own**, and that
+is what the row carries now. The 23,487 is a property of the assessor roll, so
+the block-key fix moved 534 buildings between the two flags and did not move the
+total.
 
 **Two claims, not one, and the caption was making the stronger one about all of
 it.** `us.sf.thecity.scrub.undated` ends *"…carry no date in any published file,
 and are drawn in every year"*, which is true of the trees, the streets, the
-places and the 2,825 — and **false of the 20,662**, which arrive exactly once, in
+places and the 2,916 — and **false of the 20,571**, which arrive exactly once, in
 the wrong year. So `UndatedCohort` gains `everyYear`, `undatedTotal()` returns
 both, and the caption is fed the one its own sentence describes:
 
 | | before | after |
 |---|---:|---:|
-| the caption's number | 138,368 of 367,614 | **128,599 of 367,614** |
+| the caption's number | 138,368 of 367,614 | **128,690 of 367,614** |
 | what `UNDATED` carries for buildings | 12,594 parcels | **23,487 footprints (14.1 %)** |
-| of which drawn in every year | — | **2,825** |
+| of which drawn in every year | — | **2,916** |
 
-The 23,487 is now a number the page **holds** and does not yet **say**. Saying it
-is the `FLAG_BLOCKYEAR` treatment — bit 3 and bit 4 are already in every `bldg`
-chunk's `u` byte and the renderer does not read them (DATA-TRUTH §5b) — and that
-is landing in another block's files, so the copy for it lands with the flag
-rather than being guessed at here.
+**And the numbers are derived, not transcribed.** That is the actual lesson: a
+number typed into a source file is a number that will be wrong after the next
+pipeline change and nobody will notice — which is this defect twice over, since
+the counts above went stale the moment the block-key fix landed. `fromYearFlags`
+builds the row from the `meta.yearFlags` shape and reads `everyYear` off each
+flag's own `drawnAs` words rather than matching a name, so a renamed flag
+changes the number instead of silently keeping the old one. `BLDG_YEAR_FLAGS`
+stands in until the encoder re-run puts `yearFlags` in the shipped manifest, and
+`.parity/m1flags.py` holds it to `bldg-data.js`:
+
+    FLAG_BLOCKYEAR   OK   time.ts (3, 20571)  payload (3, 20571)
+    FLAG_NOYEAR      OK   time.ts (4, 2916)   payload (4, 2916)
+    denominator      OK   166166
+    total on a borrowed year: 23,487 of 166,166 = 14.1 %
+
+**Withdrawn.** An earlier revision of this section said `FLAG_NOYEAR` reaches the
+browser unread. It does not — `scene.ts` honours it in four places, which is why
+bit 4 means *no year gate* and those 2,916 already draw in every year, exactly as
+`everyYear` claims. What is genuinely unread is `FLAG_BLOCKYEAR`; it is another
+block's file and its treatment is a decision for Daniel, so nothing here is
+designed around it changing.
 
 ### 13.2 Checked against the shots, and one of them is exposed
 
@@ -1184,14 +1203,16 @@ three against a decision's own year out of the corpus, and shot 4's two
 footprints are hidden from the fabric for the whole shot precisely so the roll's
 date cannot reach the frame. But two shots have the defect **on** them:
 
-**Shot 1 opens on 1906, and 2,825 footprints are stamped 1906 by a constant.**
-`build_bldg.py:207` — `yr = 1906; flags |= FLAG_NOYEAR`. The shot's whole subject
+**Shot 1 opens on 1906, and 2,916 footprints are stamped 1906 by a constant.**
+`build_bldg.py:207` — `yr = 1906; flags |= FLAG_NOYEAR`, and bit 4 means no year
+gate, so those buildings are in the 1906 frame **and in every other one**. The
+shot's whole subject
 is a hairline round a burned district with an empty fabric inside it, and the
 film's copy says the emptiness is the roll dating what is standing today. Some of
 what IS drawn in that frame is there because the pipeline had nothing and wrote
-1906 rather than "unknown". Nothing in this block can separate them on the frame
-until `FLAG_NOYEAR` is read; **the film does not claim those buildings are 1906
-buildings, and it should not be made to.**
+1906 rather than "unknown". Nothing in this block can separate them on the
+frame — they carry no date to separate them by — and **the film does not claim
+those buildings are 1906 buildings, and it should not be made to.**
 
 **Shot 10 runs 1966 → 2018 and crosses 2015.** Measured, `.parity/m1year.py` at
 the whole-city camera:
@@ -1217,3 +1238,9 @@ as a flicker rather than as history. The film is not composed against it and
 nothing here should paper over it: the root cause is a block key that pools four
 real assessor blocks and it is being fixed in the data block. **Recorded so that
 whoever re-times shot 10 knows what is in it.**
+
+**And these frames are the OLD data.** The block key is fixed in the pipeline and
+the encoder re-run that puts it on screen is queued, so the 0.741 % above is what
+the running page still does and not what it will do. Nothing in this block is
+timed against it, and it wants re-measuring — `python3 .parity/m1year.py m1by
+2013 2014 2015 2016` — once the re-run lands.

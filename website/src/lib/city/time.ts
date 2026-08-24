@@ -129,26 +129,48 @@ export function applyUndatedTreeGate(year: number | undefined): boolean {
  * does not date"*, and `CityScrub`'s caption prints the sum of this table to a
  * reader. **12,594 is not a footprint count.** It is the number of PARCELS
  * carrying the 1900 dump value, out of `ingest.py`'s own comment, put next to a
- * denominator of 166,166 footprints — two different units in one ratio.
+ * denominator of 166,166 footprints — two different units in one ratio. The
+ * error propagated into nine files before anybody looked.
  *
- * The measured footprint figures were already computed and already shipped, in
- * `gen/bldg-data.js` `meta.counts`, and nothing read them:
+ * The footprint figures were already measured and already shipped, and nothing
+ * read them. `gen/bldg-data.js` now carries `meta.yearFlags` — bit, mask,
+ * count, meaning and draw behaviour per flag — for exactly this reason:
  *
- *     drawn            166,166
- *     yearFromParcel   142,679   its own parcel's roll year
- *     yearFromBlock     20,662   its BLOCK's p25 estimate — a real year, not its own
- *     yearNone           2,825   the 1906 constant, FLAG_NOYEAR — no year at all
+ *     FLAG_BLOCKYEAR  bit 3  20,571  the 25th-percentile year of the other
+ *                                    parcels on this building's own published
+ *                                    assessor block. A real year, not its own.
+ *                                    → arrives once, on a year that is not its own
+ *     FLAG_NOYEAR     bit 4   2,916  no published source dates it, on its parcel
+ *                                    or anywhere on its block. `yr` holds 1906,
+ *                                    a placeholder and not a date.
+ *                                    → no year gate at all, drawn in every year
  *
- * 142,679 + 20,662 + 2,825 = 166,166, so the three partition the fabric.
  * **23,487 of 166,166 — 14.1 % — arrive on a year that is not their own**, and
- * that is the number this row now carries. Only the 2,825 are drawn in every
- * year; the other 20,662 arrive once, in the wrong year, which is why
- * `everyYear` exists rather than one number doing both jobs.
+ * that is what this row carries. Only the 2,916 are drawn in every year; the
+ * 20,571 arrive once, in the wrong year, which is why `everyYear` exists rather
+ * than one number doing two jobs. The 23,487 is a property of the assessor
+ * roll, so the block-key fix moved 534 buildings between the two flags and did
+ * not move the total.
  *
- * Measured by the data block, `pipeline/scripts/us_sf_city/DATA-TRUTH.md`
- * §1.9 and §5a. `FLAG_BLOCKYEAR` (bit 3) and `FLAG_NOYEAR` (bit 4) are already
- * in every `bldg` chunk's `u` byte and the renderer does not read them yet
- * (§5b); when it does, this table is what the copy beside it should say.
+ * ── AND THESE NUMBERS ARE A FALLBACK, NOT THE SOURCE ─────────────────────
+ *
+ * A number typed into a source file is a number that will be wrong after the
+ * next pipeline change, and nobody will notice — which is the whole story
+ * above, twice. `fromYearFlags` derives this row from the shipped
+ * `meta.yearFlags` the moment the manifest carries it; until the encoder
+ * re-run lands, `BLDG_FALLBACK` stands in, and `.parity/m1flags.py` asserts it
+ * against `bldg-data.js` so the next change fails a script rather than a
+ * reader.
+ *
+ * WITHDRAWN, and it was mine to withdraw: an earlier revision of this comment
+ * said `FLAG_NOYEAR` reaches the browser unread. It does not — `scene.ts`
+ * honours it in four places, which is why bit 4 means *no year gate* and those
+ * 2,916 already draw in every year, exactly as `everyYear` claims. What is
+ * genuinely unread is `FLAG_BLOCKYEAR`, it is another block's file, and its
+ * treatment is a decision for Daniel rather than something to design around
+ * here.
+ *
+ * Measured by the data block, `pipeline/scripts/us_sf_city/DATA-TRUTH.md` §1.9.
  */
 export interface UndatedCohort {
   readonly key: string;
@@ -160,6 +182,52 @@ export interface UndatedCohort {
    *  Absent means the whole cohort is. */
   readonly everyYear?: number;
 }
+
+/** The shape `bldg-data.js` / `manifest.buildings` publishes per year flag. */
+export interface YearFlag {
+  readonly name: string;
+  readonly bit: number;
+  readonly n: number;
+  readonly means?: string;
+  readonly drawnAs?: string;
+}
+
+/**
+ * The buildings row, derived rather than transcribed.
+ *
+ * `everyYear` is the flag whose own `drawnAs` says it has no year gate, read
+ * off the payload's words instead of matched on a name — a renamed flag should
+ * change the number, not silently keep the old one.
+ */
+export function fromYearFlags(
+  flags: readonly YearFlag[],
+  of: number,
+): UndatedCohort {
+  const n = flags.reduce((a, f) => a + f.n, 0);
+  const everyYear = flags
+    .filter((f) => /every year|no year gate/i.test(f.drawnAs ?? ""))
+    .reduce((a, f) => a + f.n, 0);
+  const say = flags
+    .map((f) => `${f.n.toLocaleString("en-US")} ${f.name === "FLAG_NOYEAR" ? "on a 1906 constant" : "on their block's estimate"}`)
+    .join(", ");
+  return {
+    key: "buildings",
+    n,
+    of,
+    everyYear,
+    what: `footprints the assessor's roll does not date on their own parcel — ${say}`,
+    source: "DataSF wv5m-vpq2, secured roll 2025 · bldg-data.js meta.yearFlags",
+  };
+}
+
+/** What `fromYearFlags` would return, for the payload that ships today.
+ *  Asserted against `bldg-data.js` by `.parity/m1flags.py`. */
+export const BLDG_YEAR_FLAGS: readonly YearFlag[] = [
+  { name: "FLAG_BLOCKYEAR", bit: 3, n: 20571,
+    drawnAs: "arrives once, on a year that is not its own" },
+  { name: "FLAG_NOYEAR", bit: 4, n: 2916,
+    drawnAs: "no year gate — drawn in every year" },
+];
 
 export const UNDATED: readonly UndatedCohort[] = [
   {
@@ -176,16 +244,7 @@ export const UNDATED: readonly UndatedCohort[] = [
     what: "drawn centrelines with neither a vote in the Journal nor a dated building on them",
     source: "DataSF street centrelines · Journal of Proceedings",
   },
-  {
-    key: "buildings",
-    n: 23487,
-    of: 166166,
-    everyYear: 2825,
-    what:
-      "footprints the assessor's roll does not date on their own parcel — " +
-      "20,662 on their block's estimate, 2,825 on a 1906 constant",
-    source: "DataSF wv5m-vpq2, secured roll 2025 · bldg-data.js meta.counts",
-  },
+  fromYearFlags(BLDG_YEAR_FLAGS, 166166),
   {
     key: "places",
     n: 116,
