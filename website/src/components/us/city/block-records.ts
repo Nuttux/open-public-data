@@ -749,8 +749,128 @@ export interface BlockMoneyFile {
   readonly b: Readonly<Record<string, readonly BlockPlace[]>>;
 }
 
+/* ────────────────────────────────────────────────────────────────────────────
+ * THE NEIGHBOURHOOD — the same four answers, one level up.
+ *
+ * "I'd rather something more about a neighbourhood than hyper localized
+ * blocks." The block is not thrown away: it becomes a DETAIL INSIDE the
+ * neighbourhood. Everything below aggregates the two block files above, over
+ * the membership `base/blocks.qc` already ships as `hood` — DataSF's 41
+ * Analysis Neighborhoods (`ajp5-b2md`), the same index `CityMap` has been
+ * reading all along to print the panel's subtitle.
+ *
+ * ── WHY THIS IS A LARGE WIN AND NOT A LATERAL MOVE ───────────────────────
+ *                                blocks              neighbourhoods
+ *   a money figure          30 of 5,404 (0.6 %)      20 of 41 (49 %)
+ *   a published place       66 of 5,404 (1.2 %)      27 of 41 (66 %)
+ *   a Census count       4,594 of 5,404 (85 %)       41 of 41 (100 %)
+ *   the Board's record   4,679 of 5,404 (87 %)       40 of 41 (98 %)
+ *
+ * ── AGGREGATION MUST NOT LAUNDER A GAP ───────────────────────────────────
+ * A rolled-up figure that does not say what it is rolled up from implies a
+ * coverage it has not got. South of Market reads $776.3 M agreed and that is
+ * ONE place of the four standing there. So `places` and `places_with_a_figure`
+ * are on every record, the largest figure is NAMED in `top`, and the panel
+ * says both — never a district total nobody measured. The same for residents:
+ * only 2 of the 41 hoods have a Census ring on every block, so
+ * `residents_blocks` ships beside `blocks`.
+ * ──────────────────────────────────────────────────────────────────────── */
+
+/** one curated line of the Board's own, and where it was printed */
+export interface HoodHighlight {
+  /** the sentence, as the volume prints it */
+  readonly t: string;
+  readonly y: number;
+  /** "<volume>/<leaf>" — the scan leaf, so every highlight is clickable */
+  readonly u: string;
+  /** the block this printing sits on */
+  readonly b: string;
+  readonly k: string;
+  readonly p: number;
+  /** 1 heading · 2 heading+item · 3 addressed · 4 placed. 9 is never emitted. */
+  readonly tier: number;
+  readonly type: string;
+  /** how many printings folded into this one */
+  readonly n: number;
+  /**
+   * **How many of the neighbourhood's own blocks this same printed subject
+   * lands on.** A count, not a judgement, and the one signal a block cannot
+   * carry: it is the difference between a decision that touched one corner and
+   * one that reorganised a district. It is the primary sort inside a tier.
+   */
+  readonly nb: number;
+  readonly y0: number;
+  readonly y1: number;
+  /** the largest single figure printed on any of the folded rows, 0 where none */
+  readonly a: number;
+}
+
+export interface HoodRecord {
+  readonly i: number;
+  readonly name: string;
+  readonly blocks: number;
+  /** 2020 Census, summed over the blocks the ring join reaches */
+  readonly residents: number;
+  readonly homes: number;
+  /** how many of `blocks` a Census ring resolved onto — the denominator */
+  readonly residents_blocks: number;
+  /** the roll's own dominant use across the hood's blocks, verbatim */
+  readonly use: string | null;
+  readonly use_blocks: number;
+  readonly record: {
+    readonly n: number;
+    readonly blocks: number;
+    readonly y0: number;
+    readonly y1: number;
+    /** [decade, count], ascending */
+    readonly dec: readonly (readonly number[])[];
+  };
+  readonly money: {
+    readonly places: number;
+    readonly places_with_a_figure: number;
+    readonly n_contracts: number;
+    readonly agreed_usd: number;
+    readonly paid_usd: number;
+    readonly n_payees: number;
+    readonly payees_paid_usd: number;
+    /** the largest figure in the hood, named — so a total can never imply coverage */
+    readonly top: {
+      readonly slug: string;
+      readonly name: string;
+      readonly agreed_usd: number;
+      readonly paid_usd: number;
+      readonly n_blocks: number;
+    } | null;
+    readonly names: readonly string[];
+  };
+  readonly highlights: readonly HoodHighlight[];
+  readonly highlights_hidden: number;
+}
+
+export interface HoodFactsFile {
+  readonly roll_year: number;
+  readonly census_year: number;
+  readonly source: { readonly dataset: string; readonly url: string };
+  readonly curation: { readonly cap: number };
+  readonly coverage: {
+    readonly hoods: number;
+    readonly blocks: number;
+    readonly hoods_with_residents: number;
+    readonly hoods_with_a_record: number;
+    readonly hoods_with_a_place: number;
+    readonly hoods_with_a_money_figure: number;
+    readonly hoods_where_every_block_has_a_census_ring: number;
+    readonly residents_carried: number;
+    readonly residents_counted: number;
+    readonly blocks_with_a_money_figure: number;
+    readonly places_straddling_two_hoods: readonly string[];
+  };
+  readonly hoods: readonly HoodRecord[];
+}
+
 let factsPromise: Promise<BlockFactsFile | null> | null = null;
 let moneyPromise: Promise<BlockMoneyFile | null> | null = null;
+let hoodPromise: Promise<HoodFactsFile | null> | null = null;
 let factsRow: Map<string, number> | null = null;
 
 /** fetch once, and never let a missing file take the panel down with it */
@@ -768,6 +888,45 @@ export function loadBlockFacts(): Promise<BlockFactsFile | null> {
 export function loadBlockMoney(): Promise<BlockMoneyFile | null> {
   if (!moneyPromise) moneyPromise = loadSoft<BlockMoneyFile>(`${BASE}/block-money.json`);
   return moneyPromise;
+}
+
+/** 81 KB, one fetch for the session, and it fails soft like the other two */
+export function loadHoodFacts(): Promise<HoodFactsFile | null> {
+  if (!hoodPromise) hoodPromise = loadSoft<HoodFactsFile>(`${BASE}/hood-facts.json`);
+  return hoodPromise;
+}
+
+/**
+ * The neighbourhood the map's own `hood` index names.
+ *
+ * Looked up by INDEX, not by name. `build_hood_facts.py` reads the same u8
+ * field `CityMap` reads, so the two are the same array position and a name
+ * comparison would be a second membership waiting to disagree with the first.
+ */
+export function hoodAt(file: HoodFactsFile, i: number): HoodRecord | null {
+  if (i < 0) return null;
+  const h = file.hoods[i];
+  return h && h.i === i ? h : (file.hoods.find((x) => x.i === i) ?? null);
+}
+
+/**
+ * The busiest decade of a neighbourhood's record, or null when nothing leads.
+ *
+ * Same rule as `blockShape.busiest` and for the same reason: naming a decade
+ * over a 6/6/5 spread is a coin toss dressed as a finding. One level up the
+ * spreads are much larger, so this almost always answers — which is the point.
+ */
+export function hoodBusiest(h: HoodRecord): { decade: number; n: number } | null {
+  let best: { decade: number; n: number } | null = null;
+  let second = 0;
+  for (const row of h.record.dec) {
+    const [decade, n] = [row[0] ?? 0, row[1] ?? 0];
+    if (!best || n > best.n) {
+      second = best ? best.n : second;
+      best = { decade, n };
+    } else if (n > second) second = n;
+  }
+  return best && best.n > second ? best : null;
 }
 
 /**

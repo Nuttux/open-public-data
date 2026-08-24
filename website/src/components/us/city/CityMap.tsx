@@ -67,6 +67,26 @@ const PRESET_KEYS = [
   "us.sf.thecity.map.view_street",
 ];
 
+/**
+ * THE 41 DIVISIONS, as `build_hood_facts.py --build` writes them.
+ *
+ * Per neighbourhood, the UNION OF ITS OWN BLOCKS' published rings, closed
+ * across the street right-of-way (dilate 18 m, erode 18 m) and simplified at
+ * 10 m. Not the published `ajp5-b2md` outline: that runs down the middle of
+ * the street, and the blocks are what a reader can click — so the union is the
+ * region that would actually answer with this neighbourhood.
+ *
+ * 111 parts and 3,417 vertices over all 41, which is why every one of them can
+ * be reprojected on every render rather than cached against the camera.
+ */
+interface HoodRingsFile {
+  names: string[];
+  /** per hood, per part, flat [x, y, z, ...] in world metres */
+  parts: number[][][];
+  /** per hood, a point INSIDE its largest part — not a centroid */
+  labels: number[][];
+}
+
 interface MarksFile {
   n: number;
   t: string[];
@@ -166,6 +186,9 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
      index into the block table and the pin threw it away, so the panel could
      say "block 3724" and the map could not draw 3724's own edge. */
   const [markIdx, setMarkIdx] = useState<number>(-1);
+  /* THE DIVISIONS. 46 KB, fetched once beside `marks.json`, and null until it
+     lands — the map draws exactly what it drew before in that state. */
+  const [hoodRings, setHoodRings] = useState<HoodRingsFile | null>(null);
 
   const ptrRef = useRef<{ x: number; y: number; at: number } | null>(null);
 
@@ -199,6 +222,11 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
     setBlockCtx({
       id: index.b[blockIndex] ?? "—",
       hood: bt.hoodNames[bt.hood[blockIndex]] ?? "San Francisco",
+      /* THE INDEX, not the name. `build_hood_facts.py` rolls the block files
+         up over this same u8 field, so the panel joins on array position and
+         never on a string — a name comparison would be a SECOND membership,
+         and two memberships is how a guard passes on a bad row. */
+      hoodIndex: bt.hood[blockIndex] ?? -1,
       areaM2: bt.area[blockIndex] ?? 0,
       // `ns[i]` has been in the T0 index all along and the fiche was never
       // handed it, so a block whose whole record is on its streets could not
@@ -360,6 +388,15 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
         renderer?.invalidate();
       });
 
+      void fetch("/data/us/sf/city/base/hood-rings.json")
+        .then((r) => (r.ok ? r.json() : null))
+        .then((h: HoodRingsFile | null) => {
+          if (!h || disposed) return;
+          setHoodRings(h);
+          renderer?.invalidate();
+        })
+        .catch(() => undefined);
+
       void fetch("/data/us/sf/city/base/marks.json")
         .then((r) => (r.ok ? r.json() : null))
         .then((m: MarksFile | null) => {
@@ -506,6 +543,101 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
     return seen ? pts.join(" ") : null;
   })();
 
+  /* ── THE 41 DIVISIONS, AND HOW THEY GIVE WAY ──────────────────────────
+     Daniel: *"when you're totally unzoomed at city level there's like the
+     division of the city into those divisions."* He is answering a real
+     problem another agent measured — at whole-city the median building is far
+     under a pixel and nothing the building layer draws survives, so the widest
+     shot is carried by a flat massing plate and has nothing to be ABOUT.
+     Forty-one named divisions give it something.
+
+     THREE RULES THIS LAYER IS WRITTEN UNDER.
+
+     1. **No tint of an invented metric.** All 41 draw in ONE ink. The selected
+        one gets a fill, and that is a selection state, not an encoding — there
+        is no quantity on this layer, so there is nothing to mislead about.
+     2. **It must not pop.** `wide` is linear in LOG scale between the
+        whole-city stop and the block stop, then smoothstepped, so its
+        derivative is zero at both ends: the divisions fade in as the streets
+        and blocks fade out rather than switching at a threshold.
+        **A pixel floor is a step in the derivative** and it is the cause of
+        every lurch bug on this project.
+     3. **The boundary is the blocks'.** `hood-rings.json` is the union of each
+        neighbourhood's own published block rings, closed across the street —
+        so what is outlined is exactly the set of blocks that would answer with
+        that name. Every vertex carries the ground elevation of the nearest of
+        those blocks, so the line lies ON the city rather than at sea level
+        under Twin Peaks.
+
+     The SELECTED neighbourhood keeps a floor, because it is the subject of the
+     margin and a reader who has just clicked must be able to see what the
+     fiche is about; the other forty are gone by the block stop. */
+  const hoodLayer = ((): {
+    all: string | null;
+    sel: string | null;
+    wide: number;
+  } => {
+    const none = { all: null, sel: null, wide: 0 };
+    if (!r || r.filmOn || !hoodRings) return none;
+    const cityScale = r.cam.presetScale(0);
+    const blockScale = r.cam.presetScale(2);
+    if (!(cityScale > 0) || !(blockScale > cityScale)) return none;
+    const raw = Math.log(blockScale / r.cam.scale) / Math.log(blockScale / cityScale);
+    const w = Math.min(1, Math.max(0, raw));
+    const wide = w * w * (3 - 2 * w);
+
+    const selIdx = markIdx >= 0
+      ? (sceneRef.current?.blockTable?.hood[markIdx] ?? -1)
+      : -1;
+    /* Nothing to draw once the divisions have faded and no neighbourhood is
+       picked — and the whole loop is skipped rather than run to produce two
+       invisible paths. */
+    if (wide <= 0.002 && selIdx < 0) return none;
+
+    const v = r.viewport;
+    const lw = hostRef.current && hostRef.current.clientWidth < NARROW_W ? 0 : LEDGER_W;
+    const path = (hi: number): string => {
+      let d = "";
+      for (const flat of hoodRings.parts[hi] ?? []) {
+        let sub = "";
+        let seen = false;
+        for (let k = 0; k + 2 < flat.length; k += 3) {
+          const pl = proj(flat[k], flat[k + 1], flat[k + 2]);
+          const x = SX(pl, v.W, r.cam);
+          const y = SY(pl, v.H, r.cam);
+          if (!Number.isFinite(x) || !Number.isFinite(y)) return "";
+          if (x > -400 && y > -400 && x < v.W - lw + 400 && y < v.H + 400) seen = true;
+          sub += `${k === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`;
+        }
+        /* A part entirely off the visible strip is behind the record margin or
+           off frame. Skipping it is not a cull for correctness — the browser
+           would clip it — it is what keeps the path string short enough to be
+           rebuilt on every camera frame. */
+        if (seen) d += `${sub}Z`;
+      }
+      return d;
+    };
+
+    let all = "";
+    if (wide > 0.002) {
+      for (let hi = 0; hi < hoodRings.parts.length; hi++) {
+        if (hi === selIdx) continue;
+        all += path(hi);
+      }
+    }
+    const sel = selIdx >= 0 ? path(selIdx) : "";
+
+    /* NO LABELS HERE. Looked at the wide shot and every neighbourhood name
+       was drawn TWICE — "TENDERLOIN TENDERLOIN", "RUSSIAN HILL RUSSIAN HILL".
+       `labels.ts` §the neighbourhood capitals has been drawing them all along,
+       out of this same `hood` byte, anchored on an AREA-WEIGHTED centre and
+       inside a shared ink budget with the streets and the marks. A second set
+       of names in an SVG over the canvas cannot see that budget and would
+       fight it at every zoom. What this layer adds is the one thing that was
+       missing: the BOUNDARY. */
+    return { all: all || null, sel: sel || null, wide };
+  })();
+
   const goToStop = (i: number): void => {
     const rr = rendererRef.current;
     const host = hostRef.current;
@@ -581,12 +713,12 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
 
           {hud}
 
-          {/* THE BLOCK'S OWN EDGE, under the pin. The pin says where the
-              reader clicked; this says what "this block" is — which is what
-              every figure in the margin is a claim about. `pointer-events:
-              none` so it never eats a click meant for the map, and
-              `aria-hidden` because the panel says the block id in words. */}
-          {outline ? (
+          {/* THE NEIGHBOURHOOD, AND THE BLOCK INSIDE IT. The pin says where
+              the reader clicked; the pale region says what the fiche in the
+              margin is about; the sharp ring says which block answered.
+              `pointer-events: none` so neither eats a click meant for the map,
+              and `aria-hidden` because the panel says both in words. */}
+          {outline || hoodLayer.all || hoodLayer.sel ? (
             <svg
               className="fx-city-outline"
               width="100%"
@@ -599,25 +731,89 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
                 overflow: "visible",
               }}
             >
+              {/* The neighbourhood first, so the block's own edge lands on
+                  top of it. A wash and a hairline: at the district stop this
+                  is two hundred blocks, and anything heavier stops being a
+                  region and becomes a stain over the city. */}
+              {/* THE OTHER FORTY — one ink, no fill, and gone by the block
+                  stop. `wide` carries the whole transition; there is no
+                  threshold anywhere in this block. */}
+              {hoodLayer.all ? (
+                <>
+                  {/* Cased, for the reason the block ring is: a single blue
+                      hairline over a city of pale roofs, dark parks and bright
+                      water is invisible on about half of it. Looked at the
+                      whole-city shot and could not find the boundaries at all
+                      before this. */}
+                  <path
+                    d={hoodLayer.all}
+                    fill="none"
+                    stroke="var(--bg, #fff)"
+                    strokeOpacity={0.7 * hoodLayer.wide}
+                    strokeWidth={3.5}
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d={hoodLayer.all}
+                    fill="none"
+                    stroke="var(--bleu)"
+                    strokeOpacity={0.85 * hoodLayer.wide}
+                    strokeWidth={1.25}
+                    strokeLinejoin="round"
+                  />
+                </>
+              ) : null}
+              {/* THE ONE THE MARGIN IS ABOUT. It keeps a floor at every zoom,
+                  because the fiche beside it is a claim about this ground and
+                  a reader who has just clicked has to be able to see which
+                  ground that is. The FILL, which would be a stain over two
+                  hundred blocks at close range, rides the ramp all the way to
+                  nothing; the boundary LINE is what survives. */}
+              {hoodLayer.sel ? (
+                <>
+                  <path
+                    d={hoodLayer.sel}
+                    fill="none"
+                    stroke="var(--bg, #fff)"
+                    strokeOpacity={0.6}
+                    strokeWidth={4.5}
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d={hoodLayer.sel}
+                    fill="var(--bleu)"
+                    fillOpacity={0.16 * hoodLayer.wide}
+                    stroke="var(--bleu)"
+                    strokeOpacity={0.5 + 0.4 * hoodLayer.wide}
+                    strokeWidth={2}
+                    strokeLinejoin="round"
+                  />
+                </>
+              ) : null}
+
               {/* Drawn twice: a wide soft casing so the edge holds against a
                   pale roof or a bright park, then the line itself. One stroke
                   in one colour disappears over half the city. */}
-              <polygon
-                points={outline}
-                fill="none"
-                stroke="var(--bg, #fff)"
-                strokeOpacity={0.55}
-                strokeWidth={5}
-                strokeLinejoin="round"
-              />
-              <polygon
-                points={outline}
-                fill="var(--bleu)"
-                fillOpacity={0.1}
-                stroke="var(--bleu)"
-                strokeWidth={1.75}
-                strokeLinejoin="round"
-              />
+              {outline ? (
+                <>
+                  <polygon
+                    points={outline}
+                    fill="none"
+                    stroke="var(--bg, #fff)"
+                    strokeOpacity={0.55}
+                    strokeWidth={5}
+                    strokeLinejoin="round"
+                  />
+                  <polygon
+                    points={outline}
+                    fill="var(--bleu)"
+                    fillOpacity={0.1}
+                    stroke="var(--bleu)"
+                    strokeWidth={1.75}
+                    strokeLinejoin="round"
+                  />
+                </>
+              ) : null}
             </svg>
           ) : null}
 

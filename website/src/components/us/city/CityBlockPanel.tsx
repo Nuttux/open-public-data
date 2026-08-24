@@ -101,8 +101,11 @@ import {
   blockShape,
   decadeGroups,
   hasMoney,
+  hoodAt,
+  hoodBusiest,
   loadBlockFacts,
   loadBlockMoney,
+  loadHoodFacts,
   loadStreetRecord,
   placeHref,
   streetLabel,
@@ -117,6 +120,8 @@ import {
   type BlockPlace,
   type BlockRecord,
   type DecadeGroup,
+  type HoodFactsFile,
+  type HoodRecord,
 } from "./block-records";
 
 const nfInt = new Intl.NumberFormat("en-US");
@@ -180,6 +185,14 @@ export interface BlockContext {
   id: string;
   /** the published neighbourhood the block sits in */
   hood: string;
+  /**
+   * Its index into the map's own `hoodNames` — 0..40, and every one of the
+   * 5,404 blocks carries one. The rollup file is joined on THIS, not on the
+   * name: `build_hood_facts.py` reads the same u8 field, so array position is
+   * the join, and a string comparison would be a second membership able to
+   * disagree with the first.
+   */
+  hoodIndex: number;
   /** the published area, m² */
   areaM2: number;
   /**
@@ -194,32 +207,61 @@ export interface BlockContext {
 }
 
 /**
- * EIGHT STRINGS THIS PASS ADDS. Same arrangement as the thirty-seven before
- * them — declared here behind `tx()` because `useT` returns the key itself when
- * one is missing, deleted the moment they land. FICHE.md §14g has them.
+ * THE TWENTY-FOUR STRINGS THE NEIGHBOURHOOD ADDS.
+ *
+ * The thirteen `sum_*` of §14g are in `en.ts` and `fr.ts` (0c6ccacf), so
+ * `EN_SUM` is gone and every one of them is a plain `t()` call. These are the
+ * next batch, in the same arrangement and for the same reason — `useT` returns
+ * THE KEY ITSELF when one is missing, so a plain `t()` would print
+ * `us.sf.thecity.panel.hood_head` on screen until they land. FICHE.md §15f has
+ * the list; `EN_HOOD` and `tx()` both go the moment they do.
  */
-const EN_SUM: Record<string, string> = {
-  "us.sf.thecity.panel.sum_head": "In short",
-  "us.sf.thecity.panel.sum_ground": "A mostly {use} block in {hood}.",
-  "us.sf.thecity.panel.sum_ground_plain": "A block in {hood}.",
-  "us.sf.thecity.panel.sum_people": "{n} people live on it, in {h} homes.",
-  "us.sf.thecity.panel.sum_people_one_home": "{n} people live on it, in one home.",
-  "us.sf.thecity.panel.sum_people_one": "One person lives on it, in {h} homes.",
-  "us.sf.thecity.panel.sum_people_none": "The Census counts nobody living on it.",
-  "us.sf.thecity.panel.sum_record":
-    "The Board decided {n} things here between {y0} and {y1}, most of them in the {d}s.",
-  "us.sf.thecity.panel.sum_record_flat":
-    "The Board decided {n} things here between {y0} and {y1}.",
-  "us.sf.thecity.panel.sum_record_one": "The Board decided one thing here, in {y0}.",
-  "us.sf.thecity.panel.sum_record_none": "The Board's record places nothing on it.",
-  "us.sf.thecity.panel.sum_place": "{place} stands on it.",
-  "us.sf.thecity.panel.sum_rail_end":
-    "The Board's Journal is scanned to {y}. The decades after it are blank because the record stops there, not because the city stopped deciding.",
+const EN_HOOD: Record<string, string> = {
+  "us.sf.thecity.panel.hood_kicker": "Neighbourhood",
+  "us.sf.thecity.panel.hood_block": "Block {id}",
+  "us.sf.thecity.panel.hood_sum_ground":
+    "A neighbourhood of {n} blocks, {m} of them mostly {use}.",
+  "us.sf.thecity.panel.hood_sum_ground_plain": "A neighbourhood of {n} blocks.",
+  "us.sf.thecity.panel.hood_sum_people": "{n} people live here, in {h} homes.",
+  "us.sf.thecity.panel.hood_sum_record":
+    "The Board decided {n} things across it between {y0} and {y1}, most of them in the {d}s.",
+  "us.sf.thecity.panel.hood_sum_record_flat":
+    "The Board decided {n} things across it between {y0} and {y1}.",
+  "us.sf.thecity.panel.hood_sum_record_none":
+    "The Board's record places nothing in it.",
+  "us.sf.thecity.panel.hood_now_blocks": "Blocks",
+  "us.sf.thecity.panel.hood_now_src":
+    "The {c} Census, summed over the {n} of this neighbourhood's {all} blocks a census block resolves onto. City-wide that join carries {carried} of the county's {total} residents.",
+  "us.sf.thecity.panel.hood_money_head": "Public money here",
+  "us.sf.thecity.panel.hood_money_one":
+    "One of the {n} city places standing here carries a figure — {place} — and what is below is the whole of it.",
+  "us.sf.thecity.panel.hood_money_only":
+    "{place} is the one city place standing here, and what is below is the whole of it.",
+  "us.sf.thecity.panel.hood_money_some":
+    "{m} of the {n} city places standing here carry a figure, the largest of them {place}. Each figure below is the whole of its place, added across the {m}; nothing is divided between neighbourhoods.",
+  "us.sf.thecity.panel.hood_money_none":
+    "{n} city places stand here and no city ledger names any of them, so no figure is shown for them.",
+  "us.sf.thecity.panel.hood_money_none_one":
+    "{place} stands here and no city ledger names it, so no figure is shown for it.",
+  "us.sf.thecity.panel.hood_money_cover":
+    "A published city place resolves to {n} of the city's {all} neighbourhoods, and {m} of those carry a figure.",
+  "us.sf.thecity.panel.hood_hl_head": "What the Board kept deciding here",
+  "us.sf.thecity.panel.hood_hl_note":
+    "The Board's own printed lines, ranked by how many of this neighbourhood's blocks each one lands on. Nothing is summarised: every line is the volume's own and opens the page it is printed on.",
+  "us.sf.thecity.panel.hood_hl_blocks": "on {n} of its blocks",
+  "us.sf.thecity.panel.hood_hl_blocks_one": "on one block",
+  "us.sf.thecity.panel.hood_hl_more": "{n} more lines the record places here",
+  "us.sf.thecity.panel.hood_block_head": "On this block",
+  "us.sf.thecity.panel.hood_block_ground": "A mostly {use} block.",
+  "us.sf.thecity.panel.sum_people_no_homes": "{n} people live on it.",
+  "us.sf.thecity.panel.sum_people_one_no_homes": "One person lives on it.",
+  "us.sf.thecity.panel.hood_block_lede":
+    "The neighbourhood above is {n} blocks. This is the one under the pin.",
 };
 
 function tx(t: (k: string) => string, key: string): string {
   const v = t(key);
-  return v === key ? (EN_SUM[key] ?? key) : v;
+  return v === key ? (EN_HOOD[key] ?? key) : v;
 }
 
 /**
@@ -249,37 +291,61 @@ function BlockSummary({
   shape,
   place,
   hood,
+  underHood,
   t,
 }: {
   now: BlockNow | null;
   shape: ReturnType<typeof blockShape>;
   place: BlockPlace | null;
   hood: string;
+  /**
+   * The neighbourhood section is standing above this one, so the ground clause
+   * drops the hood name: under a heading that already says "Mission", "A
+   * mostly multi-family residential block in Mission" says it twice. Where the
+   * rollup file has not loaded there is no heading, and the full clause is
+   * what carries the reader's bearing.
+   */
+  underHood: boolean;
   t: (k: string) => string;
 }) {
   const bits: string[] = [];
 
   if (now?.use) {
     bits.push(
-      tx(t, "us.sf.thecity.panel.sum_ground")
-        .replace("{use}", now.use.toLowerCase())
-        .replace("{hood}", hood),
+      underHood
+        ? tx(t, "us.sf.thecity.panel.hood_block_ground").replace(
+            "{use}",
+            now.use.toLowerCase(),
+          )
+        : t("us.sf.thecity.panel.sum_ground")
+            .replace("{use}", now.use.toLowerCase())
+            .replace("{hood}", hood),
     );
-  } else if (hood) {
-    bits.push(tx(t, "us.sf.thecity.panel.sum_ground_plain").replace("{hood}", hood));
+  } else if (hood && !underHood) {
+    bits.push(t("us.sf.thecity.panel.sum_ground_plain").replace("{hood}", hood));
   }
 
   if (now && now.residents !== null) {
     bits.push(
       now.residents === 0
-        ? tx(t, "us.sf.thecity.panel.sum_people_none")
-        : tx(
+        ? t("us.sf.thecity.panel.sum_people_none")
+        : /* HU100 = 0 with residents above it is a real published pair —
+             City Hall's ring reads 19 and 0 — and "19 people live on it, in 0
+             homes" reads as an error in the data rather than as what a
+             workplace block looks like when the Census counts homes. The homes
+             clause is dropped instead; the row above still prints the 0, where
+             it sits beside its own label and cannot be misread. */
+          tx(
             t,
             now.residents === 1
-              ? "us.sf.thecity.panel.sum_people_one"
-              : now.homes === 1
-                ? "us.sf.thecity.panel.sum_people_one_home"
-                : "us.sf.thecity.panel.sum_people",
+              ? now.homes
+                ? "us.sf.thecity.panel.sum_people_one"
+                : "us.sf.thecity.panel.sum_people_one_no_homes"
+              : !now.homes
+                ? "us.sf.thecity.panel.sum_people_no_homes"
+                : now.homes === 1
+                  ? "us.sf.thecity.panel.sum_people_one_home"
+                  : "us.sf.thecity.panel.sum_people",
           )
             .replace("{n}", nfInt.format(now.residents))
             .replace("{h}", nfInt.format(now.homes ?? 0)),
@@ -287,18 +353,17 @@ function BlockSummary({
   }
 
   if (!shape) {
-    bits.push(tx(t, "us.sf.thecity.panel.sum_record_none"));
+    bits.push(t("us.sf.thecity.panel.sum_record_none"));
   } else if (shape.n === 1) {
     bits.push(
-      tx(t, "us.sf.thecity.panel.sum_record_one").replace(
+      t("us.sf.thecity.panel.sum_record_one").replace(
         "{y0}",
         String(shape.firstYear),
       ),
     );
   } else {
     bits.push(
-      tx(
-        t,
+      t(
         shape.busiest
           ? "us.sf.thecity.panel.sum_record"
           : "us.sf.thecity.panel.sum_record_flat",
@@ -321,18 +386,348 @@ function BlockSummary({
   }
 
   if (place) {
-    bits.push(tx(t, "us.sf.thecity.panel.sum_place").replace("{place}", place.name));
+    bits.push(t("us.sf.thecity.panel.sum_place").replace("{place}", place.name));
   }
 
   if (bits.length === 0) return null;
   return (
     <>
+      {underHood ? null : (
+        <div className="fx-city-ledger-head fx-block-sec" style={{ marginTop: 10 }}>
+          {t("us.sf.thecity.panel.sum_head")}
+        </div>
+      )}
+      <p className="fx-block-lead" style={{ marginTop: underHood ? 8 : 0 }}>
+        {bits.join(" ")}
+      </p>
+    </>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+ * THE NEIGHBOURHOOD — what the fiche is about now.
+ *
+ * "I'd rather something more about a neighbourhood than hyper localized
+ * blocks." The block did not go away; it moved down the page, under its own
+ * heading, as the detail inside the thing the reader is looking at.
+ *
+ * Everything below reads ONE file, `hood-facts.json`, which is a rollup of the
+ * two block files over the membership `base/blocks.qc` already publishes. The
+ * measurements are in FICHE.md §15 and the point of the change is in one row of
+ * it: **a money figure reaches 30 of 5,404 blocks and 20 of 41
+ * neighbourhoods.**
+ * ──────────────────────────────────────────────────────────────────────── */
+
+/**
+ * IN SHORT, for the neighbourhood — the same discipline as the block's.
+ *
+ * Assembled, never written. Every clause is one sentence over one field and a
+ * clause whose field is missing is dropped rather than hedged. The only thing
+ * this level says that the block's cannot is *how many blocks*, which is a
+ * count of the membership and not an estimate of anything.
+ */
+function HoodSummary({ hood, t }: { hood: HoodRecord; t: (k: string) => string }) {
+  const bits: string[] = [];
+  const busiest = hoodBusiest(hood);
+
+  bits.push(
+    /* NOT "a mostly single family residential neighbourhood". Each block's
+       `use` is already the plurality of ITS parcels, so a plurality over those
+       is a plurality of pluralities — and South of Market came out "mostly
+       single family residential", which is the roll's word for a great many
+       small SoMa parcels and is not what a reader will understand by it. The
+       sentence now says exactly what was counted: how many of the
+       neighbourhood's blocks are mostly that. */
+    hood.use
+      ? tx(t, "us.sf.thecity.panel.hood_sum_ground")
+          .replace("{use}", hood.use.toLowerCase())
+          .replace("{m}", nfInt.format(hood.use_blocks))
+          .replace("{n}", nfInt.format(hood.blocks))
+      : tx(t, "us.sf.thecity.panel.hood_sum_ground_plain").replace(
+          "{n}",
+          nfInt.format(hood.blocks),
+        ),
+  );
+
+  /* Every one of the 41 carries a Census count, so unlike the block there is
+     no absent case to write for — and no hood reads zero, so there is no
+     zero sentence either. A sentence for a state that does not occur is a
+     sentence nobody has checked. */
+  if (hood.residents > 0) {
+    bits.push(
+      tx(t, "us.sf.thecity.panel.hood_sum_people")
+        .replace("{n}", nfInt.format(hood.residents))
+        .replace("{h}", nfInt.format(hood.homes)),
+    );
+  }
+
+  if (hood.record.n === 0) {
+    bits.push(tx(t, "us.sf.thecity.panel.hood_sum_record_none"));
+  } else {
+    bits.push(
+      tx(
+        t,
+        busiest
+          ? "us.sf.thecity.panel.hood_sum_record"
+          : "us.sf.thecity.panel.hood_sum_record_flat",
+      )
+        .replace("{n}", nfInt.format(hood.record.n))
+        .replace("{y0}", String(hood.record.y0))
+        .replace("{y1}", String(hood.record.y1))
+        .replace("{d}", String(busiest?.decade ?? "")),
+    );
+  }
+
+  return (
+    <>
       <div className="fx-city-ledger-head fx-block-sec" style={{ marginTop: 10 }}>
-        {tx(t, "us.sf.thecity.panel.sum_head")}
+        {t("us.sf.thecity.panel.sum_head")}
       </div>
       <p className="fx-block-lead" style={{ marginTop: 0 }}>
         {bits.join(" ")}
       </p>
+    </>
+  );
+}
+
+/**
+ * THE GROUND, one level up — and the denominator travels with every figure.
+ *
+ * `residents_blocks` is on the record and it is printed, because only **2 of
+ * the 41** neighbourhoods have a Census ring on every one of their blocks:
+ * Bayview Hunters Point has 294 of 501. A resident count with no denominator
+ * beside it would imply a completeness the join has not got. The city-wide
+ * ratio is on the same line, so a reader can see that the missing rings cost
+ * 0.6 % of the county rather than guess at it.
+ */
+function HoodNowRows({
+  hood,
+  file,
+  t,
+}: {
+  hood: HoodRecord;
+  file: HoodFactsFile;
+  t: (k: string) => string;
+}) {
+  return (
+    <>
+      <div className="fx-city-ledger-head fx-block-sec">
+        {t("us.sf.thecity.panel.now_head")}
+      </div>
+      <dl className="fx-city-ledger-facts">
+        {hood.residents > 0 ? (
+          <div className="fx-city-fact-row">
+            <dt>{t("us.sf.thecity.panel.now_residents")}</dt>
+            <dd>{nfInt.format(hood.residents)}</dd>
+          </div>
+        ) : null}
+        {hood.homes > 0 ? (
+          <div className="fx-city-fact-row">
+            <dt>{t("us.sf.thecity.panel.now_homes")}</dt>
+            <dd>{nfInt.format(hood.homes)}</dd>
+          </div>
+        ) : null}
+        {hood.use ? (
+          <div className="fx-city-fact-row">
+            <dt>{t("us.sf.thecity.panel.now_use")}</dt>
+            <dd>{hood.use}</dd>
+          </div>
+        ) : null}
+        <div className="fx-city-fact-row">
+          <dt>{tx(t, "us.sf.thecity.panel.hood_now_blocks")}</dt>
+          <dd>{nfInt.format(hood.blocks)}</dd>
+        </div>
+      </dl>
+      <p className="fx-block-hint" style={{ marginTop: 7 }}>
+        {tx(t, "us.sf.thecity.panel.hood_now_src")
+          .replace("{c}", String(file.census_year))
+          .replace("{n}", nfInt.format(hood.residents_blocks))
+          .replace("{all}", nfInt.format(hood.blocks))
+          .replace("{carried}", nfInt.format(file.coverage.residents_carried))
+          .replace("{total}", nfInt.format(file.coverage.residents_counted))}{" "}
+        <a
+          className="fx-block-jump"
+          href="https://data.census.gov/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t("us.sf.thecity.panel.now_census")}
+        </a>
+      </p>
+    </>
+  );
+}
+
+/**
+ * PUBLIC MONEY, ROLLED UP — and the one thing a rollup must never do.
+ *
+ * **A rolled-up number that does not say what it is rolled up from launders a
+ * gap.** South of Market reads $776.3 M agreed. That is Moscone Center, one of
+ * the four city places standing there, and a reader shown the figure under a
+ * neighbourhood heading with nothing else will read it as the neighbourhood's.
+ * So the sentence over the figures always carries BOTH counts and NAMES the
+ * place carrying the largest of them, and the figures are only ever described
+ * as the whole of the places they came from.
+ *
+ * The two block-level refusals survive unchanged, because they are properties
+ * of the source files and travel with the rollup: **the two ledgers are never
+ * added**, and **paid above agreed is not an overrun** — Bayview Hunters Point
+ * reads $611.7 M agreed and $689.5 M paid for exactly the reason the Southeast
+ * plant does one block down.
+ */
+function HoodMoney({
+  hood,
+  file,
+  money,
+  t,
+}: {
+  hood: HoodRecord;
+  file: HoodFactsFile;
+  money: BlockMoneyFile | null;
+  t: (k: string) => string;
+}) {
+  const m = hood.money;
+  if (m.places === 0) return null;
+  const some = m.places_with_a_figure;
+  const top = m.top;
+  const lead =
+    some === 0
+      ? tx(
+          t,
+          m.places === 1
+            ? "us.sf.thecity.panel.hood_money_none_one"
+            : "us.sf.thecity.panel.hood_money_none",
+        )
+          .replace("{n}", nfInt.format(m.places))
+          .replace("{place}", m.names[0] ?? "")
+      : tx(
+          t,
+          m.places === 1
+            ? "us.sf.thecity.panel.hood_money_only"
+            : some === 1
+              ? "us.sf.thecity.panel.hood_money_one"
+              : "us.sf.thecity.panel.hood_money_some",
+        )
+          .replace(/\{n\}/g, nfInt.format(m.places))
+          .replace(/\{m\}/g, nfInt.format(some))
+          .replace("{place}", top?.name ?? "");
+
+  return (
+    <>
+      <div className="fx-city-ledger-head fx-block-sec">
+        {tx(t, "us.sf.thecity.panel.hood_money_head")}
+      </div>
+      <p className="fx-block-lead" style={{ marginTop: 0 }}>
+        {lead}
+      </p>
+      {some > 0 ? (
+        <dl className="fx-city-ledger-facts" style={{ marginTop: 7 }}>
+          {m.n_contracts > 0 ? (
+            <>
+              <div className="fx-city-fact-row">
+                <dt>{t("us.sf.thecity.panel.money_contracts")}</dt>
+                <dd>{nfInt.format(m.n_contracts)}</dd>
+              </div>
+              <div className="fx-city-fact-row">
+                <dt>{t("us.sf.thecity.panel.money_agreed")}</dt>
+                <dd>{usdShort(m.agreed_usd)}</dd>
+              </div>
+              <div className="fx-city-fact-row">
+                <dt>{t("us.sf.thecity.panel.money_paid")}</dt>
+                <dd>{usdShort(m.paid_usd)}</dd>
+              </div>
+            </>
+          ) : null}
+          {m.n_payees > 0 ? (
+            <div className="fx-city-fact-row">
+              <dt>
+                {t("us.sf.thecity.panel.money_payees")}
+                {` (${nfInt.format(m.n_payees)})`}
+              </dt>
+              <dd>{usdShort(m.payees_paid_usd)}</dd>
+            </div>
+          ) : null}
+        </dl>
+      ) : null}
+      {some > 0 && m.n_contracts > 0 && m.paid_usd > m.agreed_usd ? (
+        <p className="fx-block-hint" style={{ marginTop: 6 }}>
+          {t("us.sf.thecity.panel.money_over")}
+        </p>
+      ) : null}
+      <p className="fx-block-hint" style={{ marginTop: 7 }}>
+        {some > 0 && m.n_contracts > 0 && m.n_payees > 0
+          ? t("us.sf.thecity.panel.money_ledgers") + " "
+          : ""}
+        {/* `next/link`, NOT an anchor: the place fiche has a root-level
+            intercepting drawer at `app/@drawer/(...)us/city/sf/places/place/
+            [slug]`, and a plain <a> is a document navigation that bypasses the
+            interception and throws the whole city away to show one building. */}
+        {top && money ? (
+          <Link className="fx-block-jump" href={placeHref(money, top.slug)}>
+            {t("us.sf.thecity.panel.money_link").replace("{place}", top.name)}
+          </Link>
+        ) : null}
+      </p>
+      {/* The coverage, printed where the section appears — a reader who meets
+          this on one neighbourhood and not the next has to be able to tell
+          "the city holds nothing here" from "this join does not reach here". */}
+      <p className="fx-block-hint" style={{ marginTop: 8 }}>
+        {tx(t, "us.sf.thecity.panel.hood_money_cover")
+          .replace("{n}", nfInt.format(file.coverage.hoods_with_a_place))
+          .replace("{all}", nfInt.format(file.coverage.hoods))
+          .replace("{m}", nfInt.format(file.coverage.hoods_with_a_money_figure))}
+      </p>
+    </>
+  );
+}
+
+/**
+ * WHAT THE BOARD KEPT DECIDING HERE — curated, not judged.
+ *
+ * The architecture is `export_sf_places.curate_documents()` one level down in
+ * material: dedupe by stem, classify against an inspectable tier table, rank by
+ * evidence inside the tier, cap, and report the count the cap hid. **No model
+ * pass**, and the reason is the one this project settled on the Paris side:
+ * *the city already writes the description.* Every line here is a sentence the
+ * Board printed, and every one opens the scan leaf it was printed on. A
+ * generated summary of the same material would be the only thing on this map a
+ * reader could not click through to.
+ *
+ * The one signal a block cannot carry is the primary sort: **how many of this
+ * neighbourhood's own blocks the same printed subject lands on.** A count, not
+ * a judgement, and it is the whole difference between a decision that touched
+ * one corner and one that reorganised a district — "Giving Notice of Special
+ * Election for Bonds for Municipal Railway Extensions", 1927, twenty-four
+ * Sunset blocks.
+ */
+function HoodHighlights({ hood, t }: { hood: HoodRecord; t: (k: string) => string }) {
+  if (hood.highlights.length === 0) return null;
+  const docs: FicheArchiveDoc[] = hood.highlights.map((h, i) => ({
+    id: `${h.u}#h${i}`,
+    gloss: h.t,
+    title: `${KIND_WORDING[h.k] ?? "Item"} · ${h.y || h.y0}`,
+    year: null,
+    href: archiveHref(h.u),
+    sourceLabel: seriesOf(h.u),
+    variantNote:
+      (h.nb > 1
+        ? tx(t, "us.sf.thecity.panel.hood_hl_blocks").replace("{n}", String(h.nb))
+        : tx(t, "us.sf.thecity.panel.hood_hl_blocks_one")) +
+      (h.y1 > h.y0 ? ` · ${h.y0}–${h.y1}` : ""),
+  }));
+  return (
+    <>
+      <div className="fx-city-ledger-head fx-block-sec">
+        {tx(t, "us.sf.thecity.panel.hood_hl_head")}
+      </div>
+      <p className="fx-block-hint">{tx(t, "us.sf.thecity.panel.hood_hl_note")}</p>
+      <FicheArchiveShelf
+        docs={docs}
+        cap={3}
+        moreLabel={(k) =>
+          tx(t, "us.sf.thecity.panel.hood_hl_more").replace("{n}", String(k))
+        }
+      />
     </>
   );
 }
@@ -354,16 +749,26 @@ function BlockSummary({
  */
 function NowRows({
   now,
+  underHood,
   t,
 }: {
   now: BlockNow;
+  /**
+   * The neighbourhood's own "On the ground now" is already on the page above,
+   * under that exact heading. Printing it twice would make the two sets of
+   * numbers look like a disagreement rather than two grains of the same
+   * measurement, so under the "On this block" heading the rows stand bare.
+   */
+  underHood: boolean;
   t: (k: string) => string;
 }) {
   return (
     <>
-      <div className="fx-city-ledger-head fx-block-sec">
-        {t("us.sf.thecity.panel.now_head")}
-      </div>
+      {underHood ? null : (
+        <div className="fx-city-ledger-head fx-block-sec">
+          {t("us.sf.thecity.panel.now_head")}
+        </div>
+      )}
       <dl className="fx-city-ledger-facts">
         {now.residents !== null ? (
           <div className="fx-city-fact-row">
@@ -679,6 +1084,10 @@ export default function CityBlockPanel({
   // before this section existed.
   const [facts, setFacts] = useState<BlockFactsFile | null>(null);
   const [money, setMoney] = useState<BlockMoneyFile | null>(null);
+  // The third: 81 KB of rollup, one fetch for the session. The fiche is ABOUT
+  // this file now, so it is loaded on the same terms as the other two and
+  // fails just as soft — a missing file leaves the block fiche §9-§14 shipped.
+  const [hoods, setHoods] = useState<HoodFactsFile | null>(null);
 
   useEffect(() => {
     let live = true;
@@ -687,6 +1096,9 @@ export default function CityBlockPanel({
     });
     void loadBlockMoney().then((m) => {
       if (live) setMoney(m);
+    });
+    void loadHoodFacts().then((h) => {
+      if (live) setHoods(h);
     });
     return () => {
       live = false;
@@ -754,6 +1166,9 @@ export default function CityBlockPanel({
   // section rather than a heading over nothing.
   const now = facts && context ? blockNow(facts, context.id) : null;
   const places = money && context ? blockPlaces(money, context.id) : [];
+  // Joined on the INDEX the map itself publishes, never on the name — one
+  // membership on this map, and no second one able to disagree with it.
+  const hood = hoods && context ? hoodAt(hoods, context.hoodIndex) : null;
 
   /** open the street fold and take the reader down to it in one press */
   const goToStreets = (): void => {
@@ -778,13 +1193,22 @@ export default function CityBlockPanel({
     >
       <div className="fx-city-panel-head">
         <div>
+          {/* THE NEIGHBOURHOOD IS THE TITLE and the block is the subtitle —
+              the two have swapped. A reader who clicks a shape is told what
+              part of San Francisco they are in, and then which of its blocks
+              answered; before this they were told "3724" and had to read the
+              small line under it to find out where that was. */}
           <span className="fx-city-panel-kicker">
-            {t("us.sf.thecity.panel.kicker")}
+            {hood
+              ? tx(t, "us.sf.thecity.panel.hood_kicker")
+              : t("us.sf.thecity.panel.kicker")}
           </span>
-          <h2 className="fx-city-panel-title">{context?.id ?? "—"}</h2>
+          <h2 className="fx-city-panel-title">
+            {hood ? hood.name : (context?.hood ?? context?.id ?? "—")}
+          </h2>
           {context ? (
             <p className="fx-place-sub" style={{ margin: "2px 0 0" }}>
-              {context.hood}
+              {tx(t, "us.sf.thecity.panel.hood_block").replace("{id}", context.id)}
               {context.areaM2 > 0
                 ? ` · ${t("us.sf.thecity.panel.area").replace("{n}", nfInt.format(Math.round(context.areaM2)))}`
                 : ""}
@@ -808,6 +1232,36 @@ export default function CityBlockPanel({
       </div>
 
       <div className="fx-city-panel-body">
+        {/* ── THE NEIGHBOURHOOD, FIRST AND WHOLE ────────────────────────────
+            Four sections, none of them outside the loading gate, because the
+            rollup does not depend on which block was picked — only on which of
+            the 41 it belongs to, which the pick already knew. The block's own
+            record can still be in flight underneath them.
+
+            The order is the one §13f established on the phone and it holds one
+            level up: the ALWAYS-PRESENT section yields to the RARE one. Every
+            hood carries residents; 20 of 41 carry a money figure; so the money
+            is above the highlights and both are above the block. */}
+        {hood && hoods ? (
+          <>
+            <HoodSummary hood={hood} t={t} />
+            <HoodNowRows hood={hood} file={hoods} t={t} />
+            <HoodMoney hood={hood} file={hoods} money={money} t={t} />
+            <HoodHighlights hood={hood} t={t} />
+            <div
+              className="fx-city-ledger-head fx-block-sec"
+              style={{ marginTop: 20 }}
+            >
+              {tx(t, "us.sf.thecity.panel.hood_block_head")}
+            </div>
+            <p className="fx-block-hint" style={{ marginTop: 0 }}>
+              {tx(t, "us.sf.thecity.panel.hood_block_lede").replace(
+                "{n}",
+                nfInt.format(hood.blocks),
+              )}
+            </p>
+          </>
+        ) : null}
         {/* IN SHORT, before anything else. "So people get straight to the
             meat." It is assembled from the same fields the sections below
             print, so it can never say more than they do. */}
@@ -817,6 +1271,7 @@ export default function CityBlockPanel({
             shape={shape}
             place={places[0] ?? null}
             hood={context?.hood ?? ""}
+            underHood={!!(hood && hoods)}
             t={t}
           />
         ) : null}
@@ -826,7 +1281,7 @@ export default function CityBlockPanel({
             the `shape ?` branch would have hidden them on exactly the 324
             blocks whose only content this is. */}
         {now && facts ? (
-          <NowRows now={now} t={t} />
+          <NowRows now={now} underHood={!!(hood && hoods)} t={t} />
         ) : null}
 
         {places.length > 0 && money ? (
@@ -893,7 +1348,7 @@ export default function CityBlockPanel({
                 runs to the present so the gap is visible instead of the rail
                 just stopping. This says whose gap it is. */}
             <p className="fx-block-hint" style={{ marginTop: 6 }}>
-              {tx(t, "us.sf.thecity.panel.sum_rail_end").replace(
+              {t("us.sf.thecity.panel.sum_rail_end").replace(
                 "{y}",
                 String(SERIES_LAST_YEAR),
               )}

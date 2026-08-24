@@ -1361,3 +1361,297 @@ Thirteen keys for `en.ts` / `fr.ts` — declared in `EN_SUM` behind `tx()`, dele
 
 The two from §13g (`dem_lead_year`, `dem_floor_short`) are **no longer needed** — the section
 they belonged to has left the fiche.
+
+---
+
+## 15. Block F1, round six — the unit changed: the neighbourhood, not the block
+
+> "hmm no I'd rather something more about a neighbourhood than hyper localized blocks."
+
+The block is not thrown away. It becomes **a detail inside the neighbourhood**, which is
+cheaper than rebuilding and keeps everything §9–§14 built reachable: the summary, the ground
+facts, the money, the ring on the ground and the decade rail all aggregate one level up.
+
+### a. The membership already existed on the wire, and it was NOT re-derived
+
+`base/blocks.qc` ships a `hood` field — one u8 per block, an index into the 41 `hoodNames`
+the same chunk publishes, which are DataSF's Analysis Neighborhoods (`ajp5-b2md`) verbatim.
+`CityMap` has been reading it all along (`bt.hoodNames[bt.hood[i]]`) to print the panel's
+subtitle. **Nothing was fetched.**
+
+MEASURED off the shipped chunk: **all 5,404 blocks carry an index in 0..40.** There is no
+sentinel and no unassigned block, so *"a click landing outside every hood"* cannot happen on
+this panel — the 53 buildings that fall outside all 41 polygons are BUILDINGS, and the pick
+resolves against block rings.
+
+A second point-in-polygon pass was deliberately NOT run. It would have produced a second
+membership that could disagree with the one the map draws, and **every guard downstream
+compares two things; when the same bad row corrupts both, the comparison passes.** There is
+one membership on this map and `build_hood_facts.py` is a rollup of it.
+
+### b. What rolling up actually buys — measured, both ends
+
+| | blocks | neighbourhoods |
+|---|---|---|
+| carry a money figure | **30 of 5,404 (0.6 %)** | **20 of 41 (49 %)** |
+| carry a published place | 66 of 5,404 (1.2 %) | **27 of 41 (66 %)** |
+| carry a Census count | 4,594 of 5,404 (85 %) | **41 of 41 (100 %)** |
+| carry the Board's record | 4,679 of 5,404 (87 %) | **40 of 41 (98 %)** |
+
+The one hood with no record is **Treasure Island** — 36 blocks, 0 decisions. That is real and
+not a gap in the rollup: it was Navy land until 1997 and the Journal's 1906–1999 series places
+nothing on it.
+
+### c. The three places aggregation could have laundered a gap, and what ships instead
+
+1. **Money.** South of Market reads **$776.3 M agreed** and that is **one place of the four
+   standing there** — Moscone Center. `places` and `places_with_a_figure` are both on every
+   record, the panel prints both, and the largest figure is **named** (`money.top`), so the
+   sentence a reader gets is *"4 city places stand here; 1 carries a figure"* and not a
+   district-wide total that was never measured.
+2. **Residents.** A hood's count is summed over the blocks the 2020 Census ring join reaches.
+   **Only 2 of 41 hoods have a ring on every block** — Bayview Hunters Point has 294 of 501 —
+   so `residents_blocks` ships beside `blocks`. City-wide the join still carries 868,555 of the
+   county's 873,965 (99.4 %), and summing the 41 hoods returns **exactly** `residents_carried`,
+   which is the arithmetic check that the membership partitions.
+3. **A place standing in two neighbourhoods.** Exactly one does: **`moscone-center`**. It is
+   reported whole in each, for the same reason it is reported whole on each of its four blocks —
+   no published file apportions it — and `places_straddling_two_hoods` ships the list.
+
+### d. The highlights are curated, not judged — and the architecture is `curate_documents()`
+
+Read before writing a second one, as asked. `export_sf_places.curate_documents()` is:
+**dedupe by title stem → `classify_doc()` against `DOC_TYPES` (first match wins, order IS the
+precedence rule, `PROCEDURAL_HEAD` overrides the body) → `rank_documents()` sorts on
+(tier, has-gloss, −evidence, title) where the TYPE decides the band and evidence only orders
+inside it → cap, and report the count rather than the rows.** No model call.
+
+**The shape transfers exactly. `DOC_TYPES` itself does not**, and that is the finding: that
+table matches *catalogue titles* ("Annual report", "Environmental impact report"), and there is
+no catalogue here — a block-record row is a sentence the Board printed. The tier signal is
+already in the data and it is stronger than a regex over a title:
+
+```
+tier 1  heading        g == 'h'  and p >= 1   the Board's own printed heading
+tier 2  heading_body   g == 'p'  and p >= 1   that heading composed with its item
+tier 3  addressed      g == 's'  and p >= 3   a sentence naming an address here
+tier 4  placed                     p >= 1     a sentence the record places here
+tier 9  procedural / fragment                 counted, NEVER shown
+```
+
+Tier 9 is `PROCEDURAL_TIER`'s exact role. It catches two things: the Journal's own machinery
+(`^On recommendation of`, `^Read and ordered`, `^Finally passed` … all anchored, so a sentence
+that MENTIONS a committee is not demoted) and lines under 40 characters, which is the same
+fragment floor the decade headline already uses. There is no `p == 0`: street-tier rows live in
+`street/<KEY>.json` and are a claim about a street, not this ground. MEASURED over all 256
+shards: **p1 54,655 · p2 17,339 · p3 18,054 · p4 1,343, and no p0.**
+
+Classified over all 41 hoods, on the face of each deduped group:
+`heading 2,597 · heading_body 2,118 · addressed 9,373 · placed 20,704 · fragment 1,179 ·
+procedural 92`.
+
+**The one thing this level adds that a block cannot: how many of the neighbourhood's own blocks
+the same printed subject lands on.** A count, not a judgement, and it is the whole difference
+between a decision that touched one corner and one that reorganised a district. It is the
+primary sort inside a tier. What it produces, unedited:
+
+```
+Sunset/Parkside   1927  on 24 blocks  Giving Notice of Special Election for Bonds for
+                                      Municipal Railway Extensions.
+Sunset/Parkside   1926  on 24 blocks  Accepting Deed to Lands Required for the Widening of
+                                      Noriega Street From Twenty-first to Thirty-first Avenues.
+Mission           1917  on 14 blocks  Spring Valley Water Company to Connect Up Drinking
+                                      Fountains on Mission Street.
+South of Market   1940  on  8 blocks  Removal and Abandonment of Street Railway Tracks —
+                                      Ninth Street …
+Bayview H. Point  1935  on 10 blocks  Spur Track, Pacific Can Company, Across Newhall Street …
+```
+
+**No model pass, and the reason is the one this project established on the Paris side: the city
+already writes the description.** Every line above is the Board's own and every one carries `u`,
+the scan leaf it was printed on, so it is one click from the page. A generated summary of the
+same material would be the only thing on this map that could not be clicked through to.
+
+### e. The file
+
+`pipeline/scripts/us_sf_city/build_hood_facts.py --build` →
+`website/public/data/us/sf/city/blocks/hood-facts.json`, **81 KB**, one fetch. It reads only
+what is already on disk — the chunk, the two block-fact files and the 256 record shards — and
+never touches the network, so there is no `--fetch` stage.
+
+### f. The panel, and what it says now
+
+The neighbourhood is the TITLE and the block is the subtitle — the two have
+swapped. A reader who clicks a shape is told what part of San Francisco they are
+in and then which of its blocks answered; before this they were told `3724` and
+had to read the small grey line under it to find out where that was.
+
+Order, and it is §13f's rule one level up — **the always-present section yields
+to the rare one.** Every hood carries residents; 20 of 41 carry a money figure:
+
+```
+NEIGHBOURHOOD
+Tenderloin                                    ← the title
+Block 0787 · 18,233 m² published area         ← the block, still one press away
+
+IN SHORT     assembled from four fields, a missing field drops its clause
+ON THE GROUND NOW   residents · homes · mostly · blocks, and the denominator
+PUBLIC MONEY HERE   the rollup, and what it is rolled up FROM
+WHAT THE BOARD KEPT DECIDING HERE   six curated lines, each opening its scan
+ON THIS BLOCK       ← everything §9–§14 built, unchanged, one level down
+```
+
+City Hall's block is the case that shows what changed. §9h recorded that before
+that block opened *"The record places nothing on this block."* and a fold with
+nothing in it; §9 gave it 19 residents and $14.7 M of vendor payments. It now
+opens on **the Tenderloin: 36,042 residents, 20,806 homes, nine city places of
+which five carry a figure, and 3,610 decisions between 1906 and 2002** — and the
+block's own blank record is the fifth thing it says rather than the first.
+
+**Three things reading it out loud caught, all fixed.**
+
+1. **"A mostly single family residential neighbourhood of 53 blocks"** for South
+   of Market. Each block's `use` is already the plurality of ITS parcels, so a
+   plurality over those is a plurality of pluralities, and the roll's word for a
+   great many small SoMa parcels is not what a reader will understand by it. The
+   sentence now says what was counted: *"A neighbourhood of 53 blocks, 33 of them
+   mostly single family residential."*
+2. **"Section 34, County Clerk — A Companion Measure to the Preceding Item."**
+   was the Tenderloin's top line, on 15 blocks. It is a cross-reference: a
+   reader cannot know what the preceding item was. `SELF_REFERENTIAL` demotes it
+   to tier 9 — 17 group faces over all 41 hoods. `the foregoing resolution` was
+   tested and **rejected**: *"Supervisor Uhl objected to the adoption of the
+   foregoing resolution, holding that the improvement…"* is substantive, and
+   demoting it would have thrown away one of the few places the record prints a
+   dissent.
+3. **"19 people live on it, in 0 homes"** on City Hall — the Census publishes
+   both, and printing them in one sentence makes a workplace block read as an
+   error in the data. The homes clause is dropped; the ROW above still prints
+   the 0, beside its own label, where it cannot be misread. (Same family as the
+   `in 1 homes` bug §14i caught by looking.)
+
+### g. The divisions on the ground — and the label layer that already existed
+
+> "when you're totally unzoomed at city level there's like the division of the
+> city into those divisions"
+
+`hood-rings.json`, 23 KB, fetched at mount beside `marks.json`. **43 parts and
+1,647 vertices over all 41**, which is why every one is reprojected on every
+render rather than cached against the camera — measured on a real whole-city
+drag, **88 fps with the layer and 88 fps with the file aborted at the network.**
+
+**The boundary is the blocks', not `ajp5-b2md`'s.** The published polygon runs
+down the middle of the street; the blocks are what a reader can click. So the
+outline is the union of the hood's own block rings — the same vertices the hit
+test walks — closed across the gaps between them, and every vertex carries the
+ground elevation of the nearest of those blocks so the line lies ON the city
+rather than at sea level under Twin Peaks.
+
+**The closing radius was measured against the check that matters: does a drawn
+region trespass onto another neighbourhood's blocks?**
+
+| radius | parts | vertices | trespass (share of drawn area on another hood's blocks) |
+|---|---|---|---|
+| 18 m | 111 | 3,417 | 0.02 % · worst hood 0.36 % |
+| 30 m | ~70 | ~2,400 | 0.03 % · worst hood 0.83 % |
+| **55 m** | **43** | **1,647** | **0.07 % · worst hood 1.00 %** (Seacliff) |
+
+**18 m shipped first and was wrong, and only looking showed it.** The wide shot
+came out as a tangle of a hundred outlines weaving round every park, boulevard
+and freeway ramp: it read as noise, not as a city divided into forty-one pieces.
+At 55 m there is about one shape per neighbourhood, Golden Gate Park (800 m
+wide) and the freeway are still the separations they are, and the trespass is
+still under a tenth of one per cent. Interior rings are dropped for the same
+reason — a hole inside a division is a second outline inside the first.
+
+**It must not pop.** `wide` is linear in LOG scale between the whole-city stop
+and the block stop, then smoothstepped, so its derivative is zero at both ends:
+the divisions fade in as the streets and blocks fade out. **A pixel floor is a
+step in the derivative** and it is the cause of every lurch bug on this project.
+The forty unselected divisions are gone by the block stop; the SELECTED one
+keeps a floor on its line, because the margin beside it is a claim about that
+ground — but its FILL rides the ramp all the way to nothing, since a wash over
+236 blocks at close range is a stain rather than a region.
+
+**No tint of any quantity.** All 41 draw in one ink. The selected one gets a
+fill and that is a selection state, not an encoding — there is nothing on this
+layer to mislead about.
+
+**A whole layer written and then deleted, and the lesson is the brief's own.**
+The first cut drew the 41 names in the SVG. The wide shot came back reading
+`TENDERLOIN TENDERLOIN`, `RUSSIAN HILL RUSSIAN HILL`, `VISI VISITACION VALLEY`
+— **`labels.ts` §the neighbourhood capitals has been drawing them all along**,
+out of this same `hood` byte, anchored on an area-weighted centre and inside a
+shared ink budget with the streets and the marks. A second set of names in an
+SVG over the canvas cannot see that budget and would fight it at every zoom. The
+names were deleted. What this layer adds is the one thing that was missing: the
+boundary. *(`base/marks.json` does NOT carry them — only 3 of the 41 names are
+in it — which is why grepping the marks file first said "not on the wire" and
+looking at the frame said otherwise.)*
+
+### h. Keys for `en.ts` / `fr.ts` — twenty-six, and thirteen deleted
+
+`EN_SUM` and `tx()`'s old body are **gone**: the thirteen `sum_*` of §14g are in
+both files (0c6ccacf) and every one is now a plain `t()` call. Verified by
+dumping the panel's `innerText` and grepping for `us.sf.` — nothing.
+
+These are the next batch, behind `tx()` in `EN_HOOD` for the same reason
+(`useT` returns THE KEY ITSELF when one is missing). `EN_HOOD` and `tx()` both
+go the moment they land. English identical in both files, ADR-0010 D3.
+
+```ts
+'us.sf.thecity.panel.hood_kicker': 'Neighbourhood',
+'us.sf.thecity.panel.hood_block': 'Block {id}',
+'us.sf.thecity.panel.hood_sum_ground': 'A neighbourhood of {n} blocks, {m} of them mostly {use}.',
+'us.sf.thecity.panel.hood_sum_ground_plain': 'A neighbourhood of {n} blocks.',
+'us.sf.thecity.panel.hood_sum_people': '{n} people live here, in {h} homes.',
+'us.sf.thecity.panel.hood_sum_record': 'The Board decided {n} things across it between {y0} and {y1}, most of them in the {d}s.',
+'us.sf.thecity.panel.hood_sum_record_flat': 'The Board decided {n} things across it between {y0} and {y1}.',
+'us.sf.thecity.panel.hood_sum_record_none': "The Board's record places nothing in it.",
+'us.sf.thecity.panel.hood_now_blocks': 'Blocks',
+'us.sf.thecity.panel.hood_now_src': "The {c} Census, summed over the {n} of this neighbourhood's {all} blocks a census block resolves onto. City-wide that join carries {carried} of the county's {total} residents.",
+'us.sf.thecity.panel.hood_money_head': 'Public money here',
+'us.sf.thecity.panel.hood_money_one': 'One of the {n} city places standing here carries a figure — {place} — and what is below is the whole of it.',
+'us.sf.thecity.panel.hood_money_only': '{place} is the one city place standing here, and what is below is the whole of it.',
+'us.sf.thecity.panel.hood_money_some': '{m} of the {n} city places standing here carry a figure, the largest of them {place}. Each figure below is the whole of its place, added across the {m}; nothing is divided between neighbourhoods.',
+'us.sf.thecity.panel.hood_money_none': '{n} city places stand here and no city ledger names any of them, so no figure is shown for them.',
+'us.sf.thecity.panel.hood_money_none_one': '{place} stands here and no city ledger names it, so no figure is shown for it.',
+'us.sf.thecity.panel.hood_money_cover': "A published city place resolves to {n} of the city's {all} neighbourhoods, and {m} of those carry a figure.",
+'us.sf.thecity.panel.hood_hl_head': 'What the Board kept deciding here',
+'us.sf.thecity.panel.hood_hl_note': "The Board's own printed lines, ranked by how many of this neighbourhood's blocks each one lands on. Nothing is summarised: every line is the volume's own and opens the page it is printed on.",
+'us.sf.thecity.panel.hood_hl_blocks': 'on {n} of its blocks',
+'us.sf.thecity.panel.hood_hl_blocks_one': 'on one block',
+'us.sf.thecity.panel.hood_hl_more': '{n} more lines the record places here',
+'us.sf.thecity.panel.hood_block_head': 'On this block',
+'us.sf.thecity.panel.hood_block_lede': 'The neighbourhood above is {n} blocks. This is the one under the pin.',
+'us.sf.thecity.panel.hood_block_ground': 'A mostly {use} block.',
+'us.sf.thecity.panel.sum_people_no_homes': '{n} people live on it.',
+'us.sf.thecity.panel.sum_people_one_no_homes': 'One person lives on it.',
+```
+
+### i. State, and the screenshots
+
+Typecheck clean, eslint clean on all three files, **the full suite 419/419**.
+
+`f1-n1block-*` and `f1-n2block-*` (the panel at 1440), `f1-m1phone-3549` and
+`f1-m1phone-0787` (390 px — one screen carries In short, all four ground facts
+and the WHOLE money answer including the link, and reaches "What the Board kept
+deciding here" at its foot), `f1-d3nosel-0` (the 41 divisions at whole city),
+`f1-d3sel-1` (the Mission outlined at the district stop, running down Guerrero,
+Cesar Chavez and Potrero, with block 3549's own ring and pin inside it), and
+`.parity/f1div.py` / `.parity/f1perf.py`, both new.
+
+### j. Open, in the order it matters
+
+1. **The decade rail is still the BLOCK's.** A hood's decade counts ship in
+   `record.dec` and nothing draws them. A hood rail would want its own rows to
+   open into, and a hood's rows are spread over all 256 shards (~21 MB), so it
+   is a second pipeline artifact — the top few lines per decade per hood — not a
+   panel change. Daniel has said twice the decade system is right, so this is
+   the largest remaining win at this level.
+2. **The highlights cap is 6 and the shelf shows 3.** `highlights_hidden` is on
+   the record (2,360 for the Mission) and nothing prints it, because "2,360 more"
+   is not a thing a reader can act on until there is somewhere to send them.
+3. **A hood-level "went quiet"** has no sentence. `quietAfter` is a block idea
+   and no hood falls silent, so nothing was written rather than writing a
+   sentence for a state that does not occur.
