@@ -472,16 +472,20 @@ export function placeGlyph(
     case "plaza":                                  // a paved square
       box(-0.88, -0.88, 0.88, 0.88);
       break;
-    case "water":                                  // two waves
-      for (const y0 of [-0.62, 0.12]) {
-        ctx.moveTo(gx(-0.95), gy(y0));
-        ctx.quadraticCurveTo(gx(-0.48), gy(y0 - 0.5), gx(0), gy(y0));
-        ctx.quadraticCurveTo(gx(0.48), gy(y0 + 0.5), gx(0.95), gy(y0));
-        ctx.lineTo(gx(0.95), gy(y0 + 0.42));
-        ctx.quadraticCurveTo(gx(0.48), gy(y0 + 0.92), gx(0), gy(y0 + 0.42));
-        ctx.quadraticCurveTo(gx(-0.48), gy(y0 - 0.08), gx(-0.95), gy(y0 + 0.42));
-        ctx.closePath();
-      }
+    case "water":
+      /* A BODY WITH A SCALLOPED TOP, NOT TWO FREE WAVES. Two 1 px ribbons with
+         a 0.7 px gap between them is one grey smudge at this size; a solid
+         shape whose only detail is its top edge keeps a silhouette. It also
+         keeps every control point inside the box, which `place-kinds.test.ts`
+         asserts for every glyph — a Bezier hull that leaves the box is a glyph
+         whose label width is a lie. */
+      ctx.moveTo(gx(-0.95), gy(0.05));
+      ctx.quadraticCurveTo(gx(-0.6), gy(-0.45), gx(-0.25), gy(0.05));
+      ctx.quadraticCurveTo(gx(0.1), gy(0.55), gx(0.45), gy(0.05));
+      ctx.quadraticCurveTo(gx(0.7), gy(-0.32), gx(0.95), gy(0.05));
+      ctx.lineTo(gx(0.95), gy(0.92));
+      ctx.lineTo(gx(-0.95), gy(0.92));
+      ctx.closePath();
       break;
     case "sport":                                  // a ball
       disc(0, 0, 0.86);
