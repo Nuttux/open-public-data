@@ -1081,6 +1081,14 @@ At 2014 the peninsula was bare ground. It now carries the Navy-era industrial
 stock from 1989, and 2014 and 2015 are indistinguishable.
 `diag_shipyard_shots.py` reproduces the frames.
 
+**Re-verified at the branch tip** after four other agents' commits landed on
+top, because a landing is only landed if it is still landed. `base/massing.qc`
+in `HEAD` gives block 4591A `(1950, 0), (1989, 14)` — not the single
+`(2015, 14)` it carried before — 4591B `(1981, 31)`, 4591C `(2016, 20)`, and
+47,498 rows. Re-shot at the same camera: **2014 against 2015 is 203 of 740,370
+map pixels, 0.027 %**, against 1.44 % before the fix. The commit that landed it
+is `0298ebb1`.
+
 ### 12.2 The streets — ON THE WIRE, DRAWN BY NOBODY
 
 `strt/street-unimplied.qc` ships and the browser holds it — confirmed live in
