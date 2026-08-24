@@ -265,6 +265,45 @@ def contained_flags(pl: list[dict]) -> list[bool]:
 
 
 HERO_SRC = "base/heroes.json"
+HERO_SEED = HERE / "heroes_extra.json"
+
+
+def _hero_bi() -> set:
+    """The hero footprints the ranking is built against — and a REFUSAL if the
+    register on disk is the mock's rather than the merged one.
+
+    THIS FILE'S OUTPUT DEPENDS ON A FILE IT DOES NOT OWN. `order_places` lifts
+    hero footprints to the front and `hero_rows` gives a hero with no place row
+    one, so `base/places.*` is a function of `base/heroes.json`. Re-running
+    `encode_city_chunks.py` rebuilds that register from the mock and drops
+    every hero `emit_heroes.py` merged in — and this file would then quietly
+    write a DIFFERENT, still perfectly deterministic, `places.qc`. Two agents
+    on the same commit would hold different bytes and every byte-count
+    assertion in the suite would be reading one of them.
+
+    Measured this session: two consecutive runs on unchanged input are
+    byte-identical (`--check` proves it). What was not stable was the INPUT,
+    three times in one night. So the input is now asserted: if
+    `heroes_extra.json` claims a hero the shipped register does not carry, this
+    refuses to write rather than emitting an ordering built against half a
+    register.
+    """
+    if not HEROES.exists():
+        return set()
+    side = json.loads(HEROES.read_text())
+    have = {h["k"] for h in side["heroes"]}
+    if HERO_SEED.exists():
+        want = {h["k"] for h in json.loads(HERO_SEED.read_text())["heroes"]}
+        missing = sorted(want - have)
+        if missing:
+            raise SystemExit(
+                f"base/heroes.json is missing {', '.join(missing)}, which "
+                f"heroes_extra.json claims. The city encoder has rebuilt it "
+                f"from the mock. Run:\n"
+                f"    python3 pipeline/scripts/us_sf_places/emit_heroes.py\n"
+                f"then re-run this. The place ranking is a function of that "
+                f"register and must not be built against a stale one.")
+    return {h["b"] for h in side["heroes"]}
 
 
 def hero_rows(pl: list[dict]) -> list[dict]:
@@ -306,6 +345,7 @@ def hero_rows(pl: list[dict]) -> list[dict]:
     """
     if not HEROES.exists():
         return []
+    _hero_bi()                       # the same refusal, before anything is read
     side = json.loads(HEROES.read_text())
     # THE GROUND ANCHOR IS ON THE CHUNK, NOT THE SIDECAR. `ax`/`ay` are f32
     # fields of base/heroes.qc — the footprint's own vertex mean, which is what
@@ -384,8 +424,7 @@ def order_places(pl: list[dict]) -> list[dict]:
     register. If a hero is added or removed the ranking follows with no edit
     here.
     """
-    hero_bi = ({h["b"] for h in json.loads(HEROES.read_text())["heroes"]}
-               if HEROES.exists() else set())
+    hero_bi = _hero_bi()
     cont = contained_flags(pl)
     for q, c in zip(pl, cont):
         q["_contained"] = bool(c)
@@ -604,5 +643,44 @@ def write_marks(pl: list[dict], doc: dict) -> None:
     print(f"base/marks.json   {p.stat().st_size:,} bytes  {len(pl):,} places (was 1,243)")
 
 
+OUTPUTS = ("places.qc", "places.json", "marks.json")
+
+
+def _snapshot() -> dict:
+    return {n: (OUT / "base" / n).read_bytes()
+            for n in OUTPUTS if (OUT / "base" / n).exists()}
+
+
+def check() -> int:
+    """TWO RUNS ON UNCHANGED INPUT MUST BE BYTE-IDENTICAL.
+
+    `emit_heroes.py` proves its merge with a round trip; this proves its
+    determinism the same way — by running and comparing, not by reading the
+    code and believing it. A file that changes when nothing changed hands every
+    other agent in the tree a phantom diff to chase and makes every byte-count
+    assertion in the suite untrustworthy.
+    """
+    if "--marks" not in sys.argv:
+        sys.argv.append("--marks")
+    main()
+    a = _snapshot()
+    main()
+    b = _snapshot()
+    bad = [n for n in a if a[n] != b.get(n)]
+    for n in OUTPUTS:
+        if n not in a:
+            print(f"  {n:12s} not written")
+        elif n in bad:
+            print(f"  {n:12s} DIFFERS between two runs "
+                  f"({len(a[n]):,} then {len(b[n]):,} bytes)")
+        else:
+            print(f"  {n:12s} identical, {len(a[n]):,} bytes")
+    if bad:
+        print("NOT DETERMINISTIC")
+        return 1
+    print("deterministic: two runs, identical bytes")
+    return 0
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(check() if "--check" in sys.argv else main())

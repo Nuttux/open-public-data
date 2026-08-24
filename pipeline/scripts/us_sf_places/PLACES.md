@@ -553,3 +553,42 @@ python3 pipeline/scripts/us_sf_places/verify_places.py
 
 Baseline at hand-off: **typecheck clean · 314 tests passed · 7 eslint warnings,
 0 errors** — the same six product files. Nothing committed.
+
+---
+
+## Addendum — the two names that were missing, and what each one cost
+
+### Sutro Tower — added, from the hero register
+
+In none of the ten registers above, none of the 1,243 already-shipped marks,
+and not in USGS GNIS either (which carries `Mount Sutro` and `Sutro Reservoir`,
+not the tower). `emit_places.py` `hero_rows` gives any hero with no place row
+one, read off `base/heroes.json` and `base/heroes.qc`: name, footprint index,
+year, and the ground anchor `part3.html` itself uses. `span` is §-the-ladder
+unchanged, `max(sqrt(662.0), 210.0) = 210 m`. One row today; general for the
+next hero.
+
+### Ocean Beach — NOT added, and the reason is rule 2
+
+GNIS **does** carry it: feature id 229920, class `Beach`, world (−6407.5,
+−69.6). What stops it is this file's own rule 2 — *a published extent, or not
+drawn* — and §4's measurement of GNIS: **0 of 222 rows carry one**, and the
+file has no column that could. A row with `span = 0` is a name the size gate
+can never admit, so shipping it would ship a name that cannot be drawn.
+
+The `sf_place_candidates.json` seed's federal exclusion is a **different rule
+for a different artefact** — that seed is about places city money reaches, and
+a named ground is not one. It stays as it is. What is open is how to size a
+name with a position and no extent, which is §401's own item, and the map
+already has a lane that needs no size: `terrain.ts` `surroundNames`. That lane
+is not this pipeline's.
+
+**And the pattern under both.** On Ocean Beach's ground the City's registers
+name `Beach Chalet`, `Beach Chalet Parking`, `Beach Chalet Picnic Area`, the
+Soccer Fields maintenance building and an SFMTA operator bathroom — and not the
+beach. The City publishes extents because it publishes property; it owns the
+buildings at the edge of the federal ground and not the ground. The same shape
+turned up independently this session in the street data: 381 centrelines in
+Hunters Point, Treasure Island, Yerba Buena and Fort Mason draw nothing because
+their City classification code is null. **A gate written against a City
+attribute is blind on ground the City does not publish.**

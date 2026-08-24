@@ -5290,3 +5290,137 @@ one surviving performance clause**: a camera move is served from a blit of a
 pre-painted buffer (`camera.ts` `decideRaster`), so a move does not
 re-rasterise. 7 % of a rasterisation that already runs 320 ms at its worst
 camera is the honest price and it is stated rather than buried.
+
+### 21.18 Ocean Beach: the register that carries it, and why it is still not drawn
+
+Checked rather than assumed, and the answer is not the one the brief guessed.
+
+**Ocean Beach IS in a published register the pipeline already fetches.** USGS
+GNIS Domestic Names, California — `cache/gnis_ca.zip`, 222 rows in San
+Francisco County — carries `Ocean Beach`, feature id **229920**, class `Beach`,
+37.7593749 / −122.5108057, which is world **(−6407.5, −69.6)**. It carries
+`Baker Beach`, `China Beach` and `Seal Rocks Beach` too, and `Lands End`,
+`Twin Peaks`, `Mount Davidson`, `Alcatraz Island` and `Fort Point`.
+
+**What stops it is the extent rule, not federalness.** `build_places.py` rule 2
+is *"A PUBLISHED EXTENT. No extent, not drawn"*, and PLACES.md §4 already
+measured GNIS against it: **0 of 222 rows carry an extent**, because GNIS
+publishes one point per name and nothing about how big the thing is. There is
+no column in the file that could: no area, no length, no polygon. A row shipped
+with `span = 0` would be a name that can never appear — `placeIsBigEnough(0,
+scale)` is false at every zoom and Ocean Beach is not designated, so it is not
+exempt. **Shipping it would be shipping a name the map cannot draw.**
+
+**And the seed's rule is a different rule for a different artefact, and it
+stays.** `pipeline/seeds/sf_place_candidates.json` says *"only places city
+money reaches … NO state/federal facilities (Presidio, Alcatraz, Ocean
+Beach/GGNRA)"*. That seed feeds `/us/city/sf/places`, which is about money. **A
+named ground is not a place city money reaches**, and widening that rule to let
+a beach in would break what the rule is for. Ocean Beach does not belong in
+that seed. It belongs in a register of named ground, and GNIS is that register.
+
+What is actually open, precisely: **how to size a name that has a published
+position and no published extent.** PLACES.md §401 already names it — *"a mark
+for a place with a position and no extent"* — and the map has a lane that does
+exactly that and does not need a span: `terrain.ts` `surroundNames` draws
+`MARIN COUNTY`, `THE EAST BAY`, `ALCATRAZ`, `ANGEL ISLAND`, `SAN MATEO COUNTY`,
+`PACIFIC OCEAN`, `SAN FRANCISCO BAY` in tracked capitals from seven positions
+on the `base/surround` chunk entry, whole-city only, sized by nothing. That
+lane and its seven names belong to `terrain.ts` and to `gen_context.py`, not to
+this file, so the option is named here and handed over rather than taken.
+
+### 21.19 Federal ground is invisible to gates written for city ground, and it is a pattern now
+
+The one-line version is in the register itself. On the ground that is Ocean
+Beach, the City's own registers name:
+
+    Beach Chalet
+    Beach Chalet Parking
+    Beach Chalet Picnic Area
+    Beach Chalet Soccer Fields Maintenance Building
+    LA PLAYA/CABRILLO OCEAN BEACH SFMTA Operator Bathroom
+
+**and not the beach.** That is not an oversight in any of those registers. The
+City publishes extents because it publishes *property*; it owns the buildings
+on the edge of the federal ground and not the ground, so the attribute every
+gate in this pipeline depends on — a polygon — exists exactly where the City
+owns land and nowhere else.
+
+The data agent's finding this session is the same shape: **381 street
+centrelines in Hunters Point, Treasure Island, Yerba Buena and Fort Mason reach
+zero drawn surfaces because their classification code is null.** Federal
+ground, a City attribute left empty, a gate that reads the empty attribute as
+absence. Two independent gates, two federal areas, one cause — the pipeline
+asks published City fields about ground the City does not publish. Worth
+knowing before the next gate is written against a City attribute.
+
+Also in this family, and already recorded: the **Presidio** answers as one
+6.1 km² block with nothing on it (BUGS §17), and **Sutro Tower** — which is
+private, not federal — was in none of the ten City registers, none of the
+1,243 shipped marks, and not in GNIS either (§21.20).
+
+### 21.20 Sutro Tower has a row, and the register that carries it is the map's own
+
+A hero drawn at emphasis and never named. Checked one register at a time:
+Article 10 (97yj-54sx) and rzic-39gi, Article 11 (ejht-vp5d), Recreation and
+Parks Properties (gtr9-ntp6) and Facilities (ib5c-xgwu), City Facilities
+(nc68-ngbr), the Tall Building Inventory (5kya-mfst — no, and it could not be:
+that register's own scope is **buildings** over 240 ft and this is a tower),
+Schools_College (6adp-a5yv), Schools (7e7j-59qk), POPOS (65ik-7wqd), the US NPS
+National Register, the 1,243 places already in `base/marks.json`, and USGS
+GNIS, which carries `Mount Sutro` (Summit, 253951) and `Sutro Reservoir`
+(Reservoir, 235840) and **not the tower**.
+
+The one published source that carries it is **the map's own hero register**,
+and that register is not a guess: `base/heroes.json` names, per hero, the
+register that anchors it to its footprint, the register its year comes from,
+and its measured footprint area and top. Every field of the row is read off
+that record; the ground anchor is `base/heroes.qc`'s own `ax`/`ay`, which is
+where `part3.html` takes a hero's anchor from; and `span` is this file's own
+ladder unchanged — `max(sqrt(662.0), 210.0) = 210 m`.
+
+The rule is general and adds one row today: **a hero with no place row gets
+one.** Measured: 210 m clears the 175 m the whole-city camera demands, and at
+the home camera it is then refused for `grid`, losing by **six pixels of
+vertical overlap** to the hood capital `TWIN PEAKS`, which names the ground it
+stands on. Two true names competing for one box is not a defect in the row, and
+it is not forced.
+
+### 21.21 The emitter is deterministic; what was not stable was its INPUT
+
+Raised as *"`emit_places.py` reorders on every run and is not stable across two
+consecutive runs"*. **Tested rather than accepted, and that is not what it
+does.** `emit_places.py --check` runs the whole build twice and compares:
+
+    places.qc    identical, 42,053 bytes
+    places.json  identical, 59,433 bytes
+    marks.json   identical, 110,272 bytes
+
+`order_places` is a `sorted()` with a total key over a stable input, `srcs` is
+a `sorted(set)`, and nothing here reads the clock or a dict order. The
+observed `base/places: expected 42032 to be 42053` is not drift: **42,032 is
+the register without Sutro Tower and 42,053 is the register with it** (§21.20,
+one row, 21 bytes), and the two halves were committed a commit apart by a
+sweep.
+
+**But the concern under it is real and is now closed.** This file's output is a
+function of a file it does not own: `order_places` lifts hero footprints to the
+front and `hero_rows` gives a hero with no place row one, so `base/places.*`
+depends on `base/heroes.json`. Re-running `encode_city_chunks.py` rebuilds that
+register from the mock and drops every hero `emit_heroes.py` merged in — and
+this file would then write a **different, still perfectly deterministic**
+`places.qc`. Two agents on one commit would hold different bytes and every
+byte-count assertion in the suite would be reading one of them. That happened
+three times in one night.
+
+So the input is asserted. `_hero_bi()` compares `heroes_extra.json`'s claimed
+keys against the shipped register and **refuses to write** if any is missing:
+
+    base/heroes.json is missing pofahall, which heroes_extra.json claims.
+    The city encoder has rebuilt it from the mock. Run:
+        python3 pipeline/scripts/us_sf_places/emit_heroes.py
+    then re-run this. The place ranking is a function of that register and
+    must not be built against a stale one.
+
+Exit 1, nothing written. An ordering built against half a register can no
+longer reach disk quietly, and the message carries its own recovery.
