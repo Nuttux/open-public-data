@@ -58,11 +58,109 @@ export const PAINT_C0 = ROOF_B.length + WA_ROOF.length; // 24
 
 export const wallPalette = (): string[] => [...WALL_B, ...WA_WALL];
 
-/** The roof palette, with the manifest's 32 measured entries appended. */
+/* ════════════════════════════════════════════════════════════════════════
+   THE PHOTOGRAPH AND THE PALETTE ARE TWO SCALES, AND THE PICTURE IS DRAWN ON
+   ONE OF THEM — §39
+   ════════════════════════════════════════════════════════════════════════
+
+   Daniel, on North Beach in two years: *"1989 is a dark charcoal-and-grey
+   roofscape, varied and frankly the better picture. 2015 is near-white across
+   almost the whole frame — brighter than any real roof."*
+
+   THE HYPOTHESIS THAT WAS REFUTED FIRST, because it is the one that would have
+   been easiest to believe: that the render lights the photograph a second time.
+   MEASURED (`.parity/g1lit.py`, production build, camera asserted, the median
+   of a 5 x 5 patch at each roof's own projected centroid, against the palette
+   entry that roof was assigned):
+
+   ```
+     block zoom, 2025, 9,396 measured roofs   screen − palette   p50  +3.7
+     North Beach block, 2015, 4,439 roofs     screen − palette   p50 −14.9
+     North Beach street, 2015,   679 roofs    screen − palette   p50  −7.0
+   ```
+
+   **The screen is not brighter than the sampled value; it is slightly darker.**
+   Nothing in the render path is adding light. The roof's top face is filled at
+   the palette value and the only multipliers on it are haze, `COVER_GAIN`
+   (0.8/0.9/1.0 — a darkening), and `RSHADE` (0.875-1.14, centred on 1).
+
+   THE SECOND HYPOTHESIS, ALSO REFUTED: that the 1.5 m erosion is catching
+   sunlit parapet copings and kerb. `.parity/g1erode.py` re-samples the same
+   footprints off the same cached tiles at 1.5 / 3.0 / 4.5 / 6.0 m:
+
+   ```
+     erode m     1.5    3.0    4.5    6.0
+     mean lum  167.6  169.0  169.8  169.5      +1.9 at four times the erosion
+   ```
+
+   **Deeper erosion makes the sample BRIGHTER, not darker.** The edges are the
+   dark part — kerb and self-shadow — so the sampler is right and 1.5 m is
+   enough.
+
+   THE THIRD, PARTLY TRUE: the imagery is clipped at the top. 120 random tiles,
+   7.86 M pixels — the luminance histogram RISES into the ceiling (0.15 % at
+   246, 0.94 % at 254), which is saturation, and 5.6 % of footprint medians sit
+   at 250 or above. Those roofs are not measured "white"; they are "at least
+   this bright". It is real and it is a minority.
+
+   WHAT IT ACTUALLY IS. The published palette and the reference's own declared
+   materials are **two descriptions of the same 166,166 roofs**, and they do
+   not sit on the same scale:
+
+   ```
+     the reference's own roof rule, UMAT_ROOF[use][band*2+era],
+       area-weighted over the 157,184 footprints it covers      120.79
+     the photograph, over the same 157,184                      170.83
+                                                        ratio    1.414
+   ```
+
+   A roof photographed from directly overhead is a surface **under full
+   sunlight**; `WA_ROOF` is a table of pigment values. Everything else in this
+   frame — the terrain, the walls, the streets, the trees, the massing solid —
+   is drawn from the declared scale. The photograph was the only input arriving
+   on the other one, and at Daniel's own camera that is exactly the step he is
+   looking at: **the same 4,439 roofs are drawn at screen 127.0 in 1989 and
+   153.9 in 2015.**
+
+   So the photograph is divided onto the picture's own scale by ONE declared
+   factor. **The factor is MEASURED — it is the ratio above — and what is
+   DECLARED is the decision to move the photograph onto the renderer's scale
+   rather than the reverse**, which follows from every other surface already
+   being on it. Nothing is tuned by eye and nothing is per-building: it is one
+   multiplication, applied to all 32 entries, hue preserved because all three
+   channels take the same factor.
+
+   What it is NOT: it is not a claim that the roofs of San Francisco are darker
+   than the photograph shows. The photograph is right about the roofs. This is
+   a change of units, and the relative ORDER of all 166,166 roofs — which is
+   the information the measurement actually carries — is untouched.
+
+   One consequence worth naming: after it, the brightest entry is 179 instead
+   of 253, so `roofFineLUT`'s gamut headroom no longer clips the top of the
+   ramp (BUGS §4), and the four published `RSHADE` steps are visible on the
+   pale roofs for the first time.                                          */
+
+/**
+ * The photograph → picture scale. MEASURED: 120.79 / 170.83, the area-weighted
+ * mean luminance of the reference's own declared roof rule over the same
+ * footprints, divided by the photograph's. `.parity/g1fab.py`.
+ */
+export const PAINT_TO_PICTURE = 0.7071;
+
+/** apply a single factor to a hex, all three channels, so the hue is kept */
+function scaleHex(hex: string, k: number): string {
+  const n = parseInt(hex.slice(1), 16);
+  const ch = (v: number) => Math.max(0, Math.min(255, Math.round(v * k)));
+  const r = ch((n >> 16) & 255), g = ch((n >> 8) & 255), b = ch(n & 255);
+  return "#" + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
+}
+
+/** The roof palette, with the manifest's 32 measured entries appended — on the
+ *  picture's scale. See §39 above. */
 export const roofPalette = (measured: readonly string[]): string[] => [
   ...ROOF_B,
   ...WA_ROOF,
-  ...measured,
+  ...measured.map((h) => scaleHex(h, PAINT_TO_PICTURE)),
 ];
 
 /* ── the material tables, part3.html §5799 ────────────────────────────────

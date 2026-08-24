@@ -8948,3 +8948,135 @@ photograph). **2020-2025 still is, exactly**, which is the property that
 matters and the one `palette.test.ts` asserts. §34.4's stagger figure moves in
 the right direction too: the worst single display-year re-covering cohort is
 9,088 buildings (5.78 %) at 30 against 9,335 (5.94 %) at 25.
+
+---
+
+## 39. Block G1 — "the roofs still go white". Two hypotheses refuted, and the one that survives is a UNIT MISMATCH
+
+Daniel, on North Beach in two years: *"1989 is a dark charcoal-and-grey
+roofscape, varied and frankly the better picture. 2015 is near-white across
+almost the whole frame — brighter than any real roof."* §38's three changes
+helped and did not cure it.
+
+### 39.1 The render is NOT lighting the photograph twice
+
+The hypothesis handed to me, and the easiest one to believe: `paintIdx` is the
+median of orthophoto pixels — a roof **already lit by the sun** — and if the
+renderer then applies its own top-face lighting, a roof sampled at 180 is drawn
+at 220.
+
+`.parity/g1lit.py` measures it directly: for every drawn footprint, the median
+of a 5 x 5 patch at the roof polygon's own projected centroid, against the
+luminance of the palette entry that roof was assigned.
+
+```
+  camera                     roofs sampled    screen − palette
+  block, Mission, 2025             9,396      p50  +3.7   mean +0.4
+  block, North Beach, 2015         4,439      p50 −14.9   mean −14.3
+  street, North Beach, 2015          679      p50  −7.0   mean −9.2
+```
+
+**The screen is not brighter than the sampled value. It is slightly darker.**
+Nothing in the render path adds light to a roof: the top face is filled at the
+palette value, and the only multipliers are haze, `COVER_GAIN` (0.8/0.9/1.0, a
+darkening) and `RSHADE` (0.875-1.14, centred on 1). Refuted.
+
+### 39.2 The sampler is not catching its own edges either
+
+The second candidate: 1.5 m of inward erosion is not enough, so the median
+carries sunlit parapet coping and kerb. `.parity/g1erode.py` re-samples the
+same footprints off the same cached Esri tiles at four erosions:
+
+```
+  erode m       1.5     3.0     4.5     6.0
+  mean lum    167.6   169.0   169.8   169.5      +1.9 at four times the erosion
+  median n_px 1,609   1,080     628     287
+  per footprint, 6.0 m − 1.5 m: p25 −2.1  p50 +0.9  p75 +4.4
+```
+
+**A deeper erosion makes the sample BRIGHTER.** The edges are the dark part —
+kerb, self-shadow, the neighbour's shadow — so the sampler is right and 1.5 m
+is enough. Refuted.
+
+### 39.3 The imagery IS clipped, and it is a minority
+
+120 random tiles, 7.86 M pixels. The luminance histogram **rises into the
+ceiling** — 0.15 % at 246, 0.19 % at 248, 0.22 % at 250, 0.39 % at 253,
+**0.94 % at 254** — which is the signature of saturation and not of a scene.
+And 5.63 % of footprint medians sit at 250 or above: for those, over half the
+roof's pixels are at the sensor's limit, so the value is not a measurement of
+the roof, it is "at least this bright". Real, worth recording, and far too
+small to be what Daniel is looking at.
+
+### 39.4 What it actually is: two descriptions of the same roofs, on two scales
+
+```
+  the reference's own roof rule, UMAT_ROOF[use][band*2+era],
+    area-weighted over the 157,184 footprints it covers      120.79
+  the photograph, over the same 157,184 footprints           170.83
+                                                     ratio    1.414
+```
+
+A roof photographed from directly overhead is a surface **under full sunlight**;
+`WA_ROOF` is a table of pigment values. The terrain, the walls, the streets, the
+trees and the massing solid are all drawn from the declared table. **The
+photograph was the only input arriving on the other scale**, and at Daniel's own
+camera that is precisely the step he is seeing: the same 4,439 roofs are drawn
+at screen **127.0 in 1989** and **153.9 in 2015**.
+
+That also explains the asymmetry he noticed and reported as evidence — 1989
+looks right and 2015 does not — which is exactly what you would expect if one
+of the two conventions is the picture's and the other is a guest.
+
+### 39.5 The correction, and what in it is measured and what is decided
+
+One factor, applied to all 32 measured entries in `roofPalette`, all three
+channels so the hue is kept: **`PAINT_TO_PICTURE = 0.7071`**, which is
+120.79 / 170.83 — the ratio above. **The number is measured. What is DECLARED
+is the direction**: the photograph moves onto the renderer's scale rather than
+the renderer moving onto the photograph's, because every other surface in the
+frame is already on the renderer's.
+
+It is not a claim that San Francisco's roofs are darker than the photograph
+shows. The photograph is right about the roofs. This is a change of units, it
+is one multiplication, and **the relative order of all 166,166 roofs — which is
+the information the measurement actually carries — is untouched.**
+
+### 39.6 The acceptance test, which is the pair and not a table
+
+North Beach, Columbus and August Alley, block and street zoom, both years, the
+same camera, camera asserted after every shutter.
+
+```
+                        SCREEN roof luminance, p50
+  camera             1989      2015 before      2015 after
+  N-blk             126.5         153.9            132.1
+  N-str             112.9         155.7            116.2
+
+  frame mean, N-blk  [153,161,157]  [160,169,166]  [151,160,158]
+```
+
+**The 1989 frame does not move** (126.5 against 127.0 — it wears declared
+materials and this factor does not touch them). **The 2015 frame comes down
+onto it**, and stays a few levels above it, which is the truth about a city
+that did adopt cool roofs: 2015 is now +5.6 levels on 1989 at block zoom
+instead of +26.9.
+
+Crops: `out/crop-nb-nb{1989,2015}.jpg` before, `out/crop-nb2-nb{1989,2015}.jpg`
+after. The 2015 crop stops being a white sheet and becomes a grey-and-olive
+roofscape with the streets, the green and the individual buildings legible in
+it — the same city as 1989, twenty-six years later.
+
+### 39.7 What this costs, said plainly
+
+**§38.7's "not one pixel moves at 2025" no longer holds, and that is
+deliberate.** That property protected the present frame from the era timeline;
+this block changes the present frame on purpose, because the present frame is
+what Daniel is objecting to. What is preserved is the thing worth preserving:
+the present is still drawn from the measurement and from nothing else, and no
+other year's roofs move at all.
+
+One free consequence: the brightest entry is now 179 rather than 253, so
+`roofFineLUT`'s gamut headroom no longer flattens the top of the ramp
+(BUGS §4), and the four published `RSHADE` steps are visible on pale roofs for
+the first time.
