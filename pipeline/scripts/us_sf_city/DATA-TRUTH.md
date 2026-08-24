@@ -1855,3 +1855,107 @@ So the case for restoring 1.0 rests on the reference and on the picture, which
 is where it should rest — **not** on a frame-time claim I could not reproduce.
 The three-second district rebuild is a real number and a large one, it is not
 caused by this constant, and it belongs to whoever owns the frame.
+
+---
+
+## 19. Highways: measured before building, and the record does not support a deck
+
+§15.3 proposed the route — *"the only published height over those centrelines
+is the 2010 LiDAR first-return surface, which DID see the decks"* — and marked
+it "a real, measurable route and it is not attempted here." It is attempted
+here. `diag_freeway_deck.py`, beside this file, is read-only and re-runnable.
+
+### 19.1 First, two numbers in §15.3 need correcting
+
+```
+classcode 1  freeway mainline    110 centrelines   70.48 km
+classcode 6  freeway ramp        109 centrelines   33.14 km
+```
+
+Decoded from the shipped chunks rather than assumed:
+
+| | in `3psu-pn9h` | reaching the browser |
+|---|---|---|
+| classcode 1 mainline | 110 | **110** — all of them, in `base/street-lines` + `strt/street-lines-2` |
+| classcode 6 ramps | 109 | **12**, via `strt/street-unimplied` |
+
+**§15.3's "all 109 ramps are absent from the map entirely" is wrong: 12 of
+them ship.** They are the ramps that pass the unimplied test — no assessor
+block edge within 30 m along at least a quarter of their length — so the
+Hunters Point rule happens to rescue a twelfth of the interchanges as a side
+effect. **97 of 109 are genuinely absent.** The `cls` histogram of the 846
+unimplied is `{5: 554, 6: 12, 7: 280}` and that 12 is the whole of it.
+
+### 19.2 The LiDAR does NOT give a height over the freeway. Measured.
+
+The only LiDAR product anywhere in this tree is `ynuv-fyni`, and it is a file
+of **building** footprints. It publishes exactly the fields the deck idea
+needs — `peak_1st_m` (peak first return, metres), `hgt_mediancm` (median of
+first return minus bare earth), `gnd_mincm`, `p2010_zmin/zmaxn88ft` — so the
+join is worth running rather than reasoning about. All 177,023 footprints
+against 4,349 mainline and 1,301 ramp sample points at 25 m:
+
+```
+177,023 footprints read; 7,472 within 120 m of a freeway centreline
+
+classcode 1 mainline   26 of 110 centrelines have ANY footprint within 20 m
+classcode 6 ramps      27 of 109
+```
+
+And then the question that actually decides it — **does the polygon contain
+the centreline, or merely sit beside it?** A deck contains its own centreline;
+a building next to the freeway does not.
+
+```
+                        centreline INSIDE     merely beside     bbox p50
+classcode 1 mainline            8                  41            253 m2
+classcode 6 ramps               1                  53             92 m2
+```
+
+**Eight polygons over 70.48 km of mainline, with a median bounding box of
+253 m2** — that is a building the alignment happens to cross, not a viaduct.
+The tall first returns in the join (129.9 m, 108.0 m, 105.6 m, all on I-80
+WESTBOUND) are downtown towers standing beside the freeway, which is why their
+`hgt_mediancm` above bare earth is 19.6, 6.7 and 3.2 m against absolute peaks
+over 100 m: the peak is an elevation, not a height.
+
+> **There is no published height over the freeway in anything this project
+> holds.** The DEM the terrain draws is `6d73-6c4f`, 3DEP-derived and
+> quantised to one byte over 0-300 m on a 260 x 260 frame — roughly 46 m a
+> node, which is coarser than the structure. Drawing a deck from what is here
+> would mean choosing a number, and this project does not do that.
+
+**So: I-80 across the Bayshore stays a stripe on the ground until a first-
+return raster or a Caltrans structures file is actually fetched.** That is the
+honest answer and it is also the cheap one — the route §15.3 marked as "real"
+is real only if a dataset nobody has fetched turns out to carry it.
+
+### 19.3 The demolished freeways are not in the file, and there is no year
+
+`3psu-pn9h` publishes what is there now. Searched for EMBARCADERO, CENTRAL,
+TERRY, FRANCOIS at classcode 1 or 6: **zero rows.** The fields published per
+centreline are `accepted, analysis_neighborhood, classcode, cnn, layer, line,
+nhood, st_type, street, streetname` — and §0 already establishes that
+`accepted` is a boolean. **Nothing in this file can date a demolition, and
+nothing in it remembers a road that is gone.** The Embarcadero and Central
+freeways would have to come from historical geometry in another source;
+`scratchpad/sf-city-anim/entries/embarcadero-freeway-demolition.json` shows
+the Journal knows the event, which is a date and not a geometry.
+
+### 19.4 What IS available, and why it was not done tonight
+
+The 97 missing ramps are published centrelines with published geometry.
+Drawing one **at grade, as a line** invents nothing — it is exactly what the
+110 mainline centrelines already do, and interchanges that do not exist are
+the most visible thing on this map that a published file could fix.
+
+It is not a one-line change in this directory. The unimplied set comes from
+`GEO2["streetsUnimplied"]`, baked into `gen/geo-data.js` by `gen_geo2.py`, and
+**§11.1 is a standing hazard: `gen/geo-data.js` is not byte-reproducible.**
+Re-running the unmodified script over unchanged caches moves 2,079 of 74,042
+block vertices by one quantum. Regenerating it to add 97 ramps would hand
+every other agent in this tree a 2,079-vertex diff to chase, on the night
+before a demo.
+
+**Order: fix §11.1's iteration-order bug first, then ship the 97 ramps.** They
+are worth having and they are not worth that.
