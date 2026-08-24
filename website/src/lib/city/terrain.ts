@@ -87,6 +87,7 @@ export const QF = {
   warm: 1, // two illuminants instead of one scalar
   relief: 1, // the surround's Lambert swing, re-derived now that XLAM is real
   coast: 1, // the surround is cut at the published shoreline, not at its cells
+  tintsm: 1, // the canopy tint is smoothed at load, as `WCAN` smooths it
 };
 
 /**
@@ -686,6 +687,46 @@ export interface TerrainOptions {
 }
 
 /**
+ * Two passes of a separable 1-2-1 kernel over a coverage FRACTION.
+ *
+ * `part3.html` L3286-3300, index for index. `k = i*N + j`, so `k ± 1` are the
+ * j neighbours and `k ± N` the i ones, and each pass is horizontal then
+ * vertical. The `+2` before the `>> 2` is the reference's rounding and it is
+ * kept: without it the field loses a level a pass and the forest fades.
+ *
+ * **The input is never written to.** It is a view on the chunk's own buffer,
+ * which the cache hands out to every reader.
+ */
+export function smoothCanopy(a: Uint8Array, N: number): Uint8Array {
+  const N2 = N * N;
+  let src: Uint8Array = a;
+  let dst: Uint8Array = new Uint8Array(N2);
+  for (let pass = 0; pass < 2; pass++) {
+    for (let i = 0; i < N; i++)
+      for (let j = 0; j < N; j++) {
+        const k = i * N + j;
+        const l = j > 0 ? src[k - 1] : src[k],
+          r = j < N - 1 ? src[k + 1] : src[k];
+        dst[k] = (l + 2 * src[k] + r + 2) >> 2;
+      }
+    let t: Uint8Array = src;
+    src = dst;
+    dst = t === a ? new Uint8Array(N2) : t;
+    for (let i = 0; i < N; i++)
+      for (let j = 0; j < N; j++) {
+        const k = i * N + j;
+        const u = i > 0 ? src[k - N] : src[k],
+          d = i < N - 1 ? src[k + N] : src[k];
+        dst[k] = (u + 2 * src[k] + d + 2) >> 2;
+      }
+    t = src;
+    src = dst;
+    dst = t;
+  }
+  return src;
+}
+
+/**
  * The city's own DEM, its hillshade, its self-shadow, and everything derived
  * from all three. 260 x 260 = 67,600 nodes; three float planes and a stamp,
  * allocated once.
@@ -710,8 +751,67 @@ export class TerrainField {
   /** per-cell park fraction and burn flag, filled by `parks`/`coast` */
   readonly cellPark: Uint8Array;
   readonly cellBurn: Uint8Array;
-  /** per-cell canopy fraction, 0..255; `base/canopy-tint` */
-  canopyFrac: Uint8Array | null = null;
+  private canopyRaw: Uint8Array | null = null;
+  private canopySm: Uint8Array | null = null;
+
+  /**
+   * THE CANOPY TINT IS SMOOTHED AT LOAD, AND THIS PORT WAS PAINTING IT RAW.
+   *
+   * `part3.html` L3277 `WCAN` runs **two passes of a separable 1-2-1 kernel**
+   * over `base/canopy-tint` before anything reads it, and says why in its own
+   * words:
+   *
+   * > The canopy fraction is measured on the DEM's own 53.8 m grid, and
+   * > painted raw it is a chequerboard: one cell of the Presidio's forest
+   * > against its neighbour of open sand is a hard 53.8 m square, which is
+   * > the exact artefact Block M spent a night removing from the shoreline.
+   * > Two passes of a separable 1-2-1 kernel — the field is a coverage
+   * > fraction, so **smoothing it is smoothing a measurement rather than
+   * > inventing one, and no cell is moved.** Costs 4 x 67,600 adds, once, at
+   * > load.
+   *
+   * **The encoder says the same thing on the wire** — `manifest.kinds
+   * ['canopy-tint'].note` repeats that sentence verbatim, so the field is
+   * shipped raw ON PURPOSE and the client is the half that was missing.
+   * `scene.ts:1092` assigned `tint.fields.demFrac` straight across.
+   *
+   * MEASURED over the 67,600 cells of the shipped chunk:
+   *
+   * ```
+   *                 non-zero    mean    p50   p90   max
+   *   raw            39.33 %   18.90      0    63   255
+   *   smoothed       61.04 %   19.19      6    56   220
+   *
+   *   cells changed 60.18 %,  mean |d| 10.57 of 255,  p95 46,  max 198
+   *   over terrainColor's own 0.06 tint gate:  31.67 %  ->  42.17 %
+   * ```
+   *
+   * **A third more of the city's ground gets a canopy tint**, the hardest
+   * forest cell softens from 255 to 220, and the mean is unmoved (18.90 to
+   * 19.19) — which is the check that this spreads a measurement rather than
+   * adding one.
+   *
+   * The raw array is a VIEW ON THE CHUNK'S OWN BUFFER and is never written to:
+   * the reference is careful about that too (`dst = (t === a) ? new
+   * Uint8Array(N2) : t`), and here the smoothing allocates its own pair.
+   * Re-assigning the same array is a no-op, so the band builder can set it
+   * every rebuild without paying for it or dropping the node cache.
+   *
+   * `QF.tintsm` = 0 keeps the raw field, for an ablation.
+   */
+  get canopyFrac(): Uint8Array | null {
+    return this.canopySm;
+  }
+
+  set canopyFrac(a: Uint8Array | null) {
+    if (a === this.canopyRaw) return;
+    this.canopyRaw = a;
+    this.canopySm =
+      a && QF.tintsm && a.length === this.N * this.N
+        ? smoothCanopy(a, this.N)
+        : a;
+    this.invalidateNodes();
+  }
 
   private readonly shadowOn: boolean;
   private readonly shadowK: number;

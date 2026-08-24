@@ -4927,6 +4927,78 @@ than the file measures, and sub-cell placement was rejected in §4 for the
 reason that governs this whole port: **every one of those positions would be
 invented.** The lattice is the grid the source publishes.
 
+### 20.9 The canopy tint is smoothed at load, and this port was painting it raw
+
+Handed here as the queue's first item — *"terrain: the largest single area in
+the frame and, at district zoom, currently the flattest"*, with the buildings
+agent's bound under it: **at the district camera buildings cover only 32.2 %
+of the stage**, so two thirds of the frame is these files.
+
+`part3.html` L3277 builds `WCAN` by running **two passes of a separable 1-2-1
+kernel** over `base/canopy-tint` before anything reads it:
+
+> The canopy fraction is measured on the DEM's own 53.8 m grid, and painted
+> raw it is a chequerboard: one cell of the Presidio's forest against its
+> neighbour of open sand is a hard 53.8 m square, which is the exact artefact
+> Block M spent a night removing from the shoreline. Two passes of a separable
+> 1-2-1 kernel — the field is a coverage fraction, so **smoothing it is
+> smoothing a measurement rather than inventing one, and no cell is moved.**
+> Costs 4 x 67,600 adds, once, at load.
+
+**The encoder says the same sentence on the wire.**
+`manifest.kinds['canopy-tint'].note` repeats it verbatim: the field is shipped
+raw ON PURPOSE, and the client is the half that was missing.
+`scene.ts:1092` assigned `tint.fields.demFrac` straight across, and
+`grep -rn canopyFrac src` found the assignment, one read in the node average,
+and no kernel anywhere.
+
+MEASURED over the 67,600 cells of the shipped chunk:
+
+```
+                non-zero    mean    p50   p90   max
+  raw            39.33 %   18.90      0    63   255
+  smoothed       61.04 %   19.19      6    56   220
+
+  cells changed 60.18 %,  mean |d| 10.57 of 255,  p95 46,  max 198
+  over terrainColor's own 0.06 tint gate:   31.67 %  ->  42.17 %
+```
+
+**A third more of the city's ground gets a canopy tint**, the hardest forest
+cell softens from 255 to 220, and **the mean does not move** — 18.90 to
+19.19 — which is the check that this spreads a measurement rather than adding
+one.
+
+MEASURED ON THE GROUND ALONE, `?layers=surround,terrain,water,shore,parks`,
+`.parity/g2ground.py`, two full sweeps with the constant flipped between them
+(the smoothing happens when `canopyFrac` is assigned, so a runtime dial would
+not re-smooth and would read backwards — the trap that cost the buildings
+agent an A/B):
+
+| camera | moved > 2 | gross > 12 | frame mean | on the moved pixels |
+|---|---:|---:|---|---|
+| whole city | 8.85 % | 0.34 % | 197.06 → 196.92 | 195.57 → 193.98 |
+| district, Twin Peaks | **47.34 %** | 3.35 % | 194.72 → **193.94** | 192.03 → 190.37 |
+| district, Nob Hill | 23.01 % | 1.12 % | 197.17 → 196.83 | 205.88 → 204.39 |
+| district, Golden Gate Park | **46.13 %** | 3.80 % | 191.03 → **190.27** | 189.83 → 188.18 |
+| **block, Twin Peaks** | **57.54 %** | **5.56 %** | 172.28 → **171.32** | 172.01 → 170.40 |
+
+**Half of the ground at district zoom and 57.5 % of it at block zoom**, and
+every camera moves DARKER — 0.8 to 1.0 of a level on the frame, 1.5 to 1.6 on
+the pixels it touches. That is the direction §19.4's percentile ladder asks
+for, and it is reached by running a pass the source documents rather than by
+a gain on the palette.
+
+Pictures: `out-g2/crop-tintraw.png` against `out-g2/crop-tintsm.png`, the
+block camera over Twin Peaks and Mount Sutro. The raw frame is blotched with
+cell-scale patches of green against pale sand; the smoothed one is a modelled
+surface with the forest's own gradient on it.
+
+**The raw array is a view on the chunk's own buffer and is never written to.**
+The reference is careful about that (`dst = (t === a) ? new Uint8Array(N2) :
+t`) and so is this. `canopyFrac` became a getter/setter pair so the call site
+did not change, re-assigning the same array is a no-op, and `QF.tintsm` = 0
+keeps the raw field for an ablation.
+
 ## 23. Block G1(a) — the pixel floors are not the district deficit, and here is the count
 
 `scene.ts` came to this block with one instruction: **measure what the gate
