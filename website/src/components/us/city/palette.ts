@@ -150,3 +150,184 @@ if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") 
     legendTones,
   };
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+   THE ROOF COVERING TIMELINE — the measured colour is the PRESENT, not the
+   century.
+   ════════════════════════════════════════════════════════════════════════
+
+   `paintIdx` is the median colour of the published aerial pixels inside each
+   footprint, **retrieved 2026-08-23** (`encode_city_chunks.py` `_bldg_prov`,
+   which says so in the field's own `not_measured`: *"the roof from above
+   TODAY … not the colour the building was in any past year"*). It reaches
+   166,042 of 166,166 roofs and it overwrites every other roof rule in
+   `decodeBld`. So before this table, **every building in every year wore its
+   2026 roof** — a white single-ply membrane, a 1990s material, painted onto
+   1906.
+
+   MEASURED, `.parity/g1pal.py` over `paint/paint-data.js`, all 166,166:
+
+   ```
+     the 32 entries are used almost evenly — entropy 4.86 bits of 5,
+     perplexity 29.0 of 32, the top five entries take 26.6 %
+     ⇒ 32 IS NOT A COLLAPSE. The variety the quantiser could carry, it carries.
+
+     mean chroma (max−min channel) of the 32 entries      14.6
+     max chroma                                           43   (#ab9880)
+     26 of 32 entries have chroma <= 16
+     luminance runs 51.4 → 252.6, the WHOLE range
+   ```
+
+   **The palette is a luminance ramp with no hue in it.** That is not a defect
+   in the sampler and not a defect in the quantiser: nadir imagery of San
+   Francisco really is grey and white. The value variation Daniel is missing is
+   already there and already full-range; **the hue variation is absent because
+   the thing measured has none.** Which is why no amount of work on `paintIdx`
+   could have fixed his complaint, and why the fix has to come from somewhere
+   other than the photograph.
+
+   ── THE RULE, DECLARED ────────────────────────────────────────────────────
+
+   The measured colour is the TERMINAL state of a covering timeline, and
+   earlier years are derived from **era and use class only**. Nothing here is
+   per-building data and nothing here is randomised: it is one global table,
+   read the same way by every building in the city, and the two columns it is
+   read on — `use_definition` in seven classes and `year_property_built` — are
+   the roll's own and are already on the wire.
+
+   **The covering date.** A roof is not the age of its building; it is the age
+   of its last re-covering. On a declared cycle of `REROOF_YEARS` from the
+   build year:
+
+   ```
+     cover(b, Y) = b + REROOF_YEARS * floor((Y - b) / REROOF_YEARS)
+   ```
+
+   so `cover ∈ (Y - REROOF_YEARS, Y]` for every standing building, and TWO
+   things follow that are the whole reason the rule has this shape:
+
+   1. **At the present the picture is unchanged.** Every covering date at
+      Y = 2025 falls in (2000, 2025], which is the last era, whose material IS
+      the measured colour. The frame at the present year is the frame that
+      ships today, building for building.
+   2. **The change is staggered by the city's own build years, not by a
+      random.** MEASURED over the 157,184 footprints this rule applies to: the
+      worst single display-year re-covering cohort is **9,335 buildings,
+      5.94 %** — and only the fraction of those that cross a material boundary
+      changes colour at all. There is no frame on which San Francisco re-roofs
+      itself at once, which is the failure mode BUGS §24 records for the trees.
+
+   `REROOF_YEARS = 25` is DECLARED. It is inside the service life of every
+   covering in the table below — asphalt shingle, built-up bitumen and
+   single-ply membrane are all roughly 20–30 year products — and it is short
+   enough that (Y − 25) is past the last era boundary at the present, which is
+   what makes property 1 hold.
+
+   ── THE MATERIALS ─────────────────────────────────────────────────────────
+
+   Five eras, and each is a claim about San Francisco stated here rather than
+   hidden in a constant. **DECLARED, not measured** — no published column
+   records the covering material of a San Francisco building, which is why
+   `sf_building_character.md`'s own audit puts SF Survey `Roof Form(s)` at
+   0.35 % and OSM `roof:shape` at 0.19 % and rejects both:
+
+   · **→1906 · redwood shingle.** The pre-fire city is a wood city: wood frame,
+     wood siding, wood shingle roofs, which is the reason the fire behaved the
+     way it did.
+   · **1907–1929 · the rebuild.** Non-combustible covering becomes the norm as
+     the city rebuilds — gravel-surfaced built-up roofing on the flat stock,
+     and clay tile on the Mediterranean-revival institutions and hotels of the
+     1920s. 52.6 % of the standing hotel/institutional stock dates from this
+     band, which is why the terracotta lands where it does.
+   · **1930–1959 · built-up bitumen with a mineral cap.** Darker and cooler
+     than the gravel that preceded it.
+   · **1960–1989 · smooth asphalt.** The darkest the city gets.
+   · **1990→ · the cool-roof era, and it is MEASURED.** White and pale single-
+     ply membrane; California's Title 24 cool-roof provisions make it a
+     requirement rather than a preference in the 2000s. This era's "material"
+     is not a table entry at all — it is `PAINT_C0 + paintIdx`, the roof the
+     photograph actually shows.
+
+   ── THE REFUSALS ──────────────────────────────────────────────────────────
+
+   · **`mixed or not stated` (8,365 footprints, 5.03 %) gets no era.** The row
+     is `null`, exactly as `UMAT_ROOF`'s is, and those buildings keep the
+     measured colour in every year. Reading a material off a use class the
+     roll does not state is inventing the class.
+   · **`FLAG_NOYEAR` (2,916) gets no era**, for the same reason `faVocab` and
+     the ochre tint refuse it: the roll dates those parcels to its own "not
+     known" and `yr` holds a placeholder 1906. A covering date derived from a
+     placeholder is a date the record does not hold.
+
+   Together that is **8,982 buildings that keep exactly today's look**, and it
+   is the same refusal the rest of this file already makes.                */
+
+/** the covering-timeline era boundaries — see the note above */
+export const ROOF_ERA_YEARS: readonly number[] = [1907, 1930, 1960, 1990];
+
+/** the declared re-covering cycle, years */
+export const REROOF_YEARS = 25;
+
+/** the sentinel in `roofEraTable`: this (use, year) takes the MEASURED colour */
+export const ERA_MEASURED = 255;
+
+/**
+ * `[use][era] -> WA_ROOF material index`, with the last era carrying
+ * `ERA_MEASURED`. `null` is the honest bucket — no era claim at all.
+ * Rows are `manifest.buildings.useNames`, in order.
+ */
+export const UROOF_ERA: readonly (readonly number[] | null)[] = [
+  /* single family         */ [3, 13, 15, 11, ERA_MEASURED],
+  /* multi-family          */ [3, 1, 15, 11, ERA_MEASURED],
+  /* retail                */ [15, 1, 1, 11, ERA_MEASURED],
+  /* office                */ [5, 6, 1, 6, ERA_MEASURED],
+  /* industrial            */ [10, 10, 10, 6, ERA_MEASURED],
+  /* hotel / institutional */ [5, 2, 1, 6, ERA_MEASURED],
+  /* mixed or not stated   */ null,
+];
+
+/** the covering year: the last re-covering on the declared cycle, at or before `y` */
+export function coveringYear(built: number, y: number): number {
+  if (!(y > built)) return built;
+  return built + REROOF_YEARS * Math.floor((y - built) / REROOF_YEARS);
+}
+
+/** which era a covering laid in year `c` belongs to */
+export function coveringEra(c: number): number {
+  let e = 0;
+  while (e < ROOF_ERA_YEARS.length && c >= ROOF_ERA_YEARS[e]) e++;
+  return e;
+}
+
+/** `yearBand`'s own byte layout: `bldg.yr` is `year - 1849`, one byte */
+export const YR0 = 1849;
+export const YR_N = 256;
+
+/**
+ * THE WHOLE RULE, RESOLVED ONCE PER DISPLAYED YEAR, AS A 7 x 256 BYTE TABLE.
+ *
+ * The draw loop reads one array element per building — `tab[use * 256 + yrByte]`
+ * — and takes the building's own `ri` when it reads `ERA_MEASURED`. So a rule
+ * that is a function of four things costs one indexed load per footprint, and
+ * the table itself is 1,792 bytes rebuilt only when the year on the rail
+ * changes. Nothing is added to the colour LUT: every material here is already
+ * a `WA_ROOF` entry, so `roofF`/`roofNF` index it unchanged and the haze, the
+ * ochre and the four `RSHADE` steps all still apply.
+ */
+export function roofEraTable(y: number): Uint8Array {
+  const out = new Uint8Array(UROOF_ERA.length * YR_N);
+  for (let u = 0; u < UROOF_ERA.length; u++) {
+    const row = UROOF_ERA[u];
+    const o = u * YR_N;
+    if (!row) {
+      out.fill(ERA_MEASURED, o, o + YR_N);
+      continue;
+    }
+    for (let k = 0; k < YR_N; k++) {
+      const built = YR0 + k;
+      const m = row[coveringEra(coveringYear(built, y))] ?? ERA_MEASURED;
+      out[o + k] = m === ERA_MEASURED ? ERA_MEASURED : WAM(m);
+    }
+  }
+  return out;
+}

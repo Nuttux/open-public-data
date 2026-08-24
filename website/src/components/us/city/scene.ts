@@ -209,6 +209,7 @@ import {
 import { riseOf, risePhase } from "@/lib/city/film";
 import { SCRUB_MAX } from "@/lib/city/time";
 import {
+  ERA_MEASURED,
   PAINT_C0,
   UMAT_ROOF,
   UMAT_WALL,
@@ -217,10 +218,12 @@ import {
   WAM,
   heightBand,
   legendTones,
+  roofEraTable,
   roofPalette,
   storeyBand,
   wallPalette,
   yearBand,
+  YR_N,
 } from "./palette";
 
 // ═══ decoded tables ════════════════════════════════════════════════════════
@@ -824,6 +827,13 @@ export class CityScene {
    * 64th, so a zoom is a cache hit on all but a few frames.
    */
   private roofNF: string[] | null = null;
+  /**
+   * THE ROOF COVERING TIMELINE, RESOLVED FOR THE YEAR ON THE RAIL.
+   * `palette.ts` §THE ROOF COVERING TIMELINE has the rule and the refusals.
+   * 7 x 256 bytes, rebuilt only when the displayed year changes.
+   */
+  private eraRoof: Uint8Array | null = null;
+  private eraRoofYear = Number.NaN;
   private blockRoof: Uint8Array | null = null;
   private blockWall: Uint8Array | null = null;
   private aoCv: OffscreenCanvas | null = null;
@@ -2670,6 +2680,17 @@ export class CityScene {
        settled explorer and the cached layer all need. */
     const iy = year === undefined ? SCRUB_MAX : Math.floor(year);
     const clock = year !== undefined;
+    /* THE ROOF'S COVERING FOR THIS YEAR. See `palette.ts` §THE ROOF COVERING
+       TIMELINE: the measured aerial colour is the PRESENT and not the century,
+       so it becomes the last era of a declared timeline and the earlier years
+       are derived from the roll's own use class and year. At `SCRUB_MAX` every
+       covering date falls in the last era and this table is `ERA_MEASURED`
+       throughout — the present-day frame does not move. */
+    if (this.eraRoofYear !== iy || !this.eraRoof) {
+      this.eraRoof = roofEraTable(iy);
+      this.eraRoofYear = iy;
+    }
+    const eraRoof = this.eraRoof;
     /* the fabric's own arrival wave: far-to-near across the frame with a
        per-building jitter, over the first 38.5 % of the year's passage. Off a
        run this is 1 for everything, which is `rise = 1` — the state
@@ -2936,7 +2957,15 @@ export class CityScene {
       const sgn = 1;
 
       const wallCi = tb.wi[i];
-      const roofCi = tb.ri[i];
+      /* THE ROOF WEARS THE COVERING OF ITS OWN LAST RE-COVERING, not the
+         photograph of 2026. `ERA_MEASURED` — the whole of the present era, the
+         5.03 % the roll gives no use class, and every `FLAG_NOYEAR` footprint
+         — falls through to `ri`, which is what the page drew before this. The
+         `FLAG_NOYEAR` refusal is made by reading row 6, the null row, which is
+         the same refusal `fi` makes four lines down on the same byte. */
+      const uEra = (tb.u[i] & FLAG_NOYEAR) !== 0 ? 6 : tb.u[i] & USE_MASK;
+      const eraCi = eraRoof[uEra * YR_N + tb.yr[i]];
+      const roofCi = eraCi === ERA_MEASURED ? tb.ri[i] : eraCi;
       const hz = hazeIdx(f, tb.cx[i], tb.cy[i], hzLo, hzSpan);
       const dhPx = hM * kh;
       /* THE TINT — the ochre of new construction and the arrival ramp, off

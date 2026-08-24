@@ -8026,3 +8026,168 @@ layer that contains *the city*; this raises a mask from footprints **and the
 massing blocks**, and a blurred union of 5,404 block rings is a much larger,
 much flatter object than a blurred union of 150,000 buildings. If the pass is
 wrong, that is where I would look before touching `AO.COL`.
+
+---
+
+## 34. Block G1 — the roofs. The measured colour is a photograph of 2026, and it was being painted onto 1906
+
+Daniel, and he calls it his top graphical obstacle: *"the real graphical
+obstacle right now is the roofs that are all uniform and either white or grey
+and shades of dark grey — not just the colours but also the shapes … the
+amalgamation of roofs is just weird. What's the best way to fix this in a
+manner that stays historically relevant over time?"*
+
+### 34.1 First: the palette is a LUMINANCE RAMP, and that reframes the complaint
+
+Before any change, the thing everyone has been guessing about, measured.
+`paint/paint-data.js`, all 166,166 footprints, `.parity` scratch:
+
+```
+  paintIdx over the 32 entries
+    entropy                4.859 bits of a possible 5.0
+    perplexity             29.02 effective entries of 32
+    top 5 entries          26.59 % of the city
+    top 8 entries          38.62 %
+```
+
+**The quantiser is NOT the flattener.** 32 entries carry very nearly 32
+entries' worth of information; the distribution is almost flat. Anyone who
+proposes widening the palette to fix "uniform" is proposing to fix a thing that
+is not broken, and this is the measurement that says so.
+
+What IS true:
+
+```
+  mean chroma (max channel - min channel) of the 32 entries    14.6
+  max chroma                                                   43   (#ab9880)
+  entries with chroma <= 16                                    26 of 32
+  luminance                                                    51.4 -> 252.6
+```
+
+**The palette is a grey ramp.** It spans the whole luminance range and carries
+almost no hue. So the value variation Daniel is missing *is already there and
+already full-range*; the hue variation is absent **because the thing that was
+measured has none.** Nadir imagery of San Francisco really is grey and white,
+the sampler is right, the quantiser is right, and the picture is still wrong.
+That is the whole shape of this problem and it is why no further work on
+`paintIdx` could ever have answered him.
+
+### 34.2 And it is a photograph of ONE DAY, applied to every year
+
+`encode_city_chunks.py` `_bldg_prov` already says so in the field's own
+`not_measured` clause: *"the roof from above TODAY. Not the colour anyone
+painted the front, not a claim about roofing material, and not the colour the
+building was in any past year."* Retrieved **2026-08-23**. And `decodeBld`
+assigns `ri[i] = PAINT_C0 + paintIdx[i]` for 166,042 of 166,166 with no year
+in the expression at all.
+
+So **every building in every frame of the film wore its 2026 roof.** A white
+single-ply membrane — a 1990s product — was being painted onto 1906. That is
+the anachronism, and it is also the answer to *"historically relevant over
+time"*: **the measured colour is evidence about the present, not about the
+century, so it becomes the TERMINAL state of a timeline and earlier years are
+derived from era and class.**
+
+### 34.3 The rule, and it is declared rather than invented
+
+Full statement, with its refusals, in `palette.ts` §THE ROOF COVERING TIMELINE.
+In short:
+
+```
+  cover(b, Y) = b + REROOF_YEARS * floor((Y - b) / REROOF_YEARS)      REROOF_YEARS = 25
+  material    = UROOF_ERA[use class][era of cover]                    5 eras
+  last era    = ERA_MEASURED  ->  the building's own `ri`, i.e. today's look
+```
+
+Two columns, both the roll's own and both already on the wire: `u & USE_MASK`
+(seven classes) and `yr` (`year_property_built`). **No new byte on the page, no
+new palette entry, no new LUT dimension** — every material is an existing
+`WA_ROOF` index, so `roofF`/`roofNF` index it unchanged and the haze, the
+ochre tint and the four `RSHADE` value steps all still apply on top of it.
+
+Cost: a `7 x 256` byte table rebuilt when the year on the rail changes, and
+**one indexed load per drawn footprint**.
+
+### 34.4 The two properties that make it safe, both measured
+
+**1 · The present-day frame does not move.** Every covering date at `Y = 2025`
+falls in `(2000, 2025]`, which is the last era, which is `ERA_MEASURED`, which
+is `ri`. Checked over all 256 byte values: `roofEraTable(2025)` is
+`ERA_MEASURED` throughout, and the **first display year at which that is true
+is 2014** — so the whole 2014-2025 stretch of the rail is byte-identical to
+what shipped before this block.
+
+**2 · There is no frame on which San Francisco re-roofs itself at once.** This
+is BUGS §24's failure mode — the whole city growing its street trees in 1955 —
+and the stagger here comes from the buildings' own published build years, not
+from a random. Over the 157,184 footprints the rule applies to, the worst
+single display-year re-covering cohort is:
+
+```
+  REROOF_YEARS = 20    13,900   8.84 %
+  REROOF_YEARS = 25     9,335   5.94 %      <- shipped
+  REROOF_YEARS = 30     9,088   5.78 %
+```
+
+and only the fraction of those crossing a *material* boundary changes colour at
+all. The era composition of the standing stock, by display year:
+
+```
+  display  standing    ->1906   1907-29  1930-59  1960-89  MEASURED  refused
+   1890       2,473     96.7 %                                          3.3 %
+   1906      18,250     84.0 %                                         16.0 %
+   1915      49,178     27.2 %   64.0 %                                 8.8 %
+   1930      88,849      5.8 %   83.8 %    4.6 %                        5.9 %
+   1950     129,876               12.9 %   82.2 %                       5.0 %
+   1975     152,442                        36.2 %   58.8 %              5.1 %
+   1990     159,665                                 89.0 %    5.8 %     5.1 %
+   2005     164,423                                 35.6 %   59.1 %     5.3 %
+   2025     166,166                                          94.6 %     5.4 %
+```
+
+No column moves more than about two points of the standing stock per display
+year. The city changes material over decades, which is what it did.
+
+### 34.5 The refusals, which are the part that keeps it honest
+
+- **`mixed or not stated` — 8,365 footprints, 5.03 %** — takes the `null` row,
+  exactly as `UMAT_ROOF` already does, and keeps the measured colour in every
+  year. Reading a material off a use class the roll does not state would be
+  inventing the class.
+- **`FLAG_NOYEAR` — 2,916** — is refused by reading row 6 in the draw loop,
+  which is the same refusal `fi` makes four lines further down on the same
+  byte. `yr` holds a placeholder 1906 for those and a covering date derived
+  from a placeholder is a date the record does not hold.
+
+Together **8,982 buildings keep exactly today's look in every year**, which is
+the `unknown` rule of §30.3 arriving through a different column.
+
+### 34.6 What is MEASURED and what is DECLARED, said plainly
+
+MEASURED: the 2026 colour of every roof, the use class, the build year, the
+distribution numbers above. DECLARED: the five eras, the materials in each,
+and the 25-year cycle. **No published column records the covering material of a
+San Francisco building** — `sf_building_character.md`'s own source audit puts
+SF Survey `Roof Form(s)` at 0.35 % and OSM `roof:shape` at 0.19 % and rejects
+both — so this is a global treatment declared to the reader, which is what the
+brief allows, and it is not dressed up as data.
+
+### 34.7 What it looks like
+
+`.parity/g1era.py`, camera asserted after the shutter. Frames in `.parity/out`:
+`F2-dist-miss-1915.era.prod.png` next to `F5-dist-miss-2025.era.prod.png` —
+the 1915 Mission is a warm brown and tan fabric, the 2025 Mission is the grey
+and white one that ships today, and the two are unmistakably different cities.
+`E1-city-1890` and `E5-city-2025` are the same pair at whole-city zoom.
+
+### 34.8 Zoom scope, stated up front as §30.1 requires
+
+This block is **colour**, so unlike a silhouette it reads at ALL FIVE ZOOMS —
+a 2.818 px building at the district camera still carries its fill. The roof
+*form* work that follows does not, and §30.1 has the measurement.
+
+**NOT COVERED: the massing tier at whole-city zoom.** `blockRoofIdx` reads
+`bl.bidx`, the area-weighted mean of the same 2026 measurement onto the block,
+and a block carries no use class and no build year — so the era rule has
+nothing to read there. Whole-city zoom changes only through the solos, which
+are drawn as footprints at every zoom. Named here rather than left to be found.
