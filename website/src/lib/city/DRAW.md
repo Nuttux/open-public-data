@@ -5385,6 +5385,76 @@ tables, the ground palette, the seabed, the aerial fade, the grain, the roof
 deck and tray, and the terrain self-shadow are each measured and each too
 small, on the one metric that can see the thing being looked for.
 
+### 20.14 The ground's colour is bit-identical in both builds, over its whole domain
+
+§20.13 ended on a bound: **the gap is always-on in both builds and differs in
+value — the one class of difference an ablation cannot find, because ablating
+it removes the same thing from both.** The method that finds one is to stop
+ablating and READ THE VALUE OUT OF BOTH BUILDS AT THE SAME INPUT.
+
+The ground's colour is a pure function of five numbers on both sides —
+`terrainRGB(z, lam, parkF, burnT, can)` — and both are reachable from their
+own page: the reference's as a top-level function declaration, this build's
+through **§GROUND**, a dev-only handle that exports the FUNCTIONS the renderer
+runs rather than copies of them, so a sample cannot drift from the draw.
+
+`.parity/g2fn.py`, 4,800 samples over
+`z ∈ {0…300} × lam ∈ {0…1} × park ∈ {0, ½, 1} × burn ∈ {0, 0.45} ×
+can ∈ {0…255}`, the same numbers into both:
+
+```
+  prod − mock, luminance    mean +0.000   p5 +0.00   p50 +0.00   p95 +0.00
+  max |d| over all channels                    0.00
+  identical samples                    4,800 of 4,800   (100.0 %)
+
+  WTBL                       1,152 entries each, 0 differing
+  WTQ 64 · WCQ 9 · LAM0 0.73 · QWARM 0.6
+  SUNC [1.054, 0.9998, 0.8949] · SKYC [0.9427, 0.9924, 1.1355]
+  WG0 #f8f0d8 · WG1 #dcc79a · WPK0 #eef0d8 · WPK1 #d3d3a8
+  WCN0 #c9d79c · WCN1 #7c9455 · HAZE #ece7dc · hazecap 0.62
+                                    — every one identical
+```
+
+**Not "close" and not "within the noise": the same number, everywhere, to the
+float.** The ramp, the 1,152-entry table it is built from, the two
+illuminants, the warmth, the tilt, the burn lerp and the canopy gate all
+agree.
+
+**No camera, no frame, no threshold, no blur kernel** — and, unlike every
+measurement above it in this section, nothing that a term being on in both
+builds can defeat. It is the proof that closed the back-wall bug (capture the
+polygons out of both builds and compare) applied to colour instead of
+geometry.
+
+**What it buys is an exact elimination of the largest layer in the frame.**
+The ground covers more of a district frame than anything else and it is now
+excluded — not statistically, not to within a decile, but identically. So the
++11.03 / +13.23 is in what is composited OVER the ground, and §20.13 has
+already excluded the canopy (production's is *stronger*), the building tone
+tables (~1 level in the dark decile), the ground palette, the seabed, the
+aerial fade, the grain, the roof deck and tray, and the terrain self-shadow.
+
+**The recipe, for whoever takes the next layer.** It is four lines and it
+works on any pass whose output is a function of its inputs:
+
+1. export the function itself from a dev-only global on the production side —
+   `terrain.ts` §GROUND is the pattern, and it must export the function
+   object, not a re-implementation;
+2. reach the reference's counterpart, which is a top-level declaration in
+   `part3.html` and therefore already global;
+3. sample the input domain on a grid and dump both output tables;
+4. subtract. A constant that differs is a systematic offset over part of the
+   domain, and **the shape of *where* in the domain it differs names the
+   term.**
+
+The layers still to run it on, in descending share of a district frame:
+the building wall and roof tone (`colourLUT`, `buildings.ts`), the street
+surface (`streets.ts`), and the facade material (`facades.ts`). The building
+one is the one to do first — §20.13 already caught the two builds disagreeing
+by +0.88 / +0.32 on an always-on table there (`WA.warm`'s `UMAT_WALL` /
+`UMAT_ROOF` against the eight-tone fallback), and **where there is one such
+disagreement there are likely to be more.**
+
 ## 23. Block G1(a) — the pixel floors are not the district deficit, and here is the count
 
 `scene.ts` came to this block with one instruction: **measure what the gate

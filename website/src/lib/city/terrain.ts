@@ -1651,6 +1651,49 @@ if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") 
 }
 
 
+/**
+ * §GPROBE's sibling, and the answer to a class of bug an ablation cannot find.
+ *
+ * BUGS §23's low-frequency gap is ALWAYS-ON in both builds — every switchable
+ * treatment was ranked in §20.13 and none of them is it, because switching a
+ * term off removes it from both sides. What finds a value difference is
+ * reading the value out of both builds AT THE SAME INPUT: the ground's colour
+ * is a pure function of (z, lam, park, burn, canopy) and so is the
+ * reference's, so the two can be sampled over their whole domain and
+ * subtracted, with no camera, no frame, no threshold and no blur kernel in
+ * the way.
+ *
+ * The same shape as the proof that closed the back-wall bug — capture the
+ * actual polygons out of both builds and compare — on colour instead of
+ * geometry.
+ *
+ * Dev only, and it exports the FUNCTIONS rather than copies of them, so a
+ * sample cannot drift from what the renderer runs.
+ */
+if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+  (globalThis as { __cityGROUND?: unknown }).__cityGROUND = {
+    terrainColor,
+    terrainRGB,
+    skylit,
+    skylitN,
+    shade,
+    lerpHex,
+    tiltOf,
+    luminance,
+    tbl: () => WTBL.slice(),
+    consts: () => ({
+      WTQ, WCQ, LAM0, QWARM,
+      SUNC: [...SUNC], SKYC: [...SKYC],
+      WG0, WG1, WPK0, WPK1, WCN0, WCN1,
+      BRN: [...BRN],
+      HAZE,
+      WPAL: { ...WPAL },
+      WFLG_tint: WFLG.tint,
+      hazecap: WA.hazecap,
+    }),
+  };
+}
+
 /** a stable id per field/grid, so the identity can live in the key string */
 const plateIds = new WeakMap<object, number>();
 let plateIdNext = 1;
