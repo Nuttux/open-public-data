@@ -69,8 +69,10 @@ Every organisation, contract, supplier and place has its own page:
 - [For cities](https://www.qipu.org/pour-les-villes): what it takes to build this for
   another city.
 
-Known limits, stated because they matter when citing this site: grants data for
-Paris is missing 2020–2021; French procurement coverage depends on what each
+Known limits, stated because they matter when citing this site: Paris grant
+lines drop sharply in 2020 and 2021 (about 4 000 a year against 10 000 either
+side) while the amounts hold, so counts and averages across that gap are not
+comparable; French procurement coverage depends on what each
 authority declares to DECP; San Francisco's paid and agreed contract amounts
 come from two different datasets and do not always reconcile; individual private
 persons who receive grants are never named or indexed.
