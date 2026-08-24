@@ -40,6 +40,24 @@ const nextConfig: NextConfig = {
    * rather than everything under `public/data` minus what we thought to
    * subtract. That is a refactor, and it is written up rather than rushed.
    */
+  /**
+   * THE THREE FILES THE SERVER OPENS, named so no exclude can take them.
+   *
+   * `us/city/sf/the-city/page.tsx` reads exactly manifest.json,
+   * blocks/block-index.json and blocks/accuracy.json (lines 68-71). Everything
+   * else under that directory is fetched by the browser. Includes take
+   * precedence over excludes, so this is the belt to the excludes' braces —
+   * and it is here because the excludes DID strip these three and 500 the page
+   * in production.
+   */
+  outputFileTracingIncludes: {
+    '/us/city/sf/the-city': [
+      './public/data/us/sf/city/manifest.json',
+      './public/data/us/sf/city/blocks/block-index.json',
+      './public/data/us/sf/city/blocks/accuracy.json',
+    ],
+  },
+
   outputFileTracingExcludes: {
     '/fr/**': ['./public/data/us/**', './public/data/br/**'],
     '/us/**': ['./public/data/br/**', './public/data/marseille/**',
@@ -67,11 +85,20 @@ const nextConfig: NextConfig = {
                './public/data/us/sf/city/water1/**'],
     '/br/**': ['./public/data/us/**', './public/data/marseille/**',
                './public/data/subventions/**', './public/data/marches-publics/**'],
-    // The root page and the `(...)` intercepting drawer routes sit at the app
-    // root, so neither '/fr/**' nor '/us/**' matches them — they were still
-    // carrying the whole city map at 252 MB. None of them opens a map file.
-    '/page': ['./public/data/us/sf/city/**', './public/data/br/**'],
+    // The `(...)` intercepting drawer routes sit at the app root, so neither
+    // '/fr/**' nor '/us/**' matches them and they were carrying the whole city
+    // map at 252 MB. None of them opens a map file.
+    //
+    // There is NO '/page' key here. There was, and it took production down:
+    // it did not match only the root page, it stripped
+    // public/data/us/sf/city/** from routes that read it, and
+    // /us/city/sf/the-city returned a Server Components render error on a live
+    // site. An exclude whose blast radius you have not measured is a deletion.
     '/@drawer/**': ['./public/data/us/sf/city/**', './public/data/br/**'],
+    // The two remaining routes over the ceiling, named ONE BY ONE rather than
+    // by a glob whose reach I would be guessing at. Neither opens a map file.
+    '/': ['./public/data/us/sf/city/**', './public/data/br/**'],
+    '/comparer': ['./public/data/us/sf/city/**', './public/data/br/**'],
     // The chart and poster endpoints render an image from a figure they are
     // handed. Neither opens the city map.
     '/api/**': ['./public/data/us/sf/city/**', './public/data/br/**'],
