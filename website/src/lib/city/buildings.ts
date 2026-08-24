@@ -1297,3 +1297,58 @@ if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") 
     }),
   };
 }
+
+/* ── THE AMBIENT OCCLUSION UNDER THE CITY ────────────────────────────────
+ *
+ * BUGS.md §23 and DRAW.md §32: the whole of the district gap is a pass the
+ * reference has and this build does not. `gen/part4.html` L62 `buildAO()`
+ * takes the finished city layer, blurs it, offsets it down-left along the same
+ * key light every other shadow here uses, turns it into a solid tint with
+ * `source-in`, and composites it BEHIND the city with `destination-over`.
+ * `LOOK.ao` is the first flag in the mock's `LOOK` block and its own
+ * description is *"screen-space contact shadow under the city layer"*.
+ *
+ * Every constant here is the reference's, to the digit. **`AO_ALPHA` is a
+ * published constant and is matched, not tuned** — if the result overshoots,
+ * something else is wrong.
+ *
+ * ── AND THE ONE DEVIATION, WHICH THE ARCHITECTURE FORCES ────────────────
+ * The reference has TWO layers: a terrain layer and a transparent CITY layer,
+ * and `destination-over` reaches "behind the city" because the city layer is
+ * transparent everywhere the city is not. **This renderer has one combined
+ * slot**, filled opaque with `HAZE` before anything is drawn, so there is no
+ * transparency for `destination-over` to find.
+ *
+ * So the same picture is reached from the other side: the mask is built into
+ * its own buffer and composited `source-over` **BEFORE** the building passes
+ * rather than `destination-over` after them. Composited under the city either
+ * way; the buildings paint over it exactly as they paint over the ground. What
+ * is lost is that the reference gets its silhouette for free from a layer it
+ * has already drawn and this has to raise one — which is §32.4's cost note,
+ * measured at the call site rather than assumed.
+ */
+export const AO = {
+  on: 1,
+  /** blur radius, CSS px, by zoom step — `part4.html` L37 */
+  R: [1.6, 2.4, 3.4] as const,
+  /** `part4.html` L38, and it is matched rather than tuned */
+  COL: "rgba(63,52,36,0.50)",
+  /** the buffer is built at this fraction of device resolution — `AO_SS` */
+  SS: 0.5,
+  /** the offset, as a fraction of the blur radius. `part4.html` L72:
+   *  `drawImage(cityL, -r*0.55/ss, r*0.80/ss, W, H)` — down-LEFT, the same
+   *  screen direction the per-building cast shadow uses, at a fraction of the
+   *  blur so the two read as one soft shadow rather than as two. */
+  OX: -0.55,
+  OY: 0.8,
+};
+
+/**
+ * THE TERMINAL CONSTANT, AND IT IS 0 ON PURPOSE — SEE DRAW.md §33.
+ *
+ * The pass is built and it is NOT verified. It ships inert: at 0 `paintAO`
+ * returns on its first line, so this costs nothing and changes no pixel. The
+ * reference value is 1.0 and the day it is turned on is the day somebody has
+ * run the acceptance test in §33.3 on a quiet tree.
+ */
+export const AO_ALPHA = 0.0;

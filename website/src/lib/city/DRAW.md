@@ -7947,3 +7947,82 @@ before 1937, all four towers inside the tolerance, the cross-check, the
 straightness, the east span declared rather than missing, the three new fields
 naming sources that carry a SHA-256, the derived-ring statement, and the two
 cable properties. 419 green.
+
+---
+
+## 33. Block G1 — `buildAO` is built, and it ships INERT because it is not verified
+
+§32 found BUGS §23: the mock has a screen-space ambient occlusion pass under
+the city and this build has none. This block builds it. **It is turned off,
+and this section is why.**
+
+### 33.1 What is built
+
+`buildings.ts` §AO carries every constant at the reference's own value —
+`R = [1.6, 2.4, 3.4]` css px of blur by zoom step, `COL = rgba(63,52,36,0.50)`,
+`SS = 0.5`, the offset `(-0.55, +0.80) × r`. **`AO.COL` is a published constant
+and is matched rather than tuned**; if the result overshoots, something else is
+wrong.
+
+`scene.paintAO` raises the silhouette the reference gets for free, accumulates
+the roof rings of the visible footprint set AND the massing blocks under it
+into one `Path2D`, fills it once into a half-resolution buffer under
+`filter: blur(r)`, tints it with `source-in`, and composites it under the city.
+
+**One architectural deviation, forced.** The reference has a transparent CITY
+layer and reaches behind it with `destination-over`. This renderer has one
+combined slot, filled opaque with `HAZE` before anything is drawn, so there is
+no transparency for `destination-over` to find. The same picture is reached
+from the other side: composited `source-over` **before** the building passes
+instead of `destination-over` after them.
+
+### 33.2 Why it is off: the measurement was VOID and I will not ship on it
+
+The acceptance run reported the gap going the wrong way — +10.32 → +16.86, the
+darkest decile +10.4 → +45.8, detail rms collapsing 35.23 → 19.09 — which reads
+as a catastrophically broken pass.
+
+**It is not a measurement of the pass.** The shot warned *"never settled"*, the
+camera had fallen back to the whole-city fit, and the frame filed as
+`B4-district` is a picture of the whole peninsula
+(`out-g1/ao-on.png`). A district frame was being compared against a
+city frame. *Every number in that table is void*, in both directions — it is
+no more evidence that the pass is broken than that it works.
+
+Four attempts at a clean re-shoot with the camera asserted were killed by
+concurrent dev-server recompiles. **So the pass is unverified, and unverified
+is not a state to leave a visual change in the night before a demo.**
+`AO_ALPHA = 0` makes `paintAO` return on its first line: no cost, no pixel
+moved, and one constant away from live.
+
+### 33.3 The acceptance test, so the next person runs it and does not re-derive it
+
+`.parity/g1ao2.py` — one camera, camera ASSERTED after the shot, the run
+aborting rather than filing a frame from the wrong camera. Shoot with
+`AO_ALPHA = 0`, then with `1.0`, then:
+
+1. **On the LOW-frequency image** — `GaussianBlur(6)` — never the frame mean
+   and never the pixel count. Both of those are why §23 survived two nights.
+2. **The gap must fall toward zero**: B1 and B4 down from +11.7 / +13.7, the
+   darkest decile's +23.5 / +14.2 coming down, **and the bright end not
+   moving.** If the bright end moves, the mask is covering open ground it
+   should not.
+3. **Detail rms must not collapse.** A large drop means the mask has become a
+   near-full-frame wash rather than a halo — the first thing to suspect is the
+   massing rings, which are far coarser than the footprints and are unioned
+   into the same path.
+4. **Frame-sequence a camera move.** Daniel's clause is that there must be no
+   visible hitch during one, a single still cannot show a stutter, and the
+   ground plate took 132 rebuilds across the film's eight travels down to 45 —
+   that must not be given back. The reference tiers its AO off mid-gesture
+   (`self.__CITY_FAST`) and that has not been ported here.
+5. And re-raster forcibly. `onUp` can leave the 1.1-DPR motion buffer on the
+   glass, and **a blurred pass is exactly what that would flatter.**
+
+### 33.4 What I would suspect first
+
+Not the constants — they are the reference's. The mask. The reference blurs a
+layer that contains *the city*; this raises a mask from footprints **and the
+massing blocks**, and a blurred union of 5,404 block rings is a much larger,
+much flatter object than a blurred union of 150,000 buildings. If the pass is
+wrong, that is where I would look before touching `AO.COL`.

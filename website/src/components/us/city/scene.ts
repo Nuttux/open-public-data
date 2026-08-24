@@ -107,7 +107,11 @@ import {
 } from "@/lib/city/trees";
 import {
   addContactShadow,
+  AO,
+  AO_ALPHA,
   areaRect,
+  BLOCK_INSET_M,
+  blockRing,
   bucketFloor,
   buildURND,
   colourLUT,
@@ -822,6 +826,7 @@ export class CityScene {
   private roofNF: string[] | null = null;
   private blockRoof: Uint8Array | null = null;
   private blockWall: Uint8Array | null = null;
+  private aoCv: OffscreenCanvas | null = null;
   private heroMats: HeroMaterials | null = null;
   /** the hit test's uniform grid over the block rings — geometry only, so it
    *  outlives a band drop */
@@ -1882,6 +1887,13 @@ export class CityScene {
     // 6 ── the buildings: the massing tier, then the footprints over it
     const wB = tierW(z);
     st.wB = wB;
+    /* 5b ── THE AMBIENT OCCLUSION UNDER THE CITY. See `buildings.ts` §AO and
+       DRAW.md §32: the whole of BUGS §23's district gap is this pass, which the
+       reference has and this build did not. It goes HERE, before the buildings,
+       because this renderer has one combined slot and the reference's
+       `destination-over` needs a transparent city layer it has not got — the
+       picture is the same, reached from the other side. */
+    if (L.buildings && AO.on) this.paintAO(f, t, view, z, step, wB, opts.year);
     if (L.massing) st.massed = this.paintMassing(f, t, step, wB, opts.year);
     if (L.buildings) st.buildings = this.paintFootprints(f, t, view, z, step, wB, opts.year);
 
@@ -2259,6 +2271,149 @@ export class CityScene {
     if (!trees.length && !canopy.length) return 0;
     const r = drawVeg(f, t, this.sprite, trees, canopy, z, this.vegGrid());
     return r.trees + r.blobs;
+  }
+
+  /**
+   * THE CITY'S OWN SILHOUETTE, BLURRED, OFFSET DOWN THE KEY LIGHT, AND LAID
+   * UNDER THE CITY.
+   *
+   * `buildings.ts` §AO carries every constant and the one architectural
+   * deviation. What this adds is the silhouette the reference gets for free
+   * from a layer it has already drawn: the roof rings of the visible set and
+   * the massing blocks under them, accumulated into ONE `Path2D` and filled
+   * once into a half-resolution buffer.
+   *
+   * ONE PATH AND ONE FILL, and the reason is not speed alone: the tint is
+   * applied with `source-in` over the whole buffer, so what matters is the
+   * union of the silhouettes and not their count — and a union costs nothing
+   * extra in a single nonzero fill, which is the same argument
+   * `addContactShadow` already makes about overlapping shadows.
+   *
+   * THE MASSING BLOCKS ARE IN IT. Below `LOD_Z1` most of the city is drawn as
+   * block massing and not as footprints, and an occlusion under a city that is
+   * half absent from its own mask is a different picture at every zoom the
+   * dissolve covers. The mask is what will be DRAWN, both tiers, which is what
+   * the reference's `cityL` holds.
+   */
+  private paintAO(
+    f: Frame,
+    t: TerrainField,
+    view: CityView,
+    z: number,
+    step: number,
+    wB: number,
+    year: number | undefined,
+  ): void {
+    if (AO_ALPHA <= 0.001) return;
+    const { ctx, W, H } = f;
+    const ss = AO.SS;
+    const bw = Math.max(1, Math.ceil(W * f.dpr * ss));
+    const bh = Math.max(1, Math.ceil(H * f.dpr * ss));
+    let buf = this.aoCv;
+    if (!buf || buf.width !== bw || buf.height !== bh) {
+      buf = new OffscreenCanvas(bw, bh);
+      this.aoCv = buf;
+    }
+    const g = (buf as OffscreenCanvas).getContext("2d") as
+      | OffscreenCanvasRenderingContext2D
+      | null;
+    if (!g) return;
+    g.setTransform(1, 0, 0, 1, 0, 0);
+    g.clearRect(0, 0, bw, bh);
+    g.setTransform(f.dpr * ss, 0, 0, f.dpr * ss, 0, 0);
+
+    const p = new Path2D();
+    let any = false;
+    const cf = f.proj.coeffs();
+    const zexb = f.proj.zexb;
+    const sc = f.cam.scale;
+    const ccx = f.cam.cx, ccy = f.cam.cy, W2 = W / 2, H2 = H / 2;
+    const ring = (
+      xs: ArrayLike<number>, ys: ArrayLike<number>, o: number, n: number,
+      zg: number, hM: number,
+    ): void => {
+      for (let k = 0; k < n; k++) {
+        const wx = xs[o + k], wy = ys[o + k];
+        const px = cf.ax * wx + cf.ay * wy;
+        const py = cf.bx * wx + cf.by * wy + zg * f.proj.zex + hM * zexb;
+        const X = (px - ccx) * sc + W2;
+        const Y = H2 - (py - ccy) * sc;
+        if (k) p.lineTo(X, Y); else p.moveTo(X, Y);
+      }
+      p.closePath();
+      any = true;
+    };
+
+    // the footprint tier, exactly the set `paintFootprints` will draw
+    const mg = this.massing, urnd = this.urnd;
+    if (mg && urnd && z >= 1.55) {
+      const iy = year === undefined ? SCRUB_MAX : Math.floor(year);
+      const clock = year !== undefined;
+      const kx = cf.ax ? Math.hypot(cf.ax, cf.ay) * sc : 0;
+      const tables: BldTable[] = [];
+      if (this.solo) tables.push(this.solo);
+      for (const c of this.data.visible("bldg", view)) {
+        if (c.key === "base/solo") continue;
+        const b = this.bldFor(c);
+        if (b) tables.push(b);
+      }
+      for (const tb of tables) {
+        for (let i = 0; i < tb.n; i++) {
+          if (!drawnAsBuilding(urnd, mg, tb.gid[i], wB)) continue;
+          const nv = tb.off[i + 1] - tb.off[i];
+          if (nv < 3) continue;
+          if (clock && (tb.u[i] & FLAG_NOYEAR) === 0 && iy < 1849 + tb.yr[i]) continue;
+          const hM = roofHeight(tb.h[i], tb.hf[i]);
+          const cxs = (cf.ax * tb.cx[i] + cf.ay * tb.cy[i] - ccx) * sc + W2;
+          if (cxs < -120 * kx || cxs > W + 120 * kx) continue;
+          ring(tb.vxw, tb.vyw, tb.off[i], nv,
+               t.elevM(tb.cx[i], tb.cy[i]), hM);
+        }
+      }
+    }
+    // and the massing tier under it
+    const bl = this.blocks, row = this.massRow;
+    if (bl && row && 1 - wB > 0.004) {
+      for (let b = 0; b < bl.n; b++) {
+        if (row.cov[b] <= 0) continue;
+        const r = blockRing(bl, b, BLOCK_INSET_M);
+        if (!r.length) continue;
+        const zg = t.elevM(bl.cx[b], bl.cy[b]);
+        for (let k = 0; k < r.length; k++) {
+          const px = cf.ax * r[k][0] + cf.ay * r[k][1];
+          const py = cf.bx * r[k][0] + cf.by * r[k][1] + zg * f.proj.zex
+                   + row.hgt[b] * zexb;
+          const X = (px - ccx) * sc + W2;
+          const Y = H2 - (py - ccy) * sc;
+          if (k) p.lineTo(X, Y); else p.moveTo(X, Y);
+        }
+        p.closePath();
+        any = true;
+      }
+    }
+    if (!any) return;
+
+    const rr = AO.R[Math.min(step, AO.R.length - 1)] ?? 2.4;
+    g.globalCompositeOperation = "source-over";
+    g.filter = `blur(${rr}px)`;
+    g.fillStyle = "#000";
+    g.fill(p);
+    g.filter = "none";
+    /* the tint, `source-in`: what is in the buffer is a blurred coverage MASK,
+       and this replaces its colour while keeping its alpha — so the AO is one
+       declared colour at the mask's own softness, exactly as `part4.html` L74
+       does it. */
+    g.globalCompositeOperation = "source-in";
+    g.fillStyle = AO.COL;
+    g.fillRect(0, 0, W, H);
+    g.globalCompositeOperation = "source-over";
+
+    // and under the city, offset down-left along the key light
+    const ox = AO.OX * rr, oy = AO.OY * rr;
+    const sa = ctx.globalAlpha;
+    ctx.globalAlpha = sa * AO_ALPHA;
+    ctx.drawImage(buf as CanvasImageSource, 0, 0, bw, bh, ox, oy, W, H);
+    ctx.globalAlpha = sa;
   }
 
   private paintMassing(
