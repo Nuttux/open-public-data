@@ -194,63 +194,11 @@ export interface BlockContext {
 }
 
 /**
- * THE STRINGS THIS BLOCK ADDS, and why they are declared here.
- *
- * Every other string on this panel is a `us.sf.thecity.panel.*` key in both
- * `en.ts` and `fr.ts` — B4 put them there and deleted the fallback map that
- * used to stand in this file. These twenty-two are new and `en.ts`/`fr.ts` are
- * owned elsewhere tonight, and `useT` returns THE KEY ITSELF when a key is
- * missing, so hardcoding through `t()` alone would render `us.sf.thecity.panel.
- * now_head` into the margin. So the English is declared here and `tx()` prefers
- * a real dictionary entry over it: the moment the keys land in `en.ts` they take
- * over with no change to this file, and this map can then be deleted.
- * FICHE.md §10 carries them ready to paste.
- */
-const EN_NOW: Record<string, string> = {
-  "us.sf.thecity.panel.now_head": "On the ground now",
-  "us.sf.thecity.panel.now_residents": "Residents",
-  "us.sf.thecity.panel.now_homes": "Homes",
-  "us.sf.thecity.panel.now_use": "Mostly",
-  "us.sf.thecity.panel.now_value": "Assessed at",
-  "us.sf.thecity.panel.now_src":
-    "The {y} assessor roll, which names this block in a row of its own.",
-  "us.sf.thecity.panel.now_src_pop":
-    "Residents and homes are the {c} Census, counted on its own block and carried onto this one.",
-  "us.sf.thecity.panel.now_no_pop":
-    "No Census block's parcels sit here, so no count of people or homes is shown.",
-  "us.sf.thecity.panel.now_zero":
-    "It carries no value here, as it does on {n} of the city's blocks.",
-  "us.sf.thecity.panel.now_roll": "See the roll",
-  "us.sf.thecity.panel.now_census": "See the Census",
-  "us.sf.thecity.panel.money_head": "Public money",
-  "us.sf.thecity.panel.money_stands": "{name} stands here — {sqft} sq ft of {place}.",
-  "us.sf.thecity.panel.money_stands_plain": "{place} stands here.",
-  "us.sf.thecity.panel.money_stands_same": "{place} stands here — {sqft} sq ft of it.",
-  "us.sf.thecity.panel.money_spans":
-    "It stands on {n} blocks, and every figure below is the whole of it.",
-  "us.sf.thecity.panel.money_contracts": "Contracts",
-  "us.sf.thecity.panel.money_agreed": "Agreed",
-  "us.sf.thecity.panel.money_paid": "Paid",
-  "us.sf.thecity.panel.money_payees": "Vendors paid",
-  "us.sf.thecity.panel.money_ledgers":
-    "Contracts and payments are different city files and are not added together.",
-  "us.sf.thecity.panel.money_over":
-    "Agreed and paid are two different city files that the city has not reconciled here, so paid standing above agreed is not an overrun.",
-  "us.sf.thecity.panel.money_none":
-    "No city ledger names this place, so no figure is shown for it.",
-  "us.sf.thecity.panel.money_link": "The full record for {place}",
-  "us.sf.thecity.panel.money_cover":
-    "A published city place resolves to {n} of the city's {all} blocks; {m} of those carry a figure.",
-};
-
-/** the dictionary first, the English above only where the key is not in it yet */
-function tx(t: (k: string) => string, key: string): string {
-  const v = t(key);
-  return v === key ? (EN_NOW[key] ?? key) : v;
-}
-
-/**
  * WHAT IS HERE NOW — four rows and a source line, in the margin's own idiom.
+ *
+ * All twenty-five `us.sf.thecity.panel.{now,money}_*` keys are in `en.ts` and
+ * `fr.ts` (68082652), so this calls `t()` like the rest of the panel; the local
+ * `EN_NOW` fallback that stood in for them while they landed is gone.
  *
  * `fx-city-fact-row` is the label/value row `CityMap` already draws in the
  * ledger above this panel, reused verbatim: nothing new is styled, and the
@@ -273,58 +221,58 @@ function NowRows({
   return (
     <>
       <div className="fx-city-ledger-head fx-block-sec">
-        {tx(t, "us.sf.thecity.panel.now_head")}
+        {t("us.sf.thecity.panel.now_head")}
       </div>
       <dl className="fx-city-ledger-facts">
         {now.residents !== null ? (
           <div className="fx-city-fact-row">
-            <dt>{tx(t, "us.sf.thecity.panel.now_residents")}</dt>
+            <dt>{t("us.sf.thecity.panel.now_residents")}</dt>
             <dd>{nfInt.format(now.residents)}</dd>
           </div>
         ) : null}
         {now.homes !== null ? (
           <div className="fx-city-fact-row">
-            <dt>{tx(t, "us.sf.thecity.panel.now_homes")}</dt>
+            <dt>{t("us.sf.thecity.panel.now_homes")}</dt>
             <dd>{nfInt.format(now.homes)}</dd>
           </div>
         ) : null}
         {now.use ? (
           <div className="fx-city-fact-row">
-            <dt>{tx(t, "us.sf.thecity.panel.now_use")}</dt>
+            <dt>{t("us.sf.thecity.panel.now_use")}</dt>
             <dd>{now.use}</dd>
           </div>
         ) : null}
         <div className="fx-city-fact-row">
-          <dt>{tx(t, "us.sf.thecity.panel.now_value")}</dt>
+          <dt>{t("us.sf.thecity.panel.now_value")}</dt>
           <dd>{usdShort(now.valueUsd)}</dd>
         </div>
       </dl>
       <p className="fx-block-hint" style={{ marginTop: 7 }}>
-        {tx(t, "us.sf.thecity.panel.now_src").replace("{y}", String(now.rollYear))}{" "}
+        {t("us.sf.thecity.panel.now_src").replace("{y}", String(now.rollYear))}{" "}
         {/* 480 of 5,401 blocks are valued at nothing — the roll carries no
             figure on the ground the city, the state and the federal government
             own, and City Hall's own parcel is one of them. Alone, "$0" reads
             as a hole in the data; with the count beside it, it reads as what
             the roll says. */}
         {now.valueUsd === 0 && zeroBlocks > 0
-          ? tx(t, "us.sf.thecity.panel.now_zero").replace(
+          ? t("us.sf.thecity.panel.now_zero").replace(
               "{n}",
               nfInt.format(zeroBlocks),
             ) + " "
           : ""}
         {now.residents !== null
-          ? tx(t, "us.sf.thecity.panel.now_src_pop").replace(
+          ? t("us.sf.thecity.panel.now_src_pop").replace(
               "{c}",
               String(now.censusYear),
             )
-          : tx(t, "us.sf.thecity.panel.now_no_pop")}{" "}
+          : t("us.sf.thecity.panel.now_no_pop")}{" "}
         <a
           className="fx-block-jump"
           href="https://data.sfgov.org/d/wv5m-vpq2"
           target="_blank"
           rel="noopener noreferrer"
         >
-          {tx(t, "us.sf.thecity.panel.now_roll")}
+          {t("us.sf.thecity.panel.now_roll")}
         </a>
         {now.residents !== null ? (
           <>
@@ -335,7 +283,7 @@ function NowRows({
               target="_blank"
               rel="noopener noreferrer"
             >
-              {tx(t, "us.sf.thecity.panel.now_census")}
+              {t("us.sf.thecity.panel.now_census")}
             </a>
           </>
         ) : null}
@@ -379,8 +327,7 @@ function PlaceMoney({
     <div style={{ marginTop: 10 }}>
       <p className="fx-block-lead" style={{ marginTop: 0 }}>
         {here && here.name && here.sqft > 0
-          ? tx(
-              t,
+          ? t(
               sameName
                 ? "us.sf.thecity.panel.money_stands_same"
                 : "us.sf.thecity.panel.money_stands",
@@ -388,13 +335,13 @@ function PlaceMoney({
               .replace("{name}", here.name)
               .replace("{sqft}", nfInt.format(here.sqft))
               .replace("{place}", place.name)
-          : tx(t, "us.sf.thecity.panel.money_stands_plain").replace(
+          : t("us.sf.thecity.panel.money_stands_plain").replace(
               "{place}",
               place.name,
             )}
         {place.n_blocks > 1
           ? " " +
-            tx(t, "us.sf.thecity.panel.money_spans").replace(
+            t("us.sf.thecity.panel.money_spans").replace(
               "{n}",
               String(place.n_blocks),
             )
@@ -405,15 +352,15 @@ function PlaceMoney({
           {place.n_contracts > 0 ? (
             <>
               <div className="fx-city-fact-row">
-                <dt>{tx(t, "us.sf.thecity.panel.money_contracts")}</dt>
+                <dt>{t("us.sf.thecity.panel.money_contracts")}</dt>
                 <dd>{nfInt.format(place.n_contracts)}</dd>
               </div>
               <div className="fx-city-fact-row">
-                <dt>{tx(t, "us.sf.thecity.panel.money_agreed")}</dt>
+                <dt>{t("us.sf.thecity.panel.money_agreed")}</dt>
                 <dd>{usdShort(place.agreed_usd)}</dd>
               </div>
               <div className="fx-city-fact-row">
-                <dt>{tx(t, "us.sf.thecity.panel.money_paid")}</dt>
+                <dt>{t("us.sf.thecity.panel.money_paid")}</dt>
                 <dd>{usdShort(place.paid_usd)}</dd>
               </div>
             </>
@@ -421,7 +368,7 @@ function PlaceMoney({
           {place.n_payees > 0 ? (
             <div className="fx-city-fact-row">
               <dt>
-                {tx(t, "us.sf.thecity.panel.money_payees")}
+                {t("us.sf.thecity.panel.money_payees")}
                 {` (${nfInt.format(place.n_payees)})`}
               </dt>
               <dd>{usdShort(place.payees_paid_usd)}</dd>
@@ -436,7 +383,7 @@ function PlaceMoney({
           that would be a headline and is not in the data. */}
       {money && place.paid_usd > place.agreed_usd && place.n_contracts > 0 ? (
         <p className="fx-block-hint" style={{ marginTop: 6 }}>
-          {tx(t, "us.sf.thecity.panel.money_over")}
+          {t("us.sf.thecity.panel.money_over")}
         </p>
       ) : null}
       {/* The "do not add these" line is only earned when both ledgers are on
@@ -444,12 +391,12 @@ function PlaceMoney({
           nothing to add and the sentence is just another line of grey. */}
       <p className="fx-block-hint" style={{ marginTop: 7 }}>
         {!money
-          ? tx(t, "us.sf.thecity.panel.money_none") + " "
+          ? t("us.sf.thecity.panel.money_none") + " "
           : place.n_contracts > 0 && place.n_payees > 0
-            ? tx(t, "us.sf.thecity.panel.money_ledgers") + " "
+            ? t("us.sf.thecity.panel.money_ledgers") + " "
             : ""}
         <a className="fx-block-jump" href={href}>
-          {tx(t, "us.sf.thecity.panel.money_link").replace("{place}", place.name)}
+          {t("us.sf.thecity.panel.money_link").replace("{place}", place.name)}
         </a>
       </p>
     </div>
@@ -774,7 +721,7 @@ export default function CityBlockPanel({
         {places.length > 0 && money ? (
           <>
             <div className="fx-city-ledger-head fx-block-sec">
-              {tx(t, "us.sf.thecity.panel.money_head")}
+              {t("us.sf.thecity.panel.money_head")}
             </div>
             {places.map((pl) => (
               <PlaceMoney
@@ -789,7 +736,7 @@ export default function CityBlockPanel({
                 able to tell "the city holds nothing here" from "this join does
                 not reach here", and only a printed ratio does that. */}
             <p className="fx-block-hint" style={{ marginTop: 8 }}>
-              {tx(t, "us.sf.thecity.panel.money_cover")
+              {t("us.sf.thecity.panel.money_cover")
                 .replace("{n}", nfInt.format(money.coverage.blocks_with_a_place))
                 .replace("{all}", nfInt.format(money.coverage.blocks_total))
                 .replace(

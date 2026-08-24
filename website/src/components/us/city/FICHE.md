@@ -674,7 +674,7 @@ same rows crushed into the 252 px desktop margin.
 
 Recorded, not edited.
 
-### `pipeline/seeds/` — the place↔facility crosswalk has three defects
+### ~~`pipeline/seeds/` — the place↔facility crosswalk has three defects~~ **CLOSED, see §11**
 
 Every one is measured above in §9b, and each is a wrong row in
 `seed_us_sf_place_facilities`, not a derivation error downstream:
@@ -691,7 +691,7 @@ Every one is measured above in §9b, and each is a wrong row in
    carry `9900070`** — the Port's single APN. Not a defect in the seed so much as in the source
    register, but anything joining on APN has to know it.
 
-### `src/i18n/en.ts` and `fr.ts` — twenty-three keys to add
+### ~~`src/i18n/en.ts` and `fr.ts` — twenty-three keys to add~~ **CLOSED: landed in 68082652, twenty-five of them; `EN_NOW` and `tx()` are deleted and the panel calls `t()`**
 
 The two new sections read them through a local `tx()` that prefers a real dictionary entry and
 falls back to the English declared in `CityBlockPanel.tsx` (`EN_NOW`). `useT` returns THE KEY
@@ -770,3 +770,124 @@ state, verified field by field — and **history was deliberately not rewritten*
 amend or a rebase on a branch two other agents are actively committing to would have destroyed
 their work to tidy a message. The message this diff should have carried is in the empty commit
 that follows it, and the whole of the reasoning is §9 and §10 above.
+
+
+---
+
+## 11. Block F1, round two — the seed fixed at source, and the fallback deleted
+
+Three follow-ups from the coordinator, all closed.
+
+### a. The keys landed, so the fallback is gone
+
+All twenty-five `us.sf.thecity.panel.{now,money}_*` keys are in `en.ts` and `fr.ts`
+(`68082652`). `EN_NOW` and `tx()` are deleted and the panel calls `t()` like every other
+string on it. **Verified on screen, not assumed**: `f1shot.py` prints the panel's `innerText`,
+and grepping four rendered fiches (3724, 6745, 0787, 0001) for `us.sf.` or `thecity.panel`
+returns **0**, with 0 page errors.
+
+### b. The seed, fixed at source — and the defect no guard could have caught
+
+The crosswalk is `pipeline/seeds/countries/us/seed_us_sf_place_facilities.csv`. Its full review
+is in the sidecar beside it, `seed_us_sf_place_facilities.NOTES.md` (a dbt seed is a CSV and a
+CSV cannot hold a comment; dbt reads only `*.csv`, so the `.md` is inert). **Six rows removed,
+three moved, one promoted to primary. 243 rows → 240.**
+
+**The thing worth knowing.** §9b recorded `glen-park-branch-library` as *"resolves to block 6745,
+4.3 km from its own published point"*. That was the wrong way round, and the truth is worse:
+the crosswalk had made the **Haight's Park Branch Library** (1833 Page St) the place's *primary*
+facility, so the place's own published point was in the Haight too. The block its APN named and
+the point R3 checks it against **agreed with each other, and both were wrong** — so R1, R2 and
+R3 all passed it, and the shipped `block-money.json` had Glen Park Branch Library on **block
+1229, in Haight Ashbury**. R3 was dropping the *correct* block, 6745, as the outlier.
+
+**A downstream guard cannot catch a self-consistent defect.** That is the whole argument for
+fixing the seed rather than guarding harder, and it is why the coordinator was right to send it
+back. Both libraries had swapped a facility, each way:
+
+| place | facility | was |
+|---|---|---|
+| `glen-park-branch-library` | 1228 Park Branch Library, 1833 PAGE ST | **primary**, 4,369 m |
+| `glen-park-branch-library` | 808 Glen Park Branch Library, 2825 DIAMOND ST | not primary, 77 m |
+| `park-branch-library` | 808 Glen Park Branch Library | not primary |
+| `park-branch-library` | 1228 Park Branch Library | primary |
+
+Moscone's four Marina rows (2049, 1143, 1142, 1138 at 1800 Chestnut St, 3,392–3,559 m) were
+**moved to `moscone-rec-center`** rather than deleted — they are that campus's own buildings and
+2049 was already its primary. Their `match_method` is **`review`**, not `name`: *"Moscone Rec
+Center"* does not phrase-match *"Moscone Bathrooms"*, and claiming a name match that did not
+happen would be worse than the row it replaces. `distance_m` is recomputed from the register's
+own points: **21 m, 160 m, 162 m**.
+
+**Both root causes are one alias apiece, upstream in `sf_place_candidates.json`** — the bare
+alias `"Moscone"`, and `"Park Branch Library"`, which is another published place's entire name.
+That file is not F1's. **Until those two aliases go, re-running `build_sf_place_facilities.py`
+reintroduces all six rows.** The rule worth adding to the builder is in the sidecar §4: *an
+alias that is another candidate place's whole name is not an alias.*
+
+### c. The two register defects stay guarded, and the file says so
+
+`1263011` was catalogued in §9b as a seed defect. **Checked against the register, it is not one.**
+`nc68-ngbr` itself publishes `1263011` — a real parcel at 510 Frederick Street, Kezar's — as the
+`block_lot` of the Conservatory of Flowers (100 JFK Dr), the Japanese Tea Garden Giftshop (75
+Hagiwara) and the Golden Gate Park Senior Center (6101 Fulton). Four addresses, one APN: the same
+pathology as the Port's `9900070`, one register down. **The place↔facility matches are all
+correct; the APN is nominal.** Correcting it in the seed would mean writing an APN the City has
+not published, so both stay guarded — R1 for the Port, R3 for the park — and the sidecar §2 says
+why, beside the seed a future reader will open first.
+
+### d. Before and after, measured
+
+`--check-seed` is new: it replays the place→block join **twice**, from the seed and from the
+`_facilities.json` export the site ships, and prints what each guard drops on both. It needs no
+BigQuery — the register is cached by `--fetch`.
+
+```
+                          EXPORT as shipped      SEED as fixed
+R1 bucket                       7                     7      ← the Port, by design
+R2 out of reach                 0                     0
+R3 point disagrees with APN     9                     7
+```
+
+**R3 goes 9 → 7 and the two that go are exactly the two seed defects**: `moscone-center/0469`
+(3,360 m) and `glen-park-branch-library/6745` (4,295 m). The seven that remain are the three
+Golden Gate Park nominal-APN rows, and four that are **not defects of anything** —
+
+- **`de-young-museum/1700`, 1,111 m.** The seed is right: one facility, `block_lot 1700001`,
+  **14 m** from the place's own point. Block 1700 is ONE 96-acre parcel and the museum is 1.1 km
+  from its published centroid. **Follow-up 3's answer: the seed fix does not recover it, and the
+  trade stands as stated.**
+- **`lake-merced/7283`, 710 m** — same shape, four facilities all on one lake-sized parcel.
+- **`pier-96/4502A`, 814 m** — recoverable, but only by changing which facility is primary, which
+  is a judgement about which building *is* the place and moves `primary_address` on the fiche.
+  Recorded in the sidecar §3, not changed.
+- **`sffd-division-of-training/3594`, 8,576 m** — the register genuinely calls two sites 8 km
+  apart *Fire Division of Training*, and the Treasure Island one (primary, 569 m) carries **no
+  `block_lot` at all**. Not a matching error; the place resolving to no block is correct.
+
+**R1 will never reach zero and should not.** The Port's catch-all is the source register's
+defect, and a guard is the honest answer to a register that is wrong about itself.
+
+### e. The build now reads the seed, so the shipped file is right today
+
+`export_sf_place_facilities.py` reads the **prod** mart, and `profiles.yml` says in its own words
+never to run `dbt --target prod` from a developer's machine. So a seed fix cannot reach
+`_facilities.json` from here; CI rebuilds it.
+
+Leaving it there would have meant shipping a panel that puts Glen Park Branch Library in the
+Haight until CI next runs. So `build_block_facts.py` now reads the **crosswalk from the seed**,
+joined onto the register's own point per facility — the seed is *upstream* of the export, it is
+the artefact the pipeline calls its source of truth, and reading it is one dependency shorter.
+`crosswalk_source` in `block-money.json` says so. The two converge when CI rebuilds the mart, and
+`--check-seed` measures the gap until then.
+
+**What changed in the shipped file:** `block-money.json` 26,551 → 26,804 bytes. Glen Park Branch
+Library moves from block **1229 (Haight Ashbury)** to **6745 (Glen Park)** — the map's own
+published hood for 6745 is *Glen Park*, which is an independent confirmation. Moscone stays on
+3723 / 3724 / 3734 / 3735. **Coverage is unchanged at 66 blocks and 30 with a figure**: one block
+was swapped for another, not added.
+
+### f. State
+
+Typecheck clean, eslint clean on both components, **392 tests green** (up from 391 — one arrived
+from another agent; F1 added none). Screenshots `f1-v7*`.

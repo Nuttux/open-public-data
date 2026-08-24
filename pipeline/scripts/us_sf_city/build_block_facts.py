@@ -49,6 +49,7 @@ convention `us_sf_places/fetch_places.py` set.
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import pathlib
@@ -65,6 +66,8 @@ CACHE = HERE / "cache_facts"
 REPO = HERE.parent.parent.parent
 WEB = REPO / "website" / "public" / "data" / "us" / "sf"
 OUT = WEB / "city" / "blocks"
+SEED_CSV = (REPO / "pipeline" / "seeds" / "countries" / "us"
+            / "seed_us_sf_place_facilities.csv")
 
 ROLL_YEAR = 2025
 UA = {"User-Agent": "qipu-sf-city/1.0 (open data pipeline)"}
@@ -256,7 +259,25 @@ def fetch(refresh: bool) -> None:
             "acdm-wktn active parcels, published centroid only",
         )
 
-    # 4. the Census's own block rings, with the count on them.
+    # 4. the City Facilities register itself — facility_id, its own APN and its
+    #    own point. `_facilities.json` is a BigQuery export of the reviewed
+    #    crosswalk joined onto exactly these columns, and `--check-seed` needs
+    #    them to replay that join from the seed CSV without a dbt run.
+    if need("city_facilities.json"):
+        print("  City Facilities register")
+        rows = _page(
+            "nc68-ngbr",
+            {
+                "select": "facility_id,common_name,address,block_lot,latitude,longitude,gross_sq_ft",
+                "order": "facility_id",
+            },
+        )
+        blob = json.dumps(rows).encode()
+        _write("city_facilities.json", blob,
+               _soql("nc68-ngbr", {"select": "facility_id,block_lot,latitude,longitude"}),
+               len(rows), "nc68-ngbr City Facilities, identity + point per facility")
+
+    # 5. the Census's own block rings, with the count on them.
     if need("census_blocks.json"):
         print("  2020 census blocks (TIGERweb)")
         q = urllib.parse.urlencode(
@@ -582,41 +603,71 @@ def build() -> None:
 
     PL = WEB / "places"
     pub = {q["slug"]: q for q in json.load(open(PL / "index.json"))["places"]}
-    fac = json.load(open(PL / "_facilities.json"))["places"]
+
+    # ── THE CROSSWALK IS READ FROM THE SEED, NOT FROM THE EXPORT ────────────
+    # `places/_facilities.json` is a BigQuery export of `seed_us_sf_place_
+    # facilities.csv` joined onto the register. The seed is UPSTREAM of it, it
+    # is the reviewed artefact the pipeline calls its source of truth, and
+    # `export_sf_place_facilities.py` reads the PROD mart, which `profiles.yml`
+    # forbids rebuilding from a developer's machine. Reading the seed is
+    # therefore both more correct and one dependency shorter.
+    #
+    # It also fixes something no guard could reach. `glen-park-branch-library`
+    # was resolving to block **1229, in the Haight, 4.3 km from Glen Park**, and
+    # R1/R2/R3 all passed it — because the defect was SELF-CONSISTENT: the
+    # crosswalk had made the Haight's *Park Branch Library* the place's primary
+    # facility, so the place's own published point was in the Haight too, and
+    # R3 compares the point to the block. The block agreed with the point
+    # because both were wrong. A downstream guard cannot catch that; only the
+    # seed can, and the seed now does.
+    #
+    # `--check-seed` prints the join from BOTH sources side by side, so the
+    # divergence between this file and the shipped export is measured rather
+    # than assumed, and it closes on its own the next time CI rebuilds the mart.
+    reg = {}
+    for r in json.load(open(CACHE / "city_facilities.json")):
+        try:
+            reg[str(int(_f(r["facility_id"])))] = r
+        except (TypeError, ValueError, KeyError):
+            continue
+    crosswalk: dict[str, dict] = defaultdict(
+        lambda: {"lat": None, "lon": None, "on": defaultdict(list)}
+    )
+    with open(SEED_CSV, newline="") as fh:
+        for r in csv.DictReader(fh):
+            slug = r["place_slug"]
+            if slug not in pub:
+                continue
+            c = crosswalk[slug]
+            m = APN.match((r["block_lot"] or "").strip())
+            if m and m.group(1) in known:
+                c["on"][m.group(1)].append(
+                    {"name": r["common_name"], "sqft": int(_f(r["gross_sq_ft"]))}
+                )
+            if r["is_primary"] == "true":
+                g = reg.get(r["facility_id"])
+                if g and g.get("latitude"):
+                    c["lat"] = _f(g["latitude"])
+                    c["lon"] = _f(g["longitude"])
+
     per: dict[str, list] = defaultdict(list)
     unjoined: list[str] = []
     dropped_far: list[str] = []
     dropped_bucket: list[str] = []
     dropped_point: list[str] = []
     for slug, meta in sorted(pub.items()):
-        f = fac.get(slug) or {}
-        # every facility the crosswalk gives this place, on the block its own
-        # published APN names
-        on: dict[str, list] = defaultdict(list)
-        for x in f.get("facilities") or []:
-            m = APN.match((x.get("block_lot") or "").strip())
-            if not m or m.group(1) not in known:
-                continue
-            on[m.group(1)].append(
-                {"name": x.get("common_name"), "sqft": int(_f(x.get("gross_sq_ft")))}
-            )
-        # if the crosswalk gave no facility rows, fall back on the place's own
-        # apn_list, which is the same register read one level up
-        if not on:
-            for a in f.get("apn_list") or []:
-                m = APN.match(a)
-                if m and m.group(1) in known:
-                    on.setdefault(m.group(1), [])
+        c = crosswalk.get(slug)
+        on: dict[str, list] = dict(c["on"]) if c else {}
         for b in list(on):
             if b in buckets:
                 dropped_bucket.append(f"{slug}/{b}")
                 del on[b]
         # R3 — the place's own published point against the block's own parcels
-        plat, plon = f.get("primary_latitude"), f.get("primary_longitude")
-        if plat is not None and plon is not None:
+        if c and c["lat"] is not None:
             for b in list(on):
                 d = min(
-                    (((x - plon) * 88000.0) ** 2 + ((y - plat) * 111000.0) ** 2) ** 0.5
+                    (((x - c["lon"]) * 88000.0) ** 2
+                     + ((y - c["lat"]) * 111000.0) ** 2) ** 0.5
                     for x, y in byb.get(b, [(1e9, 1e9)])
                 )
                 if d > POINT_M:
@@ -649,8 +700,8 @@ def build() -> None:
                 "place_sqft": place_sqft,
                 "n_blocks": len(on),
                 "n_contracts": len(cons),
-                "agreed_usd": round(sum(_f(c.get("agreed_usd")) for c in cons)),
-                "paid_usd": round(sum(_f(c.get("paid_usd")) for c in cons)),
+                "agreed_usd": round(sum(_f(c2.get("agreed_usd")) for c2 in cons)),
+                "paid_usd": round(sum(_f(c2.get("paid_usd")) for c2 in cons)),
                 "n_payees": int(cap.get("n_payees") or 0),
                 "payees_paid_usd": round(_f(cap.get("payees_total_paid"))),
                 "n_documents": int(meta.get("n_documents") or 0),
@@ -693,6 +744,13 @@ def build() -> None:
             "reported on its own."
         ),
         "href": "/us/city/sf/places/place/{slug}",
+        "crosswalk_source": (
+            "pipeline/seeds/countries/us/seed_us_sf_place_facilities.csv, the "
+            "reviewed place-to-facility crosswalk, joined onto nc68-ngbr's own "
+            "point per facility. Read from the SEED rather than from the "
+            "places/_facilities.json export because the seed is upstream of it "
+            "and the export is rebuilt only by CI."
+        ),
         "sources": {k: SOURCES[k] for k in ("places",)},
         "b": {b: rs for b, rs in sorted(per.items())},
     }
@@ -710,15 +768,140 @@ def build() -> None:
           f"{', '.join(unjoined)}")
 
 
+# ── the seed, replayed ────────────────────────────────────────────────────────
+def _block_geometry(known: set[str]):
+    """Per drawn block: its active parcels, their centroid, and their spread."""
+    byb: dict[str, list] = defaultdict(list)
+    for q in json.load(open(CACHE / "parcel_points.json")):
+        b = (q.get("block_num") or "").strip()
+        if b not in known:
+            continue
+        try:
+            byb[b].append((float(q["centroid_longitude"]), float(q["centroid_latitude"])))
+        except (TypeError, ValueError, KeyError):
+            continue
+    cen, spread = {}, {}
+    for b, v in byb.items():
+        cx = sum(x for x, _ in v) / len(v)
+        cy = sum(y for _, y in v) / len(v)
+        cen[b] = (cx, cy)
+        spread[b] = max(
+            ((x - cx) * 88000.0) ** 2 + ((y - cy) * 111000.0) ** 2 for x, y in v
+        ) ** 0.5
+    return byb, cen, spread
+
+
+def _metres(lon0: float, lat0: float, lon1: float, lat1: float) -> float:
+    return (((lon1 - lon0) * 88000.0) ** 2 + ((lat1 - lat0) * 111000.0) ** 2) ** 0.5
+
+
+def _guard(places: dict, byb, cen, spread, known: set[str]):
+    """R1/R2/R3 over {slug: {"lat","lon","fac":[(block, sqft)]}}. Returns drops."""
+    BUCKET_M, REACH_M, POINT_M = 2000.0, 600.0, 500.0
+    buckets = {b for b in known if spread.get(b, float("inf")) > BUCKET_M}
+    d1, d2, d3, kept = [], [], [], {}
+    for slug, p in sorted(places.items()):
+        on: dict[str, int] = defaultdict(int)
+        for b, sqft in p["fac"]:
+            on[b] += sqft
+        for b in list(on):
+            if b in buckets:
+                d1.append(f"{slug}/{b}")
+                del on[b]
+        if p["lat"] is not None:
+            for b in list(on):
+                if b not in byb:
+                    continue
+                d = min(_metres(p["lon"], p["lat"], x, y) for x, y in byb[b])
+                if d > POINT_M:
+                    d3.append(f"{slug}/{b} {round(d)} m")
+                    del on[b]
+        if not on:
+            continue
+        anchor = max(on, key=lambda b: on[b])
+        for b in list(on):
+            if b != anchor and b in cen and anchor in cen:
+                if _metres(*cen[anchor], *cen[b]) > REACH_M:
+                    d2.append(f"{slug}/{b}")
+                    del on[b]
+        kept[slug] = sorted(on)
+    return d1, d2, d3, kept
+
+
+def check_seed() -> None:
+    """Replay the place-to-block join TWICE and print what each guard drops.
+
+    The exporter reads the PROD mart and `profiles.yml` forbids a local
+    `--target prod`, so the fix to `seed_us_sf_place_facilities.csv` cannot
+    reach `_facilities.json` from a developer's machine — CI rebuilds it. This
+    reads BOTH: the export the site ships today, and the fixed seed joined onto
+    the register's own points, so "the guards now drop zero rows" is a measured
+    before-and-after rather than a claim.
+    """
+    known = set(json.load(open(WEB / "city" / "base" / "blocks-id.json"))["id"])
+    byb, cen, spread = _block_geometry(known)
+    reg = {}
+    for r in json.load(open(CACHE / "city_facilities.json")):
+        try:
+            reg[str(int(float(r["facility_id"])))] = r
+        except (TypeError, ValueError, KeyError):
+            continue
+    pub = {q["slug"] for q in json.load(open(WEB / "places" / "index.json"))["places"]}
+
+    # A — what the site ships today
+    fac = json.load(open(WEB / "places" / "_facilities.json"))["places"]
+    now = {}
+    for slug in pub:
+        f = fac.get(slug)
+        if not f:
+            continue
+        rows = []
+        for x in f.get("facilities") or []:
+            m = APN.match((x.get("block_lot") or "").strip())
+            if m and m.group(1) in known:
+                rows.append((m.group(1), int(_f(x.get("gross_sq_ft")))))
+        now[slug] = {"lat": f.get("primary_latitude"),
+                     "lon": f.get("primary_longitude"), "fac": rows}
+
+    # B — the fixed seed, joined onto the register exactly as the mart does
+    seed = defaultdict(lambda: {"lat": None, "lon": None, "fac": []})
+    with open(SEED_CSV, newline="") as fh:
+        for r in csv.DictReader(fh):
+            slug = r["place_slug"]
+            if slug not in pub:
+                continue
+            m = APN.match((r["block_lot"] or "").strip())
+            if m and m.group(1) in known:
+                seed[slug]["fac"].append((m.group(1), int(_f(r["gross_sq_ft"]))))
+            if r["is_primary"] == "true":
+                g = reg.get(r["facility_id"])
+                if g and g.get("latitude"):
+                    seed[slug]["lat"] = float(g["latitude"])
+                    seed[slug]["lon"] = float(g["longitude"])
+
+    for label, places in (("EXPORT as shipped", now), ("SEED as fixed", dict(seed))):
+        d1, d2, d3, kept = _guard(places, byb, cen, spread, known)
+        print(f"\n  ── {label} ──")
+        print(f"  places resolving to a block : {len(kept)} of {len(pub)} published")
+        print(f"  R1 bucket        {len(d1):>2} : {', '.join(sorted(set(d1))) or 'none'}")
+        print(f"  R2 out of reach  {len(d2):>2} : {', '.join(sorted(set(d2))) or 'none'}")
+        print(f"  R3 point/APN     {len(d3):>2} : {', '.join(sorted(set(d3))) or 'none'}")
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--fetch", action="store_true")
     ap.add_argument("--build", action="store_true")
+    ap.add_argument("--check-seed", action="store_true",
+                    help="replay the place-to-block join from the export AND "
+                         "from the seed, and print what each guard drops")
     ap.add_argument("--refresh", action="store_true")
     a = ap.parse_args()
-    if not (a.fetch or a.build):
-        ap.error("one of --fetch or --build")
+    if not (a.fetch or a.build or a.check_seed):
+        ap.error("one of --fetch, --build or --check-seed")
     if a.fetch:
         fetch(a.refresh)
     if a.build:
         build()
+    if a.check_seed:
+        check_seed()

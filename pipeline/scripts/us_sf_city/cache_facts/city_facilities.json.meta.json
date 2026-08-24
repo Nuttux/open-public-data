@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/nc68-ngbr.json?%24select=facility_id%2Cblock_lot%2Clatitude%2Clongitude",
+ "what": "nc68-ngbr City Facilities, identity + point per facility",
+ "bytes": 353122,
+ "rows": 1734,
+ "sha256": "c0912a97a9119757d12d1caf226a102b94d1eae05672adc11d751a0085612bfb",
+ "retrieved_utc": "2026-08-24T13:39:15Z"
+}
