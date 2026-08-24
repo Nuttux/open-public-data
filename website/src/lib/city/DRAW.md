@@ -5732,3 +5732,97 @@ year's phase into `paintMassing`, and repaint only `row.cohort`** — because a
 massing solid is drawn at an alpha equal to its coverage, so repainting the
 whole city's massing twice composites `cov` twice and lands at `1−(1−cov)²`.
 `massAt`'s doc comment already carries the screenshot of that mistake.
+
+---
+
+## 26. Block G1 — the street centrelines had never been drawn, anywhere, in any year
+
+`scene.ts` `paintStreets`
+
+The data agent found it and did not land it. `drawCentrelines` returns on its
+first line when handed no `lines`, and this call site passed none — and reached
+it only after an early `if (!cells.length) return 0` on the SURFACE cells,
+which do not exist below z = 1.75. **4,895 published centrelines, decoded by
+`data.streetLines()` — which had no caller outside its own tests — over a map
+already writing PRESIDIO BLVD and MASON ST as labels with no line under
+either.** Pattern 8 for the seventh time tonight.
+
+### 26.1 The line layer was gated on the SURFACE layer's constant
+
+Two changes, and the second is the one that matters. The first is the eight
+lines of wiring `DATA.md` §15.7 wrote out. The second is that
+`scene.render` dispatched the whole method behind `streetsResolve(cam.scale)`,
+which is the **right of way's** own published rule — the layer is worth
+dispatching when the city's `w_p90` clears `ST_EXT_PX` = 2 px. At the
+whole-city camera that is `25.7 × ST_KPROJ × 0.0467` = **1.47 px against a 2 px
+gate**, so the surface correctly declines and the lines were declining with it.
+
+A centreline is a stroke of fixed pixel width and is legible at every zoom this
+map has. `paintStreets` now draws the lines first and applies `streetsResolve`
+to the surface only — and the cull loop stays behind the gate, which is what
+the gate is for. This method's own doc comment already named the fault two
+paragraphs above the line that committed it: *"a layer that asks another
+layer's constant whether it should draw is not gated, it is coincident."*
+
+### 26.2 Measured before it was turned on, then after
+
+Ink as a share of the stage, from the payload (`.parity/g1lines.py`), at
+`ST_LINE_INK` alpha 0.20:
+
+```
+  camera      band 0    band 1    band 2
+  whole city  1.194 %   1.194 %   1.194 %      (class 0-2 is all there is up here)
+  district    1.035 %   2.093 %   3.365 %
+  block       0.552 %   0.623 %   1.308 %
+```
+
+And the A/B on the shipped page, only the `drawCentrelines` call differing:
+
+| camera | changed | | |
+|---|---|---|---|
+| whole city 2018 | 32,568 px | **1.001 %** | −20.6/ch, **100 % darker** |
+| district, Palace of Fine Arts | 20,630 px | 0.634 % | −16.7/ch, 100 % |
+| district, Presidio | 20,014 px | 0.615 % | −16.6/ch, 100 % |
+| block | 25,480 px | 0.783 % | −15.5/ch, 100 % |
+| street | 10,584 px | 0.325 % | −20.7/ch, 99.8 % |
+| whole city **1906** | 14,690 px | 0.451 % | −24.1/ch, 100 % |
+
+Not one changed pixel got lighter. The predicted 1.194 % of stage at the city
+camera lands as 1.001 % measured, which is the fade doing its job on the
+classes whose right of way has become a surface.
+
+**Where it lands is the point.** The diff mask (`out-g1/dl-G1p-dist-pres.png`)
+is the Presidio and Golden Gate Park and the unbuilt edges, and almost nothing
+in the built grid — because pass 0 fades exactly as the right of way becomes a
+surface. `out-g1/pres-{ln0,ln2}.png`: MASON ST and PRESIDIO BLVD now have a
+road under their labels, and the Presidio has a road network instead of trees.
+
+1906 was checked, because 311 of the drawn features carry no year and the
+encoder's contract draws an undated line in every year. The 1906 whole-city
+frame is `out-g1/G1n-city-1906.ln1half.png` and it is a mostly empty peninsula
+with a faint line network, not a modern road grid over a burned city.
+
+### 26.3 The band gate IS a step, and here is its size — NOT resolved
+
+`ST_CLS_MAX` is `[2, 3, 4]` and `bandOf` is a hard step, so crossing a boundary
+admits a whole street class in one frame. Held-camera, at the district camera,
+band 0 → band 1 adds class 3: **1.057 % of the stage of new dark ink, in one
+frame.** That is a step in the derivative and it will be visible.
+
+It is `part3.html`'s own design, so it is parity rather than a regression
+introduced here — but it is named with its number rather than waved past. **The
+held-scale frame sequence the brief asks for was attempted twice and did not
+complete**: the page was destroyed mid-run by concurrent dev-server recompiles
+both times (`g1band2.py`). The first attempt (`g1band.py`) shot four zoom
+levels either side of each boundary and diffed neighbours, and **that test is
+worthless and is recorded so nobody repeats it**: every pair changed 89–98 %
+because the zoom itself moved, and the crossing pair (96.9 %) sat inside the
+spread of the non-crossing ones (89.3 / 94.4). *A test whose control moves as
+much as its treatment measures nothing.*
+
+### 26.4 And it will not move the histogram
+
+`BUGS.md` §23 has the low/high-frequency split: the district gap is entirely in
+the LOW-frequency image, +11.7 to +13.7 mean, +23.5 in the darkest decile.
+1.0 % of frame at 20 % alpha cannot be that, and this section says so rather
+than banking a real bug fix as a fix for a different problem. See §27.

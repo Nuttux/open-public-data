@@ -1871,8 +1871,7 @@ export class CityScene {
     if (L.parks && this.waterBodies.length) drawWaterBodies(f, t, this.waterBodies);
 
     // 4 ── the streets
-    if (L.streets && this.streetsResolve(cam.scale))
-      st.streets = this.paintStreets(f, t, view, opts.year);
+    if (L.streets) st.streets = this.paintStreets(f, t, view, opts.year, step);
 
     // 4b ── the streets the Board voted, on the year it voted them
     if (this.filmUnderlay) this.filmUnderlay(f);
@@ -2159,12 +2158,8 @@ export class CityScene {
     t: TerrainField,
     view: CityView,
     year: number | undefined,
+    band: number,
   ): number {
-    const cells: StreetCell[] = [];
-    for (const c of this.data.visible("strt", view)) {
-      cells.push(c.fields as unknown as StreetCell);
-    }
-    if (!cells.length) return 0;
     const stats = this.data.manifest.streets as unknown as {
       stats: { w_p50: number; fw_p50: number };
     };
@@ -2172,13 +2167,52 @@ export class CityScene {
       stats.stats.w_p50, stats.stats.w_p50, stats.stats.w_p50,
       stats.stats.w_p50, stats.stats.w_p50, stats.stats.w_p50, stats.stats.w_p50,
     ];
-    drawCentrelines(f, cells, t, {
-      medianW,
-      // a published right of way HAS arrived for every feature in these cells:
-      // the surface and the centreline ship in the same chunk.
-      covered: () => true,
-      band: 0,
-    });
+    /* ── NOT ONE CENTRELINE WAS DRAWN ANYWHERE IN SAN FRANCISCO ────────
+       `drawCentrelines` returns on its first line when it is handed no
+       `lines`, and this call site passed none — and reached it only after an
+       early `if (!cells.length) return 0` on the SURFACE cells, which do not
+       exist below z = 1.75. So the layer was dead at every zoom: 4,895
+       published centrelines decoded by `data.streetLines()`, which had no
+       caller outside its own tests, over a map that was already writing
+       PRESIDIO BLVD and MASON ST as labels with no line under either.
+
+       THE CENTRELINE LAYER STANDS ON ITS OWN and is ordered before the
+       surface, not gated on it: at the whole-city frame there are no surface
+       cells at all, and the line is the only thing that says a street is
+       there. `covered: () => true` is right for the same reason it always
+       was — a right of way and its centreline ship in the same chunk — and
+       `band` is the camera's own, not 0.
+
+       Measured before it was turned on (`.parity/g1lines.py`), ink as a share
+       of the stage: whole city 1.194 %, district 2.093 %, block 1.308 %, at
+       `ST_LINE_INK` alpha 0.20. See DRAW.md §26. */
+    const lines = this.data.streetLines();
+    if (lines.length) {
+      drawCentrelines(f, EMPTY_CELLS, t, {
+        medianW, covered: () => true, band, lines, year,
+      });
+    }
+    /* ── AND THE SURFACE'S GATE IS THE SURFACE'S, AFTER THE LINES ──────
+       `streetsResolve` is the RIGHT OF WAY's own published rule — the layer is
+       worth dispatching when the city's `w_p90` clears `ST_EXT_PX`. It has
+       nothing to say about a centreline, which is a stroke of fixed pixel
+       width and is legible at every zoom this map has. Gating the lines on it
+       is the fault this method's own doc comment names two paragraphs up:
+       *"a layer that asks another layer's constant whether it should draw is
+       not gated, it is coincident."* At the whole-city camera
+       25.7 x ST_KPROJ x 0.0467 = 1.47 px against a 2 px gate, so the surface
+       correctly declines — and the lines, which are 1.194 % of that stage,
+       were declining with it.
+
+       The cull loop stays BEHIND the gate, which is what the gate is for:
+       below it every feature fails `extentW` one at a time and the layer draws
+       nothing for the cost of walking all of them. */
+    if (!this.streetsResolve(f.cam.scale)) return 0;
+    const cells: StreetCell[] = [];
+    for (const c of this.data.visible("strt", view)) {
+      cells.push(c.fields as unknown as StreetCell);
+    }
+    if (!cells.length) return 0;
     const r = drawStreetSurface(f, cells, { year, terrain: t });
     /* ── 1,120 TRAFFIC ISLANDS AND 268 PUBLIC STAIRS, DECODED AND UNDRAWN ──
        `base/street-misc` is on the wire, `data.streetMisc()` decodes it and
@@ -3430,6 +3464,10 @@ export class CityScene {
 /** the storey lines of ONE building, bucketed by the wall's own lambert so
  *  each bucket is one stroke. Four entries, reused across buildings. */
 const stLine: (Path2D | null)[] = [null, null, null, null];
+
+/** `drawCentrelines` takes the surface cells as `_cells` and does not read
+ *  them; the line layer does not depend on the surface having resolved. */
+const EMPTY_CELLS: readonly StreetCell[] = [];
 
 /** four scratch vertex buffers, grown on demand and reused across buildings */
 const RING_BUFS: Float64Array[] = [
