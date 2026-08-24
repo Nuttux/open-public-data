@@ -1731,3 +1731,127 @@ the LiDAR **median** with the second solid rising to the **published** height �
 not prism to the published height with a second solid that has nowhere to go.
 That inverts which number `h` carries for 153 rows and repoints the
 FLAG_PUBHEIGHT alignment proof, so it is a scoped change, not a patch.
+
+---
+
+## 18. The street gate: the mock's own constant is 1.0, and §15.2 drew the
+## wrong conclusion from a right measurement
+
+§15.2 measured the surface gate correctly and then recommended lowering it.
+The recommendation was wrong, and one grep settles it.
+
+### 18.1 The reference ships the same pair production shipped
+
+`gen/part3.html`, the mock — the FLOOR this whole port is judged against:
+
+```
+part3.html:6367   const ST_EXT_PX  = 2.0;
+part3.html:6368   const ST_EXT_PX1 = 4.0;
+part3.html:6376   const ST_SRF_PX  = 1.0;          <-- the reference's own value
+part3.html:6542   let sa = fw[i]*0.1*kp - ST_SRF_PX; if(sa<0)sa=0; if(sa>1)sa=1;
+part3.html:6543   if(sa>0&&sa<0.02)sa=0;    /* a pass that cannot be seen is not built */
+```
+
+`sa = fwM*kp - 1.0` clamped to [0,1] **is** `ramp(fwM*kp, 1.0, 2.0)`. So the
+mock's octave is 1.0 px to 2.0 px, and production's `ST_SRF_PX = 1.0` /
+`ST_SRF_PX1 = 2.0` reproduced it exactly — including the 2 % skip on the next
+line, which `streets.ts` ports verbatim.
+
+**§15.1 said it out loud and then §15.2 contradicted it**: *"The constants are
+identical to the mock's, line for line."* They were. Changing `ST_SRF_PX` to
+0.2 does not close a gap with the reference — **it opens one.**
+
+### 18.2 So the mock is exactly as blank as production is, at every zoom
+
+Measured on the real fit, `cam.base = 0.046665988641253695` at the 1200x678
+canonical stage, and the manifest's own footway percentiles
+(`fw_p10 1.44 / fw_p50 3.16 / fw_p90 4.59` m):
+
+| zoom | step | cam.scale | fw_p50 px | fw_p90 px | mock `sa` | prod `sa` |
+|---|---|---|---|---|---|---|
+| whole city | 0 | 0.0467 | 0.137 | 0.199 | **0** | **0** |
+| district | 1 | 0.1353 | 0.398 | 0.578 | **0** | **0** |
+| block | 2 | 0.3360 | 0.988 | 1.435 | **0** | **0** |
+| street | 3 | 2.0000 | 5.881 | 8.543 | **1** | **1** |
+
+Even the widest tenth of the city's footways is **0.58 px at district** and
+**1.44 px at block**. The mock draws no surface at three of the four presets
+either. *Whatever Daniel remembers seeing in the mock's streets, it is not the
+surface tier at district zoom, because the mock does not draw one.*
+
+### 18.3 What 0.2 / 0.5 actually did, and why it read as slow and blurry
+
+At 0.2/0.5 the octave is 0.3 px wide instead of 1.0, so:
+
+* **district promotes essentially the whole city.** `fw_p50` 0.398 px lands at
+  weight **0.66**, `fw_p90` at **0.93** — a roadway path, a kerb path and a
+  fill for nearly every one of the rights of way on stage.
+* **the mock's own safety valve stops working.** `if (sa > 0 && sa < 0.02)
+  sa = 0` — *"a pass that cannot be seen is not built"* — is calibrated to a
+  1.0-wide octave. On a 0.3-wide one nothing lands in that window: `sa` leaves
+  zero and is immediately large.
+* what it paints at those weights is a translucent wash **a fraction of a
+  pixel wide**. That is not a street with detail on it; it is a low-contrast
+  film over the frame, which is exactly "blurry compared to the mock."
+
+**RESTORED to 1.0 / 2.0.** The failing `draw.test.ts` assertion
+(`expect(ST_SRF_PX).toBe(1.0)`) needs no change and no other agent has to be
+routed: it was pinning the reference's own number and it was right to.
+
+### 18.4 The complaint is still real, and this is where it is NOT
+
+Daniel's "streets have zero detail" stands. What is now excluded, measured:
+
+* **not the constants** — they are the reference's, verified by grep.
+* **not the port** — §15.1's table stands: every mark is published and present.
+* **not the payload** — `strt/*.qc` ships the ROW rings, the carriageway, the
+  kerb bits, 1,120 islands and 268 stairs, and `verify_city_chunks.py` compares
+  all of it element for element.
+
+What is left is §12.2, and it is still true: **the entire centreline layer is
+decoded by nobody.** `scene.paintStreets` calls `drawCentrelines` with no
+`lines` and a hardcoded `band: 0`, so it returns on its first line — all 4,895
+class 0-4 centrelines plus the 846 unimplied. At whole-city, district and block
+zoom the centreline *is* the street, because the surface legitimately cannot be
+drawn at a fifth of a pixel. **Three of five zooms draw a street as one flat
+tone because the layer that is supposed to carry them at those zooms is never
+called** — not because the gate above it is set too high.
+
+That wiring is eight lines in `scene.ts`, it is written out in `DATA.md` 15.7,
+and `scene.ts` is not my file. **It is the single highest-value street change
+available and it belongs to whoever owns `scene.ts`.**
+
+### 18.5 The frame cost, measured both ways — and it did NOT separate
+
+Reported as measured rather than as expected, because it argues against the
+simple story. `.parity/d1fast.py` + `d1probe.js`: `scene.paint()` into a
+buffer the size of the renderer's own `hi` slot, nine repeats after two warm
+ones, and **`getImageData(0,0,1,1)` on the same context inside the timed
+region** — BRIEF 6, because Canvas 2D is deferred and the JS-only number is
+the trap. Each run is a fresh page load, so each has its own module graph and
+the constant really is the one on disk. `cam.base` is asserted at
+0.046665988641253695 before every probe, because a Fast Refresh re-fits the
+stage to 0.0682 and two runs at different bases are not comparable — one run
+was discarded for exactly that.
+
+| district camera, step 1, scale 0.1353 | `ST_SRF_PX` 1.0 | `ST_SRF_PX` 0.2 |
+|---|---|---|
+| ground rebuild, median of 9 | **3,041.6 ms** | **3,042.4 ms** |
+| same region without the flush | 2,983.4 ms | 2,927.3 ms |
+| `lastStats.streets` | 3,862 | 3,862 |
+
+**Two things follow and neither is what I went looking for.**
+
+1. `lastStats.streets` counts `surfaces++`, which sits after the **extent**
+   path is built and is gated on `ea`, not `sa`. It is not a count of the
+   surface tier and must not be read as one. It is identical across the pair
+   because the extent tier is identical across the pair.
+2. **The surface tier did not show up in the frame time at district** — 0.8 ms
+   apart on a 3,042 ms rebuild, well inside the run-to-run spread. Whatever
+   makes a district ground rebuild take three seconds, at this stage size and
+   DPR 2, it is not the roadway and kerb paths.
+
+So the case for restoring 1.0 rests on the reference and on the picture, which
+is where it should rest — **not** on a frame-time claim I could not reproduce.
+The three-second district rebuild is a real number and a large one, it is not
+caused by this constant, and it belongs to whoever owns the frame.

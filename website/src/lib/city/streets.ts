@@ -77,6 +77,49 @@ export const ST_SRF_PX = 1.0;
 /** …and the top of ITS octave: no footway under one pixel, all of it at two. */
 export const ST_SRF_PX1 = 2.0;
 
+/*
+ * LOWERED TO 0.2 / 0.5 ON 2026-08-24 AND RESTORED THE SAME DAY. The
+ * measurement behind the change was right; the conclusion drawn from it was
+ * not, and the whole of it is one grep away in the reference:
+ *
+ *     gen/part3.html:6376   const ST_SRF_PX = 1.0;
+ *     gen/part3.html:6542   let sa = fw[i]*0.1*kp - ST_SRF_PX;
+ *                           if(sa<0)sa=0; if(sa>1)sa=1;
+ *     gen/part3.html:6543   if(sa>0&&sa<0.02)sa=0;
+ *
+ * `sa = fwM*kp - 1.0` clamped to [0,1] IS `ramp(fwM*kp, 1.0, 2.0)`. THIS PAIR
+ * IS THE MOCK'S OWN PAIR. Lowering it does not close a gap with the reference,
+ * it opens one — and the mock is exactly as bare as production at district and
+ * block zoom, because it runs the same gate on the same widths.
+ *
+ * WHAT THE CITY'S FOOTWAYS ACTUALLY MEASURE, on the real fit (cam.base
+ * 0.046665988641253695 at the 1200x678 canonical stage) against the manifest's
+ * own percentiles (fw_p10 1.44 / fw_p50 3.16 / fw_p90 4.59 m):
+ *
+ *     whole city  step 0  scale 0.0467   p50 0.137 px   p90 0.199 px
+ *     district    step 1  scale 0.1353   p50 0.398 px   p90 0.578 px
+ *     block       step 2  scale 0.3360   p50 0.988 px   p90 1.435 px
+ *     street      step 3  scale 2.0000   p50 5.881 px   p90 8.543 px
+ *
+ * The WIDEST TENTH of the city's footways is 0.58 px at district. There is no
+ * setting of this constant that draws a footway there, because there is no
+ * footway there to draw — only a wash the width of a fraction of a cell.
+ *
+ * And at 0.2/0.5 the octave is 0.3 px wide instead of 1.0, which disarms the
+ * line below it: `if (sa > 0 && sa < 0.02) sa = 0` — "a pass that cannot be
+ * seen is not built" — is calibrated to a 1.0-wide octave, and on a 0.3-wide
+ * one nothing ever lands in that window. `sa` leaves zero and is immediately
+ * 0.66 at the median. That is a roadway path, a kerb path and a fill for
+ * nearly every right of way on stage, painting sub-pixel translucency.
+ *
+ * THE COMPLAINT THAT PROMPTED THE CHANGE IS STILL REAL AND IS NOT HERE. At
+ * whole-city, district and block zoom the CENTRELINE is the street — and
+ * `scene.paintStreets` calls `drawCentrelines` with no `lines` and a
+ * hardcoded `band: 0`, so it returns on its first line and all 4,895 class
+ * 0-4 centrelines plus the 846 unimplied are decoded by nobody. See
+ * DATA-TRUTH.md 12.2 and 18.4, and DATA.md 15.7 for the eight lines.
+ */
+
 export const ST_ALPHA = 0.8;
 
 /** a paved carriageway */
