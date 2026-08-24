@@ -628,40 +628,311 @@ export interface BridgeDeck {
   readonly towers: readonly (readonly [number, number])[];
 }
 
+/**
+ * THE BRIDGE WAS A STROKE, AND `part3.html` SHIPS A STRUCTURE.
+ *
+ * BUGS §7: *"a single tapered reddish line running from inside the Marin
+ * raster blob down to the Presidio bluff. There is no deck, no tower, no span
+ * … at the whole-city stop it reads as a scratch on the canvas."* The picture
+ * is `out-c1/c1-ggb-before-{city,district}-crop.png` and it is exactly that.
+ *
+ * **The port dropped `lrBridge`.** `part3.html` §8296–8443 is 150 lines of
+ * reference: the deck as a swept ribbon, its shadow on the water, the approach
+ * piers, the roadway line, the two main cables as parabolas, the suspenders and
+ * the two towers with their cross-braces — with its own comment explaining
+ * every choice. What shipped here was a flat fill of the ring plus two 1 px
+ * strokes. This is that pass, ported, and the reference's own reasoning is
+ * carried with it because it is the record of what is published and what is a
+ * drawing convention:
+ *
+ * · **the cable's sag is not a number.** Its low point is drawn AT the deck at
+ *   mid-span, so the sag is 231.6 m of tower head less 67.1 m of clearance —
+ *   two published figures — and the parabola between them is drawn.
+ * · **the suspenders' spacing IS a convention**, `GGB.suspenderM` = 30 m, and
+ *   the reference says so. So is the tower legs' plan size, `GGB.legM` = 7.0:
+ *   *"at 11 m the two legs of a tower nearly touched and read as one bar; at
+ *   7 m they are two legs with a gap, which is what a tower looks like.
+ *   Neither number is published and both are stated."* Both constants were
+ *   already in `GGB` — decoded, unit-tested, and **read by nothing in `src/`**
+ *   until this block. That is the same class of defect as §16.1, §17.1 and
+ *   §18.8, for the fourth time tonight.
+ * · **the legs stand the published deck width apart**, and each leg's box is
+ *   drawn with its width ACROSS the bridge. The reference records why, and it
+ *   is the whole of why the first cut looked wrong: at ROT 315 the projection
+ *   is axis-aligned, the Golden Gate runs within 9° of north, so *a metre
+ *   along the bridge and a metre of height go the same way on screen.* A leg
+ *   drawn in the (axis, height) plane is a degenerate sliver and the cables
+ *   converge on nothing.
+ * · **the approach piers are drawn only where the DEM puts ground above
+ *   water.** The published ring stops where San Francisco stops, and at its
+ *   southern end the deck is over LAND at 67.1 m with the ground at 29.4 m
+ *   under it: level and unsupported it read as a bug rather than as an extent.
+ *   Nothing is drawn out over the channel, where the record says the deck
+ *   hangs from the cables.
+ *
+ * ── THE ONE THING THIS PORT HAD BACKWARDS, AND THE REFERENCE STATES IT ──
+ * `EVERY HEIGHT HERE IS ABOVE SEA LEVEL, so the whole structure is drawn on
+ * ZEX — the TERRAIN dial — and not on ZEXB. A bridge deck at 67.1 m stands
+ * beside headlands at 60 m, and if the two used different exaggerations the
+ * picture would be a lie about which is higher.` The shipped code drew the
+ * deck with `proj(x, y, deckZ)` (ZEX, right) and the tower tops with
+ * `projb(x, y, 0, towerM)` (ZEXB, wrong) — **one structure on two vertical
+ * exaggerations**, `zexb/zex` = 0.8, so the towers stood 185 m-equivalent over
+ * a deck at 67.1 and the 164.5 m they really rise came out 118. Everything
+ * here is now `proj`.
+ *
+ * ── AND EVERY TIER IS A CUT-OFF, NOT A FLOOR ───────────────────────────
+ * Below `GGB_MIN_PX` of projected deck the whole pass is skipped; below three
+ * pixels of suspender spacing the suspenders are not drawn at all; the roadway
+ * line, the cross-braces and the leg tops each have their own. Nothing is ever
+ * drawn larger than it is.
+ */
+export const GGB_MIN_PX = 8;
+export const GGB_ROAD_PX = 90;
+export const GGB_BRACE_PX = 110;
+export const GGB_LEGTOP_PX = 200;
+export const GGB_SUSP_PX = 3;
+/** the reference's own palette, `part3.html` §8370 and §8425 */
+export const GGB_DECK = "rgba(186,170,146,.95)";
+export const GGB_DECK_INK = "rgba(58,44,20,.40)";
+export const GGB_ROAD_INK = "rgba(58,44,20,.22)";
+export const GGB_SUSP_INK = "rgba(120,74,44,.55)";
+export const GGB_CABLE = "#8d5a34";
+export const GGB_CABLE_LIT = "#a86d40";
+export const GGB_PIER = "rgba(150,132,108,.92)";
+export const GGB_LEG_TOP = "#d1804a";
+export const GGB_LEG_LIT = "#c4703c";
+export const GGB_LEG_SHA = "#95491f";
+export const GGB_BRACE = "rgba(120,58,26,.9)";
+export const GGB_SHADOW = "rgba(72,60,42,0.13)";
+
 export function drawBridge(
   f: Frame,
   deck: BridgeDeck,
   year: number | undefined,
+  elevM?: (x: number, y: number) => number,
 ): number {
   if (year !== undefined && year < GGB.year) return 0;
+  const ring = deck.ring;
+  if (ring.length < 4 || deck.towers.length < 2) return 0;
+
+  /* ── THE AXIS, READ OFF THE PUBLISHED RING ───────────────────────────
+     `LRGG` hands the mock `ax`, `bx`, `L` and `w` ready-made; `base/bridge`
+     ships the ring, so they are derived from it here and from nothing else.
+     The ring is a closed quad: two END edges and two long ones, so the
+     centreline runs between the end edges' midpoints and the half-width is the
+     perpendicular distance from it to a corner. `GGB.deckW` is the ROADWAY and
+     the ring is wider than it; the drawn deck is the ring. */
+  const ax = (ring[0][0] + ring[1][0]) * 0.5;
+  const ay = (ring[0][1] + ring[1][1]) * 0.5;
+  const bx = (ring[2][0] + ring[3][0]) * 0.5;
+  const by = (ring[2][1] + ring[3][1]) * 0.5;
+  const L = Math.hypot(bx - ax, by - ay);
+  if (!(L > 1)) return 0;
+  const ux = (bx - ax) / L;
+  const uy = (by - ay) / L;
+  const nx = -uy;
+  const ny = ux;
+  const half = Math.abs((ring[0][0] - ax) * nx + (ring[0][1] - ay) * ny);
+  if (!(half > 0.5)) return 0;
+
+  const cf = f.proj.coeffs();
+  const k = f.cam.scale;
+  const dpx = L * k * (Math.hypot(cf.ax, cf.ay) || 1);
+  if (dpx < GGB_MIN_PX) return 0;
+
+  const dz = GGB.deckZ;
+  const th = GGB.towerFt * 0.3048;
   const { ctx } = f;
-  let ops = 0;
+  const P = (t: number, lat: number, hh: number): [number, number] => {
+    const pr = f.proj.proj(ax + ux * t * L + nx * lat, ay + uy * t * L + ny * lat, hh);
+    return [sx(f, pr), sy(f, pr)];
+  };
+  /* where the two published towers fall along that centreline.
+     `GGB_TOWER_TOL_M` is the assertion that they fall ON it; this is the same
+     projection, used rather than checked. */
+  const tt = deck.towers
+    .map((t) => ((t[0] - ax) * ux + (t[1] - ay) * uy) / L)
+    .map((t) => Math.max(0, Math.min(1, t)))
+    .sort((p2, q) => p2 - q);
+  const t0 = tt[0];
+  const t1 = tt[tt.length - 1];
+
+  let n = 0;
   ctx.save();
-  // the deck, flat, at the published width
-  const p = new Path2D();
-  for (let i = 0; i < deck.ring.length; i++) {
-    const pr = f.proj.proj(deck.ring[i][0], deck.ring[i][1], GGB.deckZ);
-    if (i) p.lineTo(sx(f, pr), sy(f, pr));
-    else p.moveTo(sx(f, pr), sy(f, pr));
-  }
-  p.closePath();
-  ctx.fillStyle = "#a8603f";
-  ctx.fill(p);
-  ops++;
-  const towerM = GGB.towerFt * 0.3048;
-  for (const t of deck.towers) {
-    const a = f.proj.projb(t[0], t[1], 0, 0);
-    const b = f.proj.projb(t[0], t[1], 0, towerM);
-    ctx.strokeStyle = "#a8603f";
-    ctx.lineWidth = Math.max(1, GGB.deckW * 0.25 * 1.2247 * f.cam.scale);
+  ctx.lineJoin = "round";
+  ctx.lineCap = "round";
+
+  const poly = (pts: readonly [number, number][], fill: string): void => {
     ctx.beginPath();
-    ctx.moveTo(sx(f, a), sy(f, a));
-    ctx.lineTo(sx(f, b), sy(f, b));
-    ctx.stroke();
-    ops++;
+    ctx.moveTo(pts[0][0], pts[0][1]);
+    for (let j = 1; j < pts.length; j++) ctx.lineTo(pts[j][0], pts[j][1]);
+    ctx.closePath();
+    ctx.fillStyle = fill;
+    ctx.fill();
+    n++;
+  };
+
+  /* the shadow the deck throws on the water, from the same upper-right key
+     light as every building — offset down-LEFT, and it is what says the
+     structure is ABOVE the water rather than floating in a void */
+  {
+    const sox = Math.min(30, dz * k * 0.34);
+    const soy = Math.min(22, dz * k * 0.2);
+    const pts: [number, number][] = [];
+    for (let j = 0; j <= 12; j++) pts.push(P(j / 12, -half, 0));
+    for (let j = 12; j >= 0; j--) pts.push(P(j / 12, half, 0));
+    ctx.fillStyle = GGB_SHADOW;
+    ctx.beginPath();
+    ctx.moveTo(pts[0][0] - sox, pts[0][1] + soy);
+    for (let j = 1; j < pts.length; j++) ctx.lineTo(pts[j][0] - sox, pts[j][1] + soy);
+    ctx.closePath();
+    ctx.fill();
+    n++;
   }
+
+  /* the approach, on the spans the NBI record says carry it (APPR_SPANS_046 =
+     13), drawn ONLY where the terrain the page already carries puts the ground
+     above the water. Their spacing and width are a drawing convention. */
+  if (elevM) {
+    const step = 1 / Math.max(6, Math.round(L / 70));
+    for (let t = step; t < t0; t += step) {
+      const g = elevM(ax + ux * t * L, ay + uy * t * L);
+      if (g < 3) continue;
+      const w = 4.5 / L;
+      poly(
+        [P(t - w, -half * 0.55, g), P(t + w, -half * 0.55, g),
+         P(t + w, -half * 0.55, dz), P(t - w, -half * 0.55, dz)],
+        GGB_PIER,
+      );
+    }
+  }
+
+  /* the cable, as a parabola. y(t) over the main span has its low point at the
+     deck at mid-span and its ends at the tower heads; the side spans run from
+     each tower head down to the deck at the published extent. */
+  const cabZ = (t: number): number => {
+    if (t >= t0 && t <= t1) {
+      const m = (t0 + t1) / 2;
+      const hw = (t1 - t0) / 2 || 1e-6;
+      const u = (t - m) / hw;
+      return dz + (th - dz) * u * u;
+    }
+    if (t < t0) {
+      const u = (t0 - t) / (t0 || 1e-6);
+      return th - (th - dz) * u * u;
+    }
+    const u = (t - t1) / (1 - t1 || 1e-6);
+    return th - (th - dz) * u * u;
+  };
+  const NS = Math.max(14, Math.min(56, dpx / 12) | 0);
+
+  /* the deck first, then the cables over it, then the towers last so the cable
+     passes behind the tower head the way a saddle does */
+  {
+    const pts: [number, number][] = [];
+    for (let j = 0; j <= NS; j++) pts.push(P(j / NS, -half, dz));
+    for (let j = NS; j >= 0; j--) pts.push(P(j / NS, half, dz));
+    poly(pts, GGB_DECK);
+    ctx.strokeStyle = GGB_DECK_INK;
+    ctx.lineWidth = Math.max(0.6, Math.min(1.4, dpx / 600));
+    ctx.stroke();
+    n++;
+  }
+
+  /* the roadway: one line down the middle of the deck, which is what turns a
+     ribbon into a road */
+  if (dpx > GGB_ROAD_PX) {
+    ctx.strokeStyle = GGB_ROAD_INK;
+    ctx.lineWidth = Math.max(0.6, dpx / 900);
+    ctx.beginPath();
+    for (let j = 0; j <= NS; j++) {
+      const p2 = P(j / NS, 0, dz);
+      if (j) ctx.lineTo(p2[0], p2[1]);
+      else ctx.moveTo(p2[0], p2[1]);
+    }
+    ctx.stroke();
+    n++;
+  }
+
+  /* the suspenders, one every `GGB.suspenderM` of deck. A cut-off, not a
+     floor: below three pixels of spacing they are not drawn at all. */
+  const sstep = GGB.suspenderM / L;
+  if (sstep * dpx >= GGB_SUSP_PX) {
+    ctx.strokeStyle = GGB_SUSP_INK;
+    ctx.lineWidth = Math.max(0.5, dpx / 1400);
+    ctx.beginPath();
+    for (let t = t0; t <= t1; t += sstep) {
+      const cz = cabZ(t);
+      if (cz - dz < 1) continue;
+      for (const lat of [-half, half]) {
+        const a = P(t, lat, dz);
+        const b = P(t, lat, cz);
+        ctx.moveTo(a[0], a[1]);
+        ctx.lineTo(b[0], b[1]);
+      }
+    }
+    ctx.stroke();
+    n++;
+  }
+
+  /* the two main cables */
+  {
+    const cw = Math.max(0.8, Math.min(3.2, dpx / 260));
+    for (const lat of [half, -half]) {
+      ctx.strokeStyle = lat > 0 ? GGB_CABLE_LIT : GGB_CABLE;
+      ctx.lineWidth = cw;
+      ctx.beginPath();
+      for (let j = 0; j <= NS; j++) {
+        const t = j / NS;
+        const p2 = P(t, lat, cabZ(t));
+        if (j) ctx.lineTo(p2[0], p2[1]);
+        else ctx.moveTo(p2[0], p2[1]);
+      }
+      ctx.stroke();
+      n++;
+    }
+  }
+
+  /* THE TOWERS, LAST, AND THE ONE THING THAT MAKES THEM READ.
+     A leg is drawn as a BOX: its width is ACROSS the bridge, which is where
+     screen-x comes from, and the cross-braces are horizontal on screen because
+     they too span the lateral direction. That is what makes it a tower rather
+     than a longer piece of deck — see the note above this function. */
+  const legL = GGB.legM / L;
+  const legW = GGB.legM / 2;
+  for (const t of [t0, t1]) {
+    // far leg first, then the near one, so the tower has depth
+    for (const lat of [-half, half]) {
+      const l0 = lat - legW;
+      const l1 = lat + legW;
+      const a = P(t, l0, 0);
+      const b = P(t, l1, 0);
+      const c = P(t, l1, th);
+      const d = P(t, l0, th);
+      poly([a, b, c, d], GGB_LEG_LIT);
+      const e = P(t + legL, l1, 0);
+      const g = P(t + legL, l1, th);
+      poly([b, e, g, c], GGB_LEG_SHA);
+      if (dpx > GGB_LEGTOP_PX) poly([d, c, g, P(t + legL, l0, th)], GGB_LEG_TOP);
+    }
+    if (dpx > GGB_BRACE_PX) {
+      ctx.strokeStyle = GGB_BRACE;
+      ctx.lineWidth = Math.max(0.8, dpx / 520);
+      ctx.beginPath();
+      for (const fr of [0.32, 0.55, 0.76, 0.955]) {
+        const a = P(t, -half, th * fr);
+        const b = P(t, half, th * fr);
+        ctx.moveTo(a[0], a[1]);
+        ctx.lineTo(b[0], b[1]);
+      }
+      ctx.stroke();
+      n++;
+    }
+  }
+
   ctx.restore();
-  return ops;
+  return n;
 }
 
 // ── the hero draw ───────────────────────────────────────────────────────────

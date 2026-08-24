@@ -1882,7 +1882,15 @@ export class CityScene {
 
     // 7 ── the landmarks the record points the whole map at
     const lm = this.landmarkTable;
-    if (L.bridge && lm?.bridge) drawBridge(f, lm.bridge, opts.year);
+    /* THE TERRAIN GOES IN because the approach piers are gated on it: the
+       published ring stops where San Francisco stops, and its southern end is
+       over LAND — the DEM puts the ground at 29.4 m under the last vertex
+       against a deck at 67.1 — so `drawBridge` draws a pier only where the
+       page's own DEM says there is ground under the deck, and nothing out over
+       the channel where the record says it hangs from the cables. */
+    if (L.bridge && lm?.bridge) {
+      drawBridge(f, lm.bridge, opts.year, (x, y) => t.elevM(x, y));
+    }
 
     // 8 ── the names, last, over everything, on one ink budget
     if (L.labels) {
@@ -2661,13 +2669,32 @@ export class CityScene {
       const wpx = x1 - x0;
       if (wpx < 0.35) continue;
 
-      // ring winding, in SCREEN coordinates
-      let s2 = 0;
-      for (let k = 0; k < nv; k++) {
-        const k1 = (k + 1) % nv;
-        s2 += tx[k] * ty[k1] - tx[k1] * ty[k];
-      }
-      const sgn = s2 >= 0 ? 1 : -1;
+      // WHICH WALLS FACE THE READER. This kept the FAR side of every building in
+      // the city, and it is the single fault behind five separate complaints:
+      // roofs floating with no wall under them, "only the facade", window rows
+      // painted onto roof planes, the city reading washed out, and buildings
+      // reading flatter than the mock's.
+      //
+      // The winding was taken in SCREEN coordinates, and screen y is flipped
+      // (`by[k] = H/2 - (...)`). A y-flip reverses the sign of a signed area, and
+      // all 166,166 published rings are positive in world space — so `s2` was
+      // always negative, `sgn` always -1, the ternary dead code, and
+      // `if (dx * sgn <= 0) continue` kept `dx < 0`. The back walls.
+      //
+      // The reference culls in WORLD space against the outward normal
+      // (`buildBldProj`, part3.html L1311-1325). Expanded against
+      // `screen-x = cA*(xr - yr)` the two are algebraically the same test:
+      //     (dx*nx + dy*ny) = -d(px) / (cA*L)
+      // so its `UEVIS = 1` is exactly `screen dx > 0`. Production had the right
+      // test with the wrong sign.
+      //
+      // Measured: 47.7% of the mock's visible wall area was hidden behind the
+      // roof (41,223 of 78,792 px). `planeQuartile` is odd-symmetric in edge
+      // direction (q -> 3-q), so the wrong edges also took the complementary
+      // lambert bucket — dark faces removed, pale faces added, city-wide, which
+      // is the "washed out" cast. Walls measured 410 px against the mock's 408:
+      // the height was never wrong, the bottom half was simply not drawn.
+      const sgn = 1;
 
       const wallCi = tb.wi[i];
       const roofCi = tb.ri[i];

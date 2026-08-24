@@ -663,6 +663,19 @@ export function bayPlate(
   const tune = resTune(f.dpr, f.moving);
   const ss = tune.bayss || BAY_SS;
   const { W, H, cam } = f;
+  /*
+   * THE GUARD `drawDepthHaze` HAS, AND THIS CALL DID NOT. `.parity/BUGS.md`
+   * §20: `createRadialGradient` throws `IndexSizeError` when `r0 < 0`, and it
+   * takes the WHOLE frame's draw with it — which is why the camera came back
+   * at z = −0.025 with nothing picking rather than showing an error. A camera
+   * whose scale has gone to zero or negative makes `kx` do the same, and
+   * `g.scale(1, ky / kx)` is already undefined before the gradient is reached.
+   * Both radii are positive multiples of `kx`, so `kx > 0` is the whole of the
+   * `R1 > R0` test the sibling at `drawDepthHaze` writes out.
+   */
+  const kx = f.proj.cA * Math.SQRT2 * cam.scale,
+    ky = f.proj.sA * Math.SQRT2 * cam.scale;
+  if (!(kx > 0) || !(ky > 0)) return null;
   const key =
     W +
     "|" +
@@ -692,8 +705,6 @@ export function bayPlate(
   const dp = f.proj.proj(downtown[0], downtown[1], 0);
   const cx = sx(f, dp),
     cy = sy(f, dp);
-  const kx = f.proj.cA * Math.SQRT2 * cam.scale,
-    ky = f.proj.sA * Math.SQRT2 * cam.scale;
   const R0 = 3400 * kx,
     R1 = (3400 + 15000) * kx;
   g.translate(cx, cy);

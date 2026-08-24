@@ -3264,3 +3264,380 @@ and §15.7's centreline wiring, still open, still one call site.
 **The order is not cosmetic.** Measured on the whole-city camera: the street
 lane run last, after every landmark and every neighbourhood, places 4 names and
 loses GEARY BLVD and 3RD ST; run in the three places above it places 9.
+
+## 19. Block C1 — what the night before it had already landed, and the cap plate
+
+`components/us/city/{scene,renderer,palette}.ts` · `lib/city/{buildings,facades,roofs,landmarks}.ts`
+
+### 19.0 Three of the four handed-over items were already in the tree
+
+The brief for this block named four things to land. Commit `027f8a2b` — the
+snapshot the session restart left behind — already carries three of them, and
+the first thing this block did was measure rather than re-fix:
+
+| handed over | state found | proof |
+|---|---|---|
+| `pick()` marches the terrain only | **landed** (§17) | re-measured, below |
+| `scene.ts` `buildShoal(… sg.z > 0 …)` | **landed** (§17.4) | `scene.ts:2076` reads `isLandOf` alone |
+| street names called by nobody | **landed** (§18.8) | `StreetNamePass` at `scene.ts:1933`, in the reference's order |
+| `renderer.ts` `moving = film ? false` | **not changed**, and see §19.3 | — |
+
+`pick()`, re-measured from scratch on the shipped page with `.parity/b7pick.py`
+— every 8th pixel of the stage, 14,432 samples a camera, film asserted off at
+the shutter:
+
+    stop        B7's before   this block measured
+    street         38.0 %          56.3 %
+    block          45.9 %          68.8 %
+    district       59.3 %          86.1 %
+
+Identical to §17.1's after column to the tenth of a point, on a fresh browser
+and a fresh sweep. The fix is in and it holds. **The remaining 44 % at the
+street stop is §17.2's data ceiling and not a client bug** — `base/blocks` is
+93.0 km² of ring against 121.5 km² of land — so no work in these files can move
+it further.
+
+### 19.1 The cap's top plate was never a roof deck, and the tray proves it
+
+BUGS §4 and §19: a pure-white polygon on a roof in the Mission, "unshaded, on an
+otherwise shaded roof". §19 groups it with the pier sheds as *one defect at two
+sizes*.
+
+Two separate faults are stacked on that one polygon and only the first had been
+found. `roofFineLUT`'s note (this file, §7) records the first: `RSHADE[3]` = 1.14
+against a measured palette whose four brightest entries are `#eeeee7 · #f3f4ee ·
+#f8f9f5 · #fcfdfb`, so the top step clipped every channel and the roof came out
+neutral (255, 255, 255). `gamutHeadroom` closed that.
+
+**It was still the brightest plane on the frame afterwards, and that is a
+different bug.** Proved by tinting: `drawStep`'s top-plate fill was temporarily
+set to magenta and the shape in BUGS' picture turned magenta —
+`out-c1/c1-armory-mag.png`, with the other caps across the Mission lighting up
+with it. So the shape is the second solid's cap, not a material fallback and
+not a footprint.
+
+Then sampled off the shipped page, State Armory & Arsenal, block camera,
+`out-c1/c1-armory-blk.png`:
+
+    the cap's top plate      (252, 253, 251)
+    the roof deck around it  (228, 229, 227)
+    228 / 252              = 0.905
+
+`DE.deckv` is **0.905**. The disagreement is not approximately the tray, it IS
+the tray: `drawTray` fills every roof deck in the city at `shade(roofColour,
+DE.deckv)` and the parapet's inner face at `DE.innerv` = 0.82, so the raw
+palette value survives only on the 0.4 m of coping around a roof's edge — and
+`drawStep` filled its plate with that raw value, under a comment that read *"a
+cap is a roof"*. On this building `ri` = 55, which is `PAINT_C0` + 31, the
+brightest measured entry there is, so the missing 9.5 % is the difference
+between a pale roof and a hole in the map.
+
+The fix is one fill, and it is **ramped on the cap's own drawn width through
+`trayW`** rather than applied flat. DE6's own rule for the tray is that nothing
+is clamped to a minimum — under `DE.tr0` = 7 px a roof is exactly the flat fill
+it was. A cap 3 px wide at the whole-city camera stands among roofs 3 px wide;
+darkening it alone there would trade the block camera's bug for a new one at the
+wide shot. Reading `trayW` on the plate makes a cap and a roof of the same
+drawn size the same value **by construction**, so the two cannot drift apart
+again.
+
+### 19.2 BUGS §3 is not a missing cap, and the ring says so — refuted, so nobody re-runs it
+
+BUGS §3 reads *"the pier sheds on the Embarcadero are drawn as open boxes over
+the bay … a rectangular ring of walls with no cap — the bay is visible through
+the middle of the roof"*, and §19 groups it with the armory as one defect. The
+armory half was real (§19.1). **The pier half is the renderer drawing the truth.**
+
+`base/solo` row 13790, gid 142246, the footprint nearest the *Pier 19 1/2 —
+Bulkhead/Shed* label: **21 vertices, signed area +21,772 m², zero
+self-intersections, winding 0 or 1 everywhere** (sampled on a 60 x 60 grid over
+its bbox — `.parity/c1probe.py`). A flattened donut would show winding 2 or a
+crossing; this shows neither. Plotted vertex by vertex in
+`out-c1/c1-pier-ring.png` it is an unmistakable **C**: the bulkhead building
+across the shore end, two shed wings running 250 m out over the water, and the
+open pier apron between them. That is what Pier 19½ is. **There is no cap
+missing. There is no roof over the apron because there is no roof over the
+apron.**
+
+Measured on the same building at the street camera (`.parity/c1shadow.py`), in
+case the next reader suspects the geometry around it:
+
+    hM (roofHeight from h=10, hf=2)   10.13 m
+    wall height on screen             32.4 px
+    contact shadow offset             6.9 px left, 4.0 px down   (the clamps)
+    walls drawn / ring edges          12 / 21
+    wpx                               707.9  → near
+
+12 of 21 edges take a wall, which is the front-facing set of a C at this
+bearing, and the shadow is at its clamped offsets and not spilling. What BUGS
+saw as "a very large translucent grey quad on the water" is the shed's own
+footprint-shaped shadow lying on the bay at 36 px below its roof, drawn at
+`SHADOW_FILL` = `rgba(72,60,42,0.16)`; tinted magenta at 0.85 it is
+`out-c1/c1-piers-shadowmag-crop.png`, and it is the right shape in the right
+place. **What is left of §3 is an editorial question — whether a building's
+shadow should be drawn on open water at all — and not a drawing bug.** It is
+not fixed here and it is not a fallback past `UMAT_ROOF`.
+
+---
+
+## 19. Block C2 — a ground plate a camera move can use
+
+`FILM.md` §6b measured that two thirds of every frozen frame in a camera move is
+the ground being repainted, and named the fix here. §1's `GROUND_PLATE` note
+rejects a scale-tolerant plate. **The note's premise is wrong, and it is wrong
+about a number that had never been counted.**
+
+### 19.1 The count the rejection rests on: 132 ground builds, not "two to five"
+
+The note compares "about seven plates" against "the buffer's two to five
+rasterisations". Nobody had counted the ground passes themselves. `terrain.ts`
+§GPROBE now records one row per ground pass — the camera it was handed, the
+frame size, whether the plate hit, and the plate key — and `.parity/c2move.py`
+plays **one camera move per page load**, which is what it takes to measure a
+move at all:
+
+* `CityFilm.tsx` latches the SPARE version after 20 s of playback under 0.6, and
+  once it has, the remaining travels are *cuts*. A single-page sweep measures
+  move 3 and then seven still frames. `spare` is asserted on every row here.
+* the film STRETCHES on a slow frame, so `b3fps.py`'s wall-clock wait of
+  `(t1 − t0)` ms covered about **58 %** of each move. The FILM.md §6b move table
+  is the first half of each move, not the move.
+
+Measured, 1440 x 940, DPR 2, headless Chromium, dev server — ground passes and
+ground *builds* per move:
+
+| move | z | terrain passes | builds | worst frame |
+|---|---|---:|---:|---:|
+| into 3 civic-bonds | 2.05 → 3.20 | 37 | **22** | 917 ms |
+| into 4 city-hall | 3.20 → 28.0 | 32 | **17** | 933 ms |
+| into 5 tunnel | 27.98 → 2.60 | 23 | **19** | 1,208 ms |
+| into 6 west-fills | 2.60 → 1.90 | 29 | **15** | 1,108 ms |
+| into 7 hetch-hetchy | 1.90 → 1.10 | 4 | **4** | 724 ms |
+| into 8 treasure-island | 1.10 → 2.55 | 20 | **19** | 696 ms |
+| into 9 yerba-buena | 2.55 → 3.60 | 39 | **21** | 804 ms |
+| into 10 to-now | 3.60 → 1.10 | 29 | **15** | 954 ms |
+| | | **213** | **132** | |
+
+**132 full ground rasterisations across the eight travels**, and the surround
+misses on exactly the same 132 frames because it carries the same `camKey`.
+
+### 19.2 Why they miss, which is not the reason the note assumes
+
+The note imagines the ground being rebuilt because the camera has *travelled*.
+Read the sequence and most of them have barely moved. The move into 3 rebuilds
+the ground at
+
+    s = 0.12727  cx = 3125.5      s = 0.13498  cx = 3071.5
+    s = 0.13992  cx = 3019.6      s = 0.14333  cx = 2978.3
+
+— consecutive builds **1.04× apart in scale and a few screen pixels apart in
+pan**. The move into 9 rebuilds it four times over a 4 % zoom. The rasterisation
+is forced by the film's own year quantum and by tiers landing (`renderer.ts`
+§contentKey, `YEAR_Q = 16`); the plate key already omits year, tier and data, so
+it *would* have survived — except that it carries the exact camera, and the
+camera has drifted by five pixels. **The ground plate misses on a move not
+because the camera changed a lot, but because it changed at all.**
+
+### 19.3 A lazily built tolerant plate cannot build more plates than there are rasterisations
+
+That is the flaw in the "seven plates against two to five" argument. Seven is the
+size of a plate LADDER built to cover a zoom range in advance. A cache that
+builds a plate only when a rasterisation asks for one and the plates it holds
+cannot serve it has an upper bound of **one build per rasterisation** — so
+tolerance can only ever remove builds, never add them.
+
+`.parity/c2sim.py` replays the captured sequences through candidate policies.
+A policy is a magnification ceiling (how far a plate may be blown up) and a
+margin (how much wider than the frame a plate is painted). Builds across the
+eight moves:
+
+| policy | into 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | total |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| shipped | 22 | 17 | 19 | 15 | 4 | 19 | 21 | 15 | **132** |
+| 1.15× / no margin | 6 | 8 | 19 | 16 | 4 | 19 | 3 | 15 | 90 |
+| 1.15× / 1.06 | 5 | 8 | 17 | 6 | 4 | 3 | 3 | 10 | 56 |
+| 1.15× / 1.12 | 4 | 7 | 13 | 4 | 4 | 2 | 3 | 6 | 43 |
+| **1.30× / 1.12** | 3 | 6 | 13 | 4 | 4 | 2 | 2 | 6 | **40** |
+| 1.70× / 1.25 | 2 | 4 | 9 | 3 | 3 | 2 | 1 | 5 | 29 |
+| perfectly tolerant | 2 | 2 | 2 | 2 | 1 | 2 | 1 | 2 | 14 |
+
+A margin M costs M² pixels **on a build**, so 1.30 / 1.12 is 40 builds at 1.25×
+against 132 at 1×: **0.38 of the ground work**, and it needs a ceiling the film's
+own frame buffer already exceeds (`EXT_K_MAX` 1.70). 1.70 / 1.25 buys 11 more
+builds for a magnification the eye can find on a still; that trade is refused
+below.
+
+### 19.3 The Golden Gate Bridge — `part3.html` ships 150 lines of it and the port kept two
+
+BUGS §7, ranked seventh and on **the first frame every visitor sees**: *"a single
+tapered reddish line running from inside the Marin raster blob down to the
+Presidio bluff. There is no deck, no tower, no span … at the whole-city stop it
+reads as a scratch on the canvas."* `out-c1/c1-ggb-before-city-zoom.png` is that
+sentence as a picture.
+
+**The reference was never consulted.** `part3.html` §8296–8443 is `lrBridge`: the
+deck as a swept ribbon with its own ink, the shadow it throws on the water, the
+approach piers, the roadway centre line, two main cables as parabolas, the
+suspenders, and two towers built out of boxes with cross-braces — each with a
+comment saying what is published and what is a drawing convention. What this port
+shipped was `ctx.fill()` of the ring plus two `ctx.stroke()`s one pixel wide.
+
+Ported whole. Three things it settles that are worth carrying:
+
+**1. One structure was on two vertical exaggerations.** The deck was placed with
+`proj(x, y, GGB.deckZ)` — through `zex` — and the tower tops with `projb(x, y, 0,
+towerM)` — through `zexb`. `zexb/zex` = 0.8, so the towers stood 185 m-equivalent
+over a deck at 67.1 and the 164.5 m they really rise came out **118**. The
+reference states the rule outright: *"EVERY HEIGHT HERE IS ABOVE SEA LEVEL, so
+the whole structure is drawn on ZEX — the TERRAIN dial — and not on ZEXB. A
+bridge deck at 67.1 m stands beside headlands at 60 m, and if the two used
+different exaggerations the picture would be a lie about which is higher."*
+Everything is now `proj`. **The first cut of this fix put the deck on `zexb`
+instead — the wrong half of the same bug — and the reference caught it.**
+
+**2. Two more published constants had no reader.** `GGB.suspenderM` (30.0) and
+`GGB.legM` (7.0) are decoded, documented and asserted in `draw.test.ts`, and
+`grep -rn 'suspenderM\|legM' src` returned the declaration and the tests **and no
+call site.** That is the fourth pass tonight found written, tested and called by
+nobody (§16.1, §17.1, §18.8). Both are honestly labelled conventions in the
+reference — the suspender spacing is *"a regular division of the span"* and the
+leg's plan size is *"neither number is published and both are stated"* — and that
+labelling is carried into the port rather than dropped.
+
+**3. Why a leg is a box and not a quad**, which is the whole of why a first
+attempt looks wrong. At ROT 315 the projection is axis-aligned and the Golden
+Gate runs within 9° of north, so **a metre along the bridge and a metre of height
+go the same way on screen**. A leg drawn in the (axis, height) plane is a
+degenerate sliver and the cables converge on nothing. Its width has to be ACROSS
+the bridge, and the cross-braces read as horizontal for the same reason.
+
+Every tier is the file's usual cut-off: the pass is skipped below `GGB_MIN_PX` =
+8 px of deck, the suspenders below 3 px of spacing, the roadway line below 90,
+the braces below 110, the leg tops below 200. Nothing is drawn larger than it is.
+
+`drawBridge` now takes the DEM as a fourth argument — one call site, `scene.ts`
+step 7 — because the approach piers are gated on it: the ring's southern end is
+over LAND at 67.1 m with the ground at 29.4 m under it, and unsupported the deck
+ended thirty metres up in the air over the Presidio bluff. A pier is drawn only
+where the page's own terrain puts ground under the deck, and never out over the
+channel where the record says it hangs from the cables.
+
+Before / after: `out-c1/c1-ggb-before-city-zoom.png` vs
+`out-c1/c1-ggb-after2-city-zoom.png`, and
+`c1-ggb-before-district-crop.png` vs `c1-ggb-after2-district-crop.png`.
+
+### 19.4 §18.7's "a built layer 2 % too light" does not survive the arithmetic
+
+The brief handed this block *"the built layer is worth −23.3 RGB at district and
+−40.7 at block, and a uniform ~2 % accounts for the whole +16 disagreement"* and
+asked for a colour change in these files. **It was measured before it was made,
+and it should not be made.** `.parity/b8bright.py` re-run tonight, same
+instrument, same anchors, R channel:
+
+    camera     mock    prod   d       prod −buildings
+    b8b-city  181.8   187.6  +5.8        193.0
+    b8b-dist  150.5   163.0  +12.5       185.5
+    b8b-blk   152.1   160.0  +7.9        199.7
+
+**The sizing.** At the district camera the built layer covers a measured
+**39.3 %** of the frame (the exact pixels the `-buildings` ablation changes) and
+those pixels mean **146.0** against a ground of 199.0 under them. Darkening them
+2 % moves the frame by `0.393 x 146.0 x 0.02` = **1.1 units**. The gap is 12.5.
+Closing it on colour alone would need the built layer **31.8 units darker —
+146.0 to 114.2, a 22 % darkening** — which is not a tone correction, it is a
+different city. §18.7's estimate is out by a factor of eleven.
+
+**And it is not a uniform lift anyway.** The percentile ladder over the whole
+district frame:
+
+    percentile      p5      p25     p50     p75     p95
+    mock          85.7    129.7   157.3   190.0   219.3
+    prod          88.7    141.0   180.0   197.3   227.7
+    d             +3.0    +11.3   +22.7    +7.3    +8.4
+
+A uniform gain moves every percentile by the same proportion. This does not: the
+**darkest 5 % agree to three units** and the middle is 22.7 apart. Production is
+not too light everywhere, it is **missing its dark middle.**
+
+**And it is not a coverage difference either**, which was the obvious
+alternative. Edge density — the fraction of adjacent-pixel pairs differing by
+more than 8, which counts drawn divisions rather than tones — is the same build
+to build: mean |grad| **17.61 mock / 18.05 prod at district**, ratio 1.02, and
+1.01 at whole city. The same number of buildings, at the same sizes, with the
+same outlines. What has moved is where their tones land:
+
+    share of frame       60–130 ("dark fabric")    215–245 ("pale ground")
+    b8b-city   mock            3.3 %                      19.1 %
+               prod            1.9 %                      23.8 %
+    b8b-dist   mock           24.7 %                       6.3 %
+               prod           16.2 %                       9.9 %
+    b8b-blk    mock           32.7 %                       6.8 %
+               prod           28.1 %                      10.8 %
+
+**8.5 points of the district frame that the reference paints between 60 and 130
+production paints somewhere lighter**, and 3.6 points more of it lands in the
+pale band. That is the whole of the +12.5 and it is the right size for it.
+
+**Hand-off, correctly aimed this time.** The term to look for is whatever lifts
+the *shaded* end of the built layer — the wall lambert ramp's bottom quartile,
+the aerial fade, or the haze index — and not a gain on the palette.
+`COVER_GAIN` is already applied to every building in `colourLUT`
+(`buildings.ts:468`, `[0.8, 0.9, 1.0]` by camera step) and is not the miss;
+§16.8 ("the wall's lambert step was a different function in three places") and
+§16.9 ("the haze was on the wrong end of the city — again") are the two threads
+that end in the right place. **No colour constant was changed here, because
+every number that would close the mean would open the ladder.**
+
+### 19.5 `renderer.ts:641` — NOT flipped, and the reason is in the same paragraph that measured it
+
+The brief's second handover: *"`const moving = film ? false : …`. Measured with a
+probe-side wrapper: letting the motion tier apply during the film halves the
+worst frame."* The measurement is real and it is `FILM.md`'s own
+(`.parity/b3move.py`, `CityScene.prototype.paint` wrapped from the probe rather
+than a detached canvas, so it is not the trap that has caught five agents):
+**875 → 342, 1,075 → 492, 775 → 500 ms.**
+
+**The next clause of that same sentence is the reason not to do it:** *"and
+leaves the total frozen time per move unchanged at 2.1–2.5 s, because the cheaper
+rasterisations simply happen more often."* `CityFilm.tsx` advances its clock on
+`Math.min(0.05, dt)`, so a slow frame does not drop, it STRETCHES — which means
+the quantity a reader experiences during a travel is the total frozen time, and
+that is invariant under this change. What is bought is a smaller worst frame;
+what is paid is `lowRes = moving` and `place(…, !moving)` for the whole travel —
+silhouettes instead of buildings, in the part of the film that is watched rather
+than scrubbed. `renderer.ts` already carries that argument in a comment above the
+line, written by whoever measured it.
+
+So: **one word, and the evidence for it is half of a sentence whose other half
+withdraws it.** Not flipped here. If it is flipped, it should be flipped by
+whoever owns the film clock, together with `FILM.md` handover 1 (the scale-
+tolerant ground plate, *"worth 60–80 % of every freeze"*), which reduces the
+frozen time itself rather than re-slicing it.
+
+### 19.6 The gates, and what this block leaves open
+
+    tsc --noEmit   clean
+    vitest run     384 passed, 13 files
+    eslint src     7 warnings, 0 errors — the same six product files as the
+                   baseline, none of them these
+
+`pick()` re-measured after every change in this block, on a fresh browser:
+**56.3 / 68.8 / 86.1 %** at street / block / district — identical to §17.1 and to
+§19.0's own baseline, which is the assertion that nothing here moved it.
+
+Open, named, and NOT done:
+
+· **BUGS §20 is live and it is intermittent.** It fired once during this block's
+  final sweep and took the whole frame with it — `pageerror: Failed to execute
+  'createRadialGradient' … The r0 provided is less than 0`, and the camera came
+  back at z = −0.025 with 0.0 % of the frame answering a pick. The re-run was
+  clean. `water.ts:702` builds `R0 = 3400 * kx` with no guard where its sibling
+  at `water.ts:1098` checks `kx > 0`, `ky > 0` and `R1 > R0` first. **It is one
+  `if` and it is not this block's file**, but anyone measuring anything on this
+  page should know a sweep can die on it.
+· **§18.7's residual**, correctly sized in §19.4 and aimed at the shaded end of
+  the built layer rather than at the palette.
+· **§17.2's data ceiling** under the hit test, which is `base/blocks` and not
+  the client.
+· **BUGS §3's editorial half** — whether a building's shadow belongs on open
+  water. The geometry is right (§19.2); the question is a call, not a bug.

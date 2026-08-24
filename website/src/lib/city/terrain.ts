@@ -1378,7 +1378,18 @@ export function invalidateGrain(): void {
 interface GroundPlate {
   readonly cv: AnyCanvas;
   readonly g: CanvasRenderingContext2D;
-  key: string;
+  /** everything the plate depends on EXCEPT where the camera is looking */
+  rest: string;
+  /** the camera it was painted for */
+  cx: number;
+  cy: number;
+  s: number;
+  /** the frame it was painted for, in CSS px */
+  W: number;
+  H: number;
+  dpr: number;
+  /** the quality tier it was painted at — see `plateFor`'s tier order */
+  mv: boolean;
   cells: number;
   subQuads: number;
 }
@@ -1398,6 +1409,61 @@ interface GroundPlate {
  */
 const PLATE_SLOTS = 2;
 
+/**
+ * DEV-ONLY, the same idiom as `__cityWA` above. Block C2's whole argument is
+ * about HOW MANY ground rasterisations a camera move forces and what camera
+ * each of them is at, and neither number was written down anywhere. This
+ * records one row per ground pass — the camera, the frame size, and whether
+ * the plate hit — so the question is answered by reading the sequence off the
+ * running film rather than by reasoning about `decideRaster` from outside.
+ */
+export const GPROBE: {
+  on: boolean;
+  log: {
+    k: string;
+    W: number;
+    H: number;
+    dpr: number;
+    cx: number;
+    cy: number;
+    s: number;
+    mv: number;
+    hit: number;
+    /** 1 when the plate was laid down 1:1, 0 when it was resampled */
+    ex: number;
+    t: number;
+    key: string;
+  }[];
+} = { on: false, log: [] };
+function gprobe(
+  k: string,
+  f: Frame,
+  hit: boolean,
+  key: string,
+  ex: boolean,
+) {
+  if (!GPROBE.on) return;
+  if (GPROBE.log.length > 4000) return;
+  GPROBE.log.push({
+    k,
+    W: f.W,
+    H: f.H,
+    dpr: f.dpr,
+    cx: f.cam.cx,
+    cy: f.cam.cy,
+    s: f.cam.scale,
+    mv: f.moving ? 1 : 0,
+    hit: hit ? 1 : 0,
+    ex: ex ? 1 : 0,
+    t: typeof performance !== "undefined" ? performance.now() : 0,
+    key,
+  });
+}
+if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+  (globalThis as { __cityGPROBE?: typeof GPROBE }).__cityGPROBE = GPROBE;
+}
+
+
 /** a stable id per field/grid, so the identity can live in the key string */
 const plateIds = new WeakMap<object, number>();
 let plateIdNext = 1;
@@ -1410,25 +1476,144 @@ function plateId(o: object): number {
   return id;
 }
 
+/**
+ * HOW FAR A PLATE MAY BE BLOWN UP. Measured, in `DRAW.md` 19, against the 132
+ * ground builds the film's eight travels actually forced.
+ *
+ * `PLATE_KMAX` is a ceiling on `frameScale / plateScale`. Below 1 the plate is
+ * MINIFIED, which is sharper than painting it, so only the upper end needs a
+ * bound. 1.30 is inside what the film's own frame buffer already does to the
+ * whole picture during a move (`camera.ts` EXT_K_MAX = 1.70) and, unlike a
+ * street hairline, the ground has nothing in it at that spatial frequency —
+ * ablated by eye in `DRAW.md` 19.6.
+ *
+ * A resampled plate is only ever shown WHILE THE CAMERA IS TRAVELLING: a
+ * settled camera gets a plate at its own scale and a pixel-exact 1:1 blit, so
+ * nothing a reader stops on is resampled.
+ */
+const PLATE_KMAX = 1.3;
+
+/**
+ * HOW A TRAVELLING PLATE BUYS ITS COVERAGE, AND WHY NOT WITH A MARGIN.
+ *
+ * A plate has to cover more than the frame or the first pan puts a hole at the
+ * edge. The obvious way is to paint it wider — and it was, at 6 % a side, and
+ * MEASURED: builds across the film's eight travels fell 132 -> 38, and the
+ * WORST frame of every move went UP by 1.10-1.26x, which is exactly the 1.25x
+ * pixels the margin costs on a build. The worst frame of a move is the hitch;
+ * paying for the other frames with it is the wrong trade.
+ *
+ * `PLATE_COVER` buys the same coverage for no pixels at all: a plate painted
+ * while the camera is travelling is painted at `scale / PLATE_COVER` into a
+ * canvas of the frame's own size, so it holds 1.10x more world at the same
+ * cost, and the frame reads it back magnified by 1.10. What that spends is
+ * MAGNIFICATION HEADROOM, not raster: the plate starts at k = 1.10 of
+ * `PLATE_KMAX`'s 1.30 rather than at 1.00.
+ *
+ * The extra world costs `PLATE_COVER²` = 1.21x more DEM CELLS, and nothing per
+ * pixel — and a cell at a smaller scale subdivides less, so the two partly
+ * cancel. Measured in `DRAW.md` 19.5.
+ */
+const PLATE_COVER = 1.1;
+
+/**
+ * The blit that takes a plate painted for camera A to a frame at camera B.
+ *
+ * `SX`/`SY` are `(p - cam.c) * cam.scale + centre`, and `proj()` does not see
+ * the camera at all, so the ground at camera B is EXACTLY the ground at camera
+ * A under a uniform scale and a translation — the same similarity argument the
+ * frame buffer itself rests on, one layer down. In frame DEVICE pixels, with
+ * `k = B.scale / A.scale`:
+ *
+ *     X = k*u + (A.cx - B.cx)*B.scale*dpr + W*dpr/2 - k*Wp/2
+ *     Y = k*v + (H/2 - (A.cy - B.cy)*B.scale)*dpr   - k*Hp/2
+ *
+ * where `(u, v)` is a plate device pixel and `Wp, Hp` are the plate's own
+ * device size. Returns the destination rect, or null when the plate does not
+ * cover the frame or would have to be magnified past `PLATE_KMAX`.
+ */
+function plateBlit(
+  p: GroundPlate,
+  f: Frame,
+  kmax: number,
+): { dx: number; dy: number; dw: number; dh: number } | null {
+  const k = f.cam.scale / p.s;
+  if (!(k > 0) || k > kmax + 1e-9) return null;
+  const Wd = f.W * f.dpr,
+    Hd = f.H * f.dpr;
+  const dw = k * p.cv.width,
+    dh = k * p.cv.height;
+  const dx =
+    (p.cx - f.cam.cx) * f.cam.scale * f.dpr + Wd / 2 - (k * p.cv.width) / 2;
+  const dy =
+    (Hd / 2 + (p.cy - f.cam.cy) * f.cam.scale * f.dpr) - (k * p.cv.height) / 2;
+  // the frame's own device rect has to sit inside it, or the ground has a hole
+  if (dx > 1e-6 || dy > 1e-6 || dx + dw < Wd - 1e-6 || dy + dh < Hd - 1e-6)
+    return null;
+  return { dx, dy, dw, dh };
+}
+
+/** true when this plate is the frame's camera exactly, to the device pixel */
+function plateExact(p: GroundPlate, f: Frame): boolean {
+  return (
+    p.s === f.cam.scale &&
+    p.cx === f.cam.cx &&
+    p.cy === f.cam.cy &&
+    p.dpr === f.dpr &&
+    p.W === f.W &&
+    p.H === f.H
+  );
+}
+
 function plateFor(
   cache: GroundPlate[],
-  W: number,
-  H: number,
-  dpr: number,
-  key: string,
+  f: Frame,
+  rest: string,
+  restSettled: string,
+  travelling: boolean,
 ): { plate: GroundPlate; hit: boolean } | null {
-  const w = Math.max(1, Math.round(W * dpr)),
-    h = Math.max(1, Math.round(H * dpr));
+  /*
+   * A SETTLED PLATE MAY SERVE A TRAVELLING FRAME; THE REVERSE MAY NOT.
+   * `rest` carries the quality tier, so a motion-tier plate and a settled one
+   * are different plates — which is right, and it would also mean the first
+   * frame of a travel could not reuse the hold's plate it is a few pixels
+   * away from. The tier is an ORDER, not a name: a plate painted at settled
+   * quality is a legal answer to any frame, so a travelling frame matches
+   * either key and a settled frame matches only its own.
+   */
+  const ok = (p: GroundPlate) =>
+    p.rest === rest || (travelling && p.rest === restSettled);
+  // an exact camera always wins, whatever else is in the cache: it blits 1:1
   for (let i = 0; i < cache.length; i++) {
     const p = cache[i];
-    if (p.cv.width !== w || p.cv.height !== h) continue;
-    if (p.key !== key) continue;
+    if (!ok(p) || !plateExact(p, f)) continue;
     if (i) {
       cache.splice(i, 1);
       cache.unshift(p);
     }
     return { plate: p, hit: true };
   }
+  /*
+   * A RESAMPLED PLATE IS ONLY EVER SHOWN WHILE THE CAMERA IS MOVING. The
+   * signal is the ground pass itself: a settled camera asks for the same
+   * camera twice running, a travel never does. So a frame that repeats its
+   * predecessor falls through to a full repaint at its own camera and the
+   * hold is sharp from its second frame, which is the frame that would have
+   * built the plate anyway.
+   */
+  if (travelling)
+    for (let i = 0; i < cache.length; i++) {
+      const p = cache[i];
+      if (!ok(p) || p.dpr !== f.dpr || p.W !== f.W || p.H !== f.H) continue;
+      if (!plateBlit(p, f, PLATE_KMAX)) continue;
+      if (i) {
+        cache.splice(i, 1);
+        cache.unshift(p);
+      }
+      return { plate: p, hit: true };
+    }
+  const w = Math.max(1, Math.round(f.W * f.dpr)),
+    h = Math.max(1, Math.round(f.H * f.dpr));
   // reuse a slot of the right size before allocating one
   let plate: GroundPlate | null = null;
   for (let i = 0; i < cache.length; i++)
@@ -1441,15 +1626,79 @@ function plateFor(
     if (!cv) return null;
     const g = ctxOf(cv);
     if (!g) return null;
-    plate = { cv, g, key: "", cells: 0, subQuads: 0 };
+    plate = {
+      cv,
+      g,
+      rest: "",
+      cx: 0,
+      cy: 0,
+      s: 0,
+      W: 0,
+      H: 0,
+      dpr: 1,
+      mv: false,
+      cells: 0,
+      subQuads: 0,
+    };
   }
   plate.g.setTransform(1, 0, 0, 1, 0, 0);
   plate.g.clearRect(0, 0, w, h);
-  plate.g.setTransform(dpr, 0, 0, dpr, 0, 0);
-  plate.key = key;
+  plate.g.setTransform(f.dpr, 0, 0, f.dpr, 0, 0);
+  plate.rest = rest;
+  plate.cx = f.cam.cx;
+  plate.cy = f.cam.cy;
+  plate.s = travelling ? f.cam.scale / PLATE_COVER : f.cam.scale;
+  plate.W = f.W;
+  plate.H = f.H;
+  plate.dpr = f.dpr;
+  plate.mv = travelling || f.moving;
   cache.unshift(plate);
   while (cache.length > PLATE_SLOTS) cache.pop();
   return { plate, hit: false };
+}
+
+/**
+ * The Frame a plate is PAINTED through. A settled plate is the frame exactly; a
+ * travelling one is the frame's own canvas at `scale / PLATE_COVER`, which is
+ * where its coverage comes from. The rasteriser's culling reads `f.cam`, so
+ * handing it the plate's camera is the whole of what this has to do.
+ */
+function plateFrame(f: Frame, p: GroundPlate): Frame {
+  const q = { ...f, ctx: p.g, moving: p.mv };
+  return p.s === f.cam.scale
+    ? q
+    : { ...q, cam: { cx: p.cx, cy: p.cy, scale: p.s } };
+}
+
+/** lay a plate on the frame; 1:1 and integer-aligned when the camera matches */
+function plateDraw(f: Frame, p: GroundPlate): void {
+  f.ctx.save();
+  f.ctx.setTransform(1, 0, 0, 1, 0, 0);
+  if (plateExact(p, f)) {
+    f.ctx.drawImage(p.cv, 0, 0);
+  } else {
+    const b = plateBlit(p, f, PLATE_KMAX);
+    if (b) f.ctx.drawImage(p.cv, b.dx, b.dy, b.dw, b.dh);
+  }
+  f.ctx.restore();
+}
+
+/**
+ * A travel is a camera that never repeats itself; a hold repeats every frame,
+ * and that is the whole of the signal a resampled plate is gated on.
+ *
+ * It is remembered PER `rest` KEY rather than per cache, because the page paints
+ * more than one canvas: the stage and the film's own extended buffer are
+ * different sizes and alternate, and one shared last-camera would read every
+ * settled frame as a travel and hand a hold a resampled ground.
+ */
+const lastCam = new Map<string, string>();
+function travelling(rest: string, f: Frame): boolean {
+  const k = `${f.cam.cx}|${f.cam.cy}|${f.cam.scale}`;
+  const was = lastCam.get(rest);
+  if (lastCam.size > 32) lastCam.clear();
+  lastCam.set(rest, k);
+  return was !== undefined && was !== k;
 }
 
 /**
@@ -1467,9 +1716,16 @@ function dialsKey(moving: boolean, dpr: number): string {
   );
 }
 
-function camKey(f: Frame): string {
-  const c = f.cam;
-  return `${f.W}x${f.H}@${f.dpr}|${c.cx}|${c.cy}|${c.scale}|${f.proj.rotDeg}|${f.proj.sA}|${f.proj.zex}`;
+/**
+ * Everything about the frame a plate depends on OTHER than where the camera is
+ * looking. The centre and the scale are held on the plate itself, because a
+ * plate that only differs from the frame by those two is a resample away from
+ * being the right plate (see `plateBlit`); the bearing, the tilt and the
+ * vertical exaggeration are not — a change in any of them is a different
+ * picture, not a different view of one.
+ */
+function viewKey(f: Frame): string {
+  return `${f.W}x${f.H}@${f.dpr}|${f.proj.rotDeg}|${f.proj.sA}|${f.proj.zex}`;
 }
 
 // ── one cell, painted as the piece of surface it is ─────────────────────────
@@ -1840,16 +2096,15 @@ export function drawTerrain(
   t: TerrainField,
   burnT = 0,
 ): TerrainDrawResult {
-  const key =
-    `#${plateId(t)}|${camKey(f)}|${dialsKey(f.moving, f.dpr)}|${burnT}|${t.nodeGen}`;
-  const slot = plateFor(terrainPlates, f.W, f.H, f.dpr, key);
+  const base = `#${plateId(t)}|${viewKey(f)}|${burnT}|${t.nodeGen}|`;
+  const mv = travelling(base, f);
+  const restSettled = base + dialsKey(false, f.dpr);
+  const rest = mv || f.moving ? base + dialsKey(true, f.dpr) : restSettled;
+  const slot = plateFor(terrainPlates, f, rest, restSettled, mv);
+  gprobe("t", f, !!slot && slot.hit, rest, !!slot && plateExact(slot.plate, f));
   if (slot) {
     if (!slot.hit) {
-      const r = rasteriseTerrain(
-        { ...f, ctx: slot.plate.g },
-        t,
-        burnT,
-      );
+      const r = rasteriseTerrain(plateFrame(f, slot.plate), t, burnT);
       slot.plate.cells = r.cells;
       slot.plate.subQuads = r.subQuads;
       /*
@@ -1869,10 +2124,7 @@ export function drawTerrain(
        */
       paintGrain(slot.plate.g, f.W, f.H);
     }
-    f.ctx.save();
-    f.ctx.setTransform(1, 0, 0, 1, 0, 0);
-    f.ctx.drawImage(slot.plate.cv, 0, 0);
-    f.ctx.restore();
+    plateDraw(f, slot.plate);
     return { cells: slot.plate.cells, subQuads: slot.plate.subQuads };
   }
   // no canvas factory: paint straight through, and tooth the frame in place
@@ -2208,22 +2460,23 @@ export function drawSurround(
    * not change when the year, the tier or a chunk does, and a key that carries
    * the camera so nothing is ever resampled.
    */
-  const key =
-    `#${plateId(g)}|${camKey(f)}|${dialsKey(f.moving, f.dpr)}|${t.nodeGen}|` +
-    `${xn.key}|${coast ? coast.length : -1}`;
-  const slot = plateFor(surroundPlates, f.W, f.H, f.dpr, key);
+  const base =
+    `#${plateId(g)}|${viewKey(f)}|${t.nodeGen}|${xn.key}|` +
+    `${coast ? coast.length : -1}|`;
+  const mv = travelling(base, f);
+  const restSettled = base + dialsKey(false, f.dpr);
+  const rest = mv || f.moving ? base + dialsKey(true, f.dpr) : restSettled;
+  const slot = plateFor(surroundPlates, f, rest, restSettled, mv);
+  gprobe("s", f, !!slot && slot.hit, rest, !!slot && plateExact(slot.plate, f));
   if (slot) {
     if (!slot.hit)
       slot.plate.subQuads = rasteriseSurround(
-        { ...f, ctx: slot.plate.g },
+        plateFrame(f, slot.plate),
         t,
         g,
         coast,
       );
-    f.ctx.save();
-    f.ctx.setTransform(1, 0, 0, 1, 0, 0);
-    f.ctx.drawImage(slot.plate.cv, 0, 0);
-    f.ctx.restore();
+    plateDraw(f, slot.plate);
     return slot.plate.subQuads;
   }
   return rasteriseSurround(f, t, g, coast);

@@ -678,11 +678,49 @@ export function drawStep(f: Frame, t: StepInput): boolean {
     ctx.fill(pth);
   }
 
-  // the top plate, in the building's own roof colour — a cap is a roof
+  /* ── THE TOP PLATE, AND A CAP IS A ROOF ALL THE WAY DOWN ──────────────
+     This was `ctx.fillStyle = t.roofColour` — the roof colour RAW — under a
+     comment reading "a cap is a roof", which is exactly the argument against
+     what the line did. **No roof in this renderer is drawn at its raw value.**
+     `drawTray` fills every roof deck at `shade(roofColour, DE.deckv)` and the
+     parapet's inner face at `DE.innerv`, so the plane a reader sees on a roof
+     is 0.905 of the palette entry and the raw value survives only on the 0.4 m
+     of coping around its edge.
+
+     THIS IS THE SECOND HALF OF BUGS §4. `roofFineLUT`'s gamut clamp above took
+     the plate off (255, 255, 255) and gave it its hue back; it did not make it
+     a deck, so what is left is a plate that is still the brightest plane on the
+     frame. Measured after that fix, not before it.
+
+     MEASURED, BUGS §4 / §19, the State Armory & Arsenal at the block camera
+     (`out-c1/c1-armory-blk.png`, sampled off the shipped page): the cap's plate
+     is **(252, 253, 251)** and the roof deck it stands in the middle of is
+     **(228, 229, 227)**. 228/252 = **0.905**, which is `DE.deckv` to three
+     places — the disagreement is not approximately the tray, it IS the tray.
+     That building's `ri` is 55, `PAINT_C0` + 31, the brightest entry of the
+     measured aerial palette (`#fcfdfb`), so on it the missing 9.5 % is the
+     difference between a roof and a hole in the map: BUGS calls it "a pure-
+     white polygon … unshaded, on an otherwise shaded roof", and §19 groups it
+     with the pier sheds as one defect at two sizes.
+
+     RAMPED ON THE CAP'S OWN WIDTH, not applied flat, for the reason DE6 states
+     about `trayW` — *"nothing is clamped to a minimum: at the bottom of the
+     ramp the inset and the drop go to zero and the roof is exactly the flat
+     fill it was."* A cap 3 px wide at the whole-city camera stands among roofs
+     3 px wide, and those are under `DE.tr0` and drawn flat; darkening the cap
+     alone there would trade a bug at the block camera for a new one at the wide
+     shot. Above `DE.tr1` it is a deck like every other deck. The ramp is
+     `trayW` itself, read on the plate's own drawn width, so a cap and a roof of
+     the same size on screen are the same value by construction and the two
+     cannot drift apart again. */
   const tr = (NR - 1) * N;
   const ts = stepPS[NR - 1];
   if (ts > 0.02) {
-    ctx.fillStyle = t.roofColour;
+    const capTray = trayW(wpx * ts);
+    ctx.fillStyle =
+      capTray > 0.002
+        ? shade(t.roofColour, 1 - (1 - DE.deckv) * capTray)
+        : t.roofColour;
     ctx.beginPath();
     ctx.moveTo(stepSX[tr], stepSY[tr]);
     for (let k = 1; k < N; k++) ctx.lineTo(stepSX[tr + k], stepSY[tr + k]);
