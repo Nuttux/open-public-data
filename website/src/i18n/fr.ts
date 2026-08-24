@@ -2825,6 +2825,52 @@ const fr: Record<string, string> = {
   'fx.contact.note': "À savoir : aucun article publié n'est sponsorisé. Les éventuels financements — publics, fondations, mécènes — sont publiés avec leur montant et ne conditionnent pas la ligne éditoriale.",
   'fx.contact.btn.analyses': "Lire les analyses",
   'fx.contact.btn.home': "Retour à l'accueil",
+
+  // ── Pour les villes (page /pour-les-villes + bloc de clôture) ─────────────
+  'fx.foot.link.cities': 'Pour les villes',
+
+  'fx.contact.c4.n': 'Villes',
+  'fx.contact.c4.h': 'Votre ville',
+  'fx.contact.c4.p': "Vous voulez ce site pour votre collectivité.",
+
+  'fx.closing.title': "Ce site peut exister pour votre ville.",
+  'fx.closing.text': "Vous publiez déjà les données qu'il faut.",
+  'fx.closing.cta': "Pour les villes",
+
+  'fx.cities.meta.title': "Pour les villes",
+  'fx.cities.meta.desc': "On lit les données que votre ville publie déjà et on en fait un site que ses habitants peuvent utiliser.",
+  'fx.cities.kicker': "— Pour les villes",
+  'fx.cities.title.before': "Ce site existe pour Paris, San Francisco et Recife. ",
+  'fx.cities.title.em': "Il peut exister pour la vôtre",
+  'fx.cities.title.after': ".",
+  'fx.cities.lede': "Votre ville publie déjà ses données. On les prend et on en fait un site où les gens trouvent ce qu'ils cherchent.",
+  'fx.cities.live.label': "Déjà en ligne",
+
+  'fx.cities.s01.kind': "Ce qu'on fait",
+  'fx.cities.s01.title.before': "On part de ce que ",
+  'fx.cities.s01.title.em': "vous publiez déjà",
+  'fx.cities.s01.sub': "Il n'y a rien à installer chez vous.",
+  'fx.cities.s01.p1': "On récupère vos fichiers ouverts, on les remet d'aplomb et on les relie entre eux. Chaque chiffre affiché renvoie au fichier dont il sort, donc n'importe qui peut vérifier. Vous republiez, le site suit.",
+
+  'fx.cities.s02.kind': "Ce qui est possible",
+  'fx.cities.s02.title.before': "Ça dépend de ",
+  'fx.cities.s02.title.em': "ce que vous publiez",
+  'fx.cities.s02.sub': "On regarde vos données avant de vous promettre quoi que ce soit.",
+  'fx.cities.s02.p1': "Toutes les villes ne publient pas la même chose. Beaucoup ouvrent leur budget mais pas leurs marchés. Certaines ont des adresses exploitables, la plupart non. Dites-nous où sont vos jeux de données, on va voir, et on vous répond franchement.",
+  'fx.cities.ex.label': "Ce que ça donne ailleurs",
+  'fx.cities.ex1.h': "Le budget de Paris, poste par poste",
+  'fx.cities.ex2.h': "Ce que paie San Francisco, salaire par salaire",
+  'fx.cities.ex3.h': "Les contrats de Recife, contrat par contrat",
+  'fx.cities.ex.see': "Voir",
+  'fx.cities.live.note': "34 932 communes françaises ont déjà leur page budget ici, faite à partir des comptes publiés par la DGFiP.",
+
+  'fx.cities.s03.kind': "Écrire",
+  'fx.cities.s03.title.before': "Dites-nous ",
+  'fx.cities.s03.title.em': "quelle ville",
+  'fx.cities.s03.sub': "",
+  'fx.cities.s03.p': "Écrivez-nous avec le nom de la collectivité et le lien vers votre portail open data. Si vous avez une échéance en tête, dites-la.",
+  'fx.cities.s03.btn': "Écrire à daniel@qipu.org",
+  'fx.cities.s03.btn2': "Voir la méthode",
   'fx.contact.s02.kind': "Signaler",
   'fx.contact.s02.title.before': "Vous voyez une ",
   'fx.contact.s02.title.em': "erreur",
@@ -4849,6 +4895,22 @@ const fr: Record<string, string> = {
      three demolitions cannot be misread that way, and on a 390 px screen the
      long form ran six lines to say what the header already says. */
   'us.sf.thecity.panel.dem_floor_short': 'This record begins in {y}; what came down before is not published block by block.',
+  /* "In short" — assembled from fields, never written. Every clause is one
+     sentence over one field, and a missing field DROPS its clause rather than
+     hedging it. See components/us/city/FICHE.md §14. */
+  'us.sf.thecity.panel.sum_head': 'In short',
+  'us.sf.thecity.panel.sum_ground': 'A mostly {use} block in {hood}.',
+  'us.sf.thecity.panel.sum_ground_plain': 'A block in {hood}.',
+  'us.sf.thecity.panel.sum_people': '{n} people live on it, in {h} homes.',
+  'us.sf.thecity.panel.sum_people_one_home': '{n} people live on it, in one home.',
+  'us.sf.thecity.panel.sum_people_one': 'One person lives on it, in {h} homes.',
+  'us.sf.thecity.panel.sum_people_none': 'The Census counts nobody living on it.',
+  'us.sf.thecity.panel.sum_record': 'The Board decided {n} things here between {y0} and {y1}, most of them in the {d}s.',
+  'us.sf.thecity.panel.sum_record_flat': 'The Board decided {n} things here between {y0} and {y1}.',
+  'us.sf.thecity.panel.sum_record_one': 'The Board decided one thing here, in {y0}.',
+  'us.sf.thecity.panel.sum_record_none': "The Board's record places nothing on it.",
+  'us.sf.thecity.panel.sum_place': '{place} stands on it.',
+  'us.sf.thecity.panel.sum_rail_end': "The Board's Journal is scanned to {y}. The decades after it are blank because the record stops there, not because the city stopped deciding.",
   'us.sf.budget.strend.timeline_cta': '150 years of city money, from the 1880s →',
   'us.sf.budget.footer.perimeter': 'Adopted budget, all funds, City & County of San Francisco.',
   'us.sf.contracts.footer.coverage': 'Award and paid amounts come from different systems; {n} contracts across the register show more paid than agreed. Plain-English summaries cover {nGen} of the contracts active today — the register itself records no description, so the rest show its own wording.',

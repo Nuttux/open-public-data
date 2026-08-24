@@ -2828,6 +2828,52 @@ const en: Record<string, string> = {
   'fx.contact.note': "Note: no published article is sponsored. Any funding — public, foundations, donors — is published with its amount and does not condition the editorial line.",
   'fx.contact.btn.analyses': "Read the analyses",
   'fx.contact.btn.home': "Back to home",
+
+  // ── For cities (/pour-les-villes page + landing closing block) ────────────
+  'fx.foot.link.cities': 'For cities',
+
+  'fx.contact.c4.n': 'Cities',
+  'fx.contact.c4.h': 'Your city',
+  'fx.contact.c4.p': "You want this site for your city.",
+
+  'fx.closing.title': "This site can exist for your city.",
+  'fx.closing.text': "You already publish the data it needs.",
+  'fx.closing.cta': "For cities",
+
+  'fx.cities.meta.title': "For cities",
+  'fx.cities.meta.desc': "We read the data your city already publishes and turn it into a site its residents can actually use.",
+  'fx.cities.kicker': "— For cities",
+  'fx.cities.title.before': "This site exists for Paris, San Francisco and Recife. ",
+  'fx.cities.title.em': "It can exist for yours",
+  'fx.cities.title.after': ".",
+  'fx.cities.lede': "Your city already publishes its data. We take it and build a site where people find what they're looking for.",
+  'fx.cities.live.label': "Already live",
+
+  'fx.cities.s01.kind': "What we do",
+  'fx.cities.s01.title.before': "We start from what ",
+  'fx.cities.s01.title.em': "you already publish",
+  'fx.cities.s01.sub': "There's nothing to install on your side.",
+  'fx.cities.s01.p1': "We pull your open files, clean them up and connect them to each other. Every figure links back to the file it came from, so anyone can check. You republish, the site follows.",
+
+  'fx.cities.s02.kind': "What's possible",
+  'fx.cities.s02.title.before': "It depends on ",
+  'fx.cities.s02.title.em': "what you publish",
+  'fx.cities.s02.sub': "We look at your data before promising you anything.",
+  'fx.cities.s02.p1': "Not every city publishes the same things. Plenty open their budget but not their contracts. Some have addresses you can actually use, most don't. Send us where your datasets live, we'll go through them and tell you straight.",
+  'fx.cities.ex.label': "What it looks like elsewhere",
+  'fx.cities.ex1.h': "The Paris budget, line by line",
+  'fx.cities.ex2.h': "What San Francisco pays, salary by salary",
+  'fx.cities.ex3.h': "Recife's contracts, contract by contract",
+  'fx.cities.ex.see': "Open",
+  'fx.cities.live.note': "34,932 French communes already have a budget page here, built from the accounts published by the national treasury.",
+
+  'fx.cities.s03.kind': "Get in touch",
+  'fx.cities.s03.title.before': "Tell us ",
+  'fx.cities.s03.title.em': "which city",
+  'fx.cities.s03.sub': "",
+  'fx.cities.s03.p': "Write to us with the name of the authority and a link to your open data portal. If you have a deadline in mind, say so.",
+  'fx.cities.s03.btn': "Email daniel@qipu.org",
+  'fx.cities.s03.btn2': "Read the method",
   'fx.contact.s02.kind': "Report",
   'fx.contact.s02.title.before': "Spotted an ",
   'fx.contact.s02.title.em': "error",
@@ -4843,6 +4889,22 @@ const en: Record<string, string> = {
      three demolitions cannot be misread that way, and on a 390 px screen the
      long form ran six lines to say what the header already says. */
   'us.sf.thecity.panel.dem_floor_short': 'This record begins in {y}; what came down before is not published block by block.',
+  /* "In short" — assembled from fields, never written. Every clause is one
+     sentence over one field, and a missing field DROPS its clause rather than
+     hedging it. See components/us/city/FICHE.md §14. */
+  'us.sf.thecity.panel.sum_head': 'In short',
+  'us.sf.thecity.panel.sum_ground': 'A mostly {use} block in {hood}.',
+  'us.sf.thecity.panel.sum_ground_plain': 'A block in {hood}.',
+  'us.sf.thecity.panel.sum_people': '{n} people live on it, in {h} homes.',
+  'us.sf.thecity.panel.sum_people_one_home': '{n} people live on it, in one home.',
+  'us.sf.thecity.panel.sum_people_one': 'One person lives on it, in {h} homes.',
+  'us.sf.thecity.panel.sum_people_none': 'The Census counts nobody living on it.',
+  'us.sf.thecity.panel.sum_record': 'The Board decided {n} things here between {y0} and {y1}, most of them in the {d}s.',
+  'us.sf.thecity.panel.sum_record_flat': 'The Board decided {n} things here between {y0} and {y1}.',
+  'us.sf.thecity.panel.sum_record_one': 'The Board decided one thing here, in {y0}.',
+  'us.sf.thecity.panel.sum_record_none': "The Board's record places nothing on it.",
+  'us.sf.thecity.panel.sum_place': '{place} stands on it.',
+  'us.sf.thecity.panel.sum_rail_end': "The Board's Journal is scanned to {y}. The decades after it are blank because the record stops there, not because the city stopped deciding.",
   'us.sf.budget.strend.timeline_cta': '150 years of city money, from the 1880s →',
   'us.sf.budget.footer.perimeter': 'Adopted budget, all funds, City & County of San Francisco.',
   'us.sf.contracts.footer.coverage': 'Award and paid amounts come from different systems; {n} contracts across the register show more paid than agreed. Plain-English summaries cover {nGen} of the contracts active today — the register itself records no description, so the rest show its own wording.',
