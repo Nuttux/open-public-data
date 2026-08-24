@@ -8553,3 +8553,68 @@ One camera of three, and the cheapest one, is not an acceptance.
 next person inherits a deterministic instrument, a control that proves it, a
 brightening test that says in one number whether a pair is measuring the pass,
 and one camera that already passes.
+
+### 37.5 CORRECTION — §37.3's named cause is refuted, and it takes §37.2 with it
+
+Written within the hour, before anyone reads the section above as settled.
+
+**The cause §37.3 named is wrong.** It said the two builds draw different
+CONTENT at district zoom because `prod_ready`'s queue gate does not guarantee
+every visible `bldg` chunk has landed. Re-shot with the count printed:
+
+```
+  B4 district, AO-off build (3100)   bld = 76,702   massed = 0
+  B4 district, AO-on  build (3200)   bld = 76,702   massed = 0
+```
+
+**Identical.** Coverage is not the difference, and I should have printed that
+number before naming a cause rather than after.
+
+**The actual difference is that the two builds are not the same tree.** The
+served asset lists:
+
+```
+  localhost:3100   18 chunks
+  localhost:3200   18 chunks
+  shared            9
+  only on 3100      9
+  only on 3200      9
+```
+
+**Half the chunks differ.** Flipping one module constant changes the chunk
+holding `buildings.ts` and whatever hashes off it — it does not rewrite nine of
+eighteen. These are two different source trees that also differ in `AO_ALPHA`.
+
+**So the whole off/on table is void, and that includes A4.** §37.2 is not
+salvaged by its own brightening test: *"not one pixel of 3.4 million
+brightens"* proves the net difference at A4 is a **pure darkening**, which is
+strong — but it identifies a *class*, not a *pass*. It does not establish that
+the darkening is `paintAO` rather than anything else that only darkens and
+happens to be in one tree and not the other. A4 is now **suggestive and
+uncontrolled**, and it must not be quoted as an acceptance.
+
+**What survives, and it is the part that was worth having anyway:**
+
+- **§37.1's determinism, and now on BOTH builds.** `ao3-B4.on.png` and
+  `ao3-B4.on2.png` are byte-identical too (`90fd6476179b1fd7659995aecb75fecf`),
+  as are the two AO-off pairs. A production build renders bit-for-bit
+  repeatably at an asserted camera across independent sessions. That is real
+  and it is the instrument this project has been missing.
+- **The brightening test.** One number that says whether an on/off pair is
+  measuring a darkening composite at all, before any decile table is believed.
+  It is what caught B1 and B4, and it is cheap.
+- **`AO_ALPHA` stays 0.0**, now for a better reason than "one camera of three":
+  **no camera of three has been measured**, because there was never a valid
+  pair to measure.
+
+**What the next person needs, and it is one thing:** two builds off the SAME
+commit differing only in `AO_ALPHA`, verified by the chunk lists agreeing on
+seventeen of eighteen. Then `g1ao3.py` and `g1aojudge.py` run as written and
+the answer takes twenty minutes. Everything else is built.
+
+**And the lesson, which is BUGS §23b's, arriving in a new costume:** *a
+difference between two expressions is not a difference between two programs* —
+and a difference between two SERVERS is not a difference between two passes.
+I checked that the camera was the same, that the frame was the same size, that
+the build was deterministic and that the coverage was the same, and never
+checked that the two builds were the same program.
