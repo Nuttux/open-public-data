@@ -1215,21 +1215,33 @@ export class StreetNamePass {
 
   /** false once the budget has refused a label — the reference's own `return` */
   private one(li: number): boolean {
-    if (this.full) return false;
+    /* ── §LPROBE, AND THIS PASS WAS INVISIBLE TO IT ────────────────────
+       `lprobe` was called from the place lane and the hood lane and from
+       NOWHERE IN HERE, so every count ever taken off the instrument was the
+       two named-place lanes only and undercounted the frame by the whole
+       street lane. FILM.md §21.3 drew two conclusions from such a count and
+       had to correct both of them in the same section. The reasons below are
+       this pass's own gates, in the order it applies them; `frame`, `grid`
+       and `ink` keep the shared vocabulary so the three lanes' rows can be
+       counted together. */
+    const nm = (why: string, x = 0, y = 0, bw = 0, bh = 0): void => {
+      lprobe("street", this.table.name(li) || `#${li}`, why, x, y, bw, bh);
+    };
+    if (this.full) { nm("full"); return false; }
     /* §STREET_NAME_CAP — the film's shortening, applied where the pass already
        gives up, so it behaves exactly like the budget refusing a label. */
     const cap = STREET_NAME_CAP.film;
-    if (cap !== null && this.nPlaced >= cap) return false;
+    if (cap !== null && this.nPlaced >= cap) { nm("cap"); return false; }
     const { f, table } = this;
     const { ctx, cam } = f;
-    if (table.rank[li] > this.rankMax) return true;
+    if (table.rank[li] > this.rankMax) { nm("rank"); return true; }
     const y0 = table.yr[li];
-    if (y0 && f.year !== undefined && y0 > Math.floor(f.year)) return true;
+    if (y0 && f.year !== undefined && y0 > Math.floor(f.year)) { nm("year"); return true; }
     const t0 = table.name(li);
-    if (!t0) return true;
+    if (!t0) { nm("noname"); return true; }
     /* §isPlaceholderStreetName — 84 of 2,473 */
-    if (isPlaceholderStreetName(t0)) return true;
-    if ((this.used.get(t0) ?? 0) >= this.nameCap) return true;
+    if (isPlaceholderStreetName(t0)) { nm("placeholder"); return true; }
+    if ((this.used.get(t0) ?? 0) >= this.nameCap) { nm("dupe"); return true; }
     /* 0 arterial, 1 collector, 2 everything local */
     const rk = table.rank[li] <= 0 ? 0 : table.rank[li] === 1 ? 1 : 2;
     const wx = table.wx[li],
@@ -1237,8 +1249,8 @@ export class StreetNamePass {
     const p = f.proj.proj(wx, wy, this.elev(wx, wy));
     const X = sx(f, p),
       Y = sy(f, p);
-    if (Math.abs(X - this.hx) > this.hx - 24) return true;
-    if (Math.abs(Y - this.hy) > this.hy - 26) return true;
+    if (Math.abs(X - this.hx) > this.hx - 24) { nm("frame", X, Y); return true; }
+    if (Math.abs(Y - this.hy) > this.hy - 26) { nm("frame", X, Y); return true; }
     const fs = ST_LB_FS[this.step] * LB_SIZE[rk];
     /* the SAME face the place lane is set in — `part3.html` writes the string
        out twice and this file holds one copy of it, which is why the constant
@@ -1247,7 +1259,10 @@ export class StreetNamePass {
     const t = streetLabelText(t0);
     const w = ctx.measureText(t).width + 6,
       h = fs + 4;
-    if (!nameFitsItsStreet(table.lengthM[li], w * LBL_LEN_K, cam.scale)) return true;
+    if (!nameFitsItsStreet(table.lengthM[li], w * LBL_LEN_K, cam.scale)) {
+      nm("short", X, Y, w, h);
+      return true;
+    }
     const ang = streetLabelAngle(f, 0, 0, table.dx[li], table.dy[li]);
     const ca = Math.abs(Math.cos(ang)),
       sa = Math.abs(Math.sin(ang));
@@ -1256,18 +1271,21 @@ export class StreetNamePass {
     const prev = this.at.get(t0);
     if (prev) {
       for (const q of prev)
-        if (Math.abs(q[0] - X) < NAME_APART && Math.abs(q[1] - Y) < NAME_APART)
+        if (Math.abs(q[0] - X) < NAME_APART && Math.abs(q[1] - Y) < NAME_APART) {
+          nm("apart", X, Y, ww, hh);
           return true;
+        }
     }
     const x0 = X - ww / 2,
       x1 = X + ww / 2,
       yy0 = Y - hh / 2,
       yy1 = Y + hh / 2;
-    if (!this.grid.fits(x0, yy0, x1, yy1)) return true;
+    if (!this.grid.fits(x0, yy0, x1, yy1)) { nm("grid", X, Y, ww, hh); return true; }
     /* THE BUDGET IS EXACT and it spends THE LABEL'S OWN BOX, not the envelope
        the collision grid uses. A refusal stops the pass, which is the
        reference's `if (inkUsed >= inkCap) return` said one label earlier. */
     if (!this.budget.spend(w, h)) {
+      nm("ink", X, Y, ww, hh);
       this.full = true;
       return false;
     }
@@ -1277,6 +1295,7 @@ export class StreetNamePass {
     else this.at.set(t0, [[X, Y]]);
     this.nPlaced++;
     this.rank3[rk]++;
+    nm("-", X, Y, ww, hh);
     ctx.save();
     ctx.translate(X, Y);
     ctx.rotate(ang);
@@ -1514,6 +1533,20 @@ export function drawHoodNames(
  * | `grid`  | something already on the shared grid overlaps the box |
  * | `ink`   | the box does not fit in what is left of this lane's budget |
  * | `-`     | written |
+ *
+ * The STREET lane has six gates of its own before it reaches those, and it was
+ * **calling none of this** until FILM.md §23.6 — so every count ever taken off
+ * this instrument was the place and hood lanes only, and undercounted the
+ * frame by the largest lane on it:
+ *
+ * | `why`   | the gate, street lane |
+ * |---|---|
+ * | `full` / `cap` | the pass has already stopped, or `STREET_NAME_CAP` has |
+ * | `rank`  | the segment's class is above what this zoom writes |
+ * | `noname` / `placeholder` | no name, or `UNNAMED nn` — 84 of 2,473 |
+ * | `dupe`  | this name is already written `nameCap` times |
+ * | `short` | `nameFitsItsStreet` — the street is shorter than its own name |
+ * | `apart` | the same name is already written within `NAME_APART` |
  *
  * Off by default, dev only, parked on `globalThis.__cityLPROBE` so a harness
  * switches it on through the renderer hook and reads it back with no source
