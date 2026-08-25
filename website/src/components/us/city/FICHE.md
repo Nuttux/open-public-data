@@ -2375,3 +2375,104 @@ no-rollup fallback path inside `BlockSummary`.
 Typecheck clean, eslint clean, **449/449**. Shot at 390 and 1440:
 `.parity/out/f1-m1fmfull.png`, `f1-m1fwfull.png`, and `f1-m1f-hoodopen.png` for the
 open state.
+
+## 21. Block F1, 2026-08-25 — the record leads, the rail is the spine
+
+> "maybe focusing exclusively on the fiches and their content per block, right now its a
+> hodgepodge, id want to be able to show what happens when you click and it looks cool,
+> interesting, relevant and focused"
+
+§20 cut the neighbourhood out of the body and left the block. This round changes what the
+block leads with. **The panel opened on demographics and printed the Board's own sentence
+fourth** — inside the rail, clamped to three lines, as the face of a decade. Every open-data
+portal in the world has the demographics; nobody else has that sentence, and it is the only
+thing on this map a reader can open a scan of.
+
+### a. Three kinds of thing, and nothing else
+
+**A quotation from the record · a control · a number with a label.** Every sentence we wrote
+is out of the body:
+
+| gone from the body | where it is |
+|---|---|
+| `BlockSummary`'s "In short" paragraph | **deleted** — every clause of it was a row or a section below it (§19a found this once already at hood grain) |
+| the census-join provenance (36 words) | `BlockSources`, a closed `<details>` at the foot, with both source links |
+| the money coverage ratio (1.3 % of blocks) | the same fold |
+| `RecordFactRows`' two `dt`/`dd` rows | labelled numbers on the figures row |
+| the five-row `NowRows` table | one figures row: `293 Residents · 178 Homes · Commercial Hotel · 107 Board decisions · 1906–1999` |
+
+**The honest floor lines stay visible**, muted, under the rail — `sum_rail_end` and
+`shape_quiet`. An absence that reads as a zero is the failure they exist to prevent and it
+matters most on the block a journalist checks, so they are not behind a fold.
+
+Order: **the line · the rail · the figures · money where there is money · sources.** The rail
+is the spine, not the last section — *"what i like tho is the decade view you can open and
+get to the records by decade"* is the interaction, so the panel is built around it.
+
+### b. The star scorer was built, measured and STOPPED
+
+Recorded because a rejected measurement is the only evidence the shipped thing was chosen.
+
+`build_block_stars.py` applied §18's hood signal at block grain — tier band, then
+distinctiveness of the line's three most unusual words, then rank. It ran over all 256 shards:
+**4,625 stars, 54 blocks all-procedural, tiers 1/2/3/4 = 2777/1120/333/395, 43 KB.** Then:
+
+> "why you using rarity — you're an LLM, you have intelligence, you can decide what's most
+> relevant to humans and stands out."
+
+Right, and its own output says so: the most distinctive stars in the city were a $225 injury
+settlement, a resurvey of spur-track facilities and *"Authorizing Relinquishment of Easement
+to A. J. Carlson, et ux."* **Rarity in this corpus is surnames and scanning damage.** The
+script and its JSON are deleted, not left dormant.
+
+### c. What ships instead — a gate for every block, a judgement for eight
+
+**`blockLead()`** (`block-records.ts`) is `pickHeadline` — the settled per-decade pick,
+untouched — run over the whole block behind a readability gate ported field-for-field from
+`build_hood_facts.classify()`: procedural heads, cross-references, under 40 characters, and
+over 10 % unreadable tokens. **The gate can only remove a line from consideration; it never
+moves one up.** Four tests.
+
+**`block-leads.json`** (2.9 KB, mirrored at `pipeline/seeds/sf_block_lead_picks.json`) is
+eight blocks read by hand against Daniel's rubric — *would a person repeat this to someone
+else*; TOP something happened to people, HIGH the place changed permanently or a named
+person/business/address doing a particular thing, LOW the city administering itself, and a
+dollar figure is not significance. Four of the eight were overridden; four were already right.
+
+**IT IS EIGHT BLOCKS OF 4,679 AND THE FILE SAYS SO** in a field called
+`THIS_PASS_IS_PARTIAL`. Nothing on the panel describes the fallback as a judgement about
+significance, because it is not one. The seed stores `u` and 56 characters, never the line —
+a stale seed can only fail to match and fall back, it can never put a word on the page the
+record does not hold.
+
+### d. Keys — three, for the owner of `en.ts` / `fr.ts`
+
+Behind `tOr()`, disposing of itself as §19g established.
+
+```ts
+'us.sf.thecity.panel.lead_head': 'What the Board decided here',
+'us.sf.thecity.panel.lead_open': 'Open the scanned page',
+'us.sf.thecity.panel.sources_open': 'Sources',
+```
+
+Reused with no new string: `hood_block_ground` and `sum_people*` were dropped when the
+figures row replaced sentences, so **`us.sf.thecity.panel.block_head`, `hood_block_ground`,
+`sum_people`, `sum_people_one`, `sum_people_one_home`, `sum_people_none`, `sum_ground`,
+`sum_ground_plain`, `sum_place`, `sum_record*` and `now_head` now have no caller** — they can
+be deleted whenever it suits. `now_residents`, `now_homes`, `now_decisions`, `now_span`,
+`now_src`, `now_src_pop`, `now_no_pop`, `now_roll`, `now_census`, `money_cover` are all still
+live.
+
+### e. CSS, for the owner of `src/app/fusion.css`
+
+Five inline constants stand in, the way §19b's footnote did before `.fx-block-note` landed.
+They want to be `.fx-block-lead`, `.fx-block-quote`, `.fx-block-lead-meta`, `.fx-block-figs`
+and `.fx-block-sep` beside `.fx-block-note` at ~17196. **The quote is 15.5 px against the
+panel's 13.5 px** — every earlier round of this fiche set the Board's own sentence smaller
+than our summary of the block, which is the hierarchy inverted.
+
+### f. State
+
+Typecheck clean, eslint clean on both files, **453/453** (449 + four for `blockLead`).
+NOT screenshotted: `:3100` serves the production build at `74c47f52` and this is not in it.
+The demo-block list is in the handover; those eight are the ones to click.

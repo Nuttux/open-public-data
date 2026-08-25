@@ -487,6 +487,89 @@ export function blockShape(decisions: readonly BlockDecision[]): BlockShape | nu
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
+ * THE LEAD — the record's own line, and why it is now the first thing on the
+ * fiche.
+ *
+ * > "Lead with the record's own line. The most distinctive thing the Board
+ * > decided on that block, near the top, in the volume's own words, with its
+ * > year and a visible way to open the scanned page. That is the demo moment."
+ *
+ * The panel opened on demographics and put the Board's own printed sentence
+ * fourth. Every open-data portal in the world has the demographics; **nobody
+ * else has that sentence**, and it is the one thing on this map that a reader
+ * can click through to a scan of. So the record leads.
+ *
+ * ── THE RANKING IS NOT RE-TUNED HERE, AND NO NEW SCORER IS ADDED ─────────
+ * `pickHeadline` is the settled per-block pick — its reach window is FICHE.md
+ * §12's and the four scoring passes behind the neighbourhood's own ranking are
+ * §18's. This is that SAME function run over the whole block instead of over
+ * one decade of it, on rows that arrive from the shard already in rank order.
+ * Nothing here reorders anything.
+ *
+ * What is added is a READABILITY gate, ported field-for-field from
+ * `build_hood_facts.classify()`'s tier 9 — the Journal's own machinery, its
+ * cross-references, fragments under 40 characters, and lines a reader cannot
+ * read through. It can only ever REMOVE a line from consideration; it can
+ * never move one up. Without it the first sentence of the demo could be
+ * *"1,588.11 December (I, 11)07 — To the Barber Asphalt l\*avinjr Company"*,
+ * which is exactly what §18e was written about.
+ * ──────────────────────────────────────────────────────────────────────────── */
+
+/** the Journal's own machinery. Anchored, so a line that MENTIONS a committee
+    is not demoted — only one that IS the committee's procedural note. */
+const PROCEDURAL_HEAD =
+  /^\s*(?:on\s+recommendation\s+of|read\s+and\s+ordered|ordered\s+filed|referred\s+to\s+(?:the\s+)?committee|passed\s+for\s+second\s+reading|finally\s+passed|action\s+deferred|adopted\s+by\s+the\s+following\s+vote|suspension\s+of\s+rules|the\s+following\s+(?:resolution|ordinance)\s+was)\b/i;
+/** a pointer at the Journal's own neighbouring item. A reader cannot know what
+    the preceding item was, so it can never be the face of a block. */
+const SELF_REFERENTIAL = /\b(?:companion\s+measure|preceding\s+item)\b/i;
+/** a digit against a letter, or a character no word carries */
+const BROKEN_TOKEN = /[A-Za-z][0-9]|[0-9][A-Za-z]|[^\sA-Za-z0-9'\-/&.,;:()$%"]/;
+const HAS_LETTER = /[A-Za-z]/;
+const VOWEL = /[aeiouyAEIOUY]/;
+const EDGE_PUNCT = /^[.,;:()[\]"']+|[.,;:()[\]"']+$/g;
+const JUNK_MAX = 0.1;
+
+/**
+ * The share of a line's word tokens a reader cannot read through.
+ *
+ * On CHARACTERS, not on a dictionary — a spell check would throw away every
+ * surname and every street the city ever named. `Sciiool` and `IVIay` are read
+ * straight past; `l*avinjr` is not.
+ */
+export function junkShare(line: string): number {
+  const words = line.split(/\s+/).filter((w) => HAS_LETTER.test(w));
+  if (words.length === 0) return 1;
+  let bad = 0;
+  for (const w of words) {
+    const core = w.replace(EDGE_PUNCT, "");
+    if (BROKEN_TOKEN.test(core) || (core.length >= 4 && !VOWEL.test(core))) bad++;
+  }
+  return bad / words.length;
+}
+
+/** whether a printed line can stand on its own as the face of a block */
+export function isPrintableLine(raw: string): boolean {
+  const line = raw.trim();
+  if (line.length < FRAGMENT_CHARS) return false;
+  if (PROCEDURAL_HEAD.test(line)) return false;
+  if (SELF_REFERENTIAL.test(line)) return false;
+  return junkShare(line) <= JUNK_MAX;
+}
+
+/**
+ * The one line the fiche opens on, or null where the block holds nothing that
+ * can stand alone — in which case the panel simply does not draw the section,
+ * exactly as it does not draw a money section for a block with no money.
+ */
+export function blockLead(
+  decisions: readonly BlockDecision[],
+): BlockDecision | null {
+  const printable = decisions.filter((d) => isPrintableLine(d.t));
+  if (printable.length === 0) return null;
+  return pickHeadline(printable);
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
  * WHAT THE CITY KEPT DECIDING HERE — counted, never classified.
  *
  * There is no subject on a row. `f` is a phase, not a topic, and any model
@@ -964,6 +1047,51 @@ function loadSoft<T>(url: string): Promise<T | null> {
   return fetch(url)
     .then((r) => (r.ok ? (r.json() as Promise<T>) : null))
     .catch(() => null);
+}
+
+
+/**
+ * THE JUDGED LEADS — a small, honest, PARTIAL seed.
+ *
+ * > "why you using rarity — you're an LLM, you have intelligence, you can
+ * > decide what's most relevant to humans and stands out."
+ *
+ * Correct, and a rarity score was tried and stopped for exactly this. Ranking
+ * by how unusual a line's words are is a proxy for judgement invented because
+ * judgement was not available; what it surfaces is surnames and scanning
+ * damage. **Selecting which real line to show is not writing prose** — the
+ * shown text is the volume's own, verbatim, always — so the choice is made by
+ * reading, once, and cached.
+ *
+ * THE RUBRIC IS IN `block-leads.json` ITSELF, beside the count of how many
+ * blocks it was actually applied to. **It is a handful, not 4,679**, and the
+ * file says so in a field named to be impossible to skim past. Every other
+ * block falls back to `blockLead()`, which is a readability gate over the
+ * pipeline's existing rank order and is NOT a judgement about significance.
+ * Nothing on the panel claims otherwise.
+ *
+ * The seed stores `u` and the first 56 characters, never the line: the shown
+ * text is always the shard's own, so a stale seed can only fail to match and
+ * fall back — it can never put words on the page the record does not hold.
+ */
+export interface BlockLeadPicks {
+  readonly meta: Record<string, unknown>;
+  readonly pick: Record<string, { readonly u: string; readonly y: number; readonly t0: string }>;
+}
+
+export function loadBlockLeadPicks(): Promise<BlockLeadPicks | null> {
+  return loadSoft<BlockLeadPicks>(`${BASE}/block-leads.json`);
+}
+
+/** the judged line for this block, or null — never a line the shard lacks */
+export function judgedLead(
+  picks: BlockLeadPicks | null,
+  blockId: string,
+  decisions: readonly BlockDecision[],
+): BlockDecision | null {
+  const p = picks?.pick?.[blockId];
+  if (!p) return null;
+  return decisions.find((d) => d.u === p.u && d.t.trim().startsWith(p.t0)) ?? null;
 }
 
 export function loadBlockFacts(): Promise<BlockFactsFile | null> {

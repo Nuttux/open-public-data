@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  blockLead,
   blockShape,
   blockSubjects,
   decadeGroups,
@@ -254,5 +255,39 @@ describe("streetLabel", () => {
   it("spells a street key the way a reader writes it", () => {
     expect(streetLabel("PINE|ST")).toBe("Pine St");
     expect(streetLabel("GOLDEN GATE|AVE")).toBe("Golden Gate Ave");
+  });
+});
+
+describe("blockLead — the line the fiche opens on", () => {
+  const row = (t: string, extra: Partial<BlockDecision> = {}): BlockDecision => ({
+    y: 1920, d: "", k: "R", p: 3, f: 0, a: 0, u: "vol/1", t, ...extra,
+  });
+
+  it("passes over the Journal's own machinery, however early it is ranked", () => {
+    const lead = blockLead([
+      row("On recommendation of the Streets Committee, the same was adopted."),
+      row("Granting Laundry Permit, James R. Kenny, 388-390 Eddy Street.", { g: "h" }),
+    ]);
+    expect(lead?.t).toContain("Laundry Permit");
+  });
+
+  it("passes over a line a reader cannot read through", () => {
+    const lead = blockLead([
+      row("1,588.11 December (I, 11)07 — To the Barber Asphalt l*avinjr Company"),
+      row("Ordering Construction of a Bond Sewer in Islais Creek Channel.", { g: "h" }),
+    ]);
+    expect(lead?.t).toContain("Islais Creek");
+  });
+
+  it("returns null rather than a fragment when the block has nothing that stands alone", () => {
+    expect(blockLead([row("Fortysixth Avenue and Irving Street.")])).toBeNull();
+    expect(blockLead([])).toBeNull();
+  });
+
+  it("keeps a surname and a scanning wart the reader reads straight past", () => {
+    // the gate is on characters, not on a dictionary: `Sciiool` is legible.
+    expect(
+      blockLead([row("Accepting Deed to Lands Required for the Sciiool on Noriega Street.")])?.t,
+    ).toContain("Sciiool");
   });
 });
