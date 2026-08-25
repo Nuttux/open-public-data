@@ -17,10 +17,22 @@ import { loadSfContractFiche } from "@/app/us/city/sf/contracts/data";
 
 const SOURCE = "DataSF";
 
+/** A share card must never 500 — a failed card means the shared link renders
+ *  nothing at all. Any loader that throws (the exports use both a throwing and
+ *  a nullable reader) degrades to a plainer card instead. */
+function safe<T>(load: () => T): T | null {
+  try {
+    return load();
+  } catch {
+    return null;
+  }
+}
+
+
 export function renderSfPlaceOg(slug: string) {
   // Counts live on the index entry; the photo lives on the fiche.
-  const row = loadSfPlacesIndex().find((r) => r.slug === slug);
-  const fiche = loadSfPlace(slug);
+  const row = safe(() => loadSfPlacesIndex().find((r) => r.slug === slug)) ?? undefined;
+  const fiche = safe(() => loadSfPlace(slug));
   const name = row?.name ?? fiche?.name ?? "San Francisco";
 
   // funds_usd is 0 for plenty of places (no contract payments recorded). Lead
@@ -49,7 +61,7 @@ export function renderSfPlaceOg(slug: string) {
 }
 
 export function renderSfPayeeOg(slug: string) {
-  const payee = loadSfPayee(slug);
+  const payee = safe(() => loadSfPayee(slug));
   const name = payee?.name ?? "City payee";
 
   const years =
@@ -83,7 +95,7 @@ export function renderSfPayeeOg(slug: string) {
 }
 
 export function renderSfContractOg(contractNo: string) {
-  const fiche = loadSfContractFiche(contractNo);
+  const fiche = safe(() => loadSfContractFiche(contractNo));
   const c = fiche?.contract;
 
   // Prefer the plain-English relabel from the vulgarisation layer; the raw

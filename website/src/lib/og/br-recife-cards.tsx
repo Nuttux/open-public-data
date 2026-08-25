@@ -16,6 +16,18 @@ import { titleCasePt } from "@/lib/br/format";
 
 const FONTE = "Prefeitura do Recife";
 
+/** A share card must never 500 — a failed card means the shared link renders
+ *  nothing at all. Any loader that throws (the exports use both a throwing and
+ *  a nullable reader) degrades to a plainer card instead. */
+function safe<T>(load: () => T): T | null {
+  try {
+    return load();
+  } catch {
+    return null;
+  }
+}
+
+
 /**
  * The register's `objeto` is a full procurement paragraph in block capitals.
  * Title-case it and cut at a word boundary so the card carries a readable
@@ -30,8 +42,8 @@ function shortObjeto(raw: string, max = 110): string {
 }
 
 export function renderRecifeLugarOg(slug: string) {
-  const place = loadPlace(slug);
-  const obras = loadPlaceObras(slug);
+  const place = safe(() => loadPlace(slug));
+  const obras = safe(() => loadPlaceObras(slug));
   const nome = place?.nome ?? "Recife";
 
   const total = obras?.obras_total ?? place?.obras_total ?? 0;
@@ -59,7 +71,7 @@ export function renderRecifeLugarOg(slug: string) {
 }
 
 export function renderRecifeContratoOg(id: string) {
-  const found = loadContrato(id);
+  const found = safe(() => loadContrato(id));
   const c = found?.contrato;
 
   const titulo = c?.objeto ? shortObjeto(c.objeto) : "Contrato da Prefeitura do Recife";
@@ -90,7 +102,7 @@ export function renderRecifeContratoOg(id: string) {
 }
 
 export function renderRecifeRecebedorOg(cnpj: string) {
-  const r = loadRecipient(cnpj);
+  const r = safe(() => loadRecipient(cnpj));
   const nome = r?.nome ?? "Recebedor";
 
   const bars = (r?.by_year ?? [])

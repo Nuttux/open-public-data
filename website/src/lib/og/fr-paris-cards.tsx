@@ -13,8 +13,20 @@ import { loadAssociation, loadContrat, loadFournisseur, loadMarcheVulgarization 
 
 const SOURCE = "Paris Open Data";
 
+/** A share card must never 500 — a failed card means the shared link renders
+ *  nothing at all. Any loader that throws (the exports use both a throwing and
+ *  a nullable reader) degrades to a plainer card instead. */
+function safe<T>(load: () => T): T | null {
+  try {
+    return load();
+  } catch {
+    return null;
+  }
+}
+
+
 export function renderParisLieuOg(slug: string) {
-  const lieu = loadLieuxIndex().find((l) => l.slug === slug);
+  const lieu = safe(() => loadLieuxIndex().find((l) => l.slug === slug)) ?? undefined;
   const nom = lieu?.name ?? "Paris";
 
   const own = localPhotoDataUri(lieu?.photo);
@@ -43,10 +55,10 @@ export function renderParisLieuOg(slug: string) {
 }
 
 export function renderParisContratOg(numero: string) {
-  const c = loadContrat(numero, "paris");
+  const c = safe(() => loadContrat(numero, "paris"));
   // Same precedence as the fiche: the plain-French rewrite when it exists,
   // the raw DECP label otherwise.
-  const vulg = loadMarcheVulgarization(numero, "paris");
+  const vulg = safe(() => loadMarcheVulgarization(numero, "paris"));
   const titre = vulg?.objet_clair ?? c?.objet ?? `Marché ${numero}`;
 
   // montantMax is the notified envelope; montantMin only differs on ranged lots.
@@ -80,7 +92,7 @@ export function renderParisContratOg(numero: string) {
 }
 
 export function renderParisFournisseurOg(siren: string) {
-  const f = loadFournisseur(siren, "paris");
+  const f = safe(() => loadFournisseur(siren, "paris"));
   const nom = f?.nom ?? "Fournisseur";
   // The supplier's biggest category is the best theme signal it carries.
   const topCat = f?.byCategory?.slice().sort((a, b) => b.amount - a.amount)[0]?.category;
@@ -105,7 +117,7 @@ export function renderParisFournisseurOg(siren: string) {
 }
 
 export function renderParisAssociationOg(slug: string) {
-  const a = loadAssociation(slug, "paris");
+  const a = safe(() => loadAssociation(slug, "paris"));
   const nom = a?.name ?? "Association";
   const borrowed = themeImage(themeFor(a?.theme), "paris", "fr");
 

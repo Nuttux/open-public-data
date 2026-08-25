@@ -51,6 +51,62 @@ const nextConfig: NextConfig = {
    * in production.
    */
   outputFileTracingIncludes: {
+    /**
+     * Share cards. Each opengraph-image is its own function, and it opens the
+     * same exports its page does — but a route added after the excludes above
+     * inherits them without inheriting anyone's includes, so the files have to
+     * be named here. The BR cards proved it in production: the two whose
+     * loaders use the throwing `readDataJson` returned 500, while the one on
+     * `readDataJsonOrNull` degraded quietly to a card with no figure.
+     *
+     * The theme photos are read by path at render time, so tracing cannot see
+     * them either.
+     */
+    '/br/city/recife/lugares/[slug]/opengraph-image': [
+      './public/data/br/recife/places.json',
+      './public/data/br/recife/place_editorial.json',
+      './public/data/br/recife/place_obras.json',
+      './public/img/themes/**',
+      './public/img/br/recife/places/**',
+    ],
+    '/br/city/recife/contratos/[id]/opengraph-image': [
+      './public/data/br/recife/contratos.json',
+      './public/img/themes/**',
+    ],
+    '/br/city/recife/quem-recebe/[cnpj]/opengraph-image': [
+      './public/data/br/recife/recipients.json',
+      './public/img/themes/**',
+    ],
+    '/us/city/sf/places/place/[slug]/opengraph-image': [
+      './public/data/us/sf/places/**',
+      './public/img/themes/**',
+      './public/img/us/sf/places/**',
+    ],
+    '/us/city/sf/who-gets-paid/payee/[slug]/opengraph-image': [
+      './public/data/us/sf/payees/**',
+      './public/img/themes/**',
+    ],
+    '/us/city/sf/contracts/contract/[no]/opengraph-image': [
+      './public/data/us/sf/contracts/**',
+      './public/img/themes/**',
+    ],
+    '/fr/city/paris/lieu/[slug]/opengraph-image': [
+      './public/data/lieux/**',
+      './public/img/themes/**',
+      './public/img/lieux/**',
+    ],
+    '/fr/city/paris/marches/contrat/[numero]/opengraph-image': [
+      './public/data/marches-publics/**',
+      './public/img/themes/**',
+    ],
+    '/fr/city/paris/marches/fournisseur/[siren]/opengraph-image': [
+      './public/data/marches-publics/**',
+      './public/img/themes/**',
+    ],
+    '/fr/city/paris/subventions/association/[slug]/opengraph-image': [
+      './public/data/subventions/**',
+      './public/img/themes/**',
+    ],
     '/us/city/sf/the-city': [
       './public/data/us/sf/city/manifest.json',
       './public/data/us/sf/city/blocks/block-index.json',
