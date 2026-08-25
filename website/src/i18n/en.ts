@@ -1210,8 +1210,8 @@ const en: Record<string, string> = {
   'fx.land.deck.h2.em': "looks like",
   'fx.land.deck.h2.dot': '.',
   'fx.land.deck.lieu.kicker': 'Place',
-  'fx.land.deck.lieu.meta': "in identified public money since {depuis} · {kind}, {arr}e",
-  'fx.land.deck.lieu.meta_nodate': "in identified public money · {kind}, {arr}e",
+  'fx.land.deck.lieu.meta': "in identified City money since {depuis} · {kind}, {arr}e",
+  'fx.land.deck.lieu.meta_nodate': "in identified City money · {kind}, {arr}e",
   'fx.land.deck.lieu.cta': "Explore this place",
   'fx.land.deck.c2.kicker': 'Grant',
   'fx.land.deck.c2.title': 'Paris Musées (city museums)',
@@ -5702,7 +5702,7 @@ const en: Record<string, string> = {
   'fx.lieu.frise.aria': 'Timeline of the place: archives, decisions and public money from 1882 to today.',
   'fx.lieu.moments_more': 'See {n} more moments',
   'fx.lieu.moments_more1': 'See one more moment',
-  'fx.lieux.card_argent': 'public money identified',
+  'fx.lieux.card_argent': 'identified City money',
   'fx.lieux.card_depuis': 'archives since',
 
   // ── Recife (br-municipal) — English mirror of i18n/pt.ts br.* keys ──────────

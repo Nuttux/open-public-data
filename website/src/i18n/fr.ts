@@ -1207,8 +1207,8 @@ const fr: Record<string, string> = {
   'fx.land.deck.h2.em': "ça ressemble",
   'fx.land.deck.h2.dot': '.',
   'fx.land.deck.lieu.kicker': 'Lieu',
-  'fx.land.deck.lieu.meta': "d'argent public identifié depuis {depuis} · {kind}, {arr}ᵉ",
-  'fx.land.deck.lieu.meta_nodate': "d'argent public identifié · {kind}, {arr}ᵉ",
+  'fx.land.deck.lieu.meta': "d'argent de la Ville identifié depuis {depuis} · {kind}, {arr}ᵉ",
+  'fx.land.deck.lieu.meta_nodate': "d'argent de la Ville identifié · {kind}, {arr}ᵉ",
   'fx.land.deck.lieu.cta': "Explorer le lieu",
   'fx.land.deck.c2.kicker': 'Subvention',
   'fx.land.deck.c2.title': 'Paris Musées',
@@ -5708,7 +5708,7 @@ const fr: Record<string, string> = {
   'fx.lieu.frise.aria': 'Frise chronologique du lieu : archives, décisions et argent public de 1882 à aujourd\'hui.',
   'fx.lieu.moments_more': 'Voir les {n} autres moments',
   'fx.lieu.moments_more1': 'Voir un autre moment',
-  'fx.lieux.card_argent': 'argent public identifié',
+  'fx.lieux.card_argent': 'argent de la Ville identifié',
   'fx.lieux.card_depuis': 'archives depuis',
 };
 
