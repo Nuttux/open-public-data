@@ -3300,3 +3300,96 @@ at the old 12,000 ms too: 229 × 12000/5600 = 491 ms, still under 520.
 All ten `run` acts now read `even`. The camera keeps `move`; the three `build`
 curves are untouched. Same argument as the fire, and the record's own: the city
 did not rebuild faster in 1910 than in 1907.
+
+## 26 · Block M1f — the rest of the walk, and what was left alone
+
+### 26.1 Japantown: the district the shot is named for was 22 % of the frame
+
+The one protected shot that changed, and it is worth being explicit about why
+that is not a violation. NIGHT3: *"tight on the Western Addition and
+**completely still**. No move, no effect."* **It is still completely still —
+only where the still camera SITS has moved.** No act was added, no curve, no
+effect; shot 5 keeps the longest hold in the film.
+
+What was wrong at `z` 5.5, on `out-n4/shots-s05.png`, three things at once:
+the ring the whole shot is built on was about a fifth of the frame's width with
+its southern half dissolving into the distance haze; the copy plate sat on its
+south-west corner; and the hood label read **"JAPANT WN"** because the ring's
+own west edge was drawn through the middle of the word.
+
+`z` 5.5 → **10**, `off` (0, −0.10) → **(0.08, 0.05)**. Five framings shot
+(`out-n3/frame-s05-*.png`). At 10 the four streets ARE the frame, the Western
+Addition's own fabric resolves inside them — the Victorian roofs, the
+mid-block trees, Bush, Scott, Gough and Van Ness all named — and the ring is
+clear of the plate. At 12 it is larger still and the ring's south edge starts
+to show the gap in Ellis's published centreline (§21.6: the block where
+Fillmore would cross, which the redevelopment cut), which reads as a broken
+line rather than as honesty. 10 is where both are true at once.
+
+### 26.2 Mission Bay: the reframe was worse, and the shot is left alone
+
+Shot 10's subject is in the bottom-right corner of a beautiful frame, so three
+tighter cameras were shot on it — `z` 5.5, 7 and 9 (`out-n3/frame-s10-*.png`).
+**All three are worse**, and the reason is the fabric, not the camera: at 2018
+Mission Bay is low pale blocks with flat roofs on pale made ground, so a camera
+that fills the frame with it fills the frame with nothing to look at, and it
+loses the Bay Bridge, the Embarcadero curve and the downtown towers that make
+the shipped frame handsome. The ring and the label already point at the
+subject. **Left as shipped**, and this is recorded as a rejected change rather
+than as an open defect.
+
+### 26.3 The Golden Gate on shot 11 is two orange masts, and that is NOT a bug
+
+`out-n4/shots-s11.png` ends the film on the city's most famous object drawn as
+two towers, a sagging cable and a deck too thin to see. Two causes were
+proposed and **both were checked before either was acted on. Neither is a bug.**
+
+1. *"The towers are drawn far too tall."* They are drawn on **ZEX** (the
+   TERRAIN dial, 3.3 at the whole-city band) and every building beside them is
+   on **ZEXB** (1.6). That is deliberate and `landmarks.ts` §THE ONE THING THIS
+   PORT HAD BACKWARDS states it: *"every height here is above sea level, so the
+   whole structure is drawn on ZEX and not on ZEXB. A bridge deck at 67.1 m
+   stands beside headlands at 60 m, and if the two used different exaggerations
+   the picture would be a lie about which is higher."* An earlier port drew the
+   deck on one and the towers on the other. **Do not undo this.**
+2. *"The deck is missing."* It is drawn unconditionally above `GGB_MIN_PX = 8`.
+   The Golden Gate runs north–south, and at this bearing a north–south metre
+   projects at `√2·sA / (√2·CA)` = **0.485** of an east–west one, so the ring's
+   ~27 m width lands at about **3 px**. The deck is there and it is three
+   pixels wide.
+
+So the frame is the honest consequence of two decisions that are each right.
+It is left alone. If it is ever worth fixing, the fix is a **minimum drawn deck
+width** stated as the drawing convention it would be — the same class of
+decision as the suspender spacing and the leg size, both of which
+`encode_city_chunks.py` already declares as drawing decisions — and not a
+change to either exaggeration.
+
+### 26.4 The rail caption and the chat launcher, re-measured
+
+NIGHT3 item 2. **Still fixed**, and measured again rather than assumed:
+`.parity/n3railmax.py` at `:3100` walks 1906 → 2025 and compares the caption's
+own PAINTED right edge (every text node's client rects) against the launcher.
+
+```
+  worst painted right edge   1245 px   (1972)
+  launcher left edge         1270 px
+```
+
+25 px of clearance, no year overlaps. The note element's `getBoundingClientRect`
+still reports 1416 because the fix is `padding-right: 168px` — a reserved lane —
+so an instrument that measures the BOX still reports an overlap that the reader
+never sees. Anything that lengthens the string in `en.ts` or `fr.ts` puts it
+back under the pill; this is the number to re-run.
+
+### 26.5 What was looked at and deliberately not changed
+
+- **The shot-2 caveat block.** Three lines of small grey prose under the
+  citation chips. It is not a fourth narration line — §20.2 authored it as
+  `note`, the caveat a derived figure carries, styled quieter than the copy on
+  purpose. Checked before flagging.
+- **The label count on the wide shots** (4, 7, 11). Twenty-five to thirty names
+  on a cinematic wide is the loudest thing on those frames. §21.3 measured this
+  and left the hood lane alone because the collision grid's own ordering beat
+  every cap that could be justified. It is still the biggest open question on
+  the wide shots and it is an editorial call, not a defect.

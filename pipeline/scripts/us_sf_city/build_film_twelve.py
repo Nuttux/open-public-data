@@ -106,8 +106,15 @@ SHOTS: list[dict] = [
     # 5 · JAPANTOWN. Tight on the Western Addition and, after the move that
     # gets there, completely still. Nothing rises but the four streets the
     # resolution names. Restraint is the design here.
+    # `z` 5.5 -> 10 and the offset to (0.08, 0.05): FILM.md §26.1. IT STAYS
+    # COMPLETELY STILL — only where the still camera SITS moves. At 5.5 the
+    # district the shot is named for was 22 % of the frame's width with its
+    # southern half in the distance haze, the copy plate sat on its
+    # south-west corner, and the hood label read "JAPANT WN" because the
+    # ring's own west edge crossed it. At 10 the four streets are the frame,
+    # the fabric inside them resolves, and the ring is clear of the plate.
     dict(n=5, id="japantown", title="Japantown",
-         t=(-122.429078, 37.786676), z=5.5, off=(0.0, -0.10), move=1800, ms=10800,
+         t=(-122.429078, 37.786676), z=10.0, off=(0.08, 0.05), move=1800, ms=10800,
          st=(1937, 1942)),
     # 6 · THE WAR MEMORIAL. `z` 20 -> 44 and the offset to (-0.04, -0.16):
     # FILM.md §25.3. At 20 the Opera House was a small pale block right of
