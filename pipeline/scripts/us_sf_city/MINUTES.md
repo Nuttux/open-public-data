@@ -622,41 +622,52 @@ can leave the old half bit-identical.
 
 ## 18.3 What the rail looks like, for the design conversation
 
+**CORRECTED 2026-08-26.** The first version of this table was measured on the
+build that preceded the order-independence redesign of §19, and it shipped into
+this file before that redesign moved 9,551 pre-1999 rows. The figures below are
+re-measured against **what is actually published** —
+`website/public/data/us/sf/city/blocks/`, commit `91de7fa0` — and verified
+byte-identical to the final build across all 5,089 blocks.
+
 ```
 decade    blocks with a record       decisions
           before      after       before     after
-1900s      1,715      1,715        6,203      6,202
-1910s      3,361      3,361       22,650     22,646
-1920s      3,836      3,836       26,845     26,844
-1930s      2,806      2,806        9,068      9,067
-1940s      2,048      2,048        5,357      5,357
-1950s      1,889      1,889        3,897      3,897
-1960s      1,613      1,613        2,980      2,980
-1970s      2,154      2,153        4,642      4,641
-1980s      2,021      2,021        5,489      5,486
-1990s      1,820      1,829        4,185      4,241
-2000s         24      1,598           26      3,854
-2010s         49        956           49      2,259
+1900s      1,715      1,715        6,203      6,183
+1910s      3,361      3,361       22,650     22,580
+1920s      3,836      3,837       26,845     26,645
+1930s      2,806      2,802        9,068      8,959
+1940s      2,048      2,051        5,357      5,378
+1950s      1,889      1,937        3,897      4,148
+1960s      1,613      1,672        2,980      3,203
+1970s      2,154      2,156        4,642      4,651
+1980s      2,021      2,021        5,489      5,406
+1990s      1,820      1,826        4,185      4,213
+2000s         24      1,598           26      3,799
+2010s         49        955           49      2,234
 ```
 
 ```
 blocks gaining a 2000s decade                       1,574
-blocks gaining a 2010s decade                         907
-blocks gaining BOTH                                   539
+blocks gaining a 2010s decade                         906
+blocks gaining BOTH                                   538
 blocks gaining at least one                         1,942   of 5,089 with any record
-of those, blocks that ALSO have a pre-1999 record    1,937
+of those, blocks that ALSO have a pre-1999 record    1,890   (97.3%)
+blocks carrying any record from 1999 onward         2,091
 ```
 
-**The two things worth knowing before designing anything.**
+**What changed from the stale version, and what did not.** The headline is
+unaffected: **1,890 of the 1,942 blocks that gain a modern decade already had a
+pre-1999 record — 97.3%.** The rail extends lines that already exist rather than
+sprouting a separate modern map, and that is still the fact the design should be
+built around. The earlier draft of this table said 1,937 of 1,942, and 3,854 /
+2,259 decisions for the 2000s and 2010s; the true published figures are 1,890,
+3,799 and 2,234. The pre-1999 decade counts also moved — 1950s 3,897 to 4,148,
+1960s 2,980 to 3,203 — which is the §19 one-time move, reviewed and accepted.
 
-**It is a continuation, not a new population.** 1,937 of the 1,942 blocks that
-gain a modern decade already had a pre-1999 record. The rail does not sprout a
-separate modern map; it extends lines that already exist.
-
-**The modern decades are lighter but not a cliff.** 3,854 and 2,259 against a
-Journal-era median of 5,486 and a 1990s of 4,241 — the same order of magnitude.
-And the 2010s figure is **2010–2016 only**, because the scanned series stops
-there; 2016–2026 is the sfbos half and is still unmerged (§13).
+**The modern decades are lighter but not a cliff.** 3,799 and 2,234 against a
+Journal-era median around 5,400 — the same order of magnitude. And the 2010s
+figure is **2010–2016 only**, because the scanned series stops there; 2016–2026
+is the sfbos half and is still unmerged (§13).
 
 Nothing here is a design proposal. It is the picture to decide from.
 
