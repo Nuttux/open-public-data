@@ -323,8 +323,30 @@ const HEADLINE_REACH_MAX = 8;
  */
 const FRAGMENT_CHARS = 40;
 
+/**
+ * THE FACE OF A DECADE IS GATED THE SAME WAY THE LEAD IS.
+ *
+ * > "Block 3551, the 1900s decade entry reads *«Xew Series), entitled, "(Jranting
+ * > ]»ernnssion, during the pleasure of the Board of Supervisors, to Long Syru])…»*
+ * > That is unreadable scanning damage shown to a reader."
+ *
+ * The gate was ported for the lead and the rail was left ungated, so the one
+ * defect §18e is entirely about came straight back one section down. It is the
+ * most damaging thing the panel can do: a reader who meets `l*avinjr` on the
+ * face of a decade concludes the whole record is unreliable, and in a room of
+ * archivists that is the only conclusion that matters.
+ *
+ * So `isPrintableLine` runs FIRST and the precedence runs over what survives.
+ * **The rows themselves are untouched** — every one of them is still inside the
+ * decade, still openable, still linked to its scan. What is gated is only what
+ * may stand as the decade's FACE, unopened, with nothing around it to say the
+ * page beneath is damaged.
+ *
+ * When nothing in a decade passes, this returns null and the rail prints the
+ * count with no quotation. A count is true; garbage is not.
+ */
 function pickHeadline(rows: readonly BlockDecision[]): BlockDecision | null {
-  const withLine = rows.filter((r) => r.t.trim().length > 0);
+  const withLine = rows.filter((r) => isPrintableLine(r.t));
   if (withLine.length === 0) return null;
   const reach = withLine.slice(
     0,
@@ -338,7 +360,8 @@ function pickHeadline(rows: readonly BlockDecision[]): BlockDecision | null {
   return (
     reach.find((r) => r.g === "h") ??
     reach.find((r) => r.g === "p") ??
-    reach.find((r) => r.t.trim().length >= FRAGMENT_CHARS) ??
+    // The old third fallback tested `>= FRAGMENT_CHARS`; every survivor of the
+    // gate already clears it, so it could never fail and is gone.
     withLine[0]
   );
 }
@@ -536,16 +559,48 @@ const JUNK_MAX = 0.1;
  * surname and every street the city ever named. `Sciiool` and `IVIay` are read
  * straight past; `l*avinjr` is not.
  */
-export function junkShare(line: string): number {
-  const words = line.split(/\s+/).filter((w) => HAS_LETTER.test(w));
-  if (words.length === 0) return 1;
-  let bad = 0;
-  for (const w of words) {
-    const core = w.replace(EDGE_PUNCT, "");
-    if (BROKEN_TOKEN.test(core) || (core.length >= 4 && !VOWEL.test(core))) bad++;
-  }
-  return bad / words.length;
+function brokenFlags(line: string): boolean[] {
+  return line
+    .split(/\s+/)
+    .filter((w) => HAS_LETTER.test(w))
+    .map((w) => {
+      const core = w.replace(EDGE_PUNCT, "");
+      return BROKEN_TOKEN.test(core) || (core.length >= 4 && !VOWEL.test(core));
+    });
 }
+
+export function junkShare(line: string): number {
+  const flags = brokenFlags(line);
+  if (flags.length === 0) return 1;
+  return flags.filter(Boolean).length / flags.length;
+}
+
+/**
+ * HOW MANY OF THE OPENING WORDS MAY BE BROKEN: none.
+ *
+ * MEASURED, because the 10 % share alone did not catch the line that was on
+ * screen. Block 3551's 1900s face — *"Xew Series), entitled, "(Jranting
+ * ]»ernnssion, during the pleasure of the Board of Supervisors, to Long
+ * Syru])"* — carries exactly ONE token the character rule can see (`»ernnssion`)
+ * in fourteen, which is **7.1 %** and passes a 10 % gate comfortably. It still
+ * reads as a broken page, because a line is read left to right and the damage
+ * is in its second word.
+ *
+ * Four rules were measured over 1,184 blocks and 5,509 decades that hold rows,
+ * counting how many decade faces each one costs:
+ *
+ * ```
+ *   share <= 10 %                      419  (7.6 %)   <- misses block 3551
+ *   share <=  5 %                      818 (14.8 %)
+ *   share <= 10 % and first 5 clean    437  (7.9 %)   <- ships
+ *   share <= 10 % and first 8 clean    450  (8.2 %)
+ * ```
+ *
+ * Zero broken tokens anywhere was measured too and costs **1,730 faces, 31.4 %
+ * of the rail** — a third of the decades quotation-less to catch a defect that
+ * a five-word head rule catches for three tenths of a point.
+ */
+const HEAD_WORDS = 5;
 
 /** whether a printed line can stand on its own as the face of a block */
 export function isPrintableLine(raw: string): boolean {
@@ -553,7 +608,10 @@ export function isPrintableLine(raw: string): boolean {
   if (line.length < FRAGMENT_CHARS) return false;
   if (PROCEDURAL_HEAD.test(line)) return false;
   if (SELF_REFERENTIAL.test(line)) return false;
-  return junkShare(line) <= JUNK_MAX;
+  const flags = brokenFlags(line);
+  if (flags.length === 0) return false;
+  if (flags.slice(0, HEAD_WORDS).some(Boolean)) return false;
+  return flags.filter(Boolean).length / flags.length <= JUNK_MAX;
 }
 
 /**
@@ -564,9 +622,9 @@ export function isPrintableLine(raw: string): boolean {
 export function blockLead(
   decisions: readonly BlockDecision[],
 ): BlockDecision | null {
-  const printable = decisions.filter((d) => isPrintableLine(d.t));
-  if (printable.length === 0) return null;
-  return pickHeadline(printable);
+  /* `pickHeadline` gates its own input now, so the filter that used to be here
+     would run twice over the same rows and mean the same thing. */
+  return pickHeadline(decisions);
 }
 
 /* ────────────────────────────────────────────────────────────────────────────

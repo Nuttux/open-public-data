@@ -1100,8 +1100,23 @@ function DecadeRow({
           </span>
           <span className="fx-block-n tnum">{n}</span>
         </span>
+        {/* NO LINE, AND THE TWO REASONS ARE NOT THE SAME SENTENCE.
+            `no_line` — "the volume prints no line for this entry" — was
+            printed for both, and it became false the moment `pickHeadline`
+            started gating unreadable scans: the volume DOES print a line
+            there, and it is the scan of it that cannot be quoted. The rows
+            are all still inside the decade, openable, each linked to its own
+            page, which is why offering to open them is the honest close. */}
         <span className="fx-block-line">
-          {group.headline ? group.headline.t : t("us.sf.thecity.panel.no_line")}
+          {group.headline
+            ? group.headline.t
+            : group.rows.some((r) => r.t.trim().length > 0)
+              ? tOr(
+                  t,
+                  "us.sf.thecity.panel.rail_unreadable",
+                  "The scan of this decade's entries is too damaged to quote — open it to read them.",
+                )
+              : t("us.sf.thecity.panel.no_line")}
         </span>
         {/* THE AFFORDANCE, ON THE ROW RATHER THAN IN A HINT ABOVE THE RAIL.
             A closed <details> whose marker is suppressed is a paragraph with

@@ -157,8 +157,41 @@ describe("decadeGroups", () => {
   });
 
   it("never heads a decade with a row the volume prints no line for", () => {
-    const g = decadeGroups([row({ y: 1931, t: "  " }), row({ y: 1932, t: "A whole printed line about a sewer." })]);
+    // the 1932 fixture grew past FRAGMENT_CHARS when `pickHeadline` started
+    // gating on readability: a 35-character line is a fragment and is now
+    // passed over on its own account, which would have made this pass for the
+    // wrong reason.
+    const g = decadeGroups([
+      row({ y: 1931, t: "  " }),
+      row({ y: 1932, t: "Ordering Construction of a Bond Sewer in Islais Creek Channel." }),
+    ]);
     expect(g.find((d) => d.decade === 1930)?.headline?.y).toBe(1932);
+  });
+
+  it("never heads a decade with a scan a reader cannot read through", () => {
+    const g = decadeGroups([
+      row({
+        y: 1906,
+        t: '(Jranting ]»ernnssion, during the pleasure of the Board of Supervisors, to Long Syru])',
+      }),
+      row({ y: 1908, t: "Granting Permission to Erect and Maintain a Storage Tank on Bryant Street." }),
+    ]);
+    expect(g.find((d) => d.decade === 1900)?.headline?.y).toBe(1908);
+  });
+
+  it("heads a decade with nothing at all rather than with damage", () => {
+    // the rows STAY in the decade — the count is still 1 and the shelf still
+    // opens onto the page. What is refused is standing that line up unopened
+    // as the face of a decade.
+    const g = decadeGroups([
+      row({
+        y: 1906,
+        t: '(Jranting ]»ernnssion, during the pleasure of the Board of Supervisors, to Long Syru])',
+      }),
+    ]);
+    const d = g.find((x) => x.decade === 1900);
+    expect(d?.headline).toBeNull();
+    expect(d?.rows.length).toBe(1);
   });
 });
 

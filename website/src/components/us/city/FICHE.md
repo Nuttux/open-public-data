@@ -2476,3 +2476,74 @@ than our summary of the block, which is the hierarchy inverted.
 Typecheck clean, eslint clean on both files, **453/453** (449 + four for `blockLead`).
 NOT screenshotted: `:3100` serves the production build at `74c47f52` and this is not in it.
 The demo-block list is in the handover; those eight are the ones to click.
+
+## 22. Block F1, 2026-08-25 — the gate reaches the rail, measured properly this time
+
+### a. The gate was on the lead and NOT on the rail
+
+> "Block 3551, the 1900s decade entry reads *«Xew Series), entitled, "(Jranting
+> ]»ernnssion, during the pleasure of the Board of Supervisors, to Long Syru])»*. That is
+> unreadable scanning damage shown to a reader."
+
+§21 ported the readability gate for `blockLead` and left `pickHeadline` — which is what heads
+every decade of the rail — ungated. The one defect §18e is entirely about came back one
+section down, on the section that occupies most of the panel.
+
+The gate now runs **inside `pickHeadline`**, so the lead and every decade face are held to one
+rule and `blockLead` no longer filters anything itself. **No row is removed from the record:**
+every line is still inside its decade, still openable, still linked to its own scan. What is
+refused is standing a damaged line up *unopened* as the face of a decade.
+
+### b. AND THE PORTED GATE DID NOT CATCH IT — measured
+
+This is the part worth keeping. `Xew Series), entitled, "(Jranting ]»ernnssion, …"` carries
+**exactly one token the character rule can see (`»ernnssion`) in fourteen — 7.1 %**, which
+passes a 10 % threshold comfortably. It still reads as a broken page, because a line is read
+left to right and the damage is in its second word.
+
+Four rules over **1,184 blocks and 5,509 decades that hold rows**, counting decade faces lost:
+
+```
+share <= 10 %                       419   7.6 %   <- misses block 3551
+share <=  5 %                       818  14.8 %
+share <= 10 % and first 5 clean     437   7.9 %   <- SHIPS
+share <= 10 % and first 8 clean     450   8.2 %
+zero broken tokens anywhere       1,730  31.4 %
+```
+
+Zero-tolerance was the obvious answer and it takes the quotation off **a third of the rail**.
+The five-word head rule catches the offender for three tenths of a point. `HEAD_WORDS = 5`,
+and the table above is in the source beside it.
+
+**Block 3551's 1900s holds exactly one row**, so it correctly falls to no face at all: the
+decade still shows its count and still opens.
+
+### c. `no_line` had become false
+
+It reads *"The volume prints no line for this entry"*, and it was printing on both cases. When
+the gate fires the volume DOES print a line — the scan of it cannot be quoted. Two different
+sentences now, chosen on whether any row in the decade carries text.
+
+### d. The frame's running count is deleted — `CityScrub.tsx`
+
+> "basically the what is on this frame stuff can be removed"
+
+*"2,051 of the 2,051 streets the Board voted to accept are drawn by 2025"* is the deleted
+"what is on this frame" panel surviving in a different element, and at the end of the rail it
+says a number over itself. Gone. The note keeps a **control** (the next dated moment, which
+moves the rail) and a **caveat** (the one the year has earned); neither is a readout.
+
+It was also the ochre bars' only key, which is a real loss and not a hidden one:
+`us.sf.thecity.scrub.streets` stays in both dictionaries and `.fx-city-key-vote` stays in the
+stylesheet, so re-attaching the sentence to its mark is one line if the legend is wanted back.
+**`CityScrub.tsx` is not this block's file** — done on the coordinator's explicit instruction.
+
+### e. One key, and the eight demo blocks re-checked
+
+```ts
+'us.sf.thecity.panel.rail_unreadable': "The scan of this decade's entries is too damaged to quote — open it to read them.",
+```
+
+Behind `tOr()`. All eight judged leads in `block-leads.json` still resolve against the shards
+after the stronger gate — checked by matching `u` + the stored 56 characters, not assumed.
+Typecheck clean, eslint clean, **455/455**.

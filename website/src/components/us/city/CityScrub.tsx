@@ -574,18 +574,24 @@ function ScrubNote({
   const nf = useMemo(() => new Intl.NumberFormat("en-US"), []);
   const iy = year ?? SCRUB_MAX;
 
-  let drawn = 0;
-  for (let i = 0; i < rail.votes.length; i++) {
-    if (rail.votes[i].y > iy) break;
-    drawn = rail.cum[i];
-  }
   const next = rail.moments.find((m) => m.y > iy) ?? null;
   const un = undatedTotal();
 
-  const streets = t("us.sf.thecity.scrub.streets")
-    .replace("{n}", nf.format(drawn))
-    .replace("{of}", nf.format(rail.total))
-    .replace("{year}", String(iy));
+  /* ── THE RUNNING COUNT IS GONE ──────────────────────────────────────────
+     > "basically the what is on this frame stuff can be removed"
+
+     It read *"2,051 of the 2,051 streets the Board voted to accept are drawn
+     by 2025"* — a readout of what the renderer had finished drawing, which is
+     the "what is on this frame" panel Daniel had deleted, surviving in a
+     different element. At the end of the rail it says a number over itself,
+     which is the form the deletion was about.
+
+     It was also the ochre bars' only key, and that is a real loss rather than
+     a hidden one: `us.sf.thecity.scrub.streets` stays in both dictionaries and
+     `.fx-city-key-vote` stays in the stylesheet, so re-attaching the sentence
+     to the mark is one line if the legend is wanted back. What the note keeps
+     is a CONTROL (the next dated moment, which moves the rail) and a CAVEAT
+     (the one the year has earned) — neither of which is a readout. */
 
   /* ONE caveat, and it is whichever one the year the reader is on has earned.
      Stacking them reads as a disclaimer and gets skipped, which is the one
@@ -643,10 +649,6 @@ function ScrubNote({
 
   return (
     <p className="fx-city-scrub-note" aria-live="polite">
-      <span className="fx-city-scrub-count">
-        <i className="fx-city-key fx-city-key-vote" aria-hidden="true" />
-        {streets}
-      </span>
       {next ? (
         /* THE ARROW IS THE POINT. It named a year and a building and left the
            reader to find an 8 px diamond among a hundred and nineteen years.
