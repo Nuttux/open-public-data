@@ -161,8 +161,14 @@ export default function TheCityClient({ data }: { data: TheCityPageData }) {
                  shot list, so the two cannot drift. The dictionary key is
                  another block's file and is left alone; it is unused here and
                  its wording is filed in FILM.md §18 for its owner. */
+              /* NO META LINE ONCE THE FILM CAN PLAY. It said "Eleven moments
+                 from the city's own record, 1906 to 2019 · 1 min 29 s", which
+                 is the title card's job and the runtime's, and the runtime now
+                 rides the button where the only question it answers — how long
+                 is this — gets answered at the point of pressing. Before the
+                 film is ready the plate still states what the map holds. */
               film.ready
-                ? `${film.payload?.title.sub ?? t("us.sf.thecity.film.entry_meta")} · ${film.runtimeLabel}`
+                ? undefined
                 : t("us.sf.thecity.entry.meta")
                     .replace("{buildings}", nfInt.format(data.buildings))
                     .replace("{decisions}", nfInt.format(data.decisions))
@@ -173,12 +179,13 @@ export default function TheCityClient({ data }: { data: TheCityPageData }) {
                No new copy: `entry.start` is the map's own label and it is
                what this button already said before the film landed. */
             primary={{
+              /* THE RUNTIME RIDES THE BUTTON. `Watch · 1:32` answers the one
+                 thing a reader wants to know before pressing, and it retires
+                 the meta line above rather than restating it. */
               label: film.ready
-                ? t(
-                    film.resumeLabel === "resume"
-                      ? "us.sf.thecity.film.resume_film"
-                      : "us.sf.thecity.film.watch",
-                  )
+                ? film.resumeLabel === "resume"
+                  ? t("us.sf.thecity.film.resume_film")
+                  : `${t("us.sf.thecity.film.watch")} · ${film.runtimeLabel}`
                 : t("us.sf.thecity.entry.start"),
               onClick: () => {
                 setIntro(false);
