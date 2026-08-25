@@ -3242,3 +3242,61 @@ cut, so the shot has a second beautiful object in it that is true. The −0.16 i
 what brings the dome down inside the top edge; at −0.02 the finial was cut.
 
 Neither change touches the year, the copy or the citation.
+
+### 25.4 The other half of the fire note, ablated against the control the same commit left standing
+
+Daniel also said the flames *"look very large relative to the buildings and
+quite abstract"*. §25.1 deliberately did not touch the size in the same change,
+so `out-n4d/at-t6800.png` at `FIRE_H_MAX = 96` is a real control: smoke gone,
+everything else identical.
+
+**How large is large, in the units of the frame?** At shot 1's camera the
+peninsula's 11 km spans ~2,300 device px, so one world metre E-W is 0.209 px.
+Built height draws at `h × ZEXB / CA` = `1.306 h` of that, so **a 40 m building
+is 10.9 device px tall on this frame** and the tallest flame at 96 was
+**nine times it** — about four city blocks tall. That is the note, in numbers.
+
+96 → **68**, and the floor 34 → **26**. One variable; nothing else moved. The
+previous agent measured 46 as *"embers with a glow, not flames"*
+(`out-m1c/watch-fire2-04.png`), so the answer is between 46 and 96 and 68 is
+where it was looked at: the flames now sit ON the structures instead of over
+the district, the white heart reads, and the field of them across the burned
+ground is unchanged. `out-n4d/at-t6800.png` before and after.
+
+### 25.5 The curve table, audited: which callers are cameras and which are not
+
+NIGHT3 item 3. §23.6 said *"every curve in `CURVE` is a camera curve"*, and that
+is **too strong** — the audit is in the table's own docstring now. `curveOf` has
+exactly three call sites and they are three different kinds of motion:
+
+| site | what it eases | camera? | curve today |
+|---|---|---|---|
+| §1106, §1342 | `curveOf(s.curve)` — the shot's camera | **yes** | no shot carries one → falls through to `move`, correct |
+| §873 | an object's RISE on a `build` act | no — an OBJECT curve | `enter`, `settle` (outBack, overshoots, not a bezier), `travel` — all fine on a thing arriving |
+| §1150 | **the YEAR on a `run` act** | **no — it is a counter** | was `move` on all ten runs |
+
+**The year was the fire's bug again, at ten call sites.** Measured — the ms each
+displayed integer year is on screen, by solving `f(u) = y/n`:
+
+```
+  rebuild      9 years over 5,600 ms
+    move   1040 326 244 229 250 306 414 646 2144      9.4 : 1
+    even    622 622 622 622 622 622 622 622  622
+  mission-bay 27 years over 3,600 ms
+    move    422 145 102 81 … 49 … 165 212 303 864    17.6 : 1
+    even    133 × 27
+  japantown    5 years over 2,400 ms
+    move    562 187 195 305 1151
+    even    480 480 480 480  480
+```
+
+And it was not only uneven, it was **wrong about its own comment**. Shot 2's
+note claims the run is *"well over `STAGGER_TOTAL`, so the arrival wave actually
+runs"* — that is the NOMINAL rate. Under `move`, five of its nine years land in
+under 260 ms, **below the 520 ms stagger, so those five years had no arrival
+wave at all** while 1915 sat on screen for 2.1 s, 38 % of the run. It was true
+at the old 12,000 ms too: 229 × 12000/5600 = 491 ms, still under 520.
+
+All ten `run` acts now read `even`. The camera keeps `move`; the three `build`
+curves are untouched. Same argument as the fire, and the record's own: the city
+did not rebuild faster in 1910 than in 1907.

@@ -128,11 +128,47 @@ export const CURVE: Readonly<Record<string, (x: number) => number>> = {
   travel: bezier(0.45, 0.05, 0.55, 0.95),
   fade: bezier(0, 0, 0.58, 1),
   settle: outBack(1.055),
-  /* NO EASE AT ALL, and it is here for the fire.
-     Every other curve in this table is a CAMERA curve: a move has to start and
-     stop, so it is eased at both ends. `move` — `bezier(0.4, 0, 0.2, 1)` — is
-     the strongest ease-out of them, and the fire act was reading its ignition
-     sweep off it. Measured on the shipped cut, the act's own phase against the
+  /* NO EASE AT ALL. It is here for the fire, and it is now also every YEAR.
+
+     ── WHICH OF THESE IS A CAMERA CURVE, AUDITED ────────────────────────────
+     `curveOf` is read from exactly three places and they are not one kind of
+     motion, which is what let a camera curve end up on a fire:
+
+       · §1106 and §1342 — `curveOf(s.curve)`, the SHOT's curve. THE CAMERA.
+         No shot carries one, so both fall through to `move`, and `move`
+         — eased at both ends because a camera has to start and stop — is
+         exactly right there.
+       · §873 — `curveOf(a.curve)(u)`, an object's RISE on a `build` act:
+         `enter` for the burn line and the 1942 outline, `settle` (outBack,
+         which overshoots and is not a bezier at all) for the three placemarks,
+         `travel` for the Bay Bridge deck. Those are OBJECT curves, not camera
+         curves — §23.6 called the whole table cameras and that was too strong
+         — and an object arriving is allowed to ease and to overshoot.
+       · §1150 — `year = yFrom + (yTo − yFrom) * curveOf(a.curve)(u0)`,
+         **THE YEAR ON A `run` ACT, AND IT IS NOT A CAMERA.** Every run in
+         SCRIPT carried `move`. A run advances the year with the camera
+         standing still; it is a counter, and the record does not say 1910 took
+         longer than 1911.
+
+     MEASURED, the ms each displayed integer year is on screen (`/tmp` script
+     in §25.4, dwell between the solves of `f(u) = y/n`):
+
+       rebuild, 9 years over 5,600 ms
+         move  1040 326 244 229 250 306 414 646 2144   ← 9.4:1
+         even   622 622 622 622 622 622 622 622 622
+       mission-bay, 27 years over 3,600 ms
+         move   422 145 102 81 … 49 … 303 864          ← 17.6:1
+         even   133 × 27
+
+     Shot 2's own comment claims its run is *"well over STAGGER_TOTAL, so the
+     arrival wave actually runs"*. It was computing the NOMINAL rate. Under
+     `move`, five of its nine years land in under 260 ms — **below the 520 ms
+     stagger, so those five years had no wave at all** — while 1915 sits on
+     screen for 2.1 s, 38 % of the run. That was true at 12,000 ms too
+     (229 × 12000/5600 = 491, still under 520). Under `even` all nine clear it.
+
+     `move` — `bezier(0.4, 0, 0.2, 1)` — is the strongest ease-out in the
+     table, and the fire act was reading its ignition sweep off it. Measured on the shipped cut, the act's own phase against the
      film clock: 0.083 at 5.9 s, 0.386 at 7.2 s, 0.707 at 8.5 s, 0.869 at
      9.7 s, 0.953 at 11.0 s, 0.992 at 12.3 s. **Three quarters of the act's
      phase is spent in the first 45 % of its nine seconds**, and the last four
@@ -463,7 +499,7 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      arrival wave still runs. The hairline's fade keeps its own fractions —
      it began at 1/3 of the run and took 1/5 of it, and it still does. */
   rebuild: [
-    { k: "run", ms: 5600, to: 1915, curve: "move", burn: [1, 0, 1850, 1200] },
+    { k: "run", ms: 5600, to: 1915, curve: "even", burn: [1, 0, 1850, 1200] },
   ],
   /* 1915. `footprint`, not `ring`: the record names the building, and the
      published footprint IS the precision. The Exposition's other palaces
@@ -482,10 +518,10 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      deck at 1937 and the fabric puts it up on its own date while the camera
      holds. Two crossings, two mechanisms, one frame. */
   bridges: [
-    { k: "run", ms: 1400, to: 1936, curve: "move" },
+    { k: "run", ms: 1400, to: 1936, curve: "even" },
     { k: "build", ms: 1400, what: "bridge", curve: "travel" },
     { k: "hold", ms: 900 },
-    { k: "run", ms: 1000, to: 1937, curve: "move" },
+    { k: "run", ms: 1000, to: 1937, curve: "even" },
     { k: "hold", ms: 2300 },
   ],
   /* 1942, and the camera does not move once it has arrived. The only thing
@@ -494,12 +530,12 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      a polygon somebody fitted to them. Then the shot says the second thing it
      has to say and holds. */
   japantown: [
-    { k: "run", ms: 2400, to: 1942, curve: "move" },
+    { k: "run", ms: 2400, to: 1942, curve: "even" },
     { k: "build", ms: 1400, what: "outline", ent: "japantown-1942", curve: "enter" },
     { k: "hold", ms: 5200 },
   ],
   charter: [
-    { k: "run", ms: 1000, to: 1945, curve: "move" },
+    { k: "run", ms: 1000, to: 1945, curve: "even" },
     { k: "build", ms: 1200, what: "placemark", ent: "united-nations-charter-1945", curve: "settle" },
     { k: "hold", ms: 2800 },
   ],
@@ -508,14 +544,14 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      corridors are *"NOT IN RECORD as geometry"*. Ghosting seven alignments in
      would be inventing seven roads to show that they were never built. */
   freeways: [
-    { k: "run", ms: 2400, to: 1959, curve: "move" },
+    { k: "run", ms: 2400, to: 1959, curve: "even" },
     { k: "hold", ms: 2800 },
   ],
   /* the run is what raises the Pyramid: `landmarks.ts` gates the hero at 1972
      and the fabric puts it up on its own published year while the camera
      holds. The film's own act is a mark and a name over it. */
   pyramid: [
-    { k: "run", ms: 1400, to: 1972, curve: "move" },
+    { k: "run", ms: 1400, to: 1972, curve: "even" },
     { k: "build", ms: 1200, what: "placemark", ent: "transamerica-pyramid", curve: "settle" },
     { k: "hold", ms: 2800 },
   ],
@@ -523,7 +559,7 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      standing today, so a structure demolished in 1991 is in no year of this
      map — and the film says that rather than faking a collapse. */
   embarcadero: [
-    { k: "run", ms: 2400, to: 1991, curve: "move" },
+    { k: "run", ms: 2400, to: 1991, curve: "even" },
     { k: "hold", ms: 3000 },
   ],
   /* THE RHYME with shot 2: the camera stops and a district fills in under it.
@@ -533,13 +569,13 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      constraint (§14.3). It was already under it at 5,400 ms and 200 ms a
      year, so the re-time in §25.2 changed the rate and not the behaviour. */
   "mission-bay": [
-    { k: "run", ms: 3600, to: 2018, curve: "move" },
+    { k: "run", ms: 3600, to: 2018, curve: "even" },
     { k: "build", ms: 900, what: "ring", ent: "mission-bay", curve: "settle" },
     { k: "hold", ms: 2400 },
   ],
   /* Out to the whole city, which is the frame the film opened on. */
   face: [
-    { k: "run", ms: 1000, to: 2019, curve: "move" },
+    { k: "run", ms: 1000, to: 2019, curve: "even" },
     { k: "hold", ms: 4600 },
   ],
 };

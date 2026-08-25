@@ -657,8 +657,8 @@ const FIRE_HOLD = 0.66;
  * Set at 46/13 first, which is 23/7 CSS px on a 1440 px stage: measured on
  * `out-m1c/watch-fire2-04.png` as embers with a glow, not flames.
  */
-const FIRE_H_MAX = 96;
-const FIRE_H_MIN = 34;
+const FIRE_H_MAX = 68;
+const FIRE_H_MIN = 26;
 
 /** deterministic, and that is the point — see the header */
 const hash01 = (i: number): number => {
