@@ -676,8 +676,25 @@ export class CityRenderer {
        trade the mock's own massing hold was retired for. */
     const moving = film ? false : this.mode !== "idle";
     const lowRes = moving;
+    /* ── A FILM SEGMENT WITH NO TRAJECTORY TAKES THE SETTLED BUFFER ────
+       `camera.ts` §the two margins already made this argument once and
+       measured it: *"the margin's only job is to absorb MOTION"*, and dropping
+       it on the settled buffer took a district-zoom rasterisation **from 92 ms
+       to 40 ms**. The film slot missed the same finding. `M_DESK` is 1.42, so
+       `fi` is **2.02x the pixels and 2.02x the culled geometry** of the
+       viewport — and `CityFilm.tsx` only builds a `plan` on a MOVE, so on a
+       hold, a run, a build or the fire the film was paying all of that for a
+       camera that is standing still.
+       MEASURED before the change, `.parity/q8play.py` at :3100, DPR 2: every
+       one of the 232 frames over 100 ms in the whole film is exactly one
+       rasterisation, and **180 of them are in the year RUNS**, where the camera
+       does not move at all — 54.2 s of the 80.3 s of wall clock the film loses.
+       `fi` and `hi` carry the SAME dpr (`FILM_DPR` is 1.0, so `planSlots` gives
+       both `DPR`), so this costs nothing in sharpness: it is the same picture
+       painted over half the area. */
     const wantSlot: SlotPlan["name"] =
-      film ? "fi" : moving ? (this.mode === "zoom" ? "zo" : "lo") : "hi";
+      film ? (film.plan ? "fi" : "hi")
+      : moving ? (this.mode === "zoom" ? "zo" : "lo") : "hi";
     const key = this.contentKey(step);
     const placement: Placement | null = this.cur
       ? place(this.cur, this.cam, this.W, this.H, this.DPR, !moving)

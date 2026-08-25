@@ -3967,3 +3967,142 @@ and the district's centroid by 0.4 m. Every other byte is identical, checked
 key by key.
 
 `out-q5/s05-dev-fixed.png`: four continuous streets meeting at four corners.
+
+## 30 · Block M1h — the jumpiness, and the 232 frames that are all one thing
+
+> *"theres a bit of jumpyness/lag the movie playing — is there any way to smooth
+> those sections as theyre already predecided so the experience is super smooth
+> and natural?"*
+
+### 30.1 Every earlier investigation measured the travels. The travels are 15 % of it
+
+`.parity/q7move.py` is `c2move.py`'s method on a PRODUCTION build — a fresh page
+per move so `spare` never latches, `spare` asserted on every row, a separate rAF
+loop recording the timestamp the compositor handed the page. `:3100`, DPR 2,
+1440x940, `M1FORCE=live`:
+
+```
+  move                          z      med     p95   worst  >33  >100  rast
+  into  3 palace         2.06->95.00    9.0   641.7   774.9   18    18    17
+  into  4 bridges       94.67-> 1.26    8.4   741.7  1041.6   17    17    17
+  into  5 japantown      1.26->10.00    8.4   733.3   983.7   18    18    18
+  into  6 charter       10.01->44.00    8.3    17.4   716.4    4     4     3
+  into  7 freeways      43.89-> 2.10    8.4   898.8  1100.0   15    15    15
+  into  8 pyramid        2.10->24.00  633.4  1091.7  1099.6   24    24    23
+  into  9 embarcadero   23.97-> 5.50    8.4   566.4   649.2    9     9     9
+  into 10 mission-bay    5.50-> 3.60  550.0   791.5   799.9   25    25    25
+  into 11 face           3.60-> 1.10    9.0   891.4  1091.6   16    16    15
+
+  totals over 9 travels:  >33 146   >100 146   rasters 142
+```
+
+**`>33` and `>100` are the same number on every row, and both equal the
+rasterisation count.** §15 found that on the old eight-move cut; it reproduces
+exactly on the eleven-shot one. There is nothing between 8 ms and 550 ms in this
+film: it draws at 8.4 ms or it stops for half a second.
+
+**But a travel measured this way is not what a reader gets.** `.parity/q8play.py`
+is the opposite instrument: one page load, no dial, `spare` latching exactly when
+it would for a reader, rAF timings for the whole 92.3 s, bucketed by the segment
+the film itself reports.
+
+```
+  seg       frames  wall s   >33  >100   worst  rasters  lost s
+  title        330     5.8     8     8     850        7     3.0
+  build       1018    10.7     5     5     700        5     2.2
+  fire         793     6.6     0     0      10        0     0.0
+  hold        4442    38.1     4     4     475        4     1.0
+  run         1753    70.4   180   180    1250      180    54.2
+  move        1193    30.3    35    35    1133       35    20.0
+
+  232 frames over 33 ms, 232 over 100 ms, 80.3 s of wall clock lost to them
+```
+
+**A 92.3-second film plays in 162 seconds, and 54.2 of the 80.3 lost seconds are
+in the YEAR RUNS — on a camera that does not move at all.** The travels are 20.0
+s. Every previous measurement in this file, mine included until this table, was
+of the 25 %.
+
+Per shot, and `>100` equals `rast` on every single row:
+
+```
+   2 run    67 rasters   12.8 s wall    9.5 s lost
+   4 run    31            6.5           5.2
+   7 run    13            5.6           3.6
+   8 run    12            6.5           5.5
+   9 run    18            9.7           7.9
+  10 run    26           20.3          17.5      <- the worst thing in the film
+  11 run     7            2.9           2.1
+```
+
+### 30.2 A run's rasterisation, profiled — and nobody had ever profiled one
+
+`.parity/q9prof.py`, CDP sampling profiler at 0.2 ms, shot 10's run at `:3100`.
+**39 rasterisations in 24.8 s — 635 ms each.**
+
+```
+   4691.8 ms  28.8%  fill
+   3780.0     23.2%  drawImage          <- the per-frame blit, not the raster
+   2283.8     14.0%  restore
+   1586.4      9.7%  closePath
+    691.6      4.2%  stroke
+    489.6      3.0%  paintFootprints
+    197.4      1.2%  lineTo
+```
+
+**A run's rasterisation is 45 % Canvas2D path work on the city's own buildings
+and about 5 % computing anything.** `paintCell` does not appear at all, so the
+ground plate (`terrain.ts`, 09962711) is hitting every time — it is doing its
+job and it is not the cost.
+
+This also corrects a conclusion standing in `renderer.ts`: *"the cost of a
+rasterisation here is not the footprint loop… about 0.7 µs a building."* That is
+true of `paintFootprints`'s SELF time — 3.0 % — and not of the canvas calls it
+issues, which are `fill`, `restore`, `closePath` and `stroke`, and which are
+45 %.
+
+### 30.3 So pre-warming cannot be what fixes it, and the file already knew what does
+
+**Pre-warming rasters is not available against this architecture, and the
+arithmetic is §15.3's.** The renderer holds ONE buffer per slot name, not a
+cache of many; a buffer is 21.7 MB at DPR 2, and the moves alone want 142 of
+them. §15.3 B costed the full version at 20.8 GB. Nothing can be warmed into a
+cache that holds one entry.
+
+**And the profile says there is nothing to warm.** 45 % of a run's rasterisation
+is filling paths — painting pixels, not computing a cache — and the one big
+cache that could have been cold, the ground plate, is already hitting.
+
+**What the film IS paying for nothing is MARGIN.** `camera.ts` §the two margins
+made this argument once and measured it:
+
+> *"The SETTLED buffer has no margin at all (1.0)… the margin's only job is to
+> absorb MOTION… MEASURED: dropping it took the settle rasterisation at district
+> zoom from 92 ms to 40 ms."*
+
+`M_DESK` is **1.42**, so the film slot `fi` is **2.02x the pixels and 2.02x the
+culled geometry** of the viewport. And `CityFilm.tsx` builds a `plan` only on a
+MOVE — so on a hold, a run, a build and the fire, the film was painting twice
+the area for a camera that is standing still. **That is the same finding the
+settled buffer already had corrected, one slot over, and the film slot missed
+it.**
+
+`renderer.ts` §render: `film ? (film.plan ? "fi" : "hi") : …`. A film segment
+with no trajectory takes the settled buffer. **`fi` and `hi` carry the same
+dpr** — `FILM_DPR` is 1.0, so `planSlots` gives both `DPR` — so this costs
+nothing in sharpness. It is the same picture painted over half the area.
+
+It also removes a rasterisation at the HEAD of every move for free: the settled
+buffer from the preceding hold still covers the move's first frames, so the
+first raster of a travel now happens when the camera has actually gone somewhere.
+
+**The guard, because this change has one failure mode.** If the camera drifts at
+all during a run, a margin-free buffer stops covering and re-rasterises EVERY
+frame. Raster count is pure logic and therefore comparable across servers, so
+`.parity/q10cnt.py` counts it: shots 2, 4, 8, 10 and 11 played whole come back at
+63, 52, 35, 40 and 22 rasterisations — the same order as the `:3100` baseline,
+not thousands. It did not explode.
+
+**The win is a COST and not a COUNT, so it cannot be measured on a stale server.
+Handed to the coordinator for a `:3100` rebuild, and `q8play.py base` is the row
+to compare against.**
