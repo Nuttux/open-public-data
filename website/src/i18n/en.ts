@@ -4918,6 +4918,7 @@ const en: Record<string, string> = {
   'us.sf.thecity.panel.hood_hl_more': '{n} more lines the record places here',
   'us.sf.thecity.panel.lead_head': 'What the Board decided here',
   'us.sf.thecity.panel.lead_open': 'Open the scanned page',
+  'us.sf.thecity.panel.rail_unreadable': "The scan of this decade's entries is too damaged to quote — open it to read them.",
   'us.sf.thecity.panel.sources_open': 'Sources',
   'us.sf.thecity.panel.hood_open': 'The neighbourhood',
   'us.sf.thecity.panel.block_head': 'On this block',
