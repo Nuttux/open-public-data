@@ -147,51 +147,11 @@ interface FirePayload {
   readonly losses: readonly FireLoss[];
 }
 
-/* ── THE BADGE IS THE ARGUMENT, NOT AN APOLOGY ───────────────────────────
-   `NOT ON THIS MAP` was a bare label in the corner of one shot: the map's most
-   visible admission of a limit, saying nothing at all about the limit. The
-   reach layer measures what is off the frame — the aqueduct, the watersheds,
-   the reservoirs, the dam — out of published government geometry, and writes
-   one sentence and its sources into this file. So the badge can now say what is
-   missing, how far away it is, and who publishes its shape.
-
-   FETCHED LAZILY, AND ONLY ONCE THE BADGE IS ON SCREEN. It is 1.5 KB and it is
-   wanted for eight seconds of a 134-second film; loading it at mount would put
-   a request in front of the ground. If the fetch fails the label renders alone,
-   exactly as it does today — the sentence is an upgrade, never a dependency.
-
-   Every figure in `line` is measured by
-   pipeline/scripts/us_sf_reach/build_reach_geom.py from the geometry that ships
-   beside it, so no number is typed here and the sentence cannot drift from the
-   shapes it describes. */
-const REACH_BADGE_URL = "/data/us/sf/reach/film-badge.json";
-
-interface ReachBadge {
-  readonly line: string;
-  readonly sources: readonly { readonly t: string; readonly u: string }[];
-}
-
-function useReachBadge(entity: string | null): ReachBadge | null {
-  const [byEntity, setByEntity] = useState<Record<string, ReachBadge> | null>(null);
-  const asked = useRef(false);
-  useEffect(() => {
-    if (!entity || asked.current) return;
-    asked.current = true;
-    let dead = false;
-    void fetch(REACH_BADGE_URL)
-      .then((r) =>
-        r.ok ? (r.json() as Promise<{ byEntity?: Record<string, ReachBadge> }>) : null,
-      )
-      .then((d) => {
-        if (!dead && d?.byEntity) setByEntity(d.byEntity);
-      })
-      .catch(() => undefined);
-    return () => {
-      dead = true;
-    };
-  }, [entity]);
-  return (entity ? byEntity?.[entity] : null) ?? null;
-}
+/* THE `NOT ON THIS MAP` BADGE AND ITS REACH SENTENCE ARE BOTH GONE — the
+   label, the lazily-fetched `film-badge.json`, its hook and its four rules.
+   Daniel killed the mechanism, not the wording, after two drafts of the
+   sentence: *"i dont want these badge sentences they are horrible and not
+   necessary"*. `film.ts` §the badge is gone carries the argument. */
 
 /** Twelve names, the mock's own cap. A dozen or so fit a wide frame, and they
  *  carry the orientation the street names were being asked for and failing to
@@ -383,7 +343,7 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
      hairline's width and the title card's wash. Both are one style on one
      node, so both are written straight onto their node here, exactly as the
      rail writes its handle. Everything else — the year as an INTEGER, the
-     shot, the card, the badge, the line of copy — changes a few times a
+     shot, the card, the line of copy — changes a few times a
      minute, and that is what `setState` is now for. */
   const cardRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLElement>(null);
@@ -467,6 +427,12 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
     const frames: FilmFrames = {
       base: fit.base,
       frames: payload.shots.map((s) => frameOf(s, fit, projection, elev, W, H)),
+      /* the second framing, for the one shot that cuts inside itself. `frameOf`
+         is handed the shot's `cam2` and cannot tell it from a shot, because the
+         five numbers a framing is are the same five either way. */
+      frames2: payload.shots.map((s) =>
+        s.cam2 ? frameOf(s.cam2, fit, projection, elev, W, H) : null,
+      ),
     };
     const held = liveRef.current;
     const streets =
@@ -627,7 +593,6 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
         prev === null ||
         prev.line !== s.line ||
         prev.card !== s.card ||
-        prev.badge !== s.badge ||
         prev.shot !== s.shot ||
         prev.segIx !== s.segIx ||
         prev.running !== s.running ||
@@ -763,10 +728,7 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
              plate must not contradict the line. `film.ts` §plateYear. */
           plate: st.plateYear, z: +(st.scale / (liveRef.current?.frames.base || 1)).toFixed(3),
           step: st.step, copy: st.line?.copy ?? null, risen: st.risen.length,
-          /* the badge follows the LINE and not the shot id (`film.ts` §badge),
-             so a harness has to be able to read what the film is SAYING as well
-             as what it is showing */
-          badge: st.badge, says: st.line?.cite?.entity ?? null,
+          says: st.line?.cite?.entity ?? null,
           hide: st.hide.length, burn: +st.burn.toFixed(3), bridge: +st.bridge.toFixed(3),
           /* the fire act's own rise. A harness that cannot read this cannot
              tell "the flames are small" from "the act is over", and four
@@ -1034,25 +996,10 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
   border-bottom:1px solid rgba(90,83,72,.42);padding-bottom:2px;pointer-events:auto}
 .fx-film-cite:hover{color:#161310;border-bottom-color:#161310}
 .fx-film-cite b{font-weight:600;letter-spacing:.06em}
-/* Narrower and quieter than the copy on purpose — same reason as
-   .fx-film-reach-line: the copy is the shot, this is the footnote it earned,
-   and the two must not compete for the same read. */
+/* Narrower and quieter than the copy on purpose: the copy is the shot, this
+   is the footnote it earned, and the two must not compete for the same read. */
 .fx-film-note{margin:10px 0 0;max-width:44ch;font-size:12.5px;line-height:1.45;
   color:#5a5348}
-.fx-film-badge{display:block;width:fit-content;padding:4px 9px;
-  font-family:var(--f-mono,ui-monospace,monospace);font-size:10px;letter-spacing:.1em;
-  text-transform:uppercase;border:1px solid #161310}
-/* THE LIMIT, WITH ITS REASON UNDER IT. The label keeps its box and its place;
-   what changes is that it now has a sentence and three publishers behind it.
-   Narrower than .fx-film-copy on purpose — the copy is the shot, this is the
-   footnote the shot earned, and it must not compete for the same read. */
-.fx-film-reach{margin-top:12px;max-width:46ch;pointer-events:auto}
-.fx-film-reach-line{margin:9px 0 0;font-size:13.5px;line-height:1.45;color:#3a352c}
-.fx-film-reach-src{margin:6px 0 0;font-family:var(--f-mono,ui-monospace,monospace);
-  font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#5a5348}
-.fx-film-reach-src a{color:inherit;text-decoration:none;
-  border-bottom:1px solid rgba(90,83,72,.42)}
-.fx-film-reach-src a:hover{color:#161310;border-bottom-color:#161310}
 /* ── THE SCANNED PAGE, BESIDE THE MAP ───────────────────────────────────
    Sized off the FRAME and not off the image: the crop is ~1,700 px of a
    400-dpi page, so the constraint that matters is how many CSS pixels a
@@ -1171,11 +1118,6 @@ function FilmChrome({
      shot declares that its moving counter is the subject. The renderer still
      gets `state.year`, so nothing about what is DRAWN changes. */
   const iy = state.plateYear;
-  /* the shot's own entity, not the badge token: the reach file is keyed on the
-     entry id, so the sentence belongs to whatever the shot is about */
-  const reach = useReachBadge(
-    state.badge ? (payload.shots[state.shot]?.cite?.entity ?? null) : null,
-  );
   const card = state.card ? (state.card === "title" ? payload.title : payload.end) : null;
   const line = state.line;
   /* THE SCAN OPENS TO THE SIDE AND THE MAP KEEPS RUNNING — Daniel's own word
@@ -1296,26 +1238,6 @@ function FilmChrome({
               make the line an essay; saying it nowhere would make the line a
               claim the sources do not carry. */}
           {line?.note ? <p className="fx-film-note">{line.note}</p> : null}
-          {state.badge ? (
-            <div className="fx-film-reach">
-              <span className="fx-film-badge">{t("us.sf.thecity.film.not_on_map")}</span>
-              {reach ? (
-                <>
-                  <p className="fx-film-reach-line">{reach.line}</p>
-                  <p className="fx-film-reach-src">
-                    {reach.sources.map((s, i) => (
-                      <span key={s.u}>
-                        {i ? " · " : ""}
-                        <a href={s.u} target="_blank" rel="noopener">
-                          {s.t}
-                        </a>
-                      </span>
-                    ))}
-                  </p>
-                </>
-              ) : null}
-            </div>
-          ) : null}
         </div>
       ) : null}
 

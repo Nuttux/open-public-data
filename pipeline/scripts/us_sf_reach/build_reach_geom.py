@@ -6,7 +6,6 @@ decided outside its own boundary, and nothing that is not published.
 Reads  pipeline/scripts/us_sf_reach/cache/*   (fetch_reach_geom.py put it there)
 Writes website/public/data/us/sf/reach/geom.qc     the coordinates
        website/public/data/us/sf/reach/geom.json   the index and the sources
-       website/public/data/us/sf/reach/film-badge.json  one sentence for the film
 
 ── THE RULE THIS FILE EXISTS TO KEEP ─────────────────────────────────────
 Never invent a position. Every ring here came out of a government or, where
@@ -660,7 +659,6 @@ def build(check: bool) -> int:
     }
 
     doc["corpus_check"] = corpus_check()
-    badge = film_badge(index, doc)
 
     if check:
         print(f"OK — {len(feats)} features, {len(rv0)} rings, {len(xs):,} "
@@ -673,8 +671,6 @@ def build(check: bool) -> int:
     (OUTDIR / "geom.qc").write_bytes(blob)
     (OUTDIR / "geom.json").write_text(
         json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
-    (OUTDIR / "film-badge.json").write_text(
-        json.dumps(badge, indent=1, ensure_ascii=False) + "\n")
     import gzip
     gz = len(gzip.compress(blob, 9))
     print(f"wrote {(OUTDIR / 'geom.qc').relative_to(ROOT)}  "
@@ -686,10 +682,6 @@ def build(check: bool) -> int:
     print(f"   round trip: OK on 11 fields, both this reader and "
           f"us_sf_city/_chunk.read_chunk")
     print(f"   worst simplification {worst_simp:.2f} m at tol {TOL_M} m")
-    print(f"wrote {(OUTDIR / 'film-badge.json').relative_to(ROOT)}  "
-          f"{(OUTDIR / 'film-badge.json').stat().st_size:,} bytes")
-    for k, v in badge["byEntity"].items():
-        print(f"   {k}: {v['line']}")
     return 0
 
 
@@ -758,7 +750,22 @@ def corpus_check() -> dict:
 
 
 def film_badge(index: list[dict], doc: dict) -> dict:
-    """The one line the film's NOT ON THIS MAP badge earns.
+    """DEAD, AND KEPT ONLY AS THE MEASUREMENT. Nothing calls this any more.
+
+    The film's `NOT ON THIS MAP` badge was deleted on 2026-08-25: Daniel was
+    shown two drafts of the sentence and rejected the MECHANISM — *"i dont want
+    these badge sentences they are horrible and not necessary"*. The two shots
+    that carried it, the freeway revolt and the Embarcadero vote, both say the
+    Board REJECTED or DEMOLISHED a thing, so a viewer is not hunting the frame
+    for it and a badge explaining its absence answers a question nobody asked.
+
+    `film-badge.json` is gone with it. This function is left in place because
+    every figure in it is measured off the index that was just written and is
+    the only place that arithmetic exists; if a reach sentence is ever wanted
+    anywhere, it starts here. It is not wired to anything and it writes nothing.
+
+    ── what it used to be ────────────────────────────────────────────────
+    The one line the film's NOT ON THIS MAP badge earns.
 
     Every number in the sentence is MEASURED here out of the index that was just
     written, so the badge cannot drift from the geometry behind it and no figure

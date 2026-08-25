@@ -366,6 +366,10 @@ export interface FilmShotData {
    *  shot settles on. Three shots: the match cut and its rhyme, where the
    *  moving year is the subject, and the bridges, whose sentence names two
    *  dated openings. `build_film_twelve.py` §THE YEAR ON THE PLATE. */
+  /** A SECOND FRAMING FOR THIS SHOT, cut to by any act carrying `cam: 2`.
+   *  The same five numbers a shot's own camera is made of, so `frameOf` reads
+   *  it without knowing which of the two it was handed. One shot uses it. */
+  readonly cam2?: FilmCam;
   readonly yrun?: boolean;
   /** THE PLATE'S YEAR, STATED. Beats `yrun` and beats the settle year, for the
    *  whole shot, whatever the counter under it is doing.
@@ -465,19 +469,38 @@ export interface FilmPayload {
  *   build  ONE object rises. Nothing else moves.
  *   hold   nothing moves. This is the act that does the reading.
  */
+/* ── `cam: 2` — THE ACT IS ON THE SHOT'S SECOND FRAMING ────────────────────
+   One shot, two cameras, and a CUT between them. Only shot 4 uses it and the
+   reason is a measurement, not a preference: its two subjects are 9 km apart,
+   so at the zoom where the Bay Bridge reads as a bridge the Golden Gate is off
+   the top of the frame, and at the zoom that holds both they are hairlines.
+   §35.3 scouted every framing there is and the shot could not show either
+   bridge ARRIVING, which is the whole of its sentence.
+
+   IT IS A CUT AND NOT A TRAVEL, on two grounds. NIGHT3: *"Cuts and holds. No
+   dissolves."* And the arithmetic: §30.1 measured the travel INTO this shot at
+   741 ms p95 and 1,041 ms worst, the most expensive move in the film — a 9 km
+   camera flight would be worse, and §25.2 measured that a move is time with no
+   line on screen. A cut costs zero rasterisations and reads as film grammar
+   rather than as a map being dragged.
+
+   The shot's own `move` still targets framing ONE, and the NEXT shot's move
+   starts from whichever framing this one ENDED on. See `endCam`. */
 export type FilmAct =
   | { readonly k: "run"; readonly ms: number; readonly to: number; readonly curve: string;
       readonly burn?: readonly [number, number, number, number];
-      readonly line?: 1 | 2 }
+      readonly line?: 1 | 2; readonly cam?: 2 }
   | { readonly k: "build"; readonly ms: number; readonly what: BuildWhat;
-      readonly ent?: string; readonly curve: string; readonly line?: 1 | 2 }
+      readonly ent?: string; readonly curve: string; readonly line?: 1 | 2;
+      readonly cam?: 2 }
   /* the 1906 schedule of losses being READ — `film/fire.json`, 35 placed
      structures, lighting in the order the page prints them. It is an act and
      not a build because nothing rises: the year does not move, the camera does
      not move, and what changes is how much of one table has been read. */
   | { readonly k: "fire"; readonly ms: number; readonly curve: string;
-      readonly line?: 1 | 2 }
-  | { readonly k: "hold"; readonly ms: number; readonly line?: 1 | 2 };
+      readonly line?: 1 | 2; readonly cam?: 2 }
+  | { readonly k: "hold"; readonly ms: number; readonly line?: 1 | 2;
+      readonly cam?: 2 };
 
 /**
  * THE ELEVEN, AND HOW EACH ONE MOVES.
@@ -552,12 +575,29 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      is not drawn by the film at all: `landmarks.ts` §GGB gates the published
      deck at 1937 and the fabric puts it up on its own date while the camera
      holds. Two crossings, two mechanisms, one frame. */
+  /* TWO FRAMINGS AND A CUT. The three acts below with no `cam` are the Bay
+     Bridge's own frame; the two carrying `cam: 2` are the Golden Gate's, and
+     the boundary between them is a hard cut. `build_film_twelve.py` §4 has the
+     measurement and both published targets.
+
+     THE CUT LANDS ON THE FIRST FRAME OF THE 1936 -> 1937 RUN, which is the one
+     place in the shot where it is also the argument: the Golden Gate is gated
+     by the FABRIC on its own published year, so framing two opens on empty
+     water at the Gate, the counter crosses, and the bridge is standing. NIGHT3
+     asked this shot for exactly that — *"empty water, then a deck, then the
+     other"* — and the whole-city fit could only ever do it in hairlines.
+
+     RE-TIMED 8,200 -> 9,800 ms, and NOT for the reading floor: the line is 59
+     characters and clears at 3.4 s against 7.2 s of visible copy. Two framings
+     need two shots' worth of screen time. The holds are what grew — 900 ->
+     1,400 on the Bay Bridge and 2,300 -> 3,400 on the Golden Gate — so each
+     framing gets about 4.2 s and neither reads as a glimpse. */
   bridges: [
     { k: "run", ms: 1400, to: 1936, curve: "even" },
     { k: "build", ms: 1400, what: "bridge", curve: "travel" },
-    { k: "hold", ms: 900 },
-    { k: "run", ms: 1000, to: 1937, curve: "even" },
-    { k: "hold", ms: 2300 },
+    { k: "hold", ms: 1400 },
+    { k: "run", ms: 1000, to: 1937, curve: "even", cam: 2 },
+    { k: "hold", ms: 3400, cam: 2 },
   ],
   /* 1942, and the camera does not move once it has arrived. The only thing
      that rises is the boundary the Board itself named — ELLIS, CALIFORNIA,
@@ -815,10 +855,34 @@ export interface FilmFrames {
   /** the scale at which the whole city fits the frame; `z` is a multiple of it */
   readonly base: number;
   readonly frames: readonly FilmFrame[];
+  /** one entry a shot, `null` where the shot has only one framing */
+  readonly frames2: readonly (FilmFrame | null)[];
+}
+
+/** The framing an act sits on. A shot with no `cam2` can only ever answer with
+ *  its one frame, so this is a no-op on ten of the eleven. */
+function camOf(ff: FilmFrames, si: number, a?: FilmAct): FilmFrame {
+  return (a?.cam === 2 && ff.frames2[si]) || ff.frames[si];
+}
+
+/** The framing a shot ENDS on — where the next shot's travel starts from. A
+ *  shot that cuts to a second camera does not go back to its first. */
+function endCam(ff: FilmFrames, si: number): FilmFrame {
+  return ff.frames2[si] ?? ff.frames[si];
+}
+
+/** The five numbers a framing is. `FilmShotData` satisfies this structurally,
+ *  which is why `frameOf` can be handed either a shot or its `cam2`. */
+export interface FilmCam {
+  readonly z: number;
+  readonly ox: number;
+  readonly oy: number;
+  readonly wx?: number;
+  readonly wy?: number;
 }
 
 export function frameOf(
-  s: FilmShotData,
+  s: FilmCam,
   fit: FitState,
   proj: Projection,
   elev: (x: number, y: number) => number,
@@ -933,7 +997,6 @@ export interface FilmState {
   /** 0..1, the four streets a resolution names, stroking out */
   readonly outline: number;
   readonly line: FilmLine | null;
-  readonly badge: string | null;
   /** footprint indices the FABRIC must not draw, because the film is raising
    *  them — see `hideFor` */
   readonly hide: readonly number[];
@@ -987,11 +1050,6 @@ function risenAt(
  * A MOVE ARRIVES BEFORE ITS LINE DOES: the plate comes up as the camera stops,
  * not while it is still travelling.
  */
-const NOT_ON_MAP: ReadonlySet<string> = new Set([
-  "freeway-revolt-1959",
-  "embarcadero-freeway-demolition",
-]);
-
 function pickLine(tl: FilmTimeline, d: FilmPayload, si: number, segIx: number): FilmLine | null {
   if (tl.segs[segIx].k === "move") return null;
   const s = d.shots[si];
@@ -1207,14 +1265,14 @@ export function filmStateAt(
   let B: FilmFrame;
   let u: number;
   if (sg.k === "move") {
-    A = si > 0 ? frames[si - 1] : frames[si];
+    A = si > 0 ? endCam(ff, si - 1) : frames[si];
     B = frames[si];
     u = reduced || spareCam ? 1 : curveOf(s.curve)(u0);
   } else if (sg.k === "title") {
     A = B = frames[0];
     u = 1;
   } else {
-    A = B = frames[si];
+    A = B = camOf(ff, si, sg.a);
     u = 1;
   }
   /* SCALE IS INTERPOLATED IN LOG SPACE. A 3.2× → 28× zoom lerped linearly
@@ -1386,24 +1444,22 @@ export function filmStateAt(
     scorch: sg.si == null ? 0 : si === 0 ? r.fire : si === 1 ? burn : 0,
     outline: r.outline,
     line,
-    /* THE BADGE FOLLOWS THE LINE, NOT THE SHOT, so a shot with two subjects
-       can carry it on one of them. It is on three of the eleven and each is a
-       different KIND of absence, all three published:
+    /* ── THE `NOT ON THIS MAP` BADGE IS GONE, AND IT IS NOT COMING BACK ───
+       It rendered on two shots, 7 and 9, and Daniel killed the MECHANISM
+       rather than the wording after being shown two drafts of the sentence:
+       *"i dont want these badge sentences they are horrible and not
+       necessary"*.
 
-         freeway-revolt-1959      the corridors are "NOT IN RECORD as
-                                  geometry" — the resolution names seven routes
-                                  and no alignment for any is published here
-         embarcadero-freeway-…    the fabric is the assessor's roll, which
-                                  dates what is standing, so a structure taken
-                                  down in 1991 is in no year of this map
-       Shot 11 was given it too and it was WRONG on the frame: an ordinance
-       forbidding a thing has no extent, but the shot's picture is the whole
-       city, and a badge reading "not on this map" over a frame that is
-       entirely the map says the opposite of what it means. Taken off after
-       looking at `out-m1c/watch-sweep-022.png`. */
-    badge: sg.k !== "move" && NOT_ON_MAP.has(line?.cite?.entity ?? "")
-      ? "notOnThisMap"
-      : null,
+       He is right on the argument as well as the taste, and it is worth
+       writing down so nobody rebuilds it. NEITHER SHOT CLAIMS TO SHOW THE
+       THING. Shot 7's line is that the Board REJECTED seven freeways; shot 9's
+       is that it voted to DEMOLISH one. A viewer is not hunting the frame for
+       either, so a badge explaining their absence answers a question nobody
+       asked — and it drew the eye to a hole instead of to the city.
+
+       It was also a live defect: `film-badge.json` was keyed by entity and
+       held only `hetch-hetchy`, which NIGHT3 cut, so both shots had been
+       rendering a bare label with no sentence under it. */
     hide: sg.si != null ? hideFor(d, si) : [],
     skipBridgeGhost: brEnd >= 0 && t < brEnd,
     progress: tl.total > 0 ? t / tl.total : 0,
@@ -1462,14 +1518,14 @@ function camAt(
   let B: FilmFrame;
   let u: number;
   if (sg.k === "move") {
-    A = si > 0 ? frames[si - 1] : frames[si];
+    A = si > 0 ? endCam(ff, si - 1) : frames[si];
     B = frames[si];
     u = curveOf(d.shots[si].curve)(u0);
   } else if (sg.k === "title") {
     A = B = frames[0];
     u = 1;
   } else {
-    A = B = frames[si];
+    A = B = camOf(ff, si, sg.a);
     u = 1;
   }
   const scale = A.scale * Math.pow(B.scale / A.scale, u);

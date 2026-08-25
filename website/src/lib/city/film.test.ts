@@ -43,6 +43,19 @@ const FRAMES: FilmFrames = {
     gz: 0,
     scale: 0.05 * (s.z || i + 1),
   })),
+  /* the second framing, distinguishable from the first for the same reason —
+     a shot that cuts inside itself must not land back on its own first camera */
+  frames2: PAYLOAD.shots.map((s, i) =>
+    s.cam2
+      ? {
+          step: 0,
+          cx: 90000 + i * 500,
+          py: 90000 + i * 300,
+          gz: 0,
+          scale: 0.05 * (s.cam2.z || i + 1),
+        }
+      : null,
+  ),
 };
 
 const at = (t: number, spare = false) =>

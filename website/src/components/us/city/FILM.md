@@ -4757,3 +4757,184 @@ checks for on PATH and exits with a plain sentence if it is missing.
 Re-run end to end: **shots 1, 5 and 7 come back byte-identical.** The only new
 bytes in `public/data` are `scans/shot-11.jpg` (218 kB) and 33 lines of
 `scans.json`.
+
+## 38 · Block M1i — the badge is gone, mechanism and all
+
+> *"i dont want these badge sentences they are horrible and not necessary"*
+
+Daniel was shown two drafts of the sentence and rejected **the mechanism**, not
+the wording. So this is a deletion and not a rewrite, and §34.5's open item
+closes as *removed* rather than as *written*.
+
+**And he is right on the argument, which is worth writing down so nobody
+rebuilds it.** It fired on exactly two shots — `freeway-revolt-1959` and
+`embarcadero-freeway-demolition` — and **neither of them claims to show the
+thing**. Shot 7's line is that the Board REJECTED seven freeways; shot 9's is
+that it voted to DEMOLISH one. A viewer is not hunting either frame for a road,
+so a badge explaining its absence answers a question nobody asked, and it drew
+the eye to a hole instead of to the city.
+
+**It was also a live defect the whole time.** §34.5 measured it:
+`film-badge.json` was keyed by entity and held exactly one, `hetch-hetchy`,
+which NIGHT3 cut from the film — so both shots had been rendering a bare
+uppercase label with nothing under it.
+
+**What came out**, in one commit:
+
+| | |
+|---|---|
+| `film.ts` | `NOT_ON_MAP`, the `badge` field on `FilmState`, and the branch that set it |
+| `CityFilm.tsx` | `REACH_BADGE_URL`, `ReachBadge`, `useReachBadge` and its lazy fetch, the `reach` call, the JSX block, the `badge` memo key, the `badge` field on the `__cityFilm` probe |
+| CSS | `.fx-film-badge`, `.fx-film-reach`, `.fx-film-reach-line`, `.fx-film-reach-src` and its two link rules |
+| data | `website/public/data/us/sf/reach/film-badge.json`, deleted |
+| `build_reach_geom.py` | stops writing it. **`film_badge()` itself is KEPT and marked dead**: every figure in it is measured off the index the same run just wrote, and that arithmetic exists nowhere else. It is wired to nothing and writes nothing |
+
+`build_reach_geom.py --check` still passes — 62 features, 373 rings, 3,869
+vertices — so nothing the reach page uses moved.
+
+**One i18n key is now unused and it is the coordinator's to remove:**
+`us.sf.thecity.film.not_on_map`, in both `en.ts` and `fr.ts`. Left in place
+rather than edited from here.
+
+**And one harness is now pointing at a deleted element**, recorded rather than
+touched because it is another block's tree:
+`pipeline/scripts/us_sf_reach/reach_badge_shot.py` locates `.fx-film-badge`.
+
+## 39 · Block M1i — shot 4 is two framings and a cut, and it can finally show a bridge
+
+> *"One bridge per framing across the 1936→1937 run would fix it, and i agree"*
+
+§35.3 handed this up as a constraint rather than a bad camera and it was the
+right call to hand up, because the fix is a re-authoring of an approved shot.
+
+### 39.1 The measurement that forced it, restated
+
+The two decks are **~9 km apart** (deck centroids, `base/bridge.qc`). Every
+framing that holds both is the whole-city fit, and in it:
+
+- at **z 1.62** the Bay Bridge finally reads as a bridge and **the Golden Gate
+  is cropped off the top at 1937** — the other half of the sentence (§35.3);
+- §26.3 measured the same thing from the other end: the Golden Gate runs
+  north–south and at this map's bearing a north–south metre projects at
+  **0.485** of an east–west one, so its ~27 m deck lands at about **three
+  pixels**.
+
+**A shot whose one line is "the Bay Bridge and the Golden Gate opened six
+months apart" was showing neither of them open.**
+
+### 39.2 A CUT, and why not a travel
+
+**A cut**, and it is the default rather than a preference: NIGHT3 says *"Cuts
+and holds. No dissolves."* The arithmetic agrees. §30.1 measured the travel INTO
+this shot at **741 ms p95 and 1,041 ms worst — the most expensive move in the
+film** — and a 9 km flight between the two decks would be worse; §25.2 measured
+that a move is time with **no line on screen**. A cut costs zero rasterisations.
+
+The mechanism is `film.ts` §`cam: 2` — a shot may carry a second framing
+(`cam2`) and any act may declare it sits on it. Ten of the eleven shots are
+untouched by it. Two helpers carry the whole rule:
+
+- **`camOf`** — the framing an act sits on;
+- **`endCam`** — the framing a shot ENDS on, which is what the NEXT shot's
+  travel starts from. Without it shot 5's move would have started from a camera
+  shot 4 had left four seconds earlier.
+
+### 39.3 Both targets are READ, not chosen
+
+`base/bridge.qc` is the published geometry the film already draws the spans
+from. Unprojected through `manifest.proj`, its two deck centroids are:
+
+```
+  bridge 0  Golden Gate   5 deck vertices, 2 towers  ->  -122.478491  37.819278
+  bridge 1  Bay Bridge    5 deck vertices, 4 towers  ->  -122.378713  37.797399
+```
+
+Those two numbers are the two cameras. Nothing is placed by eye.
+
+### 39.4 The two zooms are different, and the projection is why
+
+Scouted at `:3000` with `.parity/r3bridge.py`, which patches BOTH cameras in the
+served payload, shoots the two moments that matter — the Bay Bridge's own build
+at 1936 and the Golden Gate standing at 1937 — and restores in a `finally`.
+
+**The Bay Bridge needs no magnification at all.** The camera looks ALONG its
+span, so at **z 3.4, off (0.10, 0.10)** it reads as towers, suspension curve and
+deck running from Rincon Hill out to Yerba Buena, with the Financial District,
+the Embarcadero finger piers and Nob Hill filling the left.
+
+**The Golden Gate needs it, and the floor is measurable on the frames:**
+
+| z | what the frame shows |
+|---:|---|
+| 2.6, 3.4 | two orange masts and a cable. **No deck. Not a bridge** — this is §26.3's three pixels |
+| **6.0** | both towers with their cross-bracing, the main cable's whole catenary, the suspenders, the side span, the south anchorage — **and the Marin headland at the top with Fort Point and the Presidio at the bottom, so the span reads as a CROSSING between two shores.** Chosen, at `off (0.06, −0.04)` |
+| 7.0 | the north tower's head runs into the top edge and Marin stops being a shore to land on |
+| 9.0, 12.0 | a bridge portrait: legible, and **70 % of the frame is water** |
+
+**This shot is no longer "the widest camera in the film"**, which is what NIGHT3
+called it. That description described a frame that could not do the job the same
+brief gave it, and the change is Daniel's own.
+
+### 39.5 The cut, frame-sequenced — because a still cannot show one
+
+`.parity/r4cut.py` walks the boundary every 100 ms and prints the camera's own
+`z` beside the plate's year. A cut is `z` jumping in ONE sample with nothing
+between; a dissolve or a travel would show intermediate values.
+
+```
+   t-cut  seg          z  plate  fabric  copy
+    -200  hold       3.4   1936    1936  yes
+    -100  hold       3.4   1936    1936  yes
+       0  run        6.0   1936    1936  yes   <-- CUT
+    +100  run        6.0   1936    1936  yes
+```
+
+**One sample wide, nothing between, and the copy never drops.** The line stays on
+screen straight through the cut, which is the thing §25.2 said every `move` in
+this film gets wrong.
+
+**And the frame after the cut is the shot's whole argument.** `out-r4/
+cut-b-after.png`: at 1936 the strait is **empty water**, with Fort Point's bluff
+and the Presidio at the lower right and the Marin headland at the top. The
+counter then turns and the bridge is standing. NIGHT3 asked this shot for
+*"empty water, then a deck, then the other"* and this is the first cut in which
+it happens. The two are synchronised by construction rather than by hand: the
+Golden Gate is gated by the FABRIC on its own published year, and the plate's
+year is the same clock.
+
+### 39.6 Re-timed, and what the floor actually was
+
+**8,200 → 9,800 ms**, and NOT for the reading floor — the line is 59 characters
+and clears at 3.4 s against **7.2 s** of visible copy. Two framings need two
+shots' worth of screen time. Only the holds grew:
+
+| | was | is |
+|---|---:|---:|
+| run to 1936 | 1,400 | 1,400 |
+| build · the Bay Bridge deck | 1,400 | 1,400 |
+| hold · the Bay Bridge | 900 | **1,400** |
+| run 1936 → 1937 · **cut to framing 2** | 1,000 | 1,000 |
+| hold · the Golden Gate | 2,300 | **3,400** |
+
+Framing one gets 4.2 s, framing two gets 4.4 s, and neither reads as a glimpse.
+**Runtime 95.3 → 96.9 s.**
+
+### 39.7 Re-measured across all eleven, because a split shot is the shape that made the shot 9 bug
+
+`.parity/r1plate.py`, the whole film, every 500 ms:
+
+```
+   1 burn        1906 × 22          7 freeways    1959 × 14
+   2 rebuild     1906..1914 (span)  8 pyramid     1972 × 12
+   3 palace      1915 × 11          9 embarcadero 1989 × 13
+   4 bridges     1936 × 8 · 1937 × 7   10 mission-bay 1991..2018 (span)
+   5 japantown   1942 × 18         11 face        2019 × 13
+   6 charter     1945 × 10
+```
+
+**Shot 4 is now 8 samples on 1936 and 7 on 1937** — one framing each, balanced,
+where before the split it was 7 and 4 on a camera that showed neither bridge.
+Shot 9 still reads 1989 on every sample. The three remaining spans are the three
+`yrun` shots and nothing else.
+
+449 tests green, typecheck clean, `eslint` no new warnings.

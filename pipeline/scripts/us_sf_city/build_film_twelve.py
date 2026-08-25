@@ -124,6 +124,31 @@ OUT = CITY / "film"
 # the true running year, so a frame is still exact for its own year and the
 # arrival wave is what it was. Only what the PLATE prints changes.
 
+# ── shot 4's two framings, side by side because they are one decision ───────
+# Scouted at `:3000` with `.parity/r3bridge.py`, which patches both cameras in
+# the served payload and shoots the two moments that matter — the Bay Bridge's
+# build at 1936 and the Golden Gate standing at 1937 — then restores in a
+# `finally`. Every candidate and the reason it lost is in FILM.md §38.
+BR1_Z, BR1_OFF = 3.4, (0.10, 0.10)          # the Bay Bridge, from the city side
+BR2_Z, BR2_OFF = 6.0, (0.06, -0.04)         # the Golden Gate, across the strait
+#
+# THE TWO ZOOMS ARE NOT THE SAME AND THE REASON IS THE PROJECTION, not taste.
+# §26.3 measured it: the Golden Gate runs north-south, and at this map's bearing
+# a north-south metre projects at 0.485 of an east-west one, so the deck's ~27 m
+# width lands at about THREE PIXELS. Magnification is the only thing that beats
+# that, and the frames say where the floor is:
+#   z 2.6, 3.4   two orange masts and a cable. No deck, no bridge.
+#   z 6.0        both towers with their cross-bracing, the main cable's whole
+#                catenary, the suspenders, the side span and the south
+#                anchorage — AND the Marin headland at the top with Fort Point
+#                and the Presidio at the bottom, so the span reads as a
+#                CROSSING between two shores. Chosen.
+#   z 7.0        the north tower's head runs into the top edge and Marin stops
+#                being a shore to land on.
+#   z 9.0, 12.0  a bridge portrait: legible, and 70 % of the frame is water.
+# The Bay Bridge needs none of it — the camera looks ALONG its span, so at 3.4
+# it already reads as towers, curve and deck from Rincon Hill to Yerba Buena.
+
 SHOTS: list[dict] = [
     # 1 · THE FIRE. Locked. The film's first gesture is the burn line drawing
     # itself round the burned city, and then the Fire Department's own schedule
@@ -198,17 +223,43 @@ SHOTS: list[dict] = [
     dict(n=3, id="palace", title="The Panama-Pacific Exposition opens",
          t=(-122.448403, 37.802924), z=60.0, off=(0.00, -0.06), move=1200, ms=6800,
          st=(1912, 1915)),
-    # 4 · THE WIDEST CAMERA IN THE FILM, and the only shot with two subjects.
-    # It opens on empty water at 1915, runs to 1936, strokes the Bay Bridge
-    # deck out from Rincon Hill, holds, and then runs two more years while the
-    # fabric puts the Golden Gate up on its own published date.
-    # `yrun` + `say=1`: the sentence names two openings on two dates, so one
-    # pinned year would misdate one of them. The copy lands when the first run
-    # reaches 1936 and the counter then moves to 1937 underneath it — the plate
-    # does the work of the sentence's "and". Before this the line was up from
-    # 1915, so a viewer read "1922" over a sentence about the bridges.
+    # 4 · TWO SUBJECTS, SO TWO FRAMINGS AND A CUT BETWEEN THEM.
+    #
+    # THE WHOLE-CITY FIT COULD NOT SHOW EITHER BRIDGE ARRIVING, and that was
+    # measured before it was changed. §35.3: the two decks are ~9 km apart, so
+    # every framing that holds both is the whole-city fit and both are
+    # hairlines in it — at z 1.62 the Bay Bridge finally reads as a bridge,
+    # towers and suspension curve and deck, and the Golden Gate is cropped off
+    # the top at 1937, which is the other half of the sentence. §26.3 measured
+    # the same thing from the other end: at this bearing the Golden Gate's
+    # ~27 m deck projects to about THREE PIXELS. A shot whose one line is
+    # "the Bay Bridge and the Golden Gate opened six months apart" was showing
+    # neither of them open.
+    #
+    # Daniel: *"One bridge per framing across the 1936->1937 run would fix it,
+    # and i agree."* So: the Bay Bridge lands in its own frame at 1936, the
+    # film CUTS, and the Golden Gate lands in its own frame at 1937. The line
+    # is unchanged and is now demonstrated instead of asserted.
+    #
+    # A CUT AND NOT A TRAVEL. NIGHT3: *"Cuts and holds. No dissolves."* And
+    # §30.1 measured the travel INTO this shot at 741 ms p95 / 1,041 ms worst,
+    # the most expensive move in the film; a 9 km flight between the two decks
+    # would be worse, and §25.2 measured that a move is time with no line on
+    # screen. `film.ts` §cam:2 carries the mechanism.
+    #
+    # BOTH TARGETS ARE READ, NOT CHOSEN. They are the deck centroids in
+    # `base/bridge.qc` — the same published geometry the film draws the spans
+    # from, unprojected through `manifest.proj`:
+    #     bridge 0  Golden Gate  5 deck vertices, 2 towers  -> -122.478491 37.819278
+    #     bridge 1  Bay Bridge   5 deck vertices, 4 towers  -> -122.378713 37.797399
+    #
+    # `yrun` STAYS, and it is now the point of the shot rather than a repair to
+    # it: the counter crosses 1936 -> 1937 across the cut, as the second bridge
+    # arrives on its own published year. `say=1` still lands the copy on the
+    # Bay Bridge's own build rather than on the empty water before it.
     dict(n=4, id="bridges", title="Two bridges open",
-         t=None, z=1.26, off=(0.07, 0.03), move=1200, ms=8200,
+         t=(-122.378713, 37.797399), z=BR1_Z, off=BR1_OFF, move=1200, ms=9800,
+         cam2=dict(t=(-122.478491, 37.819278), z=BR2_Z, off=BR2_OFF),
          st=(1915, 1937), yrun=True, say=1),
     # 5 · JAPANTOWN. Tight on the Western Addition and, after the move that
     # gets there, completely still. Nothing rises but the four streets the
@@ -1109,6 +1160,14 @@ def main() -> None:
             o["say"] = s["say"]
         if s.get("pin"):
             o["pin"] = s["pin"]
+        # THE SECOND FRAMING, in the same five numbers as the first, so
+        # `frameOf` reads either without knowing which it was handed.
+        if s.get("cam2"):
+            c2 = s["cam2"]
+            wx2, wy2 = to_m(*c2["t"])
+            o["cam2"] = dict(z=c2["z"], ox=c2["off"][0], oy=c2["off"][1],
+                             lon=c2["t"][0], lat=c2["t"][1],
+                             wx=round(wx2, 3), wy=round(wy2, 3))
         if target:
             o["lon"], o["lat"] = target[0], target[1]
             wx, wy = to_m(*target)
