@@ -369,6 +369,187 @@ def do_leafmap() -> None:
     print(f"  leafmap: +{added} volumes -> {len(lm)} total; {nosd} without usable scandata")
 
 
+# ---------------------------------------------------------------- gate 5
+# ONE SCAN PER MEETING. The Internet Archive holds the 1999-2016 minutes several
+# times over: the same physical volume scanned twice under two identifiers, the
+# Clerk's DRAFT beside the final, and annual volumes overlapping the quarterly
+# ones they were bound from. Measured: 54.6% of that era's meeting dates are
+# carried by more than one volume and 83.4% of its rows sit on such a date, one
+# meeting appearing in SEVEN. Collapse near-duplicates within a meeting and the
+# era shrinks by 48.3%, at which point it agrees with the Journal on decisions
+# per meeting (13.5 against 14.9).
+#
+# Shipping seven scans of one meeting as seven decisions would be wrong even if
+# nothing downstream broke, so it is fixed HERE, at the source, and not left to
+# the index's near-duplicate pass to absorb one block at a time at ranking time.
+#
+# THE UNIT IS THE MEETING, AND ONLY THE MEETING. Two decisions taken on two
+# different dates are two decisions however alike they read, and nothing below
+# ever compares them: every comparison is keyed on one exact meeting date. This
+# collapses re-scans of one session; it does not collapse a subject.
+#
+# SCOPE: THE MODERN ERA ONLY. The Journal has the same problem at 2.3% of dates,
+# and fixing it there would change pre-1999 blocks — the one outcome this whole
+# exercise exists to prevent. The Journal's own overlap is left alone and is
+# recorded in MINUTES.md as a separate, later question.
+#
+# THE RULE, IN ORDER, AND IT REPORTS WHAT IT CHOSE:
+#   1. a FINAL beats a DRAFT                (title carries "Draft")
+#   2. the FULLER READING of that meeting   (more items dated to it — a volume
+#      holding three items for a date it barely touches is date carry-forward
+#      leaking across a page boundary, not the binding that holds the session)
+#   3. the BETTER OCR on that meeting       (higher share of street mentions the
+#      gazetteer recognises)
+#   4. tie-break by identifier — used ONLY when the two readings are
+#      EQUIVALENT (same item count, >=0.9 of their item texts shared). When two
+#      readings differ materially and nothing above separates them, the date is
+#      NOT quietly resolved: it is counted, printed, and if there are more than
+#      UNDECIDED_MAX of them the merge refuses to run.
+UNDECIDED_MAX = 25
+
+
+def _shingles(t: str, n: int = 5) -> set[str]:
+    w = re.sub(r"[^a-z0-9 ]", "", t.lower()).split()
+    return {" ".join(w[i:i + n]) for i in range(max(0, len(w) - n + 1))}
+
+
+def _match_rate(a: list, b: list) -> float:
+    """Share of a's items that have a near-twin in b, by word shingle."""
+    sb = [x for x in (_shingles(r["t"]) for r in b) if len(x) >= 4]
+    hit = tot = 0
+    for r in a:
+        sa = _shingles(r["t"])
+        if len(sa) < 4:
+            continue
+        tot += 1
+        if any(len(sa & o) / max(1, min(len(sa), len(o))) > 0.55 for o in sb):
+            hit += 1
+    return hit / tot if tot else 0.0
+
+
+def _equivalent(a: list, b: list) -> bool:
+    """Are these two readings of the SAME meeting, allowing for OCR?
+
+    An exact test is the wrong one and was measured to be: two scans of one
+    session agree on only 0.74-0.89 of their items by exact text, because they
+    are two OCR passes over the same ink. Compared as word shingles — the test
+    build_index already uses to collapse a reprint — the same three pairs match
+    at 1.00, 1.00, 1.00. So equivalence is: nearly every item on one side has a
+    near-twin on the other. Calibrated on 2000-01-31, 2000-05-15 and 2001-01-02.
+    """
+    if not a or not b:
+        return False
+    if abs(len(a) - len(b)) > max(1, 0.1 * max(len(a), len(b))):
+        return False
+    return _match_rate(a, b) >= 0.95
+
+
+def choose_scans(verbose: bool = False):
+    """-> ({(volume, date) kept}, {volumes that won nothing}, report)"""
+    cls = classify()
+    cov = {}
+    titles = {}
+    for ln in open(SEED):
+        if ln.startswith("#") or ln.startswith("year_from"):
+            continue
+        q = ln.rstrip("\n").split("\t")
+        if len(q) >= 5:
+            cov[q[2]] = (int(q[0]), int(q[1]))
+            titles[q[2]] = q[4]
+    have = {json.loads(l)["v"] for l in open(ANIM / "blocks" / "cache" / "items.jsonl")}
+    vols = [k for k, v in cls.items() if v["body"] == "board" and k not in have]
+
+    by_date: dict[str, dict[str, list]] = collections.defaultdict(dict)
+    undated: dict[str, list] = {}
+    for ident in sorted(vols):
+        y0 = cov.get(ident, (FROM_YEAR, FROM_YEAR))[0]
+        rows = [json.loads(l) for l in open(OUTD / f"{ident}.jsonl")]
+        und = []
+        for r in rows:
+            dt = r.get("dt")
+            if dt:
+                if int(str(dt)[:4]) < FROM_YEAR:
+                    continue                      # gate 4 owns this
+                by_date[str(dt)].setdefault(ident, []).append(r)
+            elif y0 >= FROM_YEAR:
+                und.append(r)
+        undated[ident] = und
+
+    keep: set[tuple] = set()
+    undecided: list = []
+    why = collections.Counter()
+    picks = []
+    for dt in sorted(by_date):
+        cand = by_date[dt]
+        if len(cand) == 1:
+            only = next(iter(cand))
+            keep.add((only, dt))
+            why["only one volume carries this meeting"] += 1
+            continue
+        def rank(i):
+            rows = cand[i]
+            res = sum(1 for r in rows if r.get("r"))
+            return (0 if "Draft" in titles.get(i, "") else 1,   # 1. final > draft
+                    len(rows),                                   # 2. fuller reading
+                    res / max(1, len(rows)))                     # 3. better OCR
+        best = max(cand, key=lambda i: (rank(i), i))
+        tied = [i for i in cand if rank(i) == rank(best)]
+        if len(tied) > 1:
+            # equivalent readings may be resolved by identifier; materially
+            # different ones may not be
+            equiv = all(_equivalent(cand[tied[0]], cand[i]) for i in tied[1:])
+            if equiv:
+                best = min(tied)
+                why["equivalent re-scans, resolved by identifier"] += 1
+            else:
+                undecided.append((dt, sorted(tied),
+                                  [len(cand[i]) for i in sorted(tied)],
+                                  round(_match_rate(cand[tied[0]], cand[tied[1]]), 2)))
+                best = min(tied)
+                why["UNDECIDED — materially different readings"] += 1
+        else:
+            top = rank(best)
+            second = max((rank(i) for i in cand if i != best), default=None)
+            if second and top[0] != second[0]:
+                why["final chosen over draft"] += 1
+            elif second and top[1] != second[1]:
+                why["fuller reading of the meeting"] += 1
+            else:
+                why["better OCR on the meeting"] += 1
+        keep.add((best, dt))
+        if len(cand) > 1 and len(picks) < 12:
+            picks.append((dt, best, {i: len(cand[i]) for i in cand}))
+
+    winners = {v for v, _ in keep}
+    losers = [v for v in vols if v not in winners]
+    if verbose:
+        n_dates = len(by_date)
+        multi = sum(1 for d in by_date if len(by_date[d]) > 1)
+        print(f"  {len(vols)} modern Board volumes, {n_dates:,} meeting dates")
+        print(f"  dates carried by more than one volume: {multi:,} "
+              f"({100 * multi / max(1, n_dates):.1f}%)")
+        print("  why each meeting's scan was chosen:")
+        for k, n in why.most_common():
+            print(f"    {n:>5}  {k}")
+        print(f"  volumes that won no meeting at all: {len(losers)}")
+        print("\n  worked examples:")
+        for dt, best, all_ in picks:
+            others = ", ".join(f"{i}({n})" for i, n in sorted(all_.items()) if i != best)
+            print(f"    {dt}  KEEP {best} ({all_[best]} items)")
+            print(f"              drop {others}")
+        if undecided:
+            print(f"\n  *** {len(undecided)} UNDECIDED meetings — readings differ and "
+                  f"no criterion separates them ***")
+            print("    (match rate = share of one reading's items that have a "
+                  "near-twin in the other; 1.00 would be a clean re-scan)")
+            for dt, ids, ns, mr in undecided[:24]:
+                print(f"    {dt}  match {mr:.2f}  {list(zip(ids, ns))}")
+    if len(undecided) > UNDECIDED_MAX:
+        sys.exit(f"REFUSED: {len(undecided)} meetings could not be decided "
+                 f"(limit {UNDECIDED_MAX}). Nothing merged.")
+    return keep, set(losers), undated, winners
+
+
 # ---------------------------------------------------------------- merge
 def do_merge() -> None:
     bc = ANIM / "blocks" / "cache" / "items.jsonl"
@@ -403,6 +584,11 @@ def do_merge() -> None:
         q = ln.rstrip("\n").split("\t")
         if len(q) >= 3:
             cov[q[2]] = (int(q[0]), int(q[1]))
+    # GATE 5 — one scan per meeting. See choose_scans().
+    keep_pairs, losers, _und, winners = choose_scans(verbose=False)
+    print(f"  gate 5: {len(keep_pairs):,} (volume, meeting) pairs kept; "
+          f"{len(losers)} volumes won no meeting and contribute nothing")
+
     rows, keys = [], set()
     refused = collections.Counter()
     for ident in sorted(add):
@@ -415,8 +601,17 @@ def do_merge() -> None:
                 if yy < FROM_YEAR:
                     refused[f"dated {yy}, a year the Journal covers"] += 1
                     continue
+                if (ident, str(dt)) not in keep_pairs:
+                    refused["another scan of this same meeting was kept"] += 1
+                    continue
             elif y0 < FROM_YEAR:
                 refused["undated, from a volume that straddles 1998/99"] += 1
+                continue
+            elif ident not in winners:
+                # an undated row cannot be assigned to a meeting, so it rides on
+                # its volume: kept only if that volume is the chosen scan for at
+                # least one meeting, dropped when the volume is redundant whole
+                refused["undated, from a volume no meeting chose"] += 1
                 continue
             k = (d["v"], d["i"])
             if k in old_keys or k in keys:
@@ -443,10 +638,12 @@ def main() -> None:
     ap.add_argument("--assemble", action="store_true")
     ap.add_argument("--leafmap", action="store_true")
     ap.add_argument("--merge", action="store_true")
+    ap.add_argument("--scans", action="store_true",
+                    help="report which scan wins each meeting, merge nothing")
     ap.add_argument("--force", action="store_true")
     a = ap.parse_args()
-    if not (a.plan or a.sweep or a.assemble or a.leafmap or a.merge):
-        ap.error("one of --plan / --sweep / --assemble / --leafmap / --merge")
+    if not (a.plan or a.sweep or a.assemble or a.leafmap or a.merge or a.scans):
+        ap.error("one of --plan / --sweep / --assemble / --leafmap / --merge / --scans")
     if a.plan:
         do_plan()
     if a.sweep:
@@ -455,6 +652,8 @@ def main() -> None:
         do_assemble()
     if a.leafmap:
         do_leafmap()
+    if a.scans:
+        choose_scans(verbose=True)
     if a.merge:
         do_merge()
 

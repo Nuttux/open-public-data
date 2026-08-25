@@ -527,3 +527,135 @@ meeting.
 order-independent redesign is chosen**, because it may make that redesign
 unnecessary. It is also the honest thing to do regardless: shipping seven scans
 of one meeting as seven decisions would be wrong even if nothing else broke.
+
+---
+
+# 18. VOLUME-LEVEL DE-DUPLICATION — built 2026-08-25
+
+Greenlit after §17. **One scan per meeting, finals over drafts**, fixed at the
+source rather than left to the index to absorb one block at a time.
+
+## 18.1 The rule, and it reports what it chose
+
+`sweep_modern_minutes.py --scans` prints the decision for every meeting.
+
+**The unit is the meeting and only the meeting.** Two decisions taken on two
+different dates are two decisions however alike they read; every comparison below
+is keyed on one exact meeting date. This collapses re-scans of one session. It
+never collapses a subject.
+
+**Scope is the modern era only.** The Journal has the same problem at 2.3% of
+dates, and fixing it there would change pre-1999 blocks — the one outcome this
+exercise exists to prevent. That overlap is left alone and recorded here as a
+later question.
+
+In order, and every choice is counted:
+
+```
+  525  only one volume carries this meeting
+  245  final chosen over draft
+  203  fuller reading of the meeting          (more items dated to it)
+  171  equivalent re-scans, resolved by identifier
+   26  better OCR on the meeting
+   24  UNDECIDED — reported, not silently resolved
+```
+
+**Equivalence had to be calibrated, not assumed.** An exact text test is the
+wrong one: two scans of one session agree on only **0.74–0.89** of their items by
+exact text, because they are two OCR passes over the same ink. Compared as word
+shingles — the test `build_index` already uses — the same three pairs match at
+**1.00, 1.00, 1.00**. Calibrated on 2000-01-31, 2000-05-15, 2001-01-02.
+
+**It fails loudly.** The first run reported **74** undecided meetings and
+refused to merge (`UNDECIDED_MAX = 25`). That was the equivalence test being too
+strict, not the data. With the calibrated test, 24 remain, each printed with its
+match rate (0.67–0.93) so a human can judge; they are resolved by a declared
+deterministic fallback, and if the count ever exceeds 25 the merge stops.
+
+**The test case you named passes.** `meetingminutesb2005sanf_0` and
+`meetingaprmay2005minutes100sanfrich` — the same 235 rows, the same month profile
+(2005-04:129, 2005-05:96, 2005-11:10). After the rule: one wins **8** meetings,
+the other **0**, and **0** dates are claimed by both.
+
+**What it removed:** 14,017 duplicate-scan rows. The modern era falls from
+32,002 to **17,985** — a 43.8% cut, against the 48.3% redundancy measured in
+§17.1 by a completely different method.
+
+## 18.2 The regression proof — it does NOT reach zero
+
+You asked for the count, not "it got better". Four variants, same verifier:
+
+```
+                                              blocks   dropped   appeared
+gate 4 only, index unchanged                     287        78        330
++ volume de-duplication, index unchanged         261        67        297
++ volume de-duplication, era-scoped index         23        13         13
++ volume de-duplication, same-MEETING index    3,177     5,099      9,067
+```
+
+**13 pre-1999 decisions still move.** Pre-1999 totals match exactly
+(90,805 = 90,805), and 13 decisions from 1909–1987 leave blocks they were on
+while 13 others surface.
+
+**Two things this measurement settles.**
+
+**(a) The volume de-duplication is right on the merits but is not what fixes the
+regression.** It removes 14,017 rows that should never have been there, and it
+moves the regression only 287 → 261. The era scoping is what takes it to 23, and
+the residual is identical with or without the de-duplication — so the residual is
+not caused by the volume of modern data at all.
+
+**(b) A tighter scope is worse, and this is why the redesign needs care.**
+Restricting suppression to the same MEETING — which sounds like the true
+invariant — moves 3,177 blocks and *grows* the pre-1999 layer by 3,966
+decisions. The Journal legitimately prints one item across several meetings
+(introduced at one, finally passed at another), and collapsing those is work this
+pass is supposed to do. **Any order-independent redesign has to keep
+cross-meeting collapse while dropping cross-era collapse**, or it will undo a
+decade of correct suppression.
+
+**So: take the order-independent redesign as well.** The residual 13 come from
+the pre-ingest index's own pre-1999 output already being partly a product of its
+586 post-1999 rows — a control build (era-scoped code, unchanged corpus) moves 76
+blocks by itself. No partition of a corpus whose old half depends on its new half
+can leave the old half bit-identical.
+
+## 18.3 What the rail looks like, for the design conversation
+
+```
+decade    blocks with a record       decisions
+          before      after       before     after
+1900s      1,715      1,715        6,203      6,202
+1910s      3,361      3,361       22,650     22,646
+1920s      3,836      3,836       26,845     26,844
+1930s      2,806      2,806        9,068      9,067
+1940s      2,048      2,048        5,357      5,357
+1950s      1,889      1,889        3,897      3,897
+1960s      1,613      1,613        2,980      2,980
+1970s      2,154      2,153        4,642      4,641
+1980s      2,021      2,021        5,489      5,486
+1990s      1,820      1,829        4,185      4,241
+2000s         24      1,598           26      3,854
+2010s         49        956           49      2,259
+```
+
+```
+blocks gaining a 2000s decade                       1,574
+blocks gaining a 2010s decade                         907
+blocks gaining BOTH                                   539
+blocks gaining at least one                         1,942   of 5,089 with any record
+of those, blocks that ALSO have a pre-1999 record    1,937
+```
+
+**The two things worth knowing before designing anything.**
+
+**It is a continuation, not a new population.** 1,937 of the 1,942 blocks that
+gain a modern decade already had a pre-1999 record. The rail does not sprout a
+separate modern map; it extends lines that already exist.
+
+**The modern decades are lighter but not a cliff.** 3,854 and 2,259 against a
+Journal-era median of 5,486 and a 1990s of 4,241 — the same order of magnitude.
+And the 2010s figure is **2010–2016 only**, because the scanned series stops
+there; 2016–2026 is the sfbos half and is still unmerged (§13).
+
+Nothing here is a design proposal. It is the picture to decide from.
