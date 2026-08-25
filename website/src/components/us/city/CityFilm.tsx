@@ -398,7 +398,21 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
     void fetch(SCANS_URL)
       .then((r) => (r.ok ? (r.json() as Promise<ScansPayload>) : null))
       .then((p) => {
-        if (!dead && p) setScans(p.scans);
+        if (dead || !p) return;
+        setScans(p.scans);
+        /* AND THE FOUR PAGES ARE FETCHED NOW, NOT WHEN THEIR SHOT ARRIVES.
+           The panel used to mount at the END of its travel; it mounts at the
+           CUT now, so a page still on the wire would be an empty framed box on
+           the frame instead of a late one. Measured at `:3100` these are 3 ms
+           (§40.2) and this changes nothing; over a room's wifi it is the
+           difference between a page and a hole, and the entry plate holds for
+           ~17 s before the film starts, so there is nothing to compete with.
+           1.29 MB over four files, decoded once and served from cache. */
+        for (const q of p.scans) {
+          const im = new Image();
+          im.decoding = "async";
+          im.src = q.src;
+        }
       })
       .catch(() => undefined);
     return () => {
@@ -1123,13 +1137,21 @@ function FilmChrome({
   /* THE SCAN OPENS TO THE SIDE AND THE MAP KEEPS RUNNING — Daniel's own word
      is "opens to the side", so the page is BESIDE the film and never over it.
 
-     It is up for the whole of its shot except the travel into it, so it lands
-     on the same cut the camera does. A fade would be a dissolve and this film
-     has none; a slide would be a move, and shot 5 is the one shot in the film
-     that is protected as completely still. A cut costs nothing and breaks
-     nothing. */
+     It lands on the same cut the camera does, and it now does that LITERALLY:
+     it used to be held back for the travel into its shot (`seg.k !== "move"`),
+     which meant the page arrived 1.2–1.8 s after the cut and this comment was
+     describing something the code did not do. `.parity/s1head.py` measured the
+     wait as 2.71 s cold and 2.72 s warm on shot 5, and the picture is not what
+     is slow — `shot-05.jpg` is 386 kB and fetches in 3 ms with the cache
+     disabled. FILM.md §40.
+
+     **Tied to the LINE rather than to the segment**, so the sentence and the
+     document it is drawn from can never arrive apart: a shot that holds its
+     copy back holds its page back with it. A fade would be a dissolve and this
+     film has none; a slide would be a move, and shot 5 is the one shot in the
+     film that is protected as completely still. A cut costs nothing. */
   const scan =
-    !card && !paused && state.seg.k !== "move"
+    !card && !paused && line
       ? (scans ?? []).find((q) => q.n === payload.shots[state.shot]?.n) ?? null
       : null;
 

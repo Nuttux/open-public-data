@@ -91,11 +91,19 @@ OUT = CITY / "film"
 #           rhyme), and shot 4, whose one sentence names two dated openings.
 #           Off, the plate is captioned with the year the shot settles on.
 #
-#   `say`   the copy waits until this act index. `film.ts` §pickLine already
-#           holds a line back until the camera stops — *"a move arrives before
-#           its line does"* — and this is the same idea for the year: on a shot
-#           whose counter is running to the date the line is about, the line
-#           lands when the counter gets there.
+#   `say`   the copy waits until this act index, and through the travel with
+#           it. On a shot whose counter is running to the date the line is
+#           about, the line lands when the counter gets there.
+#
+#           ONE SHOT SETS IT: 4. It used to have a partner in `film.ts`
+#           §pickLine, which held EVERY line back until its camera stopped —
+#           *"a move arrives before its line does"* — and FILM.md §40 measured
+#           what that cost: 2.7 s between the cut into shot 5 and its first
+#           word, against a 1.25 s beat elsewhere, and Daniel watching it as
+#           *"a big pause before any box or text comes"*. The line cuts with
+#           the shot now, so this field is the only thing left that can delay
+#           one, and a shot should set it only where the PLATE would otherwise
+#           contradict the sentence. Shot 4 is that shot: it carries `yrun`.
 #
 #   `pin`   the plate PRINTS this year, for the whole shot, whatever the counter
 #           under it is doing. One shot: 9.
@@ -358,9 +366,21 @@ SHOTS: list[dict] = [
     # dropped and `pin=1989` states the caption instead. The RUN IS UNTOUCHED:
     # the fabric still goes 1972 -> 1989 -> 1991 and the split still gives the
     # copy its landing, so nothing about what is drawn changes.
+    # AND THEN `say` WENT, BECAUSE THE PIN HAD ALREADY DONE ITS JOB. `say`
+    # exists for one reason — the plate must not print a year in which the
+    # thing the line describes did not happen — and `pin=1989` prints 1989 for
+    # the whole shot, the travel included, whatever the counter is doing. On
+    # THIS shot the guard could therefore no longer prevent anything, and it
+    # was costing the film its longest silent head: MEASURED, `.parity/
+    # s1head.py` (FILM.md §40), 6.7 s cold and 7.2 s warm between the cut and
+    # the first word, against a 1.25 s beat on the three shots that sit on
+    # their act table. Shot 4 KEEPS its `say`, and it is the control: shot 4
+    # carries `yrun`, so its plate really does read 1915 while the counter
+    # climbs, and a sentence about two openings must not sit over it. The run,
+    # the split and the hold are untouched; only when the line arrives changes.
     dict(n=9, id="embarcadero", title="The earthquake of 1989",
          t=(-122.397500, 37.796500), z=5.5, off=(0.02, 0.22), move=1200, ms=9000,
-         st=(1972, 1991), pin=1989, say=1),
+         st=(1972, 1991), pin=1989),
     # 10 · THE RHYME. Shot 2's move, seventy years later: the camera stops and
     # a district fills in under it.
     dict(n=10, id="mission-bay", title="A rail yard becomes a neighbourhood",

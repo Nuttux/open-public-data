@@ -1047,15 +1047,48 @@ function risenAt(
  * the second, and the swap holds for the rest of the shot. Shot 4 goes City Hall
  * then the library; shot 8 goes the bridge then the island.
  *
- * A MOVE ARRIVES BEFORE ITS LINE DOES: the plate comes up as the camera stops,
- * not while it is still travelling.
+ * ── THE LINE CUTS WHEN THE SHOT CUTS ─────────────────────────────────────
+ *
+ * This used to open `if (seg.k === "move") return null` — *"a move arrives
+ * before its line does"* — so for the whole of a travel the plate carried a
+ * year and nothing else. Daniel, watching 3d359371: *"1942 shot starts with a
+ * big pause before any box or text comes — is weird"*.
+ *
+ * MEASURED, `.parity/s1head.py`, cold at `:3100` with a warm control (FILM.md
+ * §40): the copy, the scan panel and the decoded page all arrive in the same
+ * 250 ms sample, and that sample is the first one after the move ends. Shot 5
+ * waits **2.71 s cold, 2.72 s warm** — so it is not a fetch and not a decode,
+ * it is this line. The film's own beat, on the three shots that sit on their
+ * act table, is 1.25 s; shot 3 waits 3.3 s and shot 9 waits 7.2 s.
+ *
+ * §25.2 costed the whole class once: `copy on 0` for every `move` sample,
+ * **21.6 s of a 130 s film with nothing to read**, and it bought the time back
+ * by cutting the travels rather than by moving the line. §27.3.4 wrote down
+ * what was left — *"putting the copy up at the HEAD of the move, where §spare
+ * says the camera already is, would recover most of it"* — and this is that.
+ *
+ * The plate is DOM and not canvas, so it does not wait on the renderer: §40.2
+ * measured six rasterisations inside the first 1.3 s of shot 5's travel, and
+ * the line is on screen through all of them. The line cuts at the same instant
+ * the shot does, which is this film's own grammar — cuts and holds, no
+ * dissolves — and every line's visible window GROWS by its travel, so no shot
+ * loses reading time.
+ *
+ * **`say` is what a shot uses when its line must still wait**, and it is
+ * untouched: a move segment carries no `ai`, so the guard below reads −1 and
+ * holds the copy through the travel as well as through the acts. **Shot 4 is
+ * the one shot that sets it**, and it is the reason the guard is a per-shot
+ * field and not a rule: shot 4 carries `yrun`, so its plate really does read
+ * 1915 while the counter climbs to 1936, and a sentence about two openings
+ * must not sit over it. Shot 9 set it too until §40 — `pin=1989` had already
+ * made its plate unable to print a wrong year, so the guard there could no
+ * longer prevent anything and was costing 6.7 s of silence.
  */
 function pickLine(tl: FilmTimeline, d: FilmPayload, si: number, segIx: number): FilmLine | null {
-  if (tl.segs[segIx].k === "move") return null;
   const s = d.shots[si];
   /* ── AND A LINE ABOUT A DATED EVENT WAITS FOR THE YEAR TO ARRIVE ──────
-     The same idea as the move guard one line up. On a shot whose counter is
-     still running toward the date the line is about, the plate would otherwise
+     On a shot whose counter is still running toward the date the line is
+     about, the plate would otherwise
      print a year in which the thing did not happen: MEASURED over the whole
      film, nine of the eleven lines were on screen while the counter crossed a
      span, and Daniel's own frame read 1987 over the 1989 earthquake.

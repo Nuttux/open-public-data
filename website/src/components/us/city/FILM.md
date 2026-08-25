@@ -4968,3 +4968,245 @@ distance: every expensive row above is a big change in `z` (into 2 at 15, into 7
 at 10, into 3 and 4 at 5–7), and shot 4's new exit at 6.0 is much closer to
 shot 5's 9.6 than the old 1.26 was. §30.3's settled-buffer change is the other
 half of it.
+
+## 40 · Block M1j, 2026-08-25 — the head of every shot, timed on the wall clock
+
+Taking over from M1i. `:3100` and production are both on `3d359371`. One defect,
+from Daniel watching the shipped build:
+
+> *"1942 shot starts with a big pause before any box or text comes — is weird"*
+
+### 40.1 The instrument, and the two traps it was built to avoid
+
+`.parity/s1head.py` plays the film for real and samples every 250 ms, reading
+three things at each sample so a gap can be ATTRIBUTED rather than guessed at:
+
+- the film clock, the segment and the shot — the model;
+- `.fx-film-copy` has text, `.fx-film-scan` is in the DOM — the chrome;
+- the scan `<img>`'s `complete`/`naturalWidth`, and every matching
+  `PerformanceResourceTiming` — the picture.
+
+**It samples on the WALL clock, not the film clock**, because §30 measured that a
+92.3-second film plays in 162 seconds and the whole question here is what a
+reader waits through. And it is run **cold, with `Network.setCacheDisabled`**,
+against a warm control, because the brief's own trap was that a panel waiting on
+a fetch is longer on a first play than on a second.
+
+### 40.2 What the gap is made of: it is the travel, and nothing else
+
+Shot 5, every sample from one second before the cut, cold at `:3100`:
+
+```
+       Δw  film t  # seg    plate  copy panel   img        z spare  rast
+    -0.25   36355  4 hold    1937   yes     —           6.00   yes   123
+     0.00   36606  5 move    1942     —     —           6.00   yes   123
+     0.38   36664  5 move    1942     —     —           6.02   yes   124
+     1.32   36781  5 move    1942     —     —           6.08   yes   127
+     1.94   36947  5 move    1942     —     —           6.26   yes   129
+     2.69   37705  5 move    1942     —     —           8.53   yes   129
+     3.19   38205  5 move    1942     —     —           9.85   yes   129
+     3.44   38455  5 run     1942   yes   yes   yes    10.00   yes   129
+```
+
+**The copy, the panel and the decoded image all arrive in the SAME sample**, and
+that sample is the first one after the move ends. So:
+
+- **not the scan panel waiting on its image.** `shot-05.jpg` is 386 kB and the
+  resource timing says **3 ms**, cold, cache disabled — and the cold run and the
+  warm control agree to 10 ms on this shot (2.71 s against 2.72 s). The panel
+  does not wait on the picture; it waits on the same thing the copy waits on.
+- **not a `say` offset.** Shot 5 carries none. `say` is on shots 4 and 9 only.
+- **not the hold's lead-in.** The copy arrives at the head of the shot's FIRST
+  act, the run — the hold is four seconds later.
+- **it is the travel, and the travel alone.** `pickLine`'s first line is
+  `if (tl.segs[segIx].k === "move") return null`, so for the whole of a move the
+  plate carries a year and nothing else.
+
+**1,849 ms of film played in 2.71 s of wall clock**, six rasterisations, all of
+them in the first 1.3 s.
+
+### 40.3 The other ten, in the same pass — and shot 5 is fourth
+
+`s1head.py all`, cold, with the warm run beside it as the control. `act table` is
+what the head SHOULD be: the shot's own `move`, plus every act the `say` guard
+holds the copy through.
+
+```
+   #  id            cut→copy  act table   overrun     warm control
+   1  burn            (title card — see below)
+   2  rebuild           0.00 s    0.00 s    +0.00 s      0.00 s
+   3  palace            3.29 s    1.20 s    +2.09 s      3.33 s
+   4  bridges           5.38 s    2.60 s    +2.78 s      5.37 s
+   5  japantown         2.71 s    1.80 s    +0.91 s      2.72 s
+   6  charter           1.25 s    1.20 s    +0.05 s      1.25 s
+   7  freeways          2.16 s    1.20 s    +0.96 s      2.46 s
+   8  pyramid           1.73 s    1.20 s    +0.53 s      1.74 s
+   9  embarcadero       6.72 s    2.60 s    +4.12 s      7.16 s
+  10  mission-bay       1.25 s    1.20 s    +0.05 s      1.25 s
+  11  face              1.28 s    1.20 s    +0.08 s      1.28 s
+```
+
+**Cold and warm are the same film.** Every row agrees within 300 ms and shot 5
+agrees within 10 ms, so nothing in this table is a fetch or a decode. Shot 1 is
+not a row: `where()` reports shot 0 during the title card, so the instrument
+measures the card's own 3.2 s with it; shot 1 has no move, no `say`, and its
+copy is up at its first act.
+
+**Three things this says that the defect note did not.**
+
+1. **The film's own beat is 1.25 s** — shots 6, 10 and 11 sit on the act table
+   with 50 ms of overrun. That is the number every other head should be judged
+   against.
+2. **Shot 5 is not the worst; it is fourth.** Shot 9 waits **6.7–7.2 s** and shot
+   4 waits **5.4 s**, both of them `say` shots whose nominal is already 2.6 s and
+   whose overrun is the run act underneath. Shot 3 waits **3.3 s** on a 1.2 s
+   travel — a bigger overrun than shot 5's.
+3. **What singles shot 5 out is that its wait is EMPTY.** On shot 4 the counter
+   is visibly running 1915 → 1936 under the wait; on shot 9 the fabric is
+   rebuilding through seventeen years; on shot 3 the camera is diving from z 3.1
+   to z 21.7. Shot 5's move is a pan at district zoom with the plate frozen on
+   1942 — §36's `plateYear` gives a shot with neither `yrun` nor `pin` its own
+   final year for the whole shot, the move included. **A still number, a slow
+   pan, and no line: that is the "big pause".**
+
+### 40.4 The fix is one line, and it is where the copy arrives
+
+`film.ts` §pickLine opened `if (seg.k === "move") return null` — *"a move
+arrives before its line does"*. That line is gone. **Nothing about any camera
+changes**: shot 5 keeps its 1,800 ms travel, its `z 10`, its offset and its
+protected stillness, and no shot's `move`, `z`, `ox`, `oy`, act or duration was
+touched. The runtime is still **96.9 s**.
+
+Three properties of the change, each of which is why it is safe:
+
+1. **The plate is DOM, not canvas.** §40.2 measured six rasterisations inside
+   the first 1.3 s of shot 5's travel; the line is now on screen through all of
+   them, so the stutter and the silence are decoupled and fixing one no longer
+   waits on fixing the other.
+2. **Every line's visible window GROWS by its own travel**, 1.2–1.8 s, so no
+   line loses reading time and §25.2's floor is cleared by more than it was.
+3. **`say` still holds a line back where the plate would contradict it**, and
+   it needed no change to do it: a move segment carries no `ai`, so
+   `(seg.ai ?? -1) < s.say` blocks the copy through the travel as well as
+   through the acts.
+
+**The scan panel is tied to the LINE and not to the segment.** It read
+`state.seg.k !== "move"` under a comment claiming it *"lands on the same cut the
+camera does"*, which it did not; `!card && !paused && line` makes the comment
+true and makes it impossible for a sentence and the document it is drawn from to
+arrive apart.
+
+**And the four pages are fetched when `scans.json` lands**, not when their shot
+does. Locally this changes nothing — 3 ms, measured — but the panel now mounts at
+the cut, so a page still on the wire would be an empty framed box ON the frame
+rather than a late one. The entry plate holds for ~17 s before the film starts,
+so 1.29 MB has nothing to compete with. This is the brief's *"strange room"*
+closed by construction rather than by the local number.
+
+### 40.5 Shot 9 gave up a guard that could no longer guard anything
+
+Sweeping the other ten found the film's real worst head, and it was not a camera:
+**shot 9 waited 6.7 s cold and 7.2 s warm.** 2.6 s of that is its act table —
+`say=1` holds the copy through the travel AND through the first run — and the
+rest is the run's own stutter.
+
+**`say` exists for exactly one reason: the plate must not print a year in which
+the thing the line describes did not happen.** §36 gave shot 9 `pin=1989`, which
+prints 1989 for the whole shot, the travel included, whatever the counter does.
+After that the guard on shot 9 could not prevent anything. It is removed —
+`build_film_twelve.py`, one key — and `film.json` rebuilt: **`shots[8].say` is
+the only key in the file that moved**, checked key by key against the previous
+bytes, and the runtime is unchanged.
+
+**Shot 4 keeps its `say` and is the control.** Shot 4 carries `yrun`, so its
+plate really does read 1915 while the counter climbs to 1936, and a sentence
+about two openings must not sit over it. One shot changed, one shot deliberately
+did not, and the difference between them is stated.
+
+Re-measured with `.parity/r1plate.py model` — every year the plate shows while
+each line is up, tallied:
+
+```
+   1 burn        1906 × 22        7 freeways    1959 × 16
+   2 rebuild     1906..1914 span  8 pyramid     1972 × 14
+   3 palace      1915 × 14        9 embarcadero 1989 × 18
+   4 bridges     1936 × 8 · 1937 × 7  10 mission-bay 1991..2018 span
+   5 japantown   1942 × 21       11 face        2019 × 16
+   6 charter     1945 × 13
+```
+
+**Shot 9 reads 1989 on all eighteen samples** — six more samples of the line than
+before and not one of them a wrong year. The three spans are still exactly the
+three `yrun` shots. Every other shot's sample count is up by two to five, which
+is the recovered travel showing up as reading time.
+
+### 40.6 After, on the same instrument
+
+`.parity/s1head.py all cold`, at `:3000` because `:3100` is still on `3d359371`
+and **the production server does not serve a patched payload** (§24). To be
+re-run at `:3100` after the rebuild.
+
+```
+   #  id            cut→copy   act table   was (cold, :3100)
+   2  rebuild         0.00 s     0.00 s      0.00 s
+   3  palace          0.00 s     1.20 s      3.29 s
+   4  bridges         5.22 s     2.60 s      5.38 s   ← `say`, kept on purpose
+   5  japantown       0.00 s     1.80 s      2.71 s
+   6  charter         0.00 s     1.20 s      1.25 s
+   7  freeways        0.00 s     1.20 s      2.16 s
+   8  pyramid         0.00 s     1.20 s      1.73 s
+   9  embarcadero     0.00 s     2.60 s      6.72 s
+  10  mission-bay     0.00 s     1.20 s      1.25 s
+  11  face            0.00 s     1.20 s      1.28 s
+```
+
+**Ten of the eleven shots put their line on screen in the same 250 ms sample as
+the cut.** The eleventh is shot 4, and it waits because a sentence naming two
+openings must not sit over 1915.
+
+### 40.7 The frame nobody had ever reviewed
+
+Moving the page to the head of the travel creates a frame that did not exist
+before: the panel takes the right 36 %, and the DEPARTING framing was never
+checked against it. `.parity/s1cut.py` shoots +150 ms, +600 ms and 62 % of each
+shot, through `still()` and not `pause()` — §34.1's trap, because the paused
+state hides the scan.
+
+- **Shot 5, +150 ms** (`out-s1/s05-+150.png`): the camera is still on the Golden
+  Gate at z 6.08 and the 1942 page is beside it. It is a cut, and what it
+  replaces is the same Golden Gate frame carrying a lone **1942** for 2.7 s —
+  the plate's year was ALWAYS the incoming shot's during a travel (§36's
+  `plateYear`), so nothing became inconsistent here that was not already. By
+  +600 ms the camera is over the Presidio and moving onto the Western Addition.
+- **Shot 7, +150 ms** (`s07-+150.png`): the freeway resolution stands over the
+  Civic Center as the camera leaves the War Memorial. It is one of the better
+  frames in the film.
+- **Shot 11, +150 ms**: the ordinance over the city at z 3.39, pulling back.
+  §37.5 checked the settled framing; this one is clear too.
+
+### 40.8 What this did NOT do, stated so it is not re-asked
+
+- **Shot 5's camera is untouched.** No move was added, no curve, no effect, and
+  the 1,800 ms travel is still 1,800 ms. It was tempting to cut it to 1,200 like
+  the other nine — §39.8 measured the travel into 5 as the joint CHEAPEST in the
+  film now that shot 4 exits at z 6.0, so §25.2's reason for the extra 600 ms is
+  gone — and it is **deliberately not done**, because the dead air is zero either
+  way and a camera change would be a second variable on the one shot NIGHT3
+  protects. Recorded as available, not taken.
+- **No word changed.** Not a line, not a title, not a citation, not a date.
+- **The stutter is not fixed.** §30's 232 frames over 100 ms are still there;
+  shot 9's run still costs 4 s of wall clock over its own 1.4 s. What changed is
+  that the reader is no longer looking at an empty frame while it happens.
+
+### 40.9 The share of the film with a line on it
+
+§25.2's table is the one to compare against: `copy on 0` for every one of its 50
+`move` samples. Same instrument, 250 ms, whole film, after:
+
+```
+  460 samples   ·   copy on 417   ·   90.7 % of the film
+  inside the eleven shots (title and end cards excluded)
+  433 samples   ·   copy on 417   ·   96.3 %
+```
+
+The 3.7 % that is left is shot 4's `say`, which is there on purpose.
