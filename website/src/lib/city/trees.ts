@@ -296,6 +296,28 @@ export function treeWorld(
  * 1955 survives as what it actually is: the earliest date **in the file**, and
  * therefore the year before which the register has nothing to say about any
  * tree in it.
+ *
+ * WHICH TREES THE FILE FAILS TO DATE, MEASURED — because it is not a random
+ * 64 %. `plantdate` is a permit date, so coverage tracks whether a permit was
+ * ever filed: **Permitted Site 87.3 % dated, DPW Maintained 23.4 %, Landmark
+ * tree 4.5 %.** The undated cohort is therefore the OLD cohort, and the trunk
+ * says so — mean DBH **11.14 in** over 110,590 undated rows against **6.17 in**
+ * over 41,229 dated ones, and **91.0 % of the trees thicker than 24 inches
+ * carry no planting date.** That is why `yy === 0` draws in every year below
+ * and not from a floor year: a floor drew the city's oldest street trees as its
+ * newest. `time.ts` §THE UNDATED TREES holds the rule; DRAW.md §33.8 holds the
+ * counts.
+ *
+ * AND `yy === 0` IS NOT "DRAWN IN EVERY YEAR" ANY MORE — it is "drawn from the
+ * year its own street is drawn", `syr` below. Drawing the whole undated cohort
+ * from 1906 put **7,528 crowns on the Outer Sunset's bare dune**, in rows,
+ * tracing a street grid the map does not draw until the 1920s. A street tree
+ * stands in a right of way by definition and cannot be more certain than the
+ * right of way it stands in. It puts a date on no tree: **52.5 % of the undated
+ * cohort is unaffected** because its right of way is undated too, and the
+ * 59,446 that are gated inherit a year the renderer is already drawing a metre
+ * or two away — the join's median tree-to-right-of-way distance is **3.0 m**
+ * (p90 5.8 m), so it is finding the tree's own street and not a neighbour's.
  */
 export const TREE_YEAR_BASE = 1900;
 export const TREE_EARLIEST = 1955;
@@ -306,6 +328,8 @@ export const TREE_YEAR0 = TREE_YEAR_BASE;
 export interface VegFlags {
   /** draw the trees whose planting date is not published */
   undated: boolean;
+  /** hold an undated tree until the year its own right of way is drawn */
+  undatedStreetGate: boolean;
   /** the ground tint from the measured canopy fraction */
   tint: boolean;
   /** the canopy blobs */
@@ -322,6 +346,7 @@ export interface VegFlags {
 
 export const WFLG: VegFlags = {
   undated: true,
+  undatedStreetGate: true,
   tint: true,
   blobs: true,
   trees: true,
@@ -763,6 +788,23 @@ export interface TreeCell {
   readonly big: Uint8Array;
   /** years from `TREE_YEAR_BASE` = 1900; 0 = the date is not published */
   readonly yr: Uint8Array;
+  /**
+   * THE UNDATED TREE'S GATE, and it is a street's year and not a tree's.
+   *
+   * Years from `TREE_YEAR_BASE`, same base as `yr` so there is one offset to
+   * know: the year the map first DRAWS the right of way this tree stands in,
+   * out of `h8n7-e4ns`'s published polygon and the Board's own acceptance
+   * record. 0 means that right of way is itself undated, or none was within
+   * 60 m — and 0 means NO GATE, so the tree keeps drawing in every year.
+   *
+   * Read only for `yr === 0`. A tree that carries its own planting date is
+   * gated on that and this field is not consulted.
+   *
+   * OPTIONAL BECAUSE THE WIRE OUTLIVES THE BUILD: a chunk encoded before this
+   * field existed is a chunk with no `syr`, and the draw loop must degrade to
+   * the previous behaviour rather than throw on it.
+   */
+  readonly syr?: Uint8Array;
 }
 
 export interface CanopyCells {
@@ -1013,6 +1055,11 @@ export function drawVeg(
           const yy = c.yr[j];
           if (yy === 0) {
             if (!WFLG.undated) continue;
+            /* §the year: an undated tree is drawn from the first year its own
+               STREET is drawn. `sy === 0` is a right of way the record does not
+               date either, and it stays a tree drawn in every year. */
+            const sy = WFLG.undatedStreetGate && c.syr ? c.syr[j] : 0;
+            if (sy !== 0 && year !== undefined && year < TREE_YEAR_BASE + sy) continue;
           } else if (year !== undefined && year < TREE_YEAR_BASE + yy) continue;
           const pos = c.pos[j];
           const wx = bxw + ((pos % grid.q) + 0.5) * step;

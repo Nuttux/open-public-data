@@ -106,6 +106,23 @@ export const SCRUB_MAX = 2025;
  * dated rows are gated on their own planting year in `trees.ts` and nothing here
  * touches that. Only the cohort the file does not date changes treatment.
  *
+ * ── AND THE EVIDENCE IS STRONGER THAN THE SYMMETRY, MEASURED 2026-08-25 ──
+ *
+ * The paragraph above defends this on consistency with the canopy. It no longer
+ * has to, because the register says WHICH trees it fails to date and they are
+ * the old ones. `plantdate` coverage by its own `qlegalstatus`: **Permitted Site
+ * 35,244 of 40,354 (87.3 %) against DPW Maintained 33,414 of 142,585 (23.4 %)
+ * and Landmark tree 11 of 244 (4.5 %).** A date means a permit was filed, so the
+ * undated cohort is the cohort the City simply maintains — and the trunk says
+ * how old that is: **mean DBH 11.14 in over 110,590 undated rows against 6.17 in
+ * over 41,229 dated ones, and 8,833 of the 9,703 trees thicker than 24 inches
+ * (91.0 %) carry no planting date.**
+ *
+ * So the old floor was not merely a pop. **It drew the oldest street trees in
+ * San Francisco as the newest**, and held the thickest 91 % of them out of every
+ * frame before 1955. Drawing them in every year is the treatment the diameter
+ * distribution supports, not just the one the canopy already had. DRAW.md §33.8.
+ *
  * AND 1955 IS REAL, WHICH IS WHY IT SURVIVES AS `TREE_EARLIEST`. Traced rather
  * than assumed (DRAW.md §33.5): the earliest rows carry permit numbers 11, 12,
  * 14, 15, 16 in date order from October 1955, so `plantdate` is the date of the
@@ -128,6 +145,45 @@ export const SCRUB_MAX = 2025;
  * cohort's own planting curve, so the 1906 frame carries the share the measured
  * curve implies. It would put a date on 125,234 trees that no file gives one to.
  * Drawing them in every year claims nothing about any of them.
+ *
+ * ── AND "EVERY YEAR" WAS TOO MUCH: THE STREET GATE, BUILT 2026-08-26 ─────
+ *
+ * The rule above, taken literally, drew **7,528 street trees on the Outer
+ * Sunset's bare dune at 1906**, in rows, tracing a street grid the map does not
+ * draw until the 1920s. That is the 1955 pop's mirror image and it is just as
+ * false: an undated tree was being asserted into a century the record cannot
+ * reach, in a place the record positively contradicts.
+ *
+ * SO THE COHORT IS GATED, ON A YEAR THAT IS NOT A TREE'S: **an undated tree is
+ * drawn from the first year its own right of way is drawn; where that right of
+ * way is undated too, it keeps drawing in every year.** A street tree stands in
+ * a right of way by definition, so it cannot be more certain than the right of
+ * way it stands in, and the year it inherits is the Board's own acceptance
+ * record — the same year `streets.ts` is already drawing a metre or two away.
+ * Nothing is invented and no tree is given a date.
+ *
+ * MEASURED, and the join is to the published POLYGON (`h8n7-e4ns` publishes the
+ * right of way as area) by point-to-edge distance, not to a segment centroid:
+ *
+ *     median tree-to-right-of-way distance          3.0 m   (p90 5.8 m)
+ *     beyond the 60 m cap, so refused and NOT gated   823   (0.42 %)
+ *     undated trees gated on their street's year   59,446   (47.5 %)
+ *     undated trees still drawn in every year      65,788   (52.5 %)
+ *       ... because their right of way is undated too
+ *     of the gated, first drawn 1907-1919          30,227   the bulk barely moves
+ *                             1950 or later         8,947   (7.1 % of the cohort)
+ *
+ * AND IT DOES NOT SINGLE OUT THE OLD GROWTH, which was the risk worth checking,
+ * because the whole argument above is that the undated cohort is the old one.
+ * Taking the 8,725 undated trees thicker than 24 inches that carry a coordinate
+ * and running the same join: **7.9 % of them are gated at 1950 or later, against
+ * 7.1 % of the undated cohort as a whole**, and 50.1 % get no gate at all
+ * against 52.5 %. Eight tenths of a point. The gate is not reaching for the
+ * thick trees; it is reaching for late ground.
+ *
+ * `tree/*.qc` carries it as `syr`, a `u8` on the same `TREE_YEAR_BASE` as `yr`
+ * so the client has one offset to know, and `trees.ts` reads it only where
+ * `yr === 0`. DRAW.md §33.8.
  */
 export function undatedTreesVisible(_year: number | undefined): boolean {
   return true;

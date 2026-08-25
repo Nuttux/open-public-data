@@ -1301,7 +1301,117 @@ TREE_FOLD = (
 )
 
 
-def encode_trees(WRLD: dict) -> dict:
+# ── THE UNDATED TREE'S OWN STREET ───────────────────────────────────────────
+#
+# 125,234 of the 195,310 published street trees (64.1 %) carry no `plantdate`,
+# and they are drawn in every year, because the register's silence is not
+# evidence of youth — it is the opposite. `plantdate` is a PERMIT date, so
+# coverage tracks whether a permit was ever filed: Permitted Site 35,244 of
+# 40,354 dated (87.3 %) against DPW Maintained 33,414 of 142,585 (23.4 %) and
+# Landmark tree 11 of 244 (4.5 %). The trunk says how old the undated cohort
+# therefore is: mean DBH 11.14 in over 110,590 undated rows against 6.17 in
+# over 41,229 dated ones, and 8,833 of the 9,703 trees thicker than 24 inches
+# (91.0 %) carry no date. A floor year draws the oldest street trees in San
+# Francisco as the newest, which is why there is no floor year.
+#
+# BUT DRAWING THEM IN 1906 PUT 7,528 CROWNS ON THE OUTER SUNSET'S BARE DUNE,
+# in rows, tracing a street grid the map does not draw until the 1920s. So the
+# gate is not a date and not a guess: **an undated tree is drawn from the first
+# year its own street is drawn.** A street tree stands in a right of way by
+# definition, so it cannot be more certain than the right of way it stands in,
+# and the year it inherits is one the renderer is already drawing a few metres
+# away — out of the Board's own acceptance record, not invented here. Where the
+# street is itself undated the tree keeps drawing in every year, which is 56.3 %
+# of the cohort, so this puts a date on no tree at all.
+#
+# THE JOIN IS TO THE POLYGON, NOT TO A CENTROID. `h8n7-e4ns` publishes the right
+# of way as AREA, so the distance taken is point-to-EDGE over every ring of every
+# right of way — a segment's centroid can sit half a block from a tree at its
+# end. Anything beyond TREE_ROW_MAX_M is not this tree's street and is refused
+# rather than used, and a refusal means no gate.
+# The `yr` byte is years since 1900 — world/build_world.py writes
+# `max(1, min(255, y - 1900))`, which is what makes 2026 fit in a u8 at all, and
+# `trees.ts` §TREE_YEAR_BASE decodes it against the same constant. `syr` rides on
+# the same base so the client has ONE offset to know and cannot decode the two
+# fields against different origins. Restated here rather than imported because
+# the encoder does not import from the site, and asserted below against the
+# street years actually encoded.
+TREE_YEAR_BASE = 1900
+TREE_ROW_MAX_M = 60.0
+
+
+def _tree_street_year(twx, twy, STS: dict):
+    """Per tree, the year the map first DRAWS the right of way it stands in.
+
+    Returns (year, distance_m), year 0 where no right of way is within
+    TREE_ROW_MAX_M or where the one found is itself undated. Deterministic:
+    ties break on the lower feature index, which is `street-data.js`'s own order.
+    """
+    R = _decode_rings(STS, "rn", "rlen", "rf", "rxy")
+    fyr = _u16(STS["yr"])
+    # every ring EDGE, carrying the year of the feature that owns the ring
+    ring_feat = np.repeat(np.arange(STS["n"]), R["rn"].astype(np.int64))
+    ax = []; ay = []; bx = []; by = []; eyr = []
+    for r in range(R["rl"].size):
+        o = int(R["off"][r]); L = int(R["rl"][r])
+        if L < 2:
+            continue
+        xs = R["wx"][o:o + L]; ys = R["wy"][o:o + L]
+        ax.append(xs); ay.append(ys)
+        bx.append(np.roll(xs, -1)); by.append(np.roll(ys, -1))
+        eyr.append(np.full(L, fyr[ring_feat[r]], dtype=np.int64))
+    ax = np.concatenate(ax); ay = np.concatenate(ay)
+    bx = np.concatenate(bx); by = np.concatenate(by)
+    eyr = np.concatenate(eyr)
+
+    G = 120.0                                   # bucket, comfortably > the cap
+    ex0 = np.minimum(ax, bx); ex1 = np.maximum(ax, bx)
+    ey0 = np.minimum(ay, by); ey1 = np.maximum(ay, by)
+    buckets: dict[tuple[int, int], list[int]] = {}
+    for i in range(ax.size):
+        for gx in range(int(np.floor(ex0[i] / G)), int(np.floor(ex1[i] / G)) + 1):
+            for gy in range(int(np.floor(ey0[i] / G)), int(np.floor(ey1[i] / G)) + 1):
+                buckets.setdefault((gx, gy), []).append(i)
+    bucket = {k: np.asarray(v, dtype=np.int64) for k, v in buckets.items()}
+
+    n = twx.size
+    out = np.zeros(n, dtype=np.int64)
+    dist = np.full(n, np.inf)
+    tgx = np.floor(twx / G).astype(np.int64)
+    tgy = np.floor(twy / G).astype(np.int64)
+    order = np.lexsort((tgy, tgx))
+    start = 0
+    while start < n:
+        end = start
+        while end < n and tgx[order[end]] == tgx[order[start]] \
+                and tgy[order[end]] == tgy[order[start]]:
+            end += 1
+        sel = order[start:end]
+        gx, gy = int(tgx[sel[0]]), int(tgy[sel[0]])
+        cand = [bucket[(gx + dx, gy + dy)]
+                for dx in (-1, 0, 1) for dy in (-1, 0, 1)
+                if (gx + dx, gy + dy) in bucket]
+        if cand:
+            c = np.unique(np.concatenate(cand))
+            Ax = ax[c]; Ay = ay[c]; Bx = bx[c]; By = by[c]
+            vx = Bx - Ax; vy = By - Ay
+            L2 = vx * vx + vy * vy
+            L2 = np.where(L2 == 0.0, 1.0, L2)
+            px = twx[sel][:, None] - Ax[None, :]
+            py = twy[sel][:, None] - Ay[None, :]
+            t = np.clip((px * vx[None, :] + py * vy[None, :]) / L2[None, :], 0.0, 1.0)
+            dx = px - t * vx[None, :]
+            dy = py - t * vy[None, :]
+            d = np.sqrt(dx * dx + dy * dy)
+            j = np.argmin(d, axis=1)
+            dm = d[np.arange(sel.size), j]
+            out[sel] = np.where(dm <= TREE_ROW_MAX_M, eyr[c][j], 0)
+            dist[sel] = dm
+        start = end
+    return out, dist
+
+
+def encode_trees(WRLD: dict, STS: dict) -> dict:
     T = WRLD["tree"]
     dk = _wvarint(_u8(T["k"]))
     cn = _wvarint(_u8(T["c"]))
@@ -1320,12 +1430,41 @@ def encode_trees(WRLD: dict) -> dict:
     fbits = np.unpackbits(fb, bitorder="little")
     form = (fbits[0::2] + 2 * fbits[1::2])[: T["n"]].astype(np.uint8)
     big = np.unpackbits(bb, bitorder="little")[: T["n"]].astype(np.uint8)
+
+    # THE UNDATED TREE'S GATE. Every tree's own world position, out of its cell
+    # and its two `pos` nibbles — the same arithmetic `trees.ts` draws it at, so
+    # the join is to the point the reader sees and not to a cell centre.
+    tcell = np.repeat(np.arange(cn.size), cn.astype(np.int64))
+    tcol = keys[tcell] % gw
+    trow = keys[tcell] // gw
+    step = cell / q
+    twx = x0 + tcol * cell + ((pos % q) + 0.5) * step
+    twy = y0 + trow * cell + ((pos // q) + 0.5) * step
+    syear, sdist = _tree_street_year(twx.astype(np.float64), twy.astype(np.float64), STS)
+    # the byte is years since TREE_YEAR_BASE, exactly as `yr` is, so `trees.ts`
+    # decodes both against one constant. A street year outside the byte's reach
+    # is refused rather than clipped: clipping would move a tree to a year no
+    # source states.
+    syr = np.where((syear >= TREE_YEAR_BASE + 1) & (syear <= TREE_YEAR_BASE + 255),
+                   syear - TREE_YEAR_BASE, 0).astype(np.uint8)
+    und = yr == 0
+    _gated = int(((syr > 0) & und).sum())
+    print(f"  trees: {int(und.sum()):,} undated, {_gated:,} of them gated on their own "
+          f"street's drawn year ({_gated / max(1, int(und.sum())) * 100:.1f} %); "
+          f"median tree-to-right-of-way distance {np.median(sdist[np.isfinite(sdist)]):.1f} m")
     prov = {
         "cellKey": src("tree", dataset="tkzw-k3nq", publisher="DataSF",
                        what="195,310 published street trees",
                        defect=TREE_FOLD),
         "cellCnt": src("tree"), "pos": src("tree"), "form": src("tree"),
         "big": src("tree"), "yr": src("tree"),
+        "syr": src("street_year", publisher="San Francisco Board of Supervisors",
+                   what="the year the Board is recorded accepting, paving and kerbing "
+                        "the right of way this tree stands in, joined by point-to-edge "
+                        "distance to the published right-of-way polygon and refused "
+                        f"beyond {TREE_ROW_MAX_M:g} m. It gates the UNDATED trees only; "
+                        "a tree with its own planting date keeps it",
+                   derived_from=["h8n7-e4ns", "street_year"]),
     }
     stats = {"cells": 0, "bytes": 0, "gzip": 0}
     for k in np.unique(key):
@@ -1335,6 +1474,7 @@ def encode_trees(WRLD: dict) -> dict:
         w.add("cellKey", "u32", keys[sel]).add("cellCnt", "u16", cn[sel])
         w.add("pos", "u8", pos[vsel]).add("form", "u8", form[vsel])
         w.add("big", "u8", big[vsel]).add("yr", "u8", yr[vsel])
+        w.add("syr", "u8", syr[vsel])
         emit(w, tier="tree", minZ=Z_TREES,
              extent=cell_extent(int(k) // NY, int(k) % NY), prov=prov,
              extra={"n": int(vsel.size), "nCells": int(sel.size),
@@ -1343,7 +1483,12 @@ def encode_trees(WRLD: dict) -> dict:
                   f"row*{gw} + col, cell origin ({x0:g}, {y0:g}). `pos` is two nibbles, "
                   f"x and y within the cell at {cell / q:g} m. `yr` is the planting year "
                   f"the register gives, 0 where it gives none — 125,234 of the trees "
-                  f"carry no date and are drawn undated rather than dropped.")
+                  f"carry no date and are drawn undated rather than dropped. `syr` is "
+                  f"the drawn year of the right of way the tree stands in, on the same "
+                  f"{TREE_YEAR_BASE} base as `yr`, 0 where that right of way is itself "
+                  f"undated or none is within {TREE_ROW_MAX_M:g} m: it is the gate for "
+                  f"the undated trees, so an undated tree is drawn from the first year "
+                  f"its own street is drawn and never from a date no file gives it.")
         e = chunks[-1]
         stats["cells"] += 1; stats["bytes"] += e["b"]; stats["gzip"] += e["gz"]
 
@@ -2329,7 +2474,7 @@ def main() -> int:
     lstat = encode_centrelines(GEO2, TIMED, STS, _names, _nidx)
     ustat = encode_unimplied(GEO2, TIMED, _names, _nidx)
     lbstat = encode_street_labels(GEO2, TIMED, _names, _nidx)
-    tstat = encode_trees(WRLD)
+    tstat = encode_trees(WRLD, STS)
     encode_marks(MARKS)
 
     tiers: dict[str, dict] = {}
