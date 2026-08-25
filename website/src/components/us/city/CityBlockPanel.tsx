@@ -768,7 +768,7 @@ function NowRows({
           needed. FOR ITS OWNER: it wants renaming to `panel.block_head`, since
           nothing about it is the neighbourhood's any more. */}
       <div className="fx-city-ledger-head fx-block-sec">
-        {t("us.sf.thecity.panel.hood_block_head")}
+        {t("us.sf.thecity.panel.block_head")}
       </div>
       <dl className="fx-city-ledger-facts">
         {now.residents !== null ? (
