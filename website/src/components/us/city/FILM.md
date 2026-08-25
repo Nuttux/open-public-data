@@ -3393,3 +3393,94 @@ back under the pill; this is the number to re-run.
   and left the hood lane alone because the collision grid's own ordering beat
   every cap that could be justified. It is still the biggest open question on
   the wide shots and it is an editorial call, not a defect.
+
+## 27 · Block M1f — watched end to end, twice, and the honest verdict
+
+`.parity/m1d.py sweep 24` is the film read as a strip, and `m1d.py shots` is the
+eleven again after every change above. `out-n4d/sweep-sheet.png`,
+`out-n4f/shots-sheet.png`.
+
+### 27.1 Reading the strip found one thing no single frame could
+
+**Shots 4, 7 and 11 were the same picture.** Whole peninsula, same bearing,
+`z` 1.26 / 1.25 / 1.10 — and the wide travels between them are that picture
+too. On the 24-frame strip six of the twenty-four are that composition:
+**about a quarter of an 89-second film on one camera**, and the last shot is
+supposed to land as a return to it.
+
+Shot 7 is the one that gives. NIGHT3 asks for *"high over the city"* and for
+the absence to carry the shot; it does not ask for the whole-city fit, and at
+1.25 shot 7 was arriving at a frame the film had already used and would use
+again eleven seconds later. `z` 1.25 → **2.1**, `off` (0, 0) → (0.10, −0.02).
+At 2.1 the city's GRAIN reads — the grid, Market Street's diagonal, City Hall's
+dome, the Financial District — which is also the ground the seven rejected
+routes would have cut through, so the absence is legible instead of abstract.
+Shot 11 is now the only whole-city frame after shot 4, which is what makes it
+a return.
+
+### 27.2 What would make a stranger say that was beautiful
+
+1. **Shot 3, the Palace.** The rotunda's lattice dome, its peristyle, the
+   Exhibition Hall's tan curve sweeping the frame, the lagoon. It is the only
+   frame in the film that looks *drawn* rather than *mapped*, and it is the one
+   somebody screenshots.
+2. **The fire at its middle, and the match cut out of it.** A field of flames
+   inside a red boundary over a city that is otherwise calm; then the identical
+   frame, scorched, with only the year changing. That cut is the film's
+   strongest idea and it works.
+3. **Shot 6, now that the camera is on it.** The Opera House's colonnade, Van
+   Ness on the diagonal, City Hall's gold dome whole.
+4. **Shot 8, now that its apex is on screen.** One sharp spike out of a dense
+   field of blocks.
+5. **Shot 9's waterfront.** The Embarcadero corner to corner, the piers reading
+   as pier sheds, the Bay Bridge anchoring the right edge.
+6. **The consistency of the hand.** Roof forms, window rhythms, canopies,
+   coastline — eleven frames, one drawing. That is rare and it is the thing a
+   stranger will feel without being able to name.
+
+### 27.3 What still would not, in the order I would fix it
+
+1. **THE PALETTE IS ONE PALETTE.** Nine of eleven frames are pale warm tan,
+   sage and pale blue at nearly one value. **There is no dark frame in the
+   film** and no strong contrast anywhere except the fire, so the eye never
+   gets a punch or a rest. This is the biggest single thing and nothing else on
+   this list is close. The obvious answer is **shot 1 at night** — the fire
+   burned through three nights, so nothing in the record forbids it — and it
+   would also let the flames read at half their current size.
+2. **Shot 3's colonnade wings are apartment blocks.** §23.3: the Palace complex
+   is authored as two heroes out of at least six published footprints, and the
+   leftovers take the fabric treatment — four rows of sash windows on the
+   curved wings that WRAP the rotunda. The camera cannot frame them out; they
+   are the subject's own footprints. **The fix is hero authoring**, an `arcade`
+   part on the colonnade's own published ring at its own published height,
+   which `drawArcade` already draws for the rotunda's peristyle. It is the
+   ugliest thing in the film and it is on its most beautiful frame.
+3. **The label soup on the wide shots.** Twenty-five to thirty uppercase names
+   on shots 4, 7 and 11; they are the loudest marks on the frame and they make
+   a film frame read as a reference map. The shape of the fix already exists —
+   `STREET_NAME_CAP.film` shortens a published list without re-ranking it —
+   and the hood lane needs the same, ordered by the collision grid's own
+   ordering. §21.3 declined this on a wide historical frame; the strip changes
+   the argument, because it is three frames out of eleven.
+4. **The `move` frames carry a big year and no line.** Nine times, 1.2 s each,
+   the plate is a year number alone on a frame. Putting the copy up at the HEAD
+   of the move — where §spare says the camera already is — would recover most
+   of the 10.8 s and let the holds go shorter still.
+5. **The distance haze eats the bottom-left of nearly every frame**, which is
+   exactly where the copy plate sits, so the plate lands on a grey-white wash
+   with ghost labels floating in it. It reads as an unfinished render rather
+   than as depth.
+6. **Shot 10's subject is a label in the corner of a handsome frame** (§26.2),
+   and **shot 11's Golden Gate is three pixels of deck between two masts**
+   (§26.3). Both are understood, both are recorded, neither has a fix that is
+   worth its risk tonight.
+
+### 27.4 The running time, as it now stands
+
+```
+  title 2.4  ·  eleven shots 83.3  ·  end 3.0   =   1 m 28.7 s
+  was       3.0  ·               123.4  ·  4.0   =   2 m 10.4 s
+```
+
+449 tests green, typecheck clean, `eslint` one pre-existing warning in
+`landmarks.test.ts` and nothing new.

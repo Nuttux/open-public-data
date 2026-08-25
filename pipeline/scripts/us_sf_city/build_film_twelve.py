@@ -132,8 +132,16 @@ SHOTS: list[dict] = [
     # names seven routes and no alignment for any of them is published here.
     # Ghosting them in would be inventing seven roads. The shot is the city
     # they are not in, and the badge says so.
+    # `z` 1.25 -> 2.1 and the offset to (0.10, -0.02): FILM.md §27.1. AT 1.25
+    # THIS WAS THE SAME FRAME AS SHOT 11, which is the whole-city fit at 1.10,
+    # and shot 4 is 1.26 — three of the eleven on one composition, plus the
+    # wide travels between them, which is about a quarter of a 1 m 29 s film
+    # spent on one picture. At 2.1 the city's GRAIN reads: the grid, Market
+    # Street's diagonal, City Hall's dome, the Financial District — which is
+    # also the ground the seven rejected routes would have cut through, so the
+    # absence the shot is about is legible rather than abstract.
     dict(n=7, id="freeways", title="The freeways that were not built",
-         t=None, z=1.25, off=(0.0, 0.0), move=1200, ms=6400,
+         t=None, z=2.1, off=(0.10, -0.02), move=1200, ms=6400,
          st=(1945, 1959)),
     # 8 · THE PYRAMID. `oy` -0.12 -> -0.30: FILM.md §25.3. THE FILM'S SHOT
     # ABOUT THE TALLEST BUILDING IN SAN FRANCISCO CROPPED THE TOP OF THE
