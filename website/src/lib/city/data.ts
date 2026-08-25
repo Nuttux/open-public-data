@@ -493,6 +493,9 @@ export interface BridgeSpan {
   readonly deckZ?: number;
   /** the year it EXISTED — NBI completion */
   readonly year?: number;
+  /** the span's own published key — `golden-gate`, `bay-west`. Chooses the
+   *  paint and nothing else: `landmarks.ts` §BRIDGE_PAINT. */
+  readonly k?: string;
 }
 
 export interface BridgeData extends BridgeSpan {
@@ -1427,8 +1430,13 @@ export class CityData {
       const rn = bc.fields.rn as Uint16Array | undefined;
       const tn = bc.fields.tn as Uint16Array | undefined;
       const tz = bc.fields.tz as Float32Array | undefined;
+      /* `k` is the span's own published key — `golden-gate`, `bay-west` —
+         and it is read for exactly one reason: the PAINT. `drawSpan` was
+         generalised from one bridge to N and carried the Golden Gate's
+         International Orange onto the Bay Bridge's four towers. See
+         `landmarks.ts` §BRIDGE_PAINT. A chunk without keys is unchanged. */
       const meta = (be.bridges ?? []) as {
-        deckZ?: number; year?: number;
+        k?: string; deckZ?: number; year?: number;
       }[];
       const nb = rn?.length ?? 1;
       const spans: BridgeSpan[] = [];
@@ -1445,6 +1453,7 @@ export class CityData {
             : undefined,
           deckZ: meta[q]?.deckZ,
           year: meta[q]?.year,
+          k: meta[q]?.k,
         });
         ro += rc;
         to += tc;

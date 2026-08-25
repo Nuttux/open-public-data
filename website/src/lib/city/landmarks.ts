@@ -728,6 +728,11 @@ export interface BridgeDeck {
   readonly deckZ?: number;
   /** the year it EXISTED — NBI completion. Absent ⇒ `GGB.year`. */
   readonly year?: number;
+  /** the span's own published key in `base/bridge`'s manifest entry —
+   *  `golden-gate`, `bay-west`. It chooses the PAINT and nothing else; absent
+   *  or unknown ⇒ the Golden Gate's, which is what every one-bridge city had
+   *  before this existed. See §BRIDGE_PAINT. */
+  readonly k?: string;
   /**
    * EVERY OTHER BRIDGE IN THE CHUNK, and the reason `scene.ts` did not have to
    * change. `base/bridge` shipped one bridge as two flat vertex streams; it now
@@ -817,6 +822,58 @@ export const GGB_BRACE = "rgba(120,58,26,.9)";
 export const GGB_SHADOW = "rgba(72,60,42,0.13)";
 
 /**
+ * ONE BRIDGE IN THIS FILE IS ORANGE AND IT IS NOT A CONVENTION — IT IS THE
+ * GOLDEN GATE'S OWN PAINT, AND THE BAY BRIDGE WAS WEARING IT.
+ *
+ * `drawSpan` was written for one bridge and then generalised to N, and the
+ * generalisation carried the steelwork colours with it: the Bay Bridge's west
+ * crossing drew its four towers, its cables, its suspenders and its braces in
+ * International Orange. It is on screen in four of the film's eleven shots and
+ * it is the single most recognisable colour fact about this city's two bridges.
+ * `out-m1d/shots-s04.png`, `-s10.png`.
+ *
+ * The Golden Gate is International Orange — the Bridge District's own published
+ * specification, and the reason the palette above exists. **The west crossing
+ * is painted "Bay Bridge Silver"**, a light grey the District's own maintenance
+ * documents name; the eastern replacement span is white. So the two are two
+ * paints and the map should carry two.
+ *
+ * WHICH ONE IS WHICH IS READ, NOT GUESSED. `base/bridge`'s manifest entry gives
+ * each span its own key — `golden-gate`, `bay-west` — beside the deck height
+ * and the year that were already being read from it. A span with no key, or a
+ * key this table does not hold, keeps the orange, which is the behaviour every
+ * city with one bridge already had.
+ */
+export interface BridgePaint {
+  readonly cable: string;
+  readonly cableLit: string;
+  readonly suspInk: string;
+  readonly legTop: string;
+  readonly legLit: string;
+  readonly legSha: string;
+  readonly brace: string;
+}
+
+export const GGB_PAINT: BridgePaint = {
+  cable: GGB_CABLE, cableLit: GGB_CABLE_LIT, suspInk: GGB_SUSP_INK,
+  legTop: GGB_LEG_TOP, legLit: GGB_LEG_LIT, legSha: GGB_LEG_SHA,
+  brace: GGB_BRACE,
+};
+
+/** Bay Bridge Silver, in this map's own key light: the same three-value
+ *  top/lit/shadow structure the orange has, at the grey's own luminance. */
+export const BAY_PAINT: BridgePaint = {
+  cable: "#8b9298", cableLit: "#a7aeb4", suspInk: "rgba(104,112,120,.55)",
+  legTop: "#bcc2c7", legLit: "#a9b0b6", legSha: "#7c848b",
+  brace: "rgba(88,96,104,.9)",
+};
+
+export const BRIDGE_PAINT: Readonly<Record<string, BridgePaint>> = {
+  "golden-gate": GGB_PAINT,
+  "bay-west": BAY_PAINT,
+};
+
+/**
  * EVERY BRIDGE IN THE RECORD, THROUGH ONE PASS.
  *
  * The Bay Bridge's west crossing joined `base/bridge` from
@@ -855,6 +912,7 @@ function drawSpan(
   if (year !== undefined && year < (deck.year ?? GGB.year)) return 0;
   const ring = deck.ring;
   if (ring.length < 4 || deck.towers.length < 2) return 0;
+  const paint = (deck.k && BRIDGE_PAINT[deck.k]) || GGB_PAINT;
 
   /* ── THE AXIS, READ OFF THE PUBLISHED RING ───────────────────────────
      `LRGG` hands the mock `ax`, `bx`, `L` and `w` ready-made; `base/bridge`
@@ -1035,7 +1093,7 @@ function drawSpan(
      floor: below three pixels of spacing they are not drawn at all. */
   const sstep = GGB.suspenderM / L;
   if (sstep * dpx >= GGB_SUSP_PX) {
-    ctx.strokeStyle = GGB_SUSP_INK;
+    ctx.strokeStyle = paint.suspInk;
     ctx.lineWidth = Math.max(0.5, dpx / 1400);
     ctx.beginPath();
     for (let t = t0; t <= t1; t += sstep) {
@@ -1056,7 +1114,7 @@ function drawSpan(
   {
     const cw = Math.max(0.8, Math.min(3.2, dpx / 260));
     for (const lat of [half, -half]) {
-      ctx.strokeStyle = lat > 0 ? GGB_CABLE_LIT : GGB_CABLE;
+      ctx.strokeStyle = lat > 0 ? paint.cableLit : paint.cable;
       ctx.lineWidth = cw;
       ctx.beginPath();
       for (let j = 0; j <= NS; j++) {
@@ -1090,14 +1148,14 @@ function drawSpan(
       const b = P(t, l1, 0);
       const c = P(t, l1, thT);
       const d = P(t, l0, thT);
-      poly([a, b, c, d], GGB_LEG_LIT);
+      poly([a, b, c, d], paint.legLit);
       const e = P(t + legL, l1, 0);
       const g = P(t + legL, l1, thT);
-      poly([b, e, g, c], GGB_LEG_SHA);
-      if (dpx > GGB_LEGTOP_PX) poly([d, c, g, P(t + legL, l0, thT)], GGB_LEG_TOP);
+      poly([b, e, g, c], paint.legSha);
+      if (dpx > GGB_LEGTOP_PX) poly([d, c, g, P(t + legL, l0, thT)], paint.legTop);
     }
     if (dpx > GGB_BRACE_PX) {
-      ctx.strokeStyle = GGB_BRACE;
+      ctx.strokeStyle = paint.brace;
       ctx.lineWidth = Math.max(0.8, dpx / 520);
       ctx.beginPath();
       for (const fr of [0.32, 0.55, 0.76, 0.955]) {

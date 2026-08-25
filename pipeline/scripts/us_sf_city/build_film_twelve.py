@@ -89,14 +89,14 @@ SHOTS: list[dict] = [
     # 3 · THE PALACE. Down to the Marina. The rotunda's own published footprint
     # centroid, out of wonder/hero-data.js — the same ring the renderer draws.
     dict(n=3, id="palace", title="One building stays",
-         t=(-122.448403, 37.802924), z=20.0, off=(0.14, -0.16), move=2400, ms=9600,
+         t=(-122.448403, 37.802924), z=58.0, off=(0.10, -0.06), move=2400, ms=9600,
          st=(1912, 1915)),
     # 4 · THE WIDEST CAMERA IN THE FILM, and the only shot with two subjects.
     # It opens on empty water at 1915, runs to 1936, strokes the Bay Bridge
     # deck out from Rincon Hill, holds, and then runs two more years while the
     # fabric puts the Golden Gate up on its own published date.
     dict(n=4, id="bridges", title="Two bridges",
-         t=None, z=1.10, off=(0.0, 0.0), move=2400, ms=11800,
+         t=None, z=1.26, off=(0.07, 0.03), move=2400, ms=11800,
          st=(1915, 1937)),
     # 5 · JAPANTOWN. Tight on the Western Addition and, after the move that
     # gets there, completely still. Nothing rises but the four streets the

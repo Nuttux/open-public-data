@@ -47,6 +47,7 @@ import {
   type ReactNode,
 } from "react";
 import { EXT_K_MAX } from "@/lib/city/camera";
+import { STREET_NAME_CAP } from "@/lib/city/labels";
 import { projection } from "@/lib/city/projection";
 import {
   acceptedThrough,
@@ -157,6 +158,14 @@ function useReachBadge(entity: string | null): ReachBadge | null {
  *  give. See `CityScene.filmPlaceCap` for which twelve, and why it is not a
  *  choice. */
 const FILM_PLACE_CAP = 12;
+
+/** Six street names, where the explorer writes as many as the frame holds.
+ *  The 1936 frame was carrying SILVER AVE, GENEVA AVE, ALEMANY BLVD and
+ *  18TH AVE over the two bridges it is about. WHICH six is the street table's
+ *  own order — the spine first, then rank and length — so this only shortens
+ *  a published list. `labels.ts` §STREET_NAME_CAP carries the two orderings
+ *  that were tried before it and why both were worse. */
+const FILM_STREET_CAP = 6;
 
 /** §THE DIAL — dev builds only, read once a frame. `null` is the film's own
  *  verdict; `true`/`false` override it so a camera move can be MEASURED. */
@@ -606,6 +615,7 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
     renderer.setLedgerW(0);
     /* the film is not a gazetteer — see `CityScene.filmPlaceCap` */
     renderer.composition.filmPlaceCap = FILM_PLACE_CAP;
+    STREET_NAME_CAP.film = FILM_STREET_CAP;
     document.documentElement.setAttribute("data-city-film", "on");
     onRef.current = true;
     pausedRef.current = false;
@@ -632,6 +642,7 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
        gate the film was driving: there is nothing to put back, because the
        film no longer changes it. */
     renderer.composition.filmPlaceCap = null;
+    STREET_NAME_CAP.film = null;
     renderer.driveFilm(null);
     /* THE FRAME IT STOPPED ON IS THE EXPLORER, and it took a year rail for
        that to be true: this used to clear the year, which threw the reader

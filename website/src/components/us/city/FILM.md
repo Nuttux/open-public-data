@@ -2645,3 +2645,92 @@ That is why a scrim two-thirds the height of its own text survived four blocks.
 harness that uses it: `shots` (one frame per shot, 62 % through each act), `seq a b n`
 (a frame sequence across a cut), `at t…` (named frames). Everything it does is read and
 seek; it cannot change a date, a framing or a line of copy.
+
+## 21 · Block M1d — the shots, looked at one at a time
+
+NIGHT3 §4, in Daniel's words: *"I want any assets in view during those scenes to be
+perfectly rendered with great polygons, vertices, colors, roofs etc — basically you have to
+be wowed by the beauty of what's in the shot."*
+
+Eleven frames, shot at `.parity/m1d.py shots` and read one at a time.
+`out-m1d/shots-sheet.png`. What follows is what looking found, in the order it was fixed.
+
+### 21.1 The Bay Bridge was painted International Orange
+
+**It is on screen in four of the eleven shots** — 4, 9, 10, 11 — and it is the single most
+recognisable colour fact about this city's two bridges. `drawSpan` was written for the
+Golden Gate and then generalised to N bridges, and the generalisation carried the STEELWORK
+COLOURS with it: `GGB_LEG_TOP`, `GGB_CABLE`, `GGB_BRACE`, `GGB_SUSP_INK`. The Golden Gate
+is International Orange, its own published specification; **the west crossing is painted
+Bay Bridge Silver**.
+
+Which span is which is READ, not guessed: `base/bridge`'s manifest entry already gives each
+one a key — `golden-gate`, `bay-west` — beside the deck height and the year that were
+already being read off it. `data.ts` passes `k` through; `landmarks.ts` §BRIDGE_PAINT picks
+the palette. **A span with no key keeps the orange**, which is exactly the behaviour every
+one-bridge city had before this existed.
+
+### 21.2 `UNNAMED 064` is not a name — 84 of 2,473
+
+`out-m1d/at-t35952.png` had **UNNAMED 64** set in the same face as GEARY BLVD, across the
+Presidio, on the film's most beautiful frame. It is DataSF's placeholder for a centreline
+with no name, so that every row has a key, and **84 of the 2,473 published names in
+`base/street-labels` match `^UNNAMED\b`**. `labels.ts` §isPlaceholderStreetName drops them.
+
+**This was never a film bug.** The explorer has been writing them at every zoom.
+
+### 21.3 The frame was full of names, and two ways of thinning it were wrong
+
+`.parity/m1lab.py` arms `__cityLPROBE` and then lets the film PLAY a second, because the
+label layer repaints on a year tick and not on demand. On shot 4, 1936: **29 names, 26 of
+them neighbourhoods.**
+
+**A caveat on that instrument, found afterwards and worth more than the number:
+`lprobe` is not called anywhere in the street pass.** The 29 are the hood and place lanes
+only; the ~14 street names on the same frame were invisible to it. Two conclusions below
+were drawn before that was known and are corrected here.
+
+1. **Cap the hood lane at ten.** The frame came back with the same number of labels on it —
+   GEARY BLVD, DIVISADERO, GOUGH, FRANKLIN, STANYAN, GUERRERO, 18TH AVE, ALEMANY, SILVER,
+   GENEVA. The lanes share a collision grid and each spends to its own ink limit.
+2. **Order that cap by published area, then by distance from the frame centre.** Area keeps
+   BAYVIEW HUNTERS POINT, LAKESHORE, EXCELSIOR, SUNSET/PARKSIDE — **the largest
+   neighbourhoods in San Francisco are its emptiest.** Distance from centre keeps GLEN
+   PARK, NOE VALLEY, TWIN PEAKS, because shot 4's camera is the whole-city fit and its
+   centre is the middle of the peninsula. Both drop MARINA, PACIFIC HEIGHTS, MISSION and
+   FINANCIAL DISTRICT off a shot about downtown.
+
+**The collision grid's own ordering beat every cap I could justify, so the hood lane is
+left alone.** What was actually noise on a wide historical frame is the STREET lane —
+SILVER AVE, GENEVA AVE, ALEMANY BLVD, 18TH AVE — and that lane already carries a published
+priority: `spineOf`, then `labelOrder` on rank and length. `labels.ts` §STREET_NAME_CAP
+lets the film stop that lane at six. **Which six is the street table's own order**, so the
+film shortens a published list and does not re-rank it. MARKET ST survives, because it is
+the spine. `out-m1d/crop-1936.png`.
+
+An ink multiplier was tried before the cap and is not kept: at 0.42 nothing changed and at
+0.25 the street lane vanished entirely. The budget is not what binds — the probe's own
+reason counts are `grid: 22, year: 2` and **no label on that frame was ever refused for
+ink.**
+
+### 21.4 Two cameras were framing empty ground
+
+Neither subject rendered badly. The FRAME was bad, which NIGHT3 says is the same kind of
+defect and names the same two fixes.
+
+- **Shot 3, the Palace.** `z` 20 → **58**, `off` (0.14, −0.16) → (0.10, −0.06). At 20 the
+  rotunda was a small object in the lower right and **45 % of the frame was empty sky over
+  the Presidio flat**. At 58 the colonnade's curve, the lattice dome, the columns and the
+  lagoon are the frame. `out-m1d/shots-s03.png`.
+- **Shot 4, the two bridges.** `z` 1.10 → **1.26**, `off` (0, 0) → (0.07, 0.03). The widest
+  camera in the film was leaving the city in the upper left with a third of the frame empty
+  bay, and at 1937 the Golden Gate's deck ran off the top-left corner — a shot called *two
+  bridges* with one of them cropped. Both are in frame now and the peninsula fills it.
+
+### 21.5 Still open
+
+- **Shot 5's 1942 boundary is a broken bracket.** Three partial sides in electric blue, and
+  the record names four streets. It is the shot's only gesture.
+- **Shot 1's fire still reads as brown discs at z = 2.05.** The flames are there and they
+  are ~10 px; the flare's disc is what the eye gets.
+- The Presidio barracks left of the Palace, and the piers on shot 9, are flat prisms.

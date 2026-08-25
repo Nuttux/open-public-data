@@ -1839,8 +1839,10 @@ export class CityScene {
    */
   filmPlaceCap: number | null = null;
 
+
   private filmPlaces: PlaceLabel[] | null = null;
   private filmPlacesFor = -1;
+
 
   private placesForFrame(): readonly PlaceLabel[] {
     const cap = this.filmPlaceCap;

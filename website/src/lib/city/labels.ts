@@ -52,6 +52,39 @@ export const HOOD_INK = 0.0304;
 export const PLACE_INK_PER_CLASS = HOOD_INK / 2;
 
 /**
+ * THE FILM WRITES FEWER STREET NAMES, AND THIS IS THE THIRD THING TRIED.
+ *
+ * The 1936 frame carried **29 names, 26 of them neighbourhoods** over the two
+ * bridges it is about (`.parity/m1lab.py`, probed — not counted off a
+ * screenshot). Three attempts, each measured, and the first two were wrong in
+ * ways worth keeping:
+ *
+ * 1. **Cap the hood lane at ten.** The frame came back with the same number of
+ *    labels on it: GEARY BLVD, DIVISADERO, GOUGH, FRANKLIN, STANYAN, GUERRERO,
+ *    18TH AVE, ALEMANY, SILVER, GENEVA. The lanes share a collision grid and
+ *    each spends to its own limit, so shortening one lane hands the frame to
+ *    the next one. **The source is not what fills the frame.**
+ * 2. **Order that cap by published area, then by distance from frame centre.**
+ *    Area keeps BAYVIEW HUNTERS POINT, LAKESHORE, EXCELSIOR, SUNSET/PARKSIDE —
+ *    *the largest neighbourhoods in San Francisco are its emptiest*. Distance
+ *    from centre keeps GLEN PARK, NOE VALLEY, TWIN PEAKS, because shot 4's
+ *    camera is the whole-city fit and its centre is the middle of the
+ *    peninsula. Both drop MARINA, PACIFIC HEIGHTS, MISSION and FINANCIAL
+ *    DISTRICT off a shot about downtown. **The collision grid's own ordering
+ *    beat every cap I could justify**, so the hood lane is left alone.
+ * 3. **This.** The lane that is genuinely noise on a wide historical frame is
+ *    the STREET lane — SILVER AVE, GENEVA AVE, ALEMANY BLVD, 18TH AVE — and it
+ *    already has a published priority: `spineOf` then `labelOrder`, rank and
+ *    length. So the film only SHORTENS that list; which names survive is the
+ *    street table's own order and not a judgement made here.
+ *
+ * `null` is the explorer, where a reader is looking things up and wants every
+ * name the frame can hold. The film is watched rather than read, and its text
+ * is the plate.
+ */
+export const STREET_NAME_CAP: { film: number | null } = { film: null };
+
+/**
  * An ink budget that admits a box only if it fits in what is left.
  *
  * `spend()` returns false and changes nothing where the box would overshoot,
@@ -1020,6 +1053,24 @@ export function streetLabelText(published: string): string {
 }
 
 /**
+ * `UNNAMED 064` IS NOT A NAME, IT IS THE REGISTER SAYING THERE ISN'T ONE.
+ *
+ * **84 of the 2,473 published street names in `base/street-labels` match
+ * this** — DataSF's centreline file gives an unnamed stretch a placeholder of
+ * the form `UNNAMED nnn` so that every row has a key. Written on the map it
+ * reads as the street's name, and `out-m1d/at-t35952.png` is UNNAMED 64 set in
+ * the same face as GEARY BLVD across the Presidio, on the film's most
+ * beautiful frame.
+ *
+ * This is not a film rule; the explorer was writing them too.
+ */
+const UNNAMED = /^UNNAMED\b/i;
+
+export function isPlaceholderStreetName(published: string): boolean {
+  return UNNAMED.test(published);
+}
+
+/**
  * THE STREET NAMES, WHICH 2,786 PUBLISHED STRETCHES WERE WAITING FOR.
  *
  * `part3.html`'s `street()` (L7069-7130), whole, as one object because **the
@@ -1165,6 +1216,10 @@ export class StreetNamePass {
   /** false once the budget has refused a label — the reference's own `return` */
   private one(li: number): boolean {
     if (this.full) return false;
+    /* §STREET_NAME_CAP — the film's shortening, applied where the pass already
+       gives up, so it behaves exactly like the budget refusing a label. */
+    const cap = STREET_NAME_CAP.film;
+    if (cap !== null && this.nPlaced >= cap) return false;
     const { f, table } = this;
     const { ctx, cam } = f;
     if (table.rank[li] > this.rankMax) return true;
@@ -1172,6 +1227,8 @@ export class StreetNamePass {
     if (y0 && f.year !== undefined && y0 > Math.floor(f.year)) return true;
     const t0 = table.name(li);
     if (!t0) return true;
+    /* §isPlaceholderStreetName — 84 of 2,473 */
+    if (isPlaceholderStreetName(t0)) return true;
     if ((this.used.get(t0) ?? 0) >= this.nameCap) return true;
     /* 0 arterial, 1 collector, 2 everything local */
     const rk = table.rank[li] <= 0 ? 0 : table.rank[li] === 1 ? 1 : 2;
