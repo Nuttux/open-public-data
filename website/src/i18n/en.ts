@@ -4889,7 +4889,6 @@ const en: Record<string, string> = {
   'us.sf.thecity.panel.sum_record_one': 'The Board decided one thing here, in {y0}.',
   'us.sf.thecity.panel.sum_record_none': "The Board's record places nothing on it.",
   'us.sf.thecity.panel.sum_place': '{place} stands on it.',
-  'us.sf.thecity.panel.sum_rail_end': "The Board's Journal is scanned to {y}. The decades after it are blank because the record stops there, not because the city stopped deciding.",
   /* the neighbourhood, which is the unit the fiche is about — see
      components/us/city/FICHE.md §15. hood_money_* carry BOTH counts on purpose:
      a rolled-up figure has to say what it is rolled up from, or "$776.3M in
@@ -4919,6 +4918,8 @@ const en: Record<string, string> = {
   'us.sf.thecity.panel.lead_head': 'What the Board decided here',
   'us.sf.thecity.panel.lead_open': 'Open the scanned page',
   'us.sf.thecity.panel.rail_unreadable': "The scan of this decade's entries is too damaged to quote — open it to read them.",
+  'us.sf.thecity.panel.rail_shelf_end': "The Board's minutes are scanned through {y} — under three different titles, which is why they were once thought to stop in 1999. After 2016 the Clerk still publishes every meeting; no library has bound and paginated them into this series.",
+  'us.sf.thecity.panel.rail_shelf_behind': "The Board's minutes are scanned through {y}, under three different titles. This map has read them to {i}; the decades after that are blank here, not in the record.",
   'us.sf.thecity.panel.sources_open': 'Sources',
   'us.sf.thecity.panel.hood_open': 'The neighbourhood',
   'us.sf.thecity.panel.block_head': 'On this block',
