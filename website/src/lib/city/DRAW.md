@@ -10117,3 +10117,145 @@ more wall area at this camera and it is one of a dozen passes in the frame.
   48-storey tower wearing fifteen storey rows is a visible untruth at street
   zoom downtown. Fixing it costs one more nibble on the `bldg` tier.
 
+
+## 44. Block G4 — a building the map draws and no register names, and the clock that swaps its name
+
+**The ask.** Daniel: *"add the building on the map just so its interesting
+factoid on the map"*, and then, on being shown the label: *"before internet
+archive moved in it had another name like church of blabla — you can use that
+before the date of the switch no?"* Both are about ONE footprint in the Inner
+Richmond, and the second is the more interesting half.
+
+**What was there before.** Footprint 160550: a 1,344 m² ring on 20 vertices,
+15 m tall, which is the 98th percentile of the 166,166 this map draws, and
+every other ring within 40 m of it is a 140–306 m² house. The map already drew
+it — as a plain prism, since it is in none of the 13 heroes, the 59 shaped
+caps, the 478 roof-furniture rows or the 15,265 solo buildings — and had
+nothing to write over it. **Eleven registers were checked one by one and none
+of them names it** (the list is in `places_extra.json`'s own `why`); correctly
+so, because 300 Funston is private ground and DataSF publishes what the City
+owns, designates and rates. The nearest named place was Sutro Elementary,
+147 m away.
+
+**§40's census is unchanged in substance and its denominator moved.** That
+section measured **684 of 2,197** places carrying no kind, 31.1 %. The two
+rows this block adds carry no kind either, so it is now 684 of **2,199** and
+still 31.1 %. The live API comments in `labels.ts`, `CityMap.tsx` and the
+generated module were corrected; §40's own prose is left as the measurement it
+was when it was taken.
+
+**THE NAME IS THE ONLY AUTHORED THING, AND `src` SAYS SO.**
+`pipeline/scripts/us_sf_places/places_extra.json` is `heroes_extra.json`'s
+pattern for the name lane: a seed carrying a name and a footprint, merged by
+`emit_places.py::seed_rows`, with every number — anchor, span, opening year —
+read back out of the shipped ring through `_bldgsrc.read_bldg()`, the encoder's
+own reader. `src` is the path of the seed rather than a dataset id, exactly as
+Sutro Tower's row already reads `base/heroes.json`, so a reader who opens the
+provenance is told which half came from us. It refuses on a fingerprint
+mismatch (vertex mean, vertex count, area), on the 1906 `FLAG_NOYEAR`
+fallback, and on a footprint some register already names — the register wins.
+
+**§44.1 — a building outlives its occupants.** A place had one year, `yr`, the
+first it may be drawn. A name that STOPS applying had nowhere to live, so the
+chunk and `base/marks.json` gain one column — `yrTo` / `yt`, u16, 0 for "never
+stops" — and `PlaceLabel` gains `until`, gated in `placeNames` beside the
+`year` gate it mirrors. A seed entry is now a LIST of names: the first opens
+in the footprint's own roll year, each later one in the year the seed states,
+and each is closed at the year the next opens. **The switch year is written
+once**, so the two rows cannot disagree about it, and the handover is exactly
+one frame.
+
+**§44.1a — and the idle map is not the `year` gate's rule.** Written as
+`f.year !== undefined && f.year >= p.until`, mirroring the opening gate beside
+it, BOTH names were eligible on a map with no year and one won the collision
+grid arbitrarily. The two gates are not symmetric: for an OPENING year, no
+clock means today and a place built in 2020 exists today, so everything draws;
+for a CLOSING year, no clock means today and a name the building no longer
+carries is exactly what today must not show. A name with an end is now refused
+whenever the clock is not on a year inside its own span. Found by asking what
+the page does before a reader touches the rail, which is the state it opens
+in.
+
+Here that is 1922 → *Christian Science Church*, 2009 → *Internet Archive HQ*.
+1922 is the assessor's secured roll (`wv5m-vpq2`) with the NOYEAR sentinel
+clear, so it is published and not the 1906 fallback. **2009 is authored** — a
+change of occupant is in no register this pipeline reads — so it takes YRULE's
+last rung, *"the year this repository's own seed states, with its reason"*, and
+`seed_rows` refuses to write a stated year that carries no `why` beside it.
+
+**§44.2 — the name the record uses, and the one it refuses.** The building is
+usually called the Fourth Church of Christ, Scientist. **This file will not
+write that.** The Board's own minutes call it `Board of Trustees, Christian
+Science Church, at southeast corner of Clement street and Funston avenue`
+(Resolution No. 21068 (New Series), 19 November 1923, an oil storage tank of
+1,500 gallons capacity — `journalofproceed1923sanfrich`, leaf 1295), while the
+SAME corpus puts the Fourth Church at 5509 Geary Boulevard in 1944
+(`journalofproceed39part2sanfrich`, leaf 255). The ordinal is contested by the
+record itself; the unqualified name is what the sources agree on.
+
+**What the corner's record still does NOT say, and why it is not on the map
+yet.** That 1923 resolution is already shipped — on the Capp Street, Seacliff
+Avenue and Twenty-ninth Street blocks, at `addr` precision — and its Clement &
+Funston line is not, on any block. The cause is in
+`scratchpad/sf-city-anim/blocks/build_index.py`: `tier` is one scalar per
+record and every tier below `addr` is gated on `if not hits`, so in an omnibus
+permit list the numbered addresses win and **every corner-only reference in the
+same record is dropped**. 22,959 records reach the `corner` tier; how many more
+are lost this way has not been measured. Fixing it means a per-block tier —
+`rec()` already takes tier as a parameter and `gloss_of()` already picks the
+line per block, so it is contained — plus a rebuild of all 256 shards and the
+street files. Not done here, and it is a block of its own.
+
+## 44.2 — Block G5. The temple front, and the two limits that a section cannot argue with
+
+**The ask, and it was one line.** Daniel, on being shown the named prism:
+*"sorry but not recongizable for shit"*, beside a photograph of a white
+neoclassical temple with a six-column portico. He was right. §44 named the
+building and left it drawn as the fabric's generic extruded prism, and a name
+floating over a beige box is not recognition.
+
+**`build_temple` in `emit_heroes.py`, and the Old Mint is the template rather
+than an analogy.** Same city, same decade's classicism, same six columns, and
+that hero's own record already says in words what is drawn — *"The rusticated
+base, the cornice, the parapet, the portico and its six columns are drawn."*
+The new builder reproduces that section's SHAPE — four inset bands, a portico
+block, and `g:"col"` shafts — with every dimension taken off THIS footprint:
+the ring, its winding, the measured 15.0 m top, the face the seed names by its
+own published vertex indices, that face's length and its inward normal, and
+`deepest_inset` = **1.80 m**, which is what bounds every band. The section's
+PROPORTIONS are authored, as fractions of the measured top so they are a
+statement about this building and not numbers that happen to fit it. The
+deepest band is 1.7 m; the §11 gate re-checks every vertex anyway. 14 heroes,
+145 parts, 3,541 ring vertices.
+
+**§44.2a — the camera does not turn, and that decides which face can be seen.**
+`proj()` is axis-aligned at 315° and NOTHING in the UI rotates it — there is no
+bearing control on `CityMap`. The colonnade is on the western face, because
+that is the face the building presents to Funston Avenue, and that face is
+therefore permanently the far side, seen almost edge-on. Drawn flush with the
+roof the portico was invisible: the first build shipped it that way and the
+frames show white ticks a few pixels wide. **So the portico is drawn to the
+measured top while the roof band stops below it** — which is not a legibility
+trick but a fact about temple fronts, whose entablature stands above the
+parapet of the flanks, and this one's does. It is the only part of the section
+this camera can actually see.
+
+**§44.2b — THE PUBLISHED FOOTPRINT IS THE PARCEL, NOT THE TEMPLE, and that is
+the limit the section cannot argue with.** `ynuv-fyni` gives this address one
+ring: **20 vertices, 1,344.0 m², spanning 40 x 48 m, with concave notches on
+its southern half** — the church together with what is attached to it. The
+building in the photograph is a compact rectangle. Every band is an inset of
+that ring, so the drawn mass is the parcel's irregular outline however well the
+section is authored, and a reader looking down sees an irregular pale blob with
+a colonnade on one edge rather than a temple. This is the same family as §21.15
+(Grace Cathedral, rejected because per-element heights are in no field this
+pipeline reads) and §21.28: **the record does not carry the form, and no amount
+of drawing recovers what was never measured.** What the hero DOES buy is real
+and is visible at every zoom: the building is now the white one with the light
+roof in a block of grey ones, which is how a reader finds it.
+
+**Not done, and it would be a block of its own.** Splitting the temple from its
+annexes needs a footprint the City does not publish separately — Sanborn or the
+Article 10 parcel outline would have to be brought in and joined, and neither
+is in `build_places.py`'s eleven registers. Until then the honest ceiling is a
+white mass with a colonnade on its western edge, and that is what ships.

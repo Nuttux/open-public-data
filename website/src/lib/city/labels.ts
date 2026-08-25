@@ -409,7 +409,7 @@ export const MK_INK = "rgba(30,24,12,.86)";
  * unique render."* Measured before it was built (DRAW.md §40.1, and re-checked
  * against the publishers' own column lists rather than inherited):
  *
- * > **684 of 2,197 named places — 31.1 % — come from Article 10 and Article
+ * > **684 of 2,199 named places — 31.1 % — come from Article 10 and Article
  * > 11, which publish a name and a status and NO KIND.** Article 10's columns
  * > are `name, apn, address, landmarkno, yeardesignated, designationdocument,
  * > photo, pimlink`; Article 11's only category is a rating, A/B/C/D. Nothing
@@ -418,8 +418,8 @@ export const MK_INK = "rgba(30,24,12,.86)";
  * Where a kind does exist it is three heterogeneous fields — an owner
  * (`nc68-ngbr department_name`), a facility type (`ib5c-xgwu`), a property type
  * (`gtr9-ntp6`) — plus an occupancy, an entity type and a POPOS type. Joined
- * and mapped by `pipeline/scripts/us_sf_places/place_kinds.py`, **1,330 of
- * 2,197 places carry a family**; the rest keep the plain treatment.
+ * and mapped by `pipeline/scripts/us_sf_places/place_kinds.py`, **1,342 of
+ * 2,199 places carry a family**; the rest keep the plain treatment.
  *
  * **AND CHURCHES ARE NOT AMONG THEM, WHICH IS THE HONEST HALF OF THE ANSWER.**
  * The City publishes *property* and it does not own churches, so Grace
@@ -700,9 +700,20 @@ export interface PlaceLabel {
   /** the year it can first be named, or undefined for every year */
   readonly year?: number;
   /**
+   * THE FIRST YEAR THIS NAME IS NO LONGER DRAWN, or undefined where it never
+   * stops. A name that carries one is drawn ONLY while the clock is inside
+   * its span — on the idle map, which has no year and means today, it is not
+   * drawn at all — which is every row but the handful standing on a building this
+   * repository names under more than one name in turn. A building outlives its
+   * occupants and this map has a clock, so the two names are two rows on one
+   * footprint and this is where the earlier one ends. Set from
+   * `base/marks.json`'s `yt` by `CityMap.tsx::decodeMarks`.
+   */
+  readonly until?: number;
+  /**
    * WHAT KIND OF THING THE REGISTER SAYS IT IS — see §KINDMARK.
    *
-   * Optional because 684 of 2,197 places — 31.1 % — genuinely carry NO
+   * Optional because 684 of 2,199 places — 31.1 % — genuinely carry NO
    * published kind: the registers that DESIGNATE a place (Article 10, Article
    * 11) publish a name and a status and no category at all, confirmed against
    * their own column lists. Set from `base/marks.json`'s `k` + `KIND` by
@@ -772,6 +783,23 @@ export function placeNames(
       if (p.cls !== lane) continue;
       if (p.year !== undefined && f.year !== undefined && f.year < p.year) {
         lprobe(lane, p.name, "year", 0, 0, 0, 0);
+        continue;
+      }
+      /* …and the closing bracket. The successor's first year IS the
+         predecessor's `until`, written once in the seed, so the two names on
+         one footprint hand over on the same frame and never overlap.
+
+         NO CLOCK MEANS NOW, AND THAT IS NOT THE SAME RULE AS `year`'s. An
+         idle map has `f.year === undefined`, and for the OPENING year that
+         correctly draws everything — a place built in 2020 exists today. For
+         the CLOSING year the same reading is backwards: a name the building
+         no longer carries is exactly what today must not show. Read as
+         `f.year !== undefined && …`, both names on one footprint were
+         eligible on the idle map and one won the collision grid arbitrarily.
+         So a name with an end is refused whenever the clock is not on a year
+         inside its own span. */
+      if (p.until !== undefined && (f.year === undefined || f.year >= p.until)) {
+        lprobe(lane, p.name, "until", 0, 0, 0, 0);
         continue;
       }
       /* THE SIZE RULE IS THE UN-DESIGNATED LANE'S ALONE. A designated landmark

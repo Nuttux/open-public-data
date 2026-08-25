@@ -97,6 +97,8 @@ interface MarksFile {
   s: string;
   b: string;
   yr: string;
+  /** `yr`'s closing bracket: first year the name is no longer drawn, 0 = never */
+  yt?: string;
   d: string;
   src: string;
   /** the SIXTH column: 0 = no published kind, else 1 + index into `KIND` */
@@ -125,10 +127,13 @@ function decodeMarks(m: MarksFile): PlaceLabel[] {
   const y = new Int32Array(b64(m.y));
   const s = new Uint16Array(b64(m.s));
   const yr = new Uint16Array(b64(m.yr));
+  // Optional for the same reason `k` is: a file written before this column
+  // existed still decodes, it just has no name that ever stops.
+  const yt = m.yt ? new Uint16Array(b64(m.yt)) : null;
   const d = new Uint8Array(b64(m.d));
   // WHAT KIND OF THING THIS IS, joined from six registers' own category fields
   // by pipeline/scripts/us_sf_places/place_kinds.py and reaching 1,342 of
-  // 2,196 rows. 0 means the record publishes no kind — 684 rows genuinely do
+  // 2,198 rows. 0 means the record publishes no kind — 684 rows genuinely do
   // not, because the register that DESIGNATES a place is the register with no
   // category, so a diamond and a glyph never appear on the same place. A
   // reader that does not know this key ignores it, which is why shipping it
@@ -144,6 +149,7 @@ function decodeMarks(m: MarksFile): PlaceLabel[] {
       spanM: s[k],
       cls: (d[k] & 1) !== 0 ? "designated" : "named",
       ...(yr[k] ? { year: yr[k] } : {}),
+      ...(yt && yt[k] ? { until: yt[k] } : {}),
       ...(kind && kind[k] ? { kind: KIND[kind[k] - 1] as PlaceKind } : {}),
     });
   }

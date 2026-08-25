@@ -198,9 +198,11 @@ describe("the glyphs are eighteen different pictures", () => {
 });
 
 describe("the census, asserted against the shipped register", () => {
-  it("2,197 places ship and 684 of them come from the two registers with no kind", () => {
+  it("2,199 places ship and 684 of them come from the two registers with no kind", () => {
     const j = placesJson();
-    expect(j.n).toBe(2197);
+    // 2,197 from the eleven registers plus the hero row, and the two names
+    // `places_extra.json` puts on one Inner Richmond footprint in turn.
+    expect(j.n).toBe(2199);
     const by = j.meta.report ? null : null;
     void by;
     const src: string[] = j.SRC;

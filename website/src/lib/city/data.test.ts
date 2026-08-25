@@ -486,17 +486,19 @@ d("the authored landmarks", () => {
     const cd = await loaded();
     const t = await cd.landmarks();
     expect(t).not.toBeNull();
-    /* ELEVEN OF THESE COME OUT OF THE MOCK and one does not. `emit_heroes.py`
+    /* ELEVEN OF THESE COME OUT OF THE MOCK and three do not — the third is
+       `internetarchive`, whose eleven parts (four bands, a portico and six
+       `g:"col"` shafts) are `build_temple`'s, DRAW.md §44.2. `emit_heroes.py`
        merges the register authored in `pipeline/scripts/us_sf_places/` on top
        of the eleven `encode_city_chunks.py` moves out of
        `wonder/hero-data.js`, and it proves the eleven survive a read/re-encode
        round trip byte for byte before it adds anything. So this assertion is a
        statement about the MERGED register and the manifest's own
        `landmarks.authoredHere` says which rows are whose. DRAW.md §21.9. */
-    expect(t!.heroes.length).toBe(13);
-    expect(t!.heroes.reduce((a, h) => a + h.parts.length, 0)).toBe(134);
+    expect(t!.heroes.length).toBe(14);
+    expect(t!.heroes.reduce((a, h) => a + h.parts.length, 0)).toBe(145);
     expect(t!.heroes.reduce(
-      (a, h) => a + h.parts.reduce((b, p) => b + p.rx.length, 0), 0)).toBe(3421);
+      (a, h) => a + h.parts.reduce((b, p) => b + p.rx.length, 0), 0)).toBe(3541);
   });
 
   it("nothing stands above the MEASURED top — the gate's own ceiling", async () => {

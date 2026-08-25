@@ -6,7 +6,7 @@
  * marks; the join and the mapping are pipeline/scripts/us_sf_places/place_kinds.py
  * and the provenance is in the manifest under `places.kinds`.
  *
- * 1,330 of 2,197 places carry a family. The rest come from
+ * 1,330 of 2,199 places carry a family. The rest come from
  * registers that publish no kind — Article 10 (a name and a designation),
  * Article 11 (a rating) — and keep the plain mark. Churches are in none of
  * these registers, so a church is one of them.

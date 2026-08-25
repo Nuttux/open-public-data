@@ -568,6 +568,170 @@ def build_pyramid(ring: list[tuple[float, float]], sec: dict) -> tuple[list[dict
                    "baseNv": len(base), "ringNv": len(ring_pub)}
 
 
+def build_temple(ring: list[tuple[float, float]], top_m: float,
+                 sec: dict) -> tuple[list[dict], dict]:
+    """A colonnaded temple front on a PUBLISHED face — the Old Mint's own section.
+
+    WHY THIS BUILDER EXISTS. `build_parts` draws a roof, and a roof is what a
+    reader sees when they look DOWN on a building. That is the right answer for
+    the Palace of Fine Arts Exhibition Hall — 14 m tall on a 272 m plan — and
+    the wrong one here. This building's whole identity is a WALL: a white
+    neoclassical box whose Funston Avenue face is a portico of six columns
+    under a heavy entablature. Drawn as a shaped cap it is a pale prism, which
+    is what shipped first and what Daniel called unrecognisable in one line.
+
+    THE OLD MINT IS THE PRECEDENT AND THE TEMPLATE, not an analogy: the same
+    city, the same decade's classicism, the same six columns, and its own
+    record already says in words what is drawn — *"The rusticated base, the
+    cornice, the parapet, the portico and its six columns are drawn."* This
+    reproduces that section's SHAPE (base / wall / cornice / roof, plus a
+    portico block and `g:"col"` shafts) with every dimension taken off THIS
+    footprint instead of typed.
+
+    WHAT IS READ AND WHAT IS AUTHORED, and the split is the whole bargain:
+
+      READ      the ring, its area, its winding, the measured top, the face
+                the seed names by its own published vertex indices, that
+                face's length and its inward normal, and the deepest inset the
+                ring will take before a band self-intersects.
+      AUTHORED  the SECTION — where the base stops, where the entablature
+                starts, how far each band is set in, how deep the portico is,
+                how many columns and how thick. Fractions of the measured top,
+                never metres, so the section is a proportion of the building
+                and not a number that happens to fit it.
+
+    NOTHING STANDS OUTSIDE THE FOOTPRINT OR ABOVE THE MEASURED TOP. Every band
+    is `inset()` — the per-vertex bisector inset, the Conservatory's own rule,
+    not a scale about the centroid — and every inset is checked against
+    `deepest_inset(ring)` here before the caller's §11 gate sees it, so a seed
+    that asks for a deeper band fails with a sentence about THIS ring rather
+    than with a vertex coordinate. The portico and the columns are laid on the
+    named face's inward normal, so they are inside by construction and are
+    gated anyway.
+
+    THE CORNICE IS THE SHALLOWEST BAND AND THAT IS DELIBERATE. An entablature
+    projects PAST the wall it sits on; drawn at the wall's own inset it reads
+    as a change of colour rather than a change of plane. So the bands step
+    wall -> base -> cornice from deep to shallow, which is the Old Mint's own
+    order (2,946 m2 wall, 3,168 m2 base, 3,280 m2 cornice, on a 3,451 m2
+    footprint) and never reaches the published ring itself.
+    """
+    A = abs(ring_area(ring))
+    dmax = deepest_inset(ring)
+    i, j = int(sec["faceI"]), int(sec["faceJ"])
+    if not (0 <= i < len(ring) and 0 <= j < len(ring)):
+        raise ValueError(f"faceI/faceJ out of range for a {len(ring)}-vertex ring")
+    ax, ay = ring[i]
+    bx, by = ring[j]
+    L = math.hypot(bx - ax, by - ay)
+    if L <= 0:
+        raise ValueError("the named face has no length")
+    ux, uy = (bx - ax) / L, (by - ay) / L
+    # THE INTERIOR IS TO THE LEFT OF A COUNTER-CLOCKWISE EDGE. Read off the
+    # ring's own signed area rather than assumed, so a clockwise footprint
+    # does not silently put the portico in the street.
+    ccw = ring_area(ring) > 0
+    nx, ny = (-uy, ux) if ccw else (uy, -ux)
+
+    fb = float(sec["baseFrac"])
+    fw = float(sec["wallFrac"])
+    fc = float(sec["corniceFrac"])
+    if not (0 < fb < fw < fc < 1.0):
+        raise ValueError("the section's fractions do not run base < wall < cornice < 1")
+    z_base, z_wall, z_corn = top_m * fb, top_m * fw, top_m * fc
+
+    ins = {n: float(sec[k]) for n, k in
+           (("base", "insetBaseM"), ("wall", "insetWallM"),
+            ("cornice", "insetCorniceM"), ("roof", "insetRoofM"))}
+    for n, d in ins.items():
+        if d <= 0 or d > dmax:
+            raise ValueError(
+                f"the {n} band asks for a {d} m inset and this ring takes "
+                f"{dmax:.2f} m before it self-intersects")
+    if not (ins["cornice"] < ins["base"] < ins["wall"]):
+        raise ValueError("the cornice must project past the base, and the base "
+                         "past the wall; the insets do not step that way")
+
+    def band(z0, z1, d, mat, px):
+        r = inset(ring, d)
+        return {"k": 0, "r": [q for xy in r for q in xy], "z0": round(z0, 2),
+                "z1": round(z1, 2), "m": mat, "c": mat, "px": px, "ink": 1,
+                "p": [0.0, 1.0, 1.0, 1.0]}
+
+    mw, mb = int(sec["matWall"]), int(sec["matBase"])
+    mr, mc = int(sec["matRoof"]), int(sec["matCol"])
+    parts = [
+        band(0.0, z_base, ins["base"], mb, 0.0),
+        band(z_base, z_wall, ins["wall"], mw, 0.0),
+        band(z_wall, z_corn, ins["cornice"], mw, 0.0),
+        band(z_corn, top_m, ins["roof"], mr, 2.0),
+    ]
+
+    # ── the portico block, on the named face ──────────────────────────────
+    span = L * float(sec["porticoSpanFrac"])
+    depth = float(sec["porticoDepthM"])
+    off = float(sec["porticoOffsetM"])
+    mx, my = (ax + bx) / 2, (ay + by) / 2
+    h2 = span / 2
+    p0 = (mx - ux * h2 + nx * off, my - uy * h2 + ny * off)
+    p1 = (mx + ux * h2 + nx * off, my + uy * h2 + ny * off)
+    quad = [p0, p1, (p1[0] + nx * depth, p1[1] + ny * depth),
+            (p0[0] + nx * depth, p0[1] + ny * depth)]
+    # THE PORTICO IS THE TALLEST THING ON THE BUILDING, and on this one that is
+    # a fact about the object rather than a legibility trick: a temple front
+    # carries its entablature and pediment ABOVE the parapet of the flanks, and
+    # this building's does. Drawing it flush with the roof band throws that
+    # away — and throws away the only part of the section a fixed overhead
+    # camera can see, because the colonnade itself faces away. It still stops
+    # at the measured top; the caller's §11 gate re-checks that.
+    z_pt = top_m * float(sec["porticoTopFrac"])
+    parts.append({"k": 0, "r": [q for xy in quad for q in xy], "z0": 0.0,
+                  "z1": round(z_pt, 2), "m": mw, "c": mw, "px": 1.6,
+                  "ink": 1, "p": [0.0, 1.0, 1.0, 1.0]})
+
+    # ── the shafts. `g:"col"` is the Old Mint's own part flag. ────────────
+    z_col = top_m * float(sec["columnTopFrac"])
+    ncol = int(sec["columns"])
+    if ncol < 2:
+        raise ValueError("a colonnade is at least two columns")
+    rad = float(sec["columnRM"])
+    cin = float(sec["columnInsetM"])
+    cspan = L * float(sec["columnSpanFrac"])
+    ch2 = cspan / 2
+    for k in range(ncol):
+        t = -ch2 + (2 * ch2) * (k / (ncol - 1))
+        cx, cy = mx + ux * t + nx * cin, my + uy * t + ny * cin
+        hexr = [(cx + rad * math.cos(2 * math.pi * v / 6 + math.pi / 6),
+                 cy + rad * math.sin(2 * math.pi * v / 6 + math.pi / 6))
+                for v in range(6)]
+        parts.append({"k": 0, "r": [q for xy in hexr for q in xy],
+                      "z0": round(z_base, 2), "z1": round(z_col, 2),
+                      "m": mc, "c": mc, "px": 1.2, "g": "col", "ink": 0,
+                      "p": [0.0, 1.0, 1.0, 1.0]})
+
+    # ── the openings, on the wall band the ARCADE kind repeats them over ──
+    w = sec.get("window")
+    if w:
+        rw = inset(ring, ins["wall"])
+        parts.append({"k": 1, "r": [q for xy in rw for q in xy],
+                      "z0": round(top_m * float(w["z0Frac"]), 2),
+                      "z1": round(top_m * float(w["z1Frac"]), 2),
+                      "m": mw, "px": 2.4, "g": "w", "w": float(w["w"]),
+                      "pi": float(w["pitch"]), "mg": float(w["margin"]),
+                      "sh": "rect", "dk": float(w["dark"])})
+
+    geo = {"kind": "temple", "topM": top_m, "faceM": round(L, 2),
+           "faceI": i, "faceJ": j, "deepestInsetM": round(dmax, 3),
+           "porticoM2": round(abs(ring_area(quad)), 1),
+           "columnM2": round(math.pi * rad * rad * 3 * math.sqrt(3) / (2 * math.pi), 2),
+           "columnPitchM": round(cspan / (ncol - 1), 2),
+           "columns": ncol, "ringM2": round(A, 1),
+           "zBaseM": round(z_base, 2), "zWallM": round(z_wall, 2),
+           "zCorniceM": round(z_corn, 2), "zPorticoM": round(z_pt, 2),
+           "zColM": round(z_col, 2), "hull": 0}
+    return parts, geo
+
+
 def build_parts(ring: list[tuple[float, float]], top_m: float, sec: dict) -> list[dict]:
     """The drawn section, in `hero-data.js`'s own part shape.
 
@@ -998,7 +1162,11 @@ def main() -> int:
         o = int(B["off"][b]); c = int(B["cnt"][b])
         ring = [(float(B["IX"][o + k]), float(B["IY"][o + k])) for k in range(c)]
         sec = s["section"]
-        if sec.get("form") == "pyramid":
+        if sec.get("form") == "temple":
+            top_m = float(B["h"][b])
+            parts, geo = build_temple(ring, top_m, sec)
+            roof_m = top_m
+        elif sec.get("form") == "pyramid":
             # THE PUBLISHED TOP REPLACES THE FABRIC'S, and that is the point of
             # the record: base/heroes carries its own `top` and the hero
             # replaces the prism entirely, so the median-LIDAR height never
@@ -1148,6 +1316,15 @@ def main() -> int:
                   f"{geo['baseNv']} of its {geo['ringNv']} vertices, no shrink; "
                   f"the hull would be {geo['hullM2']} m2 and the register's own "
                   f"base_plan_size {geo['planM2']} m2, and neither fits")
+            print(f"      em: {rec['em']}")
+            continue
+        if geo["kind"] == "temple":
+            print(f"      temple: face {geo['faceI']}->{geo['faceJ']}, "
+                  f"{geo['faceM']} m, deepest safe inset {geo['deepestInsetM']} m; "
+                  f"base to {geo['zBaseM']} m, wall to {geo['zWallM']} m, "
+                  f"cornice to {geo['zCorniceM']} m, top {geo['topM']} m")
+            print(f"      portico {geo['porticoM2']} m2 and {geo['columns']} "
+                  f"columns at {geo['columnPitchM']} m centres")
             print(f"      em: {rec['em']}")
             continue
         print(f"      section: {geo['kind']}, half-width {geo['w']} m, deepest "

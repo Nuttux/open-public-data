@@ -41,6 +41,41 @@
           165
         ]
       }
+    },
+    {
+      "k": "internetarchive",
+      "n": "Internet Archive HQ",
+      "b": 160550,
+      "y": 1922,
+      "an": "THE FOOTPRINT IS PUBLISHED AND THE IDENTIFICATION IS MEASURED. The ring is DataSF ynuv-fyni as this map already ships it: 1,344.0 m2 on 20 vertices, 15 m tall, which is the 98th percentile of the 166,166 footprints drawn here, while every other ring within 40 m of it is a 140-306 m2 house. It is the only structure of that scale on the corner and it sits 27.7 m from the Internet Archive's own published position for 300 Funston Avenue. No register this pipeline reads NAMES it -- the eleven checked one by one are listed in places_extra.json, which carries the two names this building has held in turn; this record carries its FORM.",
+      "ys": "DataSF wv5m-vpq2, the assessor's secured roll, as the `yr` byte this map already ships on the footprint: 1922, with build_bldg.py's FLAG_NOYEAR sentinel CLEAR, so it is a published year of construction and not the 1906 fallback. Corroborated one year later by the Board's own minutes, which grant `Board of Trustees, Christian Science Church, at southeast corner of Clement street and Funston avenue` an oil storage tank permit of 1,500 gallons on 19 November 1923 (Resolution No. 21068 (New Series), journalofproceed1923sanfrich, leaf 1295).",
+      "dr": "The published footprint and the measured 15.0 m top. The podium, the wall, the cornice, the roof band, the portico and its six columns are DRAWN — the same sentence the Old Mint's own record carries, for the same section. Every band is a per-vertex bisector inset of the published ring and the deepest is 1.7 m against the 1.80 m this ring admits before a band self-intersects, so nothing stands outside the footprint; the portico reaches 15.0 m and nothing stands above it. The portico and the colonnade are laid on the inward normal of ONE published face — ring vertices 4 to 5, the 22.09 m western edge the building presents to Funston Avenue — and there are six columns because the building's front has six. What is authored is the section's proportions; its position, its extent and its top are read off the record.",
+      "section": {
+        "form": "temple",
+        "faceI": 4,
+        "faceJ": 5,
+        "baseFrac": 0.12,
+        "wallFrac": 0.77,
+        "corniceFrac": 0.88,
+        "insetBaseM": 0.6,
+        "insetWallM": 1.2,
+        "insetCorniceM": 0.3,
+        "insetRoofM": 1.7,
+        "porticoSpanFrac": 0.8,
+        "porticoDepthM": 4.6,
+        "porticoOffsetM": 0.18,
+        "columns": 6,
+        "columnRM": 1.05,
+        "columnInsetM": 1.3,
+        "columnSpanFrac": 0.7,
+        "matBase": 5,
+        "matWall": 5,
+        "matRoof": 15,
+        "matCol": 5,
+        "why": "The fractions are the Old Mint's section read as proportions of its own 16.0 m top and laid on this building's 15.0 m: a low podium, a tall order, a heavy entablature, and above the flanks a portico that reaches the measured top. THE PORTICO STANDING PROUD IS THE LOAD-BEARING CHOICE. The map's camera bearing is FIXED and no control rotates it, so the western face this building presents to Funston Avenue — the face the colonnade is on — is permanently the far side, seen almost edge-on. A portico drawn flush with the roof is therefore invisible, which is what the first attempt shipped. A temple front genuinely carries its entablature above the parapet of its flanks, and this one does, so drawing that is both true and the one part of the section the camera can actually see. MATERIALS: `quartz` (index 5) on podium, wall, cornice, portico and columns — the palette's whitest stone, and this building is white where the Old Mint is cream. The roof band is `silver` (15), a light grey: the flat roof is the surface a reader looking down mostly sees, it is not white, and `slate` (7) — the Old Mint's choice — made the whole building read as one more grey-roofed neighbour. NO ARCADE. The first attempt repeated openings over every wall of the ring, which put six coarse grey bars across the flanks of a building whose sides are close to blank. The openings this building has are between its columns, and the colonnade already draws those.",
+        "porticoTopFrac": 1.0,
+        "columnTopFrac": 0.77
+      }
     }
   ],
   "rejected": [
@@ -118,6 +153,12 @@
         "cy": 3951.667,
         "nv": 9,
         "areaM2": 10235.5
+      },
+      "internetarchive": {
+        "cx": -2952.95,
+        "cy": 2481.0,
+        "nv": 20,
+        "areaM2": 1344.0
       },
       "murphymill": {
         "cx": -6221.875,

@@ -134,6 +134,12 @@ SOURCES = {
         "what": "a hero the map draws at EMPHASIS and that no other register names. Sutro Tower is in none of the ten registers above, none of the 1,243 places already shipped, and not in USGS GNIS either, which carries Mount Sutro and Sutro Reservoir and not the tower. The hero record names its own anchoring register, its own year source and its measured footprint area and top; the row is read off those and `span` is this file's own ladder, max(sqrt(footprint area), the drawn height).",
         "rows": 1,
     },
+    "place_seed": {
+        "dataset": "pipeline/scripts/us_sf_places/places_extra.json",
+        "publisher": "this repository — the name is authored, everything else is read",
+        "what": "a building the map DRAWS from a published footprint and that no register this pipeline reads gives a name to. The seed carries the name and the footprint it belongs to; the anchor, the span and the year are read off that footprint, and the entry is refused unless the shipped ring still matches the fingerprint the seed records. `src` names this file rather than a dataset id, so a reader who opens the provenance can see at once which half is authored.",
+        "rows": 1,
+    },
     "place_kind": {
         "what": "the FAMILY a place's mark is drawn as - what kind of thing the register says it is",
         "script": "pipeline/scripts/us_sf_places/place_kinds.py",
@@ -151,7 +157,7 @@ SOURCES = {
             "ejht-vp5d": "Article 11 publishes a rating, A/B/C/D.",
             "nps-nrhp": "ResType is `building` on 33 of 37 rows and `site` on 1 - a form class, not a use.",
         },
-        "gap": "684 of 2,197 places - 31.1 percent - come from the two historic-designation registers and carry no kind at all. They keep the plain mark. Churches are in none of these registers and USGS GNIS no longer carries a Church feature class (222 San Francisco rows, all natural or civil), so a church cannot be drawn as a church from any source this pipeline reads.",
+        "gap": "684 of 2,199 places - 31.1 percent - come from the two historic-designation registers and carry no kind at all. They keep the plain mark. Churches are in none of these registers and USGS GNIS no longer carries a Church feature class (222 San Francisco rows, all natural or civil), so a church cannot be drawn as a church from any source this pipeline reads.",
     },
     "place_extent": {
         "derived_from": ["ynuv-fyni", "wv5m-vpq2"],
@@ -177,6 +183,14 @@ YRULE = [
     "the first dated building inside its own extent",
     "the made-land year of the ground under it",
     "the completion year of the structure the renderer draws under it",
+    # THE ONLY RUNG THAT IS NOT READ OFF A PUBLISHER. A seeded place may say
+    # when its name STARTS applying — a building renamed by a change of
+    # occupant, which no register this pipeline reads records — and
+    # `places_extra.json` has to state the reason beside the year or the
+    # emitter refuses it. `yrule` is provenance, so a reader who opens this row
+    # is told, in the same field that tells everybody else which publisher gave
+    # them their year, that this one came from us.
+    "the year this repository's own seed states, with its reason",
 ]
 
 FIELD_SOURCE = {
@@ -185,6 +199,10 @@ FIELD_SOURCE = {
     "span": "place_extent",
     "bi": "place_extent",
     "yr": "place_year",
+    # `yrTo` is NOT `place_year`. Every other year on this chunk is read off a
+    # publisher; the year a name STOPS applying is only ever the year the next
+    # authored name opens, so it points at the seed that states it.
+    "yrTo": "place_seed",
     "yrule": "place_year",
     "fl": "place_a10",
     "src": "place_extent",
@@ -194,6 +212,9 @@ FIELD_SOURCE = {
 
 HEROES = OUT / "base" / "heroes.json"
 PARKS = OUT / "base" / "parks.qc"
+
+SEED = HERE / "places_extra.json"
+SEED_SRC = "pipeline/scripts/us_sf_places/places_extra.json"
 
 # THE GROUND HAS TO BE MATERIALLY BIGGER THAN THE THING STANDING ON IT.
 # A ring is a container only where its area is at least this many times the
@@ -413,6 +434,146 @@ def hero_rows(pl: list[dict]) -> list[dict]:
     return out
 
 
+# `build_bldg.py`'s own sentinel: bit 4 of `u` means no parcel on the block
+# carried a year, and `yr` then holds 1906 as a fallback rather than as a fact.
+# A seeded row may not take a year off a footprint flying it.
+FLAG_NOYEAR = 16
+
+
+def seed_rows(pl: list[dict]) -> list[dict]:
+    """A building the map draws, that no register names, and that this
+    repository names instead — under every name it has carried in turn.
+
+    THE SEED CARRIES NAMES AND A FOOTPRINT. NOTHING ELSE IS AUTHORED.
+    `x`/`y` is the shipped ring's own vertex mean, `span` is this file's
+    existing ladder — max(sqrt(footprint area), the drawn height), the same
+    line `build_places.py` runs for every register row that resolves to a
+    footprint — and the FIRST name's year is 1849 + the roll year the map
+    already ships on that ring. So the anchor, the extent and the opening year
+    all come out of the same stream the encoder read.
+
+    A BUILDING OUTLIVES ITS OCCUPANTS, AND THE MAP HAS A CLOCK. A seed entry
+    is a list of names in order, each with the year it starts applying, and
+    each becomes its own row: the first runs from the footprint's roll year,
+    every later one from the year the seed states, and each is closed at the
+    year the NEXT one opens. So no row carries a year twice, one name is
+    drawable in any given year, and dragging the map's own year rail through
+    the switch swaps the label. `until` rides to the client on `base/marks.json`
+    and `base/places.qc` as `yrTo`, 0 where a name has no end.
+
+    A YEAR THIS REPOSITORY STATES HAS TO SAY WHY. The opening year of a later
+    name is in no register here — a change of occupant is not a thing DataSF
+    publishes — so it is authored, it takes YRULE's last rung rather than
+    borrowing a publisher's, and this refuses to write it without a `why`
+    beside it. That is the same bargain the name itself strikes.
+
+    IT REFUSES RATHER THAN DRIFTS, which is `_hero_bi()`'s rule for the same
+    hazard. `b` is an index into a delta-chained stream, and a footprint rescue
+    that inserts records ahead of it renumbers everything after — DATA-TRUTH
+    13.5a describes exactly such an insertion, at 135,905 and 137,646. An
+    integer alone would then quietly name a different building, so the seed
+    also records the ring's fingerprint (vertex mean, vertex count, area) and
+    this refuses to write unless the shipped ring still matches it.
+
+    A seeded name never displaces a published one: a footprint some register
+    already names is skipped whole, and the register keeps it.
+    """
+    if not SEED.exists():
+        return []
+    doc = json.loads(SEED.read_text())
+    seeds = doc.get("places", [])
+    if not seeds:
+        return []
+
+    sys.path.insert(0, str(ROOT / "pipeline" / "scripts" / "us_sf_city"))
+    from _bldgsrc import read_bldg  # noqa: E402  — the encoder's own reader
+
+    B = read_bldg()
+    have = {q.get("bi") for q in pl if q.get("bi") is not None}
+    out = []
+    for q in seeds:
+        b = int(q["b"])
+        if not 0 <= b < B["n"]:
+            raise SystemExit(
+                f"places_extra.json: {q['k']!r} names footprint {b}, and the "
+                f"shipped stream holds {B['n']:,}.")
+        lo = int(B["off"][b])
+        hi = lo + int(B["cnt"][b])
+        xs = B["IX"][lo:hi].astype(float)
+        ys = B["IY"][lo:hi].astype(float)
+        n = len(xs)
+        area = 0.5 * abs(sum(xs[i] * ys[(i + 1) % n] - ys[i] * xs[(i + 1) % n]
+                             for i in range(n)))
+        cx, cy = float(B["cx"][b]), float(B["cy"][b])
+        at = q["at"]
+        got = (round(cx, 2), round(cy, 2), int(B["cnt"][b]), round(area, 1))
+        want = (round(float(at["cx"]), 2), round(float(at["cy"]), 2),
+                int(at["nv"]), round(float(at["areaM2"]), 1))
+        if got != want:
+            raise SystemExit(
+                f"places_extra.json: {q['k']!r} claims footprint {b} is "
+                f"{want} (vertex mean x, y, vertex count, m2) and the shipped "
+                f"register holds {got}. The footprint stream has been rebuilt "
+                f"and the indices have moved. Re-resolve the ring, correct "
+                f"`b` and `at` together, and re-run. A name will not be "
+                f"written against a fingerprint that does not match.")
+        if b in have:
+            continue                    # a register already names it; it wins
+        if int(B["u"][b]) & FLAG_NOYEAR:
+            raise SystemExit(
+                f"places_extra.json: {q['k']!r} stands on a footprint whose "
+                f"year is the 1906 FLAG_NOYEAR fallback, not a published roll "
+                f"year. There is no year to open the first name in.")
+
+        roll = 1849 + int(B["yr"][b])
+        names = q["names"]
+        span = max(math.sqrt(area), float(B["h"][b]))
+        years = []
+        for i, nm in enumerate(names):
+            if i == 0:
+                if nm.get("from") is not None:
+                    raise SystemExit(
+                        f"places_extra.json: {q['k']!r} gives its first name "
+                        f"a `from`. The first name opens in the footprint's "
+                        f"own roll year and that year is not authored here.")
+                years.append((roll, YRULE[2]))
+                continue
+            if nm.get("from") is None or not str(nm.get("why", "")).strip():
+                raise SystemExit(
+                    f"places_extra.json: {q['k']!r} name {nm['n']!r} needs "
+                    f"both a `from` and a `why`. A year this repository states "
+                    f"rather than reads has to say what it rests on.")
+            years.append((int(nm["from"]), YRULE[6]))
+        if any(years[i][0] >= years[i + 1][0] for i in range(len(years) - 1)):
+            raise SystemExit(
+                f"places_extra.json: {q['k']!r} names do not run forward in "
+                f"time: {[y for y, _ in years]}. A later name cannot open in "
+                f"the same year the one before it did, or earlier.")
+
+        for i, nm in enumerate(names):
+            y0, rule = years[i]
+            out.append({
+                "n": nm["n"],
+                "x": cx,
+                "y": cy,
+                "span": span,
+                "bi": b,
+                "y0": y0,
+                # closed where the NEXT name opens, so the switch year is
+                # written once and the two rows cannot disagree about it
+                "until": years[i + 1][0] if i + 1 < len(years) else None,
+                "y0rule": rule,
+                "des": 0,
+                "ggb": 0,
+                "old": 0,
+                "src": SEED_SRC,
+                "spanFrom": "footprint",
+                "fpBy": None, "sid": None, "nrhpListed": None,
+                "a11": None, "yrField": None,
+            })
+    return out
+
+
 def order_places(pl: list[dict]) -> list[dict]:
     """THE ORDER IN THIS FILE IS THE ORDER THE INK BUDGET IS SPENT IN.
 
@@ -478,11 +639,19 @@ def order_places(pl: list[dict]) -> list[dict]:
 
 def main() -> int:
     doc = json.loads(SRC_IN.read_text())
-    extra = hero_rows(doc["places"])
-    pl = order_places(doc["places"] + extra)
+    # THE SEED GOES FIRST, AND THE ORDER IS LOAD-BEARING. `hero_rows` gives a
+    # hero with no place row one of its own, and a hero standing on a footprint
+    # the seed names would take that name — collapsing the seed's names-in-turn
+    # back to one. Both functions skip a footprint that is already spoken for,
+    # so running the seed first is the whole fix.
+    seeded = seed_rows(doc["places"])
+    extra = hero_rows(doc["places"] + seeded)
+    pl = order_places(doc["places"] + seeded + extra)
     rep = dict(doc["report"])
     if extra:
         rep["from_hero_register"] = [q["n"] for q in extra]
+    if seeded:
+        rep["from_seed"] = [q["n"] for q in seeded]
 
     # THE NAME MAY NOT PREDATE THE THING. `97yj-54sx` gives the Golden Gate
     # Bridge `yearbuilt` 1933 — the year construction BEGAN — and this file was
@@ -534,6 +703,11 @@ def main() -> int:
     w.add("span", "u16", [max(1, min(65535, int(round(p["span"])))) for p in pl])
     w.add("bi", "i32", [p["bi"] if p["bi"] is not None else -1 for p in pl])
     w.add("yr", "u16", [max(0, min(65535, int(p["y0"]))) for p in pl])
+    # THE LAST YEAR A NAME MAY BE DRAWN, 0 where it has none — which is every
+    # row but the ones `places_extra.json` closes when a later name opens. A
+    # reader that does not know this column ignores it, exactly as `kind` was
+    # shipped ahead of its decoder.
+    w.add("yrTo", "u16", [max(0, min(65535, int(p.get("until") or 0))) for p in pl])
     w.add(
         "fl",
         "u8",
@@ -771,6 +945,10 @@ def write_marks(pl: list[dict], doc: dict, kcol: list[int]) -> None:
         "s": b64("H", [max(1, min(65535, int(round(p["span"])))) for p in pl]),
         "b": b64("i", [p["bi"] if p["bi"] is not None else -1 for p in pl]),
         "yr": b64("H", [max(0, min(65535, int(p["y0"]))) for p in pl]),
+        # `yt` is `yr`'s closing bracket: the first year the name is NO LONGER
+        # drawn, 0 where it never stops. Only a building this repository names
+        # under more than one name in turn carries it.
+        "yt": b64("H", [max(0, min(65535, int(p.get("until") or 0))) for p in pl]),
         "d": b64("B", [(1 if p["des"] else 0) | (2 if p["ggb"] else 0)
                        | (8 if p.get("_contained") else 0) for p in pl]),
         "src": b64("B", [six[p["src"]] for p in pl]),

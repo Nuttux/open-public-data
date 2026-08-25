@@ -1,0 +1,32 @@
+{
+  "note": "Named places authored on top of the eleven published registers build_places.py reads. Read by emit_places.py, which MERGES them into base/places.qc + base/places.json, and into base/marks.json under --marks. NO GEOMETRY, NO EXTENT AND NO YEAR IS TYPED IN THIS FILE: the anchor, the span and the first year the name may be drawn are all read out of the shipped footprint the entry names, through _bldgsrc.read_bldg() -- the same function the city encoder reads them with, and the same rule heroes_extra.json keeps. What is authored here is a NAME, the footprint it belongs to, and the reason no register carries it.",
+  "the_name_is_the_authored_part": "Every other row in base/places.* takes its name from a register that published it, and its `src` says which. These rows do not, and their `src` says THAT: it names this file. A reader who opens the provenance sees a path in this repository where the others show a DataSF dataset id, which is the honest signal and is exactly what base/heroes.json already does for Sutro Tower. Nothing here may state a fact the record does not carry -- an entry names a building and points at the pages; it does not narrate them.",
+  "places": [
+    {
+      "k": "internetarchive",
+      "b": 160550,
+      "at": {
+        "cx": -2952.95,
+        "cy": 2481.0,
+        "nv": 20,
+        "areaM2": 1344.0
+      },
+      "names": [
+        {
+          "n": "Christian Science Church",
+          "why": "THE RECORD'S OWN WORDS, and deliberately not the fuller name it is usually given. Resolution No. 21068 (New Series) writes `Board of Trustees, Christian Science Church, at southeast corner of Clement street and Funston avenue` and that is the whole of what the City calls it. The building is often named as the Fourth Church of Christ, Scientist, and this file will NOT write that: the same corpus puts the Fourth Church at 5509 Geary Boulevard in 1944 (journalofproceed39part2sanfrich, leaf 255, a $374.19 claim after a police car hit the premises), so the ordinal is contested by the record itself. The unqualified name is what two sources agree on."
+        },
+        {
+          "n": "Internet Archive HQ",
+          "from": 2009,
+          "why": "AUTHORED, AND NOT READ OFF ANY PUBLISHER THIS PIPELINE TOUCHES. 2009 is the year the Internet Archive acquired 300 Funston Avenue and made it its headquarters. No register in build_places.py's list records a change of occupant -- DataSF publishes what the City owns, designates and rates, not who moved into a private building -- so there is no dataset id to put behind this and the row does not pretend there is: `src` names this file and `yrule` takes the rung that says the year came from us. If that year is wrong it is wrong here, in one line, where a reader can see who wrote it."
+        }
+      ],
+      "an": "THE FOOTPRINT IS PUBLISHED; THE IDENTIFICATION IS MEASURED. `at` is the shipped ring's own fingerprint -- its vertex mean, its vertex count and its area -- and emit_places.py refuses to write unless the register on disk still carries a ring that matches it. That is heroes_extra.json's index-independence rule, kept for the same reason: a footprint rescue that inserts records ahead of this one shifts `b`, and a seed that trusted the integer alone would silently name the wrong building. The ring is 1,344 m2 on 20 vertices and 15 m tall, which is the 98th percentile of the 166,166 footprints this map draws; every other ring within 40 m of it is a 140-306 m2 house. It is the only structure of that scale on the corner, and it sits 27.7 m from the Internet Archive's own published position for 300 Funston Avenue.",
+      "why": "NO REGISTER THIS PIPELINE READS NAMES IT, and the list is the point of the sentence -- checked one by one, the way Sutro Tower's entry in heroes_extra.json was: DataSF 97yj-54sx Article 10 landmarks and rzic-39gi -- no. ejht-vp5d Article 11 Rating -- no, it covers the downtown conservation districts. gtr9-ntp6 Recreation and Parks Properties, ib5c-xgwu Recreation and Parks Facilities, nc68-ngbr City Facilities, gtnh-hgvs City Lands -- no, and correctly so: 300 Funston is private ground and none of those registers reaches it. 5kya-mfst Tall Building Inventory -- no, at 15 m. 6adp-a5yv Schools_College, 7e7j-59qk Schools, 65ik-7wqd Privately Owned Public Open Spaces -- no. US National Park Service, National Register of Historic Places -- no, there is no Funston Avenue row in it. The nearest named place the map already draws is Sutro Elementary, 147 m away. So the map draws the building and has nothing to write over it, which is the same gap this file's pattern was built to close.",
+      "record": "WHAT THE CITY'S OWN RECORD SAYS ABOUT THIS CORNER, and it is a corroboration rather than a flourish. The assessor's secured roll (DataSF wv5m-vpq2, the `yr` this map already ships on the footprint) dates the structure 1922, with the FLAG_NOYEAR sentinel clear -- so that is a published year and not the 1906 fallback. One year later, on 19 November 1923, the Board of Supervisors passed Resolution No. 21068 (New Series), a list of oil-tank and boiler permits, and one line of it reads `Board of Trustees, Christian Science Church, at southeast corner of Clement street and Funston avenue` -- an oil storage tank of 1,500 gallons capacity, in the same list as the Wigwam Theater on Capp Street and the Roman Catholic Archbishop on Twenty-ninth. Journal of proceedings, 1923 (journalofproceed1923sanfrich), leaf 1295. Two publishers, one year apart, on the same corner.",
+      "not_claimed": "That the 1923 permit and this footprint are the same building is what the two sources JOINTLY support -- a church at that corner in 1923, a 1922 structure of church scale on it now -- and it is not a line either source writes. Nothing in the City's record connects the corner to the Internet Archive; the organisation's occupancy is a fact about the present, not about the minutes, and no copy drawn from this row may imply otherwise."
+    }
+  ],
+  "rejected": []
+}
