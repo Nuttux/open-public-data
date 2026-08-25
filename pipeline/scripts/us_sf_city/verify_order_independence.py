@@ -16,14 +16,24 @@ does — that is the point.
     python3 verify_order_independence.py            two shuffles
     python3 verify_order_independence.py --seeds 1 2 3
 
-It shuffles `blocks/cache/items.jsonl`, runs `blocks/build_index.py`, hashes
-every file under `blocks/out/`, and restores the original corpus and outputs
-afterwards whatever happens.
+It shuffles a corpus, runs `blocks/build_index.py` on it, and hashes every file
+it writes.
+
+    python3 verify_order_independence.py --items <jsonl>
+
+`--items` tests a corpus that is not the canonical one — the merged
+archive+sfbos corpus, for instance — WITHOUT touching it. The shuffle is written
+to a temporary file and the build is pointed at it through `BLOCKS_ITEMS` /
+`BLOCKS_OUT`, so neither `blocks/cache/items.jsonl` nor `blocks/out/` is
+modified at any point. With no `--items` the default corpus is tested the same
+way, which is why the old in-place shuffle-and-restore is gone: a `finally` that
+restores 155 MB is a worse guarantee than never writing to it.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
+import os
 import json
 import pathlib
 import random
@@ -38,19 +48,22 @@ ITEMS = BLK / "cache" / "items.jsonl"
 OUT = BLK / "out"
 
 
-def digest() -> dict[str, str]:
+def digest(out_dir: pathlib.Path) -> dict[str, str]:
     out = {}
-    for p in sorted(OUT.rglob("*.json")):
+    for p in sorted(out_dir.rglob("*.json")):
         # provenance files carry counters, not published content
         if p.name in ("unplaced.json", "shards.json"):
             continue
-        out[str(p.relative_to(OUT))] = hashlib.sha256(p.read_bytes()).hexdigest()
+        out[str(p.relative_to(out_dir))] = hashlib.sha256(p.read_bytes()).hexdigest()
     return out
 
 
-def build() -> None:
+def build(items: pathlib.Path, out_dir: pathlib.Path, joined: pathlib.Path) -> None:
+    env = dict(os.environ,
+               BLOCKS_ITEMS=str(items), BLOCKS_OUT=str(out_dir),
+               BLOCKS_JOINED=str(joined))
     r = subprocess.run([sys.executable, "build_index.py"], cwd=str(BLK),
-                       capture_output=True, text=True)
+                       capture_output=True, text=True, env=env)
     if r.returncode != 0:
         print(r.stdout[-3000:])
         print(r.stderr[-3000:])
@@ -60,15 +73,17 @@ def build() -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--seeds", type=int, nargs="+", default=[101, 202])
+    ap.add_argument("--items", default=str(ITEMS),
+                    help="corpus to test (default: blocks/cache/items.jsonl). "
+                         "It is READ ONLY — the shuffle goes to a temp file.")
     a = ap.parse_args()
 
+    src = pathlib.Path(a.items)
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="orderindep-"))
-    shutil.copy2(ITEMS, tmp / "items.orig.jsonl")
-    if OUT.exists():
-        shutil.copytree(OUT, tmp / "out.orig")
-    print(f"  corpus and outputs saved to {tmp}")
+    print(f"  corpus {src}")
+    print(f"  scratch {tmp}   (canonical cache/ and out/ are never written)")
 
-    rows = open(ITEMS).read().splitlines()
+    rows = src.read_text().splitlines()
     print(f"  {len(rows):,} rows")
     digests = []
     try:
@@ -76,10 +91,13 @@ def main() -> None:
             rnd = random.Random(s)
             shuffled = rows[:]
             rnd.shuffle(shuffled)
-            ITEMS.write_text("\n".join(shuffled) + "\n")
+            items = tmp / f"items.{s}.jsonl"
+            out_dir = tmp / f"out.{s}"
+            out_dir.mkdir(exist_ok=True)
+            items.write_text("\n".join(shuffled) + "\n")
             print(f"  seed {s}: input shuffled, building…", flush=True)
-            build()
-            d = digest()
+            build(items, out_dir, tmp / f"joined.{s}.json")
+            d = digest(out_dir)
             digests.append((s, d))
             print(f"    {len(d)} published files hashed")
 
@@ -102,11 +120,7 @@ def main() -> None:
         print("\n  PASS — the index is a function of the corpus, not of its order."
               if ok else "\n  FAIL — the index still depends on input order.")
     finally:
-        shutil.copy2(tmp / "items.orig.jsonl", ITEMS)
-        if (tmp / "out.orig").exists():
-            shutil.rmtree(OUT, ignore_errors=True)
-            shutil.copytree(tmp / "out.orig", OUT)
-        print(f"  corpus and outputs restored from {tmp}")
+        shutil.rmtree(tmp, ignore_errors=True)
     sys.exit(0 if ok else 1)
 
 

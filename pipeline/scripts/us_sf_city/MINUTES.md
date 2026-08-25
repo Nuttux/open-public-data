@@ -298,6 +298,11 @@ record here.
 
 ## 13. sfbos.org is extracted but NOT merged, and why
 
+> **SUPERSEDED 2026-08-26 — see §21.** The citation shape this section was
+> waiting on is designed, gated and built; sfbos.org is merged and the map
+> reaches 2026. The reasoning below is kept because it is why the merge
+> waited, and the block-count it quotes (2,907) is reconciled in §21.3.
+
 390 PDFs, all with a text layer, 42,405 items split, **6,786 carry a resolvable
 street, 5,197 place (76.6%), 3,717 at block precision, touching 2,907 of 5,404
 blocks** — evenly spread, 347 in 2016 through 274 in 2026 so far. 3,330 are
@@ -367,6 +372,12 @@ because the pre-1999 output is a function of the whole corpus. The options are:
 
 **With what is merged today: 2016.** With sfbos merged once §13 is settled:
 **2026, current to this month.**
+
+> **DONE 2026-08-26 (§21).** The merged index reaches **2026**, and 1,060
+> blocks carry a record ending 2017 or later. One correction to the line
+> above: *current to this month* is wrong. The Clerk's last posted minutes
+> are **2026-04-14** — minutes lag the meeting — so the map is current
+> through April 2026, not August.
 
 ---
 
@@ -876,3 +887,323 @@ script and edited nothing under `blocks/`. `build_index.py` is unmodified since
 a tautology, not a test. It should be re-run the moment placement is touched.
 
 **Nothing published.** `website/public/data/` untouched.
+
+---
+
+# 21. THE MAP REACHES 2026 — sfbos.org merged 2026-08-26
+
+§13 held the Board's own PDFs back for one reason: `u` was an archive.org
+coordinate and an sfbos meeting has no archive identifier and no leaf, so
+merging the rows as they stood would have minted a citation that resolves to
+nothing. That is now designed and built, and with it the last year on the map
+goes **2016 → 2026**.
+
+## 21.1 The citation shape
+
+**`u` keeps the two parts it always had. What changes is what resolves them,
+and a new one-character field says which.**
+
+```
+  archive.org scan   u = "journalofproceed22sanfrich/2161"   (c absent)
+                     -> archive.org/details/<id>/page/n<leaf>/mode/1up
+  Board PDF          u = "bag071216/3"          c = "b"
+                     -> sfbos.org/sites/default/files/<stem>_minutes.pdf#page=<n>
+```
+
+**`c` is absent on every archive row, so nothing published before this changes
+by a byte.** The control build below proves that rather than asserting it.
+
+**Why a stem and a page rather than the whole URL.** Because the shape is an
+invariant the build PROVES, not one it assumes. `sfbos_gate()` runs on every
+build over the whole corpus and refuses to continue unless all 6,786 rows
+satisfy both halves:
+
+```
+  url  == "https://sfbos.org/sites/default/files/" + <stem> + "_minutes.pdf"   6,786 / 6,786
+  page == n + 1                                                                6,786 / 6,786
+```
+
+`n` is the file's 0-based page — the same convention the archive leaf uses — and
+`n + 1` is the page a reader opens. If the sweep ever emits a row that breaks
+either rule, the build stops and says so. A dead link under a real decision is
+worse than no link, so this raises rather than warns.
+
+**The links were checked against the live web, not assumed.** All 372 meetings
+return **HTTP 200 `application/pdf`** (sfbos.org now 301-redirects to
+`sfbos.archive.sf.gov`; the canonical form is kept because it is what the city
+printed and the redirect is permanent). No `Content-Disposition` is set, so the
+files render inline and `#page=` lands on the right page. Every cited page is
+within its file's page count — **372 / 372 checked with a real PDF parser, 0 out
+of range.**
+
+**These rows need no `approx` flag.** The archive half carries one where a leaf
+could not be mapped onto BookReader's list. The Board's page is read out of the
+PDF's own text layer, so there is nothing to map and nothing to approximate:
+all 3,206 Board rows in the block layer are exact.
+
+## 21.2 The seam is real, and it does not overlap
+
+**2016 is where the City stopped printing bound volumes and started posting
+files, and the two corpora abut without touching.**
+
+```
+  archive.org bound volumes   last meeting   2016-06-07
+  sfbos.org PDFs              first meeting  2016-07-12
+  meeting dates in BOTH                               0
+```
+
+Seventeen meeting dates on each side of 2016, and **not one date in common.**
+This is not a lucky cut — the harvest checked all 22 business dates in June 2016
+and sfbos.org carries **no minutes PDF before 2016-07-12 at all**. The Board
+recessed in the summer of 2016, and when it came back its record was a different
+object.
+
+**So there is no de-duplication to do across the seam**, and none was done. The
+question §13 raised — how to de-duplicate where one side has archive leaves and
+the other PDF pages — has no instance in the data.
+
+**And the sfbos half has none of the duplication the middle era had either.**
+372 PDFs, 372 distinct meetings, one file per meeting, `(volume, date)` unique
+throughout. The volume-level de-duplication of §18 exists because the Archive
+holds up to seven scans of one session; the city posts one file, once.
+
+## 21.3 What lands, measured at the same gates as the Archive half
+
+`measure_sfbos_placement.py` runs `build_index.locate()` — the placement the
+published index actually uses — over both corpora, so the two eras are counted
+at one set of gates.
+
+```
+                                    sfbos PDFs          archive scans
+  items with a resolvable street         6,786                104,248
+  placed at any tier              5,197  76.6%        86,524   83.0%
+  at BLOCK precision (tier>=1)    3,717  54.8%        47,770   45.8%
+  distinct blocks, block layer           1,127                  4,733
+  distinct blocks incl. street-smear      2,907                  5,096
+
+  tiers        stated    addr   segment   corner   street
+  sfbos             1   3,330        88      298    1,480
+  archive       3,358  13,455     7,029   23,928   38,754
+```
+
+**The modern half is worse at being placed and better at being precise, and both
+have the same cause: the modern minute prints a street address and little
+else.** It reaches a block 54.8% of the time against the Archive's 45.8%, and
+**89.6% of what it places is address-or-better, against the Archive's 35.2%** —
+the Journal's commonest construct is a corner or a segment, the Clerk's is
+"1035 Folsom Street". The flip side is that 1,010 modern items name all their
+streets after the roll call and are dropped, which is the largest single loss.
+
+*(§13's "2,907 of 5,404 blocks" counted every block a row touches including the
+street-tier smear. The block layer proper is 1,127. Both are above; the second
+is the honest one.)*
+
+**1,104 of those 1,127 blocks already had an Archive-era record.** The modern
+era extends lines that exist; only 23 blocks are new to the map because of it.
+
+*The 67.7% "address-or-better" figure quoted for the Archive half in the task
+brief does not reproduce under any denominator tried here — the published block
+layer is 24.1% addr-or-better by row and 71.5% of blocks have at least one such
+row. The tables above give both denominators explicitly so the comparison is not
+ambiguous.*
+
+## 21.4 What it does to the pre-1999 layer: NOTHING, and that is proved twice
+
+**`verify_block_regression.py`: PASS.**
+
+```
+  pre-1999 decisions   baseline 90,820 / current 90,820
+  every pre-1999 decision on every block unchanged, element for element, in order
+```
+
+This is structural, not luck. `_dedup` already partitions on `ERA_CUT = 1999`
+and runs separately on each half, and `_rowkey` is a total order on a row's own
+content. Every sfbos row is 2016 or later, so it enters only the modern half,
+and the pre-1999 subsequence cannot be perturbed by inserting rows after it.
+
+**The decade rail, before and after — the first eight decades are identical:**
+
+```
+decade     blocks              decisions
+         before   after     before    after
+1900s     1,715   1,715      6,183    6,183
+1910s     3,361   3,361     22,580   22,580
+1920s     3,837   3,837     26,645   26,645
+1930s     2,802   2,802      8,959    8,959
+1940s     2,051   2,051      5,378    5,378
+1950s     1,937   1,937      4,148    4,148
+1960s     1,672   1,672      3,203    3,203
+1970s     2,156   2,156      4,651    4,651
+1980s     2,021   2,021      5,406    5,406
+1990s     1,826   1,826      4,213    4,214     +1  (a 1999 row: modern era)
+2000s     1,598   1,598      3,799    3,807     +8
+2010s       955   1,274      2,234    3,630
+2020s         0     745          0    1,797
+                                    97,399  100,601   +3,202
+```
+
+**The modern era does move, it is counted, and it is enumerated.**
+`moves_modern_sfbos.tsv` — 241 rows across 138 blocks, every one with its year,
+date, page citation and text. Of those: **223 arrivals** (209 of them the new
+2016 PDFs) and **18 archive rows displaced**, all 2013–2016.
+
+**13 of the 18 are a swap inside a duplicate group** — the same decision, now
+represented on that block by its other reading, because the Board legitimately
+prints one item across several meetings and the cross-meeting collapse §19.5
+insists on keeping now has a second reading to choose from. **5 have nothing
+like them left on their block**: two are the same liquor-licence transfer on
+blocks 0452 and 0452T, one is an address-table fragment on 3752, one a
+reimbursement declaration on 3506, one a school-district acquisition on 4287.
+
+**Five rows in 100,601 — 0.005% — and they are named above, not summarised.**
+Pre-1999, the number is zero.
+
+## 21.5 The control build, and why it is the load-bearing test
+
+The code change was run against the **unchanged** corpus first, into a separate
+directory, and hashed against production:
+
+```
+  2,181 files compared with website/public/data/us/sf/city/blocks/  —  0 differ
+```
+
+**So every byte of the difference is the new data, and none of it is the new
+code.** This is what `BLOCKS_ITEMS` / `BLOCKS_OUT` / `BLOCKS_JOINED` were added
+for: a build can now run beside the published one and be diffed, instead of
+overwriting it to find out what a change did.
+
+`verify_order_independence.py` was also rewritten to use them. It used to
+shuffle `cache/items.jsonl` **in place** and restore it in a `finally`; it now
+writes the shuffle to a temp file and points the build at it, so the canonical
+corpus and `out/` are never written at all. It also takes `--items`, which is
+how the merged corpus was tested:
+
+```
+  python3 verify_order_independence.py --items <merged corpus>   122,459 rows
+
+  seed 101: built, 2,210 published files hashed
+  seed 202: built, 2,210 published files hashed
+  seed 202 == seed 101: all 2,210 files identical
+
+  PASS — the index is a function of the corpus, not of its order.
+```
+
+**The order-independence guarantee of §19 survives the merge.** Two independent
+shuffles of the full merged corpus produce the same bytes, so the modern era
+does not reintroduce the arrival-order dependence that §19 removed.
+
+## 21.6 Two things found on the way, neither caused by this change
+
+**17 street files are published that the current build no longer produces**
+(`APTOS_`, `PINE_`, `CORTLAND_`, `WARREN_` …), and 9 of them are still named by
+26 block→street links. **This is not a broken link:** `loadStreet()` returns
+`[]` on a non-OK response, and 328 of the 1,771 street keys blocks reference
+have no file by design — a block fronts streets that carry no street-tier
+decision. The 17 are orphaned leftovers in the published directory, not a fault.
+Recorded so the next person who diffs the two directories does not chase them.
+
+**`_rowkey`'s docstring overstates what it reads.** It says (score, year, date,
+page, full text, volume, item number), but `r.get("d")` and `r.get("u")` do not
+exist on an item record — items carry `dt` and no `u` — so both are constantly
+`""`. The key is still a total order because `(text, volume, item)` is unique
+per row, and order-independence passes, so behaviour is correct. The comment is
+wrong, not the code.
+
+## 21.7 State on disk
+
+- `scratchpad/sf-city-anim/blocks/out/` — the **pre-merge** build, still
+  byte-identical to production. Untouched.
+- `scratchpad/sf-city-anim/blocks/out_2026/` — the **merged** build. 2,212 files.
+  This is what publishes.
+- `website/public/data/us/sf/city/blocks/` — **untouched by this work.**
+
+**Publishing is a COPY, never a mirror-delete.** The published directory also
+holds 279 files this build does not produce — `accuracy.json`,
+`block-facts.json`, `block-landuse.json`, `block-leads.json`,
+`block-money.json`, `hood-facts.json` and 256 `landuse/` shards — all written by
+other scripts. A sync with `--delete` would remove every one of them.
+
+## 21.8 The `w` summary — the reported bug is not in `build_index.py`
+
+Raised alongside this merge: that a block's `w` sentence characterises only
+pre-1999 rows while its denominator counts all of them. **Measured, and the
+backend `w` does not have this problem.** It is built by `subjects_of()` over
+each decision's own TEXT, not over a printed heading, and it classifies the
+modern rows at very nearly the Journal rate:
+
+```
+                      rows     with a subject cue
+  pre-1999          90,820      42,258   46.5%
+  modern (pre-merge) 6,579       2,810   42.7%
+  modern (merged)    9,781       4,071   41.6%
+```
+
+Numerator and denominator are the same population — both iterate `own[bn]` —
+so `w` is a whole-record claim over a whole-record count. On block 3752 the
+merged build says *"110 of the 331"*, and modern rows contribute to both halves.
+
+**The blindness is real but it is in the front end.** `printedHeading()` opens
+`if (d.g !== "h" && d.g !== "p") return null`, and `g === "s"` on every modern
+row, so `blockSubjects` — which is heading-based — drops the modern half. That
+is `block-records.ts` and is not this file's to fix.
+
+**The bracketed-subject extractor was re-measured on the merged corpus and the
+verdict is unchanged: do not build it.** With 2016–2026 in, 1,427 of 9,781
+modern rows carry a bracket (14.6%, up from 13.5%), and at `SUBJECT_MIN = 2`
+just **56 of 2,419 blocks — 2.3%** — would gain a single modern subject group.
+Doubling the corpus barely moved it off 1.3%. An extractor with its own failure
+modes for 2.3% of blocks is not worth it.
+
+## 21.9 WHAT THE FRONT END MUST CHANGE — three things, none of them mine
+
+`website/src/components/us/city/*` belongs to another agent. These are the exact
+changes the published data requires, and **the second one is not cosmetic: the
+caption becomes false the moment this data ships.**
+
+**(1) The link. `block-records.ts`.** Add `readonly c?: string;` to
+`BlockDecision`, and resolve the two shapes:
+
+```ts
+/** Two record systems, two shapes. `c === "b"` is a PDF the Board posted. */
+export function sourceHref(d: Pick<BlockDecision, "u" | "c">): string {
+  const [doc, page] = d.u.split("/");
+  return d.c === "b"
+    ? `https://sfbos.org/sites/default/files/${doc}_minutes.pdf#page=${page}`
+    : `https://archive.org/details/${doc}/page/n${page}/mode/1up`;
+}
+```
+
+`archiveHref` has three call sites, all in `CityBlockPanel.tsx` — **265, 574,
+671** — and each must pass the decision rather than `d.u`. `seriesOf()` (line
+229) also needs a `c === "b"` arm; a Board PDF is not "Internet Archive". And
+the lead's link text at 675 reads *"Open the scanned page"*, which is wrong for
+a born-digital PDF.
+
+**(2) The caption under the rail, `CityBlockPanel.tsx` 1547.** It currently
+prints, once `indexedLast >= SERIES_LAST_YEAR`:
+
+> *"The scanned series ends in 2016 … **The Clerk has published every meeting
+> since; no library has paginated them into this series**."*
+
+**With this data published that sentence contradicts the rail beside it.** The
+map now carries those meetings, cited to the Clerk's own files. It is the
+descendant of the caption §21's own comment block calls "THE CAPTION THAT WAS
+FALSE", and it would be false again in the same direction — a claim about the
+record that is really a claim about our pipeline.
+
+**This is also the right place to show the seam rather than hide it**, which is
+what was asked. Suggested, and the numbers in it are all measured above:
+
+> *"Two record systems meet here. The Board's bound volumes were scanned
+> through June 2016; from July 2016 the City stopped printing books and posted
+> PDFs instead, and those are cited to the Clerk's own files."*
+
+`SERIES_LAST_YEAR = 2016` should **stay 2016** — it is a true fact about the
+Archive's shelf. What changes is that the shelf is no longer the only source,
+so the caption can no longer be written as though it were.
+
+**(3) Nothing else needs touching.** `afterSeries` is `dec > lastDec` computed
+from `indexedLastYear()`, which reads `y1` off the shipped index — so the *"not
+scanned"* tag stops being drawn over the 2000s–2020s **automatically** when the
+data lands, exactly as the comment on that function predicted. That design
+holds up; no constant to chase.
