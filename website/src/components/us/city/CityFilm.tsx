@@ -981,26 +981,47 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
 [data-film-chrome]{position:absolute;inset:0;pointer-events:none;z-index:6;
   font-family:var(--f-sans,system-ui);color:#161310}
 [data-film-chrome] *{box-sizing:border-box}
-/* THE SCRIM IS AS WIDE AS THE TEXT AND NOT AS WIDE AS THE FRAME. A radial wash
-   sized to the plate has an EDGE, and against a pale city that edge reads as a
-   white rectangle laid on the map. MEASURED over all ten shots, the widest line
-   of copy reaches 41.2 % of the frame, so the ramp is masked to the text's own
-   side and runs out over the next 46 % of the width — 660 px of falloff, and
-   therefore not an edge. */
-/* AND IT IS AS TALL AS THE PLATE, WHICH IT WAS NOT. Measured on shot 2 at
-   1440x900: the copy line lands at 71.7 % of frame height and the old ramp was
-   at alpha .27 there, so TWIN PEAKS and CASTRO/UPPER MARKET were legible
-   THROUGH the sentence. The plate now also carries a third source row and a
-   caveat, so it reaches further up than the ramp was ever built for. Height
-   34 % -> 48 %, and the stops are placed off the plate's own geometry: .93 at
-   the copy line, and the whole 0 -> .9 ramp spread over 52-70 % of the frame,
-   which is 324 px of falloff at 1800 and therefore still not an edge. */
-.fx-film-scrim{position:absolute;left:0;right:0;bottom:0;height:48%;
-  background:linear-gradient(to top,rgba(250,250,247,.97) 0%,rgba(250,250,247,.93) 55%,
-    rgba(250,250,247,.62) 70%,rgba(250,250,247,.18) 86%,rgba(250,250,247,0) 100%);
-  -webkit-mask-image:linear-gradient(to right,#000 0 46%,rgba(0,0,0,.30) 74%,rgba(0,0,0,0) 92%);
-          mask-image:linear-gradient(to right,#000 0 46%,rgba(0,0,0,.30) 74%,rgba(0,0,0,0) 92%)}
-.fx-film-plate{position:absolute;left:44px;bottom:74px;max-width:min(58ch,52vw)}
+/* THE COPY IS ON PAPER, AND THERE IS NO SCRIM. The two comments that used to
+   stand here argued the ramp's width and then its height; neither ever asked
+   how much PICTURE the ramp was costing. .parity/q1scrim.py asked, with a
+   control: the same millisecond of the same shot, shot twice, once as shipped
+   and once with the scrim removed, so every pixel that differs is the scrim and
+   nothing else. Over all eleven at 1440x900:
+
+     touched (ΔL > 2)    38.6 % of the frame
+     washed  (ΔL > 24)   23.4 % of the frame
+     topmost row reached  470 of 900 — the scrim began at the frame's MIDDLE
+
+   and below 65 % of frame height, THREE PIXELS IN FIVE were bleached, all the
+   way to the bottom edge. On shot 4 that is Sunset, Lakeshore, Excelsior and
+   Visitacion Valley — the whole southern city — turned to ghost labels on
+   white; on shot 5 it is the Victorian blocks in the foreground of the best
+   frame in the film. NIGHT3 §3 asks for every frame picture-perfect, and a
+   fifth of every frame was being bleached to make one sentence legible.
+
+   FOUR TREATMENTS WERE SHOT ON THE REAL FRAMES AND LOOKED AT — .parity/
+   q3cand.py, out-q3/: a tighter ramp (12-14 % washed and still a fog), a
+   paper halo on the type alone (0.2-2 % washed, and it FAILS on shot 8, where
+   the ground under the plate is dark roofs and dark type on dark roofs is not
+   rescued by a light halo), the halo over a quiet ramp, and this.
+
+   THIS IS THE FILM'S OWN ANSWER, ALREADY WRITTEN TWICE. .fx-film-when and
+   .fx-film-scan figcaption both put text that lands on the map onto paper,
+   and the second one states the reason: *"grey mono over a city of roofs and
+   street trees is unreadable at any size... it gets the same paper the page is
+   on, so it reads as part of the document."* The narration plate was the one
+   piece of chrome still solving it with fog. It gets the same paper, the same
+   hairline and the scan card's own shadow, so on shot 5 the line and the
+   scanned leaf read as two documents of one material.
+
+   9.0 % washed against 23.4 %, and the washed region is now the card's own
+   rectangle instead of a haze with no edge: the reader can see where the
+   picture stops and the page begins, which is the whole difference between a
+   plate and a bleach. */
+.fx-film-plate{position:absolute;left:44px;bottom:74px;max-width:min(58ch,52vw);
+  background:rgba(250,250,247,.93);border:1px solid rgba(22,19,16,.20);
+  box-shadow:0 14px 34px rgba(22,19,16,.16),0 2px 5px rgba(22,19,16,.10);
+  padding:17px 22px 19px}
 .fx-film-year{font-family:var(--f-disp,Georgia,serif);font-weight:700;letter-spacing:-.04em;
   line-height:.9;font-size:clamp(40px,4.4vw,62px);font-variant-numeric:tabular-nums;
   margin:0 0 12px}
@@ -1120,7 +1141,6 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
   .fx-film-bar{height:30px}
   .fx-film-cite{padding-bottom:8px;padding-top:8px}
   .fx-film-ctl button{padding:12px 16px}
-  .fx-film-scrim{-webkit-mask-image:none;mask-image:none}
 }
 `;
 
@@ -1183,7 +1203,6 @@ function FilmChrome({
   return (
     <div data-film-chrome="" data-paused={paused ? "1" : "0"}>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      <div className="fx-film-scrim" />
 
       {scan ? (
         <figure className="fx-film-scan">

@@ -3752,3 +3752,218 @@ it was missing. `out-p6/t.png`.
   built, and it is not built because it has not been confirmed.
 - Shot 3's colonnade wings are still fabric rows of sash windows (§27.3.2).
 - The label soup on shots 4 and 11 is still the biggest editorial question.
+
+## 29 · Block M1h, 2026-08-25 — the scrim, the four streets, and the number three lines below our highlight
+
+Taking over from M1g. `:3100` and production are both on `294f23ca`. Three
+items, in the order the coordinator set them.
+
+### 29.1 The scrim bleaches a fifth of the frame — measured against a control
+
+The brief's first item, in the coordinator's words: *"a fifth of every frame is
+currently being bleached to make text legible."* Before naming a treatment, the
+area. `.parity/q1scrim.py` is an ablation with a control row: the SAME
+millisecond of the SAME shot, shot twice at `:3100`, once as shipped and once
+with `.fx-film-scrim{display:none}` injected. Everything else is identical, so
+every pixel that differs is the scrim and nothing else.
+
+1440x900, each shot at 62 % of its own hold. `ΔL` is the luminance the scrim
+ADDS, out of 255:
+
+```
+ #  id             year   touched%  washed%  topRow  topFrac  meanΔL  maxΔL
+ 1  burn           1906     34.7%    21.0%     470    0.522    36.0   192.0
+ 2  rebuild        1911     39.7%    21.6%     470    0.522    35.1   196.5
+ 3  palace         1915     40.6%    23.2%     470    0.522    47.0   157.1
+ 4  bridges        1936     39.6%    18.4%     470    0.522    25.5   180.8
+ 5  japantown      1942     33.8%    22.6%       0    0.000    59.9   200.9
+ 6  charter        1945     40.1%    27.9%     471    0.523    60.5   192.8
+ 7  freeways       1959     34.9%    24.0%     471    0.523    47.2   232.4
+ 8  pyramid        1972     41.4%    29.9%     471    0.523    66.1   199.4
+ 9  embarcadero    1991     39.8%    22.8%     470    0.522    51.6   213.1
+10  mission-bay    2018     39.6%    26.5%     470    0.522    58.5   227.1
+11  face           2019     40.4%    19.2%     471    0.523    27.2   188.4
+
+    mean over eleven:  touched 38.6 %   washed 23.4 %
+```
+
+**It is not a fifth of the frame. It is 23.4 % washed and 38.6 % touched, and it
+reaches to row 470 of 900 — the scrim starts at the vertical MIDDLE of the
+frame.** `touched` is ΔL > 2; `washed` is ΔL > 24, which is about where a drawn
+street stops reading against the ground.
+
+Down the frame, averaged over the eleven — the share of each band's pixels that
+are washed:
+
+```
+   y  50- 55%    0.0%        y  75- 80%   59.6%
+   y  55- 60%    5.9%        y  80- 85%   60.1%
+   y  60- 65%   43.2%        y  85- 90%   60.3%
+   y  65- 70%   56.9%        y  90- 95%   63.0%
+   y  70- 75%   59.8%        y  95-100%   58.8%
+```
+
+**Below 65 % of frame height, three pixels in five are bleached, all the way to
+the bottom edge.** That is the bottom third of the frame at 60 % width, not a
+gradient tail. The cause is in the CSS's own numbers: `height: 48%` with the
+ramp at `.97` for its first 55 % — so **26 % of the frame's height is under a
+97 %-opaque white before the falloff even begins**, and the horizontal mask
+holds full opacity to 46 % of the width.
+
+### 29.2 The Japantown outline: the clip is right and the SOURCE has two holes
+
+The brief: *"the quadrilateral's bottom edge is two short disconnected segments
+with a gap between them, and the left edge stops short of meeting them. Print
+which segments survive the clip before changing anything."*
+
+`.parity/q2japan.py` re-runs `district_outline`'s own arithmetic and prints
+every kept segment in geographic order along each street, so a gap shows as a
+gap.
+
+```
+  ELLIS       6 kept of 28      drawn 593 m
+  CALIFORNIA  6 kept of 88      drawn 724 m
+  GOUGH       8 kept of 47      drawn 727 m
+  FILLMORE    8 kept of 72      drawn 728 m
+```
+
+**Three of the four are contiguous chains. The clip is not dropping anything.**
+Gough runs 37.783400 → 37.789952 without a break; Fillmore runs 37.782350 →
+37.788906 without a break; California runs −122.433840 → −122.425616 without a
+break. Each meets its two corners.
+
+**Ellis does not, and it is the published centreline that is broken.** Walked
+west to east in `geo/cache/streets.json`, layer `STREETS`:
+
+```
+  run 0   -122.441340 .. -122.434162    632 m
+  run 1   -122.430798 .. -122.429825     86 m   <<< HOLE  296 m
+  run 2   -122.428823 .. -122.405831   2023 m   <<< HOLE   88 m
+```
+
+**Those two holes are exactly the two defects on the frame.** The 88 m one is
+the gap between the two short segments; the 296 m one is why the bottom edge
+stops 150 m short of Fillmore.
+
+**And the 296 m hole is not a hole.** The name ELLIS appears on 26 rows in layer
+`STREETS` and on **two more in layer `PRIVATE`**, which `district_outline`'s
+`r.get("layer") == "STREETS"` throws away:
+
+```
+  cnn 5186000  ELLIS ST  PRIVATE  accepted False   -122.430798 -> -122.431914
+  cnn 5187000  ELLIS ST  PRIVATE  accepted False   -122.432515 -> -122.431985
+```
+
+`5187000`'s west end is `(-122.432515384, 37.782349635)`. Fillmore's south end
+is `(-122.432515, 37.782350)`. **They are the same published vertex** — so the
+Ellis×Fillmore corner §21.6 extrapolated as *"the only extrapolated number in
+this file"* is a published crossing after all, and it was only ever missing
+because the two rows carrying it are filed under a different layer.
+
+With both layers read, Ellis inside the district is:
+
+```
+  -122.432515 .. -122.431985     47 m
+  -122.431914 .. -122.429825    184 m   <<< HOLE   6.2 m
+  -122.428823 .. -122.405831   2023 m   <<< HOLE  88.2 m
+```
+
+The 88.2 m hole is bracketed by HOLLIS (−122.430051) and QUICKSTEP (−122.427943)
+and contains INCA (−122.428985); **BUCHANAN, which should cross Ellis at about
+−122.4290, is not in the crossing list at all.** Nothing published, on any
+layer, under any name, lies on Ellis's alignment inside it. That gap is real in
+the source.
+
+### 29.3 The scrim is gone and the copy is on paper
+
+Four treatments were shot on the real frames at `:3100` and looked at —
+`.parity/q3cand.py`, `out-q3/`. Each is measured against the SAME control
+(`.fx-film-scrim{display:none}`) on the SAME millisecond, so the rows compare.
+
+```
+  shot         treatment      touched%  washed%  topFrac
+  bridges      a-ship            39.6%    18.4%    0.522
+  bridges      c-tight           20.1%     3.2%    0.666
+  bridges      d-plate            7.9%     6.1%    0.699
+  bridges      e-halo             1.9%     0.2%    0.729
+  bridges      f-halo-ramp       13.6%     0.4%    0.729
+  pyramid      a-ship            41.4%    29.9%    0.523
+  pyramid      c-tight           22.7%    13.8%    0.666
+  pyramid      d-plate            8.7%     8.7%    0.680
+  pyramid      e-halo             3.9%     1.7%    0.710
+```
+
+**The halo wins the table and loses the frame.** At 0.2-2 % washed it is the
+cheapest treatment by a factor of ten, and on shot 4 it is lovely — Lakeshore,
+Oceanview/Merced/Ingleside, Excelsior, Visitacion Valley, Geneva Ave and the
+Zoo all come back and the sentence still reads. **On shot 8 it fails**
+(`out-q3/s08-e-halo.png`): the ground under the plate there is dark grey
+rooftops, the copy is `#161310`, and dark type on a dark roof is not rescued by
+a light halo. A treatment that works on nine frames and fails on two is not a
+treatment for this film. `c-tight` and `f-halo-ramp` are still fogs, at half the
+size.
+
+**So the copy goes on paper, which is the film's own answer written twice
+already.** `.fx-film-when` and `.fx-film-scan figcaption` both put text that
+lands on the map onto paper, and the caption states the reason in its own
+header: *"ON A PLAQUE, BECAUSE IT LANDS ON THE MAP … it gets the same paper the
+page is on, so it reads as part of the document."* The narration plate was the
+last piece of chrome still solving it with fog. It gets the same paper
+(`rgba(250,250,247,.93)`), the same hairline, and the scan card's own shadow, so
+on shot 5 the line and the scanned leaf read as two documents of one material.
+`.fx-film-scrim` is deleted — the element, the rule and the mobile override.
+
+Measured over all eleven at `:3000` with the shipped rule, the treated area is
+now the card's own rectangle and nothing else:
+
+```
+  1440x900   mean card share of frame   9.9 %   all inside the frame
+  1920x1080                             6.3 %   all inside the frame
+  1280x800                             11.2 %   all inside the frame
+   820x1180                            16.4 %   all inside the frame
+   390x844                             26.9 %   all inside the frame
+```
+
+**23.4 % of the frame washed, to a 9.9 % card at 1440x900** — and the difference
+that matters is not the number: the reader can now see where the picture stops
+and the page begins.
+
+**The progress hairline was going to get a 22 px paper backing and does not,
+because the control said it did not need one.** With no scrim, `out-q3/
+s08-b-none.png` shows the bar's black fill reading cleanly against Chinatown's
+dark roofs — the darkest ground under the bar in the film. The backing was
+measured, looked at, and dropped: it was a wash across the bottom 2.4 % of every
+frame, which is the thing being removed.
+
+### 29.4 The four streets, closed
+
+`district_outline` now reads `layer in ("STREETS", "PRIVATE")`. That adds
+**exactly two segments, both on Ellis, and none to the other three** — the
+control row that says the change is the one intended — and it closes the
+Ellis×Fillmore corner on a published crossing, so the guard that allows one
+extrapolated corner no longer fires and the docstring's claim about *"the only
+extrapolated number in this file"* is withdrawn.
+
+The 88.2 m hole and a 6.2 m one are closed by `bridge_gaps`, **declared as a
+drawing convention and printed every time it fires**, in the same class as the
+suspender spacing and the leg size `encode_city_chunks.py` declares. It joins
+two endpoints of the SAME named street in that street's own along-axis order,
+across a hole no longer than one Western Addition block (`DISTRICT_GAP_CAP_M =
+120`, against blocks of 66, 72, 77, 109 and 145 m on these streets), and prints
+anything longer as LEFT OPEN. Ellis ran from Fillmore to Gough in 1942 — that is
+what makes it usable as a side of the boundary the Board named — and the hole
+is in the 2026 centreline file, not in 1942.
+
+```
+  the 1942 district: ELLIS — a  6.2 m hole in the published centreline, closed
+    between its own endpoints (-122.431985,37.782416) and (-122.431914,37.782424)
+  the 1942 district: ELLIS — a 88.2 m hole in the published centreline, closed
+    between its own endpoints (-122.429825,37.782704) and (-122.428823,37.782827)
+  the 1942 district: ELLIS 8+2 · CALIFORNIA 6 · GOUGH 8 · FILLMORE 8
+```
+
+`film.json` rebuilt: the ONLY things that moved are `shots[4].build.w` 28 → 32
+and the district's centroid by 0.4 m. Every other byte is identical, checked
+key by key.
+
+`out-q5/s05-dev-fixed.png`: four continuous streets meeting at four corners.

@@ -678,6 +678,65 @@ def _in_poly(pt, poly) -> bool:
     return inside
 
 
+# One Western Addition block, in metres. The blocks this clip crosses measure
+# 66, 72, 77, 109 and 145 m along their own streets, so a cap here admits a
+# one-block hole in a published centreline and refuses a two-block one.
+DISTRICT_GAP_CAP_M = 120.0
+
+
+def bridge_gaps(name: str, segs: list, cap_m: float) -> list:
+    """Close a hole in ONE published centreline, between two of its OWN
+    published endpoints. A declared drawing convention, in the same class as
+    the suspender spacing and the leg size `encode_city_chunks.py` declares —
+    not data, and it is printed every time it fires.
+
+    WHY IT IS NOT AN INVENTION. Ellis Street ran from Fillmore to Gough in
+    1942; that is what makes it usable as one side of the boundary the
+    resolution names, and the resolution naming it is the record. The hole is
+    in the 2026 centreline file, not in 1942: DataSF publishes Ellis in three
+    runs, and inside this district the break is 88.2 m of one block at
+    Buchanan. Leaving it open draws a boundary the Board did not describe and
+    tells the reader nothing about why; the shot's whole point is that the
+    record names four streets and the map draws those four streets.
+
+    WHAT IT WILL NOT DO. It joins two endpoints of the SAME named street, in
+    that street's own along-axis order, and only across a hole no longer than
+    one block. Anything longer is left open and printed as left open, which is
+    the case where the missing stretch is a real absence rather than a gap in
+    a file.
+    """
+    if not segs:
+        return []
+    dx = max(abs(b[0] - a[0]) for a, b in segs) * 88_000.0
+    dy = max(abs(b[1] - a[1]) for a, b in segs) * 111_000.0
+    ax = 0 if dx >= dy else 1
+    per = 88_000.0 if ax == 0 else 111_000.0
+    runs: list = []
+    for lo, hi in sorted((min(a[ax], b[ax]), max(a[ax], b[ax])) for a, b in segs):
+        if runs and lo <= runs[-1][1] + 1e-12:
+            runs[-1][1] = max(runs[-1][1], hi)
+        else:
+            runs.append([lo, hi])
+    pts = [p for s in segs for p in s]
+
+    def vertex_at(v):
+        return min(pts, key=lambda q: abs(q[ax] - v))
+
+    out = []
+    for i in range(1, len(runs)):
+        gap = (runs[i][0] - runs[i - 1][1]) * per
+        a, b = vertex_at(runs[i - 1][1]), vertex_at(runs[i][0])
+        if gap <= cap_m:
+            print(f"  the 1942 district: {name} — a {gap:.1f} m hole in the "
+                  f"published centreline, closed between its own endpoints "
+                  f"({a[0]:.6f},{a[1]:.6f}) and ({b[0]:.6f},{b[1]:.6f})")
+            out.append((a, b))
+        else:
+            print(f"  the 1942 district: {name} — a {gap:.1f} m hole LEFT OPEN, "
+                  f"over the {cap_m:.0f} m cap")
+    return out
+
+
 def district_outline(names: list[str]) -> tuple[list, tuple[float, float]]:
     """The four streets the 1942 resolution names, clipped to the quadrilateral
     their own crossings make.
@@ -694,21 +753,43 @@ def district_outline(names: list[str]) -> tuple[list, tuple[float, float]]:
     which is 210 metres. The box's south edge is Ellis's latitude AT GOUGH, so
     every Ellis segment west of Gough is below it and every one was clipped.
 
-    THREE OF THE FOUR CORNERS ARE PUBLISHED CROSSINGS. The fourth is not:
-    Ellis's centreline is interrupted between longitude -122.430798 and
-    -122.434162, which is exactly the block where Fillmore would cross it, and
-    the redevelopment this very resolution asked Washington for is what cut it.
-    That corner is taken as the intersection of the two streets' own published
-    ALIGNMENTS — the nearest Ellis segment and the nearest Fillmore segment,
-    each extended as a line — so it is read off both streets and invented from
-    neither. It is the only extrapolated number in this file and it is named.
+    ALL FOUR CORNERS ARE PUBLISHED CROSSINGS, AND THE FOURTH ONLY LOOKED
+    MISSING BECAUSE OF A LAYER FILTER. This function used to read
+    `layer == "STREETS"` and nothing else, and it reported the Ellis x Fillmore
+    corner as unreachable — it was extrapolated from the two streets'
+    alignments, and it was described here as the only extrapolated number in
+    the file. It is not. The name ELLIS is on 26 rows in layer STREETS and on
+    TWO MORE in layer PRIVATE:
+
+        cnn 5186000  ELLIS ST  PRIVATE  -122.430798 -> -122.431914
+        cnn 5187000  ELLIS ST  PRIVATE  -122.432515 -> -122.431985
+
+    and `5187000`'s west end, (-122.432515384, 37.782349635), is Fillmore's own
+    south endpoint. So the corner is a published crossing; the two rows carrying
+    it were simply filed under a different layer, because the City does not own
+    that stretch of roadway. It is still Ellis Street's published centreline and
+    the resolution names Ellis Street. Reading both layers adds exactly two
+    segments, both of them on Ellis, and none to the other three.
+
+    The extrapolation below is kept as the guard it always was — one corner
+    may be reconstructed from two alignments and two may not — and on today's
+    input it does not fire. `.parity/q2japan.py` prints what survives.
+
+    WHAT IS STILL A GAP, AND IS LEFT AS ONE. With both layers read, Ellis inside
+    the district still has an 88.2 m hole between longitude -122.429825 and
+    -122.428823. Nothing published, on any layer, under any name, lies on
+    Ellis's alignment inside it: the crossings either side are HOLLIS and
+    QUICKSTEP, and BUCHANAN, which should cross Ellis at about -122.4290, is not
+    in the crossing list at all. `bridge_gaps` below closes it, as a declared
+    drawing convention and not as data — see its own docstring.
     """
     S = _streets()
 
     def segs(nm):
         out = []
         for r in S:
-            if r.get("street", "").upper() == nm and r.get("layer") == "STREETS" \
+            if r.get("street", "").upper() == nm \
+                    and r.get("layer") in ("STREETS", "PRIVATE") \
                     and r.get("line"):
                 c = r["line"]["coordinates"]
                 out += [(c[i], c[i + 1]) for i in range(len(c) - 1)]
@@ -756,15 +837,20 @@ def district_outline(names: list[str]) -> tuple[list, tuple[float, float]]:
         mx, my = 88_000.0, 111_000.0
         grown.append((x + dx / d * OUT_M / mx, y + dy / d * OUT_M / my))
 
-    lines, per = [], {}
+    lines, per, bridged = [], {}, {}
     for nm in names:
-        n0 = 0
-        for (x1, y1), (x2, y2) in by[nm]:
-            if _in_poly((x1, y1), grown) and _in_poly((x2, y2), grown):
-                lines.append([[round(x1, 6), round(y1, 6)],
-                              [round(x2, 6), round(y2, 6)]])
-                n0 += 1
-        per[nm] = n0
+        kept = [((x1, y1), (x2, y2)) for (x1, y1), (x2, y2) in by[nm]
+                if _in_poly((x1, y1), grown) and _in_poly((x2, y2), grown)]
+        # the published centreline first, then the holes in it, so a reader of
+        # the payload sees the record before the convention
+        for a, b in kept:
+            lines.append([[round(a[0], 6), round(a[1], 6)],
+                          [round(b[0], 6), round(b[1], 6)]])
+        joins = bridge_gaps(nm, kept, DISTRICT_GAP_CAP_M)
+        for a, b in joins:
+            lines.append([[round(a[0], 6), round(a[1], 6)],
+                          [round(b[0], 6), round(b[1], 6)]])
+        per[nm], bridged[nm] = len(kept), len(joins)
     if not lines:
         sys.exit("the 1942 district clipped to nothing")
     # EVERY NAMED STREET HAS TO REACH THE FRAME. The box version passed this
@@ -775,7 +861,8 @@ def district_outline(names: list[str]) -> tuple[list, tuple[float, float]]:
         sys.exit(f"the 1942 district: {', '.join(empty)} clipped to nothing — "
                  "the resolution names four streets and the film must draw four")
     print(f"  the 1942 district: " +
-          " · ".join(f"{nm} {per[nm]}" for nm in names) +
+          " · ".join(f"{nm} {per[nm]}" + (f"+{bridged[nm]}" if bridged[nm] else "")
+                     for nm in names) +
           (f" · {missing[0][0]}x{missing[0][1]} corner extrapolated"
            if missing else ""))
     return lines, (cx, cy)
