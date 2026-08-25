@@ -697,7 +697,44 @@ export interface PlaceLabel {
   /** how big the thing is, world metres — see `spanOfFootprint`/`spanOfRing` */
   readonly spanM: number;
   readonly cls: PlaceClass;
-  /** the year it can first be named, or undefined for every year */
+  /**
+   * The year it can first be named, or undefined for every year.
+   *
+   * ── §NOYEAR: 65535 IS NOT A YEAR, AND THAT IS THE POINT ─────────────────
+   *
+   * `base/marks.json` ships `yr = 65535` for a label **no published field
+   * dates**, and this gate then does the right thing with it unchanged: on a
+   * dated frame `f.year < 65535` is always true so the name is held, and on the
+   * un-clocked map — which is where the page lands, `renderer.year` stays
+   * `undefined` until the rail is touched or the film runs — the gate does not
+   * apply and the name is written.
+   *
+   * WHY, and it is the largest single correction this layer has taken. **934 of
+   * 2,199 labels used to assert they existed in 1906 or earlier**: 399 carried
+   * year 0, which this pass reads as *every year*, and 326 carried exactly
+   * 1906, which is `SCRUB_MIN` — the map's own floor and `build_bldg.py`'s
+   * `FLAG_NOYEAR` fallback — not a date any publisher wrote. So the frame said
+   * *Palace Of Fine Arts* (built for the 1915 Exposition), *San Francisco Zoo*
+   * (1929), *Opera House* (1932) and *Sigmund Stern Recreation Grove* (the land
+   * was given in 1931) over 1906 dune, and one of the film's own shots is about
+   * the Palace of Fine Arts surviving 1915.
+   *
+   * **A shape may be undated on this map and a NAME may not.** The undated
+   * street trees, the canopy and the 2,916 undated footprints are all declared,
+   * counted and drawn in every year (`time.ts`) — because a shape asserts
+   * nothing a reader can check. A name over a dated frame is a sentence with a
+   * date in it, so the treatment splits them: `parks.qc`'s polygon still draws
+   * at 1906 and the name waits.
+   *
+   * It is narrower than "hold everything before 1907", which would delete true
+   * things — the Ferry Building really is 1898 and The Old U.S. Mint 1869, both
+   * off `97yj-54sx`'s own `yearbuilt`, and both still draw. What is held is a
+   * year that was BORROWED from the ground under the place or DEFAULTED to the
+   * floor, and `base/marks.json`'s `yb` column says which of the six bases each
+   * row's year rests on. `pipeline/scripts/us_sf_places/emit_places.py` §HELD
+   * and §YBASIS carry the derivation; DRAW.md §33.8b carries the evidence that
+   * no published City dataset can date a park.
+   */
   readonly year?: number;
   /**
    * THE FIRST YEAR THIS NAME IS NO LONGER DRAWN, or undefined where it never

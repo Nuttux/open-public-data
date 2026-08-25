@@ -592,3 +592,163 @@ turned up independently this session in the street data: 381 centrelines in
 Hunters Point, Treasure Island, Yerba Buena and Fort Mason draw nothing because
 their City classification code is null. **A gate written against a City
 attribute is blind on ground the City does not publish.**
+
+---
+
+## Addendum 2 — §HELD: 934 of 2,199 labels said they existed in 1906, and 890 of them could not know that
+
+Daniel, having read the shipped `base/marks.json` himself:
+
+> "Of 2,199 map labels, **934 assert they exist in 1906 or earlier** — 399
+> carry year 0 (drawn in every year) and 326 carry exactly 1906, which is the
+> scrub floor, not a fact… The Palace of Fine Arts case contradicts the film."
+
+### What the sample looked like
+
+```
+Opera House               1906     the War Memorial opera house opened 1932
+Palace Of Fine Arts       1906     built for the 1915 Panama-Pacific Exposition
+San Francisco Zoo         1906     opened 1929
+John McLaren Park         1906     laid out in the 1920s
+Murphy Windmill           1906     1908
+Sigmund Stern Rec Grove   1906     the Sterns gave the land in 1931
+```
+
+One of the film's own shots is about the Palace of Fine Arts surviving the
+1915 Exposition, and the map was writing its name on the 1906 frame.
+
+### §3's last paragraph was the defect, and it was written in good faith
+
+> *"398 of the 2,192 are named in every year (`yr = 0`) … the map draws an
+> undated footprint in every year too. So the name appears exactly when the map
+> draws the thing it names, which is the only claim being made."*
+
+That argument is sound for a **shape** and false for a **name**. A polygon on
+1906 dune asserts nothing a reader can check — the ground was there. A NAME on
+a dated frame is a sentence with a date in it. The map's general rule (a thing
+the record cannot date is declared, counted and drawn in every year — undated
+street trees, the canopy, the 2,916 `FLAG_NOYEAR` footprints, `time.ts`) has
+one exception and this is it.
+
+### The two ways the floor got in, and they looked like two bugs
+
+| shape | rows | what it is |
+|---|---:|---|
+| `yr = 0` | 399 | no year at all; the renderer reads it as *every year* |
+| `yr = 1906` | 326 | `SCRUB_MIN`, arriving as `build_bldg.py`'s `FLAG_NOYEAR` fallback and read back out as if a publisher had said it |
+
+`Parkside Square` and `Sunset Rec Center` came out of the same register on the
+same day and got 0 and 1906 respectively. Same ignorance, written two ways,
+neither of them a date.
+
+### Half the register could not say where its year came from
+
+`yrule` answered **`0 — already shipped in base/marks.json` for 1,206 of
+2,199 rows**, because `shipped()` reads `marks-data.js` and that file was
+written without the rung. That is a provenance for the ROW and not for its
+YEAR, and it also silently swallowed §GGB's rung 5 — the Golden Gate Bridge is
+one of the inherited rows, so the correction that moved it from 1933 to 1937
+never reached the chunk's `yrule` column at all.
+
+`_year_basis()` recovers the rung for all 1,205 from the same two published
+files the ladder itself read, and **rung 0 is now empty**:
+
+* a row that resolved to a footprint and whose year is **not** that footprint's
+  year cannot have come off the footprint, and rung 1 is the only rung above
+  rung 2 — so it is the register's own `yearbuilt`. Traced: Ferry Building 1898
+  against a 1896 roll, The Old U.S. Mint 1869 against 1914, Coit Tower 1934
+  against 1952. All three correct.
+* a row that resolved to a footprint and **did** take its year is rung 2, and
+  `bldg-data.js`'s `u & FLAG_NOYEAR` says whether that footprint is dated at
+  all.
+* a row with **no** footprint took a ground rung, unless its register publishes
+  a construction year — and of the three registers in the inherited set only
+  `97yj-54sx` does (DRAW.md §33.8b read every column of the other two). So the
+  split is by register and it is exact.
+
+Two files are used and each only for what it is authoritative about: the mock's
+`fpidx.pkl` for *which number did this row copy* (it is the number the ladder
+copied) and `bldg-data.js`'s `u` for *is that footprint dated at all*. They
+disagree about the roll year on 7,559 of 166,166 footprints, which is why they
+are not used interchangeably; they share one index space, verified by row count
+and by 400 sampled centroids agreeing to within a metre.
+
+### What each year rests on, all 2,199
+
+```
+  330  the register's own published year of construction        KNOWN
+ 1078  the assessor roll year of the footprint it stands on     KNOWN
+    1  this repository's own seed, with the reason it states    KNOWN
+  224  NONE — the 1906 no-year fallback of the footprint         held
+  167  NONE — a statement about the GROUND, not the thing named  held
+  399  NONE — no published field gives it a year at all          held
+```
+
+**1,409 known · 790 held.** And of the 326 rows sitting on exactly 1906,
+**only 44 are genuinely dated 1906** — 36 off an assessor roll, 8 off a
+register. The other 282 are the floor.
+
+### The treatment: held off the clock, not deleted
+
+A held row ships `yr = YR_NONE = 65535`, which is not a year and cannot be read
+as one. `labels.ts`'s existing gate then does the right thing with no client
+change at all:
+
+```
+the un-clocked map (where the page lands)   →  the name is written
+any year on the rail · every frame of the film  →  the name is held
+```
+
+Which is the sentence the record supports: *this register names this place; no
+published field says when.* The polygon draws at 1906 either way.
+
+**It is narrower than "hold everything before 1907"**, which would delete true
+things — the Ferry Building really is 1898 and the Old Mint 1869, and both
+still draw at 1906.
+
+### Measured on the real page, not argued
+
+Whole-city camera, place-name lane, `labels.ts`'s own `LPROBE`:
+
+| year | names written, before | after |
+|---|---:|---:|
+| 1906 | 26 | 13 |
+| 1915 | 26 | 14 |
+| 1932 | 26 | 15 |
+| 1960 | 26 | 16 |
+| 2020 | 26 | 16 |
+| **un-clocked** | **26** | **26** |
+
+The 1906 frame keeps Ferry Building, The Old U.S. Mint, Chronicle Building,
+Fairmont Hotel, Ghirardelli Square, Baker & Hamilton Building, Calvary
+Presbyterian Church, Oriental Warehouse, Notre Dame School and the piers, and
+loses Palace Of Fine Arts, San Francisco Zoo, San Francisco State University,
+Twin Peaks, Pine Lake Park and Mission Dolores Park. **It does not read as a
+blank**: the neighbourhood lane and the street lane carry the orientation at
+that camera and neither is touched, so PRESIDIO, GOLDEN GATE PARK, TWIN PEAKS,
+NOE VALLEY, BAYVIEW HUNTERS POINT, MARKET ST, GEARY BLVD and MISSION ST are all
+still on the 1906 frame.
+
+### One of Daniel's own examples did not survive, and it should be said out loud
+
+> "the Ferry Building (1898), the Old US Mint (1869), **the Dutch Windmill
+> (1902)** are correct and must keep drawing."
+
+The Ferry Building and the Old Mint keep drawing. **The Dutch Windmill does
+not.** Its year in this pipeline is the 1906 `FLAG_NOYEAR` fallback of the
+footprint it stands on — it comes from `nc68-ngbr`, which publishes no year of
+construction — so **no published field this pipeline reads says 1902**, and the
+honesty rule forbids typing it in. Murphy Windmill (1908) is the same. Both
+draw their shapes at 1906 and are named on the un-clocked map. If those two
+should carry their real years, the way to do it is `places_extra.json`'s seed
+rung, which requires a `why` beside the year — a source, not a recollection.
+
+### What is NOT here
+
+**No park was dated.** DRAW.md §33.6 and §33.8b opened all five candidate
+registers and read every column: `gtnh-hgvs`, `gtr9-ntp6` and `ib5c-xgwu` carry
+only GIS load stamps — `gtr9-ntp6.created_date`'s own description is *"timestamp
+from ArcGIS Online"* and its distribution is one ArcGIS write on 2025-12-18, 77
+rows in a single second — and `3nje-yn2u` and `8du2-b837` have no date column at
+all. `sf_place_candidates.json` has no date field either. **This addendum adds
+no year to anything; it removes years that were never there.**

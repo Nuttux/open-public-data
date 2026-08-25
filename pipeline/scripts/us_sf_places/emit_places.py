@@ -204,6 +204,7 @@ FIELD_SOURCE = {
     # authored name opens, so it points at the seed that states it.
     "yrTo": "place_seed",
     "yrule": "place_year",
+    "yb": "place_year",
     "fl": "place_a10",
     "src": "place_extent",
     "kind": "place_kind",
@@ -438,6 +439,247 @@ def hero_rows(pl: list[dict]) -> list[dict]:
 # carried a year, and `yr` then holds 1906 as a fallback rather than as a fact.
 # A seeded row may not take a year off a footprint flying it.
 FLAG_NOYEAR = 16
+
+# ── §HELD: A NAME IS A CLAIM AND A YEAR ON IT IS A SECOND ONE ───────────────
+#
+# THE BUG, measured on the shipped `base/marks.json`: of 2,199 labels, **934
+# assert they exist in 1906 or earlier — 399 carrying year 0, which the
+# renderer draws in every year, and 326 carrying exactly 1906.** Sampled, most
+# of those are false, and falsifiable by anyone who looks them up:
+#
+#     Opera House               1906     the War Memorial opera house opened 1932
+#     Palace Of Fine Arts       1906     built for the 1915 Exposition
+#     San Francisco Zoo         1906     opened 1929
+#     John McLaren Park         1906     laid out in the 1920s
+#     Sigmund Stern Rec Grove   1906     the Sterns gave the land in 1931
+#
+# **1906 is not a year here. It is `SCRUB_MIN`, the map's own floor**, arriving
+# by two routes: `build_bldg.py` writes it into `yr` beside `FLAG_NOYEAR` for a
+# footprint no parcel dates, and the year ladder's lower rungs then read it back
+# out as if a publisher had said it. `Parkside Square` came out of the same
+# register on the same day and got 0 instead — the same ignorance, written two
+# different ways, neither of them a date.
+#
+# **AND NO PUBLISHED CITY DATASET CAN FIX IT.** All five candidate park
+# registers were opened and every column read (DRAW.md §33.6, §33.8b): three
+# carry only GIS load stamps — `gtr9-ntp6.created_date`'s own description is
+# *"timestamp from ArcGIS Online"* and its distribution is one ArcGIS write on
+# 2025-12-18, 77 rows in a single second — and two have no date column at all.
+# There is no acquisition date to go and get.
+#
+# ── WHAT IS DONE ABOUT IT, AND WHY IT IS THE LABEL AND NOT THE SHAPE ────────
+#
+# **The polygon draws and the NAME is held.** A park shape on 1906 dune says
+# nothing a reader can check: the ground was there, and the map makes no claim
+# about it. A NAME on that shape is a dated assertion, and this map has a clock
+# under it, so a reader is entitled to read the frame's year as part of the
+# sentence. That is the one difference between this cohort and every other
+# undated cohort on the map — the undated street trees, the canopy, the 2,916
+# `FLAG_NOYEAR` footprints — all of which are declared, counted and drawn in
+# every year (`time.ts`). Those are shapes. This is a name.
+#
+# **HELD MEANS HELD OFF THE CLOCK, NOT DELETED.** `labels.ts`'s gate is
+# `p.year !== undefined && f.year !== undefined && f.year < p.year`, and the map
+# has no year until the reader gives it one — the page lands with
+# `renderer.year === undefined` and holds it there until the rail is touched or
+# the film runs. So a row carrying `YR_NONE`:
+#
+#     the un-clocked map (the page's own front door)  →  the name is written
+#     any year on the rail, and every frame of the film  →  the name is held
+#
+# which is exactly the sentence the record supports: *this register names this
+# place; no published field says when.* Nothing is lost from the default view,
+# and no name is asserted into a year no file reaches. Measured on the real
+# page: the 1906 whole-city frame goes from 26 place names to 13, keeps every
+# true one (Ferry Building 1898, The Old U.S. Mint 1869, Chronicle Building,
+# Fairmont Hotel, Ghirardelli Square) and loses every false one, while the
+# neighbourhood and street lanes — which carry the orientation at that camera —
+# are untouched.
+#
+# **AND IT IS NARROWER THAN "PRE-1907".** Holding every label older than 1907
+# would delete true things: the Ferry Building really is 1898 and the Old Mint
+# 1869, both off `97yj-54sx`'s own `yearbuilt`. What is held is a year that was
+# BORROWED or DEFAULTED, and which rung of the ladder each year came off is
+# already recorded per row. §YBASIS is that recording, made total.
+YR_NONE = 65535
+
+# THE VALUE IS NOT A YEAR AND CANNOT BE MISTAKEN FOR ONE, which is the whole
+# point — the defect being fixed is a floor value sitting in a year column
+# looking like a fact. 65535 is `u16`'s ceiling, it is outside the rail at both
+# ends (`SCRUB_MIN` 1906 … `SCRUB_MAX` 2025), and both encodings this file
+# writes clamp there already, so no reader has to be changed to see it. It
+# travels beside `yb`, below, which says in words why the row has no year.
+
+# ── §YBASIS: what each label's year actually rests on ───────────────────────
+# The ladder in `build_places.py` records a `y0rule` per row, but only for rows
+# it built: the 1,206 rows inherited from `base/marks.json` come through
+# `shipped()`, which reads `marks-data.js` — and that file was written WITHOUT
+# the rung, so more than half the register arrived saying only "already
+# shipped", which is a provenance for the ROW and not for its YEAR. This
+# recovers the rung for those rows from the same two published files the ladder
+# itself read, and then reduces all seven rungs to the only question the label
+# gate needs answered: **does this year rest on a statement about the thing
+# being named?**
+YBASIS = [
+    "the register's own published year of construction",
+    "the assessor roll year of the footprint the place stands on",
+    "this repository's own seed, with the reason it states",
+    "NONE - the 1906 no-year fallback of the footprint it stands on",
+    "NONE - a statement about the GROUND, not about the thing named",
+    "NONE - no published field gives it a year at all",
+]
+YB_KNOWN = (0, 1, 2)
+
+# `gtr9-ntp6` (Recreation and Parks Properties) and `nc68-ngbr` (City
+# Facilities) publish a name, an owner and a geometry. **Neither publishes a
+# year of construction or of acquisition** — DRAW.md §33.8b read every column of
+# both. So an inherited row from either of them that resolved to no footprint
+# cannot have taken rung 1, and its year is necessarily one of the two GROUND
+# rungs. That is what makes the recovery below exact rather than a guess.
+YEARLESS_REGISTERS = ("gtr9-ntp6", "nc68-ngbr")
+
+# The mock's own footprint index, which is what the year ladder READ. It is a
+# different file from the drawn building stream and the two disagree about the
+# roll year on 7,559 of 166,166 footprints, so each is used only for what it is
+# authoritative about: `fpidx` for *which year did this row take off the
+# footprint* (it is the number the ladder copied), and `bldg-data.js`'s `u` for
+# *is that footprint dated at all* (`FLAG_NOYEAR` is `build_bldg.py`'s own
+# sentinel, and `time.ts` counts 2,916 of them). Verified to share one index
+# space: same row count, and 400 sampled centroids agree to within a metre.
+FPIDX = ROOT / "scratchpad" / "sf-city-anim" / "marks" / "cache" / "fpidx.pkl"
+
+
+def _year_basis(pl: list[dict]) -> tuple[list[int], list[int], dict]:
+    """Per row: which YRULE rung its year came off, and what that rests on.
+
+    Returns `(yrule column, ybasis column, report)`. **`y0` is not touched
+    here** — this only says what each year IS. `hold_unknown_years` acts on it.
+
+    THE RECOVERY, and every branch of it is a published file rather than an
+    inference about one:
+
+    * A row the ladder built carries `y0rule` and needs no recovery at all.
+      Rung 2 is the only one that can be a floor in disguise, and it is one
+      exactly when the footprint it read flies `FLAG_NOYEAR` **and** the row
+      copied that footprint's year rather than overriding it.
+    * An inherited row that resolved to a footprint and whose year is NOT that
+      footprint's year cannot have come off the footprint, and rung 1 is the
+      only rung above rung 2 — so it is the register's own year. Traced on the
+      rows themselves: Ferry Building 1898 against a 1896 roll, The Old U.S.
+      Mint 1869 against 1914, Coit Tower 1934 against 1952. All three are
+      `97yj-54sx` `yearbuilt`, and all three are correct.
+    * An inherited row that resolved to a footprint and DID take its year is
+      rung 2 — a real assessor roll year, or the 1906 fallback, and `u` says
+      which.
+    * An inherited row with no footprint took a GROUND rung, unless its register
+      publishes a construction year. Only `97yj-54sx` does, so the split is by
+      register and it is exact.
+    """
+    import pickle
+
+    from _bldgsrc import read_bldg          # noqa: E402 — the encoder's reader
+
+    meta = pickle.loads(FPIDX.read_bytes())[0]
+    B = read_bldg()
+    if len(meta) != B["n"]:
+        raise SystemExit(
+            f"the footprint index holds {len(meta):,} rows and the drawn "
+            f"building stream {B['n']:,}. They are indexed by the same `bi` "
+            f"and a recovery that reads one for the other is only sound while "
+            f"they are the same length. Re-run the encoders together.")
+
+    yix = {y: i for i, y in enumerate(YRULE)}
+    rung: list[int] = []
+    basis: list[int] = []
+    recovered = 0
+    for p in pl:
+        bi = p.get("bi")
+        bi = None if bi is None or bi < 0 else int(bi)
+        # the number the ladder would have copied off the footprint …
+        took = int(meta[bi][6]) if bi is not None else None
+        # … and whether that footprint is dated at all
+        undated = bi is not None and bool(int(B["u"][bi]) & FLAG_NOYEAR)
+        y0 = int(p.get("y0") or 0)
+        rule = p.get("y0rule")
+
+        if rule is None:
+            # INHERITED FROM `marks-data.js`, WHICH DROPPED THE RUNG.
+            recovered += 1
+            if bi is not None:
+                rule = YRULE[1] if y0 != took else YRULE[2]
+            elif p["src"] in YEARLESS_REGISTERS:
+                rule = YRULE[3] if y0 else YRULE[4]
+            else:
+                rule = YRULE[1] if y0 else YRULE[4]
+
+        r = yix[rule]
+        if r == 1 or r == 5:
+            b = 0                       # the register's own year, or the
+        elif r == 2:                    # structure's completion year (§GGB)
+            b = 3 if (undated and y0 == took) else 1
+        elif r == 3:
+            b = 4
+        elif r == 4:
+            b = 4 if y0 else 5
+        elif r == 6:
+            b = 2
+        else:
+            raise SystemExit(f"{p['n']!r}: rung {r} has no basis")
+        if b in YB_KNOWN and not y0:
+            # A KNOWN RUNG WITH NO YEAR ON IT IS STILL NO YEAR. Nothing hits
+            # this today; it exists so a future register that publishes an
+            # empty `yearbuilt` cannot smuggle a 0 past the gate as a fact.
+            b = 5
+        rung.append(r)
+        basis.append(b)
+
+    rep = {
+        "rungs_recovered_from_evidence": recovered,
+        "byRung": {YRULE[i]: rung.count(i) for i in range(len(YRULE))},
+        "byBasis": {YBASIS[i]: basis.count(i) for i in range(len(YBASIS))},
+        "known": sum(1 for b in basis if b in YB_KNOWN),
+        "held": sum(1 for b in basis if b not in YB_KNOWN),
+    }
+    return rung, basis, rep
+
+
+def hold_unknown_years(pl: list[dict], basis: list[int]) -> dict:
+    """Give every label whose year is borrowed or defaulted `YR_NONE`. §HELD.
+
+    THE COUNTS THIS TURNS OVER ARE THE POINT OF THE WHOLE PASS, so they are
+    reported per year rather than as one total: what the reader stops being
+    told at 1906, at 1925 and at 1960.
+    """
+    was = [int(p.get("y0") or 0) for p in pl]
+    held = []
+    for p, b, y in zip(pl, basis, was):
+        if b in YB_KNOWN:
+            continue
+        p["y0"] = YR_NONE
+        held.append((p["n"], y))
+
+    def eligible(y: int, yr: int) -> bool:
+        """what `labels.ts` would let onto the frame for year `y`"""
+        return yr == 0 or yr <= y
+
+    rep = {
+        "held": len(held),
+        "of": len(pl),
+        # the two shapes the floor arrived in, named separately because they
+        # looked like different bugs and are one
+        "was_year_0": sum(1 for _, y in held if y == 0),
+        "was_1906": sum(1 for _, y in held if y == 1906),
+        "was_other_year": sum(1 for _, y in held if y and y != 1906),
+        "no_longer_written_at": {
+            str(y): sum(1 for _, w in held if eligible(y, w))
+            for y in (1906, 1925, 1960, 2020)
+        },
+        # `pl` is already in the order the ink budget is spent, so the head of
+        # this list is what a reader actually stops seeing first
+        "held_first_24": [p["n"] for p, b in zip(pl, basis)
+                          if b not in YB_KNOWN][:24],
+    }
+    return rep
 
 
 def seed_rows(pl: list[dict]) -> list[dict]:
@@ -675,6 +917,22 @@ def main() -> int:
         q["y0rule"] = YRULE[5]
     rep["structure_year_applied"] = {q["n"]: ggb_yr for q in ggb_rows}
 
+    # ── §HELD. WHAT EACH YEAR RESTS ON, AND THE ONES THAT REST ON NOTHING ───
+    # This runs LAST of the year passes and it has to: §GGB above rewrites a
+    # year and its rung, and the basis is a reading of the final `y0rule`, not
+    # of the one `build_places.py` happened to write first.
+    yrule_col, yb_col, yb_rep = _year_basis(pl)
+    rep["year_basis"] = yb_rep
+    rep["held_labels"] = hold_unknown_years(pl, yb_col)
+    print(f"year basis: {yb_rep['known']:,} known, {yb_rep['held']:,} held "
+          f"({yb_rep['rungs_recovered_from_evidence']:,} rungs recovered from "
+          f"the footprint files)")
+    for k, v in yb_rep["byBasis"].items():
+        print(f"   {v:5d}  {k}")
+    print("names no longer written on a dated frame: "
+          + ", ".join(f"{y} {n:,}" for y, n
+                      in rep["held_labels"]["no_longer_written_at"].items()))
+
     # WHAT KIND OF THING EACH PLACE IS, joined from the registers' own category
     # fields. See `place_kinds.py`: the join is the normalised name inside the
     # place's OWN register, gated on distance, and the mapping onto the mark
@@ -690,12 +948,6 @@ def main() -> int:
 
     srcs = sorted({p["src"] for p in pl})
     six = {s: i for i, s in enumerate(srcs)}
-    yix = {y: i for i, y in enumerate(YRULE)}
-
-    def yruleof(p: dict) -> int:
-        if p["old"]:
-            return 0
-        return yix[p["y0rule"]]
 
     w = ChunkWriter(KEY, KIND)
     w.add("x", "i32", [int(round(p["x"] * 10)) for p in pl])
@@ -715,7 +967,18 @@ def main() -> int:
          | (8 if p.get("_contained") else 0) for p in pl],
     )
     w.add("src", "u8", [six[p["src"]] for p in pl])
-    w.add("yrule", "u8", [yruleof(p) for p in pl])
+    # WHICH RUNG, FOR EVERY ROW AND NOT JUST THE ONES BUILT TODAY. This column
+    # used to answer `0` — *"already shipped in base/marks.json"* — for 1,206 of
+    # 2,199 rows, which says where the ROW came from and nothing about where its
+    # YEAR came from, and it silently swallowed §GGB's rung 5 as well, because
+    # the Golden Gate Bridge row is one of the inherited ones. §YBASIS recovers
+    # the rung from the footprint files, so rung 0 is now empty and every row
+    # names the publisher that dated it.
+    w.add("yrule", "u8", yrule_col)
+    # AND WHAT THAT RUNG IS WORTH, which is the question the label gate asks.
+    # 0-2 are a statement about the thing named; 3-5 are not, and every row
+    # carrying one of those also carries `yr = YR_NONE`. §HELD.
+    w.add("yb", "u8", yb_col)
     w.add("kind", "u8", kcol)
     blob = w.serialise()
     (OUT / "base" / "places.qc").write_bytes(blob)
@@ -726,6 +989,8 @@ def main() -> int:
         "t": [p["n"] for p in pl],
         "SRC": srcs,
         "YRULE": YRULE,
+        "YBASIS": YBASIS,
+        "YR_NONE": YR_NONE,
         "KIND": place_kinds.FAMILIES,
         "ggb": doc["ggb"],
         "ggbYr": doc["ggbYr"],
@@ -738,6 +1003,7 @@ def main() -> int:
                 "names: DataSF 5kya-mfst (Tall Building Inventory), ejht-vp5d (Article 11 Rating), 6adp-a5yv (Schools_College), 65ik-7wqd (Privately Owned Public Open Spaces), 7e7j-59qk (Schools, from the California Dept of Education), ib5c-xgwu (Recreation and Parks Facilities); US National Park Service, National Register of Historic Places",
                 "extent: the shipped LIDAR footprints (ynuv-fyni), or the registry's own polygon",
                 "years: the register's own year of construction where one is published, else the roll year of the footprint the place resolves to (wv5m-vpq2)",
+                f"years, WHERE THERE ARE NONE: a label whose year was borrowed from the ground under it or defaulted to the 1906 no-year fallback carries yr = {YR_NONE}, which is not a year. Its name is written on the un-clocked map and held on every dated frame, because no published field says when that name starts applying. `yb` says which of the six bases each row's year rests on.",
             ],
             "modelled": [],
             "report": rep,
@@ -784,7 +1050,13 @@ def main() -> int:
             "to. `bi` is the index of that footprint in the map's own building order, "
             "-1 where there is none. `yr` is the first year the name may be written; 0 "
             "means every year, which is what an undated footprint means, and the map "
-            "draws an undated building in every year too. `fl` bit 0 = the City has "
+            f"draws an undated building in every year too. `yr` = {YR_NONE} is NOT A "
+            "YEAR: it means no published field says when this name starts applying, so "
+            "the name is written on the un-clocked map and held on every dated frame. "
+            "`yb` says why, indexing the sidecar's YBASIS — 0-2 are a year read off a "
+            "publisher about the thing itself, 3-5 are a year borrowed from the ground "
+            "under it or defaulted to the 1906 no-year fallback, and every 3-5 row "
+            f"carries yr = {YR_NONE}. `fl` bit 0 = the City has "
             "DESIGNATED it under Article 10 and it carries a mark; bit 1 = the Golden "
             "Gate Bridge deck; bit 2 = this row was already in base/marks.json. `src` "
             "indexes the sidecar's SRC, `yrule` its YRULE — which rung of the year "
@@ -844,7 +1116,7 @@ def main() -> int:
     write_kind_module(pl, fams)
 
     if "--marks" in sys.argv:
-        write_marks(pl, doc, kcol)
+        write_marks(pl, doc, kcol, yb_col)
     return 0
 
 
@@ -924,7 +1196,8 @@ def write_kind_module(pl: list[dict], fams: list) -> None:
           f"{len(rows):,} names")
 
 
-def write_marks(pl: list[dict], doc: dict, kcol: list[int]) -> None:
+def write_marks(pl: list[dict], doc: dict, kcol: list[int],
+                yb_col: list[int]) -> None:
     """`base/marks.json`, in that file's existing shape, carrying the merged list.
 
     Same fields, same base64 packing, same `d & 1` designation bit — the
@@ -944,7 +1217,20 @@ def write_marks(pl: list[dict], doc: dict, kcol: list[int]) -> None:
         "y": b64("i", [int(round(p["y"] * 10)) for p in pl]),
         "s": b64("H", [max(1, min(65535, int(round(p["span"])))) for p in pl]),
         "b": b64("i", [p["bi"] if p["bi"] is not None else -1 for p in pl]),
+        # `YR_NONE` RIDES THIS COLUMN AND NEEDS NO NEW READER. `decodeMarks`
+        # already unpacks `yr` as a Uint16Array and sets `PlaceLabel.year` from
+        # any non-zero value, and `labels.ts`'s gate then holds the name on
+        # every year of the rail and writes it on the un-clocked map — which is
+        # exactly the treatment §HELD argues for. The client is unchanged.
         "yr": b64("H", [max(0, min(65535, int(p["y0"]))) for p in pl]),
+        # WHY A ROW HAS NO YEAR, beside the row that has none. Nothing reads it
+        # yet; it ships for the same reason `k` shipped ahead of its decoder —
+        # so the file can be inspected without re-running the pipeline, and so
+        # the day a fiche wants to say "no published field dates this" the
+        # sentence is already on the wire. Indexes YBASIS.
+        "yb": b64("B", yb_col),
+        "YBASIS": YBASIS,
+        "YR_NONE": YR_NONE,
         # `yt` is `yr`'s closing bracket: the first year the name is NO LONGER
         # drawn, 0 where it never stops. Only a building this repository names
         # under more than one name in turn carries it.
