@@ -78,12 +78,12 @@ SHOTS: list[dict] = [
     # A push in here would also be the most expensive thing in the piece —
     # FILM.md §15.1 measures a travel at 4 to 32 rasterisations and a locked
     # camera at zero — so the strongest image available is also the cheapest.
-    dict(n=1, id="burn", title="The fire, and what it took of the city's own",
+    dict(n=1, id="burn", title="The earthquake, and the fire that followed",
          t=(-122.409, 37.783), z=2.05, off=(0.0, 0.0), move=0, ms=11200,
          st=(None, 1906)),
     # 2 · THE MATCH CUT. Same target, same z, no move. Nine years run under a
     # camera that does not move and the fabric comes back inside the hairline.
-    dict(n=2, id="rebuild", title="It comes back",
+    dict(n=2, id="rebuild", title="The city rebuilds",
          t=(-122.409, 37.783), z=2.05, off=(0.0, 0.0), move=0, ms=5600,
          st=(1906, 1915)),
     # 3 · THE PALACE. Down to the Marina. The rotunda's own published footprint
@@ -93,14 +93,14 @@ SHOTS: list[dict] = [
     # class and no year, so no roof form is derivable for them — were a third
     # of the frame beside the subject. At 95 they are a band at the top left,
     # and the rotunda's columns, arches and lattice dome all resolve.
-    dict(n=3, id="palace", title="One building stays",
+    dict(n=3, id="palace", title="The Panama-Pacific Exposition opens",
          t=(-122.448403, 37.802924), z=95.0, off=(0.14, -0.10), move=1200, ms=6800,
          st=(1912, 1915)),
     # 4 · THE WIDEST CAMERA IN THE FILM, and the only shot with two subjects.
     # It opens on empty water at 1915, runs to 1936, strokes the Bay Bridge
     # deck out from Rincon Hill, holds, and then runs two more years while the
     # fabric puts the Golden Gate up on its own published date.
-    dict(n=4, id="bridges", title="Two bridges",
+    dict(n=4, id="bridges", title="Two bridges open",
          t=None, z=1.26, off=(0.07, 0.03), move=1200, ms=8200,
          st=(1915, 1937)),
     # 5 · JAPANTOWN. Tight on the Western Addition and, after the move that
@@ -113,8 +113,17 @@ SHOTS: list[dict] = [
     # south-west corner, and the hood label read "JAPANT WN" because the
     # ring's own west edge crossed it. At 10 the four streets are the frame,
     # the fabric inside them resolves, and the ring is clear of the plate.
-    dict(n=5, id="japantown", title="Japantown",
-         t=(-122.429078, 37.786676), z=10.0, off=(0.08, 0.05), move=1800, ms=10800,
+    # 5 · AND THE OFFSET IS NOW COMPOSED FOR THE PAGE BESIDE IT. §26.1 put the
+    # still camera at (0.08, 0.05) and that was right for a frame with nothing
+    # else on it. The scanned resolution opens on the right 36 % of the frame
+    # from this shot on, and at 0.08 it covered the district's whole eastern
+    # side — Gough, the street the resolution names, under the page that names
+    # it. At -0.10 the four streets sit whole in the left 55 % and the page has
+    # the right. Measured on out-p4: at -0.06 the east edge is still under the
+    # panel. **The camera is still completely still**; only where it sits has
+    # moved, which is the same distinction §26.1 drew.
+    dict(n=5, id="japantown", title="Japantown is emptied",
+         t=(-122.429078, 37.786676), z=10.0, off=(-0.10, 0.05), move=1800, ms=10800,
          st=(1937, 1942)),
     # 6 · THE WAR MEMORIAL. `z` 20 -> 44 and the offset to (-0.04, -0.16):
     # FILM.md §25.3. At 20 the Opera House was a small pale block right of
@@ -123,7 +132,7 @@ SHOTS: list[dict] = [
     # carries its own colonnade and cornice at centre-left, Van Ness runs the
     # diagonal, and City Hall's dome is whole in the upper right instead of
     # half off the edge.
-    dict(n=6, id="charter", title="Fifty nations, in the war memorial",
+    dict(n=6, id="charter", title="The UN Charter is signed",
          t=(-122.420881, 37.778560), z=44.0, off=(-0.04, -0.16), move=1200, ms=6200,
          st=(1942, 1945)),
     # 7 · THE FREEWAYS THAT WERE NOT BUILT. High over the whole city, and
@@ -140,8 +149,14 @@ SHOTS: list[dict] = [
     # Street's diagonal, City Hall's dome, the Financial District — which is
     # also the ground the seven rejected routes would have cut through, so the
     # absence the shot is about is legible rather than abstract.
-    dict(n=7, id="freeways", title="The freeways that were not built",
-         t=None, z=2.1, off=(0.10, -0.02), move=1200, ms=6400,
+    # RE-TIMED 6,400 -> 8,000 ms, and this one is NOT the reading floor: the
+    # line clears at 4.2 s against 5.2 s. It is the SCAN. This shot's page is
+    # the resolution that named all ten freeways and struck seven, and 5.2 s is
+    # not long enough to read a page. Shot 1 gives its scan 11.2 s and shot 5
+    # gives its own 9.0 s; 6.8 s is the least this one can carry and still be
+    # a page a viewer READ rather than saw.
+    dict(n=7, id="freeways", title="The freeway revolt",
+         t=None, z=2.1, off=(0.10, -0.02), move=1200, ms=8000,
          st=(1945, 1959)),
     # 8 · THE PYRAMID. `oy` -0.12 -> -0.30: FILM.md §25.3. THE FILM'S SHOT
     # ABOUT THE TALLEST BUILDING IN SAN FRANCISCO CROPPED THE TOP OF THE
@@ -149,7 +164,7 @@ SHOTS: list[dict] = [
     # — it widens 0.110 px a row, and is 27 px wide at row 180 — the apex sat
     # 65 device px ABOVE the top of the frame, fully risen. `z` is unchanged;
     # only the subject's place in the frame moves.
-    dict(n=8, id="pyramid", title="The Pyramid",
+    dict(n=8, id="pyramid", title="The Pyramid goes up",
          t=(-122.402707, 37.795274), z=24.0, off=(0.12, -0.30), move=1200, ms=6600,
          st=(1959, 1972)),
     # 9 · THE WATERFRONT, HELD. The Embarcadero Freeway was never drawn — the
@@ -162,8 +177,12 @@ SHOTS: list[dict] = [
     # surround slabs — was the top third. Lifting the subject above centre
     # fills the frame with the city the vote was about; measured empty
     # fraction 68.1 % -> 50.7 %.
-    dict(n=9, id="embarcadero", title="The road that came down",
-         t=(-122.397500, 37.796500), z=5.5, off=(0.02, 0.22), move=1200, ms=6600,
+    # RE-TIMED 6,600 -> 7,800 ms. §25.2's floor is that the copy must be on
+    # screen at least as long as the line takes to read, and the new line is
+    # 120 characters — 6.2 s at 22 a second plus 700 ms to notice it — against
+    # 5.4 s of visible copy. One second twenty, and nothing else moved.
+    dict(n=9, id="embarcadero", title="The earthquake of 1989",
+         t=(-122.397500, 37.796500), z=5.5, off=(0.02, 0.22), move=1200, ms=7800,
          st=(1972, 1991)),
     # 10 · THE RHYME. Shot 2's move, seventy years later: the camera stops and
     # a district fills in under it.
@@ -171,7 +190,7 @@ SHOTS: list[dict] = [
          t=(-122.395141, 37.772878), z=3.6, off=(0.12, -0.06), move=1200, ms=8100,
          st=(1991, 2018)),
     # 11 · OUT TO THE WHOLE CITY, which is where the film started.
-    dict(n=11, id="face", title="What the city would not let itself do",
+    dict(n=11, id="face", title="San Francisco bans police use of facial recognition",
          t=None, z=1.10, off=(0.0, 0.0), move=1200, ms=6800,
          st=(2018, 2019)),
 ]
@@ -223,8 +242,24 @@ COPY: dict[int, dict] = {
             # 28,000 buildings and a THREE-DAY fire are the USGS's own figures
             # for 18-21 April 1906, which is why the shot also carries the
             # USGS link beside the Municipal Report's own schedule.
+            # FAILED ITS FACT CHECK AND IS FLAGGED. The approved line was
+            # "…some 28,000 buildings, about 80 per cent of the city." **The
+            # USGS page this shot already cites does not carry 80 per cent, in
+            # any form** — it gives 28,188 buildings, a burned district of 4.7
+            # square miles, 225,000 homeless out of a population of about
+            # 400,000, and $400,000,000 of damage of which $80,000,000 was the
+            # earthquake alone. (That last pair is the only 80 on the page and
+            # it is 80 per cent of the LOSS, not of the city.) 4.7 square miles
+            # is about a tenth of the city's land area, so the percentage
+            # cannot be read off the extent either.
+            #
+            # The homeless count is on the same page from the same publisher
+            # and it is the magnitude the approved line was reaching for — with
+            # the advantage of being about people, which is the note Daniel
+            # made on shot 9. Changed by as few words as the correction needs.
             copy="The fire burned for three days and destroyed some 28,000 "
-                 "buildings."),
+                 "buildings, and left 225,000 of the city's 400,000 people "
+                 "homeless."),
     # 2 · THE ONLY ARITHMETIC CLAIM IN THE FILM, AND WHERE ITS NUMBER COMES
     # FROM. "More than it lost within nine years" was carried for a night with
     # no source under it and it is now sourced, from the city's own building
@@ -306,15 +341,33 @@ COPY: dict[int, dict] = {
             # to the Army, the city payroll, the liquor permits held back, and
             # — three weeks after the removal — the district's mortgages urged
             # on Washington for slum clearance. All four are property.
+            # FAILED ITS FACT CHECK AND IS FLAGGED, AND THE RECORD IS WORSE
+            # THAN THE LINE WAS. The approved line was "…and three weeks later
+            # the Board urged clearance of the emptied quarter." **The Board's
+            # own 1942 resolutions say the removal was not finished on 20
+            # April.** The earlier "Rehabilitation of Japanese Quarter"
+            # resolution in this same volume reads: *"By the time the
+            # evacuation of San Francisco's Japanese is completed, estimated as
+            # May 15th, 1942, it is imperative that a definite and
+            # comprehensive program of rehabilitation and restoration in said
+            # district be in progress"*. So the slum-clearance resolution of 20
+            # April is three and a half weeks BEFORE the date the Board itself
+            # expected the removal to end, not three weeks after it.
+            #
+            # "before the removal was finished" is what the record supports and
+            # it is the harder fact. Washington is the resolution's own
+            # addressee — it memorializes the National Housing Agency and the
+            # Home Owners Loan Corporation — and "clear the quarter" is its own
+            # agenda heading, "Urged to Effectuate Slum Clearance".
             copy="In 1942 the government removed everyone of Japanese descent "
-                 "from Japantown, and the Board's business for those streets "
-                 "that spring was property."),
+                 "from Japantown, and before the removal was finished the "
+                 "Board urged Washington to clear the quarter."),
     6: dict(kind="scan", narration=True,
             item="journalofproceed40part3sanfrich", leaf=726, find="quote",
             verbatim="the four city blocks occupied by the Veterans' Building, "
                      "Opera House and the Civic Center Plaza",
-            copy="Fifty nations signed the United Nations Charter in the "
-                 "city's war memorial."),
+            copy="Fifty nations sign the charter at the city's war "
+                 "memorial."),
     7: dict(kind="scan", narration=True,
             item="journalofproceed54sanfrich", leaf=48, find="quote",
             verbatim="It is beyond the power of the Board to delete anything in "
@@ -324,8 +377,12 @@ COPY: dict[int, dict] = {
             # The routes were state Division of Highways routes; the ten came
             # from the city's own trafficways plan, which is why the Board could
             # only declare opposition to them.
-            copy="The Board rejected seven of the ten freeways the city had "
-                 "planned for San Francisco."),
+            # "the city's own" is the point rather than a qualifier: the
+            # resolution's title is "All Freeways Contained in the Master
+            # Plan", and the Master Plan is the CITY's. The scan on this shot
+            # is the page that names all ten and carries its 11-0 adoption.
+            copy="The Board voted down seven of the ten freeways in the "
+                 "city's own master plan."),
     8: dict(kind="data", narration=True,
             copy="The Transamerica Pyramid was the tallest building in San "
                  "Francisco for forty-six years.",
@@ -337,8 +394,22 @@ COPY: dict[int, dict] = {
             item="journalofproceed85julydecsanfrich", leaf=374, find="headline",
             gate="The vote is rescinded, the condition stripped out, and the same "
                  "afternoon the Board endorses demolition 6 to 5.",
-            copy="After the earthquake the Board voted to demolish the "
-                 "Embarcadero Freeway instead of repairing it."),
+            # THE EARTHQUAKE IS THE SUBJECT AND THE ROAD IS THE CONSEQUENCE —
+            # Daniel: *"there's an earthquake and you speak of the road that
+            # came down as the main subject, isn't it the other way around?
+            # what about the people who died?"*
+            #
+            # SIXTY-THREE IS THE EARTHQUAKE'S TOLL AND THE SENTENCE SAYS SO.
+            # USGS Fact Sheet 151-99: *"the quake killed 63 people"*, and on
+            # the same page *"San Francisco and Oakland ... suffered more than
+            # 70% of the 63 deaths"*. It is not a San Francisco count and the
+            # line does not claim one. NOAA NCEI's significant-earthquake
+            # database gives 62 for the same event; the shot carries the USGS
+            # figure because USGS is the publisher the film already cites for
+            # 1906.
+            copy="The earthquake killed sixty-three people, and the Board "
+                 "voted to demolish the Embarcadero Freeway rather than "
+                 "repair it."),
     10: dict(kind="data", narration=True,
              # APPROVED: "…of eleven thousand people." DataSF's own figure for
              # the Mission Bay analysis neighborhood is 16,710 (ACS 2019–2023).
@@ -353,8 +424,8 @@ COPY: dict[int, dict] = {
              # source claims "in the world"; the ACLU of Northern California's
              # own press release of 14 May 2019 says "the first city in the
              # United States to prohibit government use of face surveillance".
-             copy="San Francisco was the first city in America to tell its own "
-                  "police they could not use facial recognition.",
+             copy="The city was the first in the United States to vote such "
+                  "a ban.",
              links=[("Ordinance No. 103-19, File 190110, finally passed 10 to 1 on 21 May 2019",
                      "https://sfgov.legistar.com/View.ashx?M=F&ID=7226786&GUID=78A20A6B-F1D1-4044-AA15-82AF55D98040"),
                     ("Board minutes, 21 May 2019 — the vote",
@@ -384,11 +455,44 @@ COPY2: dict[int, dict] = {}
 TITLE = dict(
     head="San Francisco builds itself",
     sub="Eleven moments from the city's own record, 1906 to 2019",
+    # ── THE ONE SENTENCE THAT SAYS WHERE ALL OF IT COMES FROM ─────────────
+    # Daniel: *"also at the beggining that it says so"* — that everything in
+    # the film comes out of the archive.
+    #
+    # IT IS A THIRD LINE ON THE TITLE CARD, not a twelfth shot and not the
+    # entry plate. The entry plate was tried first and is where it does NOT
+    # belong: that plate's own <h1> is "The city, drawn from its own record"
+    # and its lede opens "Every building here is one San Francisco publishes",
+    # so a third sentence saying the same thing is the fourth restatement on
+    # one card. Screenshot: out-p5/entry-c.png. And Daniel asked for it after
+    # watching THE FILM, which is where it was missing.
+    #
+    # It is short because the card is 3.2 seconds. `head` and `sub` are read at
+    # a glance and this is the line under them.
+    #
+    # Every word of it is checkable: the buildings are the assessor's roll and
+    # the city's LIDAR footprints, the streets are DataSF's centrelines and the
+    # Board's own acceptances, the decisions are the Journal of Proceedings.
+    # It does not say every FIGURE, because two shots rest on USGS numbers
+    # beside the city's record and say so on the plate.
+    note="Everything here comes from the city's own records.",
 )
+# THE TWO CARDS' OWN LENGTHS. The title card was 2,400 ms in §25.2 for a card
+# with a head and a sub; it carries `TITLE["note"]` as a third line now, which
+# is the sentence about where the film's material comes from, so it gets 800 ms
+# more. `totalMs` is derived from these below rather than typed twice.
+RUNTIME = {"titleMs": 3200, "endMs": 3000}
+
 END = dict(
-    head="Every line in that film is a page you can open",
-    sub="Stop anywhere and the map becomes the record: 45 entities, "
-        "2,051 accepted streets, 166,166 buildings.",
+    head="Every line in that film is a page you can open — and so is every "
+         "block on the map",
+    # ALL THREE COUNTED, not carried over: `base/hood-rings.json` has 41 names,
+    # `base/blocks-id.json` has 5,404 ids, `base/places.json` says n = 2197.
+    # The old sub said "2,051 accepted streets", which Daniel read and said
+    # "means nothing" — it is the film's own internal unit and not a thing a
+    # reader can point at on the map.
+    sub="Click anywhere and the record opens: 41 neighbourhoods, "
+        "5,404 blocks, 2,197 named places.",
 )
 
 # ── which shot raises what ──────────────────────────────────────────────────
@@ -881,8 +985,8 @@ def main() -> None:
                     "file, film/fire.json, built by "
                     "pipeline/scripts/us_sf_city/build_fire_losses.py.",
         },
-        "runtime": {"titleMs": 2400, "endMs": 3000, "shotsMs": total,
-                    "totalMs": total + 5400},
+        "runtime": {**RUNTIME, "shotsMs": total,
+                    "totalMs": total + RUNTIME["titleMs"] + RUNTIME["endMs"]},
         "title": TITLE,
         "end": END,
         "shots": shots,
@@ -896,8 +1000,9 @@ def main() -> None:
     path.write_text(json.dumps(payload, separators=(",", ":"), sort_keys=False))
     print(f"{path}: {path.stat().st_size:,} bytes · {len(shots)} shots · "
           f"{len(ents)} subjects · {len(accepted):,} accepted segments")
-    print(f"  {total/1000:.1f} s of shots + 2.4 title + 3.0 end = "
-          f"{(total+5400)/1000:.0f} s")
+    tot = total + RUNTIME["titleMs"] + RUNTIME["endMs"]
+    print(f"  {total/1000:.1f} s of shots + {RUNTIME['titleMs']/1000:.1f} title"
+          f" + {RUNTIME['endMs']/1000:.1f} end = {tot/1000:.1f} s")
     print(f"  the 1942 district: {len(district)} published centreline segments, "
           f"centre {dcent[0]:.6f} {dcent[1]:.6f}")
 

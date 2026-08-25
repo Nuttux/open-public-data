@@ -395,6 +395,14 @@ export interface FilmStreets {
   readonly n: number;
 }
 
+/** the two cards. `note` is the title card's third line and only the title
+ *  card has one — see the field's comment above `FilmPayload.title`. */
+export interface FilmCard {
+  readonly head: string;
+  readonly sub: string;
+  readonly note?: string;
+}
+
 export interface FilmPayload {
   readonly meta: Record<string, string>;
   readonly runtime: {
@@ -403,8 +411,12 @@ export interface FilmPayload {
     readonly shotsMs: number;
     readonly totalMs: number;
   };
-  readonly title: { readonly head: string; readonly sub: string };
-  readonly end: { readonly head: string; readonly sub: string };
+  /** `note` is the title card's third line — the one sentence that says where
+   *  every building, street and decision in the film comes from. See
+   *  `build_film_twelve.py` §TITLE. The END card has no `note`, which is why
+   *  the field is optional and why the chrome tests for it. */
+  readonly title: FilmCard;
+  readonly end: FilmCard;
   readonly shots: readonly FilmShotData[];
   readonly ents: Readonly<Record<string, FilmEnt>>;
   readonly st: FilmStreets;
@@ -543,9 +555,13 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      freeways; `entries/freeway-revolt-1959.json` says in the open that their
      corridors are *"NOT IN RECORD as geometry"*. Ghosting seven alignments in
      would be inventing seven roads to show that they were never built. */
+  /* the hold is 4,400 and not 2,800 because THE PAGE IS ON SCREEN. The line
+     clears its own reading floor either way; the scanned resolution — ten
+     freeways named, seven struck, adopted 11-0, all on one opening — does not
+     read in five seconds. See `build_film_twelve.py` §9. */
   freeways: [
     { k: "run", ms: 2400, to: 1959, curve: "even" },
-    { k: "hold", ms: 2800 },
+    { k: "hold", ms: 4400 },
   ],
   /* the run is what raises the Pyramid: `landmarks.ts` gates the hero at 1972
      and the fabric puts it up on its own published year while the camera
@@ -560,7 +576,9 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      map — and the film says that rather than faking a collapse. */
   embarcadero: [
     { k: "run", ms: 2400, to: 1991, curve: "even" },
-    { k: "hold", ms: 3000 },
+    /* 3,000 -> 4,200: the 1989 line is 120 characters and needs 6.2 s, and at
+       3,000 the copy was visible for 5.4. §25.2's floor. */
+    { k: "hold", ms: 4200 },
   ],
   /* THE RHYME with shot 2: the camera stops and a district fills in under it.
      Twenty-seven years over 3,600 ms is 133 ms a year, which is under

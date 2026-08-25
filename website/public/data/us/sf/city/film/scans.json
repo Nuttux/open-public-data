@@ -1,0 +1,148 @@
+{
+ "meta": {
+  "source": "Internet Archive page images and OCR word boxes; leaf found by searching the volume"
+ },
+ "scans": [
+  {
+   "n": 1,
+   "src": "/data/us/sf/city/film/scans/shot-01.jpg",
+   "w": 1432,
+   "h": 1183,
+   "item": "excerptsfromsanf1908sanf",
+   "leaf": 6,
+   "url": "https://archive.org/details/excerptsfromsanf1908sanf/page/n6/mode/1up",
+   "vol": "San Francisco Municipal Reports, 1906-07",
+   "page": "703",
+   "when": "General History",
+   "alt": "The city's own account of the fire, printed in the Municipal Reports, with the sentence that gives its length marked.",
+   "hl": [
+    {
+     "x": 0.06284916201117319,
+     "y": 0.4319526627218935,
+     "w": 0.9113128491620112,
+     "h": 0.042265426880811495
+    },
+    {
+     "x": 0.029329608938547486,
+     "y": 0.4826711749788673,
+     "w": 0.9448324022346368,
+     "h": 0.03888419273034658
+    },
+    {
+     "x": 0.025837988826815643,
+     "y": 0.5325443786982249,
+     "w": 0.5977653631284916,
+     "h": 0.03888419273034658
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "src": "/data/us/sf/city/film/scans/shot-05.jpg",
+   "w": 1713,
+   "h": 1717,
+   "item": "journalofproceed37sanfrich",
+   "leaf": 713,
+   "url": "https://archive.org/details/journalofproceed37sanfrich/page/n713/mode/1up",
+   "vol": "Journal of Proceedings, vol. 37",
+   "page": "676",
+   "when": "20 April 1942",
+   "alt": "The Board's own printed page for 20 April 1942, with the committee's heading and the four streets it names marked.",
+   "hl": [
+    {
+     "x": 0.06304728546409807,
+     "y": 0.09609784507862551,
+     "w": 0.8739054290718039,
+     "h": 0.0244612696563774
+    },
+    {
+     "x": 0.11792177466433158,
+     "y": 0.12288875946418171,
+     "w": 0.7647402218330415,
+     "h": 0.0256260920209668
+    },
+    {
+     "x": 0.10566258026853473,
+     "y": 0.8637157833430402,
+     "w": 0.7950963222416813,
+     "h": 0.0203843913803145
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "src": "/data/us/sf/city/film/scans/shot-07.jpg",
+   "w": 1683,
+   "h": 1413,
+   "item": "journalofproceed54sanfrich",
+   "leaf": 57,
+   "url": "https://archive.org/details/journalofproceed54sanfrich/page/n57/mode/1up",
+   "vol": "Journal of Proceedings, vol. 54",
+   "page": "44",
+   "when": "26 January 1959",
+   "alt": "The page on which the Board struck seven freeways out of the master plan, with the resolution's heading and its adoption marked.",
+   "hl": [
+    {
+     "x": 0.027332144979203804,
+     "y": 0.07926397735314933,
+     "w": 0.9441473559120618,
+     "h": 0.03397027600849257
+    },
+    {
+     "x": 0.0540701128936423,
+     "y": 0.11181882519462137,
+     "w": 0.9174093879976233,
+     "h": 0.03113941967445152
+    },
+    {
+     "x": 0.055852644087938205,
+     "y": 0.14437367303609341,
+     "w": 0.9162210338680927,
+     "h": 0.03184713375796178
+    },
+    {
+     "x": 0.12418300653594772,
+     "y": 0.1762208067940552,
+     "w": 0.8478906714200832,
+     "h": 0.03043170559094126
+    },
+    {
+     "x": 0.05525846702317291,
+     "y": 0.208067940552017,
+     "w": 0.916815210932858,
+     "h": 0.029723991507430998
+    },
+    {
+     "x": 0.056446821152703504,
+     "y": 0.23991507430997877,
+     "w": 0.9156268568033273,
+     "h": 0.03326256192498231
+    },
+    {
+     "x": 0.058229352346999406,
+     "y": 0.2724699221514508,
+     "w": 0.9144385026737968,
+     "h": 0.03326256192498231
+    },
+    {
+     "x": 0.0570409982174688,
+     "y": 0.3050247699929229,
+     "w": 0.9156268568033273,
+     "h": 0.03184713375796178
+    },
+    {
+     "x": 0.058823529411764705,
+     "y": 0.34253361641896674,
+     "w": 0.11527035056446822,
+     "h": 0.027600849256900213
+    },
+    {
+     "x": 0.062388591800356503,
+     "y": 0.8365180467091295,
+     "w": 0.5894236482471776,
+     "h": 0.03467799009200283
+    }
+   ]
+  }
+ ]
+}

@@ -594,12 +594,21 @@ export function drawBurnLine(
  * AND WHAT IS NOT PUBLISHED, SO IS NOT CLAIMED. `ff3a-iqhv` is one polygon with
  * no time field — the final extent — and no ignition time exists for any
  * structure in the schedule. `coverage/FIRE.md` says it in the open: *"Not a
- * fire that spreads. The fire can arrive; it cannot advance."* So the fill
- * arrives along the ring's OWN VERTEX ORDER, which is the order the Clerk
- * describes the boundary in — *"The Water Front from Brannan street on the east
- * to Jones street on the north; thence along Jones to Chestnut…"* — and that is
- * the order of a description being read, not a claim about where it burned
- * first. It is declared here and in `film/fire.json`'s `meta.order`.
+ * fire that spreads. The fire can arrive; it cannot advance."*
+ *
+ * THE GROUND USED TO ARRIVE ALONG THE RING'S VERTEX ORDER AND IT DOES NOT ANY
+ * MORE. The argument was that the vertex order is the order the Clerk describes
+ * the boundary in — *"The Water Front from Brannan street on the east to Jones
+ * street on the north; thence along Jones to Chestnut…"* — so drawing it in
+ * that order was a description being read rather than a claim about where it
+ * burned first. **The argument was about the vertices and the artefact was the
+ * CHORD.** A truncated ring is closed by a straight line from the last drawn
+ * vertex back to the first, so what a reader actually saw was a hard diagonal
+ * edge crossing the district — one vertex every 51 ms over 6,600 ms, 130
+ * vertices on the main ring — and that edge is the boundary of nothing at all.
+ * Daniel: *"i still see a disk progressing under the fire"*. The extent is
+ * published and the order is not, so the extent is now drawn WHOLE and only its
+ * colour moves with the act. See `drawBurnFill`.
  *
  * THE FLAME IS A TREATMENT AND IS DECLARED AS ONE. Its shape and its flicker
  * carry no information, and it has no smoke — see §THERE IS NO SMOKE. What carries information is WHERE it is, HOW
@@ -689,12 +698,32 @@ export function fireTotalAt(losses: readonly FireLoss[], p: number): number {
 /**
  * THE BURNED AREA, FILLED — the fire's own ground, arriving and then cooling.
  *
- * Drawn UNDER the flames and under the hairline, at `phase` of the ring's own
- * vertex order, moving through two states the one number carries: hot where the
- * sweep is still running, ash where it has passed. `cool` is what carries it
- * past the shot — 1 while the fire is on the frame, falling to 0 across shot 2
- * as the city rebuilds inside it.
+ * Drawn UNDER the flames and under the hairline, and drawn WHOLE: every ring is
+ * closed on its own last vertex at every phase, so nothing on this frame is a
+ * chord. What `phase` moves is the colour and the alpha — the ground comes up
+ * hot over the first third of the act (`ARRIVE`) and cools to ash across the
+ * rest of it — and both are DRAWING decisions about a fire nobody published a
+ * timeline for, which is why neither of them claims a place.
+ *
+ * At `phase = 1` this is the same fill it always was, to the byte: `heat` is 0,
+ * `arrive` is 1, and the frame the fire leaves — which is the frame shot 2
+ * opens on — is unchanged. Only the middle of the act is different.
+ *
+ * `cool` is what carries it past the shot — 1 while the fire is on the frame,
+ * falling to 0 across shot 2 as the city rebuilds inside it.
  */
+/**
+ * The fraction of the fire act over which the burned ground comes up to full.
+ *
+ * 0.6 and not 0.34, measured by looking at `out-p7/cmp.png`: at 0.34 the whole
+ * district was visibly scorched at 4.4 s, before a single flame on that crop
+ * had lit, so the frame read as burned ground catching fire. The flames peak
+ * between `FIRE_PEAK` and `FIRE_HOLD` — 0.26 to 0.66 of the act — and at 0.6
+ * the ground darkens across exactly that span, which is the fire and the ground
+ * changing together rather than one leading the other.
+ */
+export const BURN_ARRIVE = 0.6;
+
 export function drawBurnFill(
   g: CanvasRenderingContext2D,
   W: number,
@@ -714,10 +743,9 @@ export function drawBurnFill(
   for (const ring of rings) {
     const n = ring.length;
     if (n < 3) continue;
-    /* a vertex the sweep has not reached is not filled, so the ground arrives
-       along the same axis the hairline strokes */
-    const last = phase >= 1 ? n - 1 : Math.max(2, Math.ceil((n - 1) * phase));
-    for (let k = 0; k <= last; k++) {
+    /* EVERY vertex, at every phase. Truncating the ring closed it on a chord
+       and the chord was the sweeping edge — see the header. */
+    for (let k = 0; k < n; k++) {
       const wx = ring[k][0];
       const wy = ring[k][1];
       const px = c.ax * wx + c.ay * wy;
@@ -730,10 +758,13 @@ export function drawBurnFill(
     g.closePath();
   }
   const heat = Math.max(0, 1 - phase * 1.25);
+  /* the ground comes up over the first third of the act rather than being
+     wiped across it. A ramp has no edge; a chord is nothing but edge. */
+  const arrive = Math.min(1, phase / BURN_ARRIVE);
   const r = Math.round(88 + 104 * heat);
   const gn = Math.round(60 + 24 * heat);
   const bl = Math.round(48 - 16 * heat);
-  g.fillStyle = `rgba(${r},${gn},${bl},${(0.34 + 0.30 * heat) * cool})`;
+  g.fillStyle = `rgba(${r},${gn},${bl},${(0.34 + 0.30 * heat) * cool * arrive})`;
   g.fill("evenodd");
   g.restore();
 }
@@ -820,8 +851,18 @@ export function drawFireLosses(
     const down = f.p <= FIRE_HOLD ? 1 : 1 - (f.p - FIRE_HOLD) / (1 - FIRE_HOLD);
     /* linear in `down`, not squared. Squared put nineteen of the twenty-seven
        under 10 % of their height by the middle of the act, which is a field of
-       embers with two flames on it — the note this whole pass exists to answer. */
-    const life = up * up * (0.22 + 0.78 * down);
+       embers with two flames on it — the note this whole pass exists to answer.
+
+       AND IT GOES OUT. `0.22 + 0.78 * down` floored every flame at 22 % of its
+       height FOREVER, and a tongue keeps its full width as it loses height, so
+       what the schedule left on the frame was — measured at the largest figure
+       on the page — a **40.8 x 13.3 px lump, 3.06:1 wider than tall**, thirty-
+       five times over. A mark three times wider than it is tall is a disc, not
+       a flame, and Daniel read it as one: *"i still see a disk progressing
+       under the fire"*. Multiplying by `down` alone changes NOTHING before
+       `FIRE_HOLD` — the plateau is still 1.0 and the act's middle is the frame
+       it was — and takes the tail to zero, which is what a fire does. */
+    const life = up * up * down;
     if (life <= 0.02) continue;
     /* two tongues, out of phase, so the flame moves rather than pulses */
     for (let q = 0; q < 2; q++) {
@@ -857,24 +898,20 @@ export function drawFireLosses(
   }
   g.restore();
 
-  // ── what is left: one ember per structure, and it does not go out ────────
-  g.save();
-  for (const f of seen) {
-    /* small and dark. It is what the frame KEEPS, not what it shows: an ember
-       the size of the flame that made it is the "red dots" note again. */
-    /* 0.075 of the flame height put a 12 px disc at the foot of every
-       structure and it was the darkest, most saturated mark on the frame —
-       the "red dots" note, still true after the flames were built. Half that,
-       and half the alpha again: what is left has to be findable and must not
-       be the thing the eye lands on. */
-    const a = Math.min(1, f.p * 3);
-    const rr = Math.max(1.1, f.s * 0.038);
-    g.beginPath();
-    g.arc(f.X, f.Y, rr, 0, Math.PI * 2);
-    g.fillStyle = `rgba(88,34,20,${0.42 * a})`;
-    g.fill();
-  }
-  g.restore();
+  /* ── AND THERE IS NO EMBER EITHER ──────────────────────────────────────
+     A third pass drew one disc per structure — `rgba(88,34,20,.42)`, radius
+     `f.s x 0.038`, so 1.1 to 2.6 device px — and it was declared as *"what the
+     frame KEEPS"*. It had already been halved once for the "red dots" note and
+     halved again for its alpha, and it was still there, still the most
+     saturated mark on a pale frame, thirty-five of them, after the flames were
+     gone.
+
+     REMOVED, and it is the same judgement the smoke got in §25.1 and for the
+     same reason: it is a mark carrying no information the frame does not
+     already have. What the fire leaves is the BURNED GROUND, which is
+     published as an extent and drawn as one by `drawBurnFill` — and the losses
+     are read while they burn, which is the act. A disc sitting where a building
+     used to be, forever, is a legend entry, not a fire. */
 }
 
 
@@ -897,8 +934,24 @@ export function drawFireLosses(
  * derived from the zoom; over the Western Addition's own grid at z 4.4 it was
  * invisible on the frame — twenty segments of street-coloured line lying on
  * top of streets. Verified by looking: `out-m1c/watch-jtown-sheet.png`, all
- * eight frames, no mark. This is the film's own family ink on a white halo,
- * which is the grammar the ring and the dot beside it already use.
+ * eight frames, no mark. So it is stroked on a white halo, which is the
+ * grammar the ring and the dot beside it already use.
+ *
+ * ── AND IT IS NOT THE FAMILY COLOUR ────────────────────────────────────────
+ * It used to take `familyColour(japantown-1942)` = `FAM.civic` = **#1e45e4**,
+ * and at the corrected z 10 that is four saturated electric-blue lines drawn
+ * across a hand-drawn map of Victorian roofs and street trees. Daniel had the
+ * blue neighbourhood borders taken off the explorer earlier the same day for
+ * exactly this reason: **a saturated blue is the only thing on the map not in
+ * its own ink, so it reads as a debug overlay laid over a drawing.**
+ *
+ * The ink is `ST_NEW` — `#8a2f14`, the burnt sienna the street layer already
+ * uses for *a street accepted THIS year*, the one street ink on this map that
+ * means "the record is pointing at this line now". The resolution names four
+ * streets and the film draws four streets, so the film's own ink for a named
+ * street is the one they get. It is chosen from the map's palette rather than
+ * for the entity, which is why the colour is a constant here and not an
+ * argument any more.
  */
 export function drawOutline(
   g: CanvasRenderingContext2D,
@@ -907,7 +960,6 @@ export function drawOutline(
   cam: ViewCamera,
   lines: readonly Plane[][],
   phase: number,
-  colour: string,
 ): void {
   if (!(phase > 0) || lines.length === 0) return;
   const k = cam.scale;
@@ -940,7 +992,9 @@ export function drawOutline(
   g.beginPath();
   walk();
   g.stroke();
-  g.strokeStyle = colour;
+  /* the map's own ink for a street the record names this year — see the
+     header. NOT the decision family's blue. */
+  g.strokeStyle = ST_NEW;
   g.lineWidth = 3.2;
   g.beginPath();
   walk();

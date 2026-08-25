@@ -3484,3 +3484,261 @@ a return.
 
 449 tests green, typecheck clean, `eslint` one pre-existing warning in
 `landmarks.test.ts` and nothing new.
+
+## 28 · Block M1g, 2026-08-25 — the disc, and the page in the frame
+
+Taking over from M1f. Two notes from Daniel and one queue item from NIGHT3:
+
+> *"i still see a disk progressing under the fire. i also dont see the scanned
+> page showing visually in the film — like yes every shot i want a source and a
+> link, but some shots i litterally want the page to be there in the film with
+> the relevant sentence or paragraph highlighted"*
+
+### 28.1 There were TWO round things and neither was the smoke
+
+§25.1 removed the smoke and he still saw a disc, so both candidates were printed
+before either was touched.
+
+**A · What every structure still drew after its flame had gone.** `life` was
+`up² × (0.22 + 0.78 × down)`, so the floor was **22 % of the flame's height, for
+ever** — and a tongue keeps its full WIDTH as it loses height. At the largest
+figure on the page:
+
+| mark, at the end of the act | size | alpha |
+|---|---|---:|
+| tongue q=0 | **40.8 px wide × 13.3 px tall — 3.06 : 1, wider than tall** | .14 |
+| tongue q=1 | 29.9 × 10.4 — 2.88 : 1 | .14 |
+| white heart | radius 4.3 px | .20 |
+| ember disc | radius 2.6 px, `rgba(88,34,20,·)` | .42 |
+
+**Four marks a structure, thirty-five structures, 140 marks, and none of them
+ever went out.** A mark three times wider than it is tall is a disc.
+
+**B · The burned ground arrived along the ring's vertex order.** The header
+argued that the vertex order is the order the Clerk describes the boundary in,
+so drawing it in that order is a description being read rather than a claim
+about where it burned first. **The argument was about the vertices and the
+artefact was the CHORD**: a truncated ring closes on a straight line from the
+last drawn vertex back to the first.
+
+```
+  fire phase 0.288 -> vertices 0.. 38 of 129, closed by a CHORD from v38 to v0
+  fire phase 0.682 -> vertices 0.. 88 of 129, closed by a CHORD from v88 to v0
+  6,600 ms / 129 vertices = one vertex every 51 ms
+```
+
+A hard diagonal edge sweeping across the district for six and a half seconds,
+and that edge is the boundary of nothing at all. **That is the thing that was
+"progressing".**
+
+**Both fixed, three changes, each one variable:**
+
+1. `life` → `up² × down`. **Nothing before `FIRE_HOLD` changes** — the plateau
+   is still 1.0 and the act's middle is the frame it was — and the tail goes to
+   zero, which is what a fire does.
+2. The ember pass is **deleted**, the same judgement the smoke got in §25.1 and
+   for the same reason: a mark carrying no information the frame does not
+   already have. What the fire leaves is the burned GROUND, which is published
+   as an extent.
+3. `drawBurnFill` fills **every** ring vertex at every phase and moves only its
+   colour and its alpha. At `phase = 1` it is the same fill it always was, so
+   the frame shot 2 opens on is unchanged.
+
+`BURN_ARRIVE` is **0.6**, not the 0.34 it was first set to: at 0.34 the whole
+district was visibly scorched at 4.4 s, before a flame on that crop had lit, so
+the frame read as burned ground catching fire (`out-p7/cmp.png`). The flames
+peak between 0.26 and 0.66 of the act; at 0.6 the ground darkens across exactly
+that span. `out-p8/cmp.png`: clean ground at 4.4 s, first flames at 6.2, a field
+at 8.2, scorched and out by 10.4.
+
+### 28.2 The four streets were drawn in a saturated blue
+
+`familyColour(japantown-1942)` is `FAM.civic` = **#1e45e4**, and at the
+corrected z 10 that is four electric-blue lines across a hand-drawn map of
+Victorian roofs and street trees. Daniel had the blue neighbourhood borders
+taken off the explorer the same day for exactly this reason.
+
+The ink is now `ST_NEW` — **#8a2f14**, the burnt sienna the street layer already
+uses for *a street accepted THIS year*, which is the one street ink on this map
+that means "the record is pointing at this line now". The resolution names four
+streets and the film draws four streets, so the film's own ink for a named
+street is the one they get. `drawOutline` no longer takes a colour argument at
+all, because the choice is the map's palette and not the entity's family.
+
+### 28.3 The copy box is not clipped at any viewport, and here is the table
+
+Daniel's Japantown frame arrived with the narration cut off at the left edge.
+`.parity/p2plate.py` measures the PAINTED rect of every text node in the plate —
+year, copy, sources, note — against the viewport, on all eleven shots, at
+**eleven viewports** on the shipped build at `:3100`:
+
+```
+  1280x800 OK · 1440x900 OK · 1512x982 OK · 1728x1117 OK · 1920x1080 OK
+  2560x1440 OK · 1024x768 OK · 900x600 OK · 820x1180 OK · 768x1024 OK
+  390x844 OK
+```
+
+**Not one overflow, on any edge, on any shot.** The plate is `left: 44px` inside
+a `position: fixed; inset: 0` shell, so there is no camera or transform that can
+move it. Reported rather than fixed, because there is nothing measurable to fix:
+the most likely explanations are browser zoom or a crop of the screenshot
+itself, and the instrument is committed so it can be re-run against whatever he
+was looking at.
+
+### 28.4 The page, in the frame, with the sentence marked
+
+> *"some shots i litterally want the page to be there in the film with the
+> relevant sentence or paragraph highlighted"*
+
+**`pipeline/scripts/us_sf_city/build_film_scans.py`** — the scanned leaf,
+cropped to its text column, with the cited run of words marked. Three shots, the
+three NIGHT3 named, and never all eleven: **1** the fire, **5** Japantown, **7**
+the freeway revolt. The bridges and the Pyramid get none; the map is the
+evidence there.
+
+**The leaf is found and then PROVED, because the obvious rule is wrong.** The
+DjVu page suffix is not the BookReader leaf and the offset is not constant:
+
+```
+  excerptsfromsanf1908sanf    djvu 0009  ->  n6     offset 3
+  journalofproceed37sanfrich  djvu 0716  ->  n713   offset 3
+  journalofproceed54sanfrich  djvu 0058  ->  n57    offset 1
+```
+
+`_scandata.xml`'s own `leafNum` minus its `Delete` leaves agrees with two of the
+three and is one out on the first. **So no arithmetic is trusted.** The phrase is
+searched for in the volume's OCR, an offset is guessed, and then the fetched
+image is proved against the OCR's own line positions — the rows of dark pixels
+in the JPEG must fall inside the word boxes' row bands. It is crude and it is
+therefore hard to fool: the right leaf scores **1.000** and its neighbours in the
+same book, set in the same type at the same measure, score
+
+```
+  n53 0.658 · n54 0.796 · n55 0.760 · n56 0.860 · n57 1.000
+```
+
+because the LINES of two pages do not coincide. Below 0.90, or within 0.10 of
+the runner-up, the script exits.
+
+**What is on each page**
+
+| shot | leaf | what is marked |
+|---|---|---|
+| 1 | `excerptsfromsanf1908sanf` n6, p. 703 | *"The fire burned continuously during Wednesday and Thursday (when its main progress was checked), and to a small extent on Friday and Saturday, April 18-21, 1906."* — the page the shot already cited |
+| 5 | `journalofproceed37sanfrich` n713, p. 676, 20 Apr 1942 | the committee's own heading, **and** the caps line `ELLIS, CALIFORNIA, GOUGH AND FILLMORE STREETS` — the four streets the map is drawing, on the page that names them |
+| 7 | `journalofproceed54sanfrich` n57, p. 44, 26 Jan 1959 | the resolution's title naming seven freeways and excepting three, and *"Adopted, as amended, by the following vote: Ayes … — 11."* |
+
+Shot 5's leaf is **the same leaf the shot already cites** — 713, exactly — which
+also settles that `build_film_twelve.py`'s citation was right. Shot 7's is not:
+its beat begins at n48, the debate and the postponement, and the adoption is
+printed nine leaves later. That is a property of the corpus and not an error, so
+**the scan carries its own leaf and its own link and never overwrites the
+shot's**.
+
+**How it behaves.** `.fx-film-scan` is `right: 40px`, `min(36vw, 530px)`, and it
+is up for the whole of its shot **except the travel into it**, so it lands on
+the same cut the camera does. Not a fade — this film has no dissolves. Not a
+slide — shot 5 is the one shot protected as completely still, and a chrome panel
+that moves would be a move on it. **A cut costs nothing and breaks nothing.**
+
+The marks are `mix-blend-mode: multiply` in warm ochre: a highlighter, so the
+type stays black and stays readable THROUGH the mark. A solid box would hide the
+words and an outline would turn the page into a diagram. Not the family blue,
+for the same reason as §28.2.
+
+**Nothing off the page is ever narration.** The scan is a PICTURE, which is
+exactly why this is compatible with §THE NARRATION IS OUR SENTENCE; the `alt`
+text describes the document and does not quote it, and no shot's copy changed
+because it acquired a page.
+
+### 28.5 Shot 5's still camera moved, and it is still still
+
+At `off = (0.08, 0.05)` the panel covered the district's whole eastern side —
+Gough, one of the four streets the resolution names, underneath the page that
+names it. `out-p4/`: at −0.06 the east edge is still under the panel; at
+**−0.10** the four streets sit whole in the left 55 % and the page has the right.
+**No act was added, no curve, no effect** — only where the still camera sits,
+which is the same distinction §26.1 drew.
+
+### 28.6 Shot 7 and shot 9 are longer, for two different reasons
+
+| # | was | is | why |
+|---|---:|---:|---|
+| 7 freeways | 6,400 | **8,000** | NOT the reading floor — the line clears at 4.2 s against 5.2. It is the SCAN. Ten freeways named and struck, adopted 11–0, all on one opening, and five seconds is not long enough to read a page |
+| 9 embarcadero | 6,600 | **7,800** | §25.2's floor. The new line is 120 characters — 6.2 s at 22 a second plus 700 ms — against 5.4 s of visible copy |
+| title card | 2,400 | **3,200** | it carries a third line now (§28.8) |
+
+**1 m 28.7 s → 1 m 32.3 s.** Every shot still clears its own reading floor;
+shot 5 is still the longest shot in the film and still completely still.
+
+### 28.7 Eleven lines rewritten, and three of them failed their fact check
+
+Daniel reviewed the shipped set line by line and the structure he asked for is
+**the title states what happens, the line gives the detail**. All eleven titles
+and six lines changed. Three did not survive checking, and each is flagged in
+`build_film_twelve.py` beside the line rather than quietly reworded:
+
+**1 · "about 80 per cent of the city" is not on the source this shot cites.**
+The USGS casualties page gives 28,188 buildings, a burned district of 4.7 square
+miles, **225,000 homeless out of a population of about 400,000**, and
+$400,000,000 of damage of which $80,000,000 was the earthquake alone. That last
+pair is the only 80 on the page and it is 80 per cent of the LOSS. 4.7 square
+miles is about a tenth of the city's land area, so the figure cannot be read off
+the extent either. The homeless count is the same page, the same publisher, and
+it is the magnitude the approved line reached for — with the advantage of being
+about people, which is Daniel's own note on shot 9.
+
+**5 · "three weeks later" is the wrong side of the removal, on the Board's own
+record.** The earlier *Rehabilitation of Japanese Quarter* resolution in the same
+volume reads:
+
+> *"By the time the evacuation of San Francisco's Japanese is completed,
+> **estimated as May 15th, 1942**, it is imperative that a definite and
+> comprehensive program of rehabilitation and restoration in said district be in
+> progress"*
+
+So the slum-clearance resolution of 20 April is three and a half weeks **before**
+the date the Board itself expected the removal to end, not three weeks after it.
+The line now says *"before the removal was finished"*, which is what the record
+supports and is the harder fact.
+
+**9 · sixty-three is right, and it is the earthquake's toll and not San
+Francisco's.** USGS Fact Sheet 151-99: *"the quake killed 63 people"*, and on the
+same page *"San Francisco and Oakland … suffered more than 70% of the 63
+deaths"*. NOAA NCEI's significant-earthquake database gives 62 for the same
+event; the shot carries the USGS figure because USGS is the publisher the film
+already cites for 1906. The line says "the earthquake killed sixty-three people"
+and claims no city count.
+
+**The end card's three numbers were counted, not carried over**:
+`base/hood-rings.json` **41** names, `base/blocks-id.json` **5,404** ids,
+`base/places.json` `n = ` **2,197**. All three as given.
+
+**And its claim is already true.** Shots 8 and 10 carry no `cite`, but they are
+`kind: "data"` and each carries `links` to a DataSF register, which the plate
+renders as its own chip — so eleven of eleven lines have something a reader can
+open. Checked in the chrome, not assumed: `{!line?.cite && line?.links ? …}`.
+
+### 28.8 The sentence about the archive is the title card's third line
+
+> *"also at the beggining that it says so"*
+
+**Every shot's copy is `film.json`, not `en.ts`** — the film's text has never been
+in the dictionaries, and `TheCityClient` already says so in a comment about
+`title.sub`. So this is `TITLE["note"]`, written beside the shot list:
+
+> **Everything here comes from the city's own records.**
+
+**The entry plate was tried first and is where it does NOT belong.** That plate's
+own `<h1>` is *"The city, drawn from its own record"* and its lede opens *"Every
+building here is one San Francisco publishes"*, so a third sentence saying the
+same thing is the fourth restatement on one card — `out-p5/entry-c.png` is what
+that looked like. And Daniel asked for it after watching THE FILM, which is where
+it was missing. `out-p6/t.png`.
+
+### 28.9 Open
+
+- **§27.3's palette item is untouched.** Shot 1 at night is designed and not
+  built, and it is not built because it has not been confirmed.
+- Shot 3's colonnade wings are still fabric rows of sash windows (§27.3.2).
+- The label soup on shots 4 and 11 is still the biggest editorial question.

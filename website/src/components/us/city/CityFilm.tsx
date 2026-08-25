@@ -100,6 +100,48 @@ const FILM_URL = "/data/us/sf/city/film/film.json";
  * the hairline and holds — so a failed fetch loses one pass and nothing else.
  */
 const FIRE_URL = "/data/us/sf/city/film/fire.json";
+/**
+ * THE PAGE ITSELF, ON THREE OF THE ELEVEN SHOTS.
+ *
+ * Daniel: *"some shots i litterally want the page to be there in the film with
+ * the relevant sentence or paragraph highlighted"* — so this is not a citation
+ * chip and not a texture that suggests a document. It is the scanned leaf,
+ * cropped to its text column at a scale a reader can read, with the cited run
+ * of words marked, opening BESIDE the map while the map keeps running.
+ *
+ * `build_film_scans.py` finds the leaf by searching the volume's own OCR and
+ * then PROVES it against the page image's ink before cropping; the marks are
+ * the OCR's own word boxes. Nothing here retypes a word of the page, which is
+ * the whole reason this is compatible with §THE NARRATION IS OUR SENTENCE: a
+ * scan is a PICTURE. No text out of it is ever narration, and the sentence on
+ * the plate does not change on a shot that has one.
+ *
+ * A THIRD FETCH, for the same reason `fire.json` is a second one: a different
+ * script owns it. It costs nothing on the ten shots that have no scan, and if
+ * it never arrives the film is exactly the film it was.
+ */
+const SCANS_URL = "/data/us/sf/city/film/scans.json";
+
+interface FilmScan {
+  readonly n: number;
+  readonly src: string;
+  readonly w: number;
+  readonly h: number;
+  readonly item: string;
+  readonly leaf: number;
+  readonly url: string;
+  readonly vol: string;
+  readonly page: string;
+  readonly when: string;
+  readonly alt: string;
+  /** fractions of the CROP, so nothing here knows about the page */
+  readonly hl: readonly { readonly x: number; readonly y: number;
+                          readonly w: number; readonly h: number }[];
+}
+
+interface ScansPayload {
+  readonly scans: readonly FilmScan[];
+}
 
 interface FirePayload {
   readonly counts: { readonly burnedPlaced: number };
@@ -316,6 +358,7 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
   const t = useT();
   const [payload, setPayload] = useState<FilmPayload | null>(null);
   const [fireData, setFireData] = useState<FirePayload | null>(null);
+  const [scans, setScans] = useState<readonly FilmScan[] | null>(null);
   const [on, setOn] = useState(false);
   const [paused, setPaused] = useState(false);
   const [state, setState] = useState<FilmState | null>(null);
@@ -392,6 +435,12 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
       .then((r) => (r.ok ? (r.json() as Promise<FirePayload>) : null))
       .then((p) => {
         if (!dead && p) setFireData(p);
+      })
+      .catch(() => undefined);
+    void fetch(SCANS_URL)
+      .then((r) => (r.ok ? (r.json() as Promise<ScansPayload>) : null))
+      .then((p) => {
+        if (!dead && p) setScans(p.scans);
       })
       .catch(() => undefined);
     return () => {
@@ -801,6 +850,7 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
     on && payload && state && bands ? (
       <FilmChrome
         payload={payload}
+        scans={scans}
         state={state}
         cardRef={cardRef}
         barRef={barRef}
@@ -855,13 +905,11 @@ function paintOverlay(
       (x, y) => scene0.elevAt(x, y), s.burn, s.burn);
   if (s.bridge > 0 && live.deck.length)
     drawBridgeDeck(g, W, H, cam, live.deck, s.bridge, live.frames.base);
-  /* the four streets the 1942 resolution names, in the family ink of the shot
-     that names them — see `drawOutline` for why this is not the deck pass */
-  if (s.outline > 0 && live.outline.length) {
-    const oe = live.payload.shots[s.shot]?.build?.entity;
-    drawOutline(g, W, H, cam, live.outline, s.outline,
-      familyColour(oe ? live.payload.ents[oe] : undefined));
-  }
+  /* the four streets the 1942 resolution names, in the map's own ink for a
+     street the record is pointing at — see `drawOutline` for why this is
+     neither the deck pass nor the decision family's blue */
+  if (s.outline > 0 && live.outline.length)
+    drawOutline(g, W, H, cam, live.outline, s.outline);
   if (s.fire > 0 && live.fire.length)
     drawFireLosses(g, W, H, cam, projection, live.fire,
       (x, y) => scene0.elevAt(x, y), s.fire, live.maxUsd);
@@ -985,6 +1033,39 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
 .fx-film-reach-src a{color:inherit;text-decoration:none;
   border-bottom:1px solid rgba(90,83,72,.42)}
 .fx-film-reach-src a:hover{color:#161310;border-bottom-color:#161310}
+/* ── THE SCANNED PAGE, BESIDE THE MAP ───────────────────────────────────
+   Sized off the FRAME and not off the image: the crop is ~1,700 px of a
+   400-dpi page, so the constraint that matters is how many CSS pixels a
+   printed line gets. At a 520 px panel a Journal line lands at about 16 px,
+   which is readable; below ~420 px it stops being a page you can read and
+   becomes a picture of one, which is the thing this is not. */
+.fx-film-scan{position:absolute;right:40px;top:50%;transform:translateY(-50%);
+  width:min(36vw,530px);margin:0;pointer-events:auto}
+.fx-film-scan-page{position:relative;width:100%;max-height:74vh;overflow:hidden;
+  background:#f4efe2;border:1px solid rgba(22,19,16,.28);
+  box-shadow:0 18px 44px rgba(22,19,16,.22),0 2px 6px rgba(22,19,16,.14)}
+.fx-film-scan-page img{display:block;width:100%;height:auto}
+/* A HIGHLIGHTER, NOT A REDACTION AND NOT A BOX. CSS multiply lays a warm wash
+   over the paper the way a marker does, so the type stays black and stays
+   readable THROUGH the mark — a solid box or an outline would either hide the
+   words or turn the page into a diagram. Warm ochre and not the decision
+   family's blue, for the same reason the 1942 streets are not blue: a
+   saturated blue on a 1942 page reads as an interface, not as a mark on
+   paper. */
+.fx-film-scan-page i{position:absolute;display:block;
+  background:rgba(240,176,32,.46);mix-blend-mode:multiply;
+  box-shadow:0 0 0 2px rgba(240,176,32,.20)}
+/* ON A PLAQUE, BECAUSE IT LANDS ON THE MAP. Grey mono over a city of roofs
+   and street trees is unreadable at any size — measured by looking at
+   out-p3/t44000.png, where the line sits over Van Ness. It gets the same
+   paper the page is on, so it reads as part of the document. */
+.fx-film-scan figcaption{margin-top:0;font-family:var(--f-mono,ui-monospace,monospace);
+  font-size:10.5px;letter-spacing:.045em;text-transform:uppercase;color:#5a5348;
+  text-align:right;background:rgba(250,250,247,.94);
+  border:1px solid rgba(22,19,16,.28);border-top:0;padding:7px 10px}
+.fx-film-scan figcaption a{color:inherit;text-decoration:none;
+  border-bottom:1px solid rgba(90,83,72,.42)}
+.fx-film-scan figcaption a:hover{color:#161310;border-bottom-color:#161310}
 .fx-film-when{position:absolute;left:44px;bottom:74px;max-width:min(62ch,54vw);
   background:rgba(250,250,247,.97);border:1px solid rgba(22,19,16,.18);padding:18px 20px;
   pointer-events:auto}
@@ -1018,6 +1099,19 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
 .fx-film-card h2{margin:0;font-family:var(--f-disp,Georgia,serif);font-weight:700;
   font-size:clamp(28px,3.4vw,46px);letter-spacing:-.03em;max-width:22ch}
 .fx-film-card p{margin:0;font-size:15.5px;color:#5a5348;max-width:56ch;line-height:1.5}
+/* quieter than the sub and set apart from it: the sub says what the film is
+   and this says what it is made of */
+.fx-film-card .fx-film-card-note{margin-top:6px;font-size:13px;
+  font-family:var(--f-mono,ui-monospace,monospace);letter-spacing:.02em;
+  color:#6b6355;max-width:52ch}
+/* the plate reaches 52ch and the panel takes the right 38 %; below this the
+   two would meet, so the page moves to the top half and the copy keeps the
+   bottom. It is still the page and it is still readable. */
+@media (max-width:1180px){
+  .fx-film-scan{right:20px;left:20px;top:16px;transform:none;width:auto}
+  .fx-film-scan-page{max-height:34vh}
+  .fx-film-scan figcaption{text-align:left}
+}
 @media (max-width:820px){
   .fx-film-plate,.fx-film-when{left:20px;right:20px;bottom:60px;max-width:none}
   .fx-film-ctl{right:20px;bottom:26px}
@@ -1031,10 +1125,11 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
 `;
 
 function FilmChrome({
-  payload, state, paused, atEnd, streetsDone, streetsTotal, source,
+  payload, scans, state, paused, atEnd, streetsDone, streetsTotal, source,
   cardRef, barRef, liveDraw, onToggle, onExit, onSeek, shotT0, total,
 }: {
   payload: FilmPayload;
+  scans: readonly FilmScan[] | null;
   state: FilmState;
   paused: boolean;
   atEnd: boolean;
@@ -1072,11 +1167,49 @@ function FilmChrome({
   );
   const card = state.card ? (state.card === "title" ? payload.title : payload.end) : null;
   const line = state.line;
+  /* THE SCAN OPENS TO THE SIDE AND THE MAP KEEPS RUNNING — Daniel's own word
+     is "opens to the side", so the page is BESIDE the film and never over it.
+
+     It is up for the whole of its shot except the travel into it, so it lands
+     on the same cut the camera does. A fade would be a dissolve and this film
+     has none; a slide would be a move, and shot 5 is the one shot in the film
+     that is protected as completely still. A cut costs nothing and breaks
+     nothing. */
+  const scan =
+    !card && !paused && state.seg.k !== "move"
+      ? (scans ?? []).find((q) => q.n === payload.shots[state.shot]?.n) ?? null
+      : null;
 
   return (
     <div data-film-chrome="" data-paused={paused ? "1" : "0"}>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <div className="fx-film-scrim" />
+
+      {scan ? (
+        <figure className="fx-film-scan">
+          <div className="fx-film-scan-page" style={{ aspectRatio: `${scan.w} / ${scan.h}` }}>
+            {/* a plain <img>: the crop is a fixed, already-sized JPEG served
+                from our own /data, so there is nothing for next/image to
+                optimise and a loader in the middle of the film's own frame
+                budget is a cost with no return. */}
+            <img src={scan.src} alt={scan.alt} width={scan.w} height={scan.h} />
+            {scan.hl.map((h, i) => (
+              <i
+                key={i}
+                style={{
+                  left: `${h.x * 100}%`, top: `${h.y * 100}%`,
+                  width: `${h.w * 100}%`, height: `${h.h * 100}%`,
+                }}
+              />
+            ))}
+          </div>
+          <figcaption>
+            <a href={scan.url} target="_blank" rel="noopener">
+              {scan.vol} · p. {scan.page} · {scan.when}
+            </a>
+          </figcaption>
+        </figure>
+      ) : null}
 
       {card ? (
         /* THE WASH IS ON THE FILM'S CLOCK. `transition: opacity` never ran —
@@ -1086,6 +1219,12 @@ function FilmChrome({
         <div ref={cardRef} className="fx-film-card">
           <h2>{card.head}</h2>
           <p>{card.sub}</p>
+          {/* THE TITLE CARD'S THIRD LINE, and only the title card has one:
+              where every building, street and decision in the next ninety
+              seconds came from. `build_film_twelve.py` §TITLE.note carries the
+              sentence and the argument for it being here rather than on the
+              entry plate. It is not narration and it is not a quotation. */}
+          {card.note ? <p className="fx-film-card-note">{card.note}</p> : null}
         </div>
       ) : null}
 
