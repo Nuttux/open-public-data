@@ -4190,3 +4190,73 @@ The plate's own citation chip still reads `SCAN EXCERPTSFROMSANF1908SANF · LEAF
 *"the scan carries its own leaf and its own link and never overwrites the
 shot's"* — and it was already true before this change (the old scan was n6
 against the same LEAF 8). Recorded, not touched.
+
+## 32 · Block M1h — the 478, written down and NOT applied
+
+Not implemented. Daniel has decided every line in this film and rejected four
+drafts on register; this is the wording to take to him and the two things he has
+to be told with it.
+
+### 32.1 The argument for it has changed under it, and he needs to know that
+
+The coordinator's case was: *"the 1906 page we are already showing carries,
+three lines below our highlight… It is in the frame, unhighlighted, in the same
+column."* **That is no longer true.** The 478 sentence is on djvu 0009, leaf n6,
+**p. 703** — the page shot 1's scan used to show. §31.3 moved that scan to the
+fire department's report on **p. 721**, on Daniel's own approval, and the two
+pages are eighteen leaves apart. After the move the sentence is not on screen
+anywhere in the film.
+
+It is still the same volume and the same publisher, so the fact is as available
+as it was. What it is not any more is free.
+
+**If he wants the page shown as well as the number said**, the cheapest form is
+an `also` link to p. 703 on shot 1's plate beside the p. 721 scan chip — one
+click to the page that carries it. Two scans on one shot is not available; the
+panel is one leaf.
+
+### 32.2 The fact check, before the wording
+
+**478 is the city's own 1907 count and the same sentence disclaims it:**
+
+> *"The loss of life attending the great disaster is officially recorded at 478.
+> Whether more than this, or how many more, can never be told."*
+
+So a line that says *"478 people died"* asserts as fact a number its own source
+says is a floor. Modern published estimates are several times it. **The number
+has to be attributed on screen — "the city recorded" — or it must not be used.**
+That is the same discipline that changed shot 4's thirteen to six and shot 10's
+eleven to sixteen thousand.
+
+### 32.3 The wording
+
+**Proposal 1 — recommended.** One sentence, the shipped line's own shape, its
+last clause swapped:
+
+> **The fire burned for three days and destroyed some 28,000 buildings, and the
+> city recorded 478 dead.**
+
+99 characters, reads in 5.2 s against 11.2 s of visible copy. No aside, no second
+sentence, nothing telling the reader how to feel. **What it costs**: the
+225,000-of-400,000 homeless figure, which is USGS and which is the fact-checked
+replacement §28.7 found for the rejected *"80 per cent of the city"*, and which
+Daniel reached for because it was about people. Trading one human number for
+another is the whole of this decision and it is his.
+
+**Proposal 2 — if he wants both.**
+
+> **The fire burned for three days, destroyed some 28,000 buildings, left
+> 225,000 of the city's 400,000 people homeless, and the city recorded 478
+> dead.**
+
+148 characters, reads in 7.4 s, still inside the floor. It is four clauses, and
+the register note in NIGHT3 warns against *"lists of nouns"*; this is the
+version that risks it.
+
+**Not proposed**: the deaths as a second sentence, because the register forbids
+one; and any form of *"and no one will ever know how many more"*, which is the
+volume's own sentence rewritten and therefore a quotation wearing our voice.
+
+**Sources, if either is taken.** Three days — USGS, and p. 721 of this volume
+marks it. 28,000 buildings — USGS, 28,188. 478 — San Francisco Municipal
+Reports, 1906-07, p. 703, leaf n6.
