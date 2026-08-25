@@ -128,6 +128,20 @@ export const CURVE: Readonly<Record<string, (x: number) => number>> = {
   travel: bezier(0.45, 0.05, 0.55, 0.95),
   fade: bezier(0, 0, 0.58, 1),
   settle: outBack(1.055),
+  /* NO EASE AT ALL, and it is here for the fire.
+     Every other curve in this table is a CAMERA curve: a move has to start and
+     stop, so it is eased at both ends. `move` — `bezier(0.4, 0, 0.2, 1)` — is
+     the strongest ease-out of them, and the fire act was reading its ignition
+     sweep off it. Measured on the shipped cut, the act's own phase against the
+     film clock: 0.083 at 5.9 s, 0.386 at 7.2 s, 0.707 at 8.5 s, 0.869 at
+     9.7 s, 0.953 at 11.0 s, 0.992 at 12.3 s. **Three quarters of the act's
+     phase is spent in the first 45 % of its nine seconds**, and the last four
+     seconds move it 0.87 to 1.00 — which is a frame of embers held for four
+     seconds and is exactly the note this whole pass exists to answer.
+     Thirty-five structures lighting one after another is not a camera arriving
+     somewhere. Nothing accelerates and nothing decelerates: the record gives
+     no ignition time for any of them, so the only honest sweep is an even one. */
+  even: (x: number) => x,
 };
 
 const curveOf = (n: string | null | undefined): ((x: number) => number) =>
@@ -435,7 +449,9 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      spreads. The fire can arrive; it cannot advance."* */
   burn: [
     { k: "build", ms: 1400, what: "burnLine", curve: "enter" },
-    { k: "fire", ms: 9000, curve: "move" },
+    /* `even`, not `move` — see CURVE.even. On the camera's ease-out the whole
+       fire was over by 9.7 s of a 15 s shot. */
+    { k: "fire", ms: 9000, curve: "even" },
     /* held longer than is comfortable, which is the instruction and is right:
        the frame the fire leaves is the frame shot 2 opens on. */
     { k: "hold", ms: 4600 },

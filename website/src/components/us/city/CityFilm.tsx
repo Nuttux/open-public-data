@@ -717,6 +717,10 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
              as what it is showing */
           badge: st.badge, says: st.line?.cite?.entity ?? null,
           hide: st.hide.length, burn: +st.burn.toFixed(3), bridge: +st.bridge.toFixed(3),
+          /* the fire act's own rise. A harness that cannot read this cannot
+             tell "the flames are small" from "the act is over", and four
+             contact sheets of shot 1 were read the wrong way round for it. */
+          fire: +st.fire.toFixed(3),
         };
       },
       seek: (ms: number) => {

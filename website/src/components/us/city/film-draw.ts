@@ -631,6 +631,27 @@ const FIRE_WIN = 0.74;
 /** where in its own window the flame peaks, before it dies back to an ember */
 const FIRE_PEAK = 0.26;
 /**
+ * HOW LONG A FLAME STANDS AT ITS FULL HEIGHT BEFORE IT DIES BACK — a local
+ * phase, and it exists because the fire was over long before the shot was.
+ *
+ * The decay used to start the instant the flame peaked: `down` fell linearly
+ * from `FIRE_PEAK` all the way to the end of the window, so a structure was
+ * under a third of its height for three quarters of its own life. Measured on
+ * the shipped cut (`out-n3/seq-q0*.png`, six frames across 5.0-14.0 s): the
+ * flames peak at **6.8 s and are gone by 10.4 s — 2.5 s of fire in a 15 s
+ * shot**, and the contact-sheet mark every harness here uses, 62 % through the
+ * shot, lands at act phase 0.886 and has never once seen a flame. Daniel's
+ * first note was *"you need a real fire thing going on"*.
+ *
+ * The window, the order and the ending are all unchanged: a flame still lights
+ * where its `lead` puts it, still ends its window at `0.22` of its height, and
+ * the frame the fire leaves — which is the frame shot 2 opens on — is the
+ * same frame it always was. What changes is only the middle, and it is a
+ * DRAWING decision about a fire nobody published a timeline for, exactly as
+ * `FIRE_WIN` and `FIRE_PEAK` above it are.
+ */
+const FIRE_HOLD = 0.66;
+/**
  * CANVAS pixels of flame at the largest figure on the page, at the film's own
  * z 2.05 — and the canvas is at DPR 2, so these are half this many CSS pixels.
  * Set at 46/13 first, which is 23/7 CSS px on a 1440 px stage: measured on
@@ -793,7 +814,10 @@ export function drawFireLosses(
   g.save();
   for (const f of seen) {
     const up = Math.min(1, f.p / FIRE_PEAK);
-    const down = f.p <= FIRE_PEAK ? 1 : 1 - (f.p - FIRE_PEAK) / (1 - FIRE_PEAK);
+    /* the plateau is `FIRE_HOLD`, not `FIRE_PEAK` — see the constant. Decaying
+       from the peak put every flame under a third of its height for three
+       quarters of its window, so the act's own middle was embers. */
+    const down = f.p <= FIRE_HOLD ? 1 : 1 - (f.p - FIRE_HOLD) / (1 - FIRE_HOLD);
     /* linear in `down`, not squared. Squared put nineteen of the twenty-seven
        under 10 % of their height by the middle of the act, which is a field of
        embers with two flames on it — the note this whole pass exists to answer. */
