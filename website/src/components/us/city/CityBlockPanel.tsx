@@ -97,6 +97,7 @@ import FicheArchiveShelf from "@/components/fiche/FicheArchiveShelf";
 import type { FicheArchiveDoc } from "@/components/fiche/types";
 import {
   archiveHref,
+  sourceHref,
   blockLead,
   blockNow,
   blockPlaces,
@@ -226,9 +227,17 @@ function whenOf(d: BlockDecision): string {
   return m ? `${Number(dd)} ${m} ${d.y}` : String(d.y);
 }
 
-/** the volume slug, spelled out as far as it spells itself */
-function seriesOf(u: string): string {
-  const vol = u.split("/")[0] ?? "";
+/**
+ * The volume slug, spelled out as far as it spells itself.
+ *
+ * Takes the decision, not `u`: a Board PDF and an Archive scan carry the same
+ * string shape, and calling this "Internet Archive" for a file the Clerk
+ * posted would credit the wrong institution — in front of the one audience
+ * that would notice.
+ */
+function seriesOf(d: Pick<BlockDecision, "u" | "c">): string {
+  if (d.c === "b") return "Board of Supervisors, Clerk's meeting minutes";
+  const vol = d.u.split("/")[0] ?? "";
   if (vol.startsWith("journal")) return "Board of Supervisors, Journal of Proceedings";
   if (vol.startsWith("annualreport") || vol.startsWith("annrep"))
     return "Department annual report";
@@ -262,8 +271,8 @@ function toDoc(d: BlockDecision, i: number): FicheArchiveDoc {
     gloss: d.t.trim() || null,
     title: `${kind} · ${whenOf(d)}`,
     year: null,
-    href: archiveHref(d.u),
-    sourceLabel: seriesOf(d.u),
+    href: sourceHref(d),
+    sourceLabel: seriesOf(d),
     variantNote: tier + (d.approx ? " · page ≈" : ""),
   };
 }
@@ -571,8 +580,8 @@ function HoodHighlights({ hood, t }: { hood: HoodRecord; t: (k: string) => strin
     gloss: h.t,
     title: `${KIND_WORDING[h.k] ?? "Item"} · ${h.y || h.y0}`,
     year: null,
-    href: archiveHref(h.u),
-    sourceLabel: seriesOf(h.u),
+    href: sourceHref(h),
+    sourceLabel: seriesOf(h),
     variantNote:
       (h.nb > 1
         ? t("us.sf.thecity.panel.hood_hl_blocks").replace("{n}", String(h.nb))
@@ -668,11 +677,13 @@ function BlockLead({ d, t }: { d: BlockDecision; t: (k: string) => string }) {
       <p style={{ margin: "8px 0 0" }}>
         <a
           className="fx-block-jump"
-          href={archiveHref(d.u)}
+          href={sourceHref(d)}
           target="_blank"
           rel="noopener noreferrer"
         >
-          {tOr(t, "us.sf.thecity.panel.lead_open", "Open the scanned page")}
+          {d.c === "b"
+            ? tOr(t, "us.sf.thecity.panel.lead_open_pdf", "Open the minutes")
+            : tOr(t, "us.sf.thecity.panel.lead_open", "Open the scanned page")}
           {" ↗"}
         </a>
       </p>
@@ -1548,8 +1559,8 @@ export default function CityBlockPanel({
                 ? tOr(
                     t,
                     "us.sf.thecity.panel.rail_shelf_end",
-                    "The scanned series ends in {y} — the bound volumes stop there, not the Board. The Clerk has published every meeting since; no library has paginated them into this series, which changed title three times and was once thought to end in 1999.",
-                  ).replace("{y}", String(SERIES_LAST_YEAR))
+                    "Two record systems meet here. The Board's bound volumes were scanned through June 2016; from July 2016 the City stopped printing them and posted PDFs instead, and those are cited to the Clerk's own files.",
+                  )
                 : tOr(
                     t,
                     "us.sf.thecity.panel.rail_shelf_behind",

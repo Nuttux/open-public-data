@@ -58,6 +58,18 @@ export interface BlockDecision {
    * decade on the rail.
    */
   readonly g?: string;
+  /**
+   * WHICH RECORD SYSTEM RESOLVES `u`. Absent means the Internet Archive's
+   * scan of a bound volume — every row published before 2026-08 — so adding
+   * this changed no byte that was already on disk.
+   *
+   * `b` is a PDF the Clerk posted at sfbos.org. MEASURED at the seam: the
+   * Archive's volumes end 2016-06-07 and the Clerk's files begin 2016-07-12,
+   * seventeen meeting dates each side and **none in common**. The City
+   * stopped printing books over the 2016 summer recess, so this is not a
+   * format flag — it is the join between two ways of keeping a record.
+   */
+  readonly c?: string;
 }
 
 export interface BlockShardEntry {
@@ -186,6 +198,27 @@ export async function loadStreetRecord(key: string): Promise<BlockDecision[]> {
 export function archiveHref(u: string): string {
   const [vol, leaf] = u.split("/");
   return `https://archive.org/details/${vol}/page/n${leaf}/mode/1up`;
+}
+
+/**
+ * THE SOURCE LINK, AND THERE ARE TWO OF THEM.
+ *
+ * Take the decision, never `d.u` alone: the string is the same shape in both
+ * systems and only `c` says which one resolves it. A row sent to the wrong
+ * resolver does not fail loudly — it builds a plausible archive.org URL for a
+ * volume that does not exist, and the reader gets a 404 that looks like the
+ * Archive's fault rather than ours.
+ *
+ * The Clerk's form is reconstructed rather than stored per row because the
+ * pipeline gate proves it can be: every one of the 6,786 sfbos rows satisfies
+ * `url === PREFIX + stem + SUFFIX`, and all 372 files were checked live to
+ * return `application/pdf` served inline, so `#page=` lands.
+ */
+export function sourceHref(d: Pick<BlockDecision, "u" | "c">): string {
+  const [doc, page] = d.u.split("/");
+  return d.c === "b"
+    ? `https://sfbos.org/sites/default/files/${doc}_minutes.pdf#page=${page}`
+    : `https://archive.org/details/${doc}/page/n${page}/mode/1up`;
 }
 
 /** "PINE|ST" → "Pine St" */
