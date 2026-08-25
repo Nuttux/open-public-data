@@ -491,18 +491,74 @@ def _seg_x(a, b, c, d):
     return None
 
 
+def _line_x(a, b, c, d):
+    """Where the INFINITE lines through a-b and c-d meet. `_seg_x` is the same
+    arithmetic with both parameters clamped to [0, 1]; this one is not, and it
+    is used for exactly one thing — the corner the redevelopment removed."""
+    (x1, y1), (x2, y2) = a, b
+    (x3, y3), (x4, y4) = c, d
+    den = (x2 - x1) * (y4 - y3) - (y2 - y1) * (x4 - x3)
+    if abs(den) < 1e-14:
+        return None
+    t = ((x3 - x1) * (y4 - y3) - (y3 - y1) * (x4 - x3)) / den
+    return (x1 + t * (x2 - x1), y1 + t * (y2 - y1))
+
+
+def _seg_mid(s):
+    return ((s[0][0] + s[1][0]) / 2, (s[0][1] + s[1][1]) / 2)
+
+
+def _closest_pair(sa, sb):
+    """The one segment from each list whose midpoints are nearest."""
+    best, bd = None, 1e18
+    for u in sa:
+        mu = _seg_mid(u)
+        for v in sb:
+            mv = _seg_mid(v)
+            d = (mu[0] - mv[0]) ** 2 + (mu[1] - mv[1]) ** 2
+            if d < bd:
+                bd, best = d, (u, v)
+    return best
+
+
+def _in_poly(pt, poly) -> bool:
+    x, y = pt
+    inside = False
+    n = len(poly)
+    for i in range(n):
+        x1, y1 = poly[i]
+        x2, y2 = poly[(i + 1) % n]
+        if (y1 > y) != (y2 > y):
+            xx = x1 + (y - y1) * (x2 - x1) / (y2 - y1)
+            if x < xx:
+                inside = not inside
+    return inside
+
+
 def district_outline(names: list[str]) -> tuple[list, tuple[float, float]]:
-    """The four streets the 1942 resolution names, clipped to the box they make.
+    """The four streets the 1942 resolution names, clipped to the quadrilateral
+    their own crossings make.
 
-    NOT A POLYGON, and the difference matters. The Board named four streets; the
-    film draws four streets. The bounding box is the extent of their own mutual
-    intersections, and each street is emitted over that box only.
+    NOT A POLYGON ON THE FRAME, and the difference matters. The Board named four
+    streets; the film draws four streets. The quadrilateral below is only the
+    CLIP — what is stroked is published centreline, segment by segment.
 
-    THREE OF THE FOUR CORNERS EXIST IN THE 2026 CENTRELINE FILE AND ONE DOES
-    NOT: Ellis no longer reaches Fillmore. The redevelopment this very
-    resolution asked Washington for is what cut it — so the missing corner is
-    the resolution's own consequence, and the box is taken from the three
-    crossings that do exist plus Fillmore's own longitude at Ellis's latitude.
+    THE FIRST VERSION CLIPPED TO AN AXIS-ALIGNED BOUNDING BOX AND THREW ELLIS
+    STREET AWAY ENTIRELY. Three sides reached the frame and the shot's only
+    gesture was a broken bracket — `out-m1d/shots-s05.png`. The cause is that
+    **the Western Addition sits on two grids**: Ellis runs on the Market Street
+    grid, so between Gough and Fillmore it falls 0.0019 degrees of latitude,
+    which is 210 metres. The box's south edge is Ellis's latitude AT GOUGH, so
+    every Ellis segment west of Gough is below it and every one was clipped.
+
+    THREE OF THE FOUR CORNERS ARE PUBLISHED CROSSINGS. The fourth is not:
+    Ellis's centreline is interrupted between longitude -122.430798 and
+    -122.434162, which is exactly the block where Fillmore would cross it, and
+    the redevelopment this very resolution asked Washington for is what cut it.
+    That corner is taken as the intersection of the two streets' own published
+    ALIGNMENTS — the nearest Ellis segment and the nearest Fillmore segment,
+    each extended as a line — so it is read off both streets and invented from
+    neither. It is the only extrapolated number in this file and it is named.
     """
     S = _streets()
 
@@ -517,36 +573,69 @@ def district_outline(names: list[str]) -> tuple[list, tuple[float, float]]:
 
     by = {nm: segs(nm) for nm in names}
     ns, ew = names[:2], names[2:]          # Ellis, California | Gough, Fillmore
-    pts = []
+    corner: dict = {}
     for a in ns:
         for b in ew:
             for s1 in by[a]:
                 for s2 in by[b]:
                     p = _seg_x(s1[0], s1[1], s2[0], s2[1])
                     if p:
-                        pts.append(p)
-    if len(pts) < 3:
-        sys.exit(f"the 1942 district: only {len(pts)} of the four corners are in "
-                 "the centreline file")
-    lon0, lon1 = min(p[0] for p in pts), max(p[0] for p in pts)
-    lat0, lat1 = min(p[1] for p in pts), max(p[1] for p in pts)
-    # widen west to Fillmore's own longitude at Ellis's latitude — the corner
-    # the modern file has lost. Read off Fillmore, not invented.
-    for s in by[names[3]]:
-        if min(s[0][1], s[1][1]) <= lat0 <= max(s[0][1], s[1][1]):
-            lon0 = min(lon0, s[0][0], s[1][0])
+                        corner[(a, b)] = p
+    missing = [k for k in ((a, b) for a in ns for b in ew) if k not in corner]
+    if len(missing) > 1:
+        sys.exit(f"the 1942 district: {len(missing)} corners are not in the "
+                 f"centreline file and only one may be extrapolated: {missing}")
+    for a, b in missing:
+        pair = _closest_pair(by[a], by[b])
+        if pair is None:
+            sys.exit(f"the 1942 district: no {a}/{b} alignment to extend")
+        p = _line_x(pair[0][0], pair[0][1], pair[1][0], pair[1][1])
+        if p is None:
+            sys.exit(f"the 1942 district: {a} and {b} are parallel")
+        corner[(a, b)] = p
 
-    pad = 1e-5
-    lines = []
+    # the quadrilateral, in ring order: the two north corners then the two south
+    quad = [corner[(ns[1], ew[0])], corner[(ns[1], ew[1])],
+            corner[(ns[0], ew[1])], corner[(ns[0], ew[0])]]
+    cx = sum(p[0] for p in quad) / 4
+    cy = sum(p[1] for p in quad) / 4
+    # A DRAWING TOLERANCE, DECLARED: the streets ARE the quadrilateral's edges,
+    # so a centreline vertex sits ON the boundary and a strict point-in-polygon
+    # test is a coin toss. The ring is pushed 20 m out from its own centroid
+    # before the test, which is about a half-block and is the same order as the
+    # width of the streets being clipped.
+    OUT_M = 20.0
+    grown = []
+    for x, y in quad:
+        dx, dy = x - cx, y - cy
+        d = (dx * dx + dy * dy) ** 0.5 or 1e-9
+        # metres per degree at this latitude, close enough for a tolerance
+        mx, my = 88_000.0, 111_000.0
+        grown.append((x + dx / d * OUT_M / mx, y + dy / d * OUT_M / my))
+
+    lines, per = [], {}
     for nm in names:
-        for s in by[nm]:
-            (x1, y1), (x2, y2) = s
-            if (lon0 - pad <= x1 <= lon1 + pad and lat0 - pad <= y1 <= lat1 + pad
-                    and lon0 - pad <= x2 <= lon1 + pad and lat0 - pad <= y2 <= lat1 + pad):
-                lines.append([[round(x1, 6), round(y1, 6)], [round(x2, 6), round(y2, 6)]])
+        n0 = 0
+        for (x1, y1), (x2, y2) in by[nm]:
+            if _in_poly((x1, y1), grown) and _in_poly((x2, y2), grown):
+                lines.append([[round(x1, 6), round(y1, 6)],
+                              [round(x2, 6), round(y2, 6)]])
+                n0 += 1
+        per[nm] = n0
     if not lines:
         sys.exit("the 1942 district clipped to nothing")
-    return lines, ((lon0 + lon1) / 2, (lat0 + lat1) / 2)
+    # EVERY NAMED STREET HAS TO REACH THE FRAME. The box version passed this
+    # file's own checks while drawing three sides of four, because nothing
+    # asserted that all four were there.
+    empty = [nm for nm in names if per[nm] == 0]
+    if empty:
+        sys.exit(f"the 1942 district: {', '.join(empty)} clipped to nothing — "
+                 "the resolution names four streets and the film must draw four")
+    print(f"  the 1942 district: " +
+          " · ".join(f"{nm} {per[nm]}" for nm in names) +
+          (f" · {missing[0][0]}x{missing[0][1]} corner extrapolated"
+           if missing else ""))
+    return lines, (cx, cy)
 
 
 def hero_rings() -> dict:

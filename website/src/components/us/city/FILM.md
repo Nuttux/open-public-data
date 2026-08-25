@@ -2734,3 +2734,31 @@ defect and names the same two fixes.
 - **Shot 1's fire still reads as brown discs at z = 2.05.** The flames are there and they
   are ~10 px; the flare's disc is what the eye gets.
 - The Presidio barracks left of the Palace, and the piers on shot 9, are flat prisms.
+
+### 21.6 The 1942 boundary was a broken bracket, and the cause is two street grids
+
+`out-m1d/shots-s05.png`: three sides in the family ink and no south edge. The shot's only
+gesture, and **ELLIS STREET was being clipped away entirely — all twelve of its segments
+west of Gough.**
+
+`district_outline` clipped the four named streets to an AXIS-ALIGNED BOUNDING BOX of their
+own crossings. **The Western Addition sits on two grids.** Ellis runs on the Market Street
+grid, so between Gough and Fillmore it falls **0.0019° of latitude — 210 metres**. The
+box's south edge is Ellis's latitude *at Gough*, so every Ellis segment west of Gough lies
+below it. Measured: `(-122.424295, 37.783400)` at Gough down to `(-122.441340, 37.781235)`.
+
+The clip is now **the quadrilateral the four streets' own crossings make**, and each
+street's segments are kept where both endpoints fall inside it. Three of the four corners
+are published crossings. **The fourth is not, and it is the only extrapolated number in
+that file:** Ellis's centreline is interrupted between longitude −122.430798 and
+−122.434162, which is exactly the block where Fillmore would cross it — the redevelopment
+this resolution asked Washington for is what cut it. That corner is the intersection of the
+two streets' own published *alignments*, each extended as a line, so it is read off both
+and invented from neither.
+
+Two things are declared rather than silent: the ring is pushed **20 m** out from its own
+centroid before the point-in-polygon test, because the streets ARE the edges and a
+centreline vertex sitting on the boundary is otherwise a coin toss; and the builder now
+**exits if any named street clips to nothing**. The box version passed every check this
+file had while drawing three sides of four, because nothing asserted that all four were
+there. It prints `ELLIS 6 · CALIFORNIA 6 · GOUGH 8 · FILLMORE 8`.
