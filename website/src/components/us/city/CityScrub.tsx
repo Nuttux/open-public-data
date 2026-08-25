@@ -522,7 +522,15 @@ export function useCityScrub(
         ))}
       </div>
 
-      <ScrubNote rail={rail} year={year} />
+      <ScrubNote
+        rail={rail}
+        year={year}
+        onSeek={(y) => {
+          pause();
+          engage();
+          commit(y);
+        }}
+      />
     </div>
   ) : null;
 
@@ -532,13 +540,35 @@ export function useCityScrub(
 /* ── WHAT THE YEAR ON THE RAIL ACTUALLY MEANS ─────────────────────────────
    One line, and it changes with the year rather than saying the same thing
    everywhere. The three cases it has to cover are the three ways this rail can
-   mislead a reader who takes it at face value. */
+   mislead a reader who takes it at face value.
+
+   ── AND IT IS THE RAIL'S ONLY LEGEND ────────────────────────────────────
+   Read as a reader rather than as its author (`out-m1d/rail-sheet.png`), the
+   rail puts FIVE distinct visual codes on screen and explains none of them:
+   ochre bars of varying height, grey ticks hanging below the line, coloured
+   diamonds, a hatched band, and decade labels. The only key anywhere is a
+   `title` attribute on an 8 px diamond — invisible on a touch screen and
+   undiscoverable on a mouse.
+
+   The fix is not a new legend block. **The sentences under the rail already
+   say what two of the three marks mean** — "…streets the Board voted to accept
+   are drawn by 1906" is the ochre bars, and "the last street acceptance …
+   lands in 1947" is the hatch. They were simply never attached to the mark
+   they describe. So each phrase now carries the mark itself, at the size it is
+   drawn on the rail, and the third gets a phrase of its own: the moments,
+   which are the most useful thing on the rail and were reachable only by
+   hovering.
+
+   `next` stops being a sentence and becomes the control it was describing: it
+   names the next dated moment and MOVES THE RAIL THERE. */
 function ScrubNote({
   rail,
   year,
+  onSeek,
 }: {
   rail: Rail;
   year: number | undefined;
+  onSeek: (y: number) => void;
 }): ReactNode {
   const t = useT();
   const nf = useMemo(() => new Intl.NumberFormat("en-US"), []);
@@ -571,9 +601,14 @@ function ScrubNote({
      `us.sf.thecity.scrub.trees` is left in both dictionaries and is now unused;
      see FILM.md §17 for the replacement text proposed for it. */
   let caveat: string | null = null;
+  /* which MARK the caveat is about, so the glyph in front of it is the thing
+     on the rail the sentence is explaining and not a decoration */
+  let caveatMark: "gap" | "hatch" | null = null;
   if (!hasVolume(iy) && iy <= rail.lastSwept) {
+    caveatMark = "gap";
     caveat = t("us.sf.thecity.scrub.no_volume").replace("{year}", String(iy));
   } else if (year !== undefined && iy > SERIES_LAST_YEAR) {
+    caveatMark = "hatch";
     /* PAST THE SCANNED SERIES: the same sentence the block panel prints under
        its own decade rail, and deliberately the same one rather than a second
        wording for the same fact. The Board's Journal is scanned to 1999; what
@@ -586,6 +621,7 @@ function ScrubNote({
       String(SERIES_LAST_YEAR),
     );
   } else if (year !== undefined && iy > rail.lastSwept) {
+    caveatMark = "hatch";
     caveat = t("us.sf.thecity.scrub.past_sweep").replace(
       "{year}",
       String(rail.lastSwept),
@@ -607,15 +643,45 @@ function ScrubNote({
 
   return (
     <p className="fx-city-scrub-note" aria-live="polite">
-      <span className="fx-city-scrub-count">{streets}</span>
+      <span className="fx-city-scrub-count">
+        <i className="fx-city-key fx-city-key-vote" aria-hidden="true" />
+        {streets}
+      </span>
       {next ? (
-        <span className="fx-city-scrub-next">
+        /* THE ARROW IS THE POINT. It named a year and a building and left the
+           reader to find an 8 px diamond among a hundred and nineteen years.
+           It is a button now: the mark in front of it is the diamond it is
+           talking about, in that moment's own family colour, and pressing it
+           puts the rail on that year. */
+        <button
+          type="button"
+          className="fx-city-scrub-next"
+          onClick={() => onSeek(next.y)}
+        >
+          <i
+            className="fx-city-key fx-city-key-moment"
+            style={{ background: next.colour }}
+            aria-hidden="true"
+          />
           {t("us.sf.thecity.scrub.next")
             .replace("{year}", String(next.y))
             .replace("{what}", next.name)}
+          <span className="fx-city-scrub-go" aria-hidden="true">
+            →
+          </span>
+        </button>
+      ) : null}
+      {caveat ? (
+        <span className="fx-city-scrub-caveat">
+          {caveatMark ? (
+            <i
+              className={`fx-city-key fx-city-key-${caveatMark}`}
+              aria-hidden="true"
+            />
+          ) : null}
+          {caveat}
         </span>
       ) : null}
-      {caveat ? <span className="fx-city-scrub-caveat">{caveat}</span> : null}
     </p>
   );
 }

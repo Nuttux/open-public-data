@@ -17549,11 +17549,20 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 /* the line under the rail spans it, because it is about the year the rail is
    on and not about the button beside it */
+/* THE CHAT LAUNCHER SITS ON TOP OF THIS SENTENCE, AND HAS ALL ALONG.
+   Measured at 1440x900: the launcher is a fixed pill at x 1270-1420, y 836-880
+   and the note's box is x 24-1416, y 829-846 — 146 px of overlap, on EVERY
+   year of the rail. `out-m1d/rail-sheet.png` shows the caption ending in
+   "…carry no date in any published fil" at 1906 and losing the last four words
+   at four of the other five. It is not a wrapping problem and no amount of
+   shorter copy fixes it; the row has to stop before the launcher does. */
 .theme-fusion .fx-city-scrub-note {
   grid-column: 1 / -1;
   margin: 2px 0 0;
+  padding-right: 168px;
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
   gap: 2px 18px;
   font-family: var(--f-mono);
   font-size: 10.5px;
@@ -17561,8 +17570,65 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   color: var(--muted);
 }
 .theme-fusion .fx-city-scrub-count { color: var(--ink-2); }
-.theme-fusion .fx-city-scrub-next { color: var(--ink); }
 .theme-fusion .fx-city-scrub-caveat { color: var(--muted); flex: 1 1 42ch; }
+
+/* ── THE RAIL'S KEY, AND IT IS THE MARKS THEMSELVES ────────────────────────
+   Each glyph is the mark as the rail draws it, at the size the rail draws it,
+   sitting in front of the sentence that already explained it. There is no
+   legend block: a legend a reader has to carry back to the rail is a second
+   thing to read, and these three phrases were on screen anyway. */
+.theme-fusion .fx-city-key {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-right: 6px;
+  flex: none;
+}
+.theme-fusion .fx-city-key-vote {
+  width: 2px;
+  height: 9px;
+  background: var(--ocre);
+  transform: translateY(1px);
+}
+.theme-fusion .fx-city-key-gap {
+  width: 2px;
+  height: 7px;
+  background: var(--muted);
+  opacity: .5;
+}
+.theme-fusion .fx-city-key-moment {
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg) translateY(-1px);
+  box-shadow: 0 0 0 1.5px var(--bg);
+  margin-right: 8px;
+}
+.theme-fusion .fx-city-key-hatch {
+  width: 14px;
+  height: 8px;
+  opacity: .45;
+  background: repeating-linear-gradient(135deg,
+    var(--muted) 0 1px, transparent 1px 5px);
+}
+/* the "next moment" phrase is a control now: it moves the rail to that year */
+.theme-fusion .fx-city-scrub-next {
+  display: inline-flex;
+  align-items: baseline;
+  padding: 1px 7px 2px 5px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+}
+.theme-fusion .fx-city-scrub-next:hover {
+  border-color: var(--ink);
+  background: var(--bg-2, transparent);
+}
+.theme-fusion .fx-city-scrub-next:focus-visible {
+  outline: 2px solid var(--bleu);
+  outline-offset: 2px;
+}
+.theme-fusion .fx-city-scrub-go { margin-left: 7px; color: var(--muted); }
 
 @media (max-width: 819px) {
   .theme-fusion .fx-city-scrub {
@@ -17574,6 +17640,9 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   .theme-fusion .fx-city-scrub-rail { grid-column: 1 / -1; grid-row: 2; height: 44px; }
   .theme-fusion .fx-city-scrub-speed { grid-column: 3; grid-row: 1; justify-self: end; }
   .theme-fusion .fx-city-scrub-dec-minor { display: none; }
+  /* the launcher is the same fixed pill on a phone and the note is narrower;
+     it still must not run under it */
+  .theme-fusion .fx-city-scrub-note { padding-right: 64px; }
 }
 .theme-fusion .fx-city-help {
   display: flex;

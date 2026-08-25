@@ -2791,3 +2791,54 @@ three sizes measured by looking rather than reasoned:
 `out-m1d/crop-fire8c.png` and `out-m1d/seq-sheet.png` — eight frames from the burn line
 drawing itself through the fire to the scorched ground. It is a burning city and then a
 burned one, and the year line is monotone across the cut into shot 2.
+
+## 22 · Block M1d — the year rail, read as a reader
+
+> *"work on reworking the arrow legend timeline"* — and no more than that, so the first
+> job was to look at it and say what is wrong. `.parity/m1d2rail.py` opens the EXPLORER
+> (every film harness in this directory dismisses the entry plate by starting the film,
+> which HIDES the whole transport row, so none of them has ever seen the rail) and shoots
+> the row at six years. `out-m1d/rail-sheet.png`.
+
+### 22.1 What is wrong, before changing anything
+
+1. **The caption runs under the chat launcher, on every year of the rail.** Measured at
+   1440×900: the launcher is a fixed pill at x 1270–1420, y 836–880; the note's box is
+   x 24–1416, y 829–846. **146 px of overlap.** At 1906 the sentence ends *"…carry no date
+   in any published fil"*. It is not a wrapping problem and no shorter copy fixes it.
+2. **Five visual codes on the rail and no key for any of them**: ochre bars of varying
+   height, grey ticks hanging below the line, coloured diamonds, a hatched band, decade
+   labels. The only explanation anywhere is a `title` attribute on an **8 px** diamond —
+   invisible on touch, undiscoverable on a mouse.
+3. **The most useful thing on the rail is the least reachable.** The diamonds are the
+   dated moments — the Palace, the Opera House, the Bay Bridge — and their names live in
+   that tooltip.
+4. *"Next: 1915, Palace of Fine Arts"* **names a year and then leaves the reader to find an
+   8 px diamond among a hundred and nineteen years.**
+5. Two different unrecorded stories share one hatch: 1947–1999 is *the sweep stopped*,
+   2000–2025 is *the Journal ends and the record moves to Legistar*. The caption changes;
+   the mark does not.
+6. The decade labels change format at 2000 — `1990`, then `’00`.
+7. Play is at the far left of the row and the speed buttons are at the far right, about
+   1,200 px apart.
+
+### 22.2 What was changed, and what was left
+
+**1, 2, 3 and 4.** 5, 6 and 7 are left: two hatches for two reasons is a real distinction
+that needs a mark this rail has no room for, and the transport layout is a different
+argument.
+
+**The key is not a legend block.** The sentences under the rail already say what two of the
+three marks mean — *"…streets the Board voted to accept are drawn by 1906"* IS the ochre
+bars, and *"the last street acceptance … lands in 1947"* IS the hatch. They were simply
+never attached to the mark they describe. Each phrase now carries **the mark itself, at the
+size the rail draws it**, in front of it. A legend a reader has to carry back to the rail
+is a second thing to read; these three phrases were on screen anyway.
+
+**`next` stops being a sentence and becomes the control it was describing.** It carries the
+diamond in that moment's own family colour — the same diamond, the same colour, findable on
+the rail — and pressing it puts the rail on that year. Walked end to end: 1906 → 1915
+Palace of Fine Arts → 1927 Bay Bridge → 1932 War Memorial Opera House → 1942. The rail is
+navigable by its own moments now, which is what the diamonds were for.
+
+**No new i18n keys.** `us.sf.thecity.scrub.next` is the same string; the arrow is a glyph.
