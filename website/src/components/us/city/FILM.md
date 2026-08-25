@@ -2528,3 +2528,120 @@ that a scrub lands on exactly the frame playback would have produced.
   between the year label and the fabric matters more than anywhere else.
 - **Measured on the dev server.** :3100 is a `next build` from earlier commits and does not
   carry any of this JavaScript; it needs rebuilding before the film is judged on it.
+
+## 20 · Block M1d, 2026-08-25 — the one unsourced number, sourced
+
+§19.4 left exactly one thing open: *"'nine years' (shot 2) is unsourced. The film says
+it; I could not find a primary count of buildings standing in 1915 against 28,000 lost."*
+It is sourced now, out of the city's own building permits, and **the line does not change**
+— *"The city rebuilt more than it lost within nine years."* Nine is conservative against
+what the permits say and the approved wording stands.
+
+### 20.1 There is no cumulative total, and this is what exists instead
+
+No single document states how many buildings San Francisco had put back. What the record
+holds is the **Chief Building Inspector's annual report**, printed in the *San Francisco
+Municipal Reports* every year, which splits **permits granted** into classes of new
+building against alterations and repairs. Subtract the one printed line from the other and
+the year's new buildings fall out; add the class rows and the same number falls out again.
+
+**Every row below was read off the page — the scan or the page image, not the OCR — and
+every row cross-checks both ways.**
+
+| fiscal year ended | printed total | printed alterations | new buildings | class rows sum | volume |
+|---|---:|---:|---:|---:|---|
+| 30 Jun 1907 | 9,539 | 2,608 | **6,931** | 42+69+892+5,928 | `sanfranciscomuni56sanfrich` |
+| 30 Jun 1908 | 6,327 | 2,002 | **4,325** | 23+24+219+4,059 | `sanfranciscomuni57sanfrich` |
+| 30 Jun 1909 | 6,082 | 2,255 | **3,827** | 23+14+311+3,479 | `sanfranciscomuni58sanfrich` |
+| 30 Jun 1910 | 5,766 | 2,782 | **2,984** | 20+20+287+2,657 | `sanfranciscomuni59sanfrich` p. 709 |
+| 30 Jun 1911 | 5,826 | 3,101 | **2,725** | 17+11+249+2,448 | `sanfranciscomuni60sanfrich` |
+| 30 Jun 1912 | 6,166 | 3,371 | **2,795** | 15+15+265+2,500 | `sanfranciscomuni61sanfrich` |
+| 30 Jun 1913 | 6,049 | 3,407 | **2,642** | 20+28+272+2,322 | `munisanfrancisco62sanfrich` |
+| 30 Jun 1914 | 5,721 | 3,391 | **2,330** | 14+13+204+2,047+44+8 | `munisanfrancisco63sanfrich` p. 367 |
+| | | | **28,559** | | |
+
+The loss it is measured against is **USGS's own page**, which gives it as *"Wood buildings
+lost = 24,671 · Brick buildings lost = 3,168 · Total buildings lost = 28,188"* — and
+labels that total *"By one count"*, which is the honest way to hold it and the reason the
+film's own sentence says *some* 28,000 on shot 1.
+
+**26,229 by 30 June 1913 · 28,559 by 30 June 1914.** The crossing is inside the fiscal year
+that ends 30 June 1914 — **eight years and two months after April 1906**. Nine is the safe
+number and the approved line keeps it.
+
+**Two rows were re-read off the page image rather than trusted to the OCR**, and one of
+them had to be: `sanfranciscomuni59sanfrich`'s Building Inspection page is OCR'd to pieces
+(*"Additions, Alterations, Repairs—General. '-'782"*), so leaf **n726** was fetched and
+read — Class A 20, Class B 20, Class C 287, Frame 2,657, alterations 2,782, total 5,766.
+`munisanfrancisco63sanfrich` leaf **n384** was fetched the same way, and it is how the
+plate's leaf number is known to be right rather than guessed: it is printed page **367**,
+headed BUILDING INSPECTOR, and it is the table above.
+
+### 20.2 The two caveats, and where they are
+
+They are on the plate and they are **not in the sentence**. The narration is our one plain
+sentence (§19.1) and a sentence that explains its own arithmetic is an essay:
+
+> 28,559 new-building permits by June 1914, against 28,188 lost. Permits granted are not
+> buildings completed, and the eight-year total is a sum of the city's own annual tables
+> that none of them states.
+
+- **The cumulative is arithmetic no document states.** Eight printed tables, added.
+- **Permits granted are not buildings completed.** Much of the frame construction is in
+  the unburned western neighbourhoods rather than the burned district, and FY1914's own
+  new-building rows include the **44 Panama-Pacific Exposition buildings**. The 1906–07
+  volume's Frame row (5,928) carries the temporary shacks that went up before the law
+  stopped them; the FY1912 inspector reports the Board *"passing resolutions containing
+  lists of temporary structures within the Fire Limits and ordering their immediate
+  demolition"*, so the city itself treated a good part of that first year's count as
+  provisional.
+
+**Do not use the "20,000 buildings by 1909" figure.** It is retold everywhere, it is not
+primary, and it is an alterations-inclusive permit count read as buildings: the city's own
+**new-building** permits total **15,083** by 30 June 1909.
+
+### 20.3 What that needed in the code
+
+- **`FilmLink` gained `k`** — which chip the row wears. The Chief Building Inspector's
+  permit tables are a SCAN; labelling them DATA would tell a reader they came out of a
+  modern register.
+- **`also` became a LIST.** Shot 2's sentence is a COMPARISON and a comparison needs both
+  of its sides on the plate at once. It was one optional link, for shot 1's USGS row.
+- **`note` is new**, and is the caveat a derived figure carries. It has its own type on
+  purpose: it is not narration, it must never be mistaken for the line, and it renders
+  smaller and quieter than the copy for the same reason `.fx-film-reach-line` does.
+- **The source rows now STACK.** They were `inline-flex` siblings, which is invisible
+  while a shot carries one row and wraps into a paragraph the moment a shot carries three.
+- The plate's first draft put the whole arithmetic in the chip — *"28,559 new-building
+  permits by June 1914 — the city's own building permits, Municipal Reports, Chief
+  Building Inspector, p. 367"* — and **on the frame it wrapped to two lines of uppercase
+  mono and outweighed the sentence it was supporting**. `out-m1d/at-t22000.png` is that
+  frame. The chip is now the shape every other shot's is and the number lives in the note.
+
+### 20.4 The scrim was never as tall as the plate — found by looking at shot 2
+
+Measured on the frame at 1440×900: **the copy line lands at 71.7 % of frame height, and
+the old ramp was at alpha .27 there.** TWIN PEAKS and CASTRO/UPPER MARKET were legible
+*through* the sentence. It had not been caught because the plate had never been screenshot
+— see §20.5 — and because a shot whose copy is one short line sits lower in the frame than
+shot 2's, which now carries three source rows and a caveat.
+
+`height:34%` → `48%`, and the stops are placed off the plate's own geometry: **.93 at the
+copy line**, with the whole 0 → .9 ramp spread over 52–70 % of frame height. That is
+**324 px of falloff at 1800** and therefore still not an edge, which is the property §6's
+own note says the horizontal mask exists to protect. Checked on all eleven shots:
+`out-m1d/shots-sheet.png`.
+
+### 20.5 Every contact sheet ever taken of this film reviewed the wrong thing
+
+`m1watch.py`, `m1play.py`, `b3seq.py` and everything derived from them freeze the film with
+`__cityFilm.pause()`. **`pause()` also raises the paused panel, and the paused panel
+REPLACES the copy plate** — `{!card && !paused ? <div className="fx-film-plate"> …`. So
+every frame in `out-m1`, `out-m1c` and `out-b5` shows a panel a viewer never sees while the
+film is running, and **not one of them has ever shown the plate the film actually shows.**
+That is why a scrim two-thirds the height of its own text survived four blocks.
+
+`__cityFilm.still()` stops the clock and leaves the chrome alone. `.parity/m1d.py` is the
+harness that uses it: `shots` (one frame per shot, 62 % through each act), `seq a b n`
+(a frame sequence across a cut), `at t…` (named frames). Everything it does is read and
+seek; it cannot change a date, a framing or a line of copy.

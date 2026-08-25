@@ -174,8 +174,9 @@ COPY: dict[int, dict] = {
     1: dict(kind="scan", narration=True,
             item="excerptsfromsanf1908sanf", leaf=8, find="quote",
             verbatim="List of Property Belonging to the Fire Department",
-            also=("Three days, 28,000 buildings — USGS",
-                  "https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/casualties.php"),
+            also=[("Three days, 28,000 buildings — USGS",
+                   "https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/casualties.php",
+                   "data")],
             # APPROVED: "…thirty-six of them the city's own." The schedule holds
             # 36 structures and the 1906 clerk records 27 destroyed by fire and
             # 9 damaged by the earthquake only, so 36 is the count of the city
@@ -185,11 +186,62 @@ COPY: dict[int, dict] = {
             # USGS link beside the Municipal Report's own schedule.
             copy="The fire burned for three days and destroyed some 28,000 "
                  "buildings."),
+    # 2 · THE ONLY ARITHMETIC CLAIM IN THE FILM, AND WHERE ITS NUMBER COMES
+    # FROM. "More than it lost within nine years" was carried for a night with
+    # no source under it and it is now sourced, from the city's own building
+    # permits. There is no published cumulative rebuilt total; what exists is
+    # the CHIEF BUILDING INSPECTOR's annual report in the Municipal Reports,
+    # which splits permits granted into new buildings against alterations. The
+    # new-building rows, each read off the page image rather than the OCR:
+    #
+    #   FY ending  new  = printed total - printed alterations   volume
+    #   30 Jun 07  6,931  (9,539 - 2,608)   sanfranciscomuni56sanfrich
+    #   30 Jun 08  4,325  (6,327 - 2,002)   sanfranciscomuni57sanfrich
+    #   30 Jun 09  3,827  (6,082 - 2,255)   sanfranciscomuni58sanfrich
+    #   30 Jun 10  2,984  (5,766 - 2,782)   sanfranciscomuni59sanfrich  p.709
+    #   30 Jun 11  2,725  (5,826 - 3,101)   sanfranciscomuni60sanfrich
+    #   30 Jun 12  2,795  (6,166 - 3,371)   sanfranciscomuni61sanfrich
+    #   30 Jun 13  2,642  (6,049 - 3,407)   munisanfrancisco62sanfrich
+    #   30 Jun 14  2,330  (5,721 - 3,391)   munisanfrancisco63sanfrich  p.367
+    #                    ---------------
+    #        cumulative  28,559
+    #
+    # and the class rows sum to the same number in all eight years, so the
+    # subtraction and the addition are the same figure twice. USGS's own page
+    # gives the loss as 24,671 wood + 3,168 brick = 28,188. The cumulative
+    # crosses it in the year ending 30 June 1914 — eight years and two months
+    # after April 1906, so NINE is conservative and the approved line stands.
+    #
+    # TWO CAVEATS TRAVEL WITH IT, on the plate and not in the sentence:
+    # the cumulative is arithmetic no document states, and permits GRANTED are
+    # not buildings COMPLETED — much of the frame construction is in the
+    # unburned western neighbourhoods, and FY1914's own new-building rows
+    # include the 44 Panama-Pacific Exposition buildings.
+    #
+    # NOT THE "20,000 buildings by 1909" FIGURE, which is retold everywhere and
+    # is an alterations-inclusive permit count read as buildings: the city's own
+    # new-building permits total 15,083 by 30 June 1909.
     2: dict(kind="scan", narration=True,
             item="journalofproceed01sanfrich", leaf=8, find="headline",
             gate="The Clerk traces the edge of the burned city street by street, "
                  "and writes that the true toll will probably never be known.",
-            copy="The city rebuilt more than it lost within nine years."),
+            copy="The city rebuilt more than it lost within nine years.",
+            # THE SOURCE ROWS STAY THE SHAPE EVERY OTHER SHOT'S ARE, and the
+            # arithmetic goes in the note. The first draft put "28,559
+            # new-building permits by June 1914 — the city's own building
+            # permits, Municipal Reports, Chief Building Inspector, p. 367" in
+            # the chip, and on the frame it wrapped to two lines of uppercase
+            # mono and outweighed the sentence it was supporting.
+            also=[("The city's own building permits — Municipal Reports, p. 367",
+                   "https://archive.org/details/munisanfrancisco63sanfrich/page/n384/mode/1up",
+                   "scan"),
+                  ("28,188 buildings lost — USGS",
+                   "https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/casualties.php",
+                   "data")],
+            note="28,559 new-building permits by June 1914, against 28,188 "
+                 "lost. Permits granted are not buildings completed, and the "
+                 "eight-year total is a sum of the city's own annual tables "
+                 "that none of them states."),
     3: dict(kind="scan", narration=True,
             item="journalofproceed1915sanfrich", leaf=352, find="quote",
             verbatim="would very materially add to the beauty of that section of our city",
@@ -566,10 +618,16 @@ def main() -> None:
                              url=prov["url"], entity=prov["entity"])
         if c["kind"] == "data":
             o["links"] = [dict(t=a, u=b) for a, b in c["links"]]
-        # a scan shot may carry ONE extra published source beside its leaf,
-        # where the sentence rests on a figure the minute book does not hold
-        if c.get("also"):
-            o["also"] = dict(t=c["also"][0], u=c["also"][1])
+        # a scan shot may carry extra published sources beside its leaf, where
+        # the sentence rests on a figure the minute book does not hold. `k` is
+        # the chip the row wears: the Chief Building Inspector's permit tables
+        # are a SCAN, and calling them DATA would tell a reader they came out
+        # of a modern register.
+        for tt, uu, kk in c.get("also") or ():
+            o.setdefault("also", []).append(dict(t=tt, u=uu, k=kk))
+        # the caveat a derived figure carries. NOT narration: FILM.md §20.
+        if c.get("note"):
+            o["note"] = c["note"]
 
         b = BUILDS.get(n)
         if b:

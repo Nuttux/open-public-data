@@ -242,6 +242,11 @@ export interface FilmCite {
 export interface FilmLink {
   readonly t: string;
   readonly u: string;
+  /** which chip the row wears. A scanned annual report is a SCAN even when it
+   *  is not the shot's gated citation — shot 2 rests on the Chief Building
+   *  Inspector's own permit tables, which are scans, and labelling them DATA
+   *  would tell a reader they came out of a modern register. Absent = data. */
+  readonly k?: "scan" | "data";
 }
 
 export type BuildWhat =
@@ -295,9 +300,16 @@ export interface FilmShotData {
   readonly wy?: number;
   readonly cite?: FilmCite;
   readonly links?: readonly FilmLink[];
-  /** one extra published source beside the leaf, where the sentence rests on a
-   *  figure the minute book does not hold — shot 1's three days and 28,000 */
-  readonly also?: FilmLink;
+  /** published sources beside the gated leaf, where the sentence rests on a
+   *  figure the minute book does not hold — shot 1's three days and 28,000,
+   *  shot 2's permit tables and the count they pass. A LIST: shot 2's sentence
+   *  is a comparison and a comparison needs both of its sides on the plate. */
+  readonly also?: readonly FilmLink[];
+  /** the caveat a derived figure has to carry. NOT narration and never in the
+   *  narration's type: shot 2's number is a sum of eight printed tables and
+   *  the sum is not in any of them, so the plate says so under the sources
+   *  rather than in the sentence. */
+  readonly note?: string;
   readonly build?: FilmBuildData;
   readonly build2?: FilmBuildData;
   readonly stFrom: number | null;
@@ -740,7 +752,8 @@ export interface FilmLine {
   readonly copy?: string;
   readonly cite?: FilmCite;
   readonly links?: readonly FilmLink[];
-  readonly also?: FilmLink;
+  readonly also?: readonly FilmLink[];
+  readonly note?: string;
   readonly kind?: "scan" | "data";
 }
 
@@ -867,7 +880,8 @@ function pickLine(tl: FilmTimeline, d: FilmPayload, si: number, segIx: number): 
   const s = d.shots[si];
   const acts = SCRIPT[s.id];
   const base: FilmLine = {
-    copy: s.copy, cite: s.cite, links: s.links, also: s.also, kind: s.kind,
+    copy: s.copy, cite: s.cite, links: s.links, also: s.also, note: s.note,
+    kind: s.kind,
   };
   /* THE SECOND LINE IS THE PAYLOAD'S OWN, ALWAYS. It used to be able to come
      out of a `SPOKEN` table in this file — one line living a file upstream of

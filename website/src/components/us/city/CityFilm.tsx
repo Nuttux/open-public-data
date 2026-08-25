@@ -713,6 +713,14 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
         biasRef.current = 0;
       },
       pause: () => { pausedRef.current = true; setPaused(true); },
+      /* FREEZE THE CLOCK WITHOUT PUTTING THE FILM INTO ITS PAUSED STATE.
+         `pause()` also raises the paused panel, and the paused panel REPLACES
+         the copy plate — so every contact sheet a harness has ever taken
+         through `pause()` reviewed a panel nobody watching the film sees, and
+         not one of them reviewed the plate the film actually shows. This
+         stops the clock and leaves the chrome alone. Reads and seeks only:
+         it cannot change a date, a framing or a line of copy. */
+      still: () => { pausedRef.current = true; setPaused(false); },
       resume: () => {
         pausedRef.current = false; lastRef.current = 0;
         stopLoop(); rafRef.current = requestAnimationFrame(frame);
@@ -916,9 +924,17 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
    of copy reaches 41.2 % of the frame, so the ramp is masked to the text's own
    side and runs out over the next 46 % of the width — 660 px of falloff, and
    therefore not an edge. */
-.fx-film-scrim{position:absolute;left:0;right:0;bottom:0;height:34%;
-  background:linear-gradient(to top,rgba(250,250,247,.97) 0%,rgba(250,250,247,.92) 26%,
-    rgba(250,250,247,.6) 60%,rgba(250,250,247,.14) 86%,rgba(250,250,247,0) 100%);
+/* AND IT IS AS TALL AS THE PLATE, WHICH IT WAS NOT. Measured on shot 2 at
+   1440x900: the copy line lands at 71.7 % of frame height and the old ramp was
+   at alpha .27 there, so TWIN PEAKS and CASTRO/UPPER MARKET were legible
+   THROUGH the sentence. The plate now also carries a third source row and a
+   caveat, so it reaches further up than the ramp was ever built for. Height
+   34 % -> 48 %, and the stops are placed off the plate's own geometry: .93 at
+   the copy line, and the whole 0 -> .9 ramp spread over 52-70 % of the frame,
+   which is 324 px of falloff at 1800 and therefore still not an edge. */
+.fx-film-scrim{position:absolute;left:0;right:0;bottom:0;height:48%;
+  background:linear-gradient(to top,rgba(250,250,247,.97) 0%,rgba(250,250,247,.93) 55%,
+    rgba(250,250,247,.62) 70%,rgba(250,250,247,.18) 86%,rgba(250,250,247,0) 100%);
   -webkit-mask-image:linear-gradient(to right,#000 0 46%,rgba(0,0,0,.30) 74%,rgba(0,0,0,0) 92%);
           mask-image:linear-gradient(to right,#000 0 46%,rgba(0,0,0,.30) 74%,rgba(0,0,0,0) 92%)}
 .fx-film-plate{position:absolute;left:44px;bottom:74px;max-width:min(58ch,52vw)}
@@ -927,12 +943,19 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
   margin:0 0 12px}
 .fx-film-copy{margin:0;font-size:clamp(16px,1.42vw,21px);line-height:1.45;font-weight:500;
   max-width:52ch;text-wrap:balance}
-.fx-film-cite{display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+.fx-film-srcs{display:flex;flex-direction:column;align-items:flex-start;gap:5px;
+  margin-top:14px}
+.fx-film-cite{display:inline-flex;align-items:center;gap:8px;
   font-family:var(--f-mono,ui-monospace,monospace);font-size:11px;letter-spacing:.04em;
   text-transform:uppercase;color:#5a5348;text-decoration:none;
   border-bottom:1px solid rgba(90,83,72,.42);padding-bottom:2px;pointer-events:auto}
 .fx-film-cite:hover{color:#161310;border-bottom-color:#161310}
 .fx-film-cite b{font-weight:600;letter-spacing:.06em}
+/* Narrower and quieter than the copy on purpose — same reason as
+   .fx-film-reach-line: the copy is the shot, this is the footnote it earned,
+   and the two must not compete for the same read. */
+.fx-film-note{margin:10px 0 0;max-width:44ch;font-size:12.5px;line-height:1.45;
+  color:#5a5348}
 .fx-film-badge{display:block;width:fit-content;padding:4px 9px;
   font-family:var(--f-mono,ui-monospace,monospace);font-size:10px;letter-spacing:.1em;
   text-transform:uppercase;border:1px solid #161310}
@@ -1055,23 +1078,50 @@ function FilmChrome({
         <div className="fx-film-plate">
           <div className="fx-film-year tnum">{iy}</div>
           {line?.copy ? <p className="fx-film-copy">{line.copy}</p> : null}
-          {line?.cite ? (
-            <a className="fx-film-cite" href={line.cite.url} target="_blank" rel="noopener">
-              <b>{t("us.sf.thecity.film.scan")}</b>{" "}
-              {volumeLabel(line.cite.item)} · {t("us.sf.thecity.film.leaf")} {line.cite.leaf}
-            </a>
-          ) : null}
-          {line?.also ? (
-            <a className="fx-film-cite" href={line.also.u} target="_blank" rel="noopener">
-              <b>{t("us.sf.thecity.film.data")}</b> {line.also.t}
-            </a>
-          ) : null}
-          {!line?.cite && line?.links ? (
-            <a className="fx-film-cite" href={line.links[0].u} target="_blank" rel="noopener">
-              <b>{t("us.sf.thecity.film.data")}</b>{" "}
-              {line.links.map((l) => l.t).join(" · ")}
-            </a>
-          ) : null}
+          {/* THE SOURCES STACK, ONE PER ROW. They used to be `inline-flex`
+              siblings, which is invisible while a shot carries one and wraps
+              into a paragraph the moment a shot carries three — and shot 2's
+              sentence is a COMPARISON, so it needs the count it beat and the
+              count it was beaten against on the plate at the same time. */}
+          <div className="fx-film-srcs">
+            {line?.cite ? (
+              <a className="fx-film-cite" href={line.cite.url} target="_blank" rel="noopener">
+                <b>{t("us.sf.thecity.film.scan")}</b>{" "}
+                {volumeLabel(line.cite.item)} · {t("us.sf.thecity.film.leaf")} {line.cite.leaf}
+              </a>
+            ) : null}
+            {(line?.also ?? []).map((a) => (
+              <a
+                key={a.u}
+                className="fx-film-cite"
+                href={a.u}
+                target="_blank"
+                rel="noopener"
+              >
+                <b>
+                  {t(
+                    a.k === "scan"
+                      ? "us.sf.thecity.film.scan"
+                      : "us.sf.thecity.film.data",
+                  )}
+                </b>{" "}
+                {a.t}
+              </a>
+            ))}
+            {!line?.cite && line?.links ? (
+              <a className="fx-film-cite" href={line.links[0].u} target="_blank" rel="noopener">
+                <b>{t("us.sf.thecity.film.data")}</b>{" "}
+                {line.links.map((l) => l.t).join(" · ")}
+              </a>
+            ) : null}
+          </div>
+          {/* THE CAVEAT A DERIVED FIGURE HAS TO CARRY, and it is deliberately
+              NOT in the sentence. Shot 2's number is a sum of eight printed
+              permit tables; the sum is in none of them, and permits granted
+              are not buildings completed. Saying so in the narration would
+              make the line an essay; saying it nowhere would make the line a
+              claim the sources do not carry. */}
+          {line?.note ? <p className="fx-film-note">{line.note}</p> : null}
           {state.badge ? (
             <div className="fx-film-reach">
               <span className="fx-film-badge">{t("us.sf.thecity.film.not_on_map")}</span>
@@ -1107,6 +1157,16 @@ function FilmChrome({
               </a>
             </p>
           ) : null}
+          {line?.also?.length ? (
+            <p className="fx-film-row">
+              {line.also.map((a, i) => (
+                <span key={a.u}>
+                  {i ? " · " : ""}
+                  <a href={a.u} target="_blank" rel="noopener">{a.t}</a>
+                </span>
+              ))}
+            </p>
+          ) : null}
           {line?.links ? (
             <p className="fx-film-row">
               {line.links.map((l, i) => (
@@ -1117,6 +1177,8 @@ function FilmChrome({
               ))}
             </p>
           ) : null}
+          {/* the caveat travels with the number wherever the number goes */}
+          {line?.note ? <p className="fx-film-row">{line.note}</p> : null}
           <p className="fx-film-row">
             {t("us.sf.thecity.film.streets_drawn")
               .replace("{n}", nf.format(streetsDone))
