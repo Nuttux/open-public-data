@@ -574,38 +574,40 @@ export function drawBurnLine(
   g.restore();
 }
 
-/* ── the 1906 schedule of losses, on the frame ────────────────────────────── */
+/* ── the 1906 fire ───────────────────────────────────────────────────────── */
 
 /**
- * THE FIRE, AND WHY IT IS A TABLE BEING READ RATHER THAN A FRONT MOVING.
+ * THE FIRE, AND WHAT OF IT IS THE RECORD.
  *
- * `film/fire.json` is the *San Francisco Municipal Reports 1906* table **"Value
- * of Houses Destroyed by Fire"** — the city's own account of what it lost of
- * its own property, one row per structure, each with a survey offset from a
- * named corner to the inch and a dollar value. Every one of the thirty-six is a
- * Fire Department building. Twenty-seven burned; nine the 1906 clerk recorded
- * as shaken and not burned, and DataSF's burned-area polygon agrees with him on
- * all thirty-five placed rows.
+ * Three things are published and this pass draws all three:
  *
- * **There is no published ignition time for any of them**, so this pass may not
- * animate a fire spreading. `ff3a-iqhv` is one polygon with no time field — the
- * final extent — and `coverage/FIRE.md` says so in the open: *"Not a fire that
- * spreads. The fire can arrive; it cannot advance."* What arrives here is the
- * SCHEDULE: the rows light in the order the page prints them, which is the
- * record's own order and is the only order anything published gives.
+ *   THE EXTENT   DataSF `ff3a-iqhv`, seven rings, the area the fire took. It is
+ *                the SAME geometry `drawBurnLine` strokes; here it is filled.
+ *   THE LOSSES   `film/fire.json` — the *San Francisco Municipal Reports 1906*
+ *                table "Value of Houses Destroyed by Fire", which is the Fire
+ *                Department's own property, structure by structure, each with a
+ *                survey offset from a named corner to the inch and a dollar
+ *                value. 35 of 36 placed, 27 of them burned.
+ *   THE VALUE    the figure the page prints beside each one, which is what sets
+ *                how large its flame is drawn.
  *
- * TWO THINGS ARE READ OFF THE RECORD AND NOTHING ELSE IS:
- *   · WHERE — the geocoded survey offset, in world metres.
- *   · HOW BIG — the mark's radius is the square root of the value the page
- *     prints for that structure, so $35,000 draws larger than $8,000 and the
- *     ratio between two marks is the ratio between two figures a reader can go
- *     and check. The one row whose figure the OCR lost at a column break
- *     (Engine House No. 38) draws at the floor radius and HOLLOW, because it is
- *     the one mark on the frame whose size is not a number off the page.
+ * AND WHAT IS NOT PUBLISHED, SO IS NOT CLAIMED. `ff3a-iqhv` is one polygon with
+ * no time field — the final extent — and no ignition time exists for any
+ * structure in the schedule. `coverage/FIRE.md` says it in the open: *"Not a
+ * fire that spreads. The fire can arrive; it cannot advance."* So the fill
+ * arrives along the ring's OWN VERTEX ORDER, which is the order the Clerk
+ * describes the boundary in — *"The Water Front from Brannan street on the east
+ * to Jones street on the north; thence along Jones to Chestnut…"* — and that is
+ * the order of a description being read, not a claim about where it burned
+ * first. It is declared here and in `film/fire.json`'s `meta.order`.
  *
- * The mark itself — a flare that peaks and decays into an ember — is an honest
- * global treatment and is declared as one. It carries no information; it is how
- * long the eye needs to catch a 6 px event among twenty-seven of them.
+ * THE FLAME IS A TREATMENT AND IS DECLARED AS ONE. Its shape, its flicker and
+ * its smoke carry no information. What carries information is WHERE it is, HOW
+ * BIG it is, and that there are twenty-seven of them. The flicker is
+ * `Math.sin` of the act's own phase and a per-row hash — **a pure function of
+ * the film clock, never `Math.random`** — so a scrub lands on exactly the frame
+ * playback would have produced, which is §1's whole design claim and is the
+ * first thing a random number would destroy.
  */
 export interface FireLoss {
   readonly n: string;
@@ -616,13 +618,32 @@ export interface FireLoss {
   readonly usdImplied: number | null;
 }
 
-/** the fraction of the whole act one structure's own flare occupies */
-const FIRE_WIN = 0.34;
-/** where in its own window the flare peaks, before it decays to an ember */
-const FIRE_PEAK = 0.3;
-/** px at the largest value in the schedule, at the film's own whole-city zoom */
-const FIRE_R_MAX = 11;
-const FIRE_R_MIN = 3.4;
+/**
+ * The fraction of the whole act one structure's own flame occupies — and it is
+ * deliberately most of it. At 0.42 the flames arrived in a travelling band of
+ * four or five and the rest of the frame was embers: measured on
+ * `out-m1c/watch-fire2-03.png`, two structures lit at 7.6 s of a 9 s act. A
+ * city burning for three days has more than five buildings alight at once, so
+ * the windows overlap heavily and the frame carries fifteen to twenty flames
+ * through the middle of the act.
+ */
+const FIRE_WIN = 0.74;
+/** where in its own window the flame peaks, before it dies back to an ember */
+const FIRE_PEAK = 0.26;
+/**
+ * CANVAS pixels of flame at the largest figure on the page, at the film's own
+ * z 2.05 — and the canvas is at DPR 2, so these are half this many CSS pixels.
+ * Set at 46/13 first, which is 23/7 CSS px on a 1440 px stage: measured on
+ * `out-m1c/watch-fire2-04.png` as embers with a glow, not flames.
+ */
+const FIRE_H_MAX = 156;
+const FIRE_H_MIN = 46;
+
+/** deterministic, and that is the point — see the header */
+const hash01 = (i: number): number => {
+  const x = Math.sin(i * 127.1 + 311.7) * 43758.5453;
+  return x - Math.floor(x);
+};
 
 /** the local phase of loss `i` of `n` at act phase `p`, or 0 before it lights */
 export function firePhaseOf(i: number, n: number, p: number): number {
@@ -632,10 +653,10 @@ export function firePhaseOf(i: number, n: number, p: number): number {
 }
 
 /**
- * The dollars this act has read out of the page by phase `p` — the same
- * arithmetic the marks are drawn from, so the counter in the chrome and the
- * marks on the canvas cannot disagree. A structure's value is added when its
- * own flare peaks, not when it starts, so the number moves with the light.
+ * The dollars this act has read off the page by phase `p` — the same arithmetic
+ * the flames are drawn from, so a counter in the chrome and the marks on the
+ * canvas cannot disagree. A structure's value is added when its own flame
+ * peaks, not when it lights, so the number moves with the light.
  */
 export function fireTotalAt(losses: readonly FireLoss[], p: number): number {
   let sum = 0;
@@ -644,6 +665,62 @@ export function fireTotalAt(losses: readonly FireLoss[], p: number): number {
   return sum;
 }
 
+/**
+ * THE BURNED AREA, FILLED — the fire's own ground, arriving and then cooling.
+ *
+ * Drawn UNDER the flames and under the hairline, at `phase` of the ring's own
+ * vertex order, moving through two states the one number carries: hot where the
+ * sweep is still running, ash where it has passed. `cool` is what carries it
+ * past the shot — 1 while the fire is on the frame, falling to 0 across shot 2
+ * as the city rebuilds inside it.
+ */
+export function drawBurnFill(
+  g: CanvasRenderingContext2D,
+  W: number,
+  H: number,
+  cam: ViewCamera,
+  proj: Projection,
+  rings: readonly Ring[],
+  elev: (x: number, y: number) => number,
+  phase: number,
+  cool: number,
+): void {
+  if (phase <= 0.001 || cool <= 0.001 || rings.length === 0) return;
+  const c = proj.coeffs();
+  const zex = proj.zex;
+  g.save();
+  g.beginPath();
+  for (const ring of rings) {
+    const n = ring.length;
+    if (n < 3) continue;
+    /* a vertex the sweep has not reached is not filled, so the ground arrives
+       along the same axis the hairline strokes */
+    const last = phase >= 1 ? n - 1 : Math.max(2, Math.ceil((n - 1) * phase));
+    for (let k = 0; k <= last; k++) {
+      const wx = ring[k][0];
+      const wy = ring[k][1];
+      const px = c.ax * wx + c.ay * wy;
+      const py = c.bx * wx + c.by * wy + elev(wx, wy) * zex;
+      const X = (px - cam.cx) * cam.scale + W / 2;
+      const Y = H / 2 - (py - cam.cy) * cam.scale;
+      if (k) g.lineTo(X, Y);
+      else g.moveTo(X, Y);
+    }
+    g.closePath();
+  }
+  const heat = Math.max(0, 1 - phase * 1.25);
+  const r = Math.round(88 + 104 * heat);
+  const gn = Math.round(60 + 24 * heat);
+  const bl = Math.round(48 - 16 * heat);
+  g.fillStyle = `rgba(${r},${gn},${bl},${(0.34 + 0.30 * heat) * cool})`;
+  g.fill("evenodd");
+  g.restore();
+}
+
+/**
+ * The flames, the smoke and the embers, on the placed structures. See the
+ * header for what of this is the record and what is treatment.
+ */
 export function drawFireLosses(
   g: CanvasRenderingContext2D,
   W: number,
@@ -659,11 +736,10 @@ export function drawFireLosses(
   const c = proj.coeffs();
   const zex = proj.zex;
   const n = losses.length;
-  /* the mark is sized in SCREEN pixels and not in metres: at shot 1's z the
-     largest of these buildings is a third of a pixel across, so a mark drawn to
-     scale would be invisible, and one drawn to scale at a block camera would
-     cover the block. It is a mark, like the subject dot beside it. */
-  g.save();
+  /* the flame is sized in SCREEN pixels: at shot 1's z the largest of these
+     buildings is a third of a pixel across, so one drawn to scale would be
+     invisible and one drawn to scale at a block camera would cover the block. */
+  const seen: { X: number; Y: number; s: number; p: number; h: number }[] = [];
   for (let i = 0; i < n; i++) {
     const p = firePhaseOf(i, n, phase);
     if (p <= 0) continue;
@@ -673,45 +749,92 @@ export function drawFireLosses(
     const py = c.bx * L.x + c.by * L.y + wz * zex;
     const X = (px - cam.cx) * cam.scale + W / 2;
     const Y = H / 2 - (py - cam.cy) * cam.scale;
-    if (X < -40 || X > W + 40 || Y < -40 || Y > H + 40) continue;
-
+    if (X < -60 || X > W + 60 || Y < -80 || Y > H + 60) continue;
     const known = L.usd !== null && L.usd !== undefined;
-    const k = known && maxUsd > 0 ? Math.sqrt(L.usd! / maxUsd) : 0;
-    const r = FIRE_R_MIN + (FIRE_R_MAX - FIRE_R_MIN) * k;
+    const k = known && maxUsd > 0 ? Math.sqrt(L.usd / maxUsd) : 0;
+    seen.push({ X, Y, s: FIRE_H_MIN + (FIRE_H_MAX - FIRE_H_MIN) * k, p, h: hash01(i) });
+  }
+  if (!seen.length) return;
 
-    /* the flare: up fast, down slow, and it never goes out — what is left is
-       the ember, which is the row still being on the page after the fire. */
-    const up = Math.min(1, p / FIRE_PEAK);
-    const down = p <= FIRE_PEAK ? 1 : 1 - (p - FIRE_PEAK) / (1 - FIRE_PEAK);
-    const flare = up * up * (0.25 + 0.75 * down * down);
-
-    if (flare > 0.02) {
-      const R = r * (1 + 2.1 * flare);
-      const halo = g.createRadialGradient(X, Y, 0, X, Y, R);
-      halo.addColorStop(0, `rgba(255,214,120,${0.85 * flare})`);
-      halo.addColorStop(0.42, `rgba(233,116,32,${0.55 * flare})`);
-      halo.addColorStop(1, "rgba(180,52,28,0)");
-      g.fillStyle = halo;
+  // ── the smoke, behind everything ─────────────────────────────────────────
+  g.save();
+  for (const f of seen) {
+    const rise = Math.min(1, f.p * 1.6);
+    if (rise <= 0.05) continue;
+    const a = 0.17 * Math.min(1, f.p * 2) * (1 - 0.4 * Math.max(0, f.p - FIRE_PEAK));
+    for (let q = 0; q < 3; q++) {
+      const t = rise * (0.45 + 0.28 * q);
+      const cy = f.Y - f.s * (1.4 + 3.2 * t);
+      const cx = f.X + Math.sin((f.h + q) * 6.28 + phase * 5.1) * f.s * 0.55 * t;
+      const rr = f.s * (0.5 + 1.5 * t);
+      const gr = g.createRadialGradient(cx, cy, 0, cx, cy, rr);
+      gr.addColorStop(0, `rgba(74,64,58,${a * (1 - t)})`);
+      gr.addColorStop(1, "rgba(74,64,58,0)");
+      g.fillStyle = gr;
       g.beginPath();
-      g.arc(X, Y, R, 0, Math.PI * 2);
+      g.arc(cx, cy, rr, 0, Math.PI * 2);
       g.fill();
-    }
-
-    /* the ember, which is what the frame keeps */
-    const a = Math.min(1, p * 3);
-    g.beginPath();
-    g.arc(X, Y, r * (0.55 + 0.45 * Math.min(1, p * 2)), 0, Math.PI * 2);
-    if (known) {
-      g.fillStyle = `rgba(154,42,20,${0.9 * a})`;
-      g.fill();
-    } else {
-      g.strokeStyle = `rgba(154,42,20,${0.9 * a})`;
-      g.lineWidth = 1.4;
-      g.stroke();
     }
   }
   g.restore();
+
+  // ── the flames ───────────────────────────────────────────────────────────
+  g.save();
+  g.globalCompositeOperation = "lighter";
+  for (const f of seen) {
+    const up = Math.min(1, f.p / FIRE_PEAK);
+    const down = f.p <= FIRE_PEAK ? 1 : 1 - (f.p - FIRE_PEAK) / (1 - FIRE_PEAK);
+    /* linear in `down`, not squared. Squared put nineteen of the twenty-seven
+       under 10 % of their height by the middle of the act, which is a field of
+       embers with two flames on it — the note this whole pass exists to answer. */
+    const life = up * up * (0.22 + 0.78 * down);
+    if (life <= 0.02) continue;
+    /* two tongues, out of phase, so the flame moves rather than pulses */
+    for (let q = 0; q < 2; q++) {
+      const w = f.s * (0.25 - 0.06 * q);
+      const flick = 0.78 + 0.22 * Math.sin(phase * (31 + 11 * q) + f.h * 41 + q * 2.1);
+      const hgt = f.s * life * flick * (1 - 0.22 * q);
+      const sway = Math.sin(phase * (17 + 7 * q) + f.h * 27) * w * 0.5;
+      const gr = g.createLinearGradient(f.X, f.Y, f.X, f.Y - hgt);
+      gr.addColorStop(0, `rgba(255,205,104,${0.58 * life})`);
+      gr.addColorStop(0.38, `rgba(236,112,26,${0.5 * life})`);
+      gr.addColorStop(0.74, `rgba(186,52,18,${0.26 * life})`);
+      gr.addColorStop(1, "rgba(150,36,16,0)");
+      g.fillStyle = gr;
+      g.beginPath();
+      g.moveTo(f.X - w, f.Y + 1);
+      g.quadraticCurveTo(f.X - w * 0.9, f.Y - hgt * 0.55, f.X + sway, f.Y - hgt);
+      g.quadraticCurveTo(f.X + w * 0.9, f.Y - hgt * 0.55, f.X + w, f.Y + 1);
+      g.closePath();
+      g.fill();
+    }
+    /* the white heart, which is what makes it read as fire and not as paint */
+    const hr = f.s * 0.13 * life;
+    const gh = g.createRadialGradient(f.X, f.Y - hr * 0.4, 0, f.X, f.Y - hr * 0.4, hr * 2.2);
+    gh.addColorStop(0, `rgba(255,238,196,${0.72 * life})`);
+    gh.addColorStop(1, "rgba(255,160,60,0)");
+    g.fillStyle = gh;
+    g.beginPath();
+    g.arc(f.X, f.Y - hr * 0.4, hr * 2.2, 0, Math.PI * 2);
+    g.fill();
+  }
+  g.restore();
+
+  // ── what is left: one ember per structure, and it does not go out ────────
+  g.save();
+  for (const f of seen) {
+    /* small and dark. It is what the frame KEEPS, not what it shows: an ember
+       the size of the flame that made it is the "red dots" note again. */
+    const a = Math.min(1, f.p * 3);
+    const rr = Math.max(1.2, f.s * 0.075);
+    g.beginPath();
+    g.arc(f.X, f.Y, rr, 0, Math.PI * 2);
+    g.fillStyle = `rgba(104,30,14,${0.6 * a})`;
+    g.fill();
+  }
+  g.restore();
 }
+
 
 
 /**

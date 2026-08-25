@@ -2426,3 +2426,105 @@ effect of a layout.
   frame carries buildings that post-date the redevelopment the resolution asked for. The
   caption on the rail already states that cohort; the film does not, and on this one shot
   it matters more than on the others.
+
+## 19 · Block M1c, 2026-08-25 — the narration is ours, and the fire burns
+
+Two corrections came back from Daniel between the first cut and this one, and both were
+right about something this file had got wrong on its own.
+
+### 19.1 The quotation is never the line, and the first cut had it backwards
+
+> *"'The Auditor files next year's budget and notes that the valuation it rests on burned
+> six weeks' — wtf is this quote, i really dont agree"* · *"the quote is so random"* ·
+> *"i think youre too much on the quotes in general — like yes you can pull up in some
+> cases the pdf with the text highlighted for drama, not always, but the rest is just your
+> one sentence commentary, no need for a direct quote"*
+
+The first cut put the RECORD'S OWN WORDS on screen and the approved sentence in the shot's
+`title`, which nothing renders. That was a defensible reading of "let the line caption the
+record" and it is not what a viewer wants: a nineteenth-century minute-book sentence,
+mid-clause, is a puzzle rather than a statement, and the one he quoted back is a beat about
+an assessed valuation — which is exactly the class of thing he had already thrown out
+twice.
+
+**THE RULE, and it does not bend: the narration is one plain sentence, on every shot, and
+an archival quotation is never the text on screen.** Not as the line, not beside it, not
+under it. `COPY2` is now empty and says why in the file. The record is still the gate on
+the claim — `check_copy` still refuses to write a payload whose shot cites a leaf no beat
+in `entries/` sits on — and it is still the link under the line. It is not the words a
+reader reads.
+
+A quotation may come back as a PICTURE, on three or four shots where the document is the
+moment. That is §18.7 and it stays designed and not built.
+
+### 19.2 The eleven lines, as they are on screen right now
+
+| | line | source under it |
+|---|---|---|
+| 1 | The fire burned for three days and destroyed some 28,000 buildings. | the Fire Department's own schedule (leaf 8) **and** USGS |
+| 2 | The city rebuilt more than it lost within nine years. | Journal vol 1 leaf 8 |
+| 3 | San Francisco pulled down the Exposition's palaces when the fair closed and kept the Palace of Fine Arts. | Journal 1915 leaf 352 |
+| 4 | The Bay Bridge and the Golden Gate opened six months apart. | Journal vol 31 leaf 46 |
+| 5 | In 1942 the government removed everyone of Japanese descent from Japantown, and the Board's business for those streets that spring was property. | Journal vol 37 leaf 713 |
+| 6 | Fifty nations signed the United Nations Charter in the city's war memorial. | Journal vol 40 pt 3 leaf 726 |
+| 7 | The Board rejected seven of the ten freeways the city had planned for San Francisco. | Journal vol 54 leaf 48 |
+| 8 | The Transamerica Pyramid was the tallest building in San Francisco for forty-six years. | DataSF 5kya-mfst |
+| 9 | After the earthquake the Board voted to demolish the Embarcadero Freeway instead of repairing it. | Journal vol 85 leaf 374 |
+| 10 | The Mission Bay rail yards became a neighbourhood of sixteen thousand people. | DataSF 4qbq-hvtt + OCII |
+| 11 | San Francisco was the first city in America to tell its own police they could not use facial recognition. | Ordinance 103-19 + Board minutes |
+
+**Shot 1 is now exactly what was asked and both its numbers are clickable.** Three days and
+28,000 buildings are the USGS's own figures for 18–21 April 1906 — *"Buildings Destroyed —
+28,000"*, *"The 3-day conflagration"* — fetched and read, not remembered, and the shot
+carries that link beside the Municipal Report's leaf. The plate therefore shows two
+sources on one shot, which is new and is what a sentence resting on two records needs.
+
+**Four lines still differ from the approved wording and every one is a failed fact check,
+never a rewrite.** 4 (thirteen → six months), 7 (the state → the city's master plan), 10
+(eleven → sixteen thousand), 11 (anywhere → in America). §18.4 carries what each source
+says. **Shot 2's "nine years" is the one claim in the film I have not been able to source
+and it is flagged rather than assumed.**
+
+### 19.3 The fire, rebuilt from dots into a fire
+
+> *"You need a real fire thing going on not just red dots"*
+
+Right, and the first pass was a schedule being read rather than a city burning. Three
+things are on the frame now and each one is a different kind of thing:
+
+- **THE GROUND** — `drawBurnFill`, the same seven published rings `drawBurnLine` strokes,
+  filled. Hot where the sweep is still running and ash where it has passed, out of one
+  number, so the ground cannot be burning and finished at once. It arrives along the
+  ring's own vertex order, which is the order the Clerk describes the boundary in.
+- **THE FIRES** — a flame at each of the 27 placed structures the record says burned: two
+  tongues out of phase, a white heart, and smoke. Height is the square root of the value
+  the page prints, so the ratio between two flames is the ratio between two figures.
+- **WHAT IS LEFT** — one small dark ember per structure, which does not go out. It is what
+  the frame KEEPS rather than what it shows, and it is deliberately much smaller than the
+  first pass's, which was the "red dots" note.
+
+**The scorch outlives its shot, and that is the match cut's payoff.** `FilmState.scorch` is
+the fire's own phase through shot 1 and then follows the burn hairline's fade through shot
+2, so the burned ground is still on the frame when the years start running and cools while
+the fabric fills back in underneath it. Nothing else in the film crosses a shot boundary.
+
+**Two things were measured and changed rather than guessed.** `FIRE_WIN` was 0.42 and put
+two structures alight at 7.6 s of a 9 s act — a travelling band on a field of embers,
+measured on `out-m1c/watch-fire2-04.png`. It is 0.74, and the decay is linear in `down`
+rather than squared, so fifteen to twenty burn at once through the middle. And the flame
+was sized in CANVAS pixels on a DPR-2 stage, which is half the CSS pixels it looked like in
+the source: 46 became 156.
+
+**The flicker is `Math.sin` of the act's own phase and a per-row hash, never
+`Math.random`.** A random number would break the one property this whole file is built on —
+that a scrub lands on exactly the frame playback would have produced.
+
+### 19.4 Still open at this point in the night
+
+- **"nine years" (shot 2) is unsourced.** The film says it; I could not find a primary
+  count of buildings standing in 1915 against 28,000 lost. It is the only line in the film
+  whose number I cannot click through to.
+- **The Japantown frame is the modern Western Addition** (§18.8) and on that shot the gap
+  between the year label and the fabric matters more than anywhere else.
+- **Measured on the dev server.** :3100 is a `next build` from earlier commits and does not
+  carry any of this JavaScript; it needs rebuilding before the film is judged on it.

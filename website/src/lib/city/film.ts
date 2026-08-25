@@ -295,6 +295,9 @@ export interface FilmShotData {
   readonly wy?: number;
   readonly cite?: FilmCite;
   readonly links?: readonly FilmLink[];
+  /** one extra published source beside the leaf, where the sentence rests on a
+   *  figure the minute book does not hold — shot 1's three days and 28,000 */
+  readonly also?: FilmLink;
   readonly build?: FilmBuildData;
   readonly build2?: FilmBuildData;
   readonly stFrom: number | null;
@@ -420,8 +423,10 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      spreads. The fire can arrive; it cannot advance."* */
   burn: [
     { k: "build", ms: 1400, what: "burnLine", curve: "enter" },
-    { k: "fire", ms: 8000, curve: "move" },
-    { k: "hold", ms: 3600 },
+    { k: "fire", ms: 9000, curve: "move" },
+    /* held longer than is comfortable, which is the instruction and is right:
+       the frame the fire leaves is the frame shot 2 opens on. */
+    { k: "hold", ms: 4600 },
   ],
   /* THE MATCH CUT. Same camera as shot 1, no move, and the burn hairline stays
      up at half alpha for the first three years so the rebuild is watched
@@ -450,8 +455,8 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
     { k: "run", ms: 1600, to: 1936, curve: "move" },
     { k: "build", ms: 1600, what: "bridge", curve: "travel" },
     { k: "hold", ms: 1400 },
-    { k: "run", ms: 1200, to: 1937, curve: "move", line: 2 },
-    { k: "hold", ms: 3600, line: 2 },
+    { k: "run", ms: 1200, to: 1937, curve: "move" },
+    { k: "hold", ms: 3600 },
   ],
   /* 1942, and the camera does not move once it has arrived. The only thing
      that rises is the boundary the Board itself named — ELLIS, CALIFORNIA,
@@ -461,8 +466,7 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
   japantown: [
     { k: "run", ms: 2400, to: 1942, curve: "move" },
     { k: "build", ms: 1400, what: "outline", ent: "japantown-1942", curve: "enter" },
-    { k: "hold", ms: 2600 },
-    { k: "hold", ms: 2600, line: 2 },
+    { k: "hold", ms: 5200 },
   ],
   charter: [
     { k: "run", ms: 1200, to: 1945, curve: "move" },
@@ -736,6 +740,7 @@ export interface FilmLine {
   readonly copy?: string;
   readonly cite?: FilmCite;
   readonly links?: readonly FilmLink[];
+  readonly also?: FilmLink;
   readonly kind?: "scan" | "data";
 }
 
@@ -786,6 +791,15 @@ export interface FilmState {
   readonly bridge: number;
   /** 0..1, how much of the 1906 schedule of losses has been read */
   readonly fire: number;
+  /**
+   * 0..1, the burned GROUND — hot while the fire is running and then ash.
+   *
+   * It outlives its own shot, which is the point: shot 1 leaves the city
+   * scorched and shot 2 opens on the identical frame, so the ash is what the
+   * match cut is cut ON, and it fades out over the same 2,500 ms the burn
+   * hairline does while the fabric fills back in underneath it.
+   */
+  readonly scorch: number;
   /** 0..1, the four streets a resolution names, stroking out */
   readonly outline: number;
   readonly line: FilmLine | null;
@@ -852,7 +866,9 @@ function pickLine(tl: FilmTimeline, d: FilmPayload, si: number, segIx: number): 
   if (tl.segs[segIx].k === "move") return null;
   const s = d.shots[si];
   const acts = SCRIPT[s.id];
-  const base: FilmLine = { copy: s.copy, cite: s.cite, links: s.links, kind: s.kind };
+  const base: FilmLine = {
+    copy: s.copy, cite: s.cite, links: s.links, also: s.also, kind: s.kind,
+  };
   /* THE SECOND LINE IS THE PAYLOAD'S OWN, ALWAYS. It used to be able to come
      out of a `SPOKEN` table in this file — one line living a file upstream of
      where the other nineteen lived, because `camera.json` belonged to another
@@ -1207,6 +1223,9 @@ export function filmStateAt(
     burn,
     bridge: r.bridge,
     fire: r.fire,
+    /* shot 1 burns it, shot 2 lets it cool on the hairline's own clock, and
+       nothing after shot 2 carries it */
+    scorch: sg.si == null ? 0 : si === 0 ? r.fire : si === 1 ? burn : 0,
     outline: r.outline,
     line,
     /* THE BADGE FOLLOWS THE LINE, NOT THE SHOT, so a shot with two subjects

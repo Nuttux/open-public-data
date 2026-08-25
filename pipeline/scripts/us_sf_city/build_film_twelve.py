@@ -79,7 +79,7 @@ SHOTS: list[dict] = [
     # FILM.md §15.1 measures a travel at 4 to 32 rasterisations and a locked
     # camera at zero — so the strongest image available is also the cheapest.
     dict(n=1, id="burn", title="The fire, and what it took of the city's own",
-         t=(-122.409, 37.783), z=2.05, off=(0.0, 0.0), move=0, ms=13000,
+         t=(-122.409, 37.783), z=2.05, off=(0.0, 0.0), move=0, ms=15000,
          st=(None, 1906)),
     # 2 · THE MATCH CUT. Same target, same z, no move. Nine years run under a
     # camera that does not move and the fabric comes back inside the hairline.
@@ -148,102 +148,147 @@ SHOTS: list[dict] = [
 # what goes on screen and the narration becomes the shot's title. Six of the
 # eleven are the Board's own words for that reason.
 COPY: dict[int, dict] = {
-    # THE FIRST OF THE THREE DATA SHOTS. The line is one plain sentence and
-    # both of its numbers are clickable: 28,000 is the USGS's own count for the
-    # three-day conflagration, and 27 is counted by build_fire_losses.py off
-    # the Municipal Report's own schedule — which is the second link, and the
-    # thing the frame is drawing. A quoted table heading was tried here and it
-    # is three lines of nineteenth-century title on a plate that has room for
-    # two; the heading is where the link goes instead.
-    1: dict(kind="data",
+    # ── THE ELEVEN LINES DANIEL APPROVED, AND THE RECORD UNDER EACH ────────
+    #
+    # THIS TABLE WAS WRONG ONCE AND THE WAY IT WAS WRONG IS WORTH KEEPING.
+    # The first cut put the RECORD'S OWN WORDS on screen and Daniel's sentence
+    # in the shot's `title`, which nothing renders. He watched it and said the
+    # text "isn't there yet, theres weird stuff about suited value etc" — and
+    # he was quoting shot 2, whose line was the Auditor's beat about an
+    # assessed valuation that had burned. A true sentence out of the minute
+    # book, and exactly the kind of thing he had already thrown out twice.
+    #
+    # So: **`copy` is the approved line and nothing else.** The record is the
+    # PROOF under it — the citation link every shot carries, and the second
+    # line where a shot has one. `gate` names what must exist in `entries/` at
+    # that item and leaf for the shot to be allowed to make its claim, and
+    # `check_copy` still refuses to write the payload without it. What changed
+    # is that the gate now certifies the SOURCE rather than the prose, and
+    # `narration=True` says so on every row that is Daniel's sentence rather
+    # than the Board's.
+    #
+    # FIVE OF THE ELEVEN FAILED THEIR FACT CHECK AND CARRY THE CORRECTED
+    # NUMBER, each flagged to the coordinator rather than quietly reworded, and
+    # each changed by as few words as the correction needs. FILM.md §18.4 is
+    # the table of what the source actually says.
+    1: dict(kind="scan", narration=True,
+            item="excerptsfromsanf1908sanf", leaf=8, find="quote",
+            verbatim="List of Property Belonging to the Fire Department",
+            also=("Three days, 28,000 buildings — USGS",
+                  "https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/casualties.php"),
+            # APPROVED: "…thirty-six of them the city's own." The schedule holds
+            # 36 structures and the 1906 clerk records 27 destroyed by fire and
+            # 9 damaged by the earthquake only, so 36 is the count of the city
+            # property in the table and not the count the FIRE destroyed.
+            # 28,000 buildings and a THREE-DAY fire are the USGS's own figures
+            # for 18-21 April 1906, which is why the shot also carries the
+            # USGS link beside the Municipal Report's own schedule.
             copy="The fire burned for three days and destroyed some 28,000 "
-                 "buildings, twenty-seven of them the Fire Department's own.",
-            links=[("28,000 buildings, a three-day fire — USGS",
-                    "https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/casualties.php"),
-                   ("The Fire Department's own schedule of what it lost, "
-                    "Municipal Reports 1906",
-                    "https://archive.org/details/excerptsfromsanf1908sanf/page/n8/mode/1up")]),
-    2: dict(item="journalofproceed01sanfrich", leaf=25, kind="scan", find="headline",
-            copy="The Auditor files next year's budget and notes that the "
-                 "valuation it rests on burned six weeks ago."),
-    3: dict(item="journalofproceed1915sanfrich", leaf=352, kind="scan", find="quote",
-            copy="“if this building was permitted to remain permanently it "
-                 "… would very materially add to the beauty of that section "
-                 "of our city” — the Board asks for the Palace of Fine "
-                 "Arts while the fair is still open.",
-            verbatim="would very materially add to the beauty of that section of our city"),
-    4: dict(item="journalofproceed31sanfrich", leaf=46, kind="scan", find="headline",
-            copy="Nine months from opening, the Mayor prices the bridge at "
-                 "$77,600,000 and names the next fight: the tolls."),
-    5: dict(item="journalofproceed37sanfrich", leaf=713, kind="scan", find="quote",
-            copy="“National Housing Agency and Home Owners Loan Corporation "
-                 "Urged to Effectuate Slum Clearance in Japanese Quarter” "
-                 "— the Board, 20 April 1942, three weeks after the removal. "
-                 "Adopted 8 to 3.",
+                 "buildings."),
+    2: dict(kind="scan", narration=True,
+            item="journalofproceed01sanfrich", leaf=8, find="headline",
+            gate="The Clerk traces the edge of the burned city street by street, "
+                 "and writes that the true toll will probably never be known.",
+            copy="The city rebuilt more than it lost within nine years."),
+    3: dict(kind="scan", narration=True,
+            item="journalofproceed1915sanfrich", leaf=352, find="quote",
+            verbatim="would very materially add to the beauty of that section of our city",
+            copy="San Francisco pulled down the Exposition's palaces when the "
+                 "fair closed and kept the Palace of Fine Arts."),
+    4: dict(kind="scan", narration=True,
+            item="journalofproceed31sanfrich", leaf=46, find="headline",
+            gate="Nine months from opening, the Mayor prices the bridge at "
+                 "$77,600,000 and names the next fight: the tolls.",
+            # APPROVED: "…thirteen months apart." The Bay Bridge opened to
+            # traffic 12 November 1936 (HAER CA-32) and the Golden Gate on
+            # 28 May 1937 (Bridge District): six months and sixteen days.
+            copy="The Bay Bridge and the Golden Gate opened six months apart."),
+    5: dict(kind="scan", narration=True,
+            item="journalofproceed37sanfrich", leaf=713, find="quote",
             verbatim="National Housing Agency and Home Owners Loan Corporation "
-                     "Urged to Effectuate Slum Clearance in Japanese Quarter"),
-    6: dict(item="journalofproceed40part3sanfrich", leaf=726, kind="scan", find="quote",
-            copy="“the four city blocks occupied by the Veterans’ "
-                 "Building, Opera House and the Civic Center Plaza” — "
-                 "the city measures what it had just held.",
+                     "Urged to Effectuate Slum Clearance in Japanese Quarter",
+            # APPROVED: "…was leases and licences." Searched: all 767 items the
+            # sweep extracts from the 1942 volumes, filtered to the ten streets
+            # that bound the district and then to lease/permit/licence
+            # language. Every lease is elsewhere in the city. What the Journal
+            # carries for those streets that spring is the newspapers reported
+            # to the Army, the city payroll, the liquor permits held back, and
+            # — three weeks after the removal — the district's mortgages urged
+            # on Washington for slum clearance. All four are property.
+            copy="In 1942 the government removed everyone of Japanese descent "
+                 "from Japantown, and the Board's business for those streets "
+                 "that spring was property."),
+    6: dict(kind="scan", narration=True,
+            item="journalofproceed40part3sanfrich", leaf=726, find="quote",
             verbatim="the four city blocks occupied by the Veterans' Building, "
-                     "Opera House and the Civic Center Plaza"),
-    7: dict(item="journalofproceed54sanfrich", leaf=48, kind="scan", find="quote",
-            copy="“It is beyond the power of the Board to delete anything in "
-                 "the Master Plan … The resolution merely expresses "
-                 "opposition” — and it was enough.",
+                     "Opera House and the Civic Center Plaza",
+            copy="Fifty nations signed the United Nations Charter in the "
+                 "city's war memorial."),
+    7: dict(kind="scan", narration=True,
+            item="journalofproceed54sanfrich", leaf=48, find="quote",
             verbatim="It is beyond the power of the Board to delete anything in "
-                     "the Master Plan"),
-    # THE ONE SHOT WHOSE SOURCE IS NOT A SCANNED MINUTE BOOK, AND IT SAYS SO.
-    # There is no Journal volume for the Pyramid in this corpus, so the shot
-    # carries a DATA chip and cites the two published registers the claim rests
-    # on, exactly as the old shot 10 did for the fabric's own dates.
-    8: dict(kind="data",
-            copy="853 feet, fifty floors, finished in 1972 — the tallest "
-                 "building in San Francisco until Salesforce Tower opened in 2018.",
-            links=[("Height, floors and completion year, DataSF Tall Building Inventory",
+                     "the Master Plan",
+            # APPROVED: "…the state had planned." The resolution's own title is
+            # "All Freeways Contained in the Master Plan" — the CITY's plan.
+            # The routes were state Division of Highways routes; the ten came
+            # from the city's own trafficways plan, which is why the Board could
+            # only declare opposition to them.
+            copy="The Board rejected seven of the ten freeways the city had "
+                 "planned for San Francisco."),
+    8: dict(kind="data", narration=True,
+            copy="The Transamerica Pyramid was the tallest building in San "
+                 "Francisco for forty-six years.",
+            links=[("853 feet, fifty floors, 1972 — DataSF Tall Building Inventory",
                     "https://data.sfgov.org/d/5kya-mfst"),
-                   ("The footprint and its year, DataSF",
-                    "https://data.sfgov.org/d/ynuv-fyni")]),
-    9: dict(item="journalofproceed85julydecsanfrich", leaf=375, kind="scan", find="quote",
-             copy="“the resolution as amended … was refused adoption” "
-                  "— beaten 2 to 9, rescinded, and carried 6 to 5 the same "
-                  "afternoon.",
-             verbatim="was refused adoption by the following vote"),
-    # THE SECOND OF THE TWO DATA SHOTS. The Board's own record for Mission Bay
-    # is in Legistar rather than in a scanned volume — `mission-bay.json`'s
-    # fifteen beats are all `live` matters — and a Legistar matter has no
-    # BookReader leaf, so it cannot carry the SCAN chip this film's citations
-    # are shaped for. The population is DataSF's own published figure for the
-    # Mission Bay analysis neighborhood and the rail yard is OCII's own word.
-    10: dict(kind="data",
-             copy="The Southern Pacific rail yards became a neighbourhood of "
-                  "16,710 people.",
-             links=[("Population, DataSF neighborhood demographics (ACS 2019–2023)",
+                   ("Salesforce Tower, 1,070 feet, opened 2018 — same register",
+                    "https://data.sfgov.org/d/5kya-mfst")]),
+    9: dict(kind="scan", narration=True,
+            item="journalofproceed85julydecsanfrich", leaf=374, find="headline",
+            gate="The vote is rescinded, the condition stripped out, and the same "
+                 "afternoon the Board endorses demolition 6 to 5.",
+            copy="After the earthquake the Board voted to demolish the "
+                 "Embarcadero Freeway instead of repairing it."),
+    10: dict(kind="data", narration=True,
+             # APPROVED: "…of eleven thousand people." DataSF's own figure for
+             # the Mission Bay analysis neighborhood is 16,710 (ACS 2019–2023).
+             copy="The Mission Bay rail yards became a neighbourhood of "
+                  "sixteen thousand people.",
+             links=[("16,710 residents — DataSF neighborhood demographics, ACS 2019–2023",
                      "https://data.sfgov.org/d/4qbq-hvtt"),
                     ("\u201cformerly-underutilized Southern Pacific railyards\u201d — OCII",
                      "https://sfocii.org/projects/mission-bay-south/overview")]),
-    11: dict(kind="data",
-             copy="“it shall be unlawful for any Department to obtain, retain, "
-                  "access, or use … any Face Recognition Technology” — "
-                  "Ordinance 103-19, finally passed 10 to 1 on 21 May 2019.",
-             links=[("Ordinance No. 103-19, File 190110, as passed",
+    11: dict(kind="data", narration=True,
+             # APPROVED: "…the first city anywhere." No official or primary
+             # source claims "in the world"; the ACLU of Northern California's
+             # own press release of 14 May 2019 says "the first city in the
+             # United States to prohibit government use of face surveillance".
+             copy="San Francisco was the first city in America to tell its own "
+                  "police they could not use facial recognition.",
+             links=[("Ordinance No. 103-19, File 190110, finally passed 10 to 1 on 21 May 2019",
                      "https://sfgov.legistar.com/View.ashx?M=F&ID=7226786&GUID=78A20A6B-F1D1-4044-AA15-82AF55D98040"),
-                    ("Board minutes, 21 May 2019 — the final vote",
+                    ("Board minutes, 21 May 2019 — the vote",
                      "https://sfbos.org/sites/default/files/bag052119_minutes.pdf")]),
 }
 
-# The second thing a shot says, after the first has settled.
-COPY2: dict[int, dict] = {
-    4: dict(item="journalofproceed32sanfrich", leaf=11, kind="scan", find="headline",
-            copy="Four months before it opens, the city learns the road to the "
-                 "bridge is its own bill: a third of $1,650,000."),
-    5: dict(item="journalofproceed37sanfrich", leaf=543, kind="scan", find="quote",
-            copy="“the attention of the Western Defense Command … be "
-                 "notified of this condition” — the Board reports the "
-                 "city's two Japanese newspapers, 11 to 0, six weeks earlier.",
-            verbatim="the attention of the Western Defense Command and 4th Army"),
-}
+# NO SECOND LINE, AND NO QUOTATION ANYWHERE IN THE SPOKEN TEXT.
+#
+# This table held two: the Board's own sentence about the Japanese Quarter and
+# its own sentence about the Master Plan, each set under the narration as the
+# proof of it. Daniel watched that cut and the note is unambiguous — *"i think
+# youre too much on the quotes in general … the rest is just your one sentence
+# commentary, no need for a direct quote"* — and he was right about the earlier
+# version too, where the quotation WAS the line: *"'The Auditor files next
+# year's budget and notes that the valuation it rests on burned six weeks' —
+# wtf is this quote, i really dont agree."*
+#
+# **The narration is one plain sentence, on every shot, and an archival
+# quotation is never the text on screen.** The record is still the gate on the
+# claim and still the link under it; it is not the words a reader reads.
+#
+# A quotation may come back as a PICTURE — the scanned page with the cited line
+# highlighted, on three or four shots where the document is the moment. That is
+# designed in FILM.md §18.7 and is deliberately not built.
+COPY2: dict[int, dict] = {}
 
 TITLE = dict(
     head="San Francisco builds itself",
@@ -344,8 +389,14 @@ def check_copy(beats: dict, n: int, c: dict) -> dict | None:
     if not cands:
         sys.exit(f"shot {n} cites {c['item']} leaf {c.get('leaf')} "
                  f"and no beat in entries/ does")
+    # WHAT THE GATE CERTIFIES IS THE SOURCE, NOT THE PROSE. A narration row
+    # names in `gate` (or in `verbatim`) the thing that must exist in the beat;
+    # `copy` is what a reader sees and is Daniel's approved sentence. A row
+    # without `narration` is the record's own words and `copy` IS the thing
+    # that must match, which is the original contract.
+    want = (c.get("gate") or c["copy"]).strip()
     for eid, b, s in cands:
-        if c["find"] == "headline" and (b.get("headline") or "").strip() == c["copy"].strip():
+        if c["find"] == "headline" and (b.get("headline") or "").strip() == want:
             return dict(entity=eid, year=b.get("year"), url=s.get("url"),
                         item=c["item"], leaf=c.get("leaf"))
         if c["find"] == "quote":
@@ -515,6 +566,10 @@ def main() -> None:
                              url=prov["url"], entity=prov["entity"])
         if c["kind"] == "data":
             o["links"] = [dict(t=a, u=b) for a, b in c["links"]]
+        # a scan shot may carry ONE extra published source beside its leaf,
+        # where the sentence rests on a figure the minute book does not hold
+        if c.get("also"):
+            o["also"] = dict(t=c["also"][0], u=c["also"][1])
 
         b = BUILDS.get(n)
         if b:

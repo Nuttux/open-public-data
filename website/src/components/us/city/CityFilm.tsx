@@ -70,6 +70,7 @@ import {
   drawAccepted,
   drawBridgeDeck,
   drawBurnLine,
+  drawBurnFill,
   drawFireLosses,
   drawOutline,
   type FireLoss,
@@ -820,6 +821,12 @@ function paintOverlay(
 ): void {
   const cam = { cx: s.cx, cy: s.cy, scale: s.scale };
   const scene0 = renderer.composition;
+  /* THE GROUND FIRST, THEN THE LINE ROUND IT. The fill is the burned area and
+     the hairline is its edge; drawing the edge first would put the fill over
+     its own boundary. */
+  if (s.scorch > 0)
+    drawBurnFill(g, W, H, cam, projection, scene0.burnRings(),
+      (x, y) => scene0.elevAt(x, y), s.shot === 0 ? s.fire : 1, s.scorch);
   if (s.burn > 0)
     drawBurnLine(g, W, H, cam, projection, scene0.burnRings(),
       (x, y) => scene0.elevAt(x, y), s.burn, s.burn);
@@ -1053,7 +1060,13 @@ function FilmChrome({
               <b>{t("us.sf.thecity.film.scan")}</b>{" "}
               {volumeLabel(line.cite.item)} · {t("us.sf.thecity.film.leaf")} {line.cite.leaf}
             </a>
-          ) : line?.links ? (
+          ) : null}
+          {line?.also ? (
+            <a className="fx-film-cite" href={line.also.u} target="_blank" rel="noopener">
+              <b>{t("us.sf.thecity.film.data")}</b> {line.also.t}
+            </a>
+          ) : null}
+          {!line?.cite && line?.links ? (
             <a className="fx-film-cite" href={line.links[0].u} target="_blank" rel="noopener">
               <b>{t("us.sf.thecity.film.data")}</b>{" "}
               {line.links.map((l) => l.t).join(" · ")}
