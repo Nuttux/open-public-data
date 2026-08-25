@@ -2762,3 +2762,32 @@ centreline vertex sitting on the boundary is otherwise a coin toss; and the buil
 **exits if any named street clips to nothing**. The box version passed every check this
 file had while drawing three sides of four, because nothing asserted that all four were
 there. It prints `ELLIS 6 · CALIFORNIA 6 · GOUGH 8 · FILLMORE 8`.
+
+### 21.7 The fire was still red dots, and the cause was one line of blend mode
+
+> *"You need a real fire thing going on not just red dots"*
+
+§19.3 built flames, measured `FIRE_WIN`, sized the tongues in the right pixel space — and
+the frame still reads as dots. `out-m1d/crop-fire8.png`, taken at the act's PEAK rather
+than at its tail, is why:
+
+**`g.globalCompositeOperation = "lighter"`.** Additive blending is right over a dark frame
+and wrong over this one. The ground under the burned district is a pale warm tan, so adding
+a yellow-orange gradient to it clips every channel and the flame comes out as a **cream
+cone of light with no hue left in it** — twenty-seven pale beams standing over the city,
+and a dark red disc at the foot of each. The disc was the only mark on the frame with any
+colour in it, so the disc is what the eye got. **The dots were never the fire; they were
+what was left after the fire had been bleached out.**
+
+Source-over, with the alphas raised to do the work additive blending had been doing, and
+three sizes measured by looking rather than reasoned:
+
+| | was | is | why |
+|---|---:|---:|---|
+| `FIRE_H_MAX` / `MIN` | 156 / 46 | **96 / 34** | at 156 the cones are a quarter of the frame tall and twenty-seven of them merge into one orange wash |
+| tongue width | `s × 0.25` | `s × 0.30` | 4:1 reads as a spike; a flame is nearer 2.5:1 |
+| ember radius | `s × 0.075`, α .60 | `s × 0.038`, α .42 | 12 px of the most saturated colour on the frame, at the foot of every structure |
+
+`out-m1d/crop-fire8c.png` and `out-m1d/seq-sheet.png` — eight frames from the burn line
+drawing itself through the fire to the scorched ground. It is a burning city and then a
+burned one, and the year line is monotone across the cut into shot 2.

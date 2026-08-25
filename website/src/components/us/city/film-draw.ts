@@ -636,8 +636,8 @@ const FIRE_PEAK = 0.26;
  * Set at 46/13 first, which is 23/7 CSS px on a 1440 px stage: measured on
  * `out-m1c/watch-fire2-04.png` as embers with a glow, not flames.
  */
-const FIRE_H_MAX = 156;
-const FIRE_H_MIN = 46;
+const FIRE_H_MAX = 96;
+const FIRE_H_MIN = 34;
 
 /** deterministic, and that is the point — see the header */
 const hash01 = (i: number): number => {
@@ -779,8 +779,18 @@ export function drawFireLosses(
   g.restore();
 
   // ── the flames ───────────────────────────────────────────────────────────
+  /* SOURCE-OVER, NOT `lighter`, AND THIS IS THE WHOLE OF WHY THE FIRE READ AS
+     DOTS. Additive blending is right over a dark frame and wrong over this
+     one: the ground under the burned district is a pale warm tan, so ADDING a
+     yellow-orange gradient to it clips every channel to white and the flame
+     comes out as a **cream cone of light** with no hue left in it. That is
+     what `out-m1d/crop-fire8.png` shows at the act's peak — twenty-seven pale
+     beams standing over the city and a dark red dot at the foot of each, and
+     the dot is the only thing on the frame with any colour in it. Over
+     source-over the same gradient is orange against tan, which is fire.
+     The alphas below are raised to match, because additive blending had been
+     doing half the work. */
   g.save();
-  g.globalCompositeOperation = "lighter";
   for (const f of seen) {
     const up = Math.min(1, f.p / FIRE_PEAK);
     const down = f.p <= FIRE_PEAK ? 1 : 1 - (f.p - FIRE_PEAK) / (1 - FIRE_PEAK);
@@ -791,15 +801,17 @@ export function drawFireLosses(
     if (life <= 0.02) continue;
     /* two tongues, out of phase, so the flame moves rather than pulses */
     for (let q = 0; q < 2; q++) {
-      const w = f.s * (0.25 - 0.06 * q);
+      /* wider than it was. At 0.25 the tongue is 4:1 tall and reads as a spike;
+         a flame is nearer 2.5:1 and the eye knows it. */
+      const w = f.s * (0.30 - 0.08 * q);
       const flick = 0.78 + 0.22 * Math.sin(phase * (31 + 11 * q) + f.h * 41 + q * 2.1);
       const hgt = f.s * life * flick * (1 - 0.22 * q);
       const sway = Math.sin(phase * (17 + 7 * q) + f.h * 27) * w * 0.5;
       const gr = g.createLinearGradient(f.X, f.Y, f.X, f.Y - hgt);
-      gr.addColorStop(0, `rgba(255,205,104,${0.58 * life})`);
-      gr.addColorStop(0.38, `rgba(236,112,26,${0.5 * life})`);
-      gr.addColorStop(0.74, `rgba(186,52,18,${0.26 * life})`);
-      gr.addColorStop(1, "rgba(150,36,16,0)");
+      gr.addColorStop(0, `rgba(255,196,84,${0.62 * life})`);
+      gr.addColorStop(0.34, `rgba(232,104,22,${0.52 * life})`);
+      gr.addColorStop(0.70, `rgba(178,46,16,${0.26 * life})`);
+      gr.addColorStop(1, "rgba(140,32,14,0)");
       g.fillStyle = gr;
       g.beginPath();
       g.moveTo(f.X - w, f.Y + 1);
@@ -811,8 +823,9 @@ export function drawFireLosses(
     /* the white heart, which is what makes it read as fire and not as paint */
     const hr = f.s * 0.13 * life;
     const gh = g.createRadialGradient(f.X, f.Y - hr * 0.4, 0, f.X, f.Y - hr * 0.4, hr * 2.2);
-    gh.addColorStop(0, `rgba(255,238,196,${0.72 * life})`);
-    gh.addColorStop(1, "rgba(255,160,60,0)");
+    gh.addColorStop(0, `rgba(255,246,214,${0.92 * life})`);
+    gh.addColorStop(0.5, `rgba(255,186,74,${0.6 * life})`);
+    gh.addColorStop(1, "rgba(240,120,32,0)");
     g.fillStyle = gh;
     g.beginPath();
     g.arc(f.X, f.Y - hr * 0.4, hr * 2.2, 0, Math.PI * 2);
@@ -825,11 +838,16 @@ export function drawFireLosses(
   for (const f of seen) {
     /* small and dark. It is what the frame KEEPS, not what it shows: an ember
        the size of the flame that made it is the "red dots" note again. */
+    /* 0.075 of the flame height put a 12 px disc at the foot of every
+       structure and it was the darkest, most saturated mark on the frame —
+       the "red dots" note, still true after the flames were built. Half that,
+       and half the alpha again: what is left has to be findable and must not
+       be the thing the eye lands on. */
     const a = Math.min(1, f.p * 3);
-    const rr = Math.max(1.2, f.s * 0.075);
+    const rr = Math.max(1.1, f.s * 0.038);
     g.beginPath();
     g.arc(f.X, f.Y, rr, 0, Math.PI * 2);
-    g.fillStyle = `rgba(104,30,14,${0.6 * a})`;
+    g.fillStyle = `rgba(88,34,20,${0.42 * a})`;
     g.fill();
   }
   g.restore();
