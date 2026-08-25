@@ -2547,3 +2547,69 @@ stylesheet, so re-attaching the sentence to its mark is one line if the legend i
 Behind `tOr()`. All eight judged leads in `block-leads.json` still resolve against the shards
 after the stronger gate — checked by matching `u` + the stored 56 characters, not assumed.
 Typecheck clean, eslint clean, **455/455**.
+
+## 23. Block F1, 2026-08-25 — the caption was blaming the record for our gap
+
+> "The Board's Journal is scanned to 1999. The decades after it are blank because the record
+> stops there, not because the city stopped deciding."
+
+**That sentence was live on production and it is false.** The record did not stop. The series
+was RENAMED three times — `Journal of proceedings` → `Meeting minutes` → `Minutes` →
+`Meeting minutes. Draft` — and a pipeline that searched by title found ninety-three years and
+missed seventeen that were on the Internet Archive the whole time. Measured and seeded in
+`93096a2a`: **378 Board-level items, coverage resolved for 367, 1908–2016, every year
+1995–2016 covered, volume numbering unbroken.**
+
+It is the worst class of error this project can ship — a gap that was **ours**, printed as a
+fact about the record — and the panel said it under a drawing that made it look measured.
+
+### a. Two different years, and the rail may not confuse them
+
+The correction is not one constant. **What the Archive's shelf reaches (2016) and what these
+shards reach (1999 until the ingest re-runs) are two different facts**, and the naive fix —
+`SERIES_LAST_YEAR = 2016` alone — would have traded one false claim for another: the 2000s
+and 2010s would have drawn as ordinary in-series silence, saying *this block was quiet for
+sixteen years* when the truth is that this index has not read those years yet.
+
+So:
+
+* **`SERIES_LAST_YEAR = 2016`** — the shelf. Cited by the caption and by nothing else.
+* **`indexedLastYear(ix)`** — read off `y1` in the T0 index the map already fetches, so it
+  costs nothing and cannot go stale. **The rail's own treatment follows this**: `decadeGroups`
+  and `blockShape` both take it as a parameter instead of closing over a constant.
+* `SERIES_END_DECADE = 1990` is **deleted**. `quietAfter` was anchored on it; anchoring it on
+  the shelf instead would have fired *"nothing lands here after 1985"* on nearly every block
+  in the city. It is anchored on what the index reaches.
+
+The two converge the moment the ingest re-runs, and **nothing needs editing when they do** —
+`indexedLastYear` returns 2016, the unrecorded band moves to the 2020s, and the caption
+switches to its other sentence on its own.
+
+### b. The caption, in two states, and the second one is not a hedge
+
+```
+index has caught up   The Board's minutes are scanned through 2016 — under three
+                      different titles, which is why they were once thought to stop
+                      in 1999. After 2016 the Clerk still publishes every meeting;
+                      no library has bound and paginated them into this series.
+
+index still behind    The Board's minutes are scanned through 2016, under three
+                      different titles. This map has read them to 1999; the decades
+                      after that are blank here, not in the record.
+```
+
+**The claim about 2017+ is narrow on purpose.** The Clerk publishes every meeting, the
+minutes are born digital and free, and the Wayback Machine has crawled `sfbos.org` since 2009
+and does capture them. What stops in 2016 is the curated, paginated, OCR'd, citable document
+series. **The record continues; the shelf stops.** Nothing on the panel says more than that,
+and "unarchived" would have been a second false sentence written to fix the first.
+
+### c. State, and the two files that still read false
+
+Typecheck clean, eslint clean, **456/456** (455 + one for the moving unrecorded band). The
+`block-records.ts` header no longer calls 142 volumes "the complete series" — it is complete
+for one TITLE. `CityScrub.tsx`'s past-the-series caveat used the same false key and now uses
+the same replacement.
+
+**`us.sf.thecity.panel.sum_rail_end` has no caller and its string is the false sentence.** It
+should be deleted from both dictionaries rather than left where something can pick it up.

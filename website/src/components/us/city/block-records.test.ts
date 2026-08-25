@@ -60,10 +60,23 @@ describe("decadeGroups", () => {
    * marks everything past the series as unrecorded rather than empty.
    */
   it("runs to the present, not to the end of the record", () => {
-    const g = decadeGroups([row({ y: 1916 })]);
+    // The anchor is now a PARAMETER — the last year the shipped index reaches
+    // — rather than a constant, because the shelf reaching 2016 and these
+    // shards reaching 1999 are two different facts and the rail follows the
+    // second. Passed explicitly here so the test says which one it means.
+    const g = decadeGroups([row({ y: 1916 })], 1999);
     expect(g[g.length - 1].decade).toBe(NOW_DECADE);
     expect(g.find((d) => d.decade === 1990)?.afterSeries).toBe(false);
     expect(g.find((d) => d.decade === 2000)?.afterSeries).toBe(true);
+  });
+
+  it("moves the unrecorded band when the index reaches further", () => {
+    // the correction the renamed volumes bought: with the minutes ingested to
+    // 2016 the 2000s and 2010s are RECORDED, and only 2020 onward is outside
+    const g = decadeGroups([row({ y: 1916 })], 2016);
+    expect(g.find((d) => d.decade === 2000)?.afterSeries).toBe(false);
+    expect(g.find((d) => d.decade === 2010)?.afterSeries).toBe(false);
+    expect(g.find((d) => d.decade === 2020)?.afterSeries).toBe(true);
   });
 
   it("stretches past the present rather than dropping what a late row holds", () => {
@@ -101,7 +114,7 @@ describe("decadeGroups", () => {
    * drawn differently on purpose, so a fold may not join them.
    */
   it("never folds across the end of the scanned series", () => {
-    const items = railItems(decadeGroups([row({ y: 1916 })]));
+    const items = railItems(decadeGroups([row({ y: 1916 })], 1999));
     for (const i of items) {
       if (i.kind !== "gap") continue;
       expect(i.run.from <= 1990 && i.run.to >= 2000).toBe(false);
@@ -203,11 +216,13 @@ describe("blockShape", () => {
     expect(clear?.busiest?.decade).toBe(1910);
   });
 
-  it("says a block went quiet only when it falls short of the series' end", () => {
-    // the Journal runs out in 1999; a block whose last decision is 1999 has
-    // not fallen silent, the series has
-    expect(blockShape([row({ y: 1999 })])?.quietAfter).toBeNull();
-    expect(blockShape([row({ y: 1947 })])?.quietAfter).toBe(1947);
+  it("says a block went quiet only when it falls short of what the index reaches", () => {
+    // a block whose last decision is the last year the index carries has not
+    // fallen silent, the corpus has — so the anchor is passed in, not assumed
+    expect(blockShape([row({ y: 1999 })], 1999)?.quietAfter).toBeNull();
+    expect(blockShape([row({ y: 1947 })], 1999)?.quietAfter).toBe(1947);
+    // and it moves with the index rather than with the shelf
+    expect(blockShape([row({ y: 1999 })], 2016)?.quietAfter).toBe(1999);
   });
 
   it("returns null when nothing carries a year", () => {

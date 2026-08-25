@@ -2,9 +2,14 @@
  * THE BLOCK RECORD — what the city decided, block by block.
  *
  * Built by `scratchpad/sf-city-anim/blocks/build_index.py` from **142 of 142
- * Board of Supervisors Journal volumes, 1906–1999 — the complete series — plus
+ * volumes published under the title `Journal of proceedings`, 1906–1999, plus
  * 44 Bureau of Engineering, Board of Public Works, DPW and Park Commission
- * annual reports.** 4,679 of the city's 5,404 assessor blocks answer the
+ * annual reports.**
+ *
+ * **THAT IS COMPLETE FOR ONE TITLE, NOT FOR THE SERIES.** The Board's minutes
+ * continue under three more — `Meeting minutes`, `Minutes`, `Meeting minutes.
+ * Draft` — through 2016, and the index above does not hold them yet. See
+ * `SERIES_LAST_YEAR` and `pipeline/scripts/us_sf_city/MINUTES.md`. 4,679 of the city's 5,404 assessor blocks answer the
  * question *what did the city decide here*, with a page link per decision.
  *
  * Three tiers, and the loading follows the same rule as the map's own chunks:
@@ -234,40 +239,72 @@ export const RAIL_FROM = 1900;
 export const RAIL_TO = 1990;
 
 /**
- * THE LAST YEAR THE BOARD'S OWN SERIES CARRIES.
+ * THE LAST YEAR THE BOARD'S SCANNED SERIES CARRIES — 2016, NOT 1999.
  *
- * All 142 Journal volumes in this corpus end in 1998–99, so the rail used to
- * stop at the 1990s and a reader saw a century of decisions simply stop. That
- * reads as *the city stopped deciding things here*, which is false and is the
- * one thing a rail must never say. MEASURED over 40 of the 256 shards:
+ * ── THE ERROR THIS CONSTANT USED TO CAUSE ────────────────────────────────
+ * It read 1999, and the caption above the rail said in so many words that
+ * *"the record stops there, not because the city stopped deciding"*. **The
+ * record did not stop.** The series was RENAMED, three times — `Journal of
+ * proceedings` → `Meeting minutes` → `Minutes` → `Meeting minutes. Draft` —
+ * and a pipeline that searched by title found ninety-three years and missed
+ * seventeen that were on the Internet Archive the whole time.
  *
- *   1900s 1,012 · 1910s 3,752 · 1920s 4,630 · 1930s 1,458 · 1940s 807
- *   1950s   532 · 1960s   467 · 1970s   806 · 1980s 1,130 · 1990s 734
- *   2000s     5 · 2010s    14   ← the DPW annual reports, and nothing else
+ * MEASURED and seeded (`93096a2a`,
+ * `pipeline/seeds/countries/us/seed_us_sf_bos_minutes.tsv`): **378 Board-level
+ * items, coverage resolved for 367, spanning 1908–2016, every year 1995–2016
+ * covered**, with the volume numbering unbroken across all three titles.
  *
- * The rail now runs to the present and the decades past the series are drawn
- * as what they are: **not empty, unrecorded.** `afterSeries` is what marks
- * them, and the panel says the reason in words underneath.
+ * That is the worst class of error this project can ship: a gap that was OURS,
+ * printed as a fact about the record.
  *
- * A modern source EXISTS and is not in this pipeline: SF's Legistar carries
- * 30,428 Board matters for 2000–2018 with titles in the same form the Journal
- * used. Placing them on blocks needs the same address-extraction pass the
- * Journal got. See FICHE.md §14.
+ * ── WHAT IS ACTUALLY TRUE AFTER 2016, AND IT IS NARROW ───────────────────
+ * The Clerk publishes every meeting, the minutes are born digital and free,
+ * and the Wayback Machine has crawled `sfbos.org` since 2009 and does capture
+ * them. What stops in 2016 is the **curated, paginated, OCR'd, citable
+ * document series** — the thing that makes 1906–2016 readable and quotable
+ * here. A search of the library collection for 2017–2026 returns zero.
+ * **The record continues; the shelf stops.** Nothing on the panel may say
+ * more than that.
  */
-export const SERIES_LAST_YEAR = 1999;
+export const SERIES_LAST_YEAR = 2016;
 
 /**
- * "Went quiet" is measured against the SERIES, not against the rail.
+ * THE LAST YEAR THE SHIPPED SHARDS ACTUALLY PLACE ANYTHING.
  *
- * The Journal runs 1906–1999 and the rail is allowed to run past it, because
- * 32 rows in 60 shards come out of the 2002 and 2010 DPW annual reports. Using
- * the rail's end as the anchor made a block whose last decision is 1999 — the
- * last year the Board's own series covers — report that "nothing lands here
- * after 1999", which reads as a block falling silent and is really the series
- * running out. The anchor is the last decade of the Journal, and a block has
- * to fall two whole decades short of it before anything is said.
+ * Not the same number as `SERIES_LAST_YEAR` and it must not be assumed to be:
+ * the shelf reaching 2016 is a fact about the Internet Archive, while what
+ * this map can draw is a fact about `block-*.json` on disk at this moment.
+ * They converge when the ingest is re-run and they diverge in the window
+ * between the correction landing and that run — which is exactly the window
+ * this function exists for.
+ *
+ * **The rail's own treatment follows the DATA, and only the caption follows
+ * the shelf.** Drawing the 2000s as an ordinary in-series silence while the
+ * shards hold nothing there would trade one false claim for another: it would
+ * say this block was quiet for sixteen years when the truth is that this index
+ * has not read those years yet. Read off `y1`, the T0 index the map already
+ * fetches, so it costs nothing and cannot go stale.
  */
-const SERIES_END_DECADE = 1990;
+export function indexedLastYear(ix: BlockIndex | null): number {
+  if (!ix) return SERIES_LAST_YEAR;
+  let m = 0;
+  for (const y of ix.y1) if (y > m) m = y;
+  return m > 0 ? m : SERIES_LAST_YEAR;
+}
+
+/**
+ * "Went quiet" is measured against WHAT THE INDEX REACHES, not against the rail
+ * and not against the shelf.
+ *
+ * Using the rail's end made a block whose last decision is the last year the
+ * index carries report *"nothing lands here after 1999"*, which reads as a
+ * block falling silent and is really the corpus running out. Using the SHELF's
+ * end (2016) would be the same mistake one notch further on, and worse while
+ * the shards still stop at 1999: it would fire this sentence on almost every
+ * block in the city. So the anchor is the last decade the index actually
+ * places something in, and a block has to fall two whole decades short of it
+ * before anything is said.
+ */
 const QUIET_DECADES = 2;
 
 export interface DecadeGroup {
@@ -370,7 +407,11 @@ function pickHeadline(rows: readonly BlockDecision[]): BlockDecision | null {
  * Every decade of the rail in order, empty ones included, so the gaps are
  * visible. Rank order is preserved inside each decade.
  */
-export function decadeGroups(decisions: readonly BlockDecision[]): DecadeGroup[] {
+export function decadeGroups(
+  decisions: readonly BlockDecision[],
+  /** the last year the shipped index reaches — see `indexedLastYear` */
+  indexedLast: number = SERIES_LAST_YEAR,
+): DecadeGroup[] {
   const bucket = new Map<number, BlockDecision[]>();
   for (const d of decisions) {
     if (!d.y) continue;
@@ -394,7 +435,7 @@ export function decadeGroups(decisions: readonly BlockDecision[]): DecadeGroup[]
       label: `${dec}s`,
       rows,
       headline: pickHeadline(rows),
-      afterSeries: dec > Math.floor(SERIES_LAST_YEAR / 10) * 10,
+      afterSeries: dec > Math.floor(indexedLast / 10) * 10,
     });
   }
   return out;
@@ -480,7 +521,11 @@ export interface BlockShape {
   readonly quietAfter: number | null;
 }
 
-export function blockShape(decisions: readonly BlockDecision[]): BlockShape | null {
+export function blockShape(
+  decisions: readonly BlockDecision[],
+  /** the last year the shipped index reaches — see `indexedLastYear` */
+  indexedLast: number = SERIES_LAST_YEAR,
+): BlockShape | null {
   const years = decisions.map((d) => d.y).filter((y) => y > 0);
   if (years.length === 0) return null;
   const firstYear = Math.min(...years);
@@ -504,7 +549,9 @@ export function blockShape(decisions: readonly BlockDecision[]): BlockShape | nu
 
   const lastDecade = Math.floor(lastYear / 10) * 10;
   const quietAfter =
-    (SERIES_END_DECADE - lastDecade) / 10 >= QUIET_DECADES ? lastYear : null;
+    (Math.floor(indexedLast / 10) * 10 - lastDecade) / 10 >= QUIET_DECADES
+      ? lastYear
+      : null;
 
   return { n: decisions.length, firstYear, lastYear, busiest, quietAfter };
 }

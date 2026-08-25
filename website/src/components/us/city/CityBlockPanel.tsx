@@ -106,8 +106,10 @@ import {
   hasMoney,
   hoodAt,
   hoodBusiest,
+  indexedLastYear,
   judgedLead,
   loadBlockFacts,
+  loadBlockIndex,
   loadBlockLeadPicks,
   loadBlockMoney,
   loadHoodFacts,
@@ -120,6 +122,7 @@ import {
   TIER_WORDING,
   type BlockDecision,
   type BlockFactsFile,
+  type BlockIndex,
   type BlockLeadPicks,
   type BlockMoneyFile,
   type BlockNow,
@@ -1194,6 +1197,10 @@ export default function CityBlockPanel({
   const [hoods, setHoods] = useState<HoodFactsFile | null>(null);
   /* The judged leads — a few KB, one fetch, and a miss simply falls back. */
   const [picks, setPicks] = useState<BlockLeadPicks | null>(null);
+  /* The T0 index, already fetched and memoised by the map. It is read for ONE
+     number: the last year the shipped shards actually place anything, which is
+     what the rail's own treatment follows. */
+  const [index, setIndex] = useState<BlockIndex | null>(null);
 
   useEffect(() => {
     let live = true;
@@ -1209,6 +1216,14 @@ export default function CityBlockPanel({
     void loadBlockLeadPicks().then((k) => {
       if (live) setPicks(k);
     });
+    /* `loadBlockIndex` rejects rather than failing soft, and a panel is not
+       the right place to surface that: the map has already reported it. A
+       failure leaves `index` null and `indexedLastYear` falls back. */
+    void loadBlockIndex()
+      .then((ix) => {
+        if (live) setIndex(ix);
+      })
+      .catch(() => undefined);
     return () => {
       live = false;
     };
@@ -1265,14 +1280,20 @@ export default function CityBlockPanel({
   // array is a new dependency, so the shape was recomputed on every frame the
   // map emitted while the panel was open.
   const here = useMemo(() => record?.decisions ?? EMPTY, [record]);
-  const shape = blockShape(here);
+  /* WHAT THE INDEX REACHES vs WHAT THE SHELF REACHES — two numbers, and the
+     rail may not confuse them. `indexedLast` is the last year these shards
+     place anything and it decides which decades draw as unrecorded; the
+     caption underneath cites `SERIES_LAST_YEAR`, the last year the Internet
+     Archive's scanned series covers. They converge when the ingest re-runs. */
+  const indexedLast = indexedLastYear(index);
+  const shape = blockShape(here, indexedLast);
   /* THE LINE THE FICHE OPENS ON — `pickHeadline` over the whole block
      behind the OCR/procedural gate. See `blockLead` in `block-records`. */
   const lead = useMemo(
     () => judgedLead(picks, record?.blockId ?? "", here) ?? blockLead(here),
     [picks, record?.blockId, here],
   );
-  const groups = here.length > 0 ? decadeGroups(here) : [];
+  const groups = here.length > 0 ? decadeGroups(here, indexedLast) : [];
   const max = groups.reduce((m, g) => Math.max(m, g.rows.length), 0);
   const streetN = context?.streetDecisions ?? 0;
 
@@ -1411,11 +1432,35 @@ export default function CityBlockPanel({
                 )}
               </p>
             ) : null}
+            {/* ── THE CAPTION THAT WAS FALSE ──────────────────────────────
+                It read: *"The Board's Journal is scanned to 1999. The decades
+                after it are blank because the record stops there, not because
+                the city stopped deciding."* **The record did not stop.** The
+                series was renamed three times and a title search found 93
+                years of 110. Blaming the record for a gap that was ours is the
+                one direction this project cannot be wrong in, and it was on
+                screen.
+
+                Two sentences, and which one prints is decided by whether the
+                shards have caught up with the shelf — never asserted. While
+                this index reaches 1999 and the Archive reaches 2016, saying
+                only "scanned through 2016" would contradict the unrecorded
+                band drawn directly above it. When the ingest lands, the first
+                sentence starts printing on its own with no code change. */}
             <p className="fx-block-hint" style={NOTE}>
-              {t("us.sf.thecity.panel.sum_rail_end").replace(
-                "{y}",
-                String(SERIES_LAST_YEAR),
-              )}
+              {indexedLast >= SERIES_LAST_YEAR
+                ? tOr(
+                    t,
+                    "us.sf.thecity.panel.rail_shelf_end",
+                    "The Board's minutes are scanned through {y} — under three different titles, which is why they were once thought to stop in 1999. After 2016 the Clerk still publishes every meeting; no library has bound and paginated them into this series.",
+                  ).replace("{y}", String(SERIES_LAST_YEAR))
+                : tOr(
+                    t,
+                    "us.sf.thecity.panel.rail_shelf_behind",
+                    "The Board's minutes are scanned through {y}, under three different titles. This map has read them to {i}; the decades after that are blank here, not in the record.",
+                  )
+                    .replace("{y}", String(SERIES_LAST_YEAR))
+                    .replace("{i}", String(indexedLast))}
             </p>
             {streetN > 0 && record && record.streets.length > 0 ? (
               <p className="fx-block-nearby">

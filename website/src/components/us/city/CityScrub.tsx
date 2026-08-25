@@ -561,6 +561,14 @@ export function useCityScrub(
 
    `next` stops being a sentence and becomes the control it was describing: it
    names the next dated moment and MOVES THE RAIL THERE. */
+/** `useT` returns THE KEY ITSELF when a key is missing, so a bare `t()` would
+    print `us.sf.thecity.panel.rail_shelf_end` on the frame. Disposes of itself
+    the day the key lands — same helper as `CityBlockPanel`'s. */
+function tOr(t: (k: string) => string, k: string, en: string): string {
+  const v = t(k);
+  return v === k ? en : v;
+}
+
 function ScrubNote({
   rail,
   year,
@@ -622,10 +630,11 @@ function ScrubNote({
        Legistar, which carries 30,428 Board matters for 2000–2018 in the same
        form, and placing them on blocks needs the address-extraction pass the
        Journal got. `block-records.ts` §SERIES_LAST_YEAR owns the year. */
-    caveat = t("us.sf.thecity.panel.sum_rail_end").replace(
-      "{y}",
-      String(SERIES_LAST_YEAR),
-    );
+    caveat = tOr(
+      t,
+      "us.sf.thecity.panel.rail_shelf_end",
+      "The Board's minutes are scanned through {y} — under three different titles, which is why they were once thought to stop in 1999. After 2016 the Clerk still publishes every meeting; no library has bound and paginated them into this series.",
+    ).replace("{y}", String(SERIES_LAST_YEAR));
   } else if (year !== undefined && iy > rail.lastSwept) {
     caveatMark = "hatch";
     caveat = t("us.sf.thecity.scrub.past_sweep").replace(
