@@ -4106,3 +4106,87 @@ not thousands. It did not explode.
 **The win is a COST and not a COUNT, so it cannot be measured on a stale server.
 Handed to the coordinator for a `:3100` rebuild, and `q8play.py base` is the row
 to compare against.**
+
+## 31 · Block M1h — the marks were on the filing labels
+
+> *"bro also the japanese scan — you highlighted the title, not the part you
+> said that was about clearing slum or whatever, was the shocking language"*
+
+### 31.1 Shot 5: the heading is dropped and the reasoning is marked
+
+Three marks now, and the committee's heading is not one of them.
+
+| # | marked | boxes |
+|---|---|---:|
+| 1 | *"would raise real property values in that district"* | 1 line |
+| 2 | *"and would at once remove an eyesore which has become so obnoxious as to be well nigh insupportable"* | 2 lines |
+| 3 | `ELLIS, CALIFORNIA, GOUGH AND FILLMORE STREETS` | 1 line |
+
+The caps line is kept because **it is what the map is drawing beside it** and the
+two prove each other.
+
+**They are two marks and not one band, and that was measured rather than
+assumed.** The coordinator's instruction was to join them if the OCR word boxes
+allowed, on the reading that the two clauses run consecutively. They do not:
+walked through the page's own word stream there are **59 words between them** —
+the sub-standard-level clause and the military-housing clause — so one
+continuous band would run seven lines and would mark a third argument the Board
+made that neither Daniel nor I chose. Two marks.
+
+**`i'eal` is the scan's own ink.** The OCR reads *real* as *i'eal* on that line.
+`norm()` changes no letters, by its own docstring, so the mark string in
+`build_film_scans.py` carries the misreading or `find_run` does not find it. The
+PICTURE shows the printed word, because the mark is placed from the word BOX and
+not from the OCR's guess at the letters. Written down beside the mark so the
+next reader does not "fix" it.
+
+`out-q5/s05-marks.png`.
+
+### 31.2 Shot 7: checked for the same failure, and it does not repeat
+
+The instruction was to look at the body rather than assume the pattern held.
+**This leaf carries no resolution body at all.** Its 456 words, read end to end,
+are: the running head, an unrelated Russian Hill item, the resolution's TITLE,
+the amendment motion, and two vote tallies. The "Whereas" body is nine leaves
+earlier with the debate and the postponement (§28.4).
+
+So on this page the title IS the operative text — it names seven freeways, strikes
+them, and excepts three — and it is not a filing label. **The marks stand
+unchanged**, and the reasoning is written into the spec beside them so this is
+not re-asked.
+
+### 31.3 Shot 1 moves to the fire department's own report
+
+Daniel approved it. The old mark was the sentence that DATES the fire, which is
+the least interesting number in the line and one the narration already carries.
+
+Four leaves of this volume speak in the fire department's first person — *"the
+buildings of the department then consisted of 44 engine houses"*, *"the members
+of this department, who had been continuously on duty"* — and one page carries
+both the sentence that is the moment and the sentence that proves the line:
+
+- *"but we were compelled to watch it burn and spread"*
+- *"The conflagration lasted for fully three days"*
+
+**The leaf is proved, not computed**, by `build_film_scans.py`'s own rule: djvu
+0027 → **n24, rows 1.000**, first candidate, above the 0.97 short-circuit.
+
+**And the printed page number was read off the page's own ink rather than
+inferred.** The OCR does not capture it on this leaf; the neighbours give 719,
+720 and 722, which would make 721 by arithmetic. The header crop of n24 reads
+`GENERAL HISTORY … 721`. Both `page` and `when` are now what the page says.
+
+`out-q5/s01-marks.png` — and it lands on the fire at phase 0.578, so the frame
+carries a field of flames, the burn line, and the department saying it stood and
+watched.
+
+**Shot 1's narration is unchanged**, as instructed, and so is the arrangement
+where the homeless figure is a separate USGS `also` link.
+
+### 31.4 One thing noticed and left alone
+
+The plate's own citation chip still reads `SCAN EXCERPTSFROMSANF1908SANF · LEAF
+8` while the panel beside it is leaf n24, p. 721. That is §28.4's stated design —
+*"the scan carries its own leaf and its own link and never overwrites the
+shot's"* — and it was already true before this change (the old scan was n6
+against the same LEAF 8). Recorded, not touched.

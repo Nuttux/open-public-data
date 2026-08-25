@@ -7,32 +7,26 @@
    "n": 1,
    "src": "/data/us/sf/city/film/scans/shot-01.jpg",
    "w": 1432,
-   "h": 1183,
+   "h": 1141,
    "item": "excerptsfromsanf1908sanf",
-   "leaf": 6,
-   "url": "https://archive.org/details/excerptsfromsanf1908sanf/page/n6/mode/1up",
+   "leaf": 24,
+   "url": "https://archive.org/details/excerptsfromsanf1908sanf/page/n24/mode/1up",
    "vol": "San Francisco Municipal Reports, 1906-07",
-   "page": "703",
+   "page": "721",
    "when": "General History",
-   "alt": "The city's own account of the fire, printed in the Municipal Reports, with the sentence that gives its length marked.",
+   "alt": "The fire department's own account of April 1906, printed in the city's Municipal Reports, with two sentences marked.",
    "hl": [
     {
-     "x": 0.06284916201117319,
-     "y": 0.4319526627218935,
-     "w": 0.9113128491620112,
-     "h": 0.042265426880811495
+     "x": 0.19692737430167598,
+     "y": 0.26730937773882557,
+     "w": 0.75768156424581,
+     "h": 0.03943908851884312
     },
     {
-     "x": 0.029329608938547486,
-     "y": 0.4826711749788673,
-     "w": 0.9448324022346368,
-     "h": 0.03888419273034658
-    },
-    {
-     "x": 0.025837988826815643,
-     "y": 0.5325443786982249,
-     "w": 0.5977653631284916,
-     "h": 0.03888419273034658
+     "x": 0.046089385474860335,
+     "y": 0.6862401402278703,
+     "w": 0.6864525139664804,
+     "h": 0.03856266432953549
     }
    ]
   },
@@ -40,32 +34,38 @@
    "n": 5,
    "src": "/data/us/sf/city/film/scans/shot-05.jpg",
    "w": 1713,
-   "h": 1717,
+   "h": 1447,
    "item": "journalofproceed37sanfrich",
    "leaf": 713,
    "url": "https://archive.org/details/journalofproceed37sanfrich/page/n713/mode/1up",
    "vol": "Journal of Proceedings, vol. 37",
    "page": "676",
    "when": "20 April 1942",
-   "alt": "The Board's own printed page for 20 April 1942, with the committee's heading and the four streets it names marked.",
+   "alt": "The Board's own printed page for 20 April 1942, with two clauses of the committee's reasoning and the four streets it names marked.",
    "hl": [
     {
-     "x": 0.06304728546409807,
-     "y": 0.09609784507862551,
-     "w": 0.8739054290718039,
-     "h": 0.0244612696563774
+     "x": 0.31523642732049034,
+     "y": 0.23704215618521077,
+     "w": 0.647985989492119,
+     "h": 0.02626123013130615
     },
     {
-     "x": 0.11792177466433158,
-     "y": 0.12288875946418171,
-     "w": 0.7647402218330415,
-     "h": 0.0256260920209668
+     "x": 0.03619381202568593,
+     "y": 0.4257083621285418,
+     "w": 0.9287799182720373,
+     "h": 0.0248790601243953
     },
     {
-     "x": 0.10566258026853473,
-     "y": 0.8637157833430402,
+     "x": 0.03619381202568593,
+     "y": 0.4568071872840359,
+     "w": 0.44892002335084646,
+     "h": 0.02626123013130615
+    },
+    {
+     "x": 0.1044950379451255,
+     "y": 0.736696613683483,
      "w": 0.7950963222416813,
-     "h": 0.0203843913803145
+     "h": 0.024187975120939877
     }
    ]
   },

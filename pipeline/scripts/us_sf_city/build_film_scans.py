@@ -90,35 +90,61 @@ OUT = os.path.join(ROOT, "website", "public", "data", "us", "sf", "city", "film"
 # narration is our one sentence and no archival quotation is ever text a reader
 # is asked to read (NIGHT3 §"THE NARRATION IS OUR SENTENCE").
 SCANS: list[dict] = [
+    # THE FIRE PAGE MOVED, AND WHY. It used to be p. 703, and its mark was the
+    # sentence that dates the fire — the least interesting number in the line,
+    # and one the narration already carries. Daniel approved moving it to the
+    # FIRE DEPARTMENT'S own report in the same volume, four leaves of which
+    # speak in the department's first person: "the buildings of the department
+    # then consisted of 44 engine houses", "the members of this department, who
+    # had been continuously on duty". One page carries both the sentence that
+    # is the moment and the sentence that proves the line.
     dict(
         n=1,
         item="excerptsfromsanf1908sanf",
-        find="The fire burned continuously during Wednesday and Thursday",
+        find="but we were compelled to watch it burn and spread",
         marks=[
-            "The fire burned continuously during Wednesday and Thursday "
-            "(when its main progress was checked), and to a small extent on "
-            "Friday and Saturday, April 18-21, 1906.",
+            # the department, in an official report, saying it stood and watched
+            "but we were compelled to watch it burn and spread",
+            # and the claim the narration makes, on the same page
+            "The conflagration lasted for fully three days",
         ],
         vol="San Francisco Municipal Reports, 1906-07",
-        page="703",
+        page="721",
         when="General History",
-        alt="The city's own account of the fire, printed in the Municipal "
-            "Reports, with the sentence that gives its length marked.",
+        alt="The fire department's own account of April 1906, printed in the "
+            "city's Municipal Reports, with two sentences marked.",
     ),
     dict(
         n=5,
         item="journalofproceed37sanfrich",
         find="Urged to Effectuate Slum Clearance in Japanese Quarter",
+        # THE HEADING IS A FILING LABEL AND THE BODY IS THE THING. The first
+        # version marked the committee's heading; Daniel read the page and said
+        # so. What is marked now is the Board's own REASONING — the two clauses
+        # of the "Whereas" that say what the clearance was for — plus the caps
+        # line, which is kept because it is what the map draws beside it and the
+        # two prove each other.
+        #
+        # THEY ARE TWO MARKS AND NOT ONE BAND, and that was checked rather than
+        # assumed: `.parity/q2japan.py`'s sibling probe measures **59 words
+        # between them**, so a single continuous band would run seven lines and
+        # would also mark the sub-standard-level and military-housing passage,
+        # which is a different claim.
+        #
+        # `i'eal` is the SCAN'S OWN INK and not a typo here. The OCR reads
+        # "real" as "i'eal" on this line, `norm()` changes no letters, and
+        # `find_run` matches the page. Corrected here it would not be found.
         marks=[
-            "National Housing Agency and Home Owners Loan Corporation "
-            "Urged to Effectuate Slum Clearance in Japanese Quarter.",
+            "would raise i'eal property values in that district",
+            "and would at once remove an eyesore which has become so "
+            "obnoxious as to be well nigh insupportable",
             "ELLIS, CALIFORNIA, GOUGH AND FILLMORE STREETS",
         ],
         vol="Journal of Proceedings, vol. 37",
         page="676",
         when="20 April 1942",
-        alt="The Board's own printed page for 20 April 1942, with the "
-            "committee's heading and the four streets it names marked.",
+        alt="The Board's own printed page for 20 April 1942, with two clauses "
+            "of the committee's reasoning and the four streets it names marked.",
     ),
     dict(
         n=7,
@@ -137,6 +163,15 @@ SCANS: list[dict] = [
             "Freeway.",
             "Adopted, as amended, by the following vote:",
         ],
+        # CHECKED AGAINST THE SAME FAILURE SHOT 5 HAD, AND IT DOES NOT REPEAT.
+        # The question was whether this shot is also marking a filing label
+        # while the body says the real thing. It is not: **this leaf carries no
+        # resolution body at all.** Its 456 words are the running head, an
+        # unrelated Russian Hill item, the resolution's TITLE — which is the
+        # operative text, naming seven freeways and striking them and excepting
+        # three — the amendment motion, and the two votes. The "Whereas" body
+        # is nine leaves earlier with the debate and the postponement (§28.4).
+        # So the heading here is the fact, and the marks stand.
         vol="Journal of Proceedings, vol. 54",
         page="44",
         when="26 January 1959",
