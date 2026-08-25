@@ -659,3 +659,108 @@ And the 2010s figure is **2010–2016 only**, because the scanned series stops
 there; 2016–2026 is the sfbos half and is still unmerged (§13).
 
 Nothing here is a design proposal. It is the picture to decide from.
+
+---
+
+# 19. THE ORDER-INDEPENDENT REDESIGN — built 2026-08-25
+
+Greenlit after §18 showed the volume de-duplication and the regression were
+unrelated problems. This fixes the second one.
+
+## 19.1 What was wrong
+
+The near-duplicate pass walked a block's rows in rank order and compared each
+against a **sliding window of the rows it had already kept** (`shs[-40:]`,
+`plines[-40:]`). Which member of a near-identical set survived therefore depended
+on what had arrived before it — so merging new volumes moved decisions on and off
+blocks that had nothing to do with the new data.
+
+## 19.2 What it is now
+
+**Same tests, deterministic traversal.** Rows are walked in a total order derived
+from their own content — `_rowkey` = (score, year, date, page, full text,
+volume, item number) — and a row is dropped when it resembles a row already
+elected. The windows stay; only their order changes.
+
+**Three designs were tried and two were wrong. Both failures are recorded because
+each looked like an improvement.**
+
+```
+                                     pre-1999   dropped   genuine   duplicate
+                                       total              losses    rate after
+greedy, arrival order (shipped)        90,805        —         —        12.4%
+transitive clustering (union-find)     85,756    8,570    ~3,500         8.0%
+leader election, unbounded             88,979    5,630    ~1,240         8.3%
+leader election, content-ordered
+  windows                              90,820    4,768    ~1,064        10.5%
+```
+
+- **Union-find chains.** A resembles B, B resembles C, so A, B and C become one
+  group and two are dropped even when A and C are plainly different decisions.
+  It deleted about 3,500 real pre-1999 decisions. **Its duplicate rate was the
+  best of the three (8.0%) — it looked like the winner.**
+- **Unbounded leader comparison over-collapses.** This test reads the printed
+  LINE, about ninety characters of heading, and two genuinely different decisions
+  share one routinely ("Changing and re-establishing the official grades on
+  Capitol avenue, between …"). Removing the forty-row bound deleted ~1,240
+  decisions with nothing like them left on their block. **The bound was doing
+  real work.**
+
+## 19.3 The proof — a test that can fail, and did, twice
+
+`verify_order_independence.py` shuffles `items.jsonl`, rebuilds, hashes every
+published file, and does it again with a different shuffle.
+
+```
+run 1   FAIL   1,352 of 2,197 files differ      block shards
+run 2   FAIL   1,095 of 2,197 files differ      street files
+run 3   PASS   all 2,197 files identical
+```
+
+Both failures were real bugs the test found, not test noise:
+
+1. **`_rowkey` was not a total order.** Rows agreeing on score, year, date, page
+   and their opening 200 characters tied, and Python's stable sort fell back to
+   arrival order. Fixed by appending the volume identifier and the item's own
+   sequence number, both assigned by the sweep from the document itself.
+2. **The T2 street files sorted on score alone.** Streets carry many rows at one
+   score, so the top-120 cut depended on collection order. Same total key.
+
+## 19.4 The one-time move, counted
+
+**`moves_pre1999.tsv` — 9,551 rows across 2,757 blocks, every moved pre-1999
+decision with its year, date, page citation and text.** That file is the point:
+a deliberate one-time move is fine; an uncounted one is how this began.
+
+```
+pre-1999 decisions   90,805 -> 90,820   (+15)
+                     4,768 left, 4,783 arrived — near-perfectly symmetric
+
+of what left    77% is a swap inside a duplicate group, 23% (~1,064) different
+of what arrived 80% is a swap inside a duplicate group, 20% (~926)   different
+duplicate rate  12.4% -> 10.5% of pre-1999 rows still have a near-duplicate sibling
+```
+
+**In plain English: about 3,700 of the moves are the same decision now
+represented by a different one of its readings — the arbitrary tie-break
+replaced by a deterministic one. Beneath that, roughly a thousand rows out and a
+thousand in are genuinely different content, and the result carries measurably
+fewer duplicates than what ships today.**
+
+It does not reach zero and was never going to: the shipped index's pre-1999 layer
+is itself a product of arrival order, so any deterministic rule must disagree
+with it somewhere. **What matters is that it will not move again** — the same
+corpus now produces the same bytes however it is shuffled.
+
+## 19.5 Still standing
+
+The cross-era scope from §18 is unchanged and its warning is in the code beside
+the rule: **keep cross-meeting collapse, drop cross-era collapse.** A
+same-meeting scope moves 3,177 blocks and grows the pre-1999 layer by 3,966
+decisions, because the Journal legitimately prints one item across several
+meetings. It looks like a win because the numbers go up.
+
+The 24 undecided meetings from §18.1 stay undecided and printed.
+
+**Nothing is published.** `website/public/data/us/sf/city/blocks/` is still
+byte-for-byte what it was, pending review of `moves_pre1999.tsv`.

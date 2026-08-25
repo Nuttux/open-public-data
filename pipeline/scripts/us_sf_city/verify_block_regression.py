@@ -56,6 +56,7 @@ def main() -> None:
     ap.add_argument("--baseline", required=True)
     ap.add_argument("--current", required=True)
     ap.add_argument("--cut", type=int, default=CUT)
+    ap.add_argument("--out", help="write every moved pre-CUT decision to this TSV")
     a = ap.parse_args()
     cut = a.cut
 
@@ -90,6 +91,21 @@ def main() -> None:
 
     dropped = sum(len(c[3]) for c in changed)
     added = sum(len(c[4]) for c in changed)
+    if a.out:
+        # THE WHOLE MOVE, so a human can read it before anything publishes.
+        # A deliberate one-time move is fine; an uncounted one is how this
+        # situation arose in the first place.
+        with open(a.out, "w") as f:
+            f.write("direction\tblock\tyear\tdate\tpage\ttext\n")
+            for b, _no, _nn, gone, new in changed:
+                for g in gone:
+                    f.write(f"LOST\t{b}\t{g[0]}\t{g[1]}\t{g[6]}\t"
+                            f"{(g[7] or '')[:300]}\n")
+                for g in new:
+                    f.write(f"NEW\t{b}\t{g[0]}\t{g[1]}\t{g[6]}\t"
+                            f"{(g[7] or '')[:300]}\n")
+        print(f"  full move list written to {a.out} "
+              f"({dropped + added} rows across {len(changed)} blocks)")
     print(f"\n  FAIL — {len(changed)} blocks changed before {cut}: "
           f"{dropped} decisions dropped, {added} appeared, "
           f"and order changes besides.")
