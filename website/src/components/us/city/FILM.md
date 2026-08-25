@@ -2842,3 +2842,243 @@ Palace of Fine Arts → 1927 Bay Bridge → 1932 War Memorial Opera House → 19
 navigable by its own moments now, which is what the diamonds were for.
 
 **No new i18n keys.** `us.sf.thecity.scrub.next` is the same string; the arrow is a glyph.
+
+## 23 · Block M1e, 2026-08-25 — the two named subjects, and what the rings say
+
+Taking over from M1d. NIGHT3 §4 is the standing instruction: *"any assets in
+view during those scenes to be perfectly rendered with great polygons,
+vertices, colors, roofs etc"*, and §21.5 named two subjects that were not:
+**the Presidio barracks beside the Palace, and the piers in shot 9.**
+
+Harnesses written for this block, all reading `__cityFilm` on the film's own
+frame: `.parity/n3probe.py` (the building tables under a shot, anchored on a
+published place), `.parity/n3hero.py` (every hero's emphasis at that camera),
+`.parity/n3abl.py` (one layer off), `.parity/n3ring.py` (project named gids'
+rings and PAINT them on the frame), `.parity/n3frame.py` (patch z/ox/oy in the
+served payload, shoot, restore — it restores in a `finally`), and
+`.parity/n3slender.py`. `n3probe`, `n3hero`, `n3ring`, `n3abl` need
+`__cityRenderer`, which `renderer.ts` publishes **in dev builds only**, so
+those run at `:3000`; every judgement of a PIXEL is taken at `:3100`.
+
+### 23.1 `derivedBands` DOES reach the Presidio barracks. It is the roof that is flat
+
+The first question NIGHT3 asks is whether the height-derived band count reaches
+the federal footprints. **It does.** `out-n3/shots-s03.png` at 2880×1800 has a
+row of windows on both Montgomery Street barracks. The probe says why they were
+ever refused and why they are not now:
+
+```
+  gid 159068  area 8381 m2  nv 28  h 6   u 22  st 0
+  gid 159036  area 6478 m2  nv 26  h 5   u 22  st 0
+```
+
+`u = 22` is `FLAG_NOYEAR | 6` — **use class 6, `mixed or not stated`, and a
+year the roll does not hold** (the fabricated 1906 `build_bldg.py` writes so a
+footprint can be drawn at all). `st = 0`, so `storeysOf` gives nothing and
+`emitFace` used to return. `derivedBands(Hm, heightStale)` now fires: neither
+carries `FLAG_HEIGHT_STALE`, both have a measured height, so both get bands.
+
+What is left is the **roof**, and it is the larger surface: these are long
+one-storey sheds seen from above, so the flat plate is three or four times the
+wall's area on screen and carries a coping and nothing else. `isPitched` refuses
+them, and **that refusal is right**: the population is *pre-1907 single or
+multi family, dated*, and these are class 6 with no date. There is no published
+roof-shape column anywhere in `pipeline/scripts/us_sf_city/` — `grep -n roof
+_bldgsrc.py` returns one comment — so drawing a gable on them would be
+inventing. **The fix for shot 3 is therefore the camera, which is the other
+half of what NIGHT3 authorises.**
+
+### 23.2 Two causes were named, measured, and REFUTED before being acted on
+
+**Emphasis was not the cause.** The Exhibition Hall is the pale tan mass that
+owns a third of the frame, and §"THE LAW ASKS WHETHER THE HONEST DRAWING IS TOO
+SMALL" says it is handed `E = 2.76` at block zoom. At shot 3's camera it is
+not: `n3hero.py` prints **E = 1.000 for all thirteen heroes** at
+`cam.scale = 3.4189`. Nothing in that frame is exaggerated. The hall is 272 m
+end to end and at 4.19 px per world metre that is 1,139 px of a 1,440 px frame.
+It is that big.
+
+**Slenderness was not a usable cause either.** The idea was that a footprint too
+narrow to hold a room should get no derived opening rhythm, on `area/perimeter`
+— the same lower bound on the inradius `drawTray` and `drawHip` already use.
+Measured over 30,334 loaded footprints, split on whether the roll publishes a
+storey count:
+
+```
+  a/p          st > 0            st = 0
+  0.50-1.00       29  0.12%        29   0.45%
+  1.00-1.25      212  0.89%       128   2.00%
+  1.25-1.50      290  1.21%       174   2.72%
+  1.50-1.75      562  2.35%       158   2.47%
+  1.75-2.00    1,365  5.70%       259   4.05%
+  2.00-2.50    8,293 34.64%     2,016  31.53%
+  2.50-3.00    6,270 26.19%     1,928  30.16%
+```
+
+The two Palace colonnades are 536 m² over a ~250 m perimeter — **a/p ≈ 2.1,
+the mode of the whole city.** A cut that caught them would take a third of San
+Francisco with them. Dropped.
+
+### 23.3 What the ugly thing in shot 3 actually is, with its rings drawn on it
+
+`out-n3/ring-35952-marked.png` projects six gids and paints them on the frame,
+because four rounds of inference off a crop had produced four different
+answers. It settles it:
+
+| ring | gid | what it is on screen |
+|---|---|---|
+| red | 159037 | the Exhibition Hall — the tan sweep. Its own hero, `bi` matches |
+| blue | 159057 | the rotunda — its own hero, `bi` matches |
+| cyan | 159039 | **a grey five-storey block with punched windows** |
+| yellow | 159067 | **the other one** |
+
+**The two grey apartment crescents wrapped round the Palace of Fine Arts are the
+Palace's own colonnade wings.** 536 m², 40 vertices, 19-20 m tall, `u = 22`,
+`st = 0` — so `derivedBands(20) = round(20/4.7) = 4`, and the frame shows four
+rows of windows on each. Before the band count existed they were §21.5's flat
+prisms; now they are apartment blocks. Neither is a colonnade.
+
+**Nothing in the renderer can tell them apart from a building**, and I checked:
+`heroGids` correctly skips the two footprints that DO carry a hero, so this is
+not a double draw. The Palace complex is authored as **two heroes out of at
+least six published footprints**, and the leftovers get the fabric treatment.
+**The real fix is hero authoring** — an `arcade` part on the colonnade's own
+published ring, at its own published height, which is what the record supports
+and what `drawArcade` already draws for the rotunda's peristyle. That is
+`emit_heroes.py` in the mock tree and it is NOT being driven at four in the
+morning with a demo today. Handed to the coordinator.
+
+### 23.4 So the camera moved, and the frame is the Palace complex whole
+
+`z 58 -> 95`, `off (0.10, -0.06) -> (0.14, -0.10)`. Five framings were shot and
+looked at (`out-n3/frame-s03-*.png`):
+
+- **z 170 and z 240** crop the dome off the top and make the colonnades bigger.
+  Worse at both.
+- **z 95, off (0.06, -0.02)** resolves the peristyle and the dome lattice but
+  crowds the frame.
+- **z 78, off (0.10, -0.06)** keeps the whole tan sweep and is the best of the
+  wide ones; the barracks are still a co-subject.
+- **z 95, off (0.14, -0.10)** is the one. The rotunda's columns, arches and
+  lattice dome all resolve, the colonnade sweep is the frame's strongest line,
+  the lagoon is in it, and **the barracks are a thin band at the top left
+  instead of a third of the frame.**
+
+The year is unchanged, the copy is unchanged, the citation is unchanged. Only
+`z`, `ox`, `oy` move, in `build_film_twelve.py`'s `SHOTS`, which is the file
+that decides framing; the builder reproduces `film.json` byte for byte, checked
+before the edit.
+
+### 23.5 Shot 9 framed 68 % empty, and the piers were the least of it
+
+The other named subject. **The piers are not the shot's problem** — at
+`out-n3/shots-s09.png` they read as finger sheds along the Embarcadero, dark
+flat prisms with a coping, and they carry the same `u = 22` / `st = 0` /
+no-published-roof-shape record the barracks do. What is wrong with shot 9 is
+the frame, and it is measurable:
+
+```
+  bay/sky   near-white haze   together
+  54.1 %        14.0 %          68.1 %      shot 9, as shipped
+  45.3 %        16.5 %          61.8 %      shot 11 — the whole peninsula, on purpose
+  41.5 %        16.4 %          57.9 %      shot 4 — a shot ABOUT the bay
+```
+
+**A waterfront shot was carrying more open water than the two shots that are
+about the bay.** The cause is the offset, not the zoom: `oy = -0.06` puts the
+shore BELOW the frame centre, so the top half is bay and the far shore — Marin
+and the East Bay, which the `surround` layer draws as flat translucent slabs
+with hard edges — is the top third of the frame.
+
+`z 3.4 -> 5.5`, `off (0.10, -0.06) -> (0.02, 0.22)`. Lifting the subject above
+centre fills the frame with the city the vote was about: the Embarcadero curve
+runs corner to corner, the piers are large enough to read as pier sheds, the
+Financial District towers have presence and the Bay Bridge anchors the right
+edge. **Empty 68.1 % -> 50.7 %.** Three candidates shot and compared, all in
+`out-n3/frame-s09-*.png`.
+
+### 23.6 The fire was over by 9.7 s of a 15 s shot, and the cause was a CAMERA curve
+
+Daniel's first note on the whole film was *"you need a real fire thing going
+on not just red dots"*. §21.7 fixed the blend mode and the flames are good. But
+`m1d.py shots` marks each shot at 62 % and **not one contact sheet of shot 1
+has ever had a flame on it**, which was read as "the fire is still too small"
+and is not what it means.
+
+`where()` could not tell the two apart, so it now returns the fire act's own
+rise. Measured, act phase against the film clock:
+
+```
+  t (ms)   4516   5884   7162   8465   9725  11011  12323
+  fire     0.000  0.083  0.386  0.707  0.869  0.953  0.992
+```
+
+**Three quarters of the act's phase is spent in the first 45 % of its nine
+seconds**, and the last four seconds move it 0.87 to 1.00 — a frame of embers,
+held. The cause: `{ k: "fire", ms: 9000, curve: "move" }`, and `move` is
+`bezier(0.4, 0, 0.2, 1)`, the strongest ease-out in the table. **Every curve in
+`CURVE` is a camera curve** — a move has to start and stop, so it is eased at
+both ends. Thirty-five structures lighting one after another is not a camera
+arriving somewhere.
+
+`CURVE.even` — `x => x` — added, and the fire act reads it. The record
+publishes no ignition time for any of the thirty-five, which is why the sweep
+is in the order the page prints them (`coverage/FIRE.md`: *"The fire can
+arrive; it cannot advance"*); an even sweep is the only one that adds nothing
+to that. Re-measured: **0.013 / 0.164 / 0.307 / 0.449 / 0.594 / 0.735 / 0.877**
+at the same seven marks.
+
+`FIRE_HOLD = 0.66` beside it: `down` used to fall from `FIRE_PEAK = 0.26` all
+the way to the end of a flame's window, so a structure stood under a third of
+its height for three quarters of its own life. The plateau runs to 0.66 now.
+**The window, the order and the ending are all unchanged** — a flame still ends
+its window at 0.22 of its height, so the frame the fire leaves, which is the
+frame shot 2 opens on, is the frame it always was.
+
+Together: `out-n3dev/seq-q0*.png`, eight frames across 4.5-13.5 s. The city
+burns from about 4.5 s to 11 s — **roughly 6.5 s of fire in a 15 s shot against
+2.5 s** — and it is a field of flames through the middle of the act, not two.
+
+### 23.7 The rail caption and the launcher: fixed, and now measured across every year
+
+NIGHT3 asks whether §22's fix landed. **It did**, and it is `padding-right:
+168px` on `.fx-city-scrub-note` in `fusion.css`. Verified at `:3100`, not
+inferred: `.parity/n3railmax.py` walks the rail from 1906 to 2025 in threes and
+measures the caption's own PAINTED right edge — every text node's client rects,
+not the box — against the launcher's left edge.
+
+```
+  worst painted right edge   1245 px   (1972)
+  launcher left edge         1270 px
+  note content-box right     1248 px
+```
+
+**No year overlaps.** The box's border-box right is still 1416 and that is what
+a `getBoundingClientRect` on the element reports, which is what §22.1 measured
+and is why it looks unfixed; the 168 px of padding is the reserved lane and the
+text wraps inside it. The clearance is real but it is 22 px, so a longer string
+in `en.ts` or `fr.ts` will land back under the pill — the number above is the
+one to re-run.
+
+### 23.8 `lprobe` was blind to the largest lane, and §21.3's estimate was wrong too
+
+NIGHT3 item 3. `lprobe` was called from the place lane and the hood lane and
+**from nowhere in `StreetNames.one`**, so every count ever taken off the
+instrument was two lanes of three. It is wired now, with the street pass's own
+six gates named in the same table as the shared three — `full`, `cap`, `rank`,
+`noname`/`placeholder`, `dupe`, `short`, `apart` — and `frame`, `grid`, `ink`
+keeping the shared vocabulary so the three lanes' rows can be counted together.
+
+Re-run on shot 4 at 1936, the same frame §21.3 measured:
+
+```
+  written 38  ·  grid 25  ·  year 5  ·  cap 2
+  of the 38: 6 street, 29 hood, 3 named place
+```
+
+§21.3 said *"29 names, 26 of them neighbourhoods"* and that *"the ~14 street
+names on the same frame were invisible to it"*. **The frame carries 38, and the
+street lane is 6, not 14** — because `STREET_NAME_CAP.film = 6` was already
+stopping it, which the `cap: 2` rows now show directly (the cap fires once in
+the spine sub-pass and once in the arterials one). The instrument no longer has
+to be corrected after the fact.

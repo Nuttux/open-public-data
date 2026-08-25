@@ -88,8 +88,13 @@ SHOTS: list[dict] = [
          st=(1906, 1915)),
     # 3 · THE PALACE. Down to the Marina. The rotunda's own published footprint
     # centroid, out of wonder/hero-data.js — the same ring the renderer draws.
+    # `z` 58 -> 95 and the offset out to (0.14, -0.10): FILM.md §23.4. At 58 the
+    # two Montgomery Street barracks — federal footprints the roll gives no
+    # class and no year, so no roof form is derivable for them — were a third
+    # of the frame beside the subject. At 95 they are a band at the top left,
+    # and the rotunda's columns, arches and lattice dome all resolve.
     dict(n=3, id="palace", title="One building stays",
-         t=(-122.448403, 37.802924), z=58.0, off=(0.10, -0.06), move=2400, ms=9600,
+         t=(-122.448403, 37.802924), z=95.0, off=(0.14, -0.10), move=2400, ms=9600,
          st=(1912, 1915)),
     # 4 · THE WIDEST CAMERA IN THE FILM, and the only shot with two subjects.
     # It opens on empty water at 1915, runs to 1936, strokes the Bay Bridge
@@ -123,8 +128,14 @@ SHOTS: list[dict] = [
     # fabric is the assessor's roll and the roll dates what is standing — so
     # there is no structure to take down and the film does not pretend there
     # is. The shot is the vote and the ground it gave back.
+    # `z` 3.4 -> 5.5 and the offset up to (0.02, 0.22): FILM.md §23.5. At 3.4
+    # and oy -0.06 the shore sat BELOW the frame centre, so 54.1 % of a
+    # WATERFRONT shot was open bay and the far shore — Marin drawn as flat
+    # surround slabs — was the top third. Lifting the subject above centre
+    # fills the frame with the city the vote was about; measured empty
+    # fraction 68.1 % -> 50.7 %.
     dict(n=9, id="embarcadero", title="The road that came down",
-         t=(-122.397500, 37.796500), z=3.4, off=(0.10, -0.06), move=2400, ms=11000,
+         t=(-122.397500, 37.796500), z=5.5, off=(0.02, 0.22), move=2400, ms=11000,
          st=(1972, 1991)),
     # 10 · THE RHYME. Shot 2's move, seventy years later: the camera stops and
     # a district fills in under it.
