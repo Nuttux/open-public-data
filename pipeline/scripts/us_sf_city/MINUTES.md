@@ -367,3 +367,163 @@ because the pre-1999 output is a function of the whole corpus. The options are:
 
 **With what is merged today: 2016.** With sfbos merged once §13 is settled:
 **2026, current to this month.**
+
+---
+
+# 17. ARE THE THREE ERAS THE SAME RECORD? — measured 2026-08-25
+
+Daniel asked, in plain English, whether the pre-1999 collection, the 1999–2016
+one and the post-2016 one are the same kind of document. The honest answer is
+**yes, and the one number that suggested otherwise was ours, not the city's.**
+
+Measured by `compare_minute_eras.py` over 10 Journal volumes, 10 Minutes volumes
+and 40 sfbos meetings, with **one counter at the same four gates for all three**.
+
+## 17.1 The density collapse was not real
+
+The signal was ~1,050 rows/year before 1999, ~1,880 in the middle, ~680 after.
+Two things caused it, and neither is the Board recording less.
+
+**(a) The denominators were different — my error.** `sweep/extract_items.py`
+drops an item BEFORE counting it when it names no place (`if not locs: continue`,
+then `item_id += 1`). Its "rows" are items that already mention a street. My
+sfbos counter counted every split item. Counted the same way:
+
+```
+                      split   mentions  resolved   men%    res%   median chars
+1906-1999 Journal    25,382     6,165     5,668   24.3%   91.9%       320
+1999-2016 Minutes     9,767     2,289     1,745   23.4%   76.2%       363
+2016-2026 sfbos       4,144       871       648   21.0%   74.4%       376
+```
+
+**The share of items that name a place is the same in all three eras** — 24.3%,
+23.4%, 21.0%. And per meeting, the modern record is *denser*, not thinner:
+
+```
+                   meetings   items/meeting   place-naming items/meeting
+1906-1999               439           57.6                12.9
+1999-2016               143           68.3                12.2
+2016-2026                42           98.7                15.4
+```
+
+**(b) The middle era is 48% redundant, and that is a fact about the ARCHIVE.**
+Collapsing near-duplicates *within a single meeting*, using the index's own
+shingle test:
+
+```
+                     dated rows   distinct   redundant   distinct decisions/meeting
+Journal 1906-1999        96,096     85,759      10.8%            14.9
+Minutes 1999-2016        31,944     16,530      48.3%            13.5
+```
+
+**Once the duplication is removed the two eras agree: 14.9 and 13.5 decisions per
+meeting.** The record is continuous. The middle era only looked denser because
+the Internet Archive holds the same meetings several times over:
+
+- **54.6% of 1999–2016 meeting dates are covered by more than one volume**, and
+  **83.4% of that era's rows sit on such a date**. Against **2.3% / 2.5%** for the
+  Journal.
+- One meeting, 2005-11-08, appears in **seven** volumes.
+- `meetingminutesb2005sanf_0` and `meetingaprmay2005minutes100sanfrich` have the
+  **same 235 rows and the same month profile (2005-04:129, 2005-05:96,
+  2005-11:10)** — the same physical volume scanned twice under two identifiers.
+  Not byte-identical, because two scans are two OCR passes; **17 volumes share an
+  identical row-count and month profile** with another.
+- 6,945 rows come from volumes titled "Meeting minutes. **Draft**", alongside the
+  finals of the same meetings.
+
+## 17.2 Same kind of document? Yes, strikingly
+
+The Board has written a decision the same way for 120 years.
+
+```
+                   Resolution   Ordinance   Motion    median item
+1906-1999               50.0%       35.8%    14.2%       320 chars
+1999-2016               46.9%       35.5%    17.6%       363 chars
+2016-2026               51.5%       33.8%    14.6%       376 chars
+```
+
+And about half of every era is procedure rather than substance — vote records and
+roll calls: **51.6% / 46.2% / 38.5%**. That is not a modern degradation; it is
+what minutes have always been.
+
+## 17.3 Is a "row" the same thing? Broadly yes, with two modern quirks
+
+```
+                    repeated opening    same file-no    public comment   template
+                    within a meeting     repeated        per speaker     boilerplate
+1906-1999                  9.4%            8.1%             0.6%           0.0%
+1999-2016                  9.6%            2.7%             0.5%           0.3%
+2016-2026                 13.3%           10.7%             5.4%           1.2%
+```
+
+The modern minutes record public comment **per speaker underneath the item**, so
+one resolution can appear several times with a different name attached
+("*Leilani; expressed the need to…*", "*Blanca Castro; expressed support*"). And
+the PDF template carries explanatory text that reads like an item ("*Resolution
+may be introduced before the Board…*"). Together about 6.6% of modern rows, and
+both are exactly what the index's near-duplicate pass already exists to collapse.
+**No structural mismatch — a row means the same thing in all three.**
+
+## 17.4 The subject mix shifts, and that shift is real
+
+`build_index.SUBJECT_CUES`, % of items matching:
+
+```
+subject                  1906-1999   1999-2016   2016-2026
+street paving                 5.7%        2.0%        1.8%
+sewers                        2.0%        0.2%        0.1%
+streetcar lines               2.9%        0.4%        0.1%
+oil tanks and boilers         2.4%        0.1%        0.1%
+water mains                   1.8%        0.3%        0.7%
+payments and claims          15.3%        7.1%        6.0%
+zoning                        2.6%        6.2%        4.7%   <- up
+subdivision maps              1.2%        2.5%        1.6%   <- up
+(matches no cue)             59.7%       71.1%       77.3%
+```
+
+**In plain English: the early Board was building the physical city — paving,
+sewers, streetcar lines, water mains, boiler permits — and the modern Board
+mostly governs land use.** Zoning more than doubles as a share; sewers and
+streetcars all but vanish. That is a real finding about San Francisco.
+
+**The caveat that must travel with it:** these cues were written from the Journal
+corpus, so they describe it best. "Matches no cue" rises from 59.7% to 77.3%,
+which is partly the modern Board doing things the Journal's vocabulary has no
+word for. The direction is trustworthy; the exact percentages are not a census.
+
+## 17.5 Why modern street names resolve less often (91.9% → ~75%)
+
+Not thinner text. The extractor is picking up **institution names shaped like
+streets**, and the gazetteer is correctly refusing them. The top unresolved
+phrases post-1999 are `San Francisco Superior [Court]`, `United States District
+[Court]`, `Goodlett [Place]` — City Hall's own address, printed in every modern
+meeting header — plus `Slow Street` (a COVID-era programme), `Noe Valley Town
+[Square]`, `Heron's Head [Park]`. Settlements of lawsuits are a large share of
+modern items and they name courts. **Nothing is being placed wrongly; the refusal
+is the system working.**
+
+One genuine gain: the 1999–2016 minutes name an **Assessor's Block outright** in
+2.9% of items, against 0.4% in the Journal — seven times more often the record
+answers for its own location.
+
+## 17.6 What this changes about the de-duplication decision
+
+§14 offered three options for the 13 pre-1999 decisions that move. **This
+measurement points at a fourth, and it is better than all of them.**
+
+The churn happens because the near-duplicate pass is being asked to absorb an
+enormous amount of duplication — **48% of the middle era** — inside the block
+index, at ranking time, one block at a time. That is the wrong place to do it.
+
+**Deduplicate at the volume level, before the index: one scan per physical
+volume, finals preferred over drafts.** It attacks the cause rather than the
+symptom, it shrinks the merged corpus by roughly half its modern half, and it
+should remove most of the pressure that is destabilising the pre-1999 rows —
+because the pass would no longer be choosing between seven readings of the same
+meeting.
+
+**This is measured but not yet built, and it should be built before the
+order-independent redesign is chosen**, because it may make that redesign
+unnecessary. It is also the honest thing to do regardless: shipping seven scans
+of one meeting as seven decisions would be wrong even if nothing else broke.
