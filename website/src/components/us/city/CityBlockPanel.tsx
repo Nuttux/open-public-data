@@ -745,21 +745,31 @@ function NowRows({
    */
   shape: NonNullable<ReturnType<typeof blockShape>> | null;
   /**
-   * The neighbourhood's own "On the ground now" is already on the page above,
-   * under that exact heading. Printing it twice would make the two sets of
-   * numbers look like a disagreement rather than two grains of the same
-   * measurement, so under the "On this block" heading the rows stand bare.
+   * Whether the neighbourhood's rollup arrived, which is what decides whether
+   * the record's two figures join these rows — see `shape` above.
+   *
+   * IT USED TO SUPPRESS THIS SECTION'S HEADING, because the neighbourhood
+   * group printed an "On this block" divider immediately above it. That group
+   * is now a closed `<details>` at the FOOT of the panel, so nothing else
+   * names these rows and they were standing on the page with no heading at
+   * all. The heading is unconditional again.
    */
   underHood: boolean;
   t: (k: string) => string;
 }) {
+  void underHood;
   return (
     <>
-      {underHood ? null : (
-        <div className="fx-city-ledger-head fx-block-sec">
-          {t("us.sf.thecity.panel.now_head")}
-        </div>
-      )}
+      {/* 'On this block', not 'On the ground now' — the list carries `Board
+          decisions` and `In the record 1910-1981`, which are not NOW. The key
+          is `hood_block_head`, which §19g recorded as having lost its only
+          caller when the neighbourhood divider went: its string is exactly
+          right and it is already in both dictionaries, so nothing new is
+          needed. FOR ITS OWNER: it wants renaming to `panel.block_head`, since
+          nothing about it is the neighbourhood's any more. */}
+      <div className="fx-city-ledger-head fx-block-sec">
+        {t("us.sf.thecity.panel.hood_block_head")}
+      </div>
       <dl className="fx-city-ledger-facts">
         {now.residents !== null ? (
           <div className="fx-city-fact-row">
@@ -1315,25 +1325,31 @@ export default function CityBlockPanel({
     >
       <div className="fx-city-panel-head">
         <div>
-          {/* THE NEIGHBOURHOOD IS THE TITLE and the block is the subtitle —
-              the two have swapped. A reader who clicks a shape is told what
-              part of San Francisco they are in, and then which of its blocks
-              answered; before this they were told "3724" and had to read the
-              small line under it to find out where that was. */}
+          {/* > "right now it says block but also neighborhood and theres lots
+              > of info, please less is more, really focus on only the
+              > essential stuff a fiche needs"
+
+              THE FICHE IS THE BLOCK. It had been the other way round — the
+              neighbourhood's name as the title, the block as a small line
+              under it — and that is exactly the reading a reader who clicked
+              one shape and got two subjects is describing. The kicker is
+              where CONTEXT goes: it carries the neighbourhood's own name, so
+              nothing is lost and the reader is still told where they are, one
+              size down from the thing they asked about. */}
           <span className="fx-city-panel-kicker">
-            {hood
-              ? t("us.sf.thecity.panel.hood_kicker")
-              : t("us.sf.thecity.panel.kicker")}
+            {hood ? hood.name : (context?.hood || t("us.sf.thecity.panel.kicker"))}
           </span>
           <h2 className="fx-city-panel-title">
-            {hood ? hood.name : (context?.hood ?? context?.id ?? "—")}
+            {context
+              ? t("us.sf.thecity.panel.hood_block").replace("{id}", context.id)
+              : "—"}
           </h2>
-          {context ? (
+          {context && context.areaM2 > 0 ? (
             <p className="fx-place-sub" style={{ margin: "2px 0 0" }}>
-              {t("us.sf.thecity.panel.hood_block").replace("{id}", context.id)}
-              {context.areaM2 > 0
-                ? ` · ${t("us.sf.thecity.panel.area").replace("{n}", nfInt.format(Math.round(context.areaM2)))}`
-                : ""}
+              {t("us.sf.thecity.panel.area").replace(
+                "{n}",
+                nfInt.format(Math.round(context.areaM2)),
+              )}
             </p>
           ) : null}
           {onLocate ? (
@@ -1354,36 +1370,6 @@ export default function CityBlockPanel({
       </div>
 
       <div className="fx-city-panel-body">
-        {/* ── THE NEIGHBOURHOOD, FIRST AND WHOLE ────────────────────────────
-            Four sections, none of them outside the loading gate, because the
-            rollup does not depend on which block was picked — only on which of
-            the 41 it belongs to, which the pick already knew. The block's own
-            record can still be in flight underneath them.
-
-            The order is the one §13f established on the phone and it holds one
-            level up: the ALWAYS-PRESENT section yields to the RARE one. Every
-            hood carries residents; 20 of 41 carry a money figure; so the money
-            is above the highlights and both are above the block. */}
-        {hood && hoods ? (
-          <>
-            <HoodSummary hood={hood} t={t} />
-            <HoodProvenance hood={hood} file={hoods} t={t} />
-            <HoodMoney hood={hood} file={hoods} money={money} t={t} />
-            <HoodHighlights hood={hood} t={t} />
-            <div
-              className="fx-city-ledger-head fx-block-sec"
-              style={{ marginTop: 20 }}
-            >
-              {t("us.sf.thecity.panel.hood_block_head")}
-            </div>
-            <p className="fx-block-hint" style={{ marginTop: 0 }}>
-              {t("us.sf.thecity.panel.hood_block_lede").replace(
-                "{n}",
-                nfInt.format(hood.blocks),
-              )}
-            </p>
-          </>
-        ) : null}
         {/* ── ONE GRAIN, ONE FORM ───────────────────────────────────────
             > "this is again too much information, there's no hierarchy or
             > quick scan of info, please evaluate this format"
@@ -1600,6 +1586,38 @@ export default function CityBlockPanel({
                 </div>
               );
             })}
+          </details>
+        ) : null}
+
+        {/* ── THE NEIGHBOURHOOD, LAST AND CLOSED ────────────────────────────
+            It used to be FIRST and open: four sections — a prose summary with
+            a thirty-six word census footnote, the neighbourhood's money, three
+            archival highlights with their own ranking methodology, and a
+            divider — before one row about the block the reader clicked.
+            Measured on Sunset/Parkside block 2115 at 390 px: **585 words and
+            2,262 CSS px, of which roughly 1,300 px were the neighbourhood.**
+            The reader got two and a half screens about somewhere else first.
+
+            Not deleted, and the difference matters. `HoodMoney` is where 16
+            blocks of 5,404 carry their only money figure (§19e), the census
+            provenance is the project's whole claim, and a neighbourhood is
+            genuinely the right unit for the archival highlights — §15 is a
+            whole round establishing that the block alone is too thin for them.
+            Deleting any of it would be trading one wrong panel for another.
+
+            So it is a `<details>`, closed, under the block's own record: the
+            fiche opens as the block and the context is one tap away. Nothing
+            is lost and the default view is the thing that was asked about. */}
+        {hood && hoods ? (
+          <details className="fx-shelf-more" style={{ marginTop: 16 }}>
+            <summary>
+              {tOr(t, "us.sf.thecity.panel.hood_open", "The neighbourhood")}
+              {` · ${hood.name}`}
+            </summary>
+            <HoodSummary hood={hood} t={t} />
+            <HoodProvenance hood={hood} file={hoods} t={t} />
+            <HoodMoney hood={hood} file={hoods} money={money} t={t} />
+            <HoodHighlights hood={hood} t={t} />
           </details>
         ) : null}
       </div>

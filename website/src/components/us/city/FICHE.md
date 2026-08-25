@@ -2282,3 +2282,96 @@ highlight glosses are set LARGER than "In short", because `FicheArchiveShelf`
 is the house archive component and sizes its own gloss. Under a page whose
 lead is 13.5 px that is a hierarchy inversion, and it is the biggest thing on
 the panel this round did not fix. It is not this block's file.
+
+## 20. Block M1d, 2026-08-25 — the fiche is the block
+
+> "right now it says block but also neighborhood and theres lots of info, please less is
+> more, really focus on only the essential stuff a fiche needs"
+
+§19 read the same note as a hierarchy problem and answered it with prose-for-the-hood,
+figures-for-the-block. **This one is a cut, and it is the sentence's first clause that says
+where: *it says block but also neighborhood*. The panel had two subjects.**
+
+### a. Measured before anything was changed
+
+`.parity/f1prod.py` against the dev server, Sunset/Parkside block 2115 at 390 px and a
+sweep of twenty blocks at 1440:
+
+```
+                                    before        after
+words in the panel                    585          286
+panel height, CSS px                2,262        1,314
+sections above the block                4            0
+```
+
+The four were `IN SHORT` (the neighbourhood in prose, plus a 36-word census-join
+footnote), `PUBLIC MONEY HERE` (the neighbourhood's), `WHAT THE BOARD KEPT DECIDING HERE`
+(three archival highlights with their own ranking methodology) and a divider. **A reader
+who clicked one block got two and a half screens about somewhere else before one row about
+what they clicked.**
+
+And the header said it too: the neighbourhood's name was the `<h2>` and *"Block 2115 ·
+13,390 m²"* was the small line under it. §13 swapped them deliberately and gave a good
+reason — a reader told "3724" does not know where that is. The reason survives; the
+solution does not. **The kicker is where context goes.** It carries the neighbourhood's
+name now, one size down, and the title is the thing the reader asked about:
+
+```
+NOB HILL
+Block 0297
+10,498 m² published area
+```
+
+### b. What was cut, and what was only moved
+
+**Nothing was deleted, and that is a decision rather than caution.** Three things made
+deletion the wrong tool:
+
+- `HoodMoney` is where **16 blocks of 5,404** carry their only money figure — §19e's own
+  gate suppresses the block's figures on exactly those blocks because they would be the
+  neighbourhood's printed twice. Cutting the hood's money would take the figure off
+  Moscone, Coit Tower, Kezar and the Palace of Fine Arts.
+- The census provenance is the project's whole claim and may never leave the page.
+- The neighbourhood genuinely *is* the right unit for the archival highlights. §15 is an
+  entire round establishing that the block alone is too thin to rank against.
+
+So the group is a **closed `<details>` at the foot of the panel**, under the block's own
+record and beside `ON THE STREETS THIS BLOCK FRONTS`, which is the same shape. Opened, the
+panel is 574 words and every section is back, in its old order:
+`ON THIS BLOCK · DECADE BY DECADE · IN SHORT · PUBLIC MONEY HERE · WHAT THE BOARD KEPT
+DECIDING HERE`. Verified by opening it and counting, not by reading the diff.
+
+### c. One thing the move broke, caught by looking at the frame
+
+`NowRows` printed its own heading only when the neighbourhood rollup was ABSENT, because
+the hood group printed an `On this block` divider immediately above it. With that divider
+gone the block's five rows stood on the page **with no heading at all** — `Residents 108`
+directly under a link, on every block. `underHood` no longer gates the heading.
+
+The heading is `panel.hood_block_head` — *'On this block'* — which §19g recorded as having
+lost its only caller. Its string is exactly right and it is already in both dictionaries,
+so nothing new was needed. `panel.now_head` (*'On the ground now'*) was wrong for the list
+anyway: it carries `Board decisions` and `In the record 1910–1981`, which are not now.
+
+### d. Keys — one new, one rename, for their owner
+
+```ts
+'us.sf.thecity.panel.hood_open': 'The neighbourhood',   // the <details> summary
+```
+
+Behind `tOr(t, key, english)` as §19g established, so it disposes of itself the day it
+lands. The summary reads `The neighbourhood · Sunset/Parkside`.
+
+**Rename, not new:** `us.sf.thecity.panel.hood_block_head` is now the block's own section
+heading and nothing about it is the neighbourhood's. It wants to be
+`us.sf.thecity.panel.block_head`, same string.
+
+`us.sf.thecity.panel.hood_block_lede` (*'The neighbourhood above is {n} blocks…'*) has no
+caller now — the divider it belonged to is gone. `panel.now_head` still has one, on the
+no-rollup fallback path inside `BlockSummary`.
+
+### e. State
+
+Typecheck clean, eslint clean, **449/449**. Shot at 390 and 1440:
+`.parity/out/f1-m1fmfull.png`, `f1-m1fwfull.png`, and `f1-m1f-hoodopen.png` for the
+open state.
