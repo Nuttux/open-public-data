@@ -7609,6 +7609,290 @@ not the geometry.
 
 ---
 
+### 33.8 The 1955 step is gone, re-measured — and the undated cohort turns out to be the OLD trees, not the recent ones
+
+Sent back to §33 on the assumption that the canopy ships **no year at all** and
+that the rail therefore cannot thin it. **Both halves were checked before
+anything was built and the first half is false.** `manifest.kinds.tree` carries
+`yr` as a `u8`, and decoding all 129 `tree/*.qc` off disk:
+
+```
+trees shipped                195,310
+yr == 0  (undated)           125,234   64.12 %
+yr  > 0  (dated)              70,076   35.88 %      1955 -> 2026, 60 distinct years
+```
+
+Against the publisher's live API the same day: `select count(1)` = **198,436**
+and `select count(plantdate)` = **72,146** (36.36 %). Both figures in the survey
+reproduce exactly, and the 3,126-row difference between 198,436 and 195,310 is
+the rows with no usable coordinate. **The planting year is already carried
+per tree, all the way to the chunk.** What has no year is the *canopy blob*
+(`base/canopy` = `cellKey`, `pos`, `area`, and nothing else) and the parks.
+
+**And the step itself was fixed on 2026-08-24, commit `c23441b7`,** by the
+block §33.7 handed the judgement to. Re-measured now with `g2cliff.py`
+unchanged, same camera, same control protocol:
+
+| block, Mission | trees drawn | canopy | blurred ‖Δ‖ | and it used to be |
+|---|---:|---:|---:|---:|
+| 1954 | 23,560 | 3,254 | — | 0 |
+| 1954 (control) | 23,560 | 3,254 | **0.000** | 0 |
+| **1955** | **23,560** | 3,254 | **0.210** | 0 → 23,560, **6.006** |
+| 1960 | 23,564 | 3,254 | 1.182 | 0.794 |
+
+**The tree count does not move at 1955 by a single tree**, and the residual
+0.210 is smaller than the 1.182 that the same frame moves over 1955→1960 on
+four trees — i.e. it is buildings and streets, not vegetation. Swept over the
+whole rail with `.parity/tyr.py` (new, a year ladder where `g2cliff.py` is a
+pair), the layer now grows instead of arriving:
+
+```
+block, Mission   1906 23,560 · 1950 23,560 · 1975 24,177 · 2000 30,507 · 2020 36,452
+block, Sunset    1906  7,528 · 1950  7,528 · 1975  7,694 · 2000  9,178 · 2020 11,912
+district, Mission        0 street trees at EVERY year — bandW(2.9, VZ_T0=2.9) is
+                         exactly 0, so district sees canopy blobs only: 20,600 flat
+```
+
+#### The evidence that settles the undated treatment, and it is new
+
+§33.7 left the choice as a consistency argument — the canopy and the trees are
+the same ignorance and must not get opposite treatments. That is still true and
+it is no longer the strongest thing that can be said, because **the register
+says which trees it fails to date, and they are the old ones.**
+
+`plantdate` coverage by the register's own `qlegalstatus` (live API):
+
+```
+Permitted Site       40,354 rows   35,244 dated   87.3 %
+DPW Maintained      142,585 rows   33,414 dated   23.4 %
+Undocumented          8,995 rows      907 dated   10.1 %
+Significant Tree      3,148 rows      545 dated   17.3 %
+Landmark tree           244 rows       11 dated    4.5 %
+```
+
+A date means **a permit was filed**, which is what the earliest rows already
+said out loud (§33.5: permit numbers 11, 12, 14, 15, 16 in date order from
+October 1955). The cohort with no permit is the cohort the City simply
+maintains — and the trunk says how old that cohort is:
+
+```
+mean DBH, rows with a usable diameter
+  dated     41,229 rows    6.17 in
+  undated  110,590 rows   11.14 in
+
+DBH >= 24 in — the city's thickest street trees
+  dated        870
+  undated    8,833      91.0 % of them carry no planting date
+  of which DPW Maintained 7,990 (508 dated) · Landmark 185 (8 dated)
+```
+
+**An undated tree is, on the evidence of its own trunk, nearly twice as thick
+as a dated one**, and nine in ten of the oldest trees in San Francisco carry no
+date. Holding that cohort behind a 1955 floor did not merely pop — it drew the
+city's oldest street trees as its newest. That is the measurement, and it is
+what the always-present rule is defended on now rather than symmetry with the
+canopy. (`dbh` is worth one line of caution of its own: the publisher's column
+description for it reads *"depth, ,height"*, which is not a definition. It
+behaves as diameter at breast height in inches — it falls monotonically with
+plant decade, 12.1 in for the 1950s to 3.1 in for the 2020s — and that
+behaviour, not the description, is why it is trusted here.)
+
+#### What the frames show that no count does: 1906 Outer Sunset
+
+The screenshots are the reason this section does not end at "fixed". At
+`blk-sunset`, **1906 is bare dune with 7,528 street trees standing on it in
+rows**, tracing a street grid that is not drawn until the 1920s. It is the
+mirror image of the 1955 pop and nobody has named it.
+
+Measured rather than eyeballed. Every tree was given a world position out of
+its own chunk (`cellKey` → 24 m cell, `pos` → two nibbles at 1.5 m) and joined
+to the nearest drawn street surface in `strt/*.qc`, which carries `yr` as a
+`u16` — median tree-to-surface distance **19.3 m**, i.e. the width of a right
+of way, so the join is finding the tree's own street:
+
+```
+undated trees, by the year the map first DRAWS the street they stand on
+
+  street is itself undated (drawn every year)   70,530   56.3 %
+  street first drawn 1907-1919                  28,254
+                     1920-1929                  11,191
+                     1930-1939                   4,048
+                     1940-1949                   3,417
+                     1950-1969                   3,034
+                     1970-2023                   4,760
+  ---------------------------------------------------------------
+  standing on a street the map does NOT draw in 1906   54,704   43.7 %
+```
+
+And it is not spread evenly, which is exactly what the two frames look like:
+
+| box, ±1200 m | undated trees | on a street not drawn in 1906 | median street year |
+|---|---:|---:|---:|
+| Outer Sunset | 5,007 | **3,766 — 75.2 %** | **1928** |
+| Civic Center | 11,973 | 5,543 — 46.3 % | 1911 |
+| Mission | 13,078 | 1,320 — **10.1 %** | 1908 |
+
+**In the Mission the always-present rule is right and the frame agrees; in the
+Outer Sunset three quarters of the crowns are standing on sand.**
+
+#### BUILT — the street gate, and 1906 Outer Sunset reads as dune
+
+**An undated street tree is drawn from the first year its own street is drawn.
+Where the street is itself undated, the tree keeps drawing in every year.**
+
+This map's one rule applied one join further out — *a thing is drawn from the
+first year a published source can put it there* — and for a tree in a right of
+way the source that can put it somewhere is the street the map already gates on
+the Board's own acceptance vote. It puts a date on no tree.
+
+`encode_city_chunks.py` §the undated tree's own street does the join at encode
+time and `tree/*.qc` carries the answer as **`syr`, a `u8` on the same
+`TREE_YEAR_BASE` as `yr`** so the client has one offset to know. `trees.ts`
+reads it only where `yr === 0`. `WFLG.undatedStreetGate` ablates it.
+
+**The join is to the POLYGON.** `h8n7-e4ns` publishes the right of way as area,
+so the distance taken is point-to-EDGE over every ring of every right of way,
+not to a segment's centroid — a segment centroid can sit half a block from a
+tree at its end, and the centroid estimate this section shipped first (19.3 m
+median) was four times too loose. Re-measured on the edges:
+
+```
+median tree-to-right-of-way distance          3.0 m      p90 5.8 m
+beyond the 60 m cap, refused and NOT gated      823      0.42 %
+undated trees gated on their street's year   59,446      47.5 %
+undated trees still drawn in every year      65,788      52.5 %
+  of the gated, first drawn 1907-1919        30,227      the bulk barely moves
+                          1950 or later       8,947      7.1 % of the cohort
+```
+
+Two runs of the encoder produce **byte-identical tree chunks**, and the whole
+change is confined to `tree/*` and `manifest.json`.
+
+#### It does not single out the old growth, which was the risk worth checking
+
+The whole argument for drawing the undated cohort at all is that it is the OLD
+cohort. A gate that then hid the old cohort would have taken the argument back
+in silence. Measured: the **8,725 undated trees thicker than 24 inches** that
+carry a coordinate, run through the same join —
+
+| | gated 1950 or later | no gate at all |
+|---|---:|---:|
+| undated trees thicker than 24 in | **7.9 %** | 50.1 % |
+| the undated cohort as a whole | **7.1 %** | 52.5 % |
+
+Eight tenths of a point. The gate is not reaching for the thick trees; it is
+reaching for late ground.
+
+#### On the frame, with the canopy ablated so the attribution is not a guess
+
+| block, Sunset | street trees | canopy blobs | |
+|---|---:|---:|---|
+| **1906, before** | **7,528** | 2,414 | crowns in rows across bare dune |
+| **1906, after** | **1,732** | 2,414 | −77 % |
+| 1950 | 7,456 | 2,414 | |
+| 2020 | 11,912 | 2,414 | unchanged, as it must be |
+
+| block, Mission | 1906 | 1950 | 1975 | 2000 | 2020 |
+|---|---:|---:|---:|---:|---:|
+| before | 23,560 | 23,560 | 24,177 | 30,507 | 36,452 |
+| after | **19,588** | 23,360 | 24,131 | 30,484 | 36,452 |
+
+The Mission barely moves and should not: its streets were accepted before 1906.
+The Sunset's were not.
+
+**And the residual is entirely the canopy, which is the one thing this cannot
+touch.** `TYR_DIAL=blobs:false` at the 1906 Sunset block camera leaves **1,732
+street trees and nothing else**, and the frame is bare dune with a single
+tree-lined street — the one right of way the Board's record dates before 1906 —
+a park polygon, one building and a label. Every remaining scatter of green in
+the un-ablated frame is a canopy blob out of the 2013 aerial. So: *the street
+trees now agree with the street record; the canopy still cannot, because its
+source has one vintage and no other is published.* The two vegetation layers
+disagree at 1906 where they used to agree, and the resolution is to fix the
+canopy, not to un-fix the trees. **Not attempted here**: a canopy blob is not in
+a right of way, so the street join does not reach it, and gating it on built
+fabric would empty Golden Gate Park.
+
+The district cameras are byte-identical to before the change — 18.545 / 7.035 /
+5.144 / 4.021 at Mission — because `bandW(z, VZ_T0 = 2.9, …)` is exactly 0
+there and no street tree is drawn at district zoom in any year. Nothing new
+appears at the z = 2.9 boundary.
+
+Re-runnable: `.parity/tyr.py <camera>` for the ladder (`TYR_YEARS`, `TYR_DIAL`),
+`.parity/g2cliff.py` for the 1954/1955 pair.
+
+#### 33.8b The parks have the same disease and no published field can cure it
+
+Daniel, on the same frame: **Sigmund Stern Recreation Grove** is labelled over
+1906 dune, and the Stern family gave that land to the City in **1931**. So are
+Sunset Rec Center, South Sunset Playground, Parkside Square, McCoppin Square and
+Pine Lake Park. Unlike a tree, a park carries a NAME, and a name is a claim a
+reader can check.
+
+**Every published candidate was opened and every column read, and there is no
+acquisition date in any of them.** §33.6 said this; it is re-confirmed here
+against the live catalogue, and this time with the publisher's own words:
+
+| dataset | rows | every date column it has |
+|---|---:|---|
+| `gtnh-hgvs` City Lands | 1,035 | `data_last_updated`, `data_as_of`, `data_loaded_at` |
+| `gtr9-ntp6` Recreation and Parks Properties | 247 | `created_date`, `last_edited_date`, `data_as_of`, `data_loaded_at` |
+| `ib5c-xgwu` Recreation and Parks Facilities | 3,308 | the same four |
+| `3nje-yn2u` RPD Parks | 1,080 | **none** |
+| `8du2-b837` Park Sections | 1,751 | **none** |
+
+`gtr9-ntp6.created_date`'s own description is *"timestamp from ArcGIS Online"*,
+and its distribution is **one load on 2025-12-18 — 77 rows in a single second,
+41 in the next.** It is not an acquisition and it is not close to one.
+
+`sf_place_candidates.json` carries no date field at all (105 rows: slug, name,
+kind, family, aliases, owning dept, address, lat, lon, wiki), so the
+"`city_lands` acquisition dates this pipeline already uses" do not exist to use.
+
+**WHAT THE LABEL YEARS ACTUALLY ARE.** `base/places.qc` gives all 2,199 labels a
+`yr` and, honestly, the `yrule` that produced it. For the 1,305 green-space
+labels: 215 at `yr = 0`, **180 at exactly 1906**, 758 later. And the rules are
+all borrowings — *the roll year of the footprint it resolves to*, *the first
+dated building inside its own extent*, *the made-land year of the ground under
+it*. **Not one of them is an acquisition.** Traced:
+
+```
+Sigmund Stern Recreation Grove   yr 1906   src gtr9-ntp6   (no date column exists)
+Sunset Rec Center                yr 1906   src gtr9-ntp6
+South Sunset Playground          yr 1906   src gtr9-ntp6
+McCoppin Square                  yr 1906   src gtr9-ntp6
+San Francisco Zoo                yr 1906   src gtr9-ntp6   (opened 1929)
+San Francisco State University   yr 1906   yrule "first dated building inside its
+                                                 own extent"  (campus 1953)
+Parkside Square                  yr    0   src gtr9-ntp6   — the same register,
+                                                             the opposite treatment
+```
+
+**1906 here is `SCRUB_MIN` wearing a date's clothes.** It is the same constant
+`build_bldg.py` writes for `FLAG_NOYEAR`, in a field the renderer then reads as
+a year — and Parkside Square, out of the same register on the same day, got 0
+instead. Across the whole register **725 of 2,199 labels (33 %) are drawn from
+1906 or from every year**, which is a third of the map's names asserted into a
+century no file reaches.
+
+**AND IT IS NOT A PARK PROBLEM, IT IS A LABEL PROBLEM.** The polygon on bare
+dune is defensible — the ground is there and the map says nothing about it. The
+NAME is not. So the treatment to take is the one that separates them: **hold the
+LABEL until the year the record can defend, and let the polygon draw.** That is
+strictly weaker than dating a park and it needs no new source: a label whose
+`yr` came from `yrule` 2, 3 or 4 is a label sitting on a borrowed year and can
+be marked as such at encode time, rather than printed as if the register had
+said it.
+
+**Not built, and deliberately.** It is `emit_places.py` and `labels.ts`, both of
+which another agent had open tonight, and choosing between *suppress*, *dim* and
+*qualify* is Daniel's call and not a measurement. What is settled by this pass is
+the part that was in question: **no published City dataset dates a park, so no
+treatment that requires a park's year can be built at all**, and the 1906s
+already on screen are a placeholder, not a finding.
+
+---
+
 ### 21.32 "Every named place gets its own render" — the census that says whether that is thirteen or forty
 
 Daniel: *"I want every single place that is a landmark marked with a black dot,
