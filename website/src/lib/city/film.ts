@@ -451,17 +451,19 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
     { k: "build", ms: 1400, what: "burnLine", curve: "enter" },
     /* `even`, not `move` — see CURVE.even. On the camera's ease-out the whole
        fire was over by 9.7 s of a 15 s shot. */
-    { k: "fire", ms: 9000, curve: "even" },
+    { k: "fire", ms: 6600, curve: "even" },
     /* held longer than is comfortable, which is the instruction and is right:
        the frame the fire leaves is the frame shot 2 opens on. */
-    { k: "hold", ms: 4600 },
+    { k: "hold", ms: 3200 },
   ],
   /* THE MATCH CUT. Same camera as shot 1, no move, and the burn hairline stays
      up at half alpha for the first three years so the rebuild is watched
-     happening INSIDE it. Nine years over twelve seconds is 1,333 ms a year,
-     which is well over `STAGGER_TOTAL`, so the arrival wave actually runs. */
+     happening INSIDE it. RE-TIMED 12,000 -> 5,600 ms in §25.2: nine years over
+     5,600 ms is 622 ms a year, which is still over `STAGGER_TOTAL`, so the
+     arrival wave still runs. The hairline's fade keeps its own fractions —
+     it began at 1/3 of the run and took 1/5 of it, and it still does. */
   rebuild: [
-    { k: "run", ms: 12000, to: 1915, curve: "move", burn: [1, 0, 4000, 2500] },
+    { k: "run", ms: 5600, to: 1915, curve: "move", burn: [1, 0, 1850, 1200] },
   ],
   /* 1915. `footprint`, not `ring`: the record names the building, and the
      published footprint IS the precision. The Exposition's other palaces
@@ -471,7 +473,7 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      shows nothing else of IS that fact. */
   palace: [
     { k: "build", ms: 1200, what: "placemark", ent: "palace-of-fine-arts", curve: "settle" },
-    { k: "hold", ms: 6000 },
+    { k: "hold", ms: 4400 },
   ],
   /* 1936 and 1937, on the widest camera in the film. The Bay Bridge deck is a
      film BUILD and not a year gate — `skipBridgeGhost` keeps the base layer's
@@ -480,11 +482,11 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      deck at 1937 and the fabric puts it up on its own date while the camera
      holds. Two crossings, two mechanisms, one frame. */
   bridges: [
-    { k: "run", ms: 1600, to: 1936, curve: "move" },
-    { k: "build", ms: 1600, what: "bridge", curve: "travel" },
-    { k: "hold", ms: 1400 },
-    { k: "run", ms: 1200, to: 1937, curve: "move" },
-    { k: "hold", ms: 3600 },
+    { k: "run", ms: 1400, to: 1936, curve: "move" },
+    { k: "build", ms: 1400, what: "bridge", curve: "travel" },
+    { k: "hold", ms: 900 },
+    { k: "run", ms: 1000, to: 1937, curve: "move" },
+    { k: "hold", ms: 2300 },
   ],
   /* 1942, and the camera does not move once it has arrived. The only thing
      that rises is the boundary the Board itself named — ELLIS, CALIFORNIA,
@@ -497,47 +499,48 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
     { k: "hold", ms: 5200 },
   ],
   charter: [
-    { k: "run", ms: 1200, to: 1945, curve: "move" },
+    { k: "run", ms: 1000, to: 1945, curve: "move" },
     { k: "build", ms: 1200, what: "placemark", ent: "united-nations-charter-1945", curve: "settle" },
-    { k: "hold", ms: 4800 },
+    { k: "hold", ms: 2800 },
   ],
   /* 1959, and NOTHING IS DRAWN, which is the shot. The resolution names seven
      freeways; `entries/freeway-revolt-1959.json` says in the open that their
      corridors are *"NOT IN RECORD as geometry"*. Ghosting seven alignments in
      would be inventing seven roads to show that they were never built. */
   freeways: [
-    { k: "run", ms: 3400, to: 1959, curve: "move" },
-    { k: "hold", ms: 5200 },
+    { k: "run", ms: 2400, to: 1959, curve: "move" },
+    { k: "hold", ms: 2800 },
   ],
   /* the run is what raises the Pyramid: `landmarks.ts` gates the hero at 1972
      and the fabric puts it up on its own published year while the camera
      holds. The film's own act is a mark and a name over it. */
   pyramid: [
-    { k: "run", ms: 1600, to: 1972, curve: "move" },
+    { k: "run", ms: 1400, to: 1972, curve: "move" },
     { k: "build", ms: 1200, what: "placemark", ent: "transamerica-pyramid", curve: "settle" },
-    { k: "hold", ms: 5200 },
+    { k: "hold", ms: 2800 },
   ],
   /* 1991. The Embarcadero Freeway was never drawn — the fabric dates what is
      standing today, so a structure demolished in 1991 is in no year of this
      map — and the film says that rather than faking a collapse. */
   embarcadero: [
-    { k: "run", ms: 3400, to: 1991, curve: "move" },
-    { k: "hold", ms: 5200 },
+    { k: "run", ms: 2400, to: 1991, curve: "move" },
+    { k: "hold", ms: 3000 },
   ],
   /* THE RHYME with shot 2: the camera stops and a district fills in under it.
-     Twenty-seven years over 5,400 ms is 200 ms a year, which is under
+     Twenty-seven years over 3,600 ms is 133 ms a year, which is under
      `STAGGER_TOTAL`, so the years land whole rather than in a wave — stated
      rather than hidden, and it is the rate and not the wave that is the
-     constraint (§14.3). */
+     constraint (§14.3). It was already under it at 5,400 ms and 200 ms a
+     year, so the re-time in §25.2 changed the rate and not the behaviour. */
   "mission-bay": [
-    { k: "run", ms: 5400, to: 2018, curve: "move" },
+    { k: "run", ms: 3600, to: 2018, curve: "move" },
     { k: "build", ms: 900, what: "ring", ent: "mission-bay", curve: "settle" },
-    { k: "hold", ms: 3300 },
+    { k: "hold", ms: 2400 },
   ],
   /* Out to the whole city, which is the frame the film opened on. */
   face: [
-    { k: "run", ms: 1200, to: 2019, curve: "move" },
-    { k: "hold", ms: 6000 },
+    { k: "run", ms: 1000, to: 2019, curve: "move" },
+    { k: "hold", ms: 4600 },
   ],
 };
 

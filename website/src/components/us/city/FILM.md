@@ -3082,3 +3082,163 @@ street lane is 6, not 14** — because `STREET_NAME_CAP.film = 6` was already
 stopping it, which the `cap: 2` rows now show directly (the cap fires once in
 the spine sub-pass and once in the arterials one). The instrument no longer has
 to be corrected after the fact.
+
+## 24 · Block M1f, 2026-08-25 — eleven frames, looked at again, and three cameras that were framing the wrong thing
+
+Taking over from M1e. The queue is NIGHT3 §4 again — *"you have to be wowed by
+the beauty of what's in the shot"* — plus the rail caption, an audit of the
+curve table, and a verdict.
+
+Everything below is shot at `:3100` (production) unless it says otherwise.
+**One thing had to move to `:3000`, and it is worth stating because it cost a
+round:** `.parity/n3frame.py` patches `z/ox/oy` in
+`public/data/us/sf/city/film/film.json` and reloads. **The production server
+does not serve that file from disk** — three framings patched at `:3100` came
+back byte-identical (`diff vs first 0.00018`, which is antialiasing) and
+`where()` still reported the old `z`. Framing is therefore SCOUTED at `:3000`
+and every scouted change is re-shot at `:3100` after a rebuild.
+
+### 24.1 The contact sheet, and what each frame is
+
+`.parity/out-n4/shots-sheet.png`, eleven frames at 62 % of each shot.
+
+| # | year | verdict |
+|---|---|---|
+| 1 | 1906 | at 62 % the fire is at phase 0.88 and reads as embers. **At 0.43 it is a field of flames** (`at-t8200.png`) and it is good. Not a defect; the contact-sheet mark is in the tail |
+| 2 | 1914 | the match cut holds. Good |
+| 3 | 1915 | **the two largest objects on the frame are a featureless tan blob and two grey apartment blocks.** See 24.3 |
+| 4 | 1936 | ~30 labels; the frame reads as a reference map |
+| 5 | 1942 | the ring is closed now, but the subject is 22 % of the frame width and half of it is in the haze |
+| 6 | 1945 | **the subject is a small pale block right of centre and the left half is empty park.** See 24.4 |
+| 7 | 1959 | the wide city, honest, generic |
+| 8 | 1972 | **the film's shot about the tallest building crops the top of the building.** See 24.2 |
+| 9 | 1991 | good. §23.5's reframe holds |
+| 10 | 2017 | Mission Bay is in the bottom-right corner, in the haze |
+| 11 | 2019 | the Golden Gate is two orange masts. See 24.5 |
+
+## 25 · Block M1f — the two defects Daniel sent, and what they measured to
+
+He watched the shipped cut and sent two:
+
+> *"i find myself using the arrows bc the film goes too slow between shots,
+> also on the fire when it runs theres this weird grey animation of the fire
+> completing its totally strange"*
+
+### 25.1 The grey thing on the fire is the smoke pass, and the numbers say it could never have worked
+
+`film-draw.ts` §drawFireLosses drew, **before the flames**, three radial discs
+per structure in `rgba(74,64,58,·)` — a neutral dark grey with no hue in it —
+drifting on `Math.sin(… + phase * 5.1)`. That drift is the *animation* he saw.
+
+Printed before naming it, from the code's own arithmetic at `FIRE_H_MAX = 96`
+device px:
+
+| | expression | at the largest flame |
+|---|---|---:|
+| plume centre, above the flame's foot | `s × (1.4 + 3.2 t)`, `t ≤ 0.73` | **355 px** |
+| plume radius | `s × (0.5 + 1.5 t)` | **154 px** |
+| plumes on the frame | 3 per structure × 27 lit | **81** |
+
+**A plume five times the height of the flame it came from, and eighty-one of
+them.** The painted area of the smoke was several times the painted area of the
+fire, so the largest moving thing in shot 1 was a hueless grey wash over a pale
+warm map. It is the same failure §21.7 diagnosed for the flames under
+`lighter`, one pass later and in grey: a mark with no hue on a pale ground
+reads as a smudge, and the eye takes the smudge for the subject.
+
+**Removed, not re-tuned.** The section header already declared that the smoke
+carries no information; the record publishes no plume, no wind and no ignition
+time, so nothing leaves the record with it. `out-n4/` before and after.
+
+Left ALONE in the same pass, deliberately, so the ablation has a control:
+`FIRE_H_MAX`, `FIRE_H_MIN`, the tongue width and the ember. Daniel also called
+the flames large and abstract; that is a second variable and it is judged on
+the frame after the grey is gone, not in the same change.
+
+### 25.2 The pacing: the dead time is the MOVE, and on this machine the camera is not even moving through it
+
+Do not trim uniformly — measure. `.parity/n4spare.py` plays the film for real at
+`:3100` and samples `where()` and the shell's own spare flags every 250 ms.
+75 s, 300 samples:
+
+```
+  seg       n     spareCamera on   keepUp med   copy on
+  title    15            0            1.00         0
+  build    24           18            0.97        24
+  fire     34            0            1.00        34
+  hold     80           63            0.90        80
+  run      97           28            1.00        97
+  move     50           45            0.68         0
+```
+
+**Two things in that table decide the whole re-time.**
+
+1. **`copy on 0` for every single `move` sample.** The plate appears when the
+   move ends, so `move` milliseconds are milliseconds with no line on screen.
+   At 2,400 ms × 9 travels that is **21.6 s of a 130 s film with nothing to
+   read** — 17 %.
+2. **`spareCamera` is on for 45 of those 50 samples**, and `keepUp` collapses
+   to 0.68 there against 1.00 everywhere else. `film.ts` §spare: when the shell
+   cannot draw a travel it puts the camera on the incoming frame at the HEAD of
+   the move and *"the move's remaining milliseconds are a still hold on it"*.
+   So for nine tenths of that 21.6 s the camera **has already arrived and is
+   sitting still with no copy on it.** That is not a travel a reader is
+   watching. It is a wait, and it is exactly where he reached for the arrow.
+
+So the move is cut first and hardest — 2,400 → **1,200** ms on nine shots, and
+1,800 on Japantown. It still reads as cut · beat · line.
+
+**The second cut is the tail of each hold**, on a floor rather than a
+percentage: the copy must stay on screen at least as long as the line takes to
+read. Measured per line at ~22 characters a second plus 700 ms to notice it —
+shot 5's is 143 characters and needs 7.2 s, shot 2's is 53 and needs 3.1.
+
+| # | id | move | ms | → move | → ms | copy visible | line needs |
+|---|---|---:|---:|---:|---:|---:|---:|
+| 1 | burn | 0 | 15000 | 0 | **11200** | 11200 | 3.7 |
+| 2 | rebuild | 0 | 12000 | 0 | **5600** | 5600 | 3.1 |
+| 3 | palace | 2400 | 9600 | 1200 | **6800** | 5600 | 5.4 |
+| 4 | bridges | 2400 | 11800 | 1200 | **8200** | 7000 | 3.4 |
+| 5 | japantown | 2400 | 11400 | 1800 | **10800** | 9000 | 7.2 |
+| 6 | charter | 2400 | 9600 | 1200 | **6200** | 5000 | 4.1 |
+| 7 | freeways | 2400 | 11000 | 1200 | **6400** | 5200 | 4.5 |
+| 8 | pyramid | 2400 | 10400 | 1200 | **6600** | 5400 | 4.6 |
+| 9 | embarcadero | 2400 | 11000 | 1200 | **6600** | 5400 | 5.1 |
+| 10 | mission-bay | 2400 | 12000 | 1200 | **8100** | 6900 | 4.2 |
+| 11 | face | 2400 | 9600 | 1200 | **6800** | 5600 | 5.5 |
+
+Title 3,000 → 2,400 and the end tail 4,000 → 3,000.
+
+**2 m 10.4 s → 1 m 28.7 s. 41.7 s out, 32 %.** Every shot clears its own
+reading floor with margin, and the two protected shots are protected: shot 1
+still burns and still ends on 3.2 s of stillness, and **Japantown is the
+longest shot in the film at 10.8 s and is still completely still.**
+
+Two rates were checked rather than assumed. Shot 2's nine years now run at 622
+ms a year, still over `STAGGER_TOTAL` (520), so the arrival wave still runs.
+Shot 10's twenty-seven years run at 133 ms a year and were already under it at
+200, so that re-time changed the rate and not the behaviour.
+
+### 25.3 Two cameras were framing the wrong thing, and one of them cropped its own subject
+
+**Shot 8 — the film's shot about the tallest building in San Francisco cropped
+the top of the building.** Fully risen, at the hold. Measured rather than
+eyeballed, by fitting the spire's own taper on `out-n4/at-t91500.png`: within
+x ∈ [1400, 2200] the tan run widens **0.110 px a row** and is **27 px wide at
+row 180**, so the apex sits at row **−65** — sixty-five device px above the top
+of the frame. `oy` −0.12 → **−0.30**; `z` untouched. `out-n3/frame-s08-z24_
++0p12_-0p30.png`: the apex is in frame with about 9 % of the frame's height of
+air over it, and the thing the line is about is on the screen.
+
+**Shot 6 — the subject was a small pale block right of centre and the left half
+of the frame was empty park.** NIGHT3 asks for *"push in on the War Memorial
+until its label resolves"*; at `z` 20 it did not — the eye went to City Hall's
+gold dome, half off the right edge, which is the wrong building for a line
+about the war memorial. Six framings shot (`out-n3/frame-s06-*.png`).
+`z` 20 → **44**, `off` (0.14, −0.10) → **(−0.04, −0.16)**. The Opera House
+carries its own colonnade, cornice and octagonal roof at centre-left; Van Ness
+runs the diagonal; **City Hall's dome is whole in the upper right** rather than
+cut, so the shot has a second beautiful object in it that is true. The −0.16 is
+what brings the dome down inside the top edge; at −0.02 the finial was cut.
+
+Neither change touches the year, the copy or the citation.

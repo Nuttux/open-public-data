@@ -601,8 +601,8 @@ export function drawBurnLine(
  * the order of a description being read, not a claim about where it burned
  * first. It is declared here and in `film/fire.json`'s `meta.order`.
  *
- * THE FLAME IS A TREATMENT AND IS DECLARED AS ONE. Its shape, its flicker and
- * its smoke carry no information. What carries information is WHERE it is, HOW
+ * THE FLAME IS A TREATMENT AND IS DECLARED AS ONE. Its shape and its flicker
+ * carry no information, and it has no smoke — see §THERE IS NO SMOKE. What carries information is WHERE it is, HOW
  * BIG it is, and that there are twenty-seven of them. The flicker is
  * `Math.sin` of the act's own phase and a per-row hash — **a pure function of
  * the film clock, never `Math.random`** — so a scrub lands on exactly the frame
@@ -739,8 +739,8 @@ export function drawBurnFill(
 }
 
 /**
- * The flames, the smoke and the embers, on the placed structures. See the
- * header for what of this is the record and what is treatment.
+ * The flames and the embers, on the placed structures. See the header for what
+ * of this is the record and what is treatment.
  */
 export function drawFireLosses(
   g: CanvasRenderingContext2D,
@@ -777,27 +777,27 @@ export function drawFireLosses(
   }
   if (!seen.length) return;
 
-  // ── the smoke, behind everything ─────────────────────────────────────────
-  g.save();
-  for (const f of seen) {
-    const rise = Math.min(1, f.p * 1.6);
-    if (rise <= 0.05) continue;
-    const a = 0.17 * Math.min(1, f.p * 2) * (1 - 0.4 * Math.max(0, f.p - FIRE_PEAK));
-    for (let q = 0; q < 3; q++) {
-      const t = rise * (0.45 + 0.28 * q);
-      const cy = f.Y - f.s * (1.4 + 3.2 * t);
-      const cx = f.X + Math.sin((f.h + q) * 6.28 + phase * 5.1) * f.s * 0.55 * t;
-      const rr = f.s * (0.5 + 1.5 * t);
-      const gr = g.createRadialGradient(cx, cy, 0, cx, cy, rr);
-      gr.addColorStop(0, `rgba(74,64,58,${a * (1 - t)})`);
-      gr.addColorStop(1, "rgba(74,64,58,0)");
-      g.fillStyle = gr;
-      g.beginPath();
-      g.arc(cx, cy, rr, 0, Math.PI * 2);
-      g.fill();
-    }
-  }
-  g.restore();
+  /* ── THERE IS NO SMOKE, AND THAT IS THE FIX ────────────────────────────
+     Daniel, on the shipped cut: *"on the fire when it runs theres this weird
+     grey animation of the fire completing its totally strange"*. This pass is
+     what he was looking at. It drew THREE radial discs per structure in
+     `rgba(74,64,58,·)` — a neutral dark grey with no hue in it — centred up to
+     `s x 3.7` ABOVE the flame's foot at a radius of up to `s x 1.6`, drifting
+     on `Math.sin(… + phase * 5.1)`.
+
+     THE NUMBERS ARE WHY IT COULD NOT WORK. At `FIRE_H_MAX = 96` the tallest
+     flame is 96 device px and its smoke column reached 355 px above the foot
+     and 154 px wide: **a plume five times the height of the flame it came
+     from, and eighty-one of them on the frame.** The painted area of the smoke
+     was several times the painted area of the fire, so on a pale warm map the
+     largest moving thing in shot 1 was a hueless grey wash — which is exactly
+     the failure §21.7 diagnosed for the flames themselves under `lighter`,
+     one pass later and in grey.
+
+     It is REMOVED rather than re-tuned. The header above already declares that
+     the smoke carries no information; the record publishes no plume, no wind
+     and no ignition time, so nothing is lost from the record by deleting it,
+     and a fire with no smoke is better than a fire with a grey cone on it. */
 
   // ── the flames ───────────────────────────────────────────────────────────
   /* SOURCE-OVER, NOT `lighter`, AND THIS IS THE WHOLE OF WHY THE FIRE READ AS

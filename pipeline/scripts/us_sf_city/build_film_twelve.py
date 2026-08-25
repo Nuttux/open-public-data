@@ -79,12 +79,12 @@ SHOTS: list[dict] = [
     # FILM.md §15.1 measures a travel at 4 to 32 rasterisations and a locked
     # camera at zero — so the strongest image available is also the cheapest.
     dict(n=1, id="burn", title="The fire, and what it took of the city's own",
-         t=(-122.409, 37.783), z=2.05, off=(0.0, 0.0), move=0, ms=15000,
+         t=(-122.409, 37.783), z=2.05, off=(0.0, 0.0), move=0, ms=11200,
          st=(None, 1906)),
     # 2 · THE MATCH CUT. Same target, same z, no move. Nine years run under a
     # camera that does not move and the fabric comes back inside the hairline.
     dict(n=2, id="rebuild", title="It comes back",
-         t=(-122.409, 37.783), z=2.05, off=(0.0, 0.0), move=0, ms=12000,
+         t=(-122.409, 37.783), z=2.05, off=(0.0, 0.0), move=0, ms=5600,
          st=(1906, 1915)),
     # 3 · THE PALACE. Down to the Marina. The rotunda's own published footprint
     # centroid, out of wonder/hero-data.js — the same ring the renderer draws.
@@ -94,23 +94,30 @@ SHOTS: list[dict] = [
     # of the frame beside the subject. At 95 they are a band at the top left,
     # and the rotunda's columns, arches and lattice dome all resolve.
     dict(n=3, id="palace", title="One building stays",
-         t=(-122.448403, 37.802924), z=95.0, off=(0.14, -0.10), move=2400, ms=9600,
+         t=(-122.448403, 37.802924), z=95.0, off=(0.14, -0.10), move=1200, ms=6800,
          st=(1912, 1915)),
     # 4 · THE WIDEST CAMERA IN THE FILM, and the only shot with two subjects.
     # It opens on empty water at 1915, runs to 1936, strokes the Bay Bridge
     # deck out from Rincon Hill, holds, and then runs two more years while the
     # fabric puts the Golden Gate up on its own published date.
     dict(n=4, id="bridges", title="Two bridges",
-         t=None, z=1.26, off=(0.07, 0.03), move=2400, ms=11800,
+         t=None, z=1.26, off=(0.07, 0.03), move=1200, ms=8200,
          st=(1915, 1937)),
     # 5 · JAPANTOWN. Tight on the Western Addition and, after the move that
     # gets there, completely still. Nothing rises but the four streets the
     # resolution names. Restraint is the design here.
     dict(n=5, id="japantown", title="Japantown",
-         t=(-122.429078, 37.786676), z=5.5, off=(0.0, -0.10), move=2400, ms=11400,
+         t=(-122.429078, 37.786676), z=5.5, off=(0.0, -0.10), move=1800, ms=10800,
          st=(1937, 1942)),
+    # 6 · THE WAR MEMORIAL. `z` 20 -> 44 and the offset to (-0.04, -0.16):
+    # FILM.md §25.3. At 20 the Opera House was a small pale block right of
+    # centre, the left half of the frame was empty park, and the brief asks for
+    # a push in "until its label resolves" — it did not. At 44 the Opera House
+    # carries its own colonnade and cornice at centre-left, Van Ness runs the
+    # diagonal, and City Hall's dome is whole in the upper right instead of
+    # half off the edge.
     dict(n=6, id="charter", title="Fifty nations, in the war memorial",
-         t=(-122.420881, 37.778560), z=20.0, off=(0.14, -0.10), move=2400, ms=9600,
+         t=(-122.420881, 37.778560), z=44.0, off=(-0.04, -0.16), move=1200, ms=6200,
          st=(1942, 1945)),
     # 7 · THE FREEWAYS THAT WERE NOT BUILT. High over the whole city, and
     # NOTHING IS DRAWN. `entries/freeway-revolt-1959.json` says in the open
@@ -119,10 +126,16 @@ SHOTS: list[dict] = [
     # Ghosting them in would be inventing seven roads. The shot is the city
     # they are not in, and the badge says so.
     dict(n=7, id="freeways", title="The freeways that were not built",
-         t=None, z=1.25, off=(0.0, 0.0), move=2400, ms=11000,
+         t=None, z=1.25, off=(0.0, 0.0), move=1200, ms=6400,
          st=(1945, 1959)),
+    # 8 · THE PYRAMID. `oy` -0.12 -> -0.30: FILM.md §25.3. THE FILM'S SHOT
+    # ABOUT THE TALLEST BUILDING IN SAN FRANCISCO CROPPED THE TOP OF THE
+    # BUILDING. Measured on the shipped frame by fitting the spire's own taper
+    # — it widens 0.110 px a row, and is 27 px wide at row 180 — the apex sat
+    # 65 device px ABOVE the top of the frame, fully risen. `z` is unchanged;
+    # only the subject's place in the frame moves.
     dict(n=8, id="pyramid", title="The Pyramid",
-         t=(-122.402707, 37.795274), z=24.0, off=(0.12, -0.12), move=2400, ms=10400,
+         t=(-122.402707, 37.795274), z=24.0, off=(0.12, -0.30), move=1200, ms=6600,
          st=(1959, 1972)),
     # 9 · THE WATERFRONT, HELD. The Embarcadero Freeway was never drawn — the
     # fabric is the assessor's roll and the roll dates what is standing — so
@@ -135,16 +148,16 @@ SHOTS: list[dict] = [
     # fills the frame with the city the vote was about; measured empty
     # fraction 68.1 % -> 50.7 %.
     dict(n=9, id="embarcadero", title="The road that came down",
-         t=(-122.397500, 37.796500), z=5.5, off=(0.02, 0.22), move=2400, ms=11000,
+         t=(-122.397500, 37.796500), z=5.5, off=(0.02, 0.22), move=1200, ms=6600,
          st=(1972, 1991)),
     # 10 · THE RHYME. Shot 2's move, seventy years later: the camera stops and
     # a district fills in under it.
     dict(n=10, id="mission-bay", title="A rail yard becomes a neighbourhood",
-         t=(-122.395141, 37.772878), z=3.6, off=(0.12, -0.06), move=2400, ms=12000,
+         t=(-122.395141, 37.772878), z=3.6, off=(0.12, -0.06), move=1200, ms=8100,
          st=(1991, 2018)),
     # 11 · OUT TO THE WHOLE CITY, which is where the film started.
     dict(n=11, id="face", title="What the city would not let itself do",
-         t=None, z=1.10, off=(0.0, 0.0), move=2400, ms=9600,
+         t=None, z=1.10, off=(0.0, 0.0), move=1200, ms=6800,
          st=(2018, 2019)),
 ]
 
@@ -853,8 +866,8 @@ def main() -> None:
                     "file, film/fire.json, built by "
                     "pipeline/scripts/us_sf_city/build_fire_losses.py.",
         },
-        "runtime": {"titleMs": 3000, "endMs": 4000, "shotsMs": total,
-                    "totalMs": total + 7000},
+        "runtime": {"titleMs": 2400, "endMs": 3000, "shotsMs": total,
+                    "totalMs": total + 5400},
         "title": TITLE,
         "end": END,
         "shots": shots,
@@ -868,8 +881,8 @@ def main() -> None:
     path.write_text(json.dumps(payload, separators=(",", ":"), sort_keys=False))
     print(f"{path}: {path.stat().st_size:,} bytes · {len(shots)} shots · "
           f"{len(ents)} subjects · {len(accepted):,} accepted segments")
-    print(f"  {total/1000:.1f} s of shots + 3.0 title + 4.0 end = "
-          f"{(total+7000)/1000:.0f} s")
+    print(f"  {total/1000:.1f} s of shots + 2.4 title + 3.0 end = "
+          f"{(total+5400)/1000:.0f} s")
     print(f"  the 1942 district: {len(district)} published centreline segments, "
           f"centre {dcent[0]:.6f} {dcent[1]:.6f}")
 
