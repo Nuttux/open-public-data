@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/qvu5-m3a2.json?%24select=record_id%2Cproject_name%2Cdescription%2Cproject_address%2Cblock%2Clot%2Copen_date%2Cclose_date%2Crecord_status%2Cproject_decision%2Cnumber_of_units_net%2Cbuilding_permits&%24order=record_id&%24limit=20000&%24offset=0",
+ "what": "qvu5-m3a2 Planning Department Records - Projects, one row per planning project, all years",
+ "bytes": 24930393,
+ "rows": 54478,
+ "sha256": "240c781cfbe43a440a6b4dde9b9e511eb0c8ffa1a972165624920984a63f5647",
+ "retrieved_utc": "2026-08-25T16:13:55Z"
+}
