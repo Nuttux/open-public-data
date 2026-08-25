@@ -3646,6 +3646,16 @@ type stays black and stays readable THROUGH the mark. A solid box would hide the
 words and an outline would turn the page into a diagram. Not the family blue,
 for the same reason as §28.2.
 
+**And it never lands on the copy.** `.parity/p9vw.py` measures the panel's rect
+against the plate's, on shots 1, 5 and 7, at ten viewports from 1920x1080 down
+to 390x844 — including 1180 and 1100, either side of the breakpoint where the
+page moves to the top half:
+
+```
+  1920x1080 ok · 1440x900 ok · 1280x800 ok · 1180x820 ok · 1100x800 ok
+  1024x768  ok ·  900x600 ok ·  820x1180 ok ·  768x1024 ok ·  390x844 ok
+```
+
 **Nothing off the page is ever narration.** The scan is a PICTURE, which is
 exactly why this is compatible with §THE NARRATION IS OUR SENTENCE; the `alt`
 text describes the document and does not quote it, and no shot's copy changed
