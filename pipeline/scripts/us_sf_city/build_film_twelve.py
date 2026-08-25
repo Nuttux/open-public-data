@@ -97,6 +97,29 @@ OUT = CITY / "film"
 #           whose counter is running to the date the line is about, the line
 #           lands when the counter gets there.
 #
+#   `pin`   the plate PRINTS this year, for the whole shot, whatever the counter
+#           under it is doing. One shot: 9.
+#
+#           `say` alone was not enough and the way it failed is the reason this
+#           field exists. MEASURED, `.parity/r1plate.py` on the shipped build,
+#           every 500 ms for the whole time the line is up:
+#
+#             9 embarcadero   1989 x 1 · 1990 x 1 · 1991 x 11
+#
+#           `say` decides where a line STARTS. The counter kept running under
+#           it, so the plate read 1991 for 5.5 of the 6.5 seconds the earthquake
+#           sentence was on screen — 85 % of it — and Daniel, watching, said
+#           *"dude still says 1991 and earthquake"*. §33's instrument printed
+#           the first year and the last year of each line and therefore scored
+#           that as a pass; what a reader gets is the year that is on the frame
+#           for MOST of the sentence, and nobody had printed it.
+#
+#           A span on the plate is only ever right where the SENTENCE is a span,
+#           which is what `yrun` is for. Shot 9's sentence names both of its
+#           dates itself, so the plate does not have to: it says 1989, the fabric
+#           runs to 1991 underneath, and no frame in the film pairs the word
+#           "earthquake" with a year the earthquake was not in.
+#
 # THE FABRIC IS NOT TOUCHED BY EITHER. `filmStateAt` keeps handing the renderer
 # the true running year, so a frame is still exact for its own year and the
 # arrival wave is what it was. Only what the PLATE prints changes.
@@ -248,8 +271,13 @@ SHOTS: list[dict] = [
     # — it widens 0.110 px a row, and is 27 px wide at row 180 — the apex sat
     # 65 device px ABOVE the top of the frame, fully risen. `z` is unchanged;
     # only the subject's place in the frame moves.
+    # RE-TIMED 6,600 -> 7,200 ms, and only because the LINE grew. The approved
+    # tense fix is 110 characters against 87, so §25.2's floor — 22 characters a
+    # second plus 700 ms to notice it — asks 5.7 s and the copy was visible for
+    # 5.4. The 600 ms is on the hold; the run, the build and the travel are
+    # untouched, so the tower rises exactly as it did.
     dict(n=8, id="pyramid", title="The Pyramid goes up",
-         t=(-122.402707, 37.795274), z=24.0, off=(0.12, -0.30), move=1200, ms=6600,
+         t=(-122.402707, 37.795274), z=24.0, off=(0.12, -0.30), move=1200, ms=7200,
          st=(1959, 1972)),
     # 9 · THE WATERFRONT, HELD. The Embarcadero Freeway was never drawn — the
     # fabric is the assessor's roll and the roll dates what is standing — so
@@ -272,9 +300,16 @@ SHOTS: list[dict] = [
     # under a sentence that names them in that order. The hold is 4,200 ->
     # 5,400 so the copy still clears its own reading floor: 120 characters is
     # 6.2 s at 22 a second plus 700 ms, against 6.4 s visible.
+    # THE PIN, AND WHY `say` ALONE WAS NOT IT. `say=1` lands the copy as the
+    # counter reaches 1989 and the second run then carries the number to 1991
+    # while the reader is still reading — measured, the plate reads 1991 for
+    # eleven of the thirteen half-second samples the line is up. `yrun` is
+    # dropped and `pin=1989` states the caption instead. The RUN IS UNTOUCHED:
+    # the fabric still goes 1972 -> 1989 -> 1991 and the split still gives the
+    # copy its landing, so nothing about what is drawn changes.
     dict(n=9, id="embarcadero", title="The earthquake of 1989",
          t=(-122.397500, 37.796500), z=5.5, off=(0.02, 0.22), move=1200, ms=9000,
-         st=(1972, 1991), yrun=True, say=1),
+         st=(1972, 1991), pin=1989, say=1),
     # 10 · THE RHYME. Shot 2's move, seventy years later: the camera stops and
     # a district fills in under it.
     dict(n=10, id="mission-bay", title="A rail yard becomes a neighbourhood",
@@ -496,8 +531,20 @@ COPY: dict[int, dict] = {
             copy="The Board voted down seven of the ten freeways in the "
                  "city's own master plan."),
     8: dict(kind="data", narration=True,
-            copy="The Transamerica Pyramid was the tallest building in San "
-                 "Francisco for forty-six years.",
+            # THE TENSE, AND THE MOMENT THE LINE PLAYS ON. Daniel: *"the
+            # phrasing is passive or past tense on the pyramid — when at that
+            # time its more like it was built and stayed for 42 years the
+            # tallest building, its not a notification at the time to say it
+            # was the tallest building"*. The plate reads 1972 and the shot is
+            # the tower going up, so "was the tallest for forty-six years" is a
+            # verdict written in 2018 read out over 1972. The line now starts
+            # where the shot starts — it went up in 1972 — and then says what
+            # followed, so the sentence and the year agree.
+            # FORTY-SIX IS UNCHANGED. He said forty-two from memory and was not
+            # correcting the figure; 1972 to 2018 is the register's own two
+            # dates and both are linked under the line.
+            copy="The Transamerica Pyramid went up in 1972 and stayed the "
+                 "tallest building in San Francisco for forty-six years.",
             links=[("853 feet, fifty floors, 1972 — DataSF Tall Building Inventory",
                     "https://data.sfgov.org/d/5kya-mfst"),
                    ("Salesforce Tower, 1,070 feet, opened 2018 — same register",
@@ -1047,6 +1094,8 @@ def main() -> None:
             o["yrun"] = True
         if s.get("say"):
             o["say"] = s["say"]
+        if s.get("pin"):
+            o["pin"] = s["pin"]
         if target:
             o["lon"], o["lat"] = target[0], target[1]
             wx, wy = to_m(*target)

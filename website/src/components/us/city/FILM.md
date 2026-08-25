@@ -4502,3 +4502,122 @@ work is the one the shot already half has: it carries two runs and a build, so
 it could hold ONE bridge per framing and let the camera move between them on the
 1936 → 1937 run. That is a re-authoring of an approved shot and it is the
 coordinator's call.
+
+## 36 · Block M1i, 2026-08-25 — the year Daniel kept seeing, and a line in the wrong tense for its own frame
+
+Taking over from M1h. `:3100` and production are both on `3fe909d2`. Two defects
+from Daniel watching the shipped build, then a sweep for the second one's class.
+
+### 36.1 "dude still says 1991 and earthquake" — and §33 had scored it a pass
+
+§33 split shot 9's run 1972 → 1989 → 1991, set `say: 1`, and reported that the
+copy *"lands on 1989"*. It does land on 1989. **It does not STAY there**, and
+nobody had measured what the plate reads for the rest of the sentence.
+
+`.parity/r1plate.py` — the plate, every 500 ms, for the whole time each line is
+up, tallied by year rather than reduced to a first and a last. On the shipped
+build at `:3100`:
+
+```
+   9 embarcadero   1989 × 1 · 1990 × 1 · 1991 × 11
+       The earthquake killed sixty-three people, and the Board voted to demolish…
+```
+
+**Eleven of the thirteen half-second samples — 5.5 s of the 6.5 s the sentence
+is on screen, 85 % of it — read 1991 in the largest type in the film over the
+word "earthquake".** `say` decides where a line STARTS; the counter kept running
+under it. §33's instrument (`q12year.py`) printed the first year and the last
+year of each line, so `1989 → 1991` scored as a span that had been fixed. **The
+number a reader gets is the one that is on the frame for most of the sentence,
+and it had never been printed.**
+
+### 36.2 The plate's year is now stateable, and shot 9 states it
+
+A third authoring field beside `yrun` and `say`, in `build_film_twelve.py`
+§THE YEAR ON THE PLATE because it is an editorial decision:
+
+> **`pin`** — the plate PRINTS this year, for the whole shot, whatever the
+> counter under it is doing.
+
+Shot 9 gives up `yrun` and takes `pin=1989`. **The run is untouched**: the
+fabric still goes 1972 → 1989 → 1991, the split still gives the copy its
+landing, `filmStateAt` still hands the renderer the true running year, and
+nothing about what is DRAWN changes. Only what the plate prints.
+
+Re-measured the same way, every line in the film:
+
+```
+   1 burn        1906 × 22      2 rebuild    1906..1914 (span)
+   3 palace      1915 × 11      4 bridges    1936 × 7 · 1937 × 4 (span)
+   5 japantown   1942 × 18      6 charter    1945 × 10
+   7 freeways    1959 × 13      8 pyramid    1972 × 12
+   9 embarcadero 1989 × 13     10 mission-bay 1991..2018 (span)
+  11 face        2019 × 12
+```
+
+**No frame in the film pairs the earthquake sentence with 1991.** The three
+spans that remain are exactly the three `yrun` shots, where the moving year is
+the sentence — the match cut, its rhyme, and the two bridges.
+
+**TWO THINGS THE COORDINATOR SHOULD KNOW, because the brief's premise was not
+what the shipped copy says.**
+
+1. The brief reasoned *"the line names both years itself; the plate does not
+   need to."* **The line names no year at all** — it is *"The earthquake killed
+   sixty-three people, and the Board voted to demolish the Embarcadero Freeway
+   rather than repair it."* The pin is still the right call and it is what was
+   asked for: the shot's title is *The earthquake of 1989*, and §COPY's own
+   note says the earthquake is the subject and the road is the consequence, so
+   the plate captions the subject.
+2. **The Board's vote was 24 September 1990**, not 1991 — `entries/embarcadero-
+   freeway-demolition.json`, which dates it and describes the Board voting the
+   resolution down 2–9, rescinding, and reversing itself in one afternoon. So
+   **1991 was wrong for BOTH clauses**, and 1989 is right for the first and one
+   year early for the second. A single caption cannot be both dates. If Daniel
+   wants the vote's year on the plate instead, the pin is one number.
+
+### 36.3 The Pyramid, in the tense of the moment it plays on
+
+> *"the phrasing is passive or past tense on the pyramid — when at that time
+> its more like it was built and stayed for 42 years the tallest building, its
+> not a notification at the time to say it was the tallest building"*
+
+Shipped exactly as approved:
+
+> **The Transamerica Pyramid went up in 1972 and stayed the tallest building in
+> San Francisco for forty-six years.**
+
+**Forty-six is unchanged.** He said forty-two from memory and was not
+correcting the figure; 1972 → 2018 is the DataSF Tall Building Inventory's own
+two dates and both are linked under the line.
+
+**And the line grew, so the shot did.** 87 characters → 110. §25.2's reading
+floor — 22 characters a second plus 700 ms to notice it — asks 5.7 s against
+the 5.4 s the copy was visible for. Shot 8's hold goes **2,800 → 3,400 ms** and
+its `ms` **6,600 → 7,200**; the run, the build and the travel are untouched, so
+the tower rises exactly as it did. Measured after: `1972 × 12` = 6.0 s visible.
+Runtime 93.5 → **94.1 s**.
+
+### 36.4 The same fault, swept across the other ten — reported, not rewritten
+
+The class: *a line stating something that only became true later, read out over
+the year the shot opens on.* Each line read against the year `r1plate.py` says
+is under it. **Nothing here is changed** — Daniel decides every word.
+
+| # | plate | verdict |
+|---|---|---|
+| 1 | 1906 | **very mild.** Every clause is 1906 except *"the city recorded 478 dead"*, which is the 1906-07 Municipal Report's count, printed 1907. §32.2 chose the attribution deliberately and it is the honest form |
+| 2 | 1906→1914 | **the fault's shape, carried by the counter.** *"rebuilt more than it lost within nine years"* is false on its first frame, 1906. It is also the one shot whose whole design is the counter running as the subject, and the sentence names its own span in words. Of the three `yrun` shots this is the one where the verdict is furthest ahead of the opening year |
+| 3 | 1915 | **the softest real instance.** *"pulled down the Exposition's palaces when the fair closed"* — the fair closed in December 1915, so the plate agrees with the clause's own anchor, and `entries/palace-of-fine-arts.json` gives the entry a span of `[1915, 1915]`. **The record does not date the demolition**, so nothing here is assertable beyond that; what is true is that a completed act extends past the plate year |
+| 4 | 1936→1937 | mild, and `say: 1` already lands the copy at 1936. The sentence is a comparison of two openings and the counter crosses both |
+| 5 | 1942 | **clean.** The line names its own year, and both the removal and the 20 April resolution are in it |
+| 6 | 1945 | **clean on the year** — signed 26 June 1945. But it is *"Fifty nations **sign** the charter"*: the only present-tense line in eleven, against *"The Board voted down"*, *"The city rebuilt"*, *"went up"*. A register inconsistency rather than this fault, and worth one look |
+| 7 | 1959 | **clean.** Resolution adopted 26 January 1959 |
+| 8 | 1972 | **was the fault; fixed above** |
+| 9 | 1989 | see §36.2 — the second clause is now one year ahead of its plate |
+| 10 | 1991→2018 | **the fault's shape, carried by the counter**, the same as shot 2 and by design its rhyme: *"became a neighbourhood of sixteen thousand people"* is not true at 1991 |
+| 11 | 2019 | **clean.** Ordinance finally passed 21 May 2019 |
+
+**So: one real instance outside shot 8 (shot 3, and it is soft), two by design
+(shots 2 and 10, the match cut and its rhyme), one register note (shot 6's
+present tense).** Nothing rewritten.

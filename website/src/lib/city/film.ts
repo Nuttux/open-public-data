@@ -367,6 +367,21 @@ export interface FilmShotData {
    *  moving year is the subject, and the bridges, whose sentence names two
    *  dated openings. `build_film_twelve.py` §THE YEAR ON THE PLATE. */
   readonly yrun?: boolean;
+  /** THE PLATE'S YEAR, STATED. Beats `yrun` and beats the settle year, for the
+   *  whole shot, whatever the counter under it is doing.
+   *
+   *  MEASURED, `.parity/r1plate.py`, on the shipped build: shot 9's earthquake
+   *  line is up for 13 half-second samples and the plate reads **1991 on eleven
+   *  of them** — 85 % of the seconds that sentence is on screen. `say: 1` lands
+   *  the copy on 1989 and the second run then carries the number off it while
+   *  the reader is still reading, which is why §33's first-and-last instrument
+   *  reported a pass and Daniel still saw 1991 over the word "earthquake".
+   *
+   *  A span on the plate can only be right where the SENTENCE is a span —
+   *  shots 2, 4 and 10, which is what `yrun` is for. Everywhere else the plate
+   *  is a CAPTION on the shot's subject and one number is the whole of its job.
+   *  `build_film_twelve.py` §THE YEAR ON THE PLATE. */
+  readonly pin?: number;
   /** the copy waits until this act index — the year equivalent of the move
    *  guard in `pickLine`. */
   readonly say?: number;
@@ -577,7 +592,11 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
   pyramid: [
     { k: "run", ms: 1400, to: 1972, curve: "even" },
     { k: "build", ms: 1200, what: "placemark", ent: "transamerica-pyramid", curve: "settle" },
-    { k: "hold", ms: 2800 },
+    /* 2,800 -> 3,400, and the 600 ms is the LINE and not the picture. The
+       approved tense fix — "went up in 1972 and stayed the tallest…" — is 110
+       characters against 87, so §25.2's reading floor asks 5.7 s against the
+       5.4 s the copy was visible for. The rise is untouched. */
+    { k: "hold", ms: 3400 },
   ],
   /* 1991. The Embarcadero Freeway was never drawn — the fabric dates what is
      standing today, so a structure demolished in 1991 is in no year of this
@@ -1306,7 +1325,14 @@ export function filmStateAt(
      stopped reading `y0`/`y1`: the year a shot settles on is the last `yTo` its
      own acts reach, so this cannot drift from the clock that produced it. */
   let plateYear = Math.floor(yearOut);
-  if (sg.si != null && !d.shots[sg.si].yrun) {
+  const pshot = sg.si != null ? d.shots[sg.si] : null;
+  if (pshot?.pin != null) {
+    /* STATED, and it beats both branches below. See §FilmShot.pin. Shot 9's
+       sentence names two EVENTS a year apart and no year at all, so no reading
+       of the counter captions it; the plate carries the shot's subject — the
+       earthquake — and the fabric runs on underneath. */
+    plateYear = pshot.pin;
+  } else if (pshot && !pshot.yrun) {
     let sy = -1;
     for (const q of tl.segs) if (q.si === sg.si && q.yTo > sy) sy = q.yTo;
     if (sy > 0) plateYear = sy;
