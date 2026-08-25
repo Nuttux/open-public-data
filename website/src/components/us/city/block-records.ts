@@ -6,11 +6,16 @@
  * 44 Bureau of Engineering, Board of Public Works, DPW and Park Commission
  * annual reports.**
  *
- * **THAT IS COMPLETE FOR ONE TITLE, NOT FOR THE SERIES.** The Board's minutes
- * continue under three more — `Meeting minutes`, `Minutes`, `Meeting minutes.
- * Draft` — through 2016, and the index above does not hold them yet. See
- * `SERIES_LAST_YEAR` and `pipeline/scripts/us_sf_city/MINUTES.md`. 4,679 of the city's 5,404 assessor blocks answer the
- * question *what did the city decide here*, with a page link per decision.
+ * **AND SINCE `91de7fa0`, THE THREE TITLES THAT FOLLOW IT.** The Board's
+ * minutes continue under `Meeting minutes`, `Minutes` and `Meeting minutes.
+ * Draft` through 2016; the index now holds them. **6,579 decisions from
+ * 1999–2016 land on 2,091 blocks**, and 1,941 of the 1,989 blocks carrying
+ * anything from 2000 on — **97.6%** — already had a pre-1999 record, so the
+ * modern rungs extend lines that were already on the rail rather than opening
+ * a separate modern layer. See `SERIES_LAST_YEAR`, `DecadeGroup.partialTo` and
+ * `pipeline/scripts/us_sf_city/MINUTES.md` §18–19. 5,089 of the city's 5,404
+ * assessor blocks answer the question *what did the city decide here*, with a
+ * page link per decision.
  *
  * Three tiers, and the loading follows the same rule as the map's own chunks:
  * nothing is fetched before the reader can see it.
@@ -284,6 +289,12 @@ export const SERIES_LAST_YEAR = 2016;
  * say this block was quiet for sixteen years when the truth is that this index
  * has not read those years yet. Read off `y1`, the T0 index the map already
  * fetches, so it costs nothing and cannot go stale.
+ *
+ * **THEY HAVE CONVERGED.** Since `91de7fa0` the published shards reach 2016
+ * and so does the shelf, so both branches of the caption under the rail now
+ * say the same year. The function stays, and it stays read off `y1` rather
+ * than hardcoded, because the next volume the Archive scans separates them
+ * again and nothing here should have to be remembered on that day.
  */
 export function indexedLastYear(ix: BlockIndex | null): number {
   if (!ix) return SERIES_LAST_YEAR;
@@ -299,11 +310,16 @@ export function indexedLastYear(ix: BlockIndex | null): number {
  * Using the rail's end made a block whose last decision is the last year the
  * index carries report *"nothing lands here after 1999"*, which reads as a
  * block falling silent and is really the corpus running out. Using the SHELF's
- * end (2016) would be the same mistake one notch further on, and worse while
- * the shards still stop at 1999: it would fire this sentence on almost every
- * block in the city. So the anchor is the last decade the index actually
- * places something in, and a block has to fall two whole decades short of it
- * before anything is said.
+ * end (2016) would be the same mistake one notch further on, and it was worse
+ * still while the shards stopped at 1999: it fired on almost every block in
+ * the city. So the anchor is the last decade the index actually places
+ * something in, and a block has to fall two whole decades short of it before
+ * anything is said.
+ *
+ * **The sentence has become a finding rather than a hedge.** The index now
+ * reaches 2016, so "nothing lands on this block after 1999" is a measured
+ * silence over seventeen years the map HAS read — which is what it always
+ * claimed to be and, until the modern minutes landed, could not be.
  */
 const QUIET_DECADES = 2;
 
@@ -334,6 +350,25 @@ export interface DecadeGroup {
    * differently, and explained in words rather than left to be inferred.
    */
   readonly afterSeries: boolean;
+  /**
+   * THE DECADE THE INDEX STOPS INSIDE — the last year it reaches, or null.
+   *
+   * The ingest of the Board's modern minutes (`MINUTES.md` §18–19) carried the
+   * index to **2016**, so the rail's last rung is the 2010s and it holds
+   * **2010–2016 — seven years, not ten.** Nothing on the rung said so, and a
+   * reader comparing its count against the 1920s was comparing seven years
+   * with ten without being told.
+   *
+   * MEASURED off the published shards: the 2000s carry 3,799 decisions over
+   * ten years and the 2010s 2,234 over seven — 380 and 319 a year. The last
+   * rung looks shorter than the one before it for two reasons and only one of
+   * them is about the city.
+   *
+   * Set on the decade holding `indexedLast`, and only when that year is not
+   * the decade's own last — an index reaching 2019 truncates nothing. Null on
+   * every other rung, so exactly one rung on a rail can ever carry it.
+   */
+  readonly partialTo: number | null;
 }
 
 /**
@@ -427,6 +462,10 @@ export function decadeGroups(
      where the scanning stopped tells the reader the city stopped. */
   const now = Math.floor(new Date().getFullYear() / 10) * 10;
   const to = Math.max(RAIL_TO, now, ...(decs.length ? [Math.max(...decs)] : []));
+  const lastDec = Math.floor(indexedLast / 10) * 10;
+  /* The index stops INSIDE its last decade unless it happens to stop on that
+     decade's ninth year. One rung on the rail can carry this and no other. */
+  const cutShort = indexedLast > 0 && indexedLast - lastDec !== 9;
   const out: DecadeGroup[] = [];
   for (let dec = from; dec <= to; dec += 10) {
     const rows = bucket.get(dec) ?? [];
@@ -435,7 +474,8 @@ export function decadeGroups(
       label: `${dec}s`,
       rows,
       headline: pickHeadline(rows),
-      afterSeries: dec > Math.floor(indexedLast / 10) * 10,
+      afterSeries: dec > lastDec,
+      partialTo: cutShort && dec === lastDec ? indexedLast : null,
     });
   }
   return out;
@@ -649,6 +689,24 @@ export function junkShare(line: string): number {
  */
 const HEAD_WORDS = 5;
 
+/**
+ * THE ELLIPSIS IS OURS, NOT THE PAGE'S.
+ *
+ * `build_index.rec()` cuts a long sentence and marks the cut with `…`.
+ * MEASURED over all 256 published shards: **15,992 rows carry the character
+ * and 15,992 of them carry exactly one, at the end of the line. Not one row
+ * has it anywhere else.** It is a marker this project writes, never ink the
+ * Board set, and `stripTruncation` is the only place that is relied on.
+ *
+ * It is NOT stripped before `isPrintableLine` — see `railSilence` for why
+ * that was measured and refused.
+ */
+const TRUNCATION_MARK = /…\s*$/;
+
+export function stripTruncation(line: string): string {
+  return line.trim().replace(TRUNCATION_MARK, "").trim();
+}
+
 /** whether a printed line can stand on its own as the face of a block */
 export function isPrintableLine(raw: string): boolean {
   const line = raw.trim();
@@ -659,6 +717,65 @@ export function isPrintableLine(raw: string): boolean {
   if (flags.length === 0) return false;
   if (flags.slice(0, HEAD_WORDS).some(Boolean)) return false;
   return flags.filter(Boolean).length / flags.length <= JUNK_MAX;
+}
+
+/**
+ * WHY A DECADE SHOWS NO QUOTATION — THREE ANSWERS, AND THEY ARE NOT THE SAME.
+ *
+ * A rung whose rows all fail `isPrintableLine` printed *"The scan of this
+ * decade's entries is too damaged to quote"*. On the Board's 2013 minutes that
+ * sentence is **false**, and it is false in the one direction this project
+ * cannot be wrong in: it blames the record for something that is ours.
+ *
+ * MEASURED across the 256 published shards, over every rung that has no face:
+ *
+ * ```
+ *                     pre-1999   1999–2016
+ *   no line at all          94          10
+ *   cut short by US      1,410         164
+ *   the scan really is
+ *     damaged              495         149
+ * ```
+ *
+ * **1,574 rungs were telling a reader the page was damaged when the whole of
+ * the damage was our own `…`.** The modern era is where it was noticed — its
+ * lines are longer (median 175 characters against 131) so 88.3% of modern rows
+ * are truncated against 49.7% pre-1999 — but two thirds of the false sentences
+ * are on the Journal, and they have been on screen the whole time.
+ *
+ * ── WHAT WAS MEASURED AND REFUSED ────────────────────────────────────────
+ * The obvious repair is to strip `…` before the gate, so a line held back only
+ * by our own marker can head its decade. **It was measured over all 5,089
+ * blocks and it is much worse.** It changes 1,101 pre-1999 faces and 133
+ * modern ones, and the trades run the wrong way — block 0572's 1950s goes from
+ * *"Ayes: Supervisors Christopher. Fazackerley."* to a fragment, block 1424's
+ * 1910s from the printed heading *"Ordering Street Work — Ninth avenue,
+ * between Geary and Clement streets"* to *"Miss S. Whitmore, for four horses"*,
+ * and block 0836's 1950s to *"Absent: Supervisors Casey, Rolph — 2."*
+ *
+ * The reason is worth writing down: **a line ending in `…` is by construction
+ * a fragment, and the ellipsis gate has been an accidental truncation gate all
+ * along.** Preferring a whole sentence over a cut one is the right rule for
+ * the face of a decade. So the gate is left exactly as it is and not one face
+ * on the rail moves; what changes is only the sentence shown where there is no
+ * face, and it can only ever stop being false.
+ *
+ * The middle answer is claimed CONSERVATIVELY — every row has to pass once the
+ * marker is removed. One genuinely broken row on the rung and the reader is
+ * told the scan is damaged, which it is.
+ */
+export type RailSilence = "no_line" | "truncated" | "damaged";
+
+export function railSilence(rows: readonly BlockDecision[]): RailSilence {
+  let sawLine = false;
+  let sawDamage = false;
+  for (const r of rows) {
+    if (!r.t.trim()) continue;
+    sawLine = true;
+    if (!isPrintableLine(stripTruncation(r.t))) sawDamage = true;
+  }
+  if (!sawLine) return "no_line";
+  return sawDamage ? "damaged" : "truncated";
 }
 
 /**

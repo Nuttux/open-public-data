@@ -6,6 +6,9 @@ import {
   decadeGroups,
   printedHeading,
   railItems,
+  railSilence,
+  stripTruncation,
+  isPrintableLine,
   streetLabel,
   type BlockDecision,
 } from "./block-records";
@@ -337,5 +340,89 @@ describe("blockLead — the line the fiche opens on", () => {
     expect(
       blockLead([row("Accepting Deed to Lands Required for the Sciiool on Noriega Street.")])?.t,
     ).toContain("Sciiool");
+  });
+});
+
+/* ────────────────────────────────────────────────────────────────────────────
+ * THE MODERN ERA — the rungs the ingest of `Meeting minutes` added, and the
+ * two things about them that are not the same as the Journal's.
+ * ──────────────────────────────────────────────────────────────────────────── */
+
+describe("DecadeGroup.partialTo — the rung the index stops inside", () => {
+  it("marks the decade holding the last indexed year, and only that one", () => {
+    const g = decadeGroups([row({ y: 1916 }), row({ y: 2004 }), row({ y: 2013 })], 2016);
+    const marked = g.filter((d) => d.partialTo !== null);
+    expect(marked.map((d) => d.decade)).toEqual([2010]);
+    expect(marked[0].partialTo).toBe(2016);
+  });
+
+  it("marks nothing when the index stops on a decade's own last year", () => {
+    // 2019 completes the 2010s; there is nothing to warn a reader about.
+    const g = decadeGroups([row({ y: 2013 })], 2019);
+    expect(g.every((d) => d.partialTo === null)).toBe(true);
+  });
+
+  it("marks the rung even where this block has nothing on it", () => {
+    // The truncation is a fact about the rail, not about the block; the panel
+    // decides separately whether there is a bar for the caption to qualify.
+    const g = decadeGroups([row({ y: 1916 })], 2016);
+    expect(g.find((d) => d.decade === 2010)?.partialTo).toBe(2016);
+  });
+});
+
+describe("railSilence — why a decade shows no quotation", () => {
+  const WHOLE =
+    "Ordering the Improvement of Madera Street between Bryant and York Streets.";
+  const DAMAGED =
+    "1,588.11 December (I, 11)07 — To the Barber Asphalt l*avinjr Company";
+
+  it("says no line at all when the builder printed none", () => {
+    expect(railSilence([row({ y: 2004, t: "" }), row({ y: 2004, t: "   " })])).toBe(
+      "no_line",
+    );
+  });
+
+  it("says the lines are cut short when OUR ellipsis is the whole of the damage", () => {
+    expect(
+      railSilence([
+        row({ y: 2004, t: "Designating 451 Jersey Street, the Carnegie Noe Valley Branch…" }),
+        row({ y: 2004, t: "Enacting angle parking on the east side of Castro Street, between…" }),
+      ]),
+    ).toBe("truncated");
+  });
+
+  it("still says the scan is damaged when one row on the rung really is", () => {
+    // Claimed conservatively: one broken row and the reader is told the truth
+    // about the page rather than a tidier half-truth about the index.
+    expect(
+      railSilence([row({ y: 2010, t: "Designating 451 Jersey Street, the Carnegie…" }), row({ y: 2010, t: DAMAGED })]),
+    ).toBe("damaged");
+  });
+
+  it("is never consulted where a decade has a face — the whole line passes", () => {
+    expect(isPrintableLine(WHOLE)).toBe(true);
+  });
+});
+
+describe("stripTruncation — the ellipsis is ours, and it does not relax the gate", () => {
+  it("removes the marker the builder appends and nothing else", () => {
+    expect(stripTruncation("Lease of Real Property - 1455 Market Street…")).toBe(
+      "Lease of Real Property - 1455 Market Street",
+    );
+    expect(stripTruncation("  a line with no marker  ")).toBe("a line with no marker");
+  });
+
+  /**
+   * THE REGRESSION THIS LOCKS DOWN. Stripping `…` before `isPrintableLine`
+   * was measured over all 5,089 blocks and moves 1,101 pre-1999 decade faces,
+   * most of them onto fragments and vote tallies — a line ending in `…` is by
+   * construction a cut one, and the ellipsis gate has been an accidental
+   * truncation gate all along. `railSilence` may read the stripped line; the
+   * gate may not.
+   */
+  it("leaves a truncated line unquotable as the face of a decade", () => {
+    const cut = "Designating 451 Jersey Street, the Carnegie Noe Valley Branch…";
+    expect(isPrintableLine(cut)).toBe(false);
+    expect(isPrintableLine(stripTruncation(cut))).toBe(true);
   });
 });

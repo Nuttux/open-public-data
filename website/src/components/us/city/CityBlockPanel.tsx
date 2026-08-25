@@ -103,6 +103,7 @@ import {
   blockShape,
   decadeGroups,
   railItems,
+  railSilence,
   hasMoney,
   hoodAt,
   hoodBusiest,
@@ -1040,9 +1041,35 @@ function DecadeGap({
           className="fx-block-flat"
           style={run.afterSeries ? { opacity: 0.4 } : undefined}
         />
-        <span className="fx-block-n" />
+        {run.afterSeries ? <UnscannedTag t={t} /> : <span className="fx-block-n" />}
       </div>
     </div>
+  );
+}
+
+/**
+ * THE BLANK PAST THE END OF THE SERIES, NAMED WHERE IT IS SEEN.
+ *
+ * The rail runs to the current decade on purpose — a rail that stopped where
+ * the scanning stopped would tell a reader the city stopped. But the track it
+ * draws past the last scanned year was an unlabelled grey line, and the only
+ * thing that explained it was a caption two paragraphs down. A reader meets
+ * the blank first and the explanation second, which is the wrong order for
+ * the one fact on this rail that is about US and not about San Francisco.
+ *
+ * Two words, in the track's own row. The caption below still carries the year
+ * and the reason; this only stops the blank being anonymous while the eye is
+ * on it. Sized to itself for the same reason the folded range is — the count
+ * column is 20 px and this is not a count.
+ */
+function UnscannedTag({ t }: { t: (k: string) => string }) {
+  return (
+    <span
+      className="fx-block-dec fx-block-dec-off"
+      style={{ flex: "0 0 auto", width: "auto", textAlign: "right" }}
+    >
+      {tOr(t, "us.sf.thecity.panel.rail_not_scanned", "not scanned")}
+    </span>
   );
 }
 
@@ -1056,6 +1083,13 @@ function DecadeRow({
   t: (k: string) => string;
 }) {
   const n = group.rows.length;
+  /* Only read where there is no face to show, and it is the reason there is
+     none — see `railSilence`. Memoised because it walks every row on the rung
+     and the map re-renders this panel on every frame it emits. */
+  const silence = useMemo(
+    () => (group.headline ? null : railSilence(group.rows)),
+    [group.headline, group.rows],
+  );
 
   if (n === 0) {
     return (
@@ -1076,7 +1110,7 @@ function DecadeRow({
             className="fx-block-flat"
             style={group.afterSeries ? { opacity: 0.4 } : undefined}
           />
-          <span className="fx-block-n" />
+          {group.afterSeries ? <UnscannedTag t={t} /> : <span className="fx-block-n" />}
         </div>
       </div>
     );
@@ -1092,9 +1126,24 @@ function DecadeRow({
     <details className="fx-block-row">
       <summary
         className="fx-block-sum"
-        aria-label={t("us.sf.thecity.panel.rail_aria")
-          .replace("{decade}", String(group.decade))
-          .replace("{n}", String(n))}
+        /* THE RUNG THE INDEX STOPS INSIDE SAYS ITS OWN SPAN, and it says it
+           here as well as in the line under the rail: a reader on a screen
+           reader never sees the caption beside the bar it qualifies. */
+        aria-label={
+          group.partialTo
+            ? tOr(
+                t,
+                "us.sf.thecity.panel.rail_aria_partial",
+                "{decade}s — {n} decisions on this block, {from} to {to}",
+              )
+                .replace("{decade}", String(group.decade))
+                .replace("{n}", String(n))
+                .replace("{from}", String(group.decade))
+                .replace("{to}", String(group.partialTo))
+            : t("us.sf.thecity.panel.rail_aria")
+                .replace("{decade}", String(group.decade))
+                .replace("{n}", String(n))
+        }
       >
         <span className="fx-block-head">
           <span className="fx-block-dec">{group.label}</span>
@@ -1103,23 +1152,38 @@ function DecadeRow({
           </span>
           <span className="fx-block-n tnum">{n}</span>
         </span>
-        {/* NO LINE, AND THE TWO REASONS ARE NOT THE SAME SENTENCE.
+        {/* NO LINE, AND THE THREE REASONS ARE NOT THE SAME SENTENCE.
             `no_line` — "the volume prints no line for this entry" — was
             printed for both, and it became false the moment `pickHeadline`
             started gating unreadable scans: the volume DOES print a line
-            there, and it is the scan of it that cannot be quoted. The rows
-            are all still inside the decade, openable, each linked to its own
-            page, which is why offering to open them is the honest close. */}
+            there, and it is the scan of it that cannot be quoted.
+
+            Then the modern minutes landed and the damaged-scan sentence
+            became the false one. `railSilence` counts the third case: every
+            line on the rung is whole and readable and was CUT SHORT BY US,
+            and 1,574 rungs were blaming the page for our own `…`. Its doc
+            comment carries the measurement and the repair that was refused.
+            The rows are all still inside the decade, openable, each linked to
+            its own page, which is why offering to open them is the honest
+            close in all three cases. */}
         <span className="fx-block-line">
-          {group.headline
-            ? group.headline.t
-            : group.rows.some((r) => r.t.trim().length > 0)
-              ? tOr(
-                  t,
-                  "us.sf.thecity.panel.rail_unreadable",
-                  "The scan of this decade's entries is too damaged to quote — open it to read them.",
-                )
-              : t("us.sf.thecity.panel.no_line")}
+          {group.headline ? (
+            group.headline.t
+          ) : silence === "damaged" ? (
+            tOr(
+              t,
+              "us.sf.thecity.panel.rail_unreadable",
+              "The scan of this decade's entries is too damaged to quote — open it to read them.",
+            )
+          ) : silence === "truncated" ? (
+            tOr(
+              t,
+              "us.sf.thecity.panel.rail_truncated",
+              "Every line this decade prints is cut short here — open it to read the entries on their scanned pages.",
+            )
+          ) : (
+            t("us.sf.thecity.panel.no_line")
+          )}
         </span>
         {/* THE AFFORDANCE, ON THE ROW RATHER THAN IN A HINT ABOVE THE RAIL.
             A closed <details> whose marker is suppressed is a paragraph with
@@ -1295,6 +1359,10 @@ export default function CityBlockPanel({
   );
   const groups = here.length > 0 ? decadeGroups(here, indexedLast) : [];
   const max = groups.reduce((m, g) => Math.max(m, g.rows.length), 0);
+  /* The one rung the index stops inside, and only when this block has rows on
+     it — the caption qualifies a bar, so it is not printed where there is no
+     bar to qualify. `decadeGroups` guarantees at most one. */
+  const partial = groups.find((g) => g.partialTo !== null && g.rows.length > 0) ?? null;
   const streetN = context?.streetDecisions ?? 0;
 
   // Both are keyed on the block id, and both are read only when the file has
@@ -1418,6 +1486,27 @@ export default function CityBlockPanel({
                 ),
               )}
             </div>
+            {/* ── THE LAST RUNG IS SEVEN YEARS, AND IT HAS TO SAY SO ──────
+                The ingest of the Board's modern minutes carried the index to
+                2016, so the rail's last rung is the 2010s and it holds
+                2010–2016. A reader comparing its bar against the 1920s is
+                comparing seven years with ten, and nothing on the rail said
+                that. One line, and only where there is a rung on this block
+                for it to qualify — the count of years comes off `partialTo`,
+                so an index that later reaches 2019 stops printing it with no
+                code change. */}
+            {partial ? (
+              <p className="fx-block-hint" style={NOTE}>
+                {tOr(
+                  t,
+                  "us.sf.thecity.panel.rail_partial_tail",
+                  "The {decade}s above is not a full decade — it covers {from}–{to}.",
+                )
+                  .replace("{decade}", String(partial.decade))
+                  .replace("{from}", String(partial.decade))
+                  .replace("{to}", String(partial.partialTo))}
+              </p>
+            ) : null}
             {/* THE BLOCK'S OWN SILENCE, and the SERIES's silence. Two
                 different facts and they were once one hedge printed twice;
                 both are captions on the rail because both are facts about the
@@ -1445,14 +1534,20 @@ export default function CityBlockPanel({
                 shards have caught up with the shelf — never asserted. While
                 this index reaches 1999 and the Archive reaches 2016, saying
                 only "scanned through 2016" would contradict the unrecorded
-                band drawn directly above it. When the ingest lands, the first
-                sentence starts printing on its own with no code change. */}
+                band drawn directly above it.
+
+                **THE INGEST LANDED (`91de7fa0`) AND THE FIRST SENTENCE NOW
+                PRINTS**, exactly as this comment said it would and with no
+                code change. It was reworded once, to put what stopped in the
+                opening clause rather than the project's own backstory: the
+                blank track above it is now tagged `not scanned`, and the two
+                have to agree at a glance. */}
             <p className="fx-block-hint" style={NOTE}>
               {indexedLast >= SERIES_LAST_YEAR
                 ? tOr(
                     t,
                     "us.sf.thecity.panel.rail_shelf_end",
-                    "The Board's minutes are scanned through {y} — under three different titles, which is why they were once thought to stop in 1999. After 2016 the Clerk still publishes every meeting; no library has bound and paginated them into this series.",
+                    "The scanned series ends in {y} — the bound volumes stop there, not the Board. The Clerk has published every meeting since; no library has paginated them into this series, which changed title three times and was once thought to end in 1999.",
                   ).replace("{y}", String(SERIES_LAST_YEAR))
                 : tOr(
                     t,

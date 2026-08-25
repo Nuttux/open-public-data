@@ -2613,3 +2613,193 @@ the same replacement.
 
 **`us.sf.thecity.panel.sum_rail_end` has no caller and its string is the false sentence.** It
 should be deleted from both dictionaries rather than left where something can pick it up.
+
+---
+
+## 24. Block T1, 2026-08-26 — the rail gains a 2000s and a 2010s rung
+
+`91de7fa0` published the block index carrying the Board's minutes for **1999–2016** for the
+first time. Daniel's standing complaint about the fiche was that there is *"nothing from the
+handoff to digitalization"*. The data now exists. This is what the rail does with it, and the
+three things about the modern era that were checked against the shards rather than assumed.
+
+**The rungs needed no code to appear.** `decadeGroups` has always been driven by the rows on
+the block and `RAIL_TO` has always stretched to the current decade, so the 2000s and 2010s
+drew themselves the moment the shards changed. Everything below is about making them read
+right, and about two sentences that became false when they landed.
+
+### a. The fact the design is built around, re-measured off the published shards
+
+`MINUTES.md` §18.3 gives 1,890 of 1,942 (97.3%) as a **delta** — blocks that gained a modern
+decade relative to the previous publication. Counted as an **absolute** over
+`website/public/data/us/sf/city/blocks/*.json`, which is what the panel actually reads:
+
+```
+blocks with any record                                  5,089
+blocks carrying anything from 2000 on                   1,989
+  of those, blocks that ALSO have a pre-1999 record     1,941   97.6%
+blocks carrying anything from 1999 on                   2,091
+decisions 2000–2016                                     6,033   (2000s 3,799 · 2010s 2,234)
+last year anywhere in the shards                         2016
+```
+
+Both readings say the same thing: **the modern rungs extend lines that were already on the
+rail.** So there is no modern section, no divider, no second treatment, and no badge. A 2010s
+rung is drawn exactly as an 1890s rung would be. That was the design decision and it cost
+nothing to keep.
+
+### b. Three claims about the modern era, each checked
+
+**1. "~7× thinner per year" — true of the volume, and the rail already absorbed it.** The
+1910s and 20s carry 49,225 rows against 6,033 for the 2000s and 2010s. But the bar is scaled
+against *this block's* busiest decade with a `BAR_FLOOR` of 4, and over all 2,553 modern rungs
+in the city the bar comes out at a **median 20% of the track, mean 26.6%, and only 46 rungs
+(1.8%) sit on the floor.** A single-decision rung is not a modern phenomenon either — the
+1910s, 1960s and 1990s on block 0114 each hold one, and the 2000s and 2010s beside them are
+indistinguishable. **Nothing was changed for this and the screenshots are why.**
+
+**2. "~3× more precisely placed" — true, and the fiche was already showing it.** Address-or-
+better (`p >= 3`) is **69.5% of modern rows against 21.1% pre-1999**. `TIER_WORDING` is printed
+under every row inside a rung, so opening the 2010s on block 3752 gives four rows that each
+say *at an address on this block* where the 1910s says *at a corner* and *on this stretch of
+street*. The promise `TIER_WORDING` exists to keep is kept in the modern era's favour without a
+line of new code, and a rung-level precision marker was considered and dropped as furniture
+duplicating something already on screen one press away.
+
+**3. "`g` is `s` for all 6,579" — true, and it leaks in one place that is NOT the rail.**
+`pickHeadline`'s preference for the Board's own printed heading simply never fires on a modern
+rung and falls through to rank order, which is correct and invisible. **But `printedHeading()`
+returns null for every `g === "s"` row by construction, so `blockSubjects` — "what the city
+kept deciding here" — is structurally blind to 1999–2016 and always will be.** The modern
+minutes do carry their own printed subject, in brackets: `130657 [Accept Gifts - EcoCenter -
+1455 Market Street - $114,600]`. **It is 16.5% of modern rows (995 of 6,033), not the majority
+the shape suggests**, and extracting it is a new rule on a new syntax. Recorded, not built.
+
+A fourth was checked because it looked likely and is not: modern faces opening with the
+Clerk's own procedural vocabulary (`RECEIVED AND ASSIGNED`, `ADOPTED`) are **26 of 2,553
+(1.0%)**. `PROCEDURAL_HEAD` was not extended. The commonest modern openings are
+`Approving Final Map` (256), `Determining that the` (182) and `Amending the San` (64).
+
+### c. Two sentences that became false, and one gate that was left alone
+
+**The rail's blank past the end of the series was anonymous.** It draws to the current decade
+on purpose — a rail stopping where the scanning stopped tells a reader the city stopped — but
+the 2020s was an unlabelled grey line whose only explanation was a caption two paragraphs
+down. The reader meets the blank first. The track now carries **`not scanned`** in its own row
+(`UnscannedTag`), so the one fact on this rail that is about US and not about San Francisco is
+named where it is seen. On a block with no modern record the difference is now legible at a
+glance: `2000s–2010s` blank (the series read those years and found nothing here), then
+`2020s ⋯ not scanned`.
+
+**The 2010s rung is seven years.** The index stops at 2016, so the last rung holds 2010–2016
+and a reader comparing its bar against the 1920s was comparing seven years with ten. The rate
+is not the story — **380 decisions a year in the 2000s and 319 in the 2010s** — the span is.
+`DecadeGroup.partialTo` carries the year, exactly one rung on a rail can ever hold it, and it
+is null the moment an index reaches a decade's ninth year. It prints as one line under the
+rail and it is in that rung's `aria-label`, because a screen reader never sees a caption
+beside the bar it qualifies.
+
+**`rail_unreadable` was blaming the page for our own ellipsis.** A rung with no quotable face
+printed *"The scan of this decade's entries is too damaged to quote"*. Over every faceless
+rung in the city:
+
+```
+                       pre-1999   1999–2016
+  no line at all             94          10
+  cut short by US         1,410         164
+  the scan really is
+    damaged                 495         149
+```
+
+**1,574 rungs were making a claim about the record that was ours to make about ourselves.**
+`railSilence()` separates the three and the middle one has its own sentence. It is claimed
+conservatively — one genuinely broken row on the rung and the reader is told the truth about
+the page. It was noticed on the modern era (88.3% of modern rows are truncated against 49.7%
+pre-1999, because modern lines are longer: median 175 characters against 131) but two thirds
+of the false sentences are on the Journal and have been on screen the whole time.
+
+**THE REPAIR THAT WAS MEASURED AND REFUSED.** The obvious fix is to strip `…` before
+`isPrintableLine`, so a line held back only by our own marker can head its decade. Measured
+over all 5,089 blocks it moves **1,101 pre-1999 faces and 133 modern ones, and the trades run
+the wrong way**:
+
+```
+  0572 1950s   Ayes: Supervisors Christopher. Fazackerley.
+            →  Ordering the Improvement of Madera Street…              (a fragment)
+  1424 1910s   Ordering Street Work — Ninth avenue, between Geary and Clement streets
+            →  Miss S. Whitmore, for four horses, in rear of 234 Tenth avenue.
+  0836 1950s   The privilege of the floor was extended to Sherman P. Duckel, Director…
+            →  Absent: Supervisors Casey, Rolph — 2. Authorizing…
+```
+
+The reason is worth writing down: **a line ending in `…` is by construction a fragment, and
+the ellipsis gate has been an accidental truncation gate all along.** Preferring a whole
+sentence over a cut one is the right rule for the face of a decade. The gate is untouched, not
+one face on the rail moves, and `block-records.test.ts` locks the refusal down with a test
+that asserts a truncated line stays unquotable while its stripped form passes.
+
+`…` is safe to identify as ours because it is: **15,992 rows carry the character, all 15,992
+carry exactly one, and every one of them is line-final. Not one row has it anywhere else.**
+
+### d. Copy, and one claim narrowed
+
+```
+rail_shelf_end   The scanned series ends in 2016 — the bound volumes stop there, not
+   (reworded)    the Board. The Clerk has published every meeting since; no library has
+                 paginated them into this series, which changed title three times and
+                 was once thought to end in 1999.
+
+shape_quiet      was  Nothing in the record lands here after {y}.
+   (narrowed)    now  Nothing lands on this block after {y}.
+
+rail_partial_tail (new)  The 2010s above is not a full decade — it covers 2010–2016.
+rail_not_scanned  (new)  not scanned
+rail_truncated    (new)  Every line this decade prints is cut short here — open it to
+                         read the entries on their scanned pages.
+rail_aria_partial (new)  {decade}s — {n} decisions on this block, {from} to {to}
+```
+
+`rail_shelf_end` was reworded only to put **what stopped in the opening clause** rather than
+the project's own backstory, because the track above it now says `not scanned` and the two
+have to agree at a glance. Nothing was added to the claim about 2017 onwards, which stays
+exactly as narrow as §23c set it.
+
+`shape_quiet` lost *"in the record"*. The index reaches 2016 and the Clerk's minutes for
+2017–2026 are not in it, so a claim about *the record* overreaches by ten years; a claim about
+*this block* on this rail is what the sentence was always measuring. **It has also stopped
+being a hedge and become a finding** — on block 0208 *"Nothing lands on this block after
+1999"* is now a measured silence over seventeen years the map HAS read.
+
+### e. Screenshots — four blocks, and one of them on a phone
+
+| block | what it shows |
+|---|---|
+| **3752** South of Market | 2000s · 16 and 2010s · 24 sitting in the same line as 1910s · 75. `2020s ⋯ not scanned`, then the two captions. |
+| **0114** Telegraph Hill | 2000s · 1 and 2010s · 1 beside 1920s · 26 — and 1910s · 1, 1960s · 1, 1990s · 1 above them. A thin modern rung looks like a thin 1910s rung. Its 1970s carries the new `rail_truncated` sentence. |
+| **4094** Potrero Hill | one 2010s decision after a folded `1980s–2000s` silence — the sparsest possible modern rung, and it does not read as broken. |
+| **0208** Chinatown | nothing modern at all: `2000s–2010s` blank, `2020s ⋯ not scanned`, *"Nothing lands on this block after 1999."* |
+| **3752 at 390 px** | the tag is right-aligned and clears the count column; the partial-decade line sets on one line. |
+
+`6539` (truncated) and `6957` (genuinely damaged) were checked against each other to prove
+both branches of `railSilence` still print.
+
+### f. State
+
+Typecheck clean, **465 tests** (456 + nine for `partialTo`, `railSilence` and the refused
+gate relaxation), eslint 10 warnings — unchanged, and none of them in these files.
+
+### g. For the owner of `src/app/fusion.css`
+
+`UnscannedTag` reuses `.fx-block-dec .fx-block-dec-off` with three inline properties
+(`flex: 0 0 auto`, `width: auto`, `text-align: right`) for the same reason the folded range
+above it does: the 34 px decade column and the 20 px count column are both the wrong shape for
+a two-word tag. It wants to be `.fx-block-tag`.
+
+### h. Not built, and each one is a real thing
+
+* **`blockSubjects` cannot see 1999–2016** (§b.3). The bracketed subject is 16.5% of modern
+  rows and needs its own extraction rule, on `g === "s"` text, in the builder rather than here.
+* **2016–2026 is the `sfbos.org` half and is still unmerged** (`MINUTES.md` §13). Until it is,
+  `not scanned` on the 2020s track is exactly true.
+* **`RAIL_FROM`/`RAIL_TO`'s doc comment still explains 2010 as the DPW annual reports' reach.**
+  The constant is 1990 and the sentence is about a number that is no longer in the file.
