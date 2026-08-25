@@ -764,3 +764,104 @@ The 24 undecided meetings from §18.1 stay undecided and printed.
 
 **Nothing is published.** `website/public/data/us/sf/city/blocks/` is still
 byte-for-byte what it was, pending review of `moves_pre1999.tsv`.
+
+---
+
+# 20. BLOCK LAYER vs STREET LAYER — the hypothesis does not survive measurement
+
+Asked to find N such that a decision naming more than N distinct streets belongs
+in the street layer rather than on any block. **There is no such N, because there
+is no problem to fix.** Nothing was built. `measure_block_vs_street.py`.
+
+## 20.1 The 18.2% is not real
+
+Re-derived with the parser the placement code actually uses — `joined.json`
+carries `r`, the gazetteer-resolved mentions the placement itself joined on — and
+against the UNCAPPED fronting-street set:
+
+```
+block rows                                          97,399
+  names a street that FRONTS this block             97,080   99.7%
+  names streets, NONE of which front this block        319    0.3%
+  names no street at all                                 0    0.0%
+```
+
+against the survey's 61.8% / 18.2% / 20.0%.
+
+**"Names no street at all" cannot be 20%; it is 0 by construction.** `load_items()`
+admits an item only when `LR(r)` is non-empty — an item with no gazetteer-resolved
+street never enters the corpus, so it can never reach a block. Any measurement
+returning a fifth of the layer in that bucket is measuring its own regex.
+
+**And my own first guess was wrong too, which is worth recording.** I expected the
+published `s` list being capped at six (`build_index.py`: `sorted(...)[:6]`) to
+explain the gap. Measured, it explains almost none of it: only **43 of 5,159
+blocks** front more than six streets, and scoring against the capped list instead
+of the uncapped one moves the figure from 99.7% to **99.5%** — 191 rows. The cap
+is real and it is nearly irrelevant here.
+
+## 20.2 What the 0.3% actually is, and it is correct
+
+All **319** are the `stated` tier, and every one carries an explicit
+*"Assessor's Block N"* naming the block it sits on:
+
+```
+tier        rows    fronts   no front
+stated     2,164     85.3%      14.7%
+addr      21,348    100.0%       0.0%
+segment   17,573    100.0%       0.0%
+corner    56,314    100.0%       0.0%
+```
+
+> block 0355 · *"Authorizing sale of City land in Assessor's Block 355"* ·
+> streets named: PARK, YERBA BUENA — neither fronts 355.
+
+The record is answering for its own location, which is why `stated` outranks
+everything the index can infer. **Demanding that a stated block also front a named
+street would break the highest-precision tier in the system.** The other three
+tiers are 100.0% by construction: they are derived from a street that fronts the
+block, so they cannot be otherwise.
+
+## 20.3 The curve, and it runs the wrong way
+
+```
+   N   rows leave  % of layer  blocks losing last  match rate
+   —            0        0.0%                   0       99.7%   (baseline)
+   2       68,514       70.3%                 719       99.0%
+   3       49,726       51.1%                 299       99.3%
+   4       39,745       40.8%                 217       99.4%
+   6       28,643       29.4%                 138       99.5%
+  10       17,567       18.0%                  58       99.6%
+  20        7,020        7.2%                  17       99.6%
+  30        2,605        2.7%                   5       99.7%
+```
+
+**Every N makes the match rate worse or equal, never better.** The rule is
+backwards: a decision naming many streets is MORE likely to name one that fronts
+the block, not less, so removing multi-street decisions removes disproportionately
+many correct rows. At N = 2 it would delete 70% of the block layer, strip 719
+blocks of their last record, and lower the match rate.
+
+The multi-street rule does not explain the over-smearing because **there is no
+over-smearing to explain.** Stopping here rather than building it.
+
+## 20.4 What the survey was probably seeing
+
+The street layer holds **990,073** block-attributed street-tier rows against the
+block layer's 97,399. Those are the smeared ones — a street-tier decision fronts
+every block on its street, capped at `MAX_STREET_BLOCKS = 60` — and they are
+already partitioned out: `own` is tier ≥ 1, `street_of` is tier 0, and the shard's
+`d` array carries only `own`. **The two-layer split is already doing the job the
+hypothesis proposed to do.** If there is a question left it is whether the street
+layer's 60-block cap is right, which is a different measurement on a different
+population.
+
+## 20.5 Order-independence
+
+**No placement code was changed** — this task added one read-only measurement
+script and edited nothing under `blocks/`. `build_index.py` is unmodified since
+22:48, before both the passing proof and the final index build at 23:15, so
+`verify_order_independence.py` was not re-run: on byte-identical code it would be
+a tautology, not a test. It should be re-run the moment placement is touched.
+
+**Nothing published.** `website/public/data/` untouched.
