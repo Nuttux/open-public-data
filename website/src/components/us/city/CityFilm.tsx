@@ -70,6 +70,9 @@ import {
   drawAccepted,
   drawBridgeDeck,
   drawBurnLine,
+  drawFireLosses,
+  drawOutline,
+  type FireLoss,
   drawRisingFootprint,
   drawSubjectDot,
   drawSubjectName,
@@ -80,6 +83,27 @@ import {
 import type { Plane } from "@/lib/city/projection";
 
 const FILM_URL = "/data/us/sf/city/film/film.json";
+/**
+ * THE 1906 SCHEDULE OF LOSSES, AND WHY IT IS A SECOND FETCH.
+ *
+ * `film.json` is one script's output and `fire.json` is another's — the loss
+ * schedule is parsed, geocoded and validated in `coverage/`, projected by
+ * `pipeline/scripts/us_sf_city/build_fire_losses.py`, and it has nothing to do
+ * with the shot list. Folding it into the film payload would put two
+ * generators on one file, which is how a file ends up with no owner.
+ *
+ * It costs 5.5 KB and it is fetched beside `film.json`, not after it: the two
+ * `fetch` calls start in the same effect on the same tick, so the fire adds no
+ * latency to the film's own arrival. The film plays without it — shot 1 draws
+ * the hairline and holds — so a failed fetch loses one pass and nothing else.
+ */
+const FIRE_URL = "/data/us/sf/city/film/fire.json";
+
+interface FirePayload {
+  readonly counts: { readonly burnedPlaced: number };
+  readonly total: { readonly read: number; readonly stated: number };
+  readonly losses: readonly FireLoss[];
+}
 
 /* ── THE BADGE IS THE ARGUMENT, NOT AN APOLOGY ───────────────────────────
    `NOT ON THIS MAP` was a bare label in the corner of one shot: the map's most
@@ -262,6 +286,13 @@ interface Live {
   frames: FilmFrames;
   streets: AcceptedStreets;
   deck: Plane[][];
+  /** the 1906 schedule, only the rows the record says BURNED, in the order the
+   *  page prints them; `maxUsd` is the largest figure on that page and is what
+   *  every mark's radius is taken as a fraction of */
+  fire: readonly FireLoss[];
+  maxUsd: number;
+  /** the four streets a resolution names, projected once */
+  outline: Plane[][];
   W: number;
   H: number;
 }
@@ -274,6 +305,7 @@ interface Live {
 export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
   const t = useT();
   const [payload, setPayload] = useState<FilmPayload | null>(null);
+  const [fireData, setFireData] = useState<FirePayload | null>(null);
   const [on, setOn] = useState(false);
   const [paused, setPaused] = useState(false);
   const [state, setState] = useState<FilmState | null>(null);
@@ -346,6 +378,12 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
         if (!dead && p) setPayload(p);
       })
       .catch(() => undefined);
+    void fetch(FIRE_URL)
+      .then((r) => (r.ok ? (r.json() as Promise<FirePayload>) : null))
+      .then((p) => {
+        if (!dead && p) setFireData(p);
+      })
+      .catch(() => undefined);
     return () => {
       dead = true;
     };
@@ -380,10 +418,20 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
         : new AcceptedStreets(payload.st, bands, projection, elev);
     const deckSrc = payload.shots.find((s) => s.build2?.w)?.build2?.w;
     const deck = held?.deck?.length ? held.deck : deckSrc ? projectDeck(deckSrc, projection) : [];
+    const outSrc = payload.shots.find((s) => s.build?.what === "outline")?.build?.w;
+    const outline =
+      held?.outline?.length ? held.outline : outSrc ? projectDeck(outSrc, projection) : [];
+    /* only the rows the 1906 clerk recorded as BURNED. The nine he recorded as
+       shaken and not burned are in the file and are not on this frame: the
+       shot's subject is the fire, and drawing both would need a legend the
+       film has nowhere to put. */
+    const burned = (fireData?.losses ?? []).filter((r) => r.fire);
+    const maxUsd = burned.reduce((m, r) => Math.max(m, r.usd ?? 0), 0);
     const firstMoveT0 =
       timeline.segs.find((sg) => sg.k === "move")?.t0 ?? timeline.total;
-    return { payload, timeline, frames, streets, deck, W, H, firstMoveT0 };
-  }, [renderer, payload, timeline, bands]);
+    return { payload, timeline, frames, streets, deck, fire: burned, maxUsd,
+             outline, W, H, firstMoveT0 };
+  }, [renderer, payload, timeline, bands, fireData]);
 
   /* ── ONE FRAME ────────────────────────────────────────────────────────────
      The film owns its clock and hands the renderer a resolved camera, a year, a
@@ -777,6 +825,16 @@ function paintOverlay(
       (x, y) => scene0.elevAt(x, y), s.burn, s.burn);
   if (s.bridge > 0 && live.deck.length)
     drawBridgeDeck(g, W, H, cam, live.deck, s.bridge, live.frames.base);
+  /* the four streets the 1942 resolution names, in the family ink of the shot
+     that names them — see `drawOutline` for why this is not the deck pass */
+  if (s.outline > 0 && live.outline.length) {
+    const oe = live.payload.shots[s.shot]?.build?.entity;
+    drawOutline(g, W, H, cam, live.outline, s.outline,
+      familyColour(oe ? live.payload.ents[oe] : undefined));
+  }
+  if (s.fire > 0 && live.fire.length)
+    drawFireLosses(g, W, H, cam, projection, live.fire,
+      (x, y) => scene0.elevAt(x, y), s.fire, live.maxUsd);
 
   const scene = renderer.composition;
   const placed: number[][] = [];

@@ -2112,3 +2112,317 @@ Until both land, shot 8 animates a bridge the frame is already showing, which is
 the one thing that shot cannot afford. It is not a regression from tonight and it
 is not urgent for the demo — but it IS the kind of thing Daniel will see, because
 the bridge is the thing he is looking at.
+
+## 18 · Block M1c, 2026-08-25 — twelve moments, checked one at a time
+
+> *"Film is cool but a request owners clear their own lots I don't understand, why is
+> there no fire animation on 1906, also 'the bonds carry etc…' so weird this means
+> NOTHING has no relevance, 'the board repeals its own promises moves city hall' dude who
+> gives a fuck. Like the list keeps going on in the film on inane shit."*
+
+He is right, and §2's own table says why without meaning to: four of the ten lines are a
+procedural act — a request, a repeal, a vote count, a ductwork appropriation — chosen
+because the corpus holds it, not because a person would want to watch it. The gate in
+`film/build_film.py` guarantees a line is TRUE. It does not make it WORTH SAYING, and the
+two were being confused.
+
+This block replaces the shot list with twelve moments and builds the fire. **Every line
+below is checked against the record before it is written, and where the record does not
+support the line the LINE changes.** What follows is the checking, in the order it was
+done, so that whoever re-times a shot can see what is under it.
+
+### 18.1 The record for 1942, and the line that had to change
+
+The brief's line was *"the Board's business for those streets that spring was leases and
+licences."* **It was not.** Every lease and licence item in the 1942–43 Journal that
+touches a Japantown street is elsewhere in the city — a fishing concession off Beach
+Street, rooms rented from the Western Women's Club at 609 Sutter for the Civilian Defense
+Council, a Market Street Railway bus permit. Searched: all 767 items the sweep extracts
+from `journalofproceed37sanfrich` and `…37part2sanfrich`, filtered to the ten streets that
+bound the district, then to lease/permit/licence language. Nothing.
+
+**What the Journal actually carries for those streets in those months is property, and it
+is colder than the line I was given.** Five items, all 1942, all in
+`journalofproceed37sanfrich`:
+
+| date | what the Board did | vote |
+|---|---|---|
+| 24 Feb | renames **Japan Street** to Colin P. Kelly, Jr. Street | adopted 9–0 |
+| 23 Mar | Res. 2517 — asks Congress, the Governor, the Chief of Police and the military to *"immediately suppress the dissemination of news by the means of newspapers published in the Japanese language"* | adopted 10–0 |
+| 6 Apr | Res. 2542 — reports the two papers at 650 Ellis and 1618 Geary to the **Western Defense Command** | adopted 11–0 |
+| **20 Apr** | **"National Housing Agency and Home Owners Loan Corporation Urged to Effectuate Slum Clearance in Japanese Quarter"** — asks Washington to *"take over the loans on the real property affected"* in the district bounded by **ELLIS, CALIFORNIA, GOUGH AND FILLMORE STREETS** | **adopted 8–3** |
+| 24 Apr | directs the City Attorney to draft *"legislation providing for the suspension or removal, from the municipal pay-roll, of all Japanese aliens or persons of Japanese ancestry"* | referred to committee |
+| 11 May | asks the State Board of Equalization to weigh *"the character of the applicant"* on liquor permits in that same district *"until such time as the rehabilitation of the Japanese Quarter is under way"* | — |
+
+The 20 April resolution is the shot. It is three weeks after the exclusion, it is about
+property, the Board's own agenda heading says *slum clearance*, and **its four named
+streets are a boundary this map can draw**, which no other 1942 item is. The floor
+argument is on the page too: Supervisor Green voted no and had his reason minuted — *"the
+action proposed in taking the Japanese quarter for rehabilitation might end in boundless
+confusion."*
+
+`journalofproceed37sanfrich`, hOCR leaf 716. **Proposed line, and it is a change from an
+approved one, so it is flagged rather than shipped silently:**
+
+> *In 1942 the government removed everyone of Japanese descent from Japantown, and the
+> Board's business for those streets that spring was property.*
+
+with the Board's own heading carried as the record beneath it. "Leases and licences" is
+half true — the liquor permits are licences — and "property" is what the whole of it is.
+
+### 18.2 The Palace of Fine Arts is in the record, and it is in the record BEFORE the fair opened
+
+`ppie.json`'s own 1916 beat names what the city kept — *"the California building, the
+Marina boulevard, and other improvements"* — and does **not** name the Palace, which is
+why §12 rejected the Exposition as a shot. Searching the volumes rather than the entries
+finds it: `journalofproceed1915sanfrich` hOCR leaf 361, agenda heading **"Preservation of
+Palace of Fine Arts at Exposition"**, Supervisor Power, in the Journal approved 8 March
+1915 — a fortnight after the fair opened and nine months before it closed:
+
+> *"Whereas, one of the grandest buildings constructed at the Panama-Pacific International
+> Exposition is the Palace of Fine Arts, and Whereas, this building is located on
+> government land within the boundary of the Presidio Reservation, and Whereas, if this
+> building was permitted to remain permanently it would very materially add to the beauty
+> of that section of our city and be a lasting monument to the architectural genius
+> displayed throughout the construction of the Exposition…"*
+
+Referred to the Public Buildings Committee. The transfer runs on for four more years —
+1917 leaf 1743 and 1919 leaf 164 carry the land swap with the War Department and the
+Regents. **So the shot is not "the city kept it": it is the city asking, before the fair
+had closed, to be allowed to keep it.** That is better than the line and it is the same
+fact.
+
+### 18.3 The 1906 schedule is the FIRE DEPARTMENT's own houses, and the line has to say so
+
+`coverage/fire_losses_geo.json`, 36 rows. Counted rather than quoted: **27 destroyed by
+fire, 9 damaged by earthquake only**, 35 of 36 geocoded (FIRE.md says 33 — the geocoder
+has advanced since it was written and the MD is stale by two), destroyed values summing to
+**$355,000** against the report's own stated **$380,000**, with Engine House No. 38's
+figure lost at a column break and implied at $25,000.
+
+**And every one of the 36 is a fire-department building** — sixteen engine houses, a truck
+house, three chemical houses, two corporation yards, a drill tower, three sets of stables,
+an "Extra House". The schedule is titled *"Value of Houses Destroyed by Fire"* and it is
+the city enumerating **its own property**, which for this department means the stations
+that were supposed to fight the fire. A line that says "thirty-six of the city's own
+buildings" is true of the schedule and undersells what the schedule actually is.
+
+### 18.4 The eleven, as shipped, and the five factual corrections inside them
+
+Daniel cut Hetch Hetchy — *"lets not show the water thing not on the map"* — so the
+film is **eleven shots, 2 min 08 s**, and the whole shot list is new. `film.json` is
+written by a new tracked file, `pipeline/scripts/us_sf_city/build_film_twelve.py`, which
+keeps `build_film.py`'s gate verbatim in behaviour: **a line on screen is a beat's own
+headline, or a verbatim run of a beat's quote, at the volume and BookReader leaf the shot
+cites, or the shot carries a DATA chip and names its published register.**
+
+| | shot | year | z | what moves | line comes from |
+|---|---|---:|---:|---|---|
+| 1 | burn | 1906 | 2.05 | burn line, then 27 fire losses light | DATA · USGS + the Municipal Report |
+| 2 | rebuild | →1915 | 2.05 | **locked. the years run** | Journal vol 1 leaf 25 |
+| 3 | palace | 1915 | 20 | placemark on the rotunda | Journal 1915 leaf 352 |
+| 4 | bridges | →1937 | 1.10 | Bay Bridge deck strokes; Golden Gate arrives on its own year | Journal vol 31 leaf 46 + vol 32 leaf 11 |
+| 5 | japantown | →1942 | 5.5 | four named streets stroke out | Journal vol 37 leaf 713 + leaf 543 |
+| 6 | charter | →1945 | 20 | placemark on the Opera House | Journal vol 40 pt 3 leaf 726 |
+| 7 | freeways | →1959 | 1.25 | **nothing** | Journal vol 54 leaf 48 |
+| 8 | pyramid | →1972 | 24 | the hero rises on its published year | DATA · DataSF 5kya-mfst |
+| 9 | embarcadero | →1991 | 3.4 | **nothing** | Journal vol 85 leaf 375 |
+| 10 | mission-bay | →2018 | 3.6 | ring, years running | DATA · DataSF + OCII |
+| 11 | face | →2019 | 1.10 | out to the whole city | DATA · Ordinance 103-19 |
+
+**FIVE APPROVED LINES FAILED THEIR CHECK AND WERE CHANGED. Each is flagged rather than
+quietly reworded** — the wording is Daniel's to settle and these are the record's answer:
+
+| line as approved | what the source says | shipped as |
+|---|---|---|
+| *"…thirty-six of them the city's own"* | the schedule is the **Fire Department's** own property, and 27 burned — the other 9 the 1906 clerk recorded as shaken and not burned | *"…twenty-seven of them the Fire Department's own"* |
+| *"…opened thirteen months apart"* | Bay Bridge **12 Nov 1936** (HAER CA-32), Golden Gate to traffic **28 May 1937** — **six months and sixteen days** | the record's own line carries it; the interval is not stated on screen |
+| *"the ten freeways the state had planned"* | the resolution's own words are *"All Freeways Contained in the **Master Plan**"* — the city's plan, not the state's | the Board's own quote, and the shot's title |
+| *"a neighbourhood of eleven thousand people"* | DataSF's own figure for the Mission Bay analysis neighborhood is **16,710** (ACS 2019–23) | *"a neighbourhood of 16,710 people"* |
+| *"the first city anywhere"* | the sourceable claim is the ACLU's: *"the first city in the **United States**"* — no official source says "in the world" | the ordinance's own operative sentence, and the vote |
+
+And two that passed with a qualifier: Hetch Hetchy's *"a hundred and sixty miles"* is
+SFPUC's *"more than 160"* (its precise figure is 167) — moot now that the shot is cut —
+and the Transamerica's **forty-six years** is 1972 to Salesforce Tower's **opening**, 8
+January 2018; its height was passed in October 2016 and it topped out in April 2017, so
+the milestone has to be named. The film says *"until Salesforce Tower opened in 2018"*.
+
+**Verified and unchanged:** three days of fire and 28,000 buildings (USGS); the
+Exposition built of *staff* and demolished, the Palace *"the only fair building to remain
+in situ"* (California DPR 523 / NRHP 04000659); fifty nations, 26 June 1945, in the
+Veterans War Memorial Building's Herbst Theatre, the Charter adopted unanimously the day
+before **in the Opera House** — which is the building the shot points at, and the
+Journal's own sentence names both; seven of ten freeways, one resolution, one sitting,
+**11–0** (Journal vol 54, File 14414-4, Res. 45-59); Ordinance 103-19, File 190110,
+finally passed **10–1 on 21 May 2019** (14 May was first reading — the date the world's
+press reported and the one I was given).
+
+**One caveat that belongs on the record even though the film does not say it.** Ordinance
+**286-19**, effective 20 January 2020, narrowed §19B.2(d) to *"…on City-issued software
+or a City-issued product or device"*. The 2019 sentence the film quotes is what was
+enacted in 2019; it is not what the code says today.
+
+### 18.5 The fire, built from the schedule and not from an effect
+
+`pipeline/scripts/us_sf_city/build_fire_losses.py` → `film/fire.json`, 5,551 bytes, and
+`film-draw.ts` §`drawFireLosses`. **35 of 36 structures placed, 27 of them burned**,
+$355,000 read against the report's own stated $380,000.
+
+Two things are read off the record and nothing else is: **where** (the geocoded survey
+offset) and **how big** (the mark's radius is the square root of the value the page prints
+for that structure, so $35,000 draws larger than $8,000 and the ratio between two marks is
+the ratio between two figures a reader can check). The one row whose figure the OCR lost
+at a column break draws at the floor radius and **hollow**, because it is the one mark
+whose size is not a number off the page.
+
+**It is a table being read and not a front moving.** There is no published ignition time
+for any of these structures — `ff3a-iqhv` is one polygon with no time field, and
+`coverage/FIRE.md` says so in the open: *"Not a fire that spreads. The fire can arrive; it
+cannot advance."* So the rows light in the order the page prints them and the payload's
+own `meta.order` says that is what the order is. The flare that peaks and decays into an
+ember is an honest global treatment, declared as one: it carries no information and it is
+how long the eye needs to catch a 6 px event among twenty-seven of them.
+
+**The nine quake-only rows are in the file and not on the frame.** The shot's subject is
+the fire; drawing both fates would need a legend the film has nowhere to put. They are
+counted in `counts.quakeOnly` and they are the reason the validation in `meta` is worth
+reading: every fire loss falls inside DataSF's burn polygon and every quake-only one falls
+outside it, which is the 1906 clerk and a modern GIS agreeing on all 35.
+
+Watched: `out-m1c/watch-fire-sheet.png`, eight frames across the act. The marks accumulate
+inside the hairline and nowhere else.
+
+### 18.6 The motion, and the three places it is a decision NOT to move
+
+**Shot 1 and shot 2 are a match cut.** Same target, same z, same offset, and neither
+carries a move — so the burned city and the rebuilding city are the same frame with the
+year running under it. That is the strongest image available and it is also the cheapest
+thing this renderer does: §15.1 measured a travel at four to thirty-two rasterisations and
+§15.2 found the cost of one is pushing 2,880 × 1,880 pixels rather than computing the
+city. **Shot 10 is the same gesture seventy years later**, which closes the loop.
+
+A slow push in on shot 1 was asked for and is not built, and the reason is measured rather
+than taste: it is exactly the class of move — a change of scale with the fabric visible —
+that §15.1's table puts at 8–32 rasterisations and 300–1,000 ms worst frames, and it would
+have to end on shot 2's frame, which means the match cut survives only if the push is the
+thing that is cut away from. Locking it keeps the cut and costs nothing.
+
+**Shot 5 is still once it arrives**, and shots 7 and 9 raise nothing at all. Seven of the
+ten freeways have no published alignment — `freeway-revolt-1959.json` says *"NOT IN RECORD
+as geometry"* — so ghosting them in would be inventing seven roads in order to show that
+they were never built. The Embarcadero Freeway was never drawn in any year, because the
+fabric is the assessor's roll and the roll dates what is standing. Both carry the
+`NOT ON THIS MAP` badge, which now takes a SET of entities rather than one id.
+
+**Three shots stopped covering their own subject.** The Palace rotunda, the Opera House
+and the Transamerica Pyramid were authored as `footprint` builds, which hide the fabric's
+drawing for the whole shot and replace it with the film's flat prism — right for City Hall
+in the old cut, wrong for three hand-drawn heroes. `out-m1c/watch-charter-sheet.png` and
+`watch-pyramid-sheet.png` are the frames that showed a grey box standing where the Pyramid
+should be. They are `placemark` builds now: the mark and the name are the film's, the
+building is the map's, on its own published year, and **at shot 8 the Pyramid rises
+through the frame with its shaft and its spire as the run crosses 1972**.
+
+**`hideFor` now hides only for a `footprint` build.** It hid for any build whose entity
+carried a footprint index, which is what put the box over the hero.
+
+**The 1942 boundary needed its own pass, found by looking.** It was drawn first with
+`drawBridgeDeck`, whose ink is the settled street layer's own brown — twenty segments of
+street-coloured line lying on top of streets, invisible on all eight frames of
+`out-m1c/watch-jtown-sheet.png`. `drawOutline` is the film's family ink on a white halo,
+which is the grammar the subject ring and dot beside it already use, stroked as one
+gesture in the order the segments come.
+
+**Watched end to end, and the year line is monotone over all twenty-four samples**:
+1906, 1906, 1906, 1906, 1913, 1914, 1915, 1915, 1936, 1937, 1942, 1942, 1945, 1945, 1959,
+1959, 1972, 1973, 1991, 1992, 2018, 2018, 2019, 2019 — `out-m1c/watch-sweep-sheet.png`.
+Four transitions frame-sequenced at eight frames each (`palace2`, `jtown2`, `charter2`,
+`pyramid2`) plus the two from the first pass into shot 3 and shot 4: **every one is
+monotone in scale, no lurch and no backtrack.**
+
+**Measured on the DEV SERVER, not on :3100.** The brief says to judge on the production
+build and it is right; :3100 is a `next build` from earlier commits and carries none of
+this JavaScript. The payload changes are live there because `public/` is read from disk,
+which is worse than useless — an old `film.ts` against a new `film.json` is a state
+nothing will ever ship. **:3100 needs rebuilding on these commits before it is judged**,
+and the numbers above are correctness (does it draw, is it monotone, does it lurch) rather
+than frame timing, which is the half the dev server can still answer.
+
+### 18.7 The archival scan beside the map — designed, costed, NOT built
+
+> *"consider … if the film would look better with like the resolution open,
+> highlighted next to the thing happening to illustrate the archival dimension"*
+
+**It is the strongest available proof that this is a record rather than a rendering, and
+on eleven shots it becomes furniture.** Put it on **four**, where the DOCUMENT is the
+moment rather than the map: **Japantown (5)**, **the Freeway Revolt (7)**, **the
+Embarcadero vote (9)**, and **the Palace (3)** as the early one. The fire, the bridges and
+Mission Bay do not need it — the map is the evidence there, and a scan beside it would be
+competing with the thing it is meant to support.
+
+**Where the images come from, and it is one URL pattern the corpus already knows.**
+Every archival beat carries `item` and `leaf`, and BookReader serves the page image at
+
+    https://archive.org/download/<item>/page/n<leaf>.jpg
+
+which is the **same `n` as the `/details/.../page/nN/mode/1up` link already under every
+line** — `leafmap.py`'s header says so and calibrated the map against exactly that
+endpoint at 24 citations. So the four scans are four fetches of a URL the payload already
+holds, and no new pipeline stage is needed to *find* them.
+
+**What it costs, stated rather than guessed.**
+
+- **Bytes.** A Journal page at BookReader's own scale is 200–600 KB of JPEG. Four is
+  ~1.5 MB, which is fourteen times `film.json`. They must be fetched **per shot, one shot
+  ahead**, not at load — the film's first frame already waits on chunks.
+- **Frames.** An `<img>` beside the canvas costs no rasterisation: it is a sibling DOM
+  node, it does not touch the content key, and it moves only when the copy plate does.
+  This is the one addition in this file that is genuinely free at 60 Hz.
+- **The highlight is the expensive part and it is not free.** Marking *the cited line* on
+  the page needs a word box, and the hOCR sidecars the corpus already downloads carry one
+  per word — but `iasearch.load` reads `_hocr_searchtext` + `_hocr_pageindex`, which give
+  character spans and **no coordinates**. The boxes are in `_hocr.html.gz`, which is
+  20–100 MB a volume. So a highlight means a new pipeline pass that resolves each of the
+  four cited quotes to a pixel rectangle **once, at build time**, and ships four rectangles
+  in the payload. That is a day, not an evening, and it is the right shape: the browser
+  must never parse hOCR.
+- **The honest fallback if that pass is not built:** show the scan un-highlighted, cropped
+  to the leaf, with the quote in the plate beside it. A reader who wants the line has the
+  link. That is 90 % of the effect for none of the cost.
+- **Layout.** The plate lives bottom-left and the subject is offset right on every shot
+  that has one, so the scan wants the **left third**, under the plate, portrait, at about
+  30 % of frame width. On a phone it cannot coexist with the plate and should be dropped
+  rather than shrunk — an illegible scan is worse than no scan.
+
+**One risk worth naming.** Three of the four proposed shots are the ones whose record is
+ugly — a slum-clearance resolution, a freeway refusal, a demolition vote. Putting the page
+on screen makes the film's argument, and it also means a reader can read the surrounding
+column, which on the 1942 page includes a supervisor's explanation of his own no vote.
+That is a good thing and it should be a decision taken with eyes open rather than a side
+effect of a layout.
+
+### 18.8 Found and NOT fixed
+
+- **`us.sf.thecity.film.entry_meta` says "Ten moments the city wrote down".** The film is
+  eleven. `TheCityClient.tsx` no longer reads it — the entry plate now takes the payload's
+  own `title.sub`, which `build_film_twelve.py` writes beside the shot list so the two
+  cannot drift — but **the key is still in both dictionaries with a wrong number in it**.
+  Proposed replacement for its owner: *"Moments the city wrote down, from the fire to
+  now."* No count, so it cannot go stale again.
+- **`us.sf.thecity.film.not_on_map` reads "Not on this map"** and is now shown for two
+  different reasons — a subject with no published geometry, and a structure the roll
+  cannot date because it is gone. Both are honest under that wording and neither is
+  explained by it.
+- **The Legistar public API for `sfgov` stops at the end of 2018.** Confirmed by probing
+  it: the highest `MatterId` is 34053, file 181184, introduced 2018-12-04, and a
+  `MatterIntroDate` filter for any month of 2019 returns `[]`. The two rows that come back
+  for 2019–20 are placeholders (`TMP-014`, `T19-021`). So **the "30,428 matters, 2000–2018"
+  figure in §17.2 is the whole of what that endpoint holds** and the modern record past
+  2018 has to come from `sfbos.org` and the InSite `View.ashx` documents, which is where
+  shot 11's two links point. `pipeline/minutes/cache/legistar/matters_{2019..2025}.json`
+  now exist and are near-empty; **delete them before anyone treats them as coverage.**
+- **The Japantown frame is the modern Western Addition.** 128,690 of the 367,614 things on
+  this map carry no date in any published file and are drawn in every year, so the 1942
+  frame carries buildings that post-date the redevelopment the resolution asked for. The
+  caption on the rail already states that cohort; the film does not, and on this one shot
+  it matters more than on the others.

@@ -244,18 +244,32 @@ export interface FilmLink {
   readonly u: string;
 }
 
-export type BuildWhat = "burnLine" | "ring" | "footprint" | "placemark" | "bridge";
+export type BuildWhat =
+  | "burnLine"
+  | "ring"
+  | "footprint"
+  | "placemark"
+  | "bridge"
+  /** the four streets a resolution names as its own subject, stroked as one
+   *  gesture — `build_film_twelve.py` §district_outline. NOT a polygon: the
+   *  Board named four streets and the film draws four streets. */
+  | "outline";
 
 export interface FilmBuildData {
-  readonly what: BuildWhat;
+  /** absent where the entry is a SECOND LINE and nothing is raised with it —
+   *  shot 5 says two things about 1942 and raises one boundary */
+  readonly what?: BuildWhat;
   readonly entity?: string | null;
-  readonly ms: number;
-  readonly curve: string;
+  readonly ms?: number;
+  readonly curve?: string;
   readonly gate?: number;
   readonly copy?: string;
   readonly cite?: FilmCite;
-  /** the Bay Bridge west span, world decimetres */
+  /** world decimetres: the Bay Bridge west span, or the streets an `outline`
+   *  names */
   readonly w?: readonly (readonly (readonly number[])[])[];
+  /** the record's own words for the ground an `outline` covers */
+  readonly said?: string;
 }
 
 export interface FilmShotData {
@@ -357,152 +371,147 @@ export type FilmAct =
       readonly line?: 1 | 2 }
   | { readonly k: "build"; readonly ms: number; readonly what: BuildWhat;
       readonly ent?: string; readonly curve: string; readonly line?: 1 | 2 }
+  /* the 1906 schedule of losses being READ — `film/fire.json`, 35 placed
+     structures, lighting in the order the page prints them. It is an act and
+     not a build because nothing rises: the year does not move, the camera does
+     not move, and what changes is how much of one table has been read. */
+  | { readonly k: "fire"; readonly ms: number; readonly curve: string;
+      readonly line?: 1 | 2 }
   | { readonly k: "hold"; readonly ms: number; readonly line?: 1 | 2 };
 
 /**
- * A SECOND LINE FOR A SHOT WHOSE PAYLOAD CARRIES ONLY ONE, AND WHY IT IS HERE.
+ * THE ELEVEN, AND HOW EACH ONE MOVES.
  *
- * `build_film_payload.py` gives a shot one line, plus a second one only where
- * the shot has a `build2` — an object the film raises. Shot 7 raises nothing:
- * it is the breath, and it now spends its last four seconds on a year the
- * fabric answers by itself, the year the **Golden Gate Bridge** arrives.
- * Holding four seconds on a bridge while the plate talks about a water tunnel
- * would be worse than holding four seconds on a bridge in silence, and worse
- * again than saying what the record says about it.
+ * `build_film_twelve.py` holds the framings, the copy and the citations; this
+ * holds the ORDER and the LENGTH of what happens inside each shot, because
+ * `camera.json` used to state move/hold/run as three numbers and leave the
+ * order to prose, and that ambiguity is where a film goes wrong. The acts of a
+ * shot must sum to `shot_ms` minus its move, asserted in `buildTimeline`, so a
+ * re-timed shot cannot quietly change the running time. That assertion has
+ * fired twice, correctly.
  *
- * **Nothing here is written.** Both fields are copied out of the corpus entry
- * the film already ships beside: `film/entries/golden-gate-bridge.json`, beat 6
- * — its own `headline`, and its own `source.item` / `source.leaf` / `source.url`
- * — dated 1937-01-04, which is the year on screen when it appears. Verified
- * byte-for-byte against that file by `.parity/m1cite.py`, which is the same
- * guarantee `film/build_film.py`'s gate gives every other line in the film:
- * *a line on screen is a headline or a verbatim run of a quote that exists in
- * `entries/` at the leaf the shot cites.*
+ *   run    the YEAR moves and the camera does not. The fabric's own arrival
+ *          wave draws it, because that wave is already keyed to the fractional
+ *          year and already staggers far-to-near.
+ *   build  ONE object rises. Nothing else moves.
+ *   fire   the 1906 schedule of losses is read. Only shot 1 has one.
+ *   hold   nothing moves. This is the act that does the reading.
  *
- * **It belongs in `camera.json`, not here.** This is one line living one file
- * upstream of where the other nineteen live, because `camera.json`,
- * `film-data.js` and `build_film_payload.py` are another block's files tonight.
- * Moving it is a payload change and nothing in `film.ts` has to move with it:
- * delete the entry, add `build2.copy` + `build2.cite` to shot 7, and `pickLine`
- * picks the payload's up in preference to this without being touched.
+ * ── THE MOTION DESIGN, WHICH IS MOSTLY A DECISION NOT TO MOVE ───────────────
+ *
+ * Shot 1 and shot 2 share a target, a zoom and an offset and neither carries a
+ * move, so the cut between them is a **match cut**: the burned city, and then
+ * the same frame with nine years running under a camera that does not move.
+ * That is the strongest image in the film and it is also the cheapest thing
+ * this renderer can do — FILM.md §15.1 measured a travel at four to
+ * thirty-two rasterisations and a locked camera at zero, and §15.2 found the
+ * cost of a travel is pushing 2,880 × 1,880 pixels, not computing the city.
+ * Shot 10 is the same gesture seventy years later, which closes the loop.
+ *
+ * Shot 5 is still after its move, on purpose. Nothing rises on it but the four
+ * streets the resolution names, and there is no effect that would improve it.
  */
-export const SPOKEN: Readonly<Record<string, FilmLine>> = {
-  "hetch-hetchy": {
-    copy:
-      "Four months before it opens, the city learns the road to the bridge is " +
-      "its own bill: a third of $1,650,000.",
-    cite: {
-      item: "journalofproceed32sanfrich",
-      leaf: 11,
-      url: "https://archive.org/details/journalofproceed32sanfrich/page/n11/mode/1up",
-      entity: "golden-gate-bridge",
-    },
-    kind: "scan",
-  },
-};
-
 export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
+  /* 1906. The hairline draws itself round the burned city, and then the Fire
+     Department's own schedule lights inside it — 35 placed structures out of
+     `film/fire.json`, in the order the page prints them, because no ignition
+     time is published for any of them and a spreading front would be a
+     drawing rather than a record. `coverage/FIRE.md`: *"Not a fire that
+     spreads. The fire can arrive; it cannot advance."* */
   burn: [
     { k: "build", ms: 1400, what: "burnLine", curve: "enter" },
-    { k: "hold", ms: 7000 },
-  ],
-  rebuild: [
-    /* the burn hairline stays up at half alpha for the first three years and
-       then goes, so the rebuild is watched happening INSIDE it */
-    { k: "run", ms: 12000, to: 1912, curve: "move", burn: [1, 0, 4000, 2500] },
-  ],
-  "civic-bonds": [
-    { k: "build", ms: 900, what: "ring", ent: "civic-center", curve: "settle" },
-    { k: "hold", ms: 5600 },
-  ],
-  "city-hall": [
-    { k: "run", ms: 900, to: 1915, curve: "move" },
-    /* `footprint`, not `ring`: a precision disc would put the geocoder's own
-       507 m radius round the block, and at z 28 that disc is the whole frame —
-       a ring the size of Civic Center drawn round one building is a claim about
-       the wrong thing. The published footprint IS the precision here, because
-       the record names the parcel. */
-    { k: "build", ms: 3000, what: "footprint", ent: "new-city-hall", curve: "settle" },
-    { k: "hold", ms: 2000 },
-    { k: "run", ms: 700, to: 1917, curve: "move" },
-    { k: "build", ms: 2400, what: "footprint", ent: "main-library-1917", curve: "settle", line: 2 },
-    { k: "hold", ms: 1600 },
-  ],
-  tunnel: [
-    { k: "run", ms: 1600, to: 1918, curve: "move" },
-    { k: "build", ms: 700, what: "placemark", ent: "twin-peaks-tunnel", curve: "settle" },
-    { k: "hold", ms: 4200 },
-  ],
-  /* 1918 → 1935, NOT 1918 → 1945. The shot is 27 years long only because the
-     next three shots' subjects — the Hetch Hetchy water (1935), the Bay Bridge
-     (1936) and Treasure Island (1939) — all fall INSIDE its span, and the film
-     used to play the whole span first and then step back into them. It now
-     stops where the next subject starts, which is what makes the year line
-     monotone without deleting anything: the west side goes on filling through
-     shots 8, 9 and 10, and 1,223 of the 1,350 acceptances this shot is for land
-     by 1935 (`film.json` §st.y, counted). Same 16,000 ms over 17 years instead
-     of 27, so the fill is also slower to watch than it was. */
-  "west-fills": [{ k: "run", ms: 16000, to: 1935, curve: "move" }],
-  /* THE BREATH, AND THE MOMENT THE FILM WAS MISSING.
-     This shot used to open at 1945 and count DOWN to 1935 — the film's only
-     backward interval, nine samples of it, measured in `.parity/m1time.py`.
-     It now opens on 1935, which is where shot 6 leaves the clock, and the water
-     line is spoken over the year the record gives it.
-
-     Then the year runs two more years on the widest camera in the film, and
-     **the Golden Gate Bridge arrives.** That is not a new drawing: the deck is
-     `base/places.json`'s `ggb` ring — DataSF 97yj-54sx Article 10 landmark no.
-     222, corroborated by US Census TIGERweb `Golden Gate Brg` — and
-     `landmarks.ts` §GGB gates it at **1937**, the year the bridge was completed
-     (19 April) and opened (27 May). The corpus says the same thing twice in the
-     city's own voice: `golden-gate-bridge.json` beat 4, the Mayor's message of
-     7 January 1935 (`journalofproceed30sanfrich` leaf 50) — *"The Marin tower …
-     has been completed — height 746 feet"* with the completion set for May 1937
-     — and beat 5, 8 January 1936 (`journalofproceed31sanfrich` leaf 47) —
-     *"will open to traffic by May 1, 1937 … It was begun in December, 1932."*
-
-     MEASURED, not assumed: `.parity/m1look.py` seeked shot 6's own camera to
-     1933, 1936, 1937 and 1938 and diffed the Golden Gate corner of each frame.
-     1936 → 1937 changes 3,416 pixels; 1937 → 1938 changes none. The bridge was
-     always there and the film always ran straight past it — at 1.7 years a
-     second, with the camera pointed at the Sunset. `out/m1gg6-strip.png`.
-
-     The hold that follows is the point: two seconds of nothing moving on the
-     frame the bridge just landed on. */
-  "hetch-hetchy": [
+    { k: "fire", ms: 8000, curve: "move" },
     { k: "hold", ms: 3600 },
-    { k: "run", ms: 1600, to: 1937, curve: "move", line: 2 },
-    { k: "hold", ms: 2800, line: 2 },
   ],
-  "treasure-island": [
-    /* opens at 1937, where shot 7 leaves the clock. The Bay Bridge deck is a
-       film BUILD rather than a year gate — `skipBridgeGhost` keeps the base
-       layer's 2025 alignment off the frame until this act finishes — so it
-       strikes out here on its own act and its own January 1936 citation, one
-       map-year after the crossing opened. That is the cost of putting the
-       Golden Gate on camera and it is stated rather than hidden; the film
-       already shows copy older than its map year in shots 5 and 6. */
-    { k: "hold", ms: 1000 },
-    { k: "build", ms: 1600, what: "bridge", curve: "travel", line: 2 },
-    { k: "hold", ms: 1200 },
-    { k: "run", ms: 1500, to: 1939, curve: "move" },
-    { k: "build", ms: 900, what: "ring", ent: "treasure-island", curve: "settle", line: 1 },
-    { k: "hold", ms: 4500 },
+  /* THE MATCH CUT. Same camera as shot 1, no move, and the burn hairline stays
+     up at half alpha for the first three years so the rebuild is watched
+     happening INSIDE it. Nine years over twelve seconds is 1,333 ms a year,
+     which is well over `STAGGER_TOTAL`, so the arrival wave actually runs. */
+  rebuild: [
+    { k: "run", ms: 12000, to: 1915, curve: "move", burn: [1, 0, 4000, 2500] },
   ],
-  "yerba-buena": [
-    { k: "run", ms: 3400, to: 1966, curve: "move" },
-    { k: "build", ms: 900, what: "ring", ent: "yerba-buena", curve: "settle" },
-    { k: "hold", ms: 2200 },
+  /* 1915. `footprint`, not `ring`: the record names the building, and the
+     published footprint IS the precision. The Exposition's other palaces
+     cannot be drawn beside it and vanish at the fair's close — they were staff
+     over lath, they were pulled down, and the fabric is the assessor's roll,
+     which dates what is standing. The Palace rising alone on ground the map
+     shows nothing else of IS that fact. */
+  palace: [
+    { k: "build", ms: 1200, what: "placemark", ent: "palace-of-fine-arts", curve: "settle" },
+    { k: "hold", ms: 6000 },
   ],
-  "to-now": [
-    { k: "run", ms: 18000, to: 2018, curve: "move" },
+  /* 1936 and 1937, on the widest camera in the film. The Bay Bridge deck is a
+     film BUILD and not a year gate — `skipBridgeGhost` keeps the base layer's
+     2025 alignment off the frame until this act finishes — and the Golden Gate
+     is not drawn by the film at all: `landmarks.ts` §GGB gates the published
+     deck at 1937 and the fabric puts it up on its own date while the camera
+     holds. Two crossings, two mechanisms, one frame. */
+  bridges: [
+    { k: "run", ms: 1600, to: 1936, curve: "move" },
+    { k: "build", ms: 1600, what: "bridge", curve: "travel" },
+    { k: "hold", ms: 1400 },
+    { k: "run", ms: 1200, to: 1937, curve: "move", line: 2 },
+    { k: "hold", ms: 3600, line: 2 },
+  ],
+  /* 1942, and the camera does not move once it has arrived. The only thing
+     that rises is the boundary the Board itself named — ELLIS, CALIFORNIA,
+     GOUGH AND FILLMORE — drawn as those four published centrelines and not as
+     a polygon somebody fitted to them. Then the shot says the second thing it
+     has to say and holds. */
+  japantown: [
+    { k: "run", ms: 2400, to: 1942, curve: "move" },
+    { k: "build", ms: 1400, what: "outline", ent: "japantown-1942", curve: "enter" },
+    { k: "hold", ms: 2600 },
+    { k: "hold", ms: 2600, line: 2 },
+  ],
+  charter: [
+    { k: "run", ms: 1200, to: 1945, curve: "move" },
+    { k: "build", ms: 1200, what: "placemark", ent: "united-nations-charter-1945", curve: "settle" },
+    { k: "hold", ms: 4800 },
+  ],
+  /* 1959, and NOTHING IS DRAWN, which is the shot. The resolution names seven
+     freeways; `entries/freeway-revolt-1959.json` says in the open that their
+     corridors are *"NOT IN RECORD as geometry"*. Ghosting seven alignments in
+     would be inventing seven roads to show that they were never built. */
+  freeways: [
+    { k: "run", ms: 3400, to: 1959, curve: "move" },
+    { k: "hold", ms: 5200 },
+  ],
+  /* the run is what raises the Pyramid: `landmarks.ts` gates the hero at 1972
+     and the fabric puts it up on its own published year while the camera
+     holds. The film's own act is a mark and a name over it. */
+  pyramid: [
+    { k: "run", ms: 1600, to: 1972, curve: "move" },
+    { k: "build", ms: 1200, what: "placemark", ent: "transamerica-pyramid", curve: "settle" },
+    { k: "hold", ms: 5200 },
+  ],
+  /* 1991. The Embarcadero Freeway was never drawn — the fabric dates what is
+     standing today, so a structure demolished in 1991 is in no year of this
+     map — and the film says that rather than faking a collapse. */
+  embarcadero: [
+    { k: "run", ms: 3400, to: 1991, curve: "move" },
+    { k: "hold", ms: 5200 },
+  ],
+  /* THE RHYME with shot 2: the camera stops and a district fills in under it.
+     Twenty-seven years over 5,400 ms is 200 ms a year, which is under
+     `STAGGER_TOTAL`, so the years land whole rather than in a wave — stated
+     rather than hidden, and it is the rate and not the wave that is the
+     constraint (§14.3). */
+  "mission-bay": [
+    { k: "run", ms: 5400, to: 2018, curve: "move" },
+    { k: "build", ms: 900, what: "ring", ent: "mission-bay", curve: "settle" },
+    { k: "hold", ms: 3300 },
+  ],
+  /* Out to the whole city, which is the frame the film opened on. */
+  face: [
+    { k: "run", ms: 1200, to: 2019, curve: "move" },
     { k: "hold", ms: 6000 },
   ],
 };
 
 // ── 3 · the timeline ────────────────────────────────────────────────────────
 
-export type SegKind = "title" | "move" | "run" | "build" | "hold" | "end";
+export type SegKind = "title" | "move" | "run" | "build" | "fire" | "hold" | "end";
 
 export interface FilmSeg {
   readonly k: SegKind;
@@ -775,6 +784,10 @@ export interface FilmState {
   readonly burn: number;
   /** 0..1, the Bay Bridge deck striking out from Rincon Hill */
   readonly bridge: number;
+  /** 0..1, how much of the 1906 schedule of losses has been read */
+  readonly fire: number;
+  /** 0..1, the four streets a resolution names, stroking out */
+  readonly outline: number;
   readonly line: FilmLine | null;
   readonly badge: string | null;
   /** footprint indices the FABRIC must not draw, because the film is raising
@@ -795,15 +808,17 @@ function risenAt(
   segIx: number,
   u: number,
   reduced: boolean,
-): { risen: RisenItem[]; burn: number; bridge: number } {
+): { risen: RisenItem[]; burn: number; bridge: number; fire: number; outline: number } {
   const acts = SCRIPT[d.shots[si].id];
   const risen: RisenItem[] = [];
   let burn = 0;
   let bridge = 0;
+  let fire = 0;
+  let outline = 0;
   const here = tl.segs[segIx];
   for (let ai = 0; ai < acts.length; ai++) {
     const a = acts[ai];
-    if (a.k !== "build") continue;
+    if (a.k !== "build" && a.k !== "fire") continue;
     const seg = tl.segs.find((x) => x.si === si && x.ai === ai);
     if (!seg) continue;
     let rise: number;
@@ -811,11 +826,13 @@ function risenAt(
     else if (here.t0 < seg.t0) rise = 0;
     else rise = reduced ? 1 : curveOf(a.curve)(u);
     if (rise <= 0) continue;
+    if (a.k === "fire") { fire = rise; continue; }
     if (a.what === "burnLine") { burn = rise; continue; }
     if (a.what === "bridge") { bridge = rise; continue; }
+    if (a.what === "outline") { outline = rise; continue; }
     if (a.ent) risen.push({ ent: a.ent, mode: a.what, rise });
   }
-  return { risen, burn, bridge };
+  return { risen, burn, bridge, fire, outline };
 }
 
 /**
@@ -826,19 +843,27 @@ function risenAt(
  * A MOVE ARRIVES BEFORE ITS LINE DOES: the plate comes up as the camera stops,
  * not while it is still travelling.
  */
+const NOT_ON_MAP: ReadonlySet<string> = new Set([
+  "freeway-revolt-1959",
+  "embarcadero-freeway-demolition",
+]);
+
 function pickLine(tl: FilmTimeline, d: FilmPayload, si: number, segIx: number): FilmLine | null {
   if (tl.segs[segIx].k === "move") return null;
   const s = d.shots[si];
   const acts = SCRIPT[s.id];
   const base: FilmLine = { copy: s.copy, cite: s.cite, links: s.links, kind: s.kind };
-  /* the payload's own second line where it has one, and `SPOKEN`'s where it
-     does not — see §SPOKEN. The payload always wins, so moving that line into
-     `camera.json` needs no change here. */
+  /* THE SECOND LINE IS THE PAYLOAD'S OWN, ALWAYS. It used to be able to come
+     out of a `SPOKEN` table in this file — one line living a file upstream of
+     where the other nineteen lived, because `camera.json` belonged to another
+     block. `build_film_twelve.py` writes both lines and both citations through
+     the same gate, so the table is gone and there is one place a line can come
+     from again. */
   const alt: FilmLine | null =
     s.build2 && s.build2.copy
       ? { copy: s.build2.copy, cite: s.build2.cite, kind: "scan" }
-      : (SPOKEN[s.id] ?? null);
-  let cur = s.id === "treasure-island" ? (alt ?? base) : base; // the bridge opens shot 8
+      : null;
+  let cur = base;
   for (let ai = 0; ai < acts.length; ai++) {
     const a = acts[ai];
     /* ANY act can turn the line over, not only a `build`. It used to be builds
@@ -872,7 +897,12 @@ function hideFor(d: FilmPayload, si: number): number[] {
   const acts = SCRIPT[s.id];
   const out: number[] = [];
   for (const a of acts) {
-    if (a.k !== "build" || !a.ent) continue;
+    /* ONLY A `footprint` HIDES ANYTHING. A `placemark` is a dot and a name over
+       a building the map is already drawing on its own published year, and
+       hiding that building would delete the thing the mark points at — which
+       is what happened to the Palace, the Opera House and the Pyramid before
+       they were changed from `footprint` to `placemark`. */
+    if (a.k !== "build" || !a.ent || a.what !== "footprint") continue;
     const e = d.ents[a.ent];
     if (e && e.bi !== undefined) out.push(e.bi);
   }
@@ -1120,7 +1150,9 @@ export function filmStateAt(
   }
 
   // ── what is rising ────────────────────────────────────────────────────────
-  const r = sg.si != null ? risenAt(tl, d, si, ix, u0, reduced) : { risen: [], burn: 0, bridge: 0 };
+  const r = sg.si != null
+    ? risenAt(tl, d, si, ix, u0, reduced)
+    : { risen: [], burn: 0, bridge: 0, fire: 0, outline: 0 };
   let burn = r.burn;
   /* shot 2 holds the hairline up and then takes it down on its own clock */
   if (sg.k === "run" && (sg.a as Extract<FilmAct, { k: "run" }>).burn) {
@@ -1174,15 +1206,27 @@ export function filmStateAt(
     risen: r.risen,
     burn,
     bridge: r.bridge,
+    fire: r.fire,
+    outline: r.outline,
     line,
-    /* THE BADGE FOLLOWS THE LINE, NOT THE SHOT. It used to be `s.id ===
-       "hetch-hetchy"`, which was right while that shot had one subject. It now
-       has two, and the second one — the Golden Gate Bridge — is emphatically ON
-       the map: the badge has to come down at the same instant the deck comes
-       up, or the film contradicts its own frame. Driven off the entity the
-       CURRENT line cites, so it is a property of what is being said. */
-    badge:
-      sg.k !== "move" && line?.cite?.entity === "hetch-hetchy" ? "notOnThisMap" : null,
+    /* THE BADGE FOLLOWS THE LINE, NOT THE SHOT, so a shot with two subjects
+       can carry it on one of them. It is on three of the eleven and each is a
+       different KIND of absence, all three published:
+
+         freeway-revolt-1959      the corridors are "NOT IN RECORD as
+                                  geometry" — the resolution names seven routes
+                                  and no alignment for any is published here
+         embarcadero-freeway-…    the fabric is the assessor's roll, which
+                                  dates what is standing, so a structure taken
+                                  down in 1991 is in no year of this map
+       Shot 11 was given it too and it was WRONG on the frame: an ordinance
+       forbidding a thing has no extent, but the shot's picture is the whole
+       city, and a badge reading "not on this map" over a frame that is
+       entirely the map says the opposite of what it means. Taken off after
+       looking at `out-m1c/watch-sweep-022.png`. */
+    badge: sg.k !== "move" && NOT_ON_MAP.has(line?.cite?.entity ?? "")
+      ? "notOnThisMap"
+      : null,
     hide: sg.si != null ? hideFor(d, si) : [],
     skipBridgeGhost: brEnd >= 0 && t < brEnd,
     progress: tl.total > 0 ? t / tl.total : 0,

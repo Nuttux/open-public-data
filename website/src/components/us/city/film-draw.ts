@@ -573,3 +573,212 @@ export function drawBurnLine(
   g.stroke();
   g.restore();
 }
+
+/* ── the 1906 schedule of losses, on the frame ────────────────────────────── */
+
+/**
+ * THE FIRE, AND WHY IT IS A TABLE BEING READ RATHER THAN A FRONT MOVING.
+ *
+ * `film/fire.json` is the *San Francisco Municipal Reports 1906* table **"Value
+ * of Houses Destroyed by Fire"** — the city's own account of what it lost of
+ * its own property, one row per structure, each with a survey offset from a
+ * named corner to the inch and a dollar value. Every one of the thirty-six is a
+ * Fire Department building. Twenty-seven burned; nine the 1906 clerk recorded
+ * as shaken and not burned, and DataSF's burned-area polygon agrees with him on
+ * all thirty-five placed rows.
+ *
+ * **There is no published ignition time for any of them**, so this pass may not
+ * animate a fire spreading. `ff3a-iqhv` is one polygon with no time field — the
+ * final extent — and `coverage/FIRE.md` says so in the open: *"Not a fire that
+ * spreads. The fire can arrive; it cannot advance."* What arrives here is the
+ * SCHEDULE: the rows light in the order the page prints them, which is the
+ * record's own order and is the only order anything published gives.
+ *
+ * TWO THINGS ARE READ OFF THE RECORD AND NOTHING ELSE IS:
+ *   · WHERE — the geocoded survey offset, in world metres.
+ *   · HOW BIG — the mark's radius is the square root of the value the page
+ *     prints for that structure, so $35,000 draws larger than $8,000 and the
+ *     ratio between two marks is the ratio between two figures a reader can go
+ *     and check. The one row whose figure the OCR lost at a column break
+ *     (Engine House No. 38) draws at the floor radius and HOLLOW, because it is
+ *     the one mark on the frame whose size is not a number off the page.
+ *
+ * The mark itself — a flare that peaks and decays into an ember — is an honest
+ * global treatment and is declared as one. It carries no information; it is how
+ * long the eye needs to catch a 6 px event among twenty-seven of them.
+ */
+export interface FireLoss {
+  readonly n: string;
+  readonly fire: boolean;
+  readonly x: number;
+  readonly y: number;
+  readonly usd: number | null;
+  readonly usdImplied: number | null;
+}
+
+/** the fraction of the whole act one structure's own flare occupies */
+const FIRE_WIN = 0.34;
+/** where in its own window the flare peaks, before it decays to an ember */
+const FIRE_PEAK = 0.3;
+/** px at the largest value in the schedule, at the film's own whole-city zoom */
+const FIRE_R_MAX = 11;
+const FIRE_R_MIN = 3.4;
+
+/** the local phase of loss `i` of `n` at act phase `p`, or 0 before it lights */
+export function firePhaseOf(i: number, n: number, p: number): number {
+  if (n <= 0) return 0;
+  const lead = n > 1 ? ((1 - FIRE_WIN) * i) / (n - 1) : 0;
+  return Math.max(0, Math.min(1, (p - lead) / FIRE_WIN));
+}
+
+/**
+ * The dollars this act has read out of the page by phase `p` — the same
+ * arithmetic the marks are drawn from, so the counter in the chrome and the
+ * marks on the canvas cannot disagree. A structure's value is added when its
+ * own flare peaks, not when it starts, so the number moves with the light.
+ */
+export function fireTotalAt(losses: readonly FireLoss[], p: number): number {
+  let sum = 0;
+  for (let i = 0; i < losses.length; i++)
+    if (firePhaseOf(i, losses.length, p) >= FIRE_PEAK) sum += losses[i].usd ?? 0;
+  return sum;
+}
+
+export function drawFireLosses(
+  g: CanvasRenderingContext2D,
+  W: number,
+  H: number,
+  cam: ViewCamera,
+  proj: Projection,
+  losses: readonly FireLoss[],
+  elev: (x: number, y: number) => number,
+  phase: number,
+  maxUsd: number,
+): void {
+  if (phase <= 0 || losses.length === 0) return;
+  const c = proj.coeffs();
+  const zex = proj.zex;
+  const n = losses.length;
+  /* the mark is sized in SCREEN pixels and not in metres: at shot 1's z the
+     largest of these buildings is a third of a pixel across, so a mark drawn to
+     scale would be invisible, and one drawn to scale at a block camera would
+     cover the block. It is a mark, like the subject dot beside it. */
+  g.save();
+  for (let i = 0; i < n; i++) {
+    const p = firePhaseOf(i, n, phase);
+    if (p <= 0) continue;
+    const L = losses[i];
+    const wz = elev(L.x, L.y);
+    const px = c.ax * L.x + c.ay * L.y;
+    const py = c.bx * L.x + c.by * L.y + wz * zex;
+    const X = (px - cam.cx) * cam.scale + W / 2;
+    const Y = H / 2 - (py - cam.cy) * cam.scale;
+    if (X < -40 || X > W + 40 || Y < -40 || Y > H + 40) continue;
+
+    const known = L.usd !== null && L.usd !== undefined;
+    const k = known && maxUsd > 0 ? Math.sqrt(L.usd! / maxUsd) : 0;
+    const r = FIRE_R_MIN + (FIRE_R_MAX - FIRE_R_MIN) * k;
+
+    /* the flare: up fast, down slow, and it never goes out — what is left is
+       the ember, which is the row still being on the page after the fire. */
+    const up = Math.min(1, p / FIRE_PEAK);
+    const down = p <= FIRE_PEAK ? 1 : 1 - (p - FIRE_PEAK) / (1 - FIRE_PEAK);
+    const flare = up * up * (0.25 + 0.75 * down * down);
+
+    if (flare > 0.02) {
+      const R = r * (1 + 2.1 * flare);
+      const halo = g.createRadialGradient(X, Y, 0, X, Y, R);
+      halo.addColorStop(0, `rgba(255,214,120,${0.85 * flare})`);
+      halo.addColorStop(0.42, `rgba(233,116,32,${0.55 * flare})`);
+      halo.addColorStop(1, "rgba(180,52,28,0)");
+      g.fillStyle = halo;
+      g.beginPath();
+      g.arc(X, Y, R, 0, Math.PI * 2);
+      g.fill();
+    }
+
+    /* the ember, which is what the frame keeps */
+    const a = Math.min(1, p * 3);
+    g.beginPath();
+    g.arc(X, Y, r * (0.55 + 0.45 * Math.min(1, p * 2)), 0, Math.PI * 2);
+    if (known) {
+      g.fillStyle = `rgba(154,42,20,${0.9 * a})`;
+      g.fill();
+    } else {
+      g.strokeStyle = `rgba(154,42,20,${0.9 * a})`;
+      g.lineWidth = 1.4;
+      g.stroke();
+    }
+  }
+  g.restore();
+}
+
+
+/**
+ * A DISTRICT A RESOLUTION NAMED, AND IT IS FOUR STREETS AND NOT A POLYGON.
+ *
+ * The 1942 resolution names its own subject as *"the district bounded by
+ * ELLIS, CALIFORNIA, GOUGH AND FILLMORE STREETS"*. `build_film_twelve.py`
+ * §district_outline takes those four names to the same published centreline
+ * file the accepted streets come out of and clips them to the box of their own
+ * crossings; nothing fits a shape to them and nothing closes the figure. Three
+ * of the four corners exist in the 2026 file and one does not — Ellis no
+ * longer reaches Fillmore, cut by the redevelopment this very resolution asked
+ * Washington for — so the fourth side simply stops where the street stops,
+ * which is the truth about both the street and the resolution.
+ *
+ * IT IS NOT DRAWN WITH `drawBridgeDeck`, and that was tried first. The deck's
+ * ink is `ST_INK`, the same brown the settled street layer uses, at a width
+ * derived from the zoom; over the Western Addition's own grid at z 4.4 it was
+ * invisible on the frame — twenty segments of street-coloured line lying on
+ * top of streets. Verified by looking: `out-m1c/watch-jtown-sheet.png`, all
+ * eight frames, no mark. This is the film's own family ink on a white halo,
+ * which is the grammar the ring and the dot beside it already use.
+ */
+export function drawOutline(
+  g: CanvasRenderingContext2D,
+  W: number,
+  H: number,
+  cam: ViewCamera,
+  lines: readonly Plane[][],
+  phase: number,
+  colour: string,
+): void {
+  if (!(phase > 0) || lines.length === 0) return;
+  const k = cam.scale;
+  const W2 = W / 2;
+  const H2 = H / 2;
+  /* one gesture across the whole set, so `phase` is spent along the boundary in
+     order rather than every side racing its neighbours — `drawBurnLine`'s own
+     rule, for the same reason. */
+  const n = lines.length;
+  const last = phase >= 1 ? n : Math.max(1, Math.ceil(n * phase));
+  const frac = phase >= 1 ? 1 : Math.min(1, n * phase - (last - 1));
+  const walk = (): void => {
+    for (let i = 0; i < last; i++) {
+      const a = lines[i][0];
+      const b = lines[i][1];
+      if (!a || !b) continue;
+      const e = i === last - 1 ? frac : 1;
+      g.moveTo((a[0] - cam.cx) * k + W2, H2 - (a[1] - cam.cy) * k);
+      g.lineTo(
+        (a[0] + (b[0] - a[0]) * e - cam.cx) * k + W2,
+        H2 - (a[1] + (b[1] - a[1]) * e - cam.cy) * k,
+      );
+    }
+  };
+  g.save();
+  g.lineCap = "round";
+  g.lineJoin = "round";
+  g.strokeStyle = "rgba(250,250,247,.88)";
+  g.lineWidth = 7.5;
+  g.beginPath();
+  walk();
+  g.stroke();
+  g.strokeStyle = colour;
+  g.lineWidth = 3.2;
+  g.beginPath();
+  walk();
+  g.stroke();
+  g.restore();
+}

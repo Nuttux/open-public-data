@@ -152,8 +152,17 @@ export default function TheCityClient({ data }: { data: TheCityPageData }) {
             lede={t("us.sf.thecity.lede")}
             ledeShort={t("us.sf.thecity.entry.lede_short")}
             meta={
+              /* THE FILM'S OWN SUBTITLE, NOT A TYPED COUNT. This read
+                 `us.sf.thecity.film.entry_meta` — "Ten moments the city wrote
+                 down, from the fire to now." — and the film is eleven moments
+                 now, so a dictionary string was about to publish a number the
+                 payload contradicts. The payload states its own subject in
+                 `title.sub` and `build_film_twelve.py` writes it beside the
+                 shot list, so the two cannot drift. The dictionary key is
+                 another block's file and is left alone; it is unused here and
+                 its wording is filed in FILM.md §18 for its owner. */
               film.ready
-                ? `${t("us.sf.thecity.film.entry_meta")} ${film.runtimeLabel}`
+                ? `${film.payload?.title.sub ?? t("us.sf.thecity.film.entry_meta")} · ${film.runtimeLabel}`
                 : t("us.sf.thecity.entry.meta")
                     .replace("{buildings}", nfInt.format(data.buildings))
                     .replace("{decisions}", nfInt.format(data.decisions))
