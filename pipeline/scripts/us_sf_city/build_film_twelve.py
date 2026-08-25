@@ -69,6 +69,38 @@ OUT = CITY / "film"
 # the whole shot including it; `film.ts` §SCRIPT holds the acts and
 # `buildTimeline` asserts that move + acts == ms, so these two files cannot
 # drift apart silently.
+# ── THE YEAR ON THE PLATE, AND WHY IT IS NOT ALWAYS THE RUNNING ONE ─────────
+# Daniel, on shot 9: *"when you have that earthquake — i think 1972 — on the
+# same notification it goes up to 1991, its not clear what is when."* His frame
+# read **1987** in the largest type on screen, over the sentence about the
+# earthquake and the vote. 1987 is a year in which neither happened.
+#
+# MEASURED, `.parity/q12year.py`, every line in the film: **nine of the eleven
+# lines are on screen while the year counter runs across a span.** Shot 8 shows
+# 1959 -> 1972 under the Pyramid sentence; shot 7 shows 1945 -> 1959 under the
+# freeway vote. Only shots 1 and 3, which have no `run` act, show one year. It
+# is a class and not a shot.
+#
+# THE RULE: the number in the largest type must not contradict the sentence
+# under it. Two fields express it, and both are AUTHORING decisions, which is
+# why they are here beside the framing and the copy rather than in the renderer.
+#
+#   `yrun`  the plate's year FOLLOWS the run. Default off, and on for exactly
+#           the three shots where the moving year IS the subject: shot 2 (the
+#           match cut — "the only thing that changes is the year"), shot 10 (its
+#           rhyme), and shot 4, whose one sentence names two dated openings.
+#           Off, the plate is captioned with the year the shot settles on.
+#
+#   `say`   the copy waits until this act index. `film.ts` §pickLine already
+#           holds a line back until the camera stops — *"a move arrives before
+#           its line does"* — and this is the same idea for the year: on a shot
+#           whose counter is running to the date the line is about, the line
+#           lands when the counter gets there.
+#
+# THE FABRIC IS NOT TOUCHED BY EITHER. `filmStateAt` keeps handing the renderer
+# the true running year, so a frame is still exact for its own year and the
+# arrival wave is what it was. Only what the PLATE prints changes.
+
 SHOTS: list[dict] = [
     # 1 · THE FIRE. Locked. The film's first gesture is the burn line drawing
     # itself round the burned city, and then the Fire Department's own schedule
@@ -85,7 +117,7 @@ SHOTS: list[dict] = [
     # camera that does not move and the fabric comes back inside the hairline.
     dict(n=2, id="rebuild", title="The city rebuilds",
          t=(-122.409, 37.783), z=2.05, off=(0.0, 0.0), move=0, ms=5600,
-         st=(1906, 1915)),
+         st=(1906, 1915), yrun=True),
     # 3 · THE PALACE. Down to the Marina. The rotunda's own published footprint
     # centroid, out of wonder/hero-data.js — the same ring the renderer draws.
     # `z` 58 -> 95 and the offset out to (0.14, -0.10): FILM.md §23.4. At 58 the
@@ -100,9 +132,14 @@ SHOTS: list[dict] = [
     # It opens on empty water at 1915, runs to 1936, strokes the Bay Bridge
     # deck out from Rincon Hill, holds, and then runs two more years while the
     # fabric puts the Golden Gate up on its own published date.
+    # `yrun` + `say=1`: the sentence names two openings on two dates, so one
+    # pinned year would misdate one of them. The copy lands when the first run
+    # reaches 1936 and the counter then moves to 1937 underneath it — the plate
+    # does the work of the sentence's "and". Before this the line was up from
+    # 1915, so a viewer read "1922" over a sentence about the bridges.
     dict(n=4, id="bridges", title="Two bridges open",
          t=None, z=1.26, off=(0.07, 0.03), move=1200, ms=8200,
-         st=(1915, 1937)),
+         st=(1915, 1937), yrun=True, say=1),
     # 5 · JAPANTOWN. Tight on the Western Addition and, after the move that
     # gets there, completely still. Nothing rises but the four streets the
     # resolution names. Restraint is the design here.
@@ -181,14 +218,21 @@ SHOTS: list[dict] = [
     # screen at least as long as the line takes to read, and the new line is
     # 120 characters — 6.2 s at 22 a second plus 700 ms to notice it — against
     # 5.4 s of visible copy. One second twenty, and nothing else moved.
+    # THE SHOT DANIEL CAUGHT. Its line names the 1989 earthquake and the 1991
+    # vote, so no single pinned year serves both. `film.ts` §SCRIPT splits the
+    # run — 1972 -> 1989, then 1989 -> 1991 — and `say=1` lands the copy on
+    # 1989, so the counter moves from the earthquake's year to the vote's year
+    # under a sentence that names them in that order. The hold is 4,200 ->
+    # 5,400 so the copy still clears its own reading floor: 120 characters is
+    # 6.2 s at 22 a second plus 700 ms, against 6.4 s visible.
     dict(n=9, id="embarcadero", title="The earthquake of 1989",
-         t=(-122.397500, 37.796500), z=5.5, off=(0.02, 0.22), move=1200, ms=7800,
-         st=(1972, 1991)),
+         t=(-122.397500, 37.796500), z=5.5, off=(0.02, 0.22), move=1200, ms=9000,
+         st=(1972, 1991), yrun=True, say=1),
     # 10 · THE RHYME. Shot 2's move, seventy years later: the camera stops and
     # a district fills in under it.
     dict(n=10, id="mission-bay", title="A rail yard becomes a neighbourhood",
          t=(-122.395141, 37.772878), z=3.6, off=(0.12, -0.06), move=1200, ms=8100,
-         st=(1991, 2018)),
+         st=(1991, 2018), yrun=True),
     # 11 · OUT TO THE WHOLE CITY, which is where the film started.
     dict(n=11, id="face", title="San Francisco bans police use of facial recognition",
          t=None, z=1.10, off=(0.0, 0.0), move=1200, ms=6800,
@@ -234,7 +278,15 @@ COPY: dict[int, dict] = {
             verbatim="List of Property Belonging to the Fire Department",
             also=[("Three days, 28,000 buildings — USGS",
                    "https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/casualties.php",
-                   "data")],
+                   "data"),
+                  # THE 478 IS NOT ON THE PAGE THE SHOT NOW SHOWS. The scanned
+                  # leaf beside this line moved to the fire department's own
+                  # report on p. 721 (`build_film_scans.py`), and the death
+                  # count is eighteen leaves earlier on p. 703. So the number
+                  # gets its own chip, one click from the frame it is said on.
+                  ("478 recorded dead — Municipal Reports, 1906-07, p. 703",
+                   "https://archive.org/details/excerptsfromsanf1908sanf/page/n6/mode/1up",
+                   "scan")],
             # APPROVED: "…thirty-six of them the city's own." The schedule holds
             # 36 structures and the 1906 clerk records 27 destroyed by fire and
             # 9 damaged by the earthquake only, so 36 is the count of the city
@@ -257,9 +309,22 @@ COPY: dict[int, dict] = {
             # and it is the magnitude the approved line was reaching for — with
             # the advantage of being about people, which is the note Daniel
             # made on shot 9. Changed by as few words as the correction needs.
-            copy="The fire burned for three days and destroyed some 28,000 "
-                 "buildings, and left 225,000 of the city's 400,000 people "
-                 "homeless."),
+            #
+            # AND THE DEATH TOLL, APPROVED 2026-08-25. Daniel was shown two
+            # wordings and the four-clause objection and took this one, so the
+            # line keeps the homeless figure and gains the count.
+            #
+            # **"the city recorded" is load-bearing and must not be smoothed
+            # away.** 478 is the official 1907 count and the volume's own next
+            # sentence is *"Whether more than this, or how many more, can never
+            # be told."* Modern published estimates are several times it. The
+            # line therefore ATTRIBUTES the number to the record instead of
+            # asserting it as the toll — and that sentence is never written in
+            # our voice, because the narration is ours and a quotation is a
+            # picture (NIGHT3 §THE NARRATION IS OUR SENTENCE).
+            copy="The fire burned for three days, destroyed some 28,000 "
+                 "buildings, left 225,000 of the city's 400,000 people "
+                 "homeless, and the city recorded 478 dead."),
     # 2 · THE ONLY ARITHMETIC CLAIM IN THE FILM, AND WHERE ITS NUMBER COMES
     # FROM. "More than it lost within nine years" was carried for a night with
     # no source under it and it is now sourced, from the city's own building
@@ -928,6 +993,13 @@ def main() -> None:
                  y0=0, y1=0,            # the clock is derived; see the header
                  run=0, move=s["move"], hold=0, shot=s["ms"],
                  curve="travel", copy=c["copy"], kind=c["kind"])
+        # see §THE YEAR ON THE PLATE. Both default off and are written only
+        # where a shot asks for them, so the payload says which three shots run
+        # their counter and nothing else carries a field it does not use.
+        if s.get("yrun"):
+            o["yrun"] = True
+        if s.get("say"):
+            o["say"] = s["say"]
         if target:
             o["lon"], o["lat"] = target[0], target[1]
             wx, wy = to_m(*target)

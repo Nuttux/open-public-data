@@ -131,10 +131,20 @@ SCANS: list[dict] = [
         # would also mark the sub-standard-level and military-housing passage,
         # which is a different claim.
         #
-        # `i'eal` is the SCAN'S OWN INK and not a typo here. The OCR reads
-        # "real" as "i'eal" on this line, `norm()` changes no letters, and
-        # `find_run` matches the page. Corrected here it would not be found.
+        # AND THE FIRST MARK STARTS AT THE SUBJECT. Daniel: *"you start the
+        # highlight at 'the rehabilitation of the japanese quarter' otherwise
+        # you say property prices raise but theres not the subject of the
+        # sentence."* It began at the predicate; the marked span is now the
+        # whole clause, subject and all, and it wraps two lines instead of one.
+        #
+        # `i'eal` and `quai'ter` are the SCAN'S OWN INK and not typos here. The
+        # OCR reads "real" as "i'eal" and "quarter" as "quai'ter" on these
+        # lines, `norm()` changes no letters by its own docstring, and
+        # `find_run` matches the page. Corrected here they would not be found —
+        # and the PICTURE shows the printed words either way, because the mark
+        # is placed from the word BOX and not from the OCR's guess at letters.
         marks=[
+            "the rehabilitation of the japanese quai'ter at this time "
             "would raise i'eal property values in that district",
             "and would at once remove an eyesore which has become so "
             "obnoxious as to be well nigh insupportable",

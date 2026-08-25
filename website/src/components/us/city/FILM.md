@@ -4260,3 +4260,146 @@ volume's own sentence rewritten and therefore a quotation wearing our voice.
 **Sources, if either is taken.** Three days — USGS, and p. 721 of this volume
 marks it. 28,000 buildings — USGS, 28,188. 478 — San Francisco Municipal
 Reports, 1906-07, p. 703, leaf n6.
+
+## 33 · Block M1h — the biggest number on the frame was contradicting the sentence under it
+
+> *"dude when you have that earthquake — i think 1972 — on the same
+> notification it goes up to 1991, its not clear what is when etc"*
+
+His frame read **1987** in the largest type in the film, over *"The earthquake
+killed sixty-three people…"*. 1987 is a year in which neither the earthquake nor
+the vote happened.
+
+### 33.1 It is a class, and nine of the eleven had it
+
+`.parity/q12year.py` walks the whole film and records, per LINE, the first and
+last year the plate shows while that line is up. Before:
+
+```
+   1 burn          1906                 3 palace        1915
+   2 rebuild       1906 → 1914          4 bridges       1915 → 1937
+   5 japantown     1937 → 1942          6 charter       1942 → 1945
+   7 freeways      1945 → 1959          8 pyramid       1959 → 1972
+   9 embarcadero   1972 → 1991         10 mission-bay   1991 → 2018
+  11 face          2018 → 2019
+```
+
+**Only shots 1 and 3 — the two with no `run` act — showed one year.** Shot 8
+showed 1959 → 1972 under the Pyramid sentence; shot 7 showed 1945 → 1959 under
+the freeway vote.
+
+### 33.2 The plate's year is a caption for the LINE, not a readout of the fabric
+
+Two authoring fields, both in `build_film_twelve.py` beside the framing and the
+copy, because both are editorial decisions:
+
+- **`yrun`** — the plate's year follows the run. **Off by default**, and on for
+  exactly three shots: **2**, whose own comment says *"the only thing that
+  changes is the year"*; **10**, its rhyme; and **4**, whose one sentence names
+  two dated openings.
+- **`say`** — the copy waits until this act index. `film.ts` §pickLine already
+  held a line back until the camera stopped — *"a move arrives before its line
+  does"* — and this is the same idea for the year.
+
+**The fabric is not touched.** `filmStateAt` still hands the renderer the true
+running `year`; `plateYear` is a second number, derived off the TIMELINE (the
+last `yTo` the shot's own acts reach) so it cannot drift from the clock that
+produced it. Nothing about what is DRAWN changes.
+
+**Shot 9 gets a third treatment, because its line names two dates.** Its run is
+split — 1972 → 1989, then 1989 → 1991 — and `say: 1` lands the copy on 1989, so
+**the counter moves from the earthquake's year to the vote's year under a
+sentence that names them in that order.** The plate does the work of the
+sentence's "and". Its hold goes 4,200 → 5,400 so the 120-character line still
+clears §25.2's floor: 6.2 s needed against 6.4 s visible. Shot 4 gets the same
+shape at no cost — `say: 1` lands its copy at 1936 and the counter carries it to
+1937, where before the line was up from 1915.
+
+After, measured the same way (and `where()` now reports BOTH years, because a
+harness that can read only one cannot check this rule):
+
+```
+   1 burn        1906        2 rebuild     1906 → 1914   3 palace      1915
+   4 bridges     1936 → 1937  5 japantown  1942          6 charter     1945
+   7 freeways    1959         8 pyramid    1972          9 embarcadero 1989 → 1991
+  10 mission-bay 1991 → 2018 11 face       2019
+```
+
+**No line now shows a year in which its event did not happen**, and the three
+spans that remain are the three where the moving year is the sentence.
+
+Runtime 92.3 → 93.5 s, all of it shot 9's reading floor.
+
+## 34 · Block M1h — the panel, the mark, the line, and one look at zoom
+
+### 34.1 "What is on this frame" is gone, and the plate stays up on pause
+
+> *"that white notification frame with x streets appears sometimes and is weird
+> — remove."*
+
+`.fx-film-when` is deleted — the element, the rule, the mobile override, three
+props, two imports and **four i18n keys in both `en.ts` and `fr.ts`**. It was the
+PAUSED panel, which is why it "appears sometimes".
+
+**Pausing now leaves the copy plate up instead of replacing it.** Everything a
+reader wanted off the panel — the year, the line, the leaf, the extra sources,
+the caveat — is on the plate already; the only thing lost is the streets
+readout, which is the thing being removed. It also retires a measuring trap this
+file recorded against itself: *"every contact sheet a harness has ever taken
+through `pause()` reviewed a panel nobody watching the film sees."*
+
+### 34.2 The Japantown mark starts at the subject
+
+> *"you scan start the highlight at 'the rehabilitation of the japanese quarter'
+> otherwise you say property prices raise but theres not the subject"*
+
+Right. The mark began at the predicate. It now runs *"the rehabilitation of the
+Japanese quarter at this time would raise real property values in that
+district"* — one clause, subject and all, over two lines. `quai'ter` joins
+`i'eal` as the scan's own ink in the mark string; `norm()` changes no letters and
+the picture shows the printed words either way, because the mark is placed from
+the word BOX.
+
+### 34.3 Shot 1 carries the approved line and a chip to the page the number is on
+
+Proposal 2, as approved, with `"the city recorded"` intact — it attributes the
+official 1907 count rather than asserting a toll the volume's own next sentence
+disclaims. The scan beside it is p. 721, so **478 gets its own `also` chip to
+p. 703**, one click from the frame it is said on. Reading floor re-checked after
+the plate moved onto paper: the copy's type size and its 52ch measure are
+unchanged, 148 characters needs 7.4 s, and shot 1 shows the copy for 11.2 s.
+
+### 34.4 Zoom: one pass, no obvious cause, stopping
+
+> *"sometimes on zoom the behavior is a bit weird but its ok you can check quick"*
+
+`.parity/q13zoom.py`, wheel sweeps in and out at two speeds, recording rAF frame
+times and the renderer's own rasterisation REASON:
+
+```
+  in  x12   252 frames  med 8.3  p95 9.1  worst 91.7  >100 0  rasters 7  content:7
+  out x12   276         med 8.3  p95 8.5  worst  9.2  >100 0  rasters 0
+  in  fast  244         med 8.3  p95 8.5  worst  9.3  >100 0  rasters 0
+  out fast  244         med 8.3  p95 8.7  worst  9.2  >100 0  rasters 0
+```
+
+**Nothing dominates and nothing stalls.** The seven rasterisations are all
+`content` — data cells arriving at the new zoom, which is the store and not the
+zoom — and zoom-out costs none because the cells are already held. Measured on
+the DEV server, which is the slower of the two, so this is the pessimistic
+reading. Per instruction: no cause found, not opened further.
+
+### 34.5 The NOT ON THIS MAP badge — checked, and it does NOT read as asked
+
+The instruction was to check that it reads as an honest note about the structure
+rather than as a warning about the whole shot. **It reads as the second one**,
+and the cause is measurable rather than a matter of taste: the badge's own
+sentence mechanism exists — `.fx-film-reach-line`, its sources row, and
+`/data/us/sf/reach/film-badge.json`, whose header says the badge *"can now say
+what is missing, how far away it is, and who publishes its shape"* — but **that
+file is keyed by entity and holds exactly one: `hetch-hetchy`**, which NIGHT3
+cut from the film. So all three shots that carry the badge today render the bare
+label with no subject under it.
+
+Fixing it needs one approved sentence per badge entity, which is copy and
+therefore Daniel's. **Reported, not invented.**

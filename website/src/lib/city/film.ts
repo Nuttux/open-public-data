@@ -362,6 +362,14 @@ export interface FilmShotData {
   readonly note?: string;
   readonly build?: FilmBuildData;
   readonly build2?: FilmBuildData;
+  /** the plate's year FOLLOWS the run rather than being pinned to the year the
+   *  shot settles on. Three shots: the match cut and its rhyme, where the
+   *  moving year is the subject, and the bridges, whose sentence names two
+   *  dated openings. `build_film_twelve.py` §THE YEAR ON THE PLATE. */
+  readonly yrun?: boolean;
+  /** the copy waits until this act index — the year equivalent of the move
+   *  guard in `pickLine`. */
+  readonly say?: number;
   readonly stFrom: number | null;
   readonly stTo: number | null;
   readonly burn?: { from: number; to: number; start_ms: number; ms: number };
@@ -575,10 +583,17 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
      standing today, so a structure demolished in 1991 is in no year of this
      map — and the film says that rather than faking a collapse. */
   embarcadero: [
-    { k: "run", ms: 2400, to: 1991, curve: "even" },
-    /* 3,000 -> 4,200: the 1989 line is 120 characters and needs 6.2 s, and at
-       3,000 the copy was visible for 5.4. §25.2's floor. */
-    { k: "hold", ms: 4200 },
+    /* SPLIT, so the counter can move from the earthquake's year to the
+       vote's year UNDER a sentence that names them in that order. One run to
+       1991 put 1987 in the largest type on the frame over the word
+       "earthquake"; `say: 1` in the payload lands the copy on 1989 and the
+       second run carries it to 1991. */
+    { k: "run", ms: 1400, to: 1989, curve: "even" },
+    { k: "run", ms: 1000, to: 1991, curve: "even" },
+    /* 3,000 -> 4,200 -> 5,400. The floor is §25.2's: the 1989 line is 120
+       characters and needs 6.2 s. With `say: 1` the copy no longer covers the
+       first run, so the visible window is the second run plus this hold. */
+    { k: "hold", ms: 5400 },
   ],
   /* THE RHYME with shot 2: the camera stops and a district fills in under it.
      Twenty-seven years over 3,600 ms is 133 ms a year, which is under
@@ -866,6 +881,11 @@ export interface FilmState {
   readonly zex: number;
   /** the year the fabric is drawn at. Fractional only inside a run. */
   readonly year: number;
+  /** THE YEAR THE PLATE PRINTS, which is not always the year the fabric is at.
+   *  The fabric reads `year` and is untouched; this is a caption for the LINE.
+   *  Pinned to the year the shot settles on unless the shot sets `yrun`.
+   *  `build_film_twelve.py` §THE YEAR ON THE PLATE. */
+  readonly plateYear: number;
   /** true while the year is moving — what drives the fabric's arrival wave */
   readonly running: boolean;
   /** how far through the current year's street cohort, 0..1 */
@@ -951,6 +971,14 @@ const NOT_ON_MAP: ReadonlySet<string> = new Set([
 function pickLine(tl: FilmTimeline, d: FilmPayload, si: number, segIx: number): FilmLine | null {
   if (tl.segs[segIx].k === "move") return null;
   const s = d.shots[si];
+  /* ── AND A LINE ABOUT A DATED EVENT WAITS FOR THE YEAR TO ARRIVE ──────
+     The same idea as the move guard one line up. On a shot whose counter is
+     still running toward the date the line is about, the plate would otherwise
+     print a year in which the thing did not happen: MEASURED over the whole
+     film, nine of the eleven lines were on screen while the counter crossed a
+     span, and Daniel's own frame read 1987 over the 1989 earthquake.
+     `build_film_twelve.py` §THE YEAR ON THE PLATE decides which shots set it. */
+  if (s.say != null && (tl.segs[segIx].ai ?? -1) < s.say) return null;
   const acts = SCRIPT[s.id];
   const base: FilmLine = {
     copy: s.copy, cite: s.cite, links: s.links, also: s.also, note: s.note,
@@ -1273,6 +1301,17 @@ export function filmStateAt(
 
   const line = sg.k === "title" ? null : sg.k === "end" ? null : pickLine(tl, d, si, ix);
 
+  /* ── THE YEAR THE PLATE PRINTS ────────────────────────────────────────
+     Off the TIMELINE and not off the payload, for the same reason §buildTimeline
+     stopped reading `y0`/`y1`: the year a shot settles on is the last `yTo` its
+     own acts reach, so this cannot drift from the clock that produced it. */
+  let plateYear = Math.floor(yearOut);
+  if (sg.si != null && !d.shots[sg.si].yrun) {
+    let sy = -1;
+    for (const q of tl.segs) if (q.si === sg.si && q.yTo > sy) sy = q.yTo;
+    if (sy > 0) plateYear = sy;
+  }
+
   /* the 2025 alignment of the one crossing this film dates: the base street
      layer is the 2025 map at every year, and the Bay Bridge deck is in it. So
      shot 8 — whose entire subject is the bridge ARRIVING in 1936 — was a line
@@ -1304,6 +1343,7 @@ export function filmStateAt(
           : 0,
     cx, cy, scale, step, zex,
     year: yearOut,
+    plateYear,
     running,
     stEnter,
     risen: r.risen,

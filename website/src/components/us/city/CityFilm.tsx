@@ -50,12 +50,10 @@ import { EXT_K_MAX } from "@/lib/city/camera";
 import { STREET_NAME_CAP } from "@/lib/city/labels";
 import { projection } from "@/lib/city/projection";
 import {
-  acceptedThrough,
   buildTimeline,
   frameOf,
   filmStateAt,
   planFilmBuffer,
-  streetSourceAt,
   volumeLabel,
   yearBands,
   type FilmFrames,
@@ -759,7 +757,11 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
         return st && {
           t: Math.round(st.t), seg: st.seg.k, shot: st.shot,
           id: liveRef.current?.payload.shots[st.shot]?.id,
-          year: Math.floor(st.year), z: +(st.scale / (liveRef.current?.frames.base || 1)).toFixed(3),
+          year: Math.floor(st.year),
+          /* BOTH YEARS, because they are no longer the same number and a
+             harness that can only read one cannot check the rule that the
+             plate must not contradict the line. `film.ts` §plateYear. */
+          plate: st.plateYear, z: +(st.scale / (liveRef.current?.frames.base || 1)).toFixed(3),
           step: st.step, copy: st.line?.copy ?? null, risen: st.risen.length,
           /* the badge follows the LINE and not the shot id (`film.ts` §badge),
              so a harness has to be able to read what the film is SAYING as well
@@ -857,9 +859,6 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
         liveDraw={liveDrawRef}
         paused={paused}
         atEnd={tRef.current >= total - 1}
-        streetsDone={acceptedThrough(bands, Math.floor(state.year))}
-        streetsTotal={payload.st.n}
-        source={streetSourceAt(payload.st, bands, Math.floor(state.year))}
         onToggle={toggle}
         onExit={exit}
         onSeek={(f) => {
@@ -1005,9 +1004,9 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
    the ground under the plate is dark roofs and dark type on dark roofs is not
    rescued by a light halo), the halo over a quiet ramp, and this.
 
-   THIS IS THE FILM'S OWN ANSWER, ALREADY WRITTEN TWICE. .fx-film-when and
-   .fx-film-scan figcaption both put text that lands on the map onto paper,
-   and the second one states the reason: *"grey mono over a city of roofs and
+   THIS IS THE FILM'S OWN ANSWER, ALREADY WRITTEN ONCE.
+   .fx-film-scan figcaption puts text that lands on the map onto paper,
+   and states the reason: *"grey mono over a city of roofs and
    street trees is unreadable at any size... it gets the same paper the page is
    on, so it reads as part of the document."* The narration plate was the one
    piece of chrome still solving it with fog. It gets the same paper, the same
@@ -1087,14 +1086,6 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
 .fx-film-scan figcaption a{color:inherit;text-decoration:none;
   border-bottom:1px solid rgba(90,83,72,.42)}
 .fx-film-scan figcaption a:hover{color:#161310;border-bottom-color:#161310}
-.fx-film-when{position:absolute;left:44px;bottom:74px;max-width:min(62ch,54vw);
-  background:rgba(250,250,247,.97);border:1px solid rgba(22,19,16,.18);padding:18px 20px;
-  pointer-events:auto}
-.fx-film-when h3{margin:0 0 10px;font-family:var(--f-mono,ui-monospace,monospace);
-  font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5a5348;font-weight:600}
-.fx-film-when p{margin:0 0 10px;font-size:14.5px;line-height:1.5}
-.fx-film-when a{color:#1e45e4;text-decoration:none;border-bottom:1px solid rgba(30,69,228,.4)}
-.fx-film-row{font-size:12.5px;color:#5a5348;margin:0 0 5px}
 .fx-film-ctl{position:absolute;right:36px;bottom:70px;display:flex;gap:10px;
   align-items:center;pointer-events:auto;opacity:0;transition:opacity 200ms}
 [data-film-chrome]:hover .fx-film-ctl,[data-film-chrome][data-paused="1"] .fx-film-ctl{opacity:1}
@@ -1134,7 +1125,7 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
   .fx-film-scan figcaption{text-align:left}
 }
 @media (max-width:820px){
-  .fx-film-plate,.fx-film-when{left:20px;right:20px;bottom:60px;max-width:none}
+  .fx-film-plate{left:20px;right:20px;bottom:60px;max-width:none}
   .fx-film-ctl{right:20px;bottom:26px}
   /* target size, WCAG 2.2 SC 2.5.8: the hairline stays a hairline and only the
      region that takes the touch grows */
@@ -1145,7 +1136,7 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
 `;
 
 function FilmChrome({
-  payload, scans, state, paused, atEnd, streetsDone, streetsTotal, source,
+  payload, scans, state, paused, atEnd,
   cardRef, barRef, liveDraw, onToggle, onExit, onSeek, shotT0, total,
 }: {
   payload: FilmPayload;
@@ -1153,9 +1144,6 @@ function FilmChrome({
   state: FilmState;
   paused: boolean;
   atEnd: boolean;
-  streetsDone: number;
-  streetsTotal: number;
-  source: ReturnType<typeof streetSourceAt>;
   /** the card wash and the progress hairline: the two values the frame loop
    *  writes straight onto the DOM rather than through a render */
   cardRef: React.RefObject<HTMLDivElement | null>;
@@ -1168,7 +1156,6 @@ function FilmChrome({
   total: number;
 }) {
   const t = useT();
-  const nf = useMemo(() => new Intl.NumberFormat("en-US"), []);
   /* NO DEPENDENCY ARRAY: after EVERY render, before paint. The two continuous
      values are not in the tree, so this is the only thing that puts them back
      when React rebuilds these nodes — a pause, a new line of copy, the card
@@ -1179,7 +1166,11 @@ function FilmChrome({
     if (barRef.current) barRef.current.style.width = `${v.progress * 100}%`;
     if (cardRef.current) cardRef.current.style.opacity = String(v.cardAlpha);
   });
-  const iy = Math.floor(state.year);
+  /* THE PLATE'S YEAR IS A CAPTION FOR THE LINE, NOT A READOUT OF THE FABRIC.
+     `film.ts` §plateYear: pinned to the year the shot settles on unless the
+     shot declares that its moving counter is the subject. The renderer still
+     gets `state.year`, so nothing about what is DRAWN changes. */
+  const iy = state.plateYear;
   /* the shot's own entity, not the badge token: the reach file is keyed on the
      entry id, so the sentence belongs to whatever the shot is about */
   const reach = useReachBadge(
@@ -1247,7 +1238,17 @@ function FilmChrome({
         </div>
       ) : null}
 
-      {!card && !paused ? (
+      {/* THE PLATE IS THE ONLY THING THAT SPEAKS, PAUSED OR RUNNING. It used to
+          be swapped out on pause for a panel headed "what is on this frame",
+          which Daniel had removed: *"that white notification frame with x
+          streets appears sometimes and is weird — remove."* It was a debug
+          readout wearing a design, and everything a reader actually wanted off
+          it — the year, the line, the leaf, the extra sources, the caveat — is
+          on this plate already and is now simply left up. It also retires a
+          measuring trap this file recorded against itself: every contact sheet
+          ever taken through `pause()` reviewed a panel nobody watching the
+          film sees. */}
+      {!card ? (
         <div className="fx-film-plate">
           <div className="fx-film-year tnum">{iy}</div>
           {line?.copy ? <p className="fx-film-copy">{line.copy}</p> : null}
@@ -1315,65 +1316,6 @@ function FilmChrome({
               ) : null}
             </div>
           ) : null}
-        </div>
-      ) : null}
-
-      {/* PAUSING IS THE ONLY THING THAT ADDS TO THE SCREEN. */}
-      {paused ? (
-        <div className="fx-film-when">
-          <h3>{t("us.sf.thecity.film.paused_head").replace("{year}", String(iy))}</h3>
-          {line?.copy ? <p>{line.copy}</p> : null}
-          {line?.cite ? (
-            <p className="fx-film-row">
-              <a href={line.cite.url} target="_blank" rel="noopener">
-                {volumeLabel(line.cite.item)}, {t("us.sf.thecity.film.leaf")} {line.cite.leaf}
-              </a>
-            </p>
-          ) : null}
-          {line?.also?.length ? (
-            <p className="fx-film-row">
-              {line.also.map((a, i) => (
-                <span key={a.u}>
-                  {i ? " · " : ""}
-                  <a href={a.u} target="_blank" rel="noopener">{a.t}</a>
-                </span>
-              ))}
-            </p>
-          ) : null}
-          {line?.links ? (
-            <p className="fx-film-row">
-              {line.links.map((l, i) => (
-                <span key={l.u}>
-                  {i ? " · " : ""}
-                  <a href={l.u} target="_blank" rel="noopener">{l.t}</a>
-                </span>
-              ))}
-            </p>
-          ) : null}
-          {/* the caveat travels with the number wherever the number goes */}
-          {line?.note ? <p className="fx-film-row">{line.note}</p> : null}
-          <p className="fx-film-row">
-            {t("us.sf.thecity.film.streets_drawn")
-              .replace("{n}", nf.format(streetsDone))
-              .replace("{of}", nf.format(streetsTotal))}
-            {source ? (
-              <>
-                {" "}
-                {t("us.sf.thecity.film.streets_this_year")
-                  .replace("{n}", nf.format(source.n))
-                  .replace("{year}", String(iy))}{" "}
-                {source.rows.slice(0, 2).map((r, i) => (
-                  <span key={`${r.vol}-${r.leaf}`}>
-                    {i ? ` ${t("us.sf.thecity.film.and")} ` : ""}
-                    <a href={r.url} target="_blank" rel="noopener">
-                      {volumeLabel(r.vol)} {t("us.sf.thecity.film.leaf")} {r.leaf}
-                    </a>
-                  </span>
-                ))}
-                .
-              </>
-            ) : null}
-          </p>
         </div>
       ) : null}
 
