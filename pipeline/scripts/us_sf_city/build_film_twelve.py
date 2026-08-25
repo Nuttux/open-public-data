@@ -316,8 +316,21 @@ SHOTS: list[dict] = [
          t=(-122.395141, 37.772878), z=3.6, off=(0.12, -0.06), move=1200, ms=8100,
          st=(1991, 2018), yrun=True),
     # 11 · OUT TO THE WHOLE CITY, which is where the film started.
+    # AND IT CARRIES THE FOURTH SCAN — the enacted ordinance, p. 11, with the
+    # subsection that does the thing marked. `build_film_scans.py` §the one
+    # that is not a bound volume: every other page in the film is a scanned
+    # Journal and the Journals stop in 1998, so putting the city's own PDF on
+    # the last shot says in a picture what the film would otherwise assert.
+    # The camera is NOT reframed for it. Shot 11's whole-peninsula fit already
+    # sits left of centre and the panel lands on the East Bay water, so the
+    # city is whole under it — checked on the frame, and `.parity/p9vw.py`
+    # (extended to shot 11) reports no collision with the copy plate at ten
+    # viewports from 1920x1080 down to 390x844.
+    # RE-TIMED 6,800 -> 8,000 ms, on §28.6's precedent for shot 7 and for the
+    # same reason: the line clears its floor at 3.5 s either way, and this is
+    # the PAGE. All 1,200 ms is on the hold.
     dict(n=11, id="face", title="San Francisco bans police use of facial recognition",
-         t=None, z=1.10, off=(0.0, 0.0), move=1200, ms=6800,
+         t=None, z=1.10, off=(0.0, 0.0), move=1200, ms=8000,
          st=(2018, 2019)),
 ]
 

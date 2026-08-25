@@ -4621,3 +4621,139 @@ is under it. **Nothing here is changed** — Daniel decides every word.
 **So: one real instance outside shot 8 (shot 3, and it is soft), two by design
 (shots 2 and 10, the match cut and its rhyme), one register note (shot 6's
 present tense).** Nothing rewritten.
+
+## 37 · Block M1i — the fourth scan, and the first one that is not a bound volume
+
+Daniel decided: **shot 11 only, and not shot 9.** The coordinator's framing is
+the reason it earns a page — *"shot 11 is the modern bookend: it is the proof
+that the record does not stop when the bound volumes do in 1998."* One near the
+start, two through the middle, one at the close.
+
+### 37.1 What form the record took, since it could not be an archive leaf
+
+Two documents exist and they are not the same document. **Both were fetched and
+both are used, for different jobs.**
+
+| | what it is | text layer | ordinance number |
+|---|---|---|---|
+| `sfbos.org/sites/default/files/o0103-19.pdf` | the **Clerk's stamped copy**, 24 pp | **none — it is a scan** | **`ORDINANCE NO. 103-19`** on p. 1 |
+| `sfgov.legistar.com/View.ashx?…ID=7226786` | Legistar's file for 190110, 22 pp | yes | blank — it is the 14 May amended text |
+
+**The picture is the stamped copy**, because it is the enacted instrument the
+plate already names and because it is a SCAN, which is what the other three are.
+Its own last leaf carries the Clerk's certification — *"I hereby certify that
+the foregoing Ordinance was FINALLY PASSED on 5/21/2019"* — and its penultimate
+leaf prints the roll: **May 21, 2019 · FINALLY PASSED · Ayes: 10 · Noes: 1 —
+Stefani.** So the document proves the shot's own citation, which claimed 10 to 1
+before anyone had opened it.
+
+**The Legistar PDF is not shown. It is the PROOF**, and §37.3 is what it proves.
+
+### 37.2 The mark is the prohibition — §19B.2(d), whole
+
+> *"mark the operative words, not the filing label — that is the mistake shot 5
+> made and Daniel caught."*
+
+Page 11, lines 14-16, printed in single-underline italics because it is an
+ADDITION to the Administrative Code:
+
+> **(d) Notwithstanding the provisions of this Chapter 19B, it shall be unlawful
+> for any Department to obtain, retain, access, or use: 1) any Face Recognition
+> Technology; or 2) any information obtained from Face Recognition Technology.**
+
+One mark over three lines, subject and all — §34.2's rule, applied without
+having to be re-asked. **Not** the bracketed subject line on p. 1, which is the
+filing label; **not** the vote tally on the certification page, which is the
+thing the plate's chips already carry.
+
+**What was deliberately NOT marked, and why it matters to the claim.** The
+definition the prohibition turns on — *"an automated or semi-automated process
+that assists in identifying or verifying an individual based on an individual's
+face"* — is on **p. 5**, a different leaf, and this panel is one page.
+
+**And the section says "any Department", not "the police".** NIGHT3's approved
+line 11 read *"…to tell its own police they could not use facial recognition"*;
+the SHIPPED line is *"The city was the first in the United States to vote such a
+ban"* and names no force. **The page and the sentence agree.** Had the police
+wording still been on screen, this page would have contradicted it — which is
+its own argument for putting the operative text in the frame.
+
+### 37.3 A different record needs a different proof, and this one is two-sided
+
+The archive path proves the **leaf**, because no arithmetic maps a DjVu suffix
+to a BookReader leaf. A PDF page has no such ambiguity: page 11 is page 11. So
+`prove_pdf` moves the proof to the **mark**, which is where the only remaining
+risk is — the stamped copy has no text layer, so its words are read with
+`tesseract` exactly as the Internet Archive's are read with its own OCR.
+
+```
+  proof 1/2 · the marked words are verbatim in the publisher's own
+              machine-readable text of the same ordinance
+  proof 2/2 · the marked rectangle, re-read on its own, is that phrase
+```
+
+1. **The phrase must appear, word for word, in an INDEPENDENT digital
+   publication of the same instrument** — Legistar's text layer, which no OCR
+   pass ever saw. This proves the words being marked are the record's words and
+   not a reader's guess at them. It is a check the three archive scans have no
+   equivalent of.
+2. **The marked rectangles are cut out of the render and read again, alone.** If
+   a box were in the wrong place the crop would contain different words. This
+   proves the rectangle is on those pixels.
+
+Below either, the script exits. Both passed on the first run.
+
+### 37.4 The ruled margins are furniture, and the first run marked one
+
+A Board ordinance is printed on **numbered lines between two double vertical
+rules**, and OCR reads all of it: `14`, `15`, `16` down the left margin and a
+column of `|` down each side land in the middle of the word stream. Two
+consequences, one predicted and one not:
+
+- A sentence that wraps three lines **is not contiguous**, so `find_run` cannot
+  see it at all. `ocr_words` drops anything lying entirely outside the **body
+  column**, whose two edges are derived from the page's own long alphabetic
+  words rather than declared as a pixel. It prints what it dropped:
+  `body column x 211..1585; dropped 72 of 360 words as margin rules, line
+  numbers or specks`.
+- **The first run still produced four rectangles for a three-line mark.** The
+  extra was `x 0.972, w 0.0014` — a **2 px sliver of the right-hand rule**,
+  which survives `norm()` as nothing and therefore cannot contribute to a match,
+  but CAN start one, because `find_run` walks forward from every index. So the
+  second drop: a token with no letter and no digit in it is a rule or a speck,
+  not a word. Three boxes, one a line.
+
+### 37.5 The camera is not reframed, and the frame says why
+
+Shot 11 is *"pull back to the whole city, end where the film started, whole"*,
+and the panel takes the right 36 %. **Checked on the frame rather than reasoned
+about** (`out-r2/s11-62.png`, 2880×1800): shot 11's whole-peninsula fit already
+sits left of centre, so the page lands on **the East Bay water** and the city —
+Golden Gate Park, the Presidio, the Sunset, downtown, Bayview — is whole in the
+left 60 %. §35.1 had to move shot 1's offset to −0.16 for exactly this; shot 11
+needs nothing.
+
+`.parity/p9vw.py` extended from three shots to four: **no collision with the
+copy plate at any of ten viewports**, 1920×1080 down to 390×844.
+
+### 37.6 The shot is 1,200 ms longer, on shot 7's precedent
+
+| # | was | is | why |
+|---|---:|---:|---|
+| 11 face | 6,800 | **8,000** | NOT the reading floor — the line is 62 characters and clears at 3.5 s. It is the SCAN. §28.6 lengthened shot 7 for the same reason: *"five seconds is not long enough to read a page"*. All 1,200 ms is on the hold; the run is untouched |
+
+**94.1 → 95.3 s.** The page is up for the whole shot except the travel, so 6.8 s
+of page against 5.6.
+
+### 37.7 What this cost the build
+
+`build_film_scans.py` now has two source kinds, kept apart on purpose because
+they are proved differently, and everything from the mark boxes onward is
+shared: `mark_boxes` and `compose` are one code path for both. The PDF path adds
+two dependencies and **neither is needed by the archive path** — `PyMuPDF`,
+imported inside the two functions that use it, and `tesseract`, which the script
+checks for on PATH and exits with a plain sentence if it is missing.
+
+Re-run end to end: **shots 1, 5 and 7 come back byte-identical.** The only new
+bytes in `public/data` are `scans/shot-11.jpg` (218 kB) and 33 lines of
+`scans.json`.

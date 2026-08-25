@@ -628,7 +628,12 @@ export const SCRIPT: Readonly<Record<string, readonly FilmAct[]>> = {
   /* Out to the whole city, which is the frame the film opened on. */
   face: [
     { k: "run", ms: 1000, to: 2019, curve: "even" },
-    { k: "hold", ms: 4600 },
+    /* 4,600 -> 5,800. NOT the reading floor — the line is 62 characters and
+       clears at 3.5 s. It is the SCAN, and it is §28.6's own precedent for
+       shot 7: a page a reader is asked to read needs longer than a sentence
+       does. The page is up for the whole shot except the travel, so this is
+       5.6 s of page against 4.4. */
+    { k: "hold", ms: 5800 },
   ],
 };
 

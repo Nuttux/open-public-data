@@ -1,4 +1,4 @@
-"""THE PAGE ITSELF, CROPPED TO THE LINE THAT IS CITED, FOR THREE OF THE ELEVEN.
+"""THE PAGE ITSELF, CROPPED TO THE LINE THAT IS CITED, FOR FOUR OF THE ELEVEN.
 
 Daniel, on the shipped cut:
 
@@ -19,6 +19,28 @@ THE RECORD    the page image, `archive.org/download/<item>/page/n<leaf>.jpg`,
 THE DRAWING   which run of words is marked, how much of the page is cropped
               around it, and the JPEG quality. Nothing here rewrites, retypes or
               re-flows a single word of the page.
+
+── AND A SECOND KIND OF RECORD, BECAUSE THE BOUND VOLUMES STOP IN 1998 ───────
+
+Shot 11 is 2019 and there is no scanned volume to go to. THAT IS THE POINT of
+putting a page on it: the film's closing argument is that the record does not
+stop when the binding does. So this file now has two source kinds and they are
+kept apart on purpose, because they are proved differently:
+
+    `item`  an Internet Archive volume. Leaf found by search and PROVED against
+            the OCR's own line positions (`resolve_leaf`).
+    `pdf`   a PDF the city itself publishes. There is no leaf to find — a page
+            is a page — so the proof moves to the MARK, and it is two-sided:
+            the phrase has to be in an INDEPENDENT digital publication of the
+            same instrument, and the marked rectangle has to read back as that
+            phrase when it alone is re-read off the image. See `prove_pdf`.
+
+Shot 11's page is the Clerk's own stamped copy of Ordinance No. 103-19, which
+is a SCAN with no text layer, so its words are read with `tesseract` exactly as
+the Internet Archive's are read with its own OCR. The mark is therefore placed
+from an OCR box on both kinds of record, and on this one it is cross-checked
+against the publisher's own machine-readable text, which the archive volumes
+have no equivalent of.
 
 ── THE LEAF IS FOUND AND THEN PROVED, BECAUSE THE OBVIOUS RULE IS WRONG ──────
 
@@ -52,11 +74,14 @@ Writes `website/public/data/us/sf/city/film/scans/*.jpg` and `scans.json`.
 
 from __future__ import annotations
 
+import csv
 import html
 import io
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 import urllib.request
 
@@ -65,6 +90,7 @@ from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 CACHE = os.path.join(ROOT, "pipeline", "cache", "ia_pages")
+CACHE_PDF = os.path.join(ROOT, "pipeline", "cache", "sf_pdf")
 OUT = os.path.join(ROOT, "website", "public", "data", "us", "sf", "city", "film", "scans")
 
 # ── the three shots, and why each of them and not the others ────────────────
@@ -80,6 +106,10 @@ OUT = os.path.join(ROOT, "website", "public", "data", "us", "sf", "city", "film"
 #                  Board's own committee, three weeks after the removal, naming
 #                  the emptied district by its four streets.
 #   7  freeways  — one page that decided what the city looks like.
+#  11  the ban    — the modern bookend, and the film's closing argument made
+#                   visible: the bound volumes stop in 1998 and the RECORD does
+#                   not. One near the start, two through the middle, one at the
+#                   close.
 #
 # The bridges and the Pyramid get none: the map is the evidence there.
 #
@@ -187,6 +217,60 @@ SCANS: list[dict] = [
         when="26 January 1959",
         alt="The page on which the Board struck seven freeways out of the "
             "master plan, with the resolution's heading and its adoption marked.",
+    ),
+    # THE ONE THAT IS NOT A BOUND VOLUME, and the reason it is on the film's
+    # last shot. Every other page here is a scan of a printed Journal; the
+    # Journals stop in 1998. This is the Clerk's stamped copy of the enacted
+    # ordinance, published by the city as a PDF, and putting it at the close
+    # says in a picture what the film would otherwise have to assert: the
+    # record keeps going.
+    #
+    # THE MARK IS THE PROHIBITION AND NOT THE TITLE. That is the mistake shot 5
+    # made and Daniel caught — *"you highlighted the title, not the part you
+    # said"*. On an ordinance the operative text is the section that does the
+    # thing, so what is marked is section 19B.2(d) whole, subject and all,
+    # exactly as printed on p. 11 in single-underline italics because it is an
+    # ADDITION to the Administrative Code. Not the bracketed subject line on
+    # p. 1, and not the vote tally on the certification page.
+    #
+    # WHAT THE SECTION ACTUALLY SAYS, because the film must not overclaim it:
+    # the ban runs to "any Department" and not to the police alone, and shot
+    # 11's narration says "the city ... a ban" and names no force. The two
+    # agree. The DEFINITION the prohibition turns on is on p. 5 — "an automated
+    # or semi-automated process that assists in identifying or verifying an
+    # individual based on an individual's face" — a different page, and this
+    # panel is one page, so it is not marked.
+    dict(
+        n=11,
+        pdf=dict(
+            # the Clerk's stamped copy: p. 1 carries ORDINANCE NO. 103-19 in
+            # the header and the last leaf carries her certification that it
+            # was FINALLY PASSED on 5/21/2019, with the 10-1 roll the shot's
+            # own plate already cites. The document proves its own citation.
+            url="https://sfbos.org/sites/default/files/o0103-19.pdf",
+            page=11,
+            dpi=200,
+            # the INDEPENDENT publication the mark is checked against: the same
+            # instrument as Legistar serves it for File 190110, with a real
+            # text layer. Its header leaves ORDINANCE NO. blank because it is
+            # the version as amended in Board on 14 May; the words of 19B.2(d)
+            # are the same, which is the only thing it is asked.
+            verify="https://sfgov.legistar.com/View.ashx?M=F&ID=7226786&"
+                   "GUID=78A20A6B-F1D1-4044-AA15-82AF55D98040",
+        ),
+        find="it shall be unlawful for any Department",
+        marks=[
+            "(d) Notwithstanding the provisions of this Chapter 19B, it shall "
+            "be unlawful for any Department to obtain, retain, access, or use: "
+            "1) any Face Recognition Technology; or 2) any information "
+            "obtained from Face Recognition Technology.",
+        ],
+        vol="Ordinance No. 103-19, File 190110",
+        page="11",
+        when="finally passed 21 May 2019",
+        alt="Page 11 of San Francisco's enacted surveillance ordinance, with "
+            "the subsection that makes face recognition technology unlawful "
+            "for any city department marked.",
     ),
 ]
 
@@ -366,7 +450,154 @@ def resolve_leaf(item: str, pg: Page, guess: int) -> int:
     return best[1]
 
 
+# ── the second source kind: a PDF the city publishes itself ─────────────────
+#
+# The page is RENDERED and then READ, and the two steps are the same two the
+# Internet Archive path takes — it just does its own rendering and its own OCR
+# upstream and hands both over. Nothing below re-flows or retypes a word.
+
+# Chosen so this crop lands at the same pixel width as the three archive crops
+# (1,432 / 1,713 / 1,683 px), which is what the 530 px panel was tuned on. A
+# US Letter page at 200 dpi is 1,700 px wide and MIN_W_FRAC keeps 86 % of it.
+PDF_DPI = 200
+
+
+def fetch(url: str, path: str) -> str:
+    if not os.path.exists(path):
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        print(f"  fetching {url}", flush=True)
+        req = urllib.request.Request(url, headers={"User-Agent": "qipu-film-scans"})
+        with urllib.request.urlopen(req, timeout=180) as r:
+            open(path, "wb").write(r.read())
+    return path
+
+
+def ocr_words(im: Image.Image) -> list[tuple[str, tuple[int, int, int, int]]]:
+    """Every word tesseract reads off this image, with the box it read it in.
+
+    `--psm 6` — one uniform block — because a Board ordinance page IS one
+    column of body type; the default segmenter splits the numbered rule column
+    off as its own region and then interleaves it into the reading order."""
+    if not shutil.which("tesseract"):
+        sys.exit("  tesseract is not on PATH, and a scanned PDF has no text layer")
+    png = os.path.join(CACHE_PDF, "_ocr.png")
+    im.save(png)
+    r = subprocess.run(["tesseract", png, "stdout", "--psm", "6", "tsv"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit(f"  tesseract failed: {r.stderr[:200]}")
+    rows = [x for x in csv.DictReader(io.StringIO(r.stdout), delimiter="\t",
+                                      quoting=csv.QUOTE_NONE)
+            if (x.get("text") or "").strip()]
+    words = [(x["text"], (int(x["left"]), int(x["top"]),
+                          int(x["left"]) + int(x["width"]),
+                          int(x["top"]) + int(x["height"]))) for x in rows]
+    # ── THE RULED MARGINS ARE FURNITURE, NOT TEXT ──────────────────────────
+    # A Board ordinance is printed on numbered lines between two double vertical
+    # rules, and OCR reads all of it: "14", "15", "16" down the left margin and
+    # a column of "|" down each side land in the middle of the word stream, so
+    # a sentence that wraps three lines is not contiguous and `find_run` cannot
+    # see it. Two drops, and neither is a pixel constant:
+    #
+    #   1 · anything lying entirely outside the BODY COLUMN, whose two edges are
+    #       derived from the page's own long alphabetic words — so it follows
+    #       the page if the dpi or the margin changes.
+    #   2 · anything that survives `norm()` as nothing at all. A token with no
+    #       letter and no digit in it is a rule or a speck, not a word, and it
+    #       cannot contribute to a match — but it CAN start a run, which is how
+    #       a 2 px sliver of the right-hand rule ended up as the first
+    #       rectangle of shot 11's mark the first time this ran.
+    body = [w for w in words if len(w[0]) >= 4 and w[0].isalpha()]
+    if not body:
+        sys.exit("  no body words on this page")
+    colL = min(b[1][0] for b in body)
+    colR = max(b[1][2] for b in body)
+    kept = [w for w in words
+            if w[1][2] >= colL and w[1][0] <= colR
+            and re.search(r"[A-Za-z0-9]", norm(w[0]))]
+    print(f"  body column x {colL}..{colR}; dropped {len(words) - len(kept)} "
+          f"of {len(words)} words as margin rules, line numbers or specks",
+          flush=True)
+    return kept
+
+
+def pdf_text(path: str) -> str:
+    """The publisher's OWN machine-readable words, for `prove_pdf`. No boxes and
+    no rendering — this is only ever asked whether a phrase is in it."""
+    import fitz                                    # PyMuPDF, PDF path only
+    with fitz.open(path) as d:
+        return norm(" ".join(d[i].get_text() for i in range(d.page_count)))
+
+
+def prove_pdf(spec: dict, pg: "Page", im: Image.Image, marks: list) -> None:
+    """Two proofs, and they fail in different directions on purpose.
+
+    The archive path proves the LEAF, because the leaf is what no arithmetic
+    gives reliably. A PDF page has no such ambiguity — page 11 is page 11 — so
+    the thing worth proving here is that the MARK is right, and OCR is the only
+    thing standing between the page and the rectangle.
+
+    ONE  the marked phrase has to appear, word for word, in an INDEPENDENT
+         digital publication of the same instrument. OCR cannot fabricate
+         agreement with a text layer it never saw, so this proves the words
+         being marked are the record's words and not the reader's guess at them.
+    TWO  the marked rectangles are cut out of the rendered image and read AGAIN,
+         on their own. If a box were in the wrong place the crop would contain
+         different words. This proves the rectangle is on those pixels.
+    """
+    want = norm(" ".join(spec["marks"]))
+    v = pdf_text(fetch(spec["pdf"]["verify"],
+                       os.path.join(CACHE_PDF, f"verify-{spec['n']:02d}.pdf")))
+    if want not in v:
+        sys.exit(f"  shot {spec['n']}: the mark is not in the independent "
+                 f"publication of this instrument. Refusing to mark it.")
+    print("  proof 1/2 · the marked words are verbatim in the publisher's own "
+          "machine-readable text of the same ordinance", flush=True)
+
+    L = min(b[0] for b in marks); R = max(b[2] for b in marks)
+    T = min(b[1] for b in marks); B = max(b[3] for b in marks)
+    pad = int((B - T) * 0.04)
+    back = norm(pytess(im.crop((max(0, L - pad), max(0, T - pad),
+                                min(im.width, R + pad), min(im.height, B + pad)))))
+    # the rule column is inside that rectangle for a wrapped mark, so the line
+    # numbers come back with the words; the test is containment of the phrase
+    # with those digits removed, and nothing else is relaxed.
+    back = re.sub(r"\s\d{1,2}\s", " ", " " + back + " ")
+    back = re.sub(r"\s+", " ", back).strip()
+    if want not in back:
+        sys.exit(f"  shot {spec['n']}: the marked rectangle does not read back "
+                 f"as the phrase.\n    wanted {want[:90]!r}\n    read   {back[:90]!r}")
+    print("  proof 2/2 · the marked rectangle, re-read on its own, is that "
+          "phrase", flush=True)
+
+
+def pytess(im: Image.Image) -> str:
+    png = os.path.join(CACHE_PDF, "_back.png")
+    os.makedirs(CACHE_PDF, exist_ok=True)
+    im.save(png)
+    return subprocess.run(["tesseract", png, "stdout", "--psm", "6"],
+                          capture_output=True, text=True).stdout
+
+
+def pdf_page(spec: dict) -> tuple["Page", Image.Image]:
+    import fitz                                    # PyMuPDF, PDF path only
+    cfg = spec["pdf"]
+    path = fetch(cfg["url"], os.path.join(CACHE_PDF, f"shot-{spec['n']:02d}.pdf"))
+    with fitz.open(path) as d:
+        if not 1 <= cfg["page"] <= d.page_count:
+            sys.exit(f"  page {cfg['page']} is not in a {d.page_count}-page PDF")
+        pm = d[cfg["page"] - 1].get_pixmap(dpi=cfg.get("dpi", PDF_DPI))
+        im = Image.frombytes("RGB", (pm.width, pm.height), pm.samples)
+    print(f"  {os.path.basename(path)} p. {cfg['page']} rendered "
+          f"{im.width}x{im.height} at {cfg.get('dpi', PDF_DPI)} dpi", flush=True)
+    pg = Page(str(cfg["page"]), im.width, im.height, ocr_words(im))
+    pg.leaf = cfg["page"]
+    return pg, im
+
+
 def build(spec: dict) -> dict:
+    if "pdf" in spec:
+        return build_pdf(spec)
     item = spec["item"]
     print(f"shot {spec['n']} · {item}", flush=True)
     hits = []
@@ -383,14 +614,38 @@ def build(spec: dict) -> dict:
     # immediately below and the script exits if it cannot be.
     pg.leaf = resolve_leaf(item, pg, int(pg.suffix) - 3)
     print(f"  djvu {pg.suffix} -> leaf n{pg.leaf} · page {pg.w}x{pg.h}", flush=True)
+    marks = mark_boxes(spec, pg)
+    return compose(spec, pg, marks, image(item, pg.leaf),
+                   item=item, leaf=pg.leaf,
+                   url=f"https://archive.org/details/{item}/page/n{pg.leaf}/mode/1up")
 
+
+def build_pdf(spec: dict) -> dict:
+    """Shot 11's path. Same crop, same marks, a different record and a
+    different proof — see `prove_pdf` and the header's second-kind note."""
+    print(f"shot {spec['n']} · {spec['pdf']['url']}", flush=True)
+    pg, im = pdf_page(spec)
+    if norm(spec["find"]) not in pg.text:
+        sys.exit(f"  shot {spec['n']}: p. {pg.leaf} does not carry {spec['find']!r}")
+    marks = mark_boxes(spec, pg)
+    prove_pdf(spec, pg, im, marks)
+    return compose(spec, pg, marks, im,
+                   item=os.path.basename(spec["pdf"]["url"]), leaf=spec["pdf"]["page"],
+                   url=spec["pdf"]["url"])
+
+
+def mark_boxes(spec: dict, pg: "Page") -> list[tuple[int, int, int, int]]:
     marks: list[tuple[int, int, int, int]] = []
     for phrase in spec["marks"]:
         run = find_run(pg, phrase)
         if run is None:
             sys.exit(f"  shot {spec['n']}: leaf {pg.leaf} does not carry {phrase[:60]!r}")
         marks += boxes(pg, *run)
+    return marks
 
+
+def compose(spec: dict, pg: "Page", marks: list, im: Image.Image,
+            *, item: str, leaf: int, url: str) -> dict:
     L = min(b[0] for b in marks)
     R = max(b[2] for b in marks)
     T = min(b[1] for b in marks)
@@ -413,7 +668,6 @@ def build(spec: dict) -> dict:
     # opens or closes on a row of half-letters
     y0, y1 = snap(pg, y0, "up"), snap(pg, y1, "down")
 
-    im = image(item, pg.leaf)
     crop = im.crop((x0, y0, x1, y1))
     os.makedirs(OUT, exist_ok=True)
     name = f"shot-{spec['n']:02d}.jpg"
@@ -426,8 +680,7 @@ def build(spec: dict) -> dict:
         n=spec["n"],
         src=f"/data/us/sf/city/film/scans/{name}",
         w=cw, h=ch,
-        item=item, leaf=pg.leaf,
-        url=f"https://archive.org/details/{item}/page/n{pg.leaf}/mode/1up",
+        item=item, leaf=leaf, url=url,
         vol=spec["vol"], page=spec["page"], when=spec["when"], alt=spec["alt"],
         # fractions of the CROP, so the film draws the marks without knowing
         # anything about the page they came off

@@ -149,6 +149,39 @@
      "h": 0.03467799009200283
     }
    ]
+  },
+  {
+   "n": 11,
+   "src": "/data/us/sf/city/film/scans/shot-11.jpg",
+   "w": 1462,
+   "h": 982,
+   "item": "o0103-19.pdf",
+   "leaf": 11,
+   "url": "https://sfbos.org/sites/default/files/o0103-19.pdf",
+   "vol": "Ordinance No. 103-19, File 190110",
+   "page": "11",
+   "when": "finally passed 21 May 2019",
+   "alt": "Page 11 of San Francisco's enacted surveillance ordinance, with the subsection that makes face recognition technology unlawful for any city department marked.",
+   "hl": [
+    {
+     "x": 0.09986320109439124,
+     "y": 0.4154786150712831,
+     "w": 0.8679890560875513,
+     "h": 0.03360488798370672
+    },
+    {
+     "x": 0.032147742818057455,
+     "y": 0.48370672097759676,
+     "w": 0.9240766073871409,
+     "h": 0.031568228105906315
+    },
+    {
+     "x": 0.032147742818057455,
+     "y": 0.5529531568228105,
+     "w": 0.32147742818057456,
+     "h": 0.031568228105906315
+    }
+   ]
   }
  ]
 }
