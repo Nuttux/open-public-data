@@ -104,6 +104,7 @@ import {
   decadeGroups,
   railItems,
   railSilence,
+  stripFileNumber,
   hasMoney,
   hoodAt,
   hoodBusiest,
@@ -654,7 +655,7 @@ function BlockLead({ d, t }: { d: BlockDecision; t: (k: string) => string }) {
       <div className="fx-city-ledger-head">
         {tOr(t, "us.sf.thecity.panel.lead_head", "What the Board decided here")}
       </div>
-      <blockquote style={LEAD_QUOTE}>{`“${d.t.trim()}”`}</blockquote>
+      <blockquote style={LEAD_QUOTE}>{`“${stripFileNumber(d.t)}”`}</blockquote>
       <p className="fx-block-hint" style={LEAD_META}>
         {[
           whenOf(d),
@@ -1168,7 +1169,7 @@ function DecadeRow({
             close in all three cases. */}
         <span className="fx-block-line">
           {group.headline ? (
-            group.headline.t
+            stripFileNumber(group.headline.t)
           ) : silence === "damaged" ? (
             tOr(
               t,

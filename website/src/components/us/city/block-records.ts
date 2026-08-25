@@ -707,6 +707,38 @@ export function stripTruncation(line: string): string {
   return line.trim().replace(TRUNCATION_MARK, "").trim();
 }
 
+/**
+ * THE FILE NUMBER THE MODERN CLERK PRINTS FIRST.
+ *
+ * From 1999 the Board's minutes open an item with its legislative file number
+ * — `160119 [Multifamily Housing Revenue Bonds - Columbia Park Apartments…]`.
+ * The pre-1999 Journal never did this, so the pattern arrives with the modern
+ * series and nowhere else.
+ *
+ * MEASURED over the 256 published shards: **439 of the 6,579 rows from 1999 on
+ * (6.7%) open with six digits, and 419 of those are followed by the bracketed
+ * subject — `160119 [Multifamily Housing…`. Every one of those 419 is modern.**
+ * Six digits because that is the Clerk's own format: two for the year, four for
+ * the sequence, so `040976` is the 976th file of 2004.
+ *
+ * THE BRACKET IS PART OF THE TEST, NOT DECORATION. Thirty rows before 1999 also
+ * open with six digits and they are a different animal — `114210 (Second
+ * Series), a copy of which has been filed…` is an ordinance number the sentence
+ * needs, and `061132, Ordering the Improvement of the Crossing of…` reads as
+ * prose. Matching on the digits alone would cut the subject out of those. The
+ * twenty modern rows whose bracket the scanner read as `(` or `I` keep their
+ * number; a visible number is cheaper than a wrong cut.
+ *
+ * It is stripped FROM DISPLAY ONLY. It is a real handle on a real record and
+ * `d.t` keeps it; what it is not is the first thing a reader should have to
+ * read, and on a narrow panel it costs the whole first line.
+ */
+const LEADING_FILE_NO = /^\s*\d{6}\s+(?=\[)/;
+
+export function stripFileNumber(line: string): string {
+  return line.replace(LEADING_FILE_NO, "").trim();
+}
+
 /** whether a printed line can stand on its own as the face of a block */
 export function isPrintableLine(raw: string): boolean {
   const line = raw.trim();
