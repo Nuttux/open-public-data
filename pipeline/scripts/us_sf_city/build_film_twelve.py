@@ -110,13 +110,40 @@ SHOTS: list[dict] = [
     # A push in here would also be the most expensive thing in the piece —
     # FILM.md §15.1 measures a travel at 4 to 32 rasterisations and a locked
     # camera at zero — so the strongest image available is also the cheapest.
+    # `z` 2.05 -> 3.0 and the offset to (-0.16, 0.12), AND SHOT 2 MOVES BY
+    # EXACTLY THE SAME AMOUNT. Daniel, on shot 2: *"right now we see
+    # reconstruction from very zoomed out. i dont want street or block level
+    # but its too zoomed out and you cant really see."* Shot 2 opens on the
+    # frame this shot ends on and that match cut is the film's organising idea,
+    # so the two cameras move as one or the cut becomes a jump. Both moved,
+    # rather than pushing during shot 1, because NIGHT3 asks this shot to end
+    # on stillness held longer than is comfortable and a push would spend it.
+    #
+    # WHY 3.0 AND NOT MORE. At 3.7 the frame is handsomer still and the burn
+    # line's south-eastern run leaves the frame, which is the one mark the shot
+    # is built on. At 3.0 the whole boundary is closed inside the frame and the
+    # fabric still resolves building by building.
+    #
+    # WHY THE OFFSET IS NEGATIVE. `ox` moves the subject RIGHT, and shot 1
+    # carries the scanned page on the right 36 % of the frame from its first
+    # frame. At +0.16 the burned district sat under the page; at -0.16 the
+    # district fills the left 60 % and the page has the water.
+    #
+    # THE FLAMES ARE NOT RE-SIZED and that is deliberate. `FIRE_H_MAX` is 68
+    # DEVICE px, so a tighter camera makes a flame smaller relative to the
+    # buildings under it, not larger: at 3.0 a flame sits ON a structure
+    # instead of over a district. One variable.
     dict(n=1, id="burn", title="The earthquake, and the fire that followed",
-         t=(-122.409, 37.783), z=2.05, off=(0.0, 0.0), move=0, ms=11200,
+         t=(-122.409, 37.783), z=3.0, off=(-0.16, 0.12), move=0, ms=11200,
          st=(None, 1906)),
     # 2 · THE MATCH CUT. Same target, same z, no move. Nine years run under a
     # camera that does not move and the fabric comes back inside the hairline.
+    # THE MATCH CUT'S OTHER HALF. Every camera number here is shot 1's, to the
+    # digit, and has to stay that way — see shot 1's note. At 3.0 the buildings
+    # coming back INSIDE the burn line are legible one by one, which is what
+    # the shot claims and what it could not show at 2.05.
     dict(n=2, id="rebuild", title="The city rebuilds",
-         t=(-122.409, 37.783), z=2.05, off=(0.0, 0.0), move=0, ms=5600,
+         t=(-122.409, 37.783), z=3.0, off=(-0.16, 0.12), move=0, ms=5600,
          st=(1906, 1915), yrun=True),
     # 3 · THE PALACE. Down to the Marina. The rotunda's own published footprint
     # centroid, out of wonder/hero-data.js — the same ring the renderer draws.
@@ -125,8 +152,28 @@ SHOTS: list[dict] = [
     # class and no year, so no roof form is derivable for them — were a third
     # of the frame beside the subject. At 95 they are a band at the top left,
     # and the rotunda's columns, arches and lattice dome all resolve.
+    # `z` 95 -> 60 and the offset to (0.00, -0.06). Daniel: *"shot 3 is too
+    # zoomed in on the palace, its like microdetails of it — zoom out slightly
+    # from there."* At 60 the complex reads as A BUILDING ON ITS SITE: the
+    # colonnade's whole curve, the rotunda with its dome and peristyle, and the
+    # lagoon entire on the right.
+    #
+    # AND HERE IS THE WALL, because widening this shot has a floor. TWO ugly
+    # neighbours, and they behave in OPPOSITE directions:
+    #   · the grey and sage crescents that WRAP the rotunda are the Palace's own
+    #     colonnade wings, drawn as fabric with four rows of sash windows
+    #     (§23.3). No camera can frame them out — they are the subject's own
+    #     published footprints — but widening SHRINKS them, so 60 is better on
+    #     them than 95 was, not worse. The real fix is hero authoring.
+    #   · the two Montgomery Street barracks are what widening brings BACK, and
+    #     they are the reason a previous agent went to 95. At `ox` +0.12 they
+    #     are a mass along the whole left side; at -0.08 they are gone but the
+    #     right half is empty park and the copy plate lands on the colonnade's
+    #     foot. At 0.00 they stop at the left edge reading as background.
+    # So: 60 is the widest framing at which the barracks stay background, and
+    # the wings are a hero-authoring job at every zoom.
     dict(n=3, id="palace", title="The Panama-Pacific Exposition opens",
-         t=(-122.448403, 37.802924), z=95.0, off=(0.14, -0.10), move=1200, ms=6800,
+         t=(-122.448403, 37.802924), z=60.0, off=(0.00, -0.06), move=1200, ms=6800,
          st=(1912, 1915)),
     # 4 · THE WIDEST CAMERA IN THE FILM, and the only shot with two subjects.
     # It opens on empty water at 1915, runs to 1936, strokes the Bay Bridge

@@ -4403,3 +4403,102 @@ label with no subject under it.
 
 Fixing it needs one approved sentence per badge entity, which is copy and
 therefore Daniel's. **Reported, not invented.**
+
+## 35 · Block M1h — two framings from one viewing, and the walk they earned
+
+### 35.1 The match cut moves as one camera, or it stops being a match cut
+
+> *"shot 2 the rebuilding — right now we see reconstruction from very zoomed
+> out. i dont want street or block level but its too zoomed out and you cant
+> really see."*
+
+Shot 2 opens on the frame shot 1 ends on. **So both cameras move by exactly the
+same amount**, and `.parity/q14match.py` scouts them together — it patches BOTH
+shots in the served payload, then shoots the fire at its middle plus a
+four-frame sequence across the rebuild run, because a wide shot of a city
+gaining buildings is exactly the case where a single still lies. It restores the
+payload in a `finally`.
+
+**`z` 2.05 → 3.0, `off` (0, 0) → (−0.16, 0.12), on shots 1 and 2 alike.**
+
+- **3.0 and not 3.7.** At 3.7 the frame is handsomer still and **the burn line's
+  south-eastern run leaves the frame** — the one mark the shot is built on. At
+  3.0 the whole boundary closes inside the frame and the fabric still resolves
+  building by building.
+- **The offset is negative because `ox` moves the subject RIGHT**, and shot 1
+  carries the scanned page on the right 36 % from its first frame. At +0.16 the
+  burned district sat under the page; at −0.16 it fills the left 60 % and the
+  page has the water.
+- **Both moved rather than pushing during shot 1.** NIGHT3 asks shot 1 to end on
+  stillness held longer than is comfortable, and a push would spend it.
+
+**The flames are NOT re-sized, and the worry was the wrong way round.**
+`FIRE_H_MAX` is 68 **device** px, so a tighter camera makes a flame smaller
+relative to the buildings under it: at 2.05 a flame stood over a district, at
+3.0 it sits ON a structure. `out-q14/z3_-0p16_0p12-fire.png`. One variable.
+
+At 1909 (`out-q14/z3_-0p16_0p12-y1.png`) the Financial District, Chinatown, Nob
+Hill and South of Market are visibly refilling **inside the hairline**, one
+building at a time. That is what the shot claims and what it could not show.
+
+### 35.2 The Palace, and where the wall is
+
+> *"shot 3 is too zoomed in on the palace, its like microdetails of it"*
+
+**`z` 95 → 60, `off` (0.14, −0.10) → (0.00, −0.06).** The complex reads as a
+building on its site: the colonnade's whole curve, the rotunda with its dome and
+peristyle, the lagoon entire.
+
+**The wall, since it was asked for explicitly — and there are two neighbours,
+moving in opposite directions.**
+
+1. **The grey and sage crescents wrapping the rotunda are the Palace's OWN
+   colonnade wings** (§23.3), drawn as fabric with four rows of sash windows. No
+   camera can frame them out; they are the subject's published footprints.
+   **But widening SHRINKS them** — they are less prominent at 60 than they were
+   at 95, so this change improves them. The fix is hero authoring, an `arcade`
+   part on their own ring, and it is still open.
+2. **The two Montgomery Street barracks are what widening brings back**, and
+   they are why a previous agent went to 95. Measured across three offsets at
+   z 60: at `ox` **+0.12** they are a mass down the whole left side; at
+   **−0.08** they are gone but the right half is empty park and the copy plate
+   lands on the colonnade's foot; at **0.00** they stop at the left edge reading
+   as background while the lagoon fills the right.
+
+**So 60 is the widest framing at which the barracks stay background.** Below
+that they become a co-subject.
+
+### 35.3 All eleven, walked on the one question: can a viewer see the thing?
+
+`out-q11/sheet.png`, at 62 % of each shot.
+
+| # | the line is about | visible? |
+|---|---|---|
+| 1 | the fire inside the burn line | **yes, now** |
+| 2 | buildings coming back inside it | **yes, now** |
+| 3 | the Palace kept | **yes, now** |
+| 4 | two bridges | **NO — see below** |
+| 5 | four named streets | yes |
+| 6 | the war memorial | yes — its own colonnade, labelled, City Hall's dome whole behind |
+| 7 | freeways that were NOT built | by design there is nothing to see; the city's grain is the subject |
+| 8 | the Pyramid | yes |
+| 9 | the waterfront the vote gave back | yes |
+| 10 | Mission Bay | marginal — ringed and labelled, but downtown owns the frame (§26.2 rejected three tighter cameras and the reason still holds: at 2018 Mission Bay is low pale blocks on pale made ground) |
+| 11 | the whole city | by design |
+
+**Shot 4 is the one real remaining case, and it is a CONSTRAINT rather than a
+bad camera.** Its two subjects are 13 km apart, so any frame holding both is the
+whole-city fit and both are hairlines in it — which is also what §26.3 measured
+about the Golden Gate's deck (~3 px at this bearing, an honest consequence of
+two right decisions).
+
+Scouted anyway, `out-n3/frame-s04-*`: at **z 1.62, off (0.12, 0.10)** the Bay
+Bridge finally reads as a bridge — towers, suspension curve, deck — but the
+Presidio's north shore is at the top edge, so **the Golden Gate is cropped at
+1937**, which is the other half of the sentence. At 1.95 it is worse.
+
+**Not changed, and handed up rather than split silently.** The shape that would
+work is the one the shot already half has: it carries two runs and a build, so
+it could hold ONE bridge per framing and let the camera move between them on the
+1936 → 1937 run. That is a re-authoring of an approved shot and it is the
+coordinator's call.
