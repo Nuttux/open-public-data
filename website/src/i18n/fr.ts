@@ -4741,7 +4741,6 @@ const fr: Record<string, string> = {
   'us.sf.thecity.film.scan': 'Scan',
   'us.sf.thecity.film.data': 'Data',
   'us.sf.thecity.film.leaf': 'leaf',
-  'us.sf.thecity.film.not_on_map': 'Not on this map',
   'us.sf.thecity.film.pause': 'Pause',
   'us.sf.thecity.film.resume': 'Resume',
   'us.sf.thecity.film.replay': 'Replay',
