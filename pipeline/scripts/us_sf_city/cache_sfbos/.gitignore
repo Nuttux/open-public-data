@@ -1,0 +1,6 @@
+# The Clerk's PDFs (98 MB) and the extracted rows are both derived and
+# re-fetchable: `fetch_sfbos_minutes.py --fetch --extract`. The CALENDAR is not
+# derived — it is the measurement, 2,670 weekdays probed against sfbos.org on a
+# given day — so it is versioned, and so is the gap list it produces.
+pdf/
+items.jsonl
