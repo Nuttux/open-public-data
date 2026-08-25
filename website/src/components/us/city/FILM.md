@@ -4938,3 +4938,33 @@ Shot 9 still reads 1989 on every sample. The three remaining spans are the three
 `yrun` shots and nothing else.
 
 449 tests green, typecheck clean, `eslint` no new warnings.
+
+### 39.8 The travel out of shot 4 was the obvious regression, and it is not one
+
+`endCam` means shot 5's travel now departs from the **Golden Gate at z 6.0**
+instead of from the whole-city fit at z 1.26 — a pan across ~4.5 km at high
+zoom, which §30 says is the expensive kind. Raised, then counted rather than
+argued: `.parity/r5move.py` counts rasterisations per travel, which is pure
+logic and therefore comparable across servers.
+
+```
+   into  z from    z to   rasters
+      2    3.00    3.00        15
+      3    3.08   21.65         5
+      4   59.90    3.40         7
+      5    6.02    9.61         2      <- the one that was supposed to be worse
+      6   10.02   44.00         2
+      7   42.38    2.10        10
+      8    2.16   24.00         3
+      9   23.95    5.61         5
+     10    5.50    3.60         2
+     11    3.59    1.10         3
+                        total  54
+```
+
+**Two rasterisations — the joint cheapest travel in the film**, level with shots
+6 and 10. The cost in this renderer is the ZOOM swing and not the ground
+distance: every expensive row above is a big change in `z` (into 2 at 15, into 7
+at 10, into 3 and 4 at 5–7), and shot 4's new exit at 6.0 is much closer to
+shot 5's 9.6 than the old 1.26 was. §30.3's settled-buffer change is the other
+half of it.
