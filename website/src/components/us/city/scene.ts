@@ -1842,16 +1842,63 @@ export class CityScene {
 
   private filmPlaces: PlaceLabel[] | null = null;
   private filmPlacesFor = -1;
+  private filmPlacesYear = Number.NaN;
 
 
-  private placesForFrame(): readonly PlaceLabel[] {
+  /**
+   * THE TWELVE LARGEST THAT CAN BE NAMED ON THIS FRAME — cap AFTER the year
+   * gate, never before it.
+   *
+   * Capping first picks the twelve largest places in San Francisco, and those
+   * are the parks and the campuses: Golden Gate Park, Lake Merced, McLaren,
+   * the Zoo, SF State, City College. **No published City dataset dates any of
+   * them** (DRAW.md §33.8b), so each ships `year = 65535` and `placeNames`
+   * holds it on every dated frame. Eleven of the twelve were held, and the
+   * film's wide shots fell to a single name — the Golden Gate Bridge, and only
+   * from 1937.
+   *
+   * That is not an argument for putting the false years back. Before the hold,
+   * those eleven were the film's names *from 1906*, which drew a gazetteer of
+   * undated claims across dated frames. The answer is to choose the twelve out
+   * of what this year can actually carry, so the film keeps its twelve names
+   * and every one of them is defensible.
+   *
+   * The year therefore belongs in the cache key beside the cap. `NaN` opens as
+   * the "nothing cached" value precisely because `NaN !== NaN`, so the first
+   * call always misses however the film enters.
+   */
+  private placesForFrame(year?: number): readonly PlaceLabel[] {
     const cap = this.filmPlaceCap;
     if (cap === null) return this.places;
-    if (this.filmPlaces && this.filmPlacesFor === cap) return this.filmPlaces;
-    this.filmPlaces = [...this.places]
-      .sort((a, b) => b.spanM - a.spanM || a.name.localeCompare(b.name))
+    const key = year ?? -1;
+    if (this.filmPlaces && this.filmPlacesFor === cap && this.filmPlacesYear === key)
+      return this.filmPlaces;
+    // the same test `placeNames` applies, and only it: a name the frame's year
+    // has not reached yet cannot be one of the twelve. `until` is left to
+    // `placeNames` — a name that ENDS is still a name this frame may carry.
+    const live =
+      year === undefined
+        ? this.places
+        : this.places.filter((q) => q.year === undefined || year >= q.year);
+    // DESIGNATION BEFORE SIZE, and the register decides which — not taste.
+    // Span alone hands 1906 a list of pier sheds, because a bulkhead is long
+    // and a landmark is not: Pier 17 - Shed Building, Pier 19 1/2 - Bulkhead,
+    // Pier 48 - Shed A. Ordering the formally designated rows first gives the
+    // same frame the Ferry Building, the Chronicle Building, the Mills
+    // Building and the U.S. Mint — which is what `FILM.md` §8.3 means by one
+    // recognisable name beside another. `cls` is set from the designation
+    // registers themselves (Article 10, Article 11, the National Register),
+    // so this ranks by what the City designated, and size still breaks the
+    // tie inside each group.
+    const rank = (q: PlaceLabel) => (q.cls === "designated" ? 0 : 1);
+    this.filmPlaces = [...live]
+      .sort(
+        (a, b) =>
+          rank(a) - rank(b) || b.spanM - a.spanM || a.name.localeCompare(b.name),
+      )
       .slice(0, cap);
     this.filmPlacesFor = cap;
+    this.filmPlacesYear = key;
     return this.filmPlaces;
   }
 
@@ -1947,7 +1994,7 @@ export class CityScene {
          split is done here, by lane, rather than inside `placeNames`: each
          call uses only the budget of the lane it is handed, so the per-class
          ink allowance is unchanged. */
-      const pl = this.places.length ? this.placesForFrame() : [];
+      const pl = this.places.length ? this.placesForFrame(opts.year) : [];
       if (pl.length) {
         const des = pl.filter((q) => q.cls === "designated");
         if (des.length) {
