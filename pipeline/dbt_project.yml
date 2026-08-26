@@ -124,31 +124,7 @@ seeds:
         ode_date_recherche: STRING
         ode_source: STRING
 
-    # -------------------------------------------------------------------------
-    # Marseille — cache Bénéficiaire → Thématique
-    # (peuplé par enrich_thematique_marseille.py ; grounded secteur + keywords)
-    # -------------------------------------------------------------------------
-    # Règles place ↔ subventions des lieux Marseille (ex build_marseille_place_money.py):
-    # par lieu, une regex « operator » (le lieu est lui-même le bénéficiaire, seuil
-    # min_montant_total) et une regex « residents » (l'objet nomme le lieu,
-    # exclude_regex écarte les écoles homonymes, max_rows plafonne la liste).
-    seed_marseille_place_subventions_rules:
-      +column_types:
-        place_slug: STRING
-        relation: STRING
-        match_regex: STRING
-        exclude_regex: STRING
-        min_montant_total: FLOAT64
-        max_rows: INT64
-        note: STRING
 
-    seed_marseille_cache_thematique:
-      +column_types:
-        beneficiaire_normalise: STRING
-        ode_thematique: STRING
-        ode_sous_categorie: STRING
-        ode_confiance: FLOAT64
-        ode_source: STRING
 
     # -------------------------------------------------------------------------
     # Budget Voté (BP) extrait des PDFs éditique BG (2020-2026)
@@ -323,6 +299,65 @@ seeds:
     # Country seeds — US (ADR-0010 D3). `us_seeds` lands in the dbt_us_*
     # dataset family via macros/generate_schema_name.sql.
     # -------------------------------------------------------------------------
+    # Seeds nationaux / Marseille PDF : les CSV portent des décimaux ("150.0",
+    # "24580000.0") que l'inférence agate typait INT64 → load BigQuery en
+    # échec à chaque `dbt seed` prod depuis mai. Type explicite.
+    seed_drees_retraites_branches:
+      +column_types:
+        montant_md_eur: FLOAT64
+        share: FLOAT64
+    seed_etat_autres_ministeres:
+      +column_types:
+        montant_md_eur: FLOAT64
+        share: FLOAT64
+    seed_unedic_prestations:
+      +column_types:
+        montant_md_eur: FLOAT64
+        share: FLOAT64
+    seed_recettes_apu:
+      +column_types:
+        annual_eur_md: FLOAT64
+
+    # -------------------------------------------------------------------------
+    # seeds/cities/marseille/ — dbt resolves seed configs by FOLDER path, so a
+    # seed living here must be configured under cities → marseille (a block at
+    # the project root with the same name is silently ignored: that is how
+    # seed_pdf_investissements_2023/2024 kept an inferred INT64 `montant` and
+    # failed to load on every prod `dbt seed` since May).
+    # -------------------------------------------------------------------------
+    cities:
+      marseille:
+        seed_marseille_cache_thematique:
+          +column_types:
+            beneficiaire_normalise: STRING
+            ode_thematique: STRING
+            ode_sous_categorie: STRING
+            ode_confiance: FLOAT64
+            ode_source: STRING
+        # -------------------------------------------------------------------------
+        # Marseille — cache Bénéficiaire → Thématique
+        # (peuplé par enrich_thematique_marseille.py ; grounded secteur + keywords)
+        # -------------------------------------------------------------------------
+        # Règles place ↔ subventions des lieux Marseille (ex build_marseille_place_money.py):
+        # par lieu, une regex « operator » (le lieu est lui-même le bénéficiaire, seuil
+        # min_montant_total) et une regex « residents » (l'objet nomme le lieu,
+        # exclude_regex écarte les écoles homonymes, max_rows plafonne la liste).
+        seed_marseille_place_subventions_rules:
+          +column_types:
+            place_slug: STRING
+            relation: STRING
+            match_regex: STRING
+            exclude_regex: STRING
+            min_montant_total: FLOAT64
+            max_rows: INT64
+            note: STRING
+        seed_pdf_investissements_2023:
+          +column_types:
+            montant: FLOAT64
+        seed_pdf_investissements_2024:
+          +column_types:
+            montant: FLOAT64
+
     countries:
       us:
         +schema: us_seeds
