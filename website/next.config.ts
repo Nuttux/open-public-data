@@ -114,6 +114,17 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  /**
+   * TWO FACTS ABOUT HOW NEXT APPLIES THESE (collect-build-traces.js):
+   *   1. keys are matched with picomatch({ contains: true }) — so the '/' key
+   *      matches EVERY route, not just the landing;
+   *   2. excludes are applied AFTER includes, so an exclude always wins.
+   * Excluding `public/data/br/**` under '/' therefore stripped Recife's own
+   * JSON from the Recife routes: from the 25 Aug deploy every /br page 500'd
+   * in production (a clean webpack build traced 351 files for
+   * /br/city/recife/quem-recebe, none under public/data/br). Recife's ~17 MB
+   * now ride along everywhere; the SF city map (the 126 MB problem) stays out.
+   */
   outputFileTracingExcludes: {
     '/fr/**': ['./public/data/us/**', './public/data/br/**'],
     '/us/**': ['./public/data/br/**', './public/data/marseille/**',
@@ -150,14 +161,14 @@ const nextConfig: NextConfig = {
     // public/data/us/sf/city/** from routes that read it, and
     // /us/city/sf/the-city returned a Server Components render error on a live
     // site. An exclude whose blast radius you have not measured is a deletion.
-    '/@drawer/**': ['./public/data/us/sf/city/**', './public/data/br/**'],
+    '/@drawer/**': ['./public/data/us/sf/city/**'],
     // The two remaining routes over the ceiling, named ONE BY ONE rather than
     // by a glob whose reach I would be guessing at. Neither opens a map file.
-    '/': ['./public/data/us/sf/city/**', './public/data/br/**'],
-    '/comparer': ['./public/data/us/sf/city/**', './public/data/br/**'],
+    '/': ['./public/data/us/sf/city/**'],
+    '/comparer': ['./public/data/us/sf/city/**'],
     // The chart and poster endpoints render an image from a figure they are
     // handed. Neither opens the city map.
-    '/api/**': ['./public/data/us/sf/city/**', './public/data/br/**'],
+    '/api/**': ['./public/data/us/sf/city/**'],
   },
 
   async rewrites() {
