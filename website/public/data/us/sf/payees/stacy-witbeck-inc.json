@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-28T11:43:47.718614+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.906499+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "stacy-witbeck-inc",
@@ -19,7 +19,9 @@
   "2017": 3399655.2
  },
  "top_departments": [
-  "MTA Municipal Transprtn Agncy"
+  "MTA Municipal Transprtn Agncy",
+  "PRT Port",
+  "DPW GSA - Public Works"
  ],
  "profile": {
   "n_vouchers": 229,

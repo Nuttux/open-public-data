@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:33.387503+00:00",
+  "generated_at": "2026-08-26T18:07:42.115459+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -1250,16 +1250,6 @@
         "n_characters": 1
       },
       {
-        "code": "PUC",
-        "label": "PUC Public Utilities Commission",
-        "display_name": "Public Utilities Commission (water, power, sewer)",
-        "org_group_code": "02",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": -150945214.0,
-        "share_of_side": 0.0,
-        "n_characters": 2
-      },
-      {
         "code": "UNA",
         "label": "General Fund Unallocated",
         "display_name": null,
@@ -1268,6 +1258,16 @@
         "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
         "n_characters": 15
+      },
+      {
+        "code": "PUC",
+        "label": "PUC Public Utilities Commission",
+        "display_name": "Public Utilities Commission (water, power, sewer)",
+        "org_group_code": "02",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -150945214.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
       }
     ]
   },
@@ -3411,15 +3411,15 @@
       ],
       [
         "WAR",
-        "ELU",
-        -977000.0,
-        1
-      ],
-      [
-        "WAR",
         "095",
         977000.0,
         0
+      ],
+      [
+        "WAR",
+        "ELU",
+        -977000.0,
+        1
       ],
       [
         "DSS",
@@ -5825,15 +5825,15 @@
       ],
       [
         "DAT",
-        "ELS",
-        -1248820.0,
-        1
-      ],
-      [
-        "DAT",
         "865",
         1248820.0,
         0
+      ],
+      [
+        "DAT",
+        "ELS",
+        -1248820.0,
+        1
       ],
       [
         "WTR",
@@ -5933,15 +5933,15 @@
       ],
       [
         "ART",
-        "865",
-        902254.0,
-        0
-      ],
-      [
-        "ART",
         "ELS",
         -902254.0,
         1
+      ],
+      [
+        "ART",
+        "865",
+        902254.0,
+        0
       ],
       [
         "WAR",
@@ -5993,15 +5993,15 @@
       ],
       [
         "CPC",
-        "865",
-        749740.0,
-        0
-      ],
-      [
-        "CPC",
         "ELS",
         -749740.0,
         1
+      ],
+      [
+        "CPC",
+        "865",
+        749740.0,
+        0
       ],
       [
         "TTX",
@@ -6485,15 +6485,15 @@
       ],
       [
         "PDR",
-        "865",
-        100000.0,
-        0
-      ],
-      [
-        "PDR",
         "ELS",
         -100000.0,
         1
+      ],
+      [
+        "PDR",
+        "865",
+        100000.0,
+        0
       ],
       [
         "PDR",

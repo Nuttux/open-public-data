@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-28T11:43:47.717005+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.904923+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "y-m-c-a-of-san-francisco",
@@ -25,7 +25,10 @@
   "2017": 18859614.1
  },
  "top_departments": [
-  "CHF Children;Youth & Families"
+  "CHF Children;Youth & Families",
+  "HSA Human Services Agency",
+  "CFC Children & Families Commsn",
+  "DPH Public Health"
  ],
  "profile": {
   "n_vouchers": 6921,

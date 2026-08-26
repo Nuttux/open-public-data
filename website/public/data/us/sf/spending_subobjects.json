@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:19.675926+00:00",
+  "generated_at": "2026-08-26T18:07:26.281414+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "unit": "USD",
   "grain": "fiscal_year x sub_object_code (FY2018+)",
@@ -11928,8 +11928,8 @@
           },
           {
             "vendor": "BANK OF AMERICA NT & SA",
-            "department": "CSS Child Support Services",
-            "department_code": "CSS",
+            "department": "DBI Building Inspection",
+            "department_code": "DBI",
             "amount_usd": 7294.59
           },
           {
@@ -48052,14 +48052,14 @@
           },
           {
             "vendor": "BANK OF AMERICA NT & SA",
-            "department": "DBI Building Inspection",
-            "department_code": "DBI",
+            "department": "PUC Public Utilities Commsn",
+            "department_code": "PUC",
             "amount_usd": 10403.66
           },
           {
             "vendor": "BANK OF AMERICA NT & SA",
-            "department": "PUC Public Utilities Commsn",
-            "department_code": "PUC",
+            "department": "DBI Building Inspection",
+            "department_code": "DBI",
             "amount_usd": 10403.66
           },
           {
@@ -136970,14 +136970,14 @@
           },
           {
             "vendor": "BAY AREA AIR QUALITY MANAGEMENT DISTRICT",
-            "department": "FIR Fire Department",
-            "department_code": "FIR",
+            "department": "PUC Public Utilities Commsn",
+            "department_code": "PUC",
             "amount_usd": 4000.0
           },
           {
             "vendor": "BAY AREA AIR QUALITY MANAGEMENT DISTRICT",
-            "department": "PUC Public Utilities Commsn",
-            "department_code": "PUC",
+            "department": "FIR Fire Department",
+            "department_code": "FIR",
             "amount_usd": 4000.0
           }
         ],

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.572882+00:00",
+  "generated_at": "2026-08-26T18:07:56.121778+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -24478,15 +24478,6 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SELF HELP FOR THE ELDERLY",
-            "amount_usd": 3500.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "ASOCIACION MAYAB",
             "amount_usd": 3500.0,
             "n_vouchers": 2,
@@ -24497,6 +24488,15 @@
           },
           {
             "vendor": "LIVABLE CITY",
+            "amount_usd": 3500.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "SELF HELP FOR THE ELDERLY",
             "amount_usd": 3500.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -24532,15 +24532,6 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SAN FRANCISCO PARKS ALLIANCE",
-            "amount_usd": 1750.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "INDEPENDENT ARTS & MEDIA",
             "amount_usd": 1750.0,
             "n_vouchers": 1,
@@ -24556,6 +24547,15 @@
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": "nonprofit",
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "SAN FRANCISCO PARKS ALLIANCE",
+            "amount_usd": 1750.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
             "is_aggregation_line": false
           }
         ],
@@ -29115,7 +29115,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "LAW OFFICE OF FLOYD ANDREWS",
+            "vendor": "GABRIEL BASSAN",
             "amount_usd": 50000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -29124,7 +29124,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "GABRIEL BASSAN",
+            "vendor": "LAW OFFICE OF FLOYD ANDREWS",
             "amount_usd": 50000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -29486,7 +29486,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MARLTON AFFORDABLE HOUSING ASSOCIATES LP",
+            "vendor": "ECO PLEXUS INC",
             "amount_usd": 60000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -29504,7 +29504,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "ECO PLEXUS INC",
+            "vendor": "JOHN W KING SENIOR COMMUNITY",
             "amount_usd": 60000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -29513,7 +29513,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "JOHN W KING SENIOR COMMUNITY",
+            "vendor": "MARLTON AFFORDABLE HOUSING ASSOCIATES LP",
             "amount_usd": 60000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -34090,18 +34090,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SUCCESS CENTER SAN FRANCISCO",
+            "vendor": "SAMOAN COMMUNITY DEVELOPMENT CENTER INC",
             "amount_usd": 12000.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "SAMOAN COMMUNITY DEVELOPMENT CENTER INC",
+            "vendor": "SUCCESS CENTER SAN FRANCISCO",
             "amount_usd": 12000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -35698,21 +35698,21 @@
         "n_vendors": 6,
         "vendors": [
           {
-            "vendor": "TENDERLOIN HOUSING CLINIC INC",
-            "amount_usd": 20000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "ASIAN AMER ADVNCNG JSTC-ASIAN LAW CAUCUS",
             "amount_usd": 20000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "TENDERLOIN HOUSING CLINIC INC",
+            "amount_usd": 20000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           },
           {
@@ -37530,18 +37530,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "STEPHANIE NGUYEN",
+            "vendor": "HUNGRY MIND RECORDINGS INC",
             "amount_usd": 2000.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "HUNGRY MIND RECORDINGS INC",
+            "vendor": "STEPHANIE NGUYEN",
             "amount_usd": 2000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -37611,18 +37611,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "EQUAL RIGHTS ADVOCATES INC",
+            "vendor": "A C C W",
             "amount_usd": 200.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "A C C W",
+            "vendor": "EQUAL RIGHTS ADVOCATES INC",
             "amount_usd": 200.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,

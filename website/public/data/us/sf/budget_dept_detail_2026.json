@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.680762+00:00",
+  "generated_at": "2026-08-26T18:07:56.251958+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -10942,14 +10942,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581280",
-          "label": "DT SFGov TV Services",
+          "code": "581845",
+          "label": "GF-Police Accountability",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581845",
-          "label": "GF-Police Accountability",
+          "code": "581280",
+          "label": "DT SFGov TV Services",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -11025,16 +11025,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "JEROME REYES",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "KIJA LUCAS",
+            "vendor": "Cherisse Iris Torres Alcantara",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -11052,9 +11043,36 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Patricia Jameson",
+            "vendor": "Francesca Villa Mateo",
             "amount_usd": 3000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "JEROME REYES",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "JOHANNA POETHIG",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "KIJA LUCAS",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -11070,27 +11088,9 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Francesca Villa Mateo",
+            "vendor": "Patricia Jameson",
             "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "Cherisse Iris Torres Alcantara",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "JOHANNA POETHIG",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -11527,14 +11527,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "TRAVEL",
-          "label": "Travel",
+          "code": "EMPL_EXP",
+          "label": "Employee Expenses",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "EMPL_EXP",
-          "label": "Employee Expenses",
+          "code": "TRAVEL",
+          "label": "Travel",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         }
@@ -11643,7 +11643,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Stacey M. Carter",
+            "vendor": "Sew Frisco",
             "amount_usd": 137000.0,
             "n_vouchers": 3,
             "is_non_profit": false,
@@ -11652,7 +11652,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "Sew Frisco",
+            "vendor": "Stacey M. Carter",
             "amount_usd": 137000.0,
             "n_vouchers": 3,
             "is_non_profit": false,
@@ -15678,14 +15678,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581069",
-          "label": "Sr-DPW-Street Use & Mapping",
+          "code": "581580",
+          "label": "GF-Chs-Toxic Waste&Haz Mat Svc",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581580",
-          "label": "GF-Chs-Toxic Waste&Haz Mat Svc",
+          "code": "581069",
+          "label": "Sr-DPW-Street Use & Mapping",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
@@ -27525,14 +27525,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "RENTLSE_EQUIP",
-          "label": "Rents/Leases-Equipment",
+          "code": "MEMBER_FEE",
+          "label": "Membership Fees",
           "amount_usd": 4000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "MEMBER_FEE",
-          "label": "Membership Fees",
+          "code": "RENTLSE_EQUIP",
+          "label": "Rents/Leases-Equipment",
           "amount_usd": 4000.0,
           "is_transfer_adjustment": false
         },
@@ -29741,14 +29741,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581320",
-          "label": "GF-District Attorney",
+          "code": "581166",
+          "label": "GF-Immigrant and Language Serv",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581166",
-          "label": "GF-Immigrant and Language Serv",
+          "code": "581320",
+          "label": "GF-District Attorney",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
@@ -39568,14 +39568,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581180",
-          "label": "GF-Con-Fast Team",
+          "code": "581080",
+          "label": "Sr-Building Inspection",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581080",
-          "label": "Sr-Building Inspection",
+          "code": "581180",
+          "label": "GF-Con-Fast Team",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         }
@@ -41220,14 +41220,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581270",
-          "label": "GF-City Attorney-Legal Service",
+          "code": "581980",
+          "label": "GF-Tax Collector",
           "amount_usd": 75000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581980",
-          "label": "GF-Tax Collector",
+          "code": "581270",
+          "label": "GF-City Attorney-Legal Service",
           "amount_usd": 75000.0,
           "is_transfer_adjustment": false
         },
@@ -47878,21 +47878,21 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MIDSUMMER MOZART FESTIVAL",
-            "amount_usd": 500.0,
-            "n_vouchers": 1,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "COMMUNITY YOUTH CENTER SAN FRANCISCO",
             "amount_usd": 500.0,
             "n_vouchers": 1,
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": "nonprofit",
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "MIDSUMMER MOZART FESTIVAL",
+            "amount_usd": 500.0,
+            "n_vouchers": 1,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": null,
             "is_aggregation_line": false
           },
           {
@@ -47905,7 +47905,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SAN FRANCISCO STATE UNIVERSITY",
+            "vendor": "REAL OPTIONS FOR CITY KIDS",
             "amount_usd": 250.0,
             "n_vouchers": 1,
             "is_non_profit": true,
@@ -47914,7 +47914,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "REAL OPTIONS FOR CITY KIDS",
+            "vendor": "SAN FRANCISCO STATE UNIVERSITY",
             "amount_usd": 250.0,
             "n_vouchers": 1,
             "is_non_profit": true,

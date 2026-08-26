@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:33.396924+00:00",
+  "generated_at": "2026-08-26T18:07:42.125025+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -678,6 +678,16 @@
         "n_characters": 6
       },
       {
+        "code": "CII",
+        "label": "CII Commty Invest & Infrstrctr",
+        "display_name": "Community Investment & Infrastructure",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
         "code": "CCD",
         "label": "CCD SF Communtiy College Dist",
         "display_name": "SF Community College District",
@@ -691,16 +701,6 @@
         "code": "USD",
         "label": "USD County Education Office",
         "display_name": "County Office of Education",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
-      },
-      {
-        "code": "CII",
-        "label": "CII Commty Invest & Infrstrctr",
-        "display_name": "Community Investment & Infrastructure",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -1190,9 +1190,9 @@
         "n_characters": 2
       },
       {
-        "code": "CII",
-        "label": "CII Commty Invest & Infrstrctr",
-        "display_name": "Community Investment & Infrastructure",
+        "code": "USD",
+        "label": "USD County Education Office",
+        "display_name": "County Office of Education",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -1200,29 +1200,39 @@
         "n_characters": 0
       },
       {
-        "code": "SCI",
-        "label": "SCI Academy of Sciences",
-        "display_name": "Academy of Sciences",
-        "org_group_code": "05",
+        "code": "CTA",
+        "label": "CTA SF County Transprtn Auth",
+        "display_name": "County Transportation Authority",
+        "org_group_code": "02",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
         "n_characters": 0
       },
       {
-        "code": "LLB",
-        "label": "LLB Law Library",
-        "display_name": "Law Library",
-        "org_group_code": "05",
+        "code": "CSC",
+        "label": "CSC Civil Service Commission",
+        "display_name": "Civil Service Commission",
+        "org_group_code": "06",
         "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
+        "transfer_adjustment_usd": -360839.0,
         "share_of_side": 0.0,
-        "n_characters": 0
+        "n_characters": 2
       },
       {
-        "code": "USD",
-        "label": "USD County Education Office",
-        "display_name": "County Office of Education",
+        "code": "HRC",
+        "label": "HRC Human Rights Commission",
+        "display_name": "Human Rights Commission",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -99600.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
+      },
+      {
+        "code": "CII",
+        "label": "CII Commty Invest & Infrstrctr",
+        "display_name": "Community Investment & Infrastructure",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -1240,34 +1250,24 @@
         "n_characters": 0
       },
       {
-        "code": "CSC",
-        "label": "CSC Civil Service Commission",
-        "display_name": "Civil Service Commission",
-        "org_group_code": "06",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": -360839.0,
-        "share_of_side": 0.0,
-        "n_characters": 2
-      },
-      {
-        "code": "CTA",
-        "label": "CTA SF County Transprtn Auth",
-        "display_name": "County Transportation Authority",
-        "org_group_code": "02",
+        "code": "LLB",
+        "label": "LLB Law Library",
+        "display_name": "Law Library",
+        "org_group_code": "05",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
         "n_characters": 0
       },
       {
-        "code": "HRC",
-        "label": "HRC Human Rights Commission",
-        "display_name": "Human Rights Commission",
-        "org_group_code": "03",
+        "code": "SCI",
+        "label": "SCI Academy of Sciences",
+        "display_name": "Academy of Sciences",
+        "org_group_code": "05",
         "total_usd": 0.0,
-        "transfer_adjustment_usd": -99600.0,
+        "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
-        "n_characters": 2
+        "n_characters": 0
       }
     ]
   },
@@ -4373,15 +4373,15 @@
       ],
       [
         "CAT",
-        "EXP_RECOVERY",
-        62967693.0,
-        0
-      ],
-      [
-        "CAT",
         "ELS",
         -62967693.0,
         1
+      ],
+      [
+        "CAT",
+        "EXP_RECOVERY",
+        62967693.0,
+        0
       ],
       [
         "CON",
@@ -5141,15 +5141,15 @@
       ],
       [
         "DEM",
-        "ELS",
-        -2850558.0,
-        1
-      ],
-      [
-        "DEM",
         "EXP_RECOVERY",
         2850558.0,
         0
+      ],
+      [
+        "DEM",
+        "ELS",
+        -2850558.0,
+        1
       ],
       [
         "REG",
@@ -5158,14 +5158,14 @@
         0
       ],
       [
-        "ADM",
-        "BUS_TAX",
+        "DBI",
+        "INT_INV_INC",
         2500000.0,
         0
       ],
       [
-        "DBI",
-        "INT_INV_INC",
+        "ADM",
+        "BUS_TAX",
         2500000.0,
         0
       ],
@@ -5315,13 +5315,13 @@
       ],
       [
         "FIR",
-        "INTER_REV_FED",
+        "OPER_TFR_IN",
         1267894.0,
         0
       ],
       [
         "FIR",
-        "OPER_TFR_IN",
+        "INTER_REV_FED",
         1267894.0,
         0
       ],
@@ -5374,14 +5374,14 @@
         0
       ],
       [
-        "CON",
-        "OTH_REV",
+        "ADM",
+        "INTRAFD_TFR_IN",
         1000000.0,
         0
       ],
       [
-        "ADM",
-        "INTRAFD_TFR_IN",
+        "CON",
+        "OTH_REV",
         1000000.0,
         0
       ],
@@ -5411,15 +5411,15 @@
       ],
       [
         "DAT",
-        "ELS",
-        -807160.0,
-        1
-      ],
-      [
-        "DAT",
         "EXP_RECOVERY",
         807160.0,
         0
+      ],
+      [
+        "DAT",
+        "ELS",
+        -807160.0,
+        1
       ],
       [
         "ECN",
@@ -5446,14 +5446,14 @@
         0
       ],
       [
-        "WAR",
-        "UNAPP_FD_BAL",
+        "FAM",
+        "CHGS_FOR_SERVICES",
         750000.0,
         0
       ],
       [
-        "FAM",
-        "CHGS_FOR_SERVICES",
+        "WAR",
+        "UNAPP_FD_BAL",
         750000.0,
         0
       ],
@@ -5885,15 +5885,15 @@
       ],
       [
         "REG",
-        "ELS",
-        -70000.0,
-        1
-      ],
-      [
-        "REG",
         "EXP_RECOVERY",
         70000.0,
         0
+      ],
+      [
+        "REG",
+        "ELS",
+        -70000.0,
+        1
       ],
       [
         "CON",

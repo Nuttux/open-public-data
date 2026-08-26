@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:33.395623+00:00",
+  "generated_at": "2026-08-26T18:07:42.123583+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -678,6 +678,16 @@
         "n_characters": 6
       },
       {
+        "code": "CII",
+        "label": "CII Commty Invest & Infrstrctr",
+        "display_name": "Community Investment & Infrastructure",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
         "code": "CCD",
         "label": "CCD SF Communtiy College Dist",
         "display_name": "SF Community College District",
@@ -691,16 +701,6 @@
         "code": "USD",
         "label": "USD County Education Office",
         "display_name": "County Office of Education",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
-      },
-      {
-        "code": "CII",
-        "label": "CII Commty Invest & Infrstrctr",
-        "display_name": "Community Investment & Infrastructure",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -1180,29 +1180,29 @@
         "n_characters": 3
       },
       {
+        "code": "DPA",
+        "label": "DPA Police Accountabilty",
+        "display_name": "Police Accountability",
+        "org_group_code": "01",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -208000.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
+      },
+      {
+        "code": "SCI",
+        "label": "SCI Academy of Sciences",
+        "display_name": "Academy of Sciences",
+        "org_group_code": "05",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
         "code": "CCD",
         "label": "CCD SF Communtiy College Dist",
         "display_name": "SF Community College District",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
-      },
-      {
-        "code": "CII",
-        "label": "CII Commty Invest & Infrstrctr",
-        "display_name": "Community Investment & Infrastructure",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
-      },
-      {
-        "code": "USD",
-        "label": "USD County Education Office",
-        "display_name": "County Office of Education",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -1220,24 +1220,34 @@
         "n_characters": 0
       },
       {
-        "code": "SCI",
-        "label": "SCI Academy of Sciences",
-        "display_name": "Academy of Sciences",
-        "org_group_code": "05",
+        "code": "CII",
+        "label": "CII Commty Invest & Infrstrctr",
+        "display_name": "Community Investment & Infrastructure",
+        "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
         "n_characters": 0
       },
       {
-        "code": "CSC",
-        "label": "CSC Civil Service Commission",
-        "display_name": "Civil Service Commission",
-        "org_group_code": "06",
+        "code": "HRC",
+        "label": "HRC Human Rights Commission",
+        "display_name": "Human Rights Commission",
+        "org_group_code": "03",
         "total_usd": 0.0,
-        "transfer_adjustment_usd": -360839.0,
+        "transfer_adjustment_usd": -90000.0,
         "share_of_side": 0.0,
         "n_characters": 2
+      },
+      {
+        "code": "USD",
+        "label": "USD County Education Office",
+        "display_name": "County Office of Education",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
       },
       {
         "code": "CTA",
@@ -1250,22 +1260,12 @@
         "n_characters": 0
       },
       {
-        "code": "DPA",
-        "label": "DPA Police Accountabilty",
-        "display_name": "Police Accountability",
-        "org_group_code": "01",
+        "code": "CSC",
+        "label": "CSC Civil Service Commission",
+        "display_name": "Civil Service Commission",
+        "org_group_code": "06",
         "total_usd": 0.0,
-        "transfer_adjustment_usd": -208000.0,
-        "share_of_side": 0.0,
-        "n_characters": 2
-      },
-      {
-        "code": "HRC",
-        "label": "HRC Human Rights Commission",
-        "display_name": "Human Rights Commission",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": -90000.0,
+        "transfer_adjustment_usd": -360839.0,
         "share_of_side": 0.0,
         "n_characters": 2
       }
@@ -4390,13 +4390,13 @@
         0
       ],
       [
-        "REC",
+        "LIB",
         "PROP_TAX",
         65295000.0,
         0
       ],
       [
-        "LIB",
+        "REC",
         "PROP_TAX",
         65295000.0,
         0
@@ -4433,15 +4433,15 @@
       ],
       [
         "CON",
-        "EXP_RECOVERY",
-        60662117.0,
-        0
-      ],
-      [
-        "CON",
         "ELS",
         -60662117.0,
         1
+      ],
+      [
+        "CON",
+        "EXP_RECOVERY",
+        60662117.0,
+        0
       ],
       [
         "GEN",
@@ -4625,15 +4625,15 @@
       ],
       [
         "SHF",
-        "ELS",
-        -28359645.0,
-        1
-      ],
-      [
-        "SHF",
         "EXP_RECOVERY",
         28359645.0,
         0
+      ],
+      [
+        "SHF",
+        "ELS",
+        -28359645.0,
+        1
       ],
       [
         "DBI",
@@ -5147,15 +5147,15 @@
       ],
       [
         "ASR",
-        "ELS",
-        -3406174.0,
-        1
-      ],
-      [
-        "ASR",
         "EXP_RECOVERY",
         3406174.0,
         0
+      ],
+      [
+        "ASR",
+        "ELS",
+        -3406174.0,
+        1
       ],
       [
         "PRT",
@@ -5309,15 +5309,15 @@
       ],
       [
         "CPC",
-        "EXP_RECOVERY",
-        1813777.0,
-        0
-      ],
-      [
-        "CPC",
         "ELS",
         -1813777.0,
         1
+      ],
+      [
+        "CPC",
+        "EXP_RECOVERY",
+        1813777.0,
+        0
       ],
       [
         "FIR",
@@ -5405,13 +5405,13 @@
       ],
       [
         "FIR",
-        "INTER_REV_FED",
+        "OPER_TFR_IN",
         1267894.0,
         0
       ],
       [
         "FIR",
-        "OPER_TFR_IN",
+        "INTER_REV_FED",
         1267894.0,
         0
       ],
@@ -5537,15 +5537,15 @@
       ],
       [
         "CRT",
-        "ELS",
-        -666359.0,
-        1
-      ],
-      [
-        "CRT",
         "OPER_TFR_IN",
         666359.0,
         0
+      ],
+      [
+        "CRT",
+        "ELS",
+        -666359.0,
+        1
       ],
       [
         "DPH",
@@ -5644,14 +5644,14 @@
         0
       ],
       [
-        "CHF",
-        "OTH_REV",
+        "CAT",
+        "INTERGOV_REV_OTH",
         400000.0,
         0
       ],
       [
-        "CAT",
-        "INTERGOV_REV_OTH",
+        "CHF",
+        "OTH_REV",
         400000.0,
         0
       ],
@@ -5675,15 +5675,15 @@
       ],
       [
         "CSC",
-        "ELS",
-        -360839.0,
-        1
-      ],
-      [
-        "CSC",
         "EXP_RECOVERY",
         360839.0,
         0
+      ],
+      [
+        "CSC",
+        "ELS",
+        -360839.0,
+        1
       ],
       [
         "ADP",
@@ -5837,15 +5837,15 @@
       ],
       [
         "BOS",
-        "ELS",
-        -161996.0,
-        1
-      ],
-      [
-        "BOS",
         "EXP_RECOVERY",
         161996.0,
         0
+      ],
+      [
+        "BOS",
+        "ELS",
+        -161996.0,
+        1
       ],
       [
         "ECN",
@@ -5915,15 +5915,15 @@
       ],
       [
         "RET",
-        "ELS",
-        -110000.0,
-        1
-      ],
-      [
-        "RET",
         "EXP_RECOVERY",
         110000.0,
         0
+      ],
+      [
+        "RET",
+        "ELS",
+        -110000.0,
+        1
       ],
       [
         "DPH",
@@ -5939,15 +5939,15 @@
       ],
       [
         "PDR",
-        "EXP_RECOVERY",
-        100000.0,
-        0
-      ],
-      [
-        "PDR",
         "ELS",
         -100000.0,
         1
+      ],
+      [
+        "PDR",
+        "EXP_RECOVERY",
+        100000.0,
+        0
       ],
       [
         "REG",
@@ -5998,14 +5998,14 @@
         0
       ],
       [
-        "AIR",
-        "EXP_RECOVERY",
+        "CHF",
+        "INT_INV_INC",
         80000.0,
         0
       ],
       [
-        "CHF",
-        "INT_INV_INC",
+        "AIR",
+        "EXP_RECOVERY",
         80000.0,
         0
       ],
@@ -6040,13 +6040,13 @@
         0
       ],
       [
-        "ART",
+        "GEN",
         "OTH_REV",
         50000.0,
         0
       ],
       [
-        "GEN",
+        "ART",
         "OTH_REV",
         50000.0,
         0
@@ -6089,13 +6089,13 @@
       ],
       [
         "LIB",
-        "OTH_REV",
+        "OPER_TFR_IN",
         20000.0,
         0
       ],
       [
         "LIB",
-        "OPER_TFR_IN",
+        "OTH_REV",
         20000.0,
         0
       ],
@@ -6112,14 +6112,14 @@
         0
       ],
       [
-        "PRT",
-        "EXP_RECOVERY",
+        "JUV",
+        "OTH_REV",
         10000.0,
         0
       ],
       [
-        "JUV",
-        "OTH_REV",
+        "PRT",
+        "EXP_RECOVERY",
         10000.0,
         0
       ],

@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-28T11:43:47.692484+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.881068+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "san-francisco-county-transportation-auth",
@@ -35,7 +35,10 @@
   "2027": 15000000.0
  },
  "top_departments": [
-  "CTA SF County Transprtn Auth"
+  "CTA SF County Transprtn Auth",
+  "ADM Gen Svcs Agency-City Admin",
+  "MTA Municipal Transprtn Agncy",
+  "CII Commty Invest & Infrstrctr"
  ],
  "profile": {
   "n_vouchers": 364,

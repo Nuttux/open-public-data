@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.550149+00:00",
+  "generated_at": "2026-08-26T18:07:56.090182+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -8315,14 +8315,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "024",
-          "label": "Membership Fees",
+          "code": "031",
+          "label": "Rents & Leases-Equipment",
           "amount_usd": 20000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "031",
-          "label": "Rents & Leases-Equipment",
+          "code": "024",
+          "label": "Membership Fees",
           "amount_usd": 20000.0,
           "is_transfer_adjustment": false
         },
@@ -27961,6 +27961,15 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "BAY AREA CONTRACT COMPLIANCE OFFCRS ASSO",
+            "amount_usd": 150.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "CALIFORNIA ASSOC OF HUMAN RELATIONS ORGN",
             "amount_usd": 150.0,
             "n_vouchers": 1,
@@ -27973,15 +27982,6 @@
             "vendor": "JUNGLE COMMUNICATIONS INC",
             "amount_usd": 150.0,
             "n_vouchers": 2,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "BAY AREA CONTRACT COMPLIANCE OFFCRS ASSO",
-            "amount_usd": 150.0,
-            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -31086,21 +31086,21 @@
         "n_vendors": 3,
         "vendors": [
           {
-            "vendor": "FIRST AMERICAN TITLE COMPANY",
-            "amount_usd": 40000.0,
-            "n_vouchers": 2,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "BANK OF AMERICA NA",
             "amount_usd": 40000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": "fiscal_agent_debt_service",
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "FIRST AMERICAN TITLE COMPANY",
+            "amount_usd": 40000.0,
+            "n_vouchers": 2,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
             "is_aggregation_line": false
           }
         ],

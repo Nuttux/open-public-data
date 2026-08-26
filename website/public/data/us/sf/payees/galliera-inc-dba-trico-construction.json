@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-28T11:43:47.722012+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.910042+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "galliera-inc-dba-trico-construction",
@@ -35,7 +35,10 @@
   "2027": 2302.11
  },
  "top_departments": [
-  "DPW GSA - Public Works"
+  "AIR Airport Commission",
+  "DPW GSA - Public Works",
+  "DPW Public Works",
+  "PUC Public Utilities Commsn"
  ],
  "profile": {
   "n_vouchers": 1195,

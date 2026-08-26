@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-28T11:43:47.720940+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.908841+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "ca-dept-of-tax-fee-admin-boe",
@@ -23,7 +23,10 @@
   "2026": 9266695.19
  },
  "top_departments": [
-  "CON Controller"
+  "CON Controller",
+  "PUC Public Utilities Commsn",
+  "DPH Public Health",
+  "GEN General City - Unallocated"
  ],
  "profile": {
   "n_vouchers": 477,

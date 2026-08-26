@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-25T17:59:47.895647+00:00",
+ "generated_at": "2026-08-26T18:08:34.336037+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "country": "br",
  "scale": "city",
@@ -287,7 +287,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 7,
-   "tema": "Infraestrutura e obras",
+   "tema": "Infraestrutura urbana",
    "resumo": "Empresa especializada em gestão ambiental e tratamento de resíduos."
   },
   {
@@ -296,9 +296,9 @@
    "total_pago": 109573139.92,
    "subvencao_pago": 0.0,
    "is_subvencao": false,
-   "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
+   "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 3,
-   "tema": "Saúde e assistência",
+   "tema": "Alimentação e eventos",
    "resumo": "Empresa de comércio, possivelmente fornecedora de produtos diversos."
   },
   {
@@ -342,7 +342,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 3,
-   "tema": "Educação",
+   "tema": "Indústria e produção",
    "resumo": "Empresa de indústria e comércio, possivelmente fornecedora de materiais ou equipamentos."
   },
   {
@@ -353,7 +353,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 14,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços técnicos",
    "resumo": "Empresa de engenharia, especializada em obras de concreto e revestimentos."
   },
   {
@@ -375,7 +375,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 18,
-   "tema": "Saúde e assistência",
+   "tema": "Sociedade civil",
    "resumo": "Sindicato de empresas de transporte de passageiros, gestor do sistema de bilhetagem eletrônica."
   },
   {
@@ -386,7 +386,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SANEAMENTO",
    "n_contratos": 0,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": "Consórcio responsável pela construção e operação de estações de tratamento de esgoto."
   },
   {
@@ -408,7 +408,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 8,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços administrativos",
    "resumo": "Empresa que administra cartões de benefícios como vale-alimentação e vale-refeição."
   },
   {
@@ -430,7 +430,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 22,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": "Empresa de conservação e limpeza de imóveis e espaços públicos."
   },
   {
@@ -452,7 +452,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 2,
-   "tema": "Saúde e assistência",
+   "tema": "Infraestrutura e obras",
    "resumo": "Empresa de construção civil especializada em obras de engenharia."
   },
   {
@@ -463,7 +463,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 15,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": "Empresa prestadora de serviços terceirizados, como limpeza e apoio operacional."
   },
   {
@@ -474,7 +474,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 8,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços administrativos",
    "resumo": "Empresa de engenharia que executa obras de infraestrutura urbana."
   },
   {
@@ -485,7 +485,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ADMINISTRAÇÃO",
    "n_contratos": 2,
-   "tema": "Gestão pública",
+   "tema": "Serviços técnicos",
    "resumo": "Agência de publicidade e propaganda."
   },
   {
@@ -496,7 +496,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 7,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": "Empresa de terceirização de mão de obra e serviços administrativos."
   },
   {
@@ -507,7 +507,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
    "n_contratos": 47,
-   "tema": "Segurança urbana",
+   "tema": "Serviços administrativos",
    "resumo": "Empresa de locação de veículos (aluguel de carros e frotas)."
   },
   {
@@ -518,7 +518,7 @@
    "is_subvencao": false,
    "principal_orgao": "GAB. DE GERENC. DO PROG. DE REQUALIF. E RESILÊNCIA URB. EM ÁREAS DE VULNERABILIDADE SOCIOAMB.-PROMOR",
    "n_contratos": 19,
-   "tema": "Outros",
+   "tema": "Serviços técnicos",
    "resumo": "Empresa de engenharia e consultoria técnica para projetos urbanos."
   },
   {
@@ -540,7 +540,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 9,
-   "tema": "Saúde e assistência",
+   "tema": "Infraestrutura e obras",
    "resumo": "Empresa de planejamento e execução de obras civis."
   },
   {
@@ -551,7 +551,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
    "n_contratos": 9,
-   "tema": "Saúde e assistência",
+   "tema": "Infraestrutura e obras",
    "resumo": "Empresa prestadora de serviços terceirizados."
   },
   {
@@ -562,7 +562,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
    "n_contratos": 21,
-   "tema": "Outros",
+   "tema": "Serviços técnicos",
    "resumo": "Empresa especializada em serviços de iluminação pública."
   },
   {
@@ -573,7 +573,7 @@
    "is_subvencao": false,
    "principal_orgao": "ENCARGOS GERAIS DO MUNICÍPIO",
    "n_contratos": 0,
-   "tema": "Outros",
+   "tema": "Gestão pública",
    "resumo": "Fundo previdenciário municipal que administra a aposentadoria dos servidores."
   },
   {
@@ -595,7 +595,7 @@
    "is_subvencao": false,
    "principal_orgao": "GAB. DE GERENC. DO PROG. DE REQUALIF. E RESILÊNCIA URB. EM ÁREAS DE VULNERABILIDADE SOCIOAMB.-PROMOR",
    "n_contratos": 23,
-   "tema": "Outros",
+   "tema": "Serviços técnicos",
    "resumo": "Empresa de arquitetura e engenharia para projetos urbanos."
   },
   {
@@ -606,7 +606,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 14,
-   "tema": "Saúde e assistência",
+   "tema": "Infraestrutura e obras",
    "resumo": "Empresa de engenharia que provavelmente executa obras e reformas."
   },
   {
@@ -626,9 +626,9 @@
    "total_pago": 35499133.39,
    "subvencao_pago": 0.0,
    "is_subvencao": false,
-   "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+   "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 0,
-   "tema": "Infraestrutura e obras",
+   "tema": "Infraestrutura urbana",
    "resumo": "Companhia estadual responsável pelo abastecimento de água e esgoto em Pernambuco."
   },
   {
@@ -639,7 +639,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços técnicos",
    "resumo": "Consórcio de empresas de engenharia para execução de obras públicas."
   },
   {
@@ -650,7 +650,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ADMINISTRAÇÃO",
    "n_contratos": 2,
-   "tema": "Gestão pública",
+   "tema": "Serviços técnicos",
    "resumo": "Empresa de comunicação, provavelmente prestando serviços de telefonia ou publicidade."
   },
   {
@@ -661,7 +661,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 1,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": "Empresa de vigilância e segurança patrimonial."
   },
   {
@@ -672,7 +672,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 33,
-   "tema": "Saúde e assistência",
+   "tema": "Comércio e suprimentos",
    "resumo": "Empresa de telecomunicações, provavelmente fornecendo internet ou telefonia."
   },
   {
@@ -683,7 +683,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SANEAMENTO",
    "n_contratos": 0,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": "Consórcio de empresas de engenharia voltado a obras de saneamento."
   },
   {
@@ -694,7 +694,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 9,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": "Empresa de vigilância e segurança patrimonial."
   },
   {
@@ -705,7 +705,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 23,
-   "tema": "Educação",
+   "tema": "Infraestrutura e obras",
    "resumo": "Empresa de engenharia que executa obras e reformas prediais."
   },
   {
@@ -716,7 +716,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 7,
-   "tema": "Educação",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -738,7 +738,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
    "n_contratos": 58,
-   "tema": "Saúde e assistência",
+   "tema": "Cultura, esporte e lazer",
    "resumo": null
   },
   {
@@ -749,7 +749,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 9,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -760,7 +760,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ADMINISTRAÇÃO - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "resumo": null
   },
   {
@@ -771,7 +771,7 @@
    "is_subvencao": false,
    "principal_orgao": "GAB. DE GERENC. DO PROG. DE REQUALIF. E RESILÊNCIA URB. EM ÁREAS DE VULNERABILIDADE SOCIOAMB.-PROMOR",
    "n_contratos": 11,
-   "tema": "Outros",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -793,7 +793,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
    "n_contratos": 9,
-   "tema": "Saúde e assistência",
+   "tema": "Sociedade civil",
    "resumo": null
   },
   {
@@ -826,7 +826,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 23,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -837,7 +837,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 46,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -848,7 +848,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 8,
-   "tema": "Saúde e assistência",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -881,7 +881,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
    "n_contratos": 13,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -903,7 +903,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 10,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -936,7 +936,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 31,
-   "tema": "Saúde e assistência",
+   "tema": "Tecnologia e comunicação",
    "resumo": null
   },
   {
@@ -947,7 +947,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 4,
-   "tema": "Educação",
+   "tema": "Comércio e suprimentos",
    "resumo": null
   },
   {
@@ -991,7 +991,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 2,
-   "tema": "Segurança urbana",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1013,7 +1013,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 36,
-   "tema": "Educação",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1035,7 +1035,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 42,
-   "tema": "Segurança urbana",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1046,7 +1046,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 13,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1057,7 +1057,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 12,
-   "tema": "Saúde e assistência",
+   "tema": "Tecnologia e comunicação",
    "resumo": null
   },
   {
@@ -1068,7 +1068,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 37,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1079,7 +1079,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Saúde e assistência",
+   "tema": "Comércio e suprimentos",
    "resumo": null
   },
   {
@@ -1088,9 +1088,9 @@
    "total_pago": 22003943.08,
    "subvencao_pago": 0.0,
    "is_subvencao": false,
-   "principal_orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA",
+   "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 5,
-   "tema": "Outros",
+   "tema": "Sociedade civil",
    "resumo": null
   },
   {
@@ -1112,7 +1112,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ADMINISTRAÇÃO - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "resumo": null
   },
   {
@@ -1123,7 +1123,7 @@
    "is_subvencao": false,
    "principal_orgao": "GAB. DE GERENC. DO PROG. DE REQUALIF. E RESILÊNCIA URB. EM ÁREAS DE VULNERABILIDADE SOCIOAMB.-PROMOR",
    "n_contratos": 4,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1145,7 +1145,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 11,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1167,7 +1167,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 8,
-   "tema": "Saúde e assistência",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1178,7 +1178,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 3,
-   "tema": "Infraestrutura e obras",
+   "tema": "Indústria e produção",
    "resumo": null
   },
   {
@@ -1189,7 +1189,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 10,
-   "tema": "Educação",
+   "tema": "Indústria e produção",
    "resumo": null
   },
   {
@@ -1200,7 +1200,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ADMINISTRAÇÃO - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "resumo": null
   },
   {
@@ -1222,7 +1222,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SANEAMENTO",
    "n_contratos": 0,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1233,7 +1233,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 28,
-   "tema": "Segurança urbana",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1255,7 +1255,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 45,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1266,7 +1266,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SANEAMENTO",
    "n_contratos": 1,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1277,7 +1277,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ESPORTES",
    "n_contratos": 3,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Serviços financeiros",
    "resumo": null
   },
   {
@@ -1288,7 +1288,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 12,
-   "tema": "Segurança urbana",
+   "tema": "Transporte e mobilidade",
    "resumo": null
   },
   {
@@ -1299,7 +1299,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 2,
-   "tema": "Educação",
+   "tema": "Tecnologia e comunicação",
    "resumo": null
   },
   {
@@ -1310,7 +1310,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 5,
-   "tema": "Educação",
+   "tema": "Indústria e produção",
    "resumo": null
   },
   {
@@ -1321,7 +1321,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 4,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1354,7 +1354,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 50,
-   "tema": "Segurança urbana",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1365,7 +1365,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 16,
-   "tema": "Educação",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1376,7 +1376,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 6,
-   "tema": "Saúde e assistência",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1387,7 +1387,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 4,
-   "tema": "Educação",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1409,7 +1409,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SANEAMENTO",
    "n_contratos": 0,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1420,7 +1420,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ADMINISTRAÇÃO - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "resumo": null
   },
   {
@@ -1431,7 +1431,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 3,
-   "tema": "Gestão pública",
+   "tema": "Serviços financeiros",
    "resumo": null
   },
   {
@@ -1442,7 +1442,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ADMINISTRAÇÃO - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "resumo": null
   },
   {
@@ -1475,7 +1475,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 3,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1497,7 +1497,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 12,
-   "tema": "Segurança urbana",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1519,7 +1519,7 @@
    "is_subvencao": false,
    "principal_orgao": "ENCARGOS GERAIS DO MUNICÍPIO",
    "n_contratos": 2,
-   "tema": "Outros",
+   "tema": "Serviços financeiros",
    "resumo": null
   },
   {
@@ -1530,7 +1530,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SANEAMENTO",
    "n_contratos": 27,
-   "tema": "Outros",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1541,7 +1541,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 10,
-   "tema": "Saúde e assistência",
+   "tema": "Tecnologia e comunicação",
    "resumo": null
   },
   {
@@ -1552,7 +1552,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
    "n_contratos": 33,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1563,7 +1563,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 3,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1574,7 +1574,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 11,
-   "tema": "Saúde e assistência",
+   "tema": "Comércio e suprimentos",
    "resumo": null
   },
   {
@@ -1585,7 +1585,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 3,
-   "tema": "Gestão pública",
+   "tema": "Tecnologia e comunicação",
    "resumo": null
   },
   {
@@ -1596,7 +1596,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE PLANEJAMENTO, GESTÃO E TRANSFORMAÇÃO DIGITAL",
    "n_contratos": 0,
-   "tema": "Gestão pública",
+   "tema": "Imóveis e locação",
    "resumo": null
   },
   {
@@ -1607,7 +1607,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 6,
-   "tema": "Educação",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1618,7 +1618,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 32,
-   "tema": "Saúde e assistência",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1629,7 +1629,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 13,
-   "tema": "Educação",
+   "tema": "Comércio e suprimentos",
    "resumo": null
   },
   {
@@ -1640,7 +1640,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1651,7 +1651,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 5,
-   "tema": "Saúde e assistência",
+   "tema": "Comércio e suprimentos",
    "resumo": null
   },
   {
@@ -1662,7 +1662,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 13,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1673,7 +1673,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 16,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1684,7 +1684,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ADMINISTRAÇÃO - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "resumo": null
   },
   {
@@ -1695,7 +1695,7 @@
    "is_subvencao": false,
    "principal_orgao": "GAB. DE GERENC. DO PROG. DE REQUALIF. E RESILÊNCIA URB. EM ÁREAS DE VULNERABILIDADE SOCIOAMB.-PROMOR",
    "n_contratos": 14,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1706,7 +1706,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 6,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1717,7 +1717,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 25,
-   "tema": "Educação",
+   "tema": "Tecnologia e comunicação",
    "resumo": null
   },
   {
@@ -1728,7 +1728,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 15,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1739,7 +1739,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE FINANÇAS",
    "n_contratos": 2,
-   "tema": "Outros",
+   "tema": "Tecnologia e comunicação",
    "resumo": null
   },
   {
@@ -1750,7 +1750,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ADMINISTRAÇÃO - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Gestão pública",
+   "tema": "Saúde e assistência",
    "resumo": null
   },
   {
@@ -1761,7 +1761,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
    "n_contratos": 1,
-   "tema": "Segurança urbana",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1772,7 +1772,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 7,
-   "tema": "Educação",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1781,7 +1781,7 @@
    "total_pago": 11067528.58,
    "subvencao_pago": 0.0,
    "is_subvencao": false,
-   "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+   "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
    "n_contratos": 4,
    "tema": "Infraestrutura e obras",
    "resumo": null
@@ -1794,7 +1794,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE TURISMO E LAZER",
    "n_contratos": 1,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1816,7 +1816,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
    "n_contratos": 3,
-   "tema": "Segurança urbana",
+   "tema": "Comércio e suprimentos",
    "resumo": null
   },
   {
@@ -1838,7 +1838,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Infraestrutura e obras",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1849,7 +1849,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 11,
-   "tema": "Educação",
+   "tema": "Comércio e suprimentos",
    "resumo": null
   },
   {
@@ -1871,7 +1871,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 8,
-   "tema": "Educação",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1882,7 +1882,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 1,
-   "tema": "Segurança urbana",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1904,7 +1904,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 3,
-   "tema": "Educação",
+   "tema": "Comércio e suprimentos",
    "resumo": null
   },
   {
@@ -1915,7 +1915,7 @@
    "is_subvencao": false,
    "principal_orgao": "GAB. DE GERENC. DO PROG. DE REQUALIF. E RESILÊNCIA URB. EM ÁREAS DE VULNERABILIDADE SOCIOAMB.-PROMOR",
    "n_contratos": 0,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1926,7 +1926,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ESPORTES",
    "n_contratos": 4,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -1937,7 +1937,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 5,
-   "tema": "Educação",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1948,7 +1948,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
    "n_contratos": 3,
-   "tema": "Outros",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -1970,7 +1970,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 3,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -1981,7 +1981,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 1,
-   "tema": "Educação",
+   "tema": "Indústria e produção",
    "resumo": null
   },
   {
@@ -1992,7 +1992,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE",
    "n_contratos": 8,
-   "tema": "Saúde e assistência",
+   "tema": "Alimentação e eventos",
    "resumo": null
   },
   {
@@ -2003,7 +2003,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ADMINISTRAÇÃO - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 1,
-   "tema": "Gestão pública",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -2014,7 +2014,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DA MULHER",
    "n_contratos": 31,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -2025,7 +2025,7 @@
    "is_subvencao": false,
    "principal_orgao": "GAB. DE GERENC. DO PROG. DE REQUALIF. E RESILÊNCIA URB. EM ÁREAS DE VULNERABILIDADE SOCIOAMB.-PROMOR",
    "n_contratos": 5,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -2036,7 +2036,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 33,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -2047,7 +2047,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Segurança urbana",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -2058,7 +2058,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
    "n_contratos": 3,
-   "tema": "Segurança urbana",
+   "tema": "Serviços técnicos",
    "resumo": null
   },
   {
@@ -2069,7 +2069,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
    "n_contratos": 0,
-   "tema": "Educação",
+   "tema": "Gestão pública",
    "resumo": null
   },
   {
@@ -2080,7 +2080,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
    "n_contratos": 1,
-   "tema": "Saúde e assistência",
+   "tema": "Alimentação e eventos",
    "resumo": null
   },
   {
@@ -2102,7 +2102,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SANEAMENTO",
    "n_contratos": 6,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -2113,7 +2113,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 3,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -2135,7 +2135,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 6,
-   "tema": "Saúde e assistência",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -2144,9 +2144,9 @@
    "total_pago": 9138296.7,
    "subvencao_pago": 0.0,
    "is_subvencao": false,
-   "principal_orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
+   "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
-   "tema": "Segurança urbana",
+   "tema": "Gestão pública",
    "resumo": null
   },
   {
@@ -2168,7 +2168,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 1,
-   "tema": "Saúde e assistência",
+   "tema": "Gestão pública",
    "resumo": null
   },
   {
@@ -2179,7 +2179,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
    "n_contratos": 11,
-   "tema": "Saúde e assistência",
+   "tema": "Indústria e produção",
    "resumo": null
   },
   {
@@ -2201,7 +2201,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ESPORTES",
    "n_contratos": 6,
-   "tema": "Cultura, esporte e lazer",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -2212,7 +2212,7 @@
    "is_subvencao": false,
    "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
    "n_contratos": 28,
-   "tema": "Saúde e assistência",
+   "tema": "Serviços administrativos",
    "resumo": null
   },
   {
@@ -2221,9 +2221,9 @@
    "total_pago": 8685113.61,
    "subvencao_pago": 0.0,
    "is_subvencao": false,
-   "principal_orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+   "principal_orgao": "ENCARGOS GERAIS DO MUNICÍPIO",
    "n_contratos": 7,
-   "tema": "Infraestrutura e obras",
+   "tema": "Sociedade civil",
    "resumo": null
   },
   {
@@ -2234,7 +2234,7 @@
    "is_subvencao": false,
    "principal_orgao": "GAB. DE GERENC. DO PROG. DE REQUALIF. E RESILÊNCIA URB. EM ÁREAS DE VULNERABILIDADE SOCIOAMB.-PROMOR",
    "n_contratos": 1,
-   "tema": "Outros",
+   "tema": "Infraestrutura e obras",
    "resumo": null
   },
   {
@@ -2487,7 +2487,7 @@
    "total_pago": 4283212.03,
    "subvencao_pago": 4283212.03,
    "is_subvencao": true,
-   "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
+   "principal_orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
    "tema": "Educação",
    "resumo": null
@@ -2542,7 +2542,7 @@
    "total_pago": 4035149.54,
    "subvencao_pago": 4035149.54,
    "is_subvencao": true,
-   "principal_orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA",
+   "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
    "n_contratos": 0,
    "tema": "Educação",
    "resumo": null
@@ -2850,7 +2850,7 @@
    "total_pago": 2085000.0,
    "subvencao_pago": 2085000.0,
    "is_subvencao": true,
-   "principal_orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA",
+   "principal_orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
    "n_contratos": 0,
    "tema": "Saúde e assistência",
    "resumo": null
@@ -2872,7 +2872,7 @@
    "total_pago": 2012247.25,
    "subvencao_pago": 2012247.25,
    "is_subvencao": true,
-   "principal_orgao": "SECRETARIA DE EDUCAÇÃO",
+   "principal_orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA",
    "n_contratos": 0,
    "tema": "Sociedade civil",
    "resumo": null
@@ -2913,98 +2913,128 @@
  ],
  "temas": [
   {
-   "tema": "Saúde e assistência",
-   "slug": "saude-e-assistencia",
-   "n_organizacoes": 970,
-   "pago": 2600891776.97
+   "tema": "Serviços administrativos",
+   "slug": "servicos-administrativos",
+   "n_organizacoes": 503,
+   "pago": 2192969499.21
   },
   {
    "tema": "Infraestrutura e obras",
    "slug": "infraestrutura-e-obras",
-   "n_organizacoes": 371,
-   "pago": 1712108828.07
+   "n_organizacoes": 266,
+   "pago": 1875670622.03
   },
   {
    "tema": "Serviços financeiros",
    "slug": "servicos-financeiros",
-   "n_organizacoes": 5,
-   "pago": 1701484300.69
+   "n_organizacoes": 40,
+   "pago": 1766655746.44
   },
   {
-   "tema": "Serviços administrativos",
-   "slug": "servicos-administrativos",
-   "n_organizacoes": 5,
-   "pago": 1179312034.77
-  },
-  {
-   "tema": "Gestão pública",
-   "slug": "gestao-publica",
-   "n_organizacoes": 681,
-   "pago": 1166531651.81
-  },
-  {
-   "tema": "Educação",
-   "slug": "educacao",
-   "n_organizacoes": 430,
-   "pago": 762277398.61
+   "tema": "Saúde e assistência",
+   "slug": "saude-e-assistencia",
+   "n_organizacoes": 251,
+   "pago": 1323898544.88
   },
   {
    "tema": "Infraestrutura urbana",
    "slug": "infraestrutura-urbana",
-   "n_organizacoes": 2,
-   "pago": 758159519.44
+   "n_organizacoes": 21,
+   "pago": 915385644.88
   },
   {
-   "tema": "Outros",
-   "slug": "outros",
-   "n_organizacoes": 417,
-   "pago": 661158601.86
-  },
-  {
-   "tema": "Cultura, esporte e lazer",
-   "slug": "cultura-esporte-e-lazer",
-   "n_organizacoes": 1597,
-   "pago": 531680817.89
-  },
-  {
-   "tema": "Alimentação e eventos",
-   "slug": "alimentacao-e-eventos",
-   "n_organizacoes": 1,
-   "pago": 355734460.37
-  },
-  {
-   "tema": "Segurança urbana",
-   "slug": "seguranca-urbana",
-   "n_organizacoes": 176,
-   "pago": 307809271.41
-  },
-  {
-   "tema": "Sociedade civil",
-   "slug": "sociedade-civil",
-   "n_organizacoes": 78,
-   "pago": 85672475.49
-  },
-  {
-   "tema": "Desenvolvimento econômico",
-   "slug": "desenvolvimento-economico",
-   "n_organizacoes": 108,
-   "pago": 36161301.15
-  },
-  {
-   "tema": "Meio ambiente",
-   "slug": "meio-ambiente",
-   "n_organizacoes": 23,
-   "pago": 1865678.84
+   "tema": "Gestão pública",
+   "slug": "gestao-publica",
+   "n_organizacoes": 58,
+   "pago": 748896311.99
   },
   {
    "tema": "Serviços técnicos",
    "slug": "servicos-tecnicos",
-   "n_organizacoes": 2,
-   "pago": 1625278.49
+   "n_organizacoes": 340,
+   "pago": 736951680.76
+  },
+  {
+   "tema": "Alimentação e eventos",
+   "slug": "alimentacao-e-eventos",
+   "n_organizacoes": 60,
+   "pago": 500149020.25
+  },
+  {
+   "tema": "Comércio e suprimentos",
+   "slug": "comercio-e-suprimentos",
+   "n_organizacoes": 1026,
+   "pago": 489045873.92
+  },
+  {
+   "tema": "Indústria e produção",
+   "slug": "industria-e-producao",
+   "n_organizacoes": 351,
+   "pago": 286275680.19
+  },
+  {
+   "tema": "Sociedade civil",
+   "slug": "sociedade-civil",
+   "n_organizacoes": 492,
+   "pago": 284518122.41
+  },
+  {
+   "tema": "Tecnologia e comunicação",
+   "slug": "tecnologia-e-comunicacao",
+   "n_organizacoes": 300,
+   "pago": 239104903.84
+  },
+  {
+   "tema": "Cultura, esporte e lazer",
+   "slug": "cultura-esporte-e-lazer",
+   "n_organizacoes": 699,
+   "pago": 223509638.17
+  },
+  {
+   "tema": "Educação",
+   "slug": "educacao",
+   "n_organizacoes": 360,
+   "pago": 179493636.49
+  },
+  {
+   "tema": "Transporte e mobilidade",
+   "slug": "transporte-e-mobilidade",
+   "n_organizacoes": 47,
+   "pago": 38867842.17
+  },
+  {
+   "tema": "Imóveis e locação",
+   "slug": "imoveis-e-locacao",
+   "n_organizacoes": 44,
+   "pago": 31232313.4
+  },
+  {
+   "tema": "Outros",
+   "slug": "outros",
+   "n_organizacoes": 1,
+   "pago": 27274084.58
+  },
+  {
+   "tema": "Abastecimento e meio rural",
+   "slug": "abastecimento-e-meio-rural",
+   "n_organizacoes": 5,
+   "pago": 2536230.76
+  },
+  {
+   "tema": "Desenvolvimento econômico",
+   "slug": "desenvolvimento-economico",
+   "n_organizacoes": 1,
+   "pago": 37999.49
+  },
+  {
+   "tema": "Segurança urbana",
+   "slug": "seguranca-urbana",
+   "n_organizacoes": 1,
+   "pago": 0.0
   }
  ],
  "enrichment": {
-  "n_com_perfil": 200,
+  "n_com_perfil": 4850,
   "n_com_resumo": 60,
   "perfil_source": "Receita Federal via BrasilAPI",
   "tema_method": "CNAE-seção + órgão pagador (mapeamento determinístico)",

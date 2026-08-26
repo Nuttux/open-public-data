@@ -1,21 +1,32 @@
 {
- "mucem": {
-  "operator": {
-   "beneficiaire": "MUSEE DES CIVILISATIONS DE L EUROPE ETDE LA MEDITERRANEE MUCEM",
-   "montant_total": 80000.0,
-   "nb_subventions": 1,
-   "rows": [
-    {
-     "annee": 2018,
-     "montant": 80000.0
-    }
-   ],
-   "annees": [
-    2018,
-    2018
-   ]
-  },
-  "residents": []
+ "bibliotheque-alcazar": {
+  "operator": null,
+  "residents": [
+   {
+    "beneficiaire": "LE ZEF",
+    "montant_total": 5025.0,
+    "nb": 1,
+    "preuve": "MISE A DISPO JOURNEES PATIO ALCAZAR DCM 181211ECSS"
+   },
+   {
+    "beneficiaire": "THEATRE NATIONAL DE MARSEILLE LA CRIEE",
+    "montant_total": 5025.0,
+    "nb": 1,
+    "preuve": "MISE A DISPO JOURNEES PATIO DE L ALCAZAR DCM 181211ECSS"
+   },
+   {
+    "beneficiaire": "UNION CULTUTELLE PROVENCALE MARSEILLE 2013",
+    "montant_total": 950.0,
+    "nb": 1,
+    "preuve": "MISE A DISPOSITION SALLE DE CONFERENCE ET FOYER ALCAZAR"
+   },
+   {
+    "beneficiaire": "LA MARELLE",
+    "montant_total": 325.0,
+    "nb": 1,
+    "preuve": "MISE A DISPOSITION AUDITORIUM ALCAZAR POUR 5 RENCONTRES TARIF CULTUREL CONVENTION 22 80518"
+   }
+  ]
  },
  "friche-belle-de-mai": {
   "operator": {
@@ -93,33 +104,22 @@
   },
   "residents": []
  },
- "bibliotheque-alcazar": {
-  "operator": null,
-  "residents": [
-   {
-    "beneficiaire": "LE ZEF",
-    "montant_total": 5025.0,
-    "nb": 1,
-    "preuve": "MISE A DISPO JOURNEES PATIO ALCAZAR DCM 181211ECSS"
-   },
-   {
-    "beneficiaire": "THEATRE NATIONAL DE MARSEILLE LA CRIEE",
-    "montant_total": 5025.0,
-    "nb": 1,
-    "preuve": "MISE A DISPO JOURNEES PATIO DE L ALCAZAR DCM 181211ECSS"
-   },
-   {
-    "beneficiaire": "UNION CULTUTELLE PROVENCALE MARSEILLE 2013",
-    "montant_total": 950.0,
-    "nb": 1,
-    "preuve": "MISE A DISPOSITION SALLE DE CONFERENCE ET FOYER ALCAZAR"
-   },
-   {
-    "beneficiaire": "LA MARELLE",
-    "montant_total": 325.0,
-    "nb": 1,
-    "preuve": "MISE A DISPOSITION AUDITORIUM ALCAZAR POUR 5 RENCONTRES TARIF CULTUREL CONVENTION 22 80518"
-   }
-  ]
+ "mucem": {
+  "operator": {
+   "beneficiaire": "MUSEE DES CIVILISATIONS DE L EUROPE ETDE LA MEDITERRANEE MUCEM",
+   "montant_total": 80000.0,
+   "nb_subventions": 1,
+   "rows": [
+    {
+     "annee": 2018,
+     "montant": 80000.0
+    }
+   ],
+   "annees": [
+    2018,
+    2018
+   ]
+  },
+  "residents": []
  }
 }

@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-28T11:43:47.705941+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.893891+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "j-flores-construction-company-inc",
@@ -35,7 +35,10 @@
   "2027": 528589.93
  },
  "top_departments": [
-  "PUB Public Utilities Bureaus"
+  "PUC Public Utilities Commsn",
+  "PUB Public Utilities Bureaus",
+  "WWE Wastewater Enterprise",
+  "WTR Water Enterprise"
  ],
  "profile": {
   "n_vouchers": 562,
@@ -101,15 +104,6 @@
  "identity": null,
  "contracts_held": [
   {
-   "contract_no": "1000029917",
-   "title": "As-Needed Sewer Replacement NO.44",
-   "department": "PUC Public Utilities Commsn",
-   "department_code": "PUC",
-   "agreed_usd": 9537768.52,
-   "paid_usd": 21466361.0,
-   "sole_source": false
-  },
-  {
    "contract_no": "1000024712",
    "title": "As-Needed Sewer Replc No43",
    "department": "PUC Public Utilities Commsn",
@@ -137,7 +131,7 @@
    "sole_source": false
   }
  ],
- "n_contracts_held": 4,
+ "n_contracts_held": 3,
  "variants": [
   {
    "name": "J FLORES CONSTRUCTION COMPANY INC",

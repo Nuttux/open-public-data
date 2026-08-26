@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.542783+00:00",
+  "generated_at": "2026-08-26T18:07:56.078957+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -13061,14 +13061,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "029",
-          "label": "Maintenance Svcs-Equipment",
+          "code": "021",
+          "label": "Travel",
           "amount_usd": 2000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "021",
-          "label": "Travel",
+          "code": "029",
+          "label": "Maintenance Svcs-Equipment",
           "amount_usd": 2000.0,
           "is_transfer_adjustment": false
         }
@@ -15071,14 +15071,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "026",
-          "label": "Court Fees and Other Compensation",
+          "code": "035",
+          "label": "Other Current Expenses",
           "amount_usd": 20000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "035",
-          "label": "Other Current Expenses",
+          "code": "026",
+          "label": "Court Fees and Other Compensation",
           "amount_usd": 20000.0,
           "is_transfer_adjustment": false
         },
@@ -25813,16 +25813,16 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "RAFAEL MANDELMAN FOR SUPERVISOR 2010",
+            "vendor": "DEWITT LACY FOR SUPERVISOR 2010",
             "amount_usd": 10000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "DEWITT LACY FOR SUPERVISOR 2010",
+            "vendor": "JIM MEKO FOR DISTRICT 6 SUPERVISOR 2010",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -25840,9 +25840,9 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "JIM MEKO FOR DISTRICT 6 SUPERVISOR 2010",
+            "vendor": "RAFAEL MANDELMAN FOR SUPERVISOR 2010",
             "amount_usd": 10000.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -26542,18 +26542,18 @@
         "n_vendors": 2,
         "vendors": [
           {
-            "vendor": "SAMOAN COMMUNITY DEVELOPMENT CENTER INC",
+            "vendor": "C.C.P.D.G.",
             "amount_usd": 50000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "C.C.P.D.G.",
+            "vendor": "SAMOAN COMMUNITY DEVELOPMENT CENTER INC",
             "amount_usd": 50000.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -32401,7 +32401,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MERRILL CORP",
+            "vendor": "MERRILL COMMUNICATIONS LLC",
             "amount_usd": 233028.3,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -32410,7 +32410,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MERRILL COMMUNICATIONS LLC",
+            "vendor": "MERRILL CORP",
             "amount_usd": 233028.3,
             "n_vouchers": 1,
             "is_non_profit": false,

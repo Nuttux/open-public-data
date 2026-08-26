@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.531500+00:00",
+  "generated_at": "2026-08-26T18:07:56.028524+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -10218,7 +10218,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MONTAGUE DEROSE & ASSOCIATES LLC",
+            "vendor": "BACKSTROM MCCARLEY BERRY & CO LLC",
             "amount_usd": 33750.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -10227,7 +10227,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "BACKSTROM MCCARLEY BERRY & CO LLC",
+            "vendor": "MONTAGUE DEROSE & ASSOCIATES LLC",
             "amount_usd": 33750.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -10254,18 +10254,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "KITAHATA & COMPANY",
+            "vendor": "BLX GROUP LLC",
             "amount_usd": 25000.0,
-            "n_vouchers": 1,
+            "n_vouchers": 11,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "BLX GROUP LLC",
+            "vendor": "KITAHATA & COMPANY",
             "amount_usd": 25000.0,
-            "n_vouchers": 11,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -10514,18 +10514,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SUNBURST SOLAR ENERGY",
+            "vendor": "SUN RUN SOLAR OWNER I LLC",
             "amount_usd": 17000.0,
-            "n_vouchers": 4,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "SUN RUN SOLAR OWNER I LLC",
+            "vendor": "SUNBURST SOLAR ENERGY",
             "amount_usd": 17000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 4,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -10541,7 +10541,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "DEBRA LIANE RESNIK",
+            "vendor": "ANNE R THORNTON",
             "amount_usd": 12000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
@@ -10550,7 +10550,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "LINNEA JOHNSON",
+            "vendor": "CHARLES SPENCER YOST",
             "amount_usd": 12000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
@@ -10559,7 +10559,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "LEO S SCOTT",
+            "vendor": "CLARENCE K CHAN",
             "amount_usd": 12000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
@@ -14111,18 +14111,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SCHACHT & ASSOCIATES",
+            "vendor": "PATRICIA DONAHUE",
             "amount_usd": 10000.0,
-            "n_vouchers": 3,
+            "n_vouchers": 7,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "PATRICIA DONAHUE",
+            "vendor": "SCHACHT & ASSOCIATES",
             "amount_usd": 10000.0,
-            "n_vouchers": 7,
+            "n_vouchers": 3,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -14500,7 +14500,16 @@
         "n_vendors": 5,
         "vendors": [
           {
-            "vendor": "FIRST AMERICAN TITLE INSURANCE COMPANY",
+            "vendor": "CHICAGO TITLE COMPANY",
+            "amount_usd": 20000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "supplier",
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "FIRST AMERICAN TITLE COMPANY",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -14509,12 +14518,12 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "CHICAGO TITLE COMPANY",
+            "vendor": "FIRST AMERICAN TITLE INSURANCE COMPANY",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
-            "bucket": "supplier",
+            "bucket": null,
             "is_aggregation_line": false
           },
           {
@@ -14528,15 +14537,6 @@
           },
           {
             "vendor": "OLD REPUBLIC TITLE COMPANY",
-            "amount_usd": 20000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "FIRST AMERICAN TITLE COMPANY",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -17067,21 +17067,21 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "TENDERLOIN HOUSING CLINIC INC",
-            "amount_usd": 20000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "SAN FRANCISCO APARTMENT ASSOC",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "TENDERLOIN HOUSING CLINIC INC",
+            "amount_usd": 20000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           },
           {

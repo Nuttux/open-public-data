@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-07-28T11:43:47.699554+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.887538+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "catholic-charities",
  "name": "Catholic Charities",
  "kind": "nonprofit",
- "is_non_profit": false,
+ "is_non_profit": true,
  "total_paid_usd": 319544320.46,
  "n_years": 21,
  "first_year": 2007,
@@ -35,6 +35,9 @@
   "2027": 1400260.55
  },
  "top_departments": [
+  "HOM Homelessness Services",
+  "MYR Mayor",
+  "DPH Public Health",
   "HSA Human Services Agency"
  ],
  "profile": {
@@ -252,15 +255,6 @@
    "sole_source": false
   },
   {
-   "contract_no": "1000029358",
-   "title": "CCCYO - Scattered Sites",
-   "department": "HOM Homelessness Services",
-   "department_code": "HOM",
-   "agreed_usd": 7119725.0,
-   "paid_usd": 3995856.34,
-   "sole_source": false
-  },
-  {
    "contract_no": "1000024654",
    "title": "CCCYO-Bayview Family Access Pt",
    "department": "HOM Homelessness Services",
@@ -450,7 +444,7 @@
    "sole_source": false
   }
  ],
- "n_contracts_held": 27,
+ "n_contracts_held": 26,
  "variants": [
   {
    "name": "CATHOLIC CHARITIES",

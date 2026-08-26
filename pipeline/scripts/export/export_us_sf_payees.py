@@ -140,8 +140,8 @@ def main() -> int:
     ref = payees[0]
     as_of = _ts(ref["source_rows_updated_at"])
     source = {
-        "dataset_id": ref["source_dataset_id"], "name": ref["source_name"],
-        "url": ref["source_url"], "attribution": ref["source_attribution"], "rows_updated_at": as_of,
+        "name": ref["source_name"], "dataset_id": ref["source_dataset_id"],
+        "source_url": ref["source_url"], "attribution": ref["source_attribution"], "rows_updated_at": as_of,
     }
 
     profiles_doc = json.loads(PROFILES.read_text()) if PROFILES.exists() else {}

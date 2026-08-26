@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:33.381371+00:00",
+  "generated_at": "2026-08-26T18:07:42.108835+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -5343,15 +5343,15 @@
       ],
       [
         "DAT",
-        "ELS",
-        -1340260.0,
-        1
-      ],
-      [
-        "DAT",
         "865",
         1340260.0,
         0
+      ],
+      [
+        "DAT",
+        "ELS",
+        -1340260.0,
+        1
       ],
       [
         "ADM",
@@ -5630,14 +5630,14 @@
         0
       ],
       [
-        "MYR",
-        "120",
+        "FIR",
+        "910",
         500000.0,
         0
       ],
       [
-        "FIR",
-        "910",
+        "MYR",
+        "120",
         500000.0,
         0
       ],

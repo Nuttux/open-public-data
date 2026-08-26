@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-28T11:43:47.694432+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.883077+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "pacific-gas-electric-co",
@@ -35,7 +35,10 @@
   "2027": 596373.34
  },
  "top_departments": [
-  "HHP Hetch Hetchy Water & Power"
+  "PUC Public Utilities Commsn",
+  "HHP Hetch Hetchy Water & Power",
+  "PUB Public Utilities Bureaus",
+  "AIR Airport Commission"
  ],
  "profile": {
   "n_vouchers": 13087,
@@ -306,15 +309,6 @@
    "sole_source": true
   },
   {
-   "contract_no": "1000036707",
-   "title": "Sullivan-77Harriett",
-   "department": "REC Recreation & Park Commsn",
-   "department_code": "REC",
-   "agreed_usd": 480230.24,
-   "paid_usd": 480230.24,
-   "sole_source": false
-  },
-  {
    "contract_no": "1000027880",
    "title": "2023-36 PG&E TrafficSgnl",
    "department": "MTA Municipal Transprtn Agncy",
@@ -333,30 +327,12 @@
    "sole_source": true
   },
   {
-   "contract_no": "1000036340",
-   "title": "RE-Utility Cost",
-   "department": "PRT Port",
-   "department_code": "PRT",
-   "agreed_usd": 500000.0,
-   "paid_usd": 198702.29,
-   "sole_source": false
-  },
-  {
    "contract_no": "1000033633",
    "title": "MTL PG&E",
    "department": "DPW Public Works",
    "department_code": "DPW",
    "agreed_usd": 200000.0,
    "paid_usd": 91062.14,
-   "sole_source": false
-  },
-  {
-   "contract_no": "1000036710",
-   "title": "Froehlich-India Basin",
-   "department": "REC Recreation & Park Commsn",
-   "department_code": "REC",
-   "agreed_usd": 57768.18,
-   "paid_usd": 57768.18,
    "sole_source": false
   },
   {
@@ -378,7 +354,7 @@
    "sole_source": false
   }
  ],
- "n_contracts_held": 19,
+ "n_contracts_held": 16,
  "variants": [
   {
    "name": "PACIFIC GAS & ELECTRIC CO",

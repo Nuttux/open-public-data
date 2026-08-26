@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:33.382914+00:00",
+  "generated_at": "2026-08-26T18:07:42.110543+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -1230,16 +1230,6 @@
         "n_characters": 1
       },
       {
-        "code": "PUC",
-        "label": "PUC Public Utilities Commission",
-        "display_name": "Public Utilities Commission (water, power, sewer)",
-        "org_group_code": "02",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": -132997504.0,
-        "share_of_side": 0.0,
-        "n_characters": 2
-      },
-      {
         "code": "UNA",
         "label": "General Fund Unallocated",
         "display_name": null,
@@ -1248,6 +1238,16 @@
         "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
         "n_characters": 14
+      },
+      {
+        "code": "PUC",
+        "label": "PUC Public Utilities Commission",
+        "display_name": "Public Utilities Commission (water, power, sewer)",
+        "org_group_code": "02",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -132997504.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
       }
     ]
   },
@@ -4617,15 +4617,15 @@
       ],
       [
         "CON",
-        "865",
-        21322732.0,
-        0
-      ],
-      [
-        "CON",
         "ELS",
         -21322732.0,
         1
+      ],
+      [
+        "CON",
+        "865",
+        21322732.0,
+        0
       ],
       [
         "REC",
@@ -5822,12 +5822,6 @@
         0
       ],
       [
-        "DSS",
-        "350",
-        300000.0,
-        0
-      ],
-      [
         "ASR",
         "ELS",
         -300000.0,
@@ -5836,6 +5830,12 @@
       [
         "ASR",
         "865",
+        300000.0,
+        0
+      ],
+      [
+        "DSS",
+        "350",
         300000.0,
         0
       ],
@@ -6153,15 +6153,15 @@
       ],
       [
         "RET",
-        "865",
-        25000.0,
-        0
-      ],
-      [
-        "RET",
         "ELS",
         -25000.0,
         1
+      ],
+      [
+        "RET",
+        "865",
+        25000.0,
+        0
       ],
       [
         "ETH",

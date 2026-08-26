@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.580409+00:00",
+  "generated_at": "2026-08-26T18:07:56.132597+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -7667,14 +7667,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "025",
-          "label": "Entertainment And Promotion",
+          "code": "026",
+          "label": "Court Fees and Other Compensation",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "026",
-          "label": "Court Fees and Other Compensation",
+          "code": "025",
+          "label": "Entertainment And Promotion",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -24214,9 +24214,27 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "JAPANESE COMMUNITY YOUTH COUNCIL",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "LIVABLE CITY",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "SAN FRANCISCO PARKS ALLIANCE",
+            "amount_usd": 3000.0,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -24232,39 +24250,21 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "WU YEE CHILDREN'S SERVICES",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "SAN FRANCISCO PARKS ALLIANCE",
-            "amount_usd": 3000.0,
-            "n_vouchers": 2,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "JAPANESE COMMUNITY YOUTH COUNCIL",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "SUNSET YOUTH SERVICES",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "WU YEE CHILDREN'S SERVICES",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           },
           {
@@ -27646,7 +27646,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SIERRA FLYNN",
+            "vendor": "CONRAD BENEDICTO",
             "amount_usd": 200.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -35461,15 +35461,6 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "TENDERLOIN HOUSING CLINIC INC",
-            "amount_usd": 20000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "ASIAN AMER ADVNCNG JSTC-ASIAN LAW CAUCUS",
             "amount_usd": 20000.0,
             "n_vouchers": 2,
@@ -35482,6 +35473,15 @@
             "vendor": "SAN FRANCISCO STUDY CENTER INC",
             "amount_usd": 20000.0,
             "n_vouchers": 2,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "TENDERLOIN HOUSING CLINIC INC",
+            "amount_usd": 20000.0,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": "nonprofit",
@@ -36738,7 +36738,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "PARENTS FOR PUBLIC SCHOOLS OF S F INC",
+            "vendor": "AMERICA SCORES BAY AREA",
             "amount_usd": 5000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -36756,25 +36756,16 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "AMERICA SCORES BAY AREA",
-            "amount_usd": 5000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "RICHMOND DISTRICT NEIGHBORHOOD CTR INC",
-            "amount_usd": 5000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "MISSION GRADUATES",
+            "amount_usd": 5000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "PARENTS FOR PUBLIC SCHOOLS OF S F INC",
             "amount_usd": 5000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -36792,12 +36783,30 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "RICHMOND DISTRICT NEIGHBORHOOD CTR INC",
+            "amount_usd": 5000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "BAYVIEW ASSOCIATION FOR YOUTH",
             "amount_usd": 2500.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "COMMUNITY YOUTH CENTER SAN FRANCISCO",
+            "amount_usd": 2500.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           },
           {
@@ -36816,15 +36825,6 @@
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "COMMUNITY YOUTH CENTER SAN FRANCISCO",
-            "amount_usd": 2500.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
             "is_aggregation_line": false
           }
         ],
@@ -37410,18 +37410,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "WOMEN'S INTERCULTURAL NETWORK (WIN)",
+            "vendor": "A C C W",
             "amount_usd": 400.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "A C C W",
+            "vendor": "WOMEN'S INTERCULTURAL NETWORK (WIN)",
             "amount_usd": 400.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,

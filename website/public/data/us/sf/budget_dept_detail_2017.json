@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.598476+00:00",
+  "generated_at": "2026-08-26T18:07:56.151103+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -25485,6 +25485,24 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "COMMUNITY YOUTH CENTER SAN FRANCISCO",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "GUM MOON RESIDENCE HALL",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "TIDES CENTER",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
@@ -25503,30 +25521,12 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "COMMUNITY YOUTH CENTER SAN FRANCISCO",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "Y M C A OF SAN FRANCISCO",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "GUM MOON RESIDENCE HALL",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
             "is_aggregation_line": false
           },
           {
@@ -30216,7 +30216,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "S F Y JEWELRY",
+            "vendor": "ALEJANDRO VALLE CARRILLO",
             "amount_usd": 590.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -30225,7 +30225,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "ALEJANDRO VALLE CARRILLO",
+            "vendor": "AUBREY BRET ANKRUM",
             "amount_usd": 590.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -30623,7 +30623,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SAN FRANCISCO MILLWORK INC",
+            "vendor": "GUISTO ENTERPRISES INC",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -30632,7 +30632,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "GUISTO ENTERPRISES INC",
+            "vendor": "SAN FRANCISCO MILLWORK INC",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
             "is_non_profit": false,

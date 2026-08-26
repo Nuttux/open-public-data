@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-28T11:43:47.719558+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.907453+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "community-forward-sf",
@@ -24,7 +24,10 @@
   "2027": 1064721.91
  },
  "top_departments": [
-  "DPH Public Health"
+  "DPH Public Health",
+  "HOM Homelessness Services",
+  "MYR Mayor",
+  "SHF Sheriff"
  ],
  "profile": {
   "n_vouchers": 1928,
@@ -181,15 +184,6 @@
    "sole_source": false
   },
   {
-   "contract_no": "1000017573",
-   "title": "CFSF - Support Hsg ChronA Eddy St",
-   "department": "HOM Homelessness Services",
-   "department_code": "HOM",
-   "agreed_usd": 4559819.0,
-   "paid_usd": 3809357.91,
-   "sole_source": false
-  },
-  {
    "contract_no": "1000025388",
    "title": "CFSF - A Woman's Place Shelter",
    "department": "HOM Homelessness Services",
@@ -217,7 +211,7 @@
    "sole_source": false
   }
  ],
- "n_contracts_held": 6,
+ "n_contracts_held": 5,
  "variants": [
   {
    "name": "COMMUNITY FORWARD SF",

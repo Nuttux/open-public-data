@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:33.392198+00:00",
+  "generated_at": "2026-08-26T18:07:42.120341+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -1290,16 +1290,6 @@
         "n_characters": 1
       },
       {
-        "code": "UNA",
-        "label": "General Fund Unallocated",
-        "display_name": null,
-        "org_group_code": "07",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 13
-      },
-      {
         "code": "PUC",
         "label": "PUC Public Utilities Commission",
         "display_name": "Public Utilities Commission (water, power, sewer)",
@@ -1308,6 +1298,16 @@
         "transfer_adjustment_usd": -167000296.0,
         "share_of_side": 0.0,
         "n_characters": 2
+      },
+      {
+        "code": "UNA",
+        "label": "General Fund Unallocated",
+        "display_name": null,
+        "org_group_code": "07",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 13
       }
     ]
   },
@@ -6147,15 +6147,15 @@
       ],
       [
         "DAT",
-        "865",
-        1161432.0,
-        0
-      ],
-      [
-        "DAT",
         "ELS",
         -1161432.0,
         1
+      ],
+      [
+        "DAT",
+        "865",
+        1161432.0,
+        0
       ],
       [
         "PRT",

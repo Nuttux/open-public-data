@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.589290+00:00",
+  "generated_at": "2026-08-26T18:07:56.141994+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -12269,14 +12269,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "026",
-          "label": "Court Fees and Other Compensation",
+          "code": "027",
+          "label": "Professional & Specialized Services",
           "amount_usd": 450000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "027",
-          "label": "Professional & Specialized Services",
+          "code": "026",
+          "label": "Court Fees and Other Compensation",
           "amount_usd": 450000.0,
           "is_transfer_adjustment": false
         },
@@ -24004,7 +24004,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "RIZ GACHE DESIGN",
+            "vendor": "JOSEPH T CONROY III",
             "amount_usd": 2500.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -24013,7 +24013,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "JOSEPH T CONROY III",
+            "vendor": "RIZ GACHE DESIGN",
             "amount_usd": 2500.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -24582,7 +24582,16 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "UNITED PLAYAZ INC",
+            "vendor": "BAYVIEW ASSOCIATION FOR YOUTH",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "DONALDINA CAMERON HOUSE",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -24609,30 +24618,21 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "UNITED PLAYAZ INC",
+            "amount_usd": 3000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "Y M C A OF SAN FRANCISCO",
             "amount_usd": 3000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "BAYVIEW ASSOCIATION FOR YOUTH",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "DONALDINA CAMERON HOUSE",
-            "amount_usd": 3000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
             "is_aggregation_line": false
           }
         ],
@@ -28457,15 +28457,6 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SANDRA LEE FEWER FOR SUPERVISOR 2016",
-            "amount_usd": 20000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "BEN MATRANGA FOR DIST 7 SUPERVISOR 2016",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
@@ -28476,6 +28467,15 @@
           },
           {
             "vendor": "ENGARDIO FOR DISTRICT 7 SUPERVISOR 2016",
+            "amount_usd": 20000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "SANDRA LEE FEWER FOR SUPERVISOR 2016",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -29312,7 +29312,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "LYNN VANDENBERG",
+            "vendor": "ADDARIO PHOTOGRAPHY",
             "amount_usd": 590.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -29321,7 +29321,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "DEBORRAH ORTEGO",
+            "vendor": "AGNES ORIENTE MABALOT",
             "amount_usd": 590.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -36120,21 +36120,21 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SAN FRANCISCO STUDY CENTER INC",
-            "amount_usd": 10000.0,
-            "n_vouchers": 2,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "ASIAN AMER ADVNCNG JSTC-ASIAN LAW CAUCUS",
             "amount_usd": 10000.0,
             "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "SAN FRANCISCO STUDY CENTER INC",
+            "amount_usd": 10000.0,
+            "n_vouchers": 2,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           }
         ],
@@ -37338,18 +37338,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "PUBLIC FINANCIAL MANAGEMENT INC",
+            "vendor": "MUNISERVICES LLC",
             "amount_usd": 90000.0,
-            "n_vouchers": 12,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "MUNISERVICES LLC",
+            "vendor": "PUBLIC FINANCIAL MANAGEMENT INC",
             "amount_usd": 90000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 12,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -38610,18 +38610,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "FELCOR HOTEL ASSET COMPANY LLC",
+            "vendor": "CPF 33 NEW LLC",
             "amount_usd": 26500.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "CPF 33 NEW LLC",
+            "vendor": "FELCOR HOTEL ASSET COMPANY LLC",
             "amount_usd": 26500.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,

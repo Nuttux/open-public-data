@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-28T11:43:47.702264+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.890160+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "transbay-joint-powers-authority",
@@ -29,7 +29,10 @@
   "2027": 10281730.94
  },
  "top_departments": [
-  "CII Commty Invest & Infrstrctr"
+  "CII Commty Invest & Infrstrctr",
+  "TJP Transbay Joint Power Auth",
+  "MTA Municipal Transprtn Agncy",
+  "HHP Hetch Hetchy Water & Power"
  ],
  "profile": {
   "n_vouchers": 109,

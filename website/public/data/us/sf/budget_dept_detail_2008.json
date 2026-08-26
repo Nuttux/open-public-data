@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.494732+00:00",
+  "generated_at": "2026-08-26T18:07:56.019284+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -9435,15 +9435,6 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "ERIC QUEZADA",
-            "amount_usd": 10000.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "COMMITTEE TO RE-ELECT MIRKARIMI '08",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
@@ -9453,7 +9444,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SANCHEZ '08",
+            "vendor": "ERIC MAR FOR SUPERVISOR",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -9462,7 +9453,16 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "ERIC MAR FOR SUPERVISOR",
+            "vendor": "ERIC QUEZADA",
+            "amount_usd": 10000.0,
+            "n_vouchers": 1,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "SANCHEZ '08",
             "amount_usd": 10000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -11054,7 +11054,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "ULY LI",
+            "vendor": "JANET QIU",
             "amount_usd": 50.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -11063,7 +11063,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "JANET QIU",
+            "vendor": "ULY LI",
             "amount_usd": 50.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -17078,6 +17078,15 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "ASIAN AMER ADVNCNG JSTC-ASIAN LAW CAUCUS",
+            "amount_usd": 20000.0,
+            "n_vouchers": 3,
+            "is_non_profit": false,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "SAN FRANCISCO APARTMENT ASSOC",
             "amount_usd": 20000.0,
             "n_vouchers": 1,
@@ -17093,15 +17102,6 @@
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "ASIAN AMER ADVNCNG JSTC-ASIAN LAW CAUCUS",
-            "amount_usd": 20000.0,
-            "n_vouchers": 3,
-            "is_non_profit": false,
-            "is_related_govt_unit": false,
-            "bucket": null,
             "is_aggregation_line": false
           }
         ],
@@ -19103,18 +19103,18 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SAN FRANCISCO CHAMBER OF COMMERCE",
+            "vendor": "CLEMENT TRAVEL SERVICE INC",
             "amount_usd": 40.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "CLEMENT TRAVEL SERVICE INC",
+            "vendor": "SAN FRANCISCO CHAMBER OF COMMERCE",
             "amount_usd": 40.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,

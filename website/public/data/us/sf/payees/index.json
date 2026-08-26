@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-28T11:43:47.723316+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.911204+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "count": 200,
@@ -75,7 +75,7 @@
    "kind": "healthcare",
    "total_paid_usd": 3702235159.87,
    "n_variants": 1,
-   "n_contracts_held": 33,
+   "n_contracts_held": 32,
    "last_year": 2027
   },
   {
@@ -174,7 +174,7 @@
    "kind": "supplier",
    "total_paid_usd": 1299618906.92,
    "n_variants": 1,
-   "n_contracts_held": 1,
+   "n_contracts_held": 0,
    "last_year": 2027
   },
   {
@@ -318,7 +318,7 @@
    "kind": "supplier",
    "total_paid_usd": 639883363.23,
    "n_variants": 1,
-   "n_contracts_held": 19,
+   "n_contracts_held": 16,
    "last_year": 2027
   },
   {
@@ -570,7 +570,7 @@
    "kind": "nonprofit",
    "total_paid_usd": 319544320.46,
    "n_variants": 1,
-   "n_contracts_held": 27,
+   "n_contracts_held": 26,
    "last_year": 2027
   },
   {
@@ -597,7 +597,7 @@
    "kind": "supplier",
    "total_paid_usd": 299455894.78,
    "n_variants": 1,
-   "n_contracts_held": 4,
+   "n_contracts_held": 3,
    "last_year": 2026
   },
   {
@@ -651,7 +651,7 @@
    "kind": "supplier",
    "total_paid_usd": 268763515.62,
    "n_variants": 1,
-   "n_contracts_held": 2,
+   "n_contracts_held": 1,
    "last_year": 2026
   },
   {
@@ -723,7 +723,7 @@
    "kind": "supplier",
    "total_paid_usd": 240941046.9,
    "n_variants": 1,
-   "n_contracts_held": 10,
+   "n_contracts_held": 9,
    "last_year": 2027
   },
   {
@@ -876,7 +876,7 @@
    "kind": "nonprofit",
    "total_paid_usd": 210927463.4,
    "n_variants": 1,
-   "n_contracts_held": 17,
+   "n_contracts_held": 16,
    "last_year": 2027
   },
   {
@@ -903,7 +903,7 @@
    "kind": "supplier",
    "total_paid_usd": 204810781.14,
    "n_variants": 1,
-   "n_contracts_held": 4,
+   "n_contracts_held": 3,
    "last_year": 2027
   },
   {
@@ -957,7 +957,7 @@
    "kind": "supplier",
    "total_paid_usd": 195147503.63,
    "n_variants": 1,
-   "n_contracts_held": 6,
+   "n_contracts_held": 5,
    "last_year": 2027
   },
   {
@@ -1188,7 +1188,7 @@
   {
    "slug": "tides-center",
    "name": "Tides Center",
-   "kind": "other",
+   "kind": "nonprofit",
    "total_paid_usd": 162749407.65,
    "n_variants": 1,
    "n_contracts_held": 13,
@@ -1269,7 +1269,7 @@
   {
    "slug": "meals-on-wheels",
    "name": "Meals On Wheels",
-   "kind": "other",
+   "kind": "nonprofit",
    "total_paid_usd": 151887789.37,
    "n_variants": 1,
    "n_contracts_held": 4,
@@ -1308,7 +1308,7 @@
    "kind": "supplier",
    "total_paid_usd": 149100487.43,
    "n_variants": 1,
-   "n_contracts_held": 16,
+   "n_contracts_held": 15,
    "last_year": 2027
   },
   {
@@ -1440,7 +1440,7 @@
   {
    "slug": "institute-on-aging",
    "name": "Institute On Aging",
-   "kind": "other",
+   "kind": "nonprofit",
    "total_paid_usd": 135690986.34,
    "n_variants": 1,
    "n_contracts_held": 9,
@@ -1575,7 +1575,7 @@
   {
    "slug": "vortech-industries",
    "name": "Vortech Industries",
-   "kind": "other",
+   "kind": "supplier",
    "total_paid_usd": 118592783.43,
    "n_variants": 1,
    "n_contracts_held": 0,
@@ -1614,7 +1614,7 @@
    "kind": "supplier",
    "total_paid_usd": 117135162.17,
    "n_variants": 1,
-   "n_contracts_held": 3,
+   "n_contracts_held": 1,
    "last_year": 2026
   },
   {
@@ -1623,7 +1623,7 @@
    "kind": "nonprofit",
    "total_paid_usd": 116701406.92,
    "n_variants": 1,
-   "n_contracts_held": 6,
+   "n_contracts_held": 5,
    "last_year": 2027
   },
   {
@@ -1641,7 +1641,7 @@
    "kind": "nonprofit",
    "total_paid_usd": 115242708.49,
    "n_variants": 1,
-   "n_contracts_held": 23,
+   "n_contracts_held": 22,
    "last_year": 2027
   },
   {
@@ -1677,7 +1677,7 @@
    "kind": "supplier",
    "total_paid_usd": 111806571.23,
    "n_variants": 1,
-   "n_contracts_held": 3,
+   "n_contracts_held": 2,
    "last_year": 2027
   },
   {
@@ -1710,7 +1710,7 @@
   {
    "slug": "arriba-juntos-ial",
    "name": "Arriba Juntos - Ial",
-   "kind": "other",
+   "kind": "nonprofit",
    "total_paid_usd": 108541686.22,
    "n_variants": 1,
    "n_contracts_held": 4,
@@ -1782,7 +1782,7 @@
   {
    "slug": "hamilton-families",
    "name": "Hamilton Families",
-   "kind": "other",
+   "kind": "nonprofit",
    "total_paid_usd": 102737462.81,
    "n_variants": 1,
    "n_contracts_held": 7,

@@ -308,11 +308,15 @@ def build_overview(summary: list[dict], quality: dict, join_stats: dict,
         }
 
     top_sole = sorted(sole, key=lambda r: -r["agreed_usd"])[:TOP_SOLE_CONTRACTS]
+    # generated plain-English text read as an input here too (the overview
+    # used to depend on apply_sf_contract_vulgarization.py patching it in)
+    vulg = load_vulgarization()
     top_sole_rows = [
         {
             "contract_no": r["contract_no"],
             "title": r["contract_title"],
             "title_plain": title_plain_for(r),
+            **vulg_for(r, vulg),
             "prime_contractor": r["prime_contractor"],
             "department": r["department"],
             "agreed_usd": _f(r["agreed_usd"]),

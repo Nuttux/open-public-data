@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-07-28T11:43:47.703032+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.890919+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "conard-house-inc",
  "name": "Conard House Inc",
  "kind": "nonprofit",
- "is_non_profit": false,
+ "is_non_profit": true,
  "total_paid_usd": 239430227.94,
  "n_years": 21,
  "first_year": 2007,
@@ -35,7 +35,10 @@
   "2027": 76933.93
  },
  "top_departments": [
-  "DPH Public Health"
+  "DPH Public Health",
+  "HOM Homelessness Services",
+  "HSA Human Services Agency",
+  "HOM HOMELESSNESS SERVICES"
  ],
  "profile": {
   "n_vouchers": 3681,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-25T17:59:53.855193+00:00",
+ "generated_at": "2026-08-26T18:08:40.040580+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "country": "br",
  "scale": "city",
@@ -20,7 +20,7 @@
    "slug": "dispensa",
    "n_contratos": 843,
    "valor_total": 694008588.76,
-   "n_ativos": 43,
+   "n_ativos": 35,
    "valor_ativo": 0.0,
    "n_valor_suspeito": 0,
    "by_year": [
@@ -457,7 +457,7 @@
    "slug": "inexigibilidade",
    "n_contratos": 1573,
    "valor_total": 320409375.54,
-   "n_ativos": 94,
+   "n_ativos": 90,
    "valor_ativo": 0.0,
    "n_valor_suspeito": 1,
    "by_year": [
@@ -870,7 +870,7 @@
    "slug": "licitacao",
    "n_contratos": 2424,
    "valor_total": 7006345884.81,
-   "n_ativos": 74,
+   "n_ativos": 62,
    "valor_ativo": 212649536.36,
    "n_valor_suspeito": 0,
    "by_year": [
@@ -1678,7 +1678,7 @@
    "slug": "sarp",
    "n_contratos": 3035,
    "valor_total": 2121347404.38,
-   "n_ativos": 181,
+   "n_ativos": 141,
    "valor_ativo": 957945.48,
    "n_valor_suspeito": 0,
    "by_year": [

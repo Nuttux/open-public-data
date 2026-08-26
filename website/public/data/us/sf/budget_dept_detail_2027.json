@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.688200+00:00",
+  "generated_at": "2026-08-26T18:07:56.261908+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -8023,14 +8023,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581370",
-          "label": "GF-Environment",
+          "code": "581150",
+          "label": "GF-Con-Payroll-Personnel",
           "amount_usd": 150000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581150",
-          "label": "GF-Con-Payroll-Personnel",
+          "code": "581370",
+          "label": "GF-Environment",
           "amount_usd": 150000.0,
           "is_transfer_adjustment": false
         },
@@ -8053,14 +8053,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581921",
-          "label": "ADM CMD Contractor Development",
+          "code": "581250",
+          "label": "GF-City Planning",
           "amount_usd": 100000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581250",
-          "label": "GF-City Planning",
+          "code": "581921",
+          "label": "ADM CMD Contractor Development",
           "amount_usd": 100000.0,
           "is_transfer_adjustment": false
         },
@@ -8101,14 +8101,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581845",
-          "label": "GF-Police Accountability",
+          "code": "581280",
+          "label": "DT SFGov TV Services",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581280",
-          "label": "DT SFGov TV Services",
+          "code": "581845",
+          "label": "GF-Police Accountability",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -8187,15 +8187,6 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "PUSH DANCE CO",
-            "amount_usd": 37500.0,
-            "n_vouchers": 2,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "DANCE BRIGADE",
             "amount_usd": 37500.0,
             "n_vouchers": 2,
@@ -8205,7 +8196,16 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "THEATRE FLAMENCO OF SAN FRANCISCO INC",
+            "vendor": "PUSH DANCE CO",
+            "amount_usd": 37500.0,
+            "n_vouchers": 2,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "IDRIS ACKAMOOR AND CULTURAL ODYSSEY",
             "amount_usd": 25000.0,
             "n_vouchers": 1,
             "is_non_profit": true,
@@ -8223,7 +8223,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "IDRIS ACKAMOOR AND CULTURAL ODYSSEY",
+            "vendor": "THEATRE FLAMENCO OF SAN FRANCISCO INC",
             "amount_usd": 25000.0,
             "n_vouchers": 1,
             "is_non_profit": true,
@@ -8340,14 +8340,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "TRAVEL",
-          "label": "Travel",
+          "code": "MEMBER_FEE",
+          "label": "Membership Fees",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "MEMBER_FEE",
-          "label": "Membership Fees",
+          "code": "TRAVEL",
+          "label": "Travel",
           "amount_usd": 5000.0,
           "is_transfer_adjustment": false
         }
@@ -16009,14 +16009,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581930",
-          "label": "GF-Sheriff",
+          "code": "581450",
+          "label": "GF-HR-Mgmt Training",
           "amount_usd": 35000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581450",
-          "label": "GF-HR-Mgmt Training",
+          "code": "581930",
+          "label": "GF-Sheriff",
           "amount_usd": 35000.0,
           "is_transfer_adjustment": false
         },
@@ -20079,14 +20079,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "536510",
-          "label": "Homeless Hsng And Supportv Svc",
+          "code": "536230",
+          "label": "Kinship-Foster Care Emergency",
           "amount_usd": 60000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "536230",
-          "label": "Kinship-Foster Care Emergency",
+          "code": "536510",
+          "label": "Homeless Hsng And Supportv Svc",
           "amount_usd": 60000.0,
           "is_transfer_adjustment": false
         },
@@ -20162,15 +20162,6 @@
             "is_aggregation_line": true
           },
           {
-            "vendor": "New Community Leadership Foundation",
-            "amount_usd": 4000.0,
-            "n_vouchers": 1,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
             "vendor": "Bay Area Computer Service",
             "amount_usd": 4000.0,
             "n_vouchers": 1,
@@ -20180,7 +20171,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "ROSSI MISSION SF",
+            "vendor": "DLXSF Retail",
             "amount_usd": 4000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -20189,7 +20180,16 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "DLXSF Retail",
+            "vendor": "New Community Leadership Foundation",
+            "amount_usd": 4000.0,
+            "n_vouchers": 1,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "ROSSI MISSION SF",
             "amount_usd": 4000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -20786,14 +20786,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "UTILITIES",
-          "label": "Utilities",
+          "code": "ENT_PROMO",
+          "label": "Entertainment and Promotion",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "ENT_PROMO",
-          "label": "Entertainment and Promotion",
+          "code": "UTILITIES",
+          "label": "Utilities",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         }
@@ -21133,14 +21133,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581166",
-          "label": "GF-Immigrant and Language Serv",
+          "code": "581320",
+          "label": "GF-District Attorney",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581320",
-          "label": "GF-District Attorney",
+          "code": "581166",
+          "label": "GF-Immigrant and Language Serv",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },

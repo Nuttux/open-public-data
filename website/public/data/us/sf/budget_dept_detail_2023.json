@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.652879+00:00",
+  "generated_at": "2026-08-26T18:07:56.216949+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -8959,14 +8959,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581390",
-          "label": "GF-Fire",
+          "code": "581066",
+          "label": "Sr-DPW-Architecture",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581066",
-          "label": "Sr-DPW-Architecture",
+          "code": "581390",
+          "label": "GF-Fire",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -9710,14 +9710,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581270",
-          "label": "GF-City Attorney-Legal Service",
+          "code": "581460",
+          "label": "GF-HR-Workers' Comp Claims",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581460",
-          "label": "GF-HR-Workers' Comp Claims",
+          "code": "581270",
+          "label": "GF-City Attorney-Legal Service",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
@@ -14404,14 +14404,8 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581320",
-          "label": "GF-District Attorney",
-          "amount_usd": 150000.0,
-          "is_transfer_adjustment": false
-        },
-        {
-          "code": "581330",
-          "label": "GF-Bus & Ecn Dev",
+          "code": "581088",
+          "label": "Sr-SAS-Building Repair",
           "amount_usd": 150000.0,
           "is_transfer_adjustment": false
         },
@@ -14422,8 +14416,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581088",
-          "label": "Sr-SAS-Building Repair",
+          "code": "581330",
+          "label": "GF-Bus & Ecn Dev",
+          "amount_usd": 150000.0,
+          "is_transfer_adjustment": false
+        },
+        {
+          "code": "581320",
+          "label": "GF-District Attorney",
           "amount_usd": 150000.0,
           "is_transfer_adjustment": false
         },
@@ -14470,12 +14470,6 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581067",
-          "label": "Sr-DPW-Building Repair",
-          "amount_usd": 50000.0,
-          "is_transfer_adjustment": false
-        },
-        {
           "code": "581081",
           "label": "Sr-DPW-Urban Forestry",
           "amount_usd": 50000.0,
@@ -14484,6 +14478,12 @@
         {
           "code": "581270",
           "label": "GF-City Attorney-Legal Service",
+          "amount_usd": 50000.0,
+          "is_transfer_adjustment": false
+        },
+        {
+          "code": "581067",
+          "label": "Sr-DPW-Building Repair",
           "amount_usd": 50000.0,
           "is_transfer_adjustment": false
         },
@@ -16364,14 +16364,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "RENTLSE_EQUIP",
-          "label": "Rents/Leases-Equipment",
+          "code": "TRAINING",
+          "label": "Training",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "TRAINING",
-          "label": "Training",
+          "code": "RENTLSE_EQUIP",
+          "label": "Rents/Leases-Equipment",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -30015,14 +30015,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581166",
-          "label": "GF-Immigrant and Language Serv",
+          "code": "581320",
+          "label": "GF-District Attorney",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581320",
-          "label": "GF-District Attorney",
+          "code": "581166",
+          "label": "GF-Immigrant and Language Serv",
           "amount_usd": 200000.0,
           "is_transfer_adjustment": false
         },
@@ -37557,6 +37557,15 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "BAY AREA VIDEO COALITION",
+            "amount_usd": 33950.0,
+            "n_vouchers": 2,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "CHINATOWN COMMUNITY DEVELOPMENT CENTER",
             "amount_usd": 33950.0,
             "n_vouchers": 9,
@@ -37569,24 +37578,6 @@
             "vendor": "COMMUNITY YOUTH CENTER SAN FRANCISCO",
             "amount_usd": 33950.0,
             "n_vouchers": 1,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": "nonprofit",
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "BAY AREA VIDEO COALITION",
-            "amount_usd": 33950.0,
-            "n_vouchers": 2,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "YMCA OF SAN FRANCISCO",
-            "amount_usd": 33950.0,
-            "n_vouchers": 2,
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": "nonprofit",
@@ -37608,6 +37599,15 @@
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
+            "vendor": "YMCA OF SAN FRANCISCO",
+            "amount_usd": 33950.0,
+            "n_vouchers": 2,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           },
           {
@@ -41798,14 +41798,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581660",
-          "label": "GF-Chf-Youth Works",
+          "code": "581855",
+          "label": "GF-Human Rights Commission Svc",
           "amount_usd": 9600.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581855",
-          "label": "GF-Human Rights Commission Svc",
+          "code": "581660",
+          "label": "GF-Chf-Youth Works",
           "amount_usd": 9600.0,
           "is_transfer_adjustment": false
         },

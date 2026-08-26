@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.565116+00:00",
+  "generated_at": "2026-08-26T18:07:56.111237+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -28588,7 +28588,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "MICHAEL J GAINES",
+            "vendor": "FURST & PENDERGAST LLP",
             "amount_usd": 50000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -28597,7 +28597,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "FURST & PENDERGAST LLP",
+            "vendor": "MICHAEL J GAINES",
             "amount_usd": 50000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -28933,7 +28933,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SUN LIGHT & POWER",
+            "vendor": "S D DEACON CORP OF CALIFORNIA",
             "amount_usd": 60000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -28942,7 +28942,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "S D DEACON CORP OF CALIFORNIA",
+            "vendor": "SUN LIGHT & POWER",
             "amount_usd": 60000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -34931,12 +34931,12 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "TENDERLOIN HOUSING CLINIC INC",
+            "vendor": "ASIAN AMER ADVNCNG JSTC-ASIAN LAW CAUCUS",
             "amount_usd": 20000.0,
-            "n_vouchers": 1,
+            "n_vouchers": 2,
             "is_non_profit": false,
             "is_related_govt_unit": false,
-            "bucket": "nonprofit",
+            "bucket": null,
             "is_aggregation_line": false
           },
           {
@@ -34949,12 +34949,12 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "ASIAN AMER ADVNCNG JSTC-ASIAN LAW CAUCUS",
+            "vendor": "TENDERLOIN HOUSING CLINIC INC",
             "amount_usd": 20000.0,
-            "n_vouchers": 2,
+            "n_vouchers": 1,
             "is_non_profit": false,
             "is_related_govt_unit": false,
-            "bucket": null,
+            "bucket": "nonprofit",
             "is_aggregation_line": false
           }
         ],
@@ -36817,7 +36817,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "NANCY ROCK",
+            "vendor": "ELEXUS PERVIS HUNTER",
             "amount_usd": 1000.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -36826,7 +36826,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "ELEXUS PERVIS HUNTER",
+            "vendor": "NANCY ROCK",
             "amount_usd": 1000.0,
             "n_vouchers": 1,
             "is_non_profit": false,

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:33.384399+00:00",
+  "generated_at": "2026-08-26T18:07:42.112082+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -6993,13 +6993,13 @@
         "n_funds": 1
       },
       {
-        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_type": "General Hospital Medical Center Funds",
         "fund_category": "Annual Projects",
         "total_usd": 1000000.0,
         "n_funds": 1
       },
       {
-        "fund_type": "General Hospital Medical Center Funds",
+        "fund_type": "Laguna Honda Hospital Funds",
         "fund_category": "Annual Projects",
         "total_usd": 1000000.0,
         "n_funds": 1
@@ -7277,13 +7277,13 @@
         "n_funds": 1
       },
       {
-        "fund_type": "General Hospital Medical Center Funds",
+        "fund_type": "Laguna Honda Hospital Funds",
         "fund_category": "Annual Projects",
         "total_usd": 1000000.0,
         "n_funds": 1
       },
       {
-        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_type": "General Hospital Medical Center Funds",
         "fund_category": "Annual Projects",
         "total_usd": 1000000.0,
         "n_funds": 1

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:46.614923+00:00",
+  "generated_at": "2026-08-26T18:07:56.170680+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -5248,14 +5248,14 @@
       "side": "Revenue",
       "objects": [
         {
-          "code": "ROAD_PRIV_PERM",
-          "label": "Road Privileges & Permits",
+          "code": "OTH_BUS_PROF_LIC",
+          "label": "Other Business/Prof Licenses",
           "amount_usd": 515959.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "OTH_BUS_PROF_LIC",
-          "label": "Other Business/Prof Licenses",
+          "code": "ROAD_PRIV_PERM",
+          "label": "Road Privileges & Permits",
           "amount_usd": 515959.0,
           "is_transfer_adjustment": false
         }
@@ -8576,14 +8576,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581066",
-          "label": "Sr-DPW-Architecture",
+          "code": "581390",
+          "label": "GF-Fire",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581390",
-          "label": "GF-Fire",
+          "code": "581066",
+          "label": "Sr-DPW-Architecture",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -9307,14 +9307,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581170",
-          "label": "GF-Risk Management Svcs (AAO)",
+          "code": "581450",
+          "label": "GF-HR-Mgmt Training",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581450",
-          "label": "GF-HR-Mgmt Training",
+          "code": "581170",
+          "label": "GF-Risk Management Svcs (AAO)",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -21665,14 +21665,14 @@
           "is_transfer_adjustment": false
         },
         {
-          "code": "581280",
-          "label": "DT SFGov TV Services",
+          "code": "581061",
+          "label": "Ef-PUC-Water",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
         {
-          "code": "581061",
-          "label": "Ef-PUC-Water",
+          "code": "581280",
+          "label": "DT SFGov TV Services",
           "amount_usd": 10000.0,
           "is_transfer_adjustment": false
         },
@@ -42148,6 +42148,15 @@
             "is_aggregation_line": false
           },
           {
+            "vendor": "MISSION GRADUATES",
+            "amount_usd": 9999.0,
+            "n_vouchers": 2,
+            "is_non_profit": true,
+            "is_related_govt_unit": false,
+            "bucket": null,
+            "is_aggregation_line": false
+          },
+          {
             "vendor": "PARENTS FOR PUBLIC SCHOOLS OF S F INC",
             "amount_usd": 9999.0,
             "n_vouchers": 2,
@@ -42160,15 +42169,6 @@
             "vendor": "RICHMOND DISTRICT NEIGHBORHOOD CTR INC",
             "amount_usd": 9999.0,
             "n_vouchers": 1,
-            "is_non_profit": true,
-            "is_related_govt_unit": false,
-            "bucket": null,
-            "is_aggregation_line": false
-          },
-          {
-            "vendor": "MISSION GRADUATES",
-            "amount_usd": 9999.0,
-            "n_vouchers": 2,
             "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": null,
@@ -43699,7 +43699,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "SANDRA VALMANA LASTRES",
+            "vendor": "A C C W",
             "amount_usd": 200.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -43708,7 +43708,7 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "A C C W",
+            "vendor": "SANDRA VALMANA LASTRES",
             "amount_usd": 200.0,
             "n_vouchers": 1,
             "is_non_profit": false,
@@ -44512,19 +44512,19 @@
             "is_aggregation_line": false
           },
           {
-            "vendor": "CITY & COUNTY OF SAN FRANCISCO",
+            "vendor": "ASIAN PACIFIC FUND",
             "amount_usd": 100.0,
-            "n_vouchers": 1,
-            "is_non_profit": false,
+            "n_vouchers": 3,
+            "is_non_profit": true,
             "is_related_govt_unit": true,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "ASIAN PACIFIC FUND",
+            "vendor": "CITY & COUNTY OF SAN FRANCISCO",
             "amount_usd": 100.0,
-            "n_vouchers": 3,
-            "is_non_profit": true,
+            "n_vouchers": 1,
+            "is_non_profit": false,
             "is_related_govt_unit": true,
             "bucket": null,
             "is_aggregation_line": false
@@ -47204,19 +47204,19 @@
             "is_aggregation_line": true
           },
           {
-            "vendor": "MERCY HOUSING CALIFORNIA",
+            "vendor": "1950 MISSION HOUSING ASSOCIATES LP",
             "amount_usd": 100000.0,
             "n_vouchers": 1,
-            "is_non_profit": true,
+            "is_non_profit": false,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false
           },
           {
-            "vendor": "1950 MISSION HOUSING ASSOCIATES LP",
+            "vendor": "MERCY HOUSING CALIFORNIA",
             "amount_usd": 100000.0,
             "n_vouchers": 1,
-            "is_non_profit": false,
+            "is_non_profit": true,
             "is_related_govt_unit": false,
             "bucket": null,
             "is_aggregation_line": false

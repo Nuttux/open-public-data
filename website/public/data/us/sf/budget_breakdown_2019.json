@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T11:43:33.394267+00:00",
+  "generated_at": "2026-08-26T18:07:42.122074+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -1180,9 +1180,9 @@
         "n_characters": 3
       },
       {
-        "code": "CTA",
-        "label": "CTA SF County Transprtn Auth",
-        "display_name": "County Transportation Authority",
+        "code": "TJP",
+        "label": "TJP Transbay Joint Power Auth",
+        "display_name": "Transbay Joint Powers Authority",
         "org_group_code": "02",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -1190,9 +1190,19 @@
         "n_characters": 0
       },
       {
-        "code": "TJP",
-        "label": "TJP Transbay Joint Power Auth",
-        "display_name": "Transbay Joint Powers Authority",
+        "code": "DPA",
+        "label": "DPA Police Accountabilty",
+        "display_name": "Police Accountability",
+        "org_group_code": "01",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -8000.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
+      },
+      {
+        "code": "CTA",
+        "label": "CTA SF County Transprtn Auth",
+        "display_name": "County Transportation Authority",
         "org_group_code": "02",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -1206,16 +1216,6 @@
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": -15000.0,
-        "share_of_side": 0.0,
-        "n_characters": 2
-      },
-      {
-        "code": "DPA",
-        "label": "DPA Police Accountabilty",
-        "display_name": "Police Accountability",
-        "org_group_code": "01",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": -8000.0,
         "share_of_side": 0.0,
         "n_characters": 2
       },
@@ -1240,9 +1240,9 @@
         "n_characters": 2
       },
       {
-        "code": "CCD",
-        "label": "CCD SF Communtiy College Dist",
-        "display_name": "SF Community College District",
+        "code": "CII",
+        "label": "CII Commty Invest & Infrstrctr",
+        "display_name": "Community Investment & Infrastructure",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -1250,9 +1250,9 @@
         "n_characters": 0
       },
       {
-        "code": "CII",
-        "label": "CII Commty Invest & Infrstrctr",
-        "display_name": "Community Investment & Infrastructure",
+        "code": "CCD",
+        "label": "CCD SF Communtiy College Dist",
+        "display_name": "SF Community College District",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -3208,14 +3208,14 @@
         0
       ],
       [
-        "ADM",
-        "INTRA_TFR_OUT",
+        "HSA",
+        "PROG_PROJ",
         3000000.0,
         0
       ],
       [
-        "HSA",
-        "PROG_PROJ",
+        "ADM",
+        "INTRA_TFR_OUT",
         3000000.0,
         0
       ],
@@ -4211,14 +4211,14 @@
       ],
       [
         "ASR",
-        "UNAP_REV_DESIG",
-        -46087.0,
+        "CARRYFWD_BUD_ONLY",
+        46087.0,
         0
       ],
       [
         "ASR",
-        "CARRYFWD_BUD_ONLY",
-        46087.0,
+        "UNAP_REV_DESIG",
+        -46087.0,
         0
       ],
       [
@@ -4885,15 +4885,15 @@
       ],
       [
         "SHF",
-        "ELS",
-        -24053958.0,
-        1
-      ],
-      [
-        "SHF",
         "EXP_RECOVERY",
         24053958.0,
         0
+      ],
+      [
+        "SHF",
+        "ELS",
+        -24053958.0,
+        1
       ],
       [
         "ADM",
@@ -4957,15 +4957,15 @@
       ],
       [
         "CFC",
-        "EXP_RECOVERY",
-        18361163.0,
-        0
-      ],
-      [
-        "CFC",
         "ELS",
         -18361163.0,
         1
+      ],
+      [
+        "CFC",
+        "EXP_RECOVERY",
+        18361163.0,
+        0
       ],
       [
         "GEN",
@@ -5305,15 +5305,15 @@
       ],
       [
         "TTX",
-        "ELS",
-        -4197063.0,
-        1
-      ],
-      [
-        "TTX",
         "EXP_RECOVERY",
         4197063.0,
         0
+      ],
+      [
+        "TTX",
+        "ELS",
+        -4197063.0,
+        1
       ],
       [
         "FAM",
@@ -5365,15 +5365,15 @@
       ],
       [
         "ASR",
-        "ELS",
-        -3593589.0,
-        1
-      ],
-      [
-        "ASR",
         "EXP_RECOVERY",
         3593589.0,
         0
+      ],
+      [
+        "ASR",
+        "ELS",
+        -3593589.0,
+        1
       ],
       [
         "CHF",
@@ -5605,15 +5605,15 @@
       ],
       [
         "CPC",
-        "EXP_RECOVERY",
-        1470974.0,
-        0
-      ],
-      [
-        "CPC",
         "ELS",
         -1470974.0,
         1
+      ],
+      [
+        "CPC",
+        "EXP_RECOVERY",
+        1470974.0,
+        0
       ],
       [
         "DAT",
@@ -5713,15 +5713,15 @@
       ],
       [
         "CSS",
-        "EXP_RECOVERY",
-        786837.0,
-        0
-      ],
-      [
-        "CSS",
         "ELS",
         -786837.0,
         1
+      ],
+      [
+        "CSS",
+        "EXP_RECOVERY",
+        786837.0,
+        0
       ],
       [
         "DAT",
@@ -5917,15 +5917,15 @@
       ],
       [
         "CSC",
-        "EXP_RECOVERY",
-        360839.0,
-        0
-      ],
-      [
-        "CSC",
         "ELS",
         -360839.0,
         1
+      ],
+      [
+        "CSC",
+        "EXP_RECOVERY",
+        360839.0,
+        0
       ],
       [
         "DPH",
@@ -6031,15 +6031,15 @@
       ],
       [
         "FAM",
-        "EXP_RECOVERY",
-        179000.0,
-        0
-      ],
-      [
-        "FAM",
         "ELS",
         -179000.0,
         1
+      ],
+      [
+        "FAM",
+        "EXP_RECOVERY",
+        179000.0,
+        0
       ],
       [
         "DBI",
@@ -6073,15 +6073,15 @@
       ],
       [
         "RET",
-        "EXP_RECOVERY",
-        160000.0,
-        0
-      ],
-      [
-        "RET",
         "ELS",
         -160000.0,
         1
+      ],
+      [
+        "RET",
+        "EXP_RECOVERY",
+        160000.0,
+        0
       ],
       [
         "CON",
@@ -6091,15 +6091,15 @@
       ],
       [
         "REG",
-        "EXP_RECOVERY",
-        140000.0,
-        0
-      ],
-      [
-        "REG",
         "ELS",
         -140000.0,
         1
+      ],
+      [
+        "REG",
+        "EXP_RECOVERY",
+        140000.0,
+        0
       ],
       [
         "ART",
@@ -6162,18 +6162,6 @@
         0
       ],
       [
-        "JUV",
-        "ELS",
-        -80000.0,
-        1
-      ],
-      [
-        "AIR",
-        "EXP_RECOVERY",
-        80000.0,
-        0
-      ],
-      [
         "CHF",
         "INT_INV_INC",
         80000.0,
@@ -6181,6 +6169,18 @@
       ],
       [
         "JUV",
+        "ELS",
+        -80000.0,
+        1
+      ],
+      [
+        "JUV",
+        "EXP_RECOVERY",
+        80000.0,
+        0
+      ],
+      [
+        "AIR",
         "EXP_RECOVERY",
         80000.0,
         0
@@ -6222,13 +6222,13 @@
         0
       ],
       [
-        "ART",
+        "GEN",
         "OTH_REV",
         50000.0,
         0
       ],
       [
-        "GEN",
+        "ART",
         "OTH_REV",
         50000.0,
         0
@@ -6342,14 +6342,14 @@
         0
       ],
       [
-        "SHF",
-        "INT_INV_INC",
+        "JUV",
+        "CHGS_FOR_SERVICES",
         3000.0,
         0
       ],
       [
-        "JUV",
-        "CHGS_FOR_SERVICES",
+        "SHF",
+        "INT_INV_INC",
         3000.0,
         0
       ],

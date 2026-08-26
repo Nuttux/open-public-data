@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-28T11:43:47.701566+00:00",
- "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "generated_at": "2026-08-26T18:12:35.889448+00:00",
+ "source_pipeline": "raw.us_sf_vouchers → stg → core_us_sf_vouchers (+ seed_us_sf_payee_identity) → mart_us_sf_payees → export_us_sf_payees.py",
  "as_of": "2026-07-13T13:40:40+00:00",
  "unit": "USD",
  "slug": "a-ruiz-construction-co-and-assoc-inc",
@@ -34,7 +34,10 @@
   "2026": 5760056.81
  },
  "top_departments": [
-  "DPW GSA - Public Works"
+  "DPW GSA - Public Works",
+  "PUC Public Utilities Commsn",
+  "DPW Public Works",
+  "WTR Water Enterprise"
  ],
  "profile": {
   "n_vouchers": 2809,
@@ -192,15 +195,6 @@
  "identity": null,
  "contracts_held": [
   {
-   "contract_no": "1000031792",
-   "title": "8” Diwm Replc Gold Mine DR",
-   "department": "PUC Public Utilities Commsn",
-   "department_code": "PUC",
-   "agreed_usd": 5250683.51,
-   "paid_usd": 16315705.68,
-   "sole_source": false
-  },
-  {
    "contract_no": "1000036680",
    "title": "Various Sewer Replac NO.18",
    "department": "PUC Public Utilities Commsn",
@@ -210,7 +204,7 @@
    "sole_source": false
   }
  ],
- "n_contracts_held": 2,
+ "n_contracts_held": 1,
  "variants": [
   {
    "name": "A RUIZ CONSTRUCTION CO AND ASSOC INC",
