@@ -215,3 +215,82 @@ this subsystem that has stayed clean without anybody policing it.
 A grep for names finds `-8192` never. The instrument beside the number —
 `us_sf_city/derive/` — is the only defence against that, and it is a per-city
 cost by construction, not a thing a shared package can hold.
+
+---
+
+## 9. What actually moved, what did not, and what it would cost — 2026-08-26
+
+### 9.1 The shared home
+
+`pipeline/scripts/citymap/` — ten modules, 1,217 lines, **549 of them code**,
+and `check_city_free.py` fails the moment one of them names a city.
+
+| module | what it is | code |
+|---|---:|---:|
+| `chunk.py` | the `QCT1` container | 85 |
+| `nearcollapse.py` | near-duplicate collapse + a self-test | 94 |
+| `deltachain.py` | the geometry delta codec | 65 |
+| `orderindep.py` | shuffle, build, hash, compare | 63 |
+| `measured.py` | a constant that carries its own derivation | 64 |
+| `check_city_free.py` | the rule, enforced | 56 |
+| `catalogue.py` | the chunk catalogue and the LOD tiering | 53 |
+| `grid.py` | the world tiling, as arguments | 40 |
+| `blocklayer.py` | reading a published build back | 29 |
+| `__init__.py` | what the package is and is not | 0 |
+
+### 9.2 The San Francisco side, measured
+
+| file | code before | after | |
+|---|---:|---:|---:|
+| `_chunk.py` | 85 | 6 | a redirect with a deletion condition |
+| `_bldgsrc.py` | 103 | 44 | the reader stayed, the codec left |
+| `verify_order_independence.py` | 85 | 36 | eleven of them are the builder invocation |
+| `verify_block_regression.py` | 79 | 57 | |
+| `enumerate_block_moves.py` | 100 | 90 | a duplicated reader deleted |
+| `blocks/build_index.py` | 799 | 774 | |
+| `_grid.py` | 37 | 21 | |
+| `encode_city_chunks.py` | 1,798 | 1,805 | catalogue out, annotations in |
+| **subtotal** | **3,086** | **2,833** | **−253** |
+| `derive/wiring.py` | 0 | 165 | new: the instrument table, checked |
+| **net** | | | **−88** |
+
+**Read that net honestly. This pass did not make the pipeline smaller and was not
+meant to.** It made 549 lines of it provably city-free, and it spent 165 lines
+writing down where the numbers came from. The thing that got smaller is what a
+newcomer has to read before they can tell the two apart.
+
+### 9.3 The proof
+
+Every step control-replayed. The encoder, four times, against a control built
+from `a97d813c`'s tree before anything was touched: **580 of 580 files identical,
+every time.** `build_index.py` replayed before and after: **2,181 of 2,181
+identical, and the stdout logs match line for line.** Order independence PASS
+(2,179 files across two shuffles); block regression PASS (90,820 = 90,820);
+`wiring.py` PASS; `check_city_free.py` PASS.
+
+### 9.4 WHAT IS STILL SAN FRANCISCO IN THE CORE, AND WHAT IT WOULD COST
+
+Nothing in `citymap/` is. These are the places where the SF-shaped thing is still
+load-bearing somewhere it should not be, in the order a second city would hit
+them.
+
+| # | what | where | cost to lift |
+|---|---|---|---|
+| 1 | **`bldg.yr`'s base year 1849** | the mock's generator and `citygl/bldg.ts`; the manifest already publishes `year0` per chunk and the client ignores it | **one line on each side of the wire.** The cheapest real fix on this list, and the highest-value: it is a FORMAT constant, so the container currently cannot represent a building older than a number nobody wrote down |
+| 2 | **`SA_DEFAULT`, `DETAIL_PXM`, `HEIGHT_BANDS`, `ROT_DEG`** carry no derivation where they are used | `website/src/lib/city/{projection,camera,roofs}.ts` | `wiring.py` asserts them read-only, which catches drift but does not put the derivation in front of a reader of `projection.ts`. Lifting properly = a `Measured` equivalent in TypeScript. **Half a day, and it is a frontend change** |
+| 3 | **`1.2247` hardcoded at ~20 sites** | frontend; the manifest already publishes it as `pxAcross` | mechanical, but it is 20 edits in code this pass does not own |
+| 4 | **`cityBBoxByBand`** is arithmetically inert *because this city's relief is 280 m* | `lib/city` | it does not fail here; it bites at a different tilt or a taller DEM. Needs a city with real relief to even test |
+| 5 | **The gates that cry wolf.** `verify_city_chunks.py` fails 9 of 5,731, `verify_places.py` 12 of 45, and every one is a stale expectation | `us_sf_city`, `us_sf_places` | each is its own change with its own control. **A gate that always fails trains the reader to skim a FAILURES block, which is worse than not running it** |
+| 6 | **`build_hood_facts.py` still imports the `_chunk` redirect** | `us_sf_city` | one import line, in a file owned by another change in flight |
+| 7 | **The precision-tier ladder, the gazetteer, the Clerk's forms, the assessor-block regexes, the Journal's leaf citations, the 1906 burn line** | `us_sf_city`, `pipeline/minutes` | **not a cost — a decision.** These are forked on purpose and §26.5 in MINUTES says why. A city that reuses them gets one city's English and one clerk's typography, silently |
+
+### 9.5 The one thing that would make the next city ten times faster, and it is not code
+
+Every number in §6 that has an instrument has one because somebody built a
+Playwright harness against a prototype page **that no longer exists**. The
+harnesses are recovered and the table is checked, but `derive/README.md` is blunt
+about what that is worth: *what is recovered is the METHOD, not a working tool.*
+
+**Porting one harness to the current renderer is the highest-leverage unbuilt
+thing in this subsystem.** It converts the whole of §6 from a list of numbers a
+second city would inherit into a list of measurements a second city can run.
