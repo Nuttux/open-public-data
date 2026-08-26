@@ -588,6 +588,16 @@ sources:
           - name: date_extraction
             description: "Date d'extraction de cette ligne"
 
+      - name: paris_catalog
+        description: |
+          Snapshot of the Opendatasoft /catalog/datasets/{id} metadata for
+          every ods_dataset source in configs/cities/paris.yaml: one row per
+          (dataset, field) with the dataset title, opendata.paris.fr page URL,
+          license, publisher, `modified` (portal refresh timestamp →
+          rows_updated_at) and per-field labels/types. Provenance source of
+          truth for Paris models (stg_paris_catalog → core_paris_source_catalog);
+          refreshed by sync_ods_dataset.py on every run. All-STRING.
+
       - name: dette_garantie_paris
         description: |
           Annexe IV-B du compte administratif : emprunts garantis par

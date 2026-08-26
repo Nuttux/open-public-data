@@ -103,3 +103,16 @@ sources:
     target_table: liste_des_marches_de_la_collectivite_parisienne
     description: "Marchés publics (enveloppes pluriannuelles - non sommables)"
     map_to: marche
+
+  # ---------------------------------------------------------------------------
+  # DETTE GARANTIE — annexe IV-B (emprunts garantis). Data loaded by the
+  # dedicated sync_dette_garantie.py (per-year refine + collectivite filter);
+  # listed here so the catalog snapshot carries its provenance (page URL,
+  # license, `modified`) for core_dette_garantie.
+  # ---------------------------------------------------------------------------
+  - id: dette_garantie
+    type: ods_dataset
+    catalog_only: true
+    dataset_id: dette-garantie
+    target_table: dette_garantie_paris
+    description: "Dette garantie par la Ville de Paris (annexe IV-B du compte administratif)"

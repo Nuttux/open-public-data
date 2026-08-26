@@ -462,8 +462,20 @@ models:
   # Tous les seeds-mappings et seeds-cache LLM sont désormais wrappés ici.
   # ===========================================================================
 
+  - name: stg_paris_catalog
+    description: >
+      Snapshot typé du catalogue Opendatasoft (raw.paris_catalog) : une ligne
+      par dataset × champ, avec titre, URL de la page dataset, licence,
+      éditeur et `modified` (→ rows_updated_at). Source de vérité de la
+      provenance Paris.
+    columns:
+      - name: source_id
+        tests: [not_null]
+      - name: dataset_page_url
+        tests: [not_null]
+
   - name: stg_dette_garantie
-    description: "Annexe IV-B Paris (emprunts garantis) — wrapper de raw.dette_garantie_paris."
+    description: "Annexe IV-B Paris (emprunts garantis) — wrapper de raw.dette_garantie_paris. source_url est ajouté dans core_dette_garantie depuis le catalogue."
     columns:
       - name: annee
         tests: [not_null]

@@ -287,6 +287,22 @@ models:
   # NOUVEAUX CORE (Phases 1-18)
   # ===========================================================================
 
+  - name: core_paris_source_catalog
+    meta:
+      domain: "provenance"
+      criticality: "low"
+      freshness_slo: "per sync"
+    description: >
+      Dimension de provenance Paris — une ligne par dataset ODS synchronisé
+      (source_id), réduite depuis stg_paris_catalog. Les modèles core/mart la
+      joignent pour source_url / rows_updated_at au lieu d'écrire une URL en
+      dur. Aucun montant.
+    columns:
+      - name: source_id
+        tests: [not_null, unique]
+      - name: dataset_page_url
+        tests: [not_null]
+
   - name: core_dette_garantie
     meta:
       domain: "bilan"
