@@ -193,7 +193,11 @@ def do_relabel() -> None:
     """
     rows = [json.loads(l) for l in open(ALL)]
     for r in rows:
-        r["pk"] = form_of(r["t"])
+        # `form_of` reads the opening Resolution|Ordinance|Motion word, which a
+        # header-delimited row does not have, so it would relabel every one of
+        # them "fragment". The form of those rows is settled by how they were
+        # cut, not by how they read.
+        r["pk"] = "file" if r["k"] in ("H", "F") else form_of(r["t"])
         r["disp"] = disp_of(r["t"])
         r["sp"] = 1 if SPEAKER.search(r["t"]) else 0
         r["fn"] = sorted(set(FILENO.findall(r["t"])))
