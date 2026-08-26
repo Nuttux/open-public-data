@@ -53,6 +53,7 @@ decision is worse than no link.
 
 Usage:
     python3 sweep_sfbos_all.py --sweep      read the 390 PDFs -> items_all.jsonl
+    python3 sweep_sfbos_all.py --control    re-sweep with both fixes OFF and diff
     python3 sweep_sfbos_all.py --relabel    recompute pl/pk/fn from the cache
     python3 sweep_sfbos_all.py --verify     parity gate + sfbos_gate
     python3 sweep_sfbos_all.py --report     the measurements
@@ -65,7 +66,6 @@ from __future__ import annotations
 
 import argparse
 import collections
-import importlib.util
 import json
 import pathlib
 import random
@@ -74,273 +74,123 @@ import subprocess
 import sys
 
 HERE = pathlib.Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+# ONE WALK, IMPORTED RATHER THAN COPIED. This file used to carry its own copy of
+# `fetch_sfbos_minutes.do_extract`'s page walk and prove the two equal after the
+# fact. They are now the same function, so there is nothing left to drift. Every
+# regex, form label and gate below comes from there too.
+from _sfbos_sweep import (  # noqa: E402
+    BASE, CANON, DISP, FORMS, HEADER, STYPE, TITLED,
+    SPEAKER, disp_of, ex, form_of, gz, sfbos_gate, sweep_meeting,
+)
+
 REPO = HERE.parent.parent.parent
 MIN = REPO / "pipeline" / "minutes"
 CACHE = HERE / "cache_sfbos"
 PDFS = CACHE / "pdf"
 CAL = CACHE / "calendar.json"
-PLACED = CACHE / "items.jsonl"          # what the map is built from today
+PLACED = CACHE / "items.jsonl"          # what the map is built from
 ALL = CACHE / "items_all.jsonl"         # what this writes
 META = CACHE / "items_all.meta.json"
 
-BASE = "https://sfbos.org/sites/default/files"
-
-# the twelve fields the merged block index reads, in the order the existing
-# stream serialises them. The parity gate compares this projection and nothing
-# else, because these are the bytes that reach the map.
-CANON = ("v", "y", "n", "i", "k", "dt", "t", "m", "r", "src", "url", "page")
-
-
-def _load(path: pathlib.Path, name: str):
-    sp = importlib.util.spec_from_file_location(name, path)
-    m = importlib.util.module_from_spec(sp)
-    sys.modules[name] = m
-    sp.loader.exec_module(m)
-    return m
-
-
-ex = _load(MIN / "extract.py", "ex_all")
-gz = _load(MIN / "gazetteer.py", "gz_all")
-
-# identical to fetch_sfbos_minutes.do_extract's local STYPE
-STYPE = re.compile(r"\s+(Street|Avenue|Boulevard|Road|Way|Drive|Place|Terrace|"
-                   r"Alley|Lane|Court|Park|Plaza|Square|Highway|Circle|Path|Walk)$",
-                   re.I)
-
-# The Clerk prints a legislative file as six digits then a bracketed title:
-#     160576 [Settlement of Lawsuits - Justice Operating Co. LLC ...]
-# THE TRAP, AND IT FIRED: a bare \d{6} sweep over the corpus finds 12,593
-# distinct tokens, and 476 of them are not file numbers at all -- Superior Court
-# case numbers (`Case No. CGC-20-584260`) contribute every 5xxxxx and 6xxxxx.
-# So a file number is recognised by the shape the Clerk actually prints, never
-# by its digit count alone.
-FILENO = re.compile(r"(?<!\d)(\d{6})(?!\d)\s*\[")
-TITLED = re.compile(r"(?<!\d)(\d{6})(?!\d)\s*\[([^\]]{0,400})\]")
+FILENO = HEADER
 FILEREF = re.compile(r"File Nos?\.\s*(?:and\s*)?((?:\d{6}[,;\s]*(?:and\s*)?)+)")
 
-# ---------------------------------------------------------------- form
-# WHAT A CHUNK IS, read off the Clerk's own typography, not guessed at.
-#
-# The splitter cuts a page at every Resolution|Ordinance|Motion word, so a chunk
-# is not automatically an item. Four shapes account for 98.5% of them and the
-# Clerk writes each one the same way every time:
-#
-#   title      "Resolution authorizing the Mayor to accept ..."      24,541
-#              the item's OWN WORDS. Always a gerund (or "of Intention",
-#              or "that the Board") straight after the opening word.
-#   stamp      "Resolution No. 293-21 ADOPTED by the following vote"  10,535
-#              the numbered record that a titled item was disposed of. Its
-#              substance is the title printed with it or elsewhere in the meeting.
-#   fragment   "Ordinance be CONTINUED ON FINAL PASSAGE to ..."        6,410
-#              the splitter cut mid-sentence: the words belong to the chunk before.
-#   template   "Resolution may be introduced before the Board ..."       868
-#              the PDF template's own explanatory text, printed every meeting.
-#
-# A REFERRAL IS NOT PROCEDURAL AND THE BRIEF'S EXAMPLE IS WRONG HERE. Measured:
-# 5,105 chunks carry "RECEIVED AND ASSIGNED to <committee>" and 6,982 carry some
-# referral wording, and the referral is a stamp on the END of a fully-titled new
-# ordinance --
-#   "Ordinance ... requesting the Department of Building Inspection and the Office
-#    of Economic and Workforce Development to report. 06/13/17; RECEIVED AND
-#    ASSIGNED to Land Use"
-# -- so calling those items procedural would throw away the day's new legislation.
-# Disposition is therefore recorded SEPARATELY, in `disp`, as metadata about what
-# the Board DID with an item, never as a verdict on whether the item has substance.
-TEMPL = re.compile(r"^(?:Resolution|Ordinance|Motion)s?[,.]?\s+(?:may be|as defined|"
-                   r"shall be considered)", re.I)
-STAMP = re.compile(r"^(?:Resolution|Ordinance|Motion)s?\s+No[.s]", re.I)
-TITLE = re.compile(r"^(?:Resolution|Ordinance|Motion)\s+"
-                   r"(?:\w+ly\s+)?(?:\w+ing\b|of\s+Intention\b|that\s+th)", re.I)
-ADJOURN = re.compile(r"that the Board adjourn|\bADJOURNMENT\b|"
-                     r"there being no further business|meeting adjourned", re.I)
-ROLL = re.compile(r"On the call of the roll|\bROLL CALL\b|The Clerk called the roll|"
-                  r"noted present|a quorum", re.I)
-
-# One line PER SPEAKER underneath an item, which is how the modern minutes record
-# public comment. It repeats the item's title once per person, so 1,7xx chunks are
-# re-prints of a title already counted. `sp` flags them; it does not reclassify
-# them, because the title they repeat is real.
-SPEAKER = re.compile(r"(?:^|[.)\]]\s)[A-Z][A-Za-z.'\u2019-]+(?:\s+[A-Z][A-Za-z.'\u2019-]+){0,3}"
-                     r";\s*(?:expressed|spoke|shared|urged|requested|stated|presented|"
-                     r"raised|voiced|thanked|commented|provided|asked|questioned)\b")
-
-# What the Board DID with it. Metadata, never a substance verdict. Ordered so the
-# most specific disposition wins.
-DISP = [
-    ("not-adopted", re.compile(r"\bNOT ADOPTED\b|\bFAILED\b|\bDISAPPROVED\b")),
-    ("tabled", re.compile(r"\bTABLED\b")),
-    ("continued", re.compile(r"\bCONTINUED ON\b|\bbe CONTINUED\b|\bCONTINUED to\b")),
-    ("referred", re.compile(r"RECEIVED AND ASSIGNED to|\bRE-?REFERRED\b|"
-                            r"REFERRED to the|ASSIGNED UNDER 30 DAY RULE")),
-    ("amended", re.compile(r"\bbe AMENDED\b|\bADOPTED AS AMENDED\b|\bAMENDED,\b")),
-    ("passed", re.compile(r"\bFINALLY PASSED\b|\bPASSED ON FIRST READING\b")),
-    ("adopted", re.compile(r"\bADOPTED\b|\bAPPROVED\b")),
-    ("filed", re.compile(r"RECEIVED AND FILED|\bFILED\b")),
-    ("voted", re.compile(r"by the following vote|The motion carried by")),
-]
-FORMS = ("title", "stamp", "fragment", "template", "rollcall", "adjournment")
+_ = (DISP, STYPE, TITLED, disp_of, form_of)   # re-exported for readers of this file
 
 
-def form_of(t: str) -> str:
-    if TEMPL.match(t):
-        return "template"
-    if STAMP.match(t):
-        return "stamp"
-    head = t[:140]
-    if ADJOURN.search(head):
-        return "adjournment"
-    if ROLL.search(head):
-        return "rollcall"
-    if TITLE.match(t):
-        return "title"
-    return "fragment"
+def _meetings():
+    cal = json.loads(CAL.read_text())
+    return [(k, v["stem"]) for k, v in sorted(cal.items()) if v["minutes"]]
 
 
-def disp_of(t: str) -> str:
-    for name, rx in DISP:
-        if rx.search(t):
-            return name
-    return ""
-
-
-def sfbos_gate(rows) -> None:
-    """The citation shape is an invariant this PROVES, over every row, placed or
-    not. Raises rather than warns: an unplaced item still needs a link that
-    opens, and a dead link under a real decision is worse than no link."""
-    bad_u = bad_p = 0
-    first = None
-    for r in rows:
-        stem = r["v"].split(":", 1)[1]
-        if r["url"] != f"{BASE}/{stem}_minutes.pdf":
-            bad_u += 1
-            first = first or ("url", r["v"], r["i"], r["url"])
-        if r["page"] != r["n"] + 1:
-            bad_p += 1
-            first = first or ("page", r["v"], r["i"], r["page"], r["n"])
-    n = len(rows)
-    print(f"  sfbos_gate  url  == PREFIX + stem + '_minutes.pdf'   "
-          f"{n - bad_u:,} / {n:,}")
-    print(f"  sfbos_gate  page == n + 1                            "
-          f"{n - bad_p:,} / {n:,}")
-    if bad_u or bad_p:
-        sys.exit(f"REFUSED: sfbos_gate failed ({bad_u} url, {bad_p} page). First: {first}")
+def _walk(trim=True, orphans=True, echo=True):
+    gaz = gz.build()
+    keys = list(gaz)
+    if echo:
+        print(f"  gazetteer: {len(gaz)} real SF streets")
+    todo = _meetings()
+    if echo:
+        print(f"  {len(todo)} meetings with published minutes")
+    counters: dict = {}
+    per_meeting: dict[str, dict] = {}
+    rows = []
+    for j, (day, stem) in enumerate(todo, 1):
+        f = PDFS / f"{stem}_minutes.pdf"
+        if not f.exists():
+            counters["pdf missing on disk"] = counters.get("pdf missing on disk", 0) + 1
+            continue
+        got = sweep_meeting(stem, day, f, gaz, keys, trim_headers=trim,
+                            emit_orphans=orphans, counters=counters)
+        rows += got
+        st = collections.Counter(r["pl"] for r in got)
+        per_meeting[stem] = {"dt": day, "items": len(got), **dict(st)}
+        if echo and j % 50 == 0:
+            print(f"    … {j}/{len(todo)}  {len(rows):,} items", flush=True)
+    return rows, counters, per_meeting
 
 
 # ---------------------------------------------------------------- sweep
 def do_sweep() -> None:
-    gaz = gz.build()
-    keys = list(gaz)
-    print(f"  gazetteer: {len(gaz)} real SF streets")
-    cal = json.loads(CAL.read_text())
-    todo = [(k, v["stem"]) for k, v in sorted(cal.items()) if v["minutes"]]
-    print(f"  {len(todo)} meetings with published minutes")
-
-    m = collections.Counter()
-    per_meeting: dict[str, dict] = {}
-    n_chars_total = n_chars_in_items = 0
+    rows, m, per_meeting = _walk()
     with open(ALL, "w") as w:
-        for j, (day, stem) in enumerate(todo, 1):
-            f = PDFS / f"{stem}_minutes.pdf"
-            if not f.exists():
-                m["pdf missing on disk"] += 1
-                continue
-            m["pdfs read"] += 1
-            txt = subprocess.run(["pdftotext", "-layout", str(f), "-"],
-                                 capture_output=True).stdout.decode("utf8", "replace")
-            pages = txt.split("\f")
-            if len(re.sub(r"\s", "", txt)) < 400:
-                m["pdf with no text layer"] += 1
-                continue
-            seq = 0
-            mm_stats = collections.Counter()
-            for pno, raw in enumerate(pages):
-                text = ex.clean(raw)
-                n_chars_total += len(text)
-                if len(text) < 60:
-                    m["page too short to split"] += 1
-                    continue
-                m["pages split"] += 1
-                marks = [mk.start() for mk in ex.ITEM.finditer(text)]
-                if not marks:
-                    m["page with no Resolution/Ordinance/Motion mark"] += 1
-                    continue
-                n_chars_in_items += len(text) - marks[0]
-                for a, b in zip(marks, marks[1:] + [len(text)]):
-                    body = text[a:b]
-                    if len(body) < 60:
-                        m["chunk < 60 chars (dropped by the splitter)"] += 1
-                        continue
-                    if len(body) > 3000:
-                        m["chunk > 3000 chars (dropped by the splitter)"] += 1
-                        continue
-                    # ---- from here the walk is IDENTICAL to do_extract's, and
-                    # `seq` increments exactly where it did, so `i` is unchanged
-                    locs = ex.locations_from(body)
-                    seq += 1
-                    m["items"] += 1
-                    offs, used = {}, set()
-                    for m2 in ex.STREET.finditer(body):
-                        nm = re.sub(r"^(?:On|At|In|To|From|Along|Near|Upon)\s+", "",
-                                    m2.group("name").strip())
-                        k2 = (f"{nm} {m2.group('type').rstrip('s').title()}",
-                              m2.group("num"))
-                        if k2 not in used:
-                            used.add(k2)
-                            offs[k2] = m2.start()
-                    res, un = [], []
-                    for L in locs:
-                        mt = STYPE.search(L["street"])
-                        hit, how = gz.resolve(STYPE.sub("", L["street"]), gaz, keys)
-                        if how == "unresolved":
-                            un.append(L["street"])
-                            continue
-                        res.append({"s": gz.norm(hit), "d": hit, "a": L["number"],
-                                    "x": 1 if L["cross_of"] else 0, "h": how,
-                                    "ty": mt.group(1) if mt else "",
-                                    "o": offs.get((L["street"], L["number"]), 0)})
-                    mk = ex.ITEM.search(body)
-                    pl = "placed" if res else ("unresolved" if locs else "none")
-                    m[f"pl={pl}"] += 1
-                    mm_stats[pl] += 1
-                    row = {
-                        "v": f"sfbos:{stem}", "y": int(day[:4]), "n": pno,
-                        "i": seq, "k": mk.group(1)[0] if mk else "?",
-                        "dt": day, "t": body,
-                        "m": [x.replace(",", "") for x in ex.MONEY.findall(body)[:6]],
-                        "r": res,
-                        "src": "sfbos",
-                        "url": f"{BASE}/{stem}_minutes.pdf",
-                        "page": pno + 1,
-                        # ---- everything below is NEW and additive. The twelve
-                        # fields above are byte-identical to the placed stream.
-                        "pl": pl,
-                        "pk": form_of(body),
-                        "disp": disp_of(body),
-                        "sp": 1 if SPEAKER.search(body) else 0,
-                        "un": sorted(set(un)),
-                        "fn": sorted(set(FILENO.findall(body))),
-                    }
-                    w.write(json.dumps(row) + "\n")
-            per_meeting[stem] = {"dt": day, "items": seq, **dict(mm_stats)}
-            if j % 50 == 0:
-                print(f"    … {j}/{len(todo)}  {m['items']:,} items", flush=True)
-
+        for r in rows:
+            w.write(json.dumps(r) + "\n")
     META.write_text(json.dumps({
-        "counters": dict(m),
-        "chars_after_clean": n_chars_total,
-        "chars_inside_an_item_chunk": n_chars_in_items,
+        "counters": m,
+        "chars_after_clean": m.get("chars_after_clean", 0),
+        "chars_inside_an_item_chunk": m.get("chars_inside_an_item_chunk", 0),
         "per_meeting": per_meeting,
     }, indent=1))
-    print(f"\n  {m['pdfs read']} PDFs read, {m['pages split']:,} pages split")
-    print(f"  {m['items']:,} items kept  "
-          f"(placed {m['pl=placed']:,} / unresolved {m['pl=unresolved']:,} / "
-          f"no place {m['pl=none']:,})")
+    pl = collections.Counter(r["pl"] for r in rows)
+    print(f"\n  {m.get('pdfs read', 0)} PDFs read, {m.get('pages split', 0):,} pages split")
+    print(f"  {len(rows):,} items kept  "
+          f"(placed {pl['placed']:,} / unresolved {pl['unresolved']:,} / "
+          f"no place {pl['none']:,})")
+    print(f"  {m.get('chunk trimmed at the next file\'s header', 0):,} chunks trimmed "
+          f"at the next file's header")
+    print(f"  {m.get('items from a file header the splitter cannot see', 0):,} items "
+          f"recovered from a header the splitter cannot see")
     print(f"  -> {ALL.relative_to(REPO)}")
     print(f"  -> {META.relative_to(REPO)}")
 
 
+# ---------------------------------------------------------------- control
+# THE TEST THAT MAKES BOTH FIXES PROVABLE RATHER THAN PLAUSIBLE. Re-sweeps with
+# `trim_headers=False, emit_orphans=False`, which is the walk exactly as it stood
+# when `items_all.jsonl` and `items.jsonl` were published, and diffs it against a
+# named baseline line for line. If the refactor moved one byte of its own, this
+# says so before any measurement of the fixes is believed.
+def do_control(baseline: str) -> None:
+    base = pathlib.Path(baseline)
+    rows, _m, _p = _walk(trim=False, orphans=False)
+    old = [l.rstrip("\n") for l in open(base) if l.strip()]
+    if base.name == "items.jsonl":
+        new = [json.dumps({k: r[k] for k in CANON}) for r in rows if r["r"]]
+    else:
+        new = [json.dumps({k: v for k, v in r.items() if k not in ("hf", "ht")})
+               for r in rows]
+    print(f"  baseline {base}  {len(old):,} rows")
+    print(f"  control re-sweep                {len(new):,} rows")
+    if len(old) != len(new):
+        sys.exit(f"REFUSED: control changed size {len(old)} -> {len(new)}")
+    diff = [i for i, (x, y) in enumerate(zip(old, new)) if x != y]
+    if diff:
+        i = diff[0]
+        print(f"    FIRST DIFF at line {i}\n      was: {old[i][:300]}\n      now: {new[i][:300]}")
+        sys.exit(f"REFUSED: {len(diff)} control rows differ. The refactor is not neutral.")
+    print(f"  CONTROL PASS: all {len(old):,} rows byte-identical, line for line, "
+          f"in order. Every later difference is the fix, not the refactor.")
+
+
 def do_relabel() -> None:
-    """Recompute pl/pk/fn from the cached text. Never touches the twelve."""
+    """Recompute pl/pk/fn from the cached text. Never touches the twelve.
+
+    `hf`/`ht` are NOT recomputed: they are the header printed above the item on
+    the page, which the row's own text does not contain. Re-deriving them needs
+    the page, so it needs `--sweep`.
+    """
     rows = [json.loads(l) for l in open(ALL)]
     for r in rows:
         r["pk"] = form_of(r["t"])
@@ -466,14 +316,18 @@ def do_report() -> None:
           f"  {100 * nsp / n:>5.1f}%")
 
     print(f"\n{'=' * 74}\nTHE HONEST TAXONOMY OF WHAT DOES NOT PLACE\n{'=' * 74}")
-    print(f"  the {n - pl['placed']:,} items the map cannot draw are FOUR different")
+    print(f"  the {n - pl['placed']:,} items the map cannot draw are FIVE different")
     print(f"  things and they are never summed into one number:\n")
     proc = [r for r in rows if r["pl"] != "placed" and r["pk"] in
             ("stamp", "template", "rollcall", "adjournment")]
     frag = [r for r in rows if r["pl"] != "placed" and r["pk"] == "fragment"]
     unre = [r for r in rows if r["pl"] == "unresolved" and r["pk"] not in
-            ("stamp", "template", "rollcall", "adjournment", "fragment")]
+            ("stamp", "template", "rollcall", "adjournment", "fragment", "file")]
     city = [r for r in rows if r["pl"] == "none" and r["pk"] == "title"]
+    # the fifth class exists because the fifth FORM does: a legislative file
+    # recovered from its own header. It is kept apart from `city` because these
+    # are hearings and appeals, not citywide business.
+    hear = [r for r in rows if r["pl"] != "placed" and r["pk"] == "file"]
     tot_un = n - pl["placed"]
     for lbl, sub, note in (
         ("CITYWIDE BY NATURE", city,
@@ -484,23 +338,28 @@ def do_report() -> None:
          "the cut fell mid-sentence; the words belong to the chunk before"),
         ("NAMES A PLACE WE CANNOT RESOLVE", unre,
          "a titled item naming a street-shaped phrase the gazetteer refused"),
+        ("A FILE THE SPLITTER CANNOT SEE", hear,
+         "a Hearing or other file recovered from its own header, naming no place"),
     ):
         print(f"  {lbl:<34}{len(sub):>8,}  {100 * len(sub) / tot_un:>5.1f}%")
         print(f"    {note}")
-    chk = len(city) + len(proc) + len(frag) + len(unre)
+    chk = len(city) + len(proc) + len(frag) + len(unre) + len(hear)
     assert chk == tot_un, f"taxonomy is not a partition: {chk} != {tot_un}"
     print(f"\n  {chk:,} = {tot_un:,}. An EXACT partition, no row counted twice and")
     print(f"  none left over. An unresolved street on a stamp or a fragment is")
     print(f"  counted as the stamp or fragment it is, not as a placement failure.")
-    cty_fn = sum(1 for r in city if r["fn"])
+    cty_fn = sum(1 for r in city if r["hf"])
     cty_sp = sum(1 for r in city if r["sp"])
     print(f"\n  of the {len(city):,} CITYWIDE items:")
-    print(f"    carry a legislative file number       {cty_fn:>8,}"
+    # `hf`, not `fn`. See do_files(): a file number in an item's own words was
+    # the NEXT file's until the header trim, so `fn` answered a different
+    # question from the one this line asks.
+    print(f"    printed under a legislative file      {cty_fn:>8,}"
           f"  {100 * cty_fn / max(1, len(city)):>5.1f}%")
     print(f"    are a public-comment re-print of one  {cty_sp:>8,}"
           f"  {100 * cty_sp / max(1, len(city)):>5.1f}%")
-    print(f"    distinct file numbers among them      "
-          f"{len({f for r in city for f in r['fn']}):>8,}")
+    print(f"    distinct files among them             "
+          f"{len({r['hf'] for r in city if r['hf']}):>8,}")
 
     print(f"\n  WHAT THE BOARD DID WITH IT (disp) — metadata, not a substance verdict")
     dp = collections.Counter(r["disp"] for r in rows)
@@ -564,23 +423,29 @@ def do_report() -> None:
 
 
 def do_files() -> None:
-    """File numbers the corpus PRINTS vs file numbers an ITEM carries.
+    """File numbers the corpus PRINTS vs file numbers an ITEM answers for.
 
-    A file number appearing in text is not an item, and the gap has one cause
-    worth naming out loud: the splitter's vocabulary is Resolution|Ordinance|
-    Motion, so a legislative file whose body uses none of those three words can
-    never become an item however clearly the Clerk printed it. The largest such
-    class is the HEARING -- appeals of CEQA determinations, land-use appeals,
-    budget hearings -- printed as
+    THE OLD READING OF THIS TABLE WAS ITSELF THE BLEED. It counted a file as
+    "carried by an item" when the number appeared in the item's text -- and
+    because the header prints above the item it introduces, that number was
+    almost always the NEXT file's. 9,868 files looked carried; once the chunk is
+    cut at the header, only the 1,102 header-delimited rows contain a file number
+    in their own words at all.
+
+    So the question is asked the other way round, which is the way the Clerk
+    writes it: which file's header is this item printed UNDER? That is `hf`, and
+    it answers for 12,028 of the 12,051 files the corpus prints.
+
+    What remains after that is the real second filter: a legislative file whose
+    body uses none of `Resolution|Ordinance|Motion` can never become an item
+    through the splitter, however plainly the Clerk printed it --
 
         161146 [Hearing - Appeal of Determination of Exemption From Environmental
                 Review - Proposed Project at 2675 Folsom Street]
         Hearing of persons interested in or objecting to the determination ...
 
-    That one names a placeable address, is a real contested decision, and no
-    stage of this pipeline has ever seen it. It is a SECOND filter sitting
-    upstream of the placement filter this script removes, and removing it is a
-    different job.
+    -- which is why those spans are now emitted as items in their own right,
+    bounded by the two headers around them rather than by a word.
     """
     rows = _rows()
     corpus: collections.Counter = collections.Counter()
@@ -593,36 +458,51 @@ def do_files() -> None:
         for f in FILENO.findall(txt):
             corpus[f] += 1
         for m in TITLED.finditer(flat):
-            titles.setdefault(m.group(1), m.group(2).strip())
+            if m.group(1) not in titles or len(m.group(2)) > len(titles[m.group(1)]):
+                titles[m.group(1)] = m.group(2).strip()
         bare_all |= set(re.findall(r"(?<!\d)(\d{6})(?!\d)", txt))
-    in_items: collections.Counter = collections.Counter()
+    under: collections.Counter = collections.Counter()
+    own: collections.Counter = collections.Counter()
     for r in rows:
+        if r["hf"]:
+            under[r["hf"]] += 1
         for f in r["fn"]:
-            in_items[f] += 1
-    placed_files = {f for r in rows if r["pl"] == "placed" for f in r["fn"]}
+            own[f] += 1
+    placed_files = {r["hf"] for r in rows if r["pl"] == "placed" and r["hf"]}
+    hearing_files = {r["hf"] for r in rows if r["k"] == "H" and r["hf"]}
+    hearing_placed = {r["hf"] for r in rows
+                      if r["k"] == "H" and r["pl"] == "placed" and r["hf"]}
     print(f"  distinct 6-digit tokens anywhere in the text   {len(bare_all):>8,}")
     print(f"  ...NOT file numbers (Superior Court case nos)  "
           f"{len(bare_all - set(corpus)):>8,}")
     print(f"  distinct FILE NUMBERS (six digits then '[')    {len(corpus):>8,}")
     print(f"  ...with a title short enough to read whole     {len(titles):>8,}")
-    print(f"  distinct file numbers carried by an ITEM       {len(in_items):>8,}   "
-          f"{100 * len(in_items) / len(corpus):.1f}%")
-    print(f"  distinct file numbers on a PLACED item         {len(placed_files):>8,}   "
+    print(f"\n  distinct files an ITEM IS PRINTED UNDER (hf)   {len(under):>8,}   "
+          f"{100 * len(under) / len(corpus):.1f}%")
+    print(f"  ...on a PLACED item                            {len(placed_files):>8,}   "
           f"{100 * len(placed_files) / len(corpus):.1f}%")
-    missing = sorted(set(corpus) - set(in_items))
-    print(f"  file numbers printed but on NO item            {len(missing):>8,}")
+    print(f"  files whose own words name a file number (fn)  {len(own):>8,}")
+    missing = sorted(set(corpus) - set(under))
+    print(f"  files printed with NO item under them          {len(missing):>8,}")
 
     def head(f):
         return titles.get(f, "?").split(" - ")[0].strip()
-    print(f"\n  what the {len(missing):,} orphans ARE, by the first segment of the")
-    print(f"  Clerk's own bracketed title:")
-    for k, v in collections.Counter(head(f) for f in missing
-                                    if f in titles).most_common(15):
-        print(f"    {v:>6}  {k}")
-    print(f"\n  the same breakdown for file numbers that DO reach an item:")
-    for k, v in collections.Counter(head(f) for f in in_items
-                                    if f in titles).most_common(8):
-        print(f"    {v:>6}  {k}")
+    if missing:
+        print(f"\n  what the {len(missing):,} remaining ARE, by the first segment of")
+        print(f"  the Clerk's own bracketed title:")
+        for k, v in collections.Counter(head(f) for f in missing
+                                        if f in titles).most_common(15):
+            print(f"    {v:>6}  {k}")
+    print(f"\n  HEARINGS, the class the splitter's vocabulary could never see:")
+    print(f"    distinct hearing files now carrying an item  {len(hearing_files):>7,}")
+    print(f"    ...of which place on the map                 {len(hearing_placed):>7,}")
+    print(f"    hearing items                                "
+          f"{sum(1 for r in rows if r['k'] == 'H'):>7,}")
+    print(f"    other header-delimited items (kind F)        "
+          f"{sum(1 for r in rows if r['k'] == 'F'):>7,}")
+    fk = collections.Counter(head(r["hf"]) for r in rows if r["k"] == "F" and r["hf"])
+    for k, v in fk.most_common(8):
+        print(f"      {v:>5}  {k}")
 
 
 # one row per LEGISLATIVE FILE, for judging what a film could be made of.
@@ -632,9 +512,14 @@ def do_pool() -> None:
     rows = _rows()
     best: dict[str, dict] = {}
     for r in rows:
-        if r["pk"] != "title" or not r["fn"]:
+        # THE JOIN IS `hf`, NOT `fn`, AND THAT IS THE WHOLE CORRECTION. `fn` is a
+        # file number the item's own words contain, and before the header trim
+        # that was almost always the NEXT file's -- so the pool used to key each
+        # file to the item printed ABOVE it. `hf` is the header printed above
+        # this item, which is the file this item IS.
+        if r["pk"] not in ("title", "file") or not r["hf"]:
             continue
-        for f in r["fn"]:
+        for f in [r["hf"]]:
             cur = best.get(f)
             # the fullest printing of this file's own title wins; ties by the
             # earliest meeting, so the pool is a function of the corpus and not
@@ -668,75 +553,75 @@ def do_pool() -> None:
 
 
 # ---------------------------------------------------------------- bleed
-# THE PLACEMENT ITSELF HAS A BUG, AND IT IS NOT THIS SCRIPT'S TO FIX.
+# WHAT THE HEADER TRIM TOOK OFF THE MAP, counted against a named baseline.
 #
-# The Clerk prints a legislative file as a header ABOVE the item it introduces:
-#
-#     160248 [Liquor License - 141 Gough Street]
-#     Resolution approving a licence transfer ...
-#
-# The splitter cuts at the Resolution|Ordinance|Motion word, so an item's OWN
-# header sits at the tail of the PREVIOUS chunk. Any `NNNNNN [` a title-form
-# chunk contains is therefore the NEXT file's header -- and every street named
-# inside it belongs to that next file, not to this item.
+# The Clerk prints a legislative file's header ABOVE the item it introduces, so
+# a chunk that runs from one `Resolution|Ordinance|Motion` word to the next ends
+# with the NEXT file's header, and every street inside it used to be read as this
+# item's own:
 #
 #     Resolution urging the San Francisco Legislative Delegation to work to
 #     amend the "By Right Housing Approvals" ...  160248 [Liquor License -
 #     141 Gough Street]
-#                                      ^ placed on GOUGH STREET
+#                                      ^ was placed on GOUGH STREET
 #
-# Measured conservatively -- title-form rows only, and only where EVERY street
-# the row placed on lies after such a header -- 468 of the 6,786 published rows,
-# 6.9%, are pinned to an address belonging to a different decision. The COVID
-# emergency motion of 2020-09-01 is one of them: it sits on 2300 Harrison Street
-# because 201019 [Findings Reversing the Community Plan Evaluation - 2300
-# Harrison Street] followed it on the page.
+# `_sfbos_sweep.sweep_meeting(trim_headers=True)` cuts the chunk there. This
+# reports what that changed, row by row, against the stream as it was published:
 #
-# It is NOT fixed here. The published block index is built from these rows and
-# correcting them would move the map, which this change exists not to do.
-# Reported, reproducible, and left as a decision.
-NEXTFILE = re.compile(r"(?<!\d)\d{6}(?!\d)\s*\[")
+#     python3 sweep_sfbos_all.py --bleed <baseline items_all.jsonl>
+#
+# The earlier reading of this — 468 rows, title-form only — was an explicitly
+# conservative floor. It excluded stamp- and fragment-form rows on the grounds
+# that a stamp's header might legitimately be its own. It is not: the header
+# above an item is the header above an item whatever the chunk under it looks
+# like, and the same test applied to every form finds 2,025 rows touched.
+NEXTFILE = HEADER
 
 
-def do_bleed() -> None:
-    rows = _rows()
+def do_bleed(baseline: str) -> None:
+    old = {}
+    for line in open(baseline):
+        r = json.loads(line)
+        old[(r["v"], r["i"])] = r
+    new = {(r["v"], r["i"]): r for r in _rows()}
     per = collections.Counter()
-    ex = []
-    for r in rows:
-        if r["pl"] != "placed":
+    exs = []
+    n_old_placed = sum(1 for r in old.values() if r["r"])
+    lost = changed = 0
+    for k, r in old.items():
+        if not r["r"]:
             continue
-        ms = [m.start() for m in NEXTFILE.finditer(r["t"]) if m.start() > 0]
-        if not ms:
-            per[(r["pk"], "no later header in the chunk")] += 1
+        q = new.get(k)
+        a2 = [x["d"] for x in r["r"]]
+        b2 = [x["d"] for x in (q["r"] if q else [])]
+        if a2 == b2:
+            per[(r["pk"], "untouched")] += 1
             continue
-        p = ms[0]
-        if all(x["o"] >= p for x in r["r"]):
-            per[(r["pk"], "EVERY street after a later file header")] += 1
-            if r["pk"] == "title" and len(ex) < 8:
-                ex.append((r, p))
+        if not b2:
+            lost += 1
+            per[(r["pk"], "placed ENTIRELY on another file's address")] += 1
+            if len(exs) < 8:
+                ms = [m.start() for m in NEXTFILE.finditer(r["t"]) if m.start() > 0]
+                exs.append((r, ms[0] if ms else 0, a2, b2))
         else:
-            per[(r["pk"], "a street before the header")] += 1
-    for k in sorted(per):
-        print(f"  {per[k]:>6}  {k[0]:<10} {k[1]}")
-    tot = sum(v for k, v in per.items() if k[0] == "title")
-    bl = per[("title", "EVERY street after a later file header")]
-    print(f"\n  CONSERVATIVE LOWER BOUND — title-form rows only, where the item's")
-    print(f"  own words are present and every placed street is not:")
-    print(f"    title-form placed rows                        {tot:>7,}")
-    print(f"    ...placed entirely on the NEXT file's address {bl:>7,}  "
-          f"{100 * bl / tot:.1f}%")
-    print(f"    as a share of all {len([r for r in rows if r['pl'] == 'placed']):,} "
-          f"published placed rows          {100 * bl / 6786:.1f}%")
-    print(f"\n  stamp- and fragment-form rows are NOT counted above. A stamp's own")
-    print(f"  header legitimately follows its disposition line "
-          f"(\"Ordinance No. 132-16")
-    print(f"  FINALLY PASSED 160576 [Settlement of Lawsuits ...]\"), so the same")
-    print(f"  test cannot separate the two cases there without more work.")
+            changed += 1
+            per[(r["pk"], "some streets were another file's")] += 1
+    for k2 in sorted(per):
+        print(f"  {per[k2]:>6}  {k2[0]:<10} {k2[1]}")
+    print(f"\n  baseline placed rows                              {n_old_placed:>7,}")
+    print(f"  ...whose ONLY address belonged to the next file   {lost:>7,}  "
+          f"{100 * lost / max(1, n_old_placed):.1f}%")
+    print(f"  ...which named one of the next file's addresses   {changed:>7,}  "
+          f"{100 * changed / max(1, n_old_placed):.1f}%")
+    print(f"  rows touched                                      "
+          f"{lost + changed:>7,}  {100 * (lost + changed) / max(1, n_old_placed):.1f}%")
+    print(f"  placed rows after the trim                        "
+          f"{sum(1 for r in new.values() if r['r']):>7,}")
     print()
-    for r, p in ex:
-        print(f"  {r['dt']} p{r['page']}  placed on {[x['d'] for x in r['r']]}")
-        print(f"     ITEM : {r['t'][:104]}")
-        print(f"     NEXT : {r['t'][p:p + 80]}\n")
+    for r, pos, a2, _b in exs:
+        print(f"  {r['dt']} p{r['page']}  was placed on {a2}")
+        print(f"     ITEM : {r['t'][:pos][:104]}")
+        print(f"     NEXT : {r['t'][pos:pos + 80]}\n")
 
 
 def do_sample(what: str, k: int) -> None:
@@ -768,14 +653,21 @@ def main() -> None:
     ap.add_argument("--report", action="store_true")
     ap.add_argument("--files", action="store_true")
     ap.add_argument("--pool", action="store_true")
-    ap.add_argument("--bleed", action="store_true")
+    ap.add_argument("--bleed", metavar="BASELINE_ITEMS_ALL",
+                    help="diff the trim against a baseline items_all.jsonl")
+    ap.add_argument("--control", metavar="BASELINE",
+                    help="re-sweep with both fixes OFF and diff, line for line")
     ap.add_argument("--sample", nargs="?", const="all")
     ap.add_argument("-k", type=int, default=12)
     a = ap.parse_args()
-    if not any((a.sweep, a.relabel, a.verify, a.report, a.files, a.pool, a.bleed, a.sample)):
-        ap.error("one of --sweep / --relabel / --verify / --report / --files / --pool / --bleed / --sample")
+    if not any((a.sweep, a.control, a.relabel, a.verify, a.report, a.files,
+                a.pool, a.bleed, a.sample)):
+        ap.error("one of --sweep / --control / --relabel / --verify / --report / "
+                 "--files / --pool / --bleed / --sample")
     if a.sweep:
         do_sweep()
+    if a.control:
+        do_control(a.control)
     if a.relabel:
         do_relabel()
     if a.verify:
@@ -787,7 +679,7 @@ def main() -> None:
     if a.pool:
         do_pool()
     if a.bleed:
-        do_bleed()
+        do_bleed(a.bleed)
     if a.sample:
         do_sample(a.sample, a.k)
 

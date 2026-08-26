@@ -170,40 +170,34 @@ def do_fetch() -> None:
 
 # ---------------------------------------------------------------- extract
 # The rows are the SAME shape blocks/cache/items.jsonl carries, produced by the
-# SAME extractor, so this stream can merge the day its citation is settled.
+# SAME extractor, so this stream merges into that index (§21) carrying its own
+# honest citation (`src`, `url`, `page`).
 #
-# WHY IT IS NOT MERGED HERE. Every row in the block index carries `u` as
-# "<archive.org identifier>/<leaf>", and the renderer turns that into an
-# archive.org page link. An sfbos meeting has no archive.org identifier and no
-# leaf. Merging these rows into that index would mint a citation that resolves
-# to nothing — a dead link under a real decision, which is worse than no link.
-# So the stream is built, measured and kept beside the index, carrying its own
-# honest citation (`src`, `url`, `page`), and how it should be cited on the page
-# is a decision to take with Daniel rather than inside an ingest.
+# THE WALK ITSELF IS NOT HERE ANY MORE. `_sfbos_sweep.sweep_meeting()` owns it,
+# and `sweep_sfbos_all.py` calls the same function, so the map's corpus and the
+# full database cannot drift apart the way two hand-kept copies of a page walk
+# can. What is left here is the projection: the twelve canonical fields, and
+# only the rows that resolved to a street, because that is what the map reads.
+#
+# Two rules the shared walk applies and this stream inherits, both of them
+# corrections to what was published before — see `_sfbos_sweep`'s docstring for
+# the measurements:
+#   * an item ends where the NEXT file's header begins, so a street printed in
+#     that header is no longer read as this item's;
+#   * a legislative file the splitter's vocabulary cannot see — a Hearing, most
+#     of them — becomes an item delimited by the two headers the Clerk printed
+#     around it.
 def do_extract() -> None:
-    import importlib.util
-    import re as _re
-    ANIM = REPO / "scratchpad" / "sf-city-anim"
-    MIN = REPO / "pipeline" / "minutes"
+    sys.path.insert(0, str(HERE))
+    import _sfbos_sweep as S
 
-    def _load(path, name):
-        sp = importlib.util.spec_from_file_location(name, path)
-        m = importlib.util.module_from_spec(sp)
-        sys.modules[name] = m
-        sp.loader.exec_module(m)
-        return m
-    ex = _load(MIN / "extract.py", "ex_sfbos")
-    gz = _load(MIN / "gazetteer.py", "gz_sfbos")
-    STYPE = _re.compile(r"\s+(Street|Avenue|Boulevard|Road|Way|Drive|Place|Terrace|"
-                        r"Alley|Lane|Court|Park|Plaza|Square|Highway|Circle|Path|Walk)$",
-                        _re.I)
-    gaz = gz.build()
+    gaz = S.gz.build()
     keys = list(gaz)
     print(f"  gazetteer: {len(gaz)} real SF streets")
-
     cal = json.loads(CAL.read_text())
     out = CACHE / "items.jsonl"
-    n_pdf = n_item = n_loc = n_notext = 0
+    counters: dict = {}
+    n_pdf = n_item = n_loc = 0
     with open(out, "w") as w:
         for day, v in sorted(cal.items()):
             if not v["minutes"]:
@@ -212,66 +206,21 @@ def do_extract() -> None:
             if not f.exists():
                 continue
             n_pdf += 1
-            # -layout keeps the minute's column structure, which is what keeps an
-            # item's own address on the same line as the item
-            txt = subprocess.run(["pdftotext", "-layout", str(f), "-"],
-                                 capture_output=True).stdout.decode("utf8", "replace")
-            pages = txt.split("\f")
-            if len(_re.sub(r"\s", "", txt)) < 400:
-                n_notext += 1
-                continue
-            seq = 0
-            for pno, raw in enumerate(pages):
-                text = ex.clean(raw)
-                if len(text) < 60:
+            rows = S.sweep_meeting(v["stem"], day, f, gaz, keys, counters=counters)
+            n_item += len(rows)
+            for r in rows:
+                if not r["r"]:
                     continue
-                marks = [m.start() for m in ex.ITEM.finditer(text)]
-                for a, b in zip(marks, marks[1:] + [len(text)]):
-                    body = text[a:b]
-                    if len(body) < 60 or len(body) > 3000:
-                        continue
-                    locs = ex.locations_from(body)
-                    seq += 1
-                    n_item += 1
-                    if not locs:
-                        continue
-                    offs, used = {}, set()
-                    for m2 in ex.STREET.finditer(body):
-                        nm = _re.sub(r"^(?:On|At|In|To|From|Along|Near|Upon)\s+", "",
-                                     m2.group("name").strip())
-                        k2 = (f"{nm} {m2.group('type').rstrip('s').title()}",
-                              m2.group("num"))
-                        if k2 not in used:
-                            used.add(k2)
-                            offs[k2] = m2.start()
-                    res = []
-                    for L in locs:
-                        mt = STYPE.search(L["street"])
-                        hit, how = gz.resolve(STYPE.sub("", L["street"]), gaz, keys)
-                        if how == "unresolved":
-                            continue
-                        res.append({"s": gz.norm(hit), "d": hit, "a": L["number"],
-                                    "x": 1 if L["cross_of"] else 0, "h": how,
-                                    "ty": mt.group(1) if mt else "",
-                                    "o": offs.get((L["street"], L["number"]), 0)})
-                    if not res:
-                        continue
-                    n_loc += 1
-                    mm = ex.ITEM.search(body)
-                    w.write(json.dumps({
-                        "v": f"sfbos:{v['stem']}", "y": int(day[:4]), "n": pno,
-                        "i": seq, "k": mm.group(1)[0] if mm else "?",
-                        "dt": day, "t": body,
-                        "m": [x.replace(",", "") for x in ex.MONEY.findall(body)[:6]],
-                        "r": res,
-                        # this stream's own honest citation
-                        "src": "sfbos",
-                        "url": f"{BASE}/{v['stem']}_minutes.pdf",
-                        "page": pno + 1,
-                    }) + "\n")
-    print(f"  {n_pdf} minute PDFs read ({n_notext} had no text layer)")
+                n_loc += 1
+                w.write(json.dumps({k: r[k] for k in S.CANON}) + "\n")
+    print(f"  {n_pdf} minute PDFs read "
+          f"({counters.get('pdf with no text layer', 0)} had no text layer)")
     print(f"  {n_item:,} items split, {n_loc:,} carry a resolvable street "
           f"({100 * n_loc / max(1, n_item):.1f}%)")
+    print(f"    of which items recovered from a file header the splitter "
+          f"cannot see: {counters.get('items from a file header the splitter cannot see', 0):,}")
+    print(f"    chunks trimmed at the next file's header: "
+          f"{counters.get('chunk trimmed at the next file\'s header', 0):,}")
     print(f"  -> {out.relative_to(REPO)}")
 
 

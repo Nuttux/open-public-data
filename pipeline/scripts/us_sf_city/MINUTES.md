@@ -1485,3 +1485,304 @@ exists not to produce. It is a decision, not an ingest's call.
 
 All three derived files rebuild in ~20 seconds from the PDFs already on disk:
 `sweep_sfbos_all.py --sweep --pool`. Nothing was published.
+
+---
+
+# 23. THE HEADER, AND WHO IT BELONGS TO — 2026-08-26
+
+§22 measured two things and fixed neither, on the grounds that both would move
+the map. Both are fixed here, and **the map does move.** Every row that moves is
+enumerated in `moves_header_bleed.tsv` with a link that opens.
+
+Builder: `_sfbos_sweep.py` — a new module holding the page walk that
+`fetch_sfbos_minutes.py --extract` and `sweep_sfbos_all.py --sweep` used to
+carry two hand-kept copies of. Same 390 PDFs, no new fetch.
+
+## 23.1 The rule, and it is the Clerk's, not ours
+
+The Clerk prints a legislative file as a number, a bracketed title, and the item
+indented underneath. `ex.ITEM` cuts a page at every `Resolution|Ordinance|Motion`
+word, so a chunk runs from one such word to the next — **through the header
+printed in between.** The item's own header therefore sits in the *previous*
+chunk, and every street named in it is read as the previous item's.
+
+**`NNNNNN [` is a header and never anything else, measured rather than assumed:**
+
+```
+  occurrences in the 390 PDFs                          24,624
+  alone at the start of their line                     24,624   100%
+  with any text before them on the line                     0
+  at the hard left margin                              24,622
+  indented (7 and 12 columns)                               2
+```
+
+**The two indented ones are the trap in this measurement.** A line-anchored
+regex over the raw text misses them and then reports the set as complete. The
+match is made on `ex.clean()`ed text instead, and cleaning is checked not to move
+the set: over all 10,778 pages the cleaned text yields exactly the same header
+list. *A search that cannot see a thing reports its absence in the same words as
+its absence* — §22's own lesson, fired again on §22's own successor.
+
+So: **an item ends where the next file's header begins.**
+
+## 23.2 THE CONTROL — every byte below is the fix, not the refactor
+
+The walk moved into a module before it changed. With both new rules switched
+off, the module reproduces both published streams exactly:
+
+```
+  python3 sweep_sfbos_all.py --control <published items_all.jsonl>
+    CONTROL PASS: all 42,405 rows byte-identical, line for line, in order
+  python3 sweep_sfbos_all.py --control <published items.jsonl>
+    CONTROL PASS: all  6,786 rows byte-identical, line for line, in order
+```
+
+And the block index was rebuilt from the **unchanged** corpus into a separate
+directory first:
+
+```
+  2,212 files compared with blocks/out_2026/ (== production, verified)  —  0 differ
+```
+
+## 23.3 THE REAL BLEED — 468 was a floor, and it was a third of the number
+
+§22.8 measured title-form rows only, and excluded stamp- and fragment-form rows
+on the grounds that *"a stamp's own header legitimately follows its disposition
+line"*. **It does not.** The page proves it:
+
+```
+  160501 [Settlement of Lawsuit - Martha Abbene - $81,000]
+         Ordinance authorizing settlement of the lawsuit ...
+         Ordinance No. 132-16
+         FINALLY PASSED
+  160576 [Settlement of Lawsuits - Justice Operating Co. LLC, and Justice
+          Investors LP, Kearny Street Employers LLC - $1,450,000]
+```
+
+The stamp chunk opens at `Ordinance No. 132-16` and runs to the next mark, which
+is inside 160576's body — so it swallows 160576's header and is drawn on
+**Kearny Street**. The header above an item is the header above an item whatever
+the chunk under it looks like. Applied to every form:
+
+```
+  published placed rows                                        6,786
+  place on at least one street belonging to another file       2,025   29.8%
+    ...of which place on NOTHING ELSE                          1,829   27.0%
+  by form, rows placed ENTIRELY on the next file's address
+    title      468        stamp      794
+    fragment   494        template    73
+  street mentions removed 2,309 / kept 8,179
+```
+
+**468 was a conservative floor and the real number is 2,025 rows touched, 1,829
+of them wholly.** `sweep_sfbos_all.py --bleed <baseline>` reproduces it against
+any earlier stream and prints eight worked examples.
+
+**An independent instrument agrees.** `build_index.before_rollcall()` — written
+for the Journal, and until now the only defence against this — counts items it
+had to drop because every street they named came after the roll call. Over the
+sfbos half:
+
+```
+  "all streets named after the roll call (next item bleed)"   1,010  ->  12
+```
+
+It was catching part of the same bug from the other side, and it is nearly out
+of work.
+
+## 23.4 THE SECOND FILTER — hearings, and what the other 1,613 orphans were
+
+§22.7 counted 2,183 legislative files printed but carried by no item and
+attributed 570 to Hearings. **Both halves of that need correcting, and the first
+correction is that most of those orphans were the bleed again.**
+
+```
+  distinct file numbers printed                                12,051
+  orphans under the old reading                                 2,183
+    MIS-ATTRIBUTED — an item exists for the body; the number sat
+    in the PREVIOUS chunk, which is §23.3                       1,678
+    INVISIBLE — no Resolution|Ordinance|Motion word anywhere in
+    any printing of the span, so no item can exist                505
+      Hearing                    418      Charter Amendment    28
+      Formal Policy Discussions   47      12 others            12
+```
+
+**So hearings are not one gap among many: they are 83% of the only real gap.**
+
+**They are recovered without adding a word to any vocabulary.** Adding `Hearing`
+to `ex.ITEM` would change chunk boundaries for the Journal too, and "hearing" is
+a common word in prose — that is a fabricated boundary waiting to happen. The
+span used instead is **header to next header, both of them printed by the
+Clerk**, emitted only where the span contains no splitter mark at all, so
+nothing is counted twice:
+
+```
+  header-delimited items emitted                                1,102
+    k = "H"  the Clerk's title begins "Hearing"                   896
+    k = "F"  every other form (Charter Amendment 129, Formal
+             Policy Discussions 35, Closed Session, Committee
+             of the Whole, appointments …)                        206
+  header spans skipped because an item already exists there    23,493
+  header spans failing the same 60..3000 gate as every chunk       29
+  new rows whose opening text also appears in an ordinary chunk      0
+  ordinary chunks still containing a later file header               0
+```
+
+Their `i` continues after the meeting's last ordinary item, so **every published
+`i` keeps the value it had.** Three meetings that §22.7 recorded as yielding
+zero items by construction now yield some — `bag110218`, `bag112023`,
+`bag121818`, all Special Meetings.
+
+**`--report`'s taxonomy gains its fifth class rather than folding these in.** A
+hearing that names no place is not "citywide by nature"; it is a file the
+splitter could not see. The partition is still asserted exact.
+
+## 23.5 THE FILE-NUMBER JOIN WAS THE BLEED TOO, and it is now `hf`
+
+Trimming the header collapses `fn` — file numbers in an item's own words — from
+**9,868 files to 932**. That is not a regression; it is the measurement telling
+the truth for the first time. `fn` counted the file printed *after* the item.
+
+So the question is asked the way the Clerk writes it: **which file's header is
+this item printed under?** That is the new `hf`, carried as metadata, with the
+header's words and streets still kept out of the item.
+
+```
+  distinct files printed                                       12,051
+  files an item is printed UNDER (hf)                          12,028   99.8%
+  ...on a PLACED item                                           2,541   21.1%
+  files with no item under them at all                             23
+```
+
+`film_pool.jsonl` joins on `hf` now and goes **6,228 → 11,523 legislative
+files**, each keyed to the file it *is* rather than the one above it. It is
+still a POOL and still not a selection.
+
+## 23.6 WHAT MOVES ON THE MAP, counted three ways
+
+**Item level**, through `build_index.locate()` — the placement the published
+index runs — at block precision (tier ≥ 1):
+
+```
+  block-precision placements        3,717  ->  3,297
+    unchanged block set                         3,109
+    CHANGE BLOCK                                   55
+    LOSE their placement entirely                 553
+    NEW placement                                 133   (130 hearings, 3 other files)
+```
+
+**Published block layer**, which is what a reader sees:
+
+```
+  blocks whose row list changed                     613
+  block<->record links removed                    1,050
+  block<->record links added                        366   (126 header-delimited)
+  blocks that lost their entry entirely                1
+  blocks that gained an entry                          0
+  blocks that lost their LAST 2016+ record            11
+  blocks that gained a FIRST 2016+ record              3
+  blocks carrying at least one hearing record        111
+```
+
+**Every one of the 1,416 changed rows is in
+`pipeline/scripts/us_sf_city/moves_header_bleed.tsv`**, with block, year, date,
+kind, tier, and a reconstructed source URL that opens on the right page — the
+same discipline as `moves_pre1999.tsv` and `moves_modern_sfbos.tsv`, plus the
+link.
+
+**The 11 blocks that lose their last modern record were holding a header, not a
+decision.** Read them:
+
+```
+  block 3568  APPROVED 161338 [Final Map 8380 - 178-188 Albion Street]…
+  block 1159  APPROVED 221236 [Final Map No. 10851 - 709 Lyon Street]…
+  block 0053  Howard Thurman Way" - 2020 Stockton Street] Sponsor: Peskin…
+  block 5900A 181083 [Salina Lam Commemorative Plaque - 810 Silver Avenue …]…
+```
+
+Not one of them is a sentence the Board wrote about that block. They are the
+next file's title, pasted onto the previous item, and a reader clicking through
+found a decision that had nothing to do with the address.
+
+**And the single COVID motion §22.6 called "on the map by accident" is now off
+it.** `"Proclamation of Emergency"` goes 1 → 0 placed. It names no place, and a
+citywide emergency proclamation drawn on 2300 Harrison Street was worse than an
+emergency proclamation the block map does not carry.
+
+## 23.7 The gates, all of them
+
+```
+  --control  vs published items_all.jsonl        42,405 / 42,405  byte-identical
+  --control  vs published items.jsonl             6,786 /  6,786  byte-identical
+  control block build vs production               2,212 /  2,212  byte-identical
+  sfbos_gate url  == PREFIX + stem + suffix      43,507 / 43,507
+  sfbos_gate page == n + 1                       43,507 / 43,507
+  every cited stem is a PDF on disk                  390 /    390
+  every cited page is inside its file            43,507 / 43,507   (PyMuPDF)
+  --verify   the two streams agree                5,127 /  5,127  byte-identical
+  verify_order_independence.py --items <merged>  seeds 101/202, all files identical
+  verify_block_regression.py vs production       PASS, 90,820 = 90,820
+```
+
+**The pre-1999 layer is proved untouched, not assumed untouched.** The gate does
+not merely check a count: it splits every block's decision list on the year and
+compares the old half **element for element and in order**, which is what
+catches the mechanism that actually threatens it — a modern row entering the
+near-duplicate comparison ahead of a 1912 one and suppressing it. **Removing**
+modern rows could equally *un*-suppress a pre-1999 row, and that would appear as
+an arrival in the old half. It does not: baseline 90,820, current 90,820, zero
+blocks changed before 1999.
+
+## 23.8 FOUND HERE AND NOT FIXED — the record states its own block 1,207 times
+
+`STATED` reads `Assessor's Block 336`, the Journal's wording, and outranks
+everything the index can infer because it is the city answering for itself. The
+Clerk's modern wording is **`Assessor's Parcel Block No. 3568`**.
+
+```
+  modern items stating their own parcel block          1,207
+  modern items STATED currently matches                    1
+```
+
+The `stated` tier carries exactly **1** modern row. Block 3568's real record —
+*"Motion approving Final Map 8380 … located at 178-188 Albion Street, being a
+subdivision of Assessor's Parcel Block No. 3568"* — is in the corpus, resolves
+Albion Street, names its own block, and reaches neither the baseline build nor
+this one.
+
+**It is not fixed here.** A stated block outranks every inferred tier, so
+switching 1,206 rows on would move the map considerably more than either change
+above, and `stated` is also the ground truth `measure_accuracy.py` scores
+against. It is a third decision, and it is Daniel's.
+
+Two smaller ones, also recorded rather than acted on:
+
+- **The header's words are now attributed to nobody.** They used to be attributed
+  to the item above, which was wrong. Giving them to the item *below* — the
+  sfbos equivalent of `blocks/prefaces.py`, and needing no connectedness gate
+  because the Board's headers are unambiguous — would recover most of the 553
+  lost placements *correctly*. That is a third change and is not made here.
+- **`KIND_WORDING` has no entry for `H` or `F`**, so the front end renders both
+  as "Item" via its `?? "Item"` fallback. Nothing breaks and nothing lies; a
+  hearing simply is not called one yet. `website/src/components/us/city/
+  block-records.ts` is not this file's to edit.
+
+## 23.9 State on disk
+
+```
+  pipeline/scripts/us_sf_city/_sfbos_sweep.py           NEW, the single walk
+  pipeline/scripts/us_sf_city/enumerate_block_moves.py  NEW, the move list
+  pipeline/scripts/us_sf_city/moves_header_bleed.tsv    NEW, 1,416 rows, versioned
+  pipeline/scripts/us_sf_city/fetch_sfbos_minutes.py    do_extract delegates
+  pipeline/scripts/us_sf_city/sweep_sfbos_all.py        delegates, gains --control
+  cache_sfbos/items.jsonl        5,127 rows   gitignored, derived
+  cache_sfbos/items_all.jsonl   43,507 rows   gitignored, derived
+  cache_sfbos/film_pool.jsonl   11,523 rows   gitignored, derived
+  website/public/data/**         NOT TOUCHED
+```
+
+**What publishes is a directory, and it is not published here.** The merged
+build lives outside the repo while it is reviewed; `blocks/out_2026/` is still
+byte-identical to production and is the baseline every number above is measured
+against. Publishing is a COPY and never a mirror-delete — the published
+directory also holds 279 files this build does not produce.
