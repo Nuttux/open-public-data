@@ -96,7 +96,6 @@ import { useT } from "@/lib/localeContext";
 import FicheArchiveShelf from "@/components/fiche/FicheArchiveShelf";
 import type { FicheArchiveDoc } from "@/components/fiche/types";
 import {
-  archiveHref,
   sourceHref,
   blockLead,
   blockNow,
