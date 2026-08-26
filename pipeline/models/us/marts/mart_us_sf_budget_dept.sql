@@ -2,7 +2,7 @@
 -- Mart: SF adopted budget by department — the page's second altitude
 --
 -- Sources: core_us_sf_budget, stg_us_sf_dept_names (display enrichment),
---          stg_us_sf_catalog (provenance).
+--          core_us_sf_source_catalog (provenance).
 -- Grain:  fiscal_year × side × department.
 --
 -- FY2018 IS EXCLUDED: it is a corrupted-drill year — the budget dataset
@@ -44,7 +44,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_budget'
 )
 

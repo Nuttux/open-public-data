@@ -3,7 +3,7 @@
 -- "who actually got paid" for a slice of the adopted budget
 --
 -- Sources: core_us_sf_vouchers, stg_us_sf_payee_buckets (display bucket),
---          stg_us_sf_catalog (provenance).
+--          core_us_sf_source_catalog (provenance).
 -- Grain:  fiscal_year × department × character × vendor, ranked within
 --         cell by $, top 15 vendors kept per cell.
 --
@@ -79,7 +79,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_vouchers'
 )
 

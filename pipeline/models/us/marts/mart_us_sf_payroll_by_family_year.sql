@@ -5,7 +5,7 @@
 -- Sources: core_us_sf_comp (year_type = 'Fiscal'), stg_us_sf_job_reclass
 --          (103 junk job codes → real families, in-session seed),
 --          stg_us_sf_job_family_display (60 family codes → 16 display
---          families, in-session seed), stg_us_sf_catalog (provenance).
+--          families, in-session seed), core_us_sf_source_catalog (provenance).
 -- Grain:  department_code × job_family_code (effective) × fiscal year —
 --         plus one pooled "_POOLED" row per department-year where small
 --         cells could be pooled. ~5-6k rows over 13 years.
@@ -179,7 +179,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_employee_comp'
 )
 

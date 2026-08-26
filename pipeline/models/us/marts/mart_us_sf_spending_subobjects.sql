@@ -3,7 +3,7 @@
 --
 -- Sources: core_us_sf_vouchers (row-level payment lines),
 --          stg_us_sf_subobject_class (purchase / obligation / ledger),
---          stg_us_sf_catalog (provenance).
+--          core_us_sf_source_catalog (provenance).
 -- Grain:   fiscal_year × sub_object_code.
 --
 -- Replaces a hand-curated six-line "what a payment buys" strip with the whole
@@ -154,7 +154,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_vouchers'
 )
 

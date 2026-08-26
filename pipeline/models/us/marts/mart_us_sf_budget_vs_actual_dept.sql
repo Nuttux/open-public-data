@@ -2,7 +2,7 @@
 -- Mart: SF budget vs actual by DEPARTMENT — Operating perimeter, closed years
 --
 -- Sources: core_us_sf_budget, core_us_sf_actuals, stg_us_sf_dept_names,
---          stg_us_sf_bva_outliers (GEN/PUC annotations), stg_us_sf_catalog.
+--          stg_us_sf_bva_outliers (GEN/PUC annotations), core_us_sf_source_catalog.
 -- Grain:  fiscal_year × side × department.
 --
 -- PERIMETER (replicates the ONLY honest comparison, measured in
@@ -87,9 +87,9 @@ provenance AS (
         a.dataset_page_url  AS actuals_source_url,
         a.rows_updated_at   AS actuals_rows_updated_at
     FROM (SELECT DISTINCT dataset_page_url, rows_updated_at
-          FROM {{ ref('stg_us_sf_catalog') }} WHERE source_id = 'sf_budget') b
+          FROM {{ ref('core_us_sf_source_catalog') }} WHERE source_id = 'sf_budget') b
     CROSS JOIN (SELECT DISTINCT dataset_page_url, rows_updated_at
-          FROM {{ ref('stg_us_sf_catalog') }} WHERE source_id = 'sf_spending_revenue') a
+          FROM {{ ref('core_us_sf_source_catalog') }} WHERE source_id = 'sf_spending_revenue') a
 )
 
 SELECT

@@ -3,7 +3,7 @@
 --
 -- Sources: core_us_sf_comp + int_us_sf_comp_employee_year (Fiscal),
 --          stg_us_sf_job_reclass / stg_us_sf_job_family_display (family
---          context), stg_us_sf_catalog (provenance).
+--          context), core_us_sf_source_catalog (provenance).
 -- Grain:  job title (primary title per person) among employees whose
 --         TOTAL annual compensation exceeds $400k — top titles with
 --         n ≥ 5, plus one remainder row. NO dollar columns: this mart
@@ -125,7 +125,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_employee_comp'
 )
 

@@ -4,7 +4,7 @@
 --
 -- Sources: core_us_sf_comp (year_type = 'Fiscal', latest year),
 --          stg_us_sf_job_reclass + stg_us_sf_job_family_display (family
---          context labels), stg_us_sf_catalog (provenance).
+--          context labels), core_us_sf_source_catalog (provenance).
 -- Grain:  job_code, top 10 by overtime dollars in the latest fiscal year.
 --
 -- Title-level detail is fine HERE because the list is filtered to titles
@@ -64,7 +64,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_employee_comp'
 )
 

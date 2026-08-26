@@ -78,3 +78,18 @@ models:
         tests: [not_null]
       - name: source_url
         tests: [not_null]
+
+  - name: core_us_sf_source_catalog
+    description: >
+      DataSF provenance dimension — one row per synced Socrata dataset
+      (source_id), collapsed from the dataset×column staging catalog.
+      Marts join it to stamp dataset_page_url / dataset_name / attribution /
+      rows_updated_at (the export contract's source_url and as_of). Carries
+      no amounts.
+    columns:
+      - name: source_id
+        tests: [not_null, unique]
+      - name: dataset_page_url
+        tests: [not_null]
+      - name: rows_updated_at
+        tests: [not_null]

@@ -17,6 +17,18 @@
 version: 2
 
 models:
+  - name: core_br_recife_source_catalog
+    description: |
+      CKAN provenance dimension — one row per synced Recife resource
+      (source_id × resource_id). Marts join it to stamp source_url,
+      source_name, source_portal, source_license and rows_updated_at
+      (as_of); yearly resources roll up in the mart. Carries no amounts.
+    columns:
+      - name: source_id
+        tests: [not_null, unique]
+      - name: dataset_page_url
+        tests: [not_null]
+
   - name: core_br_recife_contratos
     description: |
       Contratos administrativos, one row per contract.

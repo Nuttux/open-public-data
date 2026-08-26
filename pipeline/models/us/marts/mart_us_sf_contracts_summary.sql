@@ -3,7 +3,7 @@
 --
 -- Sources: core_us_sf_contracts (48,350 team-member rows),
 --          stg_us_sf_purchasing_authority_families (display families seed),
---          stg_us_sf_catalog (provenance).
+--          core_us_sf_source_catalog (provenance).
 -- Grain:  contract_no — 31,860 contracts with at least one prime row.
 --
 -- Dedupe rules (docs/us/block-studies/3-contracts.md, all query-verified):
@@ -115,7 +115,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_supplier_contracts'
 )
 

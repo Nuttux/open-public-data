@@ -22,7 +22,7 @@ provenance AS (
     SELECT
         ANY_VALUE(dataset_page_url) AS source_url,
         MAX(rows_updated_at)        AS rows_updated_at
-    FROM {{ ref('stg_br_recife_catalog') }}
+    FROM {{ ref('core_br_recife_source_catalog') }}
     WHERE source_id LIKE 'funcional_%'
 )
 

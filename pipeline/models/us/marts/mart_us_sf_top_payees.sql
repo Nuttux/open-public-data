@@ -4,7 +4,7 @@
 -- Sources: core_us_sf_vouchers (8.07M rows → FY × vendor rollup),
 --          core_us_sf_contracts (grant-contract join, FY2018+),
 --          stg_us_sf_payee_buckets (manual bucket classification),
---          stg_us_sf_catalog (provenance).
+--          core_us_sf_source_catalog (provenance).
 -- Grain:  fiscal_year × vendor, top 100 payees per FY by vouchers_paid.
 --
 -- READ THIS before ranking (docs/us/API-RECON.md §A.3): the top of a naive
@@ -140,7 +140,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_vouchers'
 )
 

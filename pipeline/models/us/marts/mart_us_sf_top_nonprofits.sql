@@ -2,7 +2,7 @@
 -- Mart: SF top nonprofit payees per fiscal year — FY2018+ ONLY
 --
 -- Sources: core_us_sf_vouchers (is_non_profit flag), core_us_sf_contracts
---          (grant join), stg_us_sf_payee_buckets, stg_us_sf_catalog.
+--          (grant join), stg_us_sf_payee_buckets, core_us_sf_source_catalog.
 -- Grain:  fiscal_year × vendor, top 30 nonprofit-flagged payees per FY.
 --
 -- FLOOR (measured, docs/us/block-studies/2-payees.md §1.3):
@@ -105,7 +105,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_vouchers'
 )
 

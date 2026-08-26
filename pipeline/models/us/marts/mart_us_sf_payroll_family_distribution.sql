@@ -7,7 +7,7 @@
 --          core_us_sf_comp (job codes, to attribute a person to a family),
 --          stg_us_sf_job_reclass / stg_us_sf_job_family_display (the same
 --          two provenance-flagged seeds the family marts use),
---          stg_us_sf_catalog (provenance).
+--          core_us_sf_source_catalog (provenance).
 -- Grain:  fiscal year × display_family (the 16 citizen-readable groups the
 --         page names — percentiles CANNOT be rolled up from a finer grain,
 --         so they are computed here at the grain the UI reads), plus one
@@ -234,7 +234,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_employee_comp'
 )
 

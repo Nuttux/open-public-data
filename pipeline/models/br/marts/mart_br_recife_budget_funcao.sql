@@ -6,7 +6,7 @@
 -- Grain:  ano × função × subfunção. pago/empenhado summed over months
 --         (monthly-incremental, verified). 2024 Σpago = R$8.97 bn = the full
 --         executed municipal spend (broader than the credor spine).
--- Provenance (source_url + as_of) carried from stg_br_recife_catalog.
+-- Provenance (source_url + as_of) carried from core_br_recife_source_catalog.
 -- =============================================================================
 
 WITH by_funcao AS (
@@ -32,7 +32,7 @@ provenance AS (
         ANY_VALUE(portal_name)       AS source_portal,
         ANY_VALUE(license_title)     AS source_license,
         MAX(rows_updated_at)         AS rows_updated_at
-    FROM {{ ref('stg_br_recife_catalog') }}
+    FROM {{ ref('core_br_recife_source_catalog') }}
     WHERE source_id LIKE 'funcional_%'
 )
 

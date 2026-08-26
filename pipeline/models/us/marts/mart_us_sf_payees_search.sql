@@ -1,7 +1,7 @@
 -- =============================================================================
 -- Mart: SF payees search index — one row per vendor, lazy-loaded by the UI
 --
--- Sources: core_us_sf_vouchers, stg_us_sf_payee_buckets, stg_us_sf_catalog.
+-- Sources: core_us_sf_vouchers, stg_us_sf_payee_buckets, core_us_sf_source_catalog.
 -- Grain:  vendor (union of every fiscal year's top 1,000 payees by $ —
 --         measured 4,068 vendors covering ≈95-97% of every FY's dollars,
 --         docs/us/block-studies/2-payees.md §2.2). The all-time universe is
@@ -83,7 +83,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_vouchers'
 )
 

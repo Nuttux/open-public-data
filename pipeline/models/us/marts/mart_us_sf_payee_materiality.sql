@@ -2,7 +2,7 @@
 -- Mart: SF payee materiality lines — "what a payment buys"
 --
 -- Sources: stg_us_sf_payee_materiality (curated picks), core_us_sf_vouchers
---          (the amounts), stg_us_sf_catalog (provenance).
+--          (the amounts), core_us_sf_source_catalog (provenance).
 -- Grain:  one row per curated line (slug).
 --
 -- The seed picks WHICH (vendor × department × sub_object × fiscal_year)
@@ -41,7 +41,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_vouchers'
 )
 

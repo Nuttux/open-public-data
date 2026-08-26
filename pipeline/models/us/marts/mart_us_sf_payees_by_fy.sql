@@ -2,7 +2,7 @@
 -- Mart: SF payees — per-fiscal-year context for the who-gets-paid page
 --
 -- Sources: core_us_sf_vouchers, core_us_sf_contracts (grant join),
---          stg_us_sf_payee_buckets, stg_us_sf_catalog (provenance).
+--          stg_us_sf_payee_buckets, core_us_sf_source_catalog (provenance).
 -- Grain:  fiscal_year (one row per FY, FY2007-FY2027).
 --
 -- Everything the page hero and per-year header need, measured not assumed
@@ -134,7 +134,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_vouchers'
 )
 

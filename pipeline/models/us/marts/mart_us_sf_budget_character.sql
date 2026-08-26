@@ -1,7 +1,7 @@
 -- =============================================================================
 -- Mart: SF adopted budget by character — the economic altitude
 --
--- Sources: core_us_sf_budget, stg_us_sf_character_glosses, stg_us_sf_catalog.
+-- Sources: core_us_sf_budget, stg_us_sf_character_glosses, core_us_sf_source_catalog.
 -- Grain:  fiscal_year × side × character (26 spending / 20 revenue characters
 --         per modern FY — the Paris "poste" analogue; revenue characters are
 --         the most citizen-readable label set in the dataset).
@@ -37,7 +37,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_budget'
 )
 

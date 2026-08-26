@@ -4,7 +4,7 @@
 -- Sources: core_us_sf_vouchers (row-level payment lines),
 --          mart_us_sf_payees_search (the vendor universe),
 --          stg_us_sf_subobject_class (purchase / obligation / ledger),
---          stg_us_sf_catalog (provenance).
+--          core_us_sf_source_catalog (provenance).
 -- Grain:   one row per vendor (raw Controller display string).
 --
 -- WHY THIS EXISTS. The payee fiche had money and nothing else: a total, a
@@ -263,7 +263,7 @@ provenance AS (
         dataset_page_url,
         attribution,
         rows_updated_at
-    FROM {{ ref('stg_us_sf_catalog') }}
+    FROM {{ ref('core_us_sf_source_catalog') }}
     WHERE source_id = 'sf_vouchers'
 )
 
