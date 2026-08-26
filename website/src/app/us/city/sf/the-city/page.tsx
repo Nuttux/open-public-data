@@ -4,7 +4,6 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 
 import TheCityClient, { type TheCityPageData } from "./TheCityClient";
-import { SERIES_LAST_YEAR } from "@/components/us/city/block-records";
 
 /**
  * /us/city/sf/the-city — server component (ADR-0010 D3, EN-only), on the same
@@ -110,17 +109,24 @@ export default function SfTheCityPage() {
     unplaced: blockIndex.meta.n_unplaced,
     blocksWithRecord: withRecord,
     volumes: blockIndex.meta.leaf_mapped_volumes.length,
-    // THE SPAN IS THE SERIES, NOT THE MAXIMUM. `max(y1)` is 2013 and it is
-    // carried by SEVEN rows: the Board's decades run 4,185 in the 1990s, then
-    // 26 and 49. All 142 Journal volumes end in 1998-99, so the scanned series
-    // ends at SERIES_LAST_YEAR and the handful of later rows are DPW annual
-    // reports, not the Board's proceedings. Printing "1906-2013" over that
-    // tells a reader the record reaches 2013, and the fourteen years it
-    // implies are almost entirely empty. The record does not stop in 1999 —
-    // it moves to Legistar, 30,428 matters for 2000-2018 — but Legistar
-    // carries no location and is not in this pipeline, which is the thing the
-    // page has to say rather than paper over.
-    span: `${first}–${Math.min(last, SERIES_LAST_YEAR)}`,
+    // THE SPAN IS THE MAXIMUM AGAIN, BECAUSE THE TAIL IS REAL NOW.
+    //
+    // It was clamped to SERIES_LAST_YEAR, and that was right at the time: the
+    // largest year in the index was 2013 and it was carried by SEVEN rows,
+    // against 4,185 in the 1990s. Printing "1906-2013" over that told a reader
+    // the record reached 2013 and implied fourteen years that were empty.
+    //
+    // The clamp outlived its reason. The Clerk's own PDFs are swept, placed
+    // and published, and every year to 2026 carries hundreds of decisions —
+    // 2019: 324, 2022: 208, 2025: 319, 2026: 109 so far. Clamping now commits
+    // the opposite error of the one it was written to prevent: it hides ten
+    // years the map actually draws, and it contradicts the decade rail beside
+    // it, which shows a 2020s rung.
+    //
+    // SERIES_LAST_YEAR stays 2016 and stays true — it is where the Internet
+    // Archive's bound volumes end. It is simply no longer where the record
+    // ends, and this line was the last place still treating those as one fact.
+    span: `${first}–${last}`,
     accuracy: { n: accuracy.n, exact: accuracy.exact },
     publishers: [...byPublisher.entries()]
       .map(([name, v]) => ({ name, datasets: v.datasets.size, url: v.url }))
