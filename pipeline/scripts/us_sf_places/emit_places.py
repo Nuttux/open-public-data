@@ -37,7 +37,8 @@ import sys
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(ROOT / "pipeline" / "scripts" / "us_sf_city"))
-from _chunk import ChunkWriter  # noqa: E402
+sys.path.insert(0, str(ROOT / "pipeline" / "scripts"))
+from citymap.chunk import ChunkWriter  # noqa: E402
 
 sys.path.insert(0, str(HERE))
 import place_kinds  # noqa: E402

@@ -14,7 +14,7 @@ to fail:
 and then the clean file is read back and every element compared against the
 geometry rebuilt from the cache, so "it round trips" is a comparison and not a
 feeling. Both readers are used: this package's, and the SHIPPED
-us_sf_city/_chunk.read_chunk, because compatibility with the decoder the site
+citymap/chunk.read_chunk, because compatibility with the decoder the site
 already uses is the only kind that matters.
 """
 from __future__ import annotations
@@ -28,8 +28,10 @@ HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT / "pipeline/scripts/us_sf_city"))
+# The city-free half of the build. See pipeline/scripts/citymap/__init__.py.
+sys.path.insert(0, str(ROOT / "pipeline/scripts"))
 
-import _chunk                                    # noqa: E402  the shipped decoder
+from citymap import chunk as _chunk              # noqa: E402  the shipped decoder
 from _qc import read_qc                          # noqa: E402
 
 QC = ROOT / "website/public/data/us/sf/reach/geom.qc"

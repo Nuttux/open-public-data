@@ -112,7 +112,7 @@ def layers():
 
     import numpy as np
 
-    from _chunk import field_array, read_chunk
+    from citymap.chunk import field_array, read_chunk
 
     web = os.path.normpath(os.path.join(ROOT, "website", "public", "data",
                                         "us", "sf", "city"))

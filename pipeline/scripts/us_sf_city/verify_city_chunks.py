@@ -19,11 +19,14 @@ import pathlib
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+# The city-free half of the build. See pipeline/scripts/citymap/__init__.py.
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 
 import numpy as np
 
-from _bldgsrc import read_bldg, replay
-from _chunk import field_array, read_chunk
+from citymap.chunk import field_array, read_chunk
+from citymap.deltachain import replay
+from _bldgsrc import read_bldg
 from _grid import NY
 from _srcload import MOCK, ROOT, load, unb64
 
@@ -1046,7 +1049,7 @@ def main() -> int:
           f"{man['chunks'] and [c['b'] for c in man['chunks'] if c['k'] == 'base/form'][0]:,} bytes")
 
     # ── 7. the guards actually fire ──────────────────────────────────────
-    from _chunk import read_chunk as rc
+    from citymap.chunk import read_chunk as rc
     blob = (OUT / "base/terrain.qc").read_bytes()
     for what, mangled in (("an HTML error page", b"<!DOCTYPE html>\n<html>" + blob[22:]),
                           ("a truncated body", blob[:-1]),

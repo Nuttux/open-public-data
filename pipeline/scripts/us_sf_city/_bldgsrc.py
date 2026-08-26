@@ -1,4 +1,17 @@
-"""Replay `bldg-data.js`'s delta stream, vectorised, and re-emit it per cell.
+"""Read San Francisco's footprint stream out of the mock's `bldg-data.js`.
+
+WHAT IS SAN FRANCISCO HERE, and it is the whole file: the payload is
+`window.BLDG` in `gen/bldg-data.js` under this city's intermediate tree, its
+fields are named `cnt`/`vx`/`vy`/`xi`/`xn`/`h`/`yr`/`u`, `q` is asserted to be
+1.0 because the centroid arithmetic below assumes integer metres, and `h` is a
+u16 of whole metres because 255 m is below the top of THIS city (it was a u8
+until 2026-08-24; see bldg/build_bldg.py MAX_H).
+
+WHAT WAS NOT SAN FRANCISCO AND HAS LEFT. The delta codec — `rechain()`,
+`replay()` and the int8 range they share — is `citymap/deltachain.py` now. It is
+handed arrays and returns arrays; it never knew which city it was in. The two
+names are re-exported below so the call sites that read this city's stream and
+then re-chain it keep reading like one operation.
 
 ── WHY THE STREAM IS A DELTA CHAIN AT ALL ────────────────────────────────
 Carried verbatim from gen/part3.html, because it is the reason the geometry is
@@ -25,9 +38,15 @@ within the cell, so the painter's counting sort still works unchanged.
 """
 from __future__ import annotations
 
+import pathlib
+import sys
+
 import numpy as np
 
-from _srcload import load, unb64
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
+
+from citymap.deltachain import MAXD, rechain, replay  # noqa: E402,F401
+from _srcload import load, unb64  # noqa: E402
 
 
 def read_bldg() -> dict:
@@ -80,82 +99,3 @@ def read_bldg() -> dict:
         "u": np.frombuffer(unb64(B["u"]), dtype=np.uint8),
         "useNames": B["useNames"], "meta": B["meta"],
     }
-
-
-MAXD = 127   # int8 range used; -128 is left unused so a delta always has a negation
-
-
-def rechain(gids: np.ndarray, cnt: np.ndarray, off: np.ndarray,
-            IX: np.ndarray, IY: np.ndarray):
-    """Rebuild the delta chain over `gids` (ascending global indices).
-
-    Returns (vx int8, vy int8, xi u32, xn u16). The decoder is byte-for-byte the
-    walk in part3.html, so what comes out here is what the page already knows how
-    to read.
-    """
-    vx: list[int] = []
-    vy: list[int] = []
-    xi: list[int] = []
-    xn: list[int] = []
-    ax = 0
-    ay = 0
-    for j, g in enumerate(gids):
-        o = int(off[g])
-        c = int(cnt[g])
-        dx = int(IX[o]) - ax
-        dy = int(IY[o]) - ay
-        # split the hop into extra steps if either axis will not fit an int8
-        steps = max((abs(dx) + MAXD - 1) // MAXD, (abs(dy) + MAXD - 1) // MAXD, 1)
-        if steps > 1:
-            extra = steps - 1
-            for k in range(extra):
-                sx = int(round(dx * (k + 1) / steps)) - int(round(dx * k / steps))
-                sy = int(round(dy * (k + 1) / steps)) - int(round(dy * k / steps))
-                assert -MAXD <= sx <= MAXD and -MAXD <= sy <= MAXD
-                vx.append(sx)
-                vy.append(sy)
-                ax += sx
-                ay += sy
-            xi.append(j)
-            xn.append(extra)
-            dx = int(IX[o]) - ax
-            dy = int(IY[o]) - ay
-        assert -MAXD <= dx <= MAXD and -MAXD <= dy <= MAXD, (dx, dy)
-        vx.append(dx)
-        vy.append(dy)
-        ax = int(IX[o])
-        ay = int(IY[o])
-        for k in range(1, c):
-            sx = int(IX[o + k]) - ax
-            sy = int(IY[o + k]) - ay
-            # a footprint edge longer than 127 m would need an escape mid-ring.
-            # The published data has none; assert rather than assume.
-            assert -MAXD <= sx <= MAXD and -MAXD <= sy <= MAXD, ("long edge", g, k, sx, sy)
-            vx.append(sx)
-            vy.append(sy)
-            ax += sx
-            ay += sy
-    return (np.array(vx, dtype=np.int8), np.array(vy, dtype=np.int8),
-            np.array(xi, dtype=np.uint32), np.array(xn, dtype=np.uint16))
-
-
-def replay(cnt: np.ndarray, vx: np.ndarray, vy: np.ndarray,
-           xi: np.ndarray, xn: np.ndarray):
-    """part3.html's decoder, in Python, for the round-trip proof."""
-    n = cnt.size
-    esc = np.zeros(n, dtype=np.int64)
-    if xi.size:
-        np.add.at(esc, xi.astype(np.int64), xn.astype(np.int64))
-    per = esc + cnt.astype(np.int64)
-    start = np.zeros(n + 1, dtype=np.int64)
-    np.cumsum(per, out=start[1:])
-    if start[n] != vx.size:
-        raise ValueError(f"stream length {start[n]} != {vx.size}")
-    AX = np.cumsum(vx.astype(np.int64))
-    AY = np.cumsum(vy.astype(np.int64))
-    off = np.zeros(n + 1, dtype=np.int64)
-    np.cumsum(cnt.astype(np.int64), out=off[1:])
-    nv = int(off[n])
-    base = start[:n] + esc
-    idx = np.repeat(base, cnt) + (np.arange(nv, dtype=np.int64) - np.repeat(off[:n], cnt))
-    return AX[idx], AY[idx], off

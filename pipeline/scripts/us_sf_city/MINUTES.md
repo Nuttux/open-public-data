@@ -2361,3 +2361,144 @@ them apart.
 moves rows on every era rather than the modern one, and the obvious repair —
 letting the file number or the address into the signature — needs its own
 control and its own move list. It is the next thing to do.
+
+---
+
+# 25. THE SEAM MADE REAL — THE CITY-FREE HALF OF THE BUILD GETS A DIRECTORY AND A TEST — 2026-08-26
+
+ADR-0012 measured the split and `docs/city-map-contract.md` wrote it down as
+slots. Neither moved a line of code, and a boundary that exists only in prose is
+not a boundary: today a reader opening `pipeline/scripts/us_sf_city/` sees
+fifty-one files and no way to tell which of them know which city they are in.
+
+**The goal, in Daniel's words: refactor so the generic part and the San Francisco
+part are separate, so future development is ten times faster and as much as
+possible is reused.** And the test for "ten times faster" is not how abstract the
+result looks — it is **how much of the pipeline a newcomer can ignore.**
+
+**THE HARD GATE, unchanged: San Francisco's published output must not change by
+one byte.** Every block below is control-replayed against the published tree at
+`a97d813c`, using the seam `cb4b71e6` built.
+
+**THE ANTI-GOAL, and it is the reason this is a small change:** no plugin system,
+no registry, no driver interface, no base class with one implementation. The test
+of every extraction is *"does this remove a San Francisco assumption from the
+core?"*, never *"does this move code somewhere more abstract?"* Where the honest
+answer is that a thing is cheaper forked, it is left forked and the reason is
+written down — §25.4 is one of those and it is deliberate.
+
+## 25.0 THE BASELINE, established before anything moved
+
+`website/public/data/us/sf/city/` is tracked and was verified identical to
+`a97d813c` before the first edit. The encoder was replayed into a control
+directory beside it:
+
+```
+  CITY_CHUNKS_OUT=<ctl0> python3 encode_city_chunks.py
+  580 files compared with website/public/data/us/sf/city/  —  575 identical, 5 differ
+```
+
+The five are `base/heroes.qc`, `base/heroes.json`, `base/bridge.qc`,
+`base/marks.json` and `manifest.json`, and they are `cb4b71e6`'s known sidecar
+delta, reproduced exactly. **`ctl0` — not the published tree — is the baseline
+every block below is hashed against**, because it is the strictly harder
+comparison: it makes all 580 files answer, not 575.
+
+## 25.1 WHAT MOVED, AND THE ONE QUESTION THAT DECIDED EACH LINE
+
+`pipeline/scripts/citymap/` now exists. It holds the modules whose behaviour is a
+function of their arguments and of nothing else.
+
+| moved | from | why it is true of a city |
+|---|---|---|
+| `chunk.py` — the `QCT1` container | `us_sf_city/_chunk.py` | a length-prefixed header, a CRC and typed-array fields. Zero city tokens, no dataset id, no path |
+| `deltachain.py` — `rechain`, `replay`, the int8 range | the codec half of `_bldgsrc.py` | handed numpy arrays, returns numpy arrays. It never knew what the rings were |
+| `grid.py` — `Grid`, `for_extent()` | the arithmetic half of `_grid.py` | a square tiling over projected metres, and the four numbers are now **arguments** |
+
+and what deliberately did **not** move, from the same three files:
+
+| stayed | why it is true of San Francisco |
+|---|---|
+| `_bldgsrc.read_bldg()` | it knows the payload is `window.BLDG` in `gen/bldg-data.js`, that `q` is 1.0, that `h` is a u16 because 255 m is below the top of *this* city |
+| `_grid.py`'s `EXTENT_M = 8192` and `CELL = 1024` | the box is one city's diameter; the cell size is derived, in prose, from one city's camera at one canvas size |
+
+**The grid is the one that removes a real assumption.** `ORIGIN = -8192,
+NX = NY = 16` used to be module constants in the shared file, with `cells_of()`
+RAISING outside them — so a city more than 16.4 km across failed at encode time
+with a message about "the grid" rather than about itself, and **no grep for a
+city's name would ever have found it.** The four numbers are a `Grid` argument
+now, `citymap.grid.for_extent()` derives them from a bounding box, and the shared
+module **has no default box left to inherit**. San Francisco's box is declared in
+San Francisco's file.
+
+## 25.2 THE TEST, WHICH IS THE HALF THAT WILL STILL BE TRUE IN SIX MONTHS
+
+ADR-0012 §2.2, on why the frontend half of the subsystem stays clean and this
+half did not:
+
+> `lib/citygl`'s city-free test finds them by forbidding names; the pipeline has
+> no such test, so they are enumerated here by hand.
+
+`citymap/check_city_free.py` is that test, and it is a deliberate port of
+`engine-is-city-free.test.ts` rather than a new idea — including the lesson that
+test learned on its first run, that **comments are not code**: it failed on the
+file whose doc comment states the rule. Docstrings and `#` comments are stripped
+before the search.
+
+```
+  python3 pipeline/scripts/citymap/check_city_free.py
+  ok __init__.py · ok chunk.py · ok deltachain.py · ok grid.py
+  PASS — 4 modules, none of them knows which city it is in.
+```
+
+**And the test says out loud what it cannot see**, because a passing grep that
+is quoted as a result is worse than no grep. It cannot see a number that is
+really a name — a snap radius that is half one city's street standard, a tiling
+box that is one city's diameter, a base year that is one city's founding. Every
+one of those degrades silently rather than failing, and the defence against them
+is not a test: it is `derive/`, the instrument beside the number.
+
+## 25.3 THE PROOF
+
+The encoder was replayed again, after the move, into a second control directory:
+
+```
+  ctl0 580 files / ctl1 580 files
+  identical=580  differ=0
+```
+
+**Byte-identical on every file it writes, including the five the sidecars own.**
+`verify_city_chunks.py` reports the same nine failures it reported before the
+change and no others — the known false alarm `cb4b71e6` documented, where the
+verifier compares published chunks against the mock's pre-sidecar payload.
+`us_sf_places/verify_places.py` reports `33 ok · 12 FAILURES` both before and
+after; the pre-change file was run from `a97d813c` against the same tree to
+establish that, and its twelve are a stale expectation, not this change.
+`us_sf_reach/prove_qc.py` still prints `PROVED`.
+
+## 25.4 A FORK THAT IS KEPT ON PURPOSE, AND ONE OF ITS TWO REASONS HAS EXPIRED
+
+`us_sf_reach/_qc.py` is a **second implementation of the same container**, and
+its existence is the concrete cost of a shared module filed under one city's
+name: the reach layer did not want to depend on a directory called `us_sf_city`,
+so it wrote the format out again, and `prove_qc.py` stands between the two to
+prove they agree.
+
+**That reason is gone** — the container belongs to neither layer now. **The other
+reason survives and it is the load-bearing one:** the round-trip proof reads what
+the reach layer wrote back with *both* readers, so "compatible" is demonstrated by
+two independent implementations rather than asserted by one. A single shared
+writer proving itself against itself proves nothing. Collapsing the fork would
+delete the witness, so **the fork stays and the docstring now says which of its
+two reasons is real.**
+
+## 25.5 FOUND HERE AND NOT FIXED
+
+- **`build_hood_facts.py` still imports `_chunk`**, and that path is now a
+  five-line redirect with its deletion condition written at the top. The file is
+  owned by another change in flight and was not edited from here. Deleting the
+  shim is a one-line import change in one file.
+- **`us_sf_places/verify_places.py` has been failing 12 of 45 checks** for long
+  enough that nobody notices, exactly as `verify_city_chunks.py` has been failing
+  9. Both are gates that cry wolf, which is worse than a gate that does not run:
+  it trains the reader to skim a FAILURES block.

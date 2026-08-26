@@ -30,11 +30,14 @@ import pathlib
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+# The city-free half of the build. See pipeline/scripts/citymap/__init__.py.
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 
 import numpy as np
 
-from _bldgsrc import read_bldg, rechain
-from _chunk import ChunkWriter
+from citymap.chunk import ChunkWriter
+from citymap.deltachain import rechain
+from _bldgsrc import read_bldg
 from _grid import CELL, NX, NY, ORIGIN_X, ORIGIN_Y, cell_extent, cell_id, cells_of
 from _srcload import MOCK, ROOT, load, load_json, unb64
 

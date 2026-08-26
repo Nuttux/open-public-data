@@ -1,6 +1,6 @@
 """Minimal READ-ONLY reader for the `.qc` chunk container.
 
-Format is documented in pipeline/scripts/us_sf_city/_chunk.py and
+Format is documented in pipeline/scripts/citymap/chunk.py and
 website/src/lib/city/DATA.md §1. This file only reads. It exists so the reach
 investigation can measure the shipped bytes without importing — and therefore
 without any risk of changing — the encoder that owns them.

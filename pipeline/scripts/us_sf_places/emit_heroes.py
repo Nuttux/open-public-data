@@ -43,7 +43,9 @@ HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 CITY = ROOT / "pipeline" / "scripts" / "us_sf_city"
 sys.path.insert(0, str(CITY))
-from _chunk import ChunkWriter, field_array, read_chunk  # noqa: E402
+# The city-free half of the build. See pipeline/scripts/citymap/__init__.py.
+sys.path.insert(0, str(ROOT / "pipeline" / "scripts"))
+from citymap.chunk import ChunkWriter, field_array, read_chunk  # noqa: E402
 from _bldgsrc import read_bldg  # noqa: E402
 
 SEED = HERE / "heroes_extra.json"

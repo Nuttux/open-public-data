@@ -1,6 +1,6 @@
 """The `.qc` container — a WRITER and a READER, owned by us_sf_reach.
 
-The format is documented in pipeline/scripts/us_sf_city/_chunk.py and
+The format is documented in pipeline/scripts/citymap/chunk.py and
 website/src/lib/city/DATA.md §1, and it is exactly:
 
     0   4  magic 'QCT1'
@@ -11,11 +11,17 @@ website/src/lib/city/DATA.md §1, and it is exactly:
         .. zero pad to a multiple of 8
         P  payload
 
-This is a second implementation of it, not an import, on purpose: the reach
-layer must not be able to change the bytes the city chunks are made of. The
-round-trip proof in build_reach_geom.py reads what this wrote back with BOTH
-this reader and `us_sf_city._chunk.read_chunk` — the shipped decoder — so
-"compatible" is demonstrated rather than assumed.
+THIS FORK IS DELIBERATE AND IT STAYS, but one of its two reasons has expired
+and saying which is the point of this paragraph. The reason that has gone: the
+only other implementation used to live under another city's directory name, and
+importing it meant this layer depended on `us_sf_city`. It does not any more —
+the container is `citymap/chunk.py` and belongs to neither layer. The reason that
+survives, and it is the load-bearing one: the round-trip proof in
+build_reach_geom.py reads what this wrote back with BOTH this reader and
+`citymap.chunk.read_chunk` — the shipped decoder — so "compatible" is
+demonstrated by two independent implementations rather than asserted by one. A
+single shared writer proving itself against itself proves nothing. Collapsing
+this file into an import would delete the witness, so it is not collapsed.
 
 Field payload offsets are aligned to the field's own element size, so the
 browser can take a zero-copy typed-array view. Deterministic: field order is

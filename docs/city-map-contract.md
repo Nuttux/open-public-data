@@ -41,7 +41,7 @@ San-Francisco-shaped thing that had to be named for the slot to be a slot.
 | # | slot (generic) | SF file / source | assumption that had to be lifted out |
 |---|---|---|---|
 | F1 | projection anchor | `manifest.proj.{lon0,lat0,cosl}` | none — already data |
-| F2 | **world tiling** | `_grid.py` | **`ORIGIN=-8192, NX=NY=16` — a 16.4 km box drawn round one city, and `cells_of()` *raises* rather than clamps outside it. Lifted to `EXTENT_M` + `for_extent()`; `CELL=1024` stays, it is derived from a measurement rather than from a location** |
+| F2 | **world tiling** | `citymap/grid.py` + `us_sf_city/_grid.py` | **`ORIGIN=-8192, NX=NY=16` — a 16.4 km box drawn round one city, and `cells_of()` *raises* rather than clamps outside it. Lifted to `EXTENT_M` + `for_extent()`; `CELL=1024` stays, it is derived from a measurement rather than from a location** |
 | F3 | bearing | `manifest.proj.marketRot`, `ROT_DEG=315` | 315° is north-up and generic; **the accepted COST is not** — one city's two street grids traded against each other, and `1.2247` (= √2·cos30° at that bearing) hardcoded at ~20 sites the manifest already publishes as `pxAcross` |
 | F4 | terrain | `sources.dem` → DataSF `6d73-6c4f` + USGS 3DEP | a dataset id; and `cityBBoxByBand` is arithmetically inert **because this city's relief is 280 m** |
 | F5 | shoreline | `sources.coast` → `txuc-3kzm` | a dataset id — **but the `coast` chunk kind carries `burnLen`/`burnXY`, one city's 1906 fire boundary, as a first-class field of the shoreline record type** |
@@ -135,8 +135,8 @@ is worth stating with no city in it at all:**
 
 | # | slot (generic) | SF file | assumption that had to be lifted out |
 |---|---|---|---|
-| T1 | chunk container `QCT1` | `_chunk.py` | **none. Zero city tokens, and no `f64` — deliberately, because no source in the record carries that precision** |
-| T2 | geometry delta codec | `_bldgsrc.py` | none material |
+| T1 | chunk container `QCT1` | `citymap/chunk.py` | **none. Zero city tokens, and no `f64` — deliberately, because no source in the record carries that precision** |
+| T2 | geometry delta codec | `citymap/deltachain.py` | none material — and it is out of `_bldgsrc.py` now: the codec is shared, the *reader* that knows the payload is `window.BLDG` stayed San Francisco's |
 | T3 | world tiling | `_grid.py` | see F2 |
 | T4 | **LOD tiering** | `manifest.camera.{LOD_Z0,LOD_Z1,MINZ,MAXZ}`, `tiers[*].minZ` | **the LADDER is generic; every rung on it is a measurement of one city.** See §6 |
 | T5 | per-field provenance | `manifest.sources` — 60+ entries | **the healthiest seam in the subsystem, and already generic**: publisher + dataset id per column of every chunk kind |
@@ -189,3 +189,21 @@ range) + slack`.
   That layering is generic and healthy — *the encoder owns one payload and its
   re-runs stay byte-identical; anything from another source is a sidecar* — and
   this document does not restate their slots.
+
+---
+
+## 8. Where the city-free half actually lives — added 2026-08-26
+
+The slots above were written before any code moved. `pipeline/scripts/citymap/`
+now exists and holds the modules that fill T1, T2 and the arithmetic half of F2.
+
+**The rule the directory is under, and it is a test rather than an intention:**
+`citymap/check_city_free.py` fails if a module in that package names a city, a
+publisher, a dataset id, a URL or a path into one city's tree. It is a port of
+`website/src/lib/citygl/engine-is-city-free.test.ts`, which is the only part of
+this subsystem that has stayed clean without anybody policing it.
+
+**And what that test cannot see is §0's middle row**, which is the expensive one.
+A grep for names finds `-8192` never. The instrument beside the number —
+`us_sf_city/derive/` — is the only defence against that, and it is a per-city
+cost by construction, not a thing a shared package can hold.

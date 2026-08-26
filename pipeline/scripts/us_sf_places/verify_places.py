@@ -24,7 +24,9 @@ import zlib
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 sys.path.insert(0, str(ROOT / "pipeline" / "scripts" / "us_sf_city"))
-from _chunk import field_array, read_chunk  # noqa: E402
+# The city-free half of the build. See pipeline/scripts/citymap/__init__.py.
+sys.path.insert(0, str(ROOT / "pipeline" / "scripts"))
+from citymap.chunk import field_array, read_chunk  # noqa: E402
 
 QC = ROOT / "website/public/data/us/sf/city/base/places.qc"
 SIDE = ROOT / "website/public/data/us/sf/city/base/places.json"

@@ -594,8 +594,8 @@ def build(check: bool) -> int:
     if head["meta"]["vertices"] != len(xs):
         raise SystemExit("ROUND TRIP FAILED on the header")
     # and the SHIPPED decoder, not only ours
-    sys.path.insert(0, str(ROOT / "pipeline/scripts/us_sf_city"))
-    import _chunk                                        # noqa: PLC0415
+    sys.path.insert(0, str(ROOT / "pipeline/scripts"))
+    from citymap import chunk as _chunk                  # noqa: PLC0415
     h2, pay = _chunk.read_chunk(blob)
     if h2["k"] != "reach/geom":
         raise SystemExit("the shipped decoder read a different key")
@@ -680,7 +680,7 @@ def build(check: bool) -> int:
     print(f"   {len(feats)} features, {len(rv0)} rings, {len(xs):,} vertices")
     print(f"   by class: {dict(sorted(by_cls.items()))}")
     print(f"   round trip: OK on 11 fields, both this reader and "
-          f"us_sf_city/_chunk.read_chunk")
+          f"citymap/chunk.read_chunk")
     print(f"   worst simplification {worst_simp:.2f} m at tol {TOL_M} m")
     return 0
 
