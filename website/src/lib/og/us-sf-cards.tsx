@@ -4,6 +4,14 @@ import { ogFmtUsd, ogFmtEn } from "@/lib/og";
 import { loadSfPlacesIndex, loadSfPlace } from "@/lib/us/sf-places-data";
 import { loadSfPayee } from "@/lib/us/sf-payees-data";
 import { loadSfContractFiche } from "@/app/us/city/sf/contracts/data";
+import {
+  blockLead,
+  stripFileNumber,
+  stripTruncation,
+  SERIES_LAST_YEAR,
+  type BlockDecision,
+  type BlockIndex,
+} from "@/components/us/city/block-records";
 
 /**
  * San Francisco share cards.
@@ -119,5 +127,148 @@ export function renderSfContractOg(contractNo: string) {
     imageCaption: borrowed?.caption ?? null,
     source: SOURCE,
     url: `qipu.org/us/city/sf/contracts/contract/${contractNo}`,
+  });
+}
+
+/** One JSON file off the site's own static assets, or null. A share card that
+ *  cannot reach a file degrades to a card with no figure; it never 500s. */
+async function getJson<T>(url: string): Promise<T | null> {
+  try {
+    const r = await fetch(url);
+    return r.ok ? ((await r.json()) as T) : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * THE QUOTATION HAS TO CLOSE.
+ *
+ * `shareCard` sets `WebkitLineClamp: 3` on the title, and **satori — what
+ * `next/og` renders with — does not implement it.** So the Board's longest
+ * sentences ran off the bottom of the card, opening with a quotation mark and
+ * never closing: block 3752's lead reached *"…for the purpose of providing
+ * financing for the construction"* and simply stopped, which reads as a broken
+ * card rather than as a quotation.
+ *
+ * Cut here instead, on a word, with our own ellipsis INSIDE the closing mark —
+ * the same convention `build_index.rec()` uses in the record itself, and the
+ * same one `stripTruncation` exists to undo. 132 characters is three lines at
+ * the size `shareCard` picks for a title this long.
+ */
+const CARD_QUOTE_CHARS = 132;
+
+function quoteForCard(raw: string): string {
+  const line = stripTruncation(stripFileNumber(raw));
+  if (line.length <= CARD_QUOTE_CHARS) return line;
+  const cut = line.slice(0, CARD_QUOTE_CHARS);
+  const sp = cut.lastIndexOf(" ");
+  return `${(sp > 60 ? cut.slice(0, sp) : cut).replace(/[,;:.\s]+$/, "")}…`;
+}
+
+/**
+ * ── THE BLOCK SHARE CARD ─────────────────────────────────────────────────
+ *
+ * `/us/city/sf/the-city?block=3752`. Every link to a block used to preview as
+ * the site-wide card, so a link to one block on the map and a link to the map
+ * itself looked identical — which is most of the reason a block is worth
+ * sharing and none of it survived the paste.
+ *
+ * **THE TITLE IS THE BOARD'S OWN SENTENCE, IN QUOTATION MARKS.** It is the one
+ * thing this surface has that nothing else does, and it is what made the film
+ * work. `blockLead` chooses it — the SAME function the panel's lead uses, so
+ * the card can never show a line the page itself demoted. That is why the
+ * speaker-list and roll-call gates had to land before this did.
+ *
+ * The decade counts are drawn as bars, which is the rail the panel draws, in
+ * the one device `shareCard` already has for a series.
+ */
+export async function renderSfBlockOg(id: string, origin: string) {
+  /* ── FETCHED, NOT READ OFF DISK, AND THAT IS NOT A STYLE CHOICE ────────
+     This card is a route handler under `/api/`, and `next.config.ts` excludes
+     `./public/data/us/sf/city/**` from every `/api/**` function — 12.5 MB of
+     map tiers have no business in a share-card bundle. A `readFileSync` here
+     works in dev, where the real filesystem is under the server, and returns
+     500 in production, where the file was never packed. The BR cards learned
+     this the same way.
+
+     So the card reads the two files the way the BROWSER reads them: over HTTP,
+     from the same origin, off the static asset the map already serves. No
+     tracing rule to keep in step with, and nothing to exclude. */
+  const idx = await getJson<BlockIndex>(`${origin}/data/us/sf/city/blocks/block-index.json`);
+  const i = idx ? idx.b.indexOf(id) : -1;
+  const rows =
+    idx && i >= 0
+      ? (
+          await getJson<Record<string, { d?: BlockDecision[] }>>(
+            `${origin}/data/us/sf/city/blocks/block-${String(i % idx.meta.shards).padStart(2, "0")}.json`,
+          )
+        )?.[id]?.d ?? []
+      : [];
+  const lead = rows.length ? blockLead(rows) : null;
+
+  /* THE SPAN IS CLAMPED THE WAY THE PAGE CLAMPS IT. `y1` is 2025 on block
+     3752 while the page prints 1906–2016, because the Board's scanned series
+     ends at SERIES_LAST_YEAR. A card is read beside the page it links to and
+     may not out-claim it. */
+  const y0 = idx && i >= 0 ? idx.y0[i] : 0;
+  const y1 = idx && i >= 0 ? Math.min(idx.y1[i], SERIES_LAST_YEAR) : 0;
+  const n = idx && i >= 0 ? idx.n[i] : 0;
+  const ns = idx && i >= 0 ? idx.ns[i] : 0;
+  const span = y0 && y1 ? `${y0}–${y1}` : "";
+
+  /* ── A BLOCK WITH NOTHING STILL HAS TO SAY SOMETHING ──────────────────
+     633 of the 5,404 blocks carry no decision of their own, and the first
+     card for one of them was a title and 500 px of empty paper. Silence on a
+     share card reads as a broken renderer, not as a finding.
+
+     MEASURED off the shipped index, because the two silences are different
+     and a reader is owed the difference: 335 of those 633 carry a record on
+     the streets they front and 298 carry nothing at all. */
+  const emptyFigure =
+    ns > 0
+      ? {
+          label: "Nothing on this block",
+          value: ogFmtEn(ns),
+          qualifier: "decisions on the streets it fronts — 335 blocks are in this state",
+        }
+      : {
+          label: "Decisions on this block",
+          /* NOT an em dash. At the figure's 96 px the display face draws it as
+             a long black rule, and a redaction bar is the last thing this
+             card may look like. */
+          value: "None",
+          qualifier:
+            "the record places no decision on this block or its streets — 298 of the city's 5,404",
+        };
+
+  const bars = Object.entries(
+    rows.reduce<Record<number, number>>((acc, r) => {
+      if (r.y) acc[Math.floor(r.y / 10) * 10] = (acc[Math.floor(r.y / 10) * 10] ?? 0) + 1;
+      return acc;
+    }, {}),
+  )
+    .sort(([a], [b]) => Number(a) - Number(b))
+    .map(([d, v]) => ({ label: `'${String(d).slice(-2)}`, v }));
+
+  return shareCard({
+    route: "/the-city",
+    kicker: `Block ${id} · San Francisco`,
+    // No line means a block the record says nothing about — 308 of 5,404. The
+    // card says so plainly rather than printing an empty quotation.
+    title: lead ? `“${quoteForCard(lead.t)}”` : `Block ${id}`,
+    figure: n
+      ? {
+          label: "Decisions on this block",
+          value: ogFmtEn(n),
+          qualifier: span ? `${span}, each linked to the page of the scan` : undefined,
+        }
+      : emptyFigure,
+    bars: bars.length > 1 ? bars : null,
+    /* The corpus is cited even where it yielded nothing — the absence IS a
+       result of searching it — but only the blocks that quote it claim the
+       scans. */
+    source: lead ? "Journal of Proceedings · Internet Archive" : "Journal of Proceedings, 1906–2016",
+    url: `qipu.org/us/city/sf/the-city?block=${id}`,
   });
 }

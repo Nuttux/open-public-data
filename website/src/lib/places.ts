@@ -19,6 +19,8 @@
  * convention), then the money views, with place-specific extras trailing.
  */
 export type ModuleKind =
+  /** the city itself, drawn from its own record — SF's `/the-city` */
+  | "city"
   | "places"
   | "budget"
   | "investments"
@@ -31,6 +33,10 @@ export type ModuleKind =
   | "sources";
 
 export const MODULE_KIND_ORDER: ModuleKind[] = [
+  /* FIRST, and it is not a tie-break. It is the only module that is the city
+     rather than a table about the city, and it is the one a stranger should
+     meet before any of the others. */
+  "city",
   "places",
   "budget",
   "investments",
@@ -190,6 +196,7 @@ export const PLACES: Place[] = [
     hub: true,
     poc: true,
     modules: [
+      { slug: "the-city", labelKey: "us.sf.nav.the_city", kind: "city" },
       { slug: "budget", labelKey: "us.sf.nav.budget", kind: "budget" },
       { slug: "who-gets-paid", labelKey: "us.sf.nav.who_gets_paid", kind: "recipients" },
       { slug: "contracts", labelKey: "us.sf.nav.contracts", kind: "contracts" },
