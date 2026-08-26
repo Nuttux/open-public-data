@@ -23,29 +23,20 @@ from __future__ import annotations
 
 import argparse
 import collections
-import json
 import pathlib
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
+
+# ONE READER AND ONE IDENTITY, SHARED WITH THE GATE. This file used to carry its
+# own copy of both, with a comment saying they were "the same shape as
+# verify_block_regression.key(), so the two agree on what 'the same row' is" —
+# an agreement held by prose, which is how a field gets added to one of them and
+# not the other. They are `citymap/blocklayer.py` now and there is one of each.
+from citymap.blocklayer import load_blocks as load, row_key as key  # noqa: E402
+
 SFBOS = "https://sfbos.org/sites/default/files"
 IA = "https://archive.org/details"
-
-
-def load(dirp: pathlib.Path) -> dict[str, list]:
-    per: dict[str, list] = {}
-    for p in sorted(dirp.glob("block-*.json")):
-        if p.name == "block-index.json":
-            continue
-        for b, v in json.loads(p.read_text()).items():
-            per[b] = v["d"] if isinstance(v, dict) else v
-    return per
-
-
-def key(r: dict) -> tuple:
-    """Everything a reader can see about one decision. Same shape as
-    verify_block_regression.key(), so the two agree on what 'the same row' is."""
-    return (r.get("y"), r.get("d"), r.get("k"), r.get("p"), r.get("f"),
-            r.get("a"), r.get("u"), r.get("t"), r.get("g"))
 
 
 def href(r: dict) -> str:

@@ -127,8 +127,8 @@ is worth stating with no city in it at all:**
 | J6 | near-duplicate collapse | `citymap/nearcollapse.py`; 4-word shingles at 0.55, char 4-grams at 0.86 — and the measure is an OVERLAP coefficient, not Jaccard: it divides by the smaller side, so thresholds do not carry to a Jaccard implementation | **generic mechanism, and it has a known cost measured at 40.9 % of unit-links discarded** — including 479 `stated`-tier links, the one tier that outranks inference |
 | J7 | ranking | precision + money + phase − specificity − boilerplate | **generic shape; the weights are one corpus's** |
 | J8 | diversity | ≤ 4 of the top 12 from one decade | generic |
-| J9 | **order independence** | `verify_order_independence.py` | **fully generic, and it is the property that makes the index a function of the corpus rather than of its arrival order** |
-| J10 | regression gate | `verify_block_regression.py` | generic |
+| J9 | **order independence** | `citymap/orderindep.py` + an 11-line SF wrapper | **fully generic, and it is the property that makes the index a function of the corpus rather than of its arrival order** |
+| J10 | regression gate | `citymap/blocklayer.py` + `verify_block_regression.py` | generic — and the `cut` year has NO default in the shared half, because an era boundary is one series' fact |
 | J11 | accuracy scoring | `blocks/measure_accuracy.py` | **generic method, and the good one**: where the record states the unit, run the inference again *as if it had not*, and score it. Requires tier 4 to exist |
 
 ## 5. TRANSPORT — the container and the tiering
@@ -162,6 +162,14 @@ driving a prototype page that no longer exists.
 `1849`; `PITCH_RUN_MULT`; `HEIGHT_BANDS`' cut points; `ZSTEPS = [1, 2.9, 7.2]`
 and everything keyed off it; `MINZ`/`MAXZ`; `_grid.py`'s box (now lifted);
 `SNAP_PX`, `MARCH_SLACK_M`, `FOOT_CELL_M`.
+
+`pipeline/scripts/us_sf_city/derive/wiring.py` is the table that CHECKS the two
+halves against each other: every instrument named is a file that exists, and
+every consumer named still holds the value it was measured at. Run it before
+quoting any of these numbers. And `citymap/measured.py` lets a constant carry its
+own derivation in the code that uses it — `Measured` for one with an instrument,
+`Declared` for one without, both `float`/`int` subclasses so annotating a number
+cannot change a published byte.
 
 **And the pattern that dissolves the slot instead of filling it** —
 `citygl/pick.ts`: a snap radius that was *half one city's street standard* became

@@ -1,22 +1,27 @@
-"""Prove the modern ingest did not move a single pre-1999 decision.
+"""Prove a new ingest did not move a single decision from before the era cut.
 
-The map has 1906-1999 working: 4,679 blocks with records, decade rails, leads,
-page citations. Seventeen new years are being merged into the SAME index, and
-the index re-ranks, re-deduplicates and re-shards everything each time it runs.
-So "the old data is still there" is not something to assume. It is something to
-assert, block by block and decision by decision.
+The comparison — read two published builds, split each unit's rows on a year,
+compare only the older half element for element — is `citymap/blocklayer.py` and
+knows no city. What is here is San Francisco's: **the cut year, and where it
+comes from.**
 
-WHY A DIFF OF THE WHOLE FILE IS NOT THE TEST. The files MUST change — that is
-the point of the ingest. What must not change is the pre-1999 SUBSET. So this
-splits every block's decision list on the year and compares only the old half,
-element for element, in order.
+    CUT = 1999
 
-THE MECHANISM IT IS ACTUALLY HUNTING. build_index.py drops near-duplicate
-readings inside a block, comparing each candidate against the rows already kept,
-IN RANK ORDER. A modern decision that outranks a 1912 one now enters that
-comparison first, and can suppress the 1912 row that used to be kept. Nothing
+is not a round number and not a default. It is where this record series changes
+form: the Board's bound *Journal of Proceedings* runs 1906–1999 and the Clerk's
+born-digital minutes begin afterwards. Everything before it was built, ranked and
+published from one corpus; everything after arrived later. `citymap` has no
+default for it on purpose, because an era boundary is a fact about one series and
+a shared default would be this number quietly inherited by the next city.
+
+WHY A DIFF OF THE WHOLE FILE IS NOT THE TEST. The files MUST change — that is the
+point of the ingest. What must not change is the pre-cut SUBSET.
+
+THE MECHANISM IT IS ACTUALLY HUNTING. `build_index.py` drops near-duplicate
+readings inside a block. A modern decision that outranks a 1912 one can enter
+that comparison first and suppress the 1912 row that used to be kept. Nothing
 about that is visible in a row count; it is one sentence quietly leaving a block
-it used to be on. That is what this looks for.
+it used to be on.
 
     python3 verify_block_regression.py --baseline <dir> --current <dir>
 
@@ -25,30 +30,16 @@ Both directories are `blocks/out/`. Exit code is non-zero if anything moved.
 from __future__ import annotations
 
 import argparse
-import collections
-import json
 import pathlib
 import sys
 
-CUT = 1999          # a decision from before this year must be untouched
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 
+from citymap.blocklayer import compare_before, load_blocks  # noqa: E402
 
-def load(dirp: pathlib.Path) -> tuple[dict, dict]:
-    idx = json.loads((dirp / "block-index.json").read_text())
-    per: dict[str, list] = {}
-    for p in sorted(dirp.glob("block-*.json")):
-        if p.name == "block-index.json":
-            continue
-        for b, v in json.loads(p.read_text()).items():
-            rows = v["d"] if isinstance(v, dict) else v
-            per[b] = rows
-    return idx, per
-
-
-def key(r: dict) -> tuple:
-    """Everything a reader can see about one decision."""
-    return (r.get("y"), r.get("d"), r.get("k"), r.get("p"), r.get("f"),
-            r.get("a"), r.get("u"), r.get("t"), r.get("g"))
+# The Journal of Proceedings ends and the Clerk's own PDFs begin. See the module
+# docstring — this belongs to this record series and travels nowhere.
+CUT = 1999
 
 
 def main() -> None:
@@ -60,8 +51,8 @@ def main() -> None:
     a = ap.parse_args()
     cut = a.cut
 
-    bi, bp = load(pathlib.Path(a.baseline))
-    ci, cp = load(pathlib.Path(a.current))
+    bp = load_blocks(pathlib.Path(a.baseline))
+    cp = load_blocks(pathlib.Path(a.current))
     print(f"  baseline  {len(bp):,} blocks with rows, "
           f"{sum(len(v) for v in bp.values()):,} decisions")
     print(f"  current   {len(cp):,} blocks with rows, "
@@ -72,16 +63,7 @@ def main() -> None:
     print(f"  blocks that lost their entry entirely: {len(lost_blocks)}")
     print(f"  blocks that gained an entry:           {len(gained_blocks)}")
 
-    changed: list[tuple] = []
-    n_old_base = n_old_cur = 0
-    for b, rows in bp.items():
-        old = [key(r) for r in rows if (r.get("y") or 0) < cut]
-        n_old_base += len(old)
-        now = [key(r) for r in cp.get(b, []) if (r.get("y") or 0) < cut]
-        n_old_cur += len(now)
-        if old != now:
-            so, sn = set(old), set(now)
-            changed.append((b, len(old), len(now), sorted(so - sn), sorted(sn - so)))
+    changed, n_old_base, n_old_cur = compare_before(bp, cp, cut)
     print(f"\n  pre-{cut} decisions, baseline {n_old_base:,} / current {n_old_cur:,}")
 
     if not changed:

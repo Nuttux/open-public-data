@@ -20,6 +20,15 @@ working tool.** Porting one to the current renderer is a real task, and it is th
 task, not a formality — a constant is only honest for a second city if the
 measurement behind it was re-run there.
 
+**AND THE TABLE IS CHECKED NOW, not just written.** `python3 derive/wiring.py`
+walks every row below plus the no-derivation list at the foot of this file, and
+asserts two things: that each instrument named is a file that exists, and that
+each consumer named still holds the value it was measured at. Change `ROT_DEG`
+without re-running the bearing sheet and it prints DRIFT and names the harness
+you owe. Delete a harness and it prints the constants that just lost their
+justification. It reads `website/**` and never writes it — the derivation table
+belongs in the pipeline, the values belong where they are used.
+
 ---
 
 ## What each constant is a measurement OF

@@ -2610,3 +2610,149 @@ the top of §25. **It is left forked on purpose.**
 
 `near_dup_line()` was found to be dead — defined, never called — and went with
 the rest.
+
+---
+
+# 27. THE HARNESSES BECOME REUSABLE, AND EVERY MEASURED CONSTANT GETS WIRED TO ITS INSTRUMENT — 2026-08-26
+
+Two things in this pass, and they are the same idea at two scales: **a number is
+only honest while the thing that produced it is still findable from it.**
+
+## 27.1 THE TWO GATES, AND THE ELEVEN LINES THAT ARE ACTUALLY SAN FRANCISCO
+
+| moved to `citymap/` | what stayed here |
+|---|---|
+| `orderindep.py` — shuffle a corpus, build, hash the tree, compare | **how this city's builder is invoked**: a subprocess, three environment variables, run from its own directory. Eleven lines |
+| `blocklayer.py` — read a published build back, `row_key`, `compare_before` | `CUT = 1999` — where the bound *Journal* ends and the Clerk's born-digital minutes begin |
+
+**The builder arrives as a callable**, `build(corpus, out_dir)`. There is no
+registry, nothing to configure, and a second city's index is a different eleven
+lines in its own directory. The shared half literally cannot name a builder.
+
+**`cut` has no default in `citymap`, deliberately.** An era boundary is a fact
+about one record series, and a shared default would be this number quietly
+inherited by whoever comes next.
+
+## 27.2 A DUPLICATE THAT WAS HELD TOGETHER BY A COMMENT
+
+`enumerate_block_moves.py` carried its own copy of the shard reader and of the
+row-identity function, with this in the docstring:
+
+> Same shape as `verify_block_regression.key()`, so the two agree on what 'the
+> same row' is.
+
+Two copies of an identity function that must agree, and nothing checking that
+they do. That is how a field gets added to one and not the other, and the tool
+then reports that nothing moved. There is one of each now.
+
+## 27.3 THE CONSTANTS: `Measured`, `Declared`, AND A TABLE THAT CHECKS ITSELF
+
+`citymap/measured.py` is two `float`/`int` subclasses and an audit.
+
+```python
+Z_BUILDINGS = Measured(1.55, name="Z_BUILDINGS (LOD_Z0)",
+                       harness="derive/lod_probe.py",
+                       method="the zoom at which the MEDIAN footprint reaches 1.6 px")
+MAXZ        = Declared(12, name="MAXZ",
+                       why="prose only — 'past ~8x no new detail arrives' is ASSERTED")
+```
+
+**`Measured(1.55)` IS 1.55 everywhere**, and — the property the whole design
+turns on — it serialises through `json` byte for byte as the bare number, because
+`json` formats with `float.__repr__` / `int.__repr__` and both ignore the
+subclass. **Annotating a constant cannot change a published byte.** That was
+verified before anything was annotated and then again on the real build.
+
+**`Declared` is the more useful of the two.** The repository has a list of
+numbers with no derivation anywhere, and their absence is currently INVISIBLE:
+they look exactly like the measured ones. `Declared` makes the absence a fact the
+audit prints. Six of them are now labelled in `encode_city_chunks.py` alone.
+
+And two findings fell out of labelling them:
+
+- **`Z_CANOPY = 1.55` is exactly `Z_BUILDINGS`**, and nothing anywhere says
+  whether that is intent ("canopy arrives when footprints do") or the same
+  coincidence ADR-0012 §4.5 found between the street layer and the tree
+  threshold. **Re-measuring `LOD_Z0` for another city would move one of these two
+  and not the other, silently.**
+- **`Z_TREES = 2.90` is `ZSTEPS[1]`**, the ladder with no derivation, and it is
+  the exact number §4.5's hazard was about.
+
+## 27.4 `derive/wiring.py` — THE TABLE, AND IT IS CHECKED
+
+Four of the five constants Daniel named live in `website/src/lib/city/`, which
+this pass does not edit. **That is the right shape, not a workaround: the
+pipeline is a reasonable place to keep the derivation TABLE and a terrible place
+to keep the VALUES.** So `wiring.py` reads those files and asserts. It never
+writes them.
+
+```
+  8 wired constants, 7 with no derivation
+
+  LOD_Z0 1.55 · LOD_Z1 2.35 · DETAIL_PXM 2.0 · SA_DEFAULT 0.42
+  SA_FRAMING_FLOOR 0.4099 · ROT_DEG 315 · roof band quartiles · RSHADE ±14 %
+
+  PASS — every instrument is on disk and every consumer still holds the value
+         it was measured at.
+```
+
+Change `ROT_DEG` without re-running the bearing sheet and it prints **DRIFT** and
+names the seven harnesses you owe. Delete a harness and it prints the constants
+that just lost their justification.
+
+**Three things it refuses to overclaim**, and each is a correction to something
+already written down:
+
+- **`HEIGHT_BANDS = [9, 15, 25]`** is listed under NO DERIVATION, not under
+  measured. `roof_bands.py` is real and produces the quartiles INSIDE the bands;
+  the band CUT POINTS are asserted. It is the clearest case in the repository of
+  a harness sitting next to a number it does not produce.
+- **`RSHADE`'s ±14 %** is recorded as a taste decision with a rendered basis. Its
+  own write-up says it was *"chosen by looking."*
+- **`LOD_Z1`** is marked PARTIAL: the sweep gives the table, but *"the first
+  width at which a house is separable from its party wall"* is a judgement over
+  that table.
+
+And the header says what passing does not mean: `derive/README.md` states that
+**none of these harnesses runs today** — every one drives a prototype page that
+no longer exists. What is recovered is the METHOD. The table's job is to keep the
+method findable from the number.
+
+## 27.5 THE PROOF
+
+```
+  encoder, with every constant annotated:
+    ctl0 580 files / ctl2 580 files   identical = 580   differ = 0
+
+  verify_order_independence.py, through citymap/orderindep.py,
+  against the refactored build_index.py:
+    115,673 rows · seed 101 and seed 202 · 2,179 published files
+    seed 202 == seed 101: all 2179 files identical
+    PASS — the index is a function of the corpus, not of its order.
+
+  verify_block_regression.py, through citymap/blocklayer.py:
+    5,089 blocks · pre-1999 decisions 90,820 = 90,820
+    PASS — every pre-1999 decision on every block is unchanged, element for
+    element and in the same order.
+
+  derive/wiring.py: PASS
+  citymap/check_city_free.py: PASS — 8 modules
+  citymap/nearcollapse.py self-test: PASS — 11 assertions
+```
+
+The 90,820 matches the figure §24.10 recorded, which is the corroboration worth
+having: the refactored reader agrees with the number the old one produced.
+
+## 27.6 FOUND HERE AND NOT FIXED
+
+- **`bldg.yr`'s base year 1849 is still a bare literal in three places**, none of
+  them in this repository's pipeline — it lives in the mock's generator and in
+  `citygl/bldg.ts`. It is the worst of the declared constants because it is a
+  FORMAT constant: one byte offset by one city's founding, so the container
+  cannot represent a building older than a number nobody wrote down. The manifest
+  already publishes `year0` per chunk and the client ignores it. **The fix is a
+  frontend change and it is one line on each side.**
+- **The four frontend constants cannot be annotated from here.** `wiring.py`
+  asserts them read-only, which catches drift but does not put the derivation
+  where a reader of `projection.ts` will see it. Wiring them properly means a
+  `Measured` equivalent in TypeScript, in `website/**`.

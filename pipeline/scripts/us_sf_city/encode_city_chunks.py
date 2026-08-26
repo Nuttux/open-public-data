@@ -36,6 +36,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 import numpy as np
 
 from citymap.chunk import ChunkWriter
+from citymap.measured import Declared, Measured
 from citymap.deltachain import rechain
 from _bldgsrc import read_bldg
 from _grid import CELL, NX, NY, ORIGIN_X, ORIGIN_Y, cell_extent, cell_id, cells_of
@@ -61,11 +62,50 @@ CHUNK_DIRS = ("base", "bldg", "face", "strt", "tree", "water1")
 
 # ── the zoom ladder these tiers are keyed on ────────────────────────────────
 # z = cam.scale / cam.base; 1 is "the whole city fits the strip".
-# LOD_Z0/LOD_Z1 are lod/BLOCK-L.md's, and neither is a round number: both are
-# `median projected width / cam.base`, 1.6 px and 2.4 px respectively.
-Z_MASSING = 0.0     # base tier: always
-Z_BUILDINGS = 1.55  # LOD_Z0 — the dissolve begins; footprints start arriving
-Z_TREES = 2.90      # VZ_T0 in part3 — street trees fade in
+#
+# EVERY NUMBER ON THIS LADDER IS A MEASUREMENT OF SAN FRANCISCO AT ONE CANVAS
+# SIZE, and until today none of them said so — they are the exact shape ADR-0012
+# §2.2 is about, a number that is really a name, invisible to any grep. They now
+# carry the instrument that produced them, or admit that no instrument exists.
+# `Measured`/`Declared` are float subclasses: 1.55 stays 1.55, and it serialises
+# through json byte for byte, so annotating one cannot change a published byte.
+# `python3 derive/wiring.py` walks the whole table, this half included.
+# What the manifest publishes about the camera, beside the tier gates. The
+# client reads these; nothing in this script does, which is exactly why they had
+# been sitting as literals inside a dict for a year.
+LOD_Z1 = Measured(
+    2.35, name="LOD_Z1", harness="derive/lod_probe.py",
+    method="2.4 px on the same sweep as LOD_Z0 — but the choice of 'the first width "
+           "at which a house is separable from its party wall' is a JUDGEMENT over "
+           "that table, not an output of it. Stated here rather than overclaimed")
+ZSTEPS_1 = Declared(
+    2.9, name="ZSTEPS[1] (the district preset)",
+    why="derive/README §4: the comment on the whole three-stop ladder says only 'the "
+        "three named stops the piece shipped with'. No sweep and no fit chooses it")
+ZSTEPS_2 = Declared(
+    7.2, name="ZSTEPS[2] (the block preset)",
+    why="same ladder, same absence of a derivation")
+MINZ = Declared(
+    1, name="MINZ",
+    why="prose rationale only. Nothing measures the floor of the zoom range")
+MAXZ = Declared(
+    12, name="MAXZ",
+    why="prose rationale only — 'past ~8x no new detail arrives' is ASSERTED, not "
+        "measured, and derive/zoom_citydetail.py is exactly the harness that could "
+        "measure it. It has never been pointed at this question")
+
+Z_MASSING = 0.0     # base tier: always — not a measurement, a definition
+Z_BUILDINGS = Measured(
+    1.55, name="Z_BUILDINGS (LOD_Z0)", harness="derive/lod_probe.py",
+    method="the zoom at which the MEDIAN footprint projects to 1.6 px; under two "
+           "pixels an outline and its party wall are one mark. The dissolve begins "
+           "here and footprints start arriving")
+Z_TREES = Declared(
+    2.90, name="Z_TREES (VZ_T0)",
+    why="ZSTEPS[1], the district preset, and the three-stop ladder has NO derivation "
+        "anywhere (derive/README §4). The street layer was once gated on this number "
+        "because it happens to equal ZSTEPS[1] at this city's figures — ADR-0012 §4.5's "
+        "coincidental-equality hazard, and the reason it may not be promoted")
 Z_STREET = 1.75     # the street SURFACE gate is per-feature px, not a zoom — and this
                     # constant is only the FETCH policy, which has to be satisfied before
                     # the gate can open. It was 2.90, borrowed from Z_TREES, so the data
@@ -76,7 +116,12 @@ Z_STREET = 1.75     # the street SURFACE gate is per-feature px, not a zoom — 
                     # in hand the moment the per-feature rule opens. See SHELL.md §13.
 Z_FACADE = 4.00     # the facade generator engages when a wall is worth openings
 Z_WATER1 = 3.00     # the 4x-refined bathymetry
-Z_CANOPY = 1.55     # VZ_C0 in part3 — canopy blobs fade in
+Z_CANOPY = Declared(
+    1.55, name="Z_CANOPY (VZ_C0)",
+    why="EXACTLY Z_BUILDINGS, and nothing anywhere says whether that is intent — "
+        "'canopy arrives when footprints do' — or the same coincidence ADR-0012 §4.5 "
+        "found between the street layer and the tree threshold. Re-measuring LOD_Z0 "
+        "for another city would move one of these two and not the other, silently")
 
 chunks: list[dict] = []
 sources: dict[str, dict] = {}
@@ -2509,9 +2554,14 @@ def main() -> int:
             "note": "lod/BLOCK-L.md, measured: at the 315 deg bearing proj() is "
                     "axis-aligned, so a world metre is pxAcross * cam.scale px across the "
                     "screen and pxDown * cam.scale down it. z = cam.scale / cam.base.",
+            # sqrt(3/2) and sqrt(1/2) at the shipped bearing, ROUNDED TO 4 DP on
+            # the wire. The rounding is why they are not written as the
+            # expression: math.sqrt(1.5) is 1.2247448713915892 and would change
+            # the published bytes. `baseAt1440x940` is a measurement of one
+            # canvas size and says so in its name, which is the good pattern.
             "pxAcross": 1.2247, "pxDown": 0.7071, "baseAt1440x940": 0.05565,
-            "presets": {"whole": 1.0, "district": 2.9, "block": 7.2},
-            "LOD_Z0": 1.55, "LOD_Z1": 2.35, "MINZ": 1, "MAXZ": 12,
+            "presets": {"whole": 1.0, "district": ZSTEPS_1, "block": ZSTEPS_2},
+            "LOD_Z0": Z_BUILDINGS, "LOD_Z1": LOD_Z1, "MINZ": MINZ, "MAXZ": MAXZ,
         },
         "tiers": tiers,
         "kinds": kinds,
