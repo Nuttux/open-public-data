@@ -5,7 +5,7 @@
 -- Sources: int_us_sf_comp_employee_year (person × year totals — the unit of
 --          analysis for every distribution statement on the site),
 --          core_us_sf_comp (job codes, to attribute a person to a family),
---          stg_us_sf_job_reclass / stg_us_sf_job_family_display (the same
+--          int_us_sf_job_reclass / int_us_sf_job_families (the same
 --          two provenance-flagged seeds the family marts use),
 --          core_us_sf_source_catalog (provenance).
 -- Grain:  fiscal year × display_family (the 16 citizen-readable groups the
@@ -62,12 +62,12 @@ person AS (
 
 reclass AS (
     SELECT job_code, reclass_family_code
-    FROM {{ ref('stg_us_sf_job_reclass') }}
+    FROM {{ ref('int_us_sf_job_reclass') }}
 ),
 
 display AS (
     SELECT job_family_code, canonical_label, display_family
-    FROM {{ ref('stg_us_sf_job_family_display') }}
+    FROM {{ ref('int_us_sf_job_families') }}
 ),
 
 -- Effective family per source row: reclass fills junk codes only, never

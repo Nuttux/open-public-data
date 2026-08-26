@@ -2,7 +2,7 @@
 -- Mart: SF vendor payments (vouchers), department × character cells —
 -- "who actually got paid" for a slice of the adopted budget
 --
--- Sources: core_us_sf_vouchers, stg_us_sf_payee_buckets (display bucket),
+-- Sources: core_us_sf_vouchers, int_us_sf_payees (display bucket),
 --          core_us_sf_source_catalog (provenance).
 -- Grain:  fiscal_year × department × character × vendor, ranked within
 --         cell by $, top 15 vendors kept per cell.
@@ -109,7 +109,7 @@ SELECT
     'USD'                                  AS unit
 FROM ranked r
 INNER JOIN cell_agg ca USING (fiscal_year, department_code, character_code)
-LEFT JOIN {{ ref('stg_us_sf_payee_buckets') }} pb
+LEFT JOIN {{ ref('int_us_sf_payees') }} pb
     ON pb.vendor = r.vendor
 CROSS JOIN provenance pr
 WHERE r.rank_in_cell <= 15

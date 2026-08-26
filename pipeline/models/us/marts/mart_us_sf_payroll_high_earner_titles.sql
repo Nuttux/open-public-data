@@ -2,7 +2,7 @@
 -- Mart: composition of the >$400k group, latest fiscal year — COUNT-ONLY
 --
 -- Sources: core_us_sf_comp + int_us_sf_comp_employee_year (Fiscal),
---          stg_us_sf_job_reclass / stg_us_sf_job_family_display (family
+--          int_us_sf_job_reclass / int_us_sf_job_families (family
 --          context), core_us_sf_source_catalog (provenance).
 -- Grain:  job title (primary title per person) among employees whose
 --         TOTAL annual compensation exceeds $400k — top titles with
@@ -69,12 +69,12 @@ high_by_title AS (
 
 reclass AS (
     SELECT job_code, reclass_family_code
-    FROM {{ ref('stg_us_sf_job_reclass') }}
+    FROM {{ ref('int_us_sf_job_reclass') }}
 ),
 
 display AS (
     SELECT job_family_code, canonical_label, display_family
-    FROM {{ ref('stg_us_sf_job_family_display') }}
+    FROM {{ ref('int_us_sf_job_families') }}
 ),
 
 top_titles AS (

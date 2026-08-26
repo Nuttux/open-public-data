@@ -15,11 +15,38 @@
 WITH vouchers AS (
     SELECT *
     FROM {{ ref('stg_us_sf_vouchers') }}
+),
+
+-- Manual payee classification (seed, display only — never touches amounts).
+payee_buckets AS (
+    SELECT vendor, bucket, classification_note, classification_method,
+           classified_at, is_aggregation_line
+    FROM {{ ref('stg_us_sf_payee_buckets') }}
+),
+
+-- Sub-object spend classification (purchase / obligation / ledger / unclear).
+subobject_class AS (
+    SELECT sub_object_code, spend_class, basis, needs_review
+    FROM {{ ref('stg_us_sf_subobject_class') }}
 )
 
 SELECT
-    *,
-    related_govt_units = 'Yes'  AS is_related_govt_unit,
-    CURRENT_DATE('America/Los_Angeles') > DATE(fiscal_year, 6, 30)
+    v.*,
+    v.related_govt_units = 'Yes'  AS is_related_govt_unit,
+    CURRENT_DATE('America/Los_Angeles') > DATE(v.fiscal_year, 6, 30)
                                 AS is_fiscal_year_complete
-FROM vouchers
+    ,
+    -- payee bucket (stg_us_sf_payee_buckets, keyed on the raw vendor string)
+    pb.bucket                          AS payee_bucket,
+    pb.classification_note             AS payee_bucket_note,
+    pb.classification_method           AS payee_bucket_method,
+    pb.classified_at                   AS payee_bucket_classified_at,
+    pb.is_aggregation_line             AS is_aggregation_line,
+    pb.vendor IS NOT NULL              AS is_payee_bucketed,
+    -- sub-object spend class (stg_us_sf_subobject_class)
+    sc.spend_class                     AS sub_object_spend_class,
+    sc.basis                           AS sub_object_spend_class_basis,
+    sc.needs_review                    AS sub_object_spend_class_needs_review
+FROM vouchers v
+LEFT JOIN payee_buckets pb   ON pb.vendor = v.vendor
+LEFT JOIN subobject_class sc ON sc.sub_object_code = v.sub_object_code

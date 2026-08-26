@@ -2,7 +2,7 @@
 -- Mart: SF supplier contracts — ONE ROW PER CONTRACT (prime-dedupe grain)
 --
 -- Sources: core_us_sf_contracts (48,350 team-member rows),
---          stg_us_sf_purchasing_authority_families (display families seed),
+--          int_us_sf_purchasing_authorities (display families seed),
 --          core_us_sf_source_catalog (provenance).
 -- Grain:  contract_no — 31,860 contracts with at least one prime row.
 --
@@ -157,6 +157,6 @@ SELECT
 FROM dedupe d
 INNER JOIN all_row_flags f USING (contract_no)
 LEFT JOIN team_counts tc USING (contract_no)
-LEFT JOIN {{ ref('stg_us_sf_purchasing_authority_families') }} fam
+LEFT JOIN {{ ref('int_us_sf_purchasing_authorities') }} fam
     ON fam.purchasing_authority = d.purchasing_authority
 CROSS JOIN provenance pr

@@ -1,7 +1,7 @@
 -- =============================================================================
 -- Mart: SF adopted budget by department — the page's second altitude
 --
--- Sources: core_us_sf_budget, stg_us_sf_dept_names (display enrichment),
+-- Sources: core_us_sf_budget, int_us_sf_departments (display enrichment),
 --          core_us_sf_source_catalog (provenance).
 -- Grain:  fiscal_year × side × department.
 --
@@ -75,6 +75,6 @@ SELECT
     pr.rows_updated_at                      AS source_rows_updated_at,
     'USD'                                   AS unit
 FROM by_dept d
-LEFT JOIN {{ ref('stg_us_sf_dept_names') }} n
+LEFT JOIN {{ ref('int_us_sf_departments') }} n
     ON n.department_code = d.department_code
 CROSS JOIN provenance pr

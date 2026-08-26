@@ -3,7 +3,7 @@
 --       for the overtime lens
 --
 -- Sources: core_us_sf_comp (year_type = 'Fiscal', latest year),
---          stg_us_sf_job_reclass + stg_us_sf_job_family_display (family
+--          int_us_sf_job_reclass + int_us_sf_job_families (family
 --          context labels), core_us_sf_source_catalog (provenance).
 -- Grain:  job_code, top 10 by overtime dollars in the latest fiscal year.
 --
@@ -28,12 +28,12 @@ latest AS (
 
 reclass AS (
     SELECT job_code, reclass_family_code
-    FROM {{ ref('stg_us_sf_job_reclass') }}
+    FROM {{ ref('int_us_sf_job_reclass') }}
 ),
 
 display AS (
     SELECT job_family_code, canonical_label, display_family
-    FROM {{ ref('stg_us_sf_job_family_display') }}
+    FROM {{ ref('int_us_sf_job_families') }}
 ),
 
 by_title AS (

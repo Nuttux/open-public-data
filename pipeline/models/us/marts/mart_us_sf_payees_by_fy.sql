@@ -2,7 +2,7 @@
 -- Mart: SF payees — per-fiscal-year context for the who-gets-paid page
 --
 -- Sources: core_us_sf_vouchers, core_us_sf_contracts (grant join),
---          stg_us_sf_payee_buckets, core_us_sf_source_catalog (provenance).
+--          int_us_sf_payees, core_us_sf_source_catalog (provenance).
 -- Grain:  fiscal_year (one row per FY, FY2007-FY2027).
 --
 -- Everything the page hero and per-year header need, measured not assumed
@@ -60,7 +60,7 @@ coverage AS (
             SUM(bv.usd)
         ) AS bucket_coverage_pct
     FROM by_vendor bv
-    LEFT JOIN {{ ref('stg_us_sf_payee_buckets') }} pb
+    LEFT JOIN {{ ref('int_us_sf_payees') }} pb
         ON pb.vendor = bv.vendor
     GROUP BY 1
 ),

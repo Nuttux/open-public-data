@@ -1,7 +1,7 @@
 -- =============================================================================
 -- Mart: SF payees search index — one row per vendor, lazy-loaded by the UI
 --
--- Sources: core_us_sf_vouchers, stg_us_sf_payee_buckets, core_us_sf_source_catalog.
+-- Sources: core_us_sf_vouchers, int_us_sf_payees, core_us_sf_source_catalog.
 -- Grain:  vendor (union of every fiscal year's top 1,000 payees by $ —
 --         measured 4,068 vendors covering ≈95-97% of every FY's dollars,
 --         docs/us/block-studies/2-payees.md §2.2). The all-time universe is
@@ -108,6 +108,6 @@ SELECT
     'USD'                                  AS unit
 FROM vendor_rollup vr
 LEFT JOIN top_department td USING (vendor)
-LEFT JOIN {{ ref('stg_us_sf_payee_buckets') }} pb
+LEFT JOIN {{ ref('int_us_sf_payees') }} pb
     ON pb.vendor = vr.vendor
 CROSS JOIN provenance pr

@@ -17,6 +17,32 @@
 version: 2
 
 models:
+  - name: int_br_recife_credor_ano
+    description: |
+      Recipient (organisation CNPJ) × year rollup of core_br_recife_despesa:
+      empenho count, empenhado / pago líquido / subvenção totals, number of
+      paying agencies and the principal agency (most empenho rows that year,
+      ties broken alphabetically so the value is stable across builds).
+    columns:
+      - name: recipient_key
+        tests: [not_null]
+      - name: ano
+        tests: [not_null]
+
+  - name: core_br_recife_credor
+    description: |
+      Recipient dimension — one row per organisation CNPJ: most frequent
+      name, latest-year principal agency, Receita Federal registry fields
+      (ode_razao_social, ode_cnae_*, ode_porte …), plain-language summary
+      (ode_resumo) and citizen theme (ode_tema: CNAE-section mapping, else
+      agency-regex mapping, else 'Outros'; ties broken deterministically).
+      Carries no amounts.
+    columns:
+      - name: cnpj
+        tests: [not_null, unique]
+      - name: ode_tema
+        tests: [not_null]
+
   - name: core_br_recife_source_catalog
     description: |
       CKAN provenance dimension — one row per synced Recife resource

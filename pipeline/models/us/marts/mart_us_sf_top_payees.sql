@@ -3,7 +3,7 @@
 --
 -- Sources: core_us_sf_vouchers (8.07M rows → FY × vendor rollup),
 --          core_us_sf_contracts (grant-contract join, FY2018+),
---          stg_us_sf_payee_buckets (manual bucket classification),
+--          int_us_sf_payees (manual bucket classification),
 --          core_us_sf_source_catalog (provenance).
 -- Grain:  fiscal_year × vendor, top 100 payees per FY by vouchers_paid.
 --
@@ -177,7 +177,7 @@ INNER JOIN fy_totals ft USING (fiscal_year)
 LEFT JOIN top_department td USING (fiscal_year, vendor)
 LEFT JOIN objects_top3 o3 USING (fiscal_year, vendor)
 LEFT JOIN grant_funded gf USING (fiscal_year, vendor)
-LEFT JOIN {{ ref('stg_us_sf_payee_buckets') }} pb
+LEFT JOIN {{ ref('int_us_sf_payees') }} pb
     ON pb.vendor = r.vendor
 CROSS JOIN provenance pr
 WHERE r.rank_in_fy <= 100

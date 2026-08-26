@@ -1,7 +1,7 @@
 -- =============================================================================
 -- Mart: SF adopted budget, department × character cells — the fiche altitude
 --
--- Sources: core_us_sf_budget, stg_us_sf_character_glosses (display
+-- Sources: core_us_sf_budget, int_us_sf_characters (display
 --          enrichment), core_us_sf_source_catalog (provenance).
 -- Grain:  fiscal_year × side × department × character (the SF equivalent of
 --         the Paris chapitre/poste fiche altitude — ~460 spending + ~330
@@ -62,7 +62,7 @@ SELECT
     pr.rows_updated_at                      AS source_rows_updated_at,
     'USD'                                   AS unit
 FROM cells c
-LEFT JOIN {{ ref('stg_us_sf_character_glosses') }} g
+LEFT JOIN {{ ref('int_us_sf_characters') }} g
     ON g.side = c.side
    AND g.character_code = c.character_code
 CROSS JOIN provenance pr

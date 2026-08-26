@@ -2,7 +2,7 @@
 -- Mart: SF top nonprofit payees per fiscal year — FY2018+ ONLY
 --
 -- Sources: core_us_sf_vouchers (is_non_profit flag), core_us_sf_contracts
---          (grant join), stg_us_sf_payee_buckets, core_us_sf_source_catalog.
+--          (grant join), int_us_sf_payees, core_us_sf_source_catalog.
 -- Grain:  fiscal_year × vendor, top 30 nonprofit-flagged payees per FY.
 --
 -- FLOOR (measured, docs/us/block-studies/2-payees.md §1.3):
@@ -83,7 +83,7 @@ ranked AS (
             PARTITION BY bv.fiscal_year ORDER BY bv.vouchers_paid_usd DESC
         ) AS rank_in_fy
     FROM by_vendor bv
-    LEFT JOIN {{ ref('stg_us_sf_payee_buckets') }} pb
+    LEFT JOIN {{ ref('int_us_sf_payees') }} pb
         ON pb.vendor = bv.vendor
 ),
 
