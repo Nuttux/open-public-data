@@ -487,12 +487,23 @@ describe("crownYaw", () => {
 
   it("spreads 195,310 crowns over the whole circle", () => {
     const bins = new Array<number>(12).fill(0);
+    /* The range check is ACCUMULATED, not asserted per crown. `crownYaw` runs
+       195,310 times in 2ms; two `expect` calls inside that loop are 390,620
+       pieces of Vitest bookkeeping — 1.5s on this machine and past the 5s
+       limit on a CI runner, which is how this test failed on main and nowhere
+       else. Coverage is unchanged (every value is still range-checked) and the
+       first offending index is kept so a failure still says which one broke. */
+    let outOfRange = 0;
+    let firstBad = -1;
     for (let i = 0; i < 195310; i++) {
       const y = crownYaw(i);
-      expect(y).toBeGreaterThanOrEqual(0);
-      expect(y).toBeLessThan(Math.PI * 2 + EPS);
+      if (!(y >= 0 && y < Math.PI * 2 + EPS)) {
+        outOfRange++;
+        if (firstBad < 0) firstBad = i;
+      }
       bins[Math.min(11, Math.floor((y / (Math.PI * 2)) * 12))]++;
     }
+    expect(outOfRange, `first crown outside [0, 2π): i=${firstBad}`).toBe(0);
     // no bin starved and none hogging: a flat-ish twelfth each
     for (const n of bins) {
       expect(n).toBeGreaterThan(195310 / 12 / 1.2);
