@@ -622,19 +622,27 @@ function ScrubNote({
     caveatMark = "gap";
     caveat = t("us.sf.thecity.scrub.no_volume").replace("{year}", String(iy));
   } else if (year !== undefined && iy > SERIES_LAST_YEAR) {
-    caveatMark = "hatch";
     /* PAST THE SCANNED SERIES: the same sentence the block panel prints under
        its own decade rail, and deliberately the same one rather than a second
-       wording for the same fact. The Board's Journal is scanned to 1999; what
-       comes after it is UNRECORDED here, not empty — the record moves to
-       Legistar, which carries 30,428 Board matters for 2000–2018 in the same
-       form, and placing them on blocks needs the address-extraction pass the
-       Journal got. `block-records.ts` §SERIES_LAST_YEAR owns the year. */
+       wording for the same fact.
+
+       THE HATCH IS GONE FROM THIS BRANCH, and that is the whole change. It
+       meant UNRECORDED, and the comment that stood here said so: that after
+       the bound volumes the record "moves to Legistar" and "placing them on
+       blocks needs the address-extraction pass the Journal got". That pass has
+       been done. The Clerk's own PDFs are swept, placed and published — 2016
+       to 2026, cited to sfbos.org — so these years hold records, and marking
+       them as a gap would be the map describing its own pipeline of a year ago
+       rather than what it now draws.
+
+       What is true here is not absence but a JOIN: the bound volumes were
+       scanned through June 2016, the Clerk's files begin in July 2016, and
+       there is no overlap between them. That is what the caption says now. */
     caveat = tOr(
       t,
       "us.sf.thecity.panel.rail_shelf_end",
-      "The Board's minutes are scanned through {y} — under three different titles, which is why they were once thought to stop in 1999. After 2016 the Clerk still publishes every meeting; no library has bound and paginated them into this series.",
-    ).replace("{y}", String(SERIES_LAST_YEAR));
+      "Two record systems meet here. The Board's bound volumes were scanned through June 2016; from July 2016 the City stopped printing them and posted PDFs instead, and those are cited to the Clerk's own files.",
+    );
   } else if (year !== undefined && iy > rail.lastSwept) {
     caveatMark = "hatch";
     caveat = t("us.sf.thecity.scrub.past_sweep").replace(

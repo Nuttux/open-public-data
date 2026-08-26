@@ -44,12 +44,31 @@ import { WFLG } from "./trees";
  * anything in this record can speak to, and the 1906 burned district
  * (`ff3a-iqhv`) is what the map draws there.
  *
- * The high end is the secured assessor roll's own year, 2025 — the file the
- * fabric's dates come from. It is NOT the year of the last thing that happened
- * in San Francisco and the page must not say it is.
+ * THE HIGH END IS NOT ONE FILE'S YEAR ANY MORE, and the distinction is the
+ * whole reason this comment is long.
+ *
+ * It was 2025: the secured assessor roll's own year, the file every building's
+ * date comes from. Three dated layers now disagree about where the record
+ * stops, and they are all correct about themselves:
+ *
+ *     buildings   2025   the roll, `97yj-54sx`
+ *     decisions   2026   109 of them, the Clerk's own minutes
+ *     trees       2026   `tkzw-k3nq`'s plant dates run 1955-2026
+ *
+ * So the slider ends at 2026, because a year the record can speak to is a year
+ * a reader must be able to reach — and 109 decisions behind a stop the handle
+ * cannot pass are decisions we published and hid.
+ *
+ * WHAT THIS NUMBER MUST NEVER BE TAKEN TO MEAN. It is not the roll's year, and
+ * nothing may print it as though the fabric were surveyed in 2026: the
+ * buildings drawn at 2026 are the 2025 roll's buildings, unchanged, because
+ * that is the last year anything published says what stands. It is not the
+ * year of the last thing that happened in San Francisco either — that was true
+ * of 2025 and stays true of 2026. It is only the last year some dated layer
+ * this map draws can answer for.
  */
 export const SCRUB_MIN = 1906;
-export const SCRUB_MAX = 2025;
+export const SCRUB_MAX = 2026;
 
 /**
  * ── THE UNDATED TREES: THE RULE CHANGED, 2026-08-24, AND HERE IS WHY ──────
