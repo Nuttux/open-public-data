@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T11:44:42.720727",
+  "generated_at": "2026-08-26T00:31:47.954088",
   "datasets": {
     "budget": {
       "dataset": "budget",
@@ -14,7 +14,7 @@
         "2020": {
           "status": "complete",
           "nb_lignes": 3854,
-          "total_montant": 20458615421.70001
+          "total_montant": 20458615421.700005
         },
         "2021": {
           "status": "complete",
@@ -60,7 +60,7 @@
           "status": "incomplete",
           "nb_subventions": 4760,
           "nb_beneficiaires": 4760,
-          "total_montant": 1343546179.4199991
+          "total_montant": 1343546179.4199998
         },
         "2021": {
           "status": "incomplete",

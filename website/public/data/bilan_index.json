@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-23T15:58:28.461611",
+  "generated_at": "2026-08-26T00:30:59.591972",
   "source": "dbt core (core_bilan_comptable)",
   "description": "Bilan comptable de la Ville de Paris - État patrimonial Actif/Passif",
   "availableYears": [

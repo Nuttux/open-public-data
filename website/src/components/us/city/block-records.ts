@@ -450,8 +450,143 @@ const FRAGMENT_CHARS = 40;
  * When nothing in a decade passes, this returns null and the rail prints the
  * count with no quotation. A count is true; garbage is not.
  */
+/**
+ * A PERSON AND WHERE THEY LIVE — the shape a speaker list is made of.
+ *
+ * `Mrs. Nancy Knickerbocker, 2437 Pacific Avenue`. The honorific is optional
+ * because the clerk drops it as often as not (`Jeff Shaw, 1770 Broadway`), and
+ * the address is a number against a capitalised word rather than a gazetteer
+ * of street types — the Journal writes `street`, `Street`, `avenue`, `Ave.`,
+ * `38th Avenue` and `2645-47`, and a list of suffixes would miss the next one.
+ */
+const SPEAKER_PAIR =
+  /(?:(?:Mr|Mrs|Ms|Miss|Dr)\.?\s+)?[A-Z][a-zA-Z'-]+(?:\s+(?:[A-Z]\.|[A-Z][a-zA-Z'-]+)){0,3}\s*[,.]?\s+\d[\d\s-]{0,6}\s*(?:[A-Z][a-zA-Z]+|\d+(?:st|nd|rd|th))/g;
+
+/** the clerk closing a hearing — always the tail of a list of speakers */
+const CLERK_CLOSE = /there\s+being\s+no\s+(?:one|further|other)/i;
+
+/**
+ * THE BOARD'S OWN ITEM STYLE, AND IT IS WHAT SEPARATES THE TWO.
+ *
+ * An item the Board decided opens with the action it took — *Ordering*,
+ * *Authorizing*, *Designating*, *Denying* — optionally after the heading the
+ * volume printed above it. A list of people who came to the microphone opens
+ * with a person, or with the column header of a table (`Claimant Location
+ * Amount`). That is the whole discriminator, and it is why an item that
+ * happens to carry two addresses survives: *"Amending the Planning Code to
+ * designate the Sacred Heart Parish Complex, located at 546-548 Fillmore
+ * Street, 554 Fillmore Street…"* is an ordinance, not a queue.
+ */
+const ITEM_ACTION =
+  /^\s*(?:[^—]{3,60}—\s*)?(?:Amend|Authoriz|Designat|Order|Approv|Grant|Accept|Adopt|Establish|Request|Urg|Direct|Declar|Appropriat|Confirm|Extend|Sett|Calling|Creat|Impos|Prohibit|Rescind|Repeal|Waiv|Provid|Levy|Fix|Chang|Renam|Dedicat|Vacat|Clos|Widen|Improv|Construct|Deny|Refus|Revok|Transferr|Permission|Resolution|Ordinance|Motion|Recommend|Support|Oppos|Condemn|Commend|Initiat)/i;
+
+/**
+ * A LIST OF PEOPLE WHO CAME TO A MEETING IS NOT THE FACE OF A BLOCK.
+ *
+ * Block 5525's 1970s rung read *"Mr. Dennis Kent, 3206 Harrison Street Ms.
+ * Nancy McKay, 133 Shipley Street Mr. Jamie Jamerson There being no one else
+ * present to object…"* — three private people and two home addresses, standing
+ * as what a century did to that block. It is the record's own sentence and not
+ * a data defect; it is simply the wrong line to promote, and it is the one a
+ * stranger screenshots.
+ *
+ * MEASURED over all 256 published shards, by recomputing every decade face:
+ *
+ * ```
+ *                                            faces demoted   of 9,914
+ *   >= 1 name-and-address pair                        302      3.05 %  <- NO
+ *   >= 2 pairs                                        149      1.51 %
+ *   >= 2 pairs AND no opening action verb             138      1.39 %  <- ships
+ * ```
+ *
+ * **The one-pair rule was measured and refused.** One person with an address
+ * is very often the record at its best — *"Oil and Boiler Permits — Alvara
+ * Ramazzotti, 1452 Vallejo street, 1500 gallons capacity."*, *"Laundry Permits
+ * — Mrs. A. Termello, 41 Franklin street."* — and it would have traded 302
+ * faces to fix 138, deleting exactly the texture that makes the rail worth
+ * reading. A queue is TWO OR MORE people juxtaposed; an item is one person
+ * inside a sentence about a decision.
+ *
+ * WHAT THE 138 COST, counted the same way:
+ *
+ * ```
+ *   the rung shows a different, better line          48
+ *   the rung goes blank (nothing else passes)        90      0.91 %
+ * ```
+ *
+ * The 90 are almost entirely claim tables and parking schedules — *"Claimant
+ * Location Amount Maribelle Leavitt 557 Belvedere Street $66.93…"* — so a
+ * blank rung carrying its own count is the better of the two things a reader
+ * can be shown there.
+ *
+ * WHERE THE CATCHES SIT IN TIME, and it is the reason this is worth doing:
+ * 1970s 51, 1980s 32, and eight or fewer in every other decade. The lists name
+ * people who may be alive at addresses they may still live at; the lines this
+ * rule protects name people dead a century.
+ *
+ * **THE ROW IS DEMOTED, NEVER REMOVED.** It stays in its decade, openable, and
+ * still linked to the page of the scan — the same contract `isPrintableLine`
+ * keeps. Whether the modern ones should additionally be held back from display
+ * is an editorial question and not this function's to answer.
+ */
+export function isSpeakerList(raw: string): boolean {
+  const line = raw.trim();
+  if (CLERK_CLOSE.test(line)) return true;
+  return (line.match(SPEAKER_PAIR)?.length ?? 0) >= 2 && !ITEM_ACTION.test(line);
+}
+
+/**
+ * THE CLERK'S VOTE TALLY, WHICH IS ALSO A LIST OF PEOPLE.
+ *
+ * Found by looking at the rail after `isSpeakerList` landed: block 3752's
+ * 1960s rung read *"Supei'visors Casey, Dobbs, Ertola, Ferdon, Halley,
+ * McMahon, Sullivan, Tamaras, Tinney, Zirpoli — 10."* Ten surnames and a
+ * count. `isSpeakerList` cannot see it — these names carry no address — and it
+ * is the same defect wearing different clothes: a roster standing where a
+ * decision should be. These are elected officials rather than private people,
+ * so nothing here is about privacy; it is only about what a decade should say.
+ *
+ * **ANCHORED, AND THAT IS THE WHOLE RULE.** The line has to *be* the tally,
+ * not end with one. MEASURED over all 256 shards, both ways:
+ *
+ * ```
+ *   a tally anywhere in the line          55, and it takes real lines with it:
+ *                                         "…FINALLY PASSED 070177 [Appropriating
+ *                                         $1,344,490 for Geneva Avenue Car Barn
+ *                                         Repairs…" is an appropriation whose
+ *                                         tail happens to be a roll call.
+ *   a tally at the head of the line       55, and every one of them is a tally
+ *                                         and nothing else.                <- ships
+ * ```
+ *
+ * Both catch 55; they are not the same 55. The anchored form is the one that
+ * costs nothing, which is why the unanchored form is not here.
+ *
+ * The `Sup[a-z']{0,3}[ei]'?[rv]{1,2}[ei]?sors?` shape is OCR tolerance, not
+ * cleverness: the scans give `Supervisors`, `Supei'visors` and `Supei-visors`
+ * on the same rung of the same rail.
+ */
+const VOTE_TALLY =
+  /^\s*(?:[^—]{3,60}—\s*)?(?:Ayes?|Noes?|Absent|Excused|Sup[a-z']{0,3}[ei]'?[rv]{1,2}[ei]?sors?)\b[\s:—-]*(?:Sup[a-z']{0,3}[ei]'?[rv]{1,2}[ei]?sors?\b[\s:—-]*)?(?:[A-Z][a-zA-Z'’-]{2,}\s*,\s*){2,}/i;
+
+export function isVoteTally(raw: string): boolean {
+  return VOTE_TALLY.test(raw.trim());
+}
+
+/**
+ * WHAT THE TWO GATES COST TOGETHER, measured over all 256 shards:
+ *
+ * ```
+ *   decade faces before          9,914
+ *   decade faces after           9,785
+ *   a different, better line          64
+ *   the rung goes blank              129     1.30 %
+ * ```
+ */
 function pickHeadline(rows: readonly BlockDecision[]): BlockDecision | null {
-  const withLine = rows.filter((r) => isPrintableLine(r.t));
+  const withLine = rows.filter(
+    (r) => isPrintableLine(r.t) && !isSpeakerList(r.t) && !isVoteTally(r.t),
+  );
   if (withLine.length === 0) return null;
   const reach = withLine.slice(
     0,
@@ -829,18 +964,46 @@ export function isPrintableLine(raw: string): boolean {
  * marker is removed. One genuinely broken row on the rung and the reader is
  * told the scan is damaged, which it is.
  */
-export type RailSilence = "no_line" | "truncated" | "damaged";
+/**
+ * ── AND A FOURTH, WHICH `isSpeakerList` AND `isVoteTally` CREATED ────────
+ *
+ * Those two gates hold back rows that are perfectly legible. A rung whose only
+ * readable line is a queue of speakers or a roll call now has no face, and the
+ * three answers above would all describe it wrongly — `truncated` and
+ * `damaged` both blame the page. Block 3752's 1960s rung caught this the hour
+ * the tally gate landed: one row, unbroken, uncut, and the panel said *"Every
+ * line this decade prints is cut short here."*
+ *
+ * `roster` is the honest fourth: the record is fine, we chose not to put THAT
+ * line at the head of a decade, and the reader is told so and pointed at it.
+ * It is claimed only when at least one row is readable — a rung that is also
+ * damaged keeps the damaged answer, because that is the older and larger fact.
+ */
+export type RailSilence = "no_line" | "truncated" | "damaged" | "roster";
 
 export function railSilence(rows: readonly BlockDecision[]): RailSilence {
   let sawLine = false;
   let sawDamage = false;
+  let sawRoster = false;
+  let sawOther = false;
   for (const r of rows) {
     if (!r.t.trim()) continue;
     sawLine = true;
     if (!isPrintableLine(stripTruncation(r.t))) sawDamage = true;
+    /* `isPrintableLine` is the gate `pickHeadline` runs FIRST, so a row that
+       fails it is not a candidate and cannot be the reason there is no face.
+       Among the ones that do pass, the question is only whether a gate of
+       OURS held every one of them back. Note a row cut by our own `…` can
+       still pass this — one broken token in thirteen is inside the junk share
+       — which is exactly why `sawOther` is counted rather than assumed. */
+    if (!isPrintableLine(r.t)) continue;
+    if (isSpeakerList(r.t) || isVoteTally(r.t)) sawRoster = true;
+    else sawOther = true;
   }
   if (!sawLine) return "no_line";
-  return sawDamage ? "damaged" : "truncated";
+  if (sawDamage) return "damaged";
+  if (sawRoster && !sawOther) return "roster";
+  return "truncated";
 }
 
 /**

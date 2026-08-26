@@ -30,7 +30,7 @@
  */
 
 import type { Chunk } from "./data";
-import { type Frame, TerrainField } from "./terrain";
+import { type Frame, TerrainField, LOOK } from "./terrain";
 
 // ── the projection constant ─────────────────────────────────────────────────
 
@@ -711,7 +711,22 @@ export function drawCentrelines(
         drawn++;
       }
     }
-    if (any) ctx.stroke();
+    if (any) {
+      /* ── THE ARTERIAL BED — `LOOK.artbed` ─────────────────────────────
+         Rank 0 and 1 are the streets a reader finds the city by, and they
+         were one hairline like every alley. The same path is stroked once
+         more, pale and three times wider, UNDER the ink — the boulevard's
+         own bed on the paper. One extra stroke per class per raster. */
+      if (LOOK.artbed && cls <= 1) {
+        const ink: string | CanvasGradient | CanvasPattern = ctx.strokeStyle, lw = ctx.lineWidth;
+        ctx.strokeStyle = "rgba(252,248,238,0.62)";
+        ctx.lineWidth = lw * (cls === 0 ? 3.6 : 2.8);
+        ctx.stroke();
+        ctx.strokeStyle = ink;
+        ctx.lineWidth = lw;
+      }
+      ctx.stroke();
+    }
   }
 
   /* ── the streets no block implies ─────────────────────────────────────

@@ -19,6 +19,7 @@ __pycache__/
 target/
 dbt_packages/
 logs/
+.user.yml
 
 # Local export output (rendered marts -> JSON)
 exports/

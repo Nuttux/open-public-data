@@ -79,6 +79,10 @@ import {
   drawSubjectRing,
   familyColour,
   projectDeck,
+  CUT,
+  drawCinematic,
+  drawCutDissolve,
+  type GlassFx,
 } from "./film-draw";
 import type { Plane } from "@/lib/city/projection";
 
@@ -348,6 +352,10 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
   const cardRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLElement>(null);
   const shownRef = useRef<FilmState | null>(null);
+  /* the previous FRAME's state — every frame, not only the discrete changes
+     `shownRef` keeps — so a hard cut can be read as a camera that jumped */
+  const prevSRef = useRef<FilmState | null>(null);
+  const fxRef = useRef<GlassFx>({ snap: null, t0: 0 });
   /* AND THE TRAP UNDERNEATH THIS, WHICH IS WHY THE VALUES LIVE IN A REF.
      The first version of this kept `style={{width: state.progress*100+'%'}}` in
      the JSX and wrote the node imperatively as well. That is a race with two
@@ -579,6 +587,25 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
             )
           : null;
 
+      /* ── THE CUT, READ OFF THE CAMERA ────────────────────────────────
+         A hard cut is a camera that is somewhere else this frame with no
+         travel between: a jump of more than 40 css px or 5 % of scale on a
+         frame that is not a move. The glass is copied BEFORE `driveFilm`
+         moves the camera, so the copy is the outgoing shot's last frame, and
+         `drawCutDissolve` lets go of it on the glass. A seek is the same
+         gesture and gets the same dissolve. Off under reduced motion. */
+      const ps = prevSRef.current;
+      if (ps && !red && CUT.ms > 0 && s.seg.k !== "move") {
+        const jump = Math.hypot(s.cx - ps.cx, s.cy - ps.cy) * s.scale;
+        const zr = Math.abs(Math.log(s.scale / ps.scale));
+        if (jump > 40 || zr > 0.05) {
+          fxRef.current.snap = renderer.snapshotGlass();
+          fxRef.current.t0 = -1; // the clock starts on the first painted frame
+          CUT.snaps++;
+        }
+      }
+      prevSRef.current = s;
+
       const hide = s.hide.length ? new Set(s.hide) : null;
       renderer.driveFilm({
         cx: s.cx, cy: s.cy, scale: s.scale, step: s.step,
@@ -586,9 +613,13 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
         underlay: ablate("accepted")
           ? null
           : (f) => drawAccepted(f, live.streets, s, live.frames.base),
-        overlay: ablate("subjects")
-          ? null
-          : (g, W, H) => paintOverlay(g, W, H, renderer, live, s),
+        overlay: (g, W, H) => {
+          if (!ablate("subjects")) paintOverlay(g, W, H, renderer, live, s);
+          /* the print's own falloff and its key light, then the outgoing
+             frame over all of it while a cut is still letting go */
+          drawCinematic(g, W, H, 1, 1);
+          drawCutDissolve(g, W, H, fxRef.current, performance.now());
+        },
       });
       /* THE TWO CONTINUOUS VALUES, WRITTEN ONTO THEIR NODES. Neither is text
          and neither changes layout: one is a width on the hairline, one is an
@@ -635,6 +666,8 @@ export function useCityFilm(renderer: CityRenderer | null): CityFilmApi {
     biasRef.current = 0;
     /* the first frame of a run always renders: nothing is on screen to compare to */
     shownRef.current = null;
+    prevSRef.current = null;
+    fxRef.current.snap = null;
     setExitYear(null);
     /* the film is full-bleed: no ledger is painted over the stage, so the fit
        and the pan clamp are told the strip IS the canvas */
@@ -1068,7 +1101,10 @@ html[data-city-film] .fx-city-stage{height:100vh;min-height:0;border:0}
    about to look at. At .78 the 1906 city is legible under the words. */
 .fx-film-card{position:absolute;inset:0;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;gap:14px;
-  background:rgba(250,250,247,.78)}
+  background:radial-gradient(ellipse at 50% 45%,rgba(250,248,242,.82) 0%,
+    rgba(250,248,242,.58) 38%,rgba(236,230,216,.30) 100%);
+  box-shadow:inset 0 0 220px rgba(52,38,22,.26)}
+.fx-film-card h2,.fx-film-card p{text-shadow:0 0 18px rgba(250,248,242,.9),0 0 6px rgba(250,248,242,.9)}
 .fx-film-card h2{margin:0;font-family:var(--f-disp,Georgia,serif);font-weight:700;
   font-size:clamp(28px,3.4vw,46px);letter-spacing:-.03em;max-width:22ch}
 .fx-film-card p{margin:0;font-size:15.5px;color:#5a5348;max-width:56ch;line-height:1.5}

@@ -5210,3 +5210,101 @@ state hides the scan.
 ```
 
 The 3.7 % that is left is shot 4's `say`, which is there on purpose.
+
+---
+
+## The glass, the light and the cut — 2026-08-26
+
+Daniel: *"help me make the visualization as striking as possible, keeping in
+line with the current artistic direction but making it feel way more
+detailed, modern, deep."* Four passes, none of which touches a date, a
+framing, a line of copy or a published field. Each is a treatment a projected
+print has and a map tile does not, and each is declared as such at its call.
+
+| pass | where | what it claims |
+|---|---|---|
+| ambient occlusion under the city | `buildings.ts` §AO, `scene.ts` `paintAO` | nothing — `AO_ALPHA` 0 → 1.0, the reference's own value, **gated off at whole city** (`aoK`, 0 at z 1.2 → 1 at z 2.0). Flat-on at z 1 the massing tier's 5,404 rings blurred into one dark rim round the peninsula (`shots/after-preset-0.png`); gated, the district and street frames sit on the ground and the opening frame is unchanged. |
+| the wave tooth | `water.ts` `drawWaves`, `LOOK.waves` | nothing — a declared treatment like the shoal band. One 176 px tile of ~26 short strokes, light over dark, painted **over the published depth and under the haze and the land**, so the far field fades it as it fades the colour under it and the land covers it. Scaled by √z, capped at 2.6, so the street camera never sees a wave the width of a building. |
+| the fire's light | `film-draw.ts` `drawFireLosses` | nothing — a flame lights the ground it stands on. A flattened ground glow per flame, one frame-wide warm wash centred on the burning structures' life-weighted mean (so it rises with the fire and is gone when shot 2 opens), and seven embers per flame that rise and fade while it burns. The smoke stays deleted (§THERE IS NO SMOKE); the disc stays deleted (§AND THERE IS NO EMBER EITHER) — these are lifted off a burning flame, not left where a building was. |
+| the glass | `film-draw.ts` `drawCinematic`, `drawCutDissolve`; `CityFilm.tsx` | nothing — the print's own falloff. A warm vignette (≤ 0.26 ink at the very corner), a key-light wash from the upper right — **the corner every wall on the map is lit from**, so the picture and its light agree — and the cut dissolve. |
+
+### The cut dissolve, and why its clock is not the cut
+
+The film's grammar is cuts and holds and that is unchanged: the incoming camera
+stands on its frame from the first millisecond and the line is already the new
+line. What dissolves is the **picture**. `CityFilm` reads a hard cut off the
+camera — a jump of more than 40 css px or 5 % of scale on a frame that is not a
+`move` — copies the glass with `renderer.snapshotGlass()` **before**
+`driveFilm` moves the camera, and `drawCutDissolve` lets go of that copy over
+`CUT_MS` = 520 ms. A seek is the same gesture and gets the same dissolve; under
+reduced motion there is none; `CUT_MS = 0` turns it off.
+
+**The clock starts on the first painted incoming frame, not at the cut.** The
+first version started it at the cut, and a burst of six screenshots across a
+seek showed no fade in any of them: the new shot's raster blocks the thread for
+most of a second, so the clock had run out before the frame it was dissolving
+TO ever appeared. `GlassFx.t0` is −1 until the overlay first runs on the new
+frame. The consequence is the better one anyway — the outgoing frame is held
+whole while the raster builds, which is also what hides the stretched blit of
+the old buffer that a cut used to show.
+
+### What was checked by looking
+
+1440 × 900 against the dev server, before and after, every preset and eight
+stills of the film through `__cityFilm.seek()/still()`; a burst across the
+shot 0 → 1 match cut (same camera — correctly no dissolve) and across shot
+2 → 3 (a travel — correctly no dissolve). Corner pixels read ~20 levels darker
+after the vignette; the wave tooth reads at the whole-city bay crop and not at
+street.
+
+### Left open
+
+- the published bathymetry's deep-water polygon has spiky raster edges on the
+  1915 bay frame — that is the depth ramp's quantile step over 110 m nodes and
+  it was not touched;
+- the surround's Marin coast is a raster staircase at z ≈ 1.1 (the Golden Gate
+  shot);
+- the vignette and the key light are the film's; the explorer is untouched.
+
+### The night of 2026-08-26 — every dial, and what each one was measured to do
+
+Daniel: *"i want to wake up to something way more beautiful and stunning than
+what we started with … keep the same rigour."* The A/B method for all of it:
+each treatment is a dial on `LOOK` (or `WA`) so before/after is the same page
+and the same caches, toggled at runtime and re-rasterised; timings are one
+forced rasterisation, min of three, paired; hold cost is rAF over 2.5 s after
+the raster count has been stable for 2.5 s. Pairs are in
+`~/Desktop/sf-city-ab/`, the harness in the session scratchpad
+(`ab-harness.mjs`).
+
+| dial | what | verdict | cost |
+|---|---|---|---|
+| `roofval` | roofs pulled 45 % to their own grey, 18 % to paper, lifted 16 % | roofs read as lit top faces | 0 (colour table) |
+| `facek` | wall sun/sky split 0.50–1.04 instead of 0.66–0.96 | walls model | 0 |
+| `relief2` | hillshade swing 0.60–1.26 instead of 0.86–1.06 | hills have form at whole city | 0 |
+| `shorerim` | pale 4 px rim under the coastline ink | edge reads as an edge | 1 stroke/raster |
+| `ground` | block interiors +0.16 warm over the street | drawn-city grid | ~+90 ms city, +250 ms block per raster |
+| `artbed` | rank 0/1 streets carry a pale bed 3× the ink | boulevards read | ~0 |
+| `cast` | every prism and every massing block throws a shadow the length of its height, cool ink | **the single largest change** — the city stands on the ground | ≈0 measured (same Path2D union as the contact shadow) |
+| `faceZ` 2.4 | openings from the district camera | mid-rise gets its windows earlier | 0 on holds |
+| `storeys` | storey lines from 8 px of wall | towers read as floors | 0 |
+| `glass` (`WA.wtop/wbot` 1.14/0.76) | taller wall gradient | glass towers catch sky | 0 |
+| `roofgrain` | a stipple on roofs ≥ 16 px | a roof is a material | 1 pattern fill per near roof |
+| `skin` | 6+ storey walls carry storey × bay grid; bay = `H / storeys`; glass wash from `faGlassy` | **downtown reads as towers** — every number is the roll's | ≈0 |
+| `tilt` | tilt-shift, five bands, **per rasterisation on the film's settled buffer** | diorama | 0 per frame (on the glass it was 25 fps vs 82 — moved) |
+| `vig` | explorer vignette at 0.55 | the frame has a middle | 1 gradient/frame |
+| `bathsoft` | depth plate blurred 0.8 node at build | rounds the ramp step | 0 |
+| `surrink` | surround coast inked + rimmed | Marin/East Bay have an edge | 2 strokes/raster |
+| `surrfix` | water plates laid back over every raster cell outside a published surround ring, nonzero winding with every ring normalised | **no more staircase** on Marin, Treasure Island, the Embarcadero | 3 cached blits/raster at z < 3.2 |
+| `QF.shore` gate | corridor only from z 3.0 | the open-bay shards on the 1906/1936 frames are gone | saves work at the wide cameras |
+| `WA.hazecap` 0.45 | from 0.62 | far city keeps a fifth more contrast | 0 |
+
+**Three dead ends, recorded so nobody re-walks them.** Ridged roofs for the
+post-1907 city — refused: the LIDAR offset table `roofs.ts` §THE PRE-FIRE CITY
+IS PITCHED measured is flat after 1907 and San Francisco is a flat-roof city;
+`drawHip` stays on its pre-fire population. The overshoot pass with the city's
+own `base/coast` — it is polylines, not rings, and any inside test floods the
+city; the surround's rings already close round the peninsula and are the whole
+test. The tilt-shift on the glass — 30 ms a frame, moved into the raster.
+
+**Hold cost, film, palace hold, everything on:** 97 fps at 0 rasters.

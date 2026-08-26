@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-20T14:02:39.449243",
+  "generated_at": "2026-08-26T00:31:37.151802",
   "source": "dbt marts (mart_subventions_beneficiaires)",
   "note_perimetre": "Tous les bénéficiaires (long tail complet, aucun cap).",
   "years": [
@@ -41,8 +41,8 @@
         },
         {
           "label": "Économie",
-          "montant": 38148911.0,
-          "count": 237
+          "montant": 38013911.0,
+          "count": 235
         },
         {
           "label": "Sport",
@@ -66,8 +66,8 @@
         },
         {
           "label": "Non classifié",
-          "montant": 7146276.0,
-          "count": 5189
+          "montant": 7281276.0,
+          "count": 5191
         },
         {
           "label": "International",
@@ -185,23 +185,23 @@
         },
         {
           "label": "Associations",
-          "montant": 248149066.0,
-          "count": 2581
-        },
-        {
-          "label": "Entreprises",
-          "montant": 192826671.0,
-          "count": 70
+          "montant": 251282841.0,
+          "count": 2583
         },
         {
           "label": "Autres privés",
-          "montant": 115960242.0,
-          "count": 587
+          "montant": 205442770.0,
+          "count": 617
+        },
+        {
+          "label": "Entreprises",
+          "montant": 100213764.0,
+          "count": 39
         },
         {
           "label": "Personnes physiques",
-          "montant": 3371661.0,
-          "count": 6407
+          "montant": 3368265.0,
+          "count": 6406
         }
       ]
     },
@@ -1402,18 +1402,18 @@
         },
         {
           "label": "Entreprises",
-          "montant": 145520402.0,
-          "count": 726
+          "montant": 145644276.0,
+          "count": 751
         },
         {
           "label": "Autres",
-          "montant": 90964664.0,
-          "count": 1088
+          "montant": 90997264.0,
+          "count": 1089
         },
         {
           "label": "Personnes physiques",
-          "montant": 1061726.0,
-          "count": 1158
+          "montant": 905252.0,
+          "count": 1132
         }
       ]
     }

@@ -77,7 +77,35 @@ export const LOOK = {
   grain: 1, // paper tooth
   depthfix: 1, // aerial perspective applied to the FAR city, not the near
   shore: 1, // the coastline is the published line, not the DEM's staircase
+  waves: 1, // the water carries a hand-drawn wave tooth, under the haze
+  /* ── BLOCK 1, 2026-08-26 — value and light. Each is a runtime dial so an
+     A/B is the same page, the same caches, toggled: `__cityLOOK.x = 0/1`,
+     then `invalidateBands()` + `invalidate()`. */
+  roofval: 1, // roofs muted and lifted: a top face in daylight, not tar
+  facek: 1, // wider sun/sky split on the walls
+  relief2: 1, // the hillshade swing doubled, city DEM and surround alike
+  shorerim: 1, // a pale rim under the coastline ink
+  /* ── BLOCK 2 — ground structure ── */
+  ground: 1, // the block interior one value warmer than the street
+  artbed: 1, // arterials carry a pale bed under their ink
+  /* ── BLOCK 3 — light ── */
+  cast: 1, // every prism throws a shadow the length of its own height
+  /* ── BLOCK 4 — the buildings themselves ── */
+  faceZ: 2.4, // the zoom the facade openings open at (shipped 4.0)
+  storeys: 1, // storey lines from 8 px of wall, not 14
+  roofgrain: 1, // a material stipple on every roof wide enough to carry one
+  skin: 1, // tall walls carry their storey and bay grid, from the roll's own columns
+  /* ── BLOCK 5 — the glass ── */
+  tilt: 1, // the film's settled frame is a diorama: soft at the top and foot of the frame
+  vig: 1, // the explorer keeps a light vignette so the frame has a middle
+  bathsoft: 1, // the depth plate's quantile step is rounded once, at build, by less than a node
+  surrink: 1, // the surround's published coast gets the same rim and ink the city's does
+  surrfix: 1, // the water is laid back over every raster cell that overshoots a published coast
 };
+
+/** the hillshade swing: `k = RELIEF_LO + RELIEF_SPAN * lam` */
+export const reliefK = (lam: number): number =>
+  LOOK.relief2 ? 0.60 + 0.66 * lam : 0.86 + 0.2 * lam;
 
 /** `QF` in the mock — the quality-fix switches, each naming a bug that was fixed. */
 export const QF = {
@@ -111,8 +139,8 @@ export const WA = {
   minpx: 2.4, // css px: the MOTION floor. Settled, see RS.minpxDev.
   kmax: 64,
   wallpx: 11, // css px of wall height above which the wall carries its grade
-  wtop: 1.055, // the wall at the top, as a value of its own colour
-  wbot: 0.855, // ...and at the bottom, where the street is
+  wtop: 1.14, // the wall at the top, as a value of its own colour (1.055 before Block 4's glass dial)
+  wbot: 0.76, // ...and at the bottom, where the street is (0.855 before)
   iq: "low" as ImageSmoothingQuality, // bilinear. "high" is a multi-pass resample and this is an UPSCALE
   gq: 3, // css px the wall gradient's ends quantise to, for the cache key
   /* css px the CELL ramp's ends quantise to. Not `gq`: at DPR 1 the surround
@@ -141,7 +169,7 @@ export const WA = {
    * 177.4,193.3,207.2. The distance was being under-painted by a fifth of the
    * whole fade over everything more than 3.4 km from downtown.
    */
-  hazecap: 0.62,
+  hazecap: 0.45, // 0.62 until 2026-08-26; the far city kept a fifth more of its contrast on the A/B and the argument for 0.62 was a match to the mock, not to the eye
 };
 
 /**
@@ -534,7 +562,7 @@ export function terrainColor(
   }
   let base = WTBL[((park ? WTQ : 0) + ti) * WCQ + ci];
   if (burnT > 0) base = lerpHex(base, "#d6cfc3", burnT);
-  return skylit(base, 0.86 + 0.2 * lam, tiltOf(lam));
+  return skylit(base, reliefK(lam), tiltOf(lam));
 }
 
 const sc3 = new Float64Array(3);
@@ -593,7 +621,7 @@ export function terrainRGB(
     G += (BRN[1] - G) * burnT;
     B += (BRN[2] - B) * burnT;
   }
-  return skylitN(R, G, B, 0.86 + 0.2 * lam, tiltOf(lam), o);
+  return skylitN(R, G, B, reliefK(lam), tiltOf(lam), o);
 }
 
 // ── the DEM ─────────────────────────────────────────────────────────────────
@@ -2004,7 +2032,7 @@ function dialsKey(moving: boolean, dpr: number): string {
   return (
     `${t.tgt}|${t.kmax}|${t.minpx}|${WA.smooth}|${WA.ramp}|${WA.rampq}|` +
     `${WA.hazecap}|${QWARM}|${LOOK.grain}|${LOOK.aerial}|${LOOK.palette}|` +
-    `${QF.warm}|${QF.relief}|${QF.xlam}|${QF.coast}|${WFLG.tint}`
+    `${QF.warm}|${QF.relief}|${QF.xlam}|${QF.coast}|${WFLG.tint}|${LOOK.relief2}`
   );
 }
 
@@ -2844,7 +2872,7 @@ function rasteriseSurround(
      * is the CITY's swing — one number for both rasters rather than two.
      */
     const lamK =
-      (QF.relief ? 0.86 + 0.2 * lam : 0.9 + 0.15 * lam) * (QF.xlam ? XBASE_K : 1);
+      (QF.relief ? reliefK(lam) : 0.9 + 0.15 * lam) * (QF.xlam ? XBASE_K : 1);
     skylitN(R0, G0, B0, lamK, tiltOf(lam), sc3);
     const hz = t.hazeAt(g.mx[i], g.my[j]);
     NR[k] = sc3[0] + (hzR - sc3[0]) * hz;
@@ -2974,7 +3002,7 @@ export function wallGrad(
   const q = WA.gq || 3,
     a = Math.round(y0 / q) * q,
     b = Math.round(y1 / q) * q;
-  const k = a + "|" + b + "|" + c;
+  const k = a + "|" + b + "|" + c + "|" + WA.wtop;
   let gr = m.get(k);
   if (gr === undefined) {
     gr = g.createLinearGradient(0, a, 0, b === a ? a + 1 : b);

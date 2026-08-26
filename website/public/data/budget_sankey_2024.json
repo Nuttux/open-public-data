@@ -9,9 +9,9 @@
     "arrondissements": false
   },
   "totals": {
-    "recettes": 11526790953.859999,
+    "recettes": 11526790953.86,
     "depenses": 11494727617.75,
-    "solde": 32063336.109998703
+    "solde": 32063336.11000061
   },
   "nodes": [
     {
@@ -87,7 +87,7 @@
     {
       "source": "Services Publics",
       "target": "Budget Paris",
-      "value": 2840894891.0099998
+      "value": 2840894891.01
     },
     {
       "source": "Impôts & Taxes",
@@ -137,7 +137,7 @@
     {
       "source": "Budget Paris",
       "target": "Économie",
-      "value": 251110209.9000001
+      "value": 251110209.90000007
     },
     {
       "source": "Budget Paris",
@@ -147,7 +147,7 @@
     {
       "source": "Budget Paris",
       "target": "Transports",
-      "value": 961914460.69
+      "value": 961914460.6900002
     },
     {
       "source": "Budget Paris",
@@ -539,7 +539,7 @@
         },
         {
           "name": "Invest. Culture: Etat et établissement nationaux",
-          "value": 3978822.5100000002
+          "value": 3978822.51
         },
         {
           "name": "Invest. Social: Subventions (actifs non amortissables) - Autres",
@@ -4187,7 +4187,7 @@
   "bySection": {
     "Action Sociale": {
       "Fonctionnement": {
-        "total": 2578387749.0100017,
+        "total": 2578387749.010002,
         "items": [
           {
             "name": "Action Sociale: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
@@ -4484,7 +4484,7 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 301384691.71000004,
+        "total": 301384691.71,
         "items": [
           {
             "name": "Aménagement: Rémunération du personnel titulaire",
@@ -4938,7 +4938,7 @@
         ]
       },
       "Investissement": {
-        "total": 202684114.16999996,
+        "total": 202684114.17,
         "items": [
           {
             "name": "Invest. Culture: Restauration des collections et œuvres d'art",
@@ -5241,7 +5241,7 @@
         ]
       },
       "Investissement": {
-        "total": 100430796.97,
+        "total": 100430796.97000001,
         "items": [
           {
             "name": "Invest. Éducation: Constructions",
@@ -5695,7 +5695,7 @@
         ]
       },
       "Investissement": {
-        "total": 15952850.89,
+        "total": 15952850.889999999,
         "items": [
           {
             "name": "Invest. Économie: Subventions d'investissement",
@@ -6142,7 +6142,7 @@
     },
     "Transports": {
       "Fonctionnement": {
-        "total": 726805650.72,
+        "total": 726805650.7200001,
         "items": [
           {
             "name": "Transports: Autres contributions obligatoires",

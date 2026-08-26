@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T17:20:41.040273",
+  "generated_at": "2026-08-26T00:30:53.954967",
   "source": "dbt mart (mart_budget_nature)",
   "description": "Répartition du budget par nature de dépense avec drill-down par thématique",
   "availableYears": [

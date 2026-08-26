@@ -1164,7 +1164,7 @@ function DecadeRow({
           </span>
           <span className="fx-block-n tnum">{n}</span>
         </span>
-        {/* NO LINE, AND THE THREE REASONS ARE NOT THE SAME SENTENCE.
+        {/* NO LINE, AND THE FOUR REASONS ARE NOT THE SAME SENTENCE.
             `no_line` — "the volume prints no line for this entry" — was
             printed for both, and it became false the moment `pickHeadline`
             started gating unreadable scans: the volume DOES print a line
@@ -1177,7 +1177,12 @@ function DecadeRow({
             comment carries the measurement and the repair that was refused.
             The rows are all still inside the decade, openable, each linked to
             its own page, which is why offering to open them is the honest
-            close in all three cases. */}
+            close in all four cases.
+
+            The fourth, `roster`, is ours and not the record's: the rows are
+            legible and we held them back — a queue of speakers, or a roll
+            call — so the sentence says that rather than blaming the page.
+            See `railSilence`. */}
         <span className="fx-block-line">
           {group.headline ? (
             stripFileNumber(group.headline.t)
@@ -1192,6 +1197,12 @@ function DecadeRow({
               t,
               "us.sf.thecity.panel.rail_truncated",
               "Every line this decade prints is cut short here — open it to read the entries on their scanned pages.",
+            )
+          ) : silence === "roster" ? (
+            tOr(
+              t,
+              "us.sf.thecity.panel.rail_roster",
+              "What this decade prints here is a list of names — who spoke, or who voted — so nothing is quoted at the head of it. Open it to read them.",
             )
           ) : (
             t("us.sf.thecity.panel.no_line")

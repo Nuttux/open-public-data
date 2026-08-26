@@ -10259,3 +10259,15 @@ annexes needs a footprint the City does not publish separately — Sanborn or th
 Article 10 parcel outline would have to be brought in and joined, and neither
 is in `build_places.py`'s eleven registers. Until then the honest ceiling is a
 white mass with a colonnade on its western edge, and that is what ships.
+
+## AO ON — 2026-08-26
+
+`AO_ALPHA` 0 → 1.0, the reference's value, gated `aoK = clamp((z − 1.2) / 0.8)`
+in `scene.ts` `paintAO`. Flat-on at whole city the massing tier's 5,404 rings
+blurred into one dark rim round the peninsula; gated it rises across the LOD
+dissolve into the footprint tier. Cost, one forced rasterisation, paired on the
+same page (AO on / off): district 1293 / 160 ms cold, block 1330 / 1325 ms
+warm, street 173 / 177 ms — the cold district number is the cache state, not
+the pass. The pass is one blurred Path2D at half resolution per rasterisation
+and nothing per frame. Pairs: `~/Desktop/sf-city-ab/pair-district.png`,
+`pair-street.png`.

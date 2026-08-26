@@ -127,7 +127,7 @@
     {
       "source": "Budget Paris",
       "target": "Éducation",
-      "value": 849575984.1700006
+      "value": 849575984.1700003
     },
     {
       "source": "Budget Paris",
@@ -226,7 +226,7 @@
         },
         {
           "name": "Services Généraux: Autres produits divers de gestion courante-Autres",
-          "value": 40279552.1
+          "value": 40279552.10000001
         },
         {
           "name": "Éducation: Sécurité sociale et organismes mutualistes",
@@ -242,7 +242,7 @@
         },
         {
           "name": "Aménagement: Autres produits divers de gestion courante-Autres",
-          "value": 24559481.779999997
+          "value": 24559481.78
         },
         {
           "name": "Culture & Sport: Redevances et droits des services périscolaires et d’enseignement",
@@ -286,7 +286,7 @@
         },
         {
           "name": "Action Sociale: Autres (Participations État)",
-          "value": 11825689.26
+          "value": 11825689.260000002
         },
         {
           "name": "Culture & Sport: Redevances et droits des services à caractère culturel",
@@ -318,7 +318,7 @@
         },
         {
           "name": "Culture & Sport: Sécurité sociale et organismes mutualistes",
-          "value": 6791783.0
+          "value": 6791782.999999999
         },
         {
           "name": "Action Sociale: Recouvrements sur autres redevables",
@@ -326,7 +326,7 @@
         },
         {
           "name": "Éducation: Remboursements de frais - par des tiers",
-          "value": 6306247.899999999
+          "value": 6306247.9
         },
         {
           "name": "Transports: Autres droits de stationnement et de location",
@@ -394,7 +394,7 @@
         },
         {
           "name": "Invest. Culture: Etat et établissement nationaux",
-          "value": 4245802.36
+          "value": 4245802.359999999
         },
         {
           "name": "Invest. Aménagement: Subventions (actifs non amortissables) - Autres",
@@ -4348,7 +4348,7 @@
         ]
       },
       "Investissement": {
-        "total": 48556786.71,
+        "total": 48556786.71000001,
         "items": [
           {
             "name": "Invest. Social: Constructions",
@@ -4651,7 +4651,7 @@
         ]
       },
       "Investissement": {
-        "total": 842746447.5499998,
+        "total": 842746447.5499997,
         "items": [
           {
             "name": "Invest. Aménagement: Subventions aux personnes de droit privé - Bâtiments et installations",
@@ -4951,7 +4951,7 @@
         ]
       },
       "Investissement": {
-        "total": 222096151.62000003,
+        "total": 222096151.61999997,
         "items": [
           {
             "name": "Invest. Culture: Constructions",
@@ -5103,7 +5103,7 @@
     },
     "Éducation": {
       "Fonctionnement": {
-        "total": 736344890.8500005,
+        "total": 736344890.8500004,
         "items": [
           {
             "name": "Éducation: Subventions de fonctionnement aux organismes publics - Caisses des écoles",
@@ -5257,7 +5257,7 @@
         ]
       },
       "Investissement": {
-        "total": 113231093.32000001,
+        "total": 113231093.32,
         "items": [
           {
             "name": "Invest. Éducation: Constructions",
@@ -5408,7 +5408,7 @@
     },
     "Personnel & Admin": {
       "Fonctionnement": {
-        "total": 850951809.21,
+        "total": 850951809.2099999,
         "items": [
           {
             "name": "Administration: Dotation de gestion locale versée",
@@ -6014,7 +6014,7 @@
         ]
       },
       "Investissement": {
-        "total": 47361111.96000001,
+        "total": 47361111.96,
         "items": [
           {
             "name": "Invest. Environnement: Constructions",

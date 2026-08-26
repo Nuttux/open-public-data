@@ -63,6 +63,7 @@ import {
   type Frame,
   type SurroundGrid,
   type TerrainProj,
+  LOOK,
 } from "@/lib/city/terrain";
 import {
   bayPlate,
@@ -107,6 +108,12 @@ import {
 } from "@/lib/city/trees";
 import {
   addContactShadow,
+  addCastShadow,
+  roofGrainPattern,
+  ROOFGRAIN_MIN_PX,
+  ROOFGRAIN_ALPHA,
+  castOffset,
+  CAST_FILL,
   AO,
   AO_ALPHA,
   areaRect,
@@ -1927,9 +1934,34 @@ export class CityScene {
 
     // 2 ── the surround, then the city's own ground, both over the plates
     if (L.surround) drawSurround(f, t, band.surround, this.surroundCoast?.rings ?? null);
+    /* ── THE SURROUND'S COAST, INKED — `LOOK.surrink` ──────────────────
+       Marin, the East Bay and the Peninsula are painted as 110 x 139 m
+       cells, and at the wide cameras their shore is a staircase three
+       pixels a step. The published ring (`base/coast`, the surround's own)
+       is already on the wire and already cuts the fill; stroking it with the
+       same pale rim and ink the city's shoreline gets puts a drawn edge over
+       the staircase. Two strokes per rasterisation, whole-city and district
+       only — closer in the surround is off screen. */
+    /* ── THE STAIRCASE, COVERED — `LOOK.surrfix` ─────────────────────
+       The surround's cells are 110 x 139 m and the city's are 53.8 m; both
+       overshoot the published shoreline by up to a cell, and at the wide
+       cameras that is the saw-tooth edge on Marin, the East Bay, Alcatraz
+       and the Bayview piers. The rings are published and already on the
+       wire, so: clip to OUTSIDE every ring — the surround's, then the
+       city's, two evenodd clips whose intersection is open water — and lay
+       the water plates back down. The plates are cached blits, so this is
+       three drawImages per rasterisation, and nothing inside a published
+       coast is touched. Wide cameras only; closer in the ring is the edge. */
     if (L.terrain) {
       const tr = drawTerrain(f, t, 0);
       st.cells = tr.cells;
+    }
+    // AFTER both rasters, so neither can paint its overshoot back over it
+    if (L.terrain && L.water && LOOK.surrfix && z < 3.2 && this.surroundCoast) {
+      this.paintWaterOverStair(f, band);
+    }
+    if (L.surround && LOOK.surrink && this.surroundCoast && z < 3.2) {
+      this.paintSurroundInk(f, t, this.surroundCoast.rings);
     }
 
     /* 3 ── the published shoreline over whatever the raster did. THE SHOAL IS
@@ -1938,6 +1970,9 @@ export class CityScene {
        is the reference's order. Blitting it at this point put it over the
        depth AND over the land. */
     if (L.shore && this.coast.length) drawShoreline(f, t, this.coast);
+
+    // 3a ── the block interiors, one value warmer than the streets
+    if (L.terrain && LOOK.ground) this.paintGround(f, t);
 
     // 3 ── the parks and the published water bodies
     if (L.parks && this.parks.length) drawParkRings(f, t, this.parks);
@@ -2127,6 +2162,24 @@ export class CityScene {
             img.data[o + 3] = 255;
           }
           g.putImageData(img, 0, 0);
+          /* ── THE STEP IN THE RAMP, SOFTENED ONCE — `LOOK.bathsoft` ─────
+             The ramp's quantile stops are one whole step apart and the plate
+             is 110 m nodes, so at the wide cameras the deep channel's edge
+             came out as a saw-tooth polygon across the opening frame. One
+             blur of 0.8 node (~90 m) at build time — smaller than the node
+             itself — rounds the step without moving the field: a pixel is
+             still the mean of the published depths around it. Built once. */
+          if (LOOK.bathsoft && typeof (g as { filter?: string }).filter === "string") {
+            const cp = makeCanvas(XNW, XNH);
+            const cg = cp.getContext("2d") as CanvasRenderingContext2D | null;
+            if (cg) {
+              cg.drawImage(cv as CanvasImageSource, 0, 0);
+              g.clearRect(0, 0, XNW, XNH);
+              g.filter = "blur(0.8px)";
+              g.drawImage(cp as CanvasImageSource, 0, 0);
+              g.filter = "none";
+            }
+          }
           this.depthPlate = cv;
         }
       }
@@ -2363,6 +2416,149 @@ export class CityScene {
    * dissolve covers. The mask is what will be DRAWN, both tiers, which is what
    * the reference's `cityL` holds.
    */
+  /**
+   * THE GROUND HAS A GRID — `LOOK.ground`.
+   *
+   * Between the buildings the ground was the page: a block's interior and
+   * the street outside it were the same cream, and the only thing that said
+   * "block" was the buildings standing on it. The bird's-eye lithographs
+   * this register follows tint the block and leave the street the colour of
+   * the paper, and that one value step is most of why they read as DRAWN.
+   * The published assessor block rings (`base/blocks`), inset by their own
+   * 1.5 m, filled once, warm and translucent, under the parks and the
+   * streets. One Path2D, one fill, at every camera.
+   */
+  private paintWaterOverStair(f: Frame, band: BandCache): void {
+    const { ctx, W, H } = f;
+    const cf = f.proj.coeffs();
+    const sc = f.cam.scale, ccx = f.cam.cx, ccy = f.cam.cy, W2 = W / 2, H2 = H / 2;
+    const zl = 0.4 * f.proj.zex;
+    /* NONZERO, NOT EVENODD, AND THE FRAME IS WOUND AGAINST THE RINGS.
+       The published city shoreline is many rings, some inside others, and
+       an evenodd clip over nested rings flipped and laid the far-field haze
+       over the whole Sunset (shots/sf-city-crop.png). With nonzero, a ring
+       contributes its own winding: the frame rectangle is wound OPPOSITE to
+       the largest ring, so open water sums to ±1 (filled), the inside of a
+       land ring to 0 (left alone), and a hole ring inside land — a lake —
+       back to ±1, which is water and is painted as water later anyway. */
+    /* THE SURROUND'S RINGS ONLY. The city's `base/coast` is the shoreline as
+       polylines — it is not closed round the peninsula, so it has no inside
+       and a winding test over it floods the city (shots/dbg2-pair.png). The
+       surround's rings are closed landmasses and INCLUDE the peninsula, so
+       they are the whole test — adding the city's DEM rectangle on top
+       double-counted the city and flooded it (shots/rv6-pair.png). */
+    const rings = this.surroundCoast?.rings ?? [];
+    if (!rings.length) return;
+    const p = new Path2D();
+    let any = false;
+    const X = new Float64Array(4096), Y = new Float64Array(4096);
+    for (const ring of rings) {
+      const n = Math.min(4096, ring.length);
+      if (n < 3) continue;
+      let a2 = 0;
+      for (let k = 0; k < n; k++) {
+        const wx = ring[k][0], wy = ring[k][1];
+        X[k] = (cf.ax * wx + cf.ay * wy - ccx) * sc + W2;
+        Y[k] = H2 - (cf.bx * wx + cf.by * wy + zl - ccy) * sc;
+      }
+      for (let k = 0; k < n; k++) {
+        const k1 = (k + 1) % n;
+        a2 += X[k] * Y[k1] - X[k1] * Y[k];
+      }
+      /* EVERY RING IS WOUND POSITIVE HERE, whatever the file wound it. The
+         surround's rings and the city's do not agree on a direction, and
+         reading the direction off the largest one flooded the city
+         (shots/rv4-city.png). So each ring is normalised to +1 and the frame
+         is wound −1: open water sums to −1 and is painted, the inside of any
+         ring to 0 and is left. A lake ring inside land comes to +1 and is
+         painted as water, which `drawWaterBodies` does again afterwards. */
+      if (a2 >= 0) { p.moveTo(X[0], Y[0]); for (let k = 1; k < n; k++) p.lineTo(X[k], Y[k]); }
+      else { p.moveTo(X[n - 1], Y[n - 1]); for (let k = n - 2; k >= 0; k--) p.lineTo(X[k], Y[k]); }
+      p.closePath();
+      any = true;
+    }
+    if (!any) return;
+    // the frame, wound negative (screen y is down, so this is the −1 sense)
+    const x0 = -4, y0 = -4, x1 = W + 4, y1 = H + 4;
+    p.moveTo(x0, y0); p.lineTo(x0, y1); p.lineTo(x1, y1); p.lineTo(x1, y0);
+    p.closePath();
+    ctx.save();
+    ctx.clip(p, "nonzero");
+    this.paintWaterBed(f, band);
+    ctx.restore();
+  }
+
+  private paintSurroundInk(
+    f: Frame,
+    t: TerrainField,
+    rings: readonly (readonly (readonly [number, number])[])[],
+  ): void {
+    const { ctx, W, H } = f;
+    const cf = f.proj.coeffs();
+    const sc = f.cam.scale, ccx = f.cam.cx, ccy = f.cam.cy, W2 = W / 2, H2 = H / 2;
+    const zl = 0.4 * f.proj.zex;
+    const N = t.N;
+    ctx.save();
+    ctx.beginPath();
+    let any = false;
+    for (const ring of rings) {
+      let pen = false;
+      for (let k = 0; k < ring.length; k++) {
+        const wx = ring[k][0], wy = ring[k][1];
+        // inside the city's own DEM the city shoreline already draws this edge
+        const g = t.toGrid(wx, wy);
+        if (g[0] >= 1 && g[1] >= 1 && g[0] < N - 1 && g[1] < N - 1) { pen = false; continue; }
+        const X = (cf.ax * wx + cf.ay * wy - ccx) * sc + W2;
+        const Y = H2 - (cf.bx * wx + cf.by * wy + zl - ccy) * sc;
+        if (X < -200 || X > W + 200 || Y < -200 || Y > H + 200) { pen = false; continue; }
+        if (pen) ctx.lineTo(X, Y); else ctx.moveTo(X, Y);
+        pen = true;
+        any = true;
+      }
+    }
+    if (any) {
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = "rgba(255,252,242,.7)";
+      ctx.lineWidth = 3.5;
+      ctx.stroke();
+      ctx.strokeStyle = "rgba(10,10,10,.34)";
+      ctx.lineWidth = 1.0;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  private paintGround(f: Frame, t: TerrainField): void {
+    const bl = this.blocks;
+    if (!bl) return;
+    const { ctx, W, H } = f;
+    const cf = f.proj.coeffs();
+    const sc = f.cam.scale, ccx = f.cam.cx, ccy = f.cam.cy, W2 = W / 2, H2 = H / 2;
+    const p = new Path2D();
+    let any = false;
+    for (let b = 0; b < bl.n; b++) {
+      const cxs = (cf.ax * bl.cx[b] + cf.ay * bl.cy[b] - ccx) * sc + W2;
+      if (cxs < -400 || cxs > W + 400) continue;
+      const r = blockRing(bl, b, BLOCK_INSET_M);
+      if (r.length < 3) continue;
+      const zg = t.elevM(bl.cx[b], bl.cy[b]) * f.proj.zex;
+      for (let k = 0; k < r.length; k++) {
+        const px = cf.ax * r[k][0] + cf.ay * r[k][1];
+        const py = cf.bx * r[k][0] + cf.by * r[k][1] + zg;
+        const X = (px - ccx) * sc + W2;
+        const Y = H2 - (py - ccy) * sc;
+        if (k) p.lineTo(X, Y); else p.moveTo(X, Y);
+      }
+      p.closePath();
+      any = true;
+    }
+    if (!any) return;
+    ctx.save();
+    ctx.fillStyle = "rgba(118,92,54,0.16)";
+    ctx.fill(p);
+    ctx.restore();
+  }
+
   private paintAO(
     f: Frame,
     t: TerrainField,
@@ -2373,6 +2569,16 @@ export class CityScene {
     year: number | undefined,
   ): void {
     if (AO_ALPHA <= 0.001) return;
+    /* ── AND NOT AT THE WHOLE-CITY CAMERA, MEASURED ─────────────────────
+       Turned on flat, the pass at z = 1 blurs the massing tier's 5,404 block
+       rings into one dark rim around the whole peninsula — a cut-out
+       hovering over the bay, on the page's opening frame (shots/after-
+       preset-0.png, 2026-08-26). The reference's `LOOK.ao` is tiered off at
+       its own whole-city zoom for the same reason. So the pass rises across
+       the LOD ladder's dissolve into the footprint tier: 0 at z 1.2, full at
+       z 2.0, which is district and everything closer. */
+    const aoK = Math.max(0, Math.min(1, (z - 1.2) / 0.8));
+    if (aoK <= 0.001) return;
     const { ctx, W, H } = f;
     const ss = AO.SS;
     const bw = Math.max(1, Math.ceil(W * f.dpr * ss));
@@ -2479,7 +2685,7 @@ export class CityScene {
     // and under the city, offset down-left along the key light
     const ox = AO.OX * rr, oy = AO.OY * rr;
     const sa = ctx.globalAlpha;
-    ctx.globalAlpha = sa * AO_ALPHA;
+    ctx.globalAlpha = sa * AO_ALPHA * aoK;
     ctx.drawImage(buf as CanvasImageSource, 0, 0, bw, bh, ox, oy, W, H);
     ctx.globalAlpha = sa;
   }
@@ -2509,6 +2715,52 @@ export class CityScene {
     const wallIdx = this.blockWallIdx(bl);
     const alpha = 1 - wB;
     if (alpha <= 0.004) return 0;
+    /* ── THE MASSING THROWS A SHADOW TOO — `LOOK.cast` ───────────────
+       The footprint tier's cast shadow (`addCastShadow`) stops where the
+       footprints stop, at the LOD dissolve, and the whole-city frame is
+       drawn from the massing tier above it — 5,404 block prisms at their
+       own published height with no shadow at all, which is why downtown
+       read as a flat smear on the page's opening frame. Same throw, same
+       ink, same one-fill union, at the block ring: one Path2D per
+       rasterisation, faded with the tier's own `alpha`. */
+    if (LOOK.cast) {
+      const row = this.massRow;
+      const { ctx, W, H } = f;
+      const cf = f.proj.coeffs();
+      const sc = f.cam.scale, ccx = f.cam.cx, ccy = f.cam.cy, W2 = W / 2, H2 = H / 2;
+      const kh = f.proj.zexb * sc;
+      const p = new Path2D();
+      let any = false;
+      const bx = new Float64Array(64), by = new Float64Array(64);
+      for (let b = 0; b < bl.n; b++) {
+        if (row.cov[b] <= 0) continue;
+        const hM = row.hgt[b];
+        const hPx = hM * kh;
+        if (hPx < 1.2) continue;
+        const cxs = (cf.ax * bl.cx[b] + cf.ay * bl.cy[b] - ccx) * sc + W2;
+        if (cxs < -300 || cxs > W + 300) continue;
+        const r = blockRing(bl, b, BLOCK_INSET_M);
+        const n = Math.min(64, r.length);
+        if (n < 3) continue;
+        const zg = t.elevM(bl.cx[b], bl.cy[b]) * f.proj.zex;
+        for (let k = 0; k < n; k++) {
+          const px = cf.ax * r[k][0] + cf.ay * r[k][1];
+          const py = cf.bx * r[k][0] + cf.by * r[k][1] + zg;
+          bx[k] = (px - ccx) * sc + W2;
+          by[k] = H2 - (py - ccy) * sc;
+        }
+        const [cox, coy] = castOffset(hPx);
+        addCastShadow(p, bx, by, n, cox, coy);
+        any = true;
+      }
+      if (any) {
+        ctx.save();
+        ctx.globalAlpha = ctx.globalAlpha * alpha;
+        ctx.fillStyle = CAST_FILL;
+        ctx.fill(p);
+        ctx.restore();
+      }
+    }
     return drawMassing(
       f, t, bl, this.massRow, this.blockOrder, colours, roofIdx, wallIdx,
       { alpha, fadeAmt: fade },
@@ -2804,7 +3056,7 @@ export class CityScene {
     const cf = f.proj.coeffs();
     /** `LMAX` — `part3.html` L1312, the length of the screen-x gradient */
     const lmax = Math.hypot(cf.ax, cf.ay) || 1;
-    const faceOn = z >= 4.0;
+    const faceOn = z >= (LOOK.faceZ || 4.0);
     const groups = faceOn ? newFaceGroups() : null;
 
     /* ── PASS ONE: WHO IS IN THE FRAME, AND HOW FAR AWAY ──────────────
@@ -3156,9 +3408,14 @@ export class CityScene {
          building's own shadow goes in the same band path: it is the same
          colour, and two translucent fills that cross composite twice. */
       if (hM > 2 && wpx > SHADOW_MIN_PX) {
-        const [sox, soy] = shadowOffset(hM, f.cam.scale);
         if (!shadow) shadow = new Path2D();
-        addContactShadow(shadow, bx, by, n4, sox, soy);
+        if (LOOK.cast && dhPx >= 3) {
+          const [cox, coy] = castOffset(dhPx);
+          addCastShadow(shadow, bx, by, n4, cox, coy);
+        } else {
+          const [sox, soy] = shadowOffset(hM, f.cam.scale);
+          addContactShadow(shadow, bx, by, n4, sox, soy);
+        }
       }
 
       // ── the walls, back to front is not needed: one wall faces the camera
@@ -3268,11 +3525,39 @@ export class CityScene {
            under it. It does nothing in the Sunset, whose median house the roll
            counts as one storey, and the 8.7 % the roll does not count get
            none rather than a guess. */
-        if (near && n4 === nv && wpx >= STOREY_W_PX) {
-          const nst = storeysOf(
-            tb.st[i],
-            tbe.face ? ((tbe.face.fields.st2 as Uint8Array)[i] ?? 0) : 0,
-          );
+        /* ── THE TOWER SKIN — `LOOK.skin` ─────────────────────────────
+           A wall of six storeys or more, tall enough on screen to resolve
+           them, carries its grid: the storey lines it already had, plus a
+           vertical bay every storey-height along the wall. EVERY NUMBER IS
+           THE ROLL'S: the storey count, the measured height (so the module
+           is `H / storeys`, the building's own floor height, and a bay is
+           one module — no invented mullion spacing), the wall's length, and
+           whether it is glass or masonry from the use class and era
+           (`faGlassy`). Glass gets a faint sky wash under the grid, masonry
+           a darker grid. Nothing here is a window: it is the rhythm the
+           published columns imply, drawn as lines, and it stops where the
+           opening system (`emitFace`) starts drawing real openings. */
+        const nstAll = near && n4 === nv
+          ? storeysOf(tb.st[i], tbe.face ? ((tbe.face.fields.st2 as Uint8Array)[i] ?? 0) : 0)
+          : 0;
+        const skin = LOOK.skin && nstAll >= 6 && dhPx >= 24;
+        if (near && n4 === nv && (wpx >= (LOOK.storeys ? 8 : STOREY_W_PX) || skin)) {
+          const nst = nstAll;
+          if (skin) {
+            const eraS = (tb.u[i] & FLAG_NOYEAR) !== 0 ? -1 : faEra(1849 + tb.yr[i]);
+            const tyS = tbe.face ? ((tbe.face.fields.ty as Uint8Array)[i] ?? 0) : 0;
+            if (eraS >= 0 && faGlassy(tyS, eraS)) {
+              ctx.fillStyle = "rgba(140,172,204,0.16)";
+              for (let k = 0; k < nv; k++) {
+                const k1 = (k + 1) % nv;
+                if ((tx[k1] - tx[k]) * sgn <= 0) continue;
+                ctx.beginPath();
+                ctx.moveTo(bx[k], by[k]); ctx.lineTo(bx[k1], by[k1]);
+                ctx.lineTo(tx[k1], ty[k1]); ctx.lineTo(tx[k], ty[k]);
+                ctx.closePath(); ctx.fill();
+              }
+            }
+          }
           if (nst > 1 && drawsStoreyLines(dhPx, nst)) {
             /* ── AND THE LINE IS DARKER THAN THE WALL IT IS ON ───────────
                This was one stroke of `wallF[wallO + 1]` over every visible
@@ -3320,6 +3605,21 @@ export class CityScene {
                 p.moveTo(bx[k], by[k] - fy);
                 p.lineTo(bx[k1], by[k1] - fy);
               }
+              if (skin) {
+                // one bay per storey-height of wall: the building's own module
+                const Lm = Math.hypot(
+                  tb.vxw[oo + k1] - tb.vxw[oo + k], tb.vyw[oo + k1] - tb.vyw[oo + k],
+                );
+                const mod = hFull / nst;
+                const nb = mod > 0 ? Math.max(1, Math.round(Lm / mod)) : 1;
+                if (nb > 1 && (tx[k1] - tx[k]) / nb >= 2.5) {
+                  for (let bq = 1; bq < nb; bq++) {
+                    const tq = bq / nb;
+                    p.moveTo(bx[k] + (bx[k1] - bx[k]) * tq, by[k] + (by[k1] - by[k]) * tq);
+                    p.lineTo(tx[k] + (tx[k1] - tx[k]) * tq, ty[k] + (ty[k1] - ty[k]) * tq);
+                  }
+                }
+              }
             }
             for (let q = 0; q < 4; q++) {
               const p = stLine[q];
@@ -3362,6 +3662,16 @@ export class CityScene {
       ctx.closePath();
       ctx.fillStyle = roofCol;
       ctx.fill();
+      if (LOOK.roofgrain && wpx >= ROOFGRAIN_MIN_PX) {
+        const pat = roofGrainPattern(ctx, f.dpr);
+        if (pat) {
+          const ga = ctx.globalAlpha;
+          ctx.globalAlpha = ga * ROOFGRAIN_ALPHA;
+          ctx.fillStyle = pat;
+          ctx.fill();
+          ctx.globalAlpha = ga;
+        }
+      }
 
       /* THE OUTLINE, RAMPED ON THE BUILDING'S OWN WIDTH. Below `INK_PX0` this
          is the 0.7 px hairline at `EDGE_SHADE` the page has always drawn, so

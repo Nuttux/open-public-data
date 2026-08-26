@@ -124,6 +124,8 @@ export default [
     },
   },
   {
-    ignores: [".next/**", "node_modules/**"],
+    // `.parity/**` is a gitignored scratch workspace (parity probes); it is
+    // absent from CI checkouts, so linting it only produces local-only noise.
+    ignores: [".next/**", "node_modules/**", ".parity/**"],
   },
 ];

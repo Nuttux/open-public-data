@@ -66,7 +66,8 @@ import {
 } from "@/lib/city/camera";
 import { projection, type RebuildReason } from "@/lib/city/projection";
 import type { Frame as SceneFrame } from "@/lib/city/terrain";
-import { HAZE } from "@/lib/city/terrain";
+import { HAZE, LOOK } from "@/lib/city/terrain";
+import { drawCinematic, drawTiltShift } from "./film-draw";
 import type { CityData } from "@/lib/city/data";
 import { CityScene, type SceneStats } from "./scene";
 
@@ -457,6 +458,30 @@ export class CityRenderer {
     return s ? { W: s.plan.W, H: s.plan.H } : null;
   }
 
+  /**
+   * A COPY OF THE GLASS, for the film's cut dissolve. Device pixels, the whole
+   * canvas, taken at the instant the film detects a hard cut and BEFORE
+   * `driveFilm` moves the camera — so what is in it is the last frame of the
+   * outgoing shot. One buffer, reused; it costs one `drawImage` per cut.
+   */
+  snapshotGlass(): HTMLCanvasElement | null {
+    const w = this.canvas.width, h = this.canvas.height;
+    if (w <= 0 || h <= 0) return null;
+    let cv = this.snapCv;
+    if (!cv || cv.width !== w || cv.height !== h) {
+      cv = document.createElement("canvas");
+      cv.width = w;
+      cv.height = h;
+      this.snapCv = cv;
+    }
+    const g = cv.getContext("2d", { alpha: false });
+    if (!g) return null;
+    g.setTransform(1, 0, 0, 1, 0, 0);
+    g.drawImage(this.canvas, 0, 0);
+    return cv;
+  }
+  private snapCv: HTMLCanvasElement | null = null;
+
   /** repaint on the next frame */
   invalidate(): void {
     this.dirty = true;
@@ -766,6 +791,10 @@ export class CityRenderer {
        a label that blinks on when a rasterisation lands is exactly the artefact
        a blit is supposed not to have. */
     if (film?.overlay) film.overlay(g, this.W, this.H);
+    /* the explorer's own light vignette — `LOOK.vig`. Half the film's, so a
+       pan does not read as a dirty screen, enough that the frame has a
+       middle. One gradient fill per frame. */
+    else if (LOOK.vig) drawCinematic(g, this.W, this.H, 0.55, 0.6);
     this.paintedStep = step;
   }
 
@@ -904,6 +933,19 @@ export class CityRenderer {
       },
       { year: this.year },
     );
+
+    /* ── THE TILT-SHIFT, ONCE PER RASTERISATION — `LOOK.tilt` ──────────
+       MEASURED on the glass first: five filtered self-blits a frame held the
+       film's settled frames at 25 fps against 82 with it off, and a hold is
+       exactly the frame that should cost nothing. So it is applied HERE, to
+       the settled buffer, once, when the film is on and the buffer is the
+       viewport-sized `hi` slot — which is the slot every hold, run and build
+       takes. A move takes the larger `fi` buffer and gets no tilt: it is
+       moving anyway, and a band measured on that buffer would land somewhere
+       else on screen. */
+    if (this.film && name === "hi" && LOOK.tilt && !(typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+      drawTiltShift(g as unknown as CanvasRenderingContext2D, slot.plan.W, slot.plan.H, 1);
+    }
 
     this.cur = {
       W: slot.plan.W, H: slot.plan.H,

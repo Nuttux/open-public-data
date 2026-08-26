@@ -772,9 +772,32 @@ export class CityData {
   static async load(opts: CityDataOptions = {}): Promise<CityData> {
     const base = (opts.baseUrl ?? DEFAULT_BASE).replace(/\/+$/, "");
     const f = opts.fetchImpl ?? ((...a: Parameters<typeof fetch>) => fetch(...a));
-    const res = await f(`${base}/manifest.json`);
-    if (!res.ok) throw new Error(`manifest: HTTP ${res.status}`);
-    const manifest = (await res.json()) as CityManifest;
+    /* ── ONE RETRY ON AN EMPTY BODY ──────────────────────────────────────
+       Daniel, 2026-08-26: *"The map could not be loaded. JSON.parse:
+       unexpected end of data at line 1 column 1"* — every file on disk and
+       over HTTP was valid when checked a minute later. A dev server mid-
+       recompile (and, in production, a CDN edge mid-purge) can answer 200
+       with nothing in the body, and a page that stays dead on that until the
+       reader reloads is a bug of ours. Read as text, and if it is empty or
+       does not parse, fetch it once more past every cache before giving up. */
+    const read = async (init?: RequestInit): Promise<CityManifest> => {
+      const res = await f(`${base}/manifest.json`, init);
+      if (!res.ok) throw new Error(`manifest: HTTP ${res.status}`);
+      const text = await res.text();
+      if (!text.trim()) throw new Error("manifest: empty body");
+      return JSON.parse(text) as CityManifest;
+    };
+    let manifest: CityManifest;
+    try {
+      manifest = await read();
+    } catch (e) {
+      await new Promise((r) => setTimeout(r, 400));
+      try {
+        manifest = await read({ cache: "reload" });
+      } catch {
+        throw e instanceof Error ? e : new Error(String(e));
+      }
+    }
     if (manifest.format !== "qc/1") {
       throw new Error(`manifest: unknown format ${manifest.format}`);
     }
@@ -784,6 +807,21 @@ export class CityData {
   /** Fetch and hold every base-tier chunk. Resolve when the first paint can draw. */
   async loadBase(): Promise<void> {
     await Promise.all(this.baseKeys.map((k) => this.fetchChunk(k)));
+  }
+
+  /**
+   * Fetch and hold every chunk of one tier, whatever the view.
+   *
+   * ADDITIVE, AND NOT ON THE CANVAS PATH. That renderer streams by view
+   * because it can only afford the cells it is looking at; a GPU renderer
+   * uploads the city once and then draws it for nothing, so it wants the
+   * whole tier up front and never asks again. Nothing else calls this and
+   * nothing about `setView`'s queue changes.
+   */
+  async loadTier(tier: string): Promise<number> {
+    const keys = this.manifest.chunks.filter((c) => c.tier === tier).map((c) => c.k);
+    await Promise.all(keys.map((k) => this.fetchChunk(k).catch(() => undefined)));
+    return keys.length;
   }
 
   // ── reading ───────────────────────────────────────────────────────────────

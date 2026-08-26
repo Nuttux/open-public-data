@@ -13,7 +13,6 @@ import type { ContratosData } from "@/lib/br/recife-data";
 import { fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtInt, modalidadeLabel, slugModalidade } from "@/lib/br/format";
 import RecifeContratosExplorer from "./RecifeContratosExplorer";
 
-const BASE = "/br/city/recife/contratos";
 
 export default function ContratosClient({ d }: { d: ContratosData }) {
   const t = useT();

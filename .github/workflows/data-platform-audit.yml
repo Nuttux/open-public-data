@@ -68,7 +68,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install minimal deps
         run: |
@@ -90,7 +90,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install dbt
         run: |
@@ -131,7 +131,7 @@ jobs:
           python <<'PY'
           import pathlib, re, sys
 
-          schemas = {p: p.read_text() for p in pathlib.Path('pipeline/models').rglob('schema.yml')}
+          schemas = {p: p.read_text() for p in pathlib.Path('pipeline/models').rglob('schema*.yml')}
           missing = []
           for sql in pathlib.Path('pipeline/models').rglob('*.sql'):
               if '/national/' in sql.as_posix():
@@ -169,7 +169,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install dbt
         run: |
@@ -203,12 +203,10 @@ jobs:
           EOF
           dbt deps --profiles-dir ~/.dbt
           dbt source freshness --profiles-dir ~/.dbt --target prod
-          # Marseille v1 WIP : modèles non déployés en prod BQ (validated
-          # 2026-05-07, build prod en attente). On exclut leurs tests pour
-          # ne pas faire échouer la CI sur des tables qui n'existent pas.
-          # À retirer une fois que dbt run --target prod aura été lancé.
-          dbt test --profiles-dir ~/.dbt --target prod \
-            --exclude stg_marseille_budget core_marseille_budget mart_marseille_budget_sankey_lines
+          # Exclusion Marseille retirée le 2026-08-25 : les 3 modèles sont
+          # construits en prod (sources raw syncées par run_all.sh), leurs
+          # tests ont donc une table à interroger.
+          dbt test --profiles-dir ~/.dbt --target prod
 
   verify-exports:
     name: verify_export (byte-equality of JSON outputs)
@@ -226,7 +224,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install deps
         run: |
@@ -283,7 +281,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install deps
         run: |

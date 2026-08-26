@@ -117,22 +117,22 @@
     {
       "source": "Budget Paris",
       "target": "Aménagement & Logement",
-      "value": 966662869.1200001
+      "value": 966662869.12
     },
     {
       "source": "Budget Paris",
       "target": "Culture & Sport",
-      "value": 750454708.4500004
+      "value": 750454708.4500002
     },
     {
       "source": "Budget Paris",
       "target": "Éducation",
-      "value": 857190826.4699999
+      "value": 857190826.4699998
     },
     {
       "source": "Budget Paris",
       "target": "Personnel & Admin",
-      "value": 2398531152.97
+      "value": 2398531152.9700003
     },
     {
       "source": "Budget Paris",
@@ -147,12 +147,12 @@
     {
       "source": "Budget Paris",
       "target": "Sécurité",
-      "value": 414950604.6400002
+      "value": 414950604.64000016
     },
     {
       "source": "Budget Paris",
       "target": "Transports",
-      "value": 768776336.0199997
+      "value": 768776336.0199999
     },
     {
       "source": "Budget Paris",
@@ -234,7 +234,7 @@
         },
         {
           "name": "Services Généraux: Autres produits divers de gestion courante-Autres",
-          "value": 27203772.270000003
+          "value": 27203772.269999996
         },
         {
           "name": "Transports: Autres prestations de services",
@@ -254,7 +254,7 @@
         },
         {
           "name": "Culture & Sport: Revenus des immeubles",
-          "value": 14859368.059999999
+          "value": 14859368.06
         },
         {
           "name": "Action Sociale: Dotation versée au titre de la PCH",
@@ -302,7 +302,7 @@
         },
         {
           "name": "Éducation: Redevances et droits des services périscolaires et d’enseignement",
-          "value": 7150832.52
+          "value": 7150832.5200000005
         },
         {
           "name": "Transports: Droits de stationnement et de location sur la voie publique",
@@ -380,7 +380,7 @@
         },
         {
           "name": "Invest. Culture: Autres",
-          "value": 13232427.230000002
+          "value": 13232427.23
         },
         {
           "name": "Invest. Environnement: Subventions aux personnes de droit privé - Bâtiments et installations",
@@ -4343,7 +4343,7 @@
         ]
       },
       "Investissement": {
-        "total": 55593218.410000004,
+        "total": 55593218.41,
         "items": [
           {
             "name": "Invest. Social: Constructions",
@@ -4493,7 +4493,7 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 247333419.89000008,
+        "total": 247333419.89000005,
         "items": [
           {
             "name": "Aménagement: Rémunération du personnel titulaire",
@@ -4792,7 +4792,7 @@
     },
     "Culture & Sport": {
       "Fonctionnement": {
-        "total": 585134064.7300004,
+        "total": 585134064.7300001,
         "items": [
           {
             "name": "Culture & Sport: Etablissements et services rattachés à caractère administratif",
@@ -5096,7 +5096,7 @@
     },
     "Éducation": {
       "Fonctionnement": {
-        "total": 735864292.4499999,
+        "total": 735864292.4499998,
         "items": [
           {
             "name": "Éducation: Subventions de fonctionnement aux organismes publics - Caisses des écoles",
@@ -5397,7 +5397,7 @@
     },
     "Personnel & Admin": {
       "Fonctionnement": {
-        "total": 797758153.52,
+        "total": 797758153.5200001,
         "items": [
           {
             "name": "Administration: Dotation de gestion locale versée",
@@ -6000,7 +6000,7 @@
         ]
       },
       "Investissement": {
-        "total": 53801611.92,
+        "total": 53801611.919999994,
         "items": [
           {
             "name": "Invest. Environnement: Installations, matériel et outillage techniques",
@@ -6149,7 +6149,7 @@
     },
     "Sécurité": {
       "Fonctionnement": {
-        "total": 395787413.0200002,
+        "total": 395787413.02000016,
         "items": [
           {
             "name": "Sécurité: Autres contributions obligatoires",
@@ -6435,7 +6435,7 @@
     },
     "Transports": {
       "Fonctionnement": {
-        "total": 614289588.0299997,
+        "total": 614289588.0299999,
         "items": [
           {
             "name": "Transports: Autres contributions obligatoires",

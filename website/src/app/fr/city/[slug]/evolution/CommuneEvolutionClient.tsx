@@ -15,7 +15,7 @@ const METRICS: { key: keyof EvolutionPoint; color: string; labelKey: string }[] 
   { key: "dette_hab", color: "#c12323", labelKey: "fx.natev.dette" },
 ];
 
-function TrendChart({ series, labels }: { series: EvolutionPoint[]; labels: Record<string, string> }) {
+function TrendChart({ series }: { series: EvolutionPoint[]; labels: Record<string, string> }) {
   const W = 820;
   const H = 300;
   const pad = { t: 16, r: 16, b: 28, l: 52 };

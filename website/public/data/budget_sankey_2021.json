@@ -117,7 +117,7 @@
     {
       "source": "Budget Paris",
       "target": "Aménagement & Logement",
-      "value": 926401517.4399999
+      "value": 926401517.4399998
     },
     {
       "source": "Budget Paris",
@@ -132,7 +132,7 @@
     {
       "source": "Budget Paris",
       "target": "Personnel & Admin",
-      "value": 2482450400.46
+      "value": 2482450400.4600005
     },
     {
       "source": "Budget Paris",
@@ -142,7 +142,7 @@
     {
       "source": "Budget Paris",
       "target": "Environnement",
-      "value": 727648951.96
+      "value": 727648951.9599999
     },
     {
       "source": "Budget Paris",
@@ -230,7 +230,7 @@
         },
         {
           "name": "Action Sociale: Recouvrements sur bénéficiaire, tiers-payants et successions",
-          "value": 36265208.46
+          "value": 36265208.45999999
         },
         {
           "name": "Action Économique: Droits de stationnement et de location sur la voie publique",
@@ -258,7 +258,7 @@
         },
         {
           "name": "Culture & Sport: Revenus des immeubles",
-          "value": 17598542.37
+          "value": 17598542.369999997
         },
         {
           "name": "Transports: Autres prestations de services",
@@ -286,7 +286,7 @@
         },
         {
           "name": "Aménagement: Autres produits divers de gestion courante-Autres",
-          "value": 9102227.760000002
+          "value": 9102227.76
         },
         {
           "name": "Environnement: Remboursements de frais - par les budgets annexes et les régies",
@@ -298,7 +298,7 @@
         },
         {
           "name": "Culture & Sport: Sécurité sociale et organismes mutualistes",
-          "value": 7218382.880000001
+          "value": 7218382.88
         },
         {
           "name": "Culture & Sport: Redevances et droits des services à caractère culturel",
@@ -310,7 +310,7 @@
         },
         {
           "name": "Culture & Sport: Autres redevances et recettes diverses",
-          "value": 6225762.79
+          "value": 6225762.789999999
         },
         {
           "name": "RSA: Recouvrements des indus d’insertion et d’aide sociale - RSA- Allocations forfaitaires",
@@ -330,7 +330,7 @@
         },
         {
           "name": "Éducation: Remboursements de frais - par des tiers",
-          "value": 5023682.260000001
+          "value": 5023682.26
         },
         {
           "name": "Environnement: Mise à disposition de personnel facturée - aux autres organismes",
@@ -338,7 +338,7 @@
         },
         {
           "name": "Action Économique: Revenus des immeubles",
-          "value": 4601114.95
+          "value": 4601114.950000001
         },
         {
           "name": "APA: Recouvrements des indus d’insertion et d’aide sociale - APA",
@@ -4483,7 +4483,7 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 251451078.8299999,
+        "total": 251451078.82999992,
         "items": [
           {
             "name": "Aménagement: Rémunération du personnel titulaire",
@@ -4935,7 +4935,7 @@
         ]
       },
       "Investissement": {
-        "total": 169784762.78,
+        "total": 169784762.77999994,
         "items": [
           {
             "name": "Invest. Culture: Subventions aux organismes publics - Organismes publics divers - Bâtiments et installations",
@@ -5386,7 +5386,7 @@
     },
     "Personnel & Admin": {
       "Fonctionnement": {
-        "total": 892254833.0800002,
+        "total": 892254833.0800003,
         "items": [
           {
             "name": "Administration: Dotation de gestion locale versée",
@@ -5693,7 +5693,7 @@
         ]
       },
       "Investissement": {
-        "total": 38991919.13,
+        "total": 38991919.129999995,
         "items": [
           {
             "name": "Invest. Économie: Autres installations, matériel et outillage       techniques",
@@ -5840,7 +5840,7 @@
     },
     "Environnement": {
       "Fonctionnement": {
-        "total": 667744742.2800001,
+        "total": 667744742.2799999,
         "items": [
           {
             "name": "Environnement: Rémunération du personnel titulaire",

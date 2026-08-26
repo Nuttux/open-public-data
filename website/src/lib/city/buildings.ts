@@ -32,6 +32,7 @@ import {
   sx,
   sy,
   TerrainField,
+  LOOK,
 } from "./terrain";
 
 // ── the two thresholds, and the only arithmetic behind them ─────────────────
@@ -448,6 +449,30 @@ export interface ColourTables {
 let clutKey = "";
 let tables: ColourTables | null = null;
 
+/* ── THE ROOF IS A TOP FACE IN DAYLIGHT — `LOOK.roofval` ──────────────────
+ * The measured aerial roof palette is what the photograph says a roof IS:
+ * tar and gravel, and from a bird's eye it is 60-70 % of every frame from
+ * district zoom in. Read as a material on a lit model it is the top face,
+ * the one the sun lands on, and it should sit ABOVE the walls in value and
+ * below them in saturation. This pulls each entry 38 % toward its own grey,
+ * 12 % toward the paper, and lifts it 6 %. The hue survives, so a brick roof
+ * is still warmer than a slate one; only the photograph's dead value is
+ * changed. Provenance is untouched: the index each roof gets is the
+ * measured one, this is the colour that index paints. */
+const ROOF_PAPER = "#e8dcc6";
+export function roofTone(hex: string): string {
+  if (!LOOK.roofval) return hex;
+  const r = parseInt(hex.slice(1, 3), 16),
+    g = parseInt(hex.slice(3, 5), 16),
+    b = parseInt(hex.slice(5, 7), 16);
+  const l = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  const mix = (v: number): number => Math.round(v + (l - v) * 0.45);
+  const grey = `#${[mix(r), mix(g), mix(b)].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
+  return shade(lerpHex(grey, ROOF_PAPER, 0.18), 1.16);
+}
+/** the wall's sun/sky split — `LOOK.facek` widens it */
+const wallK = (q: number): number => (LOOK.facek ? 0.50 + 0.18 * q : 0.66 + 0.1 * q);
+
 /**
  * Every block used to run two `lerpHex()` and two `shade()` per frame — 19,000
  * string parses at whole-city zoom, before a single pixel was filled. Haze is a
@@ -466,10 +491,10 @@ export function colourLUT(
   camStep: number,
 ): ColourTables {
   const gain = COVER_GAIN[camStep] ?? 1;
-  const key = fadeAmt.toFixed(4) + "|" + gain;
+  const key = fadeAmt.toFixed(4) + "|" + gain + "|" + LOOK.roofval + LOOK.facek;
   if (key === clutKey && tables) return tables;
   clutKey = key;
-  const ROOF = pal.roof,
+  const ROOF = pal.roof.map(roofTone),
     WALL = pal.wall;
   const roof = new Array<string>(ROOF.length * HZL * 3);
   const wall = new Array<string>(WALL.length * HZL * 4);
@@ -498,7 +523,7 @@ export function colourLUT(
          from the key light to one turned toward it, so they run from sky-lit to
          sun-lit. Same four values; a different colour at each end. */
       for (let q = 0; q < 4; q++)
-        wall[o + q] = skylit(base, 0.66 + 0.1 * q, qTilt(q));
+        wall[o + q] = skylit(base, wallK(q), qTilt(q));
     }
   const t: ColourTables = { roof, wall, ...freshLUT(pal, fadeAmt, gain, roof, wall) };
   tables = t;
@@ -531,7 +556,7 @@ function freshLUT(
   roof0: readonly string[],
   wall0: readonly string[],
 ): { roofF: string[]; wallF: string[] } {
-  const ROOF = pal.roof,
+  const ROOF = pal.roof.map(roofTone),
     WALL = pal.wall;
   const roofF = new Array<string>(ROOF.length * HZL * NF1);
   const wallF = new Array<string>(WALL.length * HZL * NF1 * 4);
@@ -549,7 +574,7 @@ function freshLUT(
         if (hz > 0.004) w = lerpHex(w, HAZE, hz);
         const o = ((c * HZL + z) * NF1 + f) * 4;
         for (let q = 0; q < 4; q++)
-          wallF[o + q] = skylit(w, (0.66 + 0.1 * q) * gain, qTilt(q));
+          wallF[o + q] = skylit(w, wallK(q) * gain, qTilt(q));
       }
     }
   }
@@ -576,7 +601,7 @@ function freshLUT(
         if (hz > 0.004) w = lerpHex(w, HAZE, hz);
         const o = ((c * HZL + z) * NF1 + f) * 4;
         for (let q = 0; q < 4; q++)
-          wallF[o + q] = skylit(w, (0.66 + 0.1 * q) * gain, qTilt(q));
+          wallF[o + q] = skylit(w, wallK(q) * gain, qTilt(q));
       }
     }
   }
@@ -590,10 +615,10 @@ export function massLUT(
   pal: Palette,
   fadeAmt: number,
 ): { mass: string[]; mwall: string[] } {
-  const key = fadeAmt.toFixed(4);
+  const key = fadeAmt.toFixed(4) + "|" + LOOK.roofval + LOOK.facek;
   if (key === mlutKey && massTables) return massTables;
   mlutKey = key;
-  const ROOF = pal.roof,
+  const ROOF = pal.roof.map(roofTone),
     WALL = pal.wall;
   const mass = new Array<string>(ROOF.length * HZL * (FRESH_YEARS + 1));
   const mwall = new Array<string>(WALL.length * HZL * (FRESH_YEARS + 1) * 4);
@@ -613,7 +638,7 @@ export function massLUT(
         if (hz > 0.004) t = lerpHex(t, HAZE, hz);
         const o = ((c * HZL + z) * (FRESH_YEARS + 1) + f) * 4;
         for (let k = 0; k < 4; k++)
-          mwall[o + k] = skylit(t, (0.7 + 0.09 * k) * MASS_GAIN, qTilt(k));
+          mwall[o + k] = skylit(t, (LOOK.facek ? 0.56 + 0.16 * k : 0.7 + 0.09 * k) * MASS_GAIN, qTilt(k));
       }
     }
   }
@@ -1150,10 +1175,81 @@ export function addContactShadow(
 }
 
 /** one fill, one colour, at the band's own flush — see `addContactShadow` */
+/* ── THE CAST SHADOW — `LOOK.cast` ─────────────────────────────────────
+ * The contact shadow above is capped at 9 x 7 px: it says "this stands on the
+ * ground" and nothing about how tall it is. A diorama's buildings THROW
+ * shadow — across the street, over the neighbour's roof — and the length of
+ * the throw is the height, which is a published number. So: the footprint
+ * translated down-left by `h * kh * CAST_K`, plus one quad per edge joining
+ * the foot to the throw, all in the band's one Path2D. Every sub-path is
+ * oriented positive so nonzero winding unions them and nothing cancels.
+ * Capped at `CAST_MAX_PX` so a 260 m tower at street zoom does not lay a
+ * bar across the frame. Same fill colour as the contact shadow, so the two
+ * are one shadow. */
+export const CAST_KX = 0.95;
+export const CAST_KY = 0.55;
+export const CAST_MAX_PX = 240;
+/** the cast shadow's own ink: deeper than the contact shadow's, because a
+ *  throw across a street is read against the street and not the foot */
+export const CAST_FILL = "rgba(46,50,74,0.28)"; // cool: what sunlight leaves in a shadow is sky
+export function castOffset(hPx: number): readonly [number, number] {
+  const l = Math.min(CAST_MAX_PX, hPx);
+  return [l * CAST_KX, l * CAST_KY];
+}
+export function addCastShadow(
+  p: Path2D,
+  bx: ArrayLike<number>,
+  by: ArrayLike<number>,
+  n: number,
+  ox: number,
+  oy: number,
+): void {
+  // the ring's own screen orientation
+  let a2 = 0;
+  for (let k = 0; k < n; k++) {
+    const k1 = (k + 1) % n;
+    a2 += bx[k] * by[k1] - bx[k1] * by[k];
+  }
+  const fwd = a2 >= 0;
+  // the throw
+  if (fwd) {
+    p.moveTo(bx[0] - ox, by[0] + oy);
+    for (let k = 1; k < n; k++) p.lineTo(bx[k] - ox, by[k] + oy);
+  } else {
+    p.moveTo(bx[n - 1] - ox, by[n - 1] + oy);
+    for (let k = n - 2; k >= 0; k--) p.lineTo(bx[k] - ox, by[k] + oy);
+  }
+  p.closePath();
+  // the foot, so the throw joins the building
+  if (fwd) {
+    p.moveTo(bx[0], by[0]);
+    for (let k = 1; k < n; k++) p.lineTo(bx[k], by[k]);
+  } else {
+    p.moveTo(bx[n - 1], by[n - 1]);
+    for (let k = n - 2; k >= 0; k--) p.lineTo(bx[k], by[k]);
+  }
+  p.closePath();
+  // one quad per edge, each oriented positive
+  for (let k = 0; k < n; k++) {
+    const k1 = (k + 1) % n;
+    const x0 = bx[k], y0 = by[k], x1 = bx[k1], y1 = by[k1];
+    const x2 = x1 - ox, y2 = y1 + oy, x3 = x0 - ox, y3 = y0 + oy;
+    const q2 = (x1 - x0) * (y2 - y0) - (x2 - x0) * (y1 - y0)
+             + (x2 - x0) * (y3 - y0) - (x3 - x0) * (y2 - y0);
+    if (Math.abs(q2) < 0.01) continue;
+    if (q2 >= 0) {
+      p.moveTo(x0, y0); p.lineTo(x1, y1); p.lineTo(x2, y2); p.lineTo(x3, y3);
+    } else {
+      p.moveTo(x0, y0); p.lineTo(x3, y3); p.lineTo(x2, y2); p.lineTo(x1, y1);
+    }
+    p.closePath();
+  }
+}
+
 export function fillContactShadow(f: Frame, p: Path2D): void {
   const { ctx } = f;
   const prev = ctx.fillStyle;
-  ctx.fillStyle = SHADOW_FILL;
+  ctx.fillStyle = LOOK.cast ? CAST_FILL : SHADOW_FILL;
   ctx.fill(p);
   ctx.fillStyle = prev;
 }
@@ -1351,4 +1447,57 @@ export const AO = {
  * reference value is 1.0 and the day it is turned on is the day somebody has
  * run the acceptance test in §33.3 on a quiet tree.
  */
-export const AO_ALPHA = 0.0;
+export const AO_ALPHA = 1.0;
+/* ── TURNED ON 2026-08-26, AND MEASURED FIRST ────────────────────────────
+ * The §33.3 test the constant was waiting on was run on the live page: every
+ * preset shot at 1440x900 with the pass at 0 and at 1, the low-frequency
+ * image compared, and `CityRenderer.measure()` read for the raster cost. The
+ * numbers are in DRAW.md §AO ON. What the pass buys is the one thing the
+ * district frame had been missing against the reference — the city sits ON
+ * the ground instead of floating on it. */
+
+
+/* ── THE ROOF GRAIN — `LOOK.roofgrain` ────────────────────────────────────
+ * A roof at street zoom is 200 px of one flat value. `roofs.ts`
+ * §NOTHING_IS_PLACED_ON_A_ROOF stands: no vents, no skylights, no invented
+ * object. This is not an object, it is the surface — a fine stipple, the
+ * tooth of gravel-and-tar or the grain of a membrane, in the roof's own
+ * colour a step darker, at low alpha. A texture claims nothing about what is
+ * on the roof; it says the roof is a material and not a swatch. One tile,
+ * one extra fill per near roof past `ROOFGRAIN_MIN_PX`. */
+export const ROOFGRAIN_MIN_PX = 16;
+export const ROOFGRAIN_ALPHA = 0.16;
+let grainTile: HTMLCanvasElement | OffscreenCanvas | null = null;
+let grainDpr = 0;
+let grainPats = new WeakMap<CanvasRenderingContext2D, CanvasPattern>();
+export function roofGrainPattern(g: CanvasRenderingContext2D, dpr: number): CanvasPattern | null {
+  if (!grainTile || grainDpr !== dpr) {
+    const T = 48;
+    const px = Math.round(T * dpr);
+    const cv: HTMLCanvasElement | OffscreenCanvas | null =
+      typeof OffscreenCanvas !== "undefined" ? new OffscreenCanvas(px, px)
+      : typeof document !== "undefined" ? document.createElement("canvas") : null;
+    if (!cv) return null;
+    cv.width = px; cv.height = px;
+    const c = cv.getContext("2d") as CanvasRenderingContext2D | null;
+    if (!c) return null;
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    c.clearRect(0, 0, T, T);
+    let seed = 0x2545f491;
+    const rnd = (): number => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
+    for (let i = 0; i < 150; i++) {
+      const x = rnd() * T, y = rnd() * T, r = 0.35 + rnd() * 0.5;
+      c.fillStyle = rnd() < 0.7 ? "rgba(0,0,0,0.55)" : "rgba(255,255,255,0.7)";
+      c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill();
+    }
+    grainTile = cv; grainDpr = dpr; grainPats = new WeakMap();
+  }
+  let pat = grainPats.get(g) ?? null;
+  if (!pat) {
+    pat = g.createPattern(grainTile as CanvasImageSource, "repeat");
+    if (!pat) return null;
+    if (typeof DOMMatrix !== "undefined") pat.setTransform(new DOMMatrix().scale(1 / dpr));
+    grainPats.set(g, pat);
+  }
+  return pat;
+}

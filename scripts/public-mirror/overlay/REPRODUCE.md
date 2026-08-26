@@ -55,14 +55,10 @@ your `<your-project>.dbt_paris_dev_<user>_marts.<table>` and
 `open-data-france-484717.dbt_paris_marts.<table>` should return no rows for the
 deterministic marts.
 
-> The step that renders these marts into the site's JSON files is a separate
-> thin formatting layer, not required to verify any figure.
-
 ## What reproduces exactly, and what doesn't
 
-- **Deterministic financial aggregates** (budget, subventions, marchés, debt,
-  housing figures) reproduce exactly from source.
-- **Enrichment-derived classifications** (which theme / which location a line is
-  assigned to) depend on the frozen enrichment seeds shipped here; they
-  reproduce exactly against those seeds, but the seeds themselves are the output
-  of a separate closed enrichment step — see [NOTICE](NOTICE).
+- **Financial aggregates** (budget, subventions, marchés, debt, housing figures)
+  reproduce exactly from source.
+- **Classifications** (which theme or location a line is assigned to) come from
+  the frozen seeds shipped here rather than being recomputed, so they reproduce
+  exactly against those seeds — see [NOTICE](NOTICE).

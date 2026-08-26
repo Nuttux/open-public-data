@@ -109,6 +109,27 @@ if should_run sync; then
             $PYTHON "$PIPELINE_DIR/scripts/sync/fetch_decp_paris.py" || \
             echo "  ⚠ fetch_decp_paris a échoué — on continue"
     fi
+
+    # Sources raw qui ne viennent PAS du portail ODS : reconstruites depuis des
+    # fichiers versionnés du repo (extraits PDF, caches, scrapes) ou depuis un
+    # autre portail. Absentes de cette phase jusqu'au 2026-08-25, elles avaient
+    # disparu de `raw` sans que rien ne les recrée. b811 EN PREMIER : sans lui,
+    # les subventions 2020 et 2021 (2,6 Md€) sortent SILENCIEUSEMENT de
+    # core_subventions — c'est un UNION ALL, pas un JOIN, donc aucune erreur.
+    for s in sync_pdf_subventions_b811 sync_sirene_companies sync_enrichment_caches \
+             sync_deliberations sync_pdf_investissements_localises sync_dette_garantie; do
+        if [[ -f "$PIPELINE_DIR/scripts/sync/$s.py" ]]; then
+            run_step "raw · $s" $PYTHON "$PIPELINE_DIR/scripts/sync/$s.py" || \
+                echo "  ⚠ $s a échoué — on continue"
+        fi
+    done
+
+    # Marseille (data.gouv.fr) : budget primitif + compte administratif + subventions.
+    if [[ -f "$PIPELINE_DIR/scripts/sync/sync_city.py" ]]; then
+        run_step "Marseille (data.gouv.fr → BQ raw)" \
+            $PYTHON "$PIPELINE_DIR/scripts/sync/sync_city.py" marseille || \
+            echo "  ⚠ sync_city marseille a échoué — on continue"
+    fi
 fi
 
 # --- 2. DBT -----------------------------------------------------------------
@@ -127,11 +148,15 @@ if should_run dbt; then
         # dbt deps doit tourner avant run pour installer les packages (cf
         # pipeline/packages.yml). Idempotent.
         run_step "dbt deps" bash -c "cd '$PIPELINE_DIR' && dbt deps $DBT_TARGET_FLAG"
-        # dbt seed : skip si DBT_SKIP_SEED=1 (en CI on évite les seeds
-        # nationaux qui ont des schémas CSV cassés — bug préexistant à
-        # fix séparément).
+        # dbt seed : non fatal. Un CSV de seed cassé (les seeds nationaux ont
+        # un bug de typage préexistant) ne doit PAS emporter tout le refresh
+        # hebdo — c'est ce qui a fait poser DBT_SKIP_SEED=1, lequel a ensuite
+        # empêché tout rechargement et laissé les seeds expirer en prod.
+        # Les seeds valides sont chargés ; si un modèle dépend d'un seed
+        # manquant, `dbt run` échouera juste après avec un message précis.
         if [[ "${DBT_SKIP_SEED:-0}" != "1" ]]; then
-            run_step "dbt seed" bash -c "cd '$PIPELINE_DIR' && dbt seed $DBT_TARGET_FLAG"
+            run_step "dbt seed" bash -c "cd '$PIPELINE_DIR' && dbt seed $DBT_TARGET_FLAG" || \
+                echo "  ⚠ dbt seed a signalé des erreurs — on continue, dbt run dira si ça bloque"
         else
             echo "  ⊘ dbt seed skipped (DBT_SKIP_SEED=1)"
         fi

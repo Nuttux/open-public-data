@@ -843,7 +843,57 @@ export function drawFireLosses(
      The alphas below are raised to match, because additive blending had been
      doing half the work. */
   g.save();
+
+  /* ── THE LIGHT THE FIRE THROWS ──────────────────────────────────────────
+     Two glows and neither is a claim: a fire lights the ground it stands on
+     and the air around it, and a flame drawn without either is a paint mark
+     on a map. Both are source-over, warm, and sized to the flame that casts
+     them, so they cannot become the bleached cone §21.7 diagnosed. Both go
+     UNDER the flames.
+     The frame glow is one radial wash centred on the burning structures'
+     mean, at the mean of their lives — so it comes up with the fire and dies
+     with it, and shot 2 opens on a frame with no glow on it. */
+  let mx = 0, my = 0, ml = 0;
   for (const f of seen) {
+    const up0 = Math.min(1, f.p / FIRE_PEAK);
+    const dn0 = f.p <= FIRE_HOLD ? 1 : 1 - (f.p - FIRE_HOLD) / (1 - FIRE_HOLD);
+    const l = up0 * up0 * dn0;
+    mx += f.X * l; my += f.Y * l; ml += l;
+  }
+  if (ml > 0.05) {
+    mx /= ml; my /= ml;
+    const inten = Math.min(1, ml / Math.max(1, seen.length * 0.55));
+    const R = Math.max(W, H) * 0.42;
+    const gw = g.createRadialGradient(mx, my, 0, mx, my, R);
+    gw.addColorStop(0, `rgba(255,150,60,${0.16 * inten})`);
+    gw.addColorStop(0.45, `rgba(240,110,40,${0.07 * inten})`);
+    gw.addColorStop(1, "rgba(200,80,30,0)");
+    g.fillStyle = gw;
+    g.fillRect(0, 0, W, H);
+  }
+  for (const f of seen) {
+    const up = Math.min(1, f.p / FIRE_PEAK);
+    const down = f.p <= FIRE_HOLD ? 1 : 1 - (f.p - FIRE_HOLD) / (1 - FIRE_HOLD);
+    const life = up * up * down;
+    if (life <= 0.02) continue;
+    // the ground glow, a flattened disc lying on the plane under the flame
+    const rg = f.s * 0.9;
+    g.save();
+    g.translate(f.X, f.Y + 1);
+    g.scale(1, 0.5);
+    const gg = g.createRadialGradient(0, 0, 0, 0, 0, rg);
+    gg.addColorStop(0, `rgba(255,170,70,${0.42 * life})`);
+    gg.addColorStop(0.5, `rgba(235,110,40,${0.18 * life})`);
+    gg.addColorStop(1, "rgba(200,80,30,0)");
+    g.fillStyle = gg;
+    g.beginPath();
+    g.arc(0, 0, rg, 0, Math.PI * 2);
+    g.fill();
+    g.restore();
+  }
+
+  for (let i = 0; i < seen.length; i++) {
+    const f = seen[i];
     const up = Math.min(1, f.p / FIRE_PEAK);
     /* the plateau is `FIRE_HOLD`, not `FIRE_PEAK` — see the constant. Decaying
        from the peak put every flame under a third of its height for three
@@ -895,6 +945,32 @@ export function drawFireLosses(
     g.beginPath();
     g.arc(f.X, f.Y - hr * 0.4, hr * 2.2, 0, Math.PI * 2);
     g.fill();
+
+    /* ── THE EMBERS THAT RISE, WHICH ARE NOT THE DISC THAT STAYED ─────────
+       §25.2 below removed a disc that sat where a building had been, forever.
+       These are the other thing: sparks lifted off a burning flame while it
+       burns, gone the moment it is. Seven a flame, each on its own loop, each
+       fading as it climbs, sized under two pixels, and multiplied by `life`
+       so a dying flame throws none. Deterministic on the structure's own
+       hash, so a scrub lands on the same frame playback would have made. */
+    const nE = 7;
+    const hgtE = f.s * life;
+    for (let j = 0; j < nE; j++) {
+      const h1 = hash01(i * 31 + j * 7 + 3);
+      const h2 = hash01(i * 17 + j * 13 + 5);
+      const u = (phase * (2.3 + h1 * 1.6) + h2) % 1; // 0 at the foot, 1 gone
+      const ea = (1 - u) * (1 - u) * life * 0.85;
+      if (ea < 0.03) continue;
+      const ex = f.X + (h2 - 0.5) * f.s * 0.5 + Math.sin(u * 9 + h1 * 20) * f.s * 0.08 + u * f.s * 0.18;
+      const ey = f.Y - hgtE * (0.45 + u * 1.35);
+      const er = 1.0 + (1 - u) * 1.5;
+      g.fillStyle = u < 0.35
+        ? `rgba(255,230,150,${ea})`
+        : `rgba(255,${Math.round(150 - 70 * u)},40,${ea})`;
+      g.beginPath();
+      g.arc(ex, ey, er, 0, Math.PI * 2);
+      g.fill();
+    }
   }
   g.restore();
 
@@ -1000,4 +1076,127 @@ export function drawOutline(
   walk();
   g.stroke();
   g.restore();
+}
+
+
+/* ── THE GLASS: VIGNETTE, KEY LIGHT AND THE CUT ──────────────────────────
+ *
+ * Three treatments the film paints on the glass, after everything, and none
+ * of them touches the raster. They are what a projected print has and a map
+ * tile does not:
+ *
+ *  - a VIGNETTE, warm brown and soft, closing the corners so the frame has a
+ *    middle. It is a print's own falloff and it is kept under a quarter of
+ *    full ink at the very corner;
+ *  - a KEY-LIGHT WASH from the upper right, the same corner every wall on
+ *    the map is lit from (`buildings.ts` §the sun), so the picture and its
+ *    light agree;
+ *  - the CUT DISSOLVE — the last frame of the outgoing shot, held on the
+ *    glass and let go over `CUT_MS`. The film's grammar is cuts and holds
+ *    (`film.ts` §the line cuts when the shot cuts) and that is unchanged: the
+ *    incoming camera is standing on its frame from the first millisecond,
+ *    the line is already the new line, and what dissolves is only the
+ *    picture — which is also what hides the half-second in which the new
+ *    shot's raster has not yet landed and the blit is stretching the old one.
+ *    `CUT_MS = 0` turns it off.
+ */
+export const CUT = { ms: 520, snaps: 0, draws: 0, lastA: 0 };
+/** DEV-ONLY, the `__cityWA` idiom: a harness can lengthen the dissolve to
+ *  see it on a burst of screenshots. */
+if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+  (globalThis as { __cityCUT?: typeof CUT }).__cityCUT = CUT;
+}
+export const CUT_MS = 520;
+
+export interface GlassFx {
+  /** the outgoing frame, device pixels, or null when no cut is dissolving */
+  snap: CanvasImageSource | null;
+  /** when the INCOMING frame was first painted, `performance.now()`; −1
+   *  until it is. The cut itself is not the clock: the new shot's raster
+   *  blocks the thread for most of a second and a clock started at the cut
+   *  had run out before the first frame it was dissolving TO ever appeared —
+   *  measured on shots/scut-*.png, six frames, no fade in any of them. So
+   *  the outgoing frame is held whole until the new one exists, which is
+   *  also what hides the raster's stretched blit, and only then let go. */
+  t0: number;
+}
+
+/**
+ * THE TILT-SHIFT — `LOOK.tilt`. A diorama photographed close has a plane of
+ * focus; above and below it the model softens. Three bands at the top and two
+ * at the foot of the glass, each the frame drawn back onto itself through a
+ * blur, widest at the edge — so there is no hard line where the focus ends.
+ * On the glass, per frame, because the film's buffer is larger than the
+ * viewport and a band measured on the buffer lands somewhere else on screen.
+ */
+export function drawTiltShift(g: CanvasRenderingContext2D, W: number, H: number, k: number): void {
+  if (k <= 0.001) return;
+  const cv = g.canvas;
+  const dpr = cv.width / Math.max(1, W);
+  const Wd = cv.width, Hd = cv.height;
+  g.save();
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  const bands: readonly (readonly [number, number, number])[] = [
+    [0, 0.09, 3.6], [0.09, 0.17, 2.0], [0.17, 0.24, 0.9],
+    [0.91, 1.0, 2.4], [0.84, 0.91, 1.0],
+  ];
+  for (const [a, b, r] of bands) {
+    const y0 = Math.round(Hd * a), y1 = Math.round(Hd * b);
+    if (y1 <= y0) continue;
+    g.filter = `blur(${(r * k * dpr).toFixed(2)}px)`;
+    g.drawImage(cv, 0, y0, Wd, y1 - y0, 0, y0, Wd, y1 - y0);
+  }
+  g.filter = "none";
+  g.restore();
+}
+
+export function drawCinematic(
+  g: CanvasRenderingContext2D,
+  W: number,
+  H: number,
+  vignette: number,
+  key: number,
+): void {
+  if (vignette > 0.001) {
+    const R = Math.hypot(W, H) * 0.5;
+    const gv = g.createRadialGradient(W * 0.5, H * 0.5, R * 0.55, W * 0.5, H * 0.5, R * 1.08);
+    gv.addColorStop(0, "rgba(52,38,22,0)");
+    gv.addColorStop(0.6, `rgba(52,38,22,${0.10 * vignette})`);
+    gv.addColorStop(1, `rgba(52,38,22,${0.26 * vignette})`);
+    g.fillStyle = gv;
+    g.fillRect(0, 0, W, H);
+  }
+  if (key > 0.001) {
+    const gk = g.createLinearGradient(W, 0, W * 0.3, H);
+    gk.addColorStop(0, `rgba(255,238,196,${0.14 * key})`);
+    gk.addColorStop(0.55, "rgba(255,238,196,0)");
+    g.fillStyle = gk;
+    g.fillRect(0, 0, W, H);
+  }
+}
+
+/** the outgoing frame, fading; returns false once it is gone */
+export function drawCutDissolve(
+  g: CanvasRenderingContext2D,
+  W: number,
+  H: number,
+  fx: GlassFx,
+  now: number,
+): boolean {
+  if (!fx.snap || CUT.ms <= 0) return false;
+  if (fx.t0 < 0) fx.t0 = now;
+  const t = (now - fx.t0) / CUT.ms;
+  if (t >= 1) {
+    fx.snap = null;
+    return false;
+  }
+  const e = 1 - t;
+  const a = e * e * (3 - 2 * e); // smoothstep out
+  CUT.draws++;
+  CUT.lastA = a;
+  g.save();
+  g.globalAlpha = a;
+  g.drawImage(fx.snap, 0, 0, W, H);
+  g.restore();
+  return true;
 }

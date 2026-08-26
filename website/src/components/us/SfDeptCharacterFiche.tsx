@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { SfDeptCharacterDetailData, SfDeptCharacterVendorRow } from "@/lib/us/sf-budget-data";
-import { fmtUsd, fmtUsdCompact, fmtShare } from "@/lib/us/format";
+import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
 import { useT } from "@/lib/localeContext";
 import Tip from "@/components/fusion/Tip";
 import { bucketColor, bucketLabelKey, UNCLASSIFIED_COLOR } from "@/app/us/city/sf/who-gets-paid/bucket";

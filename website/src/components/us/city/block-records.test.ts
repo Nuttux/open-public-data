@@ -9,6 +9,8 @@ import {
   railSilence,
   stripTruncation,
   isPrintableLine,
+  isSpeakerList,
+  isVoteTally,
   streetLabel,
   type BlockDecision,
 } from "./block-records";
@@ -424,5 +426,144 @@ describe("stripTruncation — the ellipsis is ours, and it does not relax the ga
     const cut = "Designating 451 Jersey Street, the Carnegie Noe Valley Branch…";
     expect(isPrintableLine(cut)).toBe(false);
     expect(isPrintableLine(stripTruncation(cut))).toBe(true);
+  });
+});
+
+describe("isSpeakerList — a queue at the microphone is not the face of a block", () => {
+  /**
+   * The defect this exists for. Block 5525's 1970s rung, live in production:
+   * three private people and two home addresses standing as what a century
+   * did to that block.
+   */
+  it("demotes the line that was on screen", () => {
+    expect(
+      isSpeakerList(
+        "Mr. Dennis Kent, 3206 Harrison Street Ms. Nancy McKay, 133 Shipley " +
+          "Street Mr. Jamie Jamerson There being no one else present to object, " +
+          "Supervisor Mendelsohn, seconded",
+      ),
+    ).toBe(true);
+  });
+
+  it.each([
+    ["a queue with no honorifics", "Jeff Shaw, 1770 Broadway Representative, 50 Parkridge Drive Judy Jong, 609-611 Taraval Street Ted Carroll, 107 Maywood Drive"],
+    ["a queue under a printed heading", "Hearing Held — Mrs. Nancy Knickerbocker, 2437 Pacific Avenue, an interested property owner; Lewis P. Mansfield, 2628 Steiner Street, an interested property owner"],
+    ["appellants and respondents", "Appellants Beverly La Rocca, appellant, 2439 - 38th Avenue Warren Lebenherr, 2450 - 38th Avenue Respondents Robert Passmore, Department of City Planning Gordon Lau, 535 Jackson Street John Lee, Madison, Wisconsin Alan Mason, 115 Gough Street Richard Jay\u2026"],
+    ["a claim table", "Claimant Location Amount Maribelle Leavitt 557 Belvedere Street $66.93 James L. Blanson 256 Orizaba Avenue 27.02"],
+    ["the clerk closing a hearing", "Mr. Arnold F. Swenson, 184 Cambridge Street There being no one else present desiring to speak, the public hearing was declared concluded."],
+  ])("demotes %s", (_what, line) => {
+    expect(isSpeakerList(line)).toBe(true);
+  });
+
+  /**
+   * THE ONE-PAIR RULE WAS MEASURED AND REFUSED, and these are what it would
+   * have cost. One person with an address is very often the record at its
+   * best; a rule that cannot keep these is the wrong rule whatever it catches.
+   */
+  it.each([
+    ["a boiler permit", "Oil and Boiler Permits — Alvara Ramazzotti, 1452 Vallejo street, 1500 gallons capacity."],
+    ["a laundry permit", "Laundry Permits — Mrs. A. Termello, 41 Franklin street."],
+    ["an oil tank permit", "Oil Tank Permits — Mrs. N. A. Dorn, 1802 Pacific avenue, 20000 gallons capacity."],
+    ["a rules item", "Rules of Proceedings — Edward I. Wolfe, 1408 California street."],
+    ["one person, inside a sentence", "Mrs. Florence Friedmann, 66 Raymond avenue, representing Visitacion Community Center, was heard urging a yearly appropriation for the completion of this project."],
+  ])("keeps %s", (_what, line) => {
+    expect(isSpeakerList(line)).toBe(false);
+  });
+
+  /**
+   * An ITEM may carry two addresses and stay an item. The opening action verb
+   * is the whole discriminator, and these are the ordinances that proved it.
+   */
+  it.each([
+    ["an ordinance naming two addresses", "Amending the Planning Code to designate the Sacred Heart Parish Complex, located at 546-548 Fillmore Street, 554 Fillmore Street"],
+    ["a settlement naming two parties", "Authorizing settlement of the lawsuit filed by 18th and Arkansas Homeowners Association, 1220 Folsom Street Owners' Association"],
+    ["a transfer of jurisdiction", "Transferring jurisdiction from the Public Utilities Commission to the Public Transportation Commission over 100 Main Street and 200 Beale Street"],
+    ["a permit granted under a heading", "Outdoor Exhibition Permit — Permission is hereby granted to Bay View Community Club to conduct an outdoor exhibition at 1500 Newhall Street and 200 Palou Avenue"],
+    ["denied laundry permits", "Denying Hand Laundry Permits — Hen Wee, 415 Kearny street; Lee Bork Jam, 932 Larkin street"],
+  ])("keeps %s", (_what, line) => {
+    expect(isSpeakerList(line)).toBe(false);
+  });
+
+  /** the regex carries /g, so it must not carry lastIndex between calls */
+  it("is stateless across calls", () => {
+    const line = "Mrs. Margaret Brown, 1063 Oak Street Mrs. Alice M. Piper, 1115 Brussels Street";
+    expect([isSpeakerList(line), isSpeakerList(line), isSpeakerList(line)]).toEqual([
+      true,
+      true,
+      true,
+    ]);
+  });
+});
+
+describe("isVoteTally — a roster of who voted is not a decade either", () => {
+  /** the one found on the rail after isSpeakerList landed, block 3752's 1960s */
+  it("demotes the roll call that was on screen", () => {
+    expect(
+      isVoteTally(
+        "Supei'visors Blake, Boas, Dobbs, Ertola, Ferdon, Halley, McMahon, " +
+          "Morrison, Tamaras, Tinney — 10.",
+      ),
+    ).toBe(true);
+  });
+
+  it.each([
+    ["an absence list", "Absent: Supervisors Dobbs, McCarty, McMahon, Rolph — 4."],
+    ["an ayes list", "Ayes — Supervisors Brandon, Deasy, Gallagher, Hayden."],
+    ["a modern ayes list", "Ayes: Supervisors Achtenberg, Hallinan, Migden - 3."],
+    ["one under a printed heading", "Passage for Second Reading — Absent: Supervisors Blake, Ertola, McMahon — 3."],
+    ["the OCR variant of the word", "Supei'visors Casey, Dobbs, Ertola, Ferdon, Halley, McMahon, Sullivan, Tamaras, Tinney, Zirpoli — 10."],
+  ])("demotes %s", (_what, line) => {
+    expect(isVoteTally(line)).toBe(true);
+  });
+
+  /**
+   * ANCHORED, and this is what the anchor buys. A line whose TAIL is a roll
+   * call is still an item — the unanchored form caught the same 55 lines and
+   * they were the wrong 55.
+   */
+  it.each([
+    ["an appropriation ending in a tally", "Fiscal Impact.) FINALLY PASSED 070177 [Appropriating $1,344,490 for Geneva Avenue Car Barn Repairs and Alemany"],
+    ["an ordinance ending in a tally", "Entitled, \"Establishing grades on Geneva avenue, between Mission street and San Jose avenue.\" Ayes — Supervisors Brandon, Deasy, Gallagher"],
+    ["a sewer order", "Ordering Construction of Sewer in Harrison Street, Between Fourth and Sixth Streets."],
+    ["a boiler permit", "Oil and Boiler Permits — Alvara Ramazzotti, 1452 Vallejo street, 1500 gallons capacity."],
+  ])("keeps %s", (_what, line) => {
+    expect(isVoteTally(line)).toBe(false);
+  });
+});
+
+describe("railSilence — the fourth reason is ours, not the record's", () => {
+  const row = (t: string): BlockDecision => ({ y: 1965, d: "", k: "R", p: 3, f: 1, a: 0, u: "v/1", t });
+
+  it("says roster when the only readable line is a vote tally", () => {
+    expect(
+      railSilence([row("Supei'visors Blake, Boas, Dobbs, Ertola, Ferdon, Halley, McMahon, Morrison, Tamaras, Tinney — 10.")]),
+    ).toBe("roster");
+  });
+
+  it("says roster when the only readable line is a queue of speakers", () => {
+    expect(
+      railSilence([row("Mrs. Margaret Brown, 1063 Oak Street Mrs. Alice M. Piper, 1115 Brussels Street Mr. Grady Lovett, 1330 Page Street")]),
+    ).toBe("roster");
+  });
+
+  /** a rung that is ALSO damaged keeps the older, larger fact */
+  it("still says damaged when a row is genuinely broken", () => {
+    expect(
+      railSilence([
+        row("Absent: Supervisors Dobbs, McCarty, McMahon, Rolph — 4."),
+        row("Xew Series), entitled, \"(Jranting ]»ernnssion, during the pleasure of the Board"),
+      ]),
+    ).toBe("damaged");
+  });
+
+  /** and the three older answers are untouched */
+  it("still says truncated when our own ellipsis is the whole of it", () => {
+    expect(
+      railSilence([row("Ordering the Improvement of Madera Street between Bryant and York streets and…")]),
+    ).toBe("truncated");
+  });
+
+  it("still says no_line when the volume prints nothing", () => {
+    expect(railSilence([row("")])).toBe("no_line");
   });
 });

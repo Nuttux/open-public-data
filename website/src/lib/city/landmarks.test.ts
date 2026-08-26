@@ -59,7 +59,7 @@ describe("the emphasis law's vertical", () => {
 
 describe("what the vertical buys, at the three presets", () => {
   // City Hall: 11,251.5 m2 of published footprint, top 88.0 m, roofline 26 m
-  const TOP = 88.0, AREA = 11251.5, ZR = 26.0;
+  const TOP = 88.0, AREA = 11251.5;
   const E = () => PRESETS.map((k) =>
     emphasis(recognisableTop(TOP, AREA, WO_ZEXB), k, WO_ZEXB, H));
 

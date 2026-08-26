@@ -104,10 +104,6 @@ function titleCase(s: string) {
   return s.replace(/\w\S*/g, (t) => t.charAt(0) + t.slice(1).toLowerCase());
 }
 
-const MEASURE_LABEL: Record<string, string> = {
-  bond_expended: "voter-bond funds spent",
-  contract_paid: "paid to contractors",
-};
 
 /**
  * The money — built on the Paris LieuFiche grammar, because the flat version of
@@ -372,12 +368,6 @@ function titleCaseItem(s: string) {
   );
 }
 
-/** Long description strings arrive all-lowercase; capitalize and trim. */
-function sentenceCase(s: string) {
-  const clean = s.trim();
-  const short = clean.length > 130 ? clean.slice(0, 127).replace(/\s+\S*$/, "") + "…" : clean;
-  return short.charAt(0).toUpperCase() + short.slice(1);
-}
 
 export default function SfPlaceFiche({ place }: { place: SfPlaceFicheData }) {
   const bl = place.money.budget_line;

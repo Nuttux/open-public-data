@@ -4925,6 +4925,7 @@ const fr: Record<string, string> = {
   'us.sf.thecity.panel.lead_open': 'Open the scanned page',
   'us.sf.thecity.panel.lead_open_pdf': 'Open the minutes',
   'us.sf.thecity.panel.rail_truncated': 'Every line this decade prints is cut short here — open it to read the entries on their scanned pages.',
+  'us.sf.thecity.panel.rail_roster': 'What this decade prints here is a list of names — who spoke, or who voted — so nothing is quoted at the head of it. Open it to read them.',
   'us.sf.thecity.panel.rail_not_scanned': 'not scanned',
   'us.sf.thecity.panel.rail_partial_tail': 'The {decade}s above is not a full decade — it covers {from}–{to}.',
   'us.sf.thecity.panel.rail_aria_partial': '{decade}s — {n} decisions on this block, {from} to {to}',

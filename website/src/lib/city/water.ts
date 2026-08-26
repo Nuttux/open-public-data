@@ -32,6 +32,8 @@ import {
   sx,
   sy,
   TerrainField,
+  LOOK,
+  zOf,
 } from "./terrain";
 
 /**
@@ -1172,11 +1174,125 @@ export function drawWater(f: Frame, L: WaterLayers): void {
     blitGridPlate(f, L.shoal, L.surround, L.shoalTexels ?? 1);
   if (L.depth && L.surround) {
     blitGridPlate(f, L.depth, L.surround, L.depthTexels ?? 1);
+    /* the wave tooth goes OVER the published depth and UNDER the haze, so a
+       far reach of water loses its waves with the same fade it loses its
+       colour — see `drawWaves` */
+    drawWaves(f);
     // the fade the plate does not carry — over the depth and under the land,
     // which is where the mock bakes it
     const anchor = L.downtown ?? hazeAnchor;
     if (anchor) drawDepthHaze(f, anchor);
+  } else {
+    drawWaves(f);
   }
+}
+
+/* ── THE WAVE TOOTH ──────────────────────────────────────────────────────
+ *
+ * A DECLARED TREATMENT, like the shoal band, and it claims nothing: the bay
+ * plate and the depth plate are two smooth fields and together they read as a
+ * flat blue fill — on the whole-city frame the water is 40 % of the picture
+ * and it was the one surface with no hand in it. Gouache-board water in the
+ * bird's-eye lithographs this register is drawn after carries a short,
+ * broken, horizontal stroke — a tooth, not a wave field — and that is what
+ * this is: one 176 px tile of ~26 short arcs, light over dark, repeated.
+ *
+ * Two rules keep it honest and cheap:
+ *  - it is painted BEFORE the land and BEFORE the haze, so the land covers it
+ *    and the far field fades it exactly as it fades the colour under it;
+ *  - the tile is scaled by the zoom's square root, so the stroke stays a
+ *    stroke at the district camera rather than becoming a texture of
+ *    pinpricks, and it is capped so the street camera never sees a wave the
+ *    width of a building.
+ * The pattern is one `createPattern` fill per rasterisation, and it is gated
+ * on `LOOK.waves`.
+ */
+const WAVE_TILE = 176;
+type WaveCanvas = HTMLCanvasElement | OffscreenCanvas;
+function waveCanvas(w: number, h: number): WaveCanvas | null {
+  if (typeof OffscreenCanvas !== "undefined") return new OffscreenCanvas(w, h);
+  if (typeof document === "undefined") return null;
+  const c = document.createElement("canvas");
+  c.width = w;
+  c.height = h;
+  return c;
+}
+let waveTile: WaveCanvas | null = null;
+let waveTileDpr = 0;
+const wavePatterns = new WeakMap<CanvasRenderingContext2D, CanvasPattern>();
+
+function waveTileFor(dpr: number): WaveCanvas | null {
+  if (waveTile && waveTileDpr === dpr) return waveTile;
+  const px = Math.max(1, Math.round(WAVE_TILE * dpr));
+  const cv = waveCanvas(px, px);
+  if (!cv) return null;
+  const g = cv.getContext("2d") as CanvasRenderingContext2D | null;
+  if (!g) return null;
+  g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  g.clearRect(0, 0, WAVE_TILE, WAVE_TILE);
+  g.lineCap = "round";
+  // a fixed LCG so the tile is the same on every machine and every frame
+  let seed = 0x9e3779b9;
+  const rnd = (): number => {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    return seed / 4294967296;
+  };
+  const wraps: readonly (readonly [number, number])[] = [
+    [0, 0], [-WAVE_TILE, 0], [0, -WAVE_TILE], [-WAVE_TILE, -WAVE_TILE],
+  ];
+  for (let i = 0; i < 26; i++) {
+    const x = rnd() * WAVE_TILE;
+    const y = rnd() * WAVE_TILE;
+    const len = 7 + rnd() * 16;
+    const bow = (rnd() - 0.5) * 2.4;
+    const dark = rnd() < 0.36;
+    // the stroke is drawn again across the tile edge so the repeat has no seam
+    for (const [ox, oy] of wraps) {
+      const X = x + ox, Y = y + oy;
+      if (X + len < -2 || X > WAVE_TILE + 2 || Y < -4 || Y > WAVE_TILE + 4) continue;
+      g.beginPath();
+      g.moveTo(X, Y);
+      g.quadraticCurveTo(X + len * 0.5, Y + bow, X + len, Y);
+      g.lineWidth = dark ? 1.0 : 1.1;
+      g.strokeStyle = dark ? "rgba(34,56,96,0.13)" : "rgba(255,255,255,0.22)";
+      g.stroke();
+      if (!dark) {
+        // the shadow line a lithographer puts under a highlight
+        g.beginPath();
+        g.moveTo(X + 1, Y + 1.2);
+        g.quadraticCurveTo(X + len * 0.5, Y + bow + 1.2, X + len - 1, Y + 1.2);
+        g.lineWidth = 0.8;
+        g.strokeStyle = "rgba(34,56,96,0.07)";
+        g.stroke();
+      }
+    }
+  }
+  waveTile = cv;
+  waveTileDpr = dpr;
+  return cv;
+}
+
+/** the wave tooth over the whole frame; the land is painted over it after */
+export function drawWaves(f: Frame): void {
+  if (!LOOK.waves || !QF.water) return;
+  if (typeof DOMMatrix === "undefined") return;
+  const { ctx, W, H, cam } = f;
+  const tile = waveTileFor(f.dpr);
+  if (!tile) return;
+  let pat = wavePatterns.get(ctx) ?? null;
+  if (!pat) {
+    pat = ctx.createPattern(tile as CanvasImageSource, "repeat");
+    if (!pat) return;
+    wavePatterns.set(ctx, pat);
+  }
+  const z = zOf(cam);
+  const k = Math.min(2.6, Math.max(1, Math.sqrt(Math.max(1, z))));
+  // the tile is drawn at DPR so it has to be scaled back down by it here
+  pat.setTransform(new DOMMatrix().scale(k / f.dpr));
+  ctx.save();
+  ctx.fillStyle = pat;
+  ctx.fillRect(0, 0, W, H);
+  ctx.restore();
 }
 
 /**
@@ -1384,10 +1500,18 @@ export function drawShoreline(
      the last thing in `drawTerrain` before the names. Painting the ink first
      and the corridor over it would rub out the line the corridor exists to
      make visible. */
-  if (QF.shore) drawShoreCorridor(f, t, coast, layers ?? lastWater ?? {});
+  /* ── AND NOT AT THE WIDE CAMERAS, MEASURED 2026-08-26 ────────────────
+     `coastBand`'s wedges are built in world metres and at z < 1.6 they
+     project to sharp triangular shards a hundred pixels long across the
+     open bay — the "spiky polygon" on every opening frame (shots/shore-
+     pair.png: corridor on, corridor off). The staircase it exists to cut
+     back is three pixels a step at that camera and the rim under the ink
+     now covers it. From the district camera in, the corridor does its job
+     and the wedges are under the shore where they belong. Settled at 3.0: the
+     1936 and 1907 shots at z 2.05-2.55 still showed the shards at 1.6, and
+     the district camera at 2.6+ needs the corridor for its own staircase. */
+  if (QF.shore && zOf(f.cam) >= 3.0) drawShoreCorridor(f, t, coast, layers ?? lastWater ?? {});
   ctx.save();
-  ctx.strokeStyle = "rgba(10,10,10,.42)";
-  ctx.lineWidth = 1.0;
   ctx.beginPath();
   for (const ring of coast) {
     let pen = false;
@@ -1414,6 +1538,21 @@ export function drawShoreline(
       pen = true;
     }
   }
+  /* ── THE RIM — `LOOK.shorerim` ────────────────────────────────────────
+     A model's edge meets its resin: the lithographs this register follows
+     put a pale halo along the coast under the ink, so the line reads as an
+     EDGE and not as a wire. The same path, stroked pale and wide first,
+     then the ink over it — one extra stroke per rasterisation. */
+  if (LOOK.shorerim) {
+    ctx.lineJoin = "round";
+    ctx.strokeStyle = "rgba(255,252,242,.75)";
+    ctx.lineWidth = 4.0;
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(10,10,10,.5)";
+  } else {
+    ctx.strokeStyle = "rgba(10,10,10,.42)";
+  }
+  ctx.lineWidth = 1.0;
   ctx.stroke();
   ctx.restore();
 }

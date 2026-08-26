@@ -12,7 +12,6 @@ import {
   type SfSide,
 } from "@/lib/us/sf-budget-data";
 import { deptSlug } from "@/lib/us/sf-budget-slugs";
-import { fmtUsdCompact } from "@/lib/us/format";
 
 type Params = { slug: string; charSlug: string };
 type SP = { year?: string; side?: string };
