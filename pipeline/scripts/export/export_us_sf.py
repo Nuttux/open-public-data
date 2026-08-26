@@ -24,7 +24,7 @@ Outputs (website/public/data/us/sf/):
       sharing the same denominator so the page's lens toggle re-cuts one
       total. Source: mart_us_sf_payment_breakdowns.
     - payee_profiles.json  (pipeline/cache/us_sf/, NOT public/data — it is a
-      pipeline intermediate, read only by normalize_sf_payees.py)
+      pipeline intermediate, read only by export_us_sf_payees.py)
                            : per-vendor rollups — paying departments with
       dollars, sub-object categories (FY2018+) carrying spend_class, and
       the most recently CLOSED fiscal year broken into department ×
@@ -82,7 +82,7 @@ OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" /
 # Intermediates consumed by a later pipeline step, not by the site. Kept out
 # of public/data so the shipped data directory stays exactly "what the site
 # reads" (payee_profiles.json is 8 MB and is baked into the per-payee fiches
-# by normalize_sf_payees.py, which is the only thing that ever opens it).
+# by export_us_sf_payees.py, which is the only thing that ever opens it).
 CACHE_DIR = Path(__file__).parent.parent.parent / "cache" / "us_sf"
 
 SOURCE_PIPELINE = (
@@ -671,7 +671,7 @@ def build_payee_profiles(rows: list[dict]) -> dict:
     payment lines: which department paid, and which sub-object it was
     booked to ("Food", "Interpreters", "Rent/Lease-Building/Structure").
 
-    Keyed by the RAW Controller vendor string. normalize_sf_payees.py merges
+    Keyed by the RAW Controller vendor string. export_us_sf_payees.py merges
     these across the spelling variants it folds into one payee, so the fiche
     sees one rollup per normalized entity, not per spelling.
     """

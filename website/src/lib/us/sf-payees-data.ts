@@ -3,7 +3,7 @@ import { readDataJsonOrNull } from "@/lib/data/read";
 
 /**
  * Server-side loaders for the normalized SF payees (public/data/us/sf/payees/*,
- * written by normalize_sf_payees.py). Only the top ~200 payees by lifetime
+ * written by export_us_sf_payees.py from mart_us_sf_payees). Only the top ~200 payees by lifetime
  * dollars are keyed; everything else stays an unkeyed string and must render
  * as plain text, never a link (the do-not-promise rule).
  */
@@ -63,7 +63,7 @@ export type SfSpendClass = "purchase" | "obligation" | "ledger" | "unclear";
 /**
  * What the City pays a payee FOR — the rollups mart_us_sf_payee_profile
  * derives from the account coding on the payee's own voucher lines, summed
- * across every spelling normalize_sf_payees.py merged into this entity.
+ * across every spelling seed_us_sf_payee_identity merged into this entity.
  *
  * This is the SF answer to the slot Paris fills from SIRENE: SF vendors carry
  * no registry id, so the City's own department + sub-object coding is the only
@@ -177,7 +177,7 @@ export function loadSfPayee(slug: string): SfPayeeFicheData | null {
   const fiche = readDataJsonOrNull<SfPayeeFicheData>(`us/sf/payees/${slug}.json`);
   if (!fiche) return null;
   const trail = readDataJsonOrNull<{ documents: SfPayeePaperTrail[]; matched_alias?: string }>(
-    `us/sf/dl_documents/payee-${slug}.json`,
+    `enrichment/us_sf_payee_documents/payee-${slug}.json`,
   );
   // Defence in depth against OCR letter-noise: an alias with no token of 4+
   // characters ("A P X") matches scanned gibberish, so a stale file from
@@ -215,7 +215,7 @@ export function payeeSlugIfKeyed(slug: string): string | null {
 /**
  * Inverse of every keyed payee's `contracts_held`: contract_no → payee slug.
  * `contracts_held` is joined on the contract's prime-contractor core (see
- * normalize_sf_payees.py), so this resolves a contract to its keyed PRIME
+ * build_sf_payee_identity.py), so this resolves a contract to its keyed PRIME
  * payee — a confident reverse link with no name-matching guesswork. Built
  * once per build/dev process and memoized (≈200 small reads, one time).
  */

@@ -479,3 +479,15 @@ models:
       (stg_marseille_cache_thematique) sur beneficiaire_normalise ; colonnes
       siret / direction / secteurs exposées à NULL pour aligner le schéma sur
       core_subventions (Paris).
+
+  - name: core_marseille_place_subventions
+    description: >
+      Subventions Marseille rattachées à un lieu, ligne à ligne : chaque
+      subvention de core_marseille_subventions dont le bénéficiaire (relation
+      operator) ou l'objet (relation residents, hors exclusions) matche la
+      regex du lieu. L'objet est conservé comme preuve. Aucun seuil ici.
+    columns:
+      - name: place_slug
+        tests: [not_null]
+      - name: montant
+        tests: [not_null]

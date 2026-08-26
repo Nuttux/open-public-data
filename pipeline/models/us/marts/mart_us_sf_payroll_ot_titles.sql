@@ -91,4 +91,4 @@ LEFT JOIN display d
     ON d.job_family_code = b.family_code
 CROSS JOIN provenance pr
 WHERE b.n_employees >= 100
-QUALIFY ROW_NUMBER() OVER (ORDER BY b.overtime_usd DESC) <= 10
+QUALIFY ROW_NUMBER() OVER (ORDER BY b.overtime_usd DESC, b.job_code) <= 10

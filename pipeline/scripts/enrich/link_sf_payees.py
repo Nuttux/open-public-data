@@ -34,7 +34,9 @@ from export_sf_places import (  # noqa: E402
 CACHE = ROOT / "pipeline" / "cache" / "ia_sf" / "payees"
 SF = ROOT / "website" / "public" / "data" / "us" / "sf"
 PAYEES = SF / "payees"
-DLDOCS = SF / "dl_documents"
+# Category E side-channel cache (per-payee document lists, no metric) —
+# lives under public/data/enrichment/ per docs/data-platform/04 §4.2.
+DLDOCS = ROOT / "website" / "public" / "data" / "enrichment" / "us_sf_payee_documents"
 
 POOL_LABEL = {
     "sfpl": "Internet Archive — San Francisco Public Library partnership scans",

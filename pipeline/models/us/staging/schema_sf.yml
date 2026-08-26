@@ -371,3 +371,14 @@ models:
     columns:
       - name: sub_object_code
         tests: [not_null, unique]
+
+  - name: stg_us_sf_payee_identity
+    description: >
+      Wrapper over seed_us_sf_payee_identity (build_sf_payee_identity.py): raw
+      Controller vendor string → normalized payee slug/name, with the curated
+      merge reason for JV / predecessor / spelling merges. Identity only.
+    columns:
+      - name: vendor
+        tests: [not_null, unique]
+      - name: payee_slug
+        tests: [not_null]

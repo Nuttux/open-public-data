@@ -1,10 +1,10 @@
 /**
  * Cities registry — single source of truth for `/fr/city/[slug]` pages.
  *
- * Generated from `pipeline/seeds/seed_communes_cibles.csv` via
- * `pipeline/scripts/export/export_cities.py`.
- *
- * To add a city: add a row in the seed, run the export script, type-check.
+ * `src/data/cities.json` is a hand-maintained registry (the former
+ * export_cities.py generator was removed 2026-08-26: it read columns that
+ * `seed_communes_cibles.csv` no longer carries). Keep the seed's
+ * code_insee / slug / nom in sync when adding a city.
  * Population values are sourced from OFGL (latest available year).
  */
 import citiesData from "@/data/cities.json";

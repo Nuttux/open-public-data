@@ -52,7 +52,7 @@ matched AS (
         ST_DISTANCE(fac.geo, proj.geo) AS distance_m,
         ROW_NUMBER() OVER (
             PARTITION BY fac.place_slug, proj.project_name
-            ORDER BY ST_DISTANCE(fac.geo, proj.geo)
+            ORDER BY ST_DISTANCE(fac.geo, proj.geo), fac.facility_id
         ) AS rn
     FROM fac
     JOIN proj

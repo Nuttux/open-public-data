@@ -24,6 +24,12 @@ payee_buckets AS (
     FROM {{ ref('stg_us_sf_payee_buckets') }}
 ),
 
+-- Normalized payee identity (seed, display/keying only — never touches amounts).
+payee_identity AS (
+    SELECT vendor, payee_slug, payee_name, merge_reason
+    FROM {{ ref('stg_us_sf_payee_identity') }}
+),
+
 -- Sub-object spend classification (purchase / obligation / ledger / unclear).
 subobject_class AS (
     SELECT sub_object_code, spend_class, basis, needs_review
@@ -43,10 +49,15 @@ SELECT
     pb.classified_at                   AS payee_bucket_classified_at,
     pb.is_aggregation_line             AS is_aggregation_line,
     pb.vendor IS NOT NULL              AS is_payee_bucketed,
+    -- normalized payee (stg_us_sf_payee_identity); NULL outside the keyed set
+    pi.payee_slug,
+    pi.payee_name,
+    pi.merge_reason                    AS payee_merge_reason,
     -- sub-object spend class (stg_us_sf_subobject_class)
     sc.spend_class                     AS sub_object_spend_class,
     sc.basis                           AS sub_object_spend_class_basis,
     sc.needs_review                    AS sub_object_spend_class_needs_review
 FROM vouchers v
 LEFT JOIN payee_buckets pb   ON pb.vendor = v.vendor
+LEFT JOIN payee_identity pi  ON pi.vendor = v.vendor
 LEFT JOIN subobject_class sc ON sc.sub_object_code = v.sub_object_code

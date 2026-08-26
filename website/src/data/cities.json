@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-05-03T16:53:48.886276+00:00",
-  "source_pipeline": "pipeline/seeds/seed_communes_cibles.csv",
+  "source_pipeline": "website/src/data/cities.json (hand-maintained registry; export_cities.py removed 2026-08-26)",
   "source_data": "OFGL — ofgl-base-communes (latest available year)",
   "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-communes/",
   "cities": [

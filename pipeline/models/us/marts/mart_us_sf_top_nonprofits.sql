@@ -60,7 +60,7 @@ top_department AS (
             fiscal_year, vendor, department,
             ROW_NUMBER() OVER (
                 PARTITION BY fiscal_year, vendor
-                ORDER BY SUM(vouchers_paid) DESC
+                ORDER BY SUM(vouchers_paid) DESC, department
             ) AS rn
         FROM {{ ref('core_us_sf_vouchers') }}
         WHERE fiscal_year >= 2018 AND is_non_profit AND vendor IS NOT NULL
@@ -80,7 +80,7 @@ ranked AS (
         (pb.bucket IS NULL OR pb.bucket = 'nonprofit')
             AND NOT COALESCE(pb.is_aggregation_line, FALSE) AS in_community_ranking,
         ROW_NUMBER() OVER (
-            PARTITION BY bv.fiscal_year ORDER BY bv.vouchers_paid_usd DESC
+            PARTITION BY bv.fiscal_year ORDER BY bv.vouchers_paid_usd DESC, bv.vendor
         ) AS rank_in_fy
     FROM by_vendor bv
     LEFT JOIN {{ ref('int_us_sf_payees') }} pb
@@ -92,7 +92,7 @@ community_ranked AS (
         fiscal_year,
         vendor,
         ROW_NUMBER() OVER (
-            PARTITION BY fiscal_year ORDER BY vouchers_paid_usd DESC
+            PARTITION BY fiscal_year ORDER BY vouchers_paid_usd DESC, vendor
         ) AS community_rank
     FROM ranked
     WHERE in_community_ranking

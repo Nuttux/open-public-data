@@ -179,6 +179,13 @@ def _is_write_call(call: ast.Call, public_vars: set[str]) -> tuple[bool, bool, b
     return False, False, False
 
 
+
+def _root_name(node: ast.AST | None) -> str | None:
+    """Left-most Name of a pathlib `/` chain: (A / "b" / f"{c}") → "A"."""
+    while isinstance(node, ast.BinOp):
+        node = node.left
+    return node.id if isinstance(node, ast.Name) else None
+
 def detect(text: str) -> WriteResult:
     """Run AST detection on a Python source `text`."""
     try:
@@ -226,9 +233,12 @@ def detect(text: str) -> WriteResult:
                 if is_enr:
                     writes_enrichment = True
                 else:
-                    # Check if the target variable is in enrichment_vars
+                    # Check if the target variable is in enrichment_vars —
+                    # either the bare name (OUT.write_text) or the root of a
+                    # path expression built from it ((OUT / f"x.json").write_text).
                     target = node.func.value if isinstance(node.func, ast.Attribute) else None
-                    if isinstance(target, ast.Name) and target.id in enrichment_vars:
+                    root = _root_name(target)
+                    if root is not None and root in enrichment_vars:
                         writes_enrichment = True
                     else:
                         writes_metric = True

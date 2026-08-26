@@ -43,6 +43,8 @@ LINKAGE = ROOT / "pipeline" / "cache" / "ia_sf" / "linkage"
 SF = ROOT / "website" / "public" / "data" / "us" / "sf"
 PLACES = SF / "places"
 DLDOCS = SF / "dl_documents"
+# payee paper-trails (link_sf_payees.py) — Category E cache under enrichment/
+PAYEE_DOCS = ROOT / "website" / "public" / "data" / "enrichment" / "us_sf_payee_documents"
 
 POOL_LABEL = {
     "sfpl": "Internet Archive — San Francisco Public Library partnership scans",
@@ -381,7 +383,7 @@ def harvest_glosses() -> int:
         for d in fiche.get("documents") or []:
             take("place", fiche["slug"], d["identifier"], d.get("gloss"))
 
-    for f in sorted(DLDOCS.glob("payee-*.json")):
+    for f in sorted(PAYEE_DOCS.glob("payee-*.json")):
         blob = json.loads(f.read_text())
         for d in blob.get("documents") or []:
             take("payee", blob["slug"], d["identifier"], d.get("gloss"))

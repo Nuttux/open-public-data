@@ -665,3 +665,16 @@ models:
     description: >
       Miroir Marseille de mart_subventions_treemap : montants par
       (annee, thematique) et totaux annuels de core_marseille_subventions.
+
+  - name: mart_marseille_place_money
+    description: >
+      Argent public par lieu Marseille : l'opérateur dominant (plus gros
+      cumul parmi les lignes operator, au-dessus de min_montant_total, avec
+      ses montants par année) et les résidents (autres bénéficiaires dont
+      l'objet nomme le lieu, top max_rows par montant, preuve = objet de la
+      plus grosse subvention). Export : export_marseille_place_money.py.
+    columns:
+      - name: place_slug
+        tests: [not_null]
+      - name: relation
+        tests: [not_null]

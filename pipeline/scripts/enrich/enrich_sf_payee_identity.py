@@ -22,7 +22,7 @@ Cascade per payee, in order, first hit wins:
   3. Nothing. The fiche then shows only what the City's own data says, which
      is the honest outcome and never a placeholder sentence.
 
-Output is a CACHE, not a patch: normalize_sf_payees.py reads it and folds
+Output is a CACHE, not a patch: export_us_sf_payees.py reads it and folds
 `identity` into each fiche as it writes them. That direction matters — the
 fiches are REBUILT from BigQuery on every export, so anything applied to them
 afterwards is destroyed by the next run (the lesson from the SF place glosses,
@@ -153,7 +153,7 @@ def expand_abbrev(name: str) -> str:
 
 def core(name: str) -> str:
     """
-    Same normalization as normalize_sf_payees.core(), minus the ordering.
+    Same normalization as build_sf_payee_identity.core(), minus the ordering.
 
     Apostrophes are DELETED, not turned into spaces: "Children's Council"
     would otherwise normalize to "CHILDREN S COUNCIL" while the registry's
@@ -438,7 +438,7 @@ def main() -> int:
 
     index_path = PAYEES / "index.json"
     if not index_path.exists():
-        print(f"✗ {index_path} absent — run normalize_sf_payees.py first")
+        print(f"✗ {index_path} absent — run export_us_sf_payees.py first")
         return 1
     index = json.loads(index_path.read_text())["payees"]
 
@@ -510,7 +510,7 @@ def main() -> int:
           f"· cached {n_cached} · skipped by kind {n_skipped}")
     if not args.llm:
         print("  (run again with --llm and ANTHROPIC_API_KEY to cover the registry misses)")
-    print("  → re-run normalize_sf_payees.py to fold these into the fiches")
+    print("  → re-run export_us_sf_payees.py to fold these into the fiches")
     return 0
 
 

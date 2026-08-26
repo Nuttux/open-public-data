@@ -798,3 +798,17 @@ models:
     columns:
       - name: n_sub_only
         tests: [not_null]
+
+  - name: mart_us_sf_payees
+    description: >
+      Normalized SF payees, top 200 by lifetime dollars: one row per
+      payee_slug with total paid, per-FY series (zero-net years dropped),
+      first/last year, top paying departments, the spelling variants with
+      their own totals and merge reasons, kind (manual bucket, else nonprofit
+      flag, else other). Dollars summed from core_us_sf_vouchers over every
+      variant. Published by export_us_sf_payees.py.
+    columns:
+      - name: slug
+        tests: [not_null, unique]
+      - name: total_paid_usd
+        tests: [not_null]

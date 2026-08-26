@@ -128,6 +128,20 @@ seeds:
     # Marseille — cache Bénéficiaire → Thématique
     # (peuplé par enrich_thematique_marseille.py ; grounded secteur + keywords)
     # -------------------------------------------------------------------------
+    # Règles place ↔ subventions des lieux Marseille (ex build_marseille_place_money.py):
+    # par lieu, une regex « operator » (le lieu est lui-même le bénéficiaire, seuil
+    # min_montant_total) et une regex « residents » (l'objet nomme le lieu,
+    # exclude_regex écarte les écoles homonymes, max_rows plafonne la liste).
+    seed_marseille_place_subventions_rules:
+      +column_types:
+        place_slug: STRING
+        relation: STRING
+        match_regex: STRING
+        exclude_regex: STRING
+        min_montant_total: FLOAT64
+        max_rows: INT64
+        note: STRING
+
     seed_marseille_cache_thematique:
       +column_types:
         beneficiaire_normalise: STRING
@@ -318,6 +332,17 @@ seeds:
         # all-time top-200 classified in-session; is_aggregation_line flags
         # the Controller's aggregated vendor lines (Single Payment Payees,
         # HSA AP Interface) that are not real entities.
+        # Raw vendor string → normalized payee (build_sf_payee_identity.py:
+        # exact core-name match + reviewed JV/predecessor merges). Joined
+        # row-level in core_us_sf_vouchers; identity only, never amounts.
+        seed_us_sf_payee_identity:
+          +column_types:
+            vendor: STRING
+            payee_slug: STRING
+            payee_name: STRING
+            core_key: STRING
+            merge_reason: STRING
+            is_curated: BOOLEAN
         seed_us_sf_payee_buckets:
           +column_types:
             vendor: STRING

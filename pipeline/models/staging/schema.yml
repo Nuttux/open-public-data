@@ -702,3 +702,17 @@ models:
       Wrapper sans transformation de seed_marseille_cache_thematique :
       thématique finale par beneficiaire_normalise, produite par
       enrich_thematique_marseille.py.
+
+  - name: stg_marseille_place_subventions_rules
+    description: >
+      Wrapper de seed_marseille_place_subventions_rules : par lieu Marseille,
+      une regex « operator » (le bénéficiaire est le lieu, seuil
+      min_montant_total) et une regex « residents » (l'objet nomme le lieu,
+      exclude_regex écarte les écoles homonymes, max_rows plafonne).
+    columns:
+      - name: place_slug
+        tests: [not_null]
+      - name: relation
+        tests:
+          - accepted_values:
+              values: ['operator', 'residents']

@@ -21,7 +21,9 @@
 
 # Whitelist pour scripts d'enrichissement écrivant à public/data/enrichment/
 # (cf ADR-0004 : pattern polymorphe via mart_enrichment_caches).
-enrich_writes_to_enrichment: []
+enrich_writes_to_enrichment:
+  - script: pipeline/scripts/enrich/link_sf_payees.py
+    justification: "Per-payee Internet Archive paper-trails (document lists + glosses) → enrichment/us_sf_payee_documents/payee-<slug>.json. Per-record cache, no metric; lazy-loaded by the payee fiche."
 
 # Whitelist pour bypasses ingest → public/data/ direct
 # (toutes éliminées Phases 8-10, voir ADR-0001).
@@ -68,18 +70,6 @@ ingest_writes_to_data:
     todo: "Delete once a full export_us_sf_contracts.py run has been confirmed to carry the explanations"
     linked_adr: ADR-0004
   # Real bypasses — these three produce money or identity tables the UI reads.
-  - script: pipeline/scripts/enrich/build_marseille_place_money.py
-    justification: "Place ↔ subventions crosswalk for Marseille places (operator / occupant relations) → fr/marseille/places/_money.json. Carries amounts; should be a mart."
-    todo: "Move the matching into a seed crosswalk + core_marseille_place_subventions, export via a mart"
-    linked_adr: ADR-0001
-  - script: pipeline/scripts/enrich/normalize_sf_payees.py
-    justification: "Normalises SF vendor strings into payee identities and emits us/sf/payees/index.json + per-payee JSON (amounts from mart_us_sf_top_payees). Identity resolution needs Python; the money should still transit a mart."
-    todo: "Persist the identity map as a seed, join it in core_us_sf_vouchers, export through a mart_us_sf_payees"
-    linked_adr: ADR-0001
-  - script: pipeline/scripts/enrich/link_sf_payees.py
-    justification: "Attaches Internet Archive paper-trails to normalised payees → dl_documents/payee-<slug>.json. Document lists only, no metric."
-    todo: "Follows normalize_sf_payees.py: once payees come from a mart, write documents under enrichment/"
-    linked_adr: ADR-0001
 
 # Whitelist pour scripts WIP non câblés à l'UI
 # (toutes redirigées vers pipeline/cache/wip/ Phase 12).

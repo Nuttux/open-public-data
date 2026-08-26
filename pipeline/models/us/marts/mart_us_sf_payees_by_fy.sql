@@ -99,7 +99,7 @@ nonprofit_top_dept AS (
         SELECT
             fiscal_year, department, SUM(vouchers_paid) AS usd,
             ROW_NUMBER() OVER (
-                PARTITION BY fiscal_year ORDER BY SUM(vouchers_paid) DESC
+                PARTITION BY fiscal_year ORDER BY SUM(vouchers_paid) DESC, department
             ) AS rn
         FROM vouchers
         WHERE fiscal_year >= 2018 AND is_non_profit

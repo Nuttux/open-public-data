@@ -30,7 +30,7 @@ ranked AS (
     SELECT
         *,
         ROW_NUMBER() OVER (
-            PARTITION BY fiscal_year ORDER BY usd DESC
+            PARTITION BY fiscal_year ORDER BY usd DESC, vendor
         ) AS rank_in_fy
     FROM by_vendor_fy
 ),
@@ -67,7 +67,7 @@ top_department AS (
             vendor, department,
             COUNT(DISTINCT department) OVER (PARTITION BY vendor) AS n_departments,
             ROW_NUMBER() OVER (
-                PARTITION BY vendor ORDER BY SUM(vouchers_paid) DESC
+                PARTITION BY vendor ORDER BY SUM(vouchers_paid) DESC, department
             ) AS rn
         FROM {{ ref('core_us_sf_vouchers') }}
         WHERE vendor IS NOT NULL

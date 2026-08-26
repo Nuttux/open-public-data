@@ -66,7 +66,7 @@ ranked AS (
         v.*,
         ROW_NUMBER() OVER (
             PARTITION BY v.fiscal_year, v.department_code, v.character_code
-            ORDER BY v.vouchers_paid_usd DESC
+            ORDER BY v.vouchers_paid_usd DESC, v.vendor
         ) AS rank_in_cell
     FROM by_vendor v
     WHERE v.vouchers_paid_usd > 0.005  -- ranked vendor list excludes net-negative/refund rows (never in share/length visuals); cell_agg above already captured the true net total
