@@ -52,7 +52,6 @@ DATASET = "dbt_br_marts"
 # Core (row-level OBT) — read for the per-recipient by-órgão rollup. A dedicated
 # mart would be the cleaner long-term home; this bounded GROUP BY is kept in the
 # exporter for now (ships without a new mart dependency, survives CI).
-CORE_DATASET = "dbt_br_analytics"
 TOP_ORGAOS = 8
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "br" / "recife"
 
@@ -117,8 +116,8 @@ def load_orgao_slugs(client):
     """Map any órgão name → its órgão-PAGE slug (keyed on despesa órgãos, which
     are the pages). Returns (exact{slug:slug}, bykey{normkey:slug}) for exact-
     then best-effort resolution. Used to link contracts/suppliers → órgão page."""
-    q = (f"SELECT DISTINCT orgao FROM `{PROJECT_ID}.{CORE_DATASET}."
-         f"core_br_recife_despesa` WHERE is_org AND orgao IS NOT NULL")
+    q = (f"SELECT DISTINCT orgao FROM `{PROJECT_ID}.{DATASET}."
+         f"mart_br_recife_orgao_credor`")
     exact, bykey = {}, {}
     for r in client.query(q).result():
         ps = slug_orgao(r["orgao"])
@@ -323,9 +322,8 @@ def build_quem_recebe(client, log):
     # department" section) — bounded GROUP BY on core despesa (read-only).
     orgao_q = f"""
         SELECT recipient_key, orgao,
-               SUM(pago_liquido) AS pago, COUNT(*) AS n
-        FROM `{PROJECT_ID}.{CORE_DATASET}.core_br_recife_despesa`
-        WHERE is_org AND recipient_key IS NOT NULL AND orgao IS NOT NULL
+               SUM(pago) AS pago, SUM(n_empenhos) AS n
+        FROM `{PROJECT_ID}.{DATASET}.mart_br_recife_orgao_credor`
         GROUP BY 1, 2
     """
     orgao_by_doc = defaultdict(list)
@@ -790,12 +788,8 @@ def build_orgaos(client, log):
     top contracts. Payments from core despesa; contracts from the mart. Slug
     keys match TS slugOrgao()."""
     q = f"""
-        SELECT orgao, ano, recipient_key,
-               APPROX_TOP_COUNT(nome_credor, 1)[OFFSET(0)].value AS nome,
-               SUM(pago_liquido) AS pago
-        FROM `{PROJECT_ID}.{CORE_DATASET}.core_br_recife_despesa`
-        WHERE is_org AND orgao IS NOT NULL AND recipient_key IS NOT NULL
-        GROUP BY orgao, ano, recipient_key
+        SELECT orgao, ano, recipient_key, nome, pago
+        FROM `{PROJECT_ID}.{DATASET}.mart_br_recife_orgao_credor`
     """
     agg = {}  # orgao -> {total, by_year{ano:pago}, suppliers{cnpj:{nome,pago}}}
     for r in (dict(x) for x in client.query(q).result()):

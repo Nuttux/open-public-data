@@ -459,3 +459,23 @@ models:
         description: "SIRET résolu (plus gros dossier associations), NULL si inconnu."
       - name: siren
         description: "9 premiers chiffres du SIRET, NULL si inconnu."
+
+  - name: core_logement_sru_arr
+    description: >
+      Taux SRU par arrondissement × année : logements sociaux /
+      résidences principales (× 100, arrondi à 0,1) calculé ici depuis les
+      comptages bruts de stg_apur_sru ; source, source_url et licence
+      conservés sur chaque ligne. Lignes sans résidences principales exclues.
+    columns:
+      - name: arrondissement
+        tests: [not_null]
+      - name: annee
+        tests: [not_null]
+
+  - name: core_marseille_subventions
+    description: >
+      OBT Marseille, une ligne par subvention : lignes SCDL normalisées
+      (stg_marseille_subventions) jointes au cache thématique in-session
+      (stg_marseille_cache_thematique) sur beneficiaire_normalise ; colonnes
+      siret / direction / secteurs exposées à NULL pour aligner le schéma sur
+      core_subventions (Paris).

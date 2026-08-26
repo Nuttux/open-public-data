@@ -101,3 +101,56 @@ models:
             - comissao
             - processo_numero
             - processo_ano
+
+  # --- staging (documented 2026-08-26) ---
+  - name: stg_br_recife_catalog
+    description: "Typed view over raw.br_recife_catalog: one row per synced CKAN resource (dataset title, resource/page URLs, licence, last_modified → rows_updated_at)."
+  - name: stg_br_recife_contratos
+    description: "Typed view over raw.br_recife_contratos: one row per administrative contract with separate CNPJ/CPF columns (doc_tipo), both valorcontrato figures exposed, '.'-decimal amounts."
+  - name: stg_br_recife_despesa
+    description: "Typed union of raw.br_recife_despesa_credor_{2024,2025,2026}: one row per empenho × month; CPF/CNPJ split into doc + doc_tipo (is_org = CNPJ), Modalidade de Aplicação 50 → is_subvencao, monthly movement amounts."
+  - name: stg_br_recife_funcional
+    description: "Typed union of raw.br_recife_funcional_{2024,2025,2026}: monthly incremental execution by função × subfunção × programa × ação × fonte (dotação, empenhado, liquidado, pago)."
+  - name: stg_br_recife_licitacoes
+    description: "Concluídas (lot rows collapsed to one row per processo, principal supplier = largest lot value) unified with em-andamento tenders; Brazilian-format amounts normalised."
+  - name: stg_br_recife_places
+    description: "Six civic-facility families (UBS, USF, escolas, cultura, esporte, praças) mapped to one shape with swap-safe lat/lon extraction; one row per facility."
+  - name: stg_br_recife_place_obras
+    description: "Typed view over raw.br_recife_place_obras: per place slug, the number and total of public-works contracts whose objeto mentions the place (evidence, not a total spent)."
+  - name: stg_br_recife_enrich_cnpj
+    description: "Latest Receita Federal registry row per CNPJ from raw.br_recife_enrich_cnpj (razão social, CNAE code/description/section, porte, natureza jurídica, situação, município, UF)."
+  - name: stg_br_recife_enrich_vulgar
+    description: "Latest plain-language summary per CNPJ from raw.br_recife_enrich_vulgar (resumo, o_que_financia, generating model)."
+  - name: stg_br_recife_tema_map
+    description: "Wrapper over seed_mapping_tema_recife: (chave_tipo, chave) → citizen theme with a priority; chave_tipo ∈ {cnae_secao, orgao_regex}."
+
+  # --- core / marts (documented 2026-08-26) ---
+  - name: core_br_recife_despesa
+    description: "Row-level OBT of empenho × month rows from stg_br_recife_despesa with periodo_mes and recipient_key (CNPJ for organisations, NULL for individuals so no mart can surface a person)."
+    columns:
+      - name: ano
+        tests: [not_null]
+  - name: core_br_recife_funcional
+    description: "Row-level OBT of the execution-by-function rows (stg_br_recife_funcional pass-through); monthly increments, mês=0 = opening dotação."
+  - name: core_br_recife_licitacoes
+    description: "One row per tender processo (stg_br_recife_licitacoes pass-through)."
+  - name: core_br_recife_places
+    description: "Civic places with a stable slug (normalised name, ranked suffix on collisions), only facilities with a name and coordinates, plus ode_obras_total / ode_n_obras from the place ↔ works crosswalk."
+    columns:
+      - name: slug
+        tests: [not_null, unique]
+  - name: mart_br_recife_budget_mensal
+    description: "Empenhado / liquidado / pago per ano × mês (months 1–12) from core_br_recife_funcional, with funcional provenance."
+  - name: mart_br_recife_budget_funcao
+    description: "Empenhado / liquidado / pago and line count per ano × função × subfunção from core_br_recife_funcional, with each row's share of the year's pago and provenance."
+  - name: mart_br_recife_places
+    description: "Published civic places: core_br_recife_places columns plus the fixed portal source name/URL and unit."
+  - name: mart_br_recife_quem_recebe
+    description: "Organisation recipients per year (int_br_recife_credor_ano) with the stable name from core_br_recife_credor and credor-dataset provenance."
+  - name: mart_br_recife_recebe_enriched
+    description: "One row per organisation recipient: totals summed over years from int_br_recife_credor_ano, plus name, principal agency, Receita Federal fields, summary and theme from core_br_recife_credor."
+  - name: mart_br_recife_orgao_credor
+    description: "Paying agency × year × recipient CNPJ: pago (SUM of pago_liquido) and empenho count, recipient name from core_br_recife_credor. Serves the órgão pages and the recipient by-agency breakdown in export_br_recife.py."
+    columns:
+      - name: orgao
+        tests: [not_null]

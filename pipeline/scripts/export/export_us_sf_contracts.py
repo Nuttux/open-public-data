@@ -11,10 +11,9 @@ Outputs (website/public/data/us/sf/):
       separately-labeled perimeters, never summed), purchasing-authority
       families (seeded classification, human review pending) and the
       data-quality/méthode numbers.
-      Sources: mart_us_sf_contracts_summary (+ one aggregate over
-      core_us_sf_contracts for the sub-only exclusion count and one over
-      core_us_sf_vouchers for voucher-join coverage — méthode stats only,
-      no money flows from either).
+      Sources: mart_us_sf_contracts_summary + mart_us_sf_contracts_quality
+      (sub-only exclusion count and voucher-join coverage — méthode stats
+      only, no money flows from it).
     - contracts_active.json   : one row per contract active today (~5.1k)
       for the search + table. Money = agreed_usd / paid_usd only.
     - contracts/fiche/<no>.json : per-contract fiche payloads (~6.3k:
@@ -95,7 +94,6 @@ def vulg_for(row: dict, vulg: dict[str, dict]) -> dict[str, str]:
 
 PROJECT_ID = "open-data-france-484717"
 DATASET = "dbt_us_marts"
-ANALYTICS_DATASET = "dbt_us_analytics"
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "us" / "sf"
 FICHE_DIR = OUTPUT_DIR / "contracts" / "fiche"
 
@@ -660,19 +658,12 @@ def main() -> int:
         WITH team AS (
             SELECT * FROM `{PROJECT_ID}.{DATASET}.mart_us_sf_contract_team`
             WHERE role != 'Prime Contractor' AND is_lbe
-        ),
-        core_subonly AS (
-            SELECT COUNT(DISTINCT c.contract_no) AS n_sub_only
-            FROM `{PROJECT_ID}.{ANALYTICS_DATASET}.core_us_sf_contracts` c
-            WHERE c.contract_no IS NOT NULL AND NOT EXISTS (
-                SELECT 1 FROM `{PROJECT_ID}.{ANALYTICS_DATASET}.core_us_sf_contracts` p
-                WHERE p.contract_no = c.contract_no AND p.is_prime_contractor_row)
         )
         SELECT
             (SELECT COUNT(*) FROM team)                       AS lbe_team_rows,
             (SELECT COUNT(DISTINCT contract_no) FROM team)    AS lbe_team_contracts,
             (SELECT SUM(attached_usd) FROM team)              AS lbe_team_attached_usd,
-            (SELECT n_sub_only FROM core_subonly)             AS n_sub_only
+            (SELECT n_sub_only FROM `{PROJECT_ID}.{DATASET}.mart_us_sf_contracts_quality`) AS n_sub_only
     """)[0]
     summary_stats = {
         "lbe_team_rows": int(quality_row["lbe_team_rows"]),
@@ -686,19 +677,10 @@ def main() -> int:
     }
 
     join_row = fetch_rows(client, f"""
-        WITH v AS (
-            SELECT contract_number, SUM(vouchers_paid) paid
-            FROM `{PROJECT_ID}.{ANALYTICS_DATASET}.core_us_sf_vouchers`
-            WHERE contract_number IS NOT NULL
-            GROUP BY contract_number
-        ),
-        reg AS (SELECT contract_no FROM `{PROJECT_ID}.{DATASET}.mart_us_sf_contracts_summary`)
-        SELECT
-            COUNT(*)                                             AS n_numbers,
-            COUNTIF(r.contract_no IS NOT NULL)                   AS n_matched,
-            SAFE_DIVIDE(SUM(IF(r.contract_no IS NOT NULL, v.paid, 0)), SUM(v.paid))
-                                                                 AS matched_dollar_share
-        FROM v LEFT JOIN reg r ON v.contract_number = r.contract_no
+        SELECT voucher_contract_numbers AS n_numbers,
+               matched_in_register     AS n_matched,
+               matched_dollar_share
+        FROM `{PROJECT_ID}.{DATASET}.mart_us_sf_contracts_quality`
     """)[0]
     join_stats = {
         "voucher_contract_numbers": int(join_row["n_numbers"]),

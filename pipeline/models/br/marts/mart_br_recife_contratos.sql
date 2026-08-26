@@ -36,7 +36,7 @@ teto AS (
     SELECT MAX(empenhado_ano) AS teto_anual
     FROM (
         SELECT ano, SUM(empenhado) AS empenhado_ano
-        FROM {{ ref('stg_br_recife_funcional') }}
+        FROM {{ ref('core_br_recife_funcional') }}
         GROUP BY ano
     )
 )

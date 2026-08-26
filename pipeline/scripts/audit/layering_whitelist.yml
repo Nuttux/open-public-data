@@ -34,6 +34,52 @@ ingest_writes_to_data:
     justification: "Drilldown tree builder — joint plusieurs mart_* pour produire la structure macro→micro consommée par Daily Bread. Logique trop spécifique pour un mart simple."
     todo: "Découper en mart_drilldown_etat / mart_drilldown_local / mart_drilldown_secu — déjà partiellement amorcé via build_drilldown_etat/local/secu.py"
     linked_adr: ADR-0001
+  # --- SF / Marseille lieux & payees (audit 2026-08-26, chantier layering US/BR) ---
+  # Per-record side-channel caches (photos, wiki extracts, summaries) written
+  # under a place/landing namespace instead of public/data/enrichment/. Same
+  # nature as the Category E caches (ADR-0004); moving them under enrichment/
+  # means re-pointing the SF/Marseille place loaders — logged, not done here.
+  - script: pipeline/scripts/enrich/fetch_sf_place_photos.py
+    justification: "Wikimedia Commons lead photo + licence/credit per SF place → us/sf/places/_photo_credits.json. Per-record cache, no metric."
+    todo: "Write under public/data/enrichment/ (Category E) and re-point the SF place loader"
+    linked_adr: ADR-0004
+  - script: pipeline/scripts/enrich/fetch_sf_place_photos_wide.py
+    justification: "Dev-only wider photo ladder for SF places (same output file as fetch_sf_place_photos.py). Per-record cache, no metric."
+    todo: "Same move as fetch_sf_place_photos.py; consider folding into it behind a flag"
+    linked_adr: ADR-0004
+  - script: pipeline/scripts/enrich/fetch_sf_landing_photos.py
+    justification: "Wikimedia Commons photos + credits for the SF landing deck → us/sf/landing/_photo_credits.json. Per-record cache, no metric."
+    todo: "Write under public/data/enrichment/ (Category E)"
+    linked_adr: ADR-0004
+  - script: pipeline/scripts/enrich/fetch_marseille_place_photos.py
+    justification: "Marseille twin of fetch_sf_place_photos.py → fr/marseille/places/_photo_credits.json. Per-record cache, no metric."
+    todo: "Write under public/data/enrichment/ (Category E)"
+    linked_adr: ADR-0004
+  - script: pipeline/scripts/enrich/fetch_marseille_place_wiki.py
+    justification: "Wikipedia lead extract (FR+EN) per Marseille place → fr/marseille/places/_wiki.json. Per-record cache, no metric."
+    todo: "Write under public/data/enrichment/ (Category E)"
+    linked_adr: ADR-0004
+  - script: pipeline/scripts/enrich/apply_sf_place_summaries.py
+    justification: "Patches grounded summaries + curated document list into already-exported SF place fiches (bridge over export_sf_places.py). Text only, no metric."
+    todo: "Feed the summaries to export_sf_places.py as an input (like vulgarization_sf_contracts.json) and delete this bridge"
+    linked_adr: ADR-0004
+  - script: pipeline/scripts/enrich/apply_sf_contract_vulgarization.py
+    justification: "Bridge that patches contract explanations into built exports; export_us_sf_contracts.py already reads the same JSON as input, so a normal export makes it redundant. Text only, no metric."
+    todo: "Delete once a full export_us_sf_contracts.py run has been confirmed to carry the explanations"
+    linked_adr: ADR-0004
+  # Real bypasses — these three produce money or identity tables the UI reads.
+  - script: pipeline/scripts/enrich/build_marseille_place_money.py
+    justification: "Place ↔ subventions crosswalk for Marseille places (operator / occupant relations) → fr/marseille/places/_money.json. Carries amounts; should be a mart."
+    todo: "Move the matching into a seed crosswalk + core_marseille_place_subventions, export via a mart"
+    linked_adr: ADR-0001
+  - script: pipeline/scripts/enrich/normalize_sf_payees.py
+    justification: "Normalises SF vendor strings into payee identities and emits us/sf/payees/index.json + per-payee JSON (amounts from mart_us_sf_top_payees). Identity resolution needs Python; the money should still transit a mart."
+    todo: "Persist the identity map as a seed, join it in core_us_sf_vouchers, export through a mart_us_sf_payees"
+    linked_adr: ADR-0001
+  - script: pipeline/scripts/enrich/link_sf_payees.py
+    justification: "Attaches Internet Archive paper-trails to normalised payees → dl_documents/payee-<slug>.json. Document lists only, no metric."
+    todo: "Follows normalize_sf_payees.py: once payees come from a mart, write documents under enrichment/"
+    linked_adr: ADR-0001
 
 # Whitelist pour scripts WIP non câblés à l'UI
 # (toutes redirigées vers pipeline/cache/wip/ Phase 12).
@@ -57,3 +103,5 @@ e5_ast_reviewed_clean:
     reason: "PDF text extraction via pdfplumber subprocess — pas d'écriture vers public/data/, vérifié manuellement 2026-05-13"
   - script: pipeline/scripts/tools/parse_subv_pdf_text.py
     reason: "PDF text extraction via pdfplumber subprocess — pas d'écriture vers public/data/, vérifié manuellement 2026-05-13"
+  - script: pipeline/scripts/enrich/clean_bmo_snippets.py
+    reason: "Re-nettoie les extraits BMO dans pipeline/cache/lieux/*.jsonl (write_text sur ces fichiers) — aucune écriture vers public/data/, vérifié manuellement 2026-08-26"

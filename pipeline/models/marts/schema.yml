@@ -653,3 +653,15 @@ models:
         description: "Source ODS de l'emprunt, conservée pour citation."
         tests:
           - not_null
+
+  - name: mart_marseille_subventions_beneficiaires
+    description: >
+      Miroir Marseille de mart_subventions_beneficiaires : agrégat par
+      (annee, beneficiaire, beneficiaire_normalise) de core_marseille_subventions,
+      départage déterministe des montants égaux. Consommé par
+      export_subventions_data.py --city marseille.
+
+  - name: mart_marseille_subventions_treemap
+    description: >
+      Miroir Marseille de mart_subventions_treemap : montants par
+      (annee, thematique) et totaux annuels de core_marseille_subventions.
