@@ -1207,3 +1207,281 @@ from `indexedLastYear()`, which reads `y1` off the shipped index — so the *"no
 scanned"* tag stops being drawn over the 2000s–2020s **automatically** when the
 data lands, exactly as the comment on that function predicted. That design
 holds up; no constant to chase.
+
+---
+
+# 22. THE FILTER AT THE DOOR — every item, placement as an attribute — 2026-08-26
+
+§21 merged the Board's own PDFs and the map reached 2026. This is about what
+never got as far as that merge.
+
+Builder: `sweep_sfbos_all.py`. Same 390 PDFs, already on disk, no new fetch.
+**Nothing is published and nothing the map reads has changed by a byte.**
+
+## 22.1 The scoping decision that quietly became a decision about the database
+
+`fetch_sfbos_minutes.py --extract` writes a row only when an item resolves to a
+street. Two `continue`s do it:
+
+```python
+locs = ex.locations_from(body)
+...
+if not locs: continue        # the item names no street-shaped phrase
+...
+if not res:  continue        # it named one and the gazetteer refused it
+```
+
+That filter was built to serve the **map** — a decision the map cannot pin is a
+decision the map cannot draw. Verified rather than assumed: **all 6,786 rows in
+`cache_sfbos/items.jsonl` carry a non-empty `r`, and zero do not.** So everything
+the Board did to the whole city was discarded at the door, and the file has no
+way to say so: an item that is not there and an item that never happened read
+exactly alike.
+
+## 22.2 What the corpus actually holds
+
+Re-derived on this disk, both readers agreeing on the page count:
+
+```
+  meeting PDFs                     390        (0 without a text layer)
+  pages                         10,388        pdftotext -layout AND PyMuPDF agree
+  characters                25,617,938        PyMuPDF
+                            31,161,128        pdftotext -layout (its column padding)
+```
+
+**A trap fired on the way in, the `roof_st` kind.** A bare `\d{6}` sweep finds
+**12,593** distinct six-digit tokens. **542 of them are not file numbers at
+all** — they are Superior Court case numbers, `Case No. CGC-20-584260`, which is
+why the prefixes 51–62 appear at all. The Clerk's own printed form is six digits
+then a bracketed title, and by that form there are **12,051** distinct
+legislative files. The task brief's 12,531 sits between the two and reproduces
+neither; the number above is the one with a definition attached.
+
+## 22.3 What the full sweep yields
+
+```
+  chunks between two Resolution|Ordinance|Motion marks, 60..3000 chars   42,405
+  of them the map's sweep kept                                            6,786   16.0%
+  discarded at the door                                                  35,619   84.0%
+```
+
+42,405 reproduces §13's own count exactly, from a separate walk.
+
+## 22.4 THE PARITY GATE — the map keeps exactly what it has
+
+`--verify` projects every re-swept row with a non-empty `r` onto the twelve
+canonical fields in their original order and compares them **line for line, in
+order, byte for byte** against the published stream. Not a count, not a checksum
+of a sorted set.
+
+```
+  published placed stream : 6,786 rows
+  re-swept, r non-empty   : 6,786 rows
+  PARITY PASS: all 6,786 placed rows byte-identical, line for line, in order
+```
+
+This is structural rather than lucky: `seq` in the original extractor increments
+**before** both `continue`s, so keeping the discarded items cannot renumber the
+kept ones. `91de7fa0` / `1f56663a` are untouched.
+
+`sfbos_gate()` is re-asserted over **every** row, placed or not, because an
+unplaced item still needs a citation that opens:
+
+```
+  url  == PREFIX + stem + "_minutes.pdf"     42,405 / 42,405
+  page == n + 1                              42,405 / 42,405
+  every cited stem is a PDF on disk               390 / 390
+  every cited page is inside its file        42,405 / 42,405   (PyMuPDF page counts)
+```
+
+## 22.5 THE HONEST TAXONOMY — four things, and they are never summed
+
+Placement and form are recorded as **two orthogonal fields**, because a vote
+record can name a street and a citywide ordinance can be perfectly clean prose.
+
+```
+  pl = placed       a street the DataSF gazetteer knows          6,786   16.0%
+  pl = unresolved   named a street-shaped phrase, refused        2,436    5.7%
+  pl = none         names no place at all                       33,183   78.3%
+
+  pk = title        the item's own words, Clerk's title form    24,541   57.9%
+  pk = stamp        "Resolution No. 293-21 ADOPTED by the ..."  10,535   24.8%
+  pk = fragment     the splitter cut mid-sentence                6,410   15.1%
+  pk = template     the PDF's own explanatory boilerplate           868    2.0%
+  pk = rollcall                                                      51    0.1%
+```
+
+The 35,619 the map cannot draw, partitioned exactly — `assert`ed in the build,
+no row counted twice and none left over:
+
+```
+  CITYWIDE BY NATURE                 17,590   49.4%   the item's own title, no place named
+  PROCEDURAL                         10,239   28.7%   stamps, template text, roll calls
+  SPLITTER FRAGMENT                   5,615   15.8%   the words belong to the chunk before
+  NAMES A PLACE WE CANNOT RESOLVE     2,175    6.1%   a titled item, a phrase the gazetteer refused
+```
+
+**A committee referral is NOT procedural, and treating it as one would have
+rebuilt the same filter at a different threshold.** 5,105 items carry
+`RECEIVED AND ASSIGNED to <committee>` and 6,982 carry some referral wording;
+the referral is a stamp on the *end*
+of a fully-titled new ordinance — *"Ordinance ... requesting the Department of
+Building Inspection ... to report. 06/13/17; RECEIVED AND ASSIGNED to Land
+Use"*. Calling those procedural throws away the day's new legislation. What the
+Board **did** with an item is therefore recorded separately, in `disp`, as
+metadata and never as a verdict on whether the item has substance.
+
+## 22.6 What the old filter threw away, by subject
+
+Coverage of the PDF text, then of items, then of what the map holds today.
+
+```
+  topic                        meetings    items    on the map    kept
+  \bbudget\b                        390    4,582           591     13%
+  \bpolice\b                        352    1,382           117      8%
+  homeless                          342    1,297           264     20%
+  COVID                             139      690            23      3%
+  eviction                          112      164             9      5%
+  "Proclamation of Emergency"        52       61             1      2%
+```
+
+*meetings* counts the whole PDF, whitespace-normalised; *items* and *on the map*
+count the same string over item text. One string per topic, printed beside every
+number it produces, because a compound pattern makes a count nobody can check.
+
+**The emergency proclamations are the case in one line.** 57 items name a
+*Supplement to the Proclamation of Emergency*, naming **33 distinct
+supplements** across the pandemic. **Exactly one is on the map** — and it is
+there by accident, which is now provable rather than suspected:
+
+> *"Motion concurring in actions taken by the Mayor in the Twenty-Sixth
+> Supplement to the Proclamation of Emergency … 09/01/20; REFERRED FOR ADOPTION
+> WITHOUT COMMITTEE REFERENCE … **201019 [Findings Reversing the Community Plan
+> Evaluation - 2300 Harrison Street]**"*
+
+It survived because the **next** legislative file's header bled into its chunk,
+and it is drawn on **2300 Harrison Street**, an address with nothing to do with
+it. See §22.8.
+
+**One correction to the task brief, and it is the brief's own trap firing.**
+"Proclamation of Emergency" appears in the raw PDF text of **25** meetings and in
+**52** once whitespace is normalised: `pdftotext` wraps the phrase across a line
+break half the time, so a regex over raw text cannot see it. *A search that
+cannot see a thing reports its absence in the same words as its absence* — the
+figure to quote is 52.
+
+## 22.7 THE SECOND FILTER, upstream of this one — hearings
+
+**A file number in the text is not an item, and the gap says something.**
+
+```
+  distinct legislative files printed        12,051
+  carried by an ITEM                         9,868   81.9%
+  on a PLACED item                           2,254   18.7%
+  printed but on NO item                     2,183
+```
+
+Sorted by the first segment of the Clerk's own bracketed title, the largest
+orphan class is not procedural noise:
+
+```
+  570  Hearing                    54  Accept and Expend Grant
+  53  Formal Policy Discussions   43  Liquor License Transfer
+  37  Settlement of Lawsuit       37  Closed Session
+  35  Planning Code               34  Affirming the Categorical Exemption Determination
+  28  Charter Amendment           28  Administrative Code
+```
+
+**The splitter's vocabulary is `Resolution|Ordinance|Motion`, so a legislative
+file whose body uses none of those three words can never become an item however
+plainly the Clerk printed it.** A hearing reads:
+
+```
+  161146 [Hearing - Appeal of Determination of Exemption From Environmental
+          Review - Proposed Project at 2675 Folsom Street]
+  Hearing of persons interested in or objecting to the determination of
+  exemption from environmental review under the California Environmental
+  Quality Act ...
+```
+
+That is a contested land-use appeal, it names a placeable address, and no stage
+of this pipeline has ever seen it. Removing this second filter is a different
+job from removing the first and is **not** done here.
+
+**And six meetings contain no `Resolution|Ordinance|Motion` word at all** —
+`bag010917`, `bag010819`, `bag010923` (Inaugural Meetings: the swearing-in and
+the election of the President) and `bag110218`, `bag112023`, `bag121818`
+(Special Meetings). They yield zero items by construction, not by failure. A
+further **12 meetings** yield items but none that place, so **18 of 390 meetings
+are invisible on the map today**; the full stream carries all 384 that have any
+item at all.
+
+## 22.8 A REAL BUG IN THE PUBLISHED PLACEMENT, found here and NOT fixed here
+
+The Clerk prints a file's header **above** the item it introduces. The splitter
+cuts at the `Resolution|Ordinance|Motion` word, so an item's own header sits at
+the tail of the **previous** chunk — and any `NNNNNN [` a **title-form** chunk
+contains is therefore the **next** file's header. Every street inside it belongs
+to that next file.
+
+```
+  Resolution urging the San Francisco Legislative Delegation to work to amend
+  the "By Right Housing Approvals" ...   160248 [Liquor License - 141 Gough Street]
+                                                                  ^ placed on GOUGH
+```
+
+Measured conservatively — title-form rows only, and only where **every** street
+the row placed on lies after such a header:
+
+```
+  title-form placed rows                            4,776
+  ...placed entirely on the NEXT file's address       468    9.8%
+  as a share of all 6,786 published placed rows              6.9%
+```
+
+Stamp- and fragment-form rows are deliberately excluded: a stamp's own header
+legitimately follows its disposition line (*"Ordinance No. 132-16 FINALLY PASSED
+160576 [Settlement of Lawsuits …]"*), so the same test cannot separate the two
+cases there without more work. **468 is a floor, not an estimate.**
+`sweep_sfbos_all.py --bleed` reproduces it and prints eight worked examples.
+
+**It is not fixed here.** The published block index is built from exactly these
+rows, and correcting them would move the map — the one outcome this change
+exists not to produce. It is a decision, not an ingest's call.
+
+## 22.9 The four consumers, and where each one lands
+
+1. **The map** — unchanged, proved byte for byte in §22.4.
+2. **The database** — `cache_sfbos/items_all.jsonl`, 42,405 rows, 33 MB. Every
+   item, each carrying `pl` (did it place), `pk` (what the chunk is), `disp`
+   (what the Board did with it), `sp` (is it a public-comment re-print), `un`
+   (the exact street phrases the gazetteer refused) and `fn` (its legislative
+   file numbers) — plus the twelve canonical fields byte-identical to today's.
+3. **The film** — `cache_sfbos/film_pool.jsonl`, **6,228 legislative files, one
+   row each**, deduplicated on the file number by the fullest printing of its own
+   title, 2016–2026, 372 meetings, 2,771 carrying a dollar figure, each with its
+   `#page=` citation. **It is a POOL and not a selection. Nothing in it is
+   ranked, scored or recommended.** *"i dont even know who adachi is, and why
+   does this matter to anyone"* was the right objection to a street renaming
+   offered because it was easy to draw. The choosing is Daniel's, not a
+   pipeline's.
+4. **Search over the minutes** — the item stream covers **78.8%** of the cleaned
+   characters in the corpus. The missing fifth is the text before each page's
+   first `Resolution|Ordinance|Motion` mark: agenda headers, the file headers of
+   §22.7, roll-call blocks and page furniture. Granular search over items is
+   possible today; search over *everything the minutes say* needs a page-text
+   sidecar, which is not built.
+
+## 22.10 State on disk, and what is versioned
+
+```
+  pipeline/scripts/us_sf_city/sweep_sfbos_all.py     NEW, committed
+  cache_sfbos/items_all.jsonl        42,405 rows, 33 MB   gitignored, derived
+  cache_sfbos/items_all.meta.json    per-meeting counters  gitignored, derived
+  cache_sfbos/film_pool.jsonl         6,228 rows,  6 MB   gitignored, derived
+  cache_sfbos/items.jsonl            UNTOUCHED, and proved untouched
+  website/public/data/**             NOT TOUCHED
+```
+
+All three derived files rebuild in ~20 seconds from the PDFs already on disk:
+`sweep_sfbos_all.py --sweep --pool`. Nothing was published.

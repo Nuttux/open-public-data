@@ -4,3 +4,11 @@
 # given day — so it is versioned, and so is the gap list it produces.
 pdf/
 items.jsonl
+
+# The FULL sweep (sweep_sfbos_all.py): every item in the 390 PDFs, 33 MB, and
+# the pool derived from it. Both are derived and reproducible in ~20 seconds
+# from the PDFs above: `sweep_sfbos_all.py --sweep --pool`. The calendar stays
+# versioned for the same reason as before: it is a measurement, not a derivation.
+items_all.jsonl
+items_all.meta.json
+film_pool.jsonl
