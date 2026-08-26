@@ -159,6 +159,15 @@ export const TIER_WORDING: readonly string[] = [
   "the record names this block",
 ];
 
+/**
+ * `addr` — index 3 above, and the only tier that is a claim about a DOOR. The
+ * pipeline has already checked the house number falls inside this block's own
+ * parcel range, so `blockAddresses` reads this tier and no other: a number
+ * lifted out of a street-tier sentence names a building somewhere along the
+ * street, which is a different claim and a weaker one.
+ */
+export const ADDR_TIER = 3;
+
 const BASE = "/data/us/sf/city/blocks";
 
 let indexPromise: Promise<BlockIndex> | null = null;
@@ -247,10 +256,20 @@ export function sourceHref(d: Pick<BlockDecision, "u" | "c">): string {
     : `https://archive.org/details/${doc}/page/n${page}/mode/1up`;
 }
 
-/** "PINE|ST" → "Pine St" */
+/**
+ * `PINE|ST` → `Pine St`.
+ *
+ * `*` IS THE SHARD'S MARKER FOR A STREET WITH NO TYPE, not part of the name.
+ * Broadway is Broadway and The Embarcadero is The Embarcadero — neither takes
+ * St or Ave — and joining the marker in printed **"Broadway *"** and **"The
+ * Embarcadero *"** as the heading of the streets section on every block they
+ * front. MEASURED over the shipped shards: 96 street keys carry it, against
+ * 10,295 `ST` and 4,989 `AVE`.
+ */
 export function streetLabel(key: string): string {
   return key
     .split("|")
+    .filter((part) => part && part !== "*")
     .join(" ")
     .toLowerCase()
     .replace(/\b[a-z]/g, (c) => c.toUpperCase());
@@ -1702,4 +1721,273 @@ export function usdShort(n: number): string {
   if (a >= 1e9) return `$${(Math.trunc(n / 1e8) / 10).toFixed(1)}bn`;
   if (a >= 1e6) return `$${(Math.trunc(n / 1e5) / 10).toFixed(1)}M`;
   return `$${new Intl.NumberFormat("en-US").format(Math.trunc(n))}`;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+ * THE UNITS A PERSON ACTUALLY THINKS IN
+ *
+ * Nobody thinks "block 4087". They think *my street*, *my building*, *my
+ * neighbourhood*. The block is what the map can draw and click; it is not what
+ * a reader came for, and it should hand them onward rather than pretend to be
+ * a destination.
+ *
+ * The addresses on a block ARE a subset of that block's own records, so this
+ * needs no new file — `CityBlockPanel` already holds everything it reads.
+ * ──────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * The Journal spells its street numbers out — `2707 Twenty-first street` —
+ * and the modern Clerk does not — `1234 Great Highway`. Both are the same door
+ * and both have to fold onto one key or an address fiche splits in two.
+ */
+const ORDINAL_WORD: Record<string, string> = {
+  first: "1st", second: "2nd", third: "3rd", fourth: "4th", fifth: "5th",
+  sixth: "6th", seventh: "7th", eighth: "8th", ninth: "9th", tenth: "10th",
+  eleventh: "11th", twelfth: "12th", thirteenth: "13th", fourteenth: "14th",
+  fifteenth: "15th", sixteenth: "16th", seventeenth: "17th",
+  eighteenth: "18th", nineteenth: "19th", twentieth: "20th",
+  "twenty-first": "21st", twentyfirst: "21st", "twenty-second": "22nd",
+  twentysecond: "22nd", "twenty-third": "23rd", twentythird: "23rd",
+  "twenty-fourth": "24th", twentyfourth: "24th", "twenty-fifth": "25th",
+  twentyfifth: "25th", "twenty-sixth": "26th", twentysixth: "26th",
+  "twenty-seventh": "27th", "twenty-eighth": "28th", "twenty-ninth": "29th",
+  thirtieth: "30th",
+};
+
+const SUFFIX: Record<string, string> = {
+  street: "St", st: "St", avenue: "Ave", ave: "Ave", boulevard: "Blvd",
+  blvd: "Blvd", road: "Rd", rd: "Rd", drive: "Dr", dr: "Dr", way: "Way",
+  place: "Pl", pl: "Pl", court: "Ct", ct: "Ct", terrace: "Terrace",
+  alley: "Alley", lane: "Lane", highway: "Highway",
+};
+
+/**
+ * A house number, then one to three name words, then a street type.
+ *
+ * The name word may itself be a NUMBER — `3801 Third Street` and `3801 3rd St`
+ * are the same door, and half of San Francisco's grid is numbered. A first cut
+ * required the name to open with a letter and silently matched neither `21st`
+ * nor `3rd`, which would have dropped every modern record on a numbered street
+ * while keeping the Journal's spelled-out `Twenty-first`.
+ */
+const ADDRESS = new RegExp(
+  String.raw`\b(\d{1,5})(?:\s?[-–]\s?\d{1,5})?\s+` +
+  String.raw`((?:(?:\d{1,3}(?:st|nd|rd|th)|[A-Za-z][A-Za-z'.-]*)\s+){1,3}?)` +
+  String.raw`(street|st|avenue|ave|boulevard|blvd|road|rd|drive|dr|way|place|pl|court|ct|terrace|alley|lane|highway)\b`,
+  "gi",
+);
+
+/** words that are never part of a street's name, however the OCR ran them in */
+const NOT_A_NAME = new Set([
+  "the", "of", "and", "at", "on", "in", "to", "from", "said", "a", "an",
+  "portion", "portions", "side", "sides", "corner", "corners", "line",
+  "lines", "between", "including", "crossing", "intersection", "north",
+  "south", "east", "west", "northerly", "southerly", "easterly", "westerly",
+]);
+
+export interface BlockAddress {
+  /** the folded key — `2707 21st st`, lowercase, one per door */
+  readonly key: string;
+  /** what to print — `2707 Twenty-first Street`, as the volume set it */
+  readonly label: string;
+  readonly n: number;
+  readonly y0: number;
+  readonly y1: number;
+  readonly rows: readonly BlockDecision[];
+}
+
+function foldAddress(num: string, name: string, suf: string): {
+  key: string; label: string;
+} | null {
+  const words = name.trim().split(/\s+/).filter(Boolean);
+  if (!words.length || words.length > 3) return null;
+  if (words.some((w) => NOT_A_NAME.has(w.toLowerCase()))) return null;
+  const keyName = words
+    .map((w) => ORDINAL_WORD[w.toLowerCase().replace(/[.,]/g, "")] ?? w.toLowerCase())
+    .join(" ");
+  const sufKey = SUFFIX[suf.toLowerCase()] ?? suf;
+  return {
+    key: `${num} ${keyName} ${sufKey}`.toLowerCase(),
+    label: `${num} ${words.join(" ")} ${sufKey}`,
+  };
+}
+
+/**
+ * Every address the record NAMES on this block, most-recorded first.
+ *
+ * Read from `addr`-precision rows only. That tier is a house number the
+ * pipeline already checked falls inside this block's own parcel range, so the
+ * claim "the record places this at 2707 Twenty-first Street" is the pipeline's
+ * and not a guess made in the browser. A number lifted out of a street-tier
+ * sentence would be neither.
+ */
+export function blockAddresses(
+  decisions: readonly BlockDecision[],
+): BlockAddress[] {
+  const by = new Map<string, { label: string; rows: BlockDecision[] }>();
+  for (const d of decisions) {
+    if (d.p !== ADDR_TIER) continue;
+    const t = d.t ?? "";
+    ADDRESS.lastIndex = 0;
+    let m: RegExpExecArray | null;
+    const found = new Map<string, string>();
+    while ((m = ADDRESS.exec(t)) !== null) {
+      const f = foldAddress(m[1], m[2], m[3]);
+      if (f && !found.has(f.key)) found.set(f.key, f.label);
+    }
+    /* ── A LIST IS NOT A CLAIM ABOUT A DOOR ────────────────────────────────
+       The tier says SOME number in this line falls inside this block's parcel
+       range. Where the line names one, that is the door. Where it names five
+       it is a table covering the city — a 1986 assessment row on a Mission
+       block reads *"1721 Cabrillo Street … 2270-2272 Bryant Street … 107
+       Maywood Drive"* — and we cannot tell which one the pipeline matched, so
+       naming any of them puts a Richmond address on a Mission fiche. It did,
+       and that is how this was found.
+
+       MEASURED over the 14,823 distinct `addr`-tier records: 10,253 name
+       exactly one address (69.2 %), 913 name two, 488 name three or more.
+       Dropping everything but the single-address rows costs 12 % of the doors
+       and removes every wrong one. */
+    if (found.size !== 1) continue;
+    const [key, label] = [...found][0];
+    const e = by.get(key);
+    if (e) e.rows.push(d);
+    else by.set(key, { label, rows: [d] });
+  }
+  const out: BlockAddress[] = [];
+  for (const [key, v] of by) {
+    const ys = v.rows.map((r) => r.y);
+    out.push({
+      key,
+      label: v.label,
+      n: v.rows.length,
+      y0: Math.min(...ys),
+      y1: Math.max(...ys),
+      rows: v.rows,
+    });
+  }
+  // most-recorded first, and the most recent of a tie first — a reader
+  // recognises a door by what happened at it lately, not alphabetically.
+  out.sort((a, b) => b.n - a.n || b.y1 - a.y1 || a.label.localeCompare(b.label));
+  return out;
+}
+
+/* ── the threads ─────────────────────────────────────────────────────────── */
+
+export interface ThreadRecord {
+  readonly s: string;
+  readonly l: string;
+  readonly era: string;
+  readonly note: string;
+  readonly n: number;
+  readonly y0: number;
+  readonly y1: number;
+  readonly dec: readonly (readonly [number, number])[];
+  readonly b: readonly string[];
+  readonly map: boolean;
+  readonly ex: readonly { y: number; t: string; u: string; b: string }[];
+}
+
+export interface ThreadsFile {
+  readonly n_records: number;
+  readonly n_tagged: number;
+  readonly threads: readonly ThreadRecord[];
+}
+
+let threadsPromise: Promise<ThreadsFile | null> | null = null;
+
+export function loadThreads(): Promise<ThreadsFile | null> {
+  if (!threadsPromise) threadsPromise = loadSoft<ThreadsFile>(`${BASE}/threads.json`);
+  return threadsPromise;
+}
+
+/** membership is a set built once per file, not a scan of 41 arrays per block */
+const threadIndex = new WeakMap<ThreadsFile, Map<string, ThreadRecord[]>>();
+
+export function threadsAt(
+  file: ThreadsFile | null,
+  blockId: string,
+): ThreadRecord[] {
+  if (!file) return [];
+  let idx = threadIndex.get(file);
+  if (!idx) {
+    idx = new Map();
+    for (const th of file.threads) {
+      for (const b of th.b) {
+        const cur = idx.get(b);
+        if (cur) cur.push(th);
+        else idx.set(b, [th]);
+      }
+    }
+    threadIndex.set(file, idx);
+  }
+  // rarest first: a block that is on `Paving and grading` like 2,072 others
+  // learns nothing from saying so, and `Libraries` on 49 blocks is the whole
+  // reason the chip exists.
+  return (idx.get(blockId) ?? []).slice().sort((a, b) => a.n - b.n);
+}
+
+/**
+ * WHAT TO CALL THE GROUND SOMEBODY JUST CLICKED.
+ *
+ * > "i dont want block nulber to show anywhere its not relevant to me"
+ *
+ * `4087` is the assessor's filing number. It is how the roll, the Census join
+ * and every shard in this pipeline address a piece of ground, and it is not
+ * how one single person has ever described where they are. Nobody says "I live
+ * on block 4087"; they say the streets.
+ *
+ * The shard already ships them — `s[]`, the streets the block fronts, the same
+ * field the street section reads. MEASURED over 1,191 blocks: 48 % front
+ * exactly four streets, 22 % three, 9 % two, 11 % one, and **7 blocks in 1,191
+ * (0.6 %) front none**, which is the only case that has to fall back.
+ *
+ * The streets are joined and nothing is inferred from their order. A four-sided
+ * block is really *"Cortland between Andover and Wool"*, but which pair is the
+ * long side is geometry this file does not have, and a wrong "between" is worse
+ * than a plain list.
+ */
+export function blockPlaceName(streets: readonly string[]): string | null {
+  const names = streets.map((s) => streetLabel(s).trim()).filter(Boolean);
+  if (names.length === 0) return null;
+  if (names.length <= 4) return names.join(" · ");
+  return `${names.slice(0, 3).join(" · ")} · +${names.length - 3}`;
+}
+
+/* ── A NEIGHBOURHOOD YOU CAN OPEN ─────────────────────────────────────────── */
+
+export interface HoodDecade {
+  readonly decade: number;
+  /** what the decade really holds */
+  readonly n: number;
+  /** what this file ships — the most recent readable ones */
+  readonly rows: readonly BlockDecision[];
+}
+
+export interface HoodRecords {
+  readonly i: number;
+  readonly name: string;
+  readonly n: number;
+  readonly n_shipped: number;
+  readonly per_decade: number;
+  readonly decades: readonly HoodDecade[];
+}
+
+const hoodRecCache = new Map<number, Promise<HoodRecords | null>>();
+
+/**
+ * One neighbourhood's records — a selection, and the file says so.
+ *
+ * The Mission holds 2,277 readable records. This ships the most recent twelve
+ * of each decade with the TRUE count of the decade beside them, so the page
+ * can say "12 of 459" instead of implying it has them all. About 30 KB, one
+ * fetch, and only when a reader actually opens a neighbourhood.
+ */
+export function loadHoodRecords(i: number): Promise<HoodRecords | null> {
+  let p = hoodRecCache.get(i);
+  if (!p) {
+    p = loadSoft<HoodRecords>(`${BASE}/hood/${i}.json`);
+    hoodRecCache.set(i, p);
+  }
+  return p;
 }

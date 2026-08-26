@@ -97,6 +97,9 @@ import FicheArchiveShelf from "@/components/fiche/FicheArchiveShelf";
 import type { FicheArchiveDoc } from "@/components/fiche/types";
 import {
   sourceHref,
+  blockAddresses,
+  blockPlaceName,
+  type BlockAddress,
   blockLead,
   blockNow,
   blockPlaces,
@@ -115,6 +118,8 @@ import {
   loadBlockLeadPicks,
   loadBlockMoney,
   loadHoodFacts,
+  loadHoodRecords,
+  type HoodRecords,
   loadStreetRecord,
   placeHref,
   streetLabel,
@@ -720,32 +725,41 @@ function BlockLead({ d, t }: { d: BlockDecision; t: (k: string) => string }) {
  * both sources is the project's whole claim. It is set at footnote weight
  * (§19b), not deleted.
  */
-function GroundLine({ now, shape, t }: {
+function GroundLine({ now, shape, atDoor, t }: {
   now: BlockNow | null;
   shape: NonNullable<ReturnType<typeof blockShape>> | null;
+  /* WHOSE GROUND THIS IS. Residents, homes and the roll's use are the BLOCK's
+     — the Census ring resolved onto it, the parcels summed across it. Under an
+     address title they read as a claim about that building, and "200 Residents"
+     over `2707 Twenty-first St` says two hundred people live in one house. So
+     a door shows the record figures and nothing else; the ground facts stay
+     with the block they were measured on. */
+  atDoor: boolean;
   t: (k: string) => string;
 }) {
   const bits: React.ReactNode[] = [];
-  if (now && now.residents !== null) {
+  if (!atDoor && now && now.residents !== null) {
     bits.push(
       <span key="r">
         <b>{nfInt.format(now.residents)}</b> {t("us.sf.thecity.panel.now_residents")}
       </span>,
     );
   }
-  if (now && now.homes !== null) {
+  if (!atDoor && now && now.homes !== null) {
     bits.push(
       <span key="h">
         <b>{nfInt.format(now.homes)}</b> {t("us.sf.thecity.panel.now_homes")}
       </span>,
     );
   }
-  if (now?.use) bits.push(<span key="u">{now.use}</span>);
+  if (!atDoor && now?.use) bits.push(<span key="u">{now.use}</span>);
   if (shape) {
     bits.push(
       <span key="n">
         <b>{nfInt.format(shape.n)}</b>{" "}
-        {tOr(t, "us.sf.thecity.panel.now_decisions", "Board decisions")}
+        {shape.n === 1
+          ? tOr(t, "us.sf.thecity.panel.now_decision_one", "Board decision")
+          : tOr(t, "us.sf.thecity.panel.now_decisions", "Board decisions")}
       </span>,
     );
     bits.push(
@@ -1254,6 +1268,173 @@ function DecadeRow({
  * that block and the last year it did. Nothing is hidden by the press — the
  * count on the button says how many rows it holds, and one press clears it.
  */
+
+/**
+ * WHAT THE FICHE IS ABOUT.
+ *
+ * > "on making the click being a neighbourhood a street a building etc"
+ * > "i dont want block nulber to show anywhere"
+ *
+ * The map hands over a piece of ground because ground is the only thing it can
+ * draw. Ground is not a unit anybody thinks in: `ground` is the landing, and
+ * the reader moves from it to a door or a street without leaving the panel or
+ * fetching a page.
+ */
+export type Unit =
+  | { readonly kind: "ground" }
+  | { readonly kind: "door"; readonly key: string }
+  | { readonly kind: "street"; readonly key: string }
+  | { readonly kind: "hood" };
+
+const WHOLE: Unit = { kind: "ground" };
+
+/**
+ * ALSO HERE — the units the reader can move to, in the order they matter.
+ *
+ * The buildings first, because a door is the smallest and most personal thing
+ * on the page; the streets after, because they are the widest. Each carries
+ * its own count, so nothing here is a promise the record cannot keep: a street
+ * with 401 records says 401 before it is opened. Chips that lead nowhere are
+ * worse than no chips, so every row on this list opens something.
+ */
+function UnitChooser({
+  doors,
+  streets,
+  unit,
+  onGo,
+  t,
+}: {
+  doors: readonly BlockAddress[];
+  streets: readonly { key: string; n: number }[];
+  unit: Unit;
+  onGo: (u: Unit) => void;
+  t: (k: string) => string;
+}) {
+  /* WHAT IS LEFT TO GO TO. Offering "Quesada Ave — the whole street" while the
+     fiche IS Quesada Ave reads as a broken control, so the open unit is not on
+     its own list; `Back` is how you leave it. */
+  const rest = doors.filter((d) => !(unit.kind === "door" && unit.key === d.key));
+  const restStreets = streets.filter(
+    (st) => !(unit.kind === "street" && unit.key === st.key),
+  );
+  if (rest.length === 0 && restStreets.length === 0) return null;
+  return (
+    <>
+      <div className="fx-city-ledger-head fx-block-sec">
+        {tOr(t, "us.sf.thecity.panel.units_head", "Also here")}
+      </div>
+      <div className="fx-block-units">
+        {rest.map((d) => {
+          return (
+            <button
+              key={`d:${d.key}`}
+              type="button"
+              className="fx-block-unit"
+              onClick={() => onGo({ kind: "door", key: d.key })}
+            >
+              <span className="fx-block-unit-l">{d.label}</span>
+              <span className="fx-block-unit-n">
+                {d.n}
+                {d.y1 !== d.y0 ? ` \u00b7 ${d.y0}\u2013${d.y1}` : ` \u00b7 ${d.y0}`}
+              </span>
+            </button>
+          );
+        })}
+        {restStreets.map((st) => {
+          return (
+            <button
+              key={`s:${st.key}`}
+              type="button"
+              className="fx-block-unit is-street"
+              onClick={() => onGo({ kind: "street", key: st.key })}
+            >
+              <span className="fx-block-unit-l">{streetLabel(st.key)}</span>
+              <span className="fx-block-unit-n">
+                {st.n > 0
+                  ? tOr(t, "us.sf.thecity.panel.units_street_n", "{n} records").replace(
+                      "{n}",
+                      nfInt.format(st.n),
+                    )
+                  : tOr(t, "us.sf.thecity.panel.units_street", "the whole street")}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
+
+/**
+ * A NEIGHBOURHOOD, OPENED.
+ *
+ * It has its own decade list rather than the shared one, for one reason: the
+ * file ships twelve records a decade and the decade really holds hundreds.
+ * The shared list would draw its bars from the twelve and tell the reader the
+ * 1920s held twelve things. Here the bar and the number are the TRUE count and
+ * the records under it are what we shipped, with the difference stated.
+ */
+function HoodLevel({
+  recs,
+  t,
+}: {
+  recs: HoodRecords;
+  t: (k: string) => string;
+}) {
+  const decades = recs.decades.filter((d) => d.n > 0);
+  const max = decades.reduce((m, d) => Math.max(m, d.n), 0);
+  return (
+    <>
+      <div className="fx-city-ledger-head fx-block-sec">
+        {t("us.sf.thecity.panel.rail_head")}
+      </div>
+      <div className="fx-block-rail" key={recs.i}>
+        {decades.map((d) => (
+          <details key={d.decade} className="fx-block-dec">
+            <summary>
+              <span className="fx-block-decl">{d.decade}s</span>
+              <span className="fx-block-track">
+                <span
+                  className="fx-block-bar"
+                  style={{ width: `${max ? (100 * d.n) / max : 0}%` }}
+                />
+              </span>
+              <span className="fx-block-n">{nfInt.format(d.n)}</span>
+            </summary>
+            <div className="fx-block-decbody">
+              {d.rows.length ? (
+                <>
+                  <FicheArchiveShelf docs={d.rows.map(toDoc)} />
+                  {d.n > d.rows.length ? (
+                    <p className="fx-block-hint" style={NOTE}>
+                      {tOr(
+                        t,
+                        "us.sf.thecity.panel.hood_some",
+                        "{shown} of {n} shown \u2014 the rest are on the streets below.",
+                      )
+                        .replace("{shown}", String(d.rows.length))
+                        .replace("{n}", nfInt.format(d.n))}
+                    </p>
+                  ) : null}
+                </>
+              ) : (
+                <p className="fx-block-hint" style={NOTE}>
+                  {tOr(
+                    t,
+                    "us.sf.thecity.panel.hood_none_readable",
+                    "The scans of this decade are too damaged to quote here.",
+                  )}
+                </p>
+              )}
+            </div>
+          </details>
+        ))}
+      </div>
+    </>
+  );
+}
+
 export default function CityBlockPanel({
   record,
   context,
@@ -1277,6 +1458,17 @@ export default function CityBlockPanel({
   const streetsRef = useRef<HTMLDetailsElement>(null);
   const [streets, setStreets] = useState<Record<string, BlockDecision[]>>({});
   const [openStreets, setOpenStreets] = useState(false);
+  /* ── WHICH UNIT THE FICHE IS ABOUT ────────────────────────────────────────
+     A person thinks in a building, a street or a neighbourhood. The map can
+     only hand over a piece of ground, so the ground is where a click LANDS and
+     the unit is what the reader then reads. One state, and every derived thing
+     below follows it, because they all read `here`.
+
+     Cleared whenever the map hands over different ground, the same way the
+     rail's open decade is (FICHE.md §4). */
+  const [unit, setUnit] = useState<Unit>(WHOLE);
+  const [streetRows, setStreetRows] = useState<readonly BlockDecision[]>(EMPTY);
+  const [hoodRecs, setHoodRecs] = useState<HoodRecords | null>(null);
   // The two modern-fact files. One fetch each for the whole session — both are
   // memoised inside `block-records`, so a second panel does not re-request —
   // and both fail soft to null, which renders exactly what this panel rendered
@@ -1347,6 +1539,12 @@ export default function CityBlockPanel({
       panelRef.current?.closest(".fx-city-ledger") ?? panelRef.current?.parentElement;
     if (host instanceof HTMLElement) host.scrollTop = 0;
     setStreets({});
+    /* An open door does not survive a new block — the same bug the rail's open
+       decade had (FICHE.md §4). The panel keeps its state across picks, so
+       without this a reader who opened 2707 Twenty-first Street would meet the
+       next block already narrowed to an address that is not on it. */
+    setUnit(WHOLE);
+    setStreetRows(EMPTY);
     setOpenStreets(
       (record?.decisions.length ?? 0) === 0 && (record?.streets.length ?? 0) > 0,
     );
@@ -1371,7 +1569,78 @@ export default function CityBlockPanel({
   // `record?.decisions ?? []` builds a new array on every render, and a new
   // array is a new dependency, so the shape was recomputed on every frame the
   // map emitted while the panel was open.
-  const here = useMemo(() => record?.decisions ?? EMPTY, [record]);
+  const all = useMemo(() => record?.decisions ?? EMPTY, [record]);
+
+  /* ── THE DOORS ────────────────────────────────────────────────────────────
+     Nobody thinks "block 4087". They think *my building*. The addresses the
+     record names here are a SUBSET of this block's own records, so opening one
+     needs no fetch and no route: it narrows `here`, and every derived thing
+     below — the lead, the rail, the figures, the shelf — narrows with it,
+     because all of them read `here` and nothing reads `record.decisions`.
+
+     The block does not stop existing; it stops being the destination. */
+  const doors = useMemo(() => blockAddresses(all), [all]);
+  /* WHERE YOU ARE, IN STREETS. The assessor's number is how this pipeline
+     addresses a piece of ground and it is not how anybody describes where they
+     are. `s[]` already ships the streets the block fronts; 0.6 % of blocks
+     front none and those fall back to the neighbourhood. */
+  useEffect(() => {
+    if (unit.kind !== "hood" || context == null) return;
+    let live = true;
+    setHoodRecs(null);
+    void loadHoodRecords(context.hoodIndex).then((r) => {
+      if (live) setHoodRecs(r);
+    });
+    return () => {
+      live = false;
+    };
+  }, [unit, context]);
+
+  useEffect(() => {
+    if (unit.kind !== "street") return;
+    let live = true;
+    setStreetRows(EMPTY);
+    void loadStreetRecord(unit.key).then((rows) => {
+      if (live) setStreetRows(rows);
+    });
+    return () => {
+      live = false;
+    };
+  }, [unit]);
+
+  const placeName = useMemo(
+    () => blockPlaceName(record?.streets ?? []),
+    [record?.streets],
+  );
+  const openDoor =
+    unit.kind === "door" ? (doors.find((d) => d.key === unit.key) ?? null) : null;
+  /* THE ONE SWITCH. `here` is what the lead, the rail, the figures, the
+     silence line and the shelf all read, so narrowing it to a door or widening
+     it to a street re-reads the whole fiche with no other change. A street's
+     rows arrive from its own file and are EMPTY until they do, which draws the
+     loading state the panel already has rather than an empty street. */
+  const here =
+    unit.kind === "door"
+      ? (openDoor?.rows ?? EMPTY)
+      : unit.kind === "street"
+        ? streetRows
+        : all;
+  /* The streets this block fronts. The count is shown only where the street's
+     own file has already been fetched — the streets section fetches them when
+     it opens — so the chooser never states a number it has not read. Where it
+     has none it offers the street plainly instead of printing a zero. */
+  const unitStreets = useMemo(
+    () => (record?.streets ?? []).map((key) => ({ key, n: streets[key]?.length ?? 0 })),
+    [record?.streets, streets],
+  );
+  const unitName =
+    unit.kind === "door"
+      ? (openDoor?.label ?? null)
+      : unit.kind === "street"
+        ? streetLabel(unit.key)
+        : unit.kind === "hood"
+          ? (hoodRecs?.name ?? context?.hood ?? null)
+          : null;
   /* WHAT THE INDEX REACHES vs WHAT THE SHELF REACHES — two numbers, and the
      rail may not confuse them. `indexedLast` is the last year these shards
      place anything and it decides which decades draw as unrecorded; the
@@ -1436,15 +1705,34 @@ export default function CityBlockPanel({
               where CONTEXT goes: it carries the neighbourhood's own name, so
               nothing is lost and the reader is still told where they are, one
               size down from the thing they asked about. */}
-          <span className="fx-city-panel-kicker">
-            {hood ? hood.name : (context?.hood || t("us.sf.thecity.panel.kicker"))}
-          </span>
+          {/* WHEN A DOOR IS OPEN THE FICHE IS THE ADDRESS, not the block.
+              The block does not vanish — it moves up into the kicker, where
+              the neighbourhood already lives, so the reader keeps their
+              bearings and the title is the thing they actually asked for. */}
+          {/* The neighbourhood is always the kicker, and the ground the reader
+              landed on joins it once they have gone deeper — so a door or a
+              street still says which piece of the city it belongs to. */}
+          {/* The neighbourhood's name has always been up here. Now it opens
+              the neighbourhood, which is the third of the three things a
+              person thinks in. It is a button only when there is somewhere to
+              go — on the neighbourhood itself it is plain text. */}
+          {unit.kind !== "hood" && context ? (
+            <button
+              type="button"
+              className="fx-city-panel-kicker fx-block-kicker-go"
+              onClick={() => setUnit({ kind: "hood" })}
+            >
+              {hood ? hood.name : context.hood}
+            </button>
+          ) : (
+            <span className="fx-city-panel-kicker">
+              {hood ? hood.name : (context?.hood || t("us.sf.thecity.panel.kicker"))}
+            </span>
+          )}
           <h2 className="fx-city-panel-title">
-            {context
-              ? t("us.sf.thecity.panel.hood_block").replace("{id}", context.id)
-              : "—"}
+            {unitName ?? placeName ?? hood?.name ?? context?.hood ?? "\u2014"}
           </h2>
-          {context && context.areaM2 > 0 ? (
+          {unit.kind === "ground" && context && context.areaM2 > 0 ? (
             <p className="fx-place-sub" style={{ margin: "2px 0 0" }}>
               {t("us.sf.thecity.panel.area").replace(
                 "{n}",
@@ -1497,9 +1785,46 @@ export default function CityBlockPanel({
             set muted and small. */}
         {loading ? (
           <p className="fx-fiche-note">{t("us.sf.thecity.panel.loading")}</p>
+        ) : unit.kind === "hood" ? (
+          /* The neighbourhood has its own body: its decade counts are the real
+             ones and the records under them are a selection, which the shared
+             decade list cannot say. Everything below it — the streets, the
+             neighbourhood summary, the sources — is unchanged. */
+          <>
+            <button
+              type="button"
+              className="fx-block-jump fx-block-back"
+              onClick={() => setUnit(WHOLE)}
+            >
+              {tOr(t, "us.sf.thecity.panel.unit_back", "\u2190 Back")}
+            </button>
+            {hoodRecs ? (
+              <HoodLevel recs={hoodRecs} t={t} />
+            ) : (
+              <p className="fx-fiche-note">{t("us.sf.thecity.panel.loading")}</p>
+            )}
+          </>
         ) : shape ? (
           <>
+            {unit.kind !== "ground" ? (
+              <button
+                type="button"
+                className="fx-block-jump fx-block-back"
+                onClick={() => setUnit(WHOLE)}
+              >
+                {tOr(t, "us.sf.thecity.panel.unit_back", "\u2190 Back")}
+              </button>
+            ) : null}
+
             {lead ? <BlockLead d={lead} t={t} /> : null}
+
+            <UnitChooser
+              doors={doors}
+              streets={unitStreets}
+              unit={unit}
+              onGo={setUnit}
+              t={t}
+            />
 
             <div className="fx-city-ledger-head fx-block-sec">
               {t("us.sf.thecity.panel.rail_head")}
@@ -1543,7 +1868,14 @@ export default function CityBlockPanel({
                 most on exactly the block a journalist checks. */}
             {shape.quietAfter ? (
               <p className="fx-block-hint" style={NOTE}>
-                {t("us.sf.thecity.panel.shape_quiet").replace(
+                {(unit.kind !== "ground"
+                  ? tOr(
+                      t,
+                      "us.sf.thecity.panel.shape_quiet_door",
+                      "Nothing lands at this address after {y}.",
+                    )
+                  : t("us.sf.thecity.panel.shape_quiet")
+                ).replace(
                   "{y}",
                   String(shape.quietAfter),
                 )}
@@ -1616,7 +1948,12 @@ export default function CityBlockPanel({
         )}
 
         {/* The figures, on one row, under the record rather than over it. */}
-        <GroundLine now={now} shape={!loading ? shape : null} t={t} />
+        <GroundLine
+          now={now}
+          shape={!loading ? shape : null}
+          atDoor={unit.kind !== "ground"}
+          t={t}
+        />
 
         {places.length > 0 && money ? (
           <>

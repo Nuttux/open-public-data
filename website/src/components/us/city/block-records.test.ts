@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
+  ADDR_TIER,
+  blockAddresses,
+  blockPlaceName,
   blockLead,
   blockShape,
   blockSubjects,
@@ -565,5 +568,112 @@ describe("railSilence — the fourth reason is ours, not the record's", () => {
 
   it("still says no_line when the volume prints nothing", () => {
     expect(railSilence([row("")])).toBe("no_line");
+  });
+});
+
+/* ── the units a person thinks in ─────────────────────────────────────────── */
+
+describe("blockAddresses reads the doors the record names (Block U1)", () => {
+  const at = (t: string, y = 1920, p = ADDR_TIER): BlockDecision => ({
+    y, d: "", k: "R", p, f: 1, a: 0, u: "vol/1", t,
+  });
+
+  it("folds the volume's spelled-out ordinal onto the modern number", () => {
+    const out = blockAddresses([
+      at("Stable Permit — Evatt, at 2707 Twenty-first street, for 2 horses."),
+      at("Sidewalk encroachment at 2707 21st St.", 1994),
+    ]);
+    expect(out).toHaveLength(1);
+    expect(out[0].key).toBe("2707 21st st");
+    expect(out[0].n).toBe(2);
+    expect(out[0].y0).toBe(1920);
+    expect(out[0].y1).toBe(1994);
+  });
+
+  it("prints the address the way the volume set it, not the folded key", () => {
+    const [a] = blockAddresses([at("…at 2707 Twenty-first street, for 2 horses.")]);
+    expect(a.label).toBe("2707 Twenty-first St");
+  });
+
+  it("reads a hyphenated range as the one door the volume means", () => {
+    const [a] = blockAddresses([at("Approving 2246-2250 Jerrold Avenue, a condominium project.")]);
+    expect(a.key).toBe("2246 jerrold ave");
+  });
+
+  /* The whole reason ADDR_TIER exists. A street-tier row naming a number is a
+     building SOMEWHERE ALONG the street, and putting it on this block's fiche
+     would be a claim the pipeline never made. */
+  it("refuses a house number that arrives on a street-tier row", () => {
+    expect(blockAddresses([at("Blasting at 1500 Illinois street.", 1918, 0)])).toEqual([]);
+  });
+
+  it("does not read a direction or a preposition as a street name", () => {
+    expect(blockAddresses([at("…175 feet south of Twentieth street…")])).toEqual([]);
+    expect(blockAddresses([at("…the northerly line of 40 Innes Avenue…")])[0].key)
+      .toBe("40 innes ave");
+  });
+
+  it("counts a door once per record even when the line repeats it", () => {
+    const [a] = blockAddresses([
+      at("Lease at 3801 Third Street; and further, 3801 Third Street, Suite 400."),
+    ]);
+    expect(a.n).toBe(1);
+  });
+
+  /* The bug that was on screen: a 1986 assessment table listing properties all
+     over the city, placed on a Mission block because ONE of them was there,
+     put 1721 Cabrillo Street and 107 Maywood Drive on that block's fiche. */
+  it("names no door at all when the line is a table of several", () => {
+    expect(
+      blockAddresses([
+        at("Property Location 1721 Cabrillo Street 2270-2272 Bryant Street 107 Maywood Drive"),
+      ]),
+    ).toEqual([]);
+  });
+
+  it("reads a single door out of a line that also names a cross street", () => {
+    const [a] = blockAddresses([
+      at("Conditional use of property at 2261 Bryant Street for a residential care facility."),
+    ]);
+    expect(a.label).toBe("2261 Bryant St");
+  });
+
+  it("puts the most-recorded door first", () => {
+    const out = blockAddresses([
+      at("Permit at 805 York street."),
+      at("Findings for 2261 Bryant Street."),
+      at("Conditional use of 2261 Bryant Street."),
+    ]);
+    expect(out.map((a) => a.label)).toEqual(["2261 Bryant St", "805 York St"]);
+  });
+});
+
+describe("blockPlaceName says where you are without a filing number (Block U1)", () => {
+  /* The marker was rendering as part of the name on the streets section:
+     "Broadway *", "The Embarcadero *", "South Park *". 96 keys carry it. */
+  it("drops the no-street-type marker rather than printing it", () => {
+    expect(streetLabel("BROADWAY|*")).toBe("Broadway");
+    expect(streetLabel("THE EMBARCADERO|*")).toBe("The Embarcadero");
+    expect(streetLabel("PINE|ST")).toBe("Pine St");
+  });
+
+  it("names a four-sided block by the streets around it", () => {
+    expect(blockPlaceName(["BROADWAY|*", "LARKIN|ST", "POLK|ST", "VALLEJO|ST"]))
+      .toBe("Broadway \u00b7 Larkin St \u00b7 Polk St \u00b7 Vallejo St");
+  });
+
+  it("does not invent a corner or a between out of two streets", () => {
+    expect(blockPlaceName(["FELL|ST", "MARKET|ST"])).toBe("Fell St \u00b7 Market St");
+  });
+
+  it("stops at four and counts the rest", () => {
+    expect(blockPlaceName(["A|ST", "B|ST", "C|ST", "D|ST", "E|ST", "F|ST"]))
+      .toBe("A St \u00b7 B St \u00b7 C St \u00b7 +3");
+  });
+
+  /* 7 blocks in 1,191 front no street at all. The caller falls back to the
+     neighbourhood rather than printing an assessor's number. */
+  it("returns null when the shard names no street", () => {
+    expect(blockPlaceName([])).toBeNull();
   });
 });

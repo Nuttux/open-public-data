@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+const b=await chromium.launch();
+const p=await b.newPage({viewport:{width:1400,height:1000}});
+await p.goto('https://sfgov.legistar.com/Calendar.aspx',{waitUntil:'networkidle',timeout:90000});
+await p.waitForTimeout(3000);
+const t=await p.evaluate(()=>document.body.innerText);
+const dates=[...t.matchAll(/\b(\d{1,2}\/\d{1,2}\/(20\d\d))\b/g)].map(m=>m[1]);
+const yrs=[...new Set(dates.map(d=>d.slice(-4)))].sort();
+console.log('years present:',yrs);
+console.log('sample:',dates.slice(0,10));
+console.log('---- page text (first 1200) ----');
+console.log(t.slice(0,1200));
+await p.screenshot({path:'/private/tmp/claude-501/-Users-daniel-Desktop-dani-code-open-data-paris-open-public-data/ae39e695-b7df-40d0-91fe-a78de4ad2142/scratchpad/shots/legistar.png',fullPage:false});
+await b.close();

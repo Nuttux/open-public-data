@@ -17197,6 +17197,84 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
    stop competing with the figure. NOT for `money_ledgers`/`money_over`: those
    are refusals ABOUT the figure above and carry the link out. See
    components/us/city/FICHE.md §19b. */
+/* ── ALSO HERE — the units a reader can move to ────────────────────────────
+   Rows, not chips: an address and a street are read left to right and their
+   counts belong hard right, so the eye runs down the numbers without reading
+   the names. Every value is a theme token; no palette is set here. */
+.theme-fusion .fx-block-units {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 6px;
+}
+.theme-fusion .fx-block-unit {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: 7px 0;
+  cursor: pointer;
+  color: var(--ink);
+  font: inherit;
+}
+.theme-fusion .fx-block-unit:last-child { border-bottom: 0; }
+.theme-fusion .fx-block-unit:hover { background: var(--bg-hover); }
+.theme-fusion .fx-block-unit:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: -2px;
+}
+.theme-fusion .fx-block-unit.is-on { color: var(--bleu); }
+/* a street is the wider thing and reads one step quieter than a door */
+.theme-fusion .fx-block-unit.is-street .fx-block-unit-l { color: var(--ink-2); }
+.theme-fusion .fx-block-unit-l { font-size: 14px; line-height: 1.3; }
+.theme-fusion .fx-block-unit-n {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.theme-fusion .fx-block-back { display: inline-block; margin-bottom: 10px; }
+
+/* the neighbourhood's name at the top of a fiche is a way into it */
+.theme-fusion .fx-block-kicker-go {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: var(--ocre);
+}
+.theme-fusion .fx-block-kicker-go:hover { text-decoration: underline; }
+.theme-fusion .fx-block-kicker-go:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: 2px;
+}
+
+/* ── THE TITLE IS A PLACE, AND PLACES HAVE LONG NAMES ──────────────────────
+   48 % of blocks front FOUR streets, so `Andover St · Eugenia Ave · Powhattan
+   Ave · Wool St` is the common case, not the edge — and at the panel's 22 px
+   it ran to three lines and pushed the record off the first screen. The title
+   steps down as it gets longer rather than wrapping: the balance keeps the
+   break sensible, and `:has()` lets the size follow the content with no class
+   threaded through from the component. */
+.theme-fusion .fx-city-panel-title {
+  text-wrap: balance;
+  line-height: 1.16;
+}
+.theme-fusion .fx-city-panel-head:has(.fx-city-panel-title) .fx-city-panel-title {
+  font-size: clamp(16px, 4.4vw, 22px);
+}
+@media (min-width: 720px) {
+  .theme-fusion .fx-city-panel-title { font-size: 19px; letter-spacing: -0.015em; }
+}
+
 .theme-fusion .fx-block-note {
   margin: 7px 0 0;
   font-size: 10.5px;

@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+const F='file:///private/tmp/claude-501/-Users-daniel-Desktop-dani-code-open-data-paris-open-public-data/ae39e695-b7df-40d0-91fe-a78de4ad2142/scratchpad/art/drawing-the-record.html';
+const O='/private/tmp/claude-501/-Users-daniel-Desktop-dani-code-open-data-paris-open-public-data/ae39e695-b7df-40d0-91fe-a78de4ad2142/scratchpad/shots';
+const b=await chromium.launch();
+const p=await b.newPage({viewport:{width:1400,height:1000},colorScheme:'light'});
+await p.goto(F,{waitUntil:'networkidle'}); await p.waitForTimeout(900);
+const plates=await p.$$('.plate');
+await plates[0].screenshot({path:`${O}/plate-A.png`});
+await plates[6].screenshot({path:`${O}/plate-G.png`});
+console.log('cropped A and G');
+await b.close();

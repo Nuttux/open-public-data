@@ -71,18 +71,55 @@ a judgement, and it is the difference between a decision that touched one corner
 and one that reorganised the whole district — "Giving Notice of Special Election
 for Bonds for Municipal Railway Extensions", 1927, on twenty-four Sunset blocks.
 
+── AND A ROLLUP GOES STALE THE MOMENT WHAT IT ROLLS UP IS REBUILT ────────────
+
+That is not hypothetical. `hood-facts.json` was written on 2026-08-24 and the
+shards under it were rebuilt three times without it — `1f56663a`, `ccec8bd7`,
+`176bc575` — so the file went on stating a total 10.1 % short (91,391 against
+101,662), 39 of the 41 neighbourhoods disagreed on their own count, 38 printed a
+last year a median 24 years early, and Treasure Island read *"The Board's record
+places nothing in it."* over five decisions on two blocks. `sf_data_audit.md` A1.
+
+**The file states its own contract — "a rollup, not a new measurement" — and
+nothing enforced it.** Three things do now, and none of them is a person
+remembering to re-run this script:
+
+1. **A SECOND INSTRUMENT.** `block-index.json` publishes `n`, `y0` and `y1` per
+   block, produced by `blocks/build_index.py` and not by anything here. This
+   script rolls it up over the same `hood` bytes and asserts the result equals
+   its own walk of the shards, per neighbourhood. Two independent readings of
+   the same quantity, and the build stops if they differ.
+2. **A FINGERPRINT ON THE WAY OUT.** `inputs` records what was summed — shard
+   count, decision count, and the published index's own `precision_counts`
+   digest — so the file says which build it describes rather than only when it
+   was written.
+3. **A CHECK THAT RUNS WITHOUT THIS SCRIPT.**
+   `website/src/components/us/city/hood-facts.test.ts` re-derives the
+   rollup from the SHIPPED index and fails `npm test` the moment the two
+   disagree. That is the half a `generated_at` cannot do: a timestamp records
+   when a number was taken, never whether it is still true.
+
 ── RUN ───────────────────────────────────────────────────────────────────────
 
     python3 pipeline/scripts/us_sf_city/build_hood_facts.py --build
+    python3 pipeline/scripts/us_sf_city/build_hood_facts.py --build --out DIR
+    python3 pipeline/scripts/us_sf_city/build_hood_facts.py --check
 
-Reads only files already on disk (the chunk, the two block-fact files, the 256
-record shards). Never touches the network, so there is no `--fetch`.
+`--out` writes beside the published tree instead of into it, which is the
+control pattern the rest of this directory is built and diffed with. `--check`
+rebuilds in memory and compares against what is published, writing nothing and
+exiting non-zero when they differ.
+
+Reads only files already on disk (the chunk, the two block-fact files, the
+published index, the 256 record shards). Never touches the network, so there is
+no `--fetch`.
 """
 from __future__ import annotations
 
 import argparse
 import collections
 import glob
+import hashlib
 import json
 import pathlib
 import math
@@ -99,6 +136,24 @@ CITY = REPO / "website" / "public" / "data" / "us" / "sf" / "city"
 BLOCKS = CITY / "blocks"
 OUT = BLOCKS / "hood-facts.json"
 OUT_RINGS = CITY / "base" / "hood-rings.json"
+
+# ── WHICH FILES ARE SHARDS, AS A SHAPE AND NOT AS A BLACKLIST ────────────────
+# This read `glob("block-*.json")` minus any name containing "facts", "money" or
+# "index", which is a list of the four intruders that existed the day it was
+# written. `block-landuse.json` and `block-leads.json` were added later, match
+# the glob, and are not on the list — so the walk opened two catalogue files as
+# if they were record shards. Nothing came of it today (their top-level keys are
+# not block ids, so every row fell through the membership join) and that is
+# precisely the kind of silence this file is being hardened against.
+#
+# A shard is `block-<digits>.json`. Naming the shape instead of the exceptions
+# means the next file dropped in this directory cannot join the walk by accident.
+SHARD_NAME = re.compile(r"block-\d+\.json")
+
+
+def shard_paths(blocks_dir: pathlib.Path) -> list[pathlib.Path]:
+    return sorted(p for p in blocks_dir.glob("block-*.json")
+                  if SHARD_NAME.fullmatch(p.name))
 
 # ── the dissolve ─────────────────────────────────────────────────────────────
 # The neighbourhood's outline is THE UNION OF ITS OWN BLOCKS, closed across the
@@ -580,7 +635,80 @@ def curate(
     return out, dict(counts)
 
 
-def build() -> None:
+def reconcile_against_index(rec: dict, of_hood: dict[str, int],
+                            ids: list[str]) -> dict:
+    """The same rollup, taken off `block-index.json`, asserted equal.
+
+    `blocks/build_index.py` publishes `n`, `y0` and `y1` per block. Rolling
+    those up over the same `hood` bytes is a SECOND reading of the three
+    quantities this file's neighbourhood record is made of, produced by another
+    script from another pass. If the two agree the rollup is what it says it is;
+    if they disagree one of them is describing a build that is no longer on
+    disk, and neither is safe to publish.
+
+    Measured when this was written: 41 of 41 neighbourhoods agree, element for
+    element, on n / blocks / y0 / y1.
+
+    Returns the fingerprint of the index the rollup was reconciled against, to
+    be written into the file so it says WHICH build it summarises.
+    """
+    idx = json.loads((BLOCKS / "block-index.json").read_text())
+    if idx["b"] != ids:
+        raise SystemExit(
+            "block-index.json's block order is not blocks-id.json's. The rollup "
+            "joins on array position, so this is not a warning.")
+
+    from_index: dict[int, dict] = collections.defaultdict(
+        lambda: {"n": 0, "blocks": 0, "y0": 0, "y1": 0})
+    for i, block_id in enumerate(ids):
+        n = idx["n"][i]
+        if not n:
+            continue
+        a = from_index[of_hood[block_id]]
+        a["n"] += n
+        a["blocks"] += 1
+        y0, y1 = idx["y0"][i], idx["y1"][i]
+        if y0:
+            a["y0"] = y0 if not a["y0"] else min(a["y0"], y0)
+        if y1:
+            a["y1"] = max(a["y1"], y1)
+
+    bad = []
+    for hi in sorted(set(from_index) | set(rec)):
+        mine = rec.get(hi)
+        mine = ({"n": mine["n"], "blocks": len(mine["blocks"]),
+                 "y0": mine["y0"], "y1": mine["y1"]} if mine else
+                {"n": 0, "blocks": 0, "y0": 0, "y1": 0})
+        theirs = dict(from_index.get(hi, {"n": 0, "blocks": 0, "y0": 0, "y1": 0}))
+        if mine != theirs:
+            bad.append((hi, mine, theirs))
+    if bad:
+        lines = "\n".join(f"    hood {hi}: shards {m}  index {t}"
+                           for hi, m, t in bad[:10])
+        raise SystemExit(
+            f"THE TWO INSTRUMENTS DISAGREE on {len(bad)} of "
+            f"{len(set(from_index) | set(rec))} neighbourhoods.\n{lines}\n"
+            "The shards and block-index.json are not from the same build. "
+            "Rebuild the index, or publish the shards that go with it, before "
+            "rolling either of them up.")
+    print(f"  reconciled : {len(from_index)} neighbourhoods, shard walk == "
+          f"block-index.json on n / blocks / y0 / y1")
+
+    meta = idx["meta"]
+    return {
+        "n_decisions_placed": meta["n_decisions_placed"],
+        "n_blocks": meta["n_blocks"],
+        "precision_counts": meta["precision_counts"],
+        "links_on_blocks": sum(idx["n"]),
+        "sha256": hashlib.sha256(
+            json.dumps([meta["precision_counts"], sum(idx["n"])],
+                       sort_keys=True, separators=(",", ":")).encode()
+        ).hexdigest()[:16],
+    }
+
+
+def build(out_dir: pathlib.Path | None = None,
+          check_only: bool = False) -> None:
     names, ids, of_hood = membership()
     n_hoods = len(names)
     print(f"  membership : {len(ids)} blocks over {n_hoods} published neighbourhoods")
@@ -596,11 +724,9 @@ def build() -> None:
         "dec": collections.Counter(),
     })
     shards = 0
-    for path in sorted(glob.glob(str(BLOCKS / "block-*.json"))):
-        if any(x in pathlib.Path(path).name for x in ("facts", "money", "index")):
-            continue
+    for path in shard_paths(BLOCKS):
         shards += 1
-        for block_id, entry in json.loads(pathlib.Path(path).read_text()).items():
+        for block_id, entry in json.loads(path.read_text()).items():
             hi = of_hood.get(block_id)
             if hi is None:
                 continue
@@ -620,6 +746,8 @@ def build() -> None:
     print(f"  record     : {shards} shards, "
           f"{sum(a['n'] for a in rec.values())} decisions, "
           f"{sum(1 for a in rec.values() if a['n'])} of {n_hoods} hoods carry one")
+
+    index_fp = reconcile_against_index(rec, of_hood, ids)
 
     # ── the money, deduped by place inside the hood ────────────────────────
     # A place standing on four blocks reports the SAME figure on each — the
@@ -777,13 +905,49 @@ def build() -> None:
             "distinct_top": DISTINCT_TOP,
             "classified": dict(sorted(type_counts.items())),
         },
+        # ── WHAT THIS IS A ROLLUP OF ─────────────────────────────────────
+        # `generated_at` above says when the sum was taken. It cannot say
+        # whether the thing summed has moved since, and for three rebuilds it
+        # did not. This does: shard count, decision count, and the published
+        # index's own digest, all read off the files this run walked.
+        # `hood-facts.test.ts` recomputes it from the shipped tree on every
+        # `npm test`, so a rebuild that leaves this file behind fails the
+        # build instead of reaching a reader.
+        "inputs": {
+            "shards": shards,
+            "shard_rule": SHARD_NAME.pattern,
+            "decisions_on_blocks": sum(a["n"] for a in rec.values()),
+            "index": index_fp,
+        },
         "coverage": cov,
         "hoods": out_hoods,
     }
-    OUT.write_text(json.dumps(blob, separators=(",", ":")))
+
+    if check_only:
+        published = json.loads(OUT.read_text())
+        drift = [k for k in ("inputs", "coverage") if published.get(k) != blob[k]]
+        rec_drift = sum(
+            1 for a, b in zip(published.get("hoods", []), out_hoods)
+            if a.get("record") != b["record"])
+        if drift or rec_drift:
+            raise SystemExit(
+                f"STALE: {OUT.relative_to(REPO)} does not describe the files on "
+                f"disk.\n  sections differing: {drift or 'none'}\n"
+                f"  neighbourhoods whose record differs: {rec_drift}\n"
+                f"  published total {sum(h['record']['n'] for h in published.get('hoods', []))}"
+                f" vs live {sum(h['record']['n'] for h in out_hoods)}\n"
+                "Re-run with --build.")
+        print(f"  CHECK OK   : {OUT.relative_to(REPO)} is current")
+        return
+
+    out = pathlib.Path(out_dir) if out_dir else BLOCKS
+    out.mkdir(parents=True, exist_ok=True)
+    OUT_F = out / OUT.name
+    OUT_R = (out / OUT_RINGS.name) if out_dir else OUT_RINGS
+    OUT_F.write_text(json.dumps(blob, separators=(",", ":")))
 
     rings = dissolve(names, None)
-    OUT_RINGS.write_text(json.dumps(rings, separators=(",", ":")))
+    OUT_R.write_text(json.dumps(rings, separators=(",", ":")))
 
     print(f"  money      : {cov['hoods_with_a_place']} of {n_hoods} hoods carry a "
           f"published place, {cov['hoods_with_a_money_figure']} a figure "
@@ -795,16 +959,19 @@ def build() -> None:
     if straddling:
         print(f"  straddling : {len(straddling)} places stand in two neighbourhoods "
               f"and are reported whole in each — {', '.join(straddling)}")
-    print(f"  wrote      : {OUT.relative_to(REPO)}  "
-          f"{OUT.stat().st_size / 1024:.0f} KB")
-    print(f"               {OUT_RINGS.relative_to(REPO)}  "
-          f"{OUT_RINGS.stat().st_size / 1024:.0f} KB")
+    print(f"  wrote      : {OUT_F}  {OUT_F.stat().st_size / 1024:.0f} KB")
+    print(f"               {OUT_R}  {OUT_R.stat().st_size / 1024:.0f} KB")
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--build", action="store_true")
+    ap.add_argument("--out", metavar="DIR",
+                    help="write beside the published tree instead of into it")
+    ap.add_argument("--check", action="store_true",
+                    help="rebuild in memory and compare against what is "
+                         "published; write nothing, exit non-zero on drift")
     a = ap.parse_args()
-    if not a.build:
-        ap.error("--build")
-    build()
+    if not (a.build or a.check):
+        ap.error("--build or --check")
+    build(pathlib.Path(a.out) if a.out else None, check_only=a.check)
