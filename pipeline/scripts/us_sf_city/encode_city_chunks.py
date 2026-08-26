@@ -35,6 +35,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 
 import numpy as np
 
+from citymap.catalogue import ChunkCatalogue
 from citymap.chunk import ChunkWriter
 from citymap.measured import Declared, Measured
 from citymap.deltachain import rechain
@@ -123,7 +124,6 @@ Z_CANOPY = Declared(
         "found between the street layer and the tree threshold. Re-measuring LOD_Z0 "
         "for another city would move one of these two and not the other, silently")
 
-chunks: list[dict] = []
 sources: dict[str, dict] = {}
 
 
@@ -132,50 +132,26 @@ def src(key: str, **kw) -> str:
     return key
 
 
-kinds: dict[str, dict] = {}
+# THE CATALOGUE AND THE LOD TIERING ARE `citymap/catalogue.py` NOW, and none of
+# it knew what city it was in: write a chunk, record its tier and the zoom below
+# which nobody should ask for it, roll that up so a client can size a tier before
+# fetching any of it. It also holds the three format invariants that used to live
+# in this function — a key's prefix must be declared, all chunks of one kind
+# share a field list, and per-chunk byte layout is never in the manifest.
+#
+# THE LADDER IS THERE; EVERY RUNG ON IT IS HERE. `minZ` is an argument, because
+# the zoom at which a footprint is worth drawing is a measurement of THIS city's
+# median building at one canvas size. See the Z_* block above.
+CAT = ChunkCatalogue(OUT, CHUNK_DIRS)
+chunks = CAT.chunks          # the same list, under the name 28 call sites use
+kinds = CAT.kinds
 
 
 def emit(w: ChunkWriter, *, tier: str, minZ: float, extent, prov: dict,
          note: str | None = None, extra: dict | None = None) -> None:
-    """Write one chunk and record it.
-
-    The SCHEMA — field names, dtypes, provenance, the note — is recorded once per
-    KIND, not once per chunk: 562 copies of the same field table was a 732 KB
-    manifest, which is larger than the first paint it is supposed to make
-    possible. Per-chunk BYTE LAYOUT is not in the manifest at all, because every
-    chunk carries its own header saying where each of its fields starts. The
-    manifest is the catalogue and the provenance; the chunk header is the layout.
-    """
-    import gzip as _gz
-
-    blob = w.serialise()
-    # a key whose prefix main() does not clear would leave a stale chunk behind
-    # on the next run, and the manifest would not name it
-    if w.key.split("/")[0] not in CHUNK_DIRS:
-        raise ValueError(f"{w.key}: prefix is not in CHUNK_DIRS, so main() will "
-                         f"not clear it — add it there first")
-    path = OUT / f"{w.key}.qc"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes(blob)
-    k = kinds.setdefault(w.kind, {
-        "fields": [{"n": f["n"], "t": f["t"]} for f in w.fields()],
-        "provenance": prov,
-        **({"note": note} if note else {}),
-    })
-    if [f["n"] for f in k["fields"]] != [f["n"] for f in w.fields()]:
-        raise ValueError(f"{w.kind}: chunks of one kind must share a field list")
-    entry = {
-        "k": w.key,
-        "kind": w.kind,
-        "tier": tier,
-        "minZ": minZ,
-        "b": len(blob),
-        "gz": len(_gz.compress(blob, 9, mtime=0)),
-        "e": [round(float(v), 1) for v in extent] if extent else None,
-    }
-    if extra:
-        entry.update(extra)
-    chunks.append(entry)
+    """Write one chunk and record it. See citymap.catalogue.ChunkCatalogue."""
+    CAT.emit(w, tier=tier, minZ=minZ, extent=extent, prov=prov,
+             note=note, extra=extra)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -2538,13 +2514,7 @@ def main() -> int:
     tstat = encode_trees(WRLD, STS)
     encode_marks(MARKS)
 
-    tiers: dict[str, dict] = {}
-    for c in chunks:
-        tt = tiers.setdefault(c["tier"], {"chunks": 0, "bytes": 0, "gzipBytes": 0,
-                                          "minZ": c["minZ"]})
-        tt["chunks"] += 1
-        tt["bytes"] += c["b"]
-        tt["gzipBytes"] += c["gz"]
+    tiers = CAT.tiers()
 
     manifest = {
         "format": "qc/1",
@@ -2564,7 +2534,7 @@ def main() -> int:
             "LOD_Z0": Z_BUILDINGS, "LOD_Z1": LOD_Z1, "MINZ": MINZ, "MAXZ": MAXZ,
         },
         "tiers": tiers,
-        "kinds": kinds,
+        "kinds": CAT.kinds,
         "buildings": {k: v for k, v in bstat.items() if k not in ("bytes", "gzip", "cells")},
         "facade": fstat,
         "water": wstat,
@@ -2578,7 +2548,7 @@ def main() -> int:
         "streetLabels": lbstat,
         "trees": {k: v for k, v in tstat.items() if k not in ("bytes", "gzip", "cells")},
         "sources": sources,
-        "chunks": sorted(chunks, key=lambda c: c["k"]),
+        "chunks": CAT.sorted_chunks(),
     }
     # Put back the `places` key emit_places.py added on top of the last build, so a
     # plain re-run of this encoder does not drop 2,192 named places from the map.
@@ -2589,9 +2559,8 @@ def main() -> int:
     (OUT / "manifest.json").write_text(
         json.dumps(manifest, separators=(",", ":"), ensure_ascii=False, sort_keys=False))
 
-    total = sum(c["b"] for c in chunks)
-    tgz = sum(c["gz"] for c in chunks)
-    print(f"{len(chunks)} chunks, {total:,} bytes ({tgz:,} gzipped)")
+    total, tgz = CAT.totals()
+    print(f"{len(CAT.chunks)} chunks, {total:,} bytes ({tgz:,} gzipped)")
     for t in sorted(tiers, key=lambda k: tiers[k]["minZ"]):
         v = tiers[t]
         print(f"  {t:8s} z>={v['minZ']:<5} {v['chunks']:4d} chunks  "

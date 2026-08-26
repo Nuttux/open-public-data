@@ -2756,3 +2756,52 @@ having: the refactored reader agrees with the number the old one produced.
   asserts them read-only, which catches drift but does not put the derivation
   where a reader of `projection.ts` will see it. Wiring them properly means a
   `Measured` equivalent in TypeScript, in `website/**`.
+
+---
+
+# 28. THE CATALOGUE AND THE LOD TIERING — THE LAST GENERIC THING IN THE ENCODER — 2026-08-26
+
+`emit()` was fifty lines in the middle of a 3,600-line San Francisco script, and
+not one of them knew what city it was in: write a chunk, record which tier it
+belongs to and the zoom below which nobody should ask for it, roll that up so a
+client can size a tier before fetching any of it.
+
+It is `citymap/catalogue.py` now — `ChunkCatalogue` — and the encoder keeps a
+four-line `emit()` that forwards to it, so **not one of the twenty-eight call
+sites changed.**
+
+## 28.1 THE LADDER IS THERE; EVERY RUNG ON IT IS HERE
+
+Contract T4 says it exactly: *the LADDER is generic; every rung on it is a
+measurement of one city.* `minZ` is an argument. The zoom at which a footprint is
+worth drawing is a fact about this city's median building at one canvas size, and
+after §27 it is a `Measured` that carries the harness that produced it.
+
+## 28.2 THREE FORMAT INVARIANTS THAT WENT WITH IT, AND WHY THEY BELONG THERE
+
+- **A key's prefix must be declared.** A build clears the directories it owns. A
+  chunk written under a prefix that is not cleared survives the next run as a
+  stale published file the manifest does not name — the worst kind, because
+  nothing points at it and it still serves.
+- **All chunks of one kind share a field list.** The schema is recorded once per
+  KIND. Recording it per chunk made a 732 KB manifest, larger than the first
+  paint it exists to make possible. That economy is only sound if the kind really
+  is uniform, so it is enforced rather than assumed.
+- **`mtime=0` on the gzip size.** A gzip header carrying the clock would make
+  every re-run differ, and there would be no such thing as a control replay. It
+  was already right; it now sits in the shared module with the reason attached.
+
+**And provenance stays a REQUIRED argument.** ADR-0012 calls the per-field
+provenance map "the healthiest seam in the subsystem". Requiring it is what keeps
+it that way: a field with no stated source cannot be written without somebody
+noticing.
+
+## 28.3 THE PROOF
+
+```
+  ctl0 580 files / ctl3 580 files   identical = 580   differ = 0
+```
+
+Four control replays of the encoder in this pass — after the container moved,
+after the constants were annotated, and after the catalogue moved — and every one
+of them byte-identical on all 580 files, including the five the sidecars own.
