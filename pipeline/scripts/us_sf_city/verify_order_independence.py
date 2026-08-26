@@ -43,9 +43,12 @@ import sys
 import tempfile
 
 REPO = pathlib.Path(__file__).resolve().parents[3]
-BLK = REPO / "scratchpad" / "sf-city-anim" / "blocks"
-ITEMS = BLK / "cache" / "items.jsonl"
-OUT = BLK / "out"
+# The BUILDER is in the repo; its DATA tree is not. ADR-0012 §4.7 / blocks/_paths.py.
+BLK = REPO / "pipeline" / "scripts" / "us_sf_city" / "blocks"
+BLKDATA = pathlib.Path(os.environ.get("CITY_DATA")
+                       or (REPO / "scratchpad" / "sf-city-anim")) / "blocks"
+ITEMS = BLKDATA / "cache" / "items.jsonl"
+OUT = BLKDATA / "out"
 
 
 def digest(out_dir: pathlib.Path) -> dict[str, str]:

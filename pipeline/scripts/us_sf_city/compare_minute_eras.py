@@ -59,7 +59,8 @@ def _load(p, n):
 ex = _load(MIN / "extract.py", "ex_era")
 gz = _load(MIN / "gazetteer.py", "gz_era")
 ei = _load(SWEEP / "extract_items.py", "ei_era")
-BI = _load(ANIM / "blocks" / "build_index.py", "bi_era")
+# builder: repo.  corpus: CITY_DATA tree.
+BI = _load(REPO / "pipeline" / "scripts" / "us_sf_city" / "blocks" / "build_index.py", "bi_era")
 
 STYPE = re.compile(r"\s+(Street|Avenue|Boulevard|Road|Way|Drive|Place|Terrace|Alley|"
                    r"Lane|Court|Park|Plaza|Square|Highway|Circle|Path|Walk)$", re.I)

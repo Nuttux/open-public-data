@@ -1,0 +1,16 @@
+# THE CODE IS IN GIT; THE DATA IS NOT, AND THIS IS WHERE THAT LINE IS DRAWN.
+#
+# Everything here is derived and re-buildable from the fetched sources named in
+# _paths.py, and all of it is large: the located-item corpus is 126 MB, the join
+# dump 111 MB, the index 42 MB. Under a default CITY_DATA none of these paths is
+# even inside the repo — they resolve into scratchpad/sf-city-anim/blocks/ — and
+# these rules exist so that a build run with BLOCKS_OUT pointed here by accident
+# cannot commit 200 MB of intermediates.
+cache/
+out/
+out_*/
+__pycache__/
+
+# Working copies of the builder. `git log build_index.py` is the history.
+*.pre-*
+*.bak

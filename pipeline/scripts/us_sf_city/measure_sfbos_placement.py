@@ -13,7 +13,8 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
-BLK = os.path.join(REPO, "scratchpad", "sf-city-anim", "blocks")
+# The BUILDER is in the repo; its DATA tree is not. ADR-0012 §4.7 / blocks/_paths.py.
+BLK = os.path.join(REPO, "pipeline", "scripts", "us_sf_city", "blocks")
 SFBOS = os.path.join(HERE, "cache_sfbos", "items.jsonl")
 
 sys.path.insert(0, BLK)

@@ -37,7 +37,8 @@ import sys
 HERE = pathlib.Path(__file__).resolve().parent
 REPO = HERE.parent.parent.parent
 ANIM = REPO / "scratchpad" / "sf-city-anim"
-BLK = ANIM / "blocks"
+# The BUILDER is in the repo; its DATA tree is not. ADR-0012 §4.7 / blocks/_paths.py.
+BLK = REPO / "pipeline" / "scripts" / "us_sf_city" / "blocks"
 ALL = HERE / "cache_sfbos" / "items_all.jsonl"
 PLACED = HERE / "cache_sfbos" / "items.jsonl"
 BLOCKS = ANIM / "geo" / "cache" / "blocks.json"

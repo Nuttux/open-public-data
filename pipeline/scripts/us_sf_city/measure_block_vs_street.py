@@ -34,8 +34,10 @@ import sys
 
 REPO = pathlib.Path(__file__).resolve().parents[3]
 ANIM = REPO / "scratchpad" / "sf-city-anim"
-BLK = ANIM / "blocks"
-JOINED = BLK / "cache" / "joined.json"
+# The BUILDER is in the repo; its DATA tree is not. ADR-0012 §4.7 / blocks/_paths.py.
+BLK = REPO / "pipeline" / "scripts" / "us_sf_city" / "blocks"
+BLKDATA = ANIM / "blocks"
+JOINED = BLKDATA / "cache" / "joined.json"
 
 
 def _load(p, n):

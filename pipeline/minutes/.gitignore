@@ -1,0 +1,10 @@
+# The record adapters are code and are versioned. Everything they FETCH or
+# DERIVE is neither.
+#
+# cache/ is 349 MB of archive.org _djvu.xml and hOCR, re-fetchable by identifier
+# (`extract.py <id>`); decisions.jsonl is its extract. Both are reproducible and
+# neither is a measurement, so neither is kept.
+cache/
+decisions.jsonl
+__pycache__/
+*.bak
