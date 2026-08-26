@@ -66,8 +66,10 @@ be quietly promoted.** None of them may be carried into a portable core as-is,
 because there is nothing to re-run for a second city.
 
 1. **`bldg.yr`'s base year `1849`** — the worst of them, because it is a *format*
-   constant rather than a render dial: one byte, a 1849–2104 window, and Paris
-   overflows it at the low end on the first Marais building. It appears as a bare
+   constant rather than a render dial: one byte, a 1849–2104 window, so the
+   format cannot represent a building older than the number nobody wrote down.
+   The window is not a limit of the record, of the renderer or of the container —
+   it is the width of one byte offset by one city's founding. It appears as a bare
    clamp `if not (1849 <= yr <= 2026)` in `gen/gen_geo2.py` and `time/bldgio.py`,
    is re-stated at `encode_city_chunks.py:326`, and is consumed at
    `citygl/bldg.ts:42`. **No comment, no doc, no harness, in either tree.** The
