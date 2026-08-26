@@ -226,10 +226,10 @@ export function buildSfLandingModel(): LandingModel {
   // (deck photos: pipeline/scripts/enrich/fetch_sf_landing_photos.py — Wikimedia
   //  Commons, free licences only; place photos come from the places export.)
   const landingCredits = readDataJson<Record<string, PhotoCredit>>(
-    "us/sf/landing/_photo_credits.json",
+    "enrichment/us_sf_landing/_photo_credits.json",
   );
   const placeCredits = readDataJson<Record<string, PhotoCredit>>(
-    "us/sf/places/_photo_credits.json",
+    "enrichment/us_sf_places/_photo_credits.json",
   );
   /** A place's lead photo, but only with a verified free licence — otherwise
    *  no photo, and the card falls back to its plain variant. */

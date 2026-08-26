@@ -32,7 +32,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 SEED = ROOT / "pipeline" / "seeds" / "sf_place_candidates.json"
 IMG_DIR = ROOT / "website" / "public" / "img" / "us" / "sf" / "places"
-OUT = ROOT / "website" / "public" / "data" / "us" / "sf" / "places"
+# Category E side-channel cache (per-record photo credits, no metric) — lives
+# under public/data/enrichment/ per docs/data-platform/04 §4.2.
+OUT = ROOT / "website" / "public" / "data" / "enrichment" / "us_sf_places"
 
 WP_API = "https://en.wikipedia.org/w/api.php"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"

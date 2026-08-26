@@ -400,7 +400,7 @@ def harvest_glosses() -> int:
 def assemble() -> int:
     seed = json.loads(SEED.read_text())
     by_slug = {p["slug"]: p for p in seed["places"]}
-    credits = load(PLACES / "_photo_credits.json") or {}
+    credits = load(ROOT / "website" / "public" / "data" / "enrichment" / "us_sf_places" / "_photo_credits.json") or {}
     # Block 6A: structured facility identity per place (address/APN/ownership/
     # floor-area/building-count), written by export_sf_place_facilities.py from
     # the reviewed crosswalk. Absent → the fiche simply omits the identity block.

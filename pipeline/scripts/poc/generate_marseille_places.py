@@ -5,8 +5,8 @@ the three enrichment sidecars (each produced by its own script, raw kept intact)
 
 Inputs:
   pipeline/seeds/marseille_place_candidates.json               (curated list + wiki title)
-  website/public/data/fr/marseille/places/_photo_credits.json  (fetch_marseille_place_photos.py)
-  website/public/data/fr/marseille/places/_wiki.json           (fetch_marseille_place_wiki.py)
+  website/public/data/enrichment/fr_marseille_places/_photo_credits.json  (fetch_marseille_place_photos.py)
+  website/public/data/enrichment/fr_marseille_places/_wiki.json           (fetch_marseille_place_wiki.py)
   website/public/data/fr/marseille/places/_money.json          (export_marseille_place_money.py ← mart_marseille_place_money)
 
 Output:
@@ -26,8 +26,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 SEED = ROOT / "pipeline" / "seeds" / "marseille_place_candidates.json"
 PLACES_DIR = ROOT / "website" / "public" / "data" / "fr" / "marseille" / "places"
-CREDITS = PLACES_DIR / "_photo_credits.json"
-WIKI = PLACES_DIR / "_wiki.json"    # fetch_marseille_place_wiki.py (FR+EN lead)
+ENRICH_DIR = ROOT / "website" / "public" / "data" / "enrichment" / "fr_marseille_places"
+CREDITS = ENRICH_DIR / "_photo_credits.json"
+WIKI = ENRICH_DIR / "_wiki.json"    # fetch_marseille_place_wiki.py (FR+EN lead)
 MONEY = PLACES_DIR / "_money.json"  # export_marseille_place_money.py (operator + residents)
 OUT = ROOT / "website" / "public" / "data" / "fr" / "marseille" / "places.json"
 

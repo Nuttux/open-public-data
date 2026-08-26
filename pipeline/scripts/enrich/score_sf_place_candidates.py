@@ -411,7 +411,7 @@ def main() -> int:
         except Exception:
             pass
     credits = {}
-    cp = PLACES_WEB / "_photo_credits.json"
+    cp = ROOT / "website" / "public" / "data" / "enrichment" / "us_sf_places" / "_photo_credits.json"
     if cp.exists():
         credits = json.loads(cp.read_text())
 

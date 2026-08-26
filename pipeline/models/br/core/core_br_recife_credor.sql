@@ -11,9 +11,9 @@
 -- Enrichment columns are prefixed ode_ (they are ours, not the source's).
 -- ode_tema: CNAE-section mapping first, else the agency regex mapping on the
 -- latest year's principal agency, else 'Outros'. When several regexes match,
--- the lowest prioridade wins; equal priorities are broken alphabetically by
--- theme so the result is stable build to build (the seed currently gives every
--- agency regex the same priority — an editorial ordering is still pending).
+-- the lowest prioridade wins (Gestão pública is the catch-all at prioridade 3,
+-- the specific themes sit at 2); remaining ties are broken alphabetically by
+-- theme so the result is stable build to build.
 -- Every amount stays in the row-level core / int; this is a dimension.
 -- =============================================================================
 
@@ -71,7 +71,12 @@ tema_orgao AS (
         JOIN {{ ref('stg_br_recife_tema_map') }} m
             ON m.chave_tipo = 'orgao_regex'
             AND r.principal_orgao IS NOT NULL
-            AND REGEXP_CONTAINS(r.principal_orgao, m.chave)
+            -- the legal-form suffix "- ADMINISTRAÇÃO SUPERVISIONADA" / "- ADM.
+            -- SUPERVISIONADA" is not a domain: stripped before matching so it
+            -- cannot trigger the "administra" catch-all of Gestão pública.
+            AND REGEXP_CONTAINS(
+                REGEXP_REPLACE(r.principal_orgao, r'(?i)\s*[-–]\s*ADM(INISTRA[ÇC][ÃA]O)?\.?\s+SUPERVISIONADA\s*$', ''),
+                m.chave)
     )
     GROUP BY cnpj
 )

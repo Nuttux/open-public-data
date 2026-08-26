@@ -29,7 +29,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 SEED = ROOT / "pipeline" / "seeds" / "marseille_place_candidates.json"
 IMG_DIR = ROOT / "website" / "public" / "img" / "fr" / "marseille" / "places"
-OUT = ROOT / "website" / "public" / "data" / "fr" / "marseille" / "places"
+# Category E side-channel cache (per-record photo credits, no metric) — lives
+# under public/data/enrichment/ per docs/data-platform/04 §4.2.
+OUT = ROOT / "website" / "public" / "data" / "enrichment" / "fr_marseille_places"
 
 # French landmarks are best covered on fr.wikipedia; licences are verified on
 # Commons regardless.

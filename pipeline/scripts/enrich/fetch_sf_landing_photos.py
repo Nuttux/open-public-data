@@ -31,7 +31,9 @@ from fetch_sf_place_photos import (  # noqa: E402
 )
 
 IMG_DIR = ROOT / "website" / "public" / "img" / "us" / "sf" / "landing"
-OUT = ROOT / "website" / "public" / "data" / "us" / "sf" / "landing"
+# Category E side-channel cache (per-record photo credits, no metric) — lives
+# under public/data/enrichment/ per docs/data-platform/04 §4.2.
+OUT = ROOT / "website" / "public" / "data" / "enrichment" / "us_sf_landing"
 
 # Candidate civic subjects for the deck. We fetch all that resolve to a free
 # image, then wire the winners into the adapter.

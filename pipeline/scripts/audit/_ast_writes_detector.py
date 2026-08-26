@@ -39,8 +39,9 @@ from typing import NamedTuple
 
 # Path components / literal strings that mark a path as public/data.
 PUBLIC_DATA_LITERALS = {
-    ("public", "data"),     # Path/"public"/"data"
-    ("website", "public"),  # Path/"website"/"public"
+    ("public", "data"),     # Path/"public"/"data" (also matches .../"website"/"public"/"data")
+    # NOT ("website", "public") alone: website/public/img (photos) and other
+    # static assets are not data files — the rule is about public/data/.
 }
 PUBLIC_DATA_LITERAL_RE = re.compile(r"website/public/data(?:/|$)|public/data/")
 ENRICHMENT_RE = re.compile(r"enrichment")
@@ -84,7 +85,7 @@ def _expr_is_public_data_path(node: ast.AST, known_public_vars: set[str]) -> boo
     """Return True if `node` evaluates to a path under public/data.
 
     Recognized patterns :
-      X / "website" / "public" / ...
+      X / "website" / "public" / "data" / ...   (public/img etc. are not data)
       X / "public" / "data" / ...
       Path("website/public/data/...")
       <known_public_var> [/ ...]
@@ -210,14 +211,14 @@ def detect(text: str) -> WriteResult:
                             if target.id not in public_vars:
                                 public_vars.add(target.id)
                                 grew = True
-                            if _expr_mentions_enrichment(node.value):
-                                enrichment_vars.add(target.id)
+                            if _expr_mentions_enrichment(node.value) or _root_name(node.value) in enrichment_vars:
+                                enrichment_vars.add(target.id)  # transitive: X = ENRICH_DIR / "f.json"
             elif isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name):
                 if node.value and _expr_is_public_data_path(node.value, public_vars):
                     if node.target.id not in public_vars:
                         public_vars.add(node.target.id)
                         grew = True
-                    if _expr_mentions_enrichment(node.value):
+                    if _expr_mentions_enrichment(node.value) or _root_name(node.value) in enrichment_vars:
                         enrichment_vars.add(node.target.id)
         if not grew:
             break

@@ -26,7 +26,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 SEED = ROOT / "pipeline" / "seeds" / "marseille_place_candidates.json"
-OUT = ROOT / "website" / "public" / "data" / "fr" / "marseille" / "places" / "_wiki.json"
+# Category E side-channel cache (per-place wiki extracts, no metric) — lives
+# under public/data/enrichment/ per docs/data-platform/04 §4.2.
+OUT = ROOT / "website" / "public" / "data" / "enrichment" / "fr_marseille_places" / "_wiki.json"
 
 FR_API = "https://fr.wikipedia.org/w/api.php"
 EN_API = "https://en.wikipedia.org/w/api.php"
