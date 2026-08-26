@@ -281,8 +281,9 @@
           "name_original": "Dotations État: Frais de gestion de la TFPB"
         },
         {
-          "name": "Dotations État: Attrib/Vers. impôt cercles, maisons jeux",
-          "value": 9207357.0
+          "name": "Dotations État: Attribution / Versement impôt cercles et maisons de jeux",
+          "value": 9207357.0,
+          "name_original": "Dotations État: Attrib/Vers. impôt cercles, maisons jeux"
         },
         {
           "name": "Fonds Européens: Participations",
@@ -2739,7 +2740,7 @@
           "fonction_ratio": 0.2699
         },
         {
-          "name": "Charges Fiscales: Reversements",
+          "name": "Charges Fiscales: Reversements, restitutions et prélèvements divers",
           "value": 9000000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
@@ -2842,7 +2843,7 @@
           "fonction_ratio": 0.2699
         },
         {
-          "name": "Reversements Fiscaux: Autres restitutions",
+          "name": "Reversements Fiscaux: Autres restitutions, dégrèvements et contributions directes",
           "value": 5000000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
