@@ -2502,3 +2502,111 @@ two reasons is real.**
   enough that nobody notices, exactly as `verify_city_chunks.py` has been failing
   9. Both are gates that cry wolf, which is worse than a gate that does not run:
   it trains the reader to skim a FAILURES block.
+
+---
+
+# 26. THE NEAR-DUPLICATE COLLAPSE BECOMES A MECHANISM WITH THE MEASUREMENTS BESIDE IT — 2026-08-26
+
+The collapse is the most portable idea in the record half of the pipeline and it
+was written as forty lines of closures inside `build_index.main()`, where nothing
+could reach it and nothing could test it except a seven-minute rebuild.
+
+**It is `citymap/nearcollapse.py` now, and the split is the point.** The
+mechanism moved; **every threshold stayed, and each is now written down with the
+observation that set it.**
+
+## 26.1 WHAT IS TRUE OF A CITY, AND WHAT IS TRUE OF THIS CORPUS
+
+| moved to `citymap/nearcollapse.py` | why it is generic |
+|---|---|
+| `letters_signature` | any series that reprints an instrument at each reading differs between printings in a sequence NUMBER, so a signature that keeps digits collapses nothing |
+| `word_shingles` | compares what two texts SAY, which is what is needed when a segmenter cuts two copies at different points |
+| `char_grams` | for text that has been through OCR, where two printings differ by a letter |
+| `overlap` | the pairwise measure |
+| `collapse_by_key` | group on an exact key, elect by a total content order, drop the rest |
+| `collapse_by_leader` | walk a content order, drop a row that resembles an already-elected leader |
+
+and what stayed in `build_index.py`, each with its evidence:
+
+```
+  SIG_LETTERS = 110      a Sunset block showed four near-identical 1928 sewer
+                         orders that are two orders read twice
+  LINE_KEY_CHARS = 90    the printed line, exactly
+  SENT_SHINGLE_WORDS 4 / SENT_THRESHOLD 0.55
+  LINE_GRAM_CHARS  4 / LINE_THRESHOLD 0.86 / LINE_MIN_GRAMS 8
+                         two different house numbers on one street sit at ~0.72
+  LEADER_WINDOW = 40     unbounded, it deleted 1,240 pre-1999 decisions that had
+                         no near-duplicate left anywhere on their block
+```
+
+**None of those numbers may be copied to another record series.** They are facts
+about how one Board prints, how one set of scans OCR'd, and where one item
+splitter cuts.
+
+## 26.2 THREE THINGS THE SHARED MODULE SAYS THAT THE CLOSURES COULD NOT
+
+- **Order independence is stated as the module's own property**, with the reason
+  it matters — a collapse that can see arrival order moves old rows when new
+  material is merged, nobody chooses it, and nothing about it shows in a row
+  count. `collapse_by_leader` refuses to sort, deliberately: the order is the
+  caller's invariant and hiding it inside would make it easy to lose.
+- **`overlap` is named honestly.** Four comments in `build_index.py` called it a
+  Jaccard index. It is not one — Jaccard divides by the UNION, this divides by
+  the smaller side, so a truncated reprint scores 1.0. That is the behaviour
+  wanted, but it is a different measure and **thresholds do not carry between
+  the two**. Anyone porting 0.86 to a Jaccard implementation would get a
+  different collapse and no error.
+- **It has a self-test**, `python3 citymap/nearcollapse.py`, eleven assertions
+  including that `collapse_by_key` gives the same answer on a reversed input and
+  that leader election does not chain. The behaviour used to be checkable only by
+  a seven-minute rebuild of the whole index.
+
+## 26.3 THE PROOF
+
+```
+  BLOCKS_OUT=<idxA> python3 build_index.py     before   2,181 files   6:47
+  BLOCKS_OUT=<idxB> python3 build_index.py     after    2,181 files   6:41
+
+  identical = 2,181   differ = 0
+  duplicate readings dropped inside blocks: 611,206   (both runs)
+  the two stdout logs are identical line for line
+```
+
+**Note what the baseline is and is not.** `blocks/out/` on disk is NOT the
+published tree — 446 of its files differ from `website/public/data/.../blocks/`
+— and neither is `blocks/out_header_fix/`, which §24.11 recorded as
+byte-identical to production and is no longer. That is §24's work sitting
+unpublished, and it predates this change. **So the gate here is same-code
+same-corpus replay, run twice, and it is stated as that rather than dressed up as
+a replay against `a97d813c`.** The chunk half of the pipeline (§25.3) *is*
+replayed against `a97d813c` and is byte-identical there.
+
+## 26.4 A STALE COMMENT DELETED, AND IT DESCRIBED CODE THAT NEVER EXISTED
+
+The pass-2 comment stated that the comparison was *"against every leader"* with
+*"no sliding window"*, and that candidates were found *"through an inverted index
+on the six lexicographically smallest 4-grams of the line, so this stays
+near-linear."* **Neither has ever been true of the code underneath it**, which
+compares against `lead_gr[-40:]` and has no index in it. It is a design that was
+tried, reverted — for the reason the paragraph immediately below it gives — and
+left described. It is deleted, and the deletion is recorded here rather than made
+quietly, because a comment that describes a reverted design is worse than none:
+the next reader trusts it and reasons from it.
+
+## 26.5 WHAT WAS DELIBERATELY NOT EXTRACTED, AND WHY
+
+**The precision-tier ladder stays where it is.** The contract calls it the most
+portable idea in the system and it is, but what is portable is the *discipline* —
+best-available wins, the tier travels with every row, an item that resolves to
+nothing is written out with its reason and never guessed onto a unit — and that
+is already written down in `docs/city-map-contract.md` §4. What is in the code is
+five DETECTORS: a clerk's printed block form, a parcel address range, an English
+`between`/`from…to` grammar, a corner rule and a bare street name. Every one of
+them is one city's forms and one legislature's English.
+
+Lifting the ladder would produce a name table and a weight dictionary in a shared
+file — an abstraction with exactly one implementation, and the anti-goal stated at
+the top of §25. **It is left forked on purpose.**
+
+`near_dup_line()` was found to be dead — defined, never called — and went with
+the rest.

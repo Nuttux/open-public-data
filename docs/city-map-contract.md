@@ -124,7 +124,7 @@ is worth stating with no city in it at all:**
 | J3 | **the failure mode** | — | **generic, and the worst in the system: a historical rename fails as a MIS-PLACEMENT, not an error. The map confidently draws a decision in the wrong street** |
 | J4 | geometry cross-check | `blocks/verify_geo.py` | **generic method**: check the address-table join against centreline distance, an independent source. The 40 m tolerance is a roadway half-width |
 | J5 | omnibus / smear guards | `OMNIBUS_STREETS=6`, `MAX_STREET_BLOCKS=60` | thresholds measured on one corpus |
-| J6 | near-duplicate collapse | 4-word shingles, Jaccard > 0.55 | **generic mechanism, and it has a known cost measured at 40.9 % of unit-links discarded** — including 479 `stated`-tier links, the one tier that outranks inference |
+| J6 | near-duplicate collapse | `citymap/nearcollapse.py`; 4-word shingles at 0.55, char 4-grams at 0.86 — and the measure is an OVERLAP coefficient, not Jaccard: it divides by the smaller side, so thresholds do not carry to a Jaccard implementation | **generic mechanism, and it has a known cost measured at 40.9 % of unit-links discarded** — including 479 `stated`-tier links, the one tier that outranks inference |
 | J7 | ranking | precision + money + phase − specificity − boilerplate | **generic shape; the weights are one corpus's** |
 | J8 | diversity | ≤ 4 of the top 12 from one decade | generic |
 | J9 | **order independence** | `verify_order_independence.py` | **fully generic, and it is the property that makes the index a function of the corpus rather than of its arrival order** |

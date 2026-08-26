@@ -33,6 +33,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 # they let a build run SIDE BY SIDE with the published one and be diffed, rather
 # than the published output being overwritten to find out what a change did.
 from _paths import ANIM, GEO, MIN, CACHE, OUT, ITEMS, JOINED  # noqa: F401
+# The city-free half of the build. See pipeline/scripts/citymap/__init__.py.
+sys.path.insert(0, os.path.abspath(os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "..")))
+from citymap import nearcollapse  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 os.makedirs(OUT, exist_ok=True)
 
@@ -1022,46 +1026,64 @@ def main():
         _gcache[ck] = (sent, "s")
         return _gcache[ck]
 
-    # dedupe within a block: the same ordinance is read twice and the Journal
-    # reprints it verbatim. Key on the first 90 alphanumerics.
-    # The Journal prints an ordinance at every reading, and the readings differ only
-    # in the resolution number — so a signature that keeps digits does not collapse
-    # them, and a Sunset block showed four near-identical 1928 sewer orders. Signing
-    # on LETTERS ONLY of the de-boilerplated text collapses the readings and still
-    # separates two genuinely different sewer orders on the same street.
+    # ── NEAR-DUPLICATE COLLAPSE: THE MECHANISM IS SHARED, THE NUMBERS ARE NOT ──
+    #
+    # `citymap/nearcollapse.py` holds the mechanism and knows no city: group and
+    # elect, or elect leaders in a total content order; never transitive
+    # clustering, which chains; always a bounded window, which is semantic and
+    # not an optimisation. It also states the one property that makes the whole
+    # pass worth having — the output is a function of the corpus, not of the
+    # order it arrived in.
+    #
+    # EVERY NUMBER BELOW IS A MEASUREMENT OF THIS CORPUS, and each is written
+    # with the observation that set it. None of them may be copied to another
+    # record series: they are facts about how this Board prints, how these scans
+    # OCR'd, and where the item splitter cuts.
+
+    # 110 LETTERS of the de-boilerplated text. The Journal prints an ordinance at
+    # every reading and the readings differ only in the resolution number, so a
+    # signature that keeps DIGITS does not collapse them: a Sunset block showed
+    # four near-identical 1928 sewer orders that are two orders read twice.
+    # Letters only collapses the readings and still separates two genuinely
+    # different sewer orders on the same street.
+    SIG_LETTERS = 110
+
+    # The printed LINE, exactly: the first 90 alphanumerics of the gloss.
+    LINE_KEY_CHARS = 90
+
+    # 4-WORD SHINGLES of the sentence, overlap above 0.55 is a reprint. Exact
+    # signatures are not enough — the OCR of two printings differs, and the item
+    # splitter cuts the two copies at different points so their leading text
+    # differs too. This compares what the two texts SAY.
+    SENT_SHINGLE_WORDS = 4
+    SENT_THRESHOLD = 0.55
+
+    # CHARACTER 4-GRAMS over the line, overlap above 0.86. An exact line key is
+    # not enough either, because two printings are two OCR passes: one Russian
+    # Hill block was showing "Bernard Bosq, at 1680 Clay street; 1500 gallons
+    # capacity." beside "...1500 gallons capaciiy." Two different house numbers
+    # on one street sit around 0.72, so 0.86 collapses the reprint and keeps the
+    # neighbour. Below eight grams a line is too short to be distinctive.
+    LINE_GRAM_CHARS = 4
+    LINE_THRESHOLD = 0.86
+    LINE_MIN_GRAMS = 8
+
+    # THE WINDOW, and it is not a speed trick. Comparing a candidate against
+    # EVERY leader was tried and is too aggressive: the line test looks at about
+    # ninety characters of heading and two genuinely different decisions share
+    # one routinely ("Changing and re-establishing the official grades on
+    # Capitol avenue, between ..."). Unbounded, it deleted 1,240 pre-1999
+    # decisions that had no near-duplicate left anywhere on their block.
+    LEADER_WINDOW = 40
+
     def sig(t):
-        return re.sub(r"[^A-Za-z]", "", snip(t))[:110].upper()
+        return nearcollapse.letters_signature(snip(t), SIG_LETTERS)
 
-    # Exact signatures are not enough. The Journal reprints an ordinance at each
-    # reading and the OCR of the two printings differs (one Sunset block showed four
-    # 1928 sewer orders that are two orders read twice), and the item splitter cuts
-    # the two copies at different points, so their leading text differs too. Compare
-    # what the two texts SAY instead: 4-word shingles, Jaccard over 0.55 is a reprint.
     def shingles(t):
-        w = re.sub(r"[^a-z ]", " ", snip(t).lower()).split()
-        w = [x for x in w if len(x) > 2]
-        return {" ".join(w[i:i + 4]) for i in range(max(0, len(w) - 3))}
+        return nearcollapse.word_shingles(snip(t), SENT_SHINGLE_WORDS)
 
-    def near_dup(a, b):
-        if not a or not b:
-            return False
-        i = len(a & b)
-        return i / min(len(a), len(b)) > 0.55
-
-    # ...and an EXACT line key is not enough either, because the two printings are
-    # two OCR passes: one Russian Hill block was showing "Bernard Bosq, at 1680
-    # Clay street; 1500 gallons capacity." beside "...1500 gallons capaciiy."
-    # Character 4-grams over the line, Jaccard above 0.86 — two different house
-    # numbers on one street sit around 0.72, so this collapses the reprint and
-    # keeps the neighbour.
-    def grams(pk):
-        return {pk[i:i + 4] for i in range(max(0, len(pk) - 3))}
-
-    def near_dup_line(pk, prev):
-        g = grams(pk)
-        if len(g) < 8:
-            return False
-        return any(len(g & o) / min(len(g), len(o)) > 0.86 for o in prev[-40:] if o)
+    def line_key(did, bn):
+        return re.sub(r"[^a-z0-9]", "", gloss_of(did, bn)[0].lower())[:LINE_KEY_CHARS]
 
     click, full = {}, {}
     dup_dropped = 0
@@ -1128,23 +1150,11 @@ def main():
 
         # -- 1. exact signature, and the printed line: group, elect, drop the rest
         for keyf in (lambda z: sig(dec[z[1]][0]["t"]),
-                     lambda z: re.sub(r"[^a-z0-9]", "",
-                                      gloss_of(z[1], bn)[0].lower())[:90]):
-            groups = {}
-            for z in rows:
-                k = keyf(z)
-                if k == "":
-                    groups[("", id(z))] = [z]      # an empty key groups with nothing
-                else:
-                    groups.setdefault(k, []).append(z)
-            out = []
-            for g in groups.values():
-                g.sort(key=_rowkey)
-                out.append(g[0])
-                dup_dropped += len(g) - 1
-            rows = sorted(out, key=_rowkey)
+                     lambda z: line_key(z[1], bn)):
+            rows, dropped = nearcollapse.collapse_by_key(rows, keyf, _rowkey)
+            dup_dropped += dropped
 
-        # -- 2. THE PRINTED LINE, fuzzily, over EVERY row.
+        # -- 2. THE PRINTED LINE, fuzzily.
         #
         # LEADER ELECTION, NOT TRANSITIVE CLUSTERING, AND THE DIFFERENCE IS LARGE.
         # Union-find was tried first and over-collapses by chaining: A resembles
@@ -1152,54 +1162,39 @@ def main():
         # dropped even when A and C are plainly different decisions. Measured on
         # a 400-row sample of what it removed: 41% had nothing like them left on
         # the block — about 3,500 real pre-1999 decisions deleted by transitivity.
-        # The streaming version never chained, because it only ever compared a
-        # candidate against rows it had already KEPT.
+        # The mechanism that does not chain is `citymap/nearcollapse`'s, and the
+        # order-independence it needs comes from walking a total order on the
+        # row's own CONTENT (_rowkey).
         #
-        # So the rule is the same one, made order-independent: walk the rows in a
-        # total order derived from their own CONTENT (_rowkey), and drop a row
-        # only when it resembles a row already elected. No sliding window — the
-        # comparison is against every leader, which is what removes the last
-        # dependence on arrival order. Candidate leaders are found through an
-        # inverted index on the six lexicographically smallest 4-grams of the
-        # line, so this stays near-linear on blocks carrying thousands of rows;
-        # the real 0.86 test still decides.
-        pk_of = [re.sub(r"[^a-z0-9]", "", gloss_of(z[1], bn)[0].lower())[:90]
-                 for z in rows]
-        gr = [grams(pk) for pk in pk_of]
-        kept, lead_gr = [], []
-        for i, z in enumerate(rows):
-            g = gr[i]
-            # THE WINDOW STAYS, AND ONLY ITS ORDER CHANGES. Comparing against
-            # EVERY leader was tried and is too aggressive: this test looks at
-            # the printed LINE — about ninety characters of heading — and two
-            # genuinely different decisions share one routinely ("Changing and
-            # re-establishing the official grades on Capitol avenue, between
-            # ..."). Unbounded, it deleted 1,240 pre-1999 decisions that had no
-            # near-duplicate left anywhere on their block. The original bounded
-            # the same coarse test to the last forty kept rows, and that bound
-            # was doing real work. It is kept. What changes is that the forty are
-            # now the last forty in a CONTENT order, not in arrival order, which
-            # is the whole of the order-dependence and none of the behaviour.
-            if len(g) >= 8 and any(
-                    len(g & o) / max(1, min(len(g), len(o))) > 0.86
-                    for o in lead_gr[-40:] if o):
-                dup_dropped += 1
-                continue
-            lead_gr.append(g if len(g) >= 8 else None)
-            kept.append(z)
-        rows = kept
+        # A STALE CLAIM WAS DELETED HERE, 2026-08-26, and it is worth saying so
+        # rather than quietly correcting it: this comment used to state that the
+        # comparison was "against every leader" with "no sliding window", and
+        # that candidate leaders were found "through an inverted index on the six
+        # lexicographically smallest 4-grams". NEITHER HAS EVER BEEN TRUE OF THE
+        # CODE BELOW, which has always compared against the last forty leaders
+        # and has no index in it. It was a design that was tried, reverted for
+        # the reason the next paragraph gives, and left described.
+        #
+        # THE WINDOW STAYS, AND ONLY ITS ORDER CHANGES. The original bounded this
+        # coarse test to the last forty KEPT rows and that bound was doing real
+        # work (see LEADER_WINDOW). It is kept. What changed when this pass was
+        # made order-independent is that the forty are now the last forty in a
+        # CONTENT order rather than in arrival order — the whole of the order
+        # dependence and none of the behaviour.
+        gr = [nearcollapse.char_grams(line_key(z[1], bn), LINE_GRAM_CHARS)
+              for z in rows]
+        rows, dropped = nearcollapse.collapse_by_leader(
+            rows, gr, threshold=LINE_THRESHOLD, window=LEADER_WINDOW,
+            min_set_size=LINE_MIN_GRAMS)
+        dup_dropped += dropped
 
         # -- 3. THE SENTENCE, by shingle, over the head only — as before. This is
         # all a reader ever sees, and it keeps the pass O(k^2) on k = FUZZY_HEAD.
         head, tail = rows[:FUZZY_HEAD], rows[FUZZY_HEAD:]
         shs = [shingles(dec[z[1]][0]["t"]) for z in head]
-        lead_sh, out = [], []
-        for i, z in enumerate(head):
-            if any(near_dup(shs[i], o) for o in lead_sh[-40:]):
-                dup_dropped += 1
-                continue
-            lead_sh.append(shs[i])
-            out.append(z)
+        out, dropped = nearcollapse.collapse_by_leader(
+            head, shs, threshold=SENT_THRESHOLD, window=LEADER_WINDOW)
+        dup_dropped += dropped
         return sorted(out + tail, key=_rowkey)
 
     for bn, lst in by_block.items():
