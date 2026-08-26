@@ -25,6 +25,7 @@ from __future__ import annotations
 import base64
 import json
 import math
+import os
 import pathlib
 import sys
 
@@ -37,7 +38,19 @@ from _chunk import ChunkWriter
 from _grid import CELL, NX, NY, ORIGIN_X, ORIGIN_Y, cell_extent, cell_id, cells_of
 from _srcload import MOCK, ROOT, load, load_json, unb64
 
-OUT = ROOT / "website" / "public" / "data" / "us" / "sf" / "city"
+# Overridable for exactly one reason, and it is the reason blocks/build_index.py
+# has BLOCKS_OUT: so a build can run BESIDE the published one and be diffed,
+# instead of the published output being overwritten to find out what a change
+# did. Unset, this is exactly the path it has always been, and `main()` still
+# clears only CHUNK_DIRS below it.
+#
+# Every gate in MINUTES.md is a control replay, and until now the chunk half of
+# the pipeline was the one part that could not be replayed: this script wrote
+# straight into website/public/data with no way to send it elsewhere, so the only
+# way to see what an encoder change did was to make it and look at the diff of
+# the thing you had just overwritten.
+OUT = pathlib.Path(os.environ.get("CITY_CHUNKS_OUT")
+                   or (ROOT / "website" / "public" / "data" / "us" / "sf" / "city"))
 # Every top-level directory under OUT that THIS script writes, and no other.
 # `main()` clears exactly these; see the note there. Adding a chunk key with a
 # new prefix means adding it here, and `emit()` asserts that it is listed.

@@ -183,7 +183,9 @@ range) + slack`.
 - **The copy.** Every string. Forked.
 - **The corpus.** No amount of contract produces a digitised record for a city
   that does not have one, and that is the binding constraint on the whole idea.
-- **`encode_city_chunks.py`'s output path.** It writes straight to
-  `website/public/data/`, with no override, so a chunk build cannot be run beside
-  the published one and diffed — the exact control pattern the index build has and
-  the encoder does not. That is the next cheap thing to fix.
+- **The sidecars.** `encode_city_chunks.py` does not produce the published state
+  and is not meant to. `us_sf_places/{emit_places,emit_heroes,emit_bay_bridge}.py`
+  run after it, share its `_chunk.ChunkWriter`, and read-modify-write the manifest.
+  That layering is generic and healthy — *the encoder owns one payload and its
+  re-runs stay byte-identical; anything from another source is a sidecar* — and
+  this document does not restate their slots.
