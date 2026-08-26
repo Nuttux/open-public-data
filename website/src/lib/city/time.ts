@@ -345,17 +345,69 @@ export const BLDG_YEAR_FLAGS: readonly YearFlag[] = [
     drawnAs: "no year gate — drawn in every year" },
 ];
 
+/**
+ * ── EVERY ROW HERE WAS RE-DERIVED FROM THE SHIPPED CHUNKS ON 2026-08-26 ──
+ *
+ * Three of the four had gone stale in place, and `shipped-figures.test.ts` now re-takes
+ * all four off `tree/*.qc`, the two `strt-line` chunks, the `u` byte and
+ * `base/places.qc` on every `npm test`. The one row that did NOT rot is the
+ * buildings row, and the reason is the whole argument: it is the only one that
+ * was wired to the payload rather than typed.
+ *
+ *     row        was              is                probe
+ *     trees      125,234/195,310  125,234/195,310   `tree/*.qc` yr == 0        ✓
+ *     streets      424/4,895        1,929/4,895     yr == 0 on both chunks
+ *     buildings  23,487/166,166    23,487/166,166   `u` bits 3 and 4           ✓
+ *     places       116/1,243          790/2,199     `base/places.qc` yr == 65535
+ *
+ * The centreline figure was out by 4.5x, and `manifest.centrelines` has been
+ * stating the same quantity from the other side the whole time — 4,895 − 2,966
+ * dated = 1,929. The places register nearly doubled (1,243 → 2,199) and neither
+ * number beside it moved.
+ *
+ * ── AND `everyYear` IS WHERE THE CAPTION WAS ACTUALLY WRONG ──────────────
+ *
+ * `everyYear` absent means *the whole cohort is drawn in every year*, and for
+ * two of these rows that has stopped being true:
+ *
+ * **TREES.** §"AND 'EVERY YEAR' WAS TOO MUCH" forty lines above this table put
+ * the undated cohort on its own street's clock and printed the number —
+ * 59,446 of the 125,234 are gated on `syr` and are NOT drawn before their right
+ * of way is. The table below it went on claiming all 125,234.
+ *
+ * **PLACES.** `labels.ts` §NOYEAR does the OPPOSITE of "drawn in every year"
+ * for exactly this cohort: `yr === 65535` means the name is HELD on every dated
+ * frame and appears only on the undated map. So 790 place names were being
+ * counted as things drawn in every year, in a caption printed beside a map that
+ * refuses to draw them in any dated year. `everyYear: 0`, and it is not a
+ * rounding.
+ *
+ * The caption's two totals, from the four rows below:
+ *
+ *     carry no date of their own   151,440 of 368,570
+ *     drawn in every year           70,633  =  65,788 trees + 1,929 centrelines
+ *                                              + 2,916 footprints + 0 places
+ *
+ * It printed 128,690 for the second of those. That over-counted by 59,446 on
+ * the trees row and by 116 on the places row against an under-count of 1,505 on
+ * the streets row — net **−58,057**, and the number a reader was shown for
+ * *things drawn in every year* was nearly twice the truth.
+ */
 export const UNDATED: readonly UndatedCohort[] = [
   {
     key: "trees",
     n: 125234,
     of: 195310,
+    /* 65,788 of the undated stand in a right of way the record does not date
+       either (`syr === 0`) and draw in every year; the other 59,446 wait for
+       their own street. `trees.ts:1061`, `citygl/layers/trees.ts` §the gate. */
+    everyYear: 65788,
     what: "street trees with no planting date",
     source: "DataSF tkzw-k3nq",
   },
   {
     key: "streets",
-    n: 424,
+    n: 1929,
     of: 4895,
     what: "drawn centrelines with neither a vote in the Journal nor a dated building on them",
     source: "DataSF street centrelines · Journal of Proceedings",
@@ -363,8 +415,12 @@ export const UNDATED: readonly UndatedCohort[] = [
   fromYearFlags(BLDG_YEAR_FLAGS, 166166),
   {
     key: "places",
-    n: 116,
-    of: 1243,
+    n: 790,
+    of: 2199,
+    /* NOT drawn in every year — held on every DATED year and drawn only on the
+       undated map. `labels.ts` §NOYEAR. The opposite of the caption's claim,
+       which is why this is 0 and not omitted. */
+    everyYear: 0,
     what: "named places no register dates",
     source: "DataSF 97yj-54sx · gtr9-ntp6 · nc68-ngbr",
   },
@@ -373,17 +429,20 @@ export const UNDATED: readonly UndatedCohort[] = [
 /**
  * One line of chrome, and it has to be the line the copy actually says.
  *
- * `n` is everything the record does not date — 149,261 of 367,614. `everyYear`
- * is the part of it that is drawn in EVERY year: **128,690**, which is
- * 125,234 undated trees + 424 undated centrelines + 2,916 `FLAG_NOYEAR`
- * footprints + 116 undated places. The difference from `n` is exactly the
- * **20,571** `FLAG_BLOCKYEAR` footprints, which arrive once, on their block's
- * p25 estimate rather than their own parcel's roll year.
+ * `n` is everything the record does not date — **151,440 of 368,570**.
+ * `everyYear` is the part of it that is drawn in EVERY year: **70,633** =
+ * 65,788 undated trees on an undated right of way + 1,929 undated centrelines
+ * + 2,916 `FLAG_NOYEAR` footprints + 0 places. The 80,807 between them is not
+ * one treatment but three: 59,446 trees held until their own street is drawn,
+ * 20,571 `FLAG_BLOCKYEAR` footprints arriving once on their block's p25
+ * estimate, and 790 place names held off every dated frame.
  *
- * (This paragraph read 128,599 and 20,662 until 2026-08-24. Neither figure was
- * the sum of the table below it — the table is what the caption prints, so the
- * screen was right and the comment was stale by 91. Recomputed from `UNDATED`
- * rather than retyped.)
+ * (This paragraph has been wrong twice. It read 128,599/20,662 until
+ * 2026-08-24 — stale by 91 against the table it was describing. It then read
+ * 128,690, which WAS the table's sum, and the table was itself three rows
+ * stale. Both times the fix was to recompute from `UNDATED`; the second time
+ * that was not enough, because the failure had moved into the data the table
+ * was typed from. Hence `shipped-figures.test.ts`. Do not retype these; run it.)
  */
 export function undatedTotal(): { n: number; of: number; everyYear: number } {
   return UNDATED.reduce(

@@ -1,30 +1,71 @@
 {
- "n": 906,
- "exact": 84.8,
- "within_one_block_face": 89.1,
- "within_250m": 93.9,
- "over_600m": 4.4,
+ "generated_at": "2026-08-26T17:33:05Z",
+ "generated_by": "blocks/measure_accuracy.py",
+ "n": 3043,
+ "exact": 88.5,
+ "within_one_block_face": 91.3,
+ "within_250m": 95.3,
+ "over_600m": 3.5,
+ "by_tier": {
+  "addr": {
+   "n": 2735,
+   "exact": 92.5,
+   "within_one_block_face": 93.6
+  },
+  "corner": {
+   "n": 288,
+   "exact": 51.4,
+   "within_one_block_face": 71.5
+  },
+  "segment": {
+   "n": 20,
+   "exact": 70.0,
+   "within_one_block_face": 70.0
+  }
+ },
  "face_m": 120.0,
  "near_m": 250.0,
  "far_m": 600.0,
- "by_tier": {
-  "addr": {
-   "n": 722,
-   "exact": 90.4,
-   "within_one_block_face": 92.9
+ "key_items": 4704,
+ "index": {
+  "precision_counts": {
+   "stated": 4534,
+   "addr": 18066,
+   "segment": 7119,
+   "corner": 24210,
+   "street": 40498
   },
-  "corner": {
-   "n": 170,
-   "exact": 60.6,
-   "within_one_block_face": 72.9
+  "n_decisions_placed": 94427,
+  "n_blocks": 5404,
+  "sha256": "466fe4a2980fadc6"
+ },
+ "control_journal_wording_only": {
+  "key_items": 3529,
+  "n": 2094,
+  "exact": 86.5,
+  "within_one_block_face": 89.3,
+  "within_250m": 93.7,
+  "over_600m": 5.1,
+  "by_tier": {
+   "addr": {
+    "n": 1841,
+    "exact": 90.4,
+    "within_one_block_face": 91.5
+   },
+   "corner": {
+    "n": 239,
+    "exact": 56.5,
+    "within_one_block_face": 72.4
+   },
+   "segment": {
+    "n": 14,
+    "exact": 85.7,
+    "within_one_block_face": 85.7
+   }
   },
-  "segment": {
-   "n": 14,
-   "exact": 85.7,
-   "within_one_block_face": 85.7
-  }
+  "note": "The same blind join scored against the smaller answer key the Journal's own wording gives. Published for one reason: reading the Clerk's forms as well enlarges the KEY and cannot flatter the JOIN, and the two lines are what shows that."
  },
  "street_tier_note": "Street-tier decisions name a street and nothing else, so they are not scored here at all: they are not a claim about a block.",
- "method": "Every decision whose text prints its own assessor block, joined again with that sentence hidden from the join, and scored against what the record said. Nothing in the address, segment or corner join reads the stated block.",
- "generated_by": "blocks/measure_accuracy.py"
+ "method": "Every decision whose text prints its own assessor block, joined again with that sentence hidden from the join, and scored against what the record said. Nothing in the address, segment or corner join reads the stated block. The key is read with the same per-row rule locate() uses: the Clerk's forms on the Clerk's PDFs, the Journal's on the Journal.",
+ "staleness": "`index` above is the published block-index.json this score was taken against. It is asserted on every site build by website/src/lib/city/accuracy.test.ts, which re-reads the shipped index rather than anything this script wrote."
 }

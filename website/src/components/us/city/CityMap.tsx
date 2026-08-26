@@ -132,12 +132,14 @@ function decodeMarks(m: MarksFile): PlaceLabel[] {
   const yt = m.yt ? new Uint16Array(b64(m.yt)) : null;
   const d = new Uint8Array(b64(m.d));
   // WHAT KIND OF THING THIS IS, joined from six registers' own category fields
-  // by pipeline/scripts/us_sf_places/place_kinds.py and reaching 1,342 of
-  // 2,198 rows. 0 means the record publishes no kind — 684 rows genuinely do
-  // not, because the register that DESIGNATES a place is the register with no
-  // category, so a diamond and a glyph never appear on the same place. A
-  // reader that does not know this key ignores it, which is why shipping it
-  // ahead of this line broke nothing. BUGS.md §33.
+  // by pipeline/scripts/us_sf_places/place_kinds.py and reaching 1,342 of the
+  // 2,199 rows. 0 means the record publishes no kind, and that is 857 rows —
+  // NOT the 684 this comment used to give, which is the Article 10 + Article 11
+  // count and explains only four fifths of them. The other 173 come from
+  // registers that do publish a category and are a gap worth chasing; see
+  // `labels.ts` §the kind field. A diamond and a glyph never appear on the same
+  // place. A reader that does not know this key ignores it, which is why
+  // shipping it ahead of this line broke nothing. BUGS.md §33.
   const kind = m.k ? new Uint8Array(b64(m.k)) : null;
   const KIND = m.KIND ?? [];
   const out: PlaceLabel[] = [];
@@ -211,6 +213,12 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
      lands — the map draws exactly what it drew before in that state. */
   const [hoodRings, setHoodRings] = useState<HoodRingsFile | null>(null);
 
+  /* THE INDEX IS A REF, so nothing re-renders when it lands, and the restore
+     below has to know that it has. */
+  const [indexReady, setIndexReady] = useState(false);
+  /** the deep link is honoured once, on the first frame that can honour it */
+  const restoredRef = useRef(false);
+
   const ptrRef = useRef<{ x: number; y: number; at: number } | null>(null);
 
   // `onReady` is read through a ref: a caller that passes an inline arrow
@@ -218,68 +226,150 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
   const onReadyRef = useRef(onReady);
   onReadyRef.current = onReady;
 
-  const onPick = useCallback((blockIndex: number) => {
-    const scene = sceneRef.current;
-    const index = indexRef.current;
-    /* ── A CLICK THAT FINDS NOTHING IS NOT A CLICK THAT SAYS "CLOSE THIS" ──
-       `scene.pick()` resolves the point under the pointer against the TERRAIN
-       and buildings are not in that march, so a click on a roof lands on the
-       ground behind it and often in the roadway, where no block ring matches.
-       Measured on this build with `.parity/b5pickmap.py`: at the street stop
-       only 38 % of the stage answers with a block, at the block stop 46 %.
+  /**
+   * ── A BLOCK A READER OPENED IS A LINK THEY CAN SEND ──────────────────
+   *
+   * `?block=3752`, written with `replaceState` and never `pushState`: a reader
+   * moving around the map is not navigating, and twenty picks that each cost a
+   * press of Back would make the button useless for leaving the page. The
+   * trade is stated rather than hidden — Back leaves, it does not deselect,
+   * and Escape and the panel's own × are what close a block.
+   */
+  const writeBlockParam = useCallback((id: string | null) => {
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    if (id) url.searchParams.set("block", id);
+    else url.searchParams.delete("block");
+    window.history.replaceState(window.history.state, "", url);
+  }, []);
 
-       That used to wipe the record the reader had open. So three clicks out of
-       four on a built-up frame threw away a century of decisions and put back
-       the idle panel, with nothing said. The record now stays until the reader
-       closes it, and the margin says a click found nothing. */
-    if (blockIndex < 0) {
-      setMissed(true);
-      return;
-    }
-    setMissed(false);
-    setMarkIdx(blockIndex);
-    const bt = scene?.blockTable;
-    if (!bt || !index) return;
-    setBlockCtx({
-      id: index.b[blockIndex] ?? "—",
-      hood: bt.hoodNames[bt.hood[blockIndex]] ?? "San Francisco",
-      /* THE INDEX, not the name. `build_hood_facts.py` rolls the block files
-         up over this same u8 field, so the panel joins on array position and
-         never on a string — a name comparison would be a SECOND membership,
-         and two memberships is how a guard passes on a bad row. */
-      hoodIndex: bt.hood[blockIndex] ?? -1,
-      areaM2: bt.area[blockIndex] ?? 0,
-      // `ns[i]` has been in the T0 index all along and the fiche was never
-      // handed it, so a block whose whole record is on its streets could not
-      // say so until the reader opened a fold. FICHE.md §4 asked for this.
-      streetDecisions: index.ns[blockIndex] ?? 0,
-    });
-    /* The pointer is recorded in the CAPTURE phase on the stage, which runs
-       before the canvas's own listener, so the position that produced this
-       pick is already here when the renderer calls back. A pick from the
-       keyboard (`Enter` picks the middle of the frame) leaves it stale, and
-       the fallback is that same middle. */
-    const rr = rendererRef.current;
-    if (rr) {
-      const v = rr.viewport;
-      const p = ptrRef.current;
-      const fresh = p && performance.now() - p.at < 1500;
-      setMark(
-        screenToPlane(
+  /**
+   * Everything a pick does once the block is known, shared by the two ways a
+   * block can become the selected one: a reader clicking it, and a URL saying
+   * so. `at` is where the pin goes — the point that was clicked, or, for a
+   * link, the block's own published centroid, which is the better answer for a
+   * block nobody pointed at.
+   */
+  const selectBlock = useCallback(
+    (blockIndex: number, at: Plane | null) => {
+      const scene = sceneRef.current;
+      const index = indexRef.current;
+      setMissed(false);
+      setMarkIdx(blockIndex);
+      setMark(at);
+      const bt = scene?.blockTable;
+      if (!bt || !index) return;
+      const id = index.b[blockIndex] ?? "—";
+      setBlockCtx({
+        id,
+        hood: bt.hoodNames[bt.hood[blockIndex]] ?? "San Francisco",
+        /* THE INDEX, not the name. `build_hood_facts.py` rolls the block files
+           up over this same u8 field, so the panel joins on array position and
+           never on a string — a name comparison would be a SECOND membership,
+           and two memberships is how a guard passes on a bad row. */
+        hoodIndex: bt.hood[blockIndex] ?? -1,
+        areaM2: bt.area[blockIndex] ?? 0,
+        // `ns[i]` has been in the T0 index all along and the fiche was never
+        // handed it, so a block whose whole record is on its streets could not
+        // say so until the reader opened a fold. FICHE.md §4 asked for this.
+        streetDecisions: index.ns[blockIndex] ?? 0,
+      });
+      writeBlockParam(id);
+      setPicking(true);
+      void loadBlockRecord(index, blockIndex)
+        .then((r) => setBlockRecord(r))
+        .catch(() => setBlockRecord(null))
+        .finally(() => setPicking(false));
+    },
+    [writeBlockParam],
+  );
+
+  const onPick = useCallback(
+    (blockIndex: number) => {
+      /* ── A CLICK THAT FINDS NOTHING IS NOT A CLICK THAT SAYS "CLOSE THIS" ──
+         `scene.pick()` resolves the point under the pointer against the TERRAIN
+         and buildings are not in that march, so a click on a roof lands on the
+         ground behind it and often in the roadway, where no block ring matches.
+         Measured on this build with `.parity/b5pickmap.py`: at the street stop
+         only 38 % of the stage answers with a block, at the block stop 46 %.
+
+         That used to wipe the record the reader had open. So three clicks out of
+         four on a built-up frame threw away a century of decisions and put back
+         the idle panel, with nothing said. The record now stays until the reader
+         closes it, and the margin says a click found nothing. */
+      if (blockIndex < 0) {
+        setMissed(true);
+        return;
+      }
+      /* The pointer is recorded in the CAPTURE phase on the stage, which runs
+         before the canvas's own listener, so the position that produced this
+         pick is already here when the renderer calls back. A pick from the
+         keyboard (`Enter` picks the middle of the frame) leaves it stale, and
+         the fallback is that same middle. */
+      const rr = rendererRef.current;
+      let at: Plane | null = null;
+      if (rr) {
+        const v = rr.viewport;
+        const p = ptrRef.current;
+        const fresh = p && performance.now() - p.at < 1500;
+        at = screenToPlane(
           fresh && p ? p.x : v.W / 2,
           fresh && p ? p.y : v.H / 2,
           v.W,
           v.H,
           rr.cam,
-        ),
-      );
-    }
-    setPicking(true);
-    void loadBlockRecord(index, blockIndex)
-      .then((r) => setBlockRecord(r))
-      .catch(() => setBlockRecord(null))
-      .finally(() => setPicking(false));
-  }, []);
+        );
+      }
+      selectBlock(blockIndex, at);
+    },
+    [selectBlock],
+  );
+
+  /**
+   * ── THE LINK, HONOURED ───────────────────────────────────────────────
+   *
+   * `?block=3752` opens that block's record on arrival. It runs once, on the
+   * first render where BOTH halves it needs are in hand — the record index,
+   * which resolves the id, and the block table, which carries the geometry —
+   * so it is keyed on `indexReady` and on the base chunks having landed rather
+   * than on a timer.
+   *
+   * **THE PIN IS THE BLOCK'S OWN CENTROID, NOT A CLICK.** A pick anchors the
+   * pin where the reader pointed; a link has no such point, and `cx`/`cy` are
+   * already in the block table — the published ring's centre, the same numbers
+   * the massing pass extrudes from. For a block nobody pointed at, the centre
+   * is the better answer, and it means "Find it on the map" works on arrival
+   * instead of being greyed out.
+   *
+   * The camera is moved to it, because a reader who followed a link to one
+   * block should not have to hunt for it on a fitted view of the whole city.
+   * It CUTS rather than glides, for the reason `locate` cuts: a jump to a
+   * place you asked to be taken to reads as an arrival.
+   *
+   * An id the index does not hold does nothing at all — no throw, no message,
+   * the idle map. A stale link is not an error a reader can act on.
+   */
+  useEffect(() => {
+    if (restoredRef.current || !indexReady) return;
+    const index = indexRef.current;
+    const bt = sceneRef.current?.blockTable;
+    const rr = rendererRef.current;
+    if (!index || !bt || !rr) return;
+    restoredRef.current = true;
+    const want = new URLSearchParams(window.location.search).get("block");
+    if (!want) return;
+    const i = index.b.indexOf(want);
+    if (i < 0) return;
+    const at = proj(bt.cx[i], bt.cy[i], bt.z[i] / BLOCK_Z_PER_M);
+    selectBlock(i, at);
+    const v = rr.viewport;
+    const lw =
+      hostRef.current && hostRef.current.clientWidth < NARROW_W ? 0 : LEDGER_W;
+    rr.cam.cutTo(Math.max(rr.cam.scale, rr.cam.presetScale(2)), v.W, v.H, lw);
+    rr.cam.centreOn(at, v.W, v.H, lw);
+    rr.cam.follow = false;
+    rr.invalidate();
+  }, [indexReady, baseDone, baseTotal, selectBlock]);
 
   /* ── ON A PHONE THE RECORD IS NOT BESIDE THE MAP, IT IS UNDER IT ──────
      Under NARROW_W the margin stacks below the stage, and the stage is 66 vh,
@@ -435,6 +525,7 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
       ]).then(([idx, ids]) => {
         if (disposed) return;
         indexRef.current = idx;
+        setIndexReady(true);
         if (ids) {
           // THE JOIN IS ASSERTED. Two separately-built id arrays that disagree
           // would attach every decision to the wrong block, silently.
@@ -444,6 +535,7 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
               `Block records are not being shown: the record index and the map's own block ids disagree at position ${j.firstMismatch}.`,
             );
             indexRef.current = null;
+            setIndexReady(false);
           }
         }
       });
@@ -889,7 +981,9 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
                 setBlockCtx(null);
                 setBlockRecord(null);
                 setMark(null);
+                setMarkIdx(-1);
                 setMissed(false);
+                writeBlockParam(null);
               }}
             />
           ) : (

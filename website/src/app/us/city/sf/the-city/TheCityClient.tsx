@@ -31,8 +31,9 @@
  */
 
 import dynamic from "next/dynamic";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SfSourceFooter from "@/components/us/SfSourceFooter";
+import type { RecordProvenance } from "./data";
 import CityEntry from "@/components/us/city/CityEntry";
 import { prefersReducedMotion } from "@/components/us/city/CityMap";
 import type { CityMapHandle } from "@/components/us/city/CityMap";
@@ -74,7 +75,9 @@ export interface TheCityPageData {
   volumes: number;
   /** first and last year the record places on a block, e.g. "1906–2013" */
   span: string;
-  accuracy: { n: number; exact: number };
+  /** the TWO record systems behind that span, counted off the rows themselves */
+  record: RecordProvenance;
+  accuracy: { n: number; key: number; exact: number };
   /** who publishes what this map is drawn from, out of the manifest */
   publishers: { name: string; datasets: number; url: string | null }[];
 }
@@ -99,6 +102,21 @@ export default function TheCityClient({ data }: { data: TheCityPageData }) {
     onEngage: () => setIntro(false),
   });
   const noteRef = useRef<HTMLDetailsElement>(null);
+
+  /* ── A LINK TO A BLOCK ARRIVES PAST THE PLATE ─────────────────────────
+     `?block=3752` is a reader coming for one block, usually because someone
+     sent it to them. The plate invites a stranger to start; it is in the way
+     of a reader who has already chosen where to start, and it covers the
+     record margin that block is about to fill.
+
+     In an effect and not in the initial state, deliberately: this component is
+     server-rendered and `window` does not exist there, so reading the query
+     during the first render would make the server and the client disagree
+     about what to draw. The cost is one frame of plate on a deep link, which
+     is the cheap side of that trade. */
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("block")) setIntro(false);
+  }, []);
 
   const openNote = (): void => {
     const el = noteRef.current;
@@ -239,15 +257,25 @@ export default function TheCityClient({ data }: { data: TheCityPageData }) {
 
               <h3>{t("us.sf.thecity.note.record.title")}</h3>
               <p>
+                {/* TWO RECORD SYSTEMS, NAMED SEPARATELY. The Archive holds
+                    the bound volumes and stops in 2016; the last decade is the
+                    Clerk's own PDFs and no library has accessioned them. Every
+                    figure here is counted off the rows by `recordProvenance()`
+                    — see the paragraph over it for what the one-system
+                    sentence was claiming. */}
                 {t("us.sf.thecity.note.record")
-                  .replace("{volumes}", nfInt.format(data.volumes))
                   .replace("{span}", data.span)
+                  .replace("{avol}", nfInt.format(data.record.archive.sources))
+                  .replace("{aspan}", `${data.record.archive.from}–${data.record.archive.to}`)
+                  .replace("{cfiles}", nfInt.format(data.record.clerk.sources))
+                  .replace("{cspan}", `${data.record.clerk.from}–${data.record.clerk.to}`)
                   .replace("{placed}", nfInt.format(data.decisions))
                   .replace("{street}", nfInt.format(data.streetOnly))
                   .replace("{unplaced}", nfInt.format(data.unplaced))}
               </p>
               <p>
                 {t("us.sf.thecity.note.accuracy")
+                  .replace("{key}", nfInt.format(data.accuracy.key))
                   .replace("{n}", nfInt.format(data.accuracy.n))
                   .replace("{exact}", data.accuracy.exact.toFixed(1))}
               </p>
@@ -291,8 +319,11 @@ export default function TheCityClient({ data }: { data: TheCityPageData }) {
         coverage={t("us.sf.thecity.footer.coverage")
           .replace("{decisions}", nfInt.format(data.decisions))
           .replace("{unplaced}", nfInt.format(data.unplaced))}
+        /* THE CLERK IS A PUBLISHER OF THIS MAP AND WAS NOT NAMED. 363 of the
+           files the record is read from are his, they carry the whole of the
+           last decade, and this line listed four sources and not him. */
         source={{
-          name: "DataSF · Internet Archive · USGS · US Census",
+          name: "DataSF · Internet Archive · SF Clerk of the Board · USGS · US Census",
           href: "https://datasf.org/opendata/",
         }}
         exports={[

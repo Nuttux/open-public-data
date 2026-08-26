@@ -295,10 +295,16 @@ export interface BlockContext {
   /**
    * How many decisions the record places on the streets this block fronts —
    * `ns[i]` in the T0 index. It was measured all along and never handed to the
-   * fiche, so a block whose whole story is on its streets (401 hold nothing of
-   * their own and front a street the record knows, and the median block
-   * reaches 95 street decisions) could not say so until the reader opened a
-   * fold they had no reason to open.
+   * fiche, so a block whose whole story is on its streets could not say so
+   * until the reader opened a fold they had no reason to open.
+   *
+   * MEASURED off the shipped `block-index.json` on 2026-08-26: **335** blocks
+   * hold nothing of their own (`n === 0`) and front a street the record knows
+   * (`ns > 0`), and the median block over all 5,404 reaches **103** street
+   * decisions. (It read 401 and 95, taken before the three rebuilds of
+   * 2026-08-26. Both moved, and in opposite directions: the modern sweep
+   * placed decisions ON blocks that previously had only street rows, so the
+   * first number FELL while the second rose.)
    */
   streetDecisions: number;
 }
@@ -1202,7 +1208,7 @@ function DecadeRow({
             tOr(
               t,
               "us.sf.thecity.panel.rail_roster",
-              "What this decade prints here is a list of names — who spoke, or who voted — so nothing is quoted at the head of it. Open it to read them.",
+              "This decade prints only names — who spoke, or who voted. Open it to read them.",
             )
           ) : (
             t("us.sf.thecity.panel.no_line")

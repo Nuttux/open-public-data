@@ -579,10 +579,17 @@ export interface StreetDrawResult {
  * - **one `lineWidth` and one `stroke()` per class**, never per feature — the
  *   reference measured 2,528 `stroke()` calls at 7.4 ms of a 16 ms frame;
  * - **the year gate is `y0 && y0 > yNow`**, so an undated centreline is drawn
- *   in every year. Only 2,051 of the 4,895 carry a date the Board voted, and
- *   the standing decision — *"this layer is the 2025 street map at every
- *   year"* — is stated in the reference and carried here rather than quietly
- *   improved;
+ *   in every year. **2,966 of the 4,895 carry a date** — `manifest.centrelines`
+ *   publishes `n` and `dated` and this is those two numbers — and the standing
+ *   decision, *"this layer is the 2025 street map at every year"*, is stated in
+ *   the reference and carried here rather than quietly improved;
+ *
+ *   (This read **2,051**, and 2,051 is not a count of dated centrelines at
+ *   all: it is `film.json` `st.n`, the number of streets the Board VOTED to
+ *   accept. `exist_year()` also dates a line from the earliest assessed
+ *   building on its frontage — DATA-TRUTH §3.3 — so the dated set is the union
+ *   of the two and is 915 larger. A count of one thing standing in for a count
+ *   of another, and both are real numbers, which is why nothing looked wrong.)
  * - **the elevation is sampled once per vertex**, `elevM + 0.8`, because the
  *   reference measured 14,432 `elevM` calls per pass per frame for a number
  *   that cannot change;

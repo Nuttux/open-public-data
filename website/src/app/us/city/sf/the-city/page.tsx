@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { readFileSync } from "node:fs";
-import path from "node:path";
-
-import TheCityClient, { type TheCityPageData } from "./TheCityClient";
+import TheCityClient from "./TheCityClient";
+import { theCityPageData } from "./data";
 
 /**
  * /us/city/sf/the-city — server component (ADR-0010 D3, EN-only), on the same
@@ -22,116 +20,44 @@ import TheCityClient, { type TheCityPageData } from "./TheCityClient";
  * — linked and downloadable at the foot of the page — and they are no longer
  * printed in prose.
  */
-export const metadata: Metadata = {
+const BASE_METADATA: Metadata = {
   title: "San Francisco — The city, drawn from its own record",
   description:
     "San Francisco drawn from the record the city publishes: every building at the height the city measured, and for every block what the Board of Supervisors decided there, linked to the page of the scan.",
 };
 
-interface ManifestShape {
-  buildings: { n: number };
-  streets: { n: number };
-  trees: { n: number };
-  sources: Record<
-    string,
-    { dataset?: string; publisher?: string; what?: string; url?: string }
-  >;
-}
-
-interface BlockIndexShape {
-  meta: {
-    n_blocks: number;
-    n_decisions_placed: number;
-    n_unplaced: number;
-    precision_counts: Record<string, number>;
-    leaf_mapped_volumes: string[];
+/**
+ * A LINK TO ONE BLOCK PREVIEWS AS THAT BLOCK.
+ *
+ * `?block=3752` pasted into Slack, WhatsApp or X used to show the site-wide
+ * card, so a link to one block and a link to the whole map looked the same.
+ * The card is rendered by `/api/og/sf-block/[id]` — a route handler and not an
+ * `opengraph-image.tsx`, because the block is a query param and that file
+ * convention is never handed `searchParams`.
+ *
+ * THE COST, STATED: reading `searchParams` here opts this page out of static
+ * rendering. It already reads three JSON files per request and hands the
+ * client a slim payload, so what changes is when that happens, not how much.
+ * The map's own 12.5 MB is fetched by the camera and never came through here.
+ */
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ block?: string }>;
+}): Promise<Metadata> {
+  const { block } = await searchParams;
+  // Block ids are short and alphanumeric ("3752", "0247C", "4591A"). Anything
+  // else is not a link we wrote, and it falls back rather than reaching the
+  // card route.
+  if (!block || !/^[0-9A-Za-z]{1,8}$/.test(block)) return BASE_METADATA;
+  return {
+    ...BASE_METADATA,
+    title: `Block ${block} — what the Board of Supervisors decided here`,
+    openGraph: { images: [`/api/og/sf-block/${block}`] },
+    twitter: { card: "summary_large_image", images: [`/api/og/sf-block/${block}`] },
   };
-  /** decisions placed on the block itself */
-  n: number[];
-  /** decisions placed on a street the block fronts */
-  ns: number[];
-  /** first and last year the record places on the block, 0 for neither */
-  y0: number[];
-  y1: number[];
 }
-
-function readJson<T>(rel: string): T {
-  const p = path.join(process.cwd(), "public", rel);
-  return JSON.parse(readFileSync(p, "utf8")) as T;
-}
-
-/** A publisher stops being a source the moment it is us. */
-const OURS = "this project";
 
 export default function SfTheCityPage() {
-  const m = readJson<ManifestShape>("data/us/sf/city/manifest.json");
-  const blockIndex = readJson<BlockIndexShape>("data/us/sf/city/blocks/block-index.json");
-  const accuracy = readJson<{ n: number; exact: number }>(
-    "data/us/sf/city/blocks/accuracy.json",
-  );
-
-  // A block "has something" when the record places a decision on the block
-  // itself or on a street it fronts. Both open the panel; the panel is what
-  // keeps the two apart.
-  let withRecord = 0;
-  let first = Infinity;
-  let last = 0;
-  for (let i = 0; i < blockIndex.n.length; i++) {
-    if (blockIndex.n[i] > 0 || blockIndex.ns[i] > 0) withRecord++;
-    const y0 = blockIndex.y0[i];
-    const y1 = blockIndex.y1[i];
-    if (y0 > 0 && y0 < first) first = y0;
-    if (y1 > last) last = y1;
-  }
-
-  // Who publishes what the map is drawn from. Read off the manifest rather
-  // than typed here, so it cannot drift from the data; our own derived layers
-  // are not a source and do not appear.
-  const byPublisher = new Map<string, { datasets: Set<string>; url: string | null }>();
-  for (const s of Object.values(m.sources)) {
-    const raw = s.publisher;
-    if (!raw || raw.includes(OURS)) continue;
-    // "Esri World Imagery (ArcGIS Online public tiles)" → "Esri World Imagery"
-    const name = raw.replace(/\s*\(.*\)\s*$/, "").trim();
-    const entry = byPublisher.get(name) ?? { datasets: new Set<string>(), url: null };
-    if (s.dataset) entry.datasets.add(s.dataset);
-    if (!entry.url && s.url) entry.url = s.url;
-    byPublisher.set(name, entry);
-  }
-
-  const data: TheCityPageData = {
-    buildings: m.buildings.n,
-    blocks: blockIndex.meta.n_blocks,
-    streets: m.streets.n,
-    trees: m.trees.n,
-    decisions: blockIndex.meta.n_decisions_placed,
-    streetOnly: blockIndex.meta.precision_counts.street ?? 0,
-    unplaced: blockIndex.meta.n_unplaced,
-    blocksWithRecord: withRecord,
-    volumes: blockIndex.meta.leaf_mapped_volumes.length,
-    // THE SPAN IS THE MAXIMUM AGAIN, BECAUSE THE TAIL IS REAL NOW.
-    //
-    // It was clamped to SERIES_LAST_YEAR, and that was right at the time: the
-    // largest year in the index was 2013 and it was carried by SEVEN rows,
-    // against 4,185 in the 1990s. Printing "1906-2013" over that told a reader
-    // the record reached 2013 and implied fourteen years that were empty.
-    //
-    // The clamp outlived its reason. The Clerk's own PDFs are swept, placed
-    // and published, and every year to 2026 carries hundreds of decisions —
-    // 2019: 324, 2022: 208, 2025: 319, 2026: 109 so far. Clamping now commits
-    // the opposite error of the one it was written to prevent: it hides ten
-    // years the map actually draws, and it contradicts the decade rail beside
-    // it, which shows a 2020s rung.
-    //
-    // SERIES_LAST_YEAR stays 2016 and stays true — it is where the Internet
-    // Archive's bound volumes end. It is simply no longer where the record
-    // ends, and this line was the last place still treating those as one fact.
-    span: `${first}–${last}`,
-    accuracy: { n: accuracy.n, exact: accuracy.exact },
-    publishers: [...byPublisher.entries()]
-      .map(([name, v]) => ({ name, datasets: v.datasets.size, url: v.url }))
-      .sort((a, b) => b.datasets - a.datasets || a.name.localeCompare(b.name)),
-  };
-
-  return <TheCityClient data={data} />;
+  return <TheCityClient data={theCityPageData()} />;
 }

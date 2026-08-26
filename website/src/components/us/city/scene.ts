@@ -1750,10 +1750,18 @@ export class CityScene {
    * arithmetically on it. MEASURED, at the district preset with the parity
    * harness driving: `0.13533136705963567 / 0.046665988641253695` =
    * **2.899999999999999**, one ulp under 2.9 — so `view.z < 2.9` held, the
-   * `strt` tier (`minZ` 2.9, 125 chunks, 22,191 rights of way) was never
-   * requested and never yielded, and the street layer drew **nothing at all
-   * six district cameras**. Not a missing feature and not a slow tier: a
-   * strict comparison against a rung, decided in the sixteenth digit.
+   * `strt` tier was never requested and never yielded, and the street layer
+   * drew **nothing at all six district cameras**. Not a missing feature and
+   * not a slow tier: a strict comparison against a rung, decided in the
+   * sixteenth digit.
+   *
+   * (The rung the bug was found at was 2.9, and that is what the sentence
+   * above records — the arithmetic is the point and it does not change. The
+   * tier itself has moved since: `manifest.tiers.strt` ships `minZ` **1.75**
+   * over **128** chunks today, and this paragraph used to state 2.9 and 125 as
+   * though they were current facts about it. Nothing here reads either number
+   * — `rungs()` above takes every `minZ` off the manifest — so the drift was
+   * in the prose alone, which is the only place it could hide.)
    *
    * So the number handed to the data layer is snapped when it is within a few
    * ulp of a rung. Eight ulp of 2.9 is 1.4e-14; no gesture, no wheel and no

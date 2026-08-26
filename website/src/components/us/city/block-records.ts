@@ -109,15 +109,41 @@ export const PHASE_ORDER = [
 /**
  * `k`, in words.
  *
- * **`W` is a departmental work, not a Board vote** — 3,588 rows come out of the
+ * **`W` is a departmental work, not a Board vote** — 3,593 rows come out of the
  * annual reports rather than the Journal, and calling one a "resolution" would
  * be attributing a decision to a body that never took it.
+ *
+ * ── `H` AND `F` WERE MISSING AND RENDERED AS "Item" ──────────────────────
+ * `ccec8bd7` gave the `k` byte two more values and this table was not told, so
+ * every one of those rows reached the panel through the three `?? "Item"` call
+ * sites below. Counted over the shipped shards on 2026-08-26:
+ *
+ *     R 60,448 · O 32,365 · M 5,155 · W 3,593 · H 100 · F 1     block layer
+ *                                              H  15 · F 4      street layer
+ *
+ * 120 rows — contested land-use appeals, charter amendments, closed sessions —
+ * on a panel where every other row is named for the thing the Board did.
+ *
+ * **Both words are the Clerk's own, not a reading of the row.** MINUTES.md
+ * §23.4: a header-delimited item is emitted where the `Resolution|Ordinance|
+ * Motion` splitter can see nothing at all, and its kind comes from the first
+ * word of the Clerk's bracketed title and from nothing else — `H` where that
+ * title begins "Hearing" (896 of the 1,102 emitted), `F` for every other form
+ * the Clerk files that way (Charter Amendment, Formal Policy Discussions,
+ * Closed Session, Committee of the Whole, appointments).
+ *
+ * So `F` is "Legislative file" and deliberately not a guess at which of those
+ * it is: naming it any further would be this table making a judgement the
+ * record does not support, which is the failure the `W` note above exists to
+ * prevent.
  */
 export const KIND_WORDING: Record<string, string> = {
   R: "Resolution",
   O: "Ordinance",
   M: "Motion",
   W: "Departmental work",
+  H: "Hearing",
+  F: "Legislative file",
 };
 
 /**
@@ -268,13 +294,23 @@ export function assertJoin(
  * because the Sunset was sand; a Barbary Coast block that goes silent after
  * 1935 should show the silence.
  *
- * 1900 because the Journal series opens in 1906. 2010 because the corpus is
- * NOT Journal-only — the DPW annual reports run to 2010, and a rail hardcoded
- * to end at 1999 would have dropped those rows off the end without saying so.
- * Both ends stretch if a block holds something outside them.
+ * 1900 because the Journal series opens in 1906, and the rail stretches further
+ * back if a block holds something earlier.
+ *
+ * ── AND THE RIGHT-HAND END IS NO LONGER A CONSTANT ───────────────────────
+ * There was a `RAIL_TO` here. It read **1990** under a comment arguing for
+ * **2010** — "because the corpus is NOT Journal-only, the DPW annual reports
+ * run to 2010" — so the constant and the paragraph justifying it disagreed by
+ * two decades, and BOTH were dead: `decadeGroups` takes
+ * `Math.max(RAIL_TO, current decade, the block's own last decade)`, and the
+ * current decade has been 2020 since 2020. Whichever number was written there
+ * could never be the maximum again.
+ *
+ * A guard that cannot bind is worse than no guard, because it reads as one. The
+ * right edge is now the current decade or the block's own last decision,
+ * whichever is later, and there is nothing to keep in step with the corpus.
  */
 export const RAIL_FROM = 1900;
-export const RAIL_TO = 1990;
 
 /**
  * THE LAST YEAR THE BOARD'S SCANNED SERIES CARRIES — 2016, NOT 1999.
@@ -629,7 +665,7 @@ export function decadeGroups(
   /* To the CURRENT decade, not to the end of the record. A rail that stops
      where the scanning stopped tells the reader the city stopped. */
   const now = Math.floor(new Date().getFullYear() / 10) * 10;
-  const to = Math.max(RAIL_TO, now, ...(decs.length ? [Math.max(...decs)] : []));
+  const to = Math.max(now, ...(decs.length ? [Math.max(...decs)] : []));
   const lastDec = Math.floor(indexedLast / 10) * 10;
   /* The index stops INSIDE its last decade unless it happens to stop on that
      decade's ninth year. One rung on the rail can carry this and no other. */
@@ -1035,11 +1071,19 @@ export function blockLead(
  * printed it here more than once — which is the only claim being made:
  * *the record heads this many items on this block this way.*
  *
- * MEASURED over all 256 shards: 978 of the 4,679 blocks that carry anything
- * have at least one repeated printed heading — 34 % of blocks holding 15 to
- * 49 decisions and 73 % of those holding 50 or more, which are the blocks a
- * reader lingers on. Nothing is shown on the rest, and nothing is invented to
- * fill the gap.
+ * MEASURED over all 256 shards, by replaying `printedHeading` + `foldHeading`
+ * over every shipped row (2026-08-26): **992 of the 4,771 blocks that carry
+ * anything** have at least one repeated printed heading — 30 % of blocks
+ * holding 15 to 49 decisions and 60 % of those holding 50 or more, which are
+ * the blocks a reader lingers on. Nothing is shown on the rest, and nothing is
+ * invented to fill the gap.
+ *
+ * (It read 978 of 4,679, 34 % and 73 %, measured before the three rebuilds of
+ * 2026-08-26. The RATE fell as the corpus grew, which is the direction that
+ * matters here: the Clerk's modern items carry a bracketed title rather than a
+ * dashed printed heading, so they add rows without adding subjects. Re-measure
+ * these four together or not at all — a rate and its denominator drifting
+ * apart is how a number stops meaning what its sentence says.)
  * ──────────────────────────────────────────────────────────────────────────── */
 
 /** the dash the Board sets between a printed heading and the item under it */

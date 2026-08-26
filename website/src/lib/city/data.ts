@@ -200,6 +200,53 @@ export interface ChunkEntry {
   readonly [k: string]: unknown;
 }
 
+/**
+ * ── THE TIER ROLLUP IS RE-DERIVED FROM THE CHUNK LIST IT SUMS ────────────
+ *
+ * `manifest.json` states each tier's file count and byte totals twice: once in
+ * `tiers`, and once, implicitly, in the 577 entries of `chunks`. On the tree
+ * published 2026-08-26 the two disagreed:
+ *
+ *     tiers.base            chunks 15   bytes 1,383,092   gzipBytes 695,040
+ *     chunks, tier "base"   chunks 16   bytes 1,437,983   gz sum     721,048
+ *
+ * The per-chunk `b` fields are all correct — every one of the 577 matches its
+ * file's size on disk, byte for byte. It is the ROLLUP that is frozen: it has
+ * read `{15, 1383092, 695040}` unchanged across three publishes while
+ * `base/places.qc` grew 44,366 → 48,844 → 51,083 and `base/heroes.qc` 39,900 →
+ * 41,640 underneath it. The cause is upstream and already named in
+ * DATA-TRUTH.md §12.3 — `emit_places.py --marks` and `emit_heroes.py` are
+ * re-applied AFTER the encoder writes the tier totals — and it is the
+ * encoder's to fix in the file it writes.
+ *
+ * What is fixed here is that nothing downstream has to trust it. A count that
+ * can be derived from the thing it counts should be derived from it, and this
+ * is the cheapest possible instance: one pass over a list already in memory.
+ * `minZ` is NOT derived — it is a rendering decision the encoder makes and the
+ * chunk list carries per entry, so it is taken from the stated tier as before
+ * (`scene.ts` rungs off it, and it is the only field of the four anything
+ * reads).
+ *
+ * `sf_data_audit.md` A9. Nothing on the frame changes; a published catalogue
+ * that contradicts itself does.
+ */
+export function reconcileTiers(m: CityManifest): CityManifest {
+  const agg = new Map<string, { chunks: number; bytes: number; gzipBytes: number }>();
+  for (const c of m.chunks) {
+    const a = agg.get(c.tier) ?? { chunks: 0, bytes: 0, gzipBytes: 0 };
+    a.chunks++;
+    a.bytes += c.b ?? 0;
+    a.gzipBytes += c.gz ?? 0;
+    agg.set(c.tier, a);
+  }
+  const tiers: Record<string, { chunks: number; bytes: number; gzipBytes: number; minZ: number }> = {};
+  for (const [name, stated] of Object.entries(m.tiers)) {
+    const d = agg.get(name);
+    tiers[name] = d ? { ...d, minZ: stated.minZ } : { ...stated };
+  }
+  return { ...m, tiers };
+}
+
 export interface CityManifest {
   readonly format: string;
   readonly grid: {
@@ -758,7 +805,7 @@ export class CityData {
   private readonly listeners = new Set<(key: string) => void>();
 
   private constructor(manifest: CityManifest, opts: CityDataOptions) {
-    this.manifest = manifest;
+    this.manifest = reconcileTiers(manifest);
     this.baseUrl = (opts.baseUrl ?? DEFAULT_BASE).replace(/\/+$/, "");
     this.cacheBytes = opts.cacheBytes ?? 48 * 1024 * 1024;
     this.concurrency = opts.concurrency ?? 6;

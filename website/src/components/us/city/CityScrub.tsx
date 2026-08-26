@@ -650,18 +650,25 @@ function ScrubNote({
       String(rail.lastSwept),
     );
   } else if (year !== undefined) {
-    /* `everyYear`, NOT `n`. The sentence this key holds ends "…carry no date in
-       any published file, and are drawn in every year", which is the narrower
-       of the two claims `time.ts` §UNDATED separates: 128,690 things carry no
-       date at all — 125,234 of them street trees — and a further 20,571
-       footprints carry one that is not their own, a block's p25 estimate rather
-       than their own parcel's roll year. Those arrive once, in the wrong year,
-       and calling them "drawn in every year" would be a second wrong sentence.
-       The copy for the borrowed years belongs with the `FLAG_BLOCKYEAR`
-       treatment (DATA-TRUTH §5b), which is landing elsewhere. */
+    /* ── BOTH NUMBERS, BECAUSE THEY ARE TWO CLAIMS ────────────────────────
+       This passed `un.everyYear` as `{n}` under a sentence reading "…carry no
+       date in any published file, and are drawn in every year" — one number
+       doing the work of two, which held only while the two happened to be the
+       same set. They are not: `time.ts` §UNDATED separates 151,440 things the
+       record does not date from the 70,633 of them that are therefore drawn in
+       every year, and the 80,807 in between are drawn by SOMETHING — a street's
+       acceptance year, a block's p25 estimate — or held off the dated map
+       altogether, which is the treatment `labels.ts` §NOYEAR gives 790 place
+       names.
+
+       Printing `everyYear` alone against the old wording put 128,690 on screen
+       for "drawn in every year" when the files said 70,633, and said nothing at
+       all about the larger cohort. Both go out, both come from `undatedTotal()`,
+       and neither is typed here. */
     caveat = t("us.sf.thecity.scrub.undated")
-      .replace("{n}", nf.format(un.everyYear))
-      .replace("{of}", nf.format(un.of));
+      .replace("{n}", nf.format(un.n))
+      .replace("{of}", nf.format(un.of))
+      .replace("{e}", nf.format(un.everyYear));
   }
 
   return (

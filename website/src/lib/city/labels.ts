@@ -750,13 +750,30 @@ export interface PlaceLabel {
   /**
    * WHAT KIND OF THING THE REGISTER SAYS IT IS — see §KINDMARK.
    *
-   * Optional because 684 of 2,199 places — 31.1 % — genuinely carry NO
-   * published kind: the registers that DESIGNATE a place (Article 10, Article
-   * 11) publish a name and a status and no category at all, confirmed against
-   * their own column lists. Set from `base/marks.json`'s `k` + `KIND` by
+   * Optional because **857 of the 2,199 places carry no published kind** —
+   * `base/places.qc` `kind === 0`, and 2,199 − 1,342 with a family is the same
+   * number from the other side. Set from `base/marks.json`'s `k` + `KIND` by
    * `CityMap.tsx::decodeMarks`, joined from six registers' own category fields
-   * by `pipeline/scripts/us_sf_places/place_kinds.py`, reaching 1,342 rows.
-   * A name is NEVER used to guess a kind.
+   * by `pipeline/scripts/us_sf_places/place_kinds.py`. A name is NEVER used to
+   * guess a kind.
+   *
+   * ── AND 684 IS NOT THAT NUMBER, WHICH HID A POPULATION ───────────────────
+   * This read 684 "genuinely carry no published kind, because the registers
+   * that DESIGNATE a place are the registers with no category". 684 is the
+   * Article 10 + Article 11 row count — 339 + 345 in `manifest.places.bySource`
+   * — and §KINDMARK above uses it correctly for exactly that. Used here it is a
+   * count of one thing standing in for a count of another, and the difference
+   * is not rounding: **173 kindless rows come from registers that DO publish a
+   * category**, which the sentence's own reasoning cannot explain and which
+   * nobody was therefore looking at.
+   *
+   *     nc68-ngbr  95 · nps-nrhp 37 · ib5c-xgwu 33 · gtr9-ntp6 3
+   *     65ik-7wqd   2 · places_extra 2 · heroes 1        = 173
+   *
+   * A blank category field in a register that HAS one is a gap in the source or
+   * a miss in the join, and it is worth chasing; a register with no category
+   * column is neither. Collapsing the two under one number made 173 rows
+   * unlookable-at.
    */
   readonly kind?: PlaceKind;
 }
