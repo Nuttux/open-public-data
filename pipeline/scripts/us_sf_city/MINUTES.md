@@ -1720,7 +1720,8 @@ emergency proclamation the block map does not carry.
   every cited stem is a PDF on disk                  390 /    390
   every cited page is inside its file            43,507 / 43,507   (PyMuPDF)
   --verify   the two streams agree                5,127 /  5,127  byte-identical
-  verify_order_independence.py --items <merged>  seeds 101/202, all files identical
+  verify_order_independence.py --items <merged>  seeds 101/202, 2,205 files
+                                                 hashed, all identical
   verify_block_regression.py vs production       PASS, 90,820 = 90,820
 ```
 
@@ -1786,3 +1787,577 @@ build lives outside the repo while it is reviewed; `blocks/out_2026/` is still
 byte-identical to production and is the baseline every number above is measured
 against. Publishing is a COPY and never a mirror-delete — the published
 directory also holds 279 files this build does not produce.
+
+---
+
+# 24. THE RECORD ANSWERING FOR ITSELF, AND THE TITLE OVER THE ITEM — 2026-08-26
+
+§23 recorded two things and fixed neither. Both are fixed here. They are
+**independent changes and they are measured one at a time**, so neither can
+borrow the other's credit:
+
+```
+  A  the map as published today                        block-precision items  3,297
+  B  A + the Clerk's own "Assessor's Parcel Block No."                        3,522
+  C  B + the header, given to the item it introduces                          6,159
+```
+
+(the Board's corpus alone, through `build_index.locate()`, the placement the
+published index runs. `measure_header_gift.py --ladder` reproduces it.)
+
+Builders: `measure_stated_blocks.py` and `measure_header_gift.py` are new and
+measure only. The code that changes is five places: `build_index.stated_blocks()`
+(read the Clerk's form), `build_index.load_items()` (the header as a preface),
+`build_index.gloss_of()` (a row with no sentence shows the title over it),
+`_sfbos_sweep._row()` (`hp`/`hr`) and the new `_sfbos_sweep.map_stream()` (one
+definition of what the map reads).
+
+## 24.1 THE CONTROL — four of them, and every byte below is the fix
+
+`--control` takes the rules to leave ON, so the walk can be replayed at any
+point in its own history and compared with what was published then:
+
+```
+  --control <pre-§23 items_all.jsonl>                    42,405 / 42,405  byte-identical
+  --control <pre-§23 items.jsonl>                         6,786 /  6,786  byte-identical
+  --control <today's items_all.jsonl> --rules trim,orphans
+                                                         43,507 / 43,507  byte-identical
+  --control <today's items.jsonl>     --rules trim,orphans
+                                                          5,127 /  5,127  byte-identical
+```
+
+**The projection is applied to the baseline too, not only to the new side.** The
+header metadata `hf`/`ht`/`hp`/`hr` is additive and no consumer reads it, so a
+baseline written before those fields existed and one written after must compare
+equal — otherwise the test measures which pass wrote the file rather than what
+the walk does.
+
+And the block build was rebuilt from the **unchanged** corpus into a separate
+directory before anything changed:
+
+```
+  2,209 files compared with blocks/out_header_fix/ (== production)  —  0 differ
+```
+
+## 24.2 THE CLERK'S FORM — enumerated before it was matched
+
+`STATED` reads `Assessor's Block 2622`, which is the Journal's wording. The
+Clerk writes `Assessor’s Parcel Block No. 3568, Lot No. 003`, and **three
+separate things** break the old regex at once: a curly apostrophe, the word
+*Parcel* between *Assessor's* and *Block*, and a lot number after it.
+
+**The forms were counted before a matcher was written.** 1,683 qualifiers are
+printed in 43,507 items:
+
+```
+  1,456  Assessor’s Parcel Block No.        6  Assessor’s Parcel Block No. (AB)
+    147  Assessor's Parcel Block No.        3  Assessor’s Parcel Block (Block) No.
+     39  Assessor’s Parcel Block Nos.       2  Assessor’s Parcel Block Number
+     17  Assessor’s Block No.               2  Assessor Parcel Block Nos.
+      4  Assessor’s Parcel Block No         2  Assessor’s Parcel Block No:
+      2  Assessor’s Block,                  2  Assessor's Block No.
+      2  Assessor's Parcel Block            1  Assessor's Block
+
+  the number:  4 digits 1,582 · 4 digits + a letter 71 · 3 digits 22 · 2 digits 6
+  what follows: ", Lot No." 1,233 · ", Lot Nos." 308 · a list · a compass bearing
+```
+
+**AND THE REFUSALS, each of which a one-line regex would have taken:**
+
+```
+  1,553  claims kept
+    115  a block named as the BOUNDARY of the site, not the site
+     11  an APN from ANOTHER COUNTY (Sunol, the Alameda watershed)
+      2  a RANGE of blocks
+      2  no number after the word Block at all
+```
+
+and then a gate the index has always had rather than a refusal of this matcher:
+**15 items name more than four blocks** — one sentence names 29 — and
+`locate()`'s existing `len(sb) <= 4` drops them, as it always has for the
+Journal. A list is not a place.
+
+* **The boundary form.** *"the summary street vacation of a portion of 25th
+  Street, which is generally bounded by Assessor’s Parcel Block No. 4241 … to
+  the north, Seawall Lot 355 (portions of … No. 4298 …, No. 4299 …, and
+  No. 4300 …) to the south"* names four blocks and the decision is on none of
+  them: it is on the strip of street between them. Taking the three whose own
+  tail does not read *"to the north"* and leaving the one that does would be
+  worse than taking none — it would move the item off the street it is on and
+  onto a block beside it. **A sentence that says "bounded by" disqualifies every
+  block in it.**
+* **Another county.** *"Assessor’s Parcel Block No. 096-0155-004-01, known as
+  11601 Main Street, Sunol"* is an Alameda County APN on the watershed lands. An
+  SF assessor block is four digits, so a number followed by `-<digits>` is kept
+  only where the number itself is four digits and what follows it is a lot —
+  `4285B-001`, `3180-202`.
+* **The range, and it is the corpus's own trap.** *"Assessor Parcel Block
+  Nos. 41 through 43, Lot No. 7, at the intersection of Owens and A Streets"* is
+  Mission Bay South's **redevelopment** blocks, printed under the word Assessor.
+  0041 and 0043 are real assessor blocks in the Financial District, 4 km from
+  the corner the same sentence names. A range is recorded and never expanded,
+  and that single rule is what keeps the only demonstrated plan-block-labelled-
+  as-assessor case out.
+
+**The three things that print "Block <number>" and are not assessor blocks are
+excluded by construction, not by a stop-list** — the match has to begin at the
+word *Assessor*, and a number has to follow the word *Block*:
+
+```
+    35  "Community Development Block Grant"        1  "Redevelopment Plan Block 13"
+    62  "the 900 block of Mason Street"            3  "(Parkmerced Planning Block Nos. 20, 21S)"
+```
+
+**And one from the Journal that would have fabricated a placement.**
+`Assessor's BlocK 3S13` is OCR damage; a lazy number match reads it as block
+0003, which exists. A block number therefore has to end at a character that is
+neither a digit nor a letter.
+
+`measure_stated_blocks.py` carries a **second implementation** of the matcher,
+because it has to count what it refuses and `build_index` has no reason to. Two
+hand-kept copies of a walk is the exact failure §23 removed, so the two are
+**compared over all 43,507 rows on every run** and the script refuses rather
+than reports if they differ.
+
+## 24.3 WHAT THE STATED BLOCKS RESOLVE TO — and six that do not exist
+
+```
+  items stating their own block                        1,362
+  distinct block numbers stated                          516
+  ...that exist in the published block layer             510
+  ...that the layer has never heard of                     6      13 mentions
+```
+
+**§23.8 said 1,207 and the number here is 1,362; both are right and the
+definition is the difference.** 1,207 counted a pattern; 1,362 counts items with
+at least one claim the matcher **keeps**, after 115 boundary blocks, 11 foreign
+APNs and 2 ranges are refused and after the plural, `(AB)`, `No:` and no-space
+forms are read. The figure to quote is the one with the
+refusals attached, and `--inventory` prints both halves.
+
+**A stated block that does not exist is a finding, not a row to force in.** All
+six were read:
+
+```
+  1399   Seawall Lot 356 — a Port seawall lot, not an assessor block
+  4046   a Mission Bay / Pier 70 block created after the layer's vintage
+  5732   the Alemany Farmers' Market — "(Assessor’s Parcel Block Nos. 5731,
+  5733   5732, 5733, 5733A, and 5734), bounded by Alemany Boulevard"
+  5270   1800 Jerrold Avenue, an SFPUC industrial parcel
+  7366   Parkmerced, in a sixteen-lot vertical subdivision
+```
+
+Every one is a real block the Clerk names and the **DataSF block layer does not
+carry** — port lots, newly created blocks, and market/roadway parcels. 6 in 516
+is 1.2% of the vocabulary and none is forced onto a neighbour.
+
+**176 of the 1,362 never reach the map at all**, and not because of the block:
+
+```
+  1,181  the item's own words resolve a street          -> in the map corpus
+      5  its words do not, but its own HEADER does      -> in it since 24.7
+    176  neither its words nor its header name a place  -> filtered at the door
+```
+
+The corpus filter asks *did a STREET resolve* — so an item that prints its
+block and no street is discarded before the block is ever read, and a stated
+block is the strongest location claim the record can make. **Admitting them is a
+third change, it is not made here, and it is worth 176 rows.**
+
+## 24.4 THE DISAGREEMENT RATE — how good the inference has been all along
+
+Where the record answers, the inference can be marked — and the join is run
+**blind to the stated block**, the way `measure_accuracy.py`'s second pass is,
+or it would be comparing the answer with itself. Over the 1,144 rows of the
+corpus **as published** that state a block and place:
+
+```
+  the stated block is among the ones inferred      964   84.3%
+  the two do not overlap at all                    180   15.7%
+
+  by the tier the item placed on
+    addr      30 of  890    3.4% disagree
+    segment    4 of    6
+    corner    34 of   49
+    street   112 of  198
+  distance from the inferred block to the stated one:
+    median 170 m · p90 671 m · max 6,247 m
+```
+
+**The address tier is right 96.6% of the time and the street tier is a coin
+toss, which is what the street tier has always claimed about itself.** Read by
+hand, worst first:
+
+> *"the City’s real property located at 772 Pacific (Assessor’s Parcel Block
+> No. 0161, Lot No. 015)"* — drawn on block **2849**, 6.2 km away, because
+> "Pacific" smeared down the whole avenue.
+>
+> *"a landmark designation … for Lincoln Park, formerly known as City Cemetery,
+> at Assessor’s Parcel Block No. 1313, Lot No. 029"* — drawn on six Clement
+> Street blocks, 2.3 km from Lincoln Park.
+
+And the address-tier disagreements are one block face, not a smear: *"645 Texas
+Street … Assessor’s Parcel Block No. 4102"* was on 4101, 95 m; *"150 Van Ness
+Avenue … No. 0814"* was on 0814A, 40 m. The parcel table put the house number
+on the block across the street.
+
+**Reading the stated block changes 554 placements and 474 of them are a
+NARROWING, not a correction:**
+
+```
+  474  narrowed to a subset of what was inferred
+   68  DISJOINT — the record and the index disagree
+    8  overlap, neither contains the other
+    4  widened to include what was inferred
+```
+
+## 24.5 WHY THE JOURNAL IS NOT READ THE SAME WAY, and what it would cost
+
+**The Journal prints these forms too, and the old regex misses them there as
+well.** Applied to the archive corpus, the Clerk's reading changes the stated
+set on **578 rows, 162 of them before 1999**:
+
+```
+  1920s   2    1960s   1    1990s   71
+  1930s  14    1970s   3    2000s   99
+  1940s  44    1980s  33    2010s  311
+```
+
+They are not modern wording leaking backwards. They are two gaps the old regex
+has always had: a **plural** — *"being portion of Assessor's Block Nos. 351 and
+351a"*, where it reads 351 and stops — and a **two-digit block**, because
+`(\d{3,4})` cannot match *"Assessor's Block 79, San Francisco, California"* at
+all.
+
+**And that is exactly why it is not switched on here.** The pre-1999 layer is
+proved unmoved on every build, and 162 of those rows are pre-1999. So
+`stated_blocks(wide=)` is switched **per row, by where the row came from**, and
+it is off by default. Extending it to the Journal is a change with its own move
+list, and it is the next one to make.
+
+**`blocks/measure_accuracy.py` needs the same one-line switch when it is** — it
+calls `stated_blocks(r["t"], bmeta)` and so still reads the Journal's wording on
+both halves. It is not this file's to edit.
+
+## 24.6 WHAT THIS DOES TO THE ACCURACY FIGURE — the test changed, not the score
+
+`measure_accuracy.py` scores the index against the decisions that print their
+own block: it joins them a **second time with the stated sentence hidden** and
+asks how far the blind join landed. **The stated block is the answer key and
+never an input to the thing being scored, so reading the Clerk's form cannot
+make the index score better. It enlarges the answer key.**
+
+Run over the merged corpus through `build_index.load_items()` and
+`build_index.locate(use_stated=False)` — the same two calls `measure_accuracy.py`
+makes — one variable at a time:
+
+```
+                                                key items   scored   exact   <=1 face
+  the Journal's wording only, today's corpus         3,529    2,094   86.5%    89.3%
+  the answer key gains the Clerk's wording           4,699    3,039   88.5%    91.3%
+  ...and the header given to the item below (24.7)   4,704    3,043   88.5%    91.3%
+```
+
+**The score moves 86.5% -> 88.5% because 1,170 modern decisions joined the answer
+key — 945 of them blind-placed at block precision and therefore scored — and
+they are decisions for which the Clerk prints a street address.** Not one scored
+placement improved: step two changes nothing the blind join reads. Step three —
+the header — moves the figure by 0.0 points on 4 more rows, which is what a
+change that adds corpus rather than accuracy looks like.
+
+**AND THE PUBLISHED FIGURE IS OLDER THAN BOTH.** `out/accuracy.json` and the
+copy on the site say `n: 906, exact: 84.8` and were written on 2026-08-23,
+before the corpus went 49,952 -> 115,673 items. `measure_accuracy.py`'s own
+staleness assert compares `locate()`'s tier counts against
+`out/block-index.json`, and **that file is stale in the same direction**
+(`stated 3358, addr 13455` against production's `3359 / 16378`), so the assert
+does not fire. The honest figure for the index as published today is the
+**86.5% on the first line**, not the 84.8% on the page. Re-running it is
+`measure_accuracy.py`'s job, and that file is not this one's to edit.
+
+## 24.7 THE HEADER IS THE TITLE OF THE ITEM BELOW IT
+
+§23 trimmed the next file's header off the item above — right, the words were
+never that item's — and left them attributed to nobody. They are the title of
+the item **below**, and this hands them to it:
+
+```
+  201018 [Concurring in Actions to Meet Local Emergency - Twenty-Sixth Supplement]
+          Motion concurring in actions taken by the Mayor ...
+  201019 [Findings Reversing the Community Plan Evaluation - 2300 Harrison Street]
+          Motion adopting findings to reverse the determination ...
+```
+
+**It needs none of `blocks/prefaces.py`'s connectedness gate.** The Journal's
+title has to be *reconstructed* — prefaces.py walks the pages and decides, on a
+test of whether the two run together, which trailing text belongs to the item
+below. The Clerk's title needs no such test: `NNNNNN [` occurs 24,624 times and
+**every one of them is alone at the start of its line** (§23.1), so the header
+above an item is that item's and nothing else's.
+
+```
+  map corpus                                     5,127  ->  8,611 rows
+    on a street the item's OWN WORDS name                    5,127
+    on a street only its own HEADER names                    3,484
+  rows carrying a header preface                            8,362
+```
+
+An orphan row (`H`/`F`) **is** its own header span, so it gets no preface:
+giving it one would print the title twice and count its streets twice.
+
+**AND WHAT THE ITEM SAYS UNDER THAT TITLE IS OFTEN NOTHING.** The first build of
+this change put a line like *"11 - Cohen, Brown, Fewer, Kim, Mandelman, Peskin,
+Ronen, Safai, Stefani, Tang, Yee"* on a block, because that is the whole of what
+the chunk says: the Clerk puts the substance in the bracketed title and what is
+left under it is a disposition stamp, the vote it carried, or the printer's
+footer. Counted over the 2,729 rows that build added to the block layer:
+
+```
+    255  nothing at all — a stamp with its boilerplate stripped
+    761  a bare vote list      "11 - Cohen, Brown, Fewer, Kim, Mandelman, …"
+    132  a vote count then prose  "1 - Walton Supervisor Walton was noted
+                                   present at 5:55 p.m. Severed from …"
+     60  the printer's own footer "City and County of San Francisco Page 946
+                                   Printed at 1:42 pm on 1/17/18"
+    127  a procedural motion   "Supervisor Safai, seconded by Supervisor Cohen,
+                               moved that this…"
+  1,335  of 2,729 — 48.9%
+```
+
+**Each shape above is one that OCCURS and was counted, not one anticipated.**
+Where the body is one of them the line falls back to the title the Clerk printed
+over the item — and **only** there: where the body is a sentence the body wins,
+because the body is what the reader clicked through to. The fallback carries the
+same guard `heading_verdict` puts on a Journal heading: **if the title names
+streets and none of them fronts this block it is about a different address in
+the same file and it is not printed here.**
+
+It is marked `g = "h"` rather than `"s"` because that is what it is — the
+heading the record printed. `"h"` is also the one value `block-records.ts` reads
+a category label off, so *"Final Map 8380 - 178-188 Albion Street"* renders as
+the label **Final Map 8380** with the address beside it, and `headline()` may
+prefer such a row for a decade that has one. **No front-end file is touched and
+no new value is introduced** — `h` was already in that vocabulary and is what
+the Journal's own printed headings carry.
+
+```
+  rows on the block layer carrying no line at all
+    out_header_fix (production)      827      of them 2016+   5
+    this build                       824      of them 2016+   2
+  rows whose line is a bare vote list
+    out_header_fix                    52
+    this build                        47
+  rows whose line is a printed heading (g = "h")
+    out_header_fix                 7,164
+    this build                     8,281
+```
+
+1,117 of this build's 2,511 arrivals show the Clerk's title rather than the
+words under it, and the blank line is gone from the modern half. (The arrival
+count falls 2,729 -> 2,511 for the same reason: sibling chunks of one file now
+carry the same printed line, so the near-duplicate collapse can see they are one
+decision, which it could not do when the line was empty.)
+
+## 24.8 DOES THE HEADER EVER CONTRADICT THE ITEM — measured, and the answer is 4
+
+```
+  rows where BOTH the header and the body resolve a street   3,357
+    they name the same street and number                     3,292   98.1%
+    they do not overlap                                         65    1.9%
+      ...of which both sides reach a BLOCK                       8
+         and it is the same block anyway                        4
+         and they are DIFFERENT blocks                          4
+```
+
+**Neither wins. Both are kept, and it makes a block-level difference on four
+rows in 3,357.** That is the same rule the Journal half has run since §19: an
+item is located from *[ its title + its body ]*, because the title is text the
+record printed for that item. The four were read:
+
+> **`Final Map 9286 - 616 Divisadero Street`** over *"…located at 1238
+> Divisadero Street, being a subdivision of Assessor’s Parcel Block No. 1202"*.
+> The header reaches blocks 1201/1202, the body's house number reaches 1126 —
+> and **the item's own stated block is 1202**, so two independent readings agree
+> and the third is the one to distrust.
+>
+> **`Planning Code - Conversion of Residential Hotel Rooms … at 447 Bush
+> Street`** over a chunk reading *"…to 27 Group Housing rooms at 412-422 Hayes
+> Street and seven Group Housing Rooms at 319-321 Ivy Street, Assessor’s Parcel
+> Block No. 0808"*. Both are true: the ordinance converts rooms at Bush **in
+> exchange for** rooms at Hayes and Ivy. Three rows, one decision, and it
+> belongs on all three addresses.
+
+The 57 that do not overlap and never reach a block between them are the same
+shape — a header naming one of the streets a body lists, or a body naming a
+cross street the title omits.
+
+## 24.9 WHAT MOVES ON THE MAP
+
+**Item level**, `build_index.locate()`, block precision, one change at a time:
+
+```
+                              unchanged   changes block   loses   new
+  A -> B  the stated block        2,743             554       0    225
+  B -> C  the header              3,514               8       0  2,637
+```
+
+**Not one item loses its placement at either step.**
+
+**Published block layer**, `out_header_fix/` -> this build:
+
+```
+  rows on the block layer                    99,917  ->  101,662
+  blocks whose row list changed                   889
+  block<->record links removed                    766
+  block<->record links added                    2,511
+  blocks that lost their entry entirely             0
+  blocks that gained an entry                      11
+  blocks that lost their LAST 1999+ record          4
+  blocks that gained a FIRST 1999+ record          54
+  blocks holding at least one 1999+ record      2,412  ->  2,462
+  blocks with a block-precision record          4,751  ->  4,771
+  blocks with no decision at all                  309  ->    298
+  precision      stated  3,359 -> 4,534    addr  16,378 -> 18,066
+                 corner 24,217 -> 24,210  street 40,027 -> 40,498
+```
+
+**Every one of the 3,276 changed rows is in
+`pipeline/scripts/us_sf_city/moves_stated_headers.tsv`** with block, year, date,
+kind, tier and a link that opens on the right page.
+
+**The four blocks that lose their last modern record were holding a decision
+that names a different block, and the record says so in its own words:**
+
+```
+  0842  "…Assessor’s Parcel Block No. 0828, Lot Nos. 12…"   -> 0828
+  3915  "…on Assessor’s Parcel Block No. 3911, Lot No. 001" -> 3911
+  3916  same decision, same sentence                        -> 3911
+  2924  "…rezone the City property identified as Assessor’s Parcel Block
+         No. 2042 … and … Assessor’s Parcel Block No. 2923" -> 2042 + 2923
+```
+
+**Ten of the eleven blocks that lost their last 2016+ record to the header-bleed
+fix get one back** — 0053, 0054, 0557, 0558, 1159, 2724, 3751, 5268, 5900A,
+5911. They lost a header that was never theirs and they have gained the
+decisions that really are.
+
+**The eleventh is 3568, which is §23.8's own example, and it is worth the
+paragraph.** Its placement IS fixed: the corpus holds two Motions that state that
+block — *"Final Map 8380 … 178-188 Albion Street … Assessor's Parcel Block
+No. 3568"* (2016) and *"Final Map No. 9989 … 31-37 Camp Street … Block No. 3568"*
+(2020) — and `locate()` now puts **both on 3568 at the stated tier**. They are
+then dropped by `build_index`'s near-duplicate collapse, against a 2014
+*"Approving Final Map 7721, a six residential unit condominium project, located
+at 25 Camp Street"* already on that block: the fuzzy test reads about ninety
+characters of the printed line, and two Final Map motions differ only in the map
+number and the address. **That is a bug in the collapse, not in the placement,
+and it is 24.12.**
+
+**26 rows in 101,662 leave the block layer and do not come back anywhere**, and
+all 26 were read. 482 distinct rows leave a block; **465 of them carry a citation
+that is still in the layer** — they moved onto the block the record names, or
+narrowed onto it. Of the remaining 26 rows, eleven have a near-duplicate reading
+of the same words still on the block, and the rest leave the block still carrying
+the distinctive words of what it lost: block 0104 loses
+`171053 [Hearing … 20 Nobles Alley]` and keeps *"Affirming the determination …
+that a proposed project at 20 Nobles Alley"*; 1020 and 1032 keep the 3333
+California Street Special Use District; 4022 keeps 2000-2070 Bryant.
+
+**Two are a real loss and are named rather than summarised.** Blocks 0339 and
+0340 lose `250792 [Hearing - Conditions of 111 Taylor Street Facility Operated by
+GEO Group, Inc.]`. Both still carry *111 Taylor street* — from a 1910 hotel
+permit and a 1925 sidewalk order — but the 2025 hearing itself is off the block
+map. Both blocks gain modern records overall; that is the trade, and it is worth
+naming.
+
+**Hearings on the block layer go 126 rows -> 101, on 111 blocks -> 89.** 27 of
+the 30 dropped rows have another row **from the same meeting** still on their
+block: the near-duplicate collapse now has a better-placed reading of the same
+file to keep. The other three are named:
+`231187 [Hearing - Appeal of Tentative Parcel Map Approval …]` off block 4274,
+and `251138 [Hearing - Appeal of Tentative Parcel Map Approval …]` off 5616 and
+6635. Hearings did not get worse; they stopped being the only reading available.
+
+## 24.10 The gates
+
+```
+  --control  vs pre-§23 items_all.jsonl                42,405 / 42,405  byte-identical
+  --control  vs pre-§23 items.jsonl                     6,786 /  6,786  byte-identical
+  --control  vs today's items_all.jsonl  (trim,orphans) 43,507 / 43,507 byte-identical
+  --control  vs today's items.jsonl      (trim,orphans)  5,127 /  5,127 byte-identical
+  control block build vs out_header_fix                 2,209 /  2,209  byte-identical
+  sfbos_gate url  == PREFIX + stem + suffix            43,507 / 43,507
+  sfbos_gate page == n + 1                             43,507 / 43,507
+  every cited stem is a PDF on disk                        390 /    390
+  every cited page is inside its file                  43,507 / 43,507   (PyMuPDF)
+  --verify   the two streams agree                      8,611 /  8,611  byte-identical
+  the two copies of the stated matcher agree           43,507 / 43,507
+  verify_order_independence.py --items <merged>  seeds 101/202, 2,205 files
+                                                 hashed, all identical
+  verify_block_regression.py vs out_header_fix   PASS, 90,820 = 90,820
+```
+
+**The pre-1999 layer is proved untouched, not assumed untouched**, and the gate
+that proves it is the one that matters here: reading the Clerk's stated block
+promotes 1,175 modern rows to a tier that outranks everything, and a promoted
+modern row entering the near-duplicate comparison ahead of a 1912 one could
+suppress it. It does not: baseline 90,820, current 90,820, element for element
+and in order, zero blocks changed before 1999.
+
+## 24.11 State on disk
+
+```
+  pipeline/scripts/us_sf_city/measure_stated_blocks.py  NEW, inventory + score
+  pipeline/scripts/us_sf_city/measure_header_gift.py    NEW, the ladder + the clash
+  pipeline/scripts/us_sf_city/moves_stated_headers.tsv  NEW, versioned
+  pipeline/scripts/us_sf_city/_sfbos_sweep.py           `hp`/`hr`, map_stream()
+  pipeline/scripts/us_sf_city/sweep_sfbos_all.py        --rules, symmetric control
+  pipeline/scripts/us_sf_city/fetch_sfbos_minutes.py    writes the map stream
+  scratchpad/sf-city-anim/blocks/build_index.py         the Clerk's stated form,
+                                                        the header as a preface
+  cache_sfbos/items.jsonl        8,611 rows,  8 MB   gitignored, derived
+  cache_sfbos/items_all.jsonl   43,507 rows, 43 MB   gitignored, derived
+  cache_sfbos/film_pool.jsonl   11,523 rows,  9 MB   gitignored, derived — unchanged
+  website/public/data/**         NOT TOUCHED
+```
+
+**Nothing is published here, and the build to publish from is a directory
+outside the repo**, named in the report that goes with this section.
+`blocks/out_header_fix/` is still byte-identical to production and is the
+baseline every number above is measured against. Publishing is a COPY and never
+a mirror-delete: the published directory also holds files this build does not
+produce.
+
+---
+
+## 24.12 FOUND HERE AND NOT FIXED — the collapse throws away two placements in five
+
+Block 3568 above is one instance of a general thing, and the general thing is
+measurable. `build_index` drops near-duplicate readings inside a block by
+comparing about ninety characters of the **printed line**, which for the modern
+half is often *"Approving Final Map <n>, a six residential unit condominium
+project, located at <address>"* — two different subdivisions, two different
+addresses, one signature.
+
+Counted as distinct **(block, meeting-page)** links, comparing what
+`locate()` produces with what the block layer publishes:
+
+```
+                                    locate() makes   absent from the layer
+  the map as published today                 5,136     2,761      53.8%
+  this build                                 5,303     2,170      40.9%
+                                                       of which stated-tier 479
+```
+
+**This change improves it — 53.8% -> 40.9% — and it does not cause it.** But
+479 of the links thrown away are `stated`: the record answering for itself, the
+one tier that outranks every inference, deleted by a similarity test on the
+sentence beside it. The collapse is doing exactly what §19 built it to do for
+the Journal, where the same ordinance really is reprinted verbatim at every
+reading; the Clerk's Final Map motions are a different shape and it cannot tell
+them apart.
+
+**It is not fixed here.** It is a third change to the same file in one pass, it
+moves rows on every era rather than the modern one, and the obvious repair —
+letting the file number or the address into the signature — needs its own
+control and its own move list. It is the next thing to do.

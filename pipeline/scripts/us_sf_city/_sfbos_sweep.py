@@ -209,6 +209,20 @@ def resolve_streets(body: str, gaz, keys):
 def _row(stem, day, pno, seq, body, gaz, keys, kind, hf="", ht=""):
     res, un, named = resolve_streets(body, gaz, keys)
     pl = "placed" if res else ("unresolved" if named else "none")
+    # THE HEADER'S WORDS, GIVEN TO THE ITEM THEY INTRODUCE. `trim_headers` was
+    # only half the correction: it stopped the header being read as the PREVIOUS
+    # item's location, which left its words attributed to nobody at all. They are
+    # the title of the item BELOW, printed by the Clerk directly above it, so
+    # they are handed to that item as a preface — the same shape
+    # `blocks/prefaces.py` gives the Journal, and needing none of its
+    # connectedness gate, because "NNNNNN [" is unambiguous and the item under it
+    # is the file it names.
+    #
+    # An orphan row (`H`/`F`) IS its own header span, so its text already
+    # contains those words and it gets no preface: giving it one would print the
+    # title twice and count its streets twice.
+    hp = "" if kind in ("H", "F") else ht
+    hres, _hun, _hnamed = resolve_streets(hp, gaz, keys) if hp else ([], [], False)
     return {
         "v": f"sfbos:{stem}", "y": int(day[:4]), "n": pno,
         "i": seq, "k": kind, "dt": day, "t": body,
@@ -233,7 +247,33 @@ def _row(stem, day, pno, seq, body, gaz, keys, kind, hf="", ht=""):
         # header's words, or its streets, being merged into the item.
         "hf": hf,
         "ht": ht,
+        # the header's words as this item's preface, and the streets they
+        # resolve to. `hr` is what lets an item whose own body names no street
+        # reach the map on the address its own title prints.
+        "hp": hp,
+        "hr": hres,
     }
+
+
+def map_stream(rows, give_headers: bool = True):
+    """The rows the MAP is built from, projected onto the fields it reads.
+
+    ONE definition, imported by `fetch_sfbos_minutes.py --extract` (which writes
+    it) and by `sweep_sfbos_all.py --control/--verify` (which prove it), so the
+    two cannot drift.
+
+    `give_headers=False` is the stream exactly as published: only the twelve
+    canonical fields, and only rows whose own BODY resolved a street.
+    """
+    out = []
+    for r in rows:
+        if not (r["r"] or (give_headers and r.get("hr"))):
+            continue
+        d = {k: r[k] for k in CANON}
+        if give_headers:
+            d["hp"] = r.get("hp", "")
+        out.append(d)
+    return out
 
 
 def read_pdf(path: pathlib.Path) -> list[str] | None:

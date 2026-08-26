@@ -186,7 +186,10 @@ def do_fetch() -> None:
 #     that header is no longer read as this item's;
 #   * a legislative file the splitter's vocabulary cannot see — a Hearing, most
 #     of them — becomes an item delimited by the two headers the Clerk printed
-#     around it.
+#     around it;
+#   * the header above an item is that item's TITLE, so its words ride with the
+#     item as a preface (`hp`) and an item whose body names no street can still
+#     reach the map on the address its own title prints.
 def do_extract() -> None:
     sys.path.insert(0, str(HERE))
     import _sfbos_sweep as S
@@ -197,7 +200,7 @@ def do_extract() -> None:
     cal = json.loads(CAL.read_text())
     out = CACHE / "items.jsonl"
     counters: dict = {}
-    n_pdf = n_item = n_loc = 0
+    n_pdf = n_item = n_loc = n_hdr = 0
     with open(out, "w") as w:
         for day, v in sorted(cal.items()):
             if not v["minutes"]:
@@ -208,15 +211,15 @@ def do_extract() -> None:
             n_pdf += 1
             rows = S.sweep_meeting(v["stem"], day, f, gaz, keys, counters=counters)
             n_item += len(rows)
-            for r in rows:
-                if not r["r"]:
-                    continue
+            n_hdr += sum(1 for r in rows if not r["r"] and r.get("hr"))
+            for d in S.map_stream(rows):
                 n_loc += 1
-                w.write(json.dumps({k: r[k] for k in S.CANON}) + "\n")
+                w.write(json.dumps(d) + "\n")
     print(f"  {n_pdf} minute PDFs read "
           f"({counters.get('pdf with no text layer', 0)} had no text layer)")
     print(f"  {n_item:,} items split, {n_loc:,} carry a resolvable street "
           f"({100 * n_loc / max(1, n_item):.1f}%)")
+    print(f"    of which reach the map only through their own header: {n_hdr:,}")
     print(f"    of which items recovered from a file header the splitter "
           f"cannot see: {counters.get('items from a file header the splitter cannot see', 0):,}")
     print(f"    chunks trimmed at the next file's header: "

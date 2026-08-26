@@ -143,6 +143,38 @@ def subjects_of(t):
 
 ROLL = re.compile(r"\b(Ayes?|Noes?|Absent|Excused)\s*[:\-—]", re.I)
 SUPES = re.compile(r"\bSupervisors?\b")
+
+# WHAT THE BODY OF A MODERN CHUNK OFTEN IS, AND NONE OF IT IS A SENTENCE ABOUT A
+# PLACE. The Clerk puts the substance of a legislative file in the bracketed
+# title he prints ABOVE it; what is left under that title is very often a
+# disposition stamp, the vote it carried, or the printer's footer. Counted over
+# the 2,729 rows this change adds to the block layer:
+#
+#     255  nothing at all — a stamp with its boilerplate stripped
+#     761  a bare vote list  "11 - Cohen, Brown, Fewer, Kim, Mandelman, …"
+#     132  a vote count then prose  "1 - Walton Supervisor Walton was noted
+#                                    present at 5:55 p.m. Severed from …"
+#      60  the printer's own footer  "City and County of San Francisco Page 946
+#                                     Printed at 1:42 pm on 1/17/18"
+#     127  a procedural motion  "Supervisor Safai, seconded by Supervisor Cohen,
+#                               moved that this…"
+#   1,335  of 2,729 — 48.9% of them
+#
+# Each line above is a shape that OCCURS, counted, not a shape anticipated. A row
+# whose only words are a list of eleven surnames is not a record of anything and
+# must not be published as one; the title the Clerk printed over it is.
+NO_SENTENCE = (
+    re.compile(r"^\s*$"),
+    re.compile(r"^\s*\d{1,2}\s*[-\u2013\u2014]\s*[A-Z][A-Za-z'\u2019-]+"
+               r"(?:,\s*[A-Z][A-Za-z'\u2019-]+){2,}"),
+    re.compile(r"^\s*\d{1,2}\s*[-\u2013\u2014]\s*[A-Z][A-Za-z'\u2019-]+\s+[A-Z]"),
+    re.compile(r"City and County of San Francisco\s+Page\s+\d+|Printed at\s+\d"),
+    re.compile(r"^Supervisor\s+\S+,\s+seconded by\s+Supervisor"),
+)
+
+
+def no_sentence(line):
+    return any(rx.search(line or "") for rx in NO_SENTENCE)
 NOISE = re.compile(r"[^A-Za-z0-9 ]")
 
 # The segment grammar, and the reason it is two grammars.
@@ -234,14 +266,126 @@ def bounded_blocks(keys, idx):
 # time. So a stated block outranks everything the index can infer.
 STATED = re.compile(r"Assessor'?s?\s+Block\s+(?:No\.?\s*)?(\d{3,4}[A-Z]?)\b", re.I)
 
+# ── THE CLERK WRITES IT DIFFERENTLY, AND THE REGEX ABOVE READS NONE OF IT ─────
+# The Journal prints "Assessor's Block 2622". The Clerk of the Board prints
+#
+#     Assessor’s Parcel Block No. 3568, Lot No. 003
+#             ^ a curly apostrophe    ^ a lot number after it
+#               ^ the word Parcel between Assessor's and Block
+#
+# and `STATED` requires `Assessor'?s?` immediately followed by whitespace and
+# `Block`, so all three of those break it. Measured over the Board's own PDFs:
+# 1,362 items state their own parcel block and `STATED` matched exactly ONE.
+#
+# THE FORMS BELOW ARE AN INVENTORY, NOT AN ANTICIPATION. Every branch is a string
+# the corpus prints; `us_sf_city/measure_stated_blocks.py --inventory` enumerates
+# them with counts and an example of each, and counts what is refused as
+# carefully as what is taken:
+#
+#   qualifier   Assessor’s / Assessor's / Assessors / Assessor s / Assessor
+#               then optionally Parcel, then Block, then optionally "(Block)"
+#   number word No. · No · No: · Nos. · Number · Numbers · nothing
+#   the number  4 digits 1,582 · 4+letter 71 · 3 digits 22 · 2 digits 6
+#   lists       "Nos. 6332 and 6331"  ·  "Nos. 2780, 2783, 2784, …" (29 of them)
+#
+# AND FOUR REFUSALS, EACH OF WHICH A ONE-LINE REGEX WOULD HAVE TAKEN:
+#
+#   a RANGE            "Assessor Parcel Block Nos. 41 through 43" is Mission Bay
+#                      South's REDEVELOPMENT blocks 41-43, printed under the word
+#                      Assessor. 0041 and 0043 are real assessor blocks in the
+#                      Financial District, 4 km from the Owens/A Street corner
+#                      the same sentence names. A range is recorded, never resolved.
+#   another county     "Assessor's Parcel Block No. 096-0155-004-01, known as
+#                      11601 Main Street, Sunol" is an Alameda County APN. An SF
+#                      assessor block is four digits, so a number followed by
+#                      "-<digits>" is kept only when the number itself is four
+#                      digits and what follows is a lot ("4285B-001").
+#   a BOUNDARY block   "the summary street vacation of a portion of 25th Street,
+#                      which is generally bounded by Assessor's Parcel Block
+#                      No. 4241 … to the north, … No. 4298 …, No. 4299 …, and
+#                      No. 4300 … to the south" names four blocks and the
+#                      decision is on none of them. A sentence that says
+#                      "bounded by" disqualifies every block in it.
+#   OCR damage         "Assessor's BlocK 3S13" must not be read as block 0003, so
+#                      a block number has to end at a character that is neither a
+#                      digit nor a letter.
+#
+# The three things that print "Block <number>" and are not assessor blocks —
+# "Community Development Block Grant" (35), "the 900 block of Mason Street" (62),
+# "Mission Bay South Redevelopment Plan Block 13" — are excluded by construction
+# rather than by a stop-list: the match has to begin at the word Assessor, and a
+# number has to follow the word Block.
+STATED_HEAD = re.compile(r"Assessor(?:[’'`]s|\s+s|s)?\s*(?:Parcel\s+)?"
+                         r"Block\s*(?:\(Block\)\s*)?"
+                         r"(?:Nos?\b[.:]?|Numbers?\b[.:]?)?\s*,?\s*(?:\(AB\)\s*)?", re.I)
+STATED_NUM = re.compile(r"(\d{1,4})-?([A-Z]{1,2})?(?![0-9A-Za-z])")
+STATED_SEP = re.compile(r"^\s*(?:,|;|and|&)\s*", re.I)
+STATED_RANGE = re.compile(r"^\s*(?:through|thru|to)\s+\d", re.I)
+STATED_NEIGH = re.compile(r"\s*(?:to|on|at)\s+the\s+(?:north|south|east|west)", re.I)
+STATED_BOUND = re.compile(r"bounded\s+by", re.I)
+STATED_SENT = re.compile(r"[.;]\s")
 
-def stated_blocks(t, bmeta):
-    out = []
-    for m in STATED.findall(re.sub(r"\s+", " ", t)):
-        b = m.zfill(4) if m[-1].isdigit() else m
-        if b in bmeta and b not in out:
-            out.append(b)
+
+def _stated_wide(s, out):
+    """Every block the Clerk's own sentence states for the item printing it."""
+    for m in STATED_HEAD.finditer(s):
+        n = STATED_NUM.match(s, m.end())
+        if not n:
+            continue
+        p, nums = n.end(), [n.group(0)]
+        if re.match(r"-\d", s[p:]):
+            if not re.match(r"^\d{4}-?[A-Z]{0,2}$", n.group(0)):
+                continue                      # another county's APN
+        else:
+            rng = False
+            while True:
+                if STATED_RANGE.match(s[p:]):
+                    rng = True
+                    break
+                sp = STATED_SEP.match(s[p:])
+                if not sp:
+                    break
+                n2 = STATED_NUM.match(s, p + sp.end())
+                if not n2 or re.match(r"-\d", s[n2.end():]):
+                    break
+                nums.append(n2.group(0))
+                p = n2.end()
+            if rng:
+                continue                      # a range of blocks, never expanded
+        if STATED_NEIGH.match(s[p:p + 24]):
+            continue                          # "… No. 0079 to the north"
+        j = 0
+        for b in STATED_SENT.finditer(s, 0, m.start()):
+            j = b.end()
+        if STATED_BOUND.search(s, j, m.start()):
+            continue                          # the sentence bounds, it does not locate
+        for x in nums:
+            d = re.match(r"(\d+)-?([A-Z]*)", x)
+            b = d.group(1).zfill(4) + d.group(2)
+            if b not in out:
+                out.append(b)
     return out
+
+
+def stated_blocks(t, bmeta, wide=False):
+    """The blocks this text states for ITSELF, best-effort and never inferred.
+
+    `wide` reads the Clerk's forms as well as the Journal's. It is switched on
+    per ROW, by where the row came from, and it is OFF by default so that
+    nothing already published moves: applying the wide reading to the Journal
+    too changes the stated set on 578 archive rows, 162 of them before 1999, and
+    the pre-1999 layer is proved unmoved on every build. That is a separate
+    change with its own move list and it is not made here.
+    """
+    out = []
+    if wide:
+        _stated_wide(re.sub(r"\s+", " ", t), out)
+    else:
+        for m in STATED.findall(re.sub(r"\s+", " ", t)):
+            b = m.zfill(4) if m[-1].isdigit() else m
+            if b not in out:
+                out.append(b)
+    return [b for b in out if b in bmeta]
 
 
 # The item splitter cuts the page on Resolution|Ordinance|Motion, so the HEADING of
@@ -376,7 +520,13 @@ def load_items():
     items, n_pre, n_new = [], 0, 0
     for r in map(json.loads, open(ITEMS)):
         d = pre.get(f'{r["v"]}|{r["i"]}')
-        ptxt = (d or {}).get("p") or ""
+        # TWO RECORD SYSTEMS, ONE PREFACE. The Journal's title has to be
+        # RECONSTRUCTED — blocks/prefaces.py walks the pages and decides, on a
+        # connectedness test, which trailing text belongs to the item below.
+        # The Clerk's title needs no such test: he prints "NNNNNN [" at the head
+        # of its own line above the item it introduces, 24,624 times and never
+        # once mid-line, so the sweep carries it on the row as `hp`.
+        ptxt = (d or {}).get("p") or r.get("hp") or ""
         pl = preface_locs(ptxt, gaz, keys) if ptxt else []
         if pl:
             sh = len(ptxt) + 1
@@ -531,10 +681,17 @@ def locate(items, idx, bmeta, bpos, order, use_stated=True):
 
         # -- 3 addr ------------------------------------------------------
         focus = {}
-        sb = stated_blocks(r["t"], bmeta) if use_stated else []
+        # `wide` is decided by WHERE THE ROW CAME FROM, not by its year: the
+        # Clerk's forms are read on the Clerk's own PDFs. See stated_blocks().
+        sb = (stated_blocks(r["t"], bmeta, wide=r["v"].startswith(SFBOS_NS))
+              if use_stated else [])
         if sb and len(sb) <= 4:
             hits, tier = list(sb), 4
-            mm = STATED.search(re.sub(r"\s+", " ", r["t"]))
+            # the focus is where the snippet is cut from, so it has to be the
+            # sentence that STATED THE BLOCK, read with the same regex that
+            # found it — the Journal's or the Clerk's
+            _s = re.sub(r"\s+", " ", r["t"])
+            mm = (STATED_HEAD if r["v"].startswith(SFBOS_NS) else STATED).search(_s)
             _sh = r.get("_sh", 0)
             for bn in sb:
                 focus.setdefault(bn, _sh + (mm.start() if mm else 0))
@@ -797,6 +954,20 @@ def main():
             if _how != "unresolved":
                 _b.add(gz.norm(_hit))
         HSTREETS[_k] = _b
+    # the same thing for the Clerk's own title, which arrives on the ROW rather
+    # than in headings.json. Built once here for the same reason HSTREETS is:
+    # gloss_of() is asked for a line thousands of times and must not re-resolve.
+    HPS = {}
+    for _r in items:
+        _hp = _r.get("hp")
+        if not _hp:
+            continue
+        _b = set()
+        for _L in ex_locations(_hp):
+            _hit, _how = gz.resolve(STYPE_RE.sub("", _L["street"]), GAZ, GAZ_KEYS)
+            if _how != "unresolved":
+                _b.add(gz.norm(_hit))
+        HPS[f'{_r["v"]}|{_r["i"]}'] = _b
     VOCAB = GL.Vocab(json.load(open(os.path.join(CACHE, "vocab.json"))))
     _gcache = {}
 
@@ -824,6 +995,29 @@ def main():
             return _gcache[ck]
         sent = GL.sentence_gloss(r["t"], FOCUS.get((bn, did)) if bn else None, SNIP,
                                  nxt=HEAD.get(f'{r["v"]}|{r["i"] + 1}'))
+        if r.get("hp") and no_sentence(sent):
+            # THE CLERK PRINTED A TITLE OVER THIS ITEM AND THE BODY UNDER IT SAYS
+            # NOTHING. Only ever a FALLBACK: where the body is a sentence the
+            # body wins, because the body is what the reader clicked through to.
+            #
+            # Guarded the same way `heading_verdict` guards a Journal heading: if
+            # the title names streets and none of them fronts THIS block, it is
+            # about a different address in the same file and it is not printed
+            # here.
+            _hs = HPS.get(key) or set()
+            if not _hs or (_hs & ctx):
+                # It is marked `h`, not `s`, because that is what it IS — the
+                # heading the record printed — and `h` is the one value the front
+                # end reads a category label off ("Final Map 8380 - 178-188
+                # Albion Street" -> "Final Map 8380").
+                #
+                # Verbatim when it fits: `GL._fit` ends a line it did not have to
+                # cut with an ellipsis, and an ellipsis on a whole printed title
+                # is a claim ("there is more") that is not true.
+                _ttl = r["hp"].strip()
+                _gcache[ck] = (_ttl if len(_ttl) <= SNIP
+                               else GL._fit(_ttl, SNIP), "h")
+                return _gcache[ck]
         if v == "prefix":
             # "Oil and Boiler Permits - Bernard Bosq, at 1680 Clay street; 1500
             # gallons capacity." The entry is meaningless without the category it

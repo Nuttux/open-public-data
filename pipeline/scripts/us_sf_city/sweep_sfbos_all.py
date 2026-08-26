@@ -82,7 +82,7 @@ sys.path.insert(0, str(HERE))
 # regex, form label and gate below comes from there too.
 from _sfbos_sweep import (  # noqa: E402
     BASE, CANON, DISP, FORMS, HEADER, STYPE, TITLED,
-    SPEAKER, disp_of, ex, form_of, gz, sfbos_gate, sweep_meeting,
+    SPEAKER, disp_of, ex, form_of, gz, map_stream, sfbos_gate, sweep_meeting,
 )
 
 REPO = HERE.parent.parent.parent
@@ -97,7 +97,7 @@ META = CACHE / "items_all.meta.json"
 FILENO = HEADER
 FILEREF = re.compile(r"File Nos?\.\s*(?:and\s*)?((?:\d{6}[,;\s]*(?:and\s*)?)+)")
 
-_ = (DISP, STYPE, TITLED, disp_of, form_of)   # re-exported for readers of this file
+_ = (CANON, DISP, STYPE, TITLED, disp_of, form_of)  # re-exported for readers of this file
 
 
 def _meetings():
@@ -157,20 +157,49 @@ def do_sweep() -> None:
 
 
 # ---------------------------------------------------------------- control
-# THE TEST THAT MAKES BOTH FIXES PROVABLE RATHER THAN PLAUSIBLE. Re-sweeps with
-# `trim_headers=False, emit_orphans=False`, which is the walk exactly as it stood
-# when `items_all.jsonl` and `items.jsonl` were published, and diffs it against a
-# named baseline line for line. If the refactor moved one byte of its own, this
-# says so before any measurement of the fixes is believed.
-def do_control(baseline: str) -> None:
+# THE TEST THAT MAKES EVERY FIX PROVABLE RATHER THAN PLAUSIBLE. Re-sweeps with a
+# NAMED SET OF RULES SWITCHED OFF and diffs the result against a named baseline
+# line for line. If the code moved one byte of its own, this says so before any
+# measurement of the fix is believed.
+#
+#   --control <pre-§23 stream>                        no rules   the original walk
+#   --control <today's stream> --rules trim,orphans   the walk as published today
+#
+# The rule names are the switches themselves, so a rule cannot be added without
+# appearing here:
+#   trim      an item ends where the next file's header begins        (§23.3)
+#   orphans   a file the splitter cannot see becomes an item          (§23.4)
+#   headers   the header's words are the TITLE of the item below it, and an item
+#             whose own body names no street reaches the map on the address its
+#             own title prints                                        (§24)
+RULES = ("trim", "orphans", "headers")
+
+
+def do_control(baseline: str, rules: str = "") -> None:
+    on = {r.strip() for r in rules.split(",") if r.strip()}
+    bad = on - set(RULES)
+    if bad:
+        sys.exit(f"REFUSED: unknown rule(s) {sorted(bad)}; known: {list(RULES)}")
     base = pathlib.Path(baseline)
-    rows, _m, _p = _walk(trim=False, orphans=False)
-    old = [l.rstrip("\n") for l in open(base) if l.strip()]
+    rows, _m, _p = _walk(trim="trim" in on, orphans="orphans" in on)
+    # THE ADDITIVE FIELDS ARE DROPPED FROM BOTH SIDES, not just from the new one.
+    # `hf`/`ht`/`hp`/`hr` are metadata about the header printed above an item;
+    # they were added by later passes and no consumer reads them, so a baseline
+    # written before they existed and one written after must compare equal. The
+    # projection is applied to the baseline too, which is what makes this a test
+    # of the walk rather than a test of which pass wrote the file.
+    ADDITIVE = ("hf", "ht", "hp", "hr")
+
+    def proj(r):
+        return json.dumps({k: v for k, v in r.items() if k not in ADDITIVE})
+
     if base.name == "items.jsonl":
-        new = [json.dumps({k: r[k] for k in CANON}) for r in rows if r["r"]]
+        old = [proj(json.loads(l)) for l in open(base) if l.strip()]
+        new = [proj(d) for d in map_stream(rows, give_headers="headers" in on)]
     else:
-        new = [json.dumps({k: v for k, v in r.items() if k not in ("hf", "ht")})
-               for r in rows]
+        old = [proj(json.loads(l)) for l in open(base) if l.strip()]
+        new = [proj(r) for r in rows]
+    print(f"  rules on: {sorted(on) or 'none'}")
     print(f"  baseline {base}  {len(old):,} rows")
     print(f"  control re-sweep                {len(new):,} rows")
     if len(old) != len(new):
@@ -187,9 +216,9 @@ def do_control(baseline: str) -> None:
 def do_relabel() -> None:
     """Recompute pl/pk/fn from the cached text. Never touches the twelve.
 
-    `hf`/`ht` are NOT recomputed: they are the header printed above the item on
-    the page, which the row's own text does not contain. Re-deriving them needs
-    the page, so it needs `--sweep`.
+    `hf`/`ht`/`hp`/`hr` are NOT recomputed: they are the header printed above the
+    item on the page, which the row's own text does not contain. Re-deriving
+    them needs the page, so it needs `--sweep`.
     """
     rows = [json.loads(l) for l in open(ALL)]
     for r in rows:
@@ -211,9 +240,10 @@ def do_relabel() -> None:
 def do_verify() -> None:
     old = [l.rstrip("\n") for l in open(PLACED) if l.strip()]
     new_all = [json.loads(l) for l in open(ALL)]
-    new_placed = [json.dumps({k: r[k] for k in CANON}) for r in new_all if r["r"]]
+    new_placed = [json.dumps(d) for d in map_stream(new_all)]
     print(f"  published placed stream : {len(old):,} rows")
-    print(f"  re-swept, r non-empty   : {len(new_placed):,} rows")
+    print(f"  re-swept map stream     : {len(new_placed):,} rows  "
+          f"(the item's own streets, or its own header's)")
     if len(old) != len(new_placed):
         sys.exit(f"REFUSED: placed subset changed size {len(old)} -> {len(new_placed)}")
     diff = [i for i, (a, b) in enumerate(zip(old, new_placed)) if a != b]
@@ -292,8 +322,11 @@ def do_report() -> None:
     print(f"  meeting PDFs on disk                      {c['pdfs read']:>10,}")
     print(f"  pages split                               {c['pages split']:>10,}")
     print(f"  items the FULL sweep keeps                {n:>10,}")
-    print(f"  items the map's sweep kept                {old:>10,}   "
+    nhd = sum(1 for r in rows if not r["r"] and r.get("hr"))
+    print(f"  items the map's stream carries            {old:>10,}   "
           f"{100 * old / n:.1f}%")
+    print(f"    ...on a street their OWN WORDS name     {old - nhd:>10,}")
+    print(f"    ...on a street only their own HEADER names {nhd:>7,}")
     print(f"  items it discarded at the door            {n - old:>10,}   "
           f"{100 * (n - old) / n:.1f}%")
     print(f"\n  chunks the splitter itself drops (not items, counted not hidden)")
@@ -320,8 +353,14 @@ def do_report() -> None:
           f"  {100 * nsp / n:>5.1f}%")
 
     print(f"\n{'=' * 74}\nTHE HONEST TAXONOMY OF WHAT DOES NOT PLACE\n{'=' * 74}")
-    print(f"  the {n - pl['placed']:,} items the map cannot draw are FIVE different")
-    print(f"  things and they are never summed into one number:\n")
+    # THIS IS THE ITEM'S OWN WORDS AND NOTHING ELSE. `pl` says whether the
+    # item's own text resolved a street; it is not the same question as whether
+    # the map carries the item, because since §24 an item can reach the map on
+    # the address printed in its own header. The taxonomy below stays a
+    # taxonomy of the item's own words, which is what makes it a partition.
+    print(f"  the {n - pl['placed']:,} items whose OWN WORDS name no place we can")
+    print(f"  resolve are FIVE different things, never summed into one number")
+    print(f"  ({nhd:,} of them reach the map anyway, on their own header):\n")
     proc = [r for r in rows if r["pl"] != "placed" and r["pk"] in
             ("stamp", "template", "rollcall", "adjournment")]
     frag = [r for r in rows if r["pl"] != "placed" and r["pk"] == "fragment"]
@@ -659,8 +698,12 @@ def main() -> None:
     ap.add_argument("--pool", action="store_true")
     ap.add_argument("--bleed", metavar="BASELINE_ITEMS_ALL",
                     help="diff the trim against a baseline items_all.jsonl")
+    ap.add_argument("--rules", default="",
+                    help="comma-separated rules to leave ON during --control "
+                         f"({', '.join(RULES)}); default none")
     ap.add_argument("--control", metavar="BASELINE",
-                    help="re-sweep with both fixes OFF and diff, line for line")
+                    help="re-sweep with the rules in --rules ON and diff, "
+                         "line for line, against this baseline")
     ap.add_argument("--sample", nargs="?", const="all")
     ap.add_argument("-k", type=int, default=12)
     a = ap.parse_args()
@@ -671,7 +714,7 @@ def main() -> None:
     if a.sweep:
         do_sweep()
     if a.control:
-        do_control(a.control)
+        do_control(a.control, a.rules)
     if a.relabel:
         do_relabel()
     if a.verify:
