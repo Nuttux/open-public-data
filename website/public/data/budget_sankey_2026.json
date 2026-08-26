@@ -726,7 +726,7 @@
         },
         {
           "name": "Éducation: Rémunérations du personnel",
-          "value": 118002186.33,
+          "value": 118002186.33000001,
           "fonction": "Écoles maternelles",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -745,7 +745,7 @@
         },
         {
           "name": "Éducation: Charges de sécurité sociale et prévoyance",
-          "value": 53838626.080000006,
+          "value": 53838626.08000001,
           "fonction": "Écoles maternelles",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -792,7 +792,7 @@
         },
         {
           "name": "Éducation: Contributions obligatoires",
-          "value": 34115605.02,
+          "value": 34115605.019999996,
           "fonction": "Classes regroupées",
           "flow_category": "Contributions obligatoires",
           "fonction_confidence": "medium",
@@ -821,7 +821,7 @@
         },
         {
           "name": "Éducation: Charges de sécurité sociale et prévoyance",
-          "value": 21665070.499999996,
+          "value": 21665070.5,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -960,7 +960,7 @@
         },
         {
           "name": "Éducation: Impôts, taxes, versements (autre orga.)",
-          "value": 3953131.4199999995,
+          "value": 3953131.42,
           "fonction": "Écoles maternelles",
           "flow_category": "Autre",
           "fonction_confidence": "medium",
@@ -1057,7 +1057,7 @@
         },
         {
           "name": "Éducation: Charges diverses de gestion courante",
-          "value": 1626583.5400000003,
+          "value": 1626583.54,
           "fonction": "Écoles primaires",
           "flow_category": "Autre",
           "fonction_confidence": "medium",
@@ -1084,7 +1084,7 @@
         },
         {
           "name": "Éducation: Charges diverses de gestion courante",
-          "value": 1144617.5799999998,
+          "value": 1144617.58,
           "fonction": "Cités scolaires",
           "flow_category": "Autre",
           "fonction_confidence": "medium",
@@ -1127,7 +1127,7 @@
         },
         {
           "name": "Éducation: Autres charges de personnel",
-          "value": 963453.4400000002,
+          "value": 963453.4399999998,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -1166,7 +1166,7 @@
         },
         {
           "name": "Culture & Sport: Charges d'intervention",
-          "value": 57512526.93,
+          "value": 57512526.92999999,
           "fonction": "Musées",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
@@ -1219,7 +1219,7 @@
         },
         {
           "name": "Culture & Sport: Rémunérations du personnel",
-          "value": 28207067.06,
+          "value": 28207067.060000006,
           "fonction": "Piscines",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -1264,7 +1264,7 @@
         },
         {
           "name": "Culture & Sport: Charges d'intervention",
-          "value": 14068294.299999999,
+          "value": 14068294.3,
           "fonction": "Manifestations sportives",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
@@ -1334,7 +1334,7 @@
         },
         {
           "name": "Culture & Sport: Charges sécurité sociale et",
-          "value": 8671468.840000002,
+          "value": 8671468.84,
           "fonction": "Activité art action manif",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -1369,7 +1369,7 @@
         },
         {
           "name": "Culture & Sport: Charges de sécurité sociale et prévoyance",
-          "value": 7336945.000000001,
+          "value": 7336944.999999999,
           "fonction": "Salles de sport, gymnases",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -1389,7 +1389,7 @@
         },
         {
           "name": "Invest. Culture: Immobilisations corporelles",
-          "value": 7008171.79,
+          "value": 7008171.790000001,
           "fonction": "Patrimoine",
           "flow_category": "Immobilisations en cours",
           "fonction_confidence": "medium",
@@ -1423,7 +1423,7 @@
         },
         {
           "name": "Invest. Culture: Immobilisations corporelles en cours",
-          "value": 6525232.88,
+          "value": 6525232.880000001,
           "fonction": "Piscines",
           "flow_category": "Immobilisations en cours",
           "fonction_confidence": "medium",
@@ -1491,7 +1491,7 @@
         },
         {
           "name": "Culture & Sport: Charges sécurité sociale et",
-          "value": 5654567.47,
+          "value": 5654567.470000001,
           "fonction": "Bibliothèques médiathèque",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -1528,7 +1528,7 @@
         },
         {
           "name": "Culture & Sport: Charges de sécurité sociale et prévoyance",
-          "value": 4534150.46,
+          "value": 4534150.459999999,
           "fonction": "Autres actions vie social",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -1618,7 +1618,7 @@
         },
         {
           "name": "Invest. Aménagement: Immobilisations corporelles en cours",
-          "value": 107694601.64,
+          "value": 107694601.63999999,
           "fonction": "Opérations d’aménagement",
           "flow_category": "Immobilisations en cours",
           "fonction_confidence": "medium",
@@ -1627,7 +1627,7 @@
         },
         {
           "name": "Aménagement: Rémunérations du personnel",
-          "value": 94484128.52,
+          "value": 94484128.52000001,
           "fonction": "Espaces verts urbains",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -1645,7 +1645,7 @@
         },
         {
           "name": "Aménagement: Rémunérations du personnel",
-          "value": 42306968.559999995,
+          "value": 42306968.56,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -1709,7 +1709,7 @@
         },
         {
           "name": "Invest. Aménagement: Subventions d'investissement",
-          "value": 23397344.67,
+          "value": 23397344.669999998,
           "fonction": "Aide au secteur locatif",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "high",
@@ -1728,7 +1728,7 @@
         },
         {
           "name": "Aménagement: Entretien et réparations",
-          "value": 19299212.54,
+          "value": 19299212.540000003,
           "fonction": "Éclairage public",
           "flow_category": "Services extérieurs",
           "fonction_confidence": "high",
@@ -1737,7 +1737,7 @@
         },
         {
           "name": "Aménagement: Achats non stockés de matières et fourni",
-          "value": 19041556.240000002,
+          "value": 19041556.24,
           "fonction": "Éclairage public",
           "flow_category": "Achats",
           "fonction_confidence": "high",
@@ -1782,7 +1782,7 @@
         },
         {
           "name": "Aménagement: Charges de sécurité sociale et prévoyance",
-          "value": 14045633.14,
+          "value": 14045633.140000002,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -1810,7 +1810,7 @@
         },
         {
           "name": "Aménagement: Subventions d'intervention",
-          "value": 11119153.42,
+          "value": 11119153.420000002,
           "fonction": "Autres actions d’aménagem",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
@@ -1820,7 +1820,7 @@
         },
         {
           "name": "Aménagement: Contrats de prestations de services",
-          "value": 11062155.08,
+          "value": 11062155.080000002,
           "fonction": "Éclairage public",
           "flow_category": "Services extérieurs",
           "fonction_confidence": "high",
@@ -2035,7 +2035,7 @@
         },
         {
           "name": "Aménagement: Achats non stockés de matières et fourni",
-          "value": 2697861.7599999993,
+          "value": 2697861.76,
           "fonction": "Espaces verts urbains",
           "flow_category": "Achats",
           "fonction_confidence": "high",
@@ -2055,7 +2055,7 @@
       "Action Sociale": [
         {
           "name": "Action Sociale: Subventions d'intervention",
-          "value": 480251746.0,
+          "value": 480251745.99999994,
           "fonction": "Autre intervention social",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
@@ -2074,7 +2074,7 @@
         },
         {
           "name": "Action Sociale: Rémunérations du personnel",
-          "value": 261715673.46,
+          "value": 261715673.46000004,
           "fonction": "Crèches et garderies",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2083,7 +2083,7 @@
         },
         {
           "name": "Action Sociale: Frais de séjour, héberg., inhumation",
-          "value": 227144854.79000002,
+          "value": 227144854.79,
           "fonction": "Personnes handicapées",
           "flow_category": "Transferts sociaux",
           "fonction_confidence": "medium",
@@ -2092,7 +2092,7 @@
         },
         {
           "name": "Action Sociale: Charges de sécurité sociale et prévoyance",
-          "value": 96498244.21999998,
+          "value": 96498244.22,
           "fonction": "Crèches et garderies",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2112,7 +2112,7 @@
         },
         {
           "name": "Action Sociale: Subventions d'intervention",
-          "value": 74795188.19,
+          "value": 74795188.19000001,
           "fonction": "Crèches et garderies",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
@@ -2150,7 +2150,7 @@
         },
         {
           "name": "Action Sociale: Contrats de prestations de services",
-          "value": 51422993.70000001,
+          "value": 51422993.7,
           "fonction": "Crèches et garderies",
           "flow_category": "Services extérieurs",
           "fonction_confidence": "high",
@@ -2176,7 +2176,7 @@
         },
         {
           "name": "Action Sociale: Rémunérations du personnel",
-          "value": 38147129.49000001,
+          "value": 38147129.49,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2204,7 +2204,7 @@
         },
         {
           "name": "Action Sociale: Participations",
-          "value": 23794538.93,
+          "value": 23794538.930000003,
           "fonction": "Personnes en difficulté",
           "flow_category": "Contributions obligatoires",
           "fonction_confidence": "medium",
@@ -2243,7 +2243,7 @@
         },
         {
           "name": "Action Sociale: Participations",
-          "value": 18235753.03,
+          "value": 18235753.029999997,
           "fonction": "Personnes handicapées",
           "flow_category": "Contributions obligatoires",
           "fonction_confidence": "medium",
@@ -2252,7 +2252,7 @@
         },
         {
           "name": "Action Sociale: Rémunérations du personnel",
-          "value": 16684219.72,
+          "value": 16684219.719999999,
           "fonction": "PMI et planif familiale",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2281,7 +2281,7 @@
         },
         {
           "name": "Action Sociale: Rémunérations du personnel",
-          "value": 12935419.730000002,
+          "value": 12935419.73,
           "fonction": "Autr action petite enfanc",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2308,7 +2308,7 @@
         },
         {
           "name": "Action Sociale: Rémunérations du personnel",
-          "value": 11740747.169999998,
+          "value": 11740747.17,
           "fonction": "Prév et éducation santé",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2333,7 +2333,7 @@
         },
         {
           "name": "Action Sociale: Contrats de prestations de services",
-          "value": 8405969.299999997,
+          "value": 8405969.299999999,
           "fonction": "Aide sociale à l'enfance",
           "flow_category": "Services extérieurs",
           "fonction_confidence": "high",
@@ -2385,7 +2385,7 @@
         },
         {
           "name": "Action Sociale: Charges de sécurité sociale et prévoyance",
-          "value": 6151706.130000001,
+          "value": 6151706.13,
           "fonction": "PMI et planif familiale",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2456,7 +2456,7 @@
         },
         {
           "name": "Action Sociale: Autres charges de personnel",
-          "value": 3734497.35,
+          "value": 3734497.3499999996,
           "fonction": "Crèches et garderies",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2488,7 +2488,7 @@
         },
         {
           "name": "Action Sociale: Entretien et réparations",
-          "value": 2993005.0500000003,
+          "value": 2993005.05,
           "fonction": "Crèches et garderies",
           "flow_category": "Services extérieurs",
           "fonction_confidence": "high",
@@ -2528,7 +2528,7 @@
         },
         {
           "name": "Administration: Rémunérations du personnel",
-          "value": 210107537.3,
+          "value": 210107537.30000004,
           "fonction": "Adm générale collectivité",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2584,7 +2584,7 @@
         },
         {
           "name": "Administration: Rémunérations du personnel",
-          "value": 47128329.65999999,
+          "value": 47128329.66,
           "fonction": "Personnel non ventilé",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2630,7 +2630,7 @@
         },
         {
           "name": "Administration: Rémunérations du personnel",
-          "value": 20421273.67,
+          "value": 20421273.669999998,
           "fonction": "Assemblée délibérante",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2658,7 +2658,7 @@
         },
         {
           "name": "Administration: Rémunérations du personnel",
-          "value": 15729493.569999998,
+          "value": 15729493.57,
           "fonction": "Cimetière pompe funèbre",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2694,7 +2694,7 @@
         },
         {
           "name": "Administration: Divers",
-          "value": 10952490.76,
+          "value": 10952490.759999998,
           "fonction": "Adm générale collectivité",
           "flow_category": "Autres services",
           "fonction_confidence": "high",
@@ -2721,7 +2721,7 @@
         },
         {
           "name": "Administration: Personnel intérimaire & vacations",
-          "value": 9405847.38,
+          "value": 9405847.379999999,
           "fonction": "Adm générale collectivité",
           "flow_category": "Autres services",
           "fonction_confidence": "high",
@@ -2797,7 +2797,7 @@
         },
         {
           "name": "Administration: Rémunérations du personnel",
-          "value": 6466235.400000001,
+          "value": 6466235.4,
           "fonction": "Admin général Etat",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2806,7 +2806,7 @@
         },
         {
           "name": "Administration: Charges de sécurité sociale et prévoyance",
-          "value": 5734650.390000001,
+          "value": 5734650.3900000015,
           "fonction": "Cimetière pompe funèbre",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2853,7 +2853,7 @@
         },
         {
           "name": "Administration: Autres charges de personnel",
-          "value": 4742291.72,
+          "value": 4742291.719999999,
           "fonction": "Adm générale collectivité",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2871,7 +2871,7 @@
         },
         {
           "name": "Administration: Impôts, taxes, versements (autre orga.)",
-          "value": 4085133.8700000006,
+          "value": 4085133.87,
           "fonction": "Autres moyens généraux",
           "flow_category": "Autre",
           "fonction_confidence": "medium",
@@ -2942,7 +2942,7 @@
         },
         {
           "name": "Administration: Charges de sécurité sociale et prévoyance",
-          "value": 2357456.64,
+          "value": 2357456.6399999997,
           "fonction": "Admin général Etat",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -2961,7 +2961,7 @@
         },
         {
           "name": "Administration: Impôts, taxes, versements (autre orga.)",
-          "value": 2157264.01,
+          "value": 2157264.0100000002,
           "fonction": "Adm générale collectivité",
           "flow_category": "Autre",
           "fonction_confidence": "medium",
@@ -3010,7 +3010,7 @@
         },
         {
           "name": "Action Économique: Subventions d'intervention",
-          "value": 6164634.36,
+          "value": 6164634.359999999,
           "fonction": "Recherche et innovation",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
@@ -3057,7 +3057,7 @@
         },
         {
           "name": "Action Économique: Rémunérations du personnel",
-          "value": 2447067.11,
+          "value": 2447067.1100000003,
           "fonction": "Industrie,commerce artisa",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -3066,7 +3066,7 @@
         },
         {
           "name": "Action Économique: Rémunérations du personnel",
-          "value": 2388199.8400000003,
+          "value": 2388199.84,
           "fonction": "Insertion éco sociale",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -3114,7 +3114,7 @@
         },
         {
           "name": "Action Économique: Subventions d'intervention",
-          "value": 1776061.56,
+          "value": 1776061.5600000003,
           "fonction": "Struct d'anim et dev éco",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
@@ -3134,7 +3134,7 @@
         },
         {
           "name": "Action Économique: Rémunérations du personnel",
-          "value": 1615680.1199999999,
+          "value": 1615680.12,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -3198,7 +3198,7 @@
         },
         {
           "name": "Action Économique: Charges de sécurité sociale et prévoyance",
-          "value": 871232.3299999998,
+          "value": 871232.3300000001,
           "fonction": "Industrie,commerce artisa",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -3208,7 +3208,7 @@
         },
         {
           "name": "Action Économique: Charges de sécurité sociale et prévoyance",
-          "value": 850273.7500000001,
+          "value": 850273.75,
           "fonction": "Insertion éco sociale",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -3418,7 +3418,7 @@
         },
         {
           "name": "Action Économique: Autres charges de personnel",
-          "value": 42940.409999999996,
+          "value": 42940.41,
           "fonction": "Autres actions",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -3438,7 +3438,7 @@
       "Environnement": [
         {
           "name": "Environnement: Rémunérations du personnel",
-          "value": 252012576.60999998,
+          "value": 252012576.61,
           "fonction": "Ser com collecte propreté",
           "flow_category": "Personnel",
           "fonction_confidence": "high",
@@ -3534,7 +3534,7 @@
         },
         {
           "name": "Environnement: Contrats de prestations de services",
-          "value": 9859587.36,
+          "value": 9859587.360000001,
           "fonction": "Tri, valo et trait déchet",
           "flow_category": "Services extérieurs",
           "fonction_confidence": "medium",
@@ -3584,7 +3584,7 @@
         },
         {
           "name": "Environnement: Rémunérations du personnel",
-          "value": 5098520.330000001,
+          "value": 5098520.329999999,
           "fonction": "Autres",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -3654,7 +3654,7 @@
         },
         {
           "name": "Environnement: Charges de sécurité sociale et prévoyance",
-          "value": 1841843.15,
+          "value": 1841843.1500000001,
           "fonction": "Autres",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -3708,7 +3708,7 @@
         },
         {
           "name": "Environnement: Achats non stockés de matières et fourni",
-          "value": 1125471.8099999966,
+          "value": 1125471.8099999968,
           "fonction": "Propreté urbaine",
           "flow_category": "Achats",
           "fonction_confidence": "high",
@@ -3788,7 +3788,7 @@
         },
         {
           "name": "Environnement: Autres charges de personnel",
-          "value": 265832.64999999997,
+          "value": 265832.65,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -4333,7 +4333,7 @@
         },
         {
           "name": "Transports: Rémunérations du personnel",
-          "value": 42532331.25000001,
+          "value": 42532331.25,
           "fonction": "Voirie communale",
           "flow_category": "Personnel",
           "fonction_confidence": "high",
@@ -4342,7 +4342,7 @@
         },
         {
           "name": "Transports: Contrats de prestations de services",
-          "value": 35037904.74999999,
+          "value": 35037904.75,
           "fonction": "Voirie communale",
           "flow_category": "Services extérieurs",
           "fonction_confidence": "medium",
@@ -4472,7 +4472,7 @@
         },
         {
           "name": "Transports: Rémunérations du personnel",
-          "value": 5604629.86,
+          "value": 5604629.859999999,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
@@ -4517,7 +4517,7 @@
         },
         {
           "name": "Transports: Entretien et réparations",
-          "value": 3697487.73,
+          "value": 3697487.7299999995,
           "fonction": "Équipements de voirie",
           "flow_category": "Services extérieurs",
           "fonction_confidence": "medium",
@@ -4544,7 +4544,7 @@
         },
         {
           "name": "Transports: Charges de sécurité sociale et prévoyance",
-          "value": 2520058.86,
+          "value": 2520058.8600000003,
           "fonction": "Halte fluv autre infra fl",
           "flow_category": "Personnel",
           "fonction_confidence": "high",
@@ -4641,7 +4641,7 @@
         },
         {
           "name": "Transports: Impôts, taxes, versements (autre orga.)",
-          "value": 1151234.06,
+          "value": 1151234.0599999998,
           "fonction": "Voirie communale",
           "flow_category": "Autre",
           "fonction_confidence": "high",
@@ -4650,7 +4650,7 @@
         },
         {
           "name": "Transports: Autres impôts, taxes (Admin Impôts)",
-          "value": 1072253.87,
+          "value": 1072253.8700000003,
           "fonction": "Halte fluv autre infra fl",
           "flow_category": "Autre",
           "fonction_confidence": "high",
@@ -4719,7 +4719,7 @@
         },
         {
           "name": "Transports: Contrats de prestations de services",
-          "value": 531496.7999999999,
+          "value": 531496.8,
           "fonction": "Halte fluv autre infra fl",
           "flow_category": "Services extérieurs",
           "fonction_confidence": "medium",
@@ -5270,7 +5270,7 @@
           },
           {
             "name": "Éducation: Rémunérations du personnel",
-            "value": 118002186.33,
+            "value": 118002186.33000001,
             "fonction": "Écoles maternelles",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -5289,7 +5289,7 @@
           },
           {
             "name": "Éducation: Charges de sécurité sociale et prévoyance",
-            "value": 53838626.080000006,
+            "value": 53838626.08000001,
             "fonction": "Écoles maternelles",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -5327,7 +5327,7 @@
           },
           {
             "name": "Éducation: Contributions obligatoires",
-            "value": 34115605.02,
+            "value": 34115605.019999996,
             "fonction": "Classes regroupées",
             "flow_category": "Contributions obligatoires",
             "fonction_confidence": "medium",
@@ -5356,7 +5356,7 @@
           },
           {
             "name": "Éducation: Charges de sécurité sociale et prévoyance",
-            "value": 21665070.499999996,
+            "value": 21665070.5,
             "fonction": "Services communs",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -5620,7 +5620,7 @@
     },
     "Culture & Sport": {
       "Fonctionnement": {
-        "total": 657974129.0,
+        "total": 657974129.0000001,
         "items": [
           {
             "name": "Culture & Sport: Charges d'intervention",
@@ -5634,7 +5634,7 @@
           },
           {
             "name": "Culture & Sport: Charges d'intervention",
-            "value": 57512526.93,
+            "value": 57512526.92999999,
             "fonction": "Musées",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
@@ -5687,7 +5687,7 @@
           },
           {
             "name": "Culture & Sport: Rémunérations du personnel",
-            "value": 28207067.06,
+            "value": 28207067.060000006,
             "fonction": "Piscines",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -5723,7 +5723,7 @@
           },
           {
             "name": "Culture & Sport: Charges d'intervention",
-            "value": 14068294.299999999,
+            "value": 14068294.3,
             "fonction": "Manifestations sportives",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
@@ -5767,7 +5767,7 @@
           },
           {
             "name": "Culture & Sport: Charges sécurité sociale et",
-            "value": 8671468.840000002,
+            "value": 8671468.84,
             "fonction": "Activité art action manif",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -5795,7 +5795,7 @@
           },
           {
             "name": "Culture & Sport: Charges de sécurité sociale et prévoyance",
-            "value": 7336945.000000001,
+            "value": 7336944.999999999,
             "fonction": "Salles de sport, gymnases",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -5852,7 +5852,7 @@
           },
           {
             "name": "Invest. Culture: Immobilisations corporelles",
-            "value": 7008171.79,
+            "value": 7008171.790000001,
             "fonction": "Patrimoine",
             "flow_category": "Immobilisations en cours",
             "fonction_confidence": "medium",
@@ -5877,7 +5877,7 @@
           },
           {
             "name": "Invest. Culture: Immobilisations corporelles en cours",
-            "value": 6525232.88,
+            "value": 6525232.880000001,
             "fonction": "Piscines",
             "flow_category": "Immobilisations en cours",
             "fonction_confidence": "medium",
@@ -5983,11 +5983,11 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 317988242.99999994,
+        "total": 317988243.0,
         "items": [
           {
             "name": "Aménagement: Rémunérations du personnel",
-            "value": 94484128.52,
+            "value": 94484128.52000001,
             "fonction": "Espaces verts urbains",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -5996,7 +5996,7 @@
           },
           {
             "name": "Aménagement: Rémunérations du personnel",
-            "value": 42306968.559999995,
+            "value": 42306968.56,
             "fonction": "Services communs",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6024,7 +6024,7 @@
           },
           {
             "name": "Aménagement: Entretien et réparations",
-            "value": 19299212.54,
+            "value": 19299212.540000003,
             "fonction": "Éclairage public",
             "flow_category": "Services extérieurs",
             "fonction_confidence": "high",
@@ -6033,7 +6033,7 @@
           },
           {
             "name": "Aménagement: Achats non stockés de matières et fourni",
-            "value": 19041556.240000002,
+            "value": 19041556.24,
             "fonction": "Éclairage public",
             "flow_category": "Achats",
             "fonction_confidence": "high",
@@ -6042,7 +6042,7 @@
           },
           {
             "name": "Aménagement: Charges de sécurité sociale et prévoyance",
-            "value": 14045633.14,
+            "value": 14045633.140000002,
             "fonction": "Services communs",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6052,7 +6052,7 @@
           },
           {
             "name": "Aménagement: Subventions d'intervention",
-            "value": 11119153.42,
+            "value": 11119153.420000002,
             "fonction": "Autres actions d’aménagem",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
@@ -6062,7 +6062,7 @@
           },
           {
             "name": "Aménagement: Contrats de prestations de services",
-            "value": 11062155.08,
+            "value": 11062155.080000002,
             "fonction": "Éclairage public",
             "flow_category": "Services extérieurs",
             "fonction_confidence": "high",
@@ -6142,7 +6142,7 @@
           },
           {
             "name": "Aménagement: Achats non stockés de matières et fourni",
-            "value": 2697861.7599999993,
+            "value": 2697861.76,
             "fonction": "Espaces verts urbains",
             "flow_category": "Achats",
             "fonction_confidence": "high",
@@ -6151,7 +6151,7 @@
           },
           {
             "name": "Aménagement: Contrats de prestations de services",
-            "value": 2434654.51,
+            "value": 2434654.5100000002,
             "fonction": "Services communs",
             "flow_category": "Services extérieurs",
             "fonction_confidence": "high",
@@ -6160,7 +6160,7 @@
           },
           {
             "name": "Aménagement: Autres charges de personnel",
-            "value": 1522081.2400000002,
+            "value": 1522081.24,
             "fonction": "Espaces verts urbains",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6170,7 +6170,7 @@
         ]
       },
       "Investissement": {
-        "total": 983879371.0000002,
+        "total": 983879371.0,
         "items": [
           {
             "name": "Invest. Aménagement: Subventions d'investissement",
@@ -6193,7 +6193,7 @@
           },
           {
             "name": "Invest. Aménagement: Immobilisations corporelles en cours",
-            "value": 107694601.64,
+            "value": 107694601.63999999,
             "fonction": "Opérations d’aménagement",
             "flow_category": "Immobilisations en cours",
             "fonction_confidence": "medium",
@@ -6247,7 +6247,7 @@
           },
           {
             "name": "Invest. Aménagement: Subventions d'investissement",
-            "value": 23397344.67,
+            "value": 23397344.669999998,
             "fonction": "Aide au secteur locatif",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "high",
@@ -6363,7 +6363,7 @@
         "items": [
           {
             "name": "Action Sociale: Subventions d'intervention",
-            "value": 480251746.0,
+            "value": 480251745.99999994,
             "fonction": "Autre intervention social",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "high",
@@ -6382,7 +6382,7 @@
           },
           {
             "name": "Action Sociale: Rémunérations du personnel",
-            "value": 261715673.46,
+            "value": 261715673.46000004,
             "fonction": "Crèches et garderies",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6391,7 +6391,7 @@
           },
           {
             "name": "Action Sociale: Frais de séjour, héberg., inhumation",
-            "value": 227144854.79000002,
+            "value": 227144854.79,
             "fonction": "Personnes handicapées",
             "flow_category": "Transferts sociaux",
             "fonction_confidence": "medium",
@@ -6400,7 +6400,7 @@
           },
           {
             "name": "Action Sociale: Charges de sécurité sociale et prévoyance",
-            "value": 96498244.21999998,
+            "value": 96498244.22,
             "fonction": "Crèches et garderies",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6420,7 +6420,7 @@
           },
           {
             "name": "Action Sociale: Subventions d'intervention",
-            "value": 74795188.19,
+            "value": 74795188.19000001,
             "fonction": "Crèches et garderies",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "high",
@@ -6458,7 +6458,7 @@
           },
           {
             "name": "Action Sociale: Contrats de prestations de services",
-            "value": 51422993.70000001,
+            "value": 51422993.7,
             "fonction": "Crèches et garderies",
             "flow_category": "Services extérieurs",
             "fonction_confidence": "high",
@@ -6477,7 +6477,7 @@
           },
           {
             "name": "Action Sociale: Rémunérations du personnel",
-            "value": 38147129.49000001,
+            "value": 38147129.49,
             "fonction": "Services communs",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6505,7 +6505,7 @@
           },
           {
             "name": "Action Sociale: Participations",
-            "value": 23794538.93,
+            "value": 23794538.930000003,
             "fonction": "Personnes en difficulté",
             "flow_category": "Contributions obligatoires",
             "fonction_confidence": "medium",
@@ -6544,7 +6544,7 @@
           },
           {
             "name": "Action Sociale: Participations",
-            "value": 18235753.03,
+            "value": 18235753.029999997,
             "fonction": "Personnes handicapées",
             "flow_category": "Contributions obligatoires",
             "fonction_confidence": "medium",
@@ -6617,7 +6617,7 @@
         "items": [
           {
             "name": "Administration: Rémunérations du personnel",
-            "value": 210107537.3,
+            "value": 210107537.30000004,
             "fonction": "Adm générale collectivité",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6654,7 +6654,7 @@
           },
           {
             "name": "Administration: Rémunérations du personnel",
-            "value": 47128329.65999999,
+            "value": 47128329.66,
             "fonction": "Personnel non ventilé",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6691,7 +6691,7 @@
           },
           {
             "name": "Administration: Rémunérations du personnel",
-            "value": 20421273.67,
+            "value": 20421273.669999998,
             "fonction": "Assemblée délibérante",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6719,7 +6719,7 @@
           },
           {
             "name": "Administration: Rémunérations du personnel",
-            "value": 15729493.569999998,
+            "value": 15729493.57,
             "fonction": "Cimetière pompe funèbre",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6755,7 +6755,7 @@
           },
           {
             "name": "Administration: Divers",
-            "value": 10952490.76,
+            "value": 10952490.759999998,
             "fonction": "Adm générale collectivité",
             "flow_category": "Autres services",
             "fonction_confidence": "high",
@@ -6782,7 +6782,7 @@
           },
           {
             "name": "Administration: Personnel intérimaire & vacations",
-            "value": 9405847.38,
+            "value": 9405847.379999999,
             "fonction": "Adm générale collectivité",
             "flow_category": "Autres services",
             "fonction_confidence": "high",
@@ -6804,7 +6804,7 @@
     },
     "Économie": {
       "Fonctionnement": {
-        "total": 44559066.99999999,
+        "total": 44559066.999999985,
         "items": [
           {
             "name": "Action Économique: Subventions d'intervention",
@@ -6818,7 +6818,7 @@
           },
           {
             "name": "Action Économique: Subventions d'intervention",
-            "value": 6164634.36,
+            "value": 6164634.359999999,
             "fonction": "Recherche et innovation",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
@@ -6838,7 +6838,7 @@
           },
           {
             "name": "Action Économique: Rémunérations du personnel",
-            "value": 2447067.11,
+            "value": 2447067.1100000003,
             "fonction": "Industrie,commerce artisa",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6847,7 +6847,7 @@
           },
           {
             "name": "Action Économique: Rémunérations du personnel",
-            "value": 2388199.8400000003,
+            "value": 2388199.84,
             "fonction": "Insertion éco sociale",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6885,7 +6885,7 @@
           },
           {
             "name": "Action Économique: Subventions d'intervention",
-            "value": 1776061.56,
+            "value": 1776061.5600000003,
             "fonction": "Struct d'anim et dev éco",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
@@ -6895,7 +6895,7 @@
           },
           {
             "name": "Action Économique: Rémunérations du personnel",
-            "value": 1615680.1199999999,
+            "value": 1615680.12,
             "fonction": "Services communs",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6932,7 +6932,7 @@
           },
           {
             "name": "Action Économique: Charges de sécurité sociale et prévoyance",
-            "value": 871232.3299999998,
+            "value": 871232.3300000001,
             "fonction": "Industrie,commerce artisa",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -6942,7 +6942,7 @@
           },
           {
             "name": "Action Économique: Charges de sécurité sociale et prévoyance",
-            "value": 850273.7500000001,
+            "value": 850273.75,
             "fonction": "Insertion éco sociale",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -7166,7 +7166,7 @@
         "items": [
           {
             "name": "Environnement: Rémunérations du personnel",
-            "value": 252012576.60999998,
+            "value": 252012576.61,
             "fonction": "Ser com collecte propreté",
             "flow_category": "Personnel",
             "fonction_confidence": "high",
@@ -7248,7 +7248,7 @@
           },
           {
             "name": "Environnement: Contrats de prestations de services",
-            "value": 9859587.36,
+            "value": 9859587.360000001,
             "fonction": "Tri, valo et trait déchet",
             "flow_category": "Services extérieurs",
             "fonction_confidence": "medium",
@@ -7283,7 +7283,7 @@
           },
           {
             "name": "Environnement: Rémunérations du personnel",
-            "value": 5098520.330000001,
+            "value": 5098520.329999999,
             "fonction": "Autres",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -7698,7 +7698,7 @@
           },
           {
             "name": "Transports: Rémunérations du personnel",
-            "value": 42532331.25000001,
+            "value": 42532331.25,
             "fonction": "Voirie communale",
             "flow_category": "Personnel",
             "fonction_confidence": "high",
@@ -7707,7 +7707,7 @@
           },
           {
             "name": "Transports: Contrats de prestations de services",
-            "value": 35037904.74999999,
+            "value": 35037904.75,
             "fonction": "Voirie communale",
             "flow_category": "Services extérieurs",
             "fonction_confidence": "medium",
@@ -7791,7 +7791,7 @@
           },
           {
             "name": "Transports: Rémunérations du personnel",
-            "value": 5604629.86,
+            "value": 5604629.859999999,
             "fonction": "Services communs",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
@@ -7827,7 +7827,7 @@
           },
           {
             "name": "Transports: Entretien et réparations",
-            "value": 3697487.73,
+            "value": 3697487.7299999995,
             "fonction": "Équipements de voirie",
             "flow_category": "Services extérieurs",
             "fonction_confidence": "medium",
@@ -7845,7 +7845,7 @@
           },
           {
             "name": "Transports: Charges de sécurité sociale et prévoyance",
-            "value": 2520058.86,
+            "value": 2520058.8600000003,
             "fonction": "Halte fluv autre infra fl",
             "flow_category": "Personnel",
             "fonction_confidence": "high",

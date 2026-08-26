@@ -1,6 +1,6 @@
 {
   "year": 2018,
-  "generated_at": "2026-08-26T00:31:23.417612",
+  "generated_at": "2026-08-26T20:49:37.755998",
   "total_montant": 1241346409.0,
   "nb_beneficiaires": 9863,
   "data": [
@@ -196,7 +196,7 @@
       "source_thematique": "direction",
       "montant_total": 12000000.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2018-dac",
+      "objet_principal": "Théâtre du Châtelet - subvention de fonctionnement 2018",
       "siret": "31669616000019"
     },
     {
@@ -526,7 +526,7 @@
       "source_thematique": "direction",
       "montant_total": 5453200.0,
       "nb_subventions": 1,
-      "objet_principal": "acompte 2018-dac",
+      "objet_principal": "Saison 2018 de l'Orchestre de Paris, concerts à la Philharmonie notamment",
       "siret": "77567064900067"
     },
     {
@@ -1531,7 +1531,7 @@
       "source_thematique": "direction",
       "montant_total": 1035695.0,
       "nb_subventions": 2,
-      "objet_principal": "FONCTIONNEMENT",
+      "objet_principal": "acompte 2018",
       "siret": "82349520500010"
     },
     {
@@ -2521,7 +2521,7 @@
       "source_thematique": "direction",
       "montant_total": 476000.0,
       "nb_subventions": 2,
-      "objet_principal": "acompte 2018",
+      "objet_principal": "Demande de subvention de fonctionnement pour le Mouffetard - Théâtre des arts de la marionnette",
       "siret": "34112346100046"
     },
     {
@@ -4036,7 +4036,7 @@
       "source_thematique": "direction",
       "montant_total": 200000.0,
       "nb_subventions": 1,
-      "objet_principal": "MUSEE EN HERBE 2018 fonctionnement",
+      "objet_principal": "acompte 2018 - DAC",
       "siret": "31142870000034"
     },
     {
@@ -4201,7 +4201,7 @@
       "source_thematique": "direction",
       "montant_total": 188000.0,
       "nb_subventions": 2,
-      "objet_principal": "acompte 2018 - DAC",
+      "objet_principal": "Demande de subvention de fonctionnement pour l'année 2017-2018",
       "siret": "49396355700027"
     },
     {
@@ -4936,7 +4936,7 @@
       "source_thematique": "direction",
       "montant_total": 145000.0,
       "nb_subventions": 1,
-      "objet_principal": "Art'R lieu de fabrique itinérant pour les Arts de la Rue à Paris et en Ile de France",
+      "objet_principal": "acompte 2018-dac",
       "siret": "48232562800022"
     },
     {
@@ -6946,7 +6946,7 @@
       "source_thematique": "default",
       "montant_total": 98200.0,
       "nb_subventions": 2,
-      "objet_principal": "Accès au droit et santé mentale (ADSM)",
+      "objet_principal": "permanences juridiques gratuites",
       "siret": "45101859200027"
     },
     {
@@ -9706,7 +9706,7 @@
       "source_thematique": "direction",
       "montant_total": 61000.0,
       "nb_subventions": 2,
-      "objet_principal": "INSERTION PROFESSIONNELLE ET EMPLOYABILITE",
+      "objet_principal": "FRANÇAIS SUR OBJECTIF SPÉCIFIQUE SUR LES MÉTIERS DU NETTOYAGE INDUSTRIEL ET DU SERVICE A LA PERSONNE",
       "siret": "43776464000011"
     },
     {
@@ -10426,7 +10426,7 @@
       "source_thematique": "direction",
       "montant_total": 55000.0,
       "nb_subventions": 2,
-      "objet_principal": "Cités Lab 2018",
+      "objet_principal": "soutien d'emménagement de KIWANDA l'espace de création de lien",
       "siret": "79326794900022"
     },
     {
@@ -21526,7 +21526,7 @@
       "source_thematique": "direction",
       "montant_total": 14000.0,
       "nb_subventions": 1,
-      "objet_principal": "PARIS ILLUMINE PARIS 2017-2018",
+      "objet_principal": "PARIS ILLUMINE PARIS 2018-2019",
       "siret": "75010539700020"
     },
     {
@@ -23506,7 +23506,7 @@
       "source_thematique": "llm",
       "montant_total": 11000.0,
       "nb_subventions": 1,
-      "objet_principal": "CPO PDV - COMPAGNIE VARSORIO, Paroles de femmes - CULTURE",
+      "objet_principal": "CPO PDV - COMPAGNIE VARSORIO,Culture et Citoyenneté - CULTUREL",
       "siret": "44116591700051"
     },
     {
@@ -25366,7 +25366,7 @@
       "source_thematique": "direction",
       "montant_total": 10000.0,
       "nb_subventions": 1,
-      "objet_principal": "PARIS ILLUMINE PARIS 2017-2018",
+      "objet_principal": "PARIS ILLUMINE PARIS 2018-2019",
       "siret": "75028270900013"
     },
     {
@@ -31156,7 +31156,7 @@
       "source_thematique": "llm",
       "montant_total": 6000.0,
       "nb_subventions": 1,
-      "objet_principal": "Colloque \"Vieillir sans tabou\"",
+      "objet_principal": "Ligne d'écoute et visites à domicile",
       "siret": "82461308700017"
     },
     {
@@ -32521,7 +32521,7 @@
       "source_thematique": "direction",
       "montant_total": 5000.0,
       "nb_subventions": 1,
-      "objet_principal": "LIEN SOCIALMEDIATION SOCIALE ET CULTURELLE EN DIRECTION DES FEMMES ISOLEES DU QUARTIER POLITIQUE D",
+      "objet_principal": "\"FEMMES SOUS UN AUTRE JOUR\"",
       "siret": "53044620200018"
     },
     {
@@ -36181,7 +36181,7 @@
       "source_thematique": "llm",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "Fonds du Maire du 20e arrondissement",
+      "objet_principal": "LIEN SOCIAL - Village Borrégo",
       "siret": "53280222000022"
     },
     {

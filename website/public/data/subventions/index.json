@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T00:31:05.259274",
+  "generated_at": "2026-08-26T20:49:19.674630",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "availableYears": [
     2024,

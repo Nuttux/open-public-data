@@ -10,8 +10,8 @@
   },
   "totals": {
     "recettes": 9635875153.94,
-    "depenses": 9806315541.3,
-    "solde": -170440387.3599987
+    "depenses": 9806315541.300001,
+    "solde": -170440387.3600006
   },
   "nodes": [
     {
@@ -112,12 +112,12 @@
     {
       "source": "Budget Paris",
       "target": "Action Sociale",
-      "value": 2318329124.13
+      "value": 2318329124.1299996
     },
     {
       "source": "Budget Paris",
       "target": "Aménagement & Logement",
-      "value": 1035412648.1200001
+      "value": 1035412648.12
     },
     {
       "source": "Budget Paris",
@@ -127,12 +127,12 @@
     {
       "source": "Budget Paris",
       "target": "Éducation",
-      "value": 869023250.55
+      "value": 869023250.5500001
     },
     {
       "source": "Budget Paris",
       "target": "Personnel & Admin",
-      "value": 2312575383.259999
+      "value": 2312575383.2599993
     },
     {
       "source": "Budget Paris",
@@ -142,12 +142,12 @@
     {
       "source": "Budget Paris",
       "target": "Économie",
-      "value": 87009709.67
+      "value": 87009709.67000002
     },
     {
       "source": "Budget Paris",
       "target": "Environnement",
-      "value": 707811091.8000002
+      "value": 707811091.8000004
     },
     {
       "source": "Budget Paris",
@@ -226,7 +226,7 @@
         },
         {
           "name": "Environnement: Autres (produits divers de gestion courante)",
-          "value": 35739385.059999995
+          "value": 35739385.06
         },
         {
           "name": "Services Généraux: Autres (produits divers de gestion courante)",
@@ -246,7 +246,7 @@
         },
         {
           "name": "Culture & Sport: Redevances et droits des services périscolaires et d’enseignement",
-          "value": 23374693.250000004
+          "value": 23374693.25
         },
         {
           "name": "Transports: Autres prestations de services",
@@ -4166,7 +4166,7 @@
   "bySection": {
     "Action Sociale": {
       "Fonctionnement": {
-        "total": 2235563141.23,
+        "total": 2235563141.2300005,
         "items": [
           {
             "name": "Action Sociale: CCAS",
@@ -4461,7 +4461,7 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 246334075.96000004,
+        "total": 246334075.96000007,
         "items": [
           {
             "name": "Aménagement: Rémunération du personnel titulaire",
@@ -4612,7 +4612,7 @@
         ]
       },
       "Investissement": {
-        "total": 789078572.1599995,
+        "total": 789078572.1599994,
         "items": [
           {
             "name": "Invest. Aménagement: Subventions aux personnes de droit privé - Bâtiments et installations",
@@ -5058,7 +5058,7 @@
     },
     "Éducation": {
       "Fonctionnement": {
-        "total": 728356799.3599999,
+        "total": 728356799.36,
         "items": [
           {
             "name": "Éducation: Rémunération du personnel titulaire",
@@ -5209,7 +5209,7 @@
         ]
       },
       "Investissement": {
-        "total": 140666451.19000006,
+        "total": 140666451.19000003,
         "items": [
           {
             "name": "Invest. Éducation: Constructions",
@@ -5356,7 +5356,7 @@
     },
     "Personnel & Admin": {
       "Fonctionnement": {
-        "total": 791613093.3999991,
+        "total": 791613093.3999994,
         "items": [
           {
             "name": "Administration: Dotation de gestion locale versée",
@@ -5778,7 +5778,7 @@
     },
     "Économie": {
       "Fonctionnement": {
-        "total": 46511362.230000004,
+        "total": 46511362.23000001,
         "items": [
           {
             "name": "Action Économique: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
@@ -6077,7 +6077,7 @@
     },
     "Environnement": {
       "Fonctionnement": {
-        "total": 660091017.7200003,
+        "total": 660091017.7200004,
         "items": [
           {
             "name": "Environnement: Rémunération du personnel titulaire",
@@ -6227,7 +6227,7 @@
         ]
       },
       "Investissement": {
-        "total": 47720074.07999998,
+        "total": 47720074.07999999,
         "items": [
           {
             "name": "Invest. Environnement: Constructions",

@@ -127,7 +127,7 @@
     {
       "source": "Budget Paris",
       "target": "Éducation",
-      "value": 863947113.9899997
+      "value": 863947113.9899995
     },
     {
       "source": "Budget Paris",
@@ -142,12 +142,12 @@
     {
       "source": "Budget Paris",
       "target": "Environnement",
-      "value": 727648951.9599999
+      "value": 727648951.96
     },
     {
       "source": "Budget Paris",
       "target": "Transports",
-      "value": 786342569.25
+      "value": 786342569.2500001
     },
     {
       "source": "Budget Paris",
@@ -230,7 +230,7 @@
         },
         {
           "name": "Action Sociale: Recouvrements sur bénéficiaire, tiers-payants et successions",
-          "value": 36265208.45999999
+          "value": 36265208.46
         },
         {
           "name": "Action Économique: Droits de stationnement et de location sur la voie publique",
@@ -298,7 +298,7 @@
         },
         {
           "name": "Culture & Sport: Sécurité sociale et organismes mutualistes",
-          "value": 7218382.88
+          "value": 7218382.880000001
         },
         {
           "name": "Culture & Sport: Redevances et droits des services à caractère culturel",
@@ -310,7 +310,7 @@
         },
         {
           "name": "Culture & Sport: Autres redevances et recettes diverses",
-          "value": 6225762.789999999
+          "value": 6225762.79
         },
         {
           "name": "RSA: Recouvrements des indus d’insertion et d’aide sociale - RSA- Allocations forfaitaires",
@@ -4935,7 +4935,7 @@
         ]
       },
       "Investissement": {
-        "total": 169784762.77999994,
+        "total": 169784762.77999997,
         "items": [
           {
             "name": "Invest. Culture: Subventions aux organismes publics - Organismes publics divers - Bâtiments et installations",
@@ -5084,7 +5084,7 @@
     },
     "Éducation": {
       "Fonctionnement": {
-        "total": 733800497.7799996,
+        "total": 733800497.7799995,
         "items": [
           {
             "name": "Éducation: Subventions de fonctionnement aux organismes publics - Caisses des écoles",
@@ -5237,7 +5237,7 @@
         ]
       },
       "Investissement": {
-        "total": 130146616.21,
+        "total": 130146616.21000001,
         "items": [
           {
             "name": "Invest. Éducation: Constructions",
@@ -5693,7 +5693,7 @@
         ]
       },
       "Investissement": {
-        "total": 38991919.129999995,
+        "total": 38991919.13,
         "items": [
           {
             "name": "Invest. Économie: Autres installations, matériel et outillage       techniques",
@@ -5840,7 +5840,7 @@
     },
     "Environnement": {
       "Fonctionnement": {
-        "total": 667744742.2799999,
+        "total": 667744742.28,
         "items": [
           {
             "name": "Environnement: Rémunération du personnel titulaire",
@@ -5990,7 +5990,7 @@
         ]
       },
       "Investissement": {
-        "total": 59904209.67999999,
+        "total": 59904209.68,
         "items": [
           {
             "name": "Invest. Environnement: Installations, matériel et outillage techniques",
@@ -6140,7 +6140,7 @@
     },
     "Transports": {
       "Fonctionnement": {
-        "total": 620239732.58,
+        "total": 620239732.5800002,
         "items": [
           {
             "name": "Transports: Autres contributions obligatoires",
@@ -6291,7 +6291,7 @@
         ]
       },
       "Investissement": {
-        "total": 166102836.67,
+        "total": 166102836.66999996,
         "items": [
           {
             "name": "Invest. Transports: Installations, matériel et outillage techniques",

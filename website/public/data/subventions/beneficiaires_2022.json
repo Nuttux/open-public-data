@@ -1,6 +1,6 @@
 {
   "year": 2022,
-  "generated_at": "2026-08-26T00:31:12.892005",
+  "generated_at": "2026-08-26T20:49:27.367561",
   "total_montant": 1167565895.0,
   "nb_beneficiaires": 5336,
   "data": [
@@ -26446,7 +26446,7 @@
       "source_thematique": "direction",
       "montant_total": 10000.0,
       "nb_subventions": 1,
-      "objet_principal": "Projections de cinéma auprès des réfugiés,déplacés et retournés en Irak, Afrique, Arménie et Syrie",
+      "objet_principal": "création salle cinéma à Raqqa",
       "siret": "82078859400019"
     },
     {
@@ -27376,7 +27376,7 @@
       "source_thematique": "llm",
       "montant_total": 10000.0,
       "nb_subventions": 1,
-      "objet_principal": "CPO SEII: Le cinéma frappe à ta porte",
+      "objet_principal": "CPO SEII: Invisibles aventuriers",
       "siret": "50977906200025"
     },
     {
@@ -27556,7 +27556,7 @@
       "source_thematique": "direction",
       "montant_total": 10000.0,
       "nb_subventions": 1,
-      "objet_principal": "Magiques marmites contre la précarité alimentaire des publics en hébergement d'urgence",
+      "objet_principal": "Magiques marmites contre la précarité alimentaire des publics en hébergement d'urgence-ivt",
       "siret": "79798613000020"
     },
     {
@@ -31876,7 +31876,7 @@
       "source_thematique": "direction",
       "montant_total": 8000.0,
       "nb_subventions": 1,
-      "objet_principal": "Dynamisons Nos Quartiers",
+      "objet_principal": "Projet QPV Mobilité pour Tous",
       "siret": "84392438200016"
     },
     {
@@ -33916,7 +33916,7 @@
       "source_thematique": "llm",
       "montant_total": 6500.0,
       "nb_subventions": 1,
-      "objet_principal": "\"Murs éphémères 13\"",
+      "objet_principal": "PAYSAGE DQuand les murs se transforment avec lacréativité de chacun",
       "siret": "52767534200010"
     },
     {
@@ -42586,7 +42586,7 @@
       "source_thematique": "direction",
       "montant_total": 4000.0,
       "nb_subventions": 1,
-      "objet_principal": "La lecture, un tabou ?",
+      "objet_principal": "L'Info c'est clair !",
       "siret": "49008480300025"
     },
     {

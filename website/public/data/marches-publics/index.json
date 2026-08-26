@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-23T19:40:07.589821",
+  "generated_at": "2026-08-26T20:49:54.215534",
   "source": "dbt marts (mart_marches_par_nature, mart_marches_fournisseurs)",
   "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels), pas des dépenses annuelles.",
   "availableYears": [
@@ -25,61 +25,63 @@
     },
     "2025": {
       "nb_marches": 1122,
-      "enveloppe_max_totale": 1608151115.94
+      "enveloppe_max_totale": 1608151115.9400003
     },
     "2024": {
-      "nb_marches": 1763,
-      "enveloppe_max_totale": 3219973753.23
+      "nb_marches": 1762,
+      "enveloppe_max_totale": 3219823753.229999
     },
     "2023": {
-      "nb_marches": 1338,
-      "enveloppe_max_totale": 2606892871.3300004
+      "nb_marches": 1336,
+      "enveloppe_max_totale": 2606711521.330001
     },
     "2022": {
-      "nb_marches": 2101,
-      "enveloppe_max_totale": 6829493371.289998
+      "nb_marches": 1286,
+      "enveloppe_max_totale": 3934593902.84
     },
     "2021": {
-      "nb_marches": 2391,
-      "enveloppe_max_totale": 8930973043.679995
+      "nb_marches": 1570,
+      "enveloppe_max_totale": 5483477436.490001
     },
     "2020": {
-      "nb_marches": 2146,
-      "enveloppe_max_totale": 5220171918.259993
+      "nb_marches": 1201,
+      "enveloppe_max_totale": 3292522877.9199996
     },
     "2019": {
-      "nb_marches": 2417,
-      "enveloppe_max_totale": 4746809477.210003
+      "nb_marches": 1342,
+      "enveloppe_max_totale": 2313239644.3
     },
     "2018": {
       "nb_marches": 1458,
-      "enveloppe_max_totale": 2836151932.31
+      "enveloppe_max_totale": 2836151932.3100004
     },
     "2017": {
       "nb_marches": 1698,
-      "enveloppe_max_totale": 3465550059.5100007
+      "enveloppe_max_totale": 3465550059.509998
     },
     "2016": {
       "nb_marches": 1601,
-      "enveloppe_max_totale": 1916840484.2999997
+      "enveloppe_max_totale": 1916840484.3
     },
     "2015": {
       "nb_marches": 1556,
-      "enveloppe_max_totale": 1538504362.6999998
+      "enveloppe_max_totale": 1538504362.7000003
     },
     "2014": {
       "nb_marches": 1483,
-      "enveloppe_max_totale": 1530498987.8500004
+      "enveloppe_max_totale": 1530498987.8500001
     },
     "2013": {
       "nb_marches": 1713,
-      "enveloppe_max_totale": 1901057959.87
+      "enveloppe_max_totale": 1901057959.8699994
     }
   },
   "filters": {
     "natures": [
       "FOURNITURE",
       "Fournitures",
+      "MARCHE",
+      "MARCHE DE PARTENARIAT",
       "Marché",
       "SERVICES",
       "Services",
@@ -108,8 +110,8 @@
       "AMOA BTP,  urbanisme et espace public",
       "Services annexes pour manifestations et évènements (hors rég",
       "Travaux d'aménagement d'espaces verts",
-      "Service de qualification et d'insertion professionnelles",
       "Services de conseils et représentations juridiques",
+      "Service de qualification et d'insertion professionnelles",
       "Impression offset",
       "travaux de génie civil et ouvrages d'art",
       "Organisation et promotion des manifestations sportives",

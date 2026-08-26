@@ -1,6 +1,6 @@
 {
   "year": 2021,
-  "generated_at": "2026-08-26T00:31:15.063142",
+  "generated_at": "2026-08-26T20:49:29.953976",
   "total_montant": 1262572237.71,
   "nb_beneficiaires": 3835,
   "data": [
@@ -3661,7 +3661,7 @@
       "source_thematique": "direction",
       "montant_total": 205000.0,
       "nb_subventions": 1,
-      "objet_principal": "Acompte 2021 DAC",
+      "objet_principal": "Demande de subvention de fonctionnement pour l'année 2021",
       "siret": "48957504300034"
     },
     {
@@ -3991,7 +3991,7 @@
       "source_thematique": "direction",
       "montant_total": 181000.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention de fonctionnement pour financement des opérations Ecole et Cinéma et Mon 1er Cinéma.",
+      "objet_principal": "acompte 2021 DAC",
       "siret": "48154244700018"
     },
     {
@@ -4651,7 +4651,7 @@
       "source_thematique": "direction",
       "montant_total": 150000.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention de fonctionnement 2021",
+      "objet_principal": "acompte 2021 DAC",
       "siret": "30666486300033"
     },
     {
@@ -6946,7 +6946,7 @@
       "source_thematique": "direction",
       "montant_total": 93000.0,
       "nb_subventions": 1,
-      "objet_principal": "Subvention de fonctionnement",
+      "objet_principal": "UN ETE PARTICULIER - ESPLANADE TROCADERO",
       "siret": "48534098800032"
     },
     {
@@ -7471,7 +7471,7 @@
       "source_thematique": "default",
       "montant_total": 83800.0,
       "nb_subventions": 1,
-      "objet_principal": "Fonctionnement du dispositif \"Accès au droit et santé mentale\" (ADSM)",
+      "objet_principal": "Actions des bénévoles professionnels du droit auprès des publics exclus : permanences juridiques",
       "siret": "45101859200027"
     },
     {
@@ -7636,7 +7636,7 @@
       "source_thematique": "direction",
       "montant_total": 81000.0,
       "nb_subventions": 1,
-      "objet_principal": "POLYNOTES, École de MusiquesSubvention de fonctionnement 2021",
+      "objet_principal": "acompte 2021 DAC",
       "siret": "39187280100041"
     },
     {
@@ -9301,7 +9301,7 @@
       "source_thematique": "direction",
       "montant_total": 61000.0,
       "nb_subventions": 1,
-      "objet_principal": "Aide au fonctionnement pour l'ensemble des activités de l'Atelier du Plateau - 2021",
+      "objet_principal": "acompte 2021 DAC",
       "siret": "32419221000056"
     },
     {
@@ -11266,7 +11266,7 @@
       "source_thematique": "llm",
       "montant_total": 48958.0,
       "nb_subventions": 1,
-      "objet_principal": "Soutien aux postes des animateurs-trices/accompagnateurs-trices des conseils citoyens parisiens 14e",
+      "objet_principal": "Soutien aux postes des animateurs-trices/accompagnateurs-trices des conseils citoyens parisiens 11e",
       "siret": "39430133700041"
     },
     {
@@ -11446,7 +11446,7 @@
       "source_thematique": "direction",
       "montant_total": 48000.0,
       "nb_subventions": 1,
-      "objet_principal": "sport pour tousaide aux sportifs pour Paris 2024",
+      "objet_principal": "Sport pour tous",
       "siret": "77566587000017"
     },
     {
@@ -20521,7 +20521,7 @@
       "source_thematique": "llm",
       "montant_total": 19500.0,
       "nb_subventions": 1,
-      "objet_principal": "Pied d'Immeuble Numérique Paris 18",
+      "objet_principal": "Les permanences: initiation au numérique",
       "siret": "81415159300021"
     },
     {
@@ -25936,7 +25936,7 @@
       "source_thematique": "direction",
       "montant_total": 11940.0,
       "nb_subventions": 1,
-      "objet_principal": "TAP Atelier Théâtre (le corps comme outil théâtral)",
+      "objet_principal": "Atelier Théâtre (le corps comme outil théâtral)",
       "siret": "79849279900027"
     },
     {
@@ -29926,7 +29926,7 @@
       "source_thematique": "llm",
       "montant_total": 8500.0,
       "nb_subventions": 1,
-      "objet_principal": "\"Murs éphémères : PAYSAGE\"",
+      "objet_principal": "PAYSAGE CQuand les murs se transforment avec la créativité de chacun",
       "siret": "52767534200010"
     },
     {
@@ -32701,7 +32701,7 @@
       "source_thematique": "llm",
       "montant_total": 6500.0,
       "nb_subventions": 1,
-      "objet_principal": "VVV Hip Hope 2021-11eme - Grand Belleville",
+      "objet_principal": "VVV Festival Hip Hope 2021 Finale (6ème édition)",
       "siret": "53166980200021"
     },
     {
@@ -36991,7 +36991,7 @@
       "source_thematique": "llm",
       "montant_total": 5000.0,
       "nb_subventions": 1,
-      "objet_principal": "Apprendre-comprendre (Au sein des résidences sociales) 20e",
+      "objet_principal": "Apprendre-comprendre (Au sein des résidences sociales : Bisson, Argonne) 19e",
       "siret": "44849369200033"
     },
     {
@@ -37096,7 +37096,7 @@
       "source_thematique": "default",
       "montant_total": 5000.0,
       "nb_subventions": 1,
-      "objet_principal": "Exploitation du baromètre des villes marchablesZoom sur Paris",
+      "objet_principal": "Agir pour des abords d'école sûrs et agréables",
       "siret": "38072726300036"
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-23T19:40:37.547447",
+  "generated_at": "2026-08-26T20:50:13.565414",
   "source": "dbt marts (mart_marches_fournisseurs)",
   "note": "Les montants sont des enveloppes pluriannuelles (plafonds contractuels).",
   "years": [
@@ -696,8 +696,8 @@
     },
     {
       "year": 2019,
-      "enveloppe_totale": 2302969683.3,
-      "nb_marches": 1338,
+      "enveloppe_totale": 2313239644.3,
+      "nb_marches": 1342,
       "par_nature": [
         {
           "label": "SERVICES",
@@ -713,6 +713,11 @@
           "label": "FOURNITURE",
           "montant": 444182231.3000001,
           "count": 199
+        },
+        {
+          "label": "MARCHE",
+          "montant": 10269961.0,
+          "count": 4
         }
       ],
       "par_categorie": [
@@ -778,8 +783,8 @@
         },
         {
           "label": "Autres",
-          "montant": 874718787.9800003,
-          "count": 924
+          "montant": 884988748.9800001,
+          "count": 928
         }
       ],
       "par_perimetre": [
@@ -794,6 +799,11 @@
           "count": 36
         },
         {
+          "label": "Non renseigné",
+          "montant": 10269961.0,
+          "count": 4
+        },
+        {
           "label": "M22 ASE",
           "montant": 6203023.96,
           "count": 3
@@ -802,8 +812,8 @@
     },
     {
       "year": 2020,
-      "enveloppe_totale": 3282280032.53,
-      "nb_marches": 1196,
+      "enveloppe_totale": 3292522877.92,
+      "nb_marches": 1201,
       "par_nature": [
         {
           "label": "SERVICES",
@@ -819,6 +829,11 @@
           "label": "FOURNITURE",
           "montant": 275607706.1000007,
           "count": 197
+        },
+        {
+          "label": "MARCHE",
+          "montant": 10242845.39,
+          "count": 5
         }
       ],
       "par_categorie": [
@@ -884,8 +899,8 @@
         },
         {
           "label": "Autres",
-          "montant": 679919258.1300006,
-          "count": 796
+          "montant": 690162103.5200007,
+          "count": 801
         }
       ],
       "par_perimetre": [
@@ -898,6 +913,11 @@
           "label": "M57 MGP",
           "montant": 43243737.32,
           "count": 25
+        },
+        {
+          "label": "Non renseigné",
+          "montant": 10242845.39,
+          "count": 5
         },
         {
           "label": "M49 Assainissement",
@@ -1029,8 +1049,8 @@
     },
     {
       "year": 2022,
-      "enveloppe_totale": 3824590460.84,
-      "nb_marches": 1281,
+      "enveloppe_totale": 3934593902.84,
+      "nb_marches": 1286,
       "par_nature": [
         {
           "label": "SERVICES",
@@ -1046,6 +1066,16 @@
           "label": "FOURNITURE",
           "montant": 318015768.28999996,
           "count": 158
+        },
+        {
+          "label": "MARCHE DE PARTENARIAT",
+          "montant": 99003442.0,
+          "count": 3
+        },
+        {
+          "label": "MARCHE",
+          "montant": 11000000.0,
+          "count": 2
         }
       ],
       "par_categorie": [
@@ -1085,6 +1115,11 @@
           "count": 9
         },
         {
+          "label": "Non renseigné",
+          "montant": 110003442.0,
+          "count": 5
+        },
+        {
           "label": "Collecte ordures ménagères et autres déchets",
           "montant": 96941019.06,
           "count": 6
@@ -1105,14 +1140,9 @@
           "count": 5
         },
         {
-          "label": "Travaux de génie climatique",
-          "montant": 76794052.82,
-          "count": 50
-        },
-        {
           "label": "Autres",
-          "montant": 1325717396.26,
-          "count": 876
+          "montant": 1402511449.08,
+          "count": 926
         }
       ],
       "par_perimetre": [
@@ -1120,6 +1150,11 @@
           "label": "M57 Ville",
           "montant": 3760015762.419994,
           "count": 1201
+        },
+        {
+          "label": "Non renseigné",
+          "montant": 110003442.0,
+          "count": 5
         },
         {
           "label": "M57 MGP",

@@ -1,6 +1,6 @@
 {
   "year": 2024,
-  "generated_at": "2026-07-21T12:02:02.586689+00:00",
+  "generated_at": "2026-08-26T18:50:21.770049+00:00",
   "totals": {
     "capital_restant": 12280381570,
     "montant_initial": 15446260487,
@@ -2104,20 +2104,20 @@
         {
           "objet": "Financement ZAC Paris Rive Gauche - 75013 - AC",
           "beneficiaire": "SEMAPA (SPLA)",
-          "preteur": "CE",
-          "annee_mobilisation": 2024,
-          "capital_restant": 16000000,
-          "taux_type": "FIXE",
-          "taux_actuariel": 3.2079
-        },
-        {
-          "objet": "Financement ZAC Paris Rive Gauche - 75013 - AC",
-          "beneficiaire": "SEMAPA (SPLA)",
           "preteur": "CA IdF",
           "annee_mobilisation": 2024,
           "capital_restant": 16000000,
           "taux_type": "FIXE",
           "taux_actuariel": 3.2187
+        },
+        {
+          "objet": "Financement ZAC Paris Rive Gauche - 75013 - AC",
+          "beneficiaire": "SEMAPA (SPLA)",
+          "preteur": "CE",
+          "annee_mobilisation": 2024,
+          "capital_restant": 16000000,
+          "taux_type": "FIXE",
+          "taux_actuariel": 3.2079
         },
         {
           "objet": "Arc Innovation - INRIA - Rue Barrault - 75013",
@@ -5243,18 +5243,6 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC - EMTN - 75000 - GA",
-          "preteur": "HSBC",
-          "annee_mobilisation": 2016,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 3.15,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 1.6004,
-          "programme": null
-        },
-        {
           "objet": "Financement ZAC - 75000 - AC",
           "preteur": "CA IdF",
           "annee_mobilisation": 2020,
@@ -5264,18 +5252,6 @@
           "taux_type": "FIXE",
           "taux_index": "FIXE",
           "taux_actuariel": 0.4911,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC - 75000 - AC",
-          "preteur": "CA IdF",
-          "annee_mobilisation": 2015,
-          "montant_initial": 48000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 3.49,
-          "taux_type": "V",
-          "taux_index": "EURIBOR03M",
-          "taux_actuariel": 1.9263,
           "programme": null
         },
         {
@@ -5291,6 +5267,30 @@
           "programme": null
         },
         {
+          "objet": "Financement ZAC - 75000 - AC",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2015,
+          "montant_initial": 48000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 3.49,
+          "taux_type": "V",
+          "taux_index": "EURIBOR03M",
+          "taux_actuariel": 1.9263,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - EMTN - 75000 - GA",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2016,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 3.15,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 1.6004,
+          "programme": null
+        },
+        {
           "objet": "Financement ZAC - 75000 - GA",
           "preteur": "BAYER LB",
           "annee_mobilisation": 2018,
@@ -5303,27 +5303,15 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC - 75000 - GA",
-          "preteur": "HSBC",
-          "annee_mobilisation": 2021,
+          "objet": "Financement ZAC - 75000 - AC",
+          "preteur": "CE",
+          "annee_mobilisation": 2020,
           "montant_initial": 16000000,
           "capital_restant": 16000000,
-          "duree_residuelle": 3.28,
+          "duree_residuelle": 0.34,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.1448,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC Paris Rive Gauche - 75013 - AC",
-          "preteur": "CA IdF",
-          "annee_mobilisation": 2024,
-          "montant_initial": 16000000,
-          "capital_restant": 16000000,
-          "duree_residuelle": 6.83,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 3.2187,
+          "taux_actuariel": 0.225,
           "programme": null
         },
         {
@@ -5339,15 +5327,15 @@
           "programme": null
         },
         {
-          "objet": "Financement ZAC - 75000 - AC",
-          "preteur": "CE",
-          "annee_mobilisation": 2020,
+          "objet": "Financement ZAC Paris Rive Gauche - 75013 - AC",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2024,
           "montant_initial": 16000000,
           "capital_restant": 16000000,
-          "duree_residuelle": 0.34,
+          "duree_residuelle": 6.83,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.225,
+          "taux_actuariel": 3.2187,
           "programme": null
         },
         {
@@ -5364,6 +5352,18 @@
         },
         {
           "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 3.28,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.1448,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
           "preteur": "LBP",
           "annee_mobilisation": 2022,
           "montant_initial": 8000000,
@@ -5372,18 +5372,6 @@
           "taux_type": "FIXE",
           "taux_index": "FIXE",
           "taux_actuariel": 1.7344,
-          "programme": null
-        },
-        {
-          "objet": "Financement ZAC Python-Duvernois - 75020 - GA",
-          "preteur": "GFI EU",
-          "annee_mobilisation": 2024,
-          "montant_initial": 8000000,
-          "capital_restant": 8000000,
-          "duree_residuelle": 3.77,
-          "taux_type": "V",
-          "taux_index": "EURIBOR03M",
-          "taux_actuariel": 3.6496,
           "programme": null
         },
         {
@@ -5396,6 +5384,18 @@
           "taux_type": "V",
           "taux_index": "EURIBOR03M",
           "taux_actuariel": 3.7725,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC Python-Duvernois - 75020 - GA",
+          "preteur": "GFI EU",
+          "annee_mobilisation": 2024,
+          "montant_initial": 8000000,
+          "capital_restant": 8000000,
+          "duree_residuelle": 3.77,
+          "taux_type": "V",
+          "taux_index": "EURIBOR03M",
+          "taux_actuariel": 3.6496,
           "programme": null
         },
         {
@@ -6810,10 +6810,10 @@
           "annee_mobilisation": 2024,
           "montant_initial": 2495907,
           "capital_restant": 2495907,
-          "duree_residuelle": 41.58,
+          "duree_residuelle": 81.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 4.1101,
+          "taux_actuariel": 3.62,
           "programme": {
             "adresse": "18, AVENUE DE LA PORTE DE LA VILLETTE",
             "nb_logements": 112,
@@ -6827,10 +6827,10 @@
           "annee_mobilisation": 2024,
           "montant_initial": 2495907,
           "capital_restant": 2495907,
-          "duree_residuelle": 81.58,
+          "duree_residuelle": 41.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 3.62,
+          "taux_actuariel": 4.1101,
           "programme": {
             "adresse": "18, AVENUE DE LA PORTE DE LA VILLETTE",
             "nb_logements": 112,
@@ -8040,7 +8040,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8103,7 +8103,7 @@
             "adresse": "56, RUE RENE BOULANGER",
             "nb_logements": 12,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8132,7 +8132,7 @@
             "adresse": "54, RUE D'ABOUKIR",
             "nb_logements": 43,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8161,7 +8161,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8190,7 +8190,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8207,7 +8207,7 @@
             "adresse": "62-64, RUE PLANCHAT",
             "nb_logements": 36,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8236,7 +8236,7 @@
             "adresse": "116 RUE DE JAVEL",
             "nb_logements": 55,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8265,7 +8265,7 @@
             "adresse": "21 RUE BREGUET",
             "nb_logements": 47,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8282,7 +8282,7 @@
             "adresse": "23, RUE D'ALLERAY",
             "nb_logements": 1,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8311,7 +8311,7 @@
             "adresse": "10 BIS RUE MOUSSY",
             "nb_logements": 56,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {
@@ -8352,7 +8352,7 @@
             "adresse": "12-14 PASSAGE RAGUINOT",
             "nb_logements": 32,
             "n_programmes": 1,
-            "match_basis": "adresse_arr"
+            "match_basis": "adresse_exacte"
           }
         },
         {

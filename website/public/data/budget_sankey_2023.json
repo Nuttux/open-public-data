@@ -122,7 +122,7 @@
     {
       "source": "Budget Paris",
       "target": "Culture & Sport",
-      "value": 876841521.5500009
+      "value": 876841521.5500008
     },
     {
       "source": "Budget Paris",
@@ -226,7 +226,7 @@
         },
         {
           "name": "Environnement: Redevances versées par les fermiers et concessionnaires",
-          "value": 49447620.760000005
+          "value": 49447620.76
         },
         {
           "name": "Culture & Sport: Revenus des immeubles",
@@ -266,7 +266,7 @@
         },
         {
           "name": "Aménagement: Autres produits divers de gestion courante-Autres",
-          "value": 19523347.759999998
+          "value": 19523347.76
         },
         {
           "name": "Environnement: Abonnement ou redevance pour enlèvement des déchets industriels et commerciaux",
@@ -298,7 +298,7 @@
         },
         {
           "name": "Éducation: Redevances et droits des services périscolaires et d’enseignement",
-          "value": 11351567.919999998
+          "value": 11351567.92
         },
         {
           "name": "Culture & Sport: Redevances et droits des services à caractère sportif",
@@ -318,7 +318,7 @@
         },
         {
           "name": "Action Économique: Revenus des immeubles",
-          "value": 8598674.53
+          "value": 8598674.530000001
         },
         {
           "name": "Environnement: Remboursements de frais - par les budgets annexes et les régies",
@@ -330,7 +330,7 @@
         },
         {
           "name": "Culture & Sport: Autres redevances et recettes diverses",
-          "value": 6176263.069999999
+          "value": 6176263.07
         },
         {
           "name": "Transports: Redevances pour appareils distributeurs d'essence",
@@ -4335,7 +4335,7 @@
         ]
       },
       "Investissement": {
-        "total": 56198695.99000002,
+        "total": 56198695.99000001,
         "items": [
           {
             "name": "Invest. Social: Constructions",
@@ -4485,7 +4485,7 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 280636390.55000013,
+        "total": 280636390.5500002,
         "items": [
           {
             "name": "Aménagement: Rémunération du personnel titulaire",
@@ -4937,7 +4937,7 @@
         ]
       },
       "Investissement": {
-        "total": 257843149.00000006,
+        "total": 257843149.0,
         "items": [
           {
             "name": "Invest. Culture: Constructions",
@@ -5241,7 +5241,7 @@
         ]
       },
       "Investissement": {
-        "total": 98267572.47000003,
+        "total": 98267572.47000001,
         "items": [
           {
             "name": "Invest. Éducation: Constructions",
@@ -5391,7 +5391,7 @@
     },
     "Personnel & Admin": {
       "Fonctionnement": {
-        "total": 848177480.0800012,
+        "total": 848177480.0800014,
         "items": [
           {
             "name": "Administration: Dotation de gestion locale versée",
@@ -5695,7 +5695,7 @@
         ]
       },
       "Investissement": {
-        "total": 63204468.45000001,
+        "total": 63204468.45,
         "items": [
           {
             "name": "Invest. Environnement: Constructions",
@@ -6601,7 +6601,7 @@
         ]
       },
       "Investissement": {
-        "total": 29496966.939999998,
+        "total": 29496966.94,
         "items": [
           {
             "name": "Invest. Sécurité: Subventions aux organismes publics - Etat - Bâtiments et installations",

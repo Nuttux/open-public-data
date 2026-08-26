@@ -122,7 +122,7 @@
     {
       "source": "Budget Paris",
       "target": "Culture & Sport",
-      "value": 797220732.3000001
+      "value": 797220732.3
     },
     {
       "source": "Budget Paris",
@@ -142,12 +142,12 @@
     {
       "source": "Budget Paris",
       "target": "Environnement",
-      "value": 981691291.9699996
+      "value": 981691291.9699994
     },
     {
       "source": "Budget Paris",
       "target": "Transports",
-      "value": 908735884.6199999
+      "value": 908735884.6199998
     },
     {
       "source": "Budget Paris",
@@ -286,7 +286,7 @@
         },
         {
           "name": "Action Sociale: Autres (Participations État)",
-          "value": 11825689.260000002
+          "value": 11825689.26
         },
         {
           "name": "Culture & Sport: Redevances et droits des services à caractère culturel",
@@ -326,7 +326,7 @@
         },
         {
           "name": "Éducation: Remboursements de frais - par des tiers",
-          "value": 6306247.9
+          "value": 6306247.899999999
         },
         {
           "name": "Transports: Autres droits de stationnement et de location",
@@ -367,7 +367,7 @@
         },
         {
           "name": "APA: Recouvrements des indus d’insertion et d’aide sociale - APA",
-          "value": 3914545.09
+          "value": 3914545.0900000003
         }
       ],
       "Investissement": [
@@ -394,7 +394,7 @@
         },
         {
           "name": "Invest. Culture: Etat et établissement nationaux",
-          "value": 4245802.359999999
+          "value": 4245802.36
         },
         {
           "name": "Invest. Aménagement: Subventions (actifs non amortissables) - Autres",
@@ -4651,7 +4651,7 @@
         ]
       },
       "Investissement": {
-        "total": 842746447.5499997,
+        "total": 842746447.5499998,
         "items": [
           {
             "name": "Invest. Aménagement: Subventions aux personnes de droit privé - Bâtiments et installations",
@@ -4798,7 +4798,7 @@
     },
     "Culture & Sport": {
       "Fonctionnement": {
-        "total": 575124580.6800001,
+        "total": 575124580.68,
         "items": [
           {
             "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Établissements et services rattachés - à caractère administratif",
@@ -4951,7 +4951,7 @@
         ]
       },
       "Investissement": {
-        "total": 222096151.61999997,
+        "total": 222096151.62,
         "items": [
           {
             "name": "Invest. Culture: Constructions",
@@ -5103,7 +5103,7 @@
     },
     "Éducation": {
       "Fonctionnement": {
-        "total": 736344890.8500004,
+        "total": 736344890.8500003,
         "items": [
           {
             "name": "Éducation: Subventions de fonctionnement aux organismes publics - Caisses des écoles",
@@ -5257,7 +5257,7 @@
         ]
       },
       "Investissement": {
-        "total": 113231093.32,
+        "total": 113231093.32000001,
         "items": [
           {
             "name": "Invest. Éducation: Constructions",
@@ -5864,7 +5864,7 @@
     },
     "Environnement": {
       "Fonctionnement": {
-        "total": 934330180.0099995,
+        "total": 934330180.0099994,
         "items": [
           {
             "name": "Environnement: Autres charges diverses de gestion courante - AutrES",
@@ -6014,7 +6014,7 @@
         ]
       },
       "Investissement": {
-        "total": 47361111.96,
+        "total": 47361111.95999999,
         "items": [
           {
             "name": "Invest. Environnement: Constructions",
@@ -6314,7 +6314,7 @@
         ]
       },
       "Investissement": {
-        "total": 258187226.91000003,
+        "total": 258187226.91,
         "items": [
           {
             "name": "Invest. Transports: Installations, matériel et outillage techniques",

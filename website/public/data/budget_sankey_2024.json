@@ -9,9 +9,9 @@
     "arrondissements": false
   },
   "totals": {
-    "recettes": 11526790953.86,
+    "recettes": 11526790953.859999,
     "depenses": 11494727617.75,
-    "solde": 32063336.11000061
+    "solde": 32063336.109998703
   },
   "nodes": [
     {
@@ -87,7 +87,7 @@
     {
       "source": "Services Publics",
       "target": "Budget Paris",
-      "value": 2840894891.01
+      "value": 2840894891.0099998
     },
     {
       "source": "Impôts & Taxes",
@@ -112,12 +112,12 @@
     {
       "source": "Budget Paris",
       "target": "Action Sociale",
-      "value": 2652407127.3700004
+      "value": 2652407127.37
     },
     {
       "source": "Budget Paris",
       "target": "Aménagement & Logement",
-      "value": 1269009290.97
+      "value": 1269009290.9700003
     },
     {
       "source": "Budget Paris",
@@ -142,12 +142,12 @@
     {
       "source": "Budget Paris",
       "target": "Environnement",
-      "value": 916133859.6199996
+      "value": 916133859.6199995
     },
     {
       "source": "Budget Paris",
       "target": "Transports",
-      "value": 961914460.6900002
+      "value": 961914460.69
     },
     {
       "source": "Budget Paris",
@@ -318,7 +318,7 @@
         },
         {
           "name": "Culture & Sport: Sécurité sociale et organismes mutualistes",
-          "value": 9919191.579999998
+          "value": 9919191.58
         },
         {
           "name": "Services Généraux: Concession dans les cimetières (produit net)",
@@ -539,7 +539,7 @@
         },
         {
           "name": "Invest. Culture: Etat et établissement nationaux",
-          "value": 3978822.51
+          "value": 3978822.5100000002
         },
         {
           "name": "Invest. Social: Subventions (actifs non amortissables) - Autres",
@@ -547,7 +547,7 @@
         },
         {
           "name": "Invest. Aménagement: Etat et établissement nationaux",
-          "value": 3342289.9899999998
+          "value": 3342289.99
         },
         {
           "name": "Invest. Aménagement: Subventions (actifs non amortissables) - Autres",
@@ -4484,7 +4484,7 @@
     },
     "Aménagement & Logement": {
       "Fonctionnement": {
-        "total": 301384691.71,
+        "total": 301384691.71000004,
         "items": [
           {
             "name": "Aménagement: Rémunération du personnel titulaire",
@@ -4636,7 +4636,7 @@
         ]
       },
       "Investissement": {
-        "total": 967624599.2599999,
+        "total": 967624599.26,
         "items": [
           {
             "name": "Invest. Aménagement: Autres constructions",
@@ -4938,7 +4938,7 @@
         ]
       },
       "Investissement": {
-        "total": 202684114.17,
+        "total": 202684114.16999996,
         "items": [
           {
             "name": "Invest. Culture: Restauration des collections et œuvres d'art",
@@ -5241,7 +5241,7 @@
         ]
       },
       "Investissement": {
-        "total": 100430796.97000001,
+        "total": 100430796.97,
         "items": [
           {
             "name": "Invest. Éducation: Constructions",
@@ -5844,7 +5844,7 @@
     },
     "Environnement": {
       "Fonctionnement": {
-        "total": 803544065.5299996,
+        "total": 803544065.5299995,
         "items": [
           {
             "name": "Environnement: Rémunération du personnel titulaire",
@@ -6142,7 +6142,7 @@
     },
     "Transports": {
       "Fonctionnement": {
-        "total": 726805650.7200001,
+        "total": 726805650.72,
         "items": [
           {
             "name": "Transports: Autres contributions obligatoires",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T00:31:44.389766",
+  "generated_at": "2026-08-26T20:50:26.022568",
   "source": "mart_vote_vs_execute",
   "description": "Comparaison Budget Voté (BP) vs Budget Exécuté (CA) de la Ville de Paris. Le Budget Voté provient des PDFs Éditique BG (présentation croisée, opérations ventilées uniquement). Le Budget Exécuté provient du Compte Administratif (Open Data Paris).",
   "coverage": {
@@ -41,7 +41,7 @@
       "execute_fonct": 7952277591.669999,
       "taux_fonct": 98.6,
       "vote_inves": 2218489805.0,
-      "execute_inves": 1854037043.6300004,
+      "execute_inves": 1854037043.63,
       "taux_inves": 83.6
     },
     {
