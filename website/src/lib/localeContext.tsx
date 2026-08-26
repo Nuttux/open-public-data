@@ -14,6 +14,7 @@ import {
 import { usePathname } from 'next/navigation';
 
 import { getCity } from '@/lib/cities';
+import frDictionary from '@/i18n/fr';
 
 // City label rewriter — replaces hardcoded "Paris" forms with the current
 // city's label when navigating under /fr/city/[city]/*. Lets us reuse the Paris
@@ -97,6 +98,21 @@ type TrackedPromise<T> = Promise<T> & {
 };
 const dictPromises: Partial<Record<Locale, Promise<Dict>>> = {};
 
+/**
+ * French is the default locale of every FR page and the fallback dictionary
+ * of every other locale, so it is bundled statically and exposed as an
+ * already-fulfilled tracked promise: `use()` on it returns synchronously and
+ * the very first client render never suspends. (EN/PT still load lazily.)
+ */
+function fulfilledPromise<T>(value: T): TrackedPromise<T> {
+  const p = Promise.resolve(value) as TrackedPromise<T>;
+  p.status = 'fulfilled';
+  p.value = value;
+  return p;
+}
+dictCache.fr = frDictionary as Dict;
+dictPromises.fr = fulfilledPromise(frDictionary as Dict);
+
 function loadDictionary(locale: Locale): Promise<Dict> {
   const pending = dictPromises[locale];
   if (pending) return pending;
@@ -129,10 +145,17 @@ function loadDictionary(locale: Locale): Promise<Dict> {
  * load only fr; EN needs fr too for the en→fr→key fallback chain.
  */
 function useDictionaries(locale: Locale): { dict: Dict; frDict: Dict } {
-  // `use()` may be called conditionally — that is its documented difference
-  // from regular hooks — and short-circuits entirely once cached.
-  const dict = dictCache[locale] ?? use(loadDictionary(locale));
-  const frDict = locale === 'fr' ? dict : (dictCache.fr ?? use(loadDictionary('fr')));
+  // Measured 2026-08-26 (CI e2e + a clean local production build): when the
+  // first client render suspended on the fr dictionary chunk, the replay of
+  // this provider threw React #467 ("Update hook called on initial render")
+  // from the useEffect below — on Vercel the chunk usually arrived before
+  // `use()` ran, which is why production never showed it. Two guards: fr is
+  // bundled statically as an already-fulfilled promise (no suspension on the
+  // first render of any FR page), and both `use()` calls run on every render
+  // so the replay sees the same sequence. `use()` on a fulfilled tracked
+  // promise returns synchronously.
+  const dict = use(loadDictionary(locale));
+  const frDict = use(loadDictionary('fr'));
   return { dict, frDict };
 }
 

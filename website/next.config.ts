@@ -126,6 +126,18 @@ const nextConfig: NextConfig = {
    * now ride along everywhere; the SF city map (the 126 MB problem) stays out.
    */
   outputFileTracingExcludes: {
+    /**
+     * The SF block share card reads its block data over HTTP from its own
+     * origin (renderSfBlockOg → getJson) and only opens public/img/themes on
+     * disk — yet the module graph (contracts loader, theme-image's dynamic
+     * public/ read) dragged 301 MB into this one function: img/us 55 MB,
+     * img/lieux 26 MB, communes-all 24 MB, the SF contract fiches, Recife…
+     * Vercel's ceiling is 250 MB uncompressed, and this is the route that
+     * failed the 26 Aug deploy. Nothing below is read by this route.
+     */
+    '/api/og/sf-block/**': ['./public/data/**', './public/img/us/**',
+                            './public/img/lieux/**', './public/img/fr/**',
+                            './public/img/br/**'],
     '/fr/**': ['./public/data/us/**', './public/data/br/**'],
     '/us/**': ['./public/data/br/**', './public/data/marseille/**',
                './public/data/subventions/**', './public/data/marches-publics/**',
