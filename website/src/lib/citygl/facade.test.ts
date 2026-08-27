@@ -8,6 +8,8 @@ import {
   ROLE_PARTY,
   faGlassy,
   faVocab,
+  ST_SATURATED,
+  storeysRead,
 } from "@/lib/city/facades";
 import {
   FACADE_BAND_M,
@@ -520,5 +522,73 @@ describe("wallJitter — a bounded, deterministic multiplier", () => {
       expect(Number.isFinite(wallJitter(gid))).toBe(true);
       expect(Math.abs(wallJitter(gid) - 1)).toBeLessThanOrEqual(FACADE_TINT_V);
     }
+  });
+});
+
+describe("storeysRead — the roll's four-bit storey column saturates", () => {
+  /* `roof-data.js` packs `st` as min(15, round(number_of_stories)) in a
+     nibble, so 15 is "fifteen or more" and 255 footprints carry it. Read as
+     an exact count it stretched the facade tile over the real wall — 6.4 m
+     per drawn storey median, 17.3 m on a 260 m tower. */
+  it("passes every exact published count straight through", () => {
+    for (let st = 0; st < ST_SATURATED; st++) {
+      expect(storeysRead(st, 200, 3.4)).toBe(st);
+    }
+  });
+
+  it("leaves a genuine fifteen-storey building at fifteen", () => {
+    /* about 48 m: round(48 / 3.4) is 14, under the saturation value */
+    expect(storeysRead(ST_SATURATED, 48, 3.4)).toBe(ST_SATURATED);
+  });
+
+  it("reads the measured height where the count has saturated", () => {
+    expect(storeysRead(ST_SATURATED, 148, 3.4)).toBe(44);
+    expect(storeysRead(ST_SATURATED, 260, 3.4)).toBe(76);
+  });
+
+  it("never returns fewer than the roll's own floor", () => {
+    /* the roll still says "at least fifteen"; a short measured height must
+       not be allowed to contradict a published count downward */
+    expect(storeysRead(ST_SATURATED, 10, 3.4)).toBe(ST_SATURATED);
+  });
+
+  it("refuses to divide by a height or a storey it does not have", () => {
+    expect(storeysRead(ST_SATURATED, 0, 3.4)).toBe(ST_SATURATED);
+    expect(storeysRead(ST_SATURATED, 148, 0)).toBe(ST_SATURATED);
+  });
+});
+
+describe("the published UNCLASSED class takes the UNCLASSED row", () => {
+  /* `FA_TYPES` carries "UNCLASSED" at index 9 — what build_facade.py writes
+     for a parcel with no building class, 8,356 of 166,166. It is INSIDE
+     FA_TYPES.length, so the out-of-range tests never caught it and every one
+     of those footprints was given a classed sash or punched window grid. */
+  const U = FA_TYPES.indexOf("UNCLASSED");
+
+  const key = (over: Partial<FacadeKey> = {}): FacadeKey => ({
+    type: U, era: 0, storeys: 3, shop: false, role: ROLE_FRONT, glassy: false, ...over,
+  });
+
+  it("gives it the plain tile in every era, not sash or punched", () => {
+    for (let era = 0; era <= 4; era++) {
+      expect(facadeTile(key({ era }))).toBe(TILE_PLAIN);
+    }
+  });
+
+  it("still gives a CLASSED building of the same era its classed tile", () => {
+    const flats = FA_TYPES.indexOf("FLATS");
+    expect(facadeTile(key({ type: flats, era: 0 }))).toBe(TILE_SASH);
+    expect(facadeTile(key({ type: flats, era: 3 }))).toBe(TILE_PUNCHED);
+  });
+
+  it("keeps the rules that outrank a class — a party wall and no storeys", () => {
+    expect(facadeTile(key({ role: ROLE_PARTY }))).toBe(TILE_BLANK);
+    expect(facadeTile(key({ storeys: 0 }))).toBe(TILE_BLANK);
+  });
+
+  it("matches what the published page's own vocabulary reaches", () => {
+    /* `faVocab` looks its row up BY NAME, so index 9 already lands on the
+       UNCLASSED row there. This is the test that the two agree. */
+    expect(faVocab(U, 0, false).mod).toBe(faVocab(-1, -1, false).mod);
   });
 });

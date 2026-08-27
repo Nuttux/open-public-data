@@ -197,7 +197,43 @@ export interface FacadeKey {
 /** `faVocab`'s own refusal, restated so the branches below can share it: no
  *  type, or no year, is the UNCLASSED row. */
 function unclassed(type: number, era: number): boolean {
-  return era < 0 || type < 0 || type >= FA_TYPES.length;
+  return (
+    era < 0 ||
+    type < 0 ||
+    type >= FA_TYPES.length ||
+    /* ── AND THE PUBLISHED UNCLASSED CLASS IS UNCLASSED ────────────────
+       This clause was missing and the omission was invisible, because the
+       three tests above are all about an index the record could not produce.
+       `FA_TYPES` carries **"UNCLASSED" as a real entry at index 9** — it is
+       what `build_facade.py` writes for a footprint whose parcel carries no
+       building class, 8,356 of the 166,166 drawn, 5.03 % — and index 9 is
+       inside `FA_TYPES.length`, so none of the three caught it.
+
+       The header of this file states the intended rule in its own words:
+       *"6 PLAIN — no `ty`, or no year (`FLAG_NOYEAR`) — the UNCLASSED row"*,
+       and `planOf(TILE_PLAIN)` maps straight back to `ty("UNCLASSED")`. So
+       the intent was never in doubt; the test simply did not implement it,
+       and every footprint the roll declines to class was given a CLASSED
+       facade — `era <= 1 ? TILE_SASH : TILE_PUNCHED`, a full sash or punched
+       window grid.
+
+       It is also a divergence from the published page rather than a shared
+       choice, which is what settles it. `facades.ts` `faVocab` reaches the
+       UNCLASSED row anyway, because it looks the row up BY NAME
+       (`FA_VOCAB[FA_TYPES[type]]`) and index 9's name is "UNCLASSED". Only
+       this file switched on the name for INDUSTRIAL and GARAGE and then fell
+       through to the classed branches. Adding the clause moves the two
+       renderers together.
+
+       What it fixes on screen: the Palace of Fine Arts colonnade. Its two
+       curved wings are published footprints 159039 and 159067 — 1906,
+       UNCLASSED, 59x94 m and 80x76 m on 40-vertex rings — and they are not
+       the hero's own footprint, so the fabric draws them. With a sash grid on
+       them a peristyle reads as an office block standing through the
+       landmark. It is not only the Palace: 8,356 footprints the record
+       declines to name were being told what they look like. */
+    FA_TYPES[type] === "UNCLASSED"
+  );
 }
 
 /**
