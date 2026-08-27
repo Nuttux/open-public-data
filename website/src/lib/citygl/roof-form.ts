@@ -714,7 +714,11 @@ export interface CapOpts {
    */
   form?: number;
   /** the cap's own side colour — the wall table's entry. Defaults to the roof */
+  /** the shaft's colour at its HEAD, where it is not the roof's */
   side?: RGB;
+  /** the shaft's colour at its FOOT. Defaults to `side`, which is the flat
+   *  shaft this file drew before the grade existed. */
+  sideFoot?: RGB;
   /** the top plate's tray weight — `trayW` on the PLATE's own drawn width */
   tray?: number;
   /** world-metre floors, from the caller's `FSTEP_LIFT_PX` / `FSTEP_W_PX` */
@@ -818,14 +822,34 @@ export function capForm(
     capCos[k] = Math.cos(th);
     capSin[k] = Math.sin(th);
   }
+  /* ── THE SHAFT IS A WALL AND IT IS GRADED LIKE ONE ────────────────────
+     A cap took ONE flat colour up its whole shaft, and on the tall ones —
+     the drums, the campaniles, the 97 m widest — that is a featureless slab
+     of a single value standing over a building whose own walls are graded.
+     `facades.ts` §A FACE HAS MATERIAL INSIDE IT states the rule this borrows:
+     *"the top of it sees the whole sky dome and the foot of it sees the
+     street... the grade from top to bottom is the only thing on the surface
+     that says it is standing up"*, and it is an HONEST GLOBAL TREATMENT — the
+     same grade, in the same direction, on every wall in the city.
+
+     A shaft is a wall, so it takes that same grade rather than a second
+     convention: `sideFoot` at the base, `side` at the head, interpolated on
+     the profile's own `u`. The caller passes the two ends the wall under it
+     was given, so a shaft and the wall it rises out of cannot come out at
+     different values — which is what they were doing. */
   const side = opts.side ?? roof;
+  const foot = opts.sideFoot ?? side;
   for (let r = 0; r < NR; r++) {
     const sc = rad * capS[r];
     const hh = plan.baseM + lift * capU[r];
+    const t = capU[r];
+    const cr = foot[0] + (side[0] - foot[0]) * t;
+    const cg = foot[1] + (side[1] - foot[1]) * t;
+    const cb = foot[2] + (side[2] - foot[2]) * t;
     for (let k = 0; k < N; k++) {
       capIdx[r * N + k] = sink.vertex(
         plan.cx + capCos[k] * sc, plan.cy + capSin[k] * sc,
-        elevM, hh, side[0], side[1], side[2],
+        elevM, hh, cr, cg, cb,
       );
     }
   }

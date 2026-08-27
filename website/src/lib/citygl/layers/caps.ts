@@ -129,6 +129,27 @@ import type { PlaneCamera } from "../camera";
 import { bldgMaterials, roofShadeTable, type MaterialConfig } from "../materials";
 import type { CityLayer } from "../engine";
 import { upFaceTransfer } from "../up-face";
+import { WA } from "@/lib/city/terrain";
+
+/* ── THE SHAFT TAKES THE WALL'S OWN GRADE, AND ITS OWN LIGHT ────────────
+   A cap's shaft was given `wallRGB[mat.wall[i]]` RAW: neither the top/bottom
+   grade every wall in the city carries (`WA.wtop` / `WA.wbot`) nor the
+   compensation `layers/buildings.ts` applies for what a real directional
+   light does to a vertical face (`WALL_LIGHT_COMP`). So a drum was not only
+   flat where the wall under it was graded — it was a DIFFERENT VALUE from
+   that wall, which is most of why it read as a separate object dropped on
+   the roof rather than as the building continuing upward.
+
+   These are the fabric's own three numbers, imported rather than restated so
+   the two cannot drift. `layers/buildings.ts` owns the reasoning for
+   `WALL_LIGHT_COMP`; this file owns only the decision to use it here too. */
+export const CAP_WTOP = WA.wtop * 1.5;
+export const CAP_WBOT = WA.wbot * 1.5;
+const WALL_FALLBACK: [number, number, number] = [0.78, 0.72, 0.62];
+
+function sideAt(c: readonly number[], k: number): [number, number, number] {
+  return [c[0] * k, c[1] * k, c[2] * k];
+}
 
 export interface CapsLayerOptions {
   /** how tall the built height is drawn — a cap is BUILT height, not ground */
@@ -180,6 +201,7 @@ interface Standing {
   profile: { readonly u: ArrayLike<number>; readonly s: ArrayLike<number> } | null;
   roof: [number, number, number];
   side: [number, number, number];
+  sideFoot: [number, number, number];
   /** the year the host starts existing; -1 where the roll does not date it */
   year: number;
   /** the camera scale `drawStep`'s own two pixel floors ask for — see the
@@ -309,7 +331,8 @@ export function capsLayer(
            Canvas gives the wall and not the cap, and inventing one here would
            be a difference between a shaft and the wall it rises out of that
            no column asks for. */
-        side: wallRGB[mat.wall[i]] ?? [0.78, 0.72, 0.62],
+        side: sideAt(wallRGB[mat.wall[i]] ?? WALL_FALLBACK, CAP_WTOP),
+        sideFoot: sideAt(wallRGB[mat.wall[i]] ?? WALL_FALLBACK, CAP_WBOT),
         year: (tb.u[i] & FLAG_NOYEAR) !== 0 ? -1 : o.materials.year0 + tb.yr[i],
         /* `drawStep`'s own two floors, inverted for the camera scale. A cap
            with no lift at all would ask for an infinite scale; `capForm`
@@ -421,6 +444,7 @@ export function capsLayer(
       st.roof,
       {
         side: st.side,
+        sideFoot: st.sideFoot,
         /* THE FULL SHAPE, and the ramp is deliberately not ported. `drawStep`
            opens the profile from the prism over `LR_FORM_PX`..`LR_FORM_FULL`
            of DRAWN size so a dome does not change shape on a threshold; a

@@ -15,7 +15,7 @@ import { roofPalette, wallPalette } from "@/components/us/city/palette";
 import { capForm, shadeRGB, type FormSink } from "../roof-form";
 import { roofShadeTable } from "../materials";
 import { decodeBldg } from "../bldg";
-import { capsLayer } from "./caps";
+import { CAP_WBOT, CAP_WTOP, capsLayer } from "./caps";
 
 /**
  * WHAT THIS TEST IS FOR.
@@ -386,13 +386,49 @@ d("capsLayer, against the published chunks", () => {
       }
     }
 
+    /* ── AND A SHAFT IS A GRADED WALL, SO ITS COLOURS ARE A SEGMENT ────
+       The shaft used to take a wall entry RAW, so every cap colour was an
+       exact table key and this test matched exact keys. It no longer is: a
+       shaft is graded from `CAP_WBOT` at its foot to `CAP_WTOP` at its head,
+       the same grade every wall in the city carries and at the same light
+       compensation the fabric applies — which is the whole point, because a
+       raw entry made the shaft a DIFFERENT VALUE from the wall under it.
+
+       So the rule generalises rather than loosens. A side vertex must still
+       be a published wall entry and nothing else; what it may now be is that
+       entry times ONE factor, the SAME on all three channels, inside the
+       declared grade. A channel swap breaks the equal-ratio test, a wrong
+       entry has no factor that fits, and a missing sRGB conversion lands far
+       outside the range — every failure this test was written to catch is
+       still a hard failure. */
+    const wallLin = wallPalette().map(lin);
+    const gradedWall = (r: number, g: number, b: number): boolean => {
+      for (const e of wallLin) {
+        const m = Math.max(e[0], e[1], e[2]);
+        if (!(m > 0)) continue;
+        const k = (m === e[0] ? r : m === e[1] ? g : b) / m;
+        if (!(k >= CAP_WBOT - 1e-6 && k <= CAP_WTOP + 1e-6)) continue;
+        if (
+          Math.abs(e[0] * k - r) < 1e-5 &&
+          Math.abs(e[1] * k - g) < 1e-5 &&
+          Math.abs(e[2] * k - b) < 1e-5
+        ) {
+          return true;
+        }
+      }
+      return false;
+    };
+
     let sawWall = 0;
     let sawDeck = 0;
     let stray = "";
     for (let v = 0; v < col.length; v += 3) {
       const k = key(col[v], col[v + 1], col[v + 2]);
-      if (!allowed.has(k)) { stray = k; break; }
-      if (wallKeys.has(k)) sawWall++;
+      if (!allowed.has(k) && !gradedWall(col[v], col[v + 1], col[v + 2])) {
+        stray = k;
+        break;
+      }
+      if (wallKeys.has(k) || gradedWall(col[v], col[v + 1], col[v + 2])) sawWall++;
       if (deckKeys.has(k)) sawDeck++;
     }
     expect(stray, "a vertex colour neither table can produce").toBe("");
