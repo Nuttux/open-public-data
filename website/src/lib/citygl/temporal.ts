@@ -217,7 +217,28 @@ export function cityTemporal(
       .mul(step(off.x, 1))
       .mul(step(0, off.y))
       .mul(step(off.y, 1));
-    const past = colorSpaceToWorking(texture(history, off), SRGBColorSpace);
+    /* ── AND THE SPACE DEPENDS ON THE BACKEND, WHICH COST A DARK CITY ────
+       WebGL 2 draws into an 8-bit buffer that is already encoded for the
+       glass, so a copy of it has to be brought back to linear before it can
+       be mixed with linear light. That is this path, it is measured, and it
+       is why the accumulation only runs there.
+
+       ── AND ON WEBGPU THE SPACE IS NOT THE PROBLEM, WHICH TOOK THREE GOES ──
+       That backend draws into `rgba16float`, and the accumulation comes back
+       wrong there: over six real drags the frame settles at 81.8 of 255 where
+       it belongs at 155. The obvious story was the colour space, and it was
+       told twice — once as a veil over the city, once as an overcast — before
+       it was tested properly. It is WRONG. Forcing the sRGB conversion and
+       forcing the raw sample give the SAME 81.7, so the conversion is not the
+       variable at all; something about copying a float buffer means the
+       history is not the frame. `hdr` is kept because the copy target does
+       need the format, but the reading of it is unsolved.
+
+       The lesson is the test, not the theory: a feedback error converges to a
+       fixed point, so it reads as fine in a two-second capture. It only shows
+       in a SOAK — ten drags with the exposure sampled throughout. */
+    const raw = texture(history, off);
+    const past = hdr ? raw : colorSpaceToWorking(raw, SRGBColorSpace);
     /* `keep` is zero on the first frame after any reset, so the first frame
        after a zoom is exactly the frame the renderer drew */
     return vec4(mix(colour.rgb, past.rgb, keep.mul(inside)), colour.a);

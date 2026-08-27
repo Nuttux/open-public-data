@@ -165,47 +165,38 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       await data.loadBase();
       if (disposed) return;
 
-      /* ── WEBGPU BY DEFAULT NOW, AND `?gl=1` GOES BACK ──────────────────
-         This shipped on WebGL 2 for a long time, with a comment saying the
-         WebGPU backend drew the city and the canvas never reached the screen.
-         That stopped being true and the real blocker turned out to be one
+      /* ── WEBGL 2 BY DEFAULT, WEBGPU BEHIND `?gpu=1` — AND THE REASON IS
+         THE ACCUMULATION ─────────────────────────────────────────────────
+         WebGPU works now. The thing that had it pinned off for months was one
          vertex attribute: the ink outlines carried a THREE-byte colour, and
          WebGPU requires a vertex buffer's `arrayStride` to be a multiple of
-         four —
+         four, so `CreateRenderPipeline` failed and an invalid pipeline takes
+         the whole command buffer with it — the backend drew bare terrain with
+         every building, street and tree missing. `layers/buildings.ts` §FOUR
+         BYTES A VERTEX pads it, and the two backends now agree to within half
+         a level of 255 on every channel at three cameras.
 
-           Vertex buffer arrayStride (3) is not a multiple of 4 …
-           CreateRenderPipeline("renderPipeline_LineBasicMaterial_382")
+         It is still not the default, and the reason is `temporal.ts`. That
+         pass is what takes the last of the shimmer out — 0.41 % of a drag
+         step not lining up against 0.00 % — and it works by copying the
+         drawing buffer and mixing it into the next frame. On WebGPU that
+         buffer is `rgba16float` and the mix comes back WRONG, in a way that
+         is stable rather than obvious: MEASURED over ten real drags, the
+         frame settles at 81.5 of 255 where it should sit at 155. Daniel saw
+         it as an overcast over the whole city, twice.
 
-         — and an invalid pipeline takes the whole command buffer with it, so
-         the ENTIRE render pass was dropped. The backend came back as bare
-         terrain, coastline and labels with every building, street and tree
-         missing, off one byte per vertex. `layers/buildings.ts` §FOUR BYTES A
-         VERTEX pads it.
+         Both readings of that buffer have been tried and both are wrong —
+         converted as encoded it darkens, sampled raw it blows out — so the
+         format is doing something this file does not yet understand, and
+         guessing again is how the veil shipped the first time.
 
-         ── WHAT WAS CHECKED BEFORE THE SWITCH ──────────────────────────────
-         Measured, same cameras, through the browser's own screenshot because
-         `toDataURL` reads linear light on that backend and lies:
-
-           the frame     hill 176.1/171.4/159.4 against 176.6/171.9/159.9,
-                         and the same agreement at two other cameras
-           Save image    149.4/143.0/128.4 against 150.3/143.9/129.2
-           the shimmer   3.64 % of a drag step not lining up against 3.94 %
-
-         The accumulation that fixes the shimmer needed one thing to run
-         there: three overrides a `FramebufferTexture`'s format with the
-         canvas's preferred one, so the copy was refused until
-         `temporal.ts` set `internalFormat` — the only field that outranks it.
-
-         ── AND WHAT IT BUYS ────────────────────────────────────────────────
-         `rgba16float`. Eight bits is enough to hold this city's palette and
-         not enough to do anything with it: a real bloom, a wider light range
-         and a tone map are all things that need range above white, which the
-         other backend does not have. That work is what this switch is for.
-
-         A browser without WebGPU falls back to WebGL 2 on its own, so this is
-         not a support decision. `?gl=1` pins the old backend for an A/B. */
+         So the backend that ships is the one where the city does not shimmer
+         AND is the right colour. `?gpu=1` opts into WebGPU for anyone working
+         on it; the accumulation is the thing to fix there, and the check is a
+         SOAK — ten drags with the exposure sampled throughout, because a
+         feedback error compounds and a two-second capture cannot see it. */
       const q = typeof location !== "undefined" ? location.search : "";
-      const forceWebGL = /(?:\?|&)gl=1/.test(q);
+      const forceWebGL = !/(?:\?|&)gpu=1/.test(q);
       const quality = detectQuality(q);
       engine = new CityEngine({ canvas, descriptor, forceWebGL, quality });
       /* the backend's device request is asynchronous — nothing may be added

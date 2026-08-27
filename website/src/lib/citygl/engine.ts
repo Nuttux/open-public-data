@@ -123,18 +123,18 @@ export class CityEngine {
   private post: PostProcessing | null = null;
   /** see `temporal.ts` — the frame keeps the frame before it */
   private temporal: Temporal | null = null;
-  /* ── ON, AND THE COLOUR IS WHY IT TOOK TWO GOES ─────────────────────────
-     `temporal.ts` is the last of the four things that made this city shimmer,
-     and the only one that a per-layer fix could never reach: a re-render of a
-     city this dense does not reproduce bit-for-bit at every edge, even from a
-     camera that has moved by an exact whole number of device pixels. Against
-     the published renderer's 0.00 %, this one sat at ~0.5 % of pixels failing
-     to line up on every frame of a drag. The accumulation takes that to 0.05 %.
+  /* ── ON, BECAUSE IT IS WHAT STOPS THE CITY SHIMMERING ─────────────────
+     0.41 % of a drag step not lining up without it, 0.00 % with — against
+     the published page's own 0.00 %. It is off on WebGPU, where its copy of
+     the drawing buffer comes back in a space this file cannot yet read: over
+     ten real drags the frame settles at 81.5 of 255 instead of 155, which is
+     the overcast. `CityGLMap.tsx` keeps that backend behind `?gpu=1` for the
+     same reason.
 
-     It shipped once with the blend in the wrong colour space and put a pale
-     veil over the city, which is why the conversion is now explicit and why
-     the check that guards it is the settled frame's own exposure: 140.4 with
-     the accumulation off, 140.4 with it on. */
+     The check before this is ever called fixed is not the shimmer number,
+     which is known — it is a SOAK: ten drags with the exposure sampled
+     throughout. A feedback error compounds toward a fixed point, so a
+     two-second capture reads it as fine. Twice now it has. */
   private temporalWanted = true;
   /** the raster camera the last frame was drawn from, for the reprojection */
   private lastRaster: { cx: number; cy: number; scale: number } | null = null;
@@ -311,6 +311,8 @@ export class CityEngine {
          `temporal.ts` §ASKING FOR THE TYPE DOES NOTHING HERE has the cause:
          the format is overridden for a `FramebufferTexture` and only
          `internalFormat` outranks it. */
+      /* not on WebGPU — see §ON, BECAUSE IT IS WHAT STOPS THE CITY SHIMMERING */
+      /* not on WebGPU — see §ON, BECAUSE IT IS WHAT STOPS THE CITY SHIMMERING */
       const canAccumulate = true;
       if (this.temporalWanted && canAccumulate) {
         const t = cityTemporal(composed, this.backend === "webgpu");
