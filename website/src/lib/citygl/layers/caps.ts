@@ -453,7 +453,35 @@ export function capsLayer(
            for the plate's tray weight, which `drawStep` ramps on `trayW` of
            the plate's own drawn width. */
         form: 1,
-        tray: 1,
+        /* ── NO PARAPET ON A SHAPE THE RECORD DOES NOT MEASURE ───────────
+           `capForm` built the plate as a TRAY — coping at the measured top,
+           deck inset behind it and dropped `DE.parapet`. That is the right
+           treatment for a ROOF, and it is what the fabric's own roofs get.
+
+           A cap is not a roof. `form-data.js` says so itself, in its own
+           NOT_MEASURED block: the location is not known ("the zonal
+           statistics carry no location") and neither is the outline ("it is
+           drawn as a regular octagon of the derived area"). What IS measured
+           is that a mass of some area rises to some height inside this
+           footprint. The octagon is a stand-in for an unknown solid, and a
+           parapet is a piece of DETAIL ASSERTED ON TOP OF A STAND-IN — it
+           says the top of this thing is a flat roof with a wall around it,
+           which the record does not say and which is wrong for the 28 domes,
+           12 spires, 10 campaniles and 15 crowns among them.
+
+           It also read badly, which is what sent me looking. On the median
+           cap — 13 m across, and 60 % are under 15 m — a 0.85 m drop at this
+           camera shows the far parapet's inner face as a bright crescent
+           while the near one is correctly culled, and the deck sits too deep
+           to read. The result is a cylinder that looks cut open. Daniel
+           reported them as "a chimney kind of thing", which is exactly what
+           that shape is.
+
+           The flat plate claims only what the record supports — the solid
+           ends here, at the measured height — and `capForm` puts it in the
+           building's OWN roof colour (`shadeRGB(roof, 1)` at `tray: 0`), so
+           the top of a cap matches the roof it stands on. */
+        tray: 0,
         minLiftM: o.minLiftM ?? 0,
         minWidthM: o.minWidthM ?? 0,
       },

@@ -375,14 +375,27 @@ d("capsLayer, against the published chunks", () => {
       allowed.add(k);
       wallKeys.add(k);
     }
+    /* ── THE PLATE IS THE RAW ROOF ENTRY NOW, NOT THE DECK VALUE ───────
+       A cap took a TRAY — coping, inset deck at `DE.deckv`, inner face at
+       `DE.innerv` — and this set was built to prove the deck existed. The
+       tray is gone: a parapet is detail asserted on a shape the record does
+       not measure, and `capForm` at `tray: 0` lays one flat plate at
+       `shadeRGB(roof, 1)`, the building's own roof entry.
+
+       The assertion below is unchanged in PURPOSE — it still proves a cap is
+       not all shaft and not all plate — so it now looks for the colour the
+       plate actually wears. The tray's two values stay in `allowed` because
+       `capForm` still builds them for any caller that asks for a tray, and a
+       test that stopped accepting them would fail the builder rather than
+       this layer. */
     const deckKeys = new Set<string>();
     for (const hex of roofShadeTable(roofPalette(buildings.palette))) {
       const rgb = lin(hex);
-      allowed.add(key(...rgb));
+      const raw = key(...rgb);
+      allowed.add(raw);
+      deckKeys.add(raw);
       for (const v of [DE.innerv, DE.deckv]) {
-        const k = key(...shadeRGB(rgb, v));
-        allowed.add(k);
-        if (v === DE.deckv) deckKeys.add(k);
+        allowed.add(key(...shadeRGB(rgb, v)));
       }
     }
 
