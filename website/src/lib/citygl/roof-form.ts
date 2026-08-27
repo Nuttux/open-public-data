@@ -124,20 +124,44 @@ export const HIP_MAX_VERTS = 12;
 export const TRAY_MIN_W = 0.002;
 
 /**
- * THE PARAPET'S OUTER FACE IS NOT BUILT HERE, AND THE CALLER HAS IT ALREADY.
+ * THE PARAPET'S OUTER FACE — THE FASCIA — AND IT IS BUILT HERE NOW.
  *
- * `drawTray` paints a fascia band at `DE.outerv` under the coping, because in
- * 2D a wall stops at the coping line and that band exists nowhere else. In
- * three dimensions that band IS the top 0.85 m of the wall, which
- * `layers/buildings.ts` already builds; a second quad in the same plane is
- * z-fighting, not a fascia.
+ * `drawTray` paints a band at `DE.outerv` under the coping, and `DE.outerv`'s
+ * own note is the measurement behind it: *"at 0.90 the roof edge resolves into
+ * three legible steps — coping, fascia, wall — and a building stops ending in
+ * one hard line."* It is the same 0.85 m of solid the parapet's inner face is,
+ * seen from the other side.
  *
- * So the value is re-exported rather than the geometry: a caller that wants
- * the three legible steps the Canvas gets — coping, fascia, wall — gives its
- * wall's TOP RING this value of the roof colour instead of `WA.wtop` of the
- * wall colour. That is a change to the wall, and the wall is not this file's.
+ * This file used to decline to build it, on the argument that the band IS the
+ * top 0.85 m of the wall and a second quad in the same plane is z-fighting
+ * rather than a fascia. The argument is right and the conclusion was wrong:
+ * the answer is not to leave the band out, it is to put it OUTSIDE the wall.
+ * `FASCIA_PROUD_M` is a hair of mitered outward offset — 1 cm, which is 0.03
+ * of a pixel at the closest camera this project has a stop for and therefore
+ * cannot be seen — and at that offset the two surfaces are not coplanar, the
+ * depth buffer separates them cleanly, and the caller's wall needs no change
+ * at all. A caller that lowered its wall instead would owe the tray a promise
+ * it cannot keep: every refusal below would leave a 0.85 m hole.
+ *
+ * The value is still exported, because a caller that would rather grade its
+ * own wall's top ring into the roof can have it without the geometry.
  */
 export const TRAY_FASCIA_V = DE.outerv;
+
+/** the parapet's own declared height, metres — what the fascia band spans */
+export const TRAY_FASCIA_M = DE.parapet;
+
+/**
+ * How far outside the wall the fascia stands, world metres.
+ *
+ * MEASURED against this project's own four stops, whose scales it publishes:
+ * 10.34 m per pixel at the city stop, 3.10 at the district, 1.03 at the block
+ * and 0.3103 at the street. At 0.01 m the band is 0.032 of a pixel proud at
+ * the closest of them — a thirtieth of a pixel, which no rasteriser resolves —
+ * and 0.01 m is four orders of magnitude above the depth buffer's own
+ * resolution over this scene's 400 km linear span.
+ */
+export const FASCIA_PROUD_M = 0.01;
 
 // ── the value factors are written for sRGB bytes ────────────────────────────
 
@@ -191,6 +215,9 @@ const rB = new Int32Array(FORM_MAX_VERTS);
 const rC = new Int32Array(FORM_MAX_VERTS);
 const rD = new Int32Array(FORM_MAX_VERTS);
 const rE = new Int32Array(FORM_MAX_VERTS);
+/** the fascia's head and foot — see `TRAY_FASCIA_V` */
+const rF = new Int32Array(FORM_MAX_VERTS);
+const rG = new Int32Array(FORM_MAX_VERTS);
 /** triples of RING indices, wound CCW in the plan */
 const sTri: number[] = [];
 const sTri2: number[] = [];
@@ -379,6 +406,14 @@ export interface TrayOpts {
    * distinction and the reason nothing here has a `Math.max` minimum.
    */
   w?: number;
+  /**
+   * Build the parapet's OUTER face — the fascia — as well, standing
+   * `FASCIA_PROUD_M` outside the plan so it does not fight the wall behind
+   * it. Off by default: it is 2 triangles an edge on every flat roof in the
+   * city, and a caller that will never see a building from the side should
+   * not pay for it. See `TRAY_FASCIA_V`.
+   */
+  fascia?: boolean;
 }
 
 /**
@@ -388,8 +423,9 @@ export interface TrayOpts {
  * Three surfaces, all of them the caller's own roof colour at a declared
  * value: the coping annulus at the published height (RAW — this 0.4 m band is
  * the only place the palette entry survives undarkened), the parapet's inner
- * face all the way round at `DE.innerv`, and the deck at `DE.deckv`. The
- * parapet's outer face is the wall — see `TRAY_FASCIA_V`.
+ * face all the way round at `DE.innerv`, and the deck at `DE.deckv`. With
+ * `opts.fascia` a fourth joins them — the parapet's OUTER face at
+ * `DE.outerv`, standing a hair proud of the wall. See `TRAY_FASCIA_V`.
  *
  * THE THREE COVER THE WHOLE PLAN, so a caller that gets `true` back drops its
  * own flat roof fan for that footprint: leaving it in puts a second surface in
@@ -457,6 +493,28 @@ export function trayForm(
     quad(sink, rC[k], rD[k], rD[k1], rC[k1], false);
   }
   fillTop(sink, rE, sTri, ccw);
+
+  /* ── AND THE FASCIA, OUTSIDE THE WALL RATHER THAN IN ITS PLANE ─────────
+     Two more rings on the plan pushed `FASCIA_PROUD_M` OUTWARD along the same
+     miter the deck was pushed inward along — the head at the published top,
+     the foot a parapet down — both at `DE.outerv` of the roof, so the band is
+     one flat value and does not gradient into the wall under it. Built the
+     whole way round for the same reason the inner face is: which edges a
+     reader sees is the depth buffer's answer at this bearing and not ours. */
+  if (opts.fascia && drop > 0) {
+    const out = FASCIA_PROUD_M;
+    for (let k = 0; k < n; k++) {
+      sPX[k] = ring.x[ring.off + k] - sMX[k] * out;
+      sPY[k] = ring.y[ring.off + k] - sMY[k] * out;
+    }
+    const fasciaC = shadeRGB(roof, DE.outerv);
+    ringVerts(sink, rF, sPX, sPY, 0, n, elevM, hM, fasciaC);
+    ringVerts(sink, rG, sPX, sPY, 0, n, elevM, hM - drop, fasciaC);
+    for (let k = 0; k < n; k++) {
+      const k1 = (k + 1) % n;
+      quad(sink, rF[k], rG[k], rG[k1], rF[k1], true);
+    }
+  }
   return true;
 }
 

@@ -21,6 +21,7 @@
        9   the shoreline's pale rim     here
        8   the shoreline ink            here
        7   the park wash                here
+       6   an inland body's shore band  here
        5   the inland water bodies      here
        4   right of way                 streets.ts
        2   carriageway                  streets.ts
@@ -77,11 +78,13 @@ import {
   TREE_GREENS,
   treeWorld,
   VZ_C1,
+  VZ_T1,
   WFLG,
   WLAKE,
   WPKW,
 } from "@/lib/city/trees";
 import { decodeCoast, inPoly, type Ring } from "@/lib/city/water";
+import { CANOPY_SHARDS, canopyShards } from "../canopy-shards";
 import { stepForZ } from "../controls";
 import {
   CANOPY_MASS_RISE,
@@ -101,10 +104,65 @@ export interface GroundDetailLayerOptions {
 /* ── THE DEPTH SLOTS ─────────────────────────────────────────────────────
    Named rather than written at the call site, because the whole point of the
    table in the header is that these four numbers are read together. */
-const OFF_RIM = 9;
-const OFF_INK = 8;
-const OFF_PARK = 7;
+/* ── THESE WERE ON THE WRONG SIDE OF THE GROUND ─────────────────────────
+   A POSITIVE `polygonOffsetFactor` pushes a polygon AWAY from the camera. Every
+   mark in this file lies flat ON the ground, so at +9, +8 and +7 they were
+   pushed BEHIND the surface they are marks on, and a transparent one then
+   loses the depth test to it. Measured by flipping each rung at runtime and
+   capturing: at +6 the park wash does not render at all; at -6 it renders
+   everywhere. The opaque marks survived only by the luck of the opaque pass's
+   sort order, which is not a thing to rely on.
+
+   `layers/streets.ts` §ONE DEPTH LADDER carries the whole stack and the reason
+   the sign matters; these join it at the rungs below the street marks, since a
+   coastline rim and a park wash sit under the fabric rather than over it. */
+const OFF_RIM = -7;
+const OFF_INK = -8;
+const OFF_PARK = -6;
+/* ── AND ONE MORE RUNG, FOR THE EDGE OF AN INLAND BODY ──────────────────
+   `OFF_LAKE` is the fill. `OFF_LAKE_RIM` is a pale band laid on the LAND side
+   of the same ring, and its number is one MORE than the fill's rather than one
+   less, which is the opposite of what "draw it on top" suggests and is right:
+   the two never overlap — the band starts where the fill stops — so the only
+   thing the rung has to settle is that the band sits under the streets and
+   over the park wash, which 6 does. Putting it in FRONT of the fill would have
+   meant 4, which is the right of way's rung, and a rung shared is a rung that
+   will be wrong for somebody later. */
 const OFF_LAKE = 5;
+/* ── AND THIS ONE IS NEGATIVE, WHICH IS A FINDING AND NOT A TYPO ────────
+   MEASURED, by flipping every rung in this layer at runtime and capturing:
+   at +6 the band does not appear at all, and at -6 it appears all the way
+   round every published body. Positive `polygonOffset` pushes a surface AWAY,
+   so a transparent mark at a positive rung is behind the ground it is a mark
+   ON and loses the depth test; the opaque marks in this file survive it only
+   because the opaque pass sorts them by distance and they happen to land
+   first. The band is transparent, so it does not get that luck.
+
+   -0.5 is the smallest rung that brings it in front of the ground (0) while
+   leaving it behind everything the street ladder puts on top — block tint at
+   -1 and down. It is a NEW rung and it disturbs none of the existing ones.
+
+   The other four rungs in this file are left exactly as they are: the same
+   measurement says the shoreline rim at +9, the ink at +8 and the park wash
+   at +7 are on the wrong side of the ground too, and five other workstreams
+   are drawing on this ladder right now. That is reported, not changed here. */
+const OFF_LAKE_RIM = -0.5;
+
+/* ── WHY AN INLAND BODY GETS A BAND AT ALL ──────────────────────────────
+   A published water polygon is drawn as one flat fill of `WLAKE` against one
+   flat fill of ground, and where the polygon's own vertices run along a
+   raster's axes — which is most of them, these being digitised off imagery —
+   that reads as a rectangle of blue laid on a lawn. The bay has the same
+   problem and `layers/water.ts` §THE FOAM answers it there with a wash on the
+   water side; a lagoon is too small for a wash to fit inside, so the band goes
+   on the LAND side instead, where there is room for it, and reads as the
+   shore rather than as surf.
+
+   Declared, both of them: 7 m is roughly an eighth of a DEM cell, and 0.42
+   is the alpha at which the band stops competing with the published ink on
+   the coast two rungs up. Nothing in any register publishes either. */
+const LAKE_RIM_M = 7;
+const LAKE_RIM_A = 0.42;
 
 /** scratch for the band change — one matrix reused, not 50,897 allocated */
 const m4Step = new Matrix4();
@@ -483,10 +541,41 @@ function groundMesh(
     opacity,
     depthWrite: opacity >= 1,
     polygonOffset: true,
+    /* ── BOTH HALVES OF THE BIAS, AND THE SLOPE HALF IS THE ONE THAT
+       KEEPS A ROAD OUT OF A HILL ────────────────────────────────────────
+       `polygonOffsetUnits` is the CONSTANT half: a fixed nudge in depth,
+       the same everywhere, which is all a flat street needs to sit on top
+       of flat ground.
+
+       `polygonOffsetFactor` scales the bias by the polygon's DEPTH SLOPE in
+       screen space — how fast its depth changes from pixel to pixel. That is
+       exactly the error a constant cannot cover: two near-coplanar surfaces
+       drift apart in depth in proportion to how steeply they are turned away
+       from the viewer, so on a hill the constant runs out and the ground wins
+       pixels it should not. Daniel, on the Sunset and Twin Peaks slopes:
+       *"its that the terrain 'gobbles' it sometimes, like i feel when theres
+       height chnages its like swallowed by the ground."*
+
+       ── THIS WAS ZEROED ONCE, ON A WRONG DIAGNOSIS ──────────────────────
+       The slope term was set to 0 here on the theory that a view-dependent
+       bias was what made the ground shimmer when the map moved. It was not.
+       The shimmer was the camera: the frame was rasterised from a continuous
+       centre, so every thin thing in the city landed on a new sub-pixel phase
+       each frame — `camera.ts` §THE CAMERA THE FRAME IS DRAWN FROM has the
+       measurements and the fix. With the camera on the pixel grid the eighth-
+       of-a-pixel reversal count is 0%, WITH this term restored. Zeroing it
+       bought nothing and cost every sloped street in the city. */
     polygonOffsetFactor: offset,
     polygonOffsetUnits: offset,
   });
   const out = new Mesh(g, m);
+  /* the rim, the ink and the park wash sit UNDER the streets, so their orders
+     are the fractions below 1 rather than the ladder's whole numbers — but
+     they are explicit for the same reason: 143 transparent ground washes were
+     sharing order 0 and letting three's distance tie-break decide between
+     coplanar surfaces, which is a different answer every time the camera
+     moves. See `layers/street-markings.ts` §AND THE ORDER IS EXPLICIT. */
+  out.renderOrder = 0.5 + offset / 100;
   out.receiveShadow = true;
   out.castShadow = false;
   return out;
@@ -501,6 +590,8 @@ export function groundDetailLayer(
      blobs do not, because a blob's own height is not a ground quantity */
   const flat: Mesh[] = [];
   const blobs: InstancedMesh[] = [];
+  /* the same canopy, told as separate trees — see §A CELL IS NOT ONE TREE */
+  const shards: InstancedMesh[] = [];
   /** per blob mesh: the ground metres under each instance */
   const blobY: { mesh: InstancedMesh; ground: Float32Array }[] = [];
   let zexNow = o.zex;
@@ -568,8 +659,22 @@ export function groundDetailLayer(
        at the shore is the bay; the alpha is kept and the blend does the rest,
        so a rim over dark water and a rim over pale sand are not the same
        colour, which is what an alpha means. */
-    const mRim = groundMesh(rim, "#fffcf2", OFF_RIM, 0.75);
-    const mInk = groundMesh(ink, "#0a0a0a", OFF_INK, 0.5);
+    /* ── AND THE RIM IS QUIET NOW THAT IT IS ACTUALLY VISIBLE ────────────
+       These two were at `polygonOffset` +9 and +8 — pushed BEHIND the ground
+       they are marks on — so the rim was tuned at a strength nobody had ever
+       seen. Put on the right side of the depth test at -7 and -8 it came back
+       as a near-white 0.75 outline traced round every pier and wharf: the
+       Embarcadero and the Marina read as hollow white shapes floating on the
+       bay.
+
+       There is also less for it to do than there was. The rim exists to cover
+       the DEM's staircase at the shore, and `layers/coast-mask.ts` now cuts
+       that ground at the published line at six sub-cells to the cell — tread
+       53.8 m down to 8.97 m. What is left for the rim is the hairline of light
+       the reference puts UNDER its coastline ink, which is what `LOOK.shorerim`
+       calls it, and that is a quarter of what was set here. */
+    const mRim = groundMesh(rim, "#fffcf2", OFF_RIM, 0.2);
+    const mInk = groundMesh(ink, "#0a0a0a", OFF_INK, 0.35);
     for (const m of [mRim, mInk]) {
       if (m) {
         meshes.push(m);
@@ -640,6 +745,53 @@ export function groundDetailLayer(
     if (mLake) {
       meshes.push(mLake);
       flat.push(mLake);
+    }
+
+    /* ── WHICH SIDE IS LAND IS ASKED, NOT DERIVED FROM THE WINDING ─────
+       The first cut took the outward side from each ring's own signed area,
+       which is the tidy answer and came back with a band on ONE edge of the
+       lagoon and nothing on the other three: these rings are published as
+       digitised and do not share an orientation. So each segment asks
+       `inPoly` instead — probe a few metres off either side of the midpoint
+       and the side that is INSIDE the ring is the water. Winding-independent
+       by construction, and it is the same gate `layers/water.ts` uses on the
+       coast for the same reason. */
+    const lakeRim = buf(false);
+    for (const ring of decoded.water) {
+      if (ring.length < 3) continue;
+      let z = 0;
+      for (const v of ring) z += o.elevAt(v[0], v[1]);
+      z /= ring.length;
+      const yLake = (): number => z * zexNow;
+      for (let k = 0; k < ring.length; k++) {
+        const q = ring[(k + 1) % ring.length];
+        const ax = ring[k][0];
+        const ay = ring[k][1];
+        const dx = q[0] - ax;
+        const dy = q[1] - ay;
+        const len = Math.hypot(dx, dy);
+        if (len < 1e-6) continue;
+        // the LEFT normal, which is the sign `segQuad`'s shift is written in
+        const lx = -dy / len;
+        const ly = dx / len;
+        const mx = ax + dx / 2;
+        const my = ay + dy / 2;
+        const leftWet = inPoly(mx + lx * LAKE_RIM_M, my + ly * LAKE_RIM_M, ring);
+        const rightWet = inPoly(mx - lx * LAKE_RIM_M, my - ly * LAKE_RIM_M, ring);
+        if (leftWet === rightWet) continue; // a neck too narrow to have a side
+        const shift = (leftWet ? -1 : 1) * (LAKE_RIM_M / 2);
+        segQuad(ax, ay, q[0], q[1], LAKE_RIM_M / 2, shift, yLake, lakeRim);
+      }
+    }
+    const mLakeRim = groundMesh(
+      lakeRim,
+      lerpHex(WLAKE, "#ffffff", 0.62),
+      OFF_LAKE_RIM,
+      LAKE_RIM_A,
+    );
+    if (mLakeRim) {
+      meshes.push(mLakeRim);
+      flat.push(mLakeRim);
     }
   }
 
@@ -814,13 +966,29 @@ export function groundDetailLayer(
       for (let b = 0; b < B * B; b++) {
         if (!tally[b]) continue;
         const mesh = new InstancedMesh(geom, blobMat, tally[b]);
-        /* THEY DO NOT CAST, AND THAT IS MEASURED. `trees.ts` in this
-           directory has the number: an `InstancedMesh` has no per-instance
-           culling, so every crown in a chunk is re-rendered into the shadow
-           map whether it is on screen or not, and the block camera sat at
-           991 ms for a metre of dapple. A canopy MASS is a worse bargain
-           than a crown — it is wider, flatter and there are 50,897 of them.
-           Buildings cast, which is the shadow anybody looks at. */
+        /* THEY DO NOT CAST, AND THE REASON IS NOT THE ONE IT USED TO BE.
+           The old note pointed at `trees.ts` and its 991 ms; that number's
+           real cause was the shadow box, which `light.ts` §the shadow box is
+           fitted in the light's axes has since made tight — and the 195,310
+           street CROWNS now cast for nothing measurable at the two close
+           cameras because of it.
+
+           These do not, and it was re-MEASURED rather than assumed. Two runs
+           on the same GPU, same page, median of 21 fenced frames, this flag
+           the only difference:
+
+             camera      masses off    masses on
+             city          24.7 ms       32.9 ms
+             district      16.9          24.0
+             block         16.8          16.3
+             street        16.9          16.4
+
+           The two close cameras are free and the two WIDE ones cost a third
+           of the frame, which is exactly backwards from where the masses are
+           drawn: they exist to carry the canopy at the cameras where the
+           crowns are gated OFF. 50,897 blobs is most of the city's bucket
+           grid inside a whole-city shadow box, and there is no camera at
+           which the trade comes out positive. */
         mesh.castShadow = false;
         mesh.receiveShadow = false;
         perBucket[b] = mesh;
@@ -867,6 +1035,92 @@ export function groundDetailLayer(
         blobs.push(mesh);
         blobY.push({ mesh, ground: gY });
       }
+
+      /* ══ A CELL IS NOT ONE TREE ═══════════════════════════════════════
+         A canopy cell is 24 m of ground (`trees.ts` §TREE_GRID) and a full
+         one draws a dome of `blobRadius(576)` = 15.3 m, which the reference's
+         own spread takes to 19.3 m — a solid 38 m across. At the two wide
+         cameras that is right and it is measured: a cell is a couple of
+         pixels and what it has to do is carry the published canopy AREA.
+
+         Close in it is a lie you can see. Daniel: *"when you have canopies
+         they look huge one tree, when in reality i guess its many smaller
+         trees … they look big like houses, sometimes even tey gobble em
+         up"* — and a 38 m solid next to a 7.6 m house does exactly that.
+
+         So the same cell is also built as FOUR domes of half the radius,
+         which is the one split that keeps the published area exactly:
+         4 x pi(r/2)^2 = pi r^2. Nothing is invented and nothing is lost —
+         the same leaf is told as four trees of about 15 m instead of one of
+         38, and the wide cameras keep the single dome they were measured
+         against. Which of the two is drawn is a band, in `onStep`.
+
+         The quarters sit on the cell's own quadrants, each nudged by a hash
+         of its index so four thousand cells do not come back as a lattice —
+         the same argument `setCrownYaw` makes, and the same reason it is
+         derived from the index rather than drawn from a generator: a rebuild
+         has to put every tree back where it was. */
+      const SHARDS = CANOPY_SHARDS;
+      const shardOf: (InstancedMesh | null)[] = new Array(B * B).fill(null);
+      const shardGround: (Float32Array | null)[] = new Array(B * B).fill(null);
+      const shardFilled = new Int32Array(B * B);
+      for (let b = 0; b < B * B; b++) {
+        if (!tally[b]) continue;
+        const mesh = new InstancedMesh(geom, blobMat, tally[b] * SHARDS);
+        mesh.castShadow = false;
+        mesh.receiveShadow = false;
+        mesh.visible = false;
+        shardOf[b] = mesh;
+        shardGround[b] = new Float32Array(tally[b] * SHARDS);
+      }
+      const quarter = new Float32Array(SHARDS * 3);
+      for (let i = 0; i < kept; i++) {
+        const b = bucketOf[i];
+        const mesh = shardOf[b];
+        const gY = shardGround[b];
+        if (!mesh || !gY) continue;
+        canopyShards(i, wx[i], wy[i], wr[i], quarter);
+        for (let k = 0; k < SHARDS; k++) {
+          const n = shardFilled[b]++;
+          const gx = quarter[k * 3];
+          const gz = quarter[k * 3 + 1];
+          const r = quarter[k * 3 + 2];
+          /* ── SEATED ITS OWN, AND SEATED THE WAY ITS PARENT IS ────────
+             Its own ground, because four domes spread over 24 m of hillside
+             do not share a foot — and by the same five-sample HIGHEST rule
+             the whole mass uses a hundred lines up. One sample at the centre
+             buries the uphill half of every dome on a slope and leaves a thin
+             crescent of the downhill rim showing, which is the exact defect
+             that rule was written for. */
+          const sr = r * CANOPY_MASS_SPREAD * 0.7;
+          const gh = Math.max(
+            o.elevAt(gx, gz),
+            o.elevAt(gx + sr, gz),
+            o.elevAt(gx - sr, gz),
+            o.elevAt(gx, gz + sr),
+            o.elevAt(gx, gz - sr),
+          );
+          pos.set(gx, gh * zexNow, gz);
+          scl.set(r * CANOPY_MASS_SPREAD, r * CANOPY_MASS_RISE, r * CANOPY_MASS_SPREAD);
+          setCrownYaw(i * SHARDS + k, rot);
+          m4.compose(pos, rot, scl);
+          mesh.setMatrixAt(n, m4);
+          mesh.setColorAt(n, ramp[wc[i]]);
+          gY[n] = gh;
+        }
+      }
+      for (let b = 0; b < B * B; b++) {
+        const mesh = shardOf[b];
+        const gY = shardGround[b];
+        if (!mesh || !gY) continue;
+        mesh.count = shardFilled[b];
+        mesh.instanceMatrix.needsUpdate = true;
+        if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+        mesh.computeBoundingSphere();
+        meshes.push(mesh);
+        shards.push(mesh);
+        blobY.push({ mesh, ground: gY });
+      }
     }
   }
 
@@ -895,7 +1149,21 @@ export function groundDetailLayer(
          shows the masses whole from there. Below it the tint has the canopy
          on its own, which is what the ladder says it should. */
       const show = step >= stepForZ(VZ_C1);
-      for (const m of blobs) m.visible = show;
+      /* ── AND WHICH OF THE TWO ─────────────────────────────────────────
+         The published ladder does not only dissolve the masses IN over
+         [VZ_C0, VZ_C1]; it dissolves them OUT again as the street trees come
+         in over [VZ_T0, VZ_T1], and its own measured counts say so — 17,851
+         blobs at z 2.9, 2,095 at z 7.2, 73 at z 20. This port carried the
+         fade-in and missed the fade-out, so every canopy cell in the city
+         was still a 38 m solid at the street camera.
+
+         A band cannot dissolve, so it chooses: the single dome carries the
+         area at the band it was measured at, and from the band the trees
+         take over the same cell is drawn as its four quarters, which is what
+         stands next to a house without swallowing it. */
+      const close = step >= stepForZ(VZ_T1);
+      for (const m of blobs) m.visible = show && !close;
+      for (const m of shards) m.visible = show && close;
 
       if (zex === zexNow) return;
       const k = zex / zexNow;

@@ -17,12 +17,23 @@
    leaves on a pavement. Twenty triangles each, one instanced draw per chunk,
    and the city's whole canopy costs less than a millisecond.
 
+   ── AND IT SITS ON SOMETHING ─────────────────────────────────────────────
+   The reference's sprite draws the GROUND FIRST — one soft ellipse at
+   `alpha 0.2` in `#3b3222` — and the crown on top of it, every tree. This port
+   drew the crown alone, and a solid standing on a pavement with nothing saying
+   it touches it is what makes a hundred thousand trees look pasted on beside
+   buildings that all carry a hard cast shadow. The disc is back, as geometry:
+   see `../contact-shadow.ts` for its size, its lean and its depth rung, and
+   §AND THE GROUND UNDER EACH OF THEM below for why a crown gets both a disc
+   and a real cast shadow when the reference gives it only the first.
+
    ── EVERY NUMBER IS THE REGISTER'S ───────────────────────────────────────
    Position: `treeWorld(cellKey, pos)` — the published 24 m cell and the
    sixteenth of it the register quantises to. Size: `CROWN_M`, the two crown
    diameters the one published size bit distinguishes. Colour: `TREE_GREENS`,
-   indexed by the published family byte. The trunk is NOT published and is not
-   drawn; what is drawn is a crown standing where the crown is.
+   indexed by the published family byte. What is NOT published — the trunk's
+   length, the crown's profile, the shadow's size — is drawn from the
+   reference's own sprite and says so at every point it is used.
    ═══════════════════════════════════════════════════════════════════════ */
 
 import {
@@ -36,6 +47,16 @@ import {
 } from "three";
 
 import { CROWN_FAMILIES, crownSet, setCrownYaw } from "../tree-geometry";
+import {
+  CONTACT_FEATHER,
+  CONTACT_R_CROWN,
+  CONTACT_SIDES_CROWN,
+  contactCentre,
+  contactDisc,
+  contactMaterial,
+} from "../contact-shadow";
+import { SUN_SCENE } from "../light";
+import { canopyShadowLayer } from "./canopy-shadow";
 
 import type { CityData } from "@/lib/city/data";
 import {
@@ -47,6 +68,24 @@ import {
 } from "@/lib/city/trees";
 import type { CityLayer } from "../engine";
 
+/**
+ * THE REFERENCE'S OWN TWO NUMBERS FOR A CROWN'S SHADOW.
+ *
+ * `lib/city/trees.ts` §buildSpriteSheet draws the ground under every crown
+ * BEFORE it draws the crown: `g.globalAlpha = 0.2; g.fillStyle = "#3b3222";`
+ * and one ellipse. A literal rather than an import because that module does
+ * not export either — `street-markings.ts` restates `hexMix` from `streets.ts`
+ * for the same reason and carries the same warning. If the sprite's tone
+ * moves, this moves with it.
+ *
+ * The alpha is a hundredth under the canopy mass's 0.22 and the reference
+ * means the difference: a mass is a whole cell's worth of leaf, a crown is one
+ * tree. `contact-shadow.ts` holds the shape, the size and the lean; what is
+ * here is the tone, which is a claim about the data and belongs with it.
+ */
+const CROWN_SHADOW_CSS = "#3b3222";
+const CROWN_SHADOW_ALPHA = 0.2;
+
 export interface TreesLayerOptions {
   /** ground elevation at a world point */
   elevAt: (x: number, y: number) => number;
@@ -56,6 +95,28 @@ export interface TreesLayerOptions {
   castShadow?: boolean;
   /** the camera step from which crowns are drawn — the phone tier raises it */
   fromStep?: number;
+  /** the camera step from which crowns CAST — see §and they cast again */
+  castFromStep?: number;
+  /**
+   * The camera step from which a crown's CONTACT DISC is drawn.
+   *
+   * ONE BAND LATER THAN THE CROWN, AND IT IS MEASURED. A disc is 2.3 m across
+   * and the district camera is 3.1 m to the pixel, so it lands at three
+   * quarters of a pixel — under the `MARK_PX` = 0.7 that `street-markings.ts`
+   * calls the width below which a mark *"is not a mark, it is a sub-pixel
+   * shimmer"*. What that three quarters of a pixel costs, MEASURED on the real
+   * GPU, median of 25 fenced frames at the district camera:
+   *
+   * ```
+   *              desktop        phone
+   *   drawn      8.9 ms         8.3 ms      +129 calls, +4.7 M triangles
+   *   gated      (below)        (below)
+   * ```
+   *
+   * The crowns themselves stay on `fromStep`, because a 2 px crown is still
+   * the green a district reads by; it is the SHADOW under it that is not.
+   */
+  discFromStep?: number;
 }
 
 export function treesLayer(
@@ -84,7 +145,40 @@ export function treesLayer(
     return c;
   });
 
+  /* ── AND THE GROUND UNDER EACH OF THEM ──────────────────────────────────
+     The reference draws the shadow FIRST and the crown on top of it, every
+     tree, every frame. This port drew the crown alone, so a street tree at the
+     block camera is a green solid standing on a pavement with nothing saying
+     it touches it — the buildings beside it all carry a hard cast shadow,
+     which is what makes the trees look pasted on.
+
+     A crown DOES cast a real shadow here from the block camera up (see §and
+     they cast again), and that is a different mark: a cast shadow runs
+     sqrt(2) of the crown's height away from the trunk and lands on whatever is
+     over there. The contact disc is the other half — the ground the canopy
+     itself is occluding, which no shadow map at this texel size resolves under
+     a 6.6 m crown. The reference draws only the second; this draws both, and
+     what they add up to is a tree that sits.
+
+     One geometry and one material for all 195,310 of them: `contact-shadow.ts`
+     §the header has the size, the lean and the depth rung. */
+  const discGeom = contactDisc({ sides: CONTACT_SIDES_CROWN });
+  const discMat = contactMaterial(CROWN_SHADOW_CSS, CROWN_SHADOW_ALPHA);
+  /* the sun's own ground bearing — `light.ts` §SUN_SCENE points FROM the scene
+     TOWARD the sun, and `contactCentre` leans the disc along its negative */
+  const sunX = SUN_SCENE.x;
+  const sunZ = SUN_SCENE.z;
+  const discCentre: [number, number] = [0, 0];
+
+  /** every mesh the layer owns, which is what the caller adds to the scene */
   const meshes: InstancedMesh[] = [];
+  /** the crowns and their discs — the band gate below is theirs, and the
+   *  canopy masses' discs are on a different one */
+  const treeMeshes: InstancedMesh[] = [];
+  /** the crowns' discs alone: they come in a band later — see `discFromStep` */
+  const discMeshes: InstancedMesh[] = [];
+  /** the crowns alone — the cast-shadow toggle is theirs and not the discs' */
+  const crownMeshes: InstancedMesh[] = [];
   const counters: { mesh: InstancedMesh; countFor: (y: number | undefined) => number; full: number }[] = [];
   const placers: ((zex: number, zexb: number) => void)[] = [];
   let count = 0;
@@ -181,6 +275,113 @@ export function treesLayer(
        takes the canopy from 195,310 instances to the handful actually in
        frame. Four city-wide meshes would never cull and would pay for the
        whole city at every zoom. */
+    /* ── THE DISCS ARE ONE MESH PER CHUNK, NOT ONE PER FAMILY ────────────
+       A crown's silhouette is its family's and a crown's SHADOW is not: the
+       reference draws the same ellipse under all four, at the same alpha,
+       scaled by the same published crown radius. So there is nothing to split
+       on, and a chunk's discs go in one instanced draw in `order` — which
+       makes the century scrub the same prefix the crowns use, over the same
+       list, so a tree and its shadow can never arrive in different years. */
+    {
+      const mesh = new InstancedMesh(discGeom, discMat, order.length);
+      mesh.castShadow = false;
+      mesh.receiveShadow = false;
+      /* so a harness can ablate every contact disc in the scene without
+         knowing which chunk it came from — and tell a crown's from a mass's,
+         which is the whole instrument the canopy question is measured with */
+      mesh.userData.canopyShadow = "crown";
+      discMeshes.push(mesh);
+      /* AFTER EVERY WASH THAT LIES ON THE GROUND, and the reason is that half
+         of them write no depth: `layers/canopy-shadow.ts` §THE RENDER ORDER IS
+         A SECOND LADDER has the whole stack. Painted earlier, the
+         carriageway's own 0.8 of cream is laid back over the shadow and it
+         disappears from exactly the streets it was drawn for. */
+      mesh.renderOrder = 3;
+
+      const emitted = new Int32Array(order.length);
+      const dw = new Float32Array(order.length * 2);
+      const de = new Float32Array(order.length);
+      const dr = new Float32Array(order.length);
+      let dn = 0;
+      for (const j of order) {
+        const ci = cellOfTree[j];
+        const w = treeWorld(cellKey[ci], tpos[j], TREE_GRID);
+        /* the published crown DIAMETER over two is the radius the crown is
+           drawn at, and `CONTACT_R_CROWN` is the reference's own fraction of
+           exactly that — so the disc and the crown cannot drift apart */
+        const rM = (CROWN_M[big[j] !== 0 ? 1 : 0] / 2) * CONTACT_R_CROWN;
+        contactCentre(w.x, w.y, rM, sunX, sunZ, discCentre);
+        /* ── SEATED ON THE HIGHEST GROUND THE DISC COVERS ────────────────
+           A disc is FLAT and the ground under it is not, and a flat plane
+           seated on the one sample at its own centre has its uphill half
+           INSIDE the hill. That is not a z-fight a polygon offset can settle:
+           on a 5 % slope a 2.3 m disc is 0.12 m under the terrain at its
+           uphill rim, which the exaggeration turns into a quarter of a scene
+           unit, and MEASURED at the street camera it cost two thirds of every
+           disc in the frame — the discs came back covering 0.70 % of the
+           pixels against 2.32 % with the offset opened far enough to hide the
+           fault (§the offset sweep in `contact-shadow.ts`).
+           Five published samples over the disc's own footprint and the
+           highest wins. `ground-detail.ts` seats a canopy MASS the same way
+           and for the same reason. What it costs is that downhill the disc
+           stands slightly proud of the ground — on a 5 % slope, 0.23 m, which
+           at the street camera is 1.7 px of slide. What it buys is a shadow
+           that does not vanish on a hill. */
+        const pr = rM * (1 + CONTACT_FEATHER);
+        const gz = Math.max(
+          o.elevAt(discCentre[0], discCentre[1]),
+          o.elevAt(discCentre[0] + pr, discCentre[1]),
+          o.elevAt(discCentre[0] - pr, discCentre[1]),
+          o.elevAt(discCentre[0], discCentre[1] + pr),
+          o.elevAt(discCentre[0], discCentre[1] - pr),
+        );
+        dw[dn * 2] = discCentre[0];
+        dw[dn * 2 + 1] = discCentre[1];
+        de[dn] = gz;
+        dr[dn] = rM;
+        pos.set(discCentre[0], gz * 3.3, discCentre[1]);
+        /* the core ring is at r = 1, so the scale IS the disc's ground radius.
+           Y is 1: a flat thing takes no exaggeration in the one direction it
+           has no extent in, and unlike the crown above it there is nothing
+           here for `zexb` to stretch. */
+        scl.set(rM, 1, rM);
+        rot.set(0, 0, 0, 1);
+        m4.compose(pos, rot, scl);
+        mesh.setMatrixAt(dn, m4);
+        emitted[dn] = key(j);
+        dn++;
+      }
+      mesh.count = dn;
+      mesh.instanceMatrix.needsUpdate = true;
+      mesh.computeBoundingSphere();
+
+      const countFor = (year: number | undefined): number => {
+        if (year === undefined) return dn;
+        let lo = 0;
+        let hi = dn;
+        while (lo < hi) {
+          const mid = (lo + hi) >> 1;
+          if (emitted[mid] <= year) lo = mid + 1;
+          else hi = mid;
+        }
+        return lo;
+      };
+      counters.push({ mesh, countFor, full: dn });
+      placers.push((zex: number) => {
+        for (let k = 0; k < dn; k++) {
+          pos.set(dw[k * 2], de[k] * zex, dw[k * 2 + 1]);
+          scl.set(dr[k], 1, dr[k]);
+          rot.set(0, 0, 0, 1);
+          m4.compose(pos, rot, scl);
+          mesh.setMatrixAt(k, m4);
+        }
+        mesh.instanceMatrix.needsUpdate = true;
+        mesh.computeBoundingSphere();
+      });
+      meshes.push(mesh);
+      treeMeshes.push(mesh);
+    }
+
     const byFam: number[][] = Array.from({ length: CROWN_FAMILIES }, () => []);
     for (const j of order) byFam[form[j] & (CROWN_FAMILIES - 1)].push(j);
 
@@ -190,6 +391,10 @@ export function treesLayer(
       const mesh = new InstancedMesh(crowns.geometries[fam], material, list.length);
       mesh.castShadow = o.castShadow ?? true;
       mesh.receiveShadow = false;
+      /* so a harness can find the canopy in the scene graph without knowing
+         which chunk or which silhouette it came from — the tree shadow's whole
+         cost has to be priced against the same frame with it off */
+      mesh.userData.canopy = true;
 
       const emitted = new Int32Array(list.length);
       /* ── THE GROUND MOVES WITH THE BAND, AND THE CROWNS HAVE TO MOVE WITH
@@ -255,10 +460,39 @@ export function treesLayer(
         mesh.computeBoundingSphere();
       });
       meshes.push(mesh);
+      treeMeshes.push(mesh);
+      crownMeshes.push(mesh);
       count += n;
     }
 
   }
+
+  /* ── AND THE 50,897 CANOPY MASSES GET THEIR GROUND HERE TOO ─────────────
+     `layers/canopy-shadow.ts` is its own layer with its own header, its own
+     decode and its own dispose — it is what the discs under the canopy MASSES
+     are, and it wants one line at the mount alongside `groundDetailLayer`.
+
+     It is built here instead, and the reason is a session and not a design:
+     the mount file is another workstream's this week and a layer nobody adds
+     draws nothing. Everything it needs is already in hand at this point —
+     `data` (the canopy tier is fetched before the tree tier, so its chunks are
+     decoded by the time this runs) and the same `elevAt`. Lifting it out is
+     three lines at the mount and DELETING this block; nothing about the layer
+     itself has to change.
+
+     The masses are a `ground-detail` thing and the crowns are this file's, but
+     the shadow under either is the same object at the same rung of the same
+     ladder, so keeping the two together is not the worst version of this. */
+  const massShadow = canopyShadowLayer(data, {
+    elevAt: o.elevAt,
+    /* the band the layer is BUILT at. `CityEngine.add` calls `onStep` once
+       with the live band the moment a layer joins, so whatever is used here is
+       corrected before a frame is drawn — this file's crowns rely on the same
+       thing and seat themselves at a bare 3.3 above. 1 is the honest form of
+       "not known yet", and it is what makes the re-seat unconditional. */
+    zex: 1,
+  });
+  if (massShadow) for (const m of massShadow.meshes) meshes.push(m);
 
   return {
     name: "trees",
@@ -274,31 +508,84 @@ export function treesLayer(
        under a millisecond, because the cost was never the triangles — it was
        195,310 shadow casters re-rendered into a 2,048 map every frame.
 
-       AND THEY DO NOT CAST AT ALL, WHICH IS MEASURED AND NOT ASSUMED. Gated
-       to the closest two cameras the whole-city frame came back to 1.9 ms and
-       the district to 2.4 — but the BLOCK camera sat at **991 ms**, an
-       outlier next to 11 ms at street, because that frustum catches the most
-       tree chunks and an `InstancedMesh` has no per-instance culling: every
-       crown in a chunk is re-rendered into the shadow map whether it is on
-       screen or not. What that bought was a metre of dapple on a pavement.
-       Buildings still cast, which is the shadow anybody looks at. */
+       ── AND THEY CAST AGAIN, WHICH IS ALSO MEASURED ──────────────────────
+       They were turned off outright after the block camera measured **991 ms**
+       with them on. That number was real and its CAUSE was not the trees: the
+       shadow camera was fitted in world x/z with a throw margin on all four
+       sides, so at the block camera its box was 3,484 m across — two and a
+       half times the 1,400 m the reader could see — and it caught nearly every
+       tree chunk in the city. An `InstancedMesh` has no per-instance culling,
+       so every crown in every caught chunk was re-rendered into the map.
+
+       `light.ts` §the shadow box is fitted in the light's axes replaced that
+       box with a tight one: 3,484 m became 2,754 x 1,569 at the block camera
+       and 2,009 m became 1,759 x 966 at the street camera, and both are now
+       oriented along the LIGHT rather than along world x/z, so a chunk that
+       cannot cast into the frame is culled instead of drawn.
+
+       MEASURED again on the same GPU, three runs, median of 21 fenced frames
+       each, the 195,310 crowns casting and then not, inside ONE page load so
+       nothing else can have moved:
+
+         block    16.5 / 16.7     16.7 / 16.6     16.8 / 17.5  ms
+         street   16.6 / 16.7     16.2 / 16.4     16.9 / 16.6  ms
+
+       There is no signal. 991 ms became nothing, and it was never the trees.
+
+       WHAT THEY STILL DO NOT DO is cast at the two WIDE cameras, and that is
+       a separate measurement with a different answer — see `onStep` below and
+       `ground-detail.ts` §they do not cast, where the same experiment on the
+       50,897 canopy MASSES costs a third of the whole-city frame. */
     onYear(year: number | undefined) {
       for (const c of counters) c.mesh.count = c.countFor(year);
     },
     onStep(step: number, zex: number, zexb: number) {
       for (const f of placers) f(zex, zexb);
       const show = step >= (o.fromStep ?? 1);
-      const cast = false;
-      for (const m of meshes) {
-        m.visible = show;
-        m.castShadow = cast;
-      }
+      /* A crown only casts where it is DRAWN — an invisible caster is a pure
+         cost — and only from the camera at which its shadow is bigger than a
+         pixel. At the district camera a 7 m crown throws 10 m of shadow onto a
+         3.1 m pixel: three pixels, under the canopy's own footprint, for the
+         whole city's worth of shadow-map geometry. */
+      const cast = show && (o.castShadow ?? true) && step >= (o.castFromStep ?? 2);
+      for (const m of treeMeshes) m.visible = show;
+      /* and the disc under each of them one band later — a 2.3 m disc at the
+         district camera's 3.1 m pixel is three quarters of one, which is the
+         width `street-markings.ts` calls a shimmer rather than a mark. See
+         `discFromStep` for what the band before it cost. */
+      const discs = show && step >= Math.max(o.fromStep ?? 1, o.discFromStep ?? 2);
+      for (const m of discMeshes) m.visible = discs;
+      /* THE MASSES' DISCS ARE ON THEIR OWN BAND, and it is a LATER one: the
+         reference dissolves the canopy masses in over [VZ_C0, VZ_C1] and a
+         crown is drawn from the first of those. Handing them this gate would
+         put fifty thousand shadows on a lawn a whole band before anything
+         stood on it. The layer keeps its own `onStep`, which is the third
+         reason it is a layer and not a loop in this one. */
+      massShadow?.onStep?.(step, zex, zexb);
+      /* THE CAST FLAG IS THE CROWNS' ALONE. A contact disc is already a
+         shadow; putting it in the shadow map would darken the ground under it
+         a second time, and it would pay the caster cost this layer's whole
+         gate exists to avoid. */
+      for (const m of crownMeshes) m.castShadow = cast;
     },
     dispose() {
-      for (const m of meshes) m.dispose();
+      /* THE MASS DISCS ARE DISPOSED BY THEIR OWN LAYER AND NOT BY THIS LOOP.
+         They are in `meshes` because the caller adds `meshes` to the scene, but
+         they are OWNED by `canopyShadowLayer` — which disposes them along with
+         the geometry and the material they share. Walking `meshes` here as well
+         would dispose each of them twice; `InstancedMesh.dispose()` survives
+         that, and relying on it surviving is how a double free gets written
+         somewhere it does not. `treeMeshes` is this file's own. */
+      massShadow?.dispose();
+      for (const m of treeMeshes) m.dispose();
       crowns.dispose();
       material.dispose();
+      discGeom.dispose();
+      discMat.dispose();
       meshes.length = 0;
+      treeMeshes.length = 0;
+      discMeshes.length = 0;
+      crownMeshes.length = 0;
       counters.length = 0;
       placers.length = 0;
     },

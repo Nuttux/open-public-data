@@ -46,10 +46,16 @@ import {
   BufferAttribute,
   BufferGeometry,
   Color,
+  Int16BufferAttribute,
   DoubleSide,
+  LineBasicMaterial,
+  LineSegments,
   Mesh,
   MeshLambertMaterial,
+  MeshPhongMaterial,
   SRGBColorSpace,
+  type Material,
+  type Object3D,
 } from "three";
 
 import type { CityData } from "@/lib/city/data";
@@ -59,13 +65,22 @@ import { decodeBldg, type BldgTable } from "../bldg";
 import {
   FLAG_HEIGHT_STALE,
   FLAG_NOYEAR,
+  UMAT_WALL,
   USE_MASK,
   isPitched,
+  legendTones,
 } from "@/components/us/city/palette";
-import { COVER_GAIN } from "@/lib/city/buildings";
+import {
+  COVER_GAIN,
+  EDGE_SHADE,
+  INK_W0,
+  STROKE_MIN_PX_A,
+  inkFor,
+} from "@/lib/city/buildings";
 import { ROLE_FRONT, derivedBands, faEra, faGlassy, storeysOf } from "@/lib/city/facades";
 import {
   FACADE_TILES,
+  TILE_CURTAIN,
   facadeAtlas,
   facadeGroundTile,
   facadeModuleM,
@@ -75,7 +90,26 @@ import {
   type FacadeKey,
 } from "../facade";
 import { hipForm, hipPlan, trayForm, type FormSink } from "../roof-form";
-import { bldgMaterials, roofShadeTable, type MaterialConfig } from "../materials";
+import {
+  bldgMaterials,
+  legendDraw,
+  roofShadeTable,
+  type LocaleLegend,
+  type MaterialConfig,
+} from "../materials";
+import {
+  BORN_UNDATED,
+  FRESH_ROOF,
+  FRESH_WALL,
+  OFF_RANGE,
+  RISE_ATTR,
+  packBorn,
+  riseNodes,
+  risePhase,
+  type RiseNodes,
+} from "../rise";
+import { ROOF_GRAIN_M, roofGrainTexture } from "../roof-grain";
+import { upFaceTransferRGB } from "../up-face";
 import type { CityLayer } from "../engine";
 
 export interface BuildingsLayerOptions {
@@ -95,6 +129,12 @@ export interface BuildingsLayerOptions {
   skipGids?: ReadonlySet<number>;
   /** what decides which entry of each a footprint gets */
   materials: MaterialConfig;
+  /** THE ARRIVAL WAVE, and it is ONE OBJECT FOR THE WHOLE CITY — see
+   *  `rise.ts` §ONE SET OF NODES. `buildingsLayer` builds one and hands it to
+   *  every chunk; a caller may pass its own to share the wave with another
+   *  layer that stands on these roofs. Absent, a single mesh gets a private
+   *  one, which is right for a test and wrong for a city. */
+  rise?: RiseNodes;
 }
 
 
@@ -135,6 +175,94 @@ const WBOT = WA.wbot;
    the ground already matches. */
 const WALL_LIGHT_COMP = 1.50;
 
+/* ── THE INK EDGE, AND HOW 166,166 OUTLINES COST ONE DRAW CALL A CHUNK ─────
+   *"The outline is what separates one house from the one it shares a party
+   wall with: two neighbours of the same tone and height are one shape without
+   it."* `scene.ts` strokes every roof polygon it fills — a hairline at
+   `EDGE_SHADE` of THAT ROOF'S OWN COLOUR — and this port drew none at all. It
+   is a large part of why the published page reads as DRAWN and this one reads
+   as rendered.
+
+   ── THE GEOMETRY IS FREE, WHICH IS THE WHOLE TRICK ───────────────────────
+   The roof ring is already in the vertex buffer — 885,490 corners, positions
+   baked and rewritten by `setStep` — so the outline is an INDEX BUFFER over
+   vertices that already exist and a colour attribute over the same 2.66 M
+   fixed-ring slots. No second position array, no second `setStep` pass, and
+   one `LineSegments` per chunk.
+
+   ── THE WIDTH IS ONE DEVICE PIXEL AND CANNOT BE 0.7 ──────────────────────
+   `edgeWidth` runs 0.7 px at district zoom to 1.5 px at street. Neither
+   backend can draw either: WebGL2's `lineWidth` is clamped to 1 by every
+   driver this ships on, and WebGPU's line primitive is 1 px by construction.
+   A fat-line pass would be four vertices and two triangles per segment —
+   1.77 M triangles for the hairline alone, on top of a scene that already
+   draws 8.4 M.
+
+   So the width is spent as COVERAGE instead: a 1 px line at `INK_W0` alpha
+   lays down the same ink per unit length as a 0.7 px line at full alpha,
+   which is the quantity the reader integrates. The 0.7 -> 1.5 px OPENING at
+   street zoom is NOT ported and this is the record of it: it is keyed on the
+   building's own projected width, and a static index buffer cannot carry a
+   per-building function of the camera. `edgeInk`'s two darker values go with
+   it. What is ported is the line the page draws at every camera up to
+   `INK_PX0`, which is the fabric, the district frame and the whole-city
+   frame — and that is where the outline is doing the work.
+
+   ── AND THE GATE, WHICH IS NOT OPTIONAL ──────────────────────────────────
+   `scene.ts` refuses the stroke under `STROKE_MIN_PX_A` — 3 px of projected
+   width. At the whole-city stop a house is 1.2 px across, and outlining it
+   would replace the house with its own outline: the fabric would go grey.
+   A mesh has no projected width, so the gate is moved into WORLD metres at
+   each band's own published stop scale — 10.34 m per pixel at the city stop,
+   3.10 at the district, 1.03 at the block and the street — and the outline
+   is built as THREE index buffers, one per band, each in the same year order
+   as everything else so the century scrub still gates by prefix.
+
+   Two ways this is coarser than the page's own gate, both stated: the scale
+   is the band's NOMINAL one, so a reader zoomed between two stops gets the
+   gate a little early or late; and the width is the ring's larger PLAN extent
+   rather than its projected one, which the axonometric squash makes an upper
+   bound — so a few more buildings carry an outline than the page would give
+   one, never fewer. */
+const EDGE_MPP: readonly number[] = [10.34, 3.10, 1.03];
+const EDGE_MIN_M: readonly number[] = EDGE_MPP.map((m) => m * STROKE_MIN_PX_A);
+
+/* ── AND WHAT THE RIG RETURNS FOR A SURFACE POINTING STRAIGHT UP ───────────
+   A roof is drawn at the value the record publishes for it. `palette.ts` §39
+   is the whole argument: the measured aerial palette is *"a surface under
+   full sunlight"* and `PAINT_TO_PICTURE` moves it onto the picture's scale so
+   that the number in the table IS the number the roof should paint. So the
+   rig's job on a roof is to return 1.0, and `roofTone` — which lifts every
+   entry because a roof is the top face, the one the sun lands on — assumes
+   exactly that.
+
+   MEASURED, roof by roof, at the block stop (`roofprobe.mjs`: the ring's own
+   vertices averaged in scene space, projected with the engine's own camera,
+   a 5 x 5 median at the roof's centroid, against the linear colour that ring
+   was actually given):
+
+     the occlusion pass   -1.0 of 255      turning it off recovers one level
+     the shadow map       -1.3 of 255      and it two more
+     the palette chain    0                `roofShadeTable` is byte for byte
+                                           the Canvas path's `roofNF` at zero
+                                           haze and unit gain — checked, not
+                                           assumed
+     what is left        -37 to -65        the light
+
+   None of the four candidates the brief named is where the value goes. It
+   goes into the diffuse transfer for an UP normal, which is under 1 and is
+   `light.ts`'s to set — and `light.ts` is being rewritten in the same hour
+   this was measured, so a constant typed in here would be stale by morning.
+
+   So it is not typed in. The layer reads the rig OFF THE SCENE its own meshes
+   were added to, on the first frame, and carries the reciprocal — the same
+   move `WALL_LIGHT_COMP` makes for the two wall normals, with the number
+   computed instead of transcribed. It rides on the material's colour rather
+   than the vertex colour, so it costs one `setScalar` and no re-upload, and
+   the roof forms' own declared values (`DE.deckv`, `DE.innerv`, `DE.outerv`)
+   stay on the byte scale they were written for. */
+const ROOF_COMP_MAX = 4;
+
 /** `face/<cell>` mirrors `bldg/<cell>` row for row; the solo table's is named
  *  once. A WRONG face chunk reads as a plausible building and a missing one
  *  reads as fewer openings, so this returns null rather than guessing. */
@@ -148,6 +276,100 @@ function faceKeyFor(key: string): string | null {
 const BAY_M = 4.6;
 /** and how tall a storey is, when the roll gives no count */
 const STOREY_M = 3.4;
+
+/** the tinted materials this layer makes all carry a `color`; the outline's
+ *  `LineBasicMaterial` does too, and the step gain is meant for none of them
+ *  to escape. Written as a read rather than a cast so a material without one
+ *  is skipped instead of throwing. */
+function colourOf(m: Material): Color | null {
+  const c = (m as unknown as { color?: Color }).color;
+  return c && typeof c.setScalar === "function" ? c : null;
+}
+
+/** a stock material with the two node slots the renderer reads off it */
+type NodeSlots = Material & { positionNode?: unknown; colorNode?: unknown };
+
+/**
+ * THE ARRIVAL WAVE, ONTO A STOCK MATERIAL — AND IT IS STILL A STOCK MATERIAL.
+ *
+ * `engine.ts` states the constraint this layer lives under: *"a hand-written
+ * `ShaderMaterial` cannot cross this line. GLSL is not a node graph. Every
+ * layer here therefore uses stock materials, and anything that wanted a shader
+ * is either baked into a texture or expressed as geometry"* — and the reason
+ * given is that stock materials are *"what the shadow pass and any future
+ * post-processing can substitute their own program for."*
+ *
+ * A TSL node is not a `ShaderMaterial` and does not cross that line. Three's
+ * own `NodeLibrary.fromMaterial` copies every own property of a stock material
+ * onto the node material it builds, so `positionNode` and `colorNode` set here
+ * arrive intact on both backends, with no import of `three/webgpu` and no
+ * second material class in this file.
+ *
+ * ── AND THE SHADOW FOLLOWS, WHICH IS THE PART THAT WAS CHECKED ──────────
+ * The header's warning about a custom vertex shader was that *"shadows would
+ * have been cast by a city lying flat at the origin"*, because the shadow pass
+ * substitutes its own program. Read in three r180's own renderer: the shadow
+ * pass copies `material.positionNode` ONTO the override material for the
+ * duration of the draw and puts it back afterwards. So a building that is
+ * half up casts a half-height shadow, without this layer knowing there is a
+ * shadow pass. It is `colorNode` that the override does not take — which is
+ * correct, since a depth pass has no colour.
+ *
+ * The position is still BAKED and the node only ever SUBTRACTS from it: at
+ * rest the term is multiplied by a uniform zero, so a settled frame is the
+ * baked buffer to the last bit and everything the bake bought — real lights, a
+ * real shadow map, the occlusion pass — is untouched.
+ */
+function applyRise(m: Material, rise: RiseNodes, colour: unknown): void {
+  const slots = m as NodeSlots;
+  slots.positionNode = rise.position;
+  slots.colorNode = colour;
+}
+
+/**
+ * The city's own locale legend, off its own manifest.
+ *
+ * `descriptor.ts` states what the engine is allowed to know about a city:
+ * whatever arrives in the descriptor and, through it, that city's own
+ * `manifest.json`. This reads four published quantities out of it — the point
+ * distances are measured from, the largest such distance, and two points that
+ * fix a dividing line — and hands them to `legendTones`, which is the
+ * renderer's own material table.
+ *
+ * `LEGEND_KEYS` is DATA, not logic: it is the names THIS FORMAT gives those
+ * three points, which are a city's names for its own places and mean nothing
+ * to this file. A city whose manifest names them otherwise passes
+ * `materials.legend` outright and never reaches here.
+ */
+const LEGEND_KEYS = { origin: "downtown", lineA: "ferry", lineB: "castro" } as const;
+
+function legendFromManifest(data: CityData): LocaleLegend | null {
+  const p = data.manifest.proj as unknown as Record<string, unknown> | undefined;
+  const b = data.manifest.buildings as unknown as Record<string, unknown> | undefined;
+  const pt = (k: string): [number, number] | null => {
+    const v = p?.[k];
+    return Array.isArray(v) && v.length >= 2 &&
+      typeof v[0] === "number" && typeof v[1] === "number"
+      ? [v[0], v[1]]
+      : null;
+  };
+  const o = pt(LEGEND_KEYS.origin);
+  const a = pt(LEGEND_KEYS.lineA);
+  const c = pt(LEGEND_KEYS.lineB);
+  const maxR = b?.maxR;
+  if (!o || !a || !c || typeof maxR !== "number" || !(maxR > 0)) return null;
+  let dx = c[0] - a[0];
+  let dy = c[1] - a[1];
+  const L = Math.hypot(dx, dy);
+  if (!(L > 0)) return null;
+  dx /= L;
+  dy /= L;
+  return {
+    originX: o[0], originY: o[1], maxR,
+    lineX: a[0], lineY: a[1], lineDX: dx, lineDY: dy,
+    tones: legendTones,
+  };
+}
 
 const _c = new Color();
 function toRGB(hex: string): [number, number, number] {
@@ -167,13 +389,18 @@ export function buildingsMesh(
   tb: BldgTable,
   o: BuildingsLayerOptions,
 ): {
-  meshes: Mesh[];
+  meshes: Object3D[];
   setStep: (zex: number, zexb: number) => void;
+  setBand: (step: number) => void;
   setYear: (year: number | undefined) => void;
-  materials: MeshLambertMaterial[];
+  /** the wall materials, which carry `WALL_LIGHT_COMP` in their vertices */
+  materials: Material[];
+  /** the roof material alone: it takes the up-face compensation as well */
+  roofMaterials: Material[];
 } | null {
   const n = tb.n;
   if (!n) return null;
+  const rise = o.rise ?? riseNodes();
 
   const nv = tb.off[n];
   /* ── THREE RINGS, NOT TWO, AND THE THIRD IS WHY WALLS READ AS WALLS ─────
@@ -191,9 +418,46 @@ export function buildingsMesh(
   const aElev = new Float32Array(V);
   const aH = new Float32Array(V);
   const aCol = new Float32Array(V * 3);
+  /* the outline's colour, over the FIXED rings only: the line indices below
+     reference the roof ring and nothing else, so this is 2.66 M slots for the
+     city rather than the 6.95 M the form vertices bring. Eight bits, because
+     an ink is a dark colour and a 1/255 step of a dark linear value is under
+     one step of the 8-bit frame it lands in. */
+  /* ── FOUR BYTES A VERTEX, NOT THREE, AND WEBGPU IS WHY ──────────────────
+     The ink only ever needed three: a colour byte each for red, green and
+     blue, `normalized` turning them back into the 0..1 the shader multiplies
+     with. WebGL 2 takes that happily. WebGPU does not — a vertex buffer's
+     `arrayStride` must be a multiple of four, and three bytes is not:
+
+       Vertex buffer arrayStride (3) is not a multiple of 4.
+        - While validating buffers[4]. … CreateRenderPipeline(
+          "renderPipeline_LineBasicMaterial_382")
+
+     And an invalid pipeline is not a local failure there. The whole command
+     buffer it is encoded into is rejected, so the ENTIRE render pass goes
+     with it: on the WebGPU backend the city came back as bare terrain,
+     coastline and labels, with every building, street and tree missing, off
+     this one attribute. That is what had the backend pinned to WebGL 2.
+
+     So the fourth byte is padding, written opaque and never read as alpha by
+     anything: `LineBasicMaterial` with `vertexColors` takes a four-component
+     colour and uses the fourth as alpha, and 255 is the alpha it already had. */
+  const aInk = new Uint8Array(V * 4);
   /* the facade's own coordinates: u counts BAYS along the wall, v counts
      STOREYS up it. Both are the building's, not the texture's. */
   const aUV = new Float32Array(V * 2);
+  /* ── AND THE YEAR THE ROLL DATES THIS VERTEX'S BUILDING TO ─────────────
+     `rise.ts` §THE YEAR AND THE JITTER IN ONE FLOAT. The draw range below
+     answers *does this building exist yet*; this answers *how far through its
+     own arrival is it*, which a prefix cannot say. Four bytes a vertex, which
+     is the smallest legal vertex stride WebGPU has. */
+  const aBorn = new Float32Array(V);
+  /* ── AND WHERE ITS BUILDING'S CENTRE IS, FROM HERE ────────────────────
+     `rise.ts` §THE WAVE IS PER BUILDING: the arrival wave is read at the
+     footprint's centroid and not at the corner, or a building shears as it
+     goes up. Signed 16-bit over `OFF_RANGE`, so it is 4 bytes and not 8, and
+     a step is 6 cm of ground. */
+  const aOff = new Int16Array(V * 2);
 
   /* ── THE FORM GEOMETRY GROWS; THE THREE RINGS DO NOT ────────────────────
      A tray and a hip add vertices this loop cannot count in advance — a deck
@@ -205,6 +469,24 @@ export function buildingsMesh(
   const exElev: number[] = [];
   const exH: number[] = [];
   const exCol: number[] = [];
+  /* a hip's ridge and a parapet's fascia belong to the building that grew
+     them, so they carry its year and rise with it — set once per footprint
+     below and read by `pushVert`, because a roof builder has no idea which
+     building it is inside */
+  const exBorn: number[] = [];
+  const exOff: number[] = [];
+  let curBorn = BORN_UNDATED;
+  let curCx = 0;
+  let curCy = 0;
+  /** the largest half-extent any footprint asks the offset to carry, so the
+   *  dev accumulator can say whether `OFF_RANGE` is generous or lucky */
+  let maxOff = 0;
+  const OFF_Q = 32767 / OFF_RANGE;
+  const packOff = (v: number): number => {
+    const a = Math.abs(v);
+    if (a > maxOff) maxOff = a;
+    return Math.max(-32767, Math.min(32767, Math.round(v * OFF_Q)));
+  };
   /* the form vertices carry a facade coordinate too now — a shopfront band's
      head is a WALL vertex and has to tile with the body above it. Everything
      the roof builders make still takes (0, 0), which is the tile leaving it
@@ -219,6 +501,8 @@ export function buildingsMesh(
     exH.push(hM2);
     exCol.push(r, g, b);
     exUV.push(u, v);
+    exBorn.push(curBorn);
+    exOff.push(packOff(curCx - x), packOff(curCy - y));
     return V + exElev.length - 1;
   };
   const sink: FormSink & {
@@ -227,8 +511,24 @@ export function buildingsMesh(
       r: number, g: number, b: number, u: number, v: number,
     ) => number;
   } = {
+    /* ── A ROOF FORM'S VERTEX CARRIES THE GRAIN'S COORDINATE ─────────────
+       World metres over the tile's own side, which is what makes the stipple
+       a size on the GROUND rather than on the screen — `roof-grain.ts` §the
+       tile is in world metres. `hM2` is folded into `v` so that a VERTICAL
+       band inside a roof form — the parapet's inner face, the fascia — gets
+       some travel across the tile instead of sampling one line of it
+       stretched down 0.85 m. It is an offset on a horizontal surface and
+       therefore changes nothing there.
+
+       These vertices are referenced by roof triangles and by nothing else,
+       which is why `uv` can be reused for them at all: the walls read the
+       same attribute and take their bays and storeys off the three fixed
+       rings. See `roof-grain.ts` §and no second uv set. */
     vertex(x, y, elevM, hM2, r, g, b) {
-      return pushVert(x, y, elevM, hM2, r, g, b, 0, 0);
+      return pushVert(
+        x, y, elevM, hM2, r, g, b,
+        x / ROOF_GRAIN_M, (y + hM2) / ROOF_GRAIN_M,
+      );
     },
     vertexUV: pushVert,
     tri(a, b, c2) {
@@ -266,6 +566,8 @@ export function buildingsMesh(
      glassy, whether the ground floor is a shop, and whether the wall is a
      party edge the record says takes no openings at all. */
   const idxWall: number[][] = FACADE_TILES.map(() => []);
+  /* the outline, one index buffer per camera band — see `EDGE_MIN_M` */
+  const idxEdge: number[][] = EDGE_MIN_M.map(() => []);
   void triCount;
 
   /* ── THE YEAR IS A DRAW RANGE, AND THAT IS THE WHOLE TRICK ──────────────
@@ -289,26 +591,71 @@ export function buildingsMesh(
   /** index-buffer length after each emitted building */
   const roofMark: number[] = [];
   const wallMark: number[][] = FACADE_TILES.map(() => []);
+  const edgeMark: number[][] = EDGE_MIN_M.map(() => []);
 
   /* the roof palette with its four height shades already applied, so the
      lookup below is one index rather than a colour computation per footprint */
-  const roofRGB = roofShadeTable(o.roofPalette).map(toRGB);
+  const roofShadeHex = roofShadeTable(o.roofPalette);
+  const roofRGB = roofShadeHex.map(toRGB);
+  /* ── AND ITS OWN INK, WHICH IS NOT ONE COLOUR ────────────────────────────
+     `inkFor` is a luminance STEP below the roof, clamped into [32, 52] of 255
+     — not a fraction of it. `lib/city/buildings.ts` §the ink gap records why:
+     over the measured 32-entry aerial palette a fixed multiply gives a gap of
+     19 on the darkest roof and 96 on the lightest, so the outline disappears
+     at one end and turns into a poster outline at the other. One entry per
+     (palette colour, height shade), computed once for the chunk. */
+  const inkRGB = roofShadeHex.map((h) => toRGB(inkFor(h, EDGE_SHADE)));
   const wallRGB = o.wallPalette.map(toRGB);
   const mat = bldgMaterials(tb, o.materials);
 
+  /* ── DEV-ONLY, AND IT IS A MEASURING INSTRUMENT ────────────────────────
+     A frame statistic cannot answer *are the roofs dark*: at the block camera
+     the paired captures come out +5.0 points of mean luminance, and the roofs
+     are still visibly under the published page's, because the walls are over
+     it by more than the roofs are under it. So the probe is per ROOF: the
+     ring's own vertex range and the colour that ring was actually given, so a
+     harness can average the ring in scene space, project it with the engine's
+     own camera and read the pixel the roof landed on. `__cityGLRoofProbe` is
+     the `__cityWA` idiom and it is stripped from the production build. */
   /* DEV-ONLY, the `__cityWA` idiom: which palette bucket the city actually
      lands in. Written because the first cut came out near-black and the
      candidates — a colour space, a shade table, the nosample bit — could not
      be told apart by looking at the frame. */
   if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
-    const g = globalThis as { __cityGLMat?: { roof: number[]; nosample: number; n: number } };
-    const acc = (g.__cityGLMat ??= { roof: new Array(64).fill(0), nosample: 0, n: 0 });
+    const g = globalThis as {
+      __cityGLMat?: {
+        roof: number[]; wall: number[]; noRowWall: number[];
+        nosample: number; noRow: number; n: number; maxOff: number;
+        /** where the no-roll-row footprints actually are, so a harness can
+         *  point a camera at them rather than guess a neighbourhood */
+        noRowAt: number[];
+      };
+    };
+    const acc = (g.__cityGLMat ??= {
+      roof: new Array(64).fill(0),
+      wall: new Array(64).fill(0),
+      /* the wall histogram of the footprints NO ROLL ROW REACHES, which is
+         the population the locale legend exists for and the one that used to
+         be a single white box repeated across the Presidio and the piers */
+      noRowWall: new Array(64).fill(0),
+      nosample: 0, noRow: 0, n: 0, maxOff: 0, noRowAt: [] as number[],
+    });
     for (let i = 0; i < tb.n; i++) {
       acc.roof[Math.min(63, mat.roof[i])]++;
+      acc.wall[Math.min(63, mat.wall[i])]++;
+      if (!UMAT_WALL[tb.u[i] & USE_MASK]) {
+        acc.noRow++;
+        acc.noRowWall[Math.min(63, mat.wall[i])]++;
+        acc.noRowAt.push(tb.cx[i], tb.cy[i]);
+      }
       if ((tb.paintFlag[i] & o.materials.noSampleBit) !== 0) acc.nosample++;
       acc.n++;
     }
   }
+  const DEV = typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production";
+  /** roof-ring start, ring length, and the linear RGB that ring was given */
+  const probe: { v0: number[]; vn: number[]; rc: number[]; gid: number[] } | null =
+    DEV ? { v0: [], vn: [], rc: [], gid: [] } : null;
 
   for (const i of ord) {
     const s = tb.off[i];
@@ -320,6 +667,30 @@ export function buildingsMesh(
 
     const hM = roofHeight(tb.h[i], tb.hf[i]);
     const elev = o.elevAt(tb.cx[i], tb.cy[i]);
+
+    /* ── WHEN THIS FOOTPRINT ARRIVES, AND ITS PLACE IN THE SHUFFLE ───────
+       The same gate the draw range uses, per vertex: the roll's own year
+       byte, and `BORN_UNDATED` where the roll marks the parcel "not known" —
+       those are drawn in every year and must never join a cohort, so they
+       are never given a date here either.
+
+       THE DRAW IS `legendDraw`, WHICH IS NOT THE CANVAS PAGE'S INDEX and the
+       difference is stated rather than hidden: `scene.ts` folds the id into a
+       table sized by the footprint count, this engine folds it into an
+       18-bit one (`materials.ts` §the reproducible draw). Both are a
+       deterministic uniform draw keyed on the PUBLISHED id, which is all a
+       shuffle can be — the record dates a building to a year and says
+       nothing about what order the year's cohort goes up in. Reusing the
+       engine's table costs no memory and no second seed; the cost is that a
+       building's locale tone and its place in the wave are drawn from the
+       same number, which is invisible at 3.8 % of footprints and 200 ms. */
+    curBorn =
+      (tb.u[i] & FLAG_NOYEAR) !== 0
+        ? BORN_UNDATED
+        : packBorn(tb.yr[i], legendDraw(tb.gid[i]));
+    /* the published centroid, which is where `scene.ts` reads the wave */
+    curCx = tb.cx[i];
+    curCy = tb.cy[i];
 
     /* ── WHICH ROOF THIS FOOTPRINT GETS, AND THE POPULATION IS PUBLISHED ──
        `isPitched` is the roll's own rule and is not widened here: the
@@ -348,6 +719,12 @@ export function buildingsMesh(
        `ri` / `wi`. */
     const rc = roofRGB[mat.roof[i] * 4 + mat.shade[i]] ?? [0.6, 0.58, 0.54];
     const wc = wallRGB[mat.wall[i]] ?? [0.78, 0.72, 0.62];
+    if (probe) {
+      probe.v0.push(s * 3 + c * 2);
+      probe.vn.push(c);
+      probe.rc.push(rc[0], rc[1], rc[2]);
+      probe.gid.push(tb.gid[i]);
+    }
     /* ── WHICH FACADE, AND A NUDGE SO NEIGHBOURS ARE NOT ONE GREY ────────
        `wallJitter` is bounded to +/-3.5 % — deliberately under the 8.3 %
        smallest step of `RSHADE`, the renderer's own declared difference
@@ -448,10 +825,21 @@ export function buildingsMesh(
       gndRing[k] = made;
       return made;
     };
+    const ink = inkRGB[mat.roof[i] * 4 + mat.shade[i]] ?? [0.2, 0.2, 0.2];
     let run = 0;
+    /** the ring's larger plan extent — the outline's gate, see `EDGE_MIN_M` */
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
     for (let k = 0; k < c; k++) {
       const x = tb.vx[s + k];
       const y = tb.vy[s + k];
+      if (x < x0) x0 = x;
+      if (x > x1) x1 = x;
+      if (y < y0) y0 = y;
+      if (y > y1) y1 = y;
+      aInk[(roof + k) * 4] = ink[0] * 255;
+      aInk[(roof + k) * 4 + 1] = ink[1] * 255;
+      aInk[(roof + k) * 4 + 2] = ink[2] * 255;
+      aInk[(roof + k) * 4 + 3] = 255;
       if (k > 0) {
         run += Math.hypot(x - tb.vx[s + k - 1], y - tb.vy[s + k - 1]);
       }
@@ -460,8 +848,11 @@ export function buildingsMesh(
       aUV[(foot + k) * 2 + 1] = 0;
       aUV[(wallTop + k) * 2] = u;
       aUV[(wallTop + k) * 2 + 1] = storeys;
-      aUV[(roof + k) * 2] = u;
-      aUV[(roof + k) * 2 + 1] = storeys;
+      /* the ROOF ring is a roof vertex and only a roof vertex — see the
+         sink above. It takes the grain's world-metre coordinate, not the
+         wall's bay count. */
+      aUV[(roof + k) * 2] = x / ROOF_GRAIN_M;
+      aUV[(roof + k) * 2 + 1] = (y + wallH) / ROOF_GRAIN_M;
       for (const [base, hh, col] of [
         [foot + k, 0, wBot],
         [wallTop + k, wallH, wTop],
@@ -471,6 +862,9 @@ export function buildingsMesh(
         aXZ[base * 2 + 1] = y;
         aElev[base] = elev;
         aH[base] = hh;
+        aBorn[base] = curBorn;
+        aOff[base * 2] = packOff(curCx - x);
+        aOff[base * 2 + 1] = packOff(curCy - y);
         aCol[base * 3] = col[0];
         aCol[base * 3 + 1] = col[1];
         aCol[base * 3 + 2] = col[2];
@@ -493,7 +887,13 @@ export function buildingsMesh(
        flat fan standing, which is what the page drew before either existed. */
     let roofed = false;
     if (plan) roofed = hipForm(sink, ring, elev, hM, rc);
-    if (!roofed) roofed = trayForm(sink, ring, elev, wallH, rc);
+    /* ── AND THE TRAY BUILDS ITS FASCIA ─────────────────────────────────
+       The parapet's outer face, `DE.outerv` of this roof's own colour, over
+       the top 0.85 m of the wall. `roof-form.ts` §THE PARAPET'S OUTER FACE
+       has why it is built rather than graded onto the wall, and `DE.outerv`
+       has the measurement: three legible steps at the roof edge — coping,
+       fascia, wall — instead of a building that ends in one hard line. */
+    if (!roofed) roofed = trayForm(sink, ring, elev, wallH, rc, { fascia: true });
     if (!roofed) {
       for (let k = 1; k + 1 < c; k++) {
         idxRoof.push(roof, roof + k, roof + k + 1);
@@ -538,6 +938,21 @@ export function buildingsMesh(
         );
       }
     }
+    /* ── AND THE OUTLINE THE ROOF BOUNDS ────────────────────────────────
+       The ring itself, as line segments over vertices already in the buffer.
+       A building enters a band's buffer only where its plan is wide enough
+       that the page would have stroked it at that band's scale — otherwise
+       the whole-city frame is 166,166 outlines over 166,166 one-pixel
+       houses, which is a grey wash and not a fabric. */
+    const wm = Math.max(x1 - x0, y1 - y0);
+    for (let bI = 0; bI < idxEdge.length; bI++) {
+      if (wm >= EDGE_MIN_M[bI]) {
+        const e = idxEdge[bI];
+        for (let k = 0; k < c; k++) e.push(roof + k, roof + ((k + 1) % c));
+      }
+      edgeMark[bI].push(idxEdge[bI].length);
+    }
+
     gndRing.fill(-1, 0, c);
     emittedYear.push(yearOf(i));
     roofMark.push(idxRoof.length);
@@ -552,11 +967,15 @@ export function buildingsMesh(
   const fH = new Float32Array(VT);
   const fCol = new Float32Array(VT * 3);
   const fUV = new Float32Array(VT * 2);
+  const fBorn = new Float32Array(VT);
+  const fOff = new Int16Array(VT * 2);
   fXZ.set(aXZ);
   fElev.set(aElev);
   fH.set(aH);
   fCol.set(aCol);
   fUV.set(aUV);
+  fBorn.set(aBorn);
+  fOff.set(aOff);
   for (let k = 0; k < EX; k++) {
     fXZ[(V + k) * 2] = exXZ[k * 2];
     fXZ[(V + k) * 2 + 1] = exXZ[k * 2 + 1];
@@ -569,14 +988,26 @@ export function buildingsMesh(
        parapet and a roof slope are not a wall and carry no windows */
     fUV[(V + k) * 2] = exUV[k * 2];
     fUV[(V + k) * 2 + 1] = exUV[k * 2 + 1];
+    fBorn[V + k] = exBorn[k];
+    fOff[(V + k) * 2] = exOff[k * 2];
+    fOff[(V + k) * 2 + 1] = exOff[k * 2 + 1];
   }
 
   const attrs = {
-    aElev: new BufferAttribute(fElev, 1),
     aH: new BufferAttribute(fH, 1),
     color: new BufferAttribute(fCol, 3),
     uv: new BufferAttribute(fUV, 2),
+    aBorn: new BufferAttribute(fBorn, 1),
+    /* NORMALIZED, which is what turns the short back into the -1..1 the
+       shader multiplies by `OFF_RANGE` */
+    aOff: new Int16BufferAttribute(fOff, 2, true),
   };
+  /* ONE FEWER SLOT THAN THE OTHERS, ON PURPOSE. The line indices reference
+     the roof ring only, and the roof ring lives inside the first `V` — so the
+     ink stops there rather than carrying 4.3 M form vertices that no line can
+     name. `normalized` is what turns the byte back into the 0..1 the shader
+     multiplies with. */
+  const inkAttr = new BufferAttribute(aInk, 4, true);
 
   /* THE POSITION, BAKED — see the header. `setStep` rewrites Y in place when
      the camera's band moves, which is the only thing that can change it. */
@@ -586,18 +1017,62 @@ export function buildingsMesh(
     pos[v * 3 + 2] = fXZ[v * 2 + 1];
   }
   const posAttr = new BufferAttribute(pos, 3);
+  if (probe) {
+    const g = globalThis as {
+      __cityGLRoofProbe?: unknown[];
+      __cityGLMat?: { maxOff?: number };
+    };
+    (g.__cityGLRoofProbe ??= []).push({ pos, ...probe });
+    /* the largest distance any vertex sits from its own footprint's centre,
+       across the city — the number `OFF_RANGE` has to clear */
+    if (g.__cityGLMat) {
+      g.__cityGLMat.maxOff = Math.max(g.__cityGLMat.maxOff ?? 0, maxOff);
+    }
+  }
 
   const make = (indices: number[]): BufferGeometry => {
     const g = new BufferGeometry();
     g.setAttribute("position", posAttr);
-    g.setAttribute("aElev", attrs.aElev);
+    /* ── `aElev` IS NOT UPLOADED, AND THAT IS 34.5 MB ────────────────────
+       It was here for symmetry with `aH`, which the rise shader genuinely
+       reads as `RISE_ATTR.HEIGHT`. Nothing reads this one: the Y of every
+       vertex is baked in JS by `setStep` out of the `fElev` array, which stays
+       exactly where it is — it is a CPU array, not a vertex attribute, and it
+       never needed to be both. Over 8,626,306 vertices at four bytes each that
+       is 34.5 MB of GPU buffer uploaded once and sampled never.
+
+       `layers/caps.ts` keeps its own `aElev` and its test asserts it; this is
+       only the fabric's. */
     g.setAttribute("aH", attrs.aH);
     g.setAttribute("color", attrs.color);
     g.setAttribute("uv", attrs.uv);
+    g.setAttribute(RISE_ATTR.BORN, attrs.aBorn);
+    g.setAttribute(RISE_ATTR.OFFSET, attrs.aOff);
     g.setIndex(new BufferAttribute(new Uint32Array(indices), 1));
     return g;
   };
   const gRoof = make(idxRoof);
+  /* ── THE OUTLINE'S THREE GEOMETRIES SHARE ONE VERTEX SET ───────────────
+     Same `position` object as the meshes, so `setStep` moves the outline with
+     the city for free and the buffer is uploaded once. Only the index and the
+     colour differ, and the three bands are three index attributes swapped in
+     on a band change rather than three objects in the scene. */
+  const edgeIdxAttr = idxEdge.map((ix) => new BufferAttribute(new Uint32Array(ix), 1));
+  const gEdge = new BufferGeometry();
+  gEdge.setAttribute("position", posAttr);
+  gEdge.setAttribute("color", inkAttr);
+  /* ── AND EVERYTHING THE WAVE NEEDS, AT NO COST IN MEMORY ──────────────
+     The outline has to rise with the roof it bounds and to move with the
+     ochre under it, so it reads the same three attribute OBJECTS the meshes
+     read — the built height, the arrival year, and the roof's own colour.
+     Nothing new is allocated: the line's vertices ARE roof-ring vertices, so
+     `attrs.color` bound a second time under `ROOF_COLOUR` is the same buffer
+     already on the GPU, and the ink keeps its own eight-bit `color`. */
+  gEdge.setAttribute(RISE_ATTR.HEIGHT, attrs.aH);
+  gEdge.setAttribute(RISE_ATTR.BORN, attrs.aBorn);
+  gEdge.setAttribute(RISE_ATTR.OFFSET, attrs.aOff);
+  gEdge.setAttribute(RISE_ATTR.ROOF_COLOUR, attrs.color);
+  gEdge.setIndex(edgeIdxAttr[edgeIdxAttr.length - 1]);
   /* one wall geometry per vocabulary, and the empty ones are never built */
   const wallOf: { tile: number; g: BufferGeometry }[] = [];
   for (let t = 0; t < idxWall.length; t++) {
@@ -620,16 +1095,32 @@ export function buildingsMesh(
     return lo;
   };
 
+  /** which band's outline is bound; the year range is re-applied on a change
+   *  because the two gates multiply and only one of them is a prefix */
+  let band = EDGE_MIN_M.length - 1;
+  let yearNow: number | undefined;
+
   const setYear = (year: number | undefined): void => {
+    yearNow = year;
     const k = upTo(year);
     gRoof.setDrawRange(0, k ? roofMark[k - 1] : 0);
     for (const w of wallOf) w.g.setDrawRange(0, k ? wallMark[w.tile][k - 1] : 0);
+    gEdge.setDrawRange(0, k ? edgeMark[band][k - 1] : 0);
+  };
+
+  const setBand = (step: number): void => {
+    const b = Math.max(0, Math.min(EDGE_MIN_M.length - 1, step));
+    if (b === band) return;
+    band = b;
+    gEdge.setIndex(edgeIdxAttr[b]);
+    setYear(yearNow);
   };
 
   const setStep = (zex: number, zexb: number): void => {
     for (let v = 0; v < VT; v++) pos[v * 3 + 1] = fElev[v] * zex + fH[v] * zexb;
     posAttr.needsUpdate = true;
     gRoof.computeBoundingSphere();
+    gEdge.computeBoundingSphere();
     for (const w of wallOf) w.g.computeBoundingSphere();
   };
   setStep(3.3, o.zexb);
@@ -646,20 +1137,75 @@ export function buildingsMesh(
      belong in the register. Lambert is a diffuse surface under a sun and a
      sky, which is what a gouache city is. */
   const mRoof = new MeshLambertMaterial({
-    vertexColors: true,
+    /* ── AND WHY THE FABRIC'S OWN VERTEX COLOUR IS CONSUMED BY HAND ──────
+       `rise.ts` §WHAT A MATERIAL IS ACTUALLY HANDED: the ochre is a mix
+       toward a fixed colour, not a factor, so it cannot ride the multiply
+       three would apply here. The node reads the same `color` attribute the
+       default path would have, in the same place in the chain. */
+    vertexColors: false,
     flatShading: true,
     side: DoubleSide,
+    /* ── AND THE ROOF IS A SURFACE, NOT A SWATCH ─────────────────────────
+       `roof-grain.ts` is the published stipple as a world-metre texture: the
+       tooth of gravel-and-tar. The uv it samples is the roof ring's and the
+       roof forms' — world metres over the tile's own side — which the walls
+       never read. Null in a test runner, and the roof is then the flat fill
+       it was. */
+    map: roofGrainTexture(),
   });
+  applyRise(mRoof, rise, rise.colour(FRESH_ROOF));
 
-  const materials: MeshLambertMaterial[] = [mRoof];
-  const meshes: Mesh[] = [];
-  const addMesh = (g: BufferGeometry, m: MeshLambertMaterial): void => {
+  const materials: Material[] = [];
+  const roofMaterials: Material[] = [mRoof];
+  const meshes: Object3D[] = [];
+  const addMesh = (g: BufferGeometry, m: Material): void => {
     const mesh = new Mesh(g, m);
     mesh.castShadow = true;
     mesh.receiveShadow = true;
     meshes.push(mesh);
   };
   addMesh(gRoof, mRoof);
+
+  /* ── THE OUTLINE ────────────────────────────────────────────────────────
+     One draw call for the chunk's whole outline. `INK_W0` is spent as alpha
+     rather than as width — see `EDGE_MPP` — and the line does not write depth
+     because it sits exactly ON the edge between a roof and its wall, at their
+     shared depth, and a line that writes there can occlude the surface it is
+     drawn to bound. Reading depth is kept: an outline behind a tower is
+     hidden by the tower, which is the whole reason this port has a depth
+     buffer. */
+  const mEdge = new LineBasicMaterial({
+    /* the ink is consumed by the node, which needs the ROOF over it as well
+       as the ink under it — see `rise.ts` §THE INK IS A STEP UNDER ITS OWN
+       ROOF, where leaving it alone measured 66 of 255 out */
+    vertexColors: false,
+    transparent: true,
+    opacity: INK_W0,
+    depthWrite: false,
+  });
+  applyRise(mEdge, rise, rise.inkColour);
+  materials.push(mEdge);
+  /* ── AND THE INK HAS ITS OWN ORDER, WHICH IS THE SCINTILLATION FIX ─────
+     three sorts TRANSPARENT objects by `renderOrder` first and by distance
+     from the camera second. This outline is transparent (its 0.7 px width is
+     spent as coverage — see §THE WIDTH IS SPENT AS COVERAGE) and there is one
+     per chunk, so 139 of them were sitting at the default order 0 and letting
+     the distance tie-break decide. An outline is COPLANAR with the roof it
+     draws, so that tie-break has nothing real to measure and returns a
+     different answer every time the camera moves — a hairline on every
+     building in the city, reordering against its own roof, frame after frame.
+
+     Measured by panning the camera an exact whole number of device pixels and
+     re-aligning the frames by that shift: a stable render is then identical,
+     and 0.5 % of pixels differed by 18 levels or more with the worst at 162 —
+     with the post chain and the shadow pass both off, which is what ruled out
+     the ambient occlusion and the shadow map in turn.
+
+     An outline belongs over the roof it outlines, so it takes an order above
+     the fabric and holds it. */
+  const edge = new LineSegments(gEdge, mEdge);
+  edge.renderOrder = 6;
+  meshes.push(edge);
   for (const w of wallOf) {
     /* ── THE TILE COMES OFF THE ATLAS AS ITS OWN TEXTURE ──────────────────
        Not a sub-rectangle of the sheet. This layer's uv is `(run / BAY_M,
@@ -669,17 +1215,45 @@ export function buildingsMesh(
        neighbouring vocabulary. `facadeAtlas` therefore hands back the eight
        tiles as separate textures as well as the sheet, and this is the side
        the walls use. */
-    const m = new MeshLambertMaterial({
-      vertexColors: true,
+    const map = o.atlas ? (o.atlas.tiles[w.tile] ?? null) : null;
+    const base = {
+      /* consumed by the tint node instead — see `applyRise` below and
+         `rise.ts` §WHAT A MATERIAL IS ACTUALLY HANDED */
+      vertexColors: false,
       flatShading: true,
       side: DoubleSide,
-      map: o.atlas ? (o.atlas.tiles[w.tile] ?? null) : null,
-    });
+      map,
+    };
+    /* ── AND A CURTAIN WALL REFLECTS THE SKY INSTEAD OF SHOWING A ROOM ───
+       `scene.ts` says it in those words at `flushFaces`, and `faGlassy` is
+       the published rule that decides which walls are one — post-1980 of any
+       class, or an OFFICE from 1950 on. `facadeTile` already routes those to
+       their own index buffer and their own material, which is what makes this
+       one line rather than a shader: the glass wall is the only wall in the
+       city that gets a SPECULAR term, so the faces of a tower turned toward
+       the sun catch it and the faces turned away do not.
+
+       Phong and not Lambert for exactly those walls, and nothing else moves:
+       under an orthographic camera the view vector is constant, so the lobe
+       is constant across a flat face — one value per face rather than a
+       highlight crawling over the glass, which is what a curtain wall does
+       from a mile up. `shininess` is high and `specular` is dark because a
+       window is a mirror at grazing angles and nearly black head-on; a value
+       nearer white gives the Financial District a set of chrome bars. */
+    const m = w.tile === TILE_CURTAIN
+      ? new MeshPhongMaterial({ ...base, shininess: 90, specular: 0x2b3038 })
+      : new MeshLambertMaterial(base);
+    /* A WALL AGES LIKE A WALL: 0.42 toward the ochre and a paler arrival than
+       the roof takes, which is `freshLUT`'s own split and not a second guess
+       at it. A curtain wall is on the same rule — the record puts a 1985
+       tower in its own six fresh years exactly as it puts a 1907 flat there,
+       and the material it wears is not a reason to date it differently. */
+    applyRise(m, rise, rise.colour(FRESH_WALL));
     materials.push(m);
     addMesh(w.g, m);
   }
 
-  return { meshes, setStep, setYear, materials };
+  return { meshes, setStep, setBand, setYear, materials, roofMaterials };
 }
 
 /**
@@ -692,14 +1266,41 @@ export function buildingsMesh(
 export function buildingsLayer(
   data: CityData,
   o: BuildingsLayerOptions,
-): CityLayer & { meshes: Mesh[]; count: number } {
-  const meshes: Mesh[] = [];
+): CityLayer & { meshes: Object3D[]; count: number; rise: RiseNodes } {
+  const meshes: Object3D[] = [];
   const setters: ((zex: number, zexb: number) => void)[] = [];
+  const bandSetters: ((step: number) => void)[] = [];
   const yearSetters: ((year: number | undefined) => void)[] = [];
-  const materials: MeshLambertMaterial[] = [];
+  const materials: Material[] = [];
+  const roofMaterials: Material[] = [];
   /* ONE ATLAS FOR THE CITY. Eight tiles, built once here and shared by every
      chunk — a per-chunk atlas would be 124 copies of the same eight images. */
   const atlas = o.atlas ?? facadeAtlas();
+  /* ── AND THE CITY'S OWN LEGEND FOR THE ROWS NO ROLL ROW REACHES ────────
+     `materials.legend` is the modular path and a caller may pass one. Where
+     it does not, the numbers are read off the city's OWN manifest, which is
+     the other thing `descriptor.ts` says the engine is allowed to know: an
+     origin, the largest distance from it, and two points of a dividing line.
+     `legendTones` is the renderer's material table, the same module every
+     other table in this file comes from — see `materials.ts` §this file is a
+     reader for that rule. A manifest that publishes none of it yields no
+     legend and the neutral pair stands. */
+  const mcfg = o.materials.legend === undefined
+    ? { ...o.materials, legend: legendFromManifest(data) }
+    : o.materials;
+  /* ── ONE WAVE FOR THE WHOLE CITY ────────────────────────────────────
+     Four uniforms shared by 139 chunks and every material on them, so a year
+     change writes four numbers rather than a thousand, and the materials that
+     read them are never touched. */
+  const rise = o.rise ?? riseNodes();
+  rise.setZexb(o.zexb);
+  /* DEV ONLY, the `__cityWA` idiom: a wave is a SEQUENCE and a harness has to
+     be able to hold one frame of it still. The film runs it at 622 ms a year
+     and no capture lands on the same phase twice; this lets a run of years be
+     shot at one chosen point in each of their windows. */
+  if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+    (globalThis as { __cityGLRise?: unknown }).__cityGLRise = rise;
+  }
   let count = 0;
 
   for (const c of data.manifest.chunks) {
@@ -717,12 +1318,14 @@ export function buildingsLayer(
           role: (fc.fields.role as Uint8Array) ?? new Uint8Array(0),
         }
       : null;
-    const built = buildingsMesh(tb, { ...o, atlas, face });
+    const built = buildingsMesh(tb, { ...o, atlas, face, materials: mcfg, rise });
     if (!built) continue;
     meshes.push(...built.meshes);
     setters.push(built.setStep);
+    bandSetters.push(built.setBand);
     yearSetters.push(built.setYear);
     materials.push(...built.materials);
+    roofMaterials.push(...built.roofMaterials);
     count += tb.n;
   }
 
@@ -750,26 +1353,122 @@ export function buildingsLayer(
      bright. */
   const gainAt = (step: number): number => (COVER_GAIN[step] ?? 1) ** 2.2;
 
+  /** the rig's own up-face reciprocal, PER CHANNEL, once there is a rig to
+   *  ask — see `up-face.ts` §AND THE SAME THING PER CHANNEL */
+  let roofComp: { r: number; g: number; b: number } | null = null;
+  let lastStep = 0;
+  const applyGain = (step: number): void => {
+    lastStep = step;
+    const g = gainAt(step);
+    for (const m of materials) colourOf(m)?.setScalar(g);
+    /* THE ROOF ALSO CARRIES THE UP-FACE COMPENSATION — see `ROOF_COMP_MAX`.
+       On the material and not in the vertices, so the roof forms' declared
+       values keep the byte scale `shadeRGB` writes them on and a change costs
+       one scalar rather than a 21 MB re-upload. */
+    /* ── AND THE ROOF'S IS PER CHANNEL, THOUGH TODAY THAT CHANGES NOTHING ─
+       A scalar can only put the roof at the right LEVEL; if the rig had a
+       colour, it would leave that colour on every up face in the city. Three
+       numbers instead of one, so an up face returns 1.0 on EACH channel and
+       the roof paints the value the record gives it.
+
+       MEASURED, it is currently a no-op: the same warehouse roof reads
+       204.6/200.7/190.7 with it and 204.8/200.7/190.5 without. That is the
+       useful part of the result — this rig's up-face light is already
+       neutral, so the warmth on that roof is NOT the light, and neither is it
+       the fresh-roof tint (disabling it changes nothing) nor the grain, whose
+       tile mean is 0.9929 and darkens. Against a published roof that is
+       neutral at 178.5/177.2/176.3, this one is warm at 204.6/200.7/190.7 —
+       and a `shadeHex` multiply of a neutral entry stays neutral, so what is
+       left is that this building is being given a different palette ENTRY,
+       not a different shade of the same one. That is a record-to-palette
+       question and it is the next thing to trace.
+
+       This stays because it is the correct shape of the correction and it
+       costs one `setRGB` instead of one `setScalar`. */
+    for (const m of roofMaterials) {
+      const c = colourOf(m);
+      if (!c) continue;
+      if (roofComp) c.setRGB(g * roofComp.r, g * roofComp.g, g * roofComp.b);
+      else c.setScalar(g);
+    }
+  };
+
   return {
     name: "buildings",
     meshes,
     count,
+    /* the wave, so a layer that STANDS ON THESE ROOFS can take the same one
+       and go up with them — see the follow-up note in `onYear` */
+    rise,
     onStep(step: number, zex: number, zexb: number) {
-      const g = gainAt(step);
-      for (const m of materials) m.color.setScalar(g);
+      applyGain(step);
+      /* the shader finds a building's GROUND by subtracting what the bake
+         added for its height, so the two have to be the same number — read
+         off the same argument rather than off the descriptor a second time */
+      rise.setZexb(zexb);
+      for (const f of bandSetters) f(step);
       for (const f of setters) f(zex, zexb);
+    },
+    onFrame() {
+      /* ── THE RIG IS READ ONCE, OFF THE SCENE THE MESHES ARE IN ─────────
+         Not in the constructor: a layer is built before it is added, so there
+         is no scene to ask yet and no lights in it if there were. The first
+         frame is the first moment the question has an answer, and after that
+         it is a cached number and a branch. */
+      if (roofComp !== null || !meshes.length) return;
+      const t = upFaceTransferRGB(meshes[0]);
+      if (t === null || !(t.r > 0) || !(t.g > 0) || !(t.b > 0)) return;
+      const cap = (v: number) => Math.min(ROOF_COMP_MAX, 1 / v);
+      roofComp = { r: cap(t.r), g: cap(t.g), b: cap(t.b) };
+      applyGain(lastStep);
     },
     onYear(year: number | undefined) {
       for (const f of yearSetters) f(year);
+      /* ── AND THE YEAR IS NOW TWO THINGS, NOT ONE ────────────────────
+         The draw range still answers *which buildings exist yet* off the
+         integer, and it is still one number and no upload. What the fraction
+         adds is *how far into this year we are*, which is the only new state
+         a wave needs: `film.ts` §yearOut already hands out a fractional year
+         while a run is going and pins it at `iy + 0.999` when it is not, so a
+         reader on the rail and a film that is not running both arrive here at
+         a phase of exactly 1 and the shader term collapses to zero.
+
+         The year reaches the shader as a BYTE OFFSET from the city's own
+         published epoch — `MaterialConfig.year0` — so no date is written in
+         this engine and none is derived from one.
+
+         ── AND THE FILM'S OTHER ACTS ARE NOT THIS LAYER'S ────────────────
+         `film.ts` reports `FilmState.act` and a progress through it, and its
+         `build` acts are read by *"a layer that raises something"*. This is
+         not that layer. A `build` act names ONE object by id and raises it on
+         a locked frame with the year pinned; what it names in the published
+         script is a burn hairline and a set of placemarks, neither of which
+         is fabric. The fabric's own act is `run`, and a `run` is entirely
+         expressed by the year it hands out — which is why nothing here has
+         to be told what the film is doing, and why a reader dragging the
+         rail gets exactly the same code path with the fraction at zero. */
+      rise.setYear(
+        year === undefined ? undefined : Math.floor(year) - mcfg.year0,
+      );
+      rise.setPhase(risePhase(year));
     },
     dispose() {
-      for (const m of meshes) m.geometry.dispose();
+      /* the outline is a `LineSegments` and the fabric is a `Mesh`; both hold
+         a geometry and neither is the other, so the type is asked rather than
+         assumed. Every geometry in here shares one position buffer, and
+         three's own dispose is idempotent over that. */
+      for (const m of meshes) {
+        (m as { geometry?: { dispose(): void } }).geometry?.dispose();
+      }
       for (const m of materials) m.dispose();
+      for (const m of roofMaterials) m.dispose();
       atlas?.dispose();
       meshes.length = 0;
       setters.length = 0;
+      bandSetters.length = 0;
       yearSetters.length = 0;
       materials.length = 0;
+      roofMaterials.length = 0;
     },
   };
 }

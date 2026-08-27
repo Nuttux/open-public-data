@@ -36,7 +36,7 @@ import {
 } from "three";
 
 import type { CityData } from "@/lib/city/data";
-import { ST_ALPHA, ST_C_FOOT, ST_C_ROAD } from "@/lib/city/streets";
+import { ST_ALPHA, ST_C_FOOT, ST_C_ROAD, surfaceW } from "@/lib/city/streets";
 import type { CityLayer } from "../engine";
 
 export interface StreetsLayerOptions {
@@ -65,6 +65,67 @@ function ringIndex(n: number, per: Uint8Array, len: Uint16Array): { off: Uint32A
  * on the 72 features that have one, filling it is right and cutting it out
  * would leave a hole in the road.
  */
+/**
+ * ── AND THE TRIANGLES HAVE TO BE SMALL ENOUGH TO FOLLOW THE HILL ─────────
+ *
+ * An ear clipper is free to lay ONE triangle across a whole block. On flat
+ * ground that is ideal and costs nothing. On Twin Peaks it is a lie: the three
+ * corners sit on the terrain and everything between them is a flat plane
+ * stretched over a slope that drops 40 m underneath it. What a reader sees is
+ * a grey sheet cutting across the hillside, hanging in the air at one end and
+ * buried at the other — Daniel, looking at Twin Peaks: *"weird angular grey
+ * shapes."*
+ *
+ * So every triangle whose longest side is more than `MAX_EDGE_M` is split at
+ * that side's midpoint, and the midpoint is lifted to the terrain like any
+ * other vertex. Repeated until nothing is over the limit, it turns one flat
+ * plane into a fan that follows the ground.
+ *
+ * 22 m is the published median right-of-way width (`w_p50` 22.3 m), which is
+ * the natural grain of this layer: a street is already about that wide, so
+ * splitting at it costs roughly one extra triangle per block-length of street
+ * on the flat, and only pays the real cost where the ground actually moves.
+ * The recursion is bounded at 6 levels — 64 triangles from one — so a
+ * pathological ring cannot run away.
+ */
+/* ── ONE DEPTH LADDER FOR EVERYTHING THAT LIES ON THE GROUND ─────────────
+   Every layer here is coplanar with the terrain, so none of them can be
+   separated by height — in an axonometric projection a Y offset is also a
+   SCREEN offset. They are separated in the DEPTH BUFFER instead, and the sign
+   is the whole thing: a POSITIVE `polygonOffsetFactor` pushes a polygon AWAY
+   from the camera, a negative one brings it forward.
+
+   This stack had both signs in it. The street surfaces were pushed BACK (+4
+   and +2) while the kerbs were pulled forward (-1) and the traffic islands
+   pushed back again (+1). A pushed-back surface coplanar with the ground wins
+   the depth test wherever the ground happens to slope toward the camera and
+   loses it everywhere else — and because polygon offset scales with the
+   depth SLOPE, which way it goes changes with the zoom. Daniel: *"parts of
+   the street come when I zoom in but not completely, and some not at all, it
+   seems like some sort of shading weird thing."* That is this, exactly.
+
+   So there is one ladder now, all negative, ordered by what should be on top
+   of what. Nothing in it is a taste; the ORDER is the published paint order
+   and the numbers are just consecutive.
+
+     0   the ground
+    -1   the block tint          (under the parks and the streets)
+    -2   the right of way        (the footway, wall to wall)
+    -3   the carriageway         (and the roads with no published polygon)
+    -4   the tonal contrast pass
+    -5   kerbs, islands, stairs
+    -6   crossings, lane lines, the centreline ink
+*/
+const MAX_EDGE_M = 22;
+
+/* dev-only tally: how much of the published network never becomes geometry.
+   A street with a centreline and no surface is the shape of the complaint
+   *"there's a trace of a street but no asphalt"*, and there are three ways to
+   get one — no ring at all, a ring of fewer than three points, and a ring the
+   ear clipper refuses. This counts all three so the answer is a number. */
+const STAT = { rings: 0, short: 0, failed: 0, noRow: 0, noRoad: 0, features: 0 };
+const MAX_SPLIT_DEPTH = 6;
+
 function ringTris(
   x: Float32Array,
   y: Float32Array,
@@ -76,7 +137,8 @@ function ringTris(
   idx: number[],
 ): void {
   const m = to - from;
-  if (m < 3) return;
+  if (m < 3) { STAT.short++; return; }
+  STAT.rings++;
   /* REAL `Vector2`s, not plain objects. `triangulateShape` strips duplicate
      end points with `points[l - 1].equals(...)`, so `{ x, y }` throws
      `points[l-1].equals is not a function` — the same shape of mistake the
@@ -86,14 +148,53 @@ function ringTris(
   const contour: Vector2[] = new Array(m);
   for (let k = 0; k < m; k++) contour[k] = new Vector2(x[from + k], y[from + k]);
   const faces = ShapeUtils.triangulateShape(contour, []);
-  if (!faces.length) return;
+  if (!faces.length) { STAT.failed++; return; }
+
   const base = pos.length / 3;
   for (let k = 0; k < m; k++) {
     const wx = x[from + k];
     const wy = y[from + k];
     pos.push(wx, elevAt(wx, wy) * zex, wy);
   }
-  for (const t of faces) idx.push(base + t[0], base + t[1], base + t[2]);
+
+  /** a vertex at (wx, wy), on the ground, appended once */
+  const put = (wx: number, wy: number): number => {
+    const i = pos.length / 3;
+    pos.push(wx, elevAt(wx, wy) * zex, wy);
+    return i;
+  };
+  const px = (i: number): number => pos[i * 3];
+  const py = (i: number): number => pos[i * 3 + 2];
+
+  const split = (a: number, b: number, c: number, depth: number): void => {
+    if (depth < MAX_SPLIT_DEPTH) {
+      const ab = Math.hypot(px(b) - px(a), py(b) - py(a));
+      const bc = Math.hypot(px(c) - px(b), py(c) - py(b));
+      const ca = Math.hypot(px(a) - px(c), py(a) - py(c));
+      const longest = Math.max(ab, bc, ca);
+      if (longest > MAX_EDGE_M) {
+        /* split the LONGEST side, which keeps the children from degenerating
+           into slivers the way splitting a fixed side would */
+        if (longest === ab) {
+          const mid = put((px(a) + px(b)) / 2, (py(a) + py(b)) / 2);
+          split(a, mid, c, depth + 1);
+          split(mid, b, c, depth + 1);
+        } else if (longest === bc) {
+          const mid = put((px(b) + px(c)) / 2, (py(b) + py(c)) / 2);
+          split(a, b, mid, depth + 1);
+          split(a, mid, c, depth + 1);
+        } else {
+          const mid = put((px(c) + px(a)) / 2, (py(c) + py(a)) / 2);
+          split(a, b, mid, depth + 1);
+          split(mid, b, c, depth + 1);
+        }
+        return;
+      }
+    }
+    idx.push(a, b, c);
+  };
+
+  for (const t of faces) split(base + t[0], base + t[1], base + t[2], 0);
 }
 
 function mesh(
@@ -137,6 +238,30 @@ function mesh(
     opacity: ST_ALPHA,
     depthWrite: false,
     polygonOffset: true,
+    /* ── BOTH HALVES OF THE BIAS, AND THE SLOPE HALF IS THE ONE THAT
+       KEEPS A ROAD OUT OF A HILL ────────────────────────────────────────
+       `polygonOffsetUnits` is the CONSTANT half: a fixed nudge in depth,
+       the same everywhere, which is all a flat street needs to sit on top
+       of flat ground.
+
+       `polygonOffsetFactor` scales the bias by the polygon's DEPTH SLOPE in
+       screen space — how fast its depth changes from pixel to pixel. That is
+       exactly the error a constant cannot cover: two near-coplanar surfaces
+       drift apart in depth in proportion to how steeply they are turned away
+       from the viewer, so on a hill the constant runs out and the ground wins
+       pixels it should not. Daniel, on the Sunset and Twin Peaks slopes:
+       *"its that the terrain 'gobbles' it sometimes, like i feel when theres
+       height chnages its like swallowed by the ground."*
+
+       ── THIS WAS ZEROED ONCE, ON A WRONG DIAGNOSIS ──────────────────────
+       The slope term was set to 0 here on the theory that a view-dependent
+       bias was what made the ground shimmer when the map moved. It was not.
+       The shimmer was the camera: the frame was rasterised from a continuous
+       centre, so every thin thing in the city landed on a new sub-pixel phase
+       each frame — `camera.ts` §THE CAMERA THE FRAME IS DRAWN FROM has the
+       measurements and the fix. With the camera on the pixel grid the eighth-
+       of-a-pixel reversal count is 0%, WITH this term restored. Zeroing it
+       bought nothing and cost every sloped street in the city. */
     polygonOffsetFactor: offset,
     polygonOffsetUnits: offset,
   });
@@ -152,6 +277,8 @@ export function streetsLayer(
   o: StreetsLayerOptions,
 ): CityLayer & { meshes: Mesh[]; features: number } {
   const meshes: Mesh[] = [];
+  /** each chunk's own median right-of-way width, metres */
+  const medians: number[] = [];
   const gates: {
     g: BufferGeometry;
     marks: number[];
@@ -193,14 +320,36 @@ export function streetsLayer(
     const emitted: number[] = [];
     const rowMark: number[] = [];
     const rdMark: number[] = [];
+    /* the published footway band of each feature, for the fade below */
+    const fw: number[] = [];
 
     for (const i of ord) {
+      const rowBefore = rowIdx.length;
+      const rdBefore = rdIdx.length;
       for (let r = rw.fo[i]; r < rw.fo[i + 1]; r++) {
         ringTris(c.rwX, c.rwY, rw.off[r], rw.off[r + 1], o.elevAt, o.zex, rowPos, rowIdx);
       }
       for (let r = rd.fo[i]; r < rd.fo[i + 1]; r++) {
         ringTris(c.rdX, c.rdY, rd.off[r], rd.off[r + 1], o.elevAt, o.zex, rdPos, rdIdx);
       }
+      /* the footway band is the right of way less the roadway, and it is the
+         width the published ramp is keyed on. Taken from the rings' own
+         bounding boxes rather than a column, because that is what is here. */
+      let rwW = 0;
+      for (let r = rw.fo[i]; r < rw.fo[i + 1]; r++) {
+        let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+        for (let k = rw.off[r]; k < rw.off[r + 1]; k++) {
+          if (c.rwX[k] < x0) x0 = c.rwX[k];
+          if (c.rwX[k] > x1) x1 = c.rwX[k];
+          if (c.rwY[k] < y0) y0 = c.rwY[k];
+          if (c.rwY[k] > y1) y1 = c.rwY[k];
+        }
+        if (Number.isFinite(x0)) rwW = Math.max(rwW, Math.min(x1 - x0, y1 - y0));
+      }
+      if (rwW > 0) fw.push(rwW);
+      STAT.features++;
+      if (rowIdx.length === rowBefore) STAT.noRow++;
+      if (rdIdx.length === rdBefore) STAT.noRoad++;
       emitted.push(c.yr[i] === 0 ? -1 : c.yr[i]);
       rowMark.push(rowIdx.length);
       rdMark.push(rdIdx.length);
@@ -209,8 +358,8 @@ export function streetsLayer(
 
     /* the right of way first and further back, the carriageway over it — so
        what shows around the roadway is the footway, which is what it is */
-    const a = mesh(rowPos, rowIdx, ST_C_FOOT, 4, 1);
-    const b = mesh(rdPos, rdIdx, ST_C_ROAD, 2, 2);
+    const a = mesh(rowPos, rowIdx, ST_C_FOOT, -2, 1);
+    const b = mesh(rdPos, rdIdx, ST_C_ROAD, -3, 2);
     const upTo = (year: number | undefined): number => {
       if (year === undefined) return emitted.length;
       let lo = 0;
@@ -222,6 +371,8 @@ export function streetsLayer(
       }
       return lo;
     };
+    fw.sort((p2, q2) => p2 - q2);
+    medians.push(fw.length ? fw[fw.length >> 1] : 22.3);
     if (a) {
       meshes.push(a);
       gates.push({ g: a.geometry, marks: rowMark, upTo, full: rowIdx.length });
@@ -230,6 +381,10 @@ export function streetsLayer(
       meshes.push(b);
       gates.push({ g: b.geometry, marks: rdMark, upTo, full: rdIdx.length });
     }
+  }
+
+  if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+    (globalThis as { __cityGLStreetStat?: unknown }).__cityGLStreetStat = { ...STAT };
   }
 
   return {
@@ -255,19 +410,38 @@ export function streetsLayer(
         gt.g.setDrawRange(0, k ? gt.marks[k - 1] : 0);
       }
     },
-    onStep(step: number, zex: number) {
-      /* ── THE SURFACE IS NOT DRAWN AT EVERY CAMERA, AND THIS WAS A REAL BUG ──
-         The Canvas renderer gates the right-of-way SURFACE on
-         `streetsResolve`: below about two projected pixels of width the tier
-         is not dispatched at all and the network is carried by centrelines
-         alone. That is not an optimisation, it is what the picture needs.
-         Drawn at full opacity at the whole-city camera the footway tone
-         (`ST_C_FOOT`, a pale cream) covers most of the Sunset, the Richmond
-         and the Excelsior, and the frame comes back as a bleached sheet with
-         the terrain and the fabric buried under it. Daniel: *"the terrain
-         barely shows."* He was looking at this. */
-      for (const m of meshes) m.visible = step >= 1;
+    /* ── THE SURFACE FADES IN, IT DOES NOT SWITCH ON ────────────────────
+       This layer used to be gated `step >= 1`: every street surface in the
+       city appeared or vanished together the instant the camera crossed a band
+       threshold. Daniel: *"some of the street parts appearing then they
+       disappear."* Measured, all 124 chunks flip at once — 124 visible at the
+       district camera, 124 hidden at the whole-city one, with nothing in
+       between.
 
+       The published page does not have a switch. `streets.ts` §the two gates
+       is a continuous ramp on the FEATURE's own projected width, linear over
+       its own octave from `ST_SRF_PX` (1 px) to `ST_SRF_PX1` (2 px), and its
+       own header says why: *"Keyed on the feature, promotion is staggered
+       across the frame by the city's own widths and no frame is a different
+       picture from the one before it."*
+
+       One weight per chunk rather than per feature — a chunk is one mesh and
+       one material, and splitting 22,191 rights of way by width would cost
+       more draw calls than the fade is worth — so the ramp is keyed on the
+       chunk's OWN median width. Wide boulevards therefore still arrive before
+       alleys, chunk by chunk, which is the staggering the published rule is
+       after, at a coarser grain. */
+    onFrame(cam: { scale: number }) {
+      for (let i = 0; i < meshes.length; i++) {
+        /* two meshes a chunk — the footway and the roadway over it */
+        const w = surfaceW(medians[i >> 1] ?? 22.3, cam.scale);
+        const m = meshes[i];
+        const mm = m.material as MeshLambertMaterial;
+        m.visible = w > 0.004;
+        mm.opacity = ST_ALPHA * w;
+      }
+    },
+    onStep(_step: number, zex: number) {
       /* the ground's exaggeration moved, so every street vertex moves with it
          — one pass over Y, the same trick the footprints use */
       for (const m of meshes) {

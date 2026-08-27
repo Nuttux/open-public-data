@@ -370,7 +370,22 @@ function levelTile(g: CanvasRenderingContext2D, px: number): void {
   /* a tile with no marks at all — BLANK, PLAIN — is already the field and
      wants no lift; `k` would divide by zero */
   if (dark < 1e-4) return;
-  const k = (1 - FACADE_MEAN) / dark;
+  /* ── AND IT MAY ONLY LIFT, NEVER DARKEN ────────────────────────────────
+     `k = (1 - MEAN) / dark` lands the mean from either side, and that is the
+     bug. A tile with FEW marks has a small `dark`, so `k` comes out above 1
+     and the levelling drives its openings toward black to make the average
+     come out right. On the Mint and Subtreasury Building — a monumental wall
+     with a sparse punched rhythm — that turned the published small pale window
+     pairs into solid black bars, while the published page draws them at barely
+     a shade under the wall.
+
+     The purpose here was only ever to stop a DENSE vocabulary (a glass curtain
+     wall) reading two stops darker than a sparse one. That is a ceiling, not a
+     target: a wall with few windows genuinely is lighter than one that is all
+     glass, and forcing them to the same average asserts the opposite. Clamped
+     at 1, the levelling pulls the dark tiles up and leaves every other tile
+     exactly as the published vocabulary drew it. */
+  const k = Math.min(1, (1 - FACADE_MEAN) / dark);
   for (let i = 0; i < d.length; i += 4) {
     d[i] = 255 - (255 - d[i]) * k;
     d[i + 1] = 255 - (255 - d[i + 1]) * k;
@@ -415,7 +430,11 @@ export function facadeAtlas(dpr?: number): FacadeAtlas | null {
     t.wrapS = RepeatWrapping;
     t.wrapT = RepeatWrapping;
     t.colorSpace = SRGBColorSpace;
-    t.anisotropy = 4;
+    /* a wall is near-vertical and so is much less foreshortened than a roof,
+       but a facade tile is 1 px of window line at the district camera and the
+       cost of the higher sample count is the same as the roof's — see
+       `roof-grain.ts` §A ROOF IS A HORIZONTAL PLANE. */
+    t.anisotropy = 16;
     tiles.push(t);
   }
 

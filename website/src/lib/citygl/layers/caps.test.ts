@@ -218,22 +218,33 @@ d("capsLayer, against the published chunks", () => {
     layer.dispose();
   });
 
-  it("emits in a monotone year order, so the scrub can be a draw range", async () => {
+  it("emits in a monotone year order inside every camera bucket", async () => {
     const data = await loaded();
     const layer = layerOf(data)!;
     const g = layer.meshes[0].geometry;
     const full = (g.getIndex() as BufferAttribute).count;
+    /* the camera gate is a SECOND axis now, so the year is exercised with
+       every bucket open — see `caps.ts` §THE GATE IS THE RECORD'S OWN */
+    const wide = () => layer.onFrame?.({ cx: 0, cy: 0, scale: 1e6 }, 2);
+    const drawn = (): number => {
+      let n = 0;
+      for (const grp of g.groups) n += grp.count;
+      return n;
+    };
 
-    /* THE PROPERTY THE DRAW RANGE RESTS ON, checked as a property: the count
-       drawn in year Y must never fall as Y rises, must be 0 before the first
-       cap's host exists and must be everything at the settled present. */
+    /* THE PROPERTY THE GROUPS REST ON, checked as a property: the count drawn
+       in year Y must never fall as Y rises, must be 0 before the first cap's
+       host exists and must be everything at the settled present. */
+    wide();
     layer.onYear?.(undefined);
-    expect(g.drawRange.count).toBe(full);
+    wide();
+    expect(drawn()).toBe(full);
 
     let prev = 0;
     for (let y = 1800; y <= 2030; y += 5) {
       layer.onYear?.(y);
-      const c = g.drawRange.count;
+      wide();
+      const c = drawn();
       expect(c).toBeGreaterThanOrEqual(prev);
       expect(c).toBeLessThanOrEqual(full);
       prev = c;
@@ -243,37 +254,80 @@ d("capsLayer, against the published chunks", () => {
     /* and an undated host is drawn in EVERY year — the roll does not date it,
        so refusing it before some cut-off would be inventing a date */
     layer.onYear?.(-1);
-    const undated = g.drawRange.count;
+    wide();
+    const undated = drawn();
     layer.onYear?.(1000);
-    expect(g.drawRange.count).toBe(undated);
+    wide();
+    expect(drawn()).toBe(undated);
+    /* every group is a real, non-overlapping run of the one index buffer */
+    let end = 0;
+    for (const grp of g.groups) {
+      expect(grp.start).toBeGreaterThanOrEqual(end);
+      end = grp.start + grp.count;
+      expect(end).toBeLessThanOrEqual(full);
+    }
     layer.dispose();
   });
 
-  it("keeps the camera-step gate and rewrites Y from elev and h", async () => {
+  it("gates per cap on the record's own pixel floors, and rewrites Y", async () => {
     const data = await loaded();
     const layer = layerOf(data)!;
     const mesh = layer.meshes[0];
-    const pos = (mesh.geometry.getAttribute("position") as BufferAttribute)
+    const g = mesh.geometry;
+    const pos = (g.getAttribute("position") as BufferAttribute)
       .array as Float32Array;
-    const aH = (mesh.geometry.getAttribute("aH") as BufferAttribute).array as Float32Array;
+    const aH = (g.getAttribute("aH") as BufferAttribute).array as Float32Array;
+    const drawn = (): number => {
+      let n = 0;
+      for (const grp of g.groups) n += grp.count;
+      return n;
+    };
 
     layer.onStep?.(0, 3.3, 1.6);
-    expect(mesh.visible).toBe(false);
     expect(pos[1]).toBeCloseTo(FLAT_ELEV_M * 3.3 + aH[0] * 1.6, 5);
-
     layer.onStep?.(2, 2.0, 1.6);
-    expect(mesh.visible).toBe(true);
     expect(pos[1]).toBeCloseTo(FLAT_ELEV_M * 2.0 + aH[0] * 1.6, 5);
     // the two exaggerations are DIFFERENT dials, so a single scale cannot fit
     expect(FLAT_ELEV_M * 2.0 + aH[0] * 1.6).not.toBeCloseTo(
       (FLAT_ELEV_M + aH[0]) * 2.0, 5,
     );
 
-    const open = layerOf(data, { fromStep: 0 })!;
-    open.onStep?.(0, 3.3, 1.6);
-    expect(open.meshes[0].visible).toBe(true);
+    /* THE GATE IS MONOTONE IN THE CAMERA and it is not all-or-nothing: a
+       vanishing scale draws nothing, a huge one draws everything, and in
+       between the count only ever rises. That is the whole difference from
+       the layer-wide step floor this replaced, which had exactly two
+       states. */
+    const at = (scale: number): number => {
+      layer.onFrame?.({ cx: 0, cy: 0, scale }, 2);
+      return drawn();
+    };
+    expect(at(1e-9)).toBe(0);
+    const full = at(1e6);
+    expect(full).toBeGreaterThan(0);
+    let prev = 0;
+    let states = 0;
+    for (let e = -6; e <= 6; e += 0.25) {
+      const c = at(Math.pow(10, e));
+      expect(c).toBeGreaterThanOrEqual(prev);
+      if (c !== prev) states++;
+      prev = c;
+    }
+    expect(prev).toBe(full);
+    expect(states).toBeGreaterThan(2);
+
+    /* AND THE QUANTISATION IS BOUNDED. A bucket opens at its own lowest
+       `need`, so a cap can be drawn below its floor by at most the bucket's
+       internal spread — never above it. The bound is reported rather than
+       assumed, so a change in the record cannot widen it quietly. */
+    expect(layer.gateSpread).toBeGreaterThanOrEqual(1);
+    expect(layer.gateSpread).toBeLessThan(2);
+
+    /* and the buckets are a dial: one bucket is the old all-or-nothing gate */
+    const one = layerOf(data, { gateBuckets: 1 })!;
+    expect(one.meshes[0].geometry.groups.length).toBe(1);
+    expect(layer.gateSpread).toBeLessThanOrEqual(one.gateSpread);
     layer.dispose();
-    open.dispose();
+    one.dispose();
   });
 
   it("paints every vertex a colour the two published tables can produce", async () => {
@@ -361,7 +415,12 @@ d("capsLayer, against the published chunks", () => {
        this proves it for the curves THIS RECORD ACTUALLY PUBLISHES, so a
        seventh profile appearing in a future encode cannot slip a backwards
        band past a material that will not draw it. */
-    const mat = layer.meshes[0].material as MeshLambertMaterial;
+    /* one material, repeated once per camera bucket — see `caps.ts` §ONE
+       MATERIAL, `NB` TIMES OVER */
+    const mats = layer.meshes[0].material as MeshLambertMaterial[];
+    expect(Array.isArray(mats)).toBe(true);
+    for (const m of mats) expect(m).toBe(mats[0]);
+    const mat = mats[0];
     expect(mat.side).toBe(FrontSide);
     expect(mat.vertexColors).toBe(true);
     expect(mat.flatShading).toBe(true);

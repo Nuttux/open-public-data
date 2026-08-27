@@ -48,9 +48,21 @@ IDS = os.path.join(ROOT, "website/public/data/us/sf/city/base/blocks-id.json")
 
 # ── the guard ───────────────────────────────────────────────────────────────
 # A subject word is not a subject when the record is naming a street after it.
+#
+# The first version of this guard only caught the singular, adjacent form —
+# "Church street". Reading Castro/Upper Market whole showed what it misses: the
+# Board almost never names one street at a time. It writes "Church and Sixteenth
+# streets", "Church to Castro streets", "Dolores and Church streets" — and in
+# every one of those the type word is plural and sits after the OTHER name. 75
+# of the 79 "church" hits in that one neighbourhood were Church Street, which
+# would have made a paragraph about churches out of a paragraph about a street.
+# So the guard now allows one intervening "and/to <Name>" and accepts the plural.
+_ST_TYPE = (
+    r"(?:st(?:reet)?|ave(?:nue)?|blvd|boulevard|road|rd|way|drive|dr"
+    r"|place|pl|court|ct|alley|lane|terrace|plaza|highway|hwy)s?\b"
+)
 NOT_A_STREET = (
-    r"(?!\s+(?:st(?:reet)?|ave(?:nue)?|blvd|boulevard|road|rd\b|way|drive|dr\b"
-    r"|place|pl\b|court|ct\b|alley|lane|terrace)\b)"
+    r"(?![\s,]+(?:(?:and|to|&|or)[\s,]+[A-Za-z][\w'’.-]*[\s,]+)?" + _ST_TYPE + r")"
 )
 _NS = NOT_A_STREET
 
@@ -79,8 +91,12 @@ THREADS: list[tuple[str, str, str, str]] = [
     ("Taxis and garages", "old",
      r"\btaxicab\b|\bpublic garage\b|\bjitney\b",
      "Taxicab stands and public garages, as the car arrived in the city."),
+    # `Railroad Avenue` is the old name for Third Street through Bayview, so
+    # the bare word counted the street 100-odd times and made rail the
+    # neighbourhood's largest subject. Same trap as Army Street and Church
+    # Street; the guard goes on the bare word only.
     ("Railroads and spur tracks", "old",
-     r"\brailroad\b|railway company|southern pacific|\bspur track\b|union pacific",
+     r"\brailroad\b" + _NS + r"|railway company|southern pacific|\bspur track\b|union pacific",
      "Rail lines run into factories and yards — the industrial city, mostly gone by 1930."),
     ("Streetcars and transit", "old",
      r"\bstreet ?car\b|municipal railway\b|rapid transit\b|\bmuni\b|\bbus line",
@@ -96,8 +112,13 @@ THREADS: list[tuple[str, str, str, str]] = [
     ("Sewers", "old",
      r"\bsewer\b|\bcesspool\b|storm drain",
      "Sewers laid, broken, replaced — and occasionally sinking with the ground."),
+    # "arc lamp" and "gas lamp" are what the Board called a street light before
+    # about 1920, and they were going uncounted — Seacliff's whole early
+    # lighting record sat outside this pattern. "M. R." is the clerk's
+    # shorthand for the lamp size, and it is removed as often as installed.
     ("Street lights", "old",
-     r"\bstreet lights?\b|install \d+ M\. ?R\.|\belectrolier",
+     r"\bstreet lights?\b|(?:install|remove|change)\w*\s+\d+\s*M\.\s?R\.|\belectrolier"
+     r"|\barc lamps?\b|\bgas lamps?\b|\btriple top lamp\b|\bstreet lamp\b",
      "Lighting a street, block by block."),
     ("Wires put underground", "mid",
      r"underground district",
@@ -124,8 +145,17 @@ THREADS: list[tuple[str, str, str, str]] = [
     ("Libraries", "old",
      r"\bbranch library\b|library and reading room|\bpublic library\b",
      "Branch libraries — several of them shops the city rented one year at a time."),
+    # The narrow form (school site/building/purposes/annex) was written to keep
+    # every street named after a school out of the count, and it kept out the
+    # most important records too: "Ordering the construction of the Jefferson
+    # School", "Ordering Construction of Annex to Parkside School". The added
+    # forms all require a build or purchase word next to the school, so a street
+    # that merely runs past one still does not count.
     ("Schools", "old",
-     r"\bschool (?:site|building|purposes|annex)\b|\bgrammar school\b|school district",
+     r"\bschool (?:site|building|purposes|annex|lot)\b|\bgrammar school\b|school district"
+     r"|\bconstruction of (?:the |an? )?[^.]{0,40}\bschool\b"
+     r"|\bannex to (?:the )?[^.]{0,30}\bschool\b"
+     r"|\bschool\b[^.]{0,40}\bto be (?:erected|constructed)\b",
      "School sites bought, built and repaired."),
     ("Parks and playgrounds", "old",
      r"\bplayground\b|\brecreation center\b|\bmini-?park\b",
@@ -140,7 +170,8 @@ THREADS: list[tuple[str, str, str, str]] = [
      r"\bclinic\b|\bhospital\b|\bhealth center\b",
      "Clinics, health centres and hospitals."),
     ("Churches", "old",
-     r"\bchurch(?:es)?\b" + _NS + r"|\bsynagogue\b|\btemple\b" + _NS + r"|\bcongregation\b|\bparish\b",
+     r"\bchurch(?:es)?\b" + _NS + r"|\bsynagogue\b|(?<!labor )\btemple\b" + _NS
+     + r"|\bcongregation\b|\bparish\b",
      "Congregations, and the buildings they asked the city about."),
     ("Theatres and shows", "old",
      r"\btheat(?:re|er)\b|motion picture|\bcinema\b|\bamusement\b|\bcircus\b|\bconcert\b",
@@ -186,9 +217,13 @@ THREADS: list[tuple[str, str, str, str]] = [
     ("Environmental review", "now",
      r"environmental quality act|\bCEQA\b|negative declaration|environmental review|environmental impact report|\bEIR\b|categorically exempt",
      "Nothing before the 1970s, then permanent: the review law arriving and staying."),
-    ("New buildings", "now",
+    # NOT "New buildings", which is what this was called and is not what it
+    # finds. Every match is a final map, a subdivision or a condominium
+    # project: land or a building being divided into separately owned pieces.
+    # Most of them are conversions of buildings that were already standing.
+    ("Land and buildings split up", "now",
      r"\bfinal map\b|\bsubdivision\b|\bcondominium project\b",
-     "Subdivisions and condominium projects — the paperwork of building."),
+     "A lot split in two, or a building divided into flats that sell separately."),
     ("Sidewalk permits", "now",
      r"\bencroachment\b|occupy a portion of (?:the )?sidewalk|\bparklet\b|shared space",
      "Steps, planters, ramps and parklets standing on public sidewalk."),
@@ -277,7 +312,8 @@ def main() -> int:
                                             "u": r.get("u"), "b": bid})
 
     out = []
-    for lbl, era, _rx, note in compiled:
+    for lbl, era, rx, note in compiled:
+        _rx = rx.pattern
         a = agg[lbl]
         if a["n"] < PAGE_RECORDS:
             print(f"  dropped (only {a['n']} records): {lbl}")
@@ -293,6 +329,12 @@ def main() -> int:
         out.append({
             "s": slug(lbl),
             "l": lbl,
+            # THE PATTERN SHIPS. The browser holds the records of whatever the
+            # reader is looking at — a street, a building, a neighbourhood —
+            # and can only say "this thread is here, N times" if it can run the
+            # same match the build ran. Python and JavaScript agree on all of
+            # these: word boundaries, character classes and negative lookahead.
+            "p": _rx,
             "era": era,
             "note": note,
             "n": a["n"],

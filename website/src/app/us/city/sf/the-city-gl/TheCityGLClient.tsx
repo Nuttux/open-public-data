@@ -25,6 +25,8 @@ import type { CityDescriptor } from "@/lib/citygl/descriptor";
 import type { FilmScript } from "@/lib/citygl/film";
 import { DEFAULT_LOOK } from "@/lib/citygl/descriptor";
 import type { CityEngine } from "@/lib/citygl/engine";
+import type { FilmPlayer } from "@/lib/citygl/film";
+import CityGLFilmChrome, { useFilmDoor } from "@/components/us/citygl/CityGLFilmChrome";
 import { useT } from "@/lib/localeContext";
 
 const CityGLMap = dynamic(() => import("@/components/us/citygl/CityGLMap"), {
@@ -60,7 +62,30 @@ const nfInt = new Intl.NumberFormat("en-US");
                 Its two subjects are 9 km apart: at the zoom where one reads as
                 a bridge the other is off frame. The cut lands on the first
                 frame of the 1936 -> 1937 run, so the second framing opens on
-                empty water and the counter crosses while you watch. */
+                empty water and the counter crosses while you watch.
+
+   ── AND WHAT EVERY SHOT SAYS ──────────────────────────────────────────────
+   `plate` is the same payload's own `title`, `copy`, `cite`, `also`, `links`
+   and `note`, transcribed by script rather than by hand so the words on
+   screen cannot drift from the words that were checked at build time. The
+   payload's own note on them: *"Every line of copy and every citation here is
+   checked at build time against the entries: a line on screen is a beat's own
+   headline, or a verbatim run of a beat's quote, at the volume and BookReader
+   leaf the shot cites."*
+
+   Three of the eight cited items have no reader-facing volume name anywhere
+   in the payload, and `volumeLabel()` in `lib/city/film.ts` — which is what
+   the published plate prints — falls through on all three and prints the raw
+   Internet Archive identifier. `journalofproceed85julydecsanfrich` on a plate
+   reads as a bug rather than as a citation, so the three are written out here
+   from the identifier itself and from the crop payload, which names one of
+   them in full. Nothing is asserted that the identifier beside it does not
+   already say, and the link under each one opens the page.
+
+   `pinYear`, `yearRuns` and `sayFromAct` are the payload's `pin`, `yrun` and
+   `say`. They decide the year the PLATE prints, which is not the year the
+   city is drawn at — see `film-plate.ts` §plateYearAt for why those are two
+   different questions and what happened when they were one. */
 const SF_FILM: FilmScript = {
   titleMs: 3200,
   endMs: 3000,
@@ -93,6 +118,28 @@ const SF_FILM: FilmScript = {
           ms: 3200,
         },
       ],
+      plate: {
+        title: "The earthquake, and the fire that followed",
+        copy: "The fire burned for three days, destroyed some 28,000 buildings, left 225,000 of the city's 400,000 people homeless, and the city recorded 478 dead.",
+        cite: {
+          vol: "San Francisco Municipal Reports, 1906-07",
+          leaf: 8,
+          url: "https://archive.org/details/excerptsfromsanf1908sanf/page/n8/mode/1up",
+        },
+        also: [
+          {
+            t: "Three days, 28,000 buildings — USGS",
+            u: "https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/casualties.php",
+            k: "data",
+          },
+          {
+            t: "478 recorded dead — Municipal Reports, 1906-07, p. 703",
+            u: "https://archive.org/details/excerptsfromsanf1908sanf/page/n6/mode/1up",
+            k: "scan",
+          },
+        ],
+        scan: 1,
+      },
     },
     {
       id: "rebuild",
@@ -112,6 +159,29 @@ const SF_FILM: FilmScript = {
           curve: "even",
         },
       ],
+      yearRuns: true,
+      plate: {
+        title: "The city rebuilds",
+        copy: "The city rebuilt more than it lost within nine years.",
+        cite: {
+          vol: "Journal of Proceedings, vol. 1",
+          leaf: 8,
+          url: "https://archive.org/details/journalofproceed01sanfrich/page/n8/mode/1up",
+        },
+        also: [
+          {
+            t: "The city's own building permits — Municipal Reports, p. 367",
+            u: "https://archive.org/details/munisanfrancisco63sanfrich/page/n384/mode/1up",
+            k: "scan",
+          },
+          {
+            t: "28,188 buildings lost — USGS",
+            u: "https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/casualties.php",
+            k: "data",
+          },
+        ],
+        note: "28,559 new-building permits by June 1914, against 28,188 lost. Permits granted are not buildings completed, and the eight-year total is a sum of the city's own annual tables that none of them states.",
+      },
     },
     {
       id: "palace",
@@ -136,6 +206,15 @@ const SF_FILM: FilmScript = {
           ms: 4400,
         },
       ],
+      plate: {
+        title: "The Panama-Pacific Exposition opens",
+        copy: "San Francisco pulled down the Exposition's palaces when the fair closed and kept the Palace of Fine Arts.",
+        cite: {
+          vol: "Journal of Proceedings, 1915",
+          leaf: 352,
+          url: "https://archive.org/details/journalofproceed1915sanfrich/page/n352/mode/1up",
+        },
+      },
     },
     {
       id: "bridges",
@@ -183,6 +262,17 @@ const SF_FILM: FilmScript = {
           cam: 2,
         },
       ],
+      yearRuns: true,
+      sayFromAct: 1,
+      plate: {
+        title: "Two bridges open",
+        copy: "The Bay Bridge and the Golden Gate opened six months apart.",
+        cite: {
+          vol: "Journal of Proceedings, vol. 31",
+          leaf: 46,
+          url: "https://archive.org/details/journalofproceed31sanfrich/page/n46/mode/1up",
+        },
+      },
     },
     {
       id: "japantown",
@@ -213,6 +303,16 @@ const SF_FILM: FilmScript = {
           ms: 5200,
         },
       ],
+      plate: {
+        title: "Japantown is emptied",
+        copy: "In 1942 the government removed everyone of Japanese descent from Japantown, and before the removal was finished the Board urged Washington to clear the quarter.",
+        cite: {
+          vol: "Journal of Proceedings, vol. 37",
+          leaf: 713,
+          url: "https://archive.org/details/journalofproceed37sanfrich/page/n713/mode/1up",
+        },
+        scan: 5,
+      },
     },
     {
       id: "charter",
@@ -243,6 +343,15 @@ const SF_FILM: FilmScript = {
           ms: 2800,
         },
       ],
+      plate: {
+        title: "The UN Charter is signed",
+        copy: "Fifty nations sign the charter at the city's war memorial.",
+        cite: {
+          vol: "Journal of Proceedings, vol. 40, part 3",
+          leaf: 726,
+          url: "https://archive.org/details/journalofproceed40part3sanfrich/page/n726/mode/1up",
+        },
+      },
     },
     {
       id: "freeways",
@@ -265,6 +374,16 @@ const SF_FILM: FilmScript = {
           ms: 4400,
         },
       ],
+      plate: {
+        title: "The freeway revolt",
+        copy: "The Board voted down seven of the ten freeways in the city's own master plan.",
+        cite: {
+          vol: "Journal of Proceedings, vol. 54",
+          leaf: 48,
+          url: "https://archive.org/details/journalofproceed54sanfrich/page/n48/mode/1up",
+        },
+        scan: 7,
+      },
     },
     {
       id: "pyramid",
@@ -295,6 +414,22 @@ const SF_FILM: FilmScript = {
           ms: 3400,
         },
       ],
+      plate: {
+        title: "The Pyramid goes up",
+        copy: "The Transamerica Pyramid went up in 1972 and stayed the tallest building in San Francisco for forty-six years.",
+        also: [
+          {
+            t: "853 feet, fifty floors, 1972 — DataSF Tall Building Inventory",
+            u: "https://data.sfgov.org/d/5kya-mfst",
+            k: "data",
+          },
+          {
+            t: "Salesforce Tower, 1,070 feet, opened 2018 — same register",
+            u: "https://data.sfgov.org/d/5kya-mfst",
+            k: "data",
+          },
+        ],
+      },
     },
     {
       id: "embarcadero",
@@ -324,6 +459,16 @@ const SF_FILM: FilmScript = {
           ms: 5400,
         },
       ],
+      pinYear: 1989,
+      plate: {
+        title: "The earthquake of 1989",
+        copy: "The earthquake killed sixty-three people, and the Board voted to demolish the Embarcadero Freeway rather than repair it.",
+        cite: {
+          vol: "Journal of Proceedings, vol. 85, July–December",
+          leaf: 374,
+          url: "https://archive.org/details/journalofproceed85julydecsanfrich/page/n374/mode/1up",
+        },
+      },
     },
     {
       id: "mission-bay",
@@ -354,6 +499,23 @@ const SF_FILM: FilmScript = {
           ms: 2400,
         },
       ],
+      yearRuns: true,
+      plate: {
+        title: "A rail yard becomes a neighbourhood",
+        copy: "The Mission Bay rail yards became a neighbourhood of sixteen thousand people.",
+        also: [
+          {
+            t: "16,710 residents — DataSF neighborhood demographics, ACS 2019–2023",
+            u: "https://data.sfgov.org/d/4qbq-hvtt",
+            k: "data",
+          },
+          {
+            t: "“formerly-underutilized Southern Pacific railyards” — OCII",
+            u: "https://sfocii.org/projects/mission-bay-south/overview",
+            k: "data",
+          },
+        ],
+      },
     },
     {
       id: "face",
@@ -376,8 +538,35 @@ const SF_FILM: FilmScript = {
           ms: 5800,
         },
       ],
+      plate: {
+        title: "San Francisco bans police use of facial recognition",
+        copy: "The city was the first in the United States to vote such a ban.",
+        also: [
+          {
+            t: "Ordinance No. 103-19, File 190110, finally passed 10 to 1 on 21 May 2019",
+            u: "https://sfgov.legistar.com/View.ashx?M=F&ID=7226786&GUID=78A20A6B-F1D1-4044-AA15-82AF55D98040",
+            k: "data",
+          },
+          {
+            t: "Board minutes, 21 May 2019 — the vote",
+            u: "https://sfbos.org/sites/default/files/bag052119_minutes.pdf",
+            k: "data",
+          },
+        ],
+        scan: 11,
+      },
     },
   ],
+  titleCard: {
+    head: "San Francisco builds itself",
+    sub: "Eleven moments from the city's own record, 1906 to 2019",
+    note: "Everything here comes from the city's own records.",
+  },
+  endCard: {
+    head: "Every line in that film is a page you can open — and so is every block on the map",
+    sub: "Click anywhere and the record opens: 41 neighbourhoods, 5,404 blocks, 2,197 named places.",
+  },
+  scansUrl: "/data/us/sf/city/film/scans.json",
 };
 
 /** SAN FRANCISCO, AND THIS IS THE ONLY PLACE IT IS NAMED. */
@@ -388,7 +577,7 @@ const SF: CityDescriptor = {
   stops: [
     { label: "Whole city", spanM: 14000 },
     { label: "District", spanM: 4200 },
-    { label: "Block", spanM: 1400 },
+    { label: "A few streets", spanM: 1400 },
     { label: "Street", spanM: 420 },
   ],
   film: SF_FILM,
@@ -399,6 +588,13 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
   const [intro, setIntro] = useState(true);
   const engineRef = useRef<CityEngine | null>(null);
   const noteRef = useRef<HTMLDetailsElement | null>(null);
+  /* THE FILM, ONCE THE MAP HAS BUILT ONE. It is created inside `CityGLMap`'s
+     own async effect — the engine, the framings and the interrupt binding all
+     live there — and handed back on `onReady`. It is state and not a ref
+     because two things on this page are rendered off it: the front door's
+     label, and the chrome. */
+  const [film, setFilm] = useState<FilmPlayer | null>(null);
+  const door = useFilmDoor(film);
 
   const openNote = useCallback(() => {
     const el = noteRef.current;
@@ -412,10 +608,22 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
       <div className="fx-city-shell">
         <CityGLMap
           descriptor={SF}
-          onReady={(engine: CityEngine) => {
+          /* TWO ARGUMENTS. `CityGLMap` hands back the engine and the film it
+             built from the descriptor above — the map owns the film's clock
+             and camera, this page owns the chrome that reads it. */
+          onReady={(engine, f) => {
             engineRef.current = engine;
+            setFilm(f ?? null);
           }}
         />
+
+        {/* ── THE FILM'S CHROME ──────────────────────────────────────────
+            Rendered HERE and not inside the map, for the same reason the
+            entry plate is: the map is `ssr:false`, and everything that is
+            words rather than pixels belongs to the page. It positions itself
+            against `.fx-city-shell` over the stage's own box and is invisible
+            until the film plays. */}
+        <CityGLFilmChrome script={SF.film} film={film} />
 
         {intro ? (
           <CityEntry
@@ -439,10 +647,43 @@ export default function TheCityGLClient({ data }: { data: TheCityPageData }) {
                 {" · drawn by the GPU (work in progress)"}
               </>
             }
+            /* ── TWO DOORS, AND THE FILM IS THE FIRST ────────────────
+               Daniel: *"no play the film on arrival."* The page was built
+               around a ninety-seven-second piece and offered the reader the
+               map and the method and never the film.
+
+               AND IT DOES NOT TAKE THE MAP'S DOOR AWAY. The published
+               plate's own note is the part worth keeping: *"The film used to
+               TAKE OVER this button the moment it could play, so a reader who
+               came for the map was offered the film and nothing else. They
+               are two different things to want."* So the map moves to a
+               second button beside it — and only once the film can actually
+               play, because before that the primary IS the map's door and
+               two of it would be a bug rather than a choice.
+
+               No new copy: every label here is a key that already exists. */
             primary={{
-              label: t("us.sf.thecity.entry.start"),
-              onClick: () => setIntro(false),
+              /* THE RUNTIME RIDES THE BUTTON. `Watch · 1 min 37 s` answers the
+                 one thing a reader wants to know before pressing something
+                 that will take the page over for a minute and a half. */
+              label: door.ready
+                ? door.resumeLabel === "resume"
+                  ? t("us.sf.thecity.film.resume_film")
+                  : `${t("us.sf.thecity.film.watch")} · ${door.runtimeLabel}`
+                : t("us.sf.thecity.entry.start"),
+              onClick: () => {
+                setIntro(false);
+                if (door.ready) door.play();
+              },
             }}
+            secondary={
+              door.ready
+                ? {
+                    label: t("us.sf.thecity.entry.start"),
+                    onClick: () => setIntro(false),
+                  }
+                : undefined
+            }
             alt={{
               label: t("us.sf.thecity.entry.method"),
               onClick: () => {

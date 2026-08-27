@@ -277,6 +277,98 @@ export interface FilmShot {
   /** the shot's own stated running time. Optional; asserted where given, so a
    *  re-timed act cannot quietly change the length of the film. */
   readonly shotMs?: number;
+
+  // ── what this shot SAYS. None of it moves the camera or the year ──────────
+
+  /** the words and the citations. Absent = a shot that says nothing. */
+  readonly plate?: FilmPlate;
+  /**
+   * THE YEAR THE PLATE PRINTS, STATED, and it beats both rules below.
+   *
+   * A shot whose sentence names two events a year apart and no year at all
+   * cannot be captioned by any reading of the counter: whatever the counter
+   * says will be a year one of the two did not happen in. So the shot states
+   * the year it is ABOUT and the fabric runs on underneath it.
+   */
+  readonly pinYear?: number;
+  /**
+   * THE COUNTER IS THE SUBJECT — print it as it climbs.
+   *
+   * The default is the opposite (see `plateYearAt`) and it has to be: a
+   * sentence about a dated event, sat over a counter still climbing toward
+   * that date, prints a year in which the thing had not happened yet. So a
+   * shot only gets a live counter when the climb IS what the shot is about.
+   */
+  readonly yearRuns?: boolean;
+  /**
+   * THE PLATE WAITS UNTIL THIS ACT INDEX. A move carries no act index and so
+   * counts as before all of them, which holds the words through the travel
+   * too. For a shot that opens by running the year a long way toward the date
+   * its sentence is about.
+   */
+  readonly sayFromAct?: number;
+}
+
+/* ── 1b · WHAT A SHOT SAYS ──────────────────────────────────────────────────
+   Shapes, and nothing else. Not one string below is written here: a title, a
+   sentence and an archive leaf are one city's record, so they arrive on that
+   city's descriptor exactly the way its framings and its years already do.
+   The player never reads any of it — `filmStateAt` reports which shot is live
+   and the chrome looks the words up — so the film runs identically whether a
+   script carries copy or not.
+
+   The field list is the published payload's own
+   (`public/data/<city>/city/film/film.json`), minus the two things this port
+   does not have a layer for.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/** The page a shot is drawn from, in the archive that holds it. */
+export interface FilmCite {
+  /** the volume as a READER would say it, not as a filename */
+  readonly vol: string;
+  /** which leaf of that volume */
+  readonly leaf: number;
+  readonly url: string;
+}
+
+/** A second source under the shot's own: what it says, and where it is. */
+export interface FilmSource {
+  /** the sentence the reader clicks */
+  readonly t: string;
+  readonly u: string;
+  /** a scanned page, or a published register */
+  readonly k: "scan" | "data";
+}
+
+/** WHAT THE PLATE PRINTS ON ONE SHOT. */
+export interface FilmPlate {
+  /** the shot's own name for what is happening */
+  readonly title: string;
+  /** the sentence. One sentence — this is a caption, not an essay. */
+  readonly copy: string;
+  /** the page the sentence is drawn from */
+  readonly cite?: FilmCite;
+  /** everything else it leans on */
+  readonly also?: readonly FilmSource[];
+  /** the caveat a DERIVED figure has to carry, deliberately not in the
+   *  sentence: a sum that appears in none of the tables it is a sum of. */
+  readonly note?: string;
+  /**
+   * WHICH NUMBERED PAGE OF THE CITY'S SCANS PAYLOAD STANDS BESIDE THIS SHOT.
+   *
+   * A number and not a path, because the crops are published as one payload
+   * with its own numbering and this file may not hold a data path. Absent =
+   * the shot cites a page nobody has cropped, which is most of them.
+   */
+  readonly scan?: number;
+}
+
+/** A still card: the one the film opens on and the one it closes on. */
+export interface FilmCard {
+  readonly head: string;
+  readonly sub: string;
+  /** the opening card's third line — where everything after it came from */
+  readonly note?: string;
 }
 
 export interface FilmScript {
@@ -289,6 +381,24 @@ export interface FilmScript {
    *  construction rather than by agreement between two statements of it. */
   readonly openYear: number;
   readonly shots: readonly FilmShot[];
+
+  // ── what the film says. Optional: a film may be wordless ──────────────────
+
+  /** the still card the opening `titleMs` carries */
+  readonly titleCard?: FilmCard;
+  /** the still card the closing `endMs` carries */
+  readonly endCard?: FilmCard;
+  /**
+   * WHERE THIS CITY PUBLISHES THE PAGES ITS SHOTS CITE.
+   *
+   * A URL and not a directory: the payload numbers its own crops and carries
+   * their sizes, their highlight boxes and their captions, so a shot names a
+   * number (`FilmPlate.scan`) and nothing here has to know a file naming
+   * convention. This is the ONE data path on the script, and it is on the
+   * script for the same reason the framings are — it is the city's, not the
+   * engine's.
+   */
+  readonly scansUrl?: string;
 }
 
 // ── 2 · the timeline ────────────────────────────────────────────────────────
@@ -674,6 +784,33 @@ export interface FilmHost {
 
 export type FilmStopReason = "end" | "interrupt" | "stop" | "dispose";
 
+/**
+ * A SECOND LISTENER, ATTACHED AFTER THE FACT.
+ *
+ * `opts.onState` and `opts.onStop` belong to whoever BUILT the player, and on
+ * this page that is the mount — it is the mount that has the engine, the fire
+ * layer and the writing to keep on the film's clock. Chrome is a different
+ * thing with a different lifetime: it mounts later, it re-mounts on a resize
+ * or a route change, and it must not require the mount to know it exists.
+ *
+ * So the player takes listeners as well as options. `watch` returns its own
+ * detach, the set is walked in insertion order, and a watcher that throws is
+ * left to throw — swallowing it here would hide a chrome bug inside the frame
+ * loop, which is the hardest place in the file to find one.
+ *
+ * `onPlay` has no equivalent in `FilmOptions` and it is the reason this exists
+ * at all: chrome that is not on screen has no way to learn that the film just
+ * started, and polling for it would be a timer running for the life of the
+ * page to catch an event the player already knows about.
+ */
+export interface FilmWatcher {
+  /** the film has started or resumed, on the frame it starts from */
+  onPlay?(s: FilmState): void;
+  /** every frame the film paints, and once on every seek */
+  onState?(s: FilmState): void;
+  onStop?(reason: FilmStopReason, s: FilmState): void;
+}
+
 export interface FilmOptions {
   /** the framings, measured against the viewport the film will play in */
   frames: FilmFrames;
@@ -711,6 +848,8 @@ export interface FilmPlayer {
   stateAt(ms: number): FilmState;
   /** re-measure the framings — the viewport changed */
   setFrames(f: FilmFrames): void;
+  /** attach a listener after construction; returns the detach */
+  watch(w: FilmWatcher): () => void;
   readonly t: number;
   readonly total: number;
   readonly running: boolean;
@@ -747,6 +886,7 @@ export function createFilm(
   let handle = 0;
   let disposed = false;
   let bound: EventTarget | null = null;
+  const watchers = new Set<FilmWatcher>();
 
   /**
    * TWICE, AND ON PURPOSE.
@@ -770,6 +910,7 @@ export function createFilm(
     host.setYear(s.yearOut);
     host.invalidate();
     opts.onState?.(s);
+    for (const w of watchers) w.onState?.(s);
     return s;
   };
 
@@ -800,7 +941,9 @@ export function createFilm(
     unbind();
     /* the camera is already where the film left it, so a stop paints nothing
        new — it only tells the caller which frame it stopped on */
-    opts.onStop?.(reason, filmStateAt(script, tl, frames, t, () => host.zex()));
+    const s = filmStateAt(script, tl, frames, t, () => host.zex());
+    opts.onStop?.(reason, s);
+    for (const w of watchers) w.onStop?.(reason, s);
   }
 
   const tick = (): void => {
@@ -829,7 +972,10 @@ export function createFilm(
       running = true;
       last = now();
       bind();
-      apply();
+      /* AFTER `apply`, so a watcher's `onPlay` and its first `onState` arrive
+         in the order they happened and both describe the same millisecond */
+      const s = apply();
+      for (const w of watchers) w.onPlay?.(s);
       handle = raf(tick);
     },
     stop,
@@ -844,6 +990,12 @@ export function createFilm(
       frames = f;
       if (running || t > 0) apply();
     },
+    watch(w: FilmWatcher): () => void {
+      watchers.add(w);
+      return () => {
+        watchers.delete(w);
+      };
+    },
     get t(): number {
       return t;
     },
@@ -857,6 +1009,9 @@ export function createFilm(
     dispose(): void {
       stop("dispose");
       disposed = true;
+      /* a disposed player holds nothing: a chrome component that outlives it
+         is a leak the mount cannot see */
+      watchers.clear();
     },
   };
 }

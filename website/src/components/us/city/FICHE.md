@@ -2803,3 +2803,173 @@ a two-word tag. It wants to be `.fx-block-tag`.
   `not scanned` on the 2020s track is exactly true.
 * **`RAIL_FROM`/`RAIL_TO`'s doc comment still explains 2010 as the DPW annual reports' reach.**
   The constant is 1990 and the sentence is about a number that is no longer in the file.
+
+## 25. Block T2, 2026-08-27 — the subjects get a destination, and the pin stops writing a filing number
+
+Three things, and each one was a thing already built that nothing on the page reached.
+
+### a. The block number is off the screen, on both maps
+
+Both pins wrote the assessor's own filing number in a mono badge beside the ring — `3538` —
+which is how this pipeline addresses a piece of ground and is not how one person has ever
+described where they are.
+
+> "i dont want block nulber to show anywhere its not relevant to me"
+
+`blockPlaceName()` has existed since §22 and turns a block's `s[]` into `Church St · 16th St ·
+Market St`. Both pins now write it:
+
+| page | before | after |
+|---|---|---|
+| `/the-city` (Canvas) | `blockCtx.id` | `blockPlaceName(record.streets) ?? blockCtx.hood` |
+| `/the-city-gl` (GL) | `blocks-id.json[pick]` | `overlay.pickLabel`, set by `CityGLMap` |
+
+The GL side is set in TWO STEPS on purpose: the neighbourhood comes off `blockCols`, which is
+already in memory, so it is on screen in the same frame as the ring; the streets need the
+shard. A reader watches `Castro/Upper Market` become `14th St · Duboce Ave · Noe St · +2`,
+which is a refinement — never a blank filling in. `pickLabel` is cleared in the `pointerup`
+handler so a new ring never wears the previous block's name for a frame.
+
+**The GL overlay's `blocks-id.json` fetch went with it** — it had exactly one reader, and that
+is 38 KB the GL page no longer requests. `CityMap.tsx` still fetches it, for `assertJoin`,
+which is a different and legitimate use.
+
+The badge is capped: 34 characters in the GL canvas, `max-width: 210px` with an ellipsis in the
+Canvas page's CSS. A pin that wraps to two lines stops pointing at anything.
+
+### b. `threads.json` is read for the first time — §a's chips, and why this is not those
+
+`build_threads.py` has been shipping 41 subjects over 41,489 records for a while. **Nothing
+rendered it.** The build's own comment says what the payload was for:
+
+> THE PATTERN SHIPS. The browser holds the records of whatever the reader is looking at — a
+> street, a building, a neighbourhood — and can only say "this thread is here, N times" if it
+> can run the same match the build ran.
+
+`threadsIn(file, rows)` in `block-records.ts` does that, and `Subjects` renders it between
+`ALSO HERE` and `DECADE BY DECADE`.
+
+**§21c–e deleted `blockSubjects` and its chips and was right to.** Those counted the Board's own
+printed headings **on one block** — `Oil Permits · 4`, a label that means nothing outside that
+block — and pressing one filtered the same block's rail. A reader learned that a word repeated.
+
+These are the opposite object:
+
+|  | the deleted chips | `Subjects` |
+|---|---|---|
+| what a label is | a string this block printed twice | one of 41 subjects measured over the whole city, named in English by hand |
+| what the number is | rows on this block under that string | rows **here** the city's own pattern matches |
+| what a press does | filters this block's rail | opens the subject: what it is, its span, its shape across San Francisco, and the records here |
+| what a reader learns | a word repeated | this ground is on a thing 429 other blocks are on |
+
+Three rules carry the weight, each of them a thing this page has already got wrong once:
+
+1. **More than once, or nothing.** The deleted chips had this rule and it is why they were
+   quiet on thin ground. One paving record does not make a block about paving.
+2. **Identity is `(u, t[:120])`** — the build's own dedupe key. A record printed at a corner is
+   stored on every block that corner touches. But two PRINTINGS on two pages stay two records,
+   because the Board read most items twice and the city count counts them twice too.
+3. **Date order.** The shards hand rows over in file order, which put `Blasting Permits — Flinn
+   & Treacy` on 15th Street as 13 December above 21 February. Two identical paragraphs in a row
+   read as a duplicate; the same two in date order read as the Board coming back to it.
+
+**It is NOT rendered on the neighbourhood**, and that is the same rule as everywhere else here:
+`hood/<i>.json` ships twelve rows a decade out of hundreds by design, so a count of it would be
+a count of a selection wearing the neighbourhood's name.
+
+The decade shape draws **every decade the file carries, empty ones included**, with the two ends
+labelled. Dropping the zeroes drew `Blasting the hills flat` as four fat bars and read as a
+subject that ran evenly for a century; it ran 1906–1931 and then stopped, and the stopping is
+the interesting half.
+
+### c. The neighbourhood had no bottom, and its byline pointed at the wrong records
+
+The written paragraphs landed (35 of 41 neighbourhoods), and they are 300–400 words each. Three
+things broke under that weight and none of them were visible when the longest paragraph was
+four lines:
+
+* **It arrived open, at 17 px, in the headline face.** Three separate problems, and the reader
+  named all three:
+
+  > "to a user arrivign on the sheet it looks lke rambling and fills the whoel space"
+  > "the font looks huge and not the same artistic direction as the rest hich reads very
+  > minimal and defined no?"
+
+  **It now arrives clamped to four lines** with `READ THE REST` under it. The paragraphs were
+  written thesis-first — *"This is a hill, and for its first thirty years the record is the
+  city trying to get streets onto it"* — so four lines is the claim, and everything after it is
+  the evidence for the claim. A CSS clamp, not a `<details>`: the whole paragraph stays in the
+  DOM, selectable, findable and read in full by a screen reader whichever state the button is
+  in.
+
+  **And it is off the display face.** `--f-disp` is Inter Tight, which this panel uses for
+  exactly one thing — the title. Four hundred words of body copy in the headline face, set
+  larger than anything under it, is a second typographic system inside a 288 px column. The
+  panel already has a size and a face for a block of prose, and it is the Board's own quoted
+  lead: `--f-ui` at **13.5 px / 1.55**, tracking left alone. What marks the paragraph as ours
+  is now `--ink` against the lead's `--ink-2`, and the ocre byline under it — which was always
+  the real signal.
+
+  The toggle went the same way. It was a sentence-case underlined link, a third link style in a
+  column that has two; it is now `fx-shelf-more`'s idiom — 10 px mono, uppercase, blue —
+  the same treatment as `WHAT THIS IS DRAWN FROM` two lines below it.
+
+  **Measured on Castro/Upper Market at 1400 px: the neighbourhood went from 2,197 px of scroll
+  to 703 px, which is the viewport.** It no longer scrolls at all on arrival.
+* **"Written by us from the records below"** pointed at the decade list, which is a selection.
+  The records the paragraph stands on are the ones behind the fold directly under that line.
+  Now: *"Written by us, out of this neighbourhood's own records."*
+* **It ended on a closed `SOURCES` fold with nothing after it.** `← Back` is at the top, the map
+  behind is covered by the panel, and the reader had scrolled 2,000 px. There is now a return
+  control at the far end that NAMES where it goes — two street names, not the pin's
+  four-plus-a-remainder, because a sentence ending in `+2` reads as a truncation bug.
+
+The neighbourhood's decade list also gained the hint the block's rail has always had. Thirteen
+bars, every one a `<details>`, and nothing said so.
+
+### d. State
+
+Typecheck clean, eslint clean on every touched file, **711 tests** (+8 for `threadsIn`), and six
+dead i18n keys from the deleted chips removed from both `en.ts` and `fr.ts` —
+`subjects_hint`, `subjects_aria`, `rail_filtered`, `rail_filtered_one_year`, `rail_unfilter`,
+and the first printing of `subjects_head`, which is now live again with a different meaning.
+
+Screenshots: the GL neighbourhood (paragraph, hint, rail, return control), a block at `A few
+streets` with six chips and `Blasting the hills flat` opened, the same on a 390 px viewport, and
+the Canvas page's pin reading `2nd St · 3rd St · Bryant St · …`.
+
+
+### e. Newest first, everywhere a reader is handed records
+
+> "in the fiche decades showing start in reverse chronological order, i think ppl wanna first
+> see the more recent stuff imo, same when you open a decade always more recent first"
+
+The rail ran 1900s at the top and the current decade eleven rungs down, and inside an opened
+decade the rows arrived in whatever order the shard held them. Somebody who has just clicked
+their own street was being handed 1907 first.
+
+Four render sites, and **no building logic touched**:
+
+| where | was | now |
+|---|---|---|
+| block rail | `railItems(groups)` | `.slice().reverse()` |
+| neighbourhood rail | `recs.decades` | `.slice().reverse()` |
+| rows in an opened decade | shard order | `byNewest()` |
+| rows under an opened subject | oldest first | newest first |
+
+`decadeGroups` and `railItems` keep building ascending on purpose. `railItems` folds runs of
+empty decades by walking forward, and `pickHeadline` chooses a decade's face out of the rows in
+the order it gets them — re-sorting upstream would silently move 3,645 decade headlines. A
+reversed COPY costs one array and changes nothing but what is on screen.
+
+**The folded silences keep reading low-to-high** — `1980s–2020s` sitting at the top of a
+descending list — because that is a range, and a range reads the same way whichever direction
+the list around it runs.
+
+`rail_hint` was **"Every decade from 1900 on"**, which after the flip described the bottom of
+the list rather than the reading order. Now: *"Newest first, back to 1900. The decades the
+record leaves empty are drawn too."* The neighbourhood's hint gained the same two words.
+
+One test changed and it changed because the behaviour did: `threadsIn` "puts them in the
+volume's date order" became "puts them in date order, newest first", with a third row a decade
+away so the assertion covers the year as well as the day.

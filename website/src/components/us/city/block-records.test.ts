@@ -15,7 +15,10 @@ import {
   isSpeakerList,
   isVoteTally,
   streetLabel,
+  threadsIn,
   type BlockDecision,
+  type ThreadRecord,
+  type ThreadsFile,
 } from "./block-records";
 
 /**
@@ -675,5 +678,129 @@ describe("blockPlaceName says where you are without a filing number (Block U1)",
      neighbourhood rather than printing an assessor's number. */
   it("returns null when the shard names no street", () => {
     expect(blockPlaceName([])).toBeNull();
+  });
+});
+
+/**
+ * `threadsIn` — the subjects under a block, a street or a door.
+ *
+ * It runs `build_threads.py`'s own patterns over the rows in hand, so the
+ * number under a chip is the number of records a press will show. Three rules
+ * carry the weight, and each is here because getting it wrong is a lie on
+ * screen rather than a crash:
+ *
+ *   · a subject has to land MORE THAN ONCE, or a single paving record makes a
+ *     block "about" paving;
+ *   · a line printed on two pages is two records, but the SAME line reached
+ *     twice from two shards is one — `(u, t[:120])`, the build's own key;
+ *   · date order, because the Board printed most items twice, months apart,
+ *     and file order put December above February.
+ */
+function thread(p: Partial<ThreadRecord> & { l: string; p: string }): ThreadRecord {
+  return {
+    s: p.l.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+    l: p.l,
+    p: p.p,
+    era: p.era ?? "old",
+    note: p.note ?? "A note in plain English.",
+    n: p.n ?? 100,
+    y0: p.y0 ?? 1906,
+    y1: p.y1 ?? 1931,
+    dec: p.dec ?? [[1900, 1]],
+    b: p.b ?? ["0001"],
+    map: p.map ?? true,
+    ex: p.ex ?? [],
+  };
+}
+
+function file(...threads: ThreadRecord[]): ThreadsFile {
+  return { n_records: 0, n_tagged: 0, threads };
+}
+
+describe("threadsIn", () => {
+  const STABLES = thread({ l: "Stables", p: "\\bstable\\b", n: 900 });
+  const PAVING = thread({ l: "Paving and grading", p: "\\bpaving\\b", n: 1429 });
+
+  it("counts only the rows in hand", () => {
+    const rows = [
+      row({ y: 1913, t: "Granting a stable for 22 horses on Tehama street." }),
+      row({ y: 1916, t: "Permission is hereby denied for a stable at 1237 Folsom." }),
+    ];
+    const out = threadsIn(file(STABLES), rows);
+    expect(out).toHaveLength(1);
+    expect(out[0].rows).toHaveLength(2);
+    expect(out[0].y0).toBe(1913);
+    expect(out[0].y1).toBe(1916);
+  });
+
+  /* one paving record on a block is not what the block is about */
+  it("says nothing about a subject that lands once", () => {
+    const rows = [row({ y: 1914, t: "Ordering the paving of Noe street." })];
+    expect(threadsIn(file(PAVING), rows)).toEqual([]);
+  });
+
+  /* the same line reached from two shards is one record, not two */
+  it("folds a line that arrives twice from the same page", () => {
+    const t = "Granting a stable for 22 horses on Tehama street.";
+    const rows = [
+      row({ y: 1913, t, u: "journalofproceed1913sanfrich/569" }),
+      row({ y: 1913, t, u: "journalofproceed1913sanfrich/569" }),
+      row({ y: 1916, t: "A stable at 1237 Folsom street." }),
+    ];
+    expect(threadsIn(file(STABLES), rows)[0].rows).toHaveLength(2);
+  });
+
+  /* two PRINTINGS are two records — the Board read most items twice */
+  it("keeps the same line printed on two different pages", () => {
+    const t = "Granting a stable for 22 horses on Tehama street.";
+    const rows = [
+      row({ y: 1913, t, u: "journalofproceed1913sanfrich/569" }),
+      row({ y: 1913, t, u: "journalofproceed1913sanfrich/631" }),
+    ];
+    expect(threadsIn(file(STABLES), rows)[0].rows).toHaveLength(2);
+  });
+
+  /* newest first, like the rail and every opened decade — a reader opening a
+     subject wants what happened here lately. It only has to be SOME date
+     order rather than the shard's: the Board printed most items twice, and in
+     file order the two printings landed next to each other out of sequence
+     and read as a duplicate. */
+  it("puts them in date order, newest first", () => {
+    const rows = [
+      row({ y: 1909, d: "02-21", t: "Blasting permit for a stable shed." }),
+      row({ y: 1909, d: "12-13", t: "Blasting permit for a stable yard." }),
+      row({ y: 1928, d: "04-30", t: "Blasting permit near a stable." }),
+    ];
+    expect(threadsIn(file(STABLES), rows)[0].rows.map((r) => `${r.y}-${r.d}`))
+      .toEqual(["1928-04-30", "1909-12-13", "1909-02-21"]);
+  });
+
+  /* rarest first: `Libraries` on 49 blocks is the reason a chip exists and
+     `Paving and grading` on 2,073 is not */
+  it("offers the rarest subject first", () => {
+    const rows = [
+      row({ y: 1914, t: "Ordering the paving of Noe street." }),
+      row({ y: 1915, t: "Ordering the paving of Castro street." }),
+      row({ y: 1913, t: "A stable on Tehama street." }),
+      row({ y: 1916, t: "A stable at 1237 Folsom street." }),
+    ];
+    expect(threadsIn(file(PAVING, STABLES), rows).map((h) => h.thread.l))
+      .toEqual(["Stables", "Paving and grading"]);
+  });
+
+  /* one engine rejecting a pattern costs that subject and nothing else */
+  it("survives a pattern this engine cannot compile", () => {
+    const bad = thread({ l: "Broken", p: "(?<broken" });
+    const rows = [
+      row({ y: 1913, t: "A stable on Tehama street." }),
+      row({ y: 1916, t: "A stable at 1237 Folsom street." }),
+    ];
+    expect(threadsIn(file(bad, STABLES), rows).map((h) => h.thread.l))
+      .toEqual(["Stables"]);
+  });
+
+  it("has nothing to say with no file or no rows", () => {
+    expect(threadsIn(null, [row({ y: 1913 })])).toEqual([]);
+    expect(threadsIn(file(STABLES), [])).toEqual([]);
   });
 });

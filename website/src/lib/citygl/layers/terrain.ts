@@ -39,13 +39,126 @@ import {
 
 import type { CityData } from "@/lib/city/data";
 import { TerrainField, type TerrainProj } from "@/lib/city/terrain";
+import { decodeCoast } from "@/lib/city/water";
+import { rasteriseRings, type CoastMask, type Ring } from "../coast-mask";
 import type { CityLayer } from "../engine";
+
+/** what the coast refinement did, so a harness can assert it deleted nothing */
+export interface CoastStats {
+  /** land cells the shipped mask calls land — the number that must not move */
+  maskCells: number;
+  /** of those, drawn as one whole quad */
+  whole: number;
+  /** of those, rebuilt as sub-quads because the published line crosses them */
+  refined: number;
+  /** of those, dropped: NEITHER published register calls any part of them land */
+  dropped: number;
+  /** land area in m2, mask cells vs what is actually built */
+  areaMask: number;
+  areaBuilt: number;
+  /** sub-cells a side */
+  K: number;
+  /** built cells moved into the hem that dissolves into the far shore */
+  hem: number;
+}
 
 export interface TerrainLayer extends CityLayer {
   readonly mesh: Mesh;
   /** the field for a band — the hit test and the overlay read the same one */
   fieldFor(step: number): TerrainField;
+  /** what the coast refinement did — null while no register is in hand */
+  coastStats(): CoastStats | null;
 }
+
+/* ── THE COAST, AND TWO DEAD ENDS BEFORE IT ───────────────────────────────
+   The DEM's land bit is per 53.8 m cell, so the edge of the land is a
+   staircase of that amplitude: five screen pixels a step at the whole-city
+   camera, running out into the bay all the way round the peninsula, and the
+   first thing a reader sees. Worse than the steps is their EXTENT. The
+   shipped mask deliberately overshoots the water — `emit_surround_coast.py`
+   keeps every cell within `city_pad_m` = 300 m of the published land — so the
+   overhang is not half a cell, it is a three-to-five cell band, and off the
+   waterfront it is a cream slab a third of a kilometre wide with the pier
+   sheds sitting on it.
+
+   ── ATTEMPT 1: DROP THE CELL IF ITS CENTRE IS OUTSIDE THE CITY'S RING ────
+   Reverted. That ring is the city's OWN outline, and this DEM is a 13.9 km
+   square with two other counties in it; everything past the county line went.
+
+   ── ATTEMPT 2: THE SAME TEST AGAINST THE REGIONAL RINGS ──────────────────
+   Reverted, and its justification is worth keeping because it READ well. The
+   surround-coast export's own note says the rings *"reproduce the shipped
+   land mask on 116,480 of 116,480 cells"* — but 416 x 280 = 116,480 is the
+   SURROUND's lattice at 110 x 139 m, and this DEM is 53.8 m and 260 x 260.
+   Against THAT grid the same rings agree on 99.95 % of cells, which sounds
+   like agreement and was **2,172 of 37,754 land cells, 5.75 %, 1,618 of them
+   interior** — 3.44 km2 of the ocean beach and the outer avenues, 1.15 km2 of
+   the northern shore park, 0.52 km2 of the made island, the whole pier field.
+   A percentage that reads like agreement can be several square kilometres of
+   city. (And for the record the other half of that note was wrong too: the
+   city ring set's four rings ARE closed, first vertex equals last, gap 0.0 m.)
+
+   ── WHY BOTH FAILED THE SAME WAY ─────────────────────────────────────────
+   A cell IS the staircase. A rule that answers PER CELL can only move the
+   staircase, never remove it, and the only thing it can trade for a smaller
+   overhang is deleted land. So this does not answer per cell.
+
+   ── WHAT IS DONE INSTEAD ─────────────────────────────────────────────────
+   `coast-mask.ts` scan-converts the published rings at K sub-cells a side and
+   this walks the answer:
+
+     - a cell wholly inside keeps its whole quad and costs nothing;
+     - a cell the line crosses is rebuilt as up to K x K sub-quads, with
+       elevation and colour interpolated bilinearly from its own four nodes,
+       so its edges still match its neighbours' exactly and there is no crack;
+     - a cell NO PART of which either register calls land is dropped.
+
+   and the rings it reads are the UNION of the two published registers, which
+   is the composition the 300 m pad was keeping those cells FOR — the city's
+   own waterfront where it has one, the regional hydrography everywhere else.
+   `coast-mask.ts` §THE UNION carries that measurement.
+
+   `coastStats()` is on the layer so a harness can re-assert the counts after
+   any change to this file: two attempts deleted land here, and the number
+   that must never move is `maskCells`. */
+
+/** sub-cells a side on a refined coastal cell — see §WHAT IS DONE INSTEAD */
+const COAST_K = 6;
+
+/* ── THE OTHER EDGE: WHERE THE DEM SIMPLY STOPS ───────────────────────────
+   The coast above is the edge the land actually has. This is the edge the
+   DATA has, and it is a different problem with a different answer.
+
+   The city's DEM is a 13.9 km square and the land does not stop at its
+   corner: the southern suburbs run off the bottom of it and the surround
+   picks them up at 110 x 139 m, with no fabric on it and its own colour
+   model. Neither raster is wrong and the join between them is still the most
+   conspicuous edge in the lower half of the whole-city frame.
+
+   MEASURED across it, ground layers only, at seventy points along the join:
+   luminance 197.0 on the city side against 201.9 on the surround's, a step of
+   4.9 — which is not what makes the line. The two numbers that do are the
+   TEXTURE, standard deviation 30.3 against 8.0, and the fact that the city's
+   mask ends in a 53.8 m staircase across flat inland ground.
+
+   ── A COLOUR MATCH WAS TRIED FIRST AND IS NOT ENOUGH ─────────────────────
+   `surround.ts` §THE JOIN carries the far shore to the city's own published
+   tone over 900 m, and it is kept because it is right on its own terms. On
+   its own it moved the step from -15 to -16 in red-minus-blue at the columns
+   the join is widest: a value match cannot hide a boundary whose real signal
+   is one side having relief and the other not, with a staircase between them.
+
+   ── SO THE CITY'S EDGE DISSOLVES INSTEAD OF STOPPING ─────────────────────
+   The outermost `HEM_CELLS` of built ground, WHERE THE SURROUND HAS LAND
+   UNDER IT, are drawn as a separate mesh that fades to nothing outward. A
+   dissolving edge has no line in it, and both signals go at once: the
+   staircase is inside the fade, and the fabric arrives gradually instead of
+   at a step.
+
+   It is applied ONLY where the surround has land underneath — at the coast
+   the neighbour is the bay, the edge is the published shoreline, and it must
+   stay exactly as crisp as `coast-mask.ts` made it. */
+const HEM_CELLS = 4;
 
 /**
  * @param zexByStep the descriptor's own exaggeration table
@@ -53,56 +166,16 @@ export interface TerrainLayer extends CityLayer {
  *        the chunk does not carry — the canopy tint, the park cells, the
  *        offshore bits. Kept as a callback because every one of those is the
  *        CITY's data and this file may not know a city.
+ * @param regional the REGIONAL shoreline rings — `data.surroundCoast().rings`.
+ *        Optional: when it is not supplied this resolves them itself, which
+ *        costs one rebuild in a microtask because the mount has already
+ *        awaited that same promise. Passing them avoids the rebuild.
  */
-/** the ray-crossing test, on the published rings' own vertices */
-function insideCoast(
-  rings: readonly (readonly (readonly [number, number])[])[],
-  x: number,
-  y: number,
-): boolean {
-  let inside = false;
-  for (const ring of rings) {
-    const n = ring.length;
-    if (n < 3) continue;
-    for (let k = 0, j = n - 1; k < n; j = k++) {
-      const yi = ring[k][1];
-      const yj = ring[j][1];
-      if (yi > y !== yj > y) {
-        const xi = ring[k][0];
-        const xj = ring[j][0];
-        if (x < xi + ((y - yi) * (xj - xi)) / (yj - yi)) inside = !inside;
-      }
-    }
-  }
-  return inside;
-}
-
-/* ── THE LAND STOPS WHERE THE PUBLISHED PAGE STOPS IT ──────────────────────
-   This file used to run a SECOND test after the DEM's own land bit: an
-   even-odd crossing of the cell centre against the published shoreline rings,
-   on the reasoning that the raster's 53.8 m staircase is ugly at the
-   whole-city camera and a mesh can simply not build the cell.
-
-   IT CUT REAL LAND. Put the two whole-city frames side by side at the
-   south-east corner and the published page draws Bayview — streets, blocks,
-   parks, the hill — while this one drew its buildings floating on bare paper,
-   a bleached void several hundred metres across. Measured over the same crop
-   the port's p95 ran (255, 248, 227) against the page's (233, 228, 215): not
-   a brighter ground, an ABSENT one.
-
-   The rings are a drawn SHORELINE, not a set of closed land polygons, and an
-   even-odd test over open polylines answers confidently and wrongly. The
-   Canvas rule is `maskAt(i, j)` and nothing else — so that is the rule here,
-   the two renderers cut the coast in the same place, and the published
-   shoreline drawn over both lands on the same pixels. The staircase is real
-   and it is the page's own; `layers/ground-detail.ts` draws the published
-   coastline over it exactly as the Canvas renderer does. */
-
 export function terrainLayer(
   data: CityData,
   zexByStep: readonly number[],
   prepare?: (t: TerrainField) => void,
-  clip?: readonly (readonly (readonly [number, number])[])[] | null,
+  regional?: readonly Ring[] | null,
 ): TerrainLayer {
   const chunk = data.get("base/terrain");
   if (!chunk) throw new Error("terrain: base/terrain has not landed");
@@ -123,119 +196,53 @@ export function terrainLayer(
     return t;
   }
 
-  // ── positions: one vertex per DEM node, elevation in REAL metres ─────────
-  const pos = new Float32Array(N * N * 3);
   const t0 = fieldFor(0);
-  for (let i = 0; i < N; i++) {
-    for (let j = 0; j < N; j++) {
-      const o = (i * N + j) * 3;
-      pos[o] = proj.X0 + i * step;
-      pos[o + 1] = t0.elevAt(i, j);
-      pos[o + 2] = proj.Y0 + j * step;
-    }
-  }
 
-  /* ── INDICES: THE LAND CELLS, AND THE RULE IS THE CANVAS RULE ────────────
-     `rasteriseTerrain` draws a cell when `maskAt(i, j)` — the cell's own land
-     bit — and skips the last row and column, which have no cell. Same test,
-     same skips, so the two renderers cut the coast in the same place and the
-     published shoreline that is drawn over both lands on the same pixels. */
-  /* ── AND THE CELL'S OWN CENTRE AGAINST THE PUBLISHED LINE ───────────────
-     The DEM's land bit is per 53.8 m cell, so its edge is a staircase of that
-     amplitude — three or four pixels of cream steps running out into the bay
-     at the whole-city camera, and the first thing a reader sees. The published
-     page cuts them back with a corridor that repaints the bay inside 1,100 m
-     of the shoreline; a mesh does something simpler and more honest, which is
-     not to build the cell.
+  /* the city's own published waterfront — the register that resolves a pier */
+  const coastChunk = data.get("base/coast");
+  const cityRings: Ring[] = coastChunk ? decodeCoast(coastChunk).coast : [];
 
-     This was tried once before and REVERTED, because it appeared to be
-     deleting Bayview. It was not: that hole was the surround mesh winning the
-     depth test over the city, and the bleached mass across the Gate was the
-     city's own DEM reaching into Marin with no offshore mask. Both are fixed
-     above, and with `coastFix` set the two tests now agree with each other —
-     the mask's own meta records that these rings reproduce the shipped land
-     mask on 116,480 of 116,480 cells, so what this removes is only the half-
-     cell overhang, never a cell the record calls land. Recorded here because a
-     revert that was right for the wrong reason is worth not repeating. */
-  const rings = clip && clip.length ? clip : null;
-  const idx: number[] = [];
-  for (let i = 0; i < N - 1; i++) {
-    for (let j = 0; j < N - 1; j++) {
-      if (!t0.maskAt(i, j)) continue;
-      if (rings) {
-        const cxm = proj.X0 + (i + 0.5) * step;
-        const cym = proj.Y0 + (j + 0.5) * step;
-        if (!insideCoast(rings, cxm, cym)) continue;
-      }
-      const a = i * N + j;
-      const b = (i + 1) * N + j;
-      const c = (i + 1) * N + (j + 1);
-      const d = i * N + (j + 1);
-      idx.push(a, b, c, a, c, d);
-    }
-  }
+  /* ── THE SUB-VERTICES, DESCRIBED RATHER THAN STORED TWICE ──────────────
+     A refined cell's extra vertices are a bilinear blend of its own four
+     nodes, so all a colour rebuild needs is WHICH cell and WHERE in it. Four
+     small arrays instead of a second copy of the geometry, and a band change
+     then costs the same arithmetic on them as it does on the base lattice. */
+  let exI = new Int32Array(0);
+  let exJ = new Int32Array(0);
+  let exU = new Float32Array(0);
+  let exV = new Float32Array(0);
+  let stats: CoastStats | null = null;
 
-  function coloursFor(s: number): Float32Array {
-    let col = colours.get(s);
-    if (!col) {
-      const t = fieldFor(s);
-      col = new Float32Array(N * N * 3);
-      const c = new Color();
-      for (let i = 0; i < N; i++) {
-        for (let j = 0; j < N; j++) {
-          const k = t.node(i, j, 0);
-          const o = (i * N + j) * 3;
-          /* ── sRGB IN, LINEAR OUT, AND THIS IS NOT A DETAIL ──────────────
-             `nodeR/G/B` are the bytes the Canvas path writes straight into a
-             2D context: sRGB. three.js treats a vertex colour as LINEAR and
-             converts it to sRGB on the way out, so handing it sRGB values
-             raises everything a second time — the ground came out white-hot
-             and the city read as black silhouettes on paper
-             (shots/b2-gl-block.png). `setRGB(..., SRGBColorSpace)` converts
-             into the working space, and the round trip then returns exactly
-             the byte the Canvas renderer would have written. */
-          c.setRGB(t.nodeR(k) / 255, t.nodeG(k) / 255, t.nodeB(k) / 255, SRGBColorSpace);
-          col[o] = c.r;
-          col[o + 1] = c.g;
-          col[o + 2] = c.b;
-        }
-      }
-      colours.set(s, col);
-    }
-    return col;
-  }
+  /* the hem's own compact buffers: which base vertex each of its vertices is,
+     and the alpha it fades to — see §THE OTHER EDGE */
+  let hemSrc = new Int32Array(0);
+  let hemA = new Float32Array(0);
+  const hemG = new BufferGeometry();
+  /* ── WHERE THE HEM SITS IN THE STACK ────────────────────────────────────
+     renderOrder -4 bay, -3 far shore, -2 HERE and the shore wash, 0 the city.
+     After the far shore because it dissolves INTO it, and it writes no depth
+     so nothing after it has to know it is there. Nothing is drawn on this
+     ground — it is the ground past the city's own record, which is why it is
+     the piece that may be given up to a fade. */
+  const hemM = new MeshLambertMaterial({
+    vertexColors: true,
+    side: DoubleSide,
+    transparent: true,
+    depthWrite: false,
+  });
+  const hemMesh = new Mesh(hemG, hemM);
+  hemMesh.renderOrder = -2;
+  hemMesh.receiveShadow = true;
+  hemMesh.castShadow = false;
+  hemMesh.visible = false;
+
+  /** the far shore's own land bit, which is what says the join is not a coast */
+  const sur = data.surround();
 
   const g = new BufferGeometry();
-  g.setAttribute("position", new Float32BufferAttribute(pos, 3));
-  g.setAttribute("color", new BufferAttribute(coloursFor(0), 3));
-  g.setIndex(idx.length > 65535 ? new BufferAttribute(new Uint32Array(idx), 1)
-    : new BufferAttribute(new Uint16Array(idx), 1));
-  /* ── THE GROUND'S NORMALS POINT STRAIGHT UP, ON PURPOSE ────────────────
-     The vertex colours ALREADY carry a hillshade — a hand-tuned one, off the
-     full-resolution DEM, with the project's own sun in it. Give this mesh its
-     true normals and a directional light and the frame gets a SECOND
-     hillshade over the first: same direction, compounding contrast, and the
-     city comes back olive and waxy, like a satellite render.
-
-     With every normal straight up the sun's diffuse term is CONSTANT across
-     the ground, so it adds no shading of its own — and the one thing it does
-     add is the thing a hillshade cannot: the SHADOW a building or a ridge
-     throws across it. That is the whole reason the sun is here. The relief
-     you see is still the published DEM's; it is just drawn once instead of
-     twice.
-
-     Buildings keep their real normals — they have no baked shading and every
-     facet needs its own. */
-  const up = new Float32Array(N * N * 3);
-  for (let v = 0; v < N * N; v++) up[v * 3 + 1] = 1;
-  g.setAttribute("normal", new BufferAttribute(up, 3));
-  g.computeBoundingSphere();
-
-  /* BASIC, NOT LAMBERT, AND ON PURPOSE FOR NOW: the hillshade is already IN
-     the vertex colours, exactly as the Canvas renderer bakes it. Lighting the
-     mesh a second time would light the same ground twice. Block 3 takes the
-     shade OUT of the colours and puts a real sun in; until then this is
-     parity, and parity is what the block is for. */
+  /* BASIC LIGHTING, AND THE HILLSHADE IS ALREADY IN THE COLOURS: the mesh's
+     normals point straight up (below), so the sun adds no second hillshade
+     and the one thing it does add is the cast shadow. */
   const m = new MeshLambertMaterial({ vertexColors: true, side: DoubleSide });
   const mesh = new Mesh(g, m);
   mesh.matrixAutoUpdate = true;
@@ -246,23 +253,412 @@ export function terrainLayer(
      and the sun. */
   mesh.receiveShadow = true;
   mesh.castShadow = true;
+  /* a CHILD of the ground, so the mount adds one object and gets both. Both
+     sit at the identity transform, and `mesh.scale.y` is the band's
+     exaggeration — which the hem must take too, being the same ground. */
+  mesh.add(hemMesh);
 
   let curStep = -1;
+
+  function coloursFor(s: number): Float32Array {
+    let col = colours.get(s);
+    if (col) return col;
+    const t = fieldFor(s);
+    const E = exI.length;
+    col = new Float32Array((N * N + E) * 3);
+    const c = new Color();
+    for (let i = 0; i < N; i++) {
+      for (let j = 0; j < N; j++) {
+        const k = t.node(i, j, 0);
+        const o = (i * N + j) * 3;
+        /* ── sRGB IN, LINEAR OUT, AND THIS IS NOT A DETAIL ──────────────
+           `nodeR/G/B` are the bytes the Canvas path writes straight into a
+           2D context: sRGB. three.js treats a vertex colour as LINEAR and
+           converts it to sRGB on the way out, so handing it sRGB values
+           raises everything a second time — the ground came out white-hot
+           and the city read as black silhouettes on paper
+           (shots/b2-gl-block.png). `setRGB(..., SRGBColorSpace)` converts
+           into the working space, and the round trip then returns exactly
+           the byte the Canvas renderer would have written. */
+        c.setRGB(t.nodeR(k) / 255, t.nodeG(k) / 255, t.nodeB(k) / 255, SRGBColorSpace);
+        col[o] = c.r;
+        col[o + 1] = c.g;
+        col[o + 2] = c.b;
+      }
+    }
+    /* the sub-vertices, blended in the WORKING space rather than in bytes. On
+       a cell EDGE a bilinear blend degenerates to a linear one, which is
+       exactly what the neighbouring whole quad interpolates along that same
+       edge — so a refined cell and a whole cell meet with no seam in colour,
+       any more than they do in position. */
+    for (let e = 0; e < E; e++) {
+      const i = exI[e];
+      const j = exJ[e];
+      const u = exU[e];
+      const v = exV[e];
+      const o = (N * N + e) * 3;
+      for (let ch = 0; ch < 3; ch++) {
+        const a = col[(i * N + j) * 3 + ch];
+        const b = col[((i + 1) * N + j) * 3 + ch];
+        const cc = col[((i + 1) * N + (j + 1)) * 3 + ch];
+        const d = col[(i * N + (j + 1)) * 3 + ch];
+        col[o + ch] = (a * (1 - u) + b * u) * (1 - v) + (d * (1 - u) + cc * u) * v;
+      }
+    }
+    colours.set(s, col);
+    return col;
+  }
+
+  /** the hem's RGBA, out of the band's own colour buffer plus the stored fade */
+  function hemColours(col: Float32Array): Float32Array {
+    const out = new Float32Array(hemSrc.length * 4);
+    for (let v = 0; v < hemSrc.length; v++) {
+      const b = hemSrc[v] * 3;
+      out[v * 4] = col[b];
+      out[v * 4 + 1] = col[b + 1];
+      out[v * 4 + 2] = col[b + 2];
+      out[v * 4 + 3] = hemA[v];
+    }
+    return out;
+  }
+
+  /**
+   * Build the geometry against a coast mask, or against nothing.
+   *
+   * Called once at construction and, when the regional rings were not handed
+   * over, once more when they resolve. Nothing else rebuilds it: a published
+   * shoreline does not move with the band or with the year.
+   */
+  function build(mask: CoastMask | null): void {
+    const idx: number[] = [];
+    const exi: number[] = [];
+    const exj: number[] = [];
+    const exu: number[] = [];
+    const exv: number[] = [];
+    const KK = COAST_K * COAST_K;
+    let whole = 0;
+    let refined = 0;
+    let dropped = 0;
+    let subKept = 0;
+    let maskCells = 0;
+
+    /* the corner→vertex map for ONE refined cell: (K+1)^2 slots, invalidated
+       by a generation counter rather than refilled, because it is walked once
+       per coastal cell and there are a couple of thousand of them */
+    const slotN = (COAST_K + 1) * (COAST_K + 1);
+    const slot = new Int32Array(slotN);
+    const slotGen = new Int32Array(slotN);
+    let gen = 0;
+
+    /* ── PASS 1: WHAT IS BUILT, AND HOW FAR IT IS FROM THE DATA'S EDGE ────
+       `cnt` is the sub-cell count per cell, kept so the emit pass does not
+       scan the mask twice. `hemD` is a breadth-first distance IN CELLS from
+       the join — the cells that are not built and have far-shore land under
+       them — walked through built cells only, so it cannot leak across water
+       and put a fade on a coastline. See §THE OTHER EDGE. */
+    const cnt = new Int16Array(N * N).fill(-1);
+    const hemD = new Int16Array(N * N).fill(-1);
+    for (let i = 0; i < N - 1; i++) {
+      for (let j = 0; j < N - 1; j++) {
+        if (!t0.maskAt(i, j)) continue;
+        maskCells++;
+        cnt[i * N + j] = mask ? mask.countIn(i, j) : KK;
+      }
+    }
+    if (sur) {
+      const q: number[] = [];
+      for (let i = 0; i < N - 1; i++) {
+        for (let j = 0; j < N - 1; j++) {
+          if (cnt[i * N + j] > 0) continue; // built: not a seed
+          const x = proj.X0 + (i + 0.5) * step;
+          const y = proj.Y0 + (j + 0.5) * step;
+          const si = Math.floor((x - sur.mx[0]) / sur.cellW);
+          const sj = Math.floor((y - sur.my[0]) / sur.cellH);
+          if (si < 0 || sj < 0 || si >= sur.XW || sj >= sur.XH) continue;
+          if (!sur.isLand(si, sj)) continue;
+          hemD[i * N + j] = 0;
+          q.push(i * N + j);
+        }
+      }
+      for (let head = 0; head < q.length; head++) {
+        const k = q[head];
+        const dcur = hemD[k];
+        if (dcur >= HEM_CELLS) continue;
+        const i = (k / N) | 0;
+        const j = k % N;
+        const push = (ii: number, jj: number): void => {
+          if (ii < 0 || jj < 0 || ii >= N - 1 || jj >= N - 1) return;
+          const kk = ii * N + jj;
+          if (cnt[kk] <= 0) return; // only through built ground
+          if (hemD[kk] >= 0) return;
+          hemD[kk] = dcur + 1;
+          q.push(kk);
+        };
+        push(i + 1, j);
+        push(i - 1, j);
+        push(i, j + 1);
+        push(i, j - 1);
+      }
+    }
+
+    /** the fade at a NODE: the nearest of the four cells that meet at it */
+    const RAMP = HEM_CELLS + 1;
+    const nodeAlpha = (i: number, j: number): number => {
+      let m = RAMP;
+      for (let a = -1; a <= 0; a++) {
+        for (let b = -1; b <= 0; b++) {
+          const ii = i + a;
+          const jj = j + b;
+          if (ii < 0 || jj < 0 || ii >= N - 1 || jj >= N - 1) continue;
+          const k = ii * N + jj;
+          const v = cnt[k] > 0 ? (hemD[k] < 0 ? RAMP : hemD[k]) : hemD[k] === 0 ? 0 : RAMP;
+          if (v < m) m = v;
+        }
+      }
+      return m / RAMP;
+    };
+
+    // ── PASS 2: the triangles ────────────────────────────────────────────
+    const hidx: number[] = [];
+    const hsrc: number[] = [];
+    const halpha: number[] = [];
+    const hmap = new Map<number, number>();
+    let hem = 0;
+    const hvert = (base: number, i: number, j: number, u: number, v: number): number => {
+      const had = hmap.get(base);
+      if (had !== undefined) return had;
+      const k = hsrc.length;
+      hsrc.push(base);
+      /* a sub-vertex takes the bilinear blend of its cell's four node fades,
+         the same rule its colour and its elevation take */
+      const a0 = nodeAlpha(i, j);
+      const b0 = nodeAlpha(i + 1, j);
+      const c0 = nodeAlpha(i + 1, j + 1);
+      const d0 = nodeAlpha(i, j + 1);
+      halpha.push((a0 * (1 - u) + b0 * u) * (1 - v) + (d0 * (1 - u) + c0 * u) * v);
+      hmap.set(base, k);
+      return k;
+    };
+
+    for (let i = 0; i < N - 1; i++) {
+      for (let j = 0; j < N - 1; j++) {
+        const n = cnt[i * N + j];
+        if (n < 0) continue;
+        const a = i * N + j;
+        const b = (i + 1) * N + j;
+        const c = (i + 1) * N + (j + 1);
+        const d = i * N + (j + 1);
+        const inHem = hemD[i * N + j] > 0;
+        const push6 = (p0: number, p1: number, p2: number, p3: number,
+          uv: readonly [number, number][]): void => {
+          if (!inHem) {
+            idx.push(p0, p1, p2, p0, p2, p3);
+            return;
+          }
+          const q0 = hvert(p0, i, j, uv[0][0], uv[0][1]);
+          const q1 = hvert(p1, i, j, uv[1][0], uv[1][1]);
+          const q2 = hvert(p2, i, j, uv[2][0], uv[2][1]);
+          const q3 = hvert(p3, i, j, uv[3][0], uv[3][1]);
+          hidx.push(q0, q1, q2, q0, q2, q3);
+        };
+        if (n === KK) {
+          whole++;
+          subKept += KK;
+          if (inHem) hem++;
+          push6(a, b, c, d, [[0, 0], [1, 0], [1, 1], [0, 1]]);
+          continue;
+        }
+        if (n === 0) {
+          dropped++;
+          continue;
+        }
+        refined++;
+        if (inHem) hem++;
+        gen++;
+        const vert = (su: number, sv: number): number => {
+          if (su === 0 && sv === 0) return a;
+          if (su === COAST_K && sv === 0) return b;
+          if (su === COAST_K && sv === COAST_K) return c;
+          if (su === 0 && sv === COAST_K) return d;
+          const k = sv * (COAST_K + 1) + su;
+          if (slotGen[k] === gen) return slot[k];
+          const v = N * N + exi.length;
+          exi.push(i);
+          exj.push(j);
+          exu.push(su / COAST_K);
+          exv.push(sv / COAST_K);
+          slot[k] = v;
+          slotGen[k] = gen;
+          return v;
+        };
+        for (let sj = 0; sj < COAST_K; sj++) {
+          for (let si = 0; si < COAST_K; si++) {
+            if (!mask || !mask.at(i, j, si, sj)) continue;
+            subKept++;
+            const p0 = vert(si, sj);
+            const p1 = vert(si + 1, sj);
+            const p2 = vert(si + 1, sj + 1);
+            const p3 = vert(si, sj + 1);
+            const K1 = COAST_K;
+            push6(p0, p1, p2, p3, [
+              [si / K1, sj / K1],
+              [(si + 1) / K1, sj / K1],
+              [(si + 1) / K1, (sj + 1) / K1],
+              [si / K1, (sj + 1) / K1],
+            ]);
+          }
+        }
+      }
+    }
+
+    const E = exi.length;
+    exI = Int32Array.from(exi);
+    exJ = Int32Array.from(exj);
+    exU = Float32Array.from(exu);
+    exV = Float32Array.from(exv);
+
+    // ── positions: one vertex per DEM node, elevation in REAL metres ───────
+    const pos = new Float32Array((N * N + E) * 3);
+    for (let i = 0; i < N; i++) {
+      for (let j = 0; j < N; j++) {
+        const o = (i * N + j) * 3;
+        pos[o] = proj.X0 + i * step;
+        pos[o + 1] = t0.elevAt(i, j);
+        pos[o + 2] = proj.Y0 + j * step;
+      }
+    }
+    for (let e = 0; e < E; e++) {
+      const i = exI[e];
+      const j = exJ[e];
+      const u = exU[e];
+      const v = exV[e];
+      const za = t0.elevAt(i, j);
+      const zb = t0.elevAt(i + 1, j);
+      const zc = t0.elevAt(i + 1, j + 1);
+      const zd = t0.elevAt(i, j + 1);
+      const o = (N * N + e) * 3;
+      pos[o] = proj.X0 + (i + u) * step;
+      pos[o + 1] = (za * (1 - u) + zb * u) * (1 - v) + (zd * (1 - u) + zc * u) * v;
+      pos[o + 2] = proj.Y0 + (j + v) * step;
+    }
+
+    hemSrc = Int32Array.from(hsrc);
+    hemA = Float32Array.from(halpha);
+
+    colours.clear();
+    g.setAttribute("position", new Float32BufferAttribute(pos, 3));
+    const col0 = coloursFor(curStep < 0 ? 0 : curStep);
+    g.setAttribute("color", new BufferAttribute(col0, 3));
+    g.setIndex(new BufferAttribute(new Uint32Array(idx), 1));
+
+    // ── the hem, as its own compact copy of the vertices it uses ──────────
+    if (hidx.length) {
+      const hp = new Float32Array(hemSrc.length * 3);
+      const hn = new Float32Array(hemSrc.length * 3);
+      for (let v = 0; v < hemSrc.length; v++) {
+        const b = hemSrc[v] * 3;
+        hp[v * 3] = pos[b];
+        hp[v * 3 + 1] = pos[b + 1];
+        hp[v * 3 + 2] = pos[b + 2];
+        hn[v * 3 + 1] = 1;
+      }
+      hemG.setAttribute("position", new BufferAttribute(hp, 3));
+      hemG.setAttribute("normal", new BufferAttribute(hn, 3));
+      hemG.setAttribute("color", new BufferAttribute(hemColours(col0), 4));
+      hemG.setIndex(new BufferAttribute(new Uint32Array(hidx), 1));
+      hemG.computeBoundingSphere();
+      hemMesh.visible = true;
+    } else {
+      hemMesh.visible = false;
+    }
+    /* ── THE GROUND'S NORMALS POINT STRAIGHT UP, ON PURPOSE ────────────────
+       The vertex colours ALREADY carry a hillshade — a hand-tuned one, off the
+       full-resolution DEM, with the project's own sun in it. Give this mesh its
+       true normals and a directional light and the frame gets a SECOND
+       hillshade over the first: same direction, compounding contrast, and the
+       city comes back olive and waxy, like a satellite render.
+
+       With every normal straight up the sun's diffuse term is CONSTANT across
+       the ground, so it adds no shading of its own — and the one thing it does
+       add is the thing a hillshade cannot: the SHADOW a building or a ridge
+       throws across it. That is the whole reason the sun is here. The relief
+       you see is still the published DEM's; it is just drawn once instead of
+       twice.
+
+       Buildings keep their real normals — they have no baked shading and every
+       facet needs its own. */
+    const up = new Float32Array((N * N + E) * 3);
+    for (let v = 0; v < N * N + E; v++) up[v * 3 + 1] = 1;
+    g.setAttribute("normal", new BufferAttribute(up, 3));
+    g.computeBoundingSphere();
+
+    const cellA = step * step;
+    stats = {
+      maskCells,
+      whole,
+      refined,
+      dropped,
+      areaMask: maskCells * cellA,
+      areaBuilt: (subKept / KK) * cellA,
+      K: COAST_K,
+      hem,
+    };
+  }
+
+  function maskFor(reg: readonly Ring[] | null): CoastMask | null {
+    const sets: (readonly Ring[])[] = [];
+    if (cityRings.length) sets.push(cityRings);
+    if (reg && reg.length) sets.push(reg);
+    /* ── ONE REGISTER IS NOT ENOUGH TO CUT ANYTHING ────────────────────
+       Either alone deletes a piece of the city — the county outline deletes
+       the two other counties this DEM reaches into, the regional hydrography
+       deletes the waterfront the 300 m pad exists to keep. `coast-mask.ts`
+       §THE UNION has the counts. With only one of the two in hand the honest
+       answer is the staircase, which is what the published page ships. */
+    if (sets.length < 2) return null;
+    return rasteriseRings(
+      sets,
+      { x0: proj.X0, y0: proj.Y0, nx: N - 1, ny: N - 1, cellW: step, cellH: step },
+      COAST_K,
+    );
+  }
+
+  build(maskFor(regional ?? null));
+  if (!regional) {
+    /* the mount has already awaited this same promise, so it is resolved and
+       the rebuild lands in a microtask — before the first frame, and long
+       before the tiers that follow it */
+    void data
+      .surroundCoast()
+      .catch(() => null)
+      .then((sc) => {
+        if (!sc || !sc.rings.length) return;
+        build(maskFor(sc.rings as readonly Ring[]));
+      });
+  }
 
   const layer: TerrainLayer = {
     name: "terrain",
     mesh,
     fieldFor,
+    coastStats: () => stats,
     onStep(s: number, zex: number) {
       if (s === curStep) return;
       curStep = s;
       mesh.scale.y = zex;
-      g.setAttribute("color", new BufferAttribute(coloursFor(s), 3));
+      const col = coloursFor(s);
+      g.setAttribute("color", new BufferAttribute(col, 3));
       (g.getAttribute("color") as BufferAttribute).needsUpdate = true;
+      if (hemMesh.visible) {
+        hemG.setAttribute("color", new BufferAttribute(hemColours(col), 4));
+        (hemG.getAttribute("color") as BufferAttribute).needsUpdate = true;
+      }
     },
     dispose() {
       g.dispose();
       m.dispose();
+      hemG.dispose();
+      hemM.dispose();
       fields.clear();
       colours.clear();
     },

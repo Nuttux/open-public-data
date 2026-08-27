@@ -48,7 +48,7 @@
    A normal-oriented disc in screen space. For each of N taps on a disc of
    radius R around the fragment, take the sample's view position, and let
 
-       occ += max(0, dot(n, normalize(delta)) - bias) * (1 - |delta| / R)
+       occ += max(0, dot(n, normalize(delta)) - bias) * R² / (R² + |delta|²)
 
    `dot(n, normalize(delta))` is the sine of the sample's elevation above the
    fragment's own TANGENT PLANE. That is what makes this safe on the two
@@ -59,37 +59,79 @@
                    flat-surface term to cancel and therefore no halo.
      the sky       a sky texel has depth 1, so its view z is -far, `delta`
                    points hard AWAY from the surface and the dot product is
-                   negative — clamped to zero — while `|delta| / R` is in the
-                   thousands and the falloff is zero as well. Two independent
-                   reasons the sky contributes nothing.
+                   negative — clamped to zero — while `|delta|` is kilometres
+                   and R²/(R²+|delta|²) is a millionth. Two independent
+                   reasons the sky contributes nothing. A sky FRAGMENT is
+                   never even asked: depth 1 returns 1 before the loop.
 
    Samples are clamped to the viewport, so a fragment at the frame's edge
    samples itself rather than wrapping: `delta` is 0 and it contributes
    nothing, which is why there is no border seam.
 
    ── THE RADIUS IS IN WORLD METRES, WITH A FLOOR IN PIXELS ────────────────
-   `radiusM` is a distance on the ground. The default, 6 m, is about a
-   pavement plus a traffic lane — the distance over which a real building
-   visibly darkens the ground beside it, and the scale of the well between
-   two towers.
+   `radiusM` is a distance on the ground. The default, 12 m, is about the
+   width of a two-lane street: the distance over which a real building
+   visibly darkens the ground beside it, and roughly the well between two
+   towers on the same block.
 
-   But this camera spans four orders of magnitude. MEASURED from the frustum
-   at the four stops, at a 1440 px viewport: 9.86 m per pixel at the city
-   stop, 2.96 at the district, 0.99 at the block, 0.30 at the street. A fixed
-   6 m radius is 20 px of disc at the street stop and 0.6 px at the city stop
-   — below one texel, where every tap lands on the fragment itself and the
-   term collapses to nothing. So the radius used is
+   But this camera spans two orders of magnitude. MEASURED off the frustum at
+   the four stops, at a 1440 px viewport: 10.34 m per pixel at the city stop,
+   3.10 at the district, 1.03 at the block, 0.31 at the street. A fixed 12 m
+   radius is 39 px of disc at the street stop and 1.2 px at the city stop —
+   about one texel, where every tap lands on the fragment itself and the term
+   collapses to nothing. So the radius used is
 
        R = max(radiusM, minPx * metresPerPixel)
 
    which keeps a physical scale wherever the frame can resolve one and falls
-   back to a fixed few-pixel disc when it cannot. `minPx` is in DEVICE
-   pixels, so the effect holds its apparent size on a 2x screen.
+   back to a fixed few-pixel disc when it cannot. At the city stop that comes
+   out as 36.2 m — MEASURED, and about one building — and at the other three
+   the floor never binds. `minPx` is in DEVICE pixels, so the effect holds its
+   apparent size on a 2x screen.
 
    One honesty note: the scene's vertical axis is exaggerated (the ground by
-   `zex`, built height by `zexb`), so a radius of 6 m is 6 true metres
-   horizontally and rather less than 6 true metres of building. This is a
+   `zex`, built height by `zexb`), so a radius of 12 m is 12 true metres
+   horizontally and rather less than 12 true metres of building. This is a
    look, not a measurement, and the exaggeration is the look.
+
+   ── WHAT IT COMES TO ON THE GLASS ────────────────────────────────────────
+   MEASURED at 1440 x 666, WebGL 2 backend, at the shipped settings (12 taps,
+   12 m, intensity 2.4, bias 0.4), comparing the same camera with the chain
+   off and on:
+
+       stop        mean luminance      darkest pixel   frame darkened
+       city        160.65 -> 158.95    -31.8 / 255     14.1 % of pixels
+       district    143.93 -> 141.88    -33.9           18.8 %
+       block       137.29 -> 135.73    -34.1           14.0 %
+       street      121.23 -> 120.17    -27.1            9.5 %
+
+   The frame's mean moves by 1.1 to 2.1 of 255 while individual crevices go
+   down by thirty — which is the shape this wanted: occlusion in the corners,
+   not a filter over the picture.
+
+   ── AND WHAT THE CONTACT DISC ADDS ON TOP ────────────────────────────────
+   Same measurement, the second disc's intensity swept with everything else
+   held, against the same frame with that disc at zero:
+
+       contactIntensity      1.5     2.6     4.0     5.5
+       city   frame mean    -0.64   -1.14   -1.81   -2.58   of 255
+              p99 drop       8.1    15.0    24.1    35.2
+              pixels >4/255  5.7 %  10.6 %  13.7 %  15.7 %
+       block  frame mean    -0.30   -0.54   -0.86   -1.23
+              p99 drop       6.3    11.3    18.1    26.2
+              pixels >4/255  2.1 %   4.5 %   6.6 %   7.8 %
+
+   4.0 is what ships. It takes the deepest one per cent of the frame down by
+   another 18 to 24 levels — a wall's foot, the strip under an eave, the seam
+   where two towers meet — for less than a point of the frame's own mean. 5.5
+   was rejected on a single number: its darkest pixel goes down by 179 of 255,
+   which is a black hole rather than a corner.
+
+   And the halo test, which is the one that catches a wrong AO: over every
+   region of the frame that is UNIFORM ACROSS THE WHOLE DISC — flat ground,
+   flat roof, open sky — the two frames differ by EXACTLY ZERO at the city,
+   district and block stops. (At the street stop the disc is 39 px and no
+   region of the frame is uniform over 79 px, so the test cannot run there.)
    ═══════════════════════════════════════════════════════════════════════ */
 
 import { Vector2, Vector4, type OrthographicCamera } from "three";
@@ -123,15 +165,56 @@ export interface OrthoAoParams {
   radiusM: number;
   /** the floor on that radius, DEVICE PIXELS — see §the radius is in world metres */
   minPx: number;
-  /** how much of the occlusion term reaches the picture, 0..1 */
+  /**
+   * How hard the occlusion term is pushed. Not a 0..1 fade: the raw sum over
+   * the disc reaches only about 0.35 for a fragment sitting in a right-angle
+   * corner with half its disc on a wall, so a multiplier near 1 would be
+   * invisible. 2.4 maps that corner to roughly half darkness, which is what a
+   * right angle actually loses of the sky.
+   */
   intensity: number;
-  /** the self-occlusion cutoff, as a sine of elevation above the tangent plane */
+  /**
+   * The self-occlusion cutoff, as a SINE of elevation above the tangent
+   * plane: a tap has to stand at least this far off the surface to count.
+   * 0.4 is 24 degrees, and it is the lever that separates "occlusion in the
+   * corners" from "a grey wash". MEASURED at the city camera, at a fixed
+   * radius and tap count, raising it from 0.1 to 0.4 took the frame's mean
+   * shift from -3.74 to -1.21 while the deepest corners kept two thirds of
+   * their darkening.
+   */
   bias: number;
+  /**
+   * ── THE CONTACT DISC, AND WHY IT IS A SECOND ONE ────────────────────────
+   * The 12 m disc above answers "how much sky does this point see", which is
+   * a question about a WELL between towers and a courtyard. It is the wrong
+   * scale for the other thing occlusion has to do, which is put a building ON
+   * the pavement rather than in front of it. That happens in the last metre or
+   * two, and a 12 m disc spreads it over forty pixels and forgets it: MEASURED
+   * at the shipped settings, the whole chain moved the frame's mean by 1.1 to
+   * 2.1 of 255 and the wall/pavement junction was inside that.
+   *
+   * Widening the big disc is the wrong fix — it darkens the courtyard, the
+   * park and the middle of the street along with the corner, which is the
+   * muddy frame. A SECOND, SHORT disc costs six more taps and only ever sees
+   * what is within a couple of metres, so nothing an arm's length away can
+   * darken anything.
+   *
+   * `contactM` is that radius in world metres and `contactMinPx` its floor in
+   * device pixels — the same two-scale rule as the wide disc, and for the same
+   * reason: at the whole-city camera one pixel is 10.34 m and a 3 m disc has
+   * nowhere to land.
+   */
+  contactM: number;
+  contactMinPx: number;
+  /** how hard the contact term is pushed; 0 removes it and the taps with it */
+  contactIntensity: number;
 }
 
 export interface OrthoAoOptions extends Partial<OrthoAoParams> {
-  /** taps on the disc — a compile-time constant, not a uniform */
+  /** taps on the wide disc — a compile-time constant, not a uniform */
   samples?: number;
+  /** taps on the contact disc; 0 compiles the second loop out entirely */
+  contactSamples?: number;
 }
 
 export interface OrthoAo {
@@ -147,6 +230,8 @@ export interface OrthoAo {
   update(camera: OrthographicCamera, bufferW: number, bufferH: number): void;
   /** what the radius came out as this frame, world metres — for a harness */
   readonly radiusUsedM: number;
+  /** and the contact disc's, which has its own floor */
+  readonly contactUsedM: number;
 }
 
 /**
@@ -160,12 +245,16 @@ const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
 
 export function orthoAo(depthTex: TextureNode, opts: OrthoAoOptions = {}): OrthoAo {
   const N = Math.max(4, Math.round(opts.samples ?? 12));
+  const NC = Math.max(0, Math.round(opts.contactSamples ?? 6));
 
   const params: OrthoAoParams = {
     radiusM: opts.radiusM ?? 12,
     minPx: opts.minPx ?? 3.5,
     intensity: opts.intensity ?? 2.4,
     bias: opts.bias ?? 0.4,
+    contactM: opts.contactM ?? 3,
+    contactMinPx: opts.contactMinPx ?? 2,
+    contactIntensity: opts.contactIntensity ?? 4.0,
   };
 
   /* (kx, ky, ox, oy) — the orthographic unprojection, read off the frustum */
@@ -178,10 +267,13 @@ export function orthoAo(depthTex: TextureNode, opts: OrthoAoOptions = {}): Ortho
   const uvPerM = uniform(new Vector2(1, 1));
   /* the radius this frame, view metres */
   const radius = uniform(1);
+  const contactR = uniform(1);
   const intensity = uniform(params.intensity);
+  const contactI = uniform(params.contactIntensity);
   const bias = uniform(params.bias);
 
   let radiusUsedM = params.radiusM;
+  let contactUsedM = params.contactM;
 
   /** the affine inverse of the orthographic projection — see the header */
   const viewPos = (u: AnyNode, d: AnyNode): AnyNode =>
@@ -263,7 +355,33 @@ export function orthoAo(depthTex: TextureNode, opts: OrthoAoOptions = {}): Ortho
         occ.addAssign(max(0, rise.sub(bias)).mul(fall));
       });
 
-      out.assign(clamp(float(1).sub(occ.div(N).mul(intensity)), 0, 1));
+      /* ── AND THE SAME SUM AGAIN, TWO METRES ACROSS ───────────────────
+         Identical arithmetic on a much smaller disc. It is written as a second
+         loop rather than as a weight inside the first because the two are
+         asking different questions and have to be pushed by different amounts:
+         the wide one is a sky-visibility term and lives at 2.4, the near one is
+         a contact term and can be pushed twice as hard without touching
+         anything more than a couple of metres from the surface. */
+      const near = float(0).toVar();
+      if (NC > 0) {
+        Loop(NC, ({ i }) => {
+          const ang = float(i).mul(GOLDEN_ANGLE).add(0.5);
+          const rad = contactR.mul(sqrt(float(i).add(0.5).div(NC)));
+          const off = vec2(cos(ang), sin(ang)).mul(rad);
+          const su = u0.add(off.mul(uvPerM));
+          const sp = viewPos(su, sampleDepth(su));
+          const delta = sp.sub(p0).toVar();
+          const len = length(delta).add(1e-4).toVar();
+          const rise = dot(n, delta).div(len);
+          const r2 = contactR.mul(contactR);
+          const fall = r2.div(r2.add(len.mul(len)));
+          near.addAssign(max(0, rise.sub(bias)).mul(fall));
+        });
+      }
+
+      const wide = occ.div(N).mul(intensity);
+      const contact = NC > 0 ? near.div(NC).mul(contactI) : float(0);
+      out.assign(clamp(float(1).sub(wide.add(contact)), 0, 1));
     });
 
     return out;
@@ -277,12 +395,19 @@ export function orthoAo(depthTex: TextureNode, opts: OrthoAoOptions = {}): Ortho
     get radiusUsedM() {
       return radiusUsedM;
     },
+    get contactUsedM() {
+      return contactUsedM;
+    },
     setParams(p: Partial<OrthoAoParams>): void {
       if (p.radiusM !== undefined) params.radiusM = p.radiusM;
       if (p.minPx !== undefined) params.minPx = p.minPx;
       if (p.intensity !== undefined) params.intensity = p.intensity;
       if (p.bias !== undefined) params.bias = p.bias;
+      if (p.contactM !== undefined) params.contactM = p.contactM;
+      if (p.contactMinPx !== undefined) params.contactMinPx = p.contactMinPx;
+      if (p.contactIntensity !== undefined) params.contactIntensity = p.contactIntensity;
       intensity.value = params.intensity;
+      contactI.value = params.contactIntensity;
       bias.value = params.bias;
     },
     update(camera: OrthographicCamera, bufferW: number, bufferH: number): void {
@@ -296,6 +421,8 @@ export function orthoAo(depthTex: TextureNode, opts: OrthoAoOptions = {}): Ortho
       const mPerPx = Math.abs(camera.right - camera.left) / Math.max(1, bufferW);
       radiusUsedM = Math.max(params.radiusM, params.minPx * mPerPx);
       radius.value = radiusUsedM;
+      contactUsedM = Math.max(params.contactM, params.contactMinPx * mPerPx);
+      contactR.value = contactUsedM;
     },
   };
 }

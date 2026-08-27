@@ -13,6 +13,11 @@
      the shade  which quartile of ITS OWN HEIGHT BAND the roof falls in, so
                 two neighbours of the same material and different heights do
                 not read as one long roof.
+     no row     3.8 % of footprints join no roll row, and the reference does
+                not hand those a neutral — it hands them a LOCALE LEGEND, a
+                tone by distance from the city's own centre and by which side
+                of a published dividing line the parcel sits on. See
+                `LocaleLegend`.
 
    This file is a reader for that rule, not a second copy of it: the tables
    come from `components/us/city/palette`, which is the renderer's material
@@ -32,11 +37,69 @@ import {
   yearBand,
 } from "@/components/us/city/palette";
 import { RSHADE, bandOfHeight, gamutHeadroom, roofHeight } from "@/lib/city/roofs";
-import { roofTone } from "@/lib/city/buildings";
+import { buildURND, roofTone } from "@/lib/city/buildings";
 import type { BldgTable } from "./bldg";
 
 /** the roof-height quartiles a city publishes, per height band */
 export type Quartiles = readonly (readonly number[])[];
+
+/**
+ * THE FALLBACK LEGEND, AND IT IS A CITY'S AND NOT THIS ENGINE'S.
+ *
+ * 3.8 % of the published footprints join no roll row — `UMAT_WALL[use]` is
+ * `null` for them, which is the record's own honest bucket rather than a gap.
+ * The reference does NOT hand those a neutral: it hands them a tone by WHERE
+ * THEY ARE, biased on two published quantities — how far the parcel is from
+ * the city's own centre, and which side of a published dividing line it falls
+ * on — with a reproducible per-footprint draw breaking the tie inside each
+ * family. `scene.ts` §the honest bucket is the rule and `palette.ts`
+ * §legendTones is the table.
+ *
+ * It matters far more than 3.8 % suggests, because those footprints are not
+ * spread evenly: they are the federal reservations, the port, the made ground
+ * offshore — whole districts at a time. Given one neutral pair they render as
+ * a field of identical white boxes, which is exactly what they did.
+ *
+ * Everything here is a NUMBER the city publishes, so no place name reaches
+ * this engine: an origin, the largest distance from it, a point on the
+ * dividing line and that line's unit direction. The tone table itself is the
+ * city's function, passed in.
+ */
+export interface LocaleLegend {
+  /** the point distances are measured from, world metres */
+  readonly originX: number;
+  readonly originY: number;
+  /** the LARGEST such distance over every published footprint. Published,
+   *  because a client holding a few chunks cannot compute it. */
+  readonly maxR: number;
+  /** a point on the dividing line, world metres */
+  readonly lineX: number;
+  readonly lineY: number;
+  /** that line's UNIT direction */
+  readonly lineDX: number;
+  readonly lineDY: number;
+  /** the city's own table: `r` in 0..1, `side` 0 or 1, `u` in 0..1 */
+  readonly tones: (r: number, side: number, u: number) => { wall: number; roof: number };
+}
+
+/**
+ * The reproducible draw the legend breaks ties with, keyed on the PUBLISHED
+ * footprint id and not on the row's position in its chunk.
+ *
+ * `scene.ts` records what the difference costs: keyed on the chunk-local index
+ * instead, 3,053 of `base/solo`'s 15,261 footprints — 20.0 % — came out a
+ * different material from the reference, and they are precisely the footprints
+ * the legend exists for. The table is `buildURND`, which is the mock's own
+ * xorshift seeded with the 1906 date; it is built once and shared, and the id
+ * is folded into it rather than used to size it, because an id space is not a
+ * population.
+ */
+const URND_BITS = 18;
+let urnd: Float32Array | null = null;
+export function legendDraw(gid: number): number {
+  urnd ??= buildURND(1 << URND_BITS);
+  return urnd[gid & ((1 << URND_BITS) - 1)];
+}
 
 export interface MaterialConfig {
   /** `manifest.buildings.hq` */
@@ -45,7 +108,11 @@ export interface MaterialConfig {
   noSampleBit: number;
   /** the first year the year byte counts from */
   year0: number;
-  /** a neutral pair for the footprints no published row reaches */
+  /** the city's own legend for the footprints no published row reaches. A
+   *  city that publishes none falls back to the neutral pair below. */
+  legend?: LocaleLegend | null;
+  /** a neutral pair for the footprints no published row reaches, and for a
+   *  city with no legend at all */
   fallbackRoof: number;
   fallbackWall: number;
 }
@@ -75,6 +142,7 @@ export function bldgMaterials(tb: BldgTable, cfg: MaterialConfig): BldgMaterials
   const roof = new Uint8Array(n);
   const wall = new Uint8Array(n);
   const shade = new Uint8Array(n);
+  const lg = cfg.legend ?? null;
 
   for (let i = 0; i < n; i++) {
     const h = tb.h[i];
@@ -92,13 +160,27 @@ export function bldgMaterials(tb: BldgTable, cfg: MaterialConfig): BldgMaterials
       const sb = storeyBand(tb.st[i]);
       wall[i] = WAM(wl[ab * 3 + sb]);
       roof[i] = WAM(rl[hb * 2 + (noyr ? (hb > 1 ? 1 : 0) : y < 1925 ? 0 : 1)]);
+    } else if (lg) {
+      /* ── THE HONEST BUCKET, AND IT GETS THE CITY'S OWN LEGEND ───────────
+         `scene.ts` §the honest bucket, arithmetic for arithmetic. `r` is the
+         parcel's distance from the published origin over the published
+         largest such distance; `side` is the sign of the cross product
+         against the published dividing line, which is 0 on one side of it
+         and 1 on the other; the draw is keyed on the published id.
+
+         This used to be one neutral pair for all 6,436 of them, with a note
+         calling it a stand-in for a Block 6 that never came. It is not 3.8 %
+         of the frame spread thinly — these footprints CLUSTER, so the pair
+         rendered whole districts as one white box repeated. */
+      const r = Math.hypot(tb.cx[i] - lg.originX, tb.cy[i] - lg.originY) / lg.maxR;
+      const side =
+        (tb.cx[i] - lg.lineX) * lg.lineDY - (tb.cy[i] - lg.lineY) * lg.lineDX < 0 ? 0 : 1;
+      const t = lg.tones(r, side, legendDraw(tb.gid[i]));
+      wall[i] = t.wall;
+      roof[i] = t.roof;
     } else {
-      /* THE HONEST BUCKET. `scene.ts` reaches for a locale legend here — a
-         tone by distance from downtown and which side of Market the parcel
-         is on. That legend is a DECLARED treatment for the footprints no
-         roll row reaches, and it is not reproduced: this port lights its
-         buildings rather than tinting them, so a neutral pair is the honest
-         stand-in until Block 6 gives these their own material. */
+      /* no legend published: the neutral pair, which is what a city that has
+         not written its own fallback gets rather than an invented one */
       wall[i] = cfg.fallbackWall;
       roof[i] = cfg.fallbackRoof;
     }

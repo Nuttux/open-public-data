@@ -593,6 +593,60 @@ describe("the player", () => {
     );
   });
 
+  it("tells a watcher that attached after it was built when it plays, every frame, and when it stops", () => {
+    /* the seam chrome needs: it mounts later than the player and must not
+       require whoever built the player to know it exists */
+    const r = rig();
+    const plays: number[] = [];
+    const seen: number[] = [];
+    const ends: string[] = [];
+    r.film.watch({
+      onPlay: (s) => plays.push(s.t),
+      onState: (s) => seen.push(s.t),
+      onStop: (reason) => ends.push(reason),
+    });
+    r.film.play();
+    r.step(16);
+    r.step(16);
+    /* `onPlay` reports the frame it starts FROM, and it arrives after that
+       frame's own `onState` so the two describe the same millisecond */
+    expect(plays).toEqual([0]);
+    expect(seen).toEqual([0, 16, 32]);
+    r.film.stop();
+    expect(ends).toEqual(["stop"]);
+    /* and the caller's own `opts` listeners are untouched by any of it */
+    expect(r.states.length).toBe(seen.length);
+    expect(r.stops.map((x) => x.reason)).toEqual(["stop"]);
+  });
+
+  it("stops telling a watcher that has detached, and on dispose drops them all", () => {
+    const r = rig();
+    const seen: number[] = [];
+    const off = r.film.watch({ onState: (s) => seen.push(s.t) });
+    r.film.play();
+    r.step(16);
+    off();
+    r.step(16);
+    expect(seen).toEqual([0, 16]);
+
+    const other: string[] = [];
+    r.film.watch({ onStop: (reason) => other.push(reason) });
+    r.film.dispose();
+    expect(other).toEqual(["dispose"]);
+    /* a disposed player holds nothing: a chrome that outlives it is a leak
+       the mount cannot see */
+    r.film.seek(1000);
+    expect(other).toEqual(["dispose"]);
+  });
+
+  it("reports a seek to a watcher, so chrome can be scrubbed", () => {
+    const r = rig();
+    const seen: number[] = [];
+    r.film.watch({ onState: (s) => seen.push(s.t) });
+    r.film.seek(9000);
+    expect(seen).toEqual([9000]);
+  });
+
   it("is inert after dispose", () => {
     const r = rig();
     r.film.play();

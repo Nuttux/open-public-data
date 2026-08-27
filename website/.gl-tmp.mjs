@@ -1,0 +1,12 @@
+import { chromium } from 'playwright';
+const OUT = process.argv[2];
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+p.setDefaultTimeout(90000);
+p.on('pageerror', e => console.log('PAGEERR', String(e).slice(0,300)));
+p.on('console', m => { if (m.type() === 'error') console.log('CONSOLE', m.text().slice(0,200)); });
+await p.goto('http://localhost:3000/us/city/sf/the-city-gl', { waitUntil: 'domcontentloaded' });
+await p.waitForTimeout(9000);
+await p.screenshot({ path: `${OUT}/gl-block0.png` });
+console.log('stats:', await p.evaluate(() => { const e = globalThis.__cityGL; return e ? JSON.stringify({ ...e.getStats(), vp: e.viewport, cam: e.getCamera() }) : 'no engine'; }));
+await b.close();

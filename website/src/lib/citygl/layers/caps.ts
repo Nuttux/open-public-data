@@ -62,6 +62,42 @@
      untouched, so it costs nothing. (The remaining lifts run 0.07 m to
      166.32 m, median 11.13 m — all measured over the 512 drawn.)
 
+   ── THE GATE IS THE RECORD'S OWN, PER CAP ───────────────────────────────
+   This layer used to be switched off whole at the wide camera (`fromStep: 1`)
+   because *"a mesh cannot re-decide per frame the way a fill can: this
+   layer's one index buffer already spends its only draw range on the century
+   scrub"*. That was true of ONE draw range and it threw away the wrong half.
+
+   MEASURED. `drawStep` refuses a cap on two floors in pixels of the thing
+   itself — `FSTEP_LIFT_PX` 1.4 px of LIFT and `FSTEP_W_PX` 0.7 px of WIDTH —
+   so the scale a cap needs is
+
+       need = max( 1.4 / (zexb * liftM),  0.7 / (2 * rad * |(ax, ay)|) )
+
+   and the whole-city camera on this city sits at 0.0790 px per plane unit
+   (measured off the page's own fit). At `zexb` 1.6 the lift floor there
+   passes every cap whose lift is 11.1 m or more — and the shipped median
+   lift, recorded above, is 11.13 m. **So half the published caps are legal
+   at whole-city zoom, and they are the tall half: the skyline.** Switching
+   the layer off at that camera removed exactly the caps the Canvas keeps,
+   which is the opposite of what the pixel floors are for. The Canvas is
+   right and its own sentence says why: *a skyline is made of lifts, not of
+   widths.*
+
+   So the gate is per cap now, and the mechanism is a SECOND AXIS rather than
+   a second draw range. The caps are bucketed by `need`, each bucket is one
+   `geometry.groups` entry over a contiguous run of the index buffer, and
+   inside a bucket the caps are still ordered by year — so the century scrub
+   stays a prefix WITHIN each group and the camera gate is that group's
+   `count`. One geometry, one material, `gateBuckets` draw calls.
+
+   WHAT THE QUANTISATION COSTS, STATED. A bucket is turned on at its own
+   LOWEST `need`, so a cap can be drawn slightly below its floor — never
+   above it, so nothing the record refuses outright appears late. The buckets
+   are equal-population quantiles of the measured `need`, so the bound is
+   each bucket's own internal spread; `capsGateSpread` reports it and
+   `caps.test.ts` holds it.
+
    ── AND NOTHING IS LAYERED WITH A Y OFFSET ───────────────────────────────
    The projection is axonometric, so a Y offset is also a SCREEN offset: a cap
    nudged up to clear its roof slides visibly out of its own footprint. It is
@@ -85,11 +121,14 @@ import {
 
 import type { CityData } from "@/lib/city/data";
 import { FLAG_NOYEAR } from "@/components/us/city/palette";
-import { RSHADE, roofHeight } from "@/lib/city/roofs";
+import { FSTEP_LIFT_PX, FSTEP_W_PX, RSHADE, roofHeight } from "@/lib/city/roofs";
+import { projection } from "@/lib/city/projection";
 import { decodeBldg } from "../bldg";
 import { capForm, type FormSink } from "../roof-form";
+import type { PlaneCamera } from "../camera";
 import { bldgMaterials, roofShadeTable, type MaterialConfig } from "../materials";
 import type { CityLayer } from "../engine";
+import { upFaceTransfer } from "../up-face";
 
 export interface CapsLayerOptions {
   /** how tall the built height is drawn — a cap is BUILT height, not ground */
@@ -105,23 +144,10 @@ export interface CapsLayerOptions {
   /** footprints a hand-modelled landmark already stands on — never capped */
   skipGids?: ReadonlySet<number>;
   /**
-   * The first camera step this layer is drawn at. 1 by default.
-   *
-   * THE CANVAS PATH DOES NOT HAVE THIS, and the difference is stated rather
-   * than hidden. `scene.ts` queues a cap at ALL THREE rungs and lets
-   * `drawStep` decide per cap, on two floors in PIXELS OF THE THING ITSELF
-   * (`FSTEP_LIFT_PX` = 1.4 px of lift, `FSTEP_W_PX` = 0.7 px of width) —
-   * because the gate that matters is not the building's width but the cap's
-   * own lift, and *a skyline is made of lifts, not of widths*.
-   *
-   * A mesh cannot re-decide that per frame the way a fill can: this layer's
-   * one index buffer already spends its only draw range on the century scrub,
-   * and a second independent prefix over the same triangles does not exist.
-   * So the per-cap pixel floor becomes a per-LAYER camera floor, which is the
-   * same gate `layers/streets.ts` and `layers/street-detail.ts` run for the
-   * same reason. Set it to 0 to draw the caps at every camera.
+   * How many buckets the per-cap camera gate is quantised into. 8 by default,
+   * and see §THE GATE IS THE RECORD'S OWN, PER CAP for what it costs.
    */
-  fromStep?: number;
+  gateBuckets?: number;
   /** world-metre floors handed straight to `capForm`; 0 builds every slot */
   minLiftM?: number;
   minWidthM?: number;
@@ -156,6 +182,9 @@ interface Standing {
   side: [number, number, number];
   /** the year the host starts existing; -1 where the roll does not date it */
   year: number;
+  /** the camera scale `drawStep`'s own two pixel floors ask for — see the
+   *  header. Filled after `capForm` has agreed to build the cap. */
+  need: number;
 }
 
 /** how many emitted caps exist in `year` — they are sorted, so bisect */
@@ -180,7 +209,7 @@ function upTo(years: number[], year: number | undefined): number {
 export function capsLayer(
   data: CityData,
   o: CapsLayerOptions,
-): (CityLayer & { meshes: Mesh[]; count: number }) | null {
+): (CityLayer & { meshes: Mesh[]; count: number; gateSpread: number }) | null {
   const form = data.form();
   if (!form || !form.n) return null;
 
@@ -198,6 +227,15 @@ export function capsLayer(
      chunks are never decoded. */
   const wanted = new Set<number>();
   for (let s = 0; s < form.n; s++) wanted.add(form.bi[s]);
+
+  /* THE PROJECTION'S OWN PLAN SCALE, READ ONCE. `drawStep` measures a cap's
+     drawn width as `2 * rad * |(ax, ay)| * cam.scale`, so this is the factor
+     that turns a published radius in metres into plane units. It depends on
+     the BEARING alone — the band moves `zex`, which is the other half of the
+     projection — so reading it at build time reads it for the life of the
+     page. */
+  const c0 = projection.coeffs();
+  const LMAX = Math.hypot(c0.ax, c0.ay) || 1;
 
   const roofRGB = roofShadeTable(o.roofPalette).map(toRGB);
   const wallRGB = o.wallPalette.map(toRGB);
@@ -273,19 +311,66 @@ export function capsLayer(
            no column asks for. */
         side: wallRGB[mat.wall[i]] ?? [0.78, 0.72, 0.62],
         year: (tb.u[i] & FLAG_NOYEAR) !== 0 ? -1 : o.materials.year0 + tb.yr[i],
+        /* `drawStep`'s own two floors, inverted for the camera scale. A cap
+           with no lift at all would ask for an infinite scale; `capForm`
+           refuses it anyway (`topM <= baseM`), so the guard is only so the
+           arithmetic below never sees an Infinity it has to sort. */
+        need: Math.max(
+          form.top[s] > baseM
+            ? FSTEP_LIFT_PX / (o.zexb * (form.top[s] - baseM))
+            : Infinity,
+          form.rad[s] > 0 ? FSTEP_W_PX / (2 * form.rad[s] * LMAX) : Infinity,
+        ),
       });
     }
   }
   if (!standing.length) return null;
 
-  /* ── EMITTED IN YEAR ORDER, SO THE CENTURY SCRUB IS A DRAW RANGE ────────
-     Undated first — a footprint the roll does not date is drawn in every year
-     — then by the roll's own year ascending, with the gid breaking ties so
-     the buffer is byte-identical run to run. The set that exists in year Y is
-     then a PREFIX and the gate is `setDrawRange(0, n)`: one number, no
-     upload, no rebuild. Exactly `layers/buildings.ts` §the year is a draw
-     range, and a cap has to follow its host or a tower outlives its tower. */
-  standing.sort((a, b) => a.year - b.year || a.gid - b.gid);
+  /* ── BUCKETED BY CAMERA NEED, AND WITHIN A BUCKET BY YEAR ───────────────
+     See the header §THE GATE IS THE RECORD'S OWN, PER CAP. The buckets are
+     EQUAL-POPULATION quantiles of the measured `need` rather than a ladder
+     somebody chose, so the quantisation error is the data's own spread and
+     not a constant nobody can justify. Within a bucket the order is the one
+     `layers/buildings.ts` §the year is a draw range asks for: undated first
+     — a footprint the roll does not date is drawn in every year — then by
+     the roll's own year ascending, with the gid breaking ties so the buffer
+     is byte-identical run to run. */
+  const NB = Math.max(1, Math.min(64, Math.round(o.gateBuckets ?? 12)));
+  /* A GEOMETRIC LADDER AND NOT EQUAL-POPULATION QUANTILES, and the first cut
+     was quantiles. What matters is the RATIO between what a cap needs and
+     what its bucket opens at, because that ratio IS how far below its own
+     pixel floor the cap can be drawn — and equal-population buckets put the
+     whole tail in the last one: MEASURED on this record, 8 quantile buckets
+     gave a worst ratio of 91. A ladder with a constant ratio bounds it by
+     construction, and the ratio is the (max/min) of the measured needs to
+     the 1/NB — nobody's constant.
+
+     MEASURED over the 518 slots: need runs 0.0143 to 0.245 at the 99th
+     percentile, median 0.0787 — against a whole-city camera at 0.0790.
+     Non-finite needs are left out of the ladder and only out of the ladder:
+     they are the caps with no lift at all, which `capForm` refuses anyway,
+     and letting an Infinity into a max would collapse the ladder. */
+  const finite = standing
+    .map((st) => st.need)
+    .filter((v) => isFinite(v) && v > 0)
+    .sort((a, b) => a - b);
+  const lo = finite.length ? finite[0] : 1;
+  const hi = finite.length ? finite[finite.length - 1] : 1;
+  const ratio = NB > 1 && hi > lo ? Math.pow(hi / lo, 1 / (NB - 1)) : 1;
+  /** the LOWEST need in each bucket — the scale that turns the bucket on */
+  const gateAt: number[] = [];
+  for (let i = 0; i < NB; i++) gateAt.push(lo * Math.pow(ratio, i));
+  const bucketOf = (need: number): number => {
+    if (!(need > gateAt[0])) return 0;
+    /* a need above the top rung — or an Infinity — belongs to the last
+       bucket, which then simply never opens at a camera that cannot reach it */
+    const b = Math.floor(Math.log(need / lo) / Math.log(ratio || 1));
+    return Math.max(0, Math.min(NB - 1, isFinite(b) ? b : NB - 1));
+  };
+  standing.sort(
+    (a, b) =>
+      bucketOf(a.need) - bucketOf(b.need) || a.year - b.year || a.gid - b.gid,
+  );
 
   const xz: number[] = [];
   const elev: number[] = [];
@@ -305,11 +390,20 @@ export function capsLayer(
     },
   };
 
-  /** `idx.length` after each emitted cap, and that cap's year */
-  const marks: number[] = [];
-  const years: number[] = [];
+  /** `idx.length` after each emitted cap, and that cap's year — PER BUCKET,
+   *  so the century prefix and the camera gate are two independent numbers */
+  const marks: number[][] = Array.from({ length: NB }, () => []);
+  const years: number[][] = Array.from({ length: NB }, () => []);
+  /** where each bucket's run starts in the index buffer */
+  const starts = new Array<number>(NB).fill(0);
+  /** the widest need/need ratio inside any one bucket — the gate's own error */
+  let spread = 1;
+  let seen = -1;
   let count = 0;
   for (const st of standing) {
+    /* the index length BEFORE this cap — a bucket's run starts where its
+       first surviving cap's triangles start, not where they end */
+    const before = idx.length;
     /* `capForm` settles its whole plan before it appends anything, so a
        refusal here leaves the buffers exactly as they were and the roof the
        page already drew still stands. That is asserted in `roof-form.test.ts`
@@ -341,10 +435,21 @@ export function capsLayer(
       },
     );
     if (!made) continue;
-    marks.push(idx.length);
-    years.push(st.year);
+    const bk = bucketOf(st.need);
+    if (bk !== seen) {
+      /* a bucket with no cap that survived `capForm` still needs a start, so
+         every bucket from the last one seen is opened here at once */
+      for (let b = seen + 1; b <= bk; b++) starts[b] = before;
+      seen = bk;
+    }
+    marks[bk].push(idx.length);
+    years[bk].push(st.year);
+    if (isFinite(st.need) && st.need > 0 && gateAt[bk] > 0) {
+      spread = Math.max(spread, st.need / gateAt[bk]);
+    }
     count++;
   }
+  for (let b = seen + 1; b < NB; b++) starts[b] = idx.length;
   if (!count) return null;
 
   const VT = elev.length;
@@ -411,27 +516,83 @@ export function capsLayer(
     vertexColors: true,
     flatShading: true,
   });
-  const mesh = new Mesh(g, mat);
+  /* ONE MATERIAL, `NB` TIMES OVER. `geometry.groups` index into a material
+     ARRAY, and repeating the same instance is what says "these are the same
+     surface, drawn in several calls": one program, one set of uniforms, and
+     `mat.color` below still reaches every group. */
+  const mesh = new Mesh(g, new Array<MeshLambertMaterial>(NB).fill(mat));
   mesh.castShadow = true;
   mesh.receiveShadow = true;
   const meshes = [mesh];
+  for (let b = 0; b < NB; b++) {
+    const end = b + 1 < NB ? starts[b + 1] : idx.length;
+    g.addGroup(starts[b], end - starts[b], b);
+  }
 
-  const fromStep = o.fromStep ?? 1;
+  /** the camera the gate was last answered for, and the year with it */
+  /* OPEN UNTIL A CAMERA SAYS OTHERWISE. See `layers/heroes.ts` on the same
+     line: a layer that never receives an `onFrame` has to fall back to the
+     whole record rather than to nothing. */
+  let scale = Infinity;
+  let yearNow: number | undefined = undefined;
+  /* THE TWO GATES ARE ONE ASSIGNMENT PER BUCKET. The century scrub is a
+     prefix INSIDE a bucket (`marks`), the camera is the bucket's own lowest
+     `need`, and the group's `count` is their intersection — which is a range
+     because the prefix starts at the bucket's start. */
+  const applyGate = (): void => {
+    for (let b = 0; b < NB; b++) {
+      const grp = g.groups[b];
+      if (scale < gateAt[b]) {
+        grp.count = 0;
+        continue;
+      }
+      const k = upTo(years[b], yearNow);
+      grp.count = (k ? marks[b][k - 1] : starts[b]) - starts[b];
+    }
+  };
+  applyGate();
+
+  /** the rig's own up-face transfer, resolved on the first frame */
+  let comp: number | null = null;
 
   return {
     name: "caps",
     meshes,
     count,
-    onStep(step: number, zex: number, zexb: number) {
-      /* see `fromStep`: the per-cap pixel floors the Canvas runs become one
-         camera floor, because this buffer's only draw range belongs to the
-         year */
-      mesh.visible = step >= fromStep;
+    /** the widest `need` ratio inside one bucket — how far below its own
+     *  floor a cap can be drawn. 1 is exact; `caps.test.ts` holds the bound. */
+    gateSpread: spread,
+    onFrame(cam: PlaneCamera) {
+      if (cam.scale !== scale) {
+        scale = cam.scale;
+        applyGate();
+      }
+      /* ── A CAP MUST BE THE COLOUR OF THE ROOF IT STANDS ON ────────────
+         `layers/buildings.ts` §AND WHAT THE RIG RETURNS has the measurement:
+         the lighting rig returns 0.763 for an UP normal where it should return
+         1.0, so every up-facing surface renders a third of a stop under the
+         colour the record gave it. The fabric's roofs now carry the reciprocal;
+         without this the second solids sat at 0.763 beside a roof at 1.0, and a
+         mast came out darker than the roof it rises from.
+
+         Resolved from the scene's own lights rather than typed in, because the
+         rig is still being tuned and a constant would go stale the moment it
+         moved. Once, on the first frame that has lights. */
+      if (comp !== null) return;
+      const t = upFaceTransfer(mesh);
+      if (t === null || !(t > 0)) return;
+      comp = Math.min(4, 1 / t);
+      mat.color.setScalar(comp);
+    },
+    onStep(_step: number, zex: number, zexb: number) {
+      /* the camera STEP no longer gates anything here — see the header
+         §THE GATE IS THE RECORD'S OWN, PER CAP. All this rung does is move
+         the two exaggerations. */
       setStep(zex, zexb);
     },
     onYear(year: number | undefined) {
-      const k = upTo(years, year);
-      g.setDrawRange(0, k ? marks[k - 1] : 0);
+      yearNow = year;
+      applyGate();
     },
     dispose() {
       g.dispose();

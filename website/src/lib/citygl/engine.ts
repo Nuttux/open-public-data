@@ -19,7 +19,13 @@
    changes, which is what keeps a phone cool on a page that is standing still.
    ═══════════════════════════════════════════════════════════════════════ */
 
-import { Color, OrthographicCamera, PCFSoftShadowMap, Scene } from "three";
+import {
+  Color,
+  OrthographicCamera,
+  PCFSoftShadowMap,
+  Scene,
+  type ToneMapping,
+} from "three";
 /* ── WEBGPU FIRST, WEBGL SECOND, AND ONE CODE PATH ───────────────────────
    `three/webgpu`'s renderer compiles from a NODE GRAPH rather than from
    GLSL, targets WebGPU where the browser has it, and falls back to WebGL 2
@@ -35,15 +41,32 @@ import { Color, OrthographicCamera, PCFSoftShadowMap, Scene } from "three";
    (everything else). That constraint has been worth more than it cost —
    stock materials are also what the shadow pass and any future
    post-processing can substitute their own program for. */
+import type { TextureNode } from "three/webgpu";
 import { PostProcessing, WebGPURenderer } from "three/webgpu";
+import type { ShaderNodeObject } from "three/tsl";
 import { pass, vec4 } from "three/tsl";
 
+/** a pass's own texture node — the thing that carries `.rgb` and `.a` */
+type PassTex = ShaderNodeObject<TextureNode>;
+
 import { projection, screenToPlane } from "@/lib/city/projection";
+import { cityAir, type AirParams, type AirSwitches, type CityAir } from "./air";
 import { orthoAo, type OrthoAo, type OrthoAoParams } from "./ao";
-import { applyAxonCamera, axonBasis, type AxonBasis, type PlaneCamera } from "./camera";
+import {
+  applyAxonCamera,
+  axonBasis,
+  snapCameraScale,
+  snapCameraToPixels,
+  type AxonBasis,
+  type PlaneCamera,
+} from "./camera";
 import type { CityDescriptor } from "./descriptor";
 import { sunRig, type SunRig } from "./light";
 import { detectQuality, type QualitySettings } from "./quality";
+import { cityTemporal, setTemporalKeep, type Temporal } from "./temporal";
+
+/** what the post chain may put on the glass — see `CityEngine.outputFor` */
+export type PostDebug = "scene" | "ao" | "air" | "tilt";
 
 /** A drawable the engine owns: built once, told the camera, disposed at the end. */
 export interface CityLayer {
@@ -98,12 +121,33 @@ export class CityEngine {
   readonly sun: SunRig;
   readonly quality: QualitySettings;
   private post: PostProcessing | null = null;
+  /** see `temporal.ts` — the frame keeps the frame before it */
+  private temporal: Temporal | null = null;
+  /* ── ON, AND THE COLOUR IS WHY IT TOOK TWO GOES ─────────────────────────
+     `temporal.ts` is the last of the four things that made this city shimmer,
+     and the only one that a per-layer fix could never reach: a re-render of a
+     city this dense does not reproduce bit-for-bit at every edge, even from a
+     camera that has moved by an exact whole number of device pixels. Against
+     the published renderer's 0.00 %, this one sat at ~0.5 % of pixels failing
+     to line up on every frame of a drag. The accumulation takes that to 0.05 %.
+
+     It shipped once with the blend in the wrong colour space and put a pale
+     veil over the city, which is why the conversion is now explicit and why
+     the check that guards it is the settled frame's own exposure: 140.4 with
+     the accumulation off, 140.4 with it on. */
+  private temporalWanted = true;
+  /** the raster camera the last frame was drawn from, for the reprojection */
+  private lastRaster: { cx: number; cy: number; scale: number } | null = null;
   private aoPass: OrthoAo | null = null;
+  private airPass: CityAir | null = null;
   /** `null` follows the quality tier; `setPost` pins it for an A/B */
   private postWanted: boolean | null = null;
-  /** what the post chain puts on the glass — `"ao"` shows the term alone */
-  private postDebug: "scene" | "ao" = "scene";
+  /** what the post chain puts on the glass — anything but `"scene"` shows
+   *  one term of it alone, which is the only way to judge one term */
+  private postDebug: PostDebug = "scene";
   private basis: AxonBasis;
+  /** the live `air.ts` dials, so a shader rebuild does not lose a sweep */
+  private readonly airParams: Partial<AirParams> = {};
 
   private W = 0;
   private H = 0;
@@ -111,6 +155,8 @@ export class CityEngine {
   private readonly maxDpr: number;
 
   private cam: PlaneCamera = { cx: 0, cy: 0, scale: 0.05 };
+  /** see `rasterCam` — off only for measurement */
+  private snapRaster = true;
   private step = 0;
   private year: number | undefined = undefined;
 
@@ -152,7 +198,10 @@ export class CityEngine {
     if (this.quality.shadowMap === 0) this.sun.setEnabled(false);
 
     this.basis = axonBasis(projection);
-    this.sun.aimKey(this.basis.R);
+    /* `F` as well as `R`: the shadow fit works in the LIGHT's own axes and has
+       to know where a TALL thing must stand to lean into the frame — see
+       `light.ts` §the shadow box is fitted in the light's axes. */
+    this.sun.aimKey(this.basis.R, this.basis.F);
     this.tick = this.tick.bind(this);
 
     if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
@@ -196,56 +245,148 @@ export class CityEngine {
    * stock GTAONode carries the full autopsy.
    *
    * ── WHAT THE CHAIN COSTS, AND WHAT IT DOES NOT COST ─────────────────────
-   * One scene pass into a render target, one full-screen composite. `PassNode`
-   * copies `renderer.samples` onto its own target, so the 4x MSAA the frame
-   * already had survives the detour — VERIFIED by capture, the anti-aliasing
-   * is identical with the chain on and off.
+   * One scene pass into a render target, one full-screen composite. MEASURED
+   * at 1440 x 666 on the WebGL 2 backend, median of 25 fenced frames, chain
+   * off then on: city 15.9 / 15.9 ms, district 14.4 / 14.4, block 9.5 / 8.4,
+   * street 7.8 / 7.5 — the occlusion is inside the run-to-run noise. The
+   * control that makes those numbers mean something is the tap count: 512
+   * taps on the same frame costs 14.8 ms against 9.4 with the chain off, so
+   * the clock does see the shader, and the twelve taps this ships with are
+   * worth about a tenth of a millisecond.
+   *
+   * `PassNode` copies `renderer.samples` onto its own render target, so the
+   * 4x MSAA the frame already had survives the detour. MEASURED against a
+   * 16-sample supersampled reference at the block camera: RMSE over the edge
+   * band is 7.54 without the chain and 7.62 with it, where turning MSAA off
+   * costs 11.41. The post pass does not cost the frame its antialiasing.
+   *
+   * ── ONE TRAP FOR ANYONE MEASURING THIS ──────────────────────────────────
+   * `PassNode.updateBeforeType` is `NodeUpdateType.FRAME`, and what advances
+   * three's `frameId` is its OWN animation loop, once per browser animation
+   * frame — not this engine's `render()` calls. So N calls to `tick()` inside
+   * one task render the scene ONCE and the composite N times, and a harness
+   * that does that will report the whole post chain as free. It is not a bug
+   * here: `tick()` runs from `requestAnimationFrame`, one paint per frame.
    *
    * It is built inside a `try`. A backend that cannot give this chain must
    * lose the ambient occlusion and keep the city — never the other way round.
    */
   private buildPost(): void {
-    if (!(this.postWanted ?? this.quality.ao)) return;
+    if (!(this.postWanted ?? (this.quality.ao || this.airWanted))) return;
     try {
       const scenePass = pass(this.scene, this.camera);
       const colour = scenePass.getTextureNode("output");
       const depth = scenePass.getTextureNode("depth");
-      const a = orthoAo(depth, {
-        samples: this.quality.aoSamples,
-        radiusM: this.quality.aoRadiusM,
-      });
+      const a = this.quality.ao
+        ? orthoAo(depth, {
+            samples: this.quality.aoSamples,
+            radiusM: this.quality.aoRadiusM,
+          })
+        : null;
+      /* `air.ts` reads the same depth texture the occlusion does — one scene
+         pass, two readers. The paper it recedes toward is the descriptor's,
+         never a constant here. */
+      const air = this.airWanted
+        ? cityAir(depth, {
+            paper: this.descriptor.look.haze,
+            on: {
+              haze: this.quality.haze,
+              tiltShift: this.quality.tiltShift,
+              vignette: this.quality.vignette,
+              grade: this.quality.grade,
+            },
+            ...this.airParams,
+          })
+        : null;
       const p = new PostProcessing(this.renderer);
-      /* the alpha stays 1 — multiplying it would make the canvas translucent
-         and let the page's own background through the darkest corners */
-      p.outputNode =
-        this.postDebug === "ao"
-          ? vec4(a.node, a.node, a.node, 1)
-          : vec4(colour.rgb.mul(a.node), colour.a);
+      /* THE ACCUMULATION IS LAST, over the composed frame — it has to see
+         what actually reaches the glass, including the occlusion and the
+         air, because those are part of what flickers. */
+      const composed = this.outputFor(colour, a, air);
+      /* ── AND IT RUNS ON BOTH BACKENDS ────────────────────────────────
+         It did not, for a while, because the copy that keeps the last frame
+         was refused on WebGPU — `rgba16float` against a `bgra8unorm` target —
+         and three logs that and RETURNS rather than throwing, so the failure
+         was silent and the blend ran on a history that was never refreshed.
+         `temporal.ts` §ASKING FOR THE TYPE DOES NOTHING HERE has the cause:
+         the format is overridden for a `FramebufferTexture` and only
+         `internalFormat` outranks it. */
+      const canAccumulate = true;
+      if (this.temporalWanted && canAccumulate) {
+        const t = cityTemporal(composed, this.backend === "webgpu");
+        t.resize(this.W * this.dpr, this.H * this.dpr);
+        p.outputNode = t.node;
+        this.temporal = t;
+      } else {
+        p.outputNode = composed;
+      }
       this.post = p;
       this.aoPass = a;
+      this.airPass = air;
     } catch (e) {
-      console.warn("citygl: no ambient occlusion on this backend —", e);
-      this.post = null;
-      this.aoPass = null;
+      console.warn("citygl: no post chain on this backend —", e);
+      this.dropPost();
     }
   }
 
-  /** turn the post chain off — the phone tier and the A/B both use this */
+  /** true when any one of the four `air.ts` treatments is wanted */
+  private get airWanted(): boolean {
+    const q = this.quality;
+    return q.haze || q.tiltShift || q.vignette || q.grade;
+  }
+
+  /**
+   * WHAT GOES ON THE GLASS, AND THE FOUR DEBUG FRAMES.
+   *
+   * `"scene"` is the picture. The other three put ONE term on the glass on
+   * its own, at full contrast, which is the only honest way to look at a
+   * term whose whole job is to be barely visible — a haze that reads as
+   * "about right" over the city is a haze nobody has actually measured.
+   */
+  private outputFor(colour: PassTex, a: OrthoAo | null, air: CityAir | null) {
+    if (this.postDebug === "ao" && a) return vec4(a.node, a.node, a.node, 1);
+    if (this.postDebug === "air" && air) return air.debugAir();
+    if (this.postDebug === "tilt" && air) return air.debugTilt();
+    if (air) return air.compose(colour, a?.node ?? null);
+    /* the alpha stays 1 — multiplying it would make the canvas translucent
+       and let the page's own background through the darkest corners */
+    if (a) return vec4(colour.rgb.mul(a.node), colour.a);
+    return vec4(colour.rgb, colour.a);
+  }
+
+  /** drop the chain and everything it owns; the city is drawn without it */
+  private dropPost(): void {
+    this.airPass?.dispose();
+    this.temporal?.dispose();
+    this.temporal = null;
+    this.post = null;
+    this.aoPass = null;
+    this.airPass = null;
+  }
+
+  /** turn the post chain off — the A/B uses this, and so does a failure */
   setPost(on: boolean): void {
     this.postWanted = on;
-    if (!on) {
-      this.post = null;
-      this.aoPass = null;
-    } else if (!this.post) this.buildPost();
+    if (!on) this.dropPost();
+    else if (!this.post) this.buildPost();
     this.invalidate();
   }
 
   /**
-   * Retune the occlusion without a reload — this is how the A/B harness
-   * sweeps radius and intensity. `samples` and `debug` change the SHADER, so
-   * they go through the quality settings and a rebuild; the rest are uniforms.
+   * Retune the chain without a reload — this is how the A/B harness sweeps
+   * the occlusion's radius, the haze's cap and the grade's strength.
+   * `samples`, `debug` and the four `air.ts` switches change the SHADER, so
+   * they go through the quality settings and a rebuild; the rest are
+   * uniforms and take effect on the next frame.
    */
-  setPostParams(p: Partial<OrthoAoParams> & { samples?: number; debug?: "scene" | "ao" }): void {
+  setPostParams(
+    p: Partial<OrthoAoParams> &
+      Partial<AirParams> & {
+        samples?: number;
+        debug?: PostDebug;
+        terms?: Partial<AirSwitches>;
+      },
+  ): void {
     let rebuild = false;
     if (p.samples !== undefined && p.samples !== this.quality.aoSamples) {
       this.quality.aoSamples = p.samples;
@@ -255,12 +396,26 @@ export class CityEngine {
       this.postDebug = p.debug;
       rebuild = true;
     }
+    for (const k of ["haze", "tiltShift", "vignette", "grade"] as const) {
+      const v = p.terms?.[k];
+      if (v !== undefined && v !== this.quality[k]) {
+        this.quality[k] = v;
+        rebuild = true;
+      }
+    }
+    /* the live dials are remembered, so a rebuild does not silently put the
+       chain back to its defaults halfway through a sweep */
+    for (const k of [
+      "hazeCap", "hazeLenM", "tilt", "vignette", "gradeStrength", "gradeSat",
+    ] as const) {
+      if (p[k] !== undefined) this.airParams[k] = p[k];
+    }
     if (rebuild && this.post) {
-      this.post = null;
-      this.aoPass = null;
+      this.dropPost();
       this.buildPost();
     }
     this.aoPass?.setParams(p);
+    this.airPass?.setParams(p);
     this.invalidate();
   }
 
@@ -271,6 +426,11 @@ export class CityEngine {
   /** what the occlusion disc came out as this frame, world metres */
   get aoRadiusM(): number {
     return this.aoPass?.radiusUsedM ?? 0;
+  }
+
+  /** the `air.ts` chain, for a harness that wants to read what it did */
+  get air(): CityAir | null {
+    return this.airPass;
   }
 
   /** every layer the engine draws, in the order they were added */
@@ -294,6 +454,7 @@ export class CityEngine {
     this.dpr = d;
     this.renderer.setPixelRatio(d);
     this.renderer.setSize(W, H, false);
+    this.temporal?.resize(W * d, H * d);
     this.invalidate();
   }
 
@@ -318,10 +479,14 @@ export class CityEngine {
    */
   setStep(step: number): void {
     if (step === this.step) return;
+    this.temporal?.reset();
     this.step = step;
     projection.setBand(step);
     this.basis = axonBasis(projection);
-    this.sun.aimKey(this.basis.R);
+    /* `F` as well as `R`: the shadow fit works in the LIGHT's own axes and has
+       to know where a TALL thing must stand to lean into the frame — see
+       `light.ts` §the shadow box is fitted in the light's axes. */
+    this.sun.aimKey(this.basis.R, this.basis.F);
     const zex = this.zex();
     for (const l of this.layers) l.onStep?.(step, zex, this.descriptor.look.zexb);
     this.invalidate();
@@ -343,6 +508,8 @@ export class CityEngine {
   setYear(year: number | undefined): void {
     if (year === this.year) return;
     this.year = year;
+    /* the city itself changed, so there is nothing to carry over */
+    this.temporal?.reset();
     for (const l of this.layers) l.onYear?.(year);
     this.invalidate();
   }
@@ -371,8 +538,101 @@ export class CityEngine {
     return b?.isWebGPUBackend ? "webgpu" : "webgl2";
   }
 
+  /** the element the scene is drawn on — for a harness, and for the export */
+  get canvas(): HTMLCanvasElement | null {
+    return (this.renderer as unknown as { domElement?: HTMLCanvasElement }).domElement ?? null;
+  }
+
   get viewport(): { W: number; H: number; dpr: number } {
     return { W: this.W, H: this.H, dpr: this.dpr };
+  }
+
+  /**
+   * ── ONE FRAME, NOW, IN THE CALLER'S OWN TASK ────────────────────────────
+   *
+   * For a harness that wants to READ the frame it just asked for. A WebGL
+   * context without `preserveDrawingBuffer` is cleared as soon as the browser
+   * composites, so `canvas.toDataURL()` a rAF later returns a blank image —
+   * which is exactly what started happening the moment the post chain went in,
+   * and it returned ten blank PNGs before it was noticed. Rendering
+   * synchronously and reading in the same task is the only reliable order.
+   *
+   * `invalidate()` is what the app uses; nothing in the app calls this.
+   */
+  renderNow(): void {
+    this.dirty = true;
+    this.tick();
+  }
+
+  private rasterCam(): PlaneCamera {
+    if (!this.snapRaster) return this.cam;
+    /* the scale first, because the pixel grid is defined BY the scale — snap
+       the centre against a scale that is about to change and it lands on the
+       wrong grid */
+    return snapCameraToPixels(snapCameraScale(this.cam), this.dpr);
+  }
+
+  /**
+   * How much of the last frame survives into this one; 0 turns the
+   * accumulation off. For the A/B — `temporal.ts` carries what the number
+   * costs and what it buys.
+   */
+  setTemporal(keep: number): void {
+    setTemporalKeep(keep);
+    const want = keep > 0;
+    if (want !== this.temporalWanted) {
+      this.temporalWanted = want;
+      this.dropPost();
+      this.buildPost();
+    }
+    this.temporal?.reset();
+    this.invalidate();
+  }
+
+  /**
+   * The tone map and its exposure, for the A/B.
+   *
+   * ── AND THE ANSWER, MEASURED, IS THAT THERE IS NOT ONE ──────────────────
+   * With `rgba16float` live there is finally range above white to roll off,
+   * and the obvious thing to spend it on was the highlight end: the large
+   * flat roofs sit well over the published page while the mid-tones are on
+   * it. So every candidate was scored against that page over the same three
+   * cameras, at four percentiles each — mean absolute deviation of 255:
+   *
+   *     none   3.7      ACES   4.7      AgX   8.8      Neutral   9.0
+   *
+   * None of them helps and every one of them hurts. That is not a surprise
+   * once it is written down: the reference is a painted 2D page that
+   * compresses nothing, this port exists to match it, and a tone map is a
+   * curve applied to a picture that was authored without one. The roofs are
+   * not a curve problem either — they are +36 at one camera and -5 at
+   * another, which no global transform fixes.
+   *
+   * So the chain stays at `NoToneMapping`, now on purpose rather than by
+   * default, and this stays as the switch that says so. The HDR is better
+   * spent on things that ADD — a bloom above a threshold leaves the base
+   * picture where it is — than on a curve that moves all of it.
+   *
+   * Takes three.js's own constants so a sweep can name them.
+   */
+  setToneMapping(mode: ToneMapping, exposure = 1): void {
+    this.renderer.toneMapping = mode;
+    this.renderer.toneMappingExposure = exposure;
+    /* the chain bakes the output transform, so it has to be rebuilt */
+    this.dropPost();
+    this.buildPost();
+    this.invalidate();
+  }
+
+  /**
+   * Pin the pixel snap off for an A/B, the way `setPost` pins the chain. The
+   * only honest way to measure what it buys is a FRACTIONAL pan — at exactly
+   * one pixel an unsnapped camera lands on the grid too, and the two are
+   * indistinguishable.
+   */
+  setSnap(on: boolean): void {
+    this.snapRaster = on;
+    this.invalidate();
   }
 
   private tick(): void {
@@ -381,26 +641,62 @@ export class CityEngine {
     this.dirty = false;
 
     const t0 = performance.now();
-    applyAxonCamera(this.camera, this.basis, this.cam, this.W, this.H, DEPTH_SPAN_M);
-    this.sun.fit(this.groundCorners());
-    for (const l of this.layers) l.onFrame?.(this.cam, this.step);
+    /* ONE camera for the whole frame — the GL, every layer's `onFrame`, and
+       the label overlay through `onAfterFrame`. If the type were laid from
+       the continuous camera while the city were drawn from the snapped one,
+       the labels would slide up to half a pixel against the buildings they
+       name, which is the same defect in a smaller place. */
+    const cam = this.rasterCam();
+    /* ── WHAT THE ACCUMULATION NEEDS TO KNOW ────────────────────────────
+       How far the picture moved on the glass since the frame it is about to
+       be mixed with, in device pixels, and whether that movement is the only
+       thing that changed. `temporal.ts` refuses anything that is not a pure
+       pan, because only a pan reprojects by whole texels. */
+    const prev = this.lastRaster;
+    const q = cam.scale * this.dpr;
+    const pureP = prev !== null && prev.scale === cam.scale;
+    /* screen space, x to the right and y DOWN: the frustum's y is inverted
+       (`camera.ts` §the projection is left-handed), so a rise in `cy` sends
+       the picture down the glass. */
+    const sx = pureP ? -(cam.cx - prev.cx) * q : 0;
+    const sy = pureP ? (cam.cy - prev.cy) * q : 0;
+    this.temporal?.frame(Math.round(sx), Math.round(sy), pureP);
+    this.lastRaster = { cx: cam.cx, cy: cam.cy, scale: cam.scale };
+    applyAxonCamera(this.camera, this.basis, cam, this.W, this.H, DEPTH_SPAN_M);
+    this.sun.fit(this.groundCorners(cam));
+    for (const l of this.layers) l.onFrame?.(cam, this.step);
 
     if (this.post) {
       try {
         /* the whole reconstruction is four numbers off this frame's frustum,
-           and the frustum moved on the line above */
+           and the frustum moved on the line above. The air's anchor is read
+           off the same frustum and has the same deadline. */
         this.aoPass?.update(this.camera, this.W * this.dpr, this.H * this.dpr);
+        this.airPass?.update(this.camera, this.W * this.dpr, this.H * this.dpr, this.dpr);
         this.post.render();
       } catch (e) {
         console.warn("citygl: post chain failed, falling back —", e);
-        this.post = null;
-        this.aoPass = null;
+        this.dropPost();
         this.renderer.render(this.scene, this.camera);
       }
     } else {
       this.renderer.render(this.scene, this.camera);
     }
-    this.onAfterFrame?.(this.cam, this.step);
+    /* ── AND KEEP IT ────────────────────────────────────────────────────
+       The frame that just reached the glass becomes the next frame's
+       history. `copyFramebufferToTexture` is a GPU-side copy of the drawing
+       buffer — no readback, nothing crosses to the CPU. */
+    if (this.temporal) {
+      try {
+        this.renderer.copyFramebufferToTexture(this.temporal.history);
+      } catch (e) {
+        console.warn("citygl: no temporal accumulation on this backend —", e);
+        this.temporal.disable();
+        this.temporal = null;
+      }
+    }
+
+    this.onAfterFrame?.(cam, this.step);
 
     /* `drawCalls` on the WebGPU backend, `calls` on WebGL — one readout so a
        harness does not have to know which came up. */
@@ -420,13 +716,18 @@ export class CityEngine {
    * plane. `screenToPlane` undoes the camera and `invAt` undoes the
    * projection — the two halves `projection.ts` was split into, run
    * backwards. The shadow camera is fitted to this box.
+   *
+   * It takes the camera rather than reading `this.cam` so that the box is
+   * fitted to the frame BEING DRAWN — the snapped one. Fitting the shadow to
+   * a camera half a pixel away from the one the city is rasterised from would
+   * put the shadow map back on a grid of its own.
    */
-  private groundCorners(): [number, number][] {
+  private groundCorners(cam: PlaneCamera = this.cam): [number, number][] {
     const out: [number, number][] = [];
     for (const [sx, sy] of [
       [0, 0], [this.W, 0], [0, this.H], [this.W, this.H],
     ] as const) {
-      const pl = screenToPlane(sx, sy, this.W, this.H, this.cam);
+      const pl = screenToPlane(sx, sy, this.W, this.H, cam);
       const w = projection.invAt(pl[0], pl[1], 0);
       out.push([w[0], w[1]]);
     }
@@ -440,6 +741,9 @@ export class CityEngine {
     for (const l of this.layers) l.dispose();
     this.layers.length = 0;
     this.sun.dispose();
+    /* the tilt-shift owns two render targets of its own, and a page that
+       mounts the map twice would otherwise leak both */
+    this.airPass?.dispose();
     this.renderer.dispose();
     if (typeof globalThis !== "undefined") {
       delete (globalThis as { __cityGL?: CityEngine }).__cityGL;

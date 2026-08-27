@@ -17231,6 +17231,13 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 .theme-fusion .fx-block-unit.is-on { color: var(--bleu); }
 /* a street is the wider thing and reads one step quieter than a door */
 .theme-fusion .fx-block-unit.is-street .fx-block-unit-l { color: var(--ink-2); }
+/* a street the record does not reach: named, not offered */
+.theme-fusion .fx-block-unit.is-quiet {
+  cursor: default;
+  color: var(--muted);
+}
+.theme-fusion .fx-block-unit.is-quiet:hover { background: transparent; }
+.theme-fusion .fx-block-unit.is-quiet .fx-block-unit-l { color: var(--muted); }
 .theme-fusion .fx-block-unit-l { font-size: 14px; line-height: 1.3; }
 .theme-fusion .fx-block-unit-n {
   font-family: var(--f-mono);
@@ -17240,6 +17247,211 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   font-variant-numeric: tabular-nums;
 }
 .theme-fusion .fx-block-back { display: inline-block; margin-bottom: 10px; }
+
+/* ── WHAT KEEPS COMING UP ──────────────────────────────────────────────────
+   Chips, and they wrap: a subject is a phrase in English — `Land and
+   buildings split up` — not a four-digit code, so a fixed grid would either
+   truncate half of them or leave a column of air beside the short ones.
+   `flex-wrap` with a small gap gives the long ones a line of their own and
+   packs the short ones two to a row without either being decided here.
+
+   The count in the chip is the LOCAL one and never runs past two digits at
+   this scale. It sits inside the chip rather than beside it because a chip
+   that reads `Stables 6` is one thing you press, and `Stables` with a number
+   floating after it is two. */
+.theme-fusion .fx-block-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
+.theme-fusion .fx-block-subject {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  padding: 4px 8px;
+  cursor: pointer;
+  font-family: var(--f-ui);
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: left;
+}
+.theme-fusion .fx-block-subject:hover { border-color: var(--ink); }
+.theme-fusion .fx-block-subject:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: 1px;
+}
+/* the open one is the one being read about, so it has to read as PRESSED and
+   not merely hovered — a border alone was not enough to find again after
+   scrolling down through what opened under it */
+.theme-fusion .fx-block-subject.is-on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+.theme-fusion .fx-block-subject-n {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+.theme-fusion .fx-block-subject.is-on .fx-block-subject-n {
+  color: var(--bg);
+  opacity: .75;
+}
+
+/* the opened subject, tied to its chip by a rule down the left rather than by
+   a box: a box inside a 252 px column eats measure on both sides and the
+   record inside it is already the narrowest thing on this panel */
+.theme-fusion .fx-block-subject-open {
+  margin: 10px 0 0;
+  padding-left: 10px;
+  border-left: 2px solid var(--ink);
+}
+.theme-fusion .fx-block-subject-note {
+  margin: 0 0 4px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+/* the city's decade shape. Baseline-aligned bars and no axis, because it is a
+   shape and not a reading — the sentence directly under it carries every
+   number it could be misread for. */
+.theme-fusion .fx-block-subject-dec {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 26px;
+  margin: 9px 0 5px;
+}
+.theme-fusion .fx-block-subject-tick {
+  display: flex;
+  align-items: flex-end;
+  flex: 1 1 0;
+  min-width: 3px;
+  height: 100%;
+}
+.theme-fusion .fx-block-subject-tickbar {
+  display: block;
+  width: 100%;
+  background: var(--bleu, #1b2a6b);
+  opacity: .55;
+}
+.theme-fusion .fx-block-subject-decends {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: .04em;
+  color: var(--muted);
+  margin: -2px 0 6px;
+}
+
+/* ── THE PARAGRAPH WE WROTE ────────────────────────────────────────────────
+   Set larger than the record it summarises, because it is what the page is
+   for; and given its own byline, because a reader has to be able to tell our
+   sentences from the Board's at a glance.
+
+   ── AND IT IS NOT SET IN THE HEADLINE FACE ANY MORE ─────────────────────
+   > "the font looks huge and not the same artistic direction as the rest
+   > hich reads very minimal and defined no?"
+
+   It was `--f-disp` at 17 px, then 15.5 px. `--f-disp` is **Inter Tight** — a
+   display face, and the panel uses it for exactly one thing, the title. Four
+   hundred words of body copy in the headline face, set larger than anything
+   under it, is a second typographic system inside a 288 px column, and it
+   read as a different document pasted into this one.
+
+   The panel already HAS a size and a face for a block of prose, and it is the
+   Board's own quoted lead: `--f-ui` (Inter) at 13.5 px / 1.5. This now sits
+   at the same size in the same face, with the tracking left alone — Inter
+   Tight's negative letter-spacing is part of what made it look like a poster.
+
+   WHAT STILL MARKS IT AS OURS, now that size and face no longer do:
+     · `--ink` where the Board's lead is `--ink-2`, so ours is the darker of
+       the two blocks of prose and the difference is felt rather than shouted;
+     · the ocre mono byline directly under it, which is the sentence whose
+       whole job is to say which words are ours and was always the real
+       signal.
+
+   Smaller, quieter, and the same system as everything beside it. */
+.theme-fusion .fx-hood-summary { margin: 2px 0 18px; }
+.theme-fusion .fx-hood-summary-p {
+  font-family: var(--f-ui);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+/* four lines on arrival — see the comment on `HoodSummaryLine`. `line-clamp`
+   fades nothing and hides nothing structurally: the whole paragraph is in the
+   DOM, so it is selectable, findable and readable to a screen reader whatever
+   the button says. */
+.theme-fusion .fx-hood-summary-p.is-clamped {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+}
+/* THE PANEL ALREADY HAS AN "OPEN THIS" IDIOM and this was not it. Every other
+   disclosure here — `WHAT THIS IS DRAWN FROM`, `SOURCES`, the street folds —
+   is `fx-shelf-more > summary`: 10 px mono, uppercase, letterspaced, blue. A
+   sentence-case underlined link was a third link style in a column that has
+   two, so it read as something borrowed from another page. Same treatment,
+   minus the rule and the padding, because this one sits tight under the
+   paragraph it opens rather than heading a section. */
+.theme-fusion .fx-hood-summary-toggle {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--bleu);
+}
+.theme-fusion .fx-hood-summary-toggle:hover { text-decoration: underline; }
+.theme-fusion .fx-hood-summary-toggle:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: 2px;
+}
+.theme-fusion .fx-hood-summary-by {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ocre);
+  margin: 8px 0 0;
+}
+.theme-fusion .fx-hood-src { list-style: none; margin: 8px 0 0; padding: 0; }
+.theme-fusion .fx-hood-src li {
+  padding: 7px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-hood-src li:last-child { border-bottom: 0; }
+.theme-fusion .fx-hood-src-for {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.theme-fusion .fx-hood-src-a {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--bleu);
+  text-decoration: none;
+}
+.theme-fusion .fx-hood-src-a:hover { text-decoration: underline; }
 
 /* the neighbourhood's name at the top of a fiche is a way into it */
 .theme-fusion .fx-block-kicker-go {
@@ -17468,6 +17680,11 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   background: rgba(250, 250, 247, .35);
   box-shadow: 0 0 0 2px rgba(250, 250, 247, .8);
 }
+/* It carried four digits and now carries a place — `Church St · 16th St ·
+   Market St`. `white-space: nowrap` stays, because a pin that wraps to two
+   lines stops pointing at anything, but a name can be long enough to reach
+   the record margin, so it is capped and ellipsised here rather than trimmed
+   in the component. */
 .theme-fusion .fx-city-pin-id {
   font-family: var(--f-mono);
   font-size: 10px;
@@ -17477,6 +17694,9 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   border: 1px solid var(--ink);
   padding: 1px 5px;
   white-space: nowrap;
+  max-width: 210px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ── under the stage ──────────────────────────────────────────────────

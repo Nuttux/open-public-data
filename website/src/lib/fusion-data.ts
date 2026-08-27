@@ -348,7 +348,7 @@ export type FeaturedBailleur = {
 // mais 5 marchés rapprochés 2022→2026 dont le gros lot travaux porte des
 // données de concurrence DECP (offres reçues) — Belliard, notifié en 2023,
 // n'en aura jamais (champ publié à partir du millésime 2024).
-const HERO_FEATURED_LIEU_SLUG = "philharmonie-de-paris";
+const HERO_FEATURED_LIEU_SLUG = "theatre-du-chatelet";
 
 const HERO_FEATURED_ASSO_NAME = "PARIS MUSEES";
 const HERO_FEATURED_ASSO_PHOTO = "/photos/hero/petit-palais.jpg";

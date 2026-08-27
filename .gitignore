@@ -87,3 +87,6 @@ screenshots/
 
 # parity harness (Block Q1) — local only, never committed
 website/.parity/
+
+# generated working files: tile caches, shot sequences, block dumps
+/scratchpad/

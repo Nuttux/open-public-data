@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import { DE, PITCH_MAX_HALFRISE_M, PITCH_RUN } from "@/lib/city/roofs";
 import {
   capForm,
+  FASCIA_PROUD_M,
   FORM_MAX_VERTS,
   HIP_MAX_VERTS,
   hipForm,
@@ -184,6 +185,52 @@ describe("trayForm", () => {
     const [edges, verts] = boundaryLoop(r, deckC);
     expect(edges).toBe(6);
     expect(verts).toBe(6);
+  });
+
+  /* ── THE FASCIA ────────────────────────────────────────────────────────
+     The band is the one thing in the tray that stands OUTSIDE the plan, and
+     a sign error on the miter would put it inside — where it would be hidden
+     by the wall in every frame and would look, from a screenshot, like a
+     fascia that simply is not drawn. So the sign is asserted, not eyeballed. */
+  it("builds the fascia OUTSIDE the plan, a parapet tall, at the declared value", () => {
+    const r = recorder();
+    const roof: [number, number, number] = [0.5, 0.4, 0.3];
+    expect(trayForm(r.sink, rect(20, 20), 5, H, roof, { fascia: true })).toBe(true);
+
+    const want = shadeRGB(roof, DE.outerv);
+    const band = r.col
+      .map((c, i) => [c, i] as const)
+      .filter(([c]) => c.every((v, k) => Math.abs(v - want[k]) < 1e-9))
+      .map(([, i]) => i);
+    // two rings of four
+    expect(band.length).toBe(8);
+    // OUTSIDE: every fascia vertex is further from the centre than the plan
+    for (const i of band) {
+      expect(Math.abs(r.x[i])).toBeCloseTo(10 + FASCIA_PROUD_M, 6);
+      expect(Math.abs(r.y[i])).toBeCloseTo(10 + FASCIA_PROUD_M, 6);
+      expect(r.elev[i]).toBe(5);
+    }
+    // and it spans exactly the declared parapet, head at the published top
+    const hs = [...new Set(band.map((i) => Number(r.h[i].toFixed(9))))].sort((a, b) => a - b);
+    expect(hs).toEqual([Number((H - DE.parapet).toFixed(9)), H]);
+  });
+
+  it("does not build the fascia unless it is asked for", () => {
+    const roof: [number, number, number] = [0.5, 0.4, 0.3];
+    const want = shadeRGB(roof, DE.outerv);
+    const has = (r: Rec): boolean =>
+      r.col.some((c) => c.every((v, k) => Math.abs(v - want[k]) < 1e-9));
+    const off = recorder();
+    expect(trayForm(off.sink, rect(20, 20), 0, H, roof)).toBe(true);
+    expect(has(off)).toBe(false);
+    const on = recorder();
+    expect(trayForm(on.sink, rect(20, 20), 0, H, roof, { fascia: true })).toBe(true);
+    expect(has(on)).toBe(true);
+    /* and it is exactly two rings and one quad an edge more — a fascia that
+       quietly doubled the tray would be a 40 % triangle bill on every flat
+       roof in the city */
+    expect(on.x.length - off.x.length).toBe(8);
+    expect(on.tris.length - off.tris.length).toBe(8);
   });
 
   it("carries the ramp weight into BOTH the inset and the drop, with no floor", () => {

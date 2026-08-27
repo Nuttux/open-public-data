@@ -1877,6 +1877,18 @@ export function blockAddresses(
 export interface ThreadRecord {
   readonly s: string;
   readonly l: string;
+  /**
+   * THE PATTERN THE BUILD RAN, shipped so the browser can run the same one.
+   *
+   * `build_threads.py` §out says why in its own words: the browser holds the
+   * records of whatever the reader is looking at and can only say *"this
+   * subject is here, N times"* if it can repeat the build's match. Python and
+   * JavaScript agree on every construct these use — word boundaries,
+   * character classes, alternation and negative lookahead — and `threadsIn`
+   * compiles each one inside a try/catch anyway, because a pattern that one
+   * engine rejects must cost one subject and not the panel.
+   */
+  readonly p: string;
   readonly era: string;
   readonly note: string;
   readonly n: number;
@@ -1928,6 +1940,106 @@ export function threadsAt(
 }
 
 /**
+ * WHAT KEEPS COMING UP WHERE THE READER IS STANDING.
+ *
+ * `threadsAt` answers membership — *is this block on this subject at all* —
+ * off the thread's own block list. This answers the question a reader
+ * actually has, which is **how much of what I am reading is about this**, and
+ * it can only be answered by matching the records in hand.
+ *
+ * THE COUNT IS OF THESE RECORDS AND NOTHING ELSE. That is why the unit
+ * matters: a block, a street and a door each hold their whole record here, so
+ * the number under a chip is exact for the thing on screen. A NEIGHBOURHOOD
+ * DOES NOT — `hood/<i>.json` ships twelve rows a decade out of hundreds, by
+ * design — so the caller must not run this over a neighbourhood's rows and
+ * print the answer as the neighbourhood's. It would be a count of the
+ * selection wearing the neighbourhood's name.
+ *
+ * TWO RULES CARRIED OVER, both from things this page has already got wrong:
+ *
+ * 1. **A subject has to land more than once.** The removed `blockSubjects`
+ *    chips had this rule and it is the whole reason they were quiet on thin
+ *    ground. One paving record on a block is not what the block is about.
+ * 2. **Identity is the page plus the line**, `(u, t[:120])` — the same key
+ *    `build_threads.py` dedupes on. A record printed at a corner is stored on
+ *    every block that corner touches, and within one unit the same line can
+ *    arrive twice from two shards.
+ *
+ * Rarest-first, like `threadsAt`, and for the same reason: `Paving and
+ * grading` on 2,073 blocks tells a reader nothing they could not have
+ * guessed, and the rare one is the point.
+ */
+export interface ThreadHere {
+  readonly thread: ThreadRecord;
+  /** the records of the unit on screen that this pattern matched */
+  readonly rows: readonly BlockDecision[];
+  readonly y0: number;
+  readonly y1: number;
+}
+
+const rxCache = new Map<string, RegExp | null>();
+
+function threadRx(p: string): RegExp | null {
+  const hit = rxCache.get(p);
+  if (hit !== undefined) return hit;
+  let rx: RegExp | null = null;
+  try {
+    rx = new RegExp(p, "i");
+  } catch {
+    /* one engine rejected it — that costs this subject and nothing else */
+  }
+  rxCache.set(p, rx);
+  return rx;
+}
+
+export function threadsIn(
+  file: ThreadsFile | null,
+  rows: readonly BlockDecision[],
+  minHits = 2,
+): ThreadHere[] {
+  if (!file || rows.length === 0) return [];
+  const seen = new Set<string>();
+  const uniq: BlockDecision[] = [];
+  for (const r of rows) {
+    const t = (r.t ?? "").trim();
+    if (!t) continue;
+    const key = `${r.u ?? ""} ${t.slice(0, 120)}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    uniq.push(r);
+  }
+  const out: ThreadHere[] = [];
+  for (const th of file.threads) {
+    const rx = threadRx(th.p);
+    if (!rx) continue;
+    /* NEWEST FIRST, by the volume's own date, and it has to be SOME date
+       order rather than the shard's.
+       The Board printed most items TWICE — a first reading and a final
+       passage, on two pages weeks or months apart — and the shards hand them
+       over in file order, so `Blasting Permits — Flinn & Treacy` on 15th
+       Street arrived as 13 December above 21 February. Two identical
+       paragraphs in a row read as a duplicate; the same two in date order
+       read as what they are, which is the Board coming back to it.
+       Descending, so a subject opens on what happened here lately, which is
+       the order the rail and every opened decade now use. */
+    const hits = uniq
+      .filter((r) => rx.test(r.t ?? ""))
+      .slice()
+      .sort((a, b) => b.y - a.y || (b.d ?? "").localeCompare(a.d ?? ""));
+    if (hits.length < minHits) continue;
+    let y0 = Infinity;
+    let y1 = -Infinity;
+    for (const h of hits) {
+      if (h.y < y0) y0 = h.y;
+      if (h.y > y1) y1 = h.y;
+    }
+    out.push({ thread: th, rows: hits, y0, y1 });
+  }
+  out.sort((a, b) => a.thread.n - b.thread.n);
+  return out;
+}
+
+/**
  * WHAT TO CALL THE GROUND SOMEBODY JUST CLICKED.
  *
  * > "i dont want block nulber to show anywhere its not relevant to me"
@@ -1964,6 +2076,14 @@ export interface HoodDecade {
   readonly rows: readonly BlockDecision[];
 }
 
+export interface HoodSource {
+  /** the clause of the paragraph this record stands under */
+  readonly for: string;
+  readonly u: string;
+  readonly y: number;
+  readonly t: string;
+}
+
 export interface HoodRecords {
   readonly i: number;
   readonly name: string;
@@ -1971,6 +2091,19 @@ export interface HoodRecords {
   readonly n_shipped: number;
   readonly per_decade: number;
   readonly decades: readonly HoodDecade[];
+  /**
+   * A paragraph WE wrote, from the records below. Absent for most
+   * neighbourhoods, and absent is the correct state — a page with no paragraph
+   * opens on the record, which is honest. A padded one would not be.
+   */
+  readonly summary?: string;
+  readonly summary_sources?: readonly HoodSource[];
+  readonly summary_read?: {
+    readonly full?: string;
+    readonly sampled?: string;
+    readonly records_read?: number;
+    readonly records_total?: number;
+  };
 }
 
 const hoodRecCache = new Map<number, Promise<HoodRecords | null>>();
@@ -1990,4 +2123,44 @@ export function loadHoodRecords(i: number): Promise<HoodRecords | null> {
     hoodRecCache.set(i, p);
   }
   return p;
+}
+
+/* ── WHICH STREETS ACTUALLY LEAD SOMEWHERE ───────────────────────────────── */
+
+export interface StreetIndex {
+  readonly n_referenced_by_blocks: number;
+  readonly n_referenced_with_records: number;
+  /** file name → how many records that street holds */
+  readonly n: Readonly<Record<string, number>>;
+}
+
+let streetIndexPromise: Promise<StreetIndex | null> | null = null;
+
+export function loadStreetIndex(): Promise<StreetIndex | null> {
+  if (!streetIndexPromise) {
+    streetIndexPromise = loadSoft<StreetIndex>(`${BASE}/street-index.json`);
+  }
+  return streetIndexPromise;
+}
+
+/** the same mapping `loadStreetRecord` uses to find the file */
+export function streetFileName(key: string): string {
+  return key.replace(/[^A-Za-z0-9]+/g, "_");
+}
+
+/**
+ * How many records a street holds, or 0 where it holds none.
+ *
+ * MEASURED: blocks name 1,772 streets and only 1,440 of them have a file. The
+ * other **332 (19 %)** were being offered as links that fetched a 404, got an
+ * empty list back, and drew a street with nothing on it and no explanation.
+ * Nothing clickable may be a dead end, so a street with no records is printed
+ * rather than offered.
+ */
+export function streetRecordCount(
+  index: StreetIndex | null,
+  key: string,
+): number {
+  if (!index) return 0;
+  return index.n[streetFileName(key)] ?? 0;
 }

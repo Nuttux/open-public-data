@@ -40,6 +40,7 @@ import CityBlockPanel, { type BlockContext } from "./CityBlockPanel";
 import { useT } from "@/lib/localeContext";
 import {
   assertJoin,
+  blockPlaceName,
   loadBlockIndex,
   loadBlockRecord,
   type BlockIndex,
@@ -917,7 +918,22 @@ export default function CityMap({ hud, transport, ledger, record, onReady }: Cit
               aria-hidden="true"
             >
               <span className="fx-city-pin-ring" />
-              <span className="fx-city-pin-id">{blockCtx?.id}</span>
+              {/* WHERE, NOT WHICH FILE. This badge wrote `blockCtx.id` — the
+                  assessor's filing number, `3538` — which is how the pipeline
+                  addresses a piece of ground and is not how one person has
+                  ever described where they are.
+
+                    > "i dont want block nulber to show anywhere its not
+                    > relevant to me"
+
+                  The streets the block fronts, off the shard already loaded
+                  for the margin beside it; the neighbourhood while that is
+                  still in flight, and for the 0.6 % of blocks that front no
+                  street at all. The GL page's pin does exactly this, in
+                  `overlay.ts` §drawPin, and the two have to agree. */}
+              <span className="fx-city-pin-id">
+                {blockPlaceName(blockRecord?.streets ?? []) ?? blockCtx?.hood}
+              </span>
             </div>
           ) : null}
 

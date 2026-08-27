@@ -159,6 +159,100 @@ export function applyAxonCamera(
 }
 
 /**
+ * ── THE CAMERA THE FRAME IS DRAWN FROM, ON THE PIXEL GRID ───────────────
+ * The camera the READER moves is continuous; the camera the frame is
+ * RASTERISED from is quantised to whole device pixels. Those are allowed to
+ * be different, and here they have to be.
+ *
+ * WHY, and it is the whole reason this exists. The published Canvas
+ * renderer does not re-draw the city while you drag it — it rasterises once
+ * into a slot and BLITS that bitmap around (`rasters`, `curSlot`,
+ * `paintedStep`, `snapCv` on that renderer are all this one idea). Nothing
+ * re-samples during motion, so nothing can crawl. This renderer re-draws
+ * every frame, so on an unsnapped camera every thin thing in the city — the
+ * ink outlines, the window rows, the kerbs, the roof edges — lands on a
+ * different sub-pixel phase each frame and shimmers. That is the
+ * scintillation, reported as *"mostly roofs shaking but also the streets"*.
+ *
+ * IT IS NOT AN ANTIALIASING PROBLEM, and that was worth measuring before
+ * writing this. The frame already carries 4x MSAA (`renderer.samples` is 4,
+ * and 4 is this browser's `MAX_SAMPLES`). Rendering the same sweep at 4x
+ * and box-filtering down — a near-perfectly antialiased reference — only
+ * took the flicker from 3.85% of pixels to 2.29%, and left single pixels
+ * still swinging 136 levels for an EIGHTH of a pixel of camera movement.
+ * Sharper sampling cannot fix a picture that is re-sampled from scratch on
+ * a new grid every frame; only landing on the same grid can.
+ *
+ * An orthographic camera at a fixed bearing is what makes that legal: a pan
+ * is a pure screen translation, so a whole-pixel step reproduces the
+ * identical rasterisation, shifted. `scale * dpr` is device pixels per
+ * plane unit, and both plane axes share it — the frustum is `W / (2 s kR)`
+ * across and `H / (2 s kU)` down, and the centre is read back along the
+ * same `kR`, `kU`, so one screen pixel is `1/s` in both `cx` and `cy`.
+ *
+ * ZOOM IS DELIBERATELY NOT SNAPPED. Changing `scale` re-samples the city
+ * whatever the centre does, and the published renderer re-rasterises on a
+ * zoom too — it is a different act, and it is allowed to cost a redraw.
+ *
+ * `this.cam` stays exact: `getCamera`, the hit test and the controls'
+ * inertia all read the continuous value. Only the frame is on the grid.
+ */
+/**
+ * ── AND THE SCALE LANDS ON A LADDER, FOR THE SAME REASON ────────────────────
+ * Snapping the CENTRE to whole pixels only helps while the scale holds still.
+ * It does not, and that turned out to be the rest of the defect.
+ *
+ * `controls.ts` does not apply a wheel notch, it sets a TARGET and eases the
+ * scale toward it — which is right, it is what makes a zoom glide instead of
+ * jerk. But on a trackpad, where a scroll IS a zoom, the ease runs on after
+ * the fingers lift, and every frame of it is drawn at a scale nothing else
+ * shares. MEASURED, from a single four-event gesture: 21 frames, 21 DISTINCT
+ * SCALES, the scale still walking 1.5 % after the gesture had ended. A new
+ * scale re-samples every edge in the city, so the whole picture crawls until
+ * the ease lands and then stops by itself — which is exactly how it was
+ * reported: *"the shimmer happens when i move and after i settle but then it
+ * stops after a point."*
+ *
+ * So the scale the frame is RASTERISED at is quantised, geometrically, because
+ * zoom is geometric: a step of the same RATIO has to feel the same at every
+ * scale. Twenty-four rungs to a doubling is a step of 2.9 % — under what reads
+ * as a jump, and coarse enough that the whole 1.5 % tail of an ease usually
+ * falls inside one rung and costs no redraw at all.
+ *
+ * The camera the READER holds keeps its exact scale: `getCamera`, the hit
+ * test, the zoom ladder and the controls all read the continuous value. Only
+ * the frame is on the ladder.
+ */
+export function snapCameraScale(
+  cam: PlaneCamera,
+  rungsPerDoubling = 24,
+): PlaneCamera {
+  if (!Number.isFinite(cam.scale) || cam.scale <= 0) return cam;
+  const k = rungsPerDoubling;
+  const rung = Math.round(Math.log2(cam.scale) * k) / k;
+  return { ...cam, scale: 2 ** rung };
+}
+
+export function snapCameraToPixels(
+  cam: PlaneCamera,
+  dpr: number,
+  /* THE GRID IS COARSER FOR SOME READERS OF IT. The frame is rasterised on
+     the device grid, one pixel; the TYPE is placed on a much coarser one so
+     that a pan does not re-run the label competition — `overlay.ts` §THE TYPE
+     IS PLACED ON A SHEET. One function so there is one place where "on the
+     grid" is defined, and so the two grids are commensurate: the coarse cell
+     is a whole number of device pixels, which is what lets the type's sheet
+     be blitted as a copy rather than resampled. */
+  cellDevicePx = 1,
+): PlaneCamera {
+  const q = cam.scale * dpr;
+  if (!Number.isFinite(q) || q <= 0) return cam;
+  const cell = Math.max(1, Math.round(cellDevicePx));
+  const snap = (v: number): number => (Math.round((v * q) / cell) * cell) / q;
+  return { ...cam, cx: snap(cam.cx), cy: snap(cam.cy) };
+}
+
+/**
  * The scene point for a world point — the one conversion every layer does.
  *
  * `yUp` is the ALREADY EXAGGERATED vertical: ground is `elevM * zex`, a built

@@ -37,6 +37,10 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 CITY = os.path.join(ROOT, "website/public/data/us/sf/city")
 BLOCKS = os.path.join(CITY, "blocks")
 OUT_DIR = os.path.join(BLOCKS, "hood")
+# The written paragraphs. They live in a versioned seed and are re-attached on
+# every build, so a rebuild can never quietly drop them and an editor changes
+# one file rather than 41 outputs.
+SEED = os.path.join(ROOT, "pipeline/seeds/countries/us/sf_hood_summaries.json")
 
 sys.path.insert(0, HERE)
 from _chunk import field_array, read_chunk  # noqa: E402
@@ -114,6 +118,10 @@ def main() -> int:
     names = ids["hoodNames"]
     block_hood = {ids["id"][i]: int(hood[i]) for i in range(len(ids["id"]))}
 
+    written_summaries = {}
+    if os.path.exists(SEED):
+        written_summaries = json.load(open(SEED)).get("hoods", {})
+
     seen: set[tuple[str, str]] = set()
     # per hood, per decade: the true count, and the rows worth reading
     true_count: dict[int, collections.Counter] = collections.defaultdict(collections.Counter)
@@ -175,6 +183,13 @@ def main() -> int:
             })
         kept = sum(len(d["rows"]) for d in rows)
         alln = sum(d["n"] for d in rows)
+        # the written paragraph, if one has been written for this neighbourhood
+        wr = written_summaries.get(str(h))
+        if wr and wr.get("name") and wr["name"] != name:
+            print(f"  ! seed names hood {h} '{wr['name']}', the map says '{name}'"
+                  " — summary NOT attached")
+            wr = None
+
         payload_out = {
             "i": h,
             "name": name,
@@ -188,6 +203,14 @@ def main() -> int:
                 "formula are removed. The whole record is reachable street by "
                 "street.",
             "decades": rows,
+            **({"summary": wr["summary"],
+                "summary_sources": wr.get("sources", []),
+                "summary_read": wr.get("read", {}),
+                "SUMMARY_IS_OURS":
+                    "This paragraph is written by us from the records below. "
+                    "Every clause names the record it stands on in "
+                    "summary_sources. The records themselves are the city's."}
+               if wr else {}),
         }
         with open(os.path.join(OUT_DIR, f"{h}.json"), "w") as f:
             json.dump(payload_out, f, separators=(",", ":"))
@@ -197,6 +220,8 @@ def main() -> int:
     kb = sum(os.path.getsize(os.path.join(OUT_DIR, f"{i}.json"))
              for i in range(written)) / 1024
     print(f"\n{written} files, {kb:.0f} KB total")
+    n_sum = sum(1 for k in written_summaries if k.isdigit() and int(k) < len(names))
+    print(f"written paragraphs attached: {n_sum} of {len(names)} neighbourhoods")
     print("removed:", dict(dropped.most_common()))
     return 0
 

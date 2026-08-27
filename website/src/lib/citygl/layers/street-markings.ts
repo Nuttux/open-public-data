@@ -60,6 +60,32 @@
    three and asserts the crossing is at grade. The centreline network is
    still read here — it is what item 3 is built from.
 
+   ── 2b. AND AT THE STREET CAMERA THE BAR BECOMES A LADDER ────────────────
+   One solid bar of the palest published tone is the right mark at the two
+   middle cameras — at a district's scale a crossing is a mark and not a
+   drawing. At the street camera it is a slab: 3.16 m by twelve of pavement
+   paint, with no internal structure, which reads as a plaza rather than as a
+   crossing. What a reader recognises is the LADDER — the stripes, running the
+   way the pedestrian walks.
+
+   So the same mouth builds both, in two meshes, and the swap is on the
+   STRIPE's own projected width rather than on the camera: a ladder whose
+   stripes are under `MARK_PX` across is a bar drawn expensively, so the bar is
+   what shows. Neither mark is more published than the other — the stripe's
+   width and gap are DECLARED, as one fraction, next to the lane divider's,
+   because a crossing stripe and a lane line are the same paint.
+
+   ── AND THERE ARE NO KERB RAMPS, BECAUSE NONE ARE PUBLISHED ──────────────
+   A kerb ramp is a real object with a real register in this city, and that
+   register is NOT in this map's export: the shipped chunk kinds are `strt`,
+   `strt-line`, `strt-misc`, `blocks`, `bldg`, `face`, `form`, `tree`,
+   `canopy`, `parks`, `coast`, `water`, `terrain`, `surround`, `hero`, `cap`,
+   `bridge`, `places`, `massing`, `strt-label` and `canopy-tint`, and not one
+   of them carries a ramp. Placing one at every kerbed corner between two
+   mouths would be a claim about 7,794 intersections that the record does not
+   make, and it would be wrong at every corner that has no ramp. So the
+   crossings run to the kerb and the kerb is what they meet.
+
    ── 3. THE LANE DIVIDER, ON THE RANKS THE RANK TABLE ITSELF SEPARATES ────
    A dashed mark down the published centreline of rank 0 and rank 1 only.
    `ST_W` — the per-class weight the Canvas strokes centrelines at — opens
@@ -172,6 +198,23 @@ const MOUTH_MAX_FRAC = 2.5;
 /** the bar spans this much of its mouth, leaving the kerbed corners clear */
 const XWALK_SPAN = 0.86;
 
+/**
+ * A CROSSING STRIPE AND A LANE LINE ARE THE SAME PAINT, SO THEY ARE ONE
+ * DECLARED FRACTION.
+ *
+ * `LANE_FRAC` below is `1/24` of the city's own published median right of way
+ * — 0.87 m on this city's 20.9 m — and it is declared there for the lane
+ * divider. A crossing's stripe is reused from it rather than given a number of
+ * its own, because two declared numbers where one will do is two things to
+ * keep in step.
+ *
+ * The GAP is the stripe again, so the ladder is half paint and half road: a
+ * pitch of 1.74 m on this city's median. Nothing publishes either; what makes
+ * them honest is that they move with the city's own streets and that they are
+ * stated here rather than written into the loop.
+ */
+const XWALK_GAP_K = 1;
+
 /* DECLARED, AND DECLARED AS ONE: no register publishes the width of a lane
    marking or the length of its dash. Both are fractions of the city's own
    published median right of way — on a 20.9 m median that is a 0.87 m mark
@@ -192,9 +235,12 @@ const DASH_FRAC = 1 / 3;
 const MARK_PX = 0.7;
 
 /** the depth slots, and the header's table says what each sits over */
-const OFF_FOOT = 3;
-const OFF_ROAD = 1.5;
-const OFF_MARK = -0.5;
+/* the ground's own depth ladder — see `layers/streets.ts` §ONE DEPTH LADDER.
+   These were +3 and +1.5, pushing two opaque surfaces BEHIND the ground they
+   are laid on, which is why they came and went with the zoom. */
+const OFF_FOOT = -4;
+const OFF_ROAD = -4;
+const OFF_MARK = -6;
 
 // ── colour ──────────────────────────────────────────────────────────────────
 
@@ -341,6 +387,9 @@ function mouthBars(
   elevAt: (x: number, y: number) => number,
   zex: number,
   out: Buf,
+  /** the same mouths as a ladder of stripes — see the header §2b */
+  rungs: Buf,
+  stripeW: number,
 ): void {
   const n = b - a;
   if (n < 3) return;
@@ -376,11 +425,34 @@ function mouthBars(
       nx = -nx;
       ny = -ny;
     }
-    quad(
-      mx + nx * band * 0.5, my + ny * band * 0.5,
-      ux, uy, (L * XWALK_SPAN) / 2, band / 2,
-      elevAt, zex, out,
-    );
+    const ccx = mx + nx * band * 0.5;
+    const ccy = my + ny * band * 0.5;
+    const halfSpan = (L * XWALK_SPAN) / 2;
+    quad(ccx, ccy, ux, uy, halfSpan, band / 2, elevAt, zex, out);
+
+    /* ── AND THE SAME BAR AS A LADDER ─────────────────────────────────────
+       The stripes run the way the pedestrian does — ALONG the mouth's inward
+       normal, `band` deep, exactly the depth the bar has — and they are spaced
+       across the chord. The count is the span over the pitch, and the whole
+       run is re-centred on `ccx, ccy` so a ladder of four stripes is not
+       shoved against one kerb by the remainder.
+       Under two stripes there is no ladder to draw: one stripe on a mouth is
+       not a crossing, it is a mark in the middle of the road, and the bar is
+       the honest form at that width. The camera gate then never shows this
+       mesh for that mouth because the bar is what is left. */
+    const pitch = stripeW * (1 + XWALK_GAP_K);
+    const rungCount = Math.floor((halfSpan * 2) / pitch);
+    if (rungCount >= 2) {
+      const first = -((rungCount - 1) * pitch) / 2;
+      for (let i = 0; i < rungCount; i++) {
+        const t = first + i * pitch;
+        quad(
+          ccx + ux * t, ccy + uy * t,
+          nx, ny, band / 2, stripeW / 2,
+          elevAt, zex, rungs,
+        );
+      }
+    }
   };
 
   let from = -1;
@@ -427,10 +499,47 @@ function mesh(b: Buf, colour: string | null, offset: number): Mesh | null {
     vertexColors: !!b.col,
     side: DoubleSide,
     polygonOffset: true,
+    /* ── BOTH HALVES OF THE BIAS, AND THE SLOPE HALF IS THE ONE THAT
+       KEEPS A ROAD OUT OF A HILL ────────────────────────────────────────
+       `polygonOffsetUnits` is the CONSTANT half: a fixed nudge in depth,
+       the same everywhere, which is all a flat street needs to sit on top
+       of flat ground.
+
+       `polygonOffsetFactor` scales the bias by the polygon's DEPTH SLOPE in
+       screen space — how fast its depth changes from pixel to pixel. That is
+       exactly the error a constant cannot cover: two near-coplanar surfaces
+       drift apart in depth in proportion to how steeply they are turned away
+       from the viewer, so on a hill the constant runs out and the ground wins
+       pixels it should not. Daniel, on the Sunset and Twin Peaks slopes:
+       *"its that the terrain 'gobbles' it sometimes, like i feel when theres
+       height chnages its like swallowed by the ground."*
+
+       ── THIS WAS ZEROED ONCE, ON A WRONG DIAGNOSIS ──────────────────────
+       The slope term was set to 0 here on the theory that a view-dependent
+       bias was what made the ground shimmer when the map moved. It was not.
+       The shimmer was the camera: the frame was rasterised from a continuous
+       centre, so every thin thing in the city landed on a new sub-pixel phase
+       each frame — `camera.ts` §THE CAMERA THE FRAME IS DRAWN FROM has the
+       measurements and the fix. With the camera on the pixel grid the eighth-
+       of-a-pixel reversal count is 0%, WITH this term restored. Zeroing it
+       bought nothing and cost every sloped street in the city. */
     polygonOffsetFactor: offset,
     polygonOffsetUnits: offset,
   });
   const out = new Mesh(g, m);
+  /* ── AND THE ORDER IS EXPLICIT, WHICH IS THE REST OF THE FIX ──────────
+     three sorts TRANSPARENT objects by `renderOrder` first and by distance
+     from the camera second. 143 of these ground washes were all sitting at the
+     default order 0, so their order was being decided by the distance tie-break
+     — and coplanar surfaces have no meaningful distance between them, so the
+     tie-break's answer changed every time the camera moved. That is the
+     shimmer, and it is why zeroing the depth-slope term above did not fix it on
+     its own: `polygonOffset` never got to decide, the SORT did.
+
+     So every rung of the ladder in `layers/streets.ts` §ONE DEPTH LADDER now
+     carries its own order and nothing has to be guessed. The offset already
+     encodes the rung, so the order is read straight off it. */
+  out.renderOrder = -offset;
   out.receiveShadow = true;
   out.castShadow = false;
   return out;
@@ -526,6 +635,8 @@ export function streetMarkingsLayer(
      which carry a second gate on their own projected width */
   const surfaces: Mesh[] = [];
   const marks: { m: Mesh; w: number }[] = [];
+  /** the crossing's two forms, and the width that decides between them */
+  let xwPair: { bar: Mesh; ladder: Mesh; stripeW: number } | null = null;
   const rawSpans: RawSpan[] = [];
   let roadGeom: BufferGeometry | null = null;
 
@@ -598,7 +709,9 @@ export function streetMarkingsLayer(
   // ── the crosswalks ────────────────────────────────────────────────────────
   {
     const xwB = newBuf(false);
+    const xwL = newBuf(false);
     const xwMarks: number[] = [];
+    const xwLMarks: number[] = [];
     const xwYears: number[] = [];
     const ord: { p: number; i: number; y: number }[] = [];
     for (let p = 0; p < packs.length; p++) {
@@ -637,20 +750,33 @@ export function streetMarkingsLayer(
         for (let r = rd.fo[i]; r < rd.fo[i + 1]; r++) {
           mouthBars(
             cell, rd.off[r], rd.off[r + 1], cx, cy,
-            bandW, mouthMin, mouthMax, o.elevAt, o.zex, xwB,
+            bandW, mouthMin, mouthMax, o.elevAt, o.zex, xwB, xwL, laneW,
           );
         }
       }
       xwMarks.push(xwB.idx.length);
+      xwLMarks.push(xwL.idx.length);
       xwYears.push(f.y);
     }
 
+    /* THE TWO FORMS OF ONE CROSSING, and the gate that swaps them is on their
+       own widths: `bandW` for the bar, the STRIPE's width for the ladder. So
+       the bar carries the crossing from the district camera in, the ladder
+       takes over the moment a stripe is wider than `MARK_PX`, and `xwPair`
+       below makes them exclusive so a reader never sees a ladder printed on a
+       slab of its own paint. */
     const m = mesh(xwB, ST_C_FOOT, OFF_MARK);
+    const ml = mesh(xwL, ST_C_FOOT, OFF_MARK);
     if (m) {
       meshes.push(m);
-      marks.push({ m, w: bandW });
       gates.push({ g: m.geometry, marks: xwMarks, years: xwYears });
     }
+    if (ml) {
+      meshes.push(ml);
+      gates.push({ g: ml.geometry, marks: xwLMarks, years: xwYears });
+    }
+    if (m && ml) xwPair = { bar: m, ladder: ml, stripeW: laneW };
+    else if (m) marks.push({ m, w: bandW });
   }
 
   // ── the lane divider ──────────────────────────────────────────────────────
@@ -799,6 +925,14 @@ export function streetMarkingsLayer(
       for (const k of marks) {
         k.m.visible = on && k.w * ST_KPROJ * cam.scale >= MARK_PX;
       }
+      if (xwPair) {
+        /* the ladder the moment its own stripes resolve, the bar until then,
+           and never both: two coplanar meshes of the same tone at the same
+           depth rung would z-fight across every crossing in the city */
+        const laddered = xwPair.stripeW * ST_KPROJ * cam.scale >= MARK_PX;
+        xwPair.ladder.visible = on && laddered;
+        xwPair.bar.visible = on && !laddered && bandW * ST_KPROJ * cam.scale >= MARK_PX;
+      }
     },
     dispose() {
       for (const m of meshes) {
@@ -809,6 +943,7 @@ export function streetMarkingsLayer(
       gates.length = 0;
       surfaces.length = 0;
       marks.length = 0;
+      xwPair = null;
       rawSpans.length = 0;
       roadGeom = null;
     },

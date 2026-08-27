@@ -39,6 +39,7 @@ import {
   tiltOf,
   type TerrainField,
 } from "@/lib/city/terrain";
+import { rasteriseRings, type Ring } from "../coast-mask";
 import type { CityLayer } from "../engine";
 
 /** the hypsometric pair `rasteriseSurround` interpolates between */
@@ -47,7 +48,7 @@ const HIGH = [0xcf, 0xc3, 0xab] as const;
 const TINT_ZMAX = 300;
 
 /**
- * ── THE FAR SHORE IS CUT AT THE PUBLISHED LINE, AND THIS WAS MISSING ──────
+ * ── THE FAR SHORE IS CUT AT THE PUBLISHED LINE, AND A CELL CUT DID NOT DO IT ──
  *
  * `part3.html` §4426 sets ONE clip for the whole surround at the published
  * regional shoreline and draws every cell inside it. Without it the far shore
@@ -57,50 +58,40 @@ const TINT_ZMAX = 300;
  * coastal cell whose centre is land paints its whole 110 x 139 m, so a
  * headland grows by up to a cell in every direction.
  *
- * Put the two whole-city frames side by side at the Marin headlands and the
- * published page draws a thin hazed strip while the port drew a chunky white
- * massif several times its width. Measured over that crop the page reads
- * (157, 173, 190) — land washed most of the way to the water — against the
- * port's (225, 226, 215), which is not a paler headland, it is a much larger
- * one.
+ * The first port of that clip dropped a CELL whose centre fell outside the
+ * rings, on the reasoning that a mesh cannot clip with a path. MEASURED, it
+ * removed **26 cells of 56,330** and changed nothing on screen — and it could
+ * not have, because those same rings are what the shipped land mask was
+ * rasterised FROM, by the same centre test. A cell cut and a cell mask that
+ * agree by construction cannot disagree about a coastline: the staircase
+ * survived intact and the headlands stayed half a cell too big.
  *
- * A raster clips with a path; a mesh cannot, so it drops the CELL. The cut is
- * therefore per cell rather than per pixel and the staircase is reduced rather
- * than removed — a headland is now at most half a cell too big instead of a
- * whole one, and it is no longer systematically too big in every direction.
- * Each ring is boxed first, so this is the rings' own area and not the grid's.
+ * So the cut is per SUB-cell, `coast-mask.ts`, at the same K the city's ground
+ * uses. A cell wholly inside keeps its quad, a cell the line crosses is
+ * rebuilt as sub-quads, and the tread goes from 110 x 139 m to 18.3 x 23.2 m —
+ * from ten screen pixels at the whole-city camera to under two.
  */
-function insideRings(
-  rings: readonly (readonly (readonly [number, number])[])[],
-  boxes: readonly Float64Array[],
-  x: number,
-  y: number,
-): boolean {
-  let inside = false;
-  for (let r = 0; r < rings.length; r++) {
-    const bb = boxes[r];
-    if (x < bb[0] || x > bb[2] || y < bb[1] || y > bb[3]) continue;
-    const ring = rings[r];
-    const n = ring.length;
-    for (let k = 0, j = n - 1; k < n; j = k++) {
-      const yi = ring[k][1];
-      const yj = ring[j][1];
-      if (yi > y !== yj > y) {
-        const xi = ring[k][0];
-        const xj = ring[j][0];
-        if (x < xi + ((y - yi) * (xj - xi)) / (yj - yi)) inside = !inside;
-      }
-    }
-  }
-  return inside;
+
+/** sub-cells a side on a refined coastal cell — `terrain.ts` §THE COAST */
+const COAST_K = 6;
+
+export interface SurroundStats {
+  cells: number;
+  whole: number;
+  refined: number;
+  dropped: number;
+  areaCells: number;
+  areaBuilt: number;
+  /** nodes the join blend touched, of `(XW + 1) * (XH + 1)` — see §THE JOIN */
+  seamNodes: number;
 }
 
 export function surroundLayer(
   data: CityData,
   field: TerrainField,
   zexByStep: readonly number[],
-  clip?: readonly (readonly (readonly [number, number])[])[] | null,
-): (CityLayer & { mesh: Mesh }) | null {
+  clip?: readonly Ring[] | null,
+): (CityLayer & { mesh: Mesh; surroundStats(): SurroundStats }) | null {
   const sd = data.surround();
   if (!sd) return null;
   const s = sd; // narrowed once, so the closures below do not have to re-test
@@ -109,6 +100,7 @@ export function surroundLayer(
   const XH = s.XH;
   const XNW = XW + 1;
   const XNH = XH + 1;
+  const BASE = XNW * XNH;
 
   const hz = [
     parseInt(HAZE.slice(1, 3), 16),
@@ -117,15 +109,15 @@ export function surroundLayer(
   ];
 
   // ── positions: one vertex a node, elevation in REAL metres ───────────────
-  const pos = new Float32Array(XNW * XNH * 3);
+  const basePos = new Float32Array(BASE * 3);
   for (let j = 0; j < XNH; j++) {
     for (let i = 0; i < XNW; i++) {
       const ii = Math.min(i, XW - 1);
       const jj = Math.min(j, XH - 1);
       const o = (j * XNW + i) * 3;
-      pos[o] = s.mx[i];
-      pos[o + 1] = s.z(ii, jj);
-      pos[o + 2] = s.my[j];
+      basePos[o] = s.mx[i];
+      basePos[o + 1] = s.z(ii, jj);
+      basePos[o + 2] = s.my[j];
     }
   }
 
@@ -137,50 +129,232 @@ export function surroundLayer(
      does not have and does not need, because the bay is a surface under it
      rather than a plate over it. */
   const rings = clip && clip.length ? clip : null;
-  const boxes: Float64Array[] = [];
-  if (rings) {
-    for (const ring of rings) {
-      const bb = new Float64Array([Infinity, Infinity, -Infinity, -Infinity]);
-      for (const [x, y] of ring) {
-        if (x < bb[0]) bb[0] = x;
-        if (y < bb[1]) bb[1] = y;
-        if (x > bb[2]) bb[2] = x;
-        if (y > bb[3]) bb[3] = y;
+  const mask = rings
+    ? rasteriseRings(
+        [rings],
+        {
+          x0: s.mx[0],
+          y0: s.my[0],
+          nx: XW,
+          ny: XH,
+          cellW: s.cellW,
+          cellH: s.cellH,
+        },
+        COAST_K,
+      )
+    : null;
+
+  /* the sub-vertices, described rather than stored twice — `terrain.ts`
+     §THE SUB-VERTICES carries the argument */
+  const exi: number[] = [];
+  const exj: number[] = [];
+  const exu: number[] = [];
+  const exv: number[] = [];
+
+  const idx: number[] = [];
+  const KK = COAST_K * COAST_K;
+  let cells = 0;
+  let whole = 0;
+  let refined = 0;
+  let dropped = 0;
+  let subKept = 0;
+  {
+    const slotN = (COAST_K + 1) * (COAST_K + 1);
+    const slot = new Int32Array(slotN);
+    const slotGen = new Int32Array(slotN);
+    let gen = 0;
+    for (let j = 0; j < XH; j++) {
+      for (let i = 0; i < XW; i++) {
+        if (!s.isOwn(i, j) || !s.isLand(i, j)) continue;
+        cells++;
+        const a = j * XNW + i;
+        const b = j * XNW + (i + 1);
+        const c = (j + 1) * XNW + (i + 1);
+        const d = (j + 1) * XNW + i;
+        const n = mask ? mask.countIn(i, j) : KK;
+        if (n === KK) {
+          whole++;
+          subKept += KK;
+          idx.push(a, b, c, a, c, d);
+          continue;
+        }
+        if (n === 0) {
+          dropped++;
+          continue;
+        }
+        refined++;
+        gen++;
+        const vert = (su: number, sv: number): number => {
+          if (su === 0 && sv === 0) return a;
+          if (su === COAST_K && sv === 0) return b;
+          if (su === COAST_K && sv === COAST_K) return c;
+          if (su === 0 && sv === COAST_K) return d;
+          const k = sv * (COAST_K + 1) + su;
+          if (slotGen[k] === gen) return slot[k];
+          const v = BASE + exi.length;
+          exi.push(i);
+          exj.push(j);
+          exu.push(su / COAST_K);
+          exv.push(sv / COAST_K);
+          slot[k] = v;
+          slotGen[k] = gen;
+          return v;
+        };
+        for (let sj = 0; sj < COAST_K; sj++) {
+          for (let si = 0; si < COAST_K; si++) {
+            if (!mask || !mask.at(i, j, si, sj)) continue;
+            subKept++;
+            const p0 = vert(si, sj);
+            const p1 = vert(si + 1, sj);
+            const p2 = vert(si + 1, sj + 1);
+            const p3 = vert(si, sj + 1);
+            idx.push(p0, p1, p2, p0, p2, p3);
+          }
+        }
       }
-      boxes.push(bb);
     }
   }
 
-  const idx: number[] = [];
-  let cut = 0;
-  for (let j = 0; j < XH; j++) {
-    for (let i = 0; i < XW; i++) {
-      if (!s.isOwn(i, j) || !s.isLand(i, j)) continue;
-      if (rings) {
-        const [cxm, cym] = s.centre(i, j);
-        if (!insideRings(rings, boxes, cxm, cym)) {
-          cut++;
-          continue;
-        }
-      }
-      const a = j * XNW + i;
-      const b = j * XNW + (i + 1);
-      const c = (j + 1) * XNW + (i + 1);
-      const d = (j + 1) * XNW + i;
-      idx.push(a, b, c, a, c, d);
+  const E = exi.length;
+  const pos = new Float32Array((BASE + E) * 3);
+  pos.set(basePos);
+  for (let e = 0; e < E; e++) {
+    const i = exi[e];
+    const j = exj[e];
+    const u = exu[e];
+    const v = exv[e];
+    const a = (j * XNW + i) * 3;
+    const b = (j * XNW + i + 1) * 3;
+    const c = ((j + 1) * XNW + i + 1) * 3;
+    const d = ((j + 1) * XNW + i) * 3;
+    const o = (BASE + e) * 3;
+    for (let ch = 0; ch < 3; ch++) {
+      pos[o + ch] =
+        (basePos[a + ch] * (1 - u) + basePos[b + ch] * u) * (1 - v) +
+        (basePos[d + ch] * (1 - u) + basePos[c + ch] * u) * v;
     }
   }
-  void cut;
+
+/* ── THE JOIN IS NOT A THING TO ANNOUNCE ──────────────────────────────────
+   The city's DEM is a square and the land does not stop at its corner: the
+   southern suburbs run off the bottom of it and the surround picks them up on
+   the far side of a ruler-straight line. Both meshes are drawn correctly and
+   the line between them is still the most conspicuous edge in the lower half
+   of the whole-city frame, because the two rasters DO NOT SHARE A COLOUR
+   MODEL. The city's ground is `terrainRGB` — a photographed, tinted,
+   park-marked fabric; the surround's is a hypsometric ramp between two creams.
+
+   MEASURED at the join, ground layers only, at eight points along it:
+   the city reads (196, 204, 205) and the surround (191-223, 181-209,
+   164-189). In luminance they are within a few points of each other, which is
+   why turning either up or down does not help — the gap is HUE. Red minus
+   blue is -9 on the city side and +28 to +34 on the surround side, a 40-point
+   step across one cell edge, and that is the line.
+
+   So the surround is carried to the city's own value where they meet. Every
+   node within `SEAM_M` of a city LAND cell takes that cell's published colour
+   in proportion to how near it is, full strength on the boundary itself. It
+   is a blend of two PUBLISHED colours and invents no third one: at the join
+   the far shore is the near shore's tone, and 900 m out it is entirely its
+   own again.
+
+   900 m is nine surround cells and it is DECLARED. Shorter and the ramp is
+   itself an edge; longer and a visible band of the far shore is wearing the
+   city's fabric tone, which is a different lie from the one being fixed.
+
+   ── WHAT THIS DOES NOT DO ────────────────────────────────────────────────
+   It does not touch the GEOMETRY of the join — the two lattices still meet at
+   53.8 m against 110 x 139 m and their elevations differ by a metre or two at
+   the line. At the whole-city camera, where this seam is visible at all, that
+   is under a pixel. And it reads the band-0 field for every band, because the
+   join is 7 km from downtown and no band but the widest has it in frame. */
+const SEAM_M = 900;
 
   const out = new Float64Array(3);
   const cc = new Color();
+
+  /* ── THE NEAREST CITY LAND, FOR EVERY POINT NEAR THE SQUARE ────────────
+     A vector distance transform on the CITY's own grid, padded by the band so
+     a surround node just outside the square still finds its way back in. Two
+     chamfer sweeps carrying the OFFSET to the nearest land cell rather than
+     only its distance, because the blend needs that cell's colour and not
+     just how far away it is. 294 x 294 cells, built once. */
+  const cProj = field.proj;
+  const cN = field.N;
+  const cM = field.cellM;
+  const PAD = Math.ceil(SEAM_M / cM) + 1;
+  const PW = cN + 2 * PAD;
+  const FAR = 1e9;
+  const dsq = new Float64Array(PW * PW).fill(FAR);
+  const offI = new Int16Array(PW * PW);
+  const offJ = new Int16Array(PW * PW);
+  for (let i = 0; i < cN - 1; i++) {
+    for (let j = 0; j < cN - 1; j++) {
+      if (!field.maskAt(i, j)) continue;
+      const k = (j + PAD) * PW + (i + PAD);
+      dsq[k] = 0;
+      offI[k] = 0;
+      offJ[k] = 0;
+    }
+  }
+  const relax = (k: number, kk: number, di: number, dj: number): void => {
+    if (dsq[kk] >= FAR) return;
+    const ni = offI[kk] + di;
+    const nj = offJ[kk] + dj;
+    const v = ni * ni + nj * nj;
+    if (v < dsq[k]) {
+      dsq[k] = v;
+      offI[k] = ni;
+      offJ[k] = nj;
+    }
+  };
+  for (let j = 1; j < PW; j++) {
+    for (let i = 1; i < PW - 1; i++) {
+      const k = j * PW + i;
+      if (dsq[k] === 0) continue;
+      relax(k, k - 1, 1, 0);
+      relax(k, k - PW, 0, 1);
+      relax(k, k - PW - 1, 1, 1);
+      relax(k, k - PW + 1, -1, 1);
+    }
+  }
+  for (let j = PW - 2; j >= 0; j--) {
+    for (let i = PW - 2; i >= 1; i--) {
+      const k = j * PW + i;
+      if (dsq[k] === 0) continue;
+      relax(k, k + 1, -1, 0);
+      relax(k, k + PW, 0, -1);
+      relax(k, k + PW + 1, -1, -1);
+      relax(k, k + PW - 1, 1, -1);
+    }
+  }
+
+  /** the seam blend at a world point: [weight, city node index] or null */
+  function seamAt(x: number, y: number): [number, number] | null {
+    const gi = Math.round((x - cProj.X0) / cM) + PAD;
+    const gj = Math.round((y - cProj.Y0) / cM) + PAD;
+    if (gi < 0 || gj < 0 || gi >= PW || gj >= PW) return null;
+    const k = gj * PW + gi;
+    if (dsq[k] >= FAR) return null;
+    const d = Math.sqrt(dsq[k]) * cM;
+    if (d >= SEAM_M) return null;
+    const ci = gi - PAD + offI[k];
+    const cj = gj - PAD + offJ[k];
+    if (ci < 0 || cj < 0 || ci >= cN || cj >= cN) return null;
+    const t = 1 - d / SEAM_M;
+    // smoothstep, so neither end of the ramp is itself an edge
+    return [t * t * (3 - 2 * t), field.node(ci, cj, 0)];
+  }
+
+  let seamNodes = 0;
   const colours = new Map<number, Float32Array>();
   function coloursFor(step: number): Float32Array {
     let col = colours.get(step);
     if (col) return col;
     const zex = zexByStep[step] ?? zexByStep[0];
+    seamNodes = 0;
     const lam = buildSurroundLam(XW, XH, s.z, s.cellW, s.cellH, zex);
-    col = new Float32Array(XNW * XNH * 3);
+    col = new Float32Array((BASE + E) * 3);
     for (let j = 0; j < XNH; j++) {
       for (let i = 0; i < XNW; i++) {
         const ii = Math.min(i, XW - 1);
@@ -195,16 +369,40 @@ export function surroundLayer(
         skylitN(R0, G0, B0, lamK, tiltOf(l), out);
         const h = field.hazeAt(s.mx[i], s.my[j]);
         const o = (j * XNW + i) * 3;
+        let R = out[0] + (hz[0] - out[0]) * h;
+        let G = out[1] + (hz[1] - out[1]) * h;
+        let B = out[2] + (hz[2] - out[2]) * h;
+        // and the join takes the city's own published tone — see §THE JOIN
+        const sm = seamAt(s.mx[i], s.my[j]);
+        if (sm) {
+          const w = sm[0];
+          const k = sm[1];
+          R += (field.nodeR(k) - R) * w;
+          G += (field.nodeG(k) - G) * w;
+          B += (field.nodeB(k) - B) * w;
+          seamNodes++;
+        }
         // sRGB in, linear out — see `terrain.ts` §sRGB IN, LINEAR OUT
-        cc.setRGB(
-          (out[0] + (hz[0] - out[0]) * h) / 255,
-          (out[1] + (hz[1] - out[1]) * h) / 255,
-          (out[2] + (hz[2] - out[2]) * h) / 255,
-          SRGBColorSpace,
-        );
+        cc.setRGB(R / 255, G / 255, B / 255, SRGBColorSpace);
         col[o] = cc.r;
         col[o + 1] = cc.g;
         col[o + 2] = cc.b;
+      }
+    }
+    for (let e = 0; e < E; e++) {
+      const i = exi[e];
+      const j = exj[e];
+      const u = exu[e];
+      const v = exv[e];
+      const a = (j * XNW + i) * 3;
+      const b = (j * XNW + i + 1) * 3;
+      const c = ((j + 1) * XNW + i + 1) * 3;
+      const d = ((j + 1) * XNW + i) * 3;
+      const o = (BASE + e) * 3;
+      for (let ch = 0; ch < 3; ch++) {
+        col[o + ch] =
+          (col[a + ch] * (1 - u) + col[b + ch] * u) * (1 - v) +
+          (col[d + ch] * (1 - u) + col[c + ch] * u) * v;
       }
     }
     colours.set(step, col);
@@ -236,8 +434,8 @@ export function surroundLayer(
 
      Buildings keep their real normals — they have no baked shading and every
      facet needs its own. */
-  const up = new Float32Array(XNW * XNH * 3);
-  for (let v = 0; v < XNW * XNH; v++) up[v * 3 + 1] = 1;
+  const up = new Float32Array((BASE + E) * 3);
+  for (let v = 0; v < BASE + E; v++) up[v * 3 + 1] = 1;
   g.setAttribute("normal", new BufferAttribute(up, 3));
   g.computeBoundingSphere();
 
@@ -276,10 +474,23 @@ export function surroundLayer(
   mesh.receiveShadow = true;
 
   let curStep = -1;
+  const cellA = s.cellW * s.cellH;
+  const stats: SurroundStats = {
+    cells,
+    whole,
+    refined,
+    dropped,
+    areaCells: cells * cellA,
+    areaBuilt: (subKept / KK) * cellA,
+    get seamNodes() {
+      return seamNodes;
+    },
+  };
 
   return {
     name: "surround",
     mesh,
+    surroundStats: () => stats,
     onStep(step: number, zex: number) {
       if (step === curStep) return;
       curStep = step;

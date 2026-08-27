@@ -22,6 +22,8 @@ import type { CityDescriptor } from "@/lib/citygl/descriptor";
 import { terrainLayer } from "@/lib/citygl/layers/terrain";
 import { decodeParks } from "@/lib/city/trees";
 import { markTerrainCells } from "@/lib/citygl/mark-cells";
+import { fireLayer, type FireLayer } from "@/lib/citygl/fire";
+import { decodeCoast } from "@/lib/city/water";
 import { waterLayer } from "@/lib/citygl/layers/water";
 import { surroundLayer } from "@/lib/citygl/layers/surround";
 import { buildingsLayer } from "@/lib/citygl/layers/buildings";
@@ -30,6 +32,10 @@ import { capsLayer } from "@/lib/citygl/layers/caps";
 import { streetsLayer } from "@/lib/citygl/layers/streets";
 import { streetDetailLayer } from "@/lib/citygl/layers/street-detail";
 import { streetMarkingsLayer } from "@/lib/citygl/layers/street-markings";
+import { blockTintLayer } from "@/lib/citygl/layers/block-tint";
+import { streetUncoveredLayer } from "@/lib/citygl/layers/street-uncovered";
+import { attachSky } from "@/lib/citygl/sky";
+import { saveView } from "@/lib/citygl/export";
 import { groundDetailLayer } from "@/lib/citygl/layers/ground-detail";
 import { treesLayer } from "@/lib/citygl/layers/trees";
 import { CityOverlay } from "@/lib/citygl/overlay";
@@ -41,6 +47,7 @@ import { detectQuality } from "@/lib/citygl/quality";
 import { blockPicker } from "@/lib/citygl/pick";
 import CityBlockPanel, { type BlockContext } from "@/components/us/city/CityBlockPanel";
 import {
+  blockPlaceName,
   loadBlockIndex,
   loadBlockRecord,
   type BlockIndex,
@@ -51,21 +58,42 @@ import { roofPalette, wallPalette } from "@/components/us/city/palette";
 /**
  * THE RAIL'S OWN SPAN.
  *
- * It opens in 1849 because that is what the assessor's year byte counts from,
- * and it ends at the present because the present is what the roll describes.
- * The right-hand end is not a year at all — it is TODAY, the settled state a
- * reader who has never touched the rail is looking at, and it is `undefined`
- * rather than a number so that a footprint the roll cannot date is drawn
- * there too.
+ * ── IT OPENS IN 1906, NOT 1849 ───────────────────────────────────────────
+ * 1849 is where the assessor's YEAR BYTE counts from, which is a fact about
+ * the encoding and not about the map. The map's own first year is 1906: it is
+ * where the burn is full, where the film opens, and where the record this page
+ * draws actually begins. Fifty-seven years of rail that change nothing are
+ * fifty-seven years of a reader dragging through an empty city wondering what
+ * is broken. The year BYTE still counts from 1849 — see the `year0: 1849` the
+ * material tables are given — and nothing about that changes.
+ *
+ * ── AND THE RIGHT-HAND END IS A YEAR, NOT "TODAY" ────────────────────────
+ * It used to read "today", which is a claim about the day you are reading on
+ * and not about the record. The record runs to 2026 — the Clerk's own volumes
+ * carry 109 decisions in 2026 so far — so the rail says 2026 and means it.
+ * Internally the far right is still `undefined` rather than a number, because
+ * that is what draws a footprint the roll cannot date; the difference is only
+ * in what the reader is told.
  */
-const YEAR_MIN = 1849;
-const YEAR_MAX = 2025;
+const YEAR_MIN = 1906;
+const YEAR_MAX = 2026;
 
 export interface CityGLMapProps {
   descriptor: CityDescriptor;
   /** rendered in the record margin beside the stage */
   ledger?: React.ReactNode;
-  onReady?: (engine: CityEngine) => void;
+  /**
+   * THE HANDOVER, and it carries TWO things now.
+   *
+   * The film is built in here — the engine, the framings and the interrupt
+   * binding are all in this file — but the two surfaces that DRIVE it belong
+   * to the page: the entry plate, whose primary door is the film, and the
+   * film's own chrome, which is prose and has to be in the document rather
+   * than painted on a canvas. Both are rendered outside this component
+   * because the page is server-rendered and this is not, so the player has to
+   * come back out. `null` where the city's descriptor carries no film.
+   */
+  onReady?: (engine: CityEngine, film: FilmPlayer | null) => void;
 }
 
 export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProps) {
@@ -88,8 +116,17 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const filmRef = useRef<FilmPlayer | null>(null);
   const remeasureFilmRef = useRef<(() => void) | null>(null);
   const [filmOn, setFilmOn] = useState(false);
+  const [saving, setSaving] = useState(false);
+  /** the year a drag is currently on, and its one coalesced frame */
+  const scrubRef = useRef<number | undefined>(undefined);
+  const scrubRaf = useRef(0);
   const t = useT();
   const stopsRef = useRef<{ label: string; go: () => void; i: number }[]>([]);
+  /* camera scale per named zoom stop, largest view first */
+  const stopScalesRef = useRef<number[]>([]);
+  /* which stop the reader was nearest when they clicked — 0 whole city, up to
+     the closest stop. `-1` while unknown. */
+  const [zoomStop, setZoomStop] = useState(-1);
   const readyRef = useRef(onReady);
   readyRef.current = onReady;
 
@@ -128,23 +165,47 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       await data.loadBase();
       if (disposed) return;
 
-      /* ── WEBGL 2 BY DEFAULT, WEBGPU BEHIND `?gpu=1` — AND THIS IS A
-         VISIBILITY DECISION, NOT A PERFORMANCE ONE ───────────────────────
-         MEASURED, same page, same scene, same 809 draw calls and 5,106,310
-         triangles on both backends: on WebGPU the renderer draws the city and
-         the CANVAS NEVER REACHES THE SCREEN. `canvas.toDataURL()` returns a
-         perfect frame; the page shows white with only the 2D label overlay on
-         it — which is exactly what Daniel reported seeing. On WebGL 2 the
-         same frame composites normally.
+      /* ── WEBGPU BY DEFAULT NOW, AND `?gl=1` GOES BACK ──────────────────
+         This shipped on WebGL 2 for a long time, with a comment saying the
+         WebGPU backend drew the city and the canvas never reached the screen.
+         That stopped being true and the real blocker turned out to be one
+         vertex attribute: the ink outlines carried a THREE-byte colour, and
+         WebGPU requires a vertex buffer's `arrayStride` to be a multiple of
+         four —
 
-         So the backend that presents is the default. Nothing is lost: the
-         scene, the materials, the lights and the shadow pass are identical —
-         three.js's node renderer compiles the same graph to either — and at
-         3 ms a frame the CPU overhead WebGPU saves is not the constraint.
-         `?gpu=1` opts in for anyone who wants to test it, and the day the
-         compositing works this is one boolean. */
+           Vertex buffer arrayStride (3) is not a multiple of 4 …
+           CreateRenderPipeline("renderPipeline_LineBasicMaterial_382")
+
+         — and an invalid pipeline takes the whole command buffer with it, so
+         the ENTIRE render pass was dropped. The backend came back as bare
+         terrain, coastline and labels with every building, street and tree
+         missing, off one byte per vertex. `layers/buildings.ts` §FOUR BYTES A
+         VERTEX pads it.
+
+         ── WHAT WAS CHECKED BEFORE THE SWITCH ──────────────────────────────
+         Measured, same cameras, through the browser's own screenshot because
+         `toDataURL` reads linear light on that backend and lies:
+
+           the frame     hill 176.1/171.4/159.4 against 176.6/171.9/159.9,
+                         and the same agreement at two other cameras
+           Save image    149.4/143.0/128.4 against 150.3/143.9/129.2
+           the shimmer   3.64 % of a drag step not lining up against 3.94 %
+
+         The accumulation that fixes the shimmer needed one thing to run
+         there: three overrides a `FramebufferTexture`'s format with the
+         canvas's preferred one, so the copy was refused until
+         `temporal.ts` set `internalFormat` — the only field that outranks it.
+
+         ── AND WHAT IT BUYS ────────────────────────────────────────────────
+         `rgba16float`. Eight bits is enough to hold this city's palette and
+         not enough to do anything with it: a real bloom, a wider light range
+         and a tone map are all things that need range above white, which the
+         other backend does not have. That work is what this switch is for.
+
+         A browser without WebGPU falls back to WebGL 2 on its own, so this is
+         not a support decision. `?gl=1` pins the old backend for an A/B. */
       const q = typeof location !== "undefined" ? location.search : "";
-      const forceWebGL = !/(?:\?|&)gpu=1/.test(q);
+      const forceWebGL = /(?:\?|&)gl=1/.test(q);
       const quality = detectQuality(q);
       engine = new CityEngine({ canvas, descriptor, forceWebGL, quality });
       /* the backend's device request is asynchronous — nothing may be added
@@ -163,34 +224,27 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          serves. */
       const surroundCoast = await data.surroundCoast().catch(() => null);
       if (disposed) return;
-      /* ── AND THE GROUND IS NOT CUT AT ANY RING. TWICE NOW ───────────────
-         Two attempts, two reverts, and the second one is worth writing down
-         because its reasoning READ well and was wrong.
+      /* ── AND THE GROUND IS CUT AT THE PUBLISHED LINE, SUB-CELL ──────
+         Two earlier attempts cut whole CELLS and both deleted real land — the
+         second removed 2,172 of 37,754, a 3.44 km2 strip of Ocean Beach,
+         1.15 km2 of Crissy Field, Treasure Island and the pier field, on the
+         strength of an export note that turned out to be about a different
+         grid. Neither failure was the ring's fault: the DEM's land mask
+         deliberately overhangs the published shore by a 300 m pad so a finer
+         register can decide it, and nothing downstream ever did.
 
-         The DEM's coast is a 53.8 m staircase and it is ugly, so this cut the
-         cells back to the published shoreline. First with `base/coast`, which
-         opened channels of water through Bayview. Then with
-         `surroundCoast().rings`, on the strength of that export's own note —
-         *"re-rasterised here at that file's own grid it reproduces the shipped
-         land mask on 116,480 of 116,480 cells"*.
+         `layers/coast-mask.ts` now decides it. It scan-converts the rings at
+         six sub-cells to the cell, keeps a wholly-inside cell whole, rebuilds
+         a crossed cell as sub-quads with bilinear elevation and colour, and
+         drops only what is wholly outside. Tread 53.8 m to 8.97 m — 5.1 px to
+         0.85 px at the whole-city camera — and the land COUNT is unchanged at
+         37,754, which the layer re-asserts through `coastStats()`.
 
-         **That note is about a different grid.** 416 x 280 = 116,480 is the
-         SURROUND's lattice at 110 x 139 m. The city's DEM is 53.8 m and 260 x
-         260, and against THAT the same rings reproduce the mask at 99.95 % —
-         which sounds close and is not: measured, the clip cut **2,172 of
-         37,754 city land cells, 5.75 %**, and 1,618 of them were INTERIOR
-         rather than edge. It deleted a 3.44 km2 strip of Ocean Beach and the
-         outer Sunset, 1.15 km2 of Crissy Field, 0.52 km2 of Treasure Island
-         and the whole Embarcadero pier field.
-
-         A ring that reproduces a mask at one resolution does not reproduce it
-         at four times that resolution, and a percentage that reads like
-         agreement can be several square kilometres of city. The staircase is
-         the page's own; it stays until something removes it without removing
-         land with it. (And for the record the other half of the earlier note
-         was also wrong: `base/coast`'s four rings ARE closed — first vertex
-         equals last, gap 0.0 m on all four.) */
-      const cityCoast = null;
+         The rings are the UNION of both registers, and that is load-bearing:
+         inside the city outline 35,627 cells, inside the regional hydrography
+         35,582, inside either 35,678. Either one alone deletes a piece of the
+         city. */
+      const cityCoast = surroundCoast?.rings ?? null;
 
       const terrain = terrainLayer(
         data,
@@ -242,6 +296,42 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          fabric is built */
       const field = terrain.fieldFor(0);
 
+      /* ── THE BURNED DISTRICT ────────────────────────────────────────
+         `base/coast` ships two registers and this port was reading one: the
+         shoreline, and the boundary of the 1906 burn. `TerrainField` has a
+         `cellBurn` byte and `terrainRGB` a burn row, and with nothing filling
+         the first the second has never been on screen on either renderer.
+         `lib/citygl/fire.ts` fills it, carries the ground to ash on that
+         ramp, and strokes the boundary.
+
+         The register ships SEVEN rings — one outer and six holes, pockets of
+         82,195 m2 that did not burn — so the fill is even-odd and not a union,
+         which spares 27 cells the union would have blackened.
+
+         The two years are the CITY's: the ash is full at 1906 and the
+         reference renderer's own `burnPhase` clears it by 1913, over the seven
+         years the permits say the city put more back than it lost. The engine
+         is told the numbers and never the date. */
+      const coastForBurn = data.get("base/coast");
+      let fire: FireLayer | null = null;
+      if (coastForBurn) {
+        const burnRings = decodeCoast(coastForBurn).burn;
+        if (burnRings.length) {
+          fire = fireLayer({
+            ground: terrain.mesh,
+            fieldFor: terrain.fieldFor,
+            rings: burnRings,
+            proj: (x, y, z) => projection.proj(x, y, z),
+          });
+          fire.setYearFade({ full: 1906, clear: 1913 });
+          engine.scene.add(fire.mesh);
+          engine.add(fire);
+          if (process.env.NODE_ENV !== "production") {
+            (globalThis as { __cityGLFire?: unknown }).__cityGLFire = fire;
+          }
+        }
+      }
+
       /* the land that is not the subject, at its own coarser grid */
       /* the far shore, cut at the same published rings */
       const surround = surroundLayer(
@@ -268,6 +358,22 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         // a city with no bathymetry is a city with no bay layer, not a failure
         console.warn("citygl: no water layer —", e);
       }
+
+      /* ── THE AIR THE FAR SHORE RECEDES INTO ─────────────────────────
+         There is no sky under this camera — the projection is linear, so the
+         ground plane's image covers the WHOLE screen at every zoom and there
+         is no vanishing line to put one above. What the frame needs is not sky
+         behind the city but AIR IN FRONT OF IT: the published haze ramp
+         carried past the cap where it stops.
+
+         `WA.hazecap` is 0.45, so beyond 10,150 m from the anchor the far field
+         stops receding altogether — and measured, three of the four ground
+         corners of the opening frame are already out there (6,793 / 10,404 /
+         11,783 / 14,176 m). One world-baked quad pays the rest of the ramp out
+         to the paper, converging on `HAZE` exactly, which is the renderer's own
+         clear colour: the picture ends IN the sheet rather than at an edge.
+         `?sky=0` for the A/B. See `lib/citygl/sky.ts`. */
+      attachSky(engine, { anchor: downtown });
 
       /* the whole city, centred on the DEM's own middle */
       const midX = p.X0 + spanM / 2;
@@ -301,6 +407,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          and hand it to both pages. */
       if (process.env.NODE_ENV !== "production") {
         (globalThis as { __cityGLField?: unknown }).__cityGLField = field;
+        (globalThis as { __cityGLData?: unknown }).__cityGLData = data;
         (globalThis as { __cityGLSurround?: unknown }).__cityGLSurround = data.surround();
         (globalThis as { __cityGLProj?: unknown }).__cityGLProj = {
           proj: (x: number, y: number, z = 0) => projection.proj(x, y, z),
@@ -414,6 +521,22 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         engine.add(ground);
       }
 
+      /* ── THE GROUND HAS A GRID ──────────────────────────────────────
+         The published assessor block rings, filled warm and translucent under
+         the streets. It is the layer this port was missing, and it is why the
+         ground read sandy and the streets stopped reading: without a value
+         step between a block's interior and the street outside it, the only
+         thing saying "block" is the buildings standing on it. See
+         `layers/block-tint.ts` for the measurement. */
+      const blockTint = blockTintLayer(data, {
+        elevAt: (x, y) => field.elevM(x, y),
+        zex: descriptor.look.zexByStep[0],
+      });
+      if (blockTint) {
+        engine.scene.add(blockTint.mesh);
+        engine.add(blockTint);
+      }
+
       /* ── THE STREETS ────────────────────────────────────────────────
          The published right of way and the carriageway inside it, as two
          filled surfaces on the ground. What shows between them is the
@@ -426,6 +549,20 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       });
       for (const m of streets.meshes) engine.scene.add(m);
       engine.add(streets);
+
+      /* ── AND THE 534 ROADS THE RIGHT-OF-WAY FILE DOES NOT SURVEY ────
+         The park roads, the Great Highway, Sloat and the freeways have a
+         published centreline and no published polygon, so they came out as a
+         name and a faint line over bare ground. Drawn here at the median
+         width of the city's own surveyed roads of the same class. */
+      const uncovered = streetUncoveredLayer(data, {
+        elevAt: (x, y) => field.elevM(x, y),
+        zex: descriptor.look.zexByStep[0],
+      });
+      if (uncovered) {
+        engine.scene.add(uncovered.mesh);
+        engine.add(uncovered);
+      }
 
       /* the kerbs, the traffic islands, the stairs and the spine centrelines
          — everything the surface layer leaves out, and all of it published */
@@ -457,6 +594,12 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         elevAt: (x, y) => field.elevM(x, y),
         zexb: descriptor.look.zexb,
         fromStep: engine.quality.canopyFromStep,
+        /* the crowns cast again. The 991 ms that switched this off was the
+           shadow BOX, not the trees — it was 3,484 m across at a 1,400 m
+           camera and caught nearly every chunk. Re-measured on the fitted
+           box, 195,310 crowns casting against not casting is no signal at
+           all: 16.5/16.7, 16.7/16.6, 16.8/17.5 ms over three paired runs. */
+        castShadow: engine.quality.treeShadow,
       });
       for (const m of trees.meshes) engine.scene.add(m);
       engine.add(trees);
@@ -522,9 +665,26 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
             ov.highlight = b === null ? null : picker.ringOf(b);
             /* the division scrim and the pin both key on the PICKED block, not
                on the ring: the scrim punches the division that block belongs
-               to, and the pin writes its published id */
+               to, and the pin writes the name handed to it */
             ov.pick = b;
+            /* cleared here and refilled by the record effect. Otherwise the
+               new ring wears the previous block's name for a frame, which is
+               the one thing a pin must never do. */
+            ov.pickLabel = null;
             eng.invalidate();
+          }
+          /* Classify the click against the named stops: the reader who is on
+             top of one street means something different by a click than the
+             reader looking at the whole city. */
+          const sc = eng.getCamera().scale;
+          const scales = stopScalesRef.current;
+          if (scales.length) {
+            let best = 0;
+            for (let i = 1; i < scales.length; i += 1) {
+              if (Math.abs(Math.log(sc / scales[i])) <
+                  Math.abs(Math.log(sc / scales[best]))) best = i;
+            }
+            setZoomStop(best);
           }
           setPicked(b);
         });
@@ -570,6 +730,29 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
             const iy = Math.floor(st.yearOut);
             const ov = overlayRef.current;
             if (ov && ov.year !== iy) ov.year = iy;
+            /* ── AND THE FIRE IS ON THE CLOCK TOO ────────────────────
+               The opening shot is the burned district and its two acts are the
+               two halves of it: `build/burnLine` is the boundary drawing
+               itself, `fire` is the ground going to ash inside it. Every other
+               frame of the film hands both back to the year, which is what
+               carries the ash across the match cut and lets it fade out under
+               the rebuild. */
+            if (fire) {
+              const a = st.act;
+              if (a?.k === "build" && a.what === "burnLine") {
+                fire.setLine(st.u);
+                fire.setProgress(0);
+              } else if (st.kind === "fire") {
+                fire.setLine(1);
+                fire.setProgress(st.u);
+              } else if (st.shot === "burn") {
+                fire.setLine(1);
+                fire.setProgress(1);
+              } else {
+                fire.setLine(null);
+                fire.setProgress(null);
+              }
+            }
           },
           onStop: (reason, st) => {
             setFilmOn(false);
@@ -586,9 +769,27 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         });
         filmRef.current = film;
         remeasureFilmRef.current = () => film.setFrames(measure());
+        /* DEV ONLY, the `__cityGL*` idiom: a harness cannot ask the film what
+           it thinks it is doing without a handle on it. */
+        if (process.env.NODE_ENV !== "production") {
+          (globalThis as { __cityGLFilm?: unknown }).__cityGLFilm = film;
+        }
       }
 
-      stopsRef.current = descriptor.stops.map((s, i) => ({
+      /* ── HOW CLOSE THE READER IS, IN THE MAP'S OWN WORDS ─────────────────
+         The panel decides what a click means — the neighbourhood, a street,
+         a building — and it needs to know how far in the reader is. The stops
+         already convert metres-across into a camera scale; keeping those
+         scales lets a pick be classified against them without the panel
+         knowing anything about projections. */
+      const stopScales: number[] = [];
+      stopsRef.current = descriptor.stops.map((s, i) => {
+        const at0 = s.at ?? [p.X0 + spanM / 2, p.Y0 + spanM / 2];
+        const across0 =
+          projection.proj(at0[0] + s.spanM, at0[1], 0)[0] -
+          projection.proj(at0[0], at0[1], 0)[0];
+        stopScales[i] = (engine!.viewport.W * 0.94) / Math.max(1e-6, Math.abs(across0));
+        return {
         label: s.label,
         go: () => {
           const e = engine;
@@ -603,11 +804,13 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           setNonce((n) => n + 1);
         },
         i,
-      }));
+        };
+      });
+      stopScalesRef.current = stopScales;
 
       engineRef.current = engine;
       setLoading(false);
-      readyRef.current?.(engine);
+      readyRef.current?.(engine, filmRef.current);
     })();
 
     return () => {
@@ -644,15 +847,39 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         if (dead) return;
         const cols = blockCols.current;
         const id = index.b[picked] ?? "—";
+        const hoodName = cols ? (cols.hoodNames[cols.hood[picked]] ?? "") : "";
         setCtx({
           id,
-          hood: cols ? (cols.hoodNames[cols.hood[picked]] ?? "") : "",
+          hood: hoodName,
           hoodIndex: cols ? (cols.hood[picked] ?? -1) : -1,
           areaM2: cols ? (cols.area[picked] ?? 0) : 0,
           streetDecisions: index.ns[picked] ?? 0,
+          zoomStop,
         });
+        /* ── WHAT THE PIN SAYS, IN TWO STEPS ──────────────────────────
+           The badge beside the ring used to write `3538`. It writes where you
+           are instead, and the two halves of that arrive at different times:
+           the neighbourhood is a column already in memory, so it can be on
+           screen in the same frame as the ring; the streets need the shard.
+           Setting the coarse answer first and refining it is what stops the
+           pin appearing empty and then filling — the reader watches
+           "Castro/Upper Market" become "Church · 16th St · Market", never
+           nothing become something. */
+        const ov = overlayRef.current;
+        if (ov) {
+          ov.pickLabel = hoodName || null;
+          engineRef.current?.invalidate();
+        }
         const r = await loadBlockRecord(index, picked);
-        if (!dead) setRecord(r);
+        if (!dead) {
+          setRecord(r);
+          const ov2 = overlayRef.current;
+          if (ov2) {
+            ov2.pickLabel =
+              (r ? blockPlaceName(r.streets) : null) || hoodName || null;
+            engineRef.current?.invalidate();
+          }
+        }
       } catch {
         if (!dead) setRecord(null);
       } finally {
@@ -662,7 +889,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     return () => {
       dead = true;
     };
-  }, [picked]);
+  }, [picked, zoomStop]);
 
   return (
     <div className="fx-city-wrap">
@@ -670,13 +897,33 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         <div className="fx-city-stage" ref={hostRef}>
           <canvas ref={canvasRef} className="fx-city-canvas" />
           {!loading && stopsRef.current.length ? (
-            <div className="fx-city-controls" role="group" aria-label="Zoom">
-              <span className="fx-city-zoom-label">ZOOM</span>
-              {stopsRef.current.map((s) => (
+            <div
+              role="group"
+              aria-label={t("us.sf.thecity.map.view")}
+              className="fx-city-controls"
+            >
+              {/* ── THE CAP IS `fx-city-controls-cap`, NOT AN INVENTED CLASS ──
+                  This said `fx-city-zoom-label`, which is not in the
+                  stylesheet — so the word took no padding, no size and no
+                  colour from the sheet, and sat clipped against the group's
+                  own border. The published page's cap class is the one the
+                  sheet actually styles, and its copy is an existing key rather
+                  than the literal "ZOOM" typed here.
+
+                  `aria-pressed` and `data-near` come with it: the four stops
+                  read as four labels floating over the map until something
+                  says which one you are at, and `data-near` is how the sheet
+                  marks the stop you are nearest when you are between two. */}
+              <span className="fx-city-controls-cap" aria-hidden="true">
+                {t("us.sf.thecity.map.view_cap")}
+              </span>
+              {stopsRef.current.map((s, i) => (
                 <button
                   key={s.label}
                   type="button"
                   className="fx-city-preset"
+                  aria-pressed={zoomStop === i}
+                  data-near={zoomStop < 0 && i === 0 ? "true" : undefined}
                   onClick={s.go}
                 >
                   {s.label}
@@ -703,7 +950,10 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               onClose={() => {
                 setPicked(null);
                 const ov = overlayRef.current;
-                if (ov) ov.highlight = null;
+                if (ov) {
+                  ov.highlight = null;
+                  ov.pickLabel = null;
+                }
                 engineRef.current?.invalidate();
               }}
             />
@@ -722,9 +972,9 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                   The record
                 </p>
                 <p style={{ font: "13px/1.5 var(--f-sans, system-ui)", margin: 0 }}>
-                  Click any block to read what the Board of Supervisors decided
-                  there. Drag to pan, scroll to zoom, and drag the rail below to
-                  move through the century.
+                  Click anywhere on the map to read what the city decided
+                  there. Drag to pan, scroll to zoom, and drag the year bar
+                  below to move through the century.
                 </p>
               </div>
             )
@@ -756,7 +1006,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 letterSpacing: ".02em",
               }}
             >
-              {year === null ? "today" : year}
+              {year ?? YEAR_MAX}
             </span>
             <input
               type="range"
@@ -766,17 +1016,67 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               value={year ?? YEAR_MAX}
               aria-label="Year"
               style={{ flex: 1 }}
+              /* ── THE SCRUB IS DRIVEN IMPERATIVELY, AND THAT IS THE FIX ────
+                 This was a controlled input whose `onChange` did the whole job:
+                 set React state, re-gate 139 chunks of geometry, move the rise
+                 uniforms, re-clock the overlay. React then re-rendered and put
+                 `value` back from state — and a drag that outruns a render has
+                 its thumb snapped backwards under the cursor. Daniel: *"i cant
+                 go back in forth with like a movement motion of my mouse only
+                 with clicks."* He was fighting a render loop.
+
+                 So the two jobs are separated. `onInput` fires on every pixel
+                 of a drag and does the CHEAP, imperative half immediately —
+                 the engine and the overlay, neither of which is React — and
+                 the frame is coalesced to one per animation frame so a
+                 trackpad flick cannot queue forty. React state is committed
+                 once, on `change`, which for a range input is the release.
+                 The thumb is then never contradicted mid-gesture. */
+              onInput={(e) => {
+                const v = Number(e.currentTarget.value);
+                const next = v >= YEAR_MAX ? undefined : v;
+                scrubRef.current = next;
+                if (scrubRaf.current) return;
+                scrubRaf.current = requestAnimationFrame(() => {
+                  scrubRaf.current = 0;
+                  const y = scrubRef.current;
+                  engineRef.current?.setYear(y);
+                  /* the WRITING is on the clock too — both label gates read
+                     the year, so without this the map un-builds to 1906 with
+                     1970's street names still on it */
+                  if (overlayRef.current) overlayRef.current.year = y;
+                });
+              }}
               onChange={(e) => {
                 const v = Number(e.currentTarget.value);
-                const next = v >= YEAR_MAX ? null : v;
-                setYear(next);
-                engineRef.current?.setYear(next ?? undefined);
-                /* the WRITING is on the clock too — both label gates read the
-                   year, so without this the map un-builds to 1906 with 1970's
-                   street names still on it */
-                if (overlayRef.current) overlayRef.current.year = next ?? undefined;
+                setYear(v >= YEAR_MAX ? null : v);
               }}
             />
+            {/* ── THE VIEW, AT PRINT SIZE ────────────────────────────────
+                A city drawn from a public record is worth showing to people
+                who will never open the page, and the way a picture travels is
+                that somebody saves it. At the window's own pixel count this is
+                a screenshot; at four times it is something you can print and
+                read the street names on. Same camera, same year, same
+                everything the reader chose — only the sampling gets finer. */}
+            <button
+              type="button"
+              className="fx-city-preset"
+              disabled={saving}
+              onClick={() => {
+                const eng = engineRef.current;
+                if (!eng || saving) return;
+                setSaving(true);
+                void saveView(eng, {
+                  scale: 4,
+                  overlay: overlayRef.current?.canvas ?? null,
+                  resizeOverlay: (w, h, d) => overlayRef.current?.resize(w, h, d),
+                  filename: "city.png",
+                }).finally(() => setSaving(false));
+              }}
+            >
+              {saving ? "Saving…" : "Save image"}
+            </button>
             {filmRef.current ? (
               <button
                 type="button"
@@ -795,17 +1095,28 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 {filmOn ? "Stop" : "Play the film"}
               </button>
             ) : null}
-            <button
-              type="button"
-              className="fx-city-preset"
-              onClick={() => {
-                setYear(null);
-                engineRef.current?.setYear(undefined);
-                if (overlayRef.current) overlayRef.current.year = undefined;
-              }}
-            >
-              Today
-            </button>
+            {/* THE WAY BACK, AND ONLY WHEN THERE IS ONE. It used to read
+                "today", which was wrong twice over: the map is built from a
+                record that ends in a stated year, not from this morning, and
+                a label that means a different city each day cannot be checked
+                against anything. It reads the year instead. But once it reads
+                the year, it is the same number as the readout at the other
+                end of the rail — so it is only offered when the reader has
+                actually moved away from it, which is the only time it does
+                anything. */}
+            {year !== null ? (
+              <button
+                type="button"
+                className="fx-city-preset"
+                onClick={() => {
+                  setYear(null);
+                  engineRef.current?.setYear(undefined);
+                  if (overlayRef.current) overlayRef.current.year = undefined;
+                }}
+              >
+                {YEAR_MAX}
+              </button>
+            ) : null}
           </div>
         </div>
       ) : null}

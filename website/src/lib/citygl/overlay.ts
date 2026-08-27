@@ -30,6 +30,7 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 import { LEDGER_W, NARROW_W, ZSTEPS, bandOf } from "@/lib/city/camera";
+import { snapCameraToPixels, type PlaneCamera } from "./camera";
 import type { CityData } from "@/lib/city/data";
 import { projection, type ViewCamera } from "@/lib/city/projection";
 import {
@@ -91,24 +92,23 @@ interface HoodRingsFile {
 }
 
 /**
- * `base/blocks-id.json` — the assessor's own id per block, in chunk order.
+ * WHAT THE PIN USED TO SAY, AND WHY IT NO LONGER SAYS IT.
  *
- * Read for one string: the id on the pin. The join is by ARRAY POSITION and
- * never by name, which is the same rule `CityGLMap` states for the division
- * byte — a second membership able to disagree with the first is how a wrong
- * record gets attached to a right block.
+ * It wrote `base/blocks-id.json` — the assessor's own filing number for the
+ * block, `3538` — in a mono badge beside the ring, and that is the one thing
+ * on this map nobody has ever used to say where they are.
  *
- * CHECKED rather than assumed, because a silent off-by-one here would write a
- * neighbour's number under a reader's block and nothing would throw. Compared
- * element for element on the shipped files: this array and the record index's
- * own `b[]` agree on **5,404 of 5,404**, and `hood-rings.json`'s `names` and
- * the manifest's `hoodNames` — the two ends of §SCRIM's join — agree on
- * **41 of 41**. (`block-records.ts` §assertJoin makes the first of those a
- * runtime check on a sample for exactly this reason.)
+ * > "i dont want block nulber to show anywhere its not relevant to me"
+ *
+ * The number is how this pipeline addresses a piece of ground and it stays
+ * exactly where it belongs: in the index, in the shard filenames, in the join
+ * that `block-records.ts` §assertJoin still checks element for element. It is
+ * off the screen. What goes on the badge instead is handed in from outside as
+ * `pickLabel`, because the only place that knows how to name a piece of ground
+ * in words is the place that has already fetched its record.
+ *
+ * The sidecar fetch went with it. It had exactly one reader.
  */
-interface BlockIdsFile {
-  id: string[];
-}
 
 function b64(s: string): ArrayBuffer {
   const bin = atob(s);
@@ -245,14 +245,26 @@ export class CityOverlay {
   year: number | undefined = undefined;
   /** the published divisions, once the sidecar lands — see §SCRIM */
   private hoodRings: HoodRingsFile | null = null;
-  /** the assessor id per block, in chunk order — see §PIN */
-  private blockIds: readonly string[] | null = null;
+  /**
+   * WHAT TO WRITE BESIDE THE RING, in words a person uses.
+   *
+   * Set by whoever owns the pick — `CityGLMap` writes the neighbourhood the
+   * moment the click lands, because that is known synchronously off the block
+   * columns, and upgrades it to the streets the block fronts once the record
+   * arrives. Null draws the ring alone, which is still a true answer to
+   * "which one answered" and is what a block fronting no street gets.
+   */
+  pickLabel: string | null = null;
   /** `base/blocks`' own columns, decoded once — see `hoodColumns` */
   private cols: ReturnType<typeof hoodColumns> = null;
   private colsRead = false;
   private W = 0;
   private H = 0;
   private dpr = 1;
+  /* the type's own sheet — see §THE TYPE IS PLACED ON A SHEET, NOT ON THE
+     FRAME. Null until the first frame that needs it, and dropped on resize. */
+  private lblCv: HTMLCanvasElement | null = null;
+  private lblKey = "";
   /** resolved CSS custom properties — see `cssVar` */
   private readonly tokens = new Map<string, string>();
 
@@ -300,34 +312,21 @@ export class CityOverlay {
       this.surroundRings = [];
     }
 
-    /* ── THE TWO SIDECARS THE PICK CHROME READS ────────────────────────
-       Fetched here for the same reason `marks.json` is: they are published
-       files under the city's own base URL, they are the contract between the
-       two renderers, and neither is a chunk. Each gets its own try/catch —
-       one missing file must take down one pass and not the other, and a city
-       that publishes no divisions is a fact about that city.
+    /* ── THE SIDECAR THE PICK CHROME READS ─────────────────────────────
+       Fetched here for the same reason `marks.json` is: it is a published
+       file under the city's own base URL, it is the contract between the two
+       renderers, and it is not a chunk. Its own try/catch — a missing file
+       must take down one pass and nothing else, and a city that publishes no
+       divisions is a fact about that city.
 
-       Fetched in parallel because neither blocks the other, and awaited
-       together so `load()` still resolves once. */
-    await Promise.all([
-      (async () => {
-        try {
-          const r = await fetch(`${this.o.dataBaseUrl}/base/hood-rings.json`);
-          if (r.ok) this.hoodRings = (await r.json()) as HoodRingsFile;
-        } catch {
-          /* no divisions published — the scrim has nothing to punch through */
-        }
-      })(),
-      (async () => {
-        try {
-          const r = await fetch(`${this.o.dataBaseUrl}/base/blocks-id.json`);
-          if (r.ok) this.blockIds = ((await r.json()) as BlockIdsFile).id;
-        } catch {
-          /* no ids published — the pin is a ring with nothing written beside
-             it, which is still the true answer to "which one answered" */
-        }
-      })(),
-    ]);
+       There were two. `blocks-id.json` went when the pin stopped writing the
+       assessor's number, and it is 38 KB the reader no longer fetches. */
+    try {
+      const r = await fetch(`${this.o.dataBaseUrl}/base/hood-rings.json`);
+      if (r.ok) this.hoodRings = (await r.json()) as HoodRingsFile;
+    } catch {
+      /* no divisions published — the scrim has nothing to punch through */
+    }
   }
 
   resize(W: number, H: number, dpr: number): void {
@@ -337,6 +336,9 @@ export class CityOverlay {
     this.dpr = dpr;
     this.canvas.width = Math.max(1, Math.round(W * dpr));
     this.canvas.height = Math.max(1, Math.round(H * dpr));
+    /* the sheet is cut to the frame, so a new frame needs a new sheet */
+    this.lblCv = null;
+    this.lblKey = "";
   }
 
   /**
@@ -465,38 +467,140 @@ export class CityOverlay {
 
     const elev = (x: number, y: number): number => t.elevM(x, y);
 
-    /* ── THE ORDER IS THE PRIORITY, AND IT IS `scene.ts`'S ────────────────
-       Designated landmarks take first refusal on the frame's ink, then the
-       spine streets, then everything else — a landmark names one building
-       and a reader can find Market Street by looking at the picture. All
-       three passes share ONE collision grid, so a street name cannot be
-       written over a place name and neither pass has to know the other
-       exists. */
-    const grid = new LabelGrid(this.W, this.H);
+    /* ══ THE TYPE IS PLACED ON A SHEET, NOT ON THE FRAME ══════════════════
+       Reported, and it is a real defect: *"i get zooming can show more street
+       names appearing, buildijg names etc, but here im getting that just from
+       pannning around without zooming thats really abnormal and disturbing"*.
 
-    const des = this.places.filter((q) => q.cls === "designated");
-    if (des.length) placeNames(f, des, grid, elev);
+       ── WHY IT HAPPENED ────────────────────────────────────────────────────
+       Every pass below spends from ONE ink budget (`labels.ts` §the ink
+       budget: a box is admitted only if it fits in what is left) against ONE
+       collision grid, and both were cut to the VIEWPORT and rebuilt every
+       frame. So the set of names competing for the ink changed with every
+       pixel of pan, and so did the winners. Measured before this was written:
+       at the Sunset camera, a 60-pixel pan left 11.0% of the type not where it
+       had been — whole names appearing and vanishing, not edges moving.
 
-    const tbl = this.o.data.streetLabels();
-    const sn = tbl ? new StreetNamePass(f, tbl, grid, elev) : null;
-    sn?.draw("spine");
+       The published Canvas renderer has the same passes and does not show
+       this, and the reason is not that it places better: it rasterises the
+       city into a slot and BLITS while you drag, so its type is re-decided
+       only when you stop. This renderer redraws every frame, so it had to be
+       given the same property honestly.
 
-    /* THE DISTRICT CAPITALS, between the spine and the arterials — the
-       largest type on the frame and the thing that makes a district camera
-       read as a map rather than as a texture. Built once: it is a function of
-       the chunk and not of the camera. */
+       ── WHAT THIS DOES ─────────────────────────────────────────────────────
+       The type is placed against a camera SNAPPED to a coarse grid, on a
+       sheet inflated past every edge, and that sheet is blitted at a whole
+       number of device pixels. Two consequences, both wanted:
+
+         · Panning inside a cell changes NOTHING. The sheet is not re-placed,
+           it is moved, so the names translate with the city exactly as the
+           buildings under them do.
+         · A name entering the frame was already placed, out in the margin, so
+           it slides in rather than appearing.
+
+       The re-place at a cell boundary is the one discrete change left, and it
+       is small because the sheet it is re-placed on is mostly the same sheet.
+
+       ── AND THE OFFSET HAS TO BE WHOLE DEVICE PIXELS ───────────────────────
+       Blitting type at a fractional offset resamples it, which is how you
+       turn a fix for popping into a fix that also makes every label blurry.
+       It lands exactly because `cam` arrives already snapped to the device
+       grid (`engine.ts` §rasterCam) and the cell is a whole number of device
+       pixels, so `(lcx - cx) * q` is an integer before it is rounded.
+
+       PAD is 160 CSS px of margin and CELL is 128 of pan between re-places,
+       which leaves 96 px of already-placed type outside the frame at the
+       worst offset. The sheet costs (W + 320) x (H + 320) device pixels —
+       about 28 MB at this city's largest frame and a device ratio of 2 — and
+       it buys back the whole label pass on every frame that does not cross a
+       cell, which is nearly all of them. */
+    const PAD = 160;
+    const CELL = 128;
+
+    /* built once and not per camera, but the key below has to see it */
     if (!this.hoods) {
       const cols = this.columns();
       if (cols) this.hoods = buildHoodAnchors(cols);
     }
-    if (this.hoods) drawHoodNames(f, this.hoods, grid, elev);
 
-    sn?.draw("arterials");
+    const q = cam.scale * this.dpr;
+    const pad = Math.round(PAD * this.dpr);
+    const { cx: lcx, cy: lcy } = snapCameraToPixels(
+      cam as unknown as PlaneCamera,
+      this.dpr,
+      Math.round(CELL * this.dpr),
+    );
+    const PWd = Math.round(this.W * this.dpr) + pad * 2;
+    const PHd = Math.round(this.H * this.dpr) + pad * 2;
 
-    const rest = this.places.filter((q) => q.cls !== "designated");
-    if (rest.length) placeNames(f, rest, grid, elev);
+    const key = [
+      PWd, PHd, this.dpr, cam.scale, band, base,
+      this.year ?? "", lcx, lcy, this.places.length, this.hoods ? 1 : 0,
+    ].join("|");
 
-    sn?.draw("local");
+    if (!this.lblCv || this.lblKey !== key) {
+      const cv = this.lblCv ?? document.createElement("canvas");
+      if (cv.width !== PWd || cv.height !== PHd) {
+        cv.width = PWd;
+        cv.height = PHd;
+      }
+      const pv = cv.getContext("2d");
+      if (pv) {
+        pv.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+        pv.clearRect(0, 0, PWd / this.dpr, PHd / this.dpr);
+
+        /* the same frame, on the sheet's own geometry */
+        const fl = {
+          ...f,
+          ctx: pv,
+          W: PWd / this.dpr,
+          H: PHd / this.dpr,
+          cam: { ...cam, cx: lcx, cy: lcy, step: band, base },
+        } as unknown as Frame;
+
+        /* ── THE ORDER IS THE PRIORITY, AND IT IS `scene.ts`'S ────────────
+           Designated landmarks take first refusal on the frame's ink, then
+           the spine streets, then everything else — a landmark names one
+           building and a reader can find Market Street by looking at the
+           picture. All three passes share ONE collision grid, so a street
+           name cannot be written over a place name and neither pass has to
+           know the other exists. */
+        const grid = new LabelGrid(fl.W, fl.H);
+
+        const des = this.places.filter((qq) => qq.cls === "designated");
+        if (des.length) placeNames(fl, des, grid, elev);
+
+        const tbl = this.o.data.streetLabels();
+        const sn = tbl ? new StreetNamePass(fl, tbl, grid, elev) : null;
+        sn?.draw("spine");
+
+        /* THE DISTRICT CAPITALS, between the spine and the arterials — the
+           largest type on the frame and the thing that makes a district
+           camera read as a map rather than as a texture. */
+        if (this.hoods) drawHoodNames(fl, this.hoods, grid, elev);
+
+        sn?.draw("arterials");
+
+        const rest = this.places.filter((qq) => qq.cls !== "designated");
+        if (rest.length) placeNames(fl, rest, grid, elev);
+
+        sn?.draw("local");
+
+        this.lblCv = cv;
+        this.lblKey = key;
+      }
+    }
+
+    if (this.lblCv) {
+      const dx = Math.round((lcx - cam.cx) * q) - pad;
+      const dy = Math.round((cam.cy - lcy) * q) - pad;
+      ctx.save();
+      /* device pixels, so the blit is a copy and not a resample */
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.drawImage(this.lblCv, dx, dy);
+      ctx.restore();
+      ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    }
 
     /* ── AND THE CHROME LAST, IN THE PUBLISHED PAGE'S OWN ORDER ──────────
        On `/the-city` these three are DOM over the map canvas, in this order
@@ -767,8 +871,15 @@ export class CityOverlay {
    *    layer is handed a ring and never a click, so it takes the centroid for
    *    every pick, which is also the steadier mark: two readers picking the
    *    same block get the same picture.
-   * 2. **With no id sidecar the pin is a ring alone.** A ring with an empty
-   *    box beside it would be chrome claiming to name something it cannot.
+   * 2. **With no label the pin is a ring alone.** A ring with an empty box
+   *    beside it would be chrome claiming to name something it cannot.
+   *
+   * THE BADGE IS NO LONGER A NUMBER. It wrote the assessor's filing number;
+   * it now writes whatever `pickLabel` holds, which is the neighbourhood on
+   * the frame the click lands in and the block's own streets a moment later.
+   * A name is wider than four digits, so the badge is capped at 34 characters
+   * and the row is measured from the text rather than assumed — a long
+   * three-street name would otherwise run under the record margin.
    */
   private drawPin(f: Frame, elev: (x: number, y: number) => number): void {
     const ring = this.highlight;
@@ -793,7 +904,8 @@ export class CityOverlay {
     if (X < -40 || Y < -40 || X > this.W - lw || Y > this.H + 40) return;
 
     const { ctx } = f;
-    const id = this.pick !== null ? (this.blockIds?.[this.pick] ?? "") : "";
+    const raw = this.pick !== null ? (this.pickLabel ?? "") : "";
+    const id = raw.length > 34 ? `${raw.slice(0, 33)}…` : raw;
     const ink = this.cssVar("--ink", "#0a0a0a");
 
     ctx.save();
