@@ -77,7 +77,16 @@ import {
   STROKE_MIN_PX_A,
   inkFor,
 } from "@/lib/city/buildings";
-import { ROLE_FRONT, derivedBands, faEra, faGlassy, storeysOf } from "@/lib/city/facades";
+import {
+  ROLE_FRONT,
+  derivedBands,
+  faBayOK,
+  faEra,
+  faGlassy,
+  storeysOf,
+  storeysRead,
+} from "@/lib/city/facades";
+import { BAY_DEPTH_M, BAY_HEAD_M, BAY_MIN_PLAN_M, bayForm } from "../bay-form";
 import {
   FACADE_TILES,
   TILE_CURTAIN,
@@ -540,6 +549,9 @@ export function buildingsMesh(
   let maxRing = 3;
   for (let i = 0; i < n; i++) maxRing = Math.max(maxRing, tb.off[i + 1] - tb.off[i]);
   const gndRing = new Int32Array(maxRing).fill(-1);
+  /** the cornice band's FOOT ring — where a bayed frontage stops and the wall
+   *  goes back onto the measured ring. Same lazy-build idiom as `gndRing`. */
+  const capRing = new Int32Array(maxRing).fill(-1);
 
   // roofs are (c-2) triangles, walls are 2c — one index buffer for both
   let triCount = 0;
@@ -569,6 +581,16 @@ export function buildingsMesh(
   /* the outline, one index buffer per camera band — see `EDGE_MIN_M` */
   const idxEdge: number[][] = EDGE_MIN_M.map(() => []);
   void triCount;
+
+  /* ── A QUAD, INTO WHICHEVER VOCABULARY THE EDGE ASKED FOR ───────────
+     `bay-form.ts` builds a frontage out of quads and has no business knowing
+     which of the eight facades this wall is. So the buffer is chosen here,
+     once per bayed edge, and the builder is handed a function that does not
+     change — one closure for the whole chunk rather than one per edge. */
+  let quadInto: number[] = idxWall[0];
+  const quad = (a: number, b: number, c2: number, d: number): void => {
+    quadInto.push(a, b, c2, a, c2, d);
+  };
 
   /* ── THE YEAR IS A DRAW RANGE, AND THAT IS THE WHOLE TRICK ──────────────
      A century scrub has to answer, sixty times a second, *which buildings
@@ -656,6 +678,16 @@ export function buildingsMesh(
   /** roof-ring start, ring length, and the linear RGB that ring was given */
   const probe: { v0: number[]; vn: number[]; rc: number[]; gid: number[] } | null =
     DEV ? { v0: [], vn: [], rc: [], gid: [] } : null;
+  /* ── AND A TALLY FOR THE BAYS, FOR THE SAME REASON THE ROOFS HAVE ONE ──
+     `faBayOK` reaches 32,290 of the 166,166 published footprints. A harness
+     that cannot count what the mesh actually built has no way to tell a rule
+     that is not firing from a shape that is not visible, and this file has
+     paid for that confusion once already elsewhere. `eligible` is the rule's
+     own answer; `frontages` is how many edges took a bayed solid — always
+     the smaller number, because the rule passes per BUILDING and the bay is
+     built per measured FRONT edge that clears the plan and length gates. */
+  const bayTally: { eligible: number; frontages: number } | null =
+    DEV ? { eligible: 0, frontages: 0 } : null;
 
   for (const i of ord) {
     const s = tb.off[i];
@@ -743,7 +775,11 @@ export function buildingsMesh(
        wall in every year at every zoom, which is most of what a reader means
        by *"all buildings look kind of the same"*. `FLAG_HEIGHT_STALE` still
        gets the flat wall, because its height is not its own. */
-    const storeysPub = storeysOf(tb.st[i], st2);
+    /* `storeysRead` reinterprets the ONE saturated value the roll's four-bit
+       storey column can carry — 15 means "fifteen or more", and read as an
+       exact count it stretched the facade tile up to 5.4x over the towers.
+       Counts 1..14 pass through untouched. */
+    const storeysPub = storeysRead(storeysOf(tb.st[i], st2), hM, STOREY_M);
     const bands =
       storeysPub > 0
         ? storeysPub
@@ -802,6 +838,33 @@ export function buildingsMesh(
        stated rather than folded into a magic number. */
     const storeys = Math.max(1, storeysPub > 0 ? storeysPub : Math.round(hM / STOREY_M));
 
+    /* ── DOES THIS FOOTPRINT CARRY A BAY, AND WHICH WAY IS INSIDE ────────
+       `faBayOK` is the published rule and it is not widened here: a HOUSE or
+       FLATS, on a measured FRONT edge, built before 1925, more than one
+       storey — 32,290 of the 166,166 footprints.
+
+       Two gates are this file's own. The role stream must actually be
+       loaded, because without it every edge defaults to ROLE_FRONT and a
+       building would grow bays on all four sides. And the plan must clear
+       `BAY_MIN_PLAN_M`, because setting a wall back inside a footprint
+       thinner than a few times the recess is a claim about the building's
+       inside that nothing here can make.
+
+       The winding is paid for only where a bay can reach: it is the ring's
+       shoelace sign, which is what tells a frontage which way is in. */
+    const bayOK =
+      roles !== null && faBayOK(ty, era, ROLE_FRONT, bands);
+    if (bayTally && bayOK) bayTally.eligible++;
+    let wind = 0;
+    if (bayOK) {
+      let a2 = 0;
+      for (let k = 0; k < c; k++) {
+        const k1 = (k + 1) % c;
+        a2 += tb.vx[s + k] * tb.vy[s + k1] - tb.vx[s + k1] * tb.vy[s + k];
+      }
+      wind = a2 >= 0 ? 1 : -1;
+    }
+
     const foot = s * 3;
     const wallTop = s * 3 + c;
     const roof = s * 3 + c * 2;
@@ -823,6 +886,26 @@ export function buildingsMesh(
         1,
       );
       gndRing[k] = made;
+      return made;
+    };
+    /** the cornice band's foot at ring vertex k, built the first time a bayed
+     *  frontage asks for it and reused by the frontage on the other side */
+    const capVert = (k: number, hCap: number): number => {
+      const had = capRing[k];
+      if (had >= 0) return had;
+      const t = Math.min(1, hCap / Math.max(1e-3, wallH));
+      const made = sink.vertexUV(
+        tb.vx[s + k],
+        tb.vy[s + k],
+        elev,
+        hCap,
+        wBot[0] + (wTop[0] - wBot[0]) * t,
+        wBot[1] + (wTop[1] - wBot[1]) * t,
+        wBot[2] + (wTop[2] - wBot[2]) * t,
+        aUV[(foot + k) * 2],
+        storeys * t,
+      );
+      capRing[k] = made;
       return made;
     };
     const ink = inkRGB[mat.roof[i] * 4 + mat.shade[i]] ?? [0.2, 0.2, 0.2];
@@ -909,6 +992,52 @@ export function buildingsMesh(
        So the tile is chosen here, inside the loop, and the eight index
        buffers sort the edges out. */
     const storeyM = wallH / Math.max(1, bands);
+    /* ── AND THE FRONTAGE HANDS ITS EDGE OVER ───────────────────────────
+       The plan gate lives here rather than beside `bayOK` because the ring's
+       extent is only known once the vertex loop above has walked it. */
+    const planOK =
+      bayOK && Math.min(x1 - x0, y1 - y0) > BAY_MIN_PLAN_M;
+    const bayed = (k: number, k1: number, tile: number): boolean => {
+      if (!planOK) return false;
+      const ax = tb.vx[s + k];
+      const ay = tb.vy[s + k];
+      const bx = tb.vx[s + k1];
+      const by = tb.vy[s + k1];
+      const el = Math.hypot(bx - ax, by - ay);
+      if (!(el > 0)) return false;
+      /* ── AND THE BAY STOPS UNDER THE CORNICE ────────────────────────
+         `BAY_HEAD_M` of wall stays on the measured ring so the parapet — or
+         a hip's eave — has solid under it across the whole frontage. A wall
+         with no room for both the band and a bay under it is left plain. */
+      const hBay = wallH - BAY_HEAD_M;
+      if (!(hBay > BAY_DEPTH_M * 2)) return false;
+      const cA = capVert(k, hBay);
+      const cB = capVert(k1, hBay);
+      quadInto = idxWall[tile];
+      const built = bayForm(sink, quad, {
+        ax, ay, bx, by,
+        /* the ring's own inward normal: rotate the edge a quarter turn the
+           way the winding says is in */
+        nx: (-(by - ay) / el) * wind,
+        ny: ((bx - ax) / el) * wind,
+        elevM: elev,
+        wallH: hBay,
+        cBot: wBot,
+        cTop: wTop,
+        u0: aUV[(foot + k) * 2],
+        moduleM: bayM,
+        vTop: (storeys * hBay) / Math.max(1e-3, wallH),
+        footA: foot + k,
+        footB: foot + k1,
+        topA: cA,
+        topB: cB,
+      });
+      if (!built) return false;
+      /* the cornice band itself, on the ring, from the bay's head to the
+         wall's — the one line that crosses the frontage unbroken */
+      quad(cA, cB, wallTop + k1, wallTop + k);
+      return true;
+    };
     for (let k = 0; k < c; k++) {
       const k1 = (k + 1) % c;
       const role = roles ? (roles[s + k] ?? ROLE_FRONT) : ROLE_FRONT;
@@ -932,6 +1061,14 @@ export function buildingsMesh(
         const a1 = groundVert(k1, storeyM);
         idxWall[gnd].push(foot + k, foot + k1, a1, foot + k, a1, a0);
         idxWall[tile].push(a0, a1, wallTop + k1, a0, wallTop + k1, wallTop + k);
+      } else if (bayOK && role === ROLE_FRONT && bayed(k, k1, tile)) {
+        if (bayTally) bayTally.frontages++;
+        /* ── THE FRONTAGE IS A BAYED SOLID AND HAS BUILT ITSELF ─────────
+           `bayForm` emitted the set-back wall, both corner returns and a box
+           per bay, all into `idxWall[tile]`. It refuses — and this branch
+           falls through to the plain quad — on a frontage too short to carry
+           one, a wall shorter than twice the recess, or a plan too thin to
+           give the recess up. */
       } else {
         idxWall[tile].push(
           foot + k, foot + k1, wallTop + k1, foot + k, wallTop + k1, wallTop + k,
@@ -954,6 +1091,7 @@ export function buildingsMesh(
     }
 
     gndRing.fill(-1, 0, c);
+    capRing.fill(-1, 0, c);
     emittedYear.push(yearOf(i));
     roofMark.push(idxRoof.length);
     for (let tI = 0; tI < idxWall.length; tI++) wallMark[tI].push(idxWall[tI].length);
@@ -1028,6 +1166,12 @@ export function buildingsMesh(
     if (g.__cityGLMat) {
       g.__cityGLMat.maxOff = Math.max(g.__cityGLMat.maxOff ?? 0, maxOff);
     }
+  }
+  if (bayTally) {
+    const g = globalThis as {
+      __cityGLBayProbe?: { eligible: number; frontages: number }[];
+    };
+    (g.__cityGLBayProbe ??= []).push(bayTally);
   }
 
   const make = (indices: number[]): BufferGeometry => {

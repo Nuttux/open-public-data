@@ -378,6 +378,40 @@ export function storeysOf(st: number, st2: number): number {
   return st > 0 ? st : st2;
 }
 
+/**
+ * THE ROLL'S STOREY COUNT SATURATES AT FIFTEEN, AND FIFTEEN DOES NOT MEAN 15.
+ *
+ * `roof-data.js` packs `st` as **`min(15, round(number_of_stories))` in FOUR
+ * BITS** — the note under `derivedBands` says so in those words. So 15 is not a
+ * count, it is *"fifteen or more"*, and 255 footprints carry it.
+ *
+ * Read as an exact count it stretches the facade over the real wall. 141 of
+ * those 255 measure taller than fifteen storeys, and the tile then repeats
+ * fifteen times over the whole height: a median of **6.4 m per drawn storey**
+ * against a real 3.4, and **17.3 m** on the worst of them, a 260 m tower. At
+ * that stretch a window pattern stops being windows — it is a grey smear with
+ * a faint horizontal beat, which is what every downtown and Tenderloin tower
+ * in this city was drawn as.
+ *
+ * ── AND THE REPAIR INVENTS NOTHING ──────────────────────────────────────
+ * This is the same direction `derivedBands` already argues for and the
+ * opposite of the one `FA_NO_FITTED_FLOOR_HEIGHT` refuses. Nothing here touches
+ * `h`: no building's height, mass or roof plane moves. The roll says "at least
+ * fifteen"; the LiDAR median says how tall the building measures; taking the
+ * LARGER of the two contradicts neither source. A genuine fifteen-storey
+ * building measures about 48 m, `round(48 / 3.4)` is 14, and it keeps its 15.
+ *
+ * Only the saturated value is reinterpreted. Every count from 1 to 14 is an
+ * exact published number and is passed through untouched.
+ */
+export const ST_SATURATED = 15;
+
+export function storeysRead(stPub: number, Hm: number, storeyM: number): number {
+  if (stPub !== ST_SATURATED) return stPub;
+  if (!(Hm > 0) || !(storeyM > 0)) return stPub;
+  return Math.max(ST_SATURATED, Math.round(Hm / storeyM));
+}
+
 /* ── THE BAND COUNT WHERE THE ROLL PUBLISHES NO STOREY COUNT ─────────────
  *
  * `roof-data.js` `st` is `min(15, round(number_of_stories))` in four bits, and

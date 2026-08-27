@@ -433,16 +433,60 @@ imagery could make buildings look like themselves; for roofs, this project alrea
 and 98 points of it are being dropped somewhere between the chunk and the canvas. That is not
 this agent's file, and it is the largest single win in the building pass.
 
+## Follow-up 1 was OVERTAKEN — read this before wiring anything
+
+**2026-08-28.** Follow-up 1 below is stale and acting on it would ship a second copy of a
+column that is already on the wire. Recorded here rather than deleted, because the reasoning
+in the audit above is still right — it is the *conclusion* that events moved past.
+
+`encode_city_chunks.py` already publishes the `face` tier, and `_facade_prov()` names its
+source in the encoder's own words:
+
+> `"ty": src("fac_ty", dataset="wv5m-vpq2", … what="property_class_code read as nine building
+> types; 147,601 of 166,166 (88.8 %)")`
+
+Measured against the shipped `facade-data.js`, `ty` names **94.97 %** of the drawn footprints
+(only `UNCLASSED` 5.03 % falls through) — the same column, at the same coverage, as
+`char-data.js`'s 94.91 %. It ships alongside `shop`, the ground-floor-retail bit, and `role`,
+the per-edge front/back/party stream. So the assessor's building class **already reaches the
+renderer**, and has since the facade block landed.
+
+**What was actually missing is what this file's own headline said: `What is missing is not
+colour. It is silhouette.`** `ty` was driving the facade TILE — a wall texture with a window
+rhythm — and nothing about the building's shape. The solid underneath stayed a bare prism.
+
+**Shipped instead, 2026-08-28: the bay window as geometry.** `website/src/lib/citygl/
+bay-form.ts`, wired into `layers/buildings.ts`, on the rule `lib/city/facades.ts` `faBayOK`
+already published — a HOUSE or FLATS, on a measured FRONT edge, built before 1925, more than
+one storey. **32,562 footprints eligible, 30,186 frontages built** (the shortfall is the
+length and plan gates). No pipeline change of any kind: every input was already published.
+
+The one design decision worth carrying forward is which way the bay is built. `ynuv-fyni` is
+an aerial-derived outline, and what an aerial traces on a bayed San Francisco house is the
+BAY'S OWN EDGE — so the measured ring is the plane of the bay face, not of the wall behind it.
+The bays therefore reach the ring and **the wall between them steps back**, which draws the
+same solid the survey measured instead of adding 0.75 m the survey denies. Verified on 800
+random eligible footprints: the recess lands inside the measured ring 800/800.
+
 ## Follow-ups, in order
 
-1. **Wire `char-data.js` into the encoder** as a global per-gid array (or per cell, alongside
-   `gid`), and give the eleven archetypes eleven silhouette treatments. Not this agent's files.
+1. ~~**Wire `char-data.js` into the encoder**~~ — **DO NOT.** Redundant with `face.ty`; see
+   above. `char-data.js` remains useful only as a *different grouping* (eleven archetypes
+   against nine types, splitting `flat_over_store` and `condo` out) if a treatment ever needs
+   that split. It is not new information.
 2. **Find where 98.4 % of `paintIdx` is lost.** Bigger win, smaller change.
-3. **Harvest SF Survey styles** for the ~6 % that have one, as a *named* override on top of the
+   **Done** — `components/us/city/scene.ts` now reads it: `if ((paintFlag[i] & noSampleBit)
+   === 0) ri[i] = PAINT_C0 + paintIdx[i]`, and the GL path inherits it through the shared
+   `legendTones` table.
+3. **The other five silhouettes.** `flat_over_store` and `storefront` (glazed band at grade,
+   parapet sign band), `industrial` (long low mass, gable or sawtooth end), `institution`
+   (gable or portico), `hotel` (ground-floor canopy line). All five read off `ty`/`shop`,
+   which are already loaded — the same shape of job the bay just was, and no new data.
+4. **Harvest SF Survey styles** for the ~6 % that have one, as a *named* override on top of the
    archetype — one search + one report per APN, ~309 k requests, a background job over days. Ask
    Planning for the licence and for a bulk extract before building the harvester; they may simply
    hand over the table.
-4. **Sanborn, for pre-1906.** The only source that can say what the city looked like before the
+5. **Sanborn, for pre-1906.** The only source that can say what the city looked like before the
    fire, and the only one that has to be built rather than fetched. Re-scan from LoC (public
    domain) rather than deriving from the Rumsey CC BY-NC-SA scans.
 
