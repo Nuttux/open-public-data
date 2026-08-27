@@ -136,8 +136,33 @@ function Panel({
   return <div style={{ display: "flex", width: 430, height: "100%", background: WARM }} />;
 }
 
+/**
+ * SATORI DOES NOT IMPLEMENT `WebkitLineClamp`.
+ *
+ * The title below sets it, and it does nothing: a long headline runs past
+ * three lines and straight under the figure box, cut mid-word. In production
+ * the Paris contract card for decp-2024S00558 — a 486-character procurement
+ * "objet" — ran to seven lines and sliced "Identification du schéma
+ * fonctionnel des…" in half behind the amount.
+ *
+ * So the cut happens here, in code, on a word boundary. 120 characters is
+ * three lines at the 38px the sizing below picks for a title this long. The
+ * Recife cards never showed the bug only because `shortObjeto` already
+ * truncated their text; every other card was relying on a clamp that was
+ * never applied.
+ */
+const TITLE_MAX = 120;
+
+function fitTitle(raw: string): string {
+  if (raw.length <= TITLE_MAX) return raw;
+  const cut = raw.slice(0, TITLE_MAX);
+  const sp = cut.lastIndexOf(" ");
+  return `${(sp > 60 ? cut.slice(0, sp) : cut).replace(/[,;:.\s]+$/, "")}…`;
+}
+
 export function shareCard(input: CardInput) {
-  const { route, kicker, title, figure, image, imageCaption, bars, source, url } = input;
+  const { route, kicker, figure, image, imageCaption, bars, source, url } = input;
+  const title = fitTitle(input.title);
   const titleSize = title.length > 76 ? 38 : title.length > 38 ? 46 : 60;
 
   return new ImageResponse(
