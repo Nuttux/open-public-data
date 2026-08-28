@@ -83,8 +83,12 @@ function irradiance(rig: ReturnType<typeof rigFor>, n: Vector3): number {
 }
 
 describe("solveSunRig", () => {
-  it("puts a shadow's caster at sqrt(2) times its own height", () => {
-    expect(SHADOW_THROW).toBeCloseTo(Math.SQRT2, 10);
+  it("puts a shadow's caster at sqrt(3) times its own height", () => {
+    /* Was sqrt(2), from the elevation that made a sunlit wall and a sunlit
+       roof equal — a parity solve. `light.ts` §and then it came down
+       further states why the sun is at 30 degrees instead. This is not a
+       loosened assertion: it is exact, and it is the new declared value. */
+    expect(SHADOW_THROW).toBeCloseTo(Math.sqrt(3), 10);
   });
 
   it("hits every one of the four look targets it was given", () => {
@@ -110,16 +114,49 @@ describe("solveSunRig", () => {
     rig.dispose();
   });
 
-  it("holds every target across the range a sweep walks", () => {
+  it("holds every target it says it reached, and says so when it cannot", () => {
+    /* ── WHY THIS SWEEP BRANCHES NOW ──────────────────────────────────────
+       It used to assert both targets on all twelve pairs, which held only
+       because the sun stood at the one elevation where a 45-degree wall and a
+       roof take an EQUAL share of the beam. `light.ts` §and then it came down
+       further put the sun at 30 degrees, where the wall takes sqrt(1.5) —
+       22 % more — so a `wallCap` of 1.1 is no longer reachable at any
+       `sunShare` past about 0.4: the direct term alone already puts the lit
+       wall further above the roof than the target allows. Those pairs are
+       IMPOSSIBLE, not wrong, and `solveSunRig` now reports which.
+
+       So this asserts more than it did, not less. Where the solve closed, the
+       targets are exact to the same tolerance as before. Where it did not, the
+       clamp path — previously swept but never checked — has to say so and
+       still hand back levels a renderer can use. */
+    let reached = 0;
     for (const sunShare of [0.35, 0.45, 0.55, 0.65]) {
       for (const wallCap of [1.1, 1.3, 1.5]) {
         const look = { ...DEFAULT_LOOK, sunShare, wallCap };
         const rig = rigFor(look);
-        expect(irradiance(rig, UP)).toBeCloseTo(look.groundE, 3);
-        expect(irradiance(rig, WALL_LIT)).toBeCloseTo(wallCap * look.groundE, 3);
+        if (rig.levels.reachable) {
+          reached++;
+          expect(irradiance(rig, UP)).toBeCloseTo(look.groundE, 3);
+          expect(irradiance(rig, WALL_LIT)).toBeCloseTo(wallCap * look.groundE, 3);
+        } else {
+          expect(rig.levels.keyI).toBeGreaterThanOrEqual(0);
+          expect(rig.levels.keyDark).toBeGreaterThanOrEqual(0);
+          expect(Number.isFinite(rig.levels.sunI)).toBe(true);
+          expect(irradiance(rig, UP)).toBeGreaterThan(0);
+        }
         rig.dispose();
       }
     }
+    /* and the sweep must not quietly become all-unreachable, which would make
+       the branch above vacuous */
+    expect(reached).toBeGreaterThanOrEqual(9);
+  });
+
+  it("ships a look the solve can actually reach", () => {
+    /* the guard that matters: `DEFAULT_LOOK` itself must close. Pushing the
+       shipped look into the impossible region is silent otherwise — the rig
+       clamps, the targets miss, and nothing fails. */
+    expect(rigFor().levels.reachable).toBe(true);
   });
 
   it("keeps the sun as a real share of the light, which is the whole point", () => {

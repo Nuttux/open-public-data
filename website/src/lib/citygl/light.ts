@@ -58,16 +58,39 @@ import { SKYC, SUN, SUNC } from "@/lib/city/terrain";
  *  three's own arithmetic with the colours read out of the running page, the
  *  two faces of a diagonal-grid tower stood at 2.235 and 1.889 — a split of
  *  **1.18**, where `buildings.ts` §wallK puts the published page's at 2.08.
- *  Anything that wants a VALUE, not a hue, uses `greyLinear` below. */
+ *  Anything that wants a VALUE, not a hue, states it in linear directly —
+ *  see `coolLinear` below, which is the only caller left. */
 function rgbHex(c: readonly [number, number, number] | number[]): number {
   const m = Math.max(c[0], c[1], c[2]) || 1;
   const ch = (v: number) => Math.max(0, Math.min(255, Math.round((v / m) * 255)));
   return (ch(c[0]) << 16) | (ch(c[1]) << 8) | ch(c[2]);
 }
 
-/** a neutral of a stated LINEAR value — see the trap in `rgbHex` */
-function greyLinear(v: number): Color {
-  return new Color().setRGB(v, v, v, LinearSRGBColorSpace);
+/**
+ * THE SHADOW SIDE IS NOT GREY.
+ *
+ * `key.groundColor` is what a surface the sun never reaches is lit BY, and
+ * it was a NEUTRAL of a solved value. That is the single largest reason
+ * this city read as overcast: on a sunny day the light in a shadow is the
+ * sky, and the sky is blue. A frame whose lit side is warm and whose shaded
+ * side is grey has half of a time of day.
+ *
+ * The hue is `SKYC`'s own departure from white, scaled the same way
+ * `SUN_WARMTH` scales the sun's — so the two ends of the frame are pushed
+ * apart along the two axes the project already publishes, rather than along
+ * an invented pair. At 1.6 the fill's blue-over-red is 1.34.
+ *
+ * The LUMINANCE is preserved exactly: the solve in `solveSunRig` is an
+ * arithmetic identity on `lum()`, so a hue that changed the value would
+ * silently break every target the solve hits and every assertion in
+ * `light.test.ts` that checks them. Scaling to `v / lum(chroma)` keeps the
+ * rig exactly where the solve put it and changes only its colour.
+ */
+const SHADOW_COOL = 1.6;
+function coolLinear(v: number): Color {
+  const c = [0, 1, 2].map((i) => 1 + (SKYC[i] - 1) * SHADOW_COOL);
+  const k = v / (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]);
+  return new Color().setRGB(c[0] * k, c[1] * k, c[2] * k, LinearSRGBColorSpace);
 }
 
 /** Rec.709 luminance of a colour already in the renderer's linear space. */
@@ -106,8 +129,33 @@ export const SUN_SCENE = new Vector3(SUN[0], SUN[2], SUN[1]).normalize();
    trade §the sun swings round to stand behind the key made and for the same
    reason — the hillshade is a gentle wash over gentle ground and the cast
    shadows are hard edges on the thing a reader is looking at. */
-const SUN_ELEV = Math.atan(Math.cos(Math.PI / 4));
-/** how far a shadow runs per unit of caster height: exactly sqrt(2) */
+/* ── AND THEN IT CAME DOWN FURTHER, BECAUSE PARITY IS NO LONGER THE TARGET
+   The elevation above is the one at which a sunlit wall and a sunlit roof
+   take an EQUAL share of the beam. That was the right solve while this
+   renderer was graded on its distance from the published Canvas page,
+   because equality is the neutral choice and neutrality is what a port
+   wants.
+
+   It is not what a PICTURE wants. Every renderer whose light reads as a
+   time of day puts the sun low: the shadow is long enough to cross the
+   thing beside it, the lit wall outruns the roof, and the eye gets a
+   direction to read the city by. Daniel, on the whole surface: *'it looks
+   like some pre-renaissance painting, false illusion of depth but theres
+   not really feelings of depth'*. A vertical sun is most of that.
+
+   30 degrees. Stated rather than solved, and the number it lands on is
+   worth as much as the old one: `1 / tan(30)` is exactly **sqrt(3)**, so
+   every shadow in the city is its caster's height times 1.732 where it
+   used to be 1.414 — a third longer.
+
+   WHY NOT LOWER. Below about 25 degrees a dense block puts its whole
+   opposite side in shadow and the city stops reading as buildings and
+   starts reading as a shadow field. The shadow box also grows with the
+   throw, and `light.test.ts` holds it under 1,900 m at the street camera.
+   30 is the low end of what this projection carries; it is not the low
+   end of what looks good in isolation. */
+const SUN_ELEV = Math.atan(1 / Math.sqrt(3));
+/** how far a shadow runs per unit of caster height: exactly sqrt(3) */
 export const SHADOW_THROW = 1 / Math.tan(SUN_ELEV);
 /** the 45-degree wall's own share of the beam — equal to `sin(SUN_ELEV)` */
 const WALL45 = Math.cos(SUN_ELEV) * Math.cos(Math.PI / 4);
@@ -223,6 +271,17 @@ export interface SunLevels {
   /** the sky hemisphere's intensity — held, not solved */
   skyI: number;
   ambientI: number;
+  /**
+   * DID THE THREE TARGETS ACTUALLY CLOSE?
+   *
+   * `P` is what is left of the key once its swing is paid for, and it can come
+   * out negative — a very bright wall floor beside a very dark up face is not a
+   * rounding error, it is a pair of targets that cannot both hold. The solve
+   * clamps `P` at zero and carries on, which means `wallFlat` and `wallLit`
+   * then silently miss. This says so instead, so a caller or a test can tell an
+   * impossible look from a met one rather than inferring it from `keyDark`.
+   */
+  reachable: boolean;
   /** what the solve predicts, for a test and for a harness */
   predict: {
     up: number;
@@ -269,18 +328,20 @@ export interface RigLuminance {
  *
  * Write `A = keyI * (1 - keyDark)` for the ramp's whole swing and
  * `P = keyI * keyDark` for its floor; `B` for ambient plus sky on a wall and
- * `Bu` for the same on an up face. Then, with `S = sunShare * groundE` (which
- * by §an hour is the direct term on BOTH the roof and the 45-degree wall):
+ * `Bu` for the same on an up face. Then, with `S = sunShare * groundE` the
+ * direct term on the ROOF, and `W = WALL45 / sin(e)` the 45-degree wall's own
+ * share of that same beam — 1 at the elevation §an hour used to pick, and
+ * sqrt(1.5) at the 30 degrees §and then it came down further ships:
  *
  *   wallFlat = B + P + A/2
  *   wallDark = wallFlat - Q            Q = A/2 * cos p * cos45
- *   wallLit  = wallFlat + Q + S
+ *   wallLit  = wallFlat + Q + S W
  *   up       = Bu + P + A/2 + A/2 sin p + S = groundE
  *
  * Three targets — `wallLit = wallCap * groundE`, `wallFlat / wallDark =
  * wallRamp`, and `up = groundE` — close it in one pass with no iteration:
  *
- *   wallFlat = (wallCap - sunShare) * groundE / (2 - 1 / wallRamp)
+ *   wallFlat = (wallCap - sunShare W) * groundE / (2 - 1 / wallRamp)
  *   Q        = wallFlat * (1 - 1 / wallRamp)
  *   A cos p  = Q / (0.5 cos45)
  *   A sin p  = 2 * (groundE (1 - sunShare) - wallFlat + B - Bu)
@@ -301,7 +362,23 @@ export function solveSunRig(
   const Bu = ambientI + skyI * L.skyUp;
   const B = ambientI + skyI * L.skyWall;
 
-  const flat = ((look.wallCap - look.sunShare) * E) / (2 - 1 / look.wallRamp);
+  /* ── THE WALL'S SHARE OF THE BEAM, WHICH IS NO LONGER THE ROOF'S ───────
+     `WALL45 / sin(SUN_ELEV)` is what the 45-degree wall takes of the direct
+     beam over what the up face takes. §an hour used to pick the elevation that
+     made this exactly 1, and the inversion below was written for that: it
+     subtracts `sunShare` from `wallCap` as if the wall's direct term were the
+     same `S` the roof gets.
+
+     §and then it came down further reopened that. At 30 degrees the wall takes
+     `sqrt(1.5)` = 1.2247 of the roof's share — 22 % more — so an inversion that
+     assumes 1 overshoots every `wallCap` target it is given, which is exactly
+     what `light.test.ts` caught: 2.826 against a target of 2.638.
+
+     Written as a ratio rather than folded into a constant, so that ANY
+     elevation solves correctly and the 35.264-degree case still returns 1. */
+  const beamWall = WALL45 / Math.sin(SUN_ELEV);
+  const flat =
+    ((look.wallCap - look.sunShare * beamWall) * E) / (2 - 1 / look.wallRamp);
   const Q = flat * (1 - 1 / look.wallRamp);
 
   const aCos = Q / (0.5 * Math.cos(Math.PI / 4));
@@ -313,13 +390,14 @@ export function solveSunRig(
      out negative — that is the solve telling you the targets are impossible
      (a very bright wall floor next to a very dark up face), not a rounding
      error — so it is clamped and the caller sees it in `predict`. */
-  const P = Math.max(0, flat - B - A / 2);
+  const Praw = flat - B - A / 2;
+  const P = Math.max(0, Praw);
   const keyI = P + A;
   const keyDark = keyI > 0 ? P / keyI : 1;
   const sunI = S / (Math.sin(SUN_ELEV) * L.sun);
-  /* the same beam, on the 45-degree wall. §an hour picked the elevation so
-     this equals `S`; it is written out rather than reused so the equality is
-     something a test can check instead of something a reader has to trust. */
+  /* the same beam, on the 45-degree wall — `S * beamWall` by construction,
+     computed from the rig rather than from the target so a test can check the
+     two agree rather than having to trust that they do. */
   const sunOnWall = sunI * WALL45 * L.sun;
 
   const tUp = 0.5 + 0.5 * Math.sin(keyElev);
@@ -334,6 +412,7 @@ export function solveSunRig(
     keyElev,
     skyI,
     ambientI,
+    reachable: Praw >= 0,
     predict: {
       up: upFill + S,
       wallLit: B + key(tLit) + sunOnWall,
@@ -371,8 +450,22 @@ export const DEFAULT_LOOK: SunLook = {
 
      0.42 keeps a shadow worth roughly 40 levels — still unmistakably a sun,
      still the thing that gives the frame a time of day — and takes a fifth of
-     the doubling off every slope in the city. */
-  sunShare: 0.42,
+     the doubling off every slope in the city.
+
+     ── AND 0.52 NOW, FOR THE SAME REASON THE SUN CAME DOWN ─────────────
+     0.42 was a retreat from 0.55, and the thing it retreated from is real:
+     the ground's colour arrives from `terrainRGB` with the project's own
+     hillshade already baked in, so a slope facing away from the sun is
+     darkened once by the data and again by the cast pass.
+
+     But the retreat was paid for by the whole frame, not by the slopes. A
+     shadow that removes 42 % of the light is a shadow the eye reads as a
+     smudge; at 0.52 it removes half, which is what a shadow on a sunny day
+     actually does, and it is the other half of the direction the lowered
+     sun buys. The double-darkening on slopes is a TERRAIN problem and is
+     being fixed where it lives rather than by keeping the sun weak
+     everywhere. */
+  sunShare: 0.52,
   wallCap: 1.5,
   wallRamp: 1.7,
 };
@@ -516,7 +609,21 @@ export function sunRig(scene: Scene, o: SunOptions = {}): SunRig {
 
      ── AND ITS DARK END IS NOW ACTUALLY DARK ───────────────────────────────
      It was written `rgbHex([0.34, 0.34, 0.34])`, which returns WHITE — see
-     §rgbHex. `greyLinear` states the value it means. */
+     §rgbHex. The dark end states its linear value directly instead.
+
+     ── AND IT IS NO LONGER A PURE VALUE RAMP ──────────────────────────────
+     The paragraph above is right that a hemisphere reaches EVERY surface, so
+     colouring an end tints the ground too, and it is right that the first cut
+     failed by leaving the midpoint warm. What it concluded from that — colour
+     belongs on the sun and the sky, never here — was measured against the
+     published page, and that is no longer the target.
+
+     `coolLinear` colours the DARK end only, and MEASURED at three cameras it
+     does what the separation needs rather than what the old bug did: on a
+     building-heavy frame red-minus-blue falls 5.6 points (the shaded walls
+     picking up sky) while on ground-heavy frames it RISES 2 to 5 (the warm sun
+     on open ground). The two ends of the frame move apart instead of together,
+     which is the thing a pure value ramp cannot do. */
   const key = new HemisphereLight(0xffffff, 0x000000, 1);
   /* three reads a hemisphere's axis off its POSITION, so aiming it is setting
      a position; `aimKey` does that from the camera basis each time the
@@ -538,10 +645,26 @@ export function sunRig(scene: Scene, o: SunOptions = {}): SunRig {
      fraction is stated rather than tuned by eye: 0.6 of the way to white,
      which takes `SUNC`'s own 11.8 % red-over-blue spread down to 4.7 % — under
      the 5 points the measurement found. */
-  const dir = new DirectionalLight(
-    rgbHex([SUNC[0] * 0.4 + 0.6, SUNC[1] * 0.4 + 0.6, SUNC[2] * 0.4 + 0.6]),
-    1,
-  );
+  /* ── EXCEPT THAT THE WHOLE ARGUMENT ABOVE WAS A PARITY ARGUMENT ────────
+     It is measured and it is honest, and what it measures is the distance
+     from the published page: 'red minus blue ran about 5 points above the
+     published page'. The page is no longer the target.
+
+     The double-warming it describes is still real — the ground texture
+     carries its own sun. The answer is not to bleach the light; it is to
+     put the warm/cool separation where the eye actually reads it, which is
+     BETWEEN the lit and the shaded, not inside the lit. So the sun gets
+     warmer than `SUNC` and the fill it does not reach goes cool (below).
+
+     `SUN_WARMTH` scales `SUNC`'s own departure from white rather than
+     mixing toward it, so it can exceed 1 and stay on the published hue's
+     own axis. At 2.2 the light's red-over-blue is 1.46 — roughly a 4,300 K
+     sun, an hour or so before it goes properly orange. CHOSEN, not
+     measured: there is no record of what colour the light over this city
+     was, and this file should not pretend otherwise. */
+  const SUN_WARMTH = 2.2;
+  const warm = (i: number): number => 1 + (SUNC[i] - 1) * SUN_WARMTH;
+  const dir = new DirectionalLight(rgbHex([warm(0), warm(1), warm(2)]), 1);
 
   /* the solve needs what the three colours are actually WORTH, and the honest
      source of that is the Colour objects three just built — hex, colour
@@ -556,7 +679,7 @@ export function sunRig(scene: Scene, o: SunOptions = {}): SunRig {
   function applyLevels(): void {
     dir.intensity = levels.sunI;
     key.intensity = levels.keyI;
-    key.groundColor.copy(greyLinear(levels.keyDark));
+    key.groundColor.copy(coolLinear(levels.keyDark));
     hemi.intensity = levels.skyI;
     ambient.intensity = levels.ambientI;
   }
