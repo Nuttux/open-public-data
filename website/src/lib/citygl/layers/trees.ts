@@ -46,7 +46,13 @@ import {
   Vector3,
 } from "three";
 
-import { CROWN_FAMILIES, crownSet, foliageTint, setCrownYaw } from "../tree-geometry";
+import {
+  CROWN_FAMILIES,
+  crownJitter,
+  crownSet,
+  foliageTint,
+  setCrownYaw,
+} from "../tree-geometry";
 import {
   CONTACT_FEATHER,
   CONTACT_R_CROWN,
@@ -411,6 +417,17 @@ export function treesLayer(
       const iw = new Float32Array(list.length * 2);
       const ie = new Float32Array(list.length);
       const ir = new Float32Array(list.length);
+      /* ── THE JITTER HAS TO LIVE IN THE STORED NUMBERS, NOT THE MATRIX ────
+         §the ground moves with the band explains that `onStep` RECOMPOSES
+         every crown's matrix from `iw`/`ie`/`ir`, so anything written into the
+         matrix at emit time is overwritten the first time a band changes. A
+         size jitter set on `scl` here therefore did nothing at all — measured
+         at 0.00 % of the frame, and still 0.00 % with the crowns tripled,
+         which is what finally showed the matrix was being thrown away rather
+         than the effect being weak.
+         So the jitter goes into `ir` itself, and its vertical half into a
+         parallel array the placer reads. */
+      const itl = new Float32Array(list.length);
       let n = 0;
       for (const j of list) {
         const ci = cellOfTree[j];
@@ -422,11 +439,19 @@ export function treesLayer(
         iw[n * 2] = w.x;
         iw[n * 2 + 1] = w.y;
         ie[n] = gz;
-        ir[n] = rM;
+        /* the published size bit still picks the crown; this is a factor
+           ON it, so the two populations stay apart — `tree-geometry.ts`
+           §HOW FAR A CROWN'S DRAWN SIZE MAY WANDER */
+        const cj = crownJitter(key(j));
+        ir[n] = rM * cj.wide;
+        itl[n] = cj.tall;
         pos.set(w.x, gz * 3.3, w.y);
         /* the crown is a built thing standing on the ground: its own width in
            world metres, its height on the built exaggeration */
-        scl.set(rM, rM * o.zexb, rM);
+        /* the published size bit still picks the crown; this is a factor on
+           it, so the two populations stay apart — see `tree-geometry.ts`
+           §HOW FAR A CROWN'S DRAWN SIZE MAY WANDER */
+        scl.set(ir[n], ir[n] * itl[n] * o.zexb, ir[n]);
         setCrownYaw(n, rot);
         m4.compose(pos, rot, scl);
         mesh.setMatrixAt(n, m4);
@@ -459,7 +484,7 @@ export function treesLayer(
       placers.push((zex: number, zexb: number) => {
         for (let k = 0; k < n; k++) {
           pos.set(iw[k * 2], ie[k] * zex, iw[k * 2 + 1]);
-          scl.set(ir[k], ir[k] * zexb, ir[k]);
+          scl.set(ir[k], ir[k] * itl[k] * zexb, ir[k]);
           setCrownYaw(k, rot);
           m4.compose(pos, rot, scl);
           mesh.setMatrixAt(k, m4);

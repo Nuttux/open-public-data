@@ -407,6 +407,35 @@ function buf(withColour: boolean): Buf {
  * same reason: a flat triangle chorded across curving ground lifts off it in
  * the middle, and on a translucent fill that shows as a wedge.
  */
+/**
+ * How far a canopy mass's drawn size may wander from its published one.
+ *
+ * DECLARED. The published `area` byte sets the radius and is not touched; this
+ * is a factor on it, so a big mass stays bigger than a small one. 0.30 gives a
+ * spread wide enough to break the grid and narrow enough that no mass reads as
+ * the wrong size for its own cell.
+ */
+const MASS_SIZE_JITTER = 0.3;
+/** and how much the crown may squat or stretch, which is what varies SHAPE */
+const MASS_SHAPE_JITTER = 0.22;
+
+/** a deterministic size for one mass, from its index — see the call site */
+function massJitter(i: number): { wide: number; tall: number; deep: number } {
+  let h = Math.imul(i | 0, 0x9e3779b1);
+  h ^= h >>> 16;
+  h = Math.imul(h, 0x7feb352d);
+  h ^= h >>> 15;
+  const a = ((h >>> 4) & 1023) / 511.5 - 1;
+  const b = ((h >>> 14) & 1023) / 511.5 - 1;
+  const c = ((h >>> 24) & 255) / 127.5 - 1;
+  const k = 1 + a * MASS_SIZE_JITTER;
+  return {
+    wide: k * (1 + c * MASS_SHAPE_JITTER * 0.5),
+    tall: k * (1 + b * MASS_SHAPE_JITTER),
+    deep: k * (1 - c * MASS_SHAPE_JITTER * 0.5),
+  };
+}
+
 const RING_MAX_EDGE_M = 22;
 /** and its recursion ceiling, so a pathological ring cannot run away */
 const RING_SPLIT_DEPTH = 6;
@@ -1077,10 +1106,26 @@ export function groundDetailLayer(
         /* `canopyMass` puts its widest ring at r = 1 and its apex at y = 1,
            so the two ratios go in here: 1.26 of the published radius wide
            and 1.81 of it tall, both off the reference's own sprite. */
+        /* ── AND A SIZE PER MASS, FOR THE REASON THE YAW ALREADY GIVES ────
+           The yaw below says it: *"fifty thousand identical solids at one
+           orientation is a pattern, and the eye finds a pattern before it
+           finds a tree."* True, and a yaw cannot fix it, because a mass is
+           very nearly a solid of revolution — turning it leaves the same
+           silhouette. At the block camera that did not matter. At the deepest
+           camera a 10 m mass is about 55 px and Golden Gate Park comes out as
+           a field of identical pucks on a grid.
+
+           So the SIZE varies too, deterministically in the mass's own index,
+           and by different factors across and up so the population contains
+           both squat and tall crowns rather than one shape at many scales.
+           The published area still sets `wr[i]`; this is a factor on it, and
+           the magnitudes are declared — no register records the height of a
+           canopy blob, which is why `canopyMass`'s own shape is declared too. */
+        const j = massJitter(i);
         scl.set(
-          wr[i] * CANOPY_MASS_SPREAD,
-          wr[i] * CANOPY_MASS_RISE,
-          wr[i] * CANOPY_MASS_SPREAD,
+          wr[i] * CANOPY_MASS_SPREAD * j.wide,
+          wr[i] * CANOPY_MASS_RISE * j.tall,
+          wr[i] * CANOPY_MASS_SPREAD * j.deep,
         );
         /* A YAW PER MASS, FROM ITS INDEX. Fifty thousand identical solids at
            one orientation is a pattern, and the eye finds a pattern before it
@@ -1174,7 +1219,22 @@ export function groundDetailLayer(
             o.elevAt(gx, gz - sr),
           );
           pos.set(gx, gh * zexNow, gz);
-          scl.set(r * CANOPY_MASS_SPREAD, r * CANOPY_MASS_RISE, r * CANOPY_MASS_SPREAD);
+          /* ── AND THE SHARDS VARY IN SIZE, NOT ONLY IN YAW ────────────────
+             `setCrownYaw` below turns each shard for the reason it gives —
+             *"the eye finds a pattern before it finds a tree"* — and a yaw
+             cannot carry that on its own, because a shard is very nearly a
+             solid of revolution and turning it leaves the same silhouette.
+             At the deepest camera the clamp now allows, a canopy came out as
+             a field of identical pucks on a grid.
+             Seeded on the SAME index the yaw uses, so a shard's size and its
+             turn agree and a rebuild puts both back. The published area still
+             sets `r`; this is a factor on it. */
+          const mj = massJitter(i * SHARDS + k);
+          scl.set(
+            r * CANOPY_MASS_SPREAD * mj.wide,
+            r * CANOPY_MASS_RISE * mj.tall,
+            r * CANOPY_MASS_SPREAD * mj.deep,
+          );
           setCrownYaw(i * SHARDS + k, rot);
           m4.compose(pos, rot, scl);
           mesh.setMatrixAt(n, m4);

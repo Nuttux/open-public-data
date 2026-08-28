@@ -104,6 +104,54 @@ const FOLIAGE_WARM_JITTER = 0.09;
  * `out` the caller's scratch — this runs a quarter of a million times per
  * rebuild and must not allocate.
  */
+/**
+ * HOW FAR A CROWN'S DRAWN SIZE MAY WANDER FROM ITS PUBLISHED ONE.
+ *
+ * The register publishes ONE SIZE BIT per tree — `CROWN_M` is [6.6, 10.0] —
+ * so every street tree in the city is drawn at one of exactly two diameters.
+ * At the block camera that is invisible. At the deepest camera the clamp now
+ * allows, a 6.6 m crown is about 37 px, and a stand of them reads as one
+ * shape stamped over and over: Golden Gate Park comes out as a field of
+ * identical pucks.
+ *
+ * `layers/trees.ts` already turns each crown by a per-instance yaw for exactly
+ * this reason, and its note says why — *"the eye finds a pattern before it
+ * finds a tree"*. A yaw cannot fix it here, because a crown is very nearly a
+ * solid of revolution and turning it leaves the same silhouette. Size is what
+ * the eye is actually reading.
+ *
+ * So the published bit still decides whether a tree is the small crown or the
+ * big one, and this is a factor ON that: a big tree stays bigger than a small
+ * one, and the two populations still separate. What is declared is that two
+ * trees of one published size are not the same size, which is true of every
+ * street in this city and which no register records either way.
+ *
+ * The vertical factor is separate from the horizontal one so the population
+ * contains squat crowns and tall crowns rather than one shape at many scales.
+ */
+const CROWN_SIZE_JITTER = 0.26;
+const CROWN_RISE_JITTER = 0.2;
+
+/**
+ * A per-instance crown size, deterministic in the tree's own stable key.
+ *
+ * Deterministic for the same reason `foliageTint` is: crowns are re-emitted on
+ * a camera step, a year change and a rebuild, and a size that moved would make
+ * the whole canopy breathe every time any of those happened.
+ */
+export function crownJitter(seed: number): { wide: number; tall: number } {
+  let h = Math.imul(seed | 0, 0x27d4eb2d);
+  h ^= h >>> 15;
+  h = Math.imul(h, 0x165667b1);
+  h ^= h >>> 13;
+  const a = ((h >>> 6) & 1023) / 511.5 - 1;
+  const b = ((h >>> 18) & 511) / 255.5 - 1;
+  return {
+    wide: 1 + a * CROWN_SIZE_JITTER,
+    tall: 1 + b * CROWN_RISE_JITTER,
+  };
+}
+
 export function foliageTint(base: Color, seed: number, out: Color): Color {
   /* two decorrelated values in [-1, 1] from one integer. An ordinary integer
      hash; nothing depends on the constants beyond the two outputs not moving
