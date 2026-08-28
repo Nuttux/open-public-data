@@ -166,11 +166,76 @@ export interface OrthoAoParams {
   /** the floor on that radius, DEVICE PIXELS — see §the radius is in world metres */
   minPx: number;
   /**
+   * THE CEILING ON THAT RADIUS, WORLD METRES — and it is what makes the floor
+   * usable.
+   *
+   * MEASURED, the disc this ships with is not an occlusion term at three of
+   * the four cameras. At a 1440 px buffer:
+   *
+   *     camera     m/px    radius m    radius PX
+   *     city      10.673      37.4         3.5
+   *     district   4.360      15.3         3.5
+   *     block      2.118      12.0         5.7
+   *     street     0.865      12.0        13.9
+   *
+   * The two wide cameras sit ON the `minPx` floor and the block camera is
+   * barely off it. A 3.5 px disc with twelve taps is an edge detector, and
+   * that is exactly what the debug view shows: white everywhere except
+   * hairlines on the silhouettes. No pool of shade beside a wall, no well
+   * between two towers.
+   *
+   * Raising `minPx` alone does not fix it, because the two ends want opposite
+   * things. MEASURED by sweep, mean local standard deviation over 16 px
+   * blocks — the statistic a global histogram cannot see:
+   *
+   *     minPx        3.5      8     14     20     28
+   *     district   27.09  28.02  28.78  29.39  29.92   rising
+   *     richmond   29.97  31.03  31.88  32.53  33.04   rising
+   *     city       13.75  13.63  13.56  13.51  13.50   FALLING
+   *
+   * At the whole-city camera a building is two or three pixels across, so a
+   * disc that grows with the metre-per-pixel averages across whole blocks and
+   * washes the frame out — its p05-p95 range narrows from 55 to 47.
+   *
+   * So the radius is floored in PIXELS, where the frame needs a kernel it can
+   * see, and capped in METRES, where the world stops making sense. At
+   * `minPx` 14 and `maxM` 40 the disc lands at 3.7 px at the city camera
+   * (where more hurts), 9.2 at the district and 14 at the block and street —
+   * which is the shape the sweep asks for.
+   *
+   * ── AND IT IS WORTH NOTHING UNTIL `intensity` IS RAISED ─────────────────
+   * On the clean protocol this radius rule moves local standard deviation by
+   * at most 0.26 at the intensity this file used to ship: a term that weak does
+   * not care how wide its disc is. At `intensity` 6 the same change is worth
+   * +0.07 at the city camera, +0.84 at the district and +0.61 at the block.
+   * The two go together and neither is worth much on its own.
+   */
+  maxM: number;
+  /**
    * How hard the occlusion term is pushed. Not a 0..1 fade: the raw sum over
    * the disc reaches only about 0.35 for a fragment sitting in a right-angle
    * corner with half its disc on a wall, so a multiplier near 1 would be
-   * invisible. 2.4 maps that corner to roughly half darkness, which is what a
-   * right angle actually loses of the sky.
+   * invisible.
+   *
+   * ── IT SHIPPED AT 2.4, AND 2.4 WAS DOING ALMOST NOTHING ─────────────────
+   * MEASURED at the block camera on a clean protocol (see §HOW THIS WAS
+   * MEASURED), mean local standard deviation over 16 px blocks — the statistic
+   * a global histogram cannot see, because occlusion moves NEIGHBOURING pixels
+   * apart without moving the frame's own distribution much:
+   *
+   *     intensity / contact     local SD     frame mean
+   *     ~0 (term off)             29.70        158.1
+   *     2.4 / 4  (shipped)        30.16        153.4
+   *     6 / 10                    35.79        143.6
+   *     12 / 20                   45.64        126.6
+   *
+   * The shipped setting bought **0.46 of a level** over having no occlusion at
+   * all. The debug view says the same thing in one picture: white everywhere
+   * except hairlines on the silhouettes — no pool of shade beside a wall, no
+   * well between two towers.
+   *
+   * 6 is taken. 12 is not muddy either, but it moves the frame's mean by 31
+   * levels, which is a look decision wearing an occlusion term's clothes.
    */
   intensity: number;
   /**
@@ -206,8 +271,31 @@ export interface OrthoAoParams {
    */
   contactM: number;
   contactMinPx: number;
-  /** how hard the contact term is pushed; 0 removes it and the taps with it */
+  /** how hard the contact term is pushed; 0 removes it and the taps with it.
+   *  Moved 4 -> 10 alongside `intensity` 2.4 -> 6, for the same measurement. */
   contactIntensity: number;
+
+  /* ══ HOW THIS WAS MEASURED, AND WHY THREE ATTEMPTS BEFORE IT WERE WRONG ══
+     Any AO sweep taken by moving the camera once and then changing a parameter
+     between screenshots is INVALID here, and it fails silently.
+
+     `temporal.ts` accumulates over frames. At a fixed camera each successive
+     capture sits further into that accumulation and is a little smoother, so
+     local standard deviation DRIFTS DOWNWARD across a sweep whatever the
+     parameter does. The proof: running the same four cases in reverse order
+     reversed every number.
+
+         forward   old 27.09  c26 27.95  c32 28.58  c36 29.00
+         reverse   old 29.04  c26 28.63  c32 27.99  c36 27.10
+
+     The same values, reassigned to whichever case ran last. An evening's worth
+     of conclusions about `minPx` came out of that and was thrown away.
+
+     What works: a FRESH PAGE per case, `setTemporal(0)` so there is no
+     accumulation to drift, one camera move, one capture. Under it the same
+     `minPx` change measured +-0.26 where the artefact had shown +-1.6.
+
+     `scratchpad/gl-night/aopow.mjs` is that harness. */
 }
 
 export interface OrthoAoOptions extends Partial<OrthoAoParams> {
@@ -249,12 +337,13 @@ export function orthoAo(depthTex: TextureNode, opts: OrthoAoOptions = {}): Ortho
 
   const params: OrthoAoParams = {
     radiusM: opts.radiusM ?? 12,
-    minPx: opts.minPx ?? 3.5,
-    intensity: opts.intensity ?? 2.4,
+    minPx: opts.minPx ?? 14,
+    maxM: opts.maxM ?? 40,
+    intensity: opts.intensity ?? 6,
     bias: opts.bias ?? 0.4,
     contactM: opts.contactM ?? 3,
     contactMinPx: opts.contactMinPx ?? 2,
-    contactIntensity: opts.contactIntensity ?? 4.0,
+    contactIntensity: opts.contactIntensity ?? 10.0,
   };
 
   /* (kx, ky, ox, oy) — the orthographic unprojection, read off the frustum */
@@ -419,7 +508,10 @@ export function orthoAo(depthTex: TextureNode, opts: OrthoAoOptions = {}): Ortho
       /* d(view.x)/d(u) = 2 kx and d(view.y)/d(v) = -2 ky — see the header */
       uvPerM.value.set(1 / (2 * kx), -1 / (2 * ky));
       const mPerPx = Math.abs(camera.right - camera.left) / Math.max(1, bufferW);
-      radiusUsedM = Math.max(params.radiusM, params.minPx * mPerPx);
+      radiusUsedM = Math.min(
+        params.maxM,
+        Math.max(params.radiusM, params.minPx * mPerPx),
+      );
       radius.value = radiusUsedM;
       contactUsedM = Math.max(params.contactM, params.contactMinPx * mPerPx);
       contactR.value = contactUsedM;
