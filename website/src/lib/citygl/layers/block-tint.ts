@@ -58,7 +58,7 @@ import type { CityLayer } from "../engine";
 
 /** `paintGround`'s own fill: `rgba(118, 92, 54, 0.16)` */
 const TINT = "#765c36";
-const TINT_ALPHA = 0.16;
+const TINT_ALPHA = 0.46;
 
 /** `BLOCK_INSET_M` — the published page insets every ring by its own 1.5 m,
  *  so a hair of paper stays between the tint and the kerb. */
