@@ -141,6 +141,7 @@ export function setTemporalKeep(v: number): void {
 export function cityTemporal(
   colour: ShaderNodeObject<Node>,
   hdr = false,
+  encoded = false,
 ): Temporal {
   /* A FRAMEBUFFER TEXTURE, which is what `copyFramebufferToTexture` will
      accept — an ordinary Texture is rejected by the renderer. */
@@ -238,7 +239,37 @@ export function cityTemporal(
        fixed point, so it reads as fine in a two-second capture. It only shows
        in a SOAK — ten drags with the exposure sampled throughout. */
     const raw = texture(history, off);
-    const past = hdr ? raw : colorSpaceToWorking(raw, SRGBColorSpace);
+    /* ── AND `encoded` IS THE FIX FOR A FEEDBACK THAT DIVERGED ────────────
+       The history is a copy of the FRAMEBUFFER, so it holds whatever the
+       output transform last wrote. Undoing only the sRGB encode is exact if
+       that transform IS only an sRGB encode — which it was, while the chain
+       ended at `NoToneMapping`.
+
+       `engine.ts` §and a tone curve put ACES in front of it, and the round
+       trip stopped being the identity: a LINEAR scene colour was being mixed
+       with an ACES-mapped history and the sum tone-mapped again, every frame,
+       into itself. MEASURED with the camera held still at the Twin Peaks
+       district camera, asking for a frame every second:
+
+           t =  0 s   mean 117.4   p05 5.5      <- the frame as drawn
+           t =  4 s   mean 124.4   p05 2.0
+           t = 30 s   mean 128.5   p05 2.0      <- what a reader sees
+
+       The mid-tones climb eleven levels while the darkest twentieth crushes to
+       black, and it RESETS the moment the camera moves, because a move rejects
+       the history. Daniel: *"whenever im static this crazy light is everywhere
+       and fucked up it hides everything, when im zooming in and the camera
+       moves that effect leaves then immediately goes back."*
+
+       So the caller now applies the output transform BEFORE this mix and says
+       so with `encoded`. Both sides are then in the same display space and the
+       loop is stable — a fixed point at the frame itself, which is what an
+       accumulation is supposed to converge to.
+
+       This is also the likely cause of the WebGPU failure recorded below,
+       which was never solved: `rgba16float` plus an output transform this
+       could not invert. */
+    const past = hdr || encoded ? raw : colorSpaceToWorking(raw, SRGBColorSpace);
     /* `keep` is zero on the first frame after any reset, so the first frame
        after a zoom is exactly the frame the renderer drew */
     return vec4(mix(colour.rgb, past.rgb, keep.mul(inside)), colour.a);

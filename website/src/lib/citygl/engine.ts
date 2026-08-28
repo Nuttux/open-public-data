@@ -55,7 +55,7 @@ import {
 import type { TextureNode } from "three/webgpu";
 import { PostProcessing, WebGPURenderer } from "three/webgpu";
 import type { ShaderNodeObject } from "three/tsl";
-import { pass, vec4 } from "three/tsl";
+import { pass, renderOutput, vec4 } from "three/tsl";
 
 /** a pass's own texture node — the thing that carries `.rgb` and `.a` */
 type PassTex = ShaderNodeObject<TextureNode>;
@@ -472,10 +472,27 @@ export class CityEngine {
           })
         : null;
       const p = new PostProcessing(this.renderer);
+      /* ── THE OUTPUT TRANSFORM RUNS BEFORE THE ACCUMULATION, NOT AFTER ────
+         `PostProcessing` applies tone mapping and the colour-space encode to
+         whatever `outputNode` produces. That put the transform AFTER the
+         temporal mix, so the history — a copy of the framebuffer — came back
+         tone-mapped while the frame it was mixed with was linear, and the
+         feedback drifted every second the camera stood still. `temporal.ts`
+         §and `encoded` is the fix has the measurement.
+
+         So the same transform is applied here, by hand, to the composed frame,
+         and `outputColorTransform` is turned off so it is not applied twice.
+         `renderOutput` is the very node `PostProcessing` would have used. */
+      p.outputColorTransform = false;
       /* THE ACCUMULATION IS LAST, over the composed frame — it has to see
          what actually reaches the glass, including the occlusion and the
          air, because those are part of what flickers. */
       const composed = this.outputFor(colour, a, air);
+      const graded = renderOutput(
+        composed,
+        this.renderer.toneMapping,
+        this.renderer.outputColorSpace,
+      );
       /* ── AND IT RUNS ON BOTH BACKENDS ────────────────────────────────
          It did not, for a while, because the copy that keeps the last frame
          was refused on WebGPU — `rgba16float` against a `bgra8unorm` target —
@@ -488,12 +505,21 @@ export class CityEngine {
       /* not on WebGPU — see §ON, BECAUSE IT IS WHAT STOPS THE CITY SHIMMERING */
       const canAccumulate = true;
       if (this.temporalWanted && canAccumulate) {
-        const t = cityTemporal(composed, this.backend === "webgpu");
+        /* `RenderOutputNode` carries a `toneMapping` PROPERTY, which collides
+           with the `toneMapping` METHOD on three's own `Node` interface, so
+           the two types are not assignable in either direction. It is an
+           upstream typing quirk and not a difference in what the node does —
+           `PostProcessing` passes the very same node into the same place. */
+        const t = cityTemporal(
+          graded as unknown as Parameters<typeof cityTemporal>[0],
+          this.backend === "webgpu",
+          true,
+        );
         t.resize(this.W * this.dpr, this.H * this.dpr);
         p.outputNode = t.node;
         this.temporal = t;
       } else {
-        p.outputNode = composed;
+        p.outputNode = graded;
       }
       this.post = p;
       this.aoPass = a;
