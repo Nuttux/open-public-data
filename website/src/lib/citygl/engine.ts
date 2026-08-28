@@ -502,8 +502,40 @@ export class CityEngine {
          the format is overridden for a `FramebufferTexture` and only
          `internalFormat` outranks it. */
       /* not on WebGPU — see §ON, BECAUSE IT IS WHAT STOPS THE CITY SHIMMERING */
-      /* not on WebGPU — see §ON, BECAUSE IT IS WHAT STOPS THE CITY SHIMMERING */
-      const canAccumulate = true;
+      /* ── NOT ON WEBGPU, AND THE GATE IS HONOURED AGAIN ──────────────────
+         This line read `const canAccumulate = true;` under a comment saying
+         "not on WebGPU". The gate had been written and then hardcoded open,
+         so the accumulation ran on a backend where it is known broken.
+
+         WHAT IT DOES THERE, reported from the page: the city renders very
+         dark, and *"when i zoom it turns off then back on"* — which is the
+         signature rather than a detail. A camera move REJECTS the history, so
+         during the motion a reader sees the correct frame; when it settles the
+         feedback runs again and pulls it down. `temporal.ts` §AND ON WEBGPU
+         THE SPACE IS NOT THE PROBLEM has the rest: forcing the sRGB
+         conversion and forcing the raw sample give the SAME wrong number, so
+         it is not a colour space — the float copy itself does not come back
+         as the frame, and three attempts have not solved it.
+
+         THE TRADE, and it is not close. The accumulation buys 0.41 % of a
+         drag step not lining up against 0.00 % — the last of the shimmer.
+         WebGPU buys, MEASURED over three interleaved passes with vsync off
+         and a moving camera:
+
+             camera      WebGL 2    WebGPU
+             city         19.9 ms   13.8 ms
+             district     18.9      11.4
+             block        13.9       9.0
+
+         and the gap survives with the post chain disabled on both, so it is
+         not WebGPU skipping work. 60 fps is a 16.7 ms budget: WebGL is ALREADY
+         OVER IT at the widest camera and WebGPU is comfortably under. That
+         headroom is what the finer elevation model would spend.
+
+         So on WebGPU the city keeps a little shimmer and is the right colour
+         and half again as fast. This does not fix the copy — it stops shipping
+         a known-broken pass, and the bug stays written down above. */
+      const canAccumulate = this.backend !== "webgpu";
       if (this.temporalWanted && canAccumulate) {
         /* `RenderOutputNode` carries a `toneMapping` PROPERTY, which collides
            with the `toneMapping` METHOD on three's own `Node` interface, so
