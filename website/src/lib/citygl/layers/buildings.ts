@@ -53,6 +53,7 @@ import {
   Mesh,
   MeshLambertMaterial,
   MeshPhongMaterial,
+  MeshStandardMaterial,
   SRGBColorSpace,
   type Material,
   type Object3D,
@@ -1280,7 +1281,14 @@ export function buildingsMesh(
      published, and would spend its budget on specular highlights that do not
      belong in the register. Lambert is a diffuse surface under a sun and a
      sky, which is what a gouache city is. */
-  const mRoof = new MeshLambertMaterial({
+  const mRoof = new MeshStandardMaterial({
+    /* EXPERIMENT — see `engine.ts` §the sky, as something a surface can see.
+       Standard rather than Lambert on the roof ALONE, because the roof is the
+       one face turned straight at the sky and Lambert cannot read an
+       environment at all. Roughness is high: this is weathered tar and gravel
+       catching a dome, not a mirror. */
+    roughness: 0.72,
+    metalness: 0.0,
     /* ── AND WHY THE FABRIC'S OWN VERTEX COLOUR IS CONSUMED BY HAND ──────
        `rise.ts` §WHAT A MATERIAL IS ACTUALLY HANDED: the ochre is a mix
        toward a fixed colour, not a factor, so it cannot ride the multiply

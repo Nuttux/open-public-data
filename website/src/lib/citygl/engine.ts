@@ -21,6 +21,10 @@
 
 import {
   ACESFilmicToneMapping,
+  DataTexture,
+  EquirectangularReflectionMapping,
+  FloatType,
+  RGBAFormat,
   AgXToneMapping,
   CineonToneMapping,
   Color,
@@ -30,6 +34,7 @@ import {
   PCFSoftShadowMap,
   ReinhardToneMapping,
   Scene,
+  type Texture,
   type ToneMapping,
 } from "three";
 /* ── WEBGPU FIRST, WEBGL SECOND, AND ONE CODE PATH ───────────────────────
@@ -55,6 +60,7 @@ import { pass, vec4 } from "three/tsl";
 /** a pass's own texture node — the thing that carries `.rgb` and `.a` */
 type PassTex = ShaderNodeObject<TextureNode>;
 
+import { SKYC } from "@/lib/city/terrain";
 import { projection, screenToPlane } from "@/lib/city/projection";
 import { cityAir, type AirParams, type AirSwitches, type CityAir } from "./air";
 import { orthoAo, type OrthoAo, type OrthoAoParams } from "./ao";
@@ -131,6 +137,69 @@ const DEPTH_SPAN_M = 200_000;
    Read once at construction. `groundE` reaches the rig rather than the
    renderer, so it needs a reload rather than a setter — which a capture
    harness does anyway. */
+/* ══ THE SKY, AS SOMETHING A SURFACE CAN SEE ═══════════════════════════════
+   MEASURED, and it is the reason this exists: NOTHING in this city has a
+   specular term, including the curtain walls that a comment in
+   `layers/buildings.ts` says do. Setting that material's `specular` to WHITE
+   at shininess 90 moves **max 0** pixels; the roof material the same; and
+   `MeshStandardMaterial` at roughness 0.18 moves max 1.
+
+   The cause is geometric rather than a bug in any material. With no
+   environment there is one specular source, the `DirectionalLight`, and under
+   an ORTHOGRAPHIC camera the view vector is constant — so the half-vector
+   between view and sun is ONE fixed direction for the whole frame, sitting at
+   an intermediate elevation. This city is axis-aligned boxes: vertical walls,
+   horizontal roofs. Nothing in it is oriented to catch that lobe, so the term
+   is zero everywhere whatever material is asked for it.
+
+   An environment fixes exactly that, because it is not a lobe: a roof sees the
+   sky straight above it and a wall sees the sky at grazing incidence, and both
+   are answered from the map rather than from an alignment that never happens.
+
+   ── AND THE SKY IS THE CITY'S OWN, NOT A PHOTOGRAPH ─────────────────────
+   Three bands, from the two colours this renderer already publishes: `SKYC`
+   at the zenith, the descriptor's own haze paper at the horizon — the same
+   paper `air.ts` recedes toward, so the environment and the aerial
+   perspective agree about what the distance is made of — and a dim floor
+   below, because a surface tilted down sees ground and not sky. It is a
+   32 x 16 equirectangular texture, which is all a PMREM needs: this is a
+   diffuse and low-gloss source, not a mirror, and every roughness above about
+   0.2 is reading a heavily blurred mip of it anyway. */
+function skyEnvTexture(paperCss: string): DataTexture {
+  const W = 32;
+  const H = 16;
+  const data = new Float32Array(W * H * 4);
+  const paper = new Color(paperCss);
+  /* SKYC is a multiplier around 1, not a colour in [0,1] — see `light.ts`
+     §rgbHex for the trap. Normalised by its own largest channel. */
+  const m = Math.max(SKYC[0], SKYC[1], SKYC[2]) || 1;
+  const zen = new Color(SKYC[0] / m, SKYC[1] / m, SKYC[2] / m);
+  const floor = paper.clone().multiplyScalar(0.55);
+  for (let y = 0; y < H; y++) {
+    /* v runs 0 at the zenith to 1 at the nadir */
+    const v = (y + 0.5) / H;
+    let c: Color;
+    if (v < 0.5) {
+      /* zenith to horizon, eased so most of the dome keeps the sky's own hue
+         rather than washing to paper halfway up */
+      c = zen.clone().lerp(paper, Math.pow(v / 0.5, 1.7));
+    } else {
+      c = paper.clone().lerp(floor, (v - 0.5) / 0.5);
+    }
+    for (let x = 0; x < W; x++) {
+      const o = (y * W + x) * 4;
+      data[o] = c.r;
+      data[o + 1] = c.g;
+      data[o + 2] = c.b;
+      data[o + 3] = 1;
+    }
+  }
+  const t = new DataTexture(data, W, H, RGBAFormat, FloatType);
+  t.mapping = EquirectangularReflectionMapping;
+  t.needsUpdate = true;
+  return t;
+}
+
 const TONE_BY_NAME: Record<string, ToneMapping> = {
   none: NoToneMapping,
   aces: ACESFilmicToneMapping,
@@ -144,6 +213,8 @@ interface LookOverrides {
   tone?: ToneMapping;
   exposure?: number;
   groundE?: number;
+  /** `?ibl=N` — the environment's intensity; 0 removes it entirely */
+  ibl?: number;
 }
 
 export function lookOverrides(search: string): LookOverrides {
@@ -154,6 +225,8 @@ export function lookOverrides(search: string): LookOverrides {
   if (Number.isFinite(exp) && exp > 0) o.exposure = exp;
   const ge = Number(/(?:\?|&)ge=([0-9.]+)/.exec(search)?.[1]);
   if (Number.isFinite(ge) && ge > 0) o.groundE = ge;
+  const ibl = Number(/(?:\?|&)ibl=([0-9.]+)/.exec(search)?.[1]);
+  if (Number.isFinite(ibl) && ibl >= 0) o.ibl = ibl;
   return o;
 }
 
@@ -185,6 +258,28 @@ export class CityEngine {
   /** the raster camera the last frame was drawn from, for the reprojection */
   private lastRaster: { cx: number; cy: number; scale: number } | null = null;
   private aoPass: OrthoAo | null = null;
+  private envMap: Texture | null = null;
+  /**
+   * `scene.environmentIntensity` — how much of the sky a surface sees.
+   *
+   * MEASURED at the close camera in the Inner Richmond, on the mean of the
+   * frame's darkest 35 % (which is where the roofs live at this camera) and on
+   * mean local standard deviation over 16 px blocks:
+   *
+   *     intensity    dark end    local SD
+   *     0 (Lambert)     63.65      40.33
+   *     0.3             69.06      40.96
+   *     0.5             71.40      41.43
+   *     0.7             73.21      41.90
+   *     1.0             75.24      42.55
+   *
+   * Monotonic, so the number is a judgement and not a peak. 0.5 is taken by
+   * eye: it lifts the roofs off near-black so they read as slate catching a
+   * sky rather than as holes cut in the map, while keeping them clearly darker
+   * than the walls. At 1.0 they start to wash and `roof-grain.ts`'s stipple
+   * begins to read as scratches rather than as tooth.
+   */
+  private envWanted = 0.5;
   private airPass: CityAir | null = null;
   /** `null` follows the quality tier; `setPost` pins it for an A/B */
   private postWanted: boolean | null = null;
@@ -267,6 +362,7 @@ export class CityEngine {
       maxBuiltY: 300 * this.descriptor.look.zexb,
       look: lo.groundE === undefined ? undefined : { groundE: lo.groundE },
     });
+    if (lo.ibl !== undefined) this.envWanted = lo.ibl;
     if (lo.tone !== undefined || lo.exposure !== undefined) {
       this.renderer.toneMapping = lo.tone ?? this.renderer.toneMapping;
       this.renderer.toneMappingExposure = lo.exposure ?? 1;
@@ -296,6 +392,7 @@ export class CityEngine {
   async init(): Promise<void> {
     await this.renderer.init();
     this.renderer.setClearColor(new Color(this.descriptor.look.haze), 1);
+    this.buildEnvironment();
     this.buildPost();
     this.invalidate();
   }
@@ -430,6 +527,32 @@ export class CityEngine {
        and let the page's own background through the darkest corners */
     if (a) return vec4(colour.rgb.mul(a.node), colour.a);
     return vec4(colour.rgb, colour.a);
+  }
+
+  /**
+   * Put the sky on `scene.environment` — see §the sky, as something a surface
+   * can see. Built once, after the backend is up because `PMREMGenerator`
+   * needs a live renderer, and behind `?ibl=` so it can be turned off for an
+   * A/B without a rebuild.
+   */
+  private buildEnvironment(): void {
+    const k = this.envWanted;
+    if (!(k > 0)) return;
+    try {
+      /* ── AND NO `PMREMGenerator` HERE ──────────────────────────────
+         That class takes a `WebGLRenderer` and this renderer is a
+         `WebGPURenderer` — it does not typecheck and it is not the right
+         call anyway. The node path prefilters an equirectangular
+         `scene.environment` itself, on whichever backend it resolved to, so
+         the texture is handed over as it is. */
+      this.envMap = skyEnvTexture(this.descriptor.look.haze);
+      this.scene.environment = this.envMap;
+      this.scene.environmentIntensity = k;
+    } catch (e) {
+      /* a backend that cannot build a PMREM loses the sheen and keeps the
+         city, which is the same rule the post chain is built under */
+      console.warn("citygl: no environment on this backend —", e);
+    }
   }
 
   /** drop the chain and everything it owns; the city is drawn without it */
