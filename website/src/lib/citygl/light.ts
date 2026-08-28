@@ -41,7 +41,7 @@ import {
   type Scene,
 } from "three";
 
-import { SKYC, SUN, SUNC } from "@/lib/city/terrain";
+import { SKYC, SUN, SUNC, WG0, WG1 } from "@/lib/city/terrain";
 
 /** `SUNC` and `SKYC` are multipliers around 1, not colours in [0,1]; three
  *  wants a colour, so they are normalised by their own largest channel and the
@@ -204,6 +204,36 @@ export function fieldSun(right: Vector3): [number, number, number] {
    made in the other direction: less rake across the walls, so the frame leans
    a little less on the light for its depth and more on the occlusion, the
    material and the palette. All three of those moved on 2026-08-28. */
+/**
+ * THE GROUND'S OWN HUE, AT UNIT LUMINANCE — what bounce light is coloured by.
+ *
+ * `WG0` and `WG1` are the two ends of the city's ground ramp. Their mean is
+ * what most of the frame's ground actually is, and dividing by its own
+ * luminance leaves the HUE alone: a factor that reddens or greens a light
+ * without brightening or dimming it. That is what a bounce needs — the level
+ * belongs to the sky, the colour belongs to the ground.
+ *
+ * Read from the palette rather than restated, so the day the ground is
+ * repalleted the bounce follows it without anybody remembering to.
+ */
+function groundHue(): [number, number, number] {
+  const hex = (h: string): [number, number, number] => [
+    parseInt(h.slice(1, 3), 16) / 255,
+    parseInt(h.slice(3, 5), 16) / 255,
+    parseInt(h.slice(5, 7), 16) / 255,
+  ];
+  const a = hex(WG0);
+  const b = hex(WG1);
+  const m: [number, number, number] = [
+    (a[0] + b[0]) / 2,
+    (a[1] + b[1]) / 2,
+    (a[2] + b[2]) / 2,
+  ];
+  const lum = 0.2126 * m[0] + 0.7152 * m[1] + 0.0722 * m[2];
+  if (!(lum > 1e-6)) return [1, 1, 1];
+  return [m[0] / lum, m[1] / lum, m[2] / lum];
+}
+
 const SUN_ELEV = (40 * Math.PI) / 180;
 /** how far a shadow runs per unit of caster height */
 export const SHADOW_THROW = 1 / Math.tan(SUN_ELEV);
@@ -627,12 +657,29 @@ export function sunRig(scene: Scene, o: SunOptions = {}): SunRig {
      it is the coolness the whole frame is graded against, and the published
      0.34 is where it has been since the ground was matched. The solve
      redistributes the KEY and the SUN around it. */
+  /* ── AND THE LOWER HALF CARRIES THE GROUND'S OWN COLOUR NOW ───────────
+     This was a mix of the sky and the sun and nothing else, which is a warm
+     neutral — so a surface facing DOWN was lit by a colour the ground does
+     not have. That is the whole of *"no bounce light, reflections also
+     weird"*: light in this rig arrived from the sky and the sun and never
+     from the world.
+
+     Bounce is the one term a renderer can get almost free and almost right:
+     what leaves the ground is what fell on it TIMES the ground's own albedo,
+     so the hue is the ground's and the brightness is the sky's. The city's
+     ground palette is authored and to hand, so this multiplies the existing
+     lower half by that palette's HUE at unit luminance — the colour changes,
+     the level does not, and the solve above is left undisturbed.
+
+     It lands where nothing else does: the underside of a cornice's soffit,
+     the shaded half of a crown, the wall a street throws light back onto. */
+  const gh = groundHue();
   const hemi = new HemisphereLight(
     rgbHex(SKYC),
     rgbHex([
-      (SKYC[0] + SUNC[0] * 0.35) / 1.35,
-      (SKYC[1] + SUNC[1] * 0.35) / 1.35,
-      (SKYC[2] + SUNC[2] * 0.35) / 1.35,
+      ((SKYC[0] + SUNC[0] * 0.35) / 1.35) * gh[0],
+      ((SKYC[1] + SUNC[1] * 0.35) / 1.35) * gh[1],
+      ((SKYC[2] + SUNC[2] * 0.35) / 1.35) * gh[2],
     ]),
     skyI,
   );
