@@ -240,12 +240,30 @@ export interface OrthoAoParams {
   intensity: number;
   /**
    * The self-occlusion cutoff, as a SINE of elevation above the tangent
-   * plane: a tap has to stand at least this far off the surface to count.
-   * 0.4 is 24 degrees, and it is the lever that separates "occlusion in the
-   * corners" from "a grey wash". MEASURED at the city camera, at a fixed
-   * radius and tap count, raising it from 0.1 to 0.4 took the frame's mean
-   * shift from -3.74 to -1.21 while the deepest corners kept two thirds of
-   * their darkening.
+   * plane: a tap has to stand at least this far off the surface to count. It
+   * is the lever that separates "occlusion in the corners" from "a grey wash".
+   *
+   * ── IT WAS 0.4, AND THAT WAS A PARITY NUMBER ────────────────────────────
+   * Chosen because raising it from 0.1 to 0.4 "took the frame's MEAN SHIFT
+   * from -3.74 to -1.21" — a smaller departure from the published page, which
+   * is no longer what this renderer is for. It also predates the term being
+   * worth anything at all (§it shipped at 2.4).
+   *
+   * Re-swept on the clean protocol at the block camera, mean local standard
+   * deviation over 16 px blocks:
+   *
+   *     bias    local SD    frame mean    p05
+   *     0.40      35.78        151.3      71.6
+   *     0.30      39.73        144.2      51.7
+   *     0.22      42.99        136.7      33.9
+   *     0.15      46.05        128.6      13.5
+   *
+   * Monotonic, so the number is chosen by eye against what the wash actually
+   * looks like. At 0.30 the darkening lands in the GAPS — the streets between
+   * towers, the wells, the strip where a wall meets its neighbour — and the
+   * city reads as solid rather than as paper. At 0.22 it starts appearing on
+   * building FACES as smudges, which is the wash this cutoff exists to
+   * prevent, and by 0.15 the frame's darkest twentieth is at 13 of 255.
    */
   bias: number;
   /**
@@ -340,7 +358,7 @@ export function orthoAo(depthTex: TextureNode, opts: OrthoAoOptions = {}): Ortho
     minPx: opts.minPx ?? 14,
     maxM: opts.maxM ?? 40,
     intensity: opts.intensity ?? 6,
-    bias: opts.bias ?? 0.4,
+    bias: opts.bias ?? 0.3,
     contactM: opts.contactM ?? 3,
     contactMinPx: opts.contactMinPx ?? 2,
     contactIntensity: opts.contactIntensity ?? 10.0,
