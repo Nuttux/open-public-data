@@ -13,7 +13,8 @@
  * sends a document with the title in it.
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { CityData } from "@/lib/city/data";
 import { projection } from "@/lib/city/projection";
@@ -45,7 +46,12 @@ import { attachControls, stepForZ } from "@/lib/citygl/controls";
 import { createFilm, resolveFrames, type FilmPlayer } from "@/lib/citygl/film";
 import { detectQuality } from "@/lib/citygl/quality";
 import { blockPicker } from "@/lib/citygl/pick";
-import CityBlockPanel, { type BlockContext } from "@/components/us/city/CityBlockPanel";
+import CityBlockPanel, {
+  type BlockContext,
+  type UnitRequest,
+} from "@/components/us/city/CityBlockPanel";
+import CitySearch from "@/components/us/city/CitySearch";
+import type { SearchHit } from "@/lib/us/city-search";
 import {
   blockPlaceName,
   loadBlockIndex,
@@ -111,6 +117,14 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     hood: Uint8Array; hoodNames: readonly string[]; area: Float32Array;
   } | null>(null);
   const idxRef = useRef<BlockIndex | null>(null);
+  const pickerRef = useRef<ReturnType<typeof blockPicker> | null>(null);
+  /* block id → position in the index arrays. Built once on first use: the
+     search hands over an id and everything else here counts in positions. */
+  const posRef = useRef<Map<string, number> | null>(null);
+  const [request, setRequest] = useState<
+    { req: UnitRequest; nonce: number; block: string } | undefined
+  >(undefined);
+  const nonceRef = useRef(0);
   const engineRef = useRef<CityEngine | null>(null);
   const overlayRef = useRef<CityOverlay | null>(null);
   const filmRef = useRef<FilmPlayer | null>(null);
@@ -127,6 +141,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   /* which stop the reader was nearest when they clicked — 0 whole city, up to
      the closest stop. `-1` while unknown. */
   const [zoomStop, setZoomStop] = useState(-1);
+  const router = useRouter();
   const readyRef = useRef(onReady);
   readyRef.current = onReady;
 
@@ -196,7 +211,15 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          SOAK — ten drags with the exposure sampled throughout, because a
          feedback error compounds and a two-second capture cannot see it. */
       const q = typeof location !== "undefined" ? location.search : "";
-      const forceWebGL = !/(?:\?|&)gpu=1/.test(q);
+      /* ── WEBGPU IS THE DEFAULT NOW, AND `?gl=1` PINS THE OLD ONE ────────
+         What kept it off was the accumulation, and `engine.ts` no longer runs
+         that pass on this backend — the gate above it had been hardcoded open.
+         Verified from the page: the dark overlay is gone.
+
+         `WebGPURenderer` falls back to a WebGL 2 backend by itself where
+         WebGPU is unavailable, so this is not a support cliff; `engine.backend`
+         still reports which one actually came up. */
+      const forceWebGL = /(?:\?|&)gl=1/.test(q);
       const quality = detectQuality(q);
       engine = new CityEngine({ canvas, descriptor, forceWebGL, quality });
       /* the backend's device request is asynchronous — nothing may be added
@@ -650,6 +673,9 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       }
 
       const picker = blockPicker(data, { elevAt: groundAt });
+      /* the search needs to ring and centre a block nobody pointed at, and
+         the picker is the only thing that knows where a block IS */
+      pickerRef.current = picker;
       if (picker) {
         let downX = 0;
         let downY = 0;
@@ -895,6 +921,107 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     };
   }, [picked, zoomStop]);
 
+  /**
+   * A RESULT THE READER TYPED, LANDED ON THE MAP.
+   *
+   * Three things have to happen together and in this order, or the reader
+   * watches the map arrive somewhere before the fiche agrees with it:
+   *
+   *   1. the camera moves to the block and the ring goes round it — the same
+   *      ring and pin a click draws, because it IS a pick;
+   *   2. the panel is told which unit the reader meant, which a click could
+   *      only infer from how far in they were standing;
+   *   3. the zoom stop is set to match where the camera now is, so the NEXT
+   *      click on the map is classified against where the reader ended up
+   *      rather than where they were before they typed.
+   *
+   * A hood and a street travel on a representative block — the one holding
+   * the most of their records — so the camera has somewhere to go. That is
+   * not a claim that the block is the street; the panel opens the street.
+   */
+  const goToHit = useCallback(async (hit: SearchHit) => {
+    /* ── A CURATED PLACE HAS ITS OWN FICHE, AND THIS IS NOT IT ────────────
+       Coit Tower is not a block. It has a page with its photograph, the
+       documents behind it and whatever the city ledgers actually attach to
+       it, and sending a reader who typed `coit` to the piece of ground under
+       it — where the fiche would open on "Filbert St · Greenwich St ·
+       Montgomery St" — answers a question they did not ask. The route is the
+       same one the fiche's own money section links to, so the drawer opens
+       over the map and the city stays behind it. */
+    if (hit.kind === "place") {
+      router.push(`/us/city/sf/places/place/${hit.to}`);
+      return;
+    }
+    const eng = engineRef.current;
+    const picker = pickerRef.current;
+    if (!eng) return;
+    /* ── THE INDEX MAY NOT BE HERE YET, AND THAT WAS THE BUG ──────────────
+       `idxRef` is filled by the effect behind a PICK, so on a page where
+       nobody has clicked anything it is still null — which is exactly the
+       page somebody uses the search box on. The first search silently did
+       nothing. It is fetched here instead when it is missing; `loadBlockIndex`
+       memoises for the session, so this costs one request the first time and
+       nothing after. */
+    const index = idxRef.current ?? (await loadBlockIndex().catch(() => null));
+    if (!index) return;
+    idxRef.current = index;
+    if (!posRef.current) {
+      posRef.current = new Map(index.b.map((b, i) => [b, i]));
+    }
+    const i = hit.block ? posRef.current.get(hit.block) : undefined;
+
+    /* HOW CLOSE TO GO, and it follows the kind rather than a single number:
+       a division wants to be seen whole, a door wants the street it is on. */
+    const stop =
+      hit.kind === "hood" ? 1 : hit.kind === "street" ? 2 : 3;
+    const scales = stopScalesRef.current;
+
+    if (i !== undefined && picker) {
+      const ring = picker.ringOf(i);
+      if (ring?.length) {
+        let sx = 0;
+        let sy = 0;
+        for (const [wx, wy] of ring) {
+          sx += wx;
+          sy += wy;
+        }
+        const c = projection.proj(sx / ring.length, sy / ring.length, 0);
+        const scale = scales[stop] ?? eng.getCamera().scale;
+        eng.setStep(stepForZ(scale / (scales[0] || scale)));
+        eng.setCamera({ cx: c[0], cy: c[1], scale });
+      }
+      const ov = overlayRef.current;
+      if (ov) {
+        ov.highlight = picker.ringOf(i);
+        ov.pick = i;
+        ov.pickLabel = hit.kind === "hood" ? hit.label : null;
+      }
+      setZoomStop(stop);
+      setPicked(i);
+      eng.invalidate();
+      setNonce((n) => n + 1);
+    }
+
+    nonceRef.current += 1;
+    setRequest({
+      nonce: nonceRef.current,
+      block: hit.block,
+      /* an address resolved through the assessor's parcels is NOT a door the
+         Board named — there is no door to open, only the ground it stands on,
+         and asking for one would send the panel hunting for a label that is
+         not in the record */
+      req: hit.viaParcel
+        ? { kind: "ground" }
+        : hit.kind === "hood"
+          ? { kind: "hood" }
+          : hit.kind === "street"
+            ? { kind: "street", key: hit.to }
+            : hit.kind === "addr"
+              ? { kind: "door", label: hit.label }
+              : { kind: "ground" },
+    });
+  }, [router]);
+
   return (
     <div className="fx-city-wrap">
       <div className="fx-city-frame">
@@ -946,10 +1073,15 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           ) : null}
         </div>
         <div className="fx-city-ledger">
+          {/* ABOVE WHATEVER THE MARGIN IS SHOWING, idle copy or an open fiche.
+              A search you can only reach by closing what you are reading is a
+              search nobody uses. */}
+          <CitySearch onPick={({ hit }) => void goToHit(hit)} />
           {picked !== null ? (
             <CityBlockPanel
               record={record}
               context={ctx}
+              request={request}
               loading={recLoading}
               onClose={() => {
                 setPicked(null);
