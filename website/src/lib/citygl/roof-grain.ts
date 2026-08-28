@@ -66,6 +66,17 @@ import { CanvasTexture, LinearMipmapLinearFilter, RepeatWrapping } from "three";
  */
 export const ROOF_GRAIN_M = 14.9;
 
+/**
+ * How much height the stipple stands for, as a gradient gain — DECLARED.
+ *
+ * No register records the depth of gravel on a roof. The published tile says
+ * where the marks ARE and how dark they are, and nothing about how proud they
+ * sit. This turns the one into the other, and the number is chosen so the
+ * roof breaks up under the sun without reading as rubble.
+ */
+const GRAIN_RELIEF = 6;
+let nrm: CanvasTexture | null = null;
+
 /** the published tile's own side, CSS px — `roofGrainPattern`'s `T` */
 const TILE_CSS_PX = 48;
 
@@ -101,8 +112,79 @@ let tex: CanvasTexture | null = null;
  * no canvas to draw on (a test runner, a server render), and the caller then
  * has a roof with no map, which is the flat fill this replaces.
  */
-export function roofGrainTexture(): CanvasTexture | null {
-  if (tex) return tex;
+/**
+ * THE SAME STIPPLE AS RELIEF, SO A ROOF CATCHES LIGHT UNEVENLY.
+ *
+ * `roofGrainTexture` above is a MULTIPLY map: it darkens the roof where a
+ * grain mark falls and does nothing else. That is the published tile and it
+ * is right, but it leaves the roof geometrically FLAT — one plane, one
+ * normal, one value across a whole rooftop.
+ *
+ * That did not matter while the closest camera was 0.41 m a pixel. It does
+ * now: `controls.ts` opened the clamp to 0.18, roofs are the largest surface
+ * in a deep frame, and a large flat plane is exactly what reads as cardboard.
+ *
+ * AND IT IS THE ONE PLACE A NORMAL MAP EARNS ITS KEEP ON A ROOF. `PLAN.md`
+ * records the finding that a straight-UP normal can never catch a specular
+ * highlight at this fixed camera and sun — mirror the sun about vertical and
+ * the lobe goes away from the eye — which is why putting streets on a
+ * physical material bought nothing. Perturbing the normal is what breaks that:
+ * a stippled surface has facets pointing in many directions, so SOME of them
+ * catch the sun. The roof already has `MeshStandardMaterial` and a sky to
+ * reflect; it just had nothing to reflect it WITH.
+ *
+ * Derived from the same canvas, in the same sequence, so the bump and the
+ * darkening are the same gravel and not two unrelated noises. Nothing new is
+ * claimed about any roof: this is the published stipple, read as height.
+ */
+export function roofGrainNormal(): CanvasTexture | null {
+  if (nrm) return nrm;
+  const cv = grainCanvas();
+  if (!cv) return null;
+  const g = (cv as HTMLCanvasElement).getContext("2d") as CanvasRenderingContext2D | null;
+  if (!g) return null;
+  const src = g.getImageData(0, 0, TILE_PX, TILE_PX).data;
+
+  const out =
+    typeof OffscreenCanvas !== "undefined"
+      ? new OffscreenCanvas(TILE_PX, TILE_PX)
+      : document.createElement("canvas");
+  out.width = TILE_PX;
+  out.height = TILE_PX;
+  const og = (out as HTMLCanvasElement).getContext("2d") as CanvasRenderingContext2D | null;
+  if (!og) return null;
+  const img = og.createImageData(TILE_PX, TILE_PX);
+  const at = (x: number, y: number): number =>
+    src[(((y + TILE_PX) % TILE_PX) * TILE_PX + ((x + TILE_PX) % TILE_PX)) * 4] / 255;
+
+  for (let y = 0; y < TILE_PX; y++) {
+    for (let x = 0; x < TILE_PX; x++) {
+      /* central difference on the stipple, wrapped so the tile still tiles */
+      const gx = (at(x + 1, y) - at(x - 1, y)) * GRAIN_RELIEF;
+      const gy = (at(x, y + 1) - at(x, y - 1)) * GRAIN_RELIEF;
+      const L = Math.hypot(gx, gy, 1);
+      const o = (y * TILE_PX + x) * 4;
+      img.data[o] = Math.round(((-gx / L) * 0.5 + 0.5) * 255);
+      img.data[o + 1] = Math.round(((-gy / L) * 0.5 + 0.5) * 255);
+      img.data[o + 2] = Math.round((1 / L) * 0.5 * 255 + 127.5);
+      img.data[o + 3] = 255;
+    }
+  }
+  og.putImageData(img, 0, 0);
+
+  nrm = new CanvasTexture(out as unknown as HTMLCanvasElement);
+  nrm.wrapS = RepeatWrapping;
+  nrm.wrapT = RepeatWrapping;
+  nrm.generateMipmaps = true;
+  nrm.minFilter = LinearMipmapLinearFilter;
+  return nrm;
+}
+
+/**
+ * The stipple drawn onto a canvas, once, so the multiply map and the normal
+ * map are the SAME gravel rather than two unrelated noises.
+ */
+function grainCanvas(): HTMLCanvasElement | OffscreenCanvas | null {
   if (typeof document === "undefined" && typeof OffscreenCanvas === "undefined") return null;
   const cv: HTMLCanvasElement | OffscreenCanvas | null =
     typeof OffscreenCanvas !== "undefined"
@@ -144,6 +226,13 @@ export function roofGrainTexture(): CanvasTexture | null {
     g.fill();
   }
 
+  return cv;
+}
+
+export function roofGrainTexture(): CanvasTexture | null {
+  if (tex) return tex;
+  const cv = grainCanvas();
+  if (!cv) return null;
   tex = new CanvasTexture(cv as unknown as HTMLCanvasElement);
   /* WRAPPING, NOT AN ATLAS CELL: the layer's roof `uv` is world metres over
      `ROOF_GRAIN_M` and runs to hundreds. `facade.ts` §THE TILE COMES OFF THE

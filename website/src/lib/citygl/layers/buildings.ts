@@ -118,7 +118,7 @@ import {
   risePhase,
   type RiseNodes,
 } from "../rise";
-import { ROOF_GRAIN_M, roofGrainTexture } from "../roof-grain";
+import { ROOF_GRAIN_M, roofGrainNormal, roofGrainTexture } from "../roof-grain";
 import { upFaceTransferRGB } from "../up-face";
 import type { CityLayer } from "../engine";
 
@@ -1303,7 +1303,15 @@ export function buildingsMesh(
        three would apply here. The node reads the same `color` attribute the
        default path would have, in the same place in the chain. */
     vertexColors: false,
-    flatShading: true,
+    /* ── AND THE ROOF ALONE IS SMOOTH-SHADED NOW ───────────────────────
+       `flatShading` derives the face normal in the fragment shader from the
+       derivatives of the view position, which OVERRIDES a normal map — the
+       grain relief measured 0.00 % of the frame with it on and needed
+       twenty-five times its gain to move 2 %. A roof is a single flat plane,
+       so smooth shading and flat shading agree on it to within nothing; the
+       only thing that changes is that the map now reaches the shader. The
+       walls keep `flatShading` — they have real facets and need it. */
+    flatShading: false,
     side: DoubleSide,
     /* ── AND THE ROOF IS A SURFACE, NOT A SWATCH ─────────────────────────
        `roof-grain.ts` is the published stipple as a world-metre texture: the
@@ -1312,6 +1320,20 @@ export function buildingsMesh(
        never read. Null in a test runner, and the roof is then the flat fill
        it was. */
     map: roofGrainTexture(),
+    /* ── AND THE SAME GRAIN AS RELIEF ──────────────────────────────────
+       The multiply map only DARKENS; it leaves the roof one flat plane with
+       one normal. That was fine while the closest camera was 0.41 m a pixel
+       and stopped being fine when `controls.ts` opened the clamp to 0.18,
+       where roofs are the largest surface in frame.
+
+       It is also the one place a normal map earns its keep here: a
+       straight-UP normal can never catch a specular highlight at this fixed
+       camera and sun, which is why streets on a physical material bought
+       nothing. Perturbing it is what breaks that — a stippled surface has
+       facets pointing many ways and some of them find the sun. The roof
+       already had a physical material and a sky to reflect; it had nothing to
+       reflect it with. See `roof-grain.ts` §THE SAME STIPPLE AS RELIEF. */
+    normalMap: roofGrainNormal(),
   });
   applyRise(mRoof, rise, rise.colour(FRESH_ROOF));
 
