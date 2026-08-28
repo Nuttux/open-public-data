@@ -878,6 +878,72 @@ function heroPieces(
 
 // ── the bridges ─────────────────────────────────────────────────────────────
 
+/**
+ * THE CABLE'S DRAWN THICKNESS, WORLD METRES — A CONVENTION, AND SAID SO.
+ *
+ * §one span records why the cables were left out: *"the record publishes the
+ * curve a cable follows and the spacing of the suspenders, and publishes no
+ * diameter for either. Giving them one is inventing structure, so they are
+ * left to a later block that can carry a stated convention for it."* This is
+ * that block and this is that convention.
+ *
+ * It is NOT a measurement and must not be read as one. A real main cable is
+ * under a metre across, which at the block camera's 2.118 m per pixel is less
+ * than half a pixel — drawn honestly it would not exist. So it is drawn at a
+ * size that reads, exactly as `GGB.legM` already is: that constant's own note
+ * says *"a drawing convention and the reference says so: at the published 11 m
+ * the two legs nearly touch and read as one bar; at 7 m they are two legs with
+ * a gap."* Same argument, same licence, same obligation to declare it.
+ */
+const CABLE_M = 9.0;
+
+/** the suspenders', on the same footing and for the same reason */
+const SUSPENDER_M = 4.5;
+
+/**
+ * How far apart the suspenders stand, world metres — a convention too.
+ *
+ * The real spacing is a construction fact the chunk does not carry. 40 m is
+ * chosen so the run reads as a comb at the block camera rather than as a
+ * smear: at 2.118 m per pixel that is a stroke every nineteen pixels.
+ */
+const SUSPENDER_STEP_M = 40;
+
+/**
+ * Where the cables sit across the deck, as a fraction of its half-width.
+ *
+ * 0.92 rather than 1.0: a main cable stands just inboard of the deck edge, and
+ * at the edge exactly it would z-fight the deck slab's own rim.
+ */
+const CABLE_LAT_FRAC = 0.92;
+
+/**
+ * How far the cable clears the deck where it comes down to meet it, metres.
+ *
+ * On a suspension bridge the main cable descends to the deck at mid-span —
+ * that is what the suspenders shorten to nothing against — so the curve's
+ * lowest point is the deck, not a number anyone chose. This is only the small
+ * clearance that keeps the two from being coplanar.
+ */
+const CABLE_DECK_CLEAR_M = 1.5;
+
+/** one length of cable: a ribbon between two points in the (plan, height)
+ *  space, so it can rise while it runs — which `wall` cannot do */
+function cableRun(
+  b: Buf,
+  x0: number, y0: number, z0: number,
+  x1: number, y1: number, z1: number,
+  halfT: number,
+  rgb: RGB,
+): void {
+  const i = b.elev.length;
+  vert(b, x0, y0, z0 - halfT, 0, rgb);
+  vert(b, x1, y1, z1 - halfT, 0, rgb);
+  vert(b, x1, y1, z1 + halfT, 0, rgb);
+  vert(b, x0, y0, z0 + halfT, 0, rgb);
+  b.idx.push(i, i + 1, i + 2, i, i + 2, i + 3);
+}
+
 /** one vertical quad, its two corners in plan and its two heights */
 function wall(
   b: Buf,
@@ -1027,6 +1093,100 @@ function spanPiece(
         wall(b, c[k][0], c[k][1], d[0], d[1], 0, head, legRGB);
       }
       slab(b, c, head, legTopRGB);
+    }
+  }
+
+  /* ── THE MAIN CABLES, AND THE CURVE IS THE RECORD'S ──────────────────
+     A suspension cable's shape is not chosen here. It is fixed by three
+     points the chunk already carries: it passes over each tower at that
+     tower's OWN head — `towerZ`, the obstacle file's AMSL, which is why one
+     short tower does not drag its neighbour's saddle down — and it descends
+     to the DECK at mid-span, which is what a suspension bridge is. Given
+     three points there is exactly one parabola, so the only thing invented
+     here is how THICK to draw it, and `CABLE_M` says so in those words.
+
+     Outside the towers the cable runs to its anchorage at the deck's end. The
+     record carries no anchorage position, so it is taken as the deck's own end
+     — the point the published ring already stops at.
+
+     A span with fewer than two towers gets no cable rather than a guessed
+     one; `spanPiece` has already refused those above. */
+  const zMid = dz + CABLE_DECK_CLEAR_M;
+  /**
+   * THE CURVE, PAIR BY PAIR — and the pair is why this is not one parabola.
+   *
+   * A suspension cable sags between EACH ADJACENT pair of towers, not from the
+   * first tower to the last. The chunk's own note says why it matters here:
+   * one of these spans carries two towers and the other carries FOUR — the Bay
+   * Bridge's west crossing is two suspension spans about a central anchorage.
+   * A single parabola across all four would hang the cable through the middle
+   * of the anchorage and lift it clear of both mid-spans.
+   *
+   * So each gap gets its own parabola: over its two towers at their own heads,
+   * down to the DECK at the point between them. Outside the outermost towers
+   * the cable runs to its anchorage at the deck's end, which is the last point
+   * the published ring carries.
+   */
+  const cableZ = (t: number): number => {
+    const first = twr[0];
+    const last = twr[twr.length - 1];
+    if (t <= first.t) return dz + ((first.h - dz) * t) / Math.max(1e-6, first.t);
+    if (t >= last.t) {
+      return last.h + ((dz - last.h) * (t - last.t)) / Math.max(1e-6, 1 - last.t);
+    }
+    let a = twr[0];
+    let c = twr[1];
+    for (let i = 0; i + 1 < twr.length; i++) {
+      if (t >= twr[i].t && t <= twr[i + 1].t) {
+        a = twr[i];
+        c = twr[i + 1];
+        break;
+      }
+    }
+    const m = (a.t + c.t) * 0.5;
+    const d0 = (a.t - m) * (a.t - c.t);
+    const d1 = (m - a.t) * (m - c.t);
+    const d2 = (c.t - a.t) * (c.t - m);
+    if (!(Math.abs(d0) > 1e-9 && Math.abs(d1) > 1e-9 && Math.abs(d2) > 1e-9)) {
+      return zMid;
+    }
+    return (
+      (a.h * ((t - m) * (t - c.t))) / d0 +
+      (zMid * ((t - a.t) * (t - c.t))) / d1 +
+      (c.h * ((t - a.t) * (t - m))) / d2
+    );
+  };
+
+  const cableRGB = toRGB(paint.legLit);
+  const halfT = CABLE_M * 0.5;
+  const cStep = 1 / Math.max(24, Math.round(L / 18));
+  for (const side of [-half * CABLE_LAT_FRAC, half * CABLE_LAT_FRAC]) {
+    let prev = W(0, side);
+    let prevZ = cableZ(0);
+    for (let t = cStep; t <= 1 + 1e-9; t += cStep) {
+      const tt = Math.min(1, t);
+      const p = W(tt, side);
+      const z = cableZ(tt);
+      cableRun(b, prev[0], prev[1], prevZ, p[0], p[1], z, halfT, cableRGB);
+      prev = p;
+      prevZ = z;
+    }
+  }
+
+  /* ── AND THE SUSPENDERS, WHICH ARE WHAT MAKE IT READ AS HUNG ─────────
+     Vertical between the cable and the deck, one every `SUSPENDER_STEP_M`,
+     and only BETWEEN the towers — outside them the cable runs to an anchorage
+     and there is nothing hanging from it. Each is a flat quad in the (axis,
+     height) plane, which is the convention the piers above already use. */
+  const sStep = SUSPENDER_STEP_M / L;
+  const sHalf = SUSPENDER_M * 0.5 / L;
+  for (const side of [-half * CABLE_LAT_FRAC, half * CABLE_LAT_FRAC]) {
+    for (let t = twr[0].t + sStep; t < twr[twr.length - 1].t - sStep * 0.5; t += sStep) {
+      const z = cableZ(t);
+      if (!(z > dz + CABLE_DECK_CLEAR_M * 1.2)) continue;
+      const p0 = W(t - sHalf, side);
+      const p1 = W(t + sHalf, side);
+      wall(b, p0[0], p0[1], p1[0], p1[1], dz, z, cableRGB);
     }
   }
 
