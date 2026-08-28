@@ -20,9 +20,15 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 import {
+  ACESFilmicToneMapping,
+  AgXToneMapping,
+  CineonToneMapping,
   Color,
+  NeutralToneMapping,
+  NoToneMapping,
   OrthographicCamera,
   PCFSoftShadowMap,
+  ReinhardToneMapping,
   Scene,
   type ToneMapping,
 } from "three";
@@ -111,6 +117,46 @@ export interface EngineOptions {
  */
 const DEPTH_SPAN_M = 200_000;
 
+/* ══ WHAT A LOOK SWEEP NEEDS TO MOVE, AND ONE THING EACH ═══════════════════
+   `quality.ts` already carries this idea and states why: a switch that moves
+   nine things at once proves nothing about any one of them. These are the
+   three the LOOK is made of that had no switch, because until now they were
+   not open questions — the tone curve was off on a parity argument and
+   `groundE` was the one number that "MAY NOT MOVE".
+
+     ?tm=none|aces|agx|neutral|cineon|reinhard   the output curve
+     ?exp=N                                     its exposure, default 1
+     ?ge=N                                      irradiance on an up face
+
+   Read once at construction. `groundE` reaches the rig rather than the
+   renderer, so it needs a reload rather than a setter — which a capture
+   harness does anyway. */
+const TONE_BY_NAME: Record<string, ToneMapping> = {
+  none: NoToneMapping,
+  aces: ACESFilmicToneMapping,
+  agx: AgXToneMapping,
+  neutral: NeutralToneMapping,
+  cineon: CineonToneMapping,
+  reinhard: ReinhardToneMapping,
+};
+
+interface LookOverrides {
+  tone?: ToneMapping;
+  exposure?: number;
+  groundE?: number;
+}
+
+export function lookOverrides(search: string): LookOverrides {
+  const o: LookOverrides = {};
+  const tm = /(?:\?|&)tm=([a-z]+)/.exec(search)?.[1];
+  if (tm && tm in TONE_BY_NAME) o.tone = TONE_BY_NAME[tm];
+  const exp = Number(/(?:\?|&)exp=([0-9.]+)/.exec(search)?.[1]);
+  if (Number.isFinite(exp) && exp > 0) o.exposure = exp;
+  const ge = Number(/(?:\?|&)ge=([0-9.]+)/.exec(search)?.[1]);
+  if (Number.isFinite(ge) && ge > 0) o.groundE = ge;
+  return o;
+}
+
 export class CityEngine {
   readonly scene = new Scene();
   readonly camera = new OrthographicCamera();
@@ -183,6 +229,28 @@ export class CityEngine {
     this.renderer.setClearColor(new Color(this.descriptor.look.haze), 1);
     this.renderer.autoClear = true;
 
+    /* ── AND A TONE CURVE, ON BY DEFAULT ────────────────────────────────
+       §the tone map and its exposure carries the measurement that used to
+       keep this at `NoToneMapping`, and the reversal. Short version: that
+       measurement scored four curves on their distance from the published
+       Canvas page, which is no longer what this renderer is for. Re-scored on
+       the frame's own RANGE instead, at two cameras:
+
+         curve / groundE      richmond p05-p95      downtown p05-p95
+         none    2.398              112                   127
+         AgX     2.398               88                    97
+         ACES    2.398              126                   162
+         ACES    3.2                131                   146
+
+       AgX COMPRESSES — it is a shoulder-heavy curve meant for renders that
+       genuinely overflow, and it takes this frame below no curve at all.
+       ACES gives back fourteen to thirty-five levels of range at every
+       setting and clips nothing (0.00 % of pixels at 254 or above).
+
+       `?tm=none` still turns it off, which is what makes this a decision
+       rather than a default. */
+    this.renderer.toneMapping = ACESFilmicToneMapping;
+
     /* ── THE SHADOW MAP, ON BY DEFAULT ──────────────────────────────────
        `PCFSoftShadowMap` rather than the hard one: a city's shadow edge at
        this scale is a metre or two of penumbra, and a hard edge reads as a
@@ -191,10 +259,18 @@ export class CityEngine {
     this.renderer.shadowMap.enabled = this.quality.shadowMap > 0;
     this.renderer.shadowMap.type = PCFSoftShadowMap;
 
+    const lo = lookOverrides(
+      typeof window === "undefined" ? "" : window.location.search,
+    );
     this.sun = sunRig(this.scene, {
       mapSize: this.quality.shadowMap || 1024,
       maxBuiltY: 300 * this.descriptor.look.zexb,
+      look: lo.groundE === undefined ? undefined : { groundE: lo.groundE },
     });
+    if (lo.tone !== undefined || lo.exposure !== undefined) {
+      this.renderer.toneMapping = lo.tone ?? this.renderer.toneMapping;
+      this.renderer.toneMappingExposure = lo.exposure ?? 1;
+    }
     if (this.quality.shadowMap === 0) this.sun.setEnabled(false);
 
     this.basis = axonBasis(projection);

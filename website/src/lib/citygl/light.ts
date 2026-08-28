@@ -172,11 +172,26 @@ const WALL45 = Math.cos(SUN_ELEV) * Math.cos(Math.PI / 4);
 export interface SunLook {
   /**
    * THE IRRADIANCE ON A SURFACE THAT FACES STRAIGHT UP — the ground, and
-   * every flat roof. This is the one number that MAY NOT MOVE: the port's
-   * ground already sits within a couple of points of the published page's at
-   * the two wide cameras, and 2.398 is what it was MEASURED at (the light
-   * colours' own luminances, read back out of the browser, times the shipped
-   * intensities). Everything else is redistributed underneath it.
+   * every flat roof.
+   *
+   * ── IT USED TO BE THE ONE NUMBER THAT MAY NOT MOVE ──────────────────────
+   * 2.398 is what the port was MEASURED at — the light colours' own
+   * luminances read back out of the browser, times the shipped intensities —
+   * and it was held there because the port's ground sat within a couple of
+   * points of the published page's at the two wide cameras. Everything else
+   * was redistributed underneath it.
+   *
+   * That is a parity constraint, and holding it is what capped the frame.
+   * §and 0.52 now bought deeper shadows and §and then it came down further
+   * bought longer ones, and MEASURED, the two together made the frame DARKER
+   * without making it WIDER: median luminance fell 5 to 12 levels while the
+   * p05-p95 spread did not move (125->128, 132->127, 112->112). A ceiling
+   * with more shadow under it is not more range, it is less light.
+   *
+   * 3.2 is that ceiling lifted, and it is spendable now because `engine.ts`
+   * §and a tone curve puts an ACES shoulder above it — MEASURED, 0.00 % of
+   * pixels reach 254 at any camera, where the uncurved frame was already
+   * clipping 0.03 to 0.21 % at a LOWER `groundE`.
    */
   groundE: number;
   /**
@@ -438,7 +453,7 @@ export function solveSunRig(
  * city was a constant.
  */
 export const DEFAULT_LOOK: SunLook = {
-  groundE: 2.398,
+  groundE: 3.2,
   /* ── AND THE SUN GIVES BACK A SIXTH OF ITS SHARE ────────────────────────
      0.55 means a shadow removes 55 % of an open ground's light, which was
      solved to land a shadow 40-60 levels deep — the right target for a frame
