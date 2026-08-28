@@ -53,6 +53,7 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 import {
+  AdditiveBlending,
   BufferAttribute,
   BufferGeometry,
   Color,
@@ -65,6 +66,7 @@ import {
   MeshBasicMaterial,
   MeshLambertMaterial,
   RGBAFormat,
+  RepeatWrapping,
   SRGBColorSpace,
   Vector3,
 } from "three";
@@ -74,10 +76,13 @@ import { projection } from "@/lib/city/projection";
 import {
   BAY_OPEN,
   BAY_SHOAL,
+  DEPTH_UM,
   decodeCoast,
   depthColour,
   depthM,
   depthRamp,
+  depthU,
+  depthU_stops,
   type WaterMeta,
 } from "@/lib/city/water";
 import { HAZE, WA, lerpHex } from "@/lib/city/terrain";
@@ -138,9 +143,14 @@ const FOAM_WHITE = 0.38;
    never appears in `scene.children`.
 
    At 12 m the same 55 m band gets four and a half cells, which is a ramp. It
-   costs four times the cells — the shore is a curve through a grid, so the
-   count goes as 1/cell, not 1/cell squared, and measured that is about 51,000
-   cells against 25,599. */
+   costs about four times the cells — the shore is a curve through a grid, so
+   the count goes as 1/cell, not 1/cell squared.
+
+   MEASURED on the shipped registers, at 12 m, over the whole survey box and
+   therefore over Marin and the East Bay as well as San Francisco: **115,164
+   cells, 149,732 vertices, 230,328 triangles** (`foamStats()`). An earlier
+   revision of this note said "about 51,000"; that figure is not reproducible
+   against what ships and has been replaced by one that is. */
 const FOAM_CELL = 12;
 
 /* ── THE GLINT ────────────────────────────────────────────────────────────
@@ -171,6 +181,88 @@ const WAVES: readonly { lam: number; deg: number; amp: number; ph: number }[] = 
 const GLINT_P = 3;
 /** how far toward white a fully lit facet is carried */
 const GLINT_GAIN = 0.17;
+
+/* ── THE RANGE, AND WHERE EACH END OF IT COMES FROM ──────────────────────
+   Daniel: the water is *"completely one-dimensional at every point"*. It is
+   not, quite — the published NOAA bathymetry is in the plate and the Golden
+   Gate channel, the Alcatraz shoal and the Berkeley flats are all there. But
+   MEASURED over a 340 x 180 patch of open bay at the whole-city camera, the
+   frame's own pixels: p5 to p95 of luminance is 41.8 of 255, standard
+   deviation 12.8. That is a range the eye reads as one colour with a slow
+   wash across it.
+
+   The DEPTH is published and stays published: `depthColour(depthM(...))` is
+   the same call, on the same survey, at the same quantile stops. What is
+   widened is how far apart the two ENDS of that ramp sit, which is a drawing
+   convention and was already declared as one — `lib/city/water.ts`
+   §DE_SPREAD: *"how far apart the tones sit is this port's reading"*. These
+   two tones are DECLARED here, and named so nothing mistakes them for a
+   register: the deep end goes toward navy and the shoal end toward teal, by
+   a fraction of how far this point's `u` is from the field's own mean `u`.
+
+   NOT USED, and deliberately: distance from the shore. `lib/city/water.ts`
+   already measured it against the published depth — corr = 0.303, r2 = 0.092
+   — and calls the shoal band *"a DECLARED TREATMENT, never a depth claim"*.
+   The bathymetry is on the wire; there is no reason to model what is
+   published, and every reason not to. */
+const BAY_DEEP = "#2c4a76";
+const BAY_TEAL = "#9ecfcb";
+/** how far the deepest published water is carried toward `BAY_DEEP` */
+const DEEP_MIX = 0.5;
+/** and the shallowest toward `BAY_TEAL` */
+const SHOAL_MIX = 0.34;
+
+/* ── THE SKY ON THE WATER ─────────────────────────────────────────────────
+   A horizontal plane under an orthographic camera has ONE view angle, so a
+   Fresnel term over a flat bay is a constant and would only make the water a
+   different flat colour — the same argument §THE GLINT makes about specular.
+   What varies is the same thing that varies there: the SWELL tips each facet,
+   and a facet tipped away from the eye is seen at a grazing angle and returns
+   more of the sky.
+
+   So this is Schlick's own form, `(1 - cos)^5`, over the swell's normal
+   rather than over a flat one, in the tone the far distance is already
+   painted in. It is the counterpart of the glint: the glint is where the
+   swell faces the SUN, this is where it faces the SKY, and they land on
+   different facets because the sun is 35.26 degrees up and the sky is
+   everywhere else.
+
+   `SWELL_S` is the steepness the height field is read at — DECLARED, and the
+   only free number here. No register publishes a sea state. At 0.16 the
+   normal wanders about 9 degrees, which is a light chop and not a storm. */
+const SWELL_S = 0.16;
+/** the tone a grazing facet returns — declared; the page's own distance tone
+ *  carried a third of the way to white, so it belongs to this palette */
+const SKY_ON_WATER = 0.33;
+/** how much of that tone a fully grazing facet takes */
+const FRESNEL_GAIN = 0.5;
+
+/* ── THE RIPPLE ───────────────────────────────────────────────────────────
+   The plate is 52 m a texel, so the finest thing it can hold is about 100 m
+   across: chop at the scale of a chart, which is what §THE GLINT bakes, and
+   nothing at all at the street camera where a 100 m feature is 93 px wide.
+   Detail that survives every zoom has to be a texture tiled in WORLD units
+   rather than baked into an 80 km plate, so it is one — a seamless field of
+   crest highlights, repeated every `RIPPLE_M` metres, drawn additively over
+   the plate by a child mesh that shares the plate's own cut.
+
+   ── IT DOES NOT MOVE, AND THAT IS THE DECISION ─────────────────────────
+   `temporal.ts` accumulates frames and has NO neighbourhood clamp, so
+   anything that moves smears through the accumulation and ghosts. Two ways
+   out: add the clamp, or hold still. This holds still. The clamp is the right
+   fix for the accumulator and it is worth doing, but it is a change to a pass
+   every other layer depends on, and buying moving water with it would be
+   spending another agent's risk on this layer's ornament. A static crest
+   field also costs one draw and no per-frame work at all, which is what the
+   rest of this file is built on: quantities that depend only on where they
+   are get computed once. */
+const RIPPLE_M = 96;
+/** the tile's resolution — 96 m over 256 texels is 0.375 m a texel */
+const RIPPLE_TEX = 256;
+/** how bright a crest is added at full strength */
+const RIPPLE_A = 0.1;
+/** the largest quad the crest mesh emits, metres — see `rippleMesh` */
+const RIPPLE_STEP = 400;
 
 export interface WaterLayerOptions {
   /** the fade's centre — the city's own downtown, from its manifest */
@@ -346,7 +438,7 @@ function cityCut(
 export function plateGeometry(
   box: Box,
   cut: CityCut | null,
-): { geo: BufferGeometry; stats: PlateStats | null } {
+): { geo: BufferGeometry; stats: PlateStats | null; rects: number[] } {
   const [bx0, by0, bx1, by1] = box;
   const pos: number[] = [];
   const uv: number[] = [];
@@ -356,8 +448,10 @@ export function plateGeometry(
   const sv = 1 / (by1 - by0);
   let rects = 0;
 
+  const box4: number[] = [];
   const rect = (rx0: number, ry0: number, rx1: number, ry1: number): void => {
     if (rx1 - rx0 <= 0 || ry1 - ry0 <= 0) return;
+    box4.push(rx0, ry0, rx1, ry1);
     const b = pos.length / 3;
     pos.push(rx0, Y, ry0, rx1, Y, ry0, rx1, Y, ry1, rx0, Y, ry1);
     uv.push(
@@ -470,7 +564,180 @@ export function plateGeometry(
   geo.setAttribute("normal", new BufferAttribute(n, 3));
   geo.setIndex(new BufferAttribute(new Uint32Array(idx), 1));
   geo.computeBoundingSphere();
-  return { geo, stats };
+  return { geo, stats, rects: box4 };
+}
+
+
+/* ── THE CREST FIELD, GENERATED ONCE ──────────────────────────────────────
+   A seamless tile: sums of sinusoids whose wave numbers are WHOLE numbers of
+   cycles across the tile, which is what makes it wrap without a seam, sharpened
+   so the bright part is a thin crest rather than an even swell. No DC term —
+   the tile's mean is subtracted and only the positive half is kept — because
+   this is added to the plate and a constant would simply lift the whole bay.
+
+   Deterministic: the phases come from a fixed hash, so two loads of the same
+   city get the same water.
+*/
+function bakeRipple(n: number): DataTexture {
+  const px = new Uint8Array(n * n * 4);
+  /* THE WAVE NUMBERS ARE CLUSTERED, NOT SCATTERED. The first cut used eight
+     directions spread over the circle and it came out as scattered white
+     specks — snow, not water. Chop has a DIRECTION: the crests are long lines
+     across the wind and the eye reads the line, not the dot. So every
+     component here runs within about 20 degrees of the same heading and the
+     amplitudes fall off with wave number, which is what makes long streaks
+     with short detail riding on them. */
+  const COMP: readonly { cx: number; cy: number; amp: number }[] = [
+    { cx: 1, cy: 5, amp: 1.0 },
+    { cx: 2, cy: 7, amp: 0.75 },
+    { cx: 1, cy: 8, amp: 0.6 },
+    { cx: 3, cy: 11, amp: 0.42 },
+    { cx: 2, cy: 13, amp: 0.3 },
+    { cx: 4, cy: 17, amp: 0.22 },
+    { cx: 5, cy: 23, amp: 0.15 },
+    /* two long ones ACROSS the crests, so the streaks break into runs instead
+       of banding the whole tile */
+    { cx: 3, cy: -1, amp: 0.34 },
+    { cx: 5, cy: -2, amp: 0.2 },
+  ];
+  const ph = COMP.map((c, i) => hash2(c.cx * 977 + i, c.cy * 389 + i) * Math.PI * 2);
+  const amp = COMP.reduce((a, c) => a + c.amp, 0);
+  const buf = new Float32Array(n * n);
+  let mean = 0;
+  for (let y = 0; y < n; y++) {
+    for (let x = 0; x < n; x++) {
+      let v = 0;
+      for (let k = 0; k < COMP.length; k++) {
+        const c = COMP[k];
+        v +=
+          c.amp *
+          Math.sin((2 * Math.PI * (c.cx * x + c.cy * y)) / n + ph[k]);
+      }
+      const t = v / amp;
+      buf[y * n + x] = t;
+      mean += t;
+    }
+  }
+  mean /= n * n;
+  for (let i = 0; i < n * n; i++) {
+    /* the crest: only the top of the wave lights. The square rather than the
+       fourth power — at the fourth only the very peaks survived and the field
+       broke into isolated dots; the square keeps the shoulder and the streak
+       stays a streak. */
+    const t = Math.max(0, buf[i] - mean);
+    const v = Math.round(255 * Math.min(1, Math.pow(t, 2) * 3.2));
+    px[i * 4] = v;
+    px[i * 4 + 1] = v;
+    px[i * 4 + 2] = v;
+    px[i * 4 + 3] = 255;
+  }
+  const t = new DataTexture(px, n, n, RGBAFormat);
+  t.wrapS = RepeatWrapping;
+  t.wrapT = RepeatWrapping;
+  t.generateMipmaps = true;
+  t.minFilter = LinearMipmapLinearFilter;
+  t.magFilter = LinearFilter;
+  t.anisotropy = 8;
+  t.needsUpdate = true;
+  return t;
+}
+
+/**
+ * THE RIPPLE MESH — the plate's own cut, tiled with the crest field.
+ *
+ * It shares nothing but the shape: its own positions, its own index, and a UV
+ * that is world position over `RIPPLE_M` so the tile is a fixed size on the
+ * GROUND rather than on the plate. Added additively under the far shore, so a
+ * crest brightens the water and never darkens it, and faded out by the same
+ * distance haze the plate uses — water that has gone to paper must not ripple,
+ * which is the argument §THE GLINT already makes about the sparkle.
+ */
+function rippleMesh(
+  rects: readonly number[],
+  map: DataTexture,
+  anchor: readonly [number, number],
+  fadeR1: number,
+): Mesh {
+  const pos: number[] = [];
+  const uv: number[] = [];
+  const col: number[] = [];
+  const idx: number[] = [];
+  /* `k` is 1 on clear water and 0 where the fade has taken the bay all the way
+     to paper, so the crest field ends exactly where the distance haze does and
+     the geometry can stop there without an edge to show for it. */
+  const kAt = (x: number, z: number): number => {
+    const d = Math.hypot(x - anchor[0], z - anchor[1]);
+    const a = Math.max(0, Math.min(1, (d - FADE_R0_M) / Math.max(1e-6, fadeR1 - FADE_R0_M)));
+    return 1 - a;
+  };
+  const quad = (x0: number, z0: number, x1: number, z1: number): void => {
+    const k0 = kAt(x0, z0);
+    const k1 = kAt(x1, z0);
+    const k2 = kAt(x1, z1);
+    const k3 = kAt(x0, z1);
+    if (k0 <= 0 && k1 <= 0 && k2 <= 0 && k3 <= 0) return;
+    const b = pos.length / 3;
+    const put = (x: number, z: number, k: number): void => {
+      pos.push(x, 0, z);
+      uv.push(x / RIPPLE_M, z / RIPPLE_M);
+      col.push(k, k, k);
+    };
+    put(x0, z0, k0);
+    put(x1, z0, k1);
+    put(x1, z1, k2);
+    put(x0, z1, k3);
+    idx.push(b, b + 1, b + 2, b, b + 2, b + 3);
+  };
+  for (let r = 0; r + 3 < rects.length; r += 4) {
+    const rx0 = rects[r];
+    const rz0 = rects[r + 1];
+    const rx1 = rects[r + 2];
+    const rz1 = rects[r + 3];
+    /* wholly outside the fade's own circle: nothing to draw */
+    const cx = Math.max(rx0, Math.min(anchor[0], rx1));
+    const cz = Math.max(rz0, Math.min(anchor[1], rz1));
+    if (Math.hypot(cx - anchor[0], cz - anchor[1]) >= fadeR1) continue;
+    /* THE SUBDIVISION IS THE FADE'S, NOT THE SHAPE'S. `k` is radial and the
+       vertex colour interpolates LINEARLY across a quad, so a band rectangle
+       40 km wide would carry one straight ramp across the whole ocean and put
+       a seam wherever it met the cut lattice's own small quads. Splitting at
+       `RIPPLE_STEP` makes the interpolation follow the circle instead. */
+    const nx = Math.max(1, Math.ceil((rx1 - rx0) / RIPPLE_STEP));
+    const nz = Math.max(1, Math.ceil((rz1 - rz0) / RIPPLE_STEP));
+    for (let j = 0; j < nz; j++) {
+      for (let i = 0; i < nx; i++) {
+        quad(
+          rx0 + ((rx1 - rx0) * i) / nx,
+          rz0 + ((rz1 - rz0) * j) / nz,
+          rx0 + ((rx1 - rx0) * (i + 1)) / nx,
+          rz0 + ((rz1 - rz0) * (j + 1)) / nz,
+        );
+      }
+    }
+  }
+  const g = new BufferGeometry();
+  g.setAttribute("position", new BufferAttribute(new Float32Array(pos), 3));
+  g.setAttribute("uv", new BufferAttribute(new Float32Array(uv), 2));
+  g.setAttribute("color", new BufferAttribute(new Float32Array(col), 3));
+  const nrm = new Float32Array(pos.length);
+  for (let v = 0; v < pos.length / 3; v++) nrm[v * 3 + 1] = 1;
+  g.setAttribute("normal", new BufferAttribute(nrm, 3));
+  g.setIndex(new BufferAttribute(new Uint32Array(idx), 1));
+  g.computeBoundingSphere();
+  const m = new MeshBasicMaterial({
+    map,
+    vertexColors: true,
+    transparent: true,
+    opacity: RIPPLE_A,
+    blending: AdditiveBlending,
+    depthWrite: false,
+    side: DoubleSide,
+  });
+  const mesh = new Mesh(g, m);
+  /* between the plate (-4) and the far shore (-3): the crests belong to the
+     water and the far shore is drawn over both */
+  mesh.renderOrder = -3.5;
+  return mesh;
 }
 
 export function waterLayer(
@@ -534,6 +801,19 @@ export function waterLayer(
     return { kx: k * Math.cos(a), kz: k * Math.sin(a), amp: w.amp, ph: w.ph };
   });
   const wSum = wv.reduce((s, w) => s + w.amp, 0);
+
+  /* ── THE TWO ENDS OF THE RANGE, AND THE SKY'S TONE ────────────────────
+     `uMax` is the ramp's own deepest step and `DEPTH_UM` its published mean,
+     so `(u - um)` normalised by either side is *how far from the average bay
+     this square metre is*, in the ramp's own units. See §THE RANGE. */
+  const deep = rgb255(BAY_DEEP);
+  const teal = rgb255(BAY_TEAL);
+  const uMax = depthU_stops()[3];
+  const sky = rgb255(lerpHex(HAZE, "#ffffff", SKY_ON_WATER));
+  /* the eye, for the Fresnel: the camera looks along -F, and the flat plane's
+     own normal is +Y, so `V.y` is the cosine a FLAT facet is seen at and the
+     swell moves it either side of that */
+  const eye = new Vector3(V.x, V.y, V.z).normalize();
 
   for (let py = 0; py < H; py++) {
     /* +0.5 for the texel CENTRE, and the row runs south to north because a
@@ -611,7 +891,27 @@ export function waterLayer(
         wsum *= Math.max(0, Math.min(1, edge));
         if (wsum > 0) {
           wet = wsum;
-          const c = depthColour(depthM(acc / wsum, meta.dmax), ramp);
+          const dm = depthM(acc / wsum, meta.dmax);
+          const c = depthColour(dm, ramp);
+          /* ── AND THEN THE RANGE IS OPENED, §THE RANGE ──────────────
+             The colour above is the published one. This carries its deep end
+             toward a declared navy and its shoal end toward a declared teal,
+             in proportion to how far this point's `u` is from the field's own
+             published mean. At `u = um` — the average square metre of the
+             bay — both terms are zero and nothing moves, which is what keeps
+             the frame's mean where the published ramp put it. */
+          const u = depthU(dm, meta.qs);
+          if (u > DEPTH_UM) {
+            const k = Math.min(1, (u - DEPTH_UM) / Math.max(1e-6, uMax - DEPTH_UM)) * DEEP_MIX;
+            c[0] += (deep[0] - c[0]) * k;
+            c[1] += (deep[1] - c[1]) * k;
+            c[2] += (deep[2] - c[2]) * k;
+          } else {
+            const k = Math.min(1, (DEPTH_UM - u) / Math.max(1e-6, DEPTH_UM)) * SHOAL_MIX;
+            c[0] += (teal[0] - c[0]) * k;
+            c[1] += (teal[1] - c[1]) * k;
+            c[2] += (teal[2] - c[2]) * k;
+          }
           /* `wsum` is also HOW MUCH of this texel the survey calls water, so
              a texel on the survey's own edge crosses to the open-bay tone
              instead of stepping to it */
@@ -638,12 +938,17 @@ export function waterLayer(
          belongs to the surveyed bay rather than to the empty ocean past it,
          where there is nothing for it to be the surface OF. */
       let slope = 0;
+      /* the same field, as a plain gradient, for the Fresnel below: `sgx` and
+         `sgz` are the swell's own slope in x and z rather than its component
+         along the half-vector */
+      let sgx = 0;
+      let sgz = 0;
       for (const w of wv) {
-        slope +=
-          (w.amp *
-            Math.cos(w.kx * wx + w.kz * wy + w.ph) *
-            (w.kx * h.x + w.kz * h.z)) /
-          (Math.hypot(w.kx, w.kz) * hxz);
+        const c = Math.cos(w.kx * wx + w.kz * wy + w.ph);
+        slope += (w.amp * c * (w.kx * h.x + w.kz * h.z)) / (Math.hypot(w.kx, w.kz) * hxz);
+        const kk = Math.hypot(w.kx, w.kz) || 1e-9;
+        sgx += (w.amp * c * w.kx) / kk;
+        sgz += (w.amp * c * w.kz) / kk;
       }
       const t = -slope / wSum;
       if (t > 0 && a < 1 && wet > 0) {
@@ -651,6 +956,27 @@ export function waterLayer(
         r += (255 - r) * gl;
         gg += (255 - gg) * gl;
         bb += (250 - bb) * gl;
+      }
+
+      /* ── THE SKY, AT THE ANGLE THE SWELL PRESENTS ─────────────────────
+         §THE SKY ON THE WATER. `n` is the swell's normal at this point, `cos`
+         is what the eye sees it at, and Schlick's fifth power turns that into
+         how much of the sky comes back. A flat facet is seen at `eye.y` and
+         returns its baseline; the term here is the DIFFERENCE from that
+         baseline, so the swell is what shows and not a second flat wash. */
+      if (a < 1 && wet > 0) {
+        const nx = -SWELL_S * sgx;
+        const nz = -SWELL_S * sgz;
+        const inv = 1 / Math.sqrt(nx * nx + 1 + nz * nz);
+        const cosN = Math.max(0, (nx * eye.x + eye.y + nz * eye.z) * inv);
+        const flat = Math.max(0, Math.min(1, eye.y));
+        const fr = Math.pow(1 - cosN, 5) - Math.pow(1 - flat, 5);
+        if (fr > 0) {
+          const k = Math.min(1, fr * FRESNEL_GAIN) * (1 - a) * wet;
+          r += (sky[0] - r) * k;
+          gg += (sky[1] - gg) * k;
+          bb += (sky[2] - bb) * k;
+        }
       }
 
       /* ── THE BANDS ────────────────────────────────────────────────────
@@ -709,7 +1035,10 @@ export function waterLayer(
      projection — 79 px at the street camera — so the fix is `polygonOffset`:
      the plane stays at zero and is pushed back in the DEPTH BUFFER only. */
   const box: Box = [x0, y0, x1, y1];
-  let g = plateGeometry(box, null).geo;
+  const plate0 = plateGeometry(box, null);
+  let g = plate0.geo;
+  let gRects: number[] = plate0.rects;
+  const rippleTex = bakeRipple(RIPPLE_TEX);
 
   const m = new MeshBasicMaterial({
     map,
@@ -735,6 +1064,9 @@ export function waterLayer(
      the far shore's surf as much as the city's. */
   mesh.renderOrder = -4;
 
+  let ripple = rippleMesh(gRects, rippleTex, opts.anchor, fadeR1);
+  mesh.add(ripple);
+
   /* ── THE PLATE IS CUT, ONCE THE SECOND REGISTER LANDS ───────────────────
      `data.surroundCoast()` is a sidecar fetch, so the first frame gets the
      whole quad — which is what shipped, and is only ever seen for the
@@ -755,7 +1087,12 @@ export function waterLayer(
       mesh.geometry = next.geo;
       g.dispose();
       g = next.geo;
+      gRects = next.rects;
       plate = next.stats;
+      ripple.geometry.dispose();
+      ripple.removeFromParent();
+      ripple = rippleMesh(gRects, rippleTex, opts.anchor, fadeR1);
+      mesh.add(ripple);
     });
 
   const foam = buildFoam(data, mesh);
@@ -769,6 +1106,9 @@ export function waterLayer(
       g.dispose();
       m.dispose();
       map.dispose();
+      ripple.geometry.dispose();
+      (ripple.material as MeshBasicMaterial).dispose();
+      rippleTex.dispose();
       foam.dispose();
     },
   };
