@@ -13,7 +13,7 @@
      the shade  which quartile of ITS OWN HEIGHT BAND the roof falls in, so
                 two neighbours of the same material and different heights do
                 not read as one long roof.
-     no row     3.8 % of footprints join no roll row, and the reference does
+     no row     5.0 % of footprints join no roll row, and the reference does
                 not hand those a neutral — it hands them a LOCALE LEGEND, a
                 tone by distance from the city's own centre and by which side
                 of a published dividing line the parcel sits on. See
@@ -46,8 +46,22 @@ export type Quartiles = readonly (readonly number[])[];
 /**
  * THE FALLBACK LEGEND, AND IT IS A CITY'S AND NOT THIS ENGINE'S.
  *
- * 3.8 % of the published footprints join no roll row — `UMAT_WALL[use]` is
+ * 5.0 % of the published footprints join no roll row — `UMAT_WALL[use]` is
  * `null` for them, which is the record's own honest bucket rather than a gap.
+ *
+ * ── AND THAT FIGURE WAS 3.8 % UNTIL IT WAS RE-MEASURED ──────────────────
+ * MEASURED off `__cityGLMat`, the histogram `layers/buildings.ts` keeps for
+ * exactly this question, against the shipped chunks: **8,365 of 166,166**,
+ * which is 5.03 %. This file said 3.8 % and 6,436 in four places. The count is
+ * an UNDER-count at that: it increments on `!UMAT_WALL[use]` alone, while the
+ * branch below falls to the legend on `!(wl && rl)`, so a footprint with a
+ * wall entry and no roof entry lands here and is not counted.
+ *
+ * Two other figures in this file were checked at the same time and are exact:
+ * 166,166 footprints, and 124 without an aerial sample — the "166,042 of
+ * 166,166" the roof rule quotes. So the roll simply grew a larger honest
+ * bucket than the note was written against, which strengthens the argument
+ * below rather than weakening it.
  * The reference does NOT hand those a neutral: it hands them a tone by WHERE
  * THEY ARE, biased on two published quantities — how far the parcel is from
  * the city's own centre, and which side of a published dividing line it falls
@@ -55,7 +69,7 @@ export type Quartiles = readonly (readonly number[])[];
  * family. `scene.ts` §the honest bucket is the rule and `palette.ts`
  * §legendTones is the table.
  *
- * It matters far more than 3.8 % suggests, because those footprints are not
+ * It matters far more than 5 % suggests, because those footprints are not
  * spread evenly: they are the federal reservations, the port, the made ground
  * offshore — whole districts at a time. Given one neutral pair they render as
  * a field of identical white boxes, which is exactly what they did.
@@ -168,8 +182,9 @@ export function bldgMaterials(tb: BldgTable, cfg: MaterialConfig): BldgMaterials
          against the published dividing line, which is 0 on one side of it
          and 1 on the other; the draw is keyed on the published id.
 
-         This used to be one neutral pair for all 6,436 of them, with a note
-         calling it a stand-in for a Block 6 that never came. It is not 3.8 %
+         This used to be one neutral pair for all of them — 6,436 when that
+         note was written, 8,365 in the shipped chunks today — with a note
+         calling it a stand-in for a Block 6 that never came. It is not 5 %
          of the frame spread thinly — these footprints CLUSTER, so the pair
          rendered whole districts as one white box repeated. */
       const r = Math.hypot(tb.cx[i] - lg.originX, tb.cy[i] - lg.originY) / lg.maxR;
