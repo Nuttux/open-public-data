@@ -160,6 +160,126 @@ const COAST_K = 6;
    stay exactly as crisp as `coast-mask.ts` made it. */
 const HEM_CELLS = 4;
 
+/* ── THE GROUND'S FORM, WHICH IS NOT THE SAME THING AS ITS HILLSHADE ──────
+   The ground used to be shaded by exactly one number. Its normals all pointed
+   straight up, so the sun's diffuse term was a constant across the whole city
+   and every hillside was one unbroken facet with a painting on it. A reader:
+   *"looks like some pre-renaissance painting, false illusion of depth but
+   there's not really feelings of depth like in modern animations and games."*
+   That is a fair description of a surface on which light does nothing.
+
+   The obvious move — give the mesh its true normals — was tried and MEASURED,
+   and the reason it was rejected is not the one written down here before. The
+   old note said a second hillshade would come back *"olive and waxy, like a
+   satellite render"*. It does not: full true normals move the twin-peaks
+   district frame's mean by +0.28 of 255 and its standard deviation from 33.44
+   to 35.56. The real objection is direction. `lib/city/terrain.ts` bakes its
+   hillshade from `SUN` = (0.2435, 0.6346, 0.73) — 47 degrees up, and 69
+   degrees round in the DEM's own axes. `light.ts` puts the SCENE sun at 35.26
+   degrees, azimuth pinned to screen-right, which in those same axes is 0
+   degrees. **The two suns are 69 degrees apart.** Handing the mesh its true
+   normals lights every hillside from a direction the painted shading on it
+   disagrees with, and the disagreement is worst on exactly the big open
+   slopes this is trying to fix.
+
+   ── SO ONLY THE PART THE PAINTING HAS NO OPINION ABOUT IS HANDED OVER ────
+   The normal used is `up + K * (true - lowpass(true))`. The low pass is eight
+   1-2-1 passes each way, sigma about two cells, so it keeps everything above
+   roughly 300 m and the deviation carries the band from 54 m — the DEM's own
+   cell, below which there is no data — up to about 300 m. That band is
+   ridges, gullies, knolls and breaks of slope: real published shape, at the
+   scale a hillside needs to stop being a facet.
+
+   And because the deviation is zero-mean over the kernel, the LANDFORM-scale
+   diffuse term does not move, which is the whole of what a second hillshade
+   would have been. MEASURED against the same frames:
+
+     twin peaks, district    mean 133.86 -> 134.11    sd 33.44 -> 34.50
+     twin peaks, street      mean 138.09 -> 137.92    sd 33.23 -> 36.34
+     inner richmond, block   mean 139.96 -> 139.88    sd 35.86 -> 36.77
+
+   A quarter of a level of mean at worst, against three to nine per cent more
+   contrast, and the flattest district in the city is left where it was.
+
+   ── AND A NOISE BUMP WAS TRIED FIRST, AND IS NOT HERE ────────────────────
+   Three octaves of `mx_noise_float` under the DEM's own cell size, as a
+   `normalNode`, amplitude ramped by slope. At a strength that could be seen
+   at all it read as staining rather than as relief — isotropic noise on a
+   matte surface makes blotches, not landform — and at district and city
+   cameras it was invisible, because the sun is a small share of the ground's
+   value and only ALBEDO survives that far out. Real shape at 54-300 m beat
+   invented shape at 4-37 m on every camera, and it does not have to be
+   defended as a thing we made up. */
+/* ── WHERE THE GROUND ACTUALLY IS, FOR EVERYTHING THAT SITS ON IT ────────
+   `TerrainField.elevM` is documented as *"elevation in metres at a world
+   point, NEAREST node"* — it rounds to the lattice and returns the node. It is
+   a 53.815 m STAIRCASE. Every layer that lies on the ground was placed with
+   it: the streets, the carriageways, the markings, the kerbs, the block tint,
+   the canopy, the trees, the buildings, the caps, the heroes and the block
+   picker, all through `CityGLMap.tsx`'s eleven copies of
+   `elevAt: (x, y) => field.elevM(x, y)`.
+
+   **The ground itself is not a staircase.** This mesh puts one vertex per node
+   and lets the rasteriser interpolate, so between two nodes the ground is a
+   ramp. A street draped on the staircase and a ground drawn as a ramp can
+   agree at one point per cell and nowhere else, and what is between them is
+   half the cell's own drop — which at the whole-city band's 3.3x is tens of
+   drawn metres on a San Francisco hill.
+
+   MEASURED over the streets layer's 1,320,892 triangles: **9.54 % have their
+   centroid below the ground they are lying on, every one of them by more than
+   a drawn metre**, worst 102. Their median longest edge is 17.5 m, well inside
+   the 22 m `MAX_EDGE_M` split — so the split was not the problem and making it
+   finer would not have helped. It is not curvature either: all three vertices
+   of every one of those triangles sit EXACTLY on `elevM`, which is the
+   signature of a sampler that disagrees with the surface rather than of a
+   triangle too coarse to follow it.
+
+   That is *"freeways float, break up and get eaten by terrain"*: a ramp
+   crossing a slope alternately floats over the ground and sinks under it, at
+   the lattice's own 53.8 m pitch.
+
+   ── SO THIS SAMPLES THE MESH, NOT THE LATTICE ───────────────────────────
+   And it samples the mesh EXACTLY: `build` emits each cell as the two
+   triangles (a, b, c) and (a, c, d) about the a-c diagonal, so a point in the
+   cell is on the first where `u >= v` and on the second otherwise, and the
+   height is that triangle's own plane. A vertex placed with this cannot poke
+   through the ground, because it is on it.
+
+   The refined coastal cells are the one exception: they are K x K sub-quads
+   over the same four nodes' BILINEAR patch, and this returns the whole cell's
+   triangulated value there instead. The two differ by the cell's twist, which
+   is centimetres against the staircase's metres. */
+export function meshElevAt(
+  field: TerrainField,
+  proj: TerrainProj,
+): (x: number, y: number) => number {
+  const N = proj.N;
+  return (x: number, y: number): number => {
+    const gx = (x - proj.X0) * proj.s;
+    const gy = (y - proj.Y0) * proj.s;
+    const i = Math.max(0, Math.min(N - 2, Math.floor(gx)));
+    const j = Math.max(0, Math.min(N - 2, Math.floor(gy)));
+    const u = Math.max(0, Math.min(1, gx - i));
+    const v = Math.max(0, Math.min(1, gy - j));
+    const za = field.elevAt(i, j);
+    const zc = field.elevAt(i + 1, j + 1);
+    if (u >= v) {
+      /* triangle (a, b, c): a + u*(b - a) + v*(c - b) */
+      const zb = field.elevAt(i + 1, j);
+      return za + u * (zb - za) + v * (zc - zb);
+    }
+    /* triangle (a, c, d): a + v*(d - a) + u*(c - d) */
+    const zd = field.elevAt(i, j + 1);
+    return za + v * (zd - za) + u * (zc - zd);
+  };
+}
+
+const FORM_K = 1.2;
+/** 1-2-1 passes each way on the normal field; 8 is a sigma of about two cells */
+const FORM_LOWPASS = 8;
+
+
 /**
  * @param zexByStep the descriptor's own exaggeration table
  * @param prepare a hook the caller uses to attach what the field needs that
@@ -185,6 +305,7 @@ export function terrainLayer(
 
   const fields = new Map<number, TerrainField>();
   const colours = new Map<number, Float32Array>();
+  const normals = new Map<number, Float32Array>();
 
   function fieldFor(s: number): TerrainField {
     let t = fields.get(s);
@@ -247,12 +368,87 @@ export function terrainLayer(
   const mesh = new Mesh(g, m);
   mesh.matrixAutoUpdate = true;
   mesh.renderOrder = 0;
-  /* THE GROUND RECEIVES, AND IT ALSO CASTS. A hill puts its own far slope in
-     shadow, which no hillshade can do: a hillshade is a function of the
+  /* ── THE GROUND RECEIVES AND DOES NOT CAST, AND THIS IS THE WEDGE FIX ──
+     It used to cast, on this justification: *"a hill puts its own far slope
+     in shadow, which no hillshade can do: a hillshade is a function of the
      slope AT a point and knows nothing about the ridge between that point
-     and the sun. */
+     and the sun."*
+
+     **That is not true of this field.** `lib/city/terrain.ts` §THE HILL OVER
+     THE VALLEY (`buildTsh`) marches every DEM node along the sun's own
+     horizontal direction for twenty cells and asks exactly that question —
+     what stands between this node and the sun — at the same vertical
+     exaggeration the mesh is drawn at. `lamSh` takes `terrk` = 0.8 of the
+     direct term away where it answers yes, and `coloursFor` below bakes the
+     result into every vertex colour this mesh uploads. The ridge shadow was
+     already in the picture, at the DEM's own resolution, with the overshoot
+     carried as a penumbra and a 1-2-1 smooth over it, and COOL rather than
+     merely dark — a `lam` driven toward 0 crosses `LAM0`, and the node is
+     then coloured through `SKYC` instead of `SUNC`.
+
+     Casting as well drew that shadow a SECOND time, and the second copy was
+     the bad one:
+
+       - it was resolved on a 53.8 m triangulated mesh through a shadow map,
+         so its boundary was a polyline of 53.8 m segments at arbitrary
+         angles, where the baked copy's boundary is a full-resolution ramp;
+       - it was neutral grey where the baked copy is cool;
+       - and it landed on a surface whose normals all point straight up (see
+         §THE GROUND'S NORMALS below), so nothing leads into it. A real
+         terminator hides itself — the surface is already dark where its own
+         shadow starts. With a constant N.L the shadow arrives instead as a
+         flat step of about 20 of 255 with no ramp in front of it.
+
+     A hard-edged 53.8 m polygon of flat grey lying across open ground is
+     what the frame was showing at Silver Ave, at the Industrial St ramps and
+     at Panorama Dr, and it is what a reader called torn tarpaulins.
+
+     MEASURED at the Panorama Dr street camera: clearing this flag alone
+     changes 3.39 % of the frame by 20.7 of 255 in the mean, and removing the
+     shadow pass entirely (`?sm=0`) moves those same pixels by 20.2 — so the
+     ground was contributing effectively ALL of what the shadow map put on
+     open hillside. It is not acne: twenty times the normal bias (11 m
+     against a 0.55 m texel, enough to erase any acne several times over)
+     moves that same figure only from 20.7 to 15.1. It is real occlusion.
+
+     ── AND THE TWO SHADOWS ARE NOT EVEN THE SAME SHADOW ──────────────────
+     An independent march over the shipped DEM, by `buildTsh`'s own rule —
+     twenty cells, the overshoot carried, `terrs` = 34 — against each sun in
+     turn, at the whole-city band's 3.3x:
+
+       the field's sun, 47 deg, DEM azimuth 69 deg     0.8 % of land cells
+       the scene's sun, 35.26 deg, DEM azimuth 0       3.1 % of land cells
+       of the scene sun's, also shadowed by the field's         4.8 %
+
+     The first line is the figure `lib/city/terrain.ts` §SN reports for
+     itself, which is what says this march is reading the same field it does.
+     The third is the one that decides it: the two are very nearly DISJOINT,
+     because `light.ts` pins the scene sun's azimuth to screen-right while the
+     published field bakes its own at 69 degrees round. So the ground was not
+     carrying one shadow twice — it was carrying two shadows from two suns 69
+     degrees apart, one soft, full-resolution and cool, the other hard,
+     polygonal and grey. Keeping the published one keeps the shadow the
+     ground's own colours agree with.
+
+     (An earlier draft of this note claimed 23.3 % of land cells at true
+     scale. That came from an UNBOUNDED horizon sweep with a 1 mm threshold —
+     a hill five kilometres away shadowing a cell by a millimetre counted.
+     `buildTsh` reaches twenty cells and saturates at 34 m. The number above
+     is the one that reproduces the published figure.)
+
+     WHAT IS GIVEN UP. A hill can no longer put a BUILDING on its far slope
+     into shade; only the ground remembers the ridge. That is a real loss and
+     it is the smaller one: it costs a few buildings a shading they largely
+     read as grey anyway, where keeping it cost every open hillside in the
+     city a torn edge across it. Recovering it means letting a building
+     sample the ground's own `tsh` where it stands, which is
+     `layers/buildings.ts` and not this file.
+
+     Buildings, caps, heroes and tree crowns are untouched: they still cast,
+     and this mesh still RECEIVES, so their shadows still fall across the
+     ground exactly as before. */
   mesh.receiveShadow = true;
-  mesh.castShadow = true;
+  mesh.castShadow = false;
   /* a CHILD of the ground, so the mount adds one object and gets both. Both
      sit at the identity transform, and `mesh.scale.y` is the band's
      exaggeration — which the hem must take too, being the same ground. */
@@ -307,6 +503,95 @@ export function terrainLayer(
     }
     colours.set(s, col);
     return col;
+  }
+
+  /**
+   * The ground's normals for a band — see §THE GROUND'S FORM.
+   *
+   * One buffer per band, built lazily and swapped, exactly as the colours are
+   * and for the same reason: a normal reads a slope, and a slope is
+   * exaggerated, so a band change moves it. Three buffers at 67,600 nodes.
+   */
+  function normalsFor(sIdx: number): Float32Array {
+    let n = normals.get(sIdx);
+    if (n) return n;
+    const E = exI.length;
+    n = new Float32Array((N * N + E) * 3);
+    const zx = zexByStep[sIdx] ?? zexByStep[0];
+
+    /* the TRUE normal at every node, off the published elevation, at the
+       exaggeration this band actually draws it at */
+    const tx = new Float32Array(N * N);
+    const ty = new Float32Array(N * N);
+    const tz = new Float32Array(N * N);
+    for (let i = 0; i < N; i++)
+      for (let j = 0; j < N; j++) {
+        const ia = i > 0 ? i - 1 : i;
+        const ib = i < N - 1 ? i + 1 : i;
+        const ja = j > 0 ? j - 1 : j;
+        const jb = j < N - 1 ? j + 1 : j;
+        const gx = ((t0.elevAt(ib, j) - t0.elevAt(ia, j)) / ((ib - ia) * step)) * zx;
+        const gy = ((t0.elevAt(i, jb) - t0.elevAt(i, ja)) / ((jb - ja) * step)) * zx;
+        const L = Math.hypot(gx, gy, 1);
+        const k = i * N + j;
+        tx[k] = -gx / L;
+        ty[k] = 1 / L;
+        tz[k] = -gy / L;
+      }
+
+    /* the LANDFORM-scale normal: the same field, low-passed. Separable 1-2-1,
+       `FORM_LOWPASS` times each way — the same kernel `lib/city/terrain.ts`
+       uses on its own penumbra, at a width chosen here rather than there. */
+    const lowpass = (a: Float32Array): Float32Array => {
+      let src: Float32Array<ArrayBufferLike> = a;
+      let dst: Float32Array<ArrayBufferLike> = new Float32Array(N * N);
+      for (let pass = 0; pass < FORM_LOWPASS; pass++) {
+        for (let i = 0; i < N; i++)
+          for (let j = 0; j < N; j++) {
+            const k = i * N + j;
+            const l = j > 0 ? src[k - 1] : src[k];
+            const r = j < N - 1 ? src[k + 1] : src[k];
+            dst[k] = (l + 2 * src[k] + r) * 0.25;
+          }
+        let t: Float32Array<ArrayBufferLike> = src;
+        src = dst;
+        dst = t === a ? new Float32Array(N * N) : t;
+        for (let i = 0; i < N; i++)
+          for (let j = 0; j < N; j++) {
+            const k = i * N + j;
+            const u = i > 0 ? src[k - N] : src[k];
+            const d = i < N - 1 ? src[k + N] : src[k];
+            dst[k] = (u + 2 * src[k] + d) * 0.25;
+          }
+        t = src;
+        src = dst;
+        dst = t;
+      }
+      return src as Float32Array;
+    };
+    const bx = lowpass(tx);
+    const by = lowpass(ty);
+    const bz = lowpass(tz);
+
+    const put = (i: number, j: number, o: number): void => {
+      const k = i * N + j;
+      const vx = (tx[k] - bx[k]) * FORM_K;
+      const vy = 1 + (ty[k] - by[k]) * FORM_K;
+      const vz = (tz[k] - bz[k]) * FORM_K;
+      const L = Math.hypot(vx, vy, vz);
+      n![o] = vx / L;
+      n![o + 1] = vy / L;
+      n![o + 2] = vz / L;
+    };
+    for (let i = 0; i < N; i++)
+      for (let j = 0; j < N; j++) put(i, j, (i * N + j) * 3);
+    /* a sub-vertex takes its own cell's node rather than a blend: the normal
+       is already the smooth part of a smooth field, and the four corners of a
+       53.8 m cell differ by less than the coast refinement's own K = 6 step */
+    for (let e = 0; e < E; e++) put(exI[e], exJ[e], (N * N + e) * 3);
+
+    normals.set(sIdx, n);
+    return n;
   }
 
   /** the hem's RGBA, out of the band's own colour buffer plus the stored fade */
@@ -546,6 +831,7 @@ export function terrainLayer(
     hemA = Float32Array.from(halpha);
 
     colours.clear();
+    normals.clear();
     g.setAttribute("position", new Float32BufferAttribute(pos, 3));
     const col0 = coloursFor(curStep < 0 ? 0 : curStep);
     g.setAttribute("color", new BufferAttribute(col0, 3));
@@ -554,13 +840,19 @@ export function terrainLayer(
     // ── the hem, as its own compact copy of the vertices it uses ──────────
     if (hidx.length) {
       const hp = new Float32Array(hemSrc.length * 3);
+      /* the hem takes the ground's own normals: it IS the ground, and a
+         normal that disagreed with its neighbour's would put a shading seam
+         exactly where this mesh exists to remove one */
+      const nrm0 = normalsFor(curStep < 0 ? 0 : curStep);
       const hn = new Float32Array(hemSrc.length * 3);
       for (let v = 0; v < hemSrc.length; v++) {
         const b = hemSrc[v] * 3;
         hp[v * 3] = pos[b];
         hp[v * 3 + 1] = pos[b + 1];
         hp[v * 3 + 2] = pos[b + 2];
-        hn[v * 3 + 1] = 1;
+        hn[v * 3] = nrm0[b];
+        hn[v * 3 + 1] = nrm0[b + 1];
+        hn[v * 3 + 2] = nrm0[b + 2];
       }
       hemG.setAttribute("position", new BufferAttribute(hp, 3));
       hemG.setAttribute("normal", new BufferAttribute(hn, 3));
@@ -571,25 +863,7 @@ export function terrainLayer(
     } else {
       hemMesh.visible = false;
     }
-    /* ── THE GROUND'S NORMALS POINT STRAIGHT UP, ON PURPOSE ────────────────
-       The vertex colours ALREADY carry a hillshade — a hand-tuned one, off the
-       full-resolution DEM, with the project's own sun in it. Give this mesh its
-       true normals and a directional light and the frame gets a SECOND
-       hillshade over the first: same direction, compounding contrast, and the
-       city comes back olive and waxy, like a satellite render.
-
-       With every normal straight up the sun's diffuse term is CONSTANT across
-       the ground, so it adds no shading of its own — and the one thing it does
-       add is the thing a hillshade cannot: the SHADOW a building or a ridge
-       throws across it. That is the whole reason the sun is here. The relief
-       you see is still the published DEM's; it is just drawn once instead of
-       twice.
-
-       Buildings keep their real normals — they have no baked shading and every
-       facet needs its own. */
-    const up = new Float32Array((N * N + E) * 3);
-    for (let v = 0; v < N * N + E; v++) up[v * 3 + 1] = 1;
-    g.setAttribute("normal", new BufferAttribute(up, 3));
+    g.setAttribute("normal", new BufferAttribute(normalsFor(curStep < 0 ? 0 : curStep), 3));
     g.computeBoundingSphere();
 
     const cellA = step * step;
@@ -649,9 +923,21 @@ export function terrainLayer(
       const col = coloursFor(s);
       g.setAttribute("color", new BufferAttribute(col, 3));
       (g.getAttribute("color") as BufferAttribute).needsUpdate = true;
+      const nrm = normalsFor(s);
+      g.setAttribute("normal", new BufferAttribute(nrm, 3));
+      (g.getAttribute("normal") as BufferAttribute).needsUpdate = true;
       if (hemMesh.visible) {
         hemG.setAttribute("color", new BufferAttribute(hemColours(col), 4));
         (hemG.getAttribute("color") as BufferAttribute).needsUpdate = true;
+        const hn = new Float32Array(hemSrc.length * 3);
+        for (let v = 0; v < hemSrc.length; v++) {
+          const b = hemSrc[v] * 3;
+          hn[v * 3] = nrm[b];
+          hn[v * 3 + 1] = nrm[b + 1];
+          hn[v * 3 + 2] = nrm[b + 2];
+        }
+        hemG.setAttribute("normal", new BufferAttribute(hn, 3));
+        (hemG.getAttribute("normal") as BufferAttribute).needsUpdate = true;
       }
     },
     dispose() {
@@ -661,6 +947,7 @@ export function terrainLayer(
       hemM.dispose();
       fields.clear();
       colours.clear();
+      normals.clear();
     },
   };
   return layer;
