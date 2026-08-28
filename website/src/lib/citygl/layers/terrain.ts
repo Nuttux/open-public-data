@@ -342,6 +342,50 @@ const FORM_LOWPASS = 8;
  */
 const TERRAIN_NORMAL_K = 1.0;
 
+/**
+ * THE FINE ELEVATION FIELD, IF THE CITY SHIPS ONE.
+ *
+ * `pipeline/scripts/us_sf_city/build_terrain_fine.py` pulls USGS 3DEP over the
+ * city's own frame at four nodes per node — 1040 x 1040 at 13.454 m against
+ * the mesh's 260 x 260 at 53.815 m — as one-byte-pair heights over 0..zmax.
+ * `d277a2b7e` already ships it and uses only the normal map derived from it;
+ * the field itself has been sitting unread.
+ *
+ * It is loaded as an OPTIONAL asset, exactly as the normal map is: a city
+ * without the file keeps the bilinear heights it always had, and absence is
+ * not an error.
+ */
+interface FineDem {
+  readonly w: number;
+  readonly h: number;
+  readonly z: Uint16Array;
+  readonly zmax: number;
+  readonly x0: number;
+  readonly y0: number;
+  readonly x1: number;
+  readonly y1: number;
+}
+
+/** bilinear metres at a world point, or null outside the frame */
+function fineElev(f: FineDem, wx: number, wy: number): number | null {
+  const fx = ((wx - f.x0) / (f.x1 - f.x0)) * (f.w - 1);
+  const fy = ((wy - f.y0) / (f.y1 - f.y0)) * (f.h - 1);
+  if (!(fx >= 0 && fy >= 0 && fx <= f.w - 1 && fy <= f.h - 1)) return null;
+  const ix = Math.min(f.w - 2, fx | 0);
+  const iy = Math.min(f.h - 2, fy | 0);
+  const tx = fx - ix;
+  const ty = fy - iy;
+  const r0 = iy * f.w + ix;
+  const r1 = r0 + f.w;
+  const a = f.z[r0];
+  const b = f.z[r0 + 1];
+  const c = f.z[r1];
+  const d = f.z[r1 + 1];
+  const top = a + (b - a) * tx;
+  const bot = c + (d - c) * tx;
+  return ((top + (bot - top) * ty) * f.zmax) / 65535;
+}
+
 export function terrainLayer(
   data: CityData,
   zexByStep: readonly number[],
@@ -730,7 +774,13 @@ export function terrainLayer(
    * over, once more when they resolve. Nothing else rebuilds it: a published
    * shoreline does not move with the band or with the year.
    */
+  /** the fine field, once it lands — see §THE FINE ELEVATION FIELD */
+  let fine: FineDem | null = null;
+  /** the mask the last build used, so a fine-field rebuild reuses it */
+  let lastMask: CoastMask | null = null;
+
   function build(mask: CoastMask | null): void {
+    lastMask = mask;
     const idx: number[] = [];
     const exi: number[] = [];
     const exj: number[] = [];
@@ -938,9 +988,22 @@ export function terrainLayer(
       const zc = t0.elevAt(i + 1, j + 1);
       const zd = t0.elevAt(i, j + 1);
       const o = (N * N + e) * 3;
-      pos[o] = proj.X0 + (i + u) * step;
-      pos[o + 1] = (za * (1 - u) + zb * u) * (1 - v) + (zd * (1 - u) + zc * u) * v;
-      pos[o + 2] = proj.Y0 + (j + v) * step;
+      const wx = proj.X0 + (i + u) * step;
+      const wy = proj.Y0 + (j + v) * step;
+      pos[o] = wx;
+      /* ── A SUB-VERTEX TAKES THE FINE FIELD WHERE THERE IS ONE ───────────
+         The bilinear blend below is the only height a sub-vertex could have
+         before: it is the cell's own four corners interpolated, which by
+         construction lies ON the flat quad it subdivides. That is why
+         subdividing this mesh has never added relief — more triangles,
+         identical surface.
+         `terrain-fine.bin` is a real measurement at four nodes per node, so a
+         sub-vertex sampled from it sits where the ground actually is. Absent,
+         the blend stands and nothing changes. */
+      const fz = fine ? fineElev(fine, wx, wy) : null;
+      pos[o + 1] =
+        fz ?? (za * (1 - u) + zb * u) * (1 - v) + (zd * (1 - u) + zc * u) * v;
+      pos[o + 2] = wy;
     }
 
     hemSrc = Int32Array.from(hsrc);
@@ -1027,6 +1090,36 @@ export function terrainLayer(
   }
 
   build(maskFor(regional ?? null));
+
+  /* ── AND THE FINE FIELD, WHICH REBUILDS THE MESH WHEN IT LANDS ─────────
+     Optional: a city without `base/terrain-fine.bin` keeps the bilinear
+     sub-vertex heights it always had. The rebuild is the same one the coast
+     rings already trigger, so there is one code path for "better data
+     arrived" rather than two. */
+  void (async () => {
+    try {
+      const [mr, br] = await Promise.all([
+        fetch(`${data.assetBase}/base/terrain-fine.json`),
+        fetch(`${data.assetBase}/base/terrain-fine.bin`),
+      ]);
+      if (!mr.ok || !br.ok) return;
+      const meta = (await mr.json()) as {
+        w: number; h: number; zmax: number; extent: [number, number, number, number];
+      };
+      const buf = await br.arrayBuffer();
+      if (buf.byteLength !== meta.w * meta.h * 2) return;
+      fine = {
+        w: meta.w, h: meta.h, zmax: meta.zmax,
+        z: new Uint16Array(buf),
+        x0: meta.extent[0], y0: meta.extent[1],
+        x1: meta.extent[2], y1: meta.extent[3],
+      };
+      build(lastMask);
+    } catch {
+      /* no fine field for this city, which is not an error */
+    }
+  })();
+
   if (!regional) {
     /* the mount has already awaited this same promise, so it is resolved and
        the rebuild lands in a microtask — before the first frame, and long
