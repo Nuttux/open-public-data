@@ -518,10 +518,26 @@ export const WPAL = { pal: 1 };
    a claim about the colour of any square metre of San Francisco. */
 export const WG0 = WPAL.pal ? "#b3ac8e" : "#faf6ec",
   WG1 = WPAL.pal ? "#9a9066" : "#e2d5b8";
-export const WPK0 = "#a8bd7a",
-  WPK1 = "#6d8a45";
-export const WCN0 = "#c9d79c",
-  WCN1 = "#7c9455";
+/* ── THE GREENS WERE LURID, AND THE NEW CAMERA IS WHY IT SHOWS ──────────
+   Measured at Twin Peaks on the deepest camera the clamp now allows, mean
+   saturation over the whole frame is 0.508 — half again what a residential
+   frame reads (0.30) and more than twice a downtown one (0.18). Open hillside
+   filled most of it, and the green it was filled with is a full-chroma
+   yellow-green.
+
+   San Francisco's hills are not that colour. They are dry gold most of the
+   year and a grey-olive green after rain, and the canopy over them is a
+   dark blue-green eucalyptus and cypress, not a lawn. So both ends of both
+   ramps come down in chroma and toward olive, which is the same authored
+   decision the wall palette is and carries the same status: chosen, not
+   measured, and not a claim about any square metre.
+
+   The park ramp keeps more of its lightness than the canopy ramp, because a
+   meadow IS brighter than a wood and the two need to stay apart. */
+export const WPK0 = "#a3b184",
+  WPK1 = "#6f855a";
+export const WCN0 = "#b6c398",
+  WCN1 = "#6f855f";
 
 /** elevation quantum of the ramp, and the canopy quantum */
 export const WTQ = 64,
