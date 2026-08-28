@@ -344,7 +344,7 @@ export class CityEngine {
 
        `?tm=none` still turns it off, which is what makes this a decision
        rather than a default. */
-    this.renderer.toneMapping = ACESFilmicToneMapping;
+    this.renderer.toneMapping = NeutralToneMapping;
 
     /* ── THE SHADOW MAP, ON BY DEFAULT ──────────────────────────────────
        `PCFSoftShadowMap` rather than the hard one: a city's shadow edge at
