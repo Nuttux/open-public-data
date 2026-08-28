@@ -210,6 +210,71 @@ const HEM_CELLS = 4;
    value and only ALBEDO survives that far out. Real shape at 54-300 m beat
    invented shape at 4-37 m on every camera, and it does not have to be
    defended as a thing we made up. */
+/* ── WHERE THE GROUND ACTUALLY IS, FOR EVERYTHING THAT SITS ON IT ────────
+   `TerrainField.elevM` is documented as *"elevation in metres at a world
+   point, NEAREST node"* — it rounds to the lattice and returns the node. It is
+   a 53.815 m STAIRCASE. Every layer that lies on the ground was placed with
+   it: the streets, the carriageways, the markings, the kerbs, the block tint,
+   the canopy, the trees, the buildings, the caps, the heroes and the block
+   picker, all through `CityGLMap.tsx`'s eleven copies of
+   `elevAt: (x, y) => field.elevM(x, y)`.
+
+   **The ground itself is not a staircase.** This mesh puts one vertex per node
+   and lets the rasteriser interpolate, so between two nodes the ground is a
+   ramp. A street draped on the staircase and a ground drawn as a ramp can
+   agree at one point per cell and nowhere else, and what is between them is
+   half the cell's own drop — which at the whole-city band's 3.3x is tens of
+   drawn metres on a San Francisco hill.
+
+   MEASURED over the streets layer's 1,320,892 triangles: **9.54 % have their
+   centroid below the ground they are lying on, every one of them by more than
+   a drawn metre**, worst 102. Their median longest edge is 17.5 m, well inside
+   the 22 m `MAX_EDGE_M` split — so the split was not the problem and making it
+   finer would not have helped. It is not curvature either: all three vertices
+   of every one of those triangles sit EXACTLY on `elevM`, which is the
+   signature of a sampler that disagrees with the surface rather than of a
+   triangle too coarse to follow it.
+
+   That is *"freeways float, break up and get eaten by terrain"*: a ramp
+   crossing a slope alternately floats over the ground and sinks under it, at
+   the lattice's own 53.8 m pitch.
+
+   ── SO THIS SAMPLES THE MESH, NOT THE LATTICE ───────────────────────────
+   And it samples the mesh EXACTLY: `build` emits each cell as the two
+   triangles (a, b, c) and (a, c, d) about the a-c diagonal, so a point in the
+   cell is on the first where `u >= v` and on the second otherwise, and the
+   height is that triangle's own plane. A vertex placed with this cannot poke
+   through the ground, because it is on it.
+
+   The refined coastal cells are the one exception: they are K x K sub-quads
+   over the same four nodes' BILINEAR patch, and this returns the whole cell's
+   triangulated value there instead. The two differ by the cell's twist, which
+   is centimetres against the staircase's metres. */
+export function meshElevAt(
+  field: TerrainField,
+  proj: TerrainProj,
+): (x: number, y: number) => number {
+  const N = proj.N;
+  return (x: number, y: number): number => {
+    const gx = (x - proj.X0) * proj.s;
+    const gy = (y - proj.Y0) * proj.s;
+    const i = Math.max(0, Math.min(N - 2, Math.floor(gx)));
+    const j = Math.max(0, Math.min(N - 2, Math.floor(gy)));
+    const u = Math.max(0, Math.min(1, gx - i));
+    const v = Math.max(0, Math.min(1, gy - j));
+    const za = field.elevAt(i, j);
+    const zc = field.elevAt(i + 1, j + 1);
+    if (u >= v) {
+      /* triangle (a, b, c): a + u*(b - a) + v*(c - b) */
+      const zb = field.elevAt(i + 1, j);
+      return za + u * (zb - za) + v * (zc - zb);
+    }
+    /* triangle (a, c, d): a + v*(d - a) + u*(c - d) */
+    const zd = field.elevAt(i, j + 1);
+    return za + v * (zd - za) + u * (zc - zd);
+  };
+}
+
 const FORM_K = 1.2;
 /** 1-2-1 passes each way on the normal field; 8 is a sigma of about two cells */
 const FORM_LOWPASS = 8;

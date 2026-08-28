@@ -19,7 +19,7 @@ import { CityData } from "@/lib/city/data";
 import { projection } from "@/lib/city/projection";
 import { CityEngine } from "@/lib/citygl/engine";
 import type { CityDescriptor } from "@/lib/citygl/descriptor";
-import { terrainLayer } from "@/lib/citygl/layers/terrain";
+import { meshElevAt, terrainLayer } from "@/lib/citygl/layers/terrain";
 import { decodeParks } from "@/lib/city/trees";
 import { markTerrainCells } from "@/lib/citygl/mark-cells";
 import { fireLayer, type FireLayer } from "@/lib/citygl/fire";
@@ -407,6 +407,19 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         };
       }
 
+      /* ── WHERE THE GROUND IS, FOR EVERYTHING THAT SITS ON IT ────────
+         `field.elevM` rounds to the nearest DEM node: it is a 53.815 m
+         staircase, and it used to place every one of the layers below. The
+         ground mesh interpolates, so a thing on the staircase and the ground
+         under it agree once a cell and nowhere else. `layers/terrain.ts`
+         §WHERE THE GROUND ACTUALLY IS has the measurement — 9.54 % of street
+         triangles were under the ground they lie on, all of them by more than
+         a drawn metre — and `meshElevAt` samples the mesh's own triangles. */
+      const groundAt = meshElevAt(
+        field,
+        data.manifest.proj as unknown as Parameters<typeof meshElevAt>[1],
+      );
+
       /* ── THE LANDMARKS, BEFORE THE FABRIC ───────────────────────────
          `landmarks()` is async, and the fabric has to know which footprints
          NOT to draw before it bakes its buffers — a hero and its own prism
@@ -419,7 +432,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       const heroSkip = new Set<number>((lmTable?.heroes ?? []).map((h) => h.bi));
 
       const heroes = heroesLayer(data, {
-        elevAt: (x, y) => field.elevM(x, y),
+        elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
         zexb: descriptor.look.zexb,
         onBuilt: () => {
@@ -446,7 +459,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       if (disposed || !engine) return;
       const buildings = buildingsLayer(data, {
         zexb: descriptor.look.zexb,
-        elevAt: (x, y) => field.elevM(x, y),
+        elevAt: groundAt,
         roofPalette: roofPalette(
           (data.manifest.buildings as { palette: string[] }).palette,
         ),
@@ -474,7 +487,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          its own drum must not get a second one. */
       const caps = capsLayer(data, {
         zexb: descriptor.look.zexb,
-        elevAt: (x, y) => field.elevM(x, y),
+        elevAt: groundAt,
         roofPalette: roofPalette(
           (data.manifest.buildings as { palette: string[] }).palette,
         ),
@@ -504,7 +517,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       await data.loadTier("canopy");
       if (disposed || !engine) return;
       const ground = groundDetailLayer(data, {
-        elevAt: (x, y) => field.elevM(x, y),
+        elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
       });
       if (ground) {
@@ -520,7 +533,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          thing saying "block" is the buildings standing on it. See
          `layers/block-tint.ts` for the measurement. */
       const blockTint = blockTintLayer(data, {
-        elevAt: (x, y) => field.elevM(x, y),
+        elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
       });
       if (blockTint) {
@@ -535,7 +548,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       await data.loadTier("strt");
       if (disposed || !engine) return;
       const streets = streetsLayer(data, {
-        elevAt: (x, y) => field.elevM(x, y),
+        elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
       });
       for (const m of streets.meshes) engine.scene.add(m);
@@ -547,7 +560,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          name and a faint line over bare ground. Drawn here at the median
          width of the city's own surveyed roads of the same class. */
       const uncovered = streetUncoveredLayer(data, {
-        elevAt: (x, y) => field.elevM(x, y),
+        elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
       });
       if (uncovered) {
@@ -558,7 +571,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       /* the kerbs, the traffic islands, the stairs and the spine centrelines
          — everything the surface layer leaves out, and all of it published */
       const detail = streetDetailLayer(data, {
-        elevAt: (x, y) => field.elevM(x, y),
+        elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
       });
       for (const m of detail.meshes) engine.scene.add(m);
@@ -568,7 +581,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          paved yet, and the tonal pass that sinks the whole right of way below
          every land tone so a street reads as a street at every slope */
       const marks = streetMarkingsLayer(data, {
-        elevAt: (x, y) => field.elevM(x, y),
+        elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
       });
       if (marks) {
@@ -582,7 +595,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       await data.loadTier("tree");
       if (disposed || !engine) return;
       const trees = treesLayer(data, {
-        elevAt: (x, y) => field.elevM(x, y),
+        elevAt: groundAt,
         zexb: descriptor.look.zexb,
         fromStep: engine.quality.canopyFromStep,
         /* the crowns cast again. The 991 ms that switched this off was the
@@ -636,7 +649,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         }
       }
 
-      const picker = blockPicker(data, { elevAt: (x, y) => field.elevM(x, y) });
+      const picker = blockPicker(data, { elevAt: groundAt });
       if (picker) {
         let downX = 0;
         let downY = 0;
@@ -706,7 +719,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                property of the camera STEP and a framing baked at one step
                would be wrong at the next. */
             proj: (x, y) => projection.proj(x, y, 0),
-            elev: (x, y) => field.elevM(x, y),
+            elev: groundAt,
           });
 
         const film = createFilm(eng, script, {
