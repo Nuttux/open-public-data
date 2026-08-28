@@ -116,17 +116,22 @@ export interface QualitySettings {
    * screen. Re-MEASURED against the light-space fit, which halves the box, it
    * is free — `layers/trees.ts` §and they cast again has the three runs.
    *
-   * NOT WIRED YET, and saying so is cheaper than leaving it to be discovered:
-   * the canopy is built in the page component, not in the engine, so this is
-   * read where that call is made and nowhere else. The line is
+   * ── AND IT IS WIRED NOW, WHICH THIS USED TO DENY ────────────────────────
+   * This said "NOT WIRED YET" and gave the line that would wire it. That line
+   * is in the tree: `components/us/citygl/CityGLMap.tsx` passes
+   * `castShadow: engine.quality.treeShadow` to `treesLayer`. The note went
+   * stale and kept telling readers the setting did nothing.
    *
-   *     const trees = treesLayer(data, {
-   *       ...
-   *       castShadow: engine.quality.treeShadow,
-   *     });
+   * VERIFIED rather than assumed, which is the only reason this correction is
+   * trustworthy — `?treecast=0` against `?treecast=1` in the Inner Richmond,
+   * fresh page per case, accumulation off:
    *
-   * Until it is there the layer's own default stands, which is to cast from
-   * the block camera in. `?treecast=0|1` moves this setting either way.
+   *     block camera    2.2 % of the frame moves, max 65 of 255
+   *     street camera   3.1 %                     max 69
+   *
+   * So this setting is live, and the consequence is real: the LOW tier sets it
+   * false, so a phone now genuinely loses its tree shadows where before it
+   * kept them whatever this said. `?treecast=0|1` overrides either tier.
    */
   treeShadow: boolean;
   /* ── THE FOUR `air.ts` TREATMENTS, EACH ITS OWN SWITCH ────────────────
