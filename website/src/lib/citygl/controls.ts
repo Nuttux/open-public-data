@@ -52,7 +52,7 @@ export function attachControls(
   o: ControlsOptions,
 ): () => void {
   const zMin = o.zMin ?? 0.85;
-  const zMax = o.zMax ?? 26;
+  const zMax = o.zMax ?? 60;
 
   const changed = (): void => o.onChange?.();
 
