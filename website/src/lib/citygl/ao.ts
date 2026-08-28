@@ -357,11 +357,42 @@ export function orthoAo(depthTex: TextureNode, opts: OrthoAoOptions = {}): Ortho
     radiusM: opts.radiusM ?? 12,
     minPx: opts.minPx ?? 14,
     maxM: opts.maxM ?? 40,
-    intensity: opts.intensity ?? 6,
+    /* ── HALVED, BECAUSE 6 AND 10 WERE PAINTING THE FRAME BLACK ──────────
+       These shipped at 6 and 10 on the strength of a local-contrast figure,
+       and that figure was measuring the defect. MEASURED at the Inner
+       Richmond's closest camera, a FRESH PAGE per case so the accumulator
+       cannot carry a result between them, each case run forward and then in
+       reverse and the two orders bit-identical:
+
+           intensity / contact    p05    median   < 20 of 255   R-B
+           off                    87.9   144.9      0.1 %      +26.1
+           6 / 10  (shipped)       3.9   112.9     11.8 %      +19.2
+           3 / 5                  56.8   129.6      0.7 %      +22.8
+           2 / 3                  72.9   137.2      0.1 %      +24.0
+
+       An eighth of the frame under 20 of 255, the darkest twentieth crushed
+       from 88 to 4, and seven points of warmth off the whole picture. A black
+       smear COUNTS as local contrast, which is why the metric rose while the
+       picture got worse. Daniel reported it before any harness saw it:
+       *"shadow is so strong so long it really look slike its cutting
+       streets"*, and *"the black point is too high, or its kind of washed out
+       and lost its warth and is kind of greyish"*.
+
+       AND THE SUN IS NOT THE CAUSE, which is the half worth writing down.
+       `?sm=0` at the same camera: the cast shadows darken 15.0 % of the frame
+       by a mean of 45 levels — real, visible, wanted — but the near-black
+       count barely moves, 17.1 % to 16.7 %. NINETY-SEVEN PER CENT of the
+       black in this frame was this term, not the shadow map.
+
+       3 and 5 rather than 2 and 3: at 3/5 the occlusion still holds a
+       building down onto its own ground (p05 57 against 73, local contrast
+       30.4 against 26.2) while keeping the near-black count under one per
+       cent. Harness: `scratchpad/gl-night/aolook.mjs`. */
+    intensity: opts.intensity ?? 3,
     bias: opts.bias ?? 0.3,
     contactM: opts.contactM ?? 3,
     contactMinPx: opts.contactMinPx ?? 2,
-    contactIntensity: opts.contactIntensity ?? 10.0,
+    contactIntensity: opts.contactIntensity ?? 5.0,
   };
 
   /* (kx, ky, ox, oy) — the orthographic unprojection, read off the frustum */
