@@ -29,6 +29,7 @@ import { surroundLayer } from "@/lib/citygl/layers/surround";
 import { buildingsLayer } from "@/lib/citygl/layers/buildings";
 import { heroesLayer } from "@/lib/citygl/layers/heroes";
 import { capsLayer } from "@/lib/citygl/layers/caps";
+import { railLayer } from "@/lib/citygl/layers/rail";
 import { streetsLayer } from "@/lib/citygl/layers/streets";
 import { streetDetailLayer } from "@/lib/citygl/layers/street-detail";
 import { streetMarkingsLayer } from "@/lib/citygl/layers/street-markings";
@@ -532,6 +533,19 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         for (const m of ground.meshes) engine.scene.add(m);
         engine.add(ground);
       }
+
+      /* ── AND THE TRACK ──────────────────────────────────────────────
+         Nothing in the shipped fabric carried a rail until now. It is an
+         optional asset — a city without `base/rail.json` simply has none —
+         and it draws only from the year its own dataset speaks for. See
+         `layers/rail.ts`. */
+      const rail = await railLayer(data, {
+        scene: engine.scene,
+        elevAt: groundAt,
+        zex: descriptor.look.zexByStep[0],
+      });
+      if (disposed) return;
+      if (rail) engine.add(rail);
 
       /* ── THE GROUND HAS A GRID ──────────────────────────────────────
          The published assessor block rings, filled warm and translucent under
