@@ -46,7 +46,7 @@ import {
   Vector3,
 } from "three";
 
-import { CROWN_FAMILIES, crownSet, setCrownYaw } from "../tree-geometry";
+import { CROWN_FAMILIES, crownSet, foliageTint, setCrownYaw } from "../tree-geometry";
 import {
   CONTACT_FEATHER,
   CONTACT_R_CROWN,
@@ -138,6 +138,9 @@ export function treesLayer(
      crown half a tree underground at twice its published width. */
   const crowns = crownSet();
   const material = new MeshLambertMaterial({ vertexColors: true, flatShading: true });
+
+  /* scratch for `foliageTint`: this loop runs 195,310 times a rebuild */
+  const tint = new Color();
 
   const greens = TREE_GREENS.map((hex) => {
     const c = new Color();
@@ -427,7 +430,12 @@ export function treesLayer(
         setCrownYaw(n, rot);
         m4.compose(pos, rot, scl);
         mesh.setMatrixAt(n, m4);
-        mesh.setColorAt(n, greens[form[j] & 3] ?? greens[0]);
+        /* the family's published green, jittered per tree on its own
+           stable key — `tree-geometry.ts` §ONE GREEN PER FAMILY */
+        mesh.setColorAt(
+          n,
+          foliageTint(greens[form[j] & 3] ?? greens[0], key(j), tint),
+        );
         emitted[n] = key(j);
         n++;
       }

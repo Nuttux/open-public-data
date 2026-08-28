@@ -90,6 +90,7 @@ import {
   CANOPY_MASS_RISE,
   CANOPY_MASS_SPREAD,
   canopyMass,
+  foliageTint,
   setCrownYaw,
 } from "../tree-geometry";
 import type { CityLayer } from "../engine";
@@ -845,6 +846,8 @@ export function groundDetailLayer(
        `CANOPY_FAM`. Read once, here, at build: this layer is built once and
        an ablation is a reload, where the Canvas re-reads it per frame. */
     const bins = CANOPY_COV_Q.length;
+    /* scratch for `foliageTint`: this runs 50,897 times a rebuild */
+    const massTint = new Color();
     const ramp: Color[] = [];
     for (let cov = 0; cov <= bins; cov++) {
       const c = new Color();
@@ -1019,7 +1022,10 @@ export function groundDetailLayer(
         setCrownYaw(i, rot);
         m4.compose(pos, rot, scl);
         mesh.setMatrixAt(n, m4);
-        mesh.setColorAt(n, ramp[wc[i]]);
+        /* the cover bin's own tone, jittered per mass on its index —
+           the same argument the yaw above already makes, in colour. See
+           `tree-geometry.ts` §ONE GREEN PER FAMILY. */
+        mesh.setColorAt(n, foliageTint(ramp[wc[i]], i, massTint));
         gY[n] = wg[i];
       }
 

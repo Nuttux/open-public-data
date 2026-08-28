@@ -61,8 +61,66 @@
    ratio is not a colour.
    ═══════════════════════════════════════════════════════════════════════ */
 
-import { BufferGeometry, Float32BufferAttribute } from "three";
+import { BufferGeometry, Color, Float32BufferAttribute } from "three";
 import type { Quaternion } from "three";
+
+/* ── ONE GREEN PER FAMILY IS WHY A CANOPY READS AS MOSS ──────────────────
+   `layers/trees.ts` gives all 195,310 street trees their family's single mid
+   green, and `layers/ground-detail.ts` gives all 50,897 park masses one tone
+   per cover bin. Both are the published answer and both are right about WHICH
+   green; neither has any variation INSIDE it, so a park comes out as one flat
+   stippled mass rather than as a lot of trees. Daniel: *"Canopies still look
+   like giant bushes"*.
+
+   `ground-detail.ts` already makes exactly this argument about ORIENTATION,
+   and it is the same argument: *"Fifty thousand identical solids at one
+   orientation is a pattern, and the eye finds a pattern before it finds a
+   tree."* A pattern in colour is found just as fast.
+
+   ── WHAT IS PUBLISHED AND WHAT THIS IS ──────────────────────────────────
+   The FAMILY is published and is not touched: the base colour still comes
+   from the register, and a conifer cannot drift into a palm's green because
+   the jitter is a factor ON the family's own value. What is DECLARED is that
+   two trees of one family are not the same colour — which no register records
+   either way, and which is true of every street in this city.
+
+   It is DETERMINISTIC in the instance's own stable key, so a rebuild, a year
+   change or a camera step puts every tree back at the colour it had. A random
+   draw would shimmer on every re-emit, which is worse than the flatness it
+   fixes.
+
+   Two axes rather than one, because value alone reads as noise: VALUE opens
+   the light-to-dark spread inside a family, and WARM skews red against blue so
+   a stand contains both the yellow-greens and the blue-greens a real mixed
+   canopy does. The magnitudes are declared, not measured — no register
+   publishes the hue of an individual tree. */
+const FOLIAGE_VALUE_JITTER = 0.22;
+const FOLIAGE_WARM_JITTER = 0.09;
+
+/**
+ * A per-instance foliage tint, written into `out` and returned.
+ *
+ * `base` is the family's published green, `seed` the instance's stable key,
+ * `out` the caller's scratch — this runs a quarter of a million times per
+ * rebuild and must not allocate.
+ */
+export function foliageTint(base: Color, seed: number, out: Color): Color {
+  /* two decorrelated values in [-1, 1] from one integer. An ordinary integer
+     hash; nothing depends on the constants beyond the two outputs not moving
+     together — a shared low bit would put a visible stripe across a park. */
+  let h = Math.imul(seed | 0, 0x9e3779b1);
+  h ^= h >>> 15;
+  h = Math.imul(h, 0x85ebca6b);
+  h ^= h >>> 13;
+  const v = ((h >>> 8) & 1023) / 511.5 - 1;
+  const w = ((h >>> 20) & 511) / 255.5 - 1;
+
+  const k = 1 + v * FOLIAGE_VALUE_JITTER;
+  const warm = w * FOLIAGE_WARM_JITTER;
+  const cl = (x: number): number => (x < 0 ? 0 : x > 1 ? 1 : x);
+  out.setRGB(cl(base.r * (k + warm)), cl(base.g * k), cl(base.b * (k - warm)));
+  return out;
+}
 
 // ── the form byte's families ────────────────────────────────────────────────
 

@@ -1,4 +1,4 @@
-import { Matrix4, Quaternion, Vector3 } from "three";
+import { Color, Matrix4, Quaternion, Vector3 } from "three";
 import { describe, expect, it } from "vitest";
 
 import {
@@ -16,6 +16,7 @@ import {
   CROWN_UNCLASSED,
   crownSet,
   crownYaw,
+  foliageTint,
   setCrownYaw,
 } from "./tree-geometry";
 
@@ -557,5 +558,48 @@ describe("crownYaw", () => {
       expect(minY).toBeCloseTo(0, 9);
     }
     set.dispose();
+  });
+});
+
+describe("foliageTint", () => {
+  const base = new Color().setRGB(0.2, 0.36, 0.14);
+
+  it("is deterministic in the seed, because a re-emit must not shimmer", () => {
+    /* THE PROPERTY THAT MATTERS MOST. The crowns are re-emitted on a camera
+       step, a year change and a rebuild. A random draw per emit would repaint
+       195,310 trees every time any of those happened, which is a flicker
+       across the whole canopy — strictly worse than the flatness this fixes. */
+    const a = foliageTint(base, 12345, new Color());
+    const b = foliageTint(base, 12345, new Color());
+    expect([a.r, a.g, a.b]).toEqual([b.r, b.g, b.b]);
+  });
+
+  it("actually separates neighbouring seeds", () => {
+    /* consecutive indices are exactly what the canopy masses pass, so a hash
+       that leaves them adjacent would put a smooth gradient across a park
+       instead of a mix — and would look like a bug, not like trees */
+    const out = new Color();
+    const vals = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => {
+      foliageTint(base, i, out);
+      return out.g;
+    });
+    const spread = Math.max(...vals) - Math.min(...vals);
+    expect(spread).toBeGreaterThan(base.g * 0.15);
+  });
+
+  it("stays in gamut and keeps the family's own hue order", () => {
+    const out = new Color();
+    for (let i = 0; i < 4000; i++) {
+      foliageTint(base, i, out);
+      for (const ch of [out.r, out.g, out.b]) {
+        expect(ch).toBeGreaterThanOrEqual(0);
+        expect(ch).toBeLessThanOrEqual(1);
+      }
+      /* green stays the dominant channel: a jitter that let red or blue
+         overtake it would turn a tree brown or blue, which is no longer the
+         published family and is the one thing this may not do */
+      expect(out.g).toBeGreaterThan(out.r);
+      expect(out.g).toBeGreaterThan(out.b);
+    }
   });
 });
