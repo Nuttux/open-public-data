@@ -83,12 +83,34 @@ function irradiance(rig: ReturnType<typeof rigFor>, n: Vector3): number {
 }
 
 describe("solveSunRig", () => {
-  it("puts a shadow's caster at sqrt(3) times its own height", () => {
-    /* Was sqrt(2), from the elevation that made a sunlit wall and a sunlit
-       roof equal — a parity solve. `light.ts` §and then it came down
-       further states why the sun is at 30 degrees instead. This is not a
-       loosened assertion: it is exact, and it is the new declared value. */
-    expect(SHADOW_THROW).toBeCloseTo(Math.sqrt(3), 10);
+  it("throws a shadow 1 / tan(40 deg) times its caster's height", () => {
+    /* This assertion has now moved twice — sqrt(2) from the parity solve,
+       sqrt(3) at 30 degrees, and this. Each time it is EXACT and each time it
+       is the declared value, never a widened tolerance. `light.ts` §and then
+       it went back up states why. */
+    expect(SHADOW_THROW).toBeCloseTo(1 / Math.tan((40 * Math.PI) / 180), 10);
+  });
+
+  it("keeps an ordinary house's shadow inside the street it lands in", () => {
+    /* THE PROPERTY THE ELEVATION EXISTS TO GUARANTEE, which the bare constant
+       above does not capture: the number was not chosen for its own sake, it
+       was chosen so a shadow fits in a carriageway. Locking only the constant
+       lets a future edit move the sun to somewhere that satisfies the letter
+       of a declared value and cuts the streets again, which is exactly the
+       defect this replaced.
+
+       The two world quantities, both from the record rather than from here:
+       an ordinary Richmond/Sunset dwelling stands about 10 m to its parapet,
+       and the standard right of way on that grid is 68.6 ft — 20.9 m. A
+       shadow that clears the pavement is wanted; one that reaches the far
+       kerb is the defect. So the throw must put a 10 m caster past the near
+       pavement (about 4.6 m) and short of the far one. */
+    const HOUSE_M = 10;
+    const ROW_M = 20.9;
+    const PAVEMENT_M = 4.6;
+    const cast = HOUSE_M * SHADOW_THROW;
+    expect(cast).toBeGreaterThan(PAVEMENT_M);
+    expect(cast).toBeLessThan(ROW_M - PAVEMENT_M);
   });
 
   it("hits every one of the four look targets it was given", () => {

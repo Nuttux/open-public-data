@@ -180,8 +180,32 @@ export function fieldSun(right: Vector3): [number, number, number] {
    throw, and `light.test.ts` holds it under 1,900 m at the street camera.
    30 is the low end of what this projection carries; it is not the low
    end of what looks good in isolation. */
-const SUN_ELEV = Math.atan(1 / Math.sqrt(3));
-/** how far a shadow runs per unit of caster height: exactly sqrt(3) */
+/* ── AND THEN IT WENT BACK UP, BECAUSE 30 DEGREES CUT THE STREETS ────────
+   The argument above is about a PICTURE and it is a good argument. It is the
+   wrong argument for a map somebody has to follow a street across, and the
+   page said so first. Daniel: *"shadow is so strong so long it really look
+   slike its cutting streets ... id either like no shadow or very light, even
+   tho i like the warm sun coloring."*
+
+   The arithmetic is the whole of it. At 30 degrees a shadow runs 1.732 times
+   its caster's height, so an ordinary 10 m Richmond house threw 17.3 m — WIDER
+   THAN THE STREET IT LANDED IN. Two facing rows then closed their shadows over
+   the carriageway between them and the grid stopped being legible. At 40 the
+   throw is 1.19 and the same house throws 11.9 m: across the pavement, onto
+   the near half of the road, and no further.
+
+   40 rather than back to the old 35.264: that number was the elevation at
+   which a lit wall and a lit roof take an EQUAL share of the beam, which was
+   the right neutral for a port graded on its distance from the Canvas page and
+   is not a reason for anything now. This one is chosen against the thing the
+   shadow has to fit inside — the street — and the city publishes that width.
+
+   WHAT IS GIVEN UP, and it is the same trade §and then it came down further
+   made in the other direction: less rake across the walls, so the frame leans
+   a little less on the light for its depth and more on the occlusion, the
+   material and the palette. All three of those moved on 2026-08-28. */
+const SUN_ELEV = (40 * Math.PI) / 180;
+/** how far a shadow runs per unit of caster height */
 export const SHADOW_THROW = 1 / Math.tan(SUN_ELEV);
 /** the 45-degree wall's own share of the beam — equal to `sin(SUN_ELEV)` */
 const WALL45 = Math.cos(SUN_ELEV) * Math.cos(Math.PI / 4);
