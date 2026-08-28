@@ -28,6 +28,24 @@ import {
   SRGBColorSpace,
 } from "three";
 
+/**
+ * How far a regional node's tone may wander — DECLARED.
+ *
+ * Wide enough that a square kilometre of distant land is not one flat value,
+ * narrow enough that it reads as ground rather than as noise.
+ */
+const SURROUND_MOTTLE = 0.085;
+
+/** a deterministic tone factor for one regional node, from its index */
+function surroundMottle(k: number): number {
+  let h = Math.imul(k | 0, 0x9e3779b1);
+  h ^= h >>> 16;
+  h = Math.imul(h, 0x7feb352d);
+  h ^= h >>> 15;
+  const v = ((h >>> 8) & 1023) / 511.5 - 1;
+  return 1 + v * SURROUND_MOTTLE;
+}
+
 import type { CityData } from "@/lib/city/data";
 import {
   HAZE,
@@ -382,6 +400,28 @@ const SEAM_M = 900;
           B += (field.nodeB(k) - B) * w;
           seamNodes++;
         }
+        /* ── AND A MOTTLE, BECAUSE THIS LAND WAS ONE FLAT COLOUR ─────────
+           Reported from the page: *"some areas now look just like someone put
+           a color and thats it theres no detail, no texture nothing."* That is
+           exactly what the regional land was — a hillshade over 110 x 139 m
+           cells and nothing else, which on gently sloped distant ground is
+           one tone across whole square kilometres.
+
+           A detail NORMAL map was built for this first, from real 3DEP over
+           the regional frame, and measured: it moves 0.57 % of the frame even
+           at nine times its honest strength. Shading is not the lever here —
+           this land is lit nearly head-on and its problem is that its COLOUR
+           does not vary. So the fix is the one that worked on the city's own
+           ground in `city/terrain.ts` §ONE GREEN FOR EVERY TREED CELL: vary
+           the colour itself, deterministically in the node's own index so a
+           rebuild puts every node back.
+
+           Declared, and it is not a claim about any square metre — the same
+           status as the canopy mottle and the wall palette. */
+        const mj = surroundMottle(i * XNH + j);
+        R *= mj;
+        G *= mj;
+        B *= mj;
         // sRGB in, linear out — see `terrain.ts` §sRGB IN, LINEAR OUT
         cc.setRGB(R / 255, G / 255, B / 255, SRGBColorSpace);
         col[o] = cc.r;
@@ -411,6 +451,22 @@ const SEAM_M = 900;
 
   const g = new BufferGeometry();
   g.setAttribute("position", new Float32BufferAttribute(pos, 3));
+  /* ── UV OVER THE SURROUND'S OWN FRAME, FOR THE DETAIL NORMAL ──────────
+     The regional land is a regular grid in world X/Z like the city's ground,
+     so its UV is its own position rescaled — no unwrap and no seam. */
+  {
+    /* `mx`/`my` are the NODE coordinates, so the span is first to last —
+       not `mx[1] - mx[0]`, which is one cell. */
+    const spanX = s.mx[s.mx.length - 1] - s.mx[0];
+    const spanY = s.my[s.my.length - 1] - s.my[0];
+    const nv = (pos.length / 3) | 0;
+    const uv = new Float32Array(nv * 2);
+    for (let v = 0; v < nv; v++) {
+      uv[v * 2] = (pos[v * 3] - s.mx[0]) / spanX;
+      uv[v * 2 + 1] = (pos[v * 3 + 2] - s.my[0]) / spanY;
+    }
+    g.setAttribute("uv", new Float32BufferAttribute(uv, 2));
+  }
   g.setAttribute("color", new BufferAttribute(coloursFor(0), 3));
   g.setIndex(new BufferAttribute(new Uint32Array(idx), 1));
   /* NORMALS, OR THE HEADLANDS ARE BLACK. A Lambert material with no `normal`
@@ -469,6 +525,7 @@ const SEAM_M = 900;
     side: DoubleSide,
     depthWrite: false,
   });
+
   const mesh = new Mesh(g, m);
   mesh.renderOrder = -3;
   mesh.receiveShadow = true;

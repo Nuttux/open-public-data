@@ -59,12 +59,12 @@ SERVICE = (
 )
 
 
-def frame() -> dict:
+def frame(key: str) -> dict:
     m = json.loads(MANIFEST.read_text())
     for c in m["chunks"]:
-        if c.get("k") == "base/terrain":
+        if c.get("k") == key:
             return c
-    raise SystemExit("base/terrain not in the manifest")
+    raise SystemExit(f"{key} not in the manifest")
 
 
 def main() -> None:
@@ -72,28 +72,53 @@ def main() -> None:
     ap.add_argument("--mult", type=int, default=4,
                     help="nodes per coarse node, per axis. 4 = 13.45 m cells")
     ap.add_argument("--out", type=pathlib.Path, default=OUT_DIR)
+    ap.add_argument("--surround", action="store_true",
+                    help="the REGIONAL frame (base/surround) instead of the city's")
     a = ap.parse_args()
 
-    t = frame()
-    P = t["proj"]
-    N, zmax = t["w"], t["zmax"]
-    assert t["w"] == t["h"] == P["N"], (t["w"], t["h"], P["N"])
-
-    # the frame in world metres, then in degrees through the published projection
-    cell = 1.0 / P["s"]
-    x0, y0 = P["X0"], P["Y0"]
-    x1, y1 = x0 + N * cell, y0 + N * cell
-    mx = P["mpd"] * P["cosl"]
-    lon0, lon1 = P["lon0"] + x0 / mx, P["lon0"] + x1 / mx
-    lat0, lat1 = P["lat0"] + y0 / P["mpd"], P["lat0"] + y1 / P["mpd"]
-
-    M = N * a.mult
-    print(f"coarse {N}x{N} at {cell:.3f} m  ->  fine {M}x{M} at {cell / a.mult:.3f} m")
+    # ── THE SURROUND IS THE SAME JOB ON A DIFFERENT FRAME ──────────────────
+    # `layers/surround.ts` draws the land outside the city as one
+    # MeshLambertMaterial with vertex colours and NOTHING else — no map, no
+    # normal — on 110 x 139 m cells. Reported from the page: *"some areas now
+    # look just like someone put a color and thats it theres no detail, no
+    # texture nothing."* That is literally what it is.
+    #
+    # It needs exactly what the city's ground got, so it runs through exactly
+    # this code rather than a second copy of it: fetch 3DEP over the frame,
+    # subtract the coarse field the mesh is already built at, and ship the
+    # residual as a tangent normal. Only the frame and the file names differ.
+    tag = "surround" if a.surround else "terrain"
+    t = frame(f"base/{tag}")
+    zmax = t["zmax"]
+    if a.surround:
+        W0, H0 = t["w"], t["h"]
+        x0, y0, x1, y1 = t["e"]
+        lon0, lat0, lon1, lat1 = (
+            json.loads(MANIFEST.read_text())["surround"]["bbox"]
+        )
+        cellx = (x1 - x0) / W0
+        celly = (y1 - y0) / H0
+        cell = (cellx + celly) / 2
+        MW, MH = W0 * a.mult, H0 * a.mult
+    else:
+        P = t["proj"]
+        N = t["w"]
+        assert t["w"] == t["h"] == P["N"], (t["w"], t["h"], P["N"])
+        cell = 1.0 / P["s"]
+        x0, y0 = P["X0"], P["Y0"]
+        x1, y1 = x0 + N * cell, y0 + N * cell
+        mx = P["mpd"] * P["cosl"]
+        lon0, lon1 = P["lon0"] + x0 / mx, P["lon0"] + x1 / mx
+        lat0, lat1 = P["lat0"] + y0 / P["mpd"], P["lat0"] + y1 / P["mpd"]
+        W0 = H0 = N
+        MW = MH = N * a.mult
+    M = MW
+    print(f"[{tag}] coarse {W0}x{H0} at ~{cell:.1f} m  ->  fine {MW}x{MH} at ~{cell / a.mult:.1f} m")
     print(f"bbox {lon0:.6f},{lat0:.6f},{lon1:.6f},{lat1:.6f}")
 
     url = (
         f"{SERVICE}?bbox={lon0},{lat0},{lon1},{lat1}&bboxSR=4326"
-        f"&size={M},{M}&imageSR=4326&format=tiff&pixelType=F32"
+        f"&size={MW},{MH}&imageSR=4326&format=tiff&pixelType=F32"
         "&noDataInterpretation=esriNoDataMatchAny"
         "&interpolation=RSP_BilinearInterpolation&f=image"
     )
@@ -110,8 +135,8 @@ def main() -> None:
     Image.MAX_IMAGE_PIXELS = None
     im = Image.open(raw)
     z = np.asarray(im).astype(np.float64)
-    if z.shape != (M, M):
-        raise SystemExit(f"service returned {z.shape}, asked for {(M, M)}")
+    if z.shape != (MH, MW):
+        raise SystemExit(f"service returned {z.shape}, asked for {(MH, MW)}")
 
     # ── THE NO-DATA SENTINEL IS +-3.4e38 AND IT COMES BACK BOTH WAYS ───────
     # First cut guarded only the negative side, so the POSITIVE sentinel
@@ -142,11 +167,11 @@ def main() -> None:
     q = np.rint(z * (65535.0 / zmax)).astype(np.uint16)
 
     a.out.mkdir(parents=True, exist_ok=True)
-    binp = a.out / "terrain-fine.bin"
+    binp = a.out / f"{tag}-fine.bin"
     binp.write_bytes(q.tobytes(order="C"))
 
     meta = {
-        "w": M, "h": M, "zmax": zmax,
+        "w": MW, "h": MH, "zmax": zmax,
         "cellM": cell / a.mult,
         "mult": a.mult,
         "dtype": "u16le",
@@ -184,7 +209,7 @@ def main() -> None:
     # here, and what ships is only the detail 53.8 m cannot express. Nothing is
     # shaded twice, and the map is zero wherever the two grids agree.
     coarse_up = np.repeat(np.repeat(z[::a.mult, ::a.mult], a.mult, 0), a.mult, 1)
-    coarse_up = coarse_up[:M, :M]
+    coarse_up = coarse_up[:MH, :MW]
     resid = z - coarse_up
     # gradient in metres per metre, over the FINE cell
     fcell = cell / a.mult
@@ -194,9 +219,9 @@ def main() -> None:
     # tangent-space normal, +Z up, packed the way three expects
     nmap = np.stack([(-gx / L), (-gy / L), (nz / L)], axis=-1)
     png = np.rint((nmap * 0.5 + 0.5) * 255.0).clip(0, 255).astype(np.uint8)
-    Image.fromarray(png, mode="RGB").save(a.out / "terrain-normal.png", optimize=True)
+    Image.fromarray(png, mode="RGB").save(a.out / f"{tag}-normal.png", optimize=True)
     meta["normalMap"] = {
-        "file": "terrain-normal.png",
+        "file": f"{tag}-normal.png",
         "what": "tangent-space normal of the RESIDUAL between the fine grid and "
                 "the coarse one the mesh is already built at, so the shading it "
                 "adds is exactly what 53.815 m cannot express",
@@ -206,7 +231,7 @@ def main() -> None:
     print(f"  residual rms {meta['normalMap']['residual_rms_m']:.2f} m, "
           f"p99 {meta['normalMap']['residual_p99_m']:.2f} m")
 
-    (a.out / "terrain-fine.json").write_text(json.dumps(meta, indent=1) + "\n")
+    (a.out / f"{tag}-fine.json").write_text(json.dumps(meta, indent=1) + "\n")
 
     # what actually changed, so the claim in the commit is measured
     coarse_step = z[::a.mult, ::a.mult]
