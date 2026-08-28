@@ -779,6 +779,11 @@ const DEFAULT_BASE = "/data/us/sf/city";
 export class CityData {
   readonly manifest: CityManifest;
   private readonly baseUrl: string;
+  /** where this city's files live, for assets that are not catalogue chunks */
+  get assetBase(): string {
+    return this.baseUrl;
+  }
+
   private readonly cacheBytes: number;
   private readonly concurrency: number;
   private readonly doFetch: typeof fetch;

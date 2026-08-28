@@ -29,12 +29,15 @@
 import {
   BufferAttribute,
   BufferGeometry,
+  ClampToEdgeWrapping,
   Color,
   DoubleSide,
   Float32BufferAttribute,
   Mesh,
   MeshLambertMaterial,
+  NoColorSpace,
   SRGBColorSpace,
+  TextureLoader,
 } from "three";
 
 import type { CityData } from "@/lib/city/data";
@@ -329,6 +332,16 @@ const FORM_LOWPASS = 8;
  *        costs one rebuild in a microtask because the mount has already
  *        awaited that same promise. Passing them avoids the rebuild.
  */
+/**
+ * How hard the detail normal bites, as a `normalScale`.
+ *
+ * DECLARED. The map itself is measured — it is the real gradient of the real
+ * residual — so 1.0 is the honest strength and anything else is a picture
+ * decision. It ships at 1.0 for that reason; the constant exists so the
+ * decision is visible rather than buried in a `set(1, 1)`.
+ */
+const TERRAIN_NORMAL_K = 1.0;
+
 export function terrainLayer(
   data: CityData,
   zexByStep: readonly number[],
@@ -427,6 +440,47 @@ export function terrainLayer(
      normals point straight up (below), so the sun adds no second hillshade
      and the one thing it does add is the cast shadow. */
   const m = new MeshLambertMaterial({ vertexColors: true, side: DoubleSide });
+
+  /* ── THE DETAIL NORMAL, AND IT CARRIES ONLY WHAT THE GRID CANNOT ────────
+     The mesh is 260 nodes on a 53.815 m cell — under two samples across a San
+     Francisco block — so every hill is one smooth facet and the ground reads
+     as a painted backdrop rather than as land. Daniel: *"same with the terrain
+     it looks like a background not a varied lush detailled world"*.
+
+     `pipeline/scripts/us_sf_city/build_terrain_fine.py` pulls USGS 3DEP over
+     this city's OWN frame at four nodes per node — 13.454 m — and ships the
+     RESIDUAL against the coarse grid as a tangent-space normal. Measured on
+     that build: rms 4.66 m, p99 19.20 m of relief the mesh cannot express.
+
+     THE RESIDUAL IS THE WHOLE POINT. §BASIC LIGHTING below says the mesh's
+     normals point straight up on purpose, because the hillshade is ALREADY in
+     the vertex colours and a second one would double it. Subtracting the
+     coarse field before taking the gradient means this adds exactly the
+     frequencies the baked shade does not have, and goes to zero wherever the
+     two grids agree — so nothing is shaded twice.
+
+     It is an OPTIONAL asset, not a catalogue chunk: `lib/city/data.ts`
+     §fetchChunk refuses any key the manifest does not carry, and registering
+     it would mean regenerating the manifest the published Canvas page also
+     reads. Absent, the ground is exactly what it was. */
+  {
+    const tex = new TextureLoader().load(
+      `${data.assetBase}/base/terrain-normal.png`,
+      () => {
+        m.normalMap = tex;
+        m.normalScale.set(TERRAIN_NORMAL_K, TERRAIN_NORMAL_K);
+        m.needsUpdate = true;
+      },
+      undefined,
+      () => {
+        /* no file shipped for this city — the flat ground is the old
+           behaviour and is not an error */
+      },
+    );
+    tex.wrapS = ClampToEdgeWrapping;
+    tex.wrapT = ClampToEdgeWrapping;
+    tex.colorSpace = NoColorSpace;
+  }
   const mesh = new Mesh(g, m);
   mesh.matrixAutoUpdate = true;
   mesh.renderOrder = 0;
@@ -895,6 +949,19 @@ export function terrainLayer(
     colours.clear();
     normals.clear();
     g.setAttribute("position", new Float32BufferAttribute(pos, 3));
+    /* ── UV OVER THE CITY'S OWN FRAME, FOR THE DETAIL NORMAL ──────────────
+       The ground is a regular grid in world X/Z, so its UV is just its own
+       position rescaled — no unwrap, no seam, and it holds for the coast
+       refinement's sub-vertices without them having to know about it. */
+    {
+      const span = N * step;
+      const uv = new Float32Array(((pos.length / 3) | 0) * 2);
+      for (let v = 0, n = pos.length / 3; v < n; v++) {
+        uv[v * 2] = (pos[v * 3] - proj.X0) / span;
+        uv[v * 2 + 1] = (pos[v * 3 + 2] - proj.Y0) / span;
+      }
+      g.setAttribute("uv", new Float32BufferAttribute(uv, 2));
+    }
     const col0 = coloursFor(curStep < 0 ? 0 : curStep);
     g.setAttribute("color", new BufferAttribute(col0, 3));
     g.setIndex(new BufferAttribute(new Uint32Array(idx), 1));
