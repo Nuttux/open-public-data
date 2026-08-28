@@ -247,12 +247,66 @@ export function terrainLayer(
   const mesh = new Mesh(g, m);
   mesh.matrixAutoUpdate = true;
   mesh.renderOrder = 0;
-  /* THE GROUND RECEIVES, AND IT ALSO CASTS. A hill puts its own far slope in
-     shadow, which no hillshade can do: a hillshade is a function of the
+  /* ── THE GROUND RECEIVES AND DOES NOT CAST, AND THIS IS THE WEDGE FIX ──
+     It used to cast, on this justification: *"a hill puts its own far slope
+     in shadow, which no hillshade can do: a hillshade is a function of the
      slope AT a point and knows nothing about the ridge between that point
-     and the sun. */
+     and the sun."*
+
+     **That is not true of this field.** `lib/city/terrain.ts` §THE HILL OVER
+     THE VALLEY (`buildTsh`) marches every DEM node along the sun's own
+     horizontal direction for twenty cells and asks exactly that question —
+     what stands between this node and the sun — at the same vertical
+     exaggeration the mesh is drawn at. `lamSh` takes `terrk` = 0.8 of the
+     direct term away where it answers yes, and `coloursFor` below bakes the
+     result into every vertex colour this mesh uploads. The ridge shadow was
+     already in the picture, at the DEM's own resolution, with the overshoot
+     carried as a penumbra and a 1-2-1 smooth over it, and COOL rather than
+     merely dark — a `lam` driven toward 0 crosses `LAM0`, and the node is
+     then coloured through `SKYC` instead of `SUNC`.
+
+     Casting as well drew that shadow a SECOND time, and the second copy was
+     the bad one:
+
+       - it was resolved on a 53.8 m triangulated mesh through a shadow map,
+         so its boundary was a polyline of 53.8 m segments at arbitrary
+         angles, where the baked copy's boundary is a full-resolution ramp;
+       - it was neutral grey where the baked copy is cool;
+       - and it landed on a surface whose normals all point straight up (see
+         §THE GROUND'S NORMALS below), so nothing leads into it. A real
+         terminator hides itself — the surface is already dark where its own
+         shadow starts. With a constant N.L the shadow arrives instead as a
+         flat step of about 20 of 255 with no ramp in front of it.
+
+     A hard-edged 53.8 m polygon of flat grey lying across open ground is
+     what the frame was showing at Silver Ave, at the Industrial St ramps and
+     at Panorama Dr, and it is what a reader called torn tarpaulins.
+
+     MEASURED at the Panorama Dr street camera: clearing this flag alone
+     changes 3.39 % of the frame by 20.7 of 255 in the mean, and removing the
+     shadow pass entirely (`?sm=0`) moves those same pixels by 20.2 — so the
+     ground was contributing effectively ALL of what the shadow map put on
+     open hillside. It is not acne: twenty times the normal bias (11 m
+     against a 0.55 m texel, enough to erase any acne several times over)
+     moves that same figure only from 20.7 to 15.1. It is real occlusion — an
+     independent horizon march over the shipped DEM at the shipped sun puts
+     23.3 % of the city's land cells in terrain self-shadow at true scale and
+     24.2 % at the whole-city band's 3.3x. Real, correct, and drawn once
+     already.
+
+     WHAT IS GIVEN UP. A hill can no longer put a BUILDING on its far slope
+     into shade; only the ground remembers the ridge. That is a real loss and
+     it is the smaller one: it costs a few buildings a shading they largely
+     read as grey anyway, where keeping it cost every open hillside in the
+     city a torn edge across it. Recovering it means letting a building
+     sample the ground's own `tsh` where it stands, which is
+     `layers/buildings.ts` and not this file.
+
+     Buildings, caps, heroes and tree crowns are untouched: they still cast,
+     and this mesh still RECEIVES, so their shadows still fall across the
+     ground exactly as before. */
   mesh.receiveShadow = true;
-  mesh.castShadow = true;
+  mesh.castShadow = false;
   /* a CHILD of the ground, so the mount adds one object and gets both. Both
      sit at the identity transform, and `mesh.scale.y` is the band's
      exaggeration — which the hem must take too, being the same ground. */
