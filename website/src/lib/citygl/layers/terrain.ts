@@ -409,11 +409,32 @@ export function terrainLayer(
      ground was contributing effectively ALL of what the shadow map put on
      open hillside. It is not acne: twenty times the normal bias (11 m
      against a 0.55 m texel, enough to erase any acne several times over)
-     moves that same figure only from 20.7 to 15.1. It is real occlusion — an
-     independent horizon march over the shipped DEM at the shipped sun puts
-     23.3 % of the city's land cells in terrain self-shadow at true scale and
-     24.2 % at the whole-city band's 3.3x. Real, correct, and drawn once
-     already.
+     moves that same figure only from 20.7 to 15.1. It is real occlusion.
+
+     ── AND THE TWO SHADOWS ARE NOT EVEN THE SAME SHADOW ──────────────────
+     An independent march over the shipped DEM, by `buildTsh`'s own rule —
+     twenty cells, the overshoot carried, `terrs` = 34 — against each sun in
+     turn, at the whole-city band's 3.3x:
+
+       the field's sun, 47 deg, DEM azimuth 69 deg     0.8 % of land cells
+       the scene's sun, 35.26 deg, DEM azimuth 0       3.1 % of land cells
+       of the scene sun's, also shadowed by the field's         4.8 %
+
+     The first line is the figure `lib/city/terrain.ts` §SN reports for
+     itself, which is what says this march is reading the same field it does.
+     The third is the one that decides it: the two are very nearly DISJOINT,
+     because `light.ts` pins the scene sun's azimuth to screen-right while the
+     published field bakes its own at 69 degrees round. So the ground was not
+     carrying one shadow twice — it was carrying two shadows from two suns 69
+     degrees apart, one soft, full-resolution and cool, the other hard,
+     polygonal and grey. Keeping the published one keeps the shadow the
+     ground's own colours agree with.
+
+     (An earlier draft of this note claimed 23.3 % of land cells at true
+     scale. That came from an UNBOUNDED horizon sweep with a 1 mm threshold —
+     a hill five kilometres away shadowing a cell by a millimetre counted.
+     `buildTsh` reaches twenty cells and saturates at 34 m. The number above
+     is the one that reproduces the published figure.)
 
      WHAT IS GIVEN UP. A hill can no longer put a BUILDING on its far slope
      into shade; only the ground remembers the ridge. That is a real loss and
