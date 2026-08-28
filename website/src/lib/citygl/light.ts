@@ -101,6 +101,32 @@ function lum(c: Color): number {
 /** the published sun, in scene axes: (world x, up, world y) */
 export const SUN_SCENE = new Vector3(SUN[0], SUN[2], SUN[1]).normalize();
 
+/**
+ * THIS RENDERER'S SUN, IN THE TERRAIN FIELD'S OWN AXES — `[i, j, up]`.
+ *
+ * `TerrainField` bakes its hillshade and marches its ridge shadows against a
+ * sun, and its default is the PUBLISHED one at azimuth 69 degrees east of
+ * north, elevation 47. This renderer cannot use that sun: §the sun swings
+ * round to stand behind the key gives the two reasons, and the binding one is
+ * geometric rather than aesthetic — under this projection only an azimuth on
+ * screen-right throws shadows horizontally across the frame.
+ *
+ * So the ground has to be shaded for the sun that actually casts on it, and
+ * this is that sun, derived from the same camera basis `aimKey` uses rather
+ * than written down as a constant — if the bearing ever moves, this moves
+ * with it. Scene axes are (x = east, y = up, z = north); the field's are
+ * (i = east, j = north, up).
+ *
+ * MEASURED off the rig at all three zoom bands: east 0.866, north 0.000,
+ * up 0.500 — due east at 30 degrees, and the same at every band because the
+ * projection's bearing is fixed.
+ */
+export function fieldSun(right: Vector3): [number, number, number] {
+  const h = Math.hypot(right.x, right.z) || 1;
+  const c = Math.cos(SUN_ELEV);
+  return [(right.x / h) * c, (right.z / h) * c, Math.sin(SUN_ELEV)];
+}
+
 /* ══ AN HOUR, COMMITTED TO ══════════════════════════════════════════════
    The published sun stands 47.0 degrees above the horizon — near noon, and a
    noon sun throws a shadow shorter than the thing that casts it. The whole

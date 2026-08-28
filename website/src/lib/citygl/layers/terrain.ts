@@ -38,7 +38,10 @@ import {
 } from "three";
 
 import type { CityData } from "@/lib/city/data";
+import { projection } from "@/lib/city/projection";
 import { TerrainField, type TerrainProj } from "@/lib/city/terrain";
+import { axonBasis } from "../camera";
+import { fieldSun } from "../light";
 import { decodeCoast } from "@/lib/city/water";
 import { rasteriseRings, type CoastMask, type Ring } from "../coast-mask";
 import type { CityLayer } from "../engine";
@@ -310,7 +313,28 @@ export function terrainLayer(
   function fieldFor(s: number): TerrainField {
     let t = fields.get(s);
     if (!t) {
-      t = new TerrainField(chunk!, proj, { zex: zexByStep[s] ?? zexByStep[0] });
+      /* ── AND IT IS BAKED FOR THE SUN THAT ACTUALLY CASTS ON IT ────────
+         `TerrainField` defaults to the PUBLISHED sun — azimuth 69 degrees east
+         of north, elevation 47 — which is right for the Canvas page, whose
+         shadow is a translated footprint filled translucent: a mark, and a
+         mark need not agree with the light that shaded the wall it starts
+         from. This renderer throws a real shadow, and `light.ts` §the sun
+         swings round pins that shadow's azimuth to screen-right for a reason
+         that is geometric rather than aesthetic.
+
+         So the ground was shaded from the north-north-east while every
+         building standing on it threw its shadow due east. On flat ground
+         nothing shows; on a hillside the lit face and the shadows on it point
+         different ways, and no amount of relief fixes a contradiction.
+
+         `fieldSun` derives it from the same basis `aimKey` uses, so the two
+         cannot drift apart. Note this is per-BAND: `zex` differs by band and a
+         hillshade reads a slope, so each band bakes its own — which the cache
+         above already does for exactly that reason. */
+      t = new TerrainField(chunk!, proj, {
+        zex: zexByStep[s] ?? zexByStep[0],
+        sun: fieldSun(axonBasis(projection).R),
+      });
       prepare?.(t);
       fields.set(s, t);
     }

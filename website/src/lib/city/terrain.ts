@@ -712,6 +712,27 @@ export interface TerrainOptions {
   readonly terrs?: number;
   /** self-shadow on/off and its strength */
   readonly shadow?: { readonly on: boolean; readonly k: number };
+  /**
+   * WHICH SUN THE HILLSHADE IS BAKED FOR — `[i, j, up]`, unit length.
+   *
+   * Defaults to `SUN`, the published one, which is what the Canvas page wants
+   * and what every number in this file was measured against. It is an option
+   * because a renderer that throws a REAL shadow cannot use it.
+   *
+   * `lib/citygl/light.ts` §the sun swings round explains why: under the
+   * axonometric projection screen-y does not depend on world x, so only a sun
+   * whose azimuth is screen-right throws its shadows horizontally ACROSS the
+   * frame — any other azimuth hides them behind the towers that cast them, or
+   * backlights the whole city. That renderer's sun is therefore due EAST at
+   * 30 degrees, MEASURED off the rig and identical at all three zoom bands.
+   *
+   * The published sun is 69 degrees from it in azimuth and 17 in elevation.
+   * Baking one while casting the other puts a hillside's lit face and the
+   * shadow of every building standing on that hillside in different places.
+   * That is the "false illusion of depth ... not really feelings of depth"
+   * a reader sees without being able to name it.
+   */
+  readonly sun?: readonly [number, number, number];
 }
 
 /**
@@ -865,6 +886,11 @@ export class TerrainField {
     this.zex = opts.zex ?? 3.3;
     this.shadowOn = opts.shadow?.on ?? true;
     this.shadowK = opts.shadow?.k ?? SN.terrk;
+    /* normalised here rather than trusted: a caller derives this from a camera
+       basis, and a basis is only unit-length if someone remembered */
+    const sv = opts.sun ?? SUN;
+    const sl = Math.hypot(sv[0], sv[1], sv[2]) || 1;
+    this.sun = [sv[0] / sl, sv[1] / sl, sv[2] / sl];
     const N = this.N;
     this.cellPark = new Uint8Array(N * N);
     this.cellBurn = new Uint8Array(N * N);
@@ -962,6 +988,10 @@ export class TerrainField {
    * `SUN[2]` = 0.730, so the value of open ground does not move at all. What
    * changes is only what a SLOPE returns.
    */
+  /** the sun the hillshade and the ridge march are built for — see
+   *  `TerrainOptions.sun`. `SUN` unless a caller says otherwise. */
+  private readonly sun: readonly [number, number, number];
+
   private buildLam(): Float32Array {
     const N = this.N;
     const L = new Float32Array(N * N);
@@ -976,7 +1006,7 @@ export class TerrainField {
           ny = -gy * nz;
         L[i * N + j] = Math.max(
           0,
-          Math.min(1, nx * SUN[0] + ny * SUN[1] + nz * SUN[2]),
+          Math.min(1, nx * this.sun[0] + ny * this.sun[1] + nz * this.sun[2]),
         );
       }
     return L;
@@ -1015,11 +1045,11 @@ export class TerrainField {
   private buildTsh(terrs: number): Float32Array {
     const N = this.N;
     const T = new Float32Array(N * N);
-    const hl = Math.hypot(SUN[0], SUN[1]) || 1;
-    const ux = SUN[0] / hl,
-      uy = SUN[1] / hl;
+    const hl = Math.hypot(this.sun[0], this.sun[1]) || 1;
+    const ux = this.sun[0] / hl,
+      uy = this.sun[1] / hl;
     const cell = this.cellM;
-    const tanE = SUN[2] / hl;
+    const tanE = this.sun[2] / hl;
     const REACH = 20;
     for (let i = 0; i < N; i++)
       for (let j = 0; j < N; j++) {
