@@ -501,10 +501,25 @@ export function rgbHex(r: number, g: number, b: number): string {
  * is the only way to measure what it does.
  */
 export const WPAL = { pal: 1 };
-export const WG0 = WPAL.pal ? "#f8f0d8" : "#faf6ec",
-  WG1 = WPAL.pal ? "#dcc79a" : "#e2d5b8";
-export const WPK0 = "#eef0d8",
-  WPK1 = "#d3d3a8";
+/* ── THE GROUND WAS A PAPER-MAP PALETTE, AND IT IS WHY SHADOWS CUT ───────
+   `#f8f0d8` to `#dcc79a` is a cartographer's warm base — the tone a printed
+   map leaves under its ink so the ink reads. It is correct on paper and wrong
+   under a sun: open ground came out as pale sand at every camera, which is
+   most of *"the terrain looks like a background not a varied lush detailled
+   world"*, and it made every cast shadow the ONLY dark thing in the frame.
+
+   That last part is worth stating plainly, because it is the cheapest half of
+   a complaint that looked like a lighting problem. A shadow is a RATIO, not a
+   value: the same shadow that reads as a soft grade on asphalt reads as a
+   knife on cream. Darkening the ground shrinks the shadow's bite without
+   touching a single light.
+
+   These are AUTHORED, exactly as the wall palette above is, and they are not
+   a claim about the colour of any square metre of San Francisco. */
+export const WG0 = WPAL.pal ? "#cfc9a8" : "#faf6ec",
+  WG1 = WPAL.pal ? "#9a9066" : "#e2d5b8";
+export const WPK0 = "#a8bd7a",
+  WPK1 = "#6d8a45";
 export const WCN0 = "#c9d79c",
   WCN1 = "#7c9455";
 

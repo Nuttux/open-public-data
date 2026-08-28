@@ -122,14 +122,14 @@ export const ST_SRF_PX1 = 2.0;
 
 export const ST_ALPHA = 0.8;
 
-/** a paved carriageway */
-export const ST_C_ROAD = "#b3aca1";
+/** a paved carriageway — ASPHALT, not the map's warm grey */
+export const ST_C_ROAD = "#4a4a4d";
 /** graded earth, before the Board orders paving */
-export const ST_C_RAW = "#c6b696";
-/** footway */
-export const ST_C_FOOT = "#e0d8c8";
+export const ST_C_RAW = "#8f8158";
+/** footway — concrete */
+export const ST_C_FOOT = "#a8a49a";
 /** the published kerb line */
-export const ST_C_KERB = "#8b8375";
+export const ST_C_KERB = "#6a6862";
 
 function hexMix(a: string, b: string, t: number): string {
   const A = parseInt(a.slice(1), 16),

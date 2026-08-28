@@ -20,9 +20,35 @@
  */
 
 /* ── the eight-tone legend, part3.html §5581 (LOOK.palette → the B set) ── */
+/* ── AUTHORED 2026-08-28, REPLACING THE MOCK'S PLACEHOLDER ────────────────
+   THE STATUS OF THESE VALUES HAS NOT CHANGED and the header above still
+   holds: they are NOT data, and no entry is a claim about what colour any one
+   building is painted. What changed is that they are now CHOSEN rather than
+   inherited. The set they replace came across from the `part3.html` mock,
+   which called them "placeholder San Francisco surfaces", and nobody had ever
+   looked at them as a picture.
+
+   Daniel, on the shipped set: *"buildings look like colored cardboard boxes
+   not like real buildings"*. Measured against that complaint, the old set was
+   sixteen desaturated warm neutrals inside a span of about twenty points of
+   chroma — creams, tans and taupes with one terracotta. A city built out of
+   it can only read as grey, whatever the light does.
+
+   The direction is San Francisco's own residential colour, which is the one
+   thing about this city's houses everybody already knows: ochre, rose, sage,
+   bay blue, mustard, brick and redwood, over masonry that stays honest. Three
+   directions were rendered at the same camera and Daniel picked this one.
+   Kept from the old set: the MATERIAL each slot means, in the header's own
+   order, so `UMAT_WALL`'s published rule maps to the same material it always
+   did and only the pigment moved.
+
+   The ROOF palettes below are deliberately untouched. `WA_ROOF` is a fallback,
+   and the roof a reader actually sees is `manifest.buildings.palette` — the
+   32-entry palette MEASURED off aerial imagery, which carries its own
+   provenance and is not ours to art-direct. */
 const WALL_B = [
-  "#cdbc98", "#d5c9b0", "#c4ab7c", "#cbaf9f",
-  "#b9c5aa", "#b2bfcb", "#bda06c", "#cfc1a2",
+  "#ddc9a0", "#e6dcc4", "#d4b378", "#dcb4a4",
+  "#b6c9a4", "#a8bfd0", "#c9a35e", "#e0d4b4",
 ];
 const ROOF_B = [
   "#a4977f", "#918a7d", "#ad7451", "#98907f",
@@ -34,9 +60,9 @@ const ROOF_B = [
    and `WAM(k) = 8 + k` is the index a material table entry resolves to. */
 export const WA_M0 = 8;
 const WA_WALL = [
-  "#e2d6bb", "#e9e1d0", "#d9c49a", "#ded2b4", "#c1cbb0", "#b0bec8",
-  "#dab6a8", "#ac6a52", "#9e7559", "#d29d6e", "#b8b6b0", "#cdc9bf",
-  "#7f8182", "#95aaad", "#a7a6a0", "#dabb7a",
+  "#f0e4c8", "#f7f1e2", "#e8c894", "#e3d5a8", "#a8c49a", "#8fb3c9",
+  "#e6a8a0", "#a85a42", "#8a5f42", "#dc9251", "#bdbab2", "#d6d2c6",
+  "#6e7276", "#7fa3ad", "#a5a49c", "#deb865",
 ];
 const WA_ROOF = [
   "#b3a98f", "#6f6b61", "#a8613f", "#7d6a53", "#7d9a8c", "#7f8a94",
