@@ -160,6 +160,61 @@ const COAST_K = 6;
    stay exactly as crisp as `coast-mask.ts` made it. */
 const HEM_CELLS = 4;
 
+/* ── THE GROUND'S FORM, WHICH IS NOT THE SAME THING AS ITS HILLSHADE ──────
+   The ground used to be shaded by exactly one number. Its normals all pointed
+   straight up, so the sun's diffuse term was a constant across the whole city
+   and every hillside was one unbroken facet with a painting on it. A reader:
+   *"looks like some pre-renaissance painting, false illusion of depth but
+   there's not really feelings of depth like in modern animations and games."*
+   That is a fair description of a surface on which light does nothing.
+
+   The obvious move — give the mesh its true normals — was tried and MEASURED,
+   and the reason it was rejected is not the one written down here before. The
+   old note said a second hillshade would come back *"olive and waxy, like a
+   satellite render"*. It does not: full true normals move the twin-peaks
+   district frame's mean by +0.28 of 255 and its standard deviation from 33.44
+   to 35.56. The real objection is direction. `lib/city/terrain.ts` bakes its
+   hillshade from `SUN` = (0.2435, 0.6346, 0.73) — 47 degrees up, and 69
+   degrees round in the DEM's own axes. `light.ts` puts the SCENE sun at 35.26
+   degrees, azimuth pinned to screen-right, which in those same axes is 0
+   degrees. **The two suns are 69 degrees apart.** Handing the mesh its true
+   normals lights every hillside from a direction the painted shading on it
+   disagrees with, and the disagreement is worst on exactly the big open
+   slopes this is trying to fix.
+
+   ── SO ONLY THE PART THE PAINTING HAS NO OPINION ABOUT IS HANDED OVER ────
+   The normal used is `up + K * (true - lowpass(true))`. The low pass is eight
+   1-2-1 passes each way, sigma about two cells, so it keeps everything above
+   roughly 300 m and the deviation carries the band from 54 m — the DEM's own
+   cell, below which there is no data — up to about 300 m. That band is
+   ridges, gullies, knolls and breaks of slope: real published shape, at the
+   scale a hillside needs to stop being a facet.
+
+   And because the deviation is zero-mean over the kernel, the LANDFORM-scale
+   diffuse term does not move, which is the whole of what a second hillshade
+   would have been. MEASURED against the same frames:
+
+     twin peaks, district    mean 133.86 -> 134.11    sd 33.44 -> 34.50
+     twin peaks, street      mean 138.09 -> 137.92    sd 33.23 -> 36.34
+     inner richmond, block   mean 139.96 -> 139.88    sd 35.86 -> 36.77
+
+   A quarter of a level of mean at worst, against three to nine per cent more
+   contrast, and the flattest district in the city is left where it was.
+
+   ── AND A NOISE BUMP WAS TRIED FIRST, AND IS NOT HERE ────────────────────
+   Three octaves of `mx_noise_float` under the DEM's own cell size, as a
+   `normalNode`, amplitude ramped by slope. At a strength that could be seen
+   at all it read as staining rather than as relief — isotropic noise on a
+   matte surface makes blotches, not landform — and at district and city
+   cameras it was invisible, because the sun is a small share of the ground's
+   value and only ALBEDO survives that far out. Real shape at 54-300 m beat
+   invented shape at 4-37 m on every camera, and it does not have to be
+   defended as a thing we made up. */
+const FORM_K = 1.2;
+/** 1-2-1 passes each way on the normal field; 8 is a sigma of about two cells */
+const FORM_LOWPASS = 8;
+
+
 /**
  * @param zexByStep the descriptor's own exaggeration table
  * @param prepare a hook the caller uses to attach what the field needs that
@@ -185,6 +240,7 @@ export function terrainLayer(
 
   const fields = new Map<number, TerrainField>();
   const colours = new Map<number, Float32Array>();
+  const normals = new Map<number, Float32Array>();
 
   function fieldFor(s: number): TerrainField {
     let t = fields.get(s);
@@ -361,6 +417,95 @@ export function terrainLayer(
     }
     colours.set(s, col);
     return col;
+  }
+
+  /**
+   * The ground's normals for a band — see §THE GROUND'S FORM.
+   *
+   * One buffer per band, built lazily and swapped, exactly as the colours are
+   * and for the same reason: a normal reads a slope, and a slope is
+   * exaggerated, so a band change moves it. Three buffers at 67,600 nodes.
+   */
+  function normalsFor(sIdx: number): Float32Array {
+    let n = normals.get(sIdx);
+    if (n) return n;
+    const E = exI.length;
+    n = new Float32Array((N * N + E) * 3);
+    const zx = zexByStep[sIdx] ?? zexByStep[0];
+
+    /* the TRUE normal at every node, off the published elevation, at the
+       exaggeration this band actually draws it at */
+    const tx = new Float32Array(N * N);
+    const ty = new Float32Array(N * N);
+    const tz = new Float32Array(N * N);
+    for (let i = 0; i < N; i++)
+      for (let j = 0; j < N; j++) {
+        const ia = i > 0 ? i - 1 : i;
+        const ib = i < N - 1 ? i + 1 : i;
+        const ja = j > 0 ? j - 1 : j;
+        const jb = j < N - 1 ? j + 1 : j;
+        const gx = ((t0.elevAt(ib, j) - t0.elevAt(ia, j)) / ((ib - ia) * step)) * zx;
+        const gy = ((t0.elevAt(i, jb) - t0.elevAt(i, ja)) / ((jb - ja) * step)) * zx;
+        const L = Math.hypot(gx, gy, 1);
+        const k = i * N + j;
+        tx[k] = -gx / L;
+        ty[k] = 1 / L;
+        tz[k] = -gy / L;
+      }
+
+    /* the LANDFORM-scale normal: the same field, low-passed. Separable 1-2-1,
+       `FORM_LOWPASS` times each way — the same kernel `lib/city/terrain.ts`
+       uses on its own penumbra, at a width chosen here rather than there. */
+    const lowpass = (a: Float32Array): Float32Array => {
+      let src: Float32Array<ArrayBufferLike> = a;
+      let dst: Float32Array<ArrayBufferLike> = new Float32Array(N * N);
+      for (let pass = 0; pass < FORM_LOWPASS; pass++) {
+        for (let i = 0; i < N; i++)
+          for (let j = 0; j < N; j++) {
+            const k = i * N + j;
+            const l = j > 0 ? src[k - 1] : src[k];
+            const r = j < N - 1 ? src[k + 1] : src[k];
+            dst[k] = (l + 2 * src[k] + r) * 0.25;
+          }
+        let t: Float32Array<ArrayBufferLike> = src;
+        src = dst;
+        dst = t === a ? new Float32Array(N * N) : t;
+        for (let i = 0; i < N; i++)
+          for (let j = 0; j < N; j++) {
+            const k = i * N + j;
+            const u = i > 0 ? src[k - N] : src[k];
+            const d = i < N - 1 ? src[k + N] : src[k];
+            dst[k] = (u + 2 * src[k] + d) * 0.25;
+          }
+        t = src;
+        src = dst;
+        dst = t;
+      }
+      return src as Float32Array;
+    };
+    const bx = lowpass(tx);
+    const by = lowpass(ty);
+    const bz = lowpass(tz);
+
+    const put = (i: number, j: number, o: number): void => {
+      const k = i * N + j;
+      const vx = (tx[k] - bx[k]) * FORM_K;
+      const vy = 1 + (ty[k] - by[k]) * FORM_K;
+      const vz = (tz[k] - bz[k]) * FORM_K;
+      const L = Math.hypot(vx, vy, vz);
+      n![o] = vx / L;
+      n![o + 1] = vy / L;
+      n![o + 2] = vz / L;
+    };
+    for (let i = 0; i < N; i++)
+      for (let j = 0; j < N; j++) put(i, j, (i * N + j) * 3);
+    /* a sub-vertex takes its own cell's node rather than a blend: the normal
+       is already the smooth part of a smooth field, and the four corners of a
+       53.8 m cell differ by less than the coast refinement's own K = 6 step */
+    for (let e = 0; e < E; e++) put(exI[e], exJ[e], (N * N + e) * 3);
+
+    normals.set(sIdx, n);
+    return n;
   }
 
   /** the hem's RGBA, out of the band's own colour buffer plus the stored fade */
@@ -600,6 +745,7 @@ export function terrainLayer(
     hemA = Float32Array.from(halpha);
 
     colours.clear();
+    normals.clear();
     g.setAttribute("position", new Float32BufferAttribute(pos, 3));
     const col0 = coloursFor(curStep < 0 ? 0 : curStep);
     g.setAttribute("color", new BufferAttribute(col0, 3));
@@ -608,13 +754,19 @@ export function terrainLayer(
     // ── the hem, as its own compact copy of the vertices it uses ──────────
     if (hidx.length) {
       const hp = new Float32Array(hemSrc.length * 3);
+      /* the hem takes the ground's own normals: it IS the ground, and a
+         normal that disagreed with its neighbour's would put a shading seam
+         exactly where this mesh exists to remove one */
+      const nrm0 = normalsFor(curStep < 0 ? 0 : curStep);
       const hn = new Float32Array(hemSrc.length * 3);
       for (let v = 0; v < hemSrc.length; v++) {
         const b = hemSrc[v] * 3;
         hp[v * 3] = pos[b];
         hp[v * 3 + 1] = pos[b + 1];
         hp[v * 3 + 2] = pos[b + 2];
-        hn[v * 3 + 1] = 1;
+        hn[v * 3] = nrm0[b];
+        hn[v * 3 + 1] = nrm0[b + 1];
+        hn[v * 3 + 2] = nrm0[b + 2];
       }
       hemG.setAttribute("position", new BufferAttribute(hp, 3));
       hemG.setAttribute("normal", new BufferAttribute(hn, 3));
@@ -625,25 +777,7 @@ export function terrainLayer(
     } else {
       hemMesh.visible = false;
     }
-    /* ── THE GROUND'S NORMALS POINT STRAIGHT UP, ON PURPOSE ────────────────
-       The vertex colours ALREADY carry a hillshade — a hand-tuned one, off the
-       full-resolution DEM, with the project's own sun in it. Give this mesh its
-       true normals and a directional light and the frame gets a SECOND
-       hillshade over the first: same direction, compounding contrast, and the
-       city comes back olive and waxy, like a satellite render.
-
-       With every normal straight up the sun's diffuse term is CONSTANT across
-       the ground, so it adds no shading of its own — and the one thing it does
-       add is the thing a hillshade cannot: the SHADOW a building or a ridge
-       throws across it. That is the whole reason the sun is here. The relief
-       you see is still the published DEM's; it is just drawn once instead of
-       twice.
-
-       Buildings keep their real normals — they have no baked shading and every
-       facet needs its own. */
-    const up = new Float32Array((N * N + E) * 3);
-    for (let v = 0; v < N * N + E; v++) up[v * 3 + 1] = 1;
-    g.setAttribute("normal", new BufferAttribute(up, 3));
+    g.setAttribute("normal", new BufferAttribute(normalsFor(curStep < 0 ? 0 : curStep), 3));
     g.computeBoundingSphere();
 
     const cellA = step * step;
@@ -703,9 +837,21 @@ export function terrainLayer(
       const col = coloursFor(s);
       g.setAttribute("color", new BufferAttribute(col, 3));
       (g.getAttribute("color") as BufferAttribute).needsUpdate = true;
+      const nrm = normalsFor(s);
+      g.setAttribute("normal", new BufferAttribute(nrm, 3));
+      (g.getAttribute("normal") as BufferAttribute).needsUpdate = true;
       if (hemMesh.visible) {
         hemG.setAttribute("color", new BufferAttribute(hemColours(col), 4));
         (hemG.getAttribute("color") as BufferAttribute).needsUpdate = true;
+        const hn = new Float32Array(hemSrc.length * 3);
+        for (let v = 0; v < hemSrc.length; v++) {
+          const b = hemSrc[v] * 3;
+          hn[v * 3] = nrm[b];
+          hn[v * 3 + 1] = nrm[b + 1];
+          hn[v * 3 + 2] = nrm[b + 2];
+        }
+        hemG.setAttribute("normal", new BufferAttribute(hn, 3));
+        (hemG.getAttribute("normal") as BufferAttribute).needsUpdate = true;
       }
     },
     dispose() {
@@ -715,6 +861,7 @@ export function terrainLayer(
       hemM.dispose();
       fields.clear();
       colours.clear();
+      normals.clear();
     },
   };
   return layer;
