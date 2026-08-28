@@ -43,6 +43,13 @@
    eight bits with no dither (§THE BANDS), and the surface had no event on it
    at all — no glint, and no mark where it meets the land (§THE GLINT,
    §THE FOAM).
+
+   ── AND THE PLATE DID NOT KNOW WHERE THE WATER WAS ──────────────────────
+   Everything above describes the plate's COLOUR. Its SHAPE was two triangles
+   over an 80 km square, drawn under everything, on the assumption that the
+   ground would cover the land. That assumption is the whole of §THE PLATE IS
+   CUT and it was wrong by 22.5 km2. Read that section before changing the
+   geometry back.
    ═══════════════════════════════════════════════════════════════════════ */
 
 import {
@@ -75,7 +82,7 @@ import {
 } from "@/lib/city/water";
 import { HAZE, WA, lerpHex } from "@/lib/city/terrain";
 import { axonBasis } from "../camera";
-import { rasteriseRings, type Ring } from "../coast-mask";
+import { rasteriseRings, type CoastMask, type Lattice, type Ring } from "../coast-mask";
 import { SUN_SCENE } from "../light";
 import type { CityLayer } from "../engine";
 
@@ -202,10 +209,278 @@ function hash2(x: number, y: number): number {
   return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   §THE PLATE IS CUT — WHY THE BAY WAS LYING ACROSS THE PORTOLA.
+
+   Daniel, looking at Silver Ave: *"weird af"* — large blue polygons across
+   whole city blocks, with buildings standing up out of them. There is no
+   water there. It is not a canal, a ring winding or an unhandled hole: the
+   plate was two triangles over the whole world at y = 0, and it relied
+   ENTIRELY on the ground being drawn on top of it. Wherever the ground is
+   missing, the bay is what you see.
+
+   And the ground is missing over a fifth of San Francisco. `base/terrain`'s
+   `mask` and `base/coast`'s rings both come from DataSF `txuc-3kzm` and they
+   do not agree. MEASURED against the city's own published neighbourhood
+   rings (`base/hood-rings.json`), cell by cell on the 260 x 260 DEM lattice:
+
+     Visitacion Valley       84.1 % of its cells not in the DEM mask
+     Bayview Hunters Point   82.8 %
+     Treasure Island         64.4 %
+     Portola                 62.7 %
+     Potrero Hill            31.8 %
+     Lakeshore               25.2 %
+     ... 35 neighbourhoods at 0.0 %
+
+   7,768 of 41,546 cells — **18.7 %, 22.5 km2** — lie inside a published San
+   Francisco neighbourhood and outside the DEM's land mask. `layers/terrain.ts`
+   builds only where `maskAt` is true, so it builds nothing there, and this
+   plate showed through every gap the blocks, streets and roofs left. That is
+   the whole of the defect, and the DEM hole is NOT this file's to fix — it is
+   recorded here because this file is where it was found.
+
+   ── SO THE PLATE ASKS A WATER REGISTER INSTEAD OF ASSUMING ──────────────
+   The cut is the same question `terrain.ts` §THE COAST asks, answered the
+   other way round, on the same lattice at the same `K` so the two edges
+   interlock instead of racing:
+
+     water  =  NOT inside (the city's own ring UNION the regional hydrography)
+               OR the cell is `cityOffshore`
+
+   The second clause is not a fudge and it is not ours: `txuc-3kzm` is a LEGAL
+   boundary that runs kilometres into the Pacific and straight across the
+   Golden Gate, and `base/surround-coast.json` publishes one bit per city cell
+   for *"more than `city_pad_m` = 300 m outside the TIGERweb land polygon"* —
+   which is exactly the rule `TerrainField.maskAt` already applies to decide
+   the same cells are not ground. Without it the cut would delete 21.9 km2 of
+   real open water inside the county line.
+
+   Beyond the city's own lattice the plate stays whole: the far shore is
+   painted by `layers/surround.ts`, which draws OVER this (renderOrder -3
+   against -4), so there is nothing there for a cut to fix.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/** the plate's rectangle, world metres: x0, y0, x1, y1 */
+export type Box = readonly [number, number, number, number];
+
+/**
+ * `terrain.ts`'s own `COAST_K`. The two files cut the SAME rings on the SAME
+ * lattice, so this number has to be that number: at a different K the land's
+ * staircase and the water's would fall on different sub-cell lines and leave a
+ * seam of background between them.
+ */
+const CUT_K = 6;
+
+export interface CityCut {
+  readonly lat: Lattice;
+  readonly mask: CoastMask;
+  /** the published bit: this cell is more than 300 m outside TIGERweb land */
+  offshore(i: number, j: number): boolean;
+}
+
+/** what the cut removed, so the header above can be re-measured */
+export interface PlateStats {
+  /** sub-cells of the city lattice the registers call water */
+  waterSub: number;
+  /** and land — the ones this plate no longer paints */
+  landSub: number;
+  /** merged rectangles emitted for the city lattice */
+  rects: number;
+  triangles: number;
+}
+
+/** the city's own DEM lattice, out of the published projection block */
+function cityLattice(data: CityData): Lattice | null {
+  const p = data.manifest.proj;
+  const num = (k: string): number | null =>
+    typeof p[k] === "number" ? (p[k] as number) : null;
+  const X0 = num("X0");
+  const Y0 = num("Y0");
+  const s = num("s");
+  const N = num("N");
+  if (X0 === null || Y0 === null || s === null || N === null || s <= 0 || N < 2) {
+    return null;
+  }
+  const cell = 1 / s;
+  return { x0: X0, y0: Y0, nx: N - 1, ny: N - 1, cellW: cell, cellH: cell };
+}
+
+function cityCut(
+  data: CityData,
+  cityRings: readonly Ring[],
+  sc: { rings: readonly Ring[]; cityOffshore(i: number, j: number): boolean },
+): CityCut | null {
+  const lat = cityLattice(data);
+  if (!lat) return null;
+  const sets: (readonly Ring[])[] = [];
+  if (cityRings.length) sets.push(cityRings);
+  if (sc.rings.length) sets.push(sc.rings);
+  /* ONE REGISTER IS NOT ENOUGH, for the same reason `terrain.ts` §maskFor
+     gives: the county outline alone calls the whole Pacific inside the county
+     line land, and the regional hydrography alone calls the pier field water.
+     With one in hand the honest plate is the uncut one. */
+  if (sets.length < 2) return null;
+  return {
+    lat,
+    mask: rasteriseRings(sets, lat, CUT_K),
+    offshore: (i, j) => sc.cityOffshore(i, j),
+  };
+}
+
+/**
+ * THE PLATE, AS RECTANGLES.
+ *
+ * With no cut this is the two triangles it always was. With one, the city's
+ * own lattice is replaced by the sub-cells the registers call water, and the
+ * rest of the plate is the four bands around that lattice.
+ *
+ * ── WHY RECTANGLES AND NOT ONE QUAD PER SUB-CELL ────────────────────────
+ * The lattice is 259 x 259 cells at `CUT_K` = 6, so 1,554 x 1,554 sub-cells:
+ * a quad each is 2.4 million of them for a surface that is FLAT and whose
+ * only varying quantity is a texture coordinate linear in world position. Two
+ * sub-cells side by side and one rectangle spanning both rasterise to the same
+ * pixels. So runs are merged along a row and then down the rows — the ordinary
+ * greedy two-pass merge — and the open bay collapses to a handful of quads
+ * while the shoreline keeps every step.
+ */
+export function plateGeometry(
+  box: Box,
+  cut: CityCut | null,
+): { geo: BufferGeometry; stats: PlateStats | null } {
+  const [bx0, by0, bx1, by1] = box;
+  const pos: number[] = [];
+  const uv: number[] = [];
+  const idx: number[] = [];
+  const Y = 0;
+  const su = 1 / (bx1 - bx0);
+  const sv = 1 / (by1 - by0);
+  let rects = 0;
+
+  const rect = (rx0: number, ry0: number, rx1: number, ry1: number): void => {
+    if (rx1 - rx0 <= 0 || ry1 - ry0 <= 0) return;
+    const b = pos.length / 3;
+    pos.push(rx0, Y, ry0, rx1, Y, ry0, rx1, Y, ry1, rx0, Y, ry1);
+    uv.push(
+      (rx0 - bx0) * su, (ry0 - by0) * sv,
+      (rx1 - bx0) * su, (ry0 - by0) * sv,
+      (rx1 - bx0) * su, (ry1 - by0) * sv,
+      (rx0 - bx0) * su, (ry1 - by0) * sv,
+    );
+    idx.push(b, b + 1, b + 2, b, b + 2, b + 3);
+    rects++;
+  };
+
+  let stats: PlateStats | null = null;
+
+  if (!cut) {
+    rect(bx0, by0, bx1, by1);
+  } else {
+    const { lat, mask, offshore } = cut;
+    const K = mask.K;
+    const KK = K * K;
+    const lx0 = Math.max(bx0, lat.x0);
+    const ly0 = Math.max(by0, lat.y0);
+    const lx1 = Math.min(bx1, lat.x0 + lat.nx * lat.cellW);
+    const ly1 = Math.min(by1, lat.y0 + lat.ny * lat.cellH);
+    // the four bands around the cut lattice — whole, because the far shore is
+    // painted over this rather than cut out of it
+    rect(bx0, by0, bx1, ly0);
+    rect(bx0, ly1, bx1, by1);
+    rect(bx0, ly0, lx0, ly1);
+    rect(lx1, ly0, bx1, ly1);
+
+    const W = lat.nx * K;
+    const H = lat.ny * K;
+    const wet = new Uint8Array(W * H);
+    let waterSub = 0;
+    for (let j = 0; j < lat.ny; j++) {
+      for (let i = 0; i < lat.nx; i++) {
+        const n = offshore(i, j) ? 0 : mask.countIn(i, j);
+        if (n === KK) continue;
+        if (n === 0) {
+          for (let sj = 0; sj < K; sj++) {
+            const r = (j * K + sj) * W + i * K;
+            for (let si = 0; si < K; si++) wet[r + si] = 1;
+          }
+          waterSub += KK;
+          continue;
+        }
+        for (let sj = 0; sj < K; sj++) {
+          for (let si = 0; si < K; si++) {
+            if (mask.at(i, j, si, sj)) continue;
+            wet[(j * K + sj) * W + i * K + si] = 1;
+            waterSub++;
+          }
+        }
+      }
+    }
+
+    /* the greedy merge. `open` holds the rectangles still growing downward,
+       keyed by their sub-column span, so a run that repeats on the next row
+       extends the one above it instead of starting a second quad. */
+    const sw = lat.cellW / K;
+    const sh = lat.cellH / K;
+    let open: { c0: number; c1: number; r0: number }[] = [];
+    const closeRect = (o: { c0: number; c1: number; r0: number }, r: number): void =>
+      rect(
+        lat.x0 + o.c0 * sw,
+        lat.y0 + o.r0 * sh,
+        lat.x0 + o.c1 * sw,
+        lat.y0 + r * sh,
+      );
+    for (let r = 0; r <= H; r++) {
+      const runs: { c0: number; c1: number; r0: number }[] = [];
+      if (r < H) {
+        const row = r * W;
+        let c = 0;
+        while (c < W) {
+          if (!wet[row + c]) { c++; continue; }
+          const c0 = c;
+          while (c < W && wet[row + c]) c++;
+          runs.push({ c0, c1: c, r0: r });
+        }
+      }
+      // both lists are sorted by c0, so this is one merge walk
+      let a = 0;
+      let b = 0;
+      const next: { c0: number; c1: number; r0: number }[] = [];
+      while (a < open.length || b < runs.length) {
+        const o = open[a];
+        const u = runs[b];
+        if (o && u && o.c0 === u.c0 && o.c1 === u.c1) { next.push(o); a++; b++; }
+        else if (o && (!u || o.c0 < u.c0)) { closeRect(o, r); a++; }
+        else if (u) { next.push(u); b++; }
+      }
+      open = next;
+    }
+
+    stats = {
+      waterSub,
+      landSub: W * H - waterSub,
+      rects,
+      triangles: idx.length / 3,
+    };
+  }
+
+  const geo = new BufferGeometry();
+  geo.setAttribute("position", new Float32BufferAttribute(pos, 3));
+  geo.setAttribute("uv", new Float32BufferAttribute(uv, 2));
+  const n = new Float32Array(pos.length);
+  for (let v = 0; v < pos.length / 3; v++) n[v * 3 + 1] = 1;
+  geo.setAttribute("normal", new BufferAttribute(n, 3));
+  geo.setIndex(new BufferAttribute(new Uint32Array(idx), 1));
+  geo.computeBoundingSphere();
+  return { geo, stats };
+}
+
 export function waterLayer(
   data: CityData,
   opts: WaterLayerOptions,
-): CityLayer & { mesh: Mesh; foamStats(): FoamStats | null } {
+): CityLayer & {
+  mesh: Mesh;
+  foamStats(): FoamStats | null;
+  plateStats(): PlateStats | null;
+} {
   const meta = data.manifest.water as unknown as WaterMeta & {
     world: [number, number, number, number];
   };
@@ -433,21 +708,8 @@ export function waterLayer(
      water. Moving a plane in Y also moves it on SCREEN in an axonometric
      projection — 79 px at the street camera — so the fix is `polygonOffset`:
      the plane stays at zero and is pushed back in the DEPTH BUFFER only. */
-  const g = new BufferGeometry();
-  const Y = 0;
-  g.setAttribute(
-    "position",
-    new Float32BufferAttribute(
-      [x0, Y, y0, x1, Y, y0, x1, Y, y1, x0, Y, y0, x1, Y, y1, x0, Y, y1],
-      3,
-    ),
-  );
-  g.setAttribute("uv", new Float32BufferAttribute([0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1], 2));
-  g.setAttribute(
-    "normal",
-    new Float32BufferAttribute([0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0], 3),
-  );
-  g.computeBoundingSphere();
+  const box: Box = [x0, y0, x1, y1];
+  let g = plateGeometry(box, null).geo;
 
   const m = new MeshBasicMaterial({
     map,
@@ -473,12 +735,36 @@ export function waterLayer(
      the far shore's surf as much as the city's. */
   mesh.renderOrder = -4;
 
+  /* ── THE PLATE IS CUT, ONCE THE SECOND REGISTER LANDS ───────────────────
+     `data.surroundCoast()` is a sidecar fetch, so the first frame gets the
+     whole quad — which is what shipped, and is only ever seen for the
+     microtask before the rings resolve. See §THE PLATE IS CUT. */
+  let plate: PlateStats | null = null;
+  const cityRingsSync: Ring[] = (() => {
+    const c = data.get("base/coast");
+    return c ? decodeCoast(c).coast : [];
+  })();
+  void data
+    .surroundCoast()
+    .catch(() => null)
+    .then((sc) => {
+      if (!sc || !sc.rings.length) return;
+      const cut = cityCut(data, cityRingsSync, sc);
+      if (!cut) return;
+      const next = plateGeometry(box, cut);
+      mesh.geometry = next.geo;
+      g.dispose();
+      g = next.geo;
+      plate = next.stats;
+    });
+
   const foam = buildFoam(data, mesh);
 
   return {
     name: "water",
     mesh,
     foamStats: () => foam.stats,
+    plateStats: () => plate,
     dispose() {
       g.dispose();
       m.dispose();
