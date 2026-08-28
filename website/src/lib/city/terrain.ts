@@ -516,7 +516,7 @@ export const WPAL = { pal: 1 };
 
    These are AUTHORED, exactly as the wall palette above is, and they are not
    a claim about the colour of any square metre of San Francisco. */
-export const WG0 = WPAL.pal ? "#cfc9a8" : "#faf6ec",
+export const WG0 = WPAL.pal ? "#b3ac8e" : "#faf6ec",
   WG1 = WPAL.pal ? "#9a9066" : "#e2d5b8";
 export const WPK0 = "#a8bd7a",
   WPK1 = "#6d8a45";
