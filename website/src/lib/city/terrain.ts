@@ -539,6 +539,46 @@ export const WPK0 = "#a3b184",
 export const WCN0 = "#b6c398",
   WCN1 = "#6f855f";
 
+/* ── THE REGION'S GROUND, BY WHAT IS GROWING ON IT ──────────────────────────
+   Everything outside the city's own DEM used to be coloured from ONE quantity,
+   its elevation, lerped between a low sand and a high sand. Elevation cannot
+   tell a reservoir from a subdivision from a redwood hillside, so it did not:
+   the whole region came out as one tone, which is *"someone put a color and
+   thats it theres no detail, no texture nothing."*
+
+   Two cheaper answers were tried first and both are recorded in the pipeline
+   script with their numbers — a detail normal map from real 3DEP moved 0.57 %
+   of the frame at NINE times strength (this land is lit nearly head-on, so
+   shading is not the lever), and a colour mottle moved 4.43 %, which varies
+   the tone of a wrong colour. What was actually missing is that the map did
+   not know what was there.
+
+   Now it does: `base/surround-landcover` carries the fraction of every 110 x
+   139 m cell that is each of these eight families, reduced from NLCD 2021 at
+   30 m. The cell's base tone is those colours blended by those fractions, and
+   the relief, the aerial haze, the city seam and the mottle all still run on
+   top of it exactly as before.
+
+   ── THESE EIGHT COLOURS ARE AUTHORED ────────────────────────────────────
+   The FRACTIONS are measured; the colours are chosen, the same status as the
+   wall palette and the greens above, and they are not a claim about the
+   colour of any square metre. Two things constrain the choice. They sit
+   LIGHTER than the city's own ground, because this land is far away behind
+   haze and it must not compete with the subject — `surround.ts` opens by
+   saying the region is *"the land that is not the subject"* and that stays
+   true. And they are separated by HUE rather than by value, because value is
+   already spoken for by the relief shading. */
+export const XLC: readonly string[] = [
+  "#9fb0b4", // water — reservoirs and inland water, muted blue-grey
+  "#b3b294", // wetland — the South Bay marsh, olive
+  "#8f9d83", // conifer — Marin's evergreen, the darkest of the eight
+  "#a9b28b", // broadleaf — oak woodland and mixed forest
+  "#c5b78f", // shrub — coastal chaparral
+  "#d6c895", // grass — the California hills, gold most of the year
+  "#ccc2b1", // developed — stucco suburb, warm; NOT concrete grey
+  "#dad2bd", // barren — rock, sand and clay, the lightest
+];
+
 /** elevation quantum of the ramp, and the canopy quantum */
 export const WTQ = 64,
   WCQ = 9;

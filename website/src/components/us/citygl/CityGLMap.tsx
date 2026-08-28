@@ -25,7 +25,7 @@ import { markTerrainCells } from "@/lib/citygl/mark-cells";
 import { fireLayer, type FireLayer } from "@/lib/citygl/fire";
 import { decodeCoast } from "@/lib/city/water";
 import { waterLayer } from "@/lib/citygl/layers/water";
-import { surroundLayer } from "@/lib/citygl/layers/surround";
+import { loadSurroundLandcover, surroundLayer } from "@/lib/citygl/layers/surround";
 import { buildingsLayer } from "@/lib/citygl/layers/buildings";
 import { heroesLayer } from "@/lib/citygl/layers/heroes";
 import { capsLayer } from "@/lib/citygl/layers/caps";
@@ -257,6 +257,13 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       const fineDem = await loadFineDem(data.assetBase);
       if (disposed) return;
 
+      /* what is GROWING on the land that is not the subject. Fetched here with
+         the elevation because it is read while the surround's colours are
+         first composed, and a city that publishes none gets null and the
+         elevation tint, exactly as before. */
+      const surroundLC = await loadSurroundLandcover(data.assetBase);
+      if (disposed) return;
+
       const terrain = terrainLayer(
         data,
         descriptor.look.zexByStep,
@@ -351,6 +358,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         terrain.fieldFor(0),
         descriptor.look.zexByStep,
         surroundCoast?.rings ?? null,
+        surroundLC,
       );
       if (surround) {
         engine.scene.add(surround.mesh);

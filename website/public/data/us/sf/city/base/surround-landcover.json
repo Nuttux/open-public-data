@@ -1,0 +1,85 @@
+{
+ "w": 416,
+ "h": 280,
+ "families": [
+  "water",
+  "wetland",
+  "conifer",
+  "broadleaf",
+  "shrub",
+  "grass",
+  "developed",
+  "barren"
+ ],
+ "classes": {
+  "water": [
+   11
+  ],
+  "wetland": [
+   90,
+   95
+  ],
+  "conifer": [
+   42
+  ],
+  "broadleaf": [
+   41,
+   43
+  ],
+  "shrub": [
+   51,
+   52
+  ],
+  "grass": [
+   71,
+   72,
+   73,
+   74,
+   81,
+   82
+  ],
+  "developed": [
+   21,
+   22,
+   23,
+   24
+  ],
+  "barren": [
+   31,
+   32
+  ]
+ },
+ "what": {
+  "water": "open water: reservoirs, lakes, the bay",
+  "wetland": "woody and emergent wetland, incl. the South Bay marsh",
+  "conifer": "evergreen forest",
+  "broadleaf": "deciduous and mixed forest, incl. oak woodland",
+  "shrub": "shrub and scrub, incl. coastal chaparral",
+  "grass": "grassland, herbaceous, pasture and crop",
+  "developed": "developed, all four intensities",
+  "barren": "barren rock, sand and clay; unconsolidated shore"
+ },
+ "mult": 4,
+ "sampleM": 27.5,
+ "dtype": "u8",
+ "layout": "row-major cell (j * w + i), then 8 family bytes",
+ "encoding": "fraction of the cell that is that family, 255 = all of it",
+ "coverage": "the eight bytes need not sum to 255. The remainder is the part of the cell NLCD does not cover \u2014 open Pacific beyond the L48 land boundary. A cell summing to 0 is NOT KNOWN and the reader keeps the elevation tint there rather than inventing a colour.",
+ "bbox4326": [
+  -122.62,
+  37.6,
+  -122.1,
+  37.95
+ ],
+ "source": {
+  "publisher": "MRLC / USGS",
+  "dataset": "NLCD 2021 Land Cover (CONUS)",
+  "layer": "NLCD_2021_Land_Cover_L48",
+  "url": "https://www.mrlc.gov/data",
+  "service": "https://www.mrlc.gov/geoserver/mrlc_display/ows",
+  "what": "30 m national land cover, fetched at 4x the surround cell grid and reduced to per-cell family fractions",
+  "classes_recovered": "the WMS returns a styled image, so classes are recovered from colours using the colour map the SERVER publishes via GetStyles. Exact match only \u2014 a pixel matching no entry fails the run.",
+  "licence": "USGS: USGS-authored or produced data and information are in the public domain"
+ },
+ "note": "This is land cover, not land USE, and it is 2021 \u2014 it describes the region today and says nothing about any earlier year the map can be scrubbed to."
+}

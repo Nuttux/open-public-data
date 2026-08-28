@@ -51,6 +51,7 @@ import {
   HAZE,
   QF,
   XBASE_K,
+  XLC,
   buildSurroundLam,
   reliefK,
   skylitN,
@@ -64,6 +65,52 @@ import type { CityLayer } from "../engine";
 const LOW = [0xec, 0xe5, 0xd6] as const;
 const HIGH = [0xcf, 0xc3, 0xab] as const;
 const TINT_ZMAX = 300;
+
+/**
+ * ── WHAT IS GROWING OUT THERE, PER CELL ────────────────────────────────────
+ *
+ * `base/surround-landcover` — the fraction of every surround cell that is each
+ * of eight land cover families, reduced from NLCD 2021 at 30 m by
+ * `build_surround_landcover.py`. One byte a family, 255 = the whole cell.
+ *
+ * **The eight need not sum to 255.** The remainder is the part of the cell
+ * NLCD does not cover, which here is open Pacific beyond the L48 land
+ * boundary, and a cell summing to zero is NOT KNOWN — those keep the
+ * elevation tint rather than being given a colour to fill the hole.
+ */
+export interface SurroundLandcover {
+  w: number;
+  h: number;
+  /** `(j * w + i) * 8 + family`, a fraction byte */
+  f: Uint8Array;
+}
+
+/** the eight family colours as numbers, resolved once from the palette */
+const LC_RGB: readonly (readonly [number, number, number])[] = XLC.map((hex) => [
+  parseInt(hex.slice(1, 3), 16),
+  parseInt(hex.slice(3, 5), 16),
+  parseInt(hex.slice(5, 7), 16),
+] as const);
+
+/** a city with no land cover file draws the elevation tint, which is not an error */
+export async function loadSurroundLandcover(
+  base: string,
+): Promise<SurroundLandcover | null> {
+  try {
+    const [mr, br] = await Promise.all([
+      fetch(`${base}/base/surround-landcover.json`),
+      fetch(`${base}/base/surround-landcover.bin`),
+    ]);
+    if (!mr.ok || !br.ok) return null;
+    const meta = (await mr.json()) as { w: number; h: number; families: string[] };
+    const f = new Uint8Array(await br.arrayBuffer());
+    if (meta.families.length !== LC_RGB.length) return null;
+    if (f.length !== meta.w * meta.h * LC_RGB.length) return null;
+    return { w: meta.w, h: meta.h, f };
+  } catch {
+    return null;
+  }
+}
 
 /**
  * ── THE FAR SHORE IS CUT AT THE PUBLISHED LINE, AND A CELL CUT DID NOT DO IT ──
@@ -109,6 +156,7 @@ export function surroundLayer(
   field: TerrainField,
   zexByStep: readonly number[],
   clip?: readonly Ring[] | null,
+  landcover?: SurroundLandcover | null,
 ): (CityLayer & { mesh: Mesh; surroundStats(): SurroundStats }) | null {
   const sd = data.surround();
   if (!sd) return null;
@@ -119,6 +167,10 @@ export function surroundLayer(
   const XNW = XW + 1;
   const XNH = XH + 1;
   const BASE = XNW * XNH;
+
+  /** the land cover, if the city published any — see §WHAT IS GROWING */
+  const lc = landcover && landcover.w === XW && landcover.h === XH ? landcover : null;
+  const NLC = LC_RGB.length;
 
   const hz = [
     parseInt(HAZE.slice(1, 3), 16),
@@ -380,9 +432,45 @@ const SEAM_M = 900;
         const za = s.z(ii, jj);
         const l = lam[jj * XW + ii];
         const tt = Math.min(1, Math.pow(za / TINT_ZMAX, 0.8));
-        const R0 = LOW[0] + (HIGH[0] - LOW[0]) * tt;
-        const G0 = LOW[1] + (HIGH[1] - LOW[1]) * tt;
-        const B0 = LOW[2] + (HIGH[2] - LOW[2]) * tt;
+        let R0 = LOW[0] + (HIGH[0] - LOW[0]) * tt;
+        let G0 = LOW[1] + (HIGH[1] - LOW[1]) * tt;
+        let B0 = LOW[2] + (HIGH[2] - LOW[2]) * tt;
+        /* ── AND WHERE IT IS KNOWN, WHAT IS ACTUALLY GROWING THERE ───────
+           The lerp above reads ONE quantity, the cell's elevation, and no
+           elevation can tell a reservoir from a subdivision from a redwood
+           hillside. `base/surround-landcover` can: it carries the fraction of
+           this cell that is each of eight families, so the base tone becomes
+           those colours blended by those fractions.
+
+           It is a REPLACEMENT of the guess and not a wash over it, but only
+           to the extent the cell is covered — `cov` is the fraction NLCD
+           knows, so a cell it does not cover keeps the elevation tint whole
+           and a half-covered coastal cell keeps half of it. Nothing invents a
+           colour for ground the source is silent about.
+
+           Everything after this point — the relief, the haze, the city seam,
+           the mottle — is unchanged and still runs on top. */
+        if (lc) {
+          const b = (jj * lc.w + ii) * NLC;
+          let cov = 0;
+          let LR = 0;
+          let LG = 0;
+          let LB = 0;
+          for (let k = 0; k < NLC; k++) {
+            const fr = lc.f[b + k];
+            if (!fr) continue;
+            cov += fr;
+            LR += LC_RGB[k][0] * fr;
+            LG += LC_RGB[k][1] * fr;
+            LB += LC_RGB[k][2] * fr;
+          }
+          if (cov > 0) {
+            const w = Math.min(1, cov / 255);
+            R0 += (LR / cov - R0) * w;
+            G0 += (LG / cov - G0) * w;
+            B0 += (LB / cov - B0) * w;
+          }
+        }
         const lamK = (QF.relief ? reliefK(l) : 0.9 + 0.15 * l) * (QF.xlam ? XBASE_K : 1);
         skylitN(R0, G0, B0, lamK, tiltOf(l), out);
         const h = field.hazeAt(s.mx[i], s.my[j]);
