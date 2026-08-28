@@ -279,6 +279,41 @@ export function meshElevAt(
 }
 
 const FORM_K = 1.2;
+
+/**
+ * THE HILLSHADE'S SWING ON THIS RENDERER — see `TerrainOptions.reliefGain`.
+ *
+ * MEASURED by sweep at the Twin Peaks street camera. The RE-CENTRING that
+ * comes with this option is the win and the gain is not:
+ *
+ *     gain    frame range    open hillside sd    p01
+ *     1.0        140              29.65           63
+ *     1.4        142              29.95           59
+ *     1.8        143              30.19           56
+ *     2.2        143              30.39           53
+ *
+ * Doubling the gain buys 0.74 of a level of standard deviation on the open
+ * hillside, and by eye 2.2 is barely distinguishable from 1.0. 1.4 is taken
+ * because the trend is real and monotonic and costs nothing, NOT because it
+ * is worth much — anyone tuning this should know that before spending time
+ * here. What is worth something is the re-centring: it puts open ground back
+ * where the palette expects it after the sun came down, worth 8.9 levels of
+ * mean on that same hillside.
+ *
+ * The hill's remaining flatness is NOT a shading-direction problem any more.
+ * It is the DEM's own gentleness over that summit at 53.8 m, and the ACES
+ * shoulder, which compresses exactly the bright end a sunlit hillside sits in.
+ *
+ * `?rg=N` moves it without a rebuild, in the idiom `quality.ts` uses.
+ */
+const RELIEF_GAIN = 1.4;
+
+function reliefGainFromUrl(): number {
+  if (typeof window === "undefined") return RELIEF_GAIN;
+  const m = /(?:\?|&)rg=([0-9.]+)/.exec(window.location.search);
+  const v = m ? Number(m[1]) : NaN;
+  return Number.isFinite(v) && v >= 0 ? v : RELIEF_GAIN;
+}
 /** 1-2-1 passes each way on the normal field; 8 is a sigma of about two cells */
 const FORM_LOWPASS = 8;
 
@@ -334,6 +369,9 @@ export function terrainLayer(
       t = new TerrainField(chunk!, proj, {
         zex: zexByStep[s] ?? zexByStep[0],
         sun: fieldSun(axonBasis(projection).R),
+        /* a lower sun flattens `lam` and darkens open ground; this re-centres
+           it and buys back the hill contrast — see `RELIEF_GAIN` */
+        reliefGain: reliefGainFromUrl(),
       });
       prepare?.(t);
       fields.set(s, t);

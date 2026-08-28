@@ -733,6 +733,26 @@ export interface TerrainOptions {
    * a reader sees without being able to name it.
    */
   readonly sun?: readonly [number, number, number];
+  /**
+   * HOW FAR THE HILLSHADE SWINGS, ABOUT THE VALUE FLAT GROUND TAKES.
+   *
+   * 1, the default, is the published behaviour exactly and the Canvas page
+   * gets it unchanged.
+   *
+   * It exists because `sun` and this are coupled, and the coupling bites. The
+   * diffuse term a FLAT cell returns is the sun's own up-component: 0.730 for
+   * the published sun at 47 degrees, but only 0.500 for a sun at 30. `reliefK`
+   * maps that through `0.60 + 0.66 * lam`, so simply lowering the sun drops
+   * open ground from 1.082 of its albedo to 0.930 — a 14 % darkening of every
+   * flat surface in the city, which is a side effect and not a decision.
+   *
+   * So the term is re-centred: whatever a flat cell returns for THIS sun is
+   * mapped back onto `SUN[2]`, the value the published palette was built
+   * around, and only the departure from flat is scaled. Open ground therefore
+   * does not move at any elevation, and `gain` buys hill contrast without
+   * spending the frame's mid-tone on it.
+   */
+  readonly reliefGain?: number;
 }
 
 /**
@@ -891,6 +911,7 @@ export class TerrainField {
     const sv = opts.sun ?? SUN;
     const sl = Math.hypot(sv[0], sv[1], sv[2]) || 1;
     this.sun = [sv[0] / sl, sv[1] / sl, sv[2] / sl];
+    this.reliefGain = opts.reliefGain ?? 1;
     const N = this.N;
     this.cellPark = new Uint8Array(N * N);
     this.cellBurn = new Uint8Array(N * N);
@@ -991,6 +1012,8 @@ export class TerrainField {
   /** the sun the hillshade and the ridge march are built for — see
    *  `TerrainOptions.sun`. `SUN` unless a caller says otherwise. */
   private readonly sun: readonly [number, number, number];
+  /** see `TerrainOptions.reliefGain` */
+  private readonly reliefGain: number;
 
   private buildLam(): Float32Array {
     const N = this.N;
@@ -1094,9 +1117,23 @@ export class TerrainField {
     return T;
   }
 
+  /**
+   * RE-CENTRE THIS SUN'S FLAT VALUE ONTO THE PUBLISHED ONE, THEN SCALE.
+   *
+   * See `TerrainOptions.reliefGain`. With the published sun and a gain of 1
+   * this is the identity — `this.sun[2]` IS `SUN[2]` — so the Canvas page and
+   * every number ever measured against it are untouched, by construction
+   * rather than by care.
+   */
+  private reliefMap(lam: number): number {
+    const v = SUN[2] + (lam - this.sun[2]) * this.reliefGain;
+    return v < 0 ? 0 : v > 1 ? 1 : v;
+  }
+
   /** the diffuse term with the hill's own shadow taken out of it */
   lamSh(k: number): number {
-    return this.shadowOn ? this.lam[k] * (1 - this.shadowK * this.tsh[k]) : this.lam[k];
+    const lam = this.reliefMap(this.lam[k]);
+    return this.shadowOn ? lam * (1 - this.shadowK * this.tsh[k]) : lam;
   }
 
   /** drop the node colour cache — a burn phase, a canopy change, a dial move */
