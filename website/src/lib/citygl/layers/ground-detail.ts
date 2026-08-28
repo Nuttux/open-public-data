@@ -400,6 +400,17 @@ function buf(withColour: boolean): Buf {
  * properties the reference lists, each losing tenths of a hectare where it
  * overhangs its own beach.
  */
+/**
+ * How long a ground-ring triangle's edge may be before it is split, metres.
+ *
+ * `streets.ts` uses 22 for the carriageway and this is the same number for the
+ * same reason: a flat triangle chorded across curving ground lifts off it in
+ * the middle, and on a translucent fill that shows as a wedge.
+ */
+const RING_MAX_EDGE_M = 22;
+/** and its recursion ceiling, so a pathological ring cannot run away */
+const RING_SPLIT_DEPTH = 6;
+
 function ringTris(
   ring: readonly (readonly [number, number])[],
   yOf: (x: number, y: number) => number,
@@ -438,7 +449,63 @@ function ringTris(
     b.pos.push(wx, yOf(wx, wy), wy);
     if (b.col && rgb) b.col.push(rgb[0], rgb[1], rgb[2]);
   }
-  for (const t of taken) b.idx.push(base + t[0], base + t[1], base + t[2]);
+
+  /* ── AND THE TRIANGLES ARE SPLIT UNTIL THEY FIT THE HILL ───────────────
+     A published park ring has vertices where the PARK's corners are, not
+     where the ground bends, so ear clipping it gives triangles hundreds of
+     metres across. Each of those is a flat plane chorded across terrain that
+     curves under it, and the wash is translucent — so where the chord lifts
+     off the hill the ground shows through at one value and where it cuts in
+     it shows at another. On Twin Peaks that came out as huge pale wedges
+     fanning across the hillside, which is what a reader sees at the deepest
+     camera and what looked for a while like a lighting bug: it survived
+     turning off the sun's shadow map, the tree shadows, the canopy-shadow
+     layer, the occlusion pass and the whole air pass.
+
+     `streets.ts` §ringTris already solves exactly this for the carriageway
+     and this is the same split with the same constants. It was simply never
+     applied to the ground rings, which is why the defect showed on a park and
+     not on a road.
+
+     A sub-vertex takes the ring's own colour: `rgb` is one tone for the whole
+     ring, so nothing has to be interpolated and a split cannot shift a hue. */
+  const px = (i: number): number => b.pos[i * 3];
+  const py = (i: number): number => b.pos[i * 3 + 2];
+  const put = (wx: number, wy: number): number => {
+    const i = b.pos.length / 3;
+    b.pos.push(wx, yOf(wx, wy), wy);
+    if (b.col && rgb) b.col.push(rgb[0], rgb[1], rgb[2]);
+    return i;
+  };
+  const split = (a: number, c: number, d: number, depth: number): void => {
+    if (depth < RING_SPLIT_DEPTH) {
+      const ac = Math.hypot(px(c) - px(a), py(c) - py(a));
+      const cd = Math.hypot(px(d) - px(c), py(d) - py(c));
+      const da = Math.hypot(px(a) - px(d), py(a) - py(d));
+      const longest = Math.max(ac, cd, da);
+      if (longest > RING_MAX_EDGE_M) {
+        /* halve the LONGEST edge, so a sliver converges instead of spinning */
+        if (longest === ac) {
+          const mid = put((px(a) + px(c)) / 2, (py(a) + py(c)) / 2);
+          split(a, mid, d, depth + 1);
+          split(mid, c, d, depth + 1);
+          return;
+        }
+        if (longest === cd) {
+          const mid = put((px(c) + px(d)) / 2, (py(c) + py(d)) / 2);
+          split(a, c, mid, depth + 1);
+          split(a, mid, d, depth + 1);
+          return;
+        }
+        const mid = put((px(d) + px(a)) / 2, (py(d) + py(a)) / 2);
+        split(a, c, mid, depth + 1);
+        split(mid, c, d, depth + 1);
+        return;
+      }
+    }
+    b.idx.push(a, c, d);
+  };
+  for (const t of taken) split(base + t[0], base + t[1], base + t[2], 0);
   return true;
 }
 
