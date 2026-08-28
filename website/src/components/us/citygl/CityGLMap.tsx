@@ -19,7 +19,7 @@ import { CityData } from "@/lib/city/data";
 import { projection } from "@/lib/city/projection";
 import { CityEngine } from "@/lib/citygl/engine";
 import type { CityDescriptor } from "@/lib/citygl/descriptor";
-import { meshElevAt, terrainLayer } from "@/lib/citygl/layers/terrain";
+import { loadFineDem, meshElevAt, terrainLayer } from "@/lib/citygl/layers/terrain";
 import { decodeParks } from "@/lib/city/trees";
 import { markTerrainCells } from "@/lib/citygl/mark-cells";
 import { fireLayer, type FireLayer } from "@/lib/citygl/fire";
@@ -246,6 +246,17 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          city. */
       const cityCoast = surroundCoast?.rings ?? null;
 
+      /* ── THE FINE GROUND, BEFORE ANYTHING STANDS ON IT ──────────────
+         Twelve layers below place their geometry against `groundAt`, so a
+         ground that changed after they were built would detach every one of
+         them by up to the fine field's residual — 4.66 m rms and 19.20 m at
+         the 99th percentile. Awaiting it HERE, before the terrain layer that
+         draws it and before the fabric that stands on it, means there is no
+         rebuild and no detachment. A city without the file gets null and the
+         coarse triangles, exactly as before. */
+      const fineDem = await loadFineDem(data.assetBase);
+      if (disposed) return;
+
       const terrain = terrainLayer(
         data,
         descriptor.look.zexByStep,
@@ -288,6 +299,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           }
         },
         cityCoast,
+        fineDem,
       );
       engine.scene.add(terrain.mesh);
       engine.add(terrain);
@@ -427,6 +439,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       const groundAt = meshElevAt(
         field,
         data.manifest.proj as unknown as Parameters<typeof meshElevAt>[1],
+        fineDem,
       );
 
       /* ── THE LANDMARKS, BEFORE THE FABRIC ───────────────────────────
