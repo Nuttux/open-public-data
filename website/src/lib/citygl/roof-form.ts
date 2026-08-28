@@ -163,6 +163,72 @@ export const TRAY_FASCIA_M = DE.parapet;
  */
 export const FASCIA_PROUD_M = 0.01;
 
+/**
+ * HOW FAR THE CORNICE OVERSAILS THE WALL, WORLD METRES — A DECLARED
+ * CONVENTION, AND IT IS AN EXAGGERATION ON PURPOSE.
+ *
+ * `FASCIA_PROUD_M` above is 1 cm and its own note says why: a hair, enough to
+ * separate two surfaces in the depth buffer and *"a thirtieth of a pixel,
+ * which no rasteriser resolves"*. That is the correct number for a band whose
+ * only job is not to z-fight. It is the wrong number for the thing this city's
+ * buildings actually have at the top of the wall.
+ *
+ * A San Francisco cornice projects roughly 0.3 to 0.6 m. Drawn at 0.4 m it is
+ * ONE PIXEL at the closest camera this project allows (`controls.ts` clamps
+ * zoom at 26, which is 0.41 m per pixel), and one pixel is not a cornice — it
+ * is the same hard line the building already ended in. The complaint this
+ * answers, from the page: *"buildings look like colored cardboard boxes not
+ * like real buildings"*, and *"even normal houses all flat?"*.
+ *
+ * So it is drawn at 1.0 m, about twice what it is, and that is a DRAWING
+ * CONVENTION exactly as `heroes.ts` §CABLE_M is — that constant carries the
+ * same argument in the same words: *"drawn honestly it would not exist. So it
+ * is drawn at a size that reads"*. Same licence, same obligation to declare
+ * it, and it is declared here.
+ *
+ * WHY IT IS WORTH THE EXAGGERATION AND A FACADE TILE IS NOT. A cornice is not
+ * decoration on a wall, it is a change in the SILHOUETTE: it puts a horizontal
+ * shadow across the top of every wall in the city, so the building's top edge
+ * reads as an EDGE with something under it rather than as the place the colour
+ * stops. That is a lighting event, and a lighting event survives being small
+ * in a way that a texture mark does not.
+ *
+ * It costs one ring and two triangles an edge, because the coping ring is
+ * moved outward rather than a slab being added outside it — see `trayForm`.
+ *
+ * ── AND IT IS A FRACTION OF THE HEIGHT, NOT ONE NUMBER ──────────────────
+ * Shipped flat at 1.0 m first and photographed, and the picture said no. On
+ * the Financial District towers it was right — they came out capped, with a
+ * hard line under the crown, which is what this is for. On a Richmond row
+ * house 7.6 m wide it was a PALE LID: 1 m proud on each side of a 10 m
+ * building is a seventh of the plan turned into bright roof colour, and the
+ * street read as a row of mushrooms.
+ *
+ * That is not a defect of the exaggeration, it is a defect of applying one
+ * number to a population whose heights span two orders of magnitude — and the
+ * buildings themselves do not do that either. A cornice is sized against its
+ * own facade: a three-storey dwelling carries a small one and a twelve-storey
+ * block carries a deep one. So the projection is a fraction of the wall it
+ * crowns, floored so it never falls back under a pixel and capped so a tower
+ * does not grow a hat.
+ *
+ * At the closest camera this project allows (0.41 m per pixel) the floor is
+ * 1.3 px and the ceiling 3.4 px, which is the band this had to land in: under
+ * a pixel it is the hard line it replaced, over about four it stops being a
+ * cornice and starts being a canopy.
+ */
+export const CORNICE_H_FRAC = 0.07;
+/** the floor on that fraction, world metres — see `CORNICE_H_FRAC` */
+export const CORNICE_MIN_M = 0.55;
+/** and its ceiling */
+export const CORNICE_MAX_M = 1.4;
+
+/** the projection a wall of this height crowns itself with, world metres */
+export function corniceProjM(hM: number): number {
+  const p = hM * CORNICE_H_FRAC;
+  return p < CORNICE_MIN_M ? CORNICE_MIN_M : p > CORNICE_MAX_M ? CORNICE_MAX_M : p;
+}
+
 // ── the value factors are written for sRGB bytes ────────────────────────────
 
 /**
@@ -218,6 +284,11 @@ const rE = new Int32Array(FORM_MAX_VERTS);
 /** the fascia's head and foot — see `TRAY_FASCIA_V` */
 const rF = new Int32Array(FORM_MAX_VERTS);
 const rG = new Int32Array(FORM_MAX_VERTS);
+/** the cornice's soffit where it meets the wall — see `trayForm` */
+const rH = new Int32Array(FORM_MAX_VERTS);
+/** the plan pushed OUTWARD along the miter, for the cornice */
+const sQX = new Float32Array(FORM_MAX_VERTS);
+const sQY = new Float32Array(FORM_MAX_VERTS);
 /** triples of RING indices, wound CCW in the plan */
 const sTri: number[] = [];
 const sTri2: number[] = [];
@@ -414,6 +485,27 @@ export interface TrayOpts {
    * not pay for it. See `TRAY_FASCIA_V`.
    */
   fascia?: boolean;
+  /**
+   * THE COLOUR THE CORNICE WEARS, AND IT IS THE WALL'S AND NOT THE ROOF'S.
+   *
+   * Shipped taking the roof's colour, because it grew out of the parapet's
+   * outer face and a parapet IS the roof turned up at its edge. Photographed
+   * and measured, that cost the whole frame 3.4 points of warmth (R-B 22.0 to
+   * 18.6 at the Inner Richmond's closest camera): the cornice is a lot of new
+   * surface, this city's roofs are cool grey, and every pixel of it replaced a
+   * warm wall or a warm street.
+   *
+   * The measurement pointed at something true rather than at a tuning knob. A
+   * San Francisco cornice is not roof. It is the top of the FACADE — timber or
+   * pressed metal, painted with the front it crowns — and painting it the
+   * colour of the tar behind it was simply wrong. So the caller passes the
+   * wall's colour and gets both the accurate answer and the warmth back.
+   *
+   * Omitted, it falls back to the roof colour, which is what the parapet's own
+   * fascia was and is still right for a caller with no facade to match — the
+   * cap layer sweeps second solids that have no wall of their own.
+   */
+  corniceRGB?: RGB;
 }
 
 /**
@@ -467,6 +559,41 @@ export function trayForm(
   }
   if (!triangulate(sPX, sPY, n, sTri)) return false;
 
+  /* ── THE CORNICE IS THE COPING RING, MOVED OUT ─────────────────────────
+     A slab hung outside the coping would be three new rings and six triangles
+     an edge on every flat roof in the city. The same shape costs ONE ring and
+     two triangles if the coping's own outer edge is what oversails: the band
+     at the published top simply starts `CORNICE_PROJ_M` further out, its
+     outer face is the fascia that was already being built there, and the only
+     thing genuinely new is the SOFFIT that closes the underside.
+
+     `sQ` is the plan pushed outward along the same miter `sP` was pushed
+     inward along. With no fascia asked for, the projection is zero and `sQ`
+     IS the plan — so a caller that does not want a cornice gets byte-for-byte
+     the geometry it got before.
+
+     The outward offset is tested the same way the inward one is, with the
+     sign flipped. A mitered push outward cannot invert a convex corner but a
+     concave one can pinch, and a pinched ring here would put the coping band
+     inside out. On refusal the projection drops to zero and the roof is the
+     tray it always was rather than a broken one.
+
+     THE SIGN IS THE WHOLE OF IT, AND IT WAS WRONG TWICE. `sQ` is built at
+     `-cor` along the miter, so that is the offset `offsetSurvives` has to be
+     asked about — passing `+cor` asks whether the ring survives being pushed
+     INWARD, which is a different question with a different answer. And the
+     winding argument does not flip: an outward offset GROWS the area and
+     keeps its sign, exactly as a surviving inward one does, so it is the same
+     `ccw ? 1 : -1` the deck uses. Passing both wrong cancelled into a refusal
+     that was silent, and the test below went on passing because it asserted
+     the fascia's old position — which is what a refused cornice leaves. */
+  let cor = opts.fascia && drop > 0 ? corniceProjM(hM) : 0;
+  if (cor > 0 && !offsetSurvives(ring, sMX, sMY, -cor, ccw ? 1 : -1)) cor = 0;
+  for (let k = 0; k < n; k++) {
+    sQX[k] = ring.x[ring.off + k] - sMX[k] * cor;
+    sQY[k] = ring.y[ring.off + k] - sMY[k] * cor;
+  }
+
   /* ── decided; from here on the sink is written ────────────────────────
      FIVE RINGS AND NOT THREE, because a value has to be flat across a face.
      A vertex colour interpolates, so sharing the coping's inner edge with the
@@ -477,7 +604,12 @@ export function trayForm(
   const raw: RGB = roof;
   const innerC = shadeRGB(roof, DE.innerv);
   const deckC = shadeRGB(roof, DE.deckv);
-  ringVerts(sink, rA, ring.x, ring.y, ring.off, n, elevM, hM, raw);         // coping, outer
+  /* the coping's OUTER ring is the cornice's top once the band oversails, so
+     it carries the cornice's colour out there and the roof's colour stays on
+     the inner edge where the roof actually starts. At `cor` = 0 the two rings
+     are the same place and this is the plain coping it always was. */
+  const copingOut: RGB = cor > 0 ? (opts.corniceRGB ?? roof) : raw;
+  ringVerts(sink, rA, sQX, sQY, 0, n, elevM, hM, copingOut);                // coping, outer
   ringVerts(sink, rB, sPX, sPY, 0, n, elevM, hM, raw);                      // coping, inner
   ringVerts(sink, rC, sPX, sPY, 0, n, elevM, hM, innerC);                   // inner face, top
   ringVerts(sink, rD, sPX, sPY, 0, n, elevM, hM - drop, innerC);            // inner face, foot
@@ -502,17 +634,40 @@ export function trayForm(
      whole way round for the same reason the inner face is: which edges a
      reader sees is the depth buffer's answer at this bearing and not ours. */
   if (opts.fascia && drop > 0) {
-    const out = FASCIA_PROUD_M;
+    /* the face stands on `sQ` — at `cor` = 0 that is `FASCIA_PROUD_M`'s old
+       job done by a ring that is already there, and at `CORNICE_PROJ_M` it is
+       the cornice's own face. One code path, two readings. */
+    const out = cor > 0 ? 0 : FASCIA_PROUD_M;
     for (let k = 0; k < n; k++) {
-      sPX[k] = ring.x[ring.off + k] - sMX[k] * out;
-      sPY[k] = ring.y[ring.off + k] - sMY[k] * out;
+      sPX[k] = sQX[k] - sMX[k] * out;
+      sPY[k] = sQY[k] - sMY[k] * out;
     }
-    const fasciaC = shadeRGB(roof, DE.outerv);
+    const fasciaC = shadeRGB(opts.corniceRGB ?? roof, DE.outerv);
     ringVerts(sink, rF, sPX, sPY, 0, n, elevM, hM, fasciaC);
     ringVerts(sink, rG, sPX, sPY, 0, n, elevM, hM - drop, fasciaC);
+    /* ── AND THE SOFFIT, WHICH IS THE WHOLE POINT ─────────────────────────
+       The underside of the projection, from the cornice's foot back to the
+       wall it grows out of. It is the only genuinely new surface here and it
+       is the one that does the work: it faces DOWN, so the rig's sun never
+       reaches it and its hemisphere term returns the ground colour, and the
+       result is a hard horizontal shadow across the top of every wall in the
+       city. That line is what a reader sees as "this building has a top"
+       rather than "the colour stops here".
+
+       It carries the fascia's own value rather than a darker one on purpose:
+       the darkness is the LIGHT's answer to a downward normal, not a painted
+       one. Painting it dark as well would darken it twice, which is the
+       mistake §the parapet's cast shadow already refuses for the deck.
+
+       Built only when the projection survived — at `cor` = 0 the soffit has
+       no width and would be a degenerate quad in the wall's own plane. */
+    if (cor > 0) {
+      ringVerts(sink, rH, ring.x, ring.y, ring.off, n, elevM, hM - drop, fasciaC);
+    }
     for (let k = 0; k < n; k++) {
       const k1 = (k + 1) % n;
       quad(sink, rF[k], rG[k], rG[k1], rF[k1], true);
+      if (cor > 0) quad(sink, rG[k], rH[k], rH[k1], rG[k1], true);
     }
   }
   return true;

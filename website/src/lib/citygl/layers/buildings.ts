@@ -977,7 +977,15 @@ export function buildingsMesh(
        has why it is built rather than graded onto the wall, and `DE.outerv`
        has the measurement: three legible steps at the roof edge — coping,
        fascia, wall — instead of a building that ends in one hard line. */
-    if (!roofed) roofed = trayForm(sink, ring, elev, wallH, rc, { fascia: true });
+    if (!roofed) {
+      /* `corniceRGB` is this footprint's WALL colour: the band that oversails
+         is the top of the facade, not the roof. `roof-form.ts`
+         §THE COLOUR THE CORNICE WEARS has the measurement that found it. */
+      roofed = trayForm(sink, ring, elev, wallH, rc, {
+        fascia: true,
+        corniceRGB: wc,
+      });
+    }
     if (!roofed) {
       for (let k = 1; k + 1 < c; k++) {
         idxRoof.push(roof, roof + k, roof + k + 1);

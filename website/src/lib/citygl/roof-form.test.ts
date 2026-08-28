@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { DE, PITCH_MAX_HALFRISE_M, PITCH_RUN } from "@/lib/city/roofs";
 import {
   capForm,
-  FASCIA_PROUD_M,
+  corniceProjM,
   FORM_MAX_VERTS,
   HIP_MAX_VERTS,
   hipForm,
@@ -202,13 +202,36 @@ describe("trayForm", () => {
       .map((c, i) => [c, i] as const)
       .filter(([c]) => c.every((v, k) => Math.abs(v - want[k]) < 1e-9))
       .map(([, i]) => i);
-    // two rings of four
-    expect(band.length).toBe(8);
-    // OUTSIDE: every fascia vertex is further from the centre than the plan
-    for (const i of band) {
-      expect(Math.abs(r.x[i])).toBeCloseTo(10 + FASCIA_PROUD_M, 6);
-      expect(Math.abs(r.y[i])).toBeCloseTo(10 + FASCIA_PROUD_M, 6);
-      expect(r.elev[i]).toBe(5);
+    /* THREE rings of four now, not two: the band became a CORNICE, and the
+       third ring is the soffit that closes its underside. `roof-form.ts`
+       §CORNICE_PROJ_M has the argument. */
+    expect(band.length).toBe(12);
+    for (const i of band) expect(r.elev[i]).toBe(5);
+
+    /* Eight of the twelve stand `CORNICE_PROJ_M` OUTSIDE the plan — the
+       cornice's own face, head and foot. A sign error here would put the
+       cornice inside the wall, where it is hidden in every frame and looks,
+       from a screenshot, exactly like a cornice that is not drawn. That is
+       not hypothetical: it is what shipped for one commit, because the offset
+       and the winding were BOTH passed wrong and cancelled into a silent
+       refusal that left this assertion passing at the old position. */
+    const out = band.filter((i) => Math.abs(r.x[i]) > 10 + 1e-6);
+    expect(out.length).toBe(8);
+    for (const i of out) {
+      expect(Math.abs(r.x[i])).toBeCloseTo(10 + corniceProjM(H), 6);
+      expect(Math.abs(r.y[i])).toBeCloseTo(10 + corniceProjM(H), 6);
+    }
+
+    /* and the other four sit EXACTLY on the plan: the soffit meets the wall
+       it grows out of. Off by any amount and the cornice either floats clear
+       of the building — a gap a reader can see straight through at this
+       bearing — or buries its inner edge in the wall. */
+    const inn = band.filter((i) => Math.abs(r.x[i]) <= 10 + 1e-6);
+    expect(inn.length).toBe(4);
+    for (const i of inn) {
+      expect(Math.abs(r.x[i])).toBeCloseTo(10, 6);
+      expect(Math.abs(r.y[i])).toBeCloseTo(10, 6);
+      expect(r.h[i]).toBeCloseTo(H - DE.parapet, 9);
     }
     // and it spans exactly the declared parapet, head at the published top
     const hs = [...new Set(band.map((i) => Number(r.h[i].toFixed(9))))].sort((a, b) => a - b);
@@ -226,11 +249,41 @@ describe("trayForm", () => {
     const on = recorder();
     expect(trayForm(on.sink, rect(20, 20), 0, H, roof, { fascia: true })).toBe(true);
     expect(has(on)).toBe(true);
-    /* and it is exactly two rings and one quad an edge more — a fascia that
-       quietly doubled the tray would be a 40 % triangle bill on every flat
-       roof in the city */
-    expect(on.x.length - off.x.length).toBe(8);
-    expect(on.tris.length - off.tris.length).toBe(8);
+    /* and it is exactly THREE rings and two quads an edge more. This guard is
+       the reason the cornice is the coping ring moved outward rather than a
+       slab hung outside it: the slab wanted three NEW rings and six triangles
+       an edge on all 151,379 flat roofs, and this way the only new surface is
+       the soffit. Retargeted from 8/8, not widened — a cornice that quietly
+       doubled the tray is still the thing this test exists to catch. */
+    expect(on.x.length - off.x.length).toBe(12);
+    expect(on.tris.length - off.tris.length).toBe(16);
+  });
+
+  it("oversails the wall with the coping itself, so the silhouette changes", () => {
+    /* THE PROPERTY THE CORNICE EXISTS FOR, and neither test above catches it.
+       Both of those are about the fascia band's own vertices; this is about
+       the COPING — the raw-coloured band at the published top, which is the
+       edge a reader actually sees against the sky. If the cornice were built
+       as a separate slab and the coping left on the plan, every assertion
+       above would still pass and the building's outline would be unchanged,
+       which is the whole complaint. */
+    const r = recorder();
+    const roof: [number, number, number] = [0.5, 0.4, 0.3];
+    expect(trayForm(r.sink, rect(20, 20), 0, H, roof, { fascia: true })).toBe(true);
+    const coping = r.col
+      .map((c, i) => [c, i] as const)
+      .filter(([c]) => c.every((v, k) => Math.abs(v - roof[k]) < 1e-9))
+      .map(([, i]) => i)
+      .filter((i) => Math.abs(r.h[i] - H) < 1e-9);
+    /* its outer edge is a cornice's projection clear of the plan */
+    const far = coping.filter((i) => Math.abs(r.x[i]) > 10 + 1e-6);
+    expect(far.length).toBe(4);
+    for (const i of far) {
+      expect(Math.abs(r.x[i])).toBeCloseTo(10 + corniceProjM(H), 6);
+    }
+    /* and nothing is built above the published height, which is the promise
+       `trayForm` makes and the cornice must not break */
+    for (const h of r.h) expect(h).toBeLessThanOrEqual(H + 1e-9);
   });
 
   it("carries the ramp weight into BOTH the inset and the drop, with no floor", () => {
