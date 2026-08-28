@@ -15,8 +15,13 @@ import { Projection } from "./projection";
 import type { Frame } from "./terrain";
 import {
   buildSurroundLam,
+  canopyMottle,
   LAM0,
+  luminance,
   paintCell,
+  PLATE_KMAX,
+  PLATE_PAD,
+  plateRect,
   QF,
   resTune,
   RS,
@@ -27,10 +32,6 @@ import {
   terrainRGB,
   tiltOf,
   WA,
-  luminance,
-  plateRect,
-  PLATE_KMAX,
-  PLATE_PAD,
 } from "./terrain";
 import { coastBand, wedgeCovered, buildShoal, depthM, assertRefinement, resampleC1, shoalCellAlpha, shoalNodeAlpha, SHOAL_A0, SHOAL_REACH, drawShoreCorridor, BAY_OPEN, SHORE_IN, SHORE_OUT, buildDepthPlate } from "./water";
 import {
@@ -2282,5 +2283,59 @@ describe("the ground plate a camera move can use", () => {
     expect(plateRect(p, cam(1000, 500, 0.15 * 1.1), W, H, dpr, PLATE_KMAX)).not.toBeNull();
     expect(plateRect(p, cam(1000, 500, 0.15 / 1.02), W, H, dpr, PLATE_KMAX)).toBeNull();
     expect(plateRect(p, cam(1004, 500, 0.15), W, H, dpr, PLATE_KMAX)).toBeNull();
+  });
+});
+
+describe("canopyMottle", () => {
+  const green = (): Float64Array => new Float64Array([120, 150, 90]);
+
+  it("does nothing where there is no canopy", () => {
+    /* the mottle varies the canopy TINT, so it must be exactly zero wherever
+       that tint is — open ground, a street, a bare cell. Anything else is
+       painting noise onto surfaces the register says are not treed. It uses
+       the same 0.06 floor `terrainRGB` uses, on the same normalised quantity. */
+    for (const cov of [0, 1, 5, 10]) {
+      const c = green();
+      canopyMottle(4242, cov, c);
+      expect([c[0], c[1], c[2]]).toEqual([120, 150, 90]);
+    }
+  });
+
+  it("is deterministic in the node index", () => {
+    /* the node colour cache is invalidated by a burn phase, a band change and
+       a rebuild. A draw that moved would repaint every park in the city each
+       time any of those happened. */
+    const a = green(), b = green();
+    canopyMottle(991, 200, a);
+    canopyMottle(991, 200, b);
+    expect([a[0], a[1], a[2]]).toEqual([b[0], b[1], b[2]]);
+  });
+
+  it("stays inside a byte at full cover, for every node", () => {
+    /* THE BUG THIS EXISTS FOR. `cov` is the published canopy byte, 0..255, and
+       scaling the jitter by it directly multiplied the mottle by up to 255 —
+       which saturated the clamp at every treed node and made the strength
+       constant do nothing at all. Two very different strengths came back with
+       the identical maximum change, which was the only tell. */
+    for (let k = 0; k < 3000; k++) {
+      const c = new Float64Array([250, 250, 250]);
+      canopyMottle(k, 255, c);
+      for (const ch of c) {
+        expect(ch).toBeGreaterThanOrEqual(0);
+        expect(ch).toBeLessThanOrEqual(255);
+      }
+    }
+  });
+
+  it("actually varies between neighbouring nodes", () => {
+    /* nodes are walked in index order, so a hash that left neighbours adjacent
+       would lay a smooth gradient across a park rather than a mix of stands */
+    const vals: number[] = [];
+    for (let k = 0; k < 12; k++) {
+      const c = green();
+      canopyMottle(k, 220, c);
+      vals.push(c[1]);
+    }
+    expect(Math.max(...vals) - Math.min(...vals)).toBeGreaterThan(150 * 0.08);
   });
 });

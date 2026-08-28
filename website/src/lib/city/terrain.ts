@@ -553,6 +553,68 @@ for (let k = 0; k < WTBL.length; k++) {
   WTBL_B[k] = parseInt(h.slice(5, 7), 16);
 }
 
+/* ── ONE GREEN FOR EVERY TREED CELL IS WHY A PARK READS AS MOSS ──────────
+   `WTBL` is a real ramp — 2 park states x 64 elevation steps x 9 canopy steps
+   — and inside a flat, fully treed park it collapses to ONE ENTRY. Golden
+   Gate Park is flat and its canopy fraction is pinned near the top, so every
+   node in it lands on the same colour and the park comes out as a single
+   stippled mass. Daniel: *"Canopies still look like giant bushes"*.
+
+   That the fix belongs HERE and not in the tree layers was measured rather
+   than guessed. `citygl/tree-geometry.ts` §ONE GREEN PER FAMILY put a
+   per-instance jitter on all 195,310 street trees and all 50,897 park masses;
+   Golden Gate Park moved **0.51 % of the frame**, and **1.60 % with that
+   jitter cranked to four times what shipped**. The park's green is not the
+   foliage geometry at all — it is this table, painted on the ground.
+
+   ── WHAT IS PUBLISHED, AND WHAT THIS IS ─────────────────────────────────
+   The canopy FRACTION is published and is not touched: the mottle is a factor
+   ON the colour the published fraction already chose, and it is scaled BY that
+   fraction, so open ground, streets and bare cells are left exactly as they
+   were and only treed ground varies. What is declared is that a wood is not
+   one colour, which no register records either way.
+
+   Deterministic in the node's own index, so a burn phase, a band change or a
+   rebuild puts every node back at the colour it had — the node cache
+   (`tnST`/`tnKey`) would otherwise hand out a different green each time it was
+   invalidated, which is a flicker across every park in the city.
+
+   The scale is the DEM's: one draw per node, 53.8 m apart, interpolated
+   between. That is coarser than a crown and it is the right coarseness — it
+   is stand-sized rather than tree-sized, which is what varies in a real wood
+   and is also the only scale this grid can express. */
+const CANOPY_MOTTLE = 0.26;
+/** how much of the mottle is a warm/cool skew rather than a value change */
+const CANOPY_MOTTLE_WARM = 0.35;
+
+/**
+ * Vary a node's colour where it is treed, in place, in sRGB bytes.
+ *
+ * `cov` is the published canopy byte, 0..255 — NOT a fraction, and that cost a
+ * round: scaling the jitter by it directly multiplied the mottle by up to 255,
+ * which saturated the clamp at every treed node and made the strength constant
+ * do nothing at all. Both 0.5 and 0.10 came back with the same maximum change
+ * of 234, which is the tell. So it is normalised HERE the way `terrainRGB`
+ * normalises it — `can * (1.5 / 255)`, capped at 1 — and the mottle is then
+ * zero exactly where the tint it varies is zero.
+ */
+export function canopyMottle(k: number, cov: number, c: Float64Array): void {
+  const q = Math.min(1, cov * (1.5 / 255));
+  if (!(q > 0.06)) return;
+  let h = Math.imul(k | 0, 0x9e3779b1);
+  h ^= h >>> 15;
+  h = Math.imul(h, 0x85ebca6b);
+  h ^= h >>> 13;
+  const v = ((h >>> 8) & 1023) / 511.5 - 1;
+  const w = ((h >>> 20) & 511) / 255.5 - 1;
+  const kv = 1 + v * CANOPY_MOTTLE * q;
+  const warm = w * CANOPY_MOTTLE * CANOPY_MOTTLE_WARM * q;
+  const cl = (x: number): number => (x < 0 ? 0 : x > 255 ? 255 : x);
+  c[0] = cl(c[0] * (kv + warm));
+  c[1] = cl(c[1] * kv);
+  c[2] = cl(c[2] * (kv - warm));
+}
+
 /** true where the canopy tint is applied to the ground */
 export const WFLG = { tint: 1 };
 
@@ -1199,14 +1261,17 @@ export class TerrainField {
       }
     const li = i < 1 ? 1 : i > N - 2 ? N - 2 : i,
       lj = j < 1 ? 1 : j > N - 2 ? N - 2 : j;
+    const cov = n ? nc / n : 0;
     terrainRGB(
       this.elevAt(i, j),
       this.lamSh(li * N + lj),
       n ? np / n : 0,
       n ? burnT * (nb / n) : 0,
-      n ? nc / n : 0,
+      cov,
       sc3,
     );
+    /* a wood is not one colour — see §ONE GREEN FOR EVERY TREED CELL */
+    canopyMottle(k, cov, sc3);
     this.tnR[k] = sc3[0];
     this.tnG[k] = sc3[1];
     this.tnB[k] = sc3[2];
