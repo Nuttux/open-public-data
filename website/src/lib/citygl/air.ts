@@ -576,8 +576,35 @@ const COOL = toLinearGain(SKYC);
  * followed the frame would make the same roof a different colour at two
  * zooms of the same city, which is a bug that looks like a decision.
  */
-const GRADE_LO = 0.287;
-const GRADE_HI = 0.632;
+/* ── AND THEY WERE RE-MEASURED WHEN THE FRAME MOVED ──────────────────────
+   The quantiles above were read when the chain ended at `NoToneMapping` and
+   `groundE` was 2.398. Both moved: `engine.ts` §and a tone curve put an ACES
+   shoulder on the output and `light.ts` §groundE lifted the ceiling to 3.2.
+   A knee pair is a statement about where the frame's tones ARE, so it goes
+   stale the moment the frame is re-exposed, silently and without failing.
+
+   Re-MEASURED on the same protocol, at the four stops. Note `?tm=none` is
+   REQUIRED for this: the smoothstep below reads `pow(luma, 1/2.2)` BEFORE the
+   output transform, and only with the curve off does a screenshot equal that
+   quantity. Measuring the graded, tone-mapped frame would read the wrong
+   number and look reasonable doing it.
+
+       stop        p10     p50     p90
+       city       0.399   0.597   0.853
+       district   0.337   0.511   0.792
+       block      0.341   0.519   0.762
+       street     0.330   0.507   0.776
+       mean       0.352   0.533   0.796
+
+   Against the shipped 0.287 / 0.632, the high knee had fallen well BELOW the
+   frame's own ninetieth percentile — so far more than a tenth of the picture
+   sat past it, pinned at the full warm end with no travel left. That is the
+   exact failure this pair was introduced to fix, arrived at from the other
+   direction: the first pair put the knee above p90 and nine tenths of the
+   frame never reached the warm end; a brighter frame put it below p90 and a
+   third of the frame never left it. */
+const GRADE_LO = 0.352;
+const GRADE_HI = 0.796;
 
 /**
  * How much of the published tilt the frame gets, on top of the per-surface
