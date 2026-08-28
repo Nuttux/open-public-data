@@ -20,11 +20,17 @@
 import {
   BufferAttribute,
   BufferGeometry,
+  ClampToEdgeWrapping,
   Color,
+  DataTexture,
   DoubleSide,
   Float32BufferAttribute,
+  LinearFilter,
+  LinearMipmapLinearFilter,
   Mesh,
   MeshLambertMaterial,
+  NoColorSpace,
+  RGBAFormat,
   SRGBColorSpace,
 } from "three";
 
@@ -83,7 +89,25 @@ export interface SurroundLandcover {
   h: number;
   /** `(j * w + i) * 8 + family`, a fraction byte */
   f: Uint8Array;
+  /** the same cover at NLCD's own 30 m grain: one family INDEX a sample,
+   *  255 where it does not cover. Absent on a city that publishes none. */
+  fine?: { w: number; h: number; c: Uint8Array } | null;
 }
+
+/**
+ * ── HOW FAR THE SUB-CELL TINT MAY SWING, AND WHY IT NEEDS HEADROOM ────────
+ *
+ * three.js multiplies `map` INTO the vertex colour, and a texture byte cannot
+ * exceed 1. A tint that may only ever darken is not a tint, it is a stain: the
+ * whole region would sink every time the cover disagreed with its cell.
+ *
+ * So the texture carries `ratio / 2` and the vertex colours are multiplied by
+ * 2 to match. Their product is unchanged wherever the ratio is 1 — which is
+ * everywhere the fine cover agrees with its cell average, and everywhere there
+ * is no cover at all — and a sample may now go up to twice its cell as well as
+ * down. The 2 is a range, not a strength: nothing is brightened by choosing it.
+ */
+const LC_TEX_HEADROOM = 2;
 
 /** the eight family colours as numbers, resolved once from the palette */
 const LC_RGB: readonly (readonly [number, number, number])[] = XLC.map((hex) => [
@@ -102,11 +126,33 @@ export async function loadSurroundLandcover(
       fetch(`${base}/base/surround-landcover.bin`),
     ]);
     if (!mr.ok || !br.ok) return null;
-    const meta = (await mr.json()) as { w: number; h: number; families: string[] };
+    const meta = (await mr.json()) as {
+      w: number;
+      h: number;
+      families: string[];
+      fine?: { file: string; w: number; h: number };
+    };
     const f = new Uint8Array(await br.arrayBuffer());
     if (meta.families.length !== LC_RGB.length) return null;
     if (f.length !== meta.w * meta.h * LC_RGB.length) return null;
-    return { w: meta.w, h: meta.h, f };
+
+    /* the 30 m raster is optional and its absence is not an error: without it
+       the cover is still drawn, just at the mesh's own 110 m cell */
+    let fine: { w: number; h: number; c: Uint8Array } | null = null;
+    if (meta.fine) {
+      try {
+        const fr = await fetch(`${base}/base/${meta.fine.file}`);
+        if (fr.ok) {
+          const c = new Uint8Array(await fr.arrayBuffer());
+          if (c.length === meta.fine.w * meta.fine.h) {
+            fine = { w: meta.fine.w, h: meta.fine.h, c };
+          }
+        }
+      } catch {
+        fine = null;
+      }
+    }
+    return { w: meta.w, h: meta.h, f, fine };
   } catch {
     return null;
   }
@@ -512,9 +558,9 @@ const SEAM_M = 900;
         B *= mj;
         // sRGB in, linear out — see `terrain.ts` §sRGB IN, LINEAR OUT
         cc.setRGB(R / 255, G / 255, B / 255, SRGBColorSpace);
-        col[o] = cc.r;
-        col[o + 1] = cc.g;
-        col[o + 2] = cc.b;
+        col[o] = cc.r * COLK;
+        col[o + 1] = cc.g * COLK;
+        col[o + 2] = cc.b * COLK;
       }
     }
     for (let e = 0; e < E; e++) {
@@ -536,6 +582,98 @@ const SEAM_M = 900;
     colours.set(step, col);
     return col;
   }
+
+  /* ── THE SAME COVER AGAIN, UNDER THE CELL ───────────────────────────────
+     The vertex colours above give every 110 x 139 m cell the blend of what
+     grows in it. That is real and it is still an AVERAGE: NLCD's grain is
+     30 m, so a cell throws away a 4 x 4 patch of what it knows, and a cell
+     average is the "someone put a color" problem one step smaller.
+
+     The mesh carries a uv, so the finer grain arrives as a texture instead of
+     as sixteen times the geometry. What the texture holds is not a colour but
+     a RATIO — this sample's cover against its own cell's blend — so it is
+     neutral wherever the two agree and it cannot fight the vertex colours,
+     which keep on carrying the relief, the haze, the seam and the mottle.
+
+     Two things damp it, and both are the honest kind. `w` is how much of the
+     cell NLCD covers at all, so a half-covered coastal cell gets half the
+     swing and an uncovered one gets none. `1 - h` is the aerial haze: the
+     vertex colour at that node is already a lerp toward the haze, and past it
+     the cover has no business asserting itself, which is why Marin's texture
+     correctly says less than the peninsula's. */
+  const s2l = (c: number): number =>
+    c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  const LC_LIN = LC_RGB.map(
+    (c) => [s2l(c[0] / 255), s2l(c[1] / 255), s2l(c[2] / 255)] as const,
+  );
+
+  function landcoverTint(): DataTexture | null {
+    const fine = lc?.fine;
+    if (!lc || !fine) return null;
+    const mult = fine.w / lc.w;
+    if (!Number.isInteger(mult) || fine.h / lc.h !== mult) return null;
+
+    const data = new Uint8Array(fine.w * fine.h * 4);
+    const cell = [0, 0, 0];
+    for (let j = 0; j < lc.h; j++) {
+      for (let i = 0; i < lc.w; i++) {
+        const b = (j * lc.w + i) * NLC;
+        let cov = 0;
+        let CR = 0;
+        let CG = 0;
+        let CB = 0;
+        for (let k = 0; k < NLC; k++) {
+          const fr = lc.f[b + k];
+          if (!fr) continue;
+          cov += fr;
+          CR += LC_RGB[k][0] * fr;
+          CG += LC_RGB[k][1] * fr;
+          CB += LC_RGB[k][2] * fr;
+        }
+        /* how far this cell's cover may speak at all */
+        const say =
+          cov > 0
+            ? Math.min(1, cov / 255) * (1 - field.hazeAt(s.mx[i], s.my[j]))
+            : 0;
+        if (cov > 0) {
+          cell[0] = s2l(CR / cov / 255);
+          cell[1] = s2l(CG / cov / 255);
+          cell[2] = s2l(CB / cov / 255);
+        }
+        for (let dj = 0; dj < mult; dj++) {
+          for (let di = 0; di < mult; di++) {
+            const fx = i * mult + di;
+            const fy = j * mult + dj;
+            const k = fine.c[fy * fine.w + fx];
+            const o = (fy * fine.w + fx) * 4;
+            for (let ch = 0; ch < 3; ch++) {
+              let r = 1;
+              if (say > 0 && k < NLC && cell[ch] > 1e-6) {
+                r = 1 + (LC_LIN[k][ch] / cell[ch] - 1) * say;
+              }
+              const q = Math.min(1, Math.max(0, r / LC_TEX_HEADROOM));
+              data[o + ch] = Math.round(q * 255);
+            }
+            data[o + 3] = 255;
+          }
+        }
+      }
+    }
+    const t = new DataTexture(data, fine.w, fine.h, RGBAFormat);
+    /* a RATIO, not a colour: no transfer function belongs on it */
+    t.colorSpace = NoColorSpace;
+    t.wrapS = ClampToEdgeWrapping;
+    t.wrapT = ClampToEdgeWrapping;
+    t.magFilter = LinearFilter;
+    t.minFilter = LinearMipmapLinearFilter;
+    t.generateMipmaps = true;
+    t.needsUpdate = true;
+    return t;
+  }
+
+  const tintTex = landcoverTint();
+  /** the vertex colours' half of §HOW FAR THE SUB-CELL TINT MAY SWING */
+  const COLK = tintTex ? LC_TEX_HEADROOM : 1;
 
   const g = new BufferGeometry();
   g.setAttribute("position", new Float32BufferAttribute(pos, 3));
@@ -612,6 +750,7 @@ const SEAM_M = 900;
     vertexColors: true,
     side: DoubleSide,
     depthWrite: false,
+    map: tintTex,
   });
 
   const mesh = new Mesh(g, m);
@@ -646,6 +785,7 @@ const SEAM_M = 900;
     dispose() {
       g.dispose();
       m.dispose();
+      tintTex?.dispose();
       colours.clear();
     },
   };

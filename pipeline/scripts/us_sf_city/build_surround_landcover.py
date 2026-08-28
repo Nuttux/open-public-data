@@ -185,6 +185,28 @@ def main() -> None:
 
     bin_path = OUT_DIR / "surround-landcover.bin"
     bin_path.write_bytes(out.tobytes())
+
+    # ── AND THE SAME THING AT ITS OWN RESOLUTION, FOR SUB-CELL TEXTURE ─────
+    # The fractions above are per 110 x 139 m cell because that is the grain of
+    # the surround MESH, one colour a node. But NLCD is 30 m, so a cell's worth
+    # of it is a 4 x 4 patch that the cell average throws away — and a cell
+    # average is exactly the "someone put a color" problem one step smaller.
+    #
+    # The mesh now carries a uv, so the finer grain can arrive as a texture
+    # instead of as geometry. What ships for that is the CLASS of every fine
+    # sample and nothing else: one byte, the family index, 255 where NLCD does
+    # not cover. No colour is baked in here — the eight colours are art
+    # direction and they live in lib/city/terrain.ts so both renderers move
+    # together, which means the reader blends them, not this script.
+    fam_of = np.full(256, 255, dtype=np.uint8)
+    for fi, (_n, codes, _w) in enumerate(FAMILIES):
+        for c in codes:
+            fam_of[c] = fi
+    fine = fam_of[np.clip(cls, 0, 255).astype(np.uint8)]
+    fine_path = OUT_DIR / "surround-landcover-fine.bin"
+    fine_path.write_bytes(fine.tobytes())
+    print(f"  fine {MW}x{MH} class raster, "
+          f"{100 * (fine == 255).mean():.2f} % uncovered")
     meta = {
         "w": W,
         "h": H,
@@ -195,6 +217,19 @@ def main() -> None:
         "sampleM": round(s["cellW"] / MULT, 2),
         "dtype": "u8",
         "layout": "row-major cell (j * w + i), then 8 family bytes",
+        "fine": {
+            "file": "surround-landcover-fine.bin",
+            "w": MW,
+            "h": MH,
+            "dtype": "u8",
+            "layout": "row-major sample (j * w + i), one byte",
+            "encoding": "the family INDEX into `families`, or 255 where NLCD "
+                        "does not cover the sample",
+            "what": "the same land cover at its own 30 m grain rather than "
+                    "averaged to the mesh's cell, for sub-cell texture. No "
+                    "colour is baked in: the palette is art direction and "
+                    "lives with the renderer.",
+        },
         "encoding": "fraction of the cell that is that family, 255 = all of it",
         "coverage": (
             "the eight bytes need not sum to 255. The remainder is the part of "
@@ -203,6 +238,12 @@ def main() -> None:
             "the elevation tint there rather than inventing a colour."
         ),
         "bbox4326": list(bbox),
+        "orientation": (
+            "north-up rows are FLIPPED to the frame's Y-up order before "
+            "reduction, exactly as build_terrain_fine.py does. Verified "
+            "against 3DEP: cells over 90 % water sit at mean elevation 1.32 m "
+            "(p90 0.13 m); unflipped the same cells sit at mean 64.11 m."
+        ),
         "source": {
             "publisher": "MRLC / USGS",
             "dataset": "NLCD 2021 Land Cover (CONUS)",

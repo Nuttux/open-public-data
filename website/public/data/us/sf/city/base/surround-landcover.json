@@ -63,6 +63,15 @@
  "sampleM": 27.5,
  "dtype": "u8",
  "layout": "row-major cell (j * w + i), then 8 family bytes",
+ "fine": {
+  "file": "surround-landcover-fine.bin",
+  "w": 1664,
+  "h": 1120,
+  "dtype": "u8",
+  "layout": "row-major sample (j * w + i), one byte",
+  "encoding": "the family INDEX into `families`, or 255 where NLCD does not cover the sample",
+  "what": "the same land cover at its own 30 m grain rather than averaged to the mesh's cell, for sub-cell texture. No colour is baked in: the palette is art direction and lives with the renderer."
+ },
  "encoding": "fraction of the cell that is that family, 255 = all of it",
  "coverage": "the eight bytes need not sum to 255. The remainder is the part of the cell NLCD does not cover \u2014 open Pacific beyond the L48 land boundary. A cell summing to 0 is NOT KNOWN and the reader keeps the elevation tint there rather than inventing a colour.",
  "bbox4326": [
@@ -71,6 +80,7 @@
   -122.1,
   37.95
  ],
+ "orientation": "north-up rows are FLIPPED to the frame's Y-up order before reduction, exactly as build_terrain_fine.py does. Verified against 3DEP: cells over 90 % water sit at mean elevation 1.32 m (p90 0.13 m); unflipped the same cells sit at mean 64.11 m.",
  "source": {
   "publisher": "MRLC / USGS",
   "dataset": "NLCD 2021 Land Cover (CONUS)",
