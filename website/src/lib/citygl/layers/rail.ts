@@ -146,9 +146,27 @@ export async function railLayer(
   }
   if (!file.segs?.length) return null;
 
-  /* the year the DATASET describes, not a year anybody chose: it is a current
-     network file, so it speaks for its own `asOf` and for nothing earlier */
-  const fromYear = Number(String(file.asOf).slice(0, 4)) || 0;
+  /* ── WHAT YEAR THIS LAYER CAN HONESTLY SPEAK FOR ───────────────────────
+     `9exe-acju` is the CURRENT network. It carries no opening dates and no
+     retirements, so it describes exactly one moment: now. San Francisco's rail
+     was at its largest around 1920 and has shrunk since, so drawing these ten
+     lines in 1950 would be a straightforward lie.
+
+     This used to compare the scrub's year against the file's `asOf` YEAR, and
+     that was wrong even though it looked right. `asOf` is a PUBLICATION
+     timestamp — 2026-04-08 on the shipped file — so the test read
+     `year >= 2026`. It produced present-only behaviour by accident, because no
+     year the scrub can select reaches 2026, and it would have started drawing
+     track across the whole century the moment somebody rebuilt the file from
+     an older extract. A gate whose correctness depends on a build date is not
+     a gate.
+
+     So the rule is stated instead of inferred: this layer draws at the PRESENT
+     and nowhere else. `onYear(undefined)` is the present — `CityGLMap.tsx`
+     turns the scrub's own maximum into `undefined` — and any chosen year, 1906
+     or 2025 alike, gets nothing. The historic network stays an open problem
+     rather than an invented one. */
+  const asOf = String(file.asOf).slice(0, 10);
 
   const pos: number[] = [];
   const col: number[] = [];
@@ -296,7 +314,11 @@ export async function railLayer(
       mesh.scale.y = zex;
     },
     onYear(year: number | undefined): void {
-      mesh.visible = year === undefined || year >= fromYear;
+      /* the present, and only the present — see §WHAT YEAR THIS LAYER CAN
+         HONESTLY SPEAK FOR. `asOf` is kept for the provenance panel, not as
+         a test. */
+      void asOf;
+      mesh.visible = year === undefined;
     },
     dispose(): void {
       o.scene.remove(mesh);
