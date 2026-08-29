@@ -66,7 +66,15 @@
    group clipped at 1.0.
    ═══════════════════════════════════════════════════════════════════════ */
 
-import { CanvasTexture, RepeatWrapping, SRGBColorSpace } from "three";
+import {
+  CanvasTexture,
+  DataTexture,
+  LinearFilter,
+  LinearMipmapLinearFilter,
+  RGBAFormat,
+  RepeatWrapping,
+  SRGBColorSpace,
+} from "three";
 
 import {
   FA_SHOP_FASCIA,
@@ -350,6 +358,12 @@ export interface FacadeAtlas {
   readonly cols: number;
   readonly rows: number;
   /**
+   * One tangent-space normal per tile, in `FACADE_TILES` order, derived from
+   * the tile's own luminance — see §AND THE RELIEF. Indexed exactly as
+   * `tiles` is, so a material takes the pair.
+   */
+  readonly normals: DataTexture[];
+  /**
    * Cell `i`, cut out of the sheet and set to `RepeatWrapping` — **this is what
    * a `MeshLambertMaterial.map` takes.**
    *
@@ -437,6 +451,65 @@ function levelTile(g: CanvasRenderingContext2D, px: number): void {
  * environment — which is the same answer `buildings.ts` `facadeTexture()`
  * gives and the reason its caller already handles a null map.
  */
+/**
+ * How much relief the facade's own painting is worth, in the height field the
+ * normal is taken from. Declared: the tile records where the openings ARE, not
+ * how deep they sit, so this is one number for the whole vocabulary in exactly
+ * the sense `BAY_DEPTH_M` is one depth for the whole city.
+ */
+const FACADE_RELIEF = 2.6;
+
+/**
+ * A tangent-space normal for one tile, read off the sheet it was just drawn
+ * on. Height is inverted luminance, so the dark of a painted window becomes
+ * the recess a window is, and the pale of the wall around it stays proud.
+ *
+ * Sampled with wrap, because the tile repeats across a wall and a normal that
+ * did not wrap would put a seam down every storey.
+ */
+function tileNormal(
+  sg: CanvasRenderingContext2D,
+  px: number,
+  i: number,
+): DataTexture {
+  const ox = (i % FACADE_COLS) * px;
+  const oy = Math.floor(i / FACADE_COLS) * px;
+  const src = sg.getImageData(ox, oy, px, px).data;
+  const h = new Float32Array(px * px);
+  for (let k = 0; k < px * px; k++) {
+    const r = src[k * 4];
+    const g = src[k * 4 + 1];
+    const b = src[k * 4 + 2];
+    /* inverted luminance: dark paint is a hole */
+    h[k] = 1 - (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+  }
+  const at = (x: number, y: number): number =>
+    h[((y + px) % px) * px + ((x + px) % px)];
+  const data = new Uint8Array(px * px * 4);
+  for (let y = 0; y < px; y++) {
+    for (let x = 0; x < px; x++) {
+      const dx = (at(x + 1, y) - at(x - 1, y)) * FACADE_RELIEF;
+      const dy = (at(x, y + 1) - at(x, y - 1)) * FACADE_RELIEF;
+      /* normalise (-dx, -dy, 1) into the 0..1 the encoding wants */
+      const L = Math.hypot(dx, dy, 1);
+      const o = (y * px + x) * 4;
+      data[o] = Math.round(((-dx / L) * 0.5 + 0.5) * 255);
+      data[o + 1] = Math.round(((-dy / L) * 0.5 + 0.5) * 255);
+      data[o + 2] = Math.round((1 / L * 0.5 + 0.5) * 255);
+      data[o + 3] = 255;
+    }
+  }
+  const t = new DataTexture(data, px, px, RGBAFormat);
+  t.wrapS = RepeatWrapping;
+  t.wrapT = RepeatWrapping;
+  t.magFilter = LinearFilter;
+  t.minFilter = LinearMipmapLinearFilter;
+  t.generateMipmaps = true;
+  t.anisotropy = 16;
+  t.needsUpdate = true;
+  return t;
+}
+
 export function facadeAtlas(dpr?: number): FacadeAtlas | null {
   if (typeof document === "undefined") return null;
   const px = (dpr ?? 1) >= 2 ? FACADE_TILE_PX * 2 : FACADE_TILE_PX;
@@ -477,14 +550,33 @@ export function facadeAtlas(dpr?: number): FacadeAtlas | null {
   const texture = new CanvasTexture(sheet);
   texture.colorSpace = SRGBColorSpace;
 
+  /* ── AND THE RELIEF, WHICH THE WALLS HAVE NEVER HAD ────────────────────
+     Reported from the page: *"you didnt give any form to facades or anything
+     its all flat"*. That is literally what the wall material was — a colour
+     texture on a flat-shaded plane, with no normal map anywhere. The ROOF has
+     carried one since `roof-grain.ts`; the wall, which is the surface a reader
+     at street level actually looks AT, carried none.
+
+     The relief is derived from the tile that is already drawn rather than
+     authored a second time, so it can never disagree with the picture: the
+     openings this vocabulary paints dark become the openings the light finds
+     recessed, and a change to `drawTile` moves both together. Height is the
+     tile's own luminance, inverted — a window is dark and it is also a hole.
+
+     This adds no claim. `manifest.facade.NOT_MEASURED` still says what it
+     said; the same painted facade simply catches light now. */
+  const normals = tiles.map((_t, i) => tileNormal(sg, px, i));
+
   return {
     texture,
     cols: FACADE_COLS,
     rows: FACADE_ROWS,
     tiles,
+    normals,
     dispose() {
       texture.dispose();
       for (const t of tiles) t.dispose();
+      for (const t of normals) t.dispose();
     },
   };
 }

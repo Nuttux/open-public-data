@@ -1398,13 +1398,31 @@ export function buildingsMesh(
        tiles as separate textures as well as the sheet, and this is the side
        the walls use. */
     const map = o.atlas ? (o.atlas.tiles[w.tile] ?? null) : null;
+    /* ── AND THE WALL FINALLY CATCHES LIGHT ────────────────────────────
+       Reported: *"you didnt give any form to facades or anything its all
+       flat"*. It was — a colour texture on a flat-shaded plane, with no
+       normal map. The roof has had one since `roof-grain.ts`; the wall, which
+       is the surface a reader at street level actually looks at, had none.
+
+       `flatShading` HAS TO GO WITH IT, and that is not a preference. This
+       renderer has already paid for it once: `buildings.ts` §the roof grain
+       records that the roof's normal map moved 0.00 % of the frame until flat
+       shading was turned off, because flat shading recomputes the normal per
+       face and discards whatever the map said. A normal map under
+       `flatShading: true` is not a subtle effect, it is no effect.
+
+       Turning it off is safe on this geometry for the same reason it was safe
+       on the roof: a wall quad is planar and its four vertices are its own, so
+       the smooth normal and the face normal are the same vector. Nothing
+       rounds. */
     const base = {
       /* consumed by the tint node instead — see `applyRise` below and
          `rise.ts` §WHAT A MATERIAL IS ACTUALLY HANDED */
       vertexColors: false,
-      flatShading: true,
+      flatShading: false,
       side: DoubleSide,
       map,
+      normalMap: o.atlas ? (o.atlas.normals[w.tile] ?? null) : null,
     };
     /* ── AND A CURTAIN WALL REFLECTS THE SKY INSTEAD OF SHOWING A ROOM ───
        `scene.ts` says it in those words at `flushFaces`, and `faGlassy` is
