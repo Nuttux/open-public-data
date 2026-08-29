@@ -31,11 +31,15 @@ import {
   BufferGeometry,
   ClampToEdgeWrapping,
   Color,
+  DataTexture,
   DoubleSide,
   Float32BufferAttribute,
+  LinearFilter,
+  LinearMipmapLinearFilter,
   Mesh,
   MeshLambertMaterial,
   NoColorSpace,
+  RGBAFormat,
   SRGBColorSpace,
   TextureLoader,
 } from "three";
@@ -328,6 +332,39 @@ function reliefGainFromUrl(): number {
   return Number.isFinite(v) && v >= 0 ? v : RELIEF_GAIN;
 }
 /** 1-2-1 passes each way on the normal field; 8 is a sigma of about two cells */
+/* ── THE GROUND'S COLOUR IS PER-VERTEX ON A 53.8 m CELL ──────────────────
+   Two consequences, and the second is the one that shows.
+
+   A vertex colour interpolates LINEARLY across a triangle, so a quad split
+   into two triangles carries a crease down its diagonal wherever its four
+   corners disagree. On a hillside that is a faint lattice of straight-edged
+   wedges, which is not what ground looks like.
+
+   The larger one is that 53.8 m is the FINEST the ground can vary at all. At
+   the closest camera a cell is nearly three hundred pixels, so half a square
+   kilometre of open hillside resolves to a handful of values and reads as one
+   flat sheet of green — which is the state Daniel described on the regional
+   land and which `groundMottle` only partly answers, because that mottle is
+   also per-node and therefore also 53.8 m.
+
+   The mesh already carries a `uv` over its own frame (added for the detail
+   normal), so the colour can be a TEXTURE instead: sampled bilinearly, which
+   removes the diagonal crease by construction, and carried at four times the
+   node grid, which is where the fine grain comes from. It is the same move
+   that gave the facades their relief — the surface material, not the mesh.
+
+   `?gtex=0` restores the vertex colours. The DEFAULT is the texture. */
+/** on when the ground's colour is a texture rather than a vertex attribute */
+const GTEX_ON = ((): boolean => {
+  if (typeof window === "undefined") return true;
+  return !/(?:\?|&)gtex=0(?:&|$)/.test(window.location.search);
+})();
+const GTEX_K = 4;
+/** how far a texel of open ground may wander — see §THE GROUND'S COLOUR */
+const GTEX_GRAIN = 0.09;
+/** metres of one grain patch, world scale */
+const GTEX_GRAIN_M = 11;
+
 const FORM_LOWPASS = 8;
 
 /**
@@ -573,7 +610,13 @@ export function terrainLayer(
   /* BASIC LIGHTING, AND THE HILLSHADE IS ALREADY IN THE COLOURS: the mesh's
      normals point straight up (below), so the sun adds no second hillshade
      and the one thing it does add is the cast shadow. */
-  const m = new MeshLambertMaterial({ vertexColors: true, side: DoubleSide });
+  /* ── THE COLOUR COMES FROM THE TEXTURE, OR FROM THE VERTICES ──────────
+     Not both: three MULTIPLIES `map` into the vertex colour, so leaving the
+     attribute on would square the ground. `?gtex=0` takes the old path. */
+  const m = new MeshLambertMaterial({
+    vertexColors: !GTEX_ON,
+    side: DoubleSide,
+  });
 
   /* ── THE DETAIL NORMAL, AND IT CARRIES ONLY WHAT THE GRID CANNOT ────────
      The mesh is 260 nodes on a 53.815 m cell — under two samples across a San
@@ -753,6 +796,91 @@ export function terrainLayer(
     }
     colours.set(s, col);
     return col;
+  }
+
+  /** linear 0..1 to an sRGB byte — the round trip `coloursFor` documents */
+  const l2s = (v: number): number => {
+    const c = v <= 0.0031308 ? v * 12.92 : 1.055 * Math.pow(v, 1 / 2.4) - 0.055;
+    return Math.max(0, Math.min(255, Math.round(c * 255)));
+  };
+
+  /** a deterministic grain value at a world point — see §THE GROUND'S COLOUR */
+  const grainAt = (wx: number, wy: number): number => {
+    const fx = wx / GTEX_GRAIN_M;
+    const fy = wy / GTEX_GRAIN_M;
+    const i0 = Math.floor(fx);
+    const j0 = Math.floor(fy);
+    const tx = fx - i0;
+    const ty = fy - j0;
+    const sx = tx * tx * (3 - 2 * tx);
+    const sy = ty * ty * (3 - 2 * ty);
+    const h = (a: number, b: number): number => {
+      let n = Math.imul(a | 0, 0x27d4eb2d) ^ Math.imul(b | 0, 0x165667b1);
+      n ^= n >>> 15;
+      n = Math.imul(n, 0x2545f491);
+      n ^= n >>> 16;
+      return (n >>> 8) / 0xffffff;
+    };
+    const a = h(i0, j0);
+    const b = h(i0 + 1, j0);
+    const c = h(i0, j0 + 1);
+    const d = h(i0 + 1, j0 + 1);
+    const n = (a + (b - a) * sx) * (1 - sy) + (c + (d - c) * sx) * sy;
+    return 1 + (n * 2 - 1) * GTEX_GRAIN;
+  };
+
+  const gtex = new Map<number, DataTexture>();
+
+  /**
+   * The ground's colour for a band, as a texture.
+   *
+   * The node colours are read from `coloursFor` rather than recomputed, so the
+   * texture and the vertex path cannot disagree about what the ground IS —
+   * this changes only the grain at which it is sampled. Bilinear between the
+   * four nodes around each texel removes the triangle diagonal; the grain is
+   * what the extra resolution is FOR.
+   */
+  function groundTexFor(s: number): DataTexture {
+    const had = gtex.get(s);
+    if (had) return had;
+    const col = coloursFor(s);
+    const M = N * GTEX_K;
+    const data = new Uint8Array(M * M * 4);
+    const step2 = step;
+    for (let ty = 0; ty < M; ty++) {
+      const fj = (ty + 0.5) / GTEX_K;
+      const j0 = Math.min(N - 2, Math.max(0, Math.floor(fj)));
+      const jr = Math.min(1, Math.max(0, fj - j0));
+      for (let tx = 0; tx < M; tx++) {
+        const fi = (tx + 0.5) / GTEX_K;
+        const i0 = Math.min(N - 2, Math.max(0, Math.floor(fi)));
+        const ir = Math.min(1, Math.max(0, fi - i0));
+        const a = (i0 * N + j0) * 3;
+        const b = ((i0 + 1) * N + j0) * 3;
+        const c = (i0 * N + j0 + 1) * 3;
+        const d = ((i0 + 1) * N + j0 + 1) * 3;
+        /* the grain is world-scaled so it does not stretch with the frame */
+        const g = grainAt(proj.X0 + fi * step2, proj.Y0 + fj * step2);
+        const o = (ty * M + tx) * 4;
+        for (let ch = 0; ch < 3; ch++) {
+          const top = col[a + ch] + (col[b + ch] - col[a + ch]) * ir;
+          const bot = col[c + ch] + (col[d + ch] - col[c + ch]) * ir;
+          data[o + ch] = l2s((top + (bot - top) * jr) * g);
+        }
+        data[o + 3] = 255;
+      }
+    }
+    const t = new DataTexture(data, M, M, RGBAFormat);
+    t.colorSpace = SRGBColorSpace;
+    t.wrapS = ClampToEdgeWrapping;
+    t.wrapT = ClampToEdgeWrapping;
+    t.magFilter = LinearFilter;
+    t.minFilter = LinearMipmapLinearFilter;
+    t.generateMipmaps = true;
+    t.anisotropy = 8;
+    t.needsUpdate = true;
+    gtex.set(s, t);
+    return t;
   }
 
   /**
@@ -1121,7 +1249,13 @@ export function terrainLayer(
       g.setAttribute("uv", new Float32BufferAttribute(uv, 2));
     }
     const col0 = coloursFor(curStep < 0 ? 0 : curStep);
+    /* the hem still reads the vertex colours, so the attribute stays either
+       way; the ground's own material simply ignores it under `?gtex` */
     g.setAttribute("color", new BufferAttribute(col0, 3));
+    if (GTEX_ON) {
+      m.map = groundTexFor(curStep < 0 ? 0 : curStep);
+      m.needsUpdate = true;
+    }
     g.setIndex(new BufferAttribute(new Uint32Array(idx), 1));
 
     // ── the hem, as its own compact copy of the vertices it uses ──────────
@@ -1212,6 +1346,12 @@ export function terrainLayer(
       const col = coloursFor(s);
       g.setAttribute("color", new BufferAttribute(col, 3));
       (g.getAttribute("color") as BufferAttribute).needsUpdate = true;
+      /* a band bakes its own hillshade, so it bakes its own texture too —
+         cached exactly as the colours are */
+      if (GTEX_ON) {
+        m.map = groundTexFor(s);
+        m.needsUpdate = true;
+      }
       const nrm = normalsFor(s);
       g.setAttribute("normal", new BufferAttribute(nrm, 3));
       (g.getAttribute("normal") as BufferAttribute).needsUpdate = true;
@@ -1230,6 +1370,8 @@ export function terrainLayer(
       }
     },
     dispose() {
+      for (const t of gtex.values()) t.dispose();
+      gtex.clear();
       g.dispose();
       m.dispose();
       hemG.dispose();
