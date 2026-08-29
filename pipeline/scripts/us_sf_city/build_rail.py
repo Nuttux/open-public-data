@@ -21,12 +21,18 @@ same reason: the column says what they are.
 
 ── WHAT THIS IS NOT ─────────────────────────────────────────────────────────
 **It is the network as the dataset describes it, which is TODAY'S.** This map
-runs from 1849, and San Francisco's rail was at its largest around 1920 and has
-shrunk since; drawing today's eight lines in 1900 would be a lie, and drawing
-a 1900 network would be an invention, because no published geometry for it is
-in this repo. So the layer that reads this gates it on the dataset's own
-`data_as_of`, and the historic network stays an open problem rather than a
-guessed one.
+runs from 1906, and San Francisco's rail was at its largest around 1920 and has
+shrunk since; drawing today's ten lines in 1950 would be a lie, and drawing a
+1950 network would be an invention, because no published geometry for it is in
+this repo. So the layer that reads this draws at the PRESENT and nowhere else,
+and the historic network stays an open problem rather than a guessed one.
+
+`data_as_of` is carried on the file for PROVENANCE and must never become the
+gate. It is a publication timestamp, not a fact about the network: the reader
+did key on it once, which made the test `year >= 2026` and produced
+present-only behaviour purely by accident. Rebuild this file from an older
+extract and that same line would have started drawing today's network in 1906,
+silently.
 
 ── THE TRACK IS DEDUPED, BECAUSE A PATTERN IS NOT A TRACK ───────────────────
 A pattern is one direction of one line, so inbound and outbound lie on the

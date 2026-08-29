@@ -27,11 +27,18 @@
    and drops the bus patterns it names on the same corridors. Nothing here
    guesses which is which.
 
-   **It is TODAY'S network.** This map runs from 1849 and San Francisco's rail
-   was at its largest around 1920, so drawing these eight lines in 1900 would
-   be a lie. The layer therefore shows nothing before the dataset's own
-   `asOf`, and the historic network stays an open problem rather than an
-   invented one.
+   **It is TODAY'S network.** The year rail runs from 1906 and San Francisco's
+   rail was at its largest around 1920, so drawing these ten lines in 1950
+   would be a lie. The layer therefore draws at the PRESENT and nowhere else —
+   see §WHAT YEAR THIS LAYER CAN HONESTLY SPEAK FOR — and the historic network
+   stays an open problem rather than an invented one.
+
+   (This paragraph used to say the gate was the dataset's own `asOf`. It was,
+   and that was the bug: `asOf` is a publication timestamp, so the test was
+   `year >= 2026` and only produced present-only behaviour by accident. Two
+   other things in this header were also stale and are corrected above — the
+   map runs from 1906, not 1849, and the file names TEN rail lines, not
+   eight.)
    ═══════════════════════════════════════════════════════════════════════ */
 
 import {
