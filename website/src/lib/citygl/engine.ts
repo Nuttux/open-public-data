@@ -32,6 +32,7 @@ import {
   NoToneMapping,
   OrthographicCamera,
   PCFSoftShadowMap,
+  VSMShadowMap,
   ReinhardToneMapping,
   Scene,
   type Texture,
@@ -374,7 +375,31 @@ export class CityEngine {
        cut-out. The map is re-rendered only when the scene is dirty, which is
        when the camera moved — a held frame costs nothing. */
     this.renderer.shadowMap.enabled = this.quality.shadowMap > 0;
-    this.renderer.shadowMap.type = PCFSoftShadowMap;
+    /* ── AND ON THE NODE PATH `PCFSoftShadowMap` IS NOT SOFT ────────────
+       `light.ts` records that `shadow.radius` came back bit-identical at 12,
+       and the cause is in three's own source: the WebGPU filter library picks
+       `PCFSoftShadowFilter` by this very enum, and that function reads
+       `mapSize` and a fixed one-texel kernel and NEVER READS `radius`. So the
+       penumbra is one shadow-map texel wide whatever the radius says — at a
+       4096 map fitted over the city that is a metre or two, which is a hard
+       edge. Every building in the frame cuts rather than softens.
+
+       `VSMShadowMap` selects `VSMShadowFilter` instead, which is a variance
+       map: three blurs the depth buffer for real, `radius` and `blurSamples`
+       both do something, and the penumbra can be wider than a texel. That is
+       the only route to a soft edge on this backend short of writing a filter
+       node by hand.
+
+       `?shadow=vsm|pcfsoft|pcf|basic` so the two can be looked at side by
+       side, because a variance map buys softness and can pay for it in light
+       BLEED — a thin caster in front of a bright surface leaks — and whether
+       that trade is worth taking is a judgement about the picture. */
+    this.renderer.shadowMap.type =
+      /(?:\?|&)shadow=vsm(?:&|$)/.test(
+        typeof window === "undefined" ? "" : window.location.search,
+      )
+        ? VSMShadowMap
+        : PCFSoftShadowMap;
 
     const lo = lookOverrides(
       typeof window === "undefined" ? "" : window.location.search,
