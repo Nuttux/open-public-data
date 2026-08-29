@@ -1388,6 +1388,11 @@ export function waterLayer(
       ripple.geometry.dispose();
       ripple.removeFromParent();
       ripple = rippleMesh(gRects, rippleTex, opts.anchor, fadeR1);
+      /* built in a microtask, long after `engine.add` — see `engine.ts`
+         §AND A MESH MADE LATER MUST CLAIM ITSELF. Unstamped it is claimed by
+         whichever layer registers next, which is how the bay once reported
+         itself as the hero buildings. */
+      ripple.traverse((o) => { o.userData.layer = "water"; });
       mesh.add(ripple);
     });
 
@@ -1644,6 +1649,7 @@ function buildFoam(
       mesh.renderOrder = -2;
       mesh.receiveShadow = true;
       out.stats = { cells, vertices: pos.length / 3, triangles: idx.length / 3 };
+      mesh.userData.layer = "water";   // see `engine.ts` §A MESH MADE LATER
       parent.add(mesh);
     });
 

@@ -30,6 +30,7 @@ import {
   Color,
   NeutralToneMapping,
   NoToneMapping,
+  Object3D,
   OrthographicCamera,
   PCFSoftShadowMap,
   VSMShadowMap,
@@ -890,6 +891,32 @@ export class CityEngine {
     this.scene.traverse((o) => {
       if (!(o as { isMesh?: boolean }).isMesh) return;
       if (o.userData.layer !== undefined) return;
+      o.userData.layer = name;
+      if (!o.name) o.name = name;
+    });
+  }
+
+  /**
+   * ── AND A MESH MADE LATER MUST CLAIM ITSELF, WHICH THE NOTE ABOVE GOT
+   *    WRONG ─────────────────────────────────────────────────────────────
+   *
+   * The paragraph on `stampLayer` said a mesh a layer creates LATER "stays
+   * unstamped and reads as `?`, which is the honest answer rather than a
+   * wrong one". It does not. It stays unstamped only until the NEXT layer is
+   * added, and then `stampLayer` claims it — so a late mesh is attributed to
+   * whichever layer happened to register after the one that made it.
+   *
+   * It happened, and it produced a wrong answer that survived a whole
+   * session: `water.ts` rebuilds its ripple and adds its foam in a microtask
+   * after `add`, so both were stamped `heroes`. A ground-agreement sweep then
+   * reported the hero buildings as 21.4 % sunk with a worst of -505 m, which
+   * is impossible for a building and was in fact the bay.
+   *
+   * So a layer that builds anything after `add` calls this on it.
+   */
+  claim(mesh: Object3D, name: string): void {
+    mesh.traverse((o) => {
+      if (!(o as { isMesh?: boolean }).isMesh) return;
       o.userData.layer = name;
       if (!o.name) o.name = name;
     });
