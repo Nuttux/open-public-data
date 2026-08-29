@@ -221,7 +221,11 @@ function skyEnvTexture(paperCss: string): DataTexture {
  */
 const BLOOM_STRENGTH = 0.35;
 const BLOOM_RADIUS = 0.6;
-const BLOOM_THRESHOLD = 1.0;
+const BLOOM_THRESHOLD = ((): number => {
+  if (typeof window === "undefined") return 1.0;
+  const v = Number(/(?:\?|&)bt=([0-9.]+)/.exec(window.location.search)?.[1]);
+  return Number.isFinite(v) && v > 0 ? v : 1.0;
+})();
 
 const TONE_BY_NAME: Record<string, ToneMapping> = {
   none: NoToneMapping,
