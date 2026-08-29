@@ -197,6 +197,38 @@ function ringTris(
   for (const t of faces) split(base + t[0], base + t[1], base + t[2], 0);
 }
 
+/** metres of one paving panel — see §AND THE PAVING WAS ONE TONE */
+const PAVE_M = 70;
+/** how far a panel's tone may wander from its published colour */
+const PAVE_MOTTLE = 0.13;
+
+/** a deterministic hash on an integer lattice, 0..1 */
+function paveHash(x: number, y: number): number {
+  let h = Math.imul(x | 0, 0x27d4eb2d) ^ Math.imul(y | 0, 0x165667b1);
+  h ^= h >>> 15;
+  h = Math.imul(h, 0x2545f491);
+  h ^= h >>> 16;
+  return (h >>> 8) / 0xffffff;
+}
+
+/** the paving tint at a world point: smooth, so a run of a block agrees */
+function paveMottle(x: number, z: number): number {
+  const fx = x / PAVE_M;
+  const fz = z / PAVE_M;
+  const i0 = Math.floor(fx);
+  const j0 = Math.floor(fz);
+  const tx = fx - i0;
+  const tz = fz - j0;
+  const sx = tx * tx * (3 - 2 * tx);
+  const sz = tz * tz * (3 - 2 * tz);
+  const a = paveHash(i0, j0);
+  const b = paveHash(i0 + 1, j0);
+  const cc = paveHash(i0, j0 + 1);
+  const d = paveHash(i0 + 1, j0 + 1);
+  const n = (a + (b - a) * sx) * (1 - sz) + (cc + (d - cc) * sx) * sz;
+  return 1 + (n * 2 - 1) * PAVE_MOTTLE;
+}
+
 function mesh(
   pos: number[],
   idx: number[],
@@ -217,6 +249,32 @@ function mesh(
   g.setAttribute("normal", new BufferAttribute(n, 3));
   g.computeBoundingSphere();
 
+  /* ── AND THE PAVING WAS ONE TONE FROM THE PRESIDIO TO HUNTERS POINT ───
+     Every right of way in the city was drawn at a single value. A road
+     surface is one of the largest continuous things in the frame, and real
+     paving is nothing like uniform: it is laid, cut, patched and relaid in
+     stretches, so from above it reads as panels of slightly different age
+     against each other, block by block.
+
+     So the wash carries a vertex tint on a smooth field of about seventy
+     metres — long enough that a whole run of a block shares its tone and the
+     variation lands BETWEEN stretches rather than across the width of a
+     carriageway, which would read as a gradient down the middle of the road
+     instead of as paving.
+
+     It MULTIPLIES the material's own colour, so the roadway, the footway and
+     the kerb each vary around their own published tone and none of them
+     drifts toward another. Declared: not a claim about any resurfacing
+     anywhere, the same status as the ground mottle it is washed over. */
+  const vc = new Float32Array(pos.length);
+  for (let v = 0; v < pos.length / 3; v++) {
+    const t = paveMottle(pos[v * 3], pos[v * 3 + 2]);
+    vc[v * 3] = t;
+    vc[v * 3 + 1] = t;
+    vc[v * 3 + 2] = t;
+  }
+  g.setAttribute("color", new BufferAttribute(vc, 3));
+
   const c = new Color();
   c.setStyle(colour, SRGBColorSpace);
   /* ── A STREET IS A WASH, NOT A FILL, AND THIS IS THE WHOLE LOOK ────────
@@ -233,6 +291,7 @@ function mesh(
      nothing to separate. */
   const m = new MeshLambertMaterial({
     color: c,
+    vertexColors: true,
     side: DoubleSide,
     transparent: true,
     opacity: ST_ALPHA,
