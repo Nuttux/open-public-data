@@ -36,10 +36,12 @@
 
 import {
   BufferGeometry,
+  Color,
   DoubleSide,
   Float32BufferAttribute,
   Mesh,
   MeshStandardMaterial,
+  SRGBColorSpace,
   type Scene,
 } from "three";
 
@@ -70,8 +72,50 @@ const RAIL_W = 0.45;
  */
 const GAUGE_M = 2.2;
 
-/** how far the steel sits over the carriageway, metres — clear of z-fighting */
-const RAIL_LIFT_M = 0.12;
+/**
+ * ── THE RUNG THIS LAYER SITS ON, AND THE RULE IT WAS BREAKING ────────────
+ *
+ * `street-markings.ts` §DEPTH, NOT HEIGHT states the rule and names the three
+ * other layers that already obey it: *"`polygonOffset`, never a Y offset: in
+ * an axonometric projection a metre of height is also tens of pixels of
+ * SCREEN, so lifting a mark off the road to win a depth test slides it off the
+ * road it is a mark ON."* This layer did exactly that, with a Y lift.
+ *
+ * It also sat on the wrong rung. That file publishes the ladder, and in it a
+ * LOWER number is nearer the camera -- the kerb is at -1 and is on top of
+ * everything:
+ *
+ *       4     right of way          streets.ts
+ *       2     carriageway           streets.ts
+ *       0     centreline spine      street-detail.ts
+ *      -0.5   crosswalks            street-markings.ts
+ *      -1     kerb                  street-detail.ts
+ *
+ * The rail was at renderOrder 3. That is BELOW the carriageway, the spine, the
+ * crosswalks and the kerb, so the road surface was drawn over the top of the
+ * track on every frame. Measured: with everything else in the scene hidden the
+ * rail paints 4,173 px, and with `depthTest` forced off in the full scene it
+ * paints 8,344 px -- it was always being drawn and always being buried.
+ *
+ * A tram rail is steel set into the carriageway, so it belongs just above the
+ * crosswalks and below the kerb: a track is not painted over, but a kerb still
+ * stands proud of it.
+ */
+const RAIL_OFFSET = 0.6;
+
+/** the ballast strip, world metres — wide enough to survive the district camera */
+const BALLAST_W = 4.2;
+/** its tone: the grey-brown of stone chippings, darker than the carriageway */
+const BALLAST_C = 0x6b6459;
+/** a sleeper's length across the track, and its width along it */
+const SLEEPER_LEN_M = 3.2;
+const SLEEPER_W_M = 0.55;
+/** how far apart the sleepers are laid, world metres */
+const SLEEPER_STEP_M = 2.4;
+/** creosoted timber, warmer and darker than the ballast it sits in */
+const SLEEPER_C = 0x4a4038;
+/** the steel itself */
+const RAIL_C = 0xc6ccd2;
 
 export interface RailLayerOptions {
   scene: Scene;
@@ -107,13 +151,45 @@ export async function railLayer(
   const fromYear = Number(String(file.asOf).slice(0, 4)) || 0;
 
   const pos: number[] = [];
+  const col: number[] = [];
   const idx: number[] = [];
-  const half = RAIL_W / 2;
   const off = GAUGE_M / 2;
   let zex = o.zex;
 
-  /* each segment is two ribbons — one rail each side of the centreline. The
-     ground is sampled at both ends so track climbs a hill with it. */
+  /* ── A PAIR OF HAIRLINES IS NOT A TRACK ────────────────────────────────
+     Two rails alone, drawn at their honest 0.45 m, are 0.1 px wide at the
+     district camera and about one pixel at the deepest one. Correctly placed
+     and still invisible, which is the whole of *"i still dont see detailled
+     railroad, tram tracks"*.
+
+     What makes a track legible from above is not the steel. It is the BED:
+     a ballast strip a few metres wide, and the ladder of sleepers across it.
+     The strip survives to the district camera as a continuous line, the
+     sleepers come in as a rhythm at the block camera, and the steel is the
+     last thing to arrive — which is the order a real track resolves in.
+
+     Every width here is a DECLARED DRAWING CONVENTION in the same sense
+     `RAIL_W` already is, not a measurement of any track. */
+  const c = new Color();
+  const quad = (
+    ax: number, ay: number, bx: number, by: number,
+    nx: number, ny: number, w: number, hex: number,
+  ): void => {
+    const h = w / 2;
+    const az = o.elevAt(ax, ay);
+    const bz = o.elevAt(bx, by);
+    const i = pos.length / 3;
+    pos.push(
+      ax + nx * h, az, ay + ny * h,
+      ax - nx * h, az, ay - ny * h,
+      bx - nx * h, bz, by - ny * h,
+      bx + nx * h, bz, by + ny * h,
+    );
+    c.setHex(hex, SRGBColorSpace);
+    for (let k = 0; k < 4; k++) col.push(c.r, c.g, c.b);
+    idx.push(i, i + 1, i + 2, i, i + 2, i + 3);
+  };
+
   for (const [x0, y0, x1, y1] of file.segs) {
     const dx = x1 - x0;
     const dy = y1 - y0;
@@ -121,27 +197,40 @@ export async function railLayer(
     if (!(L > 1e-6)) continue;
     const nx = -dy / L;
     const ny = dx / L;
-    for (const s of [-off, off]) {
-      const ax = x0 + nx * s;
-      const ay = y0 + ny * s;
-      const bx = x1 + nx * s;
-      const by = y1 + ny * s;
-      const az = o.elevAt(ax, ay);
-      const bz = o.elevAt(bx, by);
-      const i = pos.length / 3;
-      pos.push(
-        ax + nx * half, az, ay + ny * half,
-        ax - nx * half, az, ay - ny * half,
-        bx - nx * half, bz, by - ny * half,
-        bx + nx * half, bz, by + ny * half,
+    const ux = dx / L;
+    const uy = dy / L;
+
+    /* the bed, one strip the length of the segment */
+    quad(x0, y0, x1, y1, nx, ny, BALLAST_W, BALLAST_C);
+
+    /* the sleepers, across it. Stepped in world metres so the rhythm is the
+       same on a long segment and a short one, and offset from the segment's
+       own start so two segments meeting at a corner do not double up. */
+    for (let t = SLEEPER_STEP_M * 0.5; t < L; t += SLEEPER_STEP_M) {
+      const cx = x0 + ux * t;
+      const cy = y0 + uy * t;
+      const sh = SLEEPER_W_M / 2;
+      quad(
+        cx - ux * sh, cy - uy * sh,
+        cx + ux * sh, cy + uy * sh,
+        ux, uy, SLEEPER_LEN_M, SLEEPER_C,
       );
-      idx.push(i, i + 1, i + 2, i, i + 2, i + 3);
+    }
+
+    /* and the steel, one ribbon each side of the centreline */
+    for (const sgn of [-off, off]) {
+      quad(
+        x0 + nx * sgn, y0 + ny * sgn,
+        x1 + nx * sgn, y1 + ny * sgn,
+        nx, ny, RAIL_W, RAIL_C,
+      );
     }
   }
 
   const g = new BufferGeometry();
   const posArr = new Float32Array(pos);
   g.setAttribute("position", new Float32BufferAttribute(posArr, 3));
+  g.setAttribute("color", new Float32BufferAttribute(new Float32Array(col), 3));
   g.setIndex(idx);
   g.computeVertexNormals();
 
@@ -160,42 +249,51 @@ export async function railLayer(
      a grey one in shade instead of a black one in both — which is what steel
      in a street actually looks like from above. */
   const m = new MeshStandardMaterial({
-    color: 0xc6ccd2,
+    vertexColors: true,
     metalness: 0.45,
     roughness: 0.32,
     side: DoubleSide,
     polygonOffset: true,
-    polygonOffsetFactor: -3,
-    polygonOffsetUnits: -3,
+    polygonOffsetFactor: RAIL_OFFSET,
+    polygonOffsetUnits: RAIL_OFFSET,
   });
 
   const mesh = new Mesh(g, m);
-  mesh.renderOrder = 3;
+  mesh.scale.y = zex;
+  /* the ladder's own convention: the order is read straight off the offset */
+  mesh.renderOrder = -RAIL_OFFSET;
   mesh.castShadow = false;
   mesh.receiveShadow = true;
   mesh.frustumCulled = true;
   o.scene.add(mesh);
 
-  /** lift the steel off the road, on the band's own exaggeration */
-  const applyZ = (): void => {
-    const p = g.getAttribute("position") as Float32BufferAttribute;
-    const a = p.array as Float32Array;
-    for (let v = 0; v < a.length; v += 3) a[v + 1] = base[v / 3] * zex + RAIL_LIFT_M;
-    p.needsUpdate = true;
-    g.computeBoundingSphere();
-  };
-  /** the un-exaggerated ground height per vertex, kept so a band change is
-   *  one multiply rather than a re-sample of the terrain */
-  const base = new Float32Array(posArr.length / 3);
-  for (let v = 0; v < base.length; v++) base[v] = posArr[v * 3 + 1];
-  applyZ();
+  /* ── THE BAND'S EXAGGERATION IS A SCALE, NOT SOMETHING TO BAKE ────────
+     This layer used to multiply `zex` into every vertex and leave the mesh at
+     scale 1. It was wrong, and it was wrong in the way that hides itself: the
+     track came out at the right x and z, so nothing looked misplaced -- it was
+     simply UNDER the ground, and a buried mesh is indistinguishable from a
+     layer that was never built.
+
+     MEASURED against the terrain mesh at the same point: the ground's own
+     vertex sat at 57 m with `mesh.scale.y = 3.3` on it, so it draws at 188.
+     The rail's vertex read 159, because the `zex` it had baked in was 2.79 --
+     a different band's. Twenty-nine units below the ground, everywhere, and
+     the layer has been invisible since the day it was written.
+
+     So it is done the way `layers/surround.ts` and the terrain itself do it:
+     positions stay in REAL METRES and the band's exaggeration is a scale on
+     the mesh. The two cannot drift apart again, because there is no longer a
+     second copy of the number to go stale. The lift is scaled with everything
+     else, which is right -- it is there to clear z-fighting with a road that
+     is being exaggerated by the same factor. */
+  g.computeBoundingSphere();
 
   return {
     name: "rail",
     trackKm: file.trackKm,
     onStep(_step: number, z: number): void {
       zex = z;
-      applyZ();
+      mesh.scale.y = zex;
     },
     onYear(year: number | undefined): void {
       mesh.visible = year === undefined || year >= fromYear;
