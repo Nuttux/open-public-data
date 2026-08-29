@@ -627,8 +627,17 @@ function cityCut(
        covers and is the whole point where it does not. */
     const inCity = rasteriseRings([cityRings], lat, CUT_K);
     const field = maskFromField(landmask, lat, CUT_K);
+    /* ── AND THE THIRD CLAUSE, WHICH IS THE GROUND'S OWN ────────────────
+       The plate must be removed exactly where the GROUND is drawn, and no
+       wider. `terrain.ts` draws where the field says land AND the city's
+       published offshore bit does not veto the cell — the veto is what keeps
+       the city's ground colours off the Marin shore its DEM square reaches
+       into. Cut without that clause and a vetoed cell has no ground and no
+       plate either: a hole, one cell wide, tracing the whole coast. It was
+       visible as a hard white line along the shore at Heron's Head, and
+       three quarters of that line was owned by no layer at all. */
     const at = (i: number, j: number, si: number, sj: number): boolean =>
-      inCity.at(i, j, si, sj) && field.at(i, j, si, sj);
+      inCity.at(i, j, si, sj) && field.at(i, j, si, sj) && !sc.cityOffshore(i, j);
     return {
       lat,
       mask: {

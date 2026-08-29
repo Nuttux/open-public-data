@@ -84,6 +84,7 @@ import {
   WPKW,
 } from "@/lib/city/trees";
 import { decodeCoast, inPoly, type Ring } from "@/lib/city/water";
+import type { LandMask } from "../coast-mask";
 import { CANOPY_SHARDS, canopyShards } from "../canopy-shards";
 import { stepForZ } from "../controls";
 import {
@@ -96,6 +97,8 @@ import {
 import type { CityLayer } from "../engine";
 
 export interface GroundDetailLayerOptions {
+  /** the land/water field — see `landProbe` §AND WHEN THE GROUND MOVED */
+  landmask?: LandMask | null;
   /** ground elevation at a world point — all four of these lie ON the ground */
   elevAt: (x: number, y: number) => number;
   /** the ground's exaggeration; none of this is a built thing */
@@ -337,10 +340,56 @@ interface LandProbe {
  * the ribbon the 207 vertices in the table above, and that number is a
  * measurement OF the transposition, not of this layer.
  */
-function landProbe(data: CityData): LandProbe | null {
+function landProbe(data: CityData, landmask?: LandMask | null): LandProbe | null {
+  const proj = data.manifest.proj as unknown as TerrainProj;
+
+  /* ── AND WHEN THE GROUND MOVED, THIS HAD TO MOVE WITH IT ────────────────
+     Everything above describes reading the PUBLISHED mask because this layer
+     is handed an `elevAt` and not a field. That was right while the ground
+     was cut at that same published mask. It stopped being right the moment
+     `terrain.ts` §AND THE GROUND STOPS ASKING FOUR REGISTERS cut the ground
+     at the DEM's own sign instead: an ink gated on the old register strands
+     itself over water, as a hard white line along a shore the ground no
+     longer has. That line appeared at Heron's Head the first time the ground
+     moved and this did not, which is the whole argument for putting them on
+     one answer.
+
+     So when the city ships the field, this reads the field — the same array
+     the ground reads, so they cannot disagree. Without one, everything above
+     applies unchanged. */
+  if (landmask && proj && proj.N) {
+    const [mx0, my0, mx1, my1] = landmask.world;
+    const sx = (landmask.w - 1) / (mx1 - mx0);
+    const sy = (landmask.h - 1) / (my1 - my0);
+    const cell = 1 / proj.s;
+    const at = (x: number, y: number): boolean => {
+      let u = Math.round((x - mx0) * sx);
+      let v = Math.round((y - my0) * sy);
+      u = u < 0 ? 0 : u > landmask.w - 1 ? landmask.w - 1 : u;
+      v = v < 0 ? 0 : v > landmask.h - 1 ? landmask.h - 1 : v;
+      return (
+        ((landmask.bits[v * landmask.rowBytes + (u >> 3)] >> (7 - (u & 7))) & 1) === 1
+      );
+    };
+    return {
+      cellM: cell,
+      at,
+      /* the reference's own 3 x 3, on the CITY's cell and not the field's:
+         the question is "does this coast vertex have land beside it", and
+         `cellM` is what the rest of this layer measures that in */
+      near(x: number, y: number) {
+        for (let a = -1; a <= 1; a++) {
+          for (let b = -1; b <= 1; b++) {
+            if (at(x + a * cell, y + b * cell)) return true;
+          }
+        }
+        return false;
+      },
+    };
+  }
+
   const chunk = data.get("base/terrain");
   const mask = chunk?.fields.mask;
-  const proj = data.manifest.proj as unknown as TerrainProj;
   if (!mask || !(mask instanceof Uint8Array) || !proj || !proj.N) return null;
   const N = proj.N;
   const bit = (i: number, j: number): boolean => {
@@ -693,7 +742,7 @@ export function groundDetailLayer(
   const blobY: { mesh: InstancedMesh; ground: Float32Array }[] = [];
   let zexNow = o.zex;
 
-  const land = landProbe(data);
+  const land = landProbe(data, o.landmask ?? null);
   const yGround = (x: number, y: number): number => o.elevAt(x, y) * zexNow;
 
   // ── the published shoreline ───────────────────────────────────────────────

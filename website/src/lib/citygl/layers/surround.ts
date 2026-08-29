@@ -192,6 +192,36 @@ export async function loadSurroundLandcover(
 /** sub-cells a side on a refined coastal cell — `terrain.ts` §THE COAST */
 const COAST_K = 6;
 
+/**
+ * ── AND THE FAR SHORE DOES NOT PAINT THE CITY, WHICH IS WHAT IT KEPT DOING ──
+ *
+ * `lib/city/data.ts` §surroundOrder states the rule: *"do not draw a second,
+ * coarser copy of San Francisco ... would paint the city twice at two
+ * different resolutions in two different tones."* `isOwn` is that rule, and it
+ * means *"land NOT already drawn by the city model"* — which is a claim about
+ * what the CITY draws, made where the city is not looking.
+ *
+ * The city's own ground is cut too, and when the two disagree the far shore
+ * fills the difference. Measured at Heron's Head Park: the beige blocks
+ * marching into the bay past Pier 96 are **90.5 % surround and 0.0 % terrain**
+ * — the city's fine ground is not drawn there at all, and 110.01 x 139.15 m
+ * cells stand in for it with a staircase for a shoreline. That is the second
+ * coarser copy, exactly as the rule names it.
+ *
+ * So the boundary stops being a claim and becomes a FACT: the city's own DEM
+ * rectangle. Inside it the city draws and this does not; outside it, this
+ * does. No coastline in that rule at all, so no two registers can disagree
+ * about it. `terrain.ts` §AND THE GROUND STOPS ASKING FOUR REGISTERS is the
+ * other half, and the two only work together — this alone would leave a hole
+ * where the city's cut used to remove its own ground.
+ *
+ * `?onegnd=0` restores the old behaviour on both sides.
+ */
+const ONE_GROUND = ((): boolean => {
+  if (typeof window === "undefined") return true;
+  return !/(?:\?|&)onegnd=0(?:&|$)/.test(window.location.search);
+})();
+
 export interface SurroundStats {
   cells: number;
   whole: number;
@@ -209,6 +239,10 @@ export function surroundLayer(
   zexByStep: readonly number[],
   clip?: readonly Ring[] | null,
   landcover?: SurroundLandcover | null,
+  /** the city's own published offshore bit — see §AND THE FAR SHORE DOES NOT
+   *  PAINT THE CITY. Without it the boundary is the raw DEM square, which
+   *  reaches across the Golden Gate. */
+  cityOffshore?: ((i: number, j: number) => boolean) | null,
   /**
    * The land/water field, if the city ships one — `coast-mask.ts` §AND THE
    * SAME ANSWER CAN COME FROM A FIELD. It takes precedence over `clip`,
@@ -219,6 +253,32 @@ export function surroundLayer(
   const sd = data.surround();
   if (!sd) return null;
   const s = sd; // narrowed once, so the closures below do not have to re-test
+
+  /* the city's own DEM rectangle, straight out of the published projection —
+     origin, node count and step, so this is the city's extent and not a
+     number anyone chose */
+  const cityDraws: ((x: number, y: number) => boolean) | null = (() => {
+    const p = data.manifest.proj as unknown as {
+      X0?: number; Y0?: number; N?: number; s?: number;
+    };
+    if (p.X0 === undefined || p.Y0 === undefined || !p.N || !p.s) return null;
+    const N = p.N;
+    const cell = 1 / p.s;
+    const X0 = p.X0;
+    const Y0 = p.Y0;
+    const span = (N - 1) * cell;
+    /* the city's own published offshore bit, per city cell — the same one
+       `terrain.ts` ANDs its cut with, so the two sides of the boundary are
+       one rule and not two claims about each other */
+    const off = cityOffshore ?? null;
+    return (x: number, y: number): boolean => {
+      if (x < X0 || y < Y0 || x > X0 + span || y > Y0 + span) return false;
+      if (!off) return true;
+      const i = Math.min(N - 2, Math.max(0, Math.floor((x - X0) / cell)));
+      const j = Math.min(N - 2, Math.max(0, Math.floor((y - Y0) / cell)));
+      return !off(i, j);
+    };
+  })();
 
   const XW = s.XW;
   const XH = s.XH;
@@ -299,6 +359,10 @@ export function surroundLayer(
     for (let j = 0; j < XH; j++) {
       for (let i = 0; i < XW; i++) {
         if (!s.isOwn(i, j) || !s.isLand(i, j)) continue;
+        if (ONE_GROUND && cityDraws) {
+          const c = s.centre(i, j);
+          if (cityDraws(c[0], c[1])) continue;
+        }
         cells++;
         const a = j * XNW + i;
         const b = j * XNW + (i + 1);

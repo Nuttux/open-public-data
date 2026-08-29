@@ -50,7 +50,13 @@ import { TerrainField, type TerrainProj } from "@/lib/city/terrain";
 import { axonBasis } from "../camera";
 import { fieldSun } from "../light";
 import { decodeCoast } from "@/lib/city/water";
-import { rasteriseRings, type CoastMask, type Ring } from "../coast-mask";
+import {
+  maskFromField,
+  rasteriseRings,
+  type CoastMask,
+  type LandMask,
+  type Ring,
+} from "../coast-mask";
 import type { CityLayer } from "../engine";
 
 /** what the coast refinement did, so a harness can assert it deleted nothing */
@@ -518,12 +524,45 @@ export function terrainLayer(
   /** the fine field, already loaded — see `loadFineDem` for why it is awaited
    *  before any layer is built rather than fetched here */
   fineDem?: FineDem | null,
+  /** the land/water field — see §AND THE GROUND STOPS ASKING FOUR REGISTERS */
+  landmask?: LandMask | null,
 ): TerrainLayer {
   const chunk = data.get("base/terrain");
   if (!chunk) throw new Error("terrain: base/terrain has not landed");
   const proj = data.manifest.proj as unknown as TerrainProj;
   const N = proj.N;
   const step = 1 / proj.s;
+
+  /**
+   * The land bit for every cell of the city's own grid, sampled from the
+   * field — see `lib/city/terrain.ts` §AND WHERE THE LAND BIT ITSELF COMES
+   * FROM. Built once and handed to every band's field, so the cut, the node
+   * colour, the depth order and the extent walk all read one answer.
+   */
+  const landBits: Uint8Array | null = ((): Uint8Array | null => {
+    if (!landmask) return null;
+    const [mx0, my0, mx1, my1] = landmask.world;
+    const sx = (landmask.w - 1) / (mx1 - mx0);
+    const sy = (landmask.h - 1) / (my1 - my0);
+    const bits = new Uint8Array(((N * N) + 7) >> 3);
+    for (let i = 0; i < N; i++) {
+      for (let j = 0; j < N; j++) {
+        /* the CELL's centre, which is the point `maskAt(i, j)` speaks for */
+        const wx = proj.X0 + (i + 0.5) * step;
+        const wy = proj.Y0 + (j + 0.5) * step;
+        let u = Math.round((wx - mx0) * sx);
+        let v = Math.round((wy - my0) * sy);
+        u = u < 0 ? 0 : u > landmask.w - 1 ? landmask.w - 1 : u;
+        v = v < 0 ? 0 : v > landmask.h - 1 ? landmask.h - 1 : v;
+        const on = (landmask.bits[v * landmask.rowBytes + (u >> 3)] >> (7 - (u & 7))) & 1;
+        if (on) {
+          const k = i * N + j;
+          bits[k >> 3] |= 0x80 >> (k & 7);
+        }
+      }
+    }
+    return bits;
+  })();
 
   const fields = new Map<number, TerrainField>();
   const colours = new Map<number, Float32Array>();
@@ -558,6 +597,10 @@ export function terrainLayer(
         reliefGain: reliefGainFromUrl(),
       });
       prepare?.(t);
+      /* AFTER `prepare`, because the mount sets `coastFix` there and the two
+         compose: the field says which cells are land, `coastFix` takes back
+         the ones across the Gate that the city's colours are not built for */
+      if (landBits) t.landField = landBits;
       fields.set(s, t);
     }
     return t;
@@ -1301,6 +1344,81 @@ export function terrainLayer(
   }
 
   function maskFor(reg: readonly Ring[] | null): CoastMask | null {
+    /* ── AND THE GROUND STOPS ASKING FOUR REGISTERS ────────────────────
+       Daniel: *"every issue i see is about you not havign a correct
+       architecture of like where terrian is, where buildings sit ... build
+       stuff in a way that these issues do not become possible because
+       everything is always relative to each other and not absolute."*
+
+       He is describing one defect. FOUR things in this renderer answer "is
+       this land?" and none of them is the others: the county outline
+       (`txuc-3kzm`, which runs kilometres into the Pacific), the regional
+       hydrography rings (3,168 vertices for 45.8 x 39.0 km), the surround's
+       own `isLand`/`isOwn` bits, and the DEM's sign. Every coast bug this
+       week has been two of them disagreeing, and the worst of them is a
+       SECOND, COARSER COPY OF SAN FRANCISCO: this cut removes Hunters Point,
+       `surround.isOwn` reads that as "the city does not draw here", and the
+       far shore paints it in 110 x 139 m cells in a different tone. Measured
+       at Heron's Head: the beige blocks marching into the bay are 90.5 %
+       surround and 0.0 % terrain. `lib/city/data.ts` §surroundOrder states
+       the rule this breaks in its own words.
+
+       So the ground asks ONE register. The objection that forced the union —
+       that the county outline alone calls the whole Pacific land — is
+       answered outright by a field that calls the Pacific water because it
+       IS water.
+
+       ── AND IT KEEPS THE FILL AND THE PIERS, WHICH WAS THE WORRY ───────
+       The field is Mean High Water, and San Francisco's waterfront is fill
+       and pier deck. Cutting at MHW would leave streets drawing on nothing
+       if the DEM did not carry them. It does, and this was checked before
+       the change rather than after: Pier 39, Pier 15, Pier 7, the Fort Mason
+       pier, Mission Bay fill, the Hunters Point shipyard, Treasure Island,
+       Heron's Head and the Embarcadero all come back LAND; the open bay
+       comes back water.
+
+       `?lmask=0` restores the two-register union exactly. */
+    if (landmask) {
+      /* ── AND THE DEM SQUARE REACHES PAST THE CITY, WHICH IS WHY THIS IS
+         AN AND AND NOT THE FIELD ALONE ──────────────────────────────────
+         The published DEM is a 13.9 km square and San Francisco is not
+         square: its north-west corner takes in the Marin shore across the
+         Golden Gate. Those cells ARE land, so the field says land, and drawn
+         with the city's own ground colours — built for a photographed,
+         tinted, park-marked city — they came out CLIPPED WHITE once already,
+         a bleached blocky mass across the Gate in every whole-city frame.
+         `cityOffshoreBits` is the published answer to exactly that and the
+         field already honours it in `maskAt`.
+
+         So the ground is cut where the DEM says land AND the city's own
+         published bit says this cell is the city's to draw. One rule, two
+         clauses, both published. */
+      const lat = {
+        x0: proj.X0, y0: proj.Y0, nx: N - 1, ny: N - 1, cellW: step, cellH: step,
+      };
+      const fm = maskFromField(landmask, lat, COAST_K);
+      const t0 = fieldFor(0);
+      /* `maskAt` is now fed by the same field, so this AND is not two
+         registers meeting — it is the CELL's answer refined to the SUB-cell.
+         The field decides both; this only says where inside a cell the line
+         falls. */
+      const at = (i: number, j: number, si: number, sj: number): boolean =>
+        fm.at(i, j, si, sj) && t0.maskAt(i, j) !== 0;
+      return {
+        K: COAST_K,
+        lattice: lat,
+        at,
+        countIn(i: number, j: number): number {
+          if (t0.maskAt(i, j) === 0) return 0;
+          let n = 0;
+          for (let sj = 0; sj < COAST_K; sj++) {
+            for (let si = 0; si < COAST_K; si++) if (at(i, j, si, sj)) n++;
+          }
+          return n;
+        },
+      };
+    }
+
     const sets: (readonly Ring[])[] = [];
     if (cityRings.length) sets.push(cityRings);
     if (reg && reg.length) sets.push(reg);

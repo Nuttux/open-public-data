@@ -265,6 +265,14 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       const surroundLC = await loadSurroundLandcover(data.assetBase);
       if (disposed) return;
 
+      /* ── ONE ANSWER TO WHERE THE LAND STOPS, AND EVERY GROUND READS IT ──
+         Loaded BEFORE the ground, because the ground's own cut reads it now,
+         and so does its COLOUR through `maskAt`, and so does the far shore's
+         boundary, and so does the shoreline ink, and so does the bay plate.
+         One register where there were four. `?lmask=0` is all of them. */
+      const landmask = await loadLandMask(data.assetBase);
+      if (disposed) return;
+
       const terrain = terrainLayer(
         data,
         descriptor.look.zexByStep,
@@ -308,6 +316,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         },
         cityCoast,
         fineDem,
+        landmask,
       );
       engine.scene.add(terrain.mesh);
       engine.add(terrain);
@@ -354,21 +363,13 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
 
       /* the land that is not the subject, at its own coarser grid */
       /* the far shore, cut at the same published rings */
-      /* ── ONE ANSWER TO WHERE THE LAND STOPS ───────────────────────
-         `coast-mask.ts` §AND THE SAME ANSWER CAN COME FROM A FIELD: one
-         bit a node of NOAA's topobathy at 16.3 x 20.6 m, which is finer
-         than the 18.3 x 23.2 m sub-cell this cut refines to. 30.7 KB
-         gzipped, against 67.6 KB of rings carrying a vertex every hundred
-         metres. Absence is the published rings, unchanged. */
-      const landmask = await loadLandMask(data.assetBase);
-      if (disposed) return;
-
       const surround = surroundLayer(
         data,
         terrain.fieldFor(0),
         descriptor.look.zexByStep,
         surroundCoast?.rings ?? null,
         surroundLC,
+        surroundCoast ? (i: number, j: number) => surroundCoast.cityOffshore(i, j) : null,
         landmask,
       );
       if (surround) {
@@ -564,6 +565,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       const ground = groundDetailLayer(data, {
         elevAt: groundAt,
         zex: descriptor.look.zexByStep[0],
+        landmask,
       });
       if (ground) {
         for (const m of ground.meshes) engine.scene.add(m);

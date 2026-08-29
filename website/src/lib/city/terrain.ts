@@ -992,6 +992,7 @@ export class TerrainField {
   private readonly dem: Uint8Array;
   private readonly maskBits: Uint8Array;
   private coastFixBits: Uint8Array | null = null;
+  private landFieldBits: Uint8Array | null = null;
 
   /** the diffuse term, per node */
   readonly lam: Float32Array;
@@ -1132,9 +1133,40 @@ export class TerrainField {
     this.coastFixBits = QF.coast ? bits : null;
   }
 
+  /**
+   * ── AND WHERE THE LAND BIT ITSELF COMES FROM, WHICH IS THE SAME SEAM ────
+   *
+   * The paragraph above is the right idea and this extends it rather than
+   * working around it. `maskAt` is the one place a cell's land-ness is
+   * decided, and everything downstream — the node average that gives a cell
+   * its COLOUR, the depth order, `fitCity`'s extent walk, and the GL
+   * renderer's coast cut — reads it. So a second register that disagrees
+   * with `maskBits` must be applied HERE or it is applied nowhere.
+   *
+   * It had to be. `maskBits` is the city's own published land bit and it
+   * calls the Hunters Point fill water, so the ground was cut away there and
+   * the far shore painted a second, coarser copy of San Francisco over the
+   * hole — 110.01 x 139.15 m cells with a staircase for a shoreline, which
+   * `lib/city/data.ts` §surroundOrder names as the one thing that must not
+   * happen. Cutting the ground at a better register alone did not fix it:
+   * the cut moved and the COLOUR did not, because the colour comes through
+   * here, and the ground came back bleached white instead.
+   *
+   * Set this and the two agree by construction, because there is only one of
+   * them. Unset — which is every caller that does not opt in, including the
+   * published Canvas page — nothing changes at all.
+   */
+  set landField(bits: Uint8Array | null) {
+    this.landFieldBits = bits;
+  }
+
   maskAt(i: number, j: number): number {
     const k = i * this.N + j;
-    if ((this.maskBits[k >> 3] >> (7 - (k & 7))) & 1) {
+    const lf = this.landFieldBits;
+    const land = lf
+      ? (lf[k >> 3] >> (7 - (k & 7))) & 1
+      : (this.maskBits[k >> 3] >> (7 - (k & 7))) & 1;
+    if (land) {
       const cf = this.coastFixBits;
       if (cf && (cf[k >> 3] >> (7 - (k & 7))) & 1) return 0;
       return 1;
