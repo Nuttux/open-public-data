@@ -671,6 +671,54 @@ export function canopyMottle(k: number, cov: number, c: Float64Array): void {
   c[2] = cl(c[2] * (kv - warm));
 }
 
+/* ── AND OPEN GROUND WAS ONE COLOUR, WHICH IS MOST OF THE CITY ────────────
+   `canopyMottle` returns early wherever there is no canopy, so every square
+   metre of unwooded ground took its colour from the elevation ramp and nothing
+   else. On a hillside that ramp does vary. On the flat it does not vary at
+   all: South of Market is at sea level from end to end, so the whole district
+   resolved to a single value of the table and came out as one sheet of khaki.
+
+   It is exactly the defect the regional land had, sitting inside the city
+   where the reader actually looks, and it has the same answer for the same
+   reason -- the problem is that the COLOUR does not vary, so vary the colour.
+   Deterministic in the node's own index, so a rebuild puts every node back.
+
+   It tapers out as the canopy comes in rather than adding to it: a treed node
+   is already varied by the mottle above and two of them stacked reads as
+   noise. Declared, and not a claim about any square metre -- the same status
+   as the canopy mottle it complements and as the wall palette. */
+const GROUND_MOTTLE = 0.11;
+/** how much of it is a warm/cool skew rather than a change of value */
+const GROUND_MOTTLE_WARM = 0.4;
+/** canopy fraction by which the open-ground mottle has handed over entirely */
+const GROUND_MOTTLE_OUT = 0.5;
+
+/**
+ * Vary a node of OPEN ground, in place, in sRGB bytes.
+ *
+ * `cov` is the published canopy byte, 0..255, normalised here the way
+ * `terrainRGB` and `canopyMottle` both normalise it. The hash is seeded
+ * differently from the canopy mottle's on purpose: sharing it would make the
+ * two agree node for node and the handover would show as a seam.
+ */
+export function groundMottle(k: number, cov: number, c: Float64Array): void {
+  const q = Math.min(1, cov * (1.5 / 255));
+  const open = 1 - Math.min(1, q / GROUND_MOTTLE_OUT);
+  if (!(open > 0)) return;
+  let h = Math.imul((k | 0) ^ 0x165667b1, 0x27d4eb2f);
+  h ^= h >>> 16;
+  h = Math.imul(h, 0x7feb352d);
+  h ^= h >>> 15;
+  const v = ((h >>> 8) & 1023) / 511.5 - 1;
+  const w = ((h >>> 20) & 511) / 255.5 - 1;
+  const kv = 1 + v * GROUND_MOTTLE * open;
+  const warm = w * GROUND_MOTTLE * GROUND_MOTTLE_WARM * open;
+  const cl = (x: number): number => (x < 0 ? 0 : x > 255 ? 255 : x);
+  c[0] = cl(c[0] * (kv + warm));
+  c[1] = cl(c[1] * kv);
+  c[2] = cl(c[2] * (kv - warm));
+}
+
 /** true where the canopy tint is applied to the ground */
 export const WFLG = { tint: 1 };
 
@@ -1328,6 +1376,8 @@ export class TerrainField {
     );
     /* a wood is not one colour — see §ONE GREEN FOR EVERY TREED CELL */
     canopyMottle(k, cov, sc3);
+    /* and neither is a flat district — see §AND OPEN GROUND WAS ONE COLOUR */
+    groundMottle(k, cov, sc3);
     this.tnR[k] = sc3[0];
     this.tnG[k] = sc3[1];
     this.tnB[k] = sc3[2];
