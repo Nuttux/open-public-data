@@ -56,6 +56,7 @@ import type { TextureNode } from "three/webgpu";
 import { PostProcessing, WebGPURenderer } from "three/webgpu";
 import type { ShaderNodeObject } from "three/tsl";
 import { pass, renderOutput, vec4 } from "three/tsl";
+import { bloom } from "three/examples/jsm/tsl/display/BloomNode.js";
 
 /** a pass's own texture node — the thing that carries `.rgb` and `.a` */
 type PassTex = ShaderNodeObject<TextureNode>;
@@ -199,6 +200,27 @@ function skyEnvTexture(paperCss: string): DataTexture {
   t.needsUpdate = true;
   return t;
 }
+
+/**
+ * ── THE BLOOM'S THREE NUMBERS, AND WHAT EACH ONE IS FOR ────────────────────
+ *
+ * THRESHOLD is the one that decides whether this is a lens or a filter. Below
+ * the frame's own bright end it glows everything and the city goes soft and
+ * milky, which is the failure mode that gives bloom a bad name. Held at 1.0 it
+ * catches only what is genuinely over the diffuse white point — sun on water,
+ * on steel and on the brightest roofs — and leaves a pale wall in shade alone.
+ *
+ * STRENGTH is deliberately low. The job is to say "this is brighter than white
+ * can show", not to put a halo on the city.
+ *
+ * RADIUS is the spread. Wide enough to read as light and not as an outline.
+ *
+ * `?bloom=0` turns it off, which is what makes these a decision rather than a
+ * default — and they are AUTHORED, not measured off anything.
+ */
+const BLOOM_STRENGTH = 0.35;
+const BLOOM_RADIUS = 0.6;
+const BLOOM_THRESHOLD = 1.0;
 
 const TONE_BY_NAME: Record<string, ToneMapping> = {
   none: NoToneMapping,
@@ -471,6 +493,28 @@ export class CityEngine {
             ...this.airParams,
           })
         : null;
+      /* ── AND A BLOOM, WHICH IS THE ONE THING THE CHAIN NEVER HAD ────────
+         `air.ts` already carries the haze, the tilt-shift, the vignette and
+         the grade, all measured against the published page. None of them is a
+         LENS effect: they shape colour and they shape the frame's edges, and
+         the top of the range was left doing nothing.
+
+         That is what read as flat. This renderer has a real HDR frame — the
+         sun's specular on steel and water, a white roof in full sun, a lit
+         wall facing 315 degrees — and every one of those clipped to the same
+         white as a pale surface in shade. A bright thing was only ever
+         light-COLOURED. Bloom is the term that separates the two, and it is
+         the single strongest cue that a frame came out of a renderer rather
+         than off a sheet of paper.
+
+         It reads the SCENE pass, not the composed one. The haze and the
+         vignette are atmosphere and lens; letting them feed the glow would
+         bloom the paper rather than the light, and would put a halo in the
+         corners where the vignette darkens rather than where the sun is. */
+      const glow = this.quality.bloom
+        ? bloom(colour, BLOOM_STRENGTH, BLOOM_RADIUS, BLOOM_THRESHOLD)
+        : null;
+
       const p = new PostProcessing(this.renderer);
       /* ── THE OUTPUT TRANSFORM RUNS BEFORE THE ACCUMULATION, NOT AFTER ────
          `PostProcessing` applies tone mapping and the colour-space encode to
@@ -487,7 +531,10 @@ export class CityEngine {
       /* THE ACCUMULATION IS LAST, over the composed frame — it has to see
          what actually reaches the glass, including the occlusion and the
          air, because those are part of what flickers. */
-      const composed = this.outputFor(colour, a, air);
+      const base = this.outputFor(colour, a, air);
+      /* additive, and after the air: a glow is light arriving at the lens, so
+         it is not hazed, not occluded and not vignetted */
+      const composed = glow ? base.add(glow) : base;
       const graded = renderOutput(
         composed,
         this.renderer.toneMapping,

@@ -147,6 +147,17 @@ export interface QualitySettings {
   vignette: boolean;
   /** the one final colour decision */
   grade: boolean;
+  /**
+   * The lens glow over the frame's brightest surfaces.
+   *
+   * Unlike the four above it is NOT a port of anything the Canvas page does —
+   * a sheet of paper has no lens and cannot bloom. It is here because this
+   * renderer has a real HDR frame and nothing was reading the top of it: the
+   * brightest roofs, the sun's specular on water and metal all clipped to the
+   * same white as a plain pale wall. Bloom is what makes a bright thing read
+   * as BRIGHT rather than as light-coloured.
+   */
+  bloom: boolean;
 }
 
 const HIGH: QualitySettings = {
@@ -163,6 +174,7 @@ const HIGH: QualitySettings = {
   tiltShift: true,
   vignette: true,
   grade: true,
+  bloom: true,
 };
 
 const LOW: QualitySettings = {
@@ -179,6 +191,7 @@ const LOW: QualitySettings = {
   tiltShift: true,
   vignette: true,
   grade: true,
+  bloom: true,
 };
 
 /**
@@ -231,6 +244,8 @@ function withOverrides(q: QualitySettings, search: string): QualitySettings {
   if (tilt) q.tiltShift = tilt === "1";
   const vig = /(?:\?|&)vig=([01])/.exec(search)?.[1];
   if (vig) q.vignette = vig === "1";
+  const bloom = /(?:\?|&)bloom=([01])/.exec(search)?.[1];
+  if (bloom) q.bloom = bloom === "1";
   const grade = /(?:\?|&)grade=([01])/.exec(search)?.[1];
   if (grade) q.grade = grade === "1";
   /* the shadow map's edge, so the crispness/cost curve can be walked without a
