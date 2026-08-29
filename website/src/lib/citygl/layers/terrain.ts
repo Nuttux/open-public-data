@@ -330,6 +330,49 @@ function reliefGainFromUrl(): number {
 /** 1-2-1 passes each way on the normal field; 8 is a sigma of about two cells */
 const FORM_LOWPASS = 8;
 
+/**
+ * ── AND THE REASON FOR THE LOW PASS HAS SINCE BEEN REMOVED ────────────────
+ *
+ * §THE GROUND'S FORM rejects full true normals on one ground, and it is worth
+ * quoting because it is no longer true: *"the two suns are 69 degrees apart"*.
+ * `lib/city/terrain.ts` baked its hillshade from the constant `SUN` while
+ * `light.ts` put the scene sun on screen-right, so handing the mesh its true
+ * normals lit every hillside from a direction the painting on it disagreed
+ * with.
+ *
+ * That contradiction was fixed later and elsewhere: this file now builds its
+ * `TerrainField` with `sun: fieldSun(axonBasis(projection).R)` — see §the
+ * ground was shaded from the north-north-east — so the baked hillshade and
+ * the scene sun are derived from the same camera basis and CANNOT disagree.
+ * The objection stands in the comment; the condition behind it does not.
+ *
+ * What remains is a real question rather than a contradiction: with the two
+ * suns agreed, full true normals shade the landform TWICE from the same
+ * direction. That deepens the hillsides rather than fighting them, which may
+ * be an improvement or may be too much, and it is a judgement about the
+ * picture rather than something a measurement settles on its own.
+ *
+ * MEASURED, both ways, at two cameras that stress it differently:
+ *
+ *   twin peaks, district   mean 138.85 -> 139.66   sd 66.40 -> 66.63   26.02 %
+ *   inner richmond, block  mean 145.17 -> 145.16   sd 66.23 -> 66.71   15.43 %
+ *
+ * The exposure does not move -- a fifth of a level at worst, and none at all
+ * on the flat -- while a quarter of the hill frame changes and the standard
+ * deviation rises slightly. That is the signature of a REDISTRIBUTION rather
+ * than a second coat of shading: the landform gets its modelling back without
+ * the frame going darker or more contrasty overall. Looked at on a 1.8x crop,
+ * Twin Peaks and Mount Davidson read as volumes instead of as painted slopes.
+ *
+ * So this is now the DEFAULT and `?form=lp` restores the low pass. The
+ * inversion is deliberate: the low pass was a workaround for a contradiction
+ * that no longer exists, and a workaround should not outlive its cause.
+ */
+const FORM_FULL = ((): boolean => {
+  if (typeof window === "undefined") return true;
+  return !/(?:\?|&)form=lp(?:&|$)/.test(window.location.search);
+})();
+
 
 /**
  * @param zexByStep the descriptor's own exaggeration table
@@ -776,9 +819,11 @@ export function terrainLayer(
       }
       return src as Float32Array;
     };
-    const bx = lowpass(tx);
-    const by = lowpass(ty);
-    const bz = lowpass(tz);
+    /* the smooth part the painting already owns — or, under `?form=full`, the
+       up vector, which hands the mesh its whole true normal */
+    const bx = FORM_FULL ? new Float32Array(N * N) : lowpass(tx);
+    const by = FORM_FULL ? new Float32Array(N * N).fill(1) : lowpass(ty);
+    const bz = FORM_FULL ? new Float32Array(N * N) : lowpass(tz);
 
     const put = (i: number, j: number, o: number): void => {
       const k = i * N + j;
