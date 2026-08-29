@@ -83,34 +83,48 @@ function irradiance(rig: ReturnType<typeof rigFor>, n: Vector3): number {
 }
 
 describe("solveSunRig", () => {
-  it("throws a shadow 1 / tan(40 deg) times its caster's height", () => {
-    /* This assertion has now moved twice — sqrt(2) from the parity solve,
-       sqrt(3) at 30 degrees, and this. Each time it is EXACT and each time it
-       is the declared value, never a widened tolerance. `light.ts` §and then
-       it went back up states why. */
-    expect(SHADOW_THROW).toBeCloseTo(1 / Math.tan((40 * Math.PI) / 180), 10);
+  it("throws a shadow 1 / tan(22 deg) times its caster's height", () => {
+    /* This assertion has now moved three times — sqrt(2) from the parity
+       solve, sqrt(3) at 30 degrees, 1/tan(40) after that, and this. Each time
+       it is EXACT and each time it is the declared value, never a widened
+       tolerance. `light.ts` §AND 22 IS WHAT HE CHOSE states why this one
+       moved: both suns were photographed at the same camera and Daniel
+       picked. */
+    expect(SHADOW_THROW).toBeCloseTo(1 / Math.tan((22 * Math.PI) / 180), 10);
   });
 
-  it("keeps an ordinary house's shadow inside the street it lands in", () => {
-    /* THE PROPERTY THE ELEVATION EXISTS TO GUARANTEE, which the bare constant
-       above does not capture: the number was not chosen for its own sake, it
-       was chosen so a shadow fits in a carriageway. Locking only the constant
-       lets a future edit move the sun to somewhere that satisfies the letter
-       of a declared value and cuts the streets again, which is exactly the
-       defect this replaced.
+  it("crosses the street it lands in, which is what the low sun cost", () => {
+    /* THE PROPERTY THE ELEVATION WAS CHOSEN FOR, AND IT HAS CHANGED SIDES.
 
-       The two world quantities, both from the record rather than from here:
-       an ordinary Richmond/Sunset dwelling stands about 10 m to its parapet,
-       and the standard right of way on that grid is 68.6 ft — 20.9 m. A
-       shadow that clears the pavement is wanted; one that reaches the far
-       kerb is the defect. So the throw must put a 10 m caster past the near
-       pavement (about 4.6 m) and short of the far one. */
+       At 40 degrees this asserted the opposite: a 10 m house threw 11.9 m,
+       which cleared the near pavement and stopped short of the far kerb, and
+       the test existed so that a future edit could not quietly move the sun
+       to somewhere that cut the streets.
+
+       22 degrees cuts them. The same 10 m house now throws 24.75 m, which is
+       past the whole 20.9 m right of way and onto the block opposite. That is
+       not a regression that slipped through — `light.ts` §AND 22 IS WHAT HE
+       CHOSE has the pair of photographs it was decided on, and the residential
+       camera it costs the most at was measured after: at Richmond street zoom
+       the frame goes from mean 124.66 to 103.78 and from 2.64 % to 5.65 % of
+       pixels under 40/255, with saturation UP from 0.2350 to 0.2512. Longer
+       shadows and more colour, which is what a low sun is for.
+
+       So the guard is inverted rather than deleted, because the number still
+       must not drift: the throw has to be long enough to model — past the far
+       kerb — and short enough to be a sun rather than a dusk, which here means
+       it must not reach across the opposite block as well.
+
+       The world quantities are unchanged and still from the record: an
+       ordinary Richmond/Sunset dwelling stands about 10 m to its parapet, the
+       standard right of way on that grid is 68.6 ft — 20.9 m — and its
+       pavements are about 4.6 m. A Sunset block is about 73 m deep. */
     const HOUSE_M = 10;
     const ROW_M = 20.9;
-    const PAVEMENT_M = 4.6;
+    const BLOCK_M = 73;
     const cast = HOUSE_M * SHADOW_THROW;
-    expect(cast).toBeGreaterThan(PAVEMENT_M);
-    expect(cast).toBeLessThan(ROW_M - PAVEMENT_M);
+    expect(cast).toBeGreaterThan(ROW_M);
+    expect(cast).toBeLessThan(ROW_M + BLOCK_M);
   });
 
   it("hits every one of the four look targets it was given", () => {
@@ -153,7 +167,16 @@ describe("solveSunRig", () => {
        still hand back levels a renderer can use. */
     let reached = 0;
     for (const sunShare of [0.35, 0.45, 0.55, 0.65]) {
-      for (const wallCap of [1.1, 1.3, 1.5]) {
+      /* ── AND WHY THE CAPS MOVED WITH THE SUN ────────────────────────────
+         The same mechanism this test was already written around, one step
+         further. A 45-degree wall's share of the beam is `cos(elev)`, so
+         dropping the sun from 30 to 22 degrees raises it again and pushes the
+         whole reachable region UP in `wallCap`: swept at 1.1/1.3/1.5 the
+         solve now closes on four pairs out of twelve, all of them at 1.5, and
+         the branch is barely exercised at one end and not at all at the
+         other. 1.9 is added so the sweep still STRADDLES the boundary at this
+         sun instead of sitting to one side of it. */
+      for (const wallCap of [1.1, 1.3, 1.5, 1.9]) {
         const look = { ...DEFAULT_LOOK, sunShare, wallCap };
         const rig = rigFor(look);
         if (rig.levels.reachable) {
@@ -169,9 +192,12 @@ describe("solveSunRig", () => {
         rig.dispose();
       }
     }
-    /* and the sweep must not quietly become all-unreachable, which would make
-       the branch above vacuous */
-    expect(reached).toBeGreaterThanOrEqual(9);
+    /* and the sweep must straddle the boundary rather than sit on one side of
+       it, which would make one of the two branches above vacuous. Pinned
+       EXACTLY, not as a floor: 8 of the 16 pairs close, and a solver change
+       that moved the boundary either way would say so here rather than pass
+       quietly on a threshold with room in it. */
+    expect(reached).toBe(8);
   });
 
   it("ships a look the solve can actually reach", () => {

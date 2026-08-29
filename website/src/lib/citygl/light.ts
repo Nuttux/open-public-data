@@ -237,9 +237,9 @@ function groundHue(): [number, number, number] {
 /**
  * ── THE SUN IS PINNED, AND THAT IS MOST OF WHY NOTHING IS MODELLED ────────
  *
- * 40 degrees is late morning. It is a defensible choice for a map — it lights
- * every face, it hides nothing, and it throws a shadow just over one caster
- * height. It is also the flattest hour available: a high sun puts nearly the
+ * 40 degrees was late morning, and it was a defensible choice for a map — it
+ * lights every face, it hides nothing, and it throws a shadow just over one
+ * caster height. It is also the flattest hour available: a high sun puts nearly the
  * same irradiance on every up-facing surface in the city, so the ground, the
  * roofs and the roadway all resolve to the same band of values and the frame
  * comes out as one sheet of mid-tone.
@@ -255,13 +255,22 @@ function groundHue(): [number, number, number] {
  * tuned constants, and `WALL45` and `SHADOW_THROW` are both derived from this
  * angle, so lowering it re-solves the whole rig consistently.
  *
- * `?sun=22` sets it, which is what makes this a decision Daniel can look at
- * rather than one I made for him. Read once at module load, the same way the
- * palette and quality flags in this renderer are, and clamped to a plausible
- * daylight range so a bad query string cannot produce a sun underground.
+ * ── AND 22 IS WHAT HE CHOSE ──────────────────────────────────────────────
+ *
+ * Both were built and photographed at the same downtown district camera and
+ * put in front of him as one image. 40 degrees: mean 126.78, p05 57.6, range
+ * 159.7, saturation 0.2514. 22 degrees: mean 118.54, p05 49.7, range 163.3,
+ * saturation 0.2553 — darker overall, a deeper floor, more range and more
+ * colour, all four moving the way a lower sun should move them. Daniel, on
+ * the pair: *"22 sun is great"*. So 22 is the default and 40 is the flag.
+ *
+ * `?sun=40` restores the old light exactly. Read once at module load, the
+ * same way the palette and quality flags in this renderer are, and clamped
+ * to a plausible daylight range so a bad query string cannot produce a sun
+ * underground.
  */
 const SUN_ELEV_DEG = ((): number => {
-  const DEFAULT = 40;
+  const DEFAULT = 22;
   if (typeof window === "undefined") return DEFAULT;
   const m = /(?:\?|&)sun=([0-9.]+)/.exec(window.location.search);
   const v = m ? Number(m[1]) : NaN;
