@@ -94,8 +94,21 @@ import type { Quaternion } from "three";
    a stand contains both the yellow-greens and the blue-greens a real mixed
    canopy does. The magnitudes are declared, not measured — no register
    publishes the hue of an individual tree. */
-const FOLIAGE_VALUE_JITTER = 0.22;
-const FOLIAGE_WARM_JITTER = 0.09;
+/* ── AND 0.22 WAS NOT ENOUGH, LOOKED AT ─────────────────────────────────
+   These were set against a STREET tree, where a crown is an object with sky
+   round it and a fifth of a stop between neighbours is plenty. Golden Gate
+   Park is the other case entirely: tens of thousands of crowns touching, with
+   no ground and no sky between them, and there the eye is not comparing one
+   tree to the next — it is looking for the boundary between any two. At 0.22
+   it cannot find one, so half a square kilometre of park resolves into a
+   single green blanket, which is *"Canopies still look like giant bushes."*
+
+   Opened to a little over a third of a stop on value and the warm axis with
+   it. A stand is not one colour, and the tell that it was too narrow is that
+   the park read as an AREA rather than as a crowd. Declared, not measured: no
+   register publishes the hue of an individual tree. */
+const FOLIAGE_VALUE_JITTER = 0.36;
+const FOLIAGE_WARM_JITTER = 0.15;
 
 /**
  * A per-instance foliage tint, written into `out` and returned.
@@ -129,8 +142,11 @@ const FOLIAGE_WARM_JITTER = 0.09;
  * The vertical factor is separate from the horizontal one so the population
  * contains squat crowns and tall crowns rather than one shape at many scales.
  */
-const CROWN_SIZE_JITTER = 0.26;
-const CROWN_RISE_JITTER = 0.2;
+/* Widened for the same reason the tint above was: a canopy of touching crowns
+   needs its silhouette broken as well as its colour, and a population that
+   varies only a quarter in width reads as one shape at many scales. */
+const CROWN_SIZE_JITTER = 0.38;
+const CROWN_RISE_JITTER = 0.34;
 
 /**
  * A per-instance crown size, deterministic in the tree's own stable key.
