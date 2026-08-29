@@ -771,9 +771,71 @@ export class CityEngine {
   /** every layer the engine draws, in the order they were added */
   add(layer: CityLayer): void {
     this.layers.push(layer);
+    this.stampLayer(layer.name);
     layer.onStep?.(this.step, this.zex(), this.descriptor.look.zexb);
     layer.onYear?.(this.year);
     this.invalidate();
+  }
+
+  /**
+   * ── WHICH LAYER DREW THIS MESH, WHICH NOTHING COULD ANSWER ──────────────
+   *
+   * Every `CityLayer` has a `name` and none of it reached the scene graph, so
+   * the only handles a probe had on a mesh were its vertex count and its
+   * `renderOrder`. That is not a debugging inconvenience, it is a source of
+   * WRONG ANSWERS: two separate isolations were run against the wrong mesh on
+   * the strength of a vertex-count guess — one of them concluded the terrain
+   * was flat cream when it had actually selected the ground plate.
+   *
+   * A layer builds its meshes in its own constructor and hands them to the
+   * scene before `add` is ever called, so by the time we get here everything
+   * this layer contributed is present and unclaimed. Walking the graph and
+   * stamping whatever is still unstamped therefore attributes exactly this
+   * layer's meshes, and the ordering of `add` calls does the rest.
+   *
+   * A mesh a layer creates LATER stays unstamped and reads as `?`, which is
+   * the honest answer rather than a wrong one — it is not silently attributed
+   * to whichever layer happened to register next.
+   *
+   * `name` and `userData` are inert: nothing in the render path reads either,
+   * so this cannot change a pixel.
+   */
+  private stampLayer(name: string): void {
+    this.scene.traverse((o) => {
+      if (!(o as { isMesh?: boolean }).isMesh) return;
+      if (o.userData.layer !== undefined) return;
+      o.userData.layer = name;
+      if (!o.name) o.name = name;
+    });
+  }
+
+  /**
+   * A census of the scene by layer — the query the probes above could not ask.
+   * Exposed on `window` in dev by `CityGLMap.tsx` alongside the other handles.
+   */
+  layerCensus(): Record<
+    string,
+    { meshes: number; vertices: number; orders: number[] }
+  > {
+    const out: Record<
+      string,
+      { meshes: number; vertices: number; orders: number[] }
+    > = {};
+    this.scene.traverse((o) => {
+      const m = o as unknown as {
+        isMesh?: boolean;
+        geometry?: { attributes?: { position?: { count?: number } } };
+        renderOrder: number;
+      };
+      if (!m.isMesh) return;
+      const k = (o.userData.layer as string | undefined) ?? "?";
+      const e = (out[k] ??= { meshes: 0, vertices: 0, orders: [] });
+      e.meshes++;
+      e.vertices += m.geometry?.attributes?.position?.count ?? 0;
+      if (!e.orders.includes(m.renderOrder)) e.orders.push(m.renderOrder);
+    });
+    for (const e of Object.values(out)) e.orders.sort((a, b) => a - b);
+    return out;
   }
 
   zex(): number {

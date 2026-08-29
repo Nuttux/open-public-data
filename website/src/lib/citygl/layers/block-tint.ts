@@ -84,6 +84,37 @@ const MAX_EDGE_M = 22;
    block costs exactly what it did before — only the big ones spend more. */
 const MAX_SPLIT_DEPTH = 9;
 
+/* ── A PARK IS NOT A BLOCK INTERIOR ──────────────────────────────────────
+   This layer's whole subject, stated at the top of the file, is the BLOCK
+   INTERIOR — the back-yard ground between the buildings that the published
+   page's own `paintGround` marks and this renderer was missing. `TINT_ALPHA`
+   was raised to 0.46 for exactly that job and measured for it, at the Portola
+   and Richmond deep cameras where block interiors are genuinely in frame.
+
+   The register's "blocks" are not all blocks. Golden Gate Park, the Presidio
+   and the Twin Peaks open space each arrive as a single parcel over a
+   kilometre across, and a back-yard wash at 0.46 laid over open hillside does
+   not read as back yards — it reads as what Daniel reported at Twin Peaks:
+   hard-edged straight-sided patches that look like vector polygons printed on
+   the ground rather than like terrain. It is also a CLAIM, and a false one:
+   there is no block interior out there to mark.
+
+   So the wash is confined to parcels the size a block actually is. A San
+   Francisco block runs about 100 x 200 m; the cap is three times that, which
+   keeps every real block including the long ones downtown and drops the open
+   space. Declared, and it is a rule about what this layer is FOR rather than
+   a tuning of how strong it looks. */
+const MAX_BLOCK_M2 = 60_000;
+
+/** twice the signed area of a ring, by shoelace */
+function ringArea2(ring: readonly (readonly [number, number])[]): number {
+  let a = 0;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    a += ring[j][0] * ring[i][1] - ring[i][0] * ring[j][1];
+  }
+  return Math.abs(a);
+}
+
 /**
  * The published block rings.
  *
@@ -185,7 +216,7 @@ export interface BlockTintOptions {
 export function blockTintLayer(
   data: CityData,
   o: BlockTintOptions,
-): (CityLayer & { mesh: Mesh; blocks: number }) | null {
+): (CityLayer & { mesh: Mesh; blocks: number; dropped: number }) | null {
   const chunk = data.get("base/blocks");
   if (!chunk) return null;
   const bl = decodeRings(chunk as unknown as { fields: Record<string, unknown> });
@@ -229,11 +260,18 @@ export function blockTintLayer(
   };
 
   let blocks = 0;
+  /** parcels too large to be a block interior — see §A PARK IS NOT A BLOCK */
+  let dropped = 0;
   for (let b = 0; b < bl.n; b++) {
     const start = bl.off[b];
     const m = bl.off[b + 1] - start;
     const ring = insetRing(bl.rx, bl.ry, start, m);
     if (!ring) continue;
+    /* open space is not a block interior — see §A PARK IS NOT A BLOCK */
+    if (ringArea2(ring) > 2 * MAX_BLOCK_M2) {
+      dropped++;
+      continue;
+    }
     const contour: Vector2[] = ring.map((p) => new Vector2(p[0], p[1]));
     const faces = ShapeUtils.triangulateShape(contour, []);
     if (!faces.length) continue;
@@ -285,6 +323,7 @@ export function blockTintLayer(
     name: "block-tint",
     mesh,
     blocks,
+    dropped,
     onStep(_step: number, zex: number) {
       if (zex === o.zex) return;
       const k = zex / o.zex;
