@@ -1,0 +1,38 @@
+{
+ "w": 1124,
+ "h": 757,
+ "world": [
+  -16009.25,
+  -17800.89,
+  29746.59,
+  21161.11
+ ],
+ "dmax": 116.106,
+ "dtype": "u8",
+ "encoding": "depth in metres = (v / 255) ** 2 * dmax; v = 0 is land or at/above MHW",
+ "cellM": [
+  40.736,
+  51.537
+ ],
+ "bbox4326": [
+  -122.61990742644502,
+  37.60009258475,
+  -122.10000003359502,
+  37.95009257494999
+ ],
+ "note": "Node (i, j) maps to bbox4326 by linear interpolation; j increases NORTH, the same convention as base/water.",
+ "wetFrac": 0.4794,
+ "tertilesM": [
+  5.55,
+  15.617
+ ],
+ "quantErrP99M": 0.2216,
+ "source": {
+  "publisher": "NOAA National Centers for Environmental Information",
+  "dataset": "San Francisco Bay, California Coastal Digital Elevation Model (san_francisco_13_mhw_2010)",
+  "url": "https://www.ngdc.noaa.gov/thredds/catalog/regional/catalog.html?dataset=regionalDatasetScan/san_francisco_13_mhw_2010.nc",
+  "what": "integrated bathymetric-topographic DEM at 1/3 arc-second, MHW vertical datum, WGS84 horizontal. Built by NOAA for the PMEL tsunami forecast system, which is why land and sea are one continuous surface.",
+  "licence": "US Government work, public domain",
+  "reduced": "every 5th node of the published grid, taken in the pipeline. The plate that reads this bakes at 52 m a texel, so 40.7 x 51.5 m is finer than the thing that samples it and the rest would be discarded."
+ }
+}

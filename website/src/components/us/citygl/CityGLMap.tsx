@@ -24,7 +24,7 @@ import { decodeParks } from "@/lib/city/trees";
 import { markTerrainCells } from "@/lib/citygl/mark-cells";
 import { fireLayer, type FireLayer } from "@/lib/citygl/fire";
 import { decodeCoast } from "@/lib/city/water";
-import { waterLayer } from "@/lib/citygl/layers/water";
+import { loadBathy, waterLayer } from "@/lib/citygl/layers/water";
 import { loadSurroundLandcover, surroundLayer } from "@/lib/citygl/layers/surround";
 import { buildingsLayer } from "@/lib/citygl/layers/buildings";
 import { heroesLayer } from "@/lib/citygl/layers/heroes";
@@ -371,7 +371,11 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         downtown: [number, number];
       }).downtown;
       try {
-        const water = waterLayer(data, { anchor: downtown });
+        /* a finer sea floor if the city ships one — `layers/water.ts`
+           §AND THE SEA FLOOR. Absence is the published chunk, unchanged. */
+        const bathy = await loadBathy(data.assetBase);
+        if (disposed) return;
+        const water = waterLayer(data, { anchor: downtown, bathy });
         engine.scene.add(water.mesh);
         engine.add(water);
       } catch (e) {

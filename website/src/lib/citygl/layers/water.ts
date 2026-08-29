@@ -363,6 +363,58 @@ export interface WaterLayerOptions {
   anchor: readonly [number, number];
   /** how far out the plane reaches, world metres, beyond the survey */
   reachM?: number;
+  /** a finer sea floor, if the city ships one — see §AND THE SEA FLOOR */
+  bathy?: Bathy | null;
+}
+
+/**
+ * A finer sea floor than `base/water0`'s own grid.
+ *
+ * One byte a node over the surround's box, `0` meaning land or at/above mean
+ * high water, and the same decoding rule the published chunk already uses so
+ * `depthM` reads both. `world` is the grid's own rectangle in the city's
+ * frame, carried on the file so the two cannot drift apart.
+ */
+export interface Bathy {
+  readonly w: number;
+  readonly h: number;
+  readonly dmax: number;
+  readonly world: readonly [number, number, number, number];
+  readonly dep: Uint8Array;
+}
+
+/** on unless `?bathy=0` — the published chunk is always the fallback */
+const BATHY_ON = ((): boolean => {
+  if (typeof window === "undefined") return true;
+  return !/(?:\?|&)bathy=0(?:&|$)/.test(window.location.search);
+})();
+
+/**
+ * Fetch the finer sea floor, or null if this city does not ship one.
+ *
+ * Absence is not an error and not a fallback path to maintain: it is the old
+ * behaviour, byte for byte, because the layer simply reads the chunk instead.
+ */
+export async function loadBathy(base: string): Promise<Bathy | null> {
+  try {
+    const [mr, br] = await Promise.all([
+      fetch(`${base}/base/bathy.json`),
+      fetch(`${base}/base/bathy.bin`),
+    ]);
+    if (!mr.ok || !br.ok) return null;
+    const meta = (await mr.json()) as {
+      w: number; h: number; dmax: number;
+      world: [number, number, number, number];
+    };
+    const buf = await br.arrayBuffer();
+    if (buf.byteLength !== meta.w * meta.h) return null;
+    return {
+      w: meta.w, h: meta.h, dmax: meta.dmax, world: meta.world,
+      dep: new Uint8Array(buf),
+    };
+  } catch {
+    return null;
+  }
 }
 
 function rgb255(hex: string): [number, number, number] {
@@ -857,14 +909,49 @@ export function waterLayer(
   const chunk = data.get("base/water0");
   if (!chunk || !meta) throw new Error("water: base/water0 has not landed");
 
-  const dep = chunk.fields.dep as Uint8Array;
+  const chunkDep = chunk.fields.dep as Uint8Array;
   /* the coarse grid is the fine one divided by `mul`, plus one node — the
      encoder's own refinement rule, asserted in `water.ts` §assertRefinement */
-  const gw = (meta.nw - 1) / meta.mul + 1;
-  const gh = (meta.nh - 1) / meta.mul + 1;
-  if (gw * gh !== dep.length) {
-    throw new Error(`water: dep is ${dep.length}, the grid says ${gw}x${gh}`);
+  const cgw = (meta.nw - 1) / meta.mul + 1;
+  const cgh = (meta.nh - 1) / meta.mul + 1;
+  if (cgw * cgh !== chunkDep.length) {
+    throw new Error(`water: dep is ${chunkDep.length}, the grid says ${cgw}x${cgh}`);
   }
+
+  /* ── AND THE SEA FLOOR CAN COME FROM A FINER SURVEY THAN THIS ───────────
+     `base/water0`'s own grid is 417 x 281 over 45.8 x 39.0 km, which is
+     110.01 x 139.15 m a node, and §THE BLOCKS WERE THE DEPTH GRID above is
+     about exactly that. What that section could not say is the comparison
+     that matters: this bake is 1536 texels over an ~80 km box, so it samples
+     at **52 m** — the depth field has been TWICE as coarse as the thing
+     reading it, and every gradient in the bay an interpolation across 110 m.
+
+     `base/bathy` is NOAA NCEI's San Francisco Bay Coastal DEM, an integrated
+     bathymetric-topographic model at 1/3 arc-second, reduced in the pipeline
+     to 40.7 x 51.5 m — finer than the texel for the first time, and 2.4x
+     finer than the grid it replaces, for 850 KB (174 KB gzipped).
+     `pipeline/scripts/us_sf_city/build_bathy.py` has the whole derivation and
+     why it is REDUCED there rather than shipped whole: at its published pitch
+     the same box is 21.2 million cells and 85 MB, to feed a bake that
+     discards everything under 52 m.
+
+     Optional, exactly like `terrain-fine`: a city without the file draws the
+     published chunk and nothing is broken. `?bathy=0` does the same.
+
+     The published RAMP does not move with it. `meta.qs` and `DEPTH_UM` are
+     `lib/city/water.ts`'s and the Canvas page reads them too, so the same
+     depth still gets the same colour and what changes is only how finely the
+     depth is known. The new field's own tertiles are 5.55 m and 15.62 m
+     against the published stops' 9.93 and 27.47 — they differ because a
+     denser grid resolves far more shallow water near the shore, not because
+     the bay changed, and re-deriving the ramp from it would be a second
+     variable in the same step. */
+  const bathy = BATHY_ON ? (opts.bathy ?? null) : null;
+  const dep = bathy ? bathy.dep : chunkDep;
+  const gw = bathy ? bathy.w : cgw;
+  const gh = bathy ? bathy.h : cgh;
+  const gdmax = bathy ? bathy.dmax : meta.dmax;
+  const [gx0, gy0, gx1, gy1] = bathy ? bathy.world : meta.world;
 
   const [wx0, wy0, wx1, wy1] = meta.world;
   const reach = opts.reachM ?? 40_000;
@@ -947,8 +1034,8 @@ export function waterLayer(
          zeros out into the bay as a pale halo; weighting only the wet
          corners keeps the interpolation inside the water and leaves the
          open-bay gradient to carry the rest. */
-      const gx = ((wx - wx0) / (wx1 - wx0)) * (gw - 1);
-      const gy = ((wy - wy0) / (wy1 - wy0)) * (gh - 1);
+      const gx = ((wx - gx0) / (gx1 - gx0)) * (gw - 1);
+      const gy = ((wy - gy0) / (gy1 - gy0)) * (gh - 1);
       let wet = 0;
       if (gx >= 0 && gx <= gw - 1 && gy >= 0 && gy <= gh - 1) {
         const i0 = Math.min(gw - 1, Math.floor(gx));
@@ -994,7 +1081,7 @@ export function waterLayer(
         wsum *= Math.max(0, Math.min(1, edge));
         if (wsum > 0) {
           wet = wsum;
-          const dm = depthM(acc / wsum, meta.dmax);
+          const dm = depthM(acc / wsum, gdmax);
           const c = depthColour(dm, ramp);
           /* ── AND THEN THE RANGE IS OPENED, §THE RANGE ──────────────
              The colour above is the published one. This carries its deep end
