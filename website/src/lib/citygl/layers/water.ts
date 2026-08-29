@@ -132,6 +132,30 @@ const FOAM_A = 0.34;
 const FOAM_FALL = 1.6;
 /** how far toward white the published shoal tone is carried */
 const FOAM_WHITE = 0.38;
+/* ── AND SURF DOES NOT HAPPEN ON EVERY SHORE ──────────────────────────────
+   The wash above is a distance from land and nothing else, so it was drawn at
+   the same strength on every metre of coastline the city has. That is wrong in
+   a way that shows: the Embarcadero is piers and seawall inside a sheltered
+   bay, there is no surf there at all, and a 55 m band at full strength round
+   every pier head reads as a WHITE HALO. It is the same complaint the ribbon
+   version earned — *"a glow rather than as surf"* — arriving by a second route
+   after the first was fixed.
+
+   What separates Ocean Beach from the Embarcadero is not depth and not the
+   shape of the shore, it is FETCH: how much open water the wind and swell have
+   had to work across before they arrive. Ocean Beach faces ten kilometres of
+   open Pacific inside this frame's own lattice; the Embarcadero has the entire
+   city to its west.
+
+   So exposure is measured, on the land mask this function already builds, as
+   the run of open water lying WEST of each cell — one sweep per row, which
+   costs nothing. It is a PROXY and it is declared as one: the prevailing swell
+   at this coast runs from the west-north-west, a single westward scan is a
+   coarse stand-in for that, and none of this is a claim about surf anywhere.
+   What it does is stop the frame drawing breakers in a harbour. */
+const FETCH_FULL_M = 6000;
+/** how sharply exposure climbs with fetch — over 1 keeps sheltered water calm */
+const FETCH_POW = 1.35;
 /** the lattice the union land mask is scanned onto, metres — see §THE FOAM */
 /* ── AND 25 m WAS TOO COARSE TO BE A GRADIENT ───────────────────────────
    The wash is 55 m wide, so at a 25 m grid it crossed from full to nothing in
@@ -1308,6 +1332,25 @@ function buildFoam(
         }
       }
 
+      /* ── THE FETCH, ONE SWEEP A ROW — see §SURF DOES NOT HAPPEN ────────
+         `x` increases east, so west is decreasing `i`: the run of water cells
+         already passed IS the open water lying west of this one. Land resets
+         it. Cells are 12 m, so the cap is generous and the scan is O(cells). */
+      const fetch = new Float32Array(nx * ny);
+      for (let j = 0; j < ny; j++) {
+        let run = 0;
+        for (let i = 0; i < nx; i++) {
+          const k = j * nx + i;
+          if (mask.at(i, j, 0, 0)) {
+            run = 0;
+            fetch[k] = 0;
+          } else {
+            fetch[k] = run * FOAM_CELL;
+            run++;
+          }
+        }
+      }
+
       /* a NODE takes the nearest of the up-to-four cells that meet at it, so
          a node on the waterline reads zero and the wash starts at full
          strength exactly where the land stops */
@@ -1327,6 +1370,23 @@ function buildFoam(
         return f <= 0 ? 0 : Math.pow(f, FOAM_FALL);
       };
 
+      /** how exposed this node is: the MAX fetch of the cells that meet at it,
+       *  so a waterline node takes the open water's exposure and not the
+       *  land's zero */
+      const nodeE = (ni: number, nj: number): number => {
+        let m = 0;
+        for (let a = -1; a <= 0; a++) {
+          for (let b = -1; b <= 0; b++) {
+            const i = ni + a;
+            const j = nj + b;
+            if (i < 0 || j < 0 || i >= nx || j >= ny) continue;
+            const v = fetch[j * nx + i];
+            if (v > m) m = v;
+          }
+        }
+        return Math.pow(Math.min(1, m / FETCH_FULL_M), FETCH_POW);
+      };
+
       const pos: number[] = [];
       const col: number[] = [];
       const idx: number[] = [];
@@ -1341,7 +1401,7 @@ function buildFoam(
         if (had !== undefined) return had;
         const v = pos.length / 3;
         pos.push(bx0 + ni * FOAM_CELL, 0, by0 + nj * FOAM_CELL);
-        col.push(c.r, c.g, c.b, FOAM_A * nodeF(ni, nj));
+        col.push(c.r, c.g, c.b, FOAM_A * nodeF(ni, nj) * nodeE(ni, nj));
         seen.set(key, v);
         return v;
       };
