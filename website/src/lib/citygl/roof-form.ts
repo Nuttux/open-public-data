@@ -212,16 +212,34 @@ export const FASCIA_PROUD_M = 0.01;
  * crowns, floored so it never falls back under a pixel and capped so a tower
  * does not grow a hat.
  *
- * At the closest camera this project allows (0.41 m per pixel) the floor is
- * 1.3 px and the ceiling 3.4 px, which is the band this had to land in: under
- * a pixel it is the hard line it replaced, over about four it stops being a
+ * At the closest camera this project allows the floor should be about 1.3 px
+ * and the ceiling about 4 px, which is the band this has to land in: under a
+ * pixel it is the hard line it replaced, over about four it stops being a
  * cornice and starts being a canopy.
+ *
+ * ── AND THE CAMERA IT WAS DERIVED AT NO LONGER EXISTS ────────────────────
+ * That band was solved for 0.41 m per pixel. The zoom clamp has since been
+ * raised — `controls.ts` now allows 0.18 m per pixel — and these three numbers
+ * were never re-derived against it. At the camera the reader can actually
+ * reach today the old floor is 3.1 px and the old ceiling 7.8 px, which is
+ * over the file's OWN stated limit by a factor of two: by the rule written
+ * three paragraphs up, every building in the city had stopped wearing a
+ * cornice and started wearing a canopy.
+ *
+ * Reported from the page, looking at Burnett Ave: *"roofs protude cause you
+ * didnt give any form to facades or anything its all flat"*. The protrusion is
+ * this, and the floor is the worst of it — it is a FLOOR, so the smallest
+ * buildings get proportionally the most. A 7.6 m row house was carrying 0.55 m
+ * on each side, which is fourteen per cent wider than the house.
+ *
+ * Re-derived at 0.18 m/px against the same 1.3–4 px band, and the fraction
+ * halved so a three-storey dwelling reads as trimmed rather than capped.
  */
-export const CORNICE_H_FRAC = 0.07;
+export const CORNICE_H_FRAC = 0.035;
 /** the floor on that fraction, world metres — see `CORNICE_H_FRAC` */
-export const CORNICE_MIN_M = 0.55;
+export const CORNICE_MIN_M = 0.24;
 /** and its ceiling */
-export const CORNICE_MAX_M = 1.4;
+export const CORNICE_MAX_M = 0.72;
 
 /** the projection a wall of this height crowns itself with, world metres */
 export function corniceProjM(hM: number): number {
