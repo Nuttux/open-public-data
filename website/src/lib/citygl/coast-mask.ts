@@ -86,6 +86,103 @@ export interface CoastMask {
   countIn(i: number, j: number): number;
 }
 
+/**
+ * ── AND THE SAME ANSWER CAN COME FROM A FIELD INSTEAD OF FROM RINGS ─────
+ *
+ * Everything above encodes "is this point land?" as polygons and then scan-
+ * converts them back into a bitmap. `base/landmask` skips both halves of that
+ * round trip: it IS the bitmap, one bit a node of `z >= 0` on NOAA's
+ * integrated bathymetric-topographic DEM, on the Mean High Water datum where
+ * zero is the line a chart draws its coast at.
+ *
+ * `pipeline/scripts/us_sf_city/build_landmask.py` has the derivation and the
+ * failure that argued for it: the same DEM's zero CONTOUR, handed to the far
+ * shore's cut as rings, dropped 35,561 of 56,330 cells and two thirds of the
+ * region's land, because a contour is lines and a cut wants polygons with an
+ * inside. A field has no inside to get wrong.
+ *
+ * 2,809 x 1,891 bits at 16.30 x 20.61 m — just finer than the 18.33 x 23.19 m
+ * sub-cell the region's cut refines to, so it can answer every question that
+ * cut will ask and none that it will not. 665,632 bytes, **30,716 gzipped**:
+ * less than half the size of the 3,168-vertex ring file it replaces, for
+ * 5,311,819 answers instead.
+ */
+export interface LandMask {
+  readonly w: number;
+  readonly h: number;
+  readonly rowBytes: number;
+  readonly world: readonly [number, number, number, number];
+  readonly bits: Uint8Array;
+}
+
+/** Fetch the field, or null if this city does not ship one. */
+export async function loadLandMask(base: string): Promise<LandMask | null> {
+  if (typeof window !== "undefined" &&
+      /(?:\?|&)lmask=0(?:&|$)/.test(window.location.search)) {
+    return null;
+  }
+  try {
+    const [mr, br] = await Promise.all([
+      fetch(`${base}/base/landmask.json`),
+      fetch(`${base}/base/landmask.bin`),
+    ]);
+    if (!mr.ok || !br.ok) return null;
+    const meta = (await mr.json()) as {
+      w: number; h: number; rowBytes: number;
+      world: [number, number, number, number];
+    };
+    const buf = await br.arrayBuffer();
+    if (buf.byteLength !== meta.rowBytes * meta.h) return null;
+    return {
+      w: meta.w, h: meta.h, rowBytes: meta.rowBytes, world: meta.world,
+      bits: new Uint8Array(buf),
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The same `CoastMask` a set of rings would produce, read off the field.
+ *
+ * A sub-cell centre is a world point, and the field answers world points, so
+ * there is no rasterisation step at all — `at` is two multiplies and a bit
+ * test. Outside the field's own box it CLAMPS to the edge rather than
+ * answering "water": the field covers the region's own box, so nothing inside
+ * the lattice can fall outside it, and clamping keeps a rounding error at the
+ * boundary from deleting a coastal cell.
+ */
+export function maskFromField(lm: LandMask, lattice: Lattice, K: number): CoastMask {
+  const [mx0, my0, mx1, my1] = lm.world;
+  const sx = (lm.w - 1) / (mx1 - mx0);
+  const sy = (lm.h - 1) / (my1 - my0);
+  const { x0, y0, cellW, cellH } = lattice;
+
+  const at = (i: number, j: number, si: number, sj: number): boolean => {
+    const wx = x0 + (i + (si + 0.5) / K) * cellW;
+    const wy = y0 + (j + (sj + 0.5) / K) * cellH;
+    let u = Math.round((wx - mx0) * sx);
+    let v = Math.round((wy - my0) * sy);
+    u = u < 0 ? 0 : u > lm.w - 1 ? lm.w - 1 : u;
+    v = v < 0 ? 0 : v > lm.h - 1 ? lm.h - 1 : v;
+    const byte = lm.bits[v * lm.rowBytes + (u >> 3)];
+    return ((byte >> (7 - (u & 7))) & 1) === 1;
+  };
+
+  return {
+    K,
+    lattice,
+    at,
+    countIn(i: number, j: number): number {
+      let n = 0;
+      for (let sj = 0; sj < K; sj++) {
+        for (let si = 0; si < K; si++) if (at(i, j, si, sj)) n++;
+      }
+      return n;
+    },
+  };
+}
+
 /** one ring's box, so a scanline skips the sets it cannot cross */
 interface Seg {
   x0: number;

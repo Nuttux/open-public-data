@@ -64,7 +64,13 @@ import {
   tiltOf,
   type TerrainField,
 } from "@/lib/city/terrain";
-import { rasteriseRings, type Ring } from "../coast-mask";
+import {
+  maskFromField,
+  rasteriseRings,
+  type LandMask,
+  type Lattice,
+  type Ring,
+} from "../coast-mask";
 import type { CityLayer } from "../engine";
 
 /** the hypsometric pair `rasteriseSurround` interpolates between */
@@ -203,6 +209,12 @@ export function surroundLayer(
   zexByStep: readonly number[],
   clip?: readonly Ring[] | null,
   landcover?: SurroundLandcover | null,
+  /**
+   * The land/water field, if the city ships one — `coast-mask.ts` §AND THE
+   * SAME ANSWER CAN COME FROM A FIELD. It takes precedence over `clip`,
+   * which stays as the fallback for a city with no field.
+   */
+  landmask?: LandMask | null,
 ): (CityLayer & { mesh: Mesh; surroundStats(): SurroundStats }) | null {
   const sd = data.surround();
   if (!sd) return null;
@@ -245,20 +257,25 @@ export function surroundLayer(
      does not have and does not need, because the bay is a surface under it
      rather than a plate over it. */
   const rings = clip && clip.length ? clip : null;
-  const mask = rings
-    ? rasteriseRings(
-        [rings],
-        {
-          x0: s.mx[0],
-          y0: s.my[0],
-          nx: XW,
-          ny: XH,
-          cellW: s.cellW,
-          cellH: s.cellH,
-        },
-        COAST_K,
-      )
-    : null;
+  const lat0: Lattice = {
+    x0: s.mx[0],
+    y0: s.my[0],
+    nx: XW,
+    ny: XH,
+    cellW: s.cellW,
+    cellH: s.cellH,
+  };
+  /* ── AND THE CUT PREFERS THE FIELD OVER THE RINGS ────────────────────
+     Same lattice, same K, same `CoastMask` contract — the only thing that
+     changes is where "is this land?" is answered. `coast-mask.ts` §AND THE
+     SAME ANSWER CAN COME FROM A FIELD has why, and the measurement that
+     forced it: this cut asks its question at 18.33 x 23.19 m and the rings
+     it used to ask carried one vertex every hundred metres. */
+  const mask = landmask
+    ? maskFromField(landmask, lat0, COAST_K)
+    : rings
+      ? rasteriseRings([rings], lat0, COAST_K)
+      : null;
 
   /* the sub-vertices, described rather than stored twice — `terrain.ts`
      §THE SUB-VERTICES carries the argument */

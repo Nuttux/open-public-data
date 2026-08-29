@@ -24,6 +24,7 @@ import { decodeParks } from "@/lib/city/trees";
 import { markTerrainCells } from "@/lib/citygl/mark-cells";
 import { fireLayer, type FireLayer } from "@/lib/citygl/fire";
 import { decodeCoast } from "@/lib/city/water";
+import { loadLandMask } from "@/lib/citygl/coast-mask";
 import { loadBathy, waterLayer } from "@/lib/citygl/layers/water";
 import { loadSurroundLandcover, surroundLayer } from "@/lib/citygl/layers/surround";
 import { buildingsLayer } from "@/lib/citygl/layers/buildings";
@@ -353,12 +354,22 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
 
       /* the land that is not the subject, at its own coarser grid */
       /* the far shore, cut at the same published rings */
+      /* ── ONE ANSWER TO WHERE THE LAND STOPS ───────────────────────
+         `coast-mask.ts` §AND THE SAME ANSWER CAN COME FROM A FIELD: one
+         bit a node of NOAA's topobathy at 16.3 x 20.6 m, which is finer
+         than the 18.3 x 23.2 m sub-cell this cut refines to. 30.7 KB
+         gzipped, against 67.6 KB of rings carrying a vertex every hundred
+         metres. Absence is the published rings, unchanged. */
+      const landmask = await loadLandMask(data.assetBase);
+      if (disposed) return;
+
       const surround = surroundLayer(
         data,
         terrain.fieldFor(0),
         descriptor.look.zexByStep,
         surroundCoast?.rings ?? null,
         surroundLC,
+        landmask,
       );
       if (surround) {
         engine.scene.add(surround.mesh);
