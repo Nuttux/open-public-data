@@ -386,7 +386,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
            §AND THE SEA FLOOR. Absence is the published chunk, unchanged. */
         const bathy = await loadBathy(data.assetBase);
         if (disposed) return;
-        const water = waterLayer(data, { anchor: downtown, bathy });
+        const water = waterLayer(data, { anchor: downtown, bathy, landmask });
         engine.scene.add(water.mesh);
         engine.add(water);
       } catch (e) {

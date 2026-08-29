@@ -87,7 +87,14 @@ import {
 } from "@/lib/city/water";
 import { HAZE, WA, lerpHex } from "@/lib/city/terrain";
 import { axonBasis } from "../camera";
-import { rasteriseRings, type CoastMask, type Lattice, type Ring } from "../coast-mask";
+import {
+  maskFromField,
+  rasteriseRings,
+  type CoastMask,
+  type LandMask,
+  type Lattice,
+  type Ring,
+} from "../coast-mask";
 import { SUN_SCENE } from "../light";
 import type { CityLayer } from "../engine";
 
@@ -365,6 +372,12 @@ export interface WaterLayerOptions {
   reachM?: number;
   /** a finer sea floor, if the city ships one — see §AND THE SEA FLOOR */
   bathy?: Bathy | null;
+  /**
+   * The land/water field, if the city ships one. The plate is cut at it, so
+   * this cut and the far shore's read ONE register — see `cityCut`
+   * §AND THE CUT THAT MADE THE HOLE WAS THIS ONE.
+   */
+  landmask?: LandMask | null;
 }
 
 /**
@@ -547,9 +560,63 @@ function cityCut(
   data: CityData,
   cityRings: readonly Ring[],
   sc: { rings: readonly Ring[]; cityOffshore(i: number, j: number): boolean },
+  landmask?: LandMask | null,
 ): CityCut | null {
   const lat = cityLattice(data);
   if (!lat) return null;
+
+  /* ── AND THE CUT THAT MADE THE HOLE WAS THIS ONE ────────────────────────
+     The staircase of pale blocks on the Marin shore, chased for a day: the
+     LAND is cut at one register and the PLATE is cut at another, and between
+     the two cuts is a band that neither covers. Through it the sky shows,
+     which is why nothing changed it — not the depth grid, not the foam, not
+     the land cover, not the coast rings, not the elevation tint. There was
+     nothing there to change.
+
+     MEASURED, by drawing the plate with no cut at all: 53.3 % of the block
+     pixels move, and the pale count over that rectangle falls from 7,757 to
+     6,128. Against 54.8 % of them being owned by no layer when every layer
+     but the sky is recoloured. Those two numbers are the same hole.
+
+     So when the city ships the land field, the plate is cut at the SAME
+     answer `surround.ts` cuts the far shore at. Not a better set of rings —
+     the same field, on this lattice at this K. Two cuts that read one
+     register cannot disagree, and a band between them cannot exist.
+
+     `offshore` is kept. It exists because `txuc-3kzm` is a LEGAL boundary
+     that runs kilometres into the Pacific, and it only ever ADDS water; with
+     a field that already answers correctly it is redundant rather than wrong,
+     and removing it would be a second variable in one step.
+
+     ── AND THIS DOES NOT CLOSE THE BAND, WHICH NAMES THE REAL CAUSE ──────
+     Cutting at the field instead of the rings halves the plate — 2,918
+     rectangles to 1,444 — and moves 0.08 % of the frame. The blocks are
+     still there. So the two cuts were never disagreeing about WHERE the
+     coast is; they agree, and the hole is still there.
+
+     What the uncut test actually proves is geometric. The plate is at y = 0.
+     The far shore is drawn at its ELEVATION, and the Marin headlands are two
+     hundred metres of it. In an axonometric projection height is also SCREEN,
+     so land drawn at 200 m does not cover the sea-level footprint it was cut
+     from — it covers a band shifted up-screen of it. The strip below is plate
+     that was removed and shore that never arrives, and the sky is behind it.
+
+     That is why the gap is on the HEADLANDS and not on a flat shore, why its
+     width tracks the terrain and not the coastline, and why nothing that
+     changed a register ever touched it. The fix is not a better cut; it is
+     not cutting the plate under ground that is drawn above sea level. Left
+     for the next block rather than guessed at here: water under land is
+     invisible (surround -3 over plate -4), so the safe direction is to cut
+     less, and the question is exactly where the city's own ground stops
+     covering the plate and the far shore starts. */
+  if (landmask) {
+    return {
+      lat,
+      mask: maskFromField(landmask, lat, CUT_K),
+      offshore: (i, j) => sc.cityOffshore(i, j),
+    };
+  }
+
   const sets: (readonly Ring[])[] = [];
   if (cityRings.length) sets.push(cityRings);
   if (sc.rings.length) sets.push(sc.rings);
@@ -1271,7 +1338,7 @@ export function waterLayer(
     .catch(() => null)
     .then((sc) => {
       if (!sc || !sc.rings.length) return;
-      const cut = cityCut(data, cityRingsSync, sc);
+      const cut = cityCut(data, cityRingsSync, sc, opts.landmask ?? null);
       if (!cut) return;
       const next = plateGeometry(box, cut);
       mesh.geometry = next.geo;
