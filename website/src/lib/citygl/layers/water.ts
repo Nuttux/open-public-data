@@ -264,6 +264,76 @@ const RIPPLE_A = 0.1;
 /** the largest quad the crest mesh emits, metres — see `rippleMesh` */
 const RIPPLE_STEP = 400;
 
+/* ── AND THE BAY WAS EQUALLY CHOPPY EVERYWHERE, WHICH IS WHY IT TILED ──────
+   The crest field above is a good tile — directional, seamless, no DC term —
+   and it was laid across forty kilometres of water at ONE amplitude. Two
+   things follow from that and they are the same thing.
+
+   The obvious one is that a 96 m tile at the district camera repeats about
+   every thirty pixels, and a regular repeat at that spacing does not read as
+   water, it reads as a PATTERN FILL. Reported from the page: *"water, ocean,
+   river jus tlooks like someone took a crayon and drew on a paper."*
+
+   The less obvious one is why the eye finds the repeat at all. Real water seen
+   from above is not evenly textured: wind comes in patches, so there are calm
+   sheets and chopped sheets next to each other, hundreds of metres across,
+   and the eye reads THOSE first. Give it none and the only structure left to
+   find is the tile.
+
+   So the crest is modulated by a smooth field at roughly a kilometre and a
+   half, which puts glassy water beside chopped water and leaves the tile with
+   nothing regular to be seen by. It is an AUTHORED treatment on top of an
+   authored ornament — the same status the crest field already has, and it is
+   not a claim about the wind or the water anywhere. */
+const CHOP_M = 1400;
+const CHOP_MIN = 0.3;
+const CHOP_MAX = 1.6;
+
+/* ── AND THE TILE ITSELF, WHICH THE MODULATION ALONE DID NOT CURE ─────────
+   With the chop patches in, the bay stopped being evenly textured and still
+   read as printed cloth, because the thing the eye was finding was never the
+   amplitude — it was the PERIOD. The crest tile is a sum of sinusoids on a
+   96 m square, so every 96 m the identical arrangement of streaks comes back,
+   and a regular diagonal hatch at that spacing is a WEAVE, not water.
+
+   Amplitude cannot fix a period. What does is warping the coordinate the tile
+   is read at: offset the crest field's own uv by a smooth field far larger
+   than the tile, and the lattice bends. The streaks keep their length, their
+   direction and their scale — everything that made the field read as chop in
+   the first place — and the repeat stops arriving on a straight grid, so
+   there is no longer a regular anything to lock onto.
+
+   The warp is much longer than the tile on purpose. Short and it shears the
+   streaks inside a single quad; this length puts well under half a tile of
+   drift across the 400 m quads the mesh is emitted at. */
+const WARP_M = 2600;
+const WARP_TILES = 1.6;
+
+/** smooth value noise on a metre grid, deterministic in the city's own hash */
+function smoothNoise(x: number, z: number, m: number): number {
+  const fx = x / m;
+  const fz = z / m;
+  const i0 = Math.floor(fx);
+  const j0 = Math.floor(fz);
+  const tx = fx - i0;
+  const tz = fz - j0;
+  const sx = tx * tx * (3 - 2 * tx);
+  const sz = tz * tz * (3 - 2 * tz);
+  const a = hash2(i0, j0);
+  const b = hash2(i0 + 1, j0);
+  const c = hash2(i0, j0 + 1);
+  const d = hash2(i0 + 1, j0 + 1);
+  return (a + (b - a) * sx) * (1 - sz) + (c + (d - c) * sx) * sz;
+}
+
+/** how hard the crest field is driven at this point: calm sheet to chopped */
+function chopAt(x: number, z: number): number {
+  const n =
+    smoothNoise(x, z, CHOP_M) * 0.65 +
+    smoothNoise(x + 9137, z - 4271, CHOP_M * 0.42) * 0.35;
+  return CHOP_MIN + (CHOP_MAX - CHOP_MIN) * n;
+}
+
 export interface WaterLayerOptions {
   /** the fade's centre — the city's own downtown, from its manifest */
   anchor: readonly [number, number];
@@ -679,8 +749,17 @@ function rippleMesh(
     const b = pos.length / 3;
     const put = (x: number, z: number, k: number): void => {
       pos.push(x, 0, z);
-      uv.push(x / RIPPLE_M, z / RIPPLE_M);
-      col.push(k, k, k);
+      /* the crest field's own coordinate, bent — see §AND THE TILE ITSELF */
+      uv.push(
+        x / RIPPLE_M + (smoothNoise(x, z, WARP_M) - 0.5) * 2 * WARP_TILES,
+        z / RIPPLE_M +
+          (smoothNoise(x - 5813, z + 7717, WARP_M) - 0.5) * 2 * WARP_TILES,
+      );
+      /* the fade, times how hard the wind is working here — see §EQUALLY
+         CHOPPY. Both are scalars on the same additive crest, so a calm sheet
+         and a hazed sheet dim it in exactly the same way. */
+      const c = k * chopAt(x, z);
+      col.push(c, c, c);
     };
     put(x0, z0, k0);
     put(x1, z0, k1);
