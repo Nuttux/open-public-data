@@ -234,7 +234,41 @@ function groundHue(): [number, number, number] {
   return [m[0] / lum, m[1] / lum, m[2] / lum];
 }
 
-const SUN_ELEV = (40 * Math.PI) / 180;
+/**
+ * ── THE SUN IS PINNED, AND THAT IS MOST OF WHY NOTHING IS MODELLED ────────
+ *
+ * 40 degrees is late morning. It is a defensible choice for a map — it lights
+ * every face, it hides nothing, and it throws a shadow just over one caster
+ * height. It is also the flattest hour available: a high sun puts nearly the
+ * same irradiance on every up-facing surface in the city, so the ground, the
+ * roofs and the roadway all resolve to the same band of values and the frame
+ * comes out as one sheet of mid-tone.
+ *
+ * A LOW sun is the opposite instrument. `SHADOW_THROW` is `1 / tan(elev)`, so
+ * dropping to 22 degrees more than doubles the reach of every shadow in the
+ * city and the buildings begin to model each other; walls facing the sun
+ * separate hard from walls that do not; and the hills read as hills because
+ * their west faces go into shade while their east faces catch the beam.
+ *
+ * Nothing else here has to move for that to work. The rig below SOLVES the
+ * four light intensities from look targets rather than carrying them as
+ * tuned constants, and `WALL45` and `SHADOW_THROW` are both derived from this
+ * angle, so lowering it re-solves the whole rig consistently.
+ *
+ * `?sun=22` sets it, which is what makes this a decision Daniel can look at
+ * rather than one I made for him. Read once at module load, the same way the
+ * palette and quality flags in this renderer are, and clamped to a plausible
+ * daylight range so a bad query string cannot produce a sun underground.
+ */
+const SUN_ELEV_DEG = ((): number => {
+  const DEFAULT = 40;
+  if (typeof window === "undefined") return DEFAULT;
+  const m = /(?:\?|&)sun=([0-9.]+)/.exec(window.location.search);
+  const v = m ? Number(m[1]) : NaN;
+  return Number.isFinite(v) && v >= 8 && v <= 85 ? v : DEFAULT;
+})();
+
+const SUN_ELEV = (SUN_ELEV_DEG * Math.PI) / 180;
 /** how far a shadow runs per unit of caster height */
 export const SHADOW_THROW = 1 / Math.tan(SUN_ELEV);
 /** the 45-degree wall's own share of the beam — equal to `sin(SUN_ELEV)` */
