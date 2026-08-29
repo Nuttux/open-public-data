@@ -125,6 +125,73 @@ export interface EngineOptions {
  */
 const DEPTH_SPAN_M = 200_000;
 
+/* ══ THE DEPTH LADDER HAD TO BECOME GEOMETRY, BECAUSE polygonOffset IS
+   INERT ON THIS BACKEND ═══════════════════════════════════════════════════
+
+   `layers/streets.ts` §DEPTH, NOT HEIGHT publishes a ladder of coplanar
+   ground washes — right of way, carriageway, kerb, crossing — and separates
+   them with `polygonOffset` rather than a height, for a reason that is still
+   correct: in an axonometric projection a metre of Y is also tens of pixels
+   of SCREEN, so lifting a wash off the ground slides it off the ground it is
+   a wash OF.
+
+   ── MEASURED: THE BIAS DOES NOTHING HERE ────────────────────────────────
+   Every street material asks for it (`polygonOffset: true`, factor and units
+   -2 and -3) and three.js does map it — `WebGPUPipelineUtils.js` sets
+   `depthBias` and `depthBiasSlopeScale` from exactly those two fields. It
+   still does not arrive. A probe that scaled BOTH by 400 and then to ZERO
+   produced three BIT-IDENTICAL frames at the same camera:
+
+     ?pof=1   871a4ab032219967fe975637a1c77aec
+     ?pof=400 871a4ab032219967fe975637a1c77aec
+     ?pof=0   871a4ab032219967fe975637a1c77aec
+
+   An effect absent at 400x and unchanged at zero is not a small effect; it
+   is not connected. The same frame on the WebGL backend (`?gl=1`) differs by
+   32.29 % and HAS its roads, which is what named the backend as the
+   difference. Why Dawn drops it is not established here and this does not
+   guess; what is established is that the ladder cannot rest on it.
+
+   ── SO THE LADDER IS AN OFFSET ALONG THE VIEW AXIS ──────────────────────
+   The camera is ORTHOGRAPHIC and its bearing is fixed, so `basis.F` — the
+   axis from the scene toward the eye — is a direction in which moving a
+   vertex changes its DEPTH and NOTHING ELSE. There is no screen movement to
+   trade away: a parallel projection maps the whole of that axis to one
+   point. That is the property the old objection was about, and it is the one
+   property this offset has.
+
+   A wash opts in with `userData.wash`, and its rung is its own
+   `renderOrder`, so the ladder is stated once and in one place. The step is
+   small on purpose: it has to clear the gap between a wash sampled from the
+   continuous elevation field and the terrain's own flat chord across a cell,
+   which is centimetres, and it must not move the shadow a receiving surface
+   looks up by anything a reader could see.
+
+   `?washb=` and `?washs=` override the two, and `?washb=0&washs=0` restores
+   the old behaviour exactly. */
+function washArg(name: string, dflt: number): number {
+  if (typeof window === "undefined") return dflt;
+  const m = new RegExp(`(?:\\?|&)${name}=([0-9.]+)`).exec(window.location.search);
+  const v = m ? Number(m[1]) : NaN;
+  return Number.isFinite(v) ? v : dflt;
+}
+/**
+ * What every wash needs to clear the terrain's own chord across a cell.
+ *
+ * 2.5 m, and it is a MEASURED floor rather than a taste. A wash takes its
+ * height from the elevation FIELD at each of its own vertices; the terrain
+ * draws a flat chord between its grid corners. Across a cell on a slope the
+ * chord and the field disagree, the chord can be the higher of the two, and
+ * where it is the ground swallows the road. The error is therefore a
+ * function of SLOPE, and the sweep says exactly that: at a flat downtown
+ * street camera 2.5 m moves 0.59 % of the frame and p99 delta 4 — nothing —
+ * while at Twin Peaks it moves 7.63 % and p99 delta 66, and what moves is a
+ * loop road that had been arriving in disconnected pieces.
+ */
+const WASH_BASE_M = washArg("washb", 2.5);
+/** and what one rung needs to clear the rung below it */
+const WASH_STEP_M = washArg("washs", 0.25);
+
 /* ══ WHAT A LOOK SWEEP NEEDS TO MOVE, AND ONE THING EACH ═══════════════════
    `quality.ts` already carries this idea and states why: a switch that moves
    nine things at once proves nothing about any one of them. These are the
@@ -774,7 +841,26 @@ export class CityEngine {
     this.stampLayer(layer.name);
     layer.onStep?.(this.step, this.zex(), this.descriptor.look.zexb);
     layer.onYear?.(this.year);
+    this.seatWashes();
     this.invalidate();
+  }
+
+  /**
+   * Seat every opted-in ground wash on its rung of the depth ladder — see
+   * §THE DEPTH LADDER HAD TO BECOME GEOMETRY.
+   *
+   * The offset is along `basis.F` and therefore invisible: an orthographic
+   * camera maps that whole axis to a point, so this moves depth and not one
+   * pixel. It is re-applied whenever the basis changes, which is when the
+   * band changes, because F is what the band moves.
+   */
+  private seatWashes(): void {
+    const F = this.basis.F;
+    this.scene.traverse((o) => {
+      if (!(o.userData as { wash?: boolean }).wash) return;
+      const d = WASH_BASE_M + WASH_STEP_M * o.renderOrder;
+      o.position.set(0, 0, 0).addScaledVector(F, d);
+    });
   }
 
   /**
@@ -886,6 +972,7 @@ export class CityEngine {
     this.sun.aimKey(this.basis.R, this.basis.F);
     const zex = this.zex();
     for (const l of this.layers) l.onStep?.(step, zex, this.descriptor.look.zexb);
+    this.seatWashes();
     this.invalidate();
   }
 

@@ -328,6 +328,10 @@ function mesh(
   out.receiveShadow = true;
   out.castShadow = false;
   out.renderOrder = order;
+  /* the bias above is asked for and does not arrive on the WebGPU backend;
+     `engine.ts` §THE DEPTH LADDER HAD TO BECOME GEOMETRY has the three
+     bit-identical frames that establish that, and seats this rung instead */
+  out.userData.wash = true;
   return out;
 }
 

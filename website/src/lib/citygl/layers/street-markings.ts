@@ -540,6 +540,9 @@ function mesh(b: Buf, colour: string | null, offset: number): Mesh | null {
      carries its own order and nothing has to be guessed. The offset already
      encodes the rung, so the order is read straight off it. */
   out.renderOrder = -offset;
+  /* seated on its rung by `engine.ts` §THE DEPTH LADDER HAD TO BECOME
+     GEOMETRY — the bias this material asks for never arrives here */
+  out.userData.wash = true;
   out.receiveShadow = true;
   out.castShadow = false;
   return out;

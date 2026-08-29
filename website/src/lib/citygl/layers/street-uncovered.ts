@@ -304,6 +304,9 @@ export function streetUncoveredLayer(
   mesh.receiveShadow = true;
   /* with the carriageway, which is what it is */
   mesh.renderOrder = 2.5;
+  /* seated on its rung by `engine.ts` §THE DEPTH LADDER HAD TO BECOME
+     GEOMETRY — the bias this material asks for never arrives here */
+  mesh.userData.wash = true;
 
   const upTo = (year: number | undefined): number => {
     if (year === undefined) return years.length;
