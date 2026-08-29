@@ -273,30 +273,60 @@ export function meshElevAt(
 ): (x: number, y: number) => number {
   const N = proj.N;
   return (x: number, y: number): number => {
-    /* ── THE GROUND IS THE FINE FIELD WHERE THERE IS ONE ─────────────────
-       This is the surface TWELVE layers stand on, so it and the drawn mesh
-       have to be the same surface or the city floats. `terrainLayer` builds
-       its vertices from the same field, and both fall back to the coarse
-       triangles together when a city ships no fine data. */
-    if (fine) {
-      const fz = fineElev(fine, x, y);
-      if (fz !== null) return fz;
-    }
+    /* ── AND THE FINE FIELD IS SAMPLED AT THE CORNERS, NOT AT THE POINT ──
+       The paragraph above is the contract and this is what keeping it costs.
+       `terrain-fine.bin` is a real measurement between the nodes, and reading
+       it AT THE QUERY POINT returns where the ground actually is — which is
+       not where the ground is DRAWN. A whole quad is a flat chord between its
+       four corners, and the fine field bows away from that chord by however
+       much the hill does over 53.8 m.
+
+       Everything that stands on the ground was placed on the bow and drawn
+       against the chord. MEASURED across the whole scene, per layer, against
+       the terrain's own interpolated surface:
+
+           trees            7.7 % sunk more than a metre, worst 19.2 m
+           ground-detail   16.3 %                         worst 81.2 m
+           block-tint      24.7 %                         worst 15.4 m
+           streets          7.5 %                         worst 22.0 m
+           buildings        0.0 %                         worst  1.6 m
+
+       Buildings are clean because they are placed from the same corners the
+       mesh is built from. Everything else read the bow. Daniel: *"trees
+       sometimes sinking into the ground"* — that is this, and it is also why
+       the wash clearance had to be 2.5 m when the geometry says centimetres.
+
+       So the fine field is read where the MESH reads it: at the cell's four
+       corners, interpolated across the same diagonal the mesh splits on. The
+       relief `terrain-fine.bin` bought is not lost — it is in those corners,
+       and it is in the sub-vertices of the refined coastal cells, both of
+       which this now follows exactly. What is given up is a bow that was only
+       ever visible as things sinking through it. */
     const gx = (x - proj.X0) * proj.s;
     const gy = (y - proj.Y0) * proj.s;
     const i = Math.max(0, Math.min(N - 2, Math.floor(gx)));
     const j = Math.max(0, Math.min(N - 2, Math.floor(gy)));
     const u = Math.max(0, Math.min(1, gx - i));
     const v = Math.max(0, Math.min(1, gy - j));
-    const za = field.elevAt(i, j);
-    const zc = field.elevAt(i + 1, j + 1);
+    /* the CORNER height the mesh itself used — `terrainLayer` writes
+       `fineElev(corner) ?? field.elevAt(i, j)` into every node, so this is
+       the same number, not a second opinion about it */
+    const corner = (ci: number, cj: number): number => {
+      if (fine) {
+        const fz = fineElev(fine, proj.X0 + ci / proj.s, proj.Y0 + cj / proj.s);
+        if (fz !== null) return fz;
+      }
+      return field.elevAt(ci, cj);
+    };
+    const za = corner(i, j);
+    const zc = corner(i + 1, j + 1);
     if (u >= v) {
       /* triangle (a, b, c): a + u*(b - a) + v*(c - b) */
-      const zb = field.elevAt(i + 1, j);
+      const zb = corner(i + 1, j);
       return za + u * (zb - za) + v * (zc - zb);
     }
     /* triangle (a, c, d): a + v*(d - a) + u*(c - d) */
-    const zd = field.elevAt(i, j + 1);
+    const zd = corner(i, j + 1);
     return za + v * (zd - za) + u * (zc - zd);
   };
 }
