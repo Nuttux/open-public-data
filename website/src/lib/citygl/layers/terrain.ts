@@ -1309,7 +1309,29 @@ export function terrainLayer(
        the two other counties this DEM reaches into, the regional hydrography
        deletes the waterfront the 300 m pad exists to keep. `coast-mask.ts`
        §THE UNION has the counts. With only one of the two in hand the honest
-       answer is the staircase, which is what the published page ships. */
+       answer is the staircase, which is what the published page ships.
+
+       ── AND THIS ONE DOES NOT READ THE LAND FIELD, ON PURPOSE ─────────
+       `coast-mask.ts` §AND THE SAME ANSWER CAN COME FROM A FIELD gave the
+       far shore and the bay plate one register to cut at, and it closed a
+       hole a day of work could not. This cut is deliberately NOT moved onto
+       it, and the reason is not caution.
+
+       The field says land where NOAA's surface is at or above MEAN HIGH
+       WATER. That is the right answer for a shoreline and the wrong one for
+       a CITY: San Francisco's waterfront is fill and piers, and a good deal
+       of it is below MHW. Cut this ground at the field and the Embarcadero's
+       pier decks lose the ground under them while `streets.ts` and
+       `buildings.ts` — which stand on the PUBLISHED register — keep drawing
+       on top of nothing.
+
+       That is the same class of mistake as the hole this replaced, pointed
+       the other way: two layers reading different answers about the same
+       place. The plate could move because nothing stands on it. This cannot
+       until the things standing on it move with it, and that is a bigger
+       change than a coastline. `water.ts` §AND THE CUT IS THE CITY'S GROUND
+       relies on this staying as it is — it intersects the field with THIS
+       outline precisely so the city's ground and the plate under it agree. */
     if (sets.length < 2) return null;
     return rasteriseRings(
       sets,
