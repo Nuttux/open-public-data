@@ -609,10 +609,40 @@ function cityCut(
      invisible (surround -3 over plate -4), so the safe direction is to cut
      less, and the question is exactly where the city's own ground stops
      covering the plate and the far shore starts. */
-  if (landmask) {
+  if (landmask && cityRings.length) {
+    /* ── AND THE CUT IS THE CITY'S GROUND, NOT ALL GROUND ────────────────
+       The header above says a cut needs two registers because the county
+       outline alone calls the whole Pacific land and the hydrography alone
+       calls the pier field water. Both are true, and OR-ing them is what put
+       the hole on the Marin shore: the regional set calls Marin land, so the
+       plate was removed there, and the far shore that should cover it is
+       drawn at two hundred metres and lands up-screen of the footprint.
+
+       A field answers the first objection outright — it calls the Pacific
+       water because it IS water — so the two registers become an INTERSECTION
+       instead of a union. Inside the city's own outline AND land: that is the
+       city's ground, which is the only ground this plate can be seen through.
+       Everything beyond it keeps its plate, and the far shore is drawn over
+       the top at renderOrder -3 against -4, which is invisible where it
+       covers and is the whole point where it does not. */
+    const inCity = rasteriseRings([cityRings], lat, CUT_K);
+    const field = maskFromField(landmask, lat, CUT_K);
+    const at = (i: number, j: number, si: number, sj: number): boolean =>
+      inCity.at(i, j, si, sj) && field.at(i, j, si, sj);
     return {
       lat,
-      mask: maskFromField(landmask, lat, CUT_K),
+      mask: {
+        K: CUT_K,
+        lattice: lat,
+        at,
+        countIn(i: number, j: number): number {
+          let n = 0;
+          for (let sj = 0; sj < CUT_K; sj++) {
+            for (let si = 0; si < CUT_K; si++) if (at(i, j, si, sj)) n++;
+          }
+          return n;
+        },
+      },
       offshore: (i, j) => sc.cityOffshore(i, j),
     };
   }
