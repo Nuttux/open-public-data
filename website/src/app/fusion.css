@@ -18522,3 +18522,90 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   left: 0;
   color: var(--ocre);
 }
+
+/* ══ THE CENTURY SCRUB ═════════════════════════════════════════════════════
+   Daniel: *"i find it ugly with the blue bar and dot uh so old looking"*. It
+   was an unstyled `input[type=range]`, so it was drawing the operating
+   system's own slider — a saturated blue bar and a chrome dot, in the middle
+   of a map whose entire palette is paper, ink and one rule colour.
+
+   So it is drawn in the map's own terms: a hairline track the weight of every
+   other rule on the page, the run BEHIND the thumb inked so the century reads
+   as filled rather than as a gauge, and a thumb that is a small upright
+   marker rather than a bead — the same shape a year is marked with on a
+   printed timeline. Nothing here changes what the control does. */
+.theme-fusion .fx-city-scrub {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  height: 22px;
+  cursor: ew-resize;
+  /* the filled run is painted on the track by a gradient the component sets
+     through this custom property, so dragging repaints nothing but a style */
+  --scrub: 100%;
+}
+.theme-fusion .fx-city-scrub:focus { outline: none; }
+.theme-fusion .fx-city-scrub:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+.theme-fusion .fx-city-scrub::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 2px;
+  background:
+    linear-gradient(to right, var(--ink) 0 var(--scrub), transparent var(--scrub) 100%),
+    var(--rule, #e4e6ea);
+}
+.theme-fusion .fx-city-scrub::-moz-range-track {
+  height: 3px;
+  border-radius: 2px;
+  background: var(--rule, #e4e6ea);
+}
+.theme-fusion .fx-city-scrub::-moz-range-progress {
+  height: 3px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+/* a marker, not a bead: 3 px wide and tall enough to read against the track,
+   with a little paper around it so it stays legible over the inked run */
+.theme-fusion .fx-city-scrub::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 3px;
+  height: 15px;
+  margin-top: -6px;
+  border: 0;
+  border-radius: 1px;
+  background: var(--ink);
+  box-shadow: 0 0 0 3px var(--bg, #fff);
+}
+.theme-fusion .fx-city-scrub::-moz-range-thumb {
+  width: 3px;
+  height: 15px;
+  border: 0;
+  border-radius: 1px;
+  background: var(--ink);
+  box-shadow: 0 0 0 3px var(--bg, #fff);
+}
+.theme-fusion .fx-city-scrub:hover::-webkit-slider-thumb,
+.theme-fusion .fx-city-scrub:active::-webkit-slider-thumb { height: 19px; margin-top: -8px; }
+.theme-fusion .fx-city-scrub:hover::-moz-range-thumb,
+.theme-fusion .fx-city-scrub:active::-moz-range-thumb { height: 19px; }
+
+/* ── WHICH SYSTEM IS BEING WATCHED ────────────────────────────────────────
+   One lit at a time, the same rule `fx-city-subjects` follows and for the
+   same reason: two systems lit at once is a picture of neither. */
+.theme-fusion .fx-city-system {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: 7px 10px;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.theme-fusion .fx-city-system:last-child { border-right: 0; }
+.theme-fusion .fx-city-system[aria-pressed="true"] { background: var(--ink); color: var(--bg); }

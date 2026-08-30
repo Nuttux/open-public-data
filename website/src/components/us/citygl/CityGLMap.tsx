@@ -250,10 +250,19 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const filmRef = useRef<FilmPlayer | null>(null);
   const remeasureFilmRef = useRef<(() => void) | null>(null);
   const [filmOn, setFilmOn] = useState(false);
-  /* the transport — see the play button below. `playRate` is years a second,
-     so the century runs in about twenty seconds at 6. */
+  /* ── THE TRANSPORT ─────────────────────────────────────────────────────
+     The speed used to BE the rate — 3, 6, 12, 24 years a second — and the
+     button printed it with a multiplication sign after it. Daniel: *"the
+     speed are 3x 6x 12x 24x wtf why not 1 x 2x 4 etc?"*. He is right: "6×"
+     reads as six times normal speed, and there was no normal speed for it to
+     be six times of.
+
+     So the reader picks a MULTIPLE and the rate is derived. 1× runs the
+     century in forty seconds, which is a walk; 4× in ten, which is the whole
+     thing at a glance. */
   const [playing, setPlaying] = useState(false);
-  const [playRate, setPlayRate] = useState(6);
+  const [speed, setSpeed] = useState(2);
+  const playRate = speed * SPEED_1X_YPS;
 
   /* ── AND THE READOUT FOLLOWS THE CLOCK, WHICH REACT CANNOT SEE ─────────
      The clock lives in the engine and hands the year straight to the layers,
@@ -282,6 +291,17 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const [saving, setSaving] = useState(false);
   /** the year a drag is currently on, and its one coalesced frame */
   const scrubRef = useRef<number | undefined>(undefined);
+  /** the scrub's own DOM node — see §THE SCRUB IS NOT CONTROLLED */
+  const scrubEl = useRef<HTMLInputElement | null>(null);
+  /** put a year on the scrub without going through React */
+  const syncScrub = useCallback((y: number | undefined) => {
+    const el = scrubEl.current;
+    if (!el) return;
+    const v = y ?? YEAR_MAX;
+    if (Number(el.value) !== v) el.value = String(v);
+    const frac = (v - YEAR_MIN) / (YEAR_MAX - YEAR_MIN);
+    el.style.setProperty("--scrub", `${(frac * 100).toFixed(2)}%`);
+  }, []);
   const scrubRaf = useRef(0);
   const t = useT();
   const stopsRef = useRef<{ label: string; go: () => void; i: number }[]>([]);

@@ -49,14 +49,19 @@
 import {
   BoxGeometry,
   BufferGeometry,
+  CanvasTexture,
   Color,
   ConeGeometry,
   CylinderGeometry,
   InstancedMesh,
   Matrix4,
+  DoubleSide,
+  MeshBasicMaterial,
   MeshLambertMaterial,
+  PlaneGeometry,
   Quaternion,
   SphereGeometry,
+  SRGBColorSpace,
   TorusGeometry,
   Vector3,
 } from "three";
@@ -176,36 +181,81 @@ const LIFT_PX = 3;
 const PIN_M = 1;
 const PUCK_R = 0.7;
 
-/* ── THE SHAPE, AND WHY IT IS NOT A CONE ──────────────────────────────────
-   The dot was a six-sided cone standing on the ground. On this map that is a
-   TREE: the city draws 195,310 of them as green cones, and a subject rendered
-   in the palette's green landed 1,441 more among them, indistinguishable. A
-   mark has to read as something a person put there.
+/* ── THE SHAPE, AND WHY IT IS NOT AN OBJECT ───────────────────────────────
+   Three tries, and the lesson is the same each time: ANY SOLID BODY STANDING
+   ON THIS CITY IS READ AS PART OF THE CITY.
 
-   All six were rendered over Haight Ashbury at district zoom and looked at.
-   THE HOLE IN THE MIDDLE IS WHAT DECIDES IT. Every solid shape in the palette's
-   green — cone, bead, tack head, disc — reads as another tree, because the eye
-   is matching a filled blob of foliage colour against a ground already full of
-   them. A ring is not a shape the city has any of, so it reads as a symbol
-   somebody placed. It also survives crowding better than anything solid: two
-   overlapping rings are still two, where two overlapping discs are one bigger
-   blob. And a bar is worse than any of them — a green column at building scale
-   reads as a building.
+   The first was a six-sided cone. The city draws 195,310 street trees as green
+   cones, so a subject in the palette's green landed 1,441 more among them and
+   nobody could tell which was which. A bar is worse — a column at building
+   scale reads as a building. A ring escaped both, because a hollow circle is
+   not a shape the city has any of, but it escaped by being a piece of jewellery
+   lying on the roofs: it announces itself as an object placed ON a picture
+   rather than as a fact ABOUT the picture, and it looks it.
 
-     ring   a hollow circle lying flat                     (default)
+   So the mark stops being an object. Both shipping modes are FLAT AND ON THE
+   GROUND — a textured plane lying in the terrain, soft at the edge, with the
+   city's own light and buildings in front of it:
+
+     dot    a small soft disc, hard enough in the middle to aim at   (default)
+     glow   a wide soft field, one per block, its size and its
+            strength carrying how many records that block holds
+            — this is the density map, and it is what the layer
+            switches to on its own once a subject lights more
+            than CARPET_BLOCKS blocks
+
+   The solids are kept behind `?mark=` and nothing selects them by default.
+   They are how the above was arrived at, and the next city's ground may
+   decide differently:
+
+     ring   a hollow circle lying flat
      tack   stem + round head — a pin pushed in
      bead   the head alone, sitting on the ground
-     disc   a coin lying flat
+     disc   a hard-edged coin
      bar    a column
-     cone   what it used to be, for comparison
-
-   Kept switchable with `?mark=` because this is a judgement at a particular
-   zoom over a particular ground, and the next ground may decide differently.
+     cone   what it used to be
 */
-export type MarkShape = "ring" | "tack" | "bead" | "disc" | "bar" | "cone";
+export type MarkShape =
+  | "dot" | "glow" | "ring" | "tack" | "bead" | "disc" | "bar" | "cone";
 export const MARK_SHAPES: readonly MarkShape[] =
-  ["ring", "tack", "bead", "disc", "bar", "cone"] as const;
-export const DEFAULT_SHAPE: MarkShape = "ring";
+  ["dot", "glow", "ring", "tack", "bead", "disc", "bar", "cone"] as const;
+export const DEFAULT_SHAPE: MarkShape = "dot";
+
+/** the flat shapes: drawn lying in the ground, not standing on it */
+const FLAT: ReadonlySet<MarkShape> = new Set<MarkShape>(["dot", "glow"]);
+
+/**
+ * A soft round brush, drawn once into a canvas and shared by every mesh.
+ *
+ * `stop` is where the solid core ends and the fade begins: 0.55 gives a disc
+ * you can aim at with a soft rim, 0 gives a field with no edge at all. White,
+ * because the colour rides on the material and one texture then serves all
+ * eight subjects.
+ *
+ * Returns null off the browser — the layer is constructed in tests, where
+ * there is no canvas, and it falls back to the hard-edged coin there.
+ */
+function brush(stop: number): CanvasTexture | null {
+  if (typeof document === "undefined") return null;
+  const N = 128;
+  const c = document.createElement("canvas");
+  c.width = c.height = N;
+  const g = c.getContext("2d");
+  if (!g) return null;
+  const grad = g.createRadialGradient(N / 2, N / 2, 0, N / 2, N / 2, N / 2);
+  grad.addColorStop(0, "rgba(255,255,255,1)");
+  if (stop > 0) grad.addColorStop(stop, "rgba(255,255,255,1)");
+  grad.addColorStop(1, "rgba(255,255,255,0)");
+  g.fillStyle = grad;
+  g.fillRect(0, 0, N, N);
+  const t = new CanvasTexture(c);
+  t.colorSpace = SRGBColorSpace;
+  return t;
+}
+
+/** how opaque a flat mark is: enough to read, not enough to hide the city */
+const DOT_ALPHA = 0.95;
+const GLOW_ALPHA = 0.5;
 
 /* a density puck starts at half a dot and grows by at most this much, so the
    busiest block is 2.4x the quietest rather than 10x — see the density branch */
@@ -229,6 +279,17 @@ const S = new Vector3();
  */
 function markGeometry(shape: MarkShape): BufferGeometry {
   switch (shape) {
+    case "dot":
+    case "glow": {
+      /* LYING IN THE GROUND, NOT STANDING ON IT. A plane is born in xy and
+         the ground is xz, so it is laid down; the texture carries the circle
+         and its fade, and the extent is generous because a soft brush spends
+         most of its radius on the fade. */
+      const g = new PlaneGeometry(shape === "glow" ? 4 : 1.25,
+                                  shape === "glow" ? 4 : 1.25);
+      g.rotateX(-Math.PI / 2);
+      return g;
+    }
     case "tack": {
       /* stem from the ground to 0.62, head centred at 0.72. The head is a
          SPHERE and not a disc because the camera tilts: a disc facing up
@@ -318,8 +379,18 @@ export function themeMarksLayer(
      drawable in two different shapes. Eight draw calls is not a cost worth
      optimising away — the whole point of the layer is that the count of
      MARKS, not of subjects, is what used to be expensive. */
-  const pin = markGeometry(o.shape ?? DEFAULT_SHAPE);
-  const puck = new CylinderGeometry(PUCK_R, PUCK_R, PUCK_R * 0.25, 12);
+  const shape = o.shape ?? DEFAULT_SHAPE;
+  const pin = markGeometry(shape);
+  /* THE DENSITY SHAPE FOLLOWS THE DOT SHAPE. A flat dot's crowd is a flat
+     field; a solid dot's crowd stays the old translucent coin, because a
+     solid body and a soft brush do not belong in the same picture. */
+  const flat = FLAT.has(shape);
+  const puck = flat
+    ? markGeometry("glow")
+    : new CylinderGeometry(PUCK_R, PUCK_R, PUCK_R * 0.25, 12);
+  /* one texture per edge-hardness, shared by all eight subjects */
+  const texDot = flat ? brush(shape === "glow" ? 0 : 0.72) : null;
+  const texGlow = flat ? brush(0) : null;
 
   /* per-subject index lists, built once. Filtering never walks all n again. */
   const byBit: number[][] = [];
@@ -334,15 +405,49 @@ export function themeMarksLayer(
   }
 
   const meshes: InstancedMesh[] = [];
-  const mats: MeshLambertMaterial[] = [];
+  const mats: (MeshLambertMaterial | MeshBasicMaterial)[] = [];
   for (let bit = 0; bit < o.bits; bit++) {
     const col = new Color(o.colours[bit] ?? "#c8483c");
-    const mat = new MeshLambertMaterial({ color: col });
+    /* A WASH IS UNLIT, A BODY IS LIT. The flat marks are a mark ON the
+       drawing and take the ground's own light through the texture's alpha;
+       giving them a Lambert material would hillshade a stain. The solids
+       still want lighting or they read as cut-out paper. `depthWrite` is off
+       on the flat ones so two of them overlap instead of z-fighting. */
+    const mat = flat
+      ? new MeshBasicMaterial({
+          color: col,
+          map: texDot,
+          transparent: true,
+          opacity: DOT_ALPHA,
+          depthWrite: false,
+          /* FORWARD, NOT AWAY. A plane lying in the terrain is coplanar with
+             it, and `block-tint.ts` records the trap in its own words: a
+             positive offset pushes a polygon away and the depth test throws
+             every fragment out. An overlay on a coplanar surface comes toward
+             the camera. The 3 px lift cannot do this job — making a lift big
+             enough is how the marks ended up in the sky in the first place. */
+          polygonOffset: true,
+          polygonOffsetFactor: -4,
+          polygonOffsetUnits: -4,
+          /* ── DoubleSide, AND IT IS NOT BELT AND BRACES ───────────────
+             The first flat build drew NOTHING: 217 instances, visible, in the
+             scene, matrices right, and no pixels. It was not depth and it was
+             not the material — `depthTest:false` and a Lambert each changed
+             nothing, which is what ruled them out. A plane is born facing +Z
+             and is laid down with `rotateX`, and the face that ends up
+             pointing at the sky is the BACK one, which `FrontSide` discards.
+             Two triangles is not a budget worth defending. */
+          side: DoubleSide,
+        })
+      : new MeshLambertMaterial({ color: col });
     /* the cap is the subject's own total: a filter can never light more */
     const mesh = new InstancedMesh(pin, mat, Math.max(1, byBit[bit].length));
     mesh.count = 0;
     mesh.visible = false;
     mesh.frustumCulled = false;
+    /* over the ground wash (0.5) and the streets (1, 2): the marks are the
+       last thing said about a block, so they are drawn last over it */
+    if (flat) mesh.renderOrder = 6;
     mesh.name = `theme-mark-${bit}`;
     mats.push(mat);
     meshes.push(mesh);
@@ -456,9 +561,15 @@ export function themeMarksLayer(
 
     if (st.mode === "dots") {
       if (mesh.geometry !== pin) mesh.geometry = pin;
-      mats[bit].transparent = false;
-      mats[bit].opacity = 1;
-      mats[bit].depthWrite = true;
+      if (flat) {
+        const m = mats[bit] as MeshBasicMaterial;
+        if (m.map !== texDot) { m.map = texDot; m.needsUpdate = true; }
+        m.opacity = DOT_ALPHA;
+      } else {
+        mats[bit].transparent = false;
+        mats[bit].opacity = 1;
+        mats[bit].depthWrite = true;
+      }
       let k = 0;
       for (const i of hit) {
         drawn[bit].push({ x: f.x[i], y: f.y[i], s: 1 });
@@ -471,11 +582,21 @@ export function themeMarksLayer(
          with four times as many records reads as four times the ink rather
          than sixteen. */
       if (mesh.geometry !== puck) mesh.geometry = puck;
-      /* and it is translucent in this mode only: two pucks over one another
-         have to read as two, which an opaque fill cannot do */
-      mats[bit].transparent = true;
-      mats[bit].opacity = DENSITY_ALPHA;
-      mats[bit].depthWrite = false;
+      if (flat) {
+        /* THE FIELD, NOT A CROWD OF DISCS. The same brush with no solid core
+           at all, wide and weak, so that what a reader sees where blocks
+           cluster is one continuous stain that is darker in the middle —
+           which is the thing density actually is. */
+        const m = mats[bit] as MeshBasicMaterial;
+        if (m.map !== texGlow) { m.map = texGlow; m.needsUpdate = true; }
+        m.opacity = GLOW_ALPHA;
+      } else {
+        /* translucent in this mode only: two pucks over one another have to
+           read as two, which an opaque fill cannot do */
+        mats[bit].transparent = true;
+        mats[bit].opacity = DENSITY_ALPHA;
+        mats[bit].depthWrite = false;
+      }
       const at = new Map<number, { x: number; y: number; n: number }>();
       for (const i of hit) {
         const key = f.b[i] >= 0 ? f.b[i] : -1 - f.r[i];
@@ -537,6 +658,8 @@ export function themeMarksLayer(
       for (const m of mats) m.dispose();
       pin.dispose();
       puck.dispose();
+      texDot?.dispose();
+      texGlow?.dispose();
     },
   };
 }
