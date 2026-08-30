@@ -27,11 +27,12 @@
    and drops the bus patterns it names on the same corridors. Nothing here
    guesses which is which.
 
-   **It is TODAY'S network.** The year rail runs from 1906 and San Francisco's
-   rail was at its largest around 1920, so drawing these ten lines in 1950
-   would be a lie. The layer therefore draws at the PRESENT and nowhere else —
-   see §WHAT YEAR THIS LAYER CAN HONESTLY SPEAK FOR — and the historic network
-   stays an open problem rather than an invented one.
+   **The GEOMETRY is today's; the DATES are the city's own.** Each segment
+   carries the year the Board of Supervisors is recorded PAYING TO LAY that
+   line, from `pipeline/seeds/sf_rail_opened.json`, so the network arrives as
+   the city built it — 15.8 km of cable and Market Street in 1906, 27.8 by
+   1917, 41.6 by 1919, 57.6 by 1928, 69.3 today. See §WHAT YEAR THIS LAYER CAN
+   HONESTLY SPEAK FOR.
 
    (This paragraph used to say the gate was the dataset's own `asOf`. It was,
    and that was the bug: `asOf` is a publication timestamp, so the test was
@@ -353,7 +354,8 @@ export interface RailLayerOptions {
 
 interface RailFile {
   asOf: string;
-  segs: [number, number, number, number, string][];
+  /** x0, y0, x1, y1, kind, and the year the city paid to lay it (0 = before the map opens) */
+  segs: [number, number, number, number, string, number][];
   trackKm: number;
   lines: string[];
 }
@@ -374,10 +376,28 @@ export async function railLayer(
   if (!file.segs?.length) return null;
 
   /* ── WHAT YEAR THIS LAYER CAN HONESTLY SPEAK FOR ───────────────────────
-     `9exe-acju` is the CURRENT network. It carries no opening dates and no
-     retirements, so it describes exactly one moment: now. San Francisco's rail
-     was at its largest around 1920 and has shrunk since, so drawing these ten
-     lines in 1950 would be a straightforward lie.
+     `9exe-acju` is the CURRENT network and carries no dates of its own, which
+     is why this layer drew at the present for as long as it did. It has dates
+     now, and they are not guesses: the pipeline joins a year per line quoted
+     from the Board's own record of paying for its construction — the Church
+     street line's Contract No. 23 in 1917, Eaton & Smith's fifth payment on
+     the Twin Peaks tunnel line in 1918, their first on Taraval in 1919, their
+     fourth on Ocean View track and paving in 1925, their second on the Sunset
+     line in 1928, and the Board's hearing on "the new T-Third Street MUNI
+     line" in 2007.
+
+     THE GATE IS THE TRACK, NOT THE ROUTE'S NAME. The F was branded in 1995 and
+     Market Street has carried rail since the 1860s; gating the F's steel at
+     1995 would leave Market bare for ninety years of a century that had five
+     streetcar lines on it. A line older than the map's first frame carries
+     year 0 and is drawn from the beginning — the convention `streets.ts` uses
+     for a street its record is silent about.
+
+     AND IT ONLY EVER GROWS. San Francisco's system peaked around 1920, most of
+     it privately run, and what was torn up is not in today's geometry, so it
+     cannot be drawn. The 1920s read emptier than the city was. That is the
+     same floor the streets already stand on — a demolished street is not drawn
+     either — and it is a limit on what this shows, not a claim about the city.
 
      This used to compare the scrub's year against the file's `asOf` YEAR, and
      that was wrong even though it looked right. `asOf` is a PUBLICATION
@@ -388,11 +408,8 @@ export async function railLayer(
      an older extract. A gate whose correctness depends on a build date is not
      a gate.
 
-     So the rule is stated instead of inferred: this layer draws at the PRESENT
-     and nowhere else. `onYear(undefined)` is the present — `CityGLMap.tsx`
-     turns the scrub's own maximum into `undefined` — and any chosen year, 1906
-     or 2025 alike, gets nothing. The historic network stays an open problem
-     rather than an invented one. */
+     `onYear(undefined)` is the present — `CityGLMap.tsx` turns the scrub's own
+     maximum into `undefined` — and draws the whole network. */
   const asOf = String(file.asOf).slice(0, 10);
 
   /* ── THE BED AND THE STEEL CANNOT SHARE A MATERIAL ────────────────────
@@ -459,7 +476,22 @@ export async function railLayer(
   };
 
   const kinds = { cable: 0, streetcar: 0, metro: 0, other: 0 };
-  for (const [x0, y0, x1, y1, kind] of file.segs) {
+
+  /* ── EMITTED IN THE YEAR THE CITY PAID TO LAY IT ───────────────────────
+     `streets.ts` §EMITTED IN ACCEPTANCE-YEAR ORDER, for the same reason and
+     with the same shape: sorting the segments by year makes the century scrub
+     a DRAW RANGE rather than a rebuild of 175,000 vertices. Year 0 is an
+     alignment older than the map's first frame -- the cable franchises and
+     Market Street -- and sorts to the front, so it is drawn in every year. */
+  const dated = [...file.segs].sort((a, b) => (a[5] || 0) - (b[5] || 0));
+  const marks: { year: number; bed: number; steel: number }[] = [];
+  let lastYear = -1;
+  for (const [x0, y0, x1, y1, kind, segYear] of dated) {
+    const yr = segYear || 0;
+    if (yr !== lastYear) {
+      if (lastYear >= 0) marks.push({ year: lastYear, bed: idx.length, steel: sIdx.length });
+      lastYear = yr;
+    }
     const dx = x1 - x0;
     const dy = y1 - y0;
     const L = Math.hypot(dx, dy);
@@ -516,6 +548,7 @@ export async function railLayer(
     into = bed;
     liftM = RAIL_BED_LIFT_M;
   }
+  if (lastYear >= 0) marks.push({ year: lastYear, bed: idx.length, steel: sIdx.length });
 
   /** one buffer set -> one mesh, so the two can carry different materials */
   const build = (
@@ -628,11 +661,34 @@ export async function railLayer(
       for (const b of meshes) b.mesh.scale.y = zex;
     },
     onYear(year: number | undefined): void {
-      /* the present, and only the present — see §WHAT YEAR THIS LAYER CAN
-         HONESTLY SPEAK FOR. `asOf` is kept for the provenance panel, not as
-         a test. */
+      /* ── THE TRACK ARRIVES AS THE CITY PAID FOR IT ────────────────────
+         This used to be `visible = year === undefined` — the present and
+         nowhere else — because the file carried no dates and inventing them
+         was worse than withholding them. It carries them now, quoted from the
+         Board's own record of paying for each line's construction, so the gate
+         is the same draw range `streets.ts` uses: the segments were emitted in
+         year order, so showing a year is choosing how far along the buffer to
+         stop. `asOf` stays a provenance string and never a test.
+
+         `undefined` is the present and draws everything. */
       void asOf;
-      for (const b of meshes) b.mesh.visible = year === undefined;
+      let bed = idx.length;
+      let steel = sIdx.length;
+      if (year !== undefined) {
+        bed = 0;
+        steel = 0;
+        for (const m of marks) {
+          if (m.year > year) break;
+          bed = m.bed;
+          steel = m.steel;
+        }
+      }
+      for (const b of meshes) {
+        const isSteel = b.mesh.renderOrder > RAIL_RUNG;
+        const count = isSteel ? steel : bed;
+        b.mesh.geometry.setDrawRange(0, count);
+        b.mesh.visible = count > 0;
+      }
     },
     dispose(): void {
       for (const b of meshes) {

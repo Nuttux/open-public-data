@@ -1,0 +1,101 @@
+{
+  "_what": "The year each rail line's track first existed, taken from the Board of Supervisors' own record of PAYING TO BUILD IT.",
+  "_why": [
+    "base/rail.json is today's network and carries no opening year, so the layer that",
+    "reads it drew at the present and nowhere else while the streets and the building",
+    "footprints beside it arrived by year from the record. That was the one inconsistency",
+    "in the century scrub: the city grew around a rail network that was always finished.",
+    "",
+    "The gate is NOT a route's branding date. The F Market line was branded in 1995 and",
+    "Market Street has carried rail since the 1860s; gating the F's steel at 1995 would",
+    "leave Market bare for ninety years of a century that had five streetcar lines on it.",
+    "What is wanted is the year rail service began ON THAT ALIGNMENT, which for a",
+    "municipally built line is the year the city is recorded paying for its track.",
+    "",
+    "Every year below is a construction payment, a contract, or the Board's own words",
+    "about a line, quoted from the volume named. Nothing here is recalled."
+  ],
+  "_predating": [
+    "The map's first year is 1906. The cable lines and Market Street all carried rail",
+    "before it, so they need no date and are drawn from the first year the map draws --",
+    "the same convention `streets.ts` uses for a street the record is silent about.",
+    "This is stated rather than sourced: the scanned Journal of Proceedings begins in",
+    "1906, so the corpus CANNOT reach a franchise granted in 1878, and claiming a",
+    "citation for it would be false. California Street, Powell-Mason and Powell-Hyde are",
+    "19th-century cable franchises; Market Street's rail is older than the fire."
+  ],
+  "_source": {
+    "publisher": "Internet Archive, from the San Francisco Public Library deposit",
+    "series": "Journal of proceedings, Board of Supervisors, City and County of San Francisco",
+    "enumerated_by": "creator, never by title -- see pipeline/scripts/us_sf_city/MINUTES.md",
+    "seed": "pipeline/seeds/countries/us/seed_us_sf_bos_minutes.tsv"
+  },
+  "lines": {
+    "CA": {
+      "year": 0,
+      "name": "California Street cable",
+      "basis": "predates the map's first year; the scanned series begins 1906"
+    },
+    "PM": {
+      "year": 0,
+      "name": "Powell-Mason cable",
+      "basis": "predates the map's first year; the scanned series begins 1906"
+    },
+    "PH": {
+      "year": 0,
+      "name": "Powell-Hyde cable",
+      "basis": "predates the map's first year; the scanned series begins 1906"
+    },
+    "F": {
+      "year": 0,
+      "name": "F Market historic streetcar",
+      "basis": "the ROUTE was branded in 1995 but its alignment, Market Street, carried rail before the map's first year. Gated on the track, not the brand."
+    },
+    "J": {
+      "year": 1917,
+      "name": "J Church",
+      "volume": "journalofproceed1917sanfrich",
+      "url": "https://archive.org/details/journalofproceed1917sanfrich",
+      "quote": "For construction of Church street line, from Market street and Van Ness avenue to Sixteenth and Church streets, Section \"A\", Contract No. 23"
+    },
+    "K": {
+      "year": 1918,
+      "name": "K Ingleside",
+      "volume": "journalofproceed1918sanfrich",
+      "url": "https://archive.org/details/journalofproceed1918sanfrich",
+      "quote": "Eaton & Smith, fifth payment, construction of Twin Peaks tunnel line, Municipal Railways, contract 95",
+      "note": "the record names the alignment, not the modern letter: the K runs the Twin Peaks Tunnel line, whose construction the Board was paying for in 1917-18."
+    },
+    "L": {
+      "year": 1919,
+      "name": "L Taraval",
+      "volume": "journalofproceed1919sanfrich",
+      "url": "https://archive.org/details/journalofproceed1919sanfrich",
+      "quote": "Eaton & Smith, 1st payment, construction of Taraval street line of Municipal Railways (claim dated Feb. 3, 1919)",
+      "note": "the same volume carries a resolution headed \"Operation of Taraval Cars from Ferry to the Beach\"."
+    },
+    "M": {
+      "year": 1925,
+      "name": "M Ocean View",
+      "volume": "journalofproceed1925sanfrich",
+      "url": "https://archive.org/details/journalofproceed1925sanfrich",
+      "quote": "Eaton & Smith, fourth payment, construction of track and paving, Ocean View line of Municipal Railways (claim dated August 13, 1925)"
+    },
+    "N": {
+      "year": 1928,
+      "name": "N Judah",
+      "volume": "journalofproceed23sanfrich",
+      "url": "https://archive.org/details/journalofproceed23sanfrich",
+      "quote": "Eaton & Smith, second payment, construction of Sunset line of Municipal Railways (claim dated May 28, 1928)",
+      "note": "the same volume pays for \"construction of Duboce avenue Sunset tunnel\", the bore the N runs through."
+    },
+    "T": {
+      "year": 2007,
+      "name": "T Third",
+      "volume": "meeting2007aprmayminutes102sanfrich",
+      "url": "https://archive.org/details/meeting2007aprmayminutes102sanfrich",
+      "quote": "070445 [Status of the new T-Third Street MUNI line] Supervisor Elsbernd Hearing on the status of the new T-Third Street MUNI line and its impact on other services. 4/10/07",
+      "note": "the Board calling it NEW in April 2007 is the attestation; the January-March 2007 volume has no mention of it at all."
+    }
+  }
+}

@@ -19,20 +19,37 @@ and the patterns the same dataset publishes as BUS working the same corridor —
 `FBUS`, `KBUS`, `NBUS`, `TBUS`, `LOWL`, `NOWL` — are excluded by name for the
 same reason: the column says what they are.
 
-── WHAT THIS IS NOT ─────────────────────────────────────────────────────────
-**It is the network as the dataset describes it, which is TODAY'S.** This map
-runs from 1906, and San Francisco's rail was at its largest around 1920 and has
-shrunk since; drawing today's ten lines in 1950 would be a lie, and drawing a
-1950 network would be an invention, because no published geometry for it is in
-this repo. So the layer that reads this draws at the PRESENT and nowhere else,
-and the historic network stays an open problem rather than a guessed one.
+── AND EACH PIECE OF TRACK CARRIES THE YEAR THE CITY PAID TO LAY IT ─────────
+The geometry is TODAY'S. The dates are not, and they are not guessed either:
+`pipeline/seeds/sf_rail_opened.json` carries a year per line quoted from the
+Board of Supervisors' own record of paying for its construction -- the Church
+street line's Contract No. 23 in 1917, Eaton & Smith's fifth payment on the
+Twin Peaks tunnel line in 1918, their first on Taraval in 1919, their fourth on
+Ocean View track and paving in 1925, their second on the Sunset line in 1928,
+and the Board's own hearing on "the new T-Third Street MUNI line" in 1917-2007
+order. So the network arrives as the city built it, the same way `streets.ts`
+draws a right of way from the year the Board is recorded accepting it.
 
-`data_as_of` is carried on the file for PROVENANCE and must never become the
-gate. It is a publication timestamp, not a fact about the network: the reader
-did key on it once, which made the test `year >= 2026` and produced
-present-only behaviour purely by accident. Rebuild this file from an older
-extract and that same line would have started drawing today's network in 1906,
-silently.
+THE GATE IS THE TRACK, NOT THE ROUTE'S NAME. The F was branded in 1995 and
+Market Street has carried rail since the 1860s; gating the F's steel at 1995
+would leave Market bare for ninety years of a century that had five streetcar
+lines on it. A line whose alignment predates the map's first year gets year 0,
+which the reader draws from the beginning -- the same convention `streets.ts`
+uses for a street its record is silent about. The cable franchises are 19th
+century and the scanned Journal begins in 1906, so 0 is the honest answer
+rather than a citation that cannot exist.
+
+WHAT THIS STILL IS NOT: the network only ever GREW here. San Francisco's
+streetcar system peaked around 1920, most of it privately run by the Market
+Street Railway, and what was torn up is not in today's geometry and so cannot
+be drawn. The 1920s will read emptier than the city was. That is the same
+limitation the streets already carry -- a demolished street is not drawn
+either -- and it is a floor on what this shows, not a claim about the city.
+
+`data_as_of` is carried for PROVENANCE and must never become the gate. It is a
+publication timestamp, not a fact about the network: the reader did key on it
+once, which made the test `year >= 2026` and produced present-only behaviour
+purely by accident.
 
 ── THE TRACK IS DEDUPED, BECAUSE A PATTERN IS NOT A TRACK ───────────────────
 A pattern is one direction of one line, so inbound and outbound lie on the
@@ -55,6 +72,9 @@ RAIL = {
     "M": "metro", "N": "metro", "T": "metro",
 }
 SRC = "https://data.sfgov.org/resource/9exe-acju.geojson?$limit=5000"
+OPENED = pathlib.Path(
+    "/Users/daniel/code/open-public-data/pipeline/seeds/sf_rail_opened.json"
+)
 MANIFEST = pathlib.Path(
     "/Users/daniel/code/open-public-data/website/public/data/us/sf/city/manifest.json"
 )
@@ -75,7 +95,16 @@ def main() -> None:
     feats = gj["features"]
     print(f"{len(feats)} patterns")
 
+    opened = json.loads(OPENED.read_text())["lines"]
+    missing = sorted(k for k in RAIL if k not in opened)
+    if missing:
+        raise SystemExit(f"no opening year seeded for {missing}")
+
+    # a corridor keeps the FIRST kind that claims it and the EARLIEST year of
+    # any line that runs on it: a piece of track exists from the moment the
+    # first line to use it was built, whoever else joined later.
     seen: dict[tuple, str] = {}
+    year: dict[tuple, int] = {}
     as_of = ""
     lines: set[str] = set()
     for f in feats:
@@ -96,14 +125,14 @@ def main() -> None:
                 cur = (round(x / SNAP_M), round(y / SNAP_M))
                 if prev is not None and prev != cur:
                     key = (prev, cur) if prev < cur else (cur, prev)
-                    # a corridor several lines share keeps the first kind that
-                    # claims it; cable beats streetcar beats metro only by
-                    # arrival order, and the drawn steel is the same either way
                     seen.setdefault(key, kind)
+                    y = int(opened[ab]["year"])
+                    if key not in year or y < year[key]:
+                        year[key] = y
                 prev = cur
 
     segs = [
-        [a[0] * SNAP_M, a[1] * SNAP_M, b[0] * SNAP_M, b[1] * SNAP_M, k]
+        [a[0] * SNAP_M, a[1] * SNAP_M, b[0] * SNAP_M, b[1] * SNAP_M, k, year[(a, b)]]
         for (a, b), k in seen.items()
     ]
     total_m = sum(
@@ -111,6 +140,15 @@ def main() -> None:
     )
     print(f"rail lines: {sorted(lines)}")
     print(f"{len(segs):,} deduped segments, {total_m / 1000:.1f} km of track")
+    import collections as _c
+    by = _c.Counter(s[5] for s in segs)
+    run = 0
+    print("  track by the year the city paid to lay it:")
+    for y in sorted(by):
+        run += by[y]
+        m = sum(((s[2]-s[0])**2 + (s[3]-s[1])**2) ** 0.5 for s in segs if s[5] == y)
+        label = "before the map opens" if y == 0 else str(y)
+        print(f"    {label:>20s}  {by[y]:5d} segments  {m/1000:5.1f} km   running {run:5d}")
 
     OUT.write_text(json.dumps({
         "kinds": ["cable", "streetcar", "metro"],
@@ -128,9 +166,15 @@ def main() -> None:
                     "CA/PH/PM (cable car), F (historic streetcar) or J/K/L/M/N/T "
                     "(light rail). The dataset's own bus patterns on the same "
                     "corridors (FBUS, KBUS, NBUS, TBUS, LOWL, NOWL) are excluded.",
-            "currency": "the CURRENT network. It is not the historic one, and no "
-                        "published geometry for the historic network is in this "
-                        "repo, so the layer shows this only from asOf.",
+            "currency": "the CURRENT geometry. Each segment carries the year "
+                        "the Board of Supervisors is recorded PAYING TO BUILD "
+                        "that line, from pipeline/seeds/sf_rail_opened.json, so "
+                        "the network arrives as the city built it. Year 0 means "
+                        "the alignment predates the map's first year. What was "
+                        "torn up -- most of the private streetcar system, which "
+                        "peaked around 1920 -- is not in today's geometry and so "
+                        "is not drawn.",
+            "opened": "pipeline/seeds/sf_rail_opened.json",
         },
     }) + "\n")
     print(f"wrote {OUT} {OUT.stat().st_size:,} bytes, asOf {as_of}")
