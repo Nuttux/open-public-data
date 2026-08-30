@@ -118,6 +118,35 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const filmRef = useRef<FilmPlayer | null>(null);
   const remeasureFilmRef = useRef<(() => void) | null>(null);
   const [filmOn, setFilmOn] = useState(false);
+  /* the transport — see the play button below. `playRate` is years a second,
+     so the century runs in about twenty seconds at 6. */
+  const [playing, setPlaying] = useState(false);
+  const [playRate, setPlayRate] = useState(6);
+
+  /* ── AND THE READOUT FOLLOWS THE CLOCK, WHICH REACT CANNOT SEE ─────────
+     The clock lives in the engine and hands the year straight to the layers,
+     which is the point: no React render is in the path of a frame. So the
+     rail's own number and thumb are polled while it runs — one rAF, only
+     while playing, and the integer year is all this needs because the
+     FRACTION is for the fabric and not for the reader. */
+  useEffect(() => {
+    if (!playing) return;
+    let raf = 0;
+    const poll = () => {
+      const e = engineRef.current;
+      if (!e) return;
+      if (!e.playing) {
+        setPlaying(false);
+        setYear(null);
+        return;
+      }
+      const y = e.getYear();
+      setYear(y === undefined ? null : Math.floor(y));
+      raf = requestAnimationFrame(poll);
+    };
+    raf = requestAnimationFrame(poll);
+    return () => cancelAnimationFrame(raf);
+  }, [playing]);
   const [saving, setSaving] = useState(false);
   /** the year a drag is currently on, and its one coalesced frame */
   const scrubRef = useRef<number | undefined>(undefined);
@@ -1062,6 +1091,61 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               borderTop: "1px solid var(--rule, #e4e6ea)",
             }}
           >
+            {/* ── PLAY, WHICH IS WHAT MAKES IT A CITY BEING BUILT ────────
+                Dragging the rail hands out WHOLE years, and every layer that
+                raises something reads the year's FRACTION — so a scrub lands
+                the wave's phase on exactly 1 and nothing rises. The clock in
+                `engine.ts` §THE CLOCK hands out fractions, which is the whole
+                difference between watching and stepping. */}
+            <button
+              type="button"
+              onClick={() => {
+                const e = engineRef.current;
+                if (!e) return;
+                if (e.playing) {
+                  e.pause();
+                  setPlaying(false);
+                } else {
+                  e.play(YEAR_MIN, YEAR_MAX, playRate);
+                  setPlaying(true);
+                }
+              }}
+              aria-label={playing ? "Pause" : "Play from 1906"}
+              style={{
+                font: "600 13px/1 var(--f-mono, ui-monospace, monospace)",
+                padding: "7px 11px",
+                minWidth: 38,
+                border: "1px solid var(--rule, #e4e6ea)",
+                borderRadius: 6,
+                background: "transparent",
+                cursor: "pointer",
+              }}
+            >
+              {playing ? "❚❚" : "▶"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const next = playRate >= 24 ? 3 : playRate * 2;
+                setPlayRate(next);
+                const e = engineRef.current;
+                if (e?.playing) e.play(YEAR_MIN, YEAR_MAX, next);
+              }}
+              aria-label={`Speed ${playRate} years a second`}
+              title="years a second"
+              style={{
+                font: "600 12px/1 var(--f-mono, ui-monospace, monospace)",
+                padding: "7px 9px",
+                minWidth: 44,
+                border: "1px solid var(--rule, #e4e6ea)",
+                borderRadius: 6,
+                background: "transparent",
+                cursor: "pointer",
+                opacity: 0.8,
+              }}
+            >
+              {playRate}×
+            </button>
             <span
               className="tnum"
               style={{
