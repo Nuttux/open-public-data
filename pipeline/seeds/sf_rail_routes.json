@@ -288,6 +288,22 @@
       "source": "journalofproceed46sanfrich",
       "ended_source": "journalofproceed46sanfrich",
       "quote": "File No. 7900, relating to the removal of tracks and the reconstruction of the roadways of Eleventh Street and Potrero Avenue."
+    },
+    {
+      "name": "Municipal Railway extension, Great Highway to Cole (pre-tunnel N)",
+      "year": 1922,
+      "kind": "streetcar",
+      "streets": [
+        "Judah",
+        "Tenth",
+        "Irving",
+        "Carl"
+      ],
+      "from": "Great Highway",
+      "to": "Cole",
+      "source": "journalofproceed1922sanfrich",
+      "quote": "The Board of Public Works is hereby authorized and directed to prepare plans and specifications, advertise for bids and enter into a contract for the furnishing of the necessary materials for and the construction of an extension of the Municipal Railway from the Great Highway along Judah street, Tenth avenue, Irving street, Carl street to Cole street.",
+      "note": "six years before the Sunset Tunnel, so this is how the line reached the inner Sunset -- by TENTH avenue, where today's N uses Ninth. The difference is the record's, not a slip."
     }
   ],
   "_dropped": "Ocean View line (M): its quote is a CONSTRUCTION PAYMENT and carries no street sequence. The streets first listed here were recalled rather than read, which is the exact failure this file exists to prevent, so the route is out until an ordinance describing it is found.",
