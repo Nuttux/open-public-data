@@ -110,6 +110,7 @@ import gzip
 import json
 import pathlib
 import sys
+import time
 import urllib.request
 from collections import defaultdict
 
@@ -141,9 +142,27 @@ CASES: dict[int, list[tuple[int, int]]] = {
 
 
 def dods(query: str, timeout: int = 300) -> bytes:
-    req = urllib.request.Request(DODS + query, headers={"User-Agent": "qipu-coast/1"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        raw = r.read()
+    """One OPeNDAP request, RETRIED.
+
+    A stride-1 pull is ten bands over several minutes, and a single dropped
+    connection used to lose the whole build -- which is what happened, with
+    `URLError: Network is unreachable` part way through.
+    """
+    req = urllib.request.Request(DODS + query, headers={"User-Agent": "qipu-mask/1"})
+    last: Exception | None = None
+    for attempt in range(5):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                raw = r.read()
+            break
+        except Exception as exc:            # noqa: BLE001 - any transport fault
+            last = exc
+            if attempt == 4:
+                raise
+            print(f"    retry {attempt + 1}/4 after {type(exc).__name__}", flush=True)
+            time.sleep(3 * (attempt + 1))
+    else:
+        raise last if last else RuntimeError("unreachable")
     i = raw.find(b"Data:\n")
     if i < 0:
         raise RuntimeError(f"no Data: section — {raw[:300]!r}")

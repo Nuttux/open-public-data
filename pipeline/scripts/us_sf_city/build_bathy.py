@@ -79,6 +79,7 @@ import gzip
 import json
 import pathlib
 import sys
+import time
 import urllib.request
 
 import numpy as np
@@ -102,10 +103,27 @@ BAND_ROWS = 400
 
 
 def dods(query: str, timeout: int = 240) -> tuple[str, bytes]:
-    """One OPeNDAP request. Returns (DDS header, the XDR payload)."""
+    """One OPeNDAP request. Returns (DDS header, the XDR payload).
+
+    RETRIED, because a stride-1 pull is ten bands over several minutes and a
+    single dropped connection used to lose the whole build -- which is exactly
+    what happened, with `URLError: Network is unreachable` on band six.
+    """
     req = urllib.request.Request(DODS + query, headers={"User-Agent": "qipu-bathy/1"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        raw = r.read()
+    last: Exception | None = None
+    for attempt in range(5):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                raw = r.read()
+            break
+        except Exception as exc:            # noqa: BLE001 - any transport fault
+            last = exc
+            if attempt == 4:
+                raise
+            print(f"    retry {attempt + 1}/4 after {type(exc).__name__}", flush=True)
+            time.sleep(3 * (attempt + 1))
+    else:
+        raise last if last else RuntimeError("unreachable")
     i = raw.find(b"Data:\n")
     if i < 0:
         raise RuntimeError(f"no Data: section — {raw[:400]!r}")

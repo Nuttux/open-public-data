@@ -1029,6 +1029,105 @@ export class CityEngine {
     return this.year;
   }
 
+  /* ══ THE CLOCK — PRESS PLAY AND THE CITY IS BUILT, RATHER THAN SCRUBBED ══
+     Daniel: *"theres no controls yet to press play from the start and then
+     speed, with that on when i scrub rn i feel like stuff pops and it doesnt
+     look like an animation of a city being built."*
+
+     The pop is not a missing animation. `layers/buildings.ts` §AND THE YEAR
+     IS NOW TWO THINGS already raises a building on a wave, and the wave is
+     driven by the FRACTION of the year — `rise.setPhase`. A film run hands
+     out a fractional year and the wave plays; a reader dragging the rail
+     hands out whole years, the phase lands on exactly 1, and the shader term
+     collapses to zero. So the fabric has always known how to be built. It was
+     only ever asked in whole years.
+
+     This is the clock that asks in fractions. It is NOT the film: a film is a
+     directed sequence of acts with its own camera and script, and this is a
+     transport — start, stop, speed, and nothing else. They do not compose and
+     the film wins, because a film that is running is already handing out a
+     year of its own.
+
+     `yearsPerSecond` is real time, so a century at 6 is about seventeen
+     seconds. Nothing here decides that number; the caller does. */
+  private clock: {
+    from: number;
+    to: number;
+    rate: number;
+    at: number;
+    last: number;
+    loop: boolean;
+  } | null = null;
+
+  /** is the transport running? */
+  get playing(): boolean {
+    return this.clock !== null;
+  }
+
+  /**
+   * Run the year forward from `from` to `to` at `yearsPerSecond`.
+   *
+   * Fractional throughout, which is the whole point: every layer that gates on
+   * `Math.floor(year)` sees the same integers it always did, and every layer
+   * that reads the fraction gets a wave instead of a step.
+   */
+  play(from: number, to: number, yearsPerSecond: number, loop = false): void {
+    if (!(yearsPerSecond > 0) || !(to > from)) return;
+    this.clock = {
+      from,
+      to,
+      rate: yearsPerSecond,
+      at: this.year !== undefined && this.year >= from && this.year < to
+        ? this.year
+        : from,
+      last: performance.now(),
+      loop,
+    };
+    this.setYear(this.clock.at);
+    this.invalidate();
+  }
+
+  /** Stop, leaving the year where it stopped. */
+  pause(): void {
+    this.clock = null;
+  }
+
+  /** How far through the run, 0..1 — for a progress readout. */
+  playProgress(): number {
+    const c = this.clock;
+    if (!c) return 0;
+    return Math.max(0, Math.min(1, (c.at - c.from) / (c.to - c.from)));
+  }
+
+  /**
+   * Advance the clock by real elapsed time. Called once a frame from `tick`.
+   *
+   * Returns true while it is running, which is what keeps the frame loop alive
+   * — the engine is otherwise on-demand and would go back to sleep between
+   * years.
+   */
+  private stepClock(now: number): boolean {
+    const c = this.clock;
+    if (!c) return false;
+    const dt = Math.max(0, Math.min(0.25, (now - c.last) / 1000));
+    c.last = now;
+    c.at += dt * c.rate;
+    if (c.at >= c.to) {
+      if (c.loop) {
+        c.at = c.from;
+      } else {
+        this.clock = null;
+        /* the end of the rail is the PRESENT, which the year rail spells
+           `undefined` — see `layers/rail.ts` §WHAT YEAR THIS LAYER CAN
+           HONESTLY SPEAK FOR, which is the one layer that reads it */
+        this.setYear(undefined);
+        return false;
+      }
+    }
+    this.setYear(c.at);
+    return true;
+  }
+
   invalidate(): void {
     this.dirty = true;
     if (!this.raf && !this.disposed) this.raf = requestAnimationFrame(this.tick);
@@ -1148,7 +1247,15 @@ export class CityEngine {
 
   private tick(): void {
     this.raf = 0;
-    if (this.disposed || !this.dirty || this.W <= 0 || this.H <= 0) return;
+    if (this.disposed) return;
+    /* ── THE CLOCK RUNS BEFORE THE DIRTY TEST, AND THAT IS WHY IT RUNS ────
+       This engine is on demand: it renders when something says it must and
+       then goes back to sleep. A transport is the one thing that has to keep
+       waking it, so it steps here and its `setYear` marks the frame dirty and
+       schedules the next one — see §THE CLOCK. With no clock this is a
+       function call and a null test, and the engine sleeps exactly as before. */
+    this.stepClock(performance.now());
+    if (!this.dirty || this.W <= 0 || this.H <= 0) return;
     this.dirty = false;
 
     const t0 = performance.now();
