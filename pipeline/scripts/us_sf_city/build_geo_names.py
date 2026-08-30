@@ -75,13 +75,53 @@ CLASS_RANK = {
     "Basin": 7,
     "Cliff": 6,
     "Ridge": 4,
+    # ── AND THREE CLASSES THAT WERE LEFT OUT OF THE TABLE ────────────────
+    # Audited class by class against the gazetteer's own San Francisco rows:
+    # 106 of the county's 222 are in the classes above, which is every natural
+    # land and water feature the United States names here. Four in-county
+    # names sat in classes this table simply did not list --
+    #
+    #   Range   San Miguel Hills   the ridge Twin Peaks and Mount Davidson
+    #                              stand on, and the map draws the ridge
+    #   Area    Jackson Square
+    #   Flat    Lindley Meadow, Marx Meadows   named ground inside Golden
+    #                              Gate Park, which the map draws as park
+    #
+    # -- and a missing class is INVISIBLE, exactly as `Channel` was when it
+    # cost the Golden Gate. A range is ground like a summit and ranks with
+    # the ridges; an area and a flat are weaker than either and rank below
+    # the lakes, so on a crowded frame they yield to the hills and the water.
+    "Range": 2,
+    "Area": 6,
+    "Flat": 7,
 }
 
 # across the county line on purpose: the water the city stands in, and the
-# islands anyone looking at this view can see
+# islands anyone looking at this view can see.
+#
+# ── AND THE HEADLAND, WHICH THIS MAP DRAWS AND DID NOT NAME ─────────────────
+# MEASURED: 308 named features of the kept classes fall inside the map's own
+# bbox but outside the county, and the map draws the ground under all of them.
+# The nearest are not distant coves -- they are the cliff across the Golden
+# Gate, which stands in the top of every north-facing frame this renderer
+# makes, entirely unlabelled while the city below it is named street by street.
+#
+# Listed one by one rather than taken by a radius, for the reason stated above:
+# a radius that reaches Point Bonita also reaches Contra Costa, and the file
+# would fill with names of ground nobody is looking at. Choosing WHICH is an
+# editorial act and it is this pipeline's, like `r` below; the names, the
+# classes and the coordinates are all the gazetteer's.
+# the water the city is standing in: named before anything else on the frame
+FIRST_WATERS = {"San Francisco Bay", "Golden Gate", "Pacific Ocean"}
+
 ALLOW_OUTSIDE = {
     "San Francisco Bay", "Golden Gate", "Pacific Ocean", "Angel Island",
     "Treasure Island", "Yerba Buena Island", "Richardson Bay",
+    # the Marin shore of the Gate, north to south as the map sees it
+    "Marin Headlands", "Point Bonita", "Lime Point", "Point Diablo",
+    "Yellow Bluff", "Kirby Cove", "Rodeo Lagoon", "Rodeo Beach",
+    "Hawk Hill", "Gerbode Valley", "Raccoon Strait",
+    "Mount Caroline Livermore",
 }
 
 
@@ -143,7 +183,18 @@ def main() -> None:
         # published, and they were taking frame from GOLDEN GATE. They keep
         # their place in the file and lose every collision to something with
         # a shore on it.
-        r_ = rank if in_sf else 0
+        # ── AND NOT EVERY OUTSIDER OUTRANKS THE CITY ──────────────────────
+        # This was `0` for everything outside the county, which was right while
+        # the allowlist was four great waters the map is standing in. With the
+        # headland on it, twelve Marin features would have beaten Lake Merced,
+        # Mount Davidson and Ocean Beach to the ink on every crowded frame --
+        # the map yielding its own ground to the next county.
+        #
+        # So the four waters keep rank 0, because a map of San Francisco that
+        # does not name the bay or the Gate has answered nothing, and the rest
+        # of the outsiders take their class rank plus one: present, and behind
+        # everything inside the city.
+        r_ = 0 if name in FIRST_WATERS else rank + (0 if in_sf else 1)
         if cls == "Island" and name.rstrip().endswith(("Rock", "Rocks", "Reef", "Shoal")):
             r_ = 9
         out.append({
