@@ -245,6 +245,55 @@ def clip(poly: list[tuple[float, float]], t0: float, t1: float) -> list[tuple[fl
     return [v for v, dv in zip(poly, d) if t0 - 1e-6 <= dv <= t1 + 1e-6]
 
 
+def pick_by_terminus(group: list, term: list) -> int | None:
+    """WHICH RUN OF A STREET THE ORDINANCE MEANT.
+
+    A street with no junction to another street in its route -- a one-street
+    abandonment like *"Brannan street, from First street to Second street"* --
+    had no way to choose between its merged runs and took the LONGEST. Brannan
+    is twenty-four pieces and its longest run is not the block the ordinance
+    names, so the terminus came back "not found (553 m)" and the segment was
+    drawn on the wrong stretch of the right street.
+
+    The termini are the answer: take the run they are nearest to.
+    """
+    if not group:
+        return None
+    sides = [t for t in term if t]
+    if not sides:
+        return 0
+    # SCORED BY THE WORST END, NOT THE NEAREST. A stretch "from X to Y" has to
+    # reach BOTH, and a run touching only X satisfies a nearest-end score.
+    best, bi = float("inf"), 0
+    for i, poly in enumerate(group):
+        worst = max(min(meet(poly, q)[2] for q in side) for side in sides)
+        if worst < best:
+            best, bi = worst, i
+    return bi
+
+
+def runs_between(group: list, term: list, tol: float = 60.0) -> list[int]:
+    """EVERY run of one street that the described stretch touches.
+
+    Brannan merges into three runs and NO SINGLE ONE reaches both Third and
+    Eighth: run 0 touches Third and stops 553 m short of Eighth, run 1 touches
+    Eighth and is 831 m from Third. The centrelines simply do not join there.
+    Picking one run drew half the stretch and reported the other terminus as
+    "not found", which reads like a bad street name and is nothing of the kind.
+
+    So a stretch may span several runs. Each run that reaches EITHER named
+    terminus is kept; the rest of the street is not.
+    """
+    sides = [t for t in term if t]
+    if not sides:
+        return [0] if group else []
+    keep = []
+    for i, poly in enumerate(group):
+        if any(min(meet(poly, q)[2] for q in side) <= tol for side in sides):
+            keep.append(i)
+    return keep or [pick_by_terminus(group, term) or 0]
+
+
 def chain(seq: list[list[list[tuple[float, float]]]], names: list[str],
           ends: list[list[list[tuple[float, float]]]] | None = None) -> tuple[list, list[str]]:
     """A ROUTE IS A CONNECTED PATH, NOT A UNION OF WHOLE STREETS.
@@ -297,8 +346,31 @@ def chain(seq: list[list[list[tuple[float, float]]]], names: list[str],
         idx_prev = prev_link[1] if prev_link else None
         idx_next = next_link[0] if next_link else None
         idx = idx_next if idx_next is not None else idx_prev
-        if idx is None:
-            idx = 0 if group else None
+        if idx is None and group:
+            # a one-street stretch may span several runs — see `runs_between`
+            picks = runs_between(group, term)
+            for pi in picks:
+                poly_i = group[pi]
+                tot_i = arc(poly_i)[-1]
+                lo_i, hi_i = 0.0, tot_i
+                for k, side in ((0, term[0]), (1, term[1])):
+                    if not side:
+                        continue
+                    b = min((meet(poly_i, q) for q in side), key=lambda m: m[2])
+                    if b[2] > 60.0:
+                        continue
+                    # cut at the terminus, keeping the half that runs toward
+                    # the other end of the described stretch
+                    if b[0] > tot_i / 2:
+                        hi_i = min(hi_i, b[0])
+                    else:
+                        lo_i = max(lo_i, b[0])
+                piece_i = clip(poly_i, lo_i, hi_i)
+                if len(piece_i) > 1:
+                    out.append(piece_i)
+            if len(picks) > 1:
+                warn.append(f"{names[i]} spans {len(picks)} runs of the street")
+            continue
         if idx is None:
             continue
         if idx_prev is not None and idx_next is not None and idx_prev != idx_next:
