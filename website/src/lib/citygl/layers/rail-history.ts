@@ -65,9 +65,18 @@ interface HistFile {
   routes: HistRoute[];
 }
 
-/** wide enough to read at the district camera, like the transit diagram —
- *  this is a route the map knows from a sentence, not a track it has surveyed */
-const W_M = 22;
+/* ── TWO WIDTHS, BECAUSE A DIAGRAM IS NOT A TRACK ─────────────────────────
+   22 m reads at the district camera, where a route has to be findable at all.
+   At the street camera it covered the whole roadway kerb to kerb and stopped
+   looking like a line the city once had and started looking like a closure.
+   So the same route is built twice and the camera picks: the diagram far out,
+   a lane-width trace close in.
+
+   Two buffers rather than a scale, because a ribbon's width cannot be scaled
+   independently of its length. It costs 20 routes' worth of quads twice over,
+   which is nothing. */
+const W_WIDE_M = 22;
+const W_NARROW_M = 7;
 /** a colder, older tone than the running network's steel */
 const C_HIST = 0x8c5a3c;
 const RUNG = 6.7;
@@ -88,9 +97,10 @@ export async function railHistoryLayer(
   }
   if (!file.routes?.length) return null;
 
-  const pos: number[] = [];
-  const col: number[] = [];
-  const idx: number[] = [];
+  /* [0] the diagram, [1] the close trace */
+  const bufs = [W_WIDE_M, W_NARROW_M].map(() => ({
+    pos: [] as number[], col: [] as number[], idx: [] as number[],
+  }));
   const c = new Color();
   c.setHex(C_HIST, SRGBColorSpace);
   let zex = o.zex;
@@ -99,10 +109,9 @@ export async function railHistoryLayer(
   /* one geometry GROUP per route, so a route can be switched on and off on
      its own — a line that ends is not a prefix of the buffer */
   const spans: { start: number; count: number; from: number; to: number }[] = [];
-  const g = new BufferGeometry();
 
   for (const r of file.routes) {
-    const start = idx.length;
+    const start = bufs[0].idx.length;
     for (const line of r.lines) {
       for (let k = 0; k + 1 < line.length; k++) {
         const [ax, ay] = line[k];
@@ -114,51 +123,61 @@ export async function railHistoryLayer(
         km += L / 1000;
         const nx = -dy / L;
         const ny = dx / L;
-        const h = W_M / 2;
         const az = o.elevAt(ax, ay) + LIFT_M;
         const bz = o.elevAt(bx, by) + LIFT_M;
-        const i = pos.length / 3;
-        pos.push(
-          ax + nx * h, az, ay + ny * h,
-          ax - nx * h, az, ay - ny * h,
-          bx - nx * h, bz, by - ny * h,
-          bx + nx * h, bz, by + ny * h,
-        );
-        for (let q = 0; q < 4; q++) col.push(c.r, c.g, c.b);
-        idx.push(i, i + 1, i + 2, i, i + 2, i + 3);
+        [W_WIDE_M, W_NARROW_M].forEach((w, bi) => {
+          const b = bufs[bi];
+          const h = w / 2;
+          const i = b.pos.length / 3;
+          b.pos.push(
+            ax + nx * h, az, ay + ny * h,
+            ax - nx * h, az, ay - ny * h,
+            bx - nx * h, bz, by - ny * h,
+            bx + nx * h, bz, by + ny * h,
+          );
+          for (let q = 0; q < 4; q++) b.col.push(c.r, c.g, c.b);
+          b.idx.push(i, i + 1, i + 2, i, i + 2, i + 3);
+        });
       }
     }
     spans.push({
       start,
-      count: idx.length - start,
+      count: bufs[0].idx.length - start,
       from: r.year || 0,
       to: r.ended ?? Infinity,
     });
   }
-  if (!idx.length) return null;
-
-  g.setAttribute("position", new Float32BufferAttribute(new Float32Array(pos), 3));
-  g.setAttribute("color", new Float32BufferAttribute(new Float32Array(col), 3));
-  g.setIndex(idx);
-  g.computeVertexNormals();
-  for (const s of spans) g.addGroup(s.start, s.count, 0);
+  km /= 2;
+  if (!bufs[0].idx.length) return null;
 
   const mat = new MeshStandardMaterial({
     vertexColors: true, roughness: 1, metalness: 0,
     depthTest: false, depthWrite: false,
   });
-  const mesh = new Mesh(g, mat);
-  mesh.scale.y = zex;
-  mesh.renderOrder = RUNG;
-  mesh.userData.wash = true;
-  mesh.userData.washM = SEAT_M;
-  mesh.userData.systemLit = false;
-  mesh.castShadow = false;
-  mesh.receiveShadow = false;
-  /* off until a reader asks for the transport system — this is a claim about
-     what is GONE and it does not belong in the default view of the city */
-  mesh.visible = false;
-  o.scene.add(mesh);
+  const meshes = bufs.map((b, bi) => {
+    const g = new BufferGeometry();
+    g.setAttribute("position", new Float32BufferAttribute(new Float32Array(b.pos), 3));
+    g.setAttribute("color", new Float32BufferAttribute(new Float32Array(b.col), 3));
+    g.setIndex(b.idx);
+    g.computeVertexNormals();
+    for (const sp of spans) g.addGroup(sp.start, sp.count, 0);
+    const m = new Mesh(g, mat);
+    m.scale.y = zex;
+    m.renderOrder = RUNG;
+    m.userData.wash = true;
+    m.userData.washM = SEAT_M;
+    m.userData.systemLit = false;
+    /* the diagram is the default until the camera says otherwise */
+    m.userData.stepOK = bi === 0;
+    m.castShadow = false;
+    m.receiveShadow = false;
+    /* off until a reader asks for the transport system — this is a claim about
+       what is GONE and it does not belong in the default view of the city */
+    m.visible = false;
+    o.scene.add(m);
+    return { mesh: m, g };
+  });
+  let wide = true;
 
   let yearNow: number | undefined;
   /* ── AT THE PRESENT THIS LAYER STANDS DOWN ─────────────────────────────
@@ -174,12 +193,29 @@ export async function railHistoryLayer(
      the authority on it, out of a register of what runs today. So at the
      present the historic layer draws nothing at all, and it cannot assert the
      survival of anything. */
+  /* ── ONE PLACE DECIDES WHETHER THIS IS ON SCREEN ───────────────────────
+     Three separate facts have to agree: the reader asked for the transport
+     system (`systemLit`, set by `systems.ts`), the camera wants this width
+     (`stepOK`, set by `onStep`), and the chosen year has something to draw
+     (the group counts, set here). They were owned by two modules, and the
+     order bit: `applySystem` ran while the year was still the present, found
+     every group at zero, hid the mesh — and nothing recomputed when the year
+     moved. The narrow ribbon simply never appeared.
+
+     So the counts and the visibility are set together, and every path that
+     changes any of the three calls this. */
   const apply = (): void => {
     const y = yearNow;
+    let drawn = 0;
     for (let i = 0; i < spans.length; i++) {
       const s = spans[i];
       const on = y !== undefined && y >= s.from && y < s.to;
-      g.groups[i].count = on ? s.count : 0;
+      for (const m of meshes) m.g.groups[i].count = on ? s.count : 0;
+      if (on) drawn += s.count;
+    }
+    for (const m of meshes) {
+      const u = m.mesh.userData as { systemLit?: boolean; stepOK?: boolean };
+      m.mesh.visible = drawn > 0 && u.systemLit === true && u.stepOK !== false;
     }
   };
   apply();
@@ -188,17 +224,24 @@ export async function railHistoryLayer(
     name: "rail-history",
     routes: file.routes.length,
     km: Math.round(km * 10) / 10,
-    onStep(_step: number, z: number): void {
+    onStep(step: number, z: number): void {
       zex = z;
-      mesh.scale.y = zex;
+      wide = step < 2;
+      for (let i = 0; i < meshes.length; i++) {
+        meshes[i].mesh.scale.y = zex;
+        meshes[i].mesh.userData.stepOK = i === 0 ? wide : !wide;
+      }
+      apply();
     },
     onYear(year: number | undefined): void {
       yearNow = year;
       apply();
     },
     dispose(): void {
-      o.scene.remove(mesh);
-      g.dispose();
+      for (const m of meshes) {
+        o.scene.remove(m.mesh);
+        m.g.dispose();
+      }
       mat.dispose();
     },
   };

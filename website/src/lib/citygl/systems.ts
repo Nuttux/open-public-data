@@ -165,9 +165,23 @@ export function applySystem(root: Object3D, key: string | null): number {
         u.systemLit = want;
         touched++;
       }
-      const geom = (o as unknown as { geometry?: { drawRange: { count: number } } }).geometry;
-      const drawn = geom ? geom.drawRange.count : 1;
+      /* A LAYER MAY GATE BY GROUPS OR BY drawRange, and reading the wrong one
+         reports a working gate as empty — `rail-history` switches whole routes
+         on and off with `group.count` because a route that ENDS is not a
+         prefix of a buffer. Sum whichever it uses. */
+      const geom = (o as unknown as {
+        geometry?: { drawRange: { count: number }; groups?: { count: number }[] };
+      }).geometry;
+      let drawn = 1;
+      if (geom) {
+        drawn = geom.groups && geom.groups.length
+          ? geom.groups.reduce((a, gr) => a + gr.count, 0)
+          : geom.drawRange.count;
+      }
       o.visible = want && u.stepOK !== false && drawn > 0;
+      /* `rail-history` re-derives its own visibility when the YEAR moves, from
+         these same three flags — see its §ONE PLACE DECIDES. Setting the flag
+         here is enough; the layer does the rest. */
       return;
     }
     for (const mat of materialsOf(o)) {
