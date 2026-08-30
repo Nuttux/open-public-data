@@ -135,6 +135,9 @@ const RAIL_OFFSET = 0.6;
  * the smallest lift that survives a depth test and the largest that cannot be
  * seen as displacement. */
 const RAIL_BED_LIFT_M = 0.1;
+/* a sleeper lies ON the ballast and the rail lies ON the sleeper, which is
+   the order a track is actually assembled in */
+const RAIL_TIE_LIFT_M = 0.15;
 const RAIL_STEEL_LIFT_M = 0.2;
 
 /**
@@ -243,18 +246,22 @@ const RAIL_SEAT_M = 10;
  * record is where the track goes and what kind it is.
  */
 /** the ballast strip, world metres — 3 px at the block camera */
-const BALLAST_W = 8.0;
-/** its tone: pale stone chippings, and it has to separate from the asphalt
- *  it is laid in — the carriageway is #5a564e, so this is lighter and cooler
- *  rather than the near-identical grey-brown the first cut used */
-const BALLAST_C = 0xa39a8a;
+const BALLAST_W = 6.6;
+/** its tone. RETUNED ON A SHOT OF DANIEL'S: at #a39a8a the ballast was a
+ *  pale unbroken stripe and the whole track read as a paved median — "you
+ *  cant see at all its a railways its just two lines grey in parallel". What
+ *  says RAILWAY at a glance is not the steel and not the strip, it is the
+ *  LADDER, so the bed is tuned to sit between the asphalt below it and the
+ *  sleepers on it: measured off the frame, road (15,18,29), ballast
+ *  (86,75,63), sleeper (48,40,31), steel (183,180,170). */
+const BALLAST_C = 0x8a8073;
 /** a sleeper's length across the track, and its width along it */
-const SLEEPER_LEN_M = 6.4;
-const SLEEPER_W_M = 1.4;
+const SLEEPER_LEN_M = 5.8;
+const SLEEPER_W_M = 1.15;
 /** how far apart the sleepers are laid, world metres */
-const SLEEPER_STEP_M = 4.0;
+const SLEEPER_STEP_M = 2.4;
 /** creosoted timber, warmer and darker than the ballast it sits in */
-const SLEEPER_C = 0x2e2721;
+const SLEEPER_C = 0x231e19;
 /** the steel itself */
 const RAIL_C = 0xf2f5f7;
 
@@ -433,6 +440,9 @@ export async function railLayer(
   const sPos: number[] = [];
   const sCol: number[] = [];
   const sIdx: number[] = [];
+  const tPos: number[] = [];
+  const tCol: number[] = [];
+  const tIdx: number[] = [];
   const off = GAUGE_M / 2;
   let zex = o.zex;
 
@@ -453,6 +463,7 @@ export async function railLayer(
   const c = new Color();
   /** which buffer a quad lands in — the matte bed, or the steel */
   const bed = { pos, col, idx };
+  const ties = { pos: tPos, col: tCol, idx: tIdx };
   const steel = { pos: sPos, col: sCol, idx: sIdx };
   let into = bed;
   let liftM = RAIL_BED_LIFT_M;
@@ -484,12 +495,12 @@ export async function railLayer(
      alignment older than the map's first frame -- the cable franchises and
      Market Street -- and sorts to the front, so it is drawn in every year. */
   const dated = [...file.segs].sort((a, b) => (a[5] || 0) - (b[5] || 0));
-  const marks: { year: number; bed: number; steel: number }[] = [];
+  const marks: { year: number; bed: number; ties: number; steel: number }[] = [];
   let lastYear = -1;
   for (const [x0, y0, x1, y1, kind, segYear] of dated) {
     const yr = segYear || 0;
     if (yr !== lastYear) {
-      if (lastYear >= 0) marks.push({ year: lastYear, bed: idx.length, steel: sIdx.length });
+      if (lastYear >= 0) marks.push({ year: lastYear, bed: idx.length, ties: tIdx.length, steel: sIdx.length });
       lastYear = yr;
     }
     const dx = x1 - x0;
@@ -529,6 +540,8 @@ export async function railLayer(
       /* the sleepers, across it. Stepped in world metres so the rhythm is the
          same on a long segment and a short one, and offset from the segment's
          own start so two segments meeting at a corner do not double up. */
+      into = ties;
+      liftM = RAIL_TIE_LIFT_M;
       for (let t = SLEEPER_STEP_M * 0.5; t < L; t += SLEEPER_STEP_M) {
         const cx = x0 + ux * t;
         const cy = y0 + uy * t;
@@ -539,6 +552,8 @@ export async function railLayer(
           ux, uy, SLEEPER_LEN_M, SLEEPER_C,
         );
       }
+      into = bed;
+      liftM = RAIL_BED_LIFT_M;
     }
 
     /* and the steel, one ribbon each side of the centreline */
@@ -548,7 +563,7 @@ export async function railLayer(
     into = bed;
     liftM = RAIL_BED_LIFT_M;
   }
-  if (lastYear >= 0) marks.push({ year: lastYear, bed: idx.length, steel: sIdx.length });
+  if (lastYear >= 0) marks.push({ year: lastYear, bed: idx.length, ties: tIdx.length, steel: sIdx.length });
 
   /** one buffer set -> one mesh, so the two can carry different materials */
   const build = (
@@ -565,9 +580,12 @@ export async function railLayer(
     mesh.scale.y = zex;
     mesh.renderOrder = rung;
     mesh.userData.wash = true;
-    /* the steel a touch in front of its own bed, which is 8 m wide and would
-       otherwise swallow two 1 m ribbons lying on it */
-    mesh.userData.washM = RAIL_SEAT_M + (rung > RAIL_RUNG ? 0.25 : 0);
+    /* BALLAST, SLEEPERS, STEEL — three seats, in that order. Each part of a
+       track lies on the one below it, and coplanar parts of one mesh speckle
+       rather than stack: the sleepers were quads in the ballast's own buffer
+       and came out as scattered dots on a smooth band. The rung carries the
+       order (6.5 / 6.55 / 6.6) and this turns it into depth. */
+    mesh.userData.washM = RAIL_SEAT_M + (rung - RAIL_RUNG) * 3;
     mesh.castShadow = false;
     mesh.receiveShadow = true;
     mesh.frustumCulled = true;
@@ -623,11 +641,22 @@ export async function railLayer(
   });
 
   const bedMesh = build(pos, col, idx, bedMat, RAIL_RUNG);
-  /* the steel sits ON the bed, a tenth of a rung above it */
+  /* ── THE SLEEPERS ARE THEIR OWN MESH, AND THAT IS THE WHOLE POINT ─────
+     They were quads in the BED's buffer, at the bed's lift and the bed's
+     seat, so a sleeper and the ballast under it were exactly coplanar. The
+     ladder did not lose -- it SPECKLED, and at the close camera Daniel's
+     shot showed the crossties as a row of scattered dots on a smooth tan
+     band. A railway seen from above is mostly its sleepers; without them
+     this is a stripe with two lines on it.
+
+     Its own mesh gets its own seat, and a seat is depth along the view axis,
+     which costs nothing on screen. */
+  const tieMesh = build(tPos, tCol, tIdx, bedMat, RAIL_RUNG + 0.05);
+  /* the steel sits ON the sleepers */
   const steelMesh = build(sPos, sCol, sIdx, steelMat, RAIL_RUNG + 0.1);
   const mesh = bedMesh.mesh;
   const posArr = bedMesh.posArr;
-  const meshes = [bedMesh, steelMesh];
+  const meshes = [bedMesh, tieMesh, steelMesh];
 
   /* ── THE BAND'S EXAGGERATION IS A SCALE, NOT SOMETHING TO BAKE ────────
      This layer used to multiply `zex` into every vertex and leave the mesh at
@@ -673,19 +702,23 @@ export async function railLayer(
          `undefined` is the present and draws everything. */
       void asOf;
       let bed = idx.length;
+      let tie = tIdx.length;
       let steel = sIdx.length;
       if (year !== undefined) {
         bed = 0;
+        tie = 0;
         steel = 0;
         for (const m of marks) {
           if (m.year > year) break;
           bed = m.bed;
+          tie = m.ties;
           steel = m.steel;
         }
       }
       for (const b of meshes) {
-        const isSteel = b.mesh.renderOrder > RAIL_RUNG;
-        const count = isSteel ? steel : bed;
+        const ro = b.mesh.renderOrder;
+        const count =
+          ro >= RAIL_RUNG + 0.1 ? steel : ro >= RAIL_RUNG + 0.05 ? tie : bed;
         b.mesh.geometry.setDrawRange(0, count);
         b.mesh.visible = count > 0;
       }
