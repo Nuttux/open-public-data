@@ -879,12 +879,37 @@ export function groundDetailLayer(
        with safety: a mesh has no "last path", so reproducing it would mean
        choosing one body out of 32 to outline and outlining it, which is a
        claim about that body that neither register makes. */
+    /* ── THE LEVEL A BODY OF WATER SITS AT IS RELATIVE TO ITS OWN SHORE ──
+       A lake is level -- that much the note above gets right, and reading the
+       DEM per vertex would tilt it down the hillside. The level it was given
+       was the MEAN of `elevAt` around its ring, and a mean is an ABSOLUTE
+       number that knows nothing about the ground it has to sit in: half the
+       shoreline is above it by construction, so the terrain rises straight
+       through the sheet and the body is drawn in pieces.
+
+       Measured against the DRAWN TRIANGLES rather than a grid rebuilt from
+       them, 26-30 % of Lake Merced's vertices were BELOW the ground, worst
+       81.4 scene units under it, and the frame agreed: the largest body of
+       fresh water in the city came out as a handful of thin slivers scattered
+       through the green (`shots/lakes__merced__district.png`).
+
+       So the level is taken from the shore instead: **the highest ground the
+       body's own shoreline touches**. That is the level at which its basin is
+       full, it is a statement about this ring and the terrain under it rather
+       than a constant, and it is the lowest level that leaves nothing poking
+       through. It cannot flood outward, because a sheet is only drawn inside
+       its own ring. Both the sheet and its rim ask this, so the rim can never
+       part company with the water it edges. */
+    const waterLevel = (ring: Ring): number => {
+      let z = -Infinity;
+      for (const v of ring) z = Math.max(z, o.elevAt(v[0], v[1]));
+      return z;
+    };
+
     const lake = buf(false);
     for (const ring of decoded.water) {
       if (!ring.length) continue;
-      let z = 0;
-      for (const v of ring) z += o.elevAt(v[0], v[1]);
-      z /= ring.length;
+      const z = waterLevel(ring);
       ringTris(ring, () => z * zexNow, lake, null);
     }
     const mLake = groundMesh(lake, WLAKE, OFF_LAKE, 1);
@@ -905,9 +930,7 @@ export function groundDetailLayer(
     const lakeRim = buf(false);
     for (const ring of decoded.water) {
       if (ring.length < 3) continue;
-      let z = 0;
-      for (const v of ring) z += o.elevAt(v[0], v[1]);
-      z /= ring.length;
+      const z = waterLevel(ring);
       const yLake = (): number => z * zexNow;
       for (let k = 0; k < ring.length; k++) {
         const q = ring[(k + 1) % ring.length];
