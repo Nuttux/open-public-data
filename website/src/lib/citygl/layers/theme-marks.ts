@@ -48,6 +48,7 @@
 
 import {
   BoxGeometry,
+  type Camera,
   BufferAttribute,
   BufferGeometry,
   CanvasTexture,
@@ -70,7 +71,6 @@ import {
 } from "three";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
-import { proj } from "@/lib/city/projection";
 import { ST_KPROJ } from "@/lib/city/streets";
 
 import type { CityLayer } from "../engine";
@@ -123,6 +123,17 @@ export interface ThemeMarksOptions {
    * first frame, and reading the camera then would capture an identity.
    */
   faceCamera?: () => Quaternion;
+  /**
+   * THE CAMERA THE MARKS ARE ACTUALLY DRAWN THROUGH, and the size of the
+   * surface it draws onto.
+   *
+   * `markAt` needs to know where a mark LANDS, and the only authority on that
+   * is the thing that put it there. Going through `projection.proj` instead —
+   * the CPU's own copy of the transform — put the hit target 83 px from the
+   * drawn dot, measured, so pressing beside a dot worked and pressing the dot
+   * did not. Two implementations of one projection is one too many.
+   */
+  screen?: () => { camera: Camera; W: number; H: number } | null;
 }
 
 /* ── THE INK, AND THE CHECK THE FIRST SET WAS NEVER PUT THROUGH ───────────
@@ -320,6 +331,8 @@ const M4 = new Matrix4();
 const Q = new Quaternion();
 const P = new Vector3();
 const S = new Vector3();
+/** scratch for projecting a mark to the screen in `markAt` */
+const V = new Vector3();
 
 /**
  * The unit geometry for one shape: one metre tall, standing on y = 0, so a
@@ -329,7 +342,7 @@ const S = new Vector3();
  * meshes — the instance matrix carries position and size, the material carries
  * colour, and the geometry is the same object in all of them.
  */
-function markGeometry(shape: MarkShape): BufferGeometry {
+function markGeometry(shape: MarkShape, ink?: string): BufferGeometry {
   switch (shape) {
     case "glow": {
       /* the density field keeps a textured quad: a gradient is the thing it
@@ -342,26 +355,31 @@ function markGeometry(shape: MarkShape): BufferGeometry {
          it is actually drawn at, that is a texture being minified — which is
          where the stair-stepping came from. Nothing samples a triangle.
 
-         Two rings of triangles, merged into one geometry, telling the two
-         apart by VERTEX COLOUR: the rim dark, the core white. The material
-         multiplies its colour by the vertex colour, so one mesh and one draw
-         call still give the subject's own hue with a darker ring of itself —
-         and the ring is what stops a dot reading as a stain.
+         ── AND THE RING IS WHITE ─────────────────────────────────────────
+         It was a darker shade of the subject's own hue, which is invisible
+         against the city's dark greens and asphalt — the two places a mark
+         most needs an edge. Every map draws this dot the same way and has for
+         thirty years: a filled circle with a WHITE collar, because white is
+         the one value that separates a mark from anything it can land on.
+
+         Two rings of triangles merged into one geometry, told apart by VERTEX
+         COLOUR — collar white, core the subject's own hue — with the material
+         left white so it multiplies to exactly what is written here. That
+         costs a geometry per subject; a geometry is 160 triangles.
 
          Left facing +Z; `place` turns it to the camera. It is NOT laid into
-         the ground, which is what made the first version look like paint: a
-         circle lying flat is seen at the camera's tilt and arrives as an
-         ellipse smeared along the view direction. */
-      const rim = new RingGeometry(0.40, 0.5, 40);
-      const core = new CircleGeometry(0.415, 40);
+         the ground, which is what made the first version look like paint. */
+      const rim = new RingGeometry(0.36, 0.5, 44);
+      const core = new CircleGeometry(0.375, 44);
       const g = mergeGeometries([rim, core], false);
       if (!g) return core;
       const n = g.getAttribute("position").count;
-      const col = new Float32Array(n * 3);
       const rimN = rim.getAttribute("position").count;
+      const c = new Color(ink ?? "#ffffff");
+      const col = new Float32Array(n * 3);
       for (let i = 0; i < n; i++) {
-        const v = i < rimN ? 0.42 : 1;
-        col[i * 3] = v; col[i * 3 + 1] = v; col[i * 3 + 2] = v;
+        if (i < rimN) { col[i * 3] = 1; col[i * 3 + 1] = 1; col[i * 3 + 2] = 1; }
+        else { col[i * 3] = c.r; col[i * 3 + 1] = c.g; col[i * 3 + 2] = c.b; }
       }
       g.setAttribute("color", new BufferAttribute(col, 3));
       return g;
@@ -448,7 +466,7 @@ export interface ThemeMarksLayer extends CityLayer {
   /** apply a filter; returns how many marks are lit */
   setFilter(f: MarkFilter): number;
   /**
-   * THE MARK UNDER A POINT, in the plane's own metres.
+   * THE MARK UNDER A POINT, in SCREEN PIXELS relative to the canvas.
    *
    * The map's own picker answers a different question — which BLOCK is under
    * the cursor — and answering the click with it means a press on a dot opens
@@ -461,7 +479,7 @@ export interface ThemeMarksLayer extends CityLayer {
    * they are actually pointing at, and it costs a walk over the lit marks
    * rather than a BVH.
    */
-  markAt(px: number, py: number): MarkHit | null;
+  markAt(sx: number, sy: number): MarkHit | null;
   /** per subject bit: how many marks and blocks are lit, and the mode used */
   readonly state: readonly {
     bit: number;
@@ -488,7 +506,15 @@ export function themeMarksLayer(
      optimising away — the whole point of the layer is that the count of
      MARKS, not of subjects, is what used to be expensive. */
   const shape = o.shape ?? DEFAULT_SHAPE;
-  const pin = markGeometry(shape);
+  /* the dot bakes its own core colour, so it is one geometry per subject; every
+     other shape takes its colour from the material and shares one */
+  const perSubject = shape === "dot";
+  const pins: BufferGeometry[] = [];
+  for (let bit = 0; bit < o.bits; bit++) {
+    pins.push(perSubject
+      ? markGeometry(shape, o.colours[bit] ?? "#c8483c")
+      : (pins[0] ?? markGeometry(shape)));
+  }
   /* THE DENSITY SHAPE FOLLOWS THE DOT SHAPE. A flat dot's crowd is a flat
      field; a solid dot's crowd stays the old translucent coin, because a
      solid body and a soft brush do not belong in the same picture. */
@@ -524,7 +550,7 @@ export function themeMarksLayer(
        on the flat ones so two of them overlap instead of z-fighting. */
     const mat = flat
       ? new MeshBasicMaterial({
-          color: col,
+          color: perSubject ? 0xffffff : col,
           map: texDot,
           /* the dot carries its rim in the geometry's own colour attribute;
              the field carries its falloff in a texture and has none */
@@ -550,7 +576,7 @@ export function themeMarksLayer(
         })
       : new MeshLambertMaterial({ color: col });
     /* the cap is the subject's own total: a filter can never light more */
-    const mesh = new InstancedMesh(pin, mat, Math.max(1, byBit[bit].length));
+    const mesh = new InstancedMesh(pins[bit], mat, Math.max(1, byBit[bit].length));
     mesh.count = 0;
     mesh.visible = false;
     mesh.frustumCulled = false;
@@ -594,6 +620,22 @@ export function themeMarksLayer(
      a zoom moves it, a turn never does, so there is nothing to follow. */
   let face: Quaternion | null = null;
 
+  /* ── THE EXAGGERATION MOVES, AND THIS LAYER WAS THE ONE THAT DID NOT ────
+     `o.zex` is `zexByStep[0]`, read once when the layer is built. Eighteen
+     other layers implement `onStep` and recompose when the band changes —
+     `trees.ts` states the rule outright, "the ground moves with the band" —
+     and this one did not, so every mark stayed at step 0's exaggeration while
+     the city under it moved to step 1's or step 2's. ZEX_BY_STEP is
+     [3.3, 2.6, 2.0]: at the closest band a mark on a 60 m hill was drawn 78 m
+     above where it belonged.
+
+     And it is worse than a look. `markAt` projects each mark forward to decide
+     what is under the cursor, and it used the LIVE projection while the mark
+     was DRAWN with the frozen one, so the hit target sat that same 78 m away
+     from the dot. Pressing beside a dot worked and pressing the dot did not,
+     which is exactly what was reported. */
+  let zex = o.zex;
+
   const place = (mesh: InstancedMesh, k: number, wx: number, wy: number,
                  rel: number): void => {
     /* A MARK IS A CONSTANT SIZE ON SCREEN, NOT IN THE WORLD, and the first
@@ -618,7 +660,7 @@ export function themeMarksLayer(
 
        The lift stays because it is right at a close camera, not because it
        rescued that number. */
-    P.set(wx, o.elevAt(wx, wy) * o.zex + LIFT_PX * mPerPx, wy);
+    P.set(wx, o.elevAt(wx, wy) * zex + LIFT_PX * mPerPx, wy);
     S.set(s, s, s);
     if (flat && !face) {
       const q = o.faceCamera?.();
@@ -680,7 +722,7 @@ export function themeMarksLayer(
     }
 
     if (st.mode === "dots") {
-      if (mesh.geometry !== pin) mesh.geometry = pin;
+      if (mesh.geometry !== pins[bit]) mesh.geometry = pins[bit];
       if (flat) {
         /* BACK TO THE DOT'S OWN MATERIAL. The density branch below swaps the
            geometry for a textured quad that has no colour attribute, so
@@ -778,33 +820,32 @@ export function themeMarksLayer(
     meshes,
     state,
     setFilter: apply,
-    markAt(px, py) {
-      /* ── THE PLANE IS NOT THE METRE FRAME, AND THAT COST A ROUND TRIP ────
-         `screenToPlane` hands back PROJECTION-PLANE coordinates; the marks are
-         stored in the shared METRE frame. Compared directly the two never meet
-         and every press falls through to the block picker, which is exactly
-         the behaviour this method exists to replace — and it fails silently,
-         because falling through is what the map did before. So each mark is
-         projected forward with the same `proj` the city is drawn through,
-         at its own height, and the comparison happens in one space.
-
-         Radius: `d.s * MARK_PX * mPerPx` is the mark's size in metres, and a
-         metre is `ST_KPROJ` of a plane unit. 0.62 rather than 0.5 because a
-         reader aiming at a dot lands on its edge as often as its middle. */
+    markAt(sx, sy) {
+      /* ── PROJECTED THROUGH THE RENDER CAMERA, NOT A SECOND COPY OF IT ────
+         This used `projection.proj` — the CPU's own transform — and compared
+         plane coordinates. MEASURED against the drawn pixels: the believed
+         position sat 83 px from the dot, so a press on the dot missed and a
+         press 83 px away hit. That is not a tolerance problem, it is two
+         implementations of one projection, and the render's is the one that
+         decides where a dot IS. So the mark's own world point goes through the
+         same camera the GPU used, and the answer is in screen pixels. */
+      const view = o.screen?.();
+      if (!view) return null;
+      const { camera, W, H } = view;
       let best: MarkHit | null = null;
       let bestD = Infinity;
       for (let bit = 0; bit < o.bits; bit++) {
         if (!meshes[bit].visible) continue;
         for (const d of drawn[bit]) {
-          /* THE TARGET IS THE DOT, PLUS A LITTLE. `d.s * MARK_PX` is its
-             drawn size; 0.75 of that rather than the geometric 0.5 because a
-             pointer is not a pixel and a mark that only answers to its exact
-             centre reads as not answering at all. */
-          const rad = d.s * MARK_PX * mPerPx * ST_KPROJ * 0.75;
-          const pp = proj(d.x, d.y, o.elevAt(d.x, d.y) * o.zex + LIFT_PX * mPerPx);
-          const dx = px - pp[0];
-          const dy = py - pp[1];
-          const dist = Math.hypot(dx, dy);
+          V.set(d.x, o.elevAt(d.x, d.y) * zex + LIFT_PX * mPerPx, d.y)
+            .project(camera);
+          const mx = (V.x * 0.5 + 0.5) * W;
+          const my = (1 - (V.y * 0.5 + 0.5)) * H;
+          /* the mark's drawn radius in pixels, plus a little: a pointer is not
+             a pixel, and a target that only answers to its exact centre reads
+             as not answering at all */
+          const rad = d.s * MARK_PX * 0.75;
+          const dist = Math.hypot(sx - mx, sy - my);
           if (dist > rad || dist >= bestD) continue;
           bestD = dist;
           best = {
@@ -818,6 +859,13 @@ export function themeMarksLayer(
         }
       }
       return best;
+    },
+    onStep(_step: number, nextZex: number) {
+      /* re-place rather than rebuild: the filter has not changed, only the
+         height every mark sits at */
+      if (nextZex === zex) return;
+      zex = nextZex;
+      resize();
     },
     onYear(year: number | undefined) {
       if (cur.bits) apply({ ...cur, year });
@@ -836,7 +884,7 @@ export function themeMarksLayer(
     dispose() {
       for (const m of meshes) m.dispose();
       for (const m of mats) m.dispose();
-      pin.dispose();
+      for (const g of new Set(pins)) g.dispose();
       puck.dispose();
       texDot?.dispose();
       texGlow?.dispose();

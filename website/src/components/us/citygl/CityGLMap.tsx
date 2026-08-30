@@ -102,7 +102,6 @@ import { attachControls, bandCuts, stepForZ } from "@/lib/citygl/controls";
 import { createFilm, resolveFrames, type FilmPlayer } from "@/lib/citygl/film";
 import { detectQuality } from "@/lib/citygl/quality";
 import { blockPicker } from "@/lib/citygl/pick";
-import { screenToPlane } from "@/lib/city/projection";
 import CityBlockPanel, {
   type BlockContext,
   type UnitRequest,
@@ -275,6 +274,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
      thing at a glance. */
   /** the scrub's own DOM node — see §THE SCRUB IS NOT CONTROLLED */
   const scrubEl = useRef<HTMLInputElement | null>(null);
+  /** the year readout's own node — §AND THE READOUT IS NOT CONTROLLED EITHER */
+  const readoutEl = useRef<HTMLSpanElement | null>(null);
   /** put a year on the scrub without going through React */
   const syncScrub = useCallback((y: number | undefined) => {
     const el = scrubEl.current;
@@ -283,6 +284,18 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     if (Number(el.value) !== v) el.value = String(v);
     const frac = (v - YEAR_MIN) / (YEAR_MAX - YEAR_MIN);
     el.style.setProperty("--scrub", `${(frac * 100).toFixed(2)}%`);
+    /* ── §AND THE READOUT IS NOT CONTROLLED EITHER ────────────────────────
+       It was `{year ?? YEAR_MAX}`, which meant the play loop had to push a
+       React state update every animation frame to move a four-digit number.
+       That re-rendered the whole control row 60 times a second AND re-ran the
+       marks filter, which this file's own §THE MARKS FOLLOW THE SETTLED YEAR
+       says must not happen: *"they follow the SETTLED year rather than every
+       intermediate one"*. The play loop was the one path that broke it.
+
+       The number is written the same way the thumb is, straight to the node,
+       and React state is committed once when the clock settles. */
+    const r = readoutEl.current;
+    if (r) r.textContent = String(v);
   }, []);
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(2);
@@ -303,13 +316,18 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       const e = engineRef.current;
       if (!e) return;
       if (!e.playing) {
+        /* ── AND IT LANDS ON THE LAST YEAR, NOT ONE SHORT OF IT ───────────
+           MEASURED at the end of a run: the thumb stopped at 2025 while the
+           readout said 2026, because the final poll ran before the engine
+           released the clock and nothing wrote the end. */
+        syncScrub(undefined);
         setPlaying(false);
         setYear(null);
         return;
       }
       const y = e.getYear();
+      /* imperative only — §AND THE READOUT IS NOT CONTROLLED EITHER */
       syncScrub(y === undefined ? undefined : Math.floor(y));
-      setYear(y === undefined ? null : Math.floor(y));
       raf = requestAnimationFrame(poll);
     };
     raf = requestAnimationFrame(poll);
@@ -963,6 +981,13 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
             /* so a flat mark can be turned to face the reader instead of
                lying in the ground, where the camera's tilt smears it */
             faceCamera: () => engineRef.current!.camera.quaternion,
+            /* the camera that actually drew the frame, so the hit test and the
+               picture cannot drift apart */
+            screen: () => {
+              const e2 = engineRef.current;
+              if (!e2) return null;
+              return { camera: e2.camera, W: e2.viewport.W, H: e2.viewport.H };
+            },
           });
           if (!layer) return;
           for (const m of layer.meshes) engine.scene.add(m);
@@ -1045,10 +1070,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           const layer = marksRef.current;
           if (!eng2 || !layer) return;
           const rc = canvas.getBoundingClientRect();
-          const vp = eng2.viewport;
-          const q = screenToPlane(e.clientX - rc.left, e.clientY - rc.top,
-                                  vp.W, vp.H, eng2.getCamera());
-          const over = layer.markAt(q[0], q[1]);
+          const over = layer.markAt(e.clientX - rc.left, e.clientY - rc.top);
           const want = over && over.block >= 0 ? "pointer" : "";
           if (canvas.style.cursor !== want) canvas.style.cursor = want;
         });
@@ -1069,9 +1091,8 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
              It still resolves to the same block — the fiche is the context the
              record needs — but it carries the record with it. */
           const cam = eng.getCamera();
-          const pl = screenToPlane(e.clientX - r.left, e.clientY - r.top,
-                                   v.W, v.H, cam);
-          const hit = marksRef.current?.markAt(pl[0], pl[1]) ?? null;
+          const hit = marksRef.current?.markAt(
+            e.clientX - r.left, e.clientY - r.top) ?? null;
           const b = hit && hit.block >= 0
             ? hit.block
             : picker.at(e.clientX - r.left, e.clientY - r.top, cam, v.W, v.H);
@@ -1827,7 +1848,13 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               style={{
                 font: "600 13px/1 var(--f-mono, ui-monospace, monospace)",
                 padding: "7px 11px",
-                minWidth: 38,
+                /* FIXED, not a minimum: the two glyphs are not the same width
+                   and the row is a flex, so ▶ becoming ❚❚ moved the rail by
+                   1.7 px on every press. A control that changes what it says
+                   must not change how much room it takes. */
+                width: 40,
+                minWidth: 40,
+                boxSizing: "border-box",
                 border: "1px solid var(--rule, #e4e6ea)",
                 borderRadius: 6,
                 background: "transparent",
@@ -1867,6 +1894,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 minWidth: 74,
                 letterSpacing: ".02em",
               }}
+              ref={readoutEl}
             >
               {year ?? YEAR_MAX}
             </span>
@@ -1983,19 +2011,36 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 end of the rail — so it is only offered when the reader has
                 actually moved away from it, which is the only time it does
                 anything. */}
-            {year !== null ? (
-              <button
-                type="button"
-                className="fx-city-preset"
-                onClick={() => {
-                  setYear(null);
-                  engineRef.current?.setYear(undefined);
-                  if (overlayRef.current) overlayRef.current.year = undefined;
-                }}
-              >
-                {YEAR_MAX}
-              </button>
-            ) : null}
+            {/* ── AND IT HOLDS ITS PLACE WHEN IT IS NOT OFFERED ──────────
+                This was mounted and unmounted on `year !== null`. The row is a
+                flex and the scrub is the `flex: 1` in it, so the button
+                arriving took 65 px straight off the rail and giving it back
+                added them again. MEASURED across a run: the scrub went 583.7
+                -> 518.2 px the moment PLAY was pressed and snapped back at the
+                end, which is Daniel's *"the timeline get slonger and then it
+                jumpts back and forward until it settles"*.
+
+                The editorial rule is kept exactly — the way back is only
+                OFFERED once the reader has moved away from the present — but
+                it is hidden rather than removed, so it never moves anything.
+                `visibility: hidden` still takes its box; `aria-hidden` and
+                `tabIndex -1` keep it out of the reading order and off the tab
+                ring while it is not offered. */}
+            <button
+              type="button"
+              className="fx-city-preset"
+              style={year !== null ? undefined : { visibility: "hidden" }}
+              aria-hidden={year === null}
+              tabIndex={year === null ? -1 : undefined}
+              disabled={year === null}
+              onClick={() => {
+                setYear(null);
+                engineRef.current?.setYear(undefined);
+                if (overlayRef.current) overlayRef.current.year = undefined;
+              }}
+            >
+              {YEAR_MAX}
+            </button>
           </div>
         </div>
       ) : null}

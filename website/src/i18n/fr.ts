@@ -4780,7 +4780,7 @@ const fr: Record<string, string> = {
   'us.sf.thecity.margin.decisions': 'Decisions on the map',
   'us.sf.thecity.margin.years': 'Years covered',
   'us.sf.thecity.margin.blocks': 'Blocks with something',
-  'us.sf.thecity.note.line': 'Every building here is one San Francisco publishes, at the height the city measured over it. Only what is standing today is in the record.',
+  'us.sf.thecity.note.line': 'Every building here is one San Francisco publishes, drawn from the data. Only what is standing today is in the record.',
   'us.sf.thecity.note.more': 'How this map is made',
   'us.sf.thecity.note.shapes.title': 'What you are looking at',
   'us.sf.thecity.note.shapes': 'The outlines are the city’s own building footprints, each drawn at the height measured over it from the air. The roof colours are read off aerial photography. The ground underneath is the city’s elevation data, and the coastline, the streets and the block outlines are published files as well.',
