@@ -74,12 +74,38 @@ SF_BLOCK = (275.0, 125.0)  # part3.html's PREC_MAX figure for one SF block
 
 WS = re.compile(r"\s+")
 
+# ── A NULL SENTINEL IS NOT A VALUE ──────────────────────────────────────────
+# ESRI's exporters write the LITERAL STRING `<Null>` where a field is empty, and
+# `clean()` handed it back as text because it is non-empty and strips to
+# something. It reached the map: `reg_colleges()` appends the `campus` field to
+# the institution name when the file carries one, so the frame read
+#
+#     University of California Hastings College of Law — <Null>
+#
+# which is a database's word for "I have nothing", printed as a place name.
+#
+# This file already knows the class of defect and names it in `reg_landmarks_a11`
+# below: *"`datelisted` is `1899-12-30` on all 786 rows — the GIS null
+# sentinel"*. That one was caught because a date can be checked against a range.
+# A STRING sentinel has no range to fall outside, so it has to be refused by
+# name, and the refusal belongs here rather than at each register's call site:
+# every register in this file already goes through `clean()`.
+#
+# Matched case-insensitively after stripping. Nothing is inferred from shape --
+# a real place could be called `Null`, and it is the angle brackets that make
+# `<Null>` a sentinel -- except the plain forms below, which no San Francisco
+# register in this pipeline uses as a name and every exporter uses as a blank.
+NULLISH = frozenset({"<null>", "null", "<none>", "none", "n/a", "na", "#n/a",
+                     "unknown", "<all other values>", "-", "--", "?"})
+
 
 def clean(n: str | None) -> str | None:
     if not n:
         return None
     s = WS.sub(" ", unicodedata.normalize("NFC", str(n))).strip()
-    return s or None
+    if not s or s.lower() in NULLISH:
+        return None
+    return s
 
 
 def _words(s: str | None) -> list[str]:

@@ -1281,7 +1281,7 @@ const BY_NAME = new Map<string, PlaceKind>([
   ["Ulloa Elementary", "school"],
   ["Union Square", "plaza"],
   ["Union Square Parking Garage", "works"],
-  ["University of California Hastings College of Law \u2014 <Null>", "school"],
+  ["University of California Hastings College of Law", "school"],
   ["University of California-San Francisco \u2014 Mission Bay", "school"],
   ["University of California-San Francisco \u2014 Mount Zion", "school"],
   ["University of California-San Francisco \u2014 Parnassus", "school"],

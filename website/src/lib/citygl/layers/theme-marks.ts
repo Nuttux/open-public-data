@@ -112,39 +112,60 @@ export interface ThemeMarksOptions {
   shape?: MarkShape;
 }
 
-/* ── THE INK, AND WHY ONLY ONE SUBJECT IS EVER LIT ────────────────────────
-   Eight hues off the reference categorical ramps, stepped DARK because the
-   ground they sit on is the city's own cream (#f0e8cc at the terrain's light
-   end) and the published mid-tones do not hold against it: orange, aqua,
-   yellow and pink all came in under 3:1.
+/* ── THE INK, AND THE CHECK THE FIRST SET WAS NEVER PUT THROUGH ───────────
+   The first eight were validated against ONE surface — a flat cream, the
+   terrain's light end — and passed every check on it. The map is not one
+   surface. It is a painted city with parks, 195,310 street trees, tile roofs,
+   asphalt and bare hill in it, and a mark has to be seen against all of that.
 
-   Validated with the data-viz palette validator against that surface —
-   lightness band, chroma floor, adjacent-pair CVD separation, normal-vision
-   floor and contrast all PASS: worst adjacent CVD ΔE 8.8 (deutan), worst
-   adjacent normal-vision ΔE 16.5, all eight ≥ 3:1 on the ground.
+   SO THE GROUND WAS MEASURED INSTEAD OF ASSUMED. 1,161,000 pixels of the
+   rendered city with no subject lit, at three cameras (whole city, district, a
+   few streets), and for each ink the share of that ground lying within OKLab
+   ΔE 10 of it — the distance at which a mark stops being a mark and becomes
+   part of the picture:
 
-   THE ORDER IS NOT DECORATIVE. It is the one ordering out of the 5,761
-   searched that clears every adjacent pair; the hues themselves fail in most
-   arrangements. Reordering these to match a new subject order silently breaks
-   the legend's separation, so re-run the validator if the seed's order changes.
+     yellow  #8a6000   13.26 %      aqua    #0f7a53    5.04 %
+     green   #0a7a25    3.38 %      orange  #b8431c    0.43 %
+     red     #b32f2f    0.32 %      magenta #b04a72    0.19 %
+     violet  #4b3ca8    0.09 %      blue    #1d5fae    0.05 %
 
-   AND ONLY ONE SUBJECT IS DRAWN AT A TIME. Marks of different subjects land on
-   top of each other all over the city, so the honest test is all-pairs rather
-   than adjacent — and under all-pairs no ordering of eight can pass: the worst
-   pair falls to ΔE 3.2 (deutan) and 7.1 for normal vision. A reader asked to
-   tell eight scattered colours apart would be asked something the colours
-   cannot do. So the filter is single-select, the one lit subject is named by
-   the control that lit it, and colour never has to carry a comparison.
-   Showing several at once needs shape as well as hue, and is not shipped. */
+   A seventh of the city was within ΔE 10 of the yellow. The two greens were
+   the ones anybody could see were wrong; the yellow was worse than both and
+   nobody had noticed, which is the argument for measuring rather than looking.
+
+   The city's own colour is why: clustered in OKLab it is almost entirely
+   warm-neutral — creams, olive-greys, asphalt — with hue between about 60°
+   and 140°. Candidates were generated across OKLCh, and every colour in that
+   band failed the collision test. What survives is red-orange, cyan-teal and
+   blue-violet-magenta, and these eight are the set out of 5,317 survivors with
+   the widest ALL-PAIRS separation.
+
+   MEASURED AGAINST THE OLD SET:
+
+     worst city collision   13.26 %  ->  0.37 %
+     all-pairs min ΔE          4.6  ->  13.8   (orange and red were near-twins)
+     adjacent CVD ΔE           8.8  ->  13.3
+
+   THE ORDER IS NOT DECORATIVE. The validator checks ADJACENT pairs, so the
+   order is part of what passed; reordering to match a new subject order
+   silently breaks it. Re-run the validator if the seed's order changes:
+
+     node scripts/validate_palette.js "<the eight, comma separated>" --mode light
+
+   AND ONLY ONE SUBJECT IS DRAWN AT A TIME. That stays true and it is still the
+   reason the filter is single-select — but it is no longer a confession. The
+   old set could not pass all-pairs at all; this one holds ΔE 13.8 across every
+   pair, so the legend is honestly readable even though the map never asks a
+   reader to compare two subjects at once. */
 export const THEME_INK = [
-  "#b8431c", // orange
-  "#0f7a53", // aqua
-  "#1d5fae", // blue
-  "#8a6000", // yellow
-  "#b04a72", // magenta
-  "#0a7a25", // green
-  "#4b3ca8", // violet
-  "#b32f2f", // red
+  "#a80391", // magenta
+  "#e15f0a", // orange
+  "#6029c6", // violet
+  "#04a322", // green
+  "#058dfa", // blue
+  "#d60b49", // crimson
+  "#006b9a", // deep cyan
+  "#00a19d", // teal
 ] as const;
 
 /* ── the two constants a reader can see the effect of ──────────────────── */

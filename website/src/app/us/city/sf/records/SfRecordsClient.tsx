@@ -57,12 +57,18 @@ export interface RecordsStats {
   decisions_with_topic_by_decade: [number, number][];
 }
 
-/* The one categorical ramp this section uses, validated against the map's own
-   cream ground: lightness band, chroma floor, adjacent-pair CVD separation and
-   contrast all pass. Kept in the order that clears every adjacent pair — see
-   `lib/citygl/layers/theme-marks.ts` §THE INK. */
-const INK = ["#b8431c", "#0f7a53", "#1d5fae", "#8a6000",
-             "#b04a72", "#0a7a25", "#4b3ca8", "#b32f2f"];
+/* The one categorical ramp this section uses. The same eight the map draws its
+   marks in, in the same order — see `lib/citygl/layers/theme-marks.ts` §THE INK
+   for the measurement that chose them, and re-run the validator there if this
+   order changes, because the checks are on ADJACENT pairs.
+
+   IT MATTERS MORE HERE THAN ON THE MAP. The map lights one subject at a time
+   and says so; the topic chart below prints all eight at once, so a reader IS
+   asked to tell them apart. The set this replaced could not support that: its
+   orange and its red were ΔE 4.6 apart, near-twins in a chart that stacks them
+   five rows from each other. These hold ΔE 13.8 across every pair. */
+const INK = ["#a80391", "#e15f0a", "#6029c6", "#04a322",
+             "#058dfa", "#d60b49", "#006b9a", "#00a19d"];
 const UNCLASSIFIED = "#8a8578";
 
 const n = (x: number) => x.toLocaleString("en-US");

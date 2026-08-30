@@ -65,6 +65,26 @@ const C_BY_CLASS: Record<number, number> = {
 const DASH_ON_M = 6;
 const DASH_OFF_M = 7;
 
+/* ── §AND AT ANY CAMERA A PAINTED LANE IS TOO NARROW TO FIND ───────────────
+   Every width above is the real one: a painted lane is 2.4 m and a shared lane
+   is a 1.6 m marking. At the district camera that is under half a pixel, and
+   under a street tree it is nothing at all. Driven the way a reader drives it
+   — click BIKE NETWORK — the frame came back with 85.2 % of its pixels changed
+   by the mute and **no bike network anywhere in it**. Daniel: *"bike lanes
+   buildings i dont even get shit"*.
+
+   `rail.ts` had already solved this for the track and the answer transfers
+   whole: the system control draws a DIAGRAM of the network over the city, in
+   the register's own class colours, and the real painted widths stay for the
+   default view. Two buffers rather than a scale, because a ribbon's width
+   cannot be scaled independently of its length, and the camera picks.
+
+   These are narrower than the track's 30/8 on purpose: a bike lane sits IN a
+   street beside the traffic, and drawing it as wide as a streetcar right of
+   way would say something about the city that is not true. */
+const DIAGRAM_W_M = 20;
+const DIAGRAM_NARROW_W_M = 6;
+
 const BIKE_RUNG = 6.8;
 /** ahead of the road stack, like the track — see `systems.ts` and `rail.ts` */
 const BIKE_SEAT_M = 10.5;
@@ -88,12 +108,22 @@ export async function bikewayLayer(
   const pos: number[] = [];
   const col: number[] = [];
   const idx: number[] = [];
+  /* the two diagram widths — see §AND AT ANY CAMERA A PAINTED LANE IS TOO
+     NARROW TO FIND */
+  const wPos: number[] = []; const wCol: number[] = []; const wIdx: number[] = [];
+  const nPos: number[] = []; const nCol: number[] = []; const nIdx: number[] = [];
   const c = new Color();
   let zex = o.zex;
   let km = 0;
 
-  /** one flat ribbon from a to b */
-  const quad = (
+  type Buf = { pos: number[]; col: number[]; idx: number[] };
+  const real: Buf = { pos, col, idx };
+  const wide: Buf = { pos: wPos, col: wCol, idx: wIdx };
+  const narrow: Buf = { pos: nPos, col: nCol, idx: nIdx };
+
+  /** one flat ribbon from a to b, into whichever buffer is named */
+  const quadInto = (
+    b: Buf,
     ax: number, ay: number, bx: number, by: number, w: number, hex: number,
   ): void => {
     const dx = bx - ax;
@@ -105,16 +135,25 @@ export async function bikewayLayer(
     const h = w / 2;
     const az = o.elevAt(ax, ay) + LIFT_M;
     const bz = o.elevAt(bx, by) + LIFT_M;
-    const i = pos.length / 3;
-    pos.push(
+    const i = b.pos.length / 3;
+    b.pos.push(
       ax + nx * h, az, ay + ny * h,
       ax - nx * h, az, ay - ny * h,
       bx - nx * h, bz, by - ny * h,
       bx + nx * h, bz, by + ny * h,
     );
     c.setHex(hex, SRGBColorSpace);
-    for (let k = 0; k < 4; k++) col.push(c.r, c.g, c.b);
-    idx.push(i, i + 1, i + 2, i, i + 2, i + 3);
+    for (let k = 0; k < 4; k++) b.col.push(c.r, c.g, c.b);
+    b.idx.push(i, i + 1, i + 2, i, i + 2, i + 3);
+  };
+
+  /** the lane at its real painted width, and the same piece as a diagram */
+  const quad = (
+    ax: number, ay: number, bx: number, by: number, w: number, hex: number,
+  ): void => {
+    quadInto(real, ax, ay, bx, by, w, hex);
+    quadInto(wide, ax, ay, bx, by, DIAGRAM_W_M, hex);
+    quadInto(narrow, ax, ay, bx, by, DIAGRAM_NARROW_W_M, hex);
   };
 
   /* the file arrives in year order, so the century scrub is a draw range */
@@ -150,30 +189,63 @@ export async function bikewayLayer(
   if (lastYear >= 0) marks.push({ year: lastYear, upto: idx.length });
   if (!idx.length) return null;
 
-  const g = new BufferGeometry();
-  g.setAttribute("position", new Float32BufferAttribute(new Float32Array(pos), 3));
-  g.setAttribute("color", new Float32BufferAttribute(new Float32Array(col), 3));
-  g.setIndex(idx);
-  g.computeVertexNormals();
+  const build = (b: Buf, material: MeshStandardMaterial, rung: number): Mesh => {
+    const g = new BufferGeometry();
+    g.setAttribute("position", new Float32BufferAttribute(new Float32Array(b.pos), 3));
+    g.setAttribute("color", new Float32BufferAttribute(new Float32Array(b.col), 3));
+    g.setIndex(b.idx);
+    g.computeVertexNormals();
+    const m = new Mesh(g, material);
+    m.scale.y = zex;
+    m.renderOrder = rung;
+    m.userData.wash = true;
+    m.userData.washM = BIKE_SEAT_M;
+    m.castShadow = false;
+    m.receiveShadow = false;
+    o.scene.add(m);
+    return m;
+  };
+
   const mat = new MeshStandardMaterial({
     vertexColors: true, roughness: 0.95, metalness: 0,
   });
-  const mesh = new Mesh(g, mat);
-  mesh.scale.y = zex;
-  mesh.renderOrder = BIKE_RUNG;
-  mesh.userData.wash = true;
-  mesh.userData.washM = BIKE_SEAT_M;
-  mesh.castShadow = false;
-  mesh.receiveShadow = false;
-
-  o.scene.add(mesh);
+  /* the diagram carries its own matte material, out of depth order, so the
+     network lies over the city the way `rail.ts`'s does */
+  const diagramMat = new MeshStandardMaterial({
+    vertexColors: true, roughness: 1, metalness: 0,
+    depthTest: false, depthWrite: false,
+  });
+  const mesh = build(real, mat, BIKE_RUNG);
+  const diagrams = [
+    build(wide, diagramMat, BIKE_RUNG + 0.2),
+    build(narrow, diagramMat, BIKE_RUNG + 0.2),
+  ];
+  for (let i = 0; i < diagrams.length; i++) {
+    const d = diagrams[i];
+    d.userData.layer = "bikeway-overlay";
+    /* off until a reader asks for the bike system; `systems.ts` switches any
+       mesh that declares this flag, so the layer opts in rather than being
+       named there */
+    d.userData.systemLit = false;
+    d.userData.stepOK = i === 0;
+    d.visible = false;
+  }
 
   return {
     name: "bikeways",
     km: Math.round(km * 10) / 10,
-    onStep(_step: number, z: number): void {
+    onStep(step: number, z: number): void {
       zex = z;
       mesh.scale.y = zex;
+      const wideNow = step < 2;
+      for (let i = 0; i < diagrams.length; i++) {
+        const d = diagrams[i];
+        d.scale.y = zex;
+        const u = d.userData as { systemLit?: boolean; stepOK?: boolean };
+        u.stepOK = i === 0 ? wideNow : !wideNow;
+        d.visible = d.geometry.drawRange.count > 0
+          && u.systemLit === true && u.stepOK;
+      }
     },
     onYear(year: number | undefined): void {
       let upto = idx.length;
@@ -184,13 +256,25 @@ export async function bikewayLayer(
           upto = m.upto;
         }
       }
-      g.setDrawRange(0, upto);
+      /* the three buffers were filled in lockstep, one quad each per piece of
+         lane, so ONE mark serves all three and they cannot drift out of step */
+      mesh.geometry.setDrawRange(0, upto);
       mesh.visible = upto > 0;
+      for (const d of diagrams) {
+        d.geometry.setDrawRange(0, upto);
+        const u = d.userData as { systemLit?: boolean; stepOK?: boolean };
+        d.visible = upto > 0 && u.systemLit === true && u.stepOK !== false;
+      }
     },
     dispose(): void {
       o.scene.remove(mesh);
-      g.dispose();
+      mesh.geometry.dispose();
+      for (const d of diagrams) {
+        o.scene.remove(d);
+        d.geometry.dispose();
+      }
       mat.dispose();
+      diagramMat.dispose();
     },
   };
 }

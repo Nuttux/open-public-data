@@ -229,8 +229,26 @@ const RAIL_SEAT_M = 10;
  * where the ballast and sleepers are legible and a fat ribbon would be a lie.
  *
  * 30 m is about 2.3 px at the whole city and 5.5 at a district, which is a
- * line you can follow; by the street camera the real track is drawn instead. */
+ * line you can follow.
+ *
+ * ── §THE DIAGRAM DOES NOT STAND DOWN ──────────────────────────────────────
+ * It used to, at `step >= 2`, on the reasoning written above: close in, the
+ * ballast and sleepers are legible and a 30 m ribbon would be three lanes
+ * wide. The first half is true and the second half made the control useless.
+ * MEASURED by clicking A FEW STREETS and then PUBLIC TRANSPORT, the way a
+ * reader does: `rail-overlay 0/1 visible`, and a frame with no network on it.
+ *
+ * The reason is four paragraphs above in this same file — **buildings cover
+ * 94-97 % of the track at the street camera**. So the camera where the diagram
+ * switched off is the camera where the real track is most hidden, and the
+ * control answered "where does the network go" with nothing at all.
+ *
+ * A ribbon's width cannot be scaled independently of its length, so the answer
+ * is `rail-history`'s: build the same diagram twice and let the camera pick.
+ * 8 m is a traffic lane — it reads as a line laid IN the street rather than
+ * over the block, which is what it is. */
 const OVERLAY_W_M = 30;
+const OVERLAY_NARROW_W_M = 8;
 const OVERLAY_C: Record<string, number> = {
   cable: 0xb4472e,
   streetcar: 0xc8892f,
@@ -469,6 +487,11 @@ export async function railLayer(
   const oPos: number[] = [];
   const oCol: number[] = [];
   const oIdx: number[] = [];
+  /* the same diagram at a lane's width, for the cameras the wide one is too
+     fat for — see §THE DIAGRAM DOES NOT STAND DOWN */
+  const nPos: number[] = [];
+  const nCol: number[] = [];
+  const nIdx: number[] = [];
   const off = GAUGE_M / 2;
   let zex = o.zex;
 
@@ -491,6 +514,7 @@ export async function railLayer(
   const bed = { pos, col, idx };
   const ties = { pos: tPos, col: tCol, idx: tIdx };
   const over = { pos: oPos, col: oCol, idx: oIdx };
+  const overNarrow = { pos: nPos, col: nCol, idx: nIdx };
   const steel = { pos: sPos, col: sCol, idx: sIdx };
   let into = bed;
   let liftM = RAIL_BED_LIFT_M;
@@ -603,10 +627,12 @@ export async function railLayer(
 
     /* and the diagram ribbon: ONE quad for the whole segment, wide enough to
        read at the city and district cameras, in the line's own colour */
+    const okind = OVERLAY_C[kind as string] ?? OVERLAY_C.metro;
     into = over;
     liftM = RAIL_STEEL_LIFT_M;
-    quad(x0, y0, x1, y1, nx, ny, OVERLAY_W_M,
-         OVERLAY_C[kind as string] ?? OVERLAY_C.metro);
+    quad(x0, y0, x1, y1, nx, ny, OVERLAY_W_M, okind);
+    into = overNarrow;
+    quad(x0, y0, x1, y1, nx, ny, OVERLAY_NARROW_W_M, okind);
 
     into = bed;
     liftM = RAIL_BED_LIFT_M;
@@ -708,16 +734,24 @@ export async function railLayer(
   });
   const overMesh = build(oPos, oCol, oIdx, overMat, RAIL_RUNG + 0.2);
   overMesh.mesh.userData.layer = "rail-overlay";
-  /* off until a reader asks for the transport system, and off again the moment
-     the camera is close enough for the real track to be legible */
+  /* the same diagram at a lane's width — §THE DIAGRAM DOES NOT STAND DOWN */
+  const overNarrowMesh = build(nPos, nCol, nIdx, overMat, RAIL_RUNG + 0.2);
+  overNarrowMesh.mesh.userData.layer = "rail-overlay";
+  /* off until a reader asks for the transport system; which of the two widths
+     is on is the camera's choice, and neither is off at any camera */
   overMesh.mesh.visible = false;
+  overNarrowMesh.mesh.visible = false;
+  overNarrowMesh.mesh.userData.systemLit = false;
+  overNarrowMesh.mesh.userData.stepOK = false;
   overMesh.mesh.userData.systemLit = false;
   overMesh.mesh.userData.stepOK = true;
   /* the steel sits ON the sleepers */
   const steelMesh = build(sPos, sCol, sIdx, steelMat, RAIL_RUNG + 0.1);
   const mesh = bedMesh.mesh;
   const posArr = bedMesh.posArr;
-  const meshes = [bedMesh, tieMesh, steelMesh, overMesh];
+  const meshes = [bedMesh, tieMesh, steelMesh, overMesh, overNarrowMesh];
+  /** the two diagram widths, in the order `onStep` picks between them */
+  const overlays = [overMesh, overNarrowMesh];
 
   /* ── THE BAND'S EXAGGERATION IS A SCALE, NOT SOMETHING TO BAKE ────────
      This layer used to multiply `zex` into every vertex and leave the mesh at
@@ -749,13 +783,19 @@ export async function railLayer(
     onStep(step: number, z: number): void {
       zex = z;
       for (const b of meshes) b.mesh.scale.y = zex;
-      /* the diagram is for the cameras where the real track is sub-pixel. At
-         the closest band the ballast and sleepers read on their own and a 30 m
-         ribbon would be three lanes wide, so it stands down. */
-      const u = overMesh.mesh.userData as { systemLit?: boolean; stepOK?: boolean };
-      u.stepOK = step < 2;
-      overMesh.mesh.visible =
-        overMesh.mesh.geometry.drawRange.count > 0 && u.systemLit === true && u.stepOK;
+      /* THE CAMERA PICKS A WIDTH, IT DOES NOT TURN THE DIAGRAM OFF. Far out
+         the 30 m ribbon is the only thing that reads; close in it would be
+         three lanes wide, and the 8 m one is a line laid in the street. Both
+         are the same route and only one is ever on. §THE DIAGRAM DOES NOT
+         STAND DOWN. */
+      const wide = step < 2;
+      for (let i = 0; i < overlays.length; i++) {
+        const b = overlays[i];
+        const u = b.mesh.userData as { systemLit?: boolean; stepOK?: boolean };
+        u.stepOK = i === 0 ? wide : !wide;
+        b.mesh.visible =
+          b.mesh.geometry.drawRange.count > 0 && u.systemLit === true && u.stepOK;
+      }
     },
     onYear(year: number | undefined): void {
       /* ── THE TRACK ARRIVES AS THE CITY PAID FOR IT ────────────────────

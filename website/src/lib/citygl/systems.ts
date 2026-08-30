@@ -65,7 +65,7 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
   {
     key: "bike",
     label: "Bike network",
-    layers: ["bikeways"],
+    layers: ["bikeways", "bikeway-overlay"],
     note:
       "720 km of bikeway, each piece carrying the year the city installed it " +
       "-- one of the few registers on this map that dates itself. 61 dated " +
@@ -98,19 +98,55 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
  *  nothing reads as a diagram, not a city */
 const NEVER_MUTED = new Set(["terrain", "water", "surround", "sky", "fire"]);
 
-/* ── QUIETENING THE REST IS NOT ENOUGH ─────────────────────────────────────
-   First cut only muted, and the whole frame just went darker: at the district
-   camera the track is a couple of pixels wide, so taking 38 % off the city
-   around it does not make it findable. Measured against a screenshot -- 56.6 %
-   of pixels moved and the rail was no easier to see.
+/* ── ONE MUTE FOR EVERY LAYER WAS THE WRONG SHAPE ──────────────────────────
+   The first version took 28 % off everything that was not the chosen system
+   and lifted the system 70 %. Driven the way a reader drives it — click
+   BIKE NETWORK at the district camera — it moved 85.2 % of the pixels and
+   produced a frame with **no bike network in it at all**. Daniel: *"bike lanes
+   buildings i dont even get shit, it just really lights up stuff but theres no
+   really overlay or liek the mpa loking different"*.
 
-   So the chosen system is LIFTED as well. `material.color` multiplies the
-   per-vertex colour, and a factor above one brightens: the steel is already
-   near-white, so it goes to the top of the frame's range while everything
-   else steps back. Two small moves in opposite directions separate far better
-   than one big move in one. */
-const MUTE = 0.72;
-const LIT = 1.7;
+   A single constant is the wrong instrument because the layers are not doing
+   the same job. Some of them are what HIDES the system — in an axonometric
+   view a building stands between the eye and the street beside it, and
+   `rail.ts` measured the cost at 94-97 % of the track covered. Others are what
+   LOCATES the reader — the street grid, the ground, the coastline — and
+   quietening those buys nothing and costs orientation.
+
+   So the mute is by ROLE:
+
+     OCCLUDE    what stands between the eye and the system. Goes right down.
+     REFERENCE  what tells the reader where they are. Steps back a little.
+     never      the ground, the water, the sky. Untouched.
+
+   The numbers are a drawing decision and they are stated here rather than
+   spread through the layers, so one place can be argued with. */
+const OCCLUDE = 0.34;
+const REFERENCE = 0.62;
+
+/** the layers that stand between the eye and anything drawn on the street */
+const OCCLUDERS = new Set([
+  "buildings", "caps", "heroes", "trees", "canopy-shadow", "block-tint",
+]);
+
+/* ── AND A LAYER THAT IS ALREADY THE WHOLE FRAME MUST NOT BE "LIT" ─────────
+   Lifting the chosen system by 1.7 is right for a line and wrong for an area.
+   The track is a few pixels of near-white steel and a lift puts it at the top
+   of the frame's range. BUILDINGS are most of the map already: multiplying
+   every roof by 1.7 clips them to white, destroys the material tones
+   `materials.ts` derives from the roll, and differentiates nothing — which is
+   exactly what "buildings i dont even get shit" looks like.
+
+   So an AREA system is lit at 1.0 — its own colour, unaltered — and the
+   separation comes entirely from the mute around it. Only a LINE system, which
+   has to be found before it can be read, is lifted. */
+const LIT_LINE = 1.45;
+const LIT_AREA = 1.0;
+
+/** systems drawn as lines on top of the city, rather than as the city itself */
+const LINE_LAYERS = new Set([
+  "rail", "rail-overlay", "rail-history", "bikeways", "bikeway-overlay",
+]);
 
 /* ── AN OVERLAY, NOT A TINT ────────────────────────────────────────────────
    Brightening the track and dimming the city moved 56.6 % of the frame and the
@@ -131,7 +167,21 @@ type Mutable = {
   needsUpdate?: boolean;
 };
 
-const ORIGINAL = new WeakMap<object, [number, number, number]>();
+/* ── AND THE ORIGINAL MEANS THE WHOLE ORIGINAL ─────────────────────────────
+   This kept the colour and not the depth test, then wrote `depthTest = true`
+   onto every material it saw — including the ones that ship it FALSE on
+   purpose. MEASURED by clicking PUBLIC TRANSPORT and reading the materials
+   back: `sky` went `depthTest false -> true` and stayed there, because nothing
+   remembered what it had been. The sky is in `NEVER_MUTED`, so the mode was
+   not even trying to touch it; the depth line simply ran outside that guard.
+
+   A mode that cannot be undone is not a mode. Both fields are stored, and a
+   layer's own depth state is restored unless this mode is deliberately
+   overriding it. */
+const ORIGINAL = new WeakMap<object, {
+  rgb: [number, number, number];
+  depthTest: boolean | undefined;
+}>();
 
 function materialsOf(o: Object3D): Mutable[] {
   const m = (o as unknown as { material?: Mutable | Mutable[] }).material;
@@ -158,7 +208,13 @@ export function applySystem(root: Object3D, key: string | null): number {
        one -- see `rail.ts` §AND AT CITY ZOOM THE TRACK IS HALF A PIXEL. Both
        conditions are kept on the mesh so neither module has to know the
        other's state. */
-    if (layer === "rail-overlay" || layer === "rail-history") {
+    /* A LAYER OPTS IN BY DECLARING THE FLAG, rather than by being named here.
+       This was a list of two layer names, and adding the bike diagram to it
+       meant editing this file to teach it about a layer it does not otherwise
+       know — the same coupling `engine.claim()` exists to avoid. A layer that
+       wants to be switched by the system control ships `systemLit` on its mesh;
+       one that does not, is muted like everything else. */
+    if ("systemLit" in (o.userData as Record<string, unknown>)) {
       const u = o.userData as { systemLit?: boolean; stepOK?: boolean };
       const want = lit !== null && lit.has(layer);
       if (u.systemLit !== want) {
@@ -187,13 +243,22 @@ export function applySystem(root: Object3D, key: string | null): number {
     for (const mat of materialsOf(o)) {
       const c = mat.color;
       if (!c) continue;
-      if (!ORIGINAL.has(mat)) ORIGINAL.set(mat, [c.r, c.g, c.b]);
-      const base = ORIGINAL.get(mat)!;
+      if (!ORIGINAL.has(mat)) {
+        ORIGINAL.set(mat, { rgb: [c.r, c.g, c.b], depthTest: mat.depthTest });
+      }
+      const { rgb: base, depthTest: wasDepth } = ORIGINAL.get(mat)!;
       const isLit = lit !== null && lit.has(layer);
       const quiet = lit !== null && !isLit && !NEVER_MUTED.has(layer);
-      const k = quiet ? MUTE : isLit ? LIT : 1;
-      const wantDepth = !(isLit && sys?.overlay);
-      if (mat.depthTest !== undefined && mat.depthTest !== wantDepth) {
+      const k = quiet
+        ? (OCCLUDERS.has(layer) ? OCCLUDE : REFERENCE)
+        : isLit
+          ? (LINE_LAYERS.has(layer) ? LIT_LINE : LIT_AREA)
+          : 1;
+      /* the overlay's depth test comes OFF while this mode owns it and goes
+         back to whatever the layer shipped when it does not — never to a
+         constant `true`, which is what broke the sky */
+      const wantDepth = isLit && sys?.overlay ? false : wasDepth;
+      if (wantDepth !== undefined && mat.depthTest !== wantDepth) {
         mat.depthTest = wantDepth;
         mat.needsUpdate = true;
         touched++;
