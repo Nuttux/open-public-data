@@ -25,3 +25,9 @@ pdfplumber>=0.10.0
 # Optional: Alternative LLM providers
 # openai>=1.0.0
 # anthropic>=0.18.0
+
+# Point cloud (pipeline/scripts/us_sf_city/roofscan — the 2023 USGS scan)
+laspy[lazrs]>=2.5.0
+pyproj>=3.6.0
+scipy>=1.11.0
+matplotlib>=3.8.0   # Path.contains_points, for footprint rasterising
