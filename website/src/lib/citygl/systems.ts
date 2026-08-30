@@ -84,15 +84,22 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
       "these dates run late.",
     retracts: false,
   },
-  {
-    key: "buildings",
-    label: "Buildings",
-    layers: ["buildings", "caps", "heroes"],
-    note: "footprints by the assessor's year. A roll that does not date a " +
-      "building draws it in every year.",
-    retracts: false,
-  },
 ] as const;
+
+/* ── AND THERE IS NO "BUILDINGS" SYSTEM, BECAUSE THAT IS THE MAP ───────────
+   There was one. It lit `buildings`, `caps` and `heroes` and quietened the
+   rest, which on a map whose subject IS its buildings changes almost nothing:
+   the control was there, it moved pixels, and it answered no question.
+   Daniel: *"buildings ok we dont need a filter right cause thats the map
+   itslef"*.
+
+   A system control is for a network the city has laid ON its fabric and that
+   the fabric then hides. The fabric itself needs no such help — it is what
+   the default view already draws, and the century rail already shows it
+   arriving. If a reader ever wants the buildings answered as a QUESTION, the
+   question is not "where are they" but "when did they arrive", and that is a
+   recolour by era rather than a mute of everything else. It is not this
+   control and it is not built. */
 
 /** the ground and the water stay lit at all times — a system floating over
  *  nothing reads as a diagram, not a city */
@@ -113,20 +120,39 @@ const NEVER_MUTED = new Set(["terrain", "water", "surround", "sky", "fire"]);
    LOCATES the reader — the street grid, the ground, the coastline — and
    quietening those buys nothing and costs orientation.
 
-   So the mute is by ROLE:
+   So the treatment is by ROLE:
 
-     OCCLUDE    what stands between the eye and the system. Goes right down.
+     GHOST      what stands between the eye and the system. Goes TRANSPARENT.
      REFERENCE  what tells the reader where they are. Steps back a little.
      never      the ground, the water, the sky. Untouched.
 
-   The numbers are a drawing decision and they are stated here rather than
-   spread through the layers, so one place can be argued with. */
-const OCCLUDE = 0.34;
+   ── AND DARKENING AN OCCLUDER DOES NOT UNBLOCK IT ────────────────────────
+   The first version of this took 66 % off the buildings' colour and left them
+   opaque. A dark building hides a street exactly as well as a bright one, so
+   the street the reader asked to see was still behind it. Daniel: *"streets
+   shoudlnt it be you no longer see buildings etc but just see streets ... or
+   like a version with enough opacity that you see a bit underneath but mostyl
+   see the interesting layer of view?"*
+
+   He is right, and it is the same mistake in a new place: the quantity being
+   changed was not the quantity in the way. What blocks a line of sight is
+   OPACITY, so that is what moves. A ghosted building still shows where the
+   fabric stands — the city is not deleted — and the street under it is
+   readable through it.
+
+   `depthWrite` comes off with it, deliberately: a translucent building that
+   still wrote depth would hide the buildings behind it and the ghost would
+   read as a solid pale mass rather than as glass. The cost is that ghosts do
+   not occlude each other, which is right for a layer view and wrong for the
+   default map — so it is only ever on while a system is chosen, and both
+   fields are restored. */
+const GHOST_OPACITY = 0.16;
+const GHOST_TINT = 0.62;
 const REFERENCE = 0.62;
 
 /** the layers that stand between the eye and anything drawn on the street */
 const OCCLUDERS = new Set([
-  "buildings", "caps", "heroes", "trees", "canopy-shadow", "block-tint",
+  "buildings", "caps", "heroes", "trees", "canopy-shadow",
 ]);
 
 /* ── AND A LAYER THAT IS ALREADY THE WHOLE FRAME MUST NOT BE "LIT" ─────────
@@ -164,6 +190,9 @@ const LINE_LAYERS = new Set([
 type Mutable = {
   color?: { r: number; g: number; b: number; setRGB: (r: number, g: number, b: number) => void };
   depthTest?: boolean;
+  transparent?: boolean;
+  opacity?: number;
+  depthWrite?: boolean;
   needsUpdate?: boolean;
 };
 
@@ -181,6 +210,9 @@ type Mutable = {
 const ORIGINAL = new WeakMap<object, {
   rgb: [number, number, number];
   depthTest: boolean | undefined;
+  transparent: boolean | undefined;
+  opacity: number | undefined;
+  depthWrite: boolean | undefined;
 }>();
 
 function materialsOf(o: Object3D): Mutable[] {
@@ -244,20 +276,48 @@ export function applySystem(root: Object3D, key: string | null): number {
       const c = mat.color;
       if (!c) continue;
       if (!ORIGINAL.has(mat)) {
-        ORIGINAL.set(mat, { rgb: [c.r, c.g, c.b], depthTest: mat.depthTest });
+        ORIGINAL.set(mat, {
+          rgb: [c.r, c.g, c.b],
+          depthTest: mat.depthTest,
+          transparent: mat.transparent,
+          opacity: mat.opacity,
+          depthWrite: mat.depthWrite,
+        });
       }
-      const { rgb: base, depthTest: wasDepth } = ORIGINAL.get(mat)!;
+      const O = ORIGINAL.get(mat)!;
+      const base = O.rgb;
       const isLit = lit !== null && lit.has(layer);
       const quiet = lit !== null && !isLit && !NEVER_MUTED.has(layer);
-      const k = quiet
-        ? (OCCLUDERS.has(layer) ? OCCLUDE : REFERENCE)
-        : isLit
-          ? (LINE_LAYERS.has(layer) ? LIT_LINE : LIT_AREA)
-          : 1;
+      const ghost = quiet && OCCLUDERS.has(layer);
+      const k = ghost
+        ? GHOST_TINT
+        : quiet
+          ? REFERENCE
+          : isLit
+            ? (LINE_LAYERS.has(layer) ? LIT_LINE : LIT_AREA)
+            : 1;
+      /* §AND DARKENING AN OCCLUDER DOES NOT UNBLOCK IT — what is in the way is
+         opacity, so that is what moves */
+      const wantT = ghost ? true : O.transparent;
+      const wantO = ghost ? GHOST_OPACITY : O.opacity;
+      const wantW = ghost ? false : O.depthWrite;
+      if (mat.transparent !== undefined && mat.transparent !== wantT) {
+        mat.transparent = wantT;
+        mat.needsUpdate = true;
+        touched++;
+      }
+      if (mat.opacity !== undefined && wantO !== undefined && mat.opacity !== wantO) {
+        mat.opacity = wantO;
+        touched++;
+      }
+      if (mat.depthWrite !== undefined && wantW !== undefined && mat.depthWrite !== wantW) {
+        mat.depthWrite = wantW;
+        touched++;
+      }
       /* the overlay's depth test comes OFF while this mode owns it and goes
          back to whatever the layer shipped when it does not — never to a
          constant `true`, which is what broke the sky */
-      const wantDepth = isLit && sys?.overlay ? false : wasDepth;
+      const wantDepth = isLit && sys?.overlay ? false : O.depthTest;
       if (wantDepth !== undefined && mat.depthTest !== wantDepth) {
         mat.depthTest = wantDepth;
         mat.needsUpdate = true;
