@@ -1519,13 +1519,46 @@ export function drawShoreline(
       const g = t.toGrid(ring[i][0], ring[i][1]);
       const gi = Math.round(g[0]),
         gj = Math.round(g[1]);
-      let ok = false;
-      for (let a = -1; a <= 1 && !ok; a++)
-        for (let b = -1; b <= 1 && !ok; b++) {
+      /* ── A SHORELINE HAS WATER ON ONE SIDE ────────────────────────────
+         This asked only whether a neighbouring cell was LAND, and lifted the
+         pen where none was. On the city's southern boundary with San Mateo
+         County the land is continuous, so the gate passed and the rim below
+         was stroked straight across dry ground: measured at the whole-city
+         camera, a pale hairline in 75 % of the frame's columns, and 65.8 % ->
+         4.1 % with the overlay canvas hidden, so the halo owned it.
+
+         The ring runs there because a coast is derived from a land mask
+         CLIPPED to a box, and a polygon has to close — so the crop's own edge
+         becomes part of the ring. It is a boundary of the DATA, not of the
+         land, and the map should not draw an edge the world does not have.
+
+         So the test is the definition: a vertex is on a shoreline when some
+         neighbouring cell is land AND some other is water. */
+      let land = false;
+      let water = false;
+      for (let a = -1; a <= 1; a++)
+        for (let b = -1; b <= 1; b++) {
           const ii = gi + a,
             jj = gj + b;
-          if (ii >= 0 && jj >= 0 && ii < N && jj < N && t.maskAt(ii, jj)) ok = true;
+          if (ii < 0 || jj < 0 || ii >= N || jj >= N) continue;
+          if (t.maskAt(ii, jj)) land = true;
+          else water = true;
         }
+      /* ── AND THE EDGE OF THE DATA IS NOT A COAST ──────────────────────
+         `maskAt` answers 0 for water AND for everything outside the field, so
+         "there is water beside this vertex" is also true one cell from the
+         crop, where there is only the end of what we know. The land/water
+         test alone therefore still stroked the southern boundary, because the
+         county line sits on the grid's own edge.
+
+         A ring runs along that edge because a coast is a land mask clipped to
+         a box and a polygon has to close. Two cells in from the rim is the
+         whole of the fix: the real shoreline is nowhere near it, and the edge
+         of a dataset never gets drawn as an edge of the world. */
+      const EDGE = 2;
+      const onCrop =
+        gi <= EDGE || gj <= EDGE || gi >= N - 1 - EDGE || gj >= N - 1 - EDGE;
+      const ok = land && water && !onCrop;
       if (!ok) {
         pen = false;
         continue;
