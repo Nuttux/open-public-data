@@ -209,7 +209,23 @@ const GHOST_TINT = 1;
    keeps its own tone, and when the subject is a network laid along that grid
    the grid drops behind it. */
 const REFERENCE = 0.62;
-const BACKDROP = 0.3;
+
+/* ── AND "QUIETER" IS NOT A DIRECTION, IT IS A DISTANCE FROM THE PAPER ────
+   The backdrop was a colour multiply of 0.3 — a DARKENING — and it was
+   reasoned about while the ground was still the city's own mid olive, where
+   darker does step back. Then the ground became paper, and a 0.3 multiply on
+   an already-dark asphalt makes near-black ink on near-white paper. The
+   street grid did not recede when the reader picked the transit network. It
+   became the most contrasted thing on the frame. Daniel, twice: *"i think i
+   still see street sbehind public transport and bike filter so to me they
+   still look etremely simialr all three view"*.
+
+   Two constants, each right for the ground the other one was not written for.
+   So the backdrop stops being a colour at all. What "recede" means on any
+   ground and in any colour is FADE TOWARD IT, so the backdrop is a fraction of
+   the layer's OWN opacity — the streets keep their tone and their per-mesh
+   fade structure, and simply stop competing. */
+const BACKDROP_ALPHA = 0.18;
 
 /** the layers that stand between the eye and anything drawn on the street */
 const OCCLUDERS = new Set([
@@ -371,20 +387,29 @@ export function applySystem(root: Object3D, key: string | null): number {
       const isLit = lit !== null && lit.has(layer);
       const quiet = lit !== null && !isLit && !NEVER_MUTED.has(layer);
       const ghost = quiet && OCCLUDERS.has(layer);
+      /* the backdrop fades rather than darkens — §AND "QUIETER" IS NOT A
+         DIRECTION — so it takes no colour change at all */
+      const backdrop = quiet && !ghost && subjectIsNetwork;
       const k = ghost
         ? GHOST_TINT
         : lit !== null && PAPER.has(layer)
           ? PAPER_LIFT
-          : quiet
-            ? (subjectIsNetwork ? BACKDROP : REFERENCE)
-            : isLit
-              ? (LINE_LAYERS.has(layer) ? LIT_LINE : LIT_AREA)
-              : 1;
+          : backdrop
+            ? 1
+            : quiet
+              ? REFERENCE
+              : isLit
+                ? (LINE_LAYERS.has(layer) ? LIT_LINE : LIT_AREA)
+                : 1;
       /* §AND DARKENING AN OCCLUDER DOES NOT UNBLOCK IT — what is in the way is
          opacity, so that is what moves */
-      const wantT = ghost ? true : O.transparent;
-      const wantO = ghost ? GHOST_OPACITY : O.opacity;
-      const wantW = ghost ? false : O.depthWrite;
+      const wantT = ghost || backdrop ? true : O.transparent;
+      const wantO = ghost
+        ? GHOST_OPACITY
+        : backdrop
+          ? (O.opacity ?? 1) * BACKDROP_ALPHA
+          : O.opacity;
+      const wantW = ghost || backdrop ? false : O.depthWrite;
       if (mat.transparent !== undefined && mat.transparent !== wantT) {
         mat.transparent = wantT;
         mat.needsUpdate = true;
