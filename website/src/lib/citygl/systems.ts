@@ -148,7 +148,23 @@ const NEVER_MUTED = new Set(["terrain", "water", "surround", "sky", "fire"]);
    fields are restored. */
 const GHOST_OPACITY = 0.16;
 const GHOST_TINT = 0.62;
+
+/* ── AND HOW QUIET THE REFERENCE IS DEPENDS ON WHAT THE SUBJECT IS ────────
+   One value here was wrong for the same reason one value for the mute was.
+   With the buildings ghosted away, the STREET GRID became the loudest thing
+   left on the frame — and it stayed that loud whether the reader had asked
+   for the streets or for the transit network drawn along them. All three
+   modes came out looking like the same picture. Daniel: *"now i no longer see
+   public transport or bike any differen tthan street it basically just shows
+   mpe streets, im pretty confused"*.
+
+   The street grid is the SUBJECT in one mode and the BACKDROP in the others,
+   and it cannot be drawn at one weight for both. So the reference weight is
+   read off what was chosen: when the subject is the fabric itself the grid
+   keeps its own tone, and when the subject is a network laid along that grid
+   the grid drops behind it. */
 const REFERENCE = 0.62;
+const BACKDROP = 0.3;
 
 /** the layers that stand between the eye and anything drawn on the street */
 const OCCLUDERS = new Set([
@@ -231,6 +247,11 @@ function materialsOf(o: Object3D): Mutable[] {
 export function applySystem(root: Object3D, key: string | null): number {
   const sys = key ? CITY_SYSTEMS.find((s) => s.key === key) ?? null : null;
   const lit = sys ? new Set(sys.layers) : null;
+  /* is the thing chosen a NETWORK laid along the city, or the city's own
+     fabric? Derived from the system's own layers rather than declared twice —
+     see §AND HOW QUIET THE REFERENCE IS DEPENDS ON WHAT THE SUBJECT IS */
+  const subjectIsNetwork =
+    sys !== null && sys.layers.every((l) => LINE_LAYERS.has(l));
   let touched = 0;
   root.traverse((o) => {
     const layer = (o.userData as { layer?: string }).layer;
@@ -292,7 +313,7 @@ export function applySystem(root: Object3D, key: string | null): number {
       const k = ghost
         ? GHOST_TINT
         : quiet
-          ? REFERENCE
+          ? (subjectIsNetwork ? BACKDROP : REFERENCE)
           : isLit
             ? (LINE_LAYERS.has(layer) ? LIT_LINE : LIT_AREA)
             : 1;

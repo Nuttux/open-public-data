@@ -101,11 +101,14 @@ const DASH_OFF_M = 7;
    default view. Two buffers rather than a scale, because a ribbon's width
    cannot be scaled independently of its length, and the camera picks.
 
-   These are narrower than the track's 30/8 on purpose: a bike lane sits IN a
+   These are narrower than the track's on purpose: a bike lane sits IN a
    street beside the traffic, and drawing it as wide as a streetcar right of
-   way would say something about the city that is not true. */
-const DIAGRAM_W_M = 20;
-const DIAGRAM_NARROW_W_M = 6;
+   way would say something about the city that is not true. But they are still
+   wider than a street — see `rail.ts` §AND A DIAGRAM THE WIDTH OF A STREET IS
+   ANOTHER STREET — because a line the same width as the grid it is drawn over
+   joins the grid. */
+const DIAGRAM_W_M = 34;
+const DIAGRAM_NARROW_W_M = 10;
 
 const BIKE_RUNG = 6.8;
 /** ahead of the road stack, like the track — see `systems.ts` and `rail.ts` */

@@ -245,10 +245,16 @@ const RAIL_SEAT_M = 10;
  *
  * A ribbon's width cannot be scaled independently of its length, so the answer
  * is `rail-history`'s: build the same diagram twice and let the camera pick.
- * 8 m is a traffic lane — it reads as a line laid IN the street rather than
- * over the block, which is what it is. */
-const OVERLAY_W_M = 30;
-const OVERLAY_NARROW_W_M = 8;
+ * 12 m reads as a line laid IN the street rather than over the block, which
+ * is what it is.
+ *
+ * ── AND A DIAGRAM THE WIDTH OF A STREET IS ANOTHER STREET ────────────────
+ * 30 m was about 5.5 px at the district camera. So is a San Francisco street,
+ * which is why the network read as one more line in the grid rather than as
+ * the answer to the question the reader clicked. A diagram has to be wider
+ * than the thing it is drawn over or it joins it. */
+const OVERLAY_W_M = 46;
+const OVERLAY_NARROW_W_M = 12;
 const OVERLAY_C: Record<string, number> = {
   cable: 0xb4472e,
   streetcar: 0xc8892f,
