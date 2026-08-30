@@ -1,0 +1,200 @@
+[
+ {
+  "family": "Your street",
+  "pattern": "\\bpaving\\b|\\brepav|street improvement|improvement of .{0,40}street|\\bresurfac|\\bpothole\\b|street work|\\bsidewalk|street tree|\\bcurb\\b|\\bgutter\\b|street ?light|electrolier|\\bstreet lamp\\b|\\bcrosswalk",
+  "total": 18524,
+  "placed": 97,
+  "alltime": 14.98,
+  "last5": 2.64,
+  "last20": 4.1,
+  "skew": 0.2,
+  "mappable": 17911
+ },
+ {
+  "family": "Parks & playgrounds",
+  "pattern": "\\bpark\\b|playground|recreation|open space|square\\b|\\bzoo\\b|beach",
+  "total": 14731,
+  "placed": 80,
+  "alltime": 11.91,
+  "last5": 12.38,
+  "last20": 13.44,
+  "skew": 1.0,
+  "mappable": 11806
+ },
+ {
+  "family": "Parking & traffic",
+  "pattern": "\\bparking\\b|\\bgarage\\b|\\bparking meter\\b|residential permit parking|\\btraffic\\b|\\bstop sign\\b|\\bspeed limit\\b|\\bone-?way\\b",
+  "total": 11817,
+  "placed": 91,
+  "alltime": 9.55,
+  "last5": 2.33,
+  "last20": 4.4,
+  "skew": 0.2,
+  "mappable": 10766
+ },
+ {
+  "family": "What's being built",
+  "pattern": "\\bzoning\\b|\\breclassif|conditional use|\\bvariance\\b|use district|set-?back|\\bentitlement|development agreement|\\bdemolition\\b|\\bhigh-?rise\\b|project authorization|\\bpermit to (?:construct|erect)",
+  "total": 8584,
+  "placed": 96,
+  "alltime": 6.94,
+  "last5": 10.05,
+  "last20": 12.19,
+  "skew": 1.4,
+  "mappable": 8211
+ },
+ {
+  "family": "Water & sewers",
+  "pattern": "\\bsewer|water main|hydrant|reservoir|wastewater|aqueduct|hetch",
+  "total": 8455,
+  "placed": 94,
+  "alltime": 6.84,
+  "last5": 0.88,
+  "last20": 0.84,
+  "skew": 0.1,
+  "mappable": 7938
+ },
+ {
+  "family": "Getting around",
+  "pattern": "\\brailway|street ?car|trolley|cable car|\\bmuni\\b|\\bbart\\b|light rail|subway|transit|\\bbicycl|\\bbike lane\\b|vision zero",
+  "total": 7183,
+  "placed": 92,
+  "alltime": 5.81,
+  "last5": 3.04,
+  "last20": 4.24,
+  "skew": 0.5,
+  "mappable": 6577
+ },
+ {
+  "family": "Schools",
+  "pattern": "\\bschool\\b|schools|board of education|unified school|kindergarten|classroom",
+  "total": 6625,
+  "placed": 93,
+  "alltime": 5.36,
+  "last5": 1.05,
+  "last20": 1.14,
+  "skew": 0.2,
+  "mappable": 6180
+ },
+ {
+  "family": "Health & hospitals",
+  "pattern": "\\bhealth\\b|hospital|clinic|sanitar|epidemic|disease|mental health",
+  "total": 5851,
+  "placed": 88,
+  "alltime": 4.73,
+  "last5": 3.28,
+  "last20": 4.27,
+  "skew": 0.7,
+  "mappable": 5142
+ },
+ {
+  "family": "Police & fire",
+  "pattern": "\\bpolice\\b|fire department|firehouse|fire station|patrol|arrest|\\bcrime\\b|\\bcriminal\\b|public safety",
+  "total": 5454,
+  "placed": 89,
+  "alltime": 4.41,
+  "last5": 4.7,
+  "last20": 3.4,
+  "skew": 1.1,
+  "mappable": 4856
+ },
+ {
+  "family": "Housing & rent",
+  "pattern": "\\bhousing|dwelling unit|apartment|tenant|eviction|rent control|affordable hous|\\bmohcd\\b|below market rate|\\binclusionary\\b",
+  "total": 4938,
+  "placed": 87,
+  "alltime": 3.99,
+  "last5": 13.49,
+  "last20": 11.18,
+  "skew": 3.4,
+  "mappable": 4313
+ },
+ {
+  "family": "The waterfront",
+  "pattern": "\\bport\\b|pier\\b|wharf|seawall|embarcadero|waterfront",
+  "total": 4346,
+  "placed": 82,
+  "alltime": 3.51,
+  "last5": 2.42,
+  "last20": 9.91,
+  "skew": 0.7,
+  "mappable": 3585
+ },
+ {
+  "family": "Shops, bars & restaurants",
+  "pattern": "\\bliquor licen|\\btype-\\d|premise-to-premise|formula retail|\\bsmall business\\b|legacy business|entertainment permit|\\bnightlife\\b|\\brestaurant|\\bcafe\\b|food truck|\\bgrocery\\b|sidewalk cafe|outdoor dining|shared spaces",
+  "total": 1582,
+  "placed": 92,
+  "alltime": 1.28,
+  "last5": 3.66,
+  "last20": 3.38,
+  "skew": 2.9,
+  "mappable": 1453
+ },
+ {
+  "family": "Landmarks & old buildings",
+  "pattern": "\\blandmark\\b|\\blandmarks\\b|historic (?:district|preservation|resource|building)|\\bmills act\\b|certificate of appropriateness|architectural (?:heritage|significance)",
+  "total": 1455,
+  "placed": 95,
+  "alltime": 1.18,
+  "last5": 8.98,
+  "last20": 4.63,
+  "skew": 7.6,
+  "mappable": 1382
+ },
+ {
+  "family": "Redevelopment",
+  "pattern": "redevelop|urban renewal|blight",
+  "total": 1315,
+  "placed": 85,
+  "alltime": 1.06,
+  "last5": 1.52,
+  "last20": 2.4,
+  "skew": 1.4,
+  "mappable": 1115
+ },
+ {
+  "family": "Libraries",
+  "pattern": "\\blibrar",
+  "total": 947,
+  "placed": 89,
+  "alltime": 0.77,
+  "last5": 0.86,
+  "last20": 0.97,
+  "skew": 1.1,
+  "mappable": 841
+ },
+ {
+  "family": "Homelessness & shelter",
+  "pattern": "\\bhomeless|encampment|shelter\\b|navigation center|supportive housing|\\bsro\\b|single room occupancy|\\bhsh\\b|\\bhomekey\\b|continuum of care",
+  "total": 703,
+  "placed": 84,
+  "alltime": 0.57,
+  "last5": 3.85,
+  "last20": 2.11,
+  "skew": 6.8,
+  "mappable": 593
+ },
+ {
+  "family": "Street names & memorials",
+  "pattern": "\\bcommemorat|\\bin memoriam\\b|honorary street|street naming|\\brenaming\\b|\\bproclaiming\\b|\\bplaque\\b|memorial (?:to|for|honoring)",
+  "total": 519,
+  "placed": 82,
+  "alltime": 0.42,
+  "last5": 2.4,
+  "last20": 1.35,
+  "skew": 5.7,
+  "mappable": 426
+ },
+ {
+  "family": "Evictions & tenants",
+  "pattern": "\\beviction|\\btenant\\b|rent control|rent (?:board|increase|stabiliz)|just cause|owner move-in|\\bdisplacement\\b",
+  "total": 467,
+  "placed": 83,
+  "alltime": 0.38,
+  "last5": 2.19,
+  "last20": 1.34,
+  "skew": 5.8,
+  "mappable": 386
+ }
+]

@@ -1,0 +1,14 @@
+{
+ "shelter & homelessness": "homeless|hunger|hungry|shelter|\\bsro\\b|single room occupancy|residential hotel|continuum of care|indigent|general assistance",
+ "housing": "housing|residential hotel|\\brent\\b|affordable|dwelling",
+ "schools": "school|education|unified school|college",
+ "parks & recreation": "\\bpark\\b|playground|recreation|open space|golden gate park",
+ "libraries": "\\blibrar",
+ "police & fire": "police|crime|criminal|justice|juvenile|jail|sheriff|probation|fire depart",
+ "health & hospitals": "health|hospital|clinic|mental|epidemi|aids|\\bhiv\\b",
+ "water & sewer": "water|sewer|hetch|reservoir|watershed",
+ "transit": "transit|\\bmuni\\b|\\bbart\\b|rapid transit|railway",
+ "redevelopment": "redevelop|renewal|blight",
+ "zoning & land use": "zoning|land use|\\belement\\b|general plan|planning code",
+ "the waterfront & port": "\\bport\\b|waterfront|shoreline|\\bpier\\b|bay conservation"
+}

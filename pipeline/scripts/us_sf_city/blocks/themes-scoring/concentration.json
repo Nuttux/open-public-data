@@ -1,0 +1,142 @@
+[
+ {
+  "theme": "Landmarks & old buildings",
+  "n": 488,
+  "blocks": 283,
+  "spatial": 0.49,
+  "temporal": 0.609,
+  "top10": 100,
+  "peak3": 78,
+  "story": 109.8
+ },
+ {
+  "theme": "Schools",
+  "n": 1616,
+  "blocks": 767,
+  "spatial": 0.43,
+  "temporal": 0.651,
+  "top10": 82,
+  "peak3": 81,
+  "story": 108.1
+ },
+ {
+  "theme": "Housing & rent",
+  "n": 1158,
+  "blocks": 487,
+  "spatial": 0.472,
+  "temporal": 0.418,
+  "top10": 99,
+  "peak3": 72,
+  "story": 88.9
+ },
+ {
+  "theme": "Redevelopment",
+  "n": 250,
+  "blocks": 152,
+  "spatial": 0.509,
+  "temporal": 0.341,
+  "top10": 100,
+  "peak3": 62,
+  "story": 84.9
+ },
+ {
+  "theme": "Shops, bars & restaurants",
+  "n": 835,
+  "blocks": 411,
+  "spatial": 0.473,
+  "temporal": 0.312,
+  "top10": 100,
+  "peak3": 64,
+  "story": 78.5
+ },
+ {
+  "theme": "Water & sewers",
+  "n": 3198,
+  "blocks": 1661,
+  "spatial": 0.303,
+  "temporal": 0.452,
+  "top10": 55,
+  "peak3": 74,
+  "story": 75.5
+ },
+ {
+  "theme": "What's being built",
+  "n": 3543,
+  "blocks": 1604,
+  "spatial": 0.312,
+  "temporal": 0.412,
+  "top10": 56,
+  "peak3": 69,
+  "story": 72.4
+ },
+ {
+  "theme": "Your street",
+  "n": 15539,
+  "blocks": 3590,
+  "spatial": 0.095,
+  "temporal": 0.584,
+  "top10": 36,
+  "peak3": 80,
+  "story": 67.9
+ },
+ {
+  "theme": "Getting around",
+  "n": 1902,
+  "blocks": 946,
+  "spatial": 0.405,
+  "temporal": 0.123,
+  "top10": 75,
+  "peak3": 62,
+  "story": 52.8
+ },
+ {
+  "theme": "The waterfront",
+  "n": 614,
+  "blocks": 374,
+  "spatial": 0.476,
+  "temporal": -0.015,
+  "top10": 100,
+  "peak3": 50,
+  "story": 46.1
+ },
+ {
+  "theme": "Health & hospitals",
+  "n": 935,
+  "blocks": 626,
+  "spatial": 0.436,
+  "temporal": -0.117,
+  "top10": 84,
+  "peak3": 44,
+  "story": 31.9
+ },
+ {
+  "theme": "Parks & playgrounds",
+  "n": 1974,
+  "blocks": 1028,
+  "spatial": 0.398,
+  "temporal": -0.083,
+  "top10": 72,
+  "peak3": 51,
+  "story": 31.5
+ },
+ {
+  "theme": "Police & fire",
+  "n": 710,
+  "blocks": 486,
+  "spatial": 0.454,
+  "temporal": -0.217,
+  "top10": 99,
+  "peak3": 40,
+  "story": 23.7
+ },
+ {
+  "theme": "Parking & traffic",
+  "n": 4486,
+  "blocks": 2162,
+  "spatial": 0.24,
+  "temporal": -0.041,
+  "top10": 48,
+  "peak3": 43,
+  "story": 19.9
+ }
+]
