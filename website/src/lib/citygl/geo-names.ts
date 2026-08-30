@@ -47,7 +47,12 @@ export interface GeoName {
 }
 
 /** the classes a map writes in italic, because they are water */
-const WATER = new Set(["Bay", "Lake", "Reservoir", "Stream", "Falls", "Beach", "Basin"]);
+const WATER = new Set([
+  "Bay", "Lake", "Reservoir", "Stream", "Falls", "Beach", "Basin",
+  /* a CHANNEL is water: the Golden Gate came out in the land hand, in spaced
+     capitals, which is how a map writes a hill */
+  "Channel",
+]);
 
 /** lifted the same amount the neighbourhood capitals are, so a name on a hill
  *  sits on the hill rather than in the ground beside it */

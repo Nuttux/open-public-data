@@ -55,6 +55,12 @@ SRC = ("https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/"
 # navigational, not civic -- and `Populated Place`/`Civil` duplicate the hood
 # rings the map already draws from the city's own record.
 CLASS_RANK = {
+    # CHANNEL WAS MISSING AND IT COST THE GOLDEN GATE. The gazetteer files the
+    # strait as a Channel, not a Bay or a Gap, and so is Islais Creek Channel
+    # -- so the single most famous geographic feature in San Francisco was
+    # absent from a map of San Francisco because a class was left out of this
+    # table. Ranked with the bay: it is the water the city is named around.
+    "Channel": 1,
     "Bay": 1,
     "Summit": 2,
     "Island": 3,
@@ -132,10 +138,18 @@ def main() -> None:
         if name in seen_names:
             continue
         seen_names.add(name)
+        # A NAVIGATIONAL ROCK IS NOT A MAP FEATURE at the sizes this map is
+        # read at. Fort Point Rock and Helmet Rock are real, named and
+        # published, and they were taking frame from GOLDEN GATE. They keep
+        # their place in the file and lose every collision to something with
+        # a shore on it.
+        r_ = rank if in_sf else 0
+        if cls == "Island" and name.rstrip().endswith(("Rock", "Rocks", "Reef", "Shoal")):
+            r_ = 9
         out.append({
             "n": name,
             "k": cls,
-            "r": rank if in_sf else 0,
+            "r": r_,
             "id": int(r[ix["feature_id"]]),
             "x": round((lon - P["lon0"]) * mx, 1),
             "y": round((lat - P["lat0"]) * P["mpd"], 1),
