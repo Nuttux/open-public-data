@@ -110,6 +110,32 @@ const GAUGE_M = 4.0;
  */
 const RAIL_OFFSET = 0.6;
 
+/* ── AND polygonOffset IS WHY NONE OF THAT WAS EVER SEEN ──────────────────
+ * `RAIL_OFFSET` above reaches three.js only as `polygonOffsetFactor` and
+ * `polygonOffsetUnits`, and on the WebGPU backend those are mapped onto a
+ * pipeline's depth bias and never applied. So the track was laid at exactly
+ * `elevAt` -- the bare ground -- while every road surface over it is drawn at
+ * the same height and wins on draw order.
+ *
+ * Measured at the Nob Hill cable camera, hiding the layer and differencing the
+ * frame: the rail changes ONE pixel. With `depthTest` forced off in the same
+ * frame it changes 52,569 -- 6.9 % of the view. The ballast, the sleepers, the
+ * cable slot and both steel ribbons were all being drawn, every frame, under
+ * the road. Raising `RAIL_OFFSET` to 30 changed nothing, which is what a
+ * constant that reaches nothing looks like.
+ *
+ * So the separation is a real height, in ground metres, applied to the vertex
+ * -- `mesh.scale.y` carries `zex`, so it exaggerates with everything else.
+ * `street-detail.ts` warns that a lift is also a SCREEN DISPLACEMENT in an
+ * axonometric projection and that the Canvas renderer's 0.8 m slides a line
+ * off its own street. That warning is about 0.8 m. These are a quarter of it
+ * and less: at the closest zoom the view spans about 0.35 m a pixel, so 0.2 m
+ * of steel moves half a pixel up-screen, and at any wider zoom, less. It is
+ * the smallest lift that survives a depth test and the largest that cannot be
+ * seen as displacement. */
+const RAIL_BED_LIFT_M = 0.1;
+const RAIL_STEEL_LIFT_M = 0.2;
+
 /**
  * ── AND THE RUNG ABOVE WAS READ OFF THE WRONG CONVENTION ────────────────
  *
@@ -363,13 +389,14 @@ export async function railLayer(
   const bed = { pos, col, idx };
   const steel = { pos: sPos, col: sCol, idx: sIdx };
   let into = bed;
+  let liftM = RAIL_BED_LIFT_M;
   const quad = (
     ax: number, ay: number, bx: number, by: number,
     nx: number, ny: number, w: number, hex: number,
   ): void => {
     const h = w / 2;
-    const az = o.elevAt(ax, ay);
-    const bz = o.elevAt(bx, by);
+    const az = o.elevAt(ax, ay) + liftM;
+    const bz = o.elevAt(bx, by) + liftM;
     const i = into.pos.length / 3;
     into.pos.push(
       ax + nx * h, az, ay + ny * h,
@@ -435,8 +462,10 @@ export async function railLayer(
 
     /* and the steel, one ribbon each side of the centreline */
     into = steel;
+    liftM = RAIL_STEEL_LIFT_M;
     for (const sgn of [-off, off]) rib(RAIL_W, RAIL_C, sgn);
     into = bed;
+    liftM = RAIL_BED_LIFT_M;
   }
 
   /** one buffer set -> one mesh, so the two can carry different materials */
