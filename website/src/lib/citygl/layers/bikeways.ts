@@ -61,6 +61,28 @@ const C_BY_CLASS: Record<number, number> = {
   4: 0x2f6f42,
 };
 
+/* ── AND THE DIAGRAM IS NOT PAINTED, SO IT IS NOT PAINT-COLOURED ───────────
+   The greens above are right for the lane: they are roughly what the city
+   actually paints. They are wrong for the DIAGRAM, and the frame proved it —
+   the ribbons drew, at 20 m, out of depth order, and were still hard to pick
+   out, because San Francisco's own ground in this renderer is made of green:
+   park, canopy, the Presidio, Golden Gate Park, Mount Sutro. A green line over
+   green ground is a line you have to hunt for.
+
+   So the two objects are coloured for their two jobs. The lane on the default
+   map keeps the paint. The diagram takes a violet ladder, which is the one
+   strong hue nothing else on this map uses — no roof material, no terrain
+   ramp entry, no water tone and no district capital — so it cannot be confused
+   with a thing the city is made of. The class ladder is preserved exactly:
+   separated strongest, path bluer because it is away from traffic, painted
+   lane the middle, shared lane the palest because it is a marking. */
+const D_BY_CLASS: Record<number, number> = {
+  1: 0x5b3fc4,
+  2: 0x9333c4,
+  3: 0xb87ad0,
+  4: 0x7a1fa8,
+};
+
 /** a shared lane is a MARKING: drawn as dashes, not as a continuous lane */
 const DASH_ON_M = 6;
 const DASH_OFF_M = 7;
@@ -147,13 +169,15 @@ export async function bikewayLayer(
     b.idx.push(i, i + 1, i + 2, i, i + 2, i + 3);
   };
 
-  /** the lane at its real painted width, and the same piece as a diagram */
+  /** the lane at its real painted width and paint colour, and the same piece
+   *  as a diagram at a diagram's width and colour */
   const quad = (
-    ax: number, ay: number, bx: number, by: number, w: number, hex: number,
+    ax: number, ay: number, bx: number, by: number,
+    w: number, hex: number, dhex: number,
   ): void => {
     quadInto(real, ax, ay, bx, by, w, hex);
-    quadInto(wide, ax, ay, bx, by, DIAGRAM_W_M, hex);
-    quadInto(narrow, ax, ay, bx, by, DIAGRAM_NARROW_W_M, hex);
+    quadInto(wide, ax, ay, bx, by, DIAGRAM_W_M, dhex);
+    quadInto(narrow, ax, ay, bx, by, DIAGRAM_NARROW_W_M, dhex);
   };
 
   /* the file arrives in year order, so the century scrub is a draw range */
@@ -167,13 +191,14 @@ export async function bikewayLayer(
     }
     const w = W_BY_CLASS[s.c] ?? 2;
     const hex = C_BY_CLASS[s.c] ?? C_BY_CLASS[3];
+    const dhex = D_BY_CLASS[s.c] ?? D_BY_CLASS[3];
     for (let k = 0; k + 1 < s.p.length; k++) {
       const [ax, ay] = s.p[k];
       const [bx, by] = s.p[k + 1];
       const L = Math.hypot(bx - ax, by - ay);
       km += L / 1000;
       if (s.c !== 3) {
-        quad(ax, ay, bx, by, w, hex);
+        quad(ax, ay, bx, by, w, hex, dhex);
         continue;
       }
       /* the shared lane, dashed along its own length so the rhythm is the
@@ -182,7 +207,7 @@ export async function bikewayLayer(
       const uy = (by - ay) / L;
       for (let t = 0; t < L; t += DASH_ON_M + DASH_OFF_M) {
         const t1 = Math.min(L, t + DASH_ON_M);
-        quad(ax + ux * t, ay + uy * t, ax + ux * t1, ay + uy * t1, w, hex);
+        quad(ax + ux * t, ay + uy * t, ax + ux * t1, ay + uy * t1, w, hex, dhex);
       }
     }
   }

@@ -97,7 +97,7 @@ function chipStyle(on: boolean, ink: string | null): React.CSSProperties {
 import { CityOverlay } from "@/lib/citygl/overlay";
 import { CityHelpRow } from "@/lib/citygl/help-row";
 import { useT } from "@/lib/localeContext";
-import { attachControls, stepForZ } from "@/lib/citygl/controls";
+import { attachControls, bandCuts, stepForZ } from "@/lib/citygl/controls";
 import { createFilm, resolveFrames, type FilmPlayer } from "@/lib/citygl/film";
 import { detectQuality } from "@/lib/citygl/quality";
 import { blockPicker } from "@/lib/citygl/pick";
@@ -317,6 +317,10 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const stopsRef = useRef<{ label: string; go: () => void; i: number }[]>([]);
   /* camera scale per named zoom stop, largest view first */
   const stopScalesRef = useRef<number[]>([]);
+  /* the two detail-band boundaries this city's own stop ladder implies —
+     `controls.ts` §THE CUTS BELONG TO THE STOPS. Seeded with the Canvas
+     page's ladder so a pick before the stops are built still classifies. */
+  const stopCutsRef = useRef<readonly [number, number]>(bandCuts([1, 2.9, 7.2]));
   /* which stop the reader was nearest when they clicked — 0 whole city, up to
      the closest stop. `-1` while unknown. */
   const [zoomStop, setZoomStop] = useState(-1);
@@ -1044,8 +1048,24 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       }
 
       const base = engine.getCamera().scale;
+      /* ── WHICH DETAIL BAND EACH ZOOM STOP IS IN ──────────────────────
+         The cuts are the geometric midpoints of THIS city's own stop ladder —
+         `controls.ts` §THE CUTS BELONG TO THE STOPS. They used to be two typed
+         constants, and the second fell 4 % SHORT of the DISTRICT stop, so the
+         button labelled DISTRICT landed in the closest band and three of the
+         four stops shared one rung of a three-rung ladder.
+
+         Taken off `spanM` rather than off the projected scales: the ratio of
+         two spans IS the zoom multiple, and it does not depend on the viewport,
+         so the wheel and the buttons cannot disagree on a narrow window. */
+      const zStops = descriptor.stops.map(
+        (s) => descriptor.stops[0].spanM / Math.max(1e-6, s.spanM),
+      );
+      const stopCuts = bandCuts(zStops);
+      stopCutsRef.current = stopCuts;
       detachControls = attachControls(canvas, engine, {
         base,
+        zStops,
         onChange: () => setNonce((n) => n + 1),
       });
       canvas.tabIndex = 0;
@@ -1152,7 +1172,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           const across =
             projection.proj(at[0] + s.spanM, at[1], 0)[0] - projection.proj(at[0], at[1], 0)[0];
           const scale = (e.viewport.W * 0.94) / Math.max(1e-6, Math.abs(across));
-          e.setStep(stepForZ(scale / base));
+          e.setStep(stepForZ(scale / base, stopCuts));
           e.setCamera({ cx: c[0], cy: c[1], scale });
           setNonce((n) => n + 1);
         },
@@ -1297,7 +1317,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         }
         const c = projection.proj(sx / ring.length, sy / ring.length, 0);
         const scale = scales[stop] ?? eng.getCamera().scale;
-        eng.setStep(stepForZ(scale / (scales[0] || scale)));
+        eng.setStep(stepForZ(scale / (scales[0] || scale), stopCutsRef.current));
         eng.setCamera({ cx: c[0], cy: c[1], scale });
       }
       const ov = overlayRef.current;

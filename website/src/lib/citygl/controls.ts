@@ -31,19 +31,67 @@ export interface ControlsOptions {
   zMax?: number;
   /** called whenever the camera moved, so a caller can redraw its own chrome */
   onChange?: () => void;
+  /**
+   * the city's own zoom stops as multiples of `base`, wide first — the ladder
+   * the ZOOM buttons move between. The band cuts are the geometric midpoints
+   * of it; see §THE CUTS BELONG TO THE STOPS. Omitted, the Canvas page's
+   * ladder is assumed, which is what this file did unconditionally before.
+   */
+  zStops?: readonly number[];
 }
 
 /**
  * WHICH BAND A ZOOM IS IN.
  *
- * The Canvas ladder's own thresholds, read off `ZEX_BY_STEP`'s three entries:
- * the whole city, a district, and everything closer. It is a step function on
- * purpose — the vertical exaggeration is a DECLARED treatment and a
- * continuously varying one would make two frames of the same city
- * incomparable.
+ * Three bands, read off `ZEX_BY_STEP`'s three entries: the whole city, a
+ * district, and everything closer. It is a step function on purpose — the
+ * vertical exaggeration is a DECLARED treatment and a continuously varying one
+ * would make two frames of the same city incomparable.
+ *
+ * ── §THE CUTS BELONG TO THE STOPS, AND THESE WERE TYPED ───────────────────
+ * They were `z < 1.6 ? 0 : z < 3.2 ? 1 : 2`, and `lib/city/camera.ts` states
+ * the rule those numbers were meant to satisfy:
+ *
+ *   > LOD BAND BOUNDARIES — geometric midpoints of ZSTEPS, so a band change
+ *   > lands halfway between two presets in log space **rather than at one of
+ *   > them**.
+ *
+ * 3.2 lands almost exactly ON one of them. MEASURED by clicking each ZOOM
+ * button in turn and reading the engine back:
+ *
+ *     WHOLE CITY     z 1.00   step 0
+ *     DISTRICT       z 3.33   step 2      <- 4 % past the 3.2 cut
+ *     A FEW STREETS  z 10.0   step 2
+ *     STREET         z 33.3   step 2
+ *
+ * The button labelled DISTRICT did not get the district band, and three of the
+ * four stops collapsed onto one. Band 1 existed only in z 1.6 … 3.2, a sliver
+ * no stop lands in, so the middle rung of the detail ladder was unreachable
+ * from any control on the page — every ribbon width, label size and street
+ * inset that varies by step was frozen from the district camera all the way
+ * in.
+ *
+ * The stops are DATA — `descriptor.ts` §CityStop, one `spanM` per stop — and
+ * they differ per city, so a constant here cannot be right for more than one
+ * of them. The cuts are derived from the ladder the city actually declares.
  */
-export function stepForZ(z: number): number {
-  return z < 1.6 ? 0 : z < 3.2 ? 1 : 2;
+export function bandCuts(zStops: readonly number[]): readonly [number, number] {
+  /* geometric midpoints of the first three stops: halfway between two stops in
+     LOG space, which is the space a zoom ladder is spaced in */
+  const z = zStops.length >= 3 ? zStops : CANVAS_ZSTEPS;
+  return [Math.sqrt(z[0] * z[1]), Math.sqrt(z[1] * z[2])];
+}
+
+/** `lib/city/camera.ts` ZSTEPS — the Canvas page's ladder, and the fallback
+ *  for a caller with no stops of its own to offer */
+const CANVAS_ZSTEPS: readonly number[] = [1, 2.9, 7.2];
+const DEFAULT_CUTS = bandCuts(CANVAS_ZSTEPS);
+
+export function stepForZ(
+  z: number,
+  cuts: readonly [number, number] = DEFAULT_CUTS,
+): number {
+  return z < cuts[0] ? 0 : z < cuts[1] ? 1 : 2;
 }
 
 export function attachControls(
@@ -62,8 +110,10 @@ export function attachControls(
     return clamped * o.base;
   };
 
+  const cuts = bandCuts(o.zStops ?? CANVAS_ZSTEPS);
+
   const syncStep = (scale: number): void => {
-    const want = stepForZ(scale / o.base);
+    const want = stepForZ(scale / o.base, cuts);
     if (want !== host.getStep()) host.setStep(want);
   };
 
