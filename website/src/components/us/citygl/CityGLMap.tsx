@@ -19,6 +19,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CityData } from "@/lib/city/data";
 import { projection } from "@/lib/city/projection";
 import { CityEngine } from "@/lib/citygl/engine";
+import { CITY_SYSTEMS } from "@/lib/citygl/systems";
 import type { CityDescriptor } from "@/lib/citygl/descriptor";
 import { loadFineDem, meshElevAt, terrainLayer } from "@/lib/citygl/layers/terrain";
 import { decodeParks } from "@/lib/city/trees";
@@ -138,6 +139,10 @@ import { roofPalette, wallPalette } from "@/components/us/city/palette";
  */
 const YEAR_MIN = 1906;
 const YEAR_MAX = 2026;
+/** years a second at 1x: the century in forty seconds */
+const SPEED_1X_YPS = (YEAR_MAX - YEAR_MIN) / 40;
+/** what the speed button steps through */
+const SPEEDS = [1, 2, 4] as const;
 
 export interface CityGLMapProps {
   descriptor: CityDescriptor;
@@ -260,8 +265,21 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
      So the reader picks a MULTIPLE and the rate is derived. 1× runs the
      century in forty seconds, which is a walk; 4× in ten, which is the whole
      thing at a glance. */
+  /** the scrub's own DOM node — see §THE SCRUB IS NOT CONTROLLED */
+  const scrubEl = useRef<HTMLInputElement | null>(null);
+  /** put a year on the scrub without going through React */
+  const syncScrub = useCallback((y: number | undefined) => {
+    const el = scrubEl.current;
+    if (!el) return;
+    const v = y ?? YEAR_MAX;
+    if (Number(el.value) !== v) el.value = String(v);
+    const frac = (v - YEAR_MIN) / (YEAR_MAX - YEAR_MIN);
+    el.style.setProperty("--scrub", `${(frac * 100).toFixed(2)}%`);
+  }, []);
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(2);
+  /** which system is lit — see `lib/citygl/systems.ts` */
+  const [system, setSystem] = useState<string | null>(null);
   const playRate = speed * SPEED_1X_YPS;
 
   /* ── AND THE READOUT FOLLOWS THE CLOCK, WHICH REACT CANNOT SEE ─────────
@@ -282,26 +300,16 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         return;
       }
       const y = e.getYear();
+      syncScrub(y === undefined ? undefined : Math.floor(y));
       setYear(y === undefined ? null : Math.floor(y));
       raf = requestAnimationFrame(poll);
     };
     raf = requestAnimationFrame(poll);
     return () => cancelAnimationFrame(raf);
-  }, [playing]);
+  }, [playing, syncScrub]);
   const [saving, setSaving] = useState(false);
   /** the year a drag is currently on, and its one coalesced frame */
   const scrubRef = useRef<number | undefined>(undefined);
-  /** the scrub's own DOM node — see §THE SCRUB IS NOT CONTROLLED */
-  const scrubEl = useRef<HTMLInputElement | null>(null);
-  /** put a year on the scrub without going through React */
-  const syncScrub = useCallback((y: number | undefined) => {
-    const el = scrubEl.current;
-    if (!el) return;
-    const v = y ?? YEAR_MAX;
-    if (Number(el.value) !== v) el.value = String(v);
-    const frac = (v - YEAR_MIN) / (YEAR_MAX - YEAR_MIN);
-    el.style.setProperty("--scrub", `${(frac * 100).toFixed(2)}%`);
-  }, []);
   const scrubRaf = useRef(0);
   const t = useT();
   const stopsRef = useRef<{ label: string; go: () => void; i: number }[]>([]);
@@ -1595,6 +1603,42 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               borderTop: "1px solid var(--rule, #e4e6ea)",
             }}
           >
+            {/* ── WHICH SYSTEM IS BEING WATCHED ──────────────────────────
+                The century plays the whole city at once, which is the right
+                default and also why no single thing can be FOLLOWED. Picking
+                one quietens the rest — and for transport it also draws the
+                network as a diagram over the city, because at the whole-city
+                camera the real track is half a pixel wide. `systems.ts` has
+                the measurements.
+
+                One lit at a time, and clicking the lit one clears it: two
+                systems lit at once is a picture of neither. */}
+            <div
+              style={{
+                display: "flex",
+                border: "1px solid var(--rule, #e4e6ea)",
+                borderRadius: 6,
+                overflow: "hidden",
+              }}
+            >
+              {CITY_SYSTEMS.map((sys) => (
+                <button
+                  key={sys.key}
+                  type="button"
+                  className="fx-city-system"
+                  aria-pressed={system === sys.key}
+                  title={sys.note}
+                  onClick={() => {
+                    const next = system === sys.key ? null : sys.key;
+                    setSystem(next);
+                    engineRef.current?.setSystem(next);
+                  }}
+                >
+                  {sys.label}
+                </button>
+              ))}
+            </div>
+
             {/* ── PLAY, WHICH IS WHAT MAKES IT A CITY BEING BUILT ────────
                 Dragging the rail hands out WHOLE years, and every layer that
                 raises something reads the year's FRACTION — so a scrub lands
@@ -1630,13 +1674,14 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
             <button
               type="button"
               onClick={() => {
-                const next = playRate >= 24 ? 3 : playRate * 2;
-                setPlayRate(next);
+                const i = SPEEDS.indexOf(speed as (typeof SPEEDS)[number]);
+                const next = SPEEDS[(i + 1) % SPEEDS.length];
+                setSpeed(next);
                 const e = engineRef.current;
-                if (e?.playing) e.play(YEAR_MIN, YEAR_MAX, next);
+                if (e?.playing) e.play(YEAR_MIN, YEAR_MAX, next * SPEED_1X_YPS);
               }}
-              aria-label={`Speed ${playRate} years a second`}
-              title="years a second"
+              aria-label={`Speed ${speed} times`}
+              title={`${(YEAR_MAX - YEAR_MIN) / (speed * SPEED_1X_YPS)} seconds for the century`}
               style={{
                 font: "600 12px/1 var(--f-mono, ui-monospace, monospace)",
                 padding: "7px 9px",
@@ -1648,7 +1693,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 opacity: 0.8,
               }}
             >
-              {playRate}×
+              {speed}×
             </button>
             <span
               className="tnum"
@@ -1661,14 +1706,30 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               {year ?? YEAR_MAX}
             </span>
             <input
+              ref={scrubEl}
               type="range"
+              className="fx-city-scrub"
               min={YEAR_MIN}
               max={YEAR_MAX}
               step={1}
-              value={year ?? YEAR_MAX}
+              defaultValue={YEAR_MAX}
               aria-label="Year"
               style={{ flex: 1 }}
-              /* ── THE SCRUB IS DRIVEN IMPERATIVELY, AND THAT IS THE FIX ────
+              /* ── THE SCRUB IS NOT CONTROLLED, AND THAT IS THE FIX ─────────
+                 It carried `value={year}` and committed state only on release.
+                 That is the one arrangement React explicitly undoes: for a
+                 controlled input it re-applies `value` after every input
+                 event, so a drag that did not change state had its thumb put
+                 back where it started, every frame. Daniel, twice: *"the scrub
+                 is buggy i cant move thru it"*.
+
+                 So the input owns its own value. React never writes it during
+                 a gesture, and `syncScrub` puts a year on it imperatively when
+                 the clock or a reset moves it from elsewhere. The filled run
+                 is a CSS custom property set on the same node, so dragging
+                 repaints a gradient and nothing else.
+
+                 ── AND THE WORK IS STILL SPLIT ──────────────────────────────
                  This was a controlled input whose `onChange` did the whole job:
                  set React state, re-gate 139 chunks of geometry, move the rise
                  uniforms, re-clock the overlay. React then re-rendered and put
@@ -1688,6 +1749,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 const v = Number(e.currentTarget.value);
                 const next = v >= YEAR_MAX ? undefined : v;
                 scrubRef.current = next;
+                syncScrub(next);
                 if (scrubRaf.current) return;
                 scrubRaf.current = requestAnimationFrame(() => {
                   scrubRaf.current = 0;
