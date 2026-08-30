@@ -34,6 +34,7 @@ import { heroesLayer } from "@/lib/citygl/layers/heroes";
 import { capsLayer } from "@/lib/citygl/layers/caps";
 import { railLayer } from "@/lib/citygl/layers/rail";
 import { bikewayLayer } from "@/lib/citygl/layers/bikeways";
+import { railHistoryLayer } from "@/lib/citygl/layers/rail-history";
 import { streetsLayer } from "@/lib/citygl/layers/streets";
 import { streetDetailLayer } from "@/lib/citygl/layers/street-detail";
 import { streetMarkingsLayer } from "@/lib/citygl/layers/street-markings";
@@ -783,6 +784,18 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          needs no argument. `layers/bikeways.ts` holds the four classes
          apart, because a shared lane is a road with a picture of a bicycle
          on it and drawing it as a lane would overstate the city. */
+      /* ── AND THE TRACK THAT IS NO LONGER THERE ──────────────────────
+         The first layer on this map that can TAKE SOMETHING AWAY: a route
+         carries the year the Board authorised its tracks to be lifted, so a
+         line appears and later goes. See `layers/rail-history.ts`. */
+      const histRail = await railHistoryLayer(data, {
+        scene: engine.scene,
+        elevAt: groundAt,
+        zex: descriptor.look.zexByStep[0],
+      });
+      if (disposed) return;
+      if (histRail) engine.add(histRail);
+
       const bikes = await bikewayLayer(data, {
         scene: engine.scene,
         elevAt: groundAt,

@@ -41,7 +41,79 @@
       "to": "Twentieth",
       "from": "West Portal",
       "from_note": "the ordinance's terminus is 'the southwesterly portal of the Twin Peaks tunnel', which is a place and not a street. West Portal Avenue is the street at that portal and is named for it. This is the one INTERPRETATION in the file and it is marked: without it the run along Ulloa has no start and falls back to an arbitrary length."
+    },
+    {
+      "name": "Geary Street Municipal Railway, Richmond extension",
+      "year": 1912,
+      "kind": "streetcar",
+      "streets": [
+        "Geary",
+        "Thirty-third",
+        "Balboa",
+        "Forty-fifth",
+        "Cabrillo"
+      ],
+      "to": "Great Highway",
+      "source": "journalofproceed1912sanfrich",
+      "quote": "J. R. No. 307. Resolved, That the Board of Public Works, be and it is hereby authorized and directed to advertise for bids for track construction for the Geary Street Municipal Railway from Geary street along Thirty-third avenue, Balboa street, Forty-fifth avenue and Cabrillo street to the Great Highway, and when bids shall have been received the Finance Committee will recommend the necessary appropriation.",
+      "note": "Muni's OWN FIRST LINE and a vanished one: Geary carries no rail today, so this route exists on the map only because the Board wrote it down. It should score LOW against the surviving network, and that is the point of it.",
+      "ended_searched": "no abandonment for the Geary line was found in the 1955 or 1956 volumes, searched for abandon/discontinue/remove-tracks/motor coach near 'Geary'. The line is gone -- it scores 0.0 % against today's network -- and the record here does not say when, so it carries no `ended` and the layer stands down at the present rather than assert it survived."
+    },
+    {
+      "name": "Market Street Railway, Bryant and Sterling",
+      "year": 0,
+      "ended": 1935,
+      "kind": "streetcar",
+      "streets": [
+        "Bryant",
+        "Sterling"
+      ],
+      "from": "Second",
+      "to": "Harrison",
+      "source": "journalofproceed30sanfrich",
+      "ended_source": "journalofproceed30sanfrich",
+      "quote": "Bill No. 710, Ordinance No. 15.0918: Authorizing Market Street Railway Company to abandon and discontinue street car service and remove its street railway tracks from Bryant Street from Second Street to Sterling Street, thence along Sterling Street to Harrison Street",
+      "note": "a PRIVATE company's track, which is most of the mileage this map cannot otherwise reach. The ordinance says when it was taken up and not when it was laid."
+    },
+    {
+      "name": "Market Street Railway, Harrison Street",
+      "year": 0,
+      "ended": 1935,
+      "kind": "streetcar",
+      "streets": [
+        "Harrison"
+      ],
+      "from": "Second",
+      "to": "Steuart",
+      "source": "journalofproceed30sanfrich",
+      "ended_source": "journalofproceed30sanfrich",
+      "quote": "to abandon and discontinue street car service and remove its street railway tracks from Harrison Street, commencing at the intersection of Second and Harrison Streets, thence along Harrison Street to Steuart Street"
+    },
+    {
+      "name": "Market Street Railway, Steuart Street",
+      "year": 0,
+      "ended": 1935,
+      "kind": "streetcar",
+      "streets": [
+        "Steuart"
+      ],
+      "from": "Harrison",
+      "to": "Folsom",
+      "source": "journalofproceed30sanfrich",
+      "ended_source": "journalofproceed30sanfrich",
+      "quote": "and on Steuart Street from Harrison Street to Folsom Street"
     }
   ],
-  "_dropped": "Ocean View line (M): its quote is a CONSTRUCTION PAYMENT and carries no street sequence. The streets first listed here were recalled rather than read, which is the exact failure this file exists to prevent, so the route is out until an ordinance describing it is found."
+  "_dropped": "Ocean View line (M): its quote is a CONSTRUCTION PAYMENT and carries no street sequence. The streets first listed here were recalled rather than read, which is the exact failure this file exists to prevent, so the route is out until an ordinance describing it is found.",
+  "_ended": [
+    "A route may carry `ended`: the year the Board authorised the tracks to be",
+    "TAKEN UP. Until now every layer on this map only ever grew, because today's",
+    "registers describe what survived. An abandonment ordinance is the other half",
+    "and it is in the same record.",
+    "",
+    "`year` 0 on an abandoned route means the Journal proves the track EXISTED by",
+    "the year it was removed and does not say when it was laid -- so it is drawn",
+    "from the first frame, `streets.ts`'s own convention for a silent record.",
+    "That is a floor, not a claim about the year it was built."
+  ]
 }

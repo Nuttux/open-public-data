@@ -54,12 +54,12 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
   {
     key: "transport",
     label: "Public transport",
-    layers: ["rail", "rail-overlay"],
+    layers: ["rail", "rail-overlay", "rail-history"],
     note:
       "cable, streetcar and light rail, each drawn from the year the city is " +
-      "recorded paying to lay it. Only the lines that still run: what was " +
-      "torn up is not in today's geometry.",
-    retracts: false,
+      "recorded paying to lay it — and the routes the Board wrote down that " +
+      "no longer exist, which appear and then are taken up again.",
+    retracts: true,
     overlay: true,
   },
   {
@@ -158,7 +158,7 @@ export function applySystem(root: Object3D, key: string | null): number {
        one -- see `rail.ts` §AND AT CITY ZOOM THE TRACK IS HALF A PIXEL. Both
        conditions are kept on the mesh so neither module has to know the
        other's state. */
-    if (layer === "rail-overlay") {
+    if (layer === "rail-overlay" || layer === "rail-history") {
       const u = o.userData as { systemLit?: boolean; stepOK?: boolean };
       const want = lit !== null && lit.has(layer);
       if (u.systemLit !== want) {

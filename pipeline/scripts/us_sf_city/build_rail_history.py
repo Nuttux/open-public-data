@@ -61,19 +61,43 @@ SEED = ROOT / "pipeline/seeds/sf_rail_routes.json"
 CENTRELINES = "https://data.sfgov.org/resource/3psu-pn9h.geojson"
 
 # the ordinances spell numbers; the centreline file abbreviates them
-WORD_NUM = {
-    "first": "1ST", "second": "2ND", "third": "3RD", "fourth": "4TH",
-    "fifth": "5TH", "sixth": "6TH", "seventh": "7TH", "eighth": "8TH",
-    "ninth": "9TH", "tenth": "10TH", "eleventh": "11TH", "twelfth": "12TH",
-    "thirteenth": "13TH", "fourteenth": "14TH", "fifteenth": "15TH",
-    "sixteenth": "16TH", "seventeenth": "17TH", "eighteenth": "18TH",
-    "nineteenth": "19TH", "twentieth": "20TH", "twenty-first": "21ST",
-    "twenty-second": "22ND", "twenty-third": "23RD", "twenty-fourth": "24TH",
-    "twenty-fifth": "25TH", "twenty-sixth": "26TH", "twenty-seventh": "27TH",
-    "twenty-eighth": "28TH", "twenty-ninth": "29TH", "thirtieth": "30TH",
-    "thirty-third": "33RD", "thirty-sixth": "36TH", "fortieth": "40TH",
-    "forty-eighth": "48TH",
+ONES = {
+    "first": 1, "second": 2, "third": 3, "fourth": 4, "fifth": 5, "sixth": 6,
+    "seventh": 7, "eighth": 8, "ninth": 9, "tenth": 10, "eleventh": 11,
+    "twelfth": 12, "thirteenth": 13, "fourteenth": 14, "fifteenth": 15,
+    "sixteenth": 16, "seventeenth": 17, "eighteenth": 18, "nineteenth": 19,
 }
+TENS = {
+    "twentieth": 20, "thirtieth": 30, "fortieth": 40, "fiftieth": 50,
+    "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
+}
+
+
+def ordinal(word: str) -> str | None:
+    """`Forty-fifth` -> `45TH`, as the centreline file spells an avenue.
+
+    Written as a parser rather than the hand-listed table it replaces, which
+    had `thirty-third` and `forty-eighth` in it and not `forty-fifth` — so a
+    route quoting the Board's own words silently lost a street, and a lost
+    street looks exactly like a street that no longer exists.
+    """
+    w = word.strip().lower().replace("\u2014", "-")
+    if w in ONES:
+        n = ONES[w]
+    elif w in TENS and w.endswith("ieth"):
+        n = TENS[w]
+    elif "-" in w:
+        a, b = w.split("-", 1)
+        if a not in TENS or b not in ONES:
+            return None
+        n = TENS[a] + ONES[b]
+    else:
+        return None
+    suf = "TH"
+    if n % 100 not in (11, 12, 13):
+        suf = {1: "ST", 2: "ND", 3: "RD"}.get(n % 10, "TH")
+    return f"{n}{suf}"
+
 
 
 def norm(name: str) -> str:
@@ -87,10 +111,8 @@ def norm(name: str) -> str:
     s = re.sub(r"\b(street|avenue|av|ave|boulevard|blvd|road|way|drive|dr)\b", " ", s)
     s = re.sub(r"[^a-z0-9\- ]", " ", s)
     s = re.sub(r"\s+", " ", s).strip()
-    for word, num in WORD_NUM.items():
-        if s == word:
-            return num
-    return s.upper()
+    o = ordinal(s)
+    return o if o else s.upper()
 
 
 def load_streets() -> dict[str, list[list[tuple[float, float]]]]:
@@ -402,6 +424,8 @@ def main() -> None:
             {
                 "name": r["name"], "year": r["year"], "kind": r["kind"],
                 "ended": r.get("ended"),
+                "ended_source": r.get("ended_source"),
+                "ended_quote": r.get("ended_quote"),
                 "source": r["source"], "quote": r["quote"],
                 "missed": r["missed"],
                 "lines": [[[round(x, 1), round(y, 1)] for x, y in ln]
