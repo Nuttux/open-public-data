@@ -43,8 +43,10 @@ import { groundDetailLayer } from "@/lib/citygl/layers/ground-detail";
 import { treesLayer } from "@/lib/citygl/layers/trees";
 import {
   themeMarksLayer,
+  MARK_SHAPES,
   THEME_INK,
   WINDOW_YEARS,
+  type MarkShape,
   type ThemeMarksLayer,
 } from "@/lib/citygl/layers/theme-marks";
 
@@ -230,9 +232,17 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   useEffect(() => {
     const layer = marksRef.current;
     if (!layer) return;
+    /* `year === null` IS THE PRESENT, NOT ALL TIME. The rail clears the year
+       to mean "the city as it stands", and that is what the geometry draws —
+       but the marks layer reads `year: undefined` as EVERY year, so clearing
+       the rail (releasing the scrub, the film reaching its end, the 2026
+       button) lit all 16,468 marks at once over a present-day city. Two
+       meanings for one value, and the wrong one was reaching the layer. The
+       present is YEAR_MAX; `undefined` stays available for an all-time
+       control that does not exist yet. */
     const lit = layer.setFilter({
       bits: subject === null ? 0 : 2 ** subject,
-      year: year ?? undefined,
+      year: year ?? YEAR_MAX,
     });
     setSubjectLit(lit);
     engineRef.current?.invalidate();
@@ -846,6 +856,16 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           /* the chip prints what the MAP lights, which is every source, not
              the Board's half that themes.json can see */
           const across = mk?.meta?.per_theme ?? {};
+          /* THE THREE KNOBS theme-marks.ts SAYS EXIST. It documents `?mark=`,
+             `?carpet=N` and `?win=N` as the way to judge a shape, a crowding
+             threshold and a window at several zooms without a rebuild — and
+             none of the three was read here, so the documentation described a
+             feature nobody could use. Read once, at construction, because all
+             three change what geometry is built. */
+          const q = new URLSearchParams(window.location.search);
+          const shape = q.get("mark");
+          const carpetQ = Number(q.get("carpet"));
+          const winQ = Number(q.get("win"));
           const layer = themeMarksLayer(mk, {
             elevAt: groundAt,
             zex: descriptor.look.zexByStep[0],
@@ -853,6 +873,13 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
             colours: vocab.t.map(
               (t: { bit: number }) => THEME_INK[t.bit % THEME_INK.length],
             ),
+            ...(MARK_SHAPES.includes(shape as MarkShape)
+              ? { shape: shape as MarkShape }
+              : {}),
+            ...(Number.isFinite(carpetQ) && carpetQ > 0
+              ? { carpetBlocks: carpetQ }
+              : {}),
+            ...(Number.isFinite(winQ) && winQ > 0 ? { windowYears: winQ } : {}),
           });
           if (!layer) return;
           for (const m of layer.meshes) engine.scene.add(m);
@@ -1465,11 +1492,16 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 >
                   {subject === null
                     ? "The map is showing every decision. These eight are what the record keeps coming back to — together they carry about a fifth of it, and they overlap each other, so they filter the map rather than dividing it up."
-                    : `${subjectLit.toLocaleString()} on the map${
-                        year !== null
-                          ? ` within ${WINDOW_YEARS} years of ${year}`
-                          : ", across the whole century"
-                      }. ${
+                    : /* THE SAME WINDOW THE LAYER USED, INCLUDING AT THE
+                         PRESENT. This read "across the whole century" whenever
+                         the rail was cleared, which was true only because
+                         clearing it lit every year — the bug above. Now the
+                         present is a year like any other and the caption has to
+                         say so, or it claims a century of marks over ten years
+                         of them. */
+                      `${subjectLit.toLocaleString()} on the map within ${
+                        WINDOW_YEARS
+                      } years of ${year ?? YEAR_MAX}. ${
                         themes.find((x) => x.bit === subject)?.kind === "era"
                           ? "This one changes most over time — drag the year bar."
                           : "This one is concentrated in place — click a mark to read it."

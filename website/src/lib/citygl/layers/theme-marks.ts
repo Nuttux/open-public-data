@@ -47,6 +47,8 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 import {
+  BoxGeometry,
+  BufferGeometry,
   Color,
   ConeGeometry,
   CylinderGeometry,
@@ -54,8 +56,11 @@ import {
   Matrix4,
   MeshLambertMaterial,
   Quaternion,
+  SphereGeometry,
+  TorusGeometry,
   Vector3,
 } from "three";
+import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
 import { ST_KPROJ } from "@/lib/city/streets";
 
@@ -98,6 +103,8 @@ export interface ThemeMarksOptions {
   carpetBlocks?: number;
   /** override the window width — `?win=N` */
   windowYears?: number;
+  /** override the dot shape — `?mark=tack|bead|disc|ring|bar|cone` */
+  shape?: MarkShape;
 }
 
 /* ── THE INK, AND WHY ONLY ONE SUBJECT IS EVER LIT ────────────────────────
@@ -152,13 +159,53 @@ export const WINDOW_YEARS = 10;
  */
 const MARK_PX = 14;
 
-/** how far above the ground the pin's base sits, in the same screen pixels */
-const LIFT_PX = 22;
+/**
+ * How far above the ground the mark's base sits, in the same screen pixels.
+ *
+ * SMALL, BECAUSE THE MARK IS PLANTED AND NOT HOVERING. This was 22 and it was
+ * being multiplied by a value that was already metres-per-14-pixels, so the
+ * real lift was 308 px — a sheet of marks hanging a third of a screen over the
+ * city, which at a tilted camera reads as a swarm out over the bay. Now the
+ * unit is honest, 3 px is the shadow gap that keeps a mark off the texture it
+ * stands on, and the stem is what gives it height.
+ */
+const LIFT_PX = 3;
 
-/* the unit geometries: one pin one metre tall, one puck of radius one, both
+/* the unit geometries: one mark one metre tall, one puck of radius one, both
    scaled per instance to whatever `MARK_PX` works out to at this camera */
 const PIN_M = 1;
 const PUCK_R = 0.7;
+
+/* ── THE SHAPE, AND WHY IT IS NOT A CONE ──────────────────────────────────
+   The dot was a six-sided cone standing on the ground. On this map that is a
+   TREE: the city draws 195,310 of them as green cones, and a subject rendered
+   in the palette's green landed 1,441 more among them, indistinguishable. A
+   mark has to read as something a person put there.
+
+   All six were rendered over Haight Ashbury at district zoom and looked at.
+   THE HOLE IN THE MIDDLE IS WHAT DECIDES IT. Every solid shape in the palette's
+   green — cone, bead, tack head, disc — reads as another tree, because the eye
+   is matching a filled blob of foliage colour against a ground already full of
+   them. A ring is not a shape the city has any of, so it reads as a symbol
+   somebody placed. It also survives crowding better than anything solid: two
+   overlapping rings are still two, where two overlapping discs are one bigger
+   blob. And a bar is worse than any of them — a green column at building scale
+   reads as a building.
+
+     ring   a hollow circle lying flat                     (default)
+     tack   stem + round head — a pin pushed in
+     bead   the head alone, sitting on the ground
+     disc   a coin lying flat
+     bar    a column
+     cone   what it used to be, for comparison
+
+   Kept switchable with `?mark=` because this is a judgement at a particular
+   zoom over a particular ground, and the next ground may decide differently.
+*/
+export type MarkShape = "ring" | "tack" | "bead" | "disc" | "bar" | "cone";
+export const MARK_SHAPES: readonly MarkShape[] =
+  ["ring", "tack", "bead", "disc", "bar", "cone"] as const;
+export const DEFAULT_SHAPE: MarkShape = "ring";
 
 /* a density puck starts at half a dot and grows by at most this much, so the
    busiest block is 2.4x the quietest rather than 10x — see the density branch */
@@ -171,6 +218,58 @@ const M4 = new Matrix4();
 const Q = new Quaternion();
 const P = new Vector3();
 const S = new Vector3();
+
+/**
+ * The unit geometry for one shape: one metre tall, standing on y = 0, so a
+ * single scale puts it at `MARK_PX` on screen wherever the camera is.
+ *
+ * Every one of these is built once per layer and shared by all eight subject
+ * meshes — the instance matrix carries position and size, the material carries
+ * colour, and the geometry is the same object in all of them.
+ */
+function markGeometry(shape: MarkShape): BufferGeometry {
+  switch (shape) {
+    case "tack": {
+      /* stem from the ground to 0.62, head centred at 0.72. The head is a
+         SPHERE and not a disc because the camera tilts: a disc facing up
+         vanishes to a line at a low angle, which is exactly the camera a
+         reader uses to look along a street. */
+      const stem = new CylinderGeometry(0.055, 0.055, 0.62, 6);
+      stem.translate(0, 0.31, 0);
+      const head = new SphereGeometry(0.3, 10, 7);
+      head.translate(0, 0.72, 0);
+      return mergeGeometries([stem, head], false) ?? stem;
+    }
+    case "bead": {
+      const g = new SphereGeometry(0.36, 12, 8);
+      g.translate(0, 0.36, 0);
+      return g;
+    }
+    case "disc": {
+      const g = new CylinderGeometry(PUCK_R, PUCK_R, 0.12, 14);
+      g.translate(0, 0.06, 0);
+      return g;
+    }
+    case "ring": {
+      /* lying flat: a torus is born in the xy plane and the ground is xz */
+      const g = new TorusGeometry(0.52, 0.15, 6, 16);
+      g.rotateX(Math.PI / 2);
+      g.translate(0, 0.15, 0);
+      return g;
+    }
+    case "bar": {
+      const g = new BoxGeometry(0.34, PIN_M, 0.34);
+      g.translate(0, PIN_M / 2, 0);
+      return g;
+    }
+    case "cone":
+    default: {
+      const g = new ConeGeometry(PIN_M * 0.32, PIN_M, 6);
+      g.translate(0, PIN_M / 2, 0);
+      return g;
+    }
+  }
+}
 
 /**
  * Which marks a filter admits.
@@ -219,8 +318,7 @@ export function themeMarksLayer(
      drawable in two different shapes. Eight draw calls is not a cost worth
      optimising away — the whole point of the layer is that the count of
      MARKS, not of subjects, is what used to be expensive. */
-  const pin = new ConeGeometry(PIN_M * 0.32, PIN_M, 6);
-  pin.translate(0, PIN_M / 2, 0);
+  const pin = markGeometry(o.shape ?? DEFAULT_SHAPE);
   const puck = new CylinderGeometry(PUCK_R, PUCK_R, PUCK_R * 0.25, 12);
 
   /* per-subject index lists, built once. Filtering never walks all n again. */
@@ -258,10 +356,18 @@ export function themeMarksLayer(
   }));
 
   let cur: MarkFilter = { bits: 0 };
-  /* what one world metre is worth on screen, times the size we want in pixels.
-     Starts at the whole-city camera so the first paint is not invisible if no
-     frame has been delivered yet. */
-  let k_m = MARK_PX / (ST_KPROJ * 0.1);
+  /* METRES PER SCREEN PIXEL at the current camera. Starts at the whole-city
+     camera so the first paint is not invisible if no frame has arrived yet.
+
+     THIS USED TO BE `MARK_PX / (ST_KPROJ * scale)` — metres per FOURTEEN
+     pixels — and both the size and the lift were multiplied by it. The size
+     was right by luck, because a unit-tall pin times "metres per 14 px" is 14
+     px. The lift was not: `LIFT_PX * k_m` asked for 22 × 14 = 308 pixels of
+     air, so every mark floated a third of the screen above the city, in a
+     flat sheet that reads at a tilted camera as a swarm hanging over the bay.
+     The marks were never mislocated — all 16,468 sit exactly on their own
+     block's point — they were lofted. One value, one unit, both derived. */
+  let mPerPx = 1 / (ST_KPROJ * 0.1);
   /* the placed marks per subject, kept so a camera move can re-size them
      without re-running the filter */
   const drawn: { x: number; y: number; s: number }[][] =
@@ -275,7 +381,7 @@ export function themeMarksLayer(
        counts were right, and the map looked empty. A record is not a building:
        it has no size of its own, so the only size it can honestly have is the
        one that makes it legible. */
-    const s = rel * k_m;
+    const s = rel * MARK_PX * mPerPx;
     /* THE PIN FLOATS ABOVE THE ROOFS. On the ground it is drawn behind
        whatever stands on the block, which matters at a close camera where a
        building is tall on screen.
@@ -291,7 +397,7 @@ export function themeMarksLayer(
 
        The lift stays because it is right at a close camera, not because it
        rescued that number. */
-    P.set(wx, o.elevAt(wx, wy) * o.zex + LIFT_PX * k_m, wy);
+    P.set(wx, o.elevAt(wx, wy) * o.zex + LIFT_PX * mPerPx, wy);
     S.set(s, s, s);
     M4.compose(P, Q, S);
     mesh.setMatrixAt(k, M4);
@@ -421,9 +527,9 @@ export function themeMarksLayer(
          them would put the layer back on the CPU budget it exists to avoid.
          5 % is under a pixel of drift on a 14 px mark, so nothing visibly
          lags behind the zoom. */
-      const want = MARK_PX / (ST_KPROJ * Math.max(cam.scale, 1e-6));
-      if (Math.abs(want - k_m) < k_m * 0.05) return;
-      k_m = want;
+      const want = 1 / (ST_KPROJ * Math.max(cam.scale, 1e-6));
+      if (Math.abs(want - mPerPx) < mPerPx * 0.05) return;
+      mPerPx = want;
       resize();
     },
     dispose() {
