@@ -102,6 +102,152 @@
       "source": "journalofproceed30sanfrich",
       "ended_source": "journalofproceed30sanfrich",
       "quote": "and on Steuart Street from Harrison Street to Folsom Street"
+    },
+    {
+      "name": "Market Street Railway, Sixth Street",
+      "year": 0,
+      "ended": 1935,
+      "kind": "streetcar",
+      "streets": [
+        "Sixth"
+      ],
+      "from": "Folsom",
+      "to": "Brannan",
+      "source": "journalofproceed30sanfrich",
+      "ended_source": "journalofproceed30sanfrich",
+      "quote": "Bill No. 682, Ordinance No. 15.0916: Authorizing Market Street Railway Company to abandon and remove its street railway tracks over and along Six[th] Street between Folsom Street and Brannan Street; also, on Brannan Street from Third Street to Eighth Street; and, also, on Eighth Street from Brannan Street to Bryant Street."
+    },
+    {
+      "name": "Market Street Railway, Brannan Street",
+      "year": 0,
+      "ended": 1935,
+      "kind": "streetcar",
+      "streets": [
+        "Brannan"
+      ],
+      "from": "Third",
+      "to": "Eighth",
+      "source": "journalofproceed30sanfrich",
+      "ended_source": "journalofproceed30sanfrich",
+      "quote": "Bill No. 682, Ordinance No. 15.0916: Authorizing Market Street Railway Company to abandon and remove its street railway tracks over and along Six[th] Street between Folsom Street and Brannan Street; also, on Brannan Street from Third Street to Eighth Street; and, also, on Eighth Street from Brannan Street to Bryant Street."
+    },
+    {
+      "name": "Market Street Railway, Eighth Street",
+      "year": 0,
+      "ended": 1935,
+      "kind": "streetcar",
+      "streets": [
+        "Eighth"
+      ],
+      "from": "Brannan",
+      "to": "Bryant",
+      "source": "journalofproceed30sanfrich",
+      "ended_source": "journalofproceed30sanfrich",
+      "quote": "Bill No. 682, Ordinance No. 15.0916: Authorizing Market Street Railway Company to abandon and remove its street railway tracks over and along Six[th] Street between Folsom Street and Brannan Street; also, on Brannan Street from Third Street to Eighth Street; and, also, on Eighth Street from Brannan Street to Bryant Street."
+    },
+    {
+      "name": "Market Street Railway, Twenty-fourth Street (bus substitution)",
+      "year": 0,
+      "ended": 1939,
+      "kind": "streetcar",
+      "streets": [
+        "Twenty-fourth"
+      ],
+      "source": "journalofproceed39sanfrich",
+      "ended_source": "journalofproceed39sanfrich",
+      "quote": "Ordinance No. 2374 (Series of 1939), amended by Bill No. 2681, Ordinance No. 2556: \"Providing for the Removal of Certain Street Railway Tracks of the Market Street Railway Company Due to the Substitution of Automobile Buses in Lieu of Street Car Service on Twenty-fourth Street, Fourteenth Street, Guerrero Street, San Jose Avenue, Thirtieth Street, First Street, Divisadero Street, and Fillmore Street\"",
+      "note": "the ordinance names EIGHT streets and gives no termini for any of them, so each is seeded as its own route over the whole named street. They are separate lines and chaining them would invent a connection the record does not describe."
+    },
+    {
+      "name": "Market Street Railway, Fourteenth Street (bus substitution)",
+      "year": 0,
+      "ended": 1939,
+      "kind": "streetcar",
+      "streets": [
+        "Fourteenth"
+      ],
+      "source": "journalofproceed39sanfrich",
+      "ended_source": "journalofproceed39sanfrich",
+      "quote": "Ordinance No. 2374 (Series of 1939), amended by Bill No. 2681, Ordinance No. 2556: \"Providing for the Removal of Certain Street Railway Tracks of the Market Street Railway Company Due to the Substitution of Automobile Buses in Lieu of Street Car Service on Twenty-fourth Street, Fourteenth Street, Guerrero Street, San Jose Avenue, Thirtieth Street, First Street, Divisadero Street, and Fillmore Street\"",
+      "note": "the ordinance names EIGHT streets and gives no termini for any of them, so each is seeded as its own route over the whole named street. They are separate lines and chaining them would invent a connection the record does not describe."
+    },
+    {
+      "name": "Market Street Railway, Guerrero Street (bus substitution)",
+      "year": 0,
+      "ended": 1939,
+      "kind": "streetcar",
+      "streets": [
+        "Guerrero"
+      ],
+      "source": "journalofproceed39sanfrich",
+      "ended_source": "journalofproceed39sanfrich",
+      "quote": "Ordinance No. 2374 (Series of 1939), amended by Bill No. 2681, Ordinance No. 2556: \"Providing for the Removal of Certain Street Railway Tracks of the Market Street Railway Company Due to the Substitution of Automobile Buses in Lieu of Street Car Service on Twenty-fourth Street, Fourteenth Street, Guerrero Street, San Jose Avenue, Thirtieth Street, First Street, Divisadero Street, and Fillmore Street\"",
+      "note": "the ordinance names EIGHT streets and gives no termini for any of them, so each is seeded as its own route over the whole named street. They are separate lines and chaining them would invent a connection the record does not describe."
+    },
+    {
+      "name": "Market Street Railway, San Jose Street (bus substitution)",
+      "year": 0,
+      "ended": 1939,
+      "kind": "streetcar",
+      "streets": [
+        "San Jose"
+      ],
+      "source": "journalofproceed39sanfrich",
+      "ended_source": "journalofproceed39sanfrich",
+      "quote": "Ordinance No. 2374 (Series of 1939), amended by Bill No. 2681, Ordinance No. 2556: \"Providing for the Removal of Certain Street Railway Tracks of the Market Street Railway Company Due to the Substitution of Automobile Buses in Lieu of Street Car Service on Twenty-fourth Street, Fourteenth Street, Guerrero Street, San Jose Avenue, Thirtieth Street, First Street, Divisadero Street, and Fillmore Street\"",
+      "note": "the ordinance names EIGHT streets and gives no termini for any of them, so each is seeded as its own route over the whole named street. They are separate lines and chaining them would invent a connection the record does not describe."
+    },
+    {
+      "name": "Market Street Railway, Thirtieth Street (bus substitution)",
+      "year": 0,
+      "ended": 1939,
+      "kind": "streetcar",
+      "streets": [
+        "Thirtieth"
+      ],
+      "source": "journalofproceed39sanfrich",
+      "ended_source": "journalofproceed39sanfrich",
+      "quote": "Ordinance No. 2374 (Series of 1939), amended by Bill No. 2681, Ordinance No. 2556: \"Providing for the Removal of Certain Street Railway Tracks of the Market Street Railway Company Due to the Substitution of Automobile Buses in Lieu of Street Car Service on Twenty-fourth Street, Fourteenth Street, Guerrero Street, San Jose Avenue, Thirtieth Street, First Street, Divisadero Street, and Fillmore Street\"",
+      "note": "the ordinance names EIGHT streets and gives no termini for any of them, so each is seeded as its own route over the whole named street. They are separate lines and chaining them would invent a connection the record does not describe."
+    },
+    {
+      "name": "Market Street Railway, First Street (bus substitution)",
+      "year": 0,
+      "ended": 1939,
+      "kind": "streetcar",
+      "streets": [
+        "First"
+      ],
+      "source": "journalofproceed39sanfrich",
+      "ended_source": "journalofproceed39sanfrich",
+      "quote": "Ordinance No. 2374 (Series of 1939), amended by Bill No. 2681, Ordinance No. 2556: \"Providing for the Removal of Certain Street Railway Tracks of the Market Street Railway Company Due to the Substitution of Automobile Buses in Lieu of Street Car Service on Twenty-fourth Street, Fourteenth Street, Guerrero Street, San Jose Avenue, Thirtieth Street, First Street, Divisadero Street, and Fillmore Street\"",
+      "note": "the ordinance names EIGHT streets and gives no termini for any of them, so each is seeded as its own route over the whole named street. They are separate lines and chaining them would invent a connection the record does not describe."
+    },
+    {
+      "name": "Market Street Railway, Divisadero Street (bus substitution)",
+      "year": 0,
+      "ended": 1939,
+      "kind": "streetcar",
+      "streets": [
+        "Divisadero"
+      ],
+      "source": "journalofproceed39sanfrich",
+      "ended_source": "journalofproceed39sanfrich",
+      "quote": "Ordinance No. 2374 (Series of 1939), amended by Bill No. 2681, Ordinance No. 2556: \"Providing for the Removal of Certain Street Railway Tracks of the Market Street Railway Company Due to the Substitution of Automobile Buses in Lieu of Street Car Service on Twenty-fourth Street, Fourteenth Street, Guerrero Street, San Jose Avenue, Thirtieth Street, First Street, Divisadero Street, and Fillmore Street\"",
+      "note": "the ordinance names EIGHT streets and gives no termini for any of them, so each is seeded as its own route over the whole named street. They are separate lines and chaining them would invent a connection the record does not describe."
+    },
+    {
+      "name": "Market Street Railway, Fillmore Street (bus substitution)",
+      "year": 0,
+      "ended": 1939,
+      "kind": "streetcar",
+      "streets": [
+        "Fillmore"
+      ],
+      "source": "journalofproceed39sanfrich",
+      "ended_source": "journalofproceed39sanfrich",
+      "quote": "Ordinance No. 2374 (Series of 1939), amended by Bill No. 2681, Ordinance No. 2556: \"Providing for the Removal of Certain Street Railway Tracks of the Market Street Railway Company Due to the Substitution of Automobile Buses in Lieu of Street Car Service on Twenty-fourth Street, Fourteenth Street, Guerrero Street, San Jose Avenue, Thirtieth Street, First Street, Divisadero Street, and Fillmore Street\"",
+      "note": "the ordinance names EIGHT streets and gives no termini for any of them, so each is seeded as its own route over the whole named street. They are separate lines and chaining them would invent a connection the record does not describe."
     }
   ],
   "_dropped": "Ocean View line (M): its quote is a CONSTRUCTION PAYMENT and carries no street sequence. The streets first listed here were recalled rather than read, which is the exact failure this file exists to prevent, so the route is out until an ordinance describing it is found.",

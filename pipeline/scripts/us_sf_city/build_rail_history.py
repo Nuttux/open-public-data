@@ -115,6 +115,27 @@ def norm(name: str) -> str:
     return o if o else s.upper()
 
 
+def candidates(name: str) -> list[str]:
+    """Every spelling the centreline file might key this street under.
+
+    It ZERO-PADS a single-digit numbered street -- `01ST`, `06TH`, `03RD` --
+    while an ordinal parser naturally produces `1ST`. Asking only the unpadded
+    form lost Sixth, Eighth, First and Third, and a street that is not found
+    is reported as unresolved, which reads exactly like a street that no longer
+    exists. Both are tried, plus the raw word for the streets that ARE spelled
+    out.
+    """
+    k = norm(name)
+    out = [k]
+    if len(k) == 3 and k[0].isdigit():
+        out.append("0" + k)
+    raw = re.sub(r"[^A-Za-z0-9\- ]", " ", name).strip().upper()
+    raw = re.sub(r"\s+", " ", raw)
+    if raw and raw not in out:
+        out.append(raw)
+    return out
+
+
 def load_streets() -> dict[str, list[list[tuple[float, float]]]]:
     """Every centreline in the city, in world metres, keyed by base name."""
     CACHE.mkdir(parents=True, exist_ok=True)
@@ -322,14 +343,19 @@ def resolve(route: dict, streets: dict) -> dict:
     """A route's street list -> the geometry the city publishes for it."""
     got, missed = [], []
     for name in route["streets"]:
-        key = norm(name)
-        lines = streets.get(key)
-        if lines:
-            got.append({"street": name, "key": key, "lines": lines})
+        hit = next(((k, streets[k]) for k in candidates(name) if k in streets), None)
+        if hit:
+            got.append({"street": name, "key": hit[0], "lines": hit[1]})
         else:
             missed.append(name)
-    ends = [streets.get(norm(route.get("from") or "")) or [],
-            streets.get(norm(route.get("to") or "")) or []]
+    def look(nm: str) -> list:
+        if not nm:
+            return []
+        for k in candidates(nm):
+            if k in streets:
+                return streets[k]
+        return []
+    ends = [look(route.get("from") or ""), look(route.get("to") or "")]
     path, warn = chain([g["lines"] for g in got], [g["street"] for g in got], ends)
     km = length_m(path) / 1000
     return {"resolved": got, "missed": missed, "km": km, "path": path, "warn": warn}
