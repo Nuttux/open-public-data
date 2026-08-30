@@ -1796,16 +1796,6 @@ const WHOLE: Unit = { kind: "ground" };
 const RAIL_FLOOR = 7;
 
 /**
- * How many of the lit subject's rows the answer-to-the-click prints.
- *
- * It is an ANSWER and not a second rail. Six is enough to show that the mark
- * the reader pressed is one of several and what kind of thing they are; past
- * that, the block's own record below is where they are read, and a long list
- * here would push the block off the screen to restate it.
- */
-const LIT_ROWS = 6;
-
-/**
  * A UNIT THE PANEL WAS ASKED TO OPEN, from outside.
  *
  * Everything above resolves a unit from the CLICK — where the ground is and
@@ -2193,11 +2183,6 @@ export default function CityBlockPanel({
   onLocate,
   onFiche,
   request,
-  litSubject,
-  litLabel,
-  litInk,
-  litRecord,
-  litOf,
 }: {
   record: BlockRecord | null;
   context: BlockContext | null;
@@ -2237,20 +2222,6 @@ export default function CityBlockPanel({
    * reader pressed a lit mark, so say what was lit here before saying what
    * else the block holds.
    */
-  litSubject?: number | null;
-  litLabel?: string;
-  litInk?: string;
-  /**
-   * THE ROW THE PRESSED DOT STANDS FOR — its index in this block's own shard.
-   *
-   * Absent when the press landed on the city rather than on a mark, and absent
-   * on a density puck, which stands for a whole block and has no single row to
-   * name. When it is here the fiche leads with that record, because that is
-   * the thing the reader pointed at.
-   */
-  litRecord?: number;
-  /** how many records the pressed mark stood for — 1 for a dot */
-  litOf?: number;
 }) {
   const t = useT();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -2581,47 +2552,6 @@ const onHood = unit.kind === "hood";
     [threads, here, onHood],
   );
 
-  /* ── WHAT THE READER PRESSED, WHEN THEY PRESSED A LIT MARK ─────────────
-     A subject is lit on the map and a mark is under the cursor: the click
-     resolves to the BLOCK, and the block's fiche is everything the block
-     holds — paving, sewers, assessments — with the one decision that was lit
-     somewhere inside it. That is the panel answering a different question
-     from the one the reader asked.
-
-     `m` is on every decision already, computed in the pipeline against the
-     full source text, so this is a filter and not a re-derivation. Read with
-     division: the eight fit in a byte, but `sm` next door does not, and the
-     two are read the same way on purpose so that neither invites `>>`.
-
-     The rows are NOT removed from the rail below. The subject explains the
-     click; the rail is still the block. */
-  const lit = useMemo(() => {
-    if (litSubject === undefined || litSubject === null) return null;
-    /* ── THE BLOCK'S OWN ROWS, NOT THE UNIT'S ───────────────────────────
-       `here` follows whatever the fiche is showing — a door, a street, a
-       neighbourhood — and the fiche's level follows the camera, so a press at
-       district zoom lands on the neighbourhood, whose file is a SELECTION of
-       twelve rows a decade. The pressed record is not in that selection, and
-       the section came up empty on every such press while the identical press
-       at street zoom worked. The mark is on a block; the block's own record is
-       what can answer for it, whatever level the rest of the fiche is at. */
-    const rows = (record?.decisions ?? []).filter(
-      (d) => Math.floor((d.m ?? 0) / 2 ** litSubject) % 2 === 1,
-    );
-    if (!rows.length) return null;
-    /* THE PRESSED ROW FIRST, AND THE REST BEHIND IT. Ordering rather than
-       filtering: the dot is one record and the reader pointed at it, but the
-       block is still the answer to "what else happened here", and dropping the
-       others would make a press on a dot a smaller page than a press beside
-       it. `record.decisions` is the shard's own order, which is what the marks
-       file indexes, so a row taken from `here` is only the same row when the
-       unit IS the block. */
-    const one = litRecord !== undefined
-      ? (record?.decisions?.[litRecord] ?? null)
-      : null;
-    if (!one || !rows.includes(one)) return { rows, pressed: null as null | typeof one };
-    return { rows: [one, ...rows.filter((d) => d !== one)], pressed: one };
-  }, [litSubject, litRecord, record]);
   /* The streets around here, each with what it actually holds. The count is
      read from the index rather than waited for, so nothing shows a placeholder
      and nothing is offered that opens an empty page. */
@@ -2921,98 +2851,6 @@ const onHood = unit.kind === "hood";
       </div>
 
       <div className="fx-city-panel-body">
-        {/* ── THE ANSWER TO THE CLICK GOES FIRST ──────────────────────────
-            It was under the fiche's own summary and its decade shape, which is
-            three or four folds down a 250 px column: a reader pressed a dot,
-            the page changed, and the thing they pressed was off the bottom of
-            it. A press has to be answered where the eye already is, so this is
-            now the first thing in the body and the fiche follows it. */}
-          {/* (rendered here rather than beside the block's own subjects: A
-                  reader who pressed a lit mark asked one question and the fiche
-                  answers a wider one; this says the narrow thing first and then
-                  gets out of the way. Absent unless a subject is lit AND this
-                  unit actually holds it — a heading over an empty list would be
-                  the map claiming something the record does not carry. */}
-              {lit && litLabel ? (
-                <section className="fx-block-lit">
-                  <h4 className="fx-block-lit-h">
-                    <span
-                      className="fx-block-lit-dot"
-                      style={{ background: litInk ?? "currentColor" }}
-                      aria-hidden
-                    />
-                    {litLabel}
-                  </h4>
-                  <p className="fx-block-hint">
-                    {/* TWO SENTENCES, BECAUSE TWO THINGS HAPPENED. Pressing a
-                        dot and pressing the ground beside it both open this
-                        block, and the reader has to be able to tell which one
-                        they did — the first line is the record they pointed at,
-                        the second is what else is here. */}
-                    {/* SINGULAR IS THE COMMON CASE AND IT HAS TO READ. "1 of
-                        the 23 records are this subject" is what the plural
-                        sentence produces on a block holding one, and a block
-                        holding one is most of them. */}
-                    {(() => {
-                      const n = lit.rows.length;
-                      const all = record?.decisions?.length ?? 0;
-                      if (lit.pressed && n === 1) {
-                        return tOr(
-                          t,
-                          "us.sf.thecity.panel.lit_pressed_one",
-                          "The one you pressed. It is the only record of this subject on this block, of {all}.",
-                        ).replace("{all}", nfInt.format(all));
-                      }
-                      if (lit.pressed) {
-                        return tOr(
-                          t,
-                          "us.sf.thecity.panel.lit_pressed",
-                          "The one you pressed is first. {n} of the {all} records on this block are this subject.",
-                        ).replace("{n}", nfInt.format(n))
-                         .replace("{all}", nfInt.format(all));
-                      }
-                      return tOr(
-                        t,
-                        n === 1
-                          ? "us.sf.thecity.panel.lit_here_one"
-                          : "us.sf.thecity.panel.lit_here",
-                        n === 1
-                          ? "One of the {all} records on this block is this. The rest is below."
-                          : "{n} of the {all} records on this block are this. The rest is below.",
-                      ).replace("{n}", nfInt.format(n))
-                       .replace("{all}", nfInt.format(all));
-                    })()}
-                  </p>
-                  <ul className="fx-block-lit-rows">
-                    {lit.rows.slice(0, LIT_ROWS).map((d) => (
-                      <li key={`${d.u}-${d.y}-${d.t.slice(0, 24)}`}
-                          className={d === lit.pressed ? "is-pressed" : undefined}>
-                        <span className="fx-block-lit-y tnum">{d.y}</span>
-                        <span className="fx-block-lit-t">
-                          {stripFileNumber(d.t)}
-                        </span>
-                        <a
-                          className="fx-block-jump"
-                          href={sourceHref(d)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {d.c === "b"
-                            ? tOr(t, "us.sf.thecity.panel.lead_open_pdf", "Open the minutes")
-                            : tOr(t, "us.sf.thecity.panel.lead_open", "Open the scanned page")}
-                          {" ↗"}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                  {lit.rows.length > LIT_ROWS ? (
-                    <p className="fx-block-hint">
-                      {tOr(t, "us.sf.thecity.panel.lit_more", "and {n} more, in the record below.")
-                        .replace("{n}", nfInt.format(lit.rows.length - LIT_ROWS))}
-                    </p>
-                  ) : null}
-                </section>
-              ) : null}
         {/* ── THE RECORD LEADS, THE RAIL IS THE SPINE, THE FIGURES CLOSE ──
             > "maybe focusing exclusively on the fiches and their content per
             > block, right now its a hodgepodge, id want to be able to show

@@ -197,10 +197,13 @@ def roof_of(src, ring, min_cells=12):
     boxes = []
     if above.any():
         lab, n = label(above)
-        for sl in find_objects(lab):
+        for li, sl in enumerate(find_objects(lab), start=1):
             if sl is None: continue
-            sub = lab[sl]; k = np.bincount(sub.ravel())[1:]
-            comp = (sub == (np.argmax(k) + 1))
+            #  the component is THIS label, not whichever label happens to have
+            #  most cells in the bounding box. Two roof units close together
+            #  share a box, and argmax handed the smaller one the larger one's
+            #  extent and height.
+            comp = (lab[sl] == li)
             area = float(comp.sum() * cell_a)
             if area < CLUTTER_MIN_M2: continue
             hh = h[sl][comp]

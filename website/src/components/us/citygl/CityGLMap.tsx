@@ -111,9 +111,12 @@ import type { SearchHit } from "@/lib/us/city-search";
 import {
   blockPlaceName,
   ficheParams,
+  sourceHref,
+  stripFileNumber,
   loadBlockIndex,
   loadBlockRecord,
   readFicheParams,
+  type BlockDecision,
   type BlockIndex,
   type BlockRecord,
   type FicheLink,
@@ -142,6 +145,12 @@ import { roofPalette, wallPalette } from "@/components/us/city/palette";
  */
 const YEAR_MIN = 1906;
 const YEAR_MAX = 2026;
+
+/** the key's own English when the catalogue has not been filled in yet */
+function tOr(t: (k: string) => string, k: string, en: string): string {
+  const v = t(k);
+  return v === k ? en : v;
+}
 /** years a second at 1x: the century in forty seconds */
 const SPEED_1X_YPS = (YEAR_MAX - YEAR_MIN) / 40;
 /** what the speed button steps through */
@@ -231,16 +240,35 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const [themes, setThemes] = useState<ThemeEntry[] | null>(null);
   const [subject, setSubject] = useState<number | null>(null);
   const [subjectLit, setSubjectLit] = useState(0);
-  /* THE MARK THE READER PRESSED, if they pressed one. Cleared by any press
-     that lands on the city instead, so the fiche never carries a record from
-     a click two clicks ago. */
-  const [markHit, setMarkHit] = useState<MarkHit | null>(null);
+  /* ── WHAT A PRESSED DOT PUTS ON SCREEN ──────────────────────────────────
+     Its own small card, and NOT the fiche: the reader asked what one mark is,
+     and a fiche answers what a whole block is. Held apart from `picked` for
+     the same reason — a dot press must not select a block, or the next press
+     on the city would look like it had already happened.
+
+     `rows` is filtered to the year window the map is showing, because that is
+     what the dot stands for: the same mark at 1925 and at 2026 is two
+     different answers, and the card has to be the one on screen. */
+  /* the listener is made once, so what it reads has to be a ref and not a
+     value captured on the render that made it */
+  const themesRef = useRef<ThemeEntry[] | null>(null);
+  const yearRef = useRef<number | null>(null);
+  const [markCard, setMarkCard] = useState<{
+    hit: MarkHit;
+    label: string;
+    ink: string;
+    place: string;
+    rows: readonly BlockDecision[];
+    year: number;
+  } | null>(null);
   const [filterOpen, setFilterOpen] = useState(false);
   /* THE YEAR THE MARKS ARE STANDING ON, kept apart from the scrub's own
      imperative path. The rail drives the city's geometry every frame of a
      drag and must not wait on React; the marks are rebuilt from a Map and a
      matrix upload, which is cheap but not free, so they follow the SETTLED
      year rather than every intermediate one. */
+  useEffect(() => { themesRef.current = themes; }, [themes]);
+  useEffect(() => { yearRef.current = year; }, [year]);
   useEffect(() => {
     const layer = marksRef.current;
     if (!layer) return;
@@ -1099,30 +1127,26 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
              It still resolves to the same block — the fiche is the context the
              record needs — but it carries the record with it. */
           const cam = eng.getCamera();
+          /* ── A DOT IS NOT THE CITY, AND IT ENDS HERE ─────────────────────
+             Two different things can be under the cursor and they answer two
+             different questions. A press on a DOT asks "what is this mark",
+             and the answer is that subject's records at that place, in the
+             window on screen — nothing more, and none of the fiche. A press on
+             the CITY asks "what happened here", and that is the fiche, exactly
+             as it always was, whether or not dots happen to be lit nearby.
+
+             The first version put the mark's answer INSIDE the fiche, so it
+             rode along on every press in the neighbourhood. It keys on the
+             press now, and a mark press returns before the block pick runs. */
           const hit = marksRef.current?.markAt(
             e.clientX - r.left, e.clientY - r.top) ?? null;
-          const b = hit && hit.block >= 0
-            ? hit.block
-            : picker.at(e.clientX - r.left, e.clientY - r.top, cam, v.W, v.H);
-          setMarkHit(hit && hit.block >= 0 ? hit : null);
-          /* ── A PRESSED DOT OPENS THE BLOCK, WHATEVER THE ZOOM SAYS ───────
-             The fiche's level normally follows the camera, and a press at
-             district zoom opens the NEIGHBOURHOOD. That is the right default
-             for a press on the city and the wrong answer to a press on a dot:
-             the record pointed at is on one block, and a neighbourhood's fiche
-             is a selection — twelve rows a decade — that will not contain it.
-             MEASURED: the subject section came up empty on every press at
-             district zoom for exactly this reason, while the same press at
-             street zoom worked. So a mark asks for its own block. */
           if (hit && hit.block >= 0) {
-            const bid = idxRef.current?.b[hit.block];
-            if (bid) {
-              nonceRef.current += 1;
-              setRequest({
-                nonce: nonceRef.current, block: bid, req: { kind: "ground" },
-              });
-            }
+            void openMarkRef.current(hit);
+            return;
           }
+          setMarkCard(null);
+          const b = picker.at(e.clientX - r.left, e.clientY - r.top,
+                              cam, v.W, v.H);
           const ov = overlayRef.current;
           if (ov) {
             ov.highlight = b === null ? null : picker.ringOf(b);
@@ -1141,19 +1165,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
              reader looking at the whole city. */
           const sc = eng.getCamera().scale;
           const scales = stopScalesRef.current;
-          if (hit && hit.block >= 0) {
-            /* ── A PRESSED DOT IS A BLOCK PRESS, WHATEVER THE CAMERA SAYS ──
-               The stop the camera is nearest decides what the fiche is ABOUT,
-               and at district zoom that is the neighbourhood. A neighbourhood
-               fiche is a different render entirely — its own tree, its own
-               selection of twelve rows a decade — so a press on a dot opened a
-               page that could not contain the record pressed, and the subject
-               section was not merely empty, it was never rendered.
-
-               3 is the ground stop, the same one `goToHit` uses for anything
-               that is not a hood or a street. */
-            setZoomStop(3);
-          } else if (scales.length) {
+          if (scales.length) {
             let best = 0;
             for (let i = 1; i < scales.length; i += 1) {
               if (Math.abs(Math.log(sc / scales[i])) <
@@ -1455,6 +1467,54 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   }, []);
 
   /**
+   * A PRESSED DOT, ANSWERED.
+   *
+   * Loads the block the mark sits on, keeps the rows that carry the lit
+   * subject AND fall in the window the map is showing, and puts them on a card
+   * of their own. It deliberately does NOT touch `picked`, the zoom stop, the
+   * overlay highlight or the URL: none of those belong to the question the
+   * reader asked, and every one of them was in the first version, which is why
+   * a dot press used to open a whole fiche.
+   *
+   * Coincident dots are why this shows the BLOCK's matching rows rather than
+   * the single row `hit.record` names: every mark on a block is drawn at the
+   * same point, so three records of one subject there are three dots on top of
+   * each other and no reader can be said to have pressed a particular one.
+   */
+  const openMark = useCallback(async (hit: MarkHit) => {
+    /* THE INDEX MAY NOT BE HERE YET, AND THAT IS THE COMMON CASE. It is
+       fetched when a fiche opens, and a reader who presses a dot first has
+       never opened one — the card came up blank on exactly that press and
+       worked on every one after it, which is how it hid. `loadBlockIndex`
+       memoises for the session, so this costs one request once. */
+    const index = idxRef.current ?? (await loadBlockIndex().catch(() => null));
+    const ths = themesRef.current;
+    if (!index || !ths) return;
+    idxRef.current = index;
+    const th = ths.find((x) => x.bit === hit.bit);
+    const rec = await loadBlockRecord(index, hit.block);
+    if (!rec) return;
+    const y = yearRef.current ?? YEAR_MAX;
+    const half = WINDOW_YEARS / 2;
+    const rows = rec.decisions.filter(
+      (d) =>
+        Math.floor((d.m ?? 0) / 2 ** hit.bit) % 2 === 1 &&
+        d.y >= y - half && d.y <= y + half,
+    );
+    if (!rows.length) return;
+    setMarkCard({
+      hit,
+      label: th?.label ?? "",
+      ink: THEME_INK[hit.bit % THEME_INK.length],
+      place: blockPlaceName(rec.streets) ?? index.b[hit.block] ?? "",
+      rows,
+      year: y,
+    });
+  }, []);
+  const openMarkRef = useRef(openMark);
+  useEffect(() => { openMarkRef.current = openMark; }, [openMark]);
+
+  /**
    * A SEARCH RESULT, LANDED. Everything specific to a search happens here —
    * a curated place leaves the map entirely, and the rest is a block, a level
    * and how close to stand, which is `openAt`'s job and also a shared link's.
@@ -1711,40 +1771,61 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               A search you can only reach by closing what you are reading is a
               search nobody uses. */}
           <CitySearch onPick={({ hit }) => void goToHit(hit)} />
-          {picked !== null ? (
+          {/* ── THE DOT'S OWN ANSWER, AND IT IS NOT A FICHE ────────────────
+              Ahead of the fiche because a press on a dot is a narrower
+              question than a press on the city, and the reader who asked it
+              should not have to find the answer inside a page about something
+              else. It closes back to whatever the margin was showing. */}
+          {markCard ? (
+            <section className="fx-mark-card">
+              <header className="fx-mark-card-h">
+                <span className="fx-mark-card-dot"
+                      style={{ background: markCard.ink }} aria-hidden />
+                <h3>{markCard.label}</h3>
+                <button
+                  type="button"
+                  className="fx-mark-card-x"
+                  onClick={() => setMarkCard(null)}
+                  aria-label={tOr(t, "us.sf.thecity.mark.close", "Close")}
+                >
+                  ×
+                </button>
+              </header>
+              <p className="fx-mark-card-where">
+                {markCard.place}
+                <span className="fx-mark-card-when">
+                  {" · "}
+                  {tOr(t, "us.sf.thecity.mark.window", "{a}–{b}")
+                    .replace("{a}", String(markCard.year - WINDOW_YEARS / 2))
+                    .replace("{b}", String(markCard.year + WINDOW_YEARS / 2))}
+                </span>
+              </p>
+              <ul className="fx-mark-card-rows">
+                {markCard.rows.map((d) => (
+                  <li key={`${d.u}-${d.y}-${d.t.slice(0, 20)}`}>
+                    <span className="fx-mark-card-y tnum">{d.y}</span>
+                    <p>{stripFileNumber(d.t)}</p>
+                    <a
+                      className="fx-block-jump"
+                      href={sourceHref(d)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {d.c === "b"
+                        ? tOr(t, "us.sf.thecity.panel.lead_open_pdf", "Open the minutes")
+                        : tOr(t, "us.sf.thecity.panel.lead_open", "Open the scanned page")}
+                      {" ↗"}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : picked !== null ? (
             <CityBlockPanel
               record={record}
               context={ctx}
               request={request}
               onFiche={setAt}
-              /* WHAT WAS LIT WHEN THE READER PRESSED. The panel resolves a
-                 click to a BLOCK and shows everything the block holds, so a
-                 press on a lit mark used to open a fiche in which the thing
-                 pressed was one line among the paving and the sewers. These
-                 three let it say the narrow thing first. Null when no subject
-                 is on, which is the default view, and the section disappears. */
-              litSubject={subject}
-              /* the exact row the dot stands for, where a dot was pressed.
-                 `record` is the block's own shard order and `r` indexes it —
-                 the marks file says so in its header. Dropped the moment the
-                 panel is showing a different block, so a stale index can never
-                 point at another block's row. */
-              litRecord={
-                markHit && record && idxRef.current?.b[markHit.block] === record.blockId
-                  ? markHit.record
-                  : undefined
-              }
-              litOf={markHit?.of}
-              litLabel={
-                subject === null
-                  ? undefined
-                  : themes?.find((x) => x.bit === subject)?.label
-              }
-              litInk={
-                subject === null
-                  ? undefined
-                  : THEME_INK[subject % THEME_INK.length]
-              }
               loading={recLoading}
               onClose={() => {
                 setPicked(null);
