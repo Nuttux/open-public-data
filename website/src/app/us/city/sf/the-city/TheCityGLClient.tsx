@@ -20,7 +20,7 @@ import { useCallback, useRef, useState } from "react";
 
 import SfSourceFooter from "@/components/us/SfSourceFooter";
 import CityEntry from "@/components/us/city/CityEntry";
-import type { TheCityPageData } from "@/app/us/city/sf/the-city/TheCityClient";
+import type { TheCityPageData } from "./data";
 import type { CityDescriptor } from "@/lib/citygl/descriptor";
 import type { FilmScript } from "@/lib/citygl/film";
 import { DEFAULT_LOOK } from "@/lib/citygl/descriptor";

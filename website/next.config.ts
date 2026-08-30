@@ -197,6 +197,11 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // The GPU renderer took over /the-city on 2026-08-30 and the Canvas one
+      // was deleted with it. `/the-city-gl` was noindex and linked from
+      // nowhere, so this is for the hand-pasted links only.
+      { source: '/us/city/sf/the-city-gl', destination: '/us/city/sf/the-city', permanent: true },
+
       // Blog rename (kept from earlier)
       { source: '/blog', destination: '/analyses', permanent: true },
       { source: '/blog/:slug', destination: '/analyses/:slug', permanent: true },

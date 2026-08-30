@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import TheCityClient from "./TheCityClient";
+import TheCityGLClient from "./TheCityGLClient";
 import { theCityPageData } from "./data";
 
 /**
@@ -14,11 +14,23 @@ import { theCityPageData } from "./data";
  * read here is the manifest's own catalogue — the counts and the provenance —
  * so the page can say what it is drawn from without fetching any of it.
  *
- * Everything below is a number a READER is shown or a name a reader reads.
- * The byte totals, the tier table and the field-by-field source list used to
- * be on this page too; they are engineering facts, they are in `manifest.json`
- * — linked and downloadable at the foot of the page — and they are no longer
- * printed in prose.
+ * ── ONE RENDERER, AND THIS IS THE ONE ────────────────────────────────────
+ * This page drew on a 2D Canvas until 2026-08-30 and the GPU port lived beside
+ * it at `/the-city-gl`, `noindex`, so the two could be judged side by side.
+ * That comparison is over: the Canvas renderer and its shell — `scene.ts`,
+ * `renderer.ts`, `CityMap.tsx`, `CityScrub.tsx`, `CityFilm.tsx`, `film-draw.ts`
+ * — are deleted, and the GPU renderer serves this URL.
+ *
+ * It is worth recording WHY, because the parity that held the two together was
+ * also holding the picture back. The port's facade tiles were flattened until
+ * their close frames matched the Canvas page's luminance; measured, that put
+ * every window on every building at roughly a fifth of the contrast a real
+ * opening has. Parity with a renderer that no longer exists is not a
+ * constraint, and `facade.ts` is now free of it.
+ *
+ * Everything San Francisco about the renderer lives in the CLIENT, as a
+ * `CityDescriptor`. `lib/citygl/` has none of it — see that directory's
+ * `PLAN.md` §0 rule 2 and `engine-is-city-free.test.ts`.
  */
 const BASE_METADATA: Metadata = {
   title: "San Francisco — The city, drawn from its own record",
@@ -59,5 +71,5 @@ export async function generateMetadata({
 }
 
 export default function SfTheCityPage() {
-  return <TheCityClient data={theCityPageData()} />;
+  return <TheCityGLClient data={theCityPageData()} />;
 }

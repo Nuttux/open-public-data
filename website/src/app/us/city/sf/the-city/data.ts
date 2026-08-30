@@ -1,8 +1,6 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 
-import type { TheCityPageData } from "./TheCityClient";
-
 /**
  * THE SERVER HALF OF THE CITY PAGE — read once, by both renderers.
  *
@@ -71,6 +69,36 @@ interface ShardRow {
 export interface RecordProvenance {
   archive: { sources: number; from: number; to: number; rows: number };
   clerk: { sources: number; from: number; to: number; rows: number };
+}
+
+/**
+ * The slim payload the server hands the client — every number a reader is
+ * shown on the page. It lived in `TheCityClient.tsx` while there were two
+ * renderers and the Canvas one owned the shell; it belongs here, beside the
+ * function that builds it, now that the page has one renderer.
+ */
+export interface TheCityPageData {
+  buildings: number;
+  blocks: number;
+  streets: number;
+  trees: number;
+  /** decisions the record places on a block or on a street it fronts */
+  decisions: number;
+  /** decisions that name a street and nothing narrower */
+  streetOnly: number;
+  /** decisions in the corpus that name no place we could resolve */
+  unplaced: number;
+  /** blocks the record says something about */
+  blocksWithRecord: number;
+  /** scanned volumes the decisions were read from */
+  volumes: number;
+  /** first and last year the record places on a block, e.g. "1906\u20132013" */
+  span: string;
+  /** the TWO record systems behind that span, counted off the rows themselves */
+  record: RecordProvenance;
+  accuracy: { n: number; key: number; exact: number };
+  /** who publishes what this map is drawn from, out of the manifest */
+  publishers: { name: string; datasets: number; url: string | null }[];
 }
 
 let PROVENANCE: RecordProvenance | null = null;
