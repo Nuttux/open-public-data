@@ -858,8 +858,18 @@ export class CityEngine {
   private seatWashes(): void {
     const F = this.basis.F;
     this.scene.traverse((o) => {
-      if (!(o.userData as { wash?: boolean }).wash) return;
-      const d = WASH_BASE_M + WASH_STEP_M * o.renderOrder;
+      const u = o.userData as { wash?: boolean; washM?: number };
+      if (!u.wash) return;
+      /* A LAYER MAY STATE ITS OWN SEAT. The ladder's 0.25 m step separates
+         coplanar washes FROM EACH OTHER, and that is all it was measured
+         against. A layer that must also clear something the ladder does not
+         describe cannot express that by inflating its `renderOrder` without
+         also claiming a draw order it does not want -- `layers/rail.ts` needed
+         a seat of 10 and would have had to ask for rung 30 to get it.
+         Seating along the view axis is PURE DEPTH: measured, a 6-unit push
+         moves a vertex 0.00 px on screen and 1.5e-5 in ndc z. So an explicit
+         seat costs nothing visually and says what it means. */
+      const d = u.washM ?? WASH_BASE_M + WASH_STEP_M * o.renderOrder;
       o.position.set(0, 0, 0).addScaledVector(F, d);
     });
   }

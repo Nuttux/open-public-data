@@ -186,6 +186,30 @@ const RAIL_STEEL_LIFT_M = 0.2;
  * deliberately rather than a ladder read wrongly a second time. */
 const RAIL_RUNG = 6.5;
 
+/* ── AND THE LADDER'S STEP IS NOT WHAT THE TRACK HAS TO CLEAR ─────────────
+ * The 0.25 m step separates the road's coplanar washes FROM EACH OTHER. The
+ * track has to clear the road's whole stack AND whatever else stands over a
+ * carriageway, and measurement says that takes about 10: at 4.125 the T Third
+ * line paints 36 px of a 764,928 px frame, and pushed to 10.125 it paints
+ * 4,035 -- a hundred and twelve times more. The same push at Nob Hill is
+ * 130 -> 3,012.
+ *
+ * IT COSTS NOTHING TO LOOK AT. Seating is a translation along the view axis,
+ * and in an orthographic projection that is PURE DEPTH: `pushscreen.mjs`
+ * measured a 6-unit push moving a vertex **0.00 px** on screen and 1.5e-5 in
+ * ndc z. This is not the 0.8 m lift `street-detail.ts` warns about, which
+ * moves a line UP-SCREEN off its own street; nothing moves at all.
+ *
+ * Asking for it through `renderOrder` would have meant rung 30, claiming a
+ * draw order this layer has no opinion about, so `engine.ts` takes an explicit
+ * `washM` instead and the rung stays where the ladder wants it.
+ *
+ * What it buys is that the track wins depth against anything within 10 units
+ * of it. Checked at district, street and close zoom at three cameras: the
+ * steel stays on the street, still interrupted by the buildings that stand in
+ * front of it, and does not float over a roof. */
+const RAIL_SEAT_M = 10;
+
 /**
  * ── EVERY WIDTH BELOW WAS RE-DERIVED FROM THE CAMERAS, NOT NUDGED ───────
  *
@@ -508,6 +532,9 @@ export async function railLayer(
     mesh.scale.y = zex;
     mesh.renderOrder = rung;
     mesh.userData.wash = true;
+    /* the steel a touch in front of its own bed, which is 8 m wide and would
+       otherwise swallow two 1 m ribbons lying on it */
+    mesh.userData.washM = RAIL_SEAT_M + (rung > RAIL_RUNG ? 0.25 : 0);
     mesh.castShadow = false;
     mesh.receiveShadow = true;
     mesh.frustumCulled = true;
