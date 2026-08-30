@@ -42,6 +42,7 @@ import {
   type PlaceLabel,
 } from "@/lib/city/labels";
 import { paintGrain, type Frame, type TerrainField } from "@/lib/city/terrain";
+import { drawGeoNames, type GeoName } from "./geo-names";
 import { decodeCoast, drawShoreline, type Ring } from "@/lib/city/water";
 
 export interface OverlayOptions {
@@ -212,6 +213,9 @@ export class CityOverlay {
   private readonly ctx: CanvasRenderingContext2D | null;
   private places: PlaceLabel[] = [];
   private hoods: ReturnType<typeof buildHoodAnchors> | null = null;
+  /** the named ground — lakes, hills, beaches, the bay. Loaded once. */
+  private geo: GeoName[] | null = null;
+  private geoAsked = false;
   private coast: Ring[] | null = null;
   /** the published coast of the land that is NOT the subject — see §SURRINK */
   private surroundRings: readonly (readonly (readonly [number, number])[])[] | null = null;
@@ -297,6 +301,21 @@ export class CityOverlay {
     } catch {
       /* a city with no marks file has no landmark names, which is a fact
          about that city and not a failure of the page */
+    }
+    /* THE NAMED GROUND — its own sidecar and its own guard, for the reason
+       stated below: one missing file must not take another pass down. */
+    if (!this.geoAsked) {
+      this.geoAsked = true;
+      try {
+        const g = await fetch(`${this.o.dataBaseUrl}/base/geo-names.json`);
+        if (g.ok) {
+          const j = (await g.json()) as { features?: GeoName[] };
+          this.geo = j.features ?? null;
+        }
+      } catch {
+        /* a city whose gazetteer has not been built names no ground, which is
+           a gap in the pipeline and not an error on the page */
+      }
     }
     /* THE SURROUND'S OWN COAST — a sidecar, so it is fetched and not decoded
        from a chunk. Measured on the published file: 12 rings, 3,168 vertices,
@@ -577,6 +596,19 @@ export class CityOverlay {
         /* THE DISTRICT CAPITALS, between the spine and the arterials — the
            largest type on the frame and the thing that makes a district
            camera read as a map rather than as a texture. */
+        /* ── THE NAMED GROUND GOES BEFORE THE DISTRICTS ─────────────────
+           Written after them first, and Lake Merced lost its own frame to
+           LAKESHORE — the district named after the lake beat the lake. A
+           district is a name the city gave a place; a lake is the place. The
+           ground is older than the districts drawn on it and it wins the
+           collision, which is the one ordering decision in this pass. */
+        if (this.geo) {
+          const hn = new Set(
+            (this.hoods ?? []).map((h) => h.name.toUpperCase()),
+          );
+          drawGeoNames(fl, this.geo, grid, elev, band, hn);
+        }
+
         if (this.hoods) drawHoodNames(fl, this.hoods, grid, elev);
 
         sn?.draw("arterials");
