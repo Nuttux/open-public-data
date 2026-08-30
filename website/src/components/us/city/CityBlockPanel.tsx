@@ -2921,6 +2921,98 @@ const onHood = unit.kind === "hood";
       </div>
 
       <div className="fx-city-panel-body">
+        {/* ── THE ANSWER TO THE CLICK GOES FIRST ──────────────────────────
+            It was under the fiche's own summary and its decade shape, which is
+            three or four folds down a 250 px column: a reader pressed a dot,
+            the page changed, and the thing they pressed was off the bottom of
+            it. A press has to be answered where the eye already is, so this is
+            now the first thing in the body and the fiche follows it. */}
+          {/* (rendered here rather than beside the block's own subjects: A
+                  reader who pressed a lit mark asked one question and the fiche
+                  answers a wider one; this says the narrow thing first and then
+                  gets out of the way. Absent unless a subject is lit AND this
+                  unit actually holds it — a heading over an empty list would be
+                  the map claiming something the record does not carry. */}
+              {lit && litLabel ? (
+                <section className="fx-block-lit">
+                  <h4 className="fx-block-lit-h">
+                    <span
+                      className="fx-block-lit-dot"
+                      style={{ background: litInk ?? "currentColor" }}
+                      aria-hidden
+                    />
+                    {litLabel}
+                  </h4>
+                  <p className="fx-block-hint">
+                    {/* TWO SENTENCES, BECAUSE TWO THINGS HAPPENED. Pressing a
+                        dot and pressing the ground beside it both open this
+                        block, and the reader has to be able to tell which one
+                        they did — the first line is the record they pointed at,
+                        the second is what else is here. */}
+                    {/* SINGULAR IS THE COMMON CASE AND IT HAS TO READ. "1 of
+                        the 23 records are this subject" is what the plural
+                        sentence produces on a block holding one, and a block
+                        holding one is most of them. */}
+                    {(() => {
+                      const n = lit.rows.length;
+                      const all = record?.decisions?.length ?? 0;
+                      if (lit.pressed && n === 1) {
+                        return tOr(
+                          t,
+                          "us.sf.thecity.panel.lit_pressed_one",
+                          "The one you pressed. It is the only record of this subject on this block, of {all}.",
+                        ).replace("{all}", nfInt.format(all));
+                      }
+                      if (lit.pressed) {
+                        return tOr(
+                          t,
+                          "us.sf.thecity.panel.lit_pressed",
+                          "The one you pressed is first. {n} of the {all} records on this block are this subject.",
+                        ).replace("{n}", nfInt.format(n))
+                         .replace("{all}", nfInt.format(all));
+                      }
+                      return tOr(
+                        t,
+                        n === 1
+                          ? "us.sf.thecity.panel.lit_here_one"
+                          : "us.sf.thecity.panel.lit_here",
+                        n === 1
+                          ? "One of the {all} records on this block is this. The rest is below."
+                          : "{n} of the {all} records on this block are this. The rest is below.",
+                      ).replace("{n}", nfInt.format(n))
+                       .replace("{all}", nfInt.format(all));
+                    })()}
+                  </p>
+                  <ul className="fx-block-lit-rows">
+                    {lit.rows.slice(0, LIT_ROWS).map((d) => (
+                      <li key={`${d.u}-${d.y}-${d.t.slice(0, 24)}`}
+                          className={d === lit.pressed ? "is-pressed" : undefined}>
+                        <span className="fx-block-lit-y tnum">{d.y}</span>
+                        <span className="fx-block-lit-t">
+                          {stripFileNumber(d.t)}
+                        </span>
+                        <a
+                          className="fx-block-jump"
+                          href={sourceHref(d)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {d.c === "b"
+                            ? tOr(t, "us.sf.thecity.panel.lead_open_pdf", "Open the minutes")
+                            : tOr(t, "us.sf.thecity.panel.lead_open", "Open the scanned page")}
+                          {" ↗"}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  {lit.rows.length > LIT_ROWS ? (
+                    <p className="fx-block-hint">
+                      {tOr(t, "us.sf.thecity.panel.lit_more", "and {n} more, in the record below.")
+                        .replace("{n}", nfInt.format(lit.rows.length - LIT_ROWS))}
+                    </p>
+                  ) : null}
+                </section>
+              ) : null}
         {/* ── THE RECORD LEADS, THE RAIL IS THE SPINE, THE FIGURES CLOSE ──
             > "maybe focusing exclusively on the fiches and their content per
             > block, right now its a hodgepodge, id want to be able to show
@@ -3025,76 +3117,6 @@ const onHood = unit.kind === "hood";
             {/* What this place keeps being about, as something to press. The
                 sentence above already NAMES the biggest of these; these are
                 how a reader opens one and sees it across the whole city. */}
-            {/* THE ANSWER TO THE CLICK, BEFORE THE BLOCK'S OWN SUBJECTS. A
-                reader who pressed a lit mark asked one question and the fiche
-                answers a wider one; this says the narrow thing first and then
-                gets out of the way. Absent unless a subject is lit AND this
-                unit actually holds it — a heading over an empty list would be
-                the map claiming something the record does not carry. */}
-            {lit && litLabel ? (
-              <section className="fx-block-lit">
-                <h4 className="fx-block-lit-h">
-                  <span
-                    className="fx-block-lit-dot"
-                    style={{ background: litInk ?? "currentColor" }}
-                    aria-hidden
-                  />
-                  {litLabel}
-                </h4>
-                <p className="fx-block-hint">
-                  {/* TWO SENTENCES, BECAUSE TWO THINGS HAPPENED. Pressing a
-                      dot and pressing the ground beside it both open this
-                      block, and the reader has to be able to tell which one
-                      they did — the first line is the record they pointed at,
-                      the second is what else is here. */}
-                  {lit.pressed
-                    ? tOr(
-                        t,
-                        "us.sf.thecity.panel.lit_pressed",
-                        "The one you pressed is first. {n} of the {all} records on this block are this subject.",
-                      )
-                        .replace("{n}", nfInt.format(lit.rows.length))
-                        .replace("{all}",
-                                 nfInt.format(record?.decisions?.length ?? 0))
-                    : tOr(
-                        t,
-                        "us.sf.thecity.panel.lit_here",
-                        "{n} of the {all} records on this block are this. The rest is below.",
-                      )
-                        .replace("{n}", nfInt.format(lit.rows.length))
-                        .replace("{all}", nfInt.format(record?.decisions?.length ?? 0))}
-                </p>
-                <ul className="fx-block-lit-rows">
-                  {lit.rows.slice(0, LIT_ROWS).map((d) => (
-                    <li key={`${d.u}-${d.y}-${d.t.slice(0, 24)}`}
-                        className={d === lit.pressed ? "is-pressed" : undefined}>
-                      <span className="fx-block-lit-y tnum">{d.y}</span>
-                      <span className="fx-block-lit-t">
-                        {stripFileNumber(d.t)}
-                      </span>
-                      <a
-                        className="fx-block-jump"
-                        href={sourceHref(d)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {d.c === "b"
-                          ? tOr(t, "us.sf.thecity.panel.lead_open_pdf", "Open the minutes")
-                          : tOr(t, "us.sf.thecity.panel.lead_open", "Open the scanned page")}
-                        {" ↗"}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                {lit.rows.length > LIT_ROWS ? (
-                  <p className="fx-block-hint">
-                    {tOr(t, "us.sf.thecity.panel.lit_more", "and {n} more, in the record below.")
-                      .replace("{n}", nfInt.format(lit.rows.length - LIT_ROWS))}
-                  </p>
-                ) : null}
-              </section>
-            ) : null}
-
             <Subjects here={subjects} total={here.length} t={t} />
 
             {/* ── A FEW RECORDS ARE NOT A CENTURY ──────────────────────────

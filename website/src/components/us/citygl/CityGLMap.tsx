@@ -1033,6 +1033,25 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           downX = e.clientX;
           downY = e.clientY;
         });
+        /* ── A DOT HAS TO LOOK PRESSABLE ─────────────────────────────────
+           Everything on this map answers a click, so nothing about a mark
+           said it answered a DIFFERENT one — a reader pressing a dot and
+           getting the same fiche they get anywhere has no way to tell whether
+           they hit it. The cursor is the cheapest thing that can say so, and
+           it doubles as the aim: the pointer changes the moment it is inside
+           the target, which is how you learn where the target is. */
+        canvas.addEventListener("pointermove", (e) => {
+          const eng2 = engineRef.current;
+          const layer = marksRef.current;
+          if (!eng2 || !layer) return;
+          const rc = canvas.getBoundingClientRect();
+          const vp = eng2.viewport;
+          const q = screenToPlane(e.clientX - rc.left, e.clientY - rc.top,
+                                  vp.W, vp.H, eng2.getCamera());
+          const over = layer.markAt(q[0], q[1]);
+          const want = over && over.block >= 0 ? "pointer" : "";
+          if (canvas.style.cursor !== want) canvas.style.cursor = want;
+        });
         canvas.addEventListener("pointerup", (e) => {
           if (Math.hypot(e.clientX - downX, e.clientY - downY) > 4) return;
           const r = canvas.getBoundingClientRect();

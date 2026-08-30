@@ -48,8 +48,10 @@
 
 import {
   BoxGeometry,
+  BufferAttribute,
   BufferGeometry,
   CanvasTexture,
+  CircleGeometry,
   Color,
   ConeGeometry,
   CylinderGeometry,
@@ -60,6 +62,7 @@ import {
   MeshLambertMaterial,
   PlaneGeometry,
   Quaternion,
+  RingGeometry,
   SphereGeometry,
   SRGBColorSpace,
   TorusGeometry,
@@ -328,16 +331,40 @@ const S = new Vector3();
  */
 function markGeometry(shape: MarkShape): BufferGeometry {
   switch (shape) {
-    case "dot":
     case "glow": {
-      /* A QUAD LEFT FACING +Z, because `place` turns it to the camera. It is
-         NOT laid into the ground: that is what made the first version look
-         like paint. A circle lying flat is seen at the camera's tilt, so it
-         arrives on screen as an ellipse smeared along the view direction —
-         a stain on the drawing rather than a mark on it. Turned to face the
-         reader it is a circle at every camera, which is what a map dot is. */
-      return new PlaneGeometry(shape === "glow" ? 2.2 : 1.25,
-                               shape === "glow" ? 2.2 : 1.25);
+      /* the density field keeps a textured quad: a gradient is the thing it
+         is FOR, and there is no edge in it to go jagged */
+      return new PlaneGeometry(2.2, 2.2);
+    }
+    case "dot": {
+      /* ── REAL GEOMETRY, NOT A PICTURE OF A CIRCLE ─────────────────────
+         The dot was a 128 px canvas on a quad, and at the ~28 device pixels
+         it is actually drawn at, that is a texture being minified — which is
+         where the stair-stepping came from. Nothing samples a triangle.
+
+         Two rings of triangles, merged into one geometry, telling the two
+         apart by VERTEX COLOUR: the rim dark, the core white. The material
+         multiplies its colour by the vertex colour, so one mesh and one draw
+         call still give the subject's own hue with a darker ring of itself —
+         and the ring is what stops a dot reading as a stain.
+
+         Left facing +Z; `place` turns it to the camera. It is NOT laid into
+         the ground, which is what made the first version look like paint: a
+         circle lying flat is seen at the camera's tilt and arrives as an
+         ellipse smeared along the view direction. */
+      const rim = new RingGeometry(0.40, 0.5, 40);
+      const core = new CircleGeometry(0.415, 40);
+      const g = mergeGeometries([rim, core], false);
+      if (!g) return core;
+      const n = g.getAttribute("position").count;
+      const col = new Float32Array(n * 3);
+      const rimN = rim.getAttribute("position").count;
+      for (let i = 0; i < n; i++) {
+        const v = i < rimN ? 0.42 : 1;
+        col[i * 3] = v; col[i * 3 + 1] = v; col[i * 3 + 2] = v;
+      }
+      g.setAttribute("color", new BufferAttribute(col, 3));
+      return g;
     }
     case "tack": {
       /* stem from the ground to 0.62, head centred at 0.72. The head is a
@@ -470,8 +497,9 @@ export function themeMarksLayer(
     ? markGeometry("glow")
     : new CylinderGeometry(PUCK_R, PUCK_R, PUCK_R * 0.25, 12);
   /* one texture per edge-hardness, shared by all eight subjects */
-  const texDot = flat ? markFace(shape === "glow") : null;
+  /* only the FIELD needs a picture; the dot is triangles */
   const texGlow = flat ? markFace(true) : null;
+  const texDot = shape === "glow" ? texGlow : null;
 
   /* per-subject index lists, built once. Filtering never walks all n again. */
   const byBit: number[][] = [];
@@ -498,7 +526,10 @@ export function themeMarksLayer(
       ? new MeshBasicMaterial({
           color: col,
           map: texDot,
-          transparent: true,
+          /* the dot carries its rim in the geometry's own colour attribute;
+             the field carries its falloff in a texture and has none */
+          vertexColors: shape === "dot",
+          transparent: shape !== "dot",
           opacity: DOT_ALPHA,
           depthWrite: false,
           /* ── OVER THE CITY, WHICH IS WHAT A MARK IS ──────────────────
@@ -651,8 +682,20 @@ export function themeMarksLayer(
     if (st.mode === "dots") {
       if (mesh.geometry !== pin) mesh.geometry = pin;
       if (flat) {
+        /* BACK TO THE DOT'S OWN MATERIAL. The density branch below swaps the
+           geometry for a textured quad that has no colour attribute, so
+           `vertexColors` has to come back with the geometry or the dot draws
+           black. Both are set here rather than assumed, because a subject can
+           cross the carpet threshold in either direction as the year moves. */
         const m = mats[bit] as MeshBasicMaterial;
-        if (m.map !== texDot) { m.map = texDot; m.needsUpdate = true; }
+        const wantMap = shape === "dot" ? null : texDot;
+        const wantVC = shape === "dot";
+        if (m.map !== wantMap || m.vertexColors !== wantVC) {
+          m.map = wantMap;
+          m.vertexColors = wantVC;
+          m.transparent = !wantVC;
+          m.needsUpdate = true;
+        }
         m.opacity = DOT_ALPHA;
       } else {
         mats[bit].transparent = false;
@@ -677,7 +720,12 @@ export function themeMarksLayer(
            cluster is one continuous stain that is darker in the middle —
            which is the thing density actually is. */
         const m = mats[bit] as MeshBasicMaterial;
-        if (m.map !== texGlow) { m.map = texGlow; m.needsUpdate = true; }
+        if (m.map !== texGlow || m.vertexColors) {
+          m.map = texGlow;
+          m.vertexColors = false;
+          m.transparent = true;
+          m.needsUpdate = true;
+        }
         m.opacity = GLOW_ALPHA;
       } else {
         /* translucent in this mode only: two pucks over one another have to
@@ -748,7 +796,11 @@ export function themeMarksLayer(
       for (let bit = 0; bit < o.bits; bit++) {
         if (!meshes[bit].visible) continue;
         for (const d of drawn[bit]) {
-          const rad = d.s * MARK_PX * mPerPx * ST_KPROJ * 0.62;
+          /* THE TARGET IS THE DOT, PLUS A LITTLE. `d.s * MARK_PX` is its
+             drawn size; 0.75 of that rather than the geometric 0.5 because a
+             pointer is not a pixel and a mark that only answers to its exact
+             centre reads as not answering at all. */
+          const rad = d.s * MARK_PX * mPerPx * ST_KPROJ * 0.75;
           const pp = proj(d.x, d.y, o.elevAt(d.x, d.y) * o.zex + LIFT_PX * mPerPx);
           const dx = px - pp[0];
           const dy = py - pp[1];
