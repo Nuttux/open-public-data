@@ -13,7 +13,8 @@
  * sends a document with the title in it.
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { CityData } from "@/lib/city/data";
 import { projection } from "@/lib/city/projection";
@@ -40,6 +41,54 @@ import { attachSky } from "@/lib/citygl/sky";
 import { saveView } from "@/lib/citygl/export";
 import { groundDetailLayer } from "@/lib/citygl/layers/ground-detail";
 import { treesLayer } from "@/lib/citygl/layers/trees";
+import {
+  themeMarksLayer,
+  THEME_INK,
+  WINDOW_YEARS,
+  type ThemeMarksLayer,
+} from "@/lib/citygl/layers/theme-marks";
+
+/**
+ * One row of `themes.json` — what the filter offers, and what it is allowed to
+ * say about each subject.
+ *
+ * `kind` is `place` or `era`, and the split is measured rather than stylistic.
+ * A `place` subject is sharp in space and is answered by clicking a dot; an
+ * `era` subject is sharp in time and is answered by driving the year rail. The
+ * seed records the spatial and temporal concentration each one was judged on.
+ */
+interface ThemeEntry {
+  readonly bit: number;
+  readonly slug: string;
+  readonly label: string;
+  readonly kind: string;
+  readonly n: number;
+  readonly n_blocks: number;
+  readonly y0: number;
+  readonly y1: number;
+}
+
+/**
+ * A subject chip, selected or not.
+ *
+ * The selected state is carried by the BORDER and the weight, not by filling
+ * the chip with the subject's colour: at these sizes a filled chip puts white
+ * text on eight different grounds, four of which were stepped for a cream map
+ * and not for type. The dot beside the label carries the colour, the label
+ * carries the identity, and neither depends on the other.
+ */
+function chipStyle(on: boolean, ink: string | null): React.CSSProperties {
+  return {
+    font: `${on ? 600 : 400} 12px/1 var(--f-sans, system-ui)`,
+    padding: "7px 10px",
+    borderRadius: 6,
+    cursor: "pointer",
+    border: `1px solid ${on ? (ink ?? "var(--ink, #1a1a19)") : "var(--rule, #e4e6ea)"}`,
+    boxShadow: on ? `inset 0 0 0 1px ${ink ?? "var(--ink, #1a1a19)"}` : "none",
+    background: "var(--surface, #fff)",
+    color: "var(--ink, #1a1a19)",
+  };
+}
 import { CityOverlay } from "@/lib/citygl/overlay";
 import { CityHelpRow } from "@/lib/citygl/help-row";
 import { useT } from "@/lib/localeContext";
@@ -47,13 +96,21 @@ import { attachControls, stepForZ } from "@/lib/citygl/controls";
 import { createFilm, resolveFrames, type FilmPlayer } from "@/lib/citygl/film";
 import { detectQuality } from "@/lib/citygl/quality";
 import { blockPicker } from "@/lib/citygl/pick";
-import CityBlockPanel, { type BlockContext } from "@/components/us/city/CityBlockPanel";
+import CityBlockPanel, {
+  type BlockContext,
+  type UnitRequest,
+} from "@/components/us/city/CityBlockPanel";
+import CitySearch from "@/components/us/city/CitySearch";
+import type { SearchHit } from "@/lib/us/city-search";
 import {
   blockPlaceName,
+  ficheParams,
   loadBlockIndex,
   loadBlockRecord,
+  readFicheParams,
   type BlockIndex,
   type BlockRecord,
+  type FicheLink,
 } from "@/components/us/city/block-records";
 import { roofPalette, wallPalette } from "@/components/us/city/palette";
 
@@ -113,8 +170,73 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     hood: Uint8Array; hoodNames: readonly string[]; area: Float32Array;
   } | null>(null);
   const idxRef = useRef<BlockIndex | null>(null);
+  const pickerRef = useRef<ReturnType<typeof blockPicker> | null>(null);
+  /* block id → position in the index arrays. Built once on first use: the
+     search hands over an id and everything else here counts in positions. */
+  const posRef = useRef<Map<string, number> | null>(null);
+  const [request, setRequest] = useState<
+    { req: UnitRequest; nonce: number; block: string } | undefined
+  >(undefined);
+  const nonceRef = useRef(0);
+  const [at, setAt] = useState<{ street?: string; address?: string; hood?: boolean }>({});
+  /**
+   * THE URL AS IT ARRIVED, captured during the first render.
+   *
+   * Not read from `window.location` inside the restore effect, because the
+   * WRITER gets there first: on mount `picked` is null, so it writes "no
+   * fiche" and deletes the very params the restore was about to read. This
+   * ref is filled while React is still rendering, before any effect of either
+   * can run, so what a reader was sent survives the map's own bookkeeping.
+   */
+  /** has the restore had its turn? until then the writer stands down */
+  const opened = useRef(false);
+  const arrivedWith = useRef(
+    typeof window === "undefined" ? "" : window.location.search,
+  );
+  /**
+   * ── WHAT THE READER CAN SEND SOMEBODY ────────────────────────────────
+   * Written with `replaceState` and never `pushState`, for the reason
+   * `CityMap` already states: a reader moving around the map is not
+   * navigating, and twenty picks that each cost a press of Back would make
+   * the button useless for leaving the page. Back leaves; the panel's × and
+   * Escape are what close a fiche.
+   */
+  const writeUrl = useCallback((link: FicheLink | null) => {
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    for (const k of ["block", "street", "address", "hood"]) {
+      url.searchParams.delete(k);
+    }
+    if (link) {
+      for (const [k, v] of ficheParams(link)) url.searchParams.set(k, v);
+    }
+    window.history.replaceState(window.history.state, "", url);
+  }, []);
   const engineRef = useRef<CityEngine | null>(null);
   const overlayRef = useRef<CityOverlay | null>(null);
+  /* the subject filter: the layer, its vocabulary, and which one is lit.
+     `subject` is a single bit or null — see `theme-marks.ts` §THE INK for why
+     it is one at a time and not a set of checkboxes. */
+  const marksRef = useRef<ThemeMarksLayer | null>(null);
+  const [themes, setThemes] = useState<ThemeEntry[] | null>(null);
+  const [subject, setSubject] = useState<number | null>(null);
+  const [subjectLit, setSubjectLit] = useState(0);
+  const [filterOpen, setFilterOpen] = useState(false);
+  /* THE YEAR THE MARKS ARE STANDING ON, kept apart from the scrub's own
+     imperative path. The rail drives the city's geometry every frame of a
+     drag and must not wait on React; the marks are rebuilt from a Map and a
+     matrix upload, which is cheap but not free, so they follow the SETTLED
+     year rather than every intermediate one. */
+  useEffect(() => {
+    const layer = marksRef.current;
+    if (!layer) return;
+    const lit = layer.setFilter({
+      bits: subject === null ? 0 : 2 ** subject,
+      year: year ?? undefined,
+    });
+    setSubjectLit(lit);
+    engineRef.current?.invalidate();
+  }, [subject, year]);
   const filmRef = useRef<FilmPlayer | null>(null);
   const remeasureFilmRef = useRef<(() => void) | null>(null);
   const [filmOn, setFilmOn] = useState(false);
@@ -158,6 +280,7 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   /* which stop the reader was nearest when they clicked — 0 whole city, up to
      the closest stop. `-1` while unknown. */
   const [zoomStop, setZoomStop] = useState(-1);
+  const router = useRouter();
   const readyRef = useRef(onReady);
   readyRef.current = onReady;
 
@@ -295,10 +418,11 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       if (disposed) return;
 
       /* ── ONE ANSWER TO WHERE THE LAND STOPS, AND EVERY GROUND READS IT ──
-         Loaded BEFORE the ground, because the ground's own cut reads it now,
-         and so does its COLOUR through `maskAt`, and so does the far shore's
-         boundary, and so does the shoreline ink, and so does the bay plate.
-         One register where there were four. `?lmask=0` is all of them. */
+         `coast-mask.ts` §AND THE SAME ANSWER CAN COME FROM A FIELD. Loaded
+         BEFORE the ground, because the ground's own cut reads it now and so
+         does the far shore's and so does the bay plate's — one register
+         where there were four. Absence is the published rings on all three,
+         unchanged, and `?lmask=0` is the same. */
       const landmask = await loadLandMask(data.assetBase);
       if (disposed) return;
 
@@ -697,6 +821,56 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       for (const m of trees.meshes) engine.scene.add(m);
       engine.add(trees);
 
+      /* ── WHAT THE RECORD IS ABOUT, WHERE IT HAPPENED ────────────────
+         Off until a reader turns a subject on, and that is the coverage
+         rule made visual rather than a default nobody chose: the eight
+         subjects carry a fifth of the record between them, so a map that
+         opened with them lit would be showing a fifth of the city while
+         looking like all of it. All decisions is the view; these light on
+         top of it.
+
+         Two files, both small, both fetched after the city is standing —
+         nothing here is on the first-paint path. */
+      void (async () => {
+        try {
+          const base = descriptor.dataBaseUrl.replace(/\/$/, "");
+          const [mk, vocab] = await Promise.all([
+            fetch(`${base}/blocks/theme-marks.json`).then((r) =>
+              r.ok ? r.json() : null,
+            ),
+            fetch(`${base}/blocks/themes.json`).then((r) =>
+              r.ok ? r.json() : null,
+            ),
+          ]);
+          if (disposed || !engine || !mk || !vocab) return;
+          /* the chip prints what the MAP lights, which is every source, not
+             the Board's half that themes.json can see */
+          const across = mk?.meta?.per_theme ?? {};
+          const layer = themeMarksLayer(mk, {
+            elevAt: groundAt,
+            zex: descriptor.look.zexByStep[0],
+            bits: vocab.t.length,
+            colours: vocab.t.map(
+              (t: { bit: number }) => THEME_INK[t.bit % THEME_INK.length],
+            ),
+          });
+          if (!layer) return;
+          for (const m of layer.meshes) engine.scene.add(m);
+          engine.add(layer);
+          marksRef.current = layer;
+          setThemes(
+            vocab.t.map((t: ThemeEntry) => ({
+              ...t,
+              n: across[String(t.bit)] ?? t.n,
+            })),
+          );
+          engine.invalidate();
+        } catch {
+          /* the map is the feature; the filter is an addition to it, and a
+             filter that fails to load must cost the filter and not the city */
+        }
+      })();
+
       /* ── THE WRITING, AND THE CONTROLS ──────────────────────────────
          A second canvas over the first for the type, and a pointer/keyboard
          controller on the stage. Both read the same camera the GPU does. */
@@ -739,6 +913,9 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       }
 
       const picker = blockPicker(data, { elevAt: groundAt });
+      /* the search needs to ring and centre a block nobody pointed at, and
+         the picker is the only thing that knows where a block IS */
+      pickerRef.current = picker;
       if (picker) {
         let downX = 0;
         let downY = 0;
@@ -984,6 +1161,152 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     };
   }, [picked, zoomStop]);
 
+  /**
+   * A RESULT THE READER TYPED, LANDED ON THE MAP.
+   *
+   * Three things have to happen together and in this order, or the reader
+   * watches the map arrive somewhere before the fiche agrees with it:
+   *
+   *   1. the camera moves to the block and the ring goes round it — the same
+   *      ring and pin a click draws, because it IS a pick;
+   *   2. the panel is told which unit the reader meant, which a click could
+   *      only infer from how far in they were standing;
+   *   3. the zoom stop is set to match where the camera now is, so the NEXT
+   *      click on the map is classified against where the reader ended up
+   *      rather than where they were before they typed.
+   *
+   * A hood and a street travel on a representative block — the one holding
+   * the most of their records — so the camera has somewhere to go. That is
+   * not a claim that the block is the street; the panel opens the street.
+   */
+  const openAt = useCallback(async (
+    blockId: string,
+    req: UnitRequest,
+    stop: number,
+  ) => {
+    const eng = engineRef.current;
+    const picker = pickerRef.current;
+    if (!eng) return;
+    /* ── THE INDEX MAY NOT BE HERE YET, AND THAT WAS THE BUG ──────────────
+       `idxRef` is filled by the effect behind a PICK, so on a page where
+       nobody has clicked anything it is still null — which is exactly the
+       page somebody uses the search box on. The first search silently did
+       nothing. It is fetched here instead when it is missing; `loadBlockIndex`
+       memoises for the session, so this costs one request the first time and
+       nothing after. */
+    const index = idxRef.current ?? (await loadBlockIndex().catch(() => null));
+    if (!index) return;
+    idxRef.current = index;
+    if (!posRef.current) {
+      posRef.current = new Map(index.b.map((b, i) => [b, i]));
+    }
+    const i = blockId ? posRef.current.get(blockId) : undefined;
+    const scales = stopScalesRef.current;
+
+    if (i !== undefined && picker) {
+      const ring = picker.ringOf(i);
+      if (ring?.length) {
+        let sx = 0;
+        let sy = 0;
+        for (const [wx, wy] of ring) {
+          sx += wx;
+          sy += wy;
+        }
+        const c = projection.proj(sx / ring.length, sy / ring.length, 0);
+        const scale = scales[stop] ?? eng.getCamera().scale;
+        eng.setStep(stepForZ(scale / (scales[0] || scale)));
+        eng.setCamera({ cx: c[0], cy: c[1], scale });
+      }
+      const ov = overlayRef.current;
+      if (ov) {
+        ov.highlight = picker.ringOf(i);
+        ov.pick = i;
+        ov.pickLabel = null;
+      }
+      setZoomStop(stop);
+      setPicked(i);
+      eng.invalidate();
+      setNonce((n) => n + 1);
+    }
+
+    nonceRef.current += 1;
+    setRequest({ nonce: nonceRef.current, block: blockId, req });
+  }, []);
+
+  /**
+   * A SEARCH RESULT, LANDED. Everything specific to a search happens here —
+   * a curated place leaves the map entirely, and the rest is a block, a level
+   * and how close to stand, which is `openAt`'s job and also a shared link's.
+   */
+  const goToHit = useCallback(async (hit: SearchHit) => {
+    /* ── A CURATED PLACE HAS ITS OWN FICHE, AND THIS IS NOT IT ────────────
+       Coit Tower is not a block. It has a page with its photograph, the
+       documents behind it and whatever the city ledgers actually attach to
+       it, and sending a reader who typed `coit` to the piece of ground under
+       it — where the fiche would open on "Filbert St · Greenwich St ·
+       Montgomery St" — answers a question they did not ask. */
+    if (hit.kind === "place") {
+      router.push(`/us/city/sf/places/place/${hit.to}`);
+      return;
+    }
+    await openAt(
+      hit.block,
+      /* an address resolved through the assessor's parcels is NOT a door the
+         Board named — there is no door to open, only the block it stands on,
+         and asking for one would send the panel hunting for a label that is
+         not in the record */
+      hit.viaParcel
+        ? { kind: "ground" }
+        : hit.kind === "hood"
+          ? { kind: "hood" }
+          : hit.kind === "street"
+            ? { kind: "street", key: hit.to }
+            : hit.kind === "addr"
+              ? { kind: "door", label: hit.label }
+              : { kind: "ground" },
+      hit.kind === "hood" ? 1 : hit.kind === "street" ? 2 : 3,
+    );
+  }, [openAt, router]);
+
+  /* block + level → the address bar. Both halves change independently: the
+     block when the reader picks, the level when they move up or down inside
+     the fiche, so this watches both rather than living in either handler. */
+  useEffect(() => {
+    /* until the restore has run, the URL belongs to whoever sent the link */
+    if (!opened.current) return;
+    if (picked === null) {
+      writeUrl(null);
+      return;
+    }
+    const id = idxRef.current?.b[picked];
+    if (id) writeUrl({ block: id, ...at });
+  }, [picked, at, writeUrl]);
+
+  /**
+   * ── AND A LINK SOMEBODY SENDS HAS TO OPEN WHERE IT POINTS ────────────
+   * Once, on the first frame the map can pick with. It reuses `goToHit` —
+   * the very path a search result takes — so a shared link and a typed search
+   * land identically, ring the same block and open the same level. A block id
+   * the index does not carry is ignored rather than guessed at.
+   */
+  useEffect(() => {
+    if (opened.current || loading || !engineRef.current) return;
+    opened.current = true;
+    const link = readFicheParams(arrivedWith.current);
+    if (!link) return;
+    void openAt(
+      link.block,
+      link.hood
+        ? { kind: "hood" }
+        : link.street
+          ? { kind: "streetFile", file: link.street }
+          : link.address
+            ? { kind: "door", label: link.address }
+            : { kind: "ground" },
+      link.hood ? 1 : link.street ? 2 : 3,
+    );
+  }, [loading, openAt]);
+
   return (
     <div className="fx-city-wrap">
       <div className="fx-city-frame">
@@ -1033,12 +1356,141 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               <p className="fx-city-loading">Drawing the city…</p>
             </div>
           ) : null}
+        {/* ── WHAT THE RECORD IS ABOUT ────────────────────────────────────
+            A button that opens the eight, one lit at a time. `theme-marks.ts`
+            §THE INK has the measurement that makes it one at a time rather
+            than a set of checkboxes.
+
+            THE PANEL SAYS WHAT THE FILTER DOES NOT COVER. Eight subjects over
+            a fifth of the record is a true thing that eight buttons imply the
+            opposite of, so the coverage line is not a footnote to be trimmed —
+            it is the difference between a filter and a claim about the city. */}
+        {!loading && themes ? (
+          <div
+            className="fx-city-subjects"
+            /* OVER THE MAP, NOT ABOVE IT. Written first as a block between the
+               map and the century rail, opening it pushed the rail off the
+               bottom of the window and clipped its own coverage line. A filter
+               is a control on the view, so it floats on the view. */
+            style={{
+              position: "absolute",
+              left: 14,
+              bottom: 72,
+              zIndex: 6,
+              maxWidth: "min(720px, calc(100% - 380px))",
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setFilterOpen((v) => !v)}
+              aria-expanded={filterOpen}
+              style={{
+                font: "600 11px/1 var(--f-mono, ui-monospace, monospace)",
+                letterSpacing: ".08em",
+                textTransform: "uppercase",
+                padding: "8px 12px",
+                border: "1px solid var(--rule, #e4e6ea)",
+                borderRadius: 6,
+                background: "var(--surface, #fff)",
+                cursor: "pointer",
+              }}
+            >
+              {subject === null
+                ? "Subjects"
+                : (themes.find((x) => x.bit === subject)?.label ?? "Subjects")}
+            </button>
+            {filterOpen ? (
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 6,
+                  alignItems: "center",
+                  /* A SURFACE, because this floats over the drawn city and
+                     12 px type on a painted map is not type. */
+                  marginTop: 8,
+                  padding: 10,
+                  borderRadius: 8,
+                  border: "1px solid var(--rule, #e4e6ea)",
+                  background: "var(--surface, #fff)",
+                  boxShadow: "0 6px 20px rgba(0,0,0,.10)",
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setSubject(null)}
+                  aria-pressed={subject === null}
+                  style={chipStyle(subject === null, null)}
+                >
+                  All decisions
+                </button>
+                {themes.map((th) => (
+                  <button
+                    key={th.slug}
+                    type="button"
+                    onClick={() =>
+                      setSubject((cur) => (cur === th.bit ? null : th.bit))
+                    }
+                    aria-pressed={subject === th.bit}
+                    title={`${th.n.toLocaleString()} marks over ${th.n_blocks.toLocaleString()} blocks, ${th.y0}–${th.y1}`}
+                    style={chipStyle(
+                      subject === th.bit,
+                      THEME_INK[th.bit % THEME_INK.length],
+                    )}
+                  >
+                    <span
+                      aria-hidden
+                      style={{
+                        display: "inline-block",
+                        width: 8,
+                        height: 8,
+                        borderRadius: 8,
+                        marginRight: 6,
+                        background: THEME_INK[th.bit % THEME_INK.length],
+                      }}
+                    />
+                    {th.label}
+                    <span style={{ opacity: 0.55, marginLeft: 6 }}>
+                      {th.n.toLocaleString()}
+                    </span>
+                  </button>
+                ))}
+                <p
+                  style={{
+                    font: "12px/1.5 var(--f-sans, system-ui)",
+                    color: "var(--muted, #6b6355)",
+                    margin: "8px 0 0",
+                    flexBasis: "100%",
+                  }}
+                >
+                  {subject === null
+                    ? "The map is showing every decision. These eight are what the record keeps coming back to — together they carry about a fifth of it, and they overlap each other, so they filter the map rather than dividing it up."
+                    : `${subjectLit.toLocaleString()} on the map${
+                        year !== null
+                          ? ` within ${WINDOW_YEARS} years of ${year}`
+                          : ", across the whole century"
+                      }. ${
+                        themes.find((x) => x.bit === subject)?.kind === "era"
+                          ? "This one changes most over time — drag the year bar."
+                          : "This one is concentrated in place — click a mark to read it."
+                      }`}
+                </p>
+              </div>
+            ) : null}
+          </div>
+        ) : null}
         </div>
         <div className="fx-city-ledger">
+          {/* ABOVE WHATEVER THE MARGIN IS SHOWING, idle copy or an open fiche.
+              A search you can only reach by closing what you are reading is a
+              search nobody uses. */}
+          <CitySearch onPick={({ hit }) => void goToHit(hit)} />
           {picked !== null ? (
             <CityBlockPanel
               record={record}
               context={ctx}
+              request={request}
+              onFiche={setAt}
               loading={recLoading}
               onClose={() => {
                 setPicked(null);

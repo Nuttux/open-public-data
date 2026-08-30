@@ -70,6 +70,33 @@ export interface BlockDecision {
    * format flag — it is the join between two ways of keeping a record.
    */
   readonly c?: string;
+  /**
+   * WHAT THIS DECISION IS ABOUT — a bitmask over the themes in
+   * `blocks/themes.json`, absent where nothing matched (about two rows in
+   * three).
+   *
+   * It is computed in the pipeline and NOT here, and that is the whole point
+   * of the field. `t` is one line, a median of 136 characters; the item it was
+   * cut from has a median of 520. The same regex run against `t` in the
+   * browser finds 34% of the landmark record and 17% of the homelessness
+   * record — not a coarser answer to the same question, a different and much
+   * smaller dataset. So never re-derive a theme from `t`.
+   */
+  readonly m?: number;
+  /**
+   * THE SAME IDEA AT THE FICHE'S GRAIN — a bitmask over the forty-one subjects
+   * in `threads.json`, `bit` per subject, absent where none matched.
+   *
+   * The eight in `m` are coarse enough to filter a whole city by; these are
+   * fine enough to say what one block keeps coming back to. Both are computed
+   * in the same pass over the same text, which is the point: they were two
+   * different answers for a while, because this one was matched in the browser
+   * against `t` and reached 35% of records where the record reaches 51%.
+   *
+   * Past 32 subjects, so read it with division rather than `>>` — JavaScript's
+   * bitwise operators coerce to int32 and would drop bits 32-40 in silence.
+   */
+  readonly sm?: number;
 }
 
 export interface BlockShardEntry {
@@ -1878,17 +1905,25 @@ export interface ThreadRecord {
   readonly s: string;
   readonly l: string;
   /**
-   * THE PATTERN THE BUILD RAN, shipped so the browser can run the same one.
+   * THE PATTERN THE BUILD RAN — and the browser no longer runs it.
    *
-   * `build_threads.py` §out says why in its own words: the browser holds the
-   * records of whatever the reader is looking at and can only say *"this
-   * subject is here, N times"* if it can repeat the build's match. Python and
-   * JavaScript agree on every construct these use — word boundaries,
-   * character classes, alternation and negative lookahead — and `threadsIn`
-   * compiles each one inside a try/catch anyway, because a pattern that one
-   * engine rejects must cost one subject and not the panel.
+   * It used to. The reasoning was that the browser holds the records of
+   * whatever the reader is looking at, so it can only say *"this subject is
+   * here, N times"* if it repeats the build's match. That was true and the
+   * consequence was not noticed: the browser holds `t`, ONE LINE of a median
+   * 136 characters, while the record behind it has a median of 520. The same
+   * forty-one patterns reach 35% of records against the line and 51% against
+   * the record. The gap was being read as *"the subjects are not
+   * exhaustive"* when it was only ever *"the browser cannot see the text"*.
+   *
+   * So the match now happens in the pipeline and arrives as `sm` on each row.
+   * `p` still ships — it is what `bit` MEANS, and a reader auditing a subject
+   * should be able to see the rule — but nothing matches with it while
+   * `ThreadsFile.tagged_in_pipeline` is true.
    */
   readonly p: string;
+  /** which bit of a row's `sm` this subject occupies */
+  readonly bit?: number;
   readonly era: string;
   readonly note: string;
   readonly n: number;
@@ -1903,6 +1938,12 @@ export interface ThreadRecord {
 export interface ThreadsFile {
   readonly n_records: number;
   readonly n_tagged: number;
+  /**
+   * The tree carries `sm` on every row, so match by bit and never by pattern.
+   * Absent on a tree published before 2026-08-29, where the pattern is all
+   * there is — hence the fallback in `subjectHits` rather than an assumption.
+   */
+  readonly tagged_in_pipeline?: boolean;
   readonly threads: readonly ThreadRecord[];
 }
 
@@ -1992,6 +2033,54 @@ function threadRx(p: string): RegExp | null {
   return rx;
 }
 
+/**
+ * The rows of a subject, out of whatever rows you hand it.
+ *
+ * `threadsIn` picks the subjects AND counts them, which is right where the
+ * caller holds a complete record. The neighbourhood does not: its subjects are
+ * counted in the pipeline over every row and shipped, while the browser holds
+ * twelve rows a decade. So it needs the second half on its own — give it the
+ * subject and the rows it has, and it gets back the ones that match, with the
+ * count left to whoever knows the true one.
+ */
+/**
+ * Does this row belong to this subject — asked in ONE place, so the two
+ * callers below cannot answer it differently.
+ *
+ * By bit when the tree is tagged, which is the pipeline's answer read off the
+ * record. By pattern only against a tree published before the tag existed,
+ * where the line is all there is; that path is the OLD, 35% answer and is kept
+ * solely so an older tree still renders rather than going blank.
+ */
+function subjectHit(
+  file: ThreadsFile | null,
+  thread: ThreadRecord,
+  row: BlockDecision,
+): boolean {
+  if (file?.tagged_in_pipeline && thread.bit !== undefined) {
+    const sm = row.sm;
+    if (sm === undefined) return false;
+    /* `sm` runs past 32 bits — 41 subjects — and JavaScript's `>>` and `&`
+       coerce to int32, which would silently drop every subject from 32 up.
+       Divide and floor instead: the value is an exact integer well inside
+       Number.MAX_SAFE_INTEGER. */
+    return Math.floor(sm / 2 ** thread.bit) % 2 === 1;
+  }
+  const rx = threadRx(thread.p);
+  return rx ? rx.test(row.t ?? "") : false;
+}
+
+export function threadRows(
+  thread: ThreadRecord,
+  rows: readonly BlockDecision[],
+  file: ThreadsFile | null = null,
+): BlockDecision[] {
+  return rows
+    .filter((r) => subjectHit(file, thread, r))
+    .slice()
+    .sort((a, b) => b.y - a.y || (b.d ?? "").localeCompare(a.d ?? ""));
+}
+
 export function threadsIn(
   file: ThreadsFile | null,
   rows: readonly BlockDecision[],
@@ -2010,8 +2099,6 @@ export function threadsIn(
   }
   const out: ThreadHere[] = [];
   for (const th of file.threads) {
-    const rx = threadRx(th.p);
-    if (!rx) continue;
     /* NEWEST FIRST, by the volume's own date, and it has to be SOME date
        order rather than the shard's.
        The Board printed most items TWICE — a first reading and a final
@@ -2023,7 +2110,7 @@ export function threadsIn(
        Descending, so a subject opens on what happened here lately, which is
        the order the rail and every opened decade now use. */
     const hits = uniq
-      .filter((r) => rx.test(r.t ?? ""))
+      .filter((r) => subjectHit(file, th, r))
       .slice()
       .sort((a, b) => b.y - a.y || (b.d ?? "").localeCompare(a.d ?? ""));
     if (hits.length < minHits) continue;
@@ -2035,7 +2122,40 @@ export function threadsIn(
     }
     out.push({ thread: th, rows: hits, y0, y1 });
   }
-  out.sort((a, b) => a.thread.n - b.thread.n);
+  /* ── RANKED BY LIFT, NOT BY RARITY ────────────────────────────────────
+     This sorted RAREST CITY-WIDE first, on the reasoning that a block on
+     `Paving and grading` like 2,072 others learns nothing from saying so.
+     That was right about the problem and the fix over-corrected: it dropped
+     local strength from the ranking altogether. MEASURED on block 3752, which
+     holds 33 horse permits and 27 liquor licences, it led with `Streets
+     closed for good (2)`.
+
+     Lift is the share here over the share across the map. It answers the
+     question a reader actually has — what is this place unusual for — and it
+     cannot surface something the place barely has, because the local share is
+     the numerator. On 3752 it gives `Shelters and homelessness (5)` first,
+     which is true and unobvious, and keeps the horses and the liquor.
+
+     Ties break on the local count, so two subjects equally unusual here are
+     ordered by how much of this place they actually are.
+
+     ── AND DAMPED, BECAUSE LIFT IS LOUD AT SMALL n ─────────────────────
+     A subject with two hits and a small city-wide total gets an enormous
+     ratio off almost nothing: Haight Ashbury came back with `Street name
+     changes (2)` in second place, ahead of things it holds thirty of.
+     Multiplying by `n / (n + 3)` costs a 2-hit subject 60 % of its score, a
+     9-hit one 25 % and a 30-hit one 9 %, so a genuine oddity still reaches
+     the top and a coincidence drops a slot or two. MEASURED at k = 0, 3 and
+     6: at 6 the ranking flattens back into a plain count, at 3 the only
+     movement is the thin ones falling behind the solid ones. */
+  const total = file.n_records || 1;
+  const DAMP = 3;
+  const score = (h: ThreadHere) => {
+    const lift =
+      (h.rows.length / uniq.length) / Math.max(h.thread.n / total, 1e-9);
+    return lift * (h.rows.length / (h.rows.length + DAMP));
+  };
+  out.sort((a, b) => score(b) - score(a) || b.rows.length - a.rows.length);
   return out;
 }
 
@@ -2096,6 +2216,20 @@ export interface HoodRecords {
    * neighbourhoods, and absent is the correct state — a page with no paragraph
    * opens on the record, which is honest. A padded one would not be.
    */
+  /**
+   * What this neighbourhood keeps being about, COUNTED IN THE PIPELINE.
+   *
+   * Every other level runs the published patterns in the browser over the
+   * rows it holds, which is exact because a block, a street and an address
+   * each hold their whole record. This file ships twelve rows a decade out of
+   * hundreds, so the same trick here would count a selection and print it as
+   * the neighbourhood's. `build_hood_records.py` counts it over all of them.
+   */
+  readonly subjects?: readonly {
+    readonly l: string;
+    readonly n: number;
+    readonly note: string;
+  }[];
   readonly summary?: string;
   readonly summary_sources?: readonly HoodSource[];
   readonly summary_read?: {
@@ -2163,4 +2297,232 @@ export function streetRecordCount(
 ): number {
   if (!index) return 0;
   return index.n[streetFileName(key)] ?? 0;
+}
+
+/* ── THE FINDING, NOT THE RECORD ──────────────────────────────────────────── */
+
+/**
+ * ONE SENTENCE SAYING WHAT HAPPENED HERE.
+ *
+ * The fiche showed the record and never stated the finding. A reader clicking
+ * a block met `"Garage, Finance and Oil Permits — Roman Catholic Archbishop of
+ * San Francisco, at…"` — a truncated fragment of 1918 municipal prose — and
+ * had to synthesise a century out of raw minutes themselves. Only the
+ * neighbourhood carried a written paragraph, and there is no writing 5,404 of
+ * those by hand.
+ *
+ * There is no need to. Every clause here is a COUNT of things already
+ * computed, and nothing is generated:
+ *
+ *   · how many and over what span — `blockShape`, exact;
+ *   · which decade holds the most — `blockShape.busiest`, exact;
+ *   · what they were about — `threadsIn`, which is the published patterns run
+ *     over these very rows.
+ *
+ * ── THE THRESHOLDS ARE THE HONESTY ────────────────────────────────────────
+ * Each clause is dropped rather than hedged when it would overstate:
+ *
+ *   · **"Busiest in the 1910s"** needs that decade to hold a QUARTER of
+ *     everything and the place to hold at least eight. On a block with four
+ *     decisions spread over four decades there is no busiest decade, there is
+ *     a coincidence.
+ *   · **"Most often about X"** needs the subject to land at least twice AND to
+ *     cover a tenth of the place. `Paving and grading · 1` on a 40-record
+ *     block is not what the block is about.
+ *
+ * Where nothing clears the bar the sentence is just the count and the span,
+ * which is always true.
+ */
+export interface FicheOpener {
+  readonly lead: string;
+  readonly busiest: string | null;
+  readonly about: string | null;
+  /** [decade, n] over the whole rail, for the sparkline */
+  readonly dec: readonly (readonly [number, number])[];
+}
+
+const BUSIEST_SHARE = 0.25;
+const BUSIEST_FLOOR = 8;
+/**
+ * TWO WORDINGS, BECAUSE THEY ARE TWO DIFFERENT CLAIMS.
+ *
+ * `Most often about street lights` was the only wording, and it needed a tenth
+ * of the place before it would print. On the Haight Ashbury block the busiest
+ * subject is street lights at 4 of 41 — 9.8 %, just under — so the clause
+ * almost never fired and the sentence lost its most useful half.
+ *
+ * The threshold was right and the wording was wrong. `Mostly about X` is a
+ * claim about DOMINANCE and keeps a high bar. `Among them: X, Y and Z` claims
+ * nothing except that they are in there, so it can print wherever a subject
+ * lands more than once — which is what a reader actually wants to know.
+ */
+const MOSTLY_SHARE = 0.25;
+const ABOUT_HITS = 2;
+/**
+ * "Most often about X" needs a place to have enough records for "most often"
+ * to mean anything. 259 Frederick St holds two decisions — both stages of one
+ * conditional use application — and read *"Most often about permission to
+ * open something"*, which is a summary of two things as though it were a
+ * pattern. Under this floor the records are simply listed and speak for
+ * themselves; there is nothing to summarise that the reader cannot see.
+ */
+const ABOUT_FLOOR = 6;
+
+export function ficheOpener(
+  shape: BlockShape | null,
+  groups: readonly DecadeGroup[],
+  subjects: readonly ThreadHere[],
+  words: {
+    /** `{n} decisions here, {y0} to {y1}.` */
+    many: string;
+    /** `{n} decisions here, all in {y0}.` */
+    oneYear: string;
+    /** `One decision here, in {y0}.` */
+    one: string;
+    /** `Busiest in the {decade}s.` */
+    busiest: string;
+    /** `Mostly about {list}.` — only where one subject really dominates */
+    mostly: string;
+    /** `Among them: {list}.` — claims nothing about how much */
+    among: string;
+    and: string;
+  },
+): FicheOpener | null {
+  if (!shape || shape.n === 0) return null;
+  const { n, firstYear, lastYear } = shape;
+
+  const lead =
+    n === 1
+      ? words.one.replace("{y0}", String(firstYear))
+      : firstYear === lastYear
+        ? words.oneYear.replace("{n}", String(n)).replace("{y0}", String(firstYear))
+        : words.many
+            .replace("{n}", String(n))
+            .replace("{y0}", String(firstYear))
+            .replace("{y1}", String(lastYear));
+
+  let busiest: string | null = null;
+  if (
+    shape.busiest &&
+    n >= BUSIEST_FLOOR &&
+    shape.busiest.n / n >= BUSIEST_SHARE
+  ) {
+    busiest = words.busiest.replace("{decade}", String(shape.busiest.decade));
+  }
+
+  /* `threadsIn` hands them back RAREST first, which is right for a chip — the
+     rare one is the interesting one — and wrong for a sentence, where the
+     reader wants what the place is mostly about. */
+  const top = (n < ABOUT_FLOOR ? [] : subjects)
+    .filter((h) => h.rows.length >= ABOUT_HITS)
+    .slice()
+    .sort((a, b) => b.rows.length - a.rows.length)
+    .slice(0, 3)
+    .map((h) => h.thread.l.toLowerCase());
+
+  const dominant =
+    top.length > 0 &&
+    (subjects.find((h) => h.thread.l.toLowerCase() === top[0])?.rows.length ?? 0) / n >=
+      MOSTLY_SHARE;
+  const about =
+    top.length === 0
+      ? null
+      : (dominant ? words.mostly : words.among).replace(
+          "{list}",
+          /* ── THE LIST IS NOT ALWAYS JOINED WITH "and" ─────────────────
+             Several subjects have an `and` inside their own name — `Railroads
+             and spur tracks`, `Paving and grading` — and joining those with a
+             final `and` produced *"street lights, railroads and spur tracks
+             and paving and grading"*, which parses as five things and reads
+             as none. Where any name carries its own `and`, the list is
+             commas only; where none does, the last join reads normally. */
+          top.length === 1
+            ? top[0]
+            : top.some((x) => x.includes(" and "))
+              ? top.join(", ")
+              : `${top.slice(0, -1).join(", ")} ${words.and} ${top[top.length - 1]}`,
+        );
+
+  return {
+    lead,
+    busiest,
+    about,
+    dec: groups.map((g) => [g.decade, g.rows.length] as const),
+  };
+}
+
+/* ── A FICHE IS A LINK ────────────────────────────────────────────────────── */
+
+/**
+ * WHAT A READER CAN SEND SOMEBODY.
+ *
+ * Nothing on this map had a URL. A reader who found the two 1991 motions on
+ * their own street could not send them to a neighbour, a reporter could not
+ * cite them, and closing the tab lost the place. Every share is also how
+ * somebody else arrives, so this is the difference between a thing people look
+ * at once and a thing that circulates.
+ *
+ * ── THE PARAMS ARE READABLE ON PURPOSE ────────────────────────────────────
+ *     ?block=1254
+ *     ?block=1254&street=FREDERICK_ST
+ *     ?block=1254&address=259+Frederick+St
+ *     ?block=1254&hood=1
+ *
+ * The street rides as its FILE name, via the `streetFileName` already here, so the link reads as a street rather than as
+ * `FREDERICK%7CST`. It is resolved back by matching that fold against the
+ * block's own street keys — never by parsing it, which would have to guess
+ * where the `|` went.
+ *
+ * The address rides as its LABEL for the same reason `UnitRequest` does: the
+ * doors of a block are derived in the browser and a key shipped in a URL would
+ * have to stay identical to that fold forever.
+ *
+ * `block` is always present, even for the neighbourhood, because the ladder
+ * needs somewhere to send "this block" and because a link should reopen the
+ * map where the reader was standing.
+ */
+export interface FicheLink {
+  readonly block: string;
+  readonly street?: string;
+  readonly address?: string;
+  readonly hood?: boolean;
+}
+
+export function ficheParams(link: FicheLink): URLSearchParams {
+  const q = new URLSearchParams();
+  q.set("block", link.block);
+  if (link.hood) q.set("hood", "1");
+  else if (link.street) q.set("street", streetFileName(link.street));
+  else if (link.address) q.set("address", link.address);
+  return q;
+}
+
+/** what a URL asks for, read back — `null` where it asks for nothing */
+export function readFicheParams(search: string): FicheLink | null {
+  const q = new URLSearchParams(search);
+  const block = q.get("block");
+  if (!block) return null;
+  const hood = q.get("hood") === "1";
+  const street = q.get("street") ?? undefined;
+  const address = q.get("address") ?? undefined;
+  return {
+    block,
+    ...(hood ? { hood: true } : {}),
+    ...(!hood && street ? { street } : {}),
+    ...(!hood && !street && address ? { address } : {}),
+  };
+}
+
+/**
+ * The street key a URL's file-name form points at, out of the keys this block
+ * actually fronts. Null where the block does not front it — a link edited by
+ * hand, or a street since renamed — and the caller opens the block instead,
+ * which is the honest fallback rather than an empty street.
+ */
+export function streetKeyFromFile(
+  file: string,
+  keys: readonly string[],
+): string | null {
+  const want = file.toLowerCase();
+  return keys.find((k) => streetFileName(k).toLowerCase() === want) ?? null;
 }

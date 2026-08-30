@@ -10,6 +10,12 @@ import type { NextConfig } from 'next';
  * directly to the final destination (no chains).
  */
 const nextConfig: NextConfig = {
+  /* A SECOND DEV SERVER WITHOUT KILLING THE FIRST. `next dev` takes a lock on
+     .next/dev, so screenshotting a change while a dev server is already up
+     meant stopping someone's session. NEXT_DIST_DIR moves the build directory
+     for that one process; unset — which is every normal run, dev, build and
+     deploy — this is exactly the default it always was. */
+  distDir: process.env.NEXT_DIST_DIR || '.next',
   // PostHog reverse proxy — analytics ride our own domain (/ingest/*) instead
   // of eu.i.posthog.com, so ad blockers can't drop events. Keeps visitor
   // counts accurate (they undercount ~20-40% otherwise for this audience).

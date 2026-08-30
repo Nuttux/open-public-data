@@ -1,0 +1,217 @@
+{
+ "name": "San Francisco Board of Supervisors records, 1906-2026",
+ "rows": 124284,
+ "generated_by": "pipeline/scripts/us_sf_city/blocks/build_core_table.py",
+ "read_this_first": "pipeline/scripts/us_sf_city/blocks/RECORD-COLUMNS.md",
+ "counting_rules": [
+  "One row is one thing the Board dealt with.",
+  "topic is single-valued, so no row is counted twice \u2014 but the topics sum to the rows that carry one, not to every row.",
+  "Do not count rows whose record_type is not `decision` into subject figures \u2014 they are page furniture, index rows, or a bare vote whose description lives in another row.",
+  "Say which denominator you used: all rows, decisions only, or classified rows only. All three are legitimate and they differ."
+ ],
+ "columns": [
+  {
+   "name": "id",
+   "what": "stable key: volume and item number"
+  },
+  {
+   "name": "year",
+   "what": "the year the Board acted"
+  },
+  {
+   "name": "date",
+   "what": "month-day where the volume printed one"
+  },
+  {
+   "name": "kind",
+   "values": [
+    "departmental work",
+    "hearing",
+    "motion",
+    "ordinance",
+    "resolution"
+   ]
+  },
+  {
+   "name": "heading",
+   "what": "the title the volume printed above the item"
+  },
+  {
+   "name": "text",
+   "what": "the line as printed, original spelling and scan errors kept"
+  },
+  {
+   "name": "source_url",
+   "what": "opens the scanned page"
+  },
+  {
+   "name": "record_type",
+   "values": [
+    "decision",
+    "vote-outcome-only",
+    "page-furniture",
+    "index-row",
+    "cut-in-half",
+    "too-damaged",
+    "departmental-work"
+   ]
+  },
+  {
+   "name": "topic",
+   "values": [
+    "the-street",
+    "getting-around",
+    "land-and-building",
+    "doing-business",
+    "city-services",
+    "running-the-city",
+    "public-money",
+    "civic-life"
+   ]
+  },
+  {
+   "name": "subtopic",
+   "values": [
+    "accepting-work",
+    "appointments",
+    "assessments",
+    "bicycles-walking",
+    "blasting",
+    "bonds",
+    "budget",
+    "business-districts",
+    "city-buys-land",
+    "city-leases",
+    "city-sells-land",
+    "claims-refunds",
+    "closed-for-a-day",
+    "closed-for-good",
+    "code-changes",
+    "commendations",
+    "construction",
+    "contractor-time",
+    "dance-halls-shows",
+    "elections",
+    "emergencies",
+    "employee-fundraising",
+    "engines-boilers",
+    "environment",
+    "fire",
+    "franchises",
+    "freeways",
+    "grades",
+    "health",
+    "hearings-appeals",
+    "horses-and-cows",
+    "housing-shelter",
+    "landmarks",
+    "laundries",
+    "lawsuits",
+    "libraries",
+    "liquor",
+    "other-permits",
+    "oversight",
+    "parking",
+    "parks",
+    "police",
+    "port",
+    "power-utilities",
+    "railways-spur-tracks",
+    "redevelopment",
+    "schools",
+    "set-back-lines",
+    "sewers",
+    "sidewalk-widths",
+    "staff-and-jobs",
+    "state-and-national",
+    "storage-tanks",
+    "street-lighting",
+    "street-names",
+    "street-works",
+    "subdivisions",
+    "taxes-revenue",
+    "taxis-garages",
+    "traffic",
+    "transit",
+    "using-the-sidewalk",
+    "vote-or-scheduling",
+    "water-supply",
+    "wires-underground",
+    "zoning"
+   ]
+  },
+  {
+   "name": "action",
+   "values": [
+    "granted",
+    "refused",
+    "ordered",
+    "accepted",
+    "appropriated",
+    "paid",
+    "settled",
+    "amended",
+    "appointed",
+    "commended",
+    "voted-or-scheduled",
+    "other"
+   ]
+  },
+  {
+   "name": "streets",
+   "what": "the street names the record itself printed, | separated"
+  },
+  {
+   "name": "refers_to_decision_number",
+   "what": "for a bare vote outcome, the decision number it points at \u2014 the thread back to the row that describes what was voted on. Blank when the row cites several"
+  },
+  {
+   "name": "how_we_know_where",
+   "values": [
+    "names its own block",
+    "street address",
+    "between two streets",
+    "street corner",
+    "street only",
+    "no place given"
+   ],
+   "what": "how precisely the record said where it happened. Only the first four are precise enough to draw a dot; `street only` means the street is known and the spot is not."
+  },
+  {
+   "name": "why_no_place",
+   "values": [
+    "no place in the text",
+    "named a street we could not use"
+   ]
+  },
+  {
+   "name": "block",
+   "what": "assessor block, when there is one"
+  },
+  {
+   "name": "longitude"
+  },
+  {
+   "name": "latitude"
+  },
+  {
+   "name": "amounts",
+   "what": "every printed figure, | separated"
+  },
+  {
+   "name": "amount_count",
+   "what": "how many. Take amounts[0] only when this is 1 \u2014 6.2% of rows carry several and none of them is THE amount."
+  },
+  {
+   "name": "classified_by",
+   "values": [
+    "form",
+    "near-duplicate",
+    "purpose-clause",
+    "record",
+    "rule"
+   ],
+   "what": "`record` means a human read this row. `form` means a human read the sentence-shape it shares with others. `near-duplicate` means it is the same sentence as a labelled row with different scan errors. `rule` means a pattern that agreed 90-100% with a human read. `purpose-clause` means two reads: the opening formula gave the action, and the subject came from the clause after it \u2014 \"for the purpose of reconstructing the main sewer in Mission street\". Every row carries one of the five; a row can still have an empty `topic`, which is a read row whose line does not say what it was about."
+  }
+ ]
+}

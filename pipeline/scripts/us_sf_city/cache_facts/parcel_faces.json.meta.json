@@ -1,0 +1,8 @@
+{
+ "url": "https://data.sfgov.org/resource/acdm-wktn.json?%24select=block_num%2Cstreet_name%2Cstreet_type%2Cmin%28from_address_num%29+AS+lo%2Cmax%28to_address_num%29+AS+hi&%24where=active%3Dtrue+AND+from_address_num+IS+NOT+NULL&%24group=block_num%2Cstreet_name%2Cstreet_type&%24limit=50000",
+ "what": "acdm-wktn active parcels, one row per (block, street) with the house-number range on that face",
+ "bytes": 1571022,
+ "rows": 18173,
+ "sha256": "0e4a5308675ea81c1cbf333582070fb3163ed3f0c47d591b79b1cfa9250d27c9",
+ "retrieved_utc": "2026-08-28T15:35:22Z"
+}

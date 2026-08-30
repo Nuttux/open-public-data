@@ -1,0 +1,563 @@
+"""Hand labels -> the versioned classification seed.
+
+    python3 freeze_classification.py
+
+INPUT   scratchpad/sf-classify/forms300.txt      the forms that were read
+        scratchpad/sf-classify/form_labels.tsv   what they were labelled
+OUTPUT  pipeline/seeds/sf_bos_classification.csv
+
+WHY A SEED AND NOT A PIPELINE STEP.
+
+A model's judgement is not reproducible the way SQL is: run it twice and the
+answers can differ, and a build that re-classifies on every run would change
+published numbers with nobody deciding to. So the judgement happens ONCE, lands
+in a versioned CSV, and every build after that is deterministic SQL reading a
+file. Re-running the classifier changes that file, the diff is reviewable in a
+pull request, and the change is a decision somebody made rather than a thing
+that happened.
+
+WHAT `by` MEANS, AND WHY IT IS ON EVERY ROW.
+
+    form     one of the 300 commonest FORMS was read, and this record shares
+             it. The form was normalised — numbers, money, street names and
+             roll calls removed — so records sharing one are the same sentence
+             with a different address in it.
+    record   this record was read on its own.
+    rule     a deterministic family that agreed with a hand read 90-100% of
+             the time. Three of them earned this; the rest did not.
+
+A reader can filter the published dataset to `by = record` and get only what a
+human eye actually saw. That is the point of the column.
+
+THE FORM EXPANSION IS THE RISK, AND IT IS BOUNDED HERE. A form determines the
+ACTION reliably — "the following amounts be and the same are hereby set aside"
+is always an appropriation — but it does NOT always determine the TOPIC, because
+what the money was FOR sits past the end of the formula. Where the label left
+topic blank, this writes an action and no topic rather than guessing one.
+"""
+from __future__ import annotations
+
+import collections
+import csv
+import json
+import os
+import re
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from _paths import CACHE, REPO  # noqa: E402
+
+SCRATCH = os.path.join(REPO, "scratchpad", "sf-classify")
+LABELS = os.path.join(SCRATCH, "form_labels.tsv")
+OUT = os.path.join(REPO, "pipeline", "seeds", "sf_bos_classification.csv")
+TAXONOMY = os.path.join(REPO, "pipeline", "seeds", "sf_bos_taxonomy.json")
+
+HISTORIC = os.path.join(CACHE, "items.jsonl")
+MODERN = os.path.join(REPO, "pipeline/scripts/us_sf_city/cache_sfbos/items.jsonl")
+
+# THE SAME NORMALISATION THE FORMS WERE DRAWN WITH. If this drifts from the
+# code that produced forms300.txt, labels attach to the wrong records — so it
+# lives here, once, and `forms300.txt` is regenerated from it.
+STREETS = (r"(?:st(?:reet)?|ave(?:nue)?|blvd|boulevard|road|rd|way|drive|dr"
+           r"|place|pl|court|ct|alley|lane|terrace|plaza|highway|hwy)")
+
+
+# ── PASS B: the form of the SUBJECT CLAUSE, not of the preamble ────────────
+# `form_of` keys on the first 16 words, and for this corpus that is mostly the
+# Clerk's opening formula — "Resolution No. 14248 (New Series), as follows:
+# Resolved, That…" — which is identical across completely unrelated decisions.
+# Stripping it first and keying on what FOLLOWS collapses the remainder far
+# harder: 40,301 distinct forms instead of 58,000, and the commonest ones are
+# recognisable acts rather than boilerplate.
+PREAMBLE = re.compile(
+    r"^\s*(?:the\s+)?(?:following\s+)?(?:resolution|ordinance|motion|bill)\b"
+    r"[^.:]{0,90}?(?:\(?(?:new|second)\s+series\)?|series of\s*#?)?"
+    r"[\s,.:;]*(?:entitled[\s,\"']*)?(?:as follows[\s,:]*)?"
+    r"(?:be it )?(?:resolved|ordained|it is hereby ordered)?[\s,:]*(?:that\s+)?",
+    re.I)
+
+
+def form_b(t: str, words: int = 9) -> str:
+    """The shape of what the record actually DID, preamble removed."""
+    s = PREAMBLE.sub(" ", t, count=1).lower()
+    s = re.sub(r"\$[\d,.]+", " $ ", s)
+    s = re.sub(r"\b\d[\d,.\-/]*\b", " # ", s)
+    s = re.sub(r"\b[a-z][a-z'\-]+\s+" + STREETS + r"\b", " ST ", s)
+    s = re.sub(r"\b(?:new series|series of|second series)\b", " ", s)
+    s = re.sub(r"\bsupervisors?\b[^.]{0,200}", " ", s)
+    s = re.sub(r"[^a-z ]+", " ", s)
+    return " ".join(" ".join(s.split()).split()[:words])
+
+
+# ── PASS D's KEY: the purpose clause, not the formula ────────────────────
+# Lives here beside `form_b` for the same reason `form_b` does: the code that
+# WRITES a label and the code that READS it must normalise identically, so
+# there is exactly one definition and both import it. See make_subjects.py for
+# why the key cannot be `form_b` — these records share their opening formula
+# with rows that are already correctly topiced.
+MARK = re.compile(
+    r"\b(?:for the purpose of|for the purposes of"
+    r"|in payment (?:to|of|for)|on account of|in satisfaction of"
+    r"|to defray|for defraying|to enable|for enabling"
+    r"|for (?:the )?(?:construction|reconstruction|repair|repairs|improvement"
+    r"|improving|paving|repaving|grading|purchase|acquisition|acquiring"
+    r"|maintenance|expense|expenses|removal|installation|installing|erection"
+    r"|completion|extension|widening|lighting|cleaning|furnishing|equipment"
+    r"|rental|salaries|salary|relief|care|support)\b)", re.I)
+
+
+def subject_form(t: str, words: int = 12) -> str:
+    """The shape of the purpose clause, or '' when the line has none."""
+    m = MARK.search(t)
+    if not m:
+        return ""
+    s = t[m.start():].lower()
+    s = re.sub(r"\$[\d,.]+", " $ ", s)
+    s = re.sub(r"\b\d[\d,.\-/]*\b", " # ", s)
+    s = re.sub(r"\b[a-z][a-z'\-]+\s+" + STREETS + r"\b", " ST ", s)
+    s = re.sub(r"[^a-z ]+", " ", s)
+    return " ".join(" ".join(s.split()).split()[:words])
+
+
+def form_of(t: str, words: int = 16) -> str:
+    s = t.lower()
+    s = re.sub(r"\$[\d,.]+", " $ ", s)
+    s = re.sub(r"\b\d[\d,.\-/]*\b", " # ", s)
+    s = re.sub(r"\b[a-z][a-z'\-]+\s+" + STREETS + r"\b", " STREET ", s)
+    s = re.sub(r"\b(?:new series|series of|second series)\b", " ", s)
+    s = re.sub(r"\bsupervisors?\b[^.]{0,200}", " ", s)
+    s = re.sub(r"[^a-z ]+", " ", s)
+    return " ".join(" ".join(s.split()).split()[:words])
+
+
+def main() -> int:
+    tax = json.load(open(TAXONOMY))
+    topics = {t["slug"] for t in tax["topics"]}
+    subs = {s["slug"]: t["slug"] for t in tax["topics"] for s in t["subtopics"]}
+    actions = {a["slug"] for a in tax["actions"]}
+    rtypes = {r["slug"] for r in tax["record_types"]}
+
+    # ── the labels, checked against the taxonomy before anything expands ──
+    labels = {}
+    bad = []
+    with open(LABELS) as f:
+        for line in f:
+            p = (line.rstrip("\n").split("\t") + ["", "", "", ""])[:5]
+            n, rt, top, sub, act = p
+            if not n.strip():
+                continue
+            n = int(n)
+            if rt and rt not in rtypes:
+                bad.append(f"line {n}: record_type {rt!r}")
+            if top and top not in topics:
+                bad.append(f"line {n}: topic {top!r}")
+            if sub and sub not in subs:
+                bad.append(f"line {n}: subtopic {sub!r}")
+            if sub and top and subs.get(sub) != top:
+                bad.append(f"line {n}: subtopic {sub!r} does not belong to {top!r}")
+            if act and act not in actions:
+                bad.append(f"line {n}: action {act!r}")
+            labels[n] = {"record_type": rt, "topic": top, "subtopic": sub, "action": act}
+    if bad:
+        print("REFUSED — labels disagree with the taxonomy:")
+        for b in bad[:20]:
+            print("  ", b)
+        return 1
+    print(f"{len(labels)} form labels, all valid against the taxonomy")
+
+    # ── the corpus, grouped by form ──────────────────────────────────────
+    rows = []
+    kind_of = {}
+    for path in (HISTORIC, MODERN):
+        for line in open(path):
+            r = json.loads(line)
+            t = " ".join((r.get("t") or "").split())
+            if len(t) <= 25:
+                continue
+            rows.append((f'{r.get("v")}|{r.get("i")}', t))
+            kind_of[f'{r.get("v")}|{r.get("i")}'] = r.get("k") or ""
+    groups = collections.defaultdict(list)
+    for rid, t in rows:
+        groups[form_of(t)].append(rid)
+
+    # the label file is keyed by RANK, so the ranking is recomputed the same way
+    ranked = sorted(groups.items(), key=lambda kv: -len(kv[1]))
+
+    out = []
+    per_topic = collections.Counter()
+    for i, (f, ids) in enumerate(ranked[:len(labels)], 1):
+        lab = labels.get(i)
+        if not lab:
+            continue
+        for rid in ids:
+            out.append({"id": rid, **lab, "classified_by": "form"})
+        if lab["topic"]:
+            per_topic[lab["topic"]] += len(ids)
+
+    # ── PASS B, keyed on the form STRING rather than on its rank ─────────
+    # The rank of a form depends on how much is already classified, so a
+    # rank-keyed label file would attach to a different form every time the
+    # seed grows. `forms_b.jsonl` carries the form itself, and that is the key.
+    fb = os.path.join(SCRATCH, "forms_b.jsonl")
+    lb = os.path.join(SCRATCH, "form_labels_b.tsv")
+    n_b = 0
+    if os.path.exists(fb) and os.path.exists(lb):
+        by_i = {}
+        for line in open(fb):
+            d = json.loads(line)
+            by_i[d["i"]] = d["form"]
+        lab_b = {}
+        for line in open(lb):
+            parts = (line.rstrip("\n").split("\t") + ["", "", "", ""])[:5]
+            if not parts[0].strip():
+                continue
+            i = int(parts[0])
+            f = by_i.get(i)
+            if not f:
+                continue
+            lab_b[f] = {"record_type": parts[1], "topic": parts[2],
+                        "subtopic": parts[3], "action": parts[4]}
+        bad_b = []
+        for f, l in lab_b.items():
+            if l["topic"] and l["topic"] not in topics:
+                bad_b.append(f"topic {l['topic']!r}")
+            if l["subtopic"] and subs.get(l["subtopic"]) != l["topic"]:
+                bad_b.append(f"subtopic {l['subtopic']!r} not under {l['topic']!r}")
+            if l["action"] and l["action"] not in actions:
+                bad_b.append(f"action {l['action']!r}")
+            if l["record_type"] and l["record_type"] not in rtypes:
+                bad_b.append(f"record_type {l['record_type']!r}")
+        if bad_b:
+            print("REFUSED — pass-B labels disagree with the taxonomy:")
+            for b in bad_b[:12]:
+                print("  ", b)
+            return 1
+        seen_b = {o["id"] for o in out}
+        for rid, t in rows:
+            if rid in seen_b:
+                continue
+            l = lab_b.get(form_b(t))
+            if l:
+                out.append({"id": rid, **l, "classified_by": "form"})
+                if l["topic"]:
+                    per_topic[l["topic"]] += 1
+                n_b += 1
+        print(f"\n{n_b:,} more from {len(lab_b)} subject-clause forms")
+
+    # ── what the record's own `kind` already says ────────────────────────
+    # `W` is a departmental annual report — Bureau of Engineering, DPW, the
+    # Park Commission — not a Board act at all. The sweep has always carried
+    # this and nothing was reading it. Every one of the 51 report-prose records
+    # found by hand in the tail was `kind = W`, with no exceptions, so this is
+    # the record answering for itself rather than a guess about its prose.
+    seen_k = {o["id"] for o in out}
+    n_kind = 0
+    for rid, _t in rows:
+        if rid in seen_k or kind_of.get(rid) != "W":
+            continue
+        out.append({"id": rid, "record_type": "departmental-work", "topic": "",
+                    "subtopic": "", "action": "other", "classified_by": "rule"})
+        n_kind += 1
+    if n_kind:
+        print(f"\n{n_kind:,} departmental report rows, from the record's own kind")
+
+    # ── the volume's own calendar rows ───────────────────────────────────
+    # "Ordinance, Beach Street. Supervisor McGregor presented: Bill No. 6767," —
+    # a line from the Board's calendar, not a decision. Short, and it ends on a
+    # bill number with no act in it. Length is part of the test on purpose: the
+    # same words inside a real ordinance must not trip it.
+    IDXROW = re.compile(r"\bBill No\.?\s*[\d,]*\s*,?\s*$", re.I)
+    seen_i = {o["id"] for o in out}
+    n_idx = 0
+    for rid, t in rows:
+        if rid in seen_i or len(t) >= 120 or not IDXROW.search(t):
+            continue
+        out.append({"id": rid, "record_type": "index-row", "topic": "",
+                    "subtopic": "", "action": "other", "classified_by": "rule"})
+        n_idx += 1
+    if n_idx:
+        print(f"{n_idx:,} calendar rows ending on a bill number")
+
+    # ── the roll call and nothing else ───────────────────────────────────
+    # "Resolution No. 506-87 Adopted by the following vote: Ayes: Supervisors
+    # Britt, Gonzalez, …" — the record IS the roll call. The act it belongs to
+    # was printed elsewhere in the volume; this row carries a tally and a list
+    # of names, so there is nothing to give a topic to.
+    #
+    # The 60-character limit is the whole guard: a real ordinance that ends
+    # "…Finally passed by the following vote:" has its subject in front of the
+    # vote clause and must NOT be swept in here. MEASURED: 30 records drawn at
+    # random from what this matches were read one at a time; 30 of 30 carried
+    # no act.
+    ROLLCALL = re.compile(r"\bby the following vote\b|\bAyes\s*[—:-]\s*Supervisor",
+                          re.I)
+    seen_v = {o["id"] for o in out}
+    n_roll = 0
+    for rid, t in rows:
+        if rid in seen_v:
+            continue
+        m = ROLLCALL.search(t)
+        if not m or m.start() > 60:
+            continue
+        out.append({"id": rid, "record_type": "vote-outcome-only",
+                    "topic": "running-the-city", "subtopic": "vote-or-scheduling",
+                    "action": "voted-or-scheduled", "classified_by": "rule"})
+        per_topic["running-the-city"] += 1
+        n_roll += 1
+    if n_roll:
+        print(f"{n_roll:,} rows that are a roll call and nothing else")
+
+    # ── records read one at a time ───────────────────────────────────────
+    rl = os.path.join(SCRATCH, "record_labels.tsv")
+    n_rec = 0
+    if os.path.exists(rl):
+        seen_r = {o["id"] for o in out}
+        for line in open(rl):
+            parts = (line.rstrip("\n").split("\t") + ["", "", "", ""])[:5]
+            rid = parts[0].strip()
+            if not rid or rid in seen_r:
+                continue
+            lab = {"record_type": parts[1], "topic": parts[2],
+                   "subtopic": parts[3], "action": parts[4]}
+            if lab["topic"] and lab["topic"] not in topics:
+                print(f"REFUSED: record label topic {lab['topic']!r}")
+                return 1
+            if lab["subtopic"] and subs.get(lab["subtopic"]) != lab["topic"]:
+                print(f"REFUSED: record label subtopic {lab['subtopic']!r}")
+                return 1
+            out.append({"id": rid, **lab, "classified_by": "record"})
+            seen_r.add(rid)
+            if lab["topic"]:
+                per_topic[lab["topic"]] += 1
+            n_rec += 1
+        print(f"{n_rec:,} records read one at a time")
+
+    # ── the three families that earned it ────────────────────────────────
+    # Measured against a hand-read blind sample of 156 records: these agreed
+    # 90-100% of the time. Every other family scored between 0% and 67% and is
+    # deliberately NOT here — a rule that is right two times in three is worse
+    # than an honest blank, because nothing downstream can tell which third it
+    # got wrong. See CLASSIFY-SPEC.md for the per-family table.
+    KEEPERS = [
+        ("the-street", "grades", "ordered",
+         r"official grades?\b|changing and re-?establish\w*|establishing grades"),
+        ("the-street", "sidewalk-widths", "amended",
+         r"regulating the width of sidewalks|width of sidewalks"),
+        ("the-street", "set-back-lines", "ordered",
+         r"set-?back lines?"),
+        ("the-street", "closed-for-a-day", "granted",
+         r"temporar\w* clos\w+|street fair|closed to vehicular traffic"),
+        ("the-street", "closed-for-good", "ordered",
+         r"clos(?:e|ed|ing) and abandon|\bvacat(?:e|ing|ion) of\b"
+         r"|closing certain streets|permanent closure|intent to vacate"),
+        ("the-street", "street-names", "ordered",
+         r"changing the name of|commemorative street name|official street names"),
+        ("public-money", "lawsuits", "settled",
+         r"settlement of (?:the |a |two )?(?:portion of the )?lawsuit"
+         r"|authorizing settlement|superior court, case no"
+         r"|united states district court|\bunlitigated claim\b"),
+    ]
+    KEEP_RX = [(t, sub, act, re.compile(pat, re.I)) for t, sub, act, pat in KEEPERS]
+    seen_ids = {o["id"] for o in out}
+    n_rule = 0
+    for rid, t in rows:
+        if rid in seen_ids:
+            continue
+        for top, sub, act, rx in KEEP_RX:
+            if rx.search(t):
+                out.append({"id": rid, "record_type": "decision", "topic": top,
+                            "subtopic": sub, "action": act, "classified_by": "rule"})
+                per_topic[top] += 1
+                n_rule += 1
+                break
+    print(f"\n{n_rule:,} more from the three families that agreed 90-100% "
+          f"with a hand read")
+
+    # ── PASS C: the rest of the tail, read form by form ──────────────────
+    # Pass B read the 2,000 commonest forms. This is the same mechanism run to
+    # exhaustion over what was left: `make_tail.py` groups everything still
+    # unlabelled into units, `tail_batch.py` prints them commonest-first and
+    # writes the answers back keyed by the form string.
+    #
+    # A form whose first nine words are pure Clerk boilerplate covers records
+    # with nothing in common, and those were NOT labelled here — they were
+    # marked SPLIT and came back as one unit per record, landing in
+    # record_labels.tsv above. So every form in this file is one somebody read
+    # and judged to determine the answer for its whole group.
+    fc = os.path.join(SCRATCH, "form_labels_c.tsv")
+    n_c = 0
+    if os.path.exists(fc):
+        lab_c = {}
+        bad_c = []
+        for line in open(fc):
+            p = (line.rstrip("\n").split("\t") + ["", "", "", ""])[:5]
+            if not p[0].strip():
+                continue
+            l = {"record_type": p[1], "topic": p[2],
+                 "subtopic": p[3], "action": p[4]}
+            if l["topic"] and l["topic"] not in topics:
+                bad_c.append(f"{p[0]!r}: topic {l['topic']!r}")
+            if l["subtopic"] and subs.get(l["subtopic"]) != l["topic"]:
+                bad_c.append(f"{p[0]!r}: subtopic {l['subtopic']!r}")
+            if l["action"] and l["action"] not in actions:
+                bad_c.append(f"{p[0]!r}: action {l['action']!r}")
+            if l["record_type"] and l["record_type"] not in rtypes:
+                bad_c.append(f"{p[0]!r}: record_type {l['record_type']!r}")
+            lab_c[p[0]] = l
+        if bad_c:
+            print("REFUSED — pass-C labels disagree with the taxonomy:")
+            for b in bad_c[:12]:
+                print("  ", b)
+            return 1
+        seen_c = {o["id"] for o in out}
+        for rid, t in rows:
+            if rid in seen_c:
+                continue
+            l = lab_c.get(form_b(t))
+            if l:
+                out.append({"id": rid, **l, "classified_by": "form"})
+                if l["topic"]:
+                    per_topic[l["topic"]] += 1
+                n_c += 1
+        print(f"{n_c:,} more from {len(lab_c):,} forms read to exhaust the tail")
+
+    # ── PASS D: the SUBJECT, for decisions whose formula named none ──────
+    # Everything above answers "what did the Board do". For most rows the same
+    # answer carried the topic with it, because the formula that fixed the verb
+    # also named the subject. For ~6,100 it did not: "the sum of $1,250 be and
+    # the same is hereby set aside, appropriated and authorized to be expended"
+    # is an appropriation whether the money buys a sewer or defends a lawsuit.
+    # Those rows were frozen with an action and an empty topic rather than given
+    # the topic of whichever record happened to be read first.
+    #
+    # This pass goes back for the subject and ONLY the subject. It cannot change
+    # `record_type` or `action`, and it cannot touch a row that already has a
+    # topic — both are asserted below rather than left to convention.
+    #
+    # A blank topic in this file is a RESULT, not a gap: somebody read the line
+    # and it names no single subject, usually because one appropriation covers
+    # several unrelated budget items. Those rows keep their empty topic and are
+    # NOT counted as filled.
+    sd = os.path.join(SCRATCH, "subject_labels.tsv")
+    n_d = n_d_none = 0
+    if os.path.exists(sd):
+        lab_d: dict[str, dict[str, tuple[str, str]]] = {"form": {}, "record": {}}
+        bad_d = []
+        for line in open(sd):
+            p = (line.rstrip("\n").split("\t") + ["", "", "", ""])[:4]
+            kind, key, top, sub = p
+            if not key.strip() or kind not in lab_d:
+                continue
+            if top and top not in topics:
+                bad_d.append(f"topic {top!r}")
+            if sub and subs.get(sub) != top:
+                bad_d.append(f"subtopic {sub!r} not under {top!r}")
+            lab_d[kind][key] = (top, sub)
+        if bad_d:
+            print("REFUSED — subject labels disagree with the taxonomy:")
+            for b in bad_d[:12]:
+                print("  ", b)
+            return 1
+        text_of = dict(rows)
+        for o in out:
+            if o["record_type"] != "decision" or o["topic"]:
+                continue
+            t = text_of.get(o["id"])
+            if t is None:
+                continue
+            hit = lab_d["record"].get(o["id"])
+            if hit is None:
+                f = subject_form(t)
+                hit = lab_d["form"].get(f) if f else None
+            if hit is None:
+                continue
+            top, sub = hit
+            if not top:
+                n_d_none += 1
+                continue
+            o["topic"], o["subtopic"] = top, sub
+            o["classified_by"] = "purpose-clause"
+            per_topic[top] += 1
+            n_d += 1
+        print(f"\n{n_d:,} subjects recovered from the purpose clause"
+              f"  ({n_d_none:,} read and naming no single subject)")
+
+    # ── the same sentence with different scan errors ─────────────────────
+    # The Journal reprints an ordinance at every reading and the OCR of the two
+    # printings differs, so `form_of` — which only strips numbers, money and
+    # street names — files them as two different forms. A 4-gram shingle
+    # overlap catches what normalisation cannot: "Authorizing an expenditure of
+    # $22,- 98G.97" is "Authorizing an expenditure of $22,986.97".
+    #
+    # THE THRESHOLD IS DELIBERATELY HIGH. At 0.80 of the smaller shingle set
+    # these are the same sentence, not merely the same kind of sentence — the
+    # looser the test, the more this becomes guessing dressed as propagation.
+    # It carries its own `classified_by` so a reader can discount it.
+    def shingles(t, k=4):
+        w = re.sub(r"[^a-z ]+", " ", t.lower()).split()[:30]
+        return {" ".join(w[i:i + k]) for i in range(max(0, len(w) - k + 1))}
+
+    # SORTED, NOT SET ORDER. Both loops below take the first 6 shingles of a
+    # record to keep the index small. `set` iteration order depends on string
+    # hashes, and CPython randomises those per process — so unsorted, this pass
+    # indexed a different 6 shingles on every run and the seed came out
+    # different each time it was frozen (measured: 124,267 then 124,237 records
+    # from identical inputs). Sorting makes the choice a property of the text
+    # instead of a property of the process, which is what a versioned seed needs.
+    labelled = {o["id"]: o for o in out}
+    lab = [(o["id"], txt, shingles(txt)) for rid, txt in rows
+           if (o := labelled.get(rid)) is not None]
+    idx = collections.defaultdict(list)
+    for i, (_rid, _t, sh) in enumerate(lab):
+        for sg in sorted(sh)[:6]:
+            idx[sg].append(i)
+    n_near = 0
+    for rid, t in rows:
+        if rid in labelled:
+            continue
+        sh = shingles(t)
+        cand = collections.Counter()
+        for sg in sorted(sh)[:6]:
+            for j in idx.get(sg, ())[:40]:
+                cand[j] += 1
+        best, bs = None, 0.0
+        for j, _c in cand.most_common(8):
+            o = len(sh & lab[j][2]) / max(1, min(len(sh), len(lab[j][2])))
+            if o > bs:
+                bs, best = o, j
+        if best is not None and bs >= 0.80:
+            src = labelled[lab[best][0]]
+            out.append({"id": rid, "record_type": src["record_type"],
+                        "topic": src["topic"], "subtopic": src["subtopic"],
+                        "action": src["action"], "classified_by": "near-duplicate"})
+            if src["topic"]:
+                per_topic[src["topic"]] += 1
+            n_near += 1
+    print(f"\n{n_near:,} more from records that are the same sentence with "
+          f"different scan errors")
+
+    n_corpus = len(rows)
+    print(f"\n{len(out):,} records labelled = {100*len(out)/n_corpus:.1f}% "
+          f"of {n_corpus:,}")
+    with_topic = sum(1 for o in out if o["topic"])
+    print(f"  of those, carry a topic : {with_topic:,} = {100*with_topic/max(1,len(out)):.0f}%")
+    print(f"  action only (topic not determined by the form): "
+          f"{len(out)-with_topic:,}")
+
+    print("\nby topic")
+    for k, v in per_topic.most_common():
+        print(f"  {k:<24}{v:>8,}")
+
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    with open(OUT, "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["id", "record_type", "topic", "subtopic",
+                                          "action", "classified_by"])
+        w.writeheader()
+        w.writerows(out)
+    print(f"\n-> {OUT}  ({os.path.getsize(OUT)/1e6:.1f} MB)")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

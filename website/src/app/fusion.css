@@ -17248,6 +17248,313 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 .theme-fusion .fx-block-back { display: inline-block; margin-bottom: 10px; }
 
+/* ── THE SEARCH BOX ────────────────────────────────────────────────────────
+   Sits at the top of the record margin and stays there whether the margin is
+   idle or holding a fiche: a search you can only reach by closing what you are
+   reading is a search nobody uses. It is the one control on this panel that is
+   not part of the record, so it is separated by a rule rather than by a
+   heading — a `SEARCH` label would be a fifth mono heading competing with the
+   four the fiche already has. */
+.theme-fusion .fx-city-search {
+  position: relative;
+  margin: 0 0 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-city-search-in {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--f-ui);
+  font-size: 13px;
+  line-height: 1.3;
+  padding: 7px 9px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.theme-fusion .fx-city-search-in:focus {
+  outline: none;
+  border-color: var(--ink);
+}
+.theme-fusion .fx-city-search-in::placeholder { color: var(--muted); }
+
+/* the results float over the fiche rather than pushing it down — the reader
+   is choosing between the list and what is already on screen, and reflowing
+   a 900 px panel on every keystroke is the other way to do it */
+.theme-fusion .fx-city-search-out {
+  position: absolute;
+  z-index: 12;
+  left: 0;
+  right: 0;
+  top: calc(100% - 6px);
+  max-height: 60vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  padding: 6px 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .10);
+}
+.theme-fusion .fx-city-search-note { padding: 6px 10px; margin: 0; }
+.theme-fusion .fx-city-search-group + .fx-city-search-group {
+  border-top: 1px solid var(--rule);
+  margin-top: 6px;
+  padding-top: 6px;
+}
+.theme-fusion .fx-city-search-kind {
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 2px 10px 4px;
+}
+.theme-fusion .fx-city-search-hit {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: var(--ink);
+  font-family: var(--f-ui);
+  font-size: 13px;
+  line-height: 1.35;
+}
+/* one highlight, driven by the cursor, so the pointer and the arrow keys
+   cannot disagree about which row is about to be chosen */
+.theme-fusion .fx-city-search-hit.is-on { background: var(--bg-hover); }
+.theme-fusion .fx-city-search-hit:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: -2px;
+}
+.theme-fusion .fx-city-search-l { display: block; }
+.theme-fusion .fx-city-search-sub {
+  display: block;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+.theme-fusion .fx-city-search-n {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.theme-fusion .fx-city-search-more,
+.theme-fusion .fx-city-search-caveat {
+  margin: 2px 0 0;
+  padding: 0 10px 4px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* the streets around here, as one wrapping line rather than five rows —
+   a street is a name and a number and needs no more room than that */
+.theme-fusion .fx-block-streets {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.theme-fusion .fx-block-streets-sep { color: var(--rule); }
+.theme-fusion .fx-block-street {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--f-ui);
+  font-size: 12.5px;
+  color: var(--bleu);
+}
+.theme-fusion .fx-block-street:hover { text-decoration: underline; }
+.theme-fusion .fx-block-street:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: 1px;
+}
+.theme-fusion .fx-block-street.is-quiet { color: var(--muted); cursor: default; }
+.theme-fusion .fx-block-street-n {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+/* ── WHOSE DECISIONS, AND A LINK TO SEND ──────────────────────────────────
+   Both are quiet by design: the tip is a question nobody who knows the answer
+   should have to read past, and the copy button is a utility, not a call to
+   action. Same mono-link idiom as every other disclosure on this panel. */
+.theme-fusion .fx-who { margin: 2px 0 4px; }
+.theme-fusion .fx-who-sum {
+  cursor: pointer;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--bleu);
+  list-style: none;
+  padding: 2px 0;
+}
+.theme-fusion .fx-who-sum::-webkit-details-marker { display: none; }
+.theme-fusion .fx-who-sum:hover { text-decoration: underline; }
+.theme-fusion .fx-who-body {
+  margin: 4px 0 0;
+  padding-left: 10px;
+  border-left: 2px solid var(--rule);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.theme-fusion .fx-block-foot { margin-top: 16px; }
+.theme-fusion .fx-block-copy {
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.theme-fusion .fx-block-copy:hover { border-color: var(--ink); }
+.theme-fusion .fx-block-copy:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: 1px;
+}
+
+/* ── THE FINDING, AND THE CENTURY AS ONE ROW ──────────────────────────────
+   The sentence is the largest thing on the panel because it is the answer.
+   Everything under it — the record, the counts, the captions — is evidence
+   for it, and evidence is read at 13.5 px. Same face as the neighbourhood's
+   written paragraph and the same size, because they are the same kind of
+   sentence: one we assembled, standing over words the city wrote. */
+.theme-fusion .fx-fiche-open { margin: 10px 0 2px; }
+.theme-fusion .fx-fiche-say {
+  font-family: var(--f-ui);
+  font-size: 15.5px;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+
+/* thirteen decades, 34 px tall, read without scrolling. Each is a button:
+   the bar IS the target, so the hit area is the full column height rather
+   than the drawn bar — a 3 px 1950s must be as easy to press as a full
+   1910s. */
+.theme-fusion .fx-fiche-spark {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 34px;
+  margin: 12px 0 4px;
+}
+.theme-fusion .fx-fiche-tick {
+  display: flex;
+  align-items: flex-end;
+  flex: 1 1 0;
+  min-width: 4px;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.theme-fusion .fx-fiche-tick.is-off { cursor: default; }
+.theme-fusion .fx-fiche-tickbar {
+  display: block;
+  width: 100%;
+  background: var(--bleu, #1b2a6b);
+  opacity: .75;
+}
+/* an empty decade still draws its slot — a hairline on the baseline, so the
+   gap is visible as a gap rather than as the chart having fewer decades */
+.theme-fusion .fx-fiche-tick.is-off .fx-fiche-tickbar {
+  height: 1px !important;
+  background: var(--rule);
+  opacity: 1;
+}
+.theme-fusion .fx-fiche-tick:not(.is-off):hover .fx-fiche-tickbar { opacity: 1; }
+.theme-fusion .fx-fiche-tick:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: 1px;
+}
+.theme-fusion .fx-fiche-spark-ends {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  letter-spacing: .04em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+/* ── WHERE YOU ARE, AND WHAT IS ONE TAP OUT ───────────────────────────────
+   Four levels on one wrapping line, each with the count of what pressing it
+   shows. It wraps rather than scrolls: a horizontal scroller in a 252 px
+   column hides its own tail, and the last rung — the neighbourhood — is the
+   one most worth seeing.
+
+   The rung you are on is not a button and does not look like one. Everything
+   else is pressable and says so by being underlined on hover, which is the
+   panel's own idiom for a link rather than a fifth button style. */
+.theme-fusion .fx-block-ladder {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 0;
+  margin: 8px 0 2px;
+}
+.theme-fusion .fx-block-rung-wrap {
+  display: inline-flex;
+  align-items: baseline;
+}
+.theme-fusion .fx-block-rung-sep {
+  color: var(--muted);
+  font-size: 11px;
+  padding: 0 5px;
+}
+.theme-fusion .fx-block-rung {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  border: 0;
+  background: transparent;
+  padding: 2px 0;
+  font-family: var(--f-ui);
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--bleu);
+  cursor: pointer;
+  text-align: left;
+}
+.theme-fusion .fx-block-rung:hover .fx-block-rung-l { text-decoration: underline; }
+.theme-fusion .fx-block-rung:focus-visible {
+  outline: 2px solid var(--bleu-vif);
+  outline-offset: 1px;
+}
+.theme-fusion .fx-block-rung.is-on {
+  color: var(--ink);
+  font-weight: 600;
+  cursor: default;
+}
+.theme-fusion .fx-block-rung-n {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
 /* ── WHAT KEEPS COMING UP ──────────────────────────────────────────────────
    Chips, and they wrap: a subject is a phrase in English — `Land and
    buildings split up` — not a four-digit code, so a fixed grid would either
@@ -17292,6 +17599,13 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   border-color: var(--ink);
   color: var(--bg);
 }
+/* the neighbourhood's are a statement, not a control — see the comment in
+   `HoodLevel`: what is behind them is a count this file does not ship rows for */
+.theme-fusion .fx-block-subject.is-flat {
+  cursor: default;
+  color: var(--ink-2);
+}
+.theme-fusion .fx-block-subject.is-flat:hover { border-color: var(--rule); }
 .theme-fusion .fx-block-subject-n {
   font-family: var(--f-mono);
   font-size: 10.5px;
@@ -17553,6 +17867,13 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   cursor: pointer;
 }
 .theme-fusion .fx-block-subject:hover { border-color: var(--ink); }
+/* the neighbourhood's are a statement, not a control — see the comment in
+   `HoodLevel`: what is behind them is a count this file does not ship rows for */
+.theme-fusion .fx-block-subject.is-flat {
+  cursor: default;
+  color: var(--ink-2);
+}
+.theme-fusion .fx-block-subject.is-flat:hover { border-color: var(--rule); }
 .theme-fusion .fx-block-subject-n {
   font-family: var(--f-mono);
   font-size: 10px;

@@ -110,7 +110,6 @@ import {
   stripFileNumber,
   hasMoney,
   hoodAt,
-  hoodBusiest,
   indexedLastYear,
   judgedLead,
   loadBlockFacts,
@@ -120,10 +119,14 @@ import {
   loadHoodFacts,
   loadHoodRecords,
   loadStreetIndex,
+  ficheOpener,
   loadThreads,
+  threadRows,
   threadsIn,
+  streetKeyFromFile,
   streetRecordCount,
   type StreetIndex,
+  type FicheOpener,
   type ThreadHere,
   type ThreadsFile,
   type HoodRecords,
@@ -338,99 +341,6 @@ export interface BlockContext {
    the deletion is checked by dumping the panel's own `innerText` and grepping
    for `us.sf.` rather than by trusting the diff. */
 
-/**
- * IN SHORT, for the neighbourhood — the same discipline as the block's.
- *
- * Assembled, never written. Every clause is one sentence over one field and a
- * clause whose field is missing is dropped rather than hedged. The only thing
- * this level says that the block's cannot is *how many blocks*, which is a
- * count of the membership and not an estimate of anything.
- */
-function HoodSummary({ hood, t }: { hood: HoodRecord; t: (k: string) => string }) {
-  const bits: string[] = [];
-  const busiest = hoodBusiest(hood);
-
-  bits.push(
-    /* NOT "a mostly single family residential neighbourhood". Each block's
-       `use` is already the plurality of ITS parcels, so a plurality over those
-       is a plurality of pluralities — and South of Market came out "mostly
-       single family residential", which is the roll's word for a great many
-       small SoMa parcels and is not what a reader will understand by it. The
-       sentence now says exactly what was counted: how many of the
-       neighbourhood's blocks are mostly that. */
-    hood.use
-      ? t("us.sf.thecity.panel.hood_sum_ground")
-          .replace("{use}", hood.use.toLowerCase())
-          .replace("{m}", nfInt.format(hood.use_blocks))
-          .replace("{n}", nfInt.format(hood.blocks))
-      : t("us.sf.thecity.panel.hood_sum_ground_plain").replace(
-          "{n}",
-          nfInt.format(hood.blocks),
-        ),
-  );
-
-  /* Every one of the 41 carries a Census count, so unlike the block there is
-     no absent case to write for — and no hood reads zero, so there is no
-     zero sentence either. A sentence for a state that does not occur is a
-     sentence nobody has checked. */
-  if (hood.residents > 0) {
-    bits.push(
-      t("us.sf.thecity.panel.hood_sum_people")
-        .replace("{n}", nfInt.format(hood.residents))
-        .replace("{h}", nfInt.format(hood.homes)),
-    );
-  }
-
-  if (hood.record.n === 0) {
-    bits.push(t("us.sf.thecity.panel.hood_sum_record_none"));
-  } else {
-    bits.push(
-      t(
-                busiest
-          ? "us.sf.thecity.panel.hood_sum_record"
-          : "us.sf.thecity.panel.hood_sum_record_flat",
-      )
-        .replace("{n}", nfInt.format(hood.record.n))
-        .replace("{y0}", String(hood.record.y0))
-        .replace("{y1}", String(hood.record.y1))
-        .replace("{d}", String(busiest?.decade ?? "")),
-    );
-  }
-
-  return (
-    <>
-      <div className="fx-city-ledger-head fx-block-sec" style={{ marginTop: 10 }}>
-        {t("us.sf.thecity.panel.sum_head")}
-      </div>
-      <p className="fx-block-lead" style={{ marginTop: 0 }}>
-        {bits.join(" ")}
-      </p>
-    </>
-  );
-}
-
-/**
- * THE NEIGHBOURHOOD'S PROVENANCE — the whole of what is left of "On the ground
- * now", and it is a footnote.
- *
- * > "this is again too much information, there's no hierarchy or quick scan of
- * > info, please evaluate this format"
- *
- * **The four fact rows are gone: Residents, Homes, Mostly, Blocks.** Not
- * because the figures are wrong but because the paragraph above already
- * printed all four — *"A neighbourhood of 53 blocks, 33 of them mostly single
- * family residential. 28,506 people live here, in 15,913 homes."* — so a
- * reader met `Single Family Residential` twice at one grain, once as prose and
- * once as a row, and had to read both to find out they were the same thing.
- * **ONE GRAIN, ONE FORM: prose for the neighbourhood, figures for the block.**
- *
- * The sentence below is what does NOT go. `residents_blocks` is on the record
- * because only **2 of the 41** neighbourhoods have a Census ring on every one
- * of their blocks — Bayview Hunters Point has 294 of 501 — and a resident
- * count with no denominator implies a completeness the join has not got. It
- * drops to footnote weight (`NOTE`) rather than out: thirty-six words
- * qualifying a five-word fact may not be set at the size of the fact.
- */
 function HoodProvenance({
   hood,
   file,
@@ -1041,6 +951,8 @@ const BAR_FLOOR = 4;
 
 /** one identity for "no rows", so a null record does not churn the memos */
 const EMPTY: readonly BlockDecision[] = [];
+const EMPTY_GROUPS: readonly DecadeGroup[] = [];
+const EMPTY_THREADS: readonly ThreadHere[] = [];
 
 /**
  * A SILENCE, DRAWN ONCE.
@@ -1157,15 +1069,67 @@ function UnscannedTag({ t }: { t: (k: string) => string }) {
  */
 function Subjects({
   here,
+  flat,
   total,
   t,
 }: {
   here: readonly ThreadHere[];
+  /**
+   * The neighbourhood's, counted in the pipeline and shipped — see
+   * `HoodRecords.subjects`. They arrive as a list rather than as matches
+   * because this level's file holds a SELECTION of its rows, so the browser
+   * cannot match them itself without counting the selection.
+   *
+   * They are not pressable for the same reason: pressing one elsewhere opens
+   * the records behind it, and behind these is a number whose rows are not
+   * here. A chip that opens nothing is worse than a statement that says
+   * something.
+   */
+  flat?: readonly { readonly here: ThreadHere; readonly trueN: number }[];
   /** how many records the unit on screen holds, so the share is honest */
   total: number;
   t: (k: string) => string;
 }) {
   const [open, setOpen] = useState<string | null>(null);
+  /* ── THE NEIGHBOURHOOD'S CHIPS PRESS TOO ──────────────────────────────
+     > "i remmeber i could click here on the themes and it would filter but i
+     > dont see this applied to every level"
+
+     They were statements here and buttons everywhere else, on the reasoning
+     that this file ships a selection so a press could not show all 97. That
+     was true and the conclusion was wrong: what a press is worth is mostly
+     the plain-English note and the shape across the city, neither of which
+     needs the rows. So it presses, shows both, lists the ones this file does
+     hold, and says how many of the 97 those are. */
+  if (flat && flat.length > 0) {
+    const cur = flat.find((x) => x.here.thread.s === open) ?? null;
+    return (
+      <>
+        <div className="fx-city-ledger-head fx-block-sec">
+          {tOr(t, "us.sf.thecity.panel.subjects_head", "What keeps coming up")}
+        </div>
+        <div className="fx-block-subjects">
+          {flat.map((sj) => (
+            <button
+              key={sj.here.thread.s}
+              type="button"
+              className={`fx-block-subject${open === sj.here.thread.s ? " is-on" : ""}`}
+              aria-expanded={open === sj.here.thread.s}
+              onClick={() =>
+                setOpen(open === sj.here.thread.s ? null : sj.here.thread.s)
+              }
+            >
+              <span className="fx-block-subject-l">{sj.here.thread.l}</span>
+              <span className="fx-block-subject-n">{nfInt.format(sj.trueN)}</span>
+            </button>
+          ))}
+        </div>
+        {cur ? (
+          <SubjectOpen h={cur.here} total={total} trueN={cur.trueN} t={t} />
+        ) : null}
+      </>
+    );
+  }
   if (here.length === 0) return null;
   /* Six is the cap and it is not arbitrary: rarest-first means the tail is
      `Paving and grading`, which almost every block in the city is on. A
@@ -1212,16 +1176,27 @@ function Subjects({
 function SubjectOpen({
   h,
   total,
+  trueN,
   t,
 }: {
   h: ThreadHere;
   total: number;
+  /**
+   * The count over the WHOLE place, where the panel holds only some of it.
+   *
+   * Only the neighbourhood passes this. Its subjects are counted in the
+   * pipeline over every row — 97 of them — while its file ships twelve rows a
+   * decade, so `h.rows` is what can be shown and 97 is what is true. Printing
+   * `h.rows.length` alone would quietly restate the neighbourhood as smaller
+   * than it is; printing 97 and listing nine would look broken. It says both.
+   */
+  trueN?: number;
   t: (k: string) => string;
 }) {
   const th = h.thread;
   const peak = th.dec.reduce((m, [, n]) => Math.max(m, n), 0);
   /* EVERY decade the file carries, empty ones included. Dropping the zeroes
-     drew `Blasting the hills flat` as four fat bars with no gaps, which reads
+     drew `Blasting permits` as four fat bars with no gaps, which reads
      as a subject that ran evenly for a century. It ran 1906–1931 and then
      stopped, and the stopping is the interesting half — so an empty decade
      keeps its slot and draws nothing. */
@@ -1230,14 +1205,19 @@ function SubjectOpen({
     <div className="fx-block-subject-open">
       <p className="fx-block-subject-note">{th.note}</p>
       <p className="fx-block-hint">
-        {tOr(
-          t,
-          "us.sf.thecity.panel.subject_here",
-          "{n} of the {all} records here, {span}.",
-        )
-          .replace("{n}", String(h.rows.length))
-          .replace("{all}", nfInt.format(total))
-          .replace("{span}", span)}
+        {trueN === undefined
+          ? tOr(
+              t,
+              "us.sf.thecity.panel.subject_here",
+              "{n} of the {all} records here, {span}.",
+            )
+              .replace("{n}", String(h.rows.length))
+              .replace("{all}", nfInt.format(total))
+              .replace("{span}", span)
+          : t("us.sf.thecity.panel.subject_here_some")
+              .replace("{n}", nfInt.format(trueN))
+              .replace("{all}", nfInt.format(total))
+              .replace("{shown}", String(h.rows.length))}
       </p>
 
       <div className="fx-block-subject-dec" aria-hidden>
@@ -1317,13 +1297,309 @@ function byNewest(rows: readonly BlockDecision[]): BlockDecision[] {
     .sort((a, b) => b.y - a.y || (b.d ?? "").localeCompare(a.d ?? ""));
 }
 
+/**
+ * WHERE YOU ARE, AND WHAT IS ONE TAP OUT.
+ *
+ * > "i dunno how you can make somethign explorable ya know on multiple levels
+ * > and it becomes intutitive for ppl"
+ * > "ok thats good one tap"
+ *
+ * The four levels have always been here — an address, the block, the street,
+ * the neighbourhood — but MOVING between them was scattered across the panel:
+ * neighbours under `Also here`, the street behind a separate button, the
+ * neighbourhood behind a fold at the very bottom. A reader standing on an
+ * address could not see that there was anywhere to go.
+ *
+ * THE COUNTS ARE THE POINT, not decoration. `259 Frederick St · 2` next to
+ * `this block · 47` says, before you tap anything, that stepping out is worth
+ * it — and on a busy corner it says the opposite. Without them the row is four
+ * words and a reader has no reason to press any of them.
+ *
+ * Every rung is a real count of what pressing it will show:
+ *   · the unit you are on — the rows the fiche is built from;
+ *   · the block — every decision on this piece of ground;
+ *   · the street — from the street index, the same number `Also here` prints;
+ *   · the neighbourhood — `hood.record.n`, the same number its own page shows.
+ * A rung whose count we do not have is not drawn. Nothing here is estimated.
+ */
+function Ladder({
+  unit,
+  here,
+  blockN,
+  street,
+  hood,
+  onGo,
+  t,
+}: {
+  unit: Unit;
+  here: number;
+  blockN: number;
+  street: { key: string; n: number } | null;
+  hood: { name: string; n: number } | null;
+  onGo: (u: Unit) => void;
+  t: (k: string) => string;
+}) {
+  const rungs: {
+    key: string;
+    label: string;
+    n: number;
+    on: boolean;
+    go?: () => void;
+  }[] = [];
+
+  if (unit.kind === "door") {
+    rungs.push({ key: "door", label: t("us.sf.thecity.panel.ladder_here"), n: here, on: true });
+  }
+  rungs.push({
+    key: "block",
+    label: t("us.sf.thecity.panel.ladder_block"),
+    n: blockN,
+    on: unit.kind === "ground",
+    go: () => onGo(WHOLE),
+  });
+  if (street) {
+    rungs.push({
+      key: "street",
+      label: streetLabel(street.key),
+      n: street.n,
+      on: unit.kind === "street",
+      go: () => onGo({ kind: "street", key: street.key }),
+    });
+  }
+  if (hood) {
+    rungs.push({
+      key: "hood",
+      label: hood.name,
+      /* -1 while the neighbourhood's own file is still in flight. A rung with
+         no count draws no count — never a placeholder and never the nearest
+         number to hand, which is how it came to be showing rows instead of
+         records. */
+      n: hood.n,
+      on: false,
+      go: () => onGo({ kind: "hood" }),
+    });
+  }
+  if (rungs.length < 2) return null;
+
+  return (
+    <div className="fx-block-ladder">
+      {rungs.map((r, i) => (
+        <span key={r.key} className="fx-block-rung-wrap">
+          {i > 0 ? <span className="fx-block-rung-sep" aria-hidden>›</span> : null}
+          {r.go && !r.on ? (
+            <button
+              type="button"
+              className="fx-block-rung"
+              onClick={r.go}
+            >
+              <span className="fx-block-rung-l">{r.label}</span>
+              {r.n >= 0 ? (
+                <span className="fx-block-rung-n">{nfInt.format(r.n)}</span>
+              ) : null}
+            </button>
+          ) : (
+            <span className="fx-block-rung is-on" aria-current="true">
+              <span className="fx-block-rung-l">{r.label}</span>
+              {r.n >= 0 ? (
+                <span className="fx-block-rung-n">{nfInt.format(r.n)}</span>
+              ) : null}
+            </span>
+          )}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * THE FIRST THING A READER MEETS, AND IT IS NOW A SENTENCE.
+ *
+ * > "yeah its confusing, please think about a real revamp of fiche so its like
+ * > wow and clear and evident to people; minimal approach and efficient"
+ *
+ * It used to be a pulled quote — the loudest single line the block holds, in
+ * the volume's own 1918 prose, truncated. `"Garage, Finance and Oil Permits —
+ * Roman Catholic Archbishop of San Francisco, at…"`. That is the record, and
+ * the record is the point of this project, but it is not an ANSWER: a reader
+ * who has just clicked their own street wants to know what happened there, and
+ * was being handed a fragment to synthesise a century from.
+ *
+ * So the finding first, the record under it. Every clause is a count — see
+ * `ficheOpener`, which drops a clause rather than hedging it.
+ *
+ * ── AND THE CENTURY AS ONE ROW ────────────────────────────────────────────
+ * The decade rail is thirteen rows tall and has to be scrolled to be seen at
+ * all. The same thirteen numbers are a shape 34 px high that is read at a
+ * glance, and pressing one opens that decade in the rail below rather than
+ * being a second way to read the same thing. The rail is not replaced — it is
+ * where the reading happens. This is the map of it.
+ */
+/**
+ * THE CENTURY AS ONE ROW.
+ *
+ * The decade list is thirteen rows tall and has to be scrolled to be seen at
+ * all. The same thirteen numbers are a shape 34 px high that is read at a
+ * glance, and pressing one opens that decade in the list below rather than
+ * being a second way to read the same thing. The list is not replaced — it is
+ * where the reading happens. This is the map of it.
+ *
+ * Shared by the block, the street, the address and the neighbourhood, because
+ * a reader who learns what this row does on one level should not have to
+ * learn it again on the next.
+ */
+function Spark({
+  dec,
+  onDecade,
+  t,
+}: {
+  dec: readonly (readonly [number, number])[];
+  onDecade: (d: number) => void;
+  t: (k: string) => string;
+}) {
+  const peak = dec.reduce((m, [, n]) => Math.max(m, n), 0);
+  /* A shape needs more than one decade to be a shape. Two records in 1991
+     drew one bar and twelve hairlines, which says nothing the sentence above
+     has not already said. */
+  if (peak === 0 || dec.filter(([, n]) => n > 0).length < 2) return null;
+  return (
+    <>
+      <div className="fx-fiche-spark">
+        {dec.map(([d, n]) => (
+          <button
+            key={d}
+            type="button"
+            className={`fx-fiche-tick${n ? "" : " is-off"}`}
+            title={`${d}s · ${n}`}
+            aria-label={`${d}s, ${n}`}
+            disabled={!n}
+            onClick={() => onDecade(d)}
+          >
+            <span
+              className="fx-fiche-tickbar"
+              style={{ height: n ? `${Math.max(3, Math.round((n / peak) * 34))}px` : 0 }}
+            />
+          </button>
+        ))}
+      </div>
+      <div className="fx-fiche-spark-ends" aria-hidden>
+        <span>{dec[0][0]}s</span>
+        <span>{t("us.sf.thecity.panel.open_tap")}</span>
+        <span>{dec[dec.length - 1][0]}s</span>
+      </div>
+    </>
+  );
+}
+
+/**
+ * THE FIRST THING A READER MEETS, AND IT IS NOW A SENTENCE.
+ *
+ * It used to be a pulled quote — the loudest single line the block holds, in
+ * the volume's own 1918 prose, truncated. That is the record, and the record
+ * is the point of this project, but it is not an ANSWER: a reader who has just
+ * clicked their own street wants to know what happened there, and was being
+ * handed a fragment to synthesise a century from.
+ *
+ * So the finding first, the record under it. Every clause is a count — see
+ * `ficheOpener`, which drops a clause rather than hedging it.
+ */
+function FicheOpen({
+  open,
+  onDecade,
+  t,
+}: {
+  open: FicheOpener;
+  onDecade: (d: number) => void;
+  t: (k: string) => string;
+}) {
+  return (
+    <div className="fx-fiche-open">
+      <p className="fx-fiche-say">
+        {open.lead}
+        {open.busiest ? ` ${open.busiest}` : ""}
+        {open.about ? ` ${open.about}` : ""}
+      </p>
+      <Spark dec={open.dec} onDecade={onDecade} t={t} />
+    </div>
+  );
+}
+
+/**
+ * COPY THE LINK TO WHAT IS ON SCREEN.
+ *
+ * The URL now carries the fiche, but a URL nobody notices is a URL nobody
+ * sends — the address bar of a full-screen map is the last place a reader
+ * looks. One button, beside the sources, that puts `window.location` on the
+ * clipboard and says so for two seconds.
+ *
+ * `navigator.clipboard` needs a secure context and is refused in some frames,
+ * so a failure falls back to selecting the URL in a temporary field: the
+ * reader still gets it, with one more key to press, rather than a button that
+ * silently does nothing.
+ */
+function CopyLink({ t }: { t: (k: string) => string }) {
+  const [done, setDone] = useState(false);
+  useEffect(() => {
+    if (!done) return;
+    const id = window.setTimeout(() => setDone(false), 2000);
+    return () => window.clearTimeout(id);
+  }, [done]);
+  const copy = async () => {
+    const url = window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      setDone(true);
+    } catch {
+      const el = document.createElement("input");
+      el.value = url;
+      document.body.appendChild(el);
+      el.select();
+      try {
+        setDone(document.execCommand("copy"));
+      } catch {
+        /* nothing left to try — the reader has the address bar */
+      }
+      el.remove();
+    }
+  };
+  return (
+    <button type="button" className="fx-block-copy" onClick={() => void copy()}>
+      {done ? t("us.sf.thecity.panel.copied") : t("us.sf.thecity.panel.copy")}
+    </button>
+  );
+}
+
+/**
+ * WHO THE BOARD OF SUPERVISORS IS, FOR A READER WHO IS NOT FROM HERE.
+ *
+ * Every fiche on this map is built out of one body's minutes and no fiche ever
+ * said what that body IS. A San Franciscan works it out; nobody else does, and
+ * "Board of Supervisors" reads to most of the world like a committee of
+ * inspectors rather than the city council.
+ *
+ * It is a tip on the one line that needs it, not a paragraph everybody has to
+ * read past. `<details>` rather than a hover, because a hover is not a thing
+ * on a phone and because the open state has to survive a reader scrolling
+ * away to check something and coming back.
+ */
+function WhoDecides({ t }: { t: (k: string) => string }) {
+  return (
+    <details className="fx-who">
+      <summary className="fx-who-sum">{t("us.sf.thecity.panel.who_q")}</summary>
+      <p className="fx-who-body">{t("us.sf.thecity.panel.who_a")}</p>
+    </details>
+  );
+}
+
 function DecadeRow({
   group,
   max,
+  openDecade,
   t,
 }: {
   group: DecadeGroup;
   max: number;
+  /** the decade a press on the sparkline asked for, if any */
+  openDecade: number | null;
   t: (k: string) => string;
 }) {
   const n = group.rows.length;
@@ -1368,7 +1644,14 @@ function DecadeRow({
   // much relative to the most this quiet block ever managed".
   const pct = Math.max(4, Math.round((n / Math.max(max, BAR_FLOOR)) * 100));
   return (
-    <details className="fx-block-row">
+    /* `key` carries the asked-for decade so React remounts the row when it
+       changes — a `<details>` keeps its own open state otherwise and pressing
+       the sparkline twice would leave it shut the second time. */
+    <details
+      className="fx-block-row"
+      key={`${group.decade}:${openDecade}`}
+      open={openDecade === group.decade}
+    >
       <summary
         className="fx-block-sum"
         /* THE RUNG THE INDEX STOPS INSIDE SAYS ITS OWN SPAN, and it says it
@@ -1503,6 +1786,52 @@ export type Unit =
 const WHOLE: Unit = { kind: "ground" };
 
 /**
+ * Below this many records a unit gets its records rather than a decade rail.
+ *
+ * Six because that is what fits without scrolling under the lead, and because
+ * a rail over five records draws more rows of furniture than it does record:
+ * every decade the unit does not touch still has to be drawn or folded, and on
+ * a single address that is eleven of thirteen.
+ */
+const RAIL_FLOOR = 7;
+
+/**
+ * A UNIT THE PANEL WAS ASKED TO OPEN, from outside.
+ *
+ * Everything above resolves a unit from the CLICK — where the ground is and
+ * how far in the reader was standing. The search box has no click: it knows
+ * the reader typed `Guerrero St` and means the street, or typed an address
+ * and means that door. So it hands the unit in.
+ *
+ * ── WHY A DOOR ARRIVES AS A LABEL AND NOT A KEY ───────────────────────────
+ * A hood is an index, a street is a key, and both are ids the pipeline
+ * publishes. A door is neither: `blockAddresses` derives the doors of a block
+ * from that block's own rows, in the browser, at read time. A key shipped from
+ * the search index would have to stay character-identical to that fold forever
+ * or a result would open a fiche with no such door on it. So the request
+ * carries what the reader saw — the label — and the panel matches it against
+ * the doors it has just computed. Nothing to keep in sync, and a label that
+ * fails to match still lands on the right block, which is the honest fallback.
+ *
+ * `nonce` is what makes asking for the same thing twice work. Picking
+ * `Castro St` while already on `Castro St` is a real thing a reader does after
+ * wandering off into a decade, and without it the effect would not re-fire.
+ */
+export type UnitRequest =
+  | { readonly kind: "hood" }
+  | { readonly kind: "street"; readonly key: string }
+  /**
+   * A street as it rides in a URL — the file-name fold, `FREDERICK_ST`.
+   * Resolved against the block's OWN street keys rather than parsed, because
+   * parsing would have to guess where the `|` in `FREDERICK|ST` went. A file
+   * name the block does not front opens the block, which is the honest
+   * fallback for a hand-edited link or a street since renamed.
+   */
+  | { readonly kind: "streetFile"; readonly file: string }
+  | { readonly kind: "door"; readonly label: string }
+  | { readonly kind: "ground" };
+
+/**
  * ALSO HERE — the units the reader can move to, in the order they matter.
  *
  * The buildings first, because a door is the smallest and most personal thing
@@ -1515,31 +1844,50 @@ function UnitChooser({
   doors,
   streets,
   unit,
+  ladderKey,
   onGo,
   t,
 }: {
   doors: readonly BlockAddress[];
   streets: readonly { key: string; n: number }[];
   unit: Unit;
+  /** the street the ladder is already offering, so it is not offered twice */
+  ladderKey: string | null;
   onGo: (u: Unit) => void;
   t: (k: string) => string;
 }) {
-  /* WHAT IS LEFT TO GO TO. Offering "Quesada Ave — the whole street" while the
-     fiche IS Quesada Ave reads as a broken control, so the open unit is not on
-     its own list; `Back` is how you leave it. */
+  /* WHAT IS LEFT TO GO TO. Offering "Quesada Ave" while the fiche IS Quesada
+     Ave reads as a broken control, so the open unit is not on its own list. */
   const rest = doors.filter((d) => !(unit.kind === "door" && unit.key === d.key));
+  /* ── THE STREETS ARE A LINE, NOT FIVE ROWS ─────────────────────────────
+     A block fronting five streets drew five full-width rows under the
+     addresses, one of which the ladder was already offering two inches above.
+     On an address holding two records that was nine rows of navigation under
+     two rows of record.
+
+     Addresses stay as rows — they are the fine-grained thing a reader is
+     hunting for and they carry a count and a year each. The streets become
+     one wrapping line, because a street is a name and a number and needs no
+     more room than that. The ladder's own street is dropped from it: it is
+     the one street already on screen. */
   const restStreets = streets.filter(
-    (st) => !(unit.kind === "street" && unit.key === st.key),
+    (st) =>
+      st.n > 0 &&
+      st.key !== ladderKey &&
+      !(unit.kind === "street" && unit.key === st.key),
   );
-  if (rest.length === 0 && restStreets.length === 0) return null;
+  const quiet = streets.filter((st) => st.n === 0);
+  if (rest.length === 0 && restStreets.length === 0 && quiet.length === 0) {
+    return null;
+  }
   return (
     <>
       <div className="fx-city-ledger-head fx-block-sec">
         {tOr(t, "us.sf.thecity.panel.units_head", "Also here")}
       </div>
-      <div className="fx-block-units">
-        {rest.map((d) => {
-          return (
+      {rest.length > 0 ? (
+        <div className="fx-block-units">
+          {rest.map((d) => (
             <button
               key={`d:${d.key}`}
               type="button"
@@ -1552,42 +1900,41 @@ function UnitChooser({
                 {d.y1 !== d.y0 ? ` \u00b7 ${d.y0}\u2013${d.y1}` : ` \u00b7 ${d.y0}`}
               </span>
             </button>
-          );
-        })}
-        {restStreets.map((st) =>
-          /* A STREET WITH NO RECORD IS NOT A LINK. 332 of the 1,772 streets
-             blocks name have no file; offering them fetched a 404 and drew an
-             empty street with no explanation. They are still named, because
-             they are still the streets around you. */
-          st.n > 0 ? (
-            <button
-              key={`s:${st.key}`}
-              type="button"
-              className="fx-block-unit is-street"
-              onClick={() => onGo({ kind: "street", key: st.key })}
-            >
-              <span className="fx-block-unit-l">{streetLabel(st.key)}</span>
-              <span className="fx-block-unit-n">
-                {tOr(t, "us.sf.thecity.panel.units_street_n", "{n} records").replace(
-                  "{n}",
-                  nfInt.format(st.n),
-                )}
-              </span>
-            </button>
-          ) : (
-            <div key={`s:${st.key}`} className="fx-block-unit is-street is-quiet">
-              <span className="fx-block-unit-l">{streetLabel(st.key)}</span>
-              <span className="fx-block-unit-n">
-                {tOr(t, "us.sf.thecity.panel.units_street_none", "no record of its own")}
-              </span>
-            </div>
-          ),
-        )}
-      </div>
+          ))}
+        </div>
+      ) : null}
+      {restStreets.length > 0 || quiet.length > 0 ? (
+        <p className="fx-block-streets">
+          {restStreets.map((st, i) => (
+            <span key={st.key}>
+              {i > 0 ? <span className="fx-block-streets-sep"> · </span> : null}
+              <button
+                type="button"
+                className="fx-block-street"
+                onClick={() => onGo({ kind: "street", key: st.key })}
+              >
+                {streetLabel(st.key)}
+                <span className="fx-block-street-n">{nfInt.format(st.n)}</span>
+              </button>
+            </span>
+          ))}
+          {/* A STREET WITH NO RECORD IS NOT A LINK. 332 of the 1,772 streets
+              blocks name have no file, and offering one fetched a 404 and drew
+              an empty street with no explanation. They are still named,
+              because they are still the streets around you. */}
+          {quiet.map((st, i) => (
+            <span key={st.key} className="fx-block-street is-quiet">
+              {restStreets.length || i > 0 ? (
+                <span className="fx-block-streets-sep"> · </span>
+              ) : null}
+              {streetLabel(st.key)}
+            </span>
+          ))}
+        </p>
+      ) : null}
     </>
   );
 }
-
 
 /**
  * A NEIGHBOURHOOD, OPENED.
@@ -1709,9 +2056,21 @@ function HoodSummaryLine({
 
 function HoodLevel({
   recs,
+  flat,
+  hood,
+  hoods,
+  money,
+  openDecade,
   t,
 }: {
   recs: HoodRecords;
+  /** the pressable subjects, built in the panel — see `hoodSubjects` */
+  flat?: readonly { readonly here: ThreadHere; readonly trueN: number }[];
+  openDecade: number | null;
+  /** the hood-facts row, for the four sections that used to sit in a fold */
+  hood: HoodRecord | null;
+  hoods: HoodFactsFile | null;
+  money: BlockMoneyFile | null;
   t: (k: string) => string;
 }) {
   /* newest decade first — see `byNewest`. Reversed here rather than in the
@@ -1720,6 +2079,9 @@ function HoodLevel({
   const max = decades.reduce((m, d) => Math.max(m, d.n), 0);
   return (
     <>
+
+      <Subjects here={EMPTY_THREADS} flat={flat} total={recs.n} t={t} />
+
       <HoodSummaryLine recs={recs} t={t} />
       <div className="fx-city-ledger-head fx-block-sec">
         {t("us.sf.thecity.panel.rail_head")}
@@ -1744,7 +2106,11 @@ function HoodLevel({
             /* the same markup the block's decade list uses — `fx-block-dec` is
                a 34 px LABEL, not a container, and using it as one collapsed the
                whole panel to a 34 px column */
-            <details className="fx-block-row" key={d.decade}>
+            <details
+              className="fx-block-row"
+              key={`${d.decade}:${openDecade}`}
+              open={openDecade === d.decade}
+            >
               <summary
                 className="fx-block-sum"
                 aria-label={t("us.sf.thecity.panel.rail_aria")
@@ -1787,6 +2153,23 @@ function HoodLevel({
           );
         })}
       </div>
+
+      {/* ── THE FOUR SECTIONS THAT USED TO BE A FOLD ON THE BLOCK ────────
+          They were at the bottom of every block fiche, closed, under the
+          heading "The neighbourhood" — four sections about somewhere else,
+          below the record of the place the reader had actually clicked. The
+          ladder now brings a reader HERE deliberately, so this is where they
+          belong, and none of it is lost: the census provenance is the
+          project's whole claim about who these numbers describe, and §19e
+          measured that 16 blocks of 5,404 carry their only money figure in
+          `HoodMoney`. */}
+      {hood && hoods ? (
+        <>
+          <HoodProvenance hood={hood} file={hoods} t={t} />
+          <HoodMoney hood={hood} file={hoods} money={money} t={t} />
+          <HoodHighlights hood={hood} t={t} />
+        </>
+      ) : null}
     </>
   );
 }
@@ -1798,6 +2181,8 @@ export default function CityBlockPanel({
   loading,
   onClose,
   onLocate,
+  onFiche,
+  request,
 }: {
   record: BlockRecord | null;
   context: BlockContext | null;
@@ -1807,13 +2192,31 @@ export default function CityBlockPanel({
   onClose: () => void;
   /** take the map to this block — passed only when the map knows where it is */
   onLocate?: () => void;
+  /**
+   * WHAT THE URL SHOULD SAY, whenever the reader changes level.
+   *
+   * The panel owns the unit and the map owns the address bar, so the panel
+   * reports and the map writes. It hands back what a link needs rather than
+   * the internal `Unit`: a street as its KEY (the map folds it to a file
+   * name) and an address as its LABEL, because a door's key is derived in the
+   * browser and must never be the thing a link depends on.
+   */
+  onFiche?: (at: {
+    readonly street?: string;
+    readonly address?: string;
+    readonly hood?: boolean;
+  }) => void;
+  /** a unit to open, asked for from outside — see `UnitRequest` */
+  request?: {
+    readonly req: UnitRequest;
+    readonly nonce: number;
+    /** the block it applies to, so the click resolver knows to stand down */
+    readonly block: string;
+  };
 }) {
   const t = useT();
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
-  const streetsRef = useRef<HTMLDetailsElement>(null);
-  const [streets, setStreets] = useState<Record<string, BlockDecision[]>>({});
-  const [openStreets, setOpenStreets] = useState(false);
   /* ── WHICH UNIT THE FICHE IS ABOUT ────────────────────────────────────────
      A person thinks in a building, a street or a neighbourhood. The map can
      only hand over a piece of ground, so the ground is where a click LANDS and
@@ -1907,7 +2310,6 @@ export default function CityBlockPanel({
     const host =
       panelRef.current?.closest(".fx-city-ledger") ?? panelRef.current?.parentElement;
     if (host instanceof HTMLElement) host.scrollTop = 0;
-    setStreets({});
     /* An open door does not survive a new block — the same bug the rail's open
        decade had (FICHE.md §4). The panel keeps its state across picks, so
        without this a reader who opened 2707 Twenty-first Street would meet the
@@ -1923,28 +2325,18 @@ export default function CityBlockPanel({
        The patch of ground is never the destination — it is how the map
        answers "where". It stays reachable as "everything here". */
     setStreetRows(EMPTY);
-    setHoodRecs(null);
+    setHeld(null);
+    setOpenDecade(null);
+    /* NOT `setHoodRecs(null)` any more. The neighbourhood's file is keyed on
+       `context`, which changes whenever the block does, so its own effect
+       already clears and re-fetches it — and this line ran AFTER that fetch
+       resolved, leaving the ladder with no count at all. */
     setUnit(WHOLE);
-    setOpenStreets(
-      (record?.decisions.length ?? 0) === 0 && (record?.streets.length ?? 0) > 0,
-    );
+    /* WAS also pre-opening a fold of the surrounding streets on a block with
+       no record of its own. That fold is gone: an empty block now says so and
+       the streets are one tap away in `Also here`, opened properly rather
+       than unfolded in place. */
   }, [record?.blockId, record?.decisions.length, record?.streets.length]);
-
-  useEffect(() => {
-    if (!openStreets || !record) return;
-    let live = true;
-    void Promise.all(
-      record.streets.slice(0, 6).map(async (k) => [k, await loadStreetRecord(k)] as const),
-    ).then((pairs) => {
-      if (!live) return;
-      const out: Record<string, BlockDecision[]> = {};
-      for (const [k, v] of pairs) out[k] = v;
-      setStreets(out);
-    });
-    return () => {
-      live = false;
-    };
-  }, [openStreets, record]);
 
   // `record?.decisions ?? []` builds a new array on every render, and a new
   // array is a new dependency, so the shape was recomputed on every frame the
@@ -1968,10 +2360,37 @@ export default function CityBlockPanel({
      ever moves AWAY from the ground, never overrides a reader's own choice —
      it is keyed on the block id, so picking a different unit and then coming
      back does not re-resolve. */
+  /* Declared here rather than beside its own effects because the click-based
+     resolver directly below reads it, and a dependency array is evaluated
+     during render. */
+  const [pending, setPending] = useState<UnitRequest | null>(null);
+  const reqNonce = useRef(-1);
+  /** the last request nonce the click resolver stood down for */
+  const autoSkipped = useRef(-1);
+
   const resolvedFor = useRef<string | null>(null);
   useEffect(() => {
     const id = record?.blockId;
     if (!id || !context || resolvedFor.current === id) return;
+    /* ── A REQUEST BEATS THE ZOOM, AND IT IS KEYED ON THE BLOCK ───────────
+       This effect turns "where the reader was standing" into a unit. When the
+       unit was ASKED for — the search box knows the reader typed a street
+       name — there is nothing to infer, and inferring anyway overwrites the
+       answer a moment after showing it.
+
+       THE FIRST VERSION OF THIS GUARD READ `pending` AND WAS WRONG. A request
+       for anything but a door resolves the instant it arrives, so `pending`
+       was back to null by the time the block's record landed — and then this
+       ran and replaced the street the reader typed with the busiest street on
+       the block. Measured: searching `Castro St` opened 17th St.
+
+       The request carries the block it is FOR, which the caller has, so the
+       stand-down is a fact about this block rather than a race with a flag. */
+    if (request && request.block === id && autoSkipped.current !== request.nonce) {
+      autoSkipped.current = request.nonce;
+      resolvedFor.current = id;
+      return;
+    }
     resolvedFor.current = id;
     const stop = context.zoomStop ?? -1;
     const stops = 4; // whole city · district · a few streets · one street
@@ -1994,10 +2413,69 @@ export default function CityBlockPanel({
         .sort((a, b) => b.n - a.n)[0];
       if (best && best.n > 0) setUnit({ kind: "street", key: best.k });
     }
-  }, [record, context, streetIndex]);
+    /* `pending` is read to stand DOWN, never to act, and the guard above
+       already returned if it was set — but it is a dependency all the same,
+       because an effect that reads a value and is not re-run when it changes
+       is the bug this rule exists to catch. Re-running is harmless: the
+       `resolvedFor` guard makes every run after the first a no-op. */
+  }, [record, context, streetIndex, request]);
+
+  /* ── A UNIT ASKED FOR FROM OUTSIDE ─────────────────────────────────────
+     Held in state rather than applied on arrival, because a door cannot be
+     resolved until the block's record has landed and its doors have been
+     read out of it. The request waits, the effect below retries whenever the
+     record or the doors change, and it clears itself the moment it lands. */
+  useEffect(() => {
+    if (!request || request.nonce === reqNonce.current) return;
+    reqNonce.current = request.nonce;
+    setPending(request.req);
+  }, [request]);
 
   useEffect(() => {
-    if (unit.kind !== "hood" || context == null) return;
+    if (!pending) return;
+    /* ── EVERY REQUEST WAITS FOR THE RECORD, NOT ONLY A DOOR ──────────────
+       A door has to wait because its key is derived from the block's own
+       rows. The other three do not — and resolving them the instant they
+       arrived is what made the first version of this fail.
+
+       There is an effect above, keyed on `record.blockId`, that clears the
+       unit back to the whole block every time the map hands over new ground.
+       A request resolved before the record landed was therefore applied and
+       then wiped a moment later, and the fiche opened on the block. Measured:
+       searching `Castro St` opened the block's street list, not the street.
+
+       Waiting puts both in the same commit, and this effect is declared after
+       the reset, so React runs the reset first and this second. The requested
+       unit is the one that survives. */
+    if (!record) return;
+    if (pending.kind === "streetFile") {
+      const key = streetKeyFromFile(pending.file, record.streets);
+      setUnit(key ? { kind: "street", key } : WHOLE);
+      setPending(null);
+      return;
+    }
+    if (pending.kind !== "door") {
+      setUnit(pending.kind === "ground" ? WHOLE : pending);
+      setPending(null);
+      return;
+    }
+    const want = pending.label.toLowerCase();
+    const hit = doors.find((d) => d.label.toLowerCase() === want);
+    setUnit(hit ? { kind: "door", key: hit.key } : WHOLE);
+    setPending(null);
+  }, [pending, record, doors]);
+
+  /* ── THE NEIGHBOURHOOD'S OWN FILE, WHENEVER THE HOOD IS KNOWN ─────────
+     It used to be fetched only when the reader opened the neighbourhood. The
+     ladder needs its COUNT before that, and the count it reached for instead
+     — `hood-facts.record.n` — is the wrong number: it is ROWS, and a record
+     printed at a corner is stored on every block that corner touches.
+     Measured citywide, `record.n` sums to 101,662 against 41,489 distinct
+     records, so it overstates every neighbourhood by about 2.4x. Haight
+     Ashbury read 2,002 in the ladder and 833 on its own page, two taps apart.
+     One fetch, memoised for the session, and the two now agree. */
+  useEffect(() => {
+    if (context == null || context.hoodIndex < 0) return;
     let live = true;
     setHoodRecs(null);
     void loadHoodRecords(context.hoodIndex).then((r) => {
@@ -2006,7 +2484,7 @@ export default function CityBlockPanel({
     return () => {
       live = false;
     };
-  }, [unit, context]);
+  }, [context]);
 
   useEffect(() => {
     if (unit.kind !== "street") return;
@@ -2024,14 +2502,6 @@ export default function CityBlockPanel({
     () => blockPlaceName(record?.streets ?? []),
     [record?.streets],
   );
-  /* the same corner, short enough to sit inside a sentence — see the return
-     control at the foot of the neighbourhood */
-  const backTo = useMemo(() => {
-    const names = (record?.streets ?? [])
-      .map((s) => streetLabel(s).trim())
-      .filter(Boolean);
-    return names.length ? names.slice(0, 2).join(" · ") : null;
-  }, [record?.streets]);
   const openDoor =
     unit.kind === "door" ? (doors.find((d) => d.key === unit.key) ?? null) : null;
   /* THE ONE SWITCH. `here` is what the lead, the rail, the figures, the
@@ -2050,6 +2520,14 @@ export default function CityBlockPanel({
      it opens — so the chooser never states a number it has not read. Where it
      has none it offers the street plainly instead of printing a zero. */
 const onHood = unit.kind === "hood";
+  /* few enough records that a decade rail would draw more furniture than
+     record — see `RAIL_FLOOR` */
+  const thin = here.length > 0 && here.length < RAIL_FLOOR;
+  /** the street the reader arrived on — see `ladderStreet` */
+  const [held, setHeld] = useState<string | null>(null);
+  /** the decade a press on the sparkline opened, so the rail can obey it */
+  const [openDecade, setOpenDecade] = useState<number | null>(null);
+
   /* ── THE SUBJECTS THAT RUN THROUGH THIS UNIT ───────────────────────────
      `here` is the record of whatever the reader is on, so the match runs over
      the same rows the rail below is built from and the count under a chip is
@@ -2075,6 +2553,38 @@ const onHood = unit.kind === "hood";
       })),
     [record?.streets, streetIndex],
   );
+  /* ── THE STREET RUNG ──────────────────────────────────────────────────
+     For an address it is the street the address is ON, matched by the
+     address's own label ending in the street's name — `259 Frederick St`
+     ends with `Frederick St`. Not the block's busiest street, which on a
+     corner is a different street and would send the reader somewhere they
+     did not ask about. Anywhere else it is the street this block holds the
+     most on, which is the same one the click resolver picks. */
+  const ladderStreet = useMemo(() => {
+    const withRecords = unitStreets.filter((st) => st.n > 0);
+    if (!withRecords.length) return null;
+    if (unit.kind === "street") {
+      return withRecords.find((st) => st.key === unit.key) ?? null;
+    }
+    if (unit.kind === "door") {
+      const label = (openDoor?.label ?? "").toLowerCase();
+      const on = withRecords.find((st) =>
+        label.endsWith(streetLabel(st.key).toLowerCase()),
+      );
+      if (on) return on;
+    }
+    /* ── THE STREET YOU ARRIVED ON, NOT THE BUSIEST ───────────────────────
+       Standing on 259 Frederick St the rung read `Frederick St`; pressing
+       `this block` silently changed it to `Clayton St`, because the block
+       level fell back to whichever street the block holds the most on. The
+       reader was reading about Frederick and the panel changed the subject
+       one tap in, which is the fastest way to make four levels feel
+       arbitrary. `held` remembers the street the reader came in on and is
+       cleared when the map hands over different ground. */
+    const kept = held && withRecords.find((st) => st.key === held);
+    if (kept) return kept;
+    return withRecords.slice().sort((a, b) => b.n - a.n)[0] ?? null;
+  }, [unitStreets, unit, openDoor?.label, held]);
   const unitName =
     unit.kind === "door"
       ? (openDoor?.label ?? null)
@@ -2090,20 +2600,21 @@ const onHood = unit.kind === "hood";
      Archive's scanned series covers. They converge when the ingest re-runs. */
   const indexedLast = indexedLastYear(index);
   const shape = blockShape(here, indexedLast);
-  /* THE LINE THE FICHE OPENS ON — `pickHeadline` over the whole block
-     behind the OCR/procedural gate. See `blockLead` in `block-records`. */
-  const lead = useMemo(
-    () => judgedLead(picks, record?.blockId ?? "", here) ?? blockLead(here),
-    [picks, record?.blockId, here],
+  /* `blockLead`/`judgedLead` are no longer read: the fiche opens on the
+     FINDING now, not on the loudest line. Both stay in `block-records` with
+     their tests — what they know about picking a line worth pulling is what
+     `ficheOpener` would need if a quote ever comes back. */
+  /* memoised because `ficheOpener` depends on it and a fresh array every
+     render would rebuild the opening sentence on every frame the map emits */
+  const groups = useMemo(
+    () => (here.length > 0 ? decadeGroups(here, indexedLast) : EMPTY_GROUPS),
+    [here, indexedLast],
   );
-  const groups = here.length > 0 ? decadeGroups(here, indexedLast) : [];
   const max = groups.reduce((m, g) => Math.max(m, g.rows.length), 0);
   /* The one rung the index stops inside, and only when this block has rows on
      it — the caption qualifies a bar, so it is not printed where there is no
      bar to qualify. `decadeGroups` guarantees at most one. */
   const partial = groups.find((g) => g.partialTo !== null && g.rows.length > 0) ?? null;
-  const streetN = context?.streetDecisions ?? 0;
-
   // Both are keyed on the block id, and both are read only when the file has
   // actually arrived — a block with no row in either simply draws neither
   // section rather than a heading over nothing.
@@ -2111,16 +2622,146 @@ const onHood = unit.kind === "hood";
   const places = money && context ? blockPlaces(money, context.id) : [];
   // Joined on the INDEX the map itself publishes, never on the name — one
   // membership on this map, and no second one able to disagree with it.
-  const hood = hoods && context ? hoodAt(hoods, context.hoodIndex) : null;
+  /* whatever street the reader is on — typed, tapped or resolved from the
+     address they opened — is the one the ladder keeps offering until the map
+     hands over different ground */
+  useEffect(() => {
+    if (unit.kind === "street") setHeld(unit.key);
+    else if (unit.kind === "door" && ladderStreet) setHeld(ladderStreet.key);
+  }, [unit, ladderStreet]);
 
-  /** open the street fold and take the reader down to it in one press */
-  const goToStreets = (): void => {
-    setOpenStreets(true);
-    const el = streetsRef.current;
-    if (!el) return;
-    el.open = true;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  const hood = hoods && context ? hoodAt(hoods, context.hoodIndex) : null;
+  /* the count is the neighbourhood's OWN file, never `hood.record.n` — see
+     the fetch above for why those two are different numbers */
+  const ladderHood = useMemo(
+    () =>
+      hoodRecs
+        ? { name: hoodRecs.name, n: hoodRecs.n }
+        : hood
+          ? { name: hood.name, n: -1 }
+          : null,
+    [hoodRecs, hood],
+  );
+  /* the ladder draws only when it has somewhere to send you — see `Ladder`,
+     which returns null under two rungs. `← Back` fills in when it does not. */
+  /**
+   * ── ONE OPENER, WHATEVER THE LEVEL ──────────────────────────────────
+   * The block and the neighbourhood each used to assemble their own, in two
+   * different branches of the render, which is how the neighbourhood came to
+   * be missing three sections the others had. There is one, and the only
+   * difference between the levels is WHERE ITS NUMBERS COME FROM:
+   *
+   *   · a block, a street and an address hold their whole record, so the
+   *     span and the busiest decade are read off the rows themselves and the
+   *     subjects are matched in the browser;
+   *   · a neighbourhood's file ships twelve rows a decade out of hundreds, so
+   *     its count comes from that file's own total, its span from
+   *     `hood-facts` (a decade is a bucket, not a span — §28c), and its
+   *     subjects are counted in the pipeline and shipped.
+   */
+  const words = useMemo(
+    () => ({
+      many: t("us.sf.thecity.panel.open_many"),
+      oneYear: t("us.sf.thecity.panel.open_one_year"),
+      one: t("us.sf.thecity.panel.open_one"),
+      busiest: t("us.sf.thecity.panel.open_busiest"),
+      mostly: t("us.sf.thecity.panel.open_mostly"),
+      among: t("us.sf.thecity.panel.open_among"),
+      and: t("us.sf.thecity.panel.open_and"),
+    }),
+    [t],
+  );
+
+  const hoodOpener = useMemo(() => {
+    if (!hoodRecs || !hood?.record?.y0 || !hood.record.y1) return null;
+    const live = hoodRecs.decades.filter((d) => d.n > 0);
+    if (!live.length) return null;
+    return ficheOpener(
+      {
+        n: hoodRecs.n,
+        firstYear: hood.record.y0,
+        lastYear: hood.record.y1,
+        busiest: live.reduce((a, b) => (b.n > a.n ? b : a), live[0]),
+        quietAfter: null,
+      },
+      hoodRecs.decades.map((d) => ({
+        decade: d.decade,
+        label: `${d.decade}s`,
+        rows: new Array(d.n),
+        headline: null,
+        afterSeries: false,
+        partialTo: null,
+      })) as unknown as DecadeGroup[],
+      [],
+      words,
+    );
+  }, [hoodRecs, hood, words]);
+
+  /* the finding, from counts already computed — see `ficheOpener` */
+  const blockOpener = useMemo(
+    () =>
+      ficheOpener(shape, groups, subjects, {
+        many: t("us.sf.thecity.panel.open_many"),
+        oneYear: t("us.sf.thecity.panel.open_one_year"),
+        one: t("us.sf.thecity.panel.open_one"),
+        busiest: t("us.sf.thecity.panel.open_busiest"),
+        mostly: t("us.sf.thecity.panel.open_mostly"),
+        among: t("us.sf.thecity.panel.open_among"),
+        and: t("us.sf.thecity.panel.open_and"),
+      }),
+    [shape, groups, subjects, t],
+  );
+  const opener = onHood ? hoodOpener : blockOpener;
+
+  /**
+   * THE NEIGHBOURHOOD'S SUBJECTS, MADE PRESSABLE.
+   *
+   * Its counts are the pipeline's — over every row — and its ROWS are the
+   * twelve a decade this file ships. So the two halves come from two places
+   * and are kept apart on purpose: `trueN` is what the neighbourhood holds,
+   * `here.rows` is what can be shown, and `SubjectOpen` prints both rather
+   * than letting either stand for the other.
+   */
+  const hoodSubjects = useMemo(() => {
+    if (!threads || !hoodRecs?.subjects?.length) return undefined;
+    const rows = hoodRecs.decades.flatMap((d) => d.rows);
+    const out: { here: ThreadHere; trueN: number }[] = [];
+    for (const sj of hoodRecs.subjects) {
+      const th = threads.threads.find((x) => x.l === sj.l);
+      if (!th) continue;
+      const hits = threadRows(th, rows);
+      const ys = hits.map((r) => r.y).filter(Boolean);
+      out.push({
+        trueN: sj.n,
+        here: {
+          thread: th,
+          rows: hits,
+          y0: ys.length ? Math.min(...ys) : 0,
+          y1: ys.length ? Math.max(...ys) : 0,
+        },
+      });
+    }
+    return out.length ? out : undefined;
+  }, [threads, hoodRecs]);
+
+  /* report the level to whoever owns the address bar. `openDoor` is read
+     rather than `unit.key` because a link carries the door's LABEL. */
+  const ficheRef = useRef(onFiche);
+  ficheRef.current = onFiche;
+  useEffect(() => {
+    const at =
+      unit.kind === "hood"
+        ? { hood: true }
+        : unit.kind === "street"
+          ? { street: unit.key }
+          : unit.kind === "door" && openDoor
+            ? { address: openDoor.label }
+            : {};
+    ficheRef.current?.(at);
+  }, [unit, openDoor]);
+
+  const hasLadder =
+    (unit.kind === "door" ? 1 : 0) + 1 + (ladderStreet ? 1 : 0) + (ladderHood ? 1 : 0) >= 2;
 
   return (
     <div
@@ -2225,30 +2866,32 @@ const onHood = unit.kind === "hood";
             a blank decade reading as a decade the city did nothing in, and it
             has to be beside the blank it explains, not behind a fold. It is
             set muted and small. */}
-        {loading ? (
-          <p className="fx-fiche-note">{t("us.sf.thecity.panel.loading")}</p>
-        ) : unit.kind === "hood" ? (
-          /* The neighbourhood has its own body: its decade counts are the real
-             ones and the records under them are a selection, which the shared
-             decade list cannot say. Everything below it — the streets, the
-             neighbourhood summary, the sources — is unchanged. */
+        {/* ── WHAT EVERY LEVEL HAS, RENDERED ONCE ──────────────────────
+            > "shouldnt it be that all these fiches use common components that
+            > then according the the specific case get inserted or not?"
+
+            It should, and it did not: `Ladder`, `FicheOpen` and `WhoDecides`
+            were each written out twice, once in the neighbourhood's branch and
+            once in the block's. Keeping two copies in step is a thing nobody
+            does, which is why the neighbourhood quietly ended up without a
+            finding, without a shape row and without the tip while the other
+            three had all three.
+
+            They are here, above the branch, and the branch below is only what
+            genuinely differs: which records a level shows and how it counts
+            its subjects. Anything a level does not have, it does not pass. */}
+        {!loading ? (
           <>
-            <button
-              type="button"
-              className="fx-block-jump fx-block-back"
-              onClick={() => setUnit(WHOLE)}
-            >
-              {tOr(t, "us.sf.thecity.panel.unit_back", "\u2190 Back")}
-            </button>
-            {hoodRecs ? (
-              <HoodLevel recs={hoodRecs} t={t} />
-            ) : (
-              <p className="fx-fiche-note">{t("us.sf.thecity.panel.loading")}</p>
-            )}
-          </>
-        ) : shape ? (
-          <>
-            {unit.kind !== "ground" ? (
+            <Ladder
+              unit={unit}
+              here={onHood ? (hoodRecs?.n ?? 0) : here.length}
+              blockN={all.length}
+              street={ladderStreet}
+              hood={ladderHood}
+              onGo={setUnit}
+              t={t}
+            />
+            {!hasLadder && unit.kind !== "ground" ? (
               <button
                 type="button"
                 className="fx-block-jump fx-block-back"
@@ -2257,40 +2900,116 @@ const onHood = unit.kind === "hood";
                 {tOr(t, "us.sf.thecity.panel.unit_back", "\u2190 Back")}
               </button>
             ) : null}
+            {opener ? (
+              <FicheOpen open={opener} onDecade={setOpenDecade} t={t} />
+            ) : null}
+            {opener ? <WhoDecides t={t} /> : null}
+          </>
+        ) : null}
 
-            {lead ? <BlockLead d={lead} t={t} /> : null}
+        {loading ? (
+          <p className="fx-fiche-note">{t("us.sf.thecity.panel.loading")}</p>
+        ) : unit.kind === "hood" ? (
+          /* The neighbourhood has its own body: its decade counts are the real
+             ones and the records under them are a selection, which the shared
+             decade list cannot say. Everything below it — the streets, the
+             neighbourhood summary, the sources — is unchanged. */
+          <>
+            {hoodRecs ? (
+              <HoodLevel
+                recs={hoodRecs}
+                flat={hoodSubjects}
+                hood={hood}
+                hoods={hoods}
+                money={money}
+                openDecade={openDecade}
+                t={t}
+              />
+            ) : (
+              <p className="fx-fiche-note">{t("us.sf.thecity.panel.loading")}</p>
+            )}
+          </>
+        ) : shape ? (
+          <>
+            {/* ── THE FINDING, THEN THE RECORD ─────────────────────────
+                The pulled quote used to be here and it is gone. It was the
+                loudest single line the place holds, in the volume's own
+                prose, truncated — the record rather than an answer, handed to
+                a reader who had just clicked their own street. The sentence
+                above it says what happened; the record below says it in the
+                city's own words, which is the order those two belong in.
 
+                `BlockLead` is not deleted: nothing else renders it today, and
+                what it knows about picking a line worth pulling is the thing
+                `ficheOpener` would need if this ever wants a quote back. */}
+            {/* What this place keeps being about, as something to press. The
+                sentence above already NAMES the biggest of these; these are
+                how a reader opens one and sees it across the whole city. */}
+            <Subjects here={subjects} total={here.length} t={t} />
+
+            {/* ── A FEW RECORDS ARE NOT A CENTURY ──────────────────────────
+                > "why not the decades with decision first then saying other
+                > places on that street"
+
+                259 Frederick St holds two decisions, both in 1991, and it
+                was drawing the full rail for them: `2000s–2020s` folded,
+                `1990s · 2`, `1900s–1980s` folded, then two lines about the
+                scanned series. Three rows of furniture and one row of
+                record, and the reader has to open the one row to reach it.
+
+                The rail is a shape, and a shape needs something to be a
+                shape OF. Under `RAIL_FLOOR` records there is no shape to
+                show — so the records are simply printed, newest first, open.
+                The rail earns its place on the block with 120 and not on the
+                address with two. */}
+            {thin ? (
+              <>
+                {/* NOT "Decade by decade" — there are no decades here, there
+                    are two records. The heading is the one the pulled quote
+                    used, because this list is now doing that job. */}
+                <div className="fx-city-ledger-head fx-block-sec">
+                  {t("us.sf.thecity.panel.lead_head")}
+                </div>
+                <FicheArchiveShelf docs={byNewest(here).map(toDoc)} cap={6} />
+              </>
+            ) : (
+              <>
+                <div className="fx-city-ledger-head fx-block-sec">
+                  {t("us.sf.thecity.panel.rail_head")}
+                </div>
+                <p className="fx-block-hint">{t("us.sf.thecity.panel.rail_hint")}</p>
+                <div className="fx-block-rail" key={record?.blockId ?? "-"}>
+                  {/* newest rung at the top — see `byNewest`. A reversed COPY:
+                      `railItems` walks forward to fold its silences and must
+                      keep getting them in order. */}
+                  {railItems(groups).slice().reverse().map((it) =>
+                    it.kind === "gap" ? (
+                      <DecadeGap key={`g${it.run.from}`} run={it.run} t={t} />
+                    ) : (
+                      <DecadeRow
+                        key={it.group.decade}
+                        group={it.group}
+                        max={max}
+                        openDecade={openDecade}
+                        t={t}
+                      />
+                    ),
+                  )}
+                </div>
+              </>
+            )}
+
+            {/* AFTER the record, not before it. A reader who opened one
+                address wants what happened at it; the neighbours are where
+                they go next, not what they came for. */}
             <UnitChooser
               doors={doors}
               streets={unitStreets}
               unit={unit}
+              ladderKey={ladderStreet?.key ?? null}
               onGo={setUnit}
               t={t}
             />
-
-            {/* Between the loudest single record and the whole record by
-                decade: what this ground keeps being about. It is the one
-                section here that is about San Francisco rather than about
-                this block, and it sits where a reader has just learned what
-                the block is and not yet opened its hundred lines. */}
-            <Subjects here={subjects} total={here.length} t={t} />
-
-            <div className="fx-city-ledger-head fx-block-sec">
-              {t("us.sf.thecity.panel.rail_head")}
-            </div>
-            <p className="fx-block-hint">{t("us.sf.thecity.panel.rail_hint")}</p>
-            <div className="fx-block-rail" key={record?.blockId ?? "-"}>
-              {/* newest rung at the top — see `byNewest`. A reversed COPY:
-                  `railItems` walks forward to fold its silences and must keep
-                  getting them in order. */}
-              {railItems(groups).slice().reverse().map((it) =>
-                it.kind === "gap" ? (
-                  <DecadeGap key={`g${it.run.from}`} run={it.run} t={t} />
-                ) : (
-                  <DecadeRow key={it.group.decade} group={it.group} max={max} t={t} />
-                ),
-              )}
-            </div>
             {/* ── THE LAST RUNG IS SEVEN YEARS, AND IT HAS TO SAY SO ──────
                 The ingest of the Board's modern minutes carried the index to
                 2016, so the rail's last rung is the 2010s and it holds
@@ -2300,7 +3019,7 @@ const onHood = unit.kind === "hood";
                 for it to qualify — the count of years comes off `partialTo`,
                 so an index that later reaches 2019 stops printing it with no
                 code change. */}
-            {partial ? (
+            {partial && !thin ? (
               <p className="fx-block-hint" style={NOTE}>
                 {tOr(
                   t,
@@ -2354,6 +3073,13 @@ const onHood = unit.kind === "hood";
                 opening clause rather than the project's own backstory: the
                 blank track above it is now tagged `not scanned`, and the two
                 have to agree at a glance. */}
+            {/* ── THE CAVEATS BELONG TO THE RAIL ──────────────────────────
+                Both of these explain a BLANK DECADE, and a thin place draws
+                no decades — 259 Frederick St was carrying a paragraph about
+                the Board's bound volumes and the Clerk's PDFs under two 1991
+                motions, which is the project's backstory printed where
+                nothing needed explaining. They print where the rail does. */}
+            {!thin ? (
             <p className="fx-block-hint" style={NOTE}>
               {indexedLast >= SERIES_LAST_YEAR
                 ? tOr(
@@ -2369,17 +3095,11 @@ const onHood = unit.kind === "hood";
                     .replace("{y}", String(SERIES_LAST_YEAR))
                     .replace("{i}", String(indexedLast))}
             </p>
-            {streetN > 0 && record && record.streets.length > 0 ? (
-              <p className="fx-block-nearby">
-                <button type="button" className="fx-block-jump" onClick={goToStreets}>
-                  {t(
-                    streetN === 1
-                      ? "us.sf.thecity.panel.nearby_one"
-                      : "us.sf.thecity.panel.nearby",
-                  ).replace("{n}", nfInt.format(streetN))}
-                </button>
-              </p>
             ) : null}
+            {/* WAS "Another 180 decisions run along the streets around here.
+                Read them ↓", which pointed at a fold that no longer exists.
+                The streets are in `Also here` and in the ladder, both of
+                which OPEN the street rather than unfolding a copy of it. */}
           </>
         ) : (
           <>
@@ -2399,9 +3119,15 @@ const onHood = unit.kind === "hood";
           </>
         )}
 
-        {/* The figures, on one row, under the record rather than over it.
-            They are the block's — its parcels, its Census ring — so on the
-            neighbourhood they are replaced by the neighbourhood's own total. */}
+        {/* ── THE FIGURES, MINUS THE RECORD COUNT ──────────────────────
+            This row read `402 Residents · 218 Homes · Single Family
+            Residential · 41 Board decisions · 1907–2020`, while the ladder
+            ten lines above already said `this block 41` and the sentence at
+            the top said "41 decisions here, 1907 to 2020". The same number
+            three times on one screen is the class of thing that let
+            2,002-against-833 through. `GroundLine` keeps what is ONLY here —
+            who lives on this ground and what the roll calls it — and
+            `shape={null}` drops the count it was repeating. */}
         {onHood ? (
           hoodRecs ? (
             <p className="fx-block-figs">
@@ -2412,7 +3138,7 @@ const onHood = unit.kind === "hood";
         ) : (
         <GroundLine
           now={now}
-          shape={!loading ? shape : null}
+          shape={null}
           atDoor={unit.kind !== "ground"}
           t={t}
         />
@@ -2446,6 +3172,10 @@ const onHood = unit.kind === "hood";
           </>
         ) : null}
 
+        <div className="fx-block-foot">
+          <CopyLink t={t} />
+        </div>
+
         <BlockSources now={now} money={money} t={t} />
 
         {/* ── THE BOTTOM OF THE NEIGHBOURHOOD, WHICH WAS NOT THERE ────────
@@ -2463,110 +3193,28 @@ const onHood = unit.kind === "hood";
             blocks that front no street get the plain word and no invented
             place. Only on the neighbourhood, because it is the only unit long
             enough to have lost the reader. */}
-        {onHood && record ? (
-          <p className="fx-block-nearby">
-            <button
-              type="button"
-              className="fx-block-jump"
-              onClick={() => setUnit(WHOLE)}
-            >
-              {/* TWO STREETS, not the pin's four-plus-a-remainder. The pin
-                  is a label and can carry `14th St · Duboce Ave · Noe St ·
-                  +2`; this is a sentence, and a sentence that ends on "+2"
-                  reads as a truncation bug rather than as a corner. Two names
-                  is enough to recognise a corner you clicked a minute ago. */}
-              {backTo
-                ? tOr(t, "us.sf.thecity.panel.hood_back_to", "← Back to {where}")
-                    .replace("{where}", backTo)
-                : tOr(
-                    t,
-                    "us.sf.thecity.panel.hood_back_ground",
-                    "← Back to the ground you clicked",
-                  )}
-            </button>
-          </p>
-        ) : null}
+        {/* the foot's own return control went with it: the ladder is at the
+            top of this level now and says where each rung goes AND how much
+            is there, which `← Back to Ashbury St · Clayton St` did not. */}
+        {/* The foot's own return control went with it: the ladder is at the
+            top of this level now, and it says where each rung goes AND how
+            much is there — which `← Back to Ashbury St · Clayton St` did
+            not. */}
 
-        {!onHood && record && record.streets.length > 0 ? (
-          <details
-            ref={streetsRef}
-            className="fx-shelf-more"
-            style={{ marginTop: 16 }}
-            open={openStreets}
-            onToggle={(e) => setOpenStreets((e.target as HTMLDetailsElement).open)}
-          >
-            <summary>
-              {t("us.sf.thecity.panel.streets").replace(
-                "{n}",
-                String(record.streets.length),
-              )}
-            </summary>
-            <p className="fx-fiche-note" style={{ marginTop: 8 }}>
-              {t("us.sf.thecity.panel.streets_note")}
-            </p>
-            {record.streets.slice(0, 6).map((k) => {
-              const rows = streets[k];
-              return (
-                <div key={k} style={{ marginTop: 14 }}>
-                  <div className="fx-doc-source" style={{ marginBottom: 4 }}>
-                    {streetLabel(k)}
-                  </div>
-                  {rows === undefined ? (
-                    <p className="fx-fiche-note">
-                      {t("us.sf.thecity.panel.loading")}
-                    </p>
-                  ) : rows.length === 0 ? (
-                    <p className="fx-fiche-note">
-                      {t("us.sf.thecity.panel.street_empty")}
-                    </p>
-                  ) : (
-                    <FicheArchiveShelf
-                      docs={rows.slice(0, 40).map(toDoc)}
-                      cap={3}
-                      moreLabel={(n) =>
-                        t("us.sf.thecity.panel.street_more")
-                          .replace("{n}", String(n))
-                          .replace("{street}", streetLabel(k))
-                      }
-                    />
-                  )}
-                </div>
-              );
-            })}
-          </details>
-        ) : null}
+        {/* ── TWO FOLDS REMOVED, AND WHERE THEY WENT ────────────────────
+            The panel had five ways to reach two places. The ladder at the top
+            reaches the block, the street and the neighbourhood, `Also here`
+            reaches every address and every street, and under them sat
+            "On the streets around here" — an unfoldable copy of streets the
+            reader can simply OPEN — and "The neighbourhood", a fold holding
+            four sections about somewhere else.
 
-        {/* ── THE NEIGHBOURHOOD, LAST AND CLOSED ────────────────────────────
-            It used to be FIRST and open: four sections — a prose summary with
-            a thirty-six word census footnote, the neighbourhood's money, three
-            archival highlights with their own ranking methodology, and a
-            divider — before one row about the block the reader clicked.
-            Measured on Sunset/Parkside block 2115 at 390 px: **585 words and
-            2,262 CSS px, of which roughly 1,300 px were the neighbourhood.**
-            The reader got two and a half screens about somewhere else first.
-
-            Not deleted, and the difference matters. `HoodMoney` is where 16
-            blocks of 5,404 carry their only money figure (§19e), the census
-            provenance is the project's whole claim, and a neighbourhood is
-            genuinely the right unit for the archival highlights — §15 is a
-            whole round establishing that the block alone is too thin for them.
-            Deleting any of it would be trading one wrong panel for another.
-
-            So it is a `<details>`, closed, under the block's own record: the
-            fiche opens as the block and the context is one tap away. Nothing
-            is lost and the default view is the thing that was asked about. */}
-        {hood && hoods && !onHood ? (
-          <details className="fx-shelf-more" style={{ marginTop: 16 }}>
-            <summary>
-              {tOr(t, "us.sf.thecity.panel.hood_open", "The neighbourhood")}
-              {` · ${hood.name}`}
-            </summary>
-            <HoodSummary hood={hood} t={t} />
-            <HoodProvenance hood={hood} file={hoods} t={t} />
-            <HoodMoney hood={hood} file={hoods} money={money} t={t} />
-            <HoodHighlights hood={hood} t={t} />
-          </details>
-        ) : null}
+            Both are gone. The streets fold had nothing the street's own fiche
+            does not do better. The neighbourhood fold's four sections were
+            NOT redundant and are not deleted: its census provenance, its
+            money and its archival highlights now render on the neighbourhood
+            itself, which is where a reader who pressed `Haight Ashbury`
+            expects to find them. */}
       </div>
     </div>
   );

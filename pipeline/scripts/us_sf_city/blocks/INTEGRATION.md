@@ -260,11 +260,67 @@ python3 prefaces.py --ia ../sweep/cache/ia --vols ../sweep/manifest.json \
         --out cache/prefaces_sweep.json --items ../sweep/out/items.jsonl
 python3 ../merge/do_merge.py # the three streams -> cache/        (refuses on collision)
 python3 fetch_leafmap.py     # archive.org scandata -> exact page mapping (network, once)
-python3 build_index.py       # -> out/                            (~12 min, offline)
+
+# THE CORPUS THE PUBLISHED INDEX IS BUILT FROM IS BOTH HALVES, AND THE JOIN IS
+# THIS LINE. `cache/items.jsonl` ends in 2016 — the City stopped printing bound
+# volumes over the 2016 summer recess — and everything after it is the Clerk's
+# own PDFs, swept separately into `cache_sfbos/items.jsonl`. build_index reads
+# ONE file, so the two are concatenated and named through BLOCKS_ITEMS. Order is
+# historic then modern; the build is order-independent (verify_order_independence.py)
+# so that is convention, not a requirement. Do NOT point BLOCKS_ITEMS at the
+# merged file AND expect the sfbos half to be added again — it is already in it.
+cat cache/items.jsonl \
+    ../../../../pipeline/scripts/us_sf_city/cache_sfbos/items.jsonl \
+    > cache/items_merged.jsonl                 # 124,284 rows
+
+BLOCKS_ITEMS=cache/items_merged.jsonl \
+python3 build_index.py       # -> out/                            (~7 min, offline)
+python3 verify_themes.py --tree out   # the theme tag agrees with itself
 python3 measure_accuracy.py  # the join accuracy in §4            (~1 min, offline)
 python3 verify_geo.py        # the geometry check in §4           (~4 min, offline)
 python3 ../gen/blocks_data.py
+
+# ── AFTER PUBLISHING THE TREE, the things built ON it ─────────────────────
+# build_index writes ONE source's marks (`theme-marks.board.json`); each other
+# source writes its own and the merger concatenates them. Order matters only in
+# that the merger must run last.
+python3 ../build_place_marks.py    # the places -> theme-marks.places.json
+python3 ../build_theme_marks.py    # every source -> theme-marks.json  (the map reads this)
+python3 ../build_threads.py        # the fiche's 41, counted off the `sm` masks
+python3 ../build_hood_records.py   # the neighbourhood paragraphs, off the same masks
+
+# ── THE PUBLISHED DATASET ─────────────────────────────────────────────────
+# `core` is the row-level table the shards are a projection of. It reads the
+# frozen classification seed; re-running the classifier is a separate, deliberate
+# act that changes a versioned file and shows up as a diff.
+python3 freeze_classification.py   # hand labels -> pipeline/seeds/sf_bos_classification.csv
+python3 build_core_table.py        # -> website/public/data/us/sf/city/records/
+
+python3 verify_all.py              # EVERY gate, one command. Run before publishing.
 ```
+
+## 7. The gates
+
+`verify_all.py` is the list, and adding a gate means adding it there rather than
+writing a script somebody forgets. It currently checks seven things:
+
+| gate | what it guards |
+|---|---|
+| taxonomy slugs unique, subtopics belong | a duplicate slug silently merges two topics |
+| every classification value is in the taxonomy | a value outside it renders blank and cannot be filtered — invisible, not wrong |
+| subtopic matches its topic | a subtopic filed under the wrong topic double-counts one and empties the other |
+| theme marks agree with the shards | the map drawing a mark the panel cannot open |
+| `threads.json` is tagged in the pipeline | the browser re-matching a 136-character line, which finds 35% where the record yields 57% |
+| core table gates | the dataset disagreeing with the taxonomy; a precisely located record with no block |
+| no dot on a street-only record | the map saying HERE where the record said *somewhere on this street* |
+
+
+**This recipe is proved, not asserted.** Run as above into a fresh `BLOCKS_OUT`,
+the build reproduces `website/public/data/us/sf/city/blocks/` at **2,206 files,
+0 differ** (258 block files + 1,948 street files), 2026-08-29. Before this line
+was written the concatenation was tribal knowledge and a clone could not
+reproduce the published tree at all — the second half of the corpus was simply
+missing, and the index came out ending in 2016 with no error anywhere.
 
 **Roll back to the pre-merge index at any time with `./merge/RESTORE.sh`.**
 

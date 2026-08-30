@@ -111,6 +111,26 @@ def formula(t: str) -> str:
     return " ".join(re.sub(r"[^a-z ]", " ", s).split())[:110]
 
 
+def _by_lift(counts, here_total, city_n, city_total, top=5):
+    """The five this neighbourhood is most unusual for, not the five biggest.
+
+    `counts` is this hood's per-subject tally, `city_n` the same subject's
+    count over the whole map. A subject has to land at least twice, for the
+    reason the browser's own matcher has that floor: one paving record does
+    not make a neighbourhood about paving.
+    """
+    out = []
+    for lbl, n in counts.items():
+        if n < 2 or not here_total:
+            continue
+        lift = (n / here_total) / max(city_n.get(lbl, 1) / max(city_total, 1), 1e-9)
+        # damped the same way the browser damps it — lift is loud at small n,
+        # and two hits on a rare subject was outranking thirty on a real one
+        out.append((lift * (n / (n + 3)), n, lbl))
+    out.sort(key=lambda x: (-x[0], -x[1]))
+    return [{"l": lbl, "n": n, "note": _NOTE[lbl]} for _l, n, lbl in out[:top]]
+
+
 def main() -> int:
     header, payload = read_chunk(open(os.path.join(CITY, "base/blocks.qc"), "rb").read())
     hood = field_array(header, payload, "hood")
@@ -121,6 +141,40 @@ def main() -> int:
     written_summaries = {}
     if os.path.exists(SEED):
         written_summaries = json.load(open(SEED)).get("hoods", {})
+
+    # ── WHAT A NEIGHBOURHOOD KEEPS BEING ABOUT ───────────────────────────
+    # The fiche runs the published subject patterns in the BROWSER, over the
+    # rows it holds. That is exact for a block, a street and an address, which
+    # each hold their whole record — and impossible for a neighbourhood, whose
+    # file ships twelve rows a decade out of hundreds. Counting those would
+    # print a count of a selection under the neighbourhood's name.
+    #
+    # So it is counted here, where every row is in hand, and shipped. Same
+    # patterns, same `NOT_A_STREET` guards, same dedupe — the difference is
+    # only that this side can see all of it.
+    from build_threads import THREADS  # noqa: E402
+
+    # the labels only — the patterns are not run here any more, see the loop
+    subject_rx = [lbl for lbl, _era, _pat, _note in THREADS]
+    globals()["_NOTE"] = {lbl: note for lbl, _e, _p, note in THREADS}
+    # which bit of `sm` each subject is. The masks in the tree are positional,
+    # so this refuses rather than silently counting the wrong subject.
+    import importlib.util as _ilu
+    _spec = _ilu.spec_from_file_location(
+        "_th", os.path.join(ROOT, "pipeline/scripts/us_sf_city/blocks/themes.py"))
+    _th = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_th)
+    bit_of = {s["label"]: s["bit"] for s in _th.load_subjects()}
+    _missing = [l for l in subject_rx if l not in bit_of]
+    if _missing:
+        sys.exit(f"REFUSED: {len(_missing)} subject(s) have no bit: "
+                 f"{_missing[:3]}. THREADS and themes.load_subjects() have "
+                 f"diverged and every published mask is positional.")
+    # the same subject's count over the WHOLE map, for the lift denominator
+    city_n: collections.Counter = collections.Counter()
+    hood_total: collections.Counter = collections.Counter()
+    city_total = 0
+    subjects: dict[int, collections.Counter] = collections.defaultdict(collections.Counter)
 
     seen: set[tuple[str, str]] = set()
     # per hood, per decade: the true count, and the rows worth reading
@@ -152,6 +206,20 @@ def main() -> int:
                 total += 1
                 dec = (r["y"] // 10) * 10
                 true_count[h][dec] += 1
+                city_total += 1
+                hood_total[h] += 1
+                # OFF THE MASK, NOT OFF THE LINE. `sm` was computed in
+                # build_index against the record; `t` is the one line the page
+                # prints, a median of 136 characters against the record's 520.
+                # Matching here would give this file the 35% answer while the
+                # block fiche beside it shows the 51% one, and a neighbourhood
+                # disagreeing with its own blocks is a bug a reader finds
+                # before we do.
+                sm = r.get("sm") or 0
+                for lbl in subject_rx:
+                    if sm >> bit_of[lbl] & 1:
+                        subjects[h][lbl] += 1
+                        city_n[lbl] += 1
                 why = unreadable(t)
                 if why:
                     dropped[why] += 1
@@ -195,6 +263,14 @@ def main() -> int:
             "name": name,
             "n": alln,
             "n_shipped": kept,
+            # the five biggest, with the count of the WHOLE neighbourhood
+            # rather than of what this file ships
+            # ── RANKED BY LIFT, LIKE EVERY OTHER LEVEL ──────────────────
+            # `most_common` put the biggest subject first, which on every
+            # neighbourhood in the city is the same handful — the fiche ranks
+            # by the share HERE over the share across the map, so the two
+            # cannot disagree about the same section. Ties on the local count.
+            "subjects": _by_lift(subjects[h], hood_total[h], city_n, city_total),
             "per_decade": PER_DECADE,
             "THIS_IS_A_SELECTION":
                 "Each decade ships its most recent readable records and states "

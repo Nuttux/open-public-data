@@ -43,6 +43,7 @@ os.makedirs(OUT, exist_ok=True)
 from strip import strip as snip
 import headings as HD
 import gloss as GL
+import themes as TH
 _s = importlib.util.spec_from_file_location("gz", os.path.join(MIN, "gazetteer.py"))
 gz = importlib.util.module_from_spec(_s); _s.loader.exec_module(gz)
 _s = importlib.util.spec_from_file_location("ex", os.path.join(MIN, "extract.py"))
@@ -935,6 +936,42 @@ def main():
         for bn in hits:
             by_block[bn].append((sc, did, tier))
 
+    # ------------------------------------------------------------ the theme
+    # WHAT THE DECISION IS ABOUT, read from the ITEM and not from the line that
+    # will be published for it. themes.py says why at length; the short version
+    # is that the published line is a median of 136 characters and the item
+    # behind it 520, so the same regex run in the browser would find 17% of the
+    # homelessness record. Tagged once, here, and carried on the row as `m`.
+    # READ FROM THE SPAN THE ITEM IS LOCATED FROM — LT(r), preface + body — and
+    # not from the body alone. The preface is the title the record printed for
+    # this item; before_rollcall() calls that span "what the Journal actually
+    # printed for it" and the placement every dot on the map depends on is made
+    # from it. Locating a decision from a line and then refusing to read its
+    # subject out of the same line would be two different ideas of what the
+    # record says. It is worth 5-22% per theme and the build prints both, so the
+    # choice stays visible rather than becoming a number nobody can account for.
+    # TWO VOCABULARIES, ONE PASS, AND THE SECOND ONE IS THE POINT OF DOING IT
+    # HERE. `m` is the eight coarse themes the whole-city filter switches on.
+    # `sm` is the forty-one fine subjects the block fiche prints as "what keeps
+    # coming up" — and until now those were matched IN THE BROWSER against the
+    # published line, which reaches 35% of records. The same forty-one patterns,
+    # unchanged, reach 51% against the record. That gap was being read as "the
+    # subjects are not exhaustive" when it was only ever "the browser cannot see
+    # the text". Same rule, same span, both grains, one place.
+    THEMES = TH.load()["themes"]
+    SUBJECTS = TH.load_subjects()
+    TMASK = {did: TH.mask_of(LT(dec[did][0]), THEMES) for did in dec}
+    SMASK = {did: TH.mask_of(LT(dec[did][0]), SUBJECTS) for did in dec}
+    BODY_ONLY = {did: TH.mask_of(dec[did][0]["t"], THEMES) for did in dec}
+    _tn = sum(1 for m in TMASK.values() if m)
+    _bn = sum(1 for m in BODY_ONLY.values() if m)
+    _sn = sum(1 for m in SMASK.values() if m)
+    print(f"themes: {len(THEMES)} patterns, {_tn:,} of {len(dec):,} placed "
+          f"decisions carry at least one ({100*_tn/max(1,len(dec)):.1f}%); "
+          f"the body alone would tag {_bn:,}", flush=True)
+    print(f"subjects: {len(SUBJECTS)} patterns, {_sn:,} of {len(dec):,} "
+          f"({100*_sn/max(1,len(dec)):.1f}%)", flush=True)
+
     # ------------------------------------------------------------ the line
     # THE BOARD'S OWN ONE-LINE SUMMARY, where the record prints one. See
     # blocks/headings.py: the item splitter cuts on Resolution|Ordinance|Motion and
@@ -1257,6 +1294,14 @@ def main():
         out = {"y": r["y"], "d": (r["dt"] or "")[5:], "k": r["k"], "p": tier,
                "f": PHASE_ORDER[ph], "a": int(shown) if shown >= 100 else 0, "u": u,
                "t": line, "g": src}
+        # THE THEME MASK, and it is absent when it is zero. Two thirds of rows
+        # match nothing, so writing `"m":0` on all of them would cost bytes to
+        # say nothing — and every byte published before this existed stays
+        # unchanged on those rows, which is what makes the diff readable.
+        if TMASK.get(did):
+            out["m"] = TMASK[did]
+        if SMASK.get(did):
+            out["sm"] = SMASK[did]
         if kind:
             # absent on an archive.org row, so every byte published before this
             # existed is unchanged; present means "resolve this the other way".
@@ -1346,6 +1391,160 @@ def main():
         n = W(f"block-{s_:02d}.json", pay); raw += n; gzs += GZ(f"block-{s_:02d}.json")
     sizes.append((f"T1  block-NN.json x{SH}        one fetch per click", raw, gzs, SH))
 
+    # ---- the marks: one row per themed decision, for the GPU ---------------
+    #
+    # WHY THIS FILE EXISTS AT ALL, given the tag is already on every shard row.
+    # The shards answer a CLICK — one block, 21 KB, after the reader picks it.
+    # A theme filter is the opposite question: it has to light up the whole city
+    # at once, and reaching that through the shards means 256 fetches before the
+    # first mark is drawn. So the same tag is published a second time in the one
+    # shape an instanced draw can consume: three parallel arrays, no strings, no
+    # nesting, no per-mark object to walk.
+    #
+    # ONE MARK IS ONE DECISION, not one block. The renderer can aggregate; it
+    # cannot un-aggregate, and the time slider needs the years separately —
+    # a block holding a 1912 firehouse and a 2019 landmark is not a block that
+    # should appear in 1965.
+    #
+    # BLOCK-PRECISION ONLY. Street-tier rows are the record saying "somewhere on
+    # this street", and the map does not put a dot on a place the record did not
+    # name. They keep their `m` in the T2 files, where they are already labelled
+    # as street-precision, and they are counted out loud below.
+    # WHERE, SAID OUT LOUD. Until now a decision's only address was its position
+    # in `b[]` — block #1,732 is the 1,732nd polygon in the geometry file, so
+    # ORDER was the location. That is exact, and it is unusable by anything
+    # else: a place, a capital project or a contract has a latitude, not a
+    # position in this array. Every mark therefore carries the block's own
+    # centroid in the shared metre frame (manifest `proj`), so a second source
+    # can put a dot on this map without joining to assessor blocks at all.
+    mk_b, mk_i, mk_x, mk_y, mk_yr, mk_m = [], [], [], [], [], []
+    for i2, b in enumerate(blocks):
+        rows = own.get(b["b"], [])
+        for j, did in enumerate(rows):
+            mask = TMASK.get(did)
+            if mask:
+                mk_b.append(i2)
+                # the row's index inside this block's `d[]`, so a click resolves
+                # to the exact decision without storing a key per mark
+                mk_i.append(j)
+                mk_x.append(round(b["cx"], 1)); mk_y.append(round(b["cy"], 1))
+                mk_yr.append(dec[did][0]["y"] or 0)
+                mk_m.append(mask)
+    per_theme = collections.Counter()
+    per_theme_blocks = collections.defaultdict(set)
+    yr_lo, yr_hi = {}, {}
+    for bi_, yy, mm in zip(mk_b, mk_yr, mk_m):
+        for bit in TH.bits_set(mm):
+            per_theme[bit] += 1
+            per_theme_blocks[bit].add(bi_)
+            if yy:
+                yr_lo[bit] = min(yr_lo.get(bit, 9999), yy)
+                yr_hi[bit] = max(yr_hi.get(bit, 0), yy)
+    # the same count over the street-tier half, so what the map does NOT show is
+    # a number rather than an omission
+    st_theme = collections.Counter()
+    for did in {d for v in st_of.values() for d in v}:
+        for bit in TH.bits_set(TMASK.get(did) or 0):
+            st_theme[bit] += 1
+    n_themed_dec = len({d for v in own.values() for d in v if TMASK.get(d)})
+    n_own_dec = len({d for v in own.values() for d in v})
+    # ONE SOURCE'S MARKS, IN THE SHARED SHAPE. This file is not what the
+    # renderer reads — `build_theme_marks.py` concatenates every
+    # `theme-marks.<source>.json` into the one it does. The indirection is the
+    # whole point: a second dataset writes its own file from its own build, on
+    # its own schedule, and nothing here has to know it exists.
+    W("theme-marks.board.json", {
+        "meta": {"generated_by": "pipeline/scripts/us_sf_city/blocks/build_index.py",
+                 "seed": "pipeline/seeds/sf_decision_themes.json",
+                 "source": "sf-board-decisions",
+                 "label": "Board decisions",
+                 # how a click on one of these marks is resolved: fetch the
+                 # block shard for `b`, take `d[i]`
+                 "open": "block",
+                 "frame": "shared metre frame — city manifest `proj`",
+                 "n_marks": len(mk_b),
+                 "n_themed_decisions": n_themed_dec,
+                 "n_block_precision_decisions": n_own_dec,
+                 "union_coverage_pct": round(100 * n_themed_dec / max(1, n_own_dec), 1)},
+        # `r` is the RECORD, in this source's own addressing: the row's index
+        # inside that block's `d[]`. The name is the shared contract's, not this
+        # builder's — see build_theme_marks.py, which refuses a source that
+        # renames a column, because a column read under the wrong name is a
+        # whole dataset drawn in the wrong place with no error anywhere.
+        "b": mk_b, "r": mk_i, "x": mk_x, "y": mk_y, "yr": mk_yr, "m": mk_m})
+    # EVERY BLOCK'S OWN COORDINATE, published rather than implied by array
+    # order. Not in the first-paint file: clicking a block never needed it —
+    # the geometry the renderer already holds answers that — and T0 is 38 KB
+    # gzipped precisely because nothing rides along in it.
+    W("block-geo.json", {
+        "meta": {"generated_by": "pipeline/scripts/us_sf_city/blocks/build_index.py",
+                 "frame": "shared metre frame — city manifest `proj` "
+                          "(x = (lon-lon0)*mpd*cosl, y = (lat-lat0)*mpd)",
+                 "order": "same as block-index.json b[]",
+                 "n_blocks": len(blocks)},
+        "b": [b["b"] for b in blocks],
+        "x": [round(b["cx"], 1) for b in blocks],
+        "y": [round(b["cy"], 1) for b in blocks]})
+    W("themes.json", {
+        "meta": {"generated_by": "pipeline/scripts/us_sf_city/blocks/build_index.py",
+                 "seed": "pipeline/seeds/sf_decision_themes.json",
+                 "n_themes": len(THEMES),
+                 "tagged_against": "the item's own source text, not the published line",
+                 # THE THREE NUMBERS THE UI IS NOT ALLOWED TO IMPLY AWAY. The
+                 # eight are not a partition and not a cover; a reader who is
+                 # shown eight buttons will assume both unless told.
+                 "default_view": "all decisions",
+                 "union_coverage_pct": round(100 * n_themed_dec / max(1, n_own_dec), 1),
+                 "n_block_precision_decisions": n_own_dec,
+                 "n_street_precision_decisions": len({d for v in st_of.values() for d in v}),
+                 "n_unplaced_items": sum(unplaced.values()),
+                 "n_located_items": len(items)},
+        "t": [{"bit": t["bit"], "slug": t["slug"], "label": t["label"],
+               "kind": t["kind"],
+               "n": per_theme[t["bit"]],
+               "n_blocks": len(per_theme_blocks[t["bit"]]),
+               "n_street_only": st_theme[t["bit"]],
+               "y0": yr_lo.get(t["bit"], 0), "y1": yr_hi.get(t["bit"], 0)}
+              for t in THEMES]})
+    sizes.append(("T0  theme-marks.board.json    the filter, whole city",
+                  os.path.getsize(os.path.join(OUT, "theme-marks.board.json")),
+                  GZ("theme-marks.board.json"), 1))
+    sizes.append(("T0  block-geo.json            a coordinate per block",
+                  os.path.getsize(os.path.join(OUT, "block-geo.json")),
+                  GZ("block-geo.json"), 1))
+
+    print(f"\nTHEMES — what lands in the shards")
+    print(f"  {'theme':<26} {'kind':<5} {'marks':>7} {'blocks':>7} {'street-only':>12} "
+          f"{'years':>11}")
+    for t in THEMES:
+        bit = t["bit"]
+        print(f"  {t['label']:<26} {t['kind']:<5} {per_theme[bit]:>7,} "
+              f"{len(per_theme_blocks[bit]):>7,} {st_theme[bit]:>12,} "
+              f"{yr_lo.get(bit,0):>5}-{yr_hi.get(bit,0):<5}")
+    print(f"  {'-'*26} {'':5} {'':>7} {'':>7} {'':>12}")
+    print(f"  union: {n_themed_dec:,} of {n_own_dec:,} block-precision decisions "
+          f"carry at least one theme ({100*n_themed_dec/max(1,n_own_dec):.1f}%). "
+          f"The marks total {len(mk_b):,} because a decision placed on several "
+          f"blocks draws on each of them.")
+
+    # ---- the fiche's forty-one, now tagged from the record ----------------
+    own_dids = {d for v in own.values() for d in v}
+    s_any = sum(1 for d in own_dids if SMASK.get(d))
+    s_per = sum(len(TH.bits_set(SMASK.get(d) or 0)) for d in own_dids)
+    print(f"\nSUBJECTS — the fiche's {len(SUBJECTS)}, matched against the record "
+          f"rather than the line")
+    print(f"  {s_any:,} of {len(own_dids):,} block-precision decisions carry one "
+          f"({100*s_any/max(1,len(own_dids)):.1f}%), "
+          f"{s_per/max(1,s_any):.2f} subjects per tagged decision")
+    s_count = collections.Counter()
+    for d in own_dids:
+        for bit in TH.bits_set(SMASK.get(d) or 0):
+            s_count[bit] += 1
+    top = s_count.most_common(6)
+    print("  busiest: " + " · ".join(f"{SUBJECTS[b]['label']} {n:,}" for b, n in top))
+    print(f"  {len(SUBJECTS) - len(s_count)} of {len(SUBJECTS)} subjects match "
+          f"nothing at block precision")
+
     # ---- T2 street-tier, stored ONCE per street --------------------------
     by_street = collections.defaultdict(list)
     for did, (r, tier, sc, ph, amt) in dec.items():
@@ -1427,7 +1626,21 @@ def main():
     for name, (nb, tl, wi) in rowsn:
         print(f"    {name[:30]:<30} {nb:>5} {100*wi/nb:>6.0f}%  {tl/nb:>7.1f} avg")
 
-    json.dump({"dec": {str(k): {"v": items[k]["v"], "n": items[k]["n"], "y": items[k]["y"],
+    # THE BLOCKS PLACEMENT FOUND, BEFORE THE DEDUP TOOK ANY AWAY.
+    #
+    # `own` is built from the deduped set, because showing a reader the same
+    # line twice on one block is noise. That is a PRESENTATION rule, and it was
+    # silently costing the underlying record its location: 35.5% of records
+    # located at block precision had no block anywhere in this dump, so the
+    # published dataset could not say where they happened even though the
+    # placement knew. The map keeps the dedup; the record keeps its blocks.
+    placed_blocks = {}
+    for did, tier, hits, _focus in placed:
+        if tier >= 1 and hits:
+            placed_blocks[str(did)] = sorted(hits)
+
+    json.dump({"placed_blocks": placed_blocks,
+               "dec": {str(k): {"v": items[k]["v"], "n": items[k]["n"], "y": items[k]["y"],
                                 # the streets the item was LOCATED from — preface
                                 # included — so verify_geo.py checks the join that was
                                 # actually made, not half of it

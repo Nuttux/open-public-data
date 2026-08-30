@@ -2878,7 +2878,7 @@ Three rules carry the weight, each of them a thing this page has already got wro
 a count of a selection wearing the neighbourhood's name.
 
 The decade shape draws **every decade the file carries, empty ones included**, with the two ends
-labelled. Dropping the zeroes drew `Blasting the hills flat` as four fat bars and read as a
+labelled. Dropping the zeroes drew `Blasting permits` as four fat bars and read as a
 subject that ran evenly for a century; it ran 1906–1931 and then stopped, and the stopping is
 the interesting half.
 
@@ -2935,7 +2935,7 @@ dead i18n keys from the deleted chips removed from both `en.ts` and `fr.ts` —
 and the first printing of `subjects_head`, which is now live again with a different meaning.
 
 Screenshots: the GL neighbourhood (paragraph, hint, rail, return control), a block at `A few
-streets` with six chips and `Blasting the hills flat` opened, the same on a 390 px viewport, and
+streets` with six chips and `Blasting permits` opened, the same on a 390 px viewport, and
 the Canvas page's pin reading `2nd St · 3rd St · Bryant St · …`.
 
 
@@ -2973,3 +2973,479 @@ record leaves empty are drawn too."* The neighbourhood's hint gained the same tw
 One test changed and it changed because the behaviour did: `threadsIn` "puts them in the
 volume's date order" became "puts them in date order, newest first", with a third row a decade
 away so the assertion covers the year as well as the day.
+
+
+## 26. Block T3, 2026-08-28 — the four levels become one line
+
+> "i dunno how you can make somethign explorable ya know on multiple levels and it becomes
+> intutitive for ppl" · "ok thats good one tap"
+
+The four levels were always here — an address, the block, the street, the neighbourhood — but
+MOVING between them was scattered: neighbours under `Also here`, the street behind its own
+button, the neighbourhood behind a fold at the very bottom of a 900 px panel. A reader standing
+on an address could not see there was anywhere to go.
+
+One line under the title, and every rung carries the count of what pressing it shows:
+
+```
+this address 2  ›  this block 41  ›  Frederick St 76  ›  Haight Ashbury 2,002
+```
+
+**The counts are the feature, not decoration.** `this address · 2` beside `this block · 41`
+says, before you press anything, that stepping out is worth it — and on a busy corner it says
+the opposite. Without them the row is four words and no reason to press any of them.
+
+Every number is a real count of what the press will show: the rows the fiche is built from, the
+block's own decisions, the street index's figure (the same one `Also here` prints), and
+`hood.record.n` (the same one the neighbourhood's own page shows). **A rung whose count is not
+known is not drawn.** Nothing is estimated.
+
+The street rung is the street the ADDRESS is on — matched by the address's own label ending in
+the street's name, `259 Frederick St` ending in `Frederick St` — and not the block's busiest
+street, which on a corner is a different street and would send a reader somewhere they never
+asked about.
+
+### a. Three things this replaced
+
+* **`← Back` is gone where the ladder draws.** They are the same press, and only one of them
+  carries a number. `← Back` still fills in on a block with no street and no neighbourhood,
+  where the ladder has under two rungs and returns null.
+* **`Also here` moved below the record.** A reader who opened one address wants what happened at
+  it; the neighbours are where they go next, not what they came for.
+* **A thin unit no longer draws a decade rail.** 259 Frederick St holds two decisions, both in
+  1991, and was drawing `2000s–2020s` folded, `1990s · 2`, `1900s–1980s` folded, plus two lines
+  about the scanned series — three rows of furniture around one row of record, which the reader
+  then had to open. Under `RAIL_FLOOR` (7) the records simply print, newest first, open. A rail
+  is a shape and needs something to be a shape of.
+* **And the pulled quote went with it on those units**, because the lead was the first record in
+  the list underneath and was being printed twice.
+
+
+## 27. Block T4, 2026-08-29 — the fiche says what happened, and can be sent
+
+> "please think about a real revamp of fiche so its like wow and clear and evident to people;
+> minimal approach and efficient" · "yes add sharing, board of supervisors etc"
+
+### a. The finding, not the record
+
+A reader clicking a block met `"Garage, Finance and Oil Permits — Roman Catholic Archbishop of
+San Francisco, at…"` — a truncated fragment of 1918 municipal prose — and **nowhere did any
+fiche say what happened here.** Only the neighbourhood carried a written paragraph, and there is
+no writing 5,404 of those by hand.
+
+There is no need to. `ficheOpener` assembles one sentence out of counts already computed:
+
+> **41 decisions here, 1907 to 2020. Busiest in the 1910s. Among them: street lights, railroads
+> and spur tracks, paving and grading.**
+
+Nothing is generated. **The thresholds are the honesty** — each clause is DROPPED rather than
+hedged when it would overstate:
+
+| clause | bar | why |
+|---|---|---|
+| `Busiest in the 1910s` | ≥25 % of a place holding ≥8 | four decisions over four decades has no busiest decade, it has a coincidence |
+| `Mostly about X` | ≥25 % | a claim about dominance keeps a high bar |
+| `Among them: X, Y` | subject lands ≥2 times | claims nothing except that they are in there |
+| any subject clause | place holds ≥6 | 259 Frederick St read *"Most often about permission to open something"* for two records that are two stages of one application |
+
+`Mostly` and `Among them` exist because a single wording could not be both. The old one demanded
+a tenth and the Haight block's top subject is 4 of 41 — 9.8 %, just under — so the most useful
+half of the sentence almost never printed. And the list joins with commas where any subject
+carries its own `and`: *"street lights, railroads and spur tracks and paving and grading"* parses
+as five things and reads as none.
+
+### b. The century as one row
+
+Thirteen decades, 34 px, read at a glance; empty ones keep their slot as a hairline so a gap
+reads as a gap. Pressing one opens that decade in the list below. `Spark` is shared by all four
+levels — a reader who learns what the row does on their own street should not have to learn it
+again on the neighbourhood.
+
+### c. A fiche is a link
+
+Nothing on this map had a URL. Four readable shapes, `replaceState` and never `pushState` for
+the reason `CityMap` already gives:
+
+```
+?block=1254
+?block=1254&street=FREDERICK_ST
+?block=1254&address=259+Frederick+St
+?block=1254&hood=1
+```
+
+The street rides as its FILE name so the link reads as a street rather than `FREDERICK%7CST`,
+and is resolved back by matching that fold against the block's own keys — never parsed, which
+would have to guess where the `|` went. The address rides as its LABEL, for the same reason
+`UnitRequest` does.
+
+**The writer wiped the reader.** On mount `picked` is null, so the URL writer wrote "no fiche"
+and deleted the very params the restore was about to read. `arrivedWith` captures
+`window.location.search` during the first render, before either effect can run, and the writer
+stands down until the restore has had its turn. All four shapes verified cold; a block id the
+index does not carry opens nothing rather than guessing.
+
+`goToHit` was split so a shared link and a typed search take the same path into `openAt` — they
+ring the same block and open the same level.
+
+### d. Whose decisions are these?
+
+Every fiche is built from one body's minutes and no fiche said what that body IS. A San
+Franciscan works it out; to most of the world "Board of Supervisors" reads like a committee of
+inspectors. One line under the sentence that first says *decisions*, opening onto: the city
+council, eleven members, one per district, elected — and that everything here is from their own
+minutes with every line linked to its scan.
+
+### e. The cleanup
+
+* **Streets are one wrapping line, not five rows.** A block fronting five streets drew five
+  full-width rows under the addresses, one of which the ladder was already offering. Addresses
+  stay as rows — they are the fine thing a reader hunts for and each carries a count and a year.
+* **The neighbourhood got the sparkline**, so all four levels now share one shape.
+* **The record count stopped appearing three times** on one screen (ladder, sentence, figures
+  row). `GroundLine` keeps only what is unique to it — who lives here, what the roll calls it.
+* **The pulled quote is gone**, and `blockLead`/`judgedLead` stay in `block-records` with their
+  tests: what they know about picking a line worth pulling is what this would need if a quote
+  ever comes back.
+
+### f. State
+
+Typecheck clean, **935 tests** (+7 for the link layer), lint down to unused-symbol warnings on
+the retired quote path, each documented in place. Address fiche **1,146 px**, from 1,424 at the
+start of this pass and ~2,200 before §26.
+
+
+## 28. Block T5, 2026-08-29 — one logic across all four levels
+
+> "finish coding all levels with the same logic … i need my fiches to have a consistent logic"
+> "i didnt understand abut the decision its not simple english"
+
+### a. "Decisions" became what the map already says
+
+The idle margin has always read *"Click anywhere on the map to read what the city decided
+there."* The fiche then said `41 decisions here` — the same idea in a more abstract noun. It now
+echoes the sentence a reader has already met:
+
+| was | now |
+|---|---|
+| `41 decisions here, 1907 to 2020.` | **The city decided 41 things here, between 1907 and 2020.** |
+| `Busiest in the 1910s.` | **Most of it in the 1910s.** |
+| `Whose decisions are these?` | **Who decided all this?** |
+
+The answer under it dropped "eleven members, one for each district, elected by the people who
+live there" for **"Eleven people, one for each part of the city, chosen at elections. They meet
+every week and vote on what the city builds, buys, rents out, allows and renames."**
+
+### b. The audit that drove the rest
+
+Nine parts, four levels, measured in the browser rather than assumed:
+
+| | address | street | block | neighbourhood |
+|---|---|---|---|---|
+| ladder | ✓ | ✓ | ✓ | ✓ |
+| finding | ✓ | ✓ | ✓ | **was missing** |
+| shape row | *n/a* | ✓ | ✓ | **was missing** |
+| who decided | ✓ | ✓ | ✓ | **was missing** |
+| subjects | ✓ | ✓ | ✓ | **was missing** |
+| the record | ✓ | ✓ | ✓ | ✓ |
+| also here | ✓ | ✓ | ✓ | *n/a* |
+| copy link · sources | ✓ | ✓ | ✓ | ✓ |
+
+The neighbourhood was a different document. It now opens the same way — finding, shape row, who
+decided — with the written paragraph after them rather than instead of them: a paragraph is
+better than any sentence we can assemble, but it does not say HOW MUCH.
+
+**Two cells stay empty on purpose.** A shape needs more than one decade to be a shape, so an
+address holding two records in 1991 draws none. And a neighbourhood's "also here" is the rest of
+the city, which is the map.
+
+### c. `2029` — a year no record reaches
+
+> "dude what our records only pull to 2026 so far cxan you make max year accoridng to the most
+> recent year of data we ingest?"
+
+The neighbourhood's span was built out of its decade buckets — first decade, and last decade
+plus nine — which read **"between 1900 and 2029"** for the Tenderloin: nine years before the
+earliest record and three years into the future. **A decade is a bucket, not a span.**
+
+The years now come from `hood-facts`, which carries the neighbourhood's own first and last
+(1906 and 2026), while the COUNT stays the deduped one from the file beside it. Two files on
+purpose: the count has to match what the neighbourhood's own page prints, and the year range is
+the same in both because deduplication drops repeats and never moves the earliest or the latest.
+
+`blockShape` was never affected — it takes the min and max of actual record years, which is why
+the block reads `1907 to 2020` and not `1900 to 2029`.
+
+### d. A neighbourhood's subjects are counted in the pipeline
+
+Every other level runs the published patterns in the BROWSER, over the rows it holds — exact,
+because a block, a street and an address each hold their whole record. `hood/<i>.json` ships
+twelve rows a decade out of hundreds, so the same trick would count a selection and print it
+under the neighbourhood's name.
+
+`build_hood_records.py` now runs the same patterns, with the same guards, over every row, and
+ships the five biggest with true counts. They render as statements rather than buttons: pressing
+one elsewhere opens the records behind it, and behind these is a number this file does not ship
+the rows for.
+
+### e. State
+
+Typecheck clean, **935 tests**, four unused-symbol warnings on the retired quote path. The
+Canvas page (`/the-city`) is now knowingly behind — it has no search box, no share button and
+none of §27–28. It is not the page in use.
+
+
+## 29. Block T6, 2026-08-29 — one set of parts, inserted per level
+
+> "shouldnt it be that all these fiches use common components that then according the the
+> specific case get inserted or not?"
+
+It should, and it did not. Measured before touching anything:
+
+```
+<Ladder            rendered at 2 places
+<FicheOpen         rendered at 2 places
+<WhoDecides        rendered at 2 places
+fx-block-subjects  rendered at 2 places
+```
+
+Each of those was written out once inside the neighbourhood's branch of the render and once
+inside the block's. **Keeping two copies in step is a thing nobody does** — which is exactly how
+§28's audit found the neighbourhood missing a finding, a shape row, the tip and its subjects
+while the other three levels had all four. The consistency was hand-restored; the shape that
+lost it was still there.
+
+### a. What moved above the branch
+
+`Ladder`, `FicheOpen` and `WhoDecides` are rendered once, before the level is chosen. The branch
+below now holds only what genuinely differs — which records a level draws, and how it counts its
+subjects.
+
+**One opener, whatever the level.** The block and the neighbourhood each assembled their own.
+There is one `opener` now, and the only difference between levels is where its numbers come
+from:
+
+| | count | span | busiest | subjects |
+|---|---|---|---|---|
+| block · street · address | the rows | the rows | the rows | matched in the browser |
+| neighbourhood | its own file | `hood-facts` | its decade totals | counted in the pipeline |
+
+That table IS the rule: a level that holds its whole record measures itself, and the one that
+ships a selection is measured upstream. Nothing else about them differs.
+
+### b. `Subjects` gained a flat mode instead of a twin
+
+The neighbourhood had a hand-rolled copy of the chips markup, because its subjects arrive as a
+shipped list rather than as browser matches. It now passes `flat` to the same component. They
+render as statements rather than buttons, and that is a rule with a reason: pressing a chip
+elsewhere opens the records behind it, and behind these is a count whose rows this file does not
+ship. **A chip that opens nothing is worse than a statement that says something.**
+
+### c. What was deliberately NOT unified
+
+The two decade lists. A block's rail and a neighbourhood's are different objects — one is the
+whole record, the other is twelve rows a decade with a sentence saying so — and folding them
+into one component would be a large internal branch pretending to be a shared part. The only
+thing they share is the heading string, which is one `t()` call in two places.
+
+### d. State
+
+Typecheck clean, **935 tests**, and the nine-part audit still reads identically across all four
+levels. Two cells stay empty by design: a shape needs more than one decade to be a shape, and a
+neighbourhood's "also here" is the rest of the city, which is the map.
+
+
+## 30. Block T7, 2026-08-29 — clicked through, and the one thing that was not the same
+
+> "i remmeber i could click here on the themes and it would filter but i dont see this applied
+> to every level, can you please go thru every fiche level and click yourself different
+> behaviros and see veeyrthing works to plan?"
+
+Driven rather than reasoned about. Five behaviours pressed on each of the four levels:
+
+| | sparkline → decade | who decided | subject chip | decade row | also here |
+|---|---|---|---|---|---|
+| address | *one decade, none drawn* | OK | OK | *no rail, list instead* | OK |
+| street | OK · 1910s | OK | OK | OK | OK |
+| block | OK · 1910s | OK | OK | OK | OK |
+| neighbourhood | OK · 1910s | OK | **FLAT — not clickable** | OK | *n/a* |
+
+One real failure, and it was the one the reader remembered.
+
+### a. The reasoning was right and the conclusion was wrong
+
+§29 made the neighbourhood's chips statements because its file ships twelve rows a decade and a
+press could not show all 101. The premise held; what followed from it did not. **Most of what a
+press is worth needs no rows at all** — the plain-English note, the span, the shape across the
+whole city. Only the last part needs them.
+
+So it presses, and the panel says both numbers rather than letting either stand for the other:
+
+> Hotels and rooming houses, concentrated in a handful of neighbourhoods.
+> **101 of the 2,082 things decided here. This page carries 5 of them — open a decade for more.**
+> ▁▁█▅▁▁▁▁▁▁▁▂  Across San Francisco: 224 decisions on 146 blocks, 1908 to 2026.
+
+Printing `5` alone would quietly restate the Tenderloin as smaller than it is; printing `101`
+over a list of five would look broken. `trueN` is passed only by the level that has this problem,
+and `SubjectOpen` takes its absence to mean the caller holds its whole record.
+
+`threadRows` was split out of `threadsIn` for it: `threadsIn` picks the subjects AND counts them,
+which is right where the caller holds everything, and the neighbourhood needs only the second
+half because the counting was done upstream.
+
+### b. The two empty cells, re-confirmed by pressing them
+
+An address holding two records in one decade draws no sparkline and no rail — a shape needs more
+than one decade to be a shape, and a rail over two records is furniture. Both are the rule
+working, not a level lagging.
+
+### c. State
+
+Typecheck clean, **935 tests**, all five behaviours OK on all four levels.
+
+
+## 31. Block T8, 2026-08-29 — the subjects are computed over a third of the record
+
+A theme-filter research pass flagged a build blocker: the published shards carry a snippet,
+not the record. It lands on `Subjects`, which was already shipped and matches those patterns
+IN THE BROWSER over that snippet.
+
+Measured, with the shard side deduped exactly as `build_threads.py` dedupes it — `(page, first
+120 chars)` — so one record stored on four corner blocks counts once:
+
+```
+shard rows, deduped     41,489     median 128 chars
+source rows            124,284     median 519 chars
+```
+
+41,489 is the project's own distinct-record count, so the dedupe is right. The survival rate
+per subject:
+
+| subject | shipped | in the full text | survives |
+|---|---:|---:|---:|
+| PG&E and the utilities | 115 | 3,315 | **3 %** |
+| Streetcars and transit | 195 | 3,362 | 6 % |
+| Police stations | 77 | 1,254 | 6 % |
+| Parks and playgrounds | 90 | 1,267 | 7 % |
+| Railroads and spur tracks | 445 | 5,592 | 8 % |
+| Liquor licences | 633 | 1,216 | 52 % |
+| Street lights | 876 | 1,175 | 75 % |
+| Keeping horses and cows | 1,119 | 1,021 | 110 % |
+
+**Median survival: 15 %.** Two causes, and they are not the same problem:
+
+1. **Truncation.** 53 % of shard rows visibly end in `…`. A subject word past character 130 is
+   invisible. This is why the survival rate tracks sentence length: a horse permit is one short
+   line and survives whole; a PG&E franchise is a paragraph and its subject word is in the tail.
+2. **Corpus.** The shards hold the placed, deduped third of the minutes.
+
+### What this made false, and what it did not
+
+* `subject_here` — *"3 of the 41 records here"* — **stays true.** It counts the rows the fiche
+  holds and says "here". The fiche has never claimed to hold the whole record.
+* `subject_city` — *"**Across San Francisco**: 229 decisions on 430 blocks"* — **was false in
+  its scope.** For PG&E it would print ~115 where the minutes hold 3,315. It now reads
+  *"Everywhere on this map: … and the map holds the part of the record that names a street."*
+
+That is the honest wording of the number that exists. It is not a fix for the number.
+
+### The real fix, not done here
+
+**Subjects must be tagged in the pipeline against full source text and shipped as a field on
+each decision.** A regex in the browser over shard text is not a cheap version of that — it is a
+different and much smaller dataset. The same blocker governs any theme filter built on top of
+these patterns, which is what the research pass was scoping.
+
+
+## 32. Block T9, 2026-08-29 — what the subject tagging actually is, and what it cannot be
+
+> "how did you do this 'What keeps coming up' now if there was no classification?"
+> "regex as we disucxssed can have failing like in racial equity, arts etc"
+> "it should be pretty exhaustive the taggign imo"
+
+### a. There is no classifier
+
+41 hand-written regular expressions in `build_threads.py`, run over the printed line. No model,
+no taxonomy, no training. Verbatim:
+
+```
+label    Keeping horses and cows
+pattern  \bstable permit|for (?:one|two|…|\d+) horses?\b|\bveterinary\b|for (?:two|\d+) cows\b
+```
+
+**36 % of records match anything. 64 % match nothing**, and tags barely overlap — 1.05 per
+tagged record. These are 41 spotlights on a dark field, not a partition of it.
+
+### b. Exhaustiveness has a ceiling, and it is not the pattern list
+
+Eleven more well-chosen families — grades, widening, acceptance, contractor extensions, street
+naming, vacations, appropriations, sewers, bonds, claims, procedure — move coverage **36 % →
+51 %** and no further. The residue is why:
+
+> *"Broadway, south side, between Osgood Place and…"* · *"Timothy B. Healy, 2770 Twentysecond
+> street."* · *"Commencing at tlie intersection of Sacramento…"*
+
+Untagged rows are shorter (120 vs 146 median chars) and **only 36 % contain an action verb,
+against 60 % of tagged rows.** They carry a location with the subject clause cut off. You cannot
+pattern-match a subject out of text that does not contain one.
+
+### c. TWO KINDS OF SUBJECT, and only one is regexable
+
+| | what it is | regex |
+|---|---|---|
+| **nominal** | the Clerk's own recurring phrase — *stable permit*, *spur track*, *liquor license* | yes, cheap, and all 41 of mine |
+| **conceptual** | a topic read out of the whole record — *racial equity*, *arts*, *displacement* | **no, categorically** |
+
+Demonstrated: `equity` returns 70 hits which are **Transportation Equity** (a federal funding
+act), a **Cultural Equity Endowment Fund** and a court case. `arts` returns 983 hits which are
+roll-call votes and an elevator loading-zone list. The record never SAYS the concept — it
+describes clearing the Fillmore without using the word race once.
+
+**Conceptual subjects need the whole record read, not a word matched.** That is an LLM pass over
+full text in batches, not a pattern.
+
+### d. THE STRUCTURAL FINDING — the shards are lines, not decisions
+
+Sizing that pass turned up something bigger. The shard row and the source cache are two
+different extractions of the same scan page:
+
+```
+u = journalofproceed22sanfrich/2161
+SHARD  1) California street, from Mason street to Van Ness avenue, $28,-000.
+SOURCE Resolution No. 28010 (New Series) … granted permission … to explode blasts on …
+```
+
+The shards are a **line-level** extraction — sentences and fragments a placer found a street in.
+The source cache is **item-level** — whole resolutions. They share a page id and nothing else:
+**6 exact prefix matches out of 29,012 pages.**
+
+Consequences:
+
+1. **The shard rows cannot be joined back to their full text.** Any labelling over full text has
+   to happen UPSTREAM, at the point in the shard build where the whole item is still in hand —
+   not as a later enrichment keyed on the published files.
+2. **`n_records` is lines, not decisions** — so the fiche's opening sentence was worth checking.
+   **It holds:** 99,855 placed lines over 94,870 distinct (page, date) pairs = **1.05 lines per
+   decision**, median 1.03 per block, worst block 1.8×. "The city decided 41 things here" is
+   sound.
+
+### e. What changed here
+
+**Ranking is now lift, damped.** It sorted RAREST CITY-WIDE first, which measured worst of four
+rules on real blocks: on 3752, holding 33 horse permits and 27 liquor licences, it led with
+`Streets closed for good (2)`.
+
+| rule | block 3752 (373 rows) |
+|---|---|
+| local count | Horses(33) · Liquor(27) · Oil tanks(23) · Env review(21) |
+| rarest city-wide *(was shipped)* | Shelters(5) · Fire stations(4) · **Streets closed for good(2)** |
+| **lift, damped** | **Shelters(5)** · Env review(21) · Liquor(27) · Housing bonds(10) · Horses(33) |
+
+Lift is the share here over the share across the map, damped by `n / (n + 3)` because lift is
+loud at small n — Haight Ashbury came back with `Street name changes (2)` in second place.
+Measured at k = 0, 3 and 6: at 6 the ranking flattens back into a plain count; at 3 only the thin
+ones fall behind the solid ones.
+
+**And the neighbourhood was ranking differently from every other level** — `most_common`, i.e.
+plain local count — so one section had two rules. Both sides now use damped lift, and the
+Tenderloin surfaces `Shelters and homelessness (17)` and `Dance halls (30)` where it used to show
+its five biggest and least distinguishing subjects.

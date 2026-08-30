@@ -14,6 +14,9 @@ import {
   isPrintableLine,
   isSpeakerList,
   isVoteTally,
+  ficheParams,
+  readFicheParams,
+  streetKeyFromFile,
   streetLabel,
   threadsIn,
   type BlockDecision,
@@ -802,5 +805,81 @@ describe("threadsIn", () => {
   it("has nothing to say with no file or no rows", () => {
     expect(threadsIn(null, [row({ y: 1913 })])).toEqual([]);
     expect(threadsIn(file(STABLES), [])).toEqual([]);
+  });
+});
+
+/**
+ * A FICHE IS A LINK.
+ *
+ * Nothing on this map had a URL: a reader who found the two 1991 motions on
+ * their own street could not send them to a neighbour and closing the tab lost
+ * the place. Every share is also how somebody else arrives, so these four
+ * shapes are the difference between a thing people look at once and a thing
+ * that circulates.
+ */
+describe("fiche links", () => {
+  it("writes the four shapes", () => {
+    const q = (l: Parameters<typeof ficheParams>[0]) => ficheParams(l).toString();
+    expect(q({ block: "1254" })).toBe("block=1254");
+    expect(q({ block: "1254", hood: true })).toBe("block=1254&hood=1");
+    expect(q({ block: "1254", street: "FREDERICK|ST" })).toBe(
+      "block=1254&street=FREDERICK_ST",
+    );
+    expect(q({ block: "1254", address: "259 Frederick St" })).toBe(
+      "block=1254&address=259+Frederick+St",
+    );
+  });
+
+  /* the street rides as its FILE name so the link reads as a street rather
+     than as `FREDERICK%7CST` */
+  it("keeps the street readable in the address bar", () => {
+    expect(ficheParams({ block: "1", street: "DR CARLTON B GOODLETT|PL" }).get("street"))
+      .toBe("DR_CARLTON_B_GOODLETT_PL");
+  });
+
+  it("reads them back", () => {
+    expect(readFicheParams("?block=1254&hood=1")).toEqual({ block: "1254", hood: true });
+    expect(readFicheParams("?block=1254&street=FREDERICK_ST")).toEqual({
+      block: "1254",
+      street: "FREDERICK_ST",
+    });
+    expect(readFicheParams("?block=1254&address=259+Frederick+St")).toEqual({
+      block: "1254",
+      address: "259 Frederick St",
+    });
+  });
+
+  /* a link with no block points at no fiche, and a link asking for two levels
+     at once takes the widest — never both */
+  it("refuses a link with nothing to open", () => {
+    expect(readFicheParams("")).toBeNull();
+    expect(readFicheParams("?hood=1")).toBeNull();
+  });
+
+  it("takes one level from a link that asks for several", () => {
+    expect(readFicheParams("?block=1&hood=1&street=X&address=Y")).toEqual({
+      block: "1",
+      hood: true,
+    });
+    expect(readFicheParams("?block=1&street=X_ST&address=Y")).toEqual({
+      block: "1",
+      street: "X_ST",
+    });
+  });
+
+  /* resolved against the block's OWN keys rather than parsed, because parsing
+     would have to guess where the `|` went */
+  it("resolves a street file name against the block's streets", () => {
+    const keys = ["FREDERICK|ST", "ASHBURY|ST", "DR CARLTON B GOODLETT|PL"];
+    expect(streetKeyFromFile("FREDERICK_ST", keys)).toBe("FREDERICK|ST");
+    expect(streetKeyFromFile("frederick_st", keys)).toBe("FREDERICK|ST");
+    expect(streetKeyFromFile("DR_CARLTON_B_GOODLETT_PL", keys))
+      .toBe("DR CARLTON B GOODLETT|PL");
+  });
+
+  /* a hand-edited link, or a street since renamed: the caller opens the block
+     rather than an empty street */
+  it("gives back nothing for a street the block does not front", () => {
+    expect(streetKeyFromFile("MARKET_ST", ["FREDERICK|ST"])).toBeNull();
   });
 });

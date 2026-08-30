@@ -76,9 +76,18 @@ THREADS: list[tuple[str, str, str, str]] = [
     ("Keeping horses and cows", "old",
      r"\bstable permit|for (?:one|two|three|four|five|six|\d+) horses?\b|\bveterinary\b|for (?:two|\d+) cows\b",
      "Until about 1930 the Board voted on whether you could keep animals at your address."),
-    ("Blasting the hills flat", "old",
+    # NOT "Blasting the hills flat", which is a sentence I wrote and not one
+    # the record supports. Every match is one permit: "granted permission,
+    # revocable at will of the Board of Supervisors, to explode blasts on
+    # Wisconsin street", ninety days, 7 a.m. to 6 p.m. Of the 444 whose
+    # location phrase parses, 276 name a street, ~90 name private property or a
+    # lot corner, 6 are tunnel work — lot-by-lot excavation, not a programme of
+    # levelling hills. The title asserted a city-scale project out of a stack of
+    # construction permits.
+    ("Blasting permits", "old",
      r"\bexplode blasts\b|\bblast(?:s|ing)?\b(?=[^.]{0,80}\b(?:permit|permission|grading|granted)\b)",
-     "Permission to set off explosives, mostly to cut streets into the city's hills."),
+     "Permission to set off explosives at a named place — street cuts, "
+     "foundations, tunnels — revocable and usually time-limited."),
     ("Oil tanks and boilers", "old",
      r"\boil (?:tank|permit|and boiler)|boiler permit|storage tank of not more than",
      "Fuel-oil tanks and boilers, each one licensed by name and capacity."),
@@ -211,9 +220,20 @@ THREADS: list[tuple[str, str, str, str]] = [
     ("The rules for this street changed", "now",
      r"\brezon(?:e|ing)\b|reclassification of property|amending the zoning map|\buse district\b|special use district|height and bulk",
      "Rezonings, height limits, and rules written for one block."),
-    ("When neighbours objected", "old",
+    # NOT "When neighbours objected". The pattern cannot see WHO objected, and
+    # measured on the tokens it actually matches — protest 553, hearing of
+    # appeal 491, disapproving decision 380, objecting to the decision 182,
+    # objecting to the determination 83, variance 35 — most of it is the
+    # Board's own hearing machinery, and a large share is an APPLICANT
+    # appealing a refusal, which is the opposite of a neighbour objecting.
+    # `variance` is an application for an exception and is not an objection at
+    # all; it is 2% of matches and left in because these records are almost
+    # always the appeal against the variance decision, but the title must not
+    # depend on that.
+    ("Protests and appeals", "old",
      r"\bprotest\b|hearing of appeal|\bremonstrance\b|objecting to the (?:determination|decision)|\bvariance\b|disapproving decision",
-     "Protests and appeals — people telling the Board it had got something wrong."),
+     "A protest recorded at a hearing, or an appeal against a decision — "
+     "brought by neighbours and by applicants alike."),
     ("Environmental review", "now",
      r"environmental quality act|\bCEQA\b|negative declaration|environmental review|environmental impact report|\bEIR\b|categorically exempt",
      "Nothing before the 1970s, then permanent: the review law arriving and staying."),
@@ -261,8 +281,32 @@ def load_hoodmap() -> dict[str, int]:
     return {}, names
 
 
+def _subjects():
+    """The same list, with the bit each subject occupies in the shipped mask.
+
+    THE PATTERNS ARE NO LONGER RUN OVER THE SHARDS HERE. Every row now carries
+    `sm`, a bitmask over exactly this list, computed in `build_index.py`
+    against the RECORD instead of the printed line. Re-matching the line would
+    reproduce the old, smaller answer beside the new one and the two would
+    disagree in public — the line reaches 35% of records, the record 51%.
+    """
+    import importlib.util
+    p = os.path.join(ROOT, "pipeline/scripts/us_sf_city/blocks/themes.py")
+    spec = importlib.util.spec_from_file_location("_th", p)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m, m.load_subjects()
+
+
 def main() -> int:
     show_samples = "--samples" in sys.argv
+    TH, SUBJECTS = _subjects()
+    bit_of = {s["label"]: s["bit"] for s in SUBJECTS}
+    missing = [lbl for lbl, _e, _p, _n in THREADS if lbl not in bit_of]
+    if missing:
+        sys.exit(f"REFUSED: {len(missing)} thread(s) have no bit: {missing[:3]}. "
+                 f"themes.load_subjects() and THREADS have diverged, and every "
+                 f"mask already published is positional.")
     compiled = [(lbl, era, re.compile(pat, re.I), note)
                 for lbl, era, pat, note in THREADS]
 
@@ -296,8 +340,9 @@ def main() -> int:
                 seen.add(key)
                 if first:
                     total += 1
+                sm = r.get("sm") or 0
                 for lbl, _era, rx, _note in compiled:
-                    if not rx.search(t):
+                    if not (sm >> bit_of[lbl] & 1):
                         continue
                     a = agg[lbl]
                     a["blocks"].add(bid)          # every block it touches
@@ -329,6 +374,10 @@ def main() -> int:
         out.append({
             "s": slug(lbl),
             "l": lbl,
+            # WHICH BIT OF `sm` THIS IS. The browser reads the mask on the row
+            # instead of running `p` against the line, which is the whole of
+            # the 35% -> 51% move: the mask was computed against the record.
+            "bit": bit_of[lbl],
             # THE PATTERN SHIPS. The browser holds the records of whatever the
             # reader is looking at — a street, a building, a neighbourhood —
             # and can only say "this thread is here, N times" if it can run the
@@ -349,6 +398,11 @@ def main() -> int:
     out.sort(key=lambda x: -len(x["b"]))
     payload = {
         "generated_by": "pipeline/scripts/us_sf_city/build_threads.py",
+        # THE BROWSER MUST NOT RUN `p` WHILE THIS IS TRUE. Every shard row
+        # carries `sm`; matching the printed line again would silently answer
+        # the smaller question — 35% of records instead of 51%.
+        "tagged_in_pipeline": True,
+        "tagged_against": "the item's own source text, not the published line",
         "n_records": total,
         "n_tagged": len(tagged),
         "n_threads": len(out),
