@@ -1,7 +1,7 @@
 {
- "w": 2809,
- "h": 1891,
- "rowBytes": 352,
+ "w": 5617,
+ "h": 3781,
+ "rowBytes": 703,
  "bitOrder": "msb",
  "world": [
   -16009.25,
@@ -10,8 +10,8 @@
   21161.11
  ],
  "cellM": [
-  16.298,
-  20.615
+  8.149,
+  10.307
  ],
  "landFrac": 0.5205,
  "note": "one bit a node, row-major from the SOUTH edge north, MSB first, each row padded to a byte. Set means LAND. Node (i, j) maps to `world` by linear interpolation.",
@@ -20,6 +20,6 @@
   "dataset": "San Francisco Bay, California Coastal Digital Elevation Model (san_francisco_13_mhw_2010)",
   "what": "the SIGN of an integrated bathymetric-topographic DEM on the Mean High Water datum. Not a published shoreline and not derived from one: land is where the surface is at or above the datum a chart draws its coast at.",
   "licence": "US Government work, public domain",
-  "reduced": "every 2th node, taken in the pipeline. The consumer is a cut that refines 6 a side over 110.01 x 139.15 m cells, so its finest question is 18.33 x 23.19 m and this is just finer than that in both axes."
+  "reduced": "every 1th node, taken in the pipeline. The consumer is a cut that refines 6 a side over 110.01 x 139.15 m cells, so its finest question is 18.33 x 23.19 m and this is just finer than that in both axes."
  }
 }

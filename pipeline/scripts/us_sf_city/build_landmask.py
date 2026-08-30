@@ -35,24 +35,35 @@ No winding. No closure. No nesting. No even-odd fill. No topology to get
 wrong, and nothing that can disagree with anything else, because there is only
 one of it.
 
-── THE PITCH IS CHOSEN TO MATCH ITS CONSUMER, NOT TO BE MAXIMAL ────────────
-The region's cut refines a coastal cell 6 a side, so its sub-cell is
-110.01/6 x 139.15/6 = **18.34 x 23.19 m**. `--stride 2` on the DEM is 16.3 x
-20.6 m, which is just finer than that in both axes — the mask can answer every
-sub-cell the cut will ever ask about, and a finer one would be answering
-questions nobody asks. 2,809 x 1,891 bits is **664 KB**, and it compresses
-hard because most of the region is solidly one thing or the other.
+── THE PITCH IS CHOSEN TO MATCH ITS CONSUMER, AND THE CONSUMER CHANGED ─────
+It was `--stride 2`, 16.3 x 20.6 m, chosen against the FAR SHORE's cut, which
+refines a 110.01 x 139.15 m cell 6 a side and so asks at 18.34 x 23.19 m. That
+was the right answer for that consumer and the wrong one for the city's.
 
-Full resolution for comparison: 21.2 million bits, 2.65 MB, to serve a
-consumer whose finest question is 18 m.
+The CITY's ground refines its own 53.815 m cell 6 a side, which asks at
+**8.97 x 8.97 m** — finer than a 16.3 m field can answer. So the staircase
+along the city's own waterfront was never the cut's tread. It was the FIELD's,
+showing through a cut that could have drawn it twice as fine. Daniel, on the
+Hunters Point shore at close zoom: *"from far out is way better but close by i
+still have weird pixelazation."*
+
+`--stride 1` is the DEM's own **8.15 x 10.31 m**, which is just finer than
+8.97 in one axis and just coarser in the other — matched, and there is nothing
+past it to have. 5,617 x 3,781 = **21,237,877 answers, 2.66 MB raw and 79,953
+gzipped**: 2.6x the bits of stride 2 for 2.6x the resolution, and still under
+80 KB on the wire because most of the region is solidly one thing or the other.
+
+`COAST_K` is deliberately NOT raised past 6 with it. At 6 the cut asks at
+8.97 m and the field answers at 8.15; at 8 it would ask at 6.73 and the field
+would have to repeat itself. The two are matched and neither leads.
 
 ── WHAT IS ENCODED ──────────────────────────────────────────────────────────
 Row-major from the SOUTH edge north, one bit a node, MSB first within a byte,
 each row padded to a byte boundary so a row is addressable without a divide.
 Bit set means LAND: `z >= 0` on the Mean High Water datum.
 
-  python3 build_landmask.py                 # stride 2, matched to the cut
-  python3 build_landmask.py --stride 1      # 2.65 MB, if a finer cut ever needs it
+  python3 build_landmask.py --stride 1      # the shipped one, 8.15 x 10.31 m
+  python3 build_landmask.py --stride 2      # 16.3 x 20.6 m, the far shore's pitch
 """
 from __future__ import annotations
 
@@ -115,7 +126,7 @@ def arr(query: str, dt: str) -> np.ndarray:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--stride", type=int, default=2)
+    ap.add_argument("--stride", type=int, default=1)
     ap.add_argument("--out", type=pathlib.Path, default=OUT)
     a = ap.parse_args()
 
