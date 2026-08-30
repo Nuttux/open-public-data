@@ -542,14 +542,27 @@ export async function railLayer(
          own start so two segments meeting at a corner do not double up. */
       into = ties;
       liftM = RAIL_TIE_LIFT_M;
+      /* ── AND THIS IS WHY THERE WAS NEVER A LADDER ───────────────────
+         `quad(a, b, nx, ny, w)` offsets BOTH ends by +-(nx, ny) * w/2, so
+         (nx, ny) has to be PERPENDICULAR to a -> b or the four corners come
+         out collinear. A sleeper ran a -> b along the track at (ux, uy) and
+         passed (ux, uy) as the normal as well: parallel, zero area, nothing
+         drawn. Every crosstie in the city was a degenerate sliver, which is
+         exactly what "its just two lines grey in parallel" looks like — the
+         ballast strip and the two rails, and no ties between them, because
+         the ties had no area to rasterise.
+
+         A sleeper lies ACROSS the track. So a -> b runs along the normal for
+         SLEEPER_LEN_M, and the width it is given is its thickness ALONG the
+         track, offset by (ux, uy). */
+      const half = SLEEPER_LEN_M / 2;
       for (let t = SLEEPER_STEP_M * 0.5; t < L; t += SLEEPER_STEP_M) {
         const cx = x0 + ux * t;
         const cy = y0 + uy * t;
-        const sh = SLEEPER_W_M / 2;
         quad(
-          cx - ux * sh, cy - uy * sh,
-          cx + ux * sh, cy + uy * sh,
-          ux, uy, SLEEPER_LEN_M, SLEEPER_C,
+          cx - nx * half, cy - ny * half,
+          cx + nx * half, cy + ny * half,
+          ux, uy, SLEEPER_W_M, SLEEPER_C,
         );
       }
       into = bed;
