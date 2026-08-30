@@ -18705,3 +18705,15 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 .theme-fusion .fx-city-system:last-child { border-right: 0; }
 .theme-fusion .fx-city-system[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+/* WHAT IS IN THE LAYER, under the row that turned it on. It carried the same
+   sentence as a `title` and therefore reached nobody: a tooltip needs a hover,
+   and a reader looking at a map does not hover a button they have just
+   pressed. Sized to sit under the control strip without pushing the canvas. */
+.theme-fusion .fx-city-system-note {
+  margin: 6px 2px 0;
+  max-width: 62ch;
+  font-family: var(--f-sans, system-ui, sans-serif);
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--ink) 68%, transparent);
+}

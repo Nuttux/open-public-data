@@ -107,8 +107,37 @@ const DASH_OFF_M = 7;
    wider than a street — see `rail.ts` §AND A DIAGRAM THE WIDTH OF A STREET IS
    ANOTHER STREET — because a line the same width as the grid it is drawn over
    joins the grid. */
-const DIAGRAM_W_M = 34;
-const DIAGRAM_NARROW_W_M = 10;
+/* ── AND THE DIAGRAM UNDID THE ONE DISTINCTION THIS FILE EXISTS TO MAKE ───
+   The header above says it: *"A map that draws all four alike says San
+   Francisco has 720 km of bike lane."* The real ribbons obey that. The
+   DIAGRAM did not — all four classes went out at one width, with only a tone
+   and a dash to tell them apart — and at the district camera a dash closes up.
+
+   So the diagram said the city has 720 km of bike network. MEASURED against
+   the same centreline file the bikeways are resolved onto: San Francisco has
+   **2,154 km of street**, and
+
+       382 km  a path, a painted lane or a separated way   17.7 % of streets
+       338 km  a SHARED LANE — a road with a bicycle
+               painted on it and no lane at all            15.7 % of streets
+
+   Drawn alike that is a third of every street in the city lit up, which is
+   why Daniel could not tell the bike view from the street view: *"i feel liek
+   between the three views its just making more prominent in each some
+   arteries but the base network is the same"*. He was reading the picture
+   correctly. The picture was wrong.
+
+   Width now carries the class, so the diagram shows what the register
+   actually holds: a real network with a thinner web of markings around it. */
+const DIAGRAM_BY_CLASS: Record<number, number> = {
+  1: 30,   // a path away from traffic
+  2: 22,   // a painted lane
+  3: 9,    // a marking on a road, and drawn as one
+  4: 34,   // physically separated — the strongest thing the register claims
+};
+const DIAGRAM_NARROW_BY_CLASS: Record<number, number> = {
+  1: 9, 2: 7, 3: 3, 4: 10,
+};
 
 const BIKE_RUNG = 6.8;
 /** ahead of the road stack, like the track — see `systems.ts` and `rail.ts` */
@@ -176,11 +205,11 @@ export async function bikewayLayer(
    *  as a diagram at a diagram's width and colour */
   const quad = (
     ax: number, ay: number, bx: number, by: number,
-    w: number, hex: number, dhex: number,
+    w: number, hex: number, dhex: number, cls: number,
   ): void => {
     quadInto(real, ax, ay, bx, by, w, hex);
-    quadInto(wide, ax, ay, bx, by, DIAGRAM_W_M, dhex);
-    quadInto(narrow, ax, ay, bx, by, DIAGRAM_NARROW_W_M, dhex);
+    quadInto(wide, ax, ay, bx, by, DIAGRAM_BY_CLASS[cls] ?? 22, dhex);
+    quadInto(narrow, ax, ay, bx, by, DIAGRAM_NARROW_BY_CLASS[cls] ?? 7, dhex);
   };
 
   /* the file arrives in year order, so the century scrub is a draw range */
@@ -201,7 +230,7 @@ export async function bikewayLayer(
       const L = Math.hypot(bx - ax, by - ay);
       km += L / 1000;
       if (s.c !== 3) {
-        quad(ax, ay, bx, by, w, hex, dhex);
+        quad(ax, ay, bx, by, w, hex, dhex, s.c);
         continue;
       }
       /* the shared lane, dashed along its own length so the rhythm is the
@@ -210,7 +239,7 @@ export async function bikewayLayer(
       const uy = (by - ay) / L;
       for (let t = 0; t < L; t += DASH_ON_M + DASH_OFF_M) {
         const t1 = Math.min(L, t + DASH_ON_M);
-        quad(ax + ux * t, ay + uy * t, ax + ux * t1, ay + uy * t1, w, hex, dhex);
+        quad(ax + ux * t, ay + uy * t, ax + ux * t1, ay + uy * t1, w, hex, dhex, s.c);
       }
     }
   }

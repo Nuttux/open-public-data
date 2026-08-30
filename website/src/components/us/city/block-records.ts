@@ -2010,6 +2010,43 @@ export function threadsAt(
  * grading` on 2,073 blocks tells a reader nothing they could not have
  * guessed, and the rare one is the point.
  */
+/**
+ * `blocks/subjects.json` — WHAT A ROW'S `sm` BIT MEANS.
+ *
+ * `build_index.py` already tags every placed decision with these same forty-one
+ * subjects, and it does it against **the item's own source text** rather than
+ * the shortened line it publishes on the row. Its own note says why: the
+ * published line is a median of 136 characters and the item behind it 520.
+ *
+ * The answer has been riding on every row as `sm`, a bitmask, and the browser
+ * could not read it because this table was never published. So the fiche went
+ * on running the patterns itself over the short line. MEASURED across the
+ * shipped shards: the mask knows a subject for **56,975 rows**; re-running the
+ * patterns here finds **32,142**.
+ *
+ * A bit is a POSITION in that authored list, and the masks in the published
+ * shards are positional, so this is matched by `slug` to the thread carrying
+ * the city-wide shape — never by index into two files that can drift.
+ */
+export interface SubjectsFile {
+  readonly n: number;
+  readonly s: readonly {
+    readonly bit: number;
+    readonly slug: string;
+    readonly l: string;
+    readonly note: string;
+  }[];
+}
+
+let subjectsPromise: Promise<SubjectsFile | null> | null = null;
+
+export function loadSubjects(): Promise<SubjectsFile | null> {
+  if (!subjectsPromise) {
+    subjectsPromise = loadSoft<SubjectsFile>(`${BASE}/subjects.json`);
+  }
+  return subjectsPromise;
+}
+
 export interface ThreadHere {
   readonly thread: ThreadRecord;
   /** the records of the unit on screen that this pattern matched */
@@ -2081,73 +2118,95 @@ export function threadRows(
     .sort((a, b) => b.y - a.y || (b.d ?? "").localeCompare(a.d ?? ""));
 }
 
+/**
+ * Is subject `bit` set on this row's mask?
+ *
+ * DIVISION AND MODULO, NOT `&` AND `<<`. JavaScript's bitwise operators coerce
+ * to int32 and there are 41 subjects, so `sm & (1 << 34)` silently reads bit 2
+ * instead of bit 34. Four subjects sit past bit 32 — `Liquor licences` among
+ * them, one of the busiest in the record — and they would have gone missing
+ * without a single error anywhere.
+ */
+function subjectSet(sm: number, bit: number): boolean {
+  return Math.floor(sm / Math.pow(2, bit)) % 2 === 1;
+}
+
 export function threadsIn(
   file: ThreadsFile | null,
+  subjects: SubjectsFile | null,
   rows: readonly BlockDecision[],
   minHits = 2,
 ): ThreadHere[] {
-  if (!file || rows.length === 0) return [];
+  if (!file || !subjects || rows.length === 0) return [];
   const seen = new Set<string>();
   const uniq: BlockDecision[] = [];
   for (const r of rows) {
     const t = (r.t ?? "").trim();
     if (!t) continue;
-    const key = `${r.u ?? ""} ${t.slice(0, 120)}`;
+    const key = `${r.u ?? ""} ${t.slice(0, 120)}`;
     if (seen.has(key)) continue;
     seen.add(key);
     uniq.push(r);
   }
+
+  /* ── READ, NOT RE-MATCHED ──────────────────────────────────────────────
+     This compiled the shipped patterns and ran them here, over `t`. `t` is the
+     SHORTENED line — a median of 136 characters against the 520 of the item
+     behind it — so a subject word past the cut was invisible and the count
+     under a chip was of a fragment rather than of the record.
+
+     `build_index.py` already tags every placed decision against the item's own
+     source text and carries the answer on the row as `sm`. MEASURED over the
+     shipped shards: the mask knows a subject for 56,975 rows where re-matching
+     here found 32,142. Same forty-one subjects, same patterns, same author —
+     read at full length instead of at 136 characters.
+
+     Joined by SLUG: `subjects.json` is ordered by bit and `threads.json` by
+     size, so joining them on position would relabel every subject. */
+  const bySlug = new Map(file.threads.map((t) => [t.s, t]));
+  const buckets = new Map<string, BlockDecision[]>();
+  for (const r of uniq) {
+    const sm = r.sm;
+    if (!sm) continue;
+    for (const sub of subjects.s) {
+      if (!subjectSet(sm, sub.bit)) continue;
+      const cur = buckets.get(sub.slug);
+      if (cur) cur.push(r);
+      else buckets.set(sub.slug, [r]);
+    }
+  }
+
   const out: ThreadHere[] = [];
-  for (const th of file.threads) {
-    /* NEWEST FIRST, by the volume's own date, and it has to be SOME date
-       order rather than the shard's.
-       The Board printed most items TWICE — a first reading and a final
-       passage, on two pages weeks or months apart — and the shards hand them
-       over in file order, so `Blasting Permits — Flinn & Treacy` on 15th
-       Street arrived as 13 December above 21 February. Two identical
-       paragraphs in a row read as a duplicate; the same two in date order
-       read as what they are, which is the Board coming back to it.
-       Descending, so a subject opens on what happened here lately, which is
-       the order the rail and every opened decade now use. */
-    const hits = uniq
-      .filter((r) => subjectHit(file, th, r))
+  for (const [slug, hits] of buckets) {
+    const thread = bySlug.get(slug);
+    if (!thread || hits.length < minHits) continue;
+    /* NEWEST FIRST, by the volume's own date. The Board printed most items
+       twice — a first reading and a final passage weeks apart — and the shards
+       hand them over in file order, so two identical paragraphs arrived out of
+       sequence and read as a duplicate. */
+    const sorted = hits
       .slice()
       .sort((a, b) => b.y - a.y || (b.d ?? "").localeCompare(a.d ?? ""));
-    if (hits.length < minHits) continue;
     let y0 = Infinity;
     let y1 = -Infinity;
-    for (const h of hits) {
+    for (const h of sorted) {
       if (h.y < y0) y0 = h.y;
       if (h.y > y1) y1 = h.y;
     }
-    out.push({ thread: th, rows: hits, y0, y1 });
+    out.push({ thread, rows: sorted, y0, y1 });
   }
-  /* ── RANKED BY LIFT, NOT BY RARITY ────────────────────────────────────
+
+  /* ── RANKED BY LIFT, DAMPED ────────────────────────────────────────────
      This sorted RAREST CITY-WIDE first, on the reasoning that a block on
-     `Paving and grading` like 2,072 others learns nothing from saying so.
-     That was right about the problem and the fix over-corrected: it dropped
-     local strength from the ranking altogether. MEASURED on block 3752, which
-     holds 33 horse permits and 27 liquor licences, it led with `Streets
-     closed for good (2)`.
+     `Paving and grading` like 2,072 others learns nothing from saying so. Right
+     about the problem, and the fix over-corrected: it dropped local strength
+     from the ranking altogether, and on block 3752 — 33 horse permits and 27
+     liquor licences — it led with `Streets closed for good (2)`.
 
-     Lift is the share here over the share across the map. It answers the
-     question a reader actually has — what is this place unusual for — and it
-     cannot surface something the place barely has, because the local share is
-     the numerator. On 3752 it gives `Shelters and homelessness (5)` first,
-     which is true and unobvious, and keeps the horses and the liquor.
-
-     Ties break on the local count, so two subjects equally unusual here are
-     ordered by how much of this place they actually are.
-
-     ── AND DAMPED, BECAUSE LIFT IS LOUD AT SMALL n ─────────────────────
-     A subject with two hits and a small city-wide total gets an enormous
-     ratio off almost nothing: Haight Ashbury came back with `Street name
-     changes (2)` in second place, ahead of things it holds thirty of.
-     Multiplying by `n / (n + 3)` costs a 2-hit subject 60 % of its score, a
-     9-hit one 25 % and a 30-hit one 9 %, so a genuine oddity still reaches
-     the top and a coincidence drops a slot or two. MEASURED at k = 0, 3 and
-     6: at 6 the ranking flattens back into a plain count, at 3 the only
-     movement is the thin ones falling behind the solid ones. */
+     Lift is the share here over the share across the map, damped by
+     `n / (n + 3)` because lift is loud at small n: two hits on a rare subject
+     was outranking thirty on a real one. Measured at k = 0, 3 and 6 — at 6 the
+     ranking flattens back into a plain count. Ties break on the local count. */
   const total = file.n_records || 1;
   const DAMP = 3;
   const score = (h: ThreadHere) => {

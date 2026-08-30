@@ -19,6 +19,7 @@ import {
   streetKeyFromFile,
   streetLabel,
   threadsIn,
+  type SubjectsFile,
   type BlockDecision,
   type ThreadRecord,
   type ThreadsFile,
@@ -51,6 +52,9 @@ function row(p: Partial<BlockDecision> & { y: number }): BlockDecision {
     u: p.u ?? `journalofproceed25sanfrich/${seq}`,
     t: p.t ?? "A line the volume prints.",
     ...(p.g ? { g: p.g } : {}),
+    /* the pipeline's subject bitmask — `threadsIn` reads this and never the
+       text, so a row without it carries no subject at all */
+    ...(p.sm ? { sm: p.sm } : {}),
   };
 }
 
@@ -687,18 +691,19 @@ describe("blockPlaceName says where you are without a filing number (Block U1)",
 /**
  * `threadsIn` — the subjects under a block, a street or a door.
  *
- * It runs `build_threads.py`'s own patterns over the rows in hand, so the
- * number under a chip is the number of records a press will show. Three rules
- * carry the weight, and each is here because getting it wrong is a lie on
- * screen rather than a crash:
+ * IT NO LONGER MATCHES ANYTHING. It used to compile the shipped patterns and
+ * run them over `t`, the shortened line — a median of 136 characters against
+ * the 520 of the item behind it — so a subject word past the cut was invisible.
+ * `build_index.py` already tags every placed decision against the item's own
+ * source text and carries the answer on the row as `sm`. MEASURED over the
+ * shipped shards: the mask knows a subject for 56,975 rows where re-matching
+ * in the browser found 32,142.
  *
- *   · a subject has to land MORE THAN ONCE, or a single paving record makes a
- *     block "about" paving;
- *   · a line printed on two pages is two records, but the SAME line reached
- *     twice from two shards is one — `(u, t[:120])`, the build's own key;
- *   · date order, because the Board printed most items twice, months apart,
- *     and file order put December above February.
+ * So these test the READING of that mask, and the three rules that survived:
+ * a subject has to land more than once, rows come back newest first, and the
+ * ranking is lift damped at small n.
  */
+/** a thread record — the CITY-WIDE half: the note, the span, the shape */
 function thread(p: Partial<ThreadRecord> & { l: string; p: string }): ThreadRecord {
   return {
     s: p.l.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
@@ -717,94 +722,138 @@ function thread(p: Partial<ThreadRecord> & { l: string; p: string }): ThreadReco
 }
 
 function file(...threads: ThreadRecord[]): ThreadsFile {
-  return { n_records: 0, n_tagged: 0, threads };
+  return { n_records: 1000, n_tagged: 0, threads };
+}
+
+function subjectsFile(...labels: string[]): SubjectsFile {
+  return {
+    n: labels.length,
+    s: labels.map((l, i) => ({
+      bit: i,
+      slug: l.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      l,
+      note: "A note in plain English.",
+    })),
+  };
+}
+
+/** a row carrying subjects by BIT NUMBER, the way the pipeline writes them */
+function marked(y: number, bits: number[], extra: Partial<BlockDecision> = {}) {
+  return row({
+    y,
+    ...extra,
+    sm: bits.reduce((m, b) => m + Math.pow(2, b), 0),
+  } as Partial<BlockDecision> & { y: number });
 }
 
 describe("threadsIn", () => {
-  const STABLES = thread({ l: "Stables", p: "\\bstable\\b", n: 900 });
-  const PAVING = thread({ l: "Paving and grading", p: "\\bpaving\\b", n: 1429 });
+  const SUBS = subjectsFile("Stables", "Paving and grading", "Liquor licences");
+  const STABLES = thread({ l: "Stables", p: "unused", n: 900 });
+  const PAVING = thread({ l: "Paving and grading", p: "unused", n: 1429 });
 
-  it("counts only the rows in hand", () => {
-    const rows = [
-      row({ y: 1913, t: "Granting a stable for 22 horses on Tehama street." }),
-      row({ y: 1916, t: "Permission is hereby denied for a stable at 1237 Folsom." }),
-    ];
-    const out = threadsIn(file(STABLES), rows);
+  it("counts the subjects the pipeline marked, not words in the line", () => {
+    const rows = [marked(1913, [0]), marked(1916, [0])];
+    const out = threadsIn(file(STABLES), SUBS, rows);
     expect(out).toHaveLength(1);
+    expect(out[0].thread.l).toBe("Stables");
     expect(out[0].rows).toHaveLength(2);
     expect(out[0].y0).toBe(1913);
     expect(out[0].y1).toBe(1916);
   });
 
+  /* ── THE BUG THIS RULES OUT ────────────────────────────────────────────
+     JavaScript's bitwise operators coerce to int32 and there are 41 subjects,
+     so `sm & (1 << 34)` silently reads bit 2 instead of bit 34. Four subjects
+     sit past bit 32, `Liquor licences` among them. */
+  it("reads a subject past bit 32", () => {
+    const many = subjectsFile(
+      ...Array.from({ length: 41 }, (_, i) => (i === 40 ? "Stables" : `S${i}`)),
+    );
+    const rows = [marked(1913, [40]), marked(1916, [40])];
+    const out = threadsIn(file(STABLES), many, rows);
+    expect(out.map((h) => h.thread.l)).toEqual(["Stables"]);
+    expect(out[0].rows).toHaveLength(2);
+  });
+
+  it("does not confuse bit 34 with bit 2", () => {
+    const many = subjectsFile(
+      ...Array.from({ length: 41 }, (_, i) => (i === 2 ? "Stables" : `S${i}`)),
+    );
+    expect(threadsIn(file(STABLES), many, [marked(1913, [34]), marked(1916, [34])]))
+      .toEqual([]);
+  });
+
   /* one paving record on a block is not what the block is about */
-  it("says nothing about a subject that lands once", () => {
-    const rows = [row({ y: 1914, t: "Ordering the paving of Noe street." })];
-    expect(threadsIn(file(PAVING), rows)).toEqual([]);
+  it("says nothing about a subject marked once", () => {
+    expect(threadsIn(file(PAVING), SUBS, [marked(1914, [1])])).toEqual([]);
+  });
+
+  it("gives a row all the subjects it carries", () => {
+    const rows = [marked(1914, [0, 1]), marked(1915, [0, 1])];
+    expect(threadsIn(file(STABLES, PAVING), SUBS, rows).map((h) => h.thread.l).sort())
+      .toEqual(["Paving and grading", "Stables"]);
+  });
+
+  it("puts the rows in date order, newest first", () => {
+    const rows = [
+      marked(1909, [0], { d: "02-21" }),
+      marked(1909, [0], { d: "12-13" }),
+      marked(1928, [0], { d: "04-30" }),
+    ];
+    expect(
+      threadsIn(file(STABLES), SUBS, rows)[0].rows.map((r) => `${r.y}-${r.d}`),
+    ).toEqual(["1928-04-30", "1909-12-13", "1909-02-21"]);
   });
 
   /* the same line reached from two shards is one record, not two */
   it("folds a line that arrives twice from the same page", () => {
     const t = "Granting a stable for 22 horses on Tehama street.";
     const rows = [
-      row({ y: 1913, t, u: "journalofproceed1913sanfrich/569" }),
-      row({ y: 1913, t, u: "journalofproceed1913sanfrich/569" }),
-      row({ y: 1916, t: "A stable at 1237 Folsom street." }),
+      marked(1913, [0], { t, u: "journalofproceed1913sanfrich/569" }),
+      marked(1913, [0], { t, u: "journalofproceed1913sanfrich/569" }),
+      marked(1916, [0], { t: "A stable at 1237 Folsom street." }),
     ];
-    expect(threadsIn(file(STABLES), rows)[0].rows).toHaveLength(2);
+    expect(threadsIn(file(STABLES), SUBS, rows)[0].rows).toHaveLength(2);
   });
 
-  /* two PRINTINGS are two records — the Board read most items twice */
-  it("keeps the same line printed on two different pages", () => {
-    const t = "Granting a stable for 22 horses on Tehama street.";
+  /* ── LIFT, NOT RARITY ──────────────────────────────────────────────────
+     Ranked rarest-city-wide first, this led with a two-hit subject over a
+     thirty-hit one. Lift is the share here over the share across the map. */
+  /* the rule has two halves and they pull against each other, so both are
+     asserted: lift surfaces what a place is unusual FOR, and the damping keeps
+     a subject that is most of the place from being buried under a rarity */
+  it("lets a rare subject win on a small share of the place", () => {
+    const rare = thread({ l: "Stables", p: "unused", n: 50 });
     const rows = [
-      row({ y: 1913, t, u: "journalofproceed1913sanfrich/569" }),
-      row({ y: 1913, t, u: "journalofproceed1913sanfrich/631" }),
+      ...Array.from({ length: 8 }, (_, i) => marked(1910 + i, [1])),
+      marked(1920, [0]),
+      marked(1921, [0]),
     ];
-    expect(threadsIn(file(STABLES), rows)[0].rows).toHaveLength(2);
+    expect(threadsIn(file(rare, PAVING), SUBS, rows)[0].thread.l).toBe("Stables");
   });
 
-  /* newest first, like the rail and every opened decade — a reader opening a
-     subject wants what happened here lately. It only has to be SOME date
-     order rather than the shard's: the Board printed most items twice, and in
-     file order the two printings landed next to each other out of sequence
-     and read as a duplicate. */
-  it("puts them in date order, newest first", () => {
+  it("does not let a rarity bury what the place is mostly about", () => {
     const rows = [
-      row({ y: 1909, d: "02-21", t: "Blasting permit for a stable shed." }),
-      row({ y: 1909, d: "12-13", t: "Blasting permit for a stable yard." }),
-      row({ y: 1928, d: "04-30", t: "Blasting permit near a stable." }),
+      ...Array.from({ length: 8 }, (_, i) => marked(1910 + i, [1])),
+      marked(1920, [0]),
+      marked(1921, [0]),
     ];
-    expect(threadsIn(file(STABLES), rows)[0].rows.map((r) => `${r.y}-${r.d}`))
-      .toEqual(["1928-04-30", "1909-12-13", "1909-02-21"]);
+    /* STABLES at 900 city-wide is not rare enough for two hits to outrank
+       eight — the damping is what makes that come out this way */
+    expect(threadsIn(file(STABLES, PAVING), SUBS, rows)[0].thread.l)
+      .toBe("Paving and grading");
   });
 
-  /* rarest first: `Libraries` on 49 blocks is the reason a chip exists and
-     `Paving and grading` on 2,073 is not */
-  it("offers the rarest subject first", () => {
-    const rows = [
-      row({ y: 1914, t: "Ordering the paving of Noe street." }),
-      row({ y: 1915, t: "Ordering the paving of Castro street." }),
-      row({ y: 1913, t: "A stable on Tehama street." }),
-      row({ y: 1916, t: "A stable at 1237 Folsom street." }),
-    ];
-    expect(threadsIn(file(PAVING, STABLES), rows).map((h) => h.thread.l))
-      .toEqual(["Stables", "Paving and grading"]);
+  it("has nothing to say with no file, no table or no rows", () => {
+    expect(threadsIn(null, SUBS, [marked(1913, [0])])).toEqual([]);
+    expect(threadsIn(file(STABLES), null, [marked(1913, [0])])).toEqual([]);
+    expect(threadsIn(file(STABLES), SUBS, [])).toEqual([]);
   });
 
-  /* one engine rejecting a pattern costs that subject and nothing else */
-  it("survives a pattern this engine cannot compile", () => {
-    const bad = thread({ l: "Broken", p: "(?<broken" });
-    const rows = [
-      row({ y: 1913, t: "A stable on Tehama street." }),
-      row({ y: 1916, t: "A stable at 1237 Folsom street." }),
-    ];
-    expect(threadsIn(file(bad, STABLES), rows).map((h) => h.thread.l))
-      .toEqual(["Stables"]);
-  });
-
-  it("has nothing to say with no file or no rows", () => {
-    expect(threadsIn(null, [row({ y: 1913 })])).toEqual([]);
-    expect(threadsIn(file(STABLES), [])).toEqual([]);
+  /* a row the pipeline could not place under any subject — 44 % of them */
+  it("ignores a row with no mask", () => {
+    expect(threadsIn(file(STABLES), SUBS, [row({ y: 1913 }), row({ y: 1914 })]))
+      .toEqual([]);
   });
 });
 

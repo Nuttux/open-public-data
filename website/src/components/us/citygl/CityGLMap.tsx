@@ -111,11 +111,9 @@ import type { SearchHit } from "@/lib/us/city-search";
 import {
   blockPlaceName,
   ficheParams,
-  loadThreads,
   sourceHref,
   stripFileNumber,
   usdShort,
-  type ThreadsFile,
   loadBlockIndex,
   loadBlockRecord,
   readFicheParams,
@@ -255,7 +253,6 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   /* the listener is made once, so what it reads has to be a ref and not a
      value captured on the render that made it */
   const themesRef = useRef<ThemeEntry[] | null>(null);
-  const threadsRef = useRef<ThreadsFile | null>(null);
   const yearRef = useRef<number | null>(null);
   const [markCard, setMarkCard] = useState<{
     hit: MarkHit;
@@ -1510,48 +1507,39 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         d.y >= y - half && d.y <= y + half,
     );
     if (!rows.length) return;
-    /* ── WHAT EACH LINE IS ABOUT, IN WORDS ───────────────────────────────
-       The card was printing the Clerk's own sentence and nothing else, cut
-       off mid-clause: "Authorizing the Department of Homelessness and
-       Supportive Housing ("HSH") to execute a Standard Agreement with the
-       California Department of Housing and Community Development having
-       anticipated revenue…". Nobody reads that, and nobody clicks through it.
+    /* ── THE SUBJECT LABEL IS PULLED, AND THE MEASUREMENT IS WHY ────────
+       The card printed the rarest fiche subject from `sm` above each line.
+       `sm` is matched in the pipeline against the item's FULL text; the shard
+       carries a FRAGMENT of that item — median 154 characters, often mid
+       sentence. The two describe different things, so they routinely
+       disagree, and the disagreement is visible to the reader.
 
-       `sm` is on every decision already — the forty-one fiche subjects,
-       matched in the pipeline against the item's FULL text, so this is a
-       lookup and not a re-derivation. 71% of themed rows carry at least one.
+       MEASURED over all 16,468 themed decisions: a label was printed on
+       11,671 of them, and on 7,127 — 61% — no part of the line beneath it
+       supports the label. "Street Lights — Van Dyke avenue and Keith street"
+       came up under the heading "Libraries". That is not a rough summary, it
+       is the card asserting something the reader can see is wrong, and it is
+       worse than saying nothing.
 
-       THE RAREST MATCH WINS, not the first bit. A landmark designation also
-       matches "Environmental review", because the CEQA clause is in every
-       modern ordinance — true, and the least interesting thing about it.
-       Ranking by the thread's own published count picks "Landmarks" over it. */
-    const threads = threadsRef.current
-      ?? (threadsRef.current = await loadThreads().catch(() => null));
-    const says = (d: BlockDecision): string | null => {
-      const sm = d.sm ?? 0;
-      if (!sm || !threads) return null;
-      let best: { l: string; n: number } | null = null;
-      for (const th2 of threads.threads) {
-        const bit = th2.bit ?? -1;
-        if (bit < 0 || Math.floor(sm / 2 ** bit) % 2 !== 1) continue;
-        if (!best || th2.n < best.n) best = { l: th2.l, n: th2.n };
-      }
-      /* NOT WHEN IT ONLY REPEATS THE CARD'S OWN TITLE. A landmark press
-         matched the thread "Landmarks" under a card headed "Landmarks & old
-         buildings", which spends a line saying nothing. Dropped only when the
-         thread is the LESS specific of the two — "Housing bonds" under a
-         "Housing" card is kept, because it is the more specific. */
-      const l = best?.l ?? null;
-      const card = th?.label ?? "";
-      if (l && card.toLowerCase().includes(l.toLowerCase())) return null;
-      return l;
-    };
+       Guarding it — printing the label only where the line does support it —
+       was tried on paper and is backwards: it would keep the label on the 39%
+       where the line already says it and drop it on the 61% where a reader
+       actually needs one.
+
+       The label comes back when the shard carries the CLASSIFICATION, which
+       is one statement about the record rather than a pattern to be hunted
+       for in a fragment: `sf_bos_classification.csv` has a topic, subtopic
+       and action for all 124,284 records, 99.3% of decisions, computed
+       against the full text. Checked on the two lines above: the street-work
+       line classifies as `the-street / street-works / appropriated`, which is
+       exactly what it is. That is a `build_index.py` join and a shard
+       rebuild. */
     setMarkCard({
       hit,
       label: th?.label ?? "",
       ink: THEME_INK[hit.bit % THEME_INK.length],
       place: blockPlaceName(rec.streets) ?? index.b[hit.block] ?? "",
-      rows: rows.map((d) => ({ d, says: says(d) })),
+      rows: rows.map((d) => ({ d, says: null })),
       year: y,
     });
   }, []);
@@ -1972,6 +1960,24 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 </button>
               ))}
             </div>
+            {/* ── AND THE CONTROL SAYS WHAT IS IN THE LAYER ────────────────
+                Every system already carries a `note` giving what the layer
+                holds and how much of it, and the note reached the reader ONLY
+                as a `title` — a browser tooltip, which on a map nobody hovers
+                and on a touch screen does not exist. So a reader could turn a
+                network on and had no way at all to find out what was in it.
+                Daniel: *"whare are you including in those maps? whats the
+                data? is it supposed to be so large?"* — three questions the
+                page had the answers to and never showed.
+
+                It is written under the row, only while a system is chosen,
+                because it is the answer to a question the reader has just
+                asked and noise before that. */}
+            {system !== null ? (
+              <p className="fx-city-system-note">
+                {CITY_SYSTEMS.find((x) => x.key === system)?.note}
+              </p>
+            ) : null}
 
             {/* ── PLAY, WHICH IS WHAT MAKES IT A CITY BEING BUILT ────────
                 Dragging the rail hands out WHOLE years, and every layer that

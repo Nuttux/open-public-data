@@ -120,6 +120,7 @@ import {
   loadHoodRecords,
   loadStreetIndex,
   ficheOpener,
+  loadSubjects,
   loadThreads,
   threadRows,
   threadsIn,
@@ -127,6 +128,7 @@ import {
   streetRecordCount,
   type StreetIndex,
   type FicheOpener,
+  type SubjectsFile,
   type ThreadHere,
   type ThreadsFile,
   type HoodRecords,
@@ -2256,6 +2258,9 @@ export default function CityBlockPanel({
      as the rest: a missing file renders the panel exactly as it read before
      `Subjects` existed. */
   const [threads, setThreads] = useState<ThreadsFile | null>(null);
+  /* 6 KB — the table that says what a row's subject bitmask means. Without it
+     the masks on every row are unreadable and the section draws nothing. */
+  const [subjects2, setSubjects2] = useState<SubjectsFile | null>(null);
   /* The T0 index, already fetched and memoised by the map. It is read for ONE
      number: the last year the shipped shards actually place anything, which is
      what the rail's own treatment follows. */
@@ -2280,6 +2285,9 @@ export default function CityBlockPanel({
     });
     void loadThreads().then((th) => {
       if (live) setThreads(th);
+    });
+    void loadSubjects().then((sj) => {
+      if (live) setSubjects2(sj);
     });
     /* `loadBlockIndex` rejects rather than failing soft, and a panel is not
        the right place to surface that: the map has already reported it. A
@@ -2548,8 +2556,8 @@ const onHood = unit.kind === "hood";
      count of it would be a count of twelve rows a decade wearing the
      neighbourhood's name. See `threadsIn`'s doc comment. */
   const subjects = useMemo(
-    () => (onHood ? [] : threadsIn(threads, here)),
-    [threads, here, onHood],
+    () => (onHood ? [] : threadsIn(threads, subjects2, here)),
+    [threads, subjects2, here, onHood],
   );
 
   /* The streets around here, each with what it actually holds. The count is

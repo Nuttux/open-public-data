@@ -56,9 +56,10 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
     label: "Public transport",
     layers: ["rail", "rail-overlay", "rail-history"],
     note:
-      "cable, streetcar and light rail, each drawn from the year the city is " +
-      "recorded paying to lay it — and the routes the Board wrote down that " +
-      "no longer exist, which appear and then are taken up again.",
+      "69 km of cable, streetcar and light rail — 3 % of San Francisco's " +
+      "2,154 km of street. Each piece is drawn from the year the city is " +
+      "recorded paying to lay it, and the routes the Board wrote down that no " +
+      "longer exist appear and are then taken up again.",
     retracts: true,
     overlay: true,
   },
@@ -67,10 +68,11 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
     label: "Bike network",
     layers: ["bikeways", "bikeway-overlay"],
     note:
-      "720 km of bikeway, each piece carrying the year the city installed it " +
-      "-- one of the few registers on this map that dates itself. 61 dated " +
-      "pieces by 1980, 1,355 by 2005, 4,306 today. A shared lane is drawn " +
-      "dashed because it is a marking on a road and not a lane.",
+      "382 km of path, painted lane and separated way — 18 % of the city's " +
+      "streets — plus 338 km of SHARED LANE, which is a road with a bicycle " +
+      "painted on it and no lane at all, drawn thin and dashed because that " +
+      "is what it is. Each piece carries the year the city installed it, " +
+      "which almost nothing else on this map does.",
     retracts: false,
     overlay: true,
   },
@@ -79,9 +81,9 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
     label: "Streets",
     layers: ["streets", "street-detail", "street-markings", "street-uncovered"],
     note:
-      "the roadway as it arrives, from the Board's Journal and the earliest " +
-      "building on each frontage. A street exists before its first house, so " +
-      "these dates run late.",
+      "2,154 km of street, arriving as the record dates it: the Board's " +
+      "Journal and the earliest building on each frontage. A street exists " +
+      "before its first house, so these dates run late.",
     retracts: false,
   },
 ] as const;
