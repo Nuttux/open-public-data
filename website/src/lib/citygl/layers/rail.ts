@@ -159,7 +159,32 @@ const RAIL_STEEL_LIFT_M = 0.2;
  * backend, and without the clearance the terrain's own chord eats the track
  * on exactly the hills a cable car climbs.
  */
-const RAIL_RUNG = 3.5;
+/* ── AND THE ROAD'S OWN SURFACES WERE IN FRONT OF THE TRACK ───────────────
+ * `engine.ts` seats every `userData.wash` mesh toward the eye by
+ * `2.5 + 0.25 * renderOrder`. At 3.5 the rail sat at 3.375 while the
+ * carriageway sits at 3.0, the crossings at 3.5 and the centreline, kerbs and
+ * markings at 3.75 and 4.0 -- so the road was drawn in front of the steel and
+ * the track was painted over along most of its length.
+ *
+ * This took four sessions to see because the instrument was lying. Hiding a
+ * layer and differencing the frame is the right measurement, but a camera move
+ * REBUILDS layers and puts them back: measured, 253 of 2,218 meshes were
+ * visible again 3.5 s after being hidden, and those 253 were precisely
+ * `streets`, `street-uncovered` and `street-markings`. So every run that
+ * concluded "hiding the roads changes nothing" had never hidden the roads.
+ * `raildiff.mjs` now re-applies a hide after the settle and refuses to be
+ * trusted unless it verifies that it held.
+ *
+ * At 6.5 the bed sits at 4.125 and the steel at 4.15, in front of everything
+ * the road lays down. Cable camera 67 px -> 238, T Third 101 -> 117.
+ *
+ * BE HONEST ABOUT WHAT THIS COSTS: the note above wants the track "just above
+ * the crosswalks and below the kerb", and the kerb is at `street-detail`'s 6,
+ * so there is no gap left to sit in and the steel now passes in front of a
+ * kerb it should duck under. A kerb crossed by a rail is a smaller error than
+ * a railway that cannot be seen at all, and this is that trade taken
+ * deliberately rather than a ladder read wrongly a second time. */
+const RAIL_RUNG = 6.5;
 
 /**
  * ── EVERY WIDTH BELOW WAS RE-DERIVED FROM THE CAMERAS, NOT NUDGED ───────
