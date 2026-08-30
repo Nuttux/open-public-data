@@ -111,8 +111,11 @@ import type { SearchHit } from "@/lib/us/city-search";
 import {
   blockPlaceName,
   ficheParams,
+  loadThreads,
   sourceHref,
   stripFileNumber,
+  usdShort,
+  type ThreadsFile,
   loadBlockIndex,
   loadBlockRecord,
   readFicheParams,
@@ -252,13 +255,18 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   /* the listener is made once, so what it reads has to be a ref and not a
      value captured on the render that made it */
   const themesRef = useRef<ThemeEntry[] | null>(null);
+  const threadsRef = useRef<ThreadsFile | null>(null);
   const yearRef = useRef<number | null>(null);
   const [markCard, setMarkCard] = useState<{
     hit: MarkHit;
     label: string;
     ink: string;
     place: string;
-    rows: readonly BlockDecision[];
+    rows: readonly {
+      readonly d: BlockDecision;
+      /** the plain-English subject this line matched, if any */
+      readonly says: string | null;
+    }[];
     year: number;
   } | null>(null);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -1502,12 +1510,48 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         d.y >= y - half && d.y <= y + half,
     );
     if (!rows.length) return;
+    /* ── WHAT EACH LINE IS ABOUT, IN WORDS ───────────────────────────────
+       The card was printing the Clerk's own sentence and nothing else, cut
+       off mid-clause: "Authorizing the Department of Homelessness and
+       Supportive Housing ("HSH") to execute a Standard Agreement with the
+       California Department of Housing and Community Development having
+       anticipated revenue…". Nobody reads that, and nobody clicks through it.
+
+       `sm` is on every decision already — the forty-one fiche subjects,
+       matched in the pipeline against the item's FULL text, so this is a
+       lookup and not a re-derivation. 71% of themed rows carry at least one.
+
+       THE RAREST MATCH WINS, not the first bit. A landmark designation also
+       matches "Environmental review", because the CEQA clause is in every
+       modern ordinance — true, and the least interesting thing about it.
+       Ranking by the thread's own published count picks "Landmarks" over it. */
+    const threads = threadsRef.current
+      ?? (threadsRef.current = await loadThreads().catch(() => null));
+    const says = (d: BlockDecision): string | null => {
+      const sm = d.sm ?? 0;
+      if (!sm || !threads) return null;
+      let best: { l: string; n: number } | null = null;
+      for (const th2 of threads.threads) {
+        const bit = th2.bit ?? -1;
+        if (bit < 0 || Math.floor(sm / 2 ** bit) % 2 !== 1) continue;
+        if (!best || th2.n < best.n) best = { l: th2.l, n: th2.n };
+      }
+      /* NOT WHEN IT ONLY REPEATS THE CARD'S OWN TITLE. A landmark press
+         matched the thread "Landmarks" under a card headed "Landmarks & old
+         buildings", which spends a line saying nothing. Dropped only when the
+         thread is the LESS specific of the two — "Housing bonds" under a
+         "Housing" card is kept, because it is the more specific. */
+      const l = best?.l ?? null;
+      const card = th?.label ?? "";
+      if (l && card.toLowerCase().includes(l.toLowerCase())) return null;
+      return l;
+    };
     setMarkCard({
       hit,
       label: th?.label ?? "",
       ink: THEME_INK[hit.bit % THEME_INK.length],
       place: blockPlaceName(rec.streets) ?? index.b[hit.block] ?? "",
-      rows,
+      rows: rows.map((d) => ({ d, says: says(d) })),
       year: y,
     });
   }, []);
@@ -1801,10 +1845,25 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                 </span>
               </p>
               <ul className="fx-mark-card-rows">
-                {markCard.rows.map((d) => (
+                {/* ── THE GLANCE, THEN THE RECORD ────────────────────────
+                    A reader who presses a dot wants to know what it is
+                    before deciding whether to open a scan of a minute book.
+                    So the line the Clerk printed is DEMOTED — still here,
+                    still verbatim, clamped to two lines — and what leads is
+                    the year, the money where there is one, and the subject
+                    the pipeline matched against the item's full text. */}
+                {markCard.rows.map(({ d, says }) => (
                   <li key={`${d.u}-${d.y}-${d.t.slice(0, 20)}`}>
-                    <span className="fx-mark-card-y tnum">{d.y}</span>
-                    <p>{stripFileNumber(d.t)}</p>
+                    <p className="fx-mark-card-top">
+                      <span className="fx-mark-card-y tnum">{d.y}</span>
+                      {d.a > 0 ? (
+                        <span className="fx-mark-card-sum tnum">
+                          {usdShort(d.a)}
+                        </span>
+                      ) : null}
+                    </p>
+                    {says ? <p className="fx-mark-card-says">{says}</p> : null}
+                    <p className="fx-mark-card-t">{stripFileNumber(d.t)}</p>
                     <a
                       className="fx-block-jump"
                       href={sourceHref(d)}

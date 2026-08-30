@@ -17675,13 +17675,41 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   padding: 10px 0;
   border-top: 1px solid var(--rule);
 }
-.theme-fusion .fx-mark-card-rows > li p {
-  margin: 2px 0 4px;
-  font: 13px/1.5 var(--f-sans, system-ui);
+/* the glance: year on the left, the money on the right where there is one —
+   only 8% of these lines carry a printed figure, so the row cannot be built
+   around it and it has to sit out of the way when it is absent */
+.theme-fusion .fx-mark-card-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0;
 }
 .theme-fusion .fx-mark-card-y {
-  font: 600 12px/1 var(--f-mono, ui-monospace, monospace);
+  font: 600 13px/1 var(--f-mono, ui-monospace, monospace);
+  color: var(--ink);
+}
+.theme-fusion .fx-mark-card-sum {
+  font: 600 13px/1 var(--f-mono, ui-monospace, monospace);
+  color: var(--ink);
+}
+/* what the line is ABOUT, which is the thing a reader is deciding on */
+.theme-fusion .fx-mark-card-says {
+  margin: 5px 0 3px;
+  font: 600 14px/1.35 var(--f-sans, system-ui);
+  color: var(--ink);
+}
+/* the Clerk's own sentence, kept verbatim and kept SMALL: it is the evidence,
+   not the headline, and at full length it is what made nobody read the card */
+.theme-fusion .fx-mark-card-t {
+  margin: 0 0 5px;
+  font: 12px/1.45 var(--f-sans, system-ui);
   color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .theme-fusion .fx-mark-card-rows .fx-block-jump { font-size: 12px; }
 

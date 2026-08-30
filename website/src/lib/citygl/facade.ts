@@ -409,9 +409,44 @@ export interface FacadeAtlas {
  */
 const FACADE_MEAN = 0.84;
 
+/**
+ * HOW DEEP A PAINTED OPENING SITS, AND IT WAS A FIFTH OF A REAL ONE.
+ *
+ * MEASURED off the running page, before this existed: the eight tiles averaged
+ * 215-235 of 255 and the darkest texel in any of them was **147**. So a window
+ * darkened its wall by about a tenth, and the deepest part of one reached 58 %
+ * of the wall colour.
+ *
+ * A real opening seen from outside in daylight reads at **10-25 %** of the wall
+ * around it — you are looking into an unlit room, and it is the highest-contrast
+ * thing on a building. Ours were two to five times too light.
+ *
+ * They were painted that way on purpose. The tiles were levelled until the
+ * port's close frames matched the CANVAS page's luminance, and that page is
+ * deleted. Parity with a renderer that no longer exists is not a constraint.
+ *
+ * `1 - (1 - v) * k` pulls every texel AWAY from white by one factor: the field
+ * stays exactly white — the "leave the material alone" value this whole file
+ * turns on — and only the depth of the marks changes. The floor stops the
+ * deepest mark going to pure black, which would lose the sill and the reveal
+ * into one flat hole.
+ */
+const MARK_DEEPEN = 2.35;
+const MARK_FLOOR = 0.10;
+
+function deepenMarks(d: Uint8ClampedArray): void {
+  for (let i = 0; i < d.length; i += 4) {
+    for (let c = 0; c < 3; c++) {
+      const v = d[i + c] / 255;
+      d[i + c] = Math.round(255 * Math.max(MARK_FLOOR, 1 - (1 - v) * MARK_DEEPEN));
+    }
+  }
+}
+
 function levelTile(g: CanvasRenderingContext2D, px: number): void {
   const img = g.getImageData(0, 0, px, px);
   const d = img.data;
+  deepenMarks(d);
   let dark = 0;
   for (let i = 0; i < d.length; i += 4) {
     dark += 1 - (d[i] * 0.2126 + d[i + 1] * 0.7152 + d[i + 2] * 0.0722) / 255;
@@ -457,7 +492,7 @@ function levelTile(g: CanvasRenderingContext2D, px: number): void {
  * how deep they sit, so this is one number for the whole vocabulary in exactly
  * the sense `BAY_DEPTH_M` is one depth for the whole city.
  */
-const FACADE_RELIEF = 2.6;
+const FACADE_RELIEF = 6.4;
 
 /**
  * A tangent-space normal for one tile, read off the sheet it was just drawn
@@ -830,7 +865,7 @@ function drawTile(g: CanvasRenderingContext2D, px: number, tile: number): void {
  * the pavement to its head — a span of 0.38 — so this is under a fifth of a
  * grade the eye already reads as one surface.
  */
-export const FACADE_TINT_V = 0.035;
+export const FACADE_TINT_V = 0.105;
 
 /**
  * THE HUE IS THE DANGEROUS AXIS AND IT IS BOUNDED FIVE TIMES TIGHTER.
@@ -849,7 +884,7 @@ export const FACADE_TINT_V = 0.035;
  * actually distinguishes by hue.** It widens a blockface; it cannot cross a
  * material.
  */
-export const FACADE_TINT_H = 0.012;
+export const FACADE_TINT_H = 0.030;
 
 /**
  * The record knows less about a footprint it does not class or does not date,

@@ -466,7 +466,7 @@ export function roofTone(hex: string): string {
     g = parseInt(hex.slice(3, 5), 16),
     b = parseInt(hex.slice(5, 7), 16);
   const l = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  const mix = (v: number): number => Math.round(v + (l - v) * 0.45);
+  const mix = (v: number): number => Math.round(v + (l - v) * 0.26);
   const grey = `#${[mix(r), mix(g), mix(b)].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
   return shade(lerpHex(grey, ROOF_PAPER, 0.18), 1.16);
 }

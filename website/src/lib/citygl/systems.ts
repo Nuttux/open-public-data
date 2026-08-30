@@ -105,6 +105,25 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
  *  nothing reads as a diagram, not a city */
 const NEVER_MUTED = new Set(["terrain", "water", "surround", "sky", "fire"]);
 
+/* ── AND THE GROUND BECOMES PAPER ─────────────────────────────────────────
+   With the buildings out of the picture the subject was legible and still not
+   LOUD: a street is dark asphalt and San Francisco's ground here is a mid
+   olive and tan, so the grid sat at almost the same value as the hillside it
+   was drawn on, and a blue transit line sat at almost the same value as both.
+
+   Every thematic map ever printed solves this the same way and it is not a
+   colour trick: the ground goes to PAPER and the subject is ink on it. The
+   terrain's own material multiplies its vertex colours, so a factor above one
+   walks the whole ground toward white while keeping every relative difference
+   in it — the hills still read as hills, the parks as parks, the water as
+   water. Nothing is recoloured and nothing is flattened; the range is moved.
+
+   It is a MODE and never the default view. The map of the city is the city's
+   own colour; this is what it looks like while a reader is asking one
+   question of it. */
+const PAPER = new Set(["terrain", "surround"]);
+const PAPER_LIFT = 1.34;
+
 /* ── ONE MUTE FOR EVERY LAYER WAS THE WRONG SHAPE ──────────────────────────
    The first version took 28 % off everything that was not the chosen system
    and lifted the system 70 %. Driven the way a reader drives it — click
@@ -146,8 +165,34 @@ const NEVER_MUTED = new Set(["terrain", "water", "surround", "sky", "fire"]);
    not occlude each other, which is right for a layer view and wrong for the
    default map — so it is only ever on while a system is chosen, and both
    fields are restored. */
-const GHOST_OPACITY = 0.16;
-const GHOST_TINT = 0.62;
+/* ── AND A GHOST OF 166,000 BUILDINGS IS NOT A GHOST, IT IS MUD ───────────
+   The first version of this drew the occluders at 0.16 alpha with depthWrite
+   off, so the reader could "see a bit underneath". At one building that is
+   glass. At a city of them it is not: with depth-write off, every building
+   behind every other building composites into the same pixel, and six or
+   eight layers of 0.16 alpha add up to an opaque grey crust. Daniel, on the
+   three modes side by side: *"dude i barely see a diff between these 3 views"*
+   — and the crops show why. All three frames were the same speckled mush with
+   a coloured line on top; the streets he had asked to see were still behind a
+   building, only now the building was grey.
+
+   So an occluder LEAVES THE PICTURE. That is what he asked for first — *"you
+   no longer see buildings etc but just see streets"* — and it is the only
+   treatment that actually answers the question, because a translucent city is
+   still a city in the way.
+
+   ── AND IT LEAVES THROUGH THE MATERIAL, NOT THROUGH `visible` ────────────
+   `mesh.visible` is owned by the YEAR GATE — every one of these layers sets it
+   from `onYear` — so a mode that hid a mesh would be undone by the next tick
+   of the century rail, which is this renderer's oldest failure mode. Opacity
+   is owned by nothing else, so that is the switch.
+
+   Its SHADOW goes with it. A material at zero opacity still casts a full
+   shadow, and a shadow with no object over it is a stain: it was half of what
+   made the ground unreadable. `castShadow` is on the mesh rather than the
+   material, so it is remembered separately and restored with everything else. */
+const GHOST_OPACITY = 0;
+const GHOST_TINT = 1;
 
 /* ── AND HOW QUIET THE REFERENCE IS DEPENDS ON WHAT THE SUBJECT IS ────────
    One value here was wrong for the same reason one value for the mute was.
@@ -231,6 +276,9 @@ const ORIGINAL = new WeakMap<object, {
   depthWrite: boolean | undefined;
 }>();
 
+/** a mesh's own shadow flag, which is not on its material */
+const ORIGINAL_SHADOW = new WeakMap<Object3D, boolean>();
+
 function materialsOf(o: Object3D): Mutable[] {
   const m = (o as unknown as { material?: Mutable | Mutable[] }).material;
   if (!m) return [];
@@ -293,6 +341,19 @@ export function applySystem(root: Object3D, key: string | null): number {
          here is enough; the layer does the rest. */
       return;
     }
+    /* the shadow of a thing that is not drawn is a stain — §AND A GHOST OF
+       166,000 BUILDINGS IS NOT A GHOST, IT IS MUD */
+    {
+      const isLitM = lit !== null && lit.has(layer);
+      const gone = lit !== null && !isLitM && !NEVER_MUTED.has(layer)
+        && OCCLUDERS.has(layer);
+      if (!ORIGINAL_SHADOW.has(o)) ORIGINAL_SHADOW.set(o, o.castShadow);
+      const wantCast = gone ? false : ORIGINAL_SHADOW.get(o)!;
+      if (o.castShadow !== wantCast) {
+        o.castShadow = wantCast;
+        touched++;
+      }
+    }
     for (const mat of materialsOf(o)) {
       const c = mat.color;
       if (!c) continue;
@@ -312,11 +373,13 @@ export function applySystem(root: Object3D, key: string | null): number {
       const ghost = quiet && OCCLUDERS.has(layer);
       const k = ghost
         ? GHOST_TINT
-        : quiet
-          ? (subjectIsNetwork ? BACKDROP : REFERENCE)
-          : isLit
-            ? (LINE_LAYERS.has(layer) ? LIT_LINE : LIT_AREA)
-            : 1;
+        : lit !== null && PAPER.has(layer)
+          ? PAPER_LIFT
+          : quiet
+            ? (subjectIsNetwork ? BACKDROP : REFERENCE)
+            : isLit
+              ? (LINE_LAYERS.has(layer) ? LIT_LINE : LIT_AREA)
+              : 1;
       /* §AND DARKENING AN OCCLUDER DOES NOT UNBLOCK IT — what is in the way is
          opacity, so that is what moves */
       const wantT = ghost ? true : O.transparent;
