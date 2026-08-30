@@ -706,8 +706,22 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
          other. */
       await Promise.all([data.loadTier("bldg"), data.loadTier("face")]);
       if (disposed || !engine) return;
+      /* ── §THE BORROWED YEAR MAY NOT OUTRUN THE REGISTER ────────────────
+         `layers/buildings.ts` carries the reasoning. A city that ships no
+         floor file gets no floor, which is what every city did before. */
+      let heightFloor: [number, number][] | null = null;
+      try {
+        const hf = await fetch(`${data.assetBase}/base/height-floor.json`);
+        if (hf.ok) {
+          heightFloor = ((await hf.json()) as { steps?: [number, number][] })
+            .steps ?? null;
+        }
+      } catch {
+        heightFloor = null;
+      }
       const buildings = buildingsLayer(data, {
         zexb: descriptor.look.zexb,
+        heightFloor,
         elevAt: groundAt,
         roofPalette: roofPalette(
           (data.manifest.buildings as { palette: string[] }).palette,

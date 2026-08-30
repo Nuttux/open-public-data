@@ -64,6 +64,7 @@ import { roofHeight } from "@/lib/city/roofs";
 import { WA } from "@/lib/city/terrain";
 import { decodeBldg, type BldgTable } from "../bldg";
 import {
+  FLAG_BLOCKYEAR,
   FLAG_HEIGHT_STALE,
   FLAG_NOYEAR,
   UMAT_WALL,
@@ -131,6 +132,13 @@ export interface BuildingsLayerOptions {
   roofPalette: readonly string[];
   /** the wall palette, from the renderer's own material table */
   wallPalette: readonly string[];
+  /**
+   * §THE BORROWED YEAR MAY NOT OUTRUN THE REGISTER — `base/height-floor.json`
+   * `steps`, ascending: `[height in metres, the earliest year the roll dates
+   * anything at least that tall]`. Omitted, no floor is applied and every
+   * borrowed year stands, which is what this layer did before.
+   */
+  heightFloor?: readonly (readonly [number, number])[] | null;
   /** the facade atlas, shared across every chunk */
   atlas?: FacadeAtlas | null;
   /** the published facade columns for this chunk, when it has them */
@@ -606,8 +614,46 @@ export function buildingsMesh(
      number, no upload, no rebuild, correct at any frame rate. */
   const order = new Int32Array(n);
   for (let i = 0; i < n; i++) order[i] = i;
-  const yearOf = (i: number): number =>
-    (tb.u[i] & FLAG_NOYEAR) !== 0 ? -1 : 1849 + tb.yr[i];
+  /* ── §THE BORROWED YEAR MAY NOT OUTRUN THE REGISTER ───────────────────
+     20,571 footprints fly `FLAG_BLOCKYEAR`: their year is the 25th-percentile
+     year of the OTHER parcels on their own assessor block — a real year, and
+     not theirs. Nothing gated on the bit, so they arrived indistinguishably
+     from the 142,679 dated by their own parcel, and one of them is 174 m, the
+     tenth tallest structure in San Francisco, on a block whose lower quartile
+     is 1906. The map's first frame had a curtain-wall tower standing in it.
+
+     The block statistic is not wrong about the block. It is wrong about the
+     OUTLIER: a tower on a block of 1906 fabric is precisely the building a
+     lower quartile cannot speak for.
+
+     So a borrowed year is held to a floor, and the floor dates nothing. It is
+     computed in `build_height_floor.py` out of the own-parcel cohort alone —
+     for a height H, the earliest year the roll dates anything at least that
+     tall — and it refuses only what the register makes impossible. MEASURED:
+     7 of the 20,571 move, 4 of them 40 m or over, and the tower goes from
+     1906 to 1917.
+
+     A footprint dated by its OWN parcel is not floored: that is the assessor
+     speaking about that building and this layer does not overrule it. Nor is
+     an undated one, which is drawn in every year on purpose — `time.ts`, the
+     undated street trees' rule — and is a different decision entirely. */
+  const floorFor = (hM: number): number => {
+    const steps = o.heightFloor;
+    if (!steps || !steps.length) return 0;
+    let f = 0;
+    for (const [h0, y0] of steps) {
+      if (hM < h0) break;
+      f = y0;
+    }
+    return f;
+  };
+  const yearOf = (i: number): number => {
+    if ((tb.u[i] & FLAG_NOYEAR) !== 0) return -1;
+    const y = 1849 + tb.yr[i];
+    return (tb.u[i] & FLAG_BLOCKYEAR) !== 0
+      ? Math.max(y, floorFor(tb.h[i]))
+      : y;
+  };
   const ord = Array.from(order).sort((a, b) => yearOf(a) - yearOf(b) || a - b);
   /** for each emitted building, the year it starts existing (-1 = always) */
   const emittedYear: number[] = [];

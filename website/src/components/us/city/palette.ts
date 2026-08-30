@@ -246,6 +246,18 @@ export function legendTones(
 export const USE_MASK = 7;
 export const FLAG_NOYEAR = 16;
 /**
+ * `bldg-data.js` `meta.yearFlags`, bit 3, **20,571 footprints**: the year is
+ * the 25th-percentile year of the OTHER parcels on this building's own
+ * published assessor block. A real year, but not this building's.
+ *
+ * DATA-TRUTH.md §5b flagged it as reaching the browser unread, and it was —
+ * those 20,571 arrived indistinguishably from the 142,679 dated by their own
+ * parcel, and one of them is 174 m on a block whose lower quartile is 1906.
+ * `layers/buildings.ts` §THE BORROWED YEAR MAY NOT OUTRUN THE REGISTER is
+ * what reads it now.
+ */
+export const FLAG_BLOCKYEAR = 8;
+/**
  * `bldg-data.js` `meta.heightFlags`, bit 6, **541 footprints**: the roll dates
  * this building AFTER the 2010 LiDAR flight, so `h` is whatever stood on the
  * lot when the plane went over — not necessarily this building, and not
