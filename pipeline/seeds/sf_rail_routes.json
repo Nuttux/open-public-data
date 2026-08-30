@@ -248,6 +248,46 @@
       "ended_source": "journalofproceed39sanfrich",
       "quote": "Ordinance No. 2374 (Series of 1939), amended by Bill No. 2681, Ordinance No. 2556: \"Providing for the Removal of Certain Street Railway Tracks of the Market Street Railway Company Due to the Substitution of Automobile Buses in Lieu of Street Car Service on Twenty-fourth Street, Fourteenth Street, Guerrero Street, San Jose Avenue, Thirtieth Street, First Street, Divisadero Street, and Fillmore Street\"",
       "note": "the ordinance names EIGHT streets and gives no termini for any of them, so each is seeded as its own route over the whole named street. They are separate lines and chaining them would invent a connection the record does not describe."
+    },
+    {
+      "name": "Mission Street tracks, Excelsior to the county line",
+      "year": 0,
+      "ended": 1951,
+      "kind": "streetcar",
+      "streets": [
+        "Mission"
+      ],
+      "from": "Excelsior",
+      "source": "journalofproceed46sanfrich",
+      "ended_source": "journalofproceed46sanfrich",
+      "quote": "File No. 7179, Resolution No. 10916 (Series of 1939): Extending Time to April 11, 1951, for Awarding Department of Public Works' Contract for Removal of Tracks on Mission Street Between Excelsior Avenue and the County Line.",
+      "note": "the resolution's far terminus is THE COUNTY LINE, which is not a street, so only the near one is resolved and the run is bounded."
+    },
+    {
+      "name": "Van Ness Avenue tracks",
+      "year": 0,
+      "ended": 1951,
+      "kind": "streetcar",
+      "streets": [
+        "Van Ness"
+      ],
+      "source": "journalofproceed46sanfrich",
+      "ended_source": "journalofproceed46sanfrich",
+      "quote": "File No. 7245, relating to the removal of tracks on Van Ness Avenue.",
+      "note": "the file names no termini, so the whole named avenue is drawn -- what the record describes and no more."
+    },
+    {
+      "name": "Eleventh Street and Potrero Avenue tracks",
+      "year": 0,
+      "ended": 1951,
+      "kind": "streetcar",
+      "streets": [
+        "Eleventh",
+        "Potrero"
+      ],
+      "source": "journalofproceed46sanfrich",
+      "ended_source": "journalofproceed46sanfrich",
+      "quote": "File No. 7900, relating to the removal of tracks and the reconstruction of the roadways of Eleventh Street and Potrero Avenue."
     }
   ],
   "_dropped": "Ocean View line (M): its quote is a CONSTRUCTION PAYMENT and carries no street sequence. The streets first listed here were recalled rather than read, which is the exact failure this file exists to prevent, so the route is out until an ordinance describing it is found.",
