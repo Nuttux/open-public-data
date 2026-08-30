@@ -49,6 +49,7 @@ import {
   MARK_SHAPES,
   THEME_INK,
   WINDOW_YEARS,
+  type MarkHit,
   type MarkShape,
   type ThemeMarksLayer,
 } from "@/lib/citygl/layers/theme-marks";
@@ -101,6 +102,7 @@ import { attachControls, bandCuts, stepForZ } from "@/lib/citygl/controls";
 import { createFilm, resolveFrames, type FilmPlayer } from "@/lib/citygl/film";
 import { detectQuality } from "@/lib/citygl/quality";
 import { blockPicker } from "@/lib/citygl/pick";
+import { screenToPlane } from "@/lib/city/projection";
 import CityBlockPanel, {
   type BlockContext,
   type UnitRequest,
@@ -230,6 +232,10 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
   const [themes, setThemes] = useState<ThemeEntry[] | null>(null);
   const [subject, setSubject] = useState<number | null>(null);
   const [subjectLit, setSubjectLit] = useState(0);
+  /* THE MARK THE READER PRESSED, if they pressed one. Cleared by any press
+     that lands on the city instead, so the fiche never carries a record from
+     a click two clicks ago. */
+  const [markHit, setMarkHit] = useState<MarkHit | null>(null);
   const [filterOpen, setFilterOpen] = useState(false);
   /* THE YEAR THE MARKS ARE STANDING ON, kept apart from the scrub's own
      imperative path. The rail drives the city's geometry every frame of a
@@ -940,6 +946,9 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               ? { carpetBlocks: carpetQ }
               : {}),
             ...(Number.isFinite(winQ) && winQ > 0 ? { windowYears: winQ } : {}),
+            /* so a flat mark can be turned to face the reader instead of
+               lying in the ground, where the camera's tilt smears it */
+            faceCamera: () => engineRef.current!.camera.quaternion,
           });
           if (!layer) return;
           for (const m of layer.meshes) engine.scene.add(m);
@@ -1016,7 +1025,42 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
           const eng = engineRef.current;
           if (!eng) return;
           const v = eng.viewport;
-          const b = picker.at(e.clientX - r.left, e.clientY - r.top, eng.getCamera(), v.W, v.H);
+          /* ── THE MARK IS ASKED FIRST, AND IT IS A DIFFERENT QUESTION ─────
+             `picker.at` answers "which block is under the cursor", which is
+             the right answer to a press on the city and the wrong one to a
+             press on a dot: it opens the ground the dot stands on and leaves
+             the reader to find the record among everything else the block
+             holds. A mark knows which record it is, so it is asked first, and
+             the block pick stays exactly as it was for every other press.
+
+             It still resolves to the same block — the fiche is the context the
+             record needs — but it carries the record with it. */
+          const cam = eng.getCamera();
+          const pl = screenToPlane(e.clientX - r.left, e.clientY - r.top,
+                                   v.W, v.H, cam);
+          const hit = marksRef.current?.markAt(pl[0], pl[1]) ?? null;
+          const b = hit && hit.block >= 0
+            ? hit.block
+            : picker.at(e.clientX - r.left, e.clientY - r.top, cam, v.W, v.H);
+          setMarkHit(hit && hit.block >= 0 ? hit : null);
+          /* ── A PRESSED DOT OPENS THE BLOCK, WHATEVER THE ZOOM SAYS ───────
+             The fiche's level normally follows the camera, and a press at
+             district zoom opens the NEIGHBOURHOOD. That is the right default
+             for a press on the city and the wrong answer to a press on a dot:
+             the record pointed at is on one block, and a neighbourhood's fiche
+             is a selection — twelve rows a decade — that will not contain it.
+             MEASURED: the subject section came up empty on every press at
+             district zoom for exactly this reason, while the same press at
+             street zoom worked. So a mark asks for its own block. */
+          if (hit && hit.block >= 0) {
+            const bid = idxRef.current?.b[hit.block];
+            if (bid) {
+              nonceRef.current += 1;
+              setRequest({
+                nonce: nonceRef.current, block: bid, req: { kind: "ground" },
+              });
+            }
+          }
           const ov = overlayRef.current;
           if (ov) {
             ov.highlight = b === null ? null : picker.ringOf(b);
@@ -1035,7 +1079,19 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
              reader looking at the whole city. */
           const sc = eng.getCamera().scale;
           const scales = stopScalesRef.current;
-          if (scales.length) {
+          if (hit && hit.block >= 0) {
+            /* ── A PRESSED DOT IS A BLOCK PRESS, WHATEVER THE CAMERA SAYS ──
+               The stop the camera is nearest decides what the fiche is ABOUT,
+               and at district zoom that is the neighbourhood. A neighbourhood
+               fiche is a different render entirely — its own tree, its own
+               selection of twelve rows a decade — so a press on a dot opened a
+               page that could not contain the record pressed, and the subject
+               section was not merely empty, it was never rendered.
+
+               3 is the ground stop, the same one `goToHit` uses for anything
+               that is not a hood or a street. */
+            setZoomStop(3);
+          } else if (scales.length) {
             let best = 0;
             for (let i = 1; i < scales.length; i += 1) {
               if (Math.abs(Math.log(sc / scales[i])) <
@@ -1606,6 +1662,17 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
                  three let it say the narrow thing first. Null when no subject
                  is on, which is the default view, and the section disappears. */
               litSubject={subject}
+              /* the exact row the dot stands for, where a dot was pressed.
+                 `record` is the block's own shard order and `r` indexes it —
+                 the marks file says so in its header. Dropped the moment the
+                 panel is showing a different block, so a stale index can never
+                 point at another block's row. */
+              litRecord={
+                markHit && record && idxRef.current?.b[markHit.block] === record.blockId
+                  ? markHit.record
+                  : undefined
+              }
+              litOf={markHit?.of}
               litLabel={
                 subject === null
                   ? undefined

@@ -17651,6 +17651,15 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   font-size: 13px;
   line-height: 1.45;
 }
+/* the row the reader actually pressed. A tint and not a border: it sits in a
+   list whose left rule already belongs to the subject, and a second rule
+   beside the first reads as a nested section rather than as emphasis. */
+.theme-fusion .fx-block-lit-rows > li.is-pressed {
+  margin-left: -6px;
+  padding: 4px 6px 5px;
+  border-radius: 4px;
+  background: color-mix(in oklab, var(--ink) 7%, transparent);
+}
 .theme-fusion .fx-block-lit-y {
   display: inline-block;
   margin-right: 6px;

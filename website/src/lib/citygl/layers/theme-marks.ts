@@ -67,6 +67,7 @@ import {
 } from "three";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
+import { proj } from "@/lib/city/projection";
 import { ST_KPROJ } from "@/lib/city/streets";
 
 import type { CityLayer } from "../engine";
@@ -108,8 +109,17 @@ export interface ThemeMarksOptions {
   carpetBlocks?: number;
   /** override the window width — `?win=N` */
   windowYears?: number;
-  /** override the dot shape — `?mark=tack|bead|disc|ring|bar|cone` */
+  /** override the dot shape — `?mark=dot|glow|ring|tack|bead|disc|bar|cone` */
   shape?: MarkShape;
+  /**
+   * THE CAMERA'S OWN ROTATION, so a flat mark can be turned to face it.
+   *
+   * The engine's camera is orthographic and its bearing is fixed — `engine.ts`
+   * says so outright — so this is read once and is a constant for the run. It
+   * is a function rather than a value because the layer is built before the
+   * first frame, and reading the camera then would capture an identity.
+   */
+  faceCamera?: () => Quaternion;
 }
 
 /* ── THE INK, AND THE CHECK THE FIRST SET WAS NEVER PUT THROUGH ───────────
@@ -246,37 +256,55 @@ export const DEFAULT_SHAPE: MarkShape = "dot";
 const FLAT: ReadonlySet<MarkShape> = new Set<MarkShape>(["dot", "glow"]);
 
 /**
- * A soft round brush, drawn once into a canvas and shared by every mesh.
+ * The mark's face, drawn once into a canvas and shared by all eight meshes.
  *
- * `stop` is where the solid core ends and the fade begins: 0.55 gives a disc
- * you can aim at with a soft rim, 0 gives a field with no edge at all. White,
- * because the colour rides on the material and one texture then serves all
- * eight subjects.
+ * TWO CHANNELS DOING TWO JOBS. Alpha is the silhouette — where the mark is at
+ * all. RGB is a SHADE, and `MeshBasicMaterial` multiplies the map by the
+ * material colour, so a texture that is white in the middle and dark at the
+ * edge comes out as the subject's colour with a darker ring of its own hue.
+ * That ring is what makes it read as a marker rather than as a spill: a real
+ * dot on a map has an edge, and the first flat version had none.
+ *
+ * `soft` drops both the ring and the hard edge, for the density field, where
+ * an edge is exactly what must not be there.
  *
  * Returns null off the browser — the layer is constructed in tests, where
- * there is no canvas, and it falls back to the hard-edged coin there.
+ * there is no canvas, and the geometry alone carries it there.
  */
-function brush(stop: number): CanvasTexture | null {
+function markFace(soft: boolean): CanvasTexture | null {
   if (typeof document === "undefined") return null;
   const N = 128;
   const c = document.createElement("canvas");
   c.width = c.height = N;
   const g = c.getContext("2d");
   if (!g) return null;
-  const grad = g.createRadialGradient(N / 2, N / 2, 0, N / 2, N / 2, N / 2);
-  grad.addColorStop(0, "rgba(255,255,255,1)");
-  if (stop > 0) grad.addColorStop(stop, "rgba(255,255,255,1)");
-  grad.addColorStop(1, "rgba(255,255,255,0)");
-  g.fillStyle = grad;
-  g.fillRect(0, 0, N, N);
+  const R = N / 2;
+  if (soft) {
+    const grad = g.createRadialGradient(R, R, 0, R, R, R);
+    grad.addColorStop(0, "rgba(255,255,255,1)");
+    grad.addColorStop(1, "rgba(255,255,255,0)");
+    g.fillStyle = grad;
+    g.fillRect(0, 0, N, N);
+  } else {
+    /* the ring first, then the core over it: a stroke would be antialiased
+       against transparent black and leave a dark fringe outside the mark */
+    g.fillStyle = "#595959";
+    g.beginPath();
+    g.arc(R, R, R * 0.94, 0, Math.PI * 2);
+    g.fill();
+    g.fillStyle = "#ffffff";
+    g.beginPath();
+    g.arc(R, R, R * 0.72, 0, Math.PI * 2);
+    g.fill();
+  }
   const t = new CanvasTexture(c);
   t.colorSpace = SRGBColorSpace;
   return t;
 }
 
 /** how opaque a flat mark is: enough to read, not enough to hide the city */
-const DOT_ALPHA = 0.95;
-const GLOW_ALPHA = 0.28;
+const DOT_ALPHA = 1;
+const GLOW_ALPHA = 0.3;
 
 /* a density puck starts at half a dot and grows by at most this much, so the
    busiest block is 2.4x the quietest rather than 10x — see the density branch */
@@ -302,14 +330,14 @@ function markGeometry(shape: MarkShape): BufferGeometry {
   switch (shape) {
     case "dot":
     case "glow": {
-      /* LYING IN THE GROUND, NOT STANDING ON IT. A plane is born in xy and
-         the ground is xz, so it is laid down; the texture carries the circle
-         and its fade, and the extent is generous because a soft brush spends
-         most of its radius on the fade. */
-      const g = new PlaneGeometry(shape === "glow" ? 2.2 : 1.25,
-                                  shape === "glow" ? 2.2 : 1.25);
-      g.rotateX(-Math.PI / 2);
-      return g;
+      /* A QUAD LEFT FACING +Z, because `place` turns it to the camera. It is
+         NOT laid into the ground: that is what made the first version look
+         like paint. A circle lying flat is seen at the camera's tilt, so it
+         arrives on screen as an ellipse smeared along the view direction —
+         a stain on the drawing rather than a mark on it. Turned to face the
+         reader it is a circle at every camera, which is what a map dot is. */
+      return new PlaneGeometry(shape === "glow" ? 2.2 : 1.25,
+                               shape === "glow" ? 2.2 : 1.25);
     }
     case "tack": {
       /* stem from the ground to 0.62, head centred at 0.72. The head is a
@@ -371,10 +399,42 @@ export interface MarkFilter {
   window?: number;
 }
 
+/** what a press on a lit mark resolved to */
+export interface MarkHit {
+  /** the subject that was lit */
+  readonly bit: number;
+  /** the mark's row in the published file */
+  readonly mark: number;
+  /** its assessor block, or -1 where the source has none */
+  readonly block: number;
+  /** the record, as its source addresses it — see the file's own header */
+  readonly record: number;
+  /** which source it came from */
+  readonly source: number;
+  /** how many records this mark stands for: 1 as a dot, the block's count
+      as a density puck */
+  readonly of: number;
+}
+
 export interface ThemeMarksLayer extends CityLayer {
   readonly meshes: readonly InstancedMesh[];
   /** apply a filter; returns how many marks are lit */
   setFilter(f: MarkFilter): number;
+  /**
+   * THE MARK UNDER A POINT, in the plane's own metres.
+   *
+   * The map's own picker answers a different question — which BLOCK is under
+   * the cursor — and answering the click with it means a press on a dot opens
+   * the ground the dot stands on. The mark knows which record it is; this is
+   * how that gets out.
+   *
+   * Screen-space rather than a raycast: the marks are drawn with the depth
+   * test off and sorted by `renderOrder`, so what a reader sees on top is not
+   * what a ray would meet first. Nearest-within-the-mark's-own-radius is what
+   * they are actually pointing at, and it costs a walk over the lit marks
+   * rather than a BVH.
+   */
+  markAt(px: number, py: number): MarkHit | null;
   /** per subject bit: how many marks and blocks are lit, and the mode used */
   readonly state: readonly {
     bit: number;
@@ -410,8 +470,8 @@ export function themeMarksLayer(
     ? markGeometry("glow")
     : new CylinderGeometry(PUCK_R, PUCK_R, PUCK_R * 0.25, 12);
   /* one texture per edge-hardness, shared by all eight subjects */
-  const texDot = flat ? brush(shape === "glow" ? 0 : 0.72) : null;
-  const texGlow = flat ? brush(0) : null;
+  const texDot = flat ? markFace(shape === "glow") : null;
+  const texGlow = flat ? markFace(true) : null;
 
   /* per-subject index lists, built once. Filtering never walks all n again. */
   const byBit: number[][] = [];
@@ -441,23 +501,20 @@ export function themeMarksLayer(
           transparent: true,
           opacity: DOT_ALPHA,
           depthWrite: false,
-          /* FORWARD, NOT AWAY. A plane lying in the terrain is coplanar with
-             it, and `block-tint.ts` records the trap in its own words: a
-             positive offset pushes a polygon away and the depth test throws
-             every fragment out. An overlay on a coplanar surface comes toward
-             the camera. The 3 px lift cannot do this job — making a lift big
-             enough is how the marks ended up in the sky in the first place. */
-          polygonOffset: true,
-          polygonOffsetFactor: -4,
-          polygonOffsetUnits: -4,
-          /* ── DoubleSide, AND IT IS NOT BELT AND BRACES ───────────────
-             The first flat build drew NOTHING: 217 instances, visible, in the
-             scene, matrices right, and no pixels. It was not depth and it was
-             not the material — `depthTest:false` and a Lambert each changed
-             nothing, which is what ruled them out. A plane is born facing +Z
-             and is laid down with `rotateX`, and the face that ends up
-             pointing at the sky is the BACK one, which `FrontSide` discards.
-             Two triangles is not a budget worth defending. */
+          /* ── OVER THE CITY, WHICH IS WHAT A MARK IS ──────────────────
+             A quad turned to face the camera stands UPRIGHT in the world, so
+             its lower half is inside the ground and a depth test eats it: the
+             mark arrives as a half-moon that changes shape with the hill it is
+             on. `overlay.ts` already states the doctrine this settles under —
+             the GPU draws the world and the writing goes over it — and a
+             subject mark is writing. So it is drawn over the city and sorted
+             by `renderOrder` instead, which also means a mark behind a hill
+             still reports that the record is there.
+
+             This replaced a negative `polygonOffset`, which was the right
+             answer while the mark was lying IN the ground and is meaningless
+             now that it stands across it. */
+          depthTest: false,
           side: DoubleSide,
         })
       : new MeshLambertMaterial({ color: col });
@@ -496,8 +553,15 @@ export function themeMarksLayer(
   let mPerPx = 1 / (ST_KPROJ * 0.1);
   /* the placed marks per subject, kept so a camera move can re-size them
      without re-running the filter */
-  const drawn: { x: number; y: number; s: number }[][] =
+  const drawn: { x: number; y: number; s: number; i: number; n: number }[][] =
     meshes.map(() => []);
+
+  /* THE ONE ROTATION A FLAT MARK IS DRAWN AT. Read on the first placement
+     rather than at construction, because the layer is built before a frame has
+     been rendered and the camera is still an identity then. Read once and kept,
+     because the engine's camera is orthographic with a FIXED bearing — a pan or
+     a zoom moves it, a turn never does, so there is nothing to follow. */
+  let face: Quaternion | null = null;
 
   const place = (mesh: InstancedMesh, k: number, wx: number, wy: number,
                  rel: number): void => {
@@ -525,7 +589,11 @@ export function themeMarksLayer(
        rescued that number. */
     P.set(wx, o.elevAt(wx, wy) * o.zex + LIFT_PX * mPerPx, wy);
     S.set(s, s, s);
-    M4.compose(P, Q, S);
+    if (flat && !face) {
+      const q = o.faceCamera?.();
+      if (q && (q.x || q.y || q.z || q.w !== 1)) face = q.clone();
+    }
+    M4.compose(P, flat && face ? face : Q, S);
     mesh.setMatrixAt(k, M4);
   };
 
@@ -593,7 +661,7 @@ export function themeMarksLayer(
       }
       let k = 0;
       for (const i of hit) {
-        drawn[bit].push({ x: f.x[i], y: f.y[i], s: 1 });
+        drawn[bit].push({ x: f.x[i], y: f.y[i], s: 1, i, n: 1 });
         place(mesh, k++, f.x[i], f.y[i], 1);
       }
       mesh.count = k;
@@ -618,12 +686,14 @@ export function themeMarksLayer(
         mats[bit].opacity = DENSITY_ALPHA;
         mats[bit].depthWrite = false;
       }
-      const at = new Map<number, { x: number; y: number; n: number }>();
+      const at = new Map<number, { x: number; y: number; n: number; i: number }>();
       for (const i of hit) {
         const key = f.b[i] >= 0 ? f.b[i] : -1 - f.r[i];
         const e = at.get(key);
         if (e) e.n++;
-        else at.set(key, { x: f.x[i], y: f.y[i], n: 1 });
+        /* `i` is the FIRST mark of the block, kept so a press on a puck can
+           still name a record rather than only a place */
+        else at.set(key, { x: f.x[i], y: f.y[i], n: 1, i });
       }
       /* THE PUCK IS SMALLER THAN A DOT, AND ITS GROWTH IS CAPPED. Written
          first as `sqrt(n)` off the same base size as a pin, 2,171 lit blocks
@@ -636,7 +706,7 @@ export function themeMarksLayer(
       for (const e of at.values()) {
         if (k >= mesh.instanceMatrix.count) break;
         const rel = DENSITY_BASE * Math.min(DENSITY_MAX, Math.sqrt(e.n));
-        drawn[bit].push({ x: e.x, y: e.y, s: rel });
+        drawn[bit].push({ x: e.x, y: e.y, s: rel, i: e.i, n: e.n });
         place(mesh, k++, e.x, e.y, rel);
       }
       mesh.count = k;
@@ -660,6 +730,43 @@ export function themeMarksLayer(
     meshes,
     state,
     setFilter: apply,
+    markAt(px, py) {
+      /* ── THE PLANE IS NOT THE METRE FRAME, AND THAT COST A ROUND TRIP ────
+         `screenToPlane` hands back PROJECTION-PLANE coordinates; the marks are
+         stored in the shared METRE frame. Compared directly the two never meet
+         and every press falls through to the block picker, which is exactly
+         the behaviour this method exists to replace — and it fails silently,
+         because falling through is what the map did before. So each mark is
+         projected forward with the same `proj` the city is drawn through,
+         at its own height, and the comparison happens in one space.
+
+         Radius: `d.s * MARK_PX * mPerPx` is the mark's size in metres, and a
+         metre is `ST_KPROJ` of a plane unit. 0.62 rather than 0.5 because a
+         reader aiming at a dot lands on its edge as often as its middle. */
+      let best: MarkHit | null = null;
+      let bestD = Infinity;
+      for (let bit = 0; bit < o.bits; bit++) {
+        if (!meshes[bit].visible) continue;
+        for (const d of drawn[bit]) {
+          const rad = d.s * MARK_PX * mPerPx * ST_KPROJ * 0.62;
+          const pp = proj(d.x, d.y, o.elevAt(d.x, d.y) * o.zex + LIFT_PX * mPerPx);
+          const dx = px - pp[0];
+          const dy = py - pp[1];
+          const dist = Math.hypot(dx, dy);
+          if (dist > rad || dist >= bestD) continue;
+          bestD = dist;
+          best = {
+            bit,
+            mark: d.i,
+            block: f.b[d.i],
+            record: f.r[d.i],
+            source: f.s[d.i],
+            of: d.n,
+          };
+        }
+      }
+      return best;
+    },
     onYear(year: number | undefined) {
       if (cur.bits) apply({ ...cur, year });
     },

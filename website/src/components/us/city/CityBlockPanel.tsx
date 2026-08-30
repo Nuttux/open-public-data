@@ -2196,6 +2196,8 @@ export default function CityBlockPanel({
   litSubject,
   litLabel,
   litInk,
+  litRecord,
+  litOf,
 }: {
   record: BlockRecord | null;
   context: BlockContext | null;
@@ -2238,6 +2240,17 @@ export default function CityBlockPanel({
   litSubject?: number | null;
   litLabel?: string;
   litInk?: string;
+  /**
+   * THE ROW THE PRESSED DOT STANDS FOR — its index in this block's own shard.
+   *
+   * Absent when the press landed on the city rather than on a mark, and absent
+   * on a density puck, which stands for a whole block and has no single row to
+   * name. When it is here the fiche leads with that record, because that is
+   * the thing the reader pointed at.
+   */
+  litRecord?: number;
+  /** how many records the pressed mark stood for — 1 for a dot */
+  litOf?: number;
 }) {
   const t = useT();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -2584,11 +2597,31 @@ const onHood = unit.kind === "hood";
      click; the rail is still the block. */
   const lit = useMemo(() => {
     if (litSubject === undefined || litSubject === null) return null;
-    const rows = here.filter(
+    /* ── THE BLOCK'S OWN ROWS, NOT THE UNIT'S ───────────────────────────
+       `here` follows whatever the fiche is showing — a door, a street, a
+       neighbourhood — and the fiche's level follows the camera, so a press at
+       district zoom lands on the neighbourhood, whose file is a SELECTION of
+       twelve rows a decade. The pressed record is not in that selection, and
+       the section came up empty on every such press while the identical press
+       at street zoom worked. The mark is on a block; the block's own record is
+       what can answer for it, whatever level the rest of the fiche is at. */
+    const rows = (record?.decisions ?? []).filter(
       (d) => Math.floor((d.m ?? 0) / 2 ** litSubject) % 2 === 1,
     );
-    return rows.length ? rows : null;
-  }, [here, litSubject]);
+    if (!rows.length) return null;
+    /* THE PRESSED ROW FIRST, AND THE REST BEHIND IT. Ordering rather than
+       filtering: the dot is one record and the reader pointed at it, but the
+       block is still the answer to "what else happened here", and dropping the
+       others would make a press on a dot a smaller page than a press beside
+       it. `record.decisions` is the shard's own order, which is what the marks
+       file indexes, so a row taken from `here` is only the same row when the
+       unit IS the block. */
+    const one = litRecord !== undefined
+      ? (record?.decisions?.[litRecord] ?? null)
+      : null;
+    if (!one || !rows.includes(one)) return { rows, pressed: null as null | typeof one };
+    return { rows: [one, ...rows.filter((d) => d !== one)], pressed: one };
+  }, [litSubject, litRecord, record]);
   /* The streets around here, each with what it actually holds. The count is
      read from the index rather than waited for, so nothing shows a placeholder
      and nothing is offered that opens an empty page. */
@@ -3009,17 +3042,32 @@ const onHood = unit.kind === "hood";
                   {litLabel}
                 </h4>
                 <p className="fx-block-hint">
-                  {tOr(
-                    t,
-                    "us.sf.thecity.panel.lit_here",
-                    "{n} of the {all} records here are this. The rest of the block is below.",
-                  )
-                    .replace("{n}", nfInt.format(lit.length))
-                    .replace("{all}", nfInt.format(here.length))}
+                  {/* TWO SENTENCES, BECAUSE TWO THINGS HAPPENED. Pressing a
+                      dot and pressing the ground beside it both open this
+                      block, and the reader has to be able to tell which one
+                      they did — the first line is the record they pointed at,
+                      the second is what else is here. */}
+                  {lit.pressed
+                    ? tOr(
+                        t,
+                        "us.sf.thecity.panel.lit_pressed",
+                        "The one you pressed is first. {n} of the {all} records on this block are this subject.",
+                      )
+                        .replace("{n}", nfInt.format(lit.rows.length))
+                        .replace("{all}",
+                                 nfInt.format(record?.decisions?.length ?? 0))
+                    : tOr(
+                        t,
+                        "us.sf.thecity.panel.lit_here",
+                        "{n} of the {all} records on this block are this. The rest is below.",
+                      )
+                        .replace("{n}", nfInt.format(lit.rows.length))
+                        .replace("{all}", nfInt.format(record?.decisions?.length ?? 0))}
                 </p>
                 <ul className="fx-block-lit-rows">
-                  {lit.slice(0, LIT_ROWS).map((d) => (
-                    <li key={`${d.u}-${d.y}-${d.t.slice(0, 24)}`}>
+                  {lit.rows.slice(0, LIT_ROWS).map((d) => (
+                    <li key={`${d.u}-${d.y}-${d.t.slice(0, 24)}`}
+                        className={d === lit.pressed ? "is-pressed" : undefined}>
                       <span className="fx-block-lit-y tnum">{d.y}</span>
                       <span className="fx-block-lit-t">
                         {stripFileNumber(d.t)}
@@ -3038,10 +3086,10 @@ const onHood = unit.kind === "hood";
                     </li>
                   ))}
                 </ul>
-                {lit.length > LIT_ROWS ? (
+                {lit.rows.length > LIT_ROWS ? (
                   <p className="fx-block-hint">
                     {tOr(t, "us.sf.thecity.panel.lit_more", "and {n} more, in the record below.")
-                      .replace("{n}", nfInt.format(lit.length - LIT_ROWS))}
+                      .replace("{n}", nfInt.format(lit.rows.length - LIT_ROWS))}
                   </p>
                 ) : null}
               </section>
