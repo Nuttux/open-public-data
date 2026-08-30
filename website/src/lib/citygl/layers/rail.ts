@@ -257,9 +257,9 @@ const BALLAST_W = 6.6;
 const BALLAST_C = 0x8a8073;
 /** a sleeper's length across the track, and its width along it */
 const SLEEPER_LEN_M = 5.8;
-const SLEEPER_W_M = 1.15;
+const SLEEPER_W_M = 0.72;
 /** how far apart the sleepers are laid, world metres */
-const SLEEPER_STEP_M = 2.4;
+const SLEEPER_STEP_M = 1.3;
 /** creosoted timber, warmer and darker than the ballast it sits in */
 const SLEEPER_C = 0x231e19;
 /** the steel itself */
@@ -320,7 +320,7 @@ const CABLE_BED_C = 0x7d776c;
  * triangle, and tighter because a track is narrow enough that its own sag is
  * the only thing holding it up.
  */
-const RIB_STEP_M = 8;
+const RIB_STEP_M = 4;
 
 /* ══ AND IT IS STILL NOT LEGIBLE, WHICH THIS SAYS RATHER THAN IMPLIES ═════
    Five separate defects are fixed above and every one of them is measured,
