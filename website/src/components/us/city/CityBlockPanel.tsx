@@ -1796,6 +1796,16 @@ const WHOLE: Unit = { kind: "ground" };
 const RAIL_FLOOR = 7;
 
 /**
+ * How many of the lit subject's rows the answer-to-the-click prints.
+ *
+ * It is an ANSWER and not a second rail. Six is enough to show that the mark
+ * the reader pressed is one of several and what kind of thing they are; past
+ * that, the block's own record below is where they are read, and a long list
+ * here would push the block off the screen to restate it.
+ */
+const LIT_ROWS = 6;
+
+/**
  * A UNIT THE PANEL WAS ASKED TO OPEN, from outside.
  *
  * Everything above resolves a unit from the CLICK — where the ground is and
@@ -2183,6 +2193,9 @@ export default function CityBlockPanel({
   onLocate,
   onFiche,
   request,
+  litSubject,
+  litLabel,
+  litInk,
 }: {
   record: BlockRecord | null;
   context: BlockContext | null;
@@ -2213,6 +2226,18 @@ export default function CityBlockPanel({
     /** the block it applies to, so the click resolver knows to stand down */
     readonly block: string;
   };
+  /**
+   * THE SUBJECT THE MAP HAS LIT, if any — its bit in `blocks/themes.json`,
+   * its name, and the ink the map drew it in.
+   *
+   * The panel does not know the map has a filter and must not have to. It is
+   * given the one fact it needs to answer the click it just received: the
+   * reader pressed a lit mark, so say what was lit here before saying what
+   * else the block holds.
+   */
+  litSubject?: number | null;
+  litLabel?: string;
+  litInk?: string;
 }) {
   const t = useT();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -2542,6 +2567,28 @@ const onHood = unit.kind === "hood";
     () => (onHood ? [] : threadsIn(threads, here)),
     [threads, here, onHood],
   );
+
+  /* ── WHAT THE READER PRESSED, WHEN THEY PRESSED A LIT MARK ─────────────
+     A subject is lit on the map and a mark is under the cursor: the click
+     resolves to the BLOCK, and the block's fiche is everything the block
+     holds — paving, sewers, assessments — with the one decision that was lit
+     somewhere inside it. That is the panel answering a different question
+     from the one the reader asked.
+
+     `m` is on every decision already, computed in the pipeline against the
+     full source text, so this is a filter and not a re-derivation. Read with
+     division: the eight fit in a byte, but `sm` next door does not, and the
+     two are read the same way on purpose so that neither invites `>>`.
+
+     The rows are NOT removed from the rail below. The subject explains the
+     click; the rail is still the block. */
+  const lit = useMemo(() => {
+    if (litSubject === undefined || litSubject === null) return null;
+    const rows = here.filter(
+      (d) => Math.floor((d.m ?? 0) / 2 ** litSubject) % 2 === 1,
+    );
+    return rows.length ? rows : null;
+  }, [here, litSubject]);
   /* The streets around here, each with what it actually holds. The count is
      read from the index rather than waited for, so nothing shows a placeholder
      and nothing is offered that opens an empty page. */
@@ -2945,6 +2992,61 @@ const onHood = unit.kind === "hood";
             {/* What this place keeps being about, as something to press. The
                 sentence above already NAMES the biggest of these; these are
                 how a reader opens one and sees it across the whole city. */}
+            {/* THE ANSWER TO THE CLICK, BEFORE THE BLOCK'S OWN SUBJECTS. A
+                reader who pressed a lit mark asked one question and the fiche
+                answers a wider one; this says the narrow thing first and then
+                gets out of the way. Absent unless a subject is lit AND this
+                unit actually holds it — a heading over an empty list would be
+                the map claiming something the record does not carry. */}
+            {lit && litLabel ? (
+              <section className="fx-block-lit">
+                <h4 className="fx-block-lit-h">
+                  <span
+                    className="fx-block-lit-dot"
+                    style={{ background: litInk ?? "currentColor" }}
+                    aria-hidden
+                  />
+                  {litLabel}
+                </h4>
+                <p className="fx-block-hint">
+                  {tOr(
+                    t,
+                    "us.sf.thecity.panel.lit_here",
+                    "{n} of the {all} records here are this. The rest of the block is below.",
+                  )
+                    .replace("{n}", nfInt.format(lit.length))
+                    .replace("{all}", nfInt.format(here.length))}
+                </p>
+                <ul className="fx-block-lit-rows">
+                  {lit.slice(0, LIT_ROWS).map((d) => (
+                    <li key={`${d.u}-${d.y}-${d.t.slice(0, 24)}`}>
+                      <span className="fx-block-lit-y tnum">{d.y}</span>
+                      <span className="fx-block-lit-t">
+                        {stripFileNumber(d.t)}
+                      </span>
+                      <a
+                        className="fx-block-jump"
+                        href={sourceHref(d)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {d.c === "b"
+                          ? tOr(t, "us.sf.thecity.panel.lead_open_pdf", "Open the minutes")
+                          : tOr(t, "us.sf.thecity.panel.lead_open", "Open the scanned page")}
+                        {" ↗"}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                {lit.length > LIT_ROWS ? (
+                  <p className="fx-block-hint">
+                    {tOr(t, "us.sf.thecity.panel.lit_more", "and {n} more, in the record below.")
+                      .replace("{n}", nfInt.format(lit.length - LIT_ROWS))}
+                  </p>
+                ) : null}
+              </section>
+            ) : null}
+
             <Subjects here={subjects} total={here.length} t={t} />
 
             {/* ── A FEW RECORDS ARE NOT A CENTURY ──────────────────────────

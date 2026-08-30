@@ -255,7 +255,7 @@ function brush(stop: number): CanvasTexture | null {
 
 /** how opaque a flat mark is: enough to read, not enough to hide the city */
 const DOT_ALPHA = 0.95;
-const GLOW_ALPHA = 0.5;
+const GLOW_ALPHA = 0.28;
 
 /* a density puck starts at half a dot and grows by at most this much, so the
    busiest block is 2.4x the quietest rather than 10x — see the density branch */
@@ -285,8 +285,8 @@ function markGeometry(shape: MarkShape): BufferGeometry {
          the ground is xz, so it is laid down; the texture carries the circle
          and its fade, and the extent is generous because a soft brush spends
          most of its radius on the fade. */
-      const g = new PlaneGeometry(shape === "glow" ? 4 : 1.25,
-                                  shape === "glow" ? 4 : 1.25);
+      const g = new PlaneGeometry(shape === "glow" ? 2.2 : 1.25,
+                                  shape === "glow" ? 2.2 : 1.25);
       g.rotateX(-Math.PI / 2);
       return g;
     }

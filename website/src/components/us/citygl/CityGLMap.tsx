@@ -1551,6 +1551,23 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               context={ctx}
               request={request}
               onFiche={setAt}
+              /* WHAT WAS LIT WHEN THE READER PRESSED. The panel resolves a
+                 click to a BLOCK and shows everything the block holds, so a
+                 press on a lit mark used to open a fiche in which the thing
+                 pressed was one line among the paving and the sewers. These
+                 three let it say the narrow thing first. Null when no subject
+                 is on, which is the default view, and the section disappears. */
+              litSubject={subject}
+              litLabel={
+                subject === null
+                  ? undefined
+                  : themes?.find((x) => x.bit === subject)?.label
+              }
+              litInk={
+                subject === null
+                  ? undefined
+                  : THEME_INK[subject % THEME_INK.length]
+              }
               loading={recLoading}
               onClose={() => {
                 setPicked(null);
