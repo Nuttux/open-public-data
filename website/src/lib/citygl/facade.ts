@@ -857,15 +857,33 @@ function drawTile(g: CanvasRenderingContext2D, px: number, tile: number): void {
  * this exact problem, already solved, at a declared magnitude: `RSHADE` is
  * `[0.875, 0.958, 1.042, 1.14]`, and its **smallest adjacent step is 0.083**.
  *
- * So the ceiling here is that step. Two walls jittered to opposite extremes
- * differ by `2 x FACADE_TINT_V` = **0.070**, which is inside the smallest
- * difference the renderer itself declares as *two objects of the same
- * material*; a single wall never moves more than half of it. For scale, one
- * wall already runs `WA.wbot` 0.76 to `WA.wtop` 1.14 of its own colour from
- * the pavement to its head — a span of 0.38 — so this is under a fifth of a
- * grade the eye already reads as one surface.
+ * That step was BORROWED, and re-deriving it moved the number. MEASURED over
+ * the 24 wall materials, asking the question a value jitter actually poses —
+ * *is one material a scalar multiple of another, so that scaling A lands on
+ * B?* — the closest crossable pair is `#f0e4c8` and `#e6dcc4` at a ratio of
+ * **0.0356**. Tighter than RSHADE's 0.083, so the borrowed bound was not
+ * conservative; it was loose, and pointed at the wrong quantity.
+ *
+ * ── AND THE PAIR IT PROTECTS IS ONE NOBODY CAN SEE ───────────────────────
+ * `#f0e4c8` and `#e6dcc4` are **13 RGB units apart** — two creams, indistinct
+ * side by side. Crossing that boundary costs a reader nothing. Ignoring pairs
+ * under 28 units, the closest crossable pair is `#f0e4c8` / `#e0d4b4` and the
+ * ceiling is **0.0713**.
+ *
+ * `2 x 0.060` = 0.120 sits ABOVE that, and this is the one number on this page
+ * that is an ART CHOICE rather than a measurement. The argument for making it:
+ * the wall material table is not measured data. It is a lookup on use class,
+ * year band and storey band — a rule of thumb. Protecting its exact values
+ * from a jitter protects a guess, and in the Sunset it protects it at the cost
+ * of every house on the blockface coming out the identical colour, because
+ * every house there shares a use class, an era and a storey count.
+ *
+ * The ROOF is the opposite case and is treated as one: that colour IS measured,
+ * per building, from aerial imagery, and it gets no jitter at all — see
+ * `lib/city/buildings.ts` §roofTone, where the fix was to stop flattening the
+ * measurement rather than to add spread on top of it.
  */
-export const FACADE_TINT_V = 0.105;
+export const FACADE_TINT_V = 0.060;
 
 /**
  * THE HUE IS THE DANGEROUS AXIS AND IT IS BOUNDED FIVE TIMES TIGHTER.
@@ -884,7 +902,7 @@ export const FACADE_TINT_V = 0.105;
  * actually distinguishes by hue.** It widens a blockface; it cannot cross a
  * material.
  */
-export const FACADE_TINT_H = 0.030;
+export const FACADE_TINT_H = 0.022;
 
 /**
  * The record knows less about a footprint it does not class or does not date,
