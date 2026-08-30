@@ -63,6 +63,18 @@ export const CITY_SYSTEMS: readonly CitySystem[] = [
     overlay: true,
   },
   {
+    key: "bike",
+    label: "Bike network",
+    layers: ["bikeways"],
+    note:
+      "720 km of bikeway, each piece carrying the year the city installed it " +
+      "-- one of the few registers on this map that dates itself. 61 dated " +
+      "pieces by 1980, 1,355 by 2005, 4,306 today. A shared lane is drawn " +
+      "dashed because it is a marking on a road and not a lane.",
+    retracts: false,
+    overlay: true,
+  },
+  {
     key: "streets",
     label: "Streets",
     layers: ["streets", "street-detail", "street-markings", "street-uncovered"],

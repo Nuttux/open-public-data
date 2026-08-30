@@ -33,6 +33,7 @@ import { buildingsLayer } from "@/lib/citygl/layers/buildings";
 import { heroesLayer } from "@/lib/citygl/layers/heroes";
 import { capsLayer } from "@/lib/citygl/layers/caps";
 import { railLayer } from "@/lib/citygl/layers/rail";
+import { bikewayLayer } from "@/lib/citygl/layers/bikeways";
 import { streetsLayer } from "@/lib/citygl/layers/streets";
 import { streetDetailLayer } from "@/lib/citygl/layers/street-detail";
 import { streetMarkingsLayer } from "@/lib/citygl/layers/street-markings";
@@ -775,6 +776,20 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
       });
       if (disposed) return;
       if (rail) engine.add(rail);
+
+      /* ── AND WHERE THE CITY PAINTED A BICYCLE ────────────────────────
+         720 km of it, and the register dates 81 % of its own rows without
+         any inference at all — one of the very few clocks on this map that
+         needs no argument. `layers/bikeways.ts` holds the four classes
+         apart, because a shared lane is a road with a picture of a bicycle
+         on it and drawing it as a lane would overstate the city. */
+      const bikes = await bikewayLayer(data, {
+        scene: engine.scene,
+        elevAt: groundAt,
+        zex: descriptor.look.zexByStep[0],
+      });
+      if (disposed) return;
+      if (bikes) engine.add(bikes);
 
       /* ── THE GROUND HAS A GRID ──────────────────────────────────────
          The published assessor block rings, filled warm and translucent under
