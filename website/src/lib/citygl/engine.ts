@@ -79,6 +79,7 @@ import type { CityDescriptor } from "./descriptor";
 import { sunRig, type SunRig } from "./light";
 import { detectQuality, type QualitySettings } from "./quality";
 import { cityTemporal, setTemporalKeep, type Temporal } from "./temporal";
+import { applySystem } from "./systems";
 
 /** what the post chain may put on the glass — see `CityEngine.outputFor` */
 export type PostDebug = "scene" | "ao" | "air" | "tilt";
@@ -1098,6 +1099,24 @@ export class CityEngine {
   }
 
   /** Stop, leaving the year where it stopped. */
+  /**
+   * Light one system -- "public transport", "streets", "buildings" -- and let
+   * the rest of the city go quiet. `null` restores it.
+   *
+   * See `systems.ts`: this is a multiply on each material's own colour, so it
+   * costs no geometry and is exactly reversible. The count comes back so a
+   * caller can tell a mode that did nothing from one that is not wired.
+   */
+  setSystem(key: string | null): number {
+    const touched = applySystem(this.scene, key);
+    this.system = key;
+    if (touched) this.invalidate();
+    return touched;
+  }
+
+  /** which system is lit, if any */
+  system: string | null = null;
+
   pause(): void {
     this.clock = null;
   }

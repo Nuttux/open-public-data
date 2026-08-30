@@ -214,6 +214,29 @@ const RAIL_RUNG = 6.5;
  * front of it, and does not float over a roof. */
 const RAIL_SEAT_M = 10;
 
+/* ── AND AT CITY ZOOM THE TRACK IS HALF A PIXEL ────────────────────────────
+ * Asked for a "public transport" mode that shows the network expanding, the
+ * honest obstacle is arithmetic: the whole city spans about 15 km across 1,152
+ * pixels, so 13 metres land on one pixel and a 6.6 m track is HALF of one.
+ * Brightening it, muting the city around it and lifting it out of depth all
+ * moved 56.6 % of the frame and left the network exactly as findable as
+ * before, because none of those things make a sub-pixel line wider.
+ *
+ * So the mode gets a DIAGRAM: one ribbon a segment at a width chosen to read
+ * on screen rather than to be true, drawn over the city and coloured by what
+ * kind of line it is. It is the transit-map convention and it is a MODE --
+ * clicked for, labelled, and handed back to the real track at close zoom,
+ * where the ballast and sleepers are legible and a fat ribbon would be a lie.
+ *
+ * 30 m is about 2.3 px at the whole city and 5.5 at a district, which is a
+ * line you can follow; by the street camera the real track is drawn instead. */
+const OVERLAY_W_M = 30;
+const OVERLAY_C: Record<string, number> = {
+  cable: 0xb4472e,
+  streetcar: 0xc8892f,
+  metro: 0x2f6fb4,
+};
+
 /**
  * ── EVERY WIDTH BELOW WAS RE-DERIVED FROM THE CAMERAS, NOT NUDGED ───────
  *
@@ -443,6 +466,9 @@ export async function railLayer(
   const tPos: number[] = [];
   const tCol: number[] = [];
   const tIdx: number[] = [];
+  const oPos: number[] = [];
+  const oCol: number[] = [];
+  const oIdx: number[] = [];
   const off = GAUGE_M / 2;
   let zex = o.zex;
 
@@ -464,6 +490,7 @@ export async function railLayer(
   /** which buffer a quad lands in — the matte bed, or the steel */
   const bed = { pos, col, idx };
   const ties = { pos: tPos, col: tCol, idx: tIdx };
+  const over = { pos: oPos, col: oCol, idx: oIdx };
   const steel = { pos: sPos, col: sCol, idx: sIdx };
   let into = bed;
   let liftM = RAIL_BED_LIFT_M;
@@ -495,12 +522,12 @@ export async function railLayer(
      alignment older than the map's first frame -- the cable franchises and
      Market Street -- and sorts to the front, so it is drawn in every year. */
   const dated = [...file.segs].sort((a, b) => (a[5] || 0) - (b[5] || 0));
-  const marks: { year: number; bed: number; ties: number; steel: number }[] = [];
+  const marks: { year: number; bed: number; ties: number; steel: number; over: number }[] = [];
   let lastYear = -1;
   for (const [x0, y0, x1, y1, kind, segYear] of dated) {
     const yr = segYear || 0;
     if (yr !== lastYear) {
-      if (lastYear >= 0) marks.push({ year: lastYear, bed: idx.length, ties: tIdx.length, steel: sIdx.length });
+      if (lastYear >= 0) marks.push({ year: lastYear, bed: idx.length, ties: tIdx.length, steel: sIdx.length, over: oIdx.length });
       lastYear = yr;
     }
     const dx = x1 - x0;
@@ -573,10 +600,18 @@ export async function railLayer(
     into = steel;
     liftM = RAIL_STEEL_LIFT_M;
     for (const sgn of [-off, off]) rib(RAIL_W, RAIL_C, sgn);
+
+    /* and the diagram ribbon: ONE quad for the whole segment, wide enough to
+       read at the city and district cameras, in the line's own colour */
+    into = over;
+    liftM = RAIL_STEEL_LIFT_M;
+    quad(x0, y0, x1, y1, nx, ny, OVERLAY_W_M,
+         OVERLAY_C[kind as string] ?? OVERLAY_C.metro);
+
     into = bed;
     liftM = RAIL_BED_LIFT_M;
   }
-  if (lastYear >= 0) marks.push({ year: lastYear, bed: idx.length, ties: tIdx.length, steel: sIdx.length });
+  if (lastYear >= 0) marks.push({ year: lastYear, bed: idx.length, ties: tIdx.length, steel: sIdx.length, over: oIdx.length });
 
   /** one buffer set -> one mesh, so the two can carry different materials */
   const build = (
@@ -665,11 +700,24 @@ export async function railLayer(
      Its own mesh gets its own seat, and a seat is depth along the view axis,
      which costs nothing on screen. */
   const tieMesh = build(tPos, tCol, tIdx, bedMat, RAIL_RUNG + 0.05);
+  /* the diagram ribbon carries its own matte material so the city's sun does
+     not shade a thing that is meant to be read rather than lit */
+  const overMat = new MeshStandardMaterial({
+    vertexColors: true, roughness: 1, metalness: 0,
+    depthTest: false, depthWrite: false,
+  });
+  const overMesh = build(oPos, oCol, oIdx, overMat, RAIL_RUNG + 0.2);
+  overMesh.mesh.userData.layer = "rail-overlay";
+  /* off until a reader asks for the transport system, and off again the moment
+     the camera is close enough for the real track to be legible */
+  overMesh.mesh.visible = false;
+  overMesh.mesh.userData.systemLit = false;
+  overMesh.mesh.userData.stepOK = true;
   /* the steel sits ON the sleepers */
   const steelMesh = build(sPos, sCol, sIdx, steelMat, RAIL_RUNG + 0.1);
   const mesh = bedMesh.mesh;
   const posArr = bedMesh.posArr;
-  const meshes = [bedMesh, tieMesh, steelMesh];
+  const meshes = [bedMesh, tieMesh, steelMesh, overMesh];
 
   /* ── THE BAND'S EXAGGERATION IS A SCALE, NOT SOMETHING TO BAKE ────────
      This layer used to multiply `zex` into every vertex and leave the mesh at
@@ -698,9 +746,16 @@ export async function railLayer(
     name: "rail",
     trackKm: file.trackKm,
     kinds,
-    onStep(_step: number, z: number): void {
+    onStep(step: number, z: number): void {
       zex = z;
       for (const b of meshes) b.mesh.scale.y = zex;
+      /* the diagram is for the cameras where the real track is sub-pixel. At
+         the closest band the ballast and sleepers read on their own and a 30 m
+         ribbon would be three lanes wide, so it stands down. */
+      const u = overMesh.mesh.userData as { systemLit?: boolean; stepOK?: boolean };
+      u.stepOK = step < 2;
+      overMesh.mesh.visible =
+        overMesh.mesh.geometry.drawRange.count > 0 && u.systemLit === true && u.stepOK;
     },
     onYear(year: number | undefined): void {
       /* ── THE TRACK ARRIVES AS THE CITY PAID FOR IT ────────────────────
@@ -717,23 +772,30 @@ export async function railLayer(
       let bed = idx.length;
       let tie = tIdx.length;
       let steel = sIdx.length;
+      let over_ = oIdx.length;
       if (year !== undefined) {
         bed = 0;
         tie = 0;
         steel = 0;
+        over_ = 0;
         for (const m of marks) {
           if (m.year > year) break;
           bed = m.bed;
           tie = m.ties;
           steel = m.steel;
+          over_ = m.over;
         }
       }
       for (const b of meshes) {
         const ro = b.mesh.renderOrder;
-        const count =
-          ro >= RAIL_RUNG + 0.1 ? steel : ro >= RAIL_RUNG + 0.05 ? tie : bed;
+        const isOverlay = ro >= RAIL_RUNG + 0.2;
+        const count = isOverlay ? over_
+          : ro >= RAIL_RUNG + 0.1 ? steel
+          : ro >= RAIL_RUNG + 0.05 ? tie : bed;
         b.mesh.geometry.setDrawRange(0, count);
-        b.mesh.visible = count > 0;
+        const u = b.mesh.userData as { systemLit?: boolean; stepOK?: boolean };
+        b.mesh.visible = count > 0
+          && (!isOverlay || (u.systemLit === true && u.stepOK !== false));
       }
     },
     dispose(): void {
