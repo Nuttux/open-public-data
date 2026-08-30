@@ -298,7 +298,15 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
     if (r) r.textContent = String(v);
   }, []);
   const [playing, setPlaying] = useState(false);
-  const [speed, setSpeed] = useState(2);
+  /* ── AND THE DEFAULT OF A MULTIPLIER IS ONE ────────────────────────────
+     It opened on 2×, which is a control saying "twice" with nothing to be
+     twice OF. Daniel: *"wy is 2x the default speed and not 1x?"* — and there
+     is no answer, because 2 was never argued for anywhere in this file. The
+     paragraph above defines what 1× MEANS — the century in forty seconds,
+     "which is a walk" — so that is what the page should open at and what the
+     other two stops are multiples of. A reader who wants it faster presses
+     the button, and now the button's label is true. */
+  const [speed, setSpeed] = useState(1);
   /** which system is lit — see `lib/citygl/systems.ts` */
   const [system, setSystem] = useState<string | null>(null);
   const playRate = speed * SPEED_1X_YPS;
