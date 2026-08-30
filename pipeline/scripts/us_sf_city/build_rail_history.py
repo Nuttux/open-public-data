@@ -1,0 +1,418 @@
+#!/usr/bin/env python3
+"""THE NETWORK THAT WAS TORN UP, DRAWN FROM THE WORDS THAT AUTHORISED IT.
+
+`build_rail.py` draws today's ten lines and dates each from the record. It
+cannot draw what no longer exists, because its geometry is DataSF's CURRENT
+route file. San Francisco's system peaked around 1920 at roughly four times
+what survived, so the century scrub shows a network that only ever grows.
+
+── AND THE MISSING GEOMETRY IS ALREADY IN THE CITY ──────────────────────────
+The tracks were lifted; the STREETS THEY RAN ON ARE STILL THERE. And the Board
+described every line it authorised as a sequence of streets, in words:
+
+    "a line from the southwesterly portal of the Twin Peaks tunnel over Ulloa
+     street, Fifteenth avenue and Taraval street to Twentieth avenue"
+                                    -- Ordinance 4527, approved 25 Sept 1917
+
+So a route is a LOOKUP, not a drawing. Take the street names out of the
+ordinance, ask the centreline file for each one, stitch them in the order the
+ordinance gives, and the line is on the map at its own date. Nothing is traced
+off a scan, nothing is borrowed, and the citation is the ordinance itself.
+
+── WHY NOT A HISTORICAL MAP ─────────────────────────────────────────────────
+Checked before writing this. OpenStreetMap holds 74 former-railway ways in the
+SF box and every one is freight -- the State Belt Railroad, Harriet Street --
+with not one carrying a date. The best digitisation that exists,
+`sfstreetcars.co`, publishes no licence, no repository and no data endpoint,
+and covers two snapshots (1940, 1960) rather than a century. The Library of
+Congress and USGS both refuse scripted access. A scan would in any case have to
+be georeferenced and traced, which produces geometry we AUTHOR; this produces
+geometry the city already publishes, selected by words the city already wrote.
+
+── WHAT THIS CANNOT DO, STATED UP FRONT ─────────────────────────────────────
+* A street that was renamed or destroyed cannot be looked up. The miss rate is
+  printed, never hidden, and a route that loses a street is reported rather
+  than quietly shortened.
+* An ordinance gives endpoints ("to Twentieth avenue") and this takes the WHOLE
+  named street unless the endpoint resolves. Overreach is measured below.
+* The private companies -- the Market Street Railway and the United Railroads,
+  which owned most of the mileage -- appear in FRANCHISE ordinances, not in the
+  construction contracts this first pass reads.
+
+  python3 build_rail_history.py --check      # resolve the seeded routes only
+  python3 build_rail_history.py              # and write the layer's file
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import math
+import pathlib
+import re
+import urllib.parse
+import urllib.request
+
+ROOT = pathlib.Path("/Users/daniel/code/open-public-data")
+CACHE = ROOT / "pipeline/scripts/us_sf_city/cache_streets"
+MANIFEST = ROOT / "website/public/data/us/sf/city/manifest.json"
+OUT = ROOT / "website/public/data/us/sf/city/base/rail-history.json"
+SEED = ROOT / "pipeline/seeds/sf_rail_routes.json"
+
+CENTRELINES = "https://data.sfgov.org/resource/3psu-pn9h.geojson"
+
+# the ordinances spell numbers; the centreline file abbreviates them
+WORD_NUM = {
+    "first": "1ST", "second": "2ND", "third": "3RD", "fourth": "4TH",
+    "fifth": "5TH", "sixth": "6TH", "seventh": "7TH", "eighth": "8TH",
+    "ninth": "9TH", "tenth": "10TH", "eleventh": "11TH", "twelfth": "12TH",
+    "thirteenth": "13TH", "fourteenth": "14TH", "fifteenth": "15TH",
+    "sixteenth": "16TH", "seventeenth": "17TH", "eighteenth": "18TH",
+    "nineteenth": "19TH", "twentieth": "20TH", "twenty-first": "21ST",
+    "twenty-second": "22ND", "twenty-third": "23RD", "twenty-fourth": "24TH",
+    "twenty-fifth": "25TH", "twenty-sixth": "26TH", "twenty-seventh": "27TH",
+    "twenty-eighth": "28TH", "twenty-ninth": "29TH", "thirtieth": "30TH",
+    "thirty-third": "33RD", "thirty-sixth": "36TH", "fortieth": "40TH",
+    "forty-eighth": "48TH",
+}
+
+
+def norm(name: str) -> str:
+    """An ordinance's street name as the centreline file spells it.
+
+    The file keys on a BASE name -- `TARAVAL`, not `TARAVAL ST` -- and querying
+    the full `streetname` returns zero rows, which looks exactly like a street
+    that does not exist. That mistake is worth a line of code and a comment.
+    """
+    s = name.strip().lower()
+    s = re.sub(r"\b(street|avenue|av|ave|boulevard|blvd|road|way|drive|dr)\b", " ", s)
+    s = re.sub(r"[^a-z0-9\- ]", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    for word, num in WORD_NUM.items():
+        if s == word:
+            return num
+    return s.upper()
+
+
+def load_streets() -> dict[str, list[list[tuple[float, float]]]]:
+    """Every centreline in the city, in world metres, keyed by base name."""
+    CACHE.mkdir(parents=True, exist_ok=True)
+    blob = CACHE / "centrelines.geojson"
+    if not blob.exists() or blob.stat().st_size < 10_000:
+        parts, offset = [], 0
+        while True:
+            q = f"{CENTRELINES}?$limit=5000&$offset={offset}"
+            req = urllib.request.Request(q, headers={"User-Agent": "qipu-rail/1"})
+            with urllib.request.urlopen(req, timeout=300) as r:
+                page = json.loads(r.read()).get("features", [])
+            if not page:
+                break
+            parts.extend(page)
+            offset += 5000
+            print(f"  fetched {len(parts):,} centrelines", end="\r", flush=True)
+        blob.write_text(json.dumps({"features": parts}))
+        print(f"  fetched {len(parts):,} centrelines, cached")
+    feats = json.loads(blob.read_text())["features"]
+
+    P = json.loads(MANIFEST.read_text())["proj"]
+    mx = P["mpd"] * P["cosl"]
+    out: dict[str, list[list[tuple[float, float]]]] = {}
+    for ft in feats:
+        base = (ft["properties"].get("street") or "").strip().upper()
+        if not base:
+            continue
+        g = ft.get("geometry") or {}
+        coords = g.get("coordinates") or []
+        parts_ = coords if g.get("type") == "MultiLineString" else [coords]
+        for part in parts_:
+            line = [((lon - P["lon0"]) * mx, (lat - P["lat0"]) * P["mpd"])
+                    for lon, lat in part]
+            if len(line) > 1:
+                out.setdefault(base, []).append(line)
+    return out
+
+
+def length_m(lines: list[list[tuple[float, float]]]) -> float:
+    return sum(
+        math.dist(a, b) for line in lines for a, b in zip(line, line[1:])
+    )
+
+
+def merge(lines: list[list[tuple[float, float]]]) -> list[list[tuple[float, float]]]:
+    """One street's scattered centreline pieces, joined where they touch.
+
+    The file publishes a street as a block-by-block collection, so measuring
+    "how far along Taraval" needs the pieces in order first. Endpoints that
+    coincide within a metre are the same node.
+    """
+    pool = [list(ln) for ln in lines]
+    out: list[list[tuple[float, float]]] = []
+    while pool:
+        cur = pool.pop()
+        joined = True
+        while joined:
+            joined = False
+            for i, other in enumerate(pool):
+                for a_end, o_end in ((0, 0), (0, -1), (-1, 0), (-1, -1)):
+                    if math.dist(cur[a_end], other[o_end]) < 1.0:
+                        seg = other if o_end == 0 else other[::-1]
+                        cur = (cur[::-1] if a_end == 0 else cur) + seg[1:]
+                        pool.pop(i)
+                        joined = True
+                        break
+                if joined:
+                    break
+        out.append(cur)
+    return out
+
+
+def arc(poly: list[tuple[float, float]]) -> list[float]:
+    d = [0.0]
+    for a, b in zip(poly, poly[1:]):
+        d.append(d[-1] + math.dist(a, b))
+    return d
+
+
+def nearest_t(poly: list[tuple[float, float]], pt: tuple[float, float]) -> tuple[float, float]:
+    """(distance along `poly` of the closest vertex, how close it got)."""
+    d = arc(poly)
+    best, bt = float("inf"), 0.0
+    for i, v in enumerate(poly):
+        dd = math.dist(v, pt)
+        if dd < best:
+            best, bt = dd, d[i]
+    return bt, best
+
+
+def meet(a: list[tuple[float, float]], b: list[tuple[float, float]]) -> tuple[float, float, float]:
+    """Where two streets cross: distance along a, along b, and how near."""
+    best = (0.0, 0.0, float("inf"))
+    da, db = arc(a), arc(b)
+    for i, va in enumerate(a):
+        for j, vb in enumerate(b):
+            dd = math.dist(va, vb)
+            if dd < best[2]:
+                best = (da[i], db[j], dd)
+    return best
+
+
+def clip(poly: list[tuple[float, float]], t0: float, t1: float) -> list[tuple[float, float]]:
+    if t1 < t0:
+        t0, t1 = t1, t0
+    d = arc(poly)
+    return [v for v, dv in zip(poly, d) if t0 - 1e-6 <= dv <= t1 + 1e-6]
+
+
+def chain(seq: list[list[list[tuple[float, float]]]], names: list[str],
+          ends: list[list[list[tuple[float, float]]]] | None = None) -> tuple[list, list[str]]:
+    """A ROUTE IS A CONNECTED PATH, NOT A UNION OF WHOLE STREETS.
+
+    Taking every metre of every named street put the Taraval extension on all
+    of Fifteenth Avenue, which runs the width of the city -- 17.1 km for a line
+    the ordinance describes in about four. So each street is cut where it meets
+    the one before and the one after it, which is exactly what "over Ulloa
+    street, Fifteenth avenue and Taraval street" describes.
+
+    EVERY PIECE IS TESTED, not the longest one. A street arrives as a bag of
+    block-long centrelines that `merge` joins into a few runs, and the run that
+    happens to be longest is not necessarily the run the next street crosses --
+    testing only that one reported Ulloa and Fifteenth Avenue as 2.6 km apart
+    when they intersect.
+    """
+    JOIN_TOL = 60.0
+    pieces = [sorted(merge(lines), key=lambda q: -arc(q)[-1]) for lines in seq]
+    # the ordinance's own termini -- "from Market street and Van Ness avenue TO
+    # Sixteenth and Church streets" -- as geometry to cut the ends against.
+    # Without them a one-street route has no junction at all and resolves to
+    # nothing, and a route's last street runs to the edge of the city.
+    term = [None, None]
+    if ends:
+        for k in (0, 1):
+            if ends[k]:
+                merged = sorted(merge(ends[k]), key=lambda q: -arc(q)[-1])
+                term[k] = merged
+    warn: list[str] = []
+    # for each consecutive pair, the closest approach over ALL piece pairs
+    links: list[tuple[int, int, float, float, float] | None] = []
+    for i in range(len(pieces) - 1):
+        best = None
+        for ia, pa in enumerate(pieces[i]):
+            for ib, pb in enumerate(pieces[i + 1]):
+                ta, tb, gap = meet(pa, pb)
+                if best is None or gap < best[4]:
+                    best = (ia, ib, ta, tb, gap)
+        if best is None or best[4] > JOIN_TOL:
+            warn.append(f"{names[i]}~{names[i+1]} do not meet"
+                        + (f" ({best[4]:.0f} m)" if best else ""))
+            links.append(None)
+        else:
+            links.append(best)
+
+    out: list[list[tuple[float, float]]] = []
+    for i, group in enumerate(pieces):
+        prev_link = links[i - 1] if i > 0 else None
+        next_link = links[i] if i < len(links) else None
+        idx_prev = prev_link[1] if prev_link else None
+        idx_next = next_link[0] if next_link else None
+        idx = idx_next if idx_next is not None else idx_prev
+        if idx is None:
+            idx = 0 if group else None
+        if idx is None:
+            continue
+        if idx_prev is not None and idx_next is not None and idx_prev != idx_next:
+            warn.append(f"{names[i]} is not one run between its junctions")
+            idx = idx_next
+        poly = group[idx]
+        total = arc(poly)[-1]
+        t_prev = prev_link[3] if (prev_link and prev_link[1] == idx) else None
+        t_next = next_link[2] if (next_link and next_link[0] == idx) else None
+        lo = 0.0 if t_prev is None else t_prev
+        hi = total if t_next is None else t_next
+        # an END of the route keeps a bounded run past its only junction: the
+        # ordinance names a terminus ("to Twentieth avenue") that this pass
+        # does not resolve, so the alternative is the whole street.
+        # a named terminus cuts the end; otherwise a bounded run, because the
+        # alternative is the whole street across the city
+        if t_prev is None and i == 0 and term[0]:
+            best = min((meet(poly, q) for q in term[0]), key=lambda m: m[2])
+            if best[2] <= JOIN_TOL:
+                t_prev = best[0]
+            else:
+                warn.append(f"terminus for {names[i]} not found ({best[2]:.0f} m)")
+        if t_next is None and i == len(pieces) - 1 and term[1]:
+            best = min((meet(poly, q) for q in term[1]), key=lambda m: m[2])
+            if best[2] <= JOIN_TOL:
+                t_next = best[0]
+            else:
+                warn.append(f"terminus for {names[i]} not found ({best[2]:.0f} m)")
+        lo = 0.0 if t_prev is None else t_prev
+        hi = total if t_next is None else t_next
+        if t_prev is None and t_next is not None:
+            lo = max(0.0, t_next - 1600.0)
+        if t_next is None and t_prev is not None:
+            hi = min(total, t_prev + 1600.0)
+        piece = clip(poly, lo, hi)
+        if len(piece) > 1:
+            out.append(piece)
+    return out, warn
+
+
+def resolve(route: dict, streets: dict) -> dict:
+    """A route's street list -> the geometry the city publishes for it."""
+    got, missed = [], []
+    for name in route["streets"]:
+        key = norm(name)
+        lines = streets.get(key)
+        if lines:
+            got.append({"street": name, "key": key, "lines": lines})
+        else:
+            missed.append(name)
+    ends = [streets.get(norm(route.get("from") or "")) or [],
+            streets.get(norm(route.get("to") or "")) or []]
+    path, warn = chain([g["lines"] for g in got], [g["street"] for g in got], ends)
+    km = length_m(path) / 1000
+    return {"resolved": got, "missed": missed, "km": km, "path": path, "warn": warn}
+
+
+def crosscheck(routes: list[dict], tol: float = 45.0) -> None:
+    """DOES A ROUTE READ OFF 1917 LAND ON THE TRACK THAT IS STILL THERE?
+
+    The strongest check available needs no scan at all. Where a line SURVIVES,
+    the route resolved from the ordinance must lie on top of the geometry
+    DataSF publishes today: the J still runs on Church Street, the L still runs
+    Ulloa-Taraval. So every vertex is scored against `base/rail.json`, and a
+    route that reads correctly comes out mostly covered.
+
+    A LOW SCORE IS NOT AUTOMATICALLY WRONG. A line that was cut back, or a
+    stretch abandoned, SHOULD miss -- that is the network this exists to
+    recover. The number is a flag to go and look at, not a verdict, and it is
+    printed for every route rather than only the comfortable ones.
+    """
+    rail = json.loads((ROOT / "website/public/data/us/sf/city/base/rail.json").read_text())
+    pts = []
+    for x0, y0, x1, y1, _kind, _yr in rail["segs"]:
+        pts.append((x0, y0))
+        pts.append((x1, y1))
+    # a coarse grid so the scoring is not quadratic over 1,900 points a vertex
+    cell = 60.0
+    grid: dict[tuple[int, int], list[tuple[float, float]]] = {}
+    for x, y in pts:
+        grid.setdefault((int(x // cell), int(y // cell)), []).append((x, y))
+    def near(x: float, y: float) -> float:
+        gx, gy = int(x // cell), int(y // cell)
+        best = float("inf")
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for px, py in grid.get((gx + dx, gy + dy), ()):
+                    best = min(best, math.hypot(px - x, py - y))
+        return best
+    print(f"\n{'route':40s} {'on today track':>15s}   verdict")
+    for r in routes:
+        vs = [v for ln in r["path"] for v in ln]
+        if not vs:
+            print(f"{r['name'][:40]:40s} {'no geometry':>15s}")
+            continue
+        hit = sum(1 for x, y in vs if near(x, y) <= tol)
+        pct = 100 * hit / len(vs)
+        verdict = ("lands on the surviving line" if pct >= 70 else
+                   "partly on it -- LOOK" if pct >= 25 else
+                   "off the modern network (abandoned, or wrong)")
+        print(f"{r['name'][:40]:40s} {pct:14.1f}%   {verdict}")
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--check", action="store_true",
+                    help="resolve and report, write nothing")
+    ap.add_argument("--crosscheck", action="store_true",
+                    help="score each resolved route against today's track")
+    a = ap.parse_args()
+
+    streets = load_streets()
+    print(f"{len(streets):,} distinct street names carry geometry")
+
+    seed = json.loads(SEED.read_text())
+    routes = seed["routes"]
+    total_km = 0.0
+    misses = 0
+    resolved_routes = []
+    print(f"\n{'route':34s} {'year':>5s} {'streets':>8s} {'km':>7s}  missing")
+    for r in routes:
+        res = resolve(r, streets)
+        total_km += res["km"]
+        misses += len(res["missed"])
+        resolved_routes.append({**r, **res})
+        miss = ", ".join(res["missed"] + res["warn"]) if (res["missed"] or res["warn"]) else "-"
+        print(f"{r['name'][:34]:34s} {r['year']:5d} "
+              f"{len(res['resolved']):3d}/{len(r['streets']):<4d} "
+              f"{res['km']:7.2f}  {miss}")
+    print(f"\n{total_km:.1f} km over {len(routes)} routes, {misses} street(s) unresolved")
+
+    if a.crosscheck:
+        crosscheck(resolved_routes)
+    if a.check or a.crosscheck:
+        return
+
+    P = json.loads(MANIFEST.read_text())["proj"]
+    payload = {
+        "note": "the historic network, resolved from the Board's own route "
+                "descriptions onto DataSF street centrelines. Geometry is "
+                "TODAY'S streets; the SELECTION and the DATE are the record's.",
+        "proj": {"lon0": P["lon0"], "lat0": P["lat0"]},
+        "routes": [
+            {
+                "name": r["name"], "year": r["year"], "kind": r["kind"],
+                "ended": r.get("ended"),
+                "source": r["source"], "quote": r["quote"],
+                "missed": r["missed"],
+                "lines": [[[round(x, 1), round(y, 1)] for x, y in ln]
+                          for ln in r["path"]],
+            }
+            for r in resolved_routes
+        ],
+    }
+    OUT.write_text(json.dumps(payload) + "\n")
+    print(f"wrote {OUT} {OUT.stat().st_size:,} bytes")
+
+
+if __name__ == "__main__":
+    main()

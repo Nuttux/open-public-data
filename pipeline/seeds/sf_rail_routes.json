@@ -1,0 +1,47 @@
+{
+  "_what": "Rail routes as the Board of Supervisors described them: a sequence of STREET NAMES, a date, and the words it was written in.",
+  "_how": [
+    "Each route is a list of streets, copied from the ordinance, claim or contract",
+    "quoted beside it. build_rail_history.py resolves each name against DataSF's",
+    "street centrelines and stitches the geometry. Nothing here is drawn or traced;",
+    "the only thing being asserted is WHICH STREETS a line ran on and WHEN.",
+    "",
+    "`streets` is the ordered list the record gives. `quote` is verbatim OCR from the",
+    "volume named in `source`, lightly de-hyphenated where the scan broke a word.",
+    "",
+    "A route whose street cannot be resolved is REPORTED, never silently shortened --",
+    "a renamed or vanished street is a real gap and hiding it would make the map lie",
+    "about its own coverage."
+  ],
+  "_status": "first pass: the municipally built lines, whose construction the Board paid for and therefore described. The private companies -- United Railroads and the Market Street Railway, most of the mileage -- are in FRANCHISE ordinances and are not here yet.",
+  "routes": [
+    {
+      "name": "Church street line (J)",
+      "year": 1917,
+      "kind": "streetcar",
+      "streets": [
+        "Church"
+      ],
+      "source": "journalofproceed1917sanfrich",
+      "quote": "For construction of Church street line, from Market street and Van Ness avenue to Sixteenth and Church streets, Section \"A\", Contract No. 23",
+      "from": "Market",
+      "to": "Sixteenth"
+    },
+    {
+      "name": "Twin Peaks tunnel line, Taraval extension (L)",
+      "year": 1917,
+      "kind": "streetcar",
+      "streets": [
+        "Ulloa",
+        "Fifteenth",
+        "Taraval"
+      ],
+      "source": "journalofproceed1918sanfrich",
+      "quote": "Ordinance No. 4527 (New Series), approved by the Mayor September 25, 1917, providing for the construction of a line from the southwesterly portal of the Twin Peaks tunnel over Ulloa street, Fifteenth avenue and Taraval street to Twentieth avenue",
+      "to": "Twentieth",
+      "from": "West Portal",
+      "from_note": "the ordinance's terminus is 'the southwesterly portal of the Twin Peaks tunnel', which is a place and not a street. West Portal Avenue is the street at that portal and is named for it. This is the one INTERPRETATION in the file and it is marked: without it the run along Ulloa has no start and falls back to an arbitrary length."
+    }
+  ],
+  "_dropped": "Ocean View line (M): its quote is a CONSTRUCTION PAYMENT and carries no street sequence. The streets first listed here were recalled rather than read, which is the exact failure this file exists to prevent, so the route is out until an ordinance describing it is found."
+}
