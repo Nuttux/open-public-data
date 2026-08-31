@@ -28,6 +28,7 @@ import {
   TILE_SASH,
   TILE_SHED,
   TILE_SHOPFRONT,
+  TILE_STUCCO,
   facadeAtlas,
   facadeGroundTile,
   facadeModuleM,
@@ -169,20 +170,34 @@ describe("facadeTile — the record's own refusals bind first", () => {
 describe("facadeTile — which column picks which vocabulary", () => {
   const T = (n: string): number => FA_TYPES.indexOf(n);
 
-  it("splits the punched wall on the roll's own era bands", () => {
+  it("splits the wall THREE ways on the roll's own era bands", () => {
+    /* This asserted a two-way split, `SASH` before 1925 and `PUNCHED` after,
+       so 1925-50 wore the post-war wall. The inter-war stucco is neither end
+       of that range and is most of the Sunset and the Richmond, so it has its
+       own drawing — `facade.ts` §three drawings, not three sets of numbers. */
     for (const type of ["HOUSE", "FLATS", "APARTMENT", "HOTEL", "INSTITUTION"]) {
       expect(facadeTile(key({ type: T(type), era: 0 }))).toBe(TILE_SASH);
       expect(facadeTile(key({ type: T(type), era: 1 }))).toBe(TILE_SASH);
-      expect(facadeTile(key({ type: T(type), era: 2 }))).toBe(TILE_PUNCHED);
+      expect(facadeTile(key({ type: T(type), era: 2 }))).toBe(TILE_STUCCO);
       expect(facadeTile(key({ type: T(type), era: 3 }))).toBe(TILE_PUNCHED);
     }
+  });
+
+  it("gives the three residential eras three DIFFERENT cells", () => {
+    /* the point of the split: reading different numbers off one drawing was
+       measured at 0.5 % of a building, because FA_VOCAB's rows differ by under
+       15 %. Three cells is three layouts. */
+    const seen = new Set(
+      [0, 1, 2, 3, 4].map((era) => facadeTile(key({ type: T("HOUSE"), era }))),
+    );
+    expect(seen.size).toBeGreaterThanOrEqual(3);
   });
 
   it("gives a curtain wall exactly where faGlassy does", () => {
     /* `faGlassy`: era >= 4 of any class, or an OFFICE from 1950 on */
     expect(facadeTile(key({ type: T("OFFICE"), era: 3 }))).toBe(TILE_CURTAIN);
     expect(facadeTile(key({ type: T("OFFICE"), era: 4 }))).toBe(TILE_CURTAIN);
-    expect(facadeTile(key({ type: T("OFFICE"), era: 2 }))).toBe(TILE_PUNCHED);
+    expect(facadeTile(key({ type: T("OFFICE"), era: 2 }))).toBe(TILE_STUCCO);
     for (const type of ["HOUSE", "FLATS", "APARTMENT", "RETAIL", "HOTEL", "INSTITUTION"]) {
       expect(facadeTile(key({ type: T(type), era: 4 }))).toBe(TILE_CURTAIN);
       expect(facadeTile(key({ type: T(type), era: 3 }))).toBe(TILE_PUNCHED);

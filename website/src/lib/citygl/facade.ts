@@ -114,21 +114,19 @@ export const TILE_SHED = 4;
 export const TILE_DECK = 5;
 export const TILE_PLAIN = 6;
 export const TILE_SHOPFRONT = 7;
+/** the inter-war stucco wall — square openings in a lot of wall. Its own cell
+ *  because eras 0 and 3 are the two ends of a range and 1925-50 is neither. */
+export const TILE_STUCCO = 8;
 
 export const FACADE_TILES: readonly string[] = [
-  "BLANK",
-  "SASH",
-  "PUNCHED",
-  "CURTAIN",
-  "SHED",
-  "DECK",
-  "PLAIN",
-  "SHOPFRONT",
+  "blank", "sash", "punched", "curtain",
+  "shed", "deck", "plain", "shopfront",
+  "stucco",
 ];
 
 /** the atlas grid. 4 x 2 holds the eight exactly, with no dead cell. */
 export const FACADE_COLS = 4;
-export const FACADE_ROWS = 2;
+export const FACADE_ROWS = 3;
 
 /**
  * THE NOMINAL BAND THE TILE IS DRAWN ON, AND WHY IT IS 2.4 m AND NOT 3.4.
@@ -277,7 +275,21 @@ export function facadeTile(o: FacadeKey): number {
   if (name === "INDUSTRIAL") return TILE_SHED;
   if (name === "GARAGE") return TILE_DECK;
   if (o.glassy) return TILE_CURTAIN;
-  return o.era <= 1 ? TILE_SASH : TILE_PUNCHED;
+  /* ── THREE DRAWINGS, NOT THREE SETS OF NUMBERS ─────────────────────────
+     The first attempt at style gave each of HOUSE / FLATS / APARTMENT its own
+     cell off `FA_VOCAB`, and they came out indistinguishable — MEASURED, the
+     three rows differ by 2.4-6.2 % in module and 8.7-14.2 % in opening width,
+     which is five pixels on a 128 px tile. Reading different numbers does not
+     make a different design.
+
+     What separates a San Francisco facade by era is its LAYOUT, and the roll
+     publishes the era. Before 1907 the opening is PAIRED and vertical; the
+     inter-war stucco wall is a square hole in a lot of wall; after 1950 it is
+     one wide horizontal light. Those are three drawings and `drawTile` builds
+     them as such. */
+  if (o.era <= 1) return TILE_SASH;      // paired, vertical
+  if (o.era === 2) return TILE_STUCCO;   // square, plain
+  return TILE_PUNCHED;                   // wide, horizontal
 }
 
 /**
@@ -735,6 +747,8 @@ function planOf(tile: number): TilePlan | null {
       return { type: ty("UNCLASSED"), era: 0, shop: false, role: ROLE_BACK, plain: true };
     case TILE_SHOPFRONT:
       return { type: ty("RETAIL"), era: 2, shop: true, role: ROLE_FRONT, plain: false };
+    case TILE_STUCCO:
+      return { type: ty("HOUSE"), era: 2, shop: false, role: ROLE_BACK, plain: false };
     default:
       /* TILE_BLANK. A party wall carries no openings and neither does a wall
          with no published rhythm, so the cell stays exactly the material
@@ -814,35 +828,90 @@ function drawTile(g: CanvasRenderingContext2D, px: number, tile: number): void {
     return;
   }
 
-  /* ── THE ORDINARY OPENING ────────────────────────────────────────────
-     Width `ow` of the bay, height `oh` of the band, standing `sill_m` off
-     the floor — all three straight out of `faceWeights`, which got them from
-     this class's own `FA_VOCAB` row. */
+  /* ── THE ORDINARY OPENING, LAID OUT BY ERA ──────────────────────────
+     `faceWeights` gives the opening's width, height and sill off this class's
+     own `FA_VOCAB` row. What it does NOT give is the LAYOUT — whether the bay
+     carries one light or two, upright or lying down — and that is what makes
+     a pre-fire flat look unlike a post-war one. The roll publishes the era;
+     these are three drawings of it.
+
+     DECLARED, like every other mark in this file. `manifest.facade` already
+     says the roll does not record where a window is and that the vocabulary is
+     a convention per (type, era). This is that convention given three shapes
+     instead of one, which is the difference the eye actually reads. */
   const owF = w.ow / mod;
   const ohF = w.oh / w.bandM;
   const sillF = w.sill_m / w.bandM;
-  const s0 = 0.5 - owF / 2;
-  const s1 = 0.5 + owF / 2;
-  g.fillStyle = `rgba(0, 0, 0, ${glass})`;
-  rect(s0, s1, sillF, sillF + ohF);
-  if (p.plain) return;
 
-  /* THE LIT REVEAL DOWN THE LEFT JAMB. The key light in this frame is upper
-     right — the same light every contact shadow is thrown from — so the jamb
-     that faces it is the left one, and it is the only part of a recessed
-     opening brighter than the wall. `emitFace` draws it 0.035 m wide, which
-     is one pixel of a tile and is what a reveal is. */
-  lit();
-  const rv = Math.max(1 / px, 0.035 / mod);
-  rect(s0, s0 + rv, sillF, sillF + ohF);
+  /** one light, with its head reveal, sill and jamb */
+  const light = (a0: number, a1: number, b0: number, b1: number,
+                 bars: boolean): void => {
+    g.fillStyle = `rgba(0, 0, 0, ${glass})`;
+    rect(a0, a1, b0, b1);
+    if (p.plain) return;
+    /* THE LIT REVEAL DOWN THE LEFT JAMB. The key light in this frame is upper
+       right — the same light every contact shadow is thrown from — so the jamb
+       that faces it is the left one, and it is the only part of a recessed
+       opening brighter than the wall. */
+    lit();
+    const rv = Math.max(1 / px, 0.035 / mod);
+    rect(a0, a0 + rv, b0, b1);
+    /* the HEAD never sees the sky, so it is darker than the glass under it —
+       it is what stops an opening reading as paint on a wall */
+    const headH = Math.max(1 / px, Math.min((b1 - b0) * 0.16, 0.12 / w.bandM));
+    g.fillStyle = `rgba(0, 0, 0, ${Math.min(0.95, glass + 0.28)})`;
+    rect(a0 + rv, a1, b1 - headH, b1);
+    /* the SILL oversails, so it takes light the wall is turned from and drops
+       a shadow on the wall beneath it */
+    const st = Math.max(1 / px, 0.05 / w.bandM);
+    lit();
+    rect(a0 - rv, a1 + rv, b0 - st, b0);
+    g.fillStyle = "rgba(0, 0, 0, 0.20)";
+    rect(a0 - rv, a1 + rv, b0 - st * 2.1, b0 - st);
+    if (!bars) return;
+    /* one mullion and one meeting rail, which is what turns a dark rectangle
+       into a window. The rail sits at 0.54 of the light, not at half: a sash's
+       meeting rail is above centre. */
+    g.fillStyle = `rgba(0, 0, 0, ${glass})`;
+    lit();
+    const bt = Math.max(1 / px, 0.03 / mod);
+    rect((a0 + a1) / 2 - bt, (a0 + a1) / 2 + bt, b0, b1);
+    const rh = Math.max(1 / px, 0.03 / w.bandM);
+    rect(a0, a1, b0 + (b1 - b0) * 0.54 - rh, b0 + (b1 - b0) * 0.54 + rh);
+  };
 
-  /* AND THE GLAZING BAR — one mullion and one meeting rail, which is what
-     turns a dark rectangle into a window. `emitFace` puts the rail at 0.54 of
-     the opening, not at half: a sash's meeting rail sits above centre. */
-  const bt = Math.max(1 / px, 0.035 / mod);
-  rect(0.5 - bt, 0.5 + bt, sillF, sillF + ohF);
-  const rh = Math.max(1 / px, 0.03 / w.bandM);
-  rect(s0, s1, sillF + ohF * 0.54 - rh, sillF + ohF * 0.54 + rh);
+  if (p.era <= 1) {
+    /* ── PAIRED AND UPRIGHT — the pre-1925 flat ───────────────────────
+       Two narrow lights in the bay with a pier between them. This is the
+       vertical emphasis the pre-fire and Edwardian stock is read by, and one
+       wide light in the same bay is the thing that made every era look alike. */
+    const pierF = Math.max(0.055, 0.16 / mod);
+    const eachF = Math.max(0.06, (owF - pierF) / 2);
+    const tallF = Math.min(0.86, ohF * 1.18);
+    const c = 0.5;
+    light(c - pierF / 2 - eachF, c - pierF / 2, sillF, sillF + tallF, true);
+    light(c + pierF / 2, c + pierF / 2 + eachF, sillF, sillF + tallF, true);
+  } else if (p.era === 2) {
+    /* ── SQUARE, IN A LOT OF WALL — the inter-war stucco ──────────────
+       Smaller than the era each side of it and standing higher off the floor.
+       The Sunset and the Richmond are this, and they are 1925-50. */
+    const sqF = Math.min(owF * 0.86, ohF * 0.92);
+    const s0 = 0.5 - sqF / 2;
+    light(s0, s0 + sqF, sillF * 1.15, sillF * 1.15 + sqF * 1.05, true);
+  } else {
+    /* ── WIDE AND LYING DOWN — post-war ───────────────────────────────
+       One light across most of the bay, shallower than it is broad, with no
+       meeting rail: a picture window is not a sash. */
+    const wideF = Math.min(0.90, owF * 1.42);
+    const shortF = Math.max(0.16, ohF * 0.80);
+    const s0 = 0.5 - wideF / 2;
+    light(s0, s0 + wideF, sillF, sillF + shortF, false);
+  }
+
+  /* the slab edge, across the whole tile at the floor */
+  const fl = Math.max(1 / px, 0.045 / w.bandM);
+  g.fillStyle = "rgba(0, 0, 0, 0.13)";
+  rect(0, 1, 0, fl);
 }
 
 // ── the wall's colour, widened honestly ─────────────────────────────────────
