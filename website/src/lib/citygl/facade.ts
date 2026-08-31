@@ -117,11 +117,15 @@ export const TILE_SHOPFRONT = 7;
 /** the inter-war stucco wall — square openings in a lot of wall. Its own cell
  *  because eras 0 and 3 are the two ends of a range and 1925-50 is neither. */
 export const TILE_STUCCO = 8;
+/** the Edwardian / Classical wall — tall paired lights under a heavy cornice */
+export const TILE_CLASSICAL = 9;
+/** the Deco / Streamline wall — horizontal banding, no meeting rail */
+export const TILE_MODERNE = 10;
 
 export const FACADE_TILES: readonly string[] = [
   "blank", "sash", "punched", "curtain",
   "shed", "deck", "plain", "shopfront",
-  "stucco",
+  "stucco", "classical", "moderne",
 ];
 
 /** the atlas grid. 4 x 2 holds the eight exactly, with no dead cell. */
@@ -178,6 +182,8 @@ const A_GLASSM = 1 - FA_V.glassM;
  * the `face` chunk or the `bldg` chunk already ships.
  */
 export interface FacadeKey {
+  /** the surveyed or inferred appearance family, where the caller has one */
+  readonly family?: FaFamily;
   /** `face.ty`, an index into `FA_TYPES` / `manifest.facade.TYPES` */
   readonly type: number;
   /** `faEra(1849 + bldg.yr)`, or **-1** where `FLAG_NOYEAR` says the roll does
@@ -267,6 +273,50 @@ function unclassed(type: number, era: number): boolean {
  *     shed keeps its shape and takes the punched value rather than the
  *     sky-lit one.
  */
+/**
+ * THE SIX APPEARANCE FAMILIES, AND WHY THERE ARE SIX.
+ *
+ * MEASURED on 5,544 buildings the city HAS surveyed, matched to their
+ * footprints: the decade a building was built predicts its appearance family
+ * about **60 %** of the time, and no other published field improves on that —
+ * storeys, units, zoning, lot frontage, lot coverage and neighbourhood were
+ * each tested on a held-out third and none of them beat the decade alone.
+ *
+ * Six is where the trade-off sits. Grouped finer, prediction collapses — the
+ * exact style over 63 names is 43 %. Grouped coarser, a third of the city ends
+ * up in one bucket and the map goes uniform again, which is the thing this is
+ * for. Both ends were measured before six was chosen.
+ *
+ * The family is the DRAWING, not a label to resolve further: `victorian` is
+ * one facade, not a bag holding Queen Anne and Italianate to be picked from.
+ */
+export type FaFamily =
+  | "victorian" | "classical" | "revival" | "moderne" | "modern" | "plain";
+
+/** the family this era falls in, where no surveyed style says otherwise */
+export function familyOfEra(era: number): FaFamily {
+  if (era < 0) return "plain";
+  if (era === 0) return "victorian";
+  if (era === 1) return "classical";
+  if (era === 2) return "revival";
+  return "modern";
+}
+
+/** does this family stand its front out from the wall? */
+export function familyHasBay(f: FaFamily): boolean {
+  return f === "victorian" || f === "classical";
+}
+/** how deep its cornice oversails, as a multiple of the ordinary one */
+export function familyCornice(f: FaFamily): number {
+  switch (f) {
+    case "victorian": return 1.35;
+    case "classical": return 1.25;
+    case "revival":   return 0.85;   // a deep eave, not a moulded cornice
+    case "moderne":   return 0.55;   // a stepped parapet, shallow
+    default:          return 0;      // modern and plain end square
+  }
+}
+
 export function facadeTile(o: FacadeKey): number {
   if (!faceTakesOpenings(o.role)) return TILE_BLANK;
   if (!(o.storeys > 0)) return TILE_BLANK;
@@ -287,9 +337,14 @@ export function facadeTile(o: FacadeKey): number {
      inter-war stucco wall is a square hole in a lot of wall; after 1950 it is
      one wide horizontal light. Those are three drawings and `drawTile` builds
      them as such. */
-  if (o.era <= 1) return TILE_SASH;      // paired, vertical
-  if (o.era === 2) return TILE_STUCCO;   // square, plain
-  return TILE_PUNCHED;                   // wide, horizontal
+  switch (o.family ?? familyOfEra(o.era)) {
+    case "victorian": return TILE_SASH;
+    case "classical": return TILE_CLASSICAL;
+    case "revival":   return TILE_STUCCO;
+    case "moderne":   return TILE_MODERNE;
+    case "plain":     return TILE_PLAIN;
+    default:          return TILE_PUNCHED;
+  }
 }
 
 /**
@@ -725,6 +780,7 @@ interface TilePlan {
    *  reveal and the glazing bar too, so a footprint the roll does not class
    *  gets an opening and nothing else. */
   readonly plain: boolean;
+  readonly fam: FaFamily;
 }
 
 function ty(name: string): number {
@@ -734,21 +790,25 @@ function ty(name: string): number {
 function planOf(tile: number): TilePlan | null {
   switch (tile) {
     case TILE_SASH:
-      return { type: ty("FLATS"), era: 0, shop: false, role: ROLE_BACK, plain: false };
+      return { fam: "victorian", type: ty("FLATS"), era: 0, shop: false, role: ROLE_BACK, plain: false };
     case TILE_PUNCHED:
-      return { type: ty("FLATS"), era: 3, shop: false, role: ROLE_BACK, plain: false };
+      return { fam: "modern", type: ty("FLATS"), era: 3, shop: false, role: ROLE_BACK, plain: false };
     case TILE_CURTAIN:
-      return { type: ty("OFFICE"), era: 4, shop: false, role: ROLE_BACK, plain: false };
+      return { fam: "modern", type: ty("OFFICE"), era: 4, shop: false, role: ROLE_BACK, plain: false };
     case TILE_SHED:
-      return { type: ty("INDUSTRIAL"), era: 2, shop: false, role: ROLE_BACK, plain: false };
+      return { fam: "plain", type: ty("INDUSTRIAL"), era: 2, shop: false, role: ROLE_BACK, plain: false };
     case TILE_DECK:
-      return { type: ty("GARAGE"), era: 2, shop: false, role: ROLE_BACK, plain: false };
+      return { fam: "plain", type: ty("GARAGE"), era: 2, shop: false, role: ROLE_BACK, plain: false };
     case TILE_PLAIN:
-      return { type: ty("UNCLASSED"), era: 0, shop: false, role: ROLE_BACK, plain: true };
+      return { fam: "plain", type: ty("UNCLASSED"), era: 0, shop: false, role: ROLE_BACK, plain: true };
     case TILE_SHOPFRONT:
-      return { type: ty("RETAIL"), era: 2, shop: true, role: ROLE_FRONT, plain: false };
+      return { fam: "classical", type: ty("RETAIL"), era: 2, shop: true, role: ROLE_FRONT, plain: false };
     case TILE_STUCCO:
-      return { type: ty("HOUSE"), era: 2, shop: false, role: ROLE_BACK, plain: false };
+      return { fam: "revival", type: ty("HOUSE"), era: 2, shop: false, role: ROLE_BACK, plain: false };
+    case TILE_CLASSICAL:
+      return { fam: "classical", type: ty("FLATS"), era: 1, shop: false, role: ROLE_BACK, plain: false };
+    case TILE_MODERNE:
+      return { fam: "moderne", type: ty("APARTMENT"), era: 2, shop: false, role: ROLE_BACK, plain: false };
     default:
       /* TILE_BLANK. A party wall carries no openings and neither does a wall
          with no published rhythm, so the cell stays exactly the material
@@ -880,32 +940,65 @@ function drawTile(g: CanvasRenderingContext2D, px: number, tile: number): void {
     rect(a0, a1, b0 + (b1 - b0) * 0.54 - rh, b0 + (b1 - b0) * 0.54 + rh);
   };
 
-  if (p.era <= 1) {
-    /* ── PAIRED AND UPRIGHT — the pre-1925 flat ───────────────────────
-       Two narrow lights in the bay with a pier between them. This is the
-       vertical emphasis the pre-fire and Edwardian stock is read by, and one
-       wide light in the same bay is the thing that made every era look alike. */
-    const pierF = Math.max(0.055, 0.16 / mod);
-    const eachF = Math.max(0.06, (owF - pierF) / 2);
-    const tallF = Math.min(0.86, ohF * 1.18);
+  if (p.fam === "victorian") {
+    /* ── PAIRED AND UPRIGHT, UNDER A HEAVY HEAD ──────────────────────
+       Two narrow lights with a pier between, taller than they are wide, and
+       a moulded head band over the pair. This is the vertical emphasis the
+       pre-fire stock is read by. */
+    const pier = Math.max(0.055, 0.16 / mod);
+    const each = Math.max(0.06, (owF - pier) / 2);
+    const tall = Math.min(0.86, ohF * 1.20);
     const c = 0.5;
-    light(c - pierF / 2 - eachF, c - pierF / 2, sillF, sillF + tallF, true);
-    light(c + pierF / 2, c + pierF / 2 + eachF, sillF, sillF + tallF, true);
-  } else if (p.era === 2) {
-    /* ── SQUARE, IN A LOT OF WALL — the inter-war stucco ──────────────
-       Smaller than the era each side of it and standing higher off the floor.
-       The Sunset and the Richmond are this, and they are 1925-50. */
-    const sqF = Math.min(owF * 0.86, ohF * 0.92);
-    const s0 = 0.5 - sqF / 2;
-    light(s0, s0 + sqF, sillF * 1.15, sillF * 1.15 + sqF * 1.05, true);
+    light(c - pier / 2 - each, c - pier / 2, sillF, sillF + tall, true);
+    light(c + pier / 2, c + pier / 2 + each, sillF, sillF + tall, true);
+    /* the moulded head over both lights */
+    const hb = Math.max(1 / px, 0.10 / w.bandM);
+    lit();
+    rect(c - pier / 2 - each - 0.02, c + pier / 2 + each + 0.02,
+         sillF + tall, sillF + tall + hb);
+    g.fillStyle = "rgba(0, 0, 0, 0.22)";
+    rect(c - pier / 2 - each - 0.02, c + pier / 2 + each + 0.02,
+         sillF + tall + hb, sillF + tall + hb * 1.6);
+  } else if (p.fam === "classical") {
+    /* ── TALL, SINGLE, SYMMETRICAL, WITH A STRING COURSE ─────────────
+       The Edwardian and Classical Revival wall: one tall light per bay,
+       wider than the Victorian pair, and a continuous band at the floor
+       rather than a moulding over each opening. */
+    const tall = Math.min(0.82, ohF * 1.12);
+    const wide = Math.min(0.62, owF * 1.10);
+    const s0 = 0.5 - wide / 2;
+    light(s0, s0 + wide, sillF, sillF + tall, true);
+    const sc = Math.max(1 / px, 0.07 / w.bandM);
+    lit(); rect(0, 1, sillF - sc * 2.4, sillF - sc * 1.4);
+    g.fillStyle = "rgba(0, 0, 0, 0.16)";
+    rect(0, 1, sillF - sc * 3.2, sillF - sc * 2.4);
+  } else if (p.fam === "revival") {
+    /* ── SQUARE, IN A LOT OF WALL ────────────────────────────────────
+       The inter-war stucco: smaller than the eras either side of it and
+       standing higher off the floor. The Sunset and the Richmond are this. */
+    const sq = Math.min(owF * 0.86, ohF * 0.92);
+    const s0 = 0.5 - sq / 2;
+    light(s0, s0 + sq, sillF * 1.15, sillF * 1.15 + sq * 1.05, true);
+  } else if (p.fam === "moderne") {
+    /* ── HORIZONTAL, BANDED, NO RAIL ─────────────────────────────────
+       Deco and Streamline: the light runs wide, the wall carries a band
+       above and below it, and a sash's meeting rail has no place here. */
+    const wide = Math.min(0.86, owF * 1.5);
+    const shortF = Math.max(0.18, ohF * 0.72);
+    const s0 = 0.5 - wide / 2;
+    light(s0, s0 + wide, sillF * 1.1, sillF * 1.1 + shortF, false);
+    const bb = Math.max(1 / px, 0.05 / w.bandM);
+    lit();
+    rect(0, 1, sillF * 1.1 + shortF + bb * 0.8, sillF * 1.1 + shortF + bb * 2.0);
+    rect(0, 1, sillF * 1.1 - bb * 2.0, sillF * 1.1 - bb * 0.8);
   } else {
-    /* ── WIDE AND LYING DOWN — post-war ───────────────────────────────
+    /* ── WIDE AND LYING DOWN — post-war and plain ────────────────────
        One light across most of the bay, shallower than it is broad, with no
        meeting rail: a picture window is not a sash. */
-    const wideF = Math.min(0.90, owF * 1.42);
+    const wide = Math.min(0.90, owF * 1.42);
     const shortF = Math.max(0.16, ohF * 0.80);
-    const s0 = 0.5 - wideF / 2;
-    light(s0, s0 + wideF, sillF, sillF + shortF, false);
+    const s0 = 0.5 - wide / 2;
+    light(s0, s0 + wide, sillF, sillF + shortF, false);
   }
 
   /* the slab edge, across the whole tile at the floor */

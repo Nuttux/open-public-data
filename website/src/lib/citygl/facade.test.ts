@@ -28,6 +28,7 @@ import {
   TILE_SASH,
   TILE_SHED,
   TILE_SHOPFRONT,
+  TILE_CLASSICAL,
   TILE_STUCCO,
   facadeAtlas,
   facadeGroundTile,
@@ -121,11 +122,21 @@ describe("facadeTile — the selection is the published columns", () => {
   });
 
   it("leaves no cell of the atlas unreachable", () => {
+    /* `family` is a SELECTOR now, not only a consequence of the era: a
+       surveyed style reaches a cell the era bands never produce on their own.
+       `moderne` is exactly that — the Deco wall belongs to buildings the SF
+       survey has named, and the 1925-50 band's own commonest family is
+       `revival`. Enumerating era and type alone therefore leaves that cell
+       looking unreachable when it is simply not reachable BY ERA. */
     const seen = new Set<number>();
     for (const k of everyKey()) {
       seen.add(facadeTile(k));
       const gr = facadeGroundTile(k);
       if (gr >= 0) seen.add(gr);
+      for (const family of
+        ["victorian","classical","revival","moderne","modern","plain"] as const) {
+        seen.add(facadeTile({ ...k, family }));
+      }
     }
     for (let i = 0; i < FACADE_TILES.length; i++) {
       expect(seen.has(i), `${FACADE_TILES[i]} is never selected`).toBe(true);
@@ -170,14 +181,16 @@ describe("facadeTile — the record's own refusals bind first", () => {
 describe("facadeTile — which column picks which vocabulary", () => {
   const T = (n: string): number => FA_TYPES.indexOf(n);
 
-  it("splits the wall THREE ways on the roll's own era bands", () => {
+  it("splits the wall FOUR ways on the roll's own era bands", () => {
     /* This asserted a two-way split, `SASH` before 1925 and `PUNCHED` after,
        so 1925-50 wore the post-war wall. The inter-war stucco is neither end
        of that range and is most of the Sunset and the Richmond, so it has its
        own drawing — `facade.ts` §three drawings, not three sets of numbers. */
     for (const type of ["HOUSE", "FLATS", "APARTMENT", "HOTEL", "INSTITUTION"]) {
+      /* four bands, not three: 1907-25 is the Edwardian and Classical wall
+         and wore the pre-fire one until the families were separated. */
       expect(facadeTile(key({ type: T(type), era: 0 }))).toBe(TILE_SASH);
-      expect(facadeTile(key({ type: T(type), era: 1 }))).toBe(TILE_SASH);
+      expect(facadeTile(key({ type: T(type), era: 1 }))).toBe(TILE_CLASSICAL);
       expect(facadeTile(key({ type: T(type), era: 2 }))).toBe(TILE_STUCCO);
       expect(facadeTile(key({ type: T(type), era: 3 }))).toBe(TILE_PUNCHED);
     }

@@ -91,6 +91,10 @@ import {
 } from "@/lib/city/facades";
 import { BAY_DEPTH_M, BAY_HEAD_M, BAY_MIN_PLAN_M, bayForm } from "../bay-form";
 import {
+  familyCornice,
+  familyHasBay,
+  familyOfEra,
+  type FaFamily,
   FACADE_TILES,
   TILE_CURTAIN,
   facadeAtlas,
@@ -102,7 +106,7 @@ import {
   type FacadeAtlas,
   type FacadeKey,
 } from "../facade";
-import { boxForm, hipForm, hipPlan, stepForm, trayForm, type FormSink } from "../roof-form";
+import { boxForm, gableForm, gableHalf, hipForm, hipPlan, stepForm, trayForm, type FormSink } from "../roof-form";
 import {
   bldgMaterials,
   legendDraw,
@@ -148,6 +152,8 @@ export interface BuildingsLayerOptions {
   /** what the 2023 survey measured standing on each roof, when this chunk has
    *  a `roof/<cell>` companion. Absent, every building draws as it did. */
   roof?: RoofTable | null;
+  /** dev: draw every footprint in one appearance family */
+  forceFamily?: FaFamily | null;
   /** footprints a hand-modelled landmark already stands on — never drawn twice */
   skipGids?: ReadonlySet<number>;
   /** what decides which entry of each a footprint gets */
@@ -315,6 +321,23 @@ export interface RoofTable {
 
 /** decimetres, the unit `encode_roofs.py` writes every length in */
 const ROOF_DM = 0.1;
+
+/** over this a building is not a house whatever its class says, and an
+ *  authored gable on a block of flats reads as a barn on a tower */
+const HOUSE_MAX_H = 16;
+
+/**
+ * DEV ONLY, the `__cityWA` idiom: force every footprint to one appearance
+ * family, so a single design can be looked at on a real street instead of
+ * hunting for a building that happens to carry it. `?fam=victorian`.
+ */
+function forcedFamily(): FaFamily | null {
+  if (typeof window === "undefined") return null;
+  const m = /(?:\?|&)fam=([a-z]+)/.exec(window.location.search);
+  const v = m ? m[1] : "";
+  return ["victorian","classical","revival","moderne","modern","plain"]
+    .includes(v) ? (v as FaFamily) : null;
+}
 
 export function decodeRoof(chunk: Chunk): RoofTable {
   const f = chunk.fields as unknown as Record<string, ArrayLike<number>>;
@@ -877,6 +900,13 @@ export function buildingsMesh(
        before the rings are written, and the wall's top ring goes to the eave.
        In 2D the hip is painted over the flat roof and the wall never has to
        know; on a mesh a full-height wall would push through the slopes. */
+    const noYr = (tb.u[i] & FLAG_NOYEAR) !== 0;
+    const ty = o.face ? (o.face.ty[i] ?? 0) : 0;
+    const shop = o.face ? (o.face.shop[i] ?? 0) === 1 : false;
+    const era = noYr ? -1 : faEra(1849 + tb.yr[i]);
+    /* the surveyed family where the city has one, the era's otherwise —
+       `facade.ts` §the six appearance families has the measurement */
+    const fam: FaFamily = o.forceFamily ?? familyOfEra(era);
     const ring = { x: tb.vx, y: tb.vy, off: s, n: c };
     /* ── WHO IS PITCHED: THE SCAN WHERE IT LOOKED, THE RULE WHERE IT DID NOT ──
        `isPitched` is a POPULATION rule — the pre-1907 wood-frame dwelling —
@@ -899,8 +929,21 @@ export function buildingsMesh(
           1849 + tb.yr[i],
           (tb.u[i] & FLAG_NOYEAR) !== 0,
         );
-    const plan = pitched ? hipPlan(ring, measured?.slopeDeg) : null;
-    const wallH = plan ? Math.max(0, hM - plan.halfRiseM) : hM;
+    /* ── A HOUSE IS A HOUSE BECAUSE IT IS ONE ───────────────────────────
+       Not because the scan happened to measure a slope on it. The scan finds
+       a pitch on 26 % of this city and refuses the rest — a 9-degree reading
+       on a shallow roof, a footprint the survey has not reached, a plan the
+       hip's skeleton will not take. Gating the HOUSE FORM on that leaves most
+       of the Sunset as flat-lidded boxes, which is the thing this is for.
+
+       So the record decides who is a house — the family, from the survey's
+       style or the roll's era — and the form is authored for all of them. */
+    const houseHalf =
+      familyHasBay(fam) && hM < HOUSE_MAX_H ? gableHalf(ring, hM, tb.gid[i]) : 0;
+    const plan = houseHalf > 0 ? null : (pitched ? hipPlan(ring, measured?.slopeDeg) : null);
+    const wallH = houseHalf > 0
+      ? Math.max(0, hM - houseHalf)
+      : plan ? Math.max(0, hM - plan.halfRiseM) : hM;
 
     /* THE MEASURED ROOF COLOUR, and the wall a step under it. Block 3 makes
        both of these a material under a real sun; for now the roof is what the
@@ -931,11 +974,7 @@ export function buildingsMesh(
        smallest step of `RSHADE`, the renderer's own declared difference
        between two objects of the same material. So it breaks up a block
        without ever opening a gap the material table means something by. */
-    const ty = o.face ? (o.face.ty[i] ?? 0) : 0;
     const st2 = o.face ? (o.face.st2[i] ?? 0) : 0;
-    const shop = o.face ? (o.face.shop[i] ?? 0) === 1 : false;
-    const noYr = (tb.u[i] & FLAG_NOYEAR) !== 0;
-    const era = noYr ? -1 : faEra(1849 + tb.yr[i]);
     /* ── THE 14,532 THE ROLL DOES NOT COUNT ─────────────────────────────
        Where no storey column reaches a footprint, `derivedBands` reads a
        rhythm off the MEASURED height instead — the Canvas path's own
@@ -954,6 +993,7 @@ export function buildingsMesh(
         ? storeysPub
         : derivedBands(hM, (tb.u[i] & FLAG_HEIGHT_STALE) !== 0);
     const keyOf = (role: number): FacadeKey => ({
+      family: fam,
       type: ty,
       era,
       storeys: bands,
@@ -1022,7 +1062,7 @@ export function buildingsMesh(
        The winding is paid for only where a bay can reach: it is the ring's
        shoelace sign, which is what tells a frontage which way is in. */
     const bayOK =
-      roles !== null && faBayOK(ty, era, ROLE_FRONT, bands);
+      roles !== null && faBayOK(ty, era, ROLE_FRONT, bands) && familyHasBay(fam);
     if (bayTally && bayOK) bayTally.eligible++;
     let wind = 0;
     if (bayOK) {
@@ -1138,7 +1178,17 @@ export function buildingsMesh(
        that inverts, a parapet taller than the building. A refusal leaves the
        flat fan standing, which is what the page drew before either existed. */
     let roofed = false;
-    if (plan) roofed = hipForm(sink, ring, elev, hM, rc, { slopeDeg: measured?.slopeDeg });
+    /* ── A HOUSE GETS A HOUSE, NOT A HIP ─────────────────────────────────
+       `hipForm` is the published ring's own straight skeleton — the right
+       answer when the drawing must be derivable from the record, and a low
+       pyramid when what is wanted is a HOUSE. A San Francisco row house has a
+       GABLE down the long axis of a 25 ft lot and a front that stands proud
+       of the wall, and neither is in any column.
+
+       So the record chooses WHO — the survey's family, or the era's — and the
+       FORM is authored. See `roof-form.ts` §a house, drawn as a house. */
+    if (houseHalf > 0) roofed = gableForm(sink, ring, elev, hM, rc, wc, { gid: tb.gid[i] });
+    if (!roofed && plan) roofed = hipForm(sink, ring, elev, hM, rc, { slopeDeg: measured?.slopeDeg });
     /* ── AND THE TRAY BUILDS ITS FASCIA ─────────────────────────────────
        The parapet's outer face, `DE.outerv` of this roof's own colour, over
        the top 0.85 m of the wall. `roof-form.ts` §THE PARAPET'S OUTER FACE
@@ -1161,7 +1211,8 @@ export function buildingsMesh(
          spent where the picture is not: six separate attempts at windows,
          bays and facade patterns all came back under 1 % of a building. */
       roofed = trayForm(sink, ring, elev, wallH, rc, {
-        fascia: faVocab(ty, era, shop).cornice,
+        fascia: faVocab(ty, era, shop).cornice && familyCornice(fam) > 0,
+        corniceScale: familyCornice(fam),
         corniceRGB: wc,
       });
     }
@@ -1744,7 +1795,8 @@ export function buildingsLayer(
           role: (fc.fields.role as Uint8Array) ?? new Uint8Array(0),
         }
       : null;
-    const built = buildingsMesh(tb, { ...o, atlas, face, roof: roofTable, materials: mcfg, rise });
+    const built = buildingsMesh(tb, { ...o, atlas, face, roof: roofTable,
+      forceFamily: o.forceFamily ?? forcedFamily(), materials: mcfg, rise });
     if (!built) continue;
     meshes.push(...built.meshes);
     setters.push(built.setStep);

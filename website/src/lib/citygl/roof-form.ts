@@ -483,6 +483,9 @@ function ringVerts(
 // ── the tray ────────────────────────────────────────────────────────────────
 
 export interface TrayOpts {
+  /** how deep this family's cornice oversails, as a multiple of the ordinary
+   *  one. A Victorian moulds; a post-war slab ends square. */
+  corniceScale?: number;
   /**
    * the tray's ramp weight, 0..1. THE PIXEL GATE IS THE CALLER'S: this is
    * `trayW(the building's projected width)` in the Canvas path, and a mesh has
@@ -605,7 +608,7 @@ export function trayForm(
      `ccw ? 1 : -1` the deck uses. Passing both wrong cancelled into a refusal
      that was silent, and the test below went on passing because it asserted
      the fascia's old position — which is what a refused cornice leaves. */
-  let cor = opts.fascia && drop > 0 ? corniceProjM(hM) : 0;
+  let cor = opts.fascia && drop > 0 ? corniceProjM(hM) * (opts.corniceScale ?? 1) : 0;
   if (cor > 0 && !offsetSurvives(ring, sMX, sMY, -cor, ccw ? 1 : -1)) cor = 0;
   for (let k = 0; k < n; k++) {
     sQX[k] = ring.x[ring.off + k] - sMX[k] * cor;
@@ -970,6 +973,183 @@ export function stepForm(
   /* the lid: a fan is safe here for the same reason the flat roof's is — the
      triangles are coplanar and the depth buffer resolves them into the cap */
   for (let i = 1; i + 1 < n; i++) sink.tri(cap[0], cap[i], cap[i + 1]);
+  return true;
+}
+
+/**
+ * A HOUSE, DRAWN AS A HOUSE.
+ *
+ * Everything else in this file derives a shape from a measurement: the tray is
+ * the published ring, the hip is that ring's own straight skeleton, the step is
+ * the share of footprint the survey found standing at a level. That is the
+ * right instinct for a record-drawn map and it is the wrong one for a HOUSE,
+ * because what makes a house read as a house is not the millimetres of its
+ * particular roof — it is the type. A gable running the length of the plan, a
+ * front that stands proud of the wall, an eave that oversails.
+ *
+ * So this is AUTHORED. The record decides WHICH buildings get it — the survey's
+ * style where there is one, the roll's era where there is not — and how big it
+ * is, from the published footprint and height. The FORM is a design, and the
+ * numbers below are art direction, not findings:
+ *
+ *   the ridge runs the plan's LONG axis, which is how a row house sits on a
+ *   25 ft lot; the pitch is a fixed 30 degrees because a house's roof reads by
+ *   its silhouette and a measured 9-degree slope reads as flat; the bay stands
+ *   0.9 m proud over the middle 55 % of the street frontage and carries its own
+ *   little roof, because that is the one thing a San Franciscan would notice
+ *   missing.
+ *
+ * F2.4 still holds and is not negotiable: the ridge rises `half` above the
+ * published plane and the eave drops `half` below it, so the drawn surface's
+ * median is the published median and no vertex stands over the measured top.
+ */
+export const HOUSE_PITCH_DEG = 30;
+export const HOUSE_BAY_PROUD_M = 0.9;
+export const HOUSE_BAY_SHARE = 0.55;
+
+/** the half-rise the authored gable will take on this plan, or 0 if it refuses */
+export function gableHalf(ring: FormRing, hM: number, gid = 0, pitchDeg?: number): number {
+  const { x, y, off, n } = ring;
+  if (n < 3 || n > FORM_MAX_VERTS) return 0;
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (let i = 0; i < n; i++) {
+    const px = x[off + i], py = y[off + i];
+    if (px < x0) x0 = px; if (px > x1) x1 = px;
+    if (py < y0) y0 = py; if (py > y1) y1 = py;
+  }
+  const w = x1 - x0, d = y1 - y0;
+  if (!(w > 2 && d > 2)) return 0;
+  const span = Math.min(w, d);
+  const half = Math.min(PITCH_MAX_HALFRISE_M * 1.6,
+    (span / 2) * Math.tan(((pitchDeg ?? houseVary(gid).pitch) * Math.PI) / 180) * 0.5);
+  return half > 0.3 && hM - half > 0 ? half : 0;
+}
+
+/**
+ * ONE HOUSE IS NOT EVERY HOUSE.
+ *
+ * A single authored form applied to 28,000 footprints is the template problem
+ * again wearing a gable. What varies is the DESIGN's own freedom — how steep
+ * this roof is, how wide its front stands, whether it has one at all — not the
+ * record, which says nothing about any of it. Keyed on the published id, so a
+ * house is the same house in every session, at every zoom, in every year.
+ *
+ * The ranges are art direction and are stated as such: 24-34 degrees of pitch,
+ * because under 22 a roof reads flat from this camera and over 36 it reads as
+ * an A-frame; a front over 40-70 % of the frontage; and one house in six
+ * without one, because a blockface where every single house projects reads as
+ * machined rather than built.
+ */
+function houseVary(gid: number): { pitch: number; share: number; proud: number; bay: boolean } {
+  const h = mix32(gid ^ 0x7f4a7c15);
+  const u = (k: number) => (((h >>> k) & 1023) / 1023);
+  return {
+    pitch: 24 + 10 * u(0),
+    share: 0.40 + 0.30 * u(10),
+    proud: 0.70 + 0.45 * u(20),
+    bay: ((h >>> 5) & 7) !== 0,
+  };
+}
+
+/** murmur3's finaliser — `facade.ts` keeps its own; a gid is spatially ordered
+ *  and an unmixed hash lays a gradient down a blockface instead of breaking it up */
+function mix32(x: number): number {
+  let v = x | 0;
+  v = Math.imul(v ^ (v >>> 16), 0x85ebca6b);
+  v = Math.imul(v ^ (v >>> 13), 0xc2b2ae35);
+  v ^= v >>> 16;
+  return v >>> 0;
+}
+
+export function gableForm(
+  sink: FormSink,
+  ring: FormRing,
+  elevM: number,
+  hM: number,
+  roof: RGB,
+  wall: RGB,
+  opts: { pitchDeg?: number; bay?: boolean; gid?: number } = {},
+): boolean {
+  const vary = houseVary(opts.gid ?? 0);
+  const { x, y, off, n } = ring;
+  if (n < 3 || n > FORM_MAX_VERTS) return false;
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (let i = 0; i < n; i++) {
+    const px = x[off + i], py = y[off + i];
+    if (px < x0) x0 = px; if (px > x1) x1 = px;
+    if (py < y0) y0 = py; if (py > y1) y1 = py;
+  }
+  const w = x1 - x0, d = y1 - y0;
+  if (!(w > 2 && d > 2)) return false;
+  const alongX = w >= d;
+  const span = alongX ? d : w;                 // across the ridge
+  const half = Math.min(
+    PITCH_MAX_HALFRISE_M * 1.6,
+    (span / 2) * Math.tan(((opts.pitchDeg ?? vary.pitch) * Math.PI) / 180) * 0.5,
+  );
+  if (!(half > 0.3) || !(hM - half > 0)) return false;
+
+  const eave = hM - half, ridge = hM + half;
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  const V = (px: number, py: number, h: number, c: RGB): number =>
+    sink.vertex(px, py, elevM, h, c[0], c[1], c[2]);
+  const rl = shadeRGB(roof, 1.04), rd = shadeRGB(roof, 0.86);
+
+  if (alongX) {
+    const a = V(x0, y0, eave, rd), b = V(x1, y0, eave, rd);
+    const c = V(x1, y1, eave, rl), e = V(x0, y1, eave, rl);
+    const r0 = V(x0, cy, ridge, rl), r1 = V(x1, cy, ridge, rl);
+    sink.tri(a, b, r1); sink.tri(a, r1, r0);   // the slope toward the street
+    sink.tri(e, r0, r1); sink.tri(e, r1, c);   // and the one away from it
+    const g0 = V(x0, y0, eave, wall), g1 = V(x0, y1, eave, wall);
+    const g2 = V(x0, cy, ridge, wall);
+    sink.tri(g0, g1, g2);                      // the gable end, both of them
+    const h0 = V(x1, y0, eave, wall), h1 = V(x1, y1, eave, wall);
+    const h2 = V(x1, cy, ridge, wall);
+    sink.tri(h1, h0, h2);
+  } else {
+    const a = V(x0, y0, eave, rd), b = V(x0, y1, eave, rd);
+    const c = V(x1, y1, eave, rl), e = V(x1, y0, eave, rl);
+    const r0 = V(cx, y0, ridge, rl), r1 = V(cx, y1, ridge, rl);
+    sink.tri(a, b, r1); sink.tri(a, r1, r0);
+    sink.tri(e, r0, r1); sink.tri(e, r1, c);
+    const g0 = V(x0, y0, eave, wall), g1 = V(x1, y0, eave, wall);
+    const g2 = V(cx, y0, ridge, wall);
+    sink.tri(g1, g0, g2);
+    const h0 = V(x0, y1, eave, wall), h1 = V(x1, y1, eave, wall);
+    const h2 = V(cx, y1, ridge, wall);
+    sink.tri(h0, h1, h2);
+  }
+
+  if (opts.bay !== false && vary.bay) {
+    /* the front stands proud over the middle of the frontage, and carries its
+       own flat top so it reads from above as well as from the street */
+    const p = vary.proud;
+    const bw = (alongX ? w : d) * vary.share;
+    const bl = shadeRGB(wall, 1.06), bt = shadeRGB(roof, 1.02);
+    const top = eave + 0.15;
+    if (alongX) {
+      const a0 = cx - bw / 2, a1 = cx + bw / 2, yf = y0 - p;
+      const q = [V(a0, y0, 0, bl), V(a1, y0, 0, bl), V(a1, yf, 0, bl), V(a0, yf, 0, bl)];
+      const t = [V(a0, y0, top, bl), V(a1, y0, top, bl), V(a1, yf, top, bl), V(a0, yf, top, bl)];
+      const cap = [V(a0, y0, top, bt), V(a1, y0, top, bt), V(a1, yf, top, bt), V(a0, yf, top, bt)];
+      for (let k = 0; k < 4; k++) {
+        const m = (k + 1) & 3;
+        sink.tri(q[k], q[m], t[m]); sink.tri(q[k], t[m], t[k]);
+      }
+      sink.tri(cap[0], cap[1], cap[2]); sink.tri(cap[0], cap[2], cap[3]);
+    } else {
+      const a0 = cy - bw / 2, a1 = cy + bw / 2, xf = x0 - p;
+      const q = [V(x0, a0, 0, bl), V(x0, a1, 0, bl), V(xf, a1, 0, bl), V(xf, a0, 0, bl)];
+      const t = [V(x0, a0, top, bl), V(x0, a1, top, bl), V(xf, a1, top, bl), V(xf, a0, top, bl)];
+      const cap = [V(x0, a0, top, bt), V(x0, a1, top, bt), V(xf, a1, top, bt), V(xf, a0, top, bt)];
+      for (let k = 0; k < 4; k++) {
+        const m = (k + 1) & 3;
+        sink.tri(q[k], q[m], t[m]); sink.tri(q[k], t[m], t[k]);
+      }
+      sink.tri(cap[0], cap[1], cap[2]); sink.tri(cap[0], cap[2], cap[3]);
+    }
+  }
   return true;
 }
 
