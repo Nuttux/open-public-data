@@ -172,16 +172,24 @@ Take `d[]` in order. The first 8–12 are what a panel should show.
 
 Report these; do not round them away.
 
-- **Join accuracy, against the source itself.** **906** block-precision placements land on
+- **Join accuracy, against the source itself.** **3,043** block-precision placements land on
   items where the record *also* names its own assessor block. Those are independent
-  ground truth. **84.8% land on exactly the stated block; 89.1% within 120 m (the
-  adjacent block face); 93.9% within 250 m; 4.4% further than 600 m.** By tier:
-  `addr` **90.4% exact** (n=722), `segment` **85.7%** (n=14), `corner` 60.6% exact / 72.9%
-  within one block face (n=170) — a corner is a four-block object and behaves like one.
-  Every tier improved over the 55-volume measurement, on a truth set 3.7× larger
-  (was 75.4 / 83.2 / 91.8 / 5.3 at n=244). That is the accuracy of the index in each
+  ground truth. **88.5% land on exactly the stated block; 91.3% within 120 m (the
+  adjacent block face); 95.3% within 250 m; 3.5% further than 600 m.** By tier:
+  `addr` **92.5% exact** (n=2,735), `segment` **70.0%** (n=20), `corner` 51.4% exact / 71.5%
+  within one block face (n=288) — a corner is a four-block object and behaves like one.
+  That is the accuracy of the index in each
   state, not a like-for-like test of one change; the controlled A/B is in
   `merge/BLOCK-MERGE.md` §2.
+
+  **Re-take this after every index rebuild, and publish it in the same act.** The
+  figures above replaced **906 / 84.8 / 89.1 / 93.9 / 4.4**, which were measured on
+  an index a third the size and then shipped beside one rebuilt to 94,427 placed
+  decisions: `cp -r $BLOCKS_OUT/* website/public/…` carried a stale `accuracy.json`
+  from a previous run over the good one, because that is the one file in
+  `$BLOCKS_OUT` that `build_index.py` does not write. It now deletes any it finds,
+  so the copy cannot repeat the mistake, and `website/src/lib/city/accuracy.test.ts`
+  fails the build while the score and the shipped index disagree.
 - **Geometry.** Every block–decision link was checked against the street centrelines,
   which never pass through the address table used to make the join: **0 of 1,013,301
   inferred links sit more than 200 m from a street the decision names**; 99.2% (addr) to

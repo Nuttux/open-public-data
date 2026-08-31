@@ -40,6 +40,22 @@ from citymap import nearcollapse  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 os.makedirs(OUT, exist_ok=True)
 
+# ── A FILE THIS BUILD DOES NOT WRITE MUST NOT SURVIVE IN ITS OUTPUT ──────────
+# `accuracy.json` is measure_accuracy.py's, and it is the ONE file in OUT that
+# this script does not produce. Publishing is `cp -r $OUT/* website/public/…`,
+# so a previous run's copy rides along and REPLACES the published measurement
+# with an older one — which is exactly what happened: an index rebuilt from
+# 94,427 placed decisions shipped under a score taken on 906, and the page
+# printed 84.8% when the join had since moved to 88.5%.
+#
+# accuracy.test.ts caught it, which is what that test is for. But the copy is
+# the kind of mistake that will be made again, so the stale file is removed
+# here: after this build there is nothing in OUT to publish until
+# measure_accuracy.py has run against the index this build just wrote.
+_stale = os.path.join(OUT, "accuracy.json")
+if os.path.exists(_stale):
+    os.remove(_stale)
+
 from strip import strip as snip
 import headings as HD
 import gloss as GL
