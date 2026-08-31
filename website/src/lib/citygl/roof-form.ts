@@ -1859,3 +1859,84 @@ export function capForm(
   fillTop(sink, rA, sTri2, true);
   return true;
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   A BUILDING OVER WATER IS STANDING ON SOMETHING.
+   ═══════════════════════════════════════════════════════════════════════
+
+   MEASURED over the whole city: **108 of 166,152 published footprints — 0.07 %
+   — have their centroid where the land field says WATER.** They are not bad
+   data. They cluster exactly where a reader would expect them to: Mission
+   Bay, the Embarcadero piers, Aquatic Park and Pier 70. They are the shed on
+   Pier 48, the bulkhead on Pier 19, the boat works at Potrero Point — real
+   buildings standing on a pier deck, on piles, over water that the field is
+   right to call water. The land mask is Mean High Water and the water IS
+   under them.
+
+   What was missing is the deck. The fabric raised each of them on its own
+   footprint from a ground that is not there, so the frame showed a roof with
+   a short dark stem hanging over the bay — reported from the page as
+   *"wtf are these buildings middle of the ocean"*, and it is exactly that.
+
+   So a building the field puts over water gets a deck: a slab at the water
+   line, a little wider than the building, with a visible edge. It claims
+   nothing that is not already claimed by the footprint itself — the building
+   is published as standing there, and this is the thing it stands on.
+
+   ── WHAT IS AUTHORED, AND IT IS THE SIZE ─────────────────────────────────
+   No register on this map publishes a pier deck outline. `DECK_OUT_M` is how
+   far the deck reaches past the building it carries and `DECK_THICK_M` is how
+   deep its edge reads; both are art direction and both are small, because a
+   deck drawn generously would start joining up neighbours into one wharf the
+   record does not describe. A per-building apron is the honest shape: it says
+   *this building stands on a deck* and nothing about where that deck ends.  */
+
+/** how far the deck reaches past the building, world metres — declared */
+export const DECK_OUT_M = 3.0;
+/** and how deep its edge is */
+export const DECK_THICK_M = 0.9;
+/** the deck's top, where the ground under it is at or below the water plate */
+export const DECK_TOP_MIN_M = 0.55;
+
+/**
+ * The deck under a building the land field puts over water.
+ *
+ * Returns false and leaves the sink untouched where the ring is one this file
+ * will not take or the outward offset pinches a concave corner — the same
+ * refusal `trayForm`'s cornice makes, and for the same reason.
+ */
+export function deckForm(
+  sink: FormSink, ring: FormRing, elevM: number, topM: number, deck: RGB,
+): boolean {
+  const n = ring.n;
+  if (n < 3 || n > FORM_MAX_VERTS) return false;
+  const a2 = area2(ring.x, ring.y, ring.off, n);
+  if (!(Math.abs(a2) > 1e-9)) return false;
+  const ccw = a2 > 0;
+
+  insetRing(ring.x, ring.y, ring.off, n, sMiter);
+  /* OUTWARD, so the sign is negative — `trayForm` §THE SIGN IS THE WHOLE OF
+     IT, AND IT WAS WRONG TWICE. A mitered push outward cannot invert a convex
+     corner but a concave one can pinch, and a pinched deck would be inside
+     out; on refusal the deck is the footprint itself, which still reads. */
+  let out = DECK_OUT_M;
+  if (!offsetSurvives(ring, sMX, sMY, -out, ccw ? 1 : -1)) out = 0;
+  for (let k = 0; k < n; k++) {
+    sQX[k] = ring.x[ring.off + k] - sMX[k] * out;
+    sQY[k] = ring.y[ring.off + k] - sMY[k] * out;
+  }
+  if (!triangulate(sQX, sQY, n, sTri)) return false;
+
+  const top = Math.max(DECK_TOP_MIN_M, topM);
+  const edge = shadeRGB(deck, 0.62);
+  ringVerts(sink, rA, sQX, sQY, 0, n, elevM, top, deck);
+  ringVerts(sink, rB, sQX, sQY, 0, n, elevM, top, edge);
+  ringVerts(sink, rC, sQX, sQY, 0, n, elevM, top - DECK_THICK_M, edge);
+  for (let k = 0; k < n; k++) {
+    const k1 = (k + 1) % n;
+    quad(sink, rB[k], rC[k], rC[k1], rB[k1], !ccw);
+  }
+  fillTop(sink, rA, sTri, ccw);
+  return true;
+}

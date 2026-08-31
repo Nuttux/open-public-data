@@ -110,7 +110,10 @@ import {
   type FacadeAtlas,
   type FacadeKey,
 } from "../facade";
-import { boxForm, gableForm, gableHalf, hipForm, hipPlan, stepForm, trayForm, type FormSink } from "../roof-form";
+import {
+  boxForm, DECK_TOP_MIN_M, deckForm, gableForm, gableHalf, hipForm, hipPlan,
+  shadeRGB, stepForm, trayForm, type FormSink,
+} from "../roof-form";
 import { civicEaveDrop, civicForm, civicRoofs } from "../civic-form";
 import type { CivicForm } from "../civic";
 import {
@@ -164,6 +167,10 @@ export interface BuildingsLayerOptions {
      the same `gid` this table carries. Absent, every building draws as it
      did — 457 of 166,166 footprints are in it. */
   civicOf?: ReadonlyMap<number, CivicForm> | null;
+  /** ── IS THERE GROUND HERE? ───────────────────────────────────────────
+     The same land field the ground is cut at, so the two cannot disagree.
+     108 of this city's published footprints stand where it says water. */
+  landAt?: ((x: number, y: number) => boolean) | null;
   /** dev: draw every footprint in one appearance family */
   forceFamily?: FaFamily | null;
   /** footprints a hand-modelled landmark already stands on — never drawn twice */
@@ -1318,6 +1325,20 @@ export function buildingsMesh(
 
        So the record chooses WHO — the survey's family, or the era's — and the
        FORM is authored. See `roof-form.ts` §a house, drawn as a house. */
+    /* ── AND IF IT STANDS OVER WATER, THE DECK IT STANDS ON ─────────────
+       108 of this city's 166,152 footprints do — the pier sheds and the
+       bulkheads — and without a deck each one hangs over the bay on a short
+       dark stem. `roof-form.ts` §A BUILDING OVER WATER IS STANDING ON
+       SOMETHING has the census and what is and is not claimed. Drawn first,
+       so the building sits on top of it. */
+    if (o.landAt && !o.landAt(tb.cx[i], tb.cy[i])) {
+      const ok = deckForm(sink, ring, elev, DECK_TOP_MIN_M, shadeRGB(rc, 0.58));
+      if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+        const g = globalThis as { __cityGLDeck?: { over: number; drew: number } };
+        g.__cityGLDeck ??= { over: 0, drew: 0 };
+        g.__cityGLDeck.over++; if (ok) g.__cityGLDeck.drew++;
+      }
+    }
     /* ── AND A NAMED BUILDING MAY HAVE A FORM OF ITS OWN ────────────────
        457 of the 166,166 footprints are named in a register that also says
        what KIND of thing they are — a church, a fire station, a pier shed, a

@@ -893,6 +893,21 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
         wallPalette: wallPalette(),
         skipGids: heroSkip,
         civicOf,
+        /* the SAME field the ground is cut at, so a building and the ground
+           under it cannot disagree about whether there is any — see
+           `roof-form.ts` §A BUILDING OVER WATER IS STANDING ON SOMETHING */
+        landAt: landmask
+          ? (x: number, y: number): boolean => {
+              const [mx0, my0, mx1, my1] = landmask.world;
+              const sx = (landmask.w - 1) / (mx1 - mx0);
+              const sy = (landmask.h - 1) / (my1 - my0);
+              let u = Math.round((x - mx0) * sx);
+              let v = Math.round((y - my0) * sy);
+              u = u < 0 ? 0 : u > landmask.w - 1 ? landmask.w - 1 : u;
+              v = v < 0 ? 0 : v > landmask.h - 1 ? landmask.h - 1 : v;
+              return ((landmask.bits[v * landmask.rowBytes + (u >> 3)] >> (7 - (u & 7))) & 1) === 1;
+            }
+          : null,
         materials: {
           hq: (data.manifest.buildings as { hq?: number[][] }).hq ?? [],
           noSampleBit:

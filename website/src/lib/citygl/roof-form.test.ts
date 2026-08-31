@@ -3,6 +3,10 @@ import { describe, expect, it } from "vitest";
 import { DE, PITCH_MAX_HALFRISE_M, PITCH_RUN } from "@/lib/city/roofs";
 import {
   capForm,
+  DECK_OUT_M,
+  DECK_THICK_M,
+  DECK_TOP_MIN_M,
+  deckForm,
   DECK_AO_M,
   DECK_AO_V,
   gableForm,
@@ -958,5 +962,35 @@ describe("stepForm's wall channel", () => {
        the same convention: `u` is the run REACHED, not the run remaining. */
     const us = [...new Set(uv.map((p) => p[0]))].sort((a, b) => a - b);
     expect(us).toEqual([0, 3, 7, 10]);
+  });
+});
+
+
+describe("the deck under a building over water", () => {
+  it("reaches past the building and carries a visible edge", () => {
+    const r = recorder();
+    const roof: [number, number, number] = [0.5, 0.45, 0.4];
+    expect(deckForm(r.sink, rect(20, 30), 0, DECK_TOP_MIN_M, roof)).toBe(true);
+    /* it stands ON the water, not in it: nothing is drawn below the deck's
+       own thickness, and the top is the declared water line */
+    expect(Math.max(...r.h)).toBeCloseTo(DECK_TOP_MIN_M, 9);
+    expect(Math.min(...r.h)).toBeCloseTo(DECK_TOP_MIN_M - DECK_THICK_M, 9);
+    /* and it is bigger than the building it carries, by the declared reach on
+       every side — this is the whole point: a deck the size of the shed reads
+       as the shed floating */
+    const xs = r.x.map(Math.abs), ys = r.y.map(Math.abs);
+    expect(Math.max(...xs)).toBeCloseTo(10 + DECK_OUT_M, 4);
+    expect(Math.max(...ys)).toBeCloseTo(15 + DECK_OUT_M, 4);
+    /* the deck's own surface closes over the plan it stands on */
+    expect(planAreaOf(r, roof)).toBeCloseTo(
+      (20 + 2 * DECK_OUT_M) * (30 + 2 * DECK_OUT_M), 3);
+  });
+
+  it("refuses a ring it cannot take, and leaves the sink untouched", () => {
+    const r = recorder();
+    expect(deckForm(r.sink, ngon(FORM_MAX_VERTS + 1, 30), 0, DECK_TOP_MIN_M,
+                    [0.5, 0.5, 0.5])).toBe(false);
+    expect(r.x.length).toBe(0);
+    expect(r.tris.length).toBe(0);
   });
 });
