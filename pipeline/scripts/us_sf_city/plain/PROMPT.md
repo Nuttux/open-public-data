@@ -79,3 +79,23 @@ words on what actually happened, and where.
 Name a board only when it is a DIFFERENT one ("Board of Education asked for a
 site for a courthouse"), or when the Board itself is the event ("Board adjourns
 to meet in August").
+
+THE VOTE COUNT IS NEVER THE LINE. How the Board split is furniture; WHAT it
+decided is the record. A line that reports the tally and not the subject tells a
+reader nothing they came for:
+
+    BAD : Tabled by nine supervisors, two away
+    BAD : Board adopts the measure by fifteen votes, three absent
+    BAD : Adopted unanimously after being put off from February 12
+    GOOD: Bond money for the Sunset reservoir tabled
+    GOOD: Geary Street paving contract adopted
+
+Never write "unanimously", "N supervisors", "N ayes", "N absent", or a named
+supervisor's excusal as the substance of a line. If after reading the whole
+record you genuinely cannot tell what was voted on — some pages print only the
+tally, with the subject on the page before — then say so plainly ("A vote with
+no subject on this page") rather than dressing the tally up as an event.
+
+Supervisors DO belong in a line when they are the event rather than the
+arithmetic: "Four supervisors sent to the League of California Municipalities
+convention" is a real thing that happened.

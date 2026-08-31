@@ -51,3 +51,17 @@ The glossary gives a term's plain MEANING, not a phrase to drop into the slot.
   or proposed, the line may not say it happened.
 * Read the line back to yourself. If nobody would say it out loud, it is not
   finished.
+
+### 3. The tally written as the event (~135 lines, 0.34%)
+    Tabled by nine supervisors, two away
+    -> <what was tabled> tabled
+    Board adopts the measure by fifteen votes, three absent
+    -> <what the measure was> adopted
+
+The subject must come from the record's own text. Where the page truly carries
+only a tally, say that plainly rather than inventing a subject — and do NOT
+reach into a neighbouring record for one.
+
+KEEP lines where supervisors are the event, not the arithmetic:
+  · "Four supervisors sent to the League of California Municipalities convention"
+  · "Three supervisors named to press officials for speedy action"
