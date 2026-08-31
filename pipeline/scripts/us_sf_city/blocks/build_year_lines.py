@@ -45,6 +45,14 @@ wants, since it draws every one of them.
     t   the decision's own text,     a   dollars, 0 where the record states none
         verbatim and untrimmed
     p   its positions: [x, z, block id], one per place the decision names
+    cs  subject index into classify.json `sub`, -1 where unclassified
+    ca  act index into classify.json `act`, -1 where none
+    g   the shard's own grade letter; `h` means the heading belongs to a
+        different item on the same page and must not be printed
+
+`cs`, `ca` and `g` are carried so a reader can build the same row the dot card
+builds — `components/us/city/record-line.ts` is the ruleset, and it was scored
+on 300 records before it shipped. Nothing here reimplements it.
 """
 from __future__ import annotations
 
@@ -101,7 +109,10 @@ def main() -> None:
         if row is None:
             row = by_key[key] = {
                 "y": key[0], "m": 0, "k": d.get("k") or "",
-                "a": int(d.get("a") or 0), "u": key[1], "t": key[2], "p": [],
+                "a": int(d.get("a") or 0), "u": key[1], "t": key[2],
+                "cs": int(d["cs"]) if d.get("cs") is not None else -1,
+                "ca": int(d["ca"]) if d.get("ca") is not None else -1,
+                "g": d.get("g") or "", "p": [],
             }
         row["m"] |= int(marks["m"][i])
         row["p"].append([round(float(marks["x"][i]), 1),
@@ -141,7 +152,7 @@ def main() -> None:
 
     total = 0
     for dec, rs in sorted(by_decade.items()):
-        cols = {k: [r[k] for r in rs] for k in ("y", "m", "k", "a", "u", "t", "p")}
+        cols = {k: [r[k] for r in rs] for k in ("y", "m", "k", "a", "u", "t", "cs", "ca", "g", "p")}
         p = OUT / f"{dec}.json"
         p.write_text(json.dumps({"decade": dec, "n": len(rs), **cols}) + "\n")
         total += p.stat().st_size
