@@ -17299,6 +17299,8 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   box-shadow: 0 8px 24px rgba(0, 0, 0, .10);
 }
 .theme-fusion .fx-city-search-note { padding: 6px 10px; margin: 0; }
+/* what to type, when the reader has nothing — `city-search.ts` §THE RICHEST FEW */
+.theme-fusion .fx-city-search-seeds { padding: 2px 0 4px; }
 .theme-fusion .fx-city-search-group + .fx-city-search-group {
   border-top: 1px solid var(--rule);
   margin-top: 6px;

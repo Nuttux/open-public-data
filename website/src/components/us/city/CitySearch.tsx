@@ -7,6 +7,7 @@ import {
   loadCitySearch,
   blockForAddress,
   loadCityAddresses,
+  richestHits,
   searchCity,
   streetForAddress,
   type AddressIndex,
@@ -78,6 +79,14 @@ export default function CitySearch({ onPick }: { onPick: (p: CitySearchPick) => 
   }, [ix, failed]);
 
   const hits = useMemo(() => searchCity(ix, q), [ix, q]);
+  /* ── §SOMETHING TO TYPE ────────────────────────────────────────────────
+     An empty box on a map is a box nobody uses: the reader arrives curious
+     rather than looking for an address. These are read out of the index by
+     record count, never typed, so none of them can lead anywhere empty —
+     and they are places and neighbourhoods rather than streets, because 508
+     of 1,948 streets carry no record at all and the median street carries
+     seven. `city-search.ts` §THE RICHEST FEW has the measurement. */
+  const seeds = useMemo(() => richestHits(ix), [ix]);
   const groups = useMemo(() => groupHits(hits), [hits]);
   /* ── THE ADDRESS NOBODY WROTE DOWN — TWO RUNGS, NOT ONE ──────────────
      The index holds 1,052 doors against a city of some two hundred thousand
@@ -180,7 +189,12 @@ export default function CitySearch({ onPick }: { onPick: (p: CitySearchPick) => 
     }
   };
 
-  const showList = open && q.trim().length >= 2;
+  /* ── §SOMETHING TO TYPE opens the list on FOCUS, not on two letters ────
+     The list was gated on `q.length >= 2`, which is right while it holds
+     results and wrong now that an empty box has something to say. A reader
+     who focuses the box and is shown nothing has been told the box does
+     nothing. */
+  const showList = open && (q.trim().length >= 2 || seeds.length > 0);
 
   return (
     <div className="fx-city-search" ref={boxRef}>
@@ -211,6 +225,23 @@ export default function CitySearch({ onPick }: { onPick: (p: CitySearchPick) => 
             <p className="fx-block-hint fx-city-search-note">
               {t("us.sf.thecity.search.failed")}
             </p>
+          ) : !q.trim() && seeds.length ? (
+            <div className="fx-city-search-seeds">
+              <p className="fx-block-hint fx-city-search-note">
+                {t("us.sf.thecity.search.seeds")}
+              </p>
+              {seeds.map((h) => (
+                <button
+                  key={`seed:${h.kind}:${h.label}`}
+                  type="button"
+                  className="fx-city-search-hit"
+                  onClick={() => choose(h)}
+                >
+                  <span className="fx-city-search-l">{h.label}</span>
+                  <span className="fx-city-search-n">{nfInt.format(h.n)}</span>
+                </button>
+              ))}
+            </div>
           ) : !ix ? (
             <p className="fx-block-hint fx-city-search-note">
               {t("us.sf.thecity.search.loading")}

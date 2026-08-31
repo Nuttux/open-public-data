@@ -62,6 +62,57 @@ export interface CitySearchIndex {
   readonly sum: ReadonlySet<number>;
 }
 
+/**
+ * THE RICHEST FEW, FOR A READER WITH NOTHING TO TYPE.
+ *
+ * A search box on a map has a discovery problem the box itself cannot fix: on
+ * Google Maps a reader arrives already wanting something, and here they arrive
+ * curious. Daniel: *"im just afraid too few ppl click search cause theyll
+ * think of it as a map"* — and the failure is not that they cannot find the
+ * box, it is that they have no question.
+ *
+ * So the box offers a few, and it offers NEIGHBOURHOODS. MEASURED on the
+ * shipped index, which settles it:
+ *
+ *     hood     41 entries, the richest holds 3,074 records
+ *     street 1,440 entries, capped at 120, median SEVEN, and 508 more
+ *            streets carry no record at all and are not in the index
+ *     place    105 entries, and the richest holds TEN
+ *
+ * A street is a promise the record usually cannot keep, and a curated place —
+ * which sounds like the obvious thing to suggest — is the thinnest kind here,
+ * because its count is records ABOUT that place rather than everything on its
+ * ground. The neighbourhood is the only kind that is reliably thick.
+ *
+ * ── AND A SUGGESTION WITHOUT A BLOCK CANNOT BE PRESSED ────────────────────
+ * The first build offered *"Lake Merced · 10"*, and pressing it did nothing:
+ * that entry carries `block: ""`, so there was nowhere to send the map.
+ * Measured by pressing it and reading the camera back — unmoved. Anything
+ * without a block is skipped here rather than offered and found dead.
+ *
+ * Every suggestion is READ OUT OF THE INDEX, highest count first, never typed:
+ * a chip that leads nowhere is worse than no chip, and a list written by hand
+ * goes stale the first time the corpus moves.
+ */
+export function richestHits(
+  ix: CitySearchIndex | null,
+  kinds: readonly SearchKind[] = ["hood"],
+  take = 3,
+): SearchHit[] {
+  if (!ix) return [];
+  const f = ix.file;
+  const rows: SearchHit[] = [];
+  for (let i = 0; i < f.l.length; i++) {
+    const kind = ix.kindOf[i];
+    if (!kinds.includes(kind)) continue;
+    /* §AND A SUGGESTION WITHOUT A BLOCK CANNOT BE PRESSED */
+    if (!f.b[i]) continue;
+    rows.push({ kind, label: f.l[i], n: f.n[i], block: f.b[i], to: f.to[i] });
+  }
+  rows.sort((a, b) => b.n - a.n);
+  return rows.slice(0, take);
+}
+
 export interface SearchHit {
   readonly kind: SearchKind;
   readonly label: string;
