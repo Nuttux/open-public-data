@@ -18733,11 +18733,6 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   line-height: 1.45; color: color-mix(in srgb, var(--ink) 70%, transparent);
 }
 .theme-fusion .fx-city-drawnas > div { border: 0 !important; border-radius: 0 !important; }
-@media (max-width: 780px) {
-  .theme-fusion .fx-city-drawnas { top: auto; bottom: 14px; right: 14px; }
-  .theme-fusion .fx-city-find { left: 14px; width: calc(100% - 28px); }
-  .theme-fusion .fx-city-system-note { display: none; }
-}
 /* ── THE CENTURY STRIP: two rows, when and what is lit ─────────────────
    `CityGLMap.tsx` §THE STRIP IS THE PAGE'S ONE ROW OF STATE. */
 .theme-fusion .fx-city-clockrow {
@@ -18760,12 +18755,6 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   flex: none;
 }
 .theme-fusion .fx-city-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-@media (max-width: 780px) {
-  .theme-fusion .fx-city-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-  .theme-fusion .fx-city-chips::-webkit-scrollbar { display: none; }
-  .theme-fusion .fx-city-chips > * { flex: none; }
-  .theme-fusion .fx-city-find { width: calc(100% - 28px); }
-}
 /* ── AND THE MAP'S OWN CONTROLS STEP DOWN WHILE THE STRIP IS UP ─────────
    The entry strip is `position: absolute; top: 0` across the stage, and so
    are the search box, the zoom row and the SHOW row — so on arrival the
@@ -18861,6 +18850,72 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
 }
 .theme-fusion .fx-city-record-mute { margin-top: 4px; border-top: 1px solid var(--rule); padding-top: 4px; }
 .theme-fusion .fx-city-record-row.is-mute { color: color-mix(in srgb, var(--ink) 72%, transparent); }
+/* ── THE PHONE, AND WHY THESE RULES ARE AT THE BOTTOM ──────────────────
+   They were written next to the desktop rules they override and lost the
+   cascade to them: same specificity, and the base declarations came later
+   in the file. MEASURED at 390 px with them in the wrong place —
+
+     .fx-city-find      0 x 37     the width computed negative, invisible
+     .fx-city-drawnas   219 x 423  top AND bottom set, so it stretched over
+                                   half the map
+     .fx-city-controls  350 wide   the zoom row ran off the screen
+
+   A stylesheet this long only stays legible if the narrow overrides sit in
+   one place, after everything they override. */
+@media (max-width: 820px) {
+  .theme-fusion .fx-city-find,
+  .theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-find {
+    left: 12px; right: 12px; width: auto; top: calc(12px + var(--fx-city-strip-h, 0px));
+  }
+  /* the zoom row is four words that do not fit. It keeps the stops and drops
+     the cap, and scrolls sideways rather than running off the edge. */
+  .theme-fusion .fx-city-controls,
+  .theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-controls {
+    left: 12px; right: 12px; top: auto;
+    bottom: 12px; overflow-x: auto; scrollbar-width: none;
+  }
+  .theme-fusion .fx-city-controls::-webkit-scrollbar { display: none; }
+  .theme-fusion .fx-city-controls-cap { display: none; }
+  /* HEIGHT IS WHAT BROKE THIS ONE: with `top` from the strip rule and
+     `bottom` from the phone rule it had both, so it stretched. It gets one. */
+  .theme-fusion .fx-city-drawnas,
+  .theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-drawnas {
+    top: auto; bottom: 58px; right: 12px; left: auto; height: auto;
+    max-width: calc(100% - 24px); overflow-x: auto; scrollbar-width: none;
+  }
+  .theme-fusion .fx-city-drawnas::-webkit-scrollbar { display: none; }
+  .theme-fusion .fx-city-system-note,
+  .theme-fusion .fx-city-shell:has(.fx-city-strip) .fx-city-system-note { display: none; }
+  .theme-fusion .fx-city-chips {
+    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+  }
+  .theme-fusion .fx-city-chips::-webkit-scrollbar { display: none; }
+  .theme-fusion .fx-city-chips > * { flex: none; }
+  .theme-fusion .fx-city-subjrow-cap { display: none; }
+
+  /* ── AND THE RECORD IS A SHEET, NOT A SECOND PAGE ────────────────────
+     On a phone the ledger falls below the map and the record runs to its
+     full length: MEASURED at 390 px, the list was 3,185 px tall and the
+     page 3,963 — a map, and then a quarter-hour of scrolling.
+
+     It is the same content and it wants the phone's own idiom: a panel
+     under the map, its own height, scrolling inside itself. The map keeps
+     the top of the screen and the record keeps the bottom, so a reader can
+     drag the year with a thumb and watch both change without either one
+     leaving the screen.
+
+     45vh is the split: enough for four or five decisions, which is a list
+     rather than a teaser, and it leaves the map the larger half because the
+     map is what the year is changing. */
+  .theme-fusion .fx-city-ledger {
+    position: sticky; bottom: 0; z-index: 4;
+    max-height: 45vh; display: flex; flex-direction: column;
+    border-top: 1px solid var(--ink);
+    background: var(--bg);
+  }
+  .theme-fusion .fx-city-record { max-height: none; min-height: 0; flex: 1; }
+  .theme-fusion .fx-city-record-body { overscroll-behavior: contain; }
+}
 .theme-fusion .fx-city-record-more {
   margin: 10px 8px 0; font-size: 12px; line-height: 1.45;
   color: color-mix(in srgb, var(--ink) 55%, transparent);
