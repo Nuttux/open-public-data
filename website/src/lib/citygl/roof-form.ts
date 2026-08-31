@@ -235,11 +235,11 @@ export const FASCIA_PROUD_M = 0.01;
  * Re-derived at 0.18 m/px against the same 1.3–4 px band, and the fraction
  * halved so a three-storey dwelling reads as trimmed rather than capped.
  */
-export const CORNICE_H_FRAC = 0.035;
+export const CORNICE_H_FRAC = 0.075;
 /** the floor on that fraction, world metres — see `CORNICE_H_FRAC` */
 export const CORNICE_MIN_M = 0.24;
 /** and its ceiling */
-export const CORNICE_MAX_M = 0.72;
+export const CORNICE_MAX_M = 1.40;
 
 /** the projection a wall of this height crowns itself with, world metres */
 export function corniceProjM(hM: number): number {
