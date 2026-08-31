@@ -59,7 +59,7 @@ import {
   type Object3D,
 } from "three";
 
-import type { CityData } from "@/lib/city/data";
+import type { Chunk, CityData } from "@/lib/city/data";
 import { roofHeight } from "@/lib/city/roofs";
 import { WA } from "@/lib/city/terrain";
 import { decodeBldg, type BldgTable } from "../bldg";
@@ -100,7 +100,7 @@ import {
   type FacadeAtlas,
   type FacadeKey,
 } from "../facade";
-import { hipForm, hipPlan, trayForm, type FormSink } from "../roof-form";
+import { boxForm, hipForm, hipPlan, trayForm, type FormSink } from "../roof-form";
 import {
   bldgMaterials,
   legendDraw,
@@ -143,6 +143,9 @@ export interface BuildingsLayerOptions {
   atlas?: FacadeAtlas | null;
   /** the published facade columns for this chunk, when it has them */
   face?: { ty: Uint8Array; st2: Uint8Array; shop: Uint8Array; role: Uint8Array } | null;
+  /** what the 2023 survey measured standing on each roof, when this chunk has
+   *  a `roof/<cell>` companion. Absent, every building draws as it did. */
+  roof?: RoofTable | null;
   /** footprints a hand-modelled landmark already stands on — never drawn twice */
   skipGids?: ReadonlySet<number>;
   /** what decides which entry of each a footprint gets */
@@ -284,6 +287,46 @@ const ROOF_COMP_MAX = 4;
 /** `face/<cell>` mirrors `bldg/<cell>` row for row; the solo table's is named
  *  once. A WRONG face chunk reads as a plausible building and a missing one
  *  reads as fewer openings, so this returns null rather than guessing. */
+/** `roof/<cell>` mirrors `bldg/<cell>` the way `face/<cell>` does, and
+ *  `roof/solo` answers for `base/solo`. A tile with no roof chunk draws
+ *  exactly as it did before this existed — see `roofscan/encode_roofs.py`
+ *  §why a new kind and not new columns. */
+export function roofKeyFor(key: string): string | null {
+  if (key === "base/solo") return "roof/solo";
+  if (key.startsWith("bldg/")) return "roof/" + key.slice(5);
+  return null;
+}
+
+/** the decoded roof companion: a gid to its features, and the box run it owns */
+export interface RoofTable {
+  readonly at: Map<number, { o: number; n: number }>;
+  readonly bx: Int16Array;
+  readonly by: Int16Array;
+  readonly bw: Uint8Array;
+  readonly bd: Uint8Array;
+  readonly bh: Uint8Array;
+}
+
+/** decimetres, the unit `encode_roofs.py` writes every length in */
+const ROOF_DM = 0.1;
+
+export function decodeRoof(chunk: Chunk): RoofTable {
+  const f = chunk.fields as unknown as Record<string, ArrayLike<number>>;
+  const gid = f.gid as Uint32Array;
+  const cn = f.cn as Uint8Array;
+  const at = new Map<number, { o: number; n: number }>();
+  let o = 0;
+  for (let i = 0; i < gid.length; i++) {
+    at.set(gid[i], { o, n: cn[i] });
+    o += cn[i];
+  }
+  return {
+    at,
+    bx: f.bx as Int16Array, by: f.by as Int16Array,
+    bw: f.bw as Uint8Array, bd: f.bd as Uint8Array, bh: f.bh as Uint8Array,
+  };
+}
+
 function faceKeyFor(key: string): string | null {
   if (key === "base/solo") return "base/solo-face";
   if (key.startsWith("bldg/")) return "face/" + key.slice(5);
@@ -1037,6 +1080,25 @@ export function buildingsMesh(
         idxRoof.push(roof, roof + k, roof + k + 1);
       }
     }
+    /* ── AND WHAT IS STANDING ON IT ─────────────────────────────────────
+       Measured, per footprint, off the 2023 survey. The base sits at the
+       height this renderer DREW the roof at rather than the height the scan
+       found it at: the two agree to a median 0.19 m, and a box floating a
+       hand's breadth over its own roof is the one error a reader would
+       actually see. */
+    const rf = o.roof?.at.get(tb.gid[i]);
+    if (rf) {
+      for (let k = 0; k < rf.n; k++) {
+        const q = rf.o + k;
+        boxForm(
+          sink,
+          tb.cx[i] + o.roof!.bx[q] * ROOF_DM, tb.cy[i] + o.roof!.by[q] * ROOF_DM,
+          o.roof!.bw[q] * ROOF_DM, o.roof!.bd[q] * ROOF_DM,
+          elev, hM, hM + o.roof!.bh[q] * ROOF_DM,
+          rc,
+        );
+      }
+    }
     /* ── THE WALL, EDGE BY EDGE ─────────────────────────────────────────
        The role is published PER RING VERTEX, not per building: 163,536
        measured edges saying whether this side of this footprint is a front, a
@@ -1554,6 +1616,9 @@ export function buildingsLayer(
     const chunk = data.get(c.k);
     if (!chunk) continue;
     const tb = decodeBldg(chunk);
+    const rk = roofKeyFor(c.k);
+    const rch = rk ? data.get(rk) : undefined;
+    const roofTable = rch ? decodeRoof(rch) : null;
     const fk = faceKeyFor(c.k);
     const fc = fk ? data.get(fk) : undefined;
     const face = fc
@@ -1564,7 +1629,7 @@ export function buildingsLayer(
           role: (fc.fields.role as Uint8Array) ?? new Uint8Array(0),
         }
       : null;
-    const built = buildingsMesh(tb, { ...o, atlas, face, materials: mcfg, rise });
+    const built = buildingsMesh(tb, { ...o, atlas, face, roof: roofTable, materials: mcfg, rise });
     if (!built) continue;
     meshes.push(...built.meshes);
     setters.push(built.setStep);

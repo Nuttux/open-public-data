@@ -855,6 +855,54 @@ const RIDGE_MIN_AREA2 = 0.02;
  * `dy` and `prof` are this — and the same call serves a step, a mast and a
  * spire, exactly as one slot stream serves all three in the data.
  */
+/**
+ * A BOX STANDING ON A ROOF.
+ *
+ * The plant, the stair head, the tank and the lift overrun the 2023 survey
+ * measured over each footprint — `pipeline/scripts/us_sf_city/roofscan/`. The
+ * record publishes none of this and `layers/caps.ts` says so at length: its
+ * own two chunks carry 512 second solids for 166,166 buildings and *"no tank,
+ * no penthouse box"* anywhere in them. This is not that stream widened by
+ * guesswork; it is a different, measured one.
+ *
+ * Five faces and no floor — the underside sits on the roof plane and is never
+ * seen from a camera that cannot go below it. Eight vertices, ten triangles.
+ * The sides take a value under the top so a box reads as a solid at the zoom
+ * where it is four pixels across, which is most of the zooms it is drawn at.
+ */
+export function boxForm(
+  sink: FormSink,
+  cx: number, cy: number,
+  w: number, d: number,
+  elev: number, baseH: number, topH: number,
+  c: RGB,
+): boolean {
+  if (!(w > 0.05) || !(d > 0.05) || !(topH > baseH)) return false;
+  const hw = w / 2, hd = d / 2;
+  const top = shadeRGB(c, 1.06);
+  const side = shadeRGB(c, 0.78);
+  const xs = [cx - hw, cx + hw, cx + hw, cx - hw];
+  const ys = [cy - hd, cy - hd, cy + hd, cy + hd];
+  const lo: number[] = [], hi: number[] = [];
+  for (let k = 0; k < 4; k++) {
+    lo.push(sink.vertex(xs[k], ys[k], elev, baseH, side[0], side[1], side[2]));
+    hi.push(sink.vertex(xs[k], ys[k], elev, topH, side[0], side[1], side[2]));
+  }
+  /* the lid gets its own four, so its value does not bleed down the walls */
+  const cap: number[] = [];
+  for (let k = 0; k < 4; k++) {
+    cap.push(sink.vertex(xs[k], ys[k], elev, topH, top[0], top[1], top[2]));
+  }
+  sink.tri(cap[0], cap[1], cap[2]);
+  sink.tri(cap[0], cap[2], cap[3]);
+  for (let k = 0; k < 4; k++) {
+    const n = (k + 1) & 3;
+    sink.tri(lo[k], lo[n], hi[n]);
+    sink.tri(lo[k], hi[n], hi[k]);
+  }
+  return true;
+}
+
 export interface CapPlan {
   /**
    * the AREA centroid, world metres: `BldgTable.cx + FormTable.dx`. The offset

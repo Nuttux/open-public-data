@@ -104,13 +104,64 @@ def build(rows, out_dir: str, quiet: bool = False):
         sub = os.path.join(out_dir, "roof")
         os.makedirs(sub, exist_ok=True)
         with open(os.path.join(sub, f"{key}.qc"), "wb") as fh: fh.write(blob)
+        import gzip as _gz
         entries.append({"k": f"roof/{key}", "kind": "roof", "tier": "bldg",
-                        "b": len(blob), "n": len(gid), "boxes": len(bx)})
+                        "b": len(blob), "gz": len(_gz.compress(blob, 6)),
+                        "n": len(gid), "boxes": len(bx)})
         if not quiet:
             print(f"  roof/{key:<8} {len(gid):>6} buildings  {len(bx):>6} boxes  {len(blob)/1024:>7.1f} KB")
     if dropped and not quiet:
         print(f"  ({dropped} rows had no published footprint and were dropped)")
     return entries
+
+
+FIELDS = [("gid", "u32"), ("flags", "u8"), ("slope", "u8"), ("ridge", "u8"),
+          ("rh", "u16"), ("cn", "u8"), ("bx", "i16"), ("by", "i16"),
+          ("bw", "u8"), ("bd", "u8"), ("bh", "u8")]
+
+PROV = {"gid": "roof_index", "flags": "roof_form", "slope": "roof_form",
+        "ridge": "roof_form", "rh": "roof_plane", "cn": "roof_box",
+        "bx": "roof_box", "by": "roof_box", "bw": "roof_box",
+        "bd": "roof_box", "bh": "roof_box"}
+
+SCAN = ("USGS 3DEP CA_SanFrancisco_1_B23, airborne LiDAR flown 2023-04-20; "
+        "132-164 points/m2 measured over two 200 m squares")
+
+SOURCES = {
+    "roof_index": {
+        "publisher": "DataSF", "dataset": "ynuv-fyni",
+        "what": "the published footprint each measured roof belongs to",
+    },
+    "roof_plane": {
+        "publisher": "USGS", "dataset": "CA_SanFrancisco_1_B23",
+        "what": "the dominant roof level inside the footprint, taken as the mode "
+                "of a 0.25 m height histogram over cells more than 2 m above "
+                "ground, then the median of the cells within 0.45 m of it",
+        "quantised": "decimetres",
+        "not_measured": "WHERE a published ring is not tight to the walls, a "
+                        "courtyard inside it is excluded by the 2 m floor rather "
+                        "than modelled",
+    },
+    "roof_form": {
+        "publisher": "USGS", "dataset": "CA_SanFrancisco_1_B23",
+        "what": "median slope over roof cells with a full roof neighbourhood, and "
+                "the ridge as the axis of the gradient structure tensor; pitched "
+                "at 8-60 degrees",
+        "quantised": "whole degrees; ridge 0-179",
+        "not_measured": "a roof with two pitches is reported as one; the cap at 60 "
+                        "degrees refuses the footprint edge, which straddles roof "
+                        "and pavement and differentiates to near-vertical",
+    },
+    "roof_box": {
+        "publisher": "USGS", "dataset": "CA_SanFrancisco_1_B23",
+        "what": "connected cells standing more than 0.45 m over the roof plane and "
+                "covering at least 0.5 m2 — plant, stair heads, tanks, lift "
+                "overruns — as their bounding box and 90th-percentile height",
+        "quantised": "decimetres; 8 largest per footprint",
+        "not_measured": "WHAT each object is. The scan gives an extent and a "
+                        "height and no class, so a box is drawn as a box",
+    },
+}
 
 
 def merge_manifest(entries, city_dir: str = CITY):
@@ -124,16 +175,31 @@ def merge_manifest(entries, city_dir: str = CITY):
     """
     mp = os.path.join(city_dir, "manifest.json")
     m = json.load(open(mp))
+    #  a roof chunk is only ever asked for when its own footprints are, so it
+    #  inherits the zoom floor and the extent of the bldg chunk it mirrors —
+    #  without that it reads as a chunk the whole-city frame needs.
+    host = {c["k"]: c for c in m["chunks"] if c.get("kind") == "bldg"}
+    for e in entries:
+        cell = e["k"].split("/", 1)[1]
+        h = host.get("base/solo" if cell == "solo" else f"bldg/{cell}")
+        if h:
+            e["minZ"] = h.get("minZ", 0.0)
+            e["tier"] = h.get("tier", "bldg")
+            if h.get("e") is not None: e["e"] = h["e"]
     keep = [c for c in m["chunks"] if c.get("kind") != "roof"]
     m["chunks"] = keep + entries
-    t = m.setdefault("tiers", {})
-    m["kinds"] = m.get("kinds", {})
-    if isinstance(m["kinds"], dict) and "roof" not in m["kinds"]:
-        m["kinds"]["roof"] = {
-            "what": "roof shape, pitch and the objects standing on it, per footprint",
-            "source": "USGS 3DEP CA_SanFrancisco_1_B23, flown 2023-04-20",
-            "script": "pipeline/scripts/us_sf_city/roofscan/",
-        }
+    m.setdefault("kinds", {})["roof"] = {
+        "fields": [{"n": n, "t": t} for n, t in FIELDS],
+        "provenance": dict(PROV),
+        "note": ("What the 2023 survey measured on each roof. The record publishes "
+                 "none of this: `layers/caps.ts` carries 512 second solids for "
+                 "166,166 buildings and no tank, no penthouse box and no cornice "
+                 "anywhere in its two chunks. This is a different, measured stream "
+                 "— " + SCAN + ". A footprint with no row here draws exactly as it "
+                 "did before it existed. Built by "
+                 "pipeline/scripts/us_sf_city/roofscan/."),
+    }
+    m.setdefault("sources", {}).update(SOURCES)
     json.dump(m, open(mp, "w"), separators=(",", ":"))
     return len(entries)
 
