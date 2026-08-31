@@ -24,10 +24,27 @@ STOCK = set("""the a an of in on at to for and or with by from street streets av
 avenues boulevard road way place drive city county san francisco board public works
 supervisors district ordinance resolution motion""".split())
 
+
+# ── THE RECORD'S OWN ABBREVIATIONS ──────────────────────────────────────────
+# The Journal writes "Acme Brewing Co.", "Sansome st.", "United Railroads R. R.";
+# a line a person can read writes them out. Flagging "Company" as invented
+# because the clerk typed "Co." is the gate being wrong about the line, so each
+# abbreviation the record ACTUALLY CONTAINS admits its expansion — and nothing
+# else. This adds no word the record does not already carry in short form.
+ABBREV = {"co": "company", "inc": "incorporated", "corp": "corporation",
+          "bros": "brothers", "st": "street", "ave": "avenue", "av": "avenue",
+          "blvd": "boulevard", "dept": "department", "mfg": "manufacturing",
+          "assn": "association", "bldg": "building", "ry": "railway",
+          "rr": "railroad", "hosp": "hospital", "natl": "national",
+          "sq": "square", "rd": "road", "ct": "court", "dr": "drive",
+          "ter": "terrace", "ln": "lane", "pl": "place"}
+
 def _norm(s):
     s = s.lower().replace("’", "'").replace(",", "")
     s = re.sub(r"-\s+", "", s)          # "Mc- Grath" and "2826- 2828" are one token
     s = re.sub(r"(?<=\d)\s+(?=\d)", "", s)   # "14 30 Filbert" is 1430
+    s = re.sub(r"(?<=\d)[-,]\s*(?=[\dgosl])", "", s)  # "$22,-98G.97" is 2298697
+    s = re.sub(r"(?<=\d)g(?=\d)|(?<=\d)g\b", "6", s)  # the scanner reads 6 as G
     s = re.sub(r"[.'‘“”]", "", s)
     return re.sub(r"\s+", " ", s)
 
@@ -85,10 +102,15 @@ def invented(line, record):
     stems = {_stem(w) for w in re.findall(r"[a-z]+", src)}
     stems |= {_stem(w) for w in re.findall(r"[a-z]+", joined)}
     # a record that spells "ninety days" backs a line that writes "90"
+    for ab, full in ABBREV.items():
+        if ab in stems:
+            stems.add(_stem(full)); src += " " + full
+        if _stem(full) in stems:
+            stems.add(ab); src += " " + ab
     for word, digit in WORDNUM.items():
         if word in stems: src += " " + digit
     for tens, unit in re.findall(r"\b(twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)"
-                                r"[- ](one|two|three|four|five|six|seven|eight|nine)\b", src):
+                                r"[- ]?(one|two|three|four|five|six|seven|eight|nine)\b", src):
         src += " " + str(int(WORDNUM[tens]) + int(WORDNUM[unit]))
     out = []
     # the FIRST word is capitalised because it opens a sentence, not because it
