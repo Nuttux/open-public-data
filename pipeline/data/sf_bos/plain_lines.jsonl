@@ -5732,3 +5732,303 @@
 {"id": "journalofproceed1915sanfrich|306", "y": 1915, "line": "State Improvement Company allowed ninety days of blasting on Valley Street", "flags": {}}
 {"id": "journalofproceed1915sanfrich|307", "y": 1915, "line": "M. A. Greely allowed ninety days of blasting on Thirtieth Avenue", "flags": {}}
 {"id": "journalofproceed1915sanfrich|309", "y": 1915, "line": "United States Steel Products paid a $7,410 bonus for track work", "flags": {}}
+{"id": "journalofproceed1912sanfrich|641", "y": 1912, "line": "City buys land from Wm. G. Fanning for the Fire Department", "flags": {"invented": ["Department"]}}
+{"id": "journalofproceed1912sanfrich|643", "y": 1912, "line": "Malloy Street closed and vacated between Dolores Street and the railroad", "flags": {}}
+{"id": "journalofproceed1912sanfrich|644", "y": 1912, "line": "Malloy Street closed and vacated between Dolores Street and the railroad", "flags": {"overstates": ["intention", "closed"]}}
+{"id": "journalofproceed1912sanfrich|646", "y": 1912, "line": "Street levels set on Trenton Street between Jackson and Pacific Streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|647", "y": 1912, "line": "Street levels set on Annie Street and on Jessie Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|648", "y": 1912, "line": "Street levels changed on Day Street and Noe Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|649", "y": 1912, "line": "Street levels changed on Forty-fourth Avenue between Cabrillo and Fulton Streets", "flags": {"damaged": ["Fulton"]}}
+{"id": "journalofproceed1912sanfrich|653", "y": 1912, "line": "City takes over the new roadway on Pixley Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|655", "y": 1912, "line": "Property owners heard against the Stockton Street tunnel, Mayor Rolph presiding", "flags": {}}
+{"id": "journalofproceed1912sanfrich|658", "y": 1912, "line": "F. Amator and Gus Emanuel allowed stables for their horses", "flags": {}}
+{"id": "journalofproceed1912sanfrich|659", "y": 1912, "line": "Mahoney Bros. allowed to blast away the Geary Street Railroad roadbed", "flags": {}}
+{"id": "journalofproceed1912sanfrich|661", "y": 1912, "line": "Billiard and pool tables need a permit from the police commissioners", "flags": {}}
+{"id": "journalofproceed1912sanfrich|665", "y": 1912, "line": "Chas. C. Moore & Co. paid $25,000 for pumping station equipment", "flags": {}}
+{"id": "journalofproceed1912sanfrich|667", "y": 1912, "line": "Storage tanks allowed for Old Homestead Bakery and Crocker Estate Company", "flags": {}}
+{"id": "journalofproceed1912sanfrich|668", "y": 1912, "line": "Stables allowed for Manuel Lucas's cow and F. Cordina's horse", "flags": {}}
+{"id": "journalofproceed1912sanfrich|669", "y": 1912, "line": "McSheehy Bros. given 90 more days on the San Francisco Hospital", "flags": {}}
+{"id": "journalofproceed1912sanfrich|670", "y": 1912, "line": "William G. Fanning paid $1,600 for a lot on Girard Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|671", "y": 1912, "line": "Louis P. Werner paid $33,000 for the Marshall School site", "flags": {"invented": ["$33,000"]}}
+{"id": "journalofproceed1912sanfrich|672", "y": 1912, "line": "Centenary Methodist Church paid $22,000 for land for Lowell High School", "flags": {}}
+{"id": "journalofproceed1912sanfrich|673", "y": 1912, "line": "Street levels set on Trenton Street between Jackson and Pacific Streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|674", "y": 1912, "line": "Street levels set on Annie Street and on Jessie Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|675", "y": 1912, "line": "Street levels changed on Day Street and Noe Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|676", "y": 1912, "line": "Street levels changed on Forty-fourth Avenue between Cabrillo and Fulton Streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|677", "y": 1912, "line": "Street levels changed on Santa Marina Street and Mission Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|678", "y": 1912, "line": "City takes over the new roadway on Pixley Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|679", "y": 1912, "line": "$247,000 set aside for the Geary Street Railway car house", "flags": {}}
+{"id": "journalofproceed1912sanfrich|680", "y": 1912, "line": "$120 set aside to clean and repaint the city's Mission Bells", "flags": {}}
+{"id": "journalofproceed1912sanfrich|682", "y": 1912, "line": "Storage tanks allowed for J. Olcovich at Pine and Polk streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|683", "y": 1912, "line": "Schoolyard ordered for the Visitacion Valley School on Schwerin Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|684", "y": 1912, "line": "Board complains of trenches left open on Market Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|685", "y": 1912, "line": "Paving proposed for Webster Street between Hermann and Duboce Avenue", "flags": {}}
+{"id": "journalofproceed1912sanfrich|686", "y": 1912, "line": "City takes over Lake Street and five street crossings", "flags": {}}
+{"id": "journalofproceed1912sanfrich|691", "y": 1912, "line": "Willett and Burr given 75 more days on the Harrison bridge", "flags": {}}
+{"id": "journalofproceed1912sanfrich|692", "y": 1912, "line": "Mayor reports on lumber and the piling under Berry Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|693", "y": 1912, "line": "Pope & Talbot has kept up the decaying Berry Street piling", "flags": {}}
+{"id": "journalofproceed1912sanfrich|695", "y": 1912, "line": "Board favors plan one for the $210,000 Geary Street car house", "flags": {}}
+{"id": "journalofproceed1912sanfrich|696", "y": 1912, "line": "$120 set aside to clean and repaint the city's Mission Bells", "flags": {}}
+{"id": "journalofproceed1912sanfrich|697", "y": 1912, "line": "Storage tanks allowed for J. Olcovich at Pine and Polk streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|698", "y": 1912, "line": "Louis P. Werner paid $33,000 for the Marshall School site", "flags": {}}
+{"id": "journalofproceed1912sanfrich|699", "y": 1912, "line": "Schoolyard ordered for the Visitacion Valley School on Schwerin Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|700", "y": 1912, "line": "Willett and Burr given 75 more days on the Harrison bridge", "flags": {}}
+{"id": "journalofproceed1912sanfrich|701", "y": 1912, "line": "City takes over new roadways on Wayland, Irving and Balboa streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|702", "y": 1912, "line": "City takes over Lake Street and five street crossings", "flags": {}}
+{"id": "journalofproceed1912sanfrich|703", "y": 1912, "line": "Street levels changed on Miguel Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|705", "y": 1912, "line": "Street levels changed on Ashton Avenue between Ocean and Holloway avenues", "flags": {}}
+{"id": "journalofproceed1912sanfrich|706", "y": 1912, "line": "Overhead wires must go underground on Stockton Street and Broadway", "flags": {}}
+{"id": "journalofproceed1912sanfrich|707", "y": 1912, "line": "J. F. O'Brien Co. paid $8,142.56 for the Brannan Street sewer", "flags": {}}
+{"id": "journalofproceed1912sanfrich|708", "y": 1912, "line": "$11,000 set aside for a new sewer on Steuart Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|709", "y": 1912, "line": "O. C. Holt allowed blasting for a firehouse on Stockton Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|710", "y": 1912, "line": "Whittel Realty Company allowed a public garage on Taylor Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|711", "y": 1912, "line": "Dr. K. O. Steers allowed a veterinary hospital on Irving Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|713", "y": 1912, "line": "City takes over the San Bruno Avenue and Bacon Street crossing", "flags": {}}
+{"id": "journalofproceed1912sanfrich|714", "y": 1912, "line": "Sewer ordered for Steuart Street between Howard and Folsom, $11,000", "flags": {}}
+{"id": "journalofproceed1912sanfrich|715", "y": 1912, "line": "$41,200 sewer ordered for Beach, Webster and Tonquin streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|717", "y": 1912, "line": "Street levels to be changed on Staples Avenue and Genesee Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|718", "y": 1912, "line": "Gas lamp ordered for Commercial Street from Pacific Gas and Electric", "flags": {}}
+{"id": "journalofproceed1912sanfrich|719", "y": 1912, "line": "$11,000 set aside for a new sewer on Steuart Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|720", "y": 1912, "line": "O. C. Holt allowed blasting for a firehouse on Stockton Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|721", "y": 1912, "line": "Whittel Realty Company allowed a public garage on Taylor Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|722", "y": 1912, "line": "Dr. K. O. Steers allowed a veterinary hospital on Irving Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|723", "y": 1912, "line": "City takes over the San Bruno Avenue and Bacon Street crossing", "flags": {}}
+{"id": "journalofproceed1912sanfrich|724", "y": 1912, "line": "Sewer ordered for Steuart Street between Howard and Folsom, $11,000", "flags": {}}
+{"id": "journalofproceed1912sanfrich|725", "y": 1912, "line": "Board strikes the Sheriff's cashier from the ordinance", "flags": {}}
+{"id": "journalofproceed1912sanfrich|726", "y": 1912, "line": "F. Rolandi allowed to blast for the Geary Street car barn", "flags": {}}
+{"id": "journalofproceed1912sanfrich|727", "y": 1912, "line": "Fred Bauer and Thomas Murdock refused a garage on Sutter Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|729", "y": 1912, "line": "New street lights ordered, two in front of St. Francis Church", "flags": {}}
+{"id": "journalofproceed1912sanfrich|730", "y": 1912, "line": "Owners get thirty days to claim damage from the tunnel work", "flags": {}}
+{"id": "journalofproceed1912sanfrich|731", "y": 1912, "line": "Margaret Housley sells land for $3,500 to open Fair Avenue", "flags": {}}
+{"id": "journalofproceed1912sanfrich|732", "y": 1912, "line": "Margaret Housley sells land for $3,500 to open Fair Avenue", "flags": {}}
+{"id": "journalofproceed1912sanfrich|733", "y": 1912, "line": "R. Flaherty paid $27,500 for Civic Center land on McAllister Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|734", "y": 1912, "line": "Carrie Rea paid $9,000 for Civic Center land on Fulton Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|735", "y": 1912, "line": "Old Hall of Justice cornerstone box given to the Park Commissioners", "flags": {}}
+{"id": "journalofproceed1912sanfrich|736", "y": 1912, "line": "Street work ordered on King, Quane, Hyde and Texas streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|737", "y": 1912, "line": "Southern Pacific gives a sewer right of way at Tara Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|738", "y": 1912, "line": "Street levels set on Lyell Street between Bosworth and Springdale streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|739", "y": 1912, "line": "Street levels set on Havelock Street beside Balboa Park", "flags": {}}
+{"id": "journalofproceed1912sanfrich|740", "y": 1912, "line": "$41,200 sewer ordered for Beach, Webster and Tonquin streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|741", "y": 1912, "line": "Street levels to be changed on Onondaga Avenue", "flags": {}}
+{"id": "journalofproceed1912sanfrich|742", "y": 1912, "line": "Street levels to be changed on Lisbon Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|743", "y": 1912, "line": "John F. Kelly given 90 more days on Twenty-first Avenue", "flags": {}}
+{"id": "journalofproceed1912sanfrich|744", "y": 1912, "line": "City Attorney told to sue Spring Valley Water over missing mains", "flags": {}}
+{"id": "journalofproceed1912sanfrich|745", "y": 1912, "line": "Report presents two plans for the Civic Center site", "flags": {}}
+{"id": "journalofproceed1912sanfrich|746", "y": 1912, "line": "F. Rolandi allowed to blast for the Geary Street car barn", "flags": {"damaged": ["Rolandi"]}}
+{"id": "journalofproceed1912sanfrich|747", "y": 1912, "line": "O. F. Taber allowed a garage on Valencia Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|748", "y": 1912, "line": "Margaret Housley sells land for $3,500 to open Fair Avenue", "flags": {}}
+{"id": "journalofproceed1912sanfrich|749", "y": 1912, "line": "R. Flaherty paid $27,500 for Civic Center land on McAllister Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|750", "y": 1912, "line": "Carrie Rea paid $9,000 for Civic Center land on Fulton Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|751", "y": 1912, "line": "Board amends the Building Law on fees for building permits", "flags": {}}
+{"id": "journalofproceed1912sanfrich|752", "y": 1912, "line": "Southern Pacific gives a sewer right of way at Tara Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|753", "y": 1912, "line": "Street levels set on Havelock Street beside Balboa Park", "flags": {}}
+{"id": "journalofproceed1912sanfrich|754", "y": 1912, "line": "John F. Kelly given 90 more days on Twenty-first Avenue", "flags": {}}
+{"id": "journalofproceed1912sanfrich|755", "y": 1912, "line": "Crane Co. paid for galvanized pipe for the parks", "flags": {}}
+{"id": "journalofproceed1912sanfrich|756", "y": 1912, "line": "$12,000 set aside to resurvey the Excelsior and Mission districts", "flags": {}}
+{"id": "journalofproceed1912sanfrich|757", "y": 1912, "line": "Storage tanks allowed for Old Piedmont Bakery on Grant Avenue", "flags": {}}
+{"id": "journalofproceed1912sanfrich|758", "y": 1912, "line": "Spring Construction Co. allowed to blast in the Sutro Tract", "flags": {"invented": ["Construction"]}}
+{"id": "journalofproceed1912sanfrich|759", "y": 1912, "line": "J. E. Johnson allowed to blast old castings on Beach Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|760", "y": 1912, "line": "Arthur Legrand refused a stable behind 2840 Geary Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|761", "y": 1912, "line": "Pacific Gas and Electric may replace ten Panhandle lights with twenty-one", "flags": {}}
+{"id": "journalofproceed1912sanfrich|762", "y": 1912, "line": "Fire engine house ordered on Twelfth Avenue for $37,000", "flags": {}}
+{"id": "journalofproceed1912sanfrich|763", "y": 1912, "line": "Land bought from Suzanne Alferitz for the Cooper School", "flags": {}}
+{"id": "journalofproceed1912sanfrich|764", "y": 1912, "line": "Land bought from Suzanne Alferitz for the Cooper School", "flags": {"overstates": ["laid over", "bought"]}}
+{"id": "journalofproceed1912sanfrich|765", "y": 1912, "line": "Sidewalk widths fixed on Geary Street between Presidio and Masonic avenues", "flags": {}}
+{"id": "journalofproceed1912sanfrich|766", "y": 1912, "line": "City takes over the new roadway on Balboa Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|768", "y": 1912, "line": "City takes over new roadways on Geary and Broderick streets", "flags": {"damaged": ["Geary"]}}
+{"id": "journalofproceed1912sanfrich|769", "y": 1912, "line": "Street levels to be changed at Geary and Divisadero streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|770", "y": 1912, "line": "Street levels to be changed on Geary between Josephine and Emerson", "flags": {}}
+{"id": "journalofproceed1912sanfrich|771", "y": 1912, "line": "Street levels to be changed on Douglass Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|772", "y": 1912, "line": "Street levels to be changed on Leese Street and Richmond Avenue", "flags": {}}
+{"id": "journalofproceed1912sanfrich|773", "y": 1912, "line": "$1,500 set aside for the Supervisors' trip to Hetch Hetchy", "flags": {}}
+{"id": "journalofproceed1912sanfrich|774", "y": 1912, "line": "Plans ordered to extend the municipal railway to the Beach", "flags": {}}
+{"id": "journalofproceed1912sanfrich|775", "y": 1912, "line": "Mayor vetoes Dr. K. O. Steers' veterinary hospital on Irving Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|776", "y": 1912, "line": "Board takes up the Mayor's veto of Dr. Steers' hospital", "flags": {}}
+{"id": "journalofproceed1912sanfrich|781", "y": 1912, "line": "$12,000 set aside to resurvey the Excelsior and Mission districts", "flags": {}}
+{"id": "journalofproceed1912sanfrich|782", "y": 1912, "line": "$30,000 set aside to clean and sprinkle the streets in July", "flags": {}}
+{"id": "journalofproceed1912sanfrich|783", "y": 1912, "line": "Storage tanks allowed for Old Piedmont Bakery on Grant Avenue", "flags": {}}
+{"id": "journalofproceed1912sanfrich|784", "y": 1912, "line": "Spring Construction Co. allowed to blast in the Sutro Tract", "flags": {}}
+{"id": "journalofproceed1912sanfrich|785", "y": 1912, "line": "J. E. Johnson allowed to blast old castings on Beach Street", "flags": {"damaged": ["Johnson"]}}
+{"id": "journalofproceed1912sanfrich|786", "y": 1912, "line": "Mrs. Anna Baumsteiger allowed a stable for one horse", "flags": {}}
+{"id": "journalofproceed1912sanfrich|787", "y": 1912, "line": "Fire engine house ordered on Twelfth Avenue for $37,000", "flags": {}}
+{"id": "journalofproceed1912sanfrich|788", "y": 1912, "line": "Sidewalk widths fixed on Geary Street between Presidio and Masonic avenues", "flags": {}}
+{"id": "journalofproceed1912sanfrich|789", "y": 1912, "line": "City takes over the new roadway on Balboa Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|791", "y": 1912, "line": "City takes over new roadways on Geary and Broderick streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|794", "y": 1912, "line": "Whitcomb Estate paid $5,250 in June rent on Market Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|795", "y": 1912, "line": "Flinn & Treacy paid $2,455.52 for paving Lyons Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|797", "y": 1912, "line": "Flinn & Treacy paid $2,455.52 for paving Lyons Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|798", "y": 1912, "line": "New stone sidewalks ordered around Columbia Square on Folsom Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|799", "y": 1912, "line": "Unsold 1904 bonds to be sold at the Treasurer's office", "flags": {}}
+{"id": "journalofproceed1912sanfrich|800", "y": 1912, "line": "$4,000 more set aside for sewers on Oak and Stanyan streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|802", "y": 1912, "line": "Bids invited to pave the north half of Lincoln Way", "flags": {}}
+{"id": "journalofproceed1912sanfrich|805", "y": 1912, "line": "Coast Improvement Company paid $26,722.03 for laying water supply pipe", "flags": {}}
+{"id": "journalofproceed1912sanfrich|807", "y": 1912, "line": "$83,000 set aside to lay high pressure pipe near Market Street", "flags": {"invented": ["$83,000"]}}
+{"id": "journalofproceed1912sanfrich|808", "y": 1912, "line": "Pacific Gas & Electric paid $34,521.13 for lighting the streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|809", "y": 1912, "line": "Foster Vogt Company allowed to blast for the San Francisco Armory", "flags": {"invented": ["Vogt"]}}
+{"id": "journalofproceed1912sanfrich|810", "y": 1912, "line": "Dimond Estate Company allowed to blast in Visitacion Valley", "flags": {}}
+{"id": "journalofproceed1912sanfrich|812", "y": 1912, "line": "Street levels changed and regrading ordered on Polk and Chestnut streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|813", "y": 1912, "line": "Polk and Chestnut streets to be regraded, with new sewers", "flags": {}}
+{"id": "journalofproceed1912sanfrich|814", "y": 1912, "line": "Pacific Gas & Electric paid $34,521.13 for lighting the streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|815", "y": 1912, "line": "Foster Vogt Company allowed to blast for the San Francisco Armory", "flags": {"invented": ["Vogt"]}}
+{"id": "journalofproceed1912sanfrich|816", "y": 1912, "line": "Dimond Estate Company allowed to blast in Visitacion Valley", "flags": {}}
+{"id": "journalofproceed1912sanfrich|818", "y": 1912, "line": "Street levels changed and regrading ordered on Polk and Chestnut streets", "flags": {}}
+{"id": "journalofproceed1912sanfrich|819", "y": 1912, "line": "$83,000 set aside to lay high pressure pipe near Market Street", "flags": {"invented": ["$83,000"]}}
+{"id": "journalofproceed1912sanfrich|820", "y": 1912, "line": "Spring Valley Water Company paid $10,965.58 for hydrants", "flags": {}}
+{"id": "journalofproceed1912sanfrich|822", "y": 1912, "line": "$361.50 set aside for curbs and paving at Sixteenth and Hampshire", "flags": {}}
+{"id": "journalofproceed1912sanfrich|823", "y": 1912, "line": "G. E. Marshall allowed a garage on Geary Street", "flags": {}}
+{"id": "journalofproceed1912sanfrich|824", "y": 1912, "line": "George K. Frink sells Civic Center land for $47,500", "flags": {}}
+{"id": "journalofproceed1912sanfrich|825", "y": 1912, "line": "George K. Frink sells Civic Center land for $47,500", "flags": {"invented": ["$47,500"]}}
+{"id": "journalofproceed1912sanfrich|826", "y": 1912, "line": "William Goeggel sells Civic Center land for $62,500", "flags": {}}
+{"id": "journalofproceed1912sanfrich|827", "y": 1912, "line": "William Goeggel sells Civic Center land for $62,500", "flags": {}}
+{"id": "journalofproceed1912sanfrich|828", "y": 1912, "line": "C. F. Townsend paid $16,000 for Civic Center land", "flags": {}}
+{"id": "journalofproceed1912sanfrich|829", "y": 1912, "line": "$3,000 set aside for the work of the Civil Service Commission", "flags": {}}
+{"id": "journalofproceed1913sanfrich|311", "y": 1913, "line": "City takes over the new roadway on Greenwich Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|312", "y": 1913, "line": "City takes over the new roadway on Pixley Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|313", "y": 1913, "line": "Sewers ordered for Twenty-sixth Avenue, Cabrillo Street and Twenty-third Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|315", "y": 1913, "line": "Buchanan Street between Hermann and Market reopened as a public street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|316", "y": 1913, "line": "Olympic Salt Water Company allowed a pipe along Van Ness Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|317", "y": 1913, "line": "Sidewalk widths set for Montgomery Street between Market and Washington", "flags": {}}
+{"id": "journalofproceed1913sanfrich|319", "y": 1913, "line": "Streetcar service on Fillmore Street north of Chestnut halted until 1917", "flags": {}}
+{"id": "journalofproceed1913sanfrich|320", "y": 1913, "line": "Breeze Investment Company sells City Hall land for $17,700", "flags": {}}
+{"id": "journalofproceed1913sanfrich|321", "y": 1913, "line": "Emporium to be paid $830.83 for library books", "flags": {}}
+{"id": "journalofproceed1913sanfrich|322", "y": 1913, "line": "Money set aside for trestle approaches to the Beale Street bridge", "flags": {}}
+{"id": "journalofproceed1913sanfrich|323", "y": 1913, "line": "$1,125 set aside for a garage at the Hall of Justice", "flags": {}}
+{"id": "journalofproceed1913sanfrich|324", "y": 1913, "line": "Mission Hotel to get a laundry and boilers on Howard Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|325", "y": 1913, "line": "Park-Richmond Improvement Club to lease city land on Eighth Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|326", "y": 1913, "line": "Presidio and Ferries Railroad allowed to end service on Baker Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|327", "y": 1913, "line": "San Bruno Avenue to be paved from Twenty-fifth to Oakdale", "flags": {}}
+{"id": "journalofproceed1913sanfrich|328", "y": 1913, "line": "Street levels to be changed on Rhode Island Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|329", "y": 1913, "line": "City to take over the new roadway on Franklin Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|330", "y": 1913, "line": "Street levels to be set on San Jose Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|331", "y": 1913, "line": "Paving and sewers proposed for Rhode Island Street and Seventeenth Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|332", "y": 1913, "line": "Main Street to be regraded between Folsom and Bryant streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|333", "y": 1913, "line": "Barber Asphalt Paving Company given 90 more days on Twenty-third Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|335", "y": 1913, "line": "City Street Improvement Company given 45 more days on Anza Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|336", "y": 1913, "line": "Gorrill Bros. given 30 more days on the Beach Street sewer", "flags": {}}
+{"id": "journalofproceed1913sanfrich|338", "y": 1913, "line": "City Improvement Company to be allowed blasting on De Haro Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|339", "y": 1913, "line": "Clinton Fire Proofing to get a spur track crossing Third Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|340", "y": 1913, "line": "Voters petition against the Sutter Street Railway's Market Street trolley", "flags": {}}
+{"id": "journalofproceed1913sanfrich|341", "y": 1913, "line": "City Electric Company to lay underground wires on Howard Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|342", "y": 1913, "line": "Money set aside for trestle approaches to the Beale Street bridge", "flags": {}}
+{"id": "journalofproceed1913sanfrich|343", "y": 1913, "line": "$1,125 set aside for a garage at the Hall of Justice", "flags": {}}
+{"id": "journalofproceed1913sanfrich|344", "y": 1913, "line": "New sewers must include side sewers out to the curb", "flags": {}}
+{"id": "journalofproceed1913sanfrich|345", "y": 1913, "line": "Park-Richmond Improvement Club leases city land on Eighth Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|346", "y": 1913, "line": "Mission Hotel allowed a laundry on Howard Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|347", "y": 1913, "line": "San Bruno Avenue paving ordered from Twenty-fifth to Oakdale", "flags": {}}
+{"id": "journalofproceed1913sanfrich|348", "y": 1913, "line": "Street levels changed on Rhode Island Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|349", "y": 1913, "line": "City takes over the new roadway on Franklin Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|350", "y": 1913, "line": "Street levels set on San Jose Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|351", "y": 1913, "line": "Paving and sewers ordered for Rhode Island Street and Seventeenth Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|352", "y": 1913, "line": "City Improvement Company allowed to blast on De Haro Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|353", "y": 1913, "line": "Clinton Fire Proofing gets a spur track crossing Third Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|354", "y": 1913, "line": "Voters petition against the Sutter Street Railway's Market Street trolley", "flags": {}}
+{"id": "journalofproceed1913sanfrich|355", "y": 1913, "line": "Sutter Street Railway's Market Street trolley waits on the Supreme Court", "flags": {}}
+{"id": "journalofproceed1913sanfrich|356", "y": 1913, "line": "City Electric Company allowed to lay underground wires on Howard Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|357", "y": 1913, "line": "$63,000 due F. Rolandi for the Geary Street car house", "flags": {}}
+{"id": "journalofproceed1913sanfrich|358", "y": 1913, "line": "Money set aside for Fillmore Street and Twin Peaks tunnel plans", "flags": {}}
+{"id": "journalofproceed1913sanfrich|359", "y": 1913, "line": "Carlson Pie Bakery to get a boiler on Randall Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|360", "y": 1913, "line": "J. P. Holland to be allowed blasting on King Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|361", "y": 1913, "line": "John F. Campbell to be allowed blasting at Sixteenth and Florida", "flags": {}}
+{"id": "journalofproceed1913sanfrich|362", "y": 1913, "line": "J. P. Mirassou refused a laundry at 3031 Twenty-second Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|363", "y": 1913, "line": "Spur track on Harrison Street proposed for Oakland Brewing and Malting", "flags": {}}
+{"id": "journalofproceed1913sanfrich|364", "y": 1913, "line": "Street levels to be changed on Twenty-fifth Avenue and Balboa Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|365", "y": 1913, "line": "Street levels to be changed on a stretch of Joice Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|366", "y": 1913, "line": "City to take over new roadway on San Bruno Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|367", "y": 1913, "line": "City to take over the crossings at Dolores and Douglass streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|368", "y": 1913, "line": "Main Street to be regraded between Folsom and Bryant streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|369", "y": 1913, "line": "Parts of Tenth, Eleventh and Twelfth avenues and Rivera Street closed", "flags": {}}
+{"id": "journalofproceed1913sanfrich|370", "y": 1913, "line": "Parts of Tenth, Eleventh and Twelfth avenues and Rivera Street closed", "flags": {"overstates": ["intention", "closed"]}}
+{"id": "journalofproceed1913sanfrich|371", "y": 1913, "line": "C. J. Harney given 60 more days on Brannon Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|372", "y": 1913, "line": "City Engineer ordered to survey and map Point Lobos Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|373", "y": 1913, "line": "Spur track on Rhode Island Street proposed for West Coast Iron", "flags": {}}
+{"id": "journalofproceed1913sanfrich|375", "y": 1913, "line": "Public service companies to be allowed to serve charities free", "flags": {}}
+{"id": "journalofproceed1913sanfrich|376", "y": 1913, "line": "High-pressure fire mains to be laid on Van Ness Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|377", "y": 1913, "line": "United Railroads to bury high tension wires under Webster Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|378", "y": 1913, "line": "United Railroads allowed to run cars on Bay and Laguna streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|379", "y": 1913, "line": "United Railroads refuses the Bay and Laguna streets railway permit", "flags": {}}
+{"id": "journalofproceed1913sanfrich|380", "y": 1913, "line": "F. Rolandi paid $63,000 for the Geary Street car house", "flags": {}}
+{"id": "journalofproceed1913sanfrich|381", "y": 1913, "line": "Money set aside for Fillmore Street and Twin Peaks tunnel plans", "flags": {}}
+{"id": "journalofproceed1913sanfrich|382", "y": 1913, "line": "Carlson Pie Bakery gets a boiler on Randall Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|383", "y": 1913, "line": "J. P. Holland allowed to blast on King Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|384", "y": 1913, "line": "John F. Campbell allowed to blast at Sixteenth and Florida", "flags": {}}
+{"id": "journalofproceed1913sanfrich|385", "y": 1913, "line": "High-pressure fire mains ordered for Van Ness Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|386", "y": 1913, "line": "Oakland Brewing and Malting gets a spur track on Harrison Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|387", "y": 1913, "line": "Street levels changed on Twenty-fifth Avenue and Balboa Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|388", "y": 1913, "line": "Street levels changed on a stretch of Joice Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|389", "y": 1913, "line": "City takes over new roadway on San Bruno Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|390", "y": 1913, "line": "City takes over the crossings at Dolores and Douglass streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|391", "y": 1913, "line": "Main Street regraded and repaved between Folsom and Bryant streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|392", "y": 1913, "line": "West Coast Iron gets a spur track on Rhode Island Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|393", "y": 1913, "line": "United Railroads allowed to run cars on Bay and Laguna streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|394", "y": 1913, "line": "United Railroads refuses the Bay and Laguna streets railway permit", "flags": {}}
+{"id": "journalofproceed1913sanfrich|395", "y": 1913, "line": "United Railroads' permit for Bay and Laguna streets is repealed", "flags": {}}
+{"id": "journalofproceed1913sanfrich|397", "y": 1913, "line": "$11,500 set aside to pave Lincoln Way along Golden Gate Park", "flags": {}}
+{"id": "journalofproceed1913sanfrich|398", "y": 1913, "line": "Loan repaid from the Municipal Railway to the Geary Street fund", "flags": {}}
+{"id": "journalofproceed1913sanfrich|399", "y": 1913, "line": "Highland Avenue to be improved between Mission Street and Holly Park", "flags": {}}
+{"id": "journalofproceed1913sanfrich|400", "y": 1913, "line": "Park Street to be improved between Leese Street and Holly Park", "flags": {}}
+{"id": "journalofproceed1913sanfrich|401", "y": 1913, "line": "Wo Lee refused a hand laundry permit", "flags": {}}
+{"id": "journalofproceed1913sanfrich|402", "y": 1913, "line": "L. D. McLean Company refused a stable at 1411 Harrison Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|403", "y": 1913, "line": "Rails proposed for the western end of the Geary Street railway", "flags": {}}
+{"id": "journalofproceed1913sanfrich|404", "y": 1913, "line": "Streetcar tracks to run from Geary Street to the Great Highway", "flags": {}}
+{"id": "journalofproceed1913sanfrich|405", "y": 1913, "line": "Universal Electric and Gas allowed to lay wires under Market Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|406", "y": 1913, "line": "City to take over new roadway on Judah and Balboa streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|407", "y": 1913, "line": "City to take over new roadway on Geary and Bryant streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|408", "y": 1913, "line": "Third and Fourth Street drawbridges to stay shut at rush hour", "flags": {}}
+{"id": "journalofproceed1913sanfrich|409", "y": 1913, "line": "Southern Pacific's Niagara Street sewer deed referred to the City Attorney", "flags": {}}
+{"id": "journalofproceed1913sanfrich|410", "y": 1913, "line": "Southern Pacific offers a sewer right of way on Niagara Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|411", "y": 1913, "line": "Board intends to lower street levels at Ninth and Mission", "flags": {}}
+{"id": "journalofproceed1913sanfrich|412", "y": 1913, "line": "City Street Improvement Company loses its De Haro Street blasting permit", "flags": {}}
+{"id": "journalofproceed1913sanfrich|414", "y": 1913, "line": "Parts of Tenth, Eleventh and Twelfth avenues and Rivera Street closed", "flags": {}}
+{"id": "journalofproceed1913sanfrich|415", "y": 1913, "line": "Parts of Tenth, Eleventh and Twelfth avenues and Rivera Street closed", "flags": {"overstates": ["intention", "closed"]}}
+{"id": "journalofproceed1913sanfrich|416", "y": 1913, "line": "Parts of Tenth, Eleventh and Twelfth avenues and Rivera Street closed", "flags": {"overstates": ["referred", "closed"]}}
+{"id": "journalofproceed1913sanfrich|417", "y": 1913, "line": "Parts of Tenth, Eleventh and Twelfth avenues and Rivera Street closed", "flags": {}}
+{"id": "journalofproceed1913sanfrich|418", "y": 1913, "line": "Sierra and San Francisco Power Company's wires run along Buchanan Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|419", "y": 1913, "line": "Market Street Railway bonds go on sale at the Treasurer's office", "flags": {}}
+{"id": "journalofproceed1913sanfrich|420", "y": 1913, "line": "Market Street Railway bonds go on sale at the Treasurer's office", "flags": {}}
+{"id": "journalofproceed1913sanfrich|421", "y": 1913, "line": "Market Street Railway bond sales declared legal by the Board", "flags": {}}
+{"id": "journalofproceed1913sanfrich|422", "y": 1913, "line": "Streetcar tracks ordered from Geary Street to the Great Highway", "flags": {}}
+{"id": "journalofproceed1913sanfrich|423", "y": 1913, "line": "Final payment of $9,771.71 for sewers on Mission Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|424", "y": 1913, "line": "$11,500 set aside to pave Lincoln Way along Golden Gate Park", "flags": {}}
+{"id": "journalofproceed1913sanfrich|425", "y": 1913, "line": "Highland Avenue improvement ordered between Mission Street and Holly Park", "flags": {}}
+{"id": "journalofproceed1913sanfrich|426", "y": 1913, "line": "Park Street improvement ordered between Leese Street and Holly Park", "flags": {}}
+{"id": "journalofproceed1913sanfrich|427", "y": 1913, "line": "Lesser Bros. gets a boiler in Hale's Annex on Sixth Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|428", "y": 1913, "line": "Soko Transfer Company allowed a thirty-horse stable on Fremont Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|429", "y": 1913, "line": "City takes over new roadway on Judah and Balboa streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|430", "y": 1913, "line": "City takes over new roadway on Geary and Bryant streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|431", "y": 1913, "line": "Consolidated Motor Car Company to be paid $17,674.20 for fire autos", "flags": {}}
+{"id": "journalofproceed1913sanfrich|432", "y": 1913, "line": "$38,000 more set aside for sewers in Golden Gate Park", "flags": {}}
+{"id": "journalofproceed1913sanfrich|433", "y": 1913, "line": "$36,000 set aside for sewers on Twenty-third and Twenty-sixth avenues", "flags": {}}
+{"id": "journalofproceed1913sanfrich|434", "y": 1913, "line": "$36,000 set aside for sewers on Twenty-third and Twenty-sixth avenues", "flags": {}}
+{"id": "journalofproceed1913sanfrich|435", "y": 1913, "line": "Sewers to be built on Kentucky Street and Railroad Avenue", "flags": {}}
+{"id": "journalofproceed1913sanfrich|436", "y": 1913, "line": "J. P. Trouillet to get a laundry boiler on Fillmore Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|437", "y": 1913, "line": "William H. Grahn allowed a one-horse stable on Bryant Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|439", "y": 1913, "line": "S. Nathan to lease city land on Jackson Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|440", "y": 1913, "line": "Phil Lobree sells the city land for Fair Avenue for $650", "flags": {}}
+{"id": "journalofproceed1913sanfrich|441", "y": 1913, "line": "Phil Lobree sells the city land for Fair Avenue for $650", "flags": {}}
+{"id": "journalofproceed1913sanfrich|442", "y": 1913, "line": "Southern Pacific offers a sewer right of way on Niagara Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|443", "y": 1913, "line": "Retaining wall proposed for Francisco Street at Leavenworth Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|444", "y": 1913, "line": "No one bid, so the Burnett Building will be torn down", "flags": {}}
+{"id": "journalofproceed1913sanfrich|445", "y": 1913, "line": "Old avenues deeded away to open new streets in Larsen Heights", "flags": {}}
+{"id": "journalofproceed1913sanfrich|446", "y": 1913, "line": "Protests over the Fillmore Street tunnel send it back to committee", "flags": {}}
+{"id": "journalofproceed1913sanfrich|447", "y": 1913, "line": "Mayor Rolph forwards the resignation of Edward A. Bullis", "flags": {}}
+{"id": "journalofproceed1913sanfrich|448", "y": 1913, "line": "Consolidated Motor Car Company paid $17,674.20 for fire autos", "flags": {}}
+{"id": "journalofproceed1913sanfrich|449", "y": 1913, "line": "$46,000 set aside for street paving and repairs in April", "flags": {}}
+{"id": "journalofproceed1913sanfrich|450", "y": 1913, "line": "$38,000 more set aside for sewers in Golden Gate Park", "flags": {}}
+{"id": "journalofproceed1913sanfrich|451", "y": 1913, "line": "$36,000 set aside for sewers on Twenty-third and Twenty-sixth avenues", "flags": {}}
+{"id": "journalofproceed1913sanfrich|452", "y": 1913, "line": "$36,000 set aside for sewers on Twenty-third and Twenty-sixth avenues", "flags": {}}
+{"id": "journalofproceed1913sanfrich|453", "y": 1913, "line": "J. P. Trouillet gets a laundry boiler on Fillmore Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|454", "y": 1913, "line": "William H. Grahn allowed a one-horse stable on Bryant Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|455", "y": 1913, "line": "S. Nathan leases city land on Jackson Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|456", "y": 1913, "line": "City accepts Southern Pacific's sewer right of way on Niagara Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|457", "y": 1913, "line": "Parts of Tenth, Eleventh and Twelfth avenues and Rivera Street closed", "flags": {"overstates": ["referred", "closed"]}}
+{"id": "journalofproceed1913sanfrich|458", "y": 1913, "line": "Pacific Gas & Electric to be paid $36,901.95 for street lighting", "flags": {}}
+{"id": "journalofproceed1913sanfrich|459", "y": 1913, "line": "City to pay $485 toward the sewer on Cambridge Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|460", "y": 1913, "line": "Raisch Improvement Company to run an asphalt plant on York Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|462", "y": 1913, "line": "United Light and Power to lay wires under Market Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|463", "y": 1913, "line": "City may take over United Light and Power's new underground wires", "flags": {}}
+{"id": "journalofproceed1913sanfrich|464", "y": 1913, "line": "City to take over the new roadway on Cabrillo Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|465", "y": 1913, "line": "City to take over the crossing at Chattanooga and Twenty-first", "flags": {}}
+{"id": "journalofproceed1913sanfrich|466", "y": 1913, "line": "Street levels to be changed on Bryant, Brannan and Townsend streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|468", "y": 1913, "line": "Bryant Street to be raised four feet at Ninth Street", "flags": {}}
+{"id": "journalofproceed1913sanfrich|469", "y": 1913, "line": "Board intends to change street levels on Lowell and Whittier streets", "flags": {}}
+{"id": "journalofproceed1913sanfrich|470", "y": 1913, "line": "Board intends to change street levels on Buena Vista Avenue", "flags": {}}
