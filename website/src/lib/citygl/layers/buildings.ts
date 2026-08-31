@@ -92,7 +92,9 @@ import {
 import { BAY_DEPTH_M, BAY_HEAD_M, BAY_MIN_PLAN_M, bayForm } from "../bay-form";
 import {
   familyCornice,
+  familyEave,
   familyHasBay,
+  familyPitchedRoof,
   familyOfEra,
   type FaFamily,
   FACADE_TILES,
@@ -945,8 +947,16 @@ export function buildingsMesh(
     /* ── A HOUSE IS A HOUSE BECAUSE IT IS ONE ───────────────────────────
        The record decides who — the family, from the survey's style or the
        roll's era — and the form is authored for all of them. */
+    /* ── WHO IS A HOUSE ─────────────────────────────────────────────────
+       The roll's own use class and the drawn height, NOT the family. A
+       Craftsman is as much a house as a Queen Anne; the family decides what
+       KIND of roof it gets, and `familyPitchedRoof` is that question. Gating
+       the house form on `familyHasBay` sent the whole of 1925-50 — the Sunset
+       and the Richmond, most of the houses in this city — back to flat lids. */
+    const residential = (tb.u[i] & USE_MASK) === 0 || (tb.u[i] & USE_MASK) === 1;
     const houseHalf =
-      familyHasBay(fam) && hM < HOUSE_MAX_H ? gableHalf(ring, hM, tb.gid[i]) : 0;
+      residential && familyPitchedRoof(fam) && hM < HOUSE_MAX_H
+        ? gableHalf(ring, hM, tb.gid[i]) : 0;
     const pitched = isPitched(
       tb.u[i] & USE_MASK,
       1849 + tb.yr[i],
@@ -1199,7 +1209,10 @@ export function buildingsMesh(
 
        So the record chooses WHO — the survey's family, or the era's — and the
        FORM is authored. See `roof-form.ts` §a house, drawn as a house. */
-    if (houseHalf > 0) roofed = gableForm(sink, ring, elev, hM, rc, wc, { gid: tb.gid[i] });
+    if (houseHalf > 0) {
+      roofed = gableForm(sink, ring, elev, hM, rc, wc,
+        { gid: tb.gid[i], bay: familyHasBay(fam), eave: familyEave(fam) });
+    }
     if (!roofed && plan) roofed = hipForm(sink, ring, elev, hM, rc);
     /* ── AND THE TRAY BUILDS ITS FASCIA ─────────────────────────────────
        The parapet's outer face, `DE.outerv` of this roof's own colour, over

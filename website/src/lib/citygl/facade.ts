@@ -306,6 +306,33 @@ export function familyOfEra(era: number): FaFamily {
 export function familyHasBay(f: FaFamily): boolean {
   return f === "victorian" || f === "classical";
 }
+
+/**
+ * DOES THIS FAMILY PUT A PITCHED ROOF ON A HOUSE?
+ *
+ * Separate from `familyHasBay`, and it was a bug that they were one thing. The
+ * house form was gated on the bay, so only Victorian and Classical got a roof
+ * — and the era rule sends the whole of 1925-50 to `revival`, which is the
+ * Sunset and the Richmond, which is most of the houses in this city. They came
+ * out flat-lidded.
+ *
+ * A Craftsman and a Mediterranean Revival house have pitched roofs, wide eaves
+ * and no bay. A Deco or post-war block has a parapet and a flat deck. Those are
+ * two different questions and this is the second one.
+ */
+export function familyPitchedRoof(f: FaFamily): boolean {
+  return f === "victorian" || f === "classical" || f === "revival";
+}
+
+/** how far this family's eave oversails, as a multiple of the ordinary one */
+export function familyEave(f: FaFamily): number {
+  switch (f) {
+    case "revival":   return 1.7;   // the wide Craftsman / Mediterranean eave
+    case "victorian": return 1.0;
+    case "classical": return 0.8;   // a moulded cornice does this job instead
+    default:          return 0;
+  }
+}
 /** how deep its cornice oversails, as a multiple of the ordinary one */
 export function familyCornice(f: FaFamily): number {
   switch (f) {

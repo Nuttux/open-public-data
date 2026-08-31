@@ -1070,6 +1070,54 @@ function mix32(x: number): number {
   return v >>> 0;
 }
 
+/**
+ * A FRONT DOOR, AND WHY IT IS GEOMETRY RATHER THAN A TILE.
+ *
+ * `facade.ts` §why there is no entrance tile is right and is not overruled
+ * here: a facade tile REPEATS in every bay, so a door drawn into one says
+ * "a door in every bay", which is not what any building has. That argument
+ * rules out a door in the ATLAS. It does not rule out a door at all.
+ *
+ * A house has exactly one, on the street face, and this draws exactly one —
+ * a recess in the wall with a step at its foot, placed at the end of the
+ * frontage rather than its middle, which is where a row house puts it.
+ */
+function doorOn(
+  sink: FormSink, elevM: number,
+  ax: number, ay: number, bx: number, by: number,
+  hM: number, wall: RGB, gid: number,
+): void {
+  const dx = bx - ax, dy = by - ay;
+  const L = Math.hypot(dx, dy);
+  if (!(L > 3) || !(hM > 2.4)) return;
+  const ux = dx / L, uy = dy / L;
+  const nx = uy, ny = -ux;                       // into the wall
+  const h = mix32(gid ^ 0x1b873593);
+  const at = 0.16 + 0.20 * (((h >>> 3) & 255) / 255);   // toward one end
+  const near = ((h >>> 2) & 1) === 1 ? at : 1 - at;
+  const w = Math.min(1.5, L * 0.16), hi = Math.min(2.6, hM * 0.62);
+  const t0 = Math.max(0, near * L - w / 2), t1 = Math.min(L, t0 + w);
+  const dp = 0.18;
+  const dark = shadeRGB(wall, 0.34), jamb = shadeRGB(wall, 1.10);
+  const V = (t: number, dep: number, z: number, c: RGB): number =>
+    sink.vertex(ax + ux * t + nx * dep, ay + uy * t + ny * dep, elevM, z, c[0], c[1], c[2]);
+  /* the opening itself, set back into the wall */
+  const a0 = V(t0, dp, 0.02, dark), a1 = V(t1, dp, 0.02, dark);
+  const a2 = V(t1, dp, hi, dark), a3 = V(t0, dp, hi, dark);
+  sink.tri(a0, a1, a2); sink.tri(a0, a2, a3);
+  /* the reveal down the sunlit jamb and across the head */
+  const j0 = V(t0, 0, 0.02, jamb), j1 = V(t0, dp, 0.02, jamb);
+  const j2 = V(t0, dp, hi, jamb), j3 = V(t0, 0, hi, jamb);
+  sink.tri(j0, j1, j2); sink.tri(j0, j2, j3);
+  const k0 = V(t0, 0, hi, jamb), k1 = V(t1, 0, hi, jamb);
+  const k2 = V(t1, dp, hi, jamb), k3 = V(t0, dp, hi, jamb);
+  sink.tri(k0, k1, k2); sink.tri(k0, k2, k3);
+  /* and the step it stands on, which is what a stoop is at this size */
+  const s0 = V(t0 - 0.1, -0.35, 0, jamb), s1 = V(t1 + 0.1, -0.35, 0, jamb);
+  const s2 = V(t1 + 0.1, dp, 0.22, jamb), s3 = V(t0 - 0.1, dp, 0.22, jamb);
+  sink.tri(s0, s1, s2); sink.tri(s0, s2, s3);
+}
+
 export function gableForm(
   sink: FormSink,
   ring: FormRing,
@@ -1077,7 +1125,7 @@ export function gableForm(
   hM: number,
   roof: RGB,
   wall: RGB,
-  opts: { pitchDeg?: number; bay?: boolean; gid?: number } = {},
+  opts: { pitchDeg?: number; bay?: boolean; gid?: number; eave?: number } = {},
 ): boolean {
   const vary = houseVary(opts.gid ?? 0);
   const { x, y, off, n } = ring;
@@ -1101,7 +1149,7 @@ export function gableForm(
   const eaveH = hM - half, ridge = hM + half;
   const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
   /* the roof is drawn BIGGER than the wall it sits on */
-  const ov = vary.eave;
+  const ov = vary.eave * (opts.eave ?? 1);
   const rx0 = x0 - ov, rx1 = x1 + ov, ry0 = y0 - ov, ry1 = y1 + ov;
   const V = (px: number, py: number, h: number, c: RGB): number =>
     sink.vertex(px, py, elevM, h, c[0], c[1], c[2]);
@@ -1136,10 +1184,12 @@ export function gableForm(
   if (vary.chimney) {
     /* a stack standing off the ridge, which is the one vertical a house has
        and the thing that most says "not a warehouse" from directly above */
-    const cs = 0.55, ch = ridge + 0.9;
+    const cs = 0.34, ch = ridge + 0.75;
     const px = alongX ? (vary.chimEnd ? x0 + (x1 - x0) * 0.22 : x0 + (x1 - x0) * 0.74) : cx;
     const py = alongX ? cy : (vary.chimEnd ? y0 + (y1 - y0) * 0.22 : y0 + (y1 - y0) * 0.74);
-    const cw = shadeRGB(wall, 0.82), ct = shadeRGB(roof, 0.72);
+    /* a chimney is masonry, not rendered wall: it wants to be darker than
+       everything around it or it reads as a white box stuck on the ridge */
+    const cw = shadeRGB(wall, 0.52), ct = shadeRGB(wall, 0.40);
     const q: number[] = [], t: number[] = [], cap: number[] = [];
     const xs = [px - cs, px + cs, px + cs, px - cs];
     const ys = [py - cs, py - cs, py + cs, py + cs];
@@ -1184,6 +1234,10 @@ export function gableForm(
       sink.tri(cap[0], cap[1], cap[2]); sink.tri(cap[0], cap[2], cap[3]);
     }
   }
+
+  /* the door goes on the same face the bay stands proud of */
+  if (alongX) doorOn(sink, elevM, x0, y0, x1, y0, hM - half, wall, opts.gid ?? 0);
+  else doorOn(sink, elevM, x0, y1, x0, y0, hM - half, wall, opts.gid ?? 0);
   return true;
 }
 
