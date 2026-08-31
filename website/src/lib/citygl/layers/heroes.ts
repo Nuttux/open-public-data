@@ -1276,6 +1276,21 @@ export function heroesLayer(
         pieces.push(p);
         meshes.push(p.mesh);
       }
+      /* DEV-ONLY, the `__cityWA` idiom: which heroes actually produced
+         geometry, and how much. A hero that silently produces nothing is
+         indistinguishable in the frame from one the fabric drew over. */
+      if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+        const g = globalThis as {
+          __cityGLHeroes?: Record<string, { bi: number; solid: number; paint: number; year: number }>;
+        };
+        g.__cityGLHeroes ??= {};
+        g.__cityGLHeroes[h.key] = {
+          bi: h.bi,
+          solid: built.solid ? (built.solid.geometry.index?.count ?? 0) : -1,
+          paint: built.paint ? built.paint.geometry.index?.count ?? 0 : -1,
+          year: h.year,
+        };
+      }
     }
 
     if (lm.bridge) {
@@ -1291,6 +1306,11 @@ export function heroesLayer(
     applyStep();
     applyYear();
     applyScale();
+    /* DEV-ONLY: the pieces themselves, so a harness can ask what each hero's
+       draw range and visibility actually came out as at a given camera. */
+    if (typeof globalThis !== "undefined" && process.env.NODE_ENV !== "production") {
+      (globalThis as { __cityGLHeroPieces?: unknown }).__cityGLHeroPieces = pieces;
+    }
     o.onBuilt?.(skipGids);
   })();
 
