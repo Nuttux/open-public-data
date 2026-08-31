@@ -1304,11 +1304,21 @@ export function buildingsMesh(
       /* a house's roof is shingle or tile, not gravel — a finer tile, and
          the sink's own note has the measurement */
       sink.grain = HOUSE_GRAIN;
+      /* the gable END is wall and goes on the wall — `roof-form.ts` §THE
+         GABLE END IS A WALL. The vocabulary is the FRONT's, because on a
+         front-gabled house that triangle IS the front. */
+      quadInto = idxWall[tileFor[ROLE_FRONT]];
       roofed = gableForm(sink, ring, elev, hM, rc, wc, {
         gid: tb.gid[i],
         bay: familyHasBay(fam),
         eave: familyEave(fam),
         hip: familyHipShare(fam),
+        face: {
+          vertexUV: pushVert,
+          tri: wallTri,
+          bayM,
+          vPerM: storeys / Math.max(1e-3, wallH),
+        },
       });
       sink.grain = 1;
     }

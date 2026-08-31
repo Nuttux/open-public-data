@@ -304,6 +304,10 @@ const rF = new Int32Array(FORM_MAX_VERTS);
 const rG = new Int32Array(FORM_MAX_VERTS);
 /** the cornice's soffit where it meets the wall — see `trayForm` */
 const rH = new Int32Array(FORM_MAX_VERTS);
+/** the deck's inner ring — see `trayForm` §THE PARAPET THROWS A SHADOW */
+const rI = new Int32Array(FORM_MAX_VERTS);
+const sRX = new Float32Array(FORM_MAX_VERTS);
+const sRY = new Float32Array(FORM_MAX_VERTS);
 /** the plan pushed OUTWARD along the miter, for the cornice */
 const sQX = new Float32Array(FORM_MAX_VERTS);
 const sQY = new Float32Array(FORM_MAX_VERTS);
@@ -634,7 +638,42 @@ export function trayForm(
   ringVerts(sink, rB, sPX, sPY, 0, n, elevM, hM, raw);                      // coping, inner
   ringVerts(sink, rC, sPX, sPY, 0, n, elevM, hM, innerC);                   // inner face, top
   ringVerts(sink, rD, sPX, sPY, 0, n, elevM, hM - drop, innerC);            // inner face, foot
-  ringVerts(sink, rE, sPX, sPY, 0, n, elevM, hM - drop, deckC);             // the deck
+  /* ── THE PARAPET THROWS A SHADOW, AND THE DECK WAS NOT TAKING IT ──────
+     A flat roof was one flat value across its whole area, and on a
+     convention centre or a Mission commercial block that is the largest
+     unbroken surface in the frame — hundreds of pixels of a single colour,
+     which is the same complaint the walls answered with a vocabulary.
+
+     What is drawn here is not invented detail. The parapet is 0.85 m of
+     solid standing all the way round the deck, and it does two things to the
+     light near its foot: it blocks the sun on the side the sun is on, and it
+     blocks the SKY on every side. The second is the one that matters at this
+     camera, because a deck's light is mostly sky, and it is a fact about
+     geometry this file already builds rather than a claim about anything on
+     the roof. `roofs.ts` §NOTHING IS PLACED ON A ROOF still stands: this
+     places nothing.
+
+     A gradient, deliberately, and against this file's own three-flat-bands
+     rule — which is stated about the PARAPET, where a gradient would be an
+     artefact of sharing a ring between two faces that are genuinely two
+     values. Here the softness IS the thing being drawn. An occlusion does
+     not have an edge.
+
+     The band's width is the parapet's own height: a surface is shadowed by a
+     wall over roughly the distance that wall is tall. Where the deck is too
+     small to take it, the ring does not survive the offset and the deck is
+     the one flat fill it always was. */
+  let aoOK = false;
+  if (DECK_AO_M > 0 && drop > 0 && offsetSurvives(ring, sMX, sMY, ins + DECK_AO_M * w, ccw ? 1 : -1)) {
+    for (let k = 0; k < n; k++) {
+      sRX[k] = ring.x[ring.off + k] + sMX[k] * (ins + DECK_AO_M * w);
+      sRY[k] = ring.y[ring.off + k] + sMY[k] * (ins + DECK_AO_M * w);
+    }
+    aoOK = true;
+  }
+  const deckEdgeC = aoOK ? shadeRGB(deckC, DECK_AO_V) : deckC;
+  ringVerts(sink, rE, sPX, sPY, 0, n, elevM, hM - drop, deckEdgeC);         // the deck's edge
+  if (aoOK) ringVerts(sink, rI, sRX, sRY, 0, n, elevM, hM - drop, deckC);   // ...and its field
 
   for (let k = 0; k < n; k++) {
     const k1 = (k + 1) % n;
@@ -644,8 +683,10 @@ export function trayForm(
        decides which of it a reader sees, not us. Wound top-k, foot-k, foot-k1
        so it looks IN across the deck, which is the side of it that exists. */
     quad(sink, rC[k], rD[k], rD[k1], rC[k1], false);
+    // the shadow the parapet casts on the deck at its own foot
+    if (aoOK) quad(sink, rE[k], rE[k1], rI[k1], rI[k], ccw);
   }
-  fillTop(sink, rE, sTri, ccw);
+  fillTop(sink, aoOK ? rI : rE, sTri, ccw);
 
   /* ── AND THE FASCIA, OUTSIDE THE WALL RATHER THAN IN ITS PLANE ─────────
      Two more rings on the plan pushed `FASCIA_PROUD_M` OUTWARD along the same
@@ -967,7 +1008,7 @@ export function boxForm(
  * own rather than restarting. The cap stays on the roof sink, because a cap
  * is a roof.
  */
-export interface StepFace {
+export interface WallFace {
   /** append one wall vertex with an explicit facade coordinate */
   vertexUV(
     x: number, y: number, elevM: number, hM: number,
@@ -988,7 +1029,7 @@ export function stepForm(
   share: number,
   elevM: number, fromH: number, toH: number,
   wall: RGB, roof: RGB,
-  face?: StepFace | null,
+  face?: WallFace | null,
 ): boolean {
   const { x, y, off, n } = ring;
   if (n < 3 || n > FORM_MAX_VERTS) return false;
@@ -1066,6 +1107,20 @@ export function stepForm(
  */
 /** the most rise a drawn house roof may have over its eave — see `gablePlan` */
 export const HOUSE_MAX_HALFRISE_M = 3.2;
+/**
+ * HOW WIDE THE PARAPET'S SHADOW IS ON ITS OWN DECK, WORLD METRES, AND HOW
+ * DARK — both DECLARED.
+ *
+ * The width is the parapet's own height, `DE.parapet`, because a surface is
+ * shadowed by a wall over roughly the distance that wall is tall. The depth
+ * sits between `DE.innerv` (0.82, the parapet's own inner face, which is
+ * vertical and takes far less sky) and `DE.deckv` (0.905, the open deck): a
+ * deck's corner is darker than its middle and lighter than the wall standing
+ * over it, and 0.865 is the midpoint of the two values this file already
+ * declares rather than a third number chosen by eye.
+ */
+export const DECK_AO_M = 0.85;
+export const DECK_AO_V = DE.innerv / DE.deckv;
 export const EAVE_FASCIA_M = 0.22;
 /** how far a roof may oversail a PARTY wall — see `gableForm` §the overhang */
 export const PARTY_EAVE_M = 0.12;
@@ -1331,6 +1386,8 @@ export function gableForm(
     pitchDeg?: number; bay?: boolean; gid?: number; eave?: number;
     /** the family's share of hipped roofs — see `familyHipShare` */
     hip?: number;
+    /** where the WALL parts of this form go — see the gable end below */
+    face?: WallFace | null;
   } = {},
 ): boolean {
   const vary = houseVary(opts.gid ?? 0);
@@ -1407,11 +1464,33 @@ export function gableForm(
     const q0 = P4(rAlong, -rAcross, eaveH, he), q1 = P4(rAlong, rAcross, eaveH, he);
     sink.tri(q1, P4(rEnd, 0, ridge, he), q0);
   } else {
-    /* the gable end, both of them, closed on the wall in wall colour */
-    const g0 = P4(-wAlong, -wAcross, eaveH, wall), g1 = P4(-wAlong, wAcross, eaveH, wall);
-    sink.tri(g0, g1, P4(-wAlong, 0, ridge, wall));
-    const h0 = P4(wAlong, -wAcross, eaveH, wall), h1 = P4(wAlong, wAcross, eaveH, wall);
-    sink.tri(h1, h0, P4(wAlong, 0, ridge, wall));
+    /* ── THE GABLE END IS A WALL, AND IT WAS COMING OUT BLANK ───────────
+       The same fault `stepForm` had, on the surface a reader actually looks
+       at. A front-gabled house presents this triangle to the street, it is
+       the largest single face the camera sees on one, and it was drawn as
+       flat wall colour with no vocabulary at all — a pale blank wedge over a
+       wall that carries windows right up to it.
+
+       It is wall, so it goes on the wall channel with the wall's own facade
+       coordinate: `u` in bays across the frontage, `v` in storeys off the
+       ground, continuing under the roof rather than restarting at the eave.
+       Where the caller offers no channel it falls back to the roof sink
+       exactly as it did. */
+    const F = opts.face;
+    const GW = (t: number, c: number, h: number): number => {
+      if (!F) return P4(t, c, h, wall);
+      const q = A(t, c);
+      return F.vertexUV(
+        ox + ux * q[0] + nx * q[1], oy + uy * q[0] + ny * q[1],
+        elevM, h, wall[0], wall[1], wall[2],
+        (c + wAcross) / F.bayM, h * F.vPerM,
+      );
+    };
+    const gtri = F ? F.tri.bind(F) : sink.tri.bind(sink);
+    const g0 = GW(-wAlong, -wAcross, eaveH), g1 = GW(-wAlong, wAcross, eaveH);
+    gtri(g0, g1, GW(-wAlong, 0, ridge));
+    const h0 = GW(wAlong, -wAcross, eaveH), h1 = GW(wAlong, wAcross, eaveH);
+    gtri(h1, h0, GW(wAlong, 0, ridge));
   }
 
   /* ── THE ROOF HAS A THICKNESS, AND THAT IS MOST OF WHY IT READS AS ONE ──

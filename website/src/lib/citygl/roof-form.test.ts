@@ -3,6 +3,8 @@ import { describe, expect, it } from "vitest";
 import { DE, PITCH_MAX_HALFRISE_M, PITCH_RUN } from "@/lib/city/roofs";
 import {
   capForm,
+  DECK_AO_M,
+  DECK_AO_V,
   gableForm,
   stepForm,
   gableHalf,
@@ -112,11 +114,34 @@ function sameColour(a: readonly number[], b: readonly number[]): boolean {
   return Math.abs(a[0] - b[0]) < 1e-6 && Math.abs(a[1] - b[1]) < 1e-6 && Math.abs(a[2] - b[2]) < 1e-6;
 }
 
+/**
+ * ONE SURFACE MAY BE MORE THAN ONE COLOUR.
+ *
+ * The deck used to be a single flat fill and `planAreaOf(deckC)` was the
+ * whole of it. It is now two bands — the parapet's shadow at its foot and the
+ * open field inside that — so the surface's own invariants (its inset, its
+ * area, that it closes) are properties of the UNION, and a helper that
+ * matches one colour measures the field alone and reports the deck as too
+ * small. These take a set, and a triangle counts when every one of its three
+ * vertices carries some colour in it — which is what "this triangle is part
+ * of that surface" means once the surface has a gradient across it.
+ */
+/** the deck's two bands: the parapet's shadow at its foot, and the field */
+function deckColours(roof: readonly [number, number, number]): [number, number, number][] {
+  const deckC = shadeRGB(roof, DE.deckv);
+  return [deckC, shadeRGB(deckC, DECK_AO_V)];
+}
+
+function inSet(c: readonly number[], cols: readonly (readonly number[])[]): boolean {
+  return cols.some((k) => sameColour(c, k));
+}
+
 /** the total plan area of the triangles whose three vertices all carry `col` */
-function planAreaOf(r: Rec, col: readonly number[]): number {
+function planAreaOf(r: Rec, col: readonly number[] | readonly (readonly number[])[]): number {
+  const cols = (Array.isArray(col[0]) ? col : [col]) as readonly (readonly number[])[];
   let a = 0;
   for (const [i, j, k] of r.tris) {
-    if (!sameColour(r.col[i], col) || !sameColour(r.col[j], col) || !sameColour(r.col[k], col)) continue;
+    if (!inSet(r.col[i], cols) || !inSet(r.col[j], cols) || !inSet(r.col[k], cols)) continue;
     a += Math.abs(
       (r.x[j] - r.x[i]) * (r.y[k] - r.y[i]) - (r.y[j] - r.y[i]) * (r.x[k] - r.x[i]),
     ) / 2;
@@ -130,10 +155,11 @@ function planAreaOf(r: Rec, col: readonly number[]): number {
  * exactly two boundary edges? That is what "the deck is closed" means, and it
  * is what a fan over a concave ring fails.
  */
-function boundaryLoop(r: Rec, col: readonly number[]): number[] {
+function boundaryLoop(r: Rec, col: readonly number[] | readonly (readonly number[])[]): number[] {
+  const cols = (Array.isArray(col[0]) ? col : [col]) as readonly (readonly number[])[];
   const seen = new Map<string, number>();
   for (const [i, j, k] of r.tris) {
-    if (!sameColour(r.col[i], col) || !sameColour(r.col[j], col) || !sameColour(r.col[k], col)) continue;
+    if (!inSet(r.col[i], cols) || !inSet(r.col[j], cols) || !inSet(r.col[k], cols)) continue;
     for (const [a, b] of [[i, j], [j, k], [k, i]] as const) {
       const key = a < b ? `${a}:${b}` : `${b}:${a}`;
       seen.set(key, (seen.get(key) ?? 0) + 1);
@@ -166,9 +192,13 @@ describe("trayForm", () => {
     const deckH = H - DE.parapet;
     const low = r.h.map((h, i) => [h, i] as const).filter(([h]) => Math.abs(h - deckH) < 1e-6);
     expect(low.length).toBeGreaterThan(0);
+    /* the deck plane carries TWO rings: its outer edge at the parapet's inner
+       face, and the inner edge of the shadow that parapet casts on it */
+    const edge = 10 - DE.thick, field = 10 - DE.thick - DECK_AO_M;
     for (const [, i] of low) {
-      expect(Math.abs(r.x[i])).toBeCloseTo(10 - DE.thick, 5);
-      expect(Math.abs(r.y[i])).toBeCloseTo(10 - DE.thick, 5);
+      const ax = Math.abs(r.x[i]), ay = Math.abs(r.y[i]);
+      expect(Math.min(Math.abs(ax - edge), Math.abs(ax - field))).toBeLessThan(1e-5);
+      expect(Math.min(Math.abs(ay - edge), Math.abs(ay - field))).toBeLessThan(1e-5);
     }
     // F2.4, made strictly stronger: the coping sits AT the published height and
     // NO vertex of the roof stands above the measured top.
@@ -180,10 +210,10 @@ describe("trayForm", () => {
     const r = recorder();
     const roof: [number, number, number] = [0.5, 0.4, 0.3];
     expect(trayForm(r.sink, rect(20, 20), 0, H, roof)).toBe(true);
-    const deckC = shadeRGB(roof, DE.deckv);
+    const deck = deckColours(roof);
     const side = 2 * (10 - DE.thick);
-    expect(planAreaOf(r, deckC)).toBeCloseTo(side * side, 4);
-    const [edges, verts] = boundaryLoop(r, deckC);
+    expect(planAreaOf(r, deck)).toBeCloseTo(side * side, 4);
+    const [edges, verts] = boundaryLoop(r, deck);
     expect(edges).toBe(4);
     expect(verts).toBe(4);
   });
@@ -196,12 +226,12 @@ describe("trayForm", () => {
       [0, 0], [20, 0], [20, 8], [8, 8], [8, 20], [0, 20],
     ]);
     expect(trayForm(r.sink, L, 0, H, roof)).toBe(true);
-    const deckC = shadeRGB(roof, DE.deckv);
+    const deck = deckColours(roof);
     const t = DE.thick;
     // the L, offset inward by `t` on every edge: 20x8 + 8x12 shrinks by t all round
     const want = (20 - 2 * t) * (8 - 2 * t) + (8 - 2 * t) * (20 - 8);
-    expect(planAreaOf(r, deckC)).toBeCloseTo(want, 3);
-    const [edges, verts] = boundaryLoop(r, deckC);
+    expect(planAreaOf(r, deck)).toBeCloseTo(want, 3);
+    const [edges, verts] = boundaryLoop(r, deck);
     expect(edges).toBe(6);
     expect(verts).toBe(6);
   });
@@ -315,7 +345,16 @@ describe("trayForm", () => {
       .map((h, i) => [h, i] as const)
       .filter(([h]) => Math.abs(h - deckH) < 1e-6)
       .map(([, i]) => Math.abs(r.x[i]));
-    for (const v of inner) expect(v).toBeCloseTo(10 - DE.thick * 0.5, 5);
+    /* the ramp scales the parapet's SHADOW too, and it has to: the band's
+       width is the parapet's own height, so a parapet drawn at half weight
+       casts half the band. Both rings on the deck plane, and nothing between. */
+    const edge = 10 - DE.thick * 0.5;
+    const field = edge - DECK_AO_M * 0.5;
+    for (const v of inner) {
+      expect(Math.min(Math.abs(v - edge), Math.abs(v - field))).toBeLessThan(1e-5);
+    }
+    expect(inner.some((v) => Math.abs(v - edge) < 1e-5)).toBe(true);
+    expect(inner.some((v) => Math.abs(v - field) < 1e-5)).toBe(true);
   });
 
   it("refuses, and leaves the sink untouched", () => {
@@ -343,7 +382,11 @@ describe("trayForm", () => {
   it("still builds the 64-vertex ring the scratch is sized for", () => {
     const r = recorder();
     expect(trayForm(r.sink, ngon(FORM_MAX_VERTS, 30), 0, H, [0.5, 0.5, 0.5])).toBe(true);
-    expect(r.x.length).toBe(FORM_MAX_VERTS * 5);
+    /* SIX rings, not five: the deck's own inner edge is the sixth — see
+       `trayForm` §THE PARAPET THROWS A SHADOW. The point of the assertion is
+       unchanged, that the scratch is sized for the longest ring this file
+       accepts and every ring of it is built. */
+    expect(r.x.length).toBe(FORM_MAX_VERTS * 6);
   });
 });
 
