@@ -920,27 +920,39 @@ export function buildingsMesh(
        dwelling whose roof was replaced with a flat deck stops getting one it
        no longer has. The rule still owns every footprint the scan has not
        reached, which today is most of them. */
-    const rfm = o.roof?.at.get(tb.gid[i]);
-    const measured = rfm ? o.roof!.form.get(tb.gid[i]) : undefined;
-    const pitched = measured
-      ? measured.pitched
-      : isPitched(
-          tb.u[i] & USE_MASK,
-          1849 + tb.yr[i],
-          (tb.u[i] & FLAG_NOYEAR) !== 0,
-        );
-    /* ── A HOUSE IS A HOUSE BECAUSE IT IS ONE ───────────────────────────
-       Not because the scan happened to measure a slope on it. The scan finds
-       a pitch on 26 % of this city and refuses the rest — a 9-degree reading
-       on a shallow roof, a footprint the survey has not reached, a plan the
-       hip's skeleton will not take. Gating the HOUSE FORM on that leaves most
-       of the Sunset as flat-lidded boxes, which is the thing this is for.
+    /* ── THE SCAN'S ROOF FORM IS NOT READ, AND THAT IS DELIBERATE ───────
+       `roofscan` publishes a `pitched` flag, a slope and a ridge per footprint
+       and this layer drove the roof off them for a while. It was wrong twice
+       over.
 
-       So the record decides who is a house — the family, from the survey's
-       style or the roll's era — and the form is authored for all of them. */
+       WRONG AS A MEASUREMENT. The extractor calls 42,739 of 163,895 buildings
+       pitched at a median 19 degrees, and the tail is noise rather than roofs:
+       the cell at a footprint's edge straddles roof and pavement and
+       differentiates to near-vertical, which needed a 60-degree cap to stop it
+       reporting walls as roofs, and a 9-degree reading is inside the scan's own
+       relief on a flat membrane. What survives the cap is not clean either.
+
+       WRONG AS AN INPUT. Even where the number is right it is the wrong kind of
+       input for this drawing: a roof here is an AUTHORED form chosen by what
+       the record says a building IS, and a per-building slope pulls that back
+       toward reproducing one roof badly instead of drawing the type well.
+
+       The chunk still ships those columns and `decodeRoof` still reads them —
+       they cost nothing and a later pass may want them — but nothing on the
+       page is drawn from them. The CLUTTER and the LEVELS are untouched: what
+       stands on a roof and where a building steps are measurements this
+       renderer has no other source for. */
+    /* ── A HOUSE IS A HOUSE BECAUSE IT IS ONE ───────────────────────────
+       The record decides who — the family, from the survey's style or the
+       roll's era — and the form is authored for all of them. */
     const houseHalf =
       familyHasBay(fam) && hM < HOUSE_MAX_H ? gableHalf(ring, hM, tb.gid[i]) : 0;
-    const plan = houseHalf > 0 ? null : (pitched ? hipPlan(ring, measured?.slopeDeg) : null);
+    const pitched = isPitched(
+      tb.u[i] & USE_MASK,
+      1849 + tb.yr[i],
+      (tb.u[i] & FLAG_NOYEAR) !== 0,
+    );
+    const plan = houseHalf > 0 ? null : (pitched ? hipPlan(ring) : null);
     const wallH = houseHalf > 0
       ? Math.max(0, hM - houseHalf)
       : plan ? Math.max(0, hM - plan.halfRiseM) : hM;
@@ -1188,7 +1200,7 @@ export function buildingsMesh(
        So the record chooses WHO — the survey's family, or the era's — and the
        FORM is authored. See `roof-form.ts` §a house, drawn as a house. */
     if (houseHalf > 0) roofed = gableForm(sink, ring, elev, hM, rc, wc, { gid: tb.gid[i] });
-    if (!roofed && plan) roofed = hipForm(sink, ring, elev, hM, rc, { slopeDeg: measured?.slopeDeg });
+    if (!roofed && plan) roofed = hipForm(sink, ring, elev, hM, rc);
     /* ── AND THE TRAY BUILDS ITS FASCIA ─────────────────────────────────
        The parapet's outer face, `DE.outerv` of this roof's own colour, over
        the top 0.85 m of the wall. `roof-form.ts` §THE PARAPET'S OUTER FACE
@@ -1247,24 +1259,27 @@ export function buildingsMesh(
         if (okStep) topH = Math.max(topH, to);
       }
     }
-    /* ── AND WHAT IS STANDING ON THE TOP SURFACE ────────────────────────
-       Measured, per footprint. The base sits at the height this renderer DREW
-       the top at rather than the height the scan found it at: the two agree to
-       a median 0.19 m, and a box floating a hand's breadth over its own roof
-       is the one error a reader would actually see. */
-    const rf = o.roof?.at.get(tb.gid[i]);
-    if (rf) {
-      for (let k = 0; k < rf.n; k++) {
-        const q = rf.o + k;
-        boxForm(
-          sink,
-          tb.cx[i] + o.roof!.bx[q] * ROOF_DM, tb.cy[i] + o.roof!.by[q] * ROOF_DM,
-          o.roof!.bw[q] * ROOF_DM, o.roof!.bd[q] * ROOF_DM,
-          elev, topH, topH + o.roof!.bh[q] * ROOF_DM,
-          rc,
-        );
-      }
-    }
+    /* ── THE SCAN'S ROOFTOP OBJECTS ARE NOT DRAWN ──────────────────────
+       `roofscan` finds 422,596 of them and this layer drew them for a while,
+       as a box each. Two things were wrong and the second is the one that
+       settles it.
+
+       THEY ARE NOISE AS OFTEN AS THEY ARE PLANT. A connected run of cells
+       0.45 m over a roof plane is a lift overrun on one building and a
+       parapet corner, a scanning artefact or a tree limb on the next. The
+       extractor cannot tell them apart — it publishes an extent and a height
+       and no class, and says so — so the drawing put a box on all of them.
+
+       AND THEY ARE 2023, ON A MAP THAT SCRUBS TO 1906. A box inherited its
+       building's birth year, so a footprint dated 1920 carried its air
+       conditioning from 1920 onward. Air conditioning did not exist. Nothing
+       here can date a rooftop object, and an undatable object has no place on
+       a timeline — the trees on this map are drawn because the register
+       carries a planting date, and this carries nothing.
+
+       The columns still ship and `decodeRoof` still reads them. Nothing draws
+       them. `roofscan`'s LEVELS are still drawn: where a building steps is a
+       fact about its mass, not an object sitting on it, and it does not date. */
     /* ── THE WALL, EDGE BY EDGE ─────────────────────────────────────────
        The role is published PER RING VERTEX, not per building: 163,536
        measured edges saying whether this side of this footprint is a front, a

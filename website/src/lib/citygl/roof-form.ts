@@ -1040,7 +1040,7 @@ export function gableHalf(ring: FormRing, hM: number, gid = 0, pitchDeg?: number
  * without one, because a blockface where every single house projects reads as
  * machined rather than built.
  */
-function houseVary(gid: number): { pitch: number; share: number; proud: number; bay: boolean } {
+function houseVary(gid: number) {
   const h = mix32(gid ^ 0x7f4a7c15);
   const u = (k: number) => (((h >>> k) & 1023) / 1023);
   return {
@@ -1048,6 +1048,15 @@ function houseVary(gid: number): { pitch: number; share: number; proud: number; 
     share: 0.40 + 0.30 * u(10),
     proud: 0.70 + 0.45 * u(20),
     bay: ((h >>> 5) & 7) !== 0,
+    /* the eave oversails the wall, which is most of what separates a roof
+       from a lid at this camera — it throws a line of shadow down the front */
+    eave: 0.35 + 0.35 * u(4),
+    /* one house in three carries a chimney, on one side or the other */
+    chimney: ((h >>> 9) & 3) !== 0,
+    chimEnd: ((h >>> 11) & 1) === 1,
+    /* and one in four turns its gable across the plan instead of along it,
+       so a blockface is not one ridge repeated down the street */
+    cross: ((h >>> 13) & 3) === 0,
   };
 }
 
@@ -1081,7 +1090,7 @@ export function gableForm(
   }
   const w = x1 - x0, d = y1 - y0;
   if (!(w > 2 && d > 2)) return false;
-  const alongX = w >= d;
+  const alongX = (w >= d) !== vary.cross;
   const span = alongX ? d : w;                 // across the ridge
   const half = Math.min(
     PITCH_MAX_HALFRISE_M * 1.6,
@@ -1089,36 +1098,61 @@ export function gableForm(
   );
   if (!(half > 0.3) || !(hM - half > 0)) return false;
 
-  const eave = hM - half, ridge = hM + half;
+  const eaveH = hM - half, ridge = hM + half;
   const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  /* the roof is drawn BIGGER than the wall it sits on */
+  const ov = vary.eave;
+  const rx0 = x0 - ov, rx1 = x1 + ov, ry0 = y0 - ov, ry1 = y1 + ov;
   const V = (px: number, py: number, h: number, c: RGB): number =>
     sink.vertex(px, py, elevM, h, c[0], c[1], c[2]);
   const rl = shadeRGB(roof, 1.04), rd = shadeRGB(roof, 0.86);
 
   if (alongX) {
-    const a = V(x0, y0, eave, rd), b = V(x1, y0, eave, rd);
-    const c = V(x1, y1, eave, rl), e = V(x0, y1, eave, rl);
-    const r0 = V(x0, cy, ridge, rl), r1 = V(x1, cy, ridge, rl);
+    const a = V(rx0, ry0, eaveH, rd), b = V(rx1, ry0, eaveH, rd);
+    const c = V(rx1, ry1, eaveH, rl), e = V(rx0, ry1, eaveH, rl);
+    const r0 = V(rx0, cy, ridge, rl), r1 = V(rx1, cy, ridge, rl);
     sink.tri(a, b, r1); sink.tri(a, r1, r0);   // the slope toward the street
     sink.tri(e, r0, r1); sink.tri(e, r1, c);   // and the one away from it
-    const g0 = V(x0, y0, eave, wall), g1 = V(x0, y1, eave, wall);
+    const g0 = V(x0, y0, eaveH, wall), g1 = V(x0, y1, eaveH, wall);
     const g2 = V(x0, cy, ridge, wall);
     sink.tri(g0, g1, g2);                      // the gable end, both of them
-    const h0 = V(x1, y0, eave, wall), h1 = V(x1, y1, eave, wall);
+    const h0 = V(x1, y0, eaveH, wall), h1 = V(x1, y1, eaveH, wall);
     const h2 = V(x1, cy, ridge, wall);
     sink.tri(h1, h0, h2);
   } else {
-    const a = V(x0, y0, eave, rd), b = V(x0, y1, eave, rd);
-    const c = V(x1, y1, eave, rl), e = V(x1, y0, eave, rl);
-    const r0 = V(cx, y0, ridge, rl), r1 = V(cx, y1, ridge, rl);
+    const a = V(rx0, ry0, eaveH, rd), b = V(rx0, ry1, eaveH, rd);
+    const c = V(rx1, ry1, eaveH, rl), e = V(rx1, ry0, eaveH, rl);
+    const r0 = V(cx, ry0, ridge, rl), r1 = V(cx, ry1, ridge, rl);
     sink.tri(a, b, r1); sink.tri(a, r1, r0);
     sink.tri(e, r0, r1); sink.tri(e, r1, c);
-    const g0 = V(x0, y0, eave, wall), g1 = V(x1, y0, eave, wall);
+    const g0 = V(x0, y0, eaveH, wall), g1 = V(x1, y0, eaveH, wall);
     const g2 = V(cx, y0, ridge, wall);
     sink.tri(g1, g0, g2);
-    const h0 = V(x0, y1, eave, wall), h1 = V(x1, y1, eave, wall);
+    const h0 = V(x0, y1, eaveH, wall), h1 = V(x1, y1, eaveH, wall);
     const h2 = V(cx, y1, ridge, wall);
     sink.tri(h0, h1, h2);
+  }
+
+  if (vary.chimney) {
+    /* a stack standing off the ridge, which is the one vertical a house has
+       and the thing that most says "not a warehouse" from directly above */
+    const cs = 0.55, ch = ridge + 0.9;
+    const px = alongX ? (vary.chimEnd ? x0 + (x1 - x0) * 0.22 : x0 + (x1 - x0) * 0.74) : cx;
+    const py = alongX ? cy : (vary.chimEnd ? y0 + (y1 - y0) * 0.22 : y0 + (y1 - y0) * 0.74);
+    const cw = shadeRGB(wall, 0.82), ct = shadeRGB(roof, 0.72);
+    const q: number[] = [], t: number[] = [], cap: number[] = [];
+    const xs = [px - cs, px + cs, px + cs, px - cs];
+    const ys = [py - cs, py - cs, py + cs, py + cs];
+    for (let k = 0; k < 4; k++) {
+      q.push(V(xs[k], ys[k], ridge - 0.6, cw));
+      t.push(V(xs[k], ys[k], ch, cw));
+      cap.push(V(xs[k], ys[k], ch, ct));
+    }
+    for (let k = 0; k < 4; k++) {
+      const m2 = (k + 1) & 3;
+      sink.tri(q[k], q[m2], t[m2]); sink.tri(q[k], t[m2], t[k]);
+    }
+    sink.tri(cap[0], cap[1], cap[2]); sink.tri(cap[0], cap[2], cap[3]);
   }
 
   if (opts.bay !== false && vary.bay) {
@@ -1127,7 +1161,7 @@ export function gableForm(
     const p = vary.proud;
     const bw = (alongX ? w : d) * vary.share;
     const bl = shadeRGB(wall, 1.06), bt = shadeRGB(roof, 1.02);
-    const top = eave + 0.15;
+    const top = eaveH + 0.15;
     if (alongX) {
       const a0 = cx - bw / 2, a1 = cx + bw / 2, yf = y0 - p;
       const q = [V(a0, y0, 0, bl), V(a1, y0, 0, bl), V(a1, yf, 0, bl), V(a0, yf, 0, bl)];
