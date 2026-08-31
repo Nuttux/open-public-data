@@ -1800,7 +1800,16 @@ export default function CityGLMap({ descriptor, ledger, onReady }: CityGLMapProp
               onto the map, beside the zoom — which is the other control that
               only changes what you are looking at. */}
           {!loading ? (
-            <div className="fx-city-drawnas">
+            <div className="fx-city-drawnas" role="group" aria-label="Show">
+              {/* ── §THE TWO MAP ROWS MUST NOT LOOK ALIKE UNLABELLED ────────
+                  Stacked under the zoom row with no caption of its own, this
+                  read as a second row of zoom stops — same mono capitals, same
+                  box, no word saying what it was for. Daniel: *"wtf confusing
+                  the network overlay buttons"*. The zoom row solved this long
+                  ago with `fx-city-controls-cap`; this takes the same device
+                  and the same class, so they read as two labelled groups of
+                  one family rather than as two guesses. */}
+              <span className="fx-city-controls-cap" aria-hidden="true">Show</span>
               {/* ── WHICH SYSTEM IS BEING WATCHED ──────────────────────────
                 The century plays the whole city at once, which is the right
                 default and also why no single thing can be FOLLOWED. Picking

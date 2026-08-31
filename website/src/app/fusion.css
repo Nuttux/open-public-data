@@ -18717,7 +18717,8 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
      BEHIND the record column. `.fx-city-controls` above already knows the
      answer and this uses the same measure. */
   right: calc(var(--fx-city-ledger) + 16px);
-  background: var(--bg); border: 1px solid var(--ink); border-radius: 2px;
+  display: flex; align-items: stretch;
+  background: var(--bg); border: 1px solid var(--ink);
   box-shadow: 0 1px 6px rgba(0,0,0,.13);
 }
 .theme-fusion .fx-city-system-note {
@@ -18729,6 +18730,7 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   font-family: var(--f-sans, system-ui, sans-serif); font-size: 11.5px;
   line-height: 1.45; color: color-mix(in srgb, var(--ink) 70%, transparent);
 }
+.theme-fusion .fx-city-drawnas > div { border: 0 !important; border-radius: 0 !important; }
 @media (max-width: 780px) {
   .theme-fusion .fx-city-drawnas { top: auto; bottom: 14px; right: 14px; }
   .theme-fusion .fx-city-find { left: 14px; width: calc(100% - 28px); }
@@ -18766,7 +18768,21 @@ a.fx-place-row:hover .fx-place-row-label { color: var(--bleu); }
   position: absolute; top: 16px; left: 16px; z-index: 7;
   width: min(320px, calc(100% - var(--fx-city-ledger) - 420px));
 }
+/* ── §THE SEARCH BOX LEFT ITS OLD ROOM AND KEPT ITS FURNITURE ───────────
+   `.fx-city-search` carries `padding-bottom` and a `border-bottom`, which
+   were the rule dividing it from whatever the ledger was showing underneath.
+   On the map there is nothing underneath, so the rule hung in the air below
+   the box as a stray line across the city. It also had no ground of its own:
+   an input with a hairline border, floating on a painted map. */
 .theme-fusion .fx-city-find > * { width: 100%; }
+.theme-fusion .fx-city-find .fx-city-search {
+  margin: 0; padding-bottom: 0; border-bottom: 0;
+}
+.theme-fusion .fx-city-find .fx-city-search-in {
+  border: 1px solid var(--ink);
+  box-shadow: 0 1px 6px rgba(0,0,0,.13);
+  padding: 9px 11px;
+}
 .theme-fusion .fx-city-record { display: flex; flex-direction: column; height: 100%; min-height: 0; }
 .theme-fusion .fx-city-record-head {
   padding: 13px 15px 10px; border-bottom: 1px solid var(--rule);
