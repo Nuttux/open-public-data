@@ -1,0 +1,160 @@
+#!/usr/bin/env python3
+"""EVERY LOCATED BOARD DECISION, SHARDED BY DECADE, SO A YEAR IS ONE FETCH.
+
+    python3 pipeline/scripts/us_sf_city/blocks/build_year_lines.py
+
+── WHAT THIS IS FOR ────────────────────────────────────────────────────────
+The city map's right-hand panel is 280 px wide and full height and it holds
+four lines of mouse instructions. It is called *The record*. The proposal it
+is being built for is that it should hold one: drag the year, and the panel
+lists what the Board decided in that year, being exactly the dots lit on the
+map beside it.
+
+`theme-marks.board.json` already carries the marks — a year, a position and a
+theme mask per decision — but not a word of what any of them SAY. The words
+are in `block-NN.json`, 256 files keyed by assessor block, and resolving a
+panel's worth of them at read time would be up to ninety fetches for one drag
+of the scrub. So the join is done here, once.
+
+── WHY BY DECADE AND NOT IN ONE FILE ───────────────────────────────────────
+MEASURED on the shipped corpus: 16,468 located decisions, and their text is
+2.47 MB before compression. One file would be a 700 kB download to move a
+slider. Thirteen decade shards are ~190 kB each, so scrubbing inside a decade
+costs nothing and crossing one costs a single small fetch.
+
+── AND THE YEARS ARE NOT EVEN, WHICH THE PANEL HAS TO SURVIVE ──────────────
+The median year holds 90 decisions. 1925 holds 891 and 1954 holds 3. That is a
+three-hundredfold range and it is a fact about the record — the Journal was
+printed in full through the twenties and the corpus thins where the scans do —
+not a defect to smooth away. Anything reading this file must render both a
+year with three lines and a year with nine hundred.
+
+── ONE ROW IS A DECISION, NOT A DOT ────────────────────────────────────────
+The marks file has 16,468 rows and they are 7,816 decisions: **2.11 dots
+each**, because a decision that names twenty-four addresses is placed at
+twenty-four blocks. *"Ordering Improvement of Clement Street and Fulton
+Avenue"* is one act of the Board and twenty-four marks on the map.
+
+Written out flat, a panel listing a year would have printed the same lease
+three times and called it three decisions. So a row here is the DECISION, and
+its positions ride with it as parallel arrays — which is also what the map
+wants, since it draws every one of them.
+
+    y   the year                     u   the archive path, for the link out
+    m   the theme bitmask            k   the Board's own kind letter
+    t   the decision's own text,     a   dollars, 0 where the record states none
+        verbatim and untrimmed
+    p   its positions: [x, z, block id], one per place the decision names
+"""
+from __future__ import annotations
+
+import collections
+import json
+import pathlib
+
+ROOT = pathlib.Path("/Users/daniel/code/open-public-data")
+BLK = ROOT / "website/public/data/us/sf/city/blocks"
+OUT = BLK / "year"
+
+
+def main() -> None:
+    idx = json.loads((BLK / "block-index.json").read_text())
+    ids = idx["b"]
+    marks = json.loads((BLK / "theme-marks.board.json").read_text())
+
+    # which block file holds which block id — built once, read once
+    where: dict[str, str] = {}
+    for f in sorted(BLK.glob("block-*.json")):
+        stem = f.name[len("block-"):-len(".json")]
+        if not stem.isdigit():
+            continue
+        for k in json.loads(f.read_text()):
+            where[k] = f.name
+    cache: dict[str, dict] = {}
+
+    def record(bi: int, ri: int):
+        if not (0 <= bi < len(ids)):
+            return None, None
+        bid = ids[bi]
+        fn = where.get(bid)
+        if fn is None:
+            return None, None
+        if fn not in cache:
+            cache[fn] = json.loads((BLK / fn).read_text())
+        e = cache[fn].get(bid)
+        if not e or ri >= len(e.get("d", [])):
+            return None, None
+        return e["d"][ri], bid
+
+    n = len(marks["b"])
+    by_key: dict[tuple, dict] = {}
+    missed = 0
+    for i in range(n):
+        d, bid = record(marks["b"][i], marks["r"][i])
+        if d is None:
+            missed += 1
+            continue
+        # a decision is its year, its archive page and its own words. Two marks
+        # agreeing on all three are one act of the Board in two places.
+        key = (int(marks["yr"][i]), d.get("u") or "", d.get("t") or "")
+        row = by_key.get(key)
+        if row is None:
+            row = by_key[key] = {
+                "y": key[0], "m": 0, "k": d.get("k") or "",
+                "a": int(d.get("a") or 0), "u": key[1], "t": key[2], "p": [],
+            }
+        row["m"] |= int(marks["m"][i])
+        row["p"].append([round(float(marks["x"][i]), 1),
+                         round(float(marks["y"][i]), 1), bid])
+    rows = sorted(by_key.values(), key=lambda r: (r["y"], -len(r["p"]), r["t"]))
+    marks_in = n - missed
+
+    OUT.mkdir(parents=True, exist_ok=True)
+    for old in OUT.glob("*.json"):
+        old.unlink()
+
+    by_decade: dict[int, list] = collections.defaultdict(list)
+    for r in rows:
+        by_decade[r["y"] // 10 * 10].append(r)
+
+    per_year = collections.Counter(r["y"] for r in rows)
+    marks_per_year = collections.Counter()
+    for r in rows:
+        marks_per_year[r["y"]] += len(r["p"])
+    manifest = {
+        "note": "located Board decisions, sharded by decade. One file per "
+                "decade so moving the year costs at most one fetch. Columns "
+                "are parallel arrays; `t` is the record's own text, verbatim.",
+        "source": {
+            "publisher": "San Francisco Board of Supervisors",
+            "via": "blocks/theme-marks.board.json joined to blocks/block-NN.json",
+            "script": "pipeline/scripts/us_sf_city/blocks/build_year_lines.py",
+        },
+        "n": len(rows),
+        "nMarks": marks_in,
+        "decades": sorted(by_decade),
+        "perYear": {str(k): per_year[k] for k in sorted(per_year)},
+        "marksPerYear": {str(k): marks_per_year[k] for k in sorted(marks_per_year)},
+        "medianPerYear": sorted(per_year.values())[len(per_year) // 2],
+    }
+    (OUT / "index.json").write_text(json.dumps(manifest) + "\n")
+
+    total = 0
+    for dec, rs in sorted(by_decade.items()):
+        cols = {k: [r[k] for r in rs] for k in ("y", "m", "k", "a", "u", "t", "p")}
+        p = OUT / f"{dec}.json"
+        p.write_text(json.dumps({"decade": dec, "n": len(rs), **cols}) + "\n")
+        total += p.stat().st_size
+        print(f"   {dec}s  {len(rs):5,} decisions   {p.stat().st_size/1024:6.0f} kB")
+
+    print(f"\n{marks_in:,} marks -> {len(rows):,} distinct decisions "
+          f"({marks_in/max(1,len(rows)):.2f} dots each); {missed} resolved to nothing")
+    print(f"{total/1024/1024:.2f} MB over {len(by_decade)} decade files")
+    ys = sorted(per_year)
+    print(f"years {ys[0]}–{ys[-1]}, median {manifest['medianPerYear']} a year, "
+          f"busiest {max(per_year.values())} ({max(per_year, key=per_year.get)}), "
+          f"quietest {min(per_year.values())} ({min(per_year, key=per_year.get)})")
+
+
+if __name__ == "__main__":
+    main()
